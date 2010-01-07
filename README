@@ -7,11 +7,26 @@ Bidix: https://victorio.uit.no/langtech/trunk/words/dicts
 
 ==Monodix==
 
+SME:
+
 * The monodix is a subset of the GT sme transducer. 
 ** The file apertium-sme-smj.sme.twol should be kept up to date with twol-sme.txt
+** The file apertium-sme-smj.sme.lexc should be kept up to date using 
+   the dev/update-lexc.sh script
 
+NOB: 
+
+* The monodix should probably be kept up to date with the 
+  one in apertium-nn-nb
+
+==Pipeline==
+
+hfst-lookup | cg-proc | apertium-tagger |\
+   apertium-transfer | (apertium-interchunk)+ | apertium-postchunk | lt-proc
 
 ==Other stuff==
+
+From the DTD for the GTSVN bidix:
 
 <!--
 This document is not quite finished yet...
