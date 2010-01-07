@@ -82,6 +82,17 @@ then
   AC_MSG_ERROR([You don't have hfst-twolc installed.])
 fi
 
+AC_PATH_PROG(HFSTSUBSTITUTE, hfst-substitute, no)
+if test x$ac_cv_path_HFSTSUBSTITUTE = x
+then
+  AC_MSG_ERROR([You don't have hfst-subsitute installed.])
+fi
+if test x$ac_cv_path_HFSTSUBSTITUTE = xno
+then
+  AC_MSG_ERROR([You don't have hfst-substitute installed.])
+fi
+
+
 
 
 AC_OUTPUT([Makefile])

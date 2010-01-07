@@ -8274,3 +8274,23 @@ atnu ALBMILONG ; !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgLeft +SgNomLeft +SgGenL
 atnu ALBMILONG ; !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
 ámmát:ámmáh GAHPIRLONG ;
 ámmát:ámmáh GAHPIRLONG ;
+!Distributed under the terms of the GNU General Public License version 2 
+! or any later version.
+
+LEXICON Punctuation
+
+! Clause boundary symbols
+
+%,+CLB:%,   # ;
+%.+CLB:%.   # ;
+%.%.+CLB:%.%.   # ;
+%.%.%.+CLB:%.%.%.   # ;
+%:+CLB:%:   # ;
+%;+CLB:%;	  # ;
+^excl+CLB:%!	  # ;	!^C^
+%?+CLB:%?	  # ; !Question mark
+…+CLB:…		  # ;
+¿+CLB:¿		  # ;	! Only seen as noise.
+¶+CLB:¶		  # ;	! This sign is for titles, it is introduced by the
+			! catxml script, and may be changed if it interferes 
+			! with real pilcrow signs.

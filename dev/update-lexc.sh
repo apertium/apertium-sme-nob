@@ -63,6 +63,17 @@ for i in `cat $EXP | sed 's/ /_/g' | grep '<N'`; do
 done
 
 
+### Add punctuation
+
+PUNCTLEXC=$SRC/punct-$LANG1-lex.txt
+
+punct_point=`grep -nH ' real pilcrow' $PUNCTLEXC | cut -f2 -d':'`;
+head -n $punct_point $PUNCTLEXC >> $OUTFILE;
+
+
+
+### Cleanup
+
 rm $EXP;
 rm $VTMP;
 rm $NTMP;
