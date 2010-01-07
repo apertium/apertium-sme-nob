@@ -1,5 +1,9 @@
 #!/bin/bash
 
+###
+###  This script trims a GT sm* analyser to an Apertium bidix
+### 
+
 if [ ! -e $GTHOME  ]; then
 	echo "Please set the \$GTHOME environment variable";
 	exit;
@@ -12,7 +16,8 @@ PREFIX1=$LANG1-$LANG2
 SRC=$GTHOME/trunk/gt/$LANG1/src
 EXP=`mktemp /tmp/exp.XXXXX`;
 VTMP=`mktemp /tmp/vtmp.XXXX`;
-NTMP=`mktemp /tmp/vtmp.XXXX`;
+NTMP=`mktemp /tmp/ntmp.XXXX`;
+NPTMP=`mktemp /tmp/nptmp.XXXX`;
 OUTFILE=../$BASENAME.$LANG1.lexc
 
 echo "GTHOME in $SRC";
@@ -20,10 +25,7 @@ echo "OUTFILE is $OUTFILE";
 
 ### Extract contents of bilingual dictionary (lema + pos)
 
-lt-expand ../$BASENAME.$PREFIX1.dix  | cut -f1 -d'>' |\
-sed 's/<n$/<N/g' |\
-sed 's/<v/<V/g' \
-> $EXP 
+lt-expand ../$BASENAME.$PREFIX1.dix  | cut -f1-2 -d'>' > $EXP 
 
 ### Extract head 
 
@@ -71,6 +73,31 @@ done
 
 echo 'done.';
 
+### Extract proper nouns 
+
+echo -n '+++ Proper nouns... ';
+
+NPLEXC=$SRC/propernoun-$LANG1-lex.txt
+np_point=`grep -nH ' ProperNoun$' $NPLEXC | cut -f2 -d':'`;
+np_lenfile=`cat $NPLEXC | wc -l`;
+np_tail=`expr $np_lenfile - $np_point`;
+
+cat $SRC/propernoun-$LANG1-morph.txt >> $OUTFILE;
+
+head -n $np_point $NPLEXC >> $OUTFILE;
+cat $NPLEXC | sed 's/0//g' | sed 's/\^//g' > $NPTMP;
+
+for i in `cat $EXP | sed 's/ /_/g' | grep '<N><Prop'`; do
+        lema=`echo $i | cut -f1 -d'<'`;
+        lineno=`grep -nH -e "^ \?$lema:" -e "^ \?$lema " $NPTMP | cut -f2 -d':'`;
+        if [ "$lineno" != "" ]; then
+                head -n$lineno $NPLEXC | tail -1 >> $OUTFILE;
+        fi
+done
+
+echo 'done.';
+
+
 ### Extract conjunctions
 echo -n '+++ Conjunctions... ';
 
@@ -96,3 +123,4 @@ echo 'done.';
 rm $EXP;
 rm $VTMP;
 rm $NTMP;
+rm $NPTMP;
