@@ -7,11 +7,27 @@ PREFIX2=$(LANG2)-$(LANG1)
 BASENAME=apertium-$(PREFIX1)
 
 TARGETS_COMMON = \
-	$(PREFIX1).twol.bin \
+	$(PREFIX1).twol.hfst \
+	$(PREFIX1).lexc.hfst \
+	$(PREFIX1).automorf.hfst \
+	$(PREFIX1).autogen.hfst \
+	$(PREFIX1).rlx.bin \
 	$(PREFIX1).autobil.bin
 
-$(PREFIX1).twol.bin: $(BASENAME).$(LANG1).twol
+$(PREFIX1).twol.hfst: $(BASENAME).$(LANG1).twol
 	hfst-twolc -r -i $(BASENAME).$(LANG1).twol -o $@
+
+$(PREFIX1).lexc.hfst: $(BASENAME).$(LANG1).lexc
+	hfst-lexc $(BASENAME).$(LANG1).lexc -o $@
+
+$(PREFIX1).autogen.hfst: $(PREFIX1).twol.hfst $(PREFIX1).lexc.hfst
+	hfst-compose-intersect -l $(PREFIX1).lexc.hfst $(PREFIX1).twol.hfst -o $@
+
+$(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst
+	hfst-invert $(PREFIX1).autogen.hfst -o $@
+
+$(PREFIX1).rlx.bin: $(BASENAME).$(PREFIX1).rlx
+	cg-comp $(BASENAME).$(PREFIX1).rlx $@
 
 $(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
 	apertium-validate-dictionary $(BASENAME).$(PREFIX1).dix
@@ -19,13 +35,14 @@ $(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
 
 
 EXTRA_DIST=\
-	$(BASENAME).$(PREFIX1).twol \
-	$(BASENAME).$(PREFIX1).dix
+	$(BASENAME).$(LANG1).twol \
+	$(BASENAME).$(LANG1).lexc \
+	$(BASENAME).$(PREFIX1).rlx \
+	$(BASENAME).$(PREFIX1).dix 
 
 apertium_sme_nobdir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
 apertium_sme_modesdir=$(prefix)/share/apertium/modes/
 
 apertium_sme_nob_DATA=$(TARGETS_COMMON)
 
-
-	
+CLEANFILES=$(TARGETS_COMMON)
