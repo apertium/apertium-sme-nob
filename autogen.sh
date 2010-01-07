@@ -37,8 +37,6 @@ echo "- aclocal."		&& \
 if test x$(uname -s) = xDarwin; then $DARWINPATH/aclocal -I /opt/local/share/aclocal ; else aclocal ; fi && \
 echo "- autoconf."		&& \
 if test x$(uname -s) = xDarwin; then $DARWINPATH/autoconf ; else autoconf ; fi && \
-echo "- autoheader."		&& \
-if test x$(uname -s) = xDarwin; then $DARWINPATH/autoheader ; else autoheader ; fi && \
 echo "- automake."		&& \
 if test x$(uname -s) = xDarwin; then $DARWINPATH/automake -a --gnu ; else automake -a --gnu ; fi && \
 echo				&& \
