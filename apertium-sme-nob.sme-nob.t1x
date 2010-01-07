@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transfer default="chunk">
+  <section-def-cats>
+    <def-cat n="nom">
+      <cat-item tags="N.*"/>
+    </def-cat>
+  </section-def-cats>
+  <section-def-attrs>
+    <def-attr n="a_nom">
+      <attr-item tags="N"/>
+      <attr-item tags="N.Prop"/>
+    </def-attr>
+    <def-attr n="case">
+      <attr-item tags="Nom"/>
+      <attr-item tags="Acc"/>
+      <attr-item tags="Gen"/>
+      <attr-item tags="Com"/>
+      <attr-item tags="Ess"/>
+      <attr-item tags="Ill"/>
+      <attr-item tags="Loc"/>
+      <attr-item tags="Ine"/>
+      <attr-item tags="Ela"/>
+    </def-attr>
+    <def-attr n="nbr">
+      <attr-item tags="Sg"/>
+      <attr-item tags="Du"/>
+      <attr-item tags="Pl"/>
+    </def-attr>
+  </section-def-attrs>
+  <section-def-vars>
+    <def-var n="number"/>
+  </section-def-vars>
+  <section-rules>
+    <rule comment="REGLA: NOM">
+      <pattern>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="whole"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+  </section-rules>
+</transfer>

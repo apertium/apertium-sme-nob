@@ -12,7 +12,8 @@ TARGETS_COMMON = \
 	$(PREFIX1).automorf.hfst \
 	$(PREFIX1).autogen.hfst \
 	$(PREFIX1).rlx.bin \
-	$(PREFIX1).autobil.bin
+	$(PREFIX1).autobil.bin \
+	$(PREFIX1).t1x.bin
 
 $(PREFIX1).twol.hfst: $(BASENAME).$(LANG1).twol
 	hfst-twolc -r -i $(BASENAME).$(LANG1).twol -o $@
@@ -33,12 +34,16 @@ $(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
 	apertium-validate-dictionary $(BASENAME).$(PREFIX1).dix
 	lt-comp lr $(BASENAME).$(PREFIX1).dix $@
 
+$(PREFIX1).t1x.bin: $(BASENAME).$(PREFIX1).t1x
+	apertium-validate-transfer $(BASENAME).$(PREFIX1).t1x
+	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t1x $@
 
 EXTRA_DIST=\
 	$(BASENAME).$(LANG1).twol \
 	$(BASENAME).$(LANG1).lexc \
 	$(BASENAME).$(PREFIX1).rlx \
-	$(BASENAME).$(PREFIX1).dix 
+	$(BASENAME).$(PREFIX1).dix \
+	$(BASENAME).$(PREFIX1).t1x
 
 apertium_sme_nobdir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
 apertium_sme_modesdir=$(prefix)/share/apertium/modes/
