@@ -4,13 +4,24 @@
     <def-cat n="nom">
       <cat-item tags="N.*"/>
     </def-cat>
+    <def-cat n="verb">
+      <cat-item tags="V.*"/>
+    </def-cat>
   </section-def-cats>
   <section-def-attrs>
+    <def-attr n="a_verb">
+      <attr-item tags="V"/>
+      <attr-item tags="vblex"/>
+    </def-attr>
     <def-attr n="a_nom">
       <attr-item tags="N"/>
       <attr-item tags="n"/>
       <attr-item tags="N.Prop"/>
       <attr-item tags="np"/>
+    </def-attr>
+    <def-attr n="trans">
+      <attr-item tags="TV"/>
+      <attr-item tags="IV"/>
     </def-attr>
     <def-attr n="case">
       <attr-item tags="Nom"/>
@@ -28,7 +39,11 @@
       <attr-item tags="Du"/>
       <attr-item tags="Pl"/>
     </def-attr>
-    <def-attr n="synlabel">
+    <def-attr n="temps">
+      <attr-item tags="Ind.Prs"/>
+      <attr-item tags="pres"/>
+    </def-attr> 
+    <def-attr n="syn_label">
       <attr-item tags="@X"/>
       <attr-item tags="@HNOUN"/>
       <attr-item tags="@CNP"/>
@@ -84,5 +99,29 @@
         </out>
       </action>
     </rule>
+
+
+    <rule comment="REGLA: VERB">
+      <pattern>
+        <pattern-item n="verb"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_verb"/>
+              <clip pos="1" side="tl" part="temps"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
   </section-rules>
 </transfer>
