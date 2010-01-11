@@ -32,10 +32,12 @@ function grepextract {
     # global $OUTFILE
     cat $LEXC | sed 's/0//g' > $TMP;
     for lema in `cat $EXP | sed 's/ /_/g' | grep "$GREP" | cut -f1 -d'<' | sort | uniq`; do
-	lineno=`grep -nH -e "^ \?$lema:" -e "^ \?$lema " $TMP | cut -f2 -d':'`;
+	lineno=`grep -nH -e "^ \?$lema+" -e "^ \?$lema:" -e "^ \?$lema " $TMP | cut -f2 -d':'`;
 	# TODO: for i in $lineno, since we may have several entries per lema
 	if [ "$lineno" != "" ]; then
-	    head -n$lineno $LEXC | tail -1 >> $OUTFILE;
+            for ret in $lineno; do	
+	    	head -n$ret $LEXC | tail -1 >> $OUTFILE;
+            done
 	fi
     done
     echo 'done.';
