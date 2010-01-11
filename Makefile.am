@@ -13,6 +13,7 @@ TARGETS_COMMON = \
 	$(PREFIX1).autogen.hfst \
 	$(PREFIX1).rlx.bin \
 	$(PREFIX1).autobil.bin \
+	$(PREFIX1).autogen.bin \
 	$(PREFIX1).t1x.bin \
 	$(PREFIX1).t2x.bin \
 	$(PREFIX1).t3x.bin
@@ -48,6 +49,11 @@ $(PREFIX1).t3x.bin: $(BASENAME).$(PREFIX1).t3x
 	apertium-validate-postchunk $(BASENAME).$(PREFIX1).t3x
 	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t3x $@
 
+$(PREFIX1).autogen.bin: $(BASENAME).$(LANG2).dix
+	apertium-validate-dictionary $(BASENAME).$(LANG2).dix
+	lt-comp rl $(BASENAME).$(LANG2).dix $@
+
+
 
 
 EXTRA_DIST=\
@@ -55,6 +61,7 @@ EXTRA_DIST=\
 	$(BASENAME).$(LANG1).lexc \
 	$(BASENAME).$(PREFIX1).rlx \
 	$(BASENAME).$(PREFIX1).dix \
+	$(BASENAME).$(LANG2).dix \
 	$(BASENAME).$(PREFIX1).t1x \
 	$(BASENAME).$(PREFIX1).t2x \
 	$(BASENAME).$(PREFIX1).t3x
