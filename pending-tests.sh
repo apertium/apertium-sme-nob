@@ -14,14 +14,14 @@ if test x$(uname -s) = xDarwin; then
 	ECHO=/opt/local/bin/gecho; 
 fi
 
-wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_tests | grep '<li>' | sed 's/<.*li>//g' | sed 's/ /_/g' | cut -f2 -d')' | sed 's/<i>//g' | sed 's/<\/i>//g' | cut -f2 -d'*' | sed 's/→/!/g' | cut -f1 -d'!' | sed 's/(note:/!/g' | sed 's/_/ /g' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/$/\n@@@/g' | sed 's/\.$/ ./g' | sed 's/ /\n/g' > $SRCLIST;
+wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_tests | grep '<li>' | sed 's/<.*li>//g' | sed 's/ /_/g' | cut -f2 -d')' | sed 's/<i>//g' | sed 's/<\/i>//g' | cut -f2 -d'*' | sed 's/→/!/g' | cut -f1 -d'!' | sed 's/(note:/!/g' | sed 's/_/ /g' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/$/\n@@@/g' | sed 's/\.$/ ./g' | sed 's/, / , /g'  | sed 's/ /\n/g' > $SRCLIST;
 wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_tests | grep '<li>' | sed 's/<.*li>//g' | sed 's/ /_/g' | sed 's/(\w\w)//g' | sed 's/<i>//g' | cut -f2 -d'*' | sed 's/<\/i>_→/!/g' | cut -f2 -d'!' | sed 's/_/ /g' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/$/./g' > $TRGLIST;
 
 apertium -f none -d . $mode < $SRCLIST > $TSTLIST;
 
-cat $SRCLIST | sed 's/\.$//g' | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/@@@/\n/g' | sed 's/^ *//g' > $SRCLIST.n; mv $SRCLIST.n $SRCLIST;
+cat $SRCLIST | sed 's/\.$//g' | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/@@@/\n/g' | sed 's/^ *//g'  | sed 's/ , /, /g' > $SRCLIST.n; mv $SRCLIST.n $SRCLIST;
 cat $TRGLIST | sed 's/\.$//g' > $TRGLIST.n; mv $TRGLIST.n $TRGLIST;
-cat $TSTLIST | sed 's/\.$//g' | sed 's/\t/ /g'  | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/\*\\@\\@\\@/\n/g' | sed 's/^ *//g'  | grep -v '^$' > $TSTLIST.n; mv $TSTLIST.n $TSTLIST;
+cat $TSTLIST | sed 's/\.$//g' | sed 's/\t/ /g'  | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/\*\\@\\@\\@/\n/g' | sed 's/^ *//g'  | grep -v '^$' | sed 's/ , /, /g' > $TSTLIST.n; mv $TSTLIST.n $TSTLIST;
 
 TOTAL=0
 CORRECT=0

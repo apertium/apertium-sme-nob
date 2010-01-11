@@ -19,6 +19,9 @@
 
     <sdef n="Pers"    c="Personal"/>
 
+    <sdef n="Num"     c="Numeral"/>
+    <sdef n="num"     c="Numeral"/>
+
     <sdef n="A"       c="Adjective"/>
     <sdef n="adj"     c="Adjective"/>
 
@@ -84,7 +87,8 @@
 
     <sdef n="CLB"    c="Clause boundary"/>
     <sdef n="clb"    c="Clause boundary"/>
-    <sdef n="sent"   c="Clause boundary"/>
+    <sdef n="sent"   c="Sentence boundary"/>
+    <sdef n="cm"     c="Comma"/>
 
     <!-- Transfer -->
     <sdef n="GD"      c="Gender to be determined"/>
@@ -148,6 +152,10 @@
     <!-- Determiners -->
 
     <!-- Numerals -->
+
+    <e><p><l>okta<s n="Num"/></l><r>en<s n="num"/></r></p></e>
+    <e><p><l>guokte<s n="Num"/></l><r>to<s n="num"/></r></p></e>
+    <e><p><l>njeallje<s n="Num"/></l><r>fire<s n="num"/></r></p></e>
 
     <!-- Nouns -->
 
@@ -1163,6 +1171,7 @@
     <e><p><l>Sápmi<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Sápmi<s n="np"/><s n="top"/></r></p></e>
     <e><p><l>Ruoŧŧa<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Sverige<s n="np"/><s n="top"/></r></p></e>
     <e><p><l>Norga<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Norge<s n="np"/><s n="top"/></r></p></e>
+    <e><p><l>Suopma<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Finland<s n="np"/><s n="top"/></r></p></e>
     <e><p><l>Finnmárku<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Finnmark<s n="np"/><s n="top"/></r></p></e>
     <e><p><l>Romsa<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Tromsø<s n="np"/><s n="top"/></r></p></e>
     <e><p><l>Ruošša<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Russland<s n="np"/><s n="top"/></r></p></e>
@@ -2255,6 +2264,7 @@
     <!-- Punctuation -->
 
     <e><re>[.]</re><p><l><s n="CLB"/></l><r><s n="sent"/><s n="clb"/></r></p></e>
+    <e><re>[,]</re><p><l><s n="CLB"/></l><r><s n="cm"/><s n="clb"/></r></p></e>
   </section>
 </dictionary>
 

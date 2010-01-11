@@ -157,7 +157,14 @@ cat $PPLEXC >> $OUTFILE;
 
 echo 'done.';
 
+### Extract adpositions
+echo -n '+++ Numerals... ';
 
+NUMLEXC=$SRC/numeral-$LANG1-lex.txt
+
+cat $NUMLEXC >> $OUTFILE;
+
+echo 'done.';
 
 ### Add punctuation
 echo -n '+++ Punctuation... ';
