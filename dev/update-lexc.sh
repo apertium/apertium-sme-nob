@@ -44,7 +44,7 @@ cat $VERBLEXC | sed 's/0//g' > $VTMP;
 
 for i in `cat $EXP | sed 's/ /_/g' | grep '<V'`; do
 	lema=`echo $i | cut -f1 -d'<'`;
-	lineno=`grep -nH -e "^ \?$lema:" -e "^ \?$lema " $VERBLEXC | cut -f2 -d':'`;
+	lineno=`grep -nH -e "^ \?$lema:" -e "^ \?$lema " $VTMP | cut -f2 -d':'`;
 	if [ "$lineno" != "" ]; then 
 		head -n$lineno $VERBLEXC | tail -1 >> $OUTFILE;
 	fi
@@ -101,11 +101,21 @@ echo 'done.';
 ### Extract conjunctions
 echo -n '+++ Conjunctions... ';
 
-CONJLEXC=$SRC/conjunction-$LANG1-lex.txt
+CCLEXC=$SRC/conjunction-$LANG1-lex.txt
 
-cat $CONJLEXC >> $OUTFILE;
+cat $CCLEXC >> $OUTFILE;
 
 echo 'done.';
+
+### Extract subordinating conjunctions 
+echo -n '+++ Subjunctions... ';
+
+CSLEXC=$SRC/subjunction-$LANG1-lex.txt
+
+cat $CSLEXC >> $OUTFILE;
+
+echo 'done.';
+
 
 ### Add punctuation
 echo -n '+++ Punctuation... ';

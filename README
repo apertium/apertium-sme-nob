@@ -4,6 +4,10 @@ SME Monodix: https://victorio.uit.no/langtech/trunk/gt/sme
 
 Bidix: https://victorio.uit.no/langtech/trunk/words/dicts
 
+==TODO==
+
+* Proper casing support in the sme lexicon.  (Mánát vs. mánát)
+
 ==Monodix==
 
 SME:
@@ -24,7 +28,7 @@ hfst-lookup | cg-proc | apertium-tagger |\
    apertium-transfer | (apertium-interchunk)+ | apertium-postchunk | lt-proc
 
 $ echo "biila" | apertium -f none -d . sme-nob
-#bil
+bil
 
 
 ==Other stuff==
