@@ -4,7 +4,10 @@
     <sdef n="CC"  c="Co-ordinating conjunction"/>
     <sdef n="cnjcoo"  c="Co-ordinating conjunction"/>
 
-    <sdef n="V"   c="Standard verb"/>
+    <sdef n="CS"      c="Sub-ordinating conjunction"/>
+    <sdef n="cnjsub"  c="Sub-ordinating conjunction"/>
+
+    <sdef n="V"       c="Standard verb"/>
     <sdef n="vblex"   c="Standard verb"/>
 
     <sdef n="IV"      c="Intransitive"/>
@@ -18,6 +21,9 @@
     <sdef n="prn"     c="Pronoun"/>
 
     <sdef n="Pers"    c="Personal"/>
+
+    <sdef n="Interr"  c="Interrogative"/>
+    <sdef n="itg"     c="Interrogative"/>
 
     <sdef n="Num"     c="Numeral"/>
     <sdef n="num"     c="Numeral"/>
@@ -132,8 +138,11 @@
     <!-- Conjunctions -->
 
     <e><p><l>ja<s n="CC"/></l><r>og<s n="cnjcoo"/></r></p></e>
+    <e><p><l>dahje<s n="CC"/></l><r>eller<s n="cnjcoo"/></r></p></e>
     <e><p><l>dahjege<s n="CC"/></l><r>eller<s n="cnjcoo"/></r></p></e>
     <e><p><l>sihke<s n="CC"/></l><r>både<s n="cnjcoo"/></r></p></e>
+
+    <e><p><l>go<s n="CS"/></l><r>når<s n="cnjsub"/></r></p></e>
 
     <!-- Adpositions -->
 
@@ -148,6 +157,8 @@
 
     <e><p><l>dat<s n="Pron"/><s n="Pers"/><s n="Sg3"/></l><r>det<s n="prn"/><s n="p3"/><s n="nt"/><s n="sg"/></r></p><par n="__prn"/></e>
     <e><p><l>mun<s n="Pron"/><s n="Pers"/><s n="Sg1"/></l><r>jeg<s n="prn"/><s n="p1"/><s n="mf"/><s n="sg"/></r></p><par n="__prn"/></e>
+
+    <e><p><l>mii<s n="Pron"/><s n="Interr"/></l><r>hva<s n="prn"/><s n="itg"/></r></p></e>
 
     <!-- Determiners -->
 
