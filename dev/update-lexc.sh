@@ -148,6 +148,17 @@ cat $PRONLEXC >> $OUTFILE;
 
 echo 'done.';
 
+### Extract adpositions
+echo -n '+++ Adpositions... ';
+
+PPLEXC=$SRC/pp-$LANG1-lex.txt
+
+cat $PPLEXC >> $OUTFILE;
+
+echo 'done.';
+
+
+
 ### Add punctuation
 echo -n '+++ Punctuation... ';
 

@@ -4,6 +4,10 @@
     <def-cat n="nom_prop">
       <cat-item tags="N.Prop.*"/>
     </def-cat>
+    <def-cat n="adpos">
+      <cat-item tags="Pr.*"/>
+      <cat-item tags="Po.*"/>
+    </def-cat>
     <def-cat n="pron">
       <cat-item tags="Pron.*"/>
     </def-cat>
@@ -22,6 +26,11 @@
     <def-attr n="a_verb">
       <attr-item tags="V"/>
       <attr-item tags="vblex"/>
+    </def-attr>
+    <def-attr n="a_prep">
+      <attr-item tags="Po"/>
+      <attr-item tags="Pr"/>
+      <attr-item tags="pr"/>
     </def-attr>
     <def-attr n="a_pron">
       <attr-item tags="Pron"/>
@@ -244,6 +253,27 @@
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: ADP">
+      <pattern>
+        <pattern-item n="adpos"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="adpos" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_prep"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
 
 
   </section-rules>
