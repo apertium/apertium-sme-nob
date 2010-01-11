@@ -10,6 +10,11 @@
     <sdef n="IV"      c="Intransitive"/>
     <sdef n="TV"      c="Transitive"/>
 
+    <sdef n="Pron"    c="Pronoun"/>
+    <sdef n="prn"     c="Pronoun"/>
+
+    <sdef n="Pers"    c="Personal"/>
+
     <sdef n="A"       c="Adjective"/>
     <sdef n="adj"     c="Adjective"/>
 
@@ -23,8 +28,24 @@
     <sdef n="Plc"     c="Toponym"/>
     <sdef n="top"     c="Toponym"/>
 
+    <sdef n="p1"      c="First person"/>
+    <sdef n="p2"      c="Second person"/>
+    <sdef n="p3"      c="Third person"/>
+
+    <sdef n="Sg1"     c="First-person singular"/>
+    <sdef n="Sg2"     c="Second-person singular"/>
+    <sdef n="Sg3"     c="Third-person singular"/>
+    <sdef n="Du1"     c="First-person dual"/>
+    <sdef n="Du2"     c="Second-person dual"/>
+    <sdef n="Du3"     c="Third-person dual"/>
+    <sdef n="Pl1"     c="First-person plural"/>
+    <sdef n="Pl2"     c="Second-person plural"/>
+    <sdef n="Pl3"     c="Third-person plural"/>
+
     <sdef n="Sg"      c="Singular"/>
     <sdef n="sg"      c="Singular"/>
+    <sdef n="Du"      c="Dual"/>
+    <sdef n="du"      c="Dual"/>
     <sdef n="Pl"      c="Plural"/>
     <sdef n="pl"      c="Plural"/>
 
@@ -69,6 +90,10 @@
     <sdef n=":3"      c="Acception #4"/>
   </sdefs>
   <pardefs>
+    <pardef n="__prn">
+      <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
+      <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
+    </pardef>
     <pardef n="__adj">
       <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
     </pardef>
@@ -103,6 +128,8 @@
     <!-- Adpositions -->
 
     <!-- Pronouns -->
+
+    <e><p><l>dat<s n="Pron"/><s n="Pers"/><s n="Sg3"/></l><r>det<s n="prn"/><s n="p3"/><s n="nt"/><s n="sg"/></r></p><par n="__prn"/></e>
 
     <!-- Determiners -->
 

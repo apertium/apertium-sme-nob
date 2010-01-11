@@ -139,6 +139,14 @@ cat $CSLEXC >> $OUTFILE;
 
 echo 'done.';
 
+### Extract pronouns 
+echo -n '+++ Pronouns... ';
+
+PRONLEXC=$SRC/pronoun-$LANG1-lex.txt
+
+cat $PRONLEXC >> $OUTFILE;
+
+echo 'done.';
 
 ### Add punctuation
 echo -n '+++ Punctuation... ';
