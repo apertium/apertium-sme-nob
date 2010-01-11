@@ -19,7 +19,7 @@ wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_
 
 apertium -f none -d . $mode < $SRCLIST > $TSTLIST;
 
-cat $SRCLIST | sed 's/\.$//g' | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/\*\\@\\@\\@/\n/g' | sed 's/^ *//g' > $SRCLIST.n; mv $SRCLIST.n $SRCLIST;
+cat $SRCLIST | sed 's/\.$//g' | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/@@@/\n/g' | sed 's/^ *//g' > $SRCLIST.n; mv $SRCLIST.n $SRCLIST;
 cat $TRGLIST | sed 's/\.$//g' > $TRGLIST.n; mv $TRGLIST.n $TRGLIST;
 cat $TSTLIST | sed 's/\.$//g' | sed 's/\t/ /g'  | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/\*\\@\\@\\@/\n/g' | sed 's/^ *//g' > $TSTLIST.n; mv $TSTLIST.n $TSTLIST;
 
@@ -28,9 +28,9 @@ CORRECT=0
 for LINE in `paste $SRCLIST $TRGLIST $TSTLIST | sed 's/ /%_%/g' | sed 's/\t/!/g'`; do
 #	echo $LINE;
 
-	SRC=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f1 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'|sed 's/\*//g'`;
-	TRG=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f2 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'|sed 's/\*//g'`;
-	TST=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f3 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'|sed 's/\*//g'`;
+	SRC=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f1 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'`;
+	TRG=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f2 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'`;
+	TST=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f3 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'`;
 
 #	if [ "$SRC" = "" ]; then
 #		continue;

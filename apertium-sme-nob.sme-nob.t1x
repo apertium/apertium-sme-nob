@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transfer default="chunk">
   <section-def-cats>
+    <def-cat n="nom_prop">
+      <cat-item tags="N.Prop.*"/>
+    </def-cat>
     <def-cat n="nom">
       <cat-item tags="N.*"/>
     </def-cat>
@@ -27,7 +30,7 @@
       <attr-item tags="N"/>
       <attr-item tags="n"/>
       <attr-item tags="N.Prop"/>
-      <attr-item tags="np"/>
+      <attr-item tags="np.top"/>
     </def-attr>
     <def-attr n="trans">
       <attr-item tags="TV"/>
@@ -101,6 +104,33 @@
   <section-rules>
     <rule comment="REGLA: NOM">
       <pattern>
+        <pattern-item n="nom_prop"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="prop" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><lit-tag v="ind"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <!--<clip pos="1" side="tl" part="case"/>-->
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: NOM">
+      <pattern>
         <pattern-item n="nom"/>
       </pattern>
       <action>
@@ -126,6 +156,8 @@
         </out>
       </action>
     </rule>
+
+
 
 
     <rule comment="REGLA: VERB">
