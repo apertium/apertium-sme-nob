@@ -17,6 +17,7 @@ SRC=$GTHOME/trunk/gt/$LANG1/src
 EXP=`mktemp /tmp/exp.XXXXX`;
 VTMP=`mktemp /tmp/vtmp.XXXX`;
 NTMP=`mktemp /tmp/ntmp.XXXX`;
+ATMP=`mktemp /tmp/atmp.XXXX`;
 NPTMP=`mktemp /tmp/nptmp.XXXX`;
 OUTFILE=../$BASENAME.$LANG1.lexc
 
@@ -25,7 +26,7 @@ echo "OUTFILE is $OUTFILE";
 
 ### Extract contents of bilingual dictionary (lema + pos)
 
-lt-expand ../$BASENAME.$PREFIX1.dix  | cut -f1-2 -d'>' > $EXP 
+lt-expand ../$BASENAME.$PREFIX1.dix  | grep -v REGEX | cut -f1-2 -d'>' > $EXP 
 
 ### Extract head 
 
@@ -72,6 +73,28 @@ for i in `cat $EXP | sed 's/ /_/g' | grep '<N'`; do
 done
 
 echo 'done.';
+
+### Extract adjectives 
+echo -n '+++ Adjectives... '
+
+ADJLEXC=$SRC/adj-$LANG1-lex.txt
+adj_point=`grep -nH 'LEXICON AdjectiveRoot$' $ADJLEXC | cut -f2 -d':' `;
+adj_lenfile=`cat $ADJLEXC | wc -l`;
+adj_tail=`expr $adj_lenfile - $adj_point`;
+
+head -n $adj_point $ADJLEXC >> $OUTFILE; 
+cat $ADJLEXC | sed 's/0//g' > $ATMP;
+
+for i in `cat $EXP | sed 's/ /_/g' | grep '<A'`; do
+	lema=`echo $i | cut -f1 -d'<'`;
+	lineno=`grep -nH -e "^ \?$lema:" -e "^ \?$lema " $ATMP | cut -f2 -d':'`;
+	if [ "$lineno" != "" ]; then 
+		head -n$lineno $ADJLEXC | tail -1 >> $OUTFILE;
+	fi
+done
+
+echo 'done.';
+
 
 ### Extract proper nouns 
 
@@ -133,4 +156,5 @@ echo 'done.';
 rm $EXP;
 rm $VTMP;
 rm $NTMP;
+rm $ATMP;
 rm $NPTMP;

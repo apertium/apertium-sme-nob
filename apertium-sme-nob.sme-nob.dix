@@ -10,6 +10,11 @@
     <sdef n="IV"      c="Intransitive"/>
     <sdef n="TV"      c="Transitive"/>
 
+    <sdef n="A"       c="Adjective"/>
+    <sdef n="adj"     c="Adjective"/>
+
+    <sdef n="posi"    c="Positive"/>
+
     <sdef n="N"       c="Noun"/>
     <sdef n="n"       c="Noun"/>
     <sdef n="np"      c="Proper noun"/>
@@ -64,6 +69,9 @@
     <sdef n=":3"      c="Acception #4"/>
   </sdefs>
   <pardefs>
+    <pardef n="__adj">
+      <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
+    </pardef>
     <pardef n="__n">
       <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="sg"/><s n="nom"/></r></p></e>
       <e><p><l><s n="Sg"/><s n="Acc"/></l><r><s n="sg"/><s n="acc"/></r></p></e>
@@ -1123,6 +1131,9 @@
     <e><p><l>Bergen<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Bergen<s n="np"/><s n="top"/></r></p></e>
 
     <!-- Adjectives -->
+
+    <e><p><l>buorre<s n="A"/></l><r>bra<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>heittot<s n="A"/></l><r>dårlig<s n="adj"/></r></p><par n="__adj"/></e>
 
     <!-- Adverbs -->
 
