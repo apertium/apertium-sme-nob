@@ -21,7 +21,7 @@ apertium -f none -d . $mode < $SRCLIST > $TSTLIST;
 
 cat $SRCLIST | sed 's/\.$//g' | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/@@@/\n/g' | sed 's/^ *//g' > $SRCLIST.n; mv $SRCLIST.n $SRCLIST;
 cat $TRGLIST | sed 's/\.$//g' > $TRGLIST.n; mv $TRGLIST.n $TRGLIST;
-cat $TSTLIST | sed 's/\.$//g' | sed 's/\t/ /g'  | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/\*\\@\\@\\@/\n/g' | sed 's/^ *//g' > $TSTLIST.n; mv $TSTLIST.n $TSTLIST;
+cat $TSTLIST | sed 's/\.$//g' | sed 's/\t/ /g'  | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/\*\\@\\@\\@/\n/g' | sed 's/^ *//g'  | grep -v '^$' > $TSTLIST.n; mv $TSTLIST.n $TSTLIST;
 
 TOTAL=0
 CORRECT=0
@@ -32,9 +32,9 @@ for LINE in `paste $SRCLIST $TRGLIST $TSTLIST | sed 's/ /%_%/g' | sed 's/\t/!/g'
 	TRG=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f2 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'`;
 	TST=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f3 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'`;
 
-#	if [ "$SRC" = "" ]; then
-#		continue;
-#	fi
+	if [ "$LINE" = "!!" ]; then
+		continue;
+	fi
 	
 	$ECHO $TRG | grep "^$TST$" > /dev/null;	
 	if [ $? -eq 1 ]; then
@@ -53,4 +53,4 @@ if [ -x /usr/bin/calc ]; then
 	$ECHO $WORKING"%";
 fi
 
-#rm $SRCLIST $TRGLIST $TSTLIST;
+rm $SRCLIST $TRGLIST $TSTLIST;
