@@ -34,6 +34,11 @@
       <attr-item tags="Ine"/>
       <attr-item tags="Ela"/>
     </def-attr>
+    <def-attr n="gen">
+      <attr-item tags="m"/>
+      <attr-item tags="f"/>
+      <attr-item tags="nt"/>
+    </def-attr>
     <def-attr n="nbr">
       <attr-item tags="Sg"/>
       <attr-item tags="Du"/>
@@ -91,9 +96,16 @@
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><lit-tag v="ind"/></tag>
             </tags>
             <lu>
-              <clip pos="1" side="tl" part="whole"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="4"/>
+              <!--<clip pos="1" side="tl" part="case"/>-->
+              <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>
