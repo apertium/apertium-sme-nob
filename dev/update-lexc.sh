@@ -24,6 +24,23 @@ OUTFILE=../$BASENAME.$LANG1.lexc
 echo "GTHOME in $SRC";
 echo "OUTFILE is $OUTFILE";
 
+function grepextract {
+    # global $EXP
+    local GREP=$1; 
+    local LEXC=$2;
+    local TMP=$3;
+    # global $OUTFILE
+    cat $LEXC | sed 's/0//g' > $TMP;
+    for lema in `cat $EXP | sed 's/ /_/g' | grep "$GREP" | cut -f1 -d'<' | sort | uniq`; do
+	lineno=`grep -nH -e "^ \?$lema:" -e "^ \?$lema " $TMP | cut -f2 -d':'`;
+	# TODO: for i in $lineno, since we may have several entries per lema
+	if [ "$lineno" != "" ]; then
+	    head -n$lineno $LEXC | tail -1 >> $OUTFILE;
+	fi
+    done
+    echo 'done.';
+}
+
 ### Extract contents of bilingual dictionary (lema + pos)
 
 lt-expand ../$BASENAME.$PREFIX1.dix  | grep -v REGEX | cut -f1-2 -d'>' > $EXP 
@@ -41,17 +58,7 @@ v_lenfile=`cat $VERBLEXC | wc -l`;
 v_tail=`expr $v_lenfile - $v_point`;
 
 head -n $v_point $VERBLEXC >> $OUTFILE; 
-cat $VERBLEXC | sed 's/0//g' > $VTMP;
-
-for i in `cat $EXP | sed 's/ /_/g' | grep '<V'`; do
-	lema=`echo $i | cut -f1 -d'<'`;
-	lineno=`grep -nH -e "^ \?$lema:" -e "^ \?$lema " $VTMP | cut -f2 -d':'`;
-	if [ "$lineno" != "" ]; then 
-		head -n$lineno $VERBLEXC | tail -1 >> $OUTFILE;
-	fi
-done
-
-echo 'done.';
+grepextract '<V' $VERBLEXC $VTMP;
 
 ### Extract noun
 echo -n '+++ Nouns... '
@@ -62,17 +69,7 @@ n_lenfile=`cat $NOUNLEXC | wc -l`;
 n_tail=`expr $n_lenfile - $n_point`;
 
 head -n $n_point $NOUNLEXC >> $OUTFILE; 
-cat $NOUNLEXC | sed 's/0//g' > $NTMP;
-
-for i in `cat $EXP | sed 's/ /_/g' | grep '<N'`; do
-	lema=`echo $i | cut -f1 -d'<'`;
-	lineno=`grep -nH -e "^ \?$lema:" -e "^ \?$lema " $NTMP | cut -f2 -d':'`;
-	if [ "$lineno" != "" ]; then 
-		head -n$lineno $NOUNLEXC | tail -1 >> $OUTFILE;
-	fi
-done
-
-echo 'done.';
+grepextract '<N' $NOUNLEXC $NTMP;
 
 ### Extract adjectives 
 echo -n '+++ Adjectives... '
@@ -83,18 +80,7 @@ adj_lenfile=`cat $ADJLEXC | wc -l`;
 adj_tail=`expr $adj_lenfile - $adj_point`;
 
 head -n $adj_point $ADJLEXC >> $OUTFILE; 
-cat $ADJLEXC | sed 's/0//g' > $ATMP;
-
-for i in `cat $EXP | sed 's/ /_/g' | grep '<A'`; do
-	lema=`echo $i | cut -f1 -d'<'`;
-	lineno=`grep -nH -e "^ \?$lema:" -e "^ \?$lema " $ATMP | cut -f2 -d':'`;
-	if [ "$lineno" != "" ]; then 
-		head -n$lineno $ADJLEXC | tail -1 >> $OUTFILE;
-	fi
-done
-
-echo 'done.';
-
+grepextract '<A' $ADJLEXC $ATMP;
 
 ### Extract proper nouns 
 
@@ -108,18 +94,7 @@ np_tail=`expr $np_lenfile - $np_point`;
 cat $SRC/propernoun-$LANG1-morph.txt >> $OUTFILE;
 
 head -n $np_point $NPLEXC >> $OUTFILE;
-cat $NPLEXC | sed 's/0//g' | sed 's/\^//g' > $NPTMP;
-
-for i in `cat $EXP | sed 's/ /_/g' | grep '<N><Prop'`; do
-        lema=`echo $i | cut -f1 -d'<'`;
-        lineno=`grep -nH -e "^ \?$lema:" -e "^ \?$lema " $NPTMP | cut -f2 -d':'`;
-        if [ "$lineno" != "" ]; then
-                head -n$lineno $NPLEXC | tail -1 >> $OUTFILE;
-        fi
-done
-
-echo 'done.';
-
+grepextract '<N><Prop' $NPLEXC $NPTMP;
 
 ### Extract conjunctions
 echo -n '+++ Conjunctions... ';
