@@ -7,11 +7,21 @@
     <def-cat n="verb">
       <cat-item tags="V.*"/>
     </def-cat>
+    <def-cat n="conj">
+      <cat-item tags="CC.*"/>
+      <cat-item tags="CS.*"/>
+    </def-cat>
   </section-def-cats>
   <section-def-attrs>
     <def-attr n="a_verb">
       <attr-item tags="V"/>
       <attr-item tags="vblex"/>
+    </def-attr>
+    <def-attr n="a_conj">
+      <attr-item tags="CC"/>
+      <attr-item tags="CS"/>
+      <attr-item tags="cnjcoo"/>
+      <attr-item tags="cnjsub"/>
     </def-attr>
     <def-attr n="a_nom">
       <attr-item tags="N"/>
@@ -94,6 +104,7 @@
           <chunk name="nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
               <tag><lit-tag v="ind"/></tag>
@@ -103,7 +114,7 @@
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="4"/>
+              <lit-tag v="5"/>
               <!--<clip pos="1" side="tl" part="case"/>-->
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
@@ -134,6 +145,27 @@
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: CONJ">
+      <pattern>
+        <pattern-item n="conj"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_conj"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
 
   </section-rules>
 </transfer>
