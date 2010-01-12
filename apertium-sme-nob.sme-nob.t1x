@@ -20,6 +20,9 @@
     <def-cat n="verb">
       <cat-item tags="V.*"/>
     </def-cat>
+    <def-cat n="vneg">
+      <cat-item tags="V.*.Neg.*"/>
+    </def-cat>
     <def-cat n="conj">
       <cat-item tags="CC.*"/>
       <cat-item tags="CS.*"/>
@@ -261,6 +264,36 @@
               <clip pos="1" side="tl" part="a_verb"/>
               <clip pos="1" side="tl" part="temps"/>
               <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    
+    <rule comment="REGLA: VNEG VERB">
+      <pattern>
+        <pattern-item n="vneg"/>
+        <pattern-item n="verb"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="vnegverb" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_verb"/>
+              <clip pos="1" side="tl" part="temps"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_verb"/>
+              <clip pos="2" side="tl" part="temps"/>
+              <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>
