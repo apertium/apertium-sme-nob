@@ -8,6 +8,9 @@
       <cat-item tags="Pr.*"/>
       <cat-item tags="Po.*"/>
     </def-cat>
+    <def-cat n="num">
+      <cat-item tags="Num.*"/>
+    </def-cat>
     <def-cat n="pron">
       <cat-item tags="Pron.*"/>
     </def-cat>
@@ -31,6 +34,10 @@
       <attr-item tags="Po"/>
       <attr-item tags="Pr"/>
       <attr-item tags="pr"/>
+    </def-attr>
+    <def-attr n="a_num">
+      <attr-item tags="Num"/>
+      <attr-item tags="det.qnt"/>
     </def-attr>
     <def-attr n="a_pron">
       <attr-item tags="Pron"/>
@@ -207,6 +214,32 @@
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: NUMERAL">
+      <pattern>
+        <pattern-item n="num"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="num" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
 
 
 
