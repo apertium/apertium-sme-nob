@@ -31,7 +31,7 @@ $(PREFIX1).autogen.hfst: $(PREFIX1).twol.hfst $(PREFIX1).lexc.hfst
 	hfst-compose-intersect -l $@.tmp dev/uppercase-first.hfst -o $@
 	@rm $@.tmp
 
-$(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst
+$(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst dev/xfst2apertium.relabel
 	hfst-invert $(PREFIX1).autogen.hfst -o $(PREFIX1).automorf.bin
 	hfst-substitute -F dev/xfst2apertium.relabel -i $(PREFIX1).automorf.bin -o $@
 
