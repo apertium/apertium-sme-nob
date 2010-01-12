@@ -8,6 +8,9 @@
       <cat-item tags="Pr.*"/>
       <cat-item tags="Po.*"/>
     </def-cat>
+    <def-cat n="adj">
+      <cat-item tags="A.*"/>
+    </def-cat>
     <def-cat n="num">
       <cat-item tags="Num.*"/>
     </def-cat>
@@ -32,6 +35,10 @@
     <def-attr n="a_verb">
       <attr-item tags="V"/>
       <attr-item tags="vblex"/>
+    </def-attr>
+    <def-attr n="a_adj">
+      <attr-item tags="A"/>
+      <attr-item tags="adj"/>
     </def-attr>
     <def-attr n="a_prep">
       <attr-item tags="Po"/>
@@ -77,6 +84,13 @@
       <attr-item tags="p1"/>
       <attr-item tags="p2"/>
       <attr-item tags="p3"/>
+    </def-attr>
+    <def-attr n="grau">
+      <attr-item tags="Comp"/>
+      <attr-item tags="Superl"/>
+      <attr-item tags="posi"/>
+      <attr-item tags="comp"/>
+      <attr-item tags="sup"/>
     </def-attr>
     <def-attr n="gen">
       <attr-item tags="m"/>
@@ -217,6 +231,35 @@
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: ADJEC">
+      <pattern>
+        <pattern-item n="adj"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="adj" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SA"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><lit-tag v="ind"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+
 
     <rule comment="REGLA: NUMERAL">
       <pattern>
