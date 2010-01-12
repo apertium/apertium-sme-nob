@@ -19,7 +19,8 @@ VTMP=`mktemp /tmp/vtmp.XXXX`;
 NTMP=`mktemp /tmp/ntmp.XXXX`;
 ATMP=`mktemp /tmp/atmp.XXXX`;
 NPTMP=`mktemp /tmp/nptmp.XXXX`;
-OUTFILE=../$BASENAME.$LANG1.lexc
+DEV=`dirname $0`
+OUTFILE=$DEV/../$BASENAME.$LANG1.lexc
 
 echo "GTHOME in $SRC";
 echo "OUTFILE is $OUTFILE";
@@ -45,7 +46,7 @@ function grepextract {
 
 ### Extract contents of bilingual dictionary (lema + pos)
 
-lt-expand ../$BASENAME.$PREFIX1.dix  | grep -v REGEX | cut -f1-2 -d'>' > $EXP 
+lt-expand $DEV/../$BASENAME.$PREFIX1.dix  | grep -v REGEX | cut -f1-2 -d'>' > $EXP 
 
 ### Extract head 
 
