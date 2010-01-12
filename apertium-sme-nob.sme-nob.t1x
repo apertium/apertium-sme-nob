@@ -30,6 +30,9 @@
     <def-cat n="vcop">
       <cat-item lemma="leat" tags="V.*"/>
     </def-cat>
+    <def-cat n="vgoahti">
+      <cat-item lemma="goahti" tags="V.*"/>
+    </def-cat>
     <def-cat n="conj">
       <cat-item tags="CC.*"/>
       <cat-item tags="CS.*"/>
@@ -205,8 +208,8 @@
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="5"/>
-              <!--<clip pos="1" side="tl" part="case"/>-->
+              <lit-tag v="ind"/>
+              <clip pos="1" side="tl" part="case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -324,6 +327,40 @@
       </action>
     </rule>
     
+    <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å lese">
+      <pattern>
+        <pattern-item n="verb"/>
+        <pattern-item n="vgoahti"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_verb"/>
+              <clip pos="2" side="tl" part="temps"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="å"/><lit-tag v="part"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_verb"/>
+              <clip pos="1" side="tl" part="temps"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <rule comment="REGLA: VNEG VERB">
       <pattern>
         <pattern-item n="vneg"/>
@@ -331,7 +368,7 @@
       </pattern>
       <action>
         <out>
-          <chunk name="vnegverb" case="caseFirstWord">
+          <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
@@ -359,7 +396,7 @@
       </pattern>
       <action>
         <out>
-          <chunk name="vnegverb" case="caseFirstWord">
+          <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
