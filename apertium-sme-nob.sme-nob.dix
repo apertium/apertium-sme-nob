@@ -80,6 +80,9 @@
     <sdef n="Loc"     c="Locative"/>
     <sdef n="loc"     c="Locative"/>
 
+    <sdef n="Der2"     c="dunno todo"/>
+    <sdef n="Actor"     c="for deverbals"/>
+
     <sdef n="pers"    c="Personal"/>
     <sdef n="impers"  c="Impersonal"/>
 
@@ -91,6 +94,8 @@
     <sdef n="pres"    c="Present indicative"/>
     <sdef n="pp"      c="Perfect participle"/>
 
+    <sdef n="Mal"     c="Masculine"/>
+    <sdef n="Fem"     c="Feminine"/>
     <sdef n="m"       c="Masculine"/>
     <sdef n="mf"      c="Masculine / feminine"/>
     <sdef n="f"       c="Feminine"/>
@@ -1212,6 +1217,8 @@
     <e><p><l>Oslo<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Oslo<s n="np"/><s n="top"/></r></p></e>
     <e><p><l>Bergen<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Bergen<s n="np"/><s n="top"/></r></p></e>
 
+    <e><p><l>Máhtte<s n="N"/><s n="Prop"/><s n="Mal"/><s n="Sg"/></l><r>Máhtte<s n="np"/><s n="m"/></r></p></e>
+
     <!-- Adjectives -->
 
     <e><p><l>buorre<s n="A"/></l><r>bra<s n="adj"/></r></p><par n="__adj"/></e>
@@ -1914,7 +1921,10 @@
     <e><p><l>geardduhit<s n="V"/><s n="TV"/></l><r>repetere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>gearjidit<s n="V"/><s n="TV"/></l><r>tigge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>geassádit<s n="V"/><s n="IV"/></l><r>trekke seg<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e><p><l>geavahit<s n="V"/><s n="TV"/></l><r>bruke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+
+    <e><p><l>geavahit<s n="V"/><s n="TV"/></l><r>bruke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>geavahit<s n="V"/><s n="TV"/><s n="Der2"/><s n="Actor"/><s n="N"/></l><r>bruker<s n="n"/><s n="m"/></r></p><par n="__n"/></e> 
+
     <e><p><l>geavvadit<s n="V"/><s n="TV"/></l><r>la heve<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>geavvat<s n="V"/><s n="IV"/></l><r>heve seg<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
     <e><p><l>geažuhit<s n="V"/><s n="TV"/></l><r>antyde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
