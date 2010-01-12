@@ -8,49 +8,48 @@ TSTLIST=`mktemp -t tmp.XXXXXXXXXX`;
 basedir=`pwd`;
 mode=sme-nob
 
-ECHO=echo
+ECHOE="echo -e"
+SED=sed
 
 if test x$(uname -s) = xDarwin; then 
-	ECHO=/opt/local/bin/gecho; 
+	ECHOE="builtin echo"
+	SED=gsed
 fi
 
-wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_tests | grep '<li>' | sed 's/<.*li>//g' | sed 's/ /_/g' | cut -f2 -d')' | sed 's/<i>//g' | sed 's/<\/i>//g' | cut -f2 -d'*' | sed 's/→/!/g' | cut -f1 -d'!' | sed 's/(note:/!/g' | sed 's/_/ /g' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/$/\n@@@/g' | sed 's/\.$/ ./g' | sed 's/, / , /g'  | sed 's/ /\n/g' > $SRCLIST;
-wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_tests | grep '<li>' | sed 's/<.*li>//g' | sed 's/ /_/g' | sed 's/(\w\w)//g' | sed 's/<i>//g' | cut -f2 -d'*' | sed 's/<\/i>_→/!/g' | cut -f2 -d'!' | sed 's/_/ /g' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/$/./g' > $TRGLIST;
+wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_tests | grep '<li>' | $SED 's/<.*li>//g' | $SED 's/ /_/g' | cut -f2 -d')' | $SED 's/<i>//g' | $SED 's/<\/i>//g' | cut -f2 -d'*' | $SED 's/→/!/g' | cut -f1 -d'!' | $SED 's/(note:/!/g' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/$/\n@@@/g' | $SED 's/\.$/ ./g' | $SED 's/, / , /g'  | $SED 's/ /\n/g' > $SRCLIST;
+wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_tests | grep '<li>' | $SED 's/<.*li>//g' | $SED 's/ /_/g' | $SED 's/(\w\w)//g' | $SED 's/<i>//g' | cut -f2 -d'*' | $SED 's/<\/i>_→/!/g' | cut -f2 -d'!' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/$/./g' > $TRGLIST;
 
 apertium -f none -d . $mode < $SRCLIST > $TSTLIST;
 
-cat $SRCLIST | sed 's/\.$//g' | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/@@@/\n/g' | sed 's/^ *//g'  | sed 's/ , /, /g' > $SRCLIST.n; mv $SRCLIST.n $SRCLIST;
-cat $TRGLIST | sed 's/\.$//g' > $TRGLIST.n; mv $TRGLIST.n $TRGLIST;
-cat $TSTLIST | sed 's/\.$//g' | sed 's/\t/ /g'  | sed 's/$/ /g' | sed ':a;N;$!ba;s/\n//g' | sed 's/\*\\@\\@\\@/\n/g' | sed 's/^ *//g'  | grep -v '^$' | sed 's/ , /, /g' > $TSTLIST.n; mv $TSTLIST.n $TSTLIST;
+cat $SRCLIST | $SED 's/\.$//g' | $SED 's/$/ /g' | $SED ':a;N;$!ba;s/\n//g' | $SED 's/@@@/\n/g' | $SED 's/^ *//g'  | $SED 's/ , /, /g' | grep -v '^ *$' > $SRCLIST.n; mv $SRCLIST.n $SRCLIST;
+cat $TRGLIST | $SED 's/\.$//g' > $TRGLIST.n; mv $TRGLIST.n $TRGLIST;
+cat $TSTLIST | $SED 's/\.$//g' | $SED 's/\t/ /g'  | $SED 's/$/ /g' | $SED ':a;N;$!ba;s/\n//g' | $SED 's/\*\\@\\@\\@/\n/g' | $SED 's/^ *//g'  | grep -v '^$' | $SED 's/ , /, /g' > $TSTLIST.n; mv $TSTLIST.n $TSTLIST;
 
 TOTAL=0
 CORRECT=0
-for LINE in `paste $SRCLIST $TRGLIST $TSTLIST | sed 's/ /%_%/g' | sed 's/\t/!/g'`; do
-#	echo $LINE;
-
-	SRC=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f1 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'`;
-	TRG=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f2 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'`;
-	TST=`$ECHO $LINE | sed 's/%_%/ /g' | cut -f3 -d'!' | sed 's/^ *//g' | sed 's/ *$//g' | sed 's/  / /g' |sed 's/\.$//g'`;
+for LINE in `paste $SRCLIST $TRGLIST $TSTLIST | $SED 's/ /%_%/g' | $SED 's/\t/!/g'`; do
+	SRC=`echo $LINE | $SED 's/%_%/ /g' | cut -f1 -d'!' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/  / /g' |$SED 's/\.$//g'`;
+	TRG=`echo $LINE | $SED 's/%_%/ /g' | cut -f2 -d'!' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/  / /g' |$SED 's/\.$//g'`;
+	TST=`echo $LINE | $SED 's/%_%/ /g' | cut -f3 -d'!' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/  / /g' |$SED 's/\.$//g'`;
 
 	if [ "$LINE" = "!!" ]; then
 		continue;
 	fi
-	
-	$ECHO $TRG | grep "^$TST$" > /dev/null;	
+	echo $TRG | grep "^${TST}$" > /dev/null;	
 	if [ $? -eq 1 ]; then
-		$ECHO -e $mode"\t  "$SRC"\n\t- $TRG\n\t+ "$TST"\n";
+		$ECHOE $mode"\t  "$SRC"\n\t- $TRG\n\t+ "$TST"\n\n";
 	else
-		$ECHO -e $mode"\t  "$SRC"\nWORKS\t  $TST\n";
+		$ECHOE $mode"\t  "$SRC"\nWORKS\t  $TST\n\n";
 		CORRECT=`expr $CORRECT + 1`;
 	fi
 	TOTAL=`expr $TOTAL + 1`;
 done
 
-$ECHO $CORRECT" / "$TOTAL ;
+echo $CORRECT" / "$TOTAL ;
 if [ -x /usr/bin/calc ]; then
 	WORKING=`calc $CORRECT" / "$TOTAL" * 100" | head -c 7`;
 
-	$ECHO $WORKING"%";
+	echo $WORKING"%";
 fi
 
 rm $SRCLIST $TRGLIST $TSTLIST;
