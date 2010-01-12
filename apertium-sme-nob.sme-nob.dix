@@ -89,9 +89,11 @@
     <sdef n="Ind"     c="Indicative"/>
     <sdef n="Inf"     c="Infinitive"/>
     <sdef n="Prs"     c="Present"/>
+    <sdef n="Prt"     c="Preterite"/>
     <sdef n="PrfPrc"  c="Perfect participle"/>
     <sdef n="inf"     c="Infinitive"/>
     <sdef n="pres"    c="Present indicative"/>
+    <sdef n="pret"    c="Preterite"/>
     <sdef n="pp"      c="Perfect participle"/>
 
     <sdef n="Mal"     c="Masculine"/>
@@ -154,6 +156,7 @@
     </pardef>
     <pardef n="__verb">
       <e><p><l><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/></r></p></e>
       <e><p><l><s n="Inf"/></l><r><s n="inf"/></r></p></e>
       <e><p><l><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
       <e><p><l></l><r></r></p></e>
@@ -1530,6 +1533,9 @@
     <!-- Does 'mun' mark personal, and 'dat' impersonal, if so is it relevant to transfer ? -->
 
     <e><p><l>leat<s n="V"/><s n="IV"/></l><r>være<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+
+    <!-- Verbs only coming form derivations -->
+    <e><p><l>goahti<s n="V"/></l><r>begynne<s n="vblex"/></r></p><par n="__verb"/></e>
 
     <e><p><l>lohkat<s n="V"/><s n="TV"/></l><r>lese<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>ábbut<s n="V"/><s n="IV"/></l><r>koke<g><b/>over</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
