@@ -52,6 +52,8 @@ lt-expand $DEV/../$BASENAME.$PREFIX1.dix  | grep -v REGEX | cut -f1-2 -d'>' > $E
 
 cat $SRC/$LANG1-lex.txt > $OUTFILE
 
+
+
 ### Extract verbs
 echo -n '+++ Verbs... '
 
@@ -107,6 +109,23 @@ CCLEXC=$SRC/conjunction-$LANG1-lex.txt
 cat $CCLEXC >> $OUTFILE;
 
 echo 'done.';
+
+### Extract adverbs
+echo -n '+++ Adverbs... '
+
+ADVLEXC=$SRC/adv-$LANG1-lex.txt
+adv_point=`grep -nH 'LEXICON Adverb$' $ADVLEXC | cut -f2 -d':' `;
+adv_lenfile=`cat $ADVLEXC | wc -l`;
+adv_tail=`expr $adv_lenfile - $adv_point`;
+
+adv_infl_point=`grep -nH 'LEXICON gadv' $ADVLEXC | cut -f2 -d':' `;
+adv_infl_tail=`expr $adv_lenfile - $adv_infl_point`;
+
+tail -n $adv_infl_tail $ADVLEXC  | grep -v '^!' >> $OUTFILE;
+
+head -n $adv_point $ADVLEXC >> $OUTFILE; 
+grepextract '<Adv' $ADVLEXC $ATMP;
+
 
 ### Extract subordinating conjunctions 
 echo -n '+++ Subjunctions... ';
