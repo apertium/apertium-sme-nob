@@ -38,6 +38,7 @@
     <sdef n="A"       c="Adjective"/>
     <sdef n="adj"     c="Adjective"/>
 
+    <sdef n="Attr"    c="Attributive"/>
     <sdef n="posi"    c="Positive"/>
     <sdef n="Comp"    c="Comparative"/>
     <sdef n="comp"    c="Comparative"/>
@@ -135,9 +136,10 @@
     <pardef n="__adj">
       <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
       <e><p><l><s n="Sg"/><s n="Acc"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
-      <e><p><l><s n="Comp"/></l><r><s n="comp"/></r></p></e>
+      <e><p><l><s n="Comp"/><s n="Sg"/><s n="Nom"/></l><r><s n="comp"/><s n="mf"/></r></p></e>
+      <e><p><l><s n="Comp"/></l><r><s n="comp"/><s n="mf"/></r></p></e>
       <e><p><l><s n="Superl"/></l><r><s n="sup"/></r></p></e>
-      <e><p><l></l><r></r></p></e>
+      <e><p><l><s n="Attr"/></l><r><s n="posi"/><s n="GD"/><s n="ND"/></r></p></e>
     </pardef>
     <pardef n="num__det_qnt">
       <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
@@ -301,6 +303,7 @@
     <e><p><l>biru<s n="N"/></l><r>djevel<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>bisma<s n="N"/></l><r>biskop<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>bivttas<s n="N"/></l><r>klesplagg<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e><p><l>boadnjá<s n="N"/></l><r>ektemann<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>boađa<s n="N"/></l><r>atkomst<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>boađus<s n="N"/></l><r>resultat<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>boaldin<s n="N"/></l><r>forbrenning<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2850,7 +2853,7 @@
  
     <!-- Punctuation -->
 
-    <e><re>[.]</re><p><l><s n="CLB"/></l><r><s n="sent"/><s n="clb"/></r></p></e>
+    <e><re>[.\?]</re><p><l><s n="CLB"/></l><r><s n="sent"/><s n="clb"/></r></p></e>
     <e><re>[,]</re><p><l><s n="CLB"/></l><r><s n="cm"/><s n="clb"/></r></p></e>
   </section>
 </dictionary>

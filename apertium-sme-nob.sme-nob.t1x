@@ -130,7 +130,13 @@
       <attr-item tags="Sg"/>
       <attr-item tags="Du"/>
       <attr-item tags="Pl"/>
+      <attr-item tags="sg"/>
+      <attr-item tags="pl"/>
       <attr-item tags="ND"/>
+    </def-attr>
+    <def-attr n="defnes">
+      <attr-item tags="ind"/>
+      <attr-item tags="def"/>
     </def-attr>
     <def-attr n="temps">
       <attr-item tags="Ind.Prs"/>
@@ -182,6 +188,8 @@
     <def-var n="number"/>
     <def-var n="noun_case"/>
     <def-var n="pron_case"/>
+    <def-var n="c_defnes"/>
+    <def-var n="c_tag_pos"/>
   </section-def-vars>
 
   <section-def-macros>
@@ -219,6 +227,45 @@
           <let><var n="pron_case"/><lit-tag v="nom"/></let>
         </otherwise>
       </choose>
+    </def-macro>
+
+    <def-macro n="conv_adj_tags" npar="1">
+        <choose>
+          <when>
+            <test>
+              <equal> 
+                <clip pos="1" side="tl" part="grau"/>
+                <lit-tag v="posi"/>
+              </equal>
+            </test>
+            <let><clip pos="1" side="tl" part="gen"/><lit-tag v="mf"/></let>
+            <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+            <let><var n="c_defnes"/><lit-tag v="ind"/></let>
+          </when>
+          <when>
+            <test>
+              <equal> 
+                <clip pos="1" side="tl" part="grau"/>
+                <lit-tag v="comp"/>
+              </equal>
+            </test>
+            <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
+            <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+            <let><var n="c_defnes"/><lit v=""/></let>
+          </when>
+          <when>
+            <test>
+              <equal> 
+                <clip pos="1" side="tl" part="grau"/>
+                <lit-tag v="sup"/>
+              </equal>
+            </test>
+            <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
+            <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+            <let><var n="c_defnes"/><lit-tag v="ind"/></let>
+          </when>
+        </choose>
+
     </def-macro>
   </section-def-macros>
   
@@ -352,28 +399,41 @@
       </action>
     </rule>
 
-    <rule comment="REGLA: ADJEC">
+    <rule comment="REGLA: ADJEC: dehálaš => viktig, deháleamos => viktigst">
       <pattern>
         <pattern-item n="adj"/>
       </pattern>
       <action>
+        <call-macro n="conv_adj_tags">
+          <with-param pos="1"/>
+        </call-macro>
+        <let><var n="c_tag_pos"/><lit-tag v="4"/></let> 
+        <choose>
+          <when>
+            <test>
+              <equal>
+                <clip pos="1" side="tl" part="grau"/>
+                <lit-tag v="sup"/>
+              </equal>
+            </test>
+            <let><var n="c_tag_pos"/><lit-tag v="3"/></let>
+          </when>
+        </choose>
         <out>
           <chunk name="adj" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SA"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
-              <tag><clip pos="1" side="tl" part="case"/></tag>
-              <tag><lit-tag v="ind"/></tag>
+              <tag><var n="c_defnes"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_adj"/>
               <clip pos="1" side="tl" part="grau"/>
-              <lit-tag v="mf"/>
+              <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="ind"/>
-              <clip pos="1" side="tl" part="case"/>
+              <var n="c_tag_pos"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>

@@ -16,7 +16,7 @@ if test x$(uname -s) = xDarwin; then
 	SED=gsed
 fi
 
-wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_tests | grep '<li>' | $SED 's/<.*li>//g' | $SED 's/ /_/g' | cut -f2 -d')' | $SED 's/<i>//g' | $SED 's/<\/i>//g' | cut -f2 -d'*' | $SED 's/→/!/g' | cut -f1 -d'!' | $SED 's/(note:/!/g' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/$/\n@@@/g' | $SED 's/\.$/ ./g' | $SED 's/, / , /g'  | $SED 's/ /\n/g' > $SRCLIST;
+wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_tests | grep '<li>' | $SED 's/<.*li>//g' | $SED 's/ /_/g' | cut -f2 -d')' | $SED 's/<i>//g' | $SED 's/<\/i>//g' | cut -f2 -d'*' | $SED 's/→/!/g' | cut -f1 -d'!' | $SED 's/(note:/!/g' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/$/\n@@@/g' | $SED 's/\.$/ ./g' | $SED 's/, / , /g'  | sed 's/?/ ?/g' | $SED 's/ /\n/g' > $SRCLIST;
 wget -O - -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Pending_tests | grep '<li>' | $SED 's/<.*li>//g' | $SED 's/ /_/g' | $SED 's/(\w\w)//g' | $SED 's/<i>//g' | cut -f2 -d'*' | $SED 's/<\/i>_→/!/g' | cut -f2 -d'!' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/$/./g' > $TRGLIST;
 
 apertium -f none -d . $mode < $SRCLIST > $TSTLIST;
