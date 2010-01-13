@@ -415,7 +415,9 @@
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
             </tags>
             <lu>
-              <clip pos="2" side="tl" part="lemh"/>
+              <get-case-from pos="1">
+                <clip pos="2" side="tl" part="lemh"/>
+              </get-case-from>
               <clip pos="2" side="tl" part="a_verb"/>
               <clip pos="2" side="tl" part="temps"/>
               <clip pos="2" side="tl" part="lemq"/>
@@ -426,7 +428,9 @@
             </lu>
             <b/>
             <lu>
-              <clip pos="1" side="tl" part="lemh"/>
+              <get-case-from pos="2">
+                <clip pos="1" side="tl" part="lemh"/>
+              </get-case-from>
               <clip pos="1" side="tl" part="a_verb"/>
               <lit-tag v="inf"/>
               <clip pos="1" side="tl" part="lemq"/>
