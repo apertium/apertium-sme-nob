@@ -8,6 +8,10 @@
       <cat-item tags="Pr.*"/>
       <cat-item tags="Po.*"/>
     </def-cat>
+    <def-cat n="adverb">
+      <cat-item tags="Adv"/>
+      <cat-item tags="Adv.*"/>
+    </def-cat>
     <def-cat n="adj">
       <cat-item tags="A.*"/>
     </def-cat>
@@ -49,6 +53,10 @@
     <def-attr n="a_adj">
       <attr-item tags="A"/>
       <attr-item tags="adj"/>
+    </def-attr>
+    <def-attr n="a_adv">
+      <attr-item tags="Adv"/>
+      <attr-item tags="adv"/>
     </def-attr>
     <def-attr n="a_prep">
       <attr-item tags="Po"/>
@@ -529,6 +537,27 @@
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: ADV">
+      <pattern>
+        <pattern-item n="adverb"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adv"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
 
 
 
