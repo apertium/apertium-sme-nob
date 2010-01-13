@@ -158,15 +158,36 @@
       <attr-item tags="@-F←OBJ"/>
     </def-attr>
   </section-def-attrs>
+  
   <section-def-vars>
     <def-var n="number"/>
+    <def-var n="noun_case"/>
   </section-def-vars>
+
+  <section-def-macros>
+    <def-macro n="set_case" npar="1">
+      <!-- only keep genitive for nob nouns -->
+      <choose>
+        <when>
+          <test>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
+          </test>
+          <let><var n="noun_case"/><clip pos="1" side="tl" part="case"/></let>
+        </when>
+        <otherwise>
+          <let><var n="noun_case"/><lit v=""/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
+  </section-def-macros>
+  
   <section-rules>
     <rule comment="REGLA: NOM PROP">
       <pattern>
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
+        <call-macro n="set_case"><with-param pos="1"/></call-macro>
         <out>
           <chunk name="prop" case="caseFirstWord">
             <tags>
@@ -181,7 +202,7 @@
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <!--<clip pos="1" side="tl" part="case"/>-->
+              <var n="noun_case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -189,11 +210,13 @@
       </action>
     </rule>
 
-    <rule comment="REGLA: NOM">
+    <rule comment="REGLA: NOM
+                   Defaults to indicative w/o context">
       <pattern>
         <pattern-item n="nom"/>
       </pattern>
       <action>
+        <call-macro n="set_case"><with-param pos="1"/></call-macro>
         <out>
           <chunk name="nom" case="caseFirstWord">
             <tags>
@@ -209,7 +232,7 @@
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <lit-tag v="ind"/>
-              <!-- <clip pos="1" side="tl" part="case"/> -->
+              <var n="noun_case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -264,7 +287,9 @@
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_adj"/>
               <clip pos="1" side="tl" part="grau"/>
+              <lit-tag v="mf"/>
               <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
               <clip pos="1" side="tl" part="case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
