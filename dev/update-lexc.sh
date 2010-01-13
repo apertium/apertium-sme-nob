@@ -121,7 +121,7 @@ adv_tail=`expr $adv_lenfile - $adv_point`;
 adv_infl_point=`grep -nH 'LEXICON gadv' $ADVLEXC | cut -f2 -d':' `;
 adv_infl_tail=`expr $adv_lenfile - $adv_infl_point`;
 
-tail -n $adv_infl_tail $ADVLEXC  | grep -v '^!' >> $OUTFILE;
+tail -n `expr $adv_infl_tail + 1` $ADVLEXC  | grep -v '^!' >> $OUTFILE;
 
 head -n $adv_point $ADVLEXC >> $OUTFILE; 
 grepextract '<Adv' $ADVLEXC $ATMP;
