@@ -71,6 +71,14 @@
       <attr-item tags="Pron"/>
       <attr-item tags="prn"/>
     </def-attr>
+    <def-attr n="a_det">
+      <attr-item tags="det"/> 
+      <attr-item tags="det.emph"/>
+      <attr-item tags="det.dem"/>
+      <attr-item tags="det.itg"/>
+      <attr-item tags="det.qnt"/>
+      <attr-item tags="det.pos"/>
+    </def-attr>
     <def-attr n="a_conj">
       <attr-item tags="CC"/>
       <attr-item tags="CS"/>
@@ -173,10 +181,11 @@
   <section-def-vars>
     <def-var n="number"/>
     <def-var n="noun_case"/>
+    <def-var n="pron_case"/>
   </section-def-vars>
 
   <section-def-macros>
-    <def-macro n="set_case" npar="1">
+    <def-macro n="set_noun_case" npar="1">
       <!-- only keep genitive for nob nouns -->
       <choose>
         <when>
@@ -190,6 +199,27 @@
         </otherwise>
       </choose>
     </def-macro>
+    <def-macro n="set_pron_case" npar="1">
+      <!-- only keep nom/acc for nob prons; genitives turn into det.poss... TODO! -->
+      <choose>
+        <when>
+          <test><or>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
+          </or></test>
+          <let><var n="pron_case"/><clip pos="1" side="tl" part="case"/></let>
+        </when>
+        <when>
+          <test>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
+          </test>
+          <let><var n="pron_case"/><clip pos="1" side="tl" part="case"/></let>
+        </when>
+        <otherwise>
+          <let><var n="pron_case"/><lit v=""/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
   </section-def-macros>
   
   <section-rules>
@@ -198,7 +228,7 @@
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
-        <call-macro n="set_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_noun_case"><with-param pos="1"/></call-macro>
         <out>
           <chunk name="prop" case="caseFirstWord">
             <tags>
@@ -227,7 +257,7 @@
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <call-macro n="set_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_noun_case"><with-param pos="1"/></call-macro>
         <out>
           <chunk name="nom" case="caseFirstWord">
             <tags>
@@ -258,7 +288,7 @@
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <call-macro n="set_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_noun_case"><with-param pos="1"/></call-macro>
         <out>
           <chunk name="nomcmpd" case="caseFirstWord">
             <tags>
@@ -290,11 +320,13 @@
     </rule>
 
 
-    <rule comment="REGLA: PRONOUN">
+    <rule comment="REGLA: PRONOUN
+                   outputting both a_pron and a_det here, hope that works..">
       <pattern>
         <pattern-item n="pron"/>
       </pattern>
       <action>
+        <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
         <out>
           <chunk name="pron" case="caseFirstWord">
             <tags>
@@ -308,10 +340,11 @@
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_pron"/>
+              <clip pos="1" side="tl" part="a_det"/>
               <clip pos="1" side="tl" part="pers"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <clip pos="1" side="tl" part="case"/>
+              <var n="pron_case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
