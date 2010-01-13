@@ -26,6 +26,7 @@
     <sdef n="Pers"    c="Personal"/>
 
     <sdef n="Interr"  c="Interrogative"/>
+    <sdef n="Indef"   c="Indefinite"/>
     <sdef n="itg"     c="Interrogative"/>
 
     <sdef n="Num"     c="Numeral"/>
@@ -123,9 +124,11 @@
   <pardefs>
     <pardef n="__prn">
       <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
-      <e><p><l><s n="Gen"/></l><r><s n="gen"/></r></p></e>
       <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
+      <e><p><l><s n="Gen"/></l><r><s n="gen"/></r></p></e>
+      <e><p><l><s n="Ill"/></l><r><s n="ill"/></r></p></e>
       <e><p><l><s n="Loc"/></l><r><s n="loc"/></r></p></e>
+      <e><p><l/><r/></p></e>
     </pardef>
     <pardef n="__adj">
       <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
@@ -135,11 +138,6 @@
       <e><p><l></l><r></r></p></e>
     </pardef>
     <pardef n="num__det_qnt">
-      <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
-      <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
-      <e><p><l><s n="Gen"/></l><r><s n="gen"/></r></p></e>
-      <e><p><l><s n="Ill"/></l><r><s n="ill"/></r></p></e>
-      <e><p><l><s n="Loc"/></l><r><s n="loc"/></r></p></e>
       <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
       <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
       <e><p><l><s n="Gen"/></l><r><s n="gen"/></r></p></e>
@@ -203,7 +201,9 @@
     <e><p><l>son<s n="Pron"/><s n="Pers"/><s n="Pl3"/></l><r>denne<s n="prn"/><s n="p3"/><s n="mf"/><s n="pl"/></r></p><par n="__prn"/></e>
     <e><p><l>dat<s n="Pron"/><s n="Pers"/><s n="Sg3"/></l><r>det<s n="prn"/><s n="p3"/><s n="nt"/><s n="sg"/></r></p><par n="__prn"/></e>
 
-    <e><p><l>mii<s n="Pron"/><s n="Interr"/></l><r>hva<s n="prn"/><s n="itg"/></r></p></e>
+    <e><p><l>mii<s n="Pron"/><s n="Interr"/></l><r>hva<s n="prn"/><s n="itg"/></r></p><par n="__prn"/></e>
+
+    <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="prn"/></r></p><par n="__prn"/></e>
 
     <!-- Determiners -->
 
