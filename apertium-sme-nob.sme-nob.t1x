@@ -118,9 +118,14 @@
     <def-attr n="grau">
       <attr-item tags="Comp"/>
       <attr-item tags="Superl"/>
+      <attr-item tags="pp"/>
+      <attr-item tags="pprs"/>
       <attr-item tags="posi"/>
       <attr-item tags="comp"/>
       <attr-item tags="sup"/>
+      <attr-item tags="ord.posi"/>
+      <attr-item tags="ord.comp"/>
+      <attr-item tags="ord.sup"/>
     </def-attr>
     <def-attr n="gen">
       <attr-item tags="m"/>
@@ -261,7 +266,7 @@
       </choose>
     </def-macro>
 
-    <def-macro n="conv_adj_tags" npar="1" c="attributive superlatives are 
+    <def-macro n="guess_adj_gen_nbr" npar="1" c="attributive superlatives are 
 always(?) def in nob; predicative superlatives are only if they have a determiner first
                  1. min viktigste.def oppgave
                  2. min oppgave er viktigst.ind
@@ -269,15 +274,15 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <choose>
         <when>
           <test>
-            <equal> 
-              <clip pos="1" side="tl" part="grau"/>
-              <lit-tag v="posi"/>
-            </equal>
+            <or>
+              <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="pp"/></equal>
+              <ends-with><clip pos="1" side="tl" part="grau"/><lit-tag v="posi"/></ends-with>
+            </or>
           </test>
           <let><clip pos="1" side="tl" part="gen"/><lit-tag v="mf"/></let>
           <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
-          <let><var n="c_defnes"/><lit-tag v="ind"/></let>
         </when>
+        <!-- todo: we can uncomment the following, can't we? bidix should never set gen/nbr here anyway -->
         <when>
           <test>
             <equal> 
@@ -287,7 +292,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           </test>
           <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-          <let><var n="c_defnes"/><lit v=""/></let>
         </when>
         <when>
           <test>
@@ -298,6 +302,41 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           </test>
           <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+        </when>
+      </choose>
+    </def-macro>
+
+    <def-macro n="set_adj_def" npar="1" c="attributive superlatives are 
+always(?) def in nob; predicative superlatives are only if they have a determiner first
+                 1. min viktigste.def oppgave
+                 2. min oppgave er viktigst.ind
+                 3. min oppgave er den viktigste.def (rarer than 2)">
+      <choose>
+        <when>
+          <test>
+            <or>
+              <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="pp"/></equal>
+              <ends-with><clip pos="1" side="tl" part="grau"/><lit-tag v="posi"/></ends-with>
+            </or>
+          </test>
+          <let><var n="c_defnes"/><lit-tag v="ind"/></let>
+        </when>
+        <when>
+          <test>
+            <equal> 
+              <clip pos="1" side="tl" part="grau"/>
+              <lit-tag v="comp"/>
+            </equal>
+          </test>
+          <let><var n="c_defnes"/><lit v=""/></let>
+        </when>
+        <when>
+          <test>
+            <equal> 
+              <clip pos="1" side="tl" part="grau"/>
+              <lit-tag v="sup"/>
+            </equal>
+          </test>
           <choose>
             <when>
               <test><or>
@@ -314,11 +353,49 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         </when>
       </choose>
     </def-macro>
+
+    <def-macro n="set_adj_nbr" npar="2" c="arg.1: noun, arg.1: adjective
+           Number is only a feature of positive/pp adjectives in nob.">
+      <choose>
+        <when>
+          <test>
+            <or>
+              <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="pp"/></equal>
+              <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="posi"/></ends-with>
+            </or>
+          </test>
+          <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        </when>
+        <otherwise>
+          <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
+    
+    <def-macro n="set_adj_gen" npar="2" c="arg.1: noun, arg.2: adjective
+           Gender is only a feature of
+              singular indefinite positive/pp
+           adjectives in nob.">
+      <choose>
+        <when>
+          <test>
+            <and>
+              <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+              <or>
+                <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="pp"/></equal>
+                <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="posi"/></ends-with>
+              </or>
+            </and>
+          </test>
+          <let><clip pos="2" side="tl" part="gen"/><clip pos="1" side="tl" part="gen"/></let>
+        </when>
+      </choose>
+    </def-macro>
     
   </section-def-macros>
   
   <section-rules>
-    <rule comment="REGLA: NOM PROP">
+    <rule comment="REGLA: NOM_PROP">
       <pattern>
         <pattern-item n="nom_prop"/>
       </pattern>
@@ -459,8 +536,12 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <action>
         <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_pron_gen_num"><with-param pos="1"/></call-macro>
-        
-        <call-macro n="conv_adj_tags">
+
+        <!-- todo: use the new macros for adjectives -->
+        <call-macro n="guess_adj_gen_nbr">
+          <with-param pos="2"/>
+        </call-macro>
+        <call-macro n="set_adj_def">
           <with-param pos="2"/>
         </call-macro>
 
@@ -511,12 +592,62 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
+    <rule comment="REGLA: ADJ NOM
+                   TODO: if we change c_defness, we might have to change adj nbr/gen,
+                   so the macros here should probably be called in t3x instead.">
+      <pattern>
+        <pattern-item n="adj"/>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_noun_case"><with-param pos="2"/></call-macro>
+        <call-macro n="set_adj_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_adj_gen"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_adj_def"><with-param pos="1"/></call-macro>
+
+        <out>
+          <chunk name="adjnom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><clip pos="2" side="tl" part="gen"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+              <tag><var n="c_defnes"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="6"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="6"/>
+              <var n="noun_case"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <rule comment="REGLA: ADJEC: dehálaš => viktig, deháleamos => viktigst">
       <pattern>
         <pattern-item n="adj"/>
       </pattern>
       <action>
-        <call-macro n="conv_adj_tags">
+        <call-macro n="guess_adj_gen_nbr">
+          <with-param pos="1"/>
+        </call-macro>
+        <call-macro n="set_adj_def">
           <with-param pos="1"/>
         </call-macro>
         <let><var n="c_tag_pos"/><lit-tag v="4"/></let> 
