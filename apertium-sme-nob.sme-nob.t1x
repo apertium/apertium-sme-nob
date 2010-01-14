@@ -259,41 +259,41 @@
     </def-macro>
 
     <def-macro n="conv_adj_tags" npar="1">
-        <choose>
-          <when>
-            <test>
-              <equal> 
-                <clip pos="1" side="tl" part="grau"/>
-                <lit-tag v="posi"/>
-              </equal>
-            </test>
-            <let><clip pos="1" side="tl" part="gen"/><lit-tag v="mf"/></let>
-            <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
-            <let><var n="c_defnes"/><lit-tag v="ind"/></let>
-          </when>
-          <when>
-            <test>
-              <equal> 
-                <clip pos="1" side="tl" part="grau"/>
-                <lit-tag v="comp"/>
-              </equal>
-            </test>
-            <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
-            <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-            <let><var n="c_defnes"/><lit v=""/></let>
-          </when>
-          <when>
-            <test>
-              <equal> 
-                <clip pos="1" side="tl" part="grau"/>
-                <lit-tag v="sup"/>
-              </equal>
-            </test>
-            <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
-            <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-            <let><var n="c_defnes"/><lit-tag v="ind"/></let>
-          </when>
-        </choose>
+      <choose>
+        <when>
+          <test>
+            <equal> 
+              <clip pos="1" side="tl" part="grau"/>
+              <lit-tag v="posi"/>
+            </equal>
+          </test>
+          <let><clip pos="1" side="tl" part="gen"/><lit-tag v="mf"/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+          <let><var n="c_defnes"/><lit-tag v="ind"/></let>
+        </when>
+        <when>
+          <test>
+            <equal> 
+              <clip pos="1" side="tl" part="grau"/>
+              <lit-tag v="comp"/>
+            </equal>
+          </test>
+          <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+          <let><var n="c_defnes"/><lit v=""/></let>
+        </when>
+        <when>
+          <test>
+            <equal> 
+              <clip pos="1" side="tl" part="grau"/>
+              <lit-tag v="sup"/>
+            </equal>
+          </test>
+          <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+          <let><var n="c_defnes"/><lit-tag v="ind"/></let>
+        </when>
+      </choose>
 
     </def-macro>
   </section-def-macros>
