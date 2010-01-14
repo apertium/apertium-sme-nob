@@ -187,6 +187,8 @@
   <section-def-vars>
     <def-var n="number"/>
     <def-var n="noun_case"/>
+    <def-var n="pron_gen"/>
+    <def-var n="pron_num"/>
     <def-var n="pron_case"/>
     <def-var n="c_defnes"/>
     <def-var n="c_tag_pos"/>
@@ -208,23 +210,50 @@
       </choose>
     </def-macro>
     <def-macro n="set_pron_case" npar="1">
-      <!-- only keep nom/acc for nob prons; genitives turn into det.poss... TODO! -->
+      <!-- only keep nom/acc for nob prons; genitives turn into det.poss -->
       <choose>
         <when>
           <test><or>
-            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></equal>
-            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Acc"/></equal>
           </or></test>
           <let><var n="pron_case"/><clip pos="1" side="tl" part="case"/></let>
         </when>
         <when>
           <test>
-            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
           </test>
           <let><var n="pron_case"/><clip pos="1" side="tl" part="case"/></let>
         </when>
         <otherwise>
-          <let><var n="pron_case"/><lit-tag v="nom"/></let>
+          <let><var n="pron_case"/><lit-tag v="acc"/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
+    <def-macro n="set_pron_gen_num" npar="1">
+      <!-- only set gen/num for det.poss
+           Det.poss gen/nbr defaults to masc, sg (although we could set a variable from
+           the subject since that's often a good heuristic for the referent)-->
+      <choose>
+        <when>
+          <test>
+            <equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD"/></equal>
+          </test>
+          <let><var n="pron_gen"/><lit-tag v="m"/></let>
+        </when>
+        <otherwise>
+          <let><var n="pron_gen"/><clip pos="1" side="tl" part="gen"/></let>
+        </otherwise>
+      </choose>
+      <choose>
+        <when>
+          <test>
+            <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="ND"/></equal>
+          </test>
+          <let><var n="pron_num"/><lit-tag v="sg"/></let>
+        </when>
+        <otherwise>
+          <let><var n="pron_num"/><clip pos="1" side="tl" part="nbr"/></let>
         </otherwise>
       </choose>
     </def-macro>
@@ -368,12 +397,14 @@
 
 
     <rule comment="REGLA: PRONOUN
-                   outputting both a_pron and a_det here, hope that works..">
+                   outputting both a_pron and a_det here, hope that works..
+                  ">
       <pattern>
         <pattern-item n="pron"/>
       </pattern>
       <action>
         <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pron_gen_num"><with-param pos="1"/></call-macro>
         <out>
           <chunk name="pron" case="caseFirstWord">
             <tags>
@@ -389,8 +420,8 @@
               <clip pos="1" side="tl" part="a_pron"/>
               <clip pos="1" side="tl" part="a_det"/>
               <clip pos="1" side="tl" part="pers"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
+              <var n="pron_gen"/>
+              <var n="pron_num"/>
               <var n="pron_case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
