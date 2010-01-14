@@ -21,6 +21,9 @@
     <def-cat n="pron">
       <cat-item tags="Pron.*"/>
     </def-cat>
+    <def-cat n="genpron">
+      <cat-item tags="Pron.*.*.Gen.*"/>
+    </def-cat>
     <def-cat n="nom_cmpd">
       <cat-item tags="N.*.*.Cmp"/>
     </def-cat>
@@ -258,7 +261,11 @@
       </choose>
     </def-macro>
 
-    <def-macro n="conv_adj_tags" npar="1">
+    <def-macro n="conv_adj_tags" npar="1" c="attributive superlatives are 
+always(?) def in nob; predicative superlatives are only if they have a determiner first
+                 1. min viktigste.def oppgave
+                 2. min oppgave er viktigst.ind
+                 3. min oppgave er den viktigste.def (rarer than 2)">
       <choose>
         <when>
           <test>
@@ -291,11 +298,23 @@
           </test>
           <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-          <let><var n="c_defnes"/><lit-tag v="ind"/></let>
+          <choose>
+            <when>
+              <test><or>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OPRED"/></equal>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@X"/></equal>
+              </or></test>
+              <let><var n="c_defnes"/><lit-tag v="ind"/></let>
+            </when>
+            <otherwise>
+              <let><var n="c_defnes"/><lit-tag v="def"/></let>
+            </otherwise>
+          </choose>
         </when>
       </choose>
-
     </def-macro>
+    
   </section-def-macros>
   
   <section-rules>
@@ -424,6 +443,68 @@
               <var n="pron_num"/>
               <var n="pron_case"/>
               <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: GENPRON ADJ NOM
+                   (noun might actually be gen here, if we match part of a chunk)">
+      <pattern>
+        <pattern-item n="genpron"/>
+        <pattern-item n="adj"/>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pron_gen_num"><with-param pos="1"/></call-macro>
+        
+        <call-macro n="conv_adj_tags">
+          <with-param pos="2"/>
+        </call-macro>
+
+        <call-macro n="set_noun_case"><with-param pos="3"/></call-macro>
+        
+        <out>
+          <chunk name="nom3" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="3" side="tl" part="pers"/></tag>
+              <tag><clip pos="3" side="tl" part="nbr"/></tag>
+              <tag><clip pos="3" side="tl" part="gen"/></tag>
+              <tag><clip pos="3" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_pron"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <clip pos="1" side="tl" part="pers"/>
+              <var n="pron_gen"/>
+              <var n="pron_num"/>
+              <var n="pron_case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="c_defnes"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <b pos="2"/>
+            <lu>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_nom"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <clip pos="3" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <var n="noun_case"/>
+              <clip pos="3" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>
