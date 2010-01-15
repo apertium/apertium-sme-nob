@@ -393,6 +393,18 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <let><clip pos="2" side="tl" part="gen"/><lit v=""/></let>
         </otherwise>
       </choose>
+      <choose>
+        <when>
+          <test>
+            <or>
+              <equal><clip pos="2" side="tl" part="gen"/><lit-tag v="m"/></equal>
+              <equal><clip pos="2" side="tl" part="gen"/><lit-tag v="f"/></equal>
+            </or>
+          </test>
+          <let><clip pos="2" side="tl" part="gen"/><lit-tag v="mf"/></let>
+        </when>
+      </choose>
+      
     </def-macro>
     
   </section-def-macros>

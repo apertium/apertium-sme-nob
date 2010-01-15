@@ -5,16 +5,74 @@
     <def-cat n="nom">
       <cat-item name="nom"/>
     </def-cat>
+    <def-cat n="adjnom">
+      <cat-item name="adjnom"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
-    <def-attr n="a_nom">
+    <def-attr n="a_adj">
+      <attr-item tags="adj"/>
+    </def-attr>
+    <def-attr n="grau">
+      <attr-item tags="pp"/>
+      <attr-item tags="pprs"/>
+      <attr-item tags="posi"/>
+      <attr-item tags="comp"/>
+      <attr-item tags="sup"/>
+      <attr-item tags="ord.posi"/>
+      <attr-item tags="ord.comp"/>
+      <attr-item tags="ord.sup"/>
+    </def-attr>
+    <def-attr n="gen">
+      <attr-item tags="m"/>
+      <attr-item tags="f"/>
+      <attr-item tags="mf"/>
+      <attr-item tags="nt"/>
+      <attr-item tags="GD"/>
+    </def-attr>
+    <def-attr n="nbr">
       <attr-item tags="Sg"/>
+      <attr-item tags="Du"/>
+      <attr-item tags="Pl"/>
+      <attr-item tags="sg"/>
+      <attr-item tags="pl"/>
+      <attr-item tags="ND"/>
+    </def-attr>
+    <def-attr n="defnes">
+      <attr-item tags="ind"/>
+      <attr-item tags="def"/>
     </def-attr>
   </section-def-attrs>
+
   <section-def-vars>
-    <def-var n="case"/>
+    <def-var n="c_defnes"/>
   </section-def-vars>
+
+  <section-def-macros>
+    <def-macro n="clean_adj_def" npar="1"
+               c="defness is only on superlatives or singular pp/posi in nob">
+      <choose>
+        <when>
+          <test>
+            <not>
+              <or>
+                <and>                
+                  <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+                  <or>
+                    <equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal>
+                    <ends-with><clip pos="1" part="grau"/><lit-tag v="posi"/></ends-with>
+                  </or>
+                </and>
+                <equal><clip pos="1" part="grau"/><lit-tag v="sup"/></equal>
+              </or>
+            </not>
+          </test>
+          <let><clip pos="1" part="defnes"/><lit v=""/></let>
+        </when>
+      </choose>
+    </def-macro>
+  </section-def-macros>
 
   <section-rules>
     <rule comment="CHUNK:">
@@ -25,6 +83,33 @@
         <out>
           <lu>
             <clip pos="1" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="CHUNK: ADJ NOM">
+      <pattern>
+        <pattern-item n="adjnom"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_adj_def"><with-param pos="1"/></call-macro>
+        <out>
+          <lu>
+            <clip pos="1" part="lemh"/>
+            <clip pos="1" part="a_adj"/>
+            <clip pos="1" part="grau"/>
+            <clip pos="1" part="gen"/>
+            <clip pos="1" part="nbr"/>
+            <clip pos="1" part="defnes"/>
+            <clip pos="1" part="lemq"/>
+          </lu>
+          <!-- for now, this space isn't output since we don't have
+               superblanks in the hfst stream, so we add a space -->
+          <b pos="1"/>
+          <b/>
+          <lu>
+            <clip pos="2" part="whole"/>
           </lu>
         </out>
       </action>
