@@ -200,11 +200,12 @@
     <def-var n="pron_case"/>
     <def-var n="c_defnes"/>
     <def-var n="c_tag_pos"/>
+    <def-var n="case_prep"/>
   </section-def-vars>
 
   <section-def-macros>
-    <def-macro n="set_noun_case" npar="1">
-      <!-- only keep genitive for nob nouns -->
+    <def-macro n="set_noun_case" npar="1"
+               c="only keep genitive for nob nouns">
       <choose>
         <when>
           <test>
@@ -217,6 +218,54 @@
         </otherwise>
       </choose>
     </def-macro>
+    
+    <def-macro n="set_case_prep" npar="1"
+               c="Naïve is the word.">
+      <let><var n="case_prep"/><lit v=""/></let>
+      <choose>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ill"/></equal></test>
+          <let>
+            <var n="case_prep"/>
+            <concat>
+              <lit v="^til"/><lit-tag v="pr"/><lit v="$"/>
+              <b/>
+            </concat>
+          </let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></test>
+          <let>
+            <var n="case_prep"/>
+            <concat>
+              <lit v="^som"/><lit-tag v="pr"/><lit v="$"/>
+              <b/>
+            </concat>
+          </let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Com"/></equal></test>
+          <let>
+            <var n="case_prep"/>
+            <concat>
+              <lit v="^med"/><lit-tag v="pr"/><lit v="$"/>
+              <b/>
+            </concat>
+          </let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal></test>
+          <let>
+            <var n="case_prep"/>
+            <concat>
+              <lit v="^med"/><lit-tag v="pr"/><lit v="$"/>
+              <b/>
+            </concat>
+          </let>
+        </when>
+      </choose>
+    </def-macro>
+    
     <def-macro n="set_pron_case" npar="1">
       <!-- only keep nom/acc for nob prons; genitives turn into det.poss -->
       <choose>
@@ -443,8 +492,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <pattern>
         <pattern-item n="nom"/>
       </pattern>
-      <action>
+      <action>        
+        <call-macro n="set_case_prep"><with-param pos="1"/></call-macro>
         <call-macro n="set_noun_case"><with-param pos="1"/></call-macro>
+
         <out>
           <chunk name="nom" case="caseFirstWord">
             <tags>
@@ -454,6 +505,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="1" side="tl" part="case"/></tag>
               <tag><lit-tag v="ind"/></tag>
             </tags>
+            <var n="case_prep"/>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
@@ -619,7 +671,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="set_adj_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_adj_gen"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_adj_def"><with-param pos="1"/></call-macro>
-
         <out>
           <chunk name="adjnom" case="caseFirstWord">
             <tags>
