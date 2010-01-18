@@ -6,6 +6,9 @@
       <cat-item tags="SN"/>
       <cat-item tags="SN.*"/>
     </def-cat>
+    <def-cat n="adpos">
+      <cat-item lemma="adpos" tags="*"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
@@ -44,6 +47,23 @@
         </out>
       </action>
     </rule>
+    
+    <rule>
+      <pattern>
+        <pattern-item n="SN"/>
+        <pattern-item n="adpos"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk>
+            <clip pos="2" part="whole"/>
+          </chunk>
+          <b pos="1"/>
+          <chunk>
+            <clip pos="1" part="whole"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
   </section-rules>
 </interchunk>
-
