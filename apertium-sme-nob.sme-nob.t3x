@@ -74,33 +74,63 @@
     </def-macro>
   </section-def-macros>
 
+
   <section-rules>
-    <rule comment="CHUNK: ADJ NOM">
+    <rule comment="CHUNK: ADJ NOM (possibly pr adj nom)">
       <pattern>
         <pattern-item n="adjnom"/>
       </pattern>
       <action>
-        <call-macro n="clean_adj_def"><with-param pos="1"/></call-macro>
-        <out>
-          <lu>
-            <clip pos="1" part="lemh"/>
-            <clip pos="1" part="a_adj"/>
-            <clip pos="1" part="grau"/>
-            <clip pos="1" part="gen"/>
-            <clip pos="1" part="nbr"/>
-            <clip pos="1" part="defnes"/>
-            <clip pos="1" part="lemq"/>
-          </lu>
-          <!-- for now, this space isn't output since we don't have
-               superblanks in the hfst stream, so we add a space -->
-          <b pos="1"/>
-          <b/>
-          <lu>
-            <clip pos="2" part="whole"/>
-          </lu>
-        </out>
+        <choose><when>
+          <test><equal><clip pos="1" part="a_adj"/><lit-tag v="adj"/></equal></test>
+          <call-macro n="clean_adj_def"><with-param pos="1"/></call-macro>
+          <out>
+            <lu>
+              <clip pos="1" part="lemh"/>
+              <clip pos="1" part="a_adj"/>
+              <clip pos="1" part="grau"/>
+              <clip pos="1" part="gen"/>
+              <clip pos="1" part="nbr"/>
+              <clip pos="1" part="defnes"/>
+              <clip pos="1" part="lemq"/>
+            </lu>
+            <!-- for now, this space isn't output since we don't have
+                 superblanks in the hfst stream, so we add a space -->
+            <b pos="1"/>
+            <b/>
+            <lu>
+              <clip pos="2" part="whole"/>
+            </lu>
+          </out>
+        </when>
+        <otherwise>                         <!--preposition adj nom-->
+          <call-macro n="clean_adj_def"><with-param pos="2"/></call-macro>
+          <out>
+            <lu>
+              <clip pos="1" part="whole"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" part="lemh"/>
+              <clip pos="2" part="a_adj"/>
+              <clip pos="2" part="grau"/>
+              <clip pos="2" part="gen"/>
+              <clip pos="2" part="nbr"/>
+              <clip pos="2" part="defnes"/>
+              <clip pos="2" part="lemq"/>
+            </lu>
+            <!-- for now, this space isn't output since we don't have
+                 superblanks in the hfst stream, so we add a space -->
+            <b pos="2"/>
+            <b/>
+            <lu>
+              <clip pos="3" part="whole"/>
+            </lu>
+          </out>          
+        </otherwise>
+        </choose>
       </action>
     </rule>
-
   </section-rules>
+
 </postchunk>
