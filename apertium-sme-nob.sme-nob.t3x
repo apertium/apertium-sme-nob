@@ -1,136 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- -*- nxml -*- -->
-<postchunk>
+<interchunk>
+
   <section-def-cats>
-    <def-cat n="nom">
-      <cat-item name="nom"/>
+    <def-cat n="SN">
+      <cat-item tags="SN"/>
+      <cat-item tags="SN.*"/>
     </def-cat>
-    <def-cat n="adjnom">
-      <cat-item name="adjnom"/>
+    <def-cat n="adpos">
+      <cat-item lemma="adpos" tags="*"/>
     </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
-    <def-attr n="a_adj">
-      <attr-item tags="adj"/>
-    </def-attr>
-    <def-attr n="grau">
-      <attr-item tags="pp"/>
-      <attr-item tags="pprs"/>
-      <attr-item tags="posi"/>
-      <attr-item tags="comp"/>
-      <attr-item tags="sup"/>
-      <attr-item tags="ord.posi"/>
-      <attr-item tags="ord.comp"/>
-      <attr-item tags="ord.sup"/>
-    </def-attr>
-    <def-attr n="gen">
-      <attr-item tags="m"/>
-      <attr-item tags="f"/>
-      <attr-item tags="mf"/>
-      <attr-item tags="nt"/>
-      <attr-item tags="GD"/>
-    </def-attr>
-    <def-attr n="nbr">
-      <attr-item tags="Sg"/>
-      <attr-item tags="Du"/>
-      <attr-item tags="Pl"/>
-      <attr-item tags="sg"/>
-      <attr-item tags="pl"/>
-      <attr-item tags="ND"/>
-    </def-attr>
-    <def-attr n="defnes">
-      <attr-item tags="ind"/>
-      <attr-item tags="def"/>
-    </def-attr>
+    <def-attr n="case">
+     <attr-item tags="Nom"/>
+     <attr-item tags="Acc"/>
+     <attr-item tags="Gen"/>
+     <attr-item tags="Com"/>
+     <attr-item tags="Ess"/>
+     <attr-item tags="Ill"/>
+     <attr-item tags="Loc"/>
+     <attr-item tags="Ine"/>
+     <attr-item tags="Ela"/>
+  </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="c_defnes"/>
+    <def-var n="nombre"/>
+    <def-var n="genere"/>
   </section-def-vars>
 
-  <section-def-macros>
-    <def-macro n="clean_adj_def" npar="1"
-               c="defness is only on superlatives or singular pp/posi in nob">
-      <choose>
-        <when>
-          <test>
-            <not>
-              <or>
-                <and>                
-                  <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
-                  <or>
-                    <equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal>
-                    <ends-with><clip pos="1" part="grau"/><lit-tag v="posi"/></ends-with>
-                  </or>
-                </and>
-                <equal><clip pos="1" part="grau"/><lit-tag v="sup"/></equal>
-              </or>
-            </not>
-          </test>
-          <let><clip pos="1" part="defnes"/><lit v=""/></let>
-        </when>
-      </choose>
-    </def-macro>
-  </section-def-macros>
-
-
   <section-rules>
-    <rule comment="CHUNK: ADJ NOM (possibly pr adj nom)">
+
+    <rule>
       <pattern>
-        <pattern-item n="adjnom"/>
+        <pattern-item n="SN"/>
       </pattern>
       <action>
-        <choose><when>
-          <test><equal><clip pos="1" part="a_adj"/><lit-tag v="adj"/></equal></test>
-          <call-macro n="clean_adj_def"><with-param pos="1"/></call-macro>
-          <out>
-            <lu>
-              <clip pos="1" part="lemh"/>
-              <clip pos="1" part="a_adj"/>
-              <clip pos="1" part="grau"/>
-              <clip pos="1" part="gen"/>
-              <clip pos="1" part="nbr"/>
-              <clip pos="1" part="defnes"/>
-              <clip pos="1" part="lemq"/>
-            </lu>
-            <!-- for now, this space isn't output since we don't have
-                 superblanks in the hfst stream, so we add a space -->
-            <b pos="1"/>
-            <b/>
-            <lu>
-              <clip pos="2" part="whole"/>
-            </lu>
-          </out>
-        </when>
-        <otherwise>                         <!--preposition adj nom-->
-          <call-macro n="clean_adj_def"><with-param pos="2"/></call-macro>
-          <out>
-            <lu>
-              <clip pos="1" part="whole"/>
-            </lu>
-            <b pos="1"/>
-            <lu>
-              <clip pos="2" part="lemh"/>
-              <clip pos="2" part="a_adj"/>
-              <clip pos="2" part="grau"/>
-              <clip pos="2" part="gen"/>
-              <clip pos="2" part="nbr"/>
-              <clip pos="2" part="defnes"/>
-              <clip pos="2" part="lemq"/>
-            </lu>
-            <!-- for now, this space isn't output since we don't have
-                 superblanks in the hfst stream, so we add a space -->
-            <b pos="2"/>
-            <b/>
-            <lu>
-              <clip pos="3" part="whole"/>
-            </lu>
-          </out>          
-        </otherwise>
-        </choose>
+        <out>
+          <chunk>
+            <clip pos="1" part="lemh"/>
+            <clip pos="1" part="tags"/>
+            <clip pos="1" part="chcontent"/>
+            <clip pos="1" part="lemq"/>
+          </chunk>
+        </out>
       </action>
     </rule>
   </section-rules>
-
-</postchunk>
+</interchunk>
