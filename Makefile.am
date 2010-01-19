@@ -17,6 +17,7 @@ TARGETS_COMMON = \
 	$(PREFIX1).t1x.bin \
 	$(PREFIX1).t2x.bin \
 	$(PREFIX1).t3x.bin \
+	$(PREFIX1).t4x.bin \
 	$(PREFIX1).mode
 
 $(PREFIX1).twol.hfst: $(BASENAME).$(LANG1).twol
@@ -51,8 +52,12 @@ $(PREFIX1).t2x.bin: $(BASENAME).$(PREFIX1).t2x
 	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t2x $@
 
 $(PREFIX1).t3x.bin: $(BASENAME).$(PREFIX1).t3x
-	apertium-validate-postchunk $(BASENAME).$(PREFIX1).t3x
+	apertium-validate-interchunk $(BASENAME).$(PREFIX1).t3x
 	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t3x $@
+
+$(PREFIX1).t4x.bin: $(BASENAME).$(PREFIX1).t4x
+	apertium-validate-postchunk $(BASENAME).$(PREFIX1).t4x
+	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t4x $@
 
 $(PREFIX1).autogen.bin: $(BASENAME).$(LANG2).dix
 	apertium-validate-dictionary $(BASENAME).$(LANG2).dix
@@ -72,6 +77,7 @@ EXTRA_DIST=\
 	$(BASENAME).$(PREFIX1).t1x \
 	$(BASENAME).$(PREFIX1).t2x \
 	$(BASENAME).$(PREFIX1).t3x \
+	$(BASENAME).$(PREFIX1).t4x \
 	modes.xml 
 
 apertium_sme_nobdir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
