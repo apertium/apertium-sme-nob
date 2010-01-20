@@ -8,6 +8,10 @@
     <def-cat n="SN-post">
       <cat-item tags="SN.@→P.*"/>
     </def-cat>
+    <def-cat n="SN-maybe-subj">
+      <cat-item tags="SN.@SUBJ→.*"/>
+      <cat-item tags="SN.@X.*"/>
+    </def-cat>
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
     </def-cat>
@@ -25,25 +29,56 @@
 
   <section-def-attrs>
     <def-attr n="case">
-     <attr-item tags="Nom"/>
-     <attr-item tags="Acc"/>
-     <attr-item tags="Gen"/>
-     <attr-item tags="Com"/>
-     <attr-item tags="Ess"/>
-     <attr-item tags="Ill"/>
-     <attr-item tags="Loc"/>
-     <attr-item tags="Ine"/>
-     <attr-item tags="Ela"/>
-     <attr-item tags="nom"/>
-     <attr-item tags="acc"/>
-     <attr-item tags="gen"/>
-     <attr-item tags="com"/>
-     <attr-item tags="ess"/>
-     <attr-item tags="ill"/>
-     <attr-item tags="loc"/>
-     <attr-item tags="ine"/>
-     <attr-item tags="ela"/>
-  </def-attr>
+      <attr-item tags="Nom"/>
+      <attr-item tags="Acc"/>
+      <attr-item tags="Gen"/>
+      <attr-item tags="Com"/>
+      <attr-item tags="Ess"/>
+      <attr-item tags="Ill"/>
+      <attr-item tags="Loc"/>
+      <attr-item tags="Ine"/>
+      <attr-item tags="Ela"/>
+      <attr-item tags="nom"/>
+      <attr-item tags="acc"/>
+      <attr-item tags="gen"/>
+      <attr-item tags="com"/>
+      <attr-item tags="ess"/>
+      <attr-item tags="ill"/>
+      <attr-item tags="loc"/>
+      <attr-item tags="ine"/>
+      <attr-item tags="ela"/>
+    </def-attr>
+    <def-attr n="pers">
+      <attr-item tags="p1"/>
+      <attr-item tags="p2"/>
+      <attr-item tags="p3"/>
+    </def-attr>
+    <def-attr n="gen">
+      <attr-item tags="m"/>
+      <attr-item tags="f"/>
+      <attr-item tags="mf"/>
+      <attr-item tags="nt"/>
+      <attr-item tags="GD"/>
+    </def-attr>
+    <def-attr n="nbr">
+      <attr-item tags="Sg"/>
+      <attr-item tags="Du"/>
+      <attr-item tags="Pl"/>
+      <attr-item tags="sg"/>
+      <attr-item tags="du"/>
+      <attr-item tags="pl"/>
+      <attr-item tags="ND"/>
+      <!-- the bidix pardef __verb should split these: -->
+      <attr-item tags="Sg1"/>
+      <attr-item tags="Du1"/>
+      <attr-item tags="Pl1"/>
+      <attr-item tags="Sg2"/>
+      <attr-item tags="Du2"/>
+      <attr-item tags="Pl2"/>
+      <attr-item tags="Sg3"/>
+      <attr-item tags="Du3"/>
+      <attr-item tags="Pl3"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
@@ -52,6 +87,11 @@
   </section-def-vars>
 
   <section-def-lists>
+    <def-list n="dual">
+      <list-item v="Du1"/>
+      <list-item v="Du2"/>
+      <list-item v="Du3"/>
+    </def-list>
     <def-list n="gen-adp">
       <!-- not in use, trying first if we can rely on @→P to pick out
            only postposition-chosen cases-->
@@ -81,6 +121,93 @@
           <b pos="2"/>
           <chunk>
             <clip pos="2" part="whole"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    
+    <rule comment="REGLA: SN-maybe-subj FV
+                   Override prodrop rule (below) if we might have a subject to the left">
+      <pattern>
+        <pattern-item n="SN-maybe-subj"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk>
+            <clip pos="1" part="whole"/>
+          </chunk>
+          <b pos="1"/>
+          <chunk>
+            <clip pos="2" part="whole"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: FOCUS FV
+                   V2-rule with pro-drop insertion
+                   Doppe dihten => Som barn visste jeg">
+      <pattern>
+        <pattern-item n="FOCUS"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk>
+            <clip pos="1" part="whole"/>
+          </chunk>
+          <b pos="1"/>
+          <chunk>
+            <clip pos="2" part="whole"/>
+          </chunk>
+          <b/>
+          <chunk>
+            <lit v="pron"/>
+            <lit-tag v="@SUBJ→"/>
+            <clip pos="2" part="pers"/>
+            <lit-tag v="GD"/>
+            <clip pos="2" part="nbr"/>
+            <lit-tag v="nom"/>
+            <lit v="{^"/>
+            <lit v="prpers"/>
+            <lit-tag v="prn"/>
+            <clip pos="2" part="pers"/>
+            <lit-tag v="mf"/>
+            <clip pos="2" part="nbr"/>
+            <lit-tag v="nom"/>
+            <lit v="$}"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: FV
+                   dihte => jeg visste
+                   Insert dropped pronoun
+                   TODO: FOCUS FV rule for  doppe dihte => der_borte visste jeg">
+      <pattern>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk>
+            <lit v="pron"/>
+            <lit-tag v="@SUBJ→"/>
+            <clip pos="1" part="pers"/>
+            <lit-tag v="GD"/>
+            <clip pos="1" part="nbr"/>
+            <lit-tag v="nom"/>
+            <lit v="{^"/>
+            <lit v="prpers"/>
+            <lit-tag v="prn"/>
+            <clip pos="1" part="pers"/>
+            <lit-tag v="mf"/>
+            <clip pos="1" part="nbr"/>
+            <lit-tag v="nom"/>
+            <lit v="$}"/>
+          </chunk>
+          <b/>
+          <chunk>
+            <clip pos="1" part="whole"/>
           </chunk>
         </out>
       </action>
