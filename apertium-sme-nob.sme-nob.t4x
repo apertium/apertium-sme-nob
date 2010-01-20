@@ -4,27 +4,37 @@
   <section-def-cats>
     <def-cat n="nom">
       <cat-item name="nom"/>
+      <cat-item name="til_nom"/>
+      <cat-item name="med_nom"/>
+      <cat-item name="som_nom"/>
+      <cat-item name="av_nom"/>
     </def-cat>
     <def-cat n="prop">
       <cat-item name="prop"/>
+      <cat-item name="til_prop"/>
+      <cat-item name="med_prop"/>
+      <cat-item name="som_prop"/>
+      <cat-item name="av_prop"/>
     </def-cat>
     <def-cat n="coor">
       <cat-item name="coor"/>
+      <cat-item name="til_coor"/>
+      <cat-item name="med_coor"/>
+      <cat-item name="som_coor"/>
+      <cat-item name="av_coor"/>
     </def-cat>
     <def-cat n="adjnom">
       <cat-item name="adjnom"/>
+      <cat-item name="til_adjnom"/>
+      <cat-item name="med_adjnom"/>
+      <cat-item name="som_adjnom"/>
+      <cat-item name="av_adjnom"/>
     </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
     <def-attr n="a_adj">
       <attr-item tags="adj"/>
-    </def-attr>
-    <def-attr n="a_case_prep">
-      <attr-item tags="til"/>
-      <attr-item tags="som"/>
-      <attr-item tags="med"/>
-      <attr-item tags="av"/>
     </def-attr>
     <def-attr n="grau">
       <attr-item tags="pp"/>
@@ -86,22 +96,23 @@
       </choose>
     </def-macro>
     <def-macro n="clean_case_prep" npar="1"
-               c="Turn the case_prep tag into a lit.">
+               c="Turn the case_prep name into a lit.">
+      <let><var n="case_prep"/><lit v=""/></let>
       <choose>
         <when>
-          <test><equal><clip pos="1" part="a_case_prep"/><lit-tag v="til"/></equal></test>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="til"/></begins-with></test>
           <let><var n="case_prep"/><lit v="til"/></let>
         </when>
         <when>
-          <test><equal><clip pos="1" part="a_case_prep"/><lit-tag v="med"/></equal></test>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="med"/></begins-with></test>
           <let><var n="case_prep"/><lit v="med"/></let>
         </when>
         <when>
-          <test><equal><clip pos="1" part="a_case_prep"/><lit-tag v="som"/></equal></test>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="som"/></begins-with></test>
           <let><var n="case_prep"/><lit v="som"/></let>
         </when>
         <when>
-          <test><equal><clip pos="1" part="a_case_prep"/><lit-tag v="av"/></equal></test>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="av"/></begins-with></test>
           <let><var n="case_prep"/><lit v="av"/></let>
         </when>
       </choose>
@@ -110,17 +121,17 @@
 
 
   <section-rules>
-    <rule comment="CHUNK: NOM
+    <rule comment="CHUNK: PROP
                    Possibly add case preposition.">
       <pattern>
-        <pattern-item n="nom"/>
+        <pattern-item n="prop"/>
       </pattern>
       <action>
+        <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
         <choose><when>
           <test><not><equal>
-            <clip pos="0" part="a_case_prep"/><lit v=""/>
+            <var n="case_prep"/><lit v=""/>
           </equal></not></test>
-          <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
           <out>
             <lu>
               <var n="case_prep"/>
@@ -136,17 +147,17 @@
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: PROP
+    <rule comment="CHUNK: NOM
                    Possibly add case preposition.">
       <pattern>
-        <pattern-item n="prop"/>
+        <pattern-item n="nom"/>
       </pattern>
       <action>
+        <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
         <choose><when>
           <test><not><equal>
-            <clip pos="0" part="a_case_prep"/><lit v=""/>
+            <var n="case_prep"/><lit v=""/>
           </equal></not></test>
-          <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
           <out>
             <lu>
               <var n="case_prep"/>
@@ -168,11 +179,11 @@
         <pattern-item n="coor"/>
       </pattern>
       <action>
+        <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
         <choose><when>
           <test><not><equal>
-            <clip pos="0" part="a_case_prep"/><lit v=""/>
+            <var n="case_prep"/><lit v=""/>
           </equal></not></test>
-          <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
           <out>
             <lu>
               <var n="case_prep"/>
@@ -202,11 +213,11 @@
         <pattern-item n="adjnom"/>
       </pattern>
       <action>
+        <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
         <choose><when>
           <test><not><equal>
-            <clip pos="0" part="a_case_prep"/><lit v=""/>
+            <var n="case_prep"/><lit v=""/>
           </equal></not></test>
-          <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
           <out>
             <lu>
               <var n="case_prep"/>

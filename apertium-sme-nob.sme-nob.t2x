@@ -31,36 +31,51 @@
   <section-def-vars>
     <def-var n="nombre"/>
     <def-var n="genere"/>
+    <def-var n="chunkname"/>
   </section-def-vars>
+
+  <section-def-macros>
+    <def-macro n="modify_chunkname" npar="1"
+               c="Second attempt.
+                  Assumes that chunkname is set to something already, turns eg. coord into til_coord.">
+      <choose>
+        <when>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="til"/></begins-with></test>
+          <let><var n="chunkname"/><concat><lit v="til"/><lit v="_"/><var n="chunkname"/></concat></let>
+        </when>
+        <when>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="med"/></begins-with></test>
+          <let><var n="chunkname"/><concat><lit v="med"/><lit v="_"/><var n="chunkname"/></concat></let>
+        </when>
+        <when>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="som"/></begins-with></test>
+          <let><var n="chunkname"/><concat><lit v="som"/><lit v="_"/><var n="chunkname"/></concat></let>
+        </when>
+        <when>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="av"/></begins-with></test>
+          <let><var n="chunkname"/><concat><lit v="av"/><lit v="_"/><var n="chunkname"/></concat></let>
+        </when>
+      </choose>
+    </def-macro>
+  </section-def-macros>
 
   <section-rules>
 
-    <rule>
-      <pattern>
-        <pattern-item n="SN"/>
-      </pattern>
-      <action>
-        <out>
-          <chunk>
-            <clip pos="1" part="lemh"/>
-            <clip pos="1" part="tags"/>
-            <clip pos="1" part="chcontent"/>
-            <clip pos="1" part="lemq"/>
-          </chunk>
-        </out>
-      </action>
-    </rule>
-    
-    <rule>
+    <rule comment="REGLA: coor
+                   We assume CG only gives us SN conj SN if they _should_ be coordinated.
+                   For now only uses the case etc. of the first conjunct.
+                   TODO: what should happen where we still have different cases? («i Norge og på Island»?)">
       <pattern>
         <pattern-item n="SN"/>
         <pattern-item n="conj"/>
         <pattern-item n="SN"/>
       </pattern>
       <action>
+        <let><var n="chunkname"/><lit v="coor"/></let>
+        <call-macro n="modify_chunkname"><with-param pos="1"/></call-macro>
         <out>
           <chunk>
-           <lit v="coor"/>
+           <var n="chunkname"/>
            <clip pos="1" part="tags"/>
            <lit v="{"/>
            <clip pos="1" part="content"/>
