@@ -25,6 +25,15 @@
      <attr-item tags="Loc"/>
      <attr-item tags="Ine"/>
      <attr-item tags="Ela"/>
+     <attr-item tags="nom"/>
+     <attr-item tags="acc"/>
+     <attr-item tags="gen"/>
+     <attr-item tags="com"/>
+     <attr-item tags="ess"/>
+     <attr-item tags="ill"/>
+     <attr-item tags="loc"/>
+     <attr-item tags="ine"/>
+     <attr-item tags="ela"/>
   </def-attr>
   </section-def-attrs>
 
@@ -40,8 +49,8 @@
                   Assumes that chunkname is set to something already, turns eg. coord into til_coord.">
       <choose>
         <when>
-          <test><begins-with><clip pos="1" part="lemh"/><lit v="til"/></begins-with></test>
-          <let><var n="chunkname"/><concat><lit v="til"/><lit v="_"/><var n="chunkname"/></concat></let>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="av"/></begins-with></test>
+          <let><var n="chunkname"/><concat><lit v="av"/><lit v="_"/><var n="chunkname"/></concat></let>
         </when>
         <when>
           <test><begins-with><clip pos="1" part="lemh"/><lit v="med"/></begins-with></test>
@@ -52,8 +61,8 @@
           <let><var n="chunkname"/><concat><lit v="som"/><lit v="_"/><var n="chunkname"/></concat></let>
         </when>
         <when>
-          <test><begins-with><clip pos="1" part="lemh"/><lit v="av"/></begins-with></test>
-          <let><var n="chunkname"/><concat><lit v="av"/><lit v="_"/><var n="chunkname"/></concat></let>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="til"/></begins-with></test>
+          <let><var n="chunkname"/><concat><lit v="til"/><lit v="_"/><var n="chunkname"/></concat></let>
         </when>
       </choose>
     </def-macro>

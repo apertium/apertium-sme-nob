@@ -4,31 +4,31 @@
   <section-def-cats>
     <def-cat n="nom">
       <cat-item name="nom"/>
-      <cat-item name="til_nom"/>
+      <cat-item name="av_nom"/>
       <cat-item name="med_nom"/>
       <cat-item name="som_nom"/>
-      <cat-item name="av_nom"/>
+      <cat-item name="til_nom"/>
     </def-cat>
     <def-cat n="prop">
       <cat-item name="prop"/>
-      <cat-item name="til_prop"/>
+      <cat-item name="av_prop"/>
       <cat-item name="med_prop"/>
       <cat-item name="som_prop"/>
-      <cat-item name="av_prop"/>
+      <cat-item name="til_prop"/>
     </def-cat>
     <def-cat n="coor">
       <cat-item name="coor"/>
-      <cat-item name="til_coor"/>
+      <cat-item name="av_coor"/>
       <cat-item name="med_coor"/>
       <cat-item name="som_coor"/>
-      <cat-item name="av_coor"/>
+      <cat-item name="til_coor"/>
     </def-cat>
     <def-cat n="adjnom">
       <cat-item name="adjnom"/>
-      <cat-item name="til_adjnom"/>
+      <cat-item name="av_adjnom"/>
       <cat-item name="med_adjnom"/>
       <cat-item name="som_adjnom"/>
-      <cat-item name="av_adjnom"/>
+      <cat-item name="til_adjnom"/>
     </def-cat>
   </section-def-cats>
 
@@ -45,6 +45,26 @@
       <attr-item tags="ord.posi"/>
       <attr-item tags="ord.comp"/>
       <attr-item tags="ord.sup"/>
+    </def-attr>
+    <def-attr n="case">
+      <attr-item tags="Nom"/>
+      <attr-item tags="Acc"/>
+      <attr-item tags="Gen"/>
+      <attr-item tags="Com"/>
+      <attr-item tags="Ess"/>
+      <attr-item tags="Ill"/>
+      <attr-item tags="Loc"/>
+      <attr-item tags="Ine"/>
+      <attr-item tags="Ela"/>
+      <attr-item tags="nom"/>
+      <attr-item tags="acc"/>
+      <attr-item tags="gen"/>
+      <attr-item tags="com"/>
+      <attr-item tags="ess"/>
+      <attr-item tags="ill"/>
+      <attr-item tags="loc"/>
+      <attr-item tags="ine"/>
+      <attr-item tags="ela"/>
     </def-attr>
     <def-attr n="gen">
       <attr-item tags="m"/>
@@ -100,8 +120,8 @@
       <let><var n="case_prep"/><lit v=""/></let>
       <choose>
         <when>
-          <test><begins-with><clip pos="1" part="lemh"/><lit v="til"/></begins-with></test>
-          <let><var n="case_prep"/><lit v="til"/></let>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="av"/></begins-with></test>
+          <let><var n="case_prep"/><lit v="av"/></let>
         </when>
         <when>
           <test><begins-with><clip pos="1" part="lemh"/><lit v="med"/></begins-with></test>
@@ -112,8 +132,8 @@
           <let><var n="case_prep"/><lit v="som"/></let>
         </when>
         <when>
-          <test><begins-with><clip pos="1" part="lemh"/><lit v="av"/></begins-with></test>
-          <let><var n="case_prep"/><lit v="av"/></let>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="til"/></begins-with></test>
+          <let><var n="case_prep"/><lit v="til"/></let>
         </when>
       </choose>
       <choose><when>

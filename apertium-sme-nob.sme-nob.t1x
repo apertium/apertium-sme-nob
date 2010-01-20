@@ -109,6 +109,15 @@
       <attr-item tags="Loc"/>
       <attr-item tags="Ine"/>
       <attr-item tags="Ela"/>
+      <attr-item tags="nom"/>
+      <attr-item tags="acc"/>
+      <attr-item tags="gen"/>
+      <attr-item tags="com"/>
+      <attr-item tags="ess"/>
+      <attr-item tags="ill"/>
+      <attr-item tags="loc"/>
+      <attr-item tags="ine"/>
+      <attr-item tags="ela"/>
     </def-attr>
     <def-attr n="pers">
       <attr-item tags="p1"/>
@@ -208,15 +217,9 @@
                   Assumes that chunkname is set to something already, turns eg. SN into til_SN.">
       <choose>
         <when>
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ill"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal></test>
           <let>
-            <var n="chunkname"/><concat><lit v="til"/><lit v="_"/><var n="chunkname"/></concat>
-          </let>
-        </when>
-        <when>
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></test>
-          <let>
-            <var n="chunkname"/><concat><lit v="som"/><lit v="_"/><var n="chunkname"/></concat>
+            <var n="chunkname"/><concat><lit v="av"/><lit v="_"/><var n="chunkname"/></concat>
           </let>
         </when>
         <when>
@@ -226,9 +229,15 @@
           </let>
         </when>
         <when>
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></test>
           <let>
-            <var n="chunkname"/><concat><lit v="av"/><lit v="_"/><var n="chunkname"/></concat>
+            <var n="chunkname"/><concat><lit v="som"/><lit v="_"/><var n="chunkname"/></concat>
+          </let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ill"/></equal></test>
+          <let>
+            <var n="chunkname"/><concat><lit v="til"/><lit v="_"/><var n="chunkname"/></concat>
           </let>
         </when>
       </choose>
