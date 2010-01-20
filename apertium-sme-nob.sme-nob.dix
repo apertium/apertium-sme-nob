@@ -173,6 +173,13 @@
       <!-- todo: find counter-examples -->
       <e><p><l><s n="Ess"/></l><r><s n="sg"/><s n="ind"/><s n="ess"/></r></p></e>
     </pardef>
+    <pardef n="__np">
+      <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
+      <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
+      <e><p><l><s n="Gen"/></l><r><s n="gen"/></r></p></e>
+      <e><p><l><s n="Ill"/></l><r><s n="ill"/></r></p></e>
+      <e><p><l><s n="Loc"/></l><r><s n="loc"/></r></p></e>
+    </pardef>
     <pardef n="__verb">
       <e><p><l><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/></r></p></e>
       <e><p><l><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/></r></p></e>
@@ -1277,20 +1284,20 @@
 
     <!-- Proper nouns -->
 
-    <e><p><l>Sápmi<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Sápmi<s n="np"/><s n="top"/></r></p></e>
-    <e><p><l>Ruoŧŧa<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Sverige<s n="np"/><s n="top"/></r></p></e>
-    <e><p><l>Norga<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Norge<s n="np"/><s n="top"/></r></p></e>
-    <e><p><l>Suopma<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Finland<s n="np"/><s n="top"/></r></p></e>
-    <e><p><l>Finnmárku<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Finnmark<s n="np"/><s n="top"/></r></p></e>
-    <e><p><l>Romsa<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Tromsø<s n="np"/><s n="top"/></r></p></e>
-    <e><p><l>Ruošša<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Russland<s n="np"/><s n="top"/></r></p></e>
-    <e><p><l>Ohcejohka<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Utsjoki<s n="np"/><s n="top"/></r></p></e>
-    <e><p><l>Áltá<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Alta<s n="np"/><s n="top"/></r></p></e>
-    <e><p><l>Oslo<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Oslo<s n="np"/><s n="top"/></r></p></e>
-    <e><p><l>Bergen<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Bergen<s n="np"/><s n="top"/></r></p></e>
+    <e><p><l>Sápmi<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Sápmi<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Ruoŧŧa<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Sverige<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Norga<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Norge<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Suopma<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Finland<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Finnmárku<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Finnmark<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Romsa<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Tromsø<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Ruošša<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Russland<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Ohcejohka<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Utsjoki<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Áltá<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Alta<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Oslo<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Oslo<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Bergen<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Bergen<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
 
-    <e><p><l>Máhtte<s n="N"/><s n="Prop"/><s n="Mal"/><s n="Sg"/></l><r>Máhtte<s n="np"/><s n="m"/></r></p></e>
-    <e><p><l>Anne<s n="N"/><s n="Prop"/><s n="Fem"/><s n="Sg"/></l><r>Anne<s n="np"/><s n="f"/></r></p></e>
+    <e><p><l>Máhtte<s n="N"/><s n="Prop"/><s n="Mal"/><s n="Sg"/></l><r>Máhtte<s n="np"/><s n="m"/></r></p><par n="__np"/></e>
+    <e><p><l>Anne<s n="N"/><s n="Prop"/><s n="Fem"/><s n="Sg"/></l><r>Anne<s n="np"/><s n="f"/></r></p><par n="__np"/></e>
 
     <!-- Adjectives -->
 
