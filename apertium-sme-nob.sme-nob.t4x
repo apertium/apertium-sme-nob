@@ -36,6 +36,12 @@
     <def-attr n="a_adj">
       <attr-item tags="adj"/>
     </def-attr>
+    <def-attr n="a_nom">
+      <attr-item tags="n"/>
+      <attr-item tags="n.acr"/>
+      <attr-item tags="np"/>
+      <attr-item tags="np.top"/>
+    </def-attr>
     <def-attr n="grau">
       <attr-item tags="pp"/>
       <attr-item tags="pprs"/>
@@ -115,8 +121,10 @@
         </when>
       </choose>
     </def-macro>
-    <def-macro n="out_case_prep" npar="1"
-               c="Possibly output a preposition, if the chunk name is prepended by one.">
+    <def-macro n="out_case_prep" npar="2"
+               c="arg.1: chunk, arg.2: prepositional object
+                  Possibly output a preposition, if the chunk name is prepended by one.
+                  Currently handling exceptions to case prepositions here (loc gets 'i')">
       <let><var n="case_prep"/><lit v=""/></let>
       <choose>
         <when>
@@ -137,6 +145,15 @@
         </when>
       </choose>
       <choose><when>
+        <test><and>
+          <equal><var n="case_prep"/><lit v="av"/></equal>
+          <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
+          <equal><clip pos="2" part="a_nom"/><lit-tag v="np.top"/></equal>
+          <!-- todo: "på øya", copy def-list from nb-nn.t1x -->
+        </and></test>
+        <let><var n="case_prep"/><lit v="i"/></let>
+      </when></choose>
+      <choose><when>
         <test><not><equal>
           <var n="case_prep"/><lit v=""/>
         </equal></not></test>
@@ -153,13 +170,16 @@
 
 
   <section-rules>
-    <rule comment="CHUNK: PROP
+    <rule comment="CHUNK: prop
                    Possibly add case preposition.">
       <pattern>
         <pattern-item n="prop"/>
       </pattern>
       <action>
-        <call-macro n="out_case_prep"><with-param pos="0"/></call-macro>
+        <call-macro n="out_case_prep">
+          <with-param pos="0"/>
+          <with-param pos="1"/>
+        </call-macro>
         <out>
           <lu>
             <clip pos="1" part="whole"/>
@@ -167,13 +187,16 @@
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: NOM
+    <rule comment="CHUNK: nom
                    Possibly add case preposition.">
       <pattern>
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <call-macro n="out_case_prep"><with-param pos="0"/></call-macro>
+        <call-macro n="out_case_prep">
+          <with-param pos="0"/>
+          <with-param pos="1"/>
+        </call-macro>
         <out>
           <lu>
             <clip pos="1" part="whole"/>
@@ -181,13 +204,16 @@
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: coor
+    <rule comment="CHUNK: coor (SN CC SN)
                    Possibly add case preposition.">
       <pattern>
         <pattern-item n="coor"/>
       </pattern>
       <action>
-        <call-macro n="out_case_prep"><with-param pos="0"/></call-macro>
+        <call-macro n="out_case_prep">
+          <with-param pos="0"/>
+          <with-param pos="1"/>
+        </call-macro>
         <out>
           <lu>
             <clip pos="1" part="whole"/>
@@ -203,13 +229,16 @@
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: ADJ NOM
+    <rule comment="CHUNK: adjnom
                    Clean adjective definiteness, possibly add case preposition.">
       <pattern>
         <pattern-item n="adjnom"/>
       </pattern>
       <action>
-        <call-macro n="out_case_prep"><with-param pos="0"/></call-macro>
+        <call-macro n="out_case_prep">
+          <with-param pos="0"/>
+          <with-param pos="2"/>
+        </call-macro>
         <call-macro n="clean_adj_def"><with-param pos="1"/></call-macro>
         <out>          
           <lu>
