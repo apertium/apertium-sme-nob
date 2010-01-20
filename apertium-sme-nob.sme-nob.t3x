@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interchunk>
-
   <section-def-cats>
     <def-cat n="SN">
       <cat-item tags="SN"/>
       <cat-item tags="SN.*"/>
+    </def-cat>
+    <def-cat n="SN-post">
+      <cat-item tags="SN.@→P.*"/>
     </def-cat>
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
@@ -30,6 +32,13 @@
     <def-var n="genere"/>
   </section-def-vars>
 
+  <section-def-lists>
+    <def-list n="gen-adp">
+      <!-- trying first if we can rely on @→P to pick out only postposition-chosen cases-->
+      <list-item v="geažil"/>
+    </def-list>
+  </section-def-lists>
+
   <section-rules>
     <rule>
       <pattern>
@@ -42,6 +51,24 @@
             <clip pos="1" part="tags"/>
             <clip pos="1" part="chcontent"/>
             <clip pos="1" part="lemq"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    
+    <rule>
+      <pattern>
+        <pattern-item n="SN-post"/>
+        <pattern-item n="adpos"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk>
+            <clip pos="2" part="whole"/>
+          </chunk>
+          <b pos="1"/>
+          <chunk>
+            <clip pos="1" part="whole"/>
           </chunk>
         </out>
       </action>

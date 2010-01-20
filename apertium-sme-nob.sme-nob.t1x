@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transfer default="chunk">
   <section-def-cats>
-    <def-cat n="nom_prop">
-      <cat-item tags="N.Prop.*"/>
-    </def-cat>
     <def-cat n="adpos">
       <cat-item tags="Pr.*"/>
       <cat-item tags="Po.*"/>
@@ -30,6 +27,9 @@
     <def-cat n="nom">
       <cat-item tags="V.*.Der2.*.N.*"/>
       <cat-item tags="N.*"/>
+    </def-cat>
+    <def-cat n="nom_prop">
+      <cat-item tags="N.Prop.*"/>
     </def-cat>
     <def-cat n="verb">
       <cat-item tags="V.*"/>
@@ -194,7 +194,6 @@
   
   <section-def-vars>
     <def-var n="number"/>
-    <def-var n="noun_case"/>
     <def-var n="pron_gen"/>
     <def-var n="pron_num"/>
     <def-var n="pron_case"/>
@@ -204,63 +203,32 @@
   </section-def-vars>
 
   <section-def-macros>
-    <def-macro n="set_noun_case" npar="1"
-               c="only keep genitive for nob nouns">
-      <choose>
-        <when>
-          <test>
-            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
-          </test>
-          <let><var n="noun_case"/><clip pos="1" side="tl" part="case"/></let>
-        </when>
-        <otherwise>
-          <let><var n="noun_case"/><lit v=""/></let>
-        </otherwise>
-      </choose>
-    </def-macro>
-    
     <def-macro n="set_case_prep" npar="1"
-               c="Naïve is the word.">
+               c="First attempt (may be changed in later stages)">
       <let><var n="case_prep"/><lit v=""/></let>
       <choose>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ill"/></equal></test>
           <let>
-            <var n="case_prep"/>
-            <concat>
-              <lit v="^til"/><lit-tag v="pr"/><lit v="$"/>
-              <b/>
-            </concat>
+            <var n="case_prep"/><lit-tag v="til"/>
           </let>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></test>
           <let>
-            <var n="case_prep"/>
-            <concat>
-              <lit v="^som"/><lit-tag v="pr"/><lit v="$"/>
-              <b/>
-            </concat>
+            <var n="case_prep"/><lit-tag v="som"/>
           </let>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Com"/></equal></test>
           <let>
-            <var n="case_prep"/>
-            <concat>
-              <lit v="^med"/><lit-tag v="pr"/><lit v="$"/>
-              <b/>
-            </concat>
+            <var n="case_prep"/><lit-tag v="med"/>
           </let>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal></test>
           <let>
-            <var n="case_prep"/>
-            <concat>
-              <lit v="^med"/><lit-tag v="pr"/><lit v="$"/>
-              <b/>
-            </concat>
+            <var n="case_prep"/><lit-tag v="av"/>
           </let>
         </when>
       </choose>
@@ -463,7 +431,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
-        <call-macro n="set_noun_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_case_prep"><with-param pos="1"/></call-macro>
         <out>
           <chunk name="prop" case="caseFirstWord">
             <tags>
@@ -472,13 +440,13 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
               <tag><lit-tag v="ind"/></tag>
+              <tag><var n="case_prep"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <var n="noun_case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -493,7 +461,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </pattern>
       <action>       
         <call-macro n="set_case_prep"><with-param pos="1"/></call-macro>
-        <call-macro n="set_noun_case"><with-param pos="1"/></call-macro>
 
         <out>
           <chunk name="nom" case="caseFirstWord">
@@ -503,15 +470,14 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
               <tag><lit-tag v="ind"/></tag>
+              <tag><var n="case_prep"/></tag>
             </tags>
-            <var n="case_prep"/>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <lit-tag v="ind"/>
-              <var n="noun_case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -527,7 +493,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </pattern>
       <action>
         <call-macro n="set_case_prep"><with-param pos="2"/></call-macro>
-        <call-macro n="set_noun_case"><with-param pos="2"/></call-macro>
         <out>
           <chunk name="nomcmpd" case="caseFirstWord">
             <tags>
@@ -536,8 +501,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="2" side="tl" part="nbr"/></tag>
               <tag><clip pos="2" side="tl" part="case"/></tag>
               <tag><lit-tag v="ind"/></tag>
+              <tag><var n="case_prep"/></tag>
             </tags>
-            <var n="case_prep"/>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
@@ -551,7 +516,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <lit-tag v="ind"/>
-              <var n="noun_case"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -614,7 +578,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         </call-macro>
 
         <call-macro n="set_case_prep"><with-param pos="3"/></call-macro>
-        <call-macro n="set_noun_case"><with-param pos="3"/></call-macro>
         
         <out>
           <chunk name="nom3" case="caseFirstWord">
@@ -625,8 +588,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="3" side="tl" part="nbr"/></tag>
               <tag><clip pos="3" side="tl" part="gen"/></tag>
               <tag><clip pos="3" side="tl" part="case"/></tag>
+              <tag><var n="case_prep"/></tag>
             </tags>
-            <var n="case_prep"/>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_pron"/>
@@ -654,7 +617,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="3" side="tl" part="gen"/>
               <clip pos="3" side="tl" part="nbr"/>
               <lit-tag v="ind"/>
-              <var n="noun_case"/>
               <clip pos="3" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -671,7 +633,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </pattern>
       <action>
         <call-macro n="set_case_prep"><with-param pos="2"/></call-macro>
-        <call-macro n="set_noun_case"><with-param pos="2"/></call-macro>
         <call-macro n="set_adj_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_adj_gen"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_adj_def"><with-param pos="1"/></call-macro>
@@ -684,8 +645,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="2" side="tl" part="gen"/></tag>
               <tag><clip pos="2" side="tl" part="case"/></tag>
               <tag><var n="c_defnes"/></tag>
+              <tag><var n="case_prep"/></tag>
             </tags>
-            <var n="case_prep"/>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_adj"/>
@@ -702,7 +663,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <lit-tag v="6"/>
-              <var n="noun_case"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -929,7 +889,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: ADP">
+    <rule comment="REGLA: ADPOS">
       <pattern>
         <pattern-item n="adpos"/>
       </pattern>

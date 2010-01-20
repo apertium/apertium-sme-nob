@@ -5,6 +5,12 @@
     <def-cat n="nom">
       <cat-item name="nom"/>
     </def-cat>
+    <def-cat n="prop">
+      <cat-item name="prop"/>
+    </def-cat>
+    <def-cat n="coor">
+      <cat-item name="coor"/>
+    </def-cat>
     <def-cat n="adjnom">
       <cat-item name="adjnom"/>
     </def-cat>
@@ -13,6 +19,12 @@
   <section-def-attrs>
     <def-attr n="a_adj">
       <attr-item tags="adj"/>
+    </def-attr>
+    <def-attr n="a_case_prep">
+      <attr-item tags="til"/>
+      <attr-item tags="som"/>
+      <attr-item tags="med"/>
+      <attr-item tags="av"/>
     </def-attr>
     <def-attr n="grau">
       <attr-item tags="pp"/>
@@ -47,6 +59,7 @@
 
   <section-def-vars>
     <def-var n="c_defnes"/>
+    <def-var n="case_prep"/>
   </section-def-vars>
 
   <section-def-macros>
@@ -72,63 +85,155 @@
         </when>
       </choose>
     </def-macro>
+    <def-macro n="clean_case_prep" npar="1"
+               c="Turn the case_prep tag into a lit.">
+      <choose>
+        <when>
+          <test><equal><clip pos="1" part="a_case_prep"/><lit-tag v="til"/></equal></test>
+          <let><var n="case_prep"/><lit v="til"/></let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" part="a_case_prep"/><lit-tag v="med"/></equal></test>
+          <let><var n="case_prep"/><lit v="med"/></let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" part="a_case_prep"/><lit-tag v="som"/></equal></test>
+          <let><var n="case_prep"/><lit v="som"/></let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" part="a_case_prep"/><lit-tag v="av"/></equal></test>
+          <let><var n="case_prep"/><lit v="av"/></let>
+        </when>
+      </choose>
+    </def-macro>
   </section-def-macros>
 
 
   <section-rules>
-    <rule comment="CHUNK: ADJ NOM (possibly pr adj nom)">
+    <rule comment="CHUNK: NOM
+                   Possibly add case preposition.">
+      <pattern>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <choose><when>
+          <test><not><equal>
+            <clip pos="0" part="a_case_prep"/><lit v=""/>
+          </equal></not></test>
+          <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
+          <out>
+            <lu>
+              <var n="case_prep"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b/>
+          </out>
+        </when></choose>
+        <out>
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: PROP
+                   Possibly add case preposition.">
+      <pattern>
+        <pattern-item n="prop"/>
+      </pattern>
+      <action>
+        <choose><when>
+          <test><not><equal>
+            <clip pos="0" part="a_case_prep"/><lit v=""/>
+          </equal></not></test>
+          <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
+          <out>
+            <lu>
+              <var n="case_prep"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b/>
+          </out>
+        </when></choose>
+        <out>
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: coor
+                   Possibly add case preposition.">
+      <pattern>
+        <pattern-item n="coor"/>
+      </pattern>
+      <action>
+        <choose><when>
+          <test><not><equal>
+            <clip pos="0" part="a_case_prep"/><lit v=""/>
+          </equal></not></test>
+          <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
+          <out>
+            <lu>
+              <var n="case_prep"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b/>
+          </out>
+        </when></choose>
+        <out>
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+          <b pos="1"/>
+          <lu>
+            <clip pos="2" part="whole"/>
+          </lu>
+          <b pos="2"/>
+          <lu>
+            <clip pos="3" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: ADJ NOM
+                   Clean adjective definiteness, possibly add case preposition.">
       <pattern>
         <pattern-item n="adjnom"/>
       </pattern>
       <action>
         <choose><when>
-          <test><equal><clip pos="1" part="a_adj"/><lit-tag v="adj"/></equal></test>
-          <call-macro n="clean_adj_def"><with-param pos="1"/></call-macro>
+          <test><not><equal>
+            <clip pos="0" part="a_case_prep"/><lit v=""/>
+          </equal></not></test>
+          <call-macro n="clean_case_prep"><with-param pos="0"/></call-macro>
           <out>
             <lu>
-              <clip pos="1" part="lemh"/>
-              <clip pos="1" part="a_adj"/>
-              <clip pos="1" part="grau"/>
-              <clip pos="1" part="gen"/>
-              <clip pos="1" part="nbr"/>
-              <clip pos="1" part="defnes"/>
-              <clip pos="1" part="lemq"/>
+              <var n="case_prep"/>
+              <lit-tag v="pr"/>
             </lu>
-            <!-- for now, this space isn't output since we don't have
-                 superblanks in the hfst stream, so we add a space -->
-            <b pos="1"/>
             <b/>
-            <lu>
-              <clip pos="2" part="whole"/>
-            </lu>
           </out>
-        </when>
-        <otherwise>                         <!--preposition adj nom-->
-          <call-macro n="clean_adj_def"><with-param pos="2"/></call-macro>
-          <out>
-            <lu>
-              <clip pos="1" part="whole"/>
-            </lu>
-            <b pos="1"/>
-            <lu>
-              <clip pos="2" part="lemh"/>
-              <clip pos="2" part="a_adj"/>
-              <clip pos="2" part="grau"/>
-              <clip pos="2" part="gen"/>
-              <clip pos="2" part="nbr"/>
-              <clip pos="2" part="defnes"/>
-              <clip pos="2" part="lemq"/>
-            </lu>
-            <!-- for now, this space isn't output since we don't have
-                 superblanks in the hfst stream, so we add a space -->
-            <b pos="2"/>
-            <b/>
-            <lu>
-              <clip pos="3" part="whole"/>
-            </lu>
-          </out>          
-        </otherwise>
-        </choose>
+        </when></choose>
+        <call-macro n="clean_adj_def"><with-param pos="1"/></call-macro>
+        <out>          
+          <lu>
+            <clip pos="1" part="lemh"/>
+            <clip pos="1" part="a_adj"/>
+            <clip pos="1" part="grau"/>
+            <clip pos="1" part="gen"/>
+            <clip pos="1" part="nbr"/>
+            <clip pos="1" part="defnes"/>
+            <clip pos="1" part="lemq"/>
+          </lu>
+          <!-- for now, this space isn't output since we don't have
+               superblanks in the hfst stream, so we add a space -->
+          <b pos="1"/>
+          <b/>
+          <lu>
+            <clip pos="2" part="whole"/>
+          </lu>
+        </out>
       </action>
     </rule>
   </section-rules>

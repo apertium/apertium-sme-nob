@@ -9,6 +9,9 @@
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
     </def-cat>
+    <def-cat n="conj">
+      <cat-item lemma="conj" tags="*"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
@@ -51,19 +54,28 @@
     <rule>
       <pattern>
         <pattern-item n="SN"/>
-        <pattern-item n="adpos"/>
+        <pattern-item n="conj"/>
+        <pattern-item n="SN"/>
       </pattern>
       <action>
         <out>
           <chunk>
-            <clip pos="2" part="whole"/>
-          </chunk>
-          <b pos="1"/>
-          <chunk>
-            <clip pos="1" part="whole"/>
-          </chunk>
+           <lit v="coor"/>
+           <clip pos="1" part="tags"/>
+           <lit v="{"/>
+           <clip pos="1" part="content"/>
+           <b pos="1"/>
+           <lit v=" "/>
+           <clip pos="2" part="content"/>
+           <b pos="2"/>
+           <lit v=" "/>
+           <clip pos="3" part="content"/>
+           <lit v="}"/>
+           <clip pos="1" part="lemq"/>
+         </chunk>
         </out>
       </action>
     </rule>
+    
   </section-rules>
 </interchunk>
