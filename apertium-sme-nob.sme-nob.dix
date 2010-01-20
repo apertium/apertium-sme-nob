@@ -70,6 +70,9 @@
     <sdef n="Pl2"     c="Second-person plural"/>
     <sdef n="Pl3"     c="Third-person plural"/>
 
+    <sdef n="ind"     c="Indefinite"/> 
+    <sdef n="def"     c="Definite"/>
+
     <sdef n="Sg"      c="Singular"/>
     <sdef n="sg"      c="Singular"/>
     <sdef n="Du"      c="Dual"/>
@@ -167,7 +170,8 @@
       <e><p><l><s n="Pl"/><s n="Gen"/></l><r><s n="pl"/><s n="gen"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Ill"/></l><r><s n="pl"/><s n="ill"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Loc"/></l><r><s n="pl"/><s n="loc"/></r></p></e>
-      <e><p><l><s n="Ess"/></l><r><s n="ND"/><s n="ess"/></r></p></e>
+      <!-- todo: find counter-examples -->
+      <e><p><l><s n="Ess"/></l><r><s n="sg"/><s n="ind"/><s n="ess"/></r></p></e>
     </pardef>
     <pardef n="__verb">
       <e><p><l><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/></r></p></e>
