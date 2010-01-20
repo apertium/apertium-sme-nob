@@ -11,6 +11,16 @@
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
     </def-cat>
+    <def-cat n="FV">
+      <cat-item tags="@+FMAINV"/>
+      <cat-item tags="@+FMAINV.*"/>
+    </def-cat>
+    <def-cat n="FOCUS">
+      <cat-item tags="@ADVL"/>
+      <cat-item tags="@ADVL.*"/>
+      <cat-item tags="SN.@SPRED→"/>
+      <cat-item tags="SN.@SPRED→.*"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
@@ -34,29 +44,42 @@
 
   <section-def-lists>
     <def-list n="gen-adp">
-      <!-- trying first if we can rely on @→P to pick out only postposition-chosen cases-->
+      <!-- not in use, trying first if we can rely on @→P to pick out
+           only postposition-chosen cases-->
       <list-item v="geažil"/>
     </def-list>
   </section-def-lists>
 
   <section-rules>
-    <rule>
+    <rule comment="REGLA: FOCUS SN FV
+                   V2-rule
+                   Doppe son orui vahku => Der borte bodde han ei uke
+                   Mánnán son orui Romssas => Som barn bodde han i Tromsø">
       <pattern>
+        <pattern-item n="FOCUS"/>
         <pattern-item n="SN"/>
+        <pattern-item n="FV"/>
       </pattern>
       <action>
         <out>
           <chunk>
-            <clip pos="1" part="lemh"/>
-            <clip pos="1" part="tags"/>
-            <clip pos="1" part="chcontent"/>
-            <clip pos="1" part="lemq"/>
+            <clip pos="1" part="whole"/>
+          </chunk>
+          <b pos="1"/>
+          <chunk>
+            <clip pos="3" part="whole"/>
+          </chunk>
+          <b pos="2"/>
+          <chunk>
+            <clip pos="2" part="whole"/>
           </chunk>
         </out>
       </action>
     </rule>
     
-    <rule comment="TODO: remove case-prep since we have an adposition already">
+    <rule comment="REGLA: SN-post adpos -- garra dálkki geažil => på_grunn_av dårlig vær
+                   TODO: remove case-prep from SN-post chunkname
+                   since we have an adposition already">
       <pattern>
         <pattern-item n="SN-post"/>
         <pattern-item n="adpos"/>
@@ -68,10 +91,7 @@
           </chunk>
           <b pos="1"/>
           <chunk>
-            <clip pos="1" part="lemh"/>
-            <clip pos="1" part="tags"/>
-            <clip pos="1" part="chcontent"/>
-            <clip pos="1" part="lemq"/>
+            <clip pos="1" part="whole"/>
           </chunk>
         </out>
       </action>
