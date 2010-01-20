@@ -150,6 +150,16 @@
       <attr-item tags="sg"/>
       <attr-item tags="pl"/>
       <attr-item tags="ND"/>
+      <!-- the bidix pardef __verb should split these: -->
+      <attr-item tags="Sg1"/>
+      <attr-item tags="Du1"/>
+      <attr-item tags="Pl1"/>
+      <attr-item tags="Sg2"/>
+      <attr-item tags="Du2"/>
+      <attr-item tags="Pl2"/>
+      <attr-item tags="Sg3"/>
+      <attr-item tags="Du3"/>
+      <attr-item tags="Pl3"/>
     </def-attr>
     <def-attr n="defnes">
       <attr-item tags="ind"/>
@@ -768,6 +778,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
             </tags>
             <lu>
@@ -791,6 +802,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
             </tags>
             <lu>
@@ -829,6 +841,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
             </tags>
             <lu>
@@ -857,6 +870,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
             </tags>
             <lu>
