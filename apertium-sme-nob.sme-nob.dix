@@ -94,6 +94,8 @@
     <sdef n="ess"     c="Essive"/>
     <sdef n="Loc"     c="Locative"/>
     <sdef n="loc"     c="Locative"/>
+    <sdef n="Com"     c="Comitative"/>
+    <sdef n="com"     c="Comitative"/>
 
     <sdef n="Der2"     c="Derivation #2"/>
     <sdef n="Der_PassL" c="Passive derivation"/>
@@ -105,6 +107,7 @@
 
     <sdef n="Ind"     c="Indicative"/>
     <sdef n="Inf"     c="Infinitive"/>
+    <sdef n="Imprt"   c="Imperative"/>
     <sdef n="Prs"     c="Present"/>
     <sdef n="Prt"     c="Preterite"/>
     <sdef n="PrfPrc"  c="Perfect participle"/>
@@ -176,11 +179,13 @@
       <e><p><l><s n="Sg"/><s n="Gen"/></l><r><s n="sg"/><s n="gen"/></r></p></e>
       <e><p><l><s n="Sg"/><s n="Ill"/></l><r><s n="sg"/><s n="ill"/></r></p></e>
       <e><p><l><s n="Sg"/><s n="Loc"/></l><r><s n="sg"/><s n="loc"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Com"/></l><r><s n="sg"/><s n="com"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Nom"/></l><r><s n="pl"/><s n="nom"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Acc"/></l><r><s n="pl"/><s n="acc"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Gen"/></l><r><s n="pl"/><s n="gen"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Ill"/></l><r><s n="pl"/><s n="ill"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Loc"/></l><r><s n="pl"/><s n="loc"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Com"/></l><r><s n="pl"/><s n="com"/></r></p></e>
       <!-- todo: find counter-examples -->
       <e><p><l><s n="Ess"/></l><r><s n="sg"/><s n="ind"/><s n="ess"/></r></p></e>
     </pardef>
@@ -212,7 +217,9 @@
       <e><p><l><s n="Ind"/><s n="Prt"/><s n="Pl1"/></l><r><s n="pret"/><s n="pl"/><s n="p2"/></r></p></e>
       <e><p><l><s n="Ind"/><s n="Prt"/><s n="Pl3"/></l><r><s n="pret"/><s n="pl"/><s n="p3"/></r></p></e>
       
-      <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Inf"/></l><r><s n="pass"/><s n="inf"/></r></p></e>
+      <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Inf"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
+      <!-- Not sure what to do about this:-->
+      <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="pass"/><s n="sg"/><s n="p2"/></r></p></e>
       
       <e><p><l><s n="Inf"/></l><r><s n="inf"/></r></p></e>
       <e><p><l><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
@@ -243,6 +250,7 @@
     <e><p><l>lahka<s n="Po"/></l><r>nær<s n="pr"/></r></p></e>
     <e><p><l>lahka<s n="Pr"/></l><r>nær<s n="pr"/></r></p></e>
     <e><p><l>meattá<s n="Po"/></l><r>forbi<s n="pr"/></r></p></e>
+    <e><p><l>vuostá<s n="Po"/></l><r>mot<s n="pr"/></r></p></e>
     <e><p><l>geažil<s n="Po"/></l><r>på<b/>grunn<b/>av<s n="pr"/></r></p></e>
     <e><p><l>meattá<s n="Pr"/></l><r>forbi<s n="pr"/></r></p></e>
     <e><p><l>earet<s n="Pr"/></l><r>unntatt<s n="pr"/></r></p></e>
@@ -270,7 +278,9 @@
 
     <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="prn"/><s n="p3"/></r></p><par n="__prn"/></e>
 
-    <!-- Determiners (nob determiners often correspond to sme pronouns) -->
+    <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="prn"/><s n="pl"/></r></p><par n="__prn"/></e>
+
+    <!-- Pronouns/determiners (nob determiners often correspond to sme pronouns) -->
     <e><p><l>dakkár<s n="Pron"/><s n="Dem"/></l><r>slik<s n="det"/><s n="dem"/></r></p></e>
     <e><p><l>dát<s n="Pron"/><s n="Dem"/></l><r>dette<s n="det"/><s n="dem"/></r></p></e>
 
@@ -538,7 +548,7 @@
     <e><p><l>giddagas<s n="N"/></l><r>fengsel<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>gieđahallan<s n="N"/></l><r>bearbeiding<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>giehpa<s n="N"/></l><r>sot<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>giehta<s n="N"/></l><r>hand<s n="n"/><s n="f"/></r></p><par n="__n"/></e>
+    <e><p><l>giehta<s n="N"/></l><r>hand<s n="n"/><s n="f"/></r></p><par n="__n"/></e> <!--evt. arm-->
     <e><p><l>gielda<s n="N"/></l><r>kommune<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>gieldda<s n="N"/></l><r>forbud<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>gielddus<s n="N"/></l><r>forbud<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -1809,6 +1819,7 @@
     <e><p><l>ovddas<s n="Adv"/></l><r>i<b/>veien<s n="adv"/></r></p></e>
     <e><p><l>ovttas<s n="Adv"/></l><r>sammen<s n="adv"/></r></p></e>
     <e><p><l>ovtto<s n="Adv"/></l><r>bestandig<s n="adv"/></r></p></e>
+<!--     <e c="todo: check"><p><l>rabas<b/>gieđaiguin<s n="Adv"/></l><r>med<b/>åpne<b/>armer<s n="adv"/></r></p></e> -->
     <e><p><l>ruossalassii<s n="Adv"/></l><r>i<b/>kryss<s n="adv"/></r></p></e>
     <e><p><l>seammá<s n="Adv"/></l><r>samme<s n="adv"/></r></p></e>
     <e><p><l>sisa<s n="Adv"/></l><r>inn<s n="adv"/></r></p></e>

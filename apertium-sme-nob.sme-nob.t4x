@@ -23,6 +23,9 @@
       <cat-item name="som_coor"/>
       <cat-item name="til_coor"/>
     </def-cat>
+    <def-cat n="adj">
+      <cat-item name="adj"/>
+    </def-cat>
     <def-cat n="adjnom">
       <cat-item name="adjnom"/>
       <cat-item name="av_adjnom"/>
@@ -35,6 +38,8 @@
   <section-def-attrs>
     <def-attr n="a_adj">
       <attr-item tags="adj"/>
+      <attr-item tags="adj.pp"/>
+      <attr-item tags="adj.pprs"/>
     </def-attr>
     <def-attr n="a_nom">
       <attr-item tags="n"/>
@@ -43,8 +48,6 @@
       <attr-item tags="np.top"/>
     </def-attr>
     <def-attr n="grau">
-      <attr-item tags="pp"/>
-      <attr-item tags="pprs"/>
       <attr-item tags="posi"/>
       <attr-item tags="comp"/>
       <attr-item tags="sup"/>
@@ -110,9 +113,31 @@
   </section-def-vars>
 
   <section-def-macros>
-    <def-macro n="clean_adj_def" npar="1"
-               c="defness is only on superlatives or singular pp/posi in nob">
+    <def-macro n="clean_adj_tags" npar="1"
+               c="defness is only on superlatives or singular pp/posi in nob
+                  If we don't have any number, give plural (no defnes) a shot.">
       <choose>
+        <when>
+          <test>
+            <and>
+              <or>
+                <equal><clip pos="1" part="grau"/><lit v=""/></equal>
+                <equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal>
+                <ends-with><clip pos="1" part="grau"/><lit-tag v="posi"/></ends-with>
+              </or>
+              <equal><clip pos="1" part="nbr"/><lit v=""/></equal>
+            </and>
+          </test>
+          <let>
+            <clip pos="1" part="a_adj"/>
+            <lit-tag v="adj.posi.pl"/>
+            <!-- todo: why doesn't this work? (as it is, pp/posi tags will disappear) -->
+<!--             <concat> -->
+<!--               <clip pos="1" part="a_adj"/> -->
+<!--               <lit-tag v="pl"/> -->
+<!--             </concat> -->
+          </let>
+        </when>
         <when>
           <test>
             <not>
@@ -240,8 +265,28 @@
         </out>
       </action>
     </rule>
+    <rule comment="CHUNK: adj
+                   Clean adjective tags">
+      <pattern>
+        <pattern-item n="adj"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_adj_tags"><with-param pos="1"/></call-macro>
+        <out>
+          <lu>
+            <clip pos="1" part="lemh"/>
+            <clip pos="1" part="a_adj"/>
+            <clip pos="1" part="grau"/>
+            <clip pos="1" part="gen"/>
+            <clip pos="1" part="nbr"/>
+            <clip pos="1" part="defnes"/>
+            <clip pos="1" part="lemq"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
     <rule comment="CHUNK: adjnom
-                   Clean adjective definiteness, possibly add case preposition.">
+                   Clean adjective tags, possibly add case preposition.">
       <pattern>
         <pattern-item n="adjnom"/>
       </pattern>
@@ -250,7 +295,7 @@
           <with-param pos="0"/>
           <with-param pos="2"/>
         </call-macro>
-        <call-macro n="clean_adj_def"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_adj_tags"><with-param pos="1"/></call-macro>
         <out>          
           <lu>
             <clip pos="1" part="lemh"/>
