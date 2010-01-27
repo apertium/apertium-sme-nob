@@ -28,6 +28,10 @@
       <cat-item tags="V.*.Der2.*.N.*"/>
       <cat-item tags="N.*"/>
     </def-cat>
+    <def-cat n="nom_gen">
+      <cat-item tags="V.*.Der2.*.N.*.Gen.*"/>
+      <cat-item tags="N.*.Gen.*"/>
+    </def-cat>
     <def-cat n="nom_prop">
       <cat-item tags="N.Prop.*"/>
     </def-cat>
@@ -124,6 +128,10 @@
       <attr-item tags="loc"/>
       <attr-item tags="ine"/>
       <attr-item tags="ela"/>
+    </def-attr>
+    <def-attr n="art">
+      <attr-item tags="def"/>
+      <attr-item tags="ind"/>
     </def-attr>
     <def-attr n="pers">
       <attr-item tags="p1"/>
@@ -504,6 +512,47 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="1" side="tl" part="nbr"/>
               <lit-tag v="ind"/>
               <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: NUM NOM_GEN
+                   Numerals take genitive case, chunk case is numeral case.
+                   TODO: use @Num← instead of/in addition to genitive requirement?">
+      <pattern>
+        <pattern-item n="num"/>
+        <pattern-item n="nom_gen"/>
+      </pattern>
+      <action>
+        <let><var n="chunkname"/><lit v="num_nom"/></let>
+        <call-macro n="modify_chunkname"><with-param pos="1"/></call-macro>
+
+        <out>
+          <chunk namefrom="chunkname" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><lit-tag v="ind"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="5"/>
+<!--               <clip pos="2" side="tl" part="art" link-to="5"/> -->
+              <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>

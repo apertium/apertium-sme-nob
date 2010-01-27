@@ -15,6 +15,12 @@
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
     </def-cat>
+    <def-cat n="ADVL">
+      <cat-item tags="@ADVL"/>
+      <cat-item tags="@ADVL.*"/>
+      <cat-item tags="SN.@ADVL"/>
+      <cat-item tags="SN.@ADVL.*"/>
+    </def-cat>
     <def-cat n="FV">
       <cat-item tags="@+FMAINV"/>
       <cat-item tags="@+FMAINV.*"/>
@@ -162,6 +168,30 @@
         </out>
       </action>
     </rule>
+    <!-- todo: is SUBJ ADVL FV possible? -->
+<!--     <rule comment="REGLA: SN-maybe-subj ADVL FV -->
+<!--                    Override prodrop rule (below) if we might have a subject to the left"> -->
+<!--       <pattern> -->
+<!--         <pattern-item n="SN-maybe-subj"/> -->
+<!--         <pattern-item n="ADVL"/> -->
+<!--         <pattern-item n="FV"/> -->
+<!--       </pattern> -->
+<!--       <action> -->
+<!--         <out> -->
+<!--           <chunk> -->
+<!--             <clip pos="1" part="whole"/> -->
+<!--           </chunk> -->
+<!--           <b pos="1"/> -->
+<!--           <chunk> -->
+<!--             <clip pos="2" part="whole"/> -->
+<!--           </chunk> -->
+<!--           <b pos="2"/> -->
+<!--           <chunk> -->
+<!--             <clip pos="3" part="whole"/> -->
+<!--           </chunk> -->
+<!--         </out> -->
+<!--       </action> -->
+<!--     </rule> -->
     <rule comment="REGLA: FOCUS FV
                    V2-rule with pro-drop insertion
                    Doppe dihten => Som barn visste jeg">
