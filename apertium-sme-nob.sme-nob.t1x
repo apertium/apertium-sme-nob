@@ -655,7 +655,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <with-param pos="2"/>
         </call-macro>
 
-        <let><var n="chunkname"/><lit v="nom3"/></let>
+        <let><var n="chunkname"/><lit v="prn_adj_nom"/></let>
         <call-macro n="modify_chunkname"><with-param pos="3"/></call-macro>
         
         <out>
@@ -702,15 +702,13 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: ADJ NOM
-                   TODO: if we change c_defness, we might have to change adj nbr/gen,
-                   so the macros here should probably be called in t3x instead.">
+    <rule comment="REGLA: ADJ NOM">
       <pattern>
         <pattern-item n="adj"/>
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <let><var n="chunkname"/><lit v="adjnom"/></let>
+        <let><var n="chunkname"/><lit v="adj_nom"/></let>
         <call-macro n="modify_chunkname"><with-param pos="2"/></call-macro>
         
         <call-macro n="set_adj_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>

@@ -26,12 +26,12 @@
     <def-cat n="adj">
       <cat-item name="adj"/>
     </def-cat>
-    <def-cat n="adjnom">
-      <cat-item name="adjnom"/>
-      <cat-item name="av_adjnom"/>
-      <cat-item name="med_adjnom"/>
-      <cat-item name="som_adjnom"/>
-      <cat-item name="til_adjnom"/>
+    <def-cat n="adj_nom">
+      <cat-item name="adj_nom"/>
+      <cat-item name="av_adj_nom"/>
+      <cat-item name="med_adj_nom"/>
+      <cat-item name="som_adj_nom"/>
+      <cat-item name="til_adj_nom"/>
     </def-cat>
   </section-def-cats>
 
@@ -285,10 +285,10 @@
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: adjnom
+    <rule comment="CHUNK: adj_nom
                    Clean adjective tags, possibly add case preposition.">
       <pattern>
-        <pattern-item n="adjnom"/>
+        <pattern-item n="adj_nom"/>
       </pattern>
       <action>
         <call-macro n="out_case_prep">
