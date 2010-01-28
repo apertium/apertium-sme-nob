@@ -188,6 +188,9 @@
       <attr-item tags="PrfPrc"/>
       <attr-item tags="pp"/>
     </def-attr> 
+    <def-attr n="mode">
+      <attr-item tags="Qst"/>
+    </def-attr>
     <def-attr n="syn_label">
       <attr-item tags="@X"/>
       <attr-item tags="@HNOUN"/>
@@ -832,6 +835,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
             </tags>
@@ -856,9 +860,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <out>
           <chunk name="verb" case="caseFirstWord">
             <tags>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="tl" part="pers"/></tag>
-              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="tl" part="pers"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
             </tags>
             <lu>
               <get-case-from pos="1">
@@ -898,6 +903,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
             </tags>
@@ -928,6 +934,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
             </tags>
