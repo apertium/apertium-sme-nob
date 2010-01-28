@@ -12,6 +12,9 @@
     <def-cat n="adj">
       <cat-item tags="A.*"/>
     </def-cat>
+    <def-cat n="adj_attr">
+      <cat-item tags="A.Attr.*"/>
+    </def-cat>
     <def-cat n="num">
       <cat-item tags="Num.*"/>
     </def-cat>
@@ -636,11 +639,11 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: GENPRON ADJ NOM
+    <rule comment="REGLA: GENPRON ADJ_ATTR NOM
                    (noun might actually be gen here, if we match part of a chunk)">
       <pattern>
         <pattern-item n="genpron"/>
-        <pattern-item n="adj"/>
+        <pattern-item n="adj_attr"/>
         <pattern-item n="nom"/>
       </pattern>
       <action>
@@ -702,9 +705,9 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: ADJ NOM">
+    <rule comment="REGLA: ADJ_ATTR NOM">
       <pattern>
-        <pattern-item n="adj"/>
+        <pattern-item n="adj_attr"/>
         <pattern-item n="nom"/>
       </pattern>
       <action>
