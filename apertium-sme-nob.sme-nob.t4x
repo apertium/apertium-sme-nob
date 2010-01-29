@@ -16,6 +16,13 @@
       <cat-item name="som_prop"/>
       <cat-item name="til_prop"/>
     </def-cat>
+    <def-cat n="pron">
+      <cat-item name="pron"/>
+      <cat-item name="av_pron"/>
+      <cat-item name="med_pron"/>
+      <cat-item name="som_pron"/>
+      <cat-item name="til_pron"/>
+    </def-cat>
     <def-cat n="coor">
       <cat-item name="coor"/>
       <cat-item name="av_coor"/>
@@ -227,6 +234,23 @@
                    Possibly add case preposition.">
       <pattern>
         <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <call-macro n="out_case_prep">
+          <with-param pos="0"/>
+          <with-param pos="1"/>
+        </call-macro>
+        <out>
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pron
+                   Possibly add case preposition.">
+      <pattern>
+        <pattern-item n="pron"/>
       </pattern>
       <action>
         <call-macro n="out_case_prep">

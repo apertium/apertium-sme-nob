@@ -639,8 +639,11 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <action>
         <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_pron_gen_num"><with-param pos="1"/></call-macro>
+
+        <let><var n="chunkname"/><lit v="pron"/></let>
+        <call-macro n="modify_chunkname"><with-param pos="1"/></call-macro>
         <out>
-          <chunk name="pron" case="caseFirstWord">
+          <chunk namefrom="chunkname" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
@@ -683,7 +686,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <with-param pos="2"/>
         </call-macro>
 
-        <let><var n="chunkname"/><lit v="prn_adj_nom"/></let>
+        <let><var n="chunkname"/><lit v="pron_adj_nom"/></let>
         <call-macro n="modify_chunkname"><with-param pos="3"/></call-macro>
         
         <out>
