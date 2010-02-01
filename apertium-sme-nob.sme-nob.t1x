@@ -238,7 +238,6 @@
     <def-var n="c_defnes"/>
     <def-var n="c_tag_pos"/>
     <def-var n="chunkname"/>   <!--eg. with case-chosen preposition prepended-->
-    <def-var n="leat"/>        <!--either 'er' or 'har' (as tags)-->
   </section-def-vars>
   <section-def-lists>
     <def-list n="nt-verbs">
@@ -861,18 +860,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="verb"/>
       </pattern>
       <action>
-        <let><var n="leat"/><lit v=""/></let>
-        <choose>
-          <when>
-            <test><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal></test>
-            <let><var n="leat"/><lit-tag v="være"/></let>
-          </when>
-        </choose>
         <out>
           <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><var n="leat"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
@@ -889,8 +880,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
     
-    <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å lese
-                   Is leat+(š)goahtit possible? (In that case, is it er or har?)">
+    <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å lese">
       <pattern>
         <pattern-item n="verb"/>
         <pattern-item n="vgoahti"/>
@@ -938,18 +928,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="verb"/>
       </pattern>
       <action>
-        <let><var n="leat"/><lit v=""/></let>
-        <choose>
-          <when>
-            <test><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal></test>
-            <let><var n="leat"/><lit-tag v="være"/></let>
-          </when>
-        </choose>
         <out>
           <chunk name="adv_verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><var n="leat"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
@@ -981,7 +963,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="verb_adv_verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><lit-tag v="ha"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>

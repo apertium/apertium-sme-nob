@@ -121,10 +121,6 @@
       <attr-item tags="ind"/>
       <attr-item tags="def"/>
     </def-attr>
-    <def-attr n="a_leat">
-      <attr-item tags="være"/>
-      <attr-item tags="ha"/>
-    </def-attr>
     <def-attr n="a_verb">
       <attr-item tags="V"/>
       <attr-item tags="vblex"/>
@@ -149,14 +145,7 @@
     <def-var n="case_prep"/>
   </section-def-vars>
 
-  <section-def-macros>
-    <def-macro n="modify_lemh_leat" npar="1" c="bidix gives 'være' so we don't set that">
-      <choose><when>
-        <test><equal><clip pos="0" part="a_leat"/><lit-tag v="ha"/></equal></test>
-        <let><clip pos="1" part="lemh"/><lit v="ha"/></let>
-      </when></choose>
-    </def-macro>
-    
+  <section-def-macros>    
     <def-macro n="clean_adj_tags" npar="1"
                c="defness is only on superlatives or singular pp/posi in nob
                   If we don't have any number, give plural (no defnes) a shot.">
@@ -378,60 +367,7 @@
         </out>
       </action>
     </rule>
-
-    <!-- VERBS (possibly change 'er' to 'har') -->
-    <rule comment="CHUNK: verb">
-      <pattern>
-        <pattern-item n="verb"/>
-      </pattern>
-      <action>
-        <call-macro n="modify_lemh_leat"><with-param pos="1"/></call-macro>
-        <out>
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
-        </out>
-      </action>
-    </rule>
-    <rule comment="CHUNK: adv_verb">
-      <pattern>
-        <pattern-item n="adv_verb"/>
-      </pattern>
-      <action>
-        <call-macro n="modify_lemh_leat"><with-param pos="2"/></call-macro>
-        <out>
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
-          <b pos="1"/>
-          <lu>
-            <clip pos="2" part="whole"/>
-          </lu>
-        </out>
-      </action>
-    </rule>
-    <rule comment="CHUNK: verb_adv_verb">
-      <pattern>
-        <pattern-item n="verb_adv_verb"/>
-      </pattern>
-      <action>
-        <call-macro n="modify_lemh_leat"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_lemh_leat"><with-param pos="3"/></call-macro>
-        <out>
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
-          <b pos="1"/>
-          <lu>
-            <clip pos="2" part="whole"/>
-          </lu>
-          <b pos="2"/>
-          <lu>
-            <clip pos="3" part="whole"/>
-          </lu>
-        </out>
-      </action>
-    </rule>
+    
   </section-rules>
 
 </postchunk>

@@ -128,16 +128,11 @@
       <attr-item tags="@-FOBJ→"/>
       <attr-item tags="@-F←OBJ"/>
     </def-attr>
-    <def-attr n="a_leat">
-      <attr-item tags="være"/>
-      <attr-item tags="ha"/>
-    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
     <def-var n="nombre"/>
     <def-var n="genere"/>
-    <def-var n="leat"/>
     <def-var n="pro" c="in case it was dropped"/>
   </section-def-vars>
 
@@ -171,19 +166,6 @@
         </concat>
       </let>        
     </def-macro>
-    <def-macro n="modify_leat" npar="1" c="arg.1: verb chunk">
-      <choose>
-        <when>
-          <test>
-            <equal>
-              <clip pos="1" part="syn_label"/>
-              <lit-tag v="@+FAUXV"/>
-            </equal>
-          </test>
-          <let><clip pos="1" part="a_leat"/><lit-tag v="ha"/></let>
-        </when>
-      </choose>        
-    </def-macro>
   </section-def-macros>
   
   <section-rules>
@@ -197,7 +179,6 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="modify_leat"><with-param pos="3"/></call-macro>
         <out>
           <chunk>
             <clip pos="1" part="whole"/>
@@ -221,7 +202,6 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="modify_leat"><with-param pos="2"/></call-macro>
         <out>
           <chunk>
             <clip pos="1" part="whole"/>
@@ -240,7 +220,6 @@
         <pattern-item n="SN-maybe-Rsubj"/>
       </pattern>
       <action>
-        <call-macro n="modify_leat"><with-param pos="1"/></call-macro>
         <out>
           <chunk> 
             <clip pos="1" part="whole"/>
@@ -261,7 +240,6 @@
 <!--         <pattern-item n="FV"/> -->
 <!--       </pattern> -->
 <!--       <action> -->
-<!--         <call-macro n="modify_leat"><with-param pos="3"/></call-macro> -->
 <!--         <out> -->
 <!--           <chunk> -->
 <!--             <clip pos="1" part="whole"/> -->
@@ -285,7 +263,6 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="modify_leat"><with-param pos="2"/></call-macro>
         <call-macro n="set_pro">
           <with-param pos="2"/>
         </call-macro>
@@ -312,7 +289,6 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="modify_leat"><with-param pos="1"/></call-macro>
         <call-macro n="set_pro">
           <with-param pos="1"/>
         </call-macro>
