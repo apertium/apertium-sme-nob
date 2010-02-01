@@ -44,7 +44,7 @@
     <def-cat n="vneg">
       <cat-item tags="V.*.Neg.*"/>
     </def-cat>
-    <def-cat n="vcop">
+    <def-cat n="vleat">
       <cat-item lemma="leat" tags="V.*"/>
     </def-cat>
     <def-cat n="vgoahti">
@@ -268,7 +268,7 @@
   <section-def-macros>
     <def-macro n="modify_chunkname" npar="1"
                c="First attempt (may be changed in later stages).
-                  Assumes that chunkname is set to something already, turns eg. SN into til_SN.">
+                  Assumes that chunkname is set to something already, turns eg. prop into til_prop.">
       <choose>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal></test>
@@ -860,8 +860,17 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="verb"/>
       </pattern>
       <action>
+        <let><var n="chunkname"/><lit v="verb"/></let>
+        <choose>
+          <when>
+            <test><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal></test>
+            <let>
+              <var n="chunkname"/><lit v="er"/>
+            </let>
+          </when>
+        </choose>
         <out>
-          <chunk name="verb" case="caseFirstWord">
+          <chunk namefrom="chunkname" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
@@ -880,14 +889,15 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
     
-    <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å lese">
+    <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å lese
+                   Is leat+(š)goahtit possible? (In that case, is it er or har?)">
       <pattern>
         <pattern-item n="verb"/>
         <pattern-item n="vgoahti"/>
       </pattern>
       <action>
         <out>
-          <chunk name="verb" case="caseFirstWord">
+          <chunk name="verb_part_verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
               <tag><clip pos="2" side="sl" part="mode"/></tag>
@@ -928,8 +938,17 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="verb"/>
       </pattern>
       <action>
+        <let><var n="chunkname"/><lit v="adv_verb"/></let>
+        <choose>
+          <when>
+            <test><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal></test>
+            <let>
+              <var n="chunkname"/><lit v="adv_er"/>
+            </let>
+          </when>
+        </choose>
         <out>
-          <chunk name="verb" case="caseFirstWord">
+          <chunk namefrom="chunkname" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
@@ -952,15 +971,15 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: VNEG VCOP VERB: ii leat boahtán => er ikke kommet">
+    <rule comment="REGLA: VNEG VLEAT VERB: ii leat boahtán => er ikke kommet">
       <pattern>
         <pattern-item n="vneg"/>
-        <pattern-item n="vcop"/>
+        <pattern-item n="vleat"/>
         <pattern-item n="verb"/>
       </pattern>
       <action>
         <out>
-          <chunk name="verb" case="caseFirstWord">
+          <chunk name="er_adv_verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>

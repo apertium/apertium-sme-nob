@@ -28,6 +28,8 @@
     <def-cat n="FV">
       <cat-item tags="@+FMAINV"/>
       <cat-item tags="@+FMAINV.*"/>
+      <cat-item tags="@+FAUXV"/>
+      <cat-item tags="@+FAUXV.*"/>
     </def-cat>
     <def-cat n="FOCUS">
       <cat-item tags="@ADVL"/>
@@ -143,13 +145,18 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_leat">
+          <with-param pos="3"/>
+        </call-macro>
         <out>
           <chunk>
             <clip pos="1" part="whole"/>
           </chunk>
           <b pos="1"/>
-          <chunk>
-            <clip pos="3" part="whole"/>
+          <chunk> 
+            <clip pos="3" part="lem"/> 
+            <clip pos="3" part="tags"/> 
+            <clip pos="3" part="chcontent"/> 
           </chunk>
           <b pos="2"/>
           <chunk>
@@ -167,8 +174,10 @@
       </pattern>
       <action>
         <out>
-          <chunk>
-            <clip pos="1" part="whole"/>
+          <chunk> 
+            <clip pos="1" part="lem"/> 
+            <clip pos="1" part="tags"/> 
+            <clip pos="1" part="chcontent"/> 
           </chunk>
           <b pos="1"/>
           <chunk>
@@ -189,9 +198,11 @@
             <clip pos="1" part="whole"/>
           </chunk>
           <b pos="1"/>
-          <chunk>
-            <clip pos="2" part="whole"/>
-          </chunk>
+          <chunk> 
+            <clip pos="2" part="lem"/> 
+            <clip pos="2" part="tags"/> 
+            <clip pos="2" part="chcontent"/> 
+          </chunk> 
         </out>
       </action>
     </rule>
@@ -213,8 +224,10 @@
 <!--             <clip pos="2" part="whole"/> -->
 <!--           </chunk> -->
 <!--           <b pos="2"/> -->
-<!--           <chunk> -->
-<!--             <clip pos="3" part="whole"/> -->
+<!--           <chunk>  -->
+<!--             <clip pos="3" part="lem"/>  -->
+<!--             <clip pos="3" part="tags"/>  -->
+<!--             <clip pos="3" part="chcontent"/>  -->
 <!--           </chunk> -->
 <!--         </out> -->
 <!--       </action> -->
@@ -239,8 +252,10 @@
             <clip pos="1" part="whole"/>
           </chunk>
           <b pos="1"/>
-          <chunk>
-            <clip pos="2" part="whole"/>
+          <chunk> 
+            <clip pos="2" part="lem"/> 
+            <clip pos="2" part="tags"/> 
+            <clip pos="2" part="chcontent"/> 
           </chunk>
           <var n="pro"/>
         </out>
@@ -262,8 +277,10 @@
         </when></choose>        
         <out>
           <var n="pro"/>
-          <chunk>
-            <clip pos="1" part="whole"/>
+          <chunk> 
+            <clip pos="1" part="lem"/> 
+            <clip pos="1" part="tags"/> 
+            <clip pos="1" part="chcontent"/> 
           </chunk>
         </out>
       </action>
