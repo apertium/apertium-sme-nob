@@ -94,11 +94,50 @@
     <def-attr n="mode">
       <attr-item tags="Qst"/>
     </def-attr>
+    <def-attr n="syn_label">
+      <attr-item tags="@X"/>
+      <attr-item tags="@HNOUN"/>
+      <attr-item tags="@CNP"/>
+      <attr-item tags="@CVP"/>
+      <attr-item tags="@→N"/>
+      <attr-item tags="@←OBJ"/>
+      <attr-item tags="@OBJ"/>
+      <attr-item tags="@-F←OBJ"/>
+      <attr-item tags="@SUBJ→"/>
+      <attr-item tags="@←SUBJ"/>
+      <attr-item tags="@SPRED→"/>
+      <attr-item tags="@←SPRED"/>
+      <attr-item tags="@\+FMAINV"/>
+      <attr-item tags="@-FMAINV"/>
+      <attr-item tags="@\+FAUXV"/>
+      <attr-item tags="@ADVL"/>
+      <attr-item tags="@←ADVL"/>
+      <attr-item tags="@ADVL→"/>
+      <attr-item tags="@A←"/>
+      <attr-item tags="@→A"/>
+      <attr-item tags="@HAB"/>
+      <attr-item tags="@Num←"/>
+      <attr-item tags="@→Num"/>
+      <attr-item tags="@INTERJ"/>
+      <attr-item tags="@PCLE"/>
+      <attr-item tags="@OPRED→"/>
+      <attr-item tags="@←OPRED"/>
+      <attr-item tags="@→P"/>
+      <attr-item tags="@P←"/>
+      <attr-item tags="@-FSUBJ→"/>
+      <attr-item tags="@-FOBJ→"/>
+      <attr-item tags="@-F←OBJ"/>
+    </def-attr>
+    <def-attr n="a_leat">
+      <attr-item tags="være"/>
+      <attr-item tags="ha"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
     <def-var n="nombre"/>
     <def-var n="genere"/>
+    <def-var n="leat"/>
     <def-var n="pro" c="in case it was dropped"/>
   </section-def-vars>
 
@@ -131,7 +170,20 @@
           <lit v="$}$"/>
         </concat>
       </let>        
-    </def-macro>    
+    </def-macro>
+    <def-macro n="modify_leat" npar="1" c="arg.1: verb chunk">
+      <choose>
+        <when>
+          <test>
+            <equal>
+              <clip pos="1" part="syn_label"/>
+              <lit-tag v="@+FAUXV"/>
+            </equal>
+          </test>
+          <let><clip pos="1" part="a_leat"/><lit-tag v="ha"/></let>
+        </when>
+      </choose>        
+    </def-macro>
   </section-def-macros>
   
   <section-rules>
@@ -145,18 +197,14 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_leat">
-          <with-param pos="3"/>
-        </call-macro>
+        <call-macro n="modify_leat"><with-param pos="3"/></call-macro>
         <out>
           <chunk>
             <clip pos="1" part="whole"/>
           </chunk>
           <b pos="1"/>
-          <chunk> 
-            <clip pos="3" part="lem"/> 
-            <clip pos="3" part="tags"/> 
-            <clip pos="3" part="chcontent"/> 
+          <chunk>
+            <clip pos="3" part="whole"/>
           </chunk>
           <b pos="2"/>
           <chunk>
@@ -173,16 +221,15 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="modify_leat"><with-param pos="2"/></call-macro>
         <out>
-          <chunk> 
-            <clip pos="1" part="lem"/> 
-            <clip pos="1" part="tags"/> 
-            <clip pos="1" part="chcontent"/> 
+          <chunk>
+            <clip pos="1" part="whole"/>
           </chunk>
           <b pos="1"/>
-          <chunk>
-            <clip pos="2" part="whole"/>
-          </chunk>
+          <chunk> 
+            <clip pos="2" part="whole"/> 
+          </chunk> 
         </out>
       </action>
     </rule>
@@ -193,16 +240,15 @@
         <pattern-item n="SN-maybe-Rsubj"/>
       </pattern>
       <action>
+        <call-macro n="modify_leat"><with-param pos="1"/></call-macro>
         <out>
-          <chunk>
+          <chunk> 
             <clip pos="1" part="whole"/>
           </chunk>
           <b pos="1"/>
-          <chunk> 
-            <clip pos="2" part="lem"/> 
-            <clip pos="2" part="tags"/> 
-            <clip pos="2" part="chcontent"/> 
-          </chunk> 
+          <chunk>
+            <clip pos="2" part="whole"/>
+          </chunk>
         </out>
       </action>
     </rule>
@@ -215,6 +261,7 @@
 <!--         <pattern-item n="FV"/> -->
 <!--       </pattern> -->
 <!--       <action> -->
+<!--         <call-macro n="modify_leat"><with-param pos="3"/></call-macro> -->
 <!--         <out> -->
 <!--           <chunk> -->
 <!--             <clip pos="1" part="whole"/> -->
@@ -225,9 +272,7 @@
 <!--           </chunk> -->
 <!--           <b pos="2"/> -->
 <!--           <chunk>  -->
-<!--             <clip pos="3" part="lem"/>  -->
-<!--             <clip pos="3" part="tags"/>  -->
-<!--             <clip pos="3" part="chcontent"/>  -->
+<!--             <clip pos="3" part="whole"/>  -->
 <!--           </chunk> -->
 <!--         </out> -->
 <!--       </action> -->
@@ -240,6 +285,7 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="modify_leat"><with-param pos="2"/></call-macro>
         <call-macro n="set_pro">
           <with-param pos="2"/>
         </call-macro>
@@ -253,9 +299,7 @@
           </chunk>
           <b pos="1"/>
           <chunk> 
-            <clip pos="2" part="lem"/> 
-            <clip pos="2" part="tags"/> 
-            <clip pos="2" part="chcontent"/> 
+            <clip pos="2" part="whole"/>
           </chunk>
           <var n="pro"/>
         </out>
@@ -268,6 +312,7 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="modify_leat"><with-param pos="1"/></call-macro>
         <call-macro n="set_pro">
           <with-param pos="1"/>
         </call-macro>
@@ -278,9 +323,7 @@
         <out>
           <var n="pro"/>
           <chunk> 
-            <clip pos="1" part="lem"/> 
-            <clip pos="1" part="tags"/> 
-            <clip pos="1" part="chcontent"/> 
+            <clip pos="1" part="whole"/>
           </chunk>
         </out>
       </action>

@@ -30,6 +30,15 @@
       <cat-item name="som_coor"/>
       <cat-item name="til_coor"/>
     </def-cat>
+    <def-cat n="verb">
+      <cat-item name="verb"/>
+    </def-cat>
+    <def-cat n="adv_verb">
+      <cat-item name="adv_verb"/>
+    </def-cat>
+    <def-cat n="verb_adv_verb">
+      <cat-item name="verb_adv_verb"/>
+    </def-cat>
     <def-cat n="adj">
       <cat-item name="adj"/>
     </def-cat>
@@ -112,6 +121,27 @@
       <attr-item tags="ind"/>
       <attr-item tags="def"/>
     </def-attr>
+    <def-attr n="a_leat">
+      <attr-item tags="være"/>
+      <attr-item tags="ha"/>
+    </def-attr>
+    <def-attr n="a_verb">
+      <attr-item tags="V"/>
+      <attr-item tags="vblex"/>
+    </def-attr>
+    <def-attr n="temps">
+      <attr-item tags="Ind.Prs"/>
+      <attr-item tags="Ind.Prt"/>
+      <attr-item tags="pres"/>
+      <attr-item tags="pret"/>
+      <attr-item tags="Inf"/>
+      <attr-item tags="inf"/>
+      <attr-item tags="PrfPrc"/>
+      <attr-item tags="pp"/>
+    </def-attr>
+    <def-attr n="voice">
+      <attr-item tags="pass"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
@@ -120,6 +150,13 @@
   </section-def-vars>
 
   <section-def-macros>
+    <def-macro n="modify_lemh_leat" npar="1" c="bidix gives 'være' so we don't set that">
+      <choose><when>
+        <test><equal><clip pos="0" part="a_leat"/><lit-tag v="ha"/></equal></test>
+        <let><clip pos="1" part="lemh"/><lit v="ha"/></let>
+      </when></choose>
+    </def-macro>
+    
     <def-macro n="clean_adj_tags" npar="1"
                c="defness is only on superlatives or singular pp/posi in nob
                   If we don't have any number, give plural (no defnes) a shot.">
@@ -164,6 +201,7 @@
         </when>
       </choose>
     </def-macro>
+    
     <def-macro n="out_case_prep" npar="2"
                c="arg.1: chunk, arg.2: prepositional object
                   Possibly output a preposition, if the chunk name is prepended by one.
@@ -336,6 +374,60 @@
           <b/>
           <lu>
             <clip pos="2" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+
+    <!-- VERBS (possibly change 'er' to 'har') -->
+    <rule comment="CHUNK: verb">
+      <pattern>
+        <pattern-item n="verb"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_lemh_leat"><with-param pos="1"/></call-macro>
+        <out>
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: adv_verb">
+      <pattern>
+        <pattern-item n="adv_verb"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_lemh_leat"><with-param pos="2"/></call-macro>
+        <out>
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+          <b pos="1"/>
+          <lu>
+            <clip pos="2" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: verb_adv_verb">
+      <pattern>
+        <pattern-item n="verb_adv_verb"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_lemh_leat"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_lemh_leat"><with-param pos="3"/></call-macro>
+        <out>
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+          <b pos="1"/>
+          <lu>
+            <clip pos="2" part="whole"/>
+          </lu>
+          <b pos="2"/>
+          <lu>
+            <clip pos="3" part="whole"/>
           </lu>
         </out>
       </action>
