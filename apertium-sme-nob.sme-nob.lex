@@ -6,7 +6,7 @@ LIST @+FAUXV = @+FAUXV ;
 
 SECTION
 
-SUBSTITUTE ("leat"ri V)    ("leat"ri V :1) ("leat"ri V IV) ; # default
-SUBSTITUTE ("leat"ri V :1) ("leat"ri V :0) ("leat"ri V IV) (-1 @HAB) ;
-SUBSTITUTE ("leat"ri V :1) ("leat"ri V :0) ("leat"ri V IV) (0 @+FAUXV) ;
+SUBSTITUTE ("leat" V)    ("leat" V :1) ("leat" V IV) ; # default
+SUBSTITUTE ("leat" V :1) ("leat" V :0) ("leat" V IV) (-1 @HAB) ;
+SUBSTITUTE ("leat" V :1) ("leat" V :0) ("leat" V IV) (0 @+FAUXV) ;
 
