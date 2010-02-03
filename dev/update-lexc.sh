@@ -31,7 +31,7 @@ function grepextract {
     local LEXC=$2;
     local TMP=$3;
     # global $OUTFILE
-    cat $LEXC | sed 's/[0^#]//g' > $TMP;
+    cat $LEXC | sed 's/0//g' | sed 's/\^//g' | sed 's/#//g' > $TMP;
     for lema in `cat $EXP | sed 's/ /_/g' | grep "$GREP" | cut -f1 -d'<' | sort | uniq`; do
 	lineno=`grep -nH -e "^ \?$lema+" -e "^ \?$lema:" -e "^ \?$lema " $TMP | cut -f2 -d':'`;
 	# for i in $lineno, since we may have several entries per lema
