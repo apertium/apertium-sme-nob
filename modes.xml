@@ -8,8 +8,11 @@
       <program name="cg-proc -w">
         <file name="sme-nob.rlx.bin"/> 
       </program>
-      <program name="apertium-tagger -g $2">
+      <program name="apertium-tagger -p -g $2">
         <file name="sme-nob.prob"/>
+      </program>
+      <program name="cg-proc -n">
+        <file name="sme-nob.lex.bin"/>
       </program>
       <program name="apertium-pretransfer"/> 
       <program name="apertium-transfer">
@@ -44,8 +47,11 @@
       <program name="cg-proc -w">
         <file name="sme-nob.rlx.bin"/> 
       </program>
-      <program name="apertium-tagger -g $2">
+      <program name="apertium-tagger -p -g $2">
         <file name="sme-nob.prob"/>
+      </program>
+      <program name="cg-proc -n">
+        <file name="sme-nob.lex.bin"/>
       </program>
       <program name="apertium-pretransfer"/> 
       <program name="apertium-transfer">
@@ -76,8 +82,11 @@
       <program name="cg-proc -w">
         <file name="sme-nob.rlx.bin"/> 
       </program>
-      <program name="apertium-tagger -g $2">
+      <program name="apertium-tagger -p -g $2">
         <file name="sme-nob.prob"/>
+      </program>
+      <program name="cg-proc -n">
+        <file name="sme-nob.lex.bin"/>
       </program>
       <program name="apertium-pretransfer"/> 
       <program name="apertium-transfer">
@@ -104,8 +113,11 @@
       <program name="cg-proc -w">
         <file name="sme-nob.rlx.bin"/> 
       </program>
-      <program name="apertium-tagger -g $2">
+      <program name="apertium-tagger -p -g $2">
         <file name="sme-nob.prob"/>
+      </program>
+      <program name="cg-proc -n">
+        <file name="sme-nob.lex.bin"/>
       </program>
       <program name="apertium-pretransfer"/> 
       <program name="apertium-transfer">
@@ -128,14 +140,34 @@
       <program name="cg-proc -w">
         <file name="sme-nob.rlx.bin"/> 
       </program>
-      <program name="apertium-tagger -g $2">
+      <program name="apertium-tagger -p -g $2">
         <file name="sme-nob.prob"/>
+      </program>
+      <program name="cg-proc -n">
+        <file name="sme-nob.lex.bin"/>
       </program>
       <program name="apertium-pretransfer"/> 
       <program name="apertium-transfer">
         <file name="apertium-sme-nob.sme-nob.t1x"/>
         <file name="sme-nob.t1x.bin"/>
         <file name="sme-nob.autobil.bin"/>
+      </program>
+    </pipeline>
+  </mode>
+
+  <mode name="sme-nob-lex">
+    <pipeline>
+      <program name="hfst-lookup -f apertium">
+        <file name="sme-nob.automorf.hfst"/>
+      </program>
+      <program name="cg-proc -w">
+        <file name="sme-nob.rlx.bin"/> 
+      </program>
+      <program name="apertium-tagger -p -g $2">
+        <file name="sme-nob.prob"/>
+      </program>
+      <program name="cg-proc -n">
+        <file name="sme-nob.lex.bin"/>
       </program>
     </pipeline>
   </mode>
@@ -148,7 +180,7 @@
       <program name="cg-proc -w">
         <file name="sme-nob.rlx.bin"/> 
       </program>
-      <program name="apertium-tagger -g $2">
+      <program name="apertium-tagger -p -g $2">
         <file name="sme-nob.prob"/>
       </program>
     </pipeline>
@@ -161,9 +193,5 @@
       </program>
     </pipeline>
   </mode>
-
-
-
-
 
 </modes>
