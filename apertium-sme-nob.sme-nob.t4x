@@ -210,7 +210,12 @@
           <let><var n="case_prep"/><lit v="som"/></let>
         </when>
         <when>
+          <test><begins-with><clip pos="1" part="lemh"/><lit v="sin"/></begins-with></test>
+          <let><var n="case_prep"/><lit v=""/></let>
+        </when>
+        <when>
           <test><begins-with><clip pos="1" part="lemh"/><lit v="til"/></begins-with></test>
+          <let><clip pos="2" part="case"/><lit v=""/></let>
           <let><var n="case_prep"/><lit v="til"/></let>
         </when>
       </choose>

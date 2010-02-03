@@ -132,6 +132,9 @@
       <attr-item tags="ine"/>
       <attr-item tags="ela"/>
     </def-attr>
+    <def-attr n="gen-case">
+      <attr-item tags="gen"/>
+    </def-attr>
     <def-attr n="art">
       <attr-item tags="def"/>
       <attr-item tags="ind"/>
@@ -293,6 +296,24 @@
           <let>
             <var n="chunkname"/><concat><lit v="til"/><lit v="_"/><var n="chunkname"/></concat>
           </let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal></test>
+          <choose>
+            <when>
+              <test>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→N"/></equal>
+              </test>
+              <let>
+                <var n="chunkname"/><concat><lit v="sin"/><lit v="_"/><var n="chunkname"/></concat>
+              </let>
+            </when>
+            <otherwise>
+              <let>
+                <var n="chunkname"/><concat><lit v="til"/><lit v="_"/><var n="chunkname"/></concat>
+              </let>
+            </otherwise>
+          </choose>
         </when>
       </choose>
     </def-macro>
@@ -504,14 +525,15 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
-              <tag><clip pos="1" side="tl" part="case"/></tag>
               <tag><lit-tag v="ind"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="gen-case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -533,15 +555,16 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
-              <tag><clip pos="1" side="tl" part="case"/></tag>
               <tag><lit-tag v="ind"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="ind"/>
+              <lit-tag v="4"/>
+              <clip pos="1" side="tl" part="gen-case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -565,8 +588,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
-              <tag><clip pos="1" side="tl" part="case"/></tag>
               <tag><lit-tag v="ind"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -581,8 +604,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="5"/>
-<!--               <clip pos="2" side="tl" part="art" link-to="5"/> -->
+              <lit-tag v="4"/>
+              <clip pos="1" side="tl" part="gen-case"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -606,8 +629,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
               <tag><clip pos="2" side="tl" part="nbr"/></tag>
-              <tag><clip pos="2" side="tl" part="case"/></tag>
               <tag><lit-tag v="ind"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -621,7 +644,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
-              <lit-tag v="ind"/>
+              <lit-tag v="4"/>
+              <clip pos="2" side="tl" part="gen-case"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -697,6 +721,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="3" side="tl" part="pers"/></tag>
               <tag><clip pos="3" side="tl" part="gen"/></tag>
               <tag><clip pos="3" side="tl" part="nbr"/></tag>
+              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="3" side="tl" part="case"/></tag>
             </tags>
             <lu>
@@ -725,7 +750,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="3" side="tl" part="a_nom"/>
               <clip pos="3" side="tl" part="gen"/>
               <clip pos="3" side="tl" part="nbr"/>
-              <lit-tag v="ind"/>
+              <lit-tag v="6"/>
+              <clip pos="3" side="tl" part="gen-case"/>
               <clip pos="3" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -752,8 +778,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
               <tag><clip pos="2" side="tl" part="gen"/></tag>
               <tag><clip pos="2" side="tl" part="nbr"/></tag>
-              <tag><clip pos="2" side="tl" part="case"/></tag>
               <tag><var n="c_defnes"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -770,7 +796,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
-              <lit-tag v="6"/>
+              <lit-tag v="5"/>
+              <clip pos="2" side="tl" part="gen-case"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
