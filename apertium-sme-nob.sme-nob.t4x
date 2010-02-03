@@ -198,8 +198,10 @@
     
     <def-macro n="out_case_prep" npar="2"
                c="arg.1: chunk, arg.2: prepositional object
-                  Possibly output a preposition, if the chunk name is prepended by one.
-                  Currently handling exceptions to case prepositions here (loc gets 'i')">
+                  1. If the chunk name is prepended by a preposition, set that as case_prep
+                  2. Handle exceptions based on prepositional objects (loc + top gets 'i')
+                  3. Possibly output a preposition
+                  4. Finally, the prepositional object might have a genitive case; we remove that unless the chunk name begins with 'sin'">
       <let><var n="case_prep"/><lit v=""/></let>
       <choose>
         <when>
@@ -215,12 +217,7 @@
           <let><var n="case_prep"/><lit v="som"/></let>
         </when>
         <when>
-          <test><begins-with><clip pos="1" part="lemh"/><lit v="sin"/></begins-with></test>
-          <let><var n="case_prep"/><lit v=""/></let>
-        </when>
-        <when>
           <test><begins-with><clip pos="1" part="lemh"/><lit v="til"/></begins-with></test>
-          <let><clip pos="2" part="case"/><lit v=""/></let>
           <let><var n="case_prep"/><lit v="til"/></let>
         </when>
       </choose>
@@ -245,6 +242,14 @@
           <b/>
         </out>
       </when></choose>
+      <choose>
+        <when>
+          <test><not>
+            <begins-with><clip pos="1" part="lemh"/><lit v="sin"/></begins-with>
+          </not></test>
+          <let><clip pos="2" part="case"/><lit v=""/></let>
+        </when>
+      </choose>
     </def-macro>
   </section-def-macros>
 
