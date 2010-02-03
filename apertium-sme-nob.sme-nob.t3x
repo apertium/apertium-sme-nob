@@ -313,6 +313,13 @@
         <pattern-item n="adpos"/>
       </pattern>
       <action>
+        <let><clip pos="1" part="case"/><lit v=""/></let>
+        <choose> <!--todo: how can we fix this without listing all possible chunk names?-->
+          <when>
+            <test><ends-with><clip pos="1" part="lemh"/><lit v="adj_nom"/></ends-with></test>
+            <let><clip pos="1" part="lemh"/><lit v="adj_nom"/></let>
+          </when>
+        </choose>
         <out>
           <chunk>
             <clip pos="2" part="whole"/>
