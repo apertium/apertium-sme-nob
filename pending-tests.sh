@@ -37,9 +37,9 @@ for LINE in `paste $SRCLIST $TRGLIST $TSTLIST | $SED 's/ /%_%/g' | $SED 's/\t/!/
 	fi
 	echo $TRG | grep "^${TST}$" > /dev/null;	
 	if [ $? -eq 1 ]; then
-		$ECHOE $mode"\t  "$SRC"\n\t- $TRG\n\t+ "$TST"\n\n";
+		$ECHOE $mode"\t  ${SRC}\n\t- ${TRG}\n\t+ ${TST}\n\n";
 	else
-		$ECHOE $mode"\t  "$SRC"\nWORKS\t  $TST\n\n";
+		$ECHOE $mode"\t  ${SRC}\nWORKS\t  ${TST}\n\n";
 		CORRECT=`expr $CORRECT + 1`;
 	fi
 	TOTAL=`expr $TOTAL + 1`;
@@ -52,4 +52,4 @@ if [ -x /usr/bin/calc ]; then
 	echo $WORKING"%";
 fi
 
-rm $SRCLIST $TRGLIST $TSTLIST;
+#rm $SRCLIST $TRGLIST $TSTLIST;
