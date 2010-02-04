@@ -244,9 +244,10 @@
       </when></choose>
       <choose>
         <when>
-          <test><not>
-            <begins-with><clip pos="1" part="lemh"/><lit v="sin"/></begins-with>
-          </not></test>
+          <test><and>
+            <equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal>
+            <not><begins-with><clip pos="1" part="lemh"/><lit v="sin"/></begins-with></not>
+          </and></test>
           <let><clip pos="2" part="case"/><lit v=""/></let>
         </when>
       </choose>
