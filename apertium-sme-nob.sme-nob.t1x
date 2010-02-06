@@ -407,23 +407,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </choose>
     </def-macro>
 
- <!-- the following copied in from Kastrup session, check. -->
-    <def-macro n="set_adj_def2" npar="2">
-      <call-macro n="set_adj_def">
-	<with-param pos="2"/>
-      </call-macro>
-      <choose>
-	<when>
-	  <test>
-	    <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
-	  </test>
-	  <let><var n="c_defnes"/><lit-tag v="def"/></let>
-	  <let><clip pos="2" side="tl" part="gen"/><lit v=""/></let>
-	</when>
-      </choose>
-    </def-macro>
-<!-- end of copyed-in -->
-
     <def-macro n="set_adj_def" npar="1" c="attributive superlatives are 
 always(?) def in nob; predicative superlatives are only if they have a determiner first
                  1. min viktigste.def oppgave
@@ -469,6 +452,21 @@ always(?) def in nob; predicative superlatives are only if they have a determine
             </otherwise>
           </choose>
         </when>
+      </choose>
+    </def-macro>
+
+    <def-macro n="set_adj_def2" npar="2" c="arg.1: determiner, arg.2: adjective">
+      <call-macro n="set_adj_def">
+	<with-param pos="2"/>
+      </call-macro>
+      <choose>
+	<when>
+	  <test>
+	    <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
+	  </test>
+	  <let><var n="c_defnes"/><lit-tag v="def"/></let>
+	  <let><clip pos="2" side="tl" part="gen"/><lit v=""/></let>
+	</when>
       </choose>
     </def-macro>
 
