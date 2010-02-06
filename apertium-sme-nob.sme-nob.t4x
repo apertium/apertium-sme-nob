@@ -245,8 +245,8 @@
       <choose>
         <when>
           <test><and>
-            <equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal>
-            <not><begins-with><clip pos="1" part="lemh"/><lit v="sin"/></begins-with></not>
+            <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
+            <not><equal><clip pos="1" part="a_case-prep"/><lit v="sin"/></equal></not>
           </and></test>
           <let><clip pos="2" part="case"/><lit v=""/></let>
         </when>
