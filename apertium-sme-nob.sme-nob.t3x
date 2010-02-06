@@ -60,6 +60,13 @@
       <attr-item tags="ine"/>
       <attr-item tags="ela"/>
     </def-attr>
+    <def-attr n="a_case-prep">
+      <attr-item tags="av"/>
+      <attr-item tags="med"/>
+      <attr-item tags="sin"/>
+      <attr-item tags="som"/>
+      <attr-item tags="til"/>
+    </def-attr>
     <def-attr n="pers">
       <attr-item tags="p1"/>
       <attr-item tags="p2"/>
@@ -305,21 +312,14 @@
       </action>
     </rule>
     
-    <rule comment="REGLA: SN-post adpos -- garra dálkki geažil => på_grunn_av dårlig vær
-                   TODO: remove case-prep from SN-post chunkname
-                   since we have an adposition already">
+    <rule comment="REGLA: SN-post adpos -- garra dálkki geažil => på_grunn_av dårlig vær">
       <pattern>
         <pattern-item n="SN-post"/>
         <pattern-item n="adpos"/>
       </pattern>
       <action>
         <let><clip pos="1" part="case"/><lit v=""/></let>
-        <choose> <!--todo: how can we fix this without listing all possible chunk names?-->
-          <when>
-            <test><ends-with><clip pos="1" part="lemh"/><lit v="adj_nom"/></ends-with></test>
-            <let><clip pos="1" part="lemh"/><lit v="adj_nom"/></let>
-          </when>
-        </choose>
+        <let><clip pos="1" part="a_case-prep"/><lit-tag v="sin"/></let>
         <out>
           <chunk>
             <clip pos="2" part="whole"/>

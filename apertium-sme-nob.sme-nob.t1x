@@ -135,6 +135,13 @@
     <def-attr n="gen-case">
       <attr-item tags="gen"/>
     </def-attr>
+    <def-attr n="a_case-prep">
+      <attr-item tags="av"/>
+      <attr-item tags="med"/>
+      <attr-item tags="sin"/>
+      <attr-item tags="som"/>
+      <attr-item tags="til"/>
+    </def-attr>
     <def-attr n="art">
       <attr-item tags="def"/>
       <attr-item tags="ind"/>
@@ -240,7 +247,7 @@
     <def-var n="pron_case"/>
     <def-var n="c_defnes"/>
     <def-var n="c_tag_pos"/>
-    <def-var n="chunkname"/>   <!--eg. with case-chosen preposition prepended-->
+    <def-var n="case-prep"/>   
   </section-def-vars>
   <section-def-lists>
     <def-list n="nt-verbs">
@@ -269,32 +276,34 @@
   </section-def-lists>
 
   <section-def-macros>
-    <def-macro n="modify_chunkname" npar="1"
-               c="First attempt (may be changed in later stages).
-                  Assumes that chunkname is set to something already, turns eg. prop into til_prop.">
+    <def-macro n="set_case-prep" npar="1"
+               c="First attempt (may be changed in later stages).">
+      <let>
+        <var n="case-prep"/><lit v=""/>
+      </let>
       <choose>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal></test>
           <let>
-            <var n="chunkname"/><concat><lit v="av"/><lit v="_"/><var n="chunkname"/></concat>
+            <var n="case-prep"/><lit-tag v="av"/>
           </let>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Com"/></equal></test>
           <let>
-            <var n="chunkname"/><concat><lit v="med"/><lit v="_"/><var n="chunkname"/></concat>
+            <var n="case-prep"/><lit-tag v="med"/>
           </let>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></test>
           <let>
-            <var n="chunkname"/><concat><lit v="som"/><lit v="_"/><var n="chunkname"/></concat>
+            <var n="case-prep"/><lit-tag v="som"/>
           </let>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ill"/></equal></test>
           <let>
-            <var n="chunkname"/><concat><lit v="til"/><lit v="_"/><var n="chunkname"/></concat>
+            <var n="case-prep"/><lit-tag v="til"/>
           </let>
         </when>
         <when>
@@ -305,12 +314,12 @@
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→N"/></equal>
               </test>
               <let>
-                <var n="chunkname"/><concat><lit v="sin"/><lit v="_"/><var n="chunkname"/></concat>
+                <var n="case-prep"/><lit-tag v="sin"/>
               </let>
             </when>
             <otherwise>
               <let>
-                <var n="chunkname"/><concat><lit v="til"/><lit v="_"/><var n="chunkname"/></concat>
+                <var n="case-prep"/><lit-tag v="til"/>
               </let>
             </otherwise>
           </choose>
@@ -532,16 +541,16 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
-        <let><var n="chunkname"/><lit v="prop"/></let>
-        <call-macro n="modify_chunkname"><with-param pos="1"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
         <out>
-          <chunk namefrom="chunkname" case="caseFirstWord">
+          <chunk name="prop" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><var n="case-prep"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -561,17 +570,17 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <let><var n="chunkname"/><lit v="nom"/></let>
-        <call-macro n="modify_chunkname"><with-param pos="1"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
 
         <out>
-          <chunk namefrom="chunkname" case="caseFirstWord">
+          <chunk name="nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><var n="case-prep"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -594,17 +603,17 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="nom_gen"/>
       </pattern>
       <action>
-        <let><var n="chunkname"/><lit v="num_nom"/></let>
-        <call-macro n="modify_chunkname"><with-param pos="1"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
 
         <out>
-          <chunk namefrom="chunkname" case="caseFirstWord">
+          <chunk name="num_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><var n="case-prep"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -635,16 +644,16 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <let><var n="chunkname"/><lit v="nomcmpd"/></let>
-        <call-macro n="modify_chunkname"><with-param pos="2"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
         <out>
-          <chunk namefrom="chunkname" case="caseFirstWord">
+          <chunk name="nomcmpd" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
               <tag><clip pos="2" side="tl" part="nbr"/></tag>
               <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="2" side="tl" part="case"/></tag>
+              <tag><var n="case-prep"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -678,10 +687,9 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_pron_gen_num"><with-param pos="1"/></call-macro>
 
-        <let><var n="chunkname"/><lit v="pron"/></let>
-        <call-macro n="modify_chunkname"><with-param pos="1"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
         <out>
-          <chunk namefrom="chunkname" case="caseFirstWord">
+          <chunk name="pron" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
@@ -689,6 +697,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="1" side="tl" part="gen"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><var n="case-prep"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -724,11 +733,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <with-param pos="2"/>
         </call-macro>
 
-        <let><var n="chunkname"/><lit v="pron_adj_nom"/></let>
-        <call-macro n="modify_chunkname"><with-param pos="3"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="3"/></call-macro>
         
         <out>
-          <chunk namefrom="chunkname" case="caseFirstWord">
+          <chunk name="pron_adj_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="3" side="sl" part="syn_label"/></tag>
@@ -737,6 +745,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="3" side="tl" part="nbr"/></tag>
               <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="3" side="tl" part="case"/></tag>
+              <tag><var n="case-prep"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -779,14 +788,13 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <let><var n="chunkname"/><lit v="adj_nom"/></let>
-        <call-macro n="modify_chunkname"><with-param pos="2"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
         
         <call-macro n="set_adj_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_adj_gen"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_adj_def"><with-param pos="1"/></call-macro>
         <out>
-          <chunk namefrom="chunkname" case="caseFirstWord">
+          <chunk name="adj_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
@@ -794,6 +802,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="2" side="tl" part="nbr"/></tag>
               <tag><var n="c_defnes"/></tag>
               <tag><clip pos="2" side="tl" part="case"/></tag>
+              <tag><var n="case-prep"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>

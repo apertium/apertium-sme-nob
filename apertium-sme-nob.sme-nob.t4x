@@ -96,6 +96,13 @@
       <attr-item tags="ine"/>
       <attr-item tags="ela"/>
     </def-attr>
+    <def-attr n="a_case-prep">
+      <attr-item tags="av"/>
+      <attr-item tags="med"/>
+      <attr-item tags="sin"/>
+      <attr-item tags="som"/>
+      <attr-item tags="til"/>
+    </def-attr>
     <def-attr n="gen">
       <attr-item tags="m"/>
       <attr-item tags="f"/>
@@ -147,7 +154,7 @@
 
   <section-def-vars>
     <def-var n="c_defnes"/>
-    <def-var n="case_prep"/>
+    <def-var n="case-prep"/>
   </section-def-vars>
 
   <section-def-macros>    
@@ -196,47 +203,47 @@
       </choose>
     </def-macro>
     
-    <def-macro n="out_case_prep" npar="2"
+    <def-macro n="out_case-prep" npar="2"
                c="arg.1: chunk, arg.2: prepositional object
-                  1. If the chunk name is prepended by a preposition, set that as case_prep
+                  1. If the chunk name is prepended by a preposition, set that as case-prep
                   2. Handle exceptions based on prepositional objects (loc + top gets 'i')
                   3. Possibly output a preposition
                   4. Finally, the prepositional object might have a genitive case; we remove that unless the chunk name begins with 'sin'">
-      <let><var n="case_prep"/><lit v=""/></let>
+      <let><var n="case-prep"/><lit v=""/></let>
       <choose>
         <when>
-          <test><begins-with><clip pos="1" part="lemh"/><lit v="av"/></begins-with></test>
-          <let><var n="case_prep"/><lit v="av"/></let>
+          <test><equal><clip pos="1" part="a_case-prep"/><lit-tag v="av"/></equal></test>
+          <let><var n="case-prep"/><lit v="av"/></let>
         </when>
         <when>
-          <test><begins-with><clip pos="1" part="lemh"/><lit v="med"/></begins-with></test>
-          <let><var n="case_prep"/><lit v="med"/></let>
+          <test><equal><clip pos="1" part="a_case-prep"/><lit-tag v="med"/></equal></test>
+          <let><var n="case-prep"/><lit v="med"/></let>
         </when>
         <when>
-          <test><begins-with><clip pos="1" part="lemh"/><lit v="som"/></begins-with></test>
-          <let><var n="case_prep"/><lit v="som"/></let>
+          <test><equal><clip pos="1" part="a_case-prep"/><lit-tag v="som"/></equal></test>
+          <let><var n="case-prep"/><lit v="som"/></let>
         </when>
         <when>
-          <test><begins-with><clip pos="1" part="lemh"/><lit v="til"/></begins-with></test>
-          <let><var n="case_prep"/><lit v="til"/></let>
+          <test><equal><clip pos="1" part="a_case-prep"/><lit-tag v="til"/></equal></test>
+          <let><var n="case-prep"/><lit v="til"/></let>
         </when>
       </choose>
       <choose><when>
         <test><and>
-          <equal><var n="case_prep"/><lit v="av"/></equal>
+          <equal><var n="case-prep"/><lit v="av"/></equal>
           <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
           <equal><clip pos="2" part="a_nom"/><lit-tag v="np.top"/></equal>
           <!-- todo: "på øya", copy def-list from nb-nn.t1x -->
         </and></test>
-        <let><var n="case_prep"/><lit v="i"/></let>
+        <let><var n="case-prep"/><lit v="i"/></let>
       </when></choose>
       <choose><when>
         <test><not><equal>
-          <var n="case_prep"/><lit v=""/>
+          <var n="case-prep"/><lit v=""/>
         </equal></not></test>
         <out>
           <lu>
-            <var n="case_prep"/>
+            <var n="case-prep"/>
             <lit-tag v="pr"/>
           </lu>
           <b/>
@@ -262,7 +269,7 @@
         <pattern-item n="prop"/>
       </pattern>
       <action>
-        <call-macro n="out_case_prep">
+        <call-macro n="out_case-prep">
           <with-param pos="0"/>
           <with-param pos="1"/>
         </call-macro>
@@ -279,7 +286,7 @@
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <call-macro n="out_case_prep">
+        <call-macro n="out_case-prep">
           <with-param pos="0"/>
           <with-param pos="1"/>
         </call-macro>
@@ -296,7 +303,7 @@
         <pattern-item n="pron"/>
       </pattern>
       <action>
-        <call-macro n="out_case_prep">
+        <call-macro n="out_case-prep">
           <with-param pos="0"/>
           <with-param pos="1"/>
         </call-macro>
@@ -313,7 +320,7 @@
         <pattern-item n="coor"/>
       </pattern>
       <action>
-        <call-macro n="out_case_prep">
+        <call-macro n="out_case-prep">
           <with-param pos="0"/>
           <with-param pos="1"/>
         </call-macro>
@@ -358,7 +365,7 @@
         <pattern-item n="adj_nom"/>
       </pattern>
       <action>
-        <call-macro n="out_case_prep">
+        <call-macro n="out_case-prep">
           <with-param pos="0"/>
           <with-param pos="2"/>
         </call-macro>
