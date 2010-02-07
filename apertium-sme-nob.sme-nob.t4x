@@ -203,57 +203,14 @@
       </choose>
     </def-macro>
     
-    <def-macro n="out_case-prep" npar="2"
+    <def-macro n="clean_case" npar="2"
                c="arg.1: chunk, arg.2: prepositional object
-                  1. If the chunk name is prepended by a preposition, set that as case-prep
-                  2. Handle exceptions based on prepositional objects (loc + top gets 'i')
-                  3. Possibly output a preposition
-                  4. Finally, the prepositional object might have a genitive case; we remove that unless the chunk name begins with 'sin'">
-      <let><var n="case-prep"/><lit v=""/></let>
-      <choose>
-        <when>
-          <test><equal><clip pos="1" part="a_case-prep"/><lit-tag v="av"/></equal></test>
-          <let><var n="case-prep"/><lit v="av"/></let>
-        </when>
-        <when>
-          <test><equal><clip pos="1" part="a_case-prep"/><lit-tag v="med"/></equal></test>
-          <let><var n="case-prep"/><lit v="med"/></let>
-        </when>
-        <when>
-          <test><equal><clip pos="1" part="a_case-prep"/><lit-tag v="som"/></equal></test>
-          <let><var n="case-prep"/><lit v="som"/></let>
-        </when>
-        <when>
-          <test><equal><clip pos="1" part="a_case-prep"/><lit-tag v="til"/></equal></test>
-          <let><var n="case-prep"/><lit v="til"/></let>
-        </when>
-      </choose>
-      <choose><when>
-        <test><and>
-          <equal><var n="case-prep"/><lit v="av"/></equal>
-          <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
-          <equal><clip pos="2" part="a_nom"/><lit-tag v="np.top"/></equal>
-          <!-- todo: "på øya", copy def-list from nb-nn.t1x -->
-        </and></test>
-        <let><var n="case-prep"/><lit v="i"/></let>
-      </when></choose>
-      <choose><when>
-        <test><not><equal>
-          <var n="case-prep"/><lit v=""/>
-        </equal></not></test>
-        <out>
-          <lu>
-            <var n="case-prep"/>
-            <lit-tag v="pr"/>
-          </lu>
-          <b/>
-        </out>
-      </when></choose>
+                  Remove object genitive if chunk doesn't have genitive">
       <choose>
         <when>
           <test><and>
             <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
-            <not><equal><clip pos="1" part="a_case-prep"/><lit v="sin"/></equal></not>
+            <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
           </and></test>
           <let><clip pos="2" part="case"/><lit v=""/></let>
         </when>
@@ -269,7 +226,7 @@
         <pattern-item n="prop"/>
       </pattern>
       <action>
-        <call-macro n="out_case-prep">
+        <call-macro n="clean_case">
           <with-param pos="0"/>
           <with-param pos="1"/>
         </call-macro>
@@ -286,7 +243,7 @@
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <call-macro n="out_case-prep">
+        <call-macro n="clean_case">
           <with-param pos="0"/>
           <with-param pos="1"/>
         </call-macro>
@@ -303,7 +260,7 @@
         <pattern-item n="pron"/>
       </pattern>
       <action>
-        <call-macro n="out_case-prep">
+        <call-macro n="clean_case">
           <with-param pos="0"/>
           <with-param pos="1"/>
         </call-macro>
@@ -320,7 +277,7 @@
         <pattern-item n="coor"/>
       </pattern>
       <action>
-        <call-macro n="out_case-prep">
+        <call-macro n="clean_case">
           <with-param pos="0"/>
           <with-param pos="1"/>
         </call-macro>
@@ -365,7 +322,7 @@
         <pattern-item n="adj_nom"/>
       </pattern>
       <action>
-        <call-macro n="out_case-prep">
+        <call-macro n="clean_case">
           <with-param pos="0"/>
           <with-param pos="2"/>
         </call-macro>
