@@ -21,12 +21,18 @@
     <def-cat n="pron">
       <cat-item tags="Pron.*"/>
     </def-cat>
+    <def-cat n="pronpers">
+      <cat-item tags="Pron.Pers.*"/>
+    </def-cat>
+    <def-cat n="prondem">
+      <cat-item tags="Pron.Dem.*"/>
+    </def-cat>
     <def-cat n="genpron">
       <cat-item tags="Pron.*.*.Gen.*"/>
     </def-cat>
     <def-cat n="detpos" c="Pronouns most likely to end up as det.pos">
-      <cat-item tags="Pron.*.*.Gen.@X"/>
-      <cat-item tags="Pron.*.*.Gen.@ADVL"/>
+      <cat-item tags="Pron.Pers.*.Gen.@X"/>
+      <cat-item tags="Pron.Pers.*.Gen.@ADVL"/>
     </def-cat>
     <def-cat n="nom_cmpd">
       <cat-item tags="N.*.*.Cmp"/>
@@ -688,8 +694,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: DETPOS (genitive pronoun likely to be a determiner)
-                   Also catches demonstrative genitives (dán).
+    <rule comment="REGLA: DETPOS (lone genitive pronoun likely to be a determiner)
                    TODO: any reason to do GD ND here?">
       <pattern>
         <pattern-item n="detpos"/>
@@ -715,11 +720,41 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
     
-    <rule comment="REGLA: PRONOUN
+    <rule comment="REGLA: DEMONSTRATIVE_PRONOUN dán => dettes
+                   Probably needs more work.">
+      <pattern>
+        <pattern-item n="prondem"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="pron" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <clip pos="1" side="tl" part="pers"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    
+    <rule comment="REGLA: PERSONAL_PRONOUN
                    This will catch genitive pronouns too (we're outputting both a_pron and a_det).
                    Not all genitive pronouns turn into determiners.">
       <pattern>
-        <pattern-item n="pron"/>
+        <pattern-item n="pronpers"/>
       </pattern>
       <action>
         <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
