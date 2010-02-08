@@ -162,6 +162,21 @@
       <!-- "Leago dát duođasge Sáme Radio oaivil ?" -->
 
     </pardef>
+    <pardef n="pron_dem__det_dem">
+      <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="GD"/><s n="sg"/><s n="nom"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Acc"/></l><r><s n="GD"/><s n="sg"/><s n="acc"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Gen"/></l><r><s n="GD"/><s n="sg"/><s n="gen"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Ill"/></l><r><s n="GD"/><s n="sg"/><s n="ill"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Loc"/></l><r><s n="GD"/><s n="sg"/><s n="loc"/></r></p></e>
+
+      <e><p><l><s n="Ess"/></l>           <r><s n="GD"/><s n="ND"/><s n="ess"/></r></p></e>
+
+      <e><p><l><s n="Pl"/><s n="Nom"/></l><r><s n="GD"/><s n="pl"/><s n="nom"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Acc"/></l><r><s n="GD"/><s n="pl"/><s n="acc"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Gen"/></l><r><s n="GD"/><s n="pl"/><s n="gen"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Ill"/></l><r><s n="GD"/><s n="pl"/><s n="ill"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Loc"/></l><r><s n="GD"/><s n="pl"/><s n="loc"/></r></p></e>
+    </pardef>
     <pardef n="num__det_qnt">
       <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
       <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
@@ -286,9 +301,11 @@
     <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="prn"/><s n="pl"/></r></p><par n="__prn"/></e>
 
     <!-- Pronouns/determiners (nob determiners often correspond to sme pronouns) -->
-    <e><p><l>dakkár<s n="Pron"/><s n="Dem"/></l><r>slik<s n="det"/><s n="dem"/></r></p></e>
-    <e><p><l>dát<s n="Pron"/><s n="Dem"/><s n="Sg"/><s n="Nom"/></l><r>denne<s n="det"/><s n="dem"/><s n="nt"/><s n="sg"/></r></p></e>
-    <e><p><l>dát<s n="Pron"/><s n="Dem"/><s n="Sg"/><s n="Gen"/></l><r>denne<s n="det"/><s n="dem"/><s n="nt"/><s n="sg"/><s n="gen"/></r></p></e>
+    <e><p><l>dakkár<s n="Pron"/><s n="Dem"/></l><r>slik<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
+    <e><p><l>dát<s n="Pron"/><s n="Dem"/></l><r>denne<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
+    <e><p><l>diet<s n="Pron"/><s n="Dem"/></l><r>denne<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
+    <e><p><l>duot<s n="Pron"/><s n="Dem"/></l><r>den<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
+    <e><p><l>dot<s n="Pron"/><s n="Dem"/></l><r>den<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
 
     <!-- Numerals -->
 
@@ -1668,6 +1685,9 @@
     <e><p><l>vuosttaš<s n="A"/></l><r>først<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>vuovdái<s n="A"/></l><r>glupsk<s n="adj"/></r></p><par n="__adj"/></e>
 
+
+    <!-- Particles (change in transfer? lexical selection?)-->
+    <e><p><l>ge<s n="Adv"/></l><r>altså<s n="adv"/></r></p></e>    
 
     <!-- Adverbs -->
 
