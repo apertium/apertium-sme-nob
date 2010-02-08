@@ -139,6 +139,18 @@
       <attr-item tags="@-FOBJ→"/>
       <attr-item tags="@-F←OBJ"/>
     </def-attr>
+    <def-attr n="a_pron">
+      <attr-item tags="Pron"/>
+      <attr-item tags="prn"/>
+    </def-attr>
+    <def-attr n="a_nom">
+      <attr-item tags="N"/>
+      <attr-item tags="n"/>
+      <attr-item tags="N.Prop"/>
+      <attr-item tags="N.Prop.Sur"/>
+      <attr-item tags="np.top"/>
+      <attr-item tags="np"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
@@ -381,6 +393,7 @@
     
 
     <rule comment="REGLA: PR SN-post adpos -- garra dálkki geažil => på_grunn_av dårlig vær
+                                              dan geažil => på_grunn_av det
                    Don't output the PR since case was selected by the adpos anyway.">
       <pattern>
         <pattern-item n="PR"/>
@@ -389,6 +402,10 @@
       </pattern>
       <action>
         <let><clip pos="2" part="case"/><lit v=""/></let>
+        <choose><when>
+          <test><begins-with><clip pos="2" part="a_pron"/><lit-tag v="prn"/></begins-with></test>
+          <let><clip pos="2" part="case"/><lit v="acc"/></let>
+        </when></choose>
         <out>
           <b pos="1"/>
           <chunk>
@@ -401,13 +418,17 @@
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN-post adpos -- garra dálkki geažil => på_grunn_av dårlig vær">
+    <rule comment="REGLA: SN-post adpos">
       <pattern>
         <pattern-item n="SN-post"/>
         <pattern-item n="adpos"/>
       </pattern>
       <action>
         <let><clip pos="1" part="case"/><lit v=""/></let>
+        <choose><when>
+          <test><begins-with><clip pos="1" part="a_pron"/><lit-tag v="prn"/></begins-with></test>
+          <let><clip pos="1" part="case"/><lit v="acc"/></let>
+        </when></choose>
         <out>
           <chunk>
             <clip pos="2" part="whole"/>
