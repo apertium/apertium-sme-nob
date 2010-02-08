@@ -4,35 +4,15 @@
   <section-def-cats>
     <def-cat n="nom">
       <cat-item name="nom"/>
-      <cat-item name="av_nom"/>
-      <cat-item name="med_nom"/>
-      <cat-item name="sin_nom"/>
-      <cat-item name="som_nom"/>
-      <cat-item name="til_nom"/>
     </def-cat>
     <def-cat n="prop">
       <cat-item name="prop"/>
-      <cat-item name="av_prop"/>
-      <cat-item name="med_prop"/>
-      <cat-item name="sin_prop"/>
-      <cat-item name="som_prop"/>
-      <cat-item name="til_prop"/>
     </def-cat>
     <def-cat n="pron">
       <cat-item name="pron"/>
-      <cat-item name="av_pron"/>
-      <cat-item name="med_pron"/>
-      <cat-item name="sin_pron"/>
-      <cat-item name="som_pron"/>
-      <cat-item name="til_pron"/>
     </def-cat>
     <def-cat n="coor">
       <cat-item name="coor"/>
-      <cat-item name="av_coor"/>
-      <cat-item name="med_coor"/>
-      <cat-item name="sin_coor"/>
-      <cat-item name="som_coor"/>
-      <cat-item name="til_coor"/>
     </def-cat>
     <def-cat n="verb">
       <cat-item name="verb"/>
@@ -48,15 +28,18 @@
     </def-cat>
     <def-cat n="adj_nom">
       <cat-item name="adj_nom"/>
-      <cat-item name="av_adj_nom"/>
-      <cat-item name="med_adj_nom"/>
-      <cat-item name="sin_adj_nom"/>
-      <cat-item name="som_adj_nom"/> 
-      <cat-item name="til_adj_nom"/>
     </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
+    <def-attr n="a_det">
+      <attr-item tags="det"/> 
+      <attr-item tags="det.emph"/>
+      <attr-item tags="det.dem"/>
+      <attr-item tags="det.itg"/>
+      <attr-item tags="det.qnt"/>
+      <attr-item tags="det.pos"/>
+    </def-attr>
     <def-attr n="a_adj">
       <attr-item tags="adj"/>
       <attr-item tags="adj.pp"/>
