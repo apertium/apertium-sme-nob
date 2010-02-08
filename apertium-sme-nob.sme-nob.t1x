@@ -366,6 +366,22 @@
         </otherwise>
       </choose>
     </def-macro>
+    <def-macro n="set_prondem_case" npar="1">
+      <!-- only keep nom/acc for nob prons; genitives turn into det.poss -->
+      <choose>
+        <when>
+          <test><or>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Acc"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
+          </or></test>
+          <let><var n="pron_case"/><clip pos="1" side="tl" part="case"/></let>
+        </when>
+        <otherwise>
+          <let><var n="pron_case"/><lit-tag v="acc"/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
     <def-macro n="set_pron_gen_num" npar="1">
       <!-- only set gen/num for det.poss
            Det.poss gen/nbr defaults to masc, sg (although we could set a variable from
@@ -726,7 +742,11 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="prondem"/>
       </pattern>
       <action>
+        <call-macro n="set_prondem_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pron_gen_num"><with-param pos="1"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
         <out>
+          <var n="case-prep"/>
           <chunk name="pron" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -740,9 +760,9 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_det"/>
               <clip pos="1" side="tl" part="pers"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <clip pos="1" side="tl" part="case"/>
+              <var n="pron_gen"/>
+              <var n="pron_num"/>
+              <var n="pron_case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
