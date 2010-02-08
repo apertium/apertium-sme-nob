@@ -145,6 +145,15 @@ cat $PRONLEXC >> $OUTFILE;
 
 echo 'done.';
 
+### Extract particles
+echo -n '+++ Particles... ';
+
+PARTLEXC=$SRC/particle-$LANG1-lex.txt
+
+cat $PARTLEXC >> $OUTFILE;
+
+echo 'done.';
+
 ### Extract adpositions
 echo -n '+++ Adpositions... ';
 
