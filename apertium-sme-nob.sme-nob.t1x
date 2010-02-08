@@ -24,6 +24,10 @@
     <def-cat n="genpron">
       <cat-item tags="Pron.*.*.Gen.*"/>
     </def-cat>
+    <def-cat n="detpos" c="Pronouns most likely to end up as det.pos">
+      <cat-item tags="Pron.*.*.Gen.@X"/>
+      <cat-item tags="Pron.*.*.Gen.@ADVL"/>
+    </def-cat>
     <def-cat n="nom_cmpd">
       <cat-item tags="N.*.*.Cmp"/>
     </def-cat>
@@ -176,16 +180,6 @@
       <attr-item tags="du"/>
       <attr-item tags="pl"/>
       <attr-item tags="ND"/>
-      <!-- the bidix pardef __verb should split these: -->
-      <attr-item tags="Sg1"/>
-      <attr-item tags="Du1"/>
-      <attr-item tags="Pl1"/>
-      <attr-item tags="Sg2"/>
-      <attr-item tags="Du2"/>
-      <attr-item tags="Pl2"/>
-      <attr-item tags="Sg3"/>
-      <attr-item tags="Du3"/>
-      <attr-item tags="Pl3"/>
     </def-attr>
     <def-attr n="defnes">
       <attr-item tags="ind"/>
@@ -359,12 +353,6 @@
             <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></equal>
             <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Acc"/></equal>
           </or></test>
-          <let><var n="pron_case"/><clip pos="1" side="tl" part="case"/></let>
-        </when>
-        <when>
-          <test>
-            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
-          </test>
           <let><var n="pron_case"/><clip pos="1" side="tl" part="case"/></let>
         </when>
         <otherwise>
@@ -700,10 +688,36 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-
+    <rule comment="REGLA: DETPOS (genitive pronoun likely to be a determiner)
+                   Also catches demonstrative genitives (dán).
+                   TODO: any reason to do GD ND here?">
+      <pattern>
+        <pattern-item n="detpos"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="det" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="det.pos.pl"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    
     <rule comment="REGLA: PRONOUN
-                   outputting both a_pron and a_det here, hope that works..
-                  ">
+                   This will catch genitive pronouns too (we're outputting both a_pron and a_det).
+                   Not all genitive pronouns turn into determiners.">
       <pattern>
         <pattern-item n="pron"/>
       </pattern>

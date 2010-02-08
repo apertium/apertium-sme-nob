@@ -401,11 +401,15 @@
         <pattern-item n="adpos"/>
       </pattern>
       <action>
-        <let><clip pos="2" part="case"/><lit v=""/></let>
-        <choose><when>
-          <test><begins-with><clip pos="2" part="a_pron"/><lit-tag v="prn"/></begins-with></test>
-          <let><clip pos="2" part="case"/><lit v="acc"/></let>
-        </when></choose>
+        <choose>
+          <when>
+            <test><equal><clip pos="2" part="lemh"/><lit v="pron"/></equal></test>
+            <let><clip pos="2" part="case"/><lit-tag v="acc"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="2" part="case"/><lit v=""/></let>
+          </otherwise>
+        </choose>
         <out>
           <b pos="1"/>
           <chunk>
@@ -424,11 +428,15 @@
         <pattern-item n="adpos"/>
       </pattern>
       <action>
-        <let><clip pos="1" part="case"/><lit v=""/></let>
-        <choose><when>
-          <test><begins-with><clip pos="1" part="a_pron"/><lit-tag v="prn"/></begins-with></test>
-          <let><clip pos="1" part="case"/><lit v="acc"/></let>
-        </when></choose>
+        <choose>
+          <when>
+            <test><equal><clip pos="1" part="lemh"/><lit v="pron"/></equal></test>
+            <let><clip pos="1" part="case"/><lit-tag v="acc"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="1" part="case"/><lit v=""/></let>
+          </otherwise>
+        </choose>
         <out>
           <chunk>
             <clip pos="2" part="whole"/>

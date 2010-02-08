@@ -141,8 +141,7 @@
     <pardef n="__prn">
       <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
       <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
-      <!-- genitives have to be specified on their own, o/w this line messes with lrlm: -->
-<!--       <e><p><l><s n="Gen"/></l><r><s n="gen"/></r></p></e> -->
+      <e><p><l><s n="Gen"/></l><r><s n="gen"/></r></p></e>
       <e><p><l><s n="Ill"/></l><r><s n="acc"/></r></p></e>
       <e><p><l><s n="Loc"/></l><r><s n="acc"/></r></p></e>
       <e><p><l/><r/></p></e>
@@ -268,9 +267,9 @@
     <e><p><l>son<s n="Pron"/><s n="Pers"/><s n="Sg3"/></l><r>han<s n="prn"/><s n="p3"/><s n="GD"/><s n="sg"/></r></p><par n="__prn"/></e>
     <e><p><l>dat<s n="Pron"/><s n="Pers"/><s n="Sg3"/></l><r>det<s n="prn"/><s n="p3"/><s n="nt"/><s n="sg"/></r></p><par n="__prn"/></e>
 
-    <e><p><l>mun<s n="Pron"/><s n="Pers"/><s n="Du1"/></l><r>vi<s n="prn"/><s n="p1"/><s n="mf"/><s n="pl"/></r></p><par n="__prn"/></e>
-    <e><p><l>don<s n="Pron"/><s n="Pers"/><s n="Du2"/></l><r>dere<s n="prn"/><s n="p2"/><s n="mf"/><s n="pl"/></r></p><par n="__prn"/></e>
-    <e><p><l>son<s n="Pron"/><s n="Pers"/><s n="Du3"/></l><r>de<s n="prn"/><s n="p3"/><s n="mf"/><s n="pl"/></r></p><par n="__prn"/></e>
+    <e><p><l>mun<s n="Pron"/><s n="Pers"/><s n="Du1"/></l><r>vi<s n="prn"/><s n="p1"/><s n="mf"/><s n="du"/></r></p><par n="__prn"/></e>
+    <e><p><l>don<s n="Pron"/><s n="Pers"/><s n="Du2"/></l><r>dere<s n="prn"/><s n="p2"/><s n="mf"/><s n="du"/></r></p><par n="__prn"/></e>
+    <e><p><l>son<s n="Pron"/><s n="Pers"/><s n="Du3"/></l><r>de<s n="prn"/><s n="p3"/><s n="mf"/><s n="du"/></r></p><par n="__prn"/></e>
 
     <e><p><l>mun<s n="Pron"/><s n="Pers"/><s n="Pl1"/></l><r>vi<s n="prn"/><s n="p1"/><s n="mf"/><s n="pl"/></r></p><par n="__prn"/></e>
     <e><p><l>don<s n="Pron"/><s n="Pers"/><s n="Pl2"/></l><r>dere<s n="prn"/><s n="p2"/><s n="mf"/><s n="pl"/></r></p><par n="__prn"/></e>
@@ -290,19 +289,6 @@
     <e><p><l>dakkár<s n="Pron"/><s n="Dem"/></l><r>slik<s n="det"/><s n="dem"/></r></p></e>
     <e><p><l>dát<s n="Pron"/><s n="Dem"/></l><r>dette<s n="det"/><s n="dem"/></r></p></e>
     <e><p><l>dát<s n="Pron"/><s n="Dem"/><s n="Sg"/><s n="Nom"/></l><r>denne<s n="det"/><s n="dem"/><s n="nt"/><s n="sg"/></r></p></e>
-
-    <e><p><l>mun<s n="Pron"/><s n="Pers"/><s n="Sg1"/><s n="Gen"/></l><r>min<s n="det"/><s n="pos"/><s n="GD"/><s n="ND"/></r></p></e>
-    <e><p><l>don<s n="Pron"/><s n="Pers"/><s n="Sg2"/><s n="Gen"/></l><r>din<s n="det"/><s n="pos"/><s n="GD"/><s n="ND"/></r></p></e>
-    <e><p><l>son<s n="Pron"/><s n="Pers"/><s n="Sg3"/><s n="Gen"/></l><r>hans<s n="det"/><s n="pos"/><s n="GD"/><s n="ND"/></r></p></e>
-    <e><p><l>dat<s n="Pron"/><s n="Pers"/><s n="Sg3"/><s n="Gen"/></l><r>dets<s n="det"/><s n="pos"/><s n="GD"/><s n="ND"/></r></p></e>
-
-    <e><p><l>mun<s n="Pron"/><s n="Pers"/><s n="Du1"/><s n="Gen"/></l><r>vår<s n="det"/><s n="pos"/><s n="GD"/><s n="ND"/></r></p></e>
-    <e><p><l>don<s n="Pron"/><s n="Pers"/><s n="Du2"/><s n="Gen"/></l><r>deres<s n="det"/><s n="pos"/><s n="GD"/><s n="ND"/></r></p></e>
-    <e><p><l>son<s n="Pron"/><s n="Pers"/><s n="Du3"/><s n="Gen"/></l><r>deres<s n="det"/><s n="pos"/><s n="GD"/><s n="ND"/></r></p></e>
-
-    <e><p><l>mun<s n="Pron"/><s n="Pers"/><s n="Pl1"/><s n="Gen"/></l><r>vår<s n="det"/><s n="pos"/><s n="GD"/><s n="ND"/></r></p></e>
-    <e><p><l>don<s n="Pron"/><s n="Pers"/><s n="Pl2"/><s n="Gen"/></l><r>deres<s n="det"/><s n="pos"/><s n="GD"/><s n="ND"/></r></p></e>
-    <e><p><l>son<s n="Pron"/><s n="Pers"/><s n="Pl3"/><s n="Gen"/></l><r>deres<s n="det"/><s n="pos"/><s n="GD"/><s n="ND"/></r></p></e>
 
     <!-- Numerals -->
 
