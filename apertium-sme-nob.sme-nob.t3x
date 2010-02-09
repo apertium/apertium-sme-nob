@@ -29,6 +29,10 @@
       <cat-item tags="SN.@ADVL"/>
       <cat-item tags="SN.@ADVL.*"/>
     </def-cat>
+    <def-cat n="FV-qst">
+      <cat-item tags="@+FMAINV.Qst.*"/>
+      <cat-item tags="@+FAUXV.Qst.*"/>
+    </def-cat>
     <def-cat n="FV">
       <cat-item tags="@+FMAINV"/>
       <cat-item tags="@+FMAINV.*"/>
@@ -192,6 +196,8 @@
   </section-def-macros>
   
   <section-rules>
+
+    <!-- Finite verb phrases, grammatical functions -->
     <rule comment="REGLA: FOCUS SN FV
                    V2-rule
                    Doppe son orui vahku => Der borte bodde han ei uke">
@@ -365,6 +371,28 @@
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: FV-qst
+                   Oainnátgo => Ser du
+                   Insert dropped pronoun">
+      <pattern>
+        <pattern-item n="FV-qst"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pro">
+          <with-param pos="1"/>
+        </call-macro>
+        <choose><when>
+          <test><not><equal><var n="pro"/><lit v=""/></equal></not></test>
+          <let><var n="pro"/><concat><b/><var n="pro"/></concat></let>
+        </when></choose>        
+        <out>
+          <chunk> 
+            <clip pos="1" part="whole"/>
+          </chunk>
+          <var n="pro"/>                    
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: FV
                    dihte => jeg visste
                    Insert dropped pronoun">
@@ -391,7 +419,8 @@
 
 
     
-
+    <!-- Adpositions -->
+    
     <rule comment="REGLA: PR SN-post adpos -- garra dálkki geažil => på_grunn_av dårlig vær
                                               dan geažil => på_grunn_av det
                    Don't output the PR since case was selected by the adpos anyway.">
