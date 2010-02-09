@@ -360,21 +360,16 @@
       <!-- only keep nom/acc for nob prons; genitives turn into det.poss -->
       <choose>
         <when>
-          <test><or>
-            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></equal>
-            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Acc"/></equal>
-            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
-          </or></test>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal></test>
           <let><var n="pron_case"/><clip pos="1" side="tl" part="case"/></let>
         </when>
         <otherwise>
-          <let><var n="pron_case"/><lit-tag v="acc"/></let>
+          <let><var n="pron_case"/><lit v=""/></let>
         </otherwise>
       </choose>
     </def-macro>
     <def-macro n="set_pron_gen_num" npar="1">
-      <!-- only set gen/num for det.poss
-           Det.poss gen/nbr defaults to masc, sg (although we could set a variable from
+      <!-- defaults to masc, sg (although we could set a variable from
            the subject since that's often a good heuristic for the referent)-->
       <choose>
         <when>
