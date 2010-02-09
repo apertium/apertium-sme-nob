@@ -315,9 +315,8 @@
               </let>
             </when>
             <otherwise>
-              <let>
-                <var n="case-prep"/><lit v="til"/>
-              </let>
+              <let><var n="case-prep"/><lit v="til"/></let>
+              <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
             </otherwise>
           </choose>
         </when>
