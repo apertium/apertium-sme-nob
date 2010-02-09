@@ -5,6 +5,10 @@
     <def-cat n="nom">
       <cat-item name="nom"/>
     </def-cat>
+    <def-cat n="prenom_nom">
+      <cat-item name="num_nom"/>
+      <cat-item name="cmpd_nom"/>
+    </def-cat>
     <def-cat n="prop">
       <cat-item name="prop"/>
     </def-cat>
@@ -233,6 +237,26 @@
         <out>
           <lu>
             <clip pos="1" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: prenom_nom">
+      <pattern>
+        <pattern-item n="prenom_nom"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_case">
+          <with-param pos="0"/>
+          <with-param pos="2"/>
+        </call-macro>
+        <out>
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+          <b pos="1"/>
+          <lu>
+            <clip pos="2" part="whole"/>
           </lu>
         </out>
       </action>
