@@ -1103,7 +1103,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: VNEG VERB">
+    <rule comment="REGLA: VNEG VERB
+                   Itgo boađáše => Kommer du ikke">
       <pattern>
         <pattern-item n="vneg"/>
         <pattern-item n="verb"/>
@@ -1118,7 +1119,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
             </tags>
             <lu>
-              <lit v="ikke"/><lit-tag v="adv"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adv"/>
             </lu>
             <b pos="1"/>
             <lu>
@@ -1133,7 +1135,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: VNEG VLEAT VERB: ii leat boahtán => er ikke kommet">
+    <rule comment="REGLA: VNEG VLEAT VERB: ii leat boahtán => den er ikke kommet">
       <pattern>
         <pattern-item n="vneg"/>
         <pattern-item n="vleat"/>
@@ -1157,7 +1159,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
             </lu>
             <b pos="1"/>
             <lu>
-              <lit v="ikke"/><lit-tag v="adv"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adv"/>
             </lu>
             <b pos="2"/>
             <lu>

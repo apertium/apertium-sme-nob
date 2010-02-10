@@ -108,6 +108,9 @@
     <sdef n="impers"  c="Impersonal"/>
 
     <sdef n="Ind"     c="Indicative"/>
+    <sdef n="Cond"    c="Conditional"/>
+    <sdef n="ConNeg"  c="Negation form"/>
+    <sdef n="Neg"     c="Negation verb 'ii'"/>
     <sdef n="Inf"     c="Infinitive"/>
     <sdef n="Imprt"   c="Imperative"/>
     <sdef n="Prs"     c="Present"/>
@@ -240,6 +243,19 @@
       <e><p><l><s n="Inf"/></l><r><s n="inf"/></r></p></e>
       <e><p><l><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
       <e><p><l></l><r></r></p></e>
+
+      <!-- The following are for e.g. "Itgo boađáše?", we need the temps from boađáše, and the pro (nbr,pers) from "It"-->
+      <e><p><l><s n="Cond"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Sg1"/></l><r><s n="sg"/><s n="p1"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Sg2"/></l><r><s n="sg"/><s n="p2"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Sg3"/></l><r><s n="sg"/><s n="p3"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Du1"/></l><r><s n="du"/><s n="p1"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Du2"/></l><r><s n="du"/><s n="p2"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Du3"/></l><r><s n="du"/><s n="p3"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Pl1"/></l><r><s n="pl"/><s n="p1"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Pl1"/></l><r><s n="pl"/><s n="p2"/></r></p></e>
+      <e><p><l><s n="Ind"/><s n="Pl3"/></l><r><s n="pl"/><s n="p3"/></r></p></e>
     </pardef>
     <pardef n="deverbal__n">
       <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r></r></p><par n="__n"/></e>
@@ -1922,6 +1938,9 @@
     <e><p><l>áigut<s n="V"/><s n="IV"/></l><r>skulle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!-- líka 'ville' -->
     <e><p><l>sáhttit<s n="V"/><s n="IV"/></l><r>kunne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>berret<s n="V"/><s n="IV"/></l><r>burde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) berrejit-->
+
+    <!-- ii needs an entry since we have to transfer person and number: -->
+    <e r="LR"><p><l>ii<s n="V"/><s n="IV"/><s n="Neg"/></l><r>ikke<s n="adv"/></r></p><par n="__verb"/></e>
 
     <!-- Verbs only coming form derivations -->
     <e><p><l>goahti<s n="V"/></l><r>begynne<s n="vblex"/></r></p><par n="__verb"/></e>
