@@ -988,51 +988,52 @@ LEXICON RUOKTU !only this word because of its behavior in compounds
  +N: DenominalAdjsV1Long ;
  !+N: DenominalAdjsV2 ;			does not seem plausible
 
-LEXICON MADII  !Another peculiar word that deserves its own lex
+LEXICON MADII  !Another peculiar word that deserves its own lex.
+!commented out everything but SgNom and SgAcc, SgGen, follošing Pekkas comments
  +N+Sg+Nom:%> K ; !SUB
  +N+Sg+Nom:%>j K ;
-! +N+Sg+Nom:%> Px3V ; !^P^ !don't know if it is in use
- +N+Ess:%>n K ; !SUB
- +N+Ess:%>jn K ;
-! +N+Ess:%>n%> PxC ; !^P^ !don't know if it is in use
-! +N:%>X2 GOAHTA- ; ! Px sublexicon
-! +N:%>X3 GOAHTAI ; ! Ill sublexicon , don't know if it is in use
+!! +N+Sg+Nom:%> Px3V ; !^P^ !don't know if it is in use
+! +N+Ess:%>n K ; !SUB
+! +N+Ess:%>jn K ;
+!! +N+Ess:%>n%> PxC ; !^P^ !don't know if it is in use
+!! +N:%>X2 GOAHTA- ; ! Px sublexicon
+!! +N:%>X3 GOAHTAI ; ! Ill sublexicon , don't know if it is in use
  +N+Sg+Gen:%> K ; !SUB
  +N+Sg+Gen:%>j K ;
  +N+Sg+Acc:%> K ; !SUB
  +N+Sg+Acc:%>j K ;
  +N+SgNomCmp:%> R ; !SUB
  +N+SgGenCmp:%> R ; !SUB
- +N+PlGenCmp:%>d9 R ; !SUB
+! +N+PlGenCmp:%>d9 R ; !SUB
  +N+SgNomCmp:%>j R ;
  +N+SgGenCmp:%>j R ;
- +N+PlGenCmp:%>jd9 R ;
-! +N+Sg+Gen:%>X4 Px3V ; !^P^ !don't know if it is in use
-! +N+Sg+Acc:%>X4 Px3V ; !^P^ !don't know if it is in use
- +N+Sg+Loc:%>s K ; !SUB
- +N+Sg+Loc:%>n K ; !SUB !SOUTH
- +N+Sg+Loc:%>js K ;
- +N+Sg+Loc:%>jn K ; !SUB !SOUTH
-! +N+Sg+Loc:%>X4st%> PxC ; !^P^ !don't know if it is in use
- +N+Pl+Nom:%>t K ; !SUB
- +N+Pl+Nom:%>jt K ;
- +N+Sg+Com:%>jn K ;
-! +N+Sg+Com:%>n%> PxC ; !^P^ !don't know if it is in use
-! +N+Pl+Nom:%>X5jd%> Px1C ; !^P^ !don't know if it is in use
- +N+Pl+Gen:%>jd9 K ;
-! +N+Pl+Gen:%>X5jd%> PxC ; !^P^ !don't know if it is in use
- +N+Pl+Acc:%>jd9 K ;
-! +N+Pl+Acc:%>X5jd%> PxC ; !^P^ !don't know if it is in use
- +N+Pl+Ill:%>jde K ;
-! +N+Pl+Ill:%>X5jdasa%> PxV ; !^P^ !don't know if it is in use
- +N+Pl+Loc:%>jn K ;
- +N+Pl+Loc:%>js K ; !SUB !SOUTH
-! +N+Pl+Loc:%>X5jn%> PxC ; !^P^ !don't know if it is in use
- +N+Pl+Com:%>jgujn K ;
-! +N+Pl+Com:%>X5jd%> PxPlComC ; !^P^ !don't know if it is in use
-! +N:%>X6 GOADA- ; ! AG Px !don't know if it is in use
- +N:%>j DenominalAdjsV1 ;
-! +N: DenominalAdjsV2 ; !not plausible
+! +N+PlGenCmp:%>jd9 R ;
+!! +N+Sg+Gen:%>X4 Px3V ; !^P^ !don't know if it is in use
+!! +N+Sg+Acc:%>X4 Px3V ; !^P^ !don't know if it is in use
+! +N+Sg+Loc:%>s K ; !SUB
+! +N+Sg+Loc:%>n K ; !SUB !SOUTH
+! +N+Sg+Loc:%>js K ;
+! +N+Sg+Loc:%>jn K ; !SUB !SOUTH
+!! +N+Sg+Loc:%>X4st%> PxC ; !^P^ !don't know if it is in use
+! +N+Pl+Nom:%>t K ; !SUB
+! +N+Pl+Nom:%>jt K ;
+! +N+Sg+Com:%>jn K ;
+!! +N+Sg+Com:%>n%> PxC ; !^P^ !don't know if it is in use
+!! +N+Pl+Nom:%>X5jd%> Px1C ; !^P^ !don't know if it is in use
+! +N+Pl+Gen:%>jd9 K ;
+!! +N+Pl+Gen:%>X5jd%> PxC ; !^P^ !don't know if it is in use
+! +N+Pl+Acc:%>jd9 K ;
+!! +N+Pl+Acc:%>X5jd%> PxC ; !^P^ !don't know if it is in use
+! +N+Pl+Ill:%>jde K ;
+!! +N+Pl+Ill:%>X5jdasa%> PxV ; !^P^ !don't know if it is in use
+! +N+Pl+Loc:%>jn K ;
+! +N+Pl+Loc:%>js K ; !SUB !SOUTH
+!! +N+Pl+Loc:%>X5jn%> PxC ; !^P^ !don't know if it is in use
+! +N+Pl+Com:%>jgujn K ;
+!! +N+Pl+Com:%>X5jd%> PxPlComC ; !^P^ !don't know if it is in use
+!! +N:%>X6 GOADA- ; ! AG Px !don't know if it is in use
+! +N:%>j DenominalAdjsV1 ;
+!! +N: DenominalAdjsV2 ; !not plausible
 
 
 LEXICON GENTLEMAN ! cns-final bisyllabic loanwords (stem mana-)
@@ -6589,7 +6590,7 @@ LEXICON Copula ! Dividing into finite and infinite
 leat+V+IV:l Finitecop ;
 leat+V+IV:l Infinitecop ;
 
-LEXICON Finitecop ! Removed %>, they blocked diphtsimpl
+LEXICON Finitecop ! Removed %>, they blocked diphtsim^pl
 +Ind+Prs:0 Prscop ;
 +Ind+Prs+ConNeg:%>eat K ;
 +Ind+Prt:0 Prtcop ;
@@ -6848,7 +6849,7 @@ debuteret:debutere DOHPPE ; ! ^LOAN
 de^graderet:de^gradere DOHPPE ; ! ^LOAN
 demo^kratiseret:demo^kratisere DOHPPE ; ! ^LOAN
 denet:dene GILLE ;
-desen^traliseret:desen^tralisere DOHPPE ; ! ^LOAN  NOR
+desentraliseret:desentralisere DOHPPE ; ! ^LOAN  NOR
 des^infiseret:des^infisere DOHPPE ;   ! ^LOAN NOR
 dieh0tit:dieh'ti MAHTI ;
 digaštallat:digaštalla DIEHTALADDA ;
@@ -6941,9 +6942,9 @@ eks^kluderet:eks^kludere DOHPPE ; ! ^LOAN NOR
 eks^perimenteret:eks^perimentere GILLE ;  ! ^LOAN NOR
 eks^ploderet:eks^plodere GILLE ; ! ^LOAN NOR
 eksporteret:eksportere DOHPPE ; ! ^LOAN NOR
-eks^pro^pri^eret:eks^pro^pri^ere DOHPPE ; ! ^LOAN NOR
+eks^propri^eret:eks^propri^ere DOHPPE ; ! ^LOAN NOR
 erret:erre DOHPPE ;
-eta^bleret:eta^blere DOHPPE ; ! ^LOAN
+etableret:etablere DOHPPE ; ! ^LOAN
 evangeliseret:evangelisere DOHPPE ; ! ^LOAN
 faktureret:fakturere DOHPPE ; ! ^LOAN
 fal0lehit:fal'leh MUITAL ;
@@ -7149,7 +7150,8 @@ hástalit:hástal BONJAT ;
 hávdádit:hávdád MUITTASJ ;
 identifiseret:identifisere DOHPPE ; ! ^LOAN NOR
 idjadit:idjad ALIST ;
-i^gnoreret:i^gnorere DOHPPE ; ! ^LOAN
+ignoreret:ignorere DOHPPE ; ! ^LOAN
+ii+V+IV+Neg:0 negmood ;
 ijastallat:ijastalla BOAHTALADDA ;
 illudahttit:illudahtti HAHTTIT ;
 illástit:illást MUITAL ;
@@ -7168,7 +7170,7 @@ in^stitušonaliseret:in^stitušonalisere DOHPPE ; ! ^LOAN
 inte^greret:inte^grere DOHPPE ;
 internašunaliseret:internašunalisere DOHPPE ; ! ^LOAN
 involveret:involvere DOHPPE ; ! ^LOAN
-i^oniseret:i^onisere DOHPPE ; ! ^LOAN
+ioniseret:ionisere DOHPPE ; ! ^LOAN
 ironiseret:ironisere DOHPPE ; ! ^LOAN
 irriteret:irritere DOHPPE ; ! ^LOAN
 ivdnet:ivdne DOHPPE ;
@@ -7221,7 +7223,7 @@ kommersi^aliseret:kommersi^alisere DOHPPE ; ! ^LOAN
 kommuniseret:kommunisere DOHPPE ; ! ^LOAN NOR
 kon^kluderet:kon^kludere DOHPPE ;
 kon^kluderet:kon^kludere GILLE ;
-konsen^treret:konsen^trere DOHPPE ; ! ^LOAN NOR
+konsentreret:konsentrere DOHPPE ; ! ^LOAN NOR
 konsolideret:konsolidere DOHPPE ; ! ^LOAN
 konstateret:konstatere GILLE ; ! ^LOAN
 kon^stitu^eret:kon^stitu^ere DOHPPE ; ! ^LOAN
@@ -7305,7 +7307,7 @@ manipuleret:manipulere DOHPPE ; ! ^LOAN
 mannat:manna DIEVVA ;
 marginaliseret:marginalisere DOHPPE ; ! ^LOAN
 markeret:markere DOHPPE ; ! ^LOAN
-massa^kreret:massa^krere DOHPPE ; ! ^LOAN
+massakreret:massakrere DOHPPE ; ! ^LOAN
 mas0sit:mas'si DIEHTI ;
 mastadit:mastad MUITAL ;
 mas0tat:mas'ta DIEVVA ;
@@ -7524,7 +7526,7 @@ roh0kut:roh'ku ALLU ;
 rohttet:rohtte DOHPPE ;
 romantiseret:romantisere DOHPPE ; ! ^LOAN
 ruhtadit:ruhtad MUITAL ;
-rum^steret:rum^stere GILLE ; ! ^LOAN SW
+rumsteret:rumstere GILLE ; ! ^LOAN SW
 runiidit:runijd JORGGIID ;
 ruohtastit:ruohtast ALIST ;
 ruohttat:ruohtta DIEVVA ;
@@ -7556,10 +7558,10 @@ seavvit:seavvi DIEHTI ;
 sehkket:sehkke DOHPPE ;
 sementeret:sementere DOHPPE ; ! ^LOAN NOR
 sensureret:sensurere DOHPPE ; ! ^LOAN NOR
-sen^traliseret:sen^tralisere DOHPPE ; ! ^LOAN NOR
-sen^trifugeret:sen^trifugere DOHPPE ; ! ^LOAN SW
+sentraliseret:sentralisere DOHPPE ; ! ^LOAN NOR
+sentrifugeret:sentrifugere DOHPPE ; ! ^LOAN SW
 sevnnjodit:sevnnjod ALIST ;
-si^gnaliseret:si^gnalisere DOHPPE ; ! ^LOAN
+signaliseret:signalisere DOHPPE ; ! ^LOAN
 sihkkelas0tit:sihkkelas'ti BOAHTALADDA ;
 sillet:sille DOHPPE ;
 simuleret:simulere DOHPPE ; ! ^LOAN
@@ -7923,7 +7925,7 @@ sis#muotkun:sis#muotkum BOAHTIN ;
 ! molssueaktu: Vqldit miellahtutut eret NounRoot:as, ja geavahit 121.
 
 LEXICON NounRoot
-a^gronoma GOAHTI "agronome N" ; !+SgNomCmp +SgGenCmp +PlGenCmp
+agronoma GOAHTI "agronome N" ; !+SgNomCmp +SgGenCmp +PlGenCmp
 a0las:allas MALIS "fat N" ;
 alfa GARGIA ;
 almmái:albmáj FALIS "male N" ; !+SgNomCmp +SgGenCmp +PlGenCmp
@@ -7954,7 +7956,7 @@ bea0raš:bearra DAIVVAS ; !+SgNomCmp +SgGenCmp +PlGenCmp
 bea0raš:bearraš MATTAR ; !+SgNomCmp +SgGenCmp +PlGenCmp
 bearaš#departemean0ta:bearaš#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 bellodat:bellodah'k JOHTOLAT ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
-bibli^otehka STAHTA ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
+bibliotehka STAHTA ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 biebman:biebmam BOAHTIN ; !+SgCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
 biebmu GOAHTI ;
 biegga GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
@@ -7982,6 +7984,7 @@ boa00đa:boah'tag8 SEAMU ;
 boa00đus:boah'tus MALISLONG "share N" ;
 bodda GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 boddu GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
+boles#departemean0ta:boles#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 bom0ba:bom'ba GOAHTI ;
 bomba GOAHTI ;
 bo0nus:botnus MALISLONG ;
@@ -8275,7 +8278,7 @@ identitehta:identitehtta STAHTA ; !SUB
 ide^ála:ide^ál SOSIAL ; !^LOAN
 idola GOAHTI ; !+SgNomCmp +DefSgGenCmp +DefPlGenCmp !^LOAN
 illu ALBMILONG ;
-indus^triija IIJA ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
+indu^striija IIJA ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 in^spirašuvdna:in^spirašu TELEFON ;
 in^stitušuvdna:in^stitušu TELEFON ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 internáhtta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
@@ -8307,7 +8310,7 @@ juris0ta:juris'ta GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 jáhkka GOAHTI ;
 jápmin:jápmim BOAHTIN ; !+SgCmp
 jáv0ri:jáv'ri AIGI ;
-kafe^á GOAHTI ; !SUB
+kafeá GOAHTI ; !SUB
 kantuv0ra:k KANTUR ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 kantuv0ra:kantu KULTUR ; !SUB
 kanála:kanál SOSIAL ;
@@ -8328,7 +8331,7 @@ kon^klušuvdna:kon^klušu TELEFON ;
 konsear0ta:konsear'ta GOAHTI ;
 konsear0ta:konser'ta GOAHTI ; !SUB
 konsulean0ta:konsulean'ta GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
-kon^trás0ta:kon^trás'ta GOAHTI ;
+kontrás0ta:kontrás'ta GOAHTI ;
 konvenšuvdna:konvenšu TELEFON ;
 kre^ativitehta STAHTA ;
 kultuv0ra:kultu KULTUR ;
@@ -8391,7 +8394,7 @@ láv0lu:láv'lu GOAHTI ;
 lávlu:lávlu¤ ACTOR ; !+SgNomCmp +SgGenCmp +PlGenCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
 lávvi GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 lávvu GOAHTI ;
-ma^gnehta STAHTA ;
+magnehta STAHTA ;
 meahcci ALBMI ; !+SgNomCmp +SgGenCmp +DefPlGenCmp
 meahcástallan:meahcástallam BOAHTALADDAN ; !+SgCmp
 mearkkašeapmi:mearkkaš EAPMI ; !+SgCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
@@ -8427,7 +8430,7 @@ mui0tu:muj'tu AIGI ;
 muoh0ta:muohttag8 SEAMU ; !+SgNomCmp +SgGenCmp +PlGenCmp
 muol0da:muol'da GOAHTI ;
 muoŧŧá ALBMILONG ; !+SgNomCmp +SgGenCmp +PlGenCmp
-muse^a:muse^ ESSAYA ; !+SgNomCmp +SgGenCmp +PlGenCmp
+musea:muse ESSAYA ; !+SgNomCmp +SgGenCmp +PlGenCmp
 musihkka GOAHTI ;
 muslim:muslim9 BUFFALO ; !+SgNomCmp +SgGenCmp +PlGenCmp
 muzet:muzeh GAHPIR ; !+SgNomCmp +SgGenCmp +PlGenCmp
@@ -8542,7 +8545,7 @@ pseudonyma GOAHTI ; !^LOAN
 psykologa GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 pyramida STAHTA ;
 radikála:radikál SOSIAL ; !+SgNomCmp +SgGenCmp +PlGenCmp !^LOAN
-radi^o GARGIA ;
+radio GARGIA ;
 rapor0ta:rapor'ta GOAHTI ;
 rasis0ma:rasis'ma GOAHTI ;
 reah0ka:reah'ka GOAHTI ;
@@ -8581,7 +8584,7 @@ ruok0tu:ruok'tu RUOKTU ; !+SgGenCmp +PlGenCmp
 rus0ka:rus'ka GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 ruvdno GOAHTI ;
 ruvdnu GOAHTI ;
-rádi^o GARGIA ;
+rádio GARGIA ;
 rád0ji:rád'ji GOAHTI ; !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
 rádji+N+Sg+Ill:rádjii K ; !SUB
 rád0já:rád'já ALBMILONGSHORT ; !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
@@ -8614,7 +8617,7 @@ servvodat:servvodah'k JOHTOLAT ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 siei0di:siej'di AIGI ;
 siepman GAHPIR ;
 siessá ALBMILONG ; !+SgNomCmp +SgGenCmp +PlGenCmp
-si^gnála:si^gnál SOSIAL ; !^LOAN
+signála:signál SOSIAL ; !^LOAN
 sihkkel GAHPIR ;
 sii0ga:sij'ga GOAHTI ;
 sii0vu:sij'vu ALBMI ; !+SgNomCmp +SgGenCmp +PlGenCmp
@@ -8647,7 +8650,7 @@ sok0ta:sok'ta GOAHTI ;
 solidaritehta STAHTA ;
 sor0ta:sor'ta GOAHTI ;
 sosi^alis0ma:sosi^alis'ma GOAHTI ;
-sosi^onoma GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
+sosionoma GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 spealat:spealla BUVSSAT ;
 spealla GOAHTI ;
 speallu GOAHTI ;
@@ -8715,7 +8718,7 @@ tráktor GAHPIR ;
 turis0ma:turis'ma GOAHTI ;
 turis0ta:turis'ta GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 ul0da:ul'da GOAHTI ;  !+SgNomCmp +SgGenCmp +PlGenCmp
-uni^ovdna:uni^o TELEFON ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
+uniovdna:unio TELEFON ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 universitehta STAHTA ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 ustit:ustib GAHPIRLONG ; !+SgNomCmp +SgGenCmp +PlGenCmp
 uv0ja:uv'ja GOAHTI ;
@@ -9563,47 +9566,77 @@ LEXICON HAWAII-plc
 
 LEXICON SKOHTERMADII-plc
  +N+Prop+Plc:%> SKOHTERMADIIDECL ;
- @U.Cap.Opt@+N+Prop+Plc+Der/laš+A+Attr:%>@U.Cap.Opt@jlažž ATTR ;
- @U.Cap.Opt@+N+Prop+Plc+Der/laš+A:@U.Cap.Opt@jlažž JOHTOLAT0 ;
- @U.Cap.Opt@+N+Prop+Plc+Der/laš+A+Sg+Nom:@U.Cap.Opt@jlažža PxV ; ! tentative.
- @U.Cap.Opt@+N+Prop+Plc+Der/laš+A+Ess:@U.Cap.Opt@jlažžan K ;
- @U.Cap.Opt@+N+Prop+Plc+Der/laš+A+Ess:@U.Cap.Opt@jlažžan PxC ;
- @U.Cap.Opt@+N+Prop+Plc+Der/laš+A:@U.Cap.Opt@jlažža LASJOBL ;
+! @U.Cap.Opt@+N+Prop+Plc+Der/laš+A+Attr:%>@U.Cap.Opt@jlažž ATTR ;
+! @U.Cap.Opt@+N+Prop+Plc+Der/laš+A:@U.Cap.Opt@jlažž JOHTOLAT0 ;
+! @U.Cap.Opt@+N+Prop+Plc+Der/laš+A+Sg+Nom:@U.Cap.Opt@jlažža PxV ; ! tentative.
+! @U.Cap.Opt@+N+Prop+Plc+Der/laš+A+Ess:@U.Cap.Opt@jlažžan K ;
+! @U.Cap.Opt@+N+Prop+Plc+Der/laš+A+Ess:@U.Cap.Opt@jlažžan PxC ;
+! @U.Cap.Opt@+N+Prop+Plc+Der/laš+A:@U.Cap.Opt@jlažža LASJOBL ;
 
-LEXICON SKOHTERMADIIDECL !This isn't perfect yet, but gets better. IK
- +Sg+Nom: K ; !SUB
- +Sg+Nom:j K ;
- +Ess:n K ; !SUB
- +Ess:jn K ;
- +Sg+Gen: K ; !SUB
- +Sg+Gen:j K ;
- +Sg+Acc: K ; !SUB
- +Sg+Acc:j K ;
- +SgNomCmp: Rreal ; !SUB
- +SgGenCmp: Rreal ; !SUB
- +PlGenCmp:d9 Rreal ; !SUB
- +SgNomCmp:j Rreal ;
- +SgGenCmp:j Rreal ;
- +PlGenCmp:jd9 Rreal ;
- +SgNomCmp-:- Rreal ; !SUB
- +SgGenCmp-:- Rreal ; !SUB
- +PlGenCmp-:d9- Rreal ; !SUB
- +SgNomCmp-:j- Rreal ; !SUB
- +SgGenCmp-:j- Rreal ; !SUB
- +PlGenCmp-:jd9- Rreal ; !SUB
- +Sg+Loc:s K ; !SUB
- +Sg+Loc:n K ; !SUB !SOUTH
- +Sg+Loc:js K ;
- +Sg+Loc:jn K ; !SUB !SOUTH
- +Pl+Nom:t K ; !SUB
- +Pl+Nom:jt K ;
- +Sg+Com:jn K ;
- +Pl+Gen:jd9 K ;
- +Pl+Acc:jd9 K ;
- +Pl+Ill:jde K ;
- +Pl+Loc:jn K ;
- +Pl+Loc:js K ; !SUB !SOUTH
- +Pl+Com:jgujn K ;
+LEXICON SKOHTERMADIIDECL !This lexicon now fixed according to Pekkas comments, TO
+ +Sg+Nom:i K ; !SUB
+ +Sg+Nom:ij K ;
+ +Sg+Nom:id'ja K ;
+ +Sg+Nom:ead'ji K ;
+! +Ess:in K ; !SUB
+! +Ess:ijn K ;
+ +Sg+Gen:i K ; !SUB
+ +Sg+Gen:ij K ;
+  +Sg+Gen:ija K ;
+ +Sg+Gen:eaji K ;
+  +Sg+Acc:ija K ;
+ +Sg+Acc:eaji K ;
+ +SgNomCmp:i Rreal ; !SUB
+ +SgGenCmp:i Rreal ; !SUB
+! +PlGenCmp:id9 Rreal ; !SUB
+ +SgNomCmp:ij Rreal ;
+ +SgGenCmp:ij Rreal ;
+   +SgGenCmp:ija Rreal ;
+ +SgGenCmp:eaji Rreal ;
+! +PlGenCmp:ijd9 Rreal ;
++PlGenCmp:ijajd9 Rreal ;
++PlGenCmp:ejijd9 Rreal ;
+ +SgNomCmp-:i- Rreal ; !SUB
+ +SgGenCmp-:i- Rreal ; !SUB
+! +PlGenCmp-:id9- Rreal ; !SUB
+ +SgNomCmp-:ij- Rreal ; !SUB
+ +SgGenCmp-:ij- Rreal ; !SUB
+  +SgGenCmp-:ija- Rreal ; !SUB
+ +SgGenCmp-:eaji- Rreal ; !SUB
+! +PlGenCmp-:ijd9- Rreal ; !SUB
++PlGenCmp-:ijajd9- Rreal ; !SUB
++PlGenCmp-:ejijd9- Rreal ; !SUB
+! +Sg+Loc:is K ; !SUB
+! +Sg+Loc:in K ; !SUB !SOUTH
+! +Sg+Loc:ijs K ;
+ +Sg+Ill:idjij K ;
+ +Sg+Ill:eadjáj K ;
+ +Sg+Loc:ijas K ;
+ +Sg+Loc:eajis K ;
+! +Sg+Loc:ijn K ; !SUB !SOUTH
+! +Pl+Nom:it K ; !SUB
+! +Pl+Nom:ijt K ;
+! +Sg+Com:ijn K ;
+! +Pl+Gen:ijd9 K ;
+! +Pl+Acc:ijd9 K ;
+! +Pl+Ill:ijde K ;
+! +Pl+Loc:ijn K ;
+! +Pl+Loc:ijs K ; !SUB !SOUTH
+! +Pl+Com:ijgujn K ;
+ +Pl+Nom:ijat K ;
+  +Pl+Nom:eajit K ;
+ +Sg+Com:ijajn K ;
+  +Sg+Com:ejijn K ;
+ +Pl+Gen:ijajd9 K ;
+  +Pl+Gen:ejijd9 K ;
+ +Pl+Acc:ijajd9 K ;
+  +Pl+Acc:ejijd9 K ;
+ +Pl+Ill:ijajde K ;
+  +Pl+Ill:ejijde K ;
+ +Pl+Loc:ijajn K ;
+  +Pl+Loc:ejijn K ;
+ +Pl+Com:ejijgujn K ;
+ +Pl+Com:ijajgujn K ;
 
 LEXICON NIKOSIIJA-obj
  +N+Prop+Plc:%> NIKOSIIJADECL ;
@@ -11139,7 +11172,7 @@ LEXICON VARGGAT-org
  +N+Prop+Org:%> VARGGATDECL ;
 
 LEXICON VARGGAT-obj
- +N+Prop+obj:%> VARGGATDECL ;
+ +N+Prop+Obj:%> VARGGATDECL ;
 
 !LEXICON VARGGAT
 ! +N+Prop:%> VARGGATDECL ;
@@ -11174,7 +11207,7 @@ LEXICON ALEUHTATDECL
 LEXICON ALEUHTAT-UCASE
  +Ess:n K ;
  +Pl+Nom:X4t K ;
- +Pl+Gen:X4t K ; ! The Muosát suohkanstivra fix (Gen in -t for Pl names)
+! +Pl+Gen:X4t K ; ! The Muosát suohkanstivra fix (Gen in -t for Pl names)
  +Pl+Ill:X5jde K ; ! 2-syll stem
  +Pl:X5 ALEUHTAT-OBL ;
 
@@ -14598,11 +14631,15 @@ LEXICON OKTANUPPELOHKAI
  +Num+Sg+Acc:%>#nuppe#lohká%>j K ;
  +Num+Sg+Gen:%>X4#nuppe#logi%> K ;
  +Num+Sg+Gen:%>X4#nuppe#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>#nuppe#lot%> K ;
- +Num+Sg+Attr:%>n#nuppe#lot%> K ;
- +Num+Sg+Attr:%>X4#nuppe#lot%> K ;
- +Num+Sg+Attr:%>X5jn#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#nuppe#lot%> K ;
  +Num+Sg+Loc:%>X4#nuppe#logi%>s K ;
  +Num+Sg+Loc:%>X4#nuppe#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#nuppe#logi%>t K ;
@@ -14632,11 +14669,15 @@ LEXICON OKTAGOALMMATLOHKAI
  +Num+Sg+Acc:%>#goalmmát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#goalmmát#logi%> K ;
  +Num+Sg+Gen:%>X4#goalmmát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#goalmmát#lot%> K ;
- +Num+Sg+Attr:%>#goalmmát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#goalmmát#lot%> K ;
- +Num+Sg+Attr:%>n#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#goalmmát#lot%> K ;
  +Num+Sg+Loc:%>X4#goalmmát#logi%>s K ;
  +Num+Sg+Loc:%>X4#goalmmát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#goalmmát#logi%>t K ;
@@ -14666,11 +14707,15 @@ LEXICON OKTANJEALJATLOHKAI
  +Num+Sg+Acc:%>#njealját#lohká%>j K ;
  +Num+Sg+Gen:%>X4#njealját#logi%> K ;
  +Num+Sg+Gen:%>X4#njealját#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#njealját#lot%> K ;
- +Num+Sg+Attr:%>#njealját#lot%> K ;
- +Num+Sg+Attr:%>X5jn#njealját#lot%> K ;
- +Num+Sg+Attr:%>n#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#njealját#lot%> K ;
  +Num+Sg+Loc:%>X4#njealját#logi%>s K ;
  +Num+Sg+Loc:%>X4#njealját#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#njealját#logi%>t K ;
@@ -14700,11 +14745,15 @@ LEXICON OKTAVIDATLOHKAI
  +Num+Sg+Acc:%>#viđát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#viđát#logi%> K ;
  +Num+Sg+Gen:%>X4#viđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#viđát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#viđát#lot%> K ;
- +Num+Sg+Attr:%>#viđát#lot%> K ;
- +Num+Sg+Attr:%>n#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#viđát#lot%> K ;
  +Num+Sg+Loc:%>X4#viđát#logi%>s K ;
  +Num+Sg+Loc:%>X4#viđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#viđát#logi%>t K ;
@@ -14734,11 +14783,15 @@ LEXICON OKTAGUDATLOHKAI
  +Num+Sg+Acc:%>#guđát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#guđát#logi%> K ;
  +Num+Sg+Gen:%>X4#guđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#guđát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#guđát#lot%> K ;
- +Num+Sg+Attr:%>#guđát#lot%> K ;
- +Num+Sg+Attr:%>n#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#guđát#lot%> K ;
  +Num+Sg+Loc:%>X4#guđát#logi%>s K ;
  +Num+Sg+Loc:%>X4#guđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#guđát#logi%>t K ;
@@ -14768,12 +14821,16 @@ LEXICON OKTACIHCCETLOHKAI
  +Num+Sg+Acc:%>#čihččet#lohká%>j K ;
  +Num+Sg+Gen:%>X4#čihččet#logi%> K ;
  +Num+Sg+Gen:%>X4#čihččet#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
  +Num+Sg+Loc:%>X4#čihččet#logi%>s K ;
- +Num+Sg+Attr:%>X4#čihččet#lot%> K ;
- +Num+Sg+Attr:%>X5jn#čihččet#lot%> K ;
- +Num+Sg+Attr:%>n#čihččet#lot%> K ;
- +Num+Sg+Attr:%>#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#čihččet#lot%> K ;
  +Num+Sg+Loc:%>X4#čihččet#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#čihččet#logi%>t K ;
  +Num+Sg+Ill:%>X4#čihččet#lohká%>j K ;
@@ -14803,11 +14860,15 @@ LEXICON OKTAGAVCCATLOHKAI
  +Num+Sg+Acc:%>#gávccát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#gávccát#logi%> K ;
  +Num+Sg+Gen:%>X4#gávccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#gávccát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#gávccát#lot%> K ;
- +Num+Sg+Attr:%>X4#gávccát#lot%> K ;
- +Num+Sg+Attr:%>n#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#gávccát#lot%> K ;
  +Num+Sg+Loc:%>X4#gávccát#logi%>s K ;
  +Num+Sg+Loc:%>X4#gávccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#gávccát#logi%>t K ;
@@ -14836,11 +14897,15 @@ LEXICON OKTAOVCCATLOHKAI
  +Num+Sg+Acc:%>#ovccát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#ovccát#logi%> K ;
  +Num+Sg+Gen:%>X4#ovccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#ovccát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#ovccát#lot%> K ;
- +Num+Sg+Attr:%>#ovccát#lot%> K ;
- +Num+Sg+Attr:%>n#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#ovccát#lot%> K ;
  +Num+Sg+Loc:%>X4#ovccát#logi%>s K ;
  +Num+Sg+Loc:%>X4#ovccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#ovccát#logi%>t K ;
@@ -14870,11 +14935,15 @@ LEXICON OKTALOGATLOHKAI
  +Num+Sg+Acc:%>#logát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#logát#logi%> K ;
  +Num+Sg+Gen:%>X4#logát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#logát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#logát#lot%> K ;
- +Num+Sg+Attr:%>#logát#lot%> K ;
- +Num+Sg+Attr:%>n#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#logát#lot%> K ;
  +Num+Sg+Loc:%>X4#logát#logi%>s K ;
  +Num+Sg+Loc:%>X4#logát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#logát#logi%>t K ;
@@ -14904,11 +14973,15 @@ LEXICON OKTALOHKI
  +Num+Sg+Acc:%>X4#logi%> K ;
  +Num+Sg+Gen:%>X4#logi%> K ;
  +Num+Sg+Gen:%>X4#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#lot%> K ;
- +Num+Sg+Attr:%>X5jn#lot%> K ;
- +Num+Sg+Attr:%>#lot%> K ;
- +Num+Sg+Attr:%>n#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#lot%> K ;
  +Num+Sg+Loc:%>X4#logi%>s K ;
  +Num+Sg+Loc:%>X4#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4t#logi%>t K ;
@@ -14920,8 +14993,10 @@ LEXICON OKTALOHKI
  +Num+Pl+Loc:%>X5jn#logi%>jn K ;
  +Num+Pl+Com:%>X5jd9#logi%>jgujn K ;
  +Num+Pl+Com:%>X5jgujn#logi%>jgujn K ;
- +Num+Sg+Attr:%>X4t#lot%> K ; !Nickel 91 from here downwards
- +Num+Sg+Attr:%>X5jd#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Nom+Attr:%>X5jd#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Acc+Attr:%>X5jd#lot%> K ;
  +Num+Pl+Nom:%>#logi%>t K ;
  +Num+Pl+Acc:%>#logi%>X5jd K ;
  +Num+Pl+Gen:%>#logi%>X5jd K ; !SUB because of speller
@@ -14962,11 +15037,15 @@ LEXICON GUOKTENUPPELOHKAI
  +Num+Sg+Acc:e%>#nuppe#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#nuppe#logi%> K ;
  +Num+Sg+Gen:e%>X4#nuppe#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#nuppe#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#nuppe#lot%> K ;
- +Num+Sg+Attr:e%>#nuppe#lot%> K ;
- +Num+Sg+Attr:i%>n#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#nuppe#lot%> K ;
  +Num+Sg+Loc:e%>X4#nuppe#logi%>s K ;
  +Num+Sg+Loc:e%>X4#nuppe#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#nuppe#logi%>t K ;
@@ -14995,11 +15074,15 @@ LEXICON GUOKTEGOALMMATLOHKAI
  +Num+Sg+Acc:e%>#goalmmát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#goalmmát#logi%> K ;
  +Num+Sg+Gen:e%>X4#goalmmát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#goalmmát#lot%> K ;
- +Num+Sg+Attr:e%>#goalmmát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#goalmmát#lot%> K ;
- +Num+Sg+Attr:i%>n#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#goalmmát#lot%> K ;
  +Num+Sg+Loc:e%>X4#goalmmát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#goalmmát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#goalmmát#logi%>t K ;
@@ -15029,11 +15112,15 @@ LEXICON GUOKTENJEALJATLOHKAI
  +Num+Sg+Acc:e%>#njealját#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#njealját#logi%> K ;
  +Num+Sg+Gen:e%>X4#njealját#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#njealját#lot%> K ;
- +Num+Sg+Attr:e%>#njealját#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#njealját#lot%> K ;
- +Num+Sg+Attr:i%>n#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#njealját#lot%> K ;
  +Num+Sg+Loc:e%>X4#njealját#logi%>s K ;
  +Num+Sg+Loc:e%>X4#njealját#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#njealját#logi%>t K ;
@@ -15062,11 +15149,15 @@ LEXICON GUOKTEVIDATLOHKAI
  +Num+Sg+Acc:e%>#viđát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#viđát#logi%> K ;
  +Num+Sg+Gen:e%>X4#viđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#viđát#lot%> K ;
- +Num+Sg+Attr:e%>#viđát#lot%> K ;
- +Num+Sg+Attr:i%>Xjn#viđát#lot%> K ;
- +Num+Sg+Attr:i%>n#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>Xjn#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>Xjn#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#viđát#lot%> K ;
  +Num+Sg+Loc:e%>X4#viđát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#viđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#viđát#logi%>t K ;
@@ -15096,11 +15187,15 @@ LEXICON GUOKTEGUDATLOHKAI
  +Num+Sg+Acc:e%>#guđát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#guđát#logi%> K ;
  +Num+Sg+Gen:e%>X4#guđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#guđát#lot%> K ;
- +Num+Sg+Attr:e%>#guđát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#guđát#lot%> K ;
- +Num+Sg+Attr:i%>n#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#guđát#lot%> K ;
  +Num+Sg+Loc:e%>X4#guđát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#guđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#guđát#logi%>t K ;
@@ -15129,11 +15224,15 @@ LEXICON GUOKTECIHCCETLOHKAI
  +Num+Sg+Acc:e%>#čihččet#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#čihččet#logi%> K ;
  +Num+Sg+Gen:e%>X4#čihččet#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#čihččet#lot%> K ;
- +Num+Sg+Attr:e%>#čihččet#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#čihččet#lot%> K ;
- +Num+Sg+Attr:i%>n#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#čihččet#lot%> K ;
  +Num+Sg+Loc:e%>X4#čihččet#logi%>s K ;
  +Num+Sg+Loc:e%>X4#čihččet#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#čihččet#logi%>t K ;
@@ -15163,11 +15262,15 @@ LEXICON GUOKTEGAVCCATLOHKAI
  +Num+Sg+Acc:e%>#gávccát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#gávccát#logi%> K ;
  +Num+Sg+Gen:e%>X4#gávccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#gávccát#lot%> K ;
- +Num+Sg+Attr:e%>X4#gávccát#lot%> K ;
- +Num+Sg+Attr:i%>n#gávccát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#gávccát#lot%> K ;
  +Num+Sg+Loc:e%>X4#gávccát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#gávccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#gávccát#logi%>t K ;
@@ -15197,11 +15300,15 @@ LEXICON GUOKTEOVCCATLOHKAI
  +Num+Sg+Acc:e%>#ovccát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#ovccát#logi%> K ;
  +Num+Sg+Gen:e%>X4#ovccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#ovccát#lot%> K ;
- +Num+Sg+Attr:e%>#ovccát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#ovccát#lot%> K ;
- +Num+Sg+Attr:i%>n#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#ovccát#lot%> K ;
  +Num+Sg+Loc:e%>X4#ovccát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#ovccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#ovccát#logi%>t K ;
@@ -15230,11 +15337,15 @@ LEXICON GUOKTELOGATLOHKAI
  +Num+Sg+Acc:e%>#logát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#logát#logi%> K ;
  +Num+Sg+Gen:e%>X4#logát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#logát#lot%> K ;
- +Num+Sg+Attr:e%>#logát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#logát#lot%> K ;
- +Num+Sg+Attr:i%>n#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#logát#lot%> K ;
  +Num+Sg+Loc:e%>X4#logát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#logát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#logát#logi%>t K ;
@@ -15265,11 +15376,15 @@ LEXICON GUOKTELOGI
  +Num+Sg+Acc:e%>#logi%> K ;
  +Num+Sg+Gen:e%>X4#logi%> K ;
  +Num+Sg+Gen:e%>X4#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>#lot%> K ;
- +Num+Sg+Attr:e%>X4#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#lot%> K ;
- +Num+Sg+Attr:i%>n#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#lot%> K ;
  +Num+Sg+Loc:e%>X4#logi%>s K ;
  +Num+Sg+Loc:e%>X4#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:i%>X4t#logi%>t K ;
@@ -15281,8 +15396,10 @@ LEXICON GUOKTELOGI
  +Num+Pl+Loc:i%>X5jn#logi%>jn K ;
  +Num+Pl+Com:i%>X5jd9#logi%>jgujn K ;
  +Num+Pl+Com:i%>X5jgujn#logi%>jgujn K ;
- +Num+Sg+Attr:i%>X4t#lot%> K ; !Nickel 91 from here downwards
- +Num+Sg+Attr:i%>X5jd#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X4t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Nom+Attr:i%>X5jd#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X4t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Acc+Attr:i%>X5jd#lot%> K ;
  +Num+Pl+Nom:e%>#logi%>t K ;
  +Num+Pl+Acc:e%>#logi%>X5jd K ;
  +Num+Pl+Gen:e%>#logi%>X5jd K ; !SUB because of speller
@@ -15936,11 +16053,15 @@ LEXICON NUBBENUPPELOHKAI
  +Num+Sg+Acc:e%>X4#nuppe#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#nuppe#logi%> K ;
  +Num+Sg+Gen:e%>X4#nuppe#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#nuppe#lot%> K ;
- +Num+Sg+Attr:e%>#nuppe#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#nuppe#lot%> K ;
- +Num+Sg+Attr:i%>n#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#nuppe#lot%> K ;
  +Num+Sg+Loc:e%>X4#nuppe#logi%>s K ;
  +Num+Sg+Loc:e%>X4#nuppe#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#nuppe#logi%>t K ;
@@ -15970,11 +16091,15 @@ LEXICON NUBBEGOALMMATLOHKAI
  +Num+Sg+Acc:e%>X4#goalmmát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#goalmmát#logi%> K ;
  +Num+Sg+Gen:e%>X4#goalmmát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#goalmmát#lot%> K ;
- +Num+Sg+Attr:e%>#goalmmát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#goalmmát#lot%> K ;
- +Num+Sg+Attr:i%>n#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#goalmmát#lot%> K ;
  +Num+Sg+Loc:e%>X4#goalmmát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#goalmmát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#goalmmát#logi%>t K ;
@@ -16004,11 +16129,15 @@ LEXICON NUBBENJEALJATLOHKAI
  +Num+Sg+Acc:e%>X4#njealját#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#njealját#logi%> K ;
  +Num+Sg+Gen:e%>X4#njealját#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#njealját#lot%> K ;
- +Num+Sg+Attr:e%>#njealját#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#njealját#lot%> K ;
- +Num+Sg+Attr:i%>n#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#njealját#lot%> K ;
  +Num+Sg+Loc:e%>X4#njealját#logi%>s K ;
  +Num+Sg+Loc:e%>X4#njealját#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#njealját#logi%>t K ;
@@ -16038,11 +16167,15 @@ LEXICON NUBBEVIDATLOHKAI
  +Num+Sg+Acc:e%>X4#viđát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#viđát#logi%> K ;
  +Num+Sg+Gen:e%>X4#viđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#viđát#lot%> K ;
- +Num+Sg+Attr:e%>#viđát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#viđát#lot%> K ;
- +Num+Sg+Attr:i%>n#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#viđát#lot%> K ;
  +Num+Sg+Loc:e%>X4#viđát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#viđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#viđát#logi%>t K ;
@@ -16072,11 +16205,15 @@ LEXICON NUBBEGUDATLOHKAI
  +Num+Sg+Acc:e%>X4#guđát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#guđát#logi%> K ;
  +Num+Sg+Gen:e%>X4#guđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#guđát#lot%> K ;
- +Num+Sg+Attr:e%>#guđát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#guđát#lot%> K ;
- +Num+Sg+Attr:i%>n#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#guđát#lot%> K ;
  +Num+Sg+Loc:e%>X4#guđát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#guđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#guđát#logi%>t K ;
@@ -16106,11 +16243,15 @@ LEXICON NUBBECIHCCETLOHKAI
  +Num+Sg+Acc:e%>X4#čihččet#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#čihččet#logi%> K ;
  +Num+Sg+Gen:e%>X4#čihččet#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#čihččet#lot%> K ;
- +Num+Sg+Attr:e%>#čihččet#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#čihččet#lot%> K ;
- +Num+Sg+Attr:i%>n#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#čihččet#lot%> K ;
  +Num+Sg+Loc:e%>X4#čihččet#logi%>s K ;
  +Num+Sg+Loc:e%>X4#čihččet#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#čihččet#logi%>t K ;
@@ -16140,11 +16281,15 @@ LEXICON NUBBEGAVCCATLOHKAI
  +Num+Sg+Acc:e%>X4#gávccát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#gávccát#logi%> K ;
  +Num+Sg+Gen:e%>X4#gávccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#gávccát#lot%> K ;
- +Num+Sg+Attr:e%>#gávccát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#gávccát#lot%> K ;
- +Num+Sg+Attr:i%>n#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#gávccát#lot%> K ;
  +Num+Sg+Loc:e%>X4#gávccát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#gávccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#gávccát#logi%>t K ;
@@ -16173,11 +16318,15 @@ LEXICON NUBBEOVCCATLOHKAI
  +Num+Sg+Acc:e%>X4#ovccát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#ovccát#logi%> K ;
  +Num+Sg+Gen:e%>X4#ovccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#ovccát#lot%> K ;
- +Num+Sg+Attr:e%>#ovccát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#ovccát#lot%> K ;
- +Num+Sg+Attr:i%>n#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#ovccát#lot%> K ;
  +Num+Sg+Loc:e%>X4#ovccát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#ovccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#ovccát#logi%>t K ;
@@ -16207,11 +16356,15 @@ LEXICON NUBBELOGATLOHKAI
  +Num+Sg+Acc:e%>X4#logát#lohká%>j K ;
  +Num+Sg+Gen:e%>X4#logát#logi%> K ;
  +Num+Sg+Gen:e%>X4#logát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#logát#lot%> K ;
- +Num+Sg+Attr:e%>#logát#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#logát#lot%> K ;
- +Num+Sg+Attr:%>in#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>in#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>in#logát#lot%> K ;
  +Num+Sg+Loc:e%>X4#logát#logi%>s K ;
  +Num+Sg+Loc:e%>X4#logát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:e%>#logát#logi%>t K ;
@@ -16240,11 +16393,15 @@ LEXICON NUBBELOGI
  +Num+Sg+Acc:e%>X4#logi%> K ;
  +Num+Sg+Gen:e%>X4#logi%> K ;
  +Num+Sg+Gen:e%>X4#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:e%>X4#lot%> K ;
- +Num+Sg+Attr:e%>#lot%> K ;
- +Num+Sg+Attr:i%>X5jn#lot%> K ;
- +Num+Sg+Attr:i%>n#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>X4#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:e%>X4#lot%> K ;
+ +Num+Sg+Nom+Attr:e%>#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>X5jn#lot%> K ;
+ +Num+Sg+Nom+Attr:i%>n#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>X4#lot%> K ;
+ +Num+Sg+Acc+Attr:e%>#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>X5jn#lot%> K ;
+ +Num+Sg+Acc+Attr:i%>n#lot%> K ;
  +Num+Sg+Loc:e%>X4#logi%>s K ;
  +Num+Sg+Loc:e%>X4#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:i%>X4t#logi%>t K ;
@@ -16282,11 +16439,15 @@ LEXICON GOLBMANUPPELOHKAI
  +Num+Sg+Acc:%>#nuppe#lohká%>j K ;
  +Num+Sg+Gen:%>X4#nuppe#logi%> K ;
  +Num+Sg+Gen:%>X4#nuppe#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#nuppe#lot%> K ;
- +Num+Sg+Attr:%>X4#nuppe#lot%> K ;
- +Num+Sg+Attr:%>n#nuppe#lot%> K ;
- +Num+Sg+Attr:%>X5jn#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#nuppe#lot%> K ;
  +Num+Sg+Loc:%>X4#nuppe#logi%>s K ;
  +Num+Sg+Loc:%>X4#nuppe#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#nuppe#logi%>t K ;
@@ -16316,11 +16477,15 @@ LEXICON GOLBMAGOALMMATLOHKAI
  +Num+Sg+Acc:%>#goalmmát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#goalmmát#logi%> K ;
  +Num+Sg+Gen:%>X4#goalmmát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#goalmmát#lot%> K ;
- +Num+Sg+Attr:%>#goalmmát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#goalmmát#lot%> K ;
- +Num+Sg+Attr:%>n#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#goalmmát#lot%> K ;
  +Num+Sg+Loc:%>X4#goalmmát#logi%>s K ;
  +Num+Sg+Loc:%>X4#goalmmát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#goalmmát#logi%>t K ;
@@ -16349,11 +16514,15 @@ LEXICON GOLBMANJEALJATLOHKAI
  +Num+Sg+Acc:%>#njealját#lohká%>j K ;
  +Num+Sg+Gen:%>X4#njealját#logi%> K ;
  +Num+Sg+Gen:%>X4#njealját#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#njealját#lot%> K ;
- +Num+Sg+Attr:%>#njealját#lot%> K ;
- +Num+Sg+Attr:%>X5jn#njealját#lot%> K ;
- +Num+Sg+Attr:%>n#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#njealját#lot%> K ;
  +Num+Sg+Loc:%>X4#njealját#logi%>s K ;
  +Num+Sg+Loc:%>X4#njealját#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#njealját#logi%>t K ;
@@ -16382,11 +16551,15 @@ LEXICON GOLBMAVIDATLOHKAI
  +Num+Sg+Acc:%>#viđát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#viđát#logi%> K ;
  +Num+Sg+Gen:%>X4#viđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#viđát#lot%> K ;
- +Num+Sg+Attr:%>#viđát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#viđát#lot%> K ;
- +Num+Sg+Attr:%>n#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#viđát#lot%> K ;
  +Num+Sg+Loc:%>X4#viđát#logi%>s K ;
  +Num+Sg+Loc:%>X4#viđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#viđát#logi%>t K ;
@@ -16415,11 +16588,15 @@ LEXICON GOLBMAGUDATLOHKAI
  +Num+Sg+Acc:%>#guđát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#guđát#logi%> K ;
  +Num+Sg+Gen:%>X4#guđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#guđát#lot%> K ;
- +Num+Sg+Attr:%>#guđát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#guđát#lot%> K ;
- +Num+Sg+Attr:%>n#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#guđát#lot%> K ;
  +Num+Sg+Loc:%>X4#guđát#logi%>s K ;
  +Num+Sg+Loc:%>X4#guđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#guđát#logi%>t K ;
@@ -16449,11 +16626,15 @@ LEXICON GOLBMACIHCCETLOHKAI
  +Num+Sg+Acc:%>#čihččet#lohká%>j K ;
  +Num+Sg+Gen:%>X4#čihččet#logi%> K ;
  +Num+Sg+Gen:%>X4#čihččet#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#čihččet#lot%> K ;
- +Num+Sg+Attr:%>#čihččet#lot%> K ;
- +Num+Sg+Attr:%>X5jn#čihččet#lot%> K ;
- +Num+Sg+Attr:%>n#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#čihččet#lot%> K ;
  +Num+Sg+Loc:%>X4#čihččet#logi%>s K ;
  +Num+Sg+Loc:%>X4#čihččet#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#čihččet#logi%>t K ;
@@ -16483,11 +16664,15 @@ LEXICON GOLBMAGAVCCATLOHKAI
  +Num+Sg+Acc:%>#gávccát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#gávccát#logi%> K ;
  +Num+Sg+Gen:%>X4#gávccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#gávccát#lot%> K ;
- +Num+Sg+Attr:%>#gávccát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#gávccát#lot%> K ;
- +Num+Sg+Attr:%>n#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#gávccát#lot%> K ;
  +Num+Sg+Loc:%>X4#gávccát#logi%>s K ;
  +Num+Sg+Loc:%>X4#gávccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#gávccát#logi%>t K ;
@@ -16517,11 +16702,15 @@ LEXICON GOLBMAOVCCATLOHKAI
  +Num+Sg+Acc:%>#ovccát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#ovccát#logi%> K ;
  +Num+Sg+Gen:%>X4#ovccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#ovccát#lot%> K ;
- +Num+Sg+Attr:%>#ovccát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#ovccát#lot%> K ;
- +Num+Sg+Attr:%>n#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#ovccát#lot%> K ;
  +Num+Sg+Loc:%>X4#ovccát#logi%>s K ;
  +Num+Sg+Loc:%>X4#ovccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#ovccát#logi%>t K ;
@@ -16550,11 +16739,15 @@ LEXICON GOLBMALOGATLOHKAI
  +Num+Sg+Acc:%>#logát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#logát#logi%> K ;
  +Num+Sg+Gen:%>X4#logát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#logát#lot%> K ;
- +Num+Sg+Attr:%>#logát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#logát#lot%> K ;
- +Num+Sg+Attr:%>n#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#logát#lot%> K ;
  +Num+Sg+Loc:%>X4#logát#logi%>s K ;
  +Num+Sg+Loc:%>X4#logát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>#logát#logi%>t K ;
@@ -16585,12 +16778,15 @@ LEXICON GOLBMALOGI
  +Num+Sg+Acc:%>#logi%> K ;
  +Num+Sg+Gen:%>X4#logi%> K ;
  +Num+Sg+Gen:%>X4#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#lot%> K ;
- +Num+Sg+Attr:%>#lot%> K ;
- +Num+Sg+Attr:%>X5jn#lot%> K ;
- +Num+Sg+Attr:%>n#lot%> K ;
- +Num+Sg+Loc:%>X4#logi%>s K ;
+ +Num+Sg+Nom+Attr:%>X4#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#lot%> K ;
+ +Num+Sg+Nom+Attr:%>#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#lot%> K ;
+ +Num+Sg+Acc+Attr:%>#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#lot%> K ;
  +Num+Sg+Loc:%>X4#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4t#logi%>t K ;
  +Num+Sg+Ill:%>X4#lohká%>j K ;
@@ -16601,8 +16797,10 @@ LEXICON GOLBMALOGI
  +Num+Pl+Loc:%>X5jn#logi%>jn K ;
  +Num+Pl+Com:%>X5jd9#logi%>jgujn K ;
  +Num+Pl+Com:%>X5jgujn#logi%>jgujn K ;
- +Num+Sg+Attr:%>X4t#lot%> K ; !Nickel 91 from here downwards
- +Num+Sg+Attr:%>X5jd#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Nom+Attr:%>X5jd#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Acc+Attr:%>X5jd#lot%> K ;
  +Num+Pl+Nom:%>#logi%>t K ;
  +Num+Pl+Acc:%>#logi%>X5jd K ;
  +Num+Pl+Gen:%>#logi%>X5jd K ; !SUB because of speller
@@ -16643,11 +16841,16 @@ LEXICON VIHTTANUPPELOHKAI
  +Num+Sg+Acc:htta%>#nuppe#lohká%>j K ;
  +Num+Sg+Gen:đa%>#nuppe#logi%> K ;
  +Num+Sg+Gen:đa%>#nuppe#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#nuppe#lot%> K ;
- +Num+Sg+Attr:htta%>#nuppe#lot%> K ;
- +Num+Sg+Attr:đa%>jn#nuppe#lot%> K ;
- +Num+Sg+Attr:htta%>n#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:đa%>#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>jn#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>n#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Acc+Attr:đa%>#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>jn#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>n#nuppe#lot%> K ;
  +Num+Sg+Loc:đa%>#nuppe#logi%>s K ;
  +Num+Sg+Loc:đa%>#nuppe#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:htta%>#nuppe#logi%>t K ;
@@ -16677,11 +16880,15 @@ LEXICON VIHTTAGOALMMATLOHKAI
  +Num+Sg+Acc:htta%>#goalmmát#lohká%>j K ;
  +Num+Sg+Gen:đa%>#goalmmát#logi%> K ;
  +Num+Sg+Gen:đa%>#goalmmát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#goalmmát#lot%> K ;
- +Num+Sg+Attr:htta%>#goalmmát#lot%> K ;
- +Num+Sg+Attr:đa%>jn#goalmmát#lot%> K ;
- +Num+Sg+Attr:htta%>n#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:đa%>#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>jn#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>n#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>jn#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>n#goalmmát#lot%> K ;
  +Num+Sg+Loc:đa%>#goalmmát#logi%>s K ;
  +Num+Sg+Loc:đa%>#goalmmát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:htta%>#goalmmát#logi%>t K ;
@@ -16711,11 +16918,15 @@ LEXICON VIHTTAGOALMMATLOHKAI
  +Num+Sg+Acc:htta%>#njealját#lohká%>j K ;
  +Num+Sg+Gen:đa%>#njealját#logi%> K ;
  +Num+Sg+Gen:đa%>#njealját#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#njealját#lot%> K ;
- +Num+Sg+Attr:đa%>jn#njealját#lot%> K ;
- +Num+Sg+Attr:htta%>#njealját#lot%> K ;
- +Num+Sg+Attr:htta%>n#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:đa%>#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>jn#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>n#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>jn#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>n#njealját#lot%> K ;
  +Num+Sg+Loc:đa%>#njealját#logi%>s K ;
  +Num+Sg+Loc:đa%>#njealját#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:htta%>#njealját#logi%>t K ;
@@ -16744,11 +16955,15 @@ LEXICON VIHTTAVIDATLOHKAI
  +Num+Sg+Acc:htta%>#viđát#lohká%>j K ;
  +Num+Sg+Gen:đa%>#viđát#logi%> K ;
  +Num+Sg+Gen:đa%>#viđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#viđát#lot%> K ;
- +Num+Sg+Attr:đa%>jn#viđát#lot%> K ;
- +Num+Sg+Attr:htta%>#viđát#lot%> K ;
- +Num+Sg+Attr:htta%>n#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:đa%>#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>jn#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>n#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>jn#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>n#viđát#lot%> K ;
  +Num+Sg+Loc:đa%>#viđát#logi%>s K ;
  +Num+Sg+Loc:đa%>#viđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:htta%>#viđát#logi%>t K ;
@@ -16777,11 +16992,15 @@ LEXICON VIHTTAVIDATLOHKAI
  +Num+Sg+Acc:htta%>#guđát#lohká%>j K ;
  +Num+Sg+Gen:đa%>#guđát#logi%> K ;
  +Num+Sg+Gen:đa%>#guđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#guđát#lot%> K ;
- +Num+Sg+Attr:đa%>jn#guđát#lot%> K ;
- +Num+Sg+Attr:htta%>#guđát#lot%> K ;
- +Num+Sg+Attr:htta%>n#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:đa%>#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>jn#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>n#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>jn#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>n#guđát#lot%> K ;
  +Num+Sg+Loc:đa%>#guđát#logi%>s K ;
  +Num+Sg+Loc:đa%>#guđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:htta%>#guđát#logi%>t K ;
@@ -16810,11 +17029,15 @@ LEXICON VIHTTACIHCCETLOHKAI
  +Num+Sg+Acc:htta%>#čihččet#lohká%>j K ;
  +Num+Sg+Gen:đa%>#čihččet#logi%> K ;
  +Num+Sg+Gen:đa%>#čihččet#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#čihččet#lot%> K ;
- +Num+Sg+Attr:đa%>jn#čihččet#lot%> K ;
- +Num+Sg+Attr:htta%>n#čihččet#lot%> K ;
- +Num+Sg+Attr:htta%>#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:đa%>#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>jn#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>n#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>jn#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>n#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>#čihččet#lot%> K ;
  +Num+Sg+Loc:đa%>#čihččet#logi%>s K ;
  +Num+Sg+Loc:đa%>#čihččet#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:htta%>#čihččet#logi%>t K ;
@@ -16843,11 +17066,15 @@ LEXICON VIHTTAGAVCCATLOHKAI
  +Num+Sg+Acc:htta%>#gávccát#lohká%>j K ;
  +Num+Sg+Gen:đa%>#gávccát#logi%> K ;
  +Num+Sg+Gen:đa%>#gávccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#gávccát#lot%> K ;
- +Num+Sg+Attr:đa%>jn#gávccát#lot%> K ;
- +Num+Sg+Attr:htta%>#gávccát#lot%> K ;
- +Num+Sg+Attr:htta%>n#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:đa%>#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>jn#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>n#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>jn#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>n#gávccát#lot%> K ;
  +Num+Sg+Loc:đa%>#gávccát#logi%>s K ;
  +Num+Sg+Loc:đa%>#gávccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:htta%>#gávccát#logi%>t K ;
@@ -16876,11 +17103,15 @@ LEXICON VIHTTAOVCCATLOHKAI
  +Num+Sg+Acc:htta%>#ovccát#lohká%>j K ;
  +Num+Sg+Gen:đa%>#ovccát#logi%> K ;
  +Num+Sg+Gen:đa%>#ovccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#ovccát#lot%> K ;
- +Num+Sg+Attr:đa%>jn#ovccát#lot%> K ;
- +Num+Sg+Attr:htta%>#ovccát#lot%> K ;
- +Num+Sg+Attr:htta%>n#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:đa%>#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>jn#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>n#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>jn#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>n#ovccát#lot%> K ;
  +Num+Sg+Loc:đa%>#ovccát#logi%>s K ;
  +Num+Sg+Loc:đa%>#ovccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:htta%>#ovccát#logi%>t K ;
@@ -16909,11 +17140,15 @@ LEXICON VIHTTALOGATLOHKAI
  +Num+Sg+Acc:htta%>#logát#lohká%>j K ;
  +Num+Sg+Gen:đa%>#logát#logi%> K ;
  +Num+Sg+Gen:đa%>#logát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#logát#lot%> K ;
- +Num+Sg+Attr:đa%>jn#logát#lot%> K ;
- +Num+Sg+Attr:htta%>n#logát#lot%> K ;
- +Num+Sg+Attr:htta%>#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:đa%>#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>jn#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>n#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>jn#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>n#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>#logát#lot%> K ;
  +Num+Sg+Loc:đa%>#logát#logi%>s K ;
  +Num+Sg+Loc:đa%>#logát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:htta%>#logát#logi%>t K ;
@@ -16943,11 +17178,15 @@ LEXICON VIHTTALOGI
  +Num+Sg+Acc:htta%>#logi%> K ;
  +Num+Sg+Gen:đa%>#logi%> K ;
  +Num+Sg+Gen:đa%>#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:đa%>#lot%> K ;
- +Num+Sg+Attr:đa%>jn#lot%> K ;
- +Num+Sg+Attr:htta%>#lot%> K ;
- +Num+Sg+Attr:htta%>n#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:đa%>#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>jn#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>#lot%> K ;
+ +Num+Sg+Nom+Attr:htta%>n#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>jn#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>#lot%> K ;
+ +Num+Sg+Acc+Attr:htta%>n#lot%> K ;
  +Num+Sg+Loc:đa%>#logi%>s K ;
  +Num+Sg+Loc:đa%>#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:đa%>t#logi%>t K ;
@@ -16959,8 +17198,10 @@ LEXICON VIHTTALOGI
  +Num+Pl+Loc:đa%>jn#logi%>jn K ;
  +Num+Pl+Com:đa%>jd9#logi%>jgujn K ;
  +Num+Pl+Com:đa%>jgujn#logi%>jgujn K ;
- +Num+Sg+Attr:đa%>t#lot%> K ; !Nickel 91 from here downwards
- +Num+Sg+Attr:đa%>jd#lot%> K ;
+ +Num+Sg+Nom+Attr:đa%>t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Nom+Attr:đa%>jd#lot%> K ;
+ +Num+Sg+Acc+Attr:đa%>t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Acc+Attr:đa%>jd#lot%> K ;
  +Num+Pl+Nom:htta%>#logi%>t K ;
  +Num+Pl+Acc:htta%>#logi%>X5jd K ;
  +Num+Pl+Gen:htta%>#logi%>X5jd K ; !SUB because of speller
@@ -17005,10 +17246,13 @@ LEXICON CIEZANUPPELOHKAI
  +Num+Sg+Acc:eža%>#nuppe#lohká%>j K ;
  +Num+Sg+Gen:eža%>#nuppe#logi%> K ;
  +Num+Sg+Gen:eža%>#nuppe#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#nuppe#lot%> K ;
- +Num+Sg+Attr:eža%>jn#nuppe#lot%> K ;
- +Num+Sg+Attr:eža%>n#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:eža%>#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>jn#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>n#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>jn#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>n#nuppe#lot%> K ;
  +Num+Sg+Loc:eža%>#nuppe#logi%>s K ;
  +Num+Sg+Loc:eža%>#nuppe#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:eža%>#nuppe#logi%>t K ;
@@ -17037,10 +17281,13 @@ LEXICON CIEZAGOALMMATLOHKAI
  +Num+Sg+Acc:eža%>#goalmmát#lohká%>j K ;
  +Num+Sg+Gen:eža%>#goalmmát#logi%> K ;
  +Num+Sg+Gen:eža%>#goalmmát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#goalmmát#lot%> K ;
- +Num+Sg+Attr:eža%>jn#goalmmát#lot%> K ;
- +Num+Sg+Attr:eža%>n#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:eža%>#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>jn#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>n#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>jn#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>n#goalmmát#lot%> K ;
  +Num+Sg+Loc:eža%>#goalmmát#logi%>s K ;
  +Num+Sg+Loc:eža%>#goalmmát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:eža%>#goalmmát#logi%>t K ;
@@ -17069,10 +17316,13 @@ LEXICON CIEZANJEALJATLOHKAI
  +Num+Sg+Acc:eža%>#njealját#lohká%>j K ;
  +Num+Sg+Gen:eža%>#njealját#logi%> K ;
  +Num+Sg+Gen:eža%>#njealját#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#njealját#lot%> K ;
- +Num+Sg+Attr:eža%>jn#njealját#lot%> K ;
- +Num+Sg+Attr:eža%>n#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:eža%>#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>jn#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>n#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>jn#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>n#njealját#lot%> K ;
  +Num+Sg+Loc:eža%>#njealját#logi%>s K ;
  +Num+Sg+Loc:eža%>#njealját#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:eža%>#njealját#logi%>t K ;
@@ -17101,10 +17351,13 @@ LEXICON CIEZAVIDATLOHKAI
  +Num+Sg+Acc:eža%>#viđát#lohká%>j K ;
  +Num+Sg+Gen:eža%>#viđát#logi%> K ;
  +Num+Sg+Gen:eža%>#viđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>jn#viđát#lot%> K ;
- +Num+Sg+Attr:eža%>#viđát#lot%> K ;
- +Num+Sg+Attr:eža%>n#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:eža%>jn#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>n#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>jn#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>n#viđát#lot%> K ;
  +Num+Sg+Loc:eža%>#viđát#logi%>s K ;
  +Num+Sg+Loc:eža%>#viđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:eža%>#viđát#logi%>t K ;
@@ -17133,10 +17386,13 @@ LEXICON CIEZAGUDATLOHKAI
  +Num+Sg+Acc:eža%>#guđát#lohká%>j K ;
  +Num+Sg+Gen:eža%>#guđát#logi%> K ;
  +Num+Sg+Gen:eža%>#guđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>jn#guđát#lot%> K ;
- +Num+Sg+Attr:eža%>n#guđát#lot%> K ;
- +Num+Sg+Attr:eža%>#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:eža%>jn#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>n#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>jn#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>n#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>#guđát#lot%> K ;
  +Num+Sg+Loc:eža%>#guđát#logi%>s K ;
  +Num+Sg+Loc:eža%>#guđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:eža%>#guđát#logi%>t K ;
@@ -17165,10 +17421,13 @@ LEXICON CIEZACIHCCETLOHKAI
  +Num+Sg+Acc:eža%>#čihččet#lohká%>j K ;
  +Num+Sg+Gen:eža%>#čihččet#logi%> K ;
  +Num+Sg+Gen:eža%>#čihččet#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#čihččet#lot%> K ;
- +Num+Sg+Attr:eža%>jn#čihččet#lot%> K ;
- +Num+Sg+Attr:eža%>n#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:eža%>#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>jn#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>n#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>jn#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>n#čihččet#lot%> K ;
  +Num+Sg+Loc:eža%>#čihččet#logi%>s K ;
  +Num+Sg+Loc:eža%>#čihččet#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:eža%>#čihččet#logi%>t K ;
@@ -17197,10 +17456,13 @@ LEXICON CIEZAGAVCCATLOHKAI
  +Num+Sg+Acc:eža%>#gávccát#lohká%>j K ;
  +Num+Sg+Gen:eža%>#gávccát#logi%> K ;
  +Num+Sg+Gen:eža%>#gávccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#gávccát#lot%> K ;
- +Num+Sg+Attr:eža%>jn#gávccát#lot%> K ;
- +Num+Sg+Attr:eža%>n#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:eža%>#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>jn#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>n#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>jn#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>n#gávccát#lot%> K ;
  +Num+Sg+Loc:eža%>#gávccát#logi%>s K ;
  +Num+Sg+Loc:eža%>#gávccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:eža%>#gávccát#logi%>t K ;
@@ -17229,10 +17491,13 @@ LEXICON CIEZAOVCCATLOHKAI
  +Num+Sg+Acc:eža%>#ovccát#lohká%>j K ;
  +Num+Sg+Gen:eža%>#ovccát#logi%> K ;
  +Num+Sg+Gen:eža%>#ovccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#ovccát#lot%> K ;
- +Num+Sg+Attr:eža%>jn#ovccát#lot%> K ;
- +Num+Sg+Attr:eža%>n#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:eža%>#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>jn#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>n#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>jn#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>n#ovccát#lot%> K ;
  +Num+Sg+Loc:eža%>#ovccát#logi%>s K ;
  +Num+Sg+Loc:eža%>#ovccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:eža%>#ovccát#logi%>t K ;
@@ -17261,10 +17526,13 @@ LEXICON CIEZALOGATLOHKAI
  +Num+Sg+Acc:eža%>#logát#lohká%>j K ;
  +Num+Sg+Gen:eža%>#logát#logi%> K ;
  +Num+Sg+Gen:eža%>#logát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#logát#lot%> K ;
- +Num+Sg+Attr:eža%>jn#logát#lot%> K ;
- +Num+Sg+Attr:eža%>n#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:eža%>#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>jn#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>n#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>jn#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>n#logát#lot%> K ;
  +Num+Sg+Loc:eža%>#logát#logi%>s K ;
  +Num+Sg+Loc:eža%>#logát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:eža%>#logát#logi%>t K ;
@@ -17295,10 +17563,13 @@ LEXICON CIEZALOGI
  +Num+Sg+Acc:eža%>#logi%> K ;
  +Num+Sg+Gen:eža%>#logi%> K ;
  +Num+Sg+Gen:eža%>#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:eža%>#lot%> K ;
- +Num+Sg+Attr:eža%>jn#lot%> K ;
- +Num+Sg+Attr:eža%>n#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:eža%>#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>jn#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>n#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>jn#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>n#lot%> K ;
  +Num+Sg+Loc:eža%>#logi%>s K ;
  +Num+Sg+Loc:eža%>#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:eža%>t#logi%>t K ;
@@ -17310,8 +17581,10 @@ LEXICON CIEZALOGI
  +Num+Pl+Loc:eža%>jn#logi%>jn K ;
  +Num+Pl+Com:eža%>jd9#logi%>jgujn K ;
  +Num+Pl+Com:eža%>jgujn#logi%>jgujn K ;
- +Num+Sg+Attr:eža%>t#lot%> K ; !Nickel 91 from here downwards
- +Num+Sg+Attr:eža%>jd#lot%> K ;
+ +Num+Sg+Nom+Attr:eža%>t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Nom+Attr:eža%>jd#lot%> K ;
+ +Num+Sg+Acc+Attr:eža%>t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Acc+Attr:eža%>jd#lot%> K ;
  +Num+Pl+Nom:eža%>#logi%>t K ;
  +Num+Pl+Acc:eža%>#logi%>X5jd K ;
  +Num+Pl+Gen:eža%>#logi%>X5jd K ; !SUB because of speller
@@ -17353,10 +17626,13 @@ LEXICON GAVCCINUPPELOHKAI
  +Num+Sg+Acc:%>X4#nuppe#lohká%>j K ;
  +Num+Sg+Gen:%>X4#nuppe#logi%> K ;
  +Num+Sg+Gen:%>X4#nuppe#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#nuppe#lot%> K ;
- +Num+Sg+Attr:%>X5jn#nuppe#lot%> K ;
- +Num+Sg+Attr:%>n#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#nuppe#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#nuppe#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#nuppe#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#nuppe#lot%> K ;
  +Num+Sg+Loc:%>X4#nuppe#logivs K ;
  +Num+Sg+Loc:%>X4#nuppe#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4#nuppe#logi%>t K ;
@@ -17385,10 +17661,13 @@ LEXICON GAVCCIGOALMMATLOHKAI
  +Num+Sg+Acc:%>X4#goalmmát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#goalmmát#logi%> K ;
  +Num+Sg+Gen:%>X4#goalmmát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#goalmmát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#goalmmát#lot%> K ;
- +Num+Sg+Attr:%>n#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#goalmmát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#goalmmát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#goalmmát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#goalmmát#lot%> K ;
  +Num+Sg+Loc:%>X4#goalmmát#logi%>s K ;
  +Num+Sg+Loc:%>X4#goalmmát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4#goalmmát#logi%>t K ;
@@ -17417,10 +17696,13 @@ LEXICON GAVCCINJEALJATLOHKAI
  +Num+Sg+Acc:%>X4#njealját#lohká%>j K ;
  +Num+Sg+Gen:%>X4#njealját#logi%> K ;
  +Num+Sg+Gen:%>X4#njealját#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#njealját#lot%> K ;
- +Num+Sg+Attr:%>X5jn#njealját#lot%> K ;
- +Num+Sg+Attr:%>n#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#njealját#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#njealját#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#njealját#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#njealját#lot%> K ;
  +Num+Sg+Loc:%>X4#njealját#logi%>s K ;
  +Num+Sg+Loc:%>X4#njealját#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4#njealját#logi%>t K ;
@@ -17449,10 +17731,13 @@ LEXICON GAVCCIVIDATLOHKAI
  +Num+Sg+Acc:%>X4#viđát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#viđát#logi%> K ;
  +Num+Sg+Gen:%>X4#viđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#viđát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#viđát#lot%> K ;
- +Num+Sg+Attr:%>n#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#viđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#viđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#viđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#viđát#lot%> K ;
  +Num+Sg+Loc:%>X4#viđát#logi%>s K ;
  +Num+Sg+Loc:%>X4#viđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4#viđát#logi%>t K ;
@@ -17481,10 +17766,13 @@ LEXICON GAVCCIGUDATLOHKAI
  +Num+Sg+Acc:%>X4#guđát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#guđát#logi%> K ;
  +Num+Sg+Gen:%>X4#guđát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#guđát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#guđát#lot%> K ;
- +Num+Sg+Attr:%>n#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#guđát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#guđát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#guđát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#guđát#lot%> K ;
  +Num+Sg+Loc:%>X4#guđát#logi%>s K ;
  +Num+Sg+Loc:%>X4#guđát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4#guđát#logi%>t K ;
@@ -17513,10 +17801,13 @@ LEXICON GAVCCICIHCCETLOHKAI
  +Num+Sg+Acc:%>X4#čihččet#lohká%>j K ;
  +Num+Sg+Gen:%>X4#čihččet#logi%> K ;
  +Num+Sg+Gen:%>X4#čihččet#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#čihččet#lot%> K ;
- +Num+Sg+Attr:%>X5jn#čihččet#lot%> K ;
- +Num+Sg+Attr:%>n#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#čihččet#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#čihččet#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#čihččet#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#čihččet#lot%> K ;
  +Num+Sg+Loc:%>X4#čihččet#logi%>s K ;
  +Num+Sg+Loc:%>X4#čihččet#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4#čihččet#logi%>t K ;
@@ -17546,10 +17837,13 @@ LEXICON GAVCCIGAVCCATLOHKAI
  +Num+Sg+Acc:%>X4#gávccát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#gávccát#logi%> K ;
  +Num+Sg+Gen:%>X4#gávccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#gávccát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#gávccát#lot%> K ;
- +Num+Sg+Attr:%>n#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#gávccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#gávccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#gávccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#gávccát#lot%> K ;
  +Num+Sg+Loc:%>X4#gávccát#logi%>s K ;
  +Num+Sg+Loc:%>X4#gávccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4#gávccát#logi%>t K ;
@@ -17578,10 +17872,13 @@ LEXICON GAVCCIOVCCATLOHKAI
  +Num+Sg+Acc:%>X4#ovccát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#ovccát#logi%> K ;
  +Num+Sg+Gen:%>X4#ovccát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#ovccát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#ovccát#lot%> K ;
- +Num+Sg+Attr:%>n#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#ovccát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#ovccát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#ovccát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#ovccát#lot%> K ;
  +Num+Sg+Loc:%>X4#ovccát#logi%>s K ;
  +Num+Sg+Loc:%>X4#ovccát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4#ovccát#logi%>t K ;
@@ -17611,10 +17908,13 @@ LEXICON GAVCCILOGATLOHKAI
  +Num+Sg+Acc:%>X4#logát#lohká%>j K ;
  +Num+Sg+Gen:%>X4#logát#logi%> K ;
  +Num+Sg+Gen:%>X4#logát#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#logát#lot%> K ;
- +Num+Sg+Attr:%>X5jn#logát#lot%> K ;
- +Num+Sg+Attr:%>n#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#logát#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#logát#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#logát#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#logát#lot%> K ;
  +Num+Sg+Loc:%>X4#logát#logi%>s K ;
  +Num+Sg+Loc:%>X4#logát#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4#logát#logi%>t K ;
@@ -17645,10 +17945,13 @@ LEXICON GAVCCILOGI
  +Num+Sg+Acc:%>X4#logi%> K ;
  +Num+Sg+Gen:%>X4#logi%> K ;
  +Num+Sg+Gen:%>X4#logi»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
- +Num+Sg+Attr:%>X4#lot%> K ;
- +Num+Sg+Attr:%>X5jn#lot%> K ;
- +Num+Sg+Attr:%>n#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4#lot»# NUMERALCOMPOUNDS ;            ! golmmagielat
+ +Num+Sg+Nom+Attr:%>X4#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X5jn#lot%> K ;
+ +Num+Sg+Nom+Attr:%>n#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X5jn#lot%> K ;
+ +Num+Sg+Acc+Attr:%>n#lot%> K ;
  +Num+Sg+Loc:%>X4#logi%>s K ;
  +Num+Sg+Loc:%>X4#logi%>n K ; !SUB !SOUTH
  +Num+Pl+Nom:%>X4t#logi%>t K ;
@@ -17660,8 +17963,10 @@ LEXICON GAVCCILOGI
  +Num+Pl+Loc:%>X5jn#logi%>jn K ;
  +Num+Pl+Com:%>X5jd9#logi%>jgujn K ;
  +Num+Pl+Com:%>X5jgujn#logi%>jgujn K ;
- +Num+Sg+Attr:%>X4t#lot%> K ; !Nickel 91 from here downwards
- +Num+Sg+Attr:%>X5jd#lot%> K ;
+ +Num+Sg+Nom+Attr:%>X4t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Nom+Attr:%>X5jd#lot%> K ;
+ +Num+Sg+Acc+Attr:%>X4t#lot%> K ; !Nickel 91 from here downwards
+ +Num+Sg+Acc+Attr:%>X5jd#lot%> K ;
  +Num+Pl+Nom:%>X4#logi%>t K ;
  +Num+Pl+Acc:%>X4#logi%>X5jd K ;
  +Num+Pl+Gen:%>X4#logi%>X5jd K ; !SUB because of speller
@@ -18073,7 +18378,7 @@ logát+A+Ord:logád VUOSTTAS ;
 ! +Num+Sg+Acc:hká%>j K ;
 ! +Num+Sg+Gen:gi%> K ;
 ! +Num+Sg+Gen:gi»# NUMERALCOMPOUNDS ;            ! golmmagielat
-! +Num+Sg+Attr:t»# NUMERALCOMPOUNDS ;            ! golmmagielat
+! +Num+Sg+Nom+Attr:t»# NUMERALCOMPOUNDS ;            ! golmmagielat
 ! +Num+Sg+Loc:gi%>s K ;
 ! +Num+Sg+Loc:gi%>n K ; !SUB !SOUTH
 ! +Num+Pl+Nom:gi%>t K ;
@@ -18236,8 +18541,8 @@ máŋ0ga#nuppe#lohkái#:máŋ'ga#nuppe#lohkái# DUHAT ;
 máŋ0ga#logi#:máŋ'ga#logi# DUHAT ;
 máŋ0ga#duhát:máŋ'ga GOLBMADUHAT ;
 máŋ0ga#čuođi#:máŋ'ga#čuođi# DUHAT ;
-máŋga#logi#+Num+Sg+Attr:máŋgga#lot# NUMERALCOMPOUNDS ;
-máŋga#logi#+Num+Sg+Attr:máŋggaloht# NUMERALCOMPOUNDS ;          !SUB
+máŋga#logi#+Num+Sg+Nom+Attr:máŋgga#lot# NUMERALCOMPOUNDS ;
+máŋga#logi#+Num+Sg+Nom+Attr:máŋggaloht# NUMERALCOMPOUNDS ;          !SUB
 máŋga#logi#+Num+Sg+Gen:máŋggalogi# NUMERALCOMPOUNDS ;
 moadde#nuppe#lohkái:moadd GUOKTENUPPELOHKAI ;
 moadde#logi:moadd GUOKTELOGI ;
@@ -18246,9 +18551,10 @@ moadde#nuppe#lohkái#:moadde#nuppe#lohkái# DUHAT ;
 moadde#logi#:moadde#logi# DUHAT ;
 moadde#duhát:moadd GUOKTEDUHAT ;
 moadde#čuođi#:moadde#čuođi# DUHAT ;
-moadde#logi#+Num+Sg+Attr:moatti%>#lot%> K ; !SUB !Dialect
-moadde#logi#+Num+Sg+Attr:moatti%>#lot»# NUMERALCOMPOUNDS ; !SUB !Dialect
-moadde#logi#+Num+Sg+Attr:moatte%>#lot»# NUMERALCOMPOUNDS ;
+moadde#logi#+Num+Sg+Nom+Attr:moatti%>#lot%> K ; !SUB !Dialect
+moadde#logi#+Num+Sg+Acc+Attr:moatti%>#lot%> K ; !SUB !Dialect
+moadde#logi#+Num+Sg+Nom+Attr:moatti%>#lot»# NUMERALCOMPOUNDS ; !SUB !Dialect
+moadde#logi#+Num+Sg+Nom+Attr:moatte%>#lot»# NUMERALCOMPOUNDS ;
 moadde#logi#+Num+Sg+Gen:moatti%>#logi»# NUMERALCOMPOUNDS ;
 moadde#logi#+Num+Sg+Gen:moatte%>#logi»# NUMERALCOMPOUNDS ;
 galle#nuppe#lohkái:gall GUOKTENUPPELOHKAI ;
@@ -18258,8 +18564,8 @@ galle#nuppe#lohkái#:galle#nuppe#lohkái# DUHAT ;
 galle#logi#:galle#logi# DUHAT ;
 galle#duhát:gall GUOKTEDUHAT ;
 galle#čuođi#:galle#čuođi# DUHAT ;
-galle#logi#+Num+Sg+Attr:galle%>#lot»# NUMERALCOMPOUNDS ;
-galle#logi#+Num+Sg+Attr:galle%>#logi»# NUMERALCOMPOUNDS ;
+galle#logi#+Num+Sg+Nom+Attr:galle%>#lot»# NUMERALCOMPOUNDS ;
+galle#logi#+Num+Sg+Nom+Attr:galle%>#logi»# NUMERALCOMPOUNDS ;
 máŋ0ga:máŋ'ga GOLBMA ;
 moadde:moadd GUOKTE ;
 gal0le:gal'l GUOKTE ;
