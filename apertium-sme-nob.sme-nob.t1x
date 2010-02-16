@@ -189,7 +189,11 @@
       <attr-item tags="inf"/>
       <attr-item tags="PrfPrc"/>
       <attr-item tags="pp"/>
-    </def-attr> 
+    </def-attr>
+    <def-attr n="neg">
+      <attr-item tags="ConNeg"/>
+      <attr-item tags="Neg"/>
+    </def-attr>
     <def-attr n="mode">
       <attr-item tags="Qst"/>
     </def-attr>
@@ -199,6 +203,7 @@
       <attr-item tags="@CNP"/>
       <attr-item tags="@CVP"/>
       <attr-item tags="@→N"/>
+      <attr-item tags="@OBJ→"/>
       <attr-item tags="@←OBJ"/>
       <attr-item tags="@OBJ"/>
       <attr-item tags="@-F←OBJ"/>
@@ -209,6 +214,7 @@
       <attr-item tags="@\+FMAINV"/>
       <attr-item tags="@-FMAINV"/>
       <attr-item tags="@\+FAUXV"/>
+      <attr-item tags="@-FAUXV"/>
       <attr-item tags="@ADVL"/>
       <attr-item tags="@←ADVL"/>
       <attr-item tags="@ADVL→"/>
@@ -1036,6 +1042,33 @@ always(?) def in nob; predicative superlatives are only if they have a determine
     <!-- VERB PHRASES ETC. -->
 
 
+    <rule comment="REGLA: VNEG 
+                   ii => ikke.p3.sg
+                   Itgo => ikke.p2.sg.Qst
+                   (has to be above regular verb rule)">
+      <pattern>
+        <pattern-item n="vneg"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="neg"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adv"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    
     <rule comment="REGLA: VERB">
       <pattern>
         <pattern-item n="verb"/>
@@ -1103,87 +1136,45 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: VNEG VERB
-                   Itgo boađáše => Kommer du ikke">
-      <pattern>
-        <pattern-item n="vneg"/>
-        <pattern-item n="verb"/>
-      </pattern>
-      <action>
-        <out>
-          <chunk name="verb" case="caseFirstWord">
-            <tags>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="sl" part="mode"/></tag>
-              <tag><clip pos="1" side="tl" part="pers"/></tag>
-              <tag><clip pos="1" side="tl" part="nbr"/></tag>
-            </tags>
-            <lu>
-              <get-case-from pos="1">
-                <clip pos="2" side="tl" part="lemh"/>
-              </get-case-from>
-              <clip pos="2" side="tl" part="a_verb"/>
-              <clip pos="2" side="tl" part="temps"/>
-              <clip pos="2" side="tl" part="voice"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-          <b pos="1"/>
-          <chunk name="adv" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="@SADV"/></tag>
-            </tags>
-            <lu>
-              <get-case-from pos="2">
-                <clip pos="1" side="tl" part="lemh"/>
-              </get-case-from>
-              <clip pos="1" side="tl" part="a_adv"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
-      </action>
-    </rule>
-
-    <rule comment="REGLA: VNEG VLEAT VERB: ii leat boahtán => den er ikke kommet">
-      <pattern>
-        <pattern-item n="vneg"/>
-        <pattern-item n="vleat"/>
-        <pattern-item n="verb"/>
-      </pattern>
-      <action>
-        <out>
-          <chunk name="verb_adv_verb" case="caseFirstWord">
-            <tags>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="sl" part="mode"/></tag>
-              <tag><clip pos="1" side="tl" part="pers"/></tag>
-              <tag><clip pos="1" side="tl" part="nbr"/></tag>
-            </tags>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_verb"/>
-              <clip pos="2" side="tl" part="temps"/>
-              <clip pos="2" side="tl" part="voice"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-            <b pos="1"/>
-            <lu>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adv"/>
-            </lu>
-            <b pos="2"/>
-            <lu>
-              <clip pos="3" side="tl" part="lemh"/>
-              <clip pos="3" side="tl" part="a_verb"/>
-              <clip pos="3" side="tl" part="temps"/>
-              <clip pos="3" side="tl" part="voice"/>
-              <clip pos="3" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
-      </action>
-    </rule>
+<!--     <rule comment="REGLA: VNEG VLEAT VERB: ii leat boahtán => den er ikke kommet"> -->
+<!--       <pattern> -->
+<!--         <pattern-item n="vneg"/> -->
+<!--         <pattern-item n="vleat"/> -->
+<!--         <pattern-item n="verb"/> -->
+<!--       </pattern> -->
+<!--       <action> -->
+<!--         <out> -->
+<!--           <chunk name="verb_adv_verb" case="caseFirstWord"> -->
+<!--             <tags> -->
+<!--               <tag><clip pos="1" side="sl" part="syn_label"/></tag> -->
+<!--               <tag><clip pos="1" side="sl" part="mode"/></tag> -->
+<!--               <tag><clip pos="1" side="tl" part="pers"/></tag> -->
+<!--               <tag><clip pos="1" side="tl" part="nbr"/></tag> -->
+<!--             </tags> -->
+<!--             <lu> -->
+<!--               <clip pos="2" side="tl" part="lemh"/> -->
+<!--               <clip pos="2" side="tl" part="a_verb"/> -->
+<!--               <clip pos="2" side="tl" part="temps"/> -->
+<!--               <clip pos="2" side="tl" part="voice"/> -->
+<!--               <clip pos="2" side="tl" part="lemq"/> -->
+<!--             </lu> -->
+<!--             <b pos="1"/> -->
+<!--             <lu> -->
+<!--               <clip pos="1" side="tl" part="lemh"/> -->
+<!--               <clip pos="1" side="tl" part="a_adv"/> -->
+<!--             </lu> -->
+<!--             <b pos="2"/> -->
+<!--             <lu> -->
+<!--               <clip pos="3" side="tl" part="lemh"/> -->
+<!--               <clip pos="3" side="tl" part="a_verb"/> -->
+<!--               <clip pos="3" side="tl" part="temps"/> -->
+<!--               <clip pos="3" side="tl" part="voice"/> -->
+<!--               <clip pos="3" side="tl" part="lemq"/> -->
+<!--             </lu> -->
+<!--           </chunk> -->
+<!--         </out> -->
+<!--       </action> -->
+<!--     </rule> -->
 
 
     <!-- SINGLE CLOSED CLASS WORDS: -->

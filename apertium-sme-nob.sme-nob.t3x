@@ -12,13 +12,16 @@
     <def-cat n="SN-post">
       <cat-item tags="SN.@→P.*"/>
     </def-cat>
-    <def-cat n="SN-maybe-Lsubj">
+    <def-cat n="SN-maybe-LSUBJ">
       <cat-item tags="SN.@SUBJ→.*"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
-    <def-cat n="SN-maybe-Rsubj">
+    <def-cat n="SN-maybe-RSUBJ">
       <cat-item tags="SN.@←SUBJ.*"/>
       <cat-item tags="SN.@X.*"/>
+    </def-cat>
+    <def-cat n="SN-OBJ">
+      <cat-item tags="SN.@OBJ→.*"/>
     </def-cat>
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
@@ -29,15 +32,28 @@
       <cat-item tags="SN.@ADVL"/>
       <cat-item tags="SN.@ADVL.*"/>
     </def-cat>
-    <def-cat n="FV-qst">
+    <def-cat n="FV-Neg">
+      <cat-item tags="@+FAUXV.Neg.*"/>
+    </def-cat>
+    <def-cat n="FV-Neg-Qst">
+      <cat-item tags="@+FAUXV.Neg.Qst.*"/>
+    </def-cat>
+    <def-cat n="FV-Qst">
       <cat-item tags="@+FMAINV.Qst.*"/>
       <cat-item tags="@+FAUXV.Qst.*"/>
+      <cat-item tags="@+FAUXV.Neg.Qst.*"/>
     </def-cat>
     <def-cat n="FV">
       <cat-item tags="@+FMAINV"/>
       <cat-item tags="@+FMAINV.*"/>
       <cat-item tags="@+FAUXV"/>
       <cat-item tags="@+FAUXV.*"/>
+    </def-cat>
+    <def-cat n="IV">
+      <cat-item tags="@-FMAINV"/>
+      <cat-item tags="@-FMAINV.*"/>
+      <cat-item tags="@-FAUXV"/>
+      <cat-item tags="@-FAUXV.*"/>
     </def-cat>
     <def-cat n="SPEC">
       <cat-item tags="@ADVL"/>
@@ -259,10 +275,10 @@
 <!--       </action> -->
 <!--     </rule> -->
     
-    <rule comment="REGLA: SN-maybe-Lsubj FV
+    <rule comment="REGLA: SN-maybe-LSUBJ FV
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
-        <pattern-item n="SN-maybe-Lsubj"/>
+        <pattern-item n="SN-maybe-LSUBJ"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -277,11 +293,35 @@
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV SN-maybe-Rsubj
+    <rule comment="REGLA: SN-maybe-LSUBJ FV-Neg IV
+                   Máhtte ii leat (boahtán) => Máhtte har ikke (kommet)
+                   Override prodrop rule (below) if we might have a subject to the left">
+      <pattern>
+        <pattern-item n="SN-maybe-LSUBJ"/>
+        <pattern-item n="FV-Neg"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk> 
+            <clip pos="1" part="whole"/>
+          </chunk>
+          <b pos="1"/>
+          <chunk> 
+            <clip pos="3" part="whole"/>
+          </chunk>
+          <b pos="2"/>
+          <chunk> 
+            <clip pos="2" part="whole"/>
+          </chunk>                    
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: FV SN-maybe-RSUBJ
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
         <pattern-item n="FV"/>
-        <pattern-item n="SN-maybe-Rsubj"/>
+        <pattern-item n="SN-maybe-RSUBJ"/>
       </pattern>
       <action>
         <out>
@@ -296,10 +336,10 @@
       </action>
     </rule>
     <!-- todo: is SUBJ ADVL FV possible? -->
-<!--     <rule comment="REGLA: SN-maybe-subj ADVL FV -->
+<!--     <rule comment="REGLA: SN-maybe-SUBJ ADVL FV -->
 <!--                    Override prodrop rule (below) if we might have a subject to the left"> -->
 <!--       <pattern> -->
-<!--         <pattern-item n="SN-maybe-subj"/> -->
+<!--         <pattern-item n="SN-maybe-SUBJ"/> -->
 <!--         <pattern-item n="ADVL"/> -->
 <!--         <pattern-item n="FV"/> -->
 <!--       </pattern> -->
@@ -381,11 +421,12 @@
 
     <rule comment="REGLA: CNJSUB FV SADV
                    Subordinate clause.
-                   go ii boahtán => at han ikke kom">
+                   go it boađáše => at/når du ikke kommer
+                   Insert dropped pronoun">
       <pattern>
         <pattern-item n="CNJSUB"/>
-        <pattern-item n="FV"/>
-        <pattern-item n="SADV"/>
+        <pattern-item n="FV-Neg"/>
+        <pattern-item n="IV"/>
       </pattern>
       <action>
         <call-macro n="set_pro">
@@ -402,21 +443,21 @@
           <b pos="1"/>
           <var n="pro"/>
           <chunk>
-            <clip pos="3" part="whole"/>
+            <clip pos="2" part="whole"/>
           </chunk>
           <b pos="2"/>
           <chunk>
-            <clip pos="2" part="whole"/>
+            <clip pos="3" part="whole"/>
           </chunk>
         </out>
       </action>
     </rule>
 
-    <rule comment="REGLA: FV-qst
+    <rule comment="REGLA: FV-Qst
                    Oainnátgo => Ser du
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="FV-qst"/>
+        <pattern-item n="FV-Qst"/>
       </pattern>
       <action>
         <call-macro n="set_pro">
@@ -431,6 +472,98 @@
             <clip pos="1" part="whole"/>
           </chunk>
           <var n="pro"/>                    
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: FV-Neg-Qst SN-OBJ IV
+                   itgo gáfe juga => drikker du ikke kaffe
+                   Insert dropped pronoun">
+      <pattern>
+        <pattern-item n="FV-Neg-Qst"/>
+        <pattern-item n="SN-OBJ"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pro">
+          <with-param pos="1"/>
+        </call-macro>
+        <choose><when>
+          <test><not><equal><var n="pro"/><lit v=""/></equal></not></test>
+          <let><var n="pro"/><concat><b/><var n="pro"/></concat></let>
+        </when></choose>        
+        <out>
+          <chunk> 
+            <clip pos="3" part="whole"/>
+          </chunk>
+          <var n="pro"/>
+          <b pos="1"/>
+          <chunk> 
+            <get-case-from pos="2">
+              <clip pos="1" part="whole"/>
+            </get-case-from>
+          </chunk>
+          <b pos="2"/>
+          <chunk> 
+            <clip pos="2" part="whole"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: FV-Neg-Qst IV
+                   itgo boađáše => kommer du ikke
+                   Insert dropped pronoun">
+      <pattern>
+        <pattern-item n="FV-Neg-Qst"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pro">
+          <with-param pos="1"/>
+        </call-macro>
+        <choose><when>
+          <test><not><equal><var n="pro"/><lit v=""/></equal></not></test>
+          <let><var n="pro"/><concat><b/><var n="pro"/></concat></let>
+        </when></choose>        
+        <out>
+          <chunk> 
+            <clip pos="2" part="whole"/>
+          </chunk>
+          <var n="pro"/>
+          <b pos="1"/>
+          <chunk> 
+            <get-case-from pos="2">
+              <clip pos="1" part="whole"/>
+            </get-case-from>
+          </chunk>                    
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: FV-Neg IV
+                   it boađáše => du kommer ikke
+                   Insert dropped pronoun">
+      <pattern>
+        <pattern-item n="FV-Neg"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pro">
+          <with-param pos="1"/>
+        </call-macro>
+        <choose><when>
+          <test><not><equal><var n="pro"/><lit v=""/></equal></not></test>
+          <let><var n="pro"/><concat><var n="pro"/><b/></concat></let>
+        </when></choose>        
+        <out>
+          <var n="pro"/>
+          <chunk> 
+            <clip pos="2" part="whole"/>
+          </chunk>
+          <b pos="1"/>
+          <chunk> 
+            <get-case-from pos="2">
+              <clip pos="1" part="whole"/>
+            </get-case-from>
+          </chunk>                    
         </out>
       </action>
     </rule>
