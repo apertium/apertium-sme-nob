@@ -1111,7 +1111,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </pattern>
       <action>
         <out>
-          <chunk name="adv_verb" case="caseFirstWord">
+          <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
@@ -1119,16 +1119,26 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
             </tags>
             <lu>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adv"/>
-            </lu>
-            <b pos="1"/>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
+              <get-case-from pos="1">
+                <clip pos="2" side="tl" part="lemh"/>
+              </get-case-from>
               <clip pos="2" side="tl" part="a_verb"/>
               <clip pos="2" side="tl" part="temps"/>
               <clip pos="2" side="tl" part="voice"/>
               <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+          <b pos="1"/>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="@SADV"/></tag>
+            </tags>
+            <lu>
+              <get-case-from pos="2">
+                <clip pos="1" side="tl" part="lemh"/>
+              </get-case-from>
+              <clip pos="1" side="tl" part="a_adv"/>
+              <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>

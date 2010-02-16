@@ -39,11 +39,18 @@
       <cat-item tags="@+FAUXV"/>
       <cat-item tags="@+FAUXV.*"/>
     </def-cat>
-    <def-cat n="FOCUS">
+    <def-cat n="SPEC">
       <cat-item tags="@ADVL"/>
       <cat-item tags="@ADVL.*"/>
       <cat-item tags="SN.@SPRED→"/>
       <cat-item tags="SN.@SPRED→.*"/>
+    </def-cat>
+    <def-cat n="SADV">
+      <cat-item tags="@SADV"/>
+    </def-cat>
+    <def-cat n="CNJSUB">
+      <cat-item tags="@CNP"/>
+      <cat-item tags="@CVP"/>
     </def-cat>
   </section-def-cats>
 
@@ -198,11 +205,11 @@
   <section-rules>
 
     <!-- Finite verb phrases, grammatical functions -->
-    <rule comment="REGLA: FOCUS SN FV
+    <rule comment="REGLA: SPEC SN FV
                    V2-rule
                    Doppe son orui vahku => Der borte bodde han ei uke">
       <pattern>
-        <pattern-item n="FOCUS"/>
+        <pattern-item n="SPEC"/>
         <pattern-item n="SN"/>
         <pattern-item n="FV"/>
       </pattern>
@@ -222,12 +229,12 @@
         </out>
       </action>
     </rule>
-    <!-- <rule comment="REGLA: PR FOCUS SN FV -->
+    <!-- <rule comment="REGLA: PR SPEC SN FV -->
 <!--                    V2-rule -->
 <!--                    (PR)Mánnán son orui Romssas => Som barn bodde han i Tromsø"> -->
 <!--       <pattern> -->
 <!--         <pattern-item n="PR"/> -->
-<!--         <pattern-item n="FOCUS"/> -->
+<!--         <pattern-item n="SPEC"/> -->
 <!--         <pattern-item n="SN"/> -->
 <!--         <pattern-item n="FV"/> -->
 <!--       </pattern> -->
@@ -312,11 +319,11 @@
 <!--         </out> -->
 <!--       </action> -->
 <!--     </rule> -->
-    <rule comment="REGLA: FOCUS FV
+    <rule comment="REGLA: SPEC FV
                    V2-rule with pro-drop insertion
                    Doppe dihten => Der borte visste jeg">
       <pattern>
-        <pattern-item n="FOCUS"/>
+        <pattern-item n="SPEC"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -339,12 +346,12 @@
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR FOCUS FV
+    <rule comment="REGLA: PR SPEC FV
                    V2-rule with pro-drop insertion
                    Mánnán dihten => Som barn visste jeg">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="FOCUS"/>
+        <pattern-item n="SPEC"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -371,6 +378,40 @@
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: CNJSUB FV SADV
+                   Subordinate clause.
+                   go ii boahtán => at han ikke kom">
+      <pattern>
+        <pattern-item n="CNJSUB"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="SADV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pro">
+          <with-param pos="2"/>
+        </call-macro>
+        <choose><when>
+          <test><not><equal><var n="pro"/><lit v=""/></equal></not></test>
+          <let><var n="pro"/><concat><var n="pro"/><b/></concat></let>
+        </when></choose>
+        <out>
+          <chunk>
+            <clip pos="1" part="whole"/>
+          </chunk>
+          <b pos="1"/>
+          <var n="pro"/>
+          <chunk>
+            <clip pos="3" part="whole"/>
+          </chunk>
+          <b pos="2"/>
+          <chunk>
+            <clip pos="2" part="whole"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <rule comment="REGLA: FV-qst
                    Oainnátgo => Ser du
                    Insert dropped pronoun">
