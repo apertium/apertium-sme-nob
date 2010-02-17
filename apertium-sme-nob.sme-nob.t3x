@@ -61,6 +61,9 @@
       <cat-item tags="SN.@SPRED→"/>
       <cat-item tags="SN.@SPRED→.*"/>
     </def-cat>
+    <def-cat n="SPEC-LSUBJ-Qst">
+      <cat-item tags="SN.@SUBJ→.Qst.*"/>
+    </def-cat>
     <def-cat n="SADV">
       <cat-item tags="@SADV"/>
     </def-cat>
@@ -128,6 +131,16 @@
       <attr-item tags="Sg3"/>
       <attr-item tags="Du3"/>
       <attr-item tags="Pl3"/>
+    </def-attr>
+    <def-attr n="temps">
+      <attr-item tags="Ind.Prs"/>
+      <attr-item tags="Ind.Prt"/>
+      <attr-item tags="pres"/>
+      <attr-item tags="pret"/>
+      <attr-item tags="Inf"/>
+      <attr-item tags="inf"/>
+      <attr-item tags="PrfPrc"/>
+      <attr-item tags="pp"/>
     </def-attr>
     <def-attr n="mode">
       <attr-item tags="Qst"/>
@@ -197,7 +210,7 @@
   <section-def-macros>
     <def-macro n="set_pro" npar="1" c="arg.1: verb chunk">
       <let>
-        <var n="pro"/>            
+        <var n="pro"/>
         <concat>
           <lit v="^pron"/>
           <lit-tag v="@SUBJ→"/>
@@ -274,6 +287,52 @@
 <!--         </out> -->
 <!--       </action> -->
 <!--     </rule> -->
+    
+    <rule comment="REGLA: SPEC-LSUBJ-Qst FV
+                   Áhččigo boahtá (ihttin) => Er det far som kommer (i morgen)
+                   Áhččigo bođii (ikte) => Var det far som kom (i går)
+                   Nom.Qst.@SUBJ→ => Er det X som ...">
+      <pattern>
+        <pattern-item n="SPEC-LSUBJ-Qst"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>        
+        <out>
+          <chunk>
+            <lit v="verb"/><lit-tag v="@+FMAINV.Qst.p3.sg"/>
+            <lit v="{^"/>
+            <lit v="være"/><lit-tag v="vblex"/><clip pos="2" part="temps"/>
+            <lit v="$}"/>
+          </chunk>
+          <b/>
+          <chunk>
+            <lit v="det"/><lit-tag v="SN"/><lit-tag v="@X"/>
+            <lit-tag v="p3"/><lit-tag v="nt"/><lit-tag v="sg"/><lit-tag v="nom"/>
+            <lit v="{^"/>
+            <lit v="det"/><lit-tag v="prn"/>
+            <lit-tag v="p3"/><lit-tag v="nt"/><lit-tag v="sg"/><lit-tag v="nom"/>
+            <lit v="$}"/>
+          </chunk>
+          <b/>
+          <chunk>
+            <get-case-from pos="2">
+              <clip pos="1" part="whole"/>
+            </get-case-from>
+          </chunk>
+          <b pos="1"/>
+          <chunk>
+            <lit v="conj"/><lit-tag v="@CVP"/>
+            <lit v="{^"/>
+            <lit v="som"/><lit-tag v="cnjsub"/>
+            <lit v="$}"/>
+          </chunk>
+          <b/>
+          <chunk>
+            <clip pos="2" part="whole"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
     
     <rule comment="REGLA: SN-maybe-LSUBJ FV
                    Override prodrop rule (below) if we might have a subject to the left">
@@ -590,8 +649,6 @@
       </action>
     </rule>
     
-
-
     
     <!-- Adpositions -->
     
