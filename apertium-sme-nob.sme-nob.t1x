@@ -620,6 +620,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </pattern>
       <action>
         <choose>
+          
           <when>
             <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
             <out>
@@ -642,10 +643,18 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               </chunk>
             </out>
           </when>
+
           <otherwise>
             <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
             <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
 
+            <let><var n="c_tag_pos"/><lit-tag v="4"/></let> 
+            <choose><when>
+              <test><not><equal>
+                <clip pos="1" side="sl" part="mode"/><lit v=""/>
+              </equal></not></test>
+              <let><var n="c_tag_pos"/><lit-tag v="5"/></let>
+            </when></choose>
             <out>
               <var n="case-prep"/>
               <chunk name="nom" case="caseFirstWord">
@@ -662,7 +671,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
                   <clip pos="1" side="tl" part="a_nom"/>
                   <clip pos="1" side="tl" part="gen"/>
                   <clip pos="1" side="tl" part="nbr"/>
-                  <lit-tag v="4"/>
+                  <var n="c_tag_pos"/>
                   <clip pos="1" side="tl" part="gen-case"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
@@ -684,6 +693,14 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro> <!--TODO: pos="2"?-->
         
+        <let><var n="c_tag_pos"/><lit-tag v="4"/></let> 
+        <choose><when>
+          <test><not><equal>
+            <clip pos="1" side="sl" part="mode"/><lit v=""/>
+          </equal></not></test>
+          <let><var n="c_tag_pos"/><lit-tag v="5"/></let>
+        </when></choose>
+
         <out>
           <var n="case-prep"/>
           <chunk name="num_nom" case="caseFirstWord">
@@ -708,7 +725,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="4"/>
+              <var n="c_tag_pos"/>
               <clip pos="1" side="tl" part="gen-case"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
@@ -726,6 +743,14 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <action>
         <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        
+        <let><var n="c_tag_pos"/><lit-tag v="4"/></let> 
+        <choose><when>
+          <test><not><equal>
+            <clip pos="1" side="sl" part="mode"/><lit v=""/>
+          </equal></not></test>
+          <let><var n="c_tag_pos"/><lit-tag v="5"/></let>
+        </when></choose>
 
         <out>
           <var n="case-prep"/>
@@ -750,7 +775,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
-              <lit-tag v="4"/>
+              <var n="c_tag_pos"/>
               <clip pos="2" side="tl" part="gen-case"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
@@ -877,6 +902,14 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         </call-macro>
 
         <call-macro n="set_case-prep"><with-param pos="3"/></call-macro>
+
+        <let><var n="c_tag_pos"/><lit-tag v="6"/></let> 
+        <choose><when>
+          <test><not><equal>
+            <clip pos="1" side="sl" part="mode"/><lit v=""/>
+          </equal></not></test>
+          <let><var n="c_tag_pos"/><lit-tag v="7"/></let>
+        </when></choose>
         
         <out>
           <var n="case-prep"/>
@@ -917,7 +950,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="3" side="tl" part="a_nom"/>
               <clip pos="3" side="tl" part="gen"/>
               <clip pos="3" side="tl" part="nbr"/>
-              <lit-tag v="6"/>
+              <var n="c_tag_pos"/>
               <clip pos="3" side="tl" part="gen-case"/>
               <clip pos="3" side="tl" part="lemq"/>
             </lu>
@@ -937,6 +970,15 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="set_adj_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_adj_gen"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_adj_def"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_tag_pos"/><lit-tag v="5"/></let> 
+        <choose><when>
+          <test><not><equal>
+            <clip pos="1" side="sl" part="mode"/><lit v=""/>
+          </equal></not></test>
+          <let><var n="c_tag_pos"/><lit-tag v="6"/></let>
+        </when></choose>
+        
         <out>
           <var n="case-prep"/>
           <chunk name="adj_nom" case="caseFirstWord">
@@ -955,7 +997,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="1" side="tl" part="grau"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="5"/>
+              <var n="c_tag_pos"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
             <b pos="1"/>
@@ -964,7 +1006,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
-              <lit-tag v="5"/>
+              <var n="c_tag_pos"/>
               <clip pos="2" side="tl" part="gen-case"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
