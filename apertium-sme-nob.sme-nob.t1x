@@ -21,6 +21,9 @@
     <def-cat n="pron">
       <cat-item tags="Pron.*"/>
     </def-cat>
+    <def-cat n="pronrel">
+      <cat-item tags="Pron.Rel.*"/>
+    </def-cat>
     <def-cat n="pronpers">
       <cat-item tags="Pron.Pers.*"/>
     </def-cat>
@@ -810,6 +813,32 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
     
+    <rule comment="REGLA: RELATIVE_PRONOUN gii => som
+                   Just removes everything.
+                   (Should we call the chunk something else maybe?)">
+      <pattern>
+        <pattern-item n="pronrel"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_conj"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <rule comment="REGLA: DEMONSTRATIVE_PRONOUN dán => dettes
                    Probably needs more work.">
       <pattern>
