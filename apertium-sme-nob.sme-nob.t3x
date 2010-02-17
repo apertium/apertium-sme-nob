@@ -629,7 +629,8 @@
     </rule>
     <rule comment="REGLA: FV
                    dihte => jeg visste
-                   Insert dropped pronoun">
+                   Insert dropped pronoun
+                   TODO: modify-case how? ('Dihte' should be 'Jeg visste', not 'jeg Visste')">
       <pattern>
         <pattern-item n="FV"/>
       </pattern>
@@ -643,7 +644,7 @@
         </when></choose>        
         <out>
           <var n="pro"/>
-          <chunk> 
+          <chunk>
             <clip pos="1" part="whole"/>
           </chunk>
         </out>
