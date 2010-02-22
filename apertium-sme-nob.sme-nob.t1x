@@ -28,6 +28,9 @@
     <def-cat n="pronpers">
       <cat-item tags="Pron.Pers.*"/>
     </def-cat>
+    <def-cat n="pronitg">
+      <cat-item tags="Pron.Interr.*"/>
+    </def-cat>
     <def-cat n="prondem">                                      <!--also indef? todo-->
       <cat-item tags="Pron.Dem.*"/>
     </def-cat>
@@ -97,6 +100,7 @@
       <attr-item tags="Pron.Dem"/>
       <attr-item tags="Pron.Pers"/>
       <attr-item tags="prn"/>
+      <attr-item tags="prn.itg"/>
     </def-attr>
     <def-attr n="a_det">
       <attr-item tags="det"/> 
@@ -892,6 +896,32 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: INTERROGATIVE_PRONOUN mii => hva">
+      <pattern>
+        <pattern-item n="pronitg"/>
+      </pattern>
+      <action>
+        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+        <out>
+          <var n="case-prep"/>
+          <chunk name="pron" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_pron"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
     
     <rule comment="REGLA: PERSONAL_PRONOUN
                    This will catch genitive pronouns too (we're outputting both a_pron and a_det).
@@ -925,6 +955,61 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <var n="pron_num"/>
               <var n="pron_case"/>
               <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: GENPRON NOM
+                   du bávččas => din smerte">
+      <pattern>
+        <pattern-item n="genpron"/>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pos_gen_num"><with-param pos="2"/></call-macro>
+
+        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
+
+        <let><var n="c_tag_pos"/><lit-tag v="5"/></let> 
+        <choose><when>
+          <test><not><equal>
+            <clip pos="1" side="sl" part="mode"/><lit v=""/>
+          </equal></not></test>
+          <let><var n="c_tag_pos"/><lit-tag v="6"/></let>
+        </when></choose>
+        
+        <out>
+          <var n="case-prep"/>
+          <chunk name="pron_adj_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="tl" part="pers"/></tag>
+              <tag><clip pos="2" side="tl" part="gen"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><lit-tag v="ind"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="det.pos"/>
+              <var n="pron_gen"/>
+              <var n="pron_num"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="c_tag_pos"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>
