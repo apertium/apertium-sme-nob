@@ -43,6 +43,7 @@
     </def-cat>
     <def-cat n="nom_cmpd">
       <cat-item tags="N.*.*.Cmp"/>
+      <cat-item tags="N.*.*.Cmp.*"/>
     </def-cat>
     <def-cat n="nom">
       <cat-item tags="V.*.Der2.*.N.*"/>
@@ -784,7 +785,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="cmpd_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="2" side="sl" part="mode"/></tag>
               <tag><clip pos="2" side="tl" part="nbr"/></tag>
               <tag><var n="defnes"/></tag>
