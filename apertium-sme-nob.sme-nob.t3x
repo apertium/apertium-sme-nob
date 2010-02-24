@@ -191,6 +191,10 @@
       <attr-item tags="np.top"/>
       <attr-item tags="np"/>
     </def-attr>
+    <def-attr n="art">
+      <attr-item tags="def"/>
+      <attr-item tags="ind"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
@@ -208,6 +212,31 @@
   </section-def-lists>
 
   <section-def-macros>
+    <def-macro n="set_defnes2" npar="2"
+               c="arg.1: SN, arg.2: verb
+                  TODO: parts of this should only be used when loc/ill is in 'first position', check syn_label?
+                  indefinite:
+                  o lokativ/(illativ) in first position + leat
+                  o habitiv tag
+                  o advl 
+                  definite: lokativ not in first position + leat ">
+      <choose>
+        <when>
+          <test>
+            <and>
+              <equal><clip pos="2" part="lemh"/><lit v="verb"/></equal>
+              <or>
+                <equal><clip pos="1" part="syn_label"/><lit-tag v="@HAB"/></equal>
+                <equal><clip pos="1" part="syn_label"/><lit-tag v="@ADVL"/></equal>
+                <equal><clip pos="1" part="case"/><lit-tag v="Loc"/></equal>
+                <equal><clip pos="1" part="case"/><lit-tag v="Ill"/></equal>
+              </or>
+            </and>
+          </test>
+          <let><clip pos="1" part="art"/><lit-tag v="ind"/></let>
+        </when>
+      </choose>
+    </def-macro>
     <def-macro n="set_pro" npar="1" c="arg.1: verb chunk">
       <let>
         <var n="pro"/>
@@ -341,6 +370,10 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes2">
+          <with-param pos="1"/>
+          <with-param pos="2"/>
+        </call-macro>
         <out>
           <chunk>
             <clip pos="1" part="whole"/>
@@ -361,6 +394,10 @@
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes2">
+          <with-param pos="1"/>
+          <with-param pos="3"/>
+        </call-macro>
         <out>
           <chunk> 
             <clip pos="1" part="whole"/>
@@ -404,6 +441,10 @@
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes2">
+          <with-param pos="1"/>
+          <with-param pos="3"/>
+        </call-macro>
         <out>
           <chunk>
             <clip pos="1" part="whole"/>
