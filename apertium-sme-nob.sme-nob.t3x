@@ -58,6 +58,8 @@
     <def-cat n="SPEC">
       <cat-item tags="@ADVL"/>
       <cat-item tags="@ADVL.*"/>
+      <cat-item tags="SN.@ADVL"/>
+      <cat-item tags="SN.@ADVL.*"/>
       <cat-item tags="SN.@SPRED→"/>
       <cat-item tags="SN.@SPRED→.*"/>
     </def-cat>
@@ -265,7 +267,9 @@
     <!-- Finite verb phrases, grammatical functions -->
     <rule comment="REGLA: SPEC SN FV
                    V2-rule
-                   Doppe son orui vahku => Der borte bodde han ei uke">
+                   Doppe son orui vahku => Der borte bodde han ei uke
+                   (PR)Mánnán/Nuorran son orui Romssas => (Som) barn/ungdom bodde han i Tromsø
+                   (don't have to match the PR if we can rely on the syn_label)">
       <pattern>
         <pattern-item n="SPEC"/>
         <pattern-item n="SN"/>
@@ -287,35 +291,6 @@
         </out>
       </action>
     </rule>
-    <!-- <rule comment="REGLA: PR SPEC SN FV -->
-<!--                    V2-rule -->
-<!--                    (PR)Mánnán son orui Romssas => Som barn bodde han i Tromsø"> -->
-<!--       <pattern> -->
-<!--         <pattern-item n="PR"/> -->
-<!--         <pattern-item n="SPEC"/> -->
-<!--         <pattern-item n="SN"/> -->
-<!--         <pattern-item n="FV"/> -->
-<!--       </pattern> -->
-<!--       <action> -->
-<!--         <out> -->
-<!--           <chunk> -->
-<!--             <clip pos="1" part="whole"/> -->
-<!--           </chunk> -->
-<!--           <b pos="1"/> -->
-<!--           <chunk> -->
-<!--             <clip pos="2" part="whole"/> -->
-<!--           </chunk> -->
-<!--           <b pos="2"/> -->
-<!--           <chunk> -->
-<!--             <clip pos="4" part="whole"/> -->
-<!--           </chunk> -->
-<!--           <b pos="3"/> -->
-<!--           <chunk> -->
-<!--             <clip pos="3" part="whole"/> -->
-<!--           </chunk> -->
-<!--         </out> -->
-<!--       </action> -->
-<!--     </rule> -->
     
     <rule comment="REGLA: SPEC-LSUBJ-Qst FV
                    Áhččigo boahtá (ihttin) => Er det far som kommer (i morgen)
