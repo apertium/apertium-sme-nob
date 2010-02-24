@@ -117,6 +117,10 @@
       <attr-item tags="cnjcoo"/>
       <attr-item tags="cnjsub"/>
     </def-attr>
+    <def-attr n="a_count">
+      <attr-item tags="Coll"/>
+      <attr-item tags="unc"/>
+    </def-attr>
     <def-attr n="a_nom">
       <attr-item tags="N"/>
       <attr-item tags="n"/>
@@ -292,7 +296,7 @@
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal></test>
           <let>
             <var n="case-prep"/><lit v="av"/>
-          </let>    
+          </let>
           <choose><when>
             <test><equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal></test>
             <!-- todo: "på øya", copy def-list from nb-nn.t1x -->
@@ -468,7 +472,9 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </choose>
     </def-macro>
 
-    <def-macro n="set_defnes" npar="1" c="Default to indefinite, guess definite for certain GF's, genitives, ...">
+    <def-macro n="set_defnes" npar="1"
+               c="Default to indefinite, guess definite for certain GF's, genitives, ...
+                  Locatives only indefinite in first position with leat">
       <let><var n="defnes"/><lit-tag v="ind"/></let>
       <choose>
         <when>
@@ -478,8 +484,14 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HAB"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ill"/></equal>
               <and>
                 <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+                <not><and>
+                  <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal>
+                  <equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal>
+                </and></not>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OPRED"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></not>
