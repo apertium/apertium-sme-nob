@@ -45,9 +45,13 @@ $(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst dev/xfst2apertium.relabel
 	hfst-invert $(PREFIX1).autogen.hfst -o $(PREFIX1).automorf.bin
 	hfst-substitute -F dev/xfst2apertium.relabel -i $(PREFIX1).automorf.bin -o $@
 
-$(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
-	apertium-validate-dictionary $(BASENAME).$(PREFIX1).dix
-	lt-comp lr $(BASENAME).$(PREFIX1).dix $@
+.deps/$(BASENAME).$(PREFIX1).dix: $(BASENAME).$(PREFIX1).dix lexchoicebil.xsl
+	if [ ! -d .deps ]; then mkdir .deps; fi
+	xsltproc lexchoicebil.xsl $(BASENAME).$(PREFIX1).dix > $@
+
+$(PREFIX1).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
+	apertium-validate-dictionary .deps/$(BASENAME).$(PREFIX1).dix
+	lt-comp lr .deps/$(BASENAME).$(PREFIX1).dix $@
 
 $(PREFIX1).autogen.bin: $(BASENAME).$(LANG2).dix
 	apertium-validate-dictionary $(BASENAME).$(LANG2).dix
