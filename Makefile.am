@@ -6,6 +6,10 @@ PREFIX2=$(LANG2)-$(LANG1)
 
 BASENAME=apertium-$(PREFIX1)
 
+##
+##	BUILD TARGETS
+##
+
 TARGETS_COMMON = \
 	$(PREFIX1).twol.hfst \
 	$(PREFIX1).lexc.hfst \
@@ -20,6 +24,10 @@ TARGETS_COMMON = \
 	$(PREFIX1).t3x.bin \
 	$(PREFIX1).t4x.bin \
 	$(PREFIX1).mode
+
+##
+## 	DICTIONARIES (ANALYSER / BILINGUAL / GENERATOR / POSTGEN)
+##
 
 $(PREFIX1).twol.hfst: $(BASENAME).$(LANG1).twol
 	hfst-twolc -r -i $(BASENAME).$(LANG1).twol -o $@
@@ -37,15 +45,31 @@ $(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst dev/xfst2apertium.relabel
 	hfst-invert $(PREFIX1).autogen.hfst -o $(PREFIX1).automorf.bin
 	hfst-substitute -F dev/xfst2apertium.relabel -i $(PREFIX1).automorf.bin -o $@
 
+$(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
+	apertium-validate-dictionary $(BASENAME).$(PREFIX1).dix
+	lt-comp lr $(BASENAME).$(PREFIX1).dix $@
+
+$(PREFIX1).autogen.bin: $(BASENAME).$(LANG2).dix
+	apertium-validate-dictionary $(BASENAME).$(LANG2).dix
+	lt-comp rl $(BASENAME).$(LANG2).dix $@
+
+##
+##	PRE-TAGGING
+##
+
 $(PREFIX1).rlx.bin: $(BASENAME).$(PREFIX1).rlx
 	cg-comp $(BASENAME).$(PREFIX1).rlx $@
+
+##
+##	LEXICAL SELECTION
+##
 
 $(PREFIX1).lex.bin: $(BASENAME).$(PREFIX1).lex
 	cg-comp $(BASENAME).$(PREFIX1).lex $@
 
-$(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
-	apertium-validate-dictionary $(BASENAME).$(PREFIX1).dix
-	lt-comp lr $(BASENAME).$(PREFIX1).dix $@
+##
+##	TRANSFER RULES
+##
 
 $(PREFIX1).t1x.bin: $(BASENAME).$(PREFIX1).t1x
 	apertium-validate-transfer $(BASENAME).$(PREFIX1).t1x
@@ -63,14 +87,19 @@ $(PREFIX1).t4x.bin: $(BASENAME).$(PREFIX1).t4x
 	apertium-validate-postchunk $(BASENAME).$(PREFIX1).t4x
 	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t4x $@
 
-$(PREFIX1).autogen.bin: $(BASENAME).$(LANG2).dix
-	apertium-validate-dictionary $(BASENAME).$(LANG2).dix
-	lt-comp rl $(BASENAME).$(LANG2).dix $@
+
+#
+#	MODE FILE(S)
+#
 
 $(PREFIX1).mode: modes.xml
 	apertium-validate-modes modes.xml
 	apertium-gen-modes modes.xml
 	cp *.mode modes/
+
+## 
+##	FILES WHICH AREN'T BUILD BUT ARE DISTRIBUTED
+## 
 
 EXTRA_DIST=\
 	$(BASENAME).$(LANG1).twol \
@@ -85,9 +114,11 @@ EXTRA_DIST=\
 	$(BASENAME).$(PREFIX1).t4x \
 	modes.xml 
 
+
 apertium_sme_nobdir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
 apertium_sme_modesdir=$(prefix)/share/apertium/modes/
 
 apertium_sme_nob_DATA=$(TARGETS_COMMON)
 
-CLEANFILES=$(TARGETS_COMMON)
+
+CLEANFILES= -rf $(TARGETS_COMMON) .deps modes
