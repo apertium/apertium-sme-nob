@@ -1,6 +1,7 @@
 DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
 
 SETS
+LIST @ADVL = @ADVL ;
 LIST @HAB = @HAB ;
 LIST FAUXV = @+FAUXV @-FAUXV ;
 LIST PronPersIll = (Pron Pers Ill) ;
@@ -9,6 +10,10 @@ SECTION
 
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) ;
+# være => ha
+
+SUBSTITUTE ("duohta") ("duohta:1") ("duohta" A Sg Loc) (0 @ADVL) ;
+# sann => virkelig
 
 SUBSTITUTE (N Ess) (N Ess V) (N Ess @←SPRED) (-1 PronPersIll) ;
 # In certain contexts, N.Ess might be translated with a verb
