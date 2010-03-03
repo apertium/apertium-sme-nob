@@ -208,6 +208,7 @@
       <attr-item tags="inf"/>
       <attr-item tags="PrfPrc"/>
       <attr-item tags="pp"/>
+      <attr-item tags="pprs"/>
     </def-attr>
     <def-attr n="neg">
       <attr-item tags="ConNeg"/>
@@ -1397,7 +1398,8 @@ TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
 
     <!-- VERB PHRASES ETC. -->
     
-    <rule comment="REGLA: VERB, or VERB=>ADV
+    <rule comment="REGLA: VERB
+                   or VERB=>ADV
                    ii => adv.p3.sg{ikke}
                    Itgo => adv.p2.sg.Qst{ikke}">
       <pattern>
@@ -1410,6 +1412,7 @@ TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
+                  <tag><lit-tag v="ADV"/></tag>
                   <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                   <tag><clip pos="1" side="sl" part="neg"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
@@ -1543,6 +1546,7 @@ TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
         <out>
           <chunk name="adv" case="caseFirstWord">
             <tags>
+              <tag><lit-tag v="ADV"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
             </tags>

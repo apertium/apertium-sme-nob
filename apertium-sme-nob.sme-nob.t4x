@@ -141,6 +141,7 @@
       <attr-item tags="inf"/>
       <attr-item tags="PrfPrc"/>
       <attr-item tags="pp"/>
+      <attr-item tags="pprs"/>
     </def-attr>
     <def-attr n="voice">
       <attr-item tags="pass"/>
@@ -215,6 +216,19 @@
 
 
   <section-rules>
+    <rule comment="CHUNK: verb">
+      <pattern>
+        <pattern-item n="verb"/>
+      </pattern>
+      <action>
+        <let><clip pos="1" part="temps"/><clip pos="0" part="temps"/></let>
+        <out>
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
     <rule comment="CHUNK: prop">
       <pattern>
         <pattern-item n="prop"/>
