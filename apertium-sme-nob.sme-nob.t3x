@@ -20,7 +20,7 @@
       <cat-item tags="SN.@←SUBJ.*"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
-    <def-cat n="SN-OBJ">
+    <def-cat n="SN-LOBJ">
       <cat-item tags="SN.@OBJ→.*"/>
     </def-cat>
     <def-cat n="adpos">
@@ -600,12 +600,12 @@
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV-Neg-Qst SN-OBJ IV
+    <rule comment="REGLA: FV-Neg-Qst SN-LOBJ IV
                    itgo gáfe juga => drikker du ikke kaffe
                    Insert dropped pronoun">
       <pattern>
         <pattern-item n="adv-FV-Neg-Qst"/>
-        <pattern-item n="SN-OBJ"/>
+        <pattern-item n="SN-LOBJ"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -630,6 +630,53 @@
           <b pos="2"/>
           <chunk> 
             <clip pos="2" part="whole"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: SN-LOBJ IV
+                   dan oahppan => lært det
+                   OV => VO order">
+      <pattern>
+        <pattern-item n="SN-LOBJ"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>        
+        <out>
+          <chunk> 
+            <get-case-from pos="1">
+              <clip pos="2" part="whole"/>
+            </get-case-from>
+          </chunk>
+          <b pos="1"/>
+          <chunk> 
+            <clip pos="1" part="whole"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: SN-LOBJ ADVL IV
+                   dan juo oahppan => allerede lært det
+                   OV => VO order">
+      <pattern>
+        <pattern-item n="SN-LOBJ"/>
+        <pattern-item n="ADVL"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>        
+        <out>
+          <chunk> 
+            <get-case-from pos="1">
+              <clip pos="2" part="whole"/>
+            </get-case-from>
+          </chunk>
+          <b pos="1"/>
+          <chunk> 
+            <clip pos="3" part="whole"/>
+          </chunk>
+          <b pos="2"/>
+          <chunk> 
+            <clip pos="1" part="whole"/>
           </chunk>
         </out>
       </action>
