@@ -27,21 +27,21 @@
       <cat-item lemma="adpos" tags="*"/>
     </def-cat>
     <def-cat n="ADVL">
-      <cat-item tags="ADV.@ADVL"/>
-      <cat-item tags="ADV.@ADVL.*"/>
+      <cat-item lemma="adv" tags="@ADVL"/>
+      <cat-item lemma="adv" tags="@ADVL.*"/>
       <cat-item tags="SN.@ADVL"/>
       <cat-item tags="SN.@ADVL.*"/>
     </def-cat>
-    <def-cat n="ADV-FV-Neg">
-      <cat-item tags="ADV.@+FAUXV.Neg.*"/>
+    <def-cat n="adv-FV-Neg">
+      <cat-item lemma="adv" tags="@+FAUXV.Neg.*"/>
     </def-cat>
-    <def-cat n="ADV-FV-Neg-Qst">
-      <cat-item tags="ADV.@+FAUXV.Neg.Qst.*"/>
+    <def-cat n="adv-FV-Neg-Qst">
+      <cat-item lemma="adv" tags="@+FAUXV.Neg.Qst.*"/>
     </def-cat>
     <def-cat n="FV-Qst">
       <cat-item tags="@+FMAINV.Qst.*"/>
       <cat-item tags="@+FAUXV.Qst.*"/>
-      <cat-item tags="ADV.@+FAUXV.Neg.Qst.*"/>
+      <cat-item lemma="adv" tags="@+FAUXV.Neg.Qst.*"/>
     </def-cat>
     <def-cat n="FV">
       <cat-item tags="@+FMAINV"/>
@@ -49,11 +49,11 @@
       <cat-item tags="@+FAUXV"/>
       <cat-item tags="@+FAUXV.*"/>
     </def-cat>
-    <def-cat n="ADV-IV">
-      <cat-item tags="ADV.@-FMAINV"/>
-      <cat-item tags="ADV.@-FMAINV.*"/>
-      <cat-item tags="ADV.@-FAUXV"/>
-      <cat-item tags="ADV.@-FAUXV.*"/>
+    <def-cat n="adv-IV">
+      <cat-item lemma="adv" tags="@-FMAINV"/>
+      <cat-item lemma="adv" tags="@-FMAINV.*"/>
+      <cat-item lemma="adv" tags="@-FAUXV"/>
+      <cat-item lemma="adv" tags="@-FAUXV.*"/>
     </def-cat>
     <def-cat n="IV">
       <cat-item tags="@-FMAINV"/>
@@ -376,7 +376,7 @@
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
         <pattern-item n="SN-maybe-LSUBJ"/>
-        <pattern-item n="ADV-FV-Neg"/>
+        <pattern-item n="adv-FV-Neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -399,14 +399,14 @@
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN-maybe-LSUBJ ADV-FV-Neg ADV-IV IV
+    <rule comment="REGLA: SN-maybe-LSUBJ adv-FV-Neg adv-IV IV
                    Son ii dáidde jienastit => Han stemmer nok ikke
                    Note: although 'dáidde' is tagged -FAUXV, it has tempus.
                    Override prodrop rule (TODO below) if we might have a subject to the left">
       <pattern>
         <pattern-item n="SN-maybe-LSUBJ"/>
-        <pattern-item n="ADV-FV-Neg"/>
-        <pattern-item n="ADV-IV"/>
+        <pattern-item n="adv-FV-Neg"/>
+        <pattern-item n="adv-IV"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -550,7 +550,7 @@
                    Insert dropped pronoun">
       <pattern>
         <pattern-item n="CNJSUB"/>
-        <pattern-item n="ADV-FV-Neg"/>
+        <pattern-item n="adv-FV-Neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -604,7 +604,7 @@
                    itgo gáfe juga => drikker du ikke kaffe
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="ADV-FV-Neg-Qst"/>
+        <pattern-item n="adv-FV-Neg-Qst"/>
         <pattern-item n="SN-OBJ"/>
         <pattern-item n="IV"/>
       </pattern>
@@ -638,7 +638,7 @@
                    itgo boađáše => kommer du ikke
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="ADV-FV-Neg-Qst"/>
+        <pattern-item n="adv-FV-Neg-Qst"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -667,7 +667,7 @@
                    it boađáše => du kommer ikke
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="ADV-FV-Neg"/>
+        <pattern-item n="adv-FV-Neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
