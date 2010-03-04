@@ -203,10 +203,6 @@
   <e>       <p><l></l>          <r><s n="prn"/><s n="res"/><s n="pl"/></r></p></e>
 </pardef>
 
-<pardef n="de_fleste__prn">
-  <e>       <p><l></l>          <r><s n="prn"/><s n="pl"/></r></p></e>
-</pardef>
-
 <pardef n="seg__prn">
   <e>       <p><l></l>          <r><s n="prn"/><s n="ref"/><s n="sg"/></r></p></e>
 </pardef>
@@ -475,6 +471,11 @@
   <e>       <p><l>tet</l>        <r>gen<s n="det"/><s n="qnt"/><s n="nt"/><s n="sg"/></r></p></e>
   <e>       <p><l>gen</l>        <r>gen<s n="det"/><s n="qnt"/><s n="pl"/></r></p></e>
 </pardef>
+
+<pardef n="de_fleste__det">
+  <e>       <p><l></l>          <r><s n="det"/><s n="qnt"/><s n="pl"/></r></p></e>
+</pardef>
+
 
 <!-- Proper nouns -->
 <!-- Transfer assumes that these never have number. -->
@@ -9889,7 +9890,10 @@
   <e>       <p><l></l>          <r><s n="adj"/><s n="ord"/><s n="posi"/><s n="sg"/><s n="def"/></r></p></e>
 </pardef>
 <pardef n="b/ra__adj">
-  <!-- bedre og best er i "god" -->
+  <e r="RL"><p><l>edre</l>     <r>ra<s n="adj"/><s n="comp"/></r></p></e>
+  <e r="RL"><p><l>este</l>     <r>ra<s n="adj"/><s n="sup"/><s n="def"/></r></p></e>
+  <e r="RL"><p><l>est</l>      <r>ra<s n="adj"/><s n="sup"/><s n="ind"/></r></p></e>
+<!-- bedre og best er i "god" uten RL -->
   <e>       <p><l>ra</l>    <r>ra<s n="adj"/><s n="posi"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
   <e>       <p><l>ra</l>    <r>ra<s n="adj"/><s n="posi"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
   <e>       <p><l>ra</l>    <r>ra<s n="adj"/><s n="posi"/><s n="pl"/></r></p></e>
@@ -10613,7 +10617,6 @@
 <!-- TODO: tag for human/animate? -->
 <e lm="hvem">            <i>hvem</i><par n="hva__prn"/></e>
 <e lm="seg">             <i>seg</i><par n="seg__prn"/></e>
-<e lm="de fleste">       <i>de<b/>fleste</i><par n="de_fleste__prn"/></e>
 <e lm="hverandre">             <i>hverandre</i><par n="hverandre__prn"/></e>
 <e lm="ingen">           <i>in</i><par n="in/gen__prn"/></e>
 <e lm="en">           <i>en</i><par n="en__prn"/></e>
@@ -10648,6 +10651,7 @@
 <e lm="hver">            <i>hver</i><par n="hver__det"/></e>
 <e lm="enhver">            <i>e</i><par n="e/nhver__det"/></e>
 <e lm="en eller annen">            <i>e</i><par n="e/n_eller_annen__det"/></e>
+<e lm="de fleste">       <i>de<b/>fleste</i><par n="de_fleste__det"/></e>
 <e lm="noe">             <i>no</i><par n="no/e__det"/></e>
 <e lm="ingen">           <i>in</i><par n="in/gen__det"/></e>
 

@@ -177,6 +177,7 @@
       <e><p><l><s n="Pl"/><s n="Gen"/></l><r><s n="GD"/><s n="pl"/><s n="gen"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Ill"/></l><r><s n="GD"/><s n="pl"/><s n="ill"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Loc"/></l><r><s n="GD"/><s n="pl"/><s n="loc"/></r></p></e>
+      <e><p><l></l><r><s n="ND"/><s n="GD"/></r></p></e>
     </pardef>
     <pardef n="num__det_qnt">
       <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
@@ -299,9 +300,10 @@
 
     <e><p><l>gii<s n="Pron"/><s n="Rel"/></l><r>som<s n="cnjsub"/></r></p><par n="__prn"/></e>
 
-    <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="prn"/><s n="p3"/></r></p><par n="__prn"/></e>
-
-    <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="prn"/><s n="pl"/></r></p><par n="__prn"/></e>
+    <!-- Quantifiers: -->
+    <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
+    <e><p><l>buot<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
+    <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn"/></e>
 
     <!-- Pronouns/determiners (nob determiners often correspond to sme pronouns) -->
     <e><p><l>dakkár<s n="Pron"/><s n="Dem"/></l><r>slik<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
@@ -1119,6 +1121,7 @@
     <e slr="1"><p><l>vuodja<s n="N"/></l><r>fett<s n="n"/><s n="nt"/><s n="unc"/></r></p><par n="__n"/></e>
     <e><p><l>biebmu<s n="N"/></l><r>mat<s n="n"/><s n="m"/><s n="unc"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>biebmu<s n="N"/></l><r>føde<s n="n"/><s n="m"/><s n="unc"/></r></p><par n="__n"/></e>
+    <e><p><l>biergu<s n="N"/></l><r>kjøtt<s n="n"/><s n="nt"/><s n="unc"/></r></p><par n="__n"/></e>
     <e><p><l>vuohki<s n="N"/></l><r>måte<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>vuohki<s n="N"/></l><r>metode<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>njunuš<s n="N"/></l><r>tet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2310,7 +2313,9 @@
     <e><p><l>gáhkket<s n="V"/><s n="TV"/></l><r>bake kake<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>gáhtat<s n="V"/><s n="TV"/></l><r>angre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) gáđai-->
     <e><p><l>gaikánit<s n="V"/><s n="IV"/></l><r>revne<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
-    <e><p><l>gaikkihit<s n="V"/><s n="TV"/></l><r>rykke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>gaikkihit<s n="V"/><s n="TV"/></l><r>rykke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>gaivát<s n="V"/><s n="TV"/></l><r>glane<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>gaivát<s n="V"/><s n="TV"/></l><r>glane<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>gakcut<s n="V"/><s n="IV"/></l><r>klatre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) gavccui-->
     <e><p><l>galbmot<s n="V"/><s n="IV"/></l><r>fryse<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) galbmojit-->
     <e><p><l>galbmit<s n="V"/><s n="IV"/></l><r>fryse<b/>til<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
@@ -2809,6 +2814,7 @@
     <e><p><l>reágeret<s n="V"/><s n="IV"/></l><r>reagere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>reakčanit<s n="V"/><s n="IV"/></l><r>bli<g><b/>bulket</g><s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
     <e><p><l>reaškit<s n="V"/><s n="IV"/></l><r>skratte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) reškkii-->
+    <e c="TODO check"><p><l>reavžut<s n="V"/><s n="TV"/></l><r>slurpe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>redigeret<s n="V"/><s n="TV"/></l><r>redigere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>refereret<s n="V"/><s n="TV"/></l><r>referere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>reflekteret<s n="V"/><s n="TV"/></l><r>reflektere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -3012,6 +3018,8 @@
     <e><p><l>velledit<s n="V"/><s n="IV"/></l><r>legge<g><b/>seg<b/>litt</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>viehkalit<s n="V"/><s n="IV"/></l><r>løpe<g><b/>avgårde</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>viehkat<s n="V"/><s n="IV"/></l><r>løpe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) viegan, (sii) vihket-->
+    <e><p><l>viežžat<s n="V"/><s n="TV"/></l><r>hente<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>viežžat<s n="V"/><s n="TV"/></l><r>laste<g><b/>ned</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>viessat<s n="V"/><s n="IV"/></l><r>bli<g><b/>trøtt</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) vissen, (son) viesai-->
     <e><p><l>vihkkedallat<s n="V"/><s n="TV"/></l><r>resonnere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>viiddidit<s n="V"/><s n="TV"/></l><r>utvide<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
