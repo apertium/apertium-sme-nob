@@ -11,6 +11,8 @@ SECTION
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) ;
 # være => ha
+# TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon 
+# (unfortunately no animacy, and impers isn't until bidix...)
 
 SUBSTITUTE ("duohta") ("duohta:1") ("duohta" A Sg Loc) (0 @ADVL) ;
 # sann => virkelig

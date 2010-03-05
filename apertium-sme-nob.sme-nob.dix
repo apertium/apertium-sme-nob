@@ -230,6 +230,8 @@
       
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Inf"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
+      <!-- For some verbs, we probably can override this where the passive is lexicalised and an st-verb.pp exists: -->
+      <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
       <!-- Not sure what to do about this: -->
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="pass"/><s n="sg"/><s n="p2"/></r></p></e>
       
@@ -304,6 +306,8 @@
     <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>buot<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn"/></e>
+    <e><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
+    <e slr="1"><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e> <!-- juohke lágán => alle slags(?) -->
 
     <!-- Pronouns/determiners (nob determiners often correspond to sme pronouns) -->
     <e><p><l>dakkár<s n="Pron"/><s n="Dem"/></l><r>slik<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
@@ -1377,7 +1381,6 @@
     <e><p><l>Røyset<s n="N"/><s n="Prop"/><s n="Sur"/><s n="Sg"/></l><r>Røyset<s n="np"/><s n="cog"/></r></p><par n="__np"/></e>
 
     <!-- Adjectives -->
-
     <e><p><l>buorre<s n="A"/></l><r>bra<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>heittot<s n="A"/></l><r>dårlig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>gummá<s n="A"/></l><r>rar<s n="adj"/></r></p><par n="__adj"/></e>
@@ -1459,6 +1462,8 @@
     <e><p><l>diehtemeahttun<s n="A"/></l><r>uvitende<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>dievaslaš<s n="A"/></l><r>fullstendig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>divttis<s n="A"/></l><r>tett<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>divrras<s n="A"/></l><r>dyr<s n="adj"/></r></p><par n="__adj"/></e>
+    <e slr="1"><p><l>divrras<s n="A"/></l><r>kostbar<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>doavki<s n="A"/></l><r>dum<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>dološ<s n="A"/></l><r>gammeldags<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>dovddus<s n="A"/></l><r>kjent<s n="adj"/></r></p><par n="__adj"/></e>
@@ -1560,6 +1565,8 @@
     <e><p><l>kvalitatiiva<s n="A"/></l><r>kvalitativ<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>lagaš<s n="A"/></l><r>nær<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>láiki<s n="A"/></l><r>lat<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>lágán<s n="A"/></l><r>slags<s n="adj"/></r></p><par n="__adj"/></e>
+    <e slr="1"><p><l>lágán<s n="A"/></l><r>slik<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>láittas<s n="A"/></l><r>kjedelig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>láivi<s n="A"/></l><r>svak<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>lávttas<s n="A"/></l><r>fuktig<s n="adj"/></r></p><par n="__adj"/></e>
