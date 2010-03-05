@@ -30,6 +30,9 @@
     <def-cat n="adj">
       <cat-item name="adj"/>
     </def-cat>
+    <def-cat n="det_adj_nom">
+      <cat-item name="det_adj_nom"/>
+    </def-cat>
     <def-cat n="adj_nom">
       <cat-item name="adj_nom"/>
     </def-cat>
@@ -337,6 +340,41 @@
             <clip pos="1" part="nbr"/>
             <clip pos="1" part="defnes"/>
             <clip pos="1" part="lemq"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: det_adj_nom">
+      <pattern>
+        <pattern-item n="det_adj_nom"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_case">
+          <with-param pos="0"/>
+          <with-param pos="2"/>
+        </call-macro>
+        <call-macro n="clean_adj_tags"><with-param pos="2"/></call-macro>
+        <out> 
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+          <b pos="1"/>
+          <b/>         
+          <lu>
+            <clip pos="2" part="lemh"/>
+            <clip pos="2" part="a_adj"/>
+            <clip pos="2" part="grau"/>
+            <clip pos="2" part="gen"/>
+            <clip pos="2" part="nbr"/>
+            <clip pos="2" part="defnes"/>
+            <clip pos="2" part="lemq"/>
+          </lu>
+          <!-- for now, this space isn't output since we don't have
+               superblanks in the hfst stream, so we add a space -->
+          <b pos="2"/>
+          <b/>
+          <lu>
+            <clip pos="3" part="whole"/>
           </lu>
         </out>
       </action>
