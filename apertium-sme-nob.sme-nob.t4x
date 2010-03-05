@@ -127,7 +127,7 @@
       <attr-item tags="Du3"/>
       <attr-item tags="Pl3"/>
     </def-attr>
-    <def-attr n="defnes">
+    <def-attr n="art">
       <attr-item tags="ind"/>
       <attr-item tags="def"/>
     </def-attr>
@@ -152,14 +152,15 @@
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="c_defnes"/>
-    <def-var n="case-prep"/>
+    <def-var n="foo"/>
   </section-def-vars>
 
   <section-def-macros>    
     <def-macro n="clean_adj_tags" npar="1"
-               c="defness is only on superlatives or singular pp/posi in nob
-                  If we don't have any number, give plural (no defnes) a shot.">
+               c="defness is only on superlatives or posi/pp.sg in nob
+                  Gender is only on posi/pp.sg.ind in nob
+                  If we don't have any number, give plural (no defnes) a shot.
+                  TODO: why doesn't (concat a_adj pl) work?">
       <choose>
         <when>
           <test>
@@ -175,18 +176,13 @@
           <let>
             <clip pos="1" part="a_adj"/>
             <lit-tag v="adj.posi.pl"/>
-            <!-- todo: why doesn't this work? (as it is, pp/posi tags will disappear) -->
-<!--             <concat> -->
-<!--               <clip pos="1" part="a_adj"/> -->
-<!--               <lit-tag v="pl"/> -->
-<!--             </concat> -->
           </let>
         </when>
         <when>
           <test>
             <not>
               <or>
-                <and>                
+                <and>
                   <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
                   <or>
                     <equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal>
@@ -197,7 +193,22 @@
               </or>
             </not>
           </test>
-          <let><clip pos="1" part="defnes"/><lit v=""/></let>
+          <let><clip pos="1" part="art"/><lit v=""/></let>
+        </when>
+      </choose>
+      <choose>
+        <when>
+          <test><not>
+            <and>
+              <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+              <equal><clip pos="1" part="art"/><lit-tag v="ind"/></equal>
+              <or>
+                <equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal>
+                <ends-with><clip pos="1" part="grau"/><lit-tag v="posi"/></ends-with>
+              </or>
+            </and>
+          </not></test>
+          <let><clip pos="1" part="gen"/><lit v=""/></let>
         </when>
       </choose>
     </def-macro>
@@ -338,7 +349,7 @@
             <clip pos="1" part="grau"/>
             <clip pos="1" part="gen"/>
             <clip pos="1" part="nbr"/>
-            <clip pos="1" part="defnes"/>
+            <clip pos="1" part="art"/>
             <clip pos="1" part="lemq"/>
           </lu>
         </out>
@@ -351,7 +362,7 @@
       <action>
         <call-macro n="clean_case">
           <with-param pos="0"/>
-          <with-param pos="2"/>
+          <with-param pos="3"/>
         </call-macro>
         <call-macro n="clean_adj_tags"><with-param pos="2"/></call-macro>
         <out> 
@@ -366,7 +377,7 @@
             <clip pos="2" part="grau"/>
             <clip pos="2" part="gen"/>
             <clip pos="2" part="nbr"/>
-            <clip pos="2" part="defnes"/>
+            <clip pos="2" part="art"/>
             <clip pos="2" part="lemq"/>
           </lu>
           <!-- for now, this space isn't output since we don't have
@@ -396,7 +407,7 @@
             <clip pos="1" part="grau"/>
             <clip pos="1" part="gen"/>
             <clip pos="1" part="nbr"/>
-            <clip pos="1" part="defnes"/>
+            <clip pos="1" part="art"/>
             <clip pos="1" part="lemq"/>
           </lu>
           <!-- for now, this space isn't output since we don't have
