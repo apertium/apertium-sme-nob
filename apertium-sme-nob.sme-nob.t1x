@@ -31,16 +31,14 @@
     <def-cat n="pronpers">
       <cat-item tags="Pron.Pers.*"/>
     </def-cat>
+    <def-cat n="det" c="Pronouns most likely to end up as determiners">
+      <cat-item tags="Pron.Pers.*.Gen.*"/>
+      <cat-item tags="Pron.Dem.*"/>
+      <cat-item tags="Pron.Indef.*"/>
+    </def-cat>
     <def-cat n="detpos_ADVL" c="Pronouns most likely to end up as det.pos">
       <cat-item tags="Pron.Pers.*.Gen.@X"/>
       <cat-item tags="Pron.Pers.*.Gen.@ADVL"/>
-    </def-cat>
-    <def-cat n="detpos">
-      <cat-item tags="Pron.Pers.*.Gen.*"/>
-    </def-cat>
-    <def-cat n="detdemqnt" c="Pronouns most likely to end up as det.qnt or det.ind">
-      <cat-item tags="Pron.Dem.*"/>
-      <cat-item tags="Pron.Indef.*"/>
     </def-cat>
     <def-cat n="detdemqnt_gen">
       <cat-item tags="Pron.Dem.*.Gen.*"/>
@@ -856,12 +854,14 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: DEMONSTRATIVE/QUANTIFIER dán => dette
-                   Probably needs more work.">
+    <rule comment="REGLA: DET dán => dette
+                   TODO: set_pron_case needs more work">
       <pattern>
-        <pattern-item n="detdemqnt"/>
+        <pattern-item n="det"/>
       </pattern>
       <action>
+        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
+
         <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_pron_gen_num"><with-param pos="1"/></call-macro>
         <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
@@ -954,10 +954,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: DETPOS NOM
+    <rule comment="REGLA: DET NOM
                    du bávččas => din smerte">
       <pattern>
-        <pattern-item n="detpos"/>
+        <pattern-item n="det"/>
         <pattern-item n="nom"/>
       </pattern>
       <action>
@@ -1009,85 +1009,16 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         </out>
       </action>
     </rule>
-
-    <rule comment="REGLA: DETPOS ADJ_ATTR NOM
+     
+    <rule comment="REGLA: DET ADJ_ATTR NOM
                    min nuoramus bártni => til vår yngste gutt
                    min nuoramus olbmot => våre yngste mennesker
                    du deháleamos doaibma => din viktigste oppgave
-                   mu stuora givssi => til min store plage">
-      <pattern>
-        <pattern-item n="detpos"/>
-        <pattern-item n="adj_attr"/>
-        <pattern-item n="nom"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pos_gen_num"><with-param pos="3"/></call-macro>
-
-        <call-macro n="set_adj_nbr">
-          <with-param pos="3"/>
-          <with-param pos="2"/>
-        </call-macro>
-        <call-macro n="set_adj_gen">
-          <with-param pos="3"/>
-          <with-param pos="2"/>
-        </call-macro>
-        <call-macro n="set_defnes2">
-          <with-param pos="3"/>
-          <with-param pos="1"/>
-        </call-macro>
-
-        <call-macro n="set_case-prep"><with-param pos="3"/></call-macro>
-        
-        <out>
-          <var n="case-prep"/>
-          <chunk name="det_adj_nom" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="3" side="sl" part="mode"/></tag>
-              <tag><clip pos="3" side="tl" part="pers"/></tag>
-              <tag><clip pos="3" side="tl" part="gen"/></tag>
-              <tag><clip pos="3" side="tl" part="nbr"/></tag>
-              <tag><clip pos="3" side="tl" part="case"/></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_det"/>
-              <var n="pron_gen"/>
-              <var n="pron_num"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-            <b pos="1"/>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_adj"/>
-              <clip pos="2" side="tl" part="grau"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <lit-tag v="def"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-            <b pos="2"/>
-            <lu>
-              <clip pos="3" side="tl" part="lemh"/>
-              <clip pos="3" side="tl" part="a_nom"/>
-              <clip pos="3" side="tl" part="gen"/>
-              <clip pos="3" side="tl" part="nbr"/>
-              <var n="defnes"/>
-              <clip pos="3" side="tl" part="gen-case"/>
-              <clip pos="3" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
-      </action>
-    </rule>
-    <rule comment="REGLA: DEMONSTRATIVE/QUANTIFIER ADJ_ATTR NOM
+                   mu stuora givssi => til min store plage
                    juohke lágán geđggiiguin => med alle slags steiner
                    TODO: demonstrative 'denne viktige oppgaven' (def!)">
       <pattern>
-        <pattern-item n="detdemqnt"/>
+        <pattern-item n="det"/>
         <pattern-item n="adj_attr"/>
         <pattern-item n="nom"/>
       </pattern>
@@ -1155,9 +1086,9 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: DETPOS NOM_GEN NOM">
+    <rule comment="REGLA: DET NOM_GEN NOM">
       <pattern>
-        <pattern-item n="detpos"/>
+        <pattern-item n="det"/>
         <pattern-item n="nom_gen"/>
         <pattern-item n="nom"/>
       </pattern>
