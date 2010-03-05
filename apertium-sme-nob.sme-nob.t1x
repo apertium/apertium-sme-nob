@@ -25,24 +25,26 @@
     <def-cat n="pronrel">
       <cat-item tags="Pron.Rel.*"/>
     </def-cat>
-    <def-cat n="pronpers">
-      <cat-item tags="Pron.Pers.*"/>
-    </def-cat>
     <def-cat n="pronitg">
       <cat-item tags="Pron.Interr.*"/>
     </def-cat>
-    <def-cat n="prondem">                                      <!--also indef? todo-->
-      <cat-item tags="Pron.Dem.*"/>
+    <def-cat n="pronpers">
+      <cat-item tags="Pron.Pers.*"/>
     </def-cat>
-    <def-cat n="pronpers_gen">
-      <cat-item tags="Pron.Pers.*.Gen.*"/>
-    </def-cat>
-    <def-cat n="prondem_gen">
-      <cat-item tags="Pron.Dem.*.Gen.*"/>
-    </def-cat>
-    <def-cat n="detpos" c="Pronouns most likely to end up as det.pos">
+    <def-cat n="detpos_ADVL" c="Pronouns most likely to end up as det.pos">
       <cat-item tags="Pron.Pers.*.Gen.@X"/>
       <cat-item tags="Pron.Pers.*.Gen.@ADVL"/>
+    </def-cat>
+    <def-cat n="detpos">
+      <cat-item tags="Pron.Pers.*.Gen.*"/>
+    </def-cat>
+    <def-cat n="detdemqnt" c="Pronouns most likely to end up as det.qnt or det.ind">
+      <cat-item tags="Pron.Dem.*"/>
+      <cat-item tags="Pron.Indef.*"/>
+    </def-cat>
+    <def-cat n="detdemqnt_gen">
+      <cat-item tags="Pron.Dem.*.Gen.*"/>
+      <cat-item tags="Pron.Indef.*.Gen.*"/>
     </def-cat>
     <def-cat n="nom_cmpd">
       <cat-item tags="V.*.Der2.*.N.*.*.Cmp"/>
@@ -530,21 +532,26 @@ always(?) def in nob; predicative superlatives are only if they have a determine
                  3. min oppgave er den viktigste.def (rarer than 2)">
       <choose>
         <when>
-          <test>
+          <test><and>
             <or>
               <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="pp"/></equal>
               <ends-with><clip pos="1" side="tl" part="grau"/><lit-tag v="posi"/></ends-with>
             </or>
-          </test>
+            <not><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal></not>
+          </and></test>
           <let><var n="c_defnes"/><lit-tag v="ind"/></let>
         </when>
         <when>
-          <test>
+          <test><or>
             <equal> 
               <clip pos="1" side="tl" part="grau"/>
               <lit-tag v="comp"/>
             </equal>
-          </test>
+            <equal> 
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="pl"/>
+            </equal>
+          </or></test>
           <let><var n="c_defnes"/><lit v=""/></let>
         </when>
         <when>
@@ -843,10 +850,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: DETPOS (lone genitive pronoun likely to be a determiner)
+    <rule comment="REGLA: DETPOS_ADVL (lone genitive pronoun likely to be a determiner)
                    TODO: any reason to do GD ND here?">
       <pattern>
-        <pattern-item n="detpos"/>
+        <pattern-item n="detpos_ADVL"/>
       </pattern>
       <action>
         <out>
@@ -895,10 +902,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: DEMONSTRATIVE_PRONOUN dán => dettes
+    <rule comment="REGLA: DEMONSTRATIVE/QUANTIFIER dán => dette
                    Probably needs more work.">
       <pattern>
-        <pattern-item n="prondem"/>
+        <pattern-item n="detdemqnt"/>
       </pattern>
       <action>
         <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
@@ -906,7 +913,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
         <out>
           <var n="case-prep"/>
-          <chunk name="pron" case="caseFirstWord">
+          <chunk name="det" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
@@ -993,10 +1000,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: PRONPERS_GEN NOM
+    <rule comment="REGLA: DETPOS NOM
                    du bávččas => din smerte">
       <pattern>
-        <pattern-item n="pronpers_gen"/>
+        <pattern-item n="detpos"/>
         <pattern-item n="nom"/>
       </pattern>
       <action>
@@ -1015,7 +1022,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         
         <out>
           <var n="case-prep"/>
-          <chunk name="pron_nom" case="caseFirstWord">
+          <chunk name="det_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
@@ -1048,15 +1055,13 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: PRONPERS_GEN ADJ_ATTR NOM
+    <rule comment="REGLA: DETPOS ADJ_ATTR NOM
                    min nuoramus bártni => til vår yngste gutt
                    min nuoramus olbmot => våre yngste mennesker
                    du deháleamos doaibma => din viktigste oppgave
-                   mu stuora givssi => til min store plage
-
-TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
+                   mu stuora givssi => til min store plage">
       <pattern>
-        <pattern-item n="pronpers_gen"/>
+        <pattern-item n="detpos"/>
         <pattern-item n="adj_attr"/>
         <pattern-item n="nom"/>
       </pattern>
@@ -1089,7 +1094,7 @@ TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
         
         <out>
           <var n="case-prep"/>
-          <chunk name="pron_adj_nom" case="caseFirstWord">
+          <chunk name="det_adj_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="3" side="sl" part="syn_label"/></tag>
@@ -1131,10 +1136,89 @@ TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
         </out>
       </action>
     </rule>
-
-    <rule comment="REGLA: PRONPERS_GEN NOM_GEN NOM">
+    <rule comment="REGLA: DEMONSTRATIVE/QUANTIFIER ADJ_ATTR NOM
+                   juohke lágán geđggiiguin => med alle slags steiner
+                   TODO: demonstrative 'denne viktige oppgaven' (def!)">
       <pattern>
-        <pattern-item n="pronpers_gen"/>
+        <pattern-item n="detdemqnt"/>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pos_gen_num"><with-param pos="3"/></call-macro>
+
+        <call-macro n="set_adj_nbr">
+          <with-param pos="3"/>
+          <with-param pos="2"/>
+        </call-macro>
+        <call-macro n="set_adj_gen">
+          <with-param pos="3"/>
+          <with-param pos="2"/>
+        </call-macro>
+        <call-macro n="set_adj_def2">
+          <with-param pos="1"/>
+          <with-param pos="2"/>
+        </call-macro>
+
+        <call-macro n="set_case-prep"><with-param pos="3"/></call-macro>
+
+        <let><var n="c_tag_pos"/><lit-tag v="5"/></let> 
+        <choose><when>
+          <test><not><equal>
+            <clip pos="1" side="sl" part="mode"/><lit v=""/>
+          </equal></not></test>
+          <let><var n="c_tag_pos"/><lit-tag v="6"/></let>
+        </when></choose>
+        
+        <out>
+          <var n="case-prep"/>
+          <chunk name="det_adj_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="3" side="sl" part="mode"/></tag>
+              <tag><clip pos="3" side="tl" part="pers"/></tag>
+              <tag><clip pos="3" side="tl" part="gen"/></tag>
+              <tag><clip pos="3" side="tl" part="nbr"/></tag>
+              <tag><lit-tag v="ind"/></tag>
+              <tag><clip pos="3" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <var n="pron_gen"/>
+              <var n="pron_num"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="c_defnes"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <b pos="2"/>
+            <lu>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_nom"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <clip pos="3" side="tl" part="nbr"/>
+              <var n="c_tag_pos"/>
+              <clip pos="3" side="tl" part="gen-case"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: DETPOS NOM_GEN NOM">
+      <pattern>
+        <pattern-item n="detpos"/>
         <pattern-item n="nom_gen"/>
         <pattern-item n="nom"/>
       </pattern>
@@ -1154,7 +1238,7 @@ TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
         
         <out>
           <var n="case-prep"/>
-          <chunk name="pron_nom_nom" case="caseFirstWord">
+          <chunk name="det_nom_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="3" side="sl" part="syn_label"/></tag>
@@ -1197,11 +1281,11 @@ TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
       </action>
     </rule>
     
-    <rule comment="REGLA: PRONDEM_GEN NOM_GEN NOM
+    <rule comment="REGLA: DEMONSTRATIVE/QUANTIFIER_GEN NOM_GEN NOM
                    dán jagi válggas => dette år(et)s valg
                    Second nom is always ind, first might be def...TODO">
       <pattern>
-        <pattern-item n="prondem_gen"/>
+        <pattern-item n="detdemqnt_gen"/>
         <pattern-item n="nom_gen"/>
         <pattern-item n="nom"/>
       </pattern>
@@ -1221,7 +1305,7 @@ TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
         
         <out>
           <var n="case-prep"/>
-          <chunk name="pron_nom_nom" case="caseFirstWord">
+          <chunk name="det_nom_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="3" side="sl" part="syn_label"/></tag>
@@ -1293,7 +1377,7 @@ TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
               <tag><clip pos="2" side="sl" part="mode"/></tag>
               <tag><clip pos="2" side="tl" part="gen"/></tag>
               <tag><clip pos="2" side="tl" part="nbr"/></tag>
-              <tag><var n="c_defnes"/></tag>
+              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="2" side="tl" part="case"/></tag>
             </tags>
             <lu>
@@ -1302,7 +1386,7 @@ TODO: demonstrative rule, 'denne viktige oppgaven' (def!)">
               <clip pos="1" side="tl" part="grau"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <var n="c_tag_pos"/>
+              <var n="c_defnes"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
             <b pos="1"/>
