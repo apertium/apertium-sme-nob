@@ -2,6 +2,10 @@
 <interchunk>
 
   <section-def-cats>
+    <def-cat n="SA">
+      <cat-item tags="SA"/>
+      <cat-item tags="SA.*"/>
+    </def-cat>
     <def-cat n="SN">
       <cat-item tags="SN"/>
       <cat-item tags="SN.*"/>
@@ -140,10 +144,7 @@
       </action>
     </rule>
 
-    <rule comment="REGLA: coor
-                   We assume CG only gives us SN conj SN if they _should_ be coordinated.
-                   For now only uses the case etc. of the first conjunct.
-                   TODO: what should happen where we still have different cases? («i Norge og på Island»?)">
+    <rule comment="REGLA: adj_conj_adj">
       <pattern>
         <pattern-item n="SN"/>
         <pattern-item n="conj"/>
@@ -173,6 +174,31 @@
                    For now only uses the case etc. of the first conjunct.
                    TODO: what should happen where we still have different cases? («i Norge og på Island»?)">
       <pattern>
+        <pattern-item n="SN"/>
+        <pattern-item n="conj"/>
+        <pattern-item n="SN"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk>
+           <lit v="nom_conj_nom"/>
+           <clip pos="1" part="tags"/>
+           <lit v="{"/>
+           <clip pos="1" part="content"/>
+           <b pos="1"/>
+           <lit v=" "/>
+           <clip pos="2" part="content"/>
+           <b pos="2"/>
+           <lit v=" "/>
+           <clip pos="3" part="content"/>
+           <lit v="}"/>
+           <clip pos="1" part="lemq"/>
+         </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: coor">
+      <pattern>
         <pattern-item n="PR"/>
         <pattern-item n="SN"/>
         <pattern-item n="conj"/>
@@ -186,7 +212,7 @@
           </chunk>
           <b pos="1"/>
           <chunk>
-           <lit v="coor"/>
+           <lit v="nom_conj_nom"/>
            <clip pos="2" part="tags"/>
            <lit v="{"/>
            <clip pos="2" part="content"/>

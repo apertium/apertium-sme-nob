@@ -15,8 +15,11 @@
     <def-cat n="pron">
       <cat-item name="pron"/>
     </def-cat>
-    <def-cat n="coor">
-      <cat-item name="coor"/>
+    <def-cat n="adj_conj_adj">
+      <cat-item name="adj_conj_adj"/>
+    </def-cat>
+    <def-cat n="nom_conj_nom">
+      <cat-item name="nom_conj_nom"/>
     </def-cat>
     <def-cat n="verb">
       <cat-item name="verb"/>
@@ -159,27 +162,33 @@
   </section-def-vars>
 
   <section-def-macros>    
-    <def-macro n="clean_adj_tags" npar="1"
-               c="defness is only on superlatives or posi/pp.sg in nob
+    <def-macro n="clean_adj" npar="2"
+               c="arg.1: adj, arg.2: chunk
+                  defness is only on superlatives or posi/pp.sg in nob
                   Gender is only on posi/pp.sg.ind in nob
                   If we don't have any number, give plural (no defnes) a shot.
-                  TODO: why doesn't (concat a_adj pl) work?">
+                  TODO: why doesn't (concat grau pl) work?">
+      <choose><when>
+        <test><not><equal><clip pos="2" part="art"/><lit v=""/></equal></not></test>
+        <let><clip pos="1" part="art"/><clip pos="2" part="art"/></let>
+      </when></choose>
       <choose>
         <when>
-          <test>
-            <and>
-              <or>
-                <equal><clip pos="1" part="grau"/><lit v=""/></equal>
-                <equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal>
-                <ends-with><clip pos="1" part="grau"/><lit-tag v="posi"/></ends-with>
-              </or>
-              <equal><clip pos="1" part="nbr"/><lit v=""/></equal>
-            </and>
-          </test>
-          <let>
-            <clip pos="1" part="a_adj"/>
-            <lit-tag v="adj.posi.pl"/>
-          </let>
+          <test><equal><clip pos="1" part="nbr"/><lit v=""/></equal></test>
+          <choose>
+            <when>
+              <test><equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal></test>
+              <let><clip pos="1" part="grau"/><lit-tag v="pp.pl"/></let>
+            </when>
+            <when>
+              <test><equal><clip pos="1" part="grau"/><lit v=""/></equal></test>
+              <let><clip pos="1" part="grau"/><lit-tag v="posi.pl"/></let>
+            </when>
+            <when>
+              <test><equal><clip pos="1" part="grau"/><lit-tag v="posi"/></equal></test>
+              <let><clip pos="1" part="grau"/><lit-tag v="posi.pl"/></let>
+            </when>
+          </choose>
         </when>
         <when>
           <test>
@@ -217,15 +226,15 @@
     </def-macro>
     
     <def-macro n="clean_case" npar="2"
-               c="arg.1: chunk, arg.2: prepositional object
+               c="arg.1: prepositional object, arg.2: chunk
                   Remove object genitive if chunk doesn't have genitive">
       <choose>
         <when>
           <test><and>
-            <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
-            <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
+            <equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal>
+            <not><equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal></not>
           </and></test>
-          <let><clip pos="2" part="case"/><lit v=""/></let>
+          <let><clip pos="1" part="case"/><lit v=""/></let>
         </when>
       </choose>
     </def-macro>
@@ -240,9 +249,7 @@
       <action>
         <let><clip pos="1" part="temps"/><clip pos="0" part="temps"/></let>
         <out>
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
+          <lu><clip pos="1" part="whole"/></lu>
         </out>
       </action>
     </rule>
@@ -251,14 +258,9 @@
         <pattern-item n="prop"/>
       </pattern>
       <action>
-        <call-macro n="clean_case">
-          <with-param pos="0"/>
-          <with-param pos="1"/>
-        </call-macro>
+        <call-macro n="clean_case"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <out>
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
+          <lu><clip pos="1" part="whole"/></lu>
         </out>
       </action>
     </rule>
@@ -267,14 +269,9 @@
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <call-macro n="clean_case">
-          <with-param pos="0"/>
-          <with-param pos="1"/>
-        </call-macro>
+        <call-macro n="clean_case"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <out>
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
+          <lu><clip pos="1" part="whole"/></lu>
         </out>
       </action>
     </rule>
@@ -283,14 +280,9 @@
         <pattern-item n="prenom_nom"/>
       </pattern>
       <action>
-        <call-macro n="clean_case">
-          <with-param pos="0"/>
-          <with-param pos="2"/>
-        </call-macro>
+        <call-macro n="clean_case"><with-param pos="2"/><with-param pos="0"/></call-macro>
         <out>
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
+          <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
           <lu>
             <clip pos="2" part="whole"/>
@@ -303,38 +295,41 @@
         <pattern-item n="pron"/>
       </pattern>
       <action>
-        <call-macro n="clean_case">
-          <with-param pos="0"/>
-          <with-param pos="1"/>
-        </call-macro>
+        <call-macro n="clean_case"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <out>
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
+          <lu><clip pos="1" part="whole"/></lu>
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: coor (SN CC SN)">
+    <rule comment="CHUNK: nom_conj_nom (SN CC SN)">
       <pattern>
-        <pattern-item n="coor"/>
+        <pattern-item n="nom_conj_nom"/>
       </pattern>
       <action>
-        <call-macro n="clean_case">
-          <with-param pos="0"/>
-          <with-param pos="1"/>
-        </call-macro>
+        <call-macro n="clean_case"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_case"><with-param pos="3"/><with-param pos="0"/></call-macro>
         <out>
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
+          <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
-          <lu>
-            <clip pos="2" part="whole"/>
-          </lu>
+          <lu><clip pos="2" part="whole"/></lu>
           <b pos="2"/>
-          <lu>
-            <clip pos="3" part="whole"/>
-          </lu>
+          <lu><clip pos="3" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: adj_conj_adj (SA CC SA)">
+      <pattern>
+        <pattern-item n="adj_conj_adj"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
         </out>
       </action>
     </rule>
@@ -344,17 +339,9 @@
         <pattern-item n="adj"/>
       </pattern>
       <action>
-        <call-macro n="clean_adj_tags"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <out>
-          <lu>
-            <clip pos="1" part="lemh"/>
-            <clip pos="1" part="a_adj"/>
-            <clip pos="1" part="grau"/>
-            <clip pos="1" part="gen"/>
-            <clip pos="1" part="nbr"/>
-            <clip pos="1" part="art"/>
-            <clip pos="1" part="lemq"/>
-          </lu>
+          <lu><clip pos="1" part="whole"/></lu>
         </out>
       </action>
     </rule>
@@ -363,33 +350,18 @@
         <pattern-item n="det_adj_nom"/>
       </pattern>
       <action>
-        <call-macro n="clean_case">
-          <with-param pos="0"/>
-          <with-param pos="3"/>
-        </call-macro>
-        <call-macro n="clean_adj_tags"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_case"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
         <out> 
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
+          <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
           <b/>         
-          <lu>
-            <clip pos="2" part="lemh"/>
-            <clip pos="2" part="a_adj"/>
-            <clip pos="2" part="grau"/>
-            <clip pos="2" part="gen"/>
-            <clip pos="2" part="nbr"/>
-            <clip pos="2" part="art"/>
-            <clip pos="2" part="lemq"/>
-          </lu>
+          <lu><clip pos="2" part="whole"/></lu>
           <!-- for now, this space isn't output since we don't have
                superblanks in the hfst stream, so we add a space -->
           <b pos="2"/>
           <b/>
-          <lu>
-            <clip pos="3" part="whole"/>
-          </lu>
+          <lu><clip pos="3" part="whole"/></lu>
         </out>
       </action>
     </rule>
@@ -398,28 +370,15 @@
         <pattern-item n="adj_nom"/>
       </pattern>
       <action>
-        <call-macro n="clean_case">
-          <with-param pos="0"/>
-          <with-param pos="2"/>
-        </call-macro>
-        <call-macro n="clean_adj_tags"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_case"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <out>          
-          <lu>
-            <clip pos="1" part="lemh"/>
-            <clip pos="1" part="a_adj"/>
-            <clip pos="1" part="grau"/>
-            <clip pos="1" part="gen"/>
-            <clip pos="1" part="nbr"/>
-            <clip pos="1" part="art"/>
-            <clip pos="1" part="lemq"/>
-          </lu>
+          <lu><clip pos="1" part="whole"/></lu>
           <!-- for now, this space isn't output since we don't have
                superblanks in the hfst stream, so we add a space -->
           <b pos="1"/>
           <b/>
-          <lu>
-            <clip pos="2" part="whole"/>
-          </lu>
+          <lu><clip pos="2" part="whole"/></lu>
         </out>
       </action>
     </rule>
@@ -437,9 +396,7 @@
           <let><clip pos="1" part="a_det"/><lit-tag v="prn"/></let>
         </when></choose>
         <out> 
-          <lu>
-            <clip pos="1" part="whole"/>
-          </lu>
+          <lu><clip pos="1" part="whole"/></lu>
         </out>
       </action>
     </rule>
