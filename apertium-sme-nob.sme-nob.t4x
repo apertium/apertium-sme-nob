@@ -36,6 +36,9 @@
     <def-cat n="adj_nom">
       <cat-item name="adj_nom"/>
     </def-cat>
+    <def-cat n="det">
+      <cat-item name="det"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
@@ -421,6 +424,26 @@
       </action>
     </rule>
     
+    <rule comment="CHUNK: det">
+      <pattern>
+        <pattern-item n="det"/>
+      </pattern>
+      <action>
+        <choose><when>
+          <test><and>
+            <equal><clip pos="1" part="a_det"/><lit-tag v="det.pos"/></equal>
+            <equal><clip pos="0" part="case"/><lit v=""/></equal>
+          </and></test>
+          <let><clip pos="1" part="a_det"/><lit-tag v="prn"/></let>
+        </when></choose>
+        <out> 
+          <lu>
+            <clip pos="1" part="whole"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+
   </section-rules>
 
 </postchunk>
