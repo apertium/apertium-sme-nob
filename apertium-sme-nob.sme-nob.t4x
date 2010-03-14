@@ -169,21 +169,24 @@
                   If we don't have any number, give plural (no defnes) a shot.
                   TODO: why doesn't (concat grau pl) work?">
       <choose><when>
-        <test><equal><clip pos="1" part="nbr"/><lit v=""/></equal></test>
-        <choose>
-          <when>
-            <test><equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal></test>
-            <let><clip pos="1" part="grau"/><lit-tag v="pp.pl"/></let>
-          </when>
-          <when>
-            <test><equal><clip pos="1" part="grau"/><lit v=""/></equal></test>
-            <let><clip pos="1" part="grau"/><lit-tag v="posi.pl"/></let>
-          </when>
-          <when>
-            <test><equal><clip pos="1" part="grau"/><lit-tag v="posi"/></equal></test>
-            <let><clip pos="1" part="grau"/><lit-tag v="posi.pl"/></let>
-          </when>
-        </choose>
+        <test><equal><clip pos="1" part="grau"/><lit v=""/></equal></test>
+                <let>
+          <clip pos="1" part="a_adj"/>
+          <concat><clip pos="1" part="a_adj"/><lit-tag v="posi"/></concat>
+        </let>
+      </when></choose>
+      <choose><when>
+        <test><and>
+          <equal><clip pos="1" part="nbr"/><lit v=""/></equal>
+          <or>
+            <equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal>
+            <ends-with><clip pos="1" part="grau"/><lit-tag v="posi"/></ends-with>
+          </or>
+        </and></test>
+        <let>
+          <clip pos="1" part="grau"/>
+          <concat><clip pos="1" part="grau"/><lit-tag v="pl"/></concat>
+        </let>
       </when></choose>
       <choose><when>
         <test><not>
