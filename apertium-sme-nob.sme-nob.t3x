@@ -25,6 +25,11 @@
     <def-cat n="SN-LOBJ">
       <cat-item tags="SN.@OBJ→.*"/>
     </def-cat>
+    <def-cat n="ROPRED">
+      <cat-item tags="@←OPRED.*"/>
+      <cat-item tags="SN.@←OPRED.*"/>
+      <cat-item tags="SA.@←OPRED.*"/>
+    </def-cat>
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
     </def-cat>
@@ -683,21 +688,75 @@
         <pattern-item n="ADVL"/>
         <pattern-item n="IV"/>
       </pattern>
-      <action>        
+      <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
-          <chunk> 
-            <get-case-from pos="1">
-              <clip pos="2" part="whole"/>
-            </get-case-from>
-          </chunk>
+          <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="1"/>
-          <chunk> 
-            <clip pos="3" part="whole"/>
-          </chunk>
+          <chunk><clip pos="3" part="whole"/></chunk>
           <b pos="2"/>
-          <chunk> 
-            <clip pos="1" part="whole"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: SN-LOBJ FV ROPRED
+                   Dan dieđán váddása => Det vet jeg er vanskelig
+                   Insert 'være'">
+      <pattern>
+        <pattern-item n="SN-LOBJ"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="ROPRED"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pro"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b/>
+          <var n="pro"/>
+          <b pos="2"/>
+          <chunk>
+            <lit v="verb"/>
+            <lit-tag v="@+FMAINV.pres.p3.sg"/>
+            <lit v="{^"/>
+            <lit v="være"/><lit-tag v="vblex"/><clip pos="2" part="temps"/>
+            <lit v="$}"/>
           </chunk>
+          <b/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: SN-LOBJ ADVL FV ROPRED
+                   Dan gal dieđán váddása => Det vet jeg vel er vanskelig
+                   Insert 'være'">
+      <pattern>
+        <pattern-item n="SN-LOBJ"/>
+        <pattern-item n="ADVL"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="ROPRED"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pro"><with-param pos="3"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b/>
+          <var n="pro"/>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk>
+            <lit v="verb"/>
+            <lit-tag v="@+FMAINV.pres.p3.sg"/>
+            <lit v="{^"/>
+            <lit v="være"/><lit-tag v="vblex"/><clip pos="3" part="temps"/>
+            <lit v="$}"/>
+          </chunk>
+          <b/>
+          <chunk><clip pos="4" part="whole"/></chunk>
         </out>
       </action>
     </rule>
