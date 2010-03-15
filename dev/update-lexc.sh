@@ -172,6 +172,13 @@ cat $NUMLEXC >> $OUTFILE;
 
 echo 'done.';
 
+### Add abbreviations
+echo -n '+++ Abbreviations... ';
+
+ABBRLEXC=$SRC/abbr-$LANG1-lex.txt
+
+cat $ABBRLEXC >> $OUTFILE;
+
 ### Add punctuation
 echo -n '+++ Punctuation... ';
 
