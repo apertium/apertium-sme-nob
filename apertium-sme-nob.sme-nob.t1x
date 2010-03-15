@@ -44,6 +44,10 @@
       <cat-item tags="Pron.Dem.*.Gen.*"/>
       <cat-item tags="Pron.Indef.*.Gen.*"/>
     </def-cat>
+    <def-cat n="adj_cmpd">
+      <cat-item tags="A.*.*.Cmp"/>
+      <cat-item tags="A.*.*.Cmp.*"/>
+    </def-cat>
     <def-cat n="nom_cmpd">
       <cat-item tags="V.*.Der2.*.N.*.*.Cmp"/>
       <cat-item tags="V.*.Der2.*.N.*.*.Cmp.*"/>
@@ -782,6 +786,53 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
+    <rule comment="REGLA: ADJCMPD NOM allaskuvla => høyskole">
+      <pattern>
+        <pattern-item n="adj_cmpd"/>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        
+        <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
+        <let><var n="c_tag_pos"/><lit-tag v="5"/></let> 
+        <choose><when>
+          <test><not><equal>
+            <clip pos="1" side="sl" part="mode"/><lit v=""/>
+          </equal></not></test>
+          <let><var n="c_tag_pos"/><lit-tag v="6"/></let>
+        </when></choose>
+
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <var n="case-prep"/>
+          <chunk name="cmpd_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><var n="c_gen"/></tag>
+              <tag><var n="c_nbr"/></tag>
+              <tag><var n="defnes"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="whole"/>
+            </lu>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="c_tag_pos"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: NOMCMPD NOM politiijastašuvnna => politistasjon(s)
                    Defaults to indicative w/o context">
       <pattern>
