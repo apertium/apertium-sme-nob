@@ -187,6 +187,19 @@ PUNCTLEXC=$SRC/punct-$LANG1-lex.txt
 punct_point=`grep -nH ' real pilcrow' $PUNCTLEXC | cut -f2 -d':'`;
 head -n $punct_point $PUNCTLEXC >> $OUTFILE;
 
+### Remove #'s from lexicalised compounds
+echo "Removing # symbols from lexicalised compounds..."
+SED=sed
+if test x$(uname -s) = xDarwin; then
+        SED=gsed
+fi
+# There might be several # within a word
+OUTFILETMP=`mktemp /tmp/outtmp.XXXX`;
+cat $OUTFILE | $SED -e '
+:START
+s/\(^[^+:!]*[^ +:!][^ +:!]*\)#\([^ +:]\)/\1\2/
+tSTART' > $OUTFILETMP
+mv $OUTFILETMP $OUTFILE
 
 echo 'done.';
 
