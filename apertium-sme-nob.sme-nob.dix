@@ -55,6 +55,7 @@
     <sdef n="n"       c="Noun"/>
     <sdef n="np"      c="Proper noun"/>
     <sdef n="Prop"    c="Proper noun"/>
+    <sdef n="ABBR"    c="Abbreviation"/>
 
     <sdef n="Plc"     c="Toponym"/>
     <sdef n="Sur"     c="Surname"/>
@@ -326,7 +327,8 @@
     <e><p><l>njeallje<s n="Num"/><s n="Sg"/></l><r>fire<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
 
     <!-- Nouns -->
-    <!-- Family terms may be indefinite in more contexts, todo: some tag? (other than 'uncountable'..) -->
+    <e><re>[a-zæøå]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <!-- Family terms may be indefinite in more contexts, todo: some tag? (other than 'uncountable'..) transfer def-list? -->
     <e><p><l>eadni<s n="N"/></l><r>mor<s n="n"/><s n="f"/><s n="unc"/></r></p><par n="__n"/></e>
     <e><p><l>áhčči<s n="N"/></l><r>far<s n="n"/><s n="m"/><s n="unc"/></r></p><par n="__n"/></e>
     <e><p><l>oabbá<s n="N"/></l><r>søster<s n="n"/><s n="f"/><s n="unc"/></r></p><par n="__n"/></e>
@@ -1385,6 +1387,8 @@
     <e><p><l>Áltá<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Alta<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Oslo<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Oslo<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Bergen<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Bergen<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Dielddanuorri<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Tjeldsund<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Evenášši<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Evenes<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
 
     <e><p><l>Máhtte<s n="N"/><s n="Prop"/><s n="Mal"/><s n="Sg"/></l><r>Máhtte<s n="np"/><s n="m"/></r></p><par n="__np"/></e>
     <e><p><l>Anne<s n="N"/><s n="Prop"/><s n="Fem"/><s n="Sg"/></l><r>Anne<s n="np"/><s n="f"/></r></p><par n="__np"/></e>
