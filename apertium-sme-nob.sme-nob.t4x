@@ -21,6 +21,9 @@
     <def-cat n="nom_conj_nom">
       <cat-item name="nom_conj_nom"/>
     </def-cat>
+    <def-cat n="adj_nom_conj_nom">
+      <cat-item name="adj_nom_conj_nom"/>
+    </def-cat>
     <def-cat n="verb">
       <cat-item name="verb"/>
     </def-cat>
@@ -307,6 +310,25 @@
           <lu><clip pos="2" part="whole"/></lu>
           <b pos="2"/>
           <lu><clip pos="3" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: adj_nom_conj_nom (SN CC SN)">
+      <pattern>
+        <pattern-item n="adj_nom_conj_nom"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_case"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_case"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
         </out>
       </action>
     </rule>
