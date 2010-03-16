@@ -44,6 +44,9 @@
       <cat-item tags="Pron.Dem.*.Gen.*"/>
       <cat-item tags="Pron.Indef.*.Gen.*"/>
     </def-cat>
+    <def-cat n="cmpd" c="Words only seen as compund parts">
+      <cat-item tags="Cmp.*"/>
+    </def-cat>
     <def-cat n="adj_cmpd">
       <cat-item tags="A.*.*.Cmp"/>
       <cat-item tags="A.*.*.Cmp.*"/>
@@ -272,6 +275,7 @@
     <def-var n="c_gen"/>
     <def-var n="c_nbr"/>
     <def-var n="c_tag_pos"/>
+    <def-var n="c_syn_label"/>
     <def-var n="caseFirstWord"/>
     <def-var n="case-prep"/>   
   </section-def-vars>
@@ -389,6 +393,14 @@
           </let>
         </when>
       </choose>        
+    </def-macro>
+
+    <def-macro n="set_c_syn_label" npar="2">
+      <let><var n="c_syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
+      <choose><when>
+        <test><equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal></test>
+        <let><var n="c_syn_label"/><clip pos="2" side="sl" part="syn_label"/></let>
+      </when></choose>
     </def-macro>
     
     <def-macro n="set_pron_case" npar="1"
@@ -800,11 +812,12 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="set_adj_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_adj_gen"><with-param pos="2"/><with-param pos="1"/></call-macro>
 
+        <call-macro n="set_c_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
         <let><var n="c_tag_pos"/><lit-tag v="5"/></let> 
         <choose><when>
           <test><not><equal>
-            <clip pos="1" side="sl" part="mode"/><lit v=""/>
+            <clip pos="2" side="sl" part="mode"/><lit v=""/>
           </equal></not></test>
           <let><var n="c_tag_pos"/><lit-tag v="6"/></let>
         </when></choose>
@@ -815,7 +828,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="cmpd_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><var n="c_syn_label"/></tag>
               <tag><clip pos="2" side="sl" part="mode"/></tag>
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
@@ -853,12 +866,13 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <action>
         <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
-        
+
+        <call-macro n="set_c_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>        
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
         <let><var n="c_tag_pos"/><lit-tag v="5"/></let> 
         <choose><when>
           <test><not><equal>
-            <clip pos="1" side="sl" part="mode"/><lit v=""/>
+            <clip pos="2" side="sl" part="mode"/><lit v=""/>
           </equal></not></test>
           <let><var n="c_tag_pos"/><lit-tag v="6"/></let>
         </when></choose>
@@ -869,7 +883,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <chunk name="cmpd_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><var n="c_syn_label"/></tag>
               <tag><clip pos="2" side="sl" part="mode"/></tag>
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
@@ -882,6 +896,51 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="1" side="tl" part="gen"/>
               <lit-tag v="sg.ind"/>
               <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="c_tag_pos"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: CMPD NOM vuođđofága => grunnfag
+                   Words which only appear as comopund parts should be fully specified in bidix.
+                   (But unfortunately there's no way to remove the syn_label in bidix)">
+      <pattern>
+        <pattern-item n="cmpd"/>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        
+        <call-macro n="set_c_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
+        <let><var n="c_tag_pos"/><lit-tag v="5"/></let>
+
+        <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <var n="case-prep"/>
+          <chunk name="cmpd_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><var n="c_syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><var n="c_gen"/></tag>
+              <tag><var n="c_nbr"/></tag>
+              <tag><var n="defnes"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="whole"/>
             </lu>
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
