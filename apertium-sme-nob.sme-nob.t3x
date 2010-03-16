@@ -30,6 +30,9 @@
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
     </def-cat>
+    <def-cat n="rel">
+      <cat-item lemma="rel" tags="*"/>
+    </def-cat>
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
     </def-cat>
@@ -399,6 +402,20 @@
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk> 
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: rel FV
+                   Override prodrop rule (below) if we have a relative to the left">
+      <pattern>
+        <pattern-item n="rel"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
