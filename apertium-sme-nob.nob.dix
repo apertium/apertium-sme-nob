@@ -63,6 +63,7 @@
 		<sdef n="num" 	c="Numeral"/>
 		<sdef n="ord" 	c="Ordinal"/> 
 		<sdef n="acr" 	c="Acronym"/> 
+		<sdef n="unc" 	c="Uncountable"/> 
 		<sdef n="sent" 	c="Sentence end"/> 
 		<sdef n="cm" 	c="Comma"/> 
 		<sdef n="clb" 	c="Possible clause boundary"/>
@@ -452,6 +453,11 @@
   <e>       <p><l>t<b/>eller<b/>annet</l>         <r>n<b/>eller<b/>annen<s n="det"/><s n="qnt"/><s n="nt"/><s n="sg"/></r></p></e>
   <e>       <p><l>n<b/>eller<b/>annen</l>          <r>n<b/>eller<b/>annen<s n="det"/><s n="qnt"/><s n="m"/><s n="sg"/></r></p></e>
   <e r="LR"><p><l>i<b/>eller<b/>anna</l>          <r>n<b/>eller<b/>annen<s n="det"/><s n="qnt"/><s n="f"/><s n="sg"/></r></p></e>
+</pardef>
+<!-- mange vs mye -->
+<pardef n="m/ange__det">
+  <e>       <p><l>ange</l>         <r>ange<s n="det"/><s n="qnt"/><s n="pl"/></r></p></e>
+  <e>       <p><l>ye</l>          <r>ange<s n="det"/><s n="qnt"/><s n="pl"/><s n="unc"/></r></p></e>
 </pardef>
     <!-- begge; begge -->
 <pardef n="begge__det">
@@ -10649,6 +10655,7 @@
 <e lm="samtlige">             <i>samtlige</i><par n="begge__det"/></e>
 <e lm="begge">           <i>begge</i><par n="begge__det"/></e>
 <e lm="hver">            <i>hver</i><par n="hver__det"/></e>
+<e r="RL" lm="mange">    <i>m</i><par n="m/ange__det"/></e>
 <e lm="enhver">            <i>e</i><par n="e/nhver__det"/></e>
 <e lm="en eller annen">            <i>e</i><par n="e/n_eller_annen__det"/></e>
 <e lm="de fleste">       <i>de<b/>fleste</i><par n="de_fleste__det"/></e>
