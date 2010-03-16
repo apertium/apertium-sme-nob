@@ -7,7 +7,7 @@ then
     exit 0;
 fi
 
-SYNLABELS=("OBJ→" "@-FOBJ→" "@-FSUBJ→" "@-F←OBJ" "@ADVL←" "@ADVL→" "@APP-ADVL←" "@APP-Num←" "@APP-N←" "@APP-Pron←" "@APP→Pron" "@A←" "@COMP-CS←" "@Num←" "@N←" "@OBJ→" "@OBJ→SPRED" "@OPRED→" "@P←" "@SPRED→" "@SPRED←OBJ" "@SUBJ→" "@SUBJ←OBJ" "@→A" "@←ADVL" "@→ADVL" "@→N" "@→Num" "@←OBJ" "@←OPRED" "@→P" "@→Pron" "@←SPRED" "@←SUBJ" )
+SYNLABELS=("OBJ→" "@-FOBJ→" "@-FSUBJ→" "@-F←OBJ" "@ADVL←" "@ADVL→" "@APP-ADVL←" "@APP-Num←" "@APP-N←" "@APP-Pron←" "@APP→Pron" "@A←" "@COMP-CS←" "@Num←" "@N←" "@OBJ→" "@OBJ→SPRED" "@OPRED→" "@P←" "@SPRED→" "@SPRED←OBJ" "@SUBJ→" "@SUBJ←ADVL" "@SUBJ←OBJ" "@→A" "@←ADVL" "@→ADVL" "@→N" "@→Num" "@←OBJ" "@←OPRED" "@→P" "@→Pron" "@Pron←" "@←SPRED" "@←SUBJ" "@→CC" "@←PPRED" "←uttv→" )
 
 echo "Turning < and > into arrows in syntactic labels..."
 for A in ${SYNLABELS[*]}
@@ -37,4 +37,4 @@ $SED -i".tmp" -e '
 s/\("[^" ;()]*\)#\([^" ;()]*"\)/\1\2/
 tSTART' "$1"
 
-echo "Done. Now manually remove lines adding tags like <uttv>"
+echo "Done. Now manually remove SUBSTITUTE lines adding tags like ←uttv→"
