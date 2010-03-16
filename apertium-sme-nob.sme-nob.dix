@@ -49,6 +49,8 @@
     <sdef n="Superl"  c="Superlative"/>
     <sdef n="sup"     c="Superlative"/>
 
+    <sdef n="Cmp"     c="Compound"/>
+
     <sdef n="N"       c="Noun"/>
     <sdef n="Coll"    c="Coll"/>
     <sdef n="unc"     c="May be uncountable"/>
@@ -164,6 +166,9 @@
       <!-- TODO: Focus [Foc_ge] etc.  -->
       <!-- "Leago dát duođasge Sáme Radio oaivil ?" -->
 
+    </pardef>
+    <pardef n="__cmp_adj" c="Adjectives which are only to be used as compound parts.">
+      <e><par n="__adj"/><p><l><s n="Cmp"/></l><r></r></p></e>
     </pardef>
     <pardef n="pron_dem__det_dem">
       <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="GD"/><s n="sg"/><s n="nom"/></r></p></e>
@@ -1575,6 +1580,7 @@
     <e><p><l>fuotni<s n="A"/></l><r>dårlig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>gáđaš<s n="A"/></l><r>misunnelig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>gáiddus<s n="A"/></l><r>fjerntliggende<s n="adj"/></r></p><par n="__adj"/></e>
+    <e r="LR"><p><l>gáiddus<s n="A"/></l><r>fjern<s n="adj"/></r></p><par n="__cmp_adj"/></e>
     <e><p><l>gallás<s n="A"/></l><r>mett<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>galmmas<s n="A"/></l><r>kald<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>gánnáhahtti<s n="A"/></l><r>lønnsom<s n="adj"/></r></p><par n="__adj"/></e>
@@ -2024,12 +2030,21 @@
 
     <!-- Regular verbs: -->
     <e><p><l>duostat<s n="V"/><s n="TV"/></l><r>tore<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>orrut<s n="V"/><s n="IV"/></l><r>bo<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--wsd todo: være, bli, synes-->
+    <e><p><l>orrut<s n="V"/><s n="IV"/></l><r>bo<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="1"><p><l>orrut<s n="V"/><s n="IV"/></l><r>være<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="2"><p><l>orrut<s n="V"/><s n="IV"/></l><r>bli<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="3"><p><l>orrut<s n="V"/><s n="IV"/></l><r>synes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>bokte<s n="V"/><s n="TV"/></l><r>vekke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>geavahit<s n="V"/><s n="TV"/></l><r>bruke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>mearkkašit<s n="V"/><s n="TV"/></l><r>bemerke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--wsd todo: merke seg, notere-->
-    <e><p><l>fállat<s n="V"/><s n="TV"/></l><r>tilby<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--wsd todo: tilby vs by (på)-->
-    <e><p><l>lágidit<s n="V"/><s n="TV"/></l><r>ordne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--wsd todo: ordne/stelle/arrangere-->
+    <e><p><l>mearkkašit<s n="V"/><s n="TV"/></l><r>bemerke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="1"><p><l>mearkkašit<s n="V"/><s n="TV"/></l><r>merke<g><b/>seg</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="2"><p><l>mearkkašit<s n="V"/><s n="TV"/></l><r>notere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>fállat<s n="V"/><s n="TV"/></l><r>tilby<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="1"><p><l>fállat<s n="V"/><s n="TV"/></l><r>by<g><b/>på</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>lágidit<s n="V"/><s n="TV"/></l><r>drive<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>lágidit<s n="V"/><s n="TV"/></l><r>ordne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="2"><p><l>lágidit<s n="V"/><s n="TV"/></l><r>arrangere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="3"><p><l>lágidit<s n="V"/><s n="TV"/></l><r>stelle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>lohkat<s n="V"/><s n="TV"/></l><r>lese<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>ábbut<s n="V"/><s n="IV"/></l><r>koke<g><b/>over</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>geavvat<s n="V"/><s n="IV"/></l><r>heve<g><b/>seg</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
