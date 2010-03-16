@@ -19,8 +19,8 @@
     <def-cat n="spred-ess">
       <cat-item tags="@←SPRED.*.ess"/>
     </def-cat>
-    <def-cat n="SN-advl">
-      <cat-item tags="SN.@ADVL.*"/>
+    <def-cat n="pron-RADVL">
+      <cat-item lemma="pron" tags="SN.@←ADVL.*"/>
     </def-cat>
     <def-cat n="PR">
       <cat-item tags="PR"/>
@@ -113,12 +113,11 @@
       </action>
     </rule>
 
-    <rule comment="REGLA: PR SN-advl spred-ess
-                   til meg hjelpe => og hjelper meg
-                   TODO: check that SN-advl is pron">
+    <rule comment="REGLA: PR pron-RADVL spred-ess
+                   til meg hjelpe => og hjelper meg">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="SN-advl"/>
+        <pattern-item n="pron-RADVL"/>
         <pattern-item n="spred-ess"/>
       </pattern>
       <action>
