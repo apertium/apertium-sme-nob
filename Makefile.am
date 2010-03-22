@@ -54,7 +54,7 @@ $(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst dev/xfst2apertium.relabel .dep
 	hfst-invert $(PREFIX1).autogen.hfst -o $@.tmp
 	hfst-compose-intersect -l $@.tmp .deps/xfst2apertium.twol.hfst -o $@.2.tmp
 	hfst-substitute -F dev/xfst2apertium.relabel -i $@.2.tmp -o $@
-
+	@rm $@.tmp $@.2.tmp
 
 .deps/$(BASENAME).$(PREFIX1).dix: $(BASENAME).$(PREFIX1).dix lexchoicebil.xsl
 	if [ ! -d .deps ]; then mkdir .deps; fi
