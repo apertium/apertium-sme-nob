@@ -29,6 +29,12 @@ TARGETS_COMMON = \
 ## 	DICTIONARIES (ANALYSER / BILINGUAL / GENERATOR / POSTGEN)
 ##
 
+foo.morf.hfst: foo.twol foo.lexc
+	hfst-twolc -r -i foo.twol -o foo.twol.hfst
+	hfst-lexc foo.lexc -o foo.lexc.hfst
+	hfst-invert foo.lexc.hfst -o foo.morf.hfst.tmp
+	hfst-compose-intersect -l foo.morf.hfst.tmp foo.twol.hfst -o foo.morf.hfst
+
 $(PREFIX1).twol.hfst: $(BASENAME).$(LANG1).twol
 	hfst-twolc -r -i $(BASENAME).$(LANG1).twol -o $@
 
@@ -41,9 +47,14 @@ $(PREFIX1).autogen.hfst: $(PREFIX1).twol.hfst $(PREFIX1).lexc.hfst
 	hfst-compose-intersect -l $@.tmp dev/uppercase-first.hfst -o $@
 	@rm $@.tmp
 
-$(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst dev/xfst2apertium.relabel
-	hfst-invert $(PREFIX1).autogen.hfst -o $(PREFIX1).automorf.bin
-	hfst-substitute -F dev/xfst2apertium.relabel -i $(PREFIX1).automorf.bin -o $@
+.deps/xfst2apertium.twol.hfst: dev/xfst2apertium.twol
+	hfst-twolc -r -i dev/xfst2apertium.twol -o .deps/xfst2apertium.twol.hfst
+
+$(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst dev/xfst2apertium.relabel .deps/xfst2apertium.twol.hfst
+	hfst-invert $(PREFIX1).autogen.hfst -o $@.tmp
+	hfst-compose-intersect -l $@.tmp .deps/xfst2apertium.twol.hfst -o $@.2.tmp
+	hfst-substitute -F dev/xfst2apertium.relabel -i $@.2.tmp -o $@
+
 
 .deps/$(BASENAME).$(PREFIX1).dix: $(BASENAME).$(PREFIX1).dix lexchoicebil.xsl
 	if [ ! -d .deps ]; then mkdir .deps; fi

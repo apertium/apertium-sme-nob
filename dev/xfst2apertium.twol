@@ -1,0 +1,36 @@
+Alphabet
+
+%#:0
+%# ! Need this, since otherwise #-words not matched by our rule will disappear
+
+%+Cmpnd
+%+SgCmp    %+PlCmp
+%+SgNomCmp %+PlNomCmp
+%+SgGenCmp %+PlGenCmp
+
+ ;
+
+Sets
+Cmptag = 
+%+Cmpnd
+%+SgCmp    %+PlCmp
+%+SgNomCmp %+PlNomCmp
+%+SgGenCmp %+PlGenCmp
+;
+
+Rules 
+
+"#-deletion except after compounding tags"
+%#:0 <=> \Cmptag _ ; 
+
+! After inversion, we get
+!   ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sáme#giella+N+Sg+Nom$
+! After this file, we get
+!   ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sámegiella+N+Sg+Nom$
+! After substitution/relabelling, we get
+!   ^sámegiella/sápmi<N><Sg><Gen><Cmp>+giella<N><Sg><Nom>/sámegiella<N><Sg><Nom>$
+! which after pretransfer turns into 
+!   ^sápmi<N><Sg><Gen><Cmp>$ ^giella<N><Sg><Nom>$
+! or
+!   ^sámegiella<N><Sg><Nom>$
+! respectively.

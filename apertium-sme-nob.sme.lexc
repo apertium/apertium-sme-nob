@@ -7832,62 +7832,63 @@ vázzilit:vázzil SUOTNJAL ;
 ! ========================================================================== !
 
 ! This is a lexicon to be used with aspell spell checker only.
+! It is at the moment not in use. Remove the string "!aSPell: " if you want to use it.
 ! Target is to use as many sublexicons as possible with as many variables
 ! as possible to create aspell affix file.
-LEXICON AspellAffix
+!aSPell: LEXICON AspellAffix
+!aSPell: 
+!aSPell: !BISYLLABIC
+!aSPell: ! GOAHTI lexicon has consonant gradation and dipthtong simplification
+!aSPell: ! Cases: -i, -á, -u, -a, -e, and -o endings
+!aSPell: ! Obsolete because GOAHTI has same endings as GADDI ??
+!aSPell: !buohkki GOAHTI ;
+!aSPell: !buohkká GOAHTI ;
+!aSPell: !duohkku GOAHTI ;
+!aSPell: !fuohkka GOAHTI ;
+!aSPell: !fuohkke GOAHTI ;
+!aSPell: !buohkko GOAHTI ;
+!aSPell: ! GADDI lexicon has comparative forms
+!aSPell: ! Cases: -i, -á, -u, -a, -e, and -o endings
+!aSPell: buohkki GADDI ;
+!aSPell: cuohkká GADDI ;
+!aSPell: duohkku GADDI ;
+!aSPell: fuohkka GADDI ;
+!aSPell: guohkke GADDI ;
+!aSPell: huohkko GADDI ;
+!aSPell: ! IIJA non-gradating w/ a-ill
+!aSPell: guohkkinymiija IIJA ; ! other case endings?
+!aSPell: ! STAHTA non-gradating w/ a/i-ill/
+!aSPell: buohkkistáhta STAHTA ;
+!aSPell: 
+!aSPell: !TRISYLLABIC
+!aSPell: ! SEAMU gradating trisyllabic
+!aSPell: ! Cases: -i, -a, and -u endings
+!aSPell: jea0lu:jeallum8 SEAMU ;
+!aSPell: kuo0mi:kuopmán8 SEAMU ;
+!aSPell: muo0mu:muopmum8 SEAMU ;
+!aSPell: nea0na:neatnag8 SEAMU ;
+!aSPell: ! MALIS gradating w/ consonant endings
+!aSPell: ! Cases: -is, -uš, and -ir endings
+!aSPell: buoh0pis:buoh'pis MALIS ;
+!aSPell: duoh0puš:duoh'puš MALIS ;
+!aSPell: goah0pir:goah'pir MALIS ;
+!aSPell: ! Cases: -is, -uš, and -ir endings
+!aSPell: 
+!aSPell: !CONTRACTED
+!aSPell: ! SUOLU contracted
+!aSPell: ! Cases: -u ending only?
+!aSPell: suo00zu:suohccu SUOLU ;
+!aSPell: ! FALIS contracted
+!aSPell: ! Cases: -is only?
+!aSPell: fálggis:fál'gis FALIS ;
+!aSPell: 
+!aSPell: !MISC
+!aSPell: ! LEXDIMINC diminutives
+!aSPell: beanáš:beanáž LEXDIMINC ;
+!aSPell: 
+!aSPell: ! Add more and correct these.
 
-!BISYLLABIC
-! GOAHTI lexicon has consonant gradation and dipthtong simplification
-! Cases: -i, -á, -u, -a, -e, and -o endings
-! Obsolete because GOAHTI has same endings as GADDI ??
-!buohkki GOAHTI ;
-!buohkká GOAHTI ;
-!duohkku GOAHTI ;
-!fuohkka GOAHTI ;
-!fuohkke GOAHTI ;
-!buohkko GOAHTI ;
-! GADDI lexicon has comparative forms
-! Cases: -i, -á, -u, -a, -e, and -o endings
-buohkki GADDI ;
-cuohkká GADDI ;
-duohkku GADDI ;
-fuohkka GADDI ;
-guohkke GADDI ;
-huohkko GADDI ;
-! IIJA non-gradating w/ a-ill
-guohkkinymiija IIJA ; ! other case endings?
-! STAHTA non-gradating w/ a/i-ill/
-buohkkistáhta STAHTA ;
-
-!TRISYLLABIC
-! SEAMU gradating trisyllabic
-! Cases: -i, -a, and -u endings
-jea0lu:jeallum8 SEAMU ;
-kuo0mi:kuopmán8 SEAMU ;
-muo0mu:muopmum8 SEAMU ;
-nea0na:neatnag8 SEAMU ;
-! MALIS gradating w/ consonant endings
-! Cases: -is, -uš, and -ir endings
-buoh0pis:buoh'pis MALIS ;
-duoh0puš:duoh'puš MALIS ;
-goah0pir:goah'pir MALIS ;
-! Cases: -is, -uš, and -ir endings
-
-!CONTRACTED
-! SUOLU contracted
-! Cases: -u ending only?
-suo00zu:suohccu SUOLU ;
-! FALIS contracted
-! Cases: -is only?
-fálggis:fál'gis FALIS ;
-
-!MISC
-! LEXDIMINC diminutives
-beanáš:beanáž LEXDIMINC ;
-
-! Add more and correct these.
-
-!LEXICON GuessNoun
+! LEXICON GuessNoun
 ! GOAHTI ;
 ! GOAHTI ;
 ! STAHTA ;
@@ -7917,11 +7918,11 @@ LEXICON NounSecond
 bea0lis:beallis LASIS ; !+Last +CmpOnly +SgLeft +SgNomLeft +PlGenLeft
 čor0gi:čor'gi GOAHTI ; !+Last +CmpOnly +SgLeft +SgNomLeft  +PlGenLeft
 giel At ; !+Last +CmpOnly +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
-miesebeas0ka:miese#beas'ka GOAHTI ; !+Last
+miese#beas0ka:miese#beas'ka GOAHTI ; !+Last
 nammasaš:nammas AHKASAS ; !+Last +CmpOnly +SgNomLeft +SgGenLeft +PlGenLeft
 niehkki:niehkki AIGI ; !+Last +CmpOnly
 sahán:sahám BOAHTIN ; !+Last +CmpOnly
-sismuotkun:sis#muotkum BOAHTIN ;
+sis#muotkun:sis#muotkum BOAHTIN ;
 !čiegahas:čiegahass JOHTOLAT ; !Especially with numerals, moved to LEXICON SAS
 
 ! Yes, this is what they used to look like.
@@ -7963,7 +7964,7 @@ avádat:avádah'k JOHTOLAT ;
 bajoš:bajož LEXDIMINC ;
 balddonas:balddonass JOHTOLAT ; !+SgNomCmp +SgGenCmp +PlGenCmp
 balddus:bal'dus MALISLONG ;
-bargodepartemean0ta:bargo#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
+bargo#departemean0ta:bargo#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
 bar0gu:bar'gu ALBMI ;
 bar0ta:bar'ta GOAHTI ;
 basttat:bas'ta BUVSSAT ;
@@ -7975,7 +7976,7 @@ bea0na:beatnag8 BEANA ; !+SgNomCmp +SgGenCmp +PlGenCmp
 bea0ral:bearral MALIS ;
 bea0raš:bearra DAIVVAS ; !+SgNomCmp +SgGenCmp +PlGenCmp
 bea0raš:bearraš MATTAR ; !+SgNomCmp +SgGenCmp +PlGenCmp
-bearašdepartemean0ta:bearaš#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
+bearaš#departemean0ta:bearaš#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 bellodat:bellodah'k JOHTOLAT ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 bibliotehka STAHTA ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 biebman:biebmam BOAHTIN ; !+SgCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
@@ -8007,7 +8008,7 @@ boa00đa:boah'tag8 SEAMU ;
 boa00đus:boah'tus MALISLONG "share N" ;
 bodda GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 boddu GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
-bolesdepartemean0ta:boles#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
+boles#departemean0ta:boles#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 bom0ba:bom'ba GOAHTI ;
 bomba GOAHTI ;
 bo0nus:botnus MALISLONG ;
@@ -8054,9 +8055,9 @@ dah0ku:dah'ku ALBMILONG ; !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgLeft +SgNomLef
 davvi GADDILONGSHORT "north N" ;
 davvi+N+SgNomCmp:davvi%> R ;
 davvi+N+SgNomCmp+Cmpnd:davá%>%- # ; !ovdda- ja maŋábealli
-davvisámegiella GOAHTI ;
+davvi#sáme#giella GOAHTI ;
 deajat:dead'ja BUVSSAT ;
-dearvvašvuođadepartemean0ta:dearvvašvuođa#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
+dearvvašvuođa#departemean0ta:dearvvašvuođa#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
 dearvvuoh0ta:dearvvuoh'ta LUONDU ; !+SgGenCmp +DefPlGenCmp !Also used in sg.
 deatnu AIGI ; !+SgNomCmp +SgGenCmp +DefPlGenCmp
 deatta:deaddag8 SEAMU ;
@@ -8067,7 +8068,7 @@ dieh0tu:dieh'tu ALBMI ;
 die0nas:dietnas MALIS ;
 diev0du:diev'du ALBMI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 die00đa:dieh'tag8 SEAMU ;
-dieđihangaskaoapmi GOAHTI ;
+dieđihan#gaska#oapmi GOAHTI ;
 dieđáhus:dieđáhuss JOHTOLAT ;
 digaštallan:digaštallam BOAHTALADDAN ; !+SgCmp
 diggi AIGI ;
@@ -8105,7 +8106,7 @@ duol0va:duol'va GOAHTI ;
 duopmu GOAHTI ;
 duopmár GAHPIRLONG ; !+SgNomCmp +SgGenCmp +PlGenCmp
 duor0ga:duor'ga GOAHTI ;
-dutkandepartemean0ta:dutkan#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
+dutkan#departemean0ta:dutkan#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 dáh0pi:dáh'pi GOAHTI ;
 dáhpáhus:dáhpáhuss JOHTOLAT ;
 dáhttu ALBMILONG ;
@@ -8120,7 +8121,7 @@ dárbbaš:dár'ba DAIVVAS ;
 dárbbaš:dár'baš MALIS ;
 dár0bu:dár'bu ALBMI ;
 dárkkástus:dárkkástuss JOHTOLAT ; !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
-dárogiella GOAHTI ;
+dáro#giella GOAHTI ;
 dássi AIGI ;
 dáv0da:dáv'da GOAHTI ;
 dávvir GAHPIRLONG ;
@@ -8137,13 +8138,13 @@ eallu GOAHTI ;
 ealáhus:ealáhuss JOHTOLAT ;
 eamit:eamid GAHPIRLONG ; !+SgNomCmp +SgGenCmp +PlGenCmp
 ea0na:eatnam8 SEAMU ; !+SgNomCmp +SgGenCmp +PlGenCmp
-eanandoallodepartemean0ta:eanan#doallo#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
+eanan#doallo#departemean0ta:eanan#doallo#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
 earráneapmi:earrán EAPMI ; !+SgCmp
 earán GAHPIRLONG ;
 eatnan:eatnam GAHPIR ;
 ekonoma GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
-energiijadepartemean0ta:energiija#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
-energiijadepartemean0ta:energiija#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
+energiija#departemean0ta:energiija#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
+energiija#departemean0ta:energiija#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
 erohus:erohuss JOHTOLAT ; !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgLeft +SgNomLeft +PlGenLeft
 evttohus:evttohuss JOHTOLAT ;
 eŋgel GAHPIR ; !+SgNomCmp +SgGenCmp +PlGenCmp
@@ -8157,7 +8158,7 @@ fierpmádat:fierpmádah'k JOHTOLAT ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 fierra GOAHTI ;
 fiev0ru:fiev'ru GOAHTI ;
 filbma GOAHTI ;
-finansdepartemean0ta:finans#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
+finans#departemean0ta:finans#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
 fitnodat:fitnodah'k JOHTOLAT ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 fulkkežat:fulkkež MAGASH ; !+SgNomCmp +PlGenCmp !(pl.r.)
 fuolaheapmi:fuolah EAPMI ; !+SgCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
@@ -8206,7 +8207,7 @@ gieh0ta:gieh'ta GOAHTI "hand N" ;
 gie0las:giellas MALIS ;
 giel0da:giel'da GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 gieldda:giel'dag8 SEAMU ;
-gielddadepartemean0ta:gieldda#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
+gieldda#departemean0ta:gieldda#departemean'ta GOAHTI ; !SUB !+SgNomCmp +DefSgGenCmp +PlGenCmp
 gielddus:giel'dus MALISLONG ;
 giella GOAHTI ;
 gieđahallan:gieđahallam BOAHTALADDAN ; !+SgCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
@@ -8215,7 +8216,7 @@ gii0tu:gij'tu GOAHTI ;
 gik0si:gik'si GOAHTI ;
 gilli ALBMILONG ; !+SgNomCmp +SgGenCmp +PlGenCmp
 gil0vu:gil'vu GOAHTI ;
-girdišillju AIGI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
+girdi#šillju AIGI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 girku:girku GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 giron GAHPIR ; !+SgNomCmp +SgGenCmp +PlGenCmp
 gissel GAHPIR ; !+SgNomCmp +SgGenCmp +PlGenCmp !^LOAN
@@ -8343,7 +8344,7 @@ jorggáldat:jorggáldah'k JOHTOLAT ;
 journalis0ta:journalis'ta GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 journalistihkka GOAHTI ;
 juhkamuš:juhkamušš LEXMUSH ;
-julevsámegiella GOAHTI ;
+julev#sáme#giella GOAHTI ;
 juohkin:juohkim BOAHTIN ; !+SgCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
 juovllat:juov'la BUVSSAT ; !+SgNomCmp +PlGenCmp !(pl.)
 jurdda:jur'dag8 SEAMU ;
@@ -8581,7 +8582,7 @@ po^esia STAHTA ; !SUB
 po^esiija IIJA ;
 politihkka GOAHTI ;
 politiija IIJA ; !+SgNomCmp +SgGenCmp +PlGenCmp
-politiijadepartemean0ta:politiija#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
+politiija#departemean0ta:politiija#departemean'ta GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 presidean0ta:presidean'ta GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 prinsihppa GOAHTI ;
 produsean0ta:produsean'ta GOAHTI ; !^LOAN
@@ -8685,7 +8686,7 @@ skihpár GAHPIRLONG ; !+SgNomCmp +SgGenCmp +PlGenCmp
 skohter GAHPIR ;
 skovvi GOAHTI ;
 skuv0la:skuv'la GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
-skuvlajođiheaddji:skuvla#jođiheaddji¤ ACTOR ; !+SgNomCmp +SgGenCmp +PlGenCmp
+skuvla#jođiheaddji:skuvla#jođiheaddji¤ ACTOR ; !+SgNomCmp +SgGenCmp +PlGenCmp
 skuvlen:skuvlem BOAHTIN ; !+SgCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
 skábma GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 skáhppu GOAHTI ;
@@ -8731,7 +8732,7 @@ suohkat:suohkad GAHPIR ;
 suoh0pa:suohppag8 SEAMU ; !+SgNomCmp +SgGenCmp +PlGenCmp
 suo0la:suollag8 BEANA ; !+SgNomCmp +SgGenCmp +PlGenCmp
 suoládeapmi:suolád EAPMI ; !+SgCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
-suomagiella GOAHTI ;
+suoma#giella GOAHTI ;
 suopman GAHPIR ;
 suor0gi:suor'gi GOAHTI ;
 suovva GOAHTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
@@ -8745,8 +8746,8 @@ ságat:sáh'ka BUVSSAT ;
 sáh0ka:sáh'ka GOAHTI ;
 sáhkku GOAHTI ;
 sálbma GOAHTI ;
-sámegielkur0sa:sáme#giel#kur'sa GOAHTI ; 
-sámegiella GOAHTI ;
+sáme#giel#kur0sa:sáme#giel#kur'sa GOAHTI ; 
+sáme#giella GOAHTI ;
 sápmelaš:sápmelažž JOHTOLAT "Saami N" ; !+SgNomCmp +SgGenCmp +PlGenCmp
 sápmi GOAHTI "Saami(land) N" ; !SUB !+SgGenCmp
 sápmi AIGI ; !+SgGenCmp +PlGenCmp
@@ -8828,7 +8829,7 @@ vuođustus:vuođustuss JOHTOLAT ;
 vuođuštus:vuođuštuss JOHTOLAT ;
  vuođđo:vuođđo Rreal ; !SUB
 vuođđo FIRSTCOMPOUND ; ! sub
-vuođđoskuv0la:vuođđo#skuv'la GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
+vuođđo#skuv0la:vuođđo#skuv'la GOAHTI ; !+SgNomCmp +DefSgGenCmp +PlGenCmp
 vuođđu GOAHTI ;
 váddu GOAHTI ;
 váhnen:váhnem GAHPIR ; !+SgNomCmp +SgGenCmp +PlGenCmp
@@ -9322,6 +9323,7 @@ oassádalli:oassádalla¤ HAHTTI ; !+SgNomCmp +SgGenCmp +PlGenCmp
 oiddolaš:oiddol DABALAS ;
 oktasaš:oktas AHKASAS ; !+SgNomCmp +PlGenLeft
 ollislaš:ollisl DABALAS ;
+ol0lu:ol'lu BOREALA ;
 olu BOREALA ;
 oppalaš:oppal ETNOLOGALAS ;
 oskkáldas:oskkáld ISSORAS ; !+SgNomCmp +SgGenCmp +PlGenCmp
@@ -9482,19 +9484,21 @@ váttis:váddis VATTIS ;
 ! =============
 
 ! This is a lexicon to be used with aspell spell ^checker only.
+! It is not in use for the moment. In order to put it into use,
+! remove the string "!aSPell: "
 ! Target is to use as many sublexicons as possible with as many variables
 ! as possible to create aspell affix file.
 
-LEXICON AspellProp
-Aspell LONDON ;
-Spelle ACCRA ;
-! MARJA-plc & MARJA use same affixes as GOAHTI
-Cbern:Cbern9 BERN ;		! Same^ as BLIND
-Duominen:Duomi C-FI-NEN ;
-Blondon:Blondon9 LONDON-sur ;		! VUOLAB goes here
-ENYSTØ NYSTØ ;
-! PLACE-DIM is same as DIMINC
-Ejeakkit:Ejeaggi ALEUHTAT ;
+!aSPell: LEXICON AspellProp
+!aSPell: Aspell LONDON ;
+!aSPell: Spelle ACCRA ;
+!aSPell: ! MARJA-plc & MARJA use same affixes as GOAHTI
+!aSPell: Cbern:Cbern9 BERN ;		! Same^ as BLIND
+!aSPell: Duominen:Duomi C-FI-NEN ;
+!aSPell: Blondon:Blondon9 LONDON-sur ;		! VUOLAB goes here
+!aSPell: ENYSTØ NYSTØ ;
+!aSPell: ! PLACE-DIM is same as DIMINC
+!aSPell: Ejeakkit:Ejeaggi ALEUHTAT ;
 
 ! Continuation lexica
 ! ===================
@@ -11677,7 +11681,7 @@ gaskan adv ;
 gaskka adv ;
 gaskkohagaid:gaskkohagajd9 adv ;
 gasku adv ;
-geaidnoráigge adv ;
+geaidno#ráigge adv ;
 geasset adv ;
 gieskat adv ;
 gitta adv ;
@@ -11695,7 +11699,7 @@ guktii adv ;
 gurrii adv ;
 gusto adv ;
 gárremiin adv ;
-gárrenoaivvis adv ;
+gárren#oaivvis adv ;
 gávvut adv ;
 heahkkat adv ;
 hui adv ;
@@ -11703,7 +11707,7 @@ hárve adv ;
 iehčanassii adv ;
 ihkku adv ;
 ihttin adv ;
-ijatbeaivái adv ;
+ijat#beaivái adv ;
 ikte adv ;
 ilá adv ;
 iđđes adv ;
@@ -11728,15 +11732,15 @@ manin adv ;
 manne adv ;
 mađe adv ;
 maŋos adv ;
-maŋábealde adv ;
-maŋágeahčen adv ;
+maŋá#bealde adv ;
+maŋá#geahčen adv ;
 maŋás adv ;
 maŋŋit adv ;
 mealgat adv ;
 measta adv ;
 meattá adv ;
-miehtebeaivái adv ;
-miehterávdnjái adv ;
+miehte#beaivái adv ;
+miehte#rávdnjái adv ;
 mielde adv ;
 minddar adv ;
 muđui adv ;
@@ -11753,19 +11757,20 @@ oktan adv ;
 oktanaga adv ;
 okto adv ;
 okto adv ;
-olggobealde adv ;
-olggobealde adv ;
+olggo#bealde adv ;
+olggo#bealde adv ;
 olggos adv ;
 olggul adv ;
 olgun adv ;
+ollu adv ;
 ollásii adv ;
 olu adv ;
 olus adv ;
-oppalohkái adv ;
+oppa#lohkái adv ;
 oppanassii adv ;
 ovdal adv ;
 ovdan adv ;
-ovddalgihtii adv ;
+ovddal#gihtii adv ;
 ovddas adv ;
 ovttas adv ;
 ovtto adv ;
@@ -12555,22 +12560,22 @@ giiat+Pron+Indef+Sg+Nom:gii%>at # ;
 dahtai+Pron+Indef+Sg+Nom:daht%>ai # ;
 miinai+Pron+Indef+Sg+Nom:mii%>nai # ;
 miijai+Pron+Indef+Sg+Nom:mii%>jai # ;
-iešgiige+Pron+Indef+Sg+Nom:ieš#gii%>ge # ;
-iešgiinai+Pron+Indef+Sg+Nom:ieš#gii%>nai # ;
-iešgiijai+Pron+Indef+Sg+Nom:ieš#gii%>jai # ;
+ieš#giige+Pron+Indef+Sg+Nom:ieš#gii%>ge # ;
+ieš#giinai+Pron+Indef+Sg+Nom:ieš#gii%>nai # ;
+ieš#giijai+Pron+Indef+Sg+Nom:ieš#gii%>jai # ;
 
 ! Pointers to obl sublexicon
 mihkkege+Pron+Indef:ma%> oblindefcas ;
 giige+Pron+Indef:gea%> oblindefcas ;
 giinai+Pron+Indef:gea%> oblindefcas-giinai ;
 miinai+Pron+Indef:ma%> oblindefcas-miinai ;
-iešgiige+Pron+Indef:ieš#gea%> oblindefcas ;
-iešgiinai+Pron+Indef:ieš#gea%> oblindefcas-giinai ;
+ieš#giige+Pron+Indef:ieš#gea%> oblindefcas ;
+ieš#giinai+Pron+Indef:ieš#gea%> oblindefcas-giinai ;
 guhtege+Pron+Indef:guh'te GUHTEGECASE ;
 guhtenai+Pron+Indef:guh'te GUHTENAI ;
 !ieš#guh0te+Pron+Indef:ieš#guh'te GUHTECASE ;
-iešguhtege+Pron+Indef:ieš#guh'te GUHTEGECASE ;
-iešguhtenai+Pron+Indef:ieš#guh'te GUHTENAI ;
+ieš#guhtege+Pron+Indef:ieš#guh'te GUHTEGECASE ;
+ieš#guhtenai+Pron+Indef:ieš#guh'te GUHTENAI ;
 guhtemušge+Pron+Indef:guđemužž GUHTEMUSGECASE ;
 guhtemušge+Pron+Indef:guhtemuš%>ge # ; !deviating Nom altarnant.
 goabbáge+Pron+Indef:goabbá GUHTEGECASE ;
@@ -12768,7 +12773,7 @@ nuppát+Pron+Indef:nuppád%>              indefsg-a-uneven ;
 duobbá+Pron+Indef:duobbá%>              indef-a-even-v ;
 dábbá+Pron+Indef:dábbá%>              indef-a-even-v ;
 juobbá+Pron+Indef:juobbá%>              indef-a-even-v ;
-juobbágoabbá+Pron+Indef: JUOBBAGOABBA ;
+juobbá#goabbá+Pron+Indef: JUOBBAGOABBA ;
 
 nubbi+Pron+Indef:nubbi%>             nubbicase ;
 nubbi+Pron+Recipr:nubbi%>             nubbicase ;
@@ -12780,9 +12785,9 @@ olut+Pron+Indef:olu%>           indefdeclpleven ;
 moanat+Pron+Indef:moana%>           indefdeclpleven ;
 gallát+Pron+Indef+Attr:gallát%>       K ;
 buohkat+Pron+Indef:buohka%>       indefdeclpleven ;
-gaitdivnnat+Pron+Indef:gait#divnna%> indefdeclpleven ;
-gaitdiinnat+Pron+Indef:gait#dijnna%> indefdeclpleven ;
-gaittiinnat+Pron+Indef:gait#tijnna%> indefdeclpleven ;
+gait#divnnat+Pron+Indef:gait#divnna%> indefdeclpleven ;
+gait#diinnat+Pron+Indef:gait#dijnna%> indefdeclpleven ;
+gait#tiinnat+Pron+Indef:gait#tijnna%> indefdeclpleven ;
 gaikkat+Pron+Indef:gajkka%>       indefdeclpleven ;
 goappašagat+Pron+Indef:goappašaga%>  indefdeclpleven ;
 
@@ -13020,10 +13025,10 @@ goappaš iind ;
 goappaš:goappaš»# NAMAT ;
 !goappašat iind ; ! thus both Nom and non-Nom. XXX.
 guhtet iind ;
-iešguhtet iind ;
-iešguđet iind ;
-iešguđet:ieš#guđet»# NAMAT ;
-iešguhtet:ieš#guhtet»# NAMAT ;
+ieš#guhtet iind ;
+ieš#guđet iind ;
+ieš#guđet:ieš#guđet»# NAMAT ;
+ieš#guhtet:ieš#guhtet»# NAMAT ;
 ihkinassii iind ;
 juohke iind ;
 juohke:juohke»# NAMAT ;
@@ -13053,10 +13058,10 @@ oktahat+Pron+Indef+Nom+Sg:oktahat%> K ;
 aktahat+Pron+Indef+Nom+Sg:aktahat%> K ;
 
 earrás+Pron+Indef:earrás EARRAS ;
-iešguhtet+Pron+Indef+Nom:ieš#guhtet%> K ;
-iešguhtet+Pron+Indef+Gen:ieš#guđet%> K ; !SUB
-iešguhtet+Pron+Indef+Gen:ieš#guđet»# NAMAT ; !SUB
-iešguhtet+Pron+Indef+Acc:ieš#guđet%> K ; !SUB
+ieš#guhtet+Pron+Indef+Nom:ieš#guhtet%> K ;
+ieš#guhtet+Pron+Indef+Gen:ieš#guđet%> K ; !SUB
+ieš#guhtet+Pron+Indef+Gen:ieš#guđet»# NAMAT ; !SUB
+ieš#guhtet+Pron+Indef+Acc:ieš#guđet%> K ; !SUB
 simme+Pron+Indef:simme SIMME ; !SUB
 seamma+Pron+Indef:seamma SEAMMA ; !SUB
 seammá+Pron+Indef:seammá SEAMMA ;
@@ -13283,12 +13288,12 @@ badjelaš Pp ;
 badjelii Pp ; ! Ill
 badjelis Pp ; ! Loc
 badjelis+Adp:badjel%>istti PxV ; 
-bajábealde Pp ;
-bajábeal Pp ; !SUB
-bajábeale Pp ;
-bajábeali Pp ;
-bajábeallai Pp ;
-bajábeallái Pp ;
+bajá#bealde Pp ;
+bajá#beal Pp ; !SUB
+bajá#beale Pp ;
+bajá#beali Pp ;
+bajá#beallai Pp ;
+bajá#beallái Pp ;
 bajil Pp ;
 beald:beald9 Pp ;
 bealde Pp ;
@@ -13303,63 +13308,63 @@ beallái+Adp:beallá%>s PxC ;
 beallai Pp ;
 beallái Pp ;
 buorrin Postp ;
-sealggebealde Pp ;
-siskkobeal Pp ; !SUB
-siskkobealde Pp ;
-siskkobeale Pp ;
-siskkobeali Pp ;
-siskkobeallai Pp ;
-siskkobeallái Pp ;
-siskkabeal Pp ; !SUB
-siskkabealde Pp ;
-siskkabeale Pp ;
-siskkabeali Pp ; 
-siskkabeallai Pp ;
-siskkabeallái Pp ;
-olgešbeal Pp ; !SUB
-olgešbealde Pp ;
-olgešbeale Pp ;
-olgešbeali Pp ;
-olgešbeallai Pp ;
-olgešbeallái Pp ;
-olgobealde Pp ; !SUB
-olggobeal Prep ; !SUB
-olggobealde Pp ;
-olggobeale Pp ;
-olggobeali Pp ;
-olggobeallai Pp ;
-olggobeallái Pp ;
-davábealde Pp ;
-davábeale Pp ;
-davábeali Pp ;
-davábeallai Pp ;
-davábeallái Pp ;
-oarjjabealde Pp ;
-oarjjabeale Pp ;
-oarjjabeali Pp ;
-oarjjabeallai Pp ;
-oarjjabeallái Pp ;
-lulábealde Pp ;
-lulábeale Pp ;
-lulábeali Pp ;
-lulábeallai Pp ;
-lulábeallái Pp ;
-máttábealde Pp ;
-máttábeale Pp ;
-máttábeali Pp ;
-máttábeallai Pp ;
-máttábeallái Pp ;
-nuorttabealde Pp ;
-nuorttabeale Pp ;
-nuorttabeali Pp ;
-nuorttabeallai Pp ;
-nuorttabeallái Pp ;
-duogábeal Pp ; !SUB
-duogábealde Pp ;
-duogábeale Pp ;
-duogábeali Pp ;
-duogábeallai Pp ;
-duogábeallái Pp ;
+sealgge#bealde Pp ;
+siskko#beal Pp ; !SUB
+siskko#bealde Pp ;
+siskko#beale Pp ;
+siskko#beali Pp ;
+siskko#beallai Pp ;
+siskko#beallái Pp ;
+siskka#beal Pp ; !SUB
+siskka#bealde Pp ;
+siskka#beale Pp ;
+siskka#beali Pp ; 
+siskka#beallai Pp ;
+siskka#beallái Pp ;
+olgeš#beal Pp ; !SUB
+olgeš#bealde Pp ;
+olgeš#beale Pp ;
+olgeš#beali Pp ;
+olgeš#beallai Pp ;
+olgeš#beallái Pp ;
+olgo#bealde Pp ; !SUB
+olggo#beal Prep ; !SUB
+olggo#bealde Pp ;
+olggo#beale Pp ;
+olggo#beali Pp ;
+olggo#beallai Pp ;
+olggo#beallái Pp ;
+davá#bealde Pp ;
+davá#beale Pp ;
+davá#beali Pp ;
+davá#beallai Pp ;
+davá#beallái Pp ;
+oarjja#bealde Pp ;
+oarjja#beale Pp ;
+oarjja#beali Pp ;
+oarjja#beallai Pp ;
+oarjja#beallái Pp ;
+lulá#bealde Pp ;
+lulá#beale Pp ;
+lulá#beali Pp ;
+lulá#beallai Pp ;
+lulá#beallái Pp ;
+máttá#bealde Pp ;
+máttá#beale Pp ;
+máttá#beali Pp ;
+máttá#beallai Pp ;
+máttá#beallái Pp ;
+nuortta#bealde Pp ;
+nuortta#beale Pp ;
+nuortta#beali Pp ;
+nuortta#beallai Pp ;
+nuortta#beallái Pp ;
+duogá#beal Pp ; !SUB
+duogá#bealde Pp ;
+duogá#beale Pp ;
+duogá#beali Pp ;
+duogá#beallai Pp ;
+duogá#beallái Pp ;
 birra+Adp:bira%> PxV2 ;
 birra Pp ;
 bokte Postp ;
@@ -13415,12 +13420,12 @@ guovdelas Pp ;
 guovdelaš Pp ;
 guovdu Pp ;
 gurrii Postp ;
-gurutbeal Pp ; !SUB
-gurutbeale Pp ;
-gurutbeali Pp ;
-gurutbealde Pp ;
-gurutbeallai Pp ;
-gurutbeallái Pp ;
+gurut#beal Pp ; !SUB
+gurut#beale Pp ;
+gurut#beali Pp ;
+gurut#bealde Pp ;
+gurut#beallai Pp ;
+gurut#beallái Pp ;
 hárrai:hárraj Postp ; !SUB
 hárrái:hárráj Pp ;
 hárráj:hárráj9 Pp ; !SUB
@@ -13469,24 +13474,24 @@ nala Postp ;
 nalde Postp ;
 njeaiga Postp ;
 njeaigga Postp ;
-nuorttabealde Pp ;
+nuortta#bealde Pp ;
 !oaidnut Postp ; !Pp includes this.
 oaidnut Pp ;
 oasil Pp ;
-oarjjábeal Pp ; !SUB
+oarjjá#beal Pp ; !SUB
 olggil Postp ;
 olis Pp ;
 ollái Pp ;
-ovdabeal Pp ; !SUB
+ovda#beal Pp ; !SUB
 ovdal Pp ;
 ovdii+Po:ovda%>s PxC ;
 ovdasii Postp ;
-ovddabeale Postp ;
-ovddabeal Postp ; !SUB
-ovddabealde Postp ;
-ovddabeallai Postp ;
-ovddabeallái Postp ;
-ovddabeali Postp ;
+ovdda#beale Postp ;
+ovdda#beal Postp ; !SUB
+ovdda#bealde Postp ;
+ovdda#beallai Postp ;
+ovdda#beallái Postp ;
+ovdda#beali Postp ;
 ovddal Postp ;
 ovddan Postp ; !SUB !SOUTH
 ovddas Postp ;
@@ -13538,18 +13543,18 @@ vuollai Postp ;
 vuollái Postp ;
 vuollel Pp ;
 vuollil Pp;
-vulobeal Pp ; !SUB
-vulobeale Pp ;
-vulobeali Pp ;
-vulobealde Pp ;
-vulobeallai Pp ;
-vulobeallái Pp ;
-vuolábeal Pp ; !SUB
-vuolábeale Pp ;
-vuolábeali Pp ;
-vuolábealde Pp ;
-vuolábeallai Pp ;
-vuolábeallái Pp ;
+vulo#beal Pp ; !SUB
+vulo#beale Pp ;
+vulo#beali Pp ;
+vulo#bealde Pp ;
+vulo#beallai Pp ;
+vulo#beallái Pp ;
+vuolá#beal Pp ; !SUB
+vuolá#beale Pp ;
+vuolá#beali Pp ;
+vuolá#bealde Pp ;
+vuolá#beallai Pp ;
+vuolá#beallái Pp ;
 vuostá Pp ;
 vuostái Pp ;
 !Distributed under the terms of the GNU General Public License version 2 
@@ -13645,21 +13650,21 @@ gávcci#   JUSTDUHAT ;
 ovcci#    JUSTDUHAT ;
 
 LEXICON 1TO9DUHAT
-ok0taduhát:ok'ta OKTADUHAT ;
-guokteduhát:guok't GUOKTEDUHAT ;
-nubbeduhát:nubb NUBBEDUHAT ;
-golbmaduhát:golbma GOLBMADUHAT ;
-njealljeduhát:njeallj GUOKTEDUHAT ;
-njealljaduhát+Num+Sg+Nom:njeallja#duhát%> K ;
-njealljaduhát+Num+Sg+Acc:njeallja#duhát%> K ;
-njealljaduhát+Num+Sg+Gen:njealja#duhát%> K ;
-njealljaduhát+Num+Sg+Acc:njeallja#duháh%>a K ;
-njealljaduhát+Num+Sg+Gen:njealja#duháh%>a K ;                                                                                                                                                                                                                                                                                                                                                                                                                     vihtta#duhát:vi VIHTTADUHAT ;
-guhttaduhát:gu VIHTTADUHAT ;
-čiežaduhát:či CIEZADUHAT ;
-giežaduhát:gi CIEZADUHAT ;
-gávcciduhát:gák'ci GAVCCIDUHAT ;
-ovcciduhát:ok'ci GAVCCIDUHAT ;
+ok0ta#duhát:ok'ta OKTADUHAT ;
+guokte#duhát:guok't GUOKTEDUHAT ;
+nubbe#duhát:nubb NUBBEDUHAT ;
+golbma#duhát:golbma GOLBMADUHAT ;
+njeallje#duhát:njeallj GUOKTEDUHAT ;
+njeallja#duhát+Num+Sg+Nom:njeallja#duhát%> K ;
+njeallja#duhát+Num+Sg+Acc:njeallja#duhát%> K ;
+njeallja#duhát+Num+Sg+Gen:njealja#duhát%> K ;
+njeallja#duhát+Num+Sg+Acc:njeallja#duháh%>a K ;
+njeallja#duhát+Num+Sg+Gen:njealja#duháh%>a K ;                                                                                                                                                                                                                                                                                                                                                                                                                     vihtta#duhát:vi VIHTTADUHAT ;
+guhtta#duhát:gu VIHTTADUHAT ;
+čieža#duhát:či CIEZADUHAT ;
+gieža#duhát:gi CIEZADUHAT ;
+gávcci#duhát:gák'ci GAVCCIDUHAT ;
+ovcci#duhát:ok'ci GAVCCIDUHAT ;
 
 
 
@@ -13675,30 +13680,30 @@ logi# DUHAT ;
 LEXICON O-LOGIF
 logi# JUSTDUHAT ;
 logi# DUHAT ;
-logiokta# JUSTDUHAT ;
-logiakta# JUSTDUHAT ;
-logiguokte# JUSTDUHAT ;
-logigolbma# JUSTDUHAT ;
-loginjeallje# JUSTDUHAT ;
-loginjeallja# JUSTDUHAT ;
-logivihtta# JUSTDUHAT ;
-logiguhtta# JUSTDUHAT ;
-logičieža# JUSTDUHAT ;
-logigieža# JUSTDUHAT ;
-logigávcci# JUSTDUHAT ;
-logiovcci# JUSTDUHAT ;
-logiokta# DUHAT ;
-logiakta# DUHAT ;
-logiguokte# DUHAT ;
-logigolbma# DUHAT ;
-loginjeallje# DUHAT ;
-loginjeallja# DUHAT ;
-logivihtta# DUHAT ;
-logiguhtta# DUHAT ;
-logičieža# DUHAT ;
-logigieža# DUHAT ;
-logigávcci# DUHAT ;
-logiovcci# DUHAT ;
+logi#okta# JUSTDUHAT ;
+logi#akta# JUSTDUHAT ;
+logi#guokte# JUSTDUHAT ;
+logi#golbma# JUSTDUHAT ;
+logi#njeallje# JUSTDUHAT ;
+logi#njeallja# JUSTDUHAT ;
+logi#vihtta# JUSTDUHAT ;
+logi#guhtta# JUSTDUHAT ;
+logi#čieža# JUSTDUHAT ;
+logi#gieža# JUSTDUHAT ;
+logi#gávcci# JUSTDUHAT ;
+logi#ovcci# JUSTDUHAT ;
+logi#okta# DUHAT ;
+logi#akta# DUHAT ;
+logi#guokte# DUHAT ;
+logi#golbma# DUHAT ;
+logi#njeallje# DUHAT ;
+logi#njeallja# DUHAT ;
+logi#vihtta# DUHAT ;
+logi#guhtta# DUHAT ;
+logi#čieža# DUHAT ;
+logi#gieža# DUHAT ;
+logi#gávcci# DUHAT ;
+logi#ovcci# DUHAT ;
 
 
 ! this lexicon is accessed only via other O-lexica, and not directly
@@ -13734,62 +13739,62 @@ gávcci# O-NL ;
 ovcci# O-NL ;
 
 LEXICON O-NL
-nuppelohkái# JUSTDUHAT ;
-nuppelohkái# DUHAT ;
-nuppelot# JUSTDUHAT ;
-nuppelot# DUHAT ;
-goalmmátlohkái# JUSTDUHAT ;
-goalmmátlohkái# DUHAT ;
-goalmmátlot# JUSTDUHAT ;
-goalmmátlot# DUHAT ;
-njealjátlohkái# JUSTDUHAT ;
-njealjátlohkái# DUHAT ;
-njealjátlot# JUSTDUHAT ;
-njealjátlot# DUHAT ;
-viđátlohkái# JUSTDUHAT ;
-viđátlohkái# DUHAT ;
-viđátlot# JUSTDUHAT ;
-viđátlot# DUHAT ;
-guđátlohkái# JUSTDUHAT ;
-guđátlohkái# DUHAT ;
-guđátlot# JUSTDUHAT ;
-guđátlot# DUHAT ;
-čihččetlohkái# JUSTDUHAT ;
-čihččetlohkái# DUHAT ;
-čihččetlot# JUSTDUHAT ;
-čihččetlot# DUHAT ;
-gávccátlohkái# JUSTDUHAT ;
-gávccátlohkái# DUHAT ;
-gávccátlot# JUSTDUHAT ;
-gávccátlot# DUHAT ;
-ovccátlohkái# JUSTDUHAT ;
-ovccátlohkái# DUHAT ;
-ovccátlot# JUSTDUHAT ;
-ovccátlot# DUHAT ;
-logátlohkái# JUSTDUHAT ;
-logátlohkái# DUHAT ;
-logátlot# JUSTDUHAT ;
-logátlot# DUHAT ;
+nuppe#lohkái# JUSTDUHAT ;
+nuppe#lohkái# DUHAT ;
+nuppe#lot# JUSTDUHAT ;
+nuppe#lot# DUHAT ;
+goalmmát#lohkái# JUSTDUHAT ;
+goalmmát#lohkái# DUHAT ;
+goalmmát#lot# JUSTDUHAT ;
+goalmmát#lot# DUHAT ;
+njealját#lohkái# JUSTDUHAT ;
+njealját#lohkái# DUHAT ;
+njealját#lot# JUSTDUHAT ;
+njealját#lot# DUHAT ;
+viđát#lohkái# JUSTDUHAT ;
+viđát#lohkái# DUHAT ;
+viđát#lot# JUSTDUHAT ;
+viđát#lot# DUHAT ;
+guđát#lohkái# JUSTDUHAT ;
+guđát#lohkái# DUHAT ;
+guđát#lot# JUSTDUHAT ;
+guđát#lot# DUHAT ;
+čihččet#lohkái# JUSTDUHAT ;
+čihččet#lohkái# DUHAT ;
+čihččet#lot# JUSTDUHAT ;
+čihččet#lot# DUHAT ;
+gávccát#lohkái# JUSTDUHAT ;
+gávccát#lohkái# DUHAT ;
+gávccát#lot# JUSTDUHAT ;
+gávccát#lot# DUHAT ;
+ovccát#lohkái# JUSTDUHAT ;
+ovccát#lohkái# DUHAT ;
+ovccát#lot# JUSTDUHAT ;
+ovccát#lot# DUHAT ;
+logát#lohkái# JUSTDUHAT ;
+logát#lohkái# DUHAT ;
+logát#lot# JUSTDUHAT ;
+logát#lot# DUHAT ;
 
 LEXICON O-NUPPELOHKAI
-nuppelohkái# DUHAT ;
-nuppelot# DUHAT ;
-goalmmátlohkái# DUHAT ;
-goalmmátlot# DUHAT ;
-njealjátlohkái# DUHAT ;
-njealjátlot# DUHAT ;
-viđátlohkái# DUHAT ;
-viđátlot# DUHAT ;
-guđátlohkái# DUHAT ;
-guđátlot# DUHAT ;
-čihččetlohkái# DUHAT ;
-čihččetlot# DUHAT ;
-gávccátlohkái# DUHAT ;
-gávccátlot# DUHAT ;
-ovccátlohkái# DUHAT ;
-ovccátlot# DUHAT ;
-logátlohkái# DUHAT ;
-logátlot# DUHAT ;
+nuppe#lohkái# DUHAT ;
+nuppe#lot# DUHAT ;
+goalmmát#lohkái# DUHAT ;
+goalmmát#lot# DUHAT ;
+njealját#lohkái# DUHAT ;
+njealját#lot# DUHAT ;
+viđát#lohkái# DUHAT ;
+viđát#lot# DUHAT ;
+guđát#lohkái# DUHAT ;
+guđát#lot# DUHAT ;
+čihččet#lohkái# DUHAT ;
+čihččet#lot# DUHAT ;
+gávccát#lohkái# DUHAT ;
+gávccát#lot# DUHAT ;
+ovccát#lohkái# DUHAT ;
+ovccát#lot# DUHAT ;
+logát#lohkái# DUHAT ;
+logát#lot# DUHAT ;
 
 
 ! Hundreds of thousands
@@ -13798,63 +13803,63 @@ LEXICON O-CUODI
 čuođi# JUSTDUHAT ;  ! 100000
 čuođi# DUHAT ;  ! 100000
 čuođi# O-OKTAF ;  ! 101000
-čuođiokta# JUSTDUHAT ;
-čuođiakta# JUSTDUHAT ;
-čuođiguokte# JUSTDUHAT ;
-čuođigolbma# JUSTDUHAT ;
-čuođinjeallje# JUSTDUHAT ;
-čuođinjeallja# JUSTDUHAT ;
-čuođivihtta# JUSTDUHAT ;
-čuođiguhtta# JUSTDUHAT ;
-čuođičieža# JUSTDUHAT ;
-čuođigieža# JUSTDUHAT ;
-čuođigávcci# JUSTDUHAT ;
-čuođiovcci# JUSTDUHAT ;
-čuođiokta# DUHAT ;
-čuođiakta# DUHAT ;
-čuođiguokte# DUHAT ;
-čuođigolbma# DUHAT ;
-čuođinjeallje# DUHAT ;
-čuođinjeallja# DUHAT ;
-čuođivihtta# DUHAT ;
-čuođiguhtta# DUHAT ;
-čuođičieža# DUHAT ;
-čuođigieža# DUHAT ;
-čuođigávcci# DUHAT ;
-čuođiovcci# DUHAT ;
+čuođi#okta# JUSTDUHAT ;
+čuođi#akta# JUSTDUHAT ;
+čuođi#guokte# JUSTDUHAT ;
+čuođi#golbma# JUSTDUHAT ;
+čuođi#njeallje# JUSTDUHAT ;
+čuođi#njeallja# JUSTDUHAT ;
+čuođi#vihtta# JUSTDUHAT ;
+čuođi#guhtta# JUSTDUHAT ;
+čuođi#čieža# JUSTDUHAT ;
+čuođi#gieža# JUSTDUHAT ;
+čuođi#gávcci# JUSTDUHAT ;
+čuođi#ovcci# JUSTDUHAT ;
+čuođi#okta# DUHAT ;
+čuođi#akta# DUHAT ;
+čuođi#guokte# DUHAT ;
+čuođi#golbma# DUHAT ;
+čuođi#njeallje# DUHAT ;
+čuođi#njeallja# DUHAT ;
+čuođi#vihtta# DUHAT ;
+čuođi#guhtta# DUHAT ;
+čuođi#čieža# DUHAT ;
+čuođi#gieža# DUHAT ;
+čuođi#gávcci# DUHAT ;
+čuođi#ovcci# DUHAT ;
 čuođi# O-LOGIF ; ! 110000, 113000, ...
 čuođi# O-2TO9LOG ;  ! 120000, 123000, ...
 čuođi# O-NUPPELOT ; ! 115000, ...
-oktačuohti# JUSTDUHAT ;  ! 100000
-oktačuohti# DUHAT ;  ! 100000
-oktačuohti# O-OKTAF ;  ! 101000
-oktačuohtiokta# JUSTDUHAT ;
-oktačuohtiakta# JUSTDUHAT ;
-oktačuohtiguokte# JUSTDUHAT ;
-oktačuohtigolbma# JUSTDUHAT ;
-oktačuohtinjeallje# JUSTDUHAT ;
-oktačuohtinjeallja# JUSTDUHAT ;
-oktačuohtivihtta# JUSTDUHAT ;
-oktačuohtiguhtta# JUSTDUHAT ;
-oktačuohtičieža# JUSTDUHAT ;
-oktačuohtigieža# JUSTDUHAT ;
-oktačuohtigávcci# JUSTDUHAT ;
-oktačuohtiovcci# JUSTDUHAT ;
-oktačuohtiokta# DUHAT ;
-oktačuohtiakta# DUHAT ;
-oktačuohtiguokte# DUHAT ;
-oktačuohtigolbma# DUHAT ;
-oktačuohtinjeallje# DUHAT ;
-oktačuohtinjeallja# DUHAT ;
-oktačuohtivihtta# DUHAT ;
-oktačuohtiguhtta# DUHAT ;
-oktačuohtičieža# DUHAT ;
-oktačuohtigieža# DUHAT ;
-oktačuohtigávcci# DUHAT ;
-oktačuohtiovcci# DUHAT ;
-oktačuohti# O-LOGIF ; ! 110000, 113000, ...
-oktačuohti# O-2TO9LOG ;  ! 120000, 123000, ...
-oktačuohti# O-NUPPELOT ; ! 115000, ...
+okta#čuohti# JUSTDUHAT ;  ! 100000
+okta#čuohti# DUHAT ;  ! 100000
+okta#čuohti# O-OKTAF ;  ! 101000
+okta#čuohti#okta# JUSTDUHAT ;
+okta#čuohti#akta# JUSTDUHAT ;
+okta#čuohti#guokte# JUSTDUHAT ;
+okta#čuohti#golbma# JUSTDUHAT ;
+okta#čuohti#njeallje# JUSTDUHAT ;
+okta#čuohti#njeallja# JUSTDUHAT ;
+okta#čuohti#vihtta# JUSTDUHAT ;
+okta#čuohti#guhtta# JUSTDUHAT ;
+okta#čuohti#čieža# JUSTDUHAT ;
+okta#čuohti#gieža# JUSTDUHAT ;
+okta#čuohti#gávcci# JUSTDUHAT ;
+okta#čuohti#ovcci# JUSTDUHAT ;
+okta#čuohti#okta# DUHAT ;
+okta#čuohti#akta# DUHAT ;
+okta#čuohti#guokte# DUHAT ;
+okta#čuohti#golbma# DUHAT ;
+okta#čuohti#njeallje# DUHAT ;
+okta#čuohti#njeallja# DUHAT ;
+okta#čuohti#vihtta# DUHAT ;
+okta#čuohti#guhtta# DUHAT ;
+okta#čuohti#čieža# DUHAT ;
+okta#čuohti#gieža# DUHAT ;
+okta#čuohti#gávcci# DUHAT ;
+okta#čuohti#ovcci# DUHAT ;
+okta#čuohti# O-LOGIF ; ! 110000, 113000, ...
+okta#čuohti# O-2TO9LOG ;  ! 120000, 123000, ...
+okta#čuohti# O-NUPPELOT ; ! 115000, ...
 !Troms:
 čuohte# JUSTDUHAT ;
 čuohte# DUHAT ;
@@ -13862,30 +13867,30 @@ oktačuohti# O-NUPPELOT ; ! 115000, ...
 čuohti# JUSTDUHAT ;  ! 100000
 čuohti# DUHAT ;  ! 100000
 čuohti# O-OKTAF ;  ! 101000
-čuohtiokta# JUSTDUHAT ;
-čuohtiakta# JUSTDUHAT ;
-čuohtiguokte# JUSTDUHAT ;
-čuohtigolbma# JUSTDUHAT ;
-čuohtinjeallje# JUSTDUHAT ;
-čuohtinjeallja# JUSTDUHAT ;
-čuohtivihtta# JUSTDUHAT ;
-čuohtiguhtta# JUSTDUHAT ;
-čuohtičieža# JUSTDUHAT ;
-čuohtigieža# JUSTDUHAT ;
-čuohtigávcci# JUSTDUHAT ;
-čuohtiovcci# JUSTDUHAT ;
-čuohtiokta# DUHAT ;
-čuohtiakta# DUHAT ;
-čuohtiguokte# DUHAT ;
-čuohtigolbma# DUHAT ;
-čuohtinjeallje# DUHAT ;
-čuohtinjeallja# DUHAT ;
-čuohtivihtta# DUHAT ;
-čuohtiguhtta# DUHAT ;
-čuohtičieža# DUHAT ;
-čuohtigieža# DUHAT ;
-čuohtigávcci# DUHAT ;
-čuohtiovcci# DUHAT ;
+čuohti#okta# JUSTDUHAT ;
+čuohti#akta# JUSTDUHAT ;
+čuohti#guokte# JUSTDUHAT ;
+čuohti#golbma# JUSTDUHAT ;
+čuohti#njeallje# JUSTDUHAT ;
+čuohti#njeallja# JUSTDUHAT ;
+čuohti#vihtta# JUSTDUHAT ;
+čuohti#guhtta# JUSTDUHAT ;
+čuohti#čieža# JUSTDUHAT ;
+čuohti#gieža# JUSTDUHAT ;
+čuohti#gávcci# JUSTDUHAT ;
+čuohti#ovcci# JUSTDUHAT ;
+čuohti#okta# DUHAT ;
+čuohti#akta# DUHAT ;
+čuohti#guokte# DUHAT ;
+čuohti#golbma# DUHAT ;
+čuohti#njeallje# DUHAT ;
+čuohti#njeallja# DUHAT ;
+čuohti#vihtta# DUHAT ;
+čuohti#guhtta# DUHAT ;
+čuohti#čieža# DUHAT ;
+čuohti#gieža# DUHAT ;
+čuohti#gávcci# DUHAT ;
+čuohti#ovcci# DUHAT ;
 čuohti# O-LOGIF ; ! 110000, 113000, ...
 čuohti# O-2TO9LOG ;  ! 120000, 123000, ...
 čuohti# O-NUPPELOT ; ! 115000, ...
@@ -13906,30 +13911,30 @@ LEXICON O-GCUO
 čuođi# JUSTDUHAT ;  ! 100000
 čuođi# DUHAT ;  ! 100000
 čuođi# O-OKTAF ;  ! 101000
-čuođiokta# JUSTDUHAT ;
-čuođiakta# JUSTDUHAT ;
-čuođiguokte# JUSTDUHAT ;
-čuođigolbma# JUSTDUHAT ;
-čuođinjeallje# JUSTDUHAT ;
-čuođinjeallja# JUSTDUHAT ;
-čuođivihtta# JUSTDUHAT ;
-čuođiguhtta# JUSTDUHAT ;
-čuođičieža# JUSTDUHAT ;
-čuođigieža# JUSTDUHAT ;
-čuođigávcci# JUSTDUHAT ;
-čuođiovcci# JUSTDUHAT ;
-čuođiokta# DUHAT ;
-čuođiakta# DUHAT ;
-čuođiguokte# DUHAT ;
-čuođigolbma# DUHAT ;
-čuođinjeallje# DUHAT ;
-čuođinjeallja# DUHAT ;
-čuođivihtta# DUHAT ;
-čuođiguhtta# DUHAT ;
-čuođičieža# DUHAT ;
-čuođigieža# DUHAT ;
-čuođigávcci# DUHAT ;
-čuođiovcci# DUHAT ;
+čuođi#okta# JUSTDUHAT ;
+čuođi#akta# JUSTDUHAT ;
+čuođi#guokte# JUSTDUHAT ;
+čuođi#golbma# JUSTDUHAT ;
+čuođi#njeallje# JUSTDUHAT ;
+čuođi#njeallja# JUSTDUHAT ;
+čuođi#vihtta# JUSTDUHAT ;
+čuođi#guhtta# JUSTDUHAT ;
+čuođi#čieža# JUSTDUHAT ;
+čuođi#gieža# JUSTDUHAT ;
+čuođi#gávcci# JUSTDUHAT ;
+čuođi#ovcci# JUSTDUHAT ;
+čuođi#okta# DUHAT ;
+čuođi#akta# DUHAT ;
+čuođi#guokte# DUHAT ;
+čuođi#golbma# DUHAT ;
+čuođi#njeallje# DUHAT ;
+čuođi#njeallja# DUHAT ;
+čuođi#vihtta# DUHAT ;
+čuođi#guhtta# DUHAT ;
+čuođi#čieža# DUHAT ;
+čuođi#gieža# DUHAT ;
+čuođi#gávcci# DUHAT ;
+čuođi#ovcci# DUHAT ;
 čuođi# O-LOGIF ; ! 110000, 113000, ...
 čuođi# O-2TO9LOG ;  ! 120000, 123000, ...
 čuođi# O-NUPPELOT ; ! 115000, ...
@@ -13967,63 +13972,63 @@ gávcci# NLX ;
 ovcci# NLX ;
 
 LEXICON NLX
-nuppelohkái# CUODI ;
-nuppelohkái# 2TO9CUO ;
-nuppelot# CUODI ;
-nuppelot# 2TO9CUO ;
-goalmmátlohkái# CUODI ;
-goalmmátlohkái# 2TO9CUO ;
-goalmmátlot# CUODI ;
-goalmmátlot# 2TO9CUO ;
-njealjátlohkái# CUODI ;
-njealjátlohkái# 2TO9CUO ;
-njealjátlot# CUODI ;
-njealjátlot# 2TO9CUO ;
-viđátlohkái# CUODI ;
-viđátlohkái# 2TO9CUO ;
-viđátlot# CUODI ;
-viđátlot# 2TO9CUO ;
-guđátlohkái# CUODI ;
-guđátlohkái# 2TO9CUO ;
-guđátlot# CUODI ;
-guđátlot# 2TO9CUO ;
-čihččetlohkái# CUODI ;
-čihččetlohkái# 2TO9CUO ;
-čihččetlot# CUODI ;
-čihččetlot# 2TO9CUO ;
-gávccátlohkái# CUODI ;
-gávccátlohkái# 2TO9CUO ;
-gávccátlot# CUODI ;
-gávccátlot# 2TO9CUO ;
-ovccátlohkái# CUODI ;
-ovccátlohkái# 2TO9CUO ;
-ovccátlot# CUODI ;
-ovccátlot# 2TO9CUO ;
-logátlohkái# CUODI ;
-logátlohkái# 2TO9CUO ;
-logátlot# CUODI ;
-logátlot# 2TO9CUO ;
+nuppe#lohkái# CUODI ;
+nuppe#lohkái# 2TO9CUO ;
+nuppe#lot# CUODI ;
+nuppe#lot# 2TO9CUO ;
+goalmmát#lohkái# CUODI ;
+goalmmát#lohkái# 2TO9CUO ;
+goalmmát#lot# CUODI ;
+goalmmát#lot# 2TO9CUO ;
+njealját#lohkái# CUODI ;
+njealját#lohkái# 2TO9CUO ;
+njealját#lot# CUODI ;
+njealját#lot# 2TO9CUO ;
+viđát#lohkái# CUODI ;
+viđát#lohkái# 2TO9CUO ;
+viđát#lot# CUODI ;
+viđát#lot# 2TO9CUO ;
+guđát#lohkái# CUODI ;
+guđát#lohkái# 2TO9CUO ;
+guđát#lot# CUODI ;
+guđát#lot# 2TO9CUO ;
+čihččet#lohkái# CUODI ;
+čihččet#lohkái# 2TO9CUO ;
+čihččet#lot# CUODI ;
+čihččet#lot# 2TO9CUO ;
+gávccát#lohkái# CUODI ;
+gávccát#lohkái# 2TO9CUO ;
+gávccát#lot# CUODI ;
+gávccát#lot# 2TO9CUO ;
+ovccát#lohkái# CUODI ;
+ovccát#lohkái# 2TO9CUO ;
+ovccát#lot# CUODI ;
+ovccát#lot# 2TO9CUO ;
+logát#lohkái# CUODI ;
+logát#lohkái# 2TO9CUO ;
+logát#lot# CUODI ;
+logát#lot# 2TO9CUO ;
 
 
 LEXICON NUPPELOHKAICUODI
-nuppelohkái# CUODICASE ;
-nuppelot# CUODICASE ;
-goalmmátlohkái# CUODICASE ;
-goalmmátlot# CUODICASE ;
-njealjátlohkái# CUODICASE ;
-njealjátlot# CUODICASE ;
-viđátlohkái# CUODICASE ;
-viđátlot# CUODICASE ;
-guđátlohkái# CUODICASE ;
-guđátlot# CUODICASE ;
-čihččetlohkái# CUODICASE ;
-čihččetlot# CUODICASE ;
-gávccátlohkái# CUODICASE ;
-gávccátlot# CUODICASE ;
-ovccátlohkái# CUODICASE ;
-ovccátlot# CUODICASE ;
-logátlohkái# CUODICASE ;
-logátlot# CUODICASE ;
+nuppe#lohkái# CUODICASE ;
+nuppe#lot# CUODICASE ;
+goalmmát#lohkái# CUODICASE ;
+goalmmát#lot# CUODICASE ;
+njealját#lohkái# CUODICASE ;
+njealját#lot# CUODICASE ;
+viđát#lohkái# CUODICASE ;
+viđát#lot# CUODICASE ;
+guđát#lohkái# CUODICASE ;
+guđát#lot# CUODICASE ;
+čihččet#lohkái# CUODICASE ;
+čihččet#lot# CUODICASE ;
+gávccát#lohkái# CUODICASE ;
+gávccát#lot# CUODICASE ;
+ovccát#lohkái# CUODICASE ;
+ovccát#lot# CUODICASE ;
+logát#lohkái# CUODICASE ;
+logát#lot# CUODICASE ;
 
 
 ! Underduhat, the numerals under 1000
@@ -14044,9 +14049,9 @@ LOHKI ;
 
 LEXICON OKTAF
 ok0ta:ok'ta OKTA ;
-ok0talohki:ok'ta OKTALOHKI ;
+ok0ta#lohki:ok'ta OKTALOHKI ;
 akta+Num+Sg+Nom:akta%> K ;
-aktalohki+Num+Sg+Nom:akta#lohki%> K ;
+akta#lohki+Num+Sg+Nom:akta#lohki%> K ;
 vuosttas+A+Ord:vuosttas VUOSTTAS ;
 vuosttaš+A+Ord:vuosttaž VUOSTTAS ;
 ! K ; this lead to "go +Clt" as an analysis, and was removed.
@@ -14088,114 +14093,114 @@ ovccis:ok'cis OVCCIS ;
 
 
 LEXICON 11TO99F
-ok0tanuppelohkái:ok'ta OKTANUPPELOHKAI ;
-ok0tanuppelohkái+Num+Sg+Loc:okta%>#nuppe#logi%>s K ; !time
-ok0tanuppelohkái+Num+Sg+Ill:okta%>#nuppe#lohká%>j K ; !time
-ok0tanuppelohkái+Num+Sg+Attr:okta%>#nuppe#logi%> K ; !time
-ok0tagoalmmátlohkái:ok'ta OKTAGOALMMATLOHKAI ;
-ok0tanjealjátlohkái:ok'ta OKTANJEALJATLOHKAI ;
-ok0taviđátlohkái:ok'ta OKTAVIDATLOHKAI ;
-ok0taguđátlohkái:ok'ta OKTAGUDATLOHKAI ;
-ok0tačihččetlohkái:ok'ta OKTACIHCCETLOHKAI ;
-ok0tagávccátlohkái:ok'ta OKTAGAVCCATLOHKAI ;
-ok0taovccátlohkái:ok'ta OKTAOVCCATLOHKAI ;
-ok0talogátlohkái:ok'ta OKTALOGATLOHKAI ;
-guok0tenuppelohkái:guok't GUOKTENUPPELOHKAI ;
-guok0tenuppelohkái+Num+Sg+Loc:guokte%>#nuppe#logi%>s K ; !time
-guok0tenuppelohkái+Num+Sg+Ill:guokte%>#nuppe#lohká%>j K ; !time
-guok0tenuppelohkái+Num+Sg+Attr:guokte%>#nuppe#logi%> K ; !time
-guok0tegoalmmátlohkái:guok't GUOKTEGOALMMATLOHKAI ;
-guok0tenjealjátlohkái:guok't GUOKTENJEALJATLOHKAI ;
-guok0teviđátlohkái:guok't GUOKTEVIDATLOHKAI ;
-guok0teguđátlohkái:guok't GUOKTEGUDATLOHKAI ;
-guok0tečihččetlohkái:guok't GUOKTECIHCCETLOHKAI ;
-guok0tegávccátlohkái:guok't GUOKTEGAVCCATLOHKAI ;
-guok0teovccátlohkái:guok't GUOKTEOVCCATLOHKAI ;
-guok0telogátlohkái:guok't GUOKTELOGATLOHKAI ;
-nubbenuppelohkái:nubb NUBBENUPPELOHKAI ;
-nubbenuppelohkái+Num+Sg+Loc:nubbe%>#nuppe#logi%>s K ; !time
-nubbenuppelohkái+Num+Sg+Ill:nubbe%>#nuppe#lohká%>j K ; !time
-nubbenuppelohkái+Num+Sg+Attr:nubbe%>#nuppe#logi%> K ; !time
-nubbegoalmmátlohkái:nubb NUBBEGOALMMATLOHKAI ;
-nubbenjealjátlohkái:nubb NUBBENJEALJATLOHKAI ;
-nubbeviđátlohkái:nubb NUBBEVIDATLOHKAI ;
-nubbeguđátlohkái:nubb NUBBEGUDATLOHKAI ;
-nubbečihččetlohkái:nubb NUBBECIHCCETLOHKAI ;
-nubbegávccátlohkái:nubb NUBBEGAVCCATLOHKAI ;
-nubbeovccátlohkái:nubb NUBBEOVCCATLOHKAI ;
-nubbelogátlohkái:nubb NUBBELOGATLOHKAI ;
-golbmanuppelohkái:golbma GOLBMANUPPELOHKAI ;
-golbmagoalmmátlohkái:golbma GOLBMAGOALMMATLOHKAI ;
-golbmanjealjátlohkái:golbma GOLBMANJEALJATLOHKAI ;
-golbmaviđátlohkái:golbma GOLBMAVIDATLOHKAI ;
-golbmaguđátlohkái:golbma GOLBMAGUDATLOHKAI ;
-golbmačihččetlohkái:golbma GOLBMACIHCCETLOHKAI ;
-golbmagávccátlohkái:golbma GOLBMAGAVCCATLOHKAI ;
-golbmaovccátlohkái:golbma GOLBMAOVCCATLOHKAI ;
-golbmalogátlohkái:golbma GOLBMALOGATLOHKAI ;
-njealljenuppelohkái:njeallj GUOKTENUPPELOHKAI ;
-njealljegoalmmátlohkái:njeallj GUOKTEGOALMMATLOHKAI ;
-njealljenjealjátlohkái:njeallj GUOKTENJEALJATLOHKAI ;
-njealljeviđátlohkái:njeallj GUOKTEVIDATLOHKAI ;
-njealljeguđátlohkái:njeallj GUOKTEGUDATLOHKAI ;
-njeallječihččetlohkái:njeallj GUOKTECIHCCETLOHKAI ;
-njealljegávccátlohkái:njeallj GUOKTEGAVCCATLOHKAI ;
-njealljeovccátlohkái:njeallj GUOKTEOVCCATLOHKAI ;
-njealljelogátlohkái:njeallj GUOKTELOGATLOHKAI ;
-vihttanuppelohkái:vi VIHTTANUPPELOHKAI ;
-vihttagoalmmátlohkái:vi VIHTTAGOALMMATLOHKAI ;
-vihttanjealjátlohkái:vi VIHTTANJEALJATLOHKAI ;
-vihttaviđátlohkái:vi VIHTTAVIDATLOHKAI ;
-vihttaguđátlohkái:vi VIHTTAGUDATLOHKAI ;
-vihttačihččetlohkái:vi VIHTTACIHCCETLOHKAI ;
-vihttagávccátlohkái:vi VIHTTAGAVCCATLOHKAI ;
-vihttaovccátlohkái:vi VIHTTAOVCCATLOHKAI ;
-vihttalogátlohkái:vi VIHTTALOGATLOHKAI ;
-guhttanuppelohkái:gu VIHTTANUPPELOHKAI ;
-guhttagoalmmátlohkái:gu VIHTTAGOALMMATLOHKAI ;
-guhttanjealjátlohkái:gu VIHTTANJEALJATLOHKAI ;
-guhttaviđátlohkái:gu VIHTTAVIDATLOHKAI ;
-guhttaguđátlohkái:gu VIHTTAGUDATLOHKAI ;
-guhttačihččetlohkái:gu VIHTTACIHCCETLOHKAI ;
-guhttagávccátlohkái:gu VIHTTAGAVCCATLOHKAI ;
-guhttaovccátlohkái:gu VIHTTAOVCCATLOHKAI ;
-guhttalogátlohkái:gu VIHTTALOGATLOHKAI ;
-čiežanuppelohkái:či CIEZANUPPELOHKAI ;
-čiežagoalmmátlohkái:či CIEZAGOALMMATLOHKAI ;
-čiežanjealjátlohkái:či CIEZANJEALJATLOHKAI ;
-čiežaviđátlohkái:či CIEZAVIDATLOHKAI ;
-čiežaguđátlohkái:či CIEZAGUDATLOHKAI ;
-čiežačihččetlohkái:či CIEZACIHCCETLOHKAI ;
-čiežagávccátlohkái:či CIEZAGAVCCATLOHKAI ;
-čiežaovccátlohkái:či CIEZAOVCCATLOHKAI ;
-čiežalogátlohkái:či CIEZALOGATLOHKAI ;
-giežanuppelohkái:gi CIEZANUPPELOHKAI ;
-giežagoalmmátlohkái:gi CIEZAGOALMMATLOHKAI ;
-giežanjealjátlohkái:gi CIEZANJEALJATLOHKAI ;
-giežaviđátlohkái:gi CIEZAVIDATLOHKAI ;
-giežaguđátlohkái:gi CIEZAGUDATLOHKAI ;
-giežagihččetlohkái:gi CIEZACIHCCETLOHKAI ;
-giežagávccátlohkái:gi CIEZAGAVCCATLOHKAI ;
-giežaovccátlohkái:gi CIEZAOVCCATLOHKAI ;
-giežalogátlohkái:gi CIEZALOGATLOHKAI ;
-gávccinuppelohkái:gák'ci GAVCCINUPPELOHKAI ;
-gávccigoalmmátlohkái:gák'ci GAVCCIGOALMMATLOHKAI ;
-gávccinjealjátlohkái:gák'ci GAVCCINJEALJATLOHKAI ;
-gávcciviđátlohkái:gák'ci GAVCCIVIDATLOHKAI ;
-gávcciguđátlohkái:gák'ci GAVCCIGUDATLOHKAI ;
-gávccičihččetlohkái:gák'ci GAVCCICIHCCETLOHKAI ;
-gávccigávccátlohkái:gák'ci GAVCCIGAVCCATLOHKAI ;
-gávcciovccátlohkái:gák'ci GAVCCIOVCCATLOHKAI ;
-gávccilogátlohkái:gák'ci GAVCCILOGATLOHKAI ;
-ovccinuppelohkái:ok'ci GAVCCINUPPELOHKAI ;
-ovccigoalmmátlohkái:ok'ci GAVCCIGOALMMATLOHKAI ;
-ovccinjealjátlohkái:ok'ci GAVCCINJEALJATLOHKAI ;
-ovcciviđátlohkái:ok'ci GAVCCIVIDATLOHKAI ;
-ovcciguđátlohkái:ok'ci GAVCCIGUDATLOHKAI ;
-ovccičihččetlohkái:ok'ci GAVCCICIHCCETLOHKAI ;
-ovccigávccátlohkái:ok'ci GAVCCIGAVCCATLOHKAI ;
-ovcciovccátlohkái:ok'ci GAVCCIOVCCATLOHKAI ;
-ovccilogátlohkái:ok'ci GAVCCILOGATLOHKAI ;
+ok0ta#nuppe#lohkái:ok'ta OKTANUPPELOHKAI ;
+ok0ta#nuppe#lohkái+Num+Sg+Loc:okta%>#nuppe#logi%>s K ; !time
+ok0ta#nuppe#lohkái+Num+Sg+Ill:okta%>#nuppe#lohká%>j K ; !time
+ok0ta#nuppe#lohkái+Num+Sg+Attr:okta%>#nuppe#logi%> K ; !time
+ok0ta#goalmmát#lohkái:ok'ta OKTAGOALMMATLOHKAI ;
+ok0ta#njealját#lohkái:ok'ta OKTANJEALJATLOHKAI ;
+ok0ta#viđát#lohkái:ok'ta OKTAVIDATLOHKAI ;
+ok0ta#guđát#lohkái:ok'ta OKTAGUDATLOHKAI ;
+ok0ta#čihččet#lohkái:ok'ta OKTACIHCCETLOHKAI ;
+ok0ta#gávccát#lohkái:ok'ta OKTAGAVCCATLOHKAI ;
+ok0ta#ovccát#lohkái:ok'ta OKTAOVCCATLOHKAI ;
+ok0ta#logát#lohkái:ok'ta OKTALOGATLOHKAI ;
+guok0te#nuppe#lohkái:guok't GUOKTENUPPELOHKAI ;
+guok0te#nuppe#lohkái+Num+Sg+Loc:guokte%>#nuppe#logi%>s K ; !time
+guok0te#nuppe#lohkái+Num+Sg+Ill:guokte%>#nuppe#lohká%>j K ; !time
+guok0te#nuppe#lohkái+Num+Sg+Attr:guokte%>#nuppe#logi%> K ; !time
+guok0te#goalmmát#lohkái:guok't GUOKTEGOALMMATLOHKAI ;
+guok0te#njealját#lohkái:guok't GUOKTENJEALJATLOHKAI ;
+guok0te#viđát#lohkái:guok't GUOKTEVIDATLOHKAI ;
+guok0te#guđát#lohkái:guok't GUOKTEGUDATLOHKAI ;
+guok0te#čihččet#lohkái:guok't GUOKTECIHCCETLOHKAI ;
+guok0te#gávccát#lohkái:guok't GUOKTEGAVCCATLOHKAI ;
+guok0te#ovccát#lohkái:guok't GUOKTEOVCCATLOHKAI ;
+guok0te#logát#lohkái:guok't GUOKTELOGATLOHKAI ;
+nubbe#nuppe#lohkái:nubb NUBBENUPPELOHKAI ;
+nubbe#nuppe#lohkái+Num+Sg+Loc:nubbe%>#nuppe#logi%>s K ; !time
+nubbe#nuppe#lohkái+Num+Sg+Ill:nubbe%>#nuppe#lohká%>j K ; !time
+nubbe#nuppe#lohkái+Num+Sg+Attr:nubbe%>#nuppe#logi%> K ; !time
+nubbe#goalmmát#lohkái:nubb NUBBEGOALMMATLOHKAI ;
+nubbe#njealját#lohkái:nubb NUBBENJEALJATLOHKAI ;
+nubbe#viđát#lohkái:nubb NUBBEVIDATLOHKAI ;
+nubbe#guđát#lohkái:nubb NUBBEGUDATLOHKAI ;
+nubbe#čihččet#lohkái:nubb NUBBECIHCCETLOHKAI ;
+nubbe#gávccát#lohkái:nubb NUBBEGAVCCATLOHKAI ;
+nubbe#ovccát#lohkái:nubb NUBBEOVCCATLOHKAI ;
+nubbe#logát#lohkái:nubb NUBBELOGATLOHKAI ;
+golbma#nuppe#lohkái:golbma GOLBMANUPPELOHKAI ;
+golbma#goalmmát#lohkái:golbma GOLBMAGOALMMATLOHKAI ;
+golbma#njealját#lohkái:golbma GOLBMANJEALJATLOHKAI ;
+golbma#viđát#lohkái:golbma GOLBMAVIDATLOHKAI ;
+golbma#guđát#lohkái:golbma GOLBMAGUDATLOHKAI ;
+golbma#čihččet#lohkái:golbma GOLBMACIHCCETLOHKAI ;
+golbma#gávccát#lohkái:golbma GOLBMAGAVCCATLOHKAI ;
+golbma#ovccát#lohkái:golbma GOLBMAOVCCATLOHKAI ;
+golbma#logát#lohkái:golbma GOLBMALOGATLOHKAI ;
+njeallje#nuppe#lohkái:njeallj GUOKTENUPPELOHKAI ;
+njeallje#goalmmát#lohkái:njeallj GUOKTEGOALMMATLOHKAI ;
+njeallje#njealját#lohkái:njeallj GUOKTENJEALJATLOHKAI ;
+njeallje#viđát#lohkái:njeallj GUOKTEVIDATLOHKAI ;
+njeallje#guđát#lohkái:njeallj GUOKTEGUDATLOHKAI ;
+njeallje#čihččet#lohkái:njeallj GUOKTECIHCCETLOHKAI ;
+njeallje#gávccát#lohkái:njeallj GUOKTEGAVCCATLOHKAI ;
+njeallje#ovccát#lohkái:njeallj GUOKTEOVCCATLOHKAI ;
+njeallje#logát#lohkái:njeallj GUOKTELOGATLOHKAI ;
+vihtta#nuppe#lohkái:vi VIHTTANUPPELOHKAI ;
+vihtta#goalmmát#lohkái:vi VIHTTAGOALMMATLOHKAI ;
+vihtta#njealját#lohkái:vi VIHTTANJEALJATLOHKAI ;
+vihtta#viđát#lohkái:vi VIHTTAVIDATLOHKAI ;
+vihtta#guđát#lohkái:vi VIHTTAGUDATLOHKAI ;
+vihtta#čihččet#lohkái:vi VIHTTACIHCCETLOHKAI ;
+vihtta#gávccát#lohkái:vi VIHTTAGAVCCATLOHKAI ;
+vihtta#ovccát#lohkái:vi VIHTTAOVCCATLOHKAI ;
+vihtta#logát#lohkái:vi VIHTTALOGATLOHKAI ;
+guhtta#nuppe#lohkái:gu VIHTTANUPPELOHKAI ;
+guhtta#goalmmát#lohkái:gu VIHTTAGOALMMATLOHKAI ;
+guhtta#njealját#lohkái:gu VIHTTANJEALJATLOHKAI ;
+guhtta#viđát#lohkái:gu VIHTTAVIDATLOHKAI ;
+guhtta#guđát#lohkái:gu VIHTTAGUDATLOHKAI ;
+guhtta#čihččet#lohkái:gu VIHTTACIHCCETLOHKAI ;
+guhtta#gávccát#lohkái:gu VIHTTAGAVCCATLOHKAI ;
+guhtta#ovccát#lohkái:gu VIHTTAOVCCATLOHKAI ;
+guhtta#logát#lohkái:gu VIHTTALOGATLOHKAI ;
+čieža#nuppe#lohkái:či CIEZANUPPELOHKAI ;
+čieža#goalmmát#lohkái:či CIEZAGOALMMATLOHKAI ;
+čieža#njealját#lohkái:či CIEZANJEALJATLOHKAI ;
+čieža#viđát#lohkái:či CIEZAVIDATLOHKAI ;
+čieža#guđát#lohkái:či CIEZAGUDATLOHKAI ;
+čieža#čihččet#lohkái:či CIEZACIHCCETLOHKAI ;
+čieža#gávccát#lohkái:či CIEZAGAVCCATLOHKAI ;
+čieža#ovccát#lohkái:či CIEZAOVCCATLOHKAI ;
+čieža#logát#lohkái:či CIEZALOGATLOHKAI ;
+gieža#nuppe#lohkái:gi CIEZANUPPELOHKAI ;
+gieža#goalmmát#lohkái:gi CIEZAGOALMMATLOHKAI ;
+gieža#njealját#lohkái:gi CIEZANJEALJATLOHKAI ;
+gieža#viđát#lohkái:gi CIEZAVIDATLOHKAI ;
+gieža#guđát#lohkái:gi CIEZAGUDATLOHKAI ;
+gieža#gihččet#lohkái:gi CIEZACIHCCETLOHKAI ;
+gieža#gávccát#lohkái:gi CIEZAGAVCCATLOHKAI ;
+gieža#ovccát#lohkái:gi CIEZAOVCCATLOHKAI ;
+gieža#logát#lohkái:gi CIEZALOGATLOHKAI ;
+gávcci#nuppe#lohkái:gák'ci GAVCCINUPPELOHKAI ;
+gávcci#goalmmát#lohkái:gák'ci GAVCCIGOALMMATLOHKAI ;
+gávcci#njealját#lohkái:gák'ci GAVCCINJEALJATLOHKAI ;
+gávcci#viđát#lohkái:gák'ci GAVCCIVIDATLOHKAI ;
+gávcci#guđát#lohkái:gák'ci GAVCCIGUDATLOHKAI ;
+gávcci#čihččet#lohkái:gák'ci GAVCCICIHCCETLOHKAI ;
+gávcci#gávccát#lohkái:gák'ci GAVCCIGAVCCATLOHKAI ;
+gávcci#ovccát#lohkái:gák'ci GAVCCIOVCCATLOHKAI ;
+gávcci#logát#lohkái:gák'ci GAVCCILOGATLOHKAI ;
+ovcci#nuppe#lohkái:ok'ci GAVCCINUPPELOHKAI ;
+ovcci#goalmmát#lohkái:ok'ci GAVCCIGOALMMATLOHKAI ;
+ovcci#njealját#lohkái:ok'ci GAVCCINJEALJATLOHKAI ;
+ovcci#viđát#lohkái:ok'ci GAVCCIVIDATLOHKAI ;
+ovcci#guđát#lohkái:ok'ci GAVCCIGUDATLOHKAI ;
+ovcci#čihččet#lohkái:ok'ci GAVCCICIHCCETLOHKAI ;
+ovcci#gávccát#lohkái:ok'ci GAVCCIGAVCCATLOHKAI ;
+ovcci#ovccát#lohkái:ok'ci GAVCCIOVCCATLOHKAI ;
+ovcci#logát#lohkái:ok'ci GAVCCILOGATLOHKAI ;
 okta# NUPPELOHKAI ;
 guokte# NUPPELOHKAI ;
 golbma# NUPPELOHKAI ;
@@ -14221,7 +14226,7 @@ LEXICON BARELOGIF
 logi: LOGI ;
 logát+A+Ord:logád VUOSTTAS ;
 logis:loh'kis OVCCIS ;
-máŋgalogis:máŋga#loh'kis OVCCIS ;
+máŋga#logis:máŋga#loh'kis OVCCIS ;
 
 LEXICON LOHKI
 lohki+Num+Sg+Nom:lohki%> K ;
@@ -14230,19 +14235,19 @@ lohki+Num+Sg+Nom:lohki%> K ;
 !NUPPELOHKAI ;
 
 LEXICON 2TO9LOG
-guok0telogi:guok't GUOKTELOGI ;
-golbmalogi:golbma GOLBMALOGI ;
-njealljelogi:njeallj GUOKTELOGI ;
-njealljalogi+Num+Sg+Nom:njeallja#logi%> K ;
-njealljalogi+Num+Sg+Acc:njeallja#logi%> K ;
-njealljalogi+Num+Sg+Gen:njealja#logi%> K ;
-vihttalogi:vi VIHTTALOGI ;
-guhttalogi:gu VIHTTALOGI ;
-čiežalogi:či CIEZALOGI ;
-giežalogi:gi CIEZALOGI ;
-gávccilogi:gák'ci GAVCCILOGI ;
-ovccilogi:ok'ci GAVCCILOGI ;
-nubbelogi:nubb NUBBELOGI ;
+guok0te#logi:guok't GUOKTELOGI ;
+golbma#logi:golbma GOLBMALOGI ;
+njeallje#logi:njeallj GUOKTELOGI ;
+njeallja#logi+Num+Sg+Nom:njeallja#logi%> K ;
+njeallja#logi+Num+Sg+Acc:njeallja#logi%> K ;
+njeallja#logi+Num+Sg+Gen:njealja#logi%> K ;
+vihtta#logi:vi VIHTTALOGI ;
+guhtta#logi:gu VIHTTALOGI ;
+čieža#logi:či CIEZALOGI ;
+gieža#logi:gi CIEZALOGI ;
+gávcci#logi:gák'ci GAVCCILOGI ;
+ovcci#logi:ok'ci GAVCCILOGI ;
+nubbe#logi:nubb NUBBELOGI ;
 nubbe# LOHKAI-END ;
 guok0te# LOHKAI-END ;
 golbma# LOHKAI-END ;
@@ -14257,209 +14262,209 @@ ovcci# LOHKAI-END ;
 
 
 LEXICON 21TO99
-guok0telogi#:guok't GUOKTELOGIOKTA ;
-guok0telogi#:guok't GUOKTELOGIGUOKTE ;
-guok0telogi#:guok't GUOKTELOGIGOLBMA ;
-guok0telogi#:guok't GUOKTELOGINJEALLJE ;
-guok0telogi#:guok't GUOKTELOGIVIHTTA ;
-guok0telogi#:guok't GUOKTELOGIGUHTTA ;
-guok0telogi#:guok't GUOKTELOGICIEZA ;
-guok0telogi#:guok't GUOKTELOGIGAVCCI ;
-guok0telogi#:guok't GUOKTELOGIOVCCI ;
-golbmalogi#:golbma GOLBMALOGIOKTA ;
-golbmalogi#:golbma GOLBMALOGIGUOKTE ;
-golbmalogi#:golbma GOLBMALOGIGOLBMA ;
-golbmalogi#:golbma GOLBMALOGINJEALLJE ;
-golbmalogi#:golbma GOLBMALOGIVIHTTA ;
-golbmalogi#:golbma GOLBMALOGIGUHTTA ;
-golbmalogi#:golbma GOLBMALOGICIEZA ;
-golbmalogi#:golbma GOLBMALOGIGAVCCI ;
-golbmalogi#:golbma GOLBMALOGIOVCCI ;
-njealljelogi#:njeallj GUOKTELOGIOKTA ;
-njealljelogi#:njeallj GUOKTELOGIGUOKTE ;
-njealljelogi#:njeallj GUOKTELOGIGOLBMA ;
-njealljelogi#:njeallj GUOKTELOGINJEALLJE ;
-njealljelogi#:njeallj GUOKTELOGIVIHTTA ;
-njealljelogi#:njeallj GUOKTELOGIGUHTTA ;
-njealljelogi#:njeallj GUOKTELOGICIEZA ;
-njealljelogi#:njeallj GUOKTELOGIGAVCCI ;
-njealljelogi#:njeallj GUOKTELOGIOVCCI ;
-vihttalogi#:vi VIHTTALOGIOKTA ;
-vihttalogi#:vi VIHTTALOGIGUOKTE ;
-vihttalogi#:vi VIHTTALOGIGOLBMA ;
-vihttalogi#:vi VIHTTALOGINJEALLJE ;
-vihttalogi#:vi VIHTTALOGIVIHTTA ;
-vihttalogi#:vi VIHTTALOGIGUHTTA ;
-vihttalogi#:vi VIHTTALOGICIEZA ;
-vihttalogi#:vi VIHTTALOGIGAVCCI ;
-vihttalogi#:vi VIHTTALOGIOVCCI ;
-guhttalogi#:gu VIHTTALOGIOKTA ;
-guhttalogi#:gu VIHTTALOGIGUOKTE ;
-guhttalogi#:gu VIHTTALOGIGOLBMA ;
-guhttalogi#:gu VIHTTALOGINJEALLJE ;
-guhttalogi#:gu VIHTTALOGIVIHTTA ;
-guhttalogi#:gu VIHTTALOGIGUHTTA ;
-guhttalogi#:gu VIHTTALOGICIEZA ;
-guhttalogi#:gu VIHTTALOGIGAVCCI ;
-guhttalogi#:gu VIHTTALOGIOVCCI ;
-čiežalogi#:čieža GOLBMALOGIOKTA ;
-giežalogi#:gieža GOLBMALOGIOKTA ;
-čiežalogi#:čieža GOLBMALOGIGUOKTE ;
-giežalogi#:gieža GOLBMALOGIGUOKTE ;
-čiežalogi#:čieža GOLBMALOGIGOLBMA ;
-giežalogi#:gieža GOLBMALOGIGOLBMA ;
-čiežalogi#:čieža GOLBMALOGINJEALLJE ;
-giežalogi#:gieža GOLBMALOGINJEALLJE ;
-čiežalogi#:čieža GOLBMALOGIVIHTTA ;
-giežalogi#:gieža GOLBMALOGIVIHTTA ;
-čiežalogi#:čieža GOLBMALOGIGUHTTA ;
-giežalogi#:gieža GOLBMALOGIGUHTTA ;
-čiežalogi#:čieža GOLBMALOGICIEZA ;
-giežalogi#:gieža GOLBMALOGICIEZA ;
-čiežalogi#:čieža GOLBMALOGIGAVCCI ;
-giežalogi#:gieža GOLBMALOGIGAVCCI ;
-čiežalogi#:čieža GOLBMALOGIOVCCI ;
-giežalogi#:gieža GOLBMALOGIOVCCI ;
-gávccilogi#:gák'ci GAVCCILOGIOKTA ;
-gávccilogi#:gák'ci GAVCCILOGIGUOKTE ;
-gávccilogi#:gák'ci GAVCCILOGIGOLBMA ;
-gávccilogi#:gák'ci GAVCCILOGINJEALLJE ;
-gávccilogi#:gák'ci GAVCCILOGIVIHTTA ;
-gávccilogi#:gák'ci GAVCCILOGIGUHTTA ;
-gávccilogi#:gák'ci GAVCCILOGICIEZA ;
-gávccilogi#:gák'ci GAVCCILOGIGAVCCI ;
-gávccilogi#:gák'ci GAVCCILOGIOVCCI ;
-ovccilogi#:ok'ci GAVCCILOGIOKTA ;
-ovccilogi#:ok'ci GAVCCILOGIGUOKTE ;
-ovccilogi#:ok'ci GAVCCILOGIGOLBMA ;
-ovccilogi#:ok'ci GAVCCILOGINJEALLJE ;
-ovccilogi#:ok'ci GAVCCILOGIVIHTTA ;
-ovccilogi#:ok'ci GAVCCILOGIGUHTTA ;
-ovccilogi#:ok'ci GAVCCILOGICIEZA ;
-ovccilogi#:ok'ci GAVCCILOGIGAVCCI ;
-ovccilogi#:ok'ci GAVCCILOGIOVCCI ;
-guoktelogi#:guokte#logi num-ordinal ;
-golbmalogi#:golbma#logi# num-ordinal ;
-njealljelogi#:njeallje#logi# num-ordinal ;
-njealljalogi#:njeallja#logi# num-ordinal ;
-vihttalogi#:vihtta#logi# num-ordinal ;
-guhttalogi#:guhtta#logi# num-ordinal ;
-čiežalogi#:čieža#logi# num-ordinal ;
-giežalogi#:gieža#logi# num-ordinal ;
-gávccilogi#:gávcci#logi# num-ordinal ;
-ovccilogi#:ovcci#logi# num-ordinal ;
-guoktelogi# num-collective ;
-golbmalogi# num-collective ;
-njealljelogi# num-collective ;
-njealljalogi# num-collective ;
-vihttalogi# num-collective ;
-guhttalogi# num-collective ;
-čiežalogi# num-collective ;
-giežalogi# num-collective ;
-gávccilogi# num-collective ;
-ovccilogi# num-collective ;
+guok0te#logi#:guok't GUOKTELOGIOKTA ;
+guok0te#logi#:guok't GUOKTELOGIGUOKTE ;
+guok0te#logi#:guok't GUOKTELOGIGOLBMA ;
+guok0te#logi#:guok't GUOKTELOGINJEALLJE ;
+guok0te#logi#:guok't GUOKTELOGIVIHTTA ;
+guok0te#logi#:guok't GUOKTELOGIGUHTTA ;
+guok0te#logi#:guok't GUOKTELOGICIEZA ;
+guok0te#logi#:guok't GUOKTELOGIGAVCCI ;
+guok0te#logi#:guok't GUOKTELOGIOVCCI ;
+golbma#logi#:golbma GOLBMALOGIOKTA ;
+golbma#logi#:golbma GOLBMALOGIGUOKTE ;
+golbma#logi#:golbma GOLBMALOGIGOLBMA ;
+golbma#logi#:golbma GOLBMALOGINJEALLJE ;
+golbma#logi#:golbma GOLBMALOGIVIHTTA ;
+golbma#logi#:golbma GOLBMALOGIGUHTTA ;
+golbma#logi#:golbma GOLBMALOGICIEZA ;
+golbma#logi#:golbma GOLBMALOGIGAVCCI ;
+golbma#logi#:golbma GOLBMALOGIOVCCI ;
+njeallje#logi#:njeallj GUOKTELOGIOKTA ;
+njeallje#logi#:njeallj GUOKTELOGIGUOKTE ;
+njeallje#logi#:njeallj GUOKTELOGIGOLBMA ;
+njeallje#logi#:njeallj GUOKTELOGINJEALLJE ;
+njeallje#logi#:njeallj GUOKTELOGIVIHTTA ;
+njeallje#logi#:njeallj GUOKTELOGIGUHTTA ;
+njeallje#logi#:njeallj GUOKTELOGICIEZA ;
+njeallje#logi#:njeallj GUOKTELOGIGAVCCI ;
+njeallje#logi#:njeallj GUOKTELOGIOVCCI ;
+vihtta#logi#:vi VIHTTALOGIOKTA ;
+vihtta#logi#:vi VIHTTALOGIGUOKTE ;
+vihtta#logi#:vi VIHTTALOGIGOLBMA ;
+vihtta#logi#:vi VIHTTALOGINJEALLJE ;
+vihtta#logi#:vi VIHTTALOGIVIHTTA ;
+vihtta#logi#:vi VIHTTALOGIGUHTTA ;
+vihtta#logi#:vi VIHTTALOGICIEZA ;
+vihtta#logi#:vi VIHTTALOGIGAVCCI ;
+vihtta#logi#:vi VIHTTALOGIOVCCI ;
+guhtta#logi#:gu VIHTTALOGIOKTA ;
+guhtta#logi#:gu VIHTTALOGIGUOKTE ;
+guhtta#logi#:gu VIHTTALOGIGOLBMA ;
+guhtta#logi#:gu VIHTTALOGINJEALLJE ;
+guhtta#logi#:gu VIHTTALOGIVIHTTA ;
+guhtta#logi#:gu VIHTTALOGIGUHTTA ;
+guhtta#logi#:gu VIHTTALOGICIEZA ;
+guhtta#logi#:gu VIHTTALOGIGAVCCI ;
+guhtta#logi#:gu VIHTTALOGIOVCCI ;
+čieža#logi#:čieža GOLBMALOGIOKTA ;
+gieža#logi#:gieža GOLBMALOGIOKTA ;
+čieža#logi#:čieža GOLBMALOGIGUOKTE ;
+gieža#logi#:gieža GOLBMALOGIGUOKTE ;
+čieža#logi#:čieža GOLBMALOGIGOLBMA ;
+gieža#logi#:gieža GOLBMALOGIGOLBMA ;
+čieža#logi#:čieža GOLBMALOGINJEALLJE ;
+gieža#logi#:gieža GOLBMALOGINJEALLJE ;
+čieža#logi#:čieža GOLBMALOGIVIHTTA ;
+gieža#logi#:gieža GOLBMALOGIVIHTTA ;
+čieža#logi#:čieža GOLBMALOGIGUHTTA ;
+gieža#logi#:gieža GOLBMALOGIGUHTTA ;
+čieža#logi#:čieža GOLBMALOGICIEZA ;
+gieža#logi#:gieža GOLBMALOGICIEZA ;
+čieža#logi#:čieža GOLBMALOGIGAVCCI ;
+gieža#logi#:gieža GOLBMALOGIGAVCCI ;
+čieža#logi#:čieža GOLBMALOGIOVCCI ;
+gieža#logi#:gieža GOLBMALOGIOVCCI ;
+gávcci#logi#:gák'ci GAVCCILOGIOKTA ;
+gávcci#logi#:gák'ci GAVCCILOGIGUOKTE ;
+gávcci#logi#:gák'ci GAVCCILOGIGOLBMA ;
+gávcci#logi#:gák'ci GAVCCILOGINJEALLJE ;
+gávcci#logi#:gák'ci GAVCCILOGIVIHTTA ;
+gávcci#logi#:gák'ci GAVCCILOGIGUHTTA ;
+gávcci#logi#:gák'ci GAVCCILOGICIEZA ;
+gávcci#logi#:gák'ci GAVCCILOGIGAVCCI ;
+gávcci#logi#:gák'ci GAVCCILOGIOVCCI ;
+ovcci#logi#:ok'ci GAVCCILOGIOKTA ;
+ovcci#logi#:ok'ci GAVCCILOGIGUOKTE ;
+ovcci#logi#:ok'ci GAVCCILOGIGOLBMA ;
+ovcci#logi#:ok'ci GAVCCILOGINJEALLJE ;
+ovcci#logi#:ok'ci GAVCCILOGIVIHTTA ;
+ovcci#logi#:ok'ci GAVCCILOGIGUHTTA ;
+ovcci#logi#:ok'ci GAVCCILOGICIEZA ;
+ovcci#logi#:ok'ci GAVCCILOGIGAVCCI ;
+ovcci#logi#:ok'ci GAVCCILOGIOVCCI ;
+guokte#logi#:guokte#logi num-ordinal ;
+golbma#logi#:golbma#logi# num-ordinal ;
+njeallje#logi#:njeallje#logi# num-ordinal ;
+njeallja#logi#:njeallja#logi# num-ordinal ;
+vihtta#logi#:vihtta#logi# num-ordinal ;
+guhtta#logi#:guhtta#logi# num-ordinal ;
+čieža#logi#:čieža#logi# num-ordinal ;
+gieža#logi#:gieža#logi# num-ordinal ;
+gávcci#logi#:gávcci#logi# num-ordinal ;
+ovcci#logi#:ovcci#logi# num-ordinal ;
+guokte#logi# num-collective ;
+golbma#logi# num-collective ;
+njeallje#logi# num-collective ;
+njeallja#logi# num-collective ;
+vihtta#logi# num-collective ;
+guhtta#logi# num-collective ;
+čieža#logi# num-collective ;
+gieža#logi# num-collective ;
+gávcci#logi# num-collective ;
+ovcci#logi# num-collective ;
 
 
 LEXICON 111TO119
-ok0tanuppelohkái:ok'ta OKTANUPPELOHKAI ;
-ok0tagoalmmátlohkái:ok'ta OKTAGOALMMATLOHKAI ;
-ok0tanjealjátlohkái:ok'ta OKTANJEALJATLOHKAI ;
-ok0taviđátlohkái:ok'ta OKTAVIDATLOHKAI ;
-ok0taguđátlohkái:ok'ta OKTAGUDATLOHKAI ;
-ok0tačihččetlohkái:ok'ta OKTACIHCCETLOHKAI ;
-ok0tagávccátlohkái:ok'ta OKTAGAVCCATLOHKAI ;
-ok0taovccátlohkái:ok'ta OKTAOVCCATLOHKAI ;
-ok0talogátlohkái:ok'ta OKTALOGATLOHKAI ;
-guok0tenuppelohkái:guok't GUOKTENUPPELOHKAI ;
-guok0tegoalmmátlohkái:guok't GUOKTEGOALMMATLOHKAI ;
-guok0tenjealjátlohkái:guok't GUOKTENJEALJATLOHKAI ;
-guok0teviđátlohkái:guok't GUOKTEVIDATLOHKAI ;
-guok0teguđátlohkái:guok't GUOKTEGUDATLOHKAI ;
-guok0tečihččetlohkái:guok't GUOKTECIHCCETLOHKAI ;
-guok0tegávccátlohkái:guok't GUOKTEGAVCCATLOHKAI ;
-guok0teovccátlohkái:guok't GUOKTEOVCCATLOHKAI ;
-guok0telogátlohkái:guok't GUOKTELOGATLOHKAI ;
-nubbenuppelohkái:nubb NUBBENUPPELOHKAI ;
-nubbegoalmmátlohkái:nubb NUBBEGOALMMATLOHKAI ;
-nubbenjealjátlohkái:nubb NUBBENJEALJATLOHKAI ;
-nubbeviđátlohkái:nubb NUBBEVIDATLOHKAI ;
-nubbeguđátlohkái:nubb NUBBEGUDATLOHKAI ;
-nubbečihččetlohkái:nubb NUBBECIHCCETLOHKAI ;
-nubbegávccátlohkái:nubb NUBBEGAVCCATLOHKAI ;
-nubbeovccátlohkái:nubb NUBBEOVCCATLOHKAI ;
-nubbelogátlohkái:nubb NUBBELOGATLOHKAI ;
-golbmanuppelohkái:golbma GOLBMANUPPELOHKAI ;
-golbmagoalmmátlohkái:golbma GOLBMAGOALMMATLOHKAI ;
-golbmanjealjátlohkái:golbma GOLBMANJEALJATLOHKAI ;
-golbmaviđátlohkái:golbma GOLBMAVIDATLOHKAI ;
-golbmaguđátlohkái:golbma GOLBMAGUDATLOHKAI ;
-golbmačihččetlohkái:golbma GOLBMACIHCCETLOHKAI ;
-golbmagávccátlohkái:golbma GOLBMAGAVCCATLOHKAI ;
-golbmaovccátlohkái:golbma GOLBMAOVCCATLOHKAI ;
-golbmalogátlohkái:golbma GOLBMALOGATLOHKAI ;
-njealljenuppelohkái:njeallj GUOKTENUPPELOHKAI ;
-njealljegoalmmátlohkái:njeallj GUOKTEGOALMMATLOHKAI ;
-njealljenjealjátlohkái:njeallj GUOKTENJEALJATLOHKAI ;
-njealljeviđátlohkái:njeallj GUOKTEVIDATLOHKAI ;
-njealljeguđátlohkái:njeallj GUOKTEGUDATLOHKAI ;
-njeallječihččetlohkái:njeallj GUOKTECIHCCETLOHKAI ;
-njealljegávccátlohkái:njeallj GUOKTEGAVCCATLOHKAI ;
-njealljeovccátlohkái:njeallj GUOKTEOVCCATLOHKAI ;
-njealljelogátlohkái:njeallj GUOKTELOGATLOHKAI ;
-vihttanuppelohkái:vi VIHTTANUPPELOHKAI ;
-vihttagoalmmátlohkái:vi VIHTTAGOALMMATLOHKAI ;
-vihttanjealjátlohkái:vi VIHTTANJEALJATLOHKAI ;
-vihttaviđátlohkái:vi VIHTTAVIDATLOHKAI ;
-vihttaguđátlohkái:vi VIHTTAGUDATLOHKAI ;
-vihttačihččetlohkái:vi VIHTTACIHCCETLOHKAI ;
-vihttagávccátlohkái:vi VIHTTAGAVCCATLOHKAI ;
-vihttaovccátlohkái:vi VIHTTAOVCCATLOHKAI ;
-vihttalogátlohkái:vi VIHTTALOGATLOHKAI ;
-guhttanuppelohkái:gu VIHTTANUPPELOHKAI ;
-guhttagoalmmátlohkái:gu VIHTTAGOALMMATLOHKAI ;
-guhttanjealjátlohkái:gu VIHTTANJEALJATLOHKAI ;
-guhttaviđátlohkái:gu VIHTTAVIDATLOHKAI ;
-guhttaguđátlohkái:gu VIHTTAGUDATLOHKAI ;
-guhttačihččetlohkái:gu VIHTTACIHCCETLOHKAI ;
-guhttagávccátlohkái:gu VIHTTAGAVCCATLOHKAI ;
-guhttaovccátlohkái:gu VIHTTAOVCCATLOHKAI ;
-guhttalogátlohkái:gu VIHTTALOGATLOHKAI ;
-čiežanuppelohkái:či CIEZANUPPELOHKAI ;
-čiežagoalmmátlohkái:či CIEZAGOALMMATLOHKAI ;
-čiežanjealjátlohkái:či CIEZANJEALJATLOHKAI ;
-čiežaviđátlohkái:či CIEZAVIDATLOHKAI ;
-čiežaguđátlohkái:či CIEZAGUDATLOHKAI ;
-čiežačihččetlohkái:či CIEZACIHCCETLOHKAI ;
-čiežagávccátlohkái:či CIEZAGAVCCATLOHKAI ;
-čiežaovccátlohkái:či CIEZAOVCCATLOHKAI ;
-čiežalogátlohkái:či CIEZALOGATLOHKAI ;
-giežanuppelohkái:gi CIEZANUPPELOHKAI ;
-giežagoalmmátlohkái:gi CIEZAGOALMMATLOHKAI ;
-giežanjealjátlohkái:gi CIEZANJEALJATLOHKAI ;
-giežaviđátlohkái:gi CIEZAVIDATLOHKAI ;
-giežaguđátlohkái:gi CIEZAGUDATLOHKAI ;
-giežagihččetlohkái:gi CIEZACIHCCETLOHKAI ;
-giežagávccátlohkái:gi CIEZAGAVCCATLOHKAI ;
-giežaovccátlohkái:gi CIEZAOVCCATLOHKAI ;
-giežalogátlohkái:gi CIEZALOGATLOHKAI ;
-gávccinuppelohkái:gák'ci GAVCCINUPPELOHKAI ;
-gávccigoalmmátlohkái:gák'ci GAVCCIGOALMMATLOHKAI ;
-gávccinjealjátlohkái:gák'ci GAVCCINJEALJATLOHKAI ;
-gávcciviđátlohkái:gák'ci GAVCCIVIDATLOHKAI ;
-gávcciguđátlohkái:gák'ci GAVCCIGUDATLOHKAI ;
-gávccičihččetlohkái:gák'ci GAVCCICIHCCETLOHKAI ;
-gávccigávccátlohkái:gák'ci GAVCCIGAVCCATLOHKAI ;
-gávcciovccátlohkái:gák'ci GAVCCIOVCCATLOHKAI ;
-gávccilogátlohkái:gák'ci GAVCCILOGATLOHKAI ;
-ovccinuppelohkái:ok'ci GAVCCINUPPELOHKAI ;
-ovccigoalmmátlohkái:ok'ci GAVCCIGOALMMATLOHKAI ;
-ovccinjealjátlohkái:ok'ci GAVCCINJEALJATLOHKAI ;
-ovcciviđátlohkái:ok'ci GAVCCIVIDATLOHKAI ;
-ovcciguđátlohkái:ok'ci GAVCCIGUDATLOHKAI ;
-ovccičihččetlohkái:ok'ci GAVCCICIHCCETLOHKAI ;
-ovccigávccátlohkái:ok'ci GAVCCIGAVCCATLOHKAI ;
-ovcciovccátlohkái:ok'ci GAVCCIOVCCATLOHKAI ;
-ovccilogátlohkái:ok'ci GAVCCILOGATLOHKAI ;
+ok0ta#nuppe#lohkái:ok'ta OKTANUPPELOHKAI ;
+ok0ta#goalmmát#lohkái:ok'ta OKTAGOALMMATLOHKAI ;
+ok0ta#njealját#lohkái:ok'ta OKTANJEALJATLOHKAI ;
+ok0ta#viđát#lohkái:ok'ta OKTAVIDATLOHKAI ;
+ok0ta#guđát#lohkái:ok'ta OKTAGUDATLOHKAI ;
+ok0ta#čihččet#lohkái:ok'ta OKTACIHCCETLOHKAI ;
+ok0ta#gávccát#lohkái:ok'ta OKTAGAVCCATLOHKAI ;
+ok0ta#ovccát#lohkái:ok'ta OKTAOVCCATLOHKAI ;
+ok0ta#logát#lohkái:ok'ta OKTALOGATLOHKAI ;
+guok0te#nuppe#lohkái:guok't GUOKTENUPPELOHKAI ;
+guok0te#goalmmát#lohkái:guok't GUOKTEGOALMMATLOHKAI ;
+guok0te#njealját#lohkái:guok't GUOKTENJEALJATLOHKAI ;
+guok0te#viđát#lohkái:guok't GUOKTEVIDATLOHKAI ;
+guok0te#guđát#lohkái:guok't GUOKTEGUDATLOHKAI ;
+guok0te#čihččet#lohkái:guok't GUOKTECIHCCETLOHKAI ;
+guok0te#gávccát#lohkái:guok't GUOKTEGAVCCATLOHKAI ;
+guok0te#ovccát#lohkái:guok't GUOKTEOVCCATLOHKAI ;
+guok0te#logát#lohkái:guok't GUOKTELOGATLOHKAI ;
+nubbe#nuppe#lohkái:nubb NUBBENUPPELOHKAI ;
+nubbe#goalmmát#lohkái:nubb NUBBEGOALMMATLOHKAI ;
+nubbe#njealját#lohkái:nubb NUBBENJEALJATLOHKAI ;
+nubbe#viđát#lohkái:nubb NUBBEVIDATLOHKAI ;
+nubbe#guđát#lohkái:nubb NUBBEGUDATLOHKAI ;
+nubbe#čihččet#lohkái:nubb NUBBECIHCCETLOHKAI ;
+nubbe#gávccát#lohkái:nubb NUBBEGAVCCATLOHKAI ;
+nubbe#ovccát#lohkái:nubb NUBBEOVCCATLOHKAI ;
+nubbe#logát#lohkái:nubb NUBBELOGATLOHKAI ;
+golbma#nuppe#lohkái:golbma GOLBMANUPPELOHKAI ;
+golbma#goalmmát#lohkái:golbma GOLBMAGOALMMATLOHKAI ;
+golbma#njealját#lohkái:golbma GOLBMANJEALJATLOHKAI ;
+golbma#viđát#lohkái:golbma GOLBMAVIDATLOHKAI ;
+golbma#guđát#lohkái:golbma GOLBMAGUDATLOHKAI ;
+golbma#čihččet#lohkái:golbma GOLBMACIHCCETLOHKAI ;
+golbma#gávccát#lohkái:golbma GOLBMAGAVCCATLOHKAI ;
+golbma#ovccát#lohkái:golbma GOLBMAOVCCATLOHKAI ;
+golbma#logát#lohkái:golbma GOLBMALOGATLOHKAI ;
+njeallje#nuppe#lohkái:njeallj GUOKTENUPPELOHKAI ;
+njeallje#goalmmát#lohkái:njeallj GUOKTEGOALMMATLOHKAI ;
+njeallje#njealját#lohkái:njeallj GUOKTENJEALJATLOHKAI ;
+njeallje#viđát#lohkái:njeallj GUOKTEVIDATLOHKAI ;
+njeallje#guđát#lohkái:njeallj GUOKTEGUDATLOHKAI ;
+njeallje#čihččet#lohkái:njeallj GUOKTECIHCCETLOHKAI ;
+njeallje#gávccát#lohkái:njeallj GUOKTEGAVCCATLOHKAI ;
+njeallje#ovccát#lohkái:njeallj GUOKTEOVCCATLOHKAI ;
+njeallje#logát#lohkái:njeallj GUOKTELOGATLOHKAI ;
+vihtta#nuppe#lohkái:vi VIHTTANUPPELOHKAI ;
+vihtta#goalmmát#lohkái:vi VIHTTAGOALMMATLOHKAI ;
+vihtta#njealját#lohkái:vi VIHTTANJEALJATLOHKAI ;
+vihtta#viđát#lohkái:vi VIHTTAVIDATLOHKAI ;
+vihtta#guđát#lohkái:vi VIHTTAGUDATLOHKAI ;
+vihtta#čihččet#lohkái:vi VIHTTACIHCCETLOHKAI ;
+vihtta#gávccát#lohkái:vi VIHTTAGAVCCATLOHKAI ;
+vihtta#ovccát#lohkái:vi VIHTTAOVCCATLOHKAI ;
+vihtta#logát#lohkái:vi VIHTTALOGATLOHKAI ;
+guhtta#nuppe#lohkái:gu VIHTTANUPPELOHKAI ;
+guhtta#goalmmát#lohkái:gu VIHTTAGOALMMATLOHKAI ;
+guhtta#njealját#lohkái:gu VIHTTANJEALJATLOHKAI ;
+guhtta#viđát#lohkái:gu VIHTTAVIDATLOHKAI ;
+guhtta#guđát#lohkái:gu VIHTTAGUDATLOHKAI ;
+guhtta#čihččet#lohkái:gu VIHTTACIHCCETLOHKAI ;
+guhtta#gávccát#lohkái:gu VIHTTAGAVCCATLOHKAI ;
+guhtta#ovccát#lohkái:gu VIHTTAOVCCATLOHKAI ;
+guhtta#logát#lohkái:gu VIHTTALOGATLOHKAI ;
+čieža#nuppe#lohkái:či CIEZANUPPELOHKAI ;
+čieža#goalmmát#lohkái:či CIEZAGOALMMATLOHKAI ;
+čieža#njealját#lohkái:či CIEZANJEALJATLOHKAI ;
+čieža#viđát#lohkái:či CIEZAVIDATLOHKAI ;
+čieža#guđát#lohkái:či CIEZAGUDATLOHKAI ;
+čieža#čihččet#lohkái:či CIEZACIHCCETLOHKAI ;
+čieža#gávccát#lohkái:či CIEZAGAVCCATLOHKAI ;
+čieža#ovccát#lohkái:či CIEZAOVCCATLOHKAI ;
+čieža#logát#lohkái:či CIEZALOGATLOHKAI ;
+gieža#nuppe#lohkái:gi CIEZANUPPELOHKAI ;
+gieža#goalmmát#lohkái:gi CIEZAGOALMMATLOHKAI ;
+gieža#njealját#lohkái:gi CIEZANJEALJATLOHKAI ;
+gieža#viđát#lohkái:gi CIEZAVIDATLOHKAI ;
+gieža#guđát#lohkái:gi CIEZAGUDATLOHKAI ;
+gieža#gihččet#lohkái:gi CIEZACIHCCETLOHKAI ;
+gieža#gávccát#lohkái:gi CIEZAGAVCCATLOHKAI ;
+gieža#ovccát#lohkái:gi CIEZAOVCCATLOHKAI ;
+gieža#logát#lohkái:gi CIEZALOGATLOHKAI ;
+gávcci#nuppe#lohkái:gák'ci GAVCCINUPPELOHKAI ;
+gávcci#goalmmát#lohkái:gák'ci GAVCCIGOALMMATLOHKAI ;
+gávcci#njealját#lohkái:gák'ci GAVCCINJEALJATLOHKAI ;
+gávcci#viđát#lohkái:gák'ci GAVCCIVIDATLOHKAI ;
+gávcci#guđát#lohkái:gák'ci GAVCCIGUDATLOHKAI ;
+gávcci#čihččet#lohkái:gák'ci GAVCCICIHCCETLOHKAI ;
+gávcci#gávccát#lohkái:gák'ci GAVCCIGAVCCATLOHKAI ;
+gávcci#ovccát#lohkái:gák'ci GAVCCIOVCCATLOHKAI ;
+gávcci#logát#lohkái:gák'ci GAVCCILOGATLOHKAI ;
+ovcci#nuppe#lohkái:ok'ci GAVCCINUPPELOHKAI ;
+ovcci#goalmmát#lohkái:ok'ci GAVCCIGOALMMATLOHKAI ;
+ovcci#njealját#lohkái:ok'ci GAVCCINJEALJATLOHKAI ;
+ovcci#viđát#lohkái:ok'ci GAVCCIVIDATLOHKAI ;
+ovcci#guđát#lohkái:ok'ci GAVCCIGUDATLOHKAI ;
+ovcci#čihččet#lohkái:ok'ci GAVCCICIHCCETLOHKAI ;
+ovcci#gávccát#lohkái:ok'ci GAVCCIGAVCCATLOHKAI ;
+ovcci#ovccát#lohkái:ok'ci GAVCCIOVCCATLOHKAI ;
+ovcci#logát#lohkái:ok'ci GAVCCILOGATLOHKAI ;
 okta# NUPPELOHKAI ;
 guokte# NUPPELOHKAI ;
 golbma# NUPPELOHKAI ;
@@ -14526,56 +14531,56 @@ ovcci# NUPPELOHKAI ;
 LEXICON CUODI
 čuođi#:čuođi# LOGIF ;
 čuođi#+Num+Sg+Gen:čuođi»# NUMERALCOMPOUNDS ;
-čuođiguoktelogi:čuođi#guok't GUOKTELOGI  ;
-čuođigolbmalogi:čuođi#golbma GOLBMALOGI ;
-čuođinjealljelogi:čuođi#njeallj GUOKTELOGI ;
-čuođivihttalogi:čuođi#vi VIHTTALOGI ;
-čuođiguhttalogi:čuođi#gu VIHTTALOGI ;
-čuođičiežalogi:čuođi#či CIEZALOGI ;
-čuođigiežalogi:čuođi#gi CIEZALOGI ;
-čuođigávccilogi:čuođi#gák'ci GAVCCILOGI ;
-čuođiovccilogi:čuođi#ok'ci GAVCCILOGI ;
-čuođiovttas:čuođi#ok'tas OVCCIS ;
-čuođiguokte# LOHKAI-END  ;
-čuođigolbma# LOHKAI-END ;
-čuođinjeallje# LOHKAI-END ;
-čuođivihtta# LOHKAI-END ;
-čuođiguhtta# LOHKAI-END ;
-čuođičieža# LOHKAI-END ;
-čuođigieža# LOHKAI-END ;
-čuođigávcci# LOHKAI-END ;
-čuođiovcci# LOHKAI-END ;
+čuođi#guokte#logi:čuođi#guok't GUOKTELOGI  ;
+čuođi#golbma#logi:čuođi#golbma GOLBMALOGI ;
+čuođi#njeallje#logi:čuođi#njeallj GUOKTELOGI ;
+čuođi#vihtta#logi:čuođi#vi VIHTTALOGI ;
+čuođi#guhtta#logi:čuođi#gu VIHTTALOGI ;
+čuođi#čieža#logi:čuođi#či CIEZALOGI ;
+čuođi#gieža#logi:čuođi#gi CIEZALOGI ;
+čuođi#gávcci#logi:čuođi#gák'ci GAVCCILOGI ;
+čuođi#ovcci#logi:čuođi#ok'ci GAVCCILOGI ;
+čuođi#ovttas:čuođi#ok'tas OVCCIS ;
+čuođi#guokte# LOHKAI-END  ;
+čuođi#golbma# LOHKAI-END ;
+čuođi#njeallje# LOHKAI-END ;
+čuođi#vihtta# LOHKAI-END ;
+čuođi#guhtta# LOHKAI-END ;
+čuođi#čieža# LOHKAI-END ;
+čuođi#gieža# LOHKAI-END ;
+čuođi#gávcci# LOHKAI-END ;
+čuođi#ovcci# LOHKAI-END ;
 čuođi#:čuođi# OKTAF ;
 čuođi#:čuođi# 2TO9F ;
 čuođát+A+Ord:čuođád VUOSTTAS ;
 čuođi#:čuođi# LOHKI ;
 čuođi# 21TO99 ;
 čuođi# 111TO119 ;
-oktačuohti#:okta#čuohti# LOGIF ;
-oktačuohtiguoktelogi:okta#čuohti#guok't GUOKTELOGI ;
-oktačuohtigolbmalogi:okta#čuohti#golbma GOLBMALOGI ;
-oktačuohtinjealljelogi:okta#čuohti#njeallj GUOKTELOGI ;
-oktačuohtivihttalogi:okta#čuohti#vi VIHTTALOGI ;
-oktačuohtiguhttalogi:okta#čuohti#gu VIHTTALOGI ;
-oktačuohtičiežalogi:okta#čuohti#či CIEZALOGI ;
-oktačuohtigiežalogi:okta#čuohti#gi CIEZALOGI ;
-oktačuohtigávccilogi:okta#čuohti#gák'ci GAVCCILOGI ;
-oktačuohtiovccilogi:okta#čuohti#ok'ci GAVCCILOGI ;
-oktačuohtiovttas:okta#čuohti#ok'tas OVCCIS ;
-oktačuohtiguokte# LOHKAI-END  ;
-oktačuohtigolbma# LOHKAI-END ;
-oktačuohtinjeallje# LOHKAI-END ;
-oktačuohtivihtta# LOHKAI-END ;
-oktačuohtiguhtta# LOHKAI-END ;
-oktačuohtičieža# LOHKAI-END ;
-oktačuohtigieža# LOHKAI-END ;
-oktačuohtigávcci# LOHKAI-END ;
-oktačuohtiovcci# LOHKAI-END ;
-oktačuohti#:okta#čuohti# OKTAF ;
-oktačuohti#:okta#čuohti# 2TO9F ;
-oktačuohti#:okta#čuohti# LOHKI ;
-oktačuohti# 21TO99 ;
-oktačuohti# 111TO119 ;
+okta#čuohti#:okta#čuohti# LOGIF ;
+okta#čuohti#guokte#logi:okta#čuohti#guok't GUOKTELOGI ;
+okta#čuohti#golbma#logi:okta#čuohti#golbma GOLBMALOGI ;
+okta#čuohti#njeallje#logi:okta#čuohti#njeallj GUOKTELOGI ;
+okta#čuohti#vihtta#logi:okta#čuohti#vi VIHTTALOGI ;
+okta#čuohti#guhtta#logi:okta#čuohti#gu VIHTTALOGI ;
+okta#čuohti#čieža#logi:okta#čuohti#či CIEZALOGI ;
+okta#čuohti#gieža#logi:okta#čuohti#gi CIEZALOGI ;
+okta#čuohti#gávcci#logi:okta#čuohti#gák'ci GAVCCILOGI ;
+okta#čuohti#ovcci#logi:okta#čuohti#ok'ci GAVCCILOGI ;
+okta#čuohti#ovttas:okta#čuohti#ok'tas OVCCIS ;
+okta#čuohti#guokte# LOHKAI-END  ;
+okta#čuohti#golbma# LOHKAI-END ;
+okta#čuohti#njeallje# LOHKAI-END ;
+okta#čuohti#vihtta# LOHKAI-END ;
+okta#čuohti#guhtta# LOHKAI-END ;
+okta#čuohti#čieža# LOHKAI-END ;
+okta#čuohti#gieža# LOHKAI-END ;
+okta#čuohti#gávcci# LOHKAI-END ;
+okta#čuohti#ovcci# LOHKAI-END ;
+okta#čuohti#:okta#čuohti# OKTAF ;
+okta#čuohti#:okta#čuohti# 2TO9F ;
+okta#čuohti#:okta#čuohti# LOHKI ;
+okta#čuohti# 21TO99 ;
+okta#čuohti# 111TO119 ;
 čuođi+Num+Sg+Nom:čuođi%> K ;
 !Troms:
 čuoh0ti+Num+Attr:čuohti%> K ;
@@ -14595,30 +14600,30 @@ oktačuohti# 111TO119 ;
 čuohti+Num+Pl+Com:čuđi%>jgujn K ;
 čuohti+Num+Ess:čuohti%>n K ;
 čuohti#:čuohti# LOGIF ;
-čuohtiguoktelogi:čuohti#guok't GUOKTELOGI ;
-čuohtigolbmalogi:čuohti#golbma GOLBMALOGI ;
-čuohtinjealljelogi:čuohti#njeallj GUOKTELOGI ;
-čuohtivihttalogi:čuohti#vi VIHTTALOGI ;
-čuohtiguhttalogi:čuohti#gu VIHTTALOGI ;
-čuohtičiežalogi:čuohti#či CIEZALOGI ;
-čuohtigiežalogi:čuohti#gi CIEZALOGI ;
-čuohtigávccilogi:čuohti#gák'ci GAVCCILOGI ;
-čuohtiovccilogi:čuohti#ok'ci GAVCCILOGI ;
-čuohtiguokte# LOHKAI-END  ;
-čuohtigolbma# LOHKAI-END ;
-čuohtinjeallje# LOHKAI-END ;
-čuohtivihtta# LOHKAI-END ;
-čuohtiguhtta# LOHKAI-END ;
-čuohtičieža# LOHKAI-END ;
-čuohtigieža# LOHKAI-END ;
-čuohtigávcci# LOHKAI-END ;
-čuohtiovcci# LOHKAI-END ;
+čuohti#guokte#logi:čuohti#guok't GUOKTELOGI ;
+čuohti#golbma#logi:čuohti#golbma GOLBMALOGI ;
+čuohti#njeallje#logi:čuohti#njeallj GUOKTELOGI ;
+čuohti#vihtta#logi:čuohti#vi VIHTTALOGI ;
+čuohti#guhtta#logi:čuohti#gu VIHTTALOGI ;
+čuohti#čieža#logi:čuohti#či CIEZALOGI ;
+čuohti#gieža#logi:čuohti#gi CIEZALOGI ;
+čuohti#gávcci#logi:čuohti#gák'ci GAVCCILOGI ;
+čuohti#ovcci#logi:čuohti#ok'ci GAVCCILOGI ;
+čuohti#guokte# LOHKAI-END  ;
+čuohti#golbma# LOHKAI-END ;
+čuohti#njeallje# LOHKAI-END ;
+čuohti#vihtta# LOHKAI-END ;
+čuohti#guhtta# LOHKAI-END ;
+čuohti#čieža# LOHKAI-END ;
+čuohti#gieža# LOHKAI-END ;
+čuohti#gávcci# LOHKAI-END ;
+čuohti#ovcci# LOHKAI-END ;
 čuohti#:čuohti# OKTAF ;
 čuohti#:čuohti# 2TO9F ;
 čuohti#:čuohti# LOHKI ;
 čuohti# 21TO99 ;
 čuohti# 111TO119 ;
-aktačuohti+Num+Sg+Nom:akta#čuohti%> K ;
+akta#čuohti+Num+Sg+Nom:akta#čuohti%> K ;
 
 
 
@@ -14636,24 +14641,24 @@ ovcci# GCUODI ;
 
 LEXICON GCUODI
 čuođi#:čuođi# LOGIF ;
-čuođiguoktelogi:čuođi#guok't GUOKTELOGI  ;
-čuođigolbmalogi:čuođi#golbma GOLBMALOGI ;
-čuođinjealljelogi:čuođi#njeallj GUOKTELOGI ;
-čuođivihttalogi:čuođi#vi VIHTTALOGI ;
-čuođiguhttalogi:čuođi#gu VIHTTALOGI ;
-čuođičiežalogi:čuođi#či CIEZALOGI ;
-čuođigiežalogi:čuođi#gi CIEZALOGI ;
-čuođigávccilogi:čuođi#gák'ci GAVCCILOGI ;
-čuođiovccilogi:čuođi#ok'ci GAVCCILOGI ;
-čuođiguokte# LOHKAI-END  ;
-čuođigolbma# LOHKAI-END ;
-čuođinjeallje# LOHKAI-END ;
-čuođivihtta# LOHKAI-END ;
-čuođiguhtta# LOHKAI-END ;
-čuođičieža# LOHKAI-END ;
-čuođigieža# LOHKAI-END ;
-čuođigávcci# LOHKAI-END ;
-čuođiovcci# LOHKAI-END ;
+čuođi#guokte#logi:čuođi#guok't GUOKTELOGI  ;
+čuođi#golbma#logi:čuođi#golbma GOLBMALOGI ;
+čuođi#njeallje#logi:čuođi#njeallj GUOKTELOGI ;
+čuođi#vihtta#logi:čuođi#vi VIHTTALOGI ;
+čuođi#guhtta#logi:čuođi#gu VIHTTALOGI ;
+čuođi#čieža#logi:čuođi#či CIEZALOGI ;
+čuođi#gieža#logi:čuođi#gi CIEZALOGI ;
+čuođi#gávcci#logi:čuođi#gák'ci GAVCCILOGI ;
+čuođi#ovcci#logi:čuođi#ok'ci GAVCCILOGI ;
+čuođi#guokte# LOHKAI-END  ;
+čuođi#golbma# LOHKAI-END ;
+čuođi#njeallje# LOHKAI-END ;
+čuođi#vihtta# LOHKAI-END ;
+čuođi#guhtta# LOHKAI-END ;
+čuođi#čieža# LOHKAI-END ;
+čuođi#gieža# LOHKAI-END ;
+čuođi#gávcci# LOHKAI-END ;
+čuođi#ovcci# LOHKAI-END ;
 čuođi#:čuođi# OKTAF ;
 čuođi#:čuođi# 2TO9F ;
 čuođát+A+Ord:čuođád VUOSTTAS ;
@@ -14663,21 +14668,21 @@ LEXICON GCUODI
 
 
 LEXICON 1TO9CUODI
-aktačuohti+Num+Sg+Nom:akta#čuohti%> K ;
-ok0tačuohti:ok'ta OKTACUOHTI ;
-guoktečuođi:guok't GUOKTECUODI ;
-nubbečuohti:nubb NUBBECUOHTI ;
-golbmačuođi:golbma GOLBMACUODI ;
-njeallječuođi:njeallj GUOKTECUODI ;
-njealljačuođi+Num+Sg+Nom:njeallja#čuođi%> K ;
-njealljačuođi+Num+Sg+Acc:njeallja#čuođi%> K ;
-njealljačuođi+Num+Sg+Gen:njealja#čuođi%> K ;
-vihttačuođi:vi VIHTTACUODI ;
-guhttačuođi:gu VIHTTACUODI ;
-čiežačuođi:či CIEZACUODI ;
-giežačuođi:gi CIEZACUODI ;
-gávccičuođi:gák'ci GAVCCICUODI ;
-ovccičuođi:ok'ci GAVCCICUODI ;
+akta#čuohti+Num+Sg+Nom:akta#čuohti%> K ;
+ok0ta#čuohti:ok'ta OKTACUOHTI ;
+guokte#čuođi:guok't GUOKTECUODI ;
+nubbe#čuohti:nubb NUBBECUOHTI ;
+golbma#čuođi:golbma GOLBMACUODI ;
+njeallje#čuođi:njeallj GUOKTECUODI ;
+njeallja#čuođi+Num+Sg+Nom:njeallja#čuođi%> K ;
+njeallja#čuođi+Num+Sg+Acc:njeallja#čuođi%> K ;
+njeallja#čuođi+Num+Sg+Gen:njealja#čuođi%> K ;
+vihtta#čuođi:vi VIHTTACUODI ;
+guhtta#čuođi:gu VIHTTACUODI ;
+čieža#čuođi:či CIEZACUODI ;
+gieža#čuođi:gi CIEZACUODI ;
+gávcci#čuođi:gák'ci GAVCCICUODI ;
+ovcci#čuođi:ok'ci GAVCCICUODI ;
 
 
 ! Case forms of the basic digits
@@ -18610,38 +18615,38 @@ LEXICON VIDAS ! Collective numerals
 
 LEXICON num-imprecise
 gallát+A+Ord:gallád VUOSTTAS ;
-máŋ0ganuppelohkái:máŋ'ga GOLBMANUPPELOHKAI ;
-máŋ0galogi:máŋ'ga GOLBMALOGI ;
-máŋ0gačuođi:máŋ'ga GOLBMACUODI ;
-máŋ0ganuppelohkái#:máŋ'ga#nuppe#lohkái# DUHAT ;
-máŋ0galogi#:máŋ'ga#logi# DUHAT ;
-máŋ0gaduhát:máŋ'ga GOLBMADUHAT ;
-máŋ0gačuođi#:máŋ'ga#čuođi# DUHAT ;
-máŋgalogi#+Num+Sg+Nom+Attr:máŋgga#lot# NUMERALCOMPOUNDS ;
-máŋgalogi#+Num+Sg+Nom+Attr:máŋggaloht# NUMERALCOMPOUNDS ;          !SUB
-máŋgalogi#+Num+Sg+Gen:máŋggalogi# NUMERALCOMPOUNDS ;
-moaddenuppelohkái:moadd GUOKTENUPPELOHKAI ;
-moaddelogi:moadd GUOKTELOGI ;
-moaddečuođi:moadd GUOKTECUODI ;
-moaddenuppelohkái#:moadde#nuppe#lohkái# DUHAT ;
-moaddelogi#:moadde#logi# DUHAT ;
-moaddeduhát:moadd GUOKTEDUHAT ;
-moaddečuođi#:moadde#čuođi# DUHAT ;
-moaddelogi#+Num+Sg+Nom+Attr:moatti%>#lot%> K ; !SUB !Dialect
-moaddelogi#+Num+Sg+Acc+Attr:moatti%>#lot%> K ; !SUB !Dialect
-moaddelogi#+Num+Sg+Nom+Attr:moatti%>#lot»# NUMERALCOMPOUNDS ; !SUB !Dialect
-moaddelogi#+Num+Sg+Nom+Attr:moatte%>#lot»# NUMERALCOMPOUNDS ;
-moaddelogi#+Num+Sg+Gen:moatti%>#logi»# NUMERALCOMPOUNDS ;
-moaddelogi#+Num+Sg+Gen:moatte%>#logi»# NUMERALCOMPOUNDS ;
-gallenuppelohkái:gall GUOKTENUPPELOHKAI ;
-gallelogi:gall GUOKTELOGI ;
-gallečuođi:gall GUOKTECUODI ;
-gallenuppelohkái#:galle#nuppe#lohkái# DUHAT ;
-gallelogi#:galle#logi# DUHAT ;
-galleduhát:gall GUOKTEDUHAT ;
-gallečuođi#:galle#čuođi# DUHAT ;
-gallelogi#+Num+Sg+Nom+Attr:galle%>#lot»# NUMERALCOMPOUNDS ;
-gallelogi#+Num+Sg+Nom+Attr:galle%>#logi»# NUMERALCOMPOUNDS ;
+máŋ0ga#nuppe#lohkái:máŋ'ga GOLBMANUPPELOHKAI ;
+máŋ0ga#logi:máŋ'ga GOLBMALOGI ;
+máŋ0ga#čuođi:máŋ'ga GOLBMACUODI ;
+máŋ0ga#nuppe#lohkái#:máŋ'ga#nuppe#lohkái# DUHAT ;
+máŋ0ga#logi#:máŋ'ga#logi# DUHAT ;
+máŋ0ga#duhát:máŋ'ga GOLBMADUHAT ;
+máŋ0ga#čuođi#:máŋ'ga#čuođi# DUHAT ;
+máŋga#logi#+Num+Sg+Nom+Attr:máŋgga#lot# NUMERALCOMPOUNDS ;
+máŋga#logi#+Num+Sg+Nom+Attr:máŋggaloht# NUMERALCOMPOUNDS ;          !SUB
+máŋga#logi#+Num+Sg+Gen:máŋggalogi# NUMERALCOMPOUNDS ;
+moadde#nuppe#lohkái:moadd GUOKTENUPPELOHKAI ;
+moadde#logi:moadd GUOKTELOGI ;
+moadde#čuođi:moadd GUOKTECUODI ;
+moadde#nuppe#lohkái#:moadde#nuppe#lohkái# DUHAT ;
+moadde#logi#:moadde#logi# DUHAT ;
+moadde#duhát:moadd GUOKTEDUHAT ;
+moadde#čuođi#:moadde#čuođi# DUHAT ;
+moadde#logi#+Num+Sg+Nom+Attr:moatti%>#lot%> K ; !SUB !Dialect
+moadde#logi#+Num+Sg+Acc+Attr:moatti%>#lot%> K ; !SUB !Dialect
+moadde#logi#+Num+Sg+Nom+Attr:moatti%>#lot»# NUMERALCOMPOUNDS ; !SUB !Dialect
+moadde#logi#+Num+Sg+Nom+Attr:moatte%>#lot»# NUMERALCOMPOUNDS ;
+moadde#logi#+Num+Sg+Gen:moatti%>#logi»# NUMERALCOMPOUNDS ;
+moadde#logi#+Num+Sg+Gen:moatte%>#logi»# NUMERALCOMPOUNDS ;
+galle#nuppe#lohkái:gall GUOKTENUPPELOHKAI ;
+galle#logi:gall GUOKTELOGI ;
+galle#čuođi:gall GUOKTECUODI ;
+galle#nuppe#lohkái#:galle#nuppe#lohkái# DUHAT ;
+galle#logi#:galle#logi# DUHAT ;
+galle#duhát:gall GUOKTEDUHAT ;
+galle#čuođi#:galle#čuođi# DUHAT ;
+galle#logi#+Num+Sg+Nom+Attr:galle%>#lot»# NUMERALCOMPOUNDS ;
+galle#logi#+Num+Sg+Nom+Attr:galle%>#logi»# NUMERALCOMPOUNDS ;
 máŋ0ga:máŋ'ga GOLBMA ;
 moadde:moadd GUOKTE ;
 gal0le:gal'l GUOKTE ;
@@ -18649,30 +18654,30 @@ beal-nup+Num:beal%-nup9%> # ; !SUB ! ad hoc
 beannot+Num+Sg+Nom:beannot%> # ;
 beannot+Num+Sg+Gen:beannot%> # ;
 beannot+Num+Sg+Acc:beannot%> # ;
-bealnut+Num+Sg+Nom:beal#nut%> # ;
-bealnut+Num+Sg+Gen:beal#nut%> # ;
-bealnut+Num+Sg+Acc:beal#nut%> # ;
-bealgoalmmát+A+Ord:beal#goalmmád VUOSTTAS ;
-bealnjealját+A+Ord:beal#njealjád VUOSTTAS ;
-bealviđát+A+Ord:beal#viđád VUOSTTAS ;
-bealguđat+A+Ord:beal#guđad VUOSTTAS ;
-bealčihččet+A+Ord:beal#čihččed VUOSTTAS ;
-bealgihččet+A+Ord:beal#gihččed VUOSTTAS ;
-bealgávccát+A+Ord:beal#gávccád VUOSTTAS ;
-bealovccát+A+Ord:beal#ovccád VUOSTTAS ;
-beallogát+A+Ord:beal#logád VUOSTTAS ;
+beal#nut+Num+Sg+Nom:beal#nut%> # ;
+beal#nut+Num+Sg+Gen:beal#nut%> # ;
+beal#nut+Num+Sg+Acc:beal#nut%> # ;
+beal#goalmmát+A+Ord:beal#goalmmád VUOSTTAS ;
+beal#njealját+A+Ord:beal#njealjád VUOSTTAS ;
+beal#viđát+A+Ord:beal#viđád VUOSTTAS ;
+beal#guđat+A+Ord:beal#guđad VUOSTTAS ;
+beal#čihččet+A+Ord:beal#čihččed VUOSTTAS ;
+beal#gihččet+A+Ord:beal#gihččed VUOSTTAS ;
+beal#gávccát+A+Ord:beal#gávccád VUOSTTAS ;
+beal#ovccát+A+Ord:beal#ovccád VUOSTTAS ;
+beal#logát+A+Ord:beal#logád VUOSTTAS ;
 beannot#+Num+Attr:beannot»# SAS ;
-bealnut#+Num+Attr:beal#nut»# SAS ;
-bealgoalmmát#+A+Ord+Attr:beal#goalmmát»# SAS ;
-bealnjealját#+A+Ord+Attr:beal#njealját»# SAS ;
-bealviđát#+A+Ord+Attr:beal#viđát»# SAS ;
-bealguđat#+A+Ord+Attr:beal#guđat»# SAS ;
-bealčihččet#+A+Ord+Attr:beal#čihččet»# SAS ;
-bealgihččet#+A+Ord+Attr:beal#gihččet»# SAS ;
-bealgávccát#+A+Ord+Attr:beal#gávccát»# SAS ;
-bealovccát#+A+Ord+Attr:beal#ovccát»# SAS ;
-beallogát#+A+Ord+Attr:beal#logát»# SAS ;
-logemat+Num+Attr:loge%>#mat%> K ;
+beal#nut#+Num+Attr:beal#nut»# SAS ;
+beal#goalmmát#+A+Ord+Attr:beal#goalmmát»# SAS ;
+beal#njealját#+A+Ord+Attr:beal#njealját»# SAS ;
+beal#viđát#+A+Ord+Attr:beal#viđát»# SAS ;
+beal#guđat#+A+Ord+Attr:beal#guđat»# SAS ;
+beal#čihččet#+A+Ord+Attr:beal#čihččet»# SAS ;
+beal#gihččet#+A+Ord+Attr:beal#gihččet»# SAS ;
+beal#gávccát#+A+Ord+Attr:beal#gávccát»# SAS ;
+beal#ovccát#+A+Ord+Attr:beal#ovccát»# SAS ;
+beal#logát#+A+Ord+Attr:beal#logát»# SAS ;
+loge#mat+Num+Attr:loge%>#mat%> K ;
 
 
 
@@ -19314,7 +19319,7 @@ rek ab-dot-noun ;
 sch ab-nodot-noun ;
 sfr ab-nodot-noun ;
 sic ab-dot-noun ;
-siviling ab-dot-noun ;
+sivil#ing ab-dot-noun ;
 st ab-dot-noun ;
 st.dieđ ab-dot-noun ;
 p.b ab-dot-noun ;
@@ -19393,15 +19398,15 @@ Fim ab-nodot-noun ; !SUB
 fin ab ;
 fol ab-dot ; !
 fr ab ; !
-fuolahusosd ab-dot-noun ; !
-anestesiijaosd ab-dot-noun ;
-liikeosd ab-dot-noun ;
-sisdávdaosd ab-dot-noun ;
-borasdávdaosd ab-dot-noun ;
-bargiidosd ab-dot-noun ;
-leasmedávdaosd ab-dot-noun ;
-røntgenosd ab-dot-noun ;
-čottaosd ab-dot-noun ;
+fuolahus#osd ab-dot-noun ; !
+anestesiija#osd ab-dot-noun ;
+liike#osd ab-dot-noun ;
+sis#dávda#osd ab-dot-noun ;
+boras#dávda#osd ab-dot-noun ;
+bargiid#osd ab-dot-noun ;
+leasme#dávda#osd ab-dot-noun ;
+røntgen#osd ab-dot-noun ;
+čotta#osd ab-dot-noun ;
 fuom:fuom9 ab ;
 g ab ; ! !^C^
 gaskkav ab-dot-noun ; !SUB !gaskkavahkku
@@ -19418,10 +19423,10 @@ ggl.cea ab-dot ;
 gl ab-dot ; !
 gl.rs ab-dot ; !
 goall ab-dot-noun ; !Goallossátni
-Gastrolab ab-dot-noun ; !Org Gastrolaboratoria
-Vahátlab ab-dot-noun ;
-Nagirlab ab-dot-noun ;
-Geađgenjár ab-nodot-noun ; !Geađgenjárga
+Gastro#lab ab-dot-noun ; !Org Gastrolaboratoria
+Vahát#lab ab-dot-noun ;
+Nagir#lab ab-dot-noun ;
+Geađge#njár ab-nodot-noun ; !Geađgenjárga
 Guovdag ab-dot-noun ; !Plc Guovdageaidnu !
 Guovdg ab-dot-noun ; !Plc Guovdageaidnu !
 GWh ab-nodot-noun ;
@@ -19614,12 +19619,12 @@ UiO ab-nodot-noun ;
 UiT ab-nodot-noun ;
 vk ab-nodot ;
 vsu ab-dot-noun ;
-Vuorkááššenr ab-dot-noun ; !
+Vuorká#ášše#nr ab-dot-noun ; !
 váldolávdeg ab-dot-noun ; 
 á ab ; ! !^C^
 áššejođih:áššejođih9 ab-noun ; !
 Áššemeannud ab-dot-noun ; !
-Áššenr ab-dot-noun ; !
+Ášše#nr ab-dot-noun ; !
 č ab ; ! !^C^
 č.ortn ab-dot-noun ; !
 čilg ab-dot-noun ;
@@ -19723,23 +19728,23 @@ bie ab-dot-noun ;
 Bnr ab-dot-noun ; !
 Dnr ab-noun ;
 Enr ab-noun ;
-Gieldanr ab-dot-noun ;
+Gielda#nr ab-dot-noun ;
 Gnr ab-noun ; !
-Kildegt ab-dot-noun ; !Kildegata
-Kommunenr ab-dot-noun ;
+Kilde#gt ab-dot-noun ; !Kildegata
+Kommune#nr ab-dot-noun ;
 Pb ab-noun ; ! Postbox 
-Poastanr ab-dot-noun ;
-Postnr ab-dot-noun ;
+Poasta#nr ab-dot-noun ;
+Post#nr ab-dot-noun ;
 Rg ab-nodot-noun ;
 Rt ab-dot-noun ; !
 S.nr ab-noun ; !
 Searvg.ped:Searvg.ped9 ab-nodot-noun ;
-Suohkannr ab-dot-noun ;
+Suohkan#nr ab-dot-noun ;
 Sál ab-noun ;
 Kor ab-noun ;
 Tess:Tess9 ab-noun ;
 O.nr ab-noun ; !
-Áššenr ab-dot-noun ;
+Ášše#nr ab-dot-noun ;
 alm ab-dot-adj ; !
 anr ab-noun ;
 bet ab-dot-noun ;
@@ -19752,7 +19757,7 @@ dmu ab-nodot-noun ; !diibmu
 ds ab-dot-noun ;
 enr ab-noun ;
 fnr ab-noun ;
-fáksanr ab-dot-noun ;
+fáksa#nr ab-dot-noun ;
 gnr ab-dot-noun ; !
 j ab-dot ; ! !^C^
 jnr ab-dot-noun ; !
@@ -19760,8 +19765,8 @@ kap:kap9 ab-nodot-noun ; !
 kap ab-dot-noun ; !
 kr ab-noun ; !
 lnr ab-noun ;
-mátketlf ab-dot-noun ;
-njuolggotlf ab-dot-noun ;
+mátke#tlf ab-dot-noun ;
+njuolggo#tlf ab-dot-noun ;
 mk ab-noun ;
 mob:mob9 ab-noun ;
 nr ab-noun ; 
