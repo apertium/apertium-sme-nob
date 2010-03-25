@@ -48,7 +48,8 @@ $(PREFIX1).autogen.hfst: $(PREFIX1).twol.hfst $(PREFIX1).lexc.hfst
 	@rm $@.tmp
 
 .deps/xfst2apertium.twol.hfst: dev/xfst2apertium.twol
-	hfst-twolc -r -i dev/xfst2apertium.twol -o .deps/xfst2apertium.twol.hfst
+	if [ ! -d .deps ]; then mkdir .deps; fi
+	hfst-twolc -r -i dev/xfst2apertium.twol -o $@
 
 $(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst dev/xfst2apertium.relabel .deps/xfst2apertium.twol.hfst
 	hfst-invert $(PREFIX1).autogen.hfst -o $@.tmp
