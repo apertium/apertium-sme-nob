@@ -1,12 +1,103 @@
-GTSVN:
+Northern Sámi and Norwegian Bokmål
+
+                            apertium-sme-nob
+===============================================================================
+
+This is an Apertium language pair for translating between Northern
+Sámi and Norwegian Bokmål. What you can use this language package for:
+
+* Translating from Northern Sámi to Norwegian Bokmål
+* Morphological analysis of Northern Sámi
+* Part-of-speech tagging of Northern Sámi
+
+For information on the latter two points, see subheading "For more
+information" below. For analysis and POS-tagging of Bokmål, see
+http://wiki.apertium.org/wiki/apertium-nn-nb
+
+Requirements
+===============================================================================
+
+You will need the following software installed:
+
+* lttoolbox (>= 3.1.2)
+* apertium (>= 3.1.1)
+* vislcg3 (>= 0.9.7.5129)
+* hfst (SVN revision 283 or later)
+
+If this does not make any sense, we recommend you look at: www.apertium.org
+
+Compiling
+===============================================================================
+
+Given the requirements being installed, you should be able to just run:
+
+$ ./configure 
+$ make
+# make install
+
+You can use ./autogen.sh instead of ./configure you're compiling from
+SVN. If you're using a --prefix to ./configure, make sure it's the
+same one you used to install apertium itself.
+
+Testing
+===============================================================================
+
+If you are in the source directory after running make, the following
+commands should work:
+
+$ echo "Mus lea oahpahus gaskkal guovtti ja njealji" | tr ' ' '\n' | apertium -f none -d . sme-nob | tr '\n' ' '
+Jeg har undervisning mellom to  og  fire 
+
+Note: each word needs to be on its own line in the input, since our
+HFST lookup tool has no tokeniser yet.
+
+The following command runs tests which are on the Apertium wiki page:
+
+$ sh regression-tests.sh 
+
+Files and data
+===============================================================================
+
+* apertium-sme-nob.sme.lexc            - Monolingual dictionary for Sámi
+* apertium-sme-nob.sme.twol            - twolc rules for Sámi dictionary
+* apertium-sme-nob.sme-nob.rlx         - Constraint Grammar disambiguator for Sámi
+* sme-nob.prob                         - Tagger model for Sámi
+* apertium-sme-nob.sme-nob.lex         - Constraint Grammar WSD rules for Sámi
+* apertium-sme-nob.sme-nob.dix         - Bilingual dictionary 
+* apertium-sme-nob.sme-nob.t1x         - Chunking rules for translating into Bokmål
+* apertium-sme-nob.sme-nob.t2x         - Interchunk1 rules for translating into Bokmål
+* apertium-sme-nob.sme-nob.t3x         - Interchunk2 rules for translating into Bokmål
+* apertium-sme-nob.sme-nob.t4x         - Postchunk rules for translating into Bokmål
+* apertium-sme-nob.nob.dix             - Monolingual dictionary for Bokmål
+* modes.xml                            - Translation modes
+
+For more information
+===============================================================================
+
+* http://wiki.apertium.org/wiki/Installation
+* http://wiki.apertium.org/wiki/apertium-sme-nob
+* http://wiki.apertium.org/wiki/Using_an_lttoolbox_dictionary
+* http://wiki.apertium.org/wiki/HFST
+* http://wiki.apertium.org/wiki/Constraint_Grammar
+
+Help and support
+===============================================================================
+
+If you need help using this language pair or data, you can contact:
+
+* Mailing list: apertium-stuff@lists.sourceforge.net
+* IRC: #apertium on irc.freenode.net
+
+See also the file AUTHORS.
+
+Technical information
+===============================================================================
+
+Important Giellatekno SVN addresses:
 
 SME Monodix: https://victorio.uit.no/langtech/trunk/gt/sme
 
 Bidix: https://victorio.uit.no/langtech/trunk/words/dicts
-
-==TODO==
-
-* Proper casing support in the sme lexicon.  (Mánát vs. mánát)
 
 ==Monodix==
 
@@ -20,18 +111,9 @@ SME:
 NOB: 
 
 * The monodix should probably be kept up to date with the 
-  one in apertium-nn-nb
+  one in apertium-sme-nob
 
-==Pipeline==
-
-hfst-lookup | cg-proc | apertium-tagger |\
-   apertium-transfer | (apertium-interchunk)+ | apertium-postchunk | lt-proc
-
-$ echo "biila" | apertium -f none -d . sme-nob
-bil
-
-
-==Other stuff==
+==Bidix==
 
 From the DTD for the GTSVN bidix:
 
