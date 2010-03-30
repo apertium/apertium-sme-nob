@@ -225,6 +225,9 @@
       <attr-item tags="ConNeg"/>
       <attr-item tags="Neg"/>
     </def-attr>
+    <def-attr n="modality">
+      <attr-item tags="Cond"/>
+    </def-attr>
     <def-attr n="mode">
       <attr-item tags="Qst"/>
     </def-attr>
@@ -1546,6 +1549,46 @@ always(?) def in nob; predicative superlatives are only if they have a determine
                 </lu>
               </chunk>
             </out>
+        </when>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond"/></equal></test>
+          <out>
+            <chunk name="verb" case="caseFirstWord">
+              <tags>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              </tags>
+              <lu>
+                <lit v="ville"/>
+                <clip pos="1" side="tl" part="a_verb"/>
+                <clip pos="1" side="tl" part="temps"/>
+                <clip pos="1" side="tl" part="voice"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+            <b/>
+            <chunk name="verb" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="@-FMAINV"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><lit-tag v="inf"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              </tags>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_verb"/>
+                <lit-tag v="inf"/>
+                <clip pos="1" side="tl" part="voice"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
         </when>
         <otherwise>
           <out>
