@@ -289,6 +289,13 @@
       <let><var n="gender"/><lit-tag v="mf"/></let>
       <choose><when>
         <test><and>
+          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
+          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+        </and></test>
+        <let><var n="gender"/><lit-tag v="m"/></let>
+      </when></choose>
+      <choose><when>
+        <test><and>
           <equal><clip pos="1" part="animacy"/><lit-tag v="impers"/></equal>
           <!-- or leat? or no other verb? -->
           <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
