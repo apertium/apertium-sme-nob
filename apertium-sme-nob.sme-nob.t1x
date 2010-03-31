@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+This is the first pass, it contains:
+* (de-)compounding,
+* derivation,
+* simple noun phrases (heads and their simple modifiers/specifiers: adj nom, adj adj nom, det adj adj nom, num adj nom),
+* simple periphrastic verb combinations (verb, vaux pp, vaux inf)
+* Insert prepositions based on case
+-->
+
 <transfer default="chunk">
   <section-def-cats>
     <def-cat n="adpos">
@@ -864,7 +874,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
     <rule comment="REGLA: NOMCMPD NOM politiijastašuvnna => politistasjon(s)
-                   Defaults to indicative w/o context">
+                   Defaults to indefinite w/o context">
       <pattern>
         <pattern-item n="nom_cmpd"/>
         <pattern-item n="nom"/>
