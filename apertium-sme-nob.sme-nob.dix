@@ -48,6 +48,7 @@
     <sdef n="comp"    c="Comparative"/>
     <sdef n="Superl"  c="Superlative"/>
     <sdef n="sup"     c="Superlative"/>
+    <sdef n="pprs"    c="Present part adj"/>
 
     <sdef n="Cmp"     c="Compound"/>
 
@@ -107,6 +108,8 @@
     <sdef n="Der_PassL" c="Passive derivation"/>
     <sdef n="pass" c="Passive"/>
     <sdef n="Actor"    c="Deverbal agent/actor"/>
+
+    <sdef n="Actio"    c="Actio"/>
 
     <sdef n="pers"    c="Personal"/>
     <sdef n="impers"  c="Impersonal"/>
@@ -254,6 +257,8 @@
       <e><p><l><s n="Ind"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
       <e><p><l><s n="Ind"/></l><r></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Imprt"/></l><r><s n="imp"/></r></p><par n="__nbr_pers"/></e>
+
+      <e><p><l><s n="Actio"/><s n="Ess"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
     </pardef>
     <pardef n="deverbal__n">
       <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r></r></p><par n="__n"/></e>
@@ -275,6 +280,9 @@
 
     <e><p><l>go<s n="CS"/></l><r>når<s n="cnjsub"/></r></p></e>
     <e><p><l>jus<s n="CS"/></l><r>hvis<s n="cnjsub"/></r></p></e>
+    <e><p><l>jos<s n="CS"/></l><r>hvis<s n="cnjsub"/></r></p></e>
+    <e slr="1"><p><l>jos<s n="CS"/></l><r>dersom<s n="cnjsub"/></r></p></e>
+    <e><p><l>dego<s n="CS"/></l><r>som<s n="cnjsub"/></r></p></e>
     <e><p><l>ahte<s n="CS"/></l><r>at<s n="cnjsub"/></r></p></e>
     <e><p><l>mo<s n="CS"/></l><r>hvordan<s n="cnjsub"/></r></p></e> <!-- TODO: Check -->
 
@@ -2121,7 +2129,7 @@
     <e><p><l>bálkestit<s n="V"/><s n="TV"/></l><r>kaste<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>  <!-- (en gang) -->
     <e><p><l>bálkut<s n="V"/><s n="TV"/></l><r>kaste<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) bálkkun // (flere ganger)-->
     <e><p><l>ballát<s n="V"/><s n="IV"/></l><r>bli<g><b/>redd</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) ballájit-->
-    <e><p><l>ballat<s n="V"/><s n="IV"/></l><r>frykte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) balan-->
+    <e><p><l>ballat<s n="V"/><s n="TV"/></l><r>frykte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) balan-->
     <e><p><l>bállet<s n="V"/><s n="IV"/></l><r>ha fred til<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) bállejit-->
     <e><p><l>bálvalit<s n="V"/><s n="TV"/></l><r>tjene<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>barberet<s n="V"/><s n="TV"/></l><r>barbere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -2737,6 +2745,7 @@
     <e><p><l>lihkostuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--tuvai-->
     <e><p><l>liibmet<s n="V"/><s n="TV"/></l><r>lime<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>liigudit<s n="V"/><s n="TV"/></l><r>avse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>liikot<s n="V"/><s n="IV"/></l><r>like<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>lissat<s n="V"/><s n="IV"/></l><r>skrante<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(dat) lisai-->
     <e><p><l>livvadit<s n="V"/><s n="IV"/></l><r>ligge<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
     <e><p><l>livvut<s n="V"/><s n="IV"/></l><r>legge seg<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) livui-->
@@ -3039,6 +3048,8 @@
     <e><p><l>šiggut<s n="V"/><s n="TV"/></l><r>hysse<g><b/>på</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) šikkui-->
     <e><p><l>signaliseret<s n="V"/><s n="TV"/></l><r>signalisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>sihkkelastit<s n="V"/><s n="IV"/></l><r>sykle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>sihtat<s n="V"/><s n="TV"/></l><r>ønske<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="1"><p><l>sihtat<s n="V"/><s n="TV"/></l><r>ville<g><b/>ha</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>šiitit<s n="V"/><s n="TV"/></l><r>benekte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) šiittán-->
     <e><p><l>sillet<s n="V"/><s n="TV"/></l><r>sile<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>simuleret<s n="V"/><s n="TV"/></l><r>simulere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
