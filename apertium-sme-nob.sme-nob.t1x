@@ -1543,25 +1543,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-
-        <choose>
-          <when>
-            <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond"/></equal></test>
-            <out>
-              <chunk name="adv" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="@ADVL→"/></tag>
-                  <tag><clip pos="1" side="sl" part="modality"/></tag>
-                </tags>
-                <lu>
-                  <lit v="kanskje"/>
-                  <lit-tag v="adv"/>
-                </lu>
-              </chunk>
-              <b/>
-            </out>
-          </when>
-        </choose>
         
         <choose>
           <when>
