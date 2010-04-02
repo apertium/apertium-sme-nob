@@ -48,7 +48,7 @@ This is the third pass, it contains:
       <cat-item lemma="adpos" tags="*"/>
     </def-cat>
     <def-cat n="CS">
-      <cat-item lemma="conj" tags="@CVP"/>
+      <cat-item lemma="conj" tags="@CVP.cnjsub"/>
     </def-cat>
     <def-cat n="ADVL">
       <cat-item lemma="adv" tags="@ADVL"/>
@@ -104,6 +104,7 @@ This is the third pass, it contains:
       <cat-item tags="@-FAUXV.*"/>
     </def-cat>
     <def-cat n="SPEC">
+      <cat-item lemma="conj" tags="@CVP.cnjcoo"/>
       <cat-item lemma="adv" tags="@ADVL"/>
       <cat-item lemma="adv" tags="@ADVL.*"/>
       <cat-item tags="SN.@ADVL"/>
@@ -394,6 +395,7 @@ This is the third pass, it contains:
     <rule comment="REGLA: SPEC SN FV
                    V2-rule
                    Doppe son orui vahku => Der_borte bodde han ei uke
+                   de son lei => så var han
                    (PR)Mánnán/Nuorran son orui Romssas => (Som) barn/ungdom bodde han i Tromsø
                    (don't have to match the PR if we can rely on the syn_label)">
       <pattern>
