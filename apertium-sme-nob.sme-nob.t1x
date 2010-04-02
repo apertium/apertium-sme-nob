@@ -231,7 +231,6 @@ This is the first pass, it contains:
       <attr-item tags="imp"/>
       <attr-item tags="PrfPrc"/>
       <attr-item tags="pp"/>
-      <attr-item tags="pprs"/>
     </def-attr>
     <def-attr n="neg">
       <attr-item tags="ConNeg"/>
@@ -1534,6 +1533,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
     
     <rule comment="REGLA: VERB
                    or VERB=>ADV
+                   or VERB=>ADJ
                    ii => adv.p3.sg{ikke}
                    Itgo => adv.p2.sg.Qst{ikke}">
       <pattern>
@@ -1541,6 +1541,26 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <choose>
+          <when>
+            <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond"/></equal></test>
+            <out>
+              <chunk name="adv" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="@ADVL→"/></tag>
+                  <tag><clip pos="1" side="sl" part="modality"/></tag>
+                </tags>
+                <lu>
+                  <lit v="kanskje"/>
+                  <lit-tag v="adv"/>
+                </lu>
+              </chunk>
+              <b/>
+            </out>
+          </when>
+        </choose>
+        
         <choose>
           <when>
             <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
@@ -1562,26 +1582,11 @@ always(?) def in nob; predicative superlatives are only if they have a determine
                 </lu>
               </chunk>
             </out>
-        </when>
+        </when>        
         <when>
-          <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond"/></equal></test>
+          <test><begins-with><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></begins-with></test>
           <out>
-            <chunk name="adv" case="caseFirstWord">
-              <tags>
-                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                <tag><clip pos="1" side="sl" part="mode"/></tag>
-                <tag><clip pos="1" side="tl" part="temps"/></tag>
-                <tag><clip pos="1" side="tl" part="pers"/></tag>
-                <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                <tag><clip pos="1" side="tl" part="animacy"/></tag>
-              </tags>
-              <lu>
-                <lit v="kanskje"/>
-                <lit-tag v="adv"/>
-              </lu>
-            </chunk>
-            <b/>
-            <chunk name="verb" case="caseFirstWord">
+            <chunk name="adj" case="caseFirstWord">
               <tags>
                 <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
@@ -1592,9 +1597,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               </tags>
               <lu>
                 <clip pos="1" side="tl" part="lemh"/>
-                <clip pos="1" side="tl" part="a_verb"/>
-                <clip pos="1" side="tl" part="temps"/>
-                <clip pos="1" side="tl" part="voice"/>
+                <clip pos="1" side="tl" part="a_adj"/>
                 <clip pos="1" side="tl" part="lemq"/>
               </lu>
             </chunk>

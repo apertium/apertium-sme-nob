@@ -181,8 +181,11 @@ Cleanup
                   If we don't have any number, give plural (no defnes) a shot.
                   TODO: why doesn't (concat grau pl) work?">
       <choose><when>
-        <test><equal><clip pos="1" part="grau"/><lit v=""/></equal></test>
-                <let>
+        <test><and>
+          <equal><clip pos="1" part="grau"/><lit v=""/></equal>
+          <not><equal><clip pos="1" part="a_adj"/><lit-tag v="adj.pprs"/></equal></not>
+        </and></test>
+        <let>
           <clip pos="1" part="a_adj"/>
           <concat><clip pos="1" part="a_adj"/><lit-tag v="posi"/></concat>
         </let>
