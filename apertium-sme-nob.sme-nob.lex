@@ -6,6 +6,7 @@ LIST @HAB = @HAB ;
 LIST FAUXV = @+FAUXV @-FAUXV ;
 LIST ActioEss = (Actio Ess) ;
 LIST PronPersIll = (Pron Pers Ill) ;
+LIST Cond = (Cond) ;
 
 SECTION
 
