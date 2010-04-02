@@ -28,6 +28,7 @@
 
     <sdef n="Interr"  c="Interrogative"/>
     <sdef n="Rel"     c="Relative"/>
+    <sdef n="Refl"    c="Reflexive"/>
     <sdef n="Indef"   c="Indefinite"/>
     <sdef n="Dem"     c="Demonstrative"/>
     <sdef n="itg"     c="Interrogative"/>
@@ -261,6 +262,7 @@
       <e><p><l><s n="Cond"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Cond"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Actio"/><s n="Ess"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
+      <e><p><l></l><r></r></p></e>
     </pardef>
     <pardef n="deverbal__n">
       <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r></r></p><par n="__n"/></e>
@@ -275,6 +277,7 @@
     <e><p><l>ja<s n="CC"/></l><r>og<s n="cnjcoo"/></r></p></e>
     <e><p><l>dahje<s n="CC"/></l><r>eller<s n="cnjcoo"/></r></p></e>
     <e><p><l>dahjege<s n="CC"/></l><r>eller<s n="cnjcoo"/></r></p></e>
+    <e><p><l>vai<s n="CC"/></l><r>eller<s n="cnjcoo"/></r></p></e>
     <e><p><l>sihke<s n="CC"/></l><r>både<s n="cnjcoo"/></r></p></e>
     <e><p><l>muhto<s n="CC"/></l><r>men<s n="cnjcoo"/></r></p></e>
     <!-- sjekk denne: -->
@@ -287,6 +290,8 @@
     <e><p><l>dego<s n="CS"/></l><r>som<s n="cnjsub"/></r></p></e>
     <e><p><l>ahte<s n="CS"/></l><r>at<s n="cnjsub"/></r></p></e>
     <e><p><l>mo<s n="CS"/></l><r>hvordan<s n="cnjsub"/></r></p></e> <!-- TODO: Check -->
+    <e><p><l>vai<s n="CS"/></l><r>for<b/>at<s n="cnjsub"/></r></p></e>
+    <e slr="1"><p><l>vai<s n="CS"/></l><r>for<b/>å<s n="cnjsub"/></r></p></e>
 
     <!-- Adpositions -->
 
@@ -324,6 +329,8 @@
     <e><p><l>gii<s n="Pron"/><s n="Interr"/></l><r>hvem<s n="prn"/><s n="itg"/></r></p><par n="__prn"/></e>
 
     <e><p><l>gii<s n="Pron"/><s n="Rel"/></l><r>som<s n="cnjsub"/></r></p><par n="__prn"/></e>
+
+    <e><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>selv<s n="adv"/></r></p></e>
 
     <!-- Quantifiers: -->
     <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
@@ -1975,6 +1982,7 @@
     <e><p><l>ovtto<s n="Adv"/></l><r>bestandig<s n="adv"/></r></p></e>
 <!--     <e c="todo: check"><p><l>rabas<b/>gieđaiguin<s n="Adv"/></l><r>med<b/>åpne<b/>armer<s n="adv"/></r></p></e> -->
     <e><p><l>ruossalassii<s n="Adv"/></l><r>i<b/>kryss<s n="adv"/></r></p></e>
+    <e><p><l>ruoktot<s n="Adv"/></l><r>hjem<s n="adv"/></r></p></e>
     <e><p><l>seammá<s n="Adv"/></l><r>samme<s n="adv"/></r></p></e>
     <e><p><l>sisa<s n="Adv"/></l><r>inn<s n="adv"/></r></p></e>
     <e><p><l>siskkil<s n="Adv"/></l><r>innvendig<s n="adv"/></r></p></e>
@@ -2031,7 +2039,7 @@
     <e slr="1"><p><l>leat<s n="V"/><s n="IV"/></l><r>ha<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>fertet<s n="V"/><s n="IV"/></l><r>måtte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) fertejit-->
     <e><p><l>galgat<s n="V"/><s n="IV"/></l><r>skulle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>áigut<s n="V"/><s n="IV"/></l><r>skulle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!-- líka 'ville' -->
+    <e><p><l>áigut<s n="V"/><s n="TV"/></l><r>skulle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!-- líka 'ville' -->
     <e><p><l>máhttit<s n="V"/><s n="TV"/></l><r>kunne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) máhtán-->
     <e><p><l>sáhttit<s n="V"/><s n="IV"/></l><r>kunne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>berret<s n="V"/><s n="IV"/></l><r>burde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) berrejit-->
@@ -2118,7 +2126,7 @@
     <e><p><l>bagadallat<s n="V"/><s n="TV"/></l><r>gi detaljert beskjed<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>bágget<s n="V"/><s n="TV"/></l><r>tvinge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) bággejin-->
     <e><p><l>báhcit<s n="V"/><s n="IV"/></l><r>bli<g><b/>igjen</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) bázán-->
-    <e><p><l>báhkadit<s n="V"/><s n="TV"/></l><r>varme opp<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>báhkadit<s n="V"/><s n="TV"/></l><r>varme<g><b/>opp</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>báhkkanit<s n="V"/><s n="IV"/></l><r>bli<g><b/>varm</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>báibmat<s n="V"/><s n="TV"/></l><r>gnåle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) báimman-->
     <e><p><l>baikit<s n="V"/><s n="TV"/></l><r>skite<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) baikkii-->
