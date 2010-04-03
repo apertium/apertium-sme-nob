@@ -1,5 +1,5 @@
 # This file is for word sense disambiguation
-
+# See http://wiki.apertium.org/wiki/Limited_rule-based_lexical_selection
 
 DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
 
@@ -21,11 +21,12 @@ SECTION
 
 # verbs.
 
+# leat 0 = være, 1 = ha
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg)(-2 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) (NOT 1 ActioEss) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 IndPrt) (1 Inf) ; # Perf Cond 2 
-# være => ha
+# Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon 
 # (unfortunately no animacy, and impers isn't until bidix...)
 
