@@ -13,6 +13,8 @@ LIST ActioEss = (Actio Ess) ;
 LIST PronPersIll = (Pron Pers Ill) ;
 LIST CURRENCY = "denara" "dollár" "euro" "kruvdnu" "kr" "ru" "rubel" "ruvdno" "ruvdnu" "¢" "€" "$";
 LIST Cond = (Cond) ;
+LIST Inf = (Inf) ;
+LIST IndPrt = (Ind Prt) ;
 
 
 SECTION
@@ -22,6 +24,7 @@ SECTION
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg)(-2 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) (NOT 1 ActioEss) ;
+SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 IndPrt) (1 Inf) ; # Perf Cond 2 
 # være => ha
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon 
 # (unfortunately no animacy, and impers isn't until bidix...)
