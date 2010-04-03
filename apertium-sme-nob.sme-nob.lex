@@ -21,9 +21,11 @@ SECTION
 
 # verbs.
 
-# leat 0 = være, 1 = ha
+# leat 0 = være, 1 = ha, 2 = måtte («ha å»)
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
-SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg)(-2 @HAB) ;
+SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg) (-2 @HAB) ;
+SUBSTITUTE ("leat:1") ("leat:2") ("leat:1" V IV) (1 Inf) ;
+# mis lea cahkkehit dola
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) (NOT 1 ActioEss) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 IndPrt) (1 Inf) ; # Perf Cond 2 
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
