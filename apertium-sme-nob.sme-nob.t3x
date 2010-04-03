@@ -3,11 +3,14 @@
 <!--
 This is the third pass, it contains:
 
+* V2, rules which involve verb, adverb and/or noun chunks
+* Insert dropped pronouns
+  * Overridden by rules matching the SN-maybe-[LR]SUBJ categories; these include 
+    unknowns and should just be passed through unchanged.
 * move postpositions (SN ADPOS -> ADPOS SN) 
   "[1 big house which is on the hill] [2 in]"
 * remove prepositions when case is governed by adpositions
-* V2
-* Insert dropped pronouns
+  See REGLA: PR SN-post adpos
 -->
 
 <interchunk>
@@ -24,11 +27,13 @@ This is the third pass, it contains:
       <cat-item tags="SN.@→P.*"/>
     </def-cat>
     <def-cat n="SN-maybe-LSUBJ">
+      <cat-item lemma="unknown" tags="unknown"/>
       <cat-item tags="SN.@HAB.*"/>
       <cat-item tags="SN.@SUBJ→.*"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
     <def-cat n="SN-maybe-RSUBJ">
+      <cat-item lemma="unknown" tags="unknown"/>
       <cat-item tags="SN.@HAB.*"/>           <!-- HAB or not here? -->
       <cat-item tags="SN.@←SUBJ.*"/>
       <cat-item tags="SN.@X.*"/>
@@ -604,6 +609,26 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: SPEC FV SN-maybe-RSUBJ
+                   de lei son (juo) => så hadde han (allerede)
+                   Override prodrop rule if we might have a subject to the right">
+      <pattern>
+        <pattern-item n="SPEC"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="SN-maybe-RSUBJ"/>
+      </pattern>
+      <action>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: FV SN-maybe-RSUBJ
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
@@ -689,7 +714,7 @@ This is the third pass, it contains:
       </action>
     </rule>
 
-    <rule comment="REGLA: CS FV SADV
+    <rule comment="REGLA: CS adv-FV-Neg IV
                    Subordinate clause.
                    go it boađáše => at/når du ikke kommer
                    Insert dropped pronoun">
