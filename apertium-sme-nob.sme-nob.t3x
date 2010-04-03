@@ -49,6 +49,7 @@ This is the third pass, it contains:
     </def-cat>
     <def-cat n="CS">
       <cat-item lemma="conj" tags="@CVP.cnjsub"/>
+      <cat-item lemma="conj" tags="@CNP.cnjsub"/>
     </def-cat>
     <def-cat n="ADVL">
       <cat-item lemma="adv" tags="@ADVL"/>
@@ -124,10 +125,6 @@ This is the third pass, it contains:
     <def-cat n="SADV">
       <cat-item tags="@SADV"/>
     </def-cat>
-    <def-cat n="CNJSUB">
-      <cat-item tags="@CNP"/>
-      <cat-item tags="@CVP"/>
-    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
@@ -200,6 +197,11 @@ This is the third pass, it contains:
       <attr-item tags="pp"/>
       <attr-item tags="pprs"/>
     </def-attr>
+    <def-attr n="modality">
+      <attr-item tags="Ind"/>
+      <attr-item tags="Cond"/>
+      <attr-item tags="Pot"/>
+    </def-attr>
     <def-attr n="mode">
       <attr-item tags="Qst"/>
     </def-attr>
@@ -266,6 +268,8 @@ This is the third pass, it contains:
     <def-var n="gender"/>
     <def-var n="pro" c="in case it was dropped"/>
     <def-var n="pro-blank" c="one space if there's a pro, else nothing"/>
+    <def-var n="adv" c="conditional / potensialis"/>
+    <def-var n="adv-blank" c="one space if there's an adv, else nothing"/>
   </section-def-vars>
 
   <section-def-lists>
@@ -387,6 +391,52 @@ This is the third pass, it contains:
         </otherwise>
       </choose>
     </def-macro>
+    <def-macro n="set_adv" npar="1"
+               c="arg.1: verb chunk.
+                  If given indicative, make adv and adv-blank empty.">
+      <choose>
+        <when>
+          <test>
+            <equal><clip pos="1" part="modality"/><lit-tag v="Pot"/></equal>
+          </test>          
+          <let>
+            <var n="adv"/>
+            <concat>
+              <lit v="^adv"/>
+              <lit-tag v="@ADVL"/>
+              <clip pos="1" part="modality"/>
+              <lit v="{^"/>
+              <lit v="muligens"/>
+              <lit-tag v="adv"/>
+              <lit v="$}$"/>
+            </concat>
+          </let>
+          <let><var n="adv-blank"/><b/></let>
+        </when>
+        <when>
+          <test>
+            <equal><clip pos="1" part="modality"/><lit-tag v="Cond"/></equal>
+          </test>
+          <let>
+            <var n="adv"/>
+            <concat>
+              <lit v="^adv"/>
+              <lit-tag v="@ADVL"/>
+              <clip pos="1" part="modality"/>
+              <lit v="{^"/>
+              <lit v="kanskje"/>
+              <lit-tag v="adv"/>
+              <lit v="$}$"/>
+            </concat>
+          </let>
+          <let><var n="adv-blank"/><b/></let>
+        </when>
+        <otherwise>
+          <let><var n="adv"/><lit v=""/></let>
+          <let><var n="adv-blank"/><lit v=""/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
   </section-def-macros>
   
   <section-rules>
@@ -404,12 +454,14 @@ This is the third pass, it contains:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="3" part="whole"/></chunk>
           <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
     </rule>
@@ -423,6 +475,7 @@ This is the third pass, it contains:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk>
             <get-case-from pos="1"><lit v="verb"/></get-case-from>
@@ -441,6 +494,7 @@ This is the third pass, it contains:
             <lit v="$}"/>
           </chunk>
           <b/>
+          <var n="adv-blank"/><var n="adv"/>
           <chunk>
             <get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from>
             <clip pos="1" part="tags"/>
@@ -470,10 +524,12 @@ This is the third pass, it contains:
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
-          <chunk><clip pos="2" part="whole"/></chunk> 
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/> 
         </out>
       </action>
     </rule>
@@ -484,8 +540,10 @@ This is the third pass, it contains:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk> 
         </out>
@@ -504,10 +562,12 @@ This is the third pass, it contains:
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
           <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>                    
         </out>
@@ -516,7 +576,8 @@ This is the third pass, it contains:
     <rule comment="REGLA: SN-maybe-LSUBJ adv-FV-Neg adv-IV IV
                    Son ii dáidde jienastit => Han stemmer nok ikke
                    Note: although 'dáidde' is tagged -FAUXV, it has tempus.
-                   Override prodrop rule (TODO below) if we might have a subject to the left">
+                   Override prodrop rule (TODO below) if we might have a subject to the left
+                   We don't introduce Cond/Pot adverbs here.">
       <pattern>
         <pattern-item n="SN-maybe-LSUBJ"/>
         <pattern-item n="adv-FV-Neg"/>
@@ -550,10 +611,12 @@ This is the third pass, it contains:
         <pattern-item n="SN-maybe-RSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
     </rule>
@@ -571,10 +634,12 @@ This is the third pass, it contains:
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
           <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
@@ -589,33 +654,14 @@ This is the third pass, it contains:
       </pattern>
       <action>
         <call-macro n="set_pro"><with-param pos="2"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b/>
           <var n="pro"/>
-        </out>
-      </action>
-    </rule>
-    <rule comment="REGLA: CS ADVL FV
-                   Subordinate clause rule with pro-drop insertion
-                   dego livčče => som om(?kanskje?) de var">
-      <pattern>
-        <pattern-item n="CS"/>
-        <pattern-item n="ADVL"/>
-        <pattern-item n="FV"/>
-      </pattern>
-      <action>
-        <call-macro n="set_pro"><with-param pos="3"/></call-macro>
-        <out>
-          <chunk><clip pos="1" part="whole"/></chunk>
-          <b pos="1"/>
-          <chunk><clip pos="2" part="whole"/></chunk>
-          <b pos="2"/>
-          <var n="pro"/>
-          <b/>
-          <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
     </rule>
@@ -629,6 +675,7 @@ This is the third pass, it contains:
       </pattern>
       <action>
         <call-macro n="set_pro"><with-param pos="3"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
@@ -637,26 +684,29 @@ This is the third pass, it contains:
           <chunk><clip pos="3" part="whole"/></chunk>
           <b/>
           <var n="pro"/>
+          <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
     </rule>
 
-    <rule comment="REGLA: CNJSUB FV SADV
+    <rule comment="REGLA: CS FV SADV
                    Subordinate clause.
                    go it boađáše => at/når du ikke kommer
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="CNJSUB"/>
+        <pattern-item n="CS"/>
         <pattern-item n="adv-FV-Neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
         <call-macro n="set_pro"><with-param pos="2"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
-          <b pos="1"/>
+          <var n="pro-blank"/>
           <var n="pro"/>
-          <b/>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="2"/>
           <chunk><clip pos="3" part="whole"/></chunk>
@@ -672,10 +722,12 @@ This is the third pass, it contains:
       </pattern>
       <action>
         <call-macro n="set_pro"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b/>
-          <var n="pro"/>                    
+          <var n="pro"/>
+          <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
     </rule>
@@ -690,12 +742,14 @@ This is the third pass, it contains:
       <action>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <call-macro n="set_pro"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="3" part="whole"/></chunk>
           <var n="pro-blank"/>
           <var n="pro"/>
           <b pos="1"/>
           <chunk><clip pos="1" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
           <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
@@ -712,9 +766,11 @@ This is the third pass, it contains:
       <action>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_pro"><with-param pos="2"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <var n="pro"/>
           <var n="pro-blank"/>
+          <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -733,10 +789,12 @@ This is the third pass, it contains:
       <action>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_pro"><with-param pos="3"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <var n="pro"/>
           <var n="pro-blank"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
           <b pos="1"/>
           <chunk><clip pos="3" part="whole"/></chunk>
           <b pos="2"/>
@@ -754,12 +812,14 @@ This is the third pass, it contains:
       </pattern>
       <action>
         <call-macro n="set_pro"><with-param pos="2"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
-          <b/>
+          <var n="pro-blank"/>
           <var n="pro"/>
+          <var n="adv-blank"/><var n="adv"/>
           <b pos="2"/>
           <chunk>
             <lit v="verb"/>
@@ -784,14 +844,16 @@ This is the third pass, it contains:
       </pattern>
       <action>
         <call-macro n="set_pro"><with-param pos="3"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="3" part="whole"/></chunk>
-          <b/>
+          <var n="pro-blank"/>
           <var n="pro"/>
           <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
           <b pos="3"/>
           <chunk>
             <lit v="verb"/>
@@ -815,12 +877,14 @@ This is the third pass, it contains:
       <action>
         <call-macro n="set_pro"><with-param pos="1"/></call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b/>
           <var n="pro"/>
           <b pos="1"/>
-          <chunk><clip pos="1" part="whole"/></chunk>                    
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
     </rule>
@@ -833,11 +897,13 @@ This is the third pass, it contains:
       </pattern>
       <action>
         <call-macro n="set_pro"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>        
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <var n="pro"/>
-          <b/>
+          <var n="pro-blank"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
           <b pos="1"/>
           <chunk><clip pos="1" part="whole"/></chunk>                    
         </out>
@@ -851,11 +917,13 @@ This is the third pass, it contains:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_pro"><with-param pos="1"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="1"/></call-macro>        
         <out>
           <var n="pro"/>
           <b/>
           <chunk><clip pos="1" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
     </rule>

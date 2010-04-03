@@ -223,8 +223,8 @@ This is the first pass, it contains:
       <attr-item tags="ind"/>
     </def-attr>
     <def-attr n="temps">
-      <attr-item tags="Ind.Prs"/>
-      <attr-item tags="Ind.Prt"/>
+      <attr-item tags="Prs"/>
+      <attr-item tags="Prt"/>
       <attr-item tags="pres"/>
       <attr-item tags="pret"/>
       <attr-item tags="Inf"/>
@@ -238,7 +238,8 @@ This is the first pass, it contains:
       <attr-item tags="ConNeg"/>
       <attr-item tags="Neg"/>
     </def-attr>
-    <def-attr n="modality">                                    <!--TODO: move Ind down here-->
+    <def-attr n="modality">
+      <attr-item tags="Ind"/>
       <attr-item tags="Cond"/>
       <attr-item tags="Pot"/>
     </def-attr>
@@ -1553,6 +1554,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
                   <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                   <tag><clip pos="1" side="sl" part="neg"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
+                  <tag><clip pos="1" side="sl" part="modality"/></tag>
                   <tag><clip pos="1" side="tl" part="temps"/></tag>
                   <tag><clip pos="1" side="tl" part="pers"/></tag>
                   <tag><clip pos="1" side="tl" part="nbr"/></tag>
@@ -1573,6 +1575,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tags>
                 <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
                 <tag><clip pos="1" side="tl" part="temps"/></tag>
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
@@ -1592,6 +1595,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <tags>
                 <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
                 <tag><clip pos="1" side="tl" part="temps"/></tag>
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
@@ -1623,6 +1627,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="sl" part="modality"/></tag>
               <tag><clip pos="2" side="tl" part="temps"/></tag>
               <tag><clip pos="2" side="tl" part="pers"/></tag>
               <tag><clip pos="2" side="tl" part="nbr"/></tag>
