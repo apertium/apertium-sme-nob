@@ -42,6 +42,8 @@ SUBSTITUTE ("máksit") ("máksit:1") ("máksit" V) (0* CURRENCY BARRIER Ill) ;
 
 SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego")) ;
 
+SUBSTITUTE ("easkka") ("easkka:1") ("easkka" Adv) (-1 ("de") OR ("dál")) ;
+
 
 SUBSTITUTE ("juohke") ("juohke:1") ("juohke" Pron Indef) (1 ("lágan") OR ("lágán")) ;
 
