@@ -227,6 +227,7 @@
       <e><p><l><s n="Gen"/></l><r><s n="gen"/></r></p></e>
       <e><p><l><s n="Ill"/></l><r><s n="ill"/></r></p></e>
       <e><p><l><s n="Loc"/></l><r><s n="loc"/></r></p></e>
+      <e><p><l></l><r></r></p></e>
     </pardef>
     <pardef n="__nbr_pers">
       <e><p><l><s n="Sg1"/></l><r><s n="sg"/><s n="p1"/></r></p></e>
@@ -310,6 +311,7 @@
     <e><p><l>earet<s n="Pr"/></l><r>unntatt<s n="pr"/></r></p></e>
     <e><p><l>eret<s n="Po"/></l><r>fra<s n="pr"/></r></p></e>
     <e><p><l>ektui<s n="Po"/></l><r>mot<s n="pr"/></r></p></e> <!--wsd todo: for(!), sammenlignet med-->
+    <e><p><l>fárrui<s n="Po"/></l><r>med<s n="pr"/></r></p></e>
     <e><p><l>gaskkal<s n="Pr"/></l><r>mellom<s n="pr"/></r></p></e>
     <e><p><l>bokte<s n="Pr"/></l><r>via<s n="pr"/></r></p></e> <!--wsd todo: ved/med-->
     <e><p><l>birra<s n="Po"/></l><r>om<s n="pr"/></r></p></e>  <!--wsd todo: om vs rundt -->
@@ -608,6 +610,8 @@
     <e><p><l>fállu<s n="N"/></l><r>meny<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>fáŋga<s n="N"/></l><r>fange<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>fáttar<s n="N"/></l><r>fadder<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>fárru<s n="N"/></l><r>følge<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e slr="1"><p><l>fárru<s n="N"/></l><r>reisefølge<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>favorihtta<s n="N"/></l><r>favoritt<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>feasta<s n="N"/></l><r>fest<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>festivála<s n="N"/></l><r>festival<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -19198,6 +19202,7 @@
     <e><p><l>eske<s n="Adv"/></l><r>i<b/>stad<s n="adv"/></r></p></e>
     <e><p><l>farga<s n="Adv"/></l><r>snart<s n="adv"/></r></p></e>
     <e><p><l>fargga<s n="Adv"/></l><r>snart<s n="adv"/></r></p></e>
+    <e><p><l>fárrui<s n="Adv"/></l><r>med<s n="adv"/></r></p></e>
     <e><p><l>fas<s n="Adv"/></l><r>igjen<s n="adv"/></r></p></e>
     <e><p><l>feara<s n="Adv"/></l><r>til<b/>og<b/>med<s n="adv"/></r></p></e>
     <e><p><l>friddja<s n="Adv"/></l><r>fri<s n="adv"/></r></p></e>
@@ -19492,10 +19497,11 @@
     <e><p><l>beahtahallat<s n="V"/><s n="IV"/></l><r>bli<g><b/>skuffet</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) -halan-->
     <e><p><l>bearrat<s n="V"/><s n="TV"/></l><r>innkreve<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>beasahit<s n="V"/><s n="TV"/></l><r>miste<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e><p><l>beassat<s n="V"/><s n="IV"/></l><r>fritas<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e slr="1"><p><l>beassat<s n="V"/><s n="IV"/></l><r>slippe<g><b/>inn</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e slr="2"><p><l>beassat<s n="V"/><s n="IV"/></l><r>komme<g><b/>til</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e slr="3"><p><l>beassat<s n="V"/><s n="IV"/></l><r>få<g><b/>lov<b/>til</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>beassat<s n="V"/><s n="IV"/></l><r>få<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="1"><p><l>beassat<s n="V"/><s n="IV"/></l><r>fritas<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="2"><p><l>beassat<s n="V"/><s n="IV"/></l><r>slippe<g><b/>inn</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="3"><p><l>beassat<s n="V"/><s n="IV"/></l><r>komme<g><b/>til</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="4"><p><l>beassat<s n="V"/><s n="IV"/></l><r>få<g><b/>lov<b/>til</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>beaskidit<s n="V"/><s n="TV"/></l><r>klippe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>beroštit<s n="V"/><s n="IV"/></l><r>bry seg om<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>biđđit<s n="V"/><s n="TV"/></l><r>varme litt i gryte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
