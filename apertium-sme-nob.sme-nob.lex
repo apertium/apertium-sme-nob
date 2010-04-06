@@ -7,6 +7,7 @@ SETS
 LIST Ill = Ill ;
 LIST Num = Num ;
 LIST Neg = Neg ;
+LIST Pers = Pers ;
 LIST @ADVL = @ADVL ;
 LIST @HAB = @HAB ;
 LIST Mal = Mal ;
@@ -21,7 +22,7 @@ LIST Cond = (Cond) ;
 LIST Inf = (Inf) ;
 LIST IndPrt = (Ind Prt) ;
 
-LIST PERSON = Mal Fem Sur ;
+LIST PERSON = Mal Fem Sur Pers ;
 
 SECTION
 
