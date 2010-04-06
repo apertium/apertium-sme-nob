@@ -5,10 +5,15 @@ DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
 
 SETS
 LIST Ill = Ill ;
+LIST Num = Num ;
 LIST Neg = Neg ;
 LIST @ADVL = @ADVL ;
 LIST @HAB = @HAB ;
+LIST Mal = Mal ;
+LIST Fem = Fem ;
+LIST Sur = Sur ;
 LIST FAUXV = @+FAUXV @-FAUXV ;
+LIST @SUBJ→ = @SUBJ→ ;
 LIST ActioEss = (Actio Ess) ;
 LIST PronPersIll = (Pron Pers Ill) ;
 LIST CURRENCY = "denara" "dollár" "euro" "kruvdnu" "kr" "ru" "rubel" "ruvdno" "ruvdnu" "¢" "€" "$";
@@ -16,6 +21,7 @@ LIST Cond = (Cond) ;
 LIST Inf = (Inf) ;
 LIST IndPrt = (Ind Prt) ;
 
+LIST PERSON = Mal Fem Sur ;
 
 SECTION
 
@@ -32,12 +38,15 @@ SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 IndPrt) (1 Inf) ; # Perf Cond 2
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon 
 # (unfortunately no animacy, and impers isn't until bidix...)
 
-
 # máksit 0 = bety, 1 = koste, 2 = betale
-SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*1 Ill LINK *1 CURRENCY) ;
- ## Son máksá munnje guokte ruvnnu. # Han betaler meg to kroner.
-SUBSTITUTE ("máksit") ("máksit:1") ("máksit" V) (0* CURRENCY BARRIER Ill) ;
+SUBSTITUTE ("máksit") ("máksit:1") ("máksit" V) (*-1 (@SUBJ→) LINK NOT 0 PERSON)(0* CURRENCY OR Num BARRIER Ill) ;
  ## Duhpát máksá guokte ruvnnu. # Tobakken koster to kroner.
+SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*1 Ill LINK *1 CURRENCY OR Num) ;
+ ## Son máksá munnje guokte ruvnnu. # Han betaler meg to kroner.
+SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*-1 PERSON LINK 0 (@SUBJ→));
+
+## Máret máksá guokte ruvnnu.
+ 
 
 
 SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego")) ;
