@@ -271,6 +271,7 @@ This is the third pass, it contains:
   <section-def-vars>
     <def-var n="caseFirstWord"/>
     <def-var n="gender"/>
+    <def-var n="ana" c="p3 sg gender set by subjects, used later in GD anaphora pronouns"/>
     <def-var n="pro" c="in case it was dropped"/>
     <def-var n="pro-blank" c="one space if there's a pro, else nothing"/>
     <def-var n="adv" c="conditional / potensialis"/>
@@ -292,7 +293,7 @@ This is the third pass, it contains:
       <modify-case><clip pos="2" part="lemh"/><var n="caseFirstWord"/></modify-case>
     </def-macro>
     
-    <def-macro n="set_defnes2" npar="2"
+    <def-macro n="set_defnes_ana2" npar="2"
                c="arg.1: SN, arg.2: verb
                   TODO: parts of this should only be used when loc/ill is in 'first position', check syn_label?
                   Indefinite:
@@ -333,9 +334,33 @@ This is the third pass, it contains:
           <let><clip pos="1" part="art"/><lit-tag v="def"/></let>
         </when>
       </choose>
+      
+      <choose><when>
+        <test><and>
+          <or>
+            <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
+            <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
+            <equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal>
+          </or>
+          <or>
+            <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
+            <equal><clip pos="1" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+          </or>
+        </and></test>
+        <let><var n="ana"/><clip pos="1" part="gen"/></let>
+      </when></choose>
+      <choose><when>
+        <test><and>
+          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
+          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+          <equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal>
+        </and></test>
+        <let><clip pos="1" part="gen"/><var n="ana"/></let>
+      </when></choose>
     </def-macro>
     
-    <def-macro n="guess_gender" npar="1">
+    <def-macro n="guess_gender" npar="1"
+               c="arg.1: verb chunk">
       <let><var n="gender"/><lit-tag v="mf"/></let>
       <choose><when>
         <test><and>
@@ -352,6 +377,14 @@ This is the third pass, it contains:
           <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
         </and></test>
         <let><var n="gender"/><lit-tag v="nt"/></let>
+      </when></choose>
+      <choose><when>
+        <test><and>
+          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
+          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+          <not><equal><var n="ana"/><lit v=""/></equal></not>
+        </and></test>
+        <let><var n="gender"/><var n="ana"/></let>
       </when></choose>
     </def-macro>
     
@@ -455,6 +488,10 @@ This is the third pass, it contains:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="2"/>
+          <with-param pos="3"/>
+        </call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -476,6 +513,10 @@ This is the third pass, it contains:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="1"/>
+          <with-param pos="2"/>
+        </call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk>
@@ -521,7 +562,7 @@ This is the third pass, it contains:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes2">
+        <call-macro n="set_defnes_ana2">
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
@@ -559,7 +600,7 @@ This is the third pass, it contains:
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes2">
+        <call-macro n="set_defnes_ana2">
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
@@ -586,7 +627,7 @@ This is the third pass, it contains:
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes2">
+        <call-macro n="set_defnes_ana2">
           <with-param pos="1"/>
           <with-param pos="4"/>
         </call-macro>
@@ -611,6 +652,10 @@ This is the third pass, it contains:
         <pattern-item n="SN-maybe-RSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="3"/>
+          <with-param pos="2"/>
+        </call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -629,6 +674,10 @@ This is the third pass, it contains:
         <pattern-item n="SN-maybe-RSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="2"/>
+          <with-param pos="1"/>
+        </call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -648,7 +697,7 @@ This is the third pass, it contains:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes2">
+        <call-macro n="set_defnes_ana2">
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
@@ -671,6 +720,10 @@ This is the third pass, it contains:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="1"/>
+          <with-param pos="2"/>
+        </call-macro>
         <call-macro n="set_pro"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
@@ -692,6 +745,10 @@ This is the third pass, it contains:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="2"/>
+          <with-param pos="3"/>
+        </call-macro>
         <call-macro n="set_pro"><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
@@ -758,6 +815,10 @@ This is the third pass, it contains:
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="2"/>
+          <with-param pos="3"/>
+        </call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <call-macro n="set_pro"><with-param pos="1"/></call-macro>        
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
@@ -782,6 +843,10 @@ This is the third pass, it contains:
         <pattern-item n="V"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="1"/>
+          <with-param pos="2"/>
+        </call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_pro"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
@@ -805,6 +870,10 @@ This is the third pass, it contains:
         <pattern-item n="V"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="1"/>
+          <with-param pos="3"/>
+        </call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_pro"><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
@@ -829,6 +898,10 @@ This is the third pass, it contains:
         <pattern-item n="ROPRED"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="1"/>
+          <with-param pos="2"/>
+        </call-macro>
         <call-macro n="set_pro"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
@@ -861,6 +934,10 @@ This is the third pass, it contains:
         <pattern-item n="ROPRED"/>
       </pattern>
       <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="1"/>
+          <with-param pos="3"/>
+        </call-macro>
         <call-macro n="set_pro"><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>

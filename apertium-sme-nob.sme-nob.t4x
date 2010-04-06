@@ -92,6 +92,11 @@ Cleanup
       <attr-item tags="ord.comp"/>
       <attr-item tags="ord.sup"/>
     </def-attr>
+    <def-attr n="pers">
+      <attr-item tags="p1"/>
+      <attr-item tags="p2"/>
+      <attr-item tags="p3"/>
+    </def-attr>
     <def-attr n="case">
       <attr-item tags="Nom"/>
       <attr-item tags="Acc"/>
@@ -233,6 +238,25 @@ Cleanup
       </when></choose>
     </def-macro>
     
+    <def-macro n="clean_pron" npar="2"
+               c="arg.1: pronoun, arg.2: chunk
+                  Put non-GD chunk gender on pronoun.">
+      <choose><when>
+        <test><and>
+          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
+          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+          <not><or>
+            <equal><clip pos="2" part="gen"/><lit v=""/></equal>
+            <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
+          </or></not>
+        </and></test>
+        <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
+        <choose><when>
+          <test><equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal></test>
+          <let><clip pos="1" part="lemh"/><lit v="hun"/></let>
+        </when></choose>
+      </when></choose>
+    </def-macro>
     <def-macro n="clean_case" npar="2"
                c="arg.1: prepositional object, arg.2: chunk
                   Remove object genitive if chunk doesn't have genitive">
@@ -303,6 +327,7 @@ Cleanup
         <pattern-item n="pron"/>
       </pattern>
       <action>
+        <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_case"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
