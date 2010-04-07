@@ -7,10 +7,7 @@ This is the third pass, it contains:
 * Insert dropped pronouns
   * Overridden by rules matching the SN-maybe-[LR]SUBJ categories; these include 
     unknowns and should just be passed through unchanged.
-* move postpositions (SN ADPOS -> ADPOS SN) 
-  "[1 big house which is on the hill] [2 in]"
-* remove prepositions when case is governed by adpositions
-  See REGLA: PR SN-post adpos
+* Some gender and definiteness fixes using the larger context
 -->
 
 <interchunk>
@@ -22,9 +19,6 @@ This is the third pass, it contains:
     <def-cat n="PR">
       <cat-item tags="PR"/>
       <cat-item tags="PR.*"/>
-    </def-cat>
-    <def-cat n="SN-post">
-      <cat-item tags="SN.@→P.*"/>
     </def-cat>
     <def-cat n="SN-maybe-LSUBJ">
       <cat-item lemma="unknown" tags="unknown"/>
@@ -48,9 +42,6 @@ This is the third pass, it contains:
     </def-cat>
     <def-cat n="rel">
       <cat-item lemma="rel" tags="*"/>
-    </def-cat>
-    <def-cat n="adpos">
-      <cat-item lemma="adpos" tags="*"/>
     </def-cat>
     <def-cat n="CS">
       <cat-item lemma="conj" tags="@CVP.cnjsub"/>
@@ -1032,57 +1023,6 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
-    
-    
-    <!-- Adpositions -->
-    
-    <rule comment="REGLA: PR SN-post adpos -- garra dálkki geažil => på_grunn_av dårlig vær
-                                              dan geažil => på_grunn_av det
-                   Don't output the PR since case was selected by the adpos anyway.">
-      <pattern>
-        <pattern-item n="PR"/>
-        <pattern-item n="SN-post"/>
-        <pattern-item n="adpos"/>
-      </pattern>
-      <action>
-        <choose>
-          <when>
-            <test><equal><clip pos="2" part="lemh"/><lit v="pron"/></equal></test>
-            <let><clip pos="2" part="case"/><lit-tag v="acc"/></let>
-          </when>
-          <otherwise>
-            <let><clip pos="2" part="case"/><lit v=""/></let>
-          </otherwise>
-        </choose>
-        <out>
-          <b pos="1"/>
-          <chunk><clip pos="3" part="whole"/></chunk>
-          <b pos="2"/>
-          <chunk><clip pos="2" part="whole"/></chunk>
-        </out>
-      </action>
-    </rule>
-    <rule comment="REGLA: SN-post adpos">
-      <pattern>
-        <pattern-item n="SN-post"/>
-        <pattern-item n="adpos"/>
-      </pattern>
-      <action>
-        <choose>
-          <when>
-            <test><equal><clip pos="1" part="lemh"/><lit v="pron"/></equal></test>
-            <let><clip pos="1" part="case"/><lit-tag v="acc"/></let>
-          </when>
-          <otherwise>
-            <let><clip pos="1" part="case"/><lit v=""/></let>
-          </otherwise>
-        </choose>
-        <out>
-          <chunk><clip pos="2" part="whole"/></chunk>
-          <b pos="1"/>
-          <chunk><clip pos="1" part="whole"/></chunk>
-        </out>
-      </action>
-    </rule>
+        
   </section-rules>
 </interchunk>
