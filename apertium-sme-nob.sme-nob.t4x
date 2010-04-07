@@ -320,10 +320,11 @@ Cleanup
         <call-macro n="clean_case"><with-param pos="2"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
+          <!-- for now, this space isn't output since we don't have
+               superblanks in the hfst stream, so we add a space -->
           <b pos="1"/>
-          <lu>
-            <clip pos="2" part="whole"/>
-          </lu>
+          <b/>
+          <lu><clip pos="2" part="whole"/></lu>
         </out>
       </action>
     </rule>
