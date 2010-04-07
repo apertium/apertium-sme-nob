@@ -251,9 +251,14 @@ Cleanup
           </or></not>
         </and></test>
         <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
+        <!-- TODO: use prpers so we don't need these hacks (but that needs changes in nob.dix) -->
         <choose><when>
           <test><equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal></test>
-          <let><clip pos="1" part="lemh"/><lit v="hun"/></let>
+          <let><clip pos="1" part="lemh"/><get-case-from pos="2"><lit v="hun"/></get-case-from></let>
+        </when></choose>
+        <choose><when>
+          <test><equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal></test>
+          <let><clip pos="1" part="lemh"/><get-case-from pos="2"><lit v="det"/></get-case-from></let>
         </when></choose>
       </when></choose>
     </def-macro>
