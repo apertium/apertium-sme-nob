@@ -112,6 +112,8 @@ This is the third pass, it contains:
       <cat-item tags="SN.@ADVL→.*"/>
       <cat-item tags="SN.@SPRED→"/>
       <cat-item tags="SN.@SPRED→.*"/>
+      <cat-item tags="SN.@→P"/> <!-- object of postposition, moved by t2x -->
+      <cat-item tags="SN.@→P.*"/>
       <cat-item tags="SN.@X"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
@@ -500,6 +502,34 @@ This is the third pass, it contains:
           <chunk><clip pos="3" part="whole"/></chunk>
           <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: PR SPEC SN FV
+                   V2-rule
+                   dan maŋŋá son logai => etter det lærte han
+                   ('maŋŋá(PR) dan(SPEC)' after t2x)">
+      <pattern>
+        <pattern-item n="PR"/>
+        <pattern-item n="SPEC"/>
+        <pattern-item n="SN"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="3"/>
+          <with-param pos="4"/>
+        </call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
