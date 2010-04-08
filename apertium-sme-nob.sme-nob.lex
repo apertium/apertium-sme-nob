@@ -48,6 +48,8 @@ SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*-1 PERSON LINK 0 (@SUBJ→)
 
 ## Máret máksá guokte ruvnnu.
  
+# mannat 0 = dra, 1 = gå
+SUBSTITUTE ("mannat") ("mannat:1") ("mannat" V) (*-1 ("mo") OR ("dat"))(0 (Sg3));
 
 
 SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego")) ;
