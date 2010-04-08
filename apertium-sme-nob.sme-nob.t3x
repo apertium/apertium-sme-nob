@@ -271,16 +271,9 @@ This is the third pass, it contains:
     <def-var n="adv-blank" c="one space if there's an adv, else nothing"/>
   </section-def-vars>
 
-  <section-def-lists>
-    <def-list n="gen-adp">
-      <!-- not in use, trying first if we can rely on @→P to pick out
-           only postposition-chosen cases-->
-      <list-item v="geažil"/>
-    </def-list>
-  </section-def-lists>
-
   <section-def-macros>
-    <def-macro n="switch_cases" npar="2">
+    <def-macro n="switch_cases" npar="2"
+               c="Simply switch the typographic cases (upper/lower/capital) of the two arguments.">
       <let><var n="caseFirstWord"/><get-case-from pos="1"><clip pos="1" part="lemh"/></get-case-from></let>
       <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
       <modify-case><clip pos="2" part="lemh"/><var n="caseFirstWord"/></modify-case>
@@ -430,7 +423,9 @@ This is the third pass, it contains:
     </def-macro>
     <def-macro n="set_adv" npar="1"
                c="arg.1: verb chunk.
-                  If given indicative, make adv and adv-blank empty.">
+                  Creates an adverb chunk to indicate conditional/potentialis case.
+                  If given indicative, make adv and adv-blank empty, they are always output.
+                  This is very primitive. TODO: evolve.">
       <choose>
         <when>
           <test>
