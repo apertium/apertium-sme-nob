@@ -221,6 +221,24 @@
       <!-- todo: find counter-examples -->
       <e><p><l><s n="Ess"/></l><r><s n="sg"/><s n="ind"/><s n="ess"/></r></p></e>
     </pardef>
+    <pardef n="cmp__n" c="Use when you want a bidix exception for Cmp-marked only (lhs's)">
+      <e><p><l><s n="Sg"/><s n="Cmp"/></l><r><s n="sg"/><s n="CD"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Nom"/><s n="Cmp"/></l><r><s n="sg"/><s n="nom"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Acc"/><s n="Cmp"/></l><r><s n="sg"/><s n="acc"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Gen"/><s n="Cmp"/></l><r><s n="sg"/><s n="gen"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Ill"/><s n="Cmp"/></l><r><s n="sg"/><s n="ill"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Loc"/><s n="Cmp"/></l><r><s n="sg"/><s n="loc"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Com"/><s n="Cmp"/></l><r><s n="sg"/><s n="com"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Cmp"/></l><r><s n="pl"/><s n="CD"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Nom"/><s n="Cmp"/></l><r><s n="pl"/><s n="nom"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Acc"/><s n="Cmp"/></l><r><s n="pl"/><s n="acc"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Gen"/><s n="Cmp"/></l><r><s n="pl"/><s n="gen"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Ill"/><s n="Cmp"/></l><r><s n="pl"/><s n="ill"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Loc"/><s n="Cmp"/></l><r><s n="pl"/><s n="loc"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Com"/><s n="Cmp"/></l><r><s n="pl"/><s n="com"/></r></p></e>
+      <!-- todo: find counter-examples -->
+      <e><p><l><s n="Ess"/><s n="Cmp"/></l><r><s n="sg"/><s n="ind"/><s n="ess"/></r></p></e>
+    </pardef>
     <pardef n="__np">
       <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
       <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
@@ -539,6 +557,7 @@
     <e><p><l>biru<s n="N"/></l><r>djevel<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>bisma<s n="N"/></l><r>biskop<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>bivttas<s n="N"/></l><r>klesplagg<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e><p><l>bivttas<s n="N"/></l><r>kles<s n="n"/><s n="nt"/></r></p><par n="cmp__n"/></e>
     <e><p><l>boadnjá<s n="N"/></l><r>ektemann<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>boađa<s n="N"/></l><r>atkomst<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>boađus<s n="N"/></l><r>resultat<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -20666,6 +20685,7 @@
  
     <!-- Punctuation -->
 
+    <e><p><l>excl<s n="CLB"/></l><r>!<s n="sent"/><s n="clb"/></r></p></e>
     <e><re>[.\?]</re><p><l><s n="CLB"/></l><r><s n="sent"/><s n="clb"/></r></p></e>
     <e><re>[,]</re><p><l><s n="CLB"/></l><r><s n="cm"/><s n="clb"/></r></p></e>
   </section>
