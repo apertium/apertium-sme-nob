@@ -24,6 +24,7 @@ LIST Inf = (Inf) ;
 LIST IndPrt = (Ind Prt) ;
 
 LIST PERSON = Mal Fem Sur Pers ;
+LIST FISH = "guolli" "dorski" "luossa" ;
 
 SECTION
 
@@ -51,6 +52,10 @@ SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*-1 PERSON LINK 0 (@SUBJ→)
  
 # mannat 0 = dra, 1 = gå
 SUBSTITUTE ("mannat") ("mannat:1") ("mannat" V) (*-1 ("mo") OR ("dat"))(0 (Sg3));
+
+# bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
+SUBSTITUTE ("bivdit") ("bivdit:1") ("bivdit" V)(*1 Qst);
+SUBSTITUTE ("bivdit") ("bivdit:2") ("bivdit" V)(*1 FISH);
 
 
 SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego")) ;
