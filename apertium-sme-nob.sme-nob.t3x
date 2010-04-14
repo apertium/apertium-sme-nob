@@ -693,6 +693,33 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: PR SPEC FV SN-maybe-RSUBJ
+                   (PR) su_mielas leat bohccot => i_hans_sinn er reinene
+                   Override prodrop rule if we might have a subject to the right">
+      <pattern>
+        <pattern-item n="PR"/>
+        <pattern-item n="SPEC"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="SN-maybe-RSUBJ"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="4"/>
+          <with-param pos="3"/>
+        </call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: FV SN-maybe-RSUBJ
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
