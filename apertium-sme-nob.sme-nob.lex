@@ -9,6 +9,7 @@ LIST Num = Num ;
 LIST Neg = Neg ;
 LIST Pers = Pers ;
 LIST @ADVL = @ADVL ;
+LIST @→N = @→N ;
 LIST @HAB = @HAB ;
 LIST Mal = Mal ;
 LIST Fem = Fem ;
@@ -61,6 +62,9 @@ SUBSTITUTE ("juohke") ("juohke:1") ("juohke" Pron Indef) (1 ("lágan") OR ("lág
 
 SUBSTITUTE ("duohta") ("duohta:1") ("duohta" A Sg Loc) (0 @ADVL) ;
 # sann => virkelig
+
+SUBSTITUTE ("miella") ("miella:1") ("miella" N Sg Loc) (-1 @→N) ;
+# sinn => oppfatning (kan regelen vere meir generell?)
 
 SUBSTITUTE (N Ess) (N Ess V) (N Ess @←SPRED) (-1 PronPersIll) ;
 # In certain contexts, N.Ess might be translated with a verb
