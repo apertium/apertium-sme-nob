@@ -8,6 +8,7 @@ LIST Ill = Ill ;
 LIST Num = Num ;
 LIST Neg = Neg ;
 LIST Pers = Pers ;
+LIST Qst = Qst ;
 LIST @ADVL = @ADVL ;
 LIST @→N = @→N ;
 LIST @HAB = @HAB ;
