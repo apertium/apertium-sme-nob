@@ -39,6 +39,7 @@
 		<sdef n="dem" 	c="Demonstrative"/> 
 		<sdef n="itg" 	c="Question word / interrogative"/>
 		<sdef n="qnt" 	c="Quantifier"/> 
+		<sdef n="neg" 	c="Negative"/> 
 		<sdef n="emph" 	c="Emphatic"/> 
 		<sdef n="vblex" 	c="Verb"/> 
 		<sdef n="pstv" 	c="-s verb"/>
@@ -79,7 +80,7 @@
 		<sdef n="ep-e" 	c="e-epenthesis"/> 
 	</sdefs>
 	<pardefs>
-          <!-- Compounding pardefs. At the moment, only cp-R and cp-both-s are in use. -->
+          <!-- Compounding pardefs. -->
 <pardef n="cp-R"> 
    <e r="LR"><p><l>uuuuuuuuuuuuuuuu</l>          <r><s n="compound-R"/></r></p></e>
    <e>       <p><l></l>          <r></r></p></e>
@@ -121,9 +122,29 @@
 
 
 <!-- Radical vs conservative spelling choices -->
+<pardef n="lek_LR_leik" c="ikkje_feleleik_eller_dugleik">
+  <e>                    <p><l>lek</l> <r>lek</r></p></e>
+  <e r="LR">             <p><l>leik</l><r>lek</r></p></e>
+</pardef>
+<pardef n="mel_LR_mjøl" c="og melk/mjølk">
+  <e>                    <p><l>mel</l> <r>mel</r></p></e>
+  <e r="LR">             <p><l>mjøl</l><r>mel</r></p></e>
+</pardef>
+<pardef n="hvete_LR_kveite">
+  <e>                    <p><l>hvete</l> <r>hvete</r></p></e>
+  <e r="LR">             <p><l>kveite</l><r>hvete</r></p></e>
+</pardef>
+<pardef n="grøt_LR_graut">
+  <e>                    <p><l>grøt</l> <r>grøt</r></p></e>
+  <e r="LR">             <p><l>graut</l><r>grøt</r></p></e>
+</pardef>
 <pardef n="hånd_LR_hand">
   <e>                    <p><l>hånd</l><r>hånd</r></p></e>
   <e r="LR">             <p><l>hand</l><r>hånd</r></p></e>
+</pardef>
+<pardef n="hval_LR_kval">
+  <e>                    <p><l>hval</l><r>hval</r></p></e>
+  <e r="LR">             <p><l>kval</l><r>hval</r></p></e>
 </pardef>
 <pardef n="høy_LR_høg">
   <e>                    <p><l>høy</l><r>høy</r></p></e>
@@ -132,6 +153,11 @@
 <pardef n="høye_LR_høg">
   <e>                    <p><l>høye</l><r>høye</r></p></e>
   <e r="LR">             <p><l>høg</l> <r>høye</r></p></e>
+</pardef>
+<pardef n="sør_LR_syd">
+  <e>                    <p><l>sør</l><r>sør</r></p></e>
+  <e r="LR">             <p><l>syd</l> <r>sør</r></p></e>
+  <e r="RL">             <p><l>syd</l> <r>syd</r></p></e>
 </pardef>
 
 
@@ -212,6 +238,14 @@
   <e>       <p><l></l>          <r><s n="prn"/><s n="ref"/><s n="sg"/></r></p></e>
 </pardef>
 
+<pardef n="/seg__refl" c="TODO: better at the moment, we just discard this anyway">
+  <e>       <p><l><b/>meg</l>   <r><g><b/>seg</g></r></p></e>
+  <e>       <p><l><b/>deg</l>   <r><g><b/>seg</g></r></p></e>
+  <e>       <p><l><b/>seg</l>   <r><g><b/>seg</g></r></p></e>
+  <e>       <p><l><b/>oss</l>   <r><g><b/>seg</g></r></p></e>
+  <e>       <p><l><b/>dere</l>  <r><g><b/>seg</g></r></p></e>
+</pardef>
+
 <pardef n="in/gen__prn"> <!-- TODO: OBT tags it prn 'pers' -->
   <e r="LR"><p><l>ga</l>         <r>gen<s n="prn"/><s n="f"/><s n="sg"/></r></p></e>
   <e>       <p><l>gen</l>        <r>gen<s n="prn"/><s n="m"/><s n="sg"/></r></p></e>
@@ -234,6 +268,7 @@
   <e r="LR"><p><l>en</l>          <r>e<s n="prn"/><s n="p3"/><s n="f"/><s n="sg"/></r></p></e>
   <e>       <p><l>en</l>          <r>e<s n="prn"/><s n="p3"/><s n="m"/><s n="sg"/></r></p></e>
   <e>       <p><l>e</l>          <r>e<s n="prn"/><s n="p3"/><s n="nt"/><s n="sg"/></r></p></e>
+  <e>       <p><l>en</l>          <r>e<s n="prn"/><s n="neg"/><s n="p3"/><s n="pl"/></r></p></e>
   <e>       <p><l>en</l>          <r>e<s n="prn"/><s n="p3"/><s n="pl"/></r></p></e>
 </pardef>
 
@@ -327,10 +362,13 @@
   <e>       <p><l>deres</l>       <r>de</r>  </p><par n="dets__det"/></e>
   <e>       <p><l>deres</l>       <r>dere</r></p><par n="dets__det"/></e>
 
-  <e>       <p><l>Deres</l>          <r>De<s n="det"/><s n="pos"/><s n="p2"/><s n="m"/><s n="sg"/></r></p></e>
-  <e r="LR"><p><l>Deres</l>          <r>De<s n="det"/><s n="pos"/><s n="p2"/><s n="f"/><s n="sg"/></r></p></e>
-  <e>       <p><l>Deres</l>          <r>De<s n="det"/><s n="pos"/><s n="p2"/><s n="nt"/><s n="sg"/></r></p></e>
-  <e>       <p><l>Deres</l>          <r>De<s n="det"/><s n="pos"/><s n="p2"/><s n="pl"/></r></p></e>
+  <e r="LR"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="m"/><s n="sg"/></r></p></e>
+  <e r="LR"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="f"/><s n="sg"/></r></p></e>
+  <e r="LR"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="nt"/><s n="sg"/></r></p></e>
+  <e r="LR"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="pl"/></r></p></e>
+  <e r="RL"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="m"/><s n="sg"/></r></p></e>
+  <e r="RL"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="nt"/><s n="sg"/></r></p></e>
+  <e r="RL"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="pl"/></r></p></e>
 </pardef>
 
     <!-- Determiners -->
@@ -473,6 +511,7 @@
   <e>       <p><l>en</l>        <r>e<s n="det"/><s n="qnt"/><s n="m"/><s n="sg"/></r></p><par n="S__case"/></e>
   <e r="LR"><p><l>en</l>        <r>e<s n="det"/><s n="qnt"/><s n="f"/><s n="sg"/></r></p><par n="S__case"/></e>
   <e>       <p><l>en</l>        <r>e<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="S__case"/></e>
+  <e>       <p><l>en</l>        <r>e<s n="det"/><s n="qnt"/><s n="neg"/><s n="pl"/></r></p><par n="S__case"/></e>
 </pardef>
 
 <pardef n="in/gen__det"> 
@@ -685,7 +724,8 @@
   <e>       <p><l>enn</l>       <r>ann<s n="n"/><s n="m"/><s n="pl"/><s n="ind"/></r></p><par n="S__case"/><par n="cp-R"/></e>
   <e>       <p><l>annen</l>     <r>ann<s n="n"/><s n="m"/><s n="sg"/><s n="def"/></r></p><par n="S__case"/><par n="cp-R"/></e>
   <e>       <p><l>ann</l>       <r>ann<s n="n"/><s n="m"/><s n="sg"/><s n="ind"/></r></p><par n="cp-both-s_S__case"/></e>
-  <e r="LR"><p><l>ann</l>       <r>ann<s n="n"/><s n="m"/><s n="pl"/><s n="ind"/></r></p><par n="S__case"/><par n="cp-R"/></e>
+  <!-- todo: just causes disambig problems, and we need to name/tag it differently for correct bidix choice -->
+<!--   <e r="LR"><p><l>ann</l>       <r>ann<s n="n"/><s n="m"/><s n="pl"/><s n="ind"/></r></p><par n="S__case"/><par n="cp-R"/></e> -->
 </pardef>
 <pardef n="tr/e__n">
   <e>       <p><l>ærne</l>      <r>e<s n="n"/><s n="nt"/><s n="pl"/><s n="def"/></r></p><par n="S__case"/><par n="cp-R"/></e>
@@ -4411,6 +4451,38 @@
 </pardef>
 
 <!-- /exceptions, nouns w/o compounding -->
+
+<!-- These are used to force a character to be uppercase in generation: -->
+<pardef n="Aa"><e r="LR"><i>a</i></e><e r="RL"><p><l>A</l><r>a</r></p></e></pardef>
+<pardef n="Bb"><e r="LR"><i>b</i></e><e r="RL"><p><l>B</l><r>b</r></p></e></pardef>
+<pardef n="Cc"><e r="LR"><i>c</i></e><e r="RL"><p><l>C</l><r>c</r></p></e></pardef>
+<pardef n="Dd"><e r="LR"><i>d</i></e><e r="RL"><p><l>D</l><r>d</r></p></e></pardef>
+<pardef n="Ee"><e r="LR"><i>e</i></e><e r="RL"><p><l>E</l><r>e</r></p></e></pardef>
+<pardef n="Ff"><e r="LR"><i>f</i></e><e r="RL"><p><l>F</l><r>f</r></p></e></pardef>
+<pardef n="Gg"><e r="LR"><i>g</i></e><e r="RL"><p><l>G</l><r>g</r></p></e></pardef>
+<pardef n="Hh"><e r="LR"><i>h</i></e><e r="RL"><p><l>H</l><r>h</r></p></e></pardef>
+<pardef n="Ii"><e r="LR"><i>i</i></e><e r="RL"><p><l>I</l><r>i</r></p></e></pardef>
+<pardef n="Jj"><e r="LR"><i>j</i></e><e r="RL"><p><l>J</l><r>j</r></p></e></pardef>
+<pardef n="Kk"><e r="LR"><i>k</i></e><e r="RL"><p><l>K</l><r>k</r></p></e></pardef>
+<pardef n="Ll"><e r="LR"><i>l</i></e><e r="RL"><p><l>L</l><r>l</r></p></e></pardef>
+<pardef n="Mm"><e r="LR"><i>m</i></e><e r="RL"><p><l>M</l><r>m</r></p></e></pardef>
+<pardef n="Nn"><e r="LR"><i>n</i></e><e r="RL"><p><l>N</l><r>n</r></p></e></pardef>
+<pardef n="Oo"><e r="LR"><i>o</i></e><e r="RL"><p><l>O</l><r>o</r></p></e></pardef>
+<pardef n="Pp"><e r="LR"><i>p</i></e><e r="RL"><p><l>P</l><r>p</r></p></e></pardef>
+<pardef n="Qq"><e r="LR"><i>q</i></e><e r="RL"><p><l>Q</l><r>q</r></p></e></pardef>
+<pardef n="Rr"><e r="LR"><i>r</i></e><e r="RL"><p><l>R</l><r>r</r></p></e></pardef>
+<pardef n="Ss"><e r="LR"><i>s</i></e><e r="RL"><p><l>S</l><r>s</r></p></e></pardef>
+<pardef n="Tt"><e r="LR"><i>t</i></e><e r="RL"><p><l>T</l><r>t</r></p></e></pardef>
+<pardef n="Uu"><e r="LR"><i>u</i></e><e r="RL"><p><l>U</l><r>u</r></p></e></pardef>
+<pardef n="Vv"><e r="LR"><i>v</i></e><e r="RL"><p><l>V</l><r>v</r></p></e></pardef>
+<pardef n="Ww"><e r="LR"><i>w</i></e><e r="RL"><p><l>W</l><r>w</r></p></e></pardef>
+<pardef n="Xx"><e r="LR"><i>x</i></e><e r="RL"><p><l>X</l><r>x</r></p></e></pardef>
+<pardef n="Yy"><e r="LR"><i>y</i></e><e r="RL"><p><l>Y</l><r>y</r></p></e></pardef>
+<pardef n="Zz"><e r="LR"><i>z</i></e><e r="RL"><p><l>Z</l><r>z</r></p></e></pardef>
+<pardef n="Ææ"><e r="LR"><i>æ</i></e><e r="RL"><p><l>Æ</l><r>æ</r></p></e></pardef>
+<pardef n="Øø"><e r="LR"><i>ø</i></e><e r="RL"><p><l>Ø</l><r>ø</r></p></e></pardef>
+<pardef n="Åå"><e r="LR"><i>å</i></e><e r="RL"><p><l>Å</l><r>å</r></p></e></pardef>
+
 <pardef n="akronym_ord__n">
   <!-- Ord som kan opptre med små eller store bokstavar, men me vil
        halde oss til ein viss form. Store bokstavar utgjer for desse
@@ -4419,112 +4491,63 @@
        sidan Apertium tek seg av det). Me har små bokstavar i lemma
        for å ikkje forvirre transfer (get-case-from/modify-case). -->
 
-  <e r="LR" lm="bcg-vaksine"><i>bcg-vaksine</i><par n="re__n"/></e>  
-  <e r="RL"><p>          <l>BCG-vaksine</l><r>bcg-vaksine</r></p><par n="re__n"/></e>
-  <e r="LR" lm="edb-anlegg"><i>edb-anlegg</i><par n="ul__n"/></e>
-  <e r="RL"><p>          <l>EDB-anlegg</l><r>edb-anlegg</r></p><par n="ul__n"/></e>
-  <e r="LR" lm="edb-operatør"><i>edb-operatør</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>EDB-operatør</l><r>edb-operatør</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="edb-senter"><i>edb-sent</i><par n="vat/er__n"/></e>
-  <e r="RL"><p>          <l>EDB-sent</l><r>edb-sent</r></p><par n="vat/er__n"/></e>
-  <e r="LR" lm="edb-sentral"><i>edb-sentral</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>EDB-sentral</l><r>edb-sentral</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="edb-terminal"><i>edb-terminal</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>EDB-terminal</l><r>edb-terminal</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="edb-utstyr"><i>edb-utstyr</i><par n="ul__n"/></e>
-  <e r="RL"><p>          <l>EDB-utstyr</l><r>edb-utstyr</r></p><par n="ul__n"/></e>
-  <e r="LR" lm="nm">     <i>nm</i><par n="VM__n"/></e>
-  <e r="RL"><p>          <l>NM</l><r>nm</r></p><par n="VM__n"/></e>
-  <e r="LR" lm="aids">   <i>aids</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>AIDS</l><r>aids</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="av-middel"><i>av-mid</i><par n="av-mid/del__n"/></e>
-  <e r="RL"><p>          <l>AV-mid</l><r>av-mid</r></p><par n="av-mid/del__n"/></e>
-  <e r="LR" lm="ddt">    <i>ddt</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>DDT</l><r>ddt</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="dna">    <i>dna</i><par n="ul__n"/></e>
-  <e r="RL"><p>          <l>DNA</l><r>dna</r></p><par n="ul__n"/></e>
-  <e r="LR" lm="dna-molekyl"><i>dna-molekyl</i><par n="ja__n"/></e>
-  <e r="RL"><p>          <l>DNA-molekyl</l><r>dna-molekyl</r></p><par n="ja__n"/></e>
-  <e r="LR" lm="dv">     <i>dv</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>DV</l><r>dv</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="dvd">    <i>dvd</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>DVD</l><r>dvd</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="ef-land"><i>ef-land</i><par n="ul__n"/></e>
-  <e r="RL"><p>          <l>EF-land</l><r>ef-land</r></p><par n="ul__n"/></e>
-  <e r="LR" lm="em">     <i>em</i><par n="VM__n"/></e>
-  <e r="RL"><p>          <l>EM</l><r>em</r></p><par n="VM__n"/></e>
-  <e r="LR" lm="em-arrangør"><i>em-arrangør</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>EM-arrangør</l><r>em-arrangør</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="em-tittel"><i>em-tit</i><par n="tit/tel__n"/></e>
-  <e r="RL"><p>          <l>EM-tit</l><r>em-tit</r></p><par n="tit/tel__n"/></e>
-  <e r="LR" lm="ep">     <i>ep</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>EP</l><r>ep</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="hb-apparat"><i>hb-apparat</i><par n="ja__n"/></e>
-  <e r="RL"><p>          <l>HB-apparat</l><r>hb-apparat</r></p><par n="ja__n"/></e>
-  <e r="LR" lm="hiv-smitte"><i>hiv-smitte</i><par n="re__n"/></e>
-  <e r="RL"><p>          <l>HIV-smitte</l><r>hiv-smitte</r></p><par n="re__n"/></e>
-  <e r="LR" lm="hiv-virus"><i>hiv-virus</i><par n="ul__n"/></e>
-  <e r="RL"><p>          <l>HIV-virus</l><r>hiv-virus</r></p><par n="ul__n"/></e>
-  <e r="LR" lm="hv-distrikt"><i>hv-distrikt</i><par n="ja__n"/></e>
-  <e r="RL"><p>          <l>HV-distrikt</l><r>hv-distrikt</r></p><par n="ja__n"/></e>
-  <e r="LR" lm="iq-test"><i>iq-test</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>IQ-test</l><r>iq-test</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="ms-pasient"><i>ms-pasient</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>MS-pasient</l><r>ms-pasient</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="nato-land"><i>nato-land</i><par n="ul__n"/></e>
-  <e r="RL"><p>          <l>NATO-land</l><r>nato-land</r></p><par n="ul__n"/></e>
-  <e r="LR" lm="pc">     <i>pc</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>PC</l><r>pc</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="pd">     <i>pd</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>PD</l><r>pd</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="pm">     <i>pm</i><par n="ja__n"/></e>
-  <e r="RL"><p>          <l>PM</l><r>pm</r></p><par n="ja__n"/></e>
-  <e r="LR" lm="pr">     <i>pr</i><par n="tv__n"/></e>
-  <e r="RL"><p>          <l>PR</l><r>pr</r></p><par n="tv__n"/></e>
-  <e r="LR" lm="si-system"><i>si-system</i><par n="ja__n"/></e>
-  <e r="RL"><p>          <l>SI-system</l><r>si-system</r></p><par n="ja__n"/></e>
-  <e r="LR" lm="tg-grammatikk"><i>tg-grammatikk</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>TG-grammatikk</l><r>tg-grammatikk</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="tv">     <i>tv</i><par n="tv__n"/></e>
-  <e r="RL"><p>          <l>TV</l><r>tv</r></p><par n="tv__n"/></e>
-  <e r="LR" lm="tv-apparat"><i>tv-apparat</i><par n="ja__n"/></e>
-  <e r="RL"><p>          <l>TV-apparat</l><r>tv-apparat</r></p><par n="ja__n"/></e>
-  <e r="LR" lm="tv-kjendis"><i>tv-kjendis</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>TV-kjendis</l><r>tv-kjendis</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="tv-program"><i>tv-program</i><par n="program__n"/></e>
-  <e r="RL"><p>          <l>TV-program</l><r>tv-program</r></p><par n="program__n"/></e>
-  <e r="LR" lm="tv-skjerm"><i>tv-skjerm</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>TV-skjerm</l><r>tv-skjerm</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="tv-vert"><i>tv-vert</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>TV-vert</l><r>tv-vert</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="vm">     <i>vm</i><par n="VM__n"/></e>
-  <e r="RL"><p>          <l>VM</l><r>vm</r></p><par n="VM__n"/></e>
-  <e r="LR" lm="km">     <i>km</i><par n="VM__n"/></e>
-  <e r="RL"><p>          <l>KM</l><r>km</r></p><par n="VM__n"/></e>
-  <e r="LR" lm="ol">     <i>ol</i><par n="VM__n"/></e>
-  <e r="RL"><p>          <l>OL</l><r>ol</r></p><par n="VM__n"/></e>
-  <e r="LR" lm="sommer-ol"><i>sommer-ol</i><par n="VM__n"/></e>
-  <e r="RL"><p>          <l>sommer-OL</l><r>sommer-ol</r></p><par n="VM__n"/></e>
-  <e r="LR" lm="vinter-ol"><i>vinter-ol</i><par n="VM__n"/></e>
-  <e r="RL"><p>          <l>vinter-OL</l><r>vinter-ol</r></p><par n="VM__n"/></e>
-  <e r="LR" lm="vvs-ingeniør"><i>vvs-ingeniør</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>VVS-ingeniør</l><r>vvs-ingeniør</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="farge-tv"><i>farge-tv</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>farge-TV</l><r>farge-tv</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="lp">     <i>lp</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>LP</l><r>lp</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="cet">    <i>cet</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>CET</l><r>cet</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="cest">   <i>cest</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>CEST</l><r>cest</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="utc">    <i>utc</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>UTC</l><r>utc</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="ipa">    <i>ipa</i><par n="ep__n"/></e>
-  <e r="RL"><p>          <l>IPA</l><r>ipa</r></p><par n="ep__n"/></e>
-  <e r="LR" lm="hv-område"><i>hv-områd</i><par n="ød/e__n"/></e>
-  <e r="RL"><p>          <l>HV-områd</l><r>hv-områd</r></p><par n="ød/e__n"/></e>
-  <e r="LR" lm="sos">    <i>sos</i><par n="VM__n"/></e>
-  <e r="RL"><p>          <l>SOS</l><r>sos</r></p><par n="VM__n"/></e>
+  <e lm="BCG-vaksine">   <par n="Bb"/><par n="Cc"/><par n="Gg"/><i>-vaksine</i><par n="re__n"/></e>  
+  <e lm="AP-ledelse">    <par n="Aa"/><par n="Pp"/><i>-ledelse</i><par n="re__n"/></e>
+  <e lm="Kreml-ledelse"> <par n="Kk"/><i>reml-ledelse</i><par n="re__n"/></e>
+  <e lm="OL-ledelse">    <par n="Oo"/><par n="Ll"/><i>-ledelse</i><par n="re__n"/></e>
+  <e lm="LO-ledelse">    <par n="Ll"/><par n="Oo"/><i>-ledelse</i><par n="re__n"/></e>
+  <e lm="EDB-anlegg">    <par n="Ee"/><par n="Dd"/><par n="Bb"/><i>-anlegg</i><par n="ul__n"/></e>
+  <e lm="EDB-operatør">  <par n="Ee"/><par n="Dd"/><par n="Bb"/><i>-operatør</i><par n="ep__n"/></e>
+  <e lm="EDB-senter">    <par n="Ee"/><par n="Dd"/><par n="Bb"/><i>-sent</i><par n="vat/er__n"/></e>
+  <e lm="EDB-sentral">   <par n="Ee"/><par n="Dd"/><par n="Bb"/><i>-sentral</i><par n="ep__n"/></e>
+  <e lm="EDB-terminal">  <par n="Ee"/><par n="Dd"/><par n="Bb"/><i>-terminal</i><par n="ep__n"/></e>
+  <e lm="EDB-utstyr">    <par n="Ee"/><par n="Dd"/><par n="Bb"/><i>-utstyr</i><par n="ul__n"/></e>
+  <e lm="NM">            <par n="Nn"/><par n="Mm"/><par n="VM__n"/></e>
+  <e lm="AIDS">          <par n="Aa"/><par n="Ii"/><par n="Dd"/><par n="Ss"/><par n="ep__n"/></e>
+  <e lm="AV-middel">     <par n="Aa"/><par n="Vv"/><i>-mid</i><par n="av-mid/del__n"/></e>
+  <e lm="DDT">           <par n="Dd"/><par n="Dd"/><par n="Tt"/><par n="ep__n"/></e>
+  <e lm="DNA">           <par n="Dd"/><par n="Nn"/><par n="Aa"/><par n="ul__n"/></e>
+  <e lm="DNA-molekyl">   <par n="Dd"/><par n="Nn"/><par n="Aa"/><i>-molekyl</i><par n="ja__n"/></e>
+  <e lm="DV">            <par n="Dd"/><par n="Vv"/><par n="ep__n"/></e>
+  <e lm="DVD">           <par n="Dd"/><par n="Vv"/><par n="Dd"/><par n="ep__n"/></e>
+  <e lm="EF-land">       <par n="Ee"/><par n="Ff"/><i>-land</i><par n="ul__n"/></e>
+  <e lm="EM">            <par n="Ee"/><par n="Mm"/><par n="VM__n"/></e>
+  <e lm="EM-arrangør">   <par n="Ee"/><par n="Mm"/><i>-arrangør</i><par n="ep__n"/></e>
+  <e lm="EM-tittel">     <par n="Ee"/><par n="Mm"/><i>-tit</i><par n="tit/tel__n"/></e>
+  <e lm="EP">            <par n="Ee"/><par n="Pp"/><par n="ep__n"/></e>
+  <e lm="HB-apparat">    <par n="Hh"/><par n="Bb"/><i>-apparat</i><par n="ja__n"/></e>
+  <e lm="HIV-smitte">    <par n="Hh"/><par n="Ii"/><par n="Vv"/><i>-smitte</i><par n="re__n"/></e>
+  <e lm="HIV-virus">     <par n="Hh"/><par n="Ii"/><par n="Vv"/><i>-virus</i><par n="ul__n"/></e>
+  <e lm="HV-distrikt">   <par n="Hh"/><par n="Vv"/><i>-distrikt</i><par n="ja__n"/></e>
+  <e lm="IQ-test">       <par n="Ii"/><par n="Qq"/><i>-test</i><par n="ep__n"/></e>
+  <e lm="MS-pasient">    <par n="Mm"/><par n="Ss"/><i>-pasient</i><par n="ep__n"/></e>
+  <e lm="NATO-land">     <par n="Nn"/><par n="Aa"/><par n="Tt"/><par n="Oo"/><i>-land</i><par n="ul__n"/></e>
+  <e lm="PC">            <par n="Pp"/><par n="Cc"/><par n="ep__n"/></e>
+  <e lm="PD">            <par n="Pp"/><par n="Dd"/><par n="ep__n"/></e>
+  <e lm="PM">            <par n="Pp"/><par n="Mm"/><par n="ja__n"/></e>
+  <e lm="PR">            <par n="Pp"/><par n="Rr"/><par n="tv__n"/></e>
+  <e lm="SI-system">     <par n="Ss"/><par n="Ii"/><i>-system</i><par n="ja__n"/></e>
+  <e lm="TG-grammatikk"> <par n="Tt"/><par n="Gg"/><i>-grammatikk</i><par n="ep__n"/></e>
+  <e lm="TV">            <par n="Tt"/><par n="Vv"/><par n="tv__n"/></e>
+  <e lm="TV-apparat">    <par n="Tt"/><par n="Vv"/><i>-apparat</i><par n="ja__n"/></e>
+  <e lm="TV-kjendis">    <par n="Tt"/><par n="Vv"/><i>-kjendis</i><par n="ep__n"/></e>
+  <e lm="TV-program">    <par n="Tt"/><par n="Vv"/><i>-program</i><par n="program__n"/></e>
+  <e lm="TV-skjerm">     <par n="Tt"/><par n="Vv"/><i>-skjerm</i><par n="ep__n"/></e>
+  <e lm="TV-vert">       <par n="Tt"/><par n="Vv"/><i>-vert</i><par n="ep__n"/></e>
+  <e lm="VM">            <par n="Vv"/><par n="Mm"/><par n="VM__n"/></e>
+  <e lm="KM">            <par n="Kk"/><par n="Mm"/><par n="VM__n"/></e>
+  <e lm="OL">            <par n="Oo"/><par n="Ll"/><par n="VM__n"/></e>
+  <e lm="sommer-OL">     <i>sommer-</i><par n="Oo"/><par n="Ll"/><par n="VM__n"/></e>
+  <e lm="vinter-OL">     <i>vinter-</i><par n="Oo"/><par n="Ll"/><par n="VM__n"/></e>
+  <e lm="VVS-ingeniør">  <par n="Vv"/><par n="Vv"/><par n="Ss"/><i>-ingeniør</i><par n="ep__n"/></e>
+  <e lm="farge-TV">      <i>farge-</i><par n="Tt"/><par n="Vv"/><par n="ep__n"/></e>
+  <e lm="LP">            <par n="Ll"/><par n="Pp"/><par n="ep__n"/></e>
+  <e lm="CET">           <par n="Cc"/><par n="Ee"/><par n="Tt"/><par n="ep__n"/></e>
+  <e lm="CEST">          <par n="Cc"/><par n="Ee"/><par n="Ss"/><par n="Tt"/><par n="ep__n"/></e>
+  <e lm="UTC">           <par n="Uu"/><par n="Tt"/><par n="Cc"/><par n="ep__n"/></e>
+  <e lm="IPA">           <par n="Ii"/><par n="Pp"/><par n="Aa"/><par n="ep__n"/></e>
+  <e lm="HV-område">     <par n="Hh"/><par n="Vv"/><i>-områd</i><par n="ød/e__n"/></e>
+  <e lm="SOS">           <par n="Ss"/><par n="Oo"/><par n="Ss"/><par n="VM__n"/></e>
 </pardef>
 
 <!-- /common nouns -->
@@ -6653,36 +6676,57 @@
   <e>       <p><l>ket</l>       <r>ke<s n="vblex"/><s n="pret"/></r></p></e>
   <e r="LR"><p><l>te</l>        <r>ke<s n="vblex"/><s n="pret"/></r></p></e>
 </pardef>
-<pardef n="sv/erje__vblex_adj">
-  <e r="LR"><p><l>erjet</l>     <r>erje<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e>       <p><l>oren</l>      <r>erje<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e r="LR"><p><l>oret</l>      <r>erje<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e r="LR"><p><l>erjet</l>     <r>erje<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e>       <p><l>oret</l>      <r>erje<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e r="LR"><p><l>erjede</l>    <r>erje<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
-  <e r="LR"><p><l>erjete</l>    <r>erje<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
-  <e>       <p><l>orne</l>      <r>erje<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
-  <e r="LR"><p><l>erjede</l>    <r>erje<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
-  <e r="LR"><p><l>erjete</l>    <r>erje<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
-  <e>       <p><l>orne</l>      <r>erje<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
-  <e>       <p><l>erjende</l>   <r>erje<s n="adj"/><s n="pprs"/></r></p></e>
+<pardef n="sv/erge__vblex_adj">
+  <e r="LR"><p><l>erget</l>     <r>erge<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e>       <p><l>oren</l>      <r>erge<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e r="LR"><p><l>oret</l>      <r>erge<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e r="LR"><p><l>erget</l>     <r>erge<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e>       <p><l>oret</l>      <r>erge<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e r="LR"><p><l>ergede</l>    <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
+  <e r="LR"><p><l>ergete</l>    <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
+  <e>       <p><l>orne</l>      <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
+  <e r="LR"><p><l>ergede</l>    <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
+  <e r="LR"><p><l>ergete</l>    <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
+  <e>       <p><l>orne</l>      <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
+  <e>       <p><l>ergende</l>   <r>erge<s n="adj"/><s n="pprs"/></r></p></e>
 
-  <!-- todo collapse with sverge? -->
-  <e>       <p><l>erj</l>       <r>erje<s n="vblex"/><s n="imp"/></r></p></e>
-  <e>       <p><l>erje</l>      <r>erje<s n="vblex"/><s n="inf"/></r></p></e>
-  <e>       <p><l>erjes</l>     <r>erje<s n="vblex"/><s n="inf"/><s n="pass"/></r></p></e>
-  <e r="LR"><p><l>erja</l>      <r>erje<s n="vblex"/><s n="pp"/></r></p></e>
-  <e r="LR"><p><l>erjet</l>     <r>erje<s n="vblex"/><s n="pp"/></r></p></e>
-  <e>       <p><l>oret</l>      <r>erje<s n="vblex"/><s n="pp"/></r></p></e>
-  <e>       <p><l>erjer</l>     <r>erje<s n="vblex"/><s n="pres"/></r></p></e>
-  <e>       <p><l>erjes</l>     <r>erje<s n="vblex"/><s n="pres"/><s n="pass"/></r></p></e>
-  <e r="LR"><p><l>erja</l>      <r>erje<s n="vblex"/><s n="pret"/></r></p></e>
-  <e r="LR"><p><l>erjet</l>     <r>erje<s n="vblex"/><s n="pret"/></r></p></e>
-  <e>       <p><l>or</l>        <r>erje<s n="vblex"/><s n="pret"/></r></p></e>
-  <e r="LR"><p><l>erja</l>      <r>erje<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e r="LR"><p><l>erja</l>      <r>erje<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e r="LR"><p><l>erja</l>      <r>erje<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
-  <e r="LR"><p><l>erja</l>      <r>erje<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
+  <e>       <p><l>erg</l>       <r>erge<s n="vblex"/><s n="imp"/></r></p></e>
+  <e>       <p><l>erge</l>      <r>erge<s n="vblex"/><s n="inf"/></r></p></e>
+  <e>       <p><l>erges</l>     <r>erge<s n="vblex"/><s n="inf"/><s n="pass"/></r></p></e>
+  <e r="LR"><p><l>erga</l>      <r>erge<s n="vblex"/><s n="pp"/></r></p></e>
+  <e>       <p><l>erget</l>     <r>erge<s n="vblex"/><s n="pp"/></r></p></e>
+  <e r="LR"><p><l>oret</l>      <r>erge<s n="vblex"/><s n="pp"/></r></p></e>
+  <e>       <p><l>erger</l>     <r>erge<s n="vblex"/><s n="pres"/></r></p></e>
+  <e>       <p><l>erges</l>     <r>erge<s n="vblex"/><s n="pres"/><s n="pass"/></r></p></e>
+  <e r="LR"><p><l>erga</l>      <r>erge<s n="vblex"/><s n="pret"/></r></p></e>
+  <e>       <p><l>erget</l>     <r>erge<s n="vblex"/><s n="pret"/></r></p></e>
+  <e r="LR"><p><l>or</l>        <r>erge<s n="vblex"/><s n="pret"/></r></p></e>
+  <e r="LR"><p><l>erga</l>      <r>erge<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e r="LR"><p><l>erga</l>      <r>erge<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e r="LR"><p><l>erga</l>      <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
+  <e r="LR"><p><l>erga</l>      <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
+  <!-- sverje: -->
+  <e r="LR"><p><l>erjet</l>     <r>erge<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e r="LR"><p><l>erjet</l>     <r>erge<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e r="LR"><p><l>erjede</l>    <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
+  <e r="LR"><p><l>erjete</l>    <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
+  <e r="LR"><p><l>erjede</l>    <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
+  <e r="LR"><p><l>erjete</l>    <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
+  <e r="LR"><p><l>erjende</l>   <r>erge<s n="adj"/><s n="pprs"/></r></p></e>
+
+  <e r="LR"><p><l>erj</l>       <r>erge<s n="vblex"/><s n="imp"/></r></p></e>
+  <e r="LR"><p><l>erje</l>      <r>erge<s n="vblex"/><s n="inf"/></r></p></e>
+  <e r="LR"><p><l>erjes</l>     <r>erge<s n="vblex"/><s n="inf"/><s n="pass"/></r></p></e>
+  <e r="LR"><p><l>erja</l>      <r>erge<s n="vblex"/><s n="pp"/></r></p></e>
+  <e r="LR"><p><l>erjet</l>     <r>erge<s n="vblex"/><s n="pp"/></r></p></e>
+  <e r="LR"><p><l>erjer</l>     <r>erge<s n="vblex"/><s n="pres"/></r></p></e>
+  <e r="LR"><p><l>erjes</l>     <r>erge<s n="vblex"/><s n="pres"/><s n="pass"/></r></p></e>
+  <e r="LR"><p><l>erja</l>      <r>erge<s n="vblex"/><s n="pret"/></r></p></e>
+  <e r="LR"><p><l>erjet</l>     <r>erge<s n="vblex"/><s n="pret"/></r></p></e>
+  <e r="LR"><p><l>erja</l>      <r>erge<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e r="LR"><p><l>erja</l>      <r>erge<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e r="LR"><p><l>erja</l>      <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
+  <e r="LR"><p><l>erja</l>      <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
 </pardef>
 <pardef n="overr/ekke__vblex_adj">
   <e>       <p><l>akt</l>       <r>ekke<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
@@ -9519,37 +9563,7 @@
   <e r="LR"><p><l>a</l>         <r>i<s n="vblex"/><s n="pret"/></r></p></e>
   <e>       <p><l>av</l>        <r>i<s n="vblex"/><s n="pret"/></r></p></e>
 </pardef>
-<pardef n="sv/erge__vblex_adj">
-  <!-- todo collapse with sv/erje -->
-  <e r="LR"><p><l>erget</l>     <r>erge<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e>       <p><l>oren</l>      <r>erge<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e r="LR"><p><l>oret</l>      <r>erge<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e r="LR"><p><l>erget</l>     <r>erge<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e>       <p><l>oret</l>      <r>erge<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e r="LR"><p><l>ergede</l>    <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
-  <e r="LR"><p><l>ergete</l>    <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
-  <e>       <p><l>orne</l>      <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
-  <e r="LR"><p><l>ergede</l>    <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
-  <e r="LR"><p><l>ergete</l>    <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
-  <e>       <p><l>orne</l>      <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
-  <e>       <p><l>ergende</l>   <r>erge<s n="adj"/><s n="pprs"/></r></p></e>
 
-  <e>       <p><l>erg</l>       <r>erge<s n="vblex"/><s n="imp"/></r></p></e>
-  <e>       <p><l>erge</l>      <r>erge<s n="vblex"/><s n="inf"/></r></p></e>
-  <e>       <p><l>erges</l>     <r>erge<s n="vblex"/><s n="inf"/><s n="pass"/></r></p></e>
-  <e r="LR"><p><l>erga</l>      <r>erge<s n="vblex"/><s n="pp"/></r></p></e>
-  <e>       <p><l>erget</l>     <r>erge<s n="vblex"/><s n="pp"/></r></p></e>
-  <e r="LR"><p><l>oret</l>      <r>erge<s n="vblex"/><s n="pp"/></r></p></e>
-  <e>       <p><l>erger</l>     <r>erge<s n="vblex"/><s n="pres"/></r></p></e>
-  <e>       <p><l>erges</l>     <r>erge<s n="vblex"/><s n="pres"/><s n="pass"/></r></p></e>
-  <e r="LR"><p><l>erga</l>      <r>erge<s n="vblex"/><s n="pret"/></r></p></e>
-  <e>       <p><l>erget</l>     <r>erge<s n="vblex"/><s n="pret"/></r></p></e>
-  <e r="LR"><p><l>or</l>        <r>erge<s n="vblex"/><s n="pret"/></r></p></e>
-  <e r="LR"><p><l>erga</l>      <r>erge<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e r="LR"><p><l>erga</l>      <r>erge<s n="adj"/><s n="pp"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
-  <e r="LR"><p><l>erga</l>      <r>erge<s n="adj"/><s n="pp"/><s n="pl"/></r></p></e>
-  <e r="LR"><p><l>erga</l>      <r>erge<s n="adj"/><s n="pp"/><s n="sg"/><s n="def"/></r></p></e>
-</pardef>
 
 <pardef n="b/ære__vblex_adj">
   <e>       <p><l>åren</l>      <r>ære<s n="adj"/><s n="pp"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
@@ -10176,6 +10190,18 @@
   <e>       <p><l>yngste</l>    <r>ung<s n="adj"/><s n="sup"/><s n="def"/></r></p></e>
   <e>       <p><l>yngst</l>     <r>ung<s n="adj"/><s n="sup"/><s n="ind"/></r></p></e>
 </pardef>
+<pardef n="flott__adj">
+  <!-- wsd todo flott_flott, flott_gra -->
+  <e>       <p><l>ere</l>       <r><s n="adj"/><s n="comp"/></r></p></e>
+  <e>       <p><l></l>          <r><s n="adj"/><s n="posi"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e>       <p><l></l>          <r><s n="adj"/><s n="posi"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
+  <e r="LR"><p><l>e</l>         <r><s n="adj"/><s n="posi"/><s n="pl"/></r></p></e>
+  <e>       <p><l></l>          <r><s n="adj"/><s n="posi"/><s n="pl"/></r></p></e>
+  <e>       <p><l>e</l>         <r><s n="adj"/><s n="posi"/><s n="sg"/><s n="def"/></r></p></e>
+  <e r="LR"><p><l></l>          <r><s n="adj"/><s n="posi"/><s n="sg"/><s n="def"/></r></p></e>
+  <e>       <p><l>este</l>      <r><s n="adj"/><s n="sup"/><s n="def"/></r></p></e>
+  <e>       <p><l>est</l>       <r><s n="adj"/><s n="sup"/><s n="ind"/></r></p></e>
+</pardef>
 <pardef n="gra__adj">
   <e>       <p><l>ere</l>       <r><s n="adj"/><s n="comp"/></r></p></e>
   <e>       <p><l></l>          <r><s n="adj"/><s n="posi"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
@@ -10416,7 +10442,8 @@
 </pardef>
 <pardef n="ti/tt__adj">
   <e>       <p><l>ere</l>       <r>tt<s n="adj"/><s n="comp"/></r></p></e>
-  <e>       <p><l>est</l>       <r>tt<s n="adj"/><s n="sup"/></r></p></e>
+  <e>       <p><l>este</l>       <r>tt<s n="adj"/><s n="sup"/><s n="def"/></r></p></e>
+  <e>       <p><l>est</l>       <r>tt<s n="adj"/><s n="sup"/><s n="ind"/></r></p></e>
   <e>       <p><l>tt</l>       <r>tt<s n="adj"/><s n="posi"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e>
   <e>       <p><l>tt</l>      <r>tt<s n="adj"/><s n="posi"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
   <e>       <p><l>tt</l>        <r>tt<s n="adj"/><s n="posi"/><s n="pl"/></r></p></e>
@@ -10545,7 +10572,8 @@
   <e>       <p><l>e</l>         <r>e<s n="adj"/><s n="posi"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
   <e>       <p><l>e</l>         <r>e<s n="adj"/><s n="posi"/><s n="pl"/></r></p></e>
   <e>       <p><l>e</l>         <r>e<s n="adj"/><s n="posi"/><s n="sg"/><s n="def"/></r></p></e>
-  <e>       <p><l>st</l>        <r>e<s n="adj"/><s n="sup"/></r></p></e>
+  <e>       <p><l>ste</l>   <r>e<s n="adj"/><s n="sup"/><s n="def"/></r></p></e>
+  <e>       <p><l>st</l>    <r>e<s n="adj"/><s n="sup"/><s n="ind"/></r></p></e>
 </pardef>
 <pardef n="f/å__adj">
   <e>       <p><l>ærre</l>      <r>å<s n="adj"/><s n="comp"/></r></p></e>
@@ -10607,6 +10635,7 @@
 <e lm="enn">             <i>enn</i><par n="fordi__cnjsub"/></e>
 <e lm="til">             <i>til</i><par n="fordi__cnjsub"/></e>
 <e lm="hvor">            <i>hvor</i><par n="fordi__cnjsub"/></e>
+<e lm="der">             <i>der</i><par n="fordi__cnjsub"/></e>
 <e lm="bare">            <i>bare</i><par n="fordi__cnjsub"/></e>
 <e lm="når">             <i>når</i><par n="fordi__cnjsub"/></e> <!-- TODO: Check 'go' in Sámi -->
 
@@ -11094,28 +11123,28 @@
 <e lm="som">             <i>som</i><par n="i__pr"/></e>
 <e lm="sommesteds">      <i>sommesteds</i><par n="i__pr"/></e>
 <e lm="styrbord">        <i>styrbord</i><par n="i__pr"/></e>
-<e lm="syd">             <i>syd</i><par n="i__pr"/></e>
-<e lm="sydetter">        <i>sydetter</i><par n="i__pr"/></e>
-<e lm="sydfra">          <i>sydfra</i><par n="i__pr"/></e>
-<e lm="sydost">          <i>sydost</i><par n="i__pr"/></e>
-<e lm="sydover">         <i>sydover</i><par n="i__pr"/></e>
-<e lm="sydpå">           <i>sydpå</i><par n="i__pr"/></e>
-<e lm="sydvest">         <i>sydvest</i><par n="i__pr"/></e>
-<e lm="sydøst">          <i>sydøst</i><par n="i__pr"/></e>
 <e lm="sønna">           <i>sønna</i><par n="i__pr"/></e>
 <e lm="sønnafjells">     <i>sønnafjells</i><par n="i__pr"/></e>
 <e lm="sønnafra">        <i>sønnafra</i><par n="i__pr"/></e>
 <e lm="sønnenfjells">    <i>sønnenfjells</i><par n="i__pr"/></e>
 <e lm="sønnenfra">       <i>sønnenfra</i><par n="i__pr"/></e>
 <e lm="sønnenom">        <i>sønnenom</i><par n="i__pr"/></e>
-<e lm="sør">             <i>sør</i><par n="i__pr"/></e>
-<e lm="søraust">         <i>søraust</i><par n="i__pr"/></e>
-<e lm="søretter">        <i>søretter</i><par n="i__pr"/></e>
-<e lm="sørfra">          <i>sørfra</i><par n="i__pr"/></e>
-<e lm="sørover">         <i>sørover</i><par n="i__pr"/></e>
-<e lm="sørpå">           <i>sørpå</i><par n="i__pr"/></e>
-<e lm="sørvest">         <i>sørvest</i><par n="i__pr"/></e>
-<e lm="sørøst">          <i>sørøst</i><par n="i__pr"/></e>
+
+<e lm="sør">             <par n="sør_LR_syd"/><par n="i__pr"/></e>
+<e lm="søraust">         <par n="sør_LR_syd"/><i>aust</i><par n="i__pr"/></e>
+<e lm="søretter">        <par n="sør_LR_syd"/><i>etter</i><par n="i__pr"/></e>
+<e lm="sørfra">          <par n="sør_LR_syd"/><i>fra</i><par n="i__pr"/></e>
+<e lm="sørover">         <par n="sør_LR_syd"/><i>over</i><par n="i__pr"/></e>
+<e lm="sørpå">           <par n="sør_LR_syd"/><i>på</i><par n="i__pr"/></e>
+<e lm="sørvest">         <par n="sør_LR_syd"/><i>vest</i><par n="i__pr"/></e>
+<e lm="sørost">          <par n="sør_LR_syd"/><i>ost</i><par n="i__pr"/></e>
+<e lm="sørøst">          <par n="sør_LR_syd"/><i>øst</i><par n="i__pr"/></e>
+<e lm="østsørøst">       <i>øst</i><par n="sør_LR_syd"/><i>øst</i><par n="i__pr"/></e>
+<e lm="sørsørøst">       <par n="sør_LR_syd"/><par n="sør_LR_syd"/><i>øst</i><par n="i__pr"/></e>
+<e lm="sørsørvest">      <par n="sør_LR_syd"/><par n="sør_LR_syd"/><i>vest</i><par n="i__pr"/></e>
+<e lm="sørtil">          <par n="sør_LR_syd"/><i>til</i><par n="i__pr"/></e>
+<e lm="vestsørvest">     <i>vest</i><par n="sør_LR_syd"/><i>vest</i><par n="i__pr"/></e>
+
 <e lm="til">             <i>til</i><par n="i__pr"/></e>
 <e lm="tilbake">         <i>tilbake</i><par n="i__pr"/></e>
 <e lm="tillikemed">      <i>tillikemed</i><par n="i__pr"/></e>
@@ -11199,7 +11228,7 @@
 <e lm="østnordøst">      <i>østnordøst</i><par n="i__pr"/></e>
 <e lm="østover">         <i>østover</i><par n="i__pr"/></e>
 <e lm="østpå">           <i>østpå</i><par n="i__pr"/></e>
-<e lm="østsørøst">       <i>østsørøst</i><par n="i__pr"/></e>
+
 <e lm="jamsides"><i>jamsides</i><par n="i__pr"/></e>
 <e lm="derfra"><i>derfra</i><par n="i__pr"/></e>
 <e lm="mangleies"><i>mangleies</i><par n="i__pr"/></e>
@@ -11237,15 +11266,12 @@
 <e lm="rettsøles"><i>rettsøles</i><par n="i__pr"/></e>
 <e lm="sønnenetter"><i>sønnenetter</i><par n="i__pr"/></e>
 <e lm="sønnentil"><i>sønnentil</i><par n="i__pr"/></e>
-<e lm="sydsydøst"><i>sydsydøst</i><par n="i__pr"/></e>
-<e lm="sydsydvest"><i>sydsydvest</i><par n="i__pr"/></e>
-<e lm="sydtil"><i>sydtil</i><par n="i__pr"/></e>
+
 <e lm="trass i"><i>trass<b/>i</i><par n="i__pr"/></e>
 <e lm="utenbens"><i>utenbens</i><par n="i__pr"/></e>
 <e lm="vestigjennom"><i>vestigjennom</i><par n="i__pr"/></e>
 <e lm="vestgjennom"><i>vestgjennom</i><par n="i__pr"/></e>
 <e lm="vestnordvest"><i>vestnordvest</i><par n="i__pr"/></e>
-<e lm="vestsydvest"><i>vestsydvest</i><par n="i__pr"/></e>
 <e lm="vrangsøles"><i>vrangsøles</i><par n="i__pr"/></e>
 <!-- utigjennom: -->
 <e r="RL" lm="ut gjennom"><i>ut<b/>gjennom</i><par n="i__pr"/></e>
@@ -11938,8 +11964,6 @@
 <e lm="summa summarum">  <i>summa<b/>summarum</i><par n="dagevis__adv"/></e>
 <e lm="surr">            <i>surr</i><par n="dagevis__adv"/></e>
 <e lm="svinaktig">       <i>svinaktig</i><par n="dagevis__adv"/></e>
-<e lm="sydvestover">     <i>sydvestover</i><par n="dagevis__adv"/></e>
-<e lm="sydøstover">      <i>sydøstover</i><par n="dagevis__adv"/></e>
 <e lm="synderlig">       <i>synderlig</i><par n="dagevis__adv"/></e>
 <e lm="så">              <i>så</i><par n="dagevis__adv"/></e>
 <e lm="så pass">         <i>så<b/>pass</i><par n="dagevis__adv"/></e>
@@ -11958,8 +11982,8 @@
 <e lm="søkkende">        <i>søkkende</i><par n="dagevis__adv"/></e>
 <e lm="sønder">          <i>sønder</i><par n="dagevis__adv"/></e>
 <e lm="sørpe">           <i>sørpe</i><par n="dagevis__adv"/></e>
-<e lm="sørvestover">     <i>sørvestover</i><par n="dagevis__adv"/></e>
-<e lm="sørøstover">      <i>sørøstover</i><par n="dagevis__adv"/></e>
+<e lm="sørvestover">     <par n="sør_LR_syd"/><i>vestover</i><par n="dagevis__adv"/></e>
+<e lm="sørøstover">      <par n="sør_LR_syd"/><i>østover</i><par n="dagevis__adv"/></e>
 <e lm="takimellom">      <i>takimellom</i><par n="dagevis__adv"/></e>
 <e lm="takomtil">        <i>takomtil</i><par n="dagevis__adv"/></e>
 <e lm="temmelig">        <i>temmelig</i><par n="dagevis__adv"/></e>
@@ -12007,7 +12031,7 @@
 <e lm="ukevis">          <i>ukevis</i><par n="dagevis__adv"/></e>
 <e lm="ulykkeligvis">    <i>ulykkeligvis</i><par n="dagevis__adv"/></e>
 <e lm="uløyves">         <i>uløyves</i><par n="dagevis__adv"/></e>
-<e lm="underhånden">     <i>underhånden</i><par n="dagevis__adv"/></e>
+<e lm="underhånden">     <i>under</i><par n="hånd_LR_hand"/><i>en</i><par n="dagevis__adv"/></e>
 <e lm="undertiden">      <i>undertiden</i><par n="dagevis__adv"/></e>
 <e lm="unntagelsesvis">  <i>unntagelsesvis</i><par n="dagevis__adv"/></e>
 <e lm="unntakelsesvis">  <i>unntakelsesvis</i><par n="dagevis__adv"/></e>
@@ -12056,6 +12080,7 @@
 <e lm="åffer">           <i>åffer</i><par n="dagevis__adv"/></e>
 <e lm="åkkesom">         <i>åkkesom</i><par n="dagevis__adv"/></e>
 <e lm="årevis">          <i>årevis</i><par n="dagevis__adv"/></e>
+<e lm="sin tid">         <i>sin<b/>tid</i><par n="dagevis__adv"/></e>
 <e lm="årlig års">       <i>årlig<b/>års</i><par n="dagevis__adv"/></e>
 <e lm="åssen">           <i>åssen</i><par n="dagevis__adv"/></e>
 <e lm="òg">              <i>òg</i><par n="dagevis__adv"/></e>
@@ -12134,7 +12159,7 @@
 <e lm="falskelig">       <i>falskelig</i><par n="dagevis__adv"/></e>
 <e lm="etterskuddsvis">  <i>etterskuddsvis</i><par n="dagevis__adv"/></e>
 <e lm="etterskottsvis">  <i>etterskottsvis</i><par n="dagevis__adv"/></e>
-<e lm="etterhånden">     <i>etterhånden</i><par n="dagevis__adv"/></e>
+<e lm="etterhånden">     <i>etter</i><par n="hånd_LR_hand"/><i>en</i><par n="dagevis__adv"/></e>
 <e lm="etterhvert">      <i>etterhvert</i><par n="dagevis__adv"/></e>
 <e lm="etappevis">       <i>etappevis</i><par n="dagevis__adv"/></e>
 <e lm="erfaringsvis">    <i>erfaringsvis</i><par n="dagevis__adv"/></e>
@@ -12230,7 +12255,7 @@
 <e lm="i sted">          <i>i<b/>sted</i><par n="dagevis__adv"/></e>
 <e lm="av sted">         <i>av<b/>sted</i><par n="dagevis__adv"/></e>
 <e lm="sund">            <i>sund</i><par n="dagevis__adv"/></e>
-<e lm="for hånd">        <i>for<b/>hånd</i><par n="dagevis__adv"/></e>
+<e lm="for hånd">        <i>for<b/></i><par n="hånd_LR_hand"/><par n="dagevis__adv"/></e>
 <e lm="der nede">        <i>der<b/>nede</i><par n="dagevis__adv"/></e>
 <e lm="breddende">       <i>breddende</i><par n="dagevis__adv"/></e>
 <e lm="blodende">        <i>blodende</i><par n="dagevis__adv"/></e>
@@ -12295,7 +12320,7 @@
 <e lm="så godt som">     <i>så<b/>godt<b/>som</i><par n="dagevis__adv"/></e>
 <e lm="mestsom">         <i>mestsom</i><par n="dagevis__adv"/></e>
 <e lm="før eller siden"> <i>før<b/>eller<b/>siden</i><par n="dagevis__adv"/></e>
-<e lm="for hånden">      <i>for<b/>hånden</i><par n="dagevis__adv"/></e>
+<e lm="for hånden">      <i>for<b/></i><par n="hånd_LR_hand"/><i>en</i><par n="dagevis__adv"/></e>
 <e lm="inn igjen">       <i>inn<b/>igjen</i><par n="dagevis__adv"/></e>
 <e lm="tilsammen">       <i>tilsammen</i><par n="dagevis__adv"/></e>
 <e lm="tusen">           <i>tusen</i><par n="dagevis__adv"/></e>
@@ -12364,6 +12389,12 @@
 <e lm="halvt">           <i>halvt</i><par n="dagevis__adv"/></e>
 <e lm="høyt">            <i>høyt</i><par n="dagevis__adv"/></e>
 <e lm="lenge">            <i>lenge</i><par n="dagevis__adv"/></e>
+<e lm="hvorved">         <i>hvorved</i><par n="dagevis__adv"/></e>
+<e lm="hvorunder">       <i>hvorunder</i><par n="dagevis__adv"/></e>
+<e lm="hvortil">         <i>hvortil</i><par n="dagevis__adv"/></e>
+<e lm="forleden">         <i>forleden</i><par n="dagevis__adv"/></e>
+<e lm="der">             <i>der</i><par n="dagevis__adv"/></e>
+<e lm="senere">             <i>senere</i><par n="dagevis__adv"/></e>
 <e lm="opp">            <i>opp</i><par n="dagevis__adv"/></e>
 <e lm="fast">            <i>fast</i><par n="dagevis__adv"/></e>
 <e lm="rett">            <i>rett</i><par n="dagevis__adv"/></e>
@@ -12525,6 +12556,17 @@
 <e lm="erfare">		 <i>erf</i><par n="erf/are__vblex_adj"/></e>
 <e lm="forsøke">         <i>forsøk</i><par n="an/e__vblex_adj"/></e>
 <e lm="vare">            <i>var</i><par n="an/e__vblex_adj"/></e>
+<e lm="vedvare">	 <i>vedvar</i><par n="an/e__vblex_adj"/></e>
+<e lm="forhyre">	 <i>forhyr</i><par n="an/e__vblex_adj"/></e>
+<e lm="vedrøre">	 <i>vedrør</i><par n="an/e__vblex_adj"/></e>
+<e lm="gjenfødes">       <i>gjenfød</i><par n="en/es__vblex"/></e>
+<e lm="oppleves">        <i>opplev</i><par n="kiv/es__vblex"/></e>
+<e lm="nedarves">        <i>nedarve</i><par n="lede/s__vblex"/></e>
+<e lm="tennes">          <i>ten</i><par n="ten/nes__vblex"/></e>
+<e lm="trenges">         <i>treng</i><par n="treng/es__vblex"/></e>
+<e lm="taushetsbelegge"> <i>taushetsbel</i><par n="l/egge__vblex_adj"/></e>
+<e lm="svøpe">		 <i>svøp</i><par n="an/e__vblex_adj"/></e>
+<e lm="tvangshyre">	 <i>tvangshyr</i><par n="an/e__vblex_adj"/></e>
 <e lm="utføre">          <i>utfør</i><par n="an/e__vblex_adj"/></e>
 <e lm="løse">            <i>løs</i><par n="an/e__vblex_adj"/></e>
 <e lm="organisere">      <i>organiser</i><par n="an/e__vblex_adj"/></e>
@@ -12552,13 +12594,14 @@
 <e lm="bevare">          <i>bevar</i><par n="an/e__vblex_adj"/></e>
 <e lm="innføre">         <i>innfør</i><par n="an/e__vblex_adj"/></e>
 <e lm="vise">            <i>vis</i><par n="an/e__vblex_adj"/></e>
+<e lm="henhøre">	 <i>henhør</i><par n="an/e__vblex_adj"/></e>
 <e lm="henvise">         <i>henvis</i><par n="an/e__vblex_adj"/></e>
 <e lm="identifisere">    <i>identifiser</i><par n="an/e__vblex_adj"/></e>
 <e lm="søke">            <i>søk</i><par n="an/e__vblex_adj"/></e>
 <e lm="undersøke">       <i>undersøk</i><par n="an/e__vblex_adj"/></e>
 <e lm="høre">            <i>hør</i><par n="an/e__vblex_adj"/></e>
 <e lm="blokkere">        <i>blokker</i><par n="an/e__vblex_adj"/></e>
-<e lm="håndtere">        <i>håndter</i><par n="an/e__vblex_adj"/></e>
+<e lm="håndtere">        <par n="hånd_LR_hand"/><i>ter</i><par n="an/e__vblex_adj"/></e>
 <e lm="seile">           <i>seil</i><par n="an/e__vblex_adj"/></e>
 <e lm="dele">            <i>del</i><par n="an/e__vblex_adj"/></e>
 <e lm="redusere">        <i>reduser</i><par n="an/e__vblex_adj"/></e>
@@ -12568,6 +12611,7 @@
 <e lm="melde">           <i>meld</i><par n="an/e__vblex_adj"/></e>
 <e lm="fokusere">        <i>fokuser</i><par n="an/e__vblex_adj"/></e>
 <e lm="møte">            <i>møt</i><par n="an/e__vblex_adj"/></e>
+<e lm="tie"><i>t</i><par n="t/ie__vblex_adj"/></e>
 <e lm="turnere">         <i>turner</i><par n="an/e__vblex_adj"/></e>
 <e lm="skjule">          <i>skjul</i><par n="an/e__vblex_adj"/></e>
 <e lm="vurdere">         <i>vurder</i><par n="an/e__vblex_adj"/></e>
@@ -12633,7 +12677,7 @@
 <e lm="nyinnmelde">	 <i>nyinnmeld</i><par n="an/e__vblex_adj"/></e>
 <e lm="byggemelde">	 <i>byggemeld</i><par n="an/e__vblex_adj"/></e>
 <e lm="transittere">	 <i>transitter</i><par n="an/e__vblex_adj"/></e>
-<e lm="forhåndskalkulere">	<i>forhåndskalkuler</i><par n="an/e__vblex_adj"/></e>
+<e lm="forhåndskalkulere">	<i>for</i><par n="hånd_LR_hand"/><i>skalkuler</i><par n="an/e__vblex_adj"/></e>
 <e lm="innrapportere">	 <i>innrapporter</i><par n="an/e__vblex_adj"/></e>
 <e lm="moderere">	 <i>moderer</i><par n="an/e__vblex_adj"/></e>
 <e lm="emittere">	 <i>emitter</i><par n="an/e__vblex_adj"/></e>
@@ -12829,7 +12873,6 @@
 <e lm="absolvere">	 <i>absolver</i><par n="an/e__vblex_adj"/></e>
 <e lm="transitivere">	 <i>transitiver</i><par n="an/e__vblex_adj"/></e>
 <e lm="nominere">	 <i>nominer</i><par n="an/e__vblex_adj"/></e>
-<e lm="leke">		 <i>lek</i><par n="an/e__vblex_adj"/></e>
 <e lm="genere">		 <i>gener</i><par n="an/e__vblex_adj"/></e>
 <e lm="heimsende">	 <i>heimsend</i><par n="an/e__vblex_adj"/></e>
 <e lm="smeike">		 <i>smeik</i><par n="an/e__vblex_adj"/></e>
@@ -12850,7 +12893,7 @@
 <e lm="sykmelde">	 <i>sykmeld</i><par n="an/e__vblex_adj"/></e>
 <e lm="gjenta">          <i>gjent</i><par n="t/a__vblex_adj"/></e>
 <e lm="datastyre">	 <i>datastyr</i><par n="an/e__vblex_adj"/></e>
-<e lm="forhåndsvurdere"> <i>forhåndsvurder</i><par n="an/e__vblex_adj"/></e>
+<e lm="forhåndsvurdere"> <i>for</i><par n="hånd_LR_hand"/><i>svurder</i><par n="an/e__vblex_adj"/></e>
 <e lm="gelere">		 <i>geler</i><par n="an/e__vblex_adj"/></e>
 <e lm="multiplisere">	 <i>multipliser</i><par n="an/e__vblex_adj"/></e>
 <e lm="servostyre">	 <i>servostyr</i><par n="an/e__vblex_adj"/></e>
@@ -13096,7 +13139,7 @@
 <e lm="signere">	 <i>signer</i><par n="an/e__vblex_adj"/></e>
 <e lm="vomere">		 <i>vomer</i><par n="an/e__vblex_adj"/></e>
 <e lm="lovregulere">	 <i>lovreguler</i><par n="an/e__vblex_adj"/></e>
-<e lm="bleike">		 <i>bleik</i><par n="an/e__vblex_adj"/></e>
+<e lm="bleke">		 <i>b</i><par n="lek_LR_leik"/><par n="an/e__vblex_adj"/></e>
 <e lm="annonsere">	 <i>annonser</i><par n="an/e__vblex_adj"/></e>
 <e lm="underminere">	 <i>underminer</i><par n="an/e__vblex_adj"/></e>
 <e lm="gravitere">	 <i>graviter</i><par n="an/e__vblex_adj"/></e>
@@ -13162,7 +13205,7 @@
 <e lm="utfrese">	 <i>utfres</i><par n="an/e__vblex_adj"/></e>
 <e lm="indoktrinere">	 <i>indoktriner</i><par n="an/e__vblex_adj"/></e>
 <e lm="heilstøype">	 <i>heilstøyp</i><par n="an/e__vblex_adj"/></e>
-<e lm="forhåndskumulere"><i>forhåndskumuler</i><par n="an/e__vblex_adj"/></e>
+<e lm="forhåndskumulere"><i>for</i><par n="hånd_LR_hand"/><i>skumuler</i><par n="an/e__vblex_adj"/></e>
 <e lm="demotivere">	 <i>demotiver</i><par n="an/e__vblex_adj"/></e>
 <e lm="utstøte">	 <i>utstøt</i><par n="an/e__vblex_adj"/></e>
 <e lm="forprosjektere">	 <i>forprosjekter</i><par n="an/e__vblex_adj"/></e>
@@ -13267,7 +13310,7 @@
 <e lm="mutere">		 <i>muter</i><par n="an/e__vblex_adj"/></e>
 <e lm="mobilisere">	 <i>mobiliser</i><par n="an/e__vblex_adj"/></e>
 <e lm="beføle">		 <i>beføl</i><par n="an/e__vblex_adj"/></e>
-<e lm="håndhelse">	 <i>håndhels</i><par n="an/e__vblex_adj"/></e>
+<e lm="håndhelse">	 <par n="hånd_LR_hand"/><i>hels</i><par n="an/e__vblex_adj"/></e>
 <e lm="universalisere">	 <i>universaliser</i><par n="an/e__vblex_adj"/></e>
 <e lm="mortifisere">	 <i>mortifiser</i><par n="an/e__vblex_adj"/></e>
 <e lm="spolere">	 <i>spoler</i><par n="an/e__vblex_adj"/></e>
@@ -13306,7 +13349,6 @@
 <e lm="seksualisere">	 <i>seksualiser</i><par n="an/e__vblex_adj"/></e>
 <e lm="feminisere">	 <i>feminiser</i><par n="an/e__vblex_adj"/></e>
 <e lm="rekrystallisere"> <i>rekrystalliser</i><par n="an/e__vblex_adj"/></e>
-<e lm="handhelse">	 <i>handhels</i><par n="an/e__vblex_adj"/></e>
 <e lm="bøle">		 <i>bøl</i><par n="an/e__vblex_adj"/></e>
 <e lm="prefabrikkere">	 <i>prefabrikker</i><par n="an/e__vblex_adj"/></e>
 <e lm="ile">		 <i>il</i><par n="an/e__vblex_adj"/></e>
@@ -13423,7 +13465,7 @@
 <e lm="klimatisere">	 <i>klimatiser</i><par n="an/e__vblex_adj"/></e>
 <e lm="hyle">		 <i>hyl</i><par n="an/e__vblex_adj"/></e>
 <e lm="forstøte">	 <i>forstøt</i><par n="an/e__vblex_adj"/></e>
-<e lm="håndblåse">	 <i>håndblås</i><par n="an/e__vblex_adj"/></e>
+<e lm="håndblåse">	 <par n="hånd_LR_hand"/><i>blås</i><par n="an/e__vblex_adj"/></e>
 <e lm="resedimentere">	 <i>resedimenter</i><par n="an/e__vblex_adj"/></e>
 <e lm="lansere">	 <i>lanser</i><par n="an/e__vblex_adj"/></e>
 <e lm="refinansiere">	 <i>refinansier</i><par n="an/e__vblex_adj"/></e>
@@ -13526,7 +13568,7 @@
 <e lm="avhøre">		 <i>avhør</i><par n="an/e__vblex_adj"/></e>
 <e lm="budsjettere">	 <i>budsjetter</i><par n="an/e__vblex_adj"/></e>
 <e lm="frelse">		 <i>frels</i><par n="an/e__vblex_adj"/></e>
-<e lm="håndmale">	 <i>håndmal</i><par n="an/e__vblex_adj"/></e>
+<e lm="håndmale">	 <par n="hånd_LR_hand"/><i>mal</i><par n="an/e__vblex_adj"/></e>
 <e lm="bespise">	 <i>bespis</i><par n="an/e__vblex_adj"/></e>
 <e lm="kalibrere">	 <i>kalibrer</i><par n="an/e__vblex_adj"/></e>
 <e lm="seminere">	 <i>seminer</i><par n="an/e__vblex_adj"/></e>
@@ -13850,7 +13892,7 @@
 <e lm="gjennomsteke">	 <i>gjennomstek</i><par n="an/e__vblex_adj"/></e>
 <e lm="polarisere">	 <i>polariser</i><par n="an/e__vblex_adj"/></e>
 <e lm="knele">		 <i>knel</i><par n="an/e__vblex_adj"/></e>
-<e lm="håndkolorere">	 <i>håndkolorer</i><par n="an/e__vblex_adj"/></e>
+<e lm="håndkolorere">	 <par n="hånd_LR_hand"/><i>kolorer</i><par n="an/e__vblex_adj"/></e>
 <e lm="traversere">	 <i>traverser</i><par n="an/e__vblex_adj"/></e>
 <e lm="solmisere">	 <i>solmiser</i><par n="an/e__vblex_adj"/></e>
 <e lm="trenere">	 <i>trener</i><par n="an/e__vblex_adj"/></e>
@@ -14103,7 +14145,7 @@
 <e lm="kronikkere">	 <i>kronikker</i><par n="an/e__vblex_adj"/></e>
 <e lm="kampere">	 <i>kamper</i><par n="an/e__vblex_adj"/></e>
 <e lm="porsjonere">	 <i>porsjoner</i><par n="an/e__vblex_adj"/></e>
-<e lm="forhåndsorientere">	<i>forhåndsorienter</i><par n="an/e__vblex_adj"/></e>
+<e lm="forhåndsorientere">	<i>for</i><par n="hånd_LR_hand"/><i>sorienter</i><par n="an/e__vblex_adj"/></e>
 <e lm="kapasitetsmåle">	 <i>kapasitetsmål</i><par n="an/e__vblex_adj"/></e>
 <e lm="alliere">	 <i>allier</i><par n="an/e__vblex_adj"/></e>
 <e lm="omdøpe">		 <i>omdøp</i><par n="an/e__vblex_adj"/></e>
@@ -14395,7 +14437,7 @@
 <e lm="poetisere">	 <i>poetiser</i><par n="an/e__vblex_adj"/></e>
 <e lm="framvise">	 <i>framvis</i><par n="an/e__vblex_adj"/></e>
 <e lm="restere">	 <i>rester</i><par n="an/e__vblex_adj"/></e>
-<e lm="forhåndsklarere"> <i>forhåndsklarer</i><par n="an/e__vblex_adj"/></e>
+<e lm="forhåndsklarere"> <i>for</i><par n="hånd_LR_hand"/><i>sklarer</i><par n="an/e__vblex_adj"/></e>
 <e lm="konfirmere">	 <i>konfirmer</i><par n="an/e__vblex_adj"/></e>
 <e lm="effektivisere">	 <i>effektiviser</i><par n="an/e__vblex_adj"/></e>
 <e lm="gjendøpe">	 <i>gjendøp</i><par n="an/e__vblex_adj"/></e>
@@ -14477,12 +14519,13 @@
 <e lm="vandalisere">	 <i>vandaliser</i><par n="an/e__vblex_adj"/></e>
 <e lm="desarmere">	 <i>desarmer</i><par n="an/e__vblex_adj"/></e>
 <e lm="intoksikere">	 <i>intoksiker</i><par n="an/e__vblex_adj"/></e>
-<e lm="forhåndsprogrammere">	<i>forhåndsprogrammer</i><par n="an/e__vblex_adj"/></e>
+<e lm="forhåndsprogrammere">	<i>for</i><par n="hånd_LR_hand"/><i>sprogrammer</i><par n="an/e__vblex_adj"/></e>
 <e lm="prognostisere">	 <i>prognostiser</i><par n="an/e__vblex_adj"/></e>
 <e lm="reformere">	 <i>reformer</i><par n="an/e__vblex_adj"/></e>
 <e lm="herpesere">	 <i>herpeser</i><par n="an/e__vblex_adj"/></e>
 <e lm="melere">		 <i>meler</i><par n="an/e__vblex_adj"/></e>
 <e lm="befare">		 <i>befar</i><par n="an/e__vblex_adj"/></e>
+<e lm="ferdigbefare">		 <i>ferdigbefar</i><par n="an/e__vblex_adj"/></e>
 <e lm="kondensere">	 <i>kondenser</i><par n="an/e__vblex_adj"/></e>
 <e lm="framføre">	 <i>framfør</i><par n="an/e__vblex_adj"/></e>
 <e lm="sprike">		 <i>sprik</i><par n="an/e__vblex_adj"/></e>
@@ -14542,7 +14585,7 @@
 <e lm="transferere">	 <i>transferer</i><par n="an/e__vblex_adj"/></e>
 <e lm="incitere">	 <i>inciter</i><par n="an/e__vblex_adj"/></e>
 <e lm="vegetere">	 <i>vegeter</i><par n="an/e__vblex_adj"/></e>
-<e lm="håndknyte">	 <i>håndknyt</i><par n="an/e__vblex_adj"/></e>
+<e lm="håndknyte">	 <par n="hånd_LR_hand"/><i>knyt</i><par n="an/e__vblex_adj"/></e>
 <e lm="innrullere">	 <i>innruller</i><par n="an/e__vblex_adj"/></e>
 <e lm="finslipe">	 <i>finslip</i><par n="an/e__vblex_adj"/></e>
 <e lm="notifisere">	 <i>notifiser</i><par n="an/e__vblex_adj"/></e>
@@ -14582,7 +14625,7 @@
 <e lm="fisjonere">	 <i>fisjoner</i><par n="an/e__vblex_adj"/></e>
 <e lm="kannelere">	 <i>kanneler</i><par n="an/e__vblex_adj"/></e>
 <e lm="forløyse">	 <i>forløys</i><par n="an/e__vblex_adj"/></e>
-<e lm="håndhilse">	 <i>håndhils</i><par n="an/e__vblex_adj"/></e>
+<e lm="håndhilse">	 <par n="hånd_LR_hand"/><i>hils</i><par n="an/e__vblex_adj"/></e>
 <e lm="støyte">		 <i>støyt</i><par n="an/e__vblex_adj"/></e>
 <e lm="undervurdere">	 <i>undervurder</i><par n="an/e__vblex_adj"/></e>
 <e lm="kjæle">		 <i>kjæl</i><par n="an/e__vblex_adj"/></e>
@@ -14889,11 +14932,9 @@
 <e lm="etikettere">	 <i>etiketter</i><par n="an/e__vblex_adj"/></e>
 <e lm="debattere">	 <i>debatter</i><par n="an/e__vblex_adj"/></e>
 <e lm="kaldflire">	 <i>kaldflir</i><par n="an/e__vblex_adj"/></e>
-<e lm="handtere">	 <i>handter</i><par n="an/e__vblex_adj"/></e>
 <e lm="resignere">	 <i>resigner</i><par n="an/e__vblex_adj"/></e>
 <e lm="rekonstruere">	 <i>rekonstruer</i><par n="an/e__vblex_adj"/></e>
 <e lm="fjernavlese">	 <i>fjernavles</i><par n="an/e__vblex_adj"/></e>
-<e lm="forhandsorientere">	<i>forhandsorienter</i><par n="an/e__vblex_adj"/></e>
 <e lm="gjenspeile">	 <i>gjenspeil</i><par n="an/e__vblex_adj"/></e>
 <e lm="repolitisere">	 <i>repolitiser</i><par n="an/e__vblex_adj"/></e>
 <e lm="sentimentalisere"><i>sentimentaliser</i><par n="an/e__vblex_adj"/></e>
@@ -14919,7 +14960,6 @@
 <e lm="skåle">		 <i>skål</i><par n="an/e__vblex_adj"/></e>
 <e lm="teksturere">	 <i>teksturer</i><par n="an/e__vblex_adj"/></e>
 <e lm="kommunisere">	 <i>kommuniser</i><par n="an/e__vblex_adj"/></e>
-<e lm="handhilse">	 <i>handhils</i><par n="an/e__vblex_adj"/></e>
 <e lm="denaturalisere">	 <i>denaturaliser</i><par n="an/e__vblex_adj"/></e>
 <e lm="nasjonalisere">	 <i>nasjonaliser</i><par n="an/e__vblex_adj"/></e>
 <e lm="massakrere">	 <i>massakrer</i><par n="an/e__vblex_adj"/></e>
@@ -14938,7 +14978,7 @@
 <e lm="dupere">		 <i>duper</i><par n="an/e__vblex_adj"/></e>
 <e lm="blautkoke">	 <i>blautkok</i><par n="an/e__vblex_adj"/></e>
 <e lm="feilvurdere">	 <i>feilvurder</i><par n="an/e__vblex_adj"/></e>
-<e lm="forhåndsinformere">	<i>forhåndsinformer</i><par n="an/e__vblex_adj"/></e>
+<e lm="forhåndsinformere">	<i>for</i><par n="hånd_LR_hand"/><i>sinformer</i><par n="an/e__vblex_adj"/></e>
 <e lm="jule">		 <i>jul</i><par n="an/e__vblex_adj"/></e>
 <e lm="listeføre">	 <i>listefør</i><par n="an/e__vblex_adj"/></e>
 <e lm="omregistrere">	 <i>omregistrer</i><par n="an/e__vblex_adj"/></e>
@@ -15054,7 +15094,7 @@
 <e lm="dagdrømme">	 <i>dagdrøm</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="gjømme">		 <i>gjøm</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="bedømme">	 <i>bedøm</i><par n="tøm/me__vblex_adj"/></e>
-<e lm="forhåndsdømme">	 <i>forhåndsdøm</i><par n="tøm/me__vblex_adj"/></e>
+<e lm="forhåndsdømme">	 <i>for</i><par n="hånd_LR_hand"/><i>sdøm</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="målføredømme">	 <i>målføredøm</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="tildømme">	 <i>tildøm</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="forglømme">	 <i>forgløm</i><par n="tøm/me__vblex_adj"/></e>
@@ -15098,9 +15138,8 @@
 <e lm="fradømme">	 <i>fradøm</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="uteglemme">	 <i>uteglem</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="overensstemme">	 <i>overensstem</i><par n="tøm/me__vblex_adj"/></e>
-<e lm="forhandsstemme">	 <i>forhandsstem</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="artsbestemme">	 <i>artsbestem</i><par n="tøm/me__vblex_adj"/></e>
-<e lm="forhåndsstemme">	 <i>forhåndsstem</i><par n="tøm/me__vblex_adj"/></e>
+<e lm="forhåndsstemme">	 <i>for</i><par n="hånd_LR_hand"/><i>sstem</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="feilbedømme">	 <i>feilbedøm</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="bortdømme">	 <i>bortdøm</i><par n="tøm/me__vblex_adj"/></e>
 <e lm="avdømme">	 <i>avdøm</i><par n="tøm/me__vblex_adj"/></e>
@@ -15731,9 +15770,9 @@
 <e lm="friste">          <i>frist</i><par n="å/e__vblex_adj"/></e>
 <e lm="sande">           <i>sand</i><par n="å/e__vblex_adj"/></e>
 <e lm="henge">           <i>h</i><par n="h/enge__vblex_adj"/></e>
-<e lm="blogge">          <i>blogg</i><par n="å/e__vblex_adj"/></e>
 <e lm="blomstre">        <i>blomstr</i><par n="adl/e__vblex_adj"/></e>
-<e lm="bløgge">          <i>bløgg</i><par n="å/e__vblex_adj"/></e>
+<e lm="blogge" c="wsd todo"><i>blogg</i><par n="å/e__vblex_adj"/></e>
+<e lm="bløgge" c="blode"><i>bløgg</i><par n="å/e__vblex_adj"/></e>
 <e lm="ri">              <i>r</i><par n="r/i__vblex_adj"/></e>
 <e lm="vekke">           <i>v</i><par n="v/ekke__vblex_adj"/></e>
 <e lm="gyte">            <i>g</i><par n="g/yte__vblex_adj"/></e>
@@ -15827,6 +15866,7 @@
 <e lm="ynges">           <i>yng</i><par n="en/es__vblex"/></e>
 <e lm="ynkes">           <i>ynk</i><par n="en/es__vblex"/></e>
 <e lm="åres">            <i>år</i><par n="en/es__vblex"/></e>
+<e c="todo check pardef" lm="snakkes"><i>snakk</i><par n="en/es__vblex"/></e>
 <!-- /pstv-verbs -->
 
 <e lm="ilske">           <i>ilsk</i><par n="å/e__vblex_adj"/></e>
@@ -16003,7 +16043,7 @@
     <e lm="blankpusse"><i>blankpuss</i><par n="å/e__vblex_adj"/></e>
     <e lm="blankskure"><i>blankskur</i><par n="yt/e__vblex_adj"/></e>
     <e lm="blankslite"><i>blanksl</i><par n="b/ite__vblex_adj"/></e>
-    <e lm="bleikne"><i>bleikn</i><par n="å/e__vblex_adj"/></e>
+    <e lm="blekne"><i>b</i><par n="lek_LR_leik"/><i>n</i><par n="å/e__vblex_adj"/></e>
     <e lm="blekke"><i>blek</i><par n="blek/ke__vblex_adj"/></e>
     <e lm="blende"><i>blend</i><par n="å/e__vblex_adj"/></e>
     <e lm="blinde"><i>blind</i><par n="å/e__vblex_adj"/></e>
@@ -16463,7 +16503,7 @@
     <e lm="forsumpe"><i>forsump</i><par n="å/e__vblex_adj"/></e>
     <e lm="forsure"><i>forsur</i><par n="å/e__vblex_adj"/></e>
     <e lm="forsvenske"><i>forsvensk</i><par n="å/e__vblex_adj"/></e>
-    <e lm="forsverje"><i>forsv</i><par n="sv/erje__vblex_adj"/></e>
+    <e lm="forsverge"><i>forsv</i><par n="sv/erge__vblex_adj"/></e>
     <e lm="forsynde"><i>forsynd</i><par n="å/e__vblex_adj"/></e>
     <e lm="forsølve"><i>forsølv</i><par n="å/e__vblex_adj"/></e>
     <e lm="forsøple"><i>forsøpl</i><par n="å/e__vblex_adj"/></e>
@@ -16692,16 +16732,14 @@
     <e lm="halvsove"><i>halvsov</i><par n="sov/e__vblex_adj"/></e>
     <e lm="hamle"><i>haml</i><par n="adl/e__vblex_adj"/></e>
     <e lm="hamne"><i>hamn</i><par n="adl/e__vblex_adj"/></e>
+    <e lm="havne"><i>havn</i><par n="å/e__vblex_adj"/></e>
+    <e lm="savne"><i>savn</i><par n="å/e__vblex_adj"/></e>
     <e lm="hamre"><i>hamr</i><par n="adl/e__vblex_adj"/></e>
     <e lm="hamse"><i>hams</i><par n="å/e__vblex_adj"/></e>
     <e lm="hamstre"><i>hamstr</i><par n="adl/e__vblex_adj"/></e>
-    <e lm="handfare"><i>handf</i><par n="f/are__vblex_adj"/></e>
-    <e lm="håndfare"><i>håndf</i><par n="f/are__vblex_adj"/></e>
-    <e lm="handgi"><i>handg</i><par n="g/i__vblex_adj"/></e>
-    <e lm="handheve"><i>handhev</i><par n="nag/e__vblex_adj"/></e>
+    <e lm="håndfare"><par n="hånd_LR_hand"/><i>f</i><par n="f/are__vblex_adj"/></e>
+    <e lm="håndgi"><par n="hånd_LR_hand"/><i>g</i><par n="g/i__vblex_adj"/></e>
     <e lm="handikappe"><i>handikapp</i><par n="å/e__vblex_adj"/></e>
-    <e lm="handmjølke"><i>handmjølk</i><par n="å/e__vblex_adj"/></e>
-    <e lm="handplukke"><i>handplukk</i><par n="å/e__vblex_adj"/></e>
     <e lm="handsame"><i>handsam</i><par n="å/e__vblex_adj"/></e>
     <e lm="hangle"><i>hangl</i><par n="adl/e__vblex_adj"/></e>
     <e lm="hanke"><i>hank</i><par n="å/e__vblex_adj"/></e>
@@ -17218,7 +17256,7 @@
     <e lm="lausrive"><i>lausr</i><par n="r/ive__vblex_adj"/></e>
     <e lm="lauve"><i>lauv</i><par n="å/e__vblex_adj"/></e>
     <e lm="lefle"><i>lefl</i><par n="adl/e__vblex_adj"/></e>
-    <e lm="leike"><i>leik</i><par n="yt/e__vblex_adj"/></e>
+    <e lm="leke"><par n="lek_LR_leik"/><par n="yt/e__vblex_adj"/></e>
     <e lm="leive"><i>leiv</i><par n="øv/e__vblex_adj"/></e>
     <e lm="lekke"><i>l</i><par n="l/ekke__vblex_adj"/></e>
     <e lm="lekse"><i>leks</i><par n="å/e__vblex_adj"/></e>
@@ -17366,8 +17404,8 @@
     <e lm="mjaue"><i>mjau</i><par n="å/e__vblex_adj"/></e>
     <e lm="mjuklande"><i>mjukland</i><par n="å/e__vblex_adj"/></e>
     <e lm="mjukne"><i>mjukn</i><par n="adl/e__vblex_adj"/></e>
-    <e lm="mjøle"><i>mjøl</i><par n="yt/e__vblex_adj"/></e>
-    <e lm="mjølke"><i>mjølk</i><par n="å/e__vblex_adj"/></e>
+    <e lm="mele"><par n="mel_LR_mjøl"/><par n="yt/e__vblex_adj"/></e>
+    <e lm="melke"><par n="mel_LR_mjøl"/><i>k</i><par n="å/e__vblex_adj"/></e>
     <e lm="mobbe"><i>mobb</i><par n="å/e__vblex_adj"/></e>
     <e lm="modne"><i>modn</i><par n="å/e__vblex_adj"/></e>
     <e lm="mompe"><i>momp</i><par n="å/e__vblex_adj"/></e>
@@ -18339,7 +18377,7 @@
     <e lm="svelgje"><i>svelg</i><par n="svelg/je__vblex_adj"/></e>
     <e lm="svelle"><i>svel</i><par n="fel/le__vblex_adj"/></e>
     <e lm="svelte"><i>sv</i><par n="v/elte__vblex_adj"/></e>
-    <e lm="sverje"><i>sv</i><par n="sv/erje__vblex_adj"/></e>
+<e lm="sverge">          <i>sv</i><par n="sv/erge__vblex_adj"/></e>
     <e lm="sverme"><i>sverm</i><par n="å/e__vblex_adj"/></e>
     <e lm="sverte"><i>svert</i><par n="å/e__vblex_adj"/></e>
     <e lm="svi"><i>sv</i><par n="l/i__vblex_adj"/></e>
@@ -18774,9 +18812,9 @@
     <e lm="rødme"><i>rødm</i><par n="å/e__vblex_adj"/></e>
     <e lm="utforme"><i>utform</i><par n="å/e__vblex_adj"/></e>
     <e lm="melke"><i>melk</i><par n="å/e__vblex_adj"/></e>
-<e lm="håndheve">        <i>håndhev</i><par n="nag/e__vblex_adj"/></e>
-<e lm="håndmjølke">      <i>håndmjølk</i><par n="å/e__vblex_adj"/></e>
-<e lm="håndplukke">      <i>håndplukk</i><par n="å/e__vblex_adj"/></e>
+<e lm="håndheve">        <par n="hånd_LR_hand"/><i>hev</i><par n="nag/e__vblex_adj"/></e>
+<e lm="håndmelke">      <par n="hånd_LR_hand"/><i></i><par n="mel_LR_mjøl"/><i>k</i><par n="å/e__vblex_adj"/></e>
+<e lm="håndplukke">      <par n="hånd_LR_hand"/><i>plukk</i><par n="å/e__vblex_adj"/></e>
 <e lm="fremstille"><i>fremstil</i><par n="fel/le__vblex_adj"/></e>
 <e lm="forringe">        <i>forring</i><par n="å/e__vblex_adj"/></e>
 <e lm="tøyle">           <i>tøyl</i><par n="å/e__vblex_adj"/></e>
@@ -18788,8 +18826,25 @@
     <e lm="innebære"><i>inneb</i><par n="b/ære__vblex_adj"/></e>
 <e lm="forekomme">       <i>forekom</i><par n="kom/me__vblex_adj"/></e>
 <e lm="foreligge">       <i>forel</i><par n="l/igge__vblex_adj"/></e>
-<e lm="anklage">  <i>anklag</i><par n="nag/e__vblex_adj"/></e>
+<e lm="anklage">         <i>anklag</i><par n="nag/e__vblex_adj"/></e>
 <e lm="våkne">           <i>våkn</i><par n="adl/e__vblex_adj"/></e>
+<e lm="øvelseskjøre">    <i>øvelseskjør</i><par n="an/e__vblex_adj"/></e>
+<e lm="kryssbruke">      <i>kryssbruk</i><par n="an/e__vblex_adj"/></e>
+<e lm="åke">		 <i>åk</i><par n="an/e__vblex_adj"/></e>
+<e lm="formæle">	 <i>formæl</i><par n="an/e__vblex_adj"/></e>
+<e lm="trine">           <i>trin</i><par n="an/e__vblex_adj"/></e>
+<e lm="gjepe">           <i>gjep</i><par n="an/e__vblex_adj"/></e>
+<e lm="henslepe">        <i>henslep</i><par n="an/e__vblex_adj"/></e>
+<e lm="påberope">        <i>påberop</i><par n="an/e__vblex_adj"/></e>
+<e lm="berope">          <i>berop</i><par n="an/e__vblex_adj"/></e>
+<e lm="forkjøpe">        <i>forkjøp</i><par n="an/e__vblex_adj"/></e>
+<e lm="oppbevare">       <i>oppbevar</i><par n="an/e__vblex_adj"/></e>
+<e lm="konkursbegjære">  <i>konkursbegjær</i><par n="an/e__vblex_adj"/></e>
+<e lm="iverksette">      <i>iverks</i><par n="s/ette__vblex_adj"/></e>
+<e lm="tilspisse">       <i>tilspiss</i><par n="å/e__vblex_adj"/></e>
+<e lm="overvåke">        <i>overvåk</i><par n="yt/e__vblex_adj"/></e>
+
+<e lm="befinne seg"><i>bef</i><par n="f/inne__vblex_adj"/><par n="/seg__refl"/></e>
 <!-- /verbs -->
 
 
@@ -18813,7 +18868,7 @@
 <e lm="tidlig">          <i>tidlig</i><par n="tidlig__adj"/></e>
 <e lm="forskjellig">     <i>forskjellig</i><par n="tidlig__adj"/></e>
 <e lm="viktig">          <i>viktig</i><par n="tidlig__adj"/></e>
-<e lm="hovedsaklig">     <i>hovedsaklig</i><par n="tidlig__adj"/></e>
+<e c="typo" lm="hovedsaklig">     <i>hovedsaklig</i><par n="tidlig__adj"/></e>
 <e lm="hovedsakelig">	 <i>hovedsakelig</i><par n="tidlig__adj"/></e>
 <e lm="usaklig">	 <i>usaklig</i><par n="tidlig__adj"/></e>
 <e lm="saklig">		 <i>saklig</i><par n="tidlig__adj"/></e>
@@ -18907,6 +18962,7 @@
 <e lm="avdragsfri">      <i>avdragsfri</i><par n="ny__adj"/></e>
 <e lm="avgiftsfri">      <i>avgiftsfri</i><par n="ny__adj"/></e>
 <e lm="avkjørselsfri">   <i>avkjørselsfri</i><par n="ny__adj"/></e>
+<e lm="påkjørselsfri">   <i>påkjørselsfri</i><par n="ny__adj"/></e>
 <e lm="bakteriefri">     <i>bakteriefri</i><par n="ny__adj"/></e>
 <e lm="beinfri">         <i>beinfri</i><par n="ny__adj"/></e>
 <e lm="bekymringsfri">   <i>bekymringsfri</i><par n="ny__adj"/></e>
@@ -19136,6 +19192,7 @@
 <e lm="gigantisk">       <i>gigantisk</i><par n="sort__adj"/></e>
 <e lm="gjennomført">     <i>gjennomført</i><par n="sort__adj"/></e>
 <e lm="glad">            <i>glad</i><par n="sort__adj"/></e>
+<e lm="livsglad">            <i>livsglad</i><par n="sort__adj"/></e>
 <e lm="glatt">           <i>glatt</i><par n="sort__adj"/></e>
 <e lm="godlynt">         <i>godlynt</i><par n="sort__adj"/></e>
 <e lm="grammatisk">      <i>grammatisk</i><par n="sort__adj"/></e>
@@ -19185,6 +19242,7 @@
 <e lm="kirurgisk">       <i>kirurgisk</i><par n="sort__adj"/></e>
 <e lm="kjemisk">         <i>kjemisk</i><par n="sort__adj"/></e>
 <e lm="kjent">           <i>kjent</i><par n="sort__adj"/></e>
+<e lm="verdenskjent">           <i>verdenskjent</i><par n="sort__adj"/></e>
 <e lm="klassisk">        <i>klassisk</i><par n="sort__adj"/></e>
 <e lm="klosset">         <i>klosset</i><par n="sort__adj"/></e>
 <e lm="kompetent">       <i>kompetent</i><par n="sort__adj"/></e>
@@ -19240,7 +19298,7 @@
 <e lm="vestnorsk">       <i>vestnorsk</i><par n="sort__adj"/></e>
 <e lm="austnorsk">       <i>austnorsk</i><par n="sort__adj"/></e>
 <e lm="østnorsk">        <i>østnorsk</i><par n="sort__adj"/></e>
-<e lm="sørnorsk">        <i>sørnorsk</i><par n="sort__adj"/></e>
+<e lm="sørnorsk">        <par n="sør_LR_syd"/><i>norsk</i><par n="sort__adj"/></e>
 <e lm="nordnorsk">       <i>nordnorsk</i><par n="sort__adj"/></e>
 <e lm="nyfødt">          <i>nyfødt</i><par n="sort__adj"/></e>
 <e lm="nygift">          <i>nygift</i><par n="sort__adj"/></e>
@@ -19270,6 +19328,7 @@
 <e lm="praktisk">        <i>praktisk</i><par n="sort__adj"/></e>
 <e lm="privat">          <i>privat</i><par n="sort__adj"/></e>
 <e lm="problematisk">    <i>problematisk</i><par n="sort__adj"/></e>
+<e lm="uproblematisk">    <i>uproblematisk</i><par n="sort__adj"/></e>
 <e lm="psykiatrisk">     <i>psykiatrisk</i><par n="sort__adj"/></e>
 <e lm="psykisk">         <i>psykisk</i><par n="sort__adj"/></e>
 <e lm="psykologisk">     <i>psykologisk</i><par n="sort__adj"/></e>
@@ -19334,7 +19393,7 @@
 <e lm="sveitsisk">       <i>sveitsisk</i><par n="sort__adj"/></e>
 <e lm="svensk">          <i>svensk</i><par n="sort__adj"/></e>
 <e lm="svett">           <i>svett</i><par n="sort__adj"/></e>
-<e lm="sydlandsk">       <i>sydlandsk</i><par n="sort__adj"/></e>
+<e lm="sørlandsk">       <par n="sør_LR_syd"/><i>landsk</i><par n="sort__adj"/></e>
 <e lm="symbolsk">        <i>symbolsk</i><par n="sort__adj"/></e>
 <e lm="symptomatisk">    <i>symptomatisk</i><par n="sort__adj"/></e>
 <e lm="systematisk">     <i>systematisk</i><par n="sort__adj"/></e>
@@ -19342,7 +19401,7 @@
 <e lm="såpeglatt">       <i>såpeglatt</i><par n="sort__adj"/></e>
 <e lm="særnorsk">        <i>særnorsk</i><par n="sort__adj"/></e>
 <e lm="særskilt">        <i>særskilt</i><par n="sort__adj"/></e>
-<e lm="sørkoreansk">     <i>sørkoreansk</i><par n="sort__adj"/></e>
+<e lm="sørkoreansk">     <par n="sør_LR_syd"/><i>koreansk</i><par n="sort__adj"/></e>
 <e lm="taktisk">         <i>taktisk</i><par n="sort__adj"/></e>
 <e lm="teatralsk">       <i>teatralsk</i><par n="sort__adj"/></e>
 <e lm="teknisk">         <i>teknisk</i><par n="sort__adj"/></e>
@@ -19662,6 +19721,7 @@
 <e lm="selvstendig">     <i>selvstendig</i><par n="tidlig__adj"/></e>
 <e lm="severdig">        <i>severdig</i><par n="tidlig__adj"/></e>
 <e lm="sikkerhetsmessig"><i>sikkerhetsmessig</i><par n="tidlig__adj"/></e>
+<e lm="hensiktsmessig"><i>hensiktsmessig</i><par n="tidlig__adj"/></e>
 <e lm="skadelidt">       <i>skadelidt</i><par n="tidlig__adj"/></e>
 <e lm="skadelig">        <i>skadelig</i><par n="tidlig__adj"/></e>
 <e lm="adelig">        <i>adelig</i><par n="tidlig__adj"/></e>
@@ -19687,7 +19747,7 @@
 <e lm="synlig">          <i>synlig</i><par n="tidlig__adj"/></e>
 <e lm="sørgelig">        <i>sørgelig</i><par n="tidlig__adj"/></e>
 <e lm="sørlig">          <i>sørlig</i><par n="tidlig__adj"/></e>
-<e lm="sørøstlig">       <i>sørøstlig</i><par n="tidlig__adj"/></e>
+<e lm="sørøstlig">       <par n="sør_LR_syd"/><i>østlig</i><par n="tidlig__adj"/></e>
 <e lm="søtlig">          <i>søtlig</i><par n="tidlig__adj"/></e>
 <e lm="takknemlig">      <i>takknemlig</i><par n="tidlig__adj"/></e>
 <e lm="tekkelig">        <i>tekkelig</i><par n="tidlig__adj"/></e>
@@ -19796,7 +19856,7 @@
 <e lm="umistelig">    <i>umistelig</i><par n="tidlig__adj"/></e>
 
 <e lm="OK">              <i>OK</i><par n="OK__adj"/></e>
-<e lm="allehånde">       <i>allehånde</i><par n="OK__adj"/></e>
+<e lm="allehånde">       <i>alle</i><par n="hånd_LR_hand"/><i>e</i><par n="OK__adj"/></e>
 <e lm="annerledes">      <i>annerledes</i><par n="OK__adj"/></e>
 <e lm="ansvarshavende">  <i>ansvarshavende</i><par n="OK__adj"/></e>
 <e lm="anti">            <i>anti</i><par n="OK__adj"/></e>
@@ -19922,7 +19982,7 @@
 <e lm="moro">            <i>moro</i><par n="OK__adj"/></e>
 <e lm="nordre">          <i>nordre</i><par n="OK__adj"/></e>
 <e lm="nymotens">        <i>nymotens</i><par n="OK__adj"/></e>
-<e lm="nødt">            <i>nødt</i><par n="gra__adj"/></e>
+<e lm="nødt">            <i>nødt</i><par n="flott__adj"/></e>
 <e lm="oransje">         <i>oransje</i><par n="OK__adj"/></e>
 <e lm="pari">            <i>pari</i><par n="OK__adj"/></e>
 <e lm="pirkete">         <i>pirkete</i><par n="OK__adj"/></e>
@@ -19931,7 +19991,6 @@
 <e lm="senior">          <i>senior</i><par n="OK__adj"/></e>
 <e lm="skjeggete">       <i>skjeggete</i><par n="OK__adj"/></e>
 <e lm="slutt">           <i>slutt</i><par n="OK__adj"/></e>
-<e r="RL" lm="slags">    <i>slags</i><par n="OK__adj"/></e>
 <e lm="spesial">         <i>spesial</i><par n="OK__adj"/></e>
 <e lm="stakkars">        <i>stakkars</i><par n="OK__adj"/></e>
 <e lm="sølete">          <i>sølete</i><par n="OK__adj"/></e>
@@ -20505,9 +20564,9 @@
 <e lm="røff">            <i>røf</i><par n="røf/f__adj"/></e>
 <e lm="steintøff">       <i>steintøf</i><par n="røf/f__adj"/></e>
 <e lm="tøff">            <i>tøf</i><par n="røf/f__adj"/></e>
-<e lm="flott">           <i>flott</i><par n="gra__adj"/></e>
+<e lm="flott">           <i>flott</i><par n="flott__adj"/></e>
 <e lm="folkesky">        <i>folkesky</i><par n="gra__adj"/></e>
-<e lm="gammeldags">      <i>gammeldags</i><par n="gra__adj"/></e>
+<e lm="gammeldags">      <i>gammeldags</i><par n="flott__adj"/></e>
 <e lm="sta">             <i>sta</i><par n="gra__adj"/></e>
 <e lm="evigung">         <i>evig</i><par n="/ung__adj"/></e>
 <e lm="ung">             <i></i><par n="/ung__adj"/></e>
@@ -20576,7 +20635,6 @@
 <e lm="først">           <i>først</i><par n="OK__adj"/></e>
 
 <e lm="langbent">        <i>langbent</i><par n="sort__adj"/></e>
-<e lm="sørlandsk">       <i>sørlandsk</i><par n="sort__adj"/></e>
 <e lm="trøtt">           <i>trøtt</i><par n="sort__adj"/></e>
 <e lm="vasstett">        <i>vasstett</i><par n="sort__adj"/></e>
 <e lm="førnevnt">        <i>førnevnt</i><par n="sort__adj"/></e>
@@ -20630,7 +20688,31 @@
 <e lm="dugelig">         <i>dugelig</i><par n="tidlig__adj"/></e>
 <e lm="berømmelig">         <i>berømmelig</i><par n="tidlig__adj"/></e>
 <e lm="skummel">         <i>skum</i><par n="vam/mel__adj"/></e>
-
+<e lm="betrodd">         <i>betrodd</i><par n="sort__adj"/></e>
+<e lm="behørig">         <i>behørig</i><par n="tidlig__adj"/></e>
+<e lm="forbilledlig">    <i>forbilledlig</i><par n="tidlig__adj"/></e>
+<e lm="ubetenkelig">     <i>ubetenkelig</i><par n="tidlig__adj"/></e>
+<e lm="livsbejaende">    <i>livsbejaende</i><par n="OK__adj"/></e>
+<e lm="begivenhetsrik">  <i>begivenhetsrik</i><par n="sen__adj"/></e>
+<e lm="ubesværet">       <i>ubesvære</i><par n="øve/t__adj"/></e>
+<e lm="forgangen">       <i>forgang</i><par n="åp/en__adj"/></e>
+<e lm="bekvem">          <i>bekvem</i><par n="øm__adj"/></e>
+<e lm="ubekvem">         <i>ubekvem</i><par n="øm__adj"/></e>
+<e lm="komfortabel">         <i>komfortab</i><par n="ed/el__adj"/></e>
+<e lm="ukomfortabel">         <i>ukomfortab</i><par n="ed/el__adj"/></e>
+<e lm="uovertruffen">    <i>uovertruf</i><par n="guf/fen__adj"/></e>
+<e lm="utlært">          <i>utlært</i><par n="sort__adj"/></e>
+<e lm="afrikansk">       <i>afrikansk</i><par n="sort__adj"/></e>
+<e lm="horribel">        <i>horrib</i><par n="ed/el__adj"/></e>
+<e lm="arktisk">         <i>arktisk</i><par n="sort__adj"/></e>
+<e lm="antarktisk">      <i>antarktisk</i><par n="sort__adj"/></e>
+<e lm="ideologisk">      <i>ideologisk</i><par n="sort__adj"/></e>
+<e lm="imperialistisk">  <i>imperialistisk</i><par n="sort__adj"/></e>
+<e lm="lystig">          <i>lystig</i><par n="tidlig__adj"/></e>
+<e lm="velpreparert">    <i>velpreparert</i><par n="sort__adj"/></e>
+<e lm="fortumlet">  <i>fortumle</i><par n="øve/t__adj"/></e>
+<e lm="ulest">  <i>ulest</i><par n="sort__adj"/></e>
+<e lm="utro">  <i>utro</i><par n="OK__adj"/></e>
 
 
 <!-- Ordinals -->
@@ -20737,6 +20819,7 @@
 
 <e lm="helligdag">       <i>helligdag</i><par n="ep__n"/></e>
 <e lm="dag">             <i>dag</i><par n="ep_no-cp__n"/></e>
+<e lm="hverdag">         <i>hverdag</i><par n="ep_no-cp__n"/></e>
 <e lm="middag">          <i>middag</i><par n="ep__n"/></e>
 <e lm="ettermiddag">     <i>ettermiddag</i><par n="ep__n"/></e>
 <e lm="eftermiddag">     <i>eftermiddag</i><par n="ep__n"/></e>
@@ -20748,20 +20831,18 @@
 <e lm="lørdag">          <i>lørdag</i><par n="ep__n"/></e>
 <e lm="søndag">          <i>søndag</i><par n="ep__n"/></e>
 
-<e lm="ost"><i>ost</i><par n="ost_no-cp__n"/></e>
-<e lm="sydvest"><i>sydvest</i><par n="ost__n"/></e>
-<e lm="sydost"><i>sydost</i><par n="ost__n"/></e>
-<e lm="syd">             <i>syd</i><par n="ost_no-cp__n"/></e>
 <e lm="nordvest">        <i>nordvest</i><par n="ost__n"/></e>
 <e lm="nordøst">         <i>nordøst</i><par n="ost__n"/></e>
 <e lm="øst">             <i>øst</i><par n="ost_no-cp__n"/></e>
 <e lm="vest">            <i>vest</i><par n="ost__n"/></e>
 <e lm="nord">            <i>nord</i><par n="ost__n"/></e>
-<e lm="sør">             <i>sør</i><par n="ost_no-cp__n"/></e>
-<e lm="sørvest">         <i>sørvest</i><par n="ost__n"/></e>
-<e lm="sørøst">          <i>sørøst</i><par n="ost__n"/></e>
-<e lm="søraust"><i>søraust</i><par n="ost__n"/></e>
-<e lm="nordaust"><i>nordaust</i><par n="ost__n"/></e>
+<e lm="sørost">          <par n="sør_LR_syd"/><i>ost</i><par n="ost__n"/></e>
+<e lm="ost">             <i>ost</i><par n="ost_no-cp__n"/></e>
+<e lm="sør">             <par n="sør_LR_syd"/><par n="ost_no-cp__n"/></e>
+<e lm="sørvest">         <par n="sør_LR_syd"/><i>vest</i><par n="ost__n"/></e>
+<e lm="sørøst">          <par n="sør_LR_syd"/><i>øst</i><par n="ost__n"/></e>
+<e lm="søraust">         <par n="sør_LR_syd"/><i>aust</i><par n="ost__n"/></e>
+<e lm="nordaust">        <i>nordaust</i><par n="ost__n"/></e>
 
 <e lm="displaced person"><i>displaced<b/>person</i><par n="t-shirt__n"/></e>
 <e lm="t-shirt">         <i>t-shirt</i><par n="t-shirt__n"/></e>
@@ -20867,7 +20948,6 @@
 <e lm="skotsk">          <i>skotsk</i><par n="ost__n"/></e>
 <e lm="spansk">          <i>spansk</i><par n="ost__n"/></e>
 <e lm="svensk">          <i>svensk</i><par n="ost__n"/></e>
-<e lm="sørsamisk">       <i>sørsamisk</i><par n="ost__n"/></e>
 <e lm="tsjekkisk">       <i>tsjekkisk</i><par n="ost__n"/></e>
 <e lm="tyrkisk">         <i>tyrkisk</i><par n="ost__n"/></e>
 <e lm="tysk">            <i>tysk</i><par n="ost__n"/></e>
@@ -20978,12 +21058,10 @@
     <e lm="ungarsk"><i>ungarsk</i><par n="ost__n"/></e>
     <e lm="vestgotisk"><i>vestgotisk</i><par n="ost__n"/></e>
     <e lm="vestgermansk"><i>vestgermansk</i><par n="ost__n"/></e>
-    <e lm="sørsamisk"><i>sørsamisk</i><par n="ost__n"/></e>
+<e lm="sørsamisk">       <par n="sør_LR_syd"/><i>samisk</i><par n="ost__n"/></e>
     <e lm="trøndersk"><i>trøndersk</i><par n="ost__n"/></e>
-    <e lm="sydsamisk"><i>sydsamisk</i><par n="ost__n"/></e>
     <e lm="velsk"><i>velsk</i><par n="ost__n"/></e>
     <e lm="vestlandsk"><i>vestlandsk</i><par n="ost__n"/></e>
-    <e lm="sydøst"><i>sydøst</i><par n="ost__n"/></e>
     <e lm="tamil"><i>tamil</i><par n="ost__n"/></e>
     <e lm="tsjekkisk"><i>tsjekkisk</i><par n="ost__n"/></e>
     <e lm="tupi"><i>tupi</i><par n="ost__n"/></e>
@@ -21584,7 +21662,7 @@
 <e lm="henger">          <i>henger</i><par n="uer__n"/></e>
 <e lm="innlegg">         <i>innlegg</i><par n="ul__n"/></e>
 <e lm="kan">             <i>kan</i><par n="ep_no-cp__n"/></e>
-<e lm="forhånd">         <i>forhånd</i><par n="MC__n"/></e>
+<e lm="forhånd">         <i>for</i><par n="hånd_LR_hand"/><par n="MC__n"/></e>
 <e lm="gruppe">          <i>grupp</i><par n="enk/e__n"/></e>
 <e lm="hovedsak">        <i>hovedsak</i><par n="då__n"/></e>
 <e lm="force">           <i>force</i><par n="MC__n"/></e>
@@ -21612,7 +21690,6 @@
 <e lm="form">            <i>form</i><par n="då__n"/></e>
 <e lm="fort">            <i>fort</i><par n="ja__n"/></e>
 <e lm="jente">           <i>jent</i><par n="enk/e__n"/></e>
-<e lm="gruppe">          <i>grupp</i><par n="enk/e__n"/></e>
 <e lm="hotell">          <i>hotell</i><par n="ja__n"/></e>
 <e lm="hjerte">          <i>hjert</i><par n="ød/e__n"/></e>
 <e lm="informasjon">     <i>informasjon</i><par n="ep__n"/></e>
@@ -21683,6 +21760,9 @@
 <e lm="gave">            <i>gav</i><par n="enk/e__n"/></e>
 <e lm="forsvar">         <i>forsvar</i><par n="ul__n"/></e>
 <e lm="gift">            <i>gift</i><par n="då__n"/></e>
+<e lm="utgift">          <i>utgift</i><par n="då__n"/></e>
+<e lm="medgift">         <i>medgift</i><par n="då__n"/></e>
+<e lm="avgift">          <i>avgift</i><par n="då__n"/></e>
 <e lm="hund">            <i>hund</i><par n="ep__n"/></e>
 <e lm="guvernør">        <i>guvernør</i><par n="ep__n"/></e>
 <e lm="gir">             <i>gir</i><par n="to_no-cp__n"/></e>
@@ -21738,7 +21818,7 @@
 <e lm="folk">            <i>folk</i><par n="ul__n"/></e>
 <e lm="gress">           <i>gress</i><par n="ul__n"/></e>
 <e lm="hører">           <i>hører</i><par n="uer__n"/></e>
-<e lm="håndverk">        <i>håndverk</i><par n="ul__n"/></e>
+<e lm="håndverk">        <par n="hånd_LR_hand"/><i>verk</i><par n="ul__n"/></e>
 <e lm="fødselsdato">     <i>fødselsdato</i><par n="ep__n"/></e>
 <e lm="intervju">        <i>intervju</i><par n="ja__n"/></e>
 <e lm="folkeavstemning"> <i>folkeavstemning</i><par n="ep__n"/></e>
@@ -21973,11 +22053,6 @@
 <e lm="toppledelse"><i>toppledelse</i><par n="re__n"/></e>
 
     <e lm="møteleiing"><i>møteleiing</i><par n="då__n"/></e>
-
-    <e lm="AP-ledelse"><i>AP-ledelse</i><par n="re__n"/></e>
-    <e lm="Kreml-ledelse"><i>Kreml-ledelse</i><par n="re__n"/></e>
-    <e lm="LO-ledelse"><i>LO-ledelse</i><par n="re__n"/></e>
-    <e lm="OL-ledelse"><i>OL-ledelse</i><par n="re__n"/></e>
     <e lm="aksjonsledelse"><i>aksjonsledelse</i><par n="re__n"/></e>
     <e lm="alpinledelse"><i>alpinledelse</i><par n="re__n"/></e>
     <e lm="arbeidsledelse"><i>arbeidsledelse</i><par n="re__n"/></e>
@@ -22292,6 +22367,8 @@
 <e lm="pink">            <i>pink</i><par n="ep__n"/></e>
 <e lm="oppgjør">         <i>oppgjør</i><par n="ul__n"/></e>
 <e lm="skriver">         <i>skriver</i><par n="uer__n"/></e>
+<e lm="toppscorer">      <i>toppscorer</i><par n="uer__n"/></e>
+<e lm="målscorer">       <i>målscorer</i><par n="uer__n"/></e>
 <e lm="fisker">          <i>fisker</i><par n="uer__n"/></e>
 <e lm="slutter">         <i>slutter</i><par n="uer__n"/></e>
 <e lm="parlament">       <i>parlament</i><par n="ja__n"/></e>
@@ -22300,6 +22377,7 @@
 <e lm="ruter">           <i>ruter</i><par n="vier__n"/></e>
 <e lm="skjøt">           <i>skjøt</i><par n="do__n"/></e>
 <e lm="rett">            <i>rett</i><par n="ep__n"/></e>
+<e lm="herredsrett">     <i>herredsrett</i><par n="ep__n"/></e>
 <e lm="popularitet">     <i>popularitet</i><par n="ep__n"/></e>
 <e lm="opphav">          <i>opphav</i><par n="ul__n"/></e>
 <e lm="rekkevidde">      <i>rekkevidd</i><par n="enk/e__n"/></e>
@@ -22384,8 +22462,7 @@
     <e lm="nordside"><i>nordsid</i><par n="enk/e__n"/></e>
     <e lm="vestside"><i>vestsid</i><par n="enk/e__n"/></e>
     <e lm="østside"><i>østsid</i><par n="enk/e__n"/></e>
-    <e lm="sørside"><i>sørsid</i><par n="enk/e__n"/></e>
-    <e lm="sydside"><i>sydsid</i><par n="enk/e__n"/></e>
+<e lm="sørside"><par n="sør_LR_syd"/><i>sid</i><par n="enk/e__n"/></e>
     <e lm="austside"><i>austsid</i><par n="enk/e__n"/></e>
 <e lm="skrift">          <i>skrift</i><par n="trø__n"/></e>
 <e lm="vanndrag"><i>vanndrag</i><par n="ul__n"/></e>
@@ -22494,10 +22571,12 @@
 <e lm="skytevåpen">      <i>skytevåp</i><par n="våp/en__n"/></e>
 <e lm="produksjon">      <i>produksjon</i><par n="ep__n"/></e>
 <e lm="skudd">           <i>skudd</i><par n="ul__n"/></e>
+<e lm="underskudd">      <i>underskudd</i><par n="ul__n"/></e>
 <e lm="slette">          <i>slett</i><par n="enk/e__n"/></e>
 <e lm="pluss">           <i>pluss</i><par n="ja__n"/></e>
 <e lm="rute">            <i>rut</i><par n="enk/e__n"/></e>
 <e lm="serie">           <i>serie</i><par n="re__n"/></e>
+<e lm="eliteserie">      <i>eliteserie</i><par n="re__n"/></e>
 <e lm="privat">          <i>privat</i><par n="ep__n"/></e>
 <e lm="skotsk">          <i>skotsk</i><par n="ep__n"/></e>
 <e lm="personell">       <i>personell</i><par n="ja__n"/></e>
@@ -22722,6 +22801,7 @@
 <e lm="super">           <i>super</i><par n="uer__n"/></e>
 <e lm="verdensrekord">   <i>verdensrekord</i><par n="ep__n"/></e>
 <e lm="utstilling">      <i>utstilling</i><par n="då__n"/></e>
+<e lm="innstilling">     <i>innstilling</i><par n="då__n"/></e>
 <e lm="villa">           <i>villa</i><par n="ep__n"/></e>
 <e lm="utbredelse">      <i>utbredelse</i><par n="re__n"/></e>
 <e lm="ulv">             <i>ulv</i><par n="ep_no-cp__n"/></e>
@@ -22811,7 +22891,6 @@
 <e lm="tilhenger">       <i>tilhenger</i><par n="uer__n"/></e>
 <e lm="vararepresentant"><i>vararepresentant</i><par n="ep__n"/></e>
 <e lm="tillatelse">      <i>tillatelse</i><par n="re__n"/></e>
-<e lm="besittelse">      <i>besittelse</i><par n="re__n"/></e>
 <e lm="talent">          <i>talent</i><par n="to__n"/></e>
 <e lm="stråling">        <i>stråling</i><par n="då__n"/></e>
 <e lm="tunnel">          <i>tunnel</i><par n="ep__n"/></e>
@@ -22844,6 +22923,7 @@
 <e lm="valg">            <i>valg</i><par n="ul__n"/></e>
 <e lm="terreng">         <i>terreng</i><par n="ul__n"/></e>
 <e lm="trening">         <i>trening</i><par n="då__n"/></e>
+<e lm="dansetrening">         <i>dansetrening</i><par n="då__n"/></e>
 <e lm="tiltak">          <i>tiltak</i><par n="ul__n"/></e>
 <e lm="trinn">           <i>trinn</i><par n="ul__n"/></e>
 <e lm="vis">             <i>vis</i><par n="vis_no-cp__n"/></e>
@@ -23261,7 +23341,6 @@
 <e lm="troloving"><i>troloving</i><par n="då__n"/></e>
 <e lm="fest"><i>fest</i><par n="ep__n"/></e>
 <e lm="folkeparti"><i>folkeparti</i><par n="ja__n"/></e>
-<e lm="handverk"><i>handverk</i><par n="ul__n"/></e>
 <e lm="flaum"><i>flaum</i><par n="ep__n"/></e>
 <e lm="aure"><i>aure</i><par n="re__n"/></e>
 <e lm="friksjon"><i>friksjon</i><par n="ep__n"/></e>
@@ -23597,7 +23676,7 @@
 <e lm="kopper">          <i>koppe</i><par n="koppe/r__n"/></e>
 <e lm="landområde">      <i>landområd</i><par n="ød/e__n"/></e>
 <e lm="marina">          <i>marina</i><par n="ep__n"/></e>
-<e lm="kveite">          <i>kveit</i><par n="enk/e__n"/></e>
+<e c="fisk" lm="kveite">          <i>kveit</i><par n="enk/e__n"/></e>
 <e lm="keramikk">        <i>keramikk</i><par n="ep__n"/></e>
 <e lm="mons">            <i>mons</i><par n="ep__n"/></e>
 <e lm="lom">             <i>lom</i><par n="bom_no-cp__n"/></e>
@@ -24559,7 +24638,7 @@
     <e lm="approksimasjon"><i>approksimasjon</i><par n="ep__n"/></e>
     <e lm="appropriasjon"><i>appropriasjon</i><par n="ep__n"/></e>
     <e lm="aprikos"><i>aprikos</i><par n="ep__n"/></e>
-    <e lm="aprikosgraut"><i>aprikosgraut</i><par n="ep__n"/></e>
+    <e lm="aprikosgrøt"><i>aprikos</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="aprikoskompott"><i>aprikoskompott</i><par n="ep__n"/></e>
     <e lm="aprilspøk"><i>aprilspøk</i><par n="ep__n"/></e>
     <e lm="apropos"><i>apropos</i><par n="ja__n"/></e>
@@ -25141,7 +25220,7 @@
     <e lm="badeball"><i>badeball</i><par n="ep__n"/></e>
     <e lm="badeby"><i>badeby</i><par n="ep__n"/></e>
     <e lm="badegjest"><i>badegjest</i><par n="ep__n"/></e>
-    <e lm="badehandkle"><i>badehandkl</i><par n="åkl/e__n"/></e>
+    <e lm="badehåndkle"><i>bade</i><par n="hånd_LR_hand"/><i>kl</i><par n="åkl/e__n"/></e>
     <e lm="badehotell"><i>badehotell</i><par n="ja__n"/></e>
     <e lm="badekar"><i>badekar</i><par n="ul__n"/></e>
     <e lm="badeliv"><i>badeliv</i><par n="ul__n"/></e>
@@ -25187,7 +25266,7 @@
     <e lm="bakgrunnsmateriale"><i>bakgrunnsmaterial</i><par n="ød/e__n"/></e>
     <e lm="bakgrunnsmusikk"><i>bakgrunnsmusikk</i><par n="ep__n"/></e>
     <e lm="bakgrunnsstoff"><i>bakgrunnsstoff</i><par n="ul__n"/></e>
-    <e lm="bakhandsslag"><i>bakhandsslag</i><par n="ul__n"/></e>
+    <e lm="bakhåndsslag"><i>bak</i><par n="hånd_LR_hand"/><i>sslag</i><par n="ul__n"/></e>
     <e lm="bakhjul"><i>bakhjul</i><par n="ul__n"/></e>
     <e lm="bakhun"><i>bakhun</i><par n="ep__n"/></e>
     <e lm="bakhunved"><i>bakhunved</i><par n="ep__n"/></e>
@@ -25388,7 +25467,7 @@
     <e lm="barbersalong"><i>barbersalong</i><par n="ep__n"/></e>
     <e lm="barberskum"><i>barberskum</i><par n="lam__n"/></e>
     <e lm="barde"><i>barde</i><par n="re__n"/></e>
-    <e lm="bardekval"><i>bardekval</i><par n="ep__n"/></e>
+    <e lm="bardehval"><i>barde</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="bardisk"><i>bardisk</i><par n="ep__n"/></e>
     <e lm="bardun"><i>bardun</i><par n="ep__n"/></e>
     <e lm="barett"><i>barett</i><par n="ep__n"/></e>
@@ -25474,7 +25553,7 @@
     <e lm="barrikade"><i>barrikade</i><par n="re__n"/></e>
     <e lm="barsel"><i>bars</i><par n="es/el__n"/></e>
     <e lm="barselfeber"><i>barselfeb</i><par n="iv/er__n"/></e>
-    <e lm="barselgraut"><i>barselgraut</i><par n="ep__n"/></e>
+    <e lm="barselgrøt"><i>barsel</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="barselkrampe"><i>barselkrampe</i><par n="re__n"/></e>
     <e lm="barskogbelte"><i>barskogbelt</i><par n="ød/e__n"/></e>
     <e lm="bart"><i>bart</i><par n="ep__n"/></e>
@@ -25586,7 +25665,7 @@
     <e lm="beinkrok"><i>beinkrok</i><par n="ep__n"/></e>
     <e lm="beinlim"><i>beinlim</i><par n="ul__n"/></e>
     <e lm="beinmerg"><i>beinmerg</i><par n="ep__n"/></e>
-    <e lm="beinmjøl"><i>beinmjøl</i><par n="ul__n"/></e>
+    <e lm="beinmel"><i>bein</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="beinrangel"><i>beinrang</i><par n="es/el__n"/></e>
     <e lm="beinskurd"><i>beinskurd</i><par n="ep__n"/></e>
     <e lm="beinsplint"><i>beinsplint</i><par n="ep__n"/></e>
@@ -25767,7 +25846,7 @@
     <e lm="biavl"><i>biavl</i><par n="ep__n"/></e>
     <e lm="bibel"><i>bib</i><par n="ad/el__n"/></e>
     <e lm="bibelcamp"><i>bibelcamp</i><par n="ep__n"/></e>
-    <e lm="bibelhandskrift"><i>bibelhandskrift</i><par n="ja__n"/></e>
+    <e lm="bibelhåndskrift"><i>bibel</i><par n="hånd_LR_hand"/><i>skrift</i><par n="ja__n"/></e>
     <e lm="bibelkonkordans"><i>bibelkonkordans</i><par n="ep__n"/></e>
     <e lm="bibelkritikk"><i>bibelkritikk</i><par n="ep__n"/></e>
     <e lm="bibelkunnskap"><i>bibelkunnskap</i><par n="ep__n"/></e>
@@ -26061,14 +26140,14 @@
     <e lm="bleiebarn"><i>bleiebarn</i><par n="ul__n"/></e>
     <e lm="bleieskift"><i>bleieskift</i><par n="ul__n"/></e>
     <e lm="bleig"><i>bleig</i><par n="ep__n"/></e>
-    <e lm="bleik"><i>bleik</i><par n="då__n"/></e>
-    <e lm="bleikansikt"><i>bleikansikt</i><par n="ja__n"/></e>
-    <e lm="bleikemiddel"><i>bleikemid</i><par n="av-mid/del__n"/></e>
-    <e lm="bleikeplass"><i>bleikeplass</i><par n="ep__n"/></e>
-    <e lm="bleikeri"><i>bleikeri</i><par n="ja__n"/></e>
+    <e lm="blek"><i>b</i><par n="lek_LR_leik"/><par n="då__n"/></e>
+    <e lm="blekansikt"><i>b</i><par n="lek_LR_leik"/><i>ansikt</i><par n="ja__n"/></e>
+    <e lm="blekemiddel"><i>b</i><par n="lek_LR_leik"/><i>emid</i><par n="av-mid/del__n"/></e>
+    <e lm="blekeplass"><i>b</i><par n="lek_LR_leik"/><i>eplass</i><par n="ep__n"/></e>
+    <e lm="blekeri"><i>b</i><par n="lek_LR_leik"/><i>eri</i><par n="ja__n"/></e>
     <e lm="bleikfis"><i>bleikfis</i><par n="ep__n"/></e>
-    <e lm="bleiking"><i>bleiking</i><par n="då__n"/></e>
-    <e lm="bleiknebb"><i>bleiknebb</i><par n="ymt__n"/></e>
+    <e lm="bleking"><i>b</i><par n="lek_LR_leik"/><i>ing</i><par n="då__n"/></e>
+    <e lm="bleknebb"><i>b</i><par n="lek_LR_leik"/><i>nebb</i><par n="ymt__n"/></e>
     <e lm="blekk-kjertel"><i>blekk-kjert</i><par n="ad/el__n"/></e>
     <e lm="blekk-klatt"><i>blekk-klatt</i><par n="ep__n"/></e>
     <e lm="blekkboks"><i>blekkboks</i><par n="ep__n"/></e>
@@ -26213,7 +26292,7 @@
     <e lm="blåknute"><i>blåknute</i><par n="re__n"/></e>
     <e lm="blåkoll"><i>blåkoll</i><par n="ep__n"/></e>
     <e lm="blåkopi"><i>blåkopi</i><par n="ep__n"/></e>
-    <e lm="blåkval"><i>blåkval</i><par n="ep__n"/></e>
+    <e lm="blåhval"><i>blå</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="blåleir"><i>blåleir</i><par n="ul__n"/></e>
     <e lm="blålys"><i>blålys</i><par n="ul__n"/></e>
     <e lm="blåmåndag"><i>blåmåndag</i><par n="ep__n"/></e>
@@ -26981,7 +27060,7 @@
 <e lm="omsut">      <i>omsut</i><par n="då__n"/></e>
     <e lm="byggherre"><i>byggherre</i><par n="re__n"/></e>
     <e lm="byggkorn"><i>byggkorn</i><par n="ul__n"/></e>
-    <e lm="byggmjøl"><i>byggmjøl</i><par n="ul__n"/></e>
+    <e lm="byggmel"><i>bygg</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="byggryn"><i>byggryn</i><par n="ul__n"/></e>
     <e lm="byggåker"><i>byggåk</i><par n="åk/er__n"/></e>
     <e lm="bygningsartikkel"><i>bygningsartik</i><par n="puk/kel__n"/></e>
@@ -28178,7 +28257,7 @@
     <e lm="dugleik"><i>dugleik</i><par n="ep__n"/></e>
     <e lm="dugnadsarbeid"><i>dugnadsarbeid</i><par n="ja__n"/></e>
     <e lm="dugnadsfolk"><i>dugnadsfolk</i><par n="ul__n"/></e>
-    <e lm="dugnadsgraut"><i>dugnadsgraut</i><par n="ep__n"/></e>
+    <e lm="dugnadsgrøt"><i>dugnads</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="dugnadsinnsats"><i>dugnadsinnsats</i><par n="ep__n"/></e>
     <e lm="dugurd"><i>dugurd</i><par n="ep__n"/></e>
     <e lm="duk"><i>duk</i><par n="ep_no-cp__n"/></e>
@@ -28354,7 +28433,7 @@
     <e lm="dønn"><i>dønn</i><par n="ul__n"/></e>
     <e lm="dørbeslag"><i>dørbeslag</i><par n="ul__n"/></e>
     <e lm="dørgløtt"><i>dørgløtt</i><par n="to__n"/></e>
-    <e lm="dørhandtak"><i>dørhandtak</i><par n="ul__n"/></e>
+    <e lm="dørhåndtak"><i>dør</i><par n="hånd_LR_hand"/><i>tak</i><par n="ul__n"/></e>
     <e lm="dørhave"><i>dørhave</i><par n="re__n"/></e>
     <e lm="dørk"><i>dørk</i><par n="ep__n"/></e>
     <e lm="dørkarm"><i>dørkarm</i><par n="ep__n"/></e>
@@ -29645,11 +29724,11 @@
     <e lm="finkultur"><i>finkultur</i><par n="ep__n"/></e>
     <e lm="finlandssvenske"><i>finlandssvenske</i><par n="re__n"/></e>
     <e lm="finlending"><i>finlending</i><par n="ep__n"/></e>
-    <e lm="finmjøl"><i>finmjøl</i><par n="ul__n"/></e>
+    <e lm="finmel"><i>fin</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="finnemisjon"><i>finnemisjon</i><par n="ep__n"/></e>
     <e lm="finngras"><i>finngras</i><par n="ul__n"/></e>
     <e lm="finnkall"><i>finnkall</i><par n="ep__n"/></e>
-    <e lm="finnkval"><i>finnkval</i><par n="ep__n"/></e>
+    <e lm="finnhval"><i>finn</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="finnmarking"><i>finnmarking</i><par n="ep__n"/></e>
     <e lm="finnmarksfiske"><i>finnmarksfisk</i><par n="ød/e__n"/></e>
     <e lm="finnmarkspors"><i>finnmarkspors</i><par n="ep__n"/></e>
@@ -29716,7 +29795,7 @@
     <e lm="fiskekrok"><i>fiskekrok</i><par n="ep__n"/></e>
     <e lm="fiskemat"><i>fiskemat</i><par n="ep__n"/></e>
     <e lm="fiskemed"><i>fiskemed</i><par n="ul__n"/></e>
-    <e lm="fiskemjøl"><i>fiskemjøl</i><par n="ul__n"/></e>
+    <e lm="fiskemel"><i>fiske</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="fiskeoppdrett"><i>fiskeoppdrett</i><par n="ul__n"/></e>
     <e lm="fiskeplass"><i>fiskeplass</i><par n="ep__n"/></e>
     <e lm="fiskeprodukt"><i>fiskeprodukt</i><par n="ja__n"/></e>
@@ -30037,7 +30116,7 @@
     <e lm="flørt"><i>flørt</i><par n="ep__n"/></e>
     <e lm="fløyel"><i>fløyel</i><par n="to__n"/></e>
     <e lm="fløyelsband"><i>fløyelsband</i><par n="ul__n"/></e>
-    <e lm="fløyelsgraut"><i>fløyelsgraut</i><par n="ep__n"/></e>
+    <e lm="fløyelsgrøt"><i>fløyels</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="fløyelskjole"><i>fløyelskjole</i><par n="re__n"/></e>
     <e lm="fløymann"><i>fløym</i><par n="jam/ann__n"/></e>
     <e lm="fløyparti"><i>fløyparti</i><par n="ja__n"/></e>
@@ -30647,9 +30726,9 @@
     <e lm="frostknute"><i>frostknute</i><par n="re__n"/></e>
     <e lm="frostrøyk"><i>frostrøyk</i><par n="ep__n"/></e>
     <e lm="frostskade"><i>frostskade</i><par n="re__n"/></e>
-    <e lm="frotterhandkle"><i>frotterhandkl</i><par n="åkl/e__n"/></e>
+    <e lm="frotterhåndkle"><i>frotter</i><par n="hånd_LR_hand"/><i>kl</i><par n="åkl/e__n"/></e>
     <e lm="frotté"><i>frott</i><par n="id/é__n"/></e>
-    <e lm="frottéhandkle"><i>frottéhandkl</i><par n="åkl/e__n"/></e>
+    <e lm="frottéhåndkle"><i>frotté</i><par n="hånd_LR_hand"/><i>kl</i><par n="åkl/e__n"/></e>
     <e lm="frottéstoff"><i>frottéstoff</i><par n="ja__n"/></e>
     <e lm="frottétøy"><i>frottétøy</i><par n="UH__n"/></e>
     <e lm="fruentimmer"><i>fruentim</i><par n="num/mer__n"/></e>
@@ -30900,7 +30979,7 @@
     <e lm="førstedag"><i>førstedag</i><par n="ep__n"/></e>
     <e lm="førstefiolin"><i>førstefiolin</i><par n="ep__n"/></e>
     <e lm="førstefødselsrett"><i>førstefødselsrett</i><par n="ep__n"/></e>
-    <e lm="førstehandsverdi"><i>førstehandsverdi</i><par n="ep__n"/></e>
+    <e lm="førstehåndsverdi"><i>første</i><par n="hånd_LR_hand"/><i>sverdi</i><par n="ep__n"/></e>
     <e lm="førstehjelpskurs"><i>førstehjelpskurs</i><par n="ja__n"/></e>
     <e lm="førstehjelpskursus"><i>førstehjelpskurs</i><par n="kurs/us__n"/></e>
     <e lm="førstehjelpsutstyr"><i>førstehjelpsutstyr</i><par n="ul__n"/></e>
@@ -31411,7 +31490,7 @@
     <e lm="gjesterom"><i>gjesterom</i><par n="lam__n"/></e>
     <e lm="gjetord"><i>gjetord</i><par n="ul__n"/></e>
     <e lm="gjettekonkurranse"><i>gjettekonkurranse</i><par n="re__n"/></e>
-    <e lm="gjetteleik"><i>gjetteleik</i><par n="ep__n"/></e>
+    <e lm="gjettelek"><i>gjette</i><par n="lek_LR_leik"/><par n="ep__n"/></e>
     <e lm="gjettverk"><i>gjettverk</i><par n="ja__n"/></e>
     <e lm="gjær"><i>gjær</i><par n="ep__n"/></e>
     <e lm="gjærbakst"><i>gjærbakst</i><par n="ep__n"/></e>
@@ -31709,10 +31788,10 @@
     <e lm="gratistur"><i>gratistur</i><par n="ep__n"/></e>
     <e lm="gratulant"><i>gratulant</i><par n="ep__n"/></e>
     <e lm="gratulasjon"><i>gratulasjon</i><par n="ep__n"/></e>
-    <e lm="graut"><i>graut</i><par n="ep__n"/></e>
-    <e lm="grautfat"><i>grautfat</i><par n="ja__n"/></e>
-    <e lm="grautomslag"><i>grautomslag</i><par n="ul__n"/></e>
-    <e lm="grautpinne"><i>grautpinne</i><par n="re__n"/></e>
+    <e lm="grøt"><par n="grøt_LR_graut"/><par n="ep__n"/></e>
+    <e lm="grøtfat"><par n="grøt_LR_graut"/><i>fat</i><par n="ja__n"/></e>
+    <e lm="grøtomslag"><par n="grøt_LR_graut"/><i>omslag</i><par n="ul__n"/></e>
+    <e lm="grøtpinne"><par n="grøt_LR_graut"/><i>pinne</i><par n="re__n"/></e>
     <e lm="gravalvor"><i>gravalvor</i><par n="ul__n"/></e>
     <e lm="gravearbeid"><i>gravearbeid</i><par n="ja__n"/></e>
     <e lm="gravemaskin"><i>gravemaskin</i><par n="då__n"/></e>
@@ -31782,7 +31861,7 @@
     <e lm="grillspyd"><i>grillspyd</i><par n="ul__n"/></e>
     <e lm="grim"><i>grim</i><par n="ep__n"/></e>
     <e lm="grimase"><i>grimase</i><par n="re__n"/></e>
-    <e lm="grindkval"><i>grindkval</i><par n="ep__n"/></e>
+    <e lm="grindhval"><i>grind</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="grindstolpe"><i>grindstolpe</i><par n="re__n"/></e>
     <e lm="gringo"><i>gringo</i><par n="ep__n"/></e>
     <e lm="gripebrett"><i>gripebrett</i><par n="ja__n"/></e>
@@ -31830,7 +31909,7 @@
     <e lm="grovkjøkken"><i>grovkjøkken</i><par n="ja__n"/></e>
     <e lm="grovkomikk"><i>grovkomikk</i><par n="ep__n"/></e>
     <e lm="grovleir"><i>grovleir</i><par n="ul__n"/></e>
-    <e lm="grovmjøl"><i>grovmjøl</i><par n="ul__n"/></e>
+    <e lm="grovmel"><i>grov</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="grovriss"><i>grovriss</i><par n="ul__n"/></e>
     <e lm="grovsalt"><i>grovsalt</i><par n="UH__n"/></e>
     <e lm="grovsand"><i>grovsand</i><par n="ep__n"/></e>
@@ -31911,8 +31990,8 @@
     <e lm="gruvelampe"><i>gruvelamp</i><par n="enk/e__n"/></e>
     <e lm="gry"><i>gry</i><par n="ul_no-cp__n"/></e>
     <e lm="gryn"><i>gryn</i><par n="ul__n"/></e>
-    <e lm="gryngraut"><i>gryngraut</i><par n="ep__n"/></e>
-    <e lm="grynmjøl"><i>grynmjøl</i><par n="ul__n"/></e>
+    <e lm="gryngrøt"><i>gryn</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
+    <e lm="grynmel"><i>gryn</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="grynsodd"><i>grynsodd</i><par n="ul__n"/></e>
     <e lm="grynt"><i>grynt</i><par n="ul__n"/></e>
     <e lm="grynteokse"><i>grynteokse</i><par n="re__n"/></e>
@@ -31926,7 +32005,7 @@
     <e lm="gråbror"><i>gråbr</i><par n="br/or__n"/></e>
     <e lm="gråe"><i>gråe</i><par n="re__n"/></e>
     <e lm="grågåstrekk"><i>grågåstrekk</i><par n="ul__n"/></e>
-    <e lm="gråkval"><i>gråkval</i><par n="ep__n"/></e>
+    <e lm="gråhval"><i>grå</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="gråmåke"><i>gråmåk</i><par n="enk/e__n"/></e>
     <e lm="gråmåse"><i>gråmåse</i><par n="re__n"/></e>
     <e lm="gråolder"><i>gråold</i><par n="gyg/er__n"/></e>
@@ -31948,7 +32027,7 @@
     <e lm="grønfink"><i>grønfink</i><par n="ep__n"/></e>
     <e lm="grønfôr"><i>grønfôr</i><par n="ul__n"/></e>
     <e lm="grønlandshund"><i>grønlandshund</i><par n="ep__n"/></e>
-    <e lm="grønlandskval"><i>grønlandskval</i><par n="ep__n"/></e>
+    <e lm="grønlandshval"><i>grønlands</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="grønlandsmåke"><i>grønlandsmåk</i><par n="enk/e__n"/></e>
     <e lm="grønlandsmåse"><i>grønlandsmåse</i><par n="re__n"/></e>
     <e lm="grønlandssel"><i>grønlandssel</i><par n="ep__n"/></e>
@@ -32100,7 +32179,7 @@
     <e lm="gåsestegg"><i>gåsestegg</i><par n="ep__n"/></e>
     <e lm="gåstol"><i>gåstol</i><par n="ep__n"/></e>
     <e lm="gåsunge"><i>gåsunge</i><par n="re__n"/></e>
-    <e lm="gåteleik"><i>gåteleik</i><par n="ep__n"/></e>
+    <e lm="gåtelek"><i>gåte</i><par n="lek_LR_leik"/><par n="ep__n"/></e>
     <e lm="gørr"><i>gørr</i><par n="ul__n"/></e>
     <e lm="gøys"><i>gøys</i><par n="ep__n"/></e>
     <e lm="h-dur"><i>h-dur</i><par n="ep__n"/></e>
@@ -32298,18 +32377,17 @@
     <e lm="hams"><i>hams</i><par n="ep__n"/></e>
     <e lm="hamskifte"><i>hamskift</i><par n="ød/e__n"/></e>
     <e lm="hamster"><i>hamst</i><par n="iv/er__n"/></e>
-    <e lm="hand"><i>h</i><par n="/and__n"/></e>
-    <e lm="handalfabet"><i>handalfabet</i><par n="ja__n"/></e>
-    <e lm="handarbeid"><i>handarbeid</i><par n="ja__n"/></e>
-    <e lm="handbagasje"><i>handbagasje</i><par n="re__n"/></e>
-    <e lm="handbak"><i>handbak</i><par n="ep__n"/></e>
-    <e lm="handball"><i>handball</i><par n="ep__n"/></e>
-    <e lm="handball-lag"><i>handball-lag</i><par n="ul__n"/></e>
-    <e lm="handballag"><i>handballag</i><par n="ul__n"/></e>
-    <e lm="handballkamp"><i>handballkamp</i><par n="ep__n"/></e>
-    <e lm="handbrekk"><i>handbrekk</i><par n="ul__n"/></e>
-    <e lm="handbrems"><i>handbrems</i><par n="ep__n"/></e>
-    <e lm="handduk"><i>handduk</i><par n="ep__n"/></e>
+    <e lm="håndalfabet"><par n="hånd_LR_hand"/><i>alfabet</i><par n="ja__n"/></e>
+    <e lm="håndarbeid"><par n="hånd_LR_hand"/><i>arbeid</i><par n="ja__n"/></e>
+    <e lm="håndbagasje"><par n="hånd_LR_hand"/><i>bagasje</i><par n="re__n"/></e>
+    <e lm="håndbak"><par n="hånd_LR_hand"/><i>bak</i><par n="ep__n"/></e>
+    <e lm="håndball"><par n="hånd_LR_hand"/><i>ball</i><par n="ep__n"/></e>
+    <e lm="håndball-lag"><par n="hånd_LR_hand"/><i>ball-lag</i><par n="ul__n"/></e>
+    <e lm="håndballag"><par n="hånd_LR_hand"/><i>ballag</i><par n="ul__n"/></e>
+    <e lm="håndballkamp"><par n="hånd_LR_hand"/><i>ballkamp</i><par n="ep__n"/></e>
+    <e lm="håndbrekk"><par n="hånd_LR_hand"/><i>brekk</i><par n="ul__n"/></e>
+    <e lm="håndbrems"><par n="hånd_LR_hand"/><i>brems</i><par n="ep__n"/></e>
+    <e lm="håndduk"><par n="hånd_LR_hand"/><i>duk</i><par n="ep__n"/></e>
     <e lm="handelsakademi"><i>handelsakademi</i><par n="ja__n"/></e>
     <e lm="handelsbalanse"><i>handelsbalanse</i><par n="re__n"/></e>
     <e lm="handelsbank"><i>handelsbank</i><par n="ep__n"/></e>
@@ -32356,14 +32434,14 @@
     <e lm="handelsvei"><i>handelsvei</i><par n="ep__n"/></e>
     <e lm="handelsyrke"><i>handelsyrk</i><par n="ød/e__n"/></e>
     <e lm="handgranat"><i>handgranat</i><par n="ep__n"/></e>
-    <e lm="handgrep"><i>handgrep</i><par n="ul__n"/></e>
+    <e lm="håndgrep"><par n="hånd_LR_hand"/><i>grep</i><par n="ul__n"/></e>
     <e lm="handicap"><i>handicap</i><par n="ja__n"/></e>
     <e lm="handikap"><i>handikap</i><par n="ja__n"/></e>
-    <e lm="handjern"><i>handjern</i><par n="ul__n"/></e>
-    <e lm="handkjøp"><i>handkjøp</i><par n="ul__n"/></e>
-    <e lm="handkoffert"><i>handkoffert</i><par n="ep__n"/></e>
-    <e lm="handlag"><i>handlag</i><par n="ul__n"/></e>
-    <e lm="handledd"><i>handledd</i><par n="ul__n"/></e>
+    <e lm="håndjern"><par n="hånd_LR_hand"/><i>jern</i><par n="ul__n"/></e>
+    <e lm="håndkjøp"><par n="hånd_LR_hand"/><i>kjøp</i><par n="ul__n"/></e>
+    <e lm="håndkoffert"><par n="hånd_LR_hand"/><i>koffert</i><par n="ep__n"/></e>
+    <e lm="håndlag"><par n="hånd_LR_hand"/><i>lag</i><par n="ul__n"/></e>
+    <e lm="håndledd"><par n="hånd_LR_hand"/><i>ledd</i><par n="ul__n"/></e>
     <e lm="handlemåte"><i>handlemåte</i><par n="re__n"/></e>
     <e lm="handlingsgang"><i>handlingsgang</i><par n="ep__n"/></e>
     <e lm="handlingsmønster"><i>handlingsmønst</i><par n="vat/er__n"/></e>
@@ -32372,17 +32450,17 @@
     <e lm="handred"><i>handred</i><par n="ul__n"/></e>
     <e lm="handrev"><i>handrev</i><par n="ul__n"/></e>
     <e lm="hands"><i>hands</i><par n="gon__n"/></e>
-    <e lm="handskytevåpen"><i>handskytevåp</i><par n="våp/en__n"/></e>
+    <e lm="håndskytevåpen"><par n="hånd_LR_hand"/><i>skytevåp</i><par n="våp/en__n"/></e>
     <e lm="handslag"><i>handslag</i><par n="ul__n"/></e>
-    <e lm="handsnøre"><i>handsnør</i><par n="ød/e__n"/></e>
-    <e lm="handtak"><i>handtak</i><par n="ul__n"/></e>
-    <e lm="handtein"><i>handtein</i><par n="ep__n"/></e>
-    <e lm="handtrykk"><i>handtrykk</i><par n="ul__n"/></e>
-    <e lm="handverksbrev"><i>handverksbrev</i><par n="ja__n"/></e>
-    <e lm="handverkslag"><i>handverkslag</i><par n="ul__n"/></e>
-    <e lm="handverkslaug"><i>handverkslaug</i><par n="ul__n"/></e>
-    <e lm="handverkslærling"><i>handverkslærling</i><par n="ep__n"/></e>
-    <e lm="handvåpen"><i>handvåp</i><par n="våp/en__n"/></e>
+    <e lm="håndsnøre"><par n="hånd_LR_hand"/><i>snør</i><par n="ød/e__n"/></e>
+    <e lm="håndtak"><par n="hånd_LR_hand"/><i>tak</i><par n="ul__n"/></e>
+    <e lm="håndtein"><par n="hånd_LR_hand"/><i>tein</i><par n="ep__n"/></e>
+    <e lm="håndtrykk"><par n="hånd_LR_hand"/><i>trykk</i><par n="ul__n"/></e>
+    <e lm="håndverksbrev"><par n="hånd_LR_hand"/><i>verksbrev</i><par n="ja__n"/></e>
+    <e lm="håndverkslag"><par n="hånd_LR_hand"/><i>verkslag</i><par n="ul__n"/></e>
+    <e lm="håndverkslaug"><par n="hånd_LR_hand"/><i>verkslaug</i><par n="ul__n"/></e>
+    <e lm="håndverkslærling"><par n="hånd_LR_hand"/><i>verkslærling</i><par n="ep__n"/></e>
+    <e lm="håndvåpen"><par n="hånd_LR_hand"/><i>våp</i><par n="våp/en__n"/></e>
     <e lm="hanebein"><i>hanebein</i><par n="ul__n"/></e>
     <e lm="hanebjelke"><i>hanebjelke</i><par n="re__n"/></e>
     <e lm="hanefot"><i>hanef</i><par n="f/ot__n"/></e>
@@ -32424,6 +32502,7 @@
     <e lm="harddisc"><i>harddisc</i><par n="ep__n"/></e>
     <e lm="harddisk"><i>harddisk</i><par n="ep__n"/></e>
     <e lm="hardhaus"><i>hardhaus</i><par n="ep__n"/></e>
+    <e lm="hardhet">         <i>hardhet</i><par n="då__n"/></e>
     <e lm="harding"><i>harding</i><par n="ep__n"/></e>
     <e lm="hardleik"><i>hardleik</i><par n="ep__n"/></e>
     <e lm="hardmetall"><i>hardmetall</i><par n="ja__n"/></e>
@@ -32535,10 +32614,10 @@
     <e lm="havmåke"><i>havmåk</i><par n="enk/e__n"/></e>
     <e lm="havmåse"><i>havmåse</i><par n="re__n"/></e>
     <e lm="havnekontor"><i>havnekontor</i><par n="ja__n"/></e>
-    <e lm="havregraut"><i>havregraut</i><par n="ep__n"/></e>
+    <e lm="havregrøt"><i>havre</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="havregryn"><i>havregryn</i><par n="ul__n"/></e>
     <e lm="havrekjeks"><i>havrekjeks</i><par n="lux__n"/></e>
-    <e lm="havremjøl"><i>havremjøl</i><par n="ul__n"/></e>
+    <e lm="havremel"><i>havre</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="havresekk"><i>havresekk</i><par n="ep__n"/></e>
     <e lm="havrett"><i>havrett</i><par n="ep__n"/></e>
     <e lm="havrettsminister"><i>havrettsminist</i><par n="iv/er__n"/></e>
@@ -33247,7 +33326,7 @@
     <e lm="husøkonom"><i>husøkonom</i><par n="ep__n"/></e>
     <e lm="hvitfisk"><i>hvitfisk</i><par n="ep__n"/></e>
     <e lm="hvitkløver"><i>hvitkløver</i><par n="vier__n"/></e>
-    <e lm="hvitkval"><i>hvitkval</i><par n="ep__n"/></e>
+    <e lm="hvithval"><i>hvit</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="hvitkål"><i>hvitkål</i><par n="ep__n"/></e>
     <e lm="hvitløk"><i>hvitløk</i><par n="ep__n"/></e>
     <e lm="hvitløkpulver"><i>hvitløkpulver</i><par n="aber__n"/></e>
@@ -33338,7 +33417,7 @@
     <e lm="hålke"><i>hålk</i><par n="enk/e__n"/></e>
     <e lm="hålkeføre"><i>hålkefør</i><par n="ød/e__n"/></e>
     <e lm="hålogalending"><i>hålogalending</i><par n="ep__n"/></e>
-    <e lm="håndbibliotek"><i>håndbibliotek</i><par n="ja__n"/></e>
+    <e lm="håndbibliotek"><par n="hånd_LR_hand"/><i>bibliotek</i><par n="ja__n"/></e>
     <e lm="hånflir"><i>hånflir</i><par n="ymt__n"/></e>
     <e lm="hånlatter"><i>hånlat</i><par n="mut/ter__n"/></e>
     <e lm="hånsord"><i>hånsord</i><par n="ul__n"/></e>
@@ -34315,7 +34394,7 @@
     <e lm="julefest"><i>julefest</i><par n="ep__n"/></e>
     <e lm="julegilde"><i>julegild</i><par n="ød/e__n"/></e>
     <e lm="julegjest"><i>julegjest</i><par n="ep__n"/></e>
-    <e lm="julegraut"><i>julegraut</i><par n="ep__n"/></e>
+    <e lm="julegrøt"><i>jule</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="julegris"><i>julegris</i><par n="ep__n"/></e>
     <e lm="julehandel"><i>julehand</i><par n="ad/el__n"/></e>
     <e lm="julehefte"><i>juleheft</i><par n="ød/e__n"/></e>
@@ -34483,7 +34562,7 @@
     <e lm="kaldfeber"><i>kaldfeber</i><par n="ep__n"/></e>
     <e lm="kaldflir"><i>kaldflir</i><par n="ymt__n"/></e>
     <e lm="kaldfront"><i>kaldfront</i><par n="ep__n"/></e>
-    <e lm="kaldgraut"><i>kaldgraut</i><par n="ep__n"/></e>
+    <e lm="kaldgrøt"><i>kald</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="kaldgufs"><i>kaldgufs</i><par n="do__n"/></e>
     <e lm="kaldskratt"><i>kaldskratt</i><par n="ymt__n"/></e>
     <e lm="kaldstart"><i>kaldstart</i><par n="ep__n"/></e>
@@ -34517,7 +34596,7 @@
     <e lm="kalkerpapir"><i>kalkerpapir</i><par n="ja__n"/></e>
     <e lm="kalkhydrat"><i>kalkhydrat</i><par n="ja__n"/></e>
     <e lm="kalkmangel"><i>kalkmang</i><par n="ad/el__n"/></e>
-    <e lm="kalkmjøl"><i>kalkmjøl</i><par n="ul__n"/></e>
+    <e lm="kalkmel"><i>kalk</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="kalkmørtel"><i>kalkmørt</i><par n="ad/el__n"/></e>
     <e lm="kalkomn"><i>kalkomn</i><par n="ep__n"/></e>
     <e lm="kalkpuss"><i>kalkpuss</i><par n="ep__n"/></e>
@@ -35700,7 +35779,7 @@
     <e lm="knyttneve"><i>knyttneve</i><par n="re__n"/></e>
     <e lm="knyttneveslag"><i>knyttneveslag</i><par n="ul__n"/></e>
     <e lm="knøl"><i>knøl</i><par n="ep__n"/></e>
-    <e lm="knølkval"><i>knølkval</i><par n="ep__n"/></e>
+    <e lm="knølhval"><i>knøl</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="knøs"><i>knøs</i><par n="ep__n"/></e>
     <e lm="knøtt"><i>knøtt</i><par n="ul__n"/></e>
     <e lm="ko-ko"><i>ko-ko</i><par n="ul__n"/></e>
@@ -35739,7 +35818,7 @@
     <e lm="kofferdam"><i>kofferdam</i><par n="bom__n"/></e>
     <e lm="koffernagle"><i>koffernagle</i><par n="re__n"/></e>
     <e lm="koffert"><i>koffert</i><par n="ep__n"/></e>
-    <e lm="kofferthandtak"><i>kofferthandtak</i><par n="ul__n"/></e>
+    <e lm="kofferthåndtak"><i>koffert</i><par n="hånd_LR_hand"/><i>tak</i><par n="ul__n"/></e>
     <e lm="koffertklasse"><i>koffertklass</i><par n="enk/e__n"/></e>
     <e lm="kogg"><i>kogg</i><par n="ep__n"/></e>
     <e lm="kogge"><i>kogge</i><par n="re__n"/></e>
@@ -36412,7 +36491,7 @@
     <e lm="kortisol"><i>kortisol</i><par n="ep__n"/></e>
     <e lm="kortison"><i>kortison</i><par n="ul__n"/></e>
     <e lm="kortlag"><i>kortlag</i><par n="ul__n"/></e>
-    <e lm="kortleik"><i>kortleik</i><par n="ep__n"/></e>
+    <e lm="kortlek"><i>kort</i><par n="lek_LR_leik"/><par n="ep__n"/></e>
     <e lm="kortord"><i>kortord</i><par n="ul__n"/></e>
     <e lm="kortprosa"><i>kortprosa</i><par n="ep__n"/></e>
     <e lm="kortskalle"><i>kortskalle</i><par n="re__n"/></e>
@@ -36921,7 +37000,7 @@
     <e lm="kunstgalleri"><i>kunstgalleri</i><par n="ja__n"/></e>
     <e lm="kunstgrep"><i>kunstgrep</i><par n="ul__n"/></e>
     <e lm="kunsthandel"><i>kunsthand</i><par n="ad/el__n"/></e>
-    <e lm="kunsthandverk"><i>kunsthandverk</i><par n="ul__n"/></e>
+    <e lm="kunsthåndverk"><i>kunst</i><par n="hånd_LR_hand"/><i>verk</i><par n="ul__n"/></e>
     <e lm="kunstindustri"><i>kunstindustri</i><par n="ep__n"/></e>
     <e lm="kunstis"><i>kunstis</i><par n="ep__n"/></e>
     <e lm="kunstkritikk"><i>kunstkritikk</i><par n="ep__n"/></e>
@@ -37006,12 +37085,12 @@
     <e lm="kvadrupelallianse"><i>kvadrupelallianse</i><par n="re__n"/></e>
     <e lm="kvakk"><i>kvakk</i><par n="ul__n"/></e>
     <e lm="kvakksalveri"><i>kvakksalveri</i><par n="ja__n"/></e>
-    <e lm="kval"><i>kval</i><par n="ep__n"/></e>
-    <e lm="kvalbiff"><i>kvalbiff</i><par n="ep__n"/></e>
-    <e lm="kvalblåst"><i>kvalblåst</i><par n="ep__n"/></e>
-    <e lm="kvalbåt"><i>kvalbåt</i><par n="ep__n"/></e>
-    <e lm="kvalfangst"><i>kvalfangst</i><par n="ep__n"/></e>
-    <e lm="kvalhai"><i>kvalhai</i><par n="ep__n"/></e>
+    <e lm="hval"><par n="hval_LR_kval"/><par n="ep__n"/></e>
+    <e lm="hvalbiff"><par n="hval_LR_kval"/><i>biff</i><par n="ep__n"/></e>
+    <e lm="hvalblåst"><par n="hval_LR_kval"/><i>blåst</i><par n="ep__n"/></e>
+    <e lm="hvalbåt"><par n="hval_LR_kval"/><i>båt</i><par n="ep__n"/></e>
+    <e lm="hvalfangst"><par n="hval_LR_kval"/><i>fangst</i><par n="ep__n"/></e>
+    <e lm="hvalhai"><par n="hval_LR_kval"/><i>hai</i><par n="ep__n"/></e>
     <e lm="kvalifiseringskamp"><i>kvalifiseringskamp</i><par n="ep__n"/></e>
     <e lm="kvalifiseringsløp"><i>kvalifiseringsløp</i><par n="ul__n"/></e>
     <e lm="kvalifiseringsrunde"><i>kvalifiseringsrunde</i><par n="re__n"/></e>
@@ -37021,16 +37100,16 @@
     <e lm="kvalitetsmål"><i>kvalitetsmål</i><par n="ul__n"/></e>
     <e lm="kvalitetsprodukt"><i>kvalitetsprodukt</i><par n="ja__n"/></e>
     <e lm="kvalitetsprøve"><i>kvalitetsprøv</i><par n="enk/e__n"/></e>
-    <e lm="kvalkalv"><i>kvalkalv</i><par n="ep__n"/></e>
-    <e lm="kvalkanon"><i>kvalkanon</i><par n="ep__n"/></e>
-    <e lm="kvalkjøtt"><i>kvalkjøtt</i><par n="ul__n"/></e>
-    <e lm="kvalkokeri"><i>kvalkokeri</i><par n="ja__n"/></e>
+    <e lm="hvalkalv"><par n="hval_LR_kval"/><i>kalv</i><par n="ep__n"/></e>
+    <e lm="hvalkanon"><par n="hval_LR_kval"/><i>kanon</i><par n="ep__n"/></e>
+    <e lm="hvalkjøtt"><par n="hval_LR_kval"/><i>kjøtt</i><par n="ul__n"/></e>
+    <e lm="hvalkokeri"><par n="hval_LR_kval"/><i>kokeri</i><par n="ja__n"/></e>
     <e lm="kvalm"><i>kvalm</i><par n="ep__n"/></e>
     <e lm="kvalme"><i>kvalme</i><par n="re__n"/></e>
     <e lm="kvalming"><i>kvalming</i><par n="ep__n"/></e>
-    <e lm="kvalolje"><i>kvalolj</i><par n="enk/e__n"/></e>
-    <e lm="kvalross"><i>kvalross</i><par n="ep__n"/></e>
-    <e lm="kvalstasjon"><i>kvalstasjon</i><par n="ep__n"/></e>
+    <e lm="hvalolje"><par n="hval_LR_kval"/><i>olj</i><par n="enk/e__n"/></e>
+    <e lm="hvalross"><par n="hval_LR_kval"/><i>ross</i><par n="ep__n"/></e>
+    <e lm="hvalstasjon"><par n="hval_LR_kval"/><i>stasjon</i><par n="ep__n"/></e>
     <e lm="kvanne"><i>kvann</i><par n="enk/e__n"/></e>
     <e lm="kvannejol"><i>kvannejol</i><par n="ep__n"/></e>
     <e lm="kvannjol"><i>kvannjol</i><par n="ep__n"/></e>
@@ -37077,13 +37156,13 @@
     <e lm="kvefsetalje"><i>kvefsetalj</i><par n="enk/e__n"/></e>
     <e lm="kveike"><i>kveik</i><par n="ød/e__n"/></e>
     <e lm="kveil"><i>kveil</i><par n="ep__n"/></e>
-    <e lm="kveitebolle"><i>kveitebolle</i><par n="re__n"/></e>
-    <e lm="kveitebrød"><i>kveitebrød</i><par n="ul__n"/></e>
-    <e lm="kveitebrødsdag"><i>kveitebrødsdag</i><par n="ep__n"/></e>
-    <e lm="kveitegrøpp"><i>kveitegrøpp</i><par n="ul__n"/></e>
-    <e lm="kveitekli"><i>kveitekli</i><par n="ul__n"/></e>
-    <e lm="kveitekorn"><i>kveitekorn</i><par n="ul__n"/></e>
-    <e lm="kveitemjøl"><i>kveitemjøl</i><par n="ul__n"/></e>
+    <e lm="hvetebolle"><par n="hvete_LR_kveite"/><i>bolle</i><par n="re__n"/></e>
+    <e lm="hvetebrød"><par n="hvete_LR_kveite"/><i>brød</i><par n="ul__n"/></e>
+    <e lm="hvetebrødsdag"><par n="hvete_LR_kveite"/><i>brødsdag</i><par n="ep__n"/></e>
+    <e lm="hvetegrøpp"><par n="hvete_LR_kveite"/><i>grøpp</i><par n="ul__n"/></e>
+    <e lm="hvetekli"><par n="hvete_LR_kveite"/><i>kli</i><par n="ul__n"/></e>
+    <e lm="hvetekorn"><par n="hvete_LR_kveite"/><i>korn</i><par n="ul__n"/></e>
+    <e lm="hvetemel"><par n="hvete_LR_kveite"/><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="kvekk"><i>kvekk</i><par n="to__n"/></e>
     <e lm="kveldfiol"><i>kveldfiol</i><par n="ep__n"/></e>
     <e lm="kveldfugl"><i>kveldfugl</i><par n="ep__n"/></e>
@@ -37167,7 +37246,7 @@
     <e lm="kvitfisk"><i>kvitfisk</i><par n="ep__n"/></e>
     <e lm="kviting"><i>kviting</i><par n="ep__n"/></e>
     <e lm="kvitkløver"><i>kvitkløver</i><par n="vier__n"/></e>
-    <e lm="kvitkval"><i>kvitkval</i><par n="ep__n"/></e>
+    <e lm="kvithval"><i>kvit</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="kvitkål"><i>kvitkål</i><par n="ep__n"/></e>
     <e lm="kvitlauk"><i>kvitlauk</i><par n="ep__n"/></e>
     <e lm="kvitlaukpulver"><i>kvitlaukpulver</i><par n="aber__n"/></e>
@@ -37552,6 +37631,7 @@
     <e lm="leddband"><i>leddband</i><par n="ul__n"/></e>
     <e lm="leddbetennelse"><i>leddbetennelse</i><par n="re__n"/></e>
     <e lm="videresendelse"><i>videresendelse</i><par n="re__n"/></e>
+    <e lm="kosthold"><i>kosthold</i><par n="ul__n"/></e>
     <e lm="videresending"><i>videresending</i><par n="då__n"/></e>
     <e lm="videreforsendelse"><i>videreforsendelse</i><par n="re__n"/></e>
     <e lm="viderebefordring"><i>viderebefordring</i><par n="då__n"/></e>
@@ -37597,14 +37677,14 @@
     <e lm="leide"><i>leid</i><par n="ød/e__n"/></e>
     <e lm="leidebrev"><i>leidebrev</i><par n="ja__n"/></e>
     <e lm="leider"><i>leider</i><par n="uer__n"/></e>
-    <e lm="leik"><i>leik</i><par n="ep__n"/></e>
+    <e lm="lek"><par n="lek_LR_leik"/><par n="ep__n"/></e>
     <e lm="leikarring"><i>leikarring</i><par n="ep__n"/></e>
-    <e lm="leikebil"><i>leikebil</i><par n="ep__n"/></e>
-    <e lm="leikehus"><i>leikehus</i><par n="ul__n"/></e>
-    <e lm="leikekamerat"><i>leikekamerat</i><par n="ep__n"/></e>
-    <e lm="leikeplass"><i>leikeplass</i><par n="ep__n"/></e>
-    <e lm="leiketøy"><i>leiketøy</i><par n="ja__n"/></e>
-    <e lm="leikotek"><i>leikotek</i><par n="ja__n"/></e>
+    <e lm="lekebil"><par n="lek_LR_leik"/><i>ebil</i><par n="ep__n"/></e>
+    <e lm="lekehus"><par n="lek_LR_leik"/><i>ehus</i><par n="ul__n"/></e>
+    <e lm="lekekamerat"><par n="lek_LR_leik"/><i>ekamerat</i><par n="ep__n"/></e>
+    <e lm="lekeplass"><par n="lek_LR_leik"/><i>eplass</i><par n="ep__n"/></e>
+    <e lm="leketøy"><par n="lek_LR_leik"/><i>etøy</i><par n="ja__n"/></e>
+    <e lm="lekotek"><par n="lek_LR_leik"/><i>otek</i><par n="ja__n"/></e>
     <e lm="leirbakke"><i>leirbakke</i><par n="re__n"/></e>
     <e lm="leirbotn"><i>leirbotn</i><par n="ep__n"/></e>
     <e lm="leirbål"><i>leirbål</i><par n="ul__n"/></e>
@@ -37625,6 +37705,7 @@
     <e lm="lek"><i>lek</i><par n="ep_no-cp__n"/></e>
     <e lm="lekbror"><i>lekbr</i><par n="br/or__n"/></e>
     <e lm="leke"><i>lek</i><par n="enk/e__n"/></e>
+    <e lm="knapphet">        <i>knapphet</i><par n="då__n"/></e>
     <e lm="lekfolk"><i>lekfolk</i><par n="ul__n"/></e>
     <e lm="lekk"><i>lekk</i><par n="ep__n"/></e>
     <e lm="lekkasje"><i>lekkasje</i><par n="re__n"/></e>
@@ -38399,9 +38480,9 @@
     <e lm="maiblom"><i>maiblom</i><par n="bom__n"/></e>
     <e lm="mail"><i>mail</i><par n="ep__n"/></e>
     <e lm="maisenna"><i>maisenna</i><par n="ep__n"/></e>
-    <e lm="maisgraut"><i>maisgraut</i><par n="ep__n"/></e>
+    <e lm="maisgrøt"><i>mais</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="maiskolbe"><i>maiskolbe</i><par n="re__n"/></e>
-    <e lm="maismjøl"><i>maismjøl</i><par n="ul__n"/></e>
+    <e lm="maismel"><i>mais</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="majestet"><i>majestet</i><par n="ep__n"/></e>
     <e lm="majolika"><i>majolika</i><par n="ep__n"/></e>
     <e lm="majones"><i>majones</i><par n="ep__n"/></e>
@@ -38597,7 +38678,7 @@
     <e lm="mariabilde"><i>mariabild</i><par n="ød/e__n"/></e>
     <e lm="mariagullsko"><i>mariagullsko</i><par n="sko__n"/></e>
     <e lm="marianøkleblom"><i>marianøkleblom</i><par n="bom__n"/></e>
-    <e lm="marihandfamilie"><i>marihandfamilie</i><par n="re__n"/></e>
+    <e lm="marihåndfamilie"><i>mari</i><par n="hånd_LR_hand"/><i>familie</i><par n="re__n"/></e>
     <e lm="marihuana"><i>marihuana</i><par n="ep__n"/></e>
     <e lm="marihuanasigarett"><i>marihuanasigarett</i><par n="ep__n"/></e>
     <e lm="marimba"><i>marimba</i><par n="ep__n"/></e>
@@ -39253,31 +39334,31 @@
     <e lm="mjukis"><i>mjukis</i><par n="ep__n"/></e>
     <e lm="mjårygg"><i>mjårygg</i><par n="ep__n"/></e>
     <e lm="mjød"><i>mjød</i><par n="ep__n"/></e>
-    <e lm="mjøl"><i>mjøl</i><par n="ul__n"/></e>
-    <e lm="mjølk"><i>mjølk</i><par n="då__n"/></e>
-    <e lm="mjølke"><i>mjølke</i><par n="re__n"/></e>
-    <e lm="mjølkebil"><i>mjølkebil</i><par n="ep__n"/></e>
-    <e lm="mjølkebutikk"><i>mjølkebutikk</i><par n="ep__n"/></e>
-    <e lm="mjølkefe"><i>mjølkefe</i><par n="ul__n"/></e>
-    <e lm="mjølkefeber"><i>mjølkefeber</i><par n="ep__n"/></e>
-    <e lm="mjølkeglas"><i>mjølkeglas</i><par n="ul__n"/></e>
-    <e lm="mjølkekartong"><i>mjølkekartong</i><par n="ep__n"/></e>
-    <e lm="mjølkekjertel"><i>mjølkekjert</i><par n="ad/el__n"/></e>
-    <e lm="mjølkemaskin"><i>mjølkemaskin</i><par n="då__n"/></e>
-    <e lm="mjølkemat"><i>mjølkemat</i><par n="ep__n"/></e>
-    <e lm="mjølkeproduksjon"><i>mjølkeproduksjon</i><par n="ep__n"/></e>
-    <e lm="mjølkeprodukt"><i>mjølkeprodukt</i><par n="ja__n"/></e>
-    <e lm="mjølkeprodusent"><i>mjølkeprodusent</i><par n="ep__n"/></e>
-    <e lm="mjølkerampe"><i>mjølkeramp</i><par n="enk/e__n"/></e>
-    <e lm="mjølkesentral"><i>mjølkesentral</i><par n="ep__n"/></e>
-    <e lm="mjølkespann"><i>mjølkespann</i><par n="ul__n"/></e>
-    <e lm="mjølkesukker"><i>mjølkesukker</i><par n="ul__n"/></e>
-    <e lm="mjølkesyrebakterie"><i>mjølkesyrebakterie</i><par n="re__n"/></e>
-    <e lm="mjølkeveg"><i>mjølkeveg</i><par n="ep__n"/></e>
-    <e lm="mjølkevei"><i>mjølkevei</i><par n="ep__n"/></e>
-    <e lm="mjølmidd"><i>mjølmidd</i><par n="ep__n"/></e>
-    <e lm="mjølmit"><i>mjølmit</i><par n="ep__n"/></e>
-    <e lm="mjølsekk"><i>mjølsekk</i><par n="ep__n"/></e>
+    <e lm="mel"><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
+    <e lm="melk"><par n="mel_LR_mjøl"/><i>k</i><par n="då__n"/></e>
+    <e lm="melke"><par n="mel_LR_mjøl"/><i>ke</i><par n="re__n"/></e>
+    <e lm="melkebil"><par n="mel_LR_mjøl"/><i>kebil</i><par n="ep__n"/></e>
+    <e lm="melkebutikk"><par n="mel_LR_mjøl"/><i>kebutikk</i><par n="ep__n"/></e>
+    <e lm="melkefe"><par n="mel_LR_mjøl"/><i>kefe</i><par n="ul__n"/></e>
+    <e lm="melkefeber"><par n="mel_LR_mjøl"/><i>kefeber</i><par n="ep__n"/></e>
+    <e lm="melkeglas"><par n="mel_LR_mjøl"/><i>keglas</i><par n="ul__n"/></e>
+    <e lm="melkekartong"><par n="mel_LR_mjøl"/><i>kekartong</i><par n="ep__n"/></e>
+    <e lm="melkekjertel"><par n="mel_LR_mjøl"/><i>kekjert</i><par n="ad/el__n"/></e>
+    <e lm="melkemaskin"><par n="mel_LR_mjøl"/><i>kemaskin</i><par n="då__n"/></e>
+    <e lm="melkemat"><par n="mel_LR_mjøl"/><i>kemat</i><par n="ep__n"/></e>
+    <e lm="melkeproduksjon"><par n="mel_LR_mjøl"/><i>keproduksjon</i><par n="ep__n"/></e>
+    <e lm="melkeprodukt"><par n="mel_LR_mjøl"/><i>keprodukt</i><par n="ja__n"/></e>
+    <e lm="melkeprodusent"><par n="mel_LR_mjøl"/><i>keprodusent</i><par n="ep__n"/></e>
+    <e lm="melkerampe"><par n="mel_LR_mjøl"/><i>keramp</i><par n="enk/e__n"/></e>
+    <e lm="melkesentral"><par n="mel_LR_mjøl"/><i>kesentral</i><par n="ep__n"/></e>
+    <e lm="melkespann"><par n="mel_LR_mjøl"/><i>kespann</i><par n="ul__n"/></e>
+    <e lm="melkesukker"><par n="mel_LR_mjøl"/><i>kesukker</i><par n="ul__n"/></e>
+    <e lm="melkesyrebakterie"><par n="mel_LR_mjøl"/><i>kesyrebakterie</i><par n="re__n"/></e>
+    <e lm="melkeveg"><par n="mel_LR_mjøl"/><i>keveg</i><par n="ep__n"/></e>
+    <e lm="melkevei"><par n="mel_LR_mjøl"/><i>kevei</i><par n="ep__n"/></e>
+    <e lm="melmidd"><par n="mel_LR_mjøl"/><i>midd</i><par n="ep__n"/></e>
+    <e lm="melmit"><par n="mel_LR_mjøl"/><i>mit</i><par n="ep__n"/></e>
+    <e lm="melsekk"><par n="mel_LR_mjøl"/><i>sekk</i><par n="ep__n"/></e>
     <e lm="mjøsby"><i>mjøsby</i><par n="ep__n"/></e>
     <e lm="mjøsfiske"><i>mjøsfisk</i><par n="ød/e__n"/></e>
     <e lm="mnemoteknikk"><i>mnemoteknikk</i><par n="ep__n"/></e>
@@ -39431,8 +39512,8 @@
     <e lm="morshjerte"><i>morshjert</i><par n="ød/e__n"/></e>
     <e lm="morsinstinkt"><i>morsinstinkt</i><par n="ja__n"/></e>
     <e lm="morskap"><i>morskap</i><par n="to__n"/></e>
-    <e lm="morsmjølksentral"><i>morsmjølksentral</i><par n="ep__n"/></e>
-    <e lm="morsmjølktillegg"><i>morsmjølktillegg</i><par n="ul__n"/></e>
+    <e lm="morsmelksentral"><i>mors</i><par n="mel_LR_mjøl"/><i>ksentral</i><par n="ep__n"/></e>
+    <e lm="morsmelktillegg"><i>mors</i><par n="mel_LR_mjøl"/><i>ktillegg</i><par n="ul__n"/></e>
     <e lm="morspermisjon"><i>morspermisjon</i><par n="ep__n"/></e>
     <e lm="mort"><i>mort</i><par n="ep__n"/></e>
     <e lm="mortalitet"><i>mortalitet</i><par n="ep__n"/></e>
@@ -39574,8 +39655,7 @@
     <e lm="munnbruk"><i>munnbruk</i><par n="to__n"/></e>
     <e lm="munndiaré"><i>munndiar</i><par n="id/é__n"/></e>
     <e lm="munnfull"><i>munnfull</i><par n="ep__n"/></e>
-<e lm="håndfull"><i>håndfull</i><par n="ep__n"/></e>
-<e lm="handfull"><i>handfull</i><par n="ep__n"/></e>
+<e lm="håndfull"><par n="hånd_LR_hand"/><i>full</i><par n="ep__n"/></e>
     <e lm="munnhell"><i>munnhell</i><par n="ul__n"/></e>
     <e lm="munnhoggeri"><i>munnhoggeri</i><par n="ja__n"/></e>
     <e lm="munnladning"><i>munnladning</i><par n="ep__n"/></e>
@@ -39872,7 +39952,7 @@
     <e lm="narkotikarus"><i>narkotikarus</i><par n="os__n"/></e>
     <e lm="narkotikavrak"><i>narkotikavrak</i><par n="ul__n"/></e>
     <e lm="narkotikum"><i>narkotik</i><par n="vel/um__n"/></e>
-    <e lm="narkval"><i>narkval</i><par n="ep__n"/></e>
+    <e lm="narhval"><i>nar</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="narreri"><i>narreri</i><par n="ja__n"/></e>
     <e lm="narresmokk"><i>narresmokk</i><par n="ep__n"/></e>
     <e lm="narsisme"><i>narsisme</i><par n="re__n"/></e>
@@ -40016,7 +40096,7 @@
     <e lm="nazist"><i>nazist</i><par n="ep__n"/></e>
     <e lm="neandertalmenneske"><i>neandertalmennesk</i><par n="ød/e__n"/></e>
     <e lm="nebbdyr"><i>nebbdyr</i><par n="ul__n"/></e>
-    <e lm="nebbkval"><i>nebbkval</i><par n="ep__n"/></e>
+    <e lm="nebbhval"><i>nebb</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="nebbmunn"><i>nebbmunn</i><par n="ep__n"/></e>
     <e lm="nedbørfelt"><i>nedbørfelt</i><par n="ja__n"/></e>
     <e lm="nedbørområde"><i>nedbørområd</i><par n="ød/e__n"/></e>
@@ -41143,7 +41223,7 @@
     <e lm="pantebrev"><i>pantebrev</i><par n="ja__n"/></e>
     <e lm="panteisme"><i>panteisme</i><par n="re__n"/></e>
     <e lm="panteist"><i>panteist</i><par n="ep__n"/></e>
-    <e lm="panteleik"><i>panteleik</i><par n="ep__n"/></e>
+    <e lm="pantelek"><i>pante</i><par n="lek_LR_leik"/><par n="ep__n"/></e>
     <e lm="pantelån"><i>pantelån</i><par n="ul__n"/></e>
     <e lm="panteon"><i>panteon</i><par n="ul__n"/></e>
     <e lm="panter"><i>pant</i><par n="iv/er__n"/></e>
@@ -41823,9 +41903,9 @@
     <e lm="pole"><i>pole</i><par n="re__n"/></e>
     <e lm="polemikk"><i>polemikk</i><par n="ep__n"/></e>
     <e lm="polenta"><i>polenta</i><par n="ep__n"/></e>
-    <e lm="polentagraut"><i>polentagraut</i><par n="ep__n"/></e>
+    <e lm="polentagrøt"><i>polenta</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="polentagryn"><i>polentagryn</i><par n="ul__n"/></e>
-    <e lm="polentamjøl"><i>polentamjøl</i><par n="ul__n"/></e>
+    <e lm="polentamel"><i>polenta</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="polentapudding"><i>polentapudding</i><par n="ep__n"/></e>
     <e lm="poleringsmiddel"><i>poleringsmid</i><par n="av-mid/del__n"/></e>
     <e lm="poliklinikk"><i>poliklinikk</i><par n="ep__n"/></e>
@@ -42032,7 +42112,7 @@
     <e lm="potetgull"><i>potetgull</i><par n="ul__n"/></e>
     <e lm="potetlauv"><i>potetlauv</i><par n="ul__n"/></e>
     <e lm="potetløp"><i>potetløp</i><par n="ul__n"/></e>
-    <e lm="potetmjøl"><i>potetmjøl</i><par n="ul__n"/></e>
+    <e lm="potetmel"><i>potet</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="potetmos"><i>potetmos</i><par n="ep__n"/></e>
     <e lm="potetplante"><i>potetplant</i><par n="enk/e__n"/></e>
     <e lm="potetprest"><i>potetprest</i><par n="ep__n"/></e>
@@ -42839,7 +42919,7 @@
     <e lm="rattlås"><i>rattlås</i><par n="do__n"/></e>
     <e lm="raudalge"><i>raudalge</i><par n="re__n"/></e>
     <e lm="raudfisk"><i>raudfisk</i><par n="ep__n"/></e>
-    <e lm="raudgraut"><i>raudgraut</i><par n="ep__n"/></e>
+    <e lm="raudgrøt"><i>raud</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="raudkjelk"><i>raudkjelk</i><par n="ep__n"/></e>
     <e lm="raudkløver"><i>raudkløver</i><par n="vier__n"/></e>
     <e lm="raudkål"><i>raudkål</i><par n="ep__n"/></e>
@@ -43224,7 +43304,7 @@
     <e lm="rettferdssans"><i>rettferdssans</i><par n="ep__n"/></e>
     <e lm="retthaveri"><i>retthaveri</i><par n="ja__n"/></e>
     <e lm="rettholt"><i>rettholt</i><par n="do__n"/></e>
-    <e lm="rettkval"><i>rettkval</i><par n="ep__n"/></e>
+    <e lm="retthval"><i>rett</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="rettsapparat"><i>rettsapparat</i><par n="ja__n"/></e>
     <e lm="rettsbrott"><i>rettsbrott</i><par n="ul__n"/></e>
     <e lm="rettsforhold"><i>rettsforhold</i><par n="ul__n"/></e>
@@ -43360,7 +43440,7 @@
     <e lm="ripsbær"><i>ripsbær</i><par n="ul__n"/></e>
     <e lm="risbit"><i>risbit</i><par n="ep__n"/></e>
     <e lm="risgjerde"><i>risgjerd</i><par n="ød/e__n"/></e>
-    <e lm="risgraut"><i>risgraut</i><par n="ep__n"/></e>
+    <e lm="risgrøt"><i>ris</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="risgryn"><i>risgryn</i><par n="ul__n"/></e>
     <e lm="risk"><i>risk</i><par n="ep__n"/></e>
     <e lm="risotto"><i>risotto</i><par n="ep__n"/></e>
@@ -43511,7 +43591,7 @@
     <e lm="rugeplass"><i>rugeplass</i><par n="ep__n"/></e>
     <e lm="rugg"><i>rugg</i><par n="ep__n"/></e>
     <e lm="ruggestol"><i>ruggestol</i><par n="ep__n"/></e>
-    <e lm="rugmjøl"><i>rugmjøl</i><par n="ul__n"/></e>
+    <e lm="rugmel"><i>rug</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="ruin"><i>ruin</i><par n="ep__n"/></e>
     <e lm="ruinhaug"><i>ruinhaug</i><par n="ep__n"/></e>
     <e lm="rujern"><i>rujern</i><par n="ul__n"/></e>
@@ -43660,7 +43740,7 @@
     <e lm="røl"><i>røl</i><par n="ul_no-cp__n"/></e>
     <e lm="røllik"><i>røllik</i><par n="ep__n"/></e>
     <e lm="rømling"><i>rømling</i><par n="ep__n"/></e>
-    <e lm="rømmegraut"><i>rømmegraut</i><par n="ep__n"/></e>
+    <e lm="rømmegrøt"><i>rømme</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="røntgen"><i>røntgen</i><par n="lux__n"/></e>
     <e lm="røntgenbilde"><i>røntgenbild</i><par n="ød/e__n"/></e>
     <e lm="røntgenograf"><i>røntgenograf</i><par n="ep__n"/></e>
@@ -43714,12 +43794,12 @@
     <e lm="sagatått"><i>sagat</i><par n="sagat/ått__n"/></e>
     <e lm="sagblad"><i>sagblad</i><par n="ja__n"/></e>
     <e lm="sagkrakk"><i>sagkrakk</i><par n="ep__n"/></e>
-    <e lm="sagmjøl"><i>sagmjøl</i><par n="ul__n"/></e>
+    <e lm="sagmel"><i>sag</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="sagmo"><i>sagmo</i><par n="ul__n"/></e>
     <e lm="sagmugg"><i>sagmugg</i><par n="to__n"/></e>
     <e lm="sago"><i>sago</i><par n="ep__n"/></e>
     <e lm="sagogryn"><i>sagogryn</i><par n="ul__n"/></e>
-    <e lm="sagomjøl"><i>sagomjøl</i><par n="ul__n"/></e>
+    <e lm="sagomel"><i>sago</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="sagopalme"><i>sagopalme</i><par n="re__n"/></e>
     <e lm="sagskur"><i>sagskur</i><par n="ep__n"/></e>
     <e lm="sagskurd"><i>sagskurd</i><par n="ep__n"/></e>
@@ -44060,7 +44140,7 @@
     <e lm="seiflak"><i>seiflak</i><par n="ul__n"/></e>
     <e lm="seigmann"><i>seigm</i><par n="jam/ann__n"/></e>
     <e lm="seigneur"><i>seigneur</i><par n="ep__n"/></e>
-    <e lm="seikval"><i>seikval</i><par n="ep__n"/></e>
+    <e lm="seihval"><i>sei</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="seinkapitalisme"><i>seinkapitalisme</i><par n="re__n"/></e>
     <e lm="seising"><i>seising</i><par n="ep__n"/></e>
     <e lm="seismikk"><i>seismikk</i><par n="ep__n"/></e>
@@ -44145,7 +44225,7 @@
     <e lm="selskapsdans"><i>selskapsdans</i><par n="ep__n"/></e>
     <e lm="selskapsdress"><i>selskapsdress</i><par n="ep__n"/></e>
     <e lm="selskapskjole"><i>selskapskjole</i><par n="re__n"/></e>
-    <e lm="selskapsleik"><i>selskapsleik</i><par n="ep__n"/></e>
+    <e lm="selskapslek"><i>selskaps</i><par n="lek_LR_leik"/><par n="ep__n"/></e>
     <e lm="selskapsliv"><i>selskapsliv</i><par n="ul__n"/></e>
     <e lm="selskapslokale"><i>selskapslokal</i><par n="ød/e__n"/></e>
     <e lm="selskapsmenneske"><i>selskapsmennesk</i><par n="ød/e__n"/></e>
@@ -44175,7 +44255,7 @@
     <e lm="semje"><i>semj</i><par n="enk/e__n"/></e>
     <e lm="semmel"><i>sem</i><par n="sem/mel__n"/></e>
     <e lm="semule"><i>semule</i><par n="re__n"/></e>
-    <e lm="semulegraut"><i>semulegraut</i><par n="ep__n"/></e>
+    <e lm="semulegrøt"><i>semule</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="semulegryn"><i>semulegryn</i><par n="ul__n"/></e>
     <e lm="semulepudding"><i>semulepudding</i><par n="ep__n"/></e>
     <e lm="sen"><i>sen</i><par n="lei_no-cp__n"/></e>
@@ -44221,7 +44301,7 @@
     <e lm="sennepsgass"><i>sennepsgass</i><par n="ep__n"/></e>
     <e lm="sennepskorn"><i>sennepskorn</i><par n="ul__n"/></e>
     <e lm="sennesblad"><i>sennesblad</i><par n="ja__n"/></e>
-    <e lm="sennesgraut"><i>sennesgraut</i><par n="ep__n"/></e>
+    <e lm="sennesgrøt"><i>sennes</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="senneste"><i>senneste</i><par n="ep__n"/></e>
     <e lm="sensasjon"><i>sensasjon</i><par n="ep__n"/></e>
     <e lm="sensasjonsjournalistikk"><i>sensasjonsjournalistikk</i><par n="ep__n"/></e>
@@ -44489,7 +44569,7 @@
     <e lm="sikringsventil"><i>sikringsventil</i><par n="ep__n"/></e>
     <e lm="sikspens"><i>sikspens</i><par n="ep__n"/></e>
     <e lm="siktemiddel"><i>siktemid</i><par n="av-mid/del__n"/></e>
-    <e lm="siktemjøl"><i>siktemjøl</i><par n="ul__n"/></e>
+    <e lm="siktemel"><i>sikte</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="siktemål"><i>siktemål</i><par n="ul__n"/></e>
     <e lm="siktepunkt"><i>siktepunkt</i><par n="ja__n"/></e>
     <e lm="siktveksel"><i>siktveks</i><par n="ad/el__n"/></e>
@@ -44500,10 +44580,10 @@
     <e lm="sildefiske"><i>sildefisk</i><par n="ød/e__n"/></e>
     <e lm="sildegarn"><i>sildegarn</i><par n="ul__n"/></e>
     <e lm="sildekonge"><i>sildekonge</i><par n="re__n"/></e>
-    <e lm="sildekval"><i>sildekval</i><par n="ep__n"/></e>
+    <e lm="sildehval"><i>silde</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="sildelås"><i>sildelås</i><par n="do__n"/></e>
-    <e lm="sildemjøl"><i>sildemjøl</i><par n="ul__n"/></e>
-    <e lm="sildemjølfabrikk"><i>sildemjølfabrikk</i><par n="ep__n"/></e>
+    <e lm="sildemel"><i>silde</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
+    <e lm="sildemelfabrikk"><i>silde</i><par n="mel_LR_mjøl"/><i>fabrikk</i><par n="ep__n"/></e>
     <e lm="sildemåke"><i>sildemåk</i><par n="enk/e__n"/></e>
     <e lm="sildemåse"><i>sildemåse</i><par n="re__n"/></e>
     <e lm="sildeolje"><i>sildeolj</i><par n="enk/e__n"/></e>
@@ -45000,7 +45080,7 @@
     <e lm="skie"><i>ski</i><par n="enk/e__n"/></e>
     <e lm="skifabrikk"><i>skifabrikk</i><par n="ep__n"/></e>
     <e lm="skiferbrott"><i>skiferbrott</i><par n="ul__n"/></e>
-    <e lm="skifermjøl"><i>skifermjøl</i><par n="ul__n"/></e>
+    <e lm="skifermel"><i>skifer</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="skiferolje"><i>skiferolj</i><par n="enk/e__n"/></e>
     <e lm="skiferstift"><i>skiferstift</i><par n="ep__n"/></e>
     <e lm="skifertak"><i>skifertak</i><par n="ul__n"/></e>
@@ -45817,13 +45897,14 @@
     <e lm="slåp"><i>slåp</i><par n="ep__n"/></e>
     <e lm="slåpetorn"><i>slåpetorn</i><par n="ep__n"/></e>
     <e lm="slåsshanske"><i>slåsshanske</i><par n="re__n"/></e>
-    <e lm="slåttegraut"><i>slåttegraut</i><par n="ep__n"/></e>
+    <e lm="slåttegrøt"><i>slåtte</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="slåttekar"><i>slåttekar</i><par n="ep__n"/></e>
     <e lm="slør"><i>slør</i><par n="to__n"/></e>
     <e lm="sløresegl"><i>sløresegl</i><par n="ul__n"/></e>
     <e lm="slørevind"><i>slørevind</i><par n="ep__n"/></e>
     <e lm="slørsopp"><i>slørsopp</i><par n="ep__n"/></e>
     <e lm="sløseri"><i>sløseri</i><par n="ja__n"/></e>
+    <e lm="avløser"><i>avløser</i><par n="uer__n"/></e>
     <e lm="sløvsinn"><i>sløvsinn</i><par n="ul__n"/></e>
     <e lm="sløyd"><i>sløyd</i><par n="ep__n"/></e>
     <e lm="sløydsal"><i>sløydsal</i><par n="ep__n"/></e>
@@ -45973,7 +46054,7 @@
     <e lm="smørbutt"><i>smørbutt</i><par n="ep__n"/></e>
     <e lm="smørdall"><i>smørdall</i><par n="ep__n"/></e>
     <e lm="smørdeig"><i>smørdeig</i><par n="ep__n"/></e>
-    <e lm="smørgraut"><i>smørgraut</i><par n="ep__n"/></e>
+    <e lm="smørgrøt"><i>smør</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="smørgås"><i>smørgås</i><par n="ep__n"/></e>
     <e lm="smørgåsbord"><i>smørgåsbord</i><par n="ja__n"/></e>
     <e lm="smørklatt"><i>smørklatt</i><par n="ep__n"/></e>
@@ -46129,6 +46210,7 @@
     <e lm="sodd"><i>sodd</i><par n="ul__n"/></e>
     <e lm="sodomi"><i>sodomi</i><par n="ep__n"/></e>
     <e lm="sodomitt"><i>sodomitt</i><par n="ep__n"/></e>
+    <e lm="mamma"><i>mamma</i><par n="ep__n"/></e>
     <e lm="sofa"><i>sofa</i><par n="ep__n"/></e>
     <e lm="sofabenk"><i>sofabenk</i><par n="ep__n"/></e>
     <e lm="sofabonde"><i>sofab</i><par n="b/onde__n"/></e>
@@ -46288,7 +46370,7 @@
     <e lm="sovjetrepublikk"><i>sovjetrepublikk</i><par n="ep__n"/></e>
     <e lm="sovkos"><i>sovkos</i><par n="ja__n"/></e>
     <e lm="soya"><i>soya</i><par n="ep__n"/></e>
-    <e lm="soyamjøl"><i>soyamjøl</i><par n="ul__n"/></e>
+    <e lm="soyamel"><i>soya</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="soyaolje"><i>soyaolj</i><par n="enk/e__n"/></e>
     <e lm="spade"><i>spade</i><par n="re__n"/></e>
     <e lm="spadestikk"><i>spadestikk</i><par n="ul__n"/></e>
@@ -46373,15 +46455,14 @@
     <e lm="spenst"><i>spenst</i><par n="ep__n"/></e>
     <e lm="sperma"><i>sperma</i><par n="ul__n"/></e>
     <e lm="spermasett"><i>spermasett</i><par n="ep__n"/></e>
-    <e lm="spermasetthval"><i>spermasetthval</i><par n="ep__n"/></e>
-    <e lm="spermasettkval"><i>spermasettkval</i><par n="ep__n"/></e>
+    <e lm="spermasetthval"><i>spermasett</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="spermasettolje"><i>spermasettolj</i><par n="enk/e__n"/></e>
     <e lm="spermatologi"><i>spermatologi</i><par n="ep__n"/></e>
     <e lm="spermatozo"><i>spermatozo</i><par n="ep__n"/></e>
     <e lm="spermhval"><i>spermhval</i><par n="ep__n"/></e>
     <e lm="spermie"><i>spermi</i><par n="god/e__n"/></e>
     <e lm="spermium"><i>spermi</i><par n="podi/um__n"/></e>
-    <e lm="spermkval"><i>spermkval</i><par n="ep__n"/></e>
+    <e lm="spermhval"><i>sperm</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="spermolje"><i>spermolj</i><par n="enk/e__n"/></e>
     <e lm="sperrebukk"><i>sperrebukk</i><par n="ep__n"/></e>
     <e lm="sperrefrist"><i>sperrefrist</i><par n="ep__n"/></e>
@@ -46761,7 +46842,7 @@
     <e lm="staude"><i>staude</i><par n="re__n"/></e>
     <e lm="staup"><i>staup</i><par n="ul__n"/></e>
     <e lm="staur"><i>staur</i><par n="ep__n"/></e>
-    <e lm="staurkval"><i>staurkval</i><par n="ep__n"/></e>
+    <e lm="staurhval"><i>staur</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="staurlag"><i>staurlag</i><par n="ul__n"/></e>
     <e lm="stav"><i>stav</i><par n="ep__n"/></e>
     <e lm="stavbakterie"><i>stavbakterie</i><par n="re__n"/></e>
@@ -47637,7 +47718,7 @@
     <e lm="svir"><i>svir</i><par n="ep__n"/></e>
     <e lm="svirebror"><i>svirebr</i><par n="br/or__n"/></e>
     <e lm="svirelag"><i>svirelag</i><par n="ul__n"/></e>
-    <e lm="sviskegraut"><i>sviskegraut</i><par n="ep__n"/></e>
+    <e lm="sviskegrøt"><i>sviske</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="sviskekompott"><i>sviskekompott</i><par n="ep__n"/></e>
     <e lm="svoger"><i>svoger</i><par n="uer__n"/></e>
     <e lm="svolk"><i>svolk</i><par n="ep__n"/></e>
@@ -47662,7 +47743,7 @@
     <e lm="sybaritt"><i>sybaritt</i><par n="ep__n"/></e>
     <e lm="sybord"><i>sybord</i><par n="ja__n"/></e>
     <e lm="sydenferie"><i>sydenferie</i><par n="re__n"/></e>
-    <e lm="sydlending"><i>sydlending</i><par n="ep__n"/></e>
+    <e c="ikkje det same som sørlending" lm="sydlending"><i>sydlending</i><par n="ep__n"/></e>
     <e lm="syenitt"><i>syenitt</i><par n="ep__n"/></e>
     <e lm="syfilis"><i>syfilis</i><par n="ep__n"/></e>
     <e lm="sykdomsbilde"><i>sykdomsbild</i><par n="ød/e__n"/></e>
@@ -47850,16 +47931,16 @@
     <e lm="søppelbrett"><i>søppelbrett</i><par n="ja__n"/></e>
     <e lm="søppeldunk"><i>søppeldunk</i><par n="ep__n"/></e>
     <e lm="søppelkasse"><i>søppelkass</i><par n="enk/e__n"/></e>
-    <e lm="sørende"><i>sørende</i><par n="re__n"/></e>
-    <e lm="søring"><i>søring</i><par n="ep__n"/></e>
-    <e lm="sørlending"><i>sørlending</i><par n="ep__n"/></e>
+    <e lm="sørende"><par n="sør_LR_syd"/><i>ende</i><par n="re__n"/></e>
+    <e c="ingen seier vel 'en syding'" lm="søring"><i>søring</i><par n="ep__n"/></e>
+    <e c="sydlending er noko anna, wsd?" lm="sørlending"><i>sørlending</i><par n="ep__n"/></e>
     <e lm="sørpeføre"><i>sørpefør</i><par n="ød/e__n"/></e>
-    <e lm="sørpol"><i>sørpol</i><par n="ep__n"/></e>
-    <e lm="sørpolsekspedisjon"><i>sørpolsekspedisjon</i><par n="ep__n"/></e>
-    <e lm="sørsame"><i>sørsame</i><par n="re__n"/></e>
-    <e lm="sørstat"><i>sørstat</i><par n="ep__n"/></e>
-    <e lm="sørtrønder"><i>sørtrønder</i><par n="uer__n"/></e>
-    <e lm="sørvegg"><i>sørvegg</i><par n="ep__n"/></e>
+    <e lm="sørpol"><par n="sør_LR_syd"/><i>pol</i><par n="ep__n"/></e>
+    <e lm="sørpolsekspedisjon"><par n="sør_LR_syd"/><i>polsekspedisjon</i><par n="ep__n"/></e>
+    <e lm="sørsame"><par n="sør_LR_syd"/><i>same</i><par n="re__n"/></e>
+    <e lm="sørstat"><par n="sør_LR_syd"/><i>stat</i><par n="ep__n"/></e>
+    <e lm="sørtrønder"><par n="sør_LR_syd"/><i>trønder</i><par n="uer__n"/></e>
+    <e lm="sørvegg"><par n="sør_LR_syd"/><i>vegg</i><par n="ep__n"/></e>
     <e lm="søskenbarn"><i>søskenbarn</i><par n="ul__n"/></e>
     <e lm="søskenflokk"><i>søskenflokk</i><par n="ep__n"/></e>
     <e lm="søskenskap"><i>søskenskap</i><par n="ep__n"/></e>
@@ -48010,7 +48091,7 @@
     <e lm="tangent"><i>tangent</i><par n="ep__n"/></e>
     <e lm="tangentplan"><i>tangentplan</i><par n="ul__n"/></e>
     <e lm="tangkvabbe"><i>tangkvabbe</i><par n="re__n"/></e>
-    <e lm="tangmjøl"><i>tangmjøl</i><par n="ul__n"/></e>
+    <e lm="tangmel"><i>tang</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="tango"><i>tango</i><par n="ep__n"/></e>
     <e lm="tank"><i>tank</i><par n="ep__n"/></e>
     <e lm="tankanlegg"><i>tankanlegg</i><par n="ul__n"/></e>
@@ -48023,7 +48104,7 @@
     <e lm="tankegang"><i>tankegang</i><par n="ep__n"/></e>
     <e lm="tankegods"><i>tankegods</i><par n="ul__n"/></e>
     <e lm="tankekors"><i>tankekors</i><par n="ul__n"/></e>
-    <e lm="tankeleik"><i>tankeleik</i><par n="ep__n"/></e>
+    <e lm="tankelek"><i>tanke</i><par n="lek_LR_leik"/><par n="ep__n"/></e>
     <e lm="tankemodell"><i>tankemodell</i><par n="ep__n"/></e>
     <e lm="tankemønster"><i>tankemønst</i><par n="vat/er__n"/></e>
     <e lm="tankespinn"><i>tankespinn</i><par n="ul__n"/></e>
@@ -48052,7 +48133,7 @@
     <e lm="tannklinikk"><i>tannklinikk</i><par n="ep__n"/></e>
     <e lm="tannkost"><i>tannkost</i><par n="ep__n"/></e>
     <e lm="tannkrans"><i>tannkrans</i><par n="ep__n"/></e>
-    <e lm="tannkval"><i>tannkval</i><par n="ep__n"/></e>
+    <e lm="tannhval"><i>tann</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="tannlege"><i>tannlege</i><par n="re__n"/></e>
     <e lm="tannlegeassistent"><i>tannlegeassistent</i><par n="ep__n"/></e>
     <e lm="tannlyd"><i>tannlyd</i><par n="ep__n"/></e>
@@ -48063,7 +48144,7 @@
     <e lm="tannverk"><i>tannverk</i><par n="ep__n"/></e>
     <e lm="tant"><i>tant</i><par n="to__n"/></e>
     <e lm="tantal"><i>tantal</i><par n="ul__n"/></e>
-    <e lm="tantaluskval"><i>tantaluskval</i><par n="ep__n"/></e>
+    <e lm="tantalushval"><i>tantalus</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="tantieme"><i>tantiem</i><par n="ød/e__n"/></e>
     <e lm="tape"><i>tape</i><par n="re__n"/></e>
     <e lm="tapesnivå"><i>tapesnivå</i><par n="ja__n"/></e>
@@ -49130,7 +49211,7 @@
     <e lm="trollkrabbe"><i>trollkrabb</i><par n="enk/e__n"/></e>
     <e lm="trollkrem"><i>trollkrem</i><par n="ep__n"/></e>
     <e lm="trollmann"><i>trollm</i><par n="jam/ann__n"/></e>
-    <e lm="trollmjøl"><i>trollmjøl</i><par n="ul__n"/></e>
+    <e lm="trollmel"><i>troll</i><par n="mel_LR_mjøl"/><par n="ul__n"/></e>
     <e lm="trollpakk"><i>trollpakk</i><par n="ul__n"/></e>
     <e lm="trollring"><i>trollring</i><par n="ep__n"/></e>
     <e lm="trollsmør"><i>trollsmør</i><par n="ul__n"/></e>
@@ -50519,8 +50600,8 @@
     <e lm="vassgass"><i>vassgass</i><par n="ep__n"/></e>
     <e lm="vassglas"><i>vassglas</i><par n="ul__n"/></e>
     <e lm="vassgras"><i>vassgras</i><par n="ul__n"/></e>
-    <e lm="vassgraut"><i>vassgraut</i><par n="ep__n"/></e>
-    <e lm="vanngraut"><i>vanngraut</i><par n="ep__n"/></e>
+    <e lm="vassgrøt"><i>vass</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
+    <e lm="vanngrøt"><i>vann</i><par n="grøt_LR_graut"/><par n="ep__n"/></e>
     <e lm="vassgro"><i>vassgro</i><par n="ep__n"/></e>
     <e lm="vasshjul"><i>vasshjul</i><par n="ul__n"/></e>
     <e lm="vasshol"><i>vasshol</i><par n="trekol__n"/></e>
@@ -50862,7 +50943,7 @@
     <e lm="venstreekstremist"><i>venstreekstremist</i><par n="ep__n"/></e>
     <e lm="venstrefolk"><i>venstrefolk</i><par n="ul__n"/></e>
     <e lm="venstrefot"><i>venstref</i><par n="fef/ot__n"/></e>
-    <e lm="venstrehandsarbeid"><i>venstrehandsarbeid</i><par n="ja__n"/></e>
+    <e lm="venstrehåndsarbeid"><i>venstre</i><par n="hånd_LR_hand"/><i>sarbeid</i><par n="ja__n"/></e>
     <e lm="venstremann"><i>venstrem</i><par n="jam/ann__n"/></e>
     <e lm="venstrepolitikk"><i>venstrepolitikk</i><par n="ep__n"/></e>
     <e lm="venstresosialist"><i>venstresosialist</i><par n="ep__n"/></e>
@@ -51156,7 +51237,7 @@
     <e lm="villmink"><i>villmink</i><par n="ep__n"/></e>
     <e lm="villnis"><i>villnis</i><par n="ul__n"/></e>
     <e lm="villrein"><i>villrein</i><par n="ep__n"/></e>
-<e lm="kjørerein"><i>kjørerein</i><par n="ep__n"/></e>
+    <e lm="kjørerein"><i>kjørerein</i><par n="ep__n"/></e>
     <e lm="villsau"><i>villsau</i><par n="ep__n"/></e>
     <e lm="villskap"><i>villskap</i><par n="ep__n"/></e>
     <e lm="villskott"><i>villskott</i><par n="ul__n"/></e>
@@ -51264,13 +51345,14 @@
     <e lm="vintergrøn"><i>vintergrøn</i><par n="ep__n"/></e>
     <e lm="vinterhage"><i>vinterhage</i><par n="re__n"/></e>
     <e lm="vinterhalvår"><i>vinterhalvår</i><par n="ul__n"/></e>
+    <e lm="sommerhalvår"><i>sommerhalvår</i><par n="ul__n"/></e>
     <e lm="vinterham"><i>vinterham</i><par n="bom__n"/></e>
     <e lm="vinterhi"><i>vinterhi</i><par n="ul__n"/></e>
     <e lm="vinteridrett"><i>vinteridrett</i><par n="ep__n"/></e>
     <e lm="vinterkrig"><i>vinterkrig</i><par n="ep__n"/></e>
     <e lm="vinterkulde"><i>vinterkuld</i><par n="enk/e__n"/></e>
     <e lm="vinterkveld"><i>vinterkveld</i><par n="ep__n"/></e>
-    <e lm="vinterleik"><i>vinterleik</i><par n="ep__n"/></e>
+    <e lm="vinterlek"><i>vinter</i><par n="lek_LR_leik"/><par n="ep__n"/></e>
     <e lm="vintermørke"><i>vintermørk</i><par n="ød/e__n"/></e>
     <e lm="vinterolympiade"><i>vinterolympiade</i><par n="re__n"/></e>
     <e lm="vinteropplag"><i>vinteropplag</i><par n="ul__n"/></e>
@@ -51513,7 +51595,7 @@
     <e lm="våe"><i>våe</i><par n="re_no-cp__n"/></e>
     <e lm="våg"><i>våg</i><par n="lo_no-cp__n"/></e>
     <e lm="vågehals"><i>vågehals</i><par n="ep__n"/></e>
-    <e lm="vågekval"><i>vågekval</i><par n="ep__n"/></e>
+    <e lm="vågehval"><i>våge</i><par n="hval_LR_kval"/><par n="ep__n"/></e>
     <e lm="vågemot"><i>vågemot</i><par n="ul__n"/></e>
     <e lm="vågestykke"><i>vågestykk</i><par n="ød/e__n"/></e>
     <e lm="våghals"><i>våghals</i><par n="ep__n"/></e>
@@ -51550,7 +51632,7 @@
     <e lm="vårjamdøger"><i>vårjamdøger</i><par n="døger__n"/></e>
     <e lm="vårjamdøgn"><i>vårjamdøgn</i><par n="ul__n"/></e>
     <e lm="vårkjole"><i>vårkjole</i><par n="re__n"/></e>
-    <e lm="vårkveite"><i>vårkveite</i><par n="re__n"/></e>
+    <e lm="vårhvete"><i>vår</i><par n="hvete_LR_kveite"/><par n="re__n"/></e>
     <e lm="vårkål"><i>vårkål</i><par n="ep__n"/></e>
     <e lm="vårpart"><i>vårpart</i><par n="ep__n"/></e>
     <e lm="vårregn"><i>vårregn</i><par n="ul__n"/></e>
@@ -51586,6 +51668,7 @@
     <e lm="weasel"><i>weasel</i><par n="ep__n"/></e>
     <e lm="webbstoff"><i>webbstoff</i><par n="ja__n"/></e>
     <e lm="webbutstyr"><i>webbutstyr</i><par n="ul__n"/></e>
+    <e lm="fellesutstyr"><i>fellesutstyr</i><par n="ul__n"/></e>
     <e lm="weber"><i>weber</i><par n="lux__n"/></e>
     <e lm="weekend"><i>weekend</i><par n="ep__n"/></e>
     <e lm="westernfilm"><i>westernfilm</i><par n="ep__n"/></e>
@@ -52087,6 +52170,7 @@
     <e lm="reis"><i>reis</i><par n="lo__n"/></e>
     <e lm="reiv"><i>reiv</i><par n="ep__n"/></e>
     <e lm="renne"><i>renn</i><par n="enk/e__n"/></e>
+    <e lm="vannrenne"><i>vannrenn</i><par n="enk/e__n"/></e>
     <e lm="restaurering"><i>restaurering</i><par n="då__n"/></e>
     <e lm="rettsbevissthet"><i>rettsbevissthet</i><par n="då__n"/></e>
     <e lm="rettskriving"><i>rettskriving</i><par n="då__n"/></e>
@@ -52339,7 +52423,7 @@
 <e lm="diskokule">    <i>diskokul</i><par n="enk/e__n"/></e>
 <e lm="nordhalvkule"><i>nordhalvkul</i><par n="enk/e__n"/></e>
 <e lm="sommerhalvkule"><i>sommerhalvkul</i><par n="enk/e__n"/></e>
-<e lm="sydhalvkule"><i>sydhalvkul</i><par n="enk/e__n"/></e>
+<e lm="sørhalvkule"><par n="sør_LR_syd"/><i>halvkul</i><par n="enk/e__n"/></e>
 <e lm="vinterhalvkule">        <i>vinterhalvkul</i><par n="enk/e__n"/></e>
 <e lm="maskingeværkule">        <i>maskingeværkul</i><par n="enk/e__n"/></e>
 <e lm="petanquekule"><i>petanquekul</i><par n="enk/e__n"/></e>
@@ -52383,7 +52467,7 @@
 <e lm="sansing">         <i>sansing</i><par n="då__n"/></e>
 <e lm="leketøy">         <i>leketøy</i><par n="ja__n"/></e>
 <e lm="gjødsel">         <i>gjøds</i><par n="aks/el__n"/></e>
-<e lm="håndtverker">     <i>håndtverker</i><par n="uer__n"/></e>
+<e lm="håndtverker">     <par n="hånd_LR_hand"/><i>tverker</i><par n="uer__n"/></e>
 <e lm="skilsmisse">      <i>skilsmisse</i><par n="re__n"/></e>
 <e lm="geit">            <i>geit</i><par n="då__n"/></e>
 <e lm="sengetøy">        <i>sengetøy</i><par n="UH__n"/></e>
@@ -52439,13 +52523,91 @@
 <e lm="opplevelse">      <i>opplevelse</i><par n="re__n"/></e>
 <e lm="svigersønn">      <i>svigersønn</i><par n="ep__n"/></e>
 <e lm="forsinkelse">     <i>forsinkelse</i><par n="re__n"/></e>
-<e lm="tømme">      <i>tømme</i><par n="re__n"/></e>
+<e lm="tømme">           <i>tømme</i><par n="re__n"/></e>
 <e lm="hestetømme">      <i>hestetømme</i><par n="re__n"/></e>
-<e lm="hulder">    <i>huld</i><par n="gyg/er__n"/></e>
-<e lm="åpenbaring"><i>åpenbaring</i><par n="då__n"/></e>
-<e lm="megler">    <i>megler</i><par n="uer__n"/></e>
+<e lm="hulder">          <i>huld</i><par n="gyg/er__n"/></e>
+<e lm="åpenbaring">      <i>åpenbaring</i><par n="då__n"/></e>
+<e lm="megler">          <i>megler</i><par n="uer__n"/></e>
+
+<e lm="melke">           <i>melke</i><par n="re__n"/></e>
+<e lm="grønnskolling">   <i>grønnskolling</i><par n="ep__n"/></e>
+<e lm="førerkort">       <i>førerkort</i><par n="ul__n"/></e>
+<e lm="bakrute">         <i>bakrut</i><par n="enk/e__n"/></e>
+<e lm="høring">          <i>høring</i><par n="då__n"/></e>
+<e lm="tilslutning">     <i>tilslutning</i><par n="ep__n"/></e>
+<e lm="prikkbelastning"> <i>prikkbelastning</i><par n="ep__n"/></e>
+<e lm="førerprøve">      <i>førerprøv</i><par n="enk/e__n"/></e>
+<e lm="kjøreskoleelev">  <i>kjøreskoleelev</i><par n="ep__n"/></e>
+<e lm="kjørelærer">      <i>kjørelærer</i><par n="uer__n"/></e>
+<e lm="fareskilt">       <i>fareskilt</i><par n="ja__n"/></e>
+<e lm="lastebilsjåfør">  <i>lastebilsjåfør</i><par n="ep__n"/></e>
+<e lm="innvending">      <i>innvending</i><par n="då__n"/></e>
+<e lm="bilfører">        <i>bilfører</i><par n="uer__n"/></e>
+<e lm="dødstall">        <i>dødstall</i><par n="ul__n"/></e>
+<e lm="dødsulykke">      <i>dødsulykk</i><par n="enk/e__n"/></e>
+<e lm="trafikksikkerhet"><i>trafikksikkerhet</i><par n="då__n"/></e>
+<e lm="trøtthet">        <i>trøtthet</i><par n="då__n"/></e>
+<e lm="kjeller">         <i>kjeller</i><par n="uer__n"/></e>
+<e lm="foranledning">    <i>foranledning</i><par n="ep__n"/></e>
+<e lm="øygruppe">        <i>øygrupp</i><par n="enk/e__n"/></e>
+<e lm="biland">          <i>biland</i><par n="ul__n"/></e>
+<e lm="markering">       <i>markering</i><par n="då__n"/></e>
+<e lm="landstasjon">     <i>landstasjon</i><par n="ep__n"/></e>
+<e lm="flystripe">       <i>flystrip</i><par n="enk/e__n"/></e>
+<e lm="havnebasseng">    <i>havnebasseng</i><par n="ja__n"/></e>
+<e lm="polarforsker">    <i>polarforsker</i><par n="uer__n"/></e>
+<e lm="hvalkokeri">      <i>hvalkokeri</i><par n="ja__n"/></e>
+<e lm="hvalbåt">         <i>hvalbåt</i><par n="ep__n"/></e>
+<e lm="hvalfanger">      <i>hvalfanger</i><par n="uer__n"/></e>
+<e lm="hvalfangst">      <i>hvalfangst</i><par n="ep__n"/></e>
+<e lm="flytur">          <i>flytur</i><par n="ep__n"/></e>
+<e lm="værforhold">      <i>værforhold</i><par n="ul__n"/></e>
+<e lm="motorproblem">    <i>motorproblem</i><par n="ja__n"/></e>
+<e lm="kryssing">        <i>kryssing</i><par n="då__n"/></e>
+<e lm="krysning">        <i>krysning</i><par n="ep__n"/></e>
+<e lm="fraflytning">     <i>fraflytning</i><par n="ep__n"/></e>
+<e lm="husholdning">     <i>husholdning</i><par n="ep__n"/></e>
+<e lm="seer">            <i>seer</i><par n="uer__n"/></e>
+<e lm="grobunn">         <i>grobunn</i><par n="ep__n"/></e>
+<e lm="familievold">     <i>familievold</i><par n="ep__n"/></e>
+<e lm="julaften">        <i>julaften</i><par n="ep__n"/></e>
+<e lm="flygning">        <i>flygning</i><par n="ep__n"/></e>
+<e lm="avsovning">       <i>avsovning</i><par n="ep__n"/></e>
+<e lm="værobservasjon">  <i>værobservasjon</i><par n="ep__n"/></e>
+<e lm="havnemulighet">   <i>havnemulighet</i><par n="då__n"/></e>
+<e lm="forekomst">       <i>forekomst</i><par n="ep__n"/></e>
+<e lm="hvalforekomst">   <i>hvalforekomst</i><par n="ep__n"/></e>
+<e lm="flensebåt">       <i>flensebåt</i><par n="ep__n"/></e>
+<e lm="antarktisekspedisjon"><i>antarktisekspedisjon</i><par n="ep__n"/></e>
+<e lm="militærekspedisjon"><i>militærekspedisjon</i><par n="ep__n"/></e>
+<e lm="innsatsleder">    <i>innsatsleder</i><par n="uer__n"/></e>
+<e lm="ungdomsulykke">   <i>ungdomsulykk</i><par n="enk/e__n"/></e>
+<e lm="dyktighet">       <i>dyktighet</i><par n="då__n"/></e>
+<e lm="førerdyktighet">  <i>førerdyktighet</i><par n="då__n"/></e>
+<e lm="kjøreskolebil">   <i>kjøreskolebil</i><par n="ep__n"/></e>
+<e lm="kjøreskole">      <i>kjøreskole</i><par n="re__n"/></e>
+<e lm="byjente">         <i>byjent</i><par n="enk/e__n"/></e>
+<e lm="årsgruppe">       <i>årsgrupp</i><par n="enk/e__n"/></e>
+<e lm="trafikksikkerhetsseksjon"><i>trafikksikkerhetsseksjon</i><par n="ep__n"/></e>
+<e lm="aktsomhet">       <i>aktsomhet</i><par n="då__n"/></e>
+<e lm="meddommer">       <i>meddommer</i><par n="uer__n"/></e>
 <e lm="kake">        <i>kak</i><par n="enk/e__n"/></e>
-    <e lm="håndarbeid"><par n="hånd_LR_hand"/><i>arbeid</i><par n="ja__n"/></e>
+<e lm="higen"><i>higen</i><par n="ep__n"/></e>
+<e lm="higing"><i>higing</i><par n="då__n"/></e>
+<e lm="sommersolverv">   <i>sommersolverv</i><par n="ul__n"/></e>
+<e lm="kråke">      <i>kråk</i><par n="enk/e__n"/></e>
+<e lm="uttalelse">       <i>uttalelse</i><par n="re__n"/></e>
+<e lm="forlovede">       <i>forlovede</i><par n="re__n"/></e>
+<e lm="overraskelse">    <i>overraskelse</i><par n="re__n"/></e>
+<e lm="dansing">         <i>dansing</i><par n="då__n"/></e>
+<e lm="medbrakt">         <i>medbrakt</i><par n="sør__n"/></e>
+<e lm="knekk">           <i>knekk</i><par n="øl__n"/></e>
+<e lm="holdeplass">      <i>holdeplass</i><par n="ep__n"/></e>
+<e lm="bussholdeplass">      <i>bussholdeplass</i><par n="ep__n"/></e>
+<e lm="liggeunderlag">   <i>liggeunderlag</i><par n="ul__n"/></e>
+<e lm="nysgjerrighet">   <i>nysgjerrighet</i><par n="då__n"/></e>
+<e lm="tåre">        <i>tår</i><par n="enk/e__n"/></e>
+
 <!-- todo: -->
 <!-- masterå -->
 <!-- vinterkomag (ser ut som hankjønn) -->
@@ -55835,6 +55997,7 @@
 <e lm="Sofia">           <i>Sofia</i><par n="Norge__np"/></e>
 <e lm="Sofiemyr">        <i>Sofiemyr</i><par n="Norge__np"/></e>
 <e lm="Sogn">            <i>Sogn</i><par n="Norge__np"/></e>
+<e lm="Sogn og Fjordane"><i>Sogn<b/>og<b/>Fjordane</i><par n="Norge__np"/></e>
 <e lm="Sogndal">         <i>Sogndal</i><par n="Norge__np"/></e>
 <e lm="Sokndal">         <i>Sokndal</i><par n="Norge__np"/></e>
 <e lm="Sola">            <i>Sola</i><par n="Norge__np"/></e>
@@ -56381,6 +56544,8 @@
 <e lm="Øystre">          <i>Øystre</i><par n="Norge__np"/></e>
 
 <e lm="Magdalena">       <i>Magdalena</i><par n="Eva__np"/></e>
+<e lm="Statens Veivesen">     <i>Statens Veivesen</i><par n="Lagtinget__np"/></e>
+<e lm="Veivesenet">     <i>Veivesenet</i><par n="Lagtinget__np"/></e>
 <e lm="ABC-teatret">     <i>ABC-teatret</i><par n="Lagtinget__np"/></e>
 <e lm="Arbeiderpartiet">     <i>Arbeiderpartiet</i><par n="Lagtinget__np"/></e>
 <e lm="Gamle-Erik">      <i>Gamle-Erik</i><par n="Jo__np"/></e>
@@ -56650,7 +56815,7 @@
 <e lm="Thorild">         <i>Thorild</i><par n="Eva__np"/></e>
 <e lm="Thorill">         <i>Thorill</i><par n="Eva__np"/></e>
 <e lm="Thrine">          <i>Thrine</i><par n="Eva__np"/></e>
-<e lm="Tine">            <i>Tine</i><par n="Eva__np"/></e>
+<e lm="Tine">          <i>Tine</i><par n="Eva__np"/></e>
 <e lm="Tone">            <i>Tone</i><par n="Eva__np"/></e>
 <e lm="Torbjørg">        <i>Torbjørg</i><par n="Eva__np"/></e>
 <e lm="Tordis">          <i>Tordis</i><par n="Doris__np"/></e>
@@ -57331,10 +57496,10 @@
 <e lm="Sessvollmoen">    <i>Sessvollmoen</i><par n="Osen__np"/></e>
 <e lm="Sinaiørkenen">    <i>Sinaiørkenen</i><par n="Osen__np"/></e>
 <e lm="Sørpolen">        <i>Sørpolen</i><par n="Osen__np"/></e>
+<e lm="Sydpolen">        <i>Sydpolen</i><par n="Osen__np"/></e>
 <e lm="Straumen">        <i>Straumen</i><par n="Osen__np"/></e>
 <e lm="Suezkanalen">     <i>Suezkanalen</i><par n="Osen__np"/></e>
 <e lm="Svartisen">       <i>Svartisen</i><par n="Osen__np"/></e>
-<e lm="Sydpolen">        <i>Sydpolen</i><par n="Osen__np"/></e>
 <e lm="Vestisen">        <i>Vestisen</i><par n="Osen__np"/></e>
 <e lm="Torghatten">      <i>Torghatten</i><par n="Osen__np"/></e>
 
