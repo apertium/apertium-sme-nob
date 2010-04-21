@@ -29,7 +29,8 @@ LIST FISH = "guolli" "dorski" "luossa" ;
 
 SECTION
 
-# verbs.
+# Verb rules
+# ----------
 
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
@@ -61,6 +62,10 @@ SUBSTITUTE ("bivdit") ("bivdit:2") ("bivdit" V)(*1 FISH);
 
 SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego")) ;
 
+
+# Other parts of speech
+# ---------------------
+
 SUBSTITUTE ("easkka") ("easkka:1") ("easkka" Adv) (-1 ("de") OR ("dál")) ;
 
 
@@ -71,6 +76,10 @@ SUBSTITUTE ("duohta") ("duohta:1") ("duohta" A Sg Loc) (0 @ADVL) ;
 
 SUBSTITUTE ("miella") ("miella:1") ("miella" N Sg Loc) (-1 @→N) ;
 # sinn => oppfatning (kan regelen vere meir generell?)
+
+
+# Rules that are not word-specific
+# --------------------------------
 
 SUBSTITUTE (N Ess) (N Ess V) (N Ess @←SPRED) (-1 PronPersIll) ;
 # In certain contexts, N.Ess might be translated with a verb
