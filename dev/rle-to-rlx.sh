@@ -4,6 +4,10 @@ then
     echo "Usage:"
     echo "$ cp /PATH/TO/sme-dis.rle apertium-sme-nob.sme-nob.rlx"
     echo "$ dev/rle-to-rlx.rlx apertium-sme-nob.sme-nob.rlx"
+    echo "$ svn diff apertium-sme-nob.sme-nob.rlx"
+    echo ''
+    echo 'Note: this script changes the input file directly!'
+    echo 'You may want to use a temporary file.'
     exit 0;
 fi
 
