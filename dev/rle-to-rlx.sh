@@ -20,7 +20,7 @@ do
     sed -i".tmp" "s/$G/$A/g" "$1"
 done
 
-UNDERSCORES=( "Der_oaivvat" "Der_t" "Der_Dimin" "Der_NuA" "Der_Pass" "Der_PassL" "Der_PassS" "Der_adda" "Der_ahtti" "Der_alla" "Der_amoš" "Der_asti" "Der_d" "Der_diibmosaš" "Der_duohkai" "Der_duohke" "Der_eaddji" "Der_eamoš" "Der_eapmi" "Der_easti" "Der_g" "Der_geahtes" "Der_gielat" "Der_goahti" "Der_h" "Der_halla" "Der_hat" "Der_heapmi" "Der_hudda" "Der_huhtti" "Der_huvva" "Der_j" "Der_jagáš" "Der_jahkásaš" "Der_keahtes" "Der_l" "Der_las" "Der_laš" "Der_lágan" "Der_lágaš" "Der_lágán" "Der_meahttun" "Der_muš" "Der_n" "Der_st" "Der_stuvva" "Der_supmi" "Der_upmi" "Der_us" "Der_veara" "Der_viđi" "Der_viđá" "Der_vuohta" "Der_vuolde" "Der_vuollai" "Der_vuolle" "Der_š" "Foc_ba" "Foc_bat" "Foc_be" "Foc_ge" "Foc_gen" "Foc_ges" "Foc_gis" "Foc_hal" "Foc_han" "Foc_naj" "Foc_so" )
+UNDERSCORES=( "Use_Ped" "Use_CircN" "Use_Circ" "Der_oaivvat" "Der_t" "Der_Dimin" "Der_NuA" "Der_Pass" "Der_PassL" "Der_PassS" "Der_adda" "Der_ahtti" "Der_alla" "Der_amoš" "Der_asti" "Der_d" "Der_diibmosaš" "Der_duohkai" "Der_duohke" "Der_eaddji" "Der_eamoš" "Der_eapmi" "Der_easti" "Der_g" "Der_geahtes" "Der_gielat" "Der_goahti" "Der_h" "Der_halla" "Der_hat" "Der_heapmi" "Der_hudda" "Der_huhtti" "Der_huvva" "Der_j" "Der_jagáš" "Der_jahkásaš" "Der_keahtes" "Der_l" "Der_las" "Der_laš" "Der_lágan" "Der_lágaš" "Der_lágán" "Der_meahttun" "Der_muš" "Der_n" "Der_st" "Der_stuvva" "Der_supmi" "Der_upmi" "Der_us" "Der_veara" "Der_viđi" "Der_viđá" "Der_vuohta" "Der_vuolde" "Der_vuollai" "Der_vuolle" "Der_š" "Foc_ba" "Foc_bat" "Foc_be" "Foc_ge" "Foc_gen" "Foc_ges" "Foc_gis" "Foc_hal" "Foc_han" "Foc_naj" "Foc_so" )
 
 echo "Turning / into _ in derivations and clitics..."
 for A in ${UNDERSCORES[*]}
