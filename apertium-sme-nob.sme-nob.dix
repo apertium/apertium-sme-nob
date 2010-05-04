@@ -108,7 +108,8 @@
 
     <sdef n="Der2"     c="Derivation #2"/>
     <sdef n="Der_PassL" c="Passive derivation"/>
-    <sdef n="pass" c="Passive"/>
+    <sdef n="pass"     c="Passive"/>
+    <sdef n="pstv"     c="Lexicalised passive (st-verb)"/>
     <sdef n="Actor"    c="Deverbal agent/actor"/>
 
     <sdef n="Actio"    c="Actio"/>
@@ -289,34 +290,13 @@
       <e><p><l></l><r></r></p></e>
     </pardef>
     <pardef n="refl__verb">
-      <!-- for now just a copy of __verb; but we might want to add tags to reflexives -->
-      <e><p><l><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
-      <e><p><l><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
-      
-      <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Inf"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
-      <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
-      <!-- For some verbs, we probably can override this where the passive is lexicalised and an st-verb.pp exists: -->
-      <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
-      <!-- Not sure what to do about this: -->
-      <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="pass"/><s n="sg"/><s n="p2"/></r></p></e>
-      
-      <e><p><l><s n="Inf"/></l><r><s n="inf"/></r></p></e>
-      <e><p><l><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
-      <e><p><l></l><r></r></p></e>
-
-      <!-- The following are for e.g. "Itgo boađáše?", we need the temps from boađáše, and the pro (nbr,pers) from "It"-->
-      <e><p><l><s n="Cond"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
-      <e><p><l><s n="Pot"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
-      <e><p><l><s n="Ind"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
-      <e><p><l><s n="Ind"/></l><r></r></p><par n="__nbr_pers"/></e>
-      <e><p><l><s n="Imprt"/></l><r><s n="imp"/></r></p><par n="__nbr_pers"/></e>
-
-      <e><p><l><s n="Cond"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
-      <e><p><l><s n="Cond"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
-      <e><p><l><s n="Pot"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
-      <e><p><l><s n="Pot"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
-      <e><p><l><s n="Actio"/><s n="Ess"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
-      <e><p><l></l><r></r></p></e>
+      <e><p><l></l><r><s n="Refl"/></r></p><par n="__verb"/></e>
+    </pardef>
+    <pardef n="pass__verb">
+      <e><p><l></l><r><s n="pass"/></r></p><par n="__verb"/></e>
+    </pardef>
+    <pardef n="pstv__verb">
+      <e><p><l></l><r><s n="pstv"/></r></p><par n="__verb"/></e>
     </pardef>
     <pardef n="deverbal__n">
       <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r></r></p><par n="__n"/></e>
@@ -20032,7 +20012,7 @@
     <e><p><l>bostit<s n="V"/><s n="TV"/></l><r>stikke så det hovner<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) bosttii-->
     <e><p><l>botkalit<s n="V"/><s n="TV"/></l><r>strø<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>botket<s n="V"/></l><r>bryte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>botkkodit<s n="V"/><s n="TV"/></l><r>slite løs<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>botkkodit<s n="V"/><s n="TV"/></l><r>slite<g><b/>løs</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>botkkuhit<s n="V"/><s n="TV"/></l><r>sne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>botnit<s n="V"/><s n="TV"/></l><r>spinne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) bonán-->
     <e><p><l>botnjat<s n="V"/><s n="TV"/></l><r>vri<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) bonjan-->
@@ -20068,7 +20048,7 @@
     <e><p><l>cábmit<s n="V"/></l><r>slå<s n="n"/><s n="m"/></r></p><par n="__verb"/></e>
     <e><p><l>čađahit<s n="V"/><s n="TV"/></l><r>gjennomføre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>caggat<s n="V"/></l><r>støtte<g><b/>opp</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>čáhkat<s n="V"/><s n="IV"/></l><r>få plass<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(dat) čágai-->
+    <e><p><l>čáhkat<s n="V"/><s n="IV"/></l><r>få<g><b/>plass</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(dat) čágai-->
     <e><p><l>cahkat<s n="V"/><s n="IV"/></l><r>ulme<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) cagai-->
     <e><p><l>cahkkehit<s n="V"/><s n="TV"/></l><r>tenne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>cáhpat<s n="V"/></l><r>hakke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -20778,7 +20758,7 @@
     <e><p><l>jearralit<s n="V"/><s n="TV"/></l><r>spørre som snarest<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>jearrat<s n="V"/><s n="TV"/></l><r>spørre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) jearan, (sii) jerret-->
     <e><p><l>jeđđet<s n="V"/><s n="TV"/></l><r>trøste<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) jeđđejit-->
-    <e><p><l>jiekŋut<s n="V"/><s n="IV"/></l><r>fryse til is<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--jieŋui, (dat) jikŋot-->
+    <e><p><l>jiekŋut<s n="V"/><s n="IV"/></l><r>fryse<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--jieŋui, (dat) jikŋot-->
     <e><p><l>jiellat<s n="V"/></l><r>trekke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>jienádit<s n="V"/></l><r>ytre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>jienastit<s n="V"/><s n="TV"/></l><r>stemme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -20812,8 +20792,8 @@
     <e><p><l>juoiggastit<s n="V"/><s n="IV"/></l><r>joike litt<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e c="sprekke, bli utett (springe lekk?)"><p><l>juokŋat<s n="V"/></l><r>sprekke<g><b/>utett</g><s n="n"/><s n="m"/></r></p><par n="__verb"/></e> 
     <e><p><l>juolludit<s n="V"/></l><r>avse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>juollut<s n="V"/><s n="IV"/></l><r>at det er nok til overs<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--juolui, (dat) jullot-->
-    <e><p><l>juoŋastit<s n="V"/><s n="TV"/></l><r>fiske med garn under isen<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e c="TODO betre ord"><p><l>juollut<s n="V"/><s n="IV"/></l><r>at det er nok til overs<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--juolui, (dat) jullot-->
+    <e c="isfiske? TODO"><p><l>juoŋastit<s n="V"/><s n="TV"/></l><r>fiske med garn under isen<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>jupmat<s n="V"/><s n="IV"/></l><r>larme<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) jumai-->
     <e><p><l>jurddahit<s n="V"/><s n="IV"/></l><r>tenke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>jurddašit<s n="V"/></l><r>tenke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -21402,7 +21382,8 @@
     <e><p><l>seahkanit<s n="V"/></l><r>bli<g><b/>blandet</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>seahkut<s n="V"/></l><r>sette<g><b/>ekstra<b/>med<b/>ris</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>seailluhit<s n="V"/><s n="TV"/></l><r>forvare<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e><p><l>seailut<s n="V"/></l><r>bevares<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>seailut<s n="V"/></l><r>bevare<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
+    <e slr="1"><p><l>seailut<s n="V"/></l><r>klare<g><b/>seg</g><s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e>
     <e><p><l>seaivut<s n="V"/></l><r>dale<g><b/>ned</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>sealgádit<s n="V"/></l><r>jule<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>šealgát<s n="V"/></l><r>glinse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
