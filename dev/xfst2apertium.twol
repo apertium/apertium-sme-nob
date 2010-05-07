@@ -3,25 +3,54 @@ Alphabet
 %#:0
 %# ! Need this, since otherwise #-words not matched by our rule will disappear
 
-%+Cmpnd
-%+SgCmp    %+PlCmp
-%+SgNomCmp %+PlNomCmp
-%+SgGenCmp %+PlGenCmp
+%+N
 
- ;
+%+Cmpnd
+%+SgCmp      	%+PlCmp
+%+SgLeft      	%+PlLeft
+%+SgNomCmp   	%+PlNomCmp
+%+SgNomLeft  	%+PlNomLeft
+%+SgGenCmp   	%+PlGenCmp
+%+SgGenLeft  	%+PlGenLeft
+%+DefSgGenCmp 	%+DefPlGenCmp
+
+%+Cmpnd:0
+%+SgCmp:0    	%+PlCmp:0
+%+SgLeft:0    	%+PlLeft:0
+%+SgNomCmp:0 	%+PlNomCmp:0
+%+SgNomLeft:0  	%+PlNomLeft:0
+%+SgGenCmp:0 	%+PlGenCmp:0
+%+SgGenLeft:0  	%+PlGenLeft:0
+%+DefSgGenCmp:0 %+DefPlGenCmp:0
+
+%+Use/Circ
+;
+
 
 Sets
+
 Cmptag = 
 %+Cmpnd
-%+SgCmp    %+PlCmp
-%+SgNomCmp %+PlNomCmp
-%+SgGenCmp %+PlGenCmp
+%+SgCmp      	%+PlCmp
+%+SgLeft      	%+PlLeft
+%+SgNomCmp   	%+PlNomCmp
+%+SgNomLeft  	%+PlNomLeft
+%+SgGenCmp   	%+PlGenCmp
+%+SgGenLeft  	%+PlGenLeft
+%+DefSgGenCmp 	%+DefPlGenCmp
+;
+
+Prefix =
+%+Use/Circ
 ;
 
 Rules 
 
-"#-deletion except after compounding tags"
-%#:0 <=> \Cmptag _ ; 
+"#-deletion unless after compounding or prefix tags"
+%#:0 <=> \[ Prefix | Cmptag ] _ ; 
+
+"Delete compound tags that weren't followed by an N tag"
+Cmptag:0 <=> \%+N _ ; 
 
 ! After inversion, we get
 !   ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sáme#giella+N+Sg+Nom$
