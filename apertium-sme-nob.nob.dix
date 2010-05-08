@@ -81,29 +81,54 @@
 	</sdefs>
 	<pardefs>
           <!-- Compounding pardefs. -->
+
 <pardef n="cp-R"> 
-   <e r="LR"><p><l>uuuuuuuuuuuuuuuu</l>          <r><s n="compound-R"/></r></p></e>
+   <e r="LR"><p><l></l>          <r><s n="compound-R"/></r></p></e>
    <e>       <p><l></l>          <r></r></p></e>
- </pardef>
+   <e>       <p><l>NON_ANALYSIS</l>          <r>DUE_TO_LT_PROC_HANG</r></p></e>
+</pardef>
+<pardef n="cp-R_S__case"> 
+   <e r="LR"><p><l></l>          <r><s n="compound-R"/></r></p></e>
+   <e>       <p><l></l>          <r></r></p></e>
+   <e r="LR"><p><l>s</l>         <r><s n="gen"/><s n="compound-R"/></r></p></e>
+   <e>       <p><l>s</l>         <r><s n="gen"/></r></p></e>
+</pardef>
+<pardef n="cp-R_'__case"> 
+   <e r="LR"><p><l></l>          <r><s n="compound-R"/></r></p></e>
+   <e>       <p><l></l>          <r></r></p></e>
+   <e r="LR"><p><l>'</l>         <r><s n="gen"/><s n="compound-R"/></r></p></e>
+   <e>       <p><l>'</l>         <r><s n="gen"/></r></p></e>
+</pardef>
 <pardef n="cp-both-s">
-   <e r="LR"><p><l>uuuuuuuuuuuuuuuu</l>          <r><s n="ep-Ø"/><s n="compound-only-L"/></r></p></e> 
-   <e r="LR"><p><l>uuuuuuuuuuuuuuuus</l>         <r><s n="ep-s"/><s n="compound-only-L"/></r></p></e> 
-   <e r="LR"><p><l>uuuuuuuuuuuuuuuu</l>          <r><s n="compound-R"/></r></p></e>
+   <e r="LR"><p><l></l>          <r><s n="ep-Ø"/><s n="compound-only-L"/></r></p></e>
+   <e r="LR"><p><l>s</l>         <r><s n="ep-s"/><s n="compound-only-L"/></r></p></e>
+   <e r="LR"><p><l></l>          <r><s n="compound-R"/></r></p></e>
    <e>       <p><l></l>          <r></r></p></e>
+   <e>       <p><l>NON_ANALYSIS</l>          <r>DUE_TO_LT_PROC_HANG</r></p></e>
 </pardef>
 <pardef n="cp-both-s_S__case">
-   <e r="LR"><p><l>uuuuuuuuuuuuuuuu</l>          <r><s n="ep-Ø"/><s n="compound-only-L"/></r></p></e> 
-   <e r="LR"><p><l>uuuuuuuuuuuuuuuus</l>         <r><s n="ep-s"/><s n="compound-only-L"/></r></p></e> 
-   <e r="LR"><p><l>uuuuuuuuuuuuuuuu</l>          <r><s n="compound-R"/></r></p></e>
+   <e r="LR"><p><l></l>          <r><s n="ep-Ø"/><s n="compound-only-L"/></r></p></e>
+   <e r="LR"><p><l>s</l>         <r><s n="ep-s"/><s n="compound-only-L"/></r></p></e>
+   
+   <e r="LR"><p><l></l>          <r><s n="compound-R"/></r></p></e>
    <e>       <p><l></l>          <r></r></p></e>
+   <e r="LR"><p><l>s</l>         <r><s n="gen"/><s n="compound-R"/></r></p></e>
    <e>       <p><l>s</l>         <r><s n="gen"/></r></p></e>
 </pardef>
 <pardef n="cp-both-s_'__case">
-   <e r="LR"><p><l>uuuuuuuuuuuuuuuu</l>          <r><s n="ep-Ø"/><s n="compound-only-L"/></r></p></e> 
-   <e r="LR"><p><l>uuuuuuuuuuuuuuuus</l>         <r><s n="ep-s"/><s n="compound-only-L"/></r></p></e> 
-   <e r="LR"><p><l>uuuuuuuuuuuuuuuu</l>          <r><s n="compound-R"/></r></p></e>
+   <e r="LR"><p><l></l>          <r><s n="ep-Ø"/><s n="compound-only-L"/></r></p></e>
+   <e r="LR"><p><l>s</l>         <r><s n="ep-s"/><s n="compound-only-L"/></r></p></e>
+   <e r="LR"><p><l></l>          <r><s n="compound-R"/></r></p></e>
    <e>       <p><l></l>          <r></r></p></e>
+   <e r="LR"><p><l>'</l>         <r><s n="gen"/><s n="compound-R"/></r></p></e>
    <e>       <p><l>'</l>         <r><s n="gen"/></r></p></e>
+</pardef>
+<pardef n="cp-both-e_S__case">
+   <e r="LR"><p><l></l>          <r><s n="ep-Ø"/><s n="compound-only-L"/></r></p></e> 
+   <e r="LR"><p><l>e</l>         <r><s n="ep-e"/><s n="compound-only-L"/></r></p></e> 
+   <e r="LR"><p><l></l>          <r><s n="compound-R"/></r></p></e>
+   <e>       <p><l></l>          <r></r></p></e>
+   <e>       <p><l>s</l>         <r><s n="gen"/></r></p></e>
 </pardef>
 
     <!-- Genitive case endings for nouns, determiners  -->
@@ -769,6 +794,12 @@
   <e>       <p><l>er</l>        <r><s n="n"/><s n="m"/><s n="pl"/><s n="ind"/></r></p><par n="S__case"/><par n="cp-R"/></e>
   <e>       <p><l>en</l>        <r><s n="n"/><s n="m"/><s n="sg"/><s n="def"/></r></p><par n="S__case"/><par n="cp-R"/></e>
   <e>       <p><l></l>          <r><s n="n"/><s n="m"/><s n="sg"/><s n="ind"/></r></p><par n="cp-both-s_S__case"/></e>
+</pardef>
+<pardef n="ep_e__n">
+  <e>       <p><l>ene</l>       <r><s n="n"/><s n="m"/><s n="pl"/><s n="def"/></r></p><par n="S__case"/><par n="cp-R"/></e>
+  <e>       <p><l>er</l>        <r><s n="n"/><s n="m"/><s n="pl"/><s n="ind"/></r></p><par n="S__case"/><par n="cp-R"/></e>
+  <e>       <p><l>en</l>        <r><s n="n"/><s n="m"/><s n="sg"/><s n="def"/></r></p><par n="S__case"/><par n="cp-R"/></e>
+  <e>       <p><l></l>          <r><s n="n"/><s n="m"/><s n="sg"/><s n="ind"/></r></p><par n="cp-both-e_S__case"/></e>
 </pardef>
 
 <pardef n="os__n">
@@ -21484,7 +21515,7 @@
 <e lm="andreplass">      <i>andreplass</i><par n="ep__n"/></e>
 <e lm="begrep">          <i>begrep</i><par n="ja__n"/></e>
 <e lm="ekteskap">        <i>ekteskap</i><par n="ja__n"/></e>
-<e lm="dans">            <i>dans</i><par n="ep__n"/></e>
+<e lm="dans">            <i>dans</i><par n="ep_e__n"/></e>
 <e lm="art">             <i>art</i><par n="då_no-cp__n"/></e>
 <e lm="fiske">           <i>fisk</i><par n="ød/e__n"/></e>
 <e lm="europavei">       <i>europavei</i><par n="ep__n"/></e>

@@ -108,6 +108,8 @@
 
     <sdef n="Der2"     c="Derivation #2"/>
     <sdef n="Der_PassL" c="Passive derivation"/>
+    <sdef n="Der3"     c="Derivation #3"/>
+    <sdef n="Der_n"    c="general deverbal noun??? TODO"/>
     <sdef n="pass"     c="Passive"/>
     <sdef n="pstv"     c="Lexicalised passive (st-verb)"/>
     <sdef n="Actor"    c="Deverbal agent/actor"/>
@@ -149,6 +151,10 @@
     <sdef n="GD"      c="Gender to be determined"/>
     <sdef n="ND"      c="Number to be determined"/>
     <sdef n="CD"      c="Case to be determined"/>
+    
+    <sdef n="ep-Ø"    c="no epenthesis"/>
+    <sdef n="ep-s"    c="s-epenthesis"/> 
+    <sdef n="ep-e"    c="e-epenthesis"/>
   </sdefs>
   <pardefs>
     <pardef n="__prn">
@@ -274,7 +280,9 @@
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
       <!-- Not sure what to do about this: -->
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="pass"/><s n="sg"/><s n="p2"/></r></p></e>
-      
+      <!-- ...nor about this: -->
+      <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
+
       <e><p><l><s n="Inf"/></l><r><s n="inf"/></r></p></e>
       <e><p><l><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
       <e><p><l></l><r></r></p></e>
@@ -304,6 +312,7 @@
     </pardef>
     <pardef n="deverbal__n">
       <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r></r></p><par n="__n"/></e>
+      <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r></r></p><par n="__n"/></e>
     </pardef>
   </pardefs>
   <section id="main" type="standard">
@@ -20631,9 +20640,11 @@
     <e><p><l>bálvalit<s n="V"/><s n="TV"/></l><r>tjene<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>barberet<s n="V"/><s n="TV"/></l><r>barbere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>bardit<s n="V"/><s n="TV"/></l><r>stable<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) barddán-->
-    <e><p><l>bargat<s n="V"/><s n="TV"/></l><r>arbeider<s n="n"/><s n="m"/></r></p><par n="deverbal__n"/></e>
+    
     <e><p><l>bargat<s n="V"/><s n="TV"/></l><r>gjøre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>bargat<s n="V"/><s n="TV"/></l><r>arbeider<s n="n"/><s n="m"/></r></p><par n="deverbal__n"/></e>
     <e slr="1"><p><l>bargat<s n="V"/><s n="TV"/></l><r>arbeidstaker<s n="n"/><s n="m"/></r></p><par n="deverbal__n"/></e>
+    
     <e><p><l>barggahit<s n="V"/><s n="TV"/></l><r>sysselsette<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>bárgidit<s n="V"/><s n="TV"/></l><r>flette<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>bártidit<s n="V"/><s n="IV"/></l><r>være uheldig<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--bártidit ( bártašuvvat)-->
@@ -20929,8 +20940,10 @@
     <e><p><l>dájáskit<s n="V"/><s n="IV"/></l><r>gå fra vettet<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>dájuhit<s n="V"/></l><r>narre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>dállet<s n="V"/><s n="TV"/></l><r>riste<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e><p><l>dánset<s n="V"/><s n="TV"/></l><r>danse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>dánset<s n="V"/><s n="TV"/></l><r>danse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>dánset<s n="V"/><s n="TV"/></l><r>dans<s n="ep-e"/><s n="n"/><s n="m"/></r></p><par n="deverbal__n"/></e>
     <e><p><l>dánsut<s n="V"/><s n="TV"/></l><r>danse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) dánssun-->
+    <e><p><l>dánsut<s n="V"/><s n="TV"/></l><r>dans<s n="ep-e"/><s n="n"/><s n="m"/></r></p><par n="deverbal__n"/></e>
     <e><p><l>dápmat<s n="V"/><s n="TV"/></l><r>temme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) dáman-->
     <e><p><l>dárbbahit<s n="V"/><s n="TV"/></l><r>trenge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>dárbbašit<s n="V"/></l><r>behøve<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>

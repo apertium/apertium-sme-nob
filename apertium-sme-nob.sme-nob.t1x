@@ -1747,13 +1747,18 @@ always(?) def in nob; predicative superlatives are only if they have a determine
 
 
 
-    <!-- VERB PHRASES ETC. -->
+    <!-- VERB PHRASES ETC. -->        
     
     <rule comment="REGLA: VERB
                    or VERB=>ADV
                    or VERB=>ADJ
+                   or VERB=>NOUN dansún => dans (noun, explicitly in bidix)
+                                 oažžun => fående (adj.pprs, using fallback rule)
                    ii => adv.p3.sg{ikke}
-                   Itgo => adv.p2.sg.Qst{ikke}">
+                   Itgo => adv.p2.sg.Qst{ikke}
+
+TODO: Compounds with these. Should put it all in a macro then...
+TODO: should VERB->ADJ always be tagged SN?">
       <pattern>
         <pattern-item n="verb"/>
       </pattern>
@@ -1784,10 +1789,48 @@ always(?) def in nob; predicative superlatives are only if they have a determine
             </out>
         </when>        
         <when>
+          <test><not><equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal></not></test>
+          <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+          <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+
+          <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
+          <let><var n="c_tag_pos"/><lit-tag v="5"/></let> 
+          <choose><when>
+            <test><not><equal>
+              <clip pos="1" side="sl" part="mode"/><lit v=""/>
+            </equal></not></test>
+            <let><var n="c_tag_pos"/><lit-tag v="6"/></let>
+          </when></choose>
+          <out>
+            <var n="case-prep"/>
+            <chunk name="nom" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+              </tags>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_nom"/>
+                <clip pos="1" side="tl" part="gen"/>
+                <clip pos="1" side="tl" part="nbr"/>
+                <var n="c_tag_pos"/>
+                <clip pos="1" side="tl" part="gen-case"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+        <when>
           <test><begins-with><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></begins-with></test>
           <out>
             <chunk name="adj" case="caseFirstWord">
               <tags>
+                <tag><lit-tag v="SN"/></tag>
                 <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
                 <tag><clip pos="1" side="sl" part="modality"/></tag>
