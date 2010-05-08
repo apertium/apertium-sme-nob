@@ -1830,7 +1830,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
     
-    <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å lese">
+    
+    <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å lese
+                   needs to be several chunks to cover: ii lohkagoađe => han begynner ikke å lese
+                   TODO: caseSecondWord">
       <pattern>
         <pattern-item n="verb"/>
         <pattern-item n="vgoahti"/>
@@ -1838,7 +1841,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <chunk name="verb_part_verb" case="caseFirstWord">
+          <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="2" side="sl" part="mode"/></tag>
@@ -1857,11 +1860,21 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="2" side="tl" part="voice"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
-            <b pos="1"/>
+          </chunk>
+          <b pos="1"/>
+          <chunk name="part">
+            <tags>
+              <tag><lit-tag v="part"/></tag>
+            </tags>
             <lu>
               <lit v="å"/><lit-tag v="part"/>
             </lu>
-            <b/>
+          </chunk>
+          <b/>
+          <chunk name="verb">
+            <tags>
+              <tag><lit-tag v="inf"/></tag>
+            </tags>
             <lu>
               <get-case-from pos="2">
                 <clip pos="1" side="tl" part="lemh"/>
