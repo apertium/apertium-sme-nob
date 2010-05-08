@@ -24,6 +24,17 @@ Alphabet
 %+DefSgGenCmp:0 %+DefPlGenCmp:0
 
 %+Use/Circ
+
+%+Use/NG:0
+%+Use/Ped:0
+%+Use/Sub:0
+%+Use/Circ:0
+%+Use/CircN:0
+%+Use/Marg:0
+%+Use/NG:0
+%+Dial/%-KJ:0
+%+Dial/%-GG:0
+%+Dial/%-GS:0
 ;
 
 
@@ -40,17 +51,28 @@ Cmptag =
 %+DefSgGenCmp 	%+DefPlGenCmp
 ;
 
-Prefix =
+Prefix =			! only one I've seen so far
 %+Use/Circ
+;
+
+Useless =
+%+Use/NG
+%+Use/Ped	
+%+Use/Sub	
+%+Use/Circ	
+%+Use/CircN	
+%+Use/Marg	
+%+Use/NG	
+%+Dial/%-KJ	
+%+Dial/%-GG	
+%+Dial/%-GS	
 ;
 
 Rules 
 
 "#-deletion unless after compounding or prefix tags"
-%#:0 <=> \[ Prefix | Cmptag ] _ ; 
-
-"Delete compound tags that weren't followed by an N tag"
-Cmptag:0 <=> \%+N _ ; 
+! %#:0 <=> ~ [ Cmptag Prefix* ] _ ; ! <- this doesn't parse :(
+%#:0 <=> \[ Prefix:? | Cmptag ] _ ;  
 
 ! After inversion, we get
 !   ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sáme#giella+N+Sg+Nom$
@@ -63,3 +85,14 @@ Cmptag:0 <=> \%+N _ ;
 ! or
 !   ^sámegiella<N><Sg><Nom>$
 ! respectively.
+
+
+"Delete compound tags that weren't followed by an N tag"
+Cmptag:0 <=> \%+N _ ; 
+
+
+"Delete Use-tags etc. that we don't use"
+Useless:0 <=> _ ; 
+! Removing tags with hfst-substitute will give duplicate analyses, so
+! we do it here instead
+
