@@ -32,6 +32,9 @@ This is the second pass, it contains:
     <def-cat n="spred-ess">
       <cat-item tags="@←SPRED.*.ess"/>
     </def-cat>
+    <def-cat n="RADVL">
+      <cat-item lemma="adv" tags="@←ADVL"/>
+    </def-cat>
     <def-cat n="pron-RADVL">
       <cat-item lemma="pron" tags="SN.@←ADVL.*"/>
     </def-cat>
@@ -41,6 +44,9 @@ This is the second pass, it contains:
     </def-cat>
     <def-cat n="SN-post">
       <cat-item tags="SN.@→P.*"/>
+    </def-cat>
+    <def-cat n="SN-post-advl">
+      <cat-item tags="SN.@→ADVL.*"/>
     </def-cat>
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
@@ -309,6 +315,31 @@ This is the second pass, it contains:
 
     <!-- Adpositions -->
     
+    <rule comment="REGLA: PR SN-post-advl RADVL -- Islandas eret => fra Island                                              
+                   Don't output the PR since case was selected by the adverb anyway.">
+      <pattern>
+        <pattern-item n="PR"/>
+        <pattern-item n="SN-post-advl"/>
+        <pattern-item n="RADVL"/>
+      </pattern>
+      <action>
+        <choose>
+          <when>
+            <test><equal><clip pos="2" part="lemh"/><lit v="pron"/></equal></test>
+            <let><clip pos="2" part="case"/><lit-tag v="acc"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="2" part="case"/><lit v=""/></let>
+          </otherwise>
+        </choose>
+        <out>
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: PR SN-post adpos -- garra dálkki geažil => på_grunn_av dårlig vær
                                               dan geažil => på_grunn_av det
                    Don't output the PR since case was selected by the adpos anyway.">
