@@ -198,6 +198,8 @@
       <e><p><l><s n="Pl"/><s n="Gen"/></l><r><s n="GD"/><s n="pl"/><s n="gen"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Ill"/></l><r><s n="GD"/><s n="pl"/><s n="ill"/></r></p></e>
       <e><p><l><s n="Pl"/><s n="Loc"/></l><r><s n="GD"/><s n="pl"/><s n="loc"/></r></p></e>
+
+      <e><p><l><s n="Attr"/></l><r><s n="ND"/><s n="GD"/></r></p></e>
       <e><p><l></l><r><s n="ND"/><s n="GD"/></r></p></e>
     </pardef>
     <pardef n="num__det_qnt">
@@ -481,6 +483,7 @@
     <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>buot<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn"/></e>
+    <e><p><l>eará<s n="Pron"/><s n="Indef"/></l><r>annen<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
     <e r="LR"><p><l>ollu<s n="Pron"/><s n="Indef"/></l><r>mange<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn"/></e>
     <e slr="1"><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e> <!-- juohke lágán => alle slags, alle måter -->
@@ -635,6 +638,8 @@
     <e><p><l>baste<s n="N"/></l><r>skei<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>basttat<s n="N"/></l><r>tang<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>bátni<s n="N"/></l><r>tann<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e r="LR"><p><l>bátnivearka<s n="N"/></l><r>tannverk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>bátnivárka<s n="N"/></l><r>tannverk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>bávččas<s n="N"/></l><r>smerte<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>bázahus<s n="N"/></l><r>rest<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>beahci<s n="N"/></l><r>furu<s n="n"/></r></p><par n="m_RL_f__n"/></e>
@@ -2203,7 +2208,9 @@
     <e slr="1"><p><l>valvi<s n="N"/></l><r>ulveflokk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>vánhen<s n="N"/></l><r>forelder<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>varis<s n="N"/></l><r>hann<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>varit<s n="N"/></l><r>reinsbukk<s n="n"/><s n="m"/></r></p><par n="__n"/></e> <!-- ca. 2 år gammel -->
+    <e c="ca 2 år gammel"><p><l>varit<s n="N"/></l><r>reinsbukk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e r="LR"><p><l>vearka<s n="N"/></l><r>verk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>várka<s n="N"/></l><r>verk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>varra<s n="N"/></l><r>blod<s n="n"/><s n="nt"/><s n="unc"/></r></p><par n="__n"/></e>
     <e><p><l>várra<s n="N"/></l><r>forsiktighet<s n="n"/><s n="f"/><s n="unc"/></r></p><par n="__n"/></e>
     <e><p><l>várrehus<s n="N"/></l><r>advarsel<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -20519,8 +20526,8 @@
     <!-- Does 'mun' mark personal, and 'dat' impersonal, if so is it relevant to transfer ? -->
 
     <!-- Modals, auxiliaries: -->
-    <e><p><l>leat<s n="V"/><s n="IV"/></l><r>være<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e slr="1"><p><l>leat<s n="V"/><s n="IV"/></l><r>ha<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>leat<s n="V"/><s n="IV"/></l><r>være<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>leat<s n="V"/><s n="IV"/></l><r>ha<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
     <e slr="2"><p><l>leat<s n="V"/><s n="IV"/></l><r>måtte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>fertet<s n="V"/><s n="IV"/></l><r>måtte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) fertejit-->
     <e><p><l>galgat<s n="V"/><s n="IV"/></l><r>skulle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
