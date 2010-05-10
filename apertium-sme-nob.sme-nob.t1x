@@ -335,6 +335,20 @@ This is the first pass, it contains:
       <list-item v="čuvggodit"/>
       <list-item v="šlahttit"/>
     </def-list>
+    <def-list n="loc-på">
+      <list-item v="Island"/>
+      <list-item v="måndag"/>
+      <list-item v="tysdag"/>
+      <list-item v="onsdag"/>
+      <list-item v="torsdag"/>
+      <list-item v="fredag"/>
+      <list-item v="laurdag"/>
+      <list-item v="søndag"/>
+      <list-item v="dag"/>
+      <list-item v="øy"/>
+      <list-item v="topp"/>
+      <list-item v="kjøkken"/>
+    </def-list>
   </section-def-lists>
 
   <section-def-macros>
@@ -358,10 +372,15 @@ This is the first pass, it contains:
           </let>
           <choose><when>
             <test><equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal></test>
-            <!-- todo: "på øya", copy def-list from nb-nn.t1x -->
             <let>
               <var n="case-prep"/><lit v="i"/>
             </let>
+            <choose><when>
+              <test><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></test>
+              <let>
+                <var n="case-prep"/><lit v="på"/>
+              </let>
+            </when></choose>
           </when></choose>
           <choose><when>
             <test><equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@HAB"/></equal></test>
