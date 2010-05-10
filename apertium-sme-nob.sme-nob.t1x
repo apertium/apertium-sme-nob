@@ -21,6 +21,9 @@ This is the first pass, it contains:
       <cat-item tags="Adv"/>
       <cat-item tags="Adv.*"/>
     </def-cat>
+    <def-cat n="pcle.qst">
+      <cat-item lemma="go" tags="Pcle.*"/>
+    </def-cat>
     <def-cat n="adj">
       <cat-item tags="A.*"/>
     </def-cat>
@@ -270,6 +273,7 @@ This is the first pass, it contains:
       <attr-item tags="@-FAUXV"/>
       <attr-item tags="@ADVL"/>
       <attr-item tags="@←ADVL"/>
+      <attr-item tags="@→ADVL"/>
       <attr-item tags="@ADVL→"/>
       <attr-item tags="@A←"/>
       <attr-item tags="@→A"/>
@@ -1978,9 +1982,60 @@ TODO: should VERB->ADJ always be tagged SN?">
       </action>
     </rule>
 
-    <rule comment="REGLA: ADV">
+    <rule comment="REGLA: ADV
+                   Since we match on chunk lemma 'adv' in t3x, even two-lu chunks
+                   here are named 'adv' (no postchunking rules, so that's OK).">
       <pattern>
         <pattern-item n="adverb"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <choose>
+          <when>
+            <test><equal><clip pos="1" side="sl" part="mode"/><lit-tag v="Qst"/></equal></test>
+            <out>
+              <chunk name="adv" case="caseFirstWord">
+                <tags>
+                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="1" side="sl" part="mode"/></tag>
+                </tags>
+                <lu><lit v="hvor"/><lit-tag v="adv"/></lu>
+                <b/>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_adv"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </when>
+          <otherwise>        
+            <out>
+              <chunk name="adv" case="caseFirstWord">
+                <tags>
+                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="1" side="sl" part="mode"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_adv"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </otherwise>
+        </choose>
+      </action>
+    </rule>
+    <rule comment="REGLA: ADV PCLE.QST
+                   guhká go => hvor lenge
+                   Since we match on chunk lemma 'adv' in t3x, even two-lu chunks
+                   here are named 'adv' (no postchunking rules, so that's OK).
+
+TODO: this should be an mwe in the analyser.">
+      <pattern>
+        <pattern-item n="adverb"/>
+        <pattern-item n="pcle.qst"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1990,6 +2045,8 @@ TODO: should VERB->ADJ always be tagged SN?">
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
             </tags>
+            <lu><lit v="hvor"/><lit-tag v="adv"/></lu>
+            <b/>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_adv"/>
@@ -1999,8 +2056,6 @@ TODO: should VERB->ADJ always be tagged SN?">
         </out>
       </action>
     </rule>
-
-
 
 
   </section-rules>
