@@ -194,6 +194,10 @@ This is the first pass, it contains:
     <def-attr n="gen-case">
       <attr-item tags="gen"/>
     </def-attr>
+    <def-attr n="foc">
+      <attr-item tags="Foc_naj"/>
+      <attr-item tags="Foc_ge"/>
+    </def-attr>
     <def-attr n="pers">
       <attr-item tags="p1"/>
       <attr-item tags="p2"/>
@@ -304,6 +308,7 @@ This is the first pass, it contains:
     <def-var n="c_syn_label"/>
     <def-var n="caseFirstWord"/>
     <def-var n="case-prep"/>   
+    <def-var n="foc-adv"/>   
   </section-def-vars>
   <section-def-lists>
     <def-list n="nt-verbs">
@@ -414,6 +419,33 @@ This is the first pass, it contains:
               <lit v="{^"/>
               <var n="case-prep"/>
               <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+        </when>
+      </choose>
+    </def-macro>
+    <def-macro n="set_foc-adv" npar="1"
+               c="arg.1: pronoun (might want to use this for verbs too?)
+                  Set focus adverbial in case we have a tag.
+                  Assumes that the space should go before the chunk
+                  (ie. that var foc-adv is output after the verb).">
+      <let>
+        <var n="foc-adv"/><lit v=""/>
+      </let>
+      <choose>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="foc"/><lit-tag v="Foc_naj"/></equal></test>
+          <let>
+            <var n="foc-adv"/>
+            <concat>
+              <b/>
+              <lit v="^"/>
+              <lit v="adv"/>
+              <lit-tag v="@←ADVL"/>
+              <lit v="{^"/>
+              <lit v="også"/>
+              <lit-tag v="adv"/>
               <lit v="$}$ "/>
             </concat>
           </let>
@@ -1264,6 +1296,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_pron_gen_num"><with-param pos="1"/></call-macro>
 
+        <call-macro n="set_foc-adv"><with-param pos="1"/></call-macro>
         <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
@@ -1289,6 +1322,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
+          <var n="foc-adv"/>
         </out>
       </action>
     </rule>
