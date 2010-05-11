@@ -171,6 +171,9 @@ This is the first pass, it contains:
       <attr-item tags="TV"/>
       <attr-item tags="IV"/>
     </def-attr>
+    <def-attr n="actio">                                       <!--TODO: what's the category name?-->
+      <attr-item tags="Actio"/>
+    </def-attr>
     <def-attr n="case">
       <attr-item tags="Nom"/>
       <attr-item tags="Acc"/>
@@ -1936,6 +1939,24 @@ TODO: should VERB->ADJ always be tagged SN?">
           </out>
         </when>
         <otherwise>
+          <choose><when>
+            <test><and>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal>
+              <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="Actio"/></equal>
+            </and></test>
+            <out>
+              <chunk name="conj" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="@CVP.cnjsub"/></tag>
+                </tags>
+                <lu>
+                  <lit v="i gang med å"/>
+                  <lit-tag v="cnjsub"/>
+                </lu>
+              </chunk>
+              <b/>
+            </out>
+          </when></choose>
           <out>
             <chunk name="verb" case="caseFirstWord">
               <tags>
