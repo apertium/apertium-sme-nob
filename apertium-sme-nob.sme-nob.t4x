@@ -16,8 +16,8 @@ This is the fourth pass, it contains:
     <def-cat n="nom">
       <cat-item name="nom"/>
     </def-cat>
-    <def-cat n="cmpd_nom">
-      <cat-item name="cmpd_nom"/>
+    <def-cat n="cmp_nom">
+      <cat-item name="cmp_nom"/>
     </def-cat>
     <def-cat n="prenom_nom">
       <cat-item name="num_nom"/>
@@ -372,9 +372,9 @@ This is the fourth pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: cmpd_nom">
+    <rule comment="CHUNK: cmp_nom">
       <pattern>
-        <pattern-item n="cmpd_nom"/>
+        <pattern-item n="cmp_nom"/>
       </pattern>
       <action>
         <call-macro n="clean_case"><with-param pos="2"/><with-param pos="0"/></call-macro>
