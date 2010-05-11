@@ -88,7 +88,14 @@
 
 
 <xsl:template match="e">
-          <e><xsl:apply-templates select="./*"/></e>
+  <xsl:choose>
+    <xsl:when test="not(count(./@r)=0)">
+      <e r="{./@r}"><xsl:apply-templates select="./*"/></e>
+    </xsl:when>
+    <xsl:otherwise>
+      <e><xsl:apply-templates select="./*"/></e>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 
