@@ -280,6 +280,38 @@ This is the third pass, it contains:
       <modify-case><clip pos="2" part="lemh"/><var n="caseFirstWord"/></modify-case>
     </def-macro>
     
+
+    <def-macro n="set_ana" npar="1"
+               c="arg.1: SN
+                  -----
+                  If gender is m/f and we have a subject, store gender in 'ana';
+                  if gender is GD, apply 'ana'-gender.">
+      <choose><when>
+        <test><and>
+          <or>
+            <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
+            <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
+            <!-- is 'son' ever 'nt'? could we have a difference between GD-mf and GD-all? -->
+            <!-- <equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal> -->
+          </or>
+          <or>
+            <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
+            <equal><clip pos="1" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+          </or>
+        </and></test>
+        <let><var n="ana"/><clip pos="1" part="gen"/></let>
+      </when></choose>
+      <choose><when>
+        <test><and>
+          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
+          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+          <equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal>
+          <not><equal><var n="ana"/><lit v=""/></equal></not>
+        </and></test>
+        <let><clip pos="1" part="gen"/><var n="ana"/></let>
+      </when></choose>
+    </def-macro>
+    
     <def-macro n="set_defnes_ana2" npar="2"
                c="arg.1: SN, arg.2: verb
                   TODO: parts of this should only be used when loc/ill is in 'first position', check syn_label?
@@ -293,6 +325,7 @@ This is the third pass, it contains:
                   
                   If gender is m/f and we have a subject, store gender in 'ana';
                   if gender is GD, apply 'ana'-gender.">
+      <!-- Set defnes: -->
       <choose>
         <when>
           <test>
@@ -325,30 +358,7 @@ This is the third pass, it contains:
         </when>
       </choose>
       <!-- Set and/or use gender anaphor variable: -->
-      <choose><when>
-        <test><and>
-          <or>
-            <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
-            <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
-            <!-- is 'son' ever 'nt'? could we have a difference between GD-mf and GD-all? -->
-            <!-- <equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal> -->
-          </or>
-          <or>
-            <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
-            <equal><clip pos="1" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
-          </or>
-        </and></test>
-        <let><var n="ana"/><clip pos="1" part="gen"/></let>
-      </when></choose>
-      <choose><when>
-        <test><and>
-          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
-          <equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal>
-          <not><equal><var n="ana"/><lit v=""/></equal></not>
-        </and></test>
-        <let><clip pos="1" part="gen"/><var n="ana"/></let>
-      </when></choose>
+      <call-macro n="set_ana"><with-param pos="1"/></call-macro>
     </def-macro>
     
     <def-macro n="guess_gender" npar="1"
@@ -1073,6 +1083,21 @@ This is the third pass, it contains:
           <b/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
+
+
+    <rule comment="REGLA: SN">
+      <pattern>
+        <pattern-item n="SN"/>
+      </pattern>
+      <action>
+        <call-macro n="set_ana">
+          <with-param pos="1"/>
+        </call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>                    
         </out>
       </action>
     </rule>

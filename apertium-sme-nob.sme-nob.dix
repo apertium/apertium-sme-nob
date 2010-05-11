@@ -257,6 +257,13 @@
       <e>       <p><l></l><r><s n="m"/></r></p><par n="__n"/></e>
       <e r="RL"><p><l></l><r><s n="f"/></r></p><par n="__n"/></e>
     </pardef>
+    <pardef n="f_RL_m__n" c="Generate nob fem, but analyse masc (eventually, when we move on to nob->sme).
+                             TODO: at the moment, anything that gets an 'f' when generating bokmål is assumed to
+                             be 'f' for purposes of pro-drop insertion in transfer, and gets this pardef.
+                             Not ideal (sem-gen != morph-gen)">
+      <e>       <p><l></l><r><s n="f"/></r></p><par n="__n"/></e>
+      <e r="RL"><p><l></l><r><s n="m"/></r></p><par n="__n"/></e>
+    </pardef>
     <pardef n="__np">
       <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
       <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
@@ -529,10 +536,10 @@
     <e><p><l>agronoma<s n="N"/></l><r>agronom<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>agurka<s n="N"/></l><r>agurk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>ahki<s n="N"/></l><r>alder<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>áhkká<s n="N"/></l><r>hustru<s n="n"/></r></p><par n="m_RL_f__n"/></e>
-    <e slr="1"><p><l>áhkká<s n="N"/></l><r>kone<s n="n"/></r></p><par n="m_RL_f__n"/></e>
-    <e><p><l>áhkku<s n="N"/></l><r>bestemor<s n="n"/></r></p><par n="m_RL_f__n"/></e>
-    <e slr="1"><p><l>áhkku<s n="N"/></l><r>kjerring<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e><p><l>áhkká<s n="N"/></l><r>hustru<s n="n"/></r></p><par n="f_RL_m__n"/></e>
+    <e slr="1"><p><l>áhkká<s n="N"/></l><r>kone<s n="n"/></r></p><par n="f_RL_m__n"/></e>
+    <e><p><l>áhkku<s n="N"/></l><r>bestemor<s n="n"/></r></p><par n="f_RL_m__n"/></e>
+    <e slr="1"><p><l>áhkku<s n="N"/></l><r>kjerring<s n="n"/></r></p><par n="f_RL_m__n"/></e>
     <e><p><l>áhpu<s n="N"/></l><r>nytte<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>áibmi<s n="N"/></l><r>synål<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>áibmu<s n="N"/></l><r>luft<s n="n"/></r></p><par n="m_RL_f__n"/></e>
@@ -691,7 +698,7 @@
     <e><p><l>bihttá<s n="N"/></l><r>stykke<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>biibal<s n="N"/></l><r>bibel<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>biibbal<s n="N"/></l><r>bibel<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>biigá<s n="N"/></l><r>tjenestejente<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e><p><l>biigá<s n="N"/></l><r>tjenestejente<s n="n"/></r></p><par n="f_RL_m__n"/></e>
     <e><p><l>biila<s n="N"/></l><r>bil<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>biire<s n="N"/></l><r>reinbeitedistrikt<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>bilda<s n="N"/></l><r>stillas<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -990,8 +997,8 @@
     <e><p><l>eallin<s n="N"/></l><r>liv<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>eallu<s n="N"/></l><r>flokk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>eallu<s n="N"/></l><r>reinflokk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>eamit<s n="N"/></l><r>kone<s n="n"/></r></p><par n="m_RL_f__n"/></e>
-    <e slr="1"><p><l>eamit<s n="N"/></l><r>husmor<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e><p><l>eamit<s n="N"/></l><r>kone<s n="n"/></r></p><par n="f_RL_m__n"/></e>
+    <e slr="1"><p><l>eamit<s n="N"/></l><r>husmor<s n="n"/></r></p><par n="f_RL_m__n"/></e>
     <e><p><l>eana<s n="N"/></l><r>jord<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>eanan<s n="N"/></l><r>jord<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>eanandoallodepartemeanta<s n="N"/></l><r>jordbruksdepartement<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -1088,7 +1095,7 @@
     <e><p><l>galba<s n="N"/></l><r>skjold<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>gáldu<s n="N"/></l><r>kilde<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>gálga<s n="N"/></l><r>falk<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
-    <e><p><l>gálgu<s n="N"/></l><r>kone<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e><p><l>gálgu<s n="N"/></l><r>kone<s n="n"/></r></p><par n="f_RL_m__n"/></e>
     <e><p><l>gálla<s n="N"/></l><r>kål<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>galleriija<s n="N"/></l><r>galleri<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>gálli<s n="N"/></l><r>steinblokk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1698,13 +1705,13 @@
     <e><p><l>neavttár<s n="N"/></l><r>skuespiller<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>neavvu<s n="N"/></l><r>verktøy<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>niehku<s n="N"/></l><r>drøm<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>nieida<s n="N"/></l><r>jente<s n="n"/></r></p><par n="m_RL_f__n"/></e>
-    <e><p><l>nieiddaš<s n="N"/></l><r>liten jente<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e><p><l>nieida<s n="N"/></l><r>jente<s n="n"/></r></p><par n="f_RL_m__n"/></e>
+    <e><p><l>nieiddaš<s n="N"/></l><r>liten jente<s n="n"/></r></p><par n="f_RL_m__n"/></e>
     <e><p><l>niesti<s n="N"/></l><r>niste<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>niibi<s n="N"/></l><r>kniv<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>nisson<s n="N"/></l><r>kvinne<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>nisson<s n="N"/></l><r>kvinne<s n="n"/></r></p><par n="f_RL_m__n"/></e>
     <e><p><l>nissu<s n="N"/></l><r>nise<s n="n"/></r></p><par n="m_RL_f__n"/></e>
-    <e><p><l>nisu<s n="N"/></l><r>kvinne<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e><p><l>nisu<s n="N"/></l><r>kvinne<s n="n"/></r></p><par n="f_RL_m__n"/></e>
     <e><p><l>nisut<s n="N"/></l><r>hvete<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>njáhcu<s n="N"/></l><r>tøvær<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>njálbmi<s n="N"/></l><r>munn<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -21881,6 +21888,7 @@
     <e><p><l>njuorasmahttit<s n="V"/><s n="TV"/></l><r>ydmyke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>njuoskadit<s n="V"/><s n="TV"/></l><r>bløyte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>njuoskat<s n="V"/><s n="IV"/></l><r>bli<g><b/>våt</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(dat) njuoskkai, njusket-->
+    <e><p><l>njuohtat<s n="V"/><s n="TV"/></l><r>male<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>njuovadit<s n="V"/><s n="TV"/></l><r>slakte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>njuovvat<s n="V"/><s n="TV"/></l><r>slakte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>njurgut<s n="V"/><s n="TV"/></l><r>plystre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
