@@ -29,6 +29,7 @@
     <sdef n="Interr"  c="Interrogative"/>
     <sdef n="Rel"     c="Relative"/>
     <sdef n="Refl"    c="Reflexive"/>
+    <sdef n="caus"    c="Causative"/>
     <sdef n="Indef"   c="Indefinite"/>
     <sdef n="Dem"     c="Demonstrative"/>
     <sdef n="itg"     c="Interrogative"/>
@@ -106,10 +107,12 @@
     <sdef n="Com"     c="Comitative"/>
     <sdef n="com"     c="Comitative"/>
 
+    <sdef n="Der1"     c="Derivation #1"/>
     <sdef n="Der2"     c="Derivation #2"/>
     <sdef n="Der_PassL" c="Passive derivation"/>
     <sdef n="Der_PassS" c="Passive derivation"/>
     <sdef n="Der3"     c="Derivation #3"/>
+    <sdef n="Der_h"    c="reflexive??? TODO"/>
     <sdef n="Der_n"    c="general deverbal noun??? TODO"/>
     <sdef n="pass"     c="Passive"/>
     <sdef n="pstv"     c="Lexicalised passive (st-verb)"/>
@@ -287,7 +290,11 @@
     <pardef n="__verb">
       <e><p><l><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
-      
+      <e><p><l><s n="Inf"/></l><r><s n="inf"/></r></p></e>
+      <e><p><l><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
+      <e><p><l></l><r></r></p></e>
+
+      <!-- Passive: -->
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Inf"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
@@ -302,14 +309,17 @@
       <e><p><l><s n="Der_PassS"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
       <e><p><l><s n="Der_PassS"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="pass"/><s n="sg"/><s n="p2"/></r></p></e>
 
+      <!-- Causative: -->
+      <e><p><l><s n="Der1"/><s n="Der_h"/><s n="V"/><s n="Inf"/></l><r><s n="caus"/><s n="inf"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_h"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="caus"/><s n="pres"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Der1"/><s n="Der_h"/><s n="V"/><s n="Ind"/><s n="Prt"/></l><r><s n="caus"/><s n="pret"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Der1"/><s n="Der_h"/><s n="V"/><s n="PrfPrc"/></l><r><s n="caus"/><s n="pp"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_h"/><s n="V"/><s n="Imprt"/></l><r><s n="caus"/><s n="inf"/><s n="sg"/><s n="p2"/></r></p></e>
+
       <!-- Definitely not sure about this: -->
       <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
 
-      <e><p><l><s n="Inf"/></l><r><s n="inf"/></r></p></e>
-      <e><p><l><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
-      <e><p><l></l><r></r></p></e>
-
-      <!-- The following are for e.g. "Itgo boađáše?", we need the temps from boađáše, and the pro (nbr,pers) from "It"-->
+      <!-- Modals, e.g. "Itgo boađáše?". We need the temps from boađáše, and the pro (nbr,pers) from "It"-->
       <e><p><l><s n="Cond"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
       <e><p><l><s n="Pot"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
       <e><p><l><s n="Ind"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
@@ -326,6 +336,10 @@
       <!-- todo check: -->
       <e><p><l><s n="Actio"/><s n="Loc"/></l><r><s n="vblex"/><s n="inf"/></r></p></e>
       <e><p><l></l><r></r></p></e>
+    </pardef>
+    <pardef n="caus__verb" c="TODO: might want to force causative transfer rules on some verbs,
+                              use this rule then (o/w Der_h in __verb adds the 'caus' tag)">
+      <e><p><l></l><r><s n="caus"/></r></p><par n="__verb"/></e>
     </pardef>
     <pardef n="refl__verb">
       <e><p><l></l><r><s n="Refl"/></r></p><par n="__verb"/></e>
@@ -20530,7 +20544,8 @@
     <e><p><l>uksaráigge<s n="Adv"/></l><r>gjennom<b/>døråpninga<s n="adv"/></r></p></e>
     <e><p><l>unnán<s n="Adv"/></l><r>lite<s n="adv"/></r></p></e>
     <e><p><l>várás<s n="Adv"/></l><r>for<s n="Adv"/></r></p></e>
-    <e><p><l>vare<s n="Adv"/></l><r>skulle<b/>ønske<s n="adv"/></r></p></e>
+    <e><p><l>vare<s n="Adv"/></l><r>om<b/>bare<s n="adv"/></r></p></e>
+    <e slr="1"><p><l>vare<s n="Adv"/></l><r>gid<s n="adv"/></r></p></e>
     <e><p><l>várra<s n="Adv"/></l><r>kanskje<s n="adv"/></r></p></e>
     <e><p><l>vásedin<s n="Adv"/></l><r>egentlig<s n="adv"/></r></p></e>
     <e><p><l>veagal<s n="Adv"/></l><r>med<b/>makt<s n="adv"/></r></p></e>
@@ -20796,7 +20811,8 @@
     <e><p><l>boltut<s n="V"/><s n="TV"/></l><r>rote<g><b/>opp</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>boŋkit<s n="V"/><s n="IV"/></l><r>dundre<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--wsd todo: dundre vs brake-->
     <e><p><l>boradit<s n="V"/><s n="TV"/></l><r>spise<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e><p><l>borahit<s n="V"/><s n="TV"/></l><r>fore<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>borahit<s n="V"/><s n="TV"/></l><r>mate<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>borahit<s n="V"/><s n="TV"/></l><r>fôre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>bordit<s n="V"/><s n="TV"/></l><r>stable<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>boret<s n="V"/><s n="TV"/></l><r>reparere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>borgat<s n="V"/><s n="TV"/></l><r>fyke<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
@@ -20942,6 +20958,7 @@
     <e><p><l>čuodjat<s n="V"/><s n="IV"/></l><r>klinge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>čuoggut<s n="V"/><s n="TV"/></l><r>stikke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) čuokkun, (sii) čuggot-->
     <e><p><l>čuohcit<s n="V"/><s n="IV"/></l><r>erfare<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) čuzii-->
+    <e><p><l>čuohkat<s n="V"/><s n="TV"/></l><r>drikke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>čuohpadit<s n="V"/><s n="TV"/></l><r>skjære<g><b/>seg</g><s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e>
     <e><p><l>čuohpahit<s n="V"/><s n="TV"/></l><r>operere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>čuohppat<s n="V"/><s n="TV"/></l><r>skjære<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) čuohpan, (sii) čuhppet-->
@@ -20974,7 +20991,9 @@
     <e><p><l>dadjalit<s n="V"/><s n="TV"/></l><r>replisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>dadjat<s n="V"/><s n="TV"/></l><r>si<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) dajan-->
     <e><p><l>dádjut<s n="V"/><s n="IV"/></l><r>tøve<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>dagahit<s n="V"/><s n="TV"/></l><r>forårsake<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>dagahit<s n="V"/><s n="TV"/></l><r>forårsake<s n="vblex"/><s n="pers"/></r></p><par n="caus__verb"/></e> 
+    <e c="áhčči dagahii niibbi rávdái" slr="1"><p><l>dagahit<s n="V"/><s n="TV"/></l><r>lage<s n="vblex"/><s n="pers"/></r></p><par n="caus__verb"/></e> 
+    <e c="dagahii iežas dohko" slr="2"><p><l>dagahit<s n="V"/><s n="TV"/></l><r>komme<s n="vblex"/><s n="pers"/></r></p><par n="caus__verb"/></e> 
     <e><p><l>daguhit<s n="V"/><s n="TV"/></l><r>overdra<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>dahkaluddat<s n="V"/><s n="IV"/></l><r>late<g><b/>som</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>dahkat<s n="V"/><s n="TV"/></l><r>gjøre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) dagan-->
@@ -22152,11 +22171,11 @@
     <e><p><l>šaddadit<s n="V"/><s n="TV"/></l><r>dyrke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>šaddadit<s n="V"/><s n="TV"/></l><r>dyrke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
     <e slr="1"><p><l>šaddadit<s n="V"/><s n="TV"/></l><r>føde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
-    <e><p><l>šaddat<s n="V"/><s n="IV"/></l><r>vokse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>šáddat<s n="V"/><s n="IV"/></l><r>bli<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
-    <e><p><l>šaddat<s n="V"/><s n="IV"/></l><r>bli<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
-    <e slr="1"><p><l>šaddat<s n="V"/><s n="IV"/></l><r>komme<g><b/>til<b/>å</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
-    <e slr="2"><p><l>šaddat<s n="V"/><s n="IV"/></l><r>vokse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
+    <e><p><l>šaddat<s n="V"/><s n="IV"/></l><r>vokse<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
+    <e><p><l>šáddat<s n="V"/><s n="IV"/></l><r>bli<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
+    <e><p><l>šaddat<s n="V"/><s n="IV"/></l><r>bli<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
+    <e slr="1"><p><l>šaddat<s n="V"/><s n="IV"/></l><r>komme<g><b/>til<b/>å</g><s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
+    <e slr="2"><p><l>šaddat<s n="V"/><s n="IV"/></l><r>vokse<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
     <e><p><l>sáddet<s n="V"/><s n="TV"/></l><r>sende<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) sáddejit-->
     <e><p><l>sadjit<s n="V"/><s n="TV"/></l><r>bryne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>ságaškuššat<s n="V"/><s n="TV"/></l><r>drøfte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -22445,6 +22464,8 @@
     <e><p><l>vuojihit<s n="V"/><s n="TV"/></l><r>frakte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>vuojuhit<s n="V"/><s n="TV"/></l><r>senke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>vuoksit<s n="V"/><s n="TV"/></l><r>spy<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>vuoksit<s n="V"/><s n="TV"/><s n="Der1"/><s n="Der_h"/><s n="V"/></l><r>spy<s n="vblex"/><s n="impers"/></r></p><par n="caus__verb"/></e>
+    <e><p><l>vuovssihit<s n="V"/><s n="TV"/></l><r>spy<s n="vblex"/><s n="impers"/></r></p><par n="caus__verb"/></e>
     <e><p><l>vuolggahit<s n="V"/><s n="TV"/></l><r>få<g><b/>i<b/>gang</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>vuolgit<s n="V"/><s n="IV"/></l><r>reise<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. dra, reise avsted-->
     <e><p><l>vuolidit<s n="V"/><s n="TV"/></l><r>senke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
