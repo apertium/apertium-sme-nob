@@ -108,6 +108,7 @@
 
     <sdef n="Der2"     c="Derivation #2"/>
     <sdef n="Der_PassL" c="Passive derivation"/>
+    <sdef n="Der_PassS" c="Passive derivation"/>
     <sdef n="Der3"     c="Derivation #3"/>
     <sdef n="Der_n"    c="general deverbal noun??? TODO"/>
     <sdef n="pass"     c="Passive"/>
@@ -289,11 +290,19 @@
       
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Inf"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
       <!-- For some verbs, we probably can override this where the passive is lexicalised and an st-verb.pp exists: -->
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
       <!-- Not sure what to do about this: -->
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="pass"/><s n="sg"/><s n="p2"/></r></p></e>
-      <!-- ...nor about this: -->
+
+      <e><p><l><s n="Der_PassS"/><s n="V"/><s n="Inf"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
+      <e><p><l><s n="Der_PassS"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Der_PassS"/><s n="V"/><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Der_PassS"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
+      <e><p><l><s n="Der_PassS"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="pass"/><s n="sg"/><s n="p2"/></r></p></e>
+
+      <!-- Definitely not sure about this: -->
       <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
 
       <e><p><l><s n="Inf"/></l><r><s n="inf"/></r></p></e>
@@ -311,6 +320,8 @@
       <e><p><l><s n="Cond"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Pot"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Pot"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
+
+      <!-- Here we prepend 'i gang med å' in t1x: -->
       <e><p><l><s n="Actio"/><s n="Ess"/></l><r><s n="vblex"/><s n="inf"/></r></p></e>
       <!-- todo check: -->
       <e><p><l><s n="Actio"/><s n="Loc"/></l><r><s n="vblex"/><s n="inf"/></r></p></e>
@@ -352,6 +363,7 @@
     <e slr="2"><p><l>go<s n="CS"/></l><r>enn<s n="cnjsub"/></r></p></e>
     <e slr="3"><p><l>go<s n="CS"/></l><r>som<s n="cnjsub"/></r></p></e>
     <e><p><l>ovdal<b/>go<s n="CS"/></l><r>før<s n="cnjsub"/></r></p></e>
+    <e><p><l>de<s n="CS"/></l><r>så<s n="cnjsub"/></r></p></e>
     <e><p><l>jus<s n="CS"/></l><r>hvis<s n="cnjsub"/></r></p></e>
     <e><p><l>jos<s n="CS"/></l><r>hvis<s n="cnjsub"/></r></p></e>
     <e slr="1"><p><l>jos<s n="CS"/></l><r>dersom<s n="cnjsub"/></r></p></e>

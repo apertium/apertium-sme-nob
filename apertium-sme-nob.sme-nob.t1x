@@ -896,6 +896,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
                   <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                   <tag><clip pos="1" side="tl" part="temps"/></tag>
+                  <tag><clip pos="1" side="tl" part="voice"/></tag>
                   <tag><clip pos="1" side="tl" part="pers"/></tag>
                   <tag><clip pos="1" side="tl" part="nbr"/></tag>
                   <tag><clip pos="1" side="tl" part="case"/></tag>
@@ -1848,6 +1849,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
                    ii => adv.p3.sg{ikke}
                    Itgo => adv.p2.sg.Qst{ikke}
 
+TODO: caseSecondWord
 TODO: Compounds with these. Should put it all in a macro then...
 TODO: should VERB->ADJ always be tagged SN?">
       <pattern>
@@ -1867,6 +1869,7 @@ TODO: should VERB->ADJ always be tagged SN?">
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                   <tag><clip pos="1" side="sl" part="modality"/></tag>
                   <tag><clip pos="1" side="tl" part="temps"/></tag>
+                  <tag><clip pos="1" side="tl" part="voice"/></tag>
                   <tag><clip pos="1" side="tl" part="pers"/></tag>
                   <tag><clip pos="1" side="tl" part="nbr"/></tag>
                   <tag><clip pos="1" side="tl" part="animacy"/></tag>
@@ -1926,6 +1929,7 @@ TODO: should VERB->ADJ always be tagged SN?">
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
                 <tag><clip pos="1" side="sl" part="modality"/></tag>
                 <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
@@ -1939,7 +1943,7 @@ TODO: should VERB->ADJ always be tagged SN?">
           </out>
         </when>
         <otherwise>
-          <choose><when>
+          <choose c="Insert cnjsub if present progressive:"><when>
             <test><and>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal>
               <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="Actio"/></equal>
@@ -1957,26 +1961,75 @@ TODO: should VERB->ADJ always be tagged SN?">
               <b/>
             </out>
           </when></choose>
-          <out>
-            <chunk name="verb" case="caseFirstWord">
-              <tags>
-                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                <tag><clip pos="1" side="sl" part="mode"/></tag>
-                <tag><clip pos="1" side="sl" part="modality"/></tag>
-                <tag><clip pos="1" side="tl" part="temps"/></tag>
-                <tag><clip pos="1" side="tl" part="pers"/></tag>
-                <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                <tag><clip pos="1" side="tl" part="animacy"/></tag>
-              </tags>
-              <lu>
-                <clip pos="1" side="tl" part="lemh"/>
-                <clip pos="1" side="tl" part="a_verb"/>
-                <clip pos="1" side="tl" part="temps"/>
-                <clip pos="1" side="tl" part="voice"/>
-                <clip pos="1" side="tl" part="lemq"/>
-              </lu>
-            </chunk>
-          </out>
+          <choose c="Output verb, inserting aux (with temps) iff passive pret:
+                     TODO: OK to just discard syn_label from pret.passives?">
+            <when>
+              <test><and>
+                <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
+                <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal>
+              </and></test>
+              <out>
+                <chunk name="verb" case="caseFirstWord">
+                  <tags>
+                    <tag><lit-tag v="@+FAUXV"/></tag>
+                    <tag><clip pos="1" side="sl" part="mode"/></tag>
+                    <tag><clip pos="1" side="sl" part="modality"/></tag>
+                    <tag><clip pos="1" side="tl" part="temps"/></tag>
+                    <tag><clip pos="1" side="tl" part="pers"/></tag>
+                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                    <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                  </tags>
+                  <lu>
+                    <lit v="bli"/>
+                    <clip pos="1" side="tl" part="a_verb"/>
+                    <clip pos="1" side="tl" part="temps"/>
+                    <clip pos="1" side="tl" part="lemq"/>
+                  </lu>
+                </chunk>
+                <b/>
+                <chunk name="verb">
+                  <tags>
+                    <tag><lit-tag v="@-FMAINV"/></tag>
+                    <tag><clip pos="1" side="sl" part="mode"/></tag>
+                    <tag><clip pos="1" side="sl" part="modality"/></tag>
+                    <tag><lit-tag v="pp"/></tag>
+                    <tag><clip pos="1" side="tl" part="pers"/></tag>
+                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                    <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                  </tags>
+                  <lu>
+                    <clip pos="1" side="tl" part="lemh"/>
+                    <clip pos="1" side="tl" part="a_verb"/>
+                    <lit-tag v="pp"/>
+                    <clip pos="1" side="tl" part="lemq"/>
+                  </lu>
+                </chunk>
+              </out>
+            </when>
+            <otherwise c="Not passive pret (might still be prepended by cnjsub):">
+              <out>
+                <chunk name="verb" case="caseFirstWord">
+                  <tags>
+                    <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                    <tag><clip pos="1" side="sl" part="mode"/></tag>
+                    <tag><clip pos="1" side="sl" part="modality"/></tag>
+                    <tag><clip pos="1" side="tl" part="temps"/></tag>
+                    <tag><clip pos="1" side="tl" part="voice"/></tag>
+                    <tag><clip pos="1" side="tl" part="pers"/></tag>
+                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                    <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                  </tags>
+                  <lu>
+                    <clip pos="1" side="tl" part="lemh"/>
+                    <clip pos="1" side="tl" part="a_verb"/>
+                    <clip pos="1" side="tl" part="temps"/>
+                    <clip pos="1" side="tl" part="voice"/>
+                    <clip pos="1" side="tl" part="lemq"/>
+                  </lu>
+                </chunk>
+              </out>
+            </otherwise>
+          </choose>          
         </otherwise>
         </choose>
       </action>
@@ -1985,7 +2038,9 @@ TODO: should VERB->ADJ always be tagged SN?">
     
     <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å lese
                    needs to be several chunks to cover: ii lohkagoađe => han begynner ikke å lese
-                   TODO: caseSecondWord">
+                   TODO: caseSecondWord
+                   TODO: insert 'i gang med å' if actio ess
+                   TODO: pret pass exception">
       <pattern>
         <pattern-item n="verb"/>
         <pattern-item n="vgoahti"/>
@@ -1999,6 +2054,7 @@ TODO: should VERB->ADJ always be tagged SN?">
               <tag><clip pos="2" side="sl" part="mode"/></tag>
               <tag><clip pos="2" side="sl" part="modality"/></tag>
               <tag><clip pos="2" side="tl" part="temps"/></tag>
+              <tag><clip pos="2" side="tl" part="voice"/></tag>
               <tag><clip pos="2" side="tl" part="pers"/></tag>
               <tag><clip pos="2" side="tl" part="nbr"/></tag>
               <tag><clip pos="2" side="tl" part="animacy"/></tag>
