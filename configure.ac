@@ -62,6 +62,16 @@ then
   AC_MSG_ERROR([You don't have cg-proc installed.])
 fi
 
+AC_PATH_PROG(HFSTPROC, hfst-proc, no)
+if test x$ac_cv_path_HFSTPROC = x
+then
+  AC_MSG_ERROR([You don't have hfst-proc installed.])
+fi
+if test x$ac_cv_path_HFSTPROC = xno
+then
+  AC_MSG_ERROR([You don't have hfst-proc installed.])
+fi
+
 AC_PATH_PROG(HFSTLEXC, hfst-lexc, no)
 if test x$ac_cv_path_HFSTLEXC = x
 then

@@ -6,7 +6,7 @@ TRGLIST=`mktemp -t tmp.sme-trg.XXXXXXXXXX`;
 TSTLIST=`mktemp -t tmp.sme-tst.XXXXXXXXXX`;
 
 basedir=`pwd`;
-mode=sme-nob
+mode=sme-nob-old
 
 ECHOE="echo -e"
 SED=sed
@@ -52,4 +52,4 @@ if [ -x /usr/bin/calc ]; then
 	echo $WORKING"%";
 fi
 
-rm $SRCLIST $TRGLIST $TSTLIST;
+#rm $SRCLIST $TRGLIST $TSTLIST;
