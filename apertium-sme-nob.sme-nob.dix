@@ -88,6 +88,8 @@
     <sdef n="Pl2"     c="Second-person plural"/>
     <sdef n="Pl3"     c="Third-person plural"/>
 
+    <sdef n="PxSg3"     c="Unknown-person singular???"/>
+
     <sdef n="ind"     c="Indefinite"/> 
     <sdef n="def"     c="Definite"/>
 
@@ -120,6 +122,7 @@
     <sdef n="Der3"     c="Derivation #3"/>
     <sdef n="Der_h"    c="causative??? TODO"/>
     <sdef n="Der_d"    c="reflexive??? TODO"/>
+    <sdef n="Der_alla" c="reflexive??? TODO"/>
     <sdef n="Der_n"    c="general deverbal noun??? TODO"/>
     <sdef n="pass"     c="Passive"/>
     <sdef n="pstv"     c="Lexicalised passive (st-verb)"/>
@@ -300,6 +303,8 @@
       <e><p><l><s n="Pl1"/></l><r><s n="pl"/><s n="p1"/></r></p></e>
       <e><p><l><s n="Pl1"/></l><r><s n="pl"/><s n="p2"/></r></p></e>
       <e><p><l><s n="Pl3"/></l><r><s n="pl"/><s n="p3"/></r></p></e>
+      <e><p><l><s n="PxSg3"/></l><r><s n="sg"/><s n="p3"/></r></p></e>
+      <e><p><l><s n="Sg"/></l><r><s n="sg"/><s n="p3"/></r></p></e>
     </pardef>
     <pardef n="__verb">
       <e><p><l><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
@@ -336,6 +341,11 @@
       <e><p><l><s n="Der1"/><s n="Der_d"/><s n="V"/><s n="Ind"/><s n="Prt"/></l><r><s n="ref"/><s n="pret"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Der1"/><s n="Der_d"/><s n="V"/><s n="PrfPrc"/></l><r><s n="ref"/><s n="pp"/></r></p></e>
       <e><p><l><s n="Der1"/><s n="Der_d"/><s n="V"/><s n="Imprt"/></l><r><s n="ref"/><s n="inf"/><s n="sg"/><s n="p2"/></r></p></e>
+      <e><p><l><s n="Der2"/><s n="Der_alla"/><s n="V"/><s n="Inf"/></l><r><s n="ref"/><s n="inf"/></r></p></e>
+      <e><p><l><s n="Der2"/><s n="Der_alla"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="ref"/><s n="pres"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Der2"/><s n="Der_alla"/><s n="V"/><s n="Ind"/><s n="Prt"/></l><r><s n="ref"/><s n="pret"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Der2"/><s n="Der_alla"/><s n="V"/><s n="PrfPrc"/></l><r><s n="ref"/><s n="pp"/></r></p></e>
+      <e><p><l><s n="Der2"/><s n="Der_alla"/><s n="V"/><s n="Imprt"/></l><r><s n="ref"/><s n="inf"/><s n="sg"/><s n="p2"/></r></p></e>
 
       <!-- Definitely not sure about this: -->
       <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
@@ -548,7 +558,7 @@
 
     <e><p><l>gii<s n="Pron"/><s n="Rel"/></l><r>som<s n="cnjsub"/></r></p><par n="__prn"/></e>
 
-    <e><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>seg<s n="prn"/><s n="ref"/><s n="sg"/></r></p></e>
+    <e><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>seg<s n="prn"/><s n="ref"/></r></p><par n="__prn"/><par n="__nbr_pers"/></e>
 
     <!-- Quantifiers: -->
     <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>

@@ -1302,6 +1302,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_pron"/>
+              <clip pos="1" side="tl" part="pers"/>
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
@@ -2071,11 +2072,16 @@ TODO: should VERB->ADJ always be tagged SN?">
               <b/>
               <chunk name="ref">
                 <tags>
-                  <tag><lit-tag v="@←OBJ.sg.Acc"/></tag>
+                  <tag><lit-tag v="@←OBJ"/></tag>
+                  <tag><clip pos="1" side="tl" part="pers"/></tag>
+                  <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                  <tag><lit-tag v="Acc"/></tag>
                 </tags>
                 <lu>
                   <lit v="seg"/>
-                  <lit-tag v="prn.ref.sg"/>
+                  <lit-tag v="prn.ref"/>
+                  <clip pos="1" side="tl" part="pers"/>
+                  <clip pos="1" side="tl" part="nbr"/>
                 </lu>
               </chunk>
             </out>
