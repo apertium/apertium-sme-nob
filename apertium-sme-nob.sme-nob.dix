@@ -120,6 +120,10 @@
 
     <sdef n="Actio"    c="Actio"/>
 
+    <sdef n="Ger"    c="Gerundium"/>
+    <sdef n="VGen"    c="Verb Genitive"/>
+    <sdef n="VAbess"    c="Verbal Abessive"/>
+
     <sdef n="pers"    c="Personal"/>
     <sdef n="impers"  c="Impersonal"/>
 
@@ -134,6 +138,7 @@
     <sdef n="Prs"     c="Present"/>
     <sdef n="Prt"     c="Preterite"/>
     <sdef n="PrfPrc"  c="Perfect participle"/>
+    <sdef n="PrsPrc"  c="Present participle"/>
     <sdef n="inf"     c="Infinitive"/>
     <sdef n="pres"    c="Present indicative"/>
     <sdef n="pret"    c="Preterite"/>
@@ -154,6 +159,8 @@
     <!-- Transfer -->
     <sdef n="GD"      c="Gender to be determined"/>
     <sdef n="ND"      c="Number to be determined"/>
+    <sdef n="PD"      c="Person to be determined"/>
+    <sdef n="TD"      c="Temps to be determined"/>
     <sdef n="CD"      c="Case to be determined"/>
     
     <sdef n="ep-Ø"    c="no epenthesis"/>
@@ -332,9 +339,17 @@
       <e><p><l><s n="Pot"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
 
       <!-- Here we prepend 'i gang med å' in t1x: -->
-      <e><p><l><s n="Actio"/><s n="Ess"/></l><r><s n="vblex"/><s n="inf"/></r></p></e>
-      <!-- todo check: -->
-      <e><p><l><s n="Actio"/><s n="Loc"/></l><r><s n="vblex"/><s n="inf"/></r></p></e>
+      <e><p><l><s n="Actio"/><s n="Ess"/></l><r><s n="TD"/></r></p></e>
+      <!-- Actio.Loc: same time or future compared to main verb -->
+      <e><p><l><s n="Actio"/><s n="Loc"/></l><r><s n="inf"/></r></p></e>
+      <!-- Gerundium: same time and logical subject as main verb -->
+      <e><p><l><s n="Ger"/></l><r><s n="TD"/><s n="ND"/><s n="PD"/></r></p></e>
+      <!-- Present participle: attribute in relative sentences (suomagiela hálli => som snakker finsk / finsksnakkende) -->
+      <e><p><l><s n="PrsPrc"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
+      <!-- Verb genitive: manner -->
+      <e><p><l><s n="VGen"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
+      <!-- Verbal Abessive: an action that is not performed (insert 'uten') -->
+      <e><p><l><s n="VAbess"/></l><r><s n="inf"/></r></p></e>
       <e><p><l></l><r></r></p></e>
     </pardef>
     <pardef n="caus__verb" c="TODO: might want to force causative transfer rules on some verbs,

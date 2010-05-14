@@ -173,6 +173,7 @@ This is the fourth pass, it contains:
       <attr-item tags="imp"/>
       <attr-item tags="PrfPrc"/>
       <attr-item tags="pp"/>
+      <attr-item tags="TD"/>
     </def-attr>
     <def-attr n="voice">
       <attr-item tags="pass"/>
@@ -350,6 +351,10 @@ This is the fourth pass, it contains:
       </pattern>
       <action>
         <let><clip pos="1" part="temps"/><clip pos="0" part="temps"/></let>
+        <choose><when>
+          <test><equal><clip pos="1" part="temps"/><lit-tag v="TD"/></equal></test>
+          <let><clip pos="1" part="temps"/><lit-tag v="inf"/></let>
+        </when></choose>
         <choose><when>
           <test><and>
             <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>

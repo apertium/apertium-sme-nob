@@ -10,6 +10,7 @@ This is the second pass, it contains:
   "[1 big house which is on the hill] [2 in]"
 * remove prepositions when case is governed by adpositions
   See REGLA: PR SN-post adpos
+* Keep track of verb temps etc. for temps coordination (eg. Actio.Ess)
 -->
 
 <interchunk>
@@ -54,6 +55,15 @@ This is the second pass, it contains:
     <def-cat n="conj">
       <cat-item lemma="conj" tags="*"/>
     </def-cat>
+    <def-cat n="FV">
+      <cat-item tags="@+FMAINV"/>
+      <cat-item tags="@+FMAINV.*"/>
+      <cat-item tags="@+FAUXV"/>
+      <cat-item tags="@+FAUXV.*"/>
+    </def-cat>
+    <def-cat n="V_TD">
+      <cat-item lemma="verb" tags="@←OBJ.TD.*"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
@@ -80,6 +90,33 @@ This is the second pass, it contains:
     <def-attr n="art">
       <attr-item tags="def"/>
       <attr-item tags="ind"/>
+    </def-attr>
+    <def-attr n="temps">
+      <attr-item tags="Prs"/>
+      <attr-item tags="Prt"/>
+      <attr-item tags="pres"/>
+      <attr-item tags="pret"/>
+      <attr-item tags="Inf"/>
+      <attr-item tags="inf"/>
+      <attr-item tags="Imprt"/>
+      <attr-item tags="imp"/>
+      <attr-item tags="PrfPrc"/>
+      <attr-item tags="pp"/>
+      <attr-item tags="TD"/>
+    </def-attr>
+    <def-attr n="pers">
+      <attr-item tags="p1"/>
+      <attr-item tags="p2"/>
+      <attr-item tags="p3"/>
+    </def-attr>
+    <def-attr n="nbr">
+      <attr-item tags="Sg"/>
+      <attr-item tags="Du"/>
+      <attr-item tags="Pl"/>
+      <attr-item tags="sg"/>
+      <attr-item tags="du"/>
+      <attr-item tags="pl"/>
+      <attr-item tags="ND"/>
     </def-attr>
     <def-attr n="syn_label">
       <attr-item tags="@X"/>
@@ -123,6 +160,7 @@ This is the second pass, it contains:
   <section-def-vars>
     <def-var n="chunkname"/>
     <def-var n="sntags"/>
+    <def-var n="ana_temps"/>
   </section-def-vars>
 
   <section-def-macros>
@@ -390,5 +428,35 @@ This is the second pass, it contains:
       </action>
     </rule>
     
+    <!-- verb rules -->
+    <rule comment="REGLA: FV
+                   set anaphoric variables">
+      <pattern>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <choose><when>
+          <test><not><equal><clip pos="1" part="temps"/><lit v=""/></equal></not></test>
+          <let><var n="ana_temps"/><clip pos="1" part="temps"/></let>
+        </when></choose>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: V_TD
+                   use anaphoric variables
+                   -----
+                   mun dieđán Máreha čállime dál => jeg vet Máret skriver nå">
+      <pattern>
+        <pattern-item n="V_TD"/>
+      </pattern>
+      <action>
+        <let><clip pos="1" part="temps"/><var n="ana_temps"/></let>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
   </section-rules>
 </interchunk>

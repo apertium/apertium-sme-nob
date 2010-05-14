@@ -200,6 +200,7 @@ This is the third pass, it contains:
       <attr-item tags="imp"/>
       <attr-item tags="PrfPrc"/>
       <attr-item tags="pp"/>
+      <attr-item tags="TD"/>
     </def-attr>
     <def-attr n="modality">
       <attr-item tags="Ind"/>
@@ -291,7 +292,9 @@ This is the third pass, it contains:
                c="arg.1: SN
                   -----
                   If gender is m/f and we have a subject, store gender in 'ana';
-                  if gender is GD, apply 'ana'-gender.">
+                  if gender is GD, apply 'ana'-gender.
+                  TODO: Could we do all anaphoric operations in t2x?
+                        (ie. adding gender to finite verbs)">
       <choose><when>
         <test><and>
           <or>
