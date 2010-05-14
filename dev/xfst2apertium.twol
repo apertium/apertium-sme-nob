@@ -4,6 +4,7 @@ Alphabet
 %# ! Need this, since otherwise #-words not matched by our rule will disappear
 
 %+N
+%+A
 
 %+Cmpnd
 %+SgCmp      	%+PlCmp
@@ -51,7 +52,12 @@ Cmptag =
 %+DefSgGenCmp 	%+DefPlGenCmp
 ;
 
-Prefix =			! only one I've seen so far
+KeepCmpAfter =
+%+N
+%+A
+;
+
+HashPrefix =			! only one I've seen so far
 %+Use/Circ
 ;
 
@@ -71,8 +77,8 @@ Useless =
 Rules 
 
 "#-deletion unless after compounding or prefix tags"
-! %#:0 <=> ~ [ Cmptag Prefix* ] _ ; ! <- this doesn't parse :(
-%#:0 <=> \[ Prefix:? | Cmptag ] _ ;  
+! %#:0 <=> ~ [ Cmptag HashPrefix:? * ] _ ; ! <- this doesn't parse :(
+%#:0 <=> \[ Cmptag | HashPrefix:? ] _ ;  
 
 ! After inversion, we get
 !   ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sáme#giella+N+Sg+Nom$
@@ -87,8 +93,9 @@ Rules
 ! respectively.
 
 
-"Delete compound tags that weren't followed by an N tag"
-Cmptag:0 <=> \%+N _ ; 
+"Delete compound tags that weren't followed by an N or A or Use/Sub tag"
+! Cmptag:0 <=> ~[ KeepCmpAfter %+Use/Sub:? * ] _ ; ! <- this doesn't parse :(
+Cmptag:0 <=> \[ KeepCmpAfter | %+Use/Sub:? ] _ ; 
 
 
 "Delete Use-tags etc. that we don't use"
