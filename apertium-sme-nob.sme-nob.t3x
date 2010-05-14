@@ -32,8 +32,10 @@ This is the third pass, it contains:
       <cat-item tags="SN.@←SUBJ.*"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
-    <def-cat n="SN-LOBJ">
+    <def-cat n="LOBJ_LSA">
       <cat-item tags="SN.@OBJ→.*"/>
+      <cat-item tags="SA.@OBJ→.*"/>
+      <cat-item tags="SA.@ADVL→.*"/>
     </def-cat>
     <def-cat n="ROPRED">
       <cat-item tags="@←OPRED.*"/>
@@ -981,12 +983,12 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV-Neg-Qst SN-LOBJ IV
+    <rule comment="REGLA: FV-Neg-Qst LOBJ_LSA IV
                    Itgo gáfe juga => Drikker du ikke kaffe
                    Insert dropped pronoun">
       <pattern>
         <pattern-item n="adv-FV-Neg-Qst"/>
-        <pattern-item n="SN-LOBJ"/>
+        <pattern-item n="LOBJ_LSA"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -1009,12 +1011,15 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN-LOBJ V
-                   dan oahppan => lært det
-                   dan jearat => du spør det
-                   OV => VO order">
+    <rule comment="REGLA: LOBJ_LSA V
+                   OV => VO order:
+                   - dan oahppan => lært det
+                   - dan jearat => du spør det
+                   AV => VA order:
+                   - árrat.OBJ→  lávlut  => synge tidlig
+                   - árrat.ADVL→ goallut => fryse tidlig">
       <pattern>
-        <pattern-item n="SN-LOBJ"/>
+        <pattern-item n="LOBJ_LSA"/>
         <pattern-item n="V"/>
       </pattern>
       <action>
@@ -1035,12 +1040,12 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN-LOBJ ADVL V
+    <rule comment="REGLA: LOBJ_LSA ADVL V
                    dan juo oahppan => allerede lært det
                    dan juo jearat => du allerede spør det (TODO!!)
                    OV => VO order">
       <pattern>
-        <pattern-item n="SN-LOBJ"/>
+        <pattern-item n="LOBJ_LSA"/>
         <pattern-item n="ADVL"/>
         <pattern-item n="V"/>
       </pattern>
@@ -1064,11 +1069,11 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN-LOBJ FV ROPRED
+    <rule comment="REGLA: LOBJ_LSA FV ROPRED
                    Dan dieđán váddása => Det vet jeg er vanskelig
                    Insert 'være'">
       <pattern>
-        <pattern-item n="SN-LOBJ"/>
+        <pattern-item n="LOBJ_LSA"/>
         <pattern-item n="FV"/>
         <pattern-item n="ROPRED"/>
       </pattern>
@@ -1099,11 +1104,11 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN-LOBJ ADVL FV ROPRED
+    <rule comment="REGLA: LOBJ_LSA ADVL FV ROPRED
                    Dan gal dieđán váddása => Det vet jeg vel er vanskelig
                    Insert 'være'">
       <pattern>
-        <pattern-item n="SN-LOBJ"/>
+        <pattern-item n="LOBJ_LSA"/>
         <pattern-item n="ADVL"/>
         <pattern-item n="FV"/>
         <pattern-item n="ROPRED"/>

@@ -880,7 +880,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOM (but tl might be verb!)">
+    <rule comment="REGLA: NOM (tl: NOM, VERB)">
       <pattern>
         <pattern-item n="nom"/>
       </pattern>
@@ -1773,7 +1773,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </action>
     </rule>
 
-    <rule comment="REGLA: ADJEC: dehálaš => viktig, deháleamos => viktigst">
+    <rule comment="REGLA: ADJ: dehálaš => viktig, deháleamos => viktigst">
       <pattern>
         <pattern-item n="adj"/>
       </pattern>
@@ -1841,11 +1841,9 @@ always(?) def in nob; predicative superlatives are only if they have a determine
 
     <!-- VERB PHRASES ETC. -->        
     
-    <rule comment="REGLA: VERB
-                   or VERB=>ADV
-                   or VERB=>ADJ
-                   or VERB=>NOUN dansún => dans (noun, explicitly in bidix)
-                                 oažžun => fående (adj.pprs, using fallback rule)
+    <rule comment="REGLA: VERB (tl: VERB, ADV, ADJ, NOUN)
+                   dansún => dans (noun, explicitly in bidix)
+                   oažžun => fående (adj.pprs, using fallback rule)
                    ii => adv.p3.sg{ikke}
                    Itgo => adv.p2.sg.Qst{ikke}
 
