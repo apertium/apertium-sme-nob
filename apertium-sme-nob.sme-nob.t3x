@@ -190,15 +190,16 @@ This is the third pass, it contains:
       <attr-item tags="Pl3"/>
     </def-attr>
     <def-attr n="temps">
-      <attr-item tags="Ind.Prs"/>
-      <attr-item tags="Ind.Prt"/>
+      <attr-item tags="Prs"/>
+      <attr-item tags="Prt"/>
       <attr-item tags="pres"/>
       <attr-item tags="pret"/>
       <attr-item tags="Inf"/>
       <attr-item tags="inf"/>
+      <attr-item tags="Imprt"/>
+      <attr-item tags="imp"/>
       <attr-item tags="PrfPrc"/>
       <attr-item tags="pp"/>
-      <attr-item tags="pprs"/>
     </def-attr>
     <def-attr n="modality">
       <attr-item tags="Ind"/>
@@ -409,6 +410,11 @@ This is the third pass, it contains:
           <test><or>
             <equal><clip pos="1" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
             <equal><clip pos="1" part="syn_label"/><lit-tag v="@-FAUXV"/></equal>
+              <equal><clip pos="1" part="temps"/><lit-tag v="imp"/></equal><!--             <and> -->
+
+<!--               <equal><clip pos="1" part="pers"/><lit-tag v="p2"/></equal> -->
+<!--               <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal> -->
+<!--             </and> -->
           </or></test>
           <let><var n="pro"/><lit v=""/></let>
           <let><var n="pro-blank"/><lit v=""/></let>
