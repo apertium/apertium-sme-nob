@@ -16,8 +16,6 @@ This is the first pass, it contains:
       <cat-item tags="Po.*"/>
     </def-cat>
     <def-cat n="adverb">
-      <cat-item lemma="ieš" tags="Pron.Refl"/>                 <!--TODO: emphatic..should go in front of (pro)noun -->
-      <cat-item lemma="ieš" tags="Pron.Refl.*"/>
       <cat-item tags="Adv"/>
       <cat-item tags="Adv.*"/>
     </def-cat>
@@ -42,6 +40,9 @@ This is the first pass, it contains:
     </def-cat>
     <def-cat n="pronrel">
       <cat-item tags="Pron.Rel.*"/>
+    </def-cat>
+    <def-cat n="pronref">
+      <cat-item tags="Pron.Refl.*"/>
     </def-cat>
     <def-cat n="pronitg">
       <cat-item tags="Pron.Interr.*"/>
@@ -132,6 +133,7 @@ This is the first pass, it contains:
       <attr-item tags="Pron.Pers"/>
       <attr-item tags="prn"/>
       <attr-item tags="prn.itg"/>
+      <attr-item tags="prn.ref"/>
     </def-attr>
     <def-attr n="a_det">
       <attr-item tags="det"/> 
@@ -159,6 +161,11 @@ This is the first pass, it contains:
       <attr-item tags="N.Prop.Sur"/>
       <attr-item tags="np.top"/>
       <attr-item tags="np"/>
+    </def-attr>
+    <def-attr n="a_rel">
+      <attr-item tags="Refl"/>
+      <attr-item tags="ref"/>
+      <attr-item tags="res" c="Reciprocal"/>
     </def-attr>
     <def-attr n="voice">
       <attr-item tags="pass"/>
@@ -1275,6 +1282,33 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: REFLEXIVE_PRONOUN ieš => seg
+                   Just removes everything.
+                   (Should we call the chunk something else maybe?)">
+      <pattern>
+        <pattern-item n="pronref"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="ref" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_pron"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
 
     <rule comment="REGLA: DET dán => dette
                               munno [geažil] => [på grunn av] oss to
@@ -1942,7 +1976,7 @@ TODO: should VERB->ADJ always be tagged SN?">
           </out>
         </when>
         <otherwise>
-          <choose c="Insert cnjsub if present progressive:"><when>
+          <choose c="Prepend cnjsub if present progressive:"><when>
             <test><and>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal>
               <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="Actio"/></equal>
@@ -2030,7 +2064,22 @@ TODO: should VERB->ADJ always be tagged SN?">
                 </chunk>
               </out>
             </otherwise>
-          </choose>          
+          </choose>
+          <choose c="Append 'seg' if reflexive:"><when>
+            <test><equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal></test>
+            <out>
+              <b/>
+              <chunk name="ref">
+                <tags>
+                  <tag><lit-tag v="@←OBJ.sg.Acc"/></tag>
+                </tags>
+                <lu>
+                  <lit v="seg"/>
+                  <lit-tag v="prn.ref.sg"/>
+                </lu>
+              </chunk>
+            </out>
+          </when></choose>          
         </otherwise>
         </choose>
       </action>
