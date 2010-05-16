@@ -1832,7 +1832,21 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="guess_adj_gen_nbr"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
-        <let><var n="c_tag_pos"/><lit-tag v="5"/></let>
+        <let><var n="c_tag_pos"/><lit-tag v="6"/></let>
+        <choose><when>
+          <test><or>
+            <equal><clip pos="1" side="sl" part="mode"/><lit v=""/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal>
+          </or></test>
+          <let><var n="c_tag_pos"/><lit-tag v="5"/></let>
+        </when></choose>
+        <choose><when>
+          <test><and>
+            <equal><clip pos="1" side="sl" part="mode"/><lit v=""/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal>
+          </and></test>
+          <let><var n="c_tag_pos"/><lit-tag v="4"/></let>
+        </when></choose>
 
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
