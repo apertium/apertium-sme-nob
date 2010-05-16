@@ -41,7 +41,7 @@ $(PREFIX1).twol.hfst: $(BASENAME).$(LANG1).twol
 $(PREFIX1).lexc.hfst: $(BASENAME).$(LANG1).lexc
 	hfst-lexc $(BASENAME).$(LANG1).lexc -o $@
 
-$(PREFIX1).autogen.hfst: $(PREFIX1).twol.hfst $(PREFIX1).lexc.hfst 
+$(PREFIX1).autogen.hfst: $(PREFIX1).twol.hfst $(PREFIX1).lexc.hfst dev/uppercase-first.twol
 	hfst-compose-intersect -l $(PREFIX1).lexc.hfst $(PREFIX1).twol.hfst -o $@.tmp
 	hfst-twolc -r -i dev/uppercase-first.twol -o dev/uppercase-first.hfst
 	hfst-compose-intersect -l $@.tmp dev/uppercase-first.hfst -o $@
