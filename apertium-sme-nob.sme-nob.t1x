@@ -321,7 +321,6 @@ This is the first pass, it contains:
     <def-var n="c_gen"          c="chunk gender"/>
     <def-var n="c_nbr"          c="chunk number"/>
     <def-var n="c_def_pos"      c="chunk defnes tag position"/>
-    <def-var n="c_syn"          c="chunk syn_label"/>
     <def-var n="caseFirstWord"  c="typographic case of first word"/>
     <def-var n="case-prep"      c="nob preposition (whole chunk) based on sme case"/>
     <def-var n="foc-adv"        c="focus adverbial (whole chunk) based on focus particle"/>
@@ -639,9 +638,25 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </choose>
     </def-macro>
 
+    <def-macro n="move_syn_label" npar="2"
+               c="arg.1: might want a syn_label, arg.2: might have syn_label
+                  -----
+                  Used in compounds, where typically the left part gets the syn_label while
+                  the right one needs it.">
+      <choose><when>
+        <test><equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal></test>
+        <let>
+          <clip pos="1" side="sl" part="tags"/>
+          <concat>
+            <clip pos="1" side="sl" part="tags"/>
+            <clip pos="2" side="sl" part="syn_label"/>
+          </concat>
+        </let>
+      </when></choose>
+    </def-macro>
 
-    <def-macro n="set_defnes-helper" npar="1"
-               c="arg.1: noun/adj                   c_syn_label must be set first!
+    <def-macro n="set_defnes" npar="1"
+               c="arg.1: noun/adj, with syn_label
                   -----
                   Default to indefinite, guess definite for certain GF's, genitives, ...
                   Locatives only indefinite in first position with leat
@@ -654,21 +669,21 @@ always(?) def in nob; predicative superlatives are only if they have a determine
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
             <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
             <or>
-              <equal><var n="c_syn"/><lit-tag v="@OBJ→"/></equal>
-              <equal><var n="c_syn"/><lit-tag v="@HAB"/></equal>
-              <equal><var n="c_syn"/><lit-tag v="@SUBJ→"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@OBJ→"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HAB"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ill"/></equal>
               <and>
                 <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
-                <not><equal><var n="c_syn"/><lit-tag v="@←SPRED"/></equal></not>
-                <not><equal><var n="c_syn"/><lit-tag v="@←OPRED"/></equal></not>
-                <not><equal><var n="c_syn"/><lit-tag v="@ADVL"/></equal></not>
-                <not><equal><var n="c_syn"/><lit-tag v="@ADVL→"/></equal></not>
-<!--                 <not><equal><var n="c_syn"/><lit-tag v="@←ADVL"/></equal></not> -->
-                <not><equal><var n="c_syn"/><lit-tag v="@HNOUN"/></equal></not>
-                <not><equal><var n="c_syn"/><lit-tag v="@X"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OPRED"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL→"/></equal></not>
+<!--                 syn_label != @←ADVL -->
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@X"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal></not>
               </and>
@@ -677,23 +692,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <let><var n="defnes"/><lit-tag v="def"/></let>
         </when>
       </choose>
-    </def-macro>
-    
-    <def-macro n="set_defnes" npar="1"
-               c="arg.1: noun with syn_label">
-      <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
-      <call-macro n="set_defnes-helper"><with-param pos="1"/></call-macro>
-    </def-macro>
-    
-    <def-macro n="set_defnes2.cmp_syn" npar="2"
-               c="arg.1: inflected noun, arg.2: left part of compound (might have syn_label)
-                  Also sets c_syn_label.">
-      <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
-      <choose><when>
-        <test><equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal></test>
-        <let><var n="c_syn"/><clip pos="2" side="sl" part="syn_label"/></let>
-      </when></choose>
-      <call-macro n="set_defnes-helper"><with-param pos="1"/></call-macro>
     </def-macro>
 
     <def-macro n="set_defnes2" npar="2"
@@ -1095,41 +1093,28 @@ always(?) def in nob; predicative superlatives are only if they have a determine
     </rule>
 
 
-    <rule comment="REGLA: ADJCMP NOM allaskuvla => høyskole">
+    <rule comment="REGLA: ADJCMP NOM
+                   -----
+                   allaskuvla => høyskole
+                   Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="adj_cmp"/>
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
-        <call-macro n="set_defnes2.cmp_syn"><with-param pos="2"/><with-param pos="1"/></call-macro>
-                
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
         <call-macro n="set_adj_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_adj_gen"><with-param pos="2"/><with-param pos="1"/></call-macro>
 
-        <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
-        <let><var n="c_def_pos"/><lit-tag v="5"/></let> 
-        <choose><when>
-          <test><not><equal>
-            <clip pos="2" side="sl" part="mode"/><lit v=""/>
-          </equal></not></test>
-          <let><var n="c_def_pos"/><lit-tag v="6"/></let>
-        </when></choose>
+        <let><var n="c_name"/><lit v="cmp_nom"/></let>
 
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <var n="case-prep"/>
-          <chunk name="cmp_nom" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><var n="c_syn"/></tag>
-              <tag><clip pos="2" side="sl" part="mode"/></tag>
-              <tag><var n="c_gen"/></tag>
-              <tag><var n="c_nbr"/></tag>
-              <tag><var n="defnes"/></tag>
-              <tag><clip pos="2" side="tl" part="case"/></tag>
-            </tags>
-            <lu>
+        <call-macro n="move_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_adj"/>
               <clip pos="1" side="tl" part="grau"/>
@@ -1137,133 +1122,70 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="1" side="tl" part="nbr"/>
               <lit-tag v="ind"/>
               <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
-              <clip pos="2" side="tl" part="gen-case"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-    <rule comment="REGLA: NOMCMP NOM politiijastašuvnna => politistasjon(s)
-                   Defaults to indefinite w/o context">
+    
+    <rule comment="REGLA: NOMCMP NOM
+                   -----
+                   politiijastašuvnna => politistasjon(s)
+                   Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="nom_cmp"/>
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
-        <call-macro n="set_defnes2.cmp_syn"><with-param pos="2"/><with-param pos="1"/></call-macro>
-
-        <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
-        <let><var n="c_def_pos"/><lit-tag v="5"/></let> 
-        <choose><when>
-          <test><not><equal>
-            <clip pos="2" side="sl" part="mode"/><lit v=""/>
-          </equal></not></test>
-          <let><var n="c_def_pos"/><lit-tag v="6"/></let>
-        </when></choose>
-
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <var n="case-prep"/>
-          <chunk name="cmp_nom" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><var n="c_syn"/></tag>
-              <tag><clip pos="2" side="sl" part="mode"/></tag>
-              <tag><var n="c_gen"/></tag>
-              <tag><var n="c_nbr"/></tag>
-              <tag><var n="defnes"/></tag>
-              <tag><clip pos="2" side="tl" part="case"/></tag>
-            </tags>
-            <lu>
+        
+        <let><var n="c_name"/><lit v="cmp_nom"/></let>
+        
+        <call-macro n="move_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
               <lit-tag v="sg.ind"/>
               <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
-              <clip pos="2" side="tl" part="gen-case"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-    <rule comment="REGLA: CMP NOM vuođđofága => grunnfag
-                   Words which only appear as comopund parts should be fully specified in bidix.
-                   (But unfortunately there's no way to remove the syn_label in bidix)
+    
+    <rule comment="REGLA: CMP NOM
                    -----
-                   TODO: mielbargin -- here the sl PoS is V, but tl PoS is N">
+                   vuođđofága => grunnfag
+                   mielbargin => som medarbeider
+                   Words which only appear as compound parts should be fully specified in bidix.
+                   Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="cmp"/>
         <pattern-item n="nom"/>
       </pattern>
       <action>
-        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>        
-        <call-macro n="set_defnes2.cmp_syn"><with-param pos="2"/><with-param pos="1"/></call-macro>
-
-        <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
-
-        <choose>
-          <when>
-            <test><and>
-              <equal><clip pos="2" side="sl" part="mode"/><lit v=""/></equal>
-              <equal><var n="c_syn"/><lit v=""/></equal>
-            </and></test>
-            <let><var n="c_def_pos"/><lit-tag v="4"/></let>
-          </when>
-          <when>
-            <test><or>
-              <equal><clip pos="2" side="sl" part="mode"/><lit v=""/></equal>
-              <equal><var n="c_syn"/><lit v=""/></equal>
-            </or></test>
-            <let><var n="c_def_pos"/><lit-tag v="5"/></let>
-          </when>
-          <otherwise><let><var n="c_def_pos"/><lit-tag v="6"/></let></otherwise>
-        </choose>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        
+        <call-macro n="move_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
 
         <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <var n="case-prep"/>
-          <chunk name="cmp_nom" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><var n="c_syn"/></tag>
-              <tag><clip pos="2" side="sl" part="mode"/></tag>
-              <tag><var n="c_gen"/></tag>
-              <tag><var n="c_nbr"/></tag>
-              <tag><var n="defnes"/></tag>
-              <tag><clip pos="2" side="tl" part="case"/></tag>
-            </tags>
-            <lu>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
               <clip pos="1" side="tl" part="whole"/>
-            </lu>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
-              <clip pos="2" side="tl" part="gen-case"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
 
@@ -1659,13 +1581,13 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="1" side="tl" part="grau"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="c_def_pos"/>
+              <var n="c_def_pos"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="1"/>
           </concat>
         </let>
-        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
 
