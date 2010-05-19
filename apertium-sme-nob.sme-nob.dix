@@ -120,6 +120,7 @@
     <sdef n="Der2"     c="Derivation #2"/>
     <sdef n="Der_PassL" c="Passive derivation"/>
     <sdef n="Der_PassS" c="Passive derivation"/>
+    <sdef n="Der_Dimin" c="Diminutive derivation"/>
     <sdef n="Der3"     c="Derivation #3"/>
     <sdef n="Der_h"    c="causative??? TODO"/>
     <sdef n="Der_d"    c="reflexive??? TODO"/>
@@ -232,9 +233,6 @@
       <e><p><l><s n="Loc"/></l><r><s n="loc"/></r></p></e>
       <e><p><l><s n="Ess"/></l><r><s n="ND"/><s n="ess"/></r></p></e>
     </pardef>
-    <pardef n="n_coll__n">
-      <e><p><l><s n="Coll"/></l><r></r></p></e>
-    </pardef>
     <pardef n="__n">
       <e><p><l><s n="Sg"/></l><r><s n="sg"/><s n="CD"/></r></p></e>
       <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="sg"/><s n="nom"/></r></p></e>
@@ -252,6 +250,25 @@
       <e><p><l><s n="Pl"/><s n="Com"/></l><r><s n="pl"/><s n="com"/></r></p></e>
       <!-- todo: find counter-examples -->
       <e><p><l><s n="Ess"/></l><r><s n="sg"/><s n="ind"/><s n="ess"/></r></p></e>
+
+      <!-- TODO transfer rule to introduce 'lille'? -->
+      <!-- TODO: how does this combine with Cmp tags? (should probably factor out this) -->
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Sg"/><s n="Acc"/></l><r><s n="sg"/><s n="acc"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Sg"/></l><r><s n="sg"/><s n="CD"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Sg"/><s n="Nom"/></l><r><s n="sg"/><s n="nom"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Sg"/><s n="Acc"/></l><r><s n="sg"/><s n="acc"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Sg"/><s n="Gen"/></l><r><s n="sg"/><s n="gen"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Sg"/><s n="Ill"/></l><r><s n="sg"/><s n="ill"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Sg"/><s n="Loc"/></l><r><s n="sg"/><s n="loc"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Sg"/><s n="Com"/></l><r><s n="sg"/><s n="com"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Pl"/></l><r><s n="pl"/><s n="CD"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Pl"/><s n="Nom"/></l><r><s n="pl"/><s n="nom"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Pl"/><s n="Acc"/></l><r><s n="pl"/><s n="acc"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Pl"/><s n="Gen"/></l><r><s n="pl"/><s n="gen"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Pl"/><s n="Ill"/></l><r><s n="pl"/><s n="ill"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Pl"/><s n="Loc"/></l><r><s n="pl"/><s n="loc"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Pl"/><s n="Com"/></l><r><s n="pl"/><s n="com"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Ess"/></l><r><s n="sg"/><s n="ind"/><s n="ess"/></r></p></e>
     </pardef>
     <pardef n="cmp__n" c="Use when you want a bidix exception for Cmp-marked only (lhs's)">
       <e><p><l><s n="Sg"/><s n="Cmp"/></l><r><s n="sg"/><s n="CD"/></r></p></e>
@@ -270,6 +287,9 @@
       <e><p><l><s n="Pl"/><s n="Com"/><s n="Cmp"/></l><r><s n="pl"/><s n="com"/></r></p></e>
       <!-- todo: find counter-examples -->
       <e><p><l><s n="Ess"/><s n="Cmp"/></l><r><s n="sg"/><s n="ind"/><s n="ess"/></r></p></e>
+    </pardef>
+    <pardef n="n_coll__n">
+      <e><p><l><s n="Coll"/></l><r></r></p><par n="__n"/></e>
     </pardef>
     <pardef n="unc__n" c="Add unc tag iff going from sme to nob (for generating indefiniteness in transfer).">
       <e r="LR"><p><l></l><r><s n="unc"/></r></p><par n="__n"/></e>
@@ -572,6 +592,7 @@
     <e slr="1"><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e> <!-- juohke lágán => alle slags, alle måter -->
 
     <!-- Pronouns/determiners (nob determiners often correspond to sme pronouns) -->
+    <e><p><l>dat<s n="Pron"/><s n="Dem"/></l><r>den<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>dakkár<s n="Pron"/><s n="Dem"/></l><r>slik<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>dát<s n="Pron"/><s n="Dem"/></l><r>denne<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>diet<s n="Pron"/><s n="Dem"/></l><r>denne<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
