@@ -47,15 +47,21 @@ $(PREFIX1).autogen.hfst: $(PREFIX1).twol.hfst $(PREFIX1).lexc.hfst dev/uppercase
 	hfst-compose-intersect -l $@.tmp dev/uppercase-first.hfst -o $@
 	@rm $@.tmp
 
-.deps/xfst2apertium.twol.hfst: dev/xfst2apertium.twol
+.deps/xfst2apertium.useless.twol.hfst: dev/xfst2apertium.useless.twol
 	if [ ! -d .deps ]; then mkdir .deps; fi
-	hfst-twolc -r -i dev/xfst2apertium.twol -o $@
+	hfst-twolc -r -i dev/xfst2apertium.useless.twol -o $@
 
-$(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst dev/xfst2apertium.relabel .deps/xfst2apertium.twol.hfst
-	hfst-invert $(PREFIX1).autogen.hfst -o $@.tmp
-	hfst-compose-intersect -l $@.tmp .deps/xfst2apertium.twol.hfst -o $@.2.tmp
-	hfst-substitute -F dev/xfst2apertium.relabel -i $@.2.tmp -o $@
-	@rm $@.tmp $@.2.tmp
+.deps/xfst2apertium.hashtags.twol.hfst: dev/xfst2apertium.hashtags.twol
+	if [ ! -d .deps ]; then mkdir .deps; fi
+	hfst-twolc -r -i dev/xfst2apertium.hashtags.twol -o $@
+
+$(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst dev/xfst2apertium.relabel .deps/xfst2apertium.useless.twol.hfst .deps/xfst2apertium.hashtags.twol.hfst
+	hfst-invert $(PREFIX1).autogen.hfst -o $@.1.tmp
+	hfst-compose-intersect -l $@.1.tmp .deps/xfst2apertium.useless.twol.hfst -o $@.2.tmp
+	hfst-compose-intersect -l $@.2.tmp .deps/xfst2apertium.hashtags.twol.hfst -o $@.3.tmp
+	hfst-substitute -F dev/xfst2apertium.relabel -i $@.3.tmp -o $@
+
+#	@rm $@.1.tmp $@.2.tmp $@.3.tmp
 
 .deps/$(BASENAME).$(PREFIX1).dix: $(BASENAME).$(PREFIX1).dix lexchoicebil.xsl
 	if [ ! -d .deps ]; then mkdir .deps; fi

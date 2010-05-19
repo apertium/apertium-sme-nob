@@ -1,0 +1,62 @@
+! This file turns
+!    sámegiela       sápmi+SgGenCmp+Use/Sub+N+SgGenCmp+Use/Circ#+Use/Circgiella+N+Sg+Gen
+!    sámegiela       sápmi+SgGenCmp+Use/Sub+N+SgGenCmp+Use/Circ#+Use/Circgiella+N+Sg+Gen+Use/NG
+!    sámegiela       sápmi+SgGenCmp+Use/Sub+N+SgGenCmp+Use/Circ#+Use/Circgiella+N+Sg+Acc
+!    sámegiela       sápmi+SgGenCmp+PlGenCmp+N+SgGenCmp+Use/Circ#+Use/Circgiella+N+Sg+Gen
+!    sámegiela       sápmi+SgGenCmp+PlGenCmp+N+SgGenCmp+Use/Circ#+Use/Circgiella+N+Sg+Gen+Use/NG
+!    sámegiela       sápmi+SgGenCmp+PlGenCmp+N+SgGenCmp+Use/Circ#+Use/Circgiella+N+Sg+Acc
+!    sámegiela       sáme#giella+N+Sg+Gen
+!    sámegiela       sáme#giella+N+Sg+Gen+Use/NG
+!    sámegiela       sáme#giella+N+Sg+Acc
+! into
+!    sámegiela       sápmi+SgGenCmp+N+SgGenCmp#giella+N+Sg+Gen
+!    sámegiela       sápmi+SgGenCmp+N+SgGenCmp#giella+N+Sg+Acc
+!    sámegiela       sápmi+SgGenCmp+PlGenCmp+N+SgGenCmp#giella+N+Sg+Gen
+!    sámegiela       sápmi+SgGenCmp+PlGenCmp+N+SgGenCmp#giella+N+Sg+Acc
+!    sámegiela       sáme#giella+N+Sg+Gen
+!    sámegiela       sáme#giella+N+Sg+Acc
+! and
+!    vuođđogeađggit  vuođđu+N+SgNomCmp+Use/Circ#+Use/Circgeađgi+N+Pl+Nom
+!    vuođđogeađggit  vuođđo+Use/Sub+Use/Circ#+Use/Circgeađgi+N+Pl+Nom
+! into
+!    vuođđogeađggit  vuođđu+N+SgNomCmp#geađgi+N+Pl+Nom
+!    vuođđogeađggit  vuođđo#geađgi+N+Pl+Nom
+
+Alphabet
+
+%+Last:0
+%+Use/NG:0
+%+Use/Ped:0
+%+Use/Sub:0
+%+Use/Circ:0
+%+Use/CircN:0
+%+Use/Marg:0
+%+Dial/%-KJ:0
+%+Dial/%-GG:0
+%+Dial/%-GS:0
+;
+
+
+Sets
+
+Useless =
+%+Last
+%+Use/NG
+%+Use/Ped	
+%+Use/Sub	
+%+Use/Circ	
+%+Use/CircN	
+%+Use/Marg	
+%+Use/NG	
+%+Dial/%-KJ	
+%+Dial/%-GG	
+%+Dial/%-GS	
+;
+
+Rules 
+
+"Delete Use-tags etc. that we don't use"
+Useless:0 <=> _ ; 
+! Removing tags with hfst-substitute will give duplicate analyses, so
+! we do it here instead
+
