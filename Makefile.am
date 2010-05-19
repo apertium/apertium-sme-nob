@@ -29,12 +29,6 @@ TARGETS_COMMON = \
 ## 	DICTIONARIES (ANALYSER / BILINGUAL / GENERATOR / POSTGEN)
 ##
 
-foo.morf.hfst: foo.twol foo.lexc
-	hfst-twolc -r -i foo.twol -o foo.twol.hfst
-	hfst-lexc foo.lexc -o foo.lexc.hfst
-	hfst-invert foo.lexc.hfst -o foo.morf.hfst.tmp
-	hfst-compose-intersect -l foo.morf.hfst.tmp foo.twol.hfst -o foo.morf.hfst
-
 $(PREFIX1).twol.hfst: $(BASENAME).$(LANG1).twol
 	hfst-twolc -r -i $(BASENAME).$(LANG1).twol -o $@
 
