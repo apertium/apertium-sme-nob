@@ -21,6 +21,8 @@ Alphabet
 %+N
 %+A
 
+%+Cmp
+%+ShCmp
 %+Cmpnd
 %+SgCmp      	%+PlCmp
 %+SgLeft      	%+PlLeft
@@ -45,6 +47,8 @@ Alphabet
 Sets
 
 Cmptag = 
+%+Cmp
+%+ShCmp
 %+Cmpnd
 %+SgCmp      	%+PlCmp
 %+SgLeft      	%+PlLeft
@@ -55,30 +59,39 @@ Cmptag =
 %+DefSgGenCmp 	%+DefPlGenCmp
 ;
 
-KeepCmpAfter =
+RemCmptag = 			! don't remove Cmp and ShCmp
+%+Cmpnd
+%+SgCmp      	%+PlCmp
+%+SgLeft      	%+PlLeft
+%+SgNomCmp   	%+PlNomCmp
+%+SgNomLeft  	%+PlNomLeft
+%+SgGenCmp   	%+PlGenCmp
+%+SgGenLeft  	%+PlGenLeft
+%+DefSgGenCmp 	%+DefPlGenCmp
+;
+
+KeepCmpAfter =			! could expand to include lemmas...
 %+N
 %+A
 ;
 
 Rules 
 
-"#-deletion unless after compounding or prefix tags"
-! %#:0 <=> ~ [ Cmptag HashPrefix:? * ] _ ; ! <- this doesn't parse :(
+"#-deletion unless after compounding tags"
+! %#:0 <=> ~ [ Cmptag HashPrefix:? * ] _ ;           ! <--- this doesn't parse :(
 %#:0 <=> \Cmptag _ ;  
-
 ! After inversion, we get
-!   ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sáme#giella+N+Sg+Nom$
+!    ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sáme#giella+N+Sg+Nom$
 ! After this file, we get
-!   ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sámegiella+N+Sg+Nom$
+!    ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sámegiella+N+Sg+Nom$
 ! After substitution/relabelling, we get
-!   ^sámegiella/sápmi<N><Sg><Gen><Cmp>+giella<N><Sg><Nom>/sámegiella<N><Sg><Nom>$
+!    ^sámegiella/sápmi<N><Sg><Gen><Cmp>+giella<N><Sg><Nom>/sámegiella<N><Sg><Nom>$
 ! which after pretransfer turns into 
-!   ^sápmi<N><Sg><Gen><Cmp>$ ^giella<N><Sg><Nom>$
-! or
-!   ^sámegiella<N><Sg><Nom>$
-! respectively.
+!    ^sápmi<N><Sg><Gen><Cmp>$ ^giella<N><Sg><Nom>$
+!    ^sámegiella<N><Sg><Nom>$
 
-
-"Delete compound tags that weren't followed by an N or A or Use/Sub tag"
-! Cmptag:0 <=> ~[ KeepCmpAfter %+Use/Sub:? * ] _ ; ! <- this doesn't parse :(
-Cmptag:0 <=> \KeepCmpAfter _ ; 
+"Delete compound tags (except Cmp/ShCmp) that weren't followed by an N or A tag"
+! Cmptag:0 <=> ~[ KeepCmpAfter %+Use/Sub:? * ] _ ;   ! <--- this doesn't parse :(
+RemCmptag:0 <=> \KeepCmpAfter _ ; 
+! We don't remove +Cmp or +ShCmp tags since they follow lemmas, not +N or +A:
+! mielbargin      miel+ShCmp#bargat+V+TV+Der2+Actor+N+Ess
