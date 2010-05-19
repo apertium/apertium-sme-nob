@@ -314,7 +314,6 @@ This is the first pass, it contains:
   <section-def-vars>
     <def-var n="pron_gen"       c="pronoun gender"/>
     <def-var n="pron_nbr"       c="pronoun number"/>
-    <def-var n="pron_case"      c="pronoun case"/>
     <def-var n="pre-nom"        c="lu's before nom-lu in nominal chunk"/>
     <def-var n="defnes"         c="definiteness (noun, adj)"/>
     <def-var n="c_name"         c="chunk name"/>
@@ -394,8 +393,11 @@ This is the first pass, it contains:
         <modify-case><clip pos="1" side="tl" part="lemh"/><lit v="aa"/></modify-case>
       </when></choose>
     </def-macro>
+    
     <def-macro n="set_case-prep" npar="1"
-               c="First attempt (may be changed in later stages).">
+               c="arg.1: noun, pronoun
+                  -----
+                  First attempt (may be changed in later stages).">
       <let>
         <var n="case-prep"/><lit v=""/>
       </let>
@@ -456,11 +458,15 @@ This is the first pass, it contains:
             </when>
             <otherwise>
               <let><var n="case-prep"/><lit v="til"/></let>
-              <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
+              <choose><when>
+                <test><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></test>
+                <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
+              </when></choose>
             </otherwise>
           </choose>
         </when>
       </choose>
+      <!-- Now output it: -->
       <choose>
         <when>
           <test><not><equal><var n="case-prep"/><lit v=""/></equal></not></test>
@@ -479,6 +485,7 @@ This is the first pass, it contains:
         </when>
       </choose>
     </def-macro>
+    
     <def-macro n="set_foc-adv" npar="1"
                c="arg.1: pronoun (might want to use this for verbs too?)
                   Set focus adverbial in case we have a tag.
@@ -507,68 +514,56 @@ This is the first pass, it contains:
       </choose>        
     </def-macro>
     
-    <def-macro n="set_pron_case" npar="1"
-               c="Demonstrative and indefinites can only be gen in nob,
-                  personal pronouns can only be nom or acc (note: @HAB => nom),
-                  det.pos (personal genitives) have no case, but this is handled in transfer rules.">
-      <choose>
-        <when>
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal></test>
-          <let><var n="pron_case"/><clip pos="1" side="tl" part="case"/></let>
-        </when>
-        <otherwise>
-          <let><var n="pron_case"/><lit v=""/></let>
-        </otherwise>
-      </choose>      
+    <def-macro n="modify_pron_case" npar="1"
+               c="arg.1: Pron (which might end up as a nob determiner)
+                  -----
+                  - Personal pronouns can only be nom or acc (note: @HAB => nom),
+                  - Demonstrative and indefinites can only be gen in nob,
+                  - det.pos (personal genitives) have no case, but this is handled in transfer rules.">
+      
       <choose>
         <when>
           <test><equal><clip pos="1" side="sl" part="a_pron"/><lit-tag v="Pron.Pers"/></equal></test>
           <choose>
             <when>
-              <test><or>
-                <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></equal>
-                <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Acc"/></equal>
-              </or></test>
-              <let><var n="pron_case"/><clip pos="1" side="tl" part="case"/></let>
-            </when>
-            <when>
               <test>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HAB"/></equal>
               </test>
-              <let><var n="pron_case"/><lit-tag v="nom"/></let>
+              <let><clip pos="1" side="tl" part="case"/><lit-tag v="nom"/></let>
             </when>
-            <otherwise>
-              <let><var n="pron_case"/><lit-tag v="acc"/></let>
-            </otherwise>
+            <when>
+              <test><not>
+                <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></equal>
+              </not></test>
+              <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
+            </when>
           </choose>
         </when>
+        <otherwise>
+          <choose><when>
+            <test>
+              <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal></not>
+            </test>
+            <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
+          </when></choose>
+        </otherwise>
       </choose>
     </def-macro>
     
-    <def-macro n="set_pron_gen_num" npar="1">
-      <!-- defaults to masc, sg (although we could set a variable from
-           the subject since that's often a good heuristic for the referent)-->
+    <def-macro n="set_pron_gen_nbr" npar="1"
+               c="arg.1: noun (or, the lu we want to base pron/det gen/nbr on)
+                  -----
+                  Note: lone pronouns/determiners just keep GD/ND, this might change
+                  in interchunk (postchunk cleans it up if not).">
+      <let><var n="pron_gen"/><clip pos="1" side="tl" part="gen"/></let>
+      <let><var n="pron_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
       <choose>
         <when>
           <test>
-            <equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD"/></equal>
+            <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
           </test>
-          <let><var n="pron_gen"/><lit-tag v="m"/></let>
+          <let><var n="pron_gen"/><lit v=""/></let>
         </when>
-        <otherwise>
-          <let><var n="pron_gen"/><clip pos="1" side="tl" part="gen"/></let>
-        </otherwise>
-      </choose>
-      <choose>
-        <when>
-          <test>
-            <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="ND"/></equal>
-          </test>
-          <let><var n="pron_nbr"/><lit-tag v="sg"/></let>
-        </when>
-        <otherwise>
-          <let><var n="pron_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
-        </otherwise>
       </choose>
     </def-macro>
     
@@ -586,59 +581,7 @@ This is the first pass, it contains:
       </when></choose>
     </def-macro>
 
-    <def-macro n="set_pos_gen_nbr" npar="1" c="arg.1: possessed object">
-      <let><var n="pron_gen"/><clip pos="1" side="tl" part="gen"/></let>
-      <let><var n="pron_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
-      <choose>
-        <when>
-          <test>
-            <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
-          </test>
-          <let><var n="pron_gen"/><lit v=""/></let>
-        </when>
-      </choose>
-    </def-macro>
-
-    <def-macro n="guess_adj_gen_nbr" npar="1" c="attributive superlatives are 
-always(?) def in nob; predicative superlatives are only if they have a determiner first
-                 1. min viktigste.def oppgave
-                 2. min oppgave er viktigst.ind
-                 3. min oppgave er den viktigste.def (rarer than 2)">
-      <choose>
-        <when>
-          <test>
-            <or>
-              <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="pp"/></equal>
-              <ends-with><clip pos="1" side="tl" part="grau"/><lit-tag v="posi"/></ends-with>
-            </or>
-          </test>
-          <let><clip pos="1" side="tl" part="gen"/><lit-tag v="nt"/></let>
-          <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
-        </when>
-        <when>
-          <test>
-            <equal> 
-              <clip pos="1" side="tl" part="grau"/>
-              <lit-tag v="comp"/>
-            </equal>
-          </test>
-          <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
-          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-        </when>
-        <when>
-          <test>
-            <equal> 
-              <clip pos="1" side="tl" part="grau"/>
-              <lit-tag v="sup"/>
-            </equal>
-          </test>
-          <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
-          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-        </when>
-      </choose>
-    </def-macro>
-
-    <def-macro n="move_syn_label" npar="2"
+    <def-macro n="copy_syn_label" npar="2"
                c="arg.1: might want a syn_label, arg.2: might have syn_label
                   -----
                   Used in compounds, where typically the left part gets the syn_label while
@@ -681,7 +624,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OPRED"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL→"/></equal></not>
-<!--                 syn_label != @←ADVL -->
+<!-- syn_label != @←ADVL -->
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@X"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></not>
@@ -731,8 +674,55 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       </choose>
     </def-macro>
 
-    <def-macro n="set_adj_nbr" npar="2" c="arg.1: noun, arg.1: adjective
-           Number is only a feature of positive/pp adjectives in nob.">
+    <def-macro n="guess_adj_gen_nbr" npar="1"
+               c="arg.1: adjective
+                  -----
+                  Modifies the lu (no variables set).
+                  Use when no noun present, otherwise use modify_adj_gen/nbr.
+                  Attributive superlatives are always(?) def in nob;
+                  predicative superlatives are only if they have a determiner first:
+                 1. min viktigste.def oppgave
+                 2. min oppgave er viktigst.ind
+                 3. min oppgave er den viktigste.def (rarer than 2)">
+      <choose>
+        <when>
+          <test>
+            <or>
+              <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="pp"/></equal>
+              <ends-with><clip pos="1" side="tl" part="grau"/><lit-tag v="posi"/></ends-with>
+            </or>
+          </test>
+          <let><clip pos="1" side="tl" part="gen"/><lit-tag v="nt"/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+        </when>
+        <when>
+          <test>
+            <equal> 
+              <clip pos="1" side="tl" part="grau"/>
+              <lit-tag v="comp"/>
+            </equal>
+          </test>
+          <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+        </when>
+        <when>
+          <test>
+            <equal> 
+              <clip pos="1" side="tl" part="grau"/>
+              <lit-tag v="sup"/>
+            </equal>
+          </test>
+          <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+        </when>
+      </choose>
+    </def-macro>
+
+    <def-macro n="modify_adj_gen_nbr" npar="2"
+               c="arg.1: noun, arg.1: adjective
+                  -----
+                  Number is only a feature of positive/pp adjectives in nob.
+                  nob adj's never have m or f tags.">
       <choose>
         <when>
           <test>
@@ -747,11 +737,9 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
         </otherwise>
       </choose>
-    </def-macro>
-    
-    <def-macro n="set_adj_gen" npar="2" c="arg.1: noun, arg.2: adjective
-                                           nob adj's never have m or f tags.">
-      <let><clip pos="2" side="tl" part="gen"/><clip pos="1" side="tl" part="gen"/></let>
+      <let>
+        <clip pos="2" side="tl" part="gen"/><clip pos="1" side="tl" part="gen"/>
+      </let>
       <choose>
         <when>
           <test>
@@ -762,7 +750,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
           </test>
           <let><clip pos="2" side="tl" part="gen"/><lit-tag v="mf"/></let>
         </when>
-      </choose>      
+      </choose>
     </def-macro>
 
     <def-macro n="set_c_def_pos" npar="1"
@@ -1104,12 +1092,11 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="set_adj_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <call-macro n="set_adj_gen"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="cmp_nom"/></let>
 
-        <call-macro n="move_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
         <let>
           <var n="pre-nom"/>
@@ -1142,7 +1129,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         
         <let><var n="c_name"/><lit v="cmp_nom"/></let>
         
-        <call-macro n="move_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
         <let>
           <var n="pre-nom"/>
@@ -1173,7 +1160,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         
-        <call-macro n="move_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
 
         <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let>
@@ -1188,6 +1175,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
+
+    <!-- <rules: Lone determiners, pronouns, adverbs -->
 
     <rule comment="REGLA: DETPOS_ADVL (lone genitive pronoun likely to be a determiner)
                    TODO: any reason to do GD ND here?">
@@ -1283,8 +1272,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <action>
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
 
-        <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pron_gen_num"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
@@ -1302,9 +1290,9 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_det"/>
               <clip pos="1" side="tl" part="pers"/>
-              <var n="pron_gen"/>
-              <var n="pron_nbr"/>
-              <var n="pron_case"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -1346,8 +1334,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <pattern-item n="pronpers"/>
       </pattern>
       <action>
-        <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pron_gen_num"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
 
         <call-macro n="set_foc-adv"><with-param pos="1"/></call-macro>
         <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
@@ -1369,9 +1356,9 @@ always(?) def in nob; predicative superlatives are only if they have a determine
               <clip pos="1" side="tl" part="a_pron"/>
               <clip pos="1" side="tl" part="a_det"/>
               <clip pos="1" side="tl" part="pers"/>
-              <var n="pron_gen"/>
-              <var n="pron_nbr"/>
-              <var n="pron_case"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -1390,8 +1377,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pos_gen_nbr"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pron_gen_nbr"><with-param pos="2"/></call-macro>
         
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <let><var n="c_name"/><lit v="det_nom"/></let>
@@ -1428,11 +1415,10 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pos_gen_nbr"><with-param pos="3"/></call-macro>
+        <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pron_gen_nbr"><with-param pos="3"/></call-macro>
 
-        <call-macro n="set_adj_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
-        <call-macro n="set_adj_gen"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
         
         <let><var n="c_name"/><lit v="det_adj_nom"/></let>
         <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
@@ -1473,8 +1459,6 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="set_pos_gen_nbr"><with-param pos="1"/></call-macro>
-        
         <let><var n="c_name"/><lit v="nom_nom"/></let>
 
         <!-- for NOM_GEN -->
@@ -1514,8 +1498,8 @@ always(?) def in nob; predicative superlatives are only if they have a determine
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pos_gen_nbr"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pron_gen_nbr"><with-param pos="2"/></call-macro>
 
         <let><var n="c_name"/><lit v="det_nom_nom"/></let>
 
@@ -1560,8 +1544,7 @@ always(?) def in nob; predicative superlatives are only if they have a determine
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         
-        <call-macro n="set_adj_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <call-macro n="set_adj_gen"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="adj_nom"/></let>
 

@@ -303,10 +303,8 @@ This is the fourth pass, it contains:
         <test><and>
           <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
           <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
-          <not><or>
-            <equal><clip pos="2" part="gen"/><lit v=""/></equal>
-            <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
-          </or></not>
+          <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
+          <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
         </and></test>
         <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
         <!-- TODO: use prpers so we don't need these hacks (but that needs changes in nob.dix) -->
@@ -318,6 +316,10 @@ This is the fourth pass, it contains:
           <test><equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal></test>
           <let><clip pos="1" part="lemh"/><get-case-from pos="2"><lit v="det"/></get-case-from></let>
         </when></choose>
+      </when></choose>
+      <choose><when>
+        <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
+        <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
       </when></choose>
     </def-macro>
     
@@ -423,18 +425,6 @@ This is the fourth pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: pron">
-      <pattern>
-        <pattern-item n="pron"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_case_defnes"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <out>
-          <lu><clip pos="1" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
     <rule comment="CHUNK: nom_conj_nom (SN CC SN)">
       <pattern>
         <pattern-item n="nom_conj_nom"/>
@@ -536,11 +526,26 @@ This is the fourth pass, it contains:
       </action>
     </rule>
     
-    <rule comment="CHUNK: det">
+    
+    <rule comment="CHUNK: pron">
+      <pattern>
+        <pattern-item n="pron"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_case_defnes"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: det
+                   Might have begun life as a pronoun.">
       <pattern>
         <pattern-item n="det"/>
       </pattern>
       <action>
+        <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <choose><when>
           <test><and>
             <equal><clip pos="1" part="a_det"/><lit-tag v="det.pos"/></equal>
