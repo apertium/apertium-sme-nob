@@ -245,6 +245,7 @@ This is the first pass, it contains:
     <def-attr n="art">
       <attr-item tags="def"/>
       <attr-item tags="ind"/>
+      <attr-item tags="DD"/>
     </def-attr>
     <def-attr n="temps">
       <attr-item tags="Prs"/>
@@ -550,7 +551,7 @@ This is the first pass, it contains:
       </choose>
     </def-macro>
     
-    <def-macro n="set_pron_gen_nbr" npar="1"
+    <def-macro n="set_pron_gen_nbr_art" npar="1"
                c="arg.1: noun (or, the lu we want to base pron/det gen/nbr on)
                   -----
                   Note: lone pronouns/determiners just keep GD/ND, this might change
@@ -565,6 +566,11 @@ This is the first pass, it contains:
           <let><var n="pron_gen"/><lit v=""/></let>
         </when>
       </choose>
+      <choose><when>
+          <test><equal><clip pos="1" side="tl" part="art"/><lit v="DD"/></equal></test>
+          <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
+          <let><clip pos="1" side="tl" part="art"/><var n="c_def_pos"/></let>
+      </when></choose>
     </def-macro>
     
     <def-macro n="set_c_gen_nbr" npar="1"
@@ -1368,7 +1374,8 @@ This is the first pass, it contains:
     </rule>
 
     <rule comment="REGLA: DET NOM
-                   du bávččas => din smerte">
+                   du bávččas => din smerte
+                   eará sámi => annen same">
       <pattern>
         <pattern-item n="det"/>
         <pattern-item n="nom"/>
@@ -1378,7 +1385,7 @@ This is the first pass, it contains:
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
         <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pron_gen_nbr"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pron_gen_nbr_art"><with-param pos="2"/></call-macro>
         
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <let><var n="c_name"/><lit v="det_nom"/></let>
@@ -1390,6 +1397,7 @@ This is the first pass, it contains:
               <clip pos="1" side="tl" part="a_det"/>
               <var n="pron_gen"/>
               <var n="pron_nbr"/>
+              <clip pos="1" side="tl" part="art"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="1"/>
@@ -1416,7 +1424,7 @@ This is the first pass, it contains:
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
         <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pron_gen_nbr"><with-param pos="3"/></call-macro>
+        <call-macro n="set_pron_gen_nbr_art"><with-param pos="3"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
         
@@ -1430,6 +1438,7 @@ This is the first pass, it contains:
               <clip pos="1" side="tl" part="a_det"/>
               <var n="pron_gen"/>
               <var n="pron_nbr"/>
+              <clip pos="1" side="tl" part="art"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="1"/>
@@ -1499,7 +1508,7 @@ This is the first pass, it contains:
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
         <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pron_gen_nbr"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pron_gen_nbr_art"><with-param pos="2"/></call-macro>
 
         <let><var n="c_name"/><lit v="det_nom_nom"/></let>
 
@@ -1513,6 +1522,7 @@ This is the first pass, it contains:
               <clip pos="1" side="tl" part="a_det"/>
               <var n="pron_gen"/>
               <var n="pron_nbr"/>
+              <clip pos="1" side="tl" part="art"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="1"/>

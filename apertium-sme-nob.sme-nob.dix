@@ -174,6 +174,7 @@
     <sdef n="PD"      c="Person to be determined"/>
     <sdef n="TD"      c="Temps to be determined"/>
     <sdef n="CD"      c="Case to be determined"/>
+    <sdef n="DD"      c="Definiteness to be determined"/>
     
     <sdef n="ep-Ø"    c="no epenthesis"/>
     <sdef n="ep-s"    c="s-epenthesis"/> 
@@ -586,7 +587,7 @@
     <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>buot<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn"/></e>
-    <e><p><l>eará<s n="Pron"/><s n="Indef"/></l><r>annen<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
+    <e><p><l>eará<s n="Pron"/><s n="Indef"/></l><r>annen<s n="det"/><s n="dem"/><s n="DD"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
     <e r="LR"><p><l>ollu<s n="Pron"/><s n="Indef"/></l><r>mange<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn"/></e>
     <e slr="1"><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e> <!-- juohke lágán => alle slags, alle måter -->
@@ -680,6 +681,7 @@
     <e><p><l>árpu<s n="N"/></l><r>tråd<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>árru<s n="N"/></l><r>hefte<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>artihkal<s n="N"/></l><r>artikkel<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>artista<s n="N"/></l><r>artist<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>arva<s n="N"/></l><r>energi<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>arva<s n="N"/></l><r>viljestyrke<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>arvi<s n="N"/></l><r>regn<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -1354,6 +1356,7 @@
     <e slr="4"><p><l>guovlu<s n="N"/></l><r>reinsogn<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>guovssahasat<s n="N"/></l><r>nordlys<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>guovssat<s n="N"/></l><r>lavskrike<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e><p><l>guovvamánnu<s n="N"/></l><r>februar<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>guovža<s n="N"/></l><r>bjørn<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>gutna<s n="N"/></l><r>aske<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>hábmen<s n="N"/></l><r>utforming<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1672,6 +1675,8 @@
     <e><p><l>máinnas<s n="N"/></l><r>eventyr<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>máistta<s n="N"/></l><r>krydder<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>máistu<s n="N"/></l><r>smak<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e c="todo check" r="LR"><p><l>majesteahtta<s n="N"/></l><r>majestet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>majestehta<s n="N"/></l><r>majestet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>máksu<s n="N"/></l><r>betaling<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>máksu<s n="N"/></l><r>betaling<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>máksu<s n="N"/></l><r>betydning<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1801,6 +1806,7 @@
     <e><p><l>niesti<s n="N"/></l><r>niste<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>niibi<s n="N"/></l><r>kniv<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>nisson<s n="N"/></l><r>kvinne<s n="n"/></r></p><par n="f_RL_m__n"/></e>
+    <e><p><l>nissonolmmoš<s n="N"/></l><r>kvinne<s n="n"/></r></p><par n="f_RL_m__n"/></e>
     <e><p><l>nissu<s n="N"/></l><r>nise<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>nisu<s n="N"/></l><r>kvinne<s n="n"/></r></p><par n="f_RL_m__n"/></e>
     <e><p><l>nisut<s n="N"/></l><r>hvete<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1871,6 +1877,8 @@
     <e><p><l>oazis<s n="N"/></l><r>stengsel<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>objeakta<s n="N"/></l><r>objekt<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>ođas<s n="N"/></l><r>nyhet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e r="LR"><p><l>ođđajagimánnu<s n="N"/></l><r>januar<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>ođđajagemánnu<s n="N"/></l><r>januar<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>ofelaš<s n="N"/></l><r>ledsager<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>ohca<s n="N"/></l><r>koftebarm<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>ohcan<s n="N"/></l><r>søknad<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1931,6 +1939,8 @@
     <e><p><l>praktihkka<s n="N"/></l><r>praksis<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>premissa<s n="N"/></l><r>premiss<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>presideanta<s n="N"/></l><r>president<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>prinsa<s n="N"/></l><r>prins<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>prinseassa<s n="N"/></l><r>prinsesse<s n="n"/></r></p><par n="f_RL_m__n"/></e>
     <e><p><l>prinsihppa<s n="N"/></l><r>prinsipp<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>produseanta<s n="N"/></l><r>produsent<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>profešuvdna<s n="N"/></l><r>profesjon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2034,6 +2044,7 @@
     <e><p><l>ruovdi<s n="N"/></l><r>jern<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>ruska<s n="N"/></l><r>rusk<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>rusttet<s n="N"/></l><r>anordning<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e c="todo check"><p><l>ruvdna<s n="N"/></l><r>kron<s n="n"/><s n="m"/></r></p><par n="cmp__n"/></e>
     <e><p><l>ruvdno<s n="N"/></l><r>krone<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>ruvdnu<s n="N"/></l><r>krone<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>ruvki<s n="N"/></l><r>gruve<s n="n"/></r></p><par n="m_RL_f__n"/></e>
@@ -2373,6 +2384,7 @@
     <e><p><l>vuloš<s n="N"/></l><r>underlag<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e c="todo check"><p><l>vuođđo<s n="N"/></l><r>grunn<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>vuođđoskuvla<s n="N"/></l><r>grunnskole<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>vuođđoláhka<s n="N"/></l><r>grunnlov<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>vuođđu<s n="N"/></l><r>grunn<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>vuođđu<s n="N"/></l><r>bunn<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="2"><p><l>vuođđu<s n="N"/></l><r>underside<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -20206,6 +20218,8 @@
     <e><p><l>ollislaš<s n="A"/></l><r>fullverdig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>ollu<s n="A"/></l><r>mange<s n="adj"/></r></p><par n="__adj"/></e>
     <e slr="1"><p><l>ollu<s n="A"/></l><r>mye<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>olu<s n="A"/></l><r>mange<s n="adj"/></r></p><par n="__adj"/></e>
+    <e slr="1"><p><l>olu<s n="A"/></l><r>mye<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>oppa<s n="A"/></l><r>hele<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>oppalaš<s n="A"/></l><r>generell<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>oskkáldas<s n="A"/></l><r>pålitelig<s n="adj"/></r></p><par n="__adj"/></e>
@@ -21034,7 +21048,8 @@
     <e><p><l>čuoiggadit<s n="V"/><s n="IV"/></l><r>gå på ski<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>čuoiggahit<s n="V"/><s n="TV"/></l><r>forfølge på ski<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>cuoigut<s n="V"/><s n="TV"/></l><r>påpeke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>čuojahit<s n="V"/><s n="TV"/></l><r>ringe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e c="spille musikk"><p><l>čuojahit<s n="V"/><s n="TV"/></l><r>spille<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>čuojahit<s n="V"/><s n="TV"/></l><r>ringe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>čuolastit<s n="V"/><s n="TV"/></l><r>hogge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--  (en gang)-->
     <e><p><l>čuolbmadit<s n="V"/><s n="TV"/></l><r>knytte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>čuoldit<s n="V"/><s n="TV"/></l><r>skille<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -22240,13 +22255,10 @@
     <e><p><l>ruvvet<s n="V"/><s n="TV"/></l><r>gni<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>saboteret<s n="V"/><s n="TV"/></l><r>sabotere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>šaddadit<s n="V"/><s n="TV"/></l><r>dyrke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>šaddadit<s n="V"/><s n="TV"/></l><r>dyrke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
-    <e slr="1"><p><l>šaddadit<s n="V"/><s n="TV"/></l><r>føde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
-    <e><p><l>šaddat<s n="V"/><s n="IV"/></l><r>vokse<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
-    <e><p><l>šáddat<s n="V"/><s n="IV"/></l><r>bli<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
-    <e><p><l>šaddat<s n="V"/><s n="IV"/></l><r>bli<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
-    <e slr="1"><p><l>šaddat<s n="V"/><s n="IV"/></l><r>komme<g><b/>til<b/>å</g><s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
-    <e slr="2"><p><l>šaddat<s n="V"/><s n="IV"/></l><r>vokse<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--evt. vokse, komme til å-->
+    <e slr="1"><p><l>šaddadit<s n="V"/><s n="TV"/></l><r>føde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>šaddat<s n="V"/><s n="IV"/></l><r>bli<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>šaddat<s n="V"/><s n="IV"/></l><r>komme<g><b/>til<b/>å</g><s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
+    <e slr="2"><p><l>šaddat<s n="V"/><s n="IV"/></l><r>vokse<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
     <e><p><l>sáddet<s n="V"/><s n="TV"/></l><r>sende<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) sáddejit-->
     <e><p><l>sadjit<s n="V"/><s n="TV"/></l><r>bryne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>ságaškuššat<s n="V"/><s n="TV"/></l><r>drøfte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
