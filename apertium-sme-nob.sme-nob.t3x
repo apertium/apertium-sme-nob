@@ -882,6 +882,31 @@ This is the third pass, it contains:
       </action>
     </rule>
 
+    <!-- <rules: CS SUBJ FV IV* -->
+    <rule comment="REGLA: CS maybe-LSUBJ adv-FV-Neg IV
+                   Subordinate clause.
+                   ahte áddjá ii dovdan => at bestefar (evt. ADV) ikke kjente">
+      <pattern>
+        <pattern-item n="CS"/>
+        <pattern-item n="maybe-LSUBJ"/>
+        <pattern-item n="adv-FV-Neg"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
     <!-- <rules: pro-drop insertion for all finite verbs -->
     <!-- <rules: (PR)SPEC* FV: -->
     <rule comment="REGLA: SPEC FV
