@@ -11,10 +11,10 @@ BASENAME=apertium-$(PREFIX1)
 ##
 
 TARGETS_COMMON = \
-	$(PREFIX1).twol.hfst \
-	$(PREFIX1).lexc.hfst \
+	$(LANG1).twol.hfst \
+	$(LANG1).lexc.hfst \
 	$(PREFIX1).automorf.hfst \
-	$(PREFIX1).autogen.hfst \
+	$(PREFIX2).autogen.hfst \
 	$(PREFIX1).rlx.bin \
 	$(PREFIX1).lex.bin \
 	$(PREFIX1).autobil.bin \
@@ -26,19 +26,22 @@ TARGETS_COMMON = \
 	$(PREFIX1).mode
 
 ##
-## 	DICTIONARIES (ANALYSER / BILINGUAL / GENERATOR / POSTGEN)
+## 	SME ANALYSER DICTIONARY
 ##
 
-$(PREFIX1).twol.hfst: $(BASENAME).$(LANG1).twol
+$(LANG1).twol.hfst: $(BASENAME).$(LANG1).twol
 	hfst-twolc -r -i $(BASENAME).$(LANG1).twol -o $@
 
-$(PREFIX1).lexc.hfst: $(BASENAME).$(LANG1).lexc
+$(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
 	hfst-lexc $(BASENAME).$(LANG1).lexc -o $@
 
-$(PREFIX1).autogen.hfst: $(PREFIX1).twol.hfst $(PREFIX1).lexc.hfst dev/uppercase-first.twol
-	hfst-compose-intersect -l $(PREFIX1).lexc.hfst $(PREFIX1).twol.hfst -o $@.tmp
-	hfst-twolc -r -i dev/uppercase-first.twol -o dev/uppercase-first.hfst
-	hfst-compose-intersect -l $@.tmp dev/uppercase-first.hfst -o $@
+.deps/uppercase-first.twol.hfst: dev/uppercase-first.twol
+	if [ ! -d .deps ]; then mkdir .deps; fi
+	hfst-twolc -r -i dev/uppercase-first.twol -o $@
+
+$(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst .deps/uppercase-first.twol.hfst
+	hfst-compose-intersect -l $(LANG1).lexc.hfst $(LANG1).twol.hfst -o $@.tmp
+	hfst-compose-intersect -l $@.tmp .deps/uppercase-first.twol.hfst -o $@
 	@rm $@.tmp
 
 .deps/xfst2apertium.useless.twol.hfst: dev/xfst2apertium.useless.twol
@@ -49,13 +52,16 @@ $(PREFIX1).autogen.hfst: $(PREFIX1).twol.hfst $(PREFIX1).lexc.hfst dev/uppercase
 	if [ ! -d .deps ]; then mkdir .deps; fi
 	hfst-twolc -r -i dev/xfst2apertium.hashtags.twol -o $@
 
-$(PREFIX1).automorf.hfst: $(PREFIX1).autogen.hfst dev/xfst2apertium.relabel .deps/xfst2apertium.useless.twol.hfst .deps/xfst2apertium.hashtags.twol.hfst
-	hfst-invert $(PREFIX1).autogen.hfst -o $@.1.tmp
+$(PREFIX1).automorf.hfst: $(PREFIX2).autogen.hfst dev/xfst2apertium.relabel .deps/xfst2apertium.useless.twol.hfst .deps/xfst2apertium.hashtags.twol.hfst
+	hfst-invert $(PREFIX2).autogen.hfst -o $@.1.tmp
 	hfst-compose-intersect -l $@.1.tmp .deps/xfst2apertium.useless.twol.hfst -o $@.2.tmp
 	hfst-compose-intersect -l $@.2.tmp .deps/xfst2apertium.hashtags.twol.hfst -o $@.3.tmp
 	hfst-substitute -F dev/xfst2apertium.relabel -i $@.3.tmp -o $@
 	@rm $@.1.tmp $@.2.tmp $@.3.tmp
 
+##
+## 	BILINGUAL DICTIONARY
+##
 .deps/$(BASENAME).$(PREFIX1).dix: $(BASENAME).$(PREFIX1).dix lexchoicebil.xsl
 	if [ ! -d .deps ]; then mkdir .deps; fi
 	xsltproc lexchoicebil.xsl $(BASENAME).$(PREFIX1).dix > $@
@@ -64,6 +70,9 @@ $(PREFIX1).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
 	apertium-validate-dictionary .deps/$(BASENAME).$(PREFIX1).dix
 	lt-comp lr .deps/$(BASENAME).$(PREFIX1).dix $@
 
+##
+## 	NOB GENERATOR DICTIONARY
+##
 $(PREFIX1).autogen.bin: $(BASENAME).$(LANG2).dix
 	apertium-validate-dictionary $(BASENAME).$(LANG2).dix
 	lt-comp rl $(BASENAME).$(LANG2).dix $@
@@ -130,7 +139,7 @@ EXTRA_DIST=\
 	modes.xml 
 
 
-apertium_sme_nobdir=$(prefix)/share/apertium/apertium-$(PREFIX1)/
+apertium_sme_nobdir=$(prefix)/share/apertium/$(BASENAME)/
 apertium_sme_modesdir=$(prefix)/share/apertium/modes/
 
 apertium_sme_nob_DATA=$(TARGETS_COMMON)
