@@ -103,6 +103,27 @@ This is the first pass, it contains:
       <cat-item tags="CC.*"/>
       <cat-item tags="CS.*"/>
     </def-cat>
+    <def-cat n="month">
+      <cat-item lemma="guovvamánnu" tags="N.*"/>
+      <cat-item lemma="ođđajagimánnu" tags="N.*"/>
+      <cat-item lemma="guovvamánnu" tags="N.*"/>
+      <cat-item lemma="njukčamánnu" tags="N.*"/>
+      <cat-item lemma="cuoŋománnu" tags="N.*"/>
+      <cat-item lemma="miessemánnu" tags="N.*"/>
+      <cat-item lemma="geassemánnu" tags="N.*"/>
+      <cat-item lemma="suoidnemánnu" tags="N.*"/>
+      <cat-item lemma="borgemánnu" tags="N.*"/>
+      <cat-item lemma="čakčamánnu" tags="N.*"/>
+      <cat-item lemma="golggotmánnu" tags="N.*"/>
+      <cat-item lemma="skábmamánnu" tags="N.*"/>
+      <cat-item lemma="juovlamánnu" tags="N.*"/>
+    </def-cat>
+    <def-cat n="dot">
+      <cat-item lemma="." tags="CLB"/>
+    </def-cat>
+    <def-cat n="beaivi">
+      <cat-item lemma="beaivi" tags="N.*"/>
+    </def-cat>
   </section-def-cats>
   <section-def-attrs>
     <def-attr n="a_verb">
@@ -2033,6 +2054,56 @@ TODO: this should be an mwe in the analyser.">
       </action>
     </rule>
 
-
+    <!-- <rules: Dates -->
+    <rule comment="REGLA: MONTH NUM DOT BEAIVI
+                   guovvamánu 17. beaivvi => 17. februar
+                   TODO: when we have proper tokenisation, make ORD MONTH rule... (then the CG can tag correctly too)
+                   TODO: on fragments like this, the CG gives us several mapping tags, which messes up the lex-sel CG
+                   TODO: should we also chunk MONTH NUM DOT BEAIVVI YEAR ?">
+      <pattern>
+        <pattern-item n="month"/>
+        <pattern-item n="num"/>
+        <pattern-item n="dot"/>
+        <pattern-item n="beaivi"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="num_dot_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="@ADVL"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><var n="c_gen"/></tag>
+              <tag><var n="c_nbr"/></tag>
+              <tag><var n="defnes"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_num"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="3" side="tl" part="whole"/>
+            </lu>
+            <b pos="2"/>
+            <b pos="3"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <clip pos="1" side="tl" part="gen-case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
   </section-rules>
 </transfer>
