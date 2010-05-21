@@ -12,6 +12,7 @@ LIST Qst = Qst ;
 LIST @ADVL = @ADVL ;
 LIST @→N = @→N ;
 LIST @HAB = @HAB ;
+LIST NPropMal = (N Prop Mal) ;
 LIST Mal = Mal ;
 LIST Fem = Fem ;
 LIST Sur = Sur ;
@@ -77,6 +78,8 @@ SUBSTITUTE ("duohta") ("duohta:1") ("duohta" A Sg Loc) (0 @ADVL) ;
 SUBSTITUTE ("miella") ("miella:1") ("miella" N Sg Loc) (-1 @→N) ;
 # sinn => oppfatning (kan regelen vere meir generell?)
 
+SUBSTITUTE ("gonagas") ("gonagas:1") ("gonagas" N Sg) (1 NPropMal) ;
+# Konge Harald => Kong Harald
 
 # Rules that are not word-specific
 # --------------------------------
