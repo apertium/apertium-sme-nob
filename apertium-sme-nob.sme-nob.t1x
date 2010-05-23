@@ -1626,8 +1626,7 @@ This is the first pass, it contains:
       </action>
     </rule>
 
-    <rule comment="REGLA: ADJ_ATTR NOM almmolaš bálvalusaide => til offentlige tjenester
-                   The noun is indef since we don't have a determiner before.">
+    <rule comment="REGLA: ADJ_ATTR NOM almmolaš bálvalusaide => til offentlige tjenester">
       <pattern>
         <pattern-item n="adj_attr"/>
         <pattern-item n="nom"/>
@@ -1639,8 +1638,7 @@ This is the first pass, it contains:
 
         <let><var n="c_name"/><lit v="adj_nom"/></let>
 
-        <!-- most likely both ADJ and NOM are ind: -->
-        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
 
         <!-- We set c_def_pos here and use that for both adj and nom,
              so that if defnes changes in t2x/t3x, both adj and nom

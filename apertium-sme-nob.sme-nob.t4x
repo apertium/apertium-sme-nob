@@ -55,6 +55,9 @@ This is the fourth pass, it contains:
     <def-cat n="adj_nom">
       <cat-item name="adj_nom"/>
     </def-cat>
+    <def-cat n="adj_cmp_nom">
+      <cat-item name="adj_cmp_nom"/>
+    </def-cat>
     <def-cat n="det">
       <cat-item name="det"/>
     </def-cat>
@@ -345,6 +348,44 @@ This is the fourth pass, it contains:
         </when>
       </choose>
     </def-macro>
+    
+    <!-- Output macros: -->
+    
+    <def-macro n="maybe_out_det" npar="1"
+               c="arg.1: chunk
+                  -----
+                  For eg. 'adj_nom', to make sure we say 'den lyse hunden' (not 'lyse hunden')">
+      <choose>
+        <when>
+          <test><equal><clip pos="1" part="art"/><lit-tag v="def"/></equal></test>
+          <choose>
+            <when>
+              <test><equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal></test>
+              <out>
+                <lu>
+                  <lit v="den"/>
+                  <lit-tag v="det.dem"/>
+                  <clip pos="1" part="gen"/>
+                  <clip pos="1" part="nbr"/>
+                </lu>
+                <b/>
+              </out>
+            </when>
+            <otherwise>
+              <out>
+                <lu>
+                  <lit v="den"/>
+                  <lit-tag v="det.dem"/>
+                  <clip pos="1" part="nbr"/>
+                </lu>
+                <b/>
+              </out>
+            </otherwise>
+          </choose>
+        </when>
+        <!-- otherwise: no determiner -->
+      </choose>
+    </def-macro>
   </section-def-macros>
 
 
@@ -509,13 +550,15 @@ This is the fourth pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: adj_nom">
+    <rule comment="CHUNK: adj_nom
+                   Maybe insert a determiner">
       <pattern>
         <pattern-item n="adj_nom"/>
       </pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="2"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out>          
           <lu><clip pos="1" part="whole"/></lu>
           <!-- for now, this space isn't output since we don't have
@@ -523,6 +566,26 @@ This is the fourth pass, it contains:
           <b pos="1"/>
           <b/>
           <lu><clip pos="2" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: adj_cmp_nom
+                   Maybe insert a determiner">
+      <pattern>
+        <pattern-item n="adj_cmp_nom"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_case_defnes"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
+        <out>          
+          <lu><clip pos="1" part="whole"/></lu>
+          <!-- for now, this space isn't output since we don't have
+               superblanks in the hfst stream, so we add a space -->
+          <b pos="1"/>
+          <b/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <lu><clip pos="3" part="whole"/></lu>
         </out>
       </action>
     </rule>
