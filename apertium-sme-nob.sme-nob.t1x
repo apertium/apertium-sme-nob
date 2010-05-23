@@ -351,6 +351,7 @@ This is the first pass, it contains:
     <def-var n="c_gen"          c="chunk gender"/>
     <def-var n="c_nbr"          c="chunk number"/>
     <def-var n="c_def_pos"      c="chunk defnes tag position"/>
+    <def-var n="c_syn"          c="chunk syn_label"/>
     <def-var n="caseFirstWord"  c="typographic case of first word"/>
     <def-var n="case-prep"      c="nob preposition (whole chunk) based on sme case"/>
     <def-var n="foc-adv"        c="focus adverbial (whole chunk) based on focus particle"/>
@@ -1451,6 +1452,8 @@ This is the first pass, it contains:
       </action>
     </rule>
 
+    <!-- <rules: DET* ADJ* NOM* -->
+    
     <rule comment="REGLA: DET NOM
                    du bávččas => din smerte
                    eará sámi => annen same">
@@ -1662,6 +1665,57 @@ This is the first pass, it contains:
       </action>
     </rule>
 
+    <rule comment="REGLA: ADJ_ATTR NOMCMP NOM
+                   -----
+                   duiska okkupašuvdnafápmu => tysk okkupasjonsmakt
+                   TODO: epenthesis!
+                   Moves syn_label from CMP to NOM">
+      <pattern>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="1"/></call-macro>
+
+        <!-- most likely both ADJ and NOM are ind: -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+
+        <!-- We set c_def_pos here and use that for both adj and nom,
+             so that if defnes changes in t2x/t3x, both adj and nom
+             get the change in t4x: -->
+        <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <var n="c_def_pos"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <let><var n="c_name"/><lit v="adj_cmp_nom"/></let>        
+        <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+
     <rule comment="REGLA: ADJ: dehálaš => viktig, deháleamos => viktigst">
       <pattern>
         <pattern-item n="adj"/>
@@ -1838,13 +1892,21 @@ TODO: should VERB->ADJ always be tagged SN?">
                      TODO: OK to just discard syn_label from pret.passives?">
             <when>
               <test><and>
-                <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
+                <or>
+                  <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
+                  <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></equal>
+                </or>
                 <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal>
               </and></test>
+              <let><var n="c_syn"/><lit-tag v="@+FAUXV"/></let>
+              <choose><when>
+                <test><equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></equal></test>
+                <let><var n="c_syn"/><lit-tag v="@-FAUXV"/></let>
+              </when></choose>
               <out>
                 <chunk name="verb" case="caseFirstWord">
                   <tags>
-                    <tag><lit-tag v="@+FAUXV"/></tag>
+                    <tag><var n="c_syn"/></tag>
                     <tag><clip pos="1" side="sl" part="mode"/></tag>
                     <tag><clip pos="1" side="sl" part="modality"/></tag>
                     <tag><clip pos="1" side="tl" part="temps"/></tag>
