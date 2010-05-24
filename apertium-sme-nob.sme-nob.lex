@@ -43,6 +43,7 @@ SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 IndPrt) (1 Inf) ; # Perf Cond 2
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon 
 # (unfortunately no animacy, and impers isn't until bidix...)
+# TODO: ledje<ha> ovdalaččas guokte nieidda
 
 # máksit 0 = bety, 1 = koste, 2 = betale
 SUBSTITUTE ("máksit") ("máksit:1") ("máksit" V) (*-1 (@SUBJ→) LINK NOT 0 PERSON)(0* CURRENCY OR Num BARRIER Ill) ;

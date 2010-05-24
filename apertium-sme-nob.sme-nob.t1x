@@ -87,6 +87,10 @@ This is the first pass, it contains:
       <cat-item tags="V.*.Der2.*.N.*.Gen.*"/>
       <cat-item tags="N.*.Gen.*"/>
     </def-cat>
+    <def-cat n="nom_gen_LNUM">
+      <cat-item tags="V.*.Der2.*.N.*.Gen.@Num←"/>
+      <cat-item tags="N.*.Gen.@Num←"/>
+    </def-cat>
     <def-cat n="nom_prop">
       <cat-item tags="N.Prop.*"/>
     </def-cat>
@@ -1000,12 +1004,12 @@ This is the first pass, it contains:
           <chunk name="nom_prop" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
               <tag><lit-tag v="ind"/></tag>
-              <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -1070,16 +1074,15 @@ This is the first pass, it contains:
       </action>
     </rule>
 
-    <rule comment="REGLA: NUM NOM_GEN
+    <rule comment="REGLA: NUM NOM_GEN_LNUM
                    -----
                    Here the head (case-prep, syn_label) is the numeral!
                    Numerals take genitive case, chunk case is numeral case,
                    so we don't use out_nom.
-                   TODO: use @Num← instead of/in addition to genitive requirement?
                    TODO: enforce double defnes? (de tre bilene)">
       <pattern>
         <pattern-item n="num"/>
-        <pattern-item n="nom_gen"/>
+        <pattern-item n="nom_gen_LNUM"/>
       </pattern>
       <action>
         <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
@@ -1133,7 +1136,8 @@ This is the first pass, it contains:
     <rule comment="REGLA: NUM_MOD NOM
                    Oblique use of num nom, here the nominal is the head (case-prep, syn_label)
                    so we use out_nom
-                   (but we copy genitive-case and number from the numeral onto the nom).">
+                   (but we copy genitive-case and number from the numeral onto the nom).
+                   TODO: should we really copy genitive-case over? ('lea vuosttaš prinsa 567 jahkái')">
       <pattern>
         <pattern-item n="num_mod"/>
         <pattern-item n="nom"/>

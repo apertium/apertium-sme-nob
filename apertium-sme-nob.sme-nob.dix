@@ -49,6 +49,8 @@
 
     <sdef n="A"       c="Adjective"/>
     <sdef n="adj"     c="Adjective"/>
+    <sdef n="Ord"     c="Ordinal"/>
+    <sdef n="ord"     c="Ordinal"/>
 
     <sdef n="Attr"    c="Attributive"/>
     <sdef n="posi"    c="Positive"/>
@@ -589,8 +591,9 @@
     <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn"/></e>
     <e><p><l>eará<s n="Pron"/><s n="Indef"/></l><r>annen<s n="det"/><s n="dem"/><s n="DD"/></r></p><par n="pron_dem__det_dem"/></e>
     <e><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e r="LR"><p><l>ollu<s n="Pron"/><s n="Indef"/></l><r>mange<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn"/></e>
     <e slr="1"><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e> <!-- juohke lágán => alle slags, alle måter -->
+    <e><p><l>goabbáge<s n="Pron"/><s n="Indef"/><s n="Sg"/></l><r>begge<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn"/></e>
+    <e><p><l>ollu<s n="Pron"/><s n="Indef"/></l><r>mange<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn"/></e>
 
     <!-- Pronouns/determiners (nob determiners often correspond to sme pronouns) -->
     <e><p><l>dat<s n="Pron"/><s n="Dem"/></l><r>den<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
@@ -19961,6 +19964,7 @@
     <e><p><l>čuožžovaš<s n="A"/></l><r>foreliggende<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>dábálaš<s n="A"/></l><r>vanlig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>dálá<s n="A"/></l><r>nåtidig<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>dalá<s n="A"/></l><r>daværende<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>dánskalaš<s n="A"/></l><r>dansk<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>dárbbašlaš<s n="A"/></l><r>nødvendig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>dárki<s n="A"/></l><r>viss<s n="adj"/></r></p><par n="__adj"/></e>
@@ -20369,8 +20373,8 @@
     <e><p><l>vuoigat<s n="A"/></l><r>åpenhjertig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>vuollegaš<s n="A"/></l><r>lav (ikke høy)<s n="adj"/></r></p><par n="__adj"/></e>
     <e c="om menneske"><p><l>vuoras<s n="A"/></l><r>gammel<s n="adj"/></r></p><par n="__adj"/></e>
-    <e><p><l>vuosttas<s n="A"/></l><r>først<s n="adj"/></r></p><par n="__adj"/></e>
-    <e><p><l>vuosttaš<s n="A"/></l><r>først<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>vuosttas<s n="A"/><s n="Ord"/></l><r>første<s n="adj"/><s n="ord"/></r></p><par n="__adj"/></e>
+    <e><p><l>vuosttaš<s n="A"/><s n="Ord"/></l><r>første<s n="adj"/><s n="ord"/></r></p><par n="__adj"/></e>
     <e><p><l>vuovdái<s n="A"/></l><r>glupsk<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>vuovdnái<s n="A"/></l><r>pågående<s n="adj"/></r></p><par n="__adj"/></e>
 
@@ -20428,6 +20432,7 @@
     <e><p><l>dakko<s n="Adv"/></l><r>der<s n="adv"/></r></p></e>
     <e><p><l>dákko<s n="Adv"/></l><r>her<s n="adv"/></r></p></e>
     <e><p><l>dál<s n="Adv"/></l><r>nå<s n="adv"/></r></p></e>
+    <e><p><l>dála<s n="Adv"/></l><r>daværende<s n="adv"/></r></p></e>
     <e><p><l>dalle<s n="Adv"/></l><r>da<s n="adv"/></r></p></e>
     <e><p><l>dálvet<s n="Adv"/></l><r>om<b/>vinteren<s n="adv"/></r></p></e>
     <e><p><l>danin<s n="Adv"/></l><r>derfor<s n="adv"/></r></p></e>
@@ -20604,7 +20609,8 @@
     <e><p><l>oppanassii<s n="Adv"/></l><r>i<b/>hele<b/>tatt<s n="adv"/></r></p></e>
     <e><p><l>otnážii<s n="Adv"/></l><r>til<b/>i<b/>dag<s n="adv"/></r></p></e>
     <e><p><l>ovdal<s n="Adv"/></l><r>før<s n="adv"/></r></p></e>
-    <e><p><l>ovdalaš<s n="Adv"/></l><r>tidligere<s n="adv"/></r></p></e>
+    <e><p><l>ovdalaš<s n="Adv"/></l><r>fra<b/>før<b/>av<s n="adv"/></r></p></e>
+    <e slr="1"><p><l>ovdalaš<s n="Adv"/></l><r>tidligere<s n="adv"/></r></p></e>
     <e><p><l>ovdan<s n="Adv"/></l><r>fram<s n="adv"/></r></p></e>
     <e><p><l>ovddalgihtii<s n="Adv"/></l><r>på<b/>forhånd<s n="adv"/></r></p></e>
     <e><p><l>ovddas<s n="Adv"/></l><r>i<b/>veien<s n="adv"/></r></p></e>
