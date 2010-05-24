@@ -298,6 +298,11 @@
       <e r="LR"><p><l></l><r><s n="unc"/></r></p><par n="__n"/></e>
       <e r="RL"><p><l></l><r></r></p><par n="__n"/></e>
     </pardef>
+    <pardef n="unc_m_RL_f__n" c="Generate nob masc, but analyse fem (eventually, when we move on to nob->sme).
+                                 Add unc tag iff going from sme to nob (for generating indefiniteness in transfer).">
+      <e>       <p><l></l><r><s n="m"/></r></p><par n="unc__n"/></e>
+      <e r="RL"><p><l></l><r><s n="f"/></r></p><par n="__n"/></e>
+    </pardef>
     <pardef n="m_RL_f__n" c="Generate nob masc, but analyse fem (eventually, when we move on to nob->sme).">
       <e>       <p><l></l><r><s n="m"/></r></p><par n="__n"/></e>
       <e r="RL"><p><l></l><r><s n="f"/></r></p><par n="__n"/></e>
@@ -1860,7 +1865,7 @@
     <e><p><l>oaffar<s n="N"/></l><r>offer<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>oahci<s n="N"/></l><r>avgrensning<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>oahpaheaddji<s n="N"/><s n="Actor"/></l><r>lærer<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>oahpahus<s n="N"/></l><r>undervisning<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e><p><l>oahpahus<s n="N"/></l><r>undervisning<s n="n"/></r></p><par n="unc_m_RL_f__n"/></e>
     <e><p><l>oahppa<s n="N"/></l><r>kunnskap<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>oahppa<s n="N"/></l><r>lære<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>oahppi<s n="N"/><s n="Actor"/></l><r>elev<s n="n"/><s n="m"/></r></p><par n="__n"/></e>

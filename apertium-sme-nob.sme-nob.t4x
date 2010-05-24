@@ -124,6 +124,10 @@ This is the fourth pass, it contains:
       <attr-item tags="ine"/>
       <attr-item tags="ela"/>
     </def-attr>
+    <def-attr n="a_count">
+      <attr-item tags="Coll"/>
+      <attr-item tags="unc"/>
+    </def-attr>
     <def-attr n="a_case-prep">
       <attr-item tags="av"/>
       <attr-item tags="med"/>
@@ -357,7 +361,10 @@ This is the fourth pass, it contains:
                   For eg. 'adj_nom', to make sure we say 'den lyse hunden' (not 'lyse hunden')">
       <choose>
         <when>
-          <test><equal><clip pos="1" part="art"/><lit-tag v="def"/></equal></test>
+          <test><and>
+            <begins-with><clip pos="1" part="lemh"/><lit v="adj"/></begins-with>
+            <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
+          </and></test>
           <choose>
             <when>
               <test><equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal></test>
@@ -375,13 +382,29 @@ This is the fourth pass, it contains:
               <out>
                 <lu>
                   <lit v="den"/>
-                  <lit-tag v="det.dem"/>
-                  <clip pos="1" part="nbr"/>
+                  <lit-tag v="det.dem.pl"/>
                 </lu>
                 <b/>
               </out>
             </otherwise>
           </choose>
+        </when>
+        <when>
+          <test><and>
+            <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+            <equal><clip pos="1" part="art"/><lit-tag v="ind"/></equal>
+            <not><equal><clip pos="1" part="case"/><lit-tag v="ess"/></equal></not>
+            <not><equal><clip pos="1" part="a_count"/><lit-tag v="unc"/></equal></not>
+          </and></test>
+          <out>
+            <lu>
+              <lit v="en"/>
+              <lit-tag v="det.qnt"/>
+              <clip pos="1" part="gen"/>
+              <clip pos="1" part="nbr"/>
+            </lu>
+            <b/>
+          </out>
         </when>
         <!-- otherwise: no determiner -->
       </choose>
@@ -426,23 +449,27 @@ This is the fourth pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: nom">
+    <rule comment="CHUNK: nom
+                   Maybe insert a determiner">
       <pattern>
         <pattern-item n="nom"/>
       </pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: cmp_nom">
+    <rule comment="CHUNK: cmp_nom
+                   Maybe insert a determiner">
       <pattern>
         <pattern-item n="cmp_nom"/>
       </pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <!-- Compound; we keep the given space but don't add anything: -->
@@ -451,7 +478,8 @@ This is the fourth pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: prenom_nom">
+    <rule comment="CHUNK: prenom_nom
+                   Don't insert a determiner">
       <pattern>
         <pattern-item n="prenom_nom"/>
       </pattern>
@@ -467,13 +495,15 @@ This is the fourth pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: nom_conj_nom (SN CC SN)">
+    <rule comment="CHUNK: nom_conj_nom (SN CC SN)
+                   Maybe insert a determiner">
       <pattern>
         <pattern-item n="nom_conj_nom"/>
       </pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_case_defnes"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -483,7 +513,8 @@ This is the fourth pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: adj_nom_conj_nom (SN CC SN)">
+    <rule comment="CHUNK: adj_nom_conj_nom (SN CC SN)
+                   Maybe insert a determiner">
       <pattern>
         <pattern-item n="adj_nom_conj_nom"/>
       </pattern>
@@ -491,6 +522,7 @@ This is the fourth pass, it contains:
         <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_case_defnes"><with-param pos="2"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_case_defnes"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
