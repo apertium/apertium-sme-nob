@@ -183,6 +183,11 @@ This is the fourth pass, it contains:
       <attr-item tags="pp"/>
       <attr-item tags="TD"/>
     </def-attr>
+    <def-attr n="modality">
+      <attr-item tags="Ind"/>
+      <attr-item tags="Cond"/>
+      <attr-item tags="Pot"/>
+    </def-attr>
     <def-attr n="voice">
       <attr-item tags="pass"/>
     </def-attr>
@@ -423,16 +428,29 @@ This is the fourth pass, it contains:
           <test><equal><clip pos="1" part="temps"/><lit-tag v="TD"/></equal></test>
           <let><clip pos="1" part="temps"/><lit-tag v="inf"/></let>
         </when></choose>
-        <choose><when>
-          <test><and>
-            <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
-            <in><clip pos="0" part="syn_label"/><list n="inf-mark"/></in>
-          </and></test>
-          <out>
-            <lu><get-case-from pos="1"><lit v="å"/></get-case-from><lit-tag v="part"/></lu>
-            <b/>
-          </out>
-        </when></choose>
+        <choose>
+          <when>
+            <test><and>
+              <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
+              <not><equal><clip pos="0" part="modality"/><lit-tag v="Cond"/></equal></not>
+              <in><clip pos="0" part="syn_label"/><list n="inf-mark"/></in>
+            </and></test>
+            <out>
+              <lu><get-case-from pos="1"><lit v="å"/></get-case-from><lit-tag v="part"/></lu>
+              <b/>
+            </out>
+          </when>
+          <when>
+            <test><and>
+              <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
+              <equal><clip pos="0" part="modality"/><lit-tag v="Cond"/></equal>
+            </and></test>
+            <out>
+              <lu><get-case-from pos="1"><lit v="skulle"/></get-case-from><lit-tag v="vblex.inf"/></lu>
+              <b/>
+            </out>
+          </when>
+        </choose>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
         </out>

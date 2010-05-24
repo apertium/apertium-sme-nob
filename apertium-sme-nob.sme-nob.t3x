@@ -43,6 +43,12 @@ This is the third pass, it contains:
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
     </def-cat>
+    <def-cat n="ILSUBJ" c="subject of infinite verb (setningstilsvar)">
+      <cat-item tags="SN.@-FSUBJ→.*"/>
+    </def-cat>
+    <def-cat n="IV-tilsvar">
+      <cat-item lemma="verb" tags="@←OBJ.*"/>
+    </def-cat>
     <def-cat n="rel">
       <cat-item lemma="rel" tags="*"/>
     </def-cat>
@@ -518,6 +524,29 @@ This is the third pass, it contains:
       </action>
     </rule>
     
+    <!-- <rules: ILSUBJ IV
+         Setningstilsvar (infinite=>finite in subordinate sentences) -->
+    <rule comment="REGLA: ILSUBJ IV
+                   (Máhtte muitalii) ádjá boahtit => (Máhtte fortalte) bestefar skulle komme
+                   TODO: set_defnes_ana2 ? set_adv ?
+                   TODO: fts? or what tag works best? (for adding 'skulle')">
+      <pattern>
+        <pattern-item n="ILSUBJ"/>
+        <pattern-item n="IV-tilsvar"/>
+      </pattern>
+      <action>
+        <let>
+          <clip pos="2" part="temps"/>
+          <concat><clip pos="2" part="temps"/><lit-tag v="Cond"/></concat>
+        </let>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
     <!-- <rules: (PR)SPEC SN FV: -->
     <rule comment="REGLA: SPEC SN FV
                    V2-rule
@@ -907,6 +936,7 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
+
 
     <!-- <rules: pro-drop insertion for all finite verbs -->
     <!-- <rules: (PR)SPEC* FV: -->
