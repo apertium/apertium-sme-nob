@@ -52,8 +52,11 @@ This is the second pass, it contains:
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
     </def-cat>
-    <def-cat n="conj">
-      <cat-item lemma="conj" tags="*"/>
+    <def-cat n="CNP">
+      <cat-item lemma="conj" tags="@CNP.cnjcoo"/>
+    </def-cat>
+    <def-cat n="CVP">
+      <cat-item lemma="conj" tags="@CVP.cnjcoo"/>
     </def-cat>
     <def-cat n="FV">
       <cat-item tags="@+FMAINV"/>
@@ -161,12 +164,12 @@ This is the second pass, it contains:
 
   <section-def-vars>
     <def-var n="chunkname"/>
-    <def-var n="sntags"/>
+    <def-var n="chunktags"/>
     <def-var n="ana_temps"/>
   </section-def-vars>
 
   <section-def-macros>
-    <def-macro n="set_chunkname3" npar="3">
+    <def-macro n="set_chunkname3" npar="3" c="args should be given in order of output">
       <let>
         <var n="chunkname"/>
         <concat>
@@ -179,11 +182,11 @@ This is the second pass, it contains:
       </let>
     </def-macro>
     
-    <def-macro n="set_sntags2" npar="2">      
-      <let><var n="sntags"/><clip pos="1" part="tags"/></let>
+    <def-macro n="set_chunktags2" npar="2">      
+      <let><var n="chunktags"/><clip pos="1" part="tags"/></let>
       <choose><when>
         <test><equal><clip pos="1" part="syn_label"/><lit v=""/></equal></test>
-        <let><var n="sntags"/><clip pos="2" part="tags"/></let>
+        <let><var n="chunktags"/><clip pos="2" part="tags"/></let>
       </when></choose>
     </def-macro>    
   </section-def-macros>
@@ -265,18 +268,19 @@ This is the second pass, it contains:
     </rule>
 
     <!-- Coordination -->
-    <rule comment="REGLA: SA conj SA">
+    <rule comment="REGLA: SA CNP SA">
       <pattern>
         <pattern-item n="SA"/>
-        <pattern-item n="conj"/>
+        <pattern-item n="CNP"/>
         <pattern-item n="SA"/>
       </pattern>
       <action>
         <call-macro n="set_chunkname3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_chunktags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <out>
           <chunk>
            <var n="chunkname"/>
-           <clip pos="1" part="tags"/>
+           <var n="chunktags"/>
            <lit v="{"/>
            <clip pos="1" part="content"/>
            <b pos="1"/>
@@ -291,22 +295,22 @@ This is the second pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN conj SN
-                   We assume CG only gives us SN conj SN if they _should_ be coordinated.
+    <rule comment="REGLA: SN CNP SN
+                   We assume CG only gives us SN CNP SN if they _should_ be coordinated.
                    For now only uses the case etc. of the first conjunct.
                    TODO: what should happen where we still have different cases? («i Norge og på Island»?)">
       <pattern>
         <pattern-item n="SN"/>
-        <pattern-item n="conj"/>
+        <pattern-item n="CNP"/>
         <pattern-item n="SN"/>
       </pattern>
       <action>
         <call-macro n="set_chunkname3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
-        <call-macro n="set_sntags2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_chunktags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <out>
           <chunk>
             <var n="chunkname"/>
-            <var n="sntags"/>
+            <var n="chunktags"/>
             <lit v="{"/>
             <clip pos="1" part="content"/>
             <b pos="1"/>
@@ -321,17 +325,17 @@ This is the second pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SN conj PR SN">
+    <rule comment="REGLA: PR SN CNP PR SN">
       <pattern>
         <pattern-item n="PR"/>
         <pattern-item n="SN"/>
-        <pattern-item n="conj"/>
+        <pattern-item n="CNP"/>
         <pattern-item n="PR"/>
         <pattern-item n="SN"/>
       </pattern>
       <action>
         <call-macro n="set_chunkname3"><with-param pos="2"/><with-param pos="3"/><with-param pos="5"/></call-macro>
-        <call-macro n="set_sntags2"><with-param pos="5"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_chunktags2"><with-param pos="2"/><with-param pos="5"/></call-macro>
         <out>
           <chunk>
             <clip pos="1" part="whole"/>
@@ -339,7 +343,7 @@ This is the second pass, it contains:
           <b pos="1"/>
           <chunk>
             <var n="chunkname"/>
-            <var n="sntags"/>
+            <var n="chunktags"/>
            <lit v="{"/>
            <clip pos="2" part="content"/>
            <b pos="2"/>
@@ -431,6 +435,57 @@ This is the second pass, it contains:
     </rule>
     
     <!-- verb rules -->
+    <rule comment="REGLA: FV CVP FV
+                   set anaphoric variables">
+      <pattern>
+        <pattern-item n="FV"/>
+        <pattern-item n="CVP"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <choose><when>
+          <test><not><equal><clip pos="1" part="temps"/><lit v=""/></equal></not></test>
+          <let><var n="ana_temps"/><clip pos="1" part="temps"/></let>
+        </when></choose>
+        <choose>
+          <when>
+            <test><and>
+              <equal><clip pos="1" part="temps"/><clip pos="3" part="temps"/></equal>
+              <equal><clip pos="1" part="nbr"/><clip pos="3" part="nbr"/></equal>
+              <equal><clip pos="1" part="pers"/><clip pos="3" part="pers"/></equal>
+            </and></test>
+            <call-macro n="set_chunkname3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+            <call-macro n="set_chunktags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+            <out>
+              <chunk>
+                <var n="chunkname"/>
+                <var n="chunktags"/>
+                <lit v="{"/>
+                <clip pos="1" part="content"/>
+                <clip pos="1" part="lemq"/>
+                <b pos="1"/>
+                <clip pos="2" part="content"/>
+                <clip pos="2" part="lemq"/>
+                <b pos="2"/>
+                <clip pos="3" part="content"/>
+                <clip pos="3" part="lemq"/>
+                <lit v="}"/>
+              </chunk>
+            </out>
+          </when>
+          <otherwise>
+            <out>
+              <chunk><clip pos="1" part="whole"/></chunk>
+              <b pos="1"/>
+              <chunk><clip pos="2" part="whole"/></chunk>
+              <b pos="2"/>
+              <chunk><clip pos="3" part="whole"/></chunk>
+            </out>
+          </otherwise>
+        </choose>
+      </action>
+    </rule>
+
     <rule comment="REGLA: FV
                    set anaphoric variables">
       <pattern>
