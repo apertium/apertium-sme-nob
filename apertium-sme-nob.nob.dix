@@ -361,22 +361,26 @@
 	 Polite forms still todo
     -->
 <pardef n="dets__det">
+  <e r="RL"><p><l></l>          <r><s n="det"/><s n="pos"/><s n="mf"/><s n="sg"/></r></p></e>
   <e>       <p><l></l>          <r><s n="det"/><s n="pos"/><s n="m"/><s n="sg"/></r></p></e>
   <e>       <p><l></l>          <r><s n="det"/><s n="pos"/><s n="f"/><s n="sg"/></r></p></e>
   <e>       <p><l></l>          <r><s n="det"/><s n="pos"/><s n="nt"/><s n="sg"/></r></p></e>
   <e>       <p><l></l>          <r><s n="det"/><s n="pos"/><s n="pl"/></r></p></e>
 </pardef>
 <pardef n="possessives__det">
+  <e r="RL"><p><l>min</l>         <r>jeg<s n="det"/><s n="pos"/><s n="mf"/><s n="sg"/></r></p></e>
   <e>       <p><l>min</l>         <r>jeg<s n="det"/><s n="pos"/><s n="m"/><s n="sg"/></r></p></e>
   <e>       <p><l>mi</l>          <r>jeg<s n="det"/><s n="pos"/><s n="f"/><s n="sg"/></r></p></e>
   <e>       <p><l>mitt</l>        <r>jeg<s n="det"/><s n="pos"/><s n="nt"/><s n="sg"/></r></p></e>
   <e>       <p><l>mine</l>        <r>jeg<s n="det"/><s n="pos"/><s n="pl"/></r></p></e>
 
+  <e r="RL"><p><l>din</l>         <r>du<s n="det"/><s n="pos"/><s n="mf"/><s n="sg"/></r></p></e>
   <e>       <p><l>din</l>         <r>du<s n="det"/><s n="pos"/><s n="m"/><s n="sg"/></r></p></e>
   <e>       <p><l>di</l>          <r>du<s n="det"/><s n="pos"/><s n="f"/><s n="sg"/></r></p></e>
   <e>       <p><l>ditt</l>        <r>du<s n="det"/><s n="pos"/><s n="nt"/><s n="sg"/></r></p></e>
   <e>       <p><l>dine</l>        <r>du<s n="det"/><s n="pos"/><s n="pl"/></r></p></e>
 
+  <e r="RL"><p><l>sin</l>         <r>seg<s n="det"/><s n="pos"/><s n="mf"/><s n="sg"/></r></p></e>
   <e>       <p><l>sin</l>         <r>seg<s n="det"/><s n="pos"/><s n="m"/><s n="sg"/></r></p></e>
   <e>       <p><l>si</l>          <r>seg<s n="det"/><s n="pos"/><s n="f"/><s n="sg"/></r></p></e>
   <e>       <p><l>sitt</l>        <r>seg<s n="det"/><s n="pos"/><s n="nt"/><s n="sg"/></r></p></e>
@@ -387,6 +391,7 @@
   <e>       <p><l>dets</l>        <r>det</r></p><par n="dets__det"/></e>
   <e>       <p><l>dens</l>        <r>den</r></p><par n="dets__det"/></e>
 
+  <e r="RL"><p><l>vår</l>         <r>vi<s n="det"/><s n="pos"/><s n="mf"/><s n="sg"/></r></p></e>
   <e>       <p><l>vår</l>         <r>vi<s n="det"/><s n="pos"/><s n="m"/><s n="sg"/></r></p></e>
   <e r="LR"><p><l>vår</l>         <r>vi<s n="det"/><s n="pos"/><s n="f"/><s n="sg"/></r></p></e>
   <e>       <p><l>vårt</l>        <r>vi<s n="det"/><s n="pos"/><s n="nt"/><s n="sg"/></r></p></e>
@@ -395,13 +400,11 @@
   <e>       <p><l>deres</l>       <r>de</r>  </p><par n="dets__det"/></e>
   <e>       <p><l>deres</l>       <r>dere</r></p><par n="dets__det"/></e>
 
-  <e r="LR"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="m"/><s n="sg"/></r></p></e>
-  <e r="LR"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="f"/><s n="sg"/></r></p></e>
-  <e r="LR"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="nt"/><s n="sg"/></r></p></e>
-  <e r="LR"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="pl"/></r></p></e>
-  <e r="RL"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="m"/><s n="sg"/></r></p></e>
-  <e r="RL"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="nt"/><s n="sg"/></r></p></e>
-  <e r="RL"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="pl"/></r></p></e>
+  <e r="RL"><p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="mf"/><s n="sg"/></r></p></e>
+  <e>       <p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="f"/><s n="sg"/></r></p></e>
+  <e>       <p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="m"/><s n="sg"/></r></p></e>
+  <e>       <p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="nt"/><s n="sg"/></r></p></e>
+  <e>       <p><l>Deres</l>          <r>de<s n="det"/><s n="pos"/><s n="p2"/><s n="pl"/></r></p></e>
 </pardef>
 
     <!-- Determiners -->
