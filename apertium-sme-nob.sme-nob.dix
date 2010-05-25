@@ -407,6 +407,8 @@
       <e><p><l><s n="Actio"/><s n="Ess"/></l><r><s n="TD"/></r></p></e>
       <!-- Actio.Loc: same time or future compared to main verb -->
       <e><p><l><s n="Actio"/><s n="Loc"/></l><r><s n="inf"/></r></p></e>
+      <!-- Actio.Acc TODO -->
+      <e><p><l><s n="Actio"/><s n="Acc"/></l><r><s n="TD"/></r></p></e>
       <!-- Gerundium: same time and logical subject as main verb -->
       <e><p><l><s n="Ger"/></l><r><s n="TD"/><s n="ND"/><s n="PD"/></r></p></e>
       <!-- Present participle: attribute in relative sentences (suomagiela hálli => som snakker finsk / finsksnakkende) -->
@@ -1788,7 +1790,7 @@
     <e><p><l>moraš<s n="N"/></l><r>sorg<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>motiiva<s n="N"/></l><r>motiv<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>muddu<s n="N"/></l><r>fase<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>muhkki<s n="N"/></l><r>møkk<s n="n"/></r></p><par n="m_RL_f__n"/></e>
+    <e><p><l>muhkki<s n="N"/></l><r>møkk<s n="n"/></r></p><par n="unc_m_RL_f__n"/></e>
     <e><p><l>muitalus<s n="N"/></l><r>fortelling<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>muitu<s n="N"/></l><r>minne<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>muitu<s n="N"/></l><r>hukommelse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1801,13 +1803,15 @@
     <e><p><l>muoŧŧá<s n="N"/></l><r>tante<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e slr="1"><p><l>muoŧŧá<s n="N"/></l><r>moster<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>musea<s n="N"/></l><r>museum<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
-    <e><p><l>musihkka<s n="N"/></l><r>musikk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>musihkka<s n="N"/></l><r>musikk<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>muslim<s n="N"/></l><r>muslim<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>mutuvra<s n="N"/></l><r>motor<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>muvra<s n="N"/></l><r>varde<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>muzet<s n="N"/></l><r>brunsvart rein<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e c="TODO 'brunsvart rein'"><p><l>muzet<s n="N"/></l><r>rein<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>myhta<s n="N"/></l><r>myte<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>mystihkka<s n="N"/></l><r>mystikk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>nađđa<s n="N"/></l><r>skaft<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e slr="1"><p><l>nađđa<s n="N"/></l><r>håndtak<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>nággu<s n="N"/></l><r>krangel<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>nagir<s n="N"/></l><r>søvn<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>náhkki<s n="N"/></l><r>skinn<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -20402,6 +20406,9 @@
     <e><p><l>ge<s n="Pcle"/></l><r>altså<s n="adv"/></r></p></e>
     <e><p><l>go<s n="Pcle"/></l><r>da<s n="adv"/></r></p></e>
     <e><p><l>nai<s n="Pcle"/></l><r>også<s n="adv"/></r></p></e>
+    <e><p><l>ba<s n="Pcle"/></l><r>engang<s n="adv"/></r></p></e>
+    <e slr="1"><p><l>ba<s n="Pcle"/></l><r>i<b/>det<b/>hele<b/>tatt<s n="adv"/></r></p></e>
+    <e slr="2"><p><l>ba<s n="Pcle"/></l><r>selvfølgelig<s n="adv"/></r></p></e>
 
     <!-- Adverbs -->
 
@@ -20552,6 +20559,7 @@
     <e><p><l>ilá<s n="Adv"/></l><r>altfor<s n="adv"/></r></p></e>
     <e><p><l>illá<s n="Adv"/></l><r>såvidt<s n="adv"/></r></p></e>
     <e><p><l>ipmašis<s n="Adv"/></l><r>sjelden<s n="adv"/></r></p></e>
+    <e c="TODO check"><p><l>jaska<s n="Adv"/></l><r>stille<s n="adv"/></r></p></e>
     <e><p><l>jeavda<s n="Adv"/></l><r>jevnt<s n="adv"/></r></p></e>
     <e><p><l>jienaskeahttá<s n="Adv"/></l><r>avholdende<s n="adv"/></r></p></e>
     <e><p><l>jitnosii<s n="Adv"/></l><r>høylydt<s n="adv"/></r></p></e>
@@ -22054,8 +22062,8 @@
     <e><p><l>noahkut<s n="V"/><s n="TV"/></l><r>presumere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>noastit<s n="V"/><s n="TV"/></l><r>trekke not på land<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>noddet<s n="V"/><s n="IV"/></l><r>nå<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>nohkat<s n="V"/><s n="TV"/></l><r>slutte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e slr="1"><p><l>nohkat<s n="V"/><s n="TV"/></l><r>ende<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>nohkat<s n="V"/><s n="IV"/></l><r>slutte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>nohkat<s n="V"/><s n="IV"/></l><r>ende<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>nohkkat<s n="V"/><s n="TV"/></l><r>sove<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e slr="1"><p><l>nohkkat<s n="V"/><s n="TV"/></l><r>sovne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>nohkkot<s n="V"/><s n="IV"/></l><r>fri<b/>for<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
