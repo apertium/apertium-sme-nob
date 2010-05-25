@@ -43,8 +43,11 @@ This is the third pass, it contains:
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
     </def-cat>
-    <def-cat n="ILSUBJ" c="subject of infinite verb (setningstilsvar)">
+    <def-cat n="ILSUBJ" c="subject of infinite verb (setningstilsvar), may be object of finite verb">
       <cat-item tags="SN.@-FSUBJ→.*"/>
+      <cat-item tags="SN.@-FOBJ→.*"/>
+      <cat-item tags="@-FSUBJ→.*"/>
+      <cat-item tags="@-FOBJ→.*"/>
     </def-cat>
     <def-cat n="IV-tilsvar">
       <cat-item lemma="verb" tags="@←OBJ.*"/>
@@ -535,9 +538,17 @@ This is the third pass, it contains:
         <pattern-item n="IV-tilsvar"/>
       </pattern>
       <action>
+        <out>
+          <chunk>
+            <lit v="conj"/><lit-tag v="@CVP"/><lit-tag v="cnjsub"/>
+            <lit v="{^at"/><lit-tag v="cnjsub"/><lit v="$}"/>
+          </chunk>
+          <b/>
+        </out>
+        
         <let>
           <clip pos="2" part="temps"/>
-          <concat><clip pos="2" part="temps"/><lit-tag v="Cond"/></concat>
+          <concat><lit-tag v="Cond"/><clip pos="2" part="temps"/></concat>
         </let>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
