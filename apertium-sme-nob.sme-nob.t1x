@@ -1884,7 +1884,7 @@ TODO: should VERB->ADJ always be tagged SN?">
                 </lu>
               </chunk>
             </out>
-        </when>        
+        </when>
         <when>
           <test><not><equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal></not></test>
           <let><var n="c_name"/><lit v="nom"/></let>
@@ -2016,7 +2016,7 @@ TODO: should VERB->ADJ always be tagged SN?">
                 </chunk>
               </out>
             </when>
-            <otherwise c="Not passive pret (might still be prepended by cnjsub):">
+            <otherwise c="Not passive pret (might still be prepended by cnjsub or causative verb):">
               <out>
                 <chunk name="verb" case="caseFirstWord">
                   <tags>
