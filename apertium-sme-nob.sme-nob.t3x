@@ -745,6 +745,7 @@ This is the third pass, it contains:
       </action>
     </rule>
     <rule comment="REGLA: maybe-LSUBJ ADVL FV
+                   -----
                    V2-rule
                    Son maiddái gažada => Han spør også
                    Override prodrop rule (below) if we might have a subject to the left">
@@ -769,25 +770,28 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: maybe-LSUBJ ADVL ADVL FV
-                   ieža moai dáppe váccašetne =1> bare vi_to her spaserer =2> vi_to bare her spaserer =3> vi_to bare spaserer her
+    <rule comment="REGLA: ADVL maybe-LSUBJ ADVL FV
+                   -----
+                   ieža moai dáppe váccašetne =1> bare vi_to her spaserer =3> vi_to bare spaserer her
+                   (The ieža @ADVL tag is given in t1x, originally @→Pron.)
+                   TODO: Might have to specify this more, does it 'overgenerate'?
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
-        <pattern-item n="maybe-LSUBJ"/>
         <pattern-item n="ADVL"/>
+        <pattern-item n="maybe-LSUBJ"/>
         <pattern-item n="ADVL"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
         <call-macro n="set_defnes_ana2">
-          <with-param pos="1"/>
+          <with-param pos="2"/>
           <with-param pos="4"/>
         </call-macro>
         <call-macro n="set_adv"><with-param pos="4"/></call-macro>
         <out>
-          <chunk><clip pos="1" part="whole"/></chunk>
-          <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="2"/>
           <chunk><clip pos="4" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
@@ -799,6 +803,7 @@ This is the third pass, it contains:
 
     <!-- <rules: SPEC* FV IV* RSUBJ: -->
     <rule comment="REGLA: FV SN-maybe-RSUBJ
+                   -----
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
         <pattern-item n="FV"/>
