@@ -44,6 +44,11 @@ This is the third pass, it contains:
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
     </def-cat>
+    <def-cat n="ROBJ">
+      <cat-item tags="@←OBJ.*"/>
+      <cat-item tags="SN.@←OBJ.*"/>
+      <cat-item tags="SA.@←OBJ.*"/>
+    </def-cat>
     <def-cat n="ILSUBJ" c="subject of infinite verb (setningstilsvar), may be object of finite verb">
       <cat-item tags="SN.@-FSUBJ→.*"/>
       <cat-item tags="SN.@-FOBJ→.*"/>
@@ -226,6 +231,7 @@ This is the third pass, it contains:
       <attr-item tags="@CNP"/>
       <attr-item tags="@CVP"/>
       <attr-item tags="@→N"/>
+      <attr-item tags="@→Pron"/>
       <attr-item tags="@OBJ→"/>
       <attr-item tags="@←OBJ"/>
       <attr-item tags="@OBJ"/>
@@ -345,13 +351,13 @@ This is the third pass, it contains:
                   If gender is m/f and we have a subject, store gender in 'ana';
                   if gender is GD, apply 'ana'-gender.">
       <choose><when>
-        <test><not><equal><clip pos="1" part="lemh"/><lit v="rel"/></equal></not></test>
+        <test><not><equal caseless="yes"><clip pos="1" part="lemh"/><lit v="rel"/></equal></not></test>
         <!-- Set defnes: -->
         <choose>
           <when>
             <test>
               <and>
-                <equal><clip pos="2" part="lemh"/><lit v="verb"/></equal>
+                <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="verb"/></equal>
                 <or>
                   <equal><clip pos="1" part="syn_label"/><lit-tag v="@HAB"/></equal>
                   <equal><clip pos="1" part="syn_label"/><lit-tag v="@ADVL"/></equal>
@@ -367,7 +373,7 @@ This is the third pass, it contains:
           <when>
             <test>
               <and>
-                <equal><clip pos="2" part="lemh"/><lit v="verb"/></equal>
+                <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="verb"/></equal>
                 <equal><clip pos="2" part="nbr"/><lit-tag v="du"/></equal>
                 <or>
                   <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
@@ -375,6 +381,16 @@ This is the third pass, it contains:
                 </or>
               </and>
             </test>
+            <let><clip pos="1" part="art"/><lit-tag v="def"/></let>
+          </when>
+        </choose>
+        <choose>
+          <when>
+            <test><and>
+              <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="verb"/></equal>
+              <equal><clip pos="2" part="temps"/><lit-tag v="imp"/></equal>
+              <equal><clip pos="1" part="syn_label"/><lit-tag v="@←OBJ"/></equal>
+            </and></test>
             <let><clip pos="1" part="art"/><lit-tag v="def"/></let>
           </when>
         </choose>
@@ -750,6 +766,33 @@ This is the third pass, it contains:
           <var n="adv-blank"/><var n="adv"/>
           <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: maybe-LSUBJ ADVL ADVL FV
+                   ieža moai dáppe váccašetne =1> bare vi_to her spaserer =2> vi_to bare her spaserer =3> vi_to bare spaserer her
+                   Override prodrop rule (below) if we might have a subject to the left">
+      <pattern>
+        <pattern-item n="maybe-LSUBJ"/>
+        <pattern-item n="ADVL"/>
+        <pattern-item n="ADVL"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="1"/>
+          <with-param pos="4"/>
+        </call-macro>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="3"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
         </out>
       </action>
     </rule>
@@ -1255,6 +1298,31 @@ This is the third pass, it contains:
           </chunk>
           <b/>
           <chunk><clip pos="4" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    
+    <!-- FV ROBJ -->
+    <rule comment="REGLA: FV ROBJ
+                   Váldde biergasiid => Ta sakene">
+      <pattern>
+        <pattern-item n="FV"/>
+        <pattern-item n="ROBJ"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="2"/>
+          <with-param pos="1"/>
+        </call-macro>
+        <call-macro n="set_pro"><with-param pos="1"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="1"/></call-macro>
+        <out>
+          <var n="pro"/>
+          <var n="pro-blank"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
         </out>
       </action>
     </rule>

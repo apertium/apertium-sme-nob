@@ -46,6 +46,7 @@
     <sdef n="Num"     c="Numeral"/>
     <sdef n="det"     c="Determiner"/>
     <sdef n="qnt"     c="Quantifier / numeral"/>
+    <sdef n="emph"    c="Emphatic"/>
 
     <sdef n="A"       c="Adjective"/>
     <sdef n="adj"     c="Adjective"/>
@@ -91,7 +92,15 @@
     <sdef n="Pl2"     c="Second-person plural"/>
     <sdef n="Pl3"     c="Third-person plural"/>
 
-    <sdef n="PxSg3"     c="Unknown-person singular???"/>
+    <sdef n="PxSg1"     c="First-person singular possessive suffix"/>
+    <sdef n="PxSg2"     c="Second-person singular possessive suffix"/>
+    <sdef n="PxSg3"     c="Third-person singular possessive suffix"/>
+    <sdef n="PxDu1"     c="First-person dual possessive suffix"/>
+    <sdef n="PxDu2"     c="Second-person dual possessive suffix"/>
+    <sdef n="PxDu3"     c="Third-person dual possessive suffix"/>
+    <sdef n="PxPl1"     c="First-person plural possessive suffix"/>
+    <sdef n="PxPl2"     c="Second-person plural possessive suffix"/>
+    <sdef n="PxPl3"     c="Third-person plural possessive suffix"/>
 
     <sdef n="ind"     c="Indefinite"/> 
     <sdef n="def"     c="Definite"/>
@@ -333,8 +342,18 @@
       <e><p><l><s n="Pl1"/></l><r><s n="pl"/><s n="p1"/></r></p></e>
       <e><p><l><s n="Pl1"/></l><r><s n="pl"/><s n="p2"/></r></p></e>
       <e><p><l><s n="Pl3"/></l><r><s n="pl"/><s n="p3"/></r></p></e>
+      <e><p><l><s n="PxSg1"/></l><r><s n="sg"/><s n="p1"/></r></p></e>
+      <e><p><l><s n="PxSg2"/></l><r><s n="sg"/><s n="p2"/></r></p></e>
       <e><p><l><s n="PxSg3"/></l><r><s n="sg"/><s n="p3"/></r></p></e>
+      <e><p><l><s n="PxDu1"/></l><r><s n="du"/><s n="p1"/></r></p></e>
+      <e><p><l><s n="PxDu2"/></l><r><s n="du"/><s n="p2"/></r></p></e>
+      <e><p><l><s n="PxDu3"/></l><r><s n="du"/><s n="p3"/></r></p></e>
+      <e><p><l><s n="PxPl1"/></l><r><s n="pl"/><s n="p1"/></r></p></e>
+      <e><p><l><s n="PxPl1"/></l><r><s n="pl"/><s n="p2"/></r></p></e>
+      <e><p><l><s n="PxPl3"/></l><r><s n="pl"/><s n="p3"/></r></p></e>
+      <!-- default when no person: p3 -->
       <e><p><l><s n="Sg"/></l><r><s n="sg"/><s n="p3"/></r></p></e>
+      <e><p><l><s n="Pl"/></l><r><s n="pl"/><s n="p3"/></r></p></e>
     </pardef>
     <pardef n="__verb">
       <e><p><l><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
@@ -605,6 +624,10 @@
     <e><p><l>mii<s n="Pron"/><s n="Rel"/></l><r>som<s n="cnjsub"/></r></p><par n="__prn"/></e>
 
     <e><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>seg<s n="prn"/><s n="ref"/></r></p><par n="__prn"/><par n="__nbr_pers"/></e>
+    <e r="LR"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>seg<s n="prn"/><s n="ref"/><s n="p3"/><s n="sg"/></r></p></e>
+    <e slr="1"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>selv<s n="det"/><s n="emph"/></r></p><par n="__prn"/><par n="__nbr_pers"/></e>
+    <e slr="2"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>prpers<s n="prn"/></r></p><par n="__prn"/><par n="__nbr_pers"/></e>
+    <e slr="3"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>bare<s n="adv"/></r></p><par n="__prn"/><par n="__nbr_pers"/></e>
 
     <!-- Quantifiers: -->
     <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
@@ -806,6 +829,9 @@
     <e><p><l>biebmu<s n="N"/></l><r>mat<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e slr="1"><p><l>biebmu<s n="N"/></l><r>føde<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>biegga<s n="N"/></l><r>vind<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>bierggas<s n="N"/></l><r>sak<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e slr="1"><p><l>bierggas<s n="N"/></l><r>ting<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e slr="2"><p><l>bierggas<s n="N"/></l><r>genitalia<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>biergu<s n="N"/></l><r>kjøtt<s n="n"/><s n="nt"/></r></p><par n="unc__n"/></e>
     <e><p><l>bietna<s n="N"/></l><r>detalj<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>bievla<s n="N"/></l><r>barmark<s n="n"/></r></p><par n="m_RL_f__n"/></e>

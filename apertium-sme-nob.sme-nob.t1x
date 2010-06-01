@@ -318,6 +318,7 @@ This is the first pass, it contains:
       <attr-item tags="@CNP"/>
       <attr-item tags="@CVP"/>
       <attr-item tags="@→N"/>
+      <attr-item tags="@→Pron"/>
       <attr-item tags="@OBJ→"/>
       <attr-item tags="@←OBJ"/>
       <attr-item tags="@OBJ"/>
@@ -1346,12 +1347,14 @@ This is the first pass, it contains:
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_foc-adv"><with-param pos="1"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+        
+        <out><var n="case-prep"/></out>
+        
         <choose>
           <when>
-            <test><or>
-              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FOBJ→"/></equal>
-              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FSUBJ→"/></equal>
-            </or></test>
+            <test><equal><clip pos="1" side="tl" part="lemh"/><lit v="prpers"/></equal></test>
             <out>
               <chunk name="pron" case="caseFirstWord">
                 <tags>
@@ -1369,6 +1372,22 @@ This is the first pass, it contains:
                   <lit-tag v="GD"/>
                   <clip pos="1" side="tl" part="nbr"/>
                   <lit-tag v="nom"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </when>
+          <when>
+            <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
+            <out>
+              <chunk name="adv" case="caseFirstWord">
+                <tags>
+                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="1" side="tl" part="mode"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_adv"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
@@ -1395,6 +1414,8 @@ This is the first pass, it contains:
           </out>
         </otherwise>
         </choose>
+        
+        <out><var n="foc-adv"/></out>
       </action>
     </rule>
 

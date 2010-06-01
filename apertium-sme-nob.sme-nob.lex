@@ -1,4 +1,4 @@
-# This file is for word sense disambiguation
+# This file is for word sense disambiguation (lexical selection)
 # See http://wiki.apertium.org/wiki/Limited_rule-based_lexical_selection
 
 DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
@@ -81,6 +81,16 @@ SUBSTITUTE ("miella") ("miella:1") ("miella" N Sg Loc) (-1 @→N) ;
 
 SUBSTITUTE ("gonagas") ("gonagas:1") ("gonagas" N Sg) (1 NPropMal) ;
 # Konge Harald => Kong Harald
+
+
+# ieš (default)=> seg
+SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl) (0 (@Pron←) OR (@→N)) ;
+# mun ieš:1 => meg _selv_
+SUBSTITUTE ("ieš") ("ieš:2") ("ieš" Pron Refl) (0 (@-FOBJ→) OR (@-FSUBJ→)) ;
+# Máhtte rábmui iežas:2 vuoitit => Máhtte skrøt at _han_ skulle vinne 
+SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@→Pron) OR (@→N)) ;
+# ieš:3 dat muitalii => han _bare_ fortalte det
+
 
 # Rules that are not word-specific
 # --------------------------------
