@@ -291,7 +291,6 @@ This is the third pass. Responsibilities of this file include:
   <section-def-vars>
     <def-var n="caseFirstWord"/>
     <def-var n="gender"/>
-    <def-var n="ana" c="p3 sg gender set by subjects, used later in GD anaphora pronouns"/>
     <def-var n="pro" c="in case it was dropped"/>
     <def-var n="pro-blank" c="one space if there's a pro, else nothing"/>
     <def-var n="adv" c="conditional / potensialis"/>
@@ -306,41 +305,7 @@ This is the third pass. Responsibilities of this file include:
       <modify-case><clip pos="2" part="lemh"/><var n="caseFirstWord"/></modify-case>
     </def-macro>
     
-
-    <def-macro n="set_ana" npar="1"
-               c="arg.1: SN
-                  -----
-                  If gender is m/f and we have a subject, store gender in 'ana';
-                  if gender is GD, apply 'ana'-gender.
-                  TODO: Could we do all anaphoric operations in t2x?
-                        (ie. adding gender to finite verbs)">
-      <choose><when>
-        <test><and>
-          <or>
-            <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
-            <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
-            <!-- is 'son' ever 'nt'? could we have a difference between GD-mf and GD-all? -->
-            <!-- <equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal> -->
-          </or>
-          <or>
-            <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
-            <equal><clip pos="1" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
-          </or>
-        </and></test>
-        <let><var n="ana"/><clip pos="1" part="gen"/></let>
-      </when></choose>
-      <choose><when>
-        <test><and>
-          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
-          <equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal>
-          <not><equal><var n="ana"/><lit v=""/></equal></not>
-        </and></test>
-        <let><clip pos="1" part="gen"/><var n="ana"/></let>
-      </when></choose>
-    </def-macro>
-    
-    <def-macro n="set_defnes_ana2" npar="2"
+    <def-macro n="set_defnes2" npar="2"
                c="arg.1: SN, arg.2: verb (the one with nbr, if there's a choice)
                   Does nothing if arg.1 is relative pron.
                   -----
@@ -399,8 +364,6 @@ This is the third pass. Responsibilities of this file include:
             <let><clip pos="1" part="art"/><lit-tag v="def"/></let>
           </when>
         </choose>
-        <!-- Set and/or use gender anaphor variable: -->
-        <call-macro n="set_ana"><with-param pos="1"/></call-macro>
       </when></choose>
     </def-macro>
     
@@ -419,8 +382,8 @@ This is the third pass. Responsibilities of this file include:
         </and></test>
         <choose>
           <when>
-            <test><not><equal><var n="ana"/><lit v=""/></equal></not></test>
-            <let><var n="gender"/><var n="ana"/></let>
+            <test><not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not></test>
+            <let><var n="gender"/><clip pos="1" part="gen"/></let>
           </when>
           <otherwise>
             <let><var n="gender"/><lit-tag v="m"/></let>
@@ -537,7 +500,7 @@ This is the third pass. Responsibilities of this file include:
          Setningstilsvar (infinite=>finite in subordinate sentences) -->
     <rule comment="REGLA: ILSUBJ IV
                    (Máhtte muitalii) ádjá boahtit => (Máhtte fortalte) bestefar skulle komme
-                   TODO: set_defnes_ana2 ? set_adv ?
+                   TODO: set_defnes2 ? set_adv ?
                    TODO: fts? or what tag works best? (for adding 'skulle')">
       <pattern>
         <pattern-item n="ILSUBJ"/>
@@ -568,7 +531,7 @@ This is the third pass. Responsibilities of this file include:
     <rule comment="REGLA: SPEC SN FV
                    V2-rule
                    -----
-                   Doppe son orui vahku => Der_borte bodde han ei uke
+                   Doppe son orui (vahku) => Der_borte bodde han (ei uke)
                    de son lei => så var han
                    Go su áhčči jámii de gildui => Når hans far døde så ble han forbudt
                    (PR)Mánnán/Nuorran son orui Romssas => (Som) barn/ungdom bodde han i Tromsø
@@ -579,7 +542,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="3"/>
         </call-macro>
@@ -605,7 +568,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="4"/>
         </call-macro>
@@ -632,7 +595,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
@@ -684,7 +647,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
@@ -706,7 +669,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
@@ -733,7 +696,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="4"/>
         </call-macro>
@@ -760,7 +723,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
@@ -788,7 +751,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="4"/>
         </call-macro>
@@ -815,7 +778,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="maybe-RSUBJ"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="1"/>
         </call-macro>
@@ -837,7 +800,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="maybe-RSUBJ"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="2"/>
         </call-macro>
@@ -862,7 +825,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="maybe-RSUBJ"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="4"/>
           <with-param pos="3"/>
         </call-macro>
@@ -888,7 +851,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="maybe-RSUBJ"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="1"/>
         </call-macro>
@@ -913,7 +876,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="maybe-RSUBJ"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="4"/>
           <with-param pos="2"/>
         </call-macro>
@@ -941,7 +904,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="maybe-RSUBJ"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="5"/>
           <with-param pos="3"/>
         </call-macro>
@@ -997,7 +960,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
@@ -1022,7 +985,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="3"/>
         </call-macro>
@@ -1114,7 +1077,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="ROBJ"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="1"/>
         </call-macro>
@@ -1182,7 +1145,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="3"/>
         </call-macro>
@@ -1213,7 +1176,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="V"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
@@ -1240,7 +1203,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="V"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
@@ -1269,7 +1232,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="ROPRED"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
@@ -1306,7 +1269,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="ROPRED"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
@@ -1343,7 +1306,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="ROBJ"/>
       </pattern>
       <action>
-        <call-macro n="set_defnes_ana2">
+        <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="1"/>
         </call-macro>
@@ -1378,21 +1341,5 @@ This is the third pass. Responsibilities of this file include:
         </out>
       </action>
     </rule>
-
-
-    <rule comment="REGLA: SN">
-      <pattern>
-        <pattern-item n="SN"/>
-      </pattern>
-      <action>
-        <call-macro n="set_ana">
-          <with-param pos="1"/>
-        </call-macro>
-        <out>
-          <chunk><clip pos="1" part="whole"/></chunk>                    
-        </out>
-      </action>
-    </rule>
-        
   </section-rules>
 </interchunk>

@@ -90,6 +90,13 @@ TODO:
   </section-def-cats>
 
   <section-def-attrs>
+    <def-attr n="gen">
+      <attr-item tags="m"/>
+      <attr-item tags="f"/>
+      <attr-item tags="mf"/>
+      <attr-item tags="nt"/>
+      <attr-item tags="GD"/>
+    </def-attr>
     <def-attr n="case">
       <attr-item tags="Nom"/>
       <attr-item tags="Acc"/>
@@ -186,7 +193,8 @@ TODO:
   <section-def-vars>
     <def-var n="chunkname"/>
     <def-var n="chunktags"/>
-    <def-var n="ana_temps"/>
+    <def-var n="ana_temps" c="set by FV's, used on TD's"/>
+    <def-var n="ana_m_f" c="p3 sg gender set by SUBJ's, used on GD's, stored in FV's for t3x pro insertion"/>
   </section-def-vars>
 
   <section-def-macros>
@@ -209,19 +217,77 @@ TODO:
         <test><equal><clip pos="1" part="syn_label"/><lit v=""/></equal></test>
         <let><var n="chunktags"/><clip pos="2" part="tags"/></let>
       </when></choose>
-    </def-macro>    
+    </def-macro>
+    
+    <def-macro n="set_ana_temps" npar="1"
+               c="arg.1: verb">
+      <choose><when>
+        <test><not><equal><clip pos="1" part="temps"/><lit v=""/></equal></not></test>
+        <let><var n="ana_temps"/><clip pos="1" part="temps"/></let>
+      </when></choose>
+    </def-macro>
+    
+    <def-macro n="set_ana_gen" npar="1"
+               c="arg.1: SN
+                  -----
+                  If gender is m/f and we have a subject, store gender in 'ana_m_f';
+                  then apply 'ana_m_f'-gender (in case we have a GD).
+                  TODO: ana_m_f_nt">
+      <choose><when>
+        <test><and>
+          <or>
+            <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
+            <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
+            <!-- is 'son' ever 'nt'? could we have a difference
+                 between GD-mf and GD-all? -->
+            <!-- <equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal> -->
+          </or>
+          <or>
+            <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
+            <equal><clip pos="1" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+          </or>
+        </and></test>
+        <let><var n="ana_m_f"/><clip pos="1" part="gen"/></let>
+      </when></choose>
+
+      <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
+    </def-macro>
+
+    <def-macro n="apply_ana_gen" npar="1"
+               c="arg.1: SN or verb
+                  -----
+                  If there's no gen clip, make sure we make one.
+                  (If no tags at all, put it after lemh; if tags but no gen, put it after the tags.)">
+      <choose>
+        <when>
+          <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
+          <let><clip pos="1" part="gen"/><var n="ana_m_f"/></let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" part="tags"/><lit v=""/></equal></test>
+          <let><clip pos="1" part="lemh"/><concat><clip pos="1" part="lemh"/><var n="ana_m_f"/></concat></let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
+          <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><var n="ana_m_f"/></concat></let>
+        </when>
+      </choose>
+    </def-macro>
   </section-def-macros>
 
   <section-rules>
     <!-- <rules: nom modifiers: -->
     <rule comment="REGLA: SN-prenom SN-prenom SN-nom
-                   NRK Radio oaivil => NRK Radios mening">
+                   -----
+                   NRK Radio oaivil => NRK Radios mening
+                   Correct defnes">
       <pattern>
         <pattern-item n="SN-prenom"/>
         <pattern-item n="SN-prenom"/>
         <pattern-item n="SN-nom"/>
       </pattern>
       <action>
+        <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
         <let><clip pos="1" part="case"/><lit v=""/></let>
         <let><clip pos="3" part="art"/><lit-tag v="ind"/></let>
         <out>
@@ -240,12 +306,15 @@ TODO:
       </action>
     </rule>
     <rule comment="REGLA: SN-prenom SN-nom
-                   NRK oaivil => NRKs mening">
+                   -----
+                   NRK oaivil => NRKs mening
+                   Correct defnes">
       <pattern>
         <pattern-item n="SN-prenom"/>
         <pattern-item n="SN-nom"/>
       </pattern>
       <action>
+        <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
         <let><clip pos="2" part="art"/><lit-tag v="ind"/></let>
         <out>
           <chunk>
@@ -287,7 +356,7 @@ TODO:
         </out>
       </action>
     </rule>
-
+    
     <!-- <rules: Coordination -->
     <rule comment="REGLA: SA CNP SA">
       <pattern>
@@ -326,6 +395,7 @@ TODO:
         <pattern-item n="SN"/>
       </pattern>
       <action>
+        <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
         <call-macro n="set_chunkname3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="set_chunktags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <out>
@@ -355,6 +425,7 @@ TODO:
         <pattern-item n="SN"/>
       </pattern>
       <action>
+        <call-macro n="set_ana_gen"><with-param pos="5"/></call-macro>
         <call-macro n="set_chunkname3"><with-param pos="2"/><with-param pos="3"/><with-param pos="5"/></call-macro>
         <call-macro n="set_chunktags2"><with-param pos="2"/><with-param pos="5"/></call-macro>
         <out>
@@ -389,6 +460,7 @@ TODO:
         <pattern-item n="RADVL"/>
       </pattern>
       <action>
+        <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
         <choose>
           <when>
             <test><equal><clip pos="2" part="lemh"/><lit v="pron"/></equal></test>
@@ -415,6 +487,7 @@ TODO:
         <pattern-item n="adpos"/>
       </pattern>
       <action>
+        <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
         <choose>
           <when>
             <test><equal><clip pos="2" part="lemh"/><lit v="pron"/></equal></test>
@@ -438,6 +511,7 @@ TODO:
         <pattern-item n="adpos"/>
       </pattern>
       <action>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
         <choose>
           <when>
             <test><equal><clip pos="1" part="lemh"/><lit v="pron"/></equal></test>
@@ -457,17 +531,15 @@ TODO:
     
     <!-- <rules: Verb coordination, set/use verb-anaphoric variables -->
     <rule comment="REGLA: FV CVP FV
-                   set anaphoric variables">
+                   -----
+                   set anaphoric temps variable
+                   use anaphoric gen variable">
       <pattern>
         <pattern-item n="FV"/>
         <pattern-item n="CVP"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <choose><when>
-          <test><not><equal><clip pos="1" part="temps"/><lit v=""/></equal></not></test>
-          <let><var n="ana_temps"/><clip pos="1" part="temps"/></let>
-        </when></choose>
         <choose>
           <when>
             <test><and>
@@ -475,6 +547,9 @@ TODO:
               <equal><clip pos="1" part="nbr"/><clip pos="3" part="nbr"/></equal>
               <equal><clip pos="1" part="pers"/><clip pos="3" part="pers"/></equal>
             </and></test>
+            <call-macro n="set_ana_temps"><with-param pos="1"/></call-macro>
+            <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
+
             <call-macro n="set_chunkname3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
             <call-macro n="set_chunktags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
             <out>
@@ -495,6 +570,9 @@ TODO:
             </out>
           </when>
           <otherwise>
+            <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
+            <call-macro n="apply_ana_gen"><with-param pos="3"/></call-macro>
+            <call-macro n="set_ana_temps"><with-param pos="3"/></call-macro>
             <out>
               <chunk><clip pos="1" part="whole"/></chunk>
               <b pos="1"/>
@@ -508,15 +586,15 @@ TODO:
     </rule>
 
     <rule comment="REGLA: FV
-                   set anaphoric variables">
+                   -----
+                   set anaphoric temps variable
+                   use anaphoric gen variable">
       <pattern>
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <choose><when>
-          <test><not><equal><clip pos="1" part="temps"/><lit v=""/></equal></not></test>
-          <let><var n="ana_temps"/><clip pos="1" part="temps"/></let>
-        </when></choose>
+        <call-macro n="set_ana_temps"><with-param pos="1"/></call-macro>
+        <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>
@@ -524,13 +602,14 @@ TODO:
     </rule>
     
     <rule comment="REGLA: V_TD
-                   use anaphoric variables
                    -----
+                   use anaphoric temps/gen variables
                    mun dieđán Máreha čállime dál => jeg vet Máret skriver nå">
       <pattern>
         <pattern-item n="V_TD"/>
       </pattern>
       <action>
+        <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
         <let><clip pos="1" part="temps"/><var n="ana_temps"/></let>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -538,5 +617,19 @@ TODO:
       </action>
     </rule>
     
+    <!-- Single nominal -->
+    <rule comment="REGLA: SN
+                   -----
+                   set gen variable">
+      <pattern>
+        <pattern-item n="SN"/>
+      </pattern>
+      <action>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
   </section-rules>
 </interchunk>
