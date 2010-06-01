@@ -1096,6 +1096,29 @@ This is the third pass, it contains:
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: FV-Qst ROBJ
+                   Oainnátgo máná => Ser du barnet
+                   Insert dropped pronoun">
+      <pattern>
+        <pattern-item n="FV-Qst"/>
+        <pattern-item n="ROBJ"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes_ana2">
+          <with-param pos="2"/>
+          <with-param pos="1"/>
+        </call-macro>
+        <call-macro n="set_pro"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_adv"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <var n="pro-blank"/><var n="pro"/>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: FV-Neg-Qst IV
                    itgo boađáše => kommer du ikke
                    Insert dropped pronoun">
@@ -1317,8 +1340,7 @@ This is the third pass, it contains:
         <call-macro n="set_pro"><with-param pos="1"/></call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
-          <var n="pro"/>
-          <var n="pro-blank"/>
+          <var n="pro"/><var n="pro-blank"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
           <b pos="1"/>
