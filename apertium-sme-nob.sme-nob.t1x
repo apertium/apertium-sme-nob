@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--
-This is the first pass, it contains:
-* (de-)compounding,
-* derivation,
-* simple noun phrases (heads and their simple modifiers/specifiers: adj nom, adj adj nom, det adj adj nom, num adj nom),
-* simple periphrastic verb combinations (verb, vaux pp, vaux inf)
+This is the first pass. Responsibilities of this file include:
+* Chunking (all rules)
+* Handling part-of-speech changes introduced by bidix.
+  * Rules match on source tags, so a sme verb which is specified 
+    as a nob noun has to be handled by the verb rule
+    (this leads to some redundancy, hopefully we'll get a bidix module soon)
+* (De-)compounding
+  * See rule: NOMCMP NOM
+* Derivation
+  * See rule: VERB Der/goahti
+* Simple noun phrases
+  * Heads and their simple modifiers/specifiers: adj nom, adj adj nom, det adj adj nom, num adj nom
+  * See rule: DET ADJ_ATTR NOM
+  * See macro: out_nom
 * Insert prepositions based on case
+  * These get their own chunk; t2x might have to remove them in co-ordination or post-position rules
+  * See macro: set_case-prep
+
+TODO:
+* Perhaps chunk simple periphrastic verb combinations (verb, vaux pp, vaux inf)
+
 -->
 
 <transfer default="chunk">

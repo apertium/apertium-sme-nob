@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <!--
-This is the fourth pass, it contains:
+This is the fourth pass. Responsibilities of this file include:
 
-* Insert articles (TODO)
+* Inserting articles
+  * See rule: adj_nom
+  * See macro: maybe_out_det
 * Cleanup
-  * insert spaces since we have no tokenisation
-  * make sure tags are consistent with nob.dix (esp. adjectives) 
+  * Inserting spaces since we have no tokenisation
+  * Making sure tags are consistent with nob.dix (esp. adjectives, personal pronouns)
+  * See macro: clean_adj
+
+TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 -->
 
 <!-- -*- nxml -*- -->
