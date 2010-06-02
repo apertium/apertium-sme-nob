@@ -267,6 +267,22 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                   TODO: why doesn't (concat grau pl) work?">
       <choose><when>
         <test><and>
+          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+          <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
+          <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
+        </and></test>
+        <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
+      </when></choose>
+      <choose><when>
+        <test><or>
+          <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
+          <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
+          <equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal>
+        </or></test>
+        <let><clip pos="1" part="gen"/><lit-tag v="mf"/></let>
+      </when></choose>
+      <choose><when>
+        <test><and>
           <equal><clip pos="1" part="grau"/><lit v=""/></equal>
           <not><equal><clip pos="1" part="a_adj"/><lit-tag v="adj.pprs"/></equal></not>
         </and></test>

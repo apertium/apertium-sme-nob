@@ -1827,9 +1827,9 @@ TODO:
         <pattern-item n="adj"/>
       </pattern>
       <action>
+        <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
         <call-macro n="guess_adj_gen_nbr"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-        <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
         <let><var n="c_def_pos"/><lit-tag v="6"/></let>
         <choose><when>
           <test><or>

@@ -258,20 +258,23 @@ TODO:
                   -----
                   If there's no gen clip, make sure we make one.
                   (If no tags at all, put it after lemh; if tags but no gen, put it after the tags.)">
-      <choose>
-        <when>
-          <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
-          <let><clip pos="1" part="gen"/><var n="ana_m_f"/></let>
-        </when>
-        <when>
-          <test><equal><clip pos="1" part="tags"/><lit v=""/></equal></test>
-          <let><clip pos="1" part="lemh"/><concat><clip pos="1" part="lemh"/><var n="ana_m_f"/></concat></let>
-        </when>
-        <when>
-          <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
-          <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><var n="ana_m_f"/></concat></let>
-        </when>
-      </choose>
+      <choose><when>
+        <test><not><equal><var n="ana_m_f"/><lit v=""/></equal></not></test>
+        <choose>
+          <when>
+            <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
+            <let><clip pos="1" part="gen"/><var n="ana_m_f"/></let>
+          </when>
+          <when>
+            <test><equal><clip pos="1" part="tags"/><lit v=""/></equal></test>
+            <let><clip pos="1" part="lemh"/><concat><clip pos="1" part="lemh"/><var n="ana_m_f"/></concat></let>
+          </when>
+          <when>
+            <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
+            <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><var n="ana_m_f"/></concat></let>
+          </when>
+        </choose>
+      </when></choose>
     </def-macro>
   </section-def-macros>
 
@@ -365,6 +368,8 @@ TODO:
         <pattern-item n="SA"/>
       </pattern>
       <action>
+        <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
+        <call-macro n="apply_ana_gen"><with-param pos="3"/></call-macro>
         <call-macro n="set_chunkname3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="set_chunktags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <out>
@@ -626,6 +631,19 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: SA
+                   -----
+                   use gen variable">
+      <pattern>
+        <pattern-item n="SA"/>
+      </pattern>
+      <action>
+        <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>
