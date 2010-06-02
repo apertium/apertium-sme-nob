@@ -355,6 +355,28 @@
       <e><p><l><s n="Sg"/></l><r><s n="sg"/><s n="p3"/></r></p></e>
       <e><p><l><s n="Pl"/></l><r><s n="pl"/><s n="p3"/></r></p></e>
     </pardef>
+    <pardef n="LR_remove_nbr_pers">
+      <e r="LR"><p><l><s n="Sg1"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="Sg2"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="Sg3"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="Du1"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="Du2"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="Du3"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="Pl1"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="Pl1"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="Pl3"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="PxSg1"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="PxSg2"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="PxSg3"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="PxDu1"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="PxDu2"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="PxDu3"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="PxPl1"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="PxPl1"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="PxPl3"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="Sg"/></l><r></r></p></e>
+      <e r="LR"><p><l><s n="Pl"/></l><r></r></p></e>
+    </pardef>
     <pardef n="__verb">
       <e><p><l><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
@@ -625,9 +647,9 @@
 
     <e><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>seg<s n="prn"/><s n="ref"/></r></p><par n="__prn"/><par n="__nbr_pers"/></e>
     <e r="LR"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>seg<s n="prn"/><s n="ref"/><s n="p3"/><s n="sg"/></r></p></e>
-    <e slr="1"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>selv<s n="det"/><s n="emph"/></r></p><par n="__prn"/><par n="__nbr_pers"/></e>
+    <e slr="1"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>selv<s n="det"/><s n="emph"/></r></p><par n="__prn"/><par n="LR_remove_nbr_pers"/></e>
     <e slr="2"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>prpers<s n="prn"/></r></p><par n="__prn"/><par n="__nbr_pers"/></e>
-    <e slr="3"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>bare<s n="adv"/></r></p><par n="__prn"/><par n="__nbr_pers"/></e>
+    <e slr="3"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>bare<s n="adv"/></r></p><par n="__prn"/><par n="LR_remove_nbr_pers"/></e>
 
     <!-- Quantifiers: -->
     <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
