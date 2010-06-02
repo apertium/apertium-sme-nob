@@ -30,7 +30,7 @@ This is the third pass. Responsibilities of this file include:
       <cat-item tags="SN.@HAB.*"/>
       <cat-item tags="SN.@SUBJ→.*"/>
       <cat-item tags="SN.@X.*"/>
-      <cat-item tags="@SUBJ→.*"/>
+      <cat-item tags="SV.@SUBJ→.*"/>
       <cat-item lemma="rel" tags="*.*.*.*.@SUBJ→"/>
     </def-cat>
     <def-cat n="maybe-RSUBJ">
@@ -45,23 +45,23 @@ This is the third pass. Responsibilities of this file include:
       <cat-item tags="SA.@ADVL→.*"/>
     </def-cat>
     <def-cat n="ROPRED">
-      <cat-item tags="@←OPRED.*"/>
+      <cat-item tags="SV.@←OPRED.*"/>
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
     </def-cat>
     <def-cat n="ROBJ">
-      <cat-item tags="@←OBJ.*"/>
+      <cat-item tags="SV.@←OBJ.*"/>
       <cat-item tags="SN.@←OBJ.*"/>
       <cat-item tags="SA.@←OBJ.*"/>
     </def-cat>
     <def-cat n="ILSUBJ" c="subject of infinite verb (setningstilsvar), may be object of finite verb">
       <cat-item tags="SN.@-FSUBJ→.*"/>
       <cat-item tags="SN.@-FOBJ→.*"/>
-      <cat-item tags="@-FSUBJ→.*"/>
-      <cat-item tags="@-FOBJ→.*"/>
+      <cat-item tags="SV.@-FSUBJ→.*"/>
+      <cat-item tags="SV.@-FOBJ→.*"/>
     </def-cat>
     <def-cat n="IV-tilsvar">
-      <cat-item lemma="verb" tags="@←OBJ.*"/>
+      <cat-item tags="SV.@←OBJ.*"/>
     </def-cat>
     <def-cat n="CS">
       <cat-item lemma="conj" tags="@CVP.cnjsub"/>
@@ -82,43 +82,36 @@ This is the third pass. Responsibilities of this file include:
       <cat-item tags="SN.@ADVL→.*"/>
     </def-cat>
     <def-cat n="adv-FV-Neg">
-      <cat-item lemma="adv" tags="@+FAUXV.Neg.*"/>
+      <cat-item lemma="adv" tags="SV.@+FAUXV.Neg.*"/>
     </def-cat>
     <def-cat n="adv-FV-Neg-Qst">
-      <cat-item lemma="adv" tags="@+FAUXV.Neg.Qst.*"/>
+      <cat-item lemma="adv" tags="SV.@+FAUXV.Neg.Qst.*"/>
     </def-cat>
     <def-cat n="FV-Qst">
-      <cat-item tags="@+FMAINV.Qst.*"/>
-      <cat-item tags="@+FAUXV.Qst.*"/>
-      <cat-item lemma="adv" tags="@+FAUXV.Neg.Qst.*"/>
+      <cat-item tags="SV.@+FMAINV.Qst.*"/>
+      <cat-item tags="SV.@+FAUXV.Qst.*"/>
+      <cat-item lemma="adv" tags="SV.@+FAUXV.Neg.Qst.*"/>
     </def-cat>
     <def-cat n="FV">
-      <cat-item tags="@+FMAINV"/>
-      <cat-item tags="@+FMAINV.*"/>
-      <cat-item tags="@+FAUXV"/>
-      <cat-item tags="@+FAUXV.*"/>
+      <cat-item tags="SV.@+FMAINV"/>
+      <cat-item tags="SV.@+FMAINV.*"/>
+      <cat-item tags="SV.@+FAUXV"/>
+      <cat-item tags="SV.@+FAUXV.*"/>
     </def-cat>
     <def-cat n="adv-IV">
-      <cat-item lemma="adv" tags="@-FMAINV"/>
-      <cat-item lemma="adv" tags="@-FMAINV.*"/>
-      <cat-item lemma="adv" tags="@-FAUXV"/>
-      <cat-item lemma="adv" tags="@-FAUXV.*"/>
+      <cat-item lemma="adv" tags="SV.@-FMAINV"/>
+      <cat-item lemma="adv" tags="SV.@-FMAINV.*"/>
+      <cat-item lemma="adv" tags="SV.@-FAUXV"/>
+      <cat-item lemma="adv" tags="SV.@-FAUXV.*"/>
     </def-cat>
     <def-cat n="V">
-      <cat-item tags="@+FMAINV"/>
-      <cat-item tags="@+FMAINV.*"/>
-      <cat-item tags="@+FAUXV"/>
-      <cat-item tags="@+FAUXV.*"/>
-      <cat-item tags="@-FMAINV"/>
-      <cat-item tags="@-FMAINV.*"/>
-      <cat-item tags="@-FAUXV"/>
-      <cat-item tags="@-FAUXV.*"/>
+      <cat-item tags="SV.*"/>
     </def-cat>
     <def-cat n="IV">
-      <cat-item tags="@-FMAINV"/>
-      <cat-item tags="@-FMAINV.*"/>
-      <cat-item tags="@-FAUXV"/>
-      <cat-item tags="@-FAUXV.*"/>
+      <cat-item tags="SV.@-FMAINV"/>
+      <cat-item tags="SV.@-FMAINV.*"/>
+      <cat-item tags="SV.@-FAUXV"/>
+      <cat-item tags="SV.@-FAUXV.*"/>
     </def-cat>
     <def-cat n="SPEC">
       <cat-item lemma="adv" tags="@←ADVL"/>

@@ -1073,6 +1073,7 @@ TODO:
             <out>
               <chunk name="verb" case="caseFirstWord">
                 <tags>
+                  <tag><lit-tag v="SV"/></tag>
                   <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                   <tag><clip pos="1" side="tl" part="temps"/></tag>
@@ -1925,6 +1926,7 @@ TODO: should VERB->ADJ always be tagged SN?">
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
+                  <tag><lit-tag v="SV"/></tag>
                   <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                   <tag><clip pos="1" side="sl" part="neg"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
@@ -2002,6 +2004,7 @@ TODO: should VERB->ADJ always be tagged SN?">
             <out>
               <chunk name="verb" case="caseFirstWord">
                 <tags>
+                  <tag><lit-tag v="SV"/></tag>
                   <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                   <tag><clip pos="1" side="sl" part="modality"/></tag>
@@ -2039,6 +2042,7 @@ TODO: should VERB->ADJ always be tagged SN?">
               <out>
                 <chunk name="verb" case="caseFirstWord">
                   <tags>
+                    <tag><lit-tag v="SV"/></tag>
                     <tag><var n="c_syn"/></tag>
                     <tag><clip pos="1" side="sl" part="mode"/></tag>
                     <tag><clip pos="1" side="sl" part="modality"/></tag>
@@ -2057,6 +2061,7 @@ TODO: should VERB->ADJ always be tagged SN?">
                 <b/>
                 <chunk name="verb">
                   <tags>
+                    <tag><lit-tag v="SV"/></tag>
                     <tag><lit-tag v="@-FMAINV"/></tag>
                     <tag><clip pos="1" side="sl" part="mode"/></tag>
                     <tag><clip pos="1" side="sl" part="modality"/></tag>
@@ -2078,6 +2083,7 @@ TODO: should VERB->ADJ always be tagged SN?">
               <out>
                 <chunk name="verb" case="caseFirstWord">
                   <tags>
+                    <tag><lit-tag v="SV"/></tag>
                     <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                     <tag><clip pos="1" side="sl" part="mode"/></tag>
                     <tag><clip pos="1" side="sl" part="modality"/></tag>
@@ -2124,8 +2130,8 @@ TODO: should VERB->ADJ always be tagged SN?">
     </rule>
     
     
-    <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å lese
-                   needs to be several chunks to cover: ii lohkagoađe => han begynner ikke å lese
+    <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å si
+                   needs to be several chunks to cover: ii lohkagoađe => han begynner ikke å si
                    TODO: caseSecondWord
                    TODO: insert 'i gang med å' if actio ess
                    TODO: pret pass exception">
@@ -2138,6 +2144,7 @@ TODO: should VERB->ADJ always be tagged SN?">
         <out>
           <chunk name="verb" case="caseFirstWord">
             <tags>
+              <tag><lit-tag v="SV"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="2" side="sl" part="mode"/></tag>
               <tag><clip pos="2" side="sl" part="modality"/></tag>
@@ -2169,6 +2176,8 @@ TODO: should VERB->ADJ always be tagged SN?">
           <b/>
           <chunk name="verb">
             <tags>
+              <tag><lit-tag v="SV"/></tag>
+              <tag><lit-tag v="@-FMAINV"/></tag>
               <tag><lit-tag v="inf"/></tag>
             </tags>
             <lu>
