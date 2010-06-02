@@ -191,16 +191,16 @@ TODO:
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="chunkname"/>
-    <def-var n="chunktags"/>
+    <def-var n="c_name"/>
+    <def-var n="c_tags"/>
     <def-var n="ana_temps" c="set by FV's, used on TD's"/>
     <def-var n="ana_m_f" c="p3 sg gender set by SUBJ's, used on GD's, stored in FV's for t3x pro insertion"/>
   </section-def-vars>
 
   <section-def-macros>
-    <def-macro n="set_chunkname3" npar="3" c="args should be given in order of output">
+    <def-macro n="set_c_name3" npar="3" c="args should be given in order of output">
       <let>
-        <var n="chunkname"/>
+        <var n="c_name"/>
         <concat>
           <clip pos="1" part="lemh"/>
           <lit v="_"/>
@@ -211,11 +211,11 @@ TODO:
       </let>
     </def-macro>
     
-    <def-macro n="set_chunktags2" npar="2">      
-      <let><var n="chunktags"/><clip pos="1" part="tags"/></let>
+    <def-macro n="set_c_tags2" npar="2">      
+      <let><var n="c_tags"/><clip pos="1" part="tags"/></let>
       <choose><when>
         <test><equal><clip pos="1" part="syn_label"/><lit v=""/></equal></test>
-        <let><var n="chunktags"/><clip pos="2" part="tags"/></let>
+        <let><var n="c_tags"/><clip pos="2" part="tags"/></let>
       </when></choose>
     </def-macro>
     
@@ -370,12 +370,12 @@ TODO:
       <action>
         <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
         <call-macro n="apply_ana_gen"><with-param pos="3"/></call-macro>
-        <call-macro n="set_chunkname3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
-        <call-macro n="set_chunktags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_name3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <out>
           <chunk>
-           <var n="chunkname"/>
-           <var n="chunktags"/>
+           <var n="c_name"/>
+           <var n="c_tags"/>
            <lit v="{"/>
            <clip pos="1" part="content"/>
            <b pos="1"/>
@@ -401,12 +401,12 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
-        <call-macro n="set_chunkname3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
-        <call-macro n="set_chunktags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_name3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <out>
           <chunk>
-            <var n="chunkname"/>
-            <var n="chunktags"/>
+            <var n="c_name"/>
+            <var n="c_tags"/>
             <lit v="{"/>
             <clip pos="1" part="content"/>
             <b pos="1"/>
@@ -431,16 +431,16 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="5"/></call-macro>
-        <call-macro n="set_chunkname3"><with-param pos="2"/><with-param pos="3"/><with-param pos="5"/></call-macro>
-        <call-macro n="set_chunktags2"><with-param pos="2"/><with-param pos="5"/></call-macro>
+        <call-macro n="set_c_name3"><with-param pos="2"/><with-param pos="3"/><with-param pos="5"/></call-macro>
+        <call-macro n="set_c_tags2"><with-param pos="2"/><with-param pos="5"/></call-macro>
         <out>
           <chunk>
             <clip pos="1" part="whole"/>
           </chunk>
           <b pos="1"/>
           <chunk>
-            <var n="chunkname"/>
-            <var n="chunktags"/>
+            <var n="c_name"/>
+            <var n="c_tags"/>
            <lit v="{"/>
            <clip pos="2" part="content"/>
            <b pos="2"/>
@@ -555,12 +555,12 @@ TODO:
             <call-macro n="set_ana_temps"><with-param pos="1"/></call-macro>
             <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
 
-            <call-macro n="set_chunkname3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
-            <call-macro n="set_chunktags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+            <call-macro n="set_c_name3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+            <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
             <out>
               <chunk>
-                <var n="chunkname"/>
-                <var n="chunktags"/>
+                <var n="c_name"/>
+                <var n="c_tags"/>
                 <lit v="{"/>
                 <clip pos="1" part="content"/>
                 <clip pos="1" part="lemq"/>

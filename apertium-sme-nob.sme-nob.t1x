@@ -1919,6 +1919,11 @@ TODO: should VERB->ADJ always be tagged SN?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v="verb"/></let>
+        <choose><when>
+          <test><equal><clip pos="1" side="tl" part="lemh"/><lit v="være"/></equal></test>
+          <let><var n="c_name"/><lit v="vcop"/></let>
+        </when></choose>
         
         <choose>
           <when>
@@ -2059,7 +2064,7 @@ TODO: should VERB->ADJ always be tagged SN?">
                   </lu>
                 </chunk>
                 <b/>
-                <chunk name="verb">
+                <chunk namefrom="c_name">
                   <tags>
                     <tag><lit-tag v="SV"/></tag>
                     <tag><lit-tag v="@-FMAINV"/></tag>
@@ -2081,7 +2086,7 @@ TODO: should VERB->ADJ always be tagged SN?">
             </when>
             <otherwise c="Not passive pret (might still be prepended by cnjsub or causative verb):">
               <out>
-                <chunk name="verb" case="caseFirstWord">
+                <chunk namefrom="c_name" case="caseFirstWord">
                   <tags>
                     <tag><lit-tag v="SV"/></tag>
                     <tag><clip pos="1" side="sl" part="syn_label"/></tag>
@@ -2174,7 +2179,7 @@ TODO: should VERB->ADJ always be tagged SN?">
             </lu>
           </chunk>
           <b/>
-          <chunk name="verb">
+          <chunk namefrom="c_name">
             <tags>
               <tag><lit-tag v="SV"/></tag>
               <tag><lit-tag v="@-FMAINV"/></tag>
