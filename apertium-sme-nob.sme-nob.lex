@@ -90,6 +90,8 @@ SUBSTITUTE ("ieš") ("ieš:2") ("ieš" Pron Refl) (0 (@-FOBJ→) OR (@-FSUBJ→)
 # Máhtte rábmui iežas:2 vuoitit => Máhtte skrøt at _han_ skulle vinne 
 SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@→Pron) OR (@→N)) ;
 # ieš:3 dat muitalii => han _bare_ fortalte det
+SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@SUBJ→)) ;
+# ieža mun dájun
 
 
 # Rules that are not word-specific
