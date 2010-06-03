@@ -84,7 +84,7 @@ SUBSTITUTE ("gonagas") ("gonagas:1") ("gonagas" N Sg) (1 NPropMal) ;
 
 
 # ieš (default)=> seg
-SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl) (0 (@Pron←) OR (@→N)) ;
+SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl) (0 (@Pron←) OR (@N←)) ;
 # mun ieš:1 => meg _selv_
 SUBSTITUTE ("ieš") ("ieš:2") ("ieš" Pron Refl) (0 (@-FOBJ→) OR (@-FSUBJ→)) ;
 # Máhtte rábmui iežas:2 vuoitit => Máhtte skrøt at _han_ skulle vinne 

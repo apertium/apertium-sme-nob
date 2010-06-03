@@ -368,9 +368,11 @@ This is the third pass. Responsibilities of this file include:
                   Heuristics:
                   o default: mf
                   o p3 + sg
-                    - default: m
-                    - impersonal verb (marked in bidix): nt
-                    - else: chunk gender if it was set by t2x
+                    - default: nt (since we use this as default elsewhere too)
+                    - if animacy is impersonal (marked in bidix): nt
+                    - else if chunk gender was set by t2x: chunk gender
+                    - else if animacy is personal: m
+                  So an impersonal verb animacy will override the gender found on earlier subjects by t2x.
                   ">
       <let><var n="gender"/><lit-tag v="mf"/></let>
       <choose><when>
@@ -378,7 +380,7 @@ This is the third pass. Responsibilities of this file include:
           <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
           <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
         </and></test>
-        <let><var n="gender"/><lit-tag v="m"/></let>
+        <let><var n="gender"/><lit-tag v="nt"/></let>
         <choose>
           <when>
             <test><equal><clip pos="1" part="animacy"/><lit-tag v="impers"/></equal></test>
@@ -387,6 +389,10 @@ This is the third pass. Responsibilities of this file include:
           <when>
             <test><not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not></test>
             <let><var n="gender"/><clip pos="1" part="gen"/></let>
+          </when>
+          <when>
+            <test><equal><clip pos="1" part="animacy"/><lit-tag v="pers"/></equal></test>
+            <let><var n="gender"/><lit-tag v="m"/></let>
           </when>
         </choose>
       </when></choose>      

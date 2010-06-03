@@ -62,6 +62,9 @@ TODO:
     <def-cat n="pronref">
       <cat-item tags="Pron.Refl.*"/>
     </def-cat>
+    <def-cat n="pronref-PRONL">
+      <cat-item lemma="ieš:1" tags="Pron.Refl.*.*.@Pron←"/>
+    </def-cat>
     <def-cat n="pronitg">
       <cat-item tags="Pron.Interr.*"/>
     </def-cat>
@@ -748,50 +751,6 @@ TODO:
       </choose>
     </def-macro>
 
-    <def-macro n="guess_adj_gen_nbr" npar="1"
-               c="arg.1: adjective
-                  -----
-                  Modifies the lu (no variables set).
-                  Use when no noun present, otherwise use modify_adj_gen/nbr.
-                  Attributive superlatives are always(?) def in nob;
-                  predicative superlatives are only if they have a determiner first:
-                 1. min viktigste.def oppgave
-                 2. min oppgave er viktigst.ind
-                 3. min oppgave er den viktigste.def (rarer than 2)">
-      <choose>
-        <when>
-          <test>
-            <or>
-              <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="pp"/></equal>
-              <ends-with><clip pos="1" side="tl" part="grau"/><lit-tag v="posi"/></ends-with>
-            </or>
-          </test>
-          <let><clip pos="1" side="tl" part="gen"/><lit-tag v="nt"/></let>
-          <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
-        </when>
-        <when>
-          <test>
-            <equal> 
-              <clip pos="1" side="tl" part="grau"/>
-              <lit-tag v="comp"/>
-            </equal>
-          </test>
-          <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
-          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-        </when>
-        <when>
-          <test>
-            <equal> 
-              <clip pos="1" side="tl" part="grau"/>
-              <lit-tag v="sup"/>
-            </equal>
-          </test>
-          <let><clip pos="1" side="tl" part="gen"/><lit v=""/></let>
-          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-        </when>
-      </choose>
-    </def-macro>
-
     <def-macro n="modify_adj_gen_nbr" npar="2"
                c="arg.1: noun, arg.1: adjective
                   -----
@@ -1462,6 +1421,67 @@ TODO:
         <out><var n="foc-adv"/></out>
       </action>
     </rule>
+    
+    <rule comment="REGLA: PERSONAL_PRONOUN REFLEXIVE_PRONOUN
+                   mun ieš => meg selv
+                   Changes prpers case to accusative.
+                   TODO: Can there ever be a foc-adv? If so, on which of them?
+                   TODO: this really ought to be an mwe specified in the sme dictionary. Will this rule catch too much?">
+      <pattern>
+        <pattern-item n="pronpers"/>
+        <pattern-item n="pronref-PRONL"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_foc-adv"><with-param pos="1"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+        
+        <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
+        
+        <out>
+          <var n="case-prep"/>
+          <chunk name="pron" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_pron"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <clip pos="1" side="tl" part="pers"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+          <b pos="1"/>
+          <chunk name="det" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="tl" part="pers"/></tag>
+              <tag><clip pos="2" side="tl" part="gen"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_det"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
 
     <rule comment="REGLA: DET dán => dette
                               munno [geažil] => [på grunn av] oss to
@@ -1835,7 +1855,6 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
-        <call-macro n="guess_adj_gen_nbr"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <let><var n="c_def_pos"/><lit-tag v="6"/></let>
         <choose><when>

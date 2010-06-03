@@ -46,9 +46,8 @@ TODO:
     <def-cat n="spred-ess">
       <cat-item tags="SV.@←SPRED.*.ess"/>
     </def-cat>
-    <def-cat n="V-SUBJ">
-      <cat-item tags="SV.@←SUBJ.*"/>
-      <cat-item tags="SV.@SUBJ→.*"/>
+    <def-cat n="V">
+      <cat-item tags="SV.*"/>
     </def-cat>
     <def-cat n="RADVL">
       <cat-item lemma="adv" tags="@←ADVL"/>
@@ -283,12 +282,13 @@ TODO:
     </def-macro>
 
     <def-macro n="set_ana_gen" npar="1"
-               c="arg.1: SN (or SV used as nominal)
+               c="arg.1: SN or SV
                   -----
                   If we have a subject:
                   - If gender is m/f, store gender in 'ana_m_f' and 'ana_gen';
                   - If gender is nt or we're given a verb, store nt in 'ana_gen' only;
                   - Set 'ana_num'
+
                   Call 'apply_ana_gen' regardless (in case we have a GD).">
       <choose><when>
         <test><or>
@@ -310,7 +310,7 @@ TODO:
           </or></test>
           <let><var n="ana_gen"/><lit-tag v="nt"/></let>
         </when></choose>
-        
+
         <choose><when>
           <test><or>
             <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
@@ -646,7 +646,7 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_ana_temps"><with-param pos="1"/></call-macro>
-        <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>
@@ -655,13 +655,14 @@ TODO:
     
     <rule comment="REGLA: V_TD
                    -----
-                   use anaphoric temps/gen variables
+                   use anaphoric temps variables
+                   use/set anaphoric gen variable
                    mun dieđán Máreha čállime dál => jeg vet Máret skriver nå">
       <pattern>
         <pattern-item n="V_TD"/>
       </pattern>
       <action>
-        <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
         <let><clip pos="1" part="temps"/><var n="ana_temps"/></let>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -669,13 +670,11 @@ TODO:
       </action>
     </rule>
     
-    <rule comment="REGLA: V-SUBJ
+    <rule comment="REGLA: V
                    -----
-                   Verb used as nominal subject
-                   vuolgit lea suohtas => å reise er morsomt
-                   set anaphoric gen variable to nt">
+                   use/set anaphoric gen variable">
       <pattern>
-        <pattern-item n="V-SUBJ"/>
+        <pattern-item n="V"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
