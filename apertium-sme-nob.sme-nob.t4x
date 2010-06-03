@@ -339,13 +339,25 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </def-macro>
     
     <def-macro n="clean_pron" npar="2"
-               c="arg.1: pronoun, arg.2: chunk
+               c="arg.1: pronoun/determiner, arg.2: chunk
                   -----
-                  Put non-GD chunk gender on pronoun.">
+                  Put non-GD chunk gender on pronoun/determiner.">
       <choose><when>
         <test><and>
-          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
+          <equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal>
+          <not><equal><clip pos="2" part="nbr"/><lit v=""/></equal></not>
+        </and></test>
+        <let><clip pos="1" part="nbr"/><clip pos="2" part="nbr"/></let>
+      </when></choose>
+      <choose><when>
+        <test><equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal></test>
+        <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
+      </when></choose>
+      
+      <choose><when>
+        <test><and>
           <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
           <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
           <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
         </and></test>
@@ -364,9 +376,35 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
         <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
       </when></choose>
+    </def-macro>
+    
+    <def-macro n="clean_det" npar="2"
+               c="arg.1: determiner, arg.2: chunk
+                  -----
+                  Put non-GD chunk gender and non-ND chunk number on determiner.">
+      <choose><when>
+        <test><and>
+          <equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal>
+          <not><equal><clip pos="2" part="nbr"/><lit v=""/></equal></not>
+        </and></test>
+        <let><clip pos="1" part="nbr"/><clip pos="2" part="nbr"/></let>
+      </when></choose>
       <choose><when>
         <test><equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal></test>
         <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
+      </when></choose>
+      
+      <choose><when>
+        <test><and>
+          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+          <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
+          <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
+        </and></test>
+        <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
+      </when></choose>
+      <choose><when>
+        <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
+        <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
       </when></choose>
     </def-macro>
     
@@ -693,7 +731,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <pattern-item n="det"/>
       </pattern>
       <action>
-        <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <choose><when>
           <test><and>
             <equal><clip pos="1" part="a_det"/><lit-tag v="det.pos"/></equal>
