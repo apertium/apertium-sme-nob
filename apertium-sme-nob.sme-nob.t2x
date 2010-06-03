@@ -46,6 +46,10 @@ TODO:
     <def-cat n="spred-ess">
       <cat-item tags="SV.@←SPRED.*.ess"/>
     </def-cat>
+    <def-cat n="V-SUBJ">
+      <cat-item tags="SV.@←SUBJ.*"/>
+      <cat-item tags="SV.@SUBJ→.*"/>
+    </def-cat>
     <def-cat n="RADVL">
       <cat-item lemma="adv" tags="@←ADVL"/>
     </def-cat>
@@ -90,12 +94,18 @@ TODO:
   </section-def-cats>
 
   <section-def-attrs>
+    <def-attr n="a_sintagma">
+      <attr-item tags="SN"/>
+      <attr-item tags="SV"/>
+      <attr-item tags="SA"/>
+    </def-attr>
     <def-attr n="gen">
       <attr-item tags="m"/>
       <attr-item tags="f"/>
       <attr-item tags="mf"/>
       <attr-item tags="nt"/>
       <attr-item tags="GD"/>
+      <attr-item tags="GD_pers"/>
     </def-attr>
     <def-attr n="case">
       <attr-item tags="Nom"/>
@@ -194,7 +204,8 @@ TODO:
     <def-var n="c_name"/>
     <def-var n="c_tags"/>
     <def-var n="ana_temps" c="set by FV's, used on TD's"/>
-    <def-var n="ana_m_f" c="p3 sg gender set by SUBJ's, used on GD's, stored in FV's for t3x pro insertion"/>
+    <def-var n="ana_m_f" c="p3 sg gender (only m or f) set by SUBJ's, used on GD_pers's, stored in FV's for t3x pro insertion"/>
+    <def-var n="ana_gen" c="p3 sg gender (m, f, or nt) set by SUBJ's, used on GD's, stored in FV's for t3x pro insertion"/>
   </section-def-vars>
 
   <section-def-macros>
@@ -226,43 +237,20 @@ TODO:
         <let><var n="ana_temps"/><clip pos="1" part="temps"/></let>
       </when></choose>
     </def-macro>
-    
-    <def-macro n="set_ana_gen" npar="1"
-               c="arg.1: SN
-                  -----
-                  If gender is m/f and we have a subject, store gender in 'ana_m_f';
-                  then apply 'ana_m_f'-gender (in case we have a GD).
-                  TODO: ana_m_f_nt">
-      <choose><when>
-        <test><and>
-          <or>
-            <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
-            <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
-            <!-- is 'son' ever 'nt'? could we have a difference
-                 between GD-mf and GD-all? -->
-            <!-- <equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal> -->
-          </or>
-          <or>
-            <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
-            <equal><clip pos="1" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
-          </or>
-        </and></test>
-        <let><var n="ana_m_f"/><clip pos="1" part="gen"/></let>
-      </when></choose>
-
-      <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
-    </def-macro>
 
     <def-macro n="apply_ana_gen" npar="1"
                c="arg.1: SN or verb
                   -----
-                  If there's no gen clip, make sure we make one.
-                  (If no tags at all, put it after lemh; if tags but no gen, put it after the tags.)">
+                  If 'ana_m_f' is set, apply it if tagged GD_pers or no gender tag (eg. if we have a verb).
+                  If there's no gender tag, make sure we make one.
+                  (If no tags at all, put it after lemh; if tags but no gen, put it after the tags.)
+                  Else if 'ana_gen' is set, apply it if GD.
+                  TODO: check that impers verbs still output nt pro's!">
       <choose><when>
         <test><not><equal><var n="ana_m_f"/><lit v=""/></equal></not></test>
         <choose>
           <when>
-            <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
+            <test><equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal></test>
             <let><clip pos="1" part="gen"/><var n="ana_m_f"/></let>
           </when>
           <when>
@@ -275,6 +263,47 @@ TODO:
           </when>
         </choose>
       </when></choose>
+      
+      <choose><when>
+        <test><not><equal><var n="ana_gen"/><lit v=""/></equal></not></test>
+        <choose>
+          <when>
+            <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
+            <let><clip pos="1" part="gen"/><var n="ana_gen"/></let>
+          </when>
+        </choose>
+      </when></choose>
+    </def-macro>
+
+    <def-macro n="set_ana_gen" npar="1"
+               c="arg.1: SN (or SV used as nominal)
+                  -----
+                  If we have a subject:
+                  - If gender is m/f, store gender in 'ana_m_f' and 'ana_gen';
+                  - If gender is nt or we're given a verb, store nt in 'ana_gen' only;
+                  Call 'apply_ana_gen' regardless (in case we have a GD).">
+      <choose><when>
+        <test><or>
+          <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
+          <equal><clip pos="1" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+        </or></test>
+        <choose><when>
+          <test><or>
+            <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
+            <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
+          </or></test>
+          <let><var n="ana_m_f"/><clip pos="1" part="gen"/></let>
+          <let><var n="ana_gen"/><clip pos="1" part="gen"/></let>
+        </when></choose>
+        <choose><when>
+          <test><or>
+            <equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal>
+            <equal><clip pos="1" part="a_sintagma"/><lit-tag v="SV"/></equal>
+          </or></test>
+          <let><var n="ana_gen"/><lit-tag v="nt"/></let>
+        </when></choose>
+      </when></choose>
+      <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
     </def-macro>
   </section-def-macros>
 
@@ -616,6 +645,22 @@ TODO:
       <action>
         <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
         <let><clip pos="1" part="temps"/><var n="ana_temps"/></let>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    
+    <rule comment="REGLA: V-SUBJ
+                   -----
+                   Verb used as nominal subject
+                   vuolgit lea suohtas => å reise er morsomt
+                   set anaphoric gen variable to nt">
+      <pattern>
+        <pattern-item n="V-SUBJ"/>
+      </pattern>
+      <action>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>

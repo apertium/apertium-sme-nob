@@ -140,6 +140,11 @@ This is the third pass. Responsibilities of this file include:
   </section-def-cats>
 
   <section-def-attrs>
+    <def-attr n="a_sintagma">
+      <attr-item tags="SN"/>
+      <attr-item tags="SV"/>
+      <attr-item tags="SA"/>
+    </def-attr>
     <def-attr n="case">
       <attr-item tags="Nom"/>
       <attr-item tags="Acc"/>
@@ -178,6 +183,7 @@ This is the third pass. Responsibilities of this file include:
       <attr-item tags="mf"/>
       <attr-item tags="nt"/>
       <attr-item tags="GD"/>
+      <attr-item tags="GD_pers"/>
     </def-attr>
     <def-attr n="nbr">
       <attr-item tags="Sg"/>
@@ -309,10 +315,7 @@ This is the third pass. Responsibilities of this file include:
                   o advl 
                   Definite: 
                   o lokativ not in first position + leat
-                  o subjects of dual verbforms
-                  
-                  If gender is m/f and we have a subject, store gender in 'ana';
-                  if gender is GD, apply 'ana'-gender.">
+                  o subjects of dual verbforms">
       <choose><when>
         <test><not><equal caseless="yes"><clip pos="1" part="lemh"/><lit v="rel"/></equal></not></test>
         <!-- Set defnes: -->
@@ -364,8 +367,10 @@ This is the third pass. Responsibilities of this file include:
                c="arg.1: verb chunk
                   Heuristics:
                   o default: mf
-                  o p3 + sg: 'ana' if it's set, otherwise m
-                  o impersonal verb (marked in bidix): nt
+                  o p3 + sg
+                    - default: m
+                    - impersonal verb (marked in bidix): nt
+                    - else: chunk gender if it was set by t2x
                   ">
       <let><var n="gender"/><lit-tag v="mf"/></let>
       <choose><when>
@@ -373,24 +378,17 @@ This is the third pass. Responsibilities of this file include:
           <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
           <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
         </and></test>
+        <let><var n="gender"/><lit-tag v="m"/></let>
         <choose>
+          <when>
+            <test><equal><clip pos="1" part="animacy"/><lit-tag v="impers"/></equal></test>
+            <let><var n="gender"/><lit-tag v="nt"/></let>
+          </when>
           <when>
             <test><not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not></test>
             <let><var n="gender"/><clip pos="1" part="gen"/></let>
           </when>
-          <otherwise>
-            <let><var n="gender"/><lit-tag v="m"/></let>
-          </otherwise>
         </choose>
-      </when></choose>
-      <choose><when>
-        <test><and>
-          <equal><clip pos="1" part="animacy"/><lit-tag v="impers"/></equal>
-          <!-- or leat? or no other verb? -->
-          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
-        </and></test>
-        <let><var n="gender"/><lit-tag v="nt"/></let>
       </when></choose>      
     </def-macro>
     
