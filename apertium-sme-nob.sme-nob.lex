@@ -19,6 +19,7 @@ LIST Sur = Sur ;
 LIST FAUXV = @+FAUXV @-FAUXV ;
 LIST @SUBJ→ = @SUBJ→ ;
 LIST ActioEss = (Actio Ess) ;
+LIST PronPers = (Pron Pers) ;
 LIST PronPersIll = (Pron Pers Ill) ;
 LIST CURRENCY = "denara" "dollár" "euro" "kruvdnu" "kr" "ru" "rubel" "ruvdno" "ruvdnu" "¢" "€" "$";
 LIST Cond = (Cond) ;
@@ -91,7 +92,9 @@ SUBSTITUTE ("ieš") ("ieš:2") ("ieš" Pron Refl) (0 (@-FOBJ→) OR (@-FSUBJ→)
 SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@→Pron) OR (@→N)) ;
 # ieš:3 dat muitalii => han _bare_ fortalte det
 SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@SUBJ→)) ;
-# ieža mun dájun
+# ieža:3 mun dájun => jeg _bare_ tøver
+SUBSTITUTE ("ieš") ("ieš:4") ("ieš" Pron Refl) (0 (@←ADVL)) (NOT -1 PronPers) ;
+# Mun jurddašin iežainan => jeg tenkte med _meg selv_
 
 
 # Rules that are not word-specific

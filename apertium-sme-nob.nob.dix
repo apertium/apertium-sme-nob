@@ -270,6 +270,17 @@
   <e>       <p><l>dere</l>  <r>seg<s n="prn"/><s n="ref"/><s n="p2"/><s n="pl"/></r></p></e>
   <e>       <p><l>seg</l>   <r>seg<s n="prn"/><s n="ref"/><s n="p3"/><s n="pl"/></r></p></e>
 </pardef>
+<pardef n="/seg_selv__prn" c="todo: use this in nn-nb too?">
+  <e>       <p><l>meg<b/>selv</l>   <r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="p1"/><s n="sg"/></r></p></e>
+  <e>       <p><l>deg<b/>selv</l>   <r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="p2"/><s n="sg"/></r></p></e>
+  <e>       <p><l>seg<b/>selv</l>   <r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="p3"/><s n="sg"/></r></p></e>
+  <e>       <p><l>oss<b/>selv</l>   <r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="p1"/><s n="du"/></r></p></e>
+  <e>       <p><l>dere<b/>selv</l>  <r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="p2"/><s n="du"/></r></p></e>
+  <e>       <p><l>seg<b/>selv</l>   <r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="p3"/><s n="du"/></r></p></e>
+  <e>       <p><l>oss<b/>selv</l>   <r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="p1"/><s n="pl"/></r></p></e>
+  <e>       <p><l>dere<b/>selv</l>  <r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="p2"/><s n="pl"/></r></p></e>
+  <e>       <p><l>seg<b/>selv</l>   <r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="p3"/><s n="pl"/></r></p></e>
+</pardef>
 
 <pardef n="/seg__refl" c="TODO: better at the moment, we just discard this anyway">
   <e>       <p><l><b/>meg</l>   <r><g><b/>seg</g></r></p></e>
@@ -10701,6 +10712,7 @@
 <!-- TODO: tag for human/animate? -->
 <e lm="hvem">            <i>hvem</i><par n="hva__prn"/></e>
 <e lm="seg">             <i></i><par n="/seg__prn"/></e>
+<e lm="seg selv">             <i></i><par n="/seg_selv__prn"/></e>
 <e lm="hverandre">             <i>hverandre</i><par n="hverandre__prn"/></e>
 <e lm="ingen">           <i>in</i><par n="in/gen__prn"/></e>
 <e lm="en">           <i>en</i><par n="en__prn"/></e>
