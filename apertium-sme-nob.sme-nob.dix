@@ -20471,13 +20471,28 @@
     <e><p><l>vuovdnái<s n="A"/></l><r>pågående<s n="adj"/></r></p><par n="__adj"/></e>
 
 
-    <!-- Particles (TODO! change in transfer? lexical selection?)-->
+    <!-- Particles -->
+    <!-- If we have eg. reaškkihan, this is analysed as
+         reaškit<V><IV><VGen>+han<Pcle>
+         (dev/xfst2apertium.relabel keeps the + here)
+         and cg-proc puts the syntax tag on the first analysis. -->
     <e><p><l>ge<s n="Pcle"/></l><r>altså<s n="adv"/></r></p></e>
-    <e><p><l>go<s n="Pcle"/></l><r>da<s n="adv"/></r></p></e>
-    <e><p><l>nai<s n="Pcle"/></l><r>også<s n="adv"/></r></p></e>
+    <!-- gen => ??? TODO -->
+    <e><p><l>ges<s n="Pcle"/></l><r>nå<s n="adv"/></r></p></e>
+    <e><p><l>gis<s n="Pcle"/></l><r>nå<s n="adv"/></r></p></e>
+    <e><p><l>naj<s n="Pcle"/></l><r>også<s n="adv"/></r></p></e>
+    <e><p><l>han<s n="Pcle"/></l><r>jo<s n="adv"/></r></p></e>
+    <e><p><l>hal<s n="Pcle"/></l><r>jo<s n="adv"/></r></p></e>
+    <e><p><l>be<s n="Pcle"/></l><r>engang<s n="adv"/></r></p></e>
+    <e slr="1"><p><l>be<s n="Pcle"/></l><r>i<b/>det<b/>hele<b/>tatt<s n="adv"/></r></p></e>
+    <e slr="2"><p><l>be<s n="Pcle"/></l><r>selvfølgelig<s n="adv"/></r></p></e>
     <e><p><l>ba<s n="Pcle"/></l><r>engang<s n="adv"/></r></p></e>
     <e slr="1"><p><l>ba<s n="Pcle"/></l><r>i<b/>det<b/>hele<b/>tatt<s n="adv"/></r></p></e>
     <e slr="2"><p><l>ba<s n="Pcle"/></l><r>selvfølgelig<s n="adv"/></r></p></e>
+    <e><p><l>son<s n="Pcle"/></l><r>montro<s n="adv"/></r></p></e>
+
+    <e><p><l>go<s n="Pcle"/></l><r>da<s n="adv"/></r></p></e>
+    <e><p><l>bat<s n="Pcle"/></l><r>da<s n="adv"/></r></p></e>
 
     <!-- Adverbs -->
 
