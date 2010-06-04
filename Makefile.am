@@ -14,6 +14,7 @@ TARGETS_COMMON = \
 	$(LANG1).twol.hfst \
 	$(LANG1).lexc.hfst \
 	$(PREFIX1).automorf.hfst \
+	$(PREFIX1).automorf.hfst.ol \
 	$(PREFIX2).autogen.hfst \
 	$(PREFIX1).rlx.bin \
 	$(PREFIX1).lex.bin \
@@ -58,6 +59,9 @@ $(PREFIX1).automorf.hfst: $(PREFIX2).autogen.hfst dev/xfst2apertium.relabel .dep
 	hfst-compose-intersect -l $@.2.tmp .deps/xfst2apertium.hashtags.twol.hfst -o $@.3.tmp
 	hfst-substitute -F dev/xfst2apertium.relabel -i $@.3.tmp -o $@
 	@rm $@.1.tmp $@.2.tmp $@.3.tmp
+
+$(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
+	hfst-lookup-optimize -i $(PREFIX1).automorf.hfst -o $@
 
 ##
 ## 	BILINGUAL DICTIONARY
