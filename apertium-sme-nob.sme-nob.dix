@@ -137,6 +137,8 @@
     <sdef n="Der_ahtti" c="causative??? TODO"/>
     <sdef n="Der_d"    c="reflexive??? TODO"/>
     <sdef n="Der_alla" c="reflexive??? TODO"/>
+    <sdef n="Der_vuohta" c="Adj->Noun (-dom, -het)"/>
+    <sdef n="Der_at"   c="Adj->Adv"/>
     <sdef n="Der_n"    c="general deverbal noun??? TODO"/>
     <sdef n="pass"     c="Passive"/>
     <sdef n="pstv"     c="Lexicalised passive (st-verb)"/>
@@ -203,27 +205,6 @@
       <e><p><l><s n="Ill"/></l><r><s n="acc"/></r></p></e>
       <e><p><l><s n="Loc"/></l><r><s n="acc"/></r></p></e>
       <e><p><l/><r/></p></e>
-    </pardef>
-    <pardef n="__adj">
-      <!-- TODO: adj.ord, adj.pp, adj.pprs (all of which need GD and ND) -->
-      <e><p><l><s n="Attr"/></l>          <r><s n="posi"/><s n="GD"/><s n="ND"/></r></p></e>
-      <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
-      <e><p><l><s n="Sg"/><s n="Acc"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
-      <e><p><l><s n="Sg"/><s n="Gen"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
-      <e><p><l><s n="Sg"/><s n="Loc"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
-      <e><p><l><s n="Comp"/><s n="Sg"/><s n="Nom"/></l><r><s n="comp"/></r></p></e>
-      <e><p><l><s n="Comp"/></l>          <r><s n="comp"/></r></p></e>
-      <e><p><l><s n="Superl"/></l>        <r><s n="sup"/></r></p></e>
-      <e><p><l><s n="Superl"/><s n="Sg"/></l>        <r><s n="sup"/></r></p></e>
-      <e><p><l><s n="Superl"/><s n="Pl"/></l>        <r><s n="sup"/><s n="def"/></r></p></e>
-      <e><i/></e>
-
-      <!-- TODO: Focus [Foc_ge] etc.  -->
-      <!-- "Leago dát duođasge Sáme Radio oaivil ?" -->
-
-    </pardef>
-    <pardef n="cmp__adj" c="Adjectives which are only to be used as compound parts.">
-      <e><par n="__adj"/><p><l><s n="Cmp"/></l><r></r></p></e>
     </pardef>
     <pardef n="pron_dem__det_dem">
       <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="GD"/><s n="sg"/><s n="nom"/></r></p></e>
@@ -337,6 +318,34 @@
       <e><p><l><s n="Loc"/></l><r><s n="loc"/></r></p></e>
       <e><p><l></l><r></r></p></e>
     </pardef>
+    
+    <pardef n="__adj">
+      <!-- TODO: adj.ord, adj.pp, adj.pprs (all of which need GD and ND) -->
+      <e><p><l><s n="Attr"/></l>          <r><s n="posi"/><s n="GD"/><s n="ND"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Acc"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Gen"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Loc"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
+      <e><p><l><s n="Comp"/><s n="Sg"/><s n="Nom"/></l><r><s n="comp"/></r></p></e>
+      <e><p><l><s n="Comp"/></l>          <r><s n="comp"/></r></p></e>
+      <e><p><l><s n="Superl"/></l>        <r><s n="sup"/></r></p></e>
+      <e><p><l><s n="Superl"/><s n="Sg"/></l>        <r><s n="sup"/></r></p></e>
+      <e><p><l><s n="Superl"/><s n="Pl"/></l>        <r><s n="sup"/><s n="def"/></r></p></e>
+
+      <!-- Don't add an 'n' or 'adv' tag to the <r>'s here;
+           we don't introduce PoS changes in pardefs!
+           The derived nob noun might not exist. -->
+      <e r="LR"><p><l><s n="Der3"/><s n="Der_vuohta"/><s n="N"/></l> <r><s n="def"/></r></p><par n="__n"/></e>
+      <!-- Most adverbial uses of adjectives are posi.nt.sg.ind -->
+      <e r="LR"><p><l><s n="Der2"/><s n="Der_at"/><s n="Adv"/></l> <r><s n="adj"/><s n="posi"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
+      <!-- TODO: Focus [Foc_ge] etc.  -->
+      <!-- "Leago dát duođasge Sáme Radio oaivil ?" -->
+
+    </pardef>
+    <pardef n="cmp__adj" c="Adjectives which are only to be used as compound parts.">
+      <e><par n="__adj"/><p><l><s n="Cmp"/></l><r></r></p></e>
+    </pardef>
+
     <pardef n="__nbr_pers">
       <e><p><l><s n="Sg1"/></l><r><s n="sg"/><s n="p1"/></r></p></e>
       <e><p><l><s n="Sg2"/></l><r><s n="sg"/><s n="p2"/></r></p></e>
@@ -1319,6 +1328,7 @@
     <e><p><l>gažaldat<s n="N"/></l><r>spørsmål<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>geađgi<s n="N"/></l><r>stein<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>geafi<s n="N"/></l><r>legdslem<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>geafivuohta<s n="N"/></l><r>fattigdom<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>geahččalus<s n="N"/></l><r>prøvelse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>geahčči<s n="N"/></l><r>publikum<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>geahči<s n="N"/></l><r>ende<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1852,6 +1862,7 @@
     <e slr="1"><p><l>muitu<s n="N"/></l><r>hukommelse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>muogir<s n="N"/></l><r>knott<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>muohta<s n="N"/></l><r>snø<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
+    <e><p><l>muohtu<s n="N"/></l><r>kinn<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>muolda<s n="N"/></l><r>mold<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e slr="1"><p><l>muolda<s n="N"/></l><r>matjord<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>muorra<s n="N"/></l><r>tre<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -22579,7 +22590,7 @@
     <e><p><l>váillahit<s n="V"/><s n="TV"/></l><r>savne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>váilut<s n="V"/><s n="IV"/></l><r>mangle<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--váillui-->
     <e><p><l>váivašuvvat<s n="V"/><s n="IV"/></l><r>plages<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--šuvai-->
-    <e><p><l>vajáldahttit<s n="V"/><s n="TV"/></l><r>glømme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>vajáldahttit<s n="V"/><s n="TV"/></l><r>glemme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>vajálduhttit<s n="V"/><s n="TV"/></l><r>overse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>vaksineret<s n="V"/><s n="TV"/></l><r>vaksinere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>vákšut<s n="V"/><s n="TV"/></l><r>granske<g><b/>nøye</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) vávššun-->

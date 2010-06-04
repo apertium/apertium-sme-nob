@@ -283,15 +283,18 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       
       <choose><when>
         <test><and>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
           <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
           <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
         </and></test>
         <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
-      </when></choose>      
+      </when></choose>
       <choose><when>
         <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
         <let><clip pos="1" part="gen"/><lit-tag v="nt"/></let>
+      </when></choose>
+      <choose><when>
+        <test><equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal></test>
+        <let><clip pos="2" part="gen"/><lit-tag v="nt"/></let>
       </when></choose>
       
       <choose><when>
@@ -667,6 +670,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </pattern>
       <action>
         <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
         </out>

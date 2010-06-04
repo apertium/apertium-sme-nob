@@ -1872,6 +1872,11 @@ TODO:
           <let><var n="c_def_pos"/><lit-tag v="4"/></let>
         </when></choose>
 
+        <choose><when>
+          <test><not><equal><clip pos="1" side="sl" part="a_nom"/><lit v=""/></equal></not></test>
+          <let><var n="defnes"/><lit-tag v="def"/></let>
+        </when></choose>
+
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
           <chunk name="adj" case="caseFirstWord">
