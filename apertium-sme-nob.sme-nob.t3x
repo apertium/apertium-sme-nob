@@ -32,6 +32,7 @@ This is the third pass. Responsibilities of this file include:
       <cat-item tags="SN.@X.*"/>
       <cat-item tags="SV.@SUBJ→.*"/>
       <cat-item lemma="rel" tags="*.*.*.*.@SUBJ→"/>
+      <cat-item lemma="rel" tags="@SUBJ→.*"/>
     </def-cat>
     <def-cat n="maybe-RSUBJ">
       <cat-item lemma="unknown" tags="unknown"/>
@@ -661,6 +662,7 @@ This is the third pass. Responsibilities of this file include:
     </rule>
     <rule comment="REGLA: maybe-LSUBJ FV-Neg IV
                    Máhtte ii leat (boahtán) => Máhtte har ikke (kommet)
+                   TODO: gii in dárbbaš => som ikke behøver (needs new rule!)
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
         <pattern-item n="maybe-LSUBJ"/>
@@ -683,7 +685,7 @@ This is the third pass. Responsibilities of this file include:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: maybe-LSUBJ adv-FV-Neg adv-IV IV
+    <rule comment="REGLA: maybe-LSUBJ FV-Neg adv-IV IV
                    Son ii dáidde jienastit => Han stemmer nok ikke
                    Note: although 'dáidde' is tagged -FAUXV, it has tempus.
                    Override prodrop rule (TODO below) if we might have a subject to the left
@@ -924,7 +926,7 @@ This is the third pass. Responsibilities of this file include:
     </rule>
 
     <!-- <rules: CS SUBJ FV IV* -->
-    <rule comment="REGLA: CS maybe-LSUBJ adv-FV-Neg IV
+    <rule comment="REGLA: CS maybe-LSUBJ FV-Neg IV
                    Subordinate clause.
                    ahte áddjá ii dovdan => at bestefar (evt. ADV) ikke kjente">
       <pattern>
@@ -1025,7 +1027,7 @@ This is the third pass. Responsibilities of this file include:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: CS adv-FV-Neg IV
+    <rule comment="REGLA: CS FV-Neg IV
                    Subordinate clause.
                    go it boađáše => at/når du ikke kommer
                    Insert dropped pronoun">
