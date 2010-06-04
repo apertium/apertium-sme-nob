@@ -41,4 +41,4 @@ $SED -i".tmp" -e '
 s/\("[^" ;()]*\)#\([^" ;()]*"\)/\1\2/
 tSTART' "$1"
 
-echo "Done. Now manually remove SUBSTITUTE lines adding tags like ←uttv→"
+echo "Done. Now manually remove SUBSTITUTE lines adding tags like ←uttv→, and add +naj etc to LIST Foc_naj etc. and fix r16 to demand 'NOT 0 Pron OR N OR etc.'"
