@@ -140,6 +140,7 @@
     <sdef n="Der_vuohta" c="Adj->Noun (-dom, -het)"/>
     <sdef n="Der_at"   c="Adj->Adv"/>
     <sdef n="Der_n"    c="general deverbal noun??? TODO"/>
+    <sdef n="Der_st"    c="general deverbal noun??? TODO"/>
     <sdef n="pass"     c="Passive"/>
     <sdef n="pstv"     c="Lexicalised passive (st-verb)"/>
     <sdef n="Actor"    c="Deverbal agent/actor"/>
@@ -443,6 +444,13 @@
       <e><p><l><s n="Der2"/><s n="Der_alla"/><s n="V"/><s n="Ind"/><s n="Prt"/></l><r><s n="ref"/><s n="pret"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Der2"/><s n="Der_alla"/><s n="V"/><s n="PrfPrc"/></l><r><s n="ref"/><s n="pp"/></r></p></e>
       <e><p><l><s n="Der2"/><s n="Der_alla"/><s n="V"/><s n="Imprt"/></l><r><s n="ref"/><s n="inf"/><s n="sg"/><s n="p2"/></r></p></e>
+
+      <!-- TODO: add "litt"? or just let it slide, and add word-specific exceptions? -->
+      <e><p><l><s n="Der1"/><s n="Der_st"/><s n="V"/><s n="Inf"/></l><r><s n="inf"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_st"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Der1"/><s n="Der_st"/><s n="V"/><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Der1"/><s n="Der_st"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
+      <e><p><l><s n="Der1"/><s n="Der_st"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="sg"/><s n="p2"/></r></p></e>
 
       <!-- Definitely not sure about this: -->
       <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
@@ -20894,8 +20902,8 @@
     <e><p><l>báhkkodit<s n="V"/><s n="TV"/></l><r>ta<g><b/>til<b/>orde</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>báhtarit<s n="V"/><s n="IV"/></l><r>flykte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>báibmat<s n="V"/><s n="TV"/></l><r>gnåle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) báimman-->
-    <e><p><l>báidnit<s n="V"/><s n="IV"/></l><r>påvirke<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
-    <e slr="1"><p><l>báidnit<s n="V"/><s n="IV"/></l><r>farge<g><b/>av</g><s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>báidnit<s n="V"/><s n="TV"/></l><r>påvirke<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
+    <e slr="1"><p><l>báidnit<s n="V"/><s n="TV"/></l><r>farge<g><b/>av</g><s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
     <e><p><l>baikit<s n="V"/><s n="TV"/></l><r>skite<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) baikkii-->
     <e><p><l>báitit<s n="V"/><s n="IV"/></l><r>skinne<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) báittii-->
     <e><p><l>bajidit<s n="V"/><s n="TV"/></l><r>løfte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -22176,6 +22184,7 @@
     <e><p><l>oahpásmit<s n="V"/><s n="IV"/></l><r>kjent<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
     <e><p><l>oahppat<s n="V"/><s n="TV"/></l><r>lære<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>oaidnalit<s n="V"/><s n="IV"/></l><r>sees<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>oaidnit<s n="V"/><s n="TV"/><s n="Der1"/><s n="Der_st"/><s n="V"/></l><r>skimte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>oaidnit<s n="V"/><s n="TV"/></l><r>se<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) oinnii-->
     <e><p><l>oaivvildit<s n="V"/><s n="TV"/></l><r>tro<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e slr="1"><p><l>oaivvildit<s n="V"/><s n="TV"/></l><r>ta<g>stilling<b/>til</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
