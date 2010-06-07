@@ -84,6 +84,10 @@ SUBSTITUTE ("gonagas") ("gonagas:1") ("gonagas" N Sg) (1 NPropMal) ;
 # Konge Harald => Kong Harald
 
 
+# go (default)=> når
+SUBSTITUTE ("go") ("go:3") ("go" CS) (-1 ("nu" Adv)) ;
+# Elvenes oaččuiga Niehkostipeandda nu go leigga sávvan 
+
 # ieš (default)=> seg
 SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl) (0 (@Pron←) OR (@N←)) ;
 # mun ieš:1 => meg _selv_
