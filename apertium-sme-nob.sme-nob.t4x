@@ -7,7 +7,6 @@ This is the fourth pass. Responsibilities of this file include:
   * See rule: adj_nom
   * See macro: maybe_out_det
 * Cleanup
-  * Inserting spaces since we have no tokenisation
   * Making sure tags are consistent with nob.dix (esp. adjectives, personal pronouns)
   * See macro: clean_adj
 
@@ -608,10 +607,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <call-macro n="clean_case_defnes"><with-param pos="2"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
-          <!-- for now, this space isn't output since we don't have
-               superblanks in the hfst stream, so we add a space -->
           <b pos="1"/>
-          <b/>
           <lu><clip pos="2" part="whole"/></lu>
         </out>
       </action>
@@ -693,12 +689,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <out> 
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
-          <b/>         
           <lu><clip pos="2" part="whole"/></lu>
-          <!-- for now, this space isn't output since we don't have
-               superblanks in the hfst stream, so we add a space -->
           <b pos="2"/>
-          <b/>
           <lu><clip pos="3" part="whole"/></lu>
         </out>
       </action>
@@ -727,10 +719,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out>          
           <lu><clip pos="1" part="whole"/></lu>
-          <!-- for now, this space isn't output since we don't have
-               superblanks in the hfst stream, so we add a space -->
           <b pos="1"/>
-          <b/>
           <lu><clip pos="2" part="whole"/></lu>
         </out>
       </action>
@@ -746,10 +735,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out>          
           <lu><clip pos="1" part="whole"/></lu>
-          <!-- for now, this space isn't output since we don't have
-               superblanks in the hfst stream, so we add a space -->
           <b pos="1"/>
-          <b/>
           <lu><clip pos="2" part="whole"/></lu>
           <lu><clip pos="3" part="whole"/></lu>
         </out>
