@@ -22,7 +22,7 @@ You will need the following software installed:
 * lttoolbox (>= 3.1.2)
 * apertium (>= 3.1.1)
 * vislcg3 (>= 0.9.7.5129)
-* hfst (SVN revision 283 or later)
+* hfst (SVN revision 400 or later)
 
 If this does not make any sense, we recommend you look at: www.apertium.org
 
@@ -45,15 +45,14 @@ Testing
 If you are in the source directory after running make, the following
 commands should work:
 
-$ echo "Mus lea oahpahus gaskkal guovtti ja njealji" | tr ' ' '\n' | apertium -f none -d . sme-nob | tr '\n' ' '
-Jeg har undervisning mellom to  og  fire 
+$ echo "Mus lea oahpahus gaskkal guovtti ja njealji" | apertium -d . sme-nob
+Jeg har undervisning mellom to og fire 
 
-Note: each word needs to be on its own line in the input, since our
-HFST lookup tool has no tokeniser yet.
-
-The following command runs tests which are on the Apertium wiki page:
+The following commands run tests which are on the Apertium wiki page:
 
 $ sh regression-tests.sh 
+
+$ sh pending-tests.sh 
 
 Files and data
 ===============================================================================
