@@ -432,6 +432,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
         <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
       </when></choose>
+
+      <choose><when>
+        <test><equal><clip pos="1" part="nbr"/><lit-tag v="pl"/></equal></test>
+        <let><clip pos="1" part="gen"/><lit v=""/></let>
+      </when></choose>
     </def-macro>
     
     <def-macro n="clean_case_defnes" npar="2"
