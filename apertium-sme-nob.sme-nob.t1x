@@ -36,6 +36,7 @@ TODO:
     </def-cat>
     <def-cat n="pcle">
       <cat-item tags="Pcle.*"/>
+      <cat-item tags="Pcle"/>
     </def-cat>
     <def-cat n="pcle.qst">
       <cat-item lemma="go" tags="Pcle.*"/>
@@ -2347,10 +2348,15 @@ TODO: this should be an mwe in the analyser.">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
+        <choose><when>
+          <test><equal><var n="c_syn"/><lit v=""/></equal></test>
+          <let><var n="c_syn"/><lit-tag v="@PCLE"/></let>
+        </when></choose>
         <out>
           <chunk name="adv" case="caseFirstWord">
             <tags>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><var n="c_syn"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
             </tags>
             <lu>
