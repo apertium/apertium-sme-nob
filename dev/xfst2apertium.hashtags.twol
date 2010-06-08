@@ -21,6 +21,9 @@ Alphabet
 %+N
 %+A
 
+%+Cmpnd%+
+%+Cmpnd%+:0
+
 %+Cmp
 %+ShCmp
 %+Cmpnd
@@ -70,6 +73,10 @@ RemCmptag = 			! don't remove Cmp and ShCmp
 %+DefSgGenCmp 	%+DefPlGenCmp
 ;
 
+RemWICmptag =
+%+Cmpnd%+
+;
+
 KeepCmpAfter =			! could expand to include lemmas...
 %+N
 %+A
@@ -95,3 +102,6 @@ Rules
 RemCmptag:0 <=> \KeepCmpAfter _ ; 
 ! We don't remove +Cmp or +ShCmp tags since they follow lemmas, not +N or +A:
 ! mielbargin      miel+ShCmp#bargat+V+TV+Der2+Actor+N+Ess
+
+"Delete compound tags at the beginning of words"
+RemWICmptag:0 <=> [ # | #: ] _ ; 
