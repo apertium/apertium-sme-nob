@@ -327,7 +327,12 @@
       <e><p><l><s n="Sg"/><s n="Acc"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
       <e><p><l><s n="Sg"/><s n="Gen"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
       <e><p><l><s n="Sg"/><s n="Loc"/></l><r><s n="posi"/><s n="GD"/><s n="sg"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Nom"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Acc"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Gen"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Loc"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
       <e><p><l><s n="Comp"/><s n="Sg"/><s n="Nom"/></l><r><s n="comp"/></r></p></e>
+      <e><p><l><s n="Comp"/><s n="Pl"/><s n="Nom"/></l><r><s n="comp"/></r></p></e>
       <e><p><l><s n="Comp"/></l>          <r><s n="comp"/></r></p></e>
       <e><p><l><s n="Superl"/></l>        <r><s n="sup"/></r></p></e>
       <e><p><l><s n="Superl"/><s n="Sg"/></l>        <r><s n="sup"/></r></p></e>
@@ -454,6 +459,13 @@
 
       <!-- Definitely not sure about this: -->
       <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
+      
+      <!-- Der2.Actor TODO. We could say 'en/den som V.pres', but all
+           the examples I've seen so far have simply had the same form
+           as the present tense verb... (of course, we want to
+           override these below on discovering them, using
+           deverbal__n) -->
+      <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r><s n="pres"/></r></p></e>
 
       <!-- Modals, e.g. "Itgo boađáše?". We need the temps from boađáše, and the pro (nbr,pers) from "It"-->
       <e><p><l><s n="Cond"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
@@ -838,6 +850,7 @@
     <e><p><l>bárru<s n="N"/></l><r>bølge<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>barta<s n="N"/></l><r>hytte<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>bárti<s n="N"/></l><r>uhell<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e><p><l>básár<s n="N"/></l><r>basar<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>baste<s n="N"/></l><r>skei<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>basttat<s n="N"/></l><r>tang<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>bátni<s n="N"/></l><r>tann<s n="n"/></r></p><par n="m_RL_f__n"/></e>
