@@ -52,10 +52,16 @@ This is the third pass. Responsibilities of this file include:
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
     </def-cat>
-    <def-cat n="ROBJ">
+    <def-cat n="ROBJ_RPRED">
       <cat-item tags="SV.@←OBJ.*"/>
       <cat-item tags="SN.@←OBJ.*"/>
       <cat-item tags="SA.@←OBJ.*"/>
+      <cat-item tags="SV.@←OPRED.*"/>
+      <cat-item tags="SN.@←OPRED.*"/>
+      <cat-item tags="SA.@←OPRED.*"/>
+      <cat-item tags="SV.@←SPRED.*"/>
+      <cat-item tags="SN.@←SPRED.*"/>
+      <cat-item tags="SA.@←SPRED.*"/>
     </def-cat>
     <def-cat n="ILSUBJ" c="subject of infinite verb (setningstilsvar), may be object of finite verb">
       <cat-item tags="SN.@-FSUBJ→.*"/>
@@ -308,6 +314,22 @@ This is the third pass. Responsibilities of this file include:
       <let><var n="caseFirstWord"/><get-case-from pos="1"><clip pos="1" part="lemh"/></get-case-from></let>
       <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
       <modify-case><clip pos="2" part="lemh"/><var n="caseFirstWord"/></modify-case>
+    </def-macro>
+
+    <def-macro n="gender_concord" npar="2"
+               c="arg.1: verb, arg.2: adj
+                  -----
+                  Assumes set_pro has been called!
+                  Ensure that if we inserted a pro and had a copula and SA, the gender agrees.
+                  TODO: this should probably be called in more places.">
+      <choose><when>
+        <test><and>
+          <equal caseless="yes"><clip pos="2" part="a_sintagma"/><lit-tag v="SA"/></equal>
+          <equal caseless="yes"><clip pos="1" part="lemh"/><lit v="vcop"/></equal>
+          <not><equal><var n="pro"/><lit v=""/></equal></not>
+        </and></test>
+        <let><clip pos="2" part="gen"/><var n="gender"/></let>
+      </when></choose>
     </def-macro>
     
     <def-macro n="set_defnes2" npar="2"
@@ -1092,19 +1114,23 @@ This is the third pass. Responsibilities of this file include:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV-Qst ROBJ
+    <rule comment="REGLA: FV-Qst ROBJ_RPRED
                    Oainnátgo máná => Ser du barnet
                    Insert dropped pronoun">
       <pattern>
         <pattern-item n="FV-Qst"/>
-        <pattern-item n="ROBJ"/>
+        <pattern-item n="ROBJ_RPRED"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="1"/>
         </call-macro>
-        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>
+        <call-macro n="gender_concord">
+          <with-param pos="1"/>
+          <with-param pos="2"/>
+        </call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1321,13 +1347,13 @@ This is the third pass. Responsibilities of this file include:
       </action>
     </rule>
     
-    <!-- FV ROBJ -->
-    <rule comment="REGLA: FV ROBJ
+    <!-- FV ROBJ_RPRED -->
+    <rule comment="REGLA: FV ROBJ_RPRED
                    Váldde biergasiid => Ta sakene
                    geahččaledje jeđđet min = de prøvde å trøste oss">
       <pattern>
         <pattern-item n="FV"/>
-        <pattern-item n="ROBJ"/>
+        <pattern-item n="ROBJ_RPRED"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
