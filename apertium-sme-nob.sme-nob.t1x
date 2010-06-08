@@ -377,6 +377,7 @@ TODO:
   <section-def-vars>
     <def-var n="pron_gen"       c="pronoun gender"/>
     <def-var n="pron_nbr"       c="pronoun number"/>
+    <def-var n="pron_pers"       c="pronoun person (esp. for reflexive)"/>
     <def-var n="pre-nom"        c="lu's before nom-lu in nominal chunk"/>
     <def-var n="defnes"         c="definiteness (noun, adj)"/>
     <def-var n="c_name"         c="chunk name"/>
@@ -2171,22 +2172,32 @@ TODO: should VERB->ADJ always be tagged SN?">
               </out>
             </otherwise>
           </choose>
-          <choose c="Append 'seg' if reflexive:"><when>
+          <choose><when c="Append 'seg' if reflexive:">
             <test><equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal></test>
+            <let><var n="pron_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+            <let><var n="pron_pers"/><clip pos="1" side="tl" part="pers"/></let>
+            <choose><when>
+              <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
+              <let><var n="pron_nbr"/><lit-tag v="sg"/></let>
+            </when></choose>
+            <choose><when>
+              <test><equal><clip pos="1" side="tl" part="pers"/><lit v=""/></equal></test>
+              <let><var n="pron_pers"/><lit-tag v="p3"/></let>
+            </when></choose>
             <out>
               <b/>
               <chunk name="ref">
                 <tags>
                   <tag><lit-tag v="@←OBJ"/></tag>
-                  <tag><clip pos="1" side="tl" part="pers"/></tag>
-                  <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                  <tag><lit-tag v="Acc"/></tag>
+                  <tag><var n="pron_pers"/></tag>
+                  <tag><var n="pron_nbr"/></tag>
+                  <tag><lit-tag v="acc"/></tag>
                 </tags>
                 <lu>
                   <lit v="seg"/>
                   <lit-tag v="prn.ref"/>
-                  <clip pos="1" side="tl" part="pers"/>
-                  <clip pos="1" side="tl" part="nbr"/>
+                  <var n="pron_pers"/>
+                  <var n="pron_nbr"/>
                 </lu>
               </chunk>
             </out>
