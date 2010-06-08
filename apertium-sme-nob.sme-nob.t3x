@@ -299,7 +299,7 @@ This is the third pass. Responsibilities of this file include:
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="caseFirstWord"/>
+    <def-var n="tmpcase" c="tmp variable for switch_cases"/>
     <def-var n="case-switch" c="should set_pro 'switch' cases of pro and verb chunk?"/>
     <def-var n="gender"/>
     <def-var n="pro" c="in case it was dropped"/>
@@ -311,9 +311,9 @@ This is the third pass. Responsibilities of this file include:
   <section-def-macros>
     <def-macro n="switch_cases" npar="2"
                c="Simply switch the typographic cases (upper/lower/capital) of the two arguments.">
-      <let><var n="caseFirstWord"/><get-case-from pos="1"><clip pos="1" part="lemh"/></get-case-from></let>
+      <let><var n="tmpcase"/><get-case-from pos="1"><clip pos="1" part="lemh"/></get-case-from></let>
       <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
-      <modify-case><clip pos="2" part="lemh"/><var n="caseFirstWord"/></modify-case>
+      <modify-case><clip pos="2" part="lemh"/><var n="tmpcase"/></modify-case>
     </def-macro>
 
     <def-macro n="gender_concord" npar="2"

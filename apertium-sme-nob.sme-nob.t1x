@@ -450,10 +450,18 @@ TODO:
   </section-def-lists>
 
   <section-def-macros>
-    <def-macro n="set_caseFirstWord" npar="1">
-      <let><var n="caseFirstWord"/><get-case-from pos="1"><lit v="aa"/></get-case-from></let>
+    <def-macro n="set_caseFirstWord" npar="1"
+               c="Set the typographic case to be carried by the chunk.
+                  - if argument is _not_ a proper noun: caseFirstWord is the case of the lemma, and the lemma gets lowercase.
+                  - if argument _is_ a proper noun: caseFirstWord is lowercase, and lemma stays unchanged.
+                  
+                  (This means that if the sentence starts with a proper noun, and we insert eg. a preposition before that,
+                   the preposition won't get capitalised in t2x. We _could_ circumvent this by having a global variable
+                   'FirstWordSeen' that is set to false on periods and true for all other lexical units, but this is low priority.)">
+      <let><var n="caseFirstWord"/><lit v="aa"/></let>
       <choose><when>
         <test><not><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></not></test>        
+        <let><var n="caseFirstWord"/><get-case-from pos="1"><lit v="aa"/></get-case-from></let>
         <modify-case><clip pos="1" side="tl" part="lemh"/><lit v="aa"/></modify-case>
       </when></choose>
     </def-macro>
