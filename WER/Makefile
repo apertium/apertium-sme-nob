@@ -22,7 +22,8 @@ all : $(results) allbeam
 
 
 allbeam : $(MT)
-	@echo "Beam search (n=5) on all translations"
+	@echo ""
+	@echo "Running beam search (n=5) on all translations"
 	@echo "(use 'make allres' to eval everything with full search, takes a while)"
 	@cat $(MT) > allMT
 	@cat $(patsubst %.MT,%.nob,$(MT)) > allnob
