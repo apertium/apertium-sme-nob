@@ -292,6 +292,7 @@ This is the third pass. Responsibilities of this file include:
 
   <section-def-vars>
     <def-var n="caseFirstWord"/>
+    <def-var n="case-switch" c="should set_pro 'switch' cases of pro and verb chunk?"/>
     <def-var n="gender"/>
     <def-var n="pro" c="in case it was dropped"/>
     <def-var n="pro-blank" c="one space if there's a pro, else nothing"/>
@@ -403,27 +404,33 @@ This is the third pass. Responsibilities of this file include:
     
     <def-macro n="set_pro" npar="1"
                c="arg.1: verb chunk.
-                  If given an infinitive, make pro and pro-blank empty.">
+                  -----
+                  Don't call this directly, use set_pro_lowercase or set_pro_verb_case!
+                  (Assumes that case-switch is set.)
+                  If given an infinitive or imperative, make pro and pro-blank empty.">
       <choose>
         <when>
           <test><or>
             <equal><clip pos="1" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
             <equal><clip pos="1" part="syn_label"/><lit-tag v="@-FAUXV"/></equal>
-              <equal><clip pos="1" part="temps"/><lit-tag v="imp"/></equal><!--             <and> -->
-
-<!--               <equal><clip pos="1" part="pers"/><lit-tag v="p2"/></equal> -->
-<!--               <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal> -->
-<!--             </and> -->
+              <equal><clip pos="1" part="temps"/><lit-tag v="imp"/></equal>
           </or></test>
           <let><var n="pro"/><lit v=""/></let>
           <let><var n="pro-blank"/><lit v=""/></let>
         </when>
         <otherwise>
           <call-macro n="guess_gender"><with-param pos="1"/></call-macro>
+          <let><var n="pro"/><lit v="pron"/></let>
+          <choose><when>
+            <test><equal><var n="case-switch"/><lit v="yes"/></equal></test>
+            <let><var n="pro"/><get-case-from pos="1"><var n="pro"/></get-case-from></let>
+            <modify-case><clip pos="1" part="lemh"/><lit v="aa"/></modify-case>
+          </when></choose>
           <let>
             <var n="pro"/>
             <concat>
-              <lit v="^pron"/>
+              <lit v="^"/>
+              <var n="pro"/>
               <lit-tag v="@SUBJ"/>
               <clip pos="1" part="pers"/>
               <var n="gender"/>
@@ -443,6 +450,19 @@ This is the third pass. Responsibilities of this file include:
         </otherwise>
       </choose>
     </def-macro>
+    <def-macro n="set_pro_lowercase" npar="1"
+               c="arg.1: verb chunk.
+                  Gives pro lowercase, lets verb chunk keep its case.">
+      <let><var n="case-switch"/><lit v=""/></let>
+      <call-macro n="set_pro"><with-param pos="1"/></call-macro>
+    </def-macro>
+    <def-macro n="set_pro_verb_case" npar="1"
+               c="arg.1: verb chunk.
+                  Gives pro the case of verb chunk, gives verb chunk lowercase.">
+      <let><var n="case-switch"/><lit v="yes"/></let>
+      <call-macro n="set_pro"><with-param pos="1"/></call-macro>
+    </def-macro>
+    
     <def-macro n="set_adv" npar="1"
                c="arg.1: verb chunk.
                   Creates an adverb chunk to indicate conditional/potentialis case.
@@ -965,7 +985,7 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
-        <call-macro n="set_pro"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pro_lowercase"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -990,7 +1010,7 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="2"/>
           <with-param pos="3"/>
         </call-macro>
-        <call-macro n="set_pro"><with-param pos="3"/></call-macro>
+        <call-macro n="set_pro_lowercase"><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1015,7 +1035,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pro_verb_case"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1037,7 +1057,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pro_verb_case"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1060,7 +1080,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV-Qst"/>
       </pattern>
       <action>
-        <call-macro n="set_pro"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>        
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1082,7 +1102,7 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="2"/>
           <with-param pos="1"/>
         </call-macro>
-        <call-macro n="set_pro"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>        
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1101,7 +1121,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
@@ -1122,7 +1142,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_pro_verb_case"><with-param pos="1"/></call-macro>        
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>        
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
@@ -1151,7 +1171,7 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="3"/>
         </call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="3"/></call-macro>
-        <call-macro n="set_pro"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>        
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="3" part="whole"/></chunk>
@@ -1182,7 +1202,7 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="2"/>
         </call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
-        <call-macro n="set_pro"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pro_verb_case"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <var n="pro"/>
@@ -1209,7 +1229,7 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="3"/>
         </call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
-        <call-macro n="set_pro"><with-param pos="3"/></call-macro>
+        <call-macro n="set_pro_verb_case"><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <var n="pro"/>
@@ -1237,7 +1257,7 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
-        <call-macro n="set_pro"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pro_lowercase"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1274,7 +1294,7 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
-        <call-macro n="set_pro"><with-param pos="3"/></call-macro>
+        <call-macro n="set_pro_lowercase"><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1301,7 +1321,8 @@ This is the third pass. Responsibilities of this file include:
     
     <!-- FV ROBJ -->
     <rule comment="REGLA: FV ROBJ
-                   Váldde biergasiid => Ta sakene">
+                   Váldde biergasiid => Ta sakene
+                   geahččaledje jeđđet min = de prøvde å trøste oss">
       <pattern>
         <pattern-item n="FV"/>
         <pattern-item n="ROBJ"/>
@@ -1311,7 +1332,7 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="2"/>
           <with-param pos="1"/>
         </call-macro>
-        <call-macro n="set_pro"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pro_verb_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <var n="pro"/><var n="pro-blank"/>
@@ -1332,7 +1353,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pro_verb_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>        
         <out>
           <var n="pro"/>
