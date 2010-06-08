@@ -704,7 +704,7 @@
     <e><re>[0-9]*</re><p><l><s n="Num"/><s n="Sg"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
 
     <!-- Nouns -->
-    <e><re>[a-zæøå]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><re>[a-zA-ZæøåášŧŋđžčÆØÅÁŠŦŊĐŽČ]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <!-- Family terms may be indefinite in more contexts, todo: some tag? (other than 'uncountable'..) transfer def-list? -->
     <e><p><l>eadni<s n="N"/></l><r>mor<s n="n"/><s n="f"/></r></p><par n="unc__n"/></e>
     <e><p><l>áhčči<s n="N"/></l><r>far<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
@@ -779,6 +779,8 @@
     <e><p><l>artista<s n="N"/></l><r>artist<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>arva<s n="N"/></l><r>energi<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>arva<s n="N"/></l><r>viljestyrke<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>árvalus<s n="N"/></l><r>tanke<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e slr="1"><p><l>árvalus<s n="N"/></l><r>forslag<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>arvi<s n="N"/></l><r>regn<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>árvu<s n="N"/></l><r>verdi<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>árvvoštallan<s n="N"/></l><r>anmeldelse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -955,6 +957,7 @@
     <e><p><l>buollin<s n="N"/></l><r>forbrenning<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>buolva<s n="N"/></l><r>slektledd<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>buorrevuohta<s n="N"/></l><r>bonitet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>buresboahtin<s n="N"/></l><r>velkommen<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>bušeahtta<s n="N"/></l><r>budsjett<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>bussá<s n="N"/></l><r>katt<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>bussá<s n="N"/></l><r>katte<s n="n"/></r></p><par n="m_RL_f__n"/></e>
@@ -2019,6 +2022,7 @@
     <e><p><l>ovdaskuvlaoahpaheaddji<s n="N"/></l><r>førskolelærer<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>ovddastus<s n="N"/></l><r>representasjon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>ovttadat<s n="N"/></l><r>enhet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>ovttasbargu<s n="N"/></l><r>samarbeid<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>ovttastus<s n="N"/></l><r>forbindelse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>pakeha<s n="N"/></l><r>pakeha<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>paragráfa<s n="N"/></l><r>paragraf<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2208,6 +2212,7 @@
     <e><p><l>sealla<s n="N"/></l><r>celle<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>seaŋga<s n="N"/></l><r>seng<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>searvan<s n="N"/></l><r>medvirkning<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>searvegoddi<s n="N"/></l><r>menighet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>searvi<s n="N"/></l><r>forening<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>searvi<s n="N"/></l><r>selskap<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>segohus<s n="N"/></l><r>blanding<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2604,6 +2609,7 @@
     <e><p><l>Avvil<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Ivalo<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Vilgesvárri<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Blåfjellet<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Lujávri<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Lovozero<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Luleå<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Luleå<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Fálesnuorri<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Kvalsundet<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Nussir<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Steinfjellet<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Buollán<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Brenna<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
@@ -2643,6 +2649,7 @@
     <e><p><l>Gárjil<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Kariel<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Čáhcesuolu<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Vadsø<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Sállir<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Kvaløya<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Stockholm<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Stockholm<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
 
     <e r="LR"><p><l>Sámediggi<s n="N"/><s n="Prop"/><s n="Plc"/><s n="Sg"/></l><r>Sametinget<s n="np"/><s n="nt"/></r></p><par n="__np"/></e>
     <e><p><l>Sámediggi<s n="N"/><s n="Prop"/><s n="Org"/><s n="Sg"/></l><r>Sametinget<s n="np"/><s n="nt"/></r></p><par n="__np"/></e>
@@ -21072,6 +21079,7 @@
     <e><p><l>buoridit<s n="V"/><s n="TV"/></l><r>forbedre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>buorránit<s n="V"/><s n="IV"/></l><r>bedre<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
     <e><p><l>buozastit<s n="V"/><s n="IV"/></l><r>være syk en kort tid<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>buresboahtit<s n="V"/><s n="IV"/></l><r>ønske<g><b/>velkommen</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>buressivdnidit<s n="V"/><s n="TV"/></l><r>velsigne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>burgit<s n="V"/><s n="TV"/></l><r>rote<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>buvihit<s n="V"/><s n="TV"/></l><r>kvele<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -22230,9 +22238,11 @@
     <e><p><l>ostet<s n="V"/><s n="TV"/></l><r>barke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>ovdánit<s n="V"/><s n="IV"/></l><r>utvikle<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e>
     <e><p><l>ovddastit<s n="V"/><s n="TV"/></l><r>forestå<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
+    <e c="todo"><p><l>ovddasvástidit<s n="V"/><s n="IV"/></l><r>ha<g><b/>ansvar<b/>for</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>ovddidit<s n="V"/><s n="TV"/></l><r>fremme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>ovddit<s n="V"/></l><r>tidligere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>ovttaiduhttit<s n="V"/><s n="TV"/></l><r>integrere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>ovttasbargat<s n="V"/><s n="IV"/></l><r>samarbeide<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>ovttastahttit<s n="V"/><s n="TV"/></l><r>forene<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>parkeret<s n="V"/><s n="TV"/></l><r>parkere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>parodieret<s n="V"/><s n="TV"/></l><r>parodiere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
