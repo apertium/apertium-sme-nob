@@ -232,6 +232,7 @@
       <e><p><l><s n="Ill"/></l><r><s n="ill"/></r></p></e>
       <e><p><l><s n="Loc"/></l><r><s n="loc"/></r></p></e>
       <e><p><l><s n="Ess"/></l><r><s n="ND"/><s n="ess"/></r></p></e>
+      <e><p><l><s n="Com"/></l><r><s n="com"/></r></p></e>
     </pardef>
     <pardef n="__n">
       <e><p><l><s n="Sg"/></l><r><s n="sg"/><s n="CD"/></r></p></e>
@@ -712,11 +713,30 @@
 
     <!-- Numerals -->
 
+    <e r="LR"><p><l>nulla<s n="Num"/><s n="Sg"/></l><r>null<s n="det"/><s n="qnt"/><s n="sg"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>nolla<s n="Num"/><s n="Sg"/></l><r>null<s n="det"/><s n="qnt"/><s n="sg"/></r></p><par n="num__det_qnt"/></e>
     <e><p><l>okta<s n="Num"/><s n="Sg"/></l><r>en<s n="det"/><s n="qnt"/><s n="sg"/></r></p><par n="num__det_qnt"/></e>
     <e><p><l>guokte<s n="Num"/><s n="Sg"/></l><r>to<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
     <e><p><l>golbma<s n="Num"/><s n="Sg"/></l><r>tre<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
     <e><p><l>njeallje<s n="Num"/><s n="Sg"/></l><r>fire<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><re>[0-9]*</re><p><l><s n="Num"/><s n="Sg"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>vihtta<s n="Num"/><s n="Sg"/></l><r>fem<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>guhtta<s n="Num"/><s n="Sg"/></l><r>seks<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>čieža<s n="Num"/><s n="Sg"/></l><r>syv<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>gávcci<s n="Num"/><s n="Sg"/></l><r>åtte<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>ovcci<s n="Num"/><s n="Sg"/></l><r>ni<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>logi<s n="Num"/><s n="Sg"/></l><r>ti<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e r="LR"><p><l>čuohti<s n="Num"/><s n="Sg"/></l><r>hundre<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>čuođi<s n="Num"/><s n="Sg"/></l><r>hundre<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>duhát<s n="Num"/><s n="Sg"/></l><r>tusen<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e r="LR"><p><l>miljon<s n="Num"/><s n="Sg"/></l><r>million<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>millijovdna<s n="Num"/><s n="Sg"/></l><r>million<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+
+    <!-- TODO: correct nob.dix entries: -->
+    <e><p><l>moadde<s n="Num"/><s n="Sg"/></l><r>par<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e slr="1"><p><l>moadde<s n="Num"/><s n="Sg"/></l><r>noen<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>máŋga<s n="Num"/><s n="Sg"/></l><r>mange<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+
+    <e><re>[0-9]+</re><p><l><s n="Num"/><s n="Sg"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
     <e><re>[0-9][.,][0-9]+</re><p><l><s n="Num"/><s n="Sg"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
 
     <!-- Nouns -->
