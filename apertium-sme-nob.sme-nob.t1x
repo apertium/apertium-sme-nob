@@ -153,8 +153,9 @@ TODO:
       <cat-item lemma="skábmamánnu" tags="N.*"/>
       <cat-item lemma="juovlamánnu" tags="N.*"/>
     </def-cat>
-    <def-cat n="dot">
-      <cat-item lemma="." tags="CLB"/>
+    <def-cat n="ord">
+      <cat-item tags="A.Ord.*"/>
+      <cat-item tags="A.Ord"/>
     </def-cat>
     <def-cat n="beaivi">
       <cat-item lemma="beaivi" tags="N.*"/>
@@ -277,14 +278,14 @@ TODO:
       <attr-item tags="p3"/>
     </def-attr>
     <def-attr n="grau">
+      <attr-item tags="ord.posi"/>
+      <attr-item tags="ord.comp"/>
+      <attr-item tags="ord.sup"/>
       <attr-item tags="Comp"/>
       <attr-item tags="Superl"/>
       <attr-item tags="posi"/>
       <attr-item tags="comp"/>
       <attr-item tags="sup"/>
-      <attr-item tags="ord.posi"/>
-      <attr-item tags="ord.comp"/>
-      <attr-item tags="ord.sup"/>
     </def-attr>
     <def-attr n="gen">
       <attr-item tags="m"/>
@@ -2577,54 +2578,52 @@ TODO: this should be an mwe in the analyser.">
     </rule>
 
     <!-- <rules: Dates -->
-    <rule comment="REGLA: MONTH NUM DOT BEAIVI
+    <rule comment="REGLA: MONTH ORD BEAIVI
                    guovvamánu 17. beaivvi => 17. februar
-                   TODO: when we have proper tokenisation, make MONTH ORD BEAIVI rule... (then the CG can tag correctly too)
-                   TODO: on fragments like this, the CG gives us several mapping tags, which messes up the lex-sel CG
-                   TODO: should we also chunk MONTH NUM DOT BEAIVI YEAR ?">
+                   TODO: should we also chunk MONTH NUM DOT BEAIVI YEAR ?
+                   TODO: should we always delete the genitive here?">
       <pattern>
         <pattern-item n="month"/>
-        <pattern-item n="num"/>
-        <pattern-item n="dot"/>
+        <pattern-item n="ord"/>
         <pattern-item n="beaivi"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <chunk name="num_dot_nom" case="caseFirstWord">
+          <chunk name="adj_nom" case="caseFirstWord">
             <tags>
-              <tag><lit-tag v="@ADVL"/></tag>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="3" side="sl" part="mode"/></tag>
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
               <tag><var n="defnes"/></tag>
-              <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><clip pos="3" side="tl" part="case"/></tag>
             </tags>
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_num"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
             <b pos="1"/>
             <lu>
-              <clip pos="3" side="tl" part="whole"/>
-            </lu>
-            <b pos="2"/>
-            <b pos="3"/>
-            <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <lit-tag v="ind"/>
-              <clip pos="1" side="tl" part="gen-case"/>
+              <!-- <clip pos="1" side="tl" part="gen-case"/> -->
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="2"/><b/></equal></not></test>
+          <out><b pos="2"/></out>
+        </when></choose>
       </action>
     </rule>
   </section-rules>
