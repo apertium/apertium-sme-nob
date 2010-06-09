@@ -2581,7 +2581,8 @@ TODO: this should be an mwe in the analyser.">
     <rule comment="REGLA: MONTH ORD BEAIVI
                    guovvamánu 17. beaivvi => 17. februar
                    TODO: should we also chunk MONTH NUM DOT BEAIVI YEAR ?
-                   TODO: should we always delete the genitive here?">
+                   TODO: should we always delete the genitive here?
+                   TODO: do we ever want definite? ('den 17.februar')?">
       <pattern>
         <pattern-item n="month"/>
         <pattern-item n="ord"/>
@@ -2595,9 +2596,9 @@ TODO: this should be an mwe in the analyser.">
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="3" side="sl" part="syn_label"/></tag>
               <tag><clip pos="3" side="sl" part="mode"/></tag>
-              <tag><var n="c_gen"/></tag>
-              <tag><var n="c_nbr"/></tag>
-              <tag><var n="defnes"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <!-- <tag><lit-tag v="def"/></tag> -->
               <tag><clip pos="3" side="tl" part="case"/></tag>
             </tags>
             <lu>
