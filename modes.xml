@@ -2,8 +2,8 @@
 <modes>
   <mode name="sme-nob" install="yes">
     <pipeline>
-      <program name="hfst-proc">
-        <file name="sme-nob.automorf.hfst"/>
+      <program name="hfst-proc -p">
+        <file name="sme-nob.automorf.hfst.ol"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.rlx.bin"/> 
