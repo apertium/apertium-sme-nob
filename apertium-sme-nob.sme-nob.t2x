@@ -22,6 +22,7 @@ This is the second pass. Responsibilities of this file include:
 
 TODO:
 * relatives (SN "who" SV -> SN)
+* 'adpos' covers both Pr and Po, tag them as such in t1x so that the rules here don't overgeneralise
 -->
 
 <interchunk>
@@ -69,6 +70,10 @@ TODO:
     <def-cat n="PR-caseprep">
       <cat-item lemma="caseprep" tags="PR"/>
       <cat-item lemma="caseprep" tags="PR.*"/>
+    </def-cat>
+    <def-cat n="SN-prep">
+      <cat-item tags="SN.@P←.*"/>
+      <cat-item lemma="ref" tags="@P←.*"/>
     </def-cat>
     <def-cat n="SN-post">
       <cat-item tags="SN.@→P.*"/>
@@ -222,6 +227,19 @@ TODO:
       <modify-case><clip pos="2" part="lemh"/><var n="tmpcase"/></modify-case>
     </def-macro>
     
+    <def-macro n="clean_pron_of_adpos" npar="1"
+               c="arg.1: SN, might be pronoun">
+      <choose>
+        <when>
+          <test><equal><clip pos="1" part="lemh"/><lit v="pron"/></equal></test>
+          <let><clip pos="1" part="case"/><lit-tag v="acc"/></let>
+        </when>
+        <otherwise>
+          <let><clip pos="1" part="case"/><lit v=""/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
+
     <def-macro n="set_c_name3" npar="3" c="args should be given in order of output">
       <let>
         <var n="c_name"/>
@@ -526,24 +544,18 @@ TODO:
 
     <!-- <rules: Adpositions -->
     
-    <rule comment="REGLA: PR SN-post-advl RADVL -- Islandas eret => fra Island                                              
+    <rule comment="REGLA: PR-caseprep SN-post-advl RADVL
+                   -----
+                   Islandas eret => fra Island                                              
                    Don't output the PR since case was selected by the adverb anyway.">
       <pattern>
-        <pattern-item n="PR"/>
+        <pattern-item n="PR-caseprep"/>
         <pattern-item n="SN-post-advl"/>
         <pattern-item n="RADVL"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
-        <choose>
-          <when>
-            <test><equal><clip pos="2" part="lemh"/><lit v="pron"/></equal></test>
-            <let><clip pos="2" part="case"/><lit-tag v="acc"/></let>
-          </when>
-          <otherwise>
-            <let><clip pos="2" part="case"/><lit v=""/></let>
-          </otherwise>
-        </choose>
+        <call-macro n="clean_pron_of_adpos"><with-param pos="2"/></call-macro>
         <out>
           <b pos="1"/>
           <chunk><clip pos="3" part="whole"/></chunk>
@@ -552,25 +564,19 @@ TODO:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SN-post adpos -- garra dálkki geažil => på_grunn_av dårlig vær
-                                              dan geažil => på_grunn_av det
+    <rule comment="REGLA: PR-caseprep SN-post adpos
+                   -----
+                   garra dálkki geažil => på_grunn_av dårlig vær
+                   dan geažil => på_grunn_av det
                    Don't output the PR since case was selected by the adpos anyway.">
       <pattern>
-        <pattern-item n="PR"/>
+        <pattern-item n="PR-caseprep"/>
         <pattern-item n="SN-post"/>
         <pattern-item n="adpos"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
-        <choose>
-          <when>
-            <test><equal><clip pos="2" part="lemh"/><lit v="pron"/></equal></test>
-            <let><clip pos="2" part="case"/><lit-tag v="acc"/></let>
-          </when>
-          <otherwise>
-            <let><clip pos="2" part="case"/><lit v=""/></let>
-          </otherwise>
-        </choose>
+        <call-macro n="clean_pron_of_adpos"><with-param pos="2"/></call-macro>
         <out>
           <b pos="1"/>
           <chunk><clip pos="3" part="whole"/></chunk>
@@ -579,22 +585,16 @@ TODO:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN-post adpos">
+    <rule comment="REGLA: SN-post adpos
+                   -----
+                   Move postposition to front">
       <pattern>
         <pattern-item n="SN-post"/>
         <pattern-item n="adpos"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
-        <choose>
-          <when>
-            <test><equal><clip pos="1" part="lemh"/><lit v="pron"/></equal></test>
-            <let><clip pos="1" part="case"/><lit-tag v="acc"/></let>
-          </when>
-          <otherwise>
-            <let><clip pos="1" part="case"/><lit v=""/></let>
-          </otherwise>
-        </choose>
+        <call-macro n="clean_pron_of_adpos"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="1"/>
@@ -602,6 +602,31 @@ TODO:
         </out>
       </action>
     </rule>
+    
+    <rule comment="REGLA: adpos PR-caseprep SN-prep
+                   -----
+                   badjel ráji =1> over til grensen =2> over grensen
+                   Don't output the PR since case was selected by the adpos anyway.">
+      <pattern>
+        <pattern-item n="adpos"/>
+        <pattern-item n="PR"/>
+        <pattern-item n="SN-prep"/>
+      </pattern>
+      <action>
+        <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pron_of_adpos"><with-param pos="3"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+        </out>
+        <choose><when>
+          <test><not><equal><b pos="2"/><b/></equal></not></test>
+          <out><b pos="2"/></out>
+        </when></choose>
+      </action>
+    </rule>
+    
     
     <rule comment="REGLA: PR-caseprep SN
                    If the above rules didn't match, we keep the PR.
