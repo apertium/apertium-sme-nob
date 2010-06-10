@@ -423,6 +423,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <choose><when>
         <test><equal><clip pos="1" part="art"/><lit-tag v="DD"/></equal></test>
         <let><clip pos="1" part="art"/><lit-tag v="ind"/></let>
+        <let><clip pos="2" part="art"/><lit-tag v="ind"/></let>
       </when></choose>
       
       <choose><when>
@@ -435,6 +436,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <choose><when>
         <test><equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal></test>
         <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
+        <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
       </when></choose>
       
       <choose><when>
@@ -448,6 +450,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <choose><when>
         <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
         <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
+        <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
       </when></choose>
 
       <choose><when>
