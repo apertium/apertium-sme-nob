@@ -207,7 +207,7 @@
       <e><p><l><s n="Loc"/></l><r><s n="acc"/></r></p></e>
       <e><p><l/><r/></p></e>
     </pardef>
-    <pardef n="pron_dem__det_dem">
+    <pardef n="pron__det">
       <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="GD"/><s n="sg"/><s n="nom"/></r></p></e>
       <e><p><l><s n="Sg"/><s n="Acc"/></l><r><s n="GD"/><s n="sg"/><s n="acc"/></r></p></e>
       <e><p><l><s n="Sg"/><s n="Gen"/></l><r><s n="GD"/><s n="sg"/><s n="gen"/></r></p></e>
@@ -690,26 +690,28 @@
     <e slr="3"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>bare<s n="adv"/></r></p><par n="__prn-case"/><par n="LR_remove_nbr_pers"/></e>
     <e slr="4"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>seg<b/>selv<s n="prn"/><s n="ref"/></r></p><par n="__prn-case"/><par n="__nbr_pers"/></e>
 
-    <!-- Quantifiers: -->
-    <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e><p><l>buot<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e r="LR" c="alle sammen"><p><l>buohkat<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
-    <e><p><l>eará<s n="Pron"/><s n="Indef"/></l><r>annen<s n="det"/><s n="dem"/><s n="DD"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e slr="1"><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron_dem__det_dem"/></e> <!-- juohke lágán => alle slags, alle måter -->
+    <!-- Quantifiers (nob determiners often correspond to sme pronouns) -->
+    <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+    <e><p><l>buot<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+    <e r="LR" c="alle sammen"><p><l>buohkat<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+    <e><p><l>muhtun<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+    <e slr="1"><p><l>muhtun<s n="Pron"/><s n="Indef"/></l><r>en<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+    <e><p><l>eará<s n="Pron"/><s n="Indef"/></l><r>annen<s n="det"/><s n="dem"/><s n="DD"/></r></p><par n="pron__det"/></e>
+    <e><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+    <e slr="1"><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e> <!-- juohke lágán => alle slags, alle måter -->
+
     <e><p><l>goabbáge<s n="Pron"/><s n="Indef"/><s n="Sg"/></l><r>begge<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
     <e><p><l>ollu<s n="Pron"/><s n="Indef"/></l><r>mange<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
+    <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
 
-    <e><p><l>muhtun<s n="Pron"/><s n="Indef"/></l><r>en<s n="prn"/></r></p><par n="__prn-case"/></e>
 
     <!-- Pronouns/determiners (nob determiners often correspond to sme pronouns) -->
-    <e><p><l>dat<s n="Pron"/><s n="Dem"/></l><r>den<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e><p><l>dakkár<s n="Pron"/><s n="Dem"/></l><r>slik<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e><p><l>dát<s n="Pron"/><s n="Dem"/></l><r>denne<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e><p><l>diet<s n="Pron"/><s n="Dem"/></l><r>denne<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e><p><l>duot<s n="Pron"/><s n="Dem"/></l><r>den<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
-    <e><p><l>dot<s n="Pron"/><s n="Dem"/></l><r>den<s n="det"/><s n="dem"/></r></p><par n="pron_dem__det_dem"/></e>
+    <e><p><l>dat<s n="Pron"/><s n="Dem"/></l><r>den<s n="det"/><s n="dem"/></r></p><par n="pron__det"/></e>
+    <e><p><l>dakkár<s n="Pron"/><s n="Dem"/></l><r>slik<s n="det"/><s n="dem"/></r></p><par n="pron__det"/></e>
+    <e><p><l>dát<s n="Pron"/><s n="Dem"/></l><r>denne<s n="det"/><s n="dem"/></r></p><par n="pron__det"/></e>
+    <e><p><l>diet<s n="Pron"/><s n="Dem"/></l><r>denne<s n="det"/><s n="dem"/></r></p><par n="pron__det"/></e>
+    <e><p><l>duot<s n="Pron"/><s n="Dem"/></l><r>den<s n="det"/><s n="dem"/></r></p><par n="pron__det"/></e>
+    <e><p><l>dot<s n="Pron"/><s n="Dem"/></l><r>den<s n="det"/><s n="dem"/></r></p><par n="pron__det"/></e>
 
     <!-- Numerals -->
 
@@ -1105,7 +1107,7 @@
     <e><p><l>dárbu<s n="N"/></l><r>behov<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>dárkkástus<s n="N"/></l><r>kontroll<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>dárkkástus<s n="N"/></l><r>undersøkelse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>dárogiella<s n="N"/></l><r>norsk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>dárogiella<s n="N"/></l><r>norsk<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>dássi<s n="N"/></l><r>nivå<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>dássi<s n="N"/></l><r>jevnhøyde<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>datni<s n="N"/></l><r>tinn<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -1116,7 +1118,7 @@
     <e><p><l>dávvir<s n="N"/></l><r>eiendel<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>dávvir<s n="N"/></l><r>skatt<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="2"><p><l>dávvir<s n="N"/></l><r>verdi<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>davvisámegiella<s n="N"/></l><r>nordsamisk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>davvisámegiella<s n="N"/></l><r>nordsamisk<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>dáža<s n="N"/></l><r>nordmann<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>deaddu<s n="N"/></l><r>tyngde<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>deajat<s n="N"/></l><r>ukokt<b/>te<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
@@ -1487,6 +1489,8 @@
     <e slr="2"><p><l>guoibmi<s n="N"/></l><r>ektefelle<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="3"><p><l>guoibmi<s n="N"/></l><r>partner<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>guolásteapmi<s n="N"/></l><r>fiskeri<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e><p><l>guollebivdu<s n="N"/></l><r>fisketur<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e slr="1"><p><l>guollebivdu<s n="N"/></l><r>fiske<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>guolli<s n="N"/></l><r>fisk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>guomu<s n="N"/></l><r>mageinnhold<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>guorahallan<s n="N"/></l><r>analyse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1625,8 +1629,8 @@
     <e><p><l>journalista<s n="N"/></l><r>journalist<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>journalistihkka<s n="N"/></l><r>journalistikk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>juhkamuš<s n="N"/></l><r>drikk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>julevsámegiella<s n="N"/></l><r>lulesamisk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>julevsámegiella<s n="N"/></l><r>lulesamisk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>julevsámegiella<s n="N"/></l><r>lulesamisk<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
+    <e><p><l>julevsámegiella<s n="N"/></l><r>lulesamisk<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>julggaštus<s n="N"/></l><r>erklæring<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>juohkin<s n="N"/></l><r>utlevering<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>juolgi<s n="N"/></l><r>fot<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2225,7 +2229,7 @@
     <e><p><l>salla<s n="N"/></l><r>fang<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>šamána<s n="N"/></l><r>sjaman<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>sámegielkursa<s n="N"/></l><r>samiskkurs<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
-    <e><p><l>sámegiella<s n="N"/></l><r>samisk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>sámegiella<s n="N"/></l><r>samisk<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>sámegieloahppu<s n="N"/></l><r>samiskopplæring<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>sápmelaš<s n="N"/></l><r>same<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>sápmi<s n="N"/></l><r>same<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2401,7 +2405,7 @@
     <e><p><l>suola<s n="N"/></l><r>tjuv<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>suoládeapmi<s n="N"/></l><r>tyveri<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>suolu<s n="N"/></l><r>øy<s n="n"/></r></p><par n="m_RL_f__n"/></e>
-    <e><p><l>suomagiella<s n="N"/></l><r>finsk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>suomagiella<s n="N"/></l><r>finsk<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>suopman<s n="N"/></l><r>stemme<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>suopman<s n="N"/></l><r>dialekt<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>suopmelaš<s n="N"/></l><r>finlender<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -21049,7 +21053,6 @@
     <e><p><l>bisuhit<s n="V"/><s n="TV"/></l><r>beholde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>bivaldit<s n="V"/><s n="IV"/></l><r>mildne<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
     <e><p><l>bivastuvvat<s n="V"/><s n="IV"/></l><r>svette<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) -tuvan-->
-    <e><p><l>bivdit<s n="V"/><s n="TV"/></l><r>fiske<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>bivdit<s n="V"/><s n="TV"/></l><r>be<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e slr="1"><p><l>bivdit<s n="V"/><s n="TV"/></l><r>spørre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e slr="2"><p><l>bivdit<s n="V"/><s n="TV"/></l><r>fiske<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
