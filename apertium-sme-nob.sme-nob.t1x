@@ -391,6 +391,12 @@ TODO:
   </section-def-vars>
 
   <section-def-lists>
+    <def-list n="infinite_temps">
+      <list-item v="&lt;Inf&gt;"/>
+      <list-item v="&lt;inf&gt;"/>
+      <list-item v="&lt;PrfPrc&gt;"/>
+      <list-item v="&lt;pp&gt;"/>
+    </def-list>
     <def-list n="nt-verbs">
       <!-- These are not currently in use. -->
       <!-- They're all tagged "impers" in sme-nob, trying that instead for now. -->
@@ -2104,7 +2110,7 @@ TODO: should VERB->ADJ always be tagged SN?">
           <test><equal><clip pos="1" side="tl" part="lemh"/><lit v="være"/></equal></test>
           <let><var n="c_name"/><lit v="vcop"/></let>
         </when></choose>
-        
+
         <choose>
           <when>
             <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
@@ -2138,7 +2144,10 @@ TODO: should VERB->ADJ always be tagged SN?">
           <call-macro n="out_nom"><with-param pos="1"/></call-macro>
         </when>
         <when>
-          <test><begins-with><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></begins-with></test>
+          <test><and>
+            <begins-with><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></begins-with>
+            <not><equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal></not>
+          </and></test>
           <out>
             <chunk name="adj" case="caseFirstWord">
               <tags>
@@ -2211,17 +2220,18 @@ TODO: should VERB->ADJ always be tagged SN?">
           </when></choose>
           <choose c="Output verb, inserting aux (with temps) iff passive pret:
                      TODO: OK to just discard syn_label from pret.passives?">
-            <when>
+            <when c="iff passive pret/pp/adj">
               <test><and>
+                <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal>
                 <or>
+                  <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
                   <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
                   <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></equal>
                 </or>
-                <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal>
               </and></test>
               <let><var n="c_syn"/><lit-tag v="@+FAUXV"/></let>
               <choose><when>
-                <test><equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></equal></test>
+                <test><in><clip pos="1" side="tl" part="temps"/><list n="infinite_temps"/></in></test>
                 <let><var n="c_syn"/><lit-tag v="@-FAUXV"/></let>
               </when></choose>
               <out>
@@ -2238,33 +2248,63 @@ TODO: should VERB->ADJ always be tagged SN?">
                   </tags>
                   <lu>
                     <lit v="bli"/>
-                    <clip pos="1" side="tl" part="a_verb"/>
+                    <lit-tag v="vblex"/>
                     <clip pos="1" side="tl" part="temps"/>
                     <clip pos="1" side="tl" part="lemq"/>
                   </lu>
                 </chunk>
                 <b/>
-                <chunk namefrom="c_name">
-                  <tags>
-                    <tag><lit-tag v="SV"/></tag>
-                    <tag><lit-tag v="@-FMAINV"/></tag>
-                    <tag><clip pos="1" side="sl" part="mode"/></tag>
-                    <tag><clip pos="1" side="sl" part="modality"/></tag>
-                    <tag><lit-tag v="pp"/></tag>
-                    <tag><clip pos="1" side="tl" part="pers"/></tag>
-                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                    <tag><clip pos="1" side="tl" part="animacy"/></tag>
-                  </tags>
-                  <lu>
-                    <clip pos="1" side="tl" part="lemh"/>
-                    <clip pos="1" side="tl" part="a_verb"/>
-                    <lit-tag v="pp"/>
-                    <clip pos="1" side="tl" part="lemq"/>
-                  </lu>
-                </chunk>
               </out>
+              <choose c="Output the predicate of the passive construction, either verb or adj">
+                <when>
+                  <test><not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
+                  <out>
+                    <chunk name="adj">
+                      <tags>
+                        <tag><lit-tag v="SA"/></tag>
+                        <tag><lit-tag v="@-FMAINV"/></tag>
+                        <tag><clip pos="1" side="sl" part="mode"/></tag>
+                        <tag><clip pos="1" side="sl" part="modality"/></tag>
+                        <tag><clip pos="1" side="tl" part="pers"/></tag>
+                        <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                        <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                      </tags>
+                      <lu>
+                        <clip pos="1" side="tl" part="lemh"/>
+                        <clip pos="1" side="tl" part="a_adj"/>
+                        <lit-tag v="posi.mf"/>
+                        <clip pos="1" side="tl" part="nbr"/>
+                        <lit-tag v="ind"/>
+                        <clip pos="1" side="tl" part="lemq"/>
+                      </lu>
+                    </chunk>
+                  </out>
+                </when>
+                <otherwise>
+                  <out>
+                    <chunk namefrom="c_name">
+                      <tags>
+                        <tag><lit-tag v="SV"/></tag>
+                        <tag><lit-tag v="@-FMAINV"/></tag>
+                        <tag><clip pos="1" side="sl" part="mode"/></tag>
+                        <tag><clip pos="1" side="sl" part="modality"/></tag>
+                        <tag><lit-tag v="pp"/></tag>
+                        <tag><clip pos="1" side="tl" part="pers"/></tag>
+                        <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                        <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                      </tags>
+                      <lu>
+                        <clip pos="1" side="tl" part="lemh"/>
+                        <clip pos="1" side="tl" part="a_verb"/>
+                        <lit-tag v="pp"/>
+                        <clip pos="1" side="tl" part="lemq"/>
+                      </lu>
+                    </chunk>
+                  </out>
+                </otherwise>
+              </choose>
             </when>
-            <otherwise c="Not passive pret (might still be prepended by cnjsub or causative verb):">
+            <otherwise c="Not passive (might still be prepended by cnjsub or causative verb):">
               <out>
                 <chunk namefrom="c_name" case="caseFirstWord">
                   <tags>
