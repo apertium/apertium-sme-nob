@@ -471,12 +471,13 @@ rules), etc.
       <!-- Definitely not sure about this: -->
       <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
       
-      <!-- Der2.Actor TODO. We could say 'en/den som V.pres', but all
-           the examples I've seen so far have simply had the same form
-           as the present tense verb... (of course, we want to
-           override these below on discovering them, using
-           deverbal__n) -->
-      <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r><s n="pres"/></r></p></e>
+      <!-- Der2.Actor TODO. Sometimes it is necessary to say 'en/den
+           som V.pres', but many examples I've seen have looked better
+           with simply the present tense verb; perhaps the
+           differentiator should be whether the lemh contains anything
+           (of course, we want to override these below on discovering
+           them, using deverbal__n) -->
+      <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r><s n="pres"/></r></p><par n="__n"/></e>
 
       <!-- Modals, e.g. "Itgo boađáše?". We need the temps from boađáše, and the pro (nbr,pers) from "It"-->
       <e><p><l><s n="Cond"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>

@@ -50,6 +50,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <cat-item name="verb"/>
       <cat-item name="vcop"/>
     </def-cat>
+    <def-cat n="det_conj_verb">
+      <cat-item name="det_conj_verb"/>
+    </def-cat>
     <def-cat n="adj">
       <cat-item name="adj"/>
     </def-cat>
@@ -618,6 +621,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
+    
     <rule comment="CHUNK: prop">
       <pattern>
         <pattern-item n="prop"/>
@@ -922,6 +926,23 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </when></choose>
         <out> 
           <lu><clip pos="1" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    
+    <rule comment="CHUNK: det_conj_verb
+                   This is always of the form 'den som V', see NOM rule in t1x">
+      <pattern>
+        <pattern-item n="det_conj_verb"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <out> 
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
         </out>
       </action>
     </rule>
