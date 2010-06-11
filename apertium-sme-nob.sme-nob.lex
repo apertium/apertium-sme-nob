@@ -74,12 +74,16 @@ SUBSTITUTE ("easkka") ("easkka:1") ("easkka" Adv) (-1 ("de") OR ("dál")) ;
 
 SUBSTITUTE ("juohke") ("juohke:1") ("juohke" Pron Indef) (1 ("lágan") OR ("lágán")) ;
 
+# goabbáge 0 = begge, 1 = noe
+SUBSTITUTE ("goabbáge") ("goabbáge:1") ("goabbáge" Pron Indef Sg) (*-1 Neg) ;
+
+# duohta 0 = sann, 1 = virkelig
 SUBSTITUTE ("duohta") ("duohta:1") ("duohta" A Sg Loc) (0 @ADVL) ;
-# sann => virkelig
 
 SUBSTITUTE ("miella") ("miella:1") ("miella" N Sg Loc) (-1 @→N) ;
 # sinn => oppfatning (kan regelen vere meir generell?)
 
+# gonagas 0 = konge, 1 = kong
 SUBSTITUTE ("gonagas") ("gonagas:1") ("gonagas" N Sg) (1 NPropMal) ;
 # Konge Harald => Kong Harald
 
