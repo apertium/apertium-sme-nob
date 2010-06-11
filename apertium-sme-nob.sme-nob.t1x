@@ -50,6 +50,7 @@ TODO:
     </def-cat>
     <def-cat n="num_mod">
       <cat-item tags="Num.*.*.@→N"/>
+      <cat-item tags="Num.*.*.@→A"/>
     </def-cat>
     <def-cat n="num">
       <cat-item tags="Num.*"/>
@@ -1165,6 +1166,7 @@ TODO:
     </rule>
 
     <rule comment="REGLA: NUM_MOD NOM
+                   -----
                    Oblique use of num nom, here the nominal is the head (case-prep, syn_label)
                    so we use out_nom
                    (but we copy genitive-case and number from the numeral onto the nom).
@@ -1197,6 +1199,57 @@ TODO:
         <let><clip pos="2" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: NUM_MOD ADJ_ATTR NOM
+                   -----
+                   22 jahkásaš Tine
+                   (see above rule)">
+      <pattern>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
+
+        <!-- Here we call set_defnes2 because after a numeral quantifier it should be indefinite -->
+        <call-macro n="set_defnes2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        
+        <!-- We set c_def_pos here and use that for both adj and nom,
+             so that if defnes changes in t2x/t3x, both adj and nom
+             get the change in t4x: -->
+        <call-macro n="set_c_def_pos"><with-param pos="2"/></call-macro>        
+        <let><var n="c_name"/><lit v="num_adj_nom"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="c_def_pos"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+          </concat>
+        </let>
+        <let><clip pos="3" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
+        <let><clip pos="3" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
 
@@ -1885,7 +1938,10 @@ TODO:
       </action>
     </rule>
 
-    <rule comment="REGLA: ADJ_ATTR NOM almmolaš bálvalusaide => til offentlige tjenester">
+    <rule comment="REGLA: ADJ_ATTR NOM
+                   -----
+                   almmolaš bálvalusaide => til offentlige tjenester
+                   almmolaš bálvalus => (den) offentlige tjenesten">
       <pattern>
         <pattern-item n="adj_attr"/>
         <pattern-item n="nom"/>
@@ -1898,7 +1954,7 @@ TODO:
         <let><var n="c_name"/><lit v="adj_nom"/></let>
 
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
-
+        
         <!-- We set c_def_pos here and use that for both adj and nom,
              so that if defnes changes in t2x/t3x, both adj and nom
              get the change in t4x: -->
@@ -2258,6 +2314,7 @@ TODO: should VERB->ADJ always be tagged SN?">
               <choose c="Output the predicate of the passive construction, either verb or adj">
                 <when>
                   <test><not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
+                  <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
                   <out>
                     <chunk name="adj">
                       <tags>
@@ -2266,15 +2323,14 @@ TODO: should VERB->ADJ always be tagged SN?">
                         <tag><clip pos="1" side="sl" part="mode"/></tag>
                         <tag><clip pos="1" side="sl" part="modality"/></tag>
                         <tag><clip pos="1" side="tl" part="pers"/></tag>
-                        <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                        <tag><var n="c_gen"/></tag>
+                        <tag><var n="c_nbr"/></tag>
                         <tag><clip pos="1" side="tl" part="animacy"/></tag>
                       </tags>
                       <lu>
                         <clip pos="1" side="tl" part="lemh"/>
                         <clip pos="1" side="tl" part="a_adj"/>
-                        <lit-tag v="posi.mf"/>
-                        <clip pos="1" side="tl" part="nbr"/>
-                        <lit-tag v="ind"/>
+                        <lit-tag v="posi.GD.ND.ind"/>
                         <clip pos="1" side="tl" part="lemq"/>
                       </lu>
                     </chunk>

@@ -50,6 +50,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <def-cat n="adj">
       <cat-item name="adj"/>
     </def-cat>
+    <def-cat n="num_adj_nom">
+      <cat-item name="num_adj_nom"/>
+    </def-cat>
     <def-cat n="det_adj_nom">
       <cat-item name="det_adj_nom"/>
     </def-cat>
@@ -272,21 +275,18 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                   -----
                   - Try to apply chunk nbr/gender if ND/GD, else set to sg/nt.
                   - Change m or f to mf.
-                  - If empty number tag and posi/pp, set to pl.
+                  - If empty number tag and posi/pp, set to sg.
                     - Can we fix this in bidix?
                   - Remove defness unless superlatives or posi/pp.sg 
                   - Remove gender unless posi/pp.sg.ind
+                  - Make all adj.ord plural
                   ">
       <choose><when>
         <test><and>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal>
-          <not><equal><clip pos="2" part="nbr"/><lit v=""/></equal></not>
+          <equal><clip pos="1" part="grau"/><lit v=""/></equal>
+          <not><equal><clip pos="1" part="a_adj"/><lit-tag v="adj.pprs"/></equal></not>
         </and></test>
-        <let><clip pos="1" part="nbr"/><clip pos="2" part="nbr"/></let>
-      </when></choose>
-      <choose><when>
-        <test><equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal></test>
-        <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
+        <let><clip pos="1" part="a_adj"/><concat><clip pos="1" part="a_adj"/><lit-tag v="posi"/></concat></let>
       </when></choose>
       
       <choose><when>
@@ -296,10 +296,16 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </and></test>
         <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
       </when></choose>
-      <choose><when>
-        <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
-        <let><clip pos="1" part="gen"/><lit-tag v="nt"/></let>
-      </when></choose>
+      <choose>
+        <when>
+          <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
+          <let><clip pos="1" part="gen"/><lit-tag v="nt"/></let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
+          <let><clip pos="1" part="grau"/><concat><clip pos="1" part="grau"/><lit-tag v="nt"/></concat></let>
+        </when>
+      </choose>
       <choose><when>
         <test><equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal></test>
         <let><clip pos="2" part="gen"/><lit-tag v="nt"/></let>
@@ -315,27 +321,31 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       
       <choose><when>
         <test><and>
-          <equal><clip pos="1" part="grau"/><lit v=""/></equal>
-          <not><equal><clip pos="1" part="a_adj"/><lit-tag v="adj.pprs"/></equal></not>
+          <equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal>
+          <not><equal><clip pos="2" part="nbr"/><lit v=""/></equal></not>
         </and></test>
-        <let>
-          <clip pos="1" part="a_adj"/>
-          <concat><clip pos="1" part="a_adj"/><lit-tag v="posi"/></concat>
-        </let>
+        <let><clip pos="1" part="nbr"/><clip pos="2" part="nbr"/></let>
+      </when></choose>
+      <choose><when>
+        <test><equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal></test>
+        <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
       </when></choose>
       
       <choose><when>
-        <test><and>
-          <equal><clip pos="1" part="nbr"/><lit v=""/></equal>
-          <or>
-            <equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal>
-            <ends-with><clip pos="1" part="grau"/><lit-tag v="posi"/></ends-with>
-          </or>
-        </and></test>
-        <let>
-          <clip pos="1" part="grau"/>
-          <concat><clip pos="1" part="grau"/><lit-tag v="pl"/></concat>
-        </let>
+        <test><equal><clip pos="1" part="nbr"/><lit v=""/></equal></test>
+        <choose>
+          <when>
+            <test><or>
+              <equal><clip pos="1" part="grau"/><lit-tag v="pp"/></equal>
+              <equal><clip pos="1" part="grau"/><lit-tag v="posi"/></equal>
+            </or></test>
+            <let><clip pos="1" part="gen"/><concat><clip pos="1" part="gen"/><lit-tag v="sg"/></concat></let>
+          </when>
+          <when>
+            <test><begins-with><clip pos="1" part="grau"/><lit-tag v="ord"/></begins-with></test>
+            <let><clip pos="1" part="gen"/><concat><clip pos="1" part="gen"/><lit-tag v="pl"/></concat></let>
+          </when>
+        </choose>          
       </when></choose>
       
       <choose><when>
@@ -781,6 +791,23 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>         
           <lu><clip pos="2" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: num_adj_nom">
+      <pattern>
+        <pattern-item n="num_adj_nom"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_case_defnes"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <out> 
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
         </out>
       </action>
     </rule>
