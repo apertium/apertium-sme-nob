@@ -22,6 +22,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <def-cat n="cmp_nom">
       <cat-item name="cmp_nom"/>
     </def-cat>
+    <def-cat n="cmp_cmp_nom">
+      <cat-item name="cmp_cmp_nom"/>
+    </def-cat>
     <def-cat n="det_cmp_nom">
       <cat-item name="det_cmp_nom"/>
     </def-cat>
@@ -67,6 +70,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </def-cat>
     <def-cat n="adj_cmp_nom">
       <cat-item name="adj_cmp_nom"/>
+    </def-cat>
+    <def-cat n="adj_cmp_cmp_nom">
+      <cat-item name="adj_cmp_cmp_nom"/>
     </def-cat>
     <def-cat n="det">
       <cat-item name="det"/>
@@ -652,6 +658,24 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
+    <rule comment="CHUNK: cmp_cmp_nom
+                   Maybe insert a determiner">
+      <pattern>
+        <pattern-item n="cmp_cmp_nom"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_case_defnes"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <!-- Compound; we keep the given space but don't add anything: -->
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
     <rule comment="CHUNK: prenom_nom
                    Don't insert a determiner">
       <pattern>
@@ -845,6 +869,26 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
           <lu><clip pos="3" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>    
+    <rule comment="CHUNK: adj_cmp_cmp_nom
+                   Maybe insert a determiner">
+      <pattern>
+        <pattern-item n="adj_cmp_cmp_nom"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_case_defnes"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
+        <out>          
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
         </out>
       </action>
     </rule>
