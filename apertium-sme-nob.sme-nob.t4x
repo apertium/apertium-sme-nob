@@ -502,7 +502,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <def-macro n="maybe_out_det" npar="1"
                c="arg.1: chunk
                   -----
-                  For eg. 'det_nom' or 'adj_nom', to make sure we say 'den andre/lyse hunden' (not 'andre/lyse hunden')">
+                  For eg. 'det_nom' or 'adj_nom', to make sure we say 'den andre/lyse hunden' (not 'andre/lyse hunden')
+                  TODO: need to send in (as arg) the lexical unit that switches case with the determiner!">
       <choose>
         <when>
           <test><and>
@@ -515,7 +516,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
               <test><equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal></test>
               <out>
                 <lu>
-                  <lit v="den"/>
+                  <get-case-from pos="1"><lit v="den"/></get-case-from>
                   <lit-tag v="det.dem"/>
                   <clip pos="1" part="gen"/>
                   <clip pos="1" part="nbr"/>
@@ -526,13 +527,14 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
             <otherwise>
               <out>
                 <lu>
-                  <lit v="den"/>
+                   <get-case-from pos="1"><lit v="den"/></get-case-from>
                   <lit-tag v="det.dem.pl"/>
                 </lu>
                 <b/>
               </out>
             </otherwise>
           </choose>
+          <modify-case><clip pos="1" part="lemh"/><lit v="aa"/></modify-case>
         </when>
         <when>
           <test><and>
@@ -543,17 +545,19 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           </and></test>
           <out>
             <lu>
-              <lit v="en"/>
+              <get-case-from pos="1"><lit v="en"/></get-case-from>
               <lit-tag v="det.qnt"/>
               <clip pos="1" part="gen"/>
               <clip pos="1" part="nbr"/>
             </lu>
             <b/>
           </out>
+          <modify-case><clip pos="1" part="lemh"/><lit v="aa"/></modify-case>
         </when>
         <!-- otherwise: no determiner -->
       </choose>
-    </def-macro>    
+    </def-macro>
+    
     <def-macro n="maybe_out_det2" npar="2"
                c="arg.1: nominal chunk, arg.2: determiner
                   -----
