@@ -420,24 +420,21 @@ TODO:
 
     <!-- <rules: Weird stuff -->
     <rule comment="REGLA: PR pron-RADVL spred-ess
-                   til meg hjelpe => og hjelper meg">
+                   til meg som hjelper => og hjelper meg">
       <pattern>
         <pattern-item n="PR"/>
         <pattern-item n="pron-RADVL"/>
+        <pattern-item n="PR-caseprep"/>
         <pattern-item n="spred-ess"/>
       </pattern>
       <action>
         <out>
           <chunk>
-            <lit v="coor_pron"/>
-            <clip pos="3" part="tags"/>
-            <lit v="{^"/>
-            <lit v="og"/><lit-tag v="cnjcoo"/>
-            <lit v="$"/>
-            <b pos="1"/>
-            <clip pos="3" part="content"/>
-            <lit v="}"/>
-            <clip pos="3" part="lemq"/>
+            <lit v="conj{^og"/><lit-tag v="cnjcoo"/><lit v="$}"/>
+          </chunk>
+          <b pos="1"/>
+          <chunk>
+            <clip pos="4" part="whole"/>
           </chunk>
           <b pos="2"/>
           <chunk>

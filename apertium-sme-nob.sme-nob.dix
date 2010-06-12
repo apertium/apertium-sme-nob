@@ -477,7 +477,9 @@ rules), etc.
            differentiator should be whether the lemh contains anything
            (of course, we want to override these below on discovering
            them, using deverbal__n) -->
-      <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/><s n="Du"/></l><r><s n="pl"/><s n="pres"/></r></p></e>
+      <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/><s n="Pl"/></l><r><s n="pl"/><s n="pres"/></r></p></e>
+      <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r><s n="sg"/><s n="pres"/></r></p></e>
 
       <!-- Modals, e.g. "Itgo boađáše?". We need the temps from boađáše, and the pro (nbr,pers) from "It"-->
       <e><p><l><s n="Cond"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
@@ -521,7 +523,7 @@ rules), etc.
     <pardef n="pstv__verb">
       <e><p><l></l><r><s n="pstv"/></r></p><par n="__verb"/></e>
     </pardef>
-    <pardef n="deverbal__n">
+    <pardef n="deverbal__n" c="by calling __n, we get more specific matches, making this override the entries in __verb">
       <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r></r></p><par n="__n"/></e>
       <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r></r></p><par n="__n"/></e>
     </pardef>

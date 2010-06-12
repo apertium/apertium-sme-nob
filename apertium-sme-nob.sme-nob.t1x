@@ -809,6 +809,7 @@ TODO:
                   syn_label of the nominal.
                   Removes nbr if given proper noun.">
       <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+      <out><var n="case-prep"/></out>
 
       <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
       <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
@@ -816,31 +817,118 @@ TODO:
         <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
         <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
       </when></choose>
-      <out>
-        <var n="case-prep"/>
-        <chunk namefrom="c_name" case="caseFirstWord">
-          <tags>
-            <tag><lit-tag v="SN"/></tag>
-            <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-            <tag><clip pos="1" side="sl" part="mode"/></tag>
-            <tag><var n="c_gen"/></tag>
-            <tag><var n="c_nbr"/></tag>
-            <tag><var n="defnes"/></tag>
-            <tag><clip pos="1" side="tl" part="case"/></tag>
-            <tag><clip pos="1" side="tl" part="a_count"/></tag>
-          </tags>
-          <var n="pre-nom"/>
-          <lu>
-            <clip pos="1" side="tl" part="lemh"/>
-            <clip pos="1" side="tl" part="a_nom"/>
-            <clip pos="1" side="tl" part="gen"/>
-            <clip pos="1" side="tl" part="nbr"/>
-            <var n="c_def_pos"/>
-            <clip pos="1" side="tl" part="gen-case"/>
-            <clip pos="1" side="tl" part="lemq"/>
-          </lu>
-        </chunk>
-      </out>
+
+      <choose>
+        <when c="tl PoS is verb">
+          <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
+          
+          <choose>
+            <when c="V.Der2.Actor=>'den som V'">
+              <test><and>
+                <equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der2.Actor"/></equal>
+                <or>
+                  <not><equal><clip pos="1" side="tl" part="lemq"/><lit v=""/></equal></not>
+                  <not><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal></not>
+                  <equal><var n="defnes"/><lit-tag v="def"/></equal>
+                </or>
+              </and></test>
+              <let><var n="c_name"/><concat><lit v="det_conj_"/><var n="c_name"/></concat></let>
+              <out>
+                <chunk namefrom="c_name" case="caseFirstWord">
+                  <tags>
+                    <tag><lit-tag v="SN"/></tag>
+                    <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                    <tag><clip pos="1" side="sl" part="mode"/></tag>
+                    <tag><clip pos="1" side="tl" part="temps"/></tag>
+                    <tag><clip pos="1" side="tl" part="voice"/></tag>
+                    <tag><clip pos="1" side="tl" part="pers"/></tag>
+                    <tag><lit-tag v="GD"/></tag>
+                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                    <tag><clip pos="1" side="tl" part="case"/></tag>
+                  </tags>
+                  <lu>
+                    <lit v="den"/><lit-tag v="det.dem.GD"/>
+                    <clip pos="1" side="tl" part="nbr"/>
+                  </lu>
+                  <b/>
+                  <lu><lit v="som"/><lit-tag v="cnjsub"/></lu>
+                  <b/>
+                  <var n="pre-nom"/>
+                  <lu>
+                    <clip pos="1" side="tl" part="lemh"/>
+                    <clip pos="1" side="tl" part="a_verb"/>
+                    <clip pos="1" side="tl" part="temps"/>
+                    <clip pos="1" side="tl" part="voice"/>
+                    <clip pos="1" side="tl" part="lemq"/>
+                  </lu>
+                </chunk>
+              </out>
+            </when>
+            
+            <otherwise c="Output verb">
+              <choose>
+                <when>
+                  <test><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der2.Actor"/></equal></test>
+                  <let><var n="c_syn"/><lit-tag v="SN"/></let>
+                </when>
+                <otherwise c="So far only happens with lemma-specific N.Ess=>V.Pres exceptions in bidix">
+                  <let><var n="c_syn"/><lit-tag v="SV"/></let>
+                </otherwise>
+              </choose>
+              <out>
+                <chunk namefrom="c_name" case="caseFirstWord">
+                  <tags>
+                    <tag><var n="c_syn"/></tag>
+                    <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                    <tag><clip pos="1" side="sl" part="mode"/></tag>
+                    <tag><clip pos="1" side="tl" part="temps"/></tag>
+                    <tag><clip pos="1" side="tl" part="voice"/></tag>
+                    <tag><clip pos="1" side="tl" part="pers"/></tag>
+                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                    <tag><clip pos="1" side="tl" part="case"/></tag>
+                  </tags>
+                  <var n="pre-nom"/>
+                  <lu>
+                    <clip pos="1" side="tl" part="lemh"/>
+                    <clip pos="1" side="tl" part="a_verb"/>
+                    <clip pos="1" side="tl" part="temps"/>
+                    <clip pos="1" side="tl" part="voice"/>
+                    <clip pos="1" side="tl" part="lemq"/>
+                  </lu>
+                </chunk>
+              </out>
+            </otherwise>
+          </choose>
+        </when>
+        
+        <otherwise c="Regular Noun=>Noun">
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="a_count"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_nom"/>
+                <clip pos="1" side="tl" part="gen"/>
+                <clip pos="1" side="tl" part="nbr"/>
+                <var n="c_def_pos"/>
+                <clip pos="1" side="tl" part="gen-case"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </otherwise>
+        
+      </choose>
     </def-macro>
     
   </section-def-macros>
@@ -1073,84 +1161,10 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <choose>
-          
-          <when>
-            <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
-            <let><var n="c_syn"/><lit-tag v="SV"/></let>
-            <choose><when>
-              <test><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der2.Actor"/></equal></test>
-              <let><var n="c_syn"/><lit-tag v="SN"/></let>
-            </when></choose>
-            <choose><when>
-              <test><and>
-                <equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der2.Actor"/></equal>
-                <or>
-                  <not><equal><clip pos="1" side="tl" part="lemh"/><lit v=""/></equal></not>
-                  <not><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal></not>
-                </or>
-              </and></test>
-              <out>
-                <chunk name="det_conj_verb" case="caseFirstWord">
-                  <tags>
-                    <tag><var n="c_syn"/></tag>
-                    <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                    <tag><clip pos="1" side="sl" part="mode"/></tag>
-                    <tag><clip pos="1" side="tl" part="temps"/></tag>
-                    <tag><clip pos="1" side="tl" part="voice"/></tag>
-                    <tag><clip pos="1" side="tl" part="pers"/></tag>
-                    <tag><lit-tag v="GD"/></tag>
-                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                    <tag><clip pos="1" side="tl" part="case"/></tag>
-                  </tags>
-                  <lu>
-                    <lit v="den"/><lit-tag v="det.dem.GD"/>
-                    <clip pos="1" side="tl" part="nbr"/>
-                  </lu>
-                  <b/>
-                  <lu><lit v="som"/><lit-tag v="cnjsub"/></lu>
-                  <b/>
-                  <lu>
-                    <clip pos="1" side="tl" part="lemh"/>
-                    <clip pos="1" side="tl" part="a_verb"/>
-                    <clip pos="1" side="tl" part="temps"/>
-                    <clip pos="1" side="tl" part="voice"/>
-                    <clip pos="1" side="tl" part="lemq"/>
-                  </lu>
-                </chunk>
-              </out>
-            </when>
-            <otherwise><out>
-              <chunk name="verb" case="caseFirstWord">
-                <tags>
-                  <tag><var n="c_syn"/></tag>
-                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                  <tag><clip pos="1" side="sl" part="mode"/></tag>
-                  <tag><clip pos="1" side="tl" part="temps"/></tag>
-                  <tag><clip pos="1" side="tl" part="voice"/></tag>
-                  <tag><clip pos="1" side="tl" part="pers"/></tag>
-                  <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                  <tag><clip pos="1" side="tl" part="case"/></tag>
-                </tags>
-                <lu>
-                  <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_verb"/>
-                  <clip pos="1" side="tl" part="temps"/>
-                  <clip pos="1" side="tl" part="voice"/>
-                  <clip pos="1" side="tl" part="lemq"/>
-                </lu>
-              </chunk>
-            </out></otherwise>
-          </choose>
-          </when>
-
-          <otherwise>
-            <let><var n="c_name"/><lit v="nom"/></let>
-            <let><var n="pre-nom"/><lit v=""/></let>
-            <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-            <call-macro n="out_nom"><with-param pos="1"/></call-macro>
-          </otherwise>
-        </choose>
+        <let><var n="c_name"/><lit v="nom"/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="1"/></call-macro>
       </action>
     </rule>
 
@@ -1385,6 +1399,7 @@ TODO:
         
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -1424,6 +1439,7 @@ TODO:
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
 
+        <let><var n="c_name"/><lit v="cmp_nom"/></let>
         <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let>
         <let>
           <var n="pre-nom"/>
