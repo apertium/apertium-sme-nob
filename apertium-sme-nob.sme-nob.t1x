@@ -832,7 +832,33 @@ TODO:
                   <equal><var n="defnes"/><lit-tag v="def"/></equal>
                 </or>
               </and></test>
-              <let><var n="c_name"/><concat><lit v="det_conj_"/><var n="c_name"/></concat></let>
+              <choose>
+                <when>
+                  <test><begins-with><var n="c_name"/><lit v="det"/></begins-with></test>
+                  <let><var n="c_name"/><concat><lit v="conj_"/><var n="c_name"/></concat></let>
+                  <let>
+                    <var n="pre-nom"/>
+                    <concat>
+                      <lit v="^den"/><lit-tag v="det.dem.GD"/>
+                      <clip pos="1" side="tl" part="nbr"/>
+                      <lit v="$"/>
+                      <b/>
+                      <var n="pre-nom"/>
+                    </concat>
+                  </let>
+                </when>
+                <otherwise>
+                  <let><var n="c_name"/><concat><lit v="det_conj_"/><var n="c_name"/></concat></let>
+                </otherwise>
+              </choose>
+              <let>
+                <var n="pre-nom"/>
+                <concat>
+                  <lit v="^som"/><lit-tag v="cnjsub"/><lit v="$"/>
+                  <b/>
+                  <var n="pre-nom"/>
+                </concat>
+              </let>
               <out>
                 <chunk namefrom="c_name" case="caseFirstWord">
                   <tags>
@@ -846,14 +872,6 @@ TODO:
                     <tag><clip pos="1" side="tl" part="nbr"/></tag>
                     <tag><clip pos="1" side="tl" part="case"/></tag>
                   </tags>
-                  <lu>
-                    <lit v="den"/><lit-tag v="det.dem.GD"/>
-                    <clip pos="1" side="tl" part="nbr"/>
-                  </lu>
-                  <b/>
-                  <lu><lit v="som"/><lit-tag v="cnjsub"/></lu>
-                  <b/>
-                  <var n="pre-nom"/>
                   <lu>
                     <clip pos="1" side="tl" part="lemh"/>
                     <clip pos="1" side="tl" part="a_verb"/>
