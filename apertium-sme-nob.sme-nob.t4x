@@ -37,6 +37,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <def-cat n="det_num_adj_conj_verb">
       <cat-item name="det_num_adj_conj_verb"/>
     </def-cat>
+    <def-cat n="adj_verb">
+      <cat-item name="adj_verb"/>
+    </def-cat>
     <def-cat n="num_nom">
       <cat-item name="num_nom"/>
     </def-cat>
@@ -936,6 +939,22 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
 
+    <!-- <rules: *_verb -->
+    <rule comment="CHUNK: adj_verb">
+      <pattern>
+        <pattern-item n="adj_verb"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <out> 
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    
     <rule comment="CHUNK: det_conj_verb">
       <pattern>
         <pattern-item n="det_conj_verb"/>

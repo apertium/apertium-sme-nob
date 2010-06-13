@@ -854,7 +854,6 @@ TODO:
                 </concat>
               </append>
               <let><var n="c_syn"/><lit-tag v="SN"/></let>
-              <let><var n="c_gen"/><lit-tag v="GD"/></let>
             </when>
             <otherwise c="Just the verb and unchanged pre-nom, no 'som'
                           If we have a Der2.Actor, it should work pretty much like a regular noun.
@@ -864,29 +863,28 @@ TODO:
                 <when>
                   <test><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der2.Actor"/></equal></test>
                   <let><var n="c_syn"/><lit-tag v="SN"/></let>
-                  <let><var n="c_gen"/><lit-tag v="m"/></let>
                 </when>
                 <otherwise c="So far only happens with lemma-specific N.Ess=>V.Pres exceptions in bidix">
                   <let><var n="c_syn"/><lit-tag v="SV"/></let>
-                  <let><var n="c_gen"/><lit v=""/></let>
                 </otherwise>
               </choose>
             </otherwise>
           </choose>
           
           <out>
-            <chunk namefrom="c_name" case="caseFirstWord">
+            <chunk namefrom="c_name" case="caseFirstWord"
+                   c="The tag order corresponds with nouns, to make c_def_pos work.">
               <tags>
                 <tag><var n="c_syn"/></tag>
                 <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
-                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
                 <tag><clip pos="1" side="tl" part="voice"/></tag>
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
-                <tag><var n="c_gen"/></tag>
-                <tag><var n="defnes"/></tag>
-                <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
               </tags>
               <var n="pre-nom"/>
               <lu>
