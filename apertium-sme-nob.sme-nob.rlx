@@ -12991,7 +12991,10 @@ REMOVE:r3100 Prs IF (*-1 CS BARRIER Prs OR (N Sg Nom) LINK *-1C Prt BARRIER Prs)
 
 	# arvit vs arvát vs arvat
 	# ------------------------
-IFF ("arvit") IF (0 ("arvát") OR ("arvat"))(NEGATE *0 HUMAN LINK 0 SUBJ);
+REMOVE ("arvat") IF (0 ("arvit"))(NEGATE *0 HUMAN LINK 0 SUBJ);
+REMOVE ("arvit") IF (0 ("arvát") OR ("arvat"))(NEGATE *0 HUMAN LINK 0 SUBJ);
+# Some bug makes this remove all analyses:
+#IFF ("arvit") IF (0 ("arvát") OR ("arvat"))(NEGATE *0 HUMAN LINK 0 SUBJ);
 
 	# ballat vs. ballát
 	# -----------------
