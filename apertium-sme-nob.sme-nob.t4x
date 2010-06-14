@@ -31,6 +31,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <def-cat n="det_conj_verb">
       <cat-item name="det_conj_verb"/>
     </def-cat>
+    <def-cat n="det_conj_verb_conj_nom">
+      <cat-item name="det_conj_verb_conj_nom"/>
+    </def-cat>
     <def-cat n="det_adj_conj_verb">
       <cat-item name="det_adj_conj_verb"/>
     </def-cat>
@@ -85,6 +88,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </def-cat>
     <def-cat n="adj_cmp_cmp_nom">
       <cat-item name="adj_cmp_cmp_nom"/>
+    </def-cat>
+    <def-cat n="adj_cmp_verb">
+      <cat-item name="adj_cmp_verb"/>
     </def-cat>
     <def-cat n="det">
       <cat-item name="det"/>
@@ -905,6 +911,21 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
+    <rule comment="CHUNK: adj_cmp_verb">
+      <pattern>
+        <pattern-item n="adj_cmp_verb"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
     
     
     <rule comment="CHUNK: pron">
@@ -1014,6 +1035,27 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
 
+    <rule comment="CHUNK: det_conj_verb_conj_nom">
+      <pattern>
+        <pattern-item n="det_conj_verb_conj_nom"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <call-macro n="clean_case_defnes"><with-param pos="5"/><with-param pos="0"/></call-macro>
+        <out> 
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
   </section-rules>
 
 </postchunk>

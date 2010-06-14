@@ -23,6 +23,7 @@ rules), etc.
     <sdef n="IV"      c="Intransitive"/>
     <sdef n="TV"      c="Transitive"/>
 
+    <sdef n="Adp"      c="Adposition"/>
     <sdef n="Po"      c="Post-position"/>
     <sdef n="Pr"      c="Preposition"/>
     <sdef n="pr"      c="Preposition"/>
@@ -562,6 +563,7 @@ rules), etc.
     <e><p><l>dego<s n="CS"/></l><r>som<s n="cnjsub"/></r></p></e>
     <e><p><l>dego<s n="CS"/></l><r>som<b/>om<s n="cnjsub"/></r></p></e>
     <e><p><l>ahte<s n="CS"/></l><r>at<s n="cnjsub"/></r></p></e>
+    <e><p><l>nugo<s n="CS"/></l><r>som<s n="cnjsub"/></r></p></e>
     <e><p><l>mo<s n="CS"/></l><r>hvordan<s n="cnjsub"/></r></p></e> <!-- TODO: Check -->
     <e><p><l>vai<s n="CS"/></l><r>for<b/>at<s n="cnjsub"/></r></p></e>
     <e slr="1"><p><l>vai<s n="CS"/></l><r>for<b/>å<s n="cnjsub"/></r></p></e>
@@ -577,6 +579,7 @@ rules), etc.
     <e><p><l>almmá<s n="Po"/></l><r>uten<s n="pr"/></r></p></e>
     <e><p><l>badjel<s n="Po"/></l><r>over<s n="pr"/></r></p></e>
     <e><p><l>badjel<s n="Pr"/></l><r>over<s n="pr"/></r></p></e>
+    <e c="TODO check"><p><l>badjelii<s n="Adp"/></l><r>over<s n="pr"/></r></p></e>
     <e><p><l>bajábealde<s n="Pr"/></l><r>ovafor<s n="pr"/></r></p></e>
     <e><p><l>báldda<s n="Po"/></l><r>ved<b/>siden<b/>av<s n="pr"/></r></p></e>
     <e><p><l>bálddas<s n="Po"/></l><r>ved<b/>siden<b/>av<s n="pr"/></r></p></e>
@@ -2619,6 +2622,8 @@ rules), etc.
     <e><p><l>Sápmi<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Sápmi<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Ruoŧŧa<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Sverige<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Norga<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Norge<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>Davvi-Norga<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Nordnorge<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e><p><l>USA<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>USA<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Kárášjoga<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Karasjok<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e r="LR"><p><l>Kárášjohka<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Karasjok<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e r="LR"><p><l>Gárášjohka<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Karasjok<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
@@ -21158,7 +21163,7 @@ rules), etc.
     <e><p><l>bulžut<s n="V"/><s n="IV"/></l><r>danne<b/>isskorpe<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
     <e><p><l>buođđut<s n="V"/><s n="TV"/></l><r>sperre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e c="TODO være adj"><p><l>buohcat<s n="V"/><s n="TV"/></l><r>være<g><b/>syk</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) buozan, (sii) buhcet-->
-    <e><p><l>buohccát<s n="V"/><s n="TV"/></l><r>syk<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e>
+    <e><p><l>buohccát<s n="V"/><s n="IV"/></l><r>syk<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e>
     <e><p><l>buohtalastit<s n="V"/><s n="TV"/></l><r>sideordne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>buoidut<s n="V"/><s n="IV"/></l><r>feit<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--(son) buoiddui, (sii) buidot-->
     <e><p><l>buokčalit<s n="V"/><s n="IV"/></l><r>dykke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 

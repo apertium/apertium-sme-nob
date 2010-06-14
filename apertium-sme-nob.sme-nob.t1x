@@ -27,6 +27,7 @@ TODO:
 <transfer default="chunk">
   <section-def-cats>
     <def-cat n="adpos">
+      <cat-item tags="Adp.*"/>
       <cat-item tags="Pr.*"/>
       <cat-item tags="Po.*"/>
     </def-cat>
@@ -153,6 +154,15 @@ TODO:
       <cat-item lemma="golggotmánnu" tags="N.*"/>
       <cat-item lemma="skábmamánnu" tags="N.*"/>
       <cat-item lemma="juovlamánnu" tags="N.*"/>
+    </def-cat>
+    <def-cat n="season">
+      <cat-item lemma="giđđa" tags="N.*"/>
+      <cat-item lemma="geassi" tags="N.*"/>
+      <cat-item lemma="dálvi" tags="N.*"/>
+      <cat-item lemma="čakča" tags="N.*"/>
+    </def-cat>
+    <def-cat n="year">
+      <cat-item tags="Num.*"/>
     </def-cat>
     <def-cat n="ord">
       <cat-item tags="A.Ord.*"/>
@@ -937,7 +947,99 @@ TODO:
   </section-def-macros>
   
   <section-rules>
+    <!-- <rules: Dates (need to be before num_nom rules) -->
+    <rule comment="REGLA: MONTH ORD BEAIVI
+                   guovvamánu 17. beaivvi => 17. februar
+                   TODO: should we also chunk MONTH NUM DOT BEAIVI YEAR ?
+                   TODO: should we always delete the genitive here?
+                   TODO: do we ever want definite? ('den 17.februar')?">
+      <pattern>
+        <pattern-item n="month"/>
+        <pattern-item n="ord"/>
+        <pattern-item n="beaivi"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adj_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="3" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <!-- <tag><lit-tag v="def"/></tag> -->
+              <tag><clip pos="3" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <!-- <clip pos="1" side="tl" part="gen-case"/> -->
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+        <choose><when>
+          <test><not><equal><b pos="2"/><b/></equal></not></test>
+          <out><b pos="2"/></out>
+        </when></choose>
+      </action>
+    </rule>
+    <rule comment="REGLA: SEASON YEAR
+                   1990 giđa => våren 1990
+                   Always definite (should not add a determiner in t4x)">
+      <pattern>
+        <pattern-item n="year"/>
+        <pattern-item n="season"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="nom_num" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="tl" part="gen"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><lit-tag v="def"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
     
+    <!-- <rules: Proper nouns -->
     <rule comment="REGLA: NOM_PROP
                    Needs to be before the NOM rule.">
       <pattern>
@@ -1158,6 +1260,7 @@ TODO:
       </action>
     </rule>
     
+    <!-- <rules: Noun, numeral+noun and compounds -->
     <rule comment="REGLA: NOM (tl: NOM, VERB)">
       <pattern>
         <pattern-item n="nom"/>
@@ -2888,57 +2991,6 @@ TODO: this should be an mwe in the analyser.">
           </chunk>
         </out>
       </action>
-    </rule>
-
-    <!-- <rules: Dates -->
-    <rule comment="REGLA: MONTH ORD BEAIVI
-                   guovvamánu 17. beaivvi => 17. februar
-                   TODO: should we also chunk MONTH NUM DOT BEAIVI YEAR ?
-                   TODO: should we always delete the genitive here?
-                   TODO: do we ever want definite? ('den 17.februar')?">
-      <pattern>
-        <pattern-item n="month"/>
-        <pattern-item n="ord"/>
-        <pattern-item n="beaivi"/>
-      </pattern>
-      <action>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <chunk name="adj_nom" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="3" side="sl" part="mode"/></tag>
-              <tag><clip pos="1" side="tl" part="gen"/></tag>
-              <tag><clip pos="1" side="tl" part="nbr"/></tag>
-              <!-- <tag><lit-tag v="def"/></tag> -->
-              <tag><clip pos="3" side="tl" part="case"/></tag>
-            </tags>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_adj"/>
-              <clip pos="2" side="tl" part="grau"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-            <b pos="1"/>
-            <lu>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_nom"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="ind"/>
-              <!-- <clip pos="1" side="tl" part="gen-case"/> -->
-              <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
-        <choose><when>
-          <test><not><equal><b pos="2"/><b/></equal></not></test>
-          <out><b pos="2"/></out>
-        </when></choose>
-      </action>
-    </rule>
+    </rule>    
   </section-rules>
 </transfer>
