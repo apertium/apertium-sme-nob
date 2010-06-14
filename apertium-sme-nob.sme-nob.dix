@@ -69,7 +69,7 @@ rules), etc.
 
     <sdef n="N"       c="Noun"/>
     <sdef n="Coll"    c="Coll"/>
-    <sdef n="unc"     c="May be uncountable"/>
+    <sdef n="unc"     c="May be uncountable (or just often indefinite)"/>
     <sdef n="n"       c="Noun"/>
     <sdef n="np"      c="Proper noun"/>
     <sdef n="Prop"    c="Proper noun"/>
@@ -297,12 +297,12 @@ rules), etc.
     <pardef n="n_coll__n">
       <e><p><l><s n="Coll"/></l><r></r></p><par n="__n"/></e>
     </pardef>
-    <pardef n="unc__n" c="Add unc tag iff going from sme to nob (for generating indefiniteness in transfer).">
+    <pardef n="unc__n" c="Add unc tag iff going from sme to nob (currently just used for ensuring indefiniteness in transfer).">
       <e r="LR"><p><l></l><r><s n="unc"/></r></p><par n="__n"/></e>
       <e r="RL"><p><l></l><r></r></p><par n="__n"/></e>
     </pardef>
     <pardef n="unc_m_RL_f__n" c="Generate nob masc, but analyse fem (eventually, when we move on to nob->sme).
-                                 Add unc tag iff going from sme to nob (for generating indefiniteness in transfer).">
+                                 Add unc tag iff going from sme to nob (for ensuring indefiniteness in transfer).">
       <e>       <p><l></l><r><s n="m"/></r></p><par n="unc__n"/></e>
       <e r="RL"><p><l></l><r><s n="f"/></r></p><par n="__n"/></e>
     </pardef>
@@ -762,6 +762,7 @@ rules), etc.
 
     <e><re>[0-9]+</re><p><l><s n="Num"/><s n="Sg"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
     <e><re>[0-9][.,][0-9]+</re><p><l><s n="Num"/><s n="Sg"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e c="TODO the nob side"><re>§[0-9]+</re><p><l><s n="Num"/><s n="Sg"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
 
     <!-- Nouns -->
     <e><re>[a-zA-ZæøåášŧŋđžčÆØÅÁŠŦŊĐŽČ]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -841,7 +842,7 @@ rules), etc.
     <e><p><l>artista<s n="N"/></l><r>artist<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>arva<s n="N"/></l><r>energi<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>arva<s n="N"/></l><r>viljestyrke<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>árvalus<s n="N"/></l><r>tanke<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e><p><l>árvalus<s n="N"/></l><r>tanke<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>árvalus<s n="N"/></l><r>forslag<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>arvi<s n="N"/></l><r>regn<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>árvu<s n="N"/></l><r>verdi<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1001,7 +1002,7 @@ rules), etc.
     <e><p><l>bonus<s n="N"/></l><r>bonus<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>bordi<s n="N"/></l><r>bord<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>borga<s n="N"/></l><r>fokk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>borgemánnu<s n="N"/></l><r>august<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>borgemánnu<s n="N"/></l><r>august<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>borramuš<s n="N"/></l><r>mat<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>borranmiella<s n="N"/></l><r>matlyst<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>bostta<s n="N"/></l><r>elveblest<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1042,7 +1043,7 @@ rules), etc.
     <e><p><l>čájáhus<s n="N"/></l><r>utstilling<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>čájálmas<s n="N"/></l><r>forestilling<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>čakča<s n="N"/></l><r>høst<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>čakčamánnu<s n="N"/></l><r>september<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>čakčamánnu<s n="N"/></l><r>september<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>čála<s n="N"/></l><r>skrift<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>čálán<s n="N"/></l><r>skriver<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>čalbmi<s n="N"/></l><r>øye<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -1096,8 +1097,8 @@ rules), etc.
     <e><p><l>čuolda<s n="N"/></l><r>stolpe<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>čuoldimat<s n="N"/></l><r>cup<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>čuoldin<s n="N"/></l><r>sortering<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>cuoŋománnu<s n="N"/></l><r>april<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>cuoŋománnu<s n="N"/></l><r>april<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e><p><l>cuoŋománnu<s n="N"/></l><r>april<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
+    <e><p><l>cuoŋománnu<s n="N"/></l><r>april<s n="n"/><s n="nt"/></r></p><par n="unc__n"/></e>
     <e><p><l>čuovga<s n="N"/></l><r>lys<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>čuovgat<s n="N"/></l><r>lys<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>čuovus<s n="N"/></l><r>følgeskriv<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -1419,7 +1420,7 @@ rules), etc.
     <e><p><l>gearggusvuohta<s n="N"/></l><r>beredskap<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>geassi<s n="N"/></l><r>sommer<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>geassu<s n="N"/></l><r>volum<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
-    <e><p><l>geassemánnu<s n="N"/></l><r>juni<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>geassemánnu<s n="N"/></l><r>juni<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>geasus<s n="N"/></l><r>fradrag<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>geatki<s n="N"/></l><r>jerv<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>geatnegasvuohta<s n="N"/></l><r>plikt<s n="n"/></r></p><par n="m_RL_f__n"/></e>
@@ -1479,7 +1480,7 @@ rules), etc.
     <e><p><l>gohppu<s n="N"/></l><r>kopp<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>goldin<s n="N"/></l><r>drivgarnfiske<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>golgadeapmi<s n="N"/></l><r>drivgarnsfiske<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
-    <e><p><l>golggotmánnu<s n="N"/></l><r>oktober<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>golggotmánnu<s n="N"/></l><r>oktober<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>golli<s n="N"/></l><r>gull<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>gollu<s n="N"/></l><r>kostnad<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>gonagas<s n="N"/></l><r>konge<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1531,7 +1532,7 @@ rules), etc.
     <e slr="4"><p><l>guovlu<s n="N"/></l><r>reinsogn<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>guovssahasat<s n="N"/></l><r>nordlys<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>guovssat<s n="N"/></l><r>lavskrike<s n="n"/></r></p><par n="m_RL_f__n"/></e>
-    <e><p><l>guovvamánnu<s n="N"/></l><r>februar<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>guovvamánnu<s n="N"/></l><r>februar<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>guovža<s n="N"/></l><r>bjørn<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>gutna<s n="N"/></l><r>aske<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>hábmen<s n="N"/></l><r>utforming<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1661,7 +1662,7 @@ rules), etc.
     <e><p><l>juohkin<s n="N"/></l><r>utlevering<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>juolgi<s n="N"/></l><r>fot<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>juotna<s n="N"/></l><r>list<s n="n"/></r></p><par n="m_RL_f__n"/></e>
-    <e><p><l>juovlamánnu<s n="N"/></l><r>desember<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>juovlamánnu<s n="N"/></l><r>desember<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>juovllat<s n="N"/></l><r>jul<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>jurdda<s n="N"/></l><r>tanke<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>juridihkka<s n="N"/></l><r>jus<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -1909,7 +1910,7 @@ rules), etc.
     <e slr="1"><p><l>miella<s n="N"/></l><r>oppfatning<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e c="sandmel"><p><l>mielli<s n="N"/></l><r>elvemel<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>miessi<s n="N"/></l><r>reinkalv<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>miessemánnu<s n="N"/></l><r>mai<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>miessemánnu<s n="N"/></l><r>mai<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>mihttu<s n="N"/></l><r>mål<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>mihttu<s n="N"/></l><r>målestokk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>minerála<s n="N"/></l><r>mineral<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -1995,7 +1996,7 @@ rules), etc.
     <e><p><l>njárga<s n="N"/></l><r>nes<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>njoammil<s n="N"/></l><r>hare<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>njuikun<s n="N"/></l><r>hopping<s n="n"/></r></p><par n="m_RL_f__n"/></e>
-    <e><p><l>njukčamánnu<s n="N"/></l><r>mars<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>njukčamánnu<s n="N"/></l><r>mars<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>njunuš<s n="N"/></l><r>tet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>njunuš<s n="N"/></l><r>ledelse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="2"><p><l>njunuš<s n="N"/></l><r>fortropp<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2058,8 +2059,8 @@ rules), etc.
     <e><p><l>oazis<s n="N"/></l><r>stengsel<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>objeakta<s n="N"/></l><r>objekt<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>ođas<s n="N"/></l><r>nyhet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e r="LR"><p><l>ođđajagimánnu<s n="N"/></l><r>januar<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>ođđajagemánnu<s n="N"/></l><r>januar<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e r="LR"><p><l>ođđajagimánnu<s n="N"/></l><r>januar<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
+    <e><p><l>ođđajagemánnu<s n="N"/></l><r>januar<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>ofelaš<s n="N"/></l><r>ledsager<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>ohca<s n="N"/></l><r>koftebarm<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>ohcan<s n="N"/></l><r>søknad<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2319,12 +2320,14 @@ rules), etc.
     <e><p><l>sirdin<s n="N"/></l><r>overføring<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>sirren<s n="N"/></l><r>isolering<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>sisti<s n="N"/></l><r>garvet skinn<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e><p><l>sisdoallu<s n="N"/></l><r>innhold<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e slr="1"><p><l>sisdoallu<s n="N"/></l><r>innholdsfortegnelse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>sivdnádus<s n="N"/></l><r>skapning<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
 
     <e><p><l>sivva<s n="N"/></l><r>grunn<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>sivva<s n="N"/></l><r>årsak<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>skábma<s n="N"/></l><r>mørketid<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
-    <e><p><l>skábmamánnu<s n="N"/></l><r>november<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>skábmamánnu<s n="N"/></l><r>november<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>skáhppu<s n="N"/></l><r>eske<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>skállu<s n="N"/></l><r>bøtte<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>skealbma<s n="N"/></l><r>kjeltring<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2427,7 +2430,7 @@ rules), etc.
     <e><p><l>suohkat<s n="N"/></l><r>grøt<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>suohpa<s n="N"/></l><r>vadested<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>suoidni<s n="N"/></l><r>gress<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
-    <e><p><l>suoidnemánnu<s n="N"/></l><r>juli<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>suoidnemánnu<s n="N"/></l><r>juli<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>šuokŋa<s n="N"/></l><r>klang<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>suola<s n="N"/></l><r>tjuv<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>suoládeapmi<s n="N"/></l><r>tyveri<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
@@ -20559,6 +20562,9 @@ rules), etc.
     <e><p><l>vuosttas<s n="A"/><s n="Ord"/></l><r>første<s n="adj"/><s n="ord"/></r></p><par n="__adj"/></e>
     <e><p><l>vuosttaš<s n="A"/><s n="Ord"/></l><r>første<s n="adj"/><s n="ord"/></r></p><par n="__adj"/></e>
     <e><re>[0-9]+</re><p><l><s n="A"/><s n="Ord"/></l><r>.<s n="adj"/><s n="ord"/><s n="posi"/></r></p></e>
+    <e><re>[0-9]+\-[0-9]+</re><p><l><s n="A"/><s n="Ord"/></l><r><s n="adj"/><s n="ord"/><s n="posi"/></r></p></e>
+    <e><re>– [0-9]+</re><p><l><s n="A"/><s n="Ord"/></l><r><s n="adj"/><s n="ord"/><s n="posi"/></r></p></e>
+    <e><re>[0-9]+[.][0-9]+[.][0-9]+</re><p><l><s n="A"/><s n="Ord"/></l><r><s n="adj"/><s n="ord"/><s n="posi"/></r></p></e>
 
     <!-- Particles -->
     <!-- If we have eg. reaškkihan, this is analysed as
@@ -21077,7 +21083,8 @@ rules), etc.
     <e><p><l>bieggat<s n="V"/><s n="IV"/></l><r>fyke<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
     <e><p><l>bieguhit<s n="V"/><s n="TV"/></l><r>plage<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>biehkut<s n="V"/><s n="IV"/></l><r>sutre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>biehttalit<s n="V"/><s n="TV"/></l><r>gi<g><b/>avslag</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>biehttalit<s n="V"/><s n="TV"/></l><r>avslå<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>biehttalit<s n="V"/><s n="TV"/></l><r>nekte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>biekkadit<s n="V"/><s n="TV"/></l><r>holde på å blåse så smått<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>biekkahit<s n="V"/><s n="TV"/></l><r>la det blåse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>biekkastit<s n="V"/><s n="IV"/></l><r>begynne<g><b/>å<b/>blåse</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -21492,8 +21499,10 @@ rules), etc.
     <e><p><l>ealáskit<s n="V"/><s n="IV"/></l><r>livne<g><b/>til</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>ealihit<s n="V"/><s n="TV"/></l><r>livberge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>eallit<s n="V"/><s n="IV"/></l><r>leve<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) ealán, (son) elii-->
-    <e><p><l>earránit<s n="V"/><s n="IV"/></l><r>skilles<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e><p><l>earuhit<s n="V"/><s n="TV"/></l><r>differensiere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>earránit<s n="V"/><s n="IV"/></l><r>skilles<s n="vblex"/><s n="pstv"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>earuhit<s n="V"/><s n="TV"/></l><r>skille<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>earuhit<s n="V"/><s n="TV"/></l><r>skjelne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="2"><p><l>earuhit<s n="V"/><s n="TV"/></l><r>differensiere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>eastadit<s n="V"/><s n="TV"/></l><r>hindre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>effektiviseret<s n="V"/><s n="TV"/></l><r>effektivisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>einnostit<s n="V"/><s n="TV"/></l><r>forutsi<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -21919,7 +21928,8 @@ rules), etc.
     <e><p><l>joksat<s n="V"/><s n="TV"/></l><r>innhente<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>jolggadit<s n="V"/><s n="IV"/></l><r>driste seg til<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>joradit<s n="V"/><s n="IV"/></l><r>sverme omkring<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
-    <e><p><l>jorahit<s n="V"/><s n="TV"/></l><r>rotere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e><p><l>jorahit<s n="V"/><s n="TV"/></l><r>snu<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+    <e slr="1"><p><l>jorahit<s n="V"/><s n="TV"/></l><r>rotere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>jorbet<s n="V"/><s n="TV"/></l><r>avrunde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>jorgalit<s n="V"/><s n="TV"/></l><r>gjøre<g><b/>et<b/>notkast</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>jorggihit<s n="V"/><s n="IV"/></l><r>snu<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
