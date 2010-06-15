@@ -1,9 +1,16 @@
 <dictionary>
-<!-- 
-This file makes heavy use of bidix pardefs, eg. to change from sme PoS
-tags to nob PoS tags, to mark certain sme verbs as inherently
-passive/causative/reflexive (which again triggers certain transfer
-rules), etc.
+<!-- This file makes heavy use of bidix pardefs, eg. to change from
+     sme PoS tags to nob PoS tags, to mark certain sme verbs as
+     inherently passive/causative/reflexive (which again triggers
+     certain transfer rules), etc.
+
+     See http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/bidix
+     for more information.
+-->
+
+<!-- There are some comments like "todo check" in this file where my
+     dictionary didn't have the answers, feel free to improve...
+     - KBU
 -->
   <alphabet/>
   <sdefs>
@@ -725,6 +732,7 @@ rules), etc.
     <e><p><l>juoga<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
     <e><p><l>buot<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
     <e r="LR" c="alle sammen"><p><l>buohkat<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+    <e r="LR"><p><l>muhtin<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
     <e><p><l>muhtun<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
     <e slr="1"><p><l>muhtun<s n="Pron"/><s n="Indef"/></l><r>en<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
     <e><p><l>eará<s n="Pron"/><s n="Indef"/></l><r>annen<s n="det"/><s n="dem"/><s n="DD"/></r></p><par n="pron__det"/></e>
@@ -734,6 +742,7 @@ rules), etc.
     <e><p><l>goabbáge<s n="Pron"/><s n="Indef"/><s n="Sg"/></l><r>begge<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
     <e c="negative context" slr="1"><p><l>goabbáge<s n="Pron"/><s n="Indef"/><s n="Sg"/></l><r>noe<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
     <e><p><l>ollu<s n="Pron"/><s n="Indef"/></l><r>mange<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
+    <e c="todo check!" r="LR"><p><l>eanaš<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
     <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
 
 
@@ -1475,8 +1484,8 @@ rules), etc.
     <e><p><l>gissel<s n="N"/></l><r>gissel<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>gitárra<s n="N"/></l><r>gitar<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>givrodat<s n="N"/></l><r>styrke<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>givssideapmi<s n="N"/></l><r>mobbing<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>goahca<s n="N"/></l><r>friksjon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>givssideapmi<s n="N"/></l><r>mobbing<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
+    <e><p><l>goahca<s n="N"/></l><r>friksjon<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e><p><l>goalki<s n="N"/></l><r>vindstille vær<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>goallu<s n="N"/></l><r>tranlampe<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>goarádus<s n="N"/></l><r>vanskjebne<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2116,6 +2125,7 @@ rules), etc.
     <e><p><l>pedagogihkka<s n="N"/></l><r>pedagogikk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>pedofiila<s n="N"/></l><r>pedofil<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>penšuvdna<s n="N"/></l><r>pensjon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e r="LR"><p><l>persovdna<s n="N"/></l><r>person<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>peršuvdna<s n="N"/></l><r>person<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>pessimista<s n="N"/></l><r>pessimist<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>pizza<s n="N"/></l><r>pizza<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
