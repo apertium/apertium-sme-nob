@@ -118,6 +118,10 @@ TODO:
     <def-cat n="nom_prop">
       <cat-item tags="N.Prop.*"/>
     </def-cat>
+    <def-cat n="nom_prop_gen">
+      <cat-item tags="N.Prop.*.Gen"/>
+      <cat-item tags="N.Prop.*.Gen.*"/>
+    </def-cat>
     <def-cat n="nom_hon">
       <cat-item lemma="gonagas" tags="N.*"/>
       <cat-item lemma="gonagas:1" tags="N.*"/>
@@ -438,6 +442,7 @@ TODO:
       <list-item v="šlahttit"/>
     </def-list>
     <def-list n="loc-i" c="Locatives default to 'på' unless in this list (or are np.top)">
+      <list-item v="oppfatning"/>
       <list-item v="januar"/>
       <list-item v="februar"/>
       <list-item v="mars"/>
@@ -2075,6 +2080,37 @@ TODO:
       </action>
     </rule>
 
+    <rule comment="REGLA: NOM_PROP_GEN NOM
+                   -----
+                   Defnes of possessed NOM is ind (NOM_PROP has no defnes).">
+      <pattern>
+        <pattern-item n="nom_prop_gen"/>
+        <pattern-item n="nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="prop_"/></let>
+        
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="gen-case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+          </concat>
+        </let>        
+        <!-- for possessed NOM -->        
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+    
     <rule comment="REGLA: NOM_GEN NOM
                    -----
                    Sets defnes of possessor NOM_GEN using set_defnes, defnes of possessed NOM is ind.">
