@@ -19,21 +19,26 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
   <section-def-cats>
     <def-cat n="nom">
       <cat-item name="nom"/>
+      <cat-item name="prop"/>
     </def-cat>
     <def-cat n="cmp_nom">
       <cat-item name="cmp_nom"/>
+      <cat-item name="cmp_prop"/>
     </def-cat>
     <def-cat n="cmp_cmp_nom">
       <cat-item name="cmp_cmp_nom"/>
+      <cat-item name="cmp_cmp_prop"/>
     </def-cat>
     <def-cat n="det_cmp_nom">
       <cat-item name="det_cmp_nom"/>
+      <cat-item name="det_cmp_prop"/>
     </def-cat>
     <def-cat n="det_conj_verb">
       <cat-item name="det_conj_verb"/>
     </def-cat>
     <def-cat n="det_conj_verb_conj_nom">
       <cat-item name="det_conj_verb_conj_nom"/>
+      <cat-item name="det_conj_verb_conj_prop"/>
     </def-cat>
     <def-cat n="det_adj_conj_verb">
       <cat-item name="det_adj_conj_verb"/>
@@ -55,9 +60,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </def-cat>
     <def-cat n="nom_conj_nom">
       <cat-item name="nom_conj_nom"/>
+      <cat-item name="nom_conj_prop"/>
+      <cat-item name="prop_conj_nom"/>
+      <cat-item name="prop_conj_prop"/>
     </def-cat>
     <def-cat n="adj_nom_conj_nom">
       <cat-item name="adj_nom_conj_nom"/>
+      <cat-item name="adj_nom_conj_prop"/>
+      <cat-item name="adj_prop_conj_nom"/>
+      <cat-item name="adj_prop_conj_prop"/>
     </def-cat>
     <def-cat n="verb">
       <cat-item name="verb"/>
@@ -68,21 +79,26 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </def-cat>
     <def-cat n="det_adj_nom">
       <cat-item name="det_adj_nom"/>
+      <cat-item name="det_adj_prop"/>
     </def-cat>
     <def-cat n="det_nom">
       <cat-item name="det_nom"/>
+      <cat-item name="det_prop"/>
     </def-cat>
     <def-cat n="det_adj">
       <cat-item name="det_adj"/>
     </def-cat>
     <def-cat n="adj_nom">
       <cat-item name="adj_nom"/>
+      <cat-item name="adj_prop"/>
     </def-cat>
     <def-cat n="adj_cmp_nom">
       <cat-item name="adj_cmp_nom"/>
+      <cat-item name="adj_cmp_prop"/>
     </def-cat>
     <def-cat n="adj_cmp_cmp_nom">
       <cat-item name="adj_cmp_cmp_nom"/>
+      <cat-item name="adj_cmp_cmp_prop"/>
     </def-cat>
     <def-cat n="adj_cmp_verb">
       <cat-item name="adj_cmp_verb"/>
@@ -522,10 +538,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                c="arg.1: chunk
                   -----
                   For eg. 'det_nom' or 'adj_nom', to make sure we say 'den andre/lyse hunden' (not 'andre/lyse hunden')
+                  Ignores chunks with names beginning with 'prop'.
                   TODO: need to send in (as arg) the lexical unit that switches case with the determiner!">
       <choose>
         <when>
           <test><and>
+            <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="prop"/></begins-with></not>
             <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="nom"/></begins-with></not>
             <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="cmp"/></begins-with></not>
             <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
@@ -557,6 +575,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </when>
         <when>
           <test><and>
+            <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="prop"/></begins-with></not>
             <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
             <equal><clip pos="1" part="art"/><lit-tag v="ind"/></equal>
             <not><equal><clip pos="1" part="case"/><lit-tag v="ess"/></equal></not>

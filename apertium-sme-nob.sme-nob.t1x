@@ -443,6 +443,7 @@ TODO:
     </def-list>
     <def-list n="loc-i" c="Locatives default to 'på' unless in this list (or are np.top)">
       <list-item v="oppfatning"/>
+      <list-item v="hus"/>
       <list-item v="januar"/>
       <list-item v="februar"/>
       <list-item v="mars"/>
@@ -2941,16 +2942,15 @@ TODO: should VERB->ADJ always be tagged SN?">
       </action>
     </rule>
 
-    <rule comment="REGLA: ADV
-                   Since we match on chunk lemma 'adv' in t3x, even two-lu chunks
-                   here are named 'adv' (no postchunking rules, so that's OK).">
+    <rule comment="REGLA: ADV">
       <pattern>
         <pattern-item n="adverb"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <choose>
-          <when>
+          <when c="Since we match on chunk lemma 'adv' in t3x, we have a two-lu chunks
+                   here with the single name 'adv' (no postchunking rules for adverbs, so that's OK).">
             <test><equal><clip pos="1" side="sl" part="mode"/><lit-tag v="Qst"/></equal></test>
             <out>
               <chunk name="adv" case="caseFirstWord">
