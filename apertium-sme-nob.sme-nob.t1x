@@ -98,21 +98,17 @@ TODO:
       <cat-item tags="A.*.*.Cmp.*"/>
     </def-cat>
     <def-cat n="nom_cmp">
-      <cat-item tags="V.*.Der2.*.N.*.*.Cmp"/>
-      <cat-item tags="V.*.Der2.*.N.*.*.Cmp.*"/>
       <cat-item tags="N.*.*.Cmp"/>
       <cat-item tags="N.*.*.Cmp.*"/>
     </def-cat>
-    <def-cat n="nom">
+    <def-cat n="nom_head" c="Head nom's are sent to out_nom, thus we can have Verb derivatives here.">
       <cat-item tags="V.*.Der2.*.N.*"/>
       <cat-item tags="N.*"/>
     </def-cat>
     <def-cat n="nom_gen">
-      <cat-item tags="V.*.Der2.*.N.*.Gen.*"/>
       <cat-item tags="N.*.Gen.*"/>
     </def-cat>
     <def-cat n="nom_gen_LNUM">
-      <cat-item tags="V.*.Der2.*.N.*.Gen.@Num←"/>
       <cat-item tags="N.*.Gen.@Num←"/>
     </def-cat>
     <def-cat n="nom_prop">
@@ -181,6 +177,7 @@ TODO:
     <def-attr n="a_der">
       <attr-item tags="Der2.Actor"/>
       <attr-item tags="Der3.Der_n"/>
+      <attr-item tags="Der2.Der_eapmi"/>
     </def-attr>
     <def-attr n="a_sintagma">
       <attr-item tags="SN"/>
@@ -1283,7 +1280,7 @@ TODO:
     <!-- <rules: Noun, numeral+noun and compounds -->
     <rule comment="REGLA: NOM (tl: NOM, VERB)">
       <pattern>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1362,7 +1359,7 @@ TODO:
                    TODO: should we really copy genitive-case over? ('lea vuosttaš prinsa 567 jahkái')">
       <pattern>
         <pattern-item n="num_mod"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1398,7 +1395,7 @@ TODO:
       <pattern>
         <pattern-item n="num_mod"/>
         <pattern-item n="adj_attr"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1449,7 +1446,7 @@ TODO:
                    Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="adj_cmp"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1484,7 +1481,7 @@ TODO:
                    Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1516,7 +1513,7 @@ TODO:
       <pattern>
         <pattern-item n="nom_cmp"/>
         <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1557,7 +1554,7 @@ TODO:
                    Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="cmp"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1906,7 +1903,7 @@ TODO:
                    eará sámi => annen same">
       <pattern>
         <pattern-item n="det"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1939,7 +1936,7 @@ TODO:
       <pattern>
         <pattern-item n="det"/>
         <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1986,7 +1983,7 @@ TODO:
       <pattern>
         <pattern-item n="det"/>
         <pattern-item n="adj_attr"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2086,7 +2083,7 @@ TODO:
                    Defnes of possessed NOM is ind (NOM_PROP has no defnes).">
       <pattern>
         <pattern-item n="nom_prop_gen"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2117,7 +2114,7 @@ TODO:
                    Sets defnes of possessor NOM_GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
         <pattern-item n="nom_gen"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2155,7 +2152,7 @@ TODO:
       <pattern>
         <pattern-item n="det"/>
         <pattern-item n="nom_gen"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2205,7 +2202,7 @@ TODO:
                    almmolaš bálvalus => (den) offentlige tjenesten">
       <pattern>
         <pattern-item n="adj_attr"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2247,7 +2244,7 @@ TODO:
       <pattern>
         <pattern-item n="adj_attr"/>
         <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2298,7 +2295,7 @@ TODO:
         <pattern-item n="adj_attr"/>
         <pattern-item n="nom_cmp"/>
         <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
