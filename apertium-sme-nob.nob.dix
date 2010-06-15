@@ -241,7 +241,6 @@
   <e>       <p><l>i</l>          <r>n<s n="det"/><s n="qnt"/><s n="f"/><s n="sg"/></r></p></e>
   <e>       <p><l>t</l>          <r>n<s n="det"/><s n="qnt"/><s n="nt"/><s n="sg"/></r></p></e>
 </pardef>
-
 <pardef n="to__num">
   <e>       <p><l></l>          <r><s n="det"/><s n="qnt"/><s n="pl"/></r></p></e>
 </pardef>
@@ -419,7 +418,7 @@
 </pardef>
 
     <!-- Determiners -->
-<pardef n="en__det">
+<pardef n="/en__det">
   <e>       <p><l>en</l>         <r>en<s n="det"/><s n="qnt"/><s n="m"/><s n="sg"/><s n="ind"/></r></p></e>
   <e r="LR"><p><l>ei</l>         <r>en<s n="det"/><s n="qnt"/><s n="f"/><s n="sg"/><s n="ind"/></r></p></e>
   <e>       <p><l>et</l>         <r>en<s n="det"/><s n="qnt"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
@@ -10668,6 +10667,7 @@
 
 	<section id="main" type="standard">
     <!-- Numbers -->
+<e lm="null">              <i>null</i><par n="to__num"/></e>
 <e lm="en">              <i>e</i><par n="e/n__num"/></e>
 <e lm="to">              <i>to</i><par n="to__num"/></e>
 <e lm="tre">             <i>tre</i><par n="to__num"/></e>
@@ -10764,7 +10764,7 @@
 <e lm="denne">           <i>d</i><par n="d/enne__det"/></e>
 <e lm="hin">             <i>hi</i><par n="hi/n__det"/></e>
 <e lm="forrige">         <i>forrige</i><par n="neste__det"/></e>
-<e lm="en">              <i></i><par n="en__det"/></e>
+<e lm="en">              <i></i><par n="/en__det"/></e>
 <e lm="annen">           <i>an</i><par n="an/nen__det"/></e>
 <e lm="sånn">           <i>sån</i><par n="sån/n__det"/></e>
 <!-- Emphatics -->
@@ -11941,6 +11941,7 @@
 <e lm="saktelig">        <i>saktelig</i><par n="dagevis__adv"/></e>
 <e lm="saktens">         <i>saktens</i><par n="dagevis__adv"/></e>
 <e lm="sammen">          <i>sammen</i><par n="dagevis__adv"/></e>
+<e lm="sammen med">          <i>sammen<b/>med</i><par n="dagevis__adv"/></e>
 <e lm="samstundes">      <i>samstundes</i><par n="dagevis__adv"/></e>
 <e lm="samt">            <i>samt</i><par n="dagevis__adv"/></e>
 <e lm="sann">            <i>sann</i><par n="dagevis__adv"/></e>

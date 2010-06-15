@@ -1021,7 +1021,7 @@ TODO:
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <chunk name="nom_num" case="caseFirstWord">
+          <chunk name="nom_det" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
@@ -1315,7 +1315,7 @@ TODO:
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
           <var n="case-prep"/>
-          <chunk name="num_nom" case="caseFirstWord">
+          <chunk name="det_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
@@ -1365,7 +1365,7 @@ TODO:
         <call-macro n="set_defnes2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         
         
-        <let><var n="c_name"/><lit v="num_"/></let>
+        <let><var n="c_name"/><lit v="det_"/></let>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -1406,7 +1406,7 @@ TODO:
              so that if defnes changes in t2x/t3x, both adj and nom
              get the change in t4x: -->
         <call-macro n="set_c_def_pos"><with-param pos="2"/></call-macro>        
-        <let><var n="c_name"/><lit v="num_adj_"/></let>
+        <let><var n="c_name"/><lit v="det_adj_"/></let>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -2405,7 +2405,7 @@ TODO:
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <chunk name="num" case="caseFirstWord">
+          <chunk name="det" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
@@ -2417,6 +2417,7 @@ TODO:
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>

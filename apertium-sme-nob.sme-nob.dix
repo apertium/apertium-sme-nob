@@ -230,14 +230,23 @@ rules), etc.
       <e><p><l><s n="Attr"/></l><r><s n="ND"/><s n="GD"/></r></p></e>
       <e><p><l></l><r><s n="ND"/><s n="GD"/></r></p></e>
     </pardef>
-    <pardef n="num__det_qnt">
-      <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
-      <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
-      <e><p><l><s n="Gen"/></l><r><s n="gen"/></r></p></e>
-      <e><p><l><s n="Ill"/></l><r><s n="ill"/></r></p></e>
-      <e><p><l><s n="Loc"/></l><r><s n="loc"/></r></p></e>
-      <e><p><l><s n="Ess"/></l><r><s n="ND"/><s n="ess"/></r></p></e>
-      <e><p><l><s n="Com"/></l><r><s n="com"/></r></p></e>
+    <pardef n="num__det_qnt_pl">
+      <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="pl"/><s n="nom"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Acc"/></l><r><s n="pl"/><s n="acc"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Gen"/></l><r><s n="pl"/><s n="gen"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Ill"/></l><r><s n="pl"/><s n="ill"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Loc"/></l><r><s n="pl"/><s n="loc"/></r></p></e>
+      <e>           <p><l><s n="Ess"/></l><r><s n="pl"/><s n="ess"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Com"/></l><r><s n="pl"/><s n="com"/></r></p></e>
+    </pardef>
+    <pardef n="num__det_qnt_sg">
+      <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="sg"/><s n="nom"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Acc"/></l><r><s n="sg"/><s n="acc"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Gen"/></l><r><s n="sg"/><s n="gen"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Ill"/></l><r><s n="sg"/><s n="ill"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Loc"/></l><r><s n="sg"/><s n="loc"/></r></p></e>
+      <e>           <p><l><s n="Ess"/></l><r><s n="sg"/><s n="ess"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Com"/></l><r><s n="sg"/><s n="com"/></r></p></e>
     </pardef>
     <pardef n="__n">
       <e><p><l><s n="Sg"/></l><r><s n="sg"/><s n="CD"/></r></p></e>
@@ -656,6 +665,7 @@ rules), etc.
     <e slr="2"><p><l>mielde<s n="Po"/></l><r>i<b/>følge<s n="pr"/></r></p></e>
     <e><p><l>nala<s n="Po"/></l><r>på<s n="pr"/></r></p></e>
     <e><p><l>nalde<s n="Po"/></l><r>på<s n="pr"/></r></p></e>
+    <e><p><l>oktan<s n="Pr"/></l><r>sammen<b/>med<s n="Pr"/></r></p></e>
     <e><p><l>ovdal<s n="Po"/></l><r>før<s n="pr"/></r></p></e>
     <e><p><l>ovdal<s n="Pr"/></l><r>før<s n="pr"/></r></p></e>
     <e><p><l>ovddal<s n="Po"/></l><r>før<s n="pr"/></r></p></e>
@@ -737,32 +747,32 @@ rules), etc.
 
     <!-- Numerals -->
 
-    <e r="LR"><p><l>nulla<s n="Num"/><s n="Sg"/></l><r>null<s n="det"/><s n="qnt"/><s n="sg"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>nolla<s n="Num"/><s n="Sg"/></l><r>null<s n="det"/><s n="qnt"/><s n="sg"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>okta<s n="Num"/><s n="Sg"/></l><r>en<s n="det"/><s n="qnt"/><s n="sg"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>guokte<s n="Num"/><s n="Sg"/></l><r>to<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>golbma<s n="Num"/><s n="Sg"/></l><r>tre<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>njeallje<s n="Num"/><s n="Sg"/></l><r>fire<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>vihtta<s n="Num"/><s n="Sg"/></l><r>fem<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>guhtta<s n="Num"/><s n="Sg"/></l><r>seks<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>čieža<s n="Num"/><s n="Sg"/></l><r>syv<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>gávcci<s n="Num"/><s n="Sg"/></l><r>åtte<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>ovcci<s n="Num"/><s n="Sg"/></l><r>ni<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>logi<s n="Num"/><s n="Sg"/></l><r>ti<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e r="LR"><p><l>čuohti<s n="Num"/><s n="Sg"/></l><r>hundre<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>čuođi<s n="Num"/><s n="Sg"/></l><r>hundre<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>duhát<s n="Num"/><s n="Sg"/></l><r>tusen<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e r="LR"><p><l>miljon<s n="Num"/><s n="Sg"/></l><r>million<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>millijovdna<s n="Num"/><s n="Sg"/></l><r>million<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e r="LR"><p><l>nulla<s n="Num"/></l><r>null<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>nolla<s n="Num"/></l><r>null<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>okta<s n="Num"/></l><r>en<s n="det"/><s n="qnt"/><s n="GD"/></r></p><par n="num__det_qnt_sg"/></e>
+    <e><p><l>guokte<s n="Num"/></l><r>to<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>golbma<s n="Num"/></l><r>tre<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>njeallje<s n="Num"/></l><r>fire<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>vihtta<s n="Num"/></l><r>fem<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>guhtta<s n="Num"/></l><r>seks<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>čieža<s n="Num"/></l><r>syv<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>gávcci<s n="Num"/></l><r>åtte<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>ovcci<s n="Num"/></l><r>ni<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>logi<s n="Num"/></l><r>ti<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e r="LR"><p><l>čuohti<s n="Num"/></l><r>hundre<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>čuođi<s n="Num"/></l><r>hundre<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>duhát<s n="Num"/></l><r>tusen<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e r="LR"><p><l>miljon<s n="Num"/></l><r>million<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>millijovdna<s n="Num"/></l><r>million<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
 
     <!-- TODO: correct nob.dix entries: -->
-    <e><p><l>moadde<s n="Num"/><s n="Sg"/></l><r>par<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e slr="1"><p><l>moadde<s n="Num"/><s n="Sg"/></l><r>noen<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><p><l>máŋga<s n="Num"/><s n="Sg"/></l><r>mange<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><p><l>moadde<s n="Num"/></l><r>par<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e slr="1"><p><l>moadde<s n="Num"/></l><r>noen<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>máŋga<s n="Num"/></l><r>mange<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
 
-    <e><re>[0-9]+</re><p><l><s n="Num"/><s n="Sg"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e><re>[0-9][.,][0-9]+</re><p><l><s n="Num"/><s n="Sg"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
-    <e c="TODO the nob side"><re>§[0-9]+</re><p><l><s n="Num"/><s n="Sg"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="num__det_qnt"/></e>
+    <e><re>[0-9]+</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><re>[0-9][.,][0-9]+</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e c="TODO the nob side"><re>§[0-9]+</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
 
     <!-- Nouns -->
     <e><re>[a-zA-ZæøåášŧŋđžčÆØÅÁŠŦŊĐŽČ]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
