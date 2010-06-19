@@ -111,6 +111,9 @@ SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@SUBJ→)) ;
 SUBSTITUTE ("ieš") ("ieš:4") ("ieš" Pron Refl) (0 (@←ADVL)) (NOT -1 PronPers) ;
 # Mun jurddašin iežainan => jeg tenkte med _meg selv_
 
+# XXX LENE CHANGE THIS RULE BELOW XXX
+SUBSTITUTE ("cegget") ("cegget:1") ;
+# Mun ceggen vaikke ieš filbmafestivála
 
 # Rules that are not word-specific
 # --------------------------------
