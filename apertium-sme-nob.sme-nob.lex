@@ -69,8 +69,23 @@ SUBSTITUTE ("bivdit") ("bivdit:1") ("bivdit" V)(*1 Qst);
 SUBSTITUTE ("bivdit") ("bivdit:2") ("bivdit" V)(*0 FISH);
 SUBSTITUTE ("bivdit") ("bivdit:3") ("bivdit" V)(*0 NATURE-PLACE OR HUNT-ANIMAL OR BIRD);
 
-
+# orrut 0 = bo, 1 = synes, 2 = bli, 3 = være
 SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego")) ;
+
+
+# Noun rules
+# ----------
+
+SUBSTITUTE ("miella") ("miella:1") ("miella" N Sg Loc) (-1 @→N) ;
+# sinn => oppfatning (kan regelen vere meir generell?)
+
+# gonagas 0 = konge, 1 = kong
+SUBSTITUTE ("gonagas") ("gonagas:1") ("gonagas" N Sg) (1 NPropMal) ;
+# Konge Harald => Kong Harald
+
+# johtu 0 = fart, 1 = bevegelse, 2 = gang
+SUBSTITUTE ("johtu") ("johtu:2") ("johtu" N Sg) (0 Ill) ;
+# til farten => i gang
 
 
 # Other parts of speech
@@ -87,12 +102,6 @@ SUBSTITUTE ("goabbáge") ("goabbáge:1") ("goabbáge" Pron Indef Sg) (*-1 Neg) ;
 # duohta 0 = sann, 1 = virkelig
 SUBSTITUTE ("duohta") ("duohta:1") ("duohta" A Sg Loc) (0 @ADVL) ;
 
-SUBSTITUTE ("miella") ("miella:1") ("miella" N Sg Loc) (-1 @→N) ;
-# sinn => oppfatning (kan regelen vere meir generell?)
-
-# gonagas 0 = konge, 1 = kong
-SUBSTITUTE ("gonagas") ("gonagas:1") ("gonagas" N Sg) (1 NPropMal) ;
-# Konge Harald => Kong Harald
 
 
 # go (default)=> når
