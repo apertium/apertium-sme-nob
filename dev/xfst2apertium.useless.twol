@@ -24,33 +24,60 @@
 
 Alphabet
 
-%+Last:0
-%+Use/NG:0
-%+Use/Ped:0
-%+Use/Sub:0
-%+Use/Circ:0
-%+Use/CircN:0
-%+Use/Marg:0
-%+Dial/%-KJ:0
-%+Dial/%-GG:0
-%+Dial/%-GS:0
+ %+Use/Sub:0   
+ %+Use/Marg:0  
+ %+Use/Circ:0  
+ %+Use/CircN:0 
+ %+Use/Ped:0   
+ %+Use/NG:0    
+ %+Dial/%-KJ:0  
+ %+Dial/%-GG:0  
+ %+Dial/%-GS:0  
+ %+Dial/KJ:0   
+ %+Dial/GG:0   
+ %+Dial/GS:0   
+
+ %+First:0 %+Last:0 
+ %+None:0 
+ %+CmpOnly:0 
+ %+SgNomLeft:0 %+SgGenLeft:0 %+PlGenLeft:0 %+SgLeft:0 
+ %+AllCmp:0 
+ %+DefSgGenCmp:0 %+DefPlGenCmp:0 %+DefCmp:0 
+
+ %+CmpN/Sg:0 %+CmpN/SgN:0 %+CmpN/SgG:0 %+CmpN/PlG:0
+ %+CmpN/First:0 %+CmpN/Last:0 %+CmpN/None:0 %+CmpN/Only:0
+ %+CmpN/SgLeft:0 %+CmpN/SgNomLeft:0 %+CmpN/SgGenLeft:0 %+CmpN/PlGenLeft:0
+ %+CmpN/All:0 %+CmpN/Def:0 %+CmpN/DefSgGen:0 %+CmpN/DefPlGen:0
 ;
 
 
 Sets
 
-Useless =
-%+Last
-%+Use/NG
-%+Use/Ped	
-%+Use/Sub	
-%+Use/Circ	
-%+Use/CircN	
-%+Use/Marg	
-%+Use/NG	
-%+Dial/%-KJ	
-%+Dial/%-GG	
-%+Dial/%-GS	
+Useless =	    ! Keep consistent with tags in  sme-lex.txt:36..62
+ %+Use/Sub   
+ %+Use/Marg  
+ %+Use/Circ  
+ %+Use/CircN 
+ %+Use/Ped   
+ %+Use/NG    
+ %+Dial/%-KJ  
+ %+Dial/%-GG  
+ %+Dial/%-GS  
+ %+Dial/KJ   
+ %+Dial/GG   
+ %+Dial/GS   
+
+ %+First %+Last 
+ %+None 
+ %+CmpOnly 
+ %+SgNomLeft %+SgGenLeft %+PlGenLeft %+SgLeft 
+ %+AllCmp 
+ %+DefSgGenCmp %+DefPlGenCmp %+DefCmp 
+
+ %+CmpN/Sg %+CmpN/SgN %+CmpN/SgG %+CmpN/PlG
+ %+CmpN/First %+CmpN/Last %+CmpN/None %+CmpN/Only
+ %+CmpN/SgLeft %+CmpN/SgNomLeft %+CmpN/SgGenLeft %+CmpN/PlGenLeft
+ %+CmpN/All %+CmpN/Def %+CmpN/DefSgGen %+CmpN/DefPlGen
 ;
 
 Rules 
