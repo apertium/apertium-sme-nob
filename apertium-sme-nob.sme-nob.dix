@@ -444,6 +444,8 @@
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
       <!-- Not sure what to do about this: -->
       <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
+      <!-- Double derivation (eg. geavahuvvomis), I think this is the best we can do: -->
+      <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
 
       <e><p><l><s n="Der_PassS"/><s n="V"/><s n="Inf"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
       <e><p><l><s n="Der_PassS"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
@@ -583,6 +585,7 @@
     <e><p><l>mo<s n="CS"/></l><r>hvordan<s n="cnjsub"/></r></p></e> <!-- TODO: Check -->
     <e><p><l>vai<s n="CS"/></l><r>for<b/>at<s n="cnjsub"/></r></p></e>
     <e slr="1"><p><l>vai<s n="CS"/></l><r>for<b/>å<s n="cnjsub"/></r></p></e>
+    <e><p><l>vaikko<s n="CS"/></l><r>selv<b/>om<s n="cnjsub"/></r></p></e>
 
     <!-- Adpositions -->
 
@@ -707,10 +710,12 @@
     <e><p><l>mun<s n="Pron"/><s n="Pers"/><s n="Du1"/></l><r>vi<s n="prn"/><s n="p1"/><s n="mf"/><s n="du"/></r></p><par n="__prn-case"/></e>
     <e><p><l>don<s n="Pron"/><s n="Pers"/><s n="Du2"/></l><r>dere<s n="prn"/><s n="p2"/><s n="mf"/><s n="du"/></r></p><par n="__prn-case"/></e>
     <e><p><l>son<s n="Pron"/><s n="Pers"/><s n="Du3"/></l><r>de<s n="prn"/><s n="p3"/><s n="mf"/><s n="du"/></r></p><par n="__prn-case"/></e>
+    <e r="LR"><p><l>dat<s n="Pron"/><s n="Pers"/><s n="Du3"/></l><r>de<s n="prn"/><s n="p3"/><s n="mf"/><s n="du"/></r></p><par n="__prn-case"/></e>
 
     <e><p><l>mun<s n="Pron"/><s n="Pers"/><s n="Pl1"/></l><r>vi<s n="prn"/><s n="p1"/><s n="mf"/><s n="pl"/></r></p><par n="__prn-case"/></e>
     <e><p><l>don<s n="Pron"/><s n="Pers"/><s n="Pl2"/></l><r>dere<s n="prn"/><s n="p2"/><s n="mf"/><s n="pl"/></r></p><par n="__prn-case"/></e>
     <e><p><l>son<s n="Pron"/><s n="Pers"/><s n="Pl3"/></l><r>de<s n="prn"/><s n="p3"/><s n="mf"/><s n="pl"/></r></p><par n="__prn-case"/></e>
+    <e r="LR"><p><l>dat<s n="Pron"/><s n="Pers"/><s n="Pl3"/></l><r>de<s n="prn"/><s n="p3"/><s n="mf"/><s n="pl"/></r></p><par n="__prn-case"/></e>
 
 
     <e><p><l>mii<s n="Pron"/><s n="Interr"/></l><r>hva<s n="prn"/><s n="itg"/></r></p><par n="__prn-case"/></e>
@@ -2032,7 +2037,8 @@
     <e><p><l>nođđu<s n="N"/></l><r>nøste<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>nominašuvdna<s n="N"/></l><r>nominasjon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>norbma<s n="N"/></l><r>norm<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>nummár<s n="N"/></l><r>nummer<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e r="LR"><p><l>nummir<s n="N"/></l><r>nummer<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+    <e r="LR"><p><l>nummár<s n="N"/></l><r>nummer<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>nummar<s n="N"/></l><r>nummer<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>nuohtta<s n="N"/></l><r>melodi<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>nuohtti<s n="N"/></l><r>not<s n="n"/></r></p><par n="m_RL_f__n"/></e>
@@ -2089,7 +2095,8 @@
     <e><p><l>okkupašuvdna<s n="N"/></l><r>okkupasjon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>oktavuohta<s n="N"/></l><r>kontakt<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <e slr="1"><p><l>oktavuohta<s n="N"/></l><r>henvendelse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e slr="2"><p><l>oktavuohta<s n="N"/></l><r>forbindelse<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e slr="2"><p><l>oktavuohta<s n="N"/></l><r>forbindelse<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
+    <e slr="3"><p><l>oktavuohta<s n="N"/></l><r>sammenheng<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>olahus<s n="N"/></l><r>rekord<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>olggoš<s n="N"/></l><r>overflate<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>olju<s n="N"/></l><r>olje<s n="n"/></r></p><par n="m_RL_f__n"/></e>
@@ -2486,8 +2493,10 @@
     <e><p><l>teaksta<s n="N"/></l><r>tekst<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>teknihkka<s n="N"/></l><r>teknikk<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>teknihkkár<s n="N"/></l><r>tekniker<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e r="LR"><p><l>telefon<s n="N"/></l><r>telefon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e r="LR"><p><l>telefuvdna<s n="N"/></l><r>telefon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>telefovdna<s n="N"/></l><r>telefon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-    <e><p><l>telefuvdna<s n="N"/></l><r>telefon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>telefonnummir<s n="N"/></l><r>telefonnummer<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>televišuvdna<s n="N"/></l><r>televisjon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>temá<s n="N"/></l><r>tema<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>temperatuvra<s n="N"/></l><r>temperatur<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -20262,6 +20271,7 @@
     <e><p><l>geažos<s n="A"/></l><r>hele<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>gelbbolaš<s n="A"/></l><r>dugelig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>gelddolaš<s n="A"/></l><r>spennende<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>giel<s n="Cmp"/><s n="A"/></l><r>språklig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>gielaheapme<s n="A"/></l><r>stum<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>gierdameahttun<s n="A"/></l><r>utålmodig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>gierdavaš<s n="A"/></l><r>tålmodig<s n="adj"/></r></p><par n="__adj"/></e>
@@ -20671,6 +20681,8 @@
     <e><p><l>boastut<s n="Adv"/></l><r>galt<s n="adv"/></r></p></e>
     <e><p><l>bures<s n="Adv"/></l><r>godt<s n="adv"/></r></p></e>
     <e><p><l>čađa<s n="Adv"/></l><r>gjennom<s n="adv"/></r></p></e>
+    <e><p><l>čađat<s n="Adv"/></l><r>alltid<s n="adv"/></r></p></e>
+    <e slr="1"><p><l>čađat<s n="Adv"/></l><r>bestandig<s n="adv"/></r></p></e>
     <e><p><l>čakčat<s n="Adv"/></l><r>om<b/>høsten<s n="adv"/></r></p></e>
     <e><p><l>čavga<s n="Adv"/></l><r>stramt<s n="adv"/></r></p></e>
     <e><p><l>ceaggut<s n="Adv"/></l><r>oppreist<s n="adv"/></r></p></e>

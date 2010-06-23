@@ -5,6 +5,7 @@ DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
 
 SETS
 LIST Ill = Ill ;
+LIST Loc = Loc ;
 LIST Num = Num ;
 LIST Neg = Neg ;
 LIST Pers = Pers ;
@@ -86,6 +87,12 @@ SUBSTITUTE ("gonagas") ("gonagas:1") ("gonagas" N Sg) (1 NPropMal) ;
 # johtu 0 = fart, 1 = bevegelse, 2 = gang
 SUBSTITUTE ("johtu") ("johtu:2") ("johtu" N Sg) (0 Ill) ;
 # til farten => i gang
+
+# oktavuohta 0 = kontakt, 1 = henvendelse, 2 = forbindelse, 3 = sammenheng
+SUBSTITUTE ("oktavuohta") ("oktavuohta:2") ("oktavuohta" N Sg Loc) ;
+# dan oktavuođas go => i den forbindelse når
+SUBSTITUTE ("oktavuohta") ("oktavuohta:3") ("oktavuohta" N Pl Loc) ;
+# máŋgga oktavuođain => i mange sammenhenger
 
 
 # Other parts of speech
