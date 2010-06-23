@@ -46,6 +46,7 @@ TODO:
       <cat-item tags="A.*"/>
     </def-cat>
     <def-cat n="adj_attr">
+      <cat-item tags="A.Ess.*"/>
       <cat-item tags="A.Attr.*"/>
       <cat-item tags="A.*.Attr.*"/>
     </def-cat>
@@ -565,6 +566,7 @@ TODO:
               <test><or>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→N"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→A"/></equal>
+                <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
               </or></test>
               <let>
                 <var n="case-prep"/><lit v=""/>                <!--sin-->
@@ -606,7 +608,6 @@ TODO:
                   - Personal pronouns can only be nom or acc (note: @HAB / @-FSUBJ→ / @-FOBJ→ => nom),
                   - Demonstrative and indefinites can only be gen in nob,
                   - det.pos (personal genitives) have no case, but this is handled in transfer rules.">
-      
       <choose>
         <when>
           <test><equal><clip pos="1" side="sl" part="a_pron"/><lit-tag v="Pron.Pers"/></equal></test>
@@ -621,7 +622,10 @@ TODO:
             </when>
             <when>
               <test><not>
-                <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></equal>
+                <or>
+                  <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></equal>
+                  <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
+                </or>
               </not></test>
               <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
             </when>
@@ -779,7 +783,7 @@ TODO:
         <when>
           <test>
             <or>
-              <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="pp"/></equal>
+              <equal><clip pos="2" side="tl" part="temps"/><lit-tag v="pp"/></equal>
               <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="posi"/></ends-with>
             </or>
           </test>
@@ -1708,7 +1712,7 @@ TODO:
                   <tag><clip pos="1" side="tl" part="pers"/></tag>
                   <tag><lit-tag v="GD"/></tag>
                   <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                  <tag><clip pos="1" side="tl" part="case"/></tag>
+                  <tag><lit-tag v="nom"/></tag>
                 </tags>
                 <lu>
                   <lit v="prpers"/>
@@ -2521,7 +2525,10 @@ TODO:
 
 TODO: caseSecondWord
 TODO: Compounds with these. Should put it all in a macro then...
-TODO: should VERB->ADJ always be tagged SN?">
+TODO: should VERB->ADJ always be tagged SN?
+
+TODO: Change the branching/logic here; the 'if adv/adj/N' should all happen _after_ we've
+checked for passive (and if so output the aux), but not be dependent on outputting a passive aux.">
       <pattern>
         <pattern-item n="verb"/>
       </pattern>
@@ -2696,7 +2703,8 @@ TODO: should VERB->ADJ always be tagged SN?">
                       <lu>
                         <clip pos="1" side="tl" part="lemh"/>
                         <clip pos="1" side="tl" part="a_adj"/>
-                        <lit-tag v="posi.GD.ND.ind"/>
+                        <clip pos="1" side="tl" part="grau"/>
+                        <lit-tag v="GD.ND.ind"/>
                         <clip pos="1" side="tl" part="lemq"/>
                       </lu>
                     </chunk>
@@ -2906,6 +2914,10 @@ TODO: should VERB->ADJ always be tagged SN?">
                 <lu>
                   <clip pos="2" side="tl" part="lemh"/>
                   <clip pos="2" side="tl" part="a_adj"/>
+                  <clip pos="2" side="tl" part="grau"/>
+                  <clip pos="2" side="tl" part="gen"/>
+                  <clip pos="2" side="tl" part="nbr"/>
+                  <clip pos="2" side="tl" part="art"/>
                   <clip pos="2" side="tl" part="lemq"/>
                 </lu>
               </chunk>

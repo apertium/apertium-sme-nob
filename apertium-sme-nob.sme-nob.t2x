@@ -230,11 +230,14 @@ TODO:
       <modify-case><clip pos="2" part="lemh"/><var n="tmpcase"/></modify-case>
     </def-macro>
     
-    <def-macro n="clean_pron_of_adpos" npar="1"
+    <def-macro n="clean_SN_of_adpos" npar="1"
                c="arg.1: SN, might be pronoun">
       <choose>
         <when>
-          <test><equal><clip pos="1" part="lemh"/><lit v="pron"/></equal></test>
+          <test><or>
+            <equal caseless="yes"><clip pos="1" part="lemh"/><lit v="pron"/></equal>
+            <equal caseless="yes"><clip pos="1" part="lemh"/><lit v="det"/></equal>
+          </or></test>
           <let><clip pos="1" part="case"/><lit-tag v="acc"/></let>
         </when>
         <otherwise>
@@ -555,7 +558,7 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
-        <call-macro n="clean_pron_of_adpos"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="2"/></call-macro>
         <choose><when>
           <test><not><equal><b pos="1"/><b/></equal></not></test>
           <out><b pos="1"/></out>
@@ -579,7 +582,7 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
-        <call-macro n="clean_pron_of_adpos"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="2"/></call-macro>
         <choose><when>
           <test><not><equal><b pos="1"/><b/></equal></not></test>
           <out><b pos="1"/></out>
@@ -600,7 +603,7 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
-        <call-macro n="clean_pron_of_adpos"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="1"/>
@@ -620,7 +623,7 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
-        <call-macro n="clean_pron_of_adpos"><with-param pos="3"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>

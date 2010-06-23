@@ -369,6 +369,9 @@
       <e><p><l><s n="Superl"/><s n="Sg"/></l>        <r><s n="sup"/></r></p></e>
       <e><p><l><s n="Superl"/><s n="Pl"/></l>        <r><s n="sup"/><s n="def"/></r></p></e>
 
+      <!-- Should we do anything else for A.Ess ? -->
+      <e><p><l><s n="Ess"/></l>          <r><s n="posi"/><s n="GD"/><s n="ND"/></r></p></e>
+
       <!-- Don't add an 'n' or 'adv' tag to the <r>'s here;
            we don't introduce PoS changes in pardefs!
            The derived nob noun might not exist. -->
@@ -605,6 +608,8 @@
     <e><p><l>báldii<s n="Po"/></l><r>ved<b/>siden<b/>av<s n="pr"/></r></p></e>
     <e><p><l>beallái<s n="Po"/></l><r>til<b/>andre<b/>siden<b/>av<s n="pr"/></r></p></e>
     <e><p><l>beallái<s n="Pr"/></l><r>til<b/>andre<b/>siden<b/>av<s n="pr"/></r></p></e>
+    <e c="TODO pr => n"><p><l>bealde<s n="Pr"/></l><r>side<s n="n"/><s n="m"/><s n="sg"/><s n="ind"/></r></p></e>
+    <e c="TODO pr => n"><p><l>bealde<s n="Po"/></l><r>side<s n="n"/><s n="m"/><s n="sg"/><s n="ind"/></r></p></e>
     <e><p><l>birra<s n="Po"/></l><r>om<s n="pr"/></r></p></e>
     <e slr="1"><p><l>birra<s n="Po"/></l><r>rundt<s n="pr"/></r></p></e>
     <e><p><l>birra<s n="Pr"/></l><r>omkring<s n="pr"/></r></p></e> 
@@ -741,6 +746,7 @@
     <e><p><l>muhtun<s n="Pron"/><s n="Indef"/></l><r>noe<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
     <e slr="1"><p><l>muhtun<s n="Pron"/><s n="Indef"/></l><r>en<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
     <e><p><l>eará<s n="Pron"/><s n="Indef"/></l><r>annen<s n="det"/><s n="dem"/><s n="DD"/></r></p><par n="pron__det"/></e>
+    <e><p><l>nubbi<s n="Pron"/><s n="Indef"/></l><r>annen<s n="det"/><s n="dem"/><s n="DD"/></r></p><par n="pron__det"/></e>
     <e><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
     <e slr="1"><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e> <!-- juohke lágán => alle slags, alle måter -->
 
@@ -1039,6 +1045,7 @@
     <e><p><l>buhtis<s n="N"/></l><r>rein<s n="n"/></r></p><par n="m_RL_f__n"/></e>
     <e><p><l>buhtisteapmi<s n="N"/></l><r>rensing<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>bunáda<s n="N"/></l><r>bunad<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e c="TODO check"><p><l>buocanvuohta<s n="N"/></l><r>sykdom<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>buođđu<s n="N"/></l><r>stengsel<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>buoidda<s n="N"/></l><r>røyskatt<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>buolaš<s n="N"/></l><r>kulde<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
@@ -20395,6 +20402,7 @@
     <e><p><l>luovus<s n="A"/></l><r>løs<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>máđoheapme<s n="A"/></l><r>forskrekkelig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>máizzas<s n="A"/></l><r>lunken<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>máŋemus<s n="A"/></l><r>til<b/>slutt<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>mánálaš<s n="A"/></l><r>barnslig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>máškit<s n="A"/></l><r>fleksibel<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>mášoheapme<s n="A"/></l><r>rastløs<s n="adj"/></r></p><par n="__adj"/></e>
@@ -20824,6 +20832,7 @@
     <e><p><l>maŋágeahčen<s n="Adv"/></l><r>bakpå<s n="adv"/></r></p></e>
     <e><p><l>maŋás<s n="Adv"/></l><r>bakover<s n="adv"/></r></p></e>
     <e><p><l>máŋgii<s n="Adv"/></l><r>mange<b/>ganger<s n="adv"/></r></p></e>
+    <e><p><l>máŋemus<s n="Adv"/></l><r>til<b/>slutt<s n="adv"/></r></p></e>
     <e><p><l>manin<s n="Adv"/></l><r>hvorfor<s n="adv"/></r></p></e>
     <e><p><l>maŋŋá<s n="Adv"/></l><r>senere<s n="adv"/></r></p></e>
     <e><p><l>manne<s n="Adv"/></l><r>hvorfor<s n="adv"/></r></p></e>
@@ -21042,7 +21051,9 @@
     <e><p><l>báhccat<s n="V"/><s n="IV"/></l><r>gå<g><b/>av</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>bahčit<s n="V"/><s n="TV"/></l><r>melke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>báhčit<s n="V"/><s n="TV"/></l><r>skyte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e c="TODO bli adv"><p><l>báhcit<s n="V"/><s n="IV"/></l><r>igjen<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--(mon) bázán-->
+
+    <e c="TODO bli adv"><p><l>báhcit<s n="V"/><s n="IV"/></l><r>igjen<s n="adv"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--(mon) bázán-->
+
     <e><p><l>báhkadit<s n="V"/><s n="TV"/></l><r>varme<g><b/>opp</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>báhkkanit<s n="V"/><s n="IV"/></l><r>varm<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
     <e><p><l>bahkket<s n="V"/><s n="TV"/></l><r>trenge<g><b/>på</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -21091,7 +21102,9 @@
     <e><p><l>bávččastit<s n="V"/><s n="IV"/></l><r>gjøre<g><b/>vondt</g><s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
     <e><p><l>bávkit<s n="V"/><s n="IV"/></l><r>smelle<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--smelle (flere ganger)-->
     <e><p><l>bávkkihit<s n="V"/><s n="IV"/></l><r>smelle<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--smelle (en gang)-->
-    <e c="TODO bli adv"><p><l>bázahaddat<s n="V"/><s n="TV"/></l><r>igjen<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
+
+    <e c="TODO bli adv"><p><l>bázahaddat<s n="V"/><s n="TV"/></l><r>igjen<s n="adv"/><s n="pers"/></r></p><par n="pass__verb"/></e>
+
     <e><p><l>bázahit<s n="V"/><s n="TV"/></l><r>etterlate<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>beaggit<s n="V"/><s n="IV"/></l><r>forlyde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>beahkit<s n="V"/><s n="IV"/></l><r>krype<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) begii, (sii) behket-->
@@ -21127,7 +21140,9 @@
     <e><p><l>biekkahit<s n="V"/><s n="TV"/></l><r>la det blåse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>biekkastit<s n="V"/><s n="IV"/></l><r>begynne<g><b/>å<b/>blåse</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>bierggastit<s n="V"/><s n="TV"/></l><r>møblere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e c="TODO bli N"><p><l>bievlat<s n="V"/><s n="IV"/></l><r>barmark<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
+
+    <e c="TODO bli N"><p><l>bievlat<s n="V"/><s n="IV"/></l><r>barmark<s n="n"/><s n="m"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
+
     <e><p><l>bihcut<s n="V"/><s n="IV"/></l><r>rimbelegge<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
     <e><p><l>bihtit<s n="V"/><s n="IV"/></l><r>klare<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>biidnašuvvat<s n="V"/><s n="IV"/></l><r>pines<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--šuvai-->
@@ -21161,8 +21176,8 @@
     <e><p><l>boaibmut<s n="V"/><s n="TV"/></l><r>plukke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>boaldit<s n="V"/><s n="TV"/></l><r>brenne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 
-    <e c="TODO! bli adj"><p><l>boarásmit<s n="V"/><s n="IV"/></l><r>gammel<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
-    <e c="TODO! bli adj"><p><l>boarásmuvvat<s n="V"/><s n="IV"/></l><r>gammel<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--(son) -muvai-->
+    <e><p><l>boarásmit<s n="V"/><s n="IV"/></l><r>gammel<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
+    <e><p><l>boarásmuvvat<s n="V"/><s n="IV"/></l><r>gammel<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--(son) -muvai-->
 
     <e><p><l>boatkanit<s n="V"/><s n="IV"/></l><r>bryte<g><b/>sammen</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>bohciidit<s n="V"/><s n="IV"/></l><r>spire<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
@@ -21352,7 +21367,7 @@
     <e><p><l>čuožžilit<s n="V"/><s n="IV"/></l><r>reise<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e> 
     <e><p><l>čuožžut<s n="V"/><s n="IV"/></l><r>stå<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 
-    <e c="TODO! adj"><p><l>čurggodit<s n="V"/><s n="IV"/></l><r>gråhåret<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
+    <e><p><l>čurggodit<s n="V"/><s n="IV"/></l><r>gråhåret<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
 
     <e><p><l>čurvet<s n="V"/><s n="TV"/></l><r>rope<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) čurvejin  (en gang)-->
     <e><p><l>cuskit<s n="V"/><s n="IV"/></l><r>fnyse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -21452,12 +21467,15 @@
     <e><p><l>divodit<s n="V"/><s n="TV"/></l><r>redigere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>divrrašit<s n="V"/><s n="TV"/></l><r>anse for å være dyr<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>divrudit<s n="V"/><s n="TV"/></l><r>fordyre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e c="TODO! bli adj comp"><p><l>divrut<s n="V"/><s n="IV"/></l><r>dyrere<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
+
+    <e c="pass+dyr.comp = bli dyrere"><p><l>divrut<s n="V"/><s n="IV"/></l><r>dyr<s n="adj"/><s n="comp"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
+
     <e><p><l>divuhit<s n="V"/><s n="TV"/></l><r>reparere<s n="vblex"/><s n="pers"/></r></p><par n="caus__verb"/></e> 
     <e><p><l>divvut<s n="V"/><s n="TV"/></l><r>reparere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>doadjit<s n="V"/><s n="TV"/></l><r>knekke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>doahput<s n="V"/><s n="TV"/></l><r>gripe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) doabun, (sii) dohpot-->
-    <e><p><l>doahttalit<s n="V"/><s n="TV"/></l><r>akte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e><p><l>doahttalit<s n="V"/><s n="TV"/></l><r>respektere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="1"><p><l>doahttalit<s n="V"/><s n="TV"/></l><r>akte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>doaibmat<s n="V"/><s n="IV"/></l><r>fungere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>doaimmahit<s n="V"/><s n="TV"/></l><r>utføre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>doaivut<s n="V"/><s n="TV"/></l><r>håpe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -21782,7 +21800,9 @@
     <e><p><l>govdet<s n="V"/><s n="TV"/></l><r>stige til overflaten<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>govdut<s n="V"/><s n="IV"/></l><r>flyte<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) govddui-->
     <e><p><l>govket<s n="V"/><s n="TV"/></l><r>åpne på gløtt<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) govkejit-->
-    <e c="TODO bli pr"><p><l>govssahallat<s n="V"/><s n="IV"/></l><r>uten<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--(mun) govssahalan // (mat) -->
+
+    <e c="TODO bli pr"><p><l>govssahallat<s n="V"/><s n="IV"/></l><r>uten<s n="pr"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--(mun) govssahalan // (mat) -->
+
     <e><p><l>govvet<s n="V"/><s n="TV"/></l><r>fotografere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>govvidit<s n="V"/><s n="TV"/></l><r>beskrive<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>graderet<s n="V"/><s n="TV"/></l><r>gradere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -22210,7 +22230,7 @@
     <e><p><l>minimaliseret<s n="V"/><s n="TV"/></l><r>minimalisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>mišuneret<s n="V"/><s n="IV"/></l><r>misjonere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>moaitit<s n="V"/><s n="TV"/></l><r>klage over<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) moittii-->
-    <e><p><l>moaráskit<s n="V"/><s n="IV"/></l><r>rasende<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e>
+    <e><p><l>moaráskit<s n="V"/><s n="IV"/></l><r>rase<s n="adj"/><s n="pprs"/><s n="pers"/></r></p><par n="pass__verb"/></e>
     <e><p><l>moardit<s n="V"/><s n="TV"/></l><r>skyte garn eller not<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>mobiliseret<s n="V"/><s n="TV"/></l><r>mobilisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>moddját<s n="V"/><s n="IV"/></l><r>smile<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) moddjájit-->
@@ -22752,7 +22772,7 @@
     <e><p><l>treneret<s n="V"/><s n="TV"/></l><r>trenere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>turneret<s n="V"/><s n="TV"/></l><r>turnere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>udnot<s n="V"/><s n="TV"/></l><r>unne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) udnojit-->
-    <e c="TODO bli adj comp"><p><l>uhccut<s n="V"/><s n="IV"/></l><r>mindre<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e>
+    <e><p><l>uhccut<s n="V"/><s n="IV"/></l><r>minke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>uhcidit<s n="V"/><s n="TV"/></l><r>forminske<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>uhkidit<s n="V"/><s n="TV"/></l><r>true<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>unnidit<s n="V"/><s n="TV"/></l><r>forminske<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -22790,7 +22810,7 @@
     <e><p><l>várjalit<s n="V"/><s n="TV"/></l><r>forsvare<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>várret<s n="V"/><s n="TV"/></l><r>advare<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>váruhit<s n="V"/><s n="TV"/></l><r>passe<g><b/>på</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>vašáskit<s n="V"/><s n="IV"/></l><r>rasende<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e>
+    <e><p><l>vašáskit<s n="V"/><s n="IV"/></l><r>rase<s n="adj"/><s n="pprs"/><s n="pers"/></r></p><par n="pass__verb"/></e>
     <e><p><l>vásihit<s n="V"/><s n="TV"/></l><r>erfare<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>vássit<s n="V"/><s n="IV"/></l><r>svinne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>vástidit<s n="V"/><s n="TV"/></l><r>svare<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -22800,14 +22820,16 @@
     <e><p><l>vávjit<s n="V"/><s n="TV"/></l><r>mistenke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>vázzilit<s n="V"/><s n="IV"/></l><r>begynne<g><b/>å<b/>gå</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>vázzit<s n="V"/><s n="IV"/></l><r>gå<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-    <e><p><l>veaddit<s n="V"/><s n="TV"/></l><r>holde<g><b/>i<b/>tjor</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) veattán, (son) vettii-->
+    <e><p><l>veaddit<s n="V"/><s n="TV"/></l><r>tjore<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) veattán, (son) vettii-->
     <e><p><l>veahkehit<s n="V"/><s n="TV"/></l><r>hjelpe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>  <!-- seg reflx. -->
     <e><p><l>vealahit<s n="V"/><s n="TV"/></l><r>berøve<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>veallánit<s n="V"/><s n="IV"/></l><r>legge<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e>  <!-- seg reflx. -->
     <e><p><l>veallát<s n="V"/><s n="IV"/></l><r>ligge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) veallájit-->
     <e><p><l>vealtat<s n="V"/><s n="IV"/></l><r>unngå<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>veardidit<s n="V"/><s n="TV"/></l><r>sammenligne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-    <e c="TODO adj comp"><p><l>vearránit<s n="V"/><s n="IV"/></l><r>verre<s n="adj"/><s n="impers"/></r></p><par n="pass__verb"/></e> 
+
+    <e c="pass+ille.comp = bli verre"><p><l>vearránit<s n="V"/><s n="IV"/></l><r>ille<s n="adj"/><s n="comp"/><s n="impers"/></r></p><par n="pass__verb"/></e> 
+
     <e><p><l>vearuhit<s n="V"/><s n="TV"/></l><r>beskatte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
     <e><p><l>veiggodit<s n="V"/><s n="IV"/></l><r>skumre<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
     <e><p><l>velledit<s n="V"/><s n="IV"/></l><r>legge<g><b/>litt</g><s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e> 
