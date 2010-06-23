@@ -29,8 +29,8 @@ This is the third pass. Responsibilities of this file include:
       <cat-item lemma="unknown" tags="unknown"/>
       <cat-item tags="SN.@HAB.*"/>
       <cat-item tags="SN.@SUBJ→.*"/>
-      <cat-item tags="SN.@X.*"/>
       <cat-item tags="SV.@SUBJ→.*"/>
+      <cat-item tags="SN.@X.*"/>
       <cat-item lemma="rel" tags="*.*.*.*.@SUBJ→"/>
       <cat-item lemma="rel" tags="@SUBJ→.*"/>
       <cat-item lemma="rel" tags="*.*.*.*.@←SPRED"/>
@@ -39,8 +39,15 @@ This is the third pass. Responsibilities of this file include:
     <def-cat n="maybe-RSUBJ">
       <cat-item lemma="unknown" tags="unknown"/>
       <cat-item tags="SN.@HAB.*"/>           <!-- HAB or not here? -->
+      <cat-item tags="SV.@←SUBJ.*"/>
       <cat-item tags="SN.@←SUBJ.*"/>
+      <cat-item tags="SA.@←SUBJ.*"/>
       <cat-item tags="SN.@X.*"/>
+    </def-cat>
+    <def-cat n="RSPRED">
+      <cat-item tags="SV.@←SPRED.*"/>
+      <cat-item tags="SN.@←SPRED.*"/>
+      <cat-item tags="SA.@←SPRED.*"/>
     </def-cat>
     <def-cat n="LOBJ_LSA">
       <cat-item tags="SN.@OBJ→.*"/>
@@ -52,16 +59,13 @@ This is the third pass. Responsibilities of this file include:
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
     </def-cat>
-    <def-cat n="ROBJ_RPRED">
+    <def-cat n="ROBJ_ROPRED">
       <cat-item tags="SV.@←OBJ.*"/>
       <cat-item tags="SN.@←OBJ.*"/>
       <cat-item tags="SA.@←OBJ.*"/>
       <cat-item tags="SV.@←OPRED.*"/>
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
-      <cat-item tags="SV.@←SPRED.*"/>
-      <cat-item tags="SN.@←SPRED.*"/>
-      <cat-item tags="SA.@←SPRED.*"/>
     </def-cat>
     <def-cat n="ILSUBJ" c="subject of infinite verb (setningstilsvar), may be object of finite verb">
       <cat-item tags="SN.@-FSUBJ→.*"/>
@@ -629,7 +633,8 @@ This is the third pass. Responsibilities of this file include:
         </out>
       </action>
     </rule>
-    
+
+    <!-- <rules: SPEC-LSUBJ-Qst FV RSPRED* (insert existential 'det') -->    
     <rule comment="REGLA: SPEC-LSUBJ-Qst FV
                    Áhččigo boahtá (ihttin) => Er det far som kommer (i morgen)
                    Áhččigo bođii (ikte) => Var det far som kom (i går)
@@ -654,10 +659,11 @@ This is the third pass. Responsibilities of this file include:
           </chunk>
           <b/>
           <chunk>
-            <lit v="det"/><lit-tag v="SN"/><lit-tag v="@X"/>
+            <lit v="pro"/><lit-tag v="@SUBJ"/>
             <lit-tag v="p3"/><lit-tag v="nt"/><lit-tag v="sg"/><lit-tag v="nom"/>
             <lit v="{^"/>
-            <lit v="det"/><lit-tag v="prn"/>
+            <lit v="prpers"/>
+            <lit-tag v="prn"/>
             <lit-tag v="p3"/><lit-tag v="nt"/><lit-tag v="sg"/><lit-tag v="nom"/>
             <lit v="$}"/>
           </chunk>
@@ -679,11 +685,9 @@ This is the third pass. Responsibilities of this file include:
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
       </action>
-    </rule>
+    </rule>    
     
-    
-    
-    <!-- <rules: SN-maybe-LSUBJ ADVL* FV IV* -->
+    <!-- <rules: maybe-LSUBJ ADVL* FV IV* -->
     <rule comment="REGLA: maybe-LSUBJ FV
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
@@ -815,7 +819,7 @@ This is the third pass. Responsibilities of this file include:
     </rule>
 
     <!-- <rules: SPEC* FV IV* RSUBJ: -->
-    <rule comment="REGLA: FV SN-maybe-RSUBJ
+    <rule comment="REGLA: FV maybe-RSUBJ
                    -----
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
@@ -836,7 +840,7 @@ This is the third pass. Responsibilities of this file include:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC FV SN-maybe-RSUBJ
+    <rule comment="REGLA: SPEC FV maybe-RSUBJ
                    de lei son (juo) => så hadde han (allerede)
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -860,7 +864,33 @@ This is the third pass. Responsibilities of this file include:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC FV SN-maybe-RSUBJ
+    <rule comment="REGLA: SPEC FV RSPRED
+                   -----
+                   (Muhto man) okto lei son? => (Men hvor) alene var han?
+                   Override prodrop rule for certain subject predicates on the right
+                   TODO: more general RSPRED handling">
+      <pattern>
+        <pattern-item n="SPEC"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="RSPRED"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes2">
+          <with-param pos="3"/>
+          <with-param pos="2"/>
+        </call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: PR SPEC FV maybe-RSUBJ
                    (PR) su_mielas leat bohccot => i_hans_oppfatning er reinene
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -887,7 +917,7 @@ This is the third pass. Responsibilities of this file include:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV IV SN-maybe-RSUBJ
+    <rule comment="REGLA: FV IV maybe-RSUBJ
                    gildui sámegiella => ble forbudt samisken => samisken ble forbudt
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
@@ -911,7 +941,7 @@ This is the third pass. Responsibilities of this file include:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC FV IV SN-maybe-RSUBJ
+    <rule comment="REGLA: SPEC FV IV maybe-RSUBJ
                    dađistaga gildui sámegiella => etterhvert ble forbudt samisken => etterhvert ble samisken forbudt
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -938,7 +968,7 @@ This is the third pass. Responsibilities of this file include:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC FV IV SN-maybe-RSUBJ
+    <rule comment="REGLA: SPEC FV IV maybe-RSUBJ
                    (PR) dan maŋŋá gildui sámegiella => etter det ble forbudt samisken => etter det ble samisken forbudt
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -1119,7 +1149,7 @@ This is the third pass. Responsibilities of this file include:
                    Insert dropped pronoun">
       <pattern>
         <pattern-item n="FV-Qst"/>
-        <pattern-item n="ROBJ_RPRED"/>
+        <pattern-item n="ROBJ_ROPRED"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1353,7 +1383,7 @@ This is the third pass. Responsibilities of this file include:
                    geahččaledje jeđđet min = de prøvde å trøste oss">
       <pattern>
         <pattern-item n="FV"/>
-        <pattern-item n="ROBJ_RPRED"/>
+        <pattern-item n="ROBJ_ROPRED"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
