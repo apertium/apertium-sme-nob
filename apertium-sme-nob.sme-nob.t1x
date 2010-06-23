@@ -1575,6 +1575,53 @@ TODO:
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
+    
+    <rule comment="REGLA: NOMCMP ADJ
+                   -----
+                   sámegiel => samespråklig
+                   Moves syn_label from CMP to NOM">
+      <pattern>
+        <pattern-item n="nom_cmp"/>
+        <pattern-item n="adj"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        
+        <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
+        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        <out>
+          <var n="case-prep"/>
+          <chunk name="cmp_adj" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SA"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><var n="c_gen"/></tag>
+              <tag><var n="c_nbr"/></tag>
+              <tag><var n="defnes"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="defnes"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
 
     <!-- <rules: Lone determiners, pronouns, adverbs -->
 
