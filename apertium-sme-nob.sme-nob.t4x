@@ -288,6 +288,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <attr-item tags="@-FOBJ→"/>
       <attr-item tags="@-F←OBJ"/>
       <attr-item tags="@-FADVL"/>
+      <attr-item tags="@APP-N←"/>
     </def-attr>
   </section-def-attrs>
 
@@ -304,6 +305,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <list-item v="&lt;@SUBJ→&gt;"/>
       <list-item v="&lt;@←OBJ&gt;"/>
       <list-item v="&lt;@←ADVL&gt;"/>
+    </def-list>
+    <def-list n="no-determiner"
+              c="Noun phrases with these syntactic functions should not have a determiner (neither ind nor def)">
+      <list-item v="&lt;@←PPRED&gt;"/>
     </def-list>
   </section-def-lists>
 
@@ -558,60 +563,65 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                   For eg. 'det_nom' or 'adj_nom', to make sure we say 'den andre/lyse hunden' (not 'andre/lyse hunden')
                   Ignores chunks with names beginning with 'prop'.
                   TODO: need to send in (as arg) the lexical unit that switches case with the determiner!">
-      <choose>
-        <when>
-          <test><and>
-            <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="prop"/></begins-with></not>
-            <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="nom"/></begins-with></not>
-            <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="cmp"/></begins-with></not>
-            <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
-          </and></test>
-          <choose>
-            <when>
-              <test><equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal></test>
-              <out>
-                <lu>
-                  <get-case-from pos="1"><lit v="den"/></get-case-from>
-                  <lit-tag v="det.dem"/>
-                  <clip pos="1" part="gen"/>
-                  <clip pos="1" part="nbr"/>
-                </lu>
-                <b/>
-              </out>
-            </when>
-            <otherwise>
-              <out>
-                <lu>
-                   <get-case-from pos="1"><lit v="den"/></get-case-from>
-                  <lit-tag v="det.dem.pl"/>
-                </lu>
-                <b/>
-              </out>
-            </otherwise>
-          </choose>
-          <modify-case><clip pos="1" part="lemh"/><lit v="aa"/></modify-case>
-        </when>
-        <when>
-          <test><and>
-            <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="prop"/></begins-with></not>
-            <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
-            <equal><clip pos="1" part="art"/><lit-tag v="ind"/></equal>
-            <not><equal><clip pos="1" part="case"/><lit-tag v="ess"/></equal></not>
-            <not><equal><clip pos="1" part="a_count"/><lit-tag v="unc"/></equal></not>
-          </and></test>
-          <out>
-            <lu>
-              <get-case-from pos="1"><lit v="en"/></get-case-from>
-              <lit-tag v="det.qnt"/>
-              <clip pos="1" part="gen"/>
-              <clip pos="1" part="nbr"/>
-            </lu>
-            <b/>
-          </out>
-          <modify-case><clip pos="1" part="lemh"/><lit v="aa"/></modify-case>
-        </when>
-        <!-- otherwise: no determiner -->
-      </choose>
+      <choose><when>
+        <test><not><or>
+          <begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="prop"/></begins-with>
+          <in><clip pos="0" part="syn_label"/><list n="no-determiner"/></in>
+        </or></not></test>
+        <choose>
+          <when>
+            <test><and>
+              <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="nom"/></begins-with></not>
+              <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="cmp"/></begins-with></not>
+              <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
+            </and></test>
+            <choose>
+              <when>
+                <test><equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal></test>
+                <out>
+                  <lu>
+                    <get-case-from pos="1"><lit v="den"/></get-case-from>
+                    <lit-tag v="det.dem"/>
+                    <clip pos="1" part="gen"/>
+                    <clip pos="1" part="nbr"/>
+                  </lu>
+                  <b/>
+                </out>
+              </when>
+              <otherwise>
+                <out>
+                  <lu>
+                    <get-case-from pos="1"><lit v="den"/></get-case-from>
+                    <lit-tag v="det.dem.pl"/>
+                  </lu>
+                  <b/>
+                </out>
+              </otherwise>
+            </choose>
+            <modify-case><clip pos="1" part="lemh"/><lit v="aa"/></modify-case>
+          </when>
+          <when>
+            <test><and>
+              <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="prop"/></begins-with></not>
+              <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+              <equal><clip pos="1" part="art"/><lit-tag v="ind"/></equal>
+              <not><equal><clip pos="1" part="case"/><lit-tag v="ess"/></equal></not>
+              <not><equal><clip pos="1" part="a_count"/><lit-tag v="unc"/></equal></not>
+            </and></test>
+            <out>
+              <lu>
+                <get-case-from pos="1"><lit v="en"/></get-case-from>
+                <lit-tag v="det.qnt"/>
+                <clip pos="1" part="gen"/>
+                <clip pos="1" part="nbr"/>
+              </lu>
+              <b/>
+            </out>
+            <modify-case><clip pos="1" part="lemh"/><lit v="aa"/></modify-case>
+          </when>
+          <!-- otherwise: no determiner -->
+        </choose>
+      </when></choose>
     </def-macro>
     
     <def-macro n="maybe_out_det2" npar="2"
