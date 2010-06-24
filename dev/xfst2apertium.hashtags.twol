@@ -15,6 +15,17 @@
 
 Alphabet
 
+ a b c d e f g h i j k l m n o p q   ! small
+ r s t u v w x y z å ä ö ø æ %-
+ á é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý þ ñ ð ß ª ß ç
+
+ A B C D E F G H I J K L M N O P Q   ! capital
+ R S T U V W X Y Z Å Ä Ö Ø Æ
+ Á É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð
+
+ č đ ŋ š ŧ ž          ! Sámi letters.
+ Č Đ Ŋ Š Ŧ Ž          !
+
 %#:0
 %# ! Need this, since otherwise #-words not matched by our rule will disappear
 
@@ -49,6 +60,19 @@ Alphabet
 
 
 Sets
+
+Alphabetic =
+ a b c d e f g h i j k l m n o p q   ! small
+ r s t u v w x y z å ä ö ø æ %-
+ á é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý þ ñ ð ß ª ß ç
+
+ A B C D E F G H I J K L M N O P Q   ! capital
+ R S T U V W X Y Z Å Ä Ö Ø Æ
+ Á É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð
+
+ č đ ŋ š ŧ ž          ! Sámi letters.
+ Č Đ Ŋ Š Ŧ Ž          !
+;
 
 Cmptag = 
 %+Cmp
@@ -86,9 +110,9 @@ KeepCmpAfter =			! could expand to include lemmas...
 
 Rules 
 
-"#-deletion unless after compounding tags"
-! %#:0 <=> ~ [ Cmptag HashPrefix:? * ] _ ;           ! <--- this doesn't parse :(
-%#:0 <=> \Cmptag _ ;  
+"#-deletion after alphabetic characters"
+%#:0 <=> Alphabetic _ ;  
+
 ! After inversion, we get
 !    ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sáme#giella+N+Sg+Nom$
 ! After this file, we get
@@ -99,8 +123,8 @@ Rules
 !    ^sápmi<N><Sg><Gen><Cmp>$ ^giella<N><Sg><Nom>$
 !    ^sámegiella<N><Sg><Nom>$
 
+
 "Delete compound tags (except Cmp/ShCmp) that weren't followed by an N or A tag"
-! Cmptag:0 <=> ~[ KeepCmpAfter %+Use/Sub:? * ] _ ;   ! <--- this doesn't parse :(
 RemCmptag:0 <=> \KeepCmpAfter _ ; 
 ! We don't remove +Cmp or +ShCmp tags since they follow lemmas, not +N or +A:
 ! mielbargin      miel+ShCmp#bargat+V+TV+Der2+Actor+N+Ess
