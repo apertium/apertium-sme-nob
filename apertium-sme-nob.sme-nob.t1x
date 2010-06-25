@@ -75,6 +75,9 @@ TODO:
     <def-cat n="pronpers">
       <cat-item tags="Pron.Pers.*"/>
     </def-cat>
+    <def-cat n="pronpersgen">
+      <cat-item tags="Pron.Pers.*.Gen.*"/>
+    </def-cat>
     <def-cat n="det" c="Pronouns most likely to end up as determiners">
       <cat-item tags="Pron.Pers.*.Gen.*"/>
       <cat-item tags="Pron.Dem.*"/>
@@ -133,6 +136,9 @@ TODO:
     </def-cat>
     <def-cat n="vneg">
       <cat-item tags="V.*.Neg.*"/>
+    </def-cat>
+    <def-cat n="vactio">
+      <cat-item tags="V.*.Actio.*"/>
     </def-cat>
     <def-cat n="vgoahti">
       <cat-item lemma="goahti" tags="V.*"/>
@@ -2953,6 +2959,174 @@ checked for passive (and if so output the aux), but not be dependent on outputti
             </out>
           </otherwise>
         </choose>
+      </action>
+    </rule>
+
+
+    <rule comment="REGLA: PRONPERSGEN VACTIO NOM
+                   -----
+                   du čállin reivve => brevet som du hadde skrevet
+TODO! We make several chunks, should be possible to handle in interchunk like
+   other relative clauses; perhaps we could make t2x relative chunking rules.
+TODO: should we restrict to V.Actio.Nom/Gen ?">
+      <pattern>
+        <pattern-item n="pronpersgen"/>
+        <pattern-item n="vactio"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+        
+        <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
+        <out>
+          <b pos="1"/>
+          <chunk name="rel" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="@OBJ→"/></tag>
+              <tag><lit-tag v="Acc"/></tag>
+            </tags>
+            <lu><lit v="som"/><lit-tag v="cnjsub"/></lu>
+          </chunk>
+          <b/>
+          <chunk name="pron" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN.@SUBJ→"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><lit-tag v="nom"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_pron"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <clip pos="1" side="tl" part="pers"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="nom"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+
+        <call-macro n="set_caseFirstWord"><with-param pos="3"/></call-macro>
+        <out>
+          <b pos="2"/>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV.@+FAUXV"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="sl" part="modality"/></tag>
+              <tag><lit-tag v="pret"/></tag>
+              <tag><clip pos="2" side="tl" part="voice"/></tag>
+              <tag><clip pos="2" side="tl" part="pers"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><clip pos="2" side="tl" part="animacy"/></tag>
+            </tags>
+            <lu>
+              <lit v="ha"/><lit-tag v="vblex.pret"/>
+            </lu>
+          </chunk>
+          <b/>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV.@-FMAINV"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="sl" part="modality"/></tag>
+              <tag><lit-tag v="pp"/></tag>
+              <tag><clip pos="2" side="tl" part="pers"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><clip pos="2" side="tl" part="animacy"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_verb"/>
+              <lit-tag v="pp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: NOM_GEN VACTIO NOM
+                   -----
+                   irggi čállin reivve => brevet som kjæresten hadde skrevet
+                   See above rule.">
+      <pattern>
+        <pattern-item n="nom_gen"/>
+        <pattern-item n="vactio"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+        
+        <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
+        <out>
+          <b pos="1"/>
+          <chunk name="rel" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="@OBJ→"/></tag>
+              <tag><lit-tag v="Acc"/></tag>
+            </tags>
+            <lu><lit v="som"/><lit-tag v="cnjsub"/></lu>
+          </chunk>
+          <b/>
+        </out>
+        
+        <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></let>
+        <let><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></let>
+        <let><clip pos="1" side="tl" part="case"/><lit v="nom"/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_caseFirstWord"><with-param pos="3"/></call-macro>
+        <out>
+          <b pos="2"/>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV.@+FAUXV"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="sl" part="modality"/></tag>
+              <tag><lit-tag v="pret"/></tag>
+              <tag><clip pos="2" side="tl" part="voice"/></tag>
+              <tag><clip pos="2" side="tl" part="pers"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><clip pos="2" side="tl" part="animacy"/></tag>
+            </tags>
+            <lu>
+              <lit v="ha"/><lit-tag v="vblex.pret"/>
+            </lu>
+          </chunk>
+          <b/>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV.@-FMAINV"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="sl" part="modality"/></tag>
+              <tag><lit-tag v="pp"/></tag>
+              <tag><clip pos="2" side="tl" part="pers"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><clip pos="2" side="tl" part="animacy"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_verb"/>
+              <lit-tag v="pp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
       </action>
     </rule>
 
