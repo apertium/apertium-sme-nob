@@ -599,6 +599,7 @@ TODO:
               <lit v="^"/>
               <lit v="caseprep"/>
               <lit-tag v="PR"/>
+              <clip pos="1" side="tl" part="case"/>
               <lit v="{^"/>
               <var n="case-prep"/>
               <lit-tag v="pr"/>
@@ -2962,10 +2963,11 @@ checked for passive (and if so output the aux), but not be dependent on outputti
       </action>
     </rule>
 
-
+    <!-- <rules: NOM/PRON VACTIO NOM -->
     <rule comment="REGLA: PRONPERSGEN VACTIO NOM
                    -----
                    du čállin reivve => brevet som du hadde skrevet
+                   The Agent Construction.
 TODO! We make several chunks, should be possible to handle in interchunk like
    other relative clauses; perhaps we could make t2x relative chunking rules.
 TODO: should we restrict to V.Actio.Nom/Gen ?">
@@ -3056,7 +3058,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
     <rule comment="REGLA: NOM_GEN VACTIO NOM
                    -----
                    irggi čállin reivve => brevet som kjæresten hadde skrevet
-                   See above rule.">
+                   The Agent Construction. See above rule.">
       <pattern>
         <pattern-item n="nom_gen"/>
         <pattern-item n="vactio"/>

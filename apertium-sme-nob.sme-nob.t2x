@@ -21,8 +21,9 @@ This is the second pass. Responsibilities of this file include:
   * See rule: PR SN-post adpos
 
 TODO:
-* relatives (SN "who" SV -> SN)
+* relatives (SN "who" SV SV* -> SN), both 'real' and those that started life as Agent Constructions
 * 'adpos' covers both Pr and Po, tag them as such in t1x so that the rules here don't overgeneralise
+* Remove 'som' after vcop
 -->
 
 <interchunk>
@@ -74,6 +75,10 @@ TODO:
       <cat-item lemma="caseprep" tags="PR"/>
       <cat-item lemma="caseprep" tags="PR.*"/>
     </def-cat>
+    <def-cat n="PR-caseprep-ess">
+      <cat-item lemma="caseprep" tags="PR.ess"/>
+      <cat-item lemma="caseprep" tags="PR.Ess"/>
+    </def-cat>
     <def-cat n="SN-prep">
       <cat-item tags="SN.@P←.*"/>
       <cat-item lemma="ref" tags="@P←.*"/>
@@ -99,6 +104,12 @@ TODO:
       <cat-item tags="SV.@+FMAINV.*"/>
       <cat-item tags="SV.@+FAUXV"/>
       <cat-item tags="SV.@+FAUXV.*"/>
+    </def-cat>
+    <def-cat n="FV-cop">
+      <cat-item lemma="vcop" tags="SV.@+FMAINV"/>
+      <cat-item lemma="vcop" tags="SV.@+FMAINV.*"/>
+      <cat-item lemma="vcop" tags="SV.@+FAUXV"/>
+      <cat-item lemma="vcop" tags="SV.@+FAUXV.*"/>
     </def-cat>
     <def-cat n="V_TD">
       <cat-item tags="SV.@←OBJ.TD.*"/>
@@ -756,6 +767,30 @@ TODO:
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>
+      </action>
+    </rule>
+    
+    <!-- FV-cop 'som' -->
+    <rule comment="REGLA: FV-cop PR-caseprep-ess
+                   -----
+                   Son lea taksivuoddjin Oslos => Han er taxisjåfør i Oslo
+                   Delete 'som'
+                   set anaphoric temps variable
+                   use anaphoric gen variable">
+      <pattern>
+        <pattern-item n="FV-cop"/>
+        <pattern-item n="PR-caseprep-ess"/>
+      </pattern>
+      <action>
+        <call-macro n="set_ana_temps"><with-param pos="1"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>        
+        <choose><when>
+          <test><not><equal><b pos="1"/><b/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
       </action>
     </rule>
     
