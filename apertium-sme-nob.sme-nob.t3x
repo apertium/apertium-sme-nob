@@ -13,6 +13,8 @@ This is the third pass. Responsibilities of this file include:
   * See macro: set_adv
 * Correct definiteness using the larger context (eg. verb animacy / number / temps)
   * See macro: set_defnes2
+* Change perfect participle of non-finites to preterite when following the negation verb
+  * See rules with FV-Neg
 -->
 
 <interchunk>
@@ -724,6 +726,10 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="3"/>
         </call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+        <choose><when>
+          <test><equal><clip pos="3" part="temps"/><lit-tag v="pp"/></equal></test>
+          <let><clip pos="3" part="temps"/><lit-tag v="pret"/></let>
+        </when></choose>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
@@ -751,6 +757,10 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="4"/>
         </call-macro>
         <let><clip pos="4" part="temps"/><clip pos="3" part="temps"/></let>
+        <choose><when>
+          <test><equal><clip pos="4" part="temps"/><lit-tag v="pp"/></equal></test>
+          <let><clip pos="4" part="temps"/><lit-tag v="pret"/></let>
+        </when></choose>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
@@ -1012,6 +1022,10 @@ This is the third pass. Responsibilities of this file include:
       </pattern>
       <action>
         <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <choose><when>
+          <test><equal><clip pos="4" part="temps"/><lit-tag v="pp"/></equal></test>
+          <let><clip pos="4" part="temps"/><lit-tag v="pret"/></let>
+        </when></choose>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
@@ -1114,6 +1128,10 @@ This is the third pass. Responsibilities of this file include:
       <action>
         <call-macro n="set_pro_verb_case"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+        <choose><when>
+          <test><equal><clip pos="3" part="temps"/><lit-tag v="pp"/></equal></test>
+          <let><clip pos="3" part="temps"/><lit-tag v="pret"/></let>
+        </when></choose>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <var n="pro-blank"/>
