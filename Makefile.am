@@ -43,8 +43,7 @@ $(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
 $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst .deps/uppercase-first.twol.hfst
 	hfst-compose-intersect -l $(LANG1).lexc.hfst $(LANG1).twol.hfst -o $@.tmp
 	hfst-compose-intersect -l $@.tmp .deps/uppercase-first.twol.hfst -o $@
-
-#	@rm $@.tmp
+	@rm $@.tmp
 
 .deps/xfst2apertium.useless.twol.hfst: dev/xfst2apertium.useless.twol
 	if [ ! -d .deps ]; then mkdir .deps; fi
@@ -59,8 +58,7 @@ $(PREFIX1).automorf.hfst: $(PREFIX2).autogen.hfst dev/xfst2apertium.relabel .dep
 	hfst-compose-intersect -l $@.1.tmp .deps/xfst2apertium.useless.twol.hfst -o $@.2.tmp
 	hfst-compose-intersect -l $@.2.tmp .deps/xfst2apertium.hashtags.twol.hfst -o $@.3.tmp
 	hfst-substitute -F dev/xfst2apertium.relabel -i $@.3.tmp -o $@
-
-#	@rm $@.1.tmp $@.2.tmp $@.3.tmp
+	@rm $@.1.tmp $@.2.tmp $@.3.tmp
 
 $(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
 	hfst-lookup-optimize -i $(PREFIX1).automorf.hfst -o $@
