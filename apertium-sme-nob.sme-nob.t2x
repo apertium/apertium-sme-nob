@@ -22,7 +22,7 @@ This is the second pass. Responsibilities of this file include:
 * Removing prepositions when case is governed by adpositions
   * See rule: PR SN-post adpos
 * Removing essive case-prep ('som') after vcop
-  * See rule: 
+  * See rule: FV-cop PR-caseprep-ess
 
 TODO:
 * relatives (SN "who" SV SV* -> SN), both 'real' and those that started life as Agent Constructions
@@ -116,6 +116,24 @@ TODO:
     </def-cat>
     <def-cat n="V_TD">
       <cat-item tags="SV.@←OBJ.TD.*"/>
+    </def-cat>
+    <def-cat n="LN-gen">
+      <cat-item tags="SN.@→N.*.*.*.gen"/>
+    </def-cat>
+    <def-cat n="ADVL">
+      <cat-item lemma="adv" tags="@PCLE"/>
+      <cat-item lemma="adv" tags="@ADVL"/>
+      <cat-item lemma="adv" tags="@ADVL.*"/>
+      <cat-item tags="SN.@ADVL"/>
+      <cat-item tags="SN.@ADVL.*"/>
+      <cat-item lemma="adv" tags="@←ADVL"/>
+      <cat-item lemma="adv" tags="@←ADVL.*"/>
+      <cat-item tags="SN.@←ADVL"/>
+      <cat-item tags="SN.@←ADVL.*"/>
+      <cat-item lemma="adv" tags="@ADVL→"/>
+      <cat-item lemma="adv" tags="@ADVL→.*"/>
+      <cat-item tags="SN.@ADVL→"/>
+      <cat-item tags="SN.@ADVL→.*"/>
     </def-cat>
   </section-def-cats>
 
@@ -669,6 +687,35 @@ TODO:
         </out>
       </action>
     </rule>
+
+    
+    <!-- <rules: →N ADVL -->    
+    <rule comment="REGLA: LN-gen ADVL
+                   -----
+                   (málet olbmuid) earenoamáš dáhpáhusaid oktavuođas => (male mennesker) i forbindelse med spesielle hendelser
+                   Switch order, insert 'med'
+                   TODO: case should be acc or something, not nil, when pron/det">
+      <pattern>
+        <pattern-item n="LN-gen"/>
+        <pattern-item n="PR-caseprep"/>
+        <pattern-item n="ADVL"/>
+      </pattern>
+      <action>
+        <let><clip pos="1" part="case"/><lit v=""/></let>
+        <out>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b/>
+          <chunk>
+            <lit v="caseprep"/><lit-tag v="PR"/><lit v="{^med"/><lit-tag v="pr"/><lit v="$}"/>
+          </chunk>
+          <b pos="2"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
     
     <!-- <rules: Verb coordination, set/use verb-anaphoric variables -->
     <rule comment="REGLA: FV CVP FV
