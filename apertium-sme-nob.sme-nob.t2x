@@ -7,6 +7,8 @@ This is the second pass. Responsibilities of this file include:
   subjects using the variables "ana_m_f" and "ana_gen", applying 
   this to GD-tagged SN's and all FV's.
   * See rule: FV, SN
+  * Note: this only applies gender in a forward direction, applying gender
+    from the noun to pronoun in 'Pron is N' constructions happens in t3x
 * Keeping track of verb temps for eg. Actio.Ess
   (which is tagged TD) using the variable "ana_temps"
   * See rule: FV, V_TD
@@ -19,11 +21,12 @@ This is the second pass. Responsibilities of this file include:
   * See rule: SN ADPOS -> ADPOS SN
 * Removing prepositions when case is governed by adpositions
   * See rule: PR SN-post adpos
+* Removing essive case-prep ('som') after vcop
+  * See rule: 
 
 TODO:
 * relatives (SN "who" SV SV* -> SN), both 'real' and those that started life as Agent Constructions
 * 'adpos' covers both Pr and Po, tag them as such in t1x so that the rules here don't overgeneralise
-* Remove 'som' after vcop
 -->
 
 <interchunk>
@@ -776,7 +779,8 @@ TODO:
                    Son lea taksivuoddjin Oslos => Han er taxisjåfør i Oslo
                    Delete 'som'
                    set anaphoric temps variable
-                   use anaphoric gen variable">
+                   use anaphoric gen variable
+TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs rule.">
       <pattern>
         <pattern-item n="FV-cop"/>
         <pattern-item n="PR-caseprep-ess"/>

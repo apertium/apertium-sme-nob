@@ -15,6 +15,13 @@ This is the third pass. Responsibilities of this file include:
   * See macro: set_defnes2
 * Change perfect participle of non-finites to preterite when following the negation verb
   * See rules with FV-Neg
+* Using verb animacy/number to guess GD/ND subject gender/number
+  * See macro modify_GD_ND_subj3
+  * Only regards pre-verbal GD/ND subjects, post-verbal are handled in t2x
+
+TODO
+* Using verb animacy/number to guess GD/ND subject gender/number
+  * See macro modify_GD_ND_subj3
 -->
 
 <interchunk>
@@ -323,22 +330,24 @@ This is the third pass. Responsibilities of this file include:
       <modify-case><clip pos="2" part="lemh"/><var n="tmpcase"/></modify-case>
     </def-macro>
 
-    <def-macro n="gender_concord" npar="2"
-               c="arg.1: verb, arg.2: adj
+    <def-macro n="gender_pro_concord" npar="2"
+               c="arg.1: det/adj, arg.2: verb
                   -----
                   Assumes set_pro has been called!
                   Ensure that if we inserted a pro and had a copula and SA, the gender agrees.
-                  TODO: this should probably be called in more places.">
+                  Apply verb gen/nbr to GD/ND subjects (eg. those that weren't handled in t2x).
+TODO: this should probably be called in more places.
+TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Buot lei varran', prpers.m from 'lærer' in 'Son lea oahpaheaddjin' and similar vcop constructions.">
       <choose><when>
         <test><and>
-          <equal caseless="yes"><clip pos="2" part="a_sintagma"/><lit-tag v="SA"/></equal>
-          <equal caseless="yes"><clip pos="1" part="lemh"/><lit v="vcop"/></equal>
+          <equal><clip pos="1" part="a_sintagma"/><lit-tag v="SA"/></equal>
+          <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="vcop"/></equal>
           <not><equal><var n="pro"/><lit v=""/></equal></not>
         </and></test>
-        <let><clip pos="2" part="gen"/><var n="gender"/></let>
+        <let><clip pos="1" part="gen"/><var n="gender"/></let>
       </when></choose>
     </def-macro>
-    
+
     <def-macro n="set_defnes2" npar="2"
                c="arg.1: SN, arg.2: verb (the one with nbr, if there's a choice)
                   Does nothing if arg.1 is relative pron.
@@ -354,8 +363,7 @@ This is the third pass. Responsibilities of this file include:
       <choose><when>
         <test><not><equal caseless="yes"><clip pos="1" part="lemh"/><lit v="rel"/></equal></not></test>
         <!-- Set defnes: -->
-        <choose>
-          <when>
+        <choose><when>
             <test>
               <and>
                 <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="verb"/></equal>
@@ -368,8 +376,7 @@ This is the third pass. Responsibilities of this file include:
               </and>
             </test>
             <let><clip pos="1" part="art"/><lit-tag v="ind"/></let>
-          </when>
-        </choose>
+        </when></choose>
         <choose>
           <when>
             <test>
@@ -397,7 +404,7 @@ This is the third pass. Responsibilities of this file include:
         </choose>
       </when></choose>
     </def-macro>
-    
+
     <def-macro n="guess_gender" npar="1"
                c="arg.1: verb chunk
                   Heuristics:
@@ -431,6 +438,33 @@ This is the third pass. Responsibilities of this file include:
           </when>
         </choose>
       </when></choose>      
+    </def-macro>
+
+    <def-macro n="modify_GD_ND_subj3" npar="3"
+               c="arg.1: det/adj, arg.2: verb with number, arg.3: verb with animacy (main verb)
+                  ----
+                  Apply verb gen/nbr to GD/ND non-pro left-subjects
+                  (ie. those that weren't handled in t2x since they appear before the verb).">
+      <call-macro n="guess_gender"><with-param pos="3"/></call-macro>
+      <choose><when>
+        <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
+        <let><clip pos="1" part="gen"/><var n="gender"/></let>
+      </when></choose>
+      <choose><when>
+        <test><equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal></test>
+        <let><clip pos="1" part="nbr"/><clip pos="2" part="nbr"/></let>
+      </when></choose>
+    </def-macro>
+    <def-macro n="modify_GD_ND_subj2" npar="2"
+               c="arg.1: det/adj, arg.2: verb with number and animacy
+                  ----
+                  Apply verb gen/nbr to GD/ND non-pro left-subjects
+                  (ie. those that weren't handled in t2x since they appear before the verb).">
+      <call-macro n="modify_GD_ND_subj3">
+        <with-param pos="1"/>
+        <with-param pos="2"/>
+        <with-param pos="2"/>
+      </call-macro>
     </def-macro>
     
     <def-macro n="set_pro" npar="1"
@@ -558,6 +592,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="IV-tilsvar"/>
       </pattern>
       <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <chunk>
             <lit v="conj"/><lit-tag v="@CVP"/><lit-tag v="cnjsub"/>
@@ -593,6 +628,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="3"/>
@@ -619,6 +655,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="4"/>
@@ -647,6 +684,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
@@ -698,6 +736,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
@@ -721,6 +760,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="modify_GD_ND_subj3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="3"/>
@@ -752,6 +792,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="modify_GD_ND_subj3"><with-param pos="1"/><with-param pos="2"/><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="4"/>
@@ -783,6 +824,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="3"/>
@@ -811,6 +853,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="2"/><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="4"/>
@@ -1021,6 +1064,7 @@ This is the third pass. Responsibilities of this file include:
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="modify_GD_ND_subj3"><with-param pos="2"/><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="set_adv"><with-param pos="4"/></call-macro>
         <choose><when>
           <test><equal><clip pos="4" part="temps"/><lit-tag v="pp"/></equal></test>
@@ -1176,9 +1220,9 @@ This is the third pass. Responsibilities of this file include:
           <with-param pos="1"/>
         </call-macro>
         <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>
-        <call-macro n="gender_concord">
-          <with-param pos="1"/>
+        <call-macro n="gender_pro_concord">
           <with-param pos="2"/>
+          <with-param pos="1"/>
         </call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
