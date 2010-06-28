@@ -71,7 +71,7 @@ SUBSTITUTE ("bivdit") ("bivdit:2") ("bivdit" V)(*0 FISH);
 SUBSTITUTE ("bivdit") ("bivdit:3") ("bivdit" V)(*0 NATURE-PLACE OR HUNT-ANIMAL OR BIRD);
 
 # orrut 0 = bo, 1 = synes, 2 = bli, 3 = være
-SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego")) ;
+SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego") OR ActioEss) ;
 
 
 # Noun rules
