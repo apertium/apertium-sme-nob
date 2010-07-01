@@ -414,10 +414,12 @@ TODO:
   <section-def-vars>
     <def-var n="pron_gen"       c="pronoun gender"/>
     <def-var n="pron_nbr"       c="pronoun number"/>
-    <def-var n="pron_pers"       c="pronoun person (esp. for reflexive)"/>
+    <def-var n="pron_pers"      c="pronoun person (esp. for reflexive)"/>
     <def-var n="pre-nom"        c="lu's before nom-lu in nominal chunk"/>
+    <def-var n="post-nom"       c="lu's after nom-lu in nominal chunk (only used in 'den som V cmp')"/>
     <def-var n="defnes"         c="definiteness (noun, adj)"/>
     <def-var n="c_name"         c="chunk name"/>
+    <def-var n="tmp"            c="temporary variable"/>
     <def-var n="c_gen"          c="chunk gender"/>
     <def-var n="c_nbr"          c="chunk number"/>
     <def-var n="c_def_pos"      c="chunk defnes tag position"/>
@@ -874,8 +876,9 @@ TODO:
         
           <choose>
             <when c="V.Der2.Actor => (den) pre-nom som V
-                     (pre-nom gets 'den' in front (unless determined already), and 'som' after)
-                     Only do the 'den som' if non-sg definite or there is a lemq">
+                     pre-nom gets 'den' in front (unless determined already), and 'som' after
+                     Only do the 'den som' if non-sg definite or there is a lemq
+                     If we have a compound in pre-nom, put it after the verb instead.">
               <test><and>
                 <equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der2.Actor"/></equal>
                 <or>
@@ -884,16 +887,27 @@ TODO:
                   <equal><var n="defnes"/><lit-tag v="def"/></equal>
                 </or>
               </and></test>
-              
+
+              <let><var n="post-nom"/><lit v=""/></let>
+              <let><var n="tmp"/><lit v=""/></let>
+              <choose><when>
+                <test><equal caseless="yes"><var n="c_name"/><lit v="cmp_"/></equal></test>
+                <let><var n="post-nom"/><concat><b/><var n="pre-nom"/></concat></let>
+                <let><var n="pre-nom"/><lit v=""/></let>
+                <let><var n="tmp"/><lit v="_cmp"/></let>
+                <let><var n="c_name"/><lit v=""/></let>
+              </when></choose>
+
               <choose><when c="Only add determiner if it doesn't already have one
                                TODO: other chunk lemh for those 'semi-determiners' (eg. quantifiers)">
-                <test><not><begins-with><var n="c_name"/><lit v="det"/></begins-with></not></test>
+                <test><not><begins-with caseless="yes"><var n="c_name"/><lit v="det"/></begins-with></not></test>
                 <let><var n="c_name"/><concat><lit v="det_"/><var n="c_name"/></concat></let>
+                <call-macro n="set_pron_gen_nbr_art"><with-param pos="1"/></call-macro>
                 <let>
                   <var n="pre-nom"/>
                   <concat>
-                    <lit v="^den"/><lit-tag v="det.dem.GD"/>
-                    <clip pos="1" side="tl" part="nbr"/>
+                    <lit v="^den"/><lit-tag v="det.dem"/>
+                    <var n="pron_gen"/><var n="pron_nbr"/>
                     <lit v="$"/>
                     <b/>
                     <var n="pre-nom"/>
@@ -908,6 +922,7 @@ TODO:
                 </concat>
               </append>
               <let><var n="c_syn"/><lit-tag v="SN"/></let>
+              <append n="c_name"><var n="tmp"/></append>
             </when>
             <otherwise c="Just the verb and unchanged pre-nom, no 'som'
                           If we have a Der2.Actor, it should work pretty much like a regular noun.
@@ -948,6 +963,7 @@ TODO:
                 <clip pos="1" side="tl" part="voice"/>
                 <clip pos="1" side="tl" part="lemq"/>
               </lu>
+              <var n="post-nom"/>
             </chunk>
           </out>
         </when>
