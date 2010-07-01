@@ -273,6 +273,16 @@
       <!-- todo: find counter-examples -->
       <e><p><l><s n="Ess"/></l><r><s n="sg"/><s n="ind"/><s n="ess"/></r></p></e>
 
+      <!-- todo: is N.Attr a bug in the lexc? seems to only appear in compounds, eg. čuohtejagi -->
+      <e><p><l><s n="Attr"/></l><r><s n="sg"/><s n="gen"/></r></p></e>
+
+      <e><p><l><s n="Nom"/></l><r><s n="sg"/><s n="nom"/></r></p></e>
+      <e><p><l><s n="Acc"/></l><r><s n="sg"/><s n="acc"/></r></p></e>
+      <e><p><l><s n="Gen"/></l><r><s n="sg"/><s n="gen"/></r></p></e>
+      <e><p><l><s n="Ill"/></l><r><s n="sg"/><s n="ill"/></r></p></e>
+      <e><p><l><s n="Loc"/></l><r><s n="sg"/><s n="loc"/></r></p></e>
+      <e><p><l><s n="Com"/></l><r><s n="sg"/><s n="com"/></r></p></e>
+
       <!-- TODO transfer rule to introduce 'lille'? -->
       <!-- TODO: how does this combine with Cmp tags? (should probably factor out this) -->
       <e><p><l><s n="Der1"/><s n="Der_Dimin"/><s n="N"/><s n="Sg"/><s n="Acc"/></l><r><s n="sg"/><s n="acc"/></r></p></e>
@@ -612,6 +622,8 @@
     <e c="TODO check"><p><l>badjelii<s n="Adp"/></l><r>over<s n="pr"/></r></p></e>
     <e c="TODO check"><p><l>badjelii<s n="Po"/></l><r>over<s n="pr"/></r></p></e>
     <e c="TODO check"><p><l>badjelii<s n="Pr"/></l><r>over<s n="pr"/></r></p></e>
+    <e c="TODO check"><p><l>badjelaš<s n="Po"/></l><r>over<s n="pr"/></r></p></e>
+    <e c="TODO check"><p><l>badjelaš<s n="Pr"/></l><r>over<s n="pr"/></r></p></e>
     <e><p><l>bajábealde<s n="Pr"/></l><r>ovenfor<s n="pr"/></r></p></e>
     <e><p><l>báldda<s n="Po"/></l><r>ved<b/>siden<b/>av<s n="pr"/></r></p></e>
     <e><p><l>bálddas<s n="Po"/></l><r>ved<b/>siden<b/>av<s n="pr"/></r></p></e>
@@ -813,7 +825,7 @@
     <e c="TODO the nob side"><re>§[0-9]+</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
 
     <!-- Nouns -->
-    <e><re>[a-zA-ZæøåášŧŋđžčÆØÅÁŠŦŊĐŽČ]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><re>[a-zA-ZæøåášŧŋđžčÆØÅÁŠŦŊĐŽČ]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
     <!-- Family terms may be indefinite in more contexts, todo: some tag? (other than 'uncountable'..) transfer def-list? -->
     <e><p><l>eadni<s n="N"/></l><r>mor<s n="n"/><s n="f"/></r></p><par n="unc__n"/></e>
     <e><p><l>áhčči<s n="N"/></l><r>far<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
