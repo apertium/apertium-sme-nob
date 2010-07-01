@@ -1404,7 +1404,6 @@ TODO:
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-
     <rule comment="REGLA: NUM_MOD ADJ_ATTR NOM
                    -----
                    22 jahkásaš Tine
@@ -1452,6 +1451,56 @@ TODO:
         </let>
         <let><clip pos="3" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <let><clip pos="3" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+    <rule comment="REGLA: NUM_MOD NOM_MOD NOM
+                   -----
+                   Oblique use of num nom, here the final nominal is the head
+                   See NUM_MOD NOM rule.">
+      <pattern>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="nom_gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="det_nom_"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+          </concat>
+        </let>
+        
+        <!-- for NOM_GEN -->
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom">
+          <concat>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="defnes"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+          </concat>
+        </append>
+        
+        <!-- for possessed NOM -->        
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
