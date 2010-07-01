@@ -820,9 +820,9 @@
     <e slr="1"><p><l>moadde<s n="Num"/></l><r>noen<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
     <e><p><l>máŋga<s n="Num"/></l><r>mange<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
 
-    <e><re>[0-9]+</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
-    <e><re>[0-9][.,][0-9]+</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
-    <e c="TODO the nob side"><re>§[0-9]+</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><p><l>1<s n="Num"/></l><r>1<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_sg"/></e>
+    <e><re>([§\+–] ?)?[0-9]+([.,][0-9]+)*([ \-]+[0-9]+([.,][0-9]+)*)*</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+    <e><re>[½¹²³¼¾]</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p></e>
 
     <!-- Nouns -->
     <e><re>[a-zA-ZæøåášŧŋđžčÆØÅÁŠŦŊĐŽČ]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
@@ -20650,10 +20650,11 @@
     <!-- Ordinals -->
     <e><p><l>vuosttas<s n="A"/><s n="Ord"/></l><r>første<s n="adj"/><s n="ord"/></r></p><par n="__adj"/></e>
     <e><p><l>vuosttaš<s n="A"/><s n="Ord"/></l><r>første<s n="adj"/><s n="ord"/></r></p><par n="__adj"/></e>
-    <e><re>[0-9]+</re><p><l><s n="A"/><s n="Ord"/></l><r>.<s n="adj"/><s n="ord"/><s n="posi"/></r></p></e>
-    <e><re>[0-9]+\-[0-9]+</re><p><l><s n="A"/><s n="Ord"/></l><r><s n="adj"/><s n="ord"/><s n="posi"/></r></p></e>
-    <e><re>– [0-9]+</re><p><l><s n="A"/><s n="Ord"/></l><r><s n="adj"/><s n="ord"/><s n="posi"/></r></p></e>
-    <e><re>[0-9]+[.][0-9]+[.][0-9]+</re><p><l><s n="A"/><s n="Ord"/></l><r><s n="adj"/><s n="ord"/><s n="posi"/></r></p></e>
+
+    <!-- The sme lemma doesn't include the dot, nob does -->
+    <e><re>[IVXLCDM\-]+</re><p><l><s n="A"/><s n="Ord"/></l><r>.<s n="adj"/><s n="ord"/><s n="posi"/></r></p></e>
+    <e><re>([§\+–] ?)?[0-9]+([.,][0-9]+)*([ \-]+[0-9]+([.,][0-9]+)*)*</re><p><l><s n="A"/><s n="Ord"/></l><r>.<s n="adj"/><s n="ord"/><s n="posi"/></r></p></e>
+
 
     <!-- Particles -->
     <!-- If we have eg. reaškkihan, this is analysed as
