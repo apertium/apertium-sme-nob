@@ -545,7 +545,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
               <lit-tag v="@ADVL"/>
               <clip pos="1" part="modality"/>
               <lit v="{^"/>
-              <lit v="muligens"/>
+              <lit v="da"/>     <!-- evt. "muligens" viss me har byråkratisk språk -->
               <lit-tag v="adv"/>
               <lit v="$}$"/>
             </concat>
@@ -555,7 +555,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <when>
           <test>
             <equal><clip pos="1" part="modality"/><lit-tag v="Cond"/></equal>
-          </test>
+          </test>               <!--todo fjern, bruk skulle/kunne/etc i t1x som passiv-->
           <let>
             <var n="adv"/>
             <concat>
