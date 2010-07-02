@@ -2086,6 +2086,240 @@ TODO:
     </rule>
 
     <!-- <rules: DET* ADJ* NOM* -->
+
+    <rule comment="REGLA: ADJ
+                   -----
+                   dehálaš => viktig, deháleamos => viktigst
+                   bassivuođa => det hellige">
+      <pattern>
+        <pattern-item n="adj"/>
+      </pattern>
+      <action>        
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        
+        <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <let><var n="c_def_pos"/><lit-tag v="6"/></let>
+        <choose><when>
+          <test><or>
+            <equal><clip pos="1" side="sl" part="mode"/><lit v=""/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal>
+          </or></test>
+          <let><var n="c_def_pos"/><lit-tag v="5"/></let>
+        </when></choose>
+        <choose><when>
+          <test><and>
+            <equal><clip pos="1" side="sl" part="mode"/><lit v=""/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal>
+          </and></test>
+          <let><var n="c_def_pos"/><lit-tag v="4"/></let>
+        </when></choose>
+
+        <choose>
+          <when>
+            <test><not><equal><clip pos="1" side="sl" part="a_nom"/><lit v=""/></equal></not></test>
+            <let><var n="defnes"/><lit-tag v="def"/></let>
+            <out>
+              <chunk name="det_adj" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SA"/></tag>
+                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="1" side="sl" part="mode"/></tag>
+                  <tag><lit-tag v="nt"/></tag>
+                  <tag><lit-tag v="sg"/></tag>
+                  <tag><var n="defnes"/></tag>
+                </tags>
+                <lu>
+                  <lit v="den"/><lit-tag v="det.dem.nt.sg"/>
+                </lu>
+                <b/>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_adj"/>
+                  <clip pos="1" side="tl" part="grau"/>
+                  <clip pos="1" side="tl" part="gen"/>
+                  <clip pos="1" side="tl" part="nbr"/>
+                  <var n="c_def_pos"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </when>            
+          <otherwise>
+            <out>
+              <chunk name="adj" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SA"/></tag>
+                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="1" side="sl" part="mode"/></tag>
+                  <tag><var n="c_gen"/></tag>
+                  <tag><var n="c_nbr"/></tag>
+                  <tag><var n="defnes"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_adj"/>
+                  <clip pos="1" side="tl" part="grau"/>
+                  <clip pos="1" side="tl" part="gen"/>
+                  <clip pos="1" side="tl" part="nbr"/>
+                  <var n="c_def_pos"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </otherwise>
+        </choose>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: ADJ_ATTR NOM
+                   -----
+                   almmolaš bálvalusaide => til offentlige tjenester
+                   almmolaš bálvalus => (den) offentlige tjenesten">
+      <pattern>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="adj_"/></let>
+
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        
+        <!-- We set c_def_pos here and use that for both adj and nom,
+             so that if defnes changes in t2x/t3x, both adj and nom
+             get the change in t4x: -->
+        <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <var n="c_def_pos"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: ADJ_ATTR NOMCMP NOM
+                   -----
+                   duiska okkupašuvdnafápmu => tysk okkupasjonsmakt
+                   TODO: epenthesis!
+                   Moves syn_label from CMP to NOM">
+      <pattern>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="1"/></call-macro>
+
+        <!-- most likely both ADJ and NOM are ind: -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+
+        <!-- We set c_def_pos here and use that for both adj and nom,
+             so that if defnes changes in t2x/t3x, both adj and nom
+             get the change in t4x: -->
+        <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <var n="c_def_pos"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <let><var n="c_name"/><lit v="adj_cmp_"/></let>        
+        <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: ADJ_ATTR NOMCMP NOMCMP NOM
+                   -----
+                   Dalá Ruvdnaprinsabáras => Daværende Kronprinsparet
+                   Moves syn_label from CMP to NOM">
+      <pattern>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="1"/></call-macro>
+
+        <!-- most likely both ADJ and NOM are ind: -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+
+        <!-- We set c_def_pos here and use that for both adj and nom,
+             so that if defnes changes in t2x/t3x, both adj and nom
+             get the change in t4x: -->
+        <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <var n="c_def_pos"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            <lit v="^"/>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_nom"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+              <clip pos="3" side="tl" part="lemq"/>
+              <lit v="$"/>
+          </concat>
+        </let>
+        <let><var n="c_name"/><lit v="adj_cmp_cmp_"/></let>        
+        <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="4"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+      </action>
+    </rule>
     
     <rule comment="REGLA: DET NOM
                    du bávččas => din smerte
@@ -2382,240 +2616,6 @@ TODO:
         <!-- for possessed NOM -->        
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
-      </action>
-    </rule>
-
-    <rule comment="REGLA: ADJ_ATTR NOM
-                   -----
-                   almmolaš bálvalusaide => til offentlige tjenester
-                   almmolaš bálvalus => (den) offentlige tjenesten">
-      <pattern>
-        <pattern-item n="adj_attr"/>
-        <pattern-item n="nom_head"/>
-      </pattern>
-      <action>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-
-        <let><var n="c_name"/><lit v="adj_"/></let>
-
-        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
-        
-        <!-- We set c_def_pos here and use that for both adj and nom,
-             so that if defnes changes in t2x/t3x, both adj and nom
-             get the change in t4x: -->
-        <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adj"/>
-              <clip pos="1" side="tl" part="grau"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-          </concat>
-        </let>
-        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
-      </action>
-    </rule>
-
-    <rule comment="REGLA: ADJ_ATTR NOMCMP NOM
-                   -----
-                   duiska okkupašuvdnafápmu => tysk okkupasjonsmakt
-                   TODO: epenthesis!
-                   Moves syn_label from CMP to NOM">
-      <pattern>
-        <pattern-item n="adj_attr"/>
-        <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom_head"/>
-      </pattern>
-      <action>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="1"/></call-macro>
-
-        <!-- most likely both ADJ and NOM are ind: -->
-        <let><var n="defnes"/><lit-tag v="ind"/></let>
-
-        <!-- We set c_def_pos here and use that for both adj and nom,
-             so that if defnes changes in t2x/t3x, both adj and nom
-             get the change in t4x: -->
-        <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adj"/>
-              <clip pos="1" side="tl" part="grau"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-            <lit v="^"/>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <lit-tag v="sg.ind"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            <lit v="$"/>
-          </concat>
-        </let>
-        <let><var n="c_name"/><lit v="adj_cmp_"/></let>        
-        <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
-        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
-        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
-      </action>
-    </rule>
-
-    <rule comment="REGLA: ADJ_ATTR NOMCMP NOMCMP NOM
-                   -----
-                   Dalá Ruvdnaprinsabáras => Daværende Kronprinsparet
-                   Moves syn_label from CMP to NOM">
-      <pattern>
-        <pattern-item n="adj_attr"/>
-        <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom_head"/>
-      </pattern>
-      <action>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="1"/></call-macro>
-
-        <!-- most likely both ADJ and NOM are ind: -->
-        <let><var n="defnes"/><lit-tag v="ind"/></let>
-
-        <!-- We set c_def_pos here and use that for both adj and nom,
-             so that if defnes changes in t2x/t3x, both adj and nom
-             get the change in t4x: -->
-        <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adj"/>
-              <clip pos="1" side="tl" part="grau"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-              <lit v="^"/>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <lit-tag v="sg.ind"/>
-              <clip pos="2" side="tl" part="lemq"/>
-              <lit v="$"/>
-            <lit v="^"/>
-              <clip pos="3" side="tl" part="lemh"/>
-              <clip pos="3" side="tl" part="a_nom"/>
-              <clip pos="3" side="tl" part="gen"/>
-              <lit-tag v="sg.ind"/>
-              <clip pos="3" side="tl" part="lemq"/>
-              <lit v="$"/>
-          </concat>
-        </let>
-        <let><var n="c_name"/><lit v="adj_cmp_cmp_"/></let>        
-        <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="2"/></call-macro>
-        <call-macro n="set_defnes"><with-param pos="4"/></call-macro>
-        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
-      </action>
-    </rule>
-
-    <rule comment="REGLA: ADJ
-                   -----
-                   dehálaš => viktig, deháleamos => viktigst
-                   bassivuođa => det hellige">
-      <pattern>
-        <pattern-item n="adj"/>
-      </pattern>
-      <action>        
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
-        <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
-        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-        <let><var n="c_def_pos"/><lit-tag v="6"/></let>
-        <choose><when>
-          <test><or>
-            <equal><clip pos="1" side="sl" part="mode"/><lit v=""/></equal>
-            <equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal>
-          </or></test>
-          <let><var n="c_def_pos"/><lit-tag v="5"/></let>
-        </when></choose>
-        <choose><when>
-          <test><and>
-            <equal><clip pos="1" side="sl" part="mode"/><lit v=""/></equal>
-            <equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal>
-          </and></test>
-          <let><var n="c_def_pos"/><lit-tag v="4"/></let>
-        </when></choose>
-
-        <choose>
-          <when>
-            <test><not><equal><clip pos="1" side="sl" part="a_nom"/><lit v=""/></equal></not></test>
-            <let><var n="defnes"/><lit-tag v="def"/></let>
-            <out>
-              <chunk name="det_adj" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="SA"/></tag>
-                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                  <tag><clip pos="1" side="sl" part="mode"/></tag>
-                  <tag><lit-tag v="nt"/></tag>
-                  <tag><lit-tag v="sg"/></tag>
-                  <tag><var n="defnes"/></tag>
-                </tags>
-                <lu>
-                  <lit v="den"/><lit-tag v="det.dem.nt.sg"/>
-                </lu>
-                <b/>
-                <lu>
-                  <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adj"/>
-                  <clip pos="1" side="tl" part="grau"/>
-                  <clip pos="1" side="tl" part="gen"/>
-                  <clip pos="1" side="tl" part="nbr"/>
-                  <var n="c_def_pos"/>
-                  <clip pos="1" side="tl" part="lemq"/>
-                </lu>
-              </chunk>
-            </out>
-          </when>            
-          <otherwise>
-            <out>
-              <chunk name="adj" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="SA"/></tag>
-                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                  <tag><clip pos="1" side="sl" part="mode"/></tag>
-                  <tag><var n="c_gen"/></tag>
-                  <tag><var n="c_nbr"/></tag>
-                  <tag><var n="defnes"/></tag>
-                </tags>
-                <lu>
-                  <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adj"/>
-                  <clip pos="1" side="tl" part="grau"/>
-                  <clip pos="1" side="tl" part="gen"/>
-                  <clip pos="1" side="tl" part="nbr"/>
-                  <var n="c_def_pos"/>
-                  <clip pos="1" side="tl" part="lemq"/>
-                </lu>
-              </chunk>
-            </out>
-          </otherwise>
-        </choose>
       </action>
     </rule>
 
