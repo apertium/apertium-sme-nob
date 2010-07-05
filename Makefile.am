@@ -36,14 +36,8 @@ $(LANG1).twol.hfst: $(BASENAME).$(LANG1).twol
 $(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
 	hfst-lexc $(BASENAME).$(LANG1).lexc -o $@
 
-.deps/uppercase-first.twol.hfst: dev/uppercase-first.twol
-	if [ ! -d .deps ]; then mkdir .deps; fi
-	hfst-twolc -r -i dev/uppercase-first.twol -o $@
-
-$(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst .deps/uppercase-first.twol.hfst
-	hfst-compose-intersect -l $(LANG1).lexc.hfst $(LANG1).twol.hfst -o $@.tmp
-	hfst-compose-intersect -l $@.tmp .deps/uppercase-first.twol.hfst -o $@
-	@rm $@.tmp
+$(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
+	hfst-compose-intersect -l $(LANG1).lexc.hfst $(LANG1).twol.hfst -o $@
 
 .deps/xfst2apertium.useless.twol.hfst: dev/xfst2apertium.useless.twol
 	if [ ! -d .deps ]; then mkdir .deps; fi
