@@ -417,6 +417,7 @@ TODO:
     <def-var n="pron_pers"      c="pronoun person (esp. for reflexive)"/>
     <def-var n="pre-nom"        c="lu's before nom-lu in nominal chunk"/>
     <def-var n="post-nom"       c="lu's after nom-lu in nominal chunk (only used in 'den som V cmp')"/>
+    <def-var n="pre-verb"       c="lu's before verb-lu in verbal chunk (only compounds for now)"/>
     <def-var n="defnes"         c="definiteness (noun, adj)"/>
     <def-var n="c_name"         c="chunk name"/>
     <def-var n="tmp"            c="temporary variable"/>
@@ -855,8 +856,7 @@ TODO:
 
     <!-- Output macros: -->    
     <def-macro n="out_nom" npar="1"
-               c="arg.1: tl-noun
-                  (tl PoS is noun, sl may be something else!)
+               c="arg.1: noun
                   -----
                   ASSUMES THAT pre-nom, c_name, defnes AND caseFirstWord HAVE BEEN SET!
                   This macro is used to output nominal heads, possibly prepended by determiners
@@ -1003,7 +1003,246 @@ TODO:
         
       </choose>
     </def-macro>
-    
+
+
+    <def-macro n="out_verb" npar="1"
+               c="arg.1: verb
+                  -----
+                  ASSUMES THAT pre-verb, c_name AND caseFirstWord HAVE BEEN SET!
+                  This macro is used to output verbal heads, possibly prepended by compound parts
+                  (stored in pre-verb).                  
+                  This macro does the following, in this order:
+                  - insert progressive aux if this is a progressive
+                  - insert causative aux if we have a 'caus' tag
+                  - insert passive aux if we see a 'pass' tag
+                  - insert main predicate (tl PoS may be verb, adj, adv or n;
+                              temps may have changed by the above operations)
+                  - insert reflexive if we have a 'ref' tag
+TODO: caseSecondWord ?">
+      
+      <choose c="Prepend cnjsub if present progressive:
+TODO: better translation possible? ('drev og'? 'holdt på å'?)"><when>
+        <test><and>
+          <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal>
+          <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="Actio"/></equal>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+        </and></test>
+        <out>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="@CVP.cnjsub"/></tag>
+            </tags>
+            <lu>
+              <lit v="i gang med å"/>
+              <lit-tag v="cnjsub"/>
+            </lu>
+          </chunk>
+          <b/>
+        </out>
+        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+      </when></choose>
+      
+      <choose c="Prepend 'la' if causative:
+TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types..."><when>
+        <test>
+          <equal><clip pos="1" side="tl" part="a_caus"/><lit-tag v="caus"/></equal>
+        </test>
+        <out>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="sl" part="modality"/></tag>
+              <tag><clip pos="1" side="tl" part="temps"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="animacy"/></tag>
+            </tags>
+            <lu>
+              <lit v="la"/>
+              <lit-tag v="vblex"/>
+              <clip pos="1" side="tl" part="temps"/>
+            </lu>
+          </chunk>
+          <b/>
+        </out>
+        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+        <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+      </when></choose>
+      
+      <choose c="Prepend aux (moving over temps) if passive pret:
+TODO: OK to just discard syn_label from pret.passives?">
+        <when c="iff passive pret/pp/adj">
+          <test><and>
+            <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal>
+            <or>
+              <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></equal>
+            </or>
+          </and></test>
+          <let><var n="c_syn"/><lit-tag v="@+FAUXV"/></let>
+          <choose><when>
+            <test><in><clip pos="1" side="tl" part="temps"/><list n="infinite_temps"/></in></test>
+            <let><var n="c_syn"/><lit-tag v="@-FAUXV"/></let>
+          </when></choose>
+          <out>
+            <chunk name="verb" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SV"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              </tags>
+              <lu>
+                <lit v="bli"/>
+                <lit-tag v="vblex"/>
+                <clip pos="1" side="tl" part="temps"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+            <b/>
+          </out>
+          <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></let>
+          <let><clip pos="1" side="tl" part="voice"/><lit v=""/></let>
+        </when>
+      </choose>
+      
+      <choose c="Output the main predicate, verb/adj/noun/adv/etc.">
+        <when c="adv (eg. negative)">
+          <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
+          <append n="c_name"><lit v="adv"/></append>
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SV"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><clip pos="1" side="sl" part="neg"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              </tags>
+              <var n="pre-verb"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_adv"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+        <when c="Noun">
+          <test><not><equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal></not></test>
+          <let><var n="pre-nom"/><var n="pre-verb"/></let>
+          <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+          <call-macro n="out_nom"><with-param pos="1"/></call-macro>
+        </when>
+        <when c="Adj">
+          <test><not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
+          <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
+          <append n="c_name"><lit v="adj"/></append>
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SA"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              </tags>
+              <var n="pre-verb"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_adj"/>
+                <clip pos="1" side="tl" part="grau"/>
+                <lit-tag v="GD.ND.ind"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+        <otherwise c="Verb">
+          <choose>
+            <when>
+              <test><equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="være"/></equal></test>
+              <append n="c_name"><lit v="vcop"/></append>
+            </when>
+            <otherwise>
+              <append n="c_name"><lit v="verb"/></append>
+            </otherwise>
+          </choose>
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SV"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              </tags>
+              <var n="pre-verb"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_verb"/>
+                <clip pos="1" side="tl" part="temps"/>
+                <clip pos="1" side="tl" part="voice"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </otherwise>
+      </choose>
+
+      <choose><when c="Append 'seg' if reflexive:">
+        <test><equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal></test>
+        <let><var n="pron_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        <let><var n="pron_pers"/><clip pos="1" side="tl" part="pers"/></let>
+        <choose><when>
+          <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
+          <let><var n="pron_nbr"/><lit-tag v="sg"/></let>
+        </when></choose>
+        <choose><when>
+          <test><equal><clip pos="1" side="tl" part="pers"/><lit v=""/></equal></test>
+          <let><var n="pron_pers"/><lit-tag v="p3"/></let>
+        </when></choose>
+        <out>
+          <b/>
+          <chunk name="ref">
+            <tags>
+              <tag><lit-tag v="@←OBJ"/></tag>
+              <tag><var n="pron_pers"/></tag>
+              <tag><var n="pron_nbr"/></tag>
+              <tag><lit-tag v="acc"/></tag>
+            </tags>
+            <lu>
+              <lit v="seg"/>
+              <lit-tag v="prn.ref"/>
+              <var n="pron_pers"/>
+              <var n="pron_nbr"/>
+            </lu>
+          </chunk>
+        </out>
+      </when></choose>
+    </def-macro>
   </section-def-macros>
   
   <section-rules>
@@ -2654,279 +2893,20 @@ TODO:
     <!-- <rules VERBS ETC. -->        
     
     <rule comment="REGLA: VERB (tl: VERB, ADV, ADJ, NOUN)
+                   See out_verb macro.
+                   -----
                    dansún => dans (noun, explicitly in bidix)
                    oažžun => fående (adj.pprs, using fallback rule)
                    ii => adv.p3.sg{ikke}
-                   Itgo => adv.p2.sg.Qst{ikke}
-
-TODO: caseSecondWord
-TODO: Compounds with these. Should put it all in a macro then...
-TODO: should VERB->ADJ always be tagged SN?
-
-TODO: Change the branching/logic here; the 'if adv/adj/N' should all happen _after_ we've
-checked for passive (and if so output the aux), but not be dependent on outputting a passive aux.">
+                   Itgo => adv.p2.sg.Qst{ikke}">
       <pattern>
         <pattern-item n="verb"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <let><var n="c_name"/><lit v="verb"/></let>
-        <choose><when>
-          <test><equal><clip pos="1" side="tl" part="lemh"/><lit v="være"/></equal></test>
-          <let><var n="c_name"/><lit v="vcop"/></let>
-        </when></choose>
-
-        <choose>
-          <when>
-            <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
-            <out>
-              <chunk name="adv" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="SV"/></tag>
-                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                  <tag><clip pos="1" side="sl" part="neg"/></tag>
-                  <tag><clip pos="1" side="sl" part="mode"/></tag>
-                  <tag><clip pos="1" side="sl" part="modality"/></tag>
-                  <tag><clip pos="1" side="tl" part="temps"/></tag>
-                  <tag><clip pos="1" side="tl" part="voice"/></tag>
-                  <tag><clip pos="1" side="tl" part="pers"/></tag>
-                  <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                  <tag><clip pos="1" side="tl" part="animacy"/></tag>
-                </tags>
-                <lu>
-                  <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adv"/>
-                  <clip pos="1" side="tl" part="lemq"/>
-                </lu>
-              </chunk>
-            </out>
-        </when>
-        <when>
-          <test><not><equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal></not></test>
-          <let><var n="c_name"/><lit v=""/></let>
-          <let><var n="pre-nom"/><lit v=""/></let>
-          <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-          <call-macro n="out_nom"><with-param pos="1"/></call-macro>
-        </when>
-        <when>
-          <test><and>
-            <begins-with><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></begins-with>
-            <not><equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal></not>
-          </and></test>
-          <out>
-            <chunk name="adj" case="caseFirstWord">
-              <tags>
-                <tag><lit-tag v="SN"/></tag>
-                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                <tag><clip pos="1" side="sl" part="mode"/></tag>
-                <tag><clip pos="1" side="sl" part="modality"/></tag>
-                <tag><clip pos="1" side="tl" part="temps"/></tag>
-                <tag><clip pos="1" side="tl" part="voice"/></tag>
-                <tag><clip pos="1" side="tl" part="pers"/></tag>
-                <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                <tag><clip pos="1" side="tl" part="animacy"/></tag>
-              </tags>
-              <lu>
-                <clip pos="1" side="tl" part="lemh"/>
-                <clip pos="1" side="tl" part="a_adj"/>
-                <clip pos="1" side="tl" part="lemq"/>
-              </lu>
-            </chunk>
-          </out>
-        </when>
-        <otherwise>
-          <choose c="Prepend cnjsub if present progressive:"><when>
-            <test><and>
-              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal>
-              <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="Actio"/></equal>
-              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
-            </and></test>
-            <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
-            <out>
-              <chunk name="conj" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="@CVP.cnjsub"/></tag>
-                </tags>
-                <lu>
-                  <lit v="i gang med å"/>
-                  <lit-tag v="cnjsub"/>
-                </lu>
-              </chunk>
-              <b/>
-            </out>
-          </when></choose>
-          <choose c="Prepend 'la' if causative:
-                     TODO: få til å vs la, correct syn_label, interaction with others types..."><when>
-            <test>
-              <equal><clip pos="1" side="tl" part="a_caus"/><lit-tag v="caus"/></equal>
-            </test>
-            <out>
-              <chunk name="verb" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="SV"/></tag>
-                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                  <tag><clip pos="1" side="sl" part="mode"/></tag>
-                  <tag><clip pos="1" side="sl" part="modality"/></tag>
-                  <tag><clip pos="1" side="tl" part="temps"/></tag>
-                  <tag><clip pos="1" side="tl" part="pers"/></tag>
-                  <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                  <tag><clip pos="1" side="tl" part="animacy"/></tag>
-                </tags>
-                <lu>
-                  <lit v="la"/>
-                  <lit-tag v="vblex"/>
-                  <clip pos="1" side="tl" part="temps"/>
-                </lu>
-              </chunk>
-              <b/>
-            </out>
-            <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
-            <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
-          </when></choose>
-          <choose c="Output verb, inserting aux (with temps) iff passive pret:
-                     TODO: OK to just discard syn_label from pret.passives?">
-            <when c="iff passive pret/pp/adj">
-              <test><and>
-                <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal>
-                <or>
-                  <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
-                  <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
-                  <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></equal>
-                </or>
-              </and></test>
-              <let><var n="c_syn"/><lit-tag v="@+FAUXV"/></let>
-              <choose><when>
-                <test><in><clip pos="1" side="tl" part="temps"/><list n="infinite_temps"/></in></test>
-                <let><var n="c_syn"/><lit-tag v="@-FAUXV"/></let>
-              </when></choose>
-              <out>
-                <chunk name="verb" case="caseFirstWord">
-                  <tags>
-                    <tag><lit-tag v="SV"/></tag>
-                    <tag><var n="c_syn"/></tag>
-                    <tag><clip pos="1" side="sl" part="mode"/></tag>
-                    <tag><clip pos="1" side="sl" part="modality"/></tag>
-                    <tag><clip pos="1" side="tl" part="temps"/></tag>
-                    <tag><clip pos="1" side="tl" part="pers"/></tag>
-                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                    <tag><clip pos="1" side="tl" part="animacy"/></tag>
-                  </tags>
-                  <lu>
-                    <lit v="bli"/>
-                    <lit-tag v="vblex"/>
-                    <clip pos="1" side="tl" part="temps"/>
-                    <clip pos="1" side="tl" part="lemq"/>
-                  </lu>
-                </chunk>
-                <b/>
-              </out>
-              <choose c="Output the predicate of the passive construction, either verb or adj">
-                <when>
-                  <test><not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
-                  <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
-                  <out>
-                    <chunk name="adj">
-                      <tags>
-                        <tag><lit-tag v="SA"/></tag>
-                        <tag><lit-tag v="@-FMAINV"/></tag>
-                        <tag><clip pos="1" side="sl" part="mode"/></tag>
-                        <tag><clip pos="1" side="sl" part="modality"/></tag>
-                        <tag><clip pos="1" side="tl" part="pers"/></tag>
-                        <tag><var n="c_gen"/></tag>
-                        <tag><var n="c_nbr"/></tag>
-                        <tag><clip pos="1" side="tl" part="animacy"/></tag>
-                      </tags>
-                      <lu>
-                        <clip pos="1" side="tl" part="lemh"/>
-                        <clip pos="1" side="tl" part="a_adj"/>
-                        <clip pos="1" side="tl" part="grau"/>
-                        <lit-tag v="GD.ND.ind"/>
-                        <clip pos="1" side="tl" part="lemq"/>
-                      </lu>
-                    </chunk>
-                  </out>
-                </when>
-                <otherwise>
-                  <out>
-                    <chunk namefrom="c_name">
-                      <tags>
-                        <tag><lit-tag v="SV"/></tag>
-                        <tag><lit-tag v="@-FMAINV"/></tag>
-                        <tag><clip pos="1" side="sl" part="mode"/></tag>
-                        <tag><clip pos="1" side="sl" part="modality"/></tag>
-                        <tag><lit-tag v="pp"/></tag>
-                        <tag><clip pos="1" side="tl" part="pers"/></tag>
-                        <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                        <tag><clip pos="1" side="tl" part="animacy"/></tag>
-                      </tags>
-                      <lu>
-                        <clip pos="1" side="tl" part="lemh"/>
-                        <clip pos="1" side="tl" part="a_verb"/>
-                        <lit-tag v="pp"/>
-                        <clip pos="1" side="tl" part="lemq"/>
-                      </lu>
-                    </chunk>
-                  </out>
-                </otherwise>
-              </choose>
-            </when>
-            <otherwise c="Not passive (might still be prepended by cnjsub or causative verb):">
-              <out>
-                <chunk namefrom="c_name" case="caseFirstWord">
-                  <tags>
-                    <tag><lit-tag v="SV"/></tag>
-                    <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                    <tag><clip pos="1" side="sl" part="mode"/></tag>
-                    <tag><clip pos="1" side="sl" part="modality"/></tag>
-                    <tag><clip pos="1" side="tl" part="temps"/></tag>
-                    <tag><clip pos="1" side="tl" part="voice"/></tag>
-                    <tag><clip pos="1" side="tl" part="pers"/></tag>
-                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                    <tag><clip pos="1" side="tl" part="animacy"/></tag>
-                  </tags>
-                  <lu>
-                    <clip pos="1" side="tl" part="lemh"/>
-                    <clip pos="1" side="tl" part="a_verb"/>
-                    <clip pos="1" side="tl" part="temps"/>
-                    <clip pos="1" side="tl" part="voice"/>
-                    <clip pos="1" side="tl" part="lemq"/>
-                  </lu>
-                </chunk>
-              </out>
-            </otherwise>
-          </choose>
-          <choose><when c="Append 'seg' if reflexive:">
-            <test><equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal></test>
-            <let><var n="pron_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
-            <let><var n="pron_pers"/><clip pos="1" side="tl" part="pers"/></let>
-            <choose><when>
-              <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
-              <let><var n="pron_nbr"/><lit-tag v="sg"/></let>
-            </when></choose>
-            <choose><when>
-              <test><equal><clip pos="1" side="tl" part="pers"/><lit v=""/></equal></test>
-              <let><var n="pron_pers"/><lit-tag v="p3"/></let>
-            </when></choose>
-            <out>
-              <b/>
-              <chunk name="ref">
-                <tags>
-                  <tag><lit-tag v="@←OBJ"/></tag>
-                  <tag><var n="pron_pers"/></tag>
-                  <tag><var n="pron_nbr"/></tag>
-                  <tag><lit-tag v="acc"/></tag>
-                </tags>
-                <lu>
-                  <lit v="seg"/>
-                  <lit-tag v="prn.ref"/>
-                  <var n="pron_pers"/>
-                  <var n="pron_nbr"/>
-                </lu>
-              </chunk>
-            </out>
-          </when></choose>          
-        </otherwise>
-        </choose>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <call-macro n="out_verb"><with-param pos="1"/></call-macro>
       </action>
     </rule>
     
@@ -2975,44 +2955,34 @@ checked for passive (and if so output the aux), but not be dependent on outputti
             </lu>
           </chunk>
           <b/>
-          <chunk name="verb">
-            <tags>
-              <tag><lit-tag v="SV"/></tag>
-              <tag><lit-tag v="@-FMAINV"/></tag>
-              <tag><lit-tag v="inf"/></tag>
-            </tags>
-            <lu>
-              <get-case-from pos="2">
-                <clip pos="1" side="tl" part="lemh"/>
-              </get-case-from>
-              <clip pos="1" side="tl" part="a_verb"/>
-              <lit-tag v="inf"/>
-              <clip pos="1" side="tl" part="voice"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
         </out>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><clip pos="1" side="tl" part="lemh"/><get-case-from pos="2"><clip pos="1" side="tl" part="lemh"/></get-case-from></let>
+        <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+        <!-- There is no temps on pos=1 in this construction, so we just append it to the verb tags: -->
+        <let><clip pos="1" side="tl" part="a_verb"/><concat><clip pos="1" side="tl" part="a_verb"/><lit-tag v="inf"/></concat></let>
+        <call-macro n="out_verb"><with-param pos="1"/></call-macro>
       </action>
     </rule>
     
     <rule comment="REGLA: NOMCMP VERB
                    -----
                    skuvlavázzima => skolegående
-                   (should be 'skolegang', but if it's not in bidix, adj.pprs is the best we can do)
-                   Makes no periphrastics even if the verb is causative, reflexive or passive, just outputs the actual verb for now.
-                   TODO: out_verb macro, to generalise over this rule, VERB and Der_goahti VERB">
+                   (should be 'skolegang', but if it's not in bidix, adj.pprs is the best we can do)">
       <pattern>
         <pattern-item n="nom_cmp"/>
         <pattern-item n="verb"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let>
 
         <let><var n="c_name"/><lit v="cmp_"/></let>
         <let>
-          <var n="pre-nom"/>
+          <var n="pre-verb"/>
           <concat>
             <lit v="^"/>
               <clip pos="1" side="tl" part="lemh"/>
@@ -3023,70 +2993,8 @@ checked for passive (and if so output the aux), but not be dependent on outputti
             <lit v="$"/>
           </concat>
         </let>
-        
-        <choose>
-          <when c="Output nom">
-            <test><not><equal><clip pos="2" side="tl" part="a_nom"/><lit v=""/></equal></not></test>
-            <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
-            <call-macro n="out_nom"><with-param pos="2"/></call-macro>
-          </when>
-          <when c="Output adj">
-            <test><begins-with><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></begins-with></test>
-            <append n="c_name"><lit v="adj"/></append>
-            <out>
-              <chunk namefrom="c_name" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="SN"/></tag>
-                  <tag><clip pos="2" side="sl" part="syn_label"/></tag>
-                  <tag><clip pos="2" side="sl" part="mode"/></tag>
-                  <tag><clip pos="2" side="sl" part="modality"/></tag>
-                  <tag><clip pos="2" side="tl" part="temps"/></tag>
-                  <tag><clip pos="2" side="tl" part="voice"/></tag>
-                  <tag><clip pos="2" side="tl" part="pers"/></tag>
-                  <tag><clip pos="2" side="tl" part="nbr"/></tag>
-                  <tag><clip pos="2" side="tl" part="animacy"/></tag>
-                </tags>
-                <var n="pre-nom"/>
-                <lu>
-                  <clip pos="2" side="tl" part="lemh"/>
-                  <clip pos="2" side="tl" part="a_adj"/>
-                  <clip pos="2" side="tl" part="grau"/>
-                  <clip pos="2" side="tl" part="gen"/>
-                  <clip pos="2" side="tl" part="nbr"/>
-                  <clip pos="2" side="tl" part="art"/>
-                  <clip pos="2" side="tl" part="lemq"/>
-                </lu>
-              </chunk>
-            </out>
-          </when>
-          <otherwise c="Output verb.
-                        If it's passive, reflexive, or causative we just ignore that, simply outputting the verb.">
-            <append n="c_name"><lit v="verb"/></append>
-            <out>
-              <chunk namefrom="c_name" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="SV"/></tag>
-                  <tag><clip pos="2" side="sl" part="syn_label"/></tag>
-                  <tag><clip pos="2" side="sl" part="mode"/></tag>
-                  <tag><clip pos="2" side="sl" part="modality"/></tag>
-                  <tag><clip pos="2" side="tl" part="temps"/></tag>
-                  <tag><clip pos="2" side="tl" part="voice"/></tag>
-                  <tag><clip pos="2" side="tl" part="pers"/></tag>
-                  <tag><clip pos="2" side="tl" part="nbr"/></tag>
-                  <tag><clip pos="2" side="tl" part="animacy"/></tag>
-                </tags>
-                <var n="pre-nom"/>
-                <lu>
-                  <clip pos="2" side="tl" part="lemh"/>
-                  <clip pos="2" side="tl" part="a_verb"/>
-                  <clip pos="2" side="tl" part="temps"/>
-                  <clip pos="2" side="tl" part="voice"/>
-                  <clip pos="2" side="tl" part="lemq"/>
-                </lu>
-              </chunk>
-            </out>
-          </otherwise>
-        </choose>
+
+        <call-macro n="out_verb"><with-param pos="2"/></call-macro>
       </action>
     </rule>
 
