@@ -459,7 +459,8 @@ TODO:
 
     <!-- <rules: Weird stuff -->
     <rule comment="REGLA: PR pron-RADVL spred-ess
-                   til meg som hjelper => og hjelper meg">
+                   til meg som hjelper => og hjelper meg
+TODO: does this generalise or should we remove the whole mechanism?">
       <pattern>
         <pattern-item n="PR"/>
         <pattern-item n="pron-RADVL"/>
@@ -819,7 +820,10 @@ TODO:
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
-        <let><clip pos="1" part="temps"/><var n="ana_temps"/></let>
+        <choose><when>
+          <test><not><equal><var n="ana_temps"/><lit v=""/></equal></not></test>
+          <let><clip pos="1" part="temps"/><var n="ana_temps"/></let>
+        </when></choose>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>
