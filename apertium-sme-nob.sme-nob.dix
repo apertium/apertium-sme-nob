@@ -394,6 +394,37 @@
       <!-- TODO: Focus [Foc_ge] etc.  -->
       <!-- "Leago dát duođasge Sáme Radio oaivil ?" -->
     </pardef>
+    <pardef n="pl__adj" c="as above, but always goes to nob plural (some nob adj's only have plural forms)">
+      <!-- TODO: adj.ord, adj.pp, adj.pprs (all of which need GD and ND) -->
+      <e><p><l><s n="Attr"/></l>          <r><s n="posi"/><s n="GD"/><s n="ND"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Nom"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Acc"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Gen"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Sg"/><s n="Loc"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Nom"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Acc"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Gen"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Pl"/><s n="Loc"/></l><r><s n="posi"/><s n="GD"/><s n="pl"/></r></p></e>
+      <e><p><l><s n="Comp"/><s n="Sg"/><s n="Nom"/></l><r><s n="comp"/></r></p></e>
+      <e><p><l><s n="Comp"/><s n="Pl"/><s n="Nom"/></l><r><s n="comp"/></r></p></e>
+      <e><p><l><s n="Comp"/></l>          <r><s n="comp"/></r></p></e>
+      <e><p><l><s n="Comp"/><s n="Attr"/></l><r><s n="comp"/></r></p></e>
+      <e><p><l><s n="Superl"/></l>        <r><s n="sup"/></r></p></e>
+      <e><p><l><s n="Superl"/><s n="Sg"/></l>        <r><s n="sup"/></r></p></e>
+      <e><p><l><s n="Superl"/><s n="Pl"/></l>        <r><s n="sup"/><s n="def"/></r></p></e>
+
+      <!-- Should we do anything else for A.Ess ? -->
+      <e><p><l><s n="Ess"/></l>          <r><s n="posi"/><s n="GD"/><s n="ND"/></r></p></e>
+
+      <!-- Don't add an 'n' or 'adv' tag to the <r>'s here;
+           we don't introduce PoS changes in pardefs!
+           The derived nob noun might not exist. -->
+      <e r="LR"><p><l><s n="Der3"/><s n="Der_vuohta"/><s n="N"/></l> <r><s n="posi"/><s n="GD"/><s n="def"/></r></p><par n="__n"/></e>
+      <!-- Most adverbial uses of adjectives are posi.nt.sg.ind -->
+      <e r="LR"><p><l><s n="Der2"/><s n="Der_at"/><s n="Adv"/></l> <r><s n="adj"/><s n="posi"/><s n="nt"/><s n="sg"/><s n="ind"/></r></p></e>
+      <!-- TODO: Focus [Foc_ge] etc.  -->
+      <!-- "Leago dát duođasge Sáme Radio oaivil ?" -->
+    </pardef>
     <pardef n="cmp__adj" c="Adjectives which are only to be used as compound parts.">
       <e><par n="__adj"/><p><l><s n="Cmp"/></l><r></r></p></e>
     </pardef>
@@ -2622,7 +2653,11 @@
     <e><p><l>váldi<s n="N"/></l><r>fullmakt<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>váldi<s n="N"/></l><r>myndighet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e slr="2"><p><l>váldi<s n="N"/></l><r>mandat<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+
+    <e c="compound-only"><p><l>váldi<s n="N"/><s n="Actor"/></l><r>taker<s n="n"/><s n="m"/></r></p><par n="cmp__n"/></e>
+    <e c="todo: betre ord"><p><l>váldi<s n="N"/><s n="Actor"/></l><r>pågriper<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e c="compound-only? todo"><p><l>váldu<s n="N"/></l><r>hoved<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
+
     <e><p><l>válga<s n="N"/></l><r>valg<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>válljen<s n="N"/></l><r>seleksjon<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>vallji<s n="N"/></l><r>overflod<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -20540,8 +20575,8 @@
     <e><p><l>ollis<s n="A"/></l><r>hel<s n="adj"/></r></p><par n="__adj"/></e>
     <e slr="1"><p><l>ollis<s n="A"/></l><r>full<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>ollislaš<s n="A"/></l><r>fullverdig<s n="adj"/></r></p><par n="__adj"/></e>
-    <e><p><l>ollu<s n="A"/></l><r>mange<s n="adj"/></r></p><par n="__adj"/></e>
-    <e slr="1"><p><l>ollu<s n="A"/></l><r>mye<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>ollu<s n="A"/></l><r>mange<s n="adj"/></r></p><par n="pl__adj"/></e>
+    <e slr="1"><p><l>ollu<s n="A"/></l><r>mye<s n="adj"/></r></p><par n="pl__adj"/></e>
     <e><p><l>olu<s n="A"/></l><r>mange<s n="adj"/></r></p><par n="__adj"/></e>
     <e slr="1"><p><l>olu<s n="A"/></l><r>mye<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>oppa<s n="A"/></l><r>hele<s n="adj"/></r></p><par n="__adj"/></e>
@@ -21061,7 +21096,8 @@
     <e slr="2"><p><l>ban<s n="Pcle"/></l><r>sikkert<s n="adv"/></r></p></e>
 
     <!-- TODO: -->
-    <!-- <e><p><l>no<s n="Pcle"/></l><r><s n="adv"/></r></p></e> -->
+    <e><p><l>no<s n="Pcle"/></l><r>nå<s n="adv"/></r></p></e>
+<!-- Eadni dat.Pcle fuomášii dan => Mor var det som oppdaget det -->
     <!-- <e><p><l>dat<s n="Pcle"/></l><r><s n="adv"/></r></p></e> -->
     <!-- <e><p><l>gen<s n="Pcle"/></l><r><s n="adv"/></r></p></e> -->
 
@@ -21282,7 +21318,7 @@
     <e><p><l>nappo<s n="Adv"/></l><r>bare<s n="adv"/></r></p></e>
     <e><p><l>nie<s n="Adv"/></l><r>slik<s n="adv"/></r></p></e>
     <e slr="1"><p><l>nie<s n="Adv"/></l><r>sånn<b/>der<s n="adv"/></r></p></e>
-<e><p><l>nu<s n="Adv"/></l><r>slik<s n="adv"/></r></p></e>
+    <e><p><l>nu<s n="Adv"/></l><r>slik<s n="adv"/></r></p></e>
     <e><p><l>oalle<s n="Adv"/></l><r>ganske<s n="adv"/></r></p></e>
     <e slr="1"><p><l>oalle<s n="Adv"/></l><r>nokså<s n="adv"/></r></p></e>
     <e><p><l>oanehassii<s n="Adv"/></l><r>for<b/>en<b/>liten<b/>stund<s n="adv"/></r></p></e>
