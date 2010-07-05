@@ -24,6 +24,7 @@ LIST PronPers = (Pron Pers) ;
 LIST PronPersIll = (Pron Pers Ill) ;
 LIST CURRENCY = "denara" "dollár" "euro" "kruvdnu" "kr" "ru" "rubel" "ruvdno" "ruvdnu" "¢" "€" "$";
 LIST Cond = (Cond) ;
+LIST ConNeg = (ConNeg) ;
 LIST Inf = (Inf) ;
 LIST PrfPrc = (PrfPrc) ;
 LIST IndPrt = (Ind Prt) ;
@@ -42,10 +43,7 @@ SECTION
 # Verb rules
 # ----------
 
-# leat 0 = være, 1 = ha, 2 = måtte («ha å»), 3 = ville
-SUBSTITUTE ("leat" V IV Cond Prs) ("leat:3" V IV Ind Prt) ("leat" V IV) (*1 PrfPrc OR Inf) ;
-# Livččen ovdal boahtán, muhto ... => Jeg ville kommet tidligere, men ...
-# (kondisjonalis preteritum -- would it be better to do it as a "Cond4"?)
+# leat 0 = være, 1 = ha, 2 = måtte («ha å»)
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg) (-2 @HAB) ;
 SUBSTITUTE ("leat:1") ("leat:2") ("leat:1" V IV) (1 Inf) ;
