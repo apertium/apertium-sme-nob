@@ -131,6 +131,12 @@ SUBSTITUTE ("ieš") ("ieš:4") ("ieš" Pron Refl) (0 (@←ADVL)) (NOT -1 PronPer
 SUBSTITUTE ("cegget") ("cegget:1") ;
 # Mun ceggen vaikke ieš filbmafestivála
 
+
+# Rules that change PoS (like slr entries, the targets must exist in bidix!)
+# --------------------------------------------------------------------------
+SUBSTITUTE ("ruoktu" N Sg Loc) ("ruovttus" Adv) ("ruoktu" N Sg Loc);
+
+
 # Rules that are not word-specific
 # --------------------------------
 
