@@ -540,9 +540,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     
     <def-macro n="set_adv" npar="1"
                c="arg.1: verb chunk.
-                  Creates an adverb chunk to indicate conditional/potentialis case.
-                  If given indicative, make adv and adv-blank empty, they are always output.
-                  This is very primitive. TODO: evolve.">
+                  Creates an adverb chunk to indicate potentialis case.
+                  (Conditionalis is handled by adding aux 'kunne' in t1x instead.)
+                  If given indicative, make adv and adv-blank empty, they are always output.">
       <choose>
         <when>
           <test>
@@ -556,24 +556,6 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
               <clip pos="1" part="modality"/>
               <lit v="{^"/>
               <lit v="da"/>     <!-- evt. "muligens" viss me har byråkratisk språk -->
-              <lit-tag v="adv"/>
-              <lit v="$}$"/>
-            </concat>
-          </let>
-          <let><var n="adv-blank"/><b/></let>
-        </when>
-        <when>
-          <test>
-            <equal><clip pos="1" part="modality"/><lit-tag v="Cond"/></equal>
-          </test>               <!--todo fjern, bruk skulle/kunne/etc i t1x som passiv-->
-          <let>
-            <var n="adv"/>
-            <concat>
-              <lit v="^adv"/>
-              <lit-tag v="@ADVL"/>
-              <clip pos="1" part="modality"/>
-              <lit v="{^"/>
-              <lit v="kanskje"/>
               <lit-tag v="adv"/>
               <lit v="$}$"/>
             </concat>
@@ -596,7 +578,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     <rule comment="REGLA: ILSUBJ IV
                    (Máhtte muitalii) ádjá boahtit => (Máhtte fortalte) bestefar skulle komme
                    TODO: set_defnes2 ? set_adv ?
-                   TODO: fts? or what tag works best? (for adding 'skulle')">
+                   Adds 'skulle' if infinitive (and changes syn_label so t4x doesn't add 'å')">
       <pattern>
         <pattern-item n="ILSUBJ"/>
         <pattern-item n="IV-tilsvar"/>
@@ -611,13 +593,23 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b/>
         </out>
         
-        <let>
-          <clip pos="2" part="temps"/>
-          <concat><lit-tag v="Cond"/><clip pos="2" part="temps"/></concat>
-        </let>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
+        </out>
+        
+        <choose><when>
+          <test><equal><clip pos="2" part="temps"/><lit-tag v="inf"/></equal></test>
+          <out>
+            <chunk>
+              <get-case-from pos="2"><lit v="verb"/></get-case-from><lit-tag v="@-FAUXV.inf"/>
+              <lit v="{^"/><lit v="skulle"/><lit-tag v="vblex.inf"/><lit v="$}"/>
+            </chunk>
+            <b/>
+          </out>
+          <let><clip pos="2" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+        </when></choose>
+        <out>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
       </action>

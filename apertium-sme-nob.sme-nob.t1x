@@ -1033,6 +1033,34 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?)"><when>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
       </when></choose>
       
+      <choose c="Prepend 'kunne' if conditional:"><when>
+        <test>
+          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond"/></equal>
+        </test>
+        <out>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="sl" part="modality"/></tag>
+              <tag><clip pos="1" side="tl" part="temps"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="animacy"/></tag>
+            </tags>
+            <lu>
+              <lit v="kunne"/>
+              <lit-tag v="vblex"/>
+              <clip pos="1" side="tl" part="temps"/>
+            </lu>
+          </chunk>
+          <b/>
+        </out>
+        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+        <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+      </when></choose>
+      
       <choose c="Prepend 'la' if causative:
 TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types..."><when>
         <test>
@@ -1062,7 +1090,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
       </when></choose>
       
-      <choose c="Prepend aux (moving over temps) if passive pret:
+      <choose c="Prepend 'bli' aux (moving over temps) if passive pret:
 TODO: OK to just discard syn_label from pret.passives?">
         <when c="iff passive pret/pp/adj">
           <test><and>

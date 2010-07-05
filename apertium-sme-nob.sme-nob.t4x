@@ -678,16 +678,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
               <b/>
             </out>
           </when>
-          <when>
-            <test><and>
-              <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
-              <equal><clip pos="0" part="modality"/><lit-tag v="Cond"/></equal>
-            </and></test>
-            <out>
-              <lu><get-case-from pos="1"><lit v="skulle"/></get-case-from><lit-tag v="vblex.inf"/></lu>
-              <b/>
-            </out>
-          </when>
         </choose>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
