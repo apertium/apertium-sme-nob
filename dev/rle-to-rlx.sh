@@ -11,7 +11,7 @@ then
     exit 0;
 fi
 
-SYNLABELS=("OBJ→" "@-FOBJ→" "@-FSUBJ→" "@-F←OBJ" "@ADVL←" "@ADVL→" "@APP-ADVL←" "@APP-Num←" "@APP-N←" "@APP-Pron←" "@APP→Pron" "@A←" "@COMP-CS←" "@Num←" "@N←" "@OBJ→" "@OBJ→SPRED" "@OPRED→" "@P←" "@SPRED→" "@SPRED←OBJ" "@SUBJ→" "@SUBJ←ADVL" "@SUBJ←OBJ" "@→A" "@←ADVL" "@→ADVL" "@→N" "@→Num" "@←OBJ" "@←OPRED" "@→P" "@→Pron" "@Pron←" "@←SPRED" "@←SUBJ" "@→CC" "@←PPRED" "←uttv→" )
+SYNLABELS=("OBJ→" "@-FOBJ→" "@-FSUBJ→" "@-F←OBJ" "@ADVL←" "@ADVL→" "@APP-ADVL←" "@APP-Num←" "@APP-N←" "@APP-Pron←" "@APP→Pron" "@A←" "@COMP-CS←" "@Num←" "@N←" "@OBJ→" "@OBJ→SPRED" "@OPRED→" "@P←" "@SPRED→" "@SPRED←OBJ" "@SUBJ→" "@SUBJ←ADVL" "@SUBJ←OBJ" "@→A" "@←ADVL" "@→ADVL" "@→N" "@→Num" "@←OBJ" "@←OPRED" "@→P" "@→Pron" "@Pron←" "@←SPRED" "@←SUBJ" "@→CC" "@←PPRED" "←uttv→" "←vdic→" "@-F←ADVL" "@-FADVL→")
 
 echo "Turning < and > into arrows in syntactic labels..."
 for A in ${SYNLABELS[*]}
@@ -41,4 +41,4 @@ $SED -i".tmp" -e '
 s/\("[^" ;()]*\)#\([^" ;()]*"\)/\1\2/
 tSTART' "$1"
 
-echo "Done. Now manually remove SUBSTITUTE lines adding tags like ←uttv→, and add +naj etc to LIST Foc_naj etc. and fix r16 to demand 'NOT 0 Pron OR N OR etc.'"
+echo "Done. Now manually remove SUBSTITUTE lines adding tags like ←uttv→ / ←vdic→, and add +naj etc to LIST Foc_naj etc. and fix r16 to demand 'NOT 0 Pron OR N OR etc.'"
