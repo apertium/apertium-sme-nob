@@ -134,8 +134,21 @@ SUBSTITUTE ("cegget") ("cegget:1") ;
 
 # Rules that change PoS (like slr entries, the targets must exist in bidix!)
 # --------------------------------------------------------------------------
+
 SUBSTITUTE ("ruoktu" N Sg Loc) ("ruovttus" Adv) ("ruoktu" N Sg Loc);
 # Áddjá lea ruovttus => Bestefar er hjemme
+
+SUBSTITUTE (Pron Indef Gen Der1 Der_lágan A Attr) (A Attr) ("iešguđet" Pron Indef);
+SUBSTITUTE (Pron Indef Gen Der1 Der_lágan A Attr) (A Attr) ("iešguhtet" Pron Indef);
+SUBSTITUTE (Pron Indef Acc Der1 Der_lágan A Attr) (A Attr) ("iešguđet" Pron Indef);
+SUBSTITUTE (Pron Indef Acc Der1 Der_lágan A Attr) (A Attr) ("iešguhtet" Pron Indef);
+SUBSTITUTE (Pron Indef Gen) (A Attr) ("iešguđet" Pron Indef);
+SUBSTITUTE (Pron Indef Gen) (A Attr) ("iešguhtet" Pron Indef);
+SUBSTITUTE (Pron Indef Acc) (A Attr) ("iešguđet" Pron Indef);
+SUBSTITUTE (Pron Indef Acc) (A Attr) ("iešguhtet" Pron Indef);
+SUBSTITUTE (Pron Indef) (A Attr) ("iešguđet" Pron Indef);
+SUBSTITUTE (Pron Indef) (A Attr) ("iešguhtet" Pron Indef);
+# iešguhtet/iešguđet are actually «hver sine/enhver», but are used like «forskjellig/ulik» in all contexts I've seen so far --KBU
 
 
 # Rules that are not word-specific

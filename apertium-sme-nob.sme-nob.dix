@@ -787,8 +787,6 @@
     <e><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
     <e slr="1"><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e> <!-- juohke lágán => alle slags, alle måter -->
     <e c="'mange' kan jo tyde 'mange personer'"><p><l>olus<s n="Pron"/><s n="Indef"/></l><r>mange<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
-    <e><p><l>iešguhtet<s n="Pron"/><s n="Indef"/></l><r>enhver<s n="pron__det"/></r></p></e>
-    <e><p><l>iešguđet<s n="Pron"/><s n="Indef"/></l><r>hver<b/>sine<s n="pron__det"/></r></p></e>
 
     <!-- the pron__det pardef transfers number & case, for the below
          we just use __prn-case to transfer case and specify number here: -->
@@ -799,11 +797,11 @@
     <e><p><l>eanas<s n="Pron"/><s n="Indef"/><s n="Sg"/><s n="Nom"/></l><r>de<b/>fleste<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
     <e><p><l>galle<s n="Pron"/><s n="Indef"/><s n="Num"/><s n="Sg"/></l><r>så<b/>mange<s n="det"/><s n="qnt"/><s n="pl"/></r></p><par n="__prn-case"/></e>
 
-    <!-- TODO: change number or anything here? -->
-    <e r="LR"><p><l>iešguhtet<s n="Pron"/><s n="Indef"/></l><r>forskjellig<s n="adj"/><s n="posi"/><s n="GD"/><s n="ND"/></r></p><par n="__prn-case"/></e>
-    <e r="LR" slr="1"><p><l>iešguhtet<s n="Pron"/><s n="Indef"/></l><r>ulik<s n="adj"/><s n="posi"/><s n="GD"/><s n="ND"/></r></p><par n="__prn-case"/></e>
-    <e r="LR"><p><l>iešguđet<s n="Pron"/><s n="Indef"/></l><r>forskjellig<s n="adj"/><s n="posi"/><s n="GD"/><s n="ND"/></r></p></e>
-    <e r="LR" slr="1"><p><l>iešguđet<s n="Pron"/><s n="Indef"/></l><r>ulik<s n="adj"/><s n="posi"/><s n="GD"/><s n="ND"/></r></p></e>
+    <!-- iešguhtet/iešguđet are actually «hver sine/enhver», but are used like «forskjellig/ulik» in their contexts. PoS change happens in CG lex.sel -->
+    <e r="LR"><p><l>iešguhtet<s n="A"/></l><r>forskjellig<s n="adj"/></r></p><par n="__adj"/></e>
+    <e slr="1" r="LR"><p><l>iešguhtet<s n="A"/></l><r>ulik<s n="adj"/></r></p><par n="__adj"/></e>
+    <e r="LR"><p><l>iešguđet<s n="A"/></l><r>forskjellig<s n="adj"/></r></p><par n="__adj"/></e>
+    <e slr="1" r="LR"><p><l>iešguđet<s n="A"/></l><r>ulik<s n="adj"/></r></p><par n="__adj"/></e>
 
 
     <!-- Pronouns/determiners (nob determiners often correspond to sme pronouns) -->
@@ -20410,6 +20408,10 @@
     <e><p><l>hohppui<s n="A"/></l><r>hissig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>humanisttalaš<s n="A"/></l><r>humanistisk<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>hutkái<s n="A"/></l><r>kreativ<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>iešguđetlágan<s n="A"/></l><r>forskjellig<s n="adj"/></r></p><par n="__adj"/></e>
+    <e slr="1"><p><l>iešguđetlágan<s n="A"/></l><r>ulik<s n="adj"/></r></p><par n="__adj"/></e>
+    <e><p><l>iešguhtetlágan<s n="A"/></l><r>forskjellig<s n="adj"/></r></p><par n="__adj"/></e>
+    <e slr="1"><p><l>iešguhtetlágan<s n="A"/></l><r>ulik<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>ilgat<s n="A"/></l><r>nifs<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>ilolaš<s n="A"/></l><r>gledelig<s n="adj"/></r></p><par n="__adj"/></e>
     <e><p><l>imaš<s n="A"/></l><r>merkelig<s n="adj"/></r></p><par n="__adj"/></e>
