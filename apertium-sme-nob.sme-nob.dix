@@ -168,6 +168,8 @@
 
     <sdef n="Ind"     c="Indicative"/>
     <sdef n="Cond"    c="Conditional"/>
+    <sdef n="Cond2"    c="Conditional slr2"/>
+    <sdef n="Cond3"    c="Conditional slr3"/>
     <sdef n="Pot"     c="Potentialis"/>
     <sdef n="ConNeg"  c="Negation form"/>
     <sdef n="Neg"     c="Negation verb 'ii'"/>
@@ -552,6 +554,8 @@
 
       <!-- Modals, e.g. "Itgo boađáše?". We need the temps from boađáše, and the pro (nbr,pers) from "It"-->
       <e><p><l><s n="Cond"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
+      <e><p><l><s n="Cond2"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
+      <e><p><l><s n="Cond3"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
       <e><p><l><s n="Pot"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
       <e><p><l><s n="Ind"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
       <e><p><l><s n="Ind"/></l><r></r></p><par n="__nbr_pers"/></e>
@@ -560,6 +564,10 @@
 
       <e><p><l><s n="Cond"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Cond"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Cond2"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Cond2"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Cond3"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
+      <e><p><l><s n="Cond3"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Pot"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
       <e><p><l><s n="Pot"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
 
@@ -21845,6 +21853,7 @@
     <e><p><l>leat<s n="V"/><s n="IV"/></l><r>være<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
     <e slr="1"><p><l>leat<s n="V"/><s n="IV"/></l><r>ha<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
     <e slr="2"><p><l>leat<s n="V"/><s n="IV"/></l><r>måtte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+    <e slr="3"><p><l>leat<s n="V"/><s n="IV"/></l><r>ville<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>fertet<s n="V"/><s n="IV"/></l><r>måtte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) fertejit-->
     <e><p><l>galgat<s n="V"/><s n="IV"/></l><r>skulle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
     <e><p><l>áigut<s n="V"/><s n="TV"/></l><r>skulle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!-- líka 'ville' -->

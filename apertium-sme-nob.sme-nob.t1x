@@ -354,6 +354,8 @@ TODO:
     <def-attr n="modality">
       <attr-item tags="Ind"/>
       <attr-item tags="Cond"/>
+      <attr-item tags="Cond2"/>
+      <attr-item tags="Cond3"/>
       <attr-item tags="Pot"/>
     </def-attr>
     <def-attr n="mode">
@@ -1033,10 +1035,23 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?)"><when>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
       </when></choose>
       
-      <choose c="Prepend 'kunne' if conditional:"><when>
-        <test>
+      <choose c="Prepend 'kunne/skulle/skal' if conditional:"><when>
+        <test><or>
           <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond"/></equal>
-        </test>
+          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond2"/></equal>
+          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond3"/></equal>
+        </or></test>
+        <let><var n="tmp"/><lit v="kunne"/></let>
+        <choose><when>
+          <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond2"/></equal></test>
+          <let><var n="tmp"/><lit v="skulle"/></let>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+        </when></choose>
+        <choose><when>
+          <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond3"/></equal></test>
+          <let><var n="tmp"/><lit v="skulle"/></let>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pres"/></let>
+        </when></choose>
         <out>
           <chunk name="verb" case="caseFirstWord">
             <tags>
@@ -1050,7 +1065,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?)"><when>
               <tag><clip pos="1" side="tl" part="animacy"/></tag>
             </tags>
             <lu>
-              <lit v="kunne"/>
+              <var n="tmp"/>
               <lit-tag v="vblex"/>
               <clip pos="1" side="tl" part="temps"/>
             </lu>

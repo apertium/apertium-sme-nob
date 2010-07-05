@@ -25,6 +25,7 @@ LIST PronPersIll = (Pron Pers Ill) ;
 LIST CURRENCY = "denara" "dollár" "euro" "kruvdnu" "kr" "ru" "rubel" "ruvdno" "ruvdnu" "¢" "€" "$";
 LIST Cond = (Cond) ;
 LIST Inf = (Inf) ;
+LIST PrfPrc = (PrfPrc) ;
 LIST IndPrt = (Ind Prt) ;
 
 LIST PERSON = Mal Fem Sur Pers ;
@@ -41,14 +42,18 @@ SECTION
 # Verb rules
 # ----------
 
-# leat 0 = være, 1 = ha, 2 = måtte («ha å»)
+# leat 0 = være, 1 = ha, 2 = måtte («ha å»), 3 = ville
+SUBSTITUTE ("leat" V IV Cond Prs) ("leat:3" V IV Ind Prt) ("leat" V IV) (*1 PrfPrc OR Inf) ;
+# Livččen ovdal boahtán, muhto ... => Jeg ville kommet tidligere, men ...
+# (kondisjonalis preteritum -- would it be better to do it as a "Cond4"?)
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg) (-2 @HAB) ;
 SUBSTITUTE ("leat:1") ("leat:2") ("leat:1" V IV) (1 Inf) ;
 # mis lea cahkkehit dola
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) (NOT 1 ActioEss) ;
-SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 IndPrt) (1 Inf) ; # Perf Cond 2 
+SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 IndPrt) (1 Inf) ;
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
+# (Perf Cond 2)
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon 
 # (unfortunately no animacy, and impers isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
@@ -153,6 +158,14 @@ SUBSTITUTE (Pron Indef) (A Attr) ("iešguhtet" Pron Indef);
 
 # Rules that are not word-specific
 # --------------------------------
+
+# Cond = kunne, Cond2 = skulle, Cond3 = skal
+SUBSTITUTE (Cond) (Cond2) (Cond) (*-1 ("vaikko") OR ("vare")) ;
+# Vaikko suhtašitge => Selv om du skulle bli sint 
+SUBSTITUTE (Cond) (Cond2) (Cond) (*-1 ("jos") LINK 1 ("vel")) ;
+# Jos vel boađášitge => Hvis enn du skulle komme
+SUBSTITUTE (Cond) (Cond3) (Cond) (*-1 ("vai")) ;
+# Dan mun dutnje muitalan, vai oahpašit => Den forteller jeg til deg for at du skal lære
 
 SUBSTITUTE (N Ess) (N Ess V) (N Ess @←SPRED) (-1 PronPersIll) ;
 # In certain contexts, N.Ess might be translated with a verb
