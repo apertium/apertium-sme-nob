@@ -5,7 +5,7 @@ Interactions of Northern Sámi verbs with prepositions of adjuncts/arguments in 
 Summary of possible translations from sme case to nob preposition:
 ============================================================
 
-Illative => til, på, NIL
+Illative => til, på, NIL, med
 
 Locative => på, i, fra, til, med, NIL
 
@@ -17,66 +17,71 @@ Examples:
 ============================================================
 Loc => på:
   Tine Chris Mathisen lea beassan leat mielde boazobargguin
-  Tine Chris Mathisen har fått være med på reinarbeidene
+  - Tine Chris Mathisen har fått være med på (i) reinarbeidet (arbeidet med rein). 
+  + Tine Chris Mathisen har fått være med på reinarbeidene.
 
   Go gullen sámegiela dien mátkkis
-  Når jeg hørte samisken på denne reisen
+  - Da jeg hørte samisk på denne reisen   (go + prt = da)
+  + Når jeg hørte samisk på denne reisen
 
 Loc => NIL (or 'i'?):
-  Sus leat golbma barggu, bivttasbuvddas ...
-- Hun har tre jobber, klesbuttikken ...
-+ Hun har tre arbeid, ?av klesbuttikken ...
 
 
 Loc => i:
+
   kánske mun galggan hállat dán kanálas 
-- kanskje skal jeg bare snakke   i  denne kanalen
-+ kanskje skal jeg snakke bare  ?på denne kanalen
+- kanskje skal jeg snakke i denne kanalen
++ kanskje skal jeg snakke på denne kanalen
+  
+  Sus leat golbma barggu, bivttasbuvddas ...
+- Hun/han har tre jobber, i klesbutikken ...
++ #Han har tre arbeid, på #klesbutikken...
 
   Álggus Ipmil sivdnidii almmi ja eatnama.
-+ I begynnelsen skapte skapte #Ipmil himmelen og jorden.
-- ?På begynnelsen skapte skapte #Ipmil himmelen og jorden.
++ I begynnelsen skapte skapte Gud himmelen og jorden.
+- På begynnelsen skapte skapte #Ipmil himmelen og jorden.
 
 Loc => med:
   Jos válddát 60 poeaŋgga sámegielas,
-- Hvis du tar 60 poeng med samisk,
-+ Hvis du tar 60 poeng ?på samisken,
+- Hvis du tar 60 poeng i samisk,
++ Hvis du tar 60 poeng på samisk,
 
 
 Ill => NIL:
   de sáhttá dat addit dutnje 60 000 ruvnnu
 - så kan det gi deg 60 000 kroner
-+ så kan det gi ?til deg 60 000 kroner
+- så kan det gi 60 000 kroner til deg (not so idiomatic, but an easier one?)
++ så kan det gi til deg 60 000 kroner
 
 
 Ill => på:
   kánske mun galggan hállat dušše sámegillii 
-- kanskje skal jeg bare snakke  på  samisk   
-+ kanskje skal jeg snakke bare ?til samisken 
+- kanskje jeg skal snakke bare på samisk   
++ kanskje skal jeg snakke bare til samisk 
 
   mun dadjen dan sámegillii
 - jeg sa det på samisk
-- jeg sa det ?til samisk
++ jeg sa det til samisk
 
 Ess => til:
-   Moraš šattai illun.
+  Moraš šattai illun.
 - Sorg ble til glede.
-+ Sorgen ble ?som glede.
++ Sorgen ble som glede.
 
 Ess => for/NIL:
   Son gohčoduvvui Mihkkalažžan. 
 - Han ble kalt (for) Mihkkalaš.
-+ Det ble kalt ?som @Mihkkalaš.
++ Det ble kalt som #Mihkkalaš.
 
-Ess => NIL:
+Ess => som:
   Son lea taksivuoddjin Oslos. 
-- Han er     taxikjører i Oslo
-+ Han er ?som taxikjører i Oslo
+- Han arbeider som taxisjåfør i Oslo
++ Han er taxikjører i Oslo
 
 
-Speech verbs (hallat, hupmat, etc.)
+Speech verbs (hállat, hupmat, etc.)
 ============================================================ 
-speech verbs + illativ
+speech verbs (cg: VERBAL-ACTIVITY) + illativ
  Person: til en person
  språk: på et språk
 
@@ -85,23 +90,33 @@ speech verbs + Gen + birra => om:
   Mun hálan dálkki birra
   Jeg snakker om været
 
-Acc => om???
+Acc => om
   hállat eará áššiid
-- snakke ???om??? andre saker
-+ snakke andre sakene
+- snakke om andre saker
++ snakke de andre sakene
 
 
-Reaksjonsverb
+Reksjonsverb
 ============================================================  
 liikot + illativ => NIL:
   Mun liikon dutnje.
-  Jeg liker deg.
+  - Jeg liker deg.
+  + Jeg liker til deg.
 
-suhttat + illativ => på:
+suhttat/luohttit/jáhkkit + illativ => på:
   Mun suhtan dutnje.
-  Jeg blir sint på deg.
+- Jeg blir sint på deg.
++ Jeg blir sint til deg.
 
+  Mun luohtán dutnje.
+- Jeg stoler på deg.
++ Jeg #stole til deg.
 
+duhtat + illativ => med:
+  Mun duđan dasa.
+- Jeg er fornøyd med det.
+- Jeg #være til det.
+  
 
 Movement verbs
 ============================================================  
@@ -110,12 +125,11 @@ movement verbs + lok
     - vuolgit + MEARRI (ill) - til
 
   Mun vuolggán Norggas
-- Jeg drar fra Norge
-+ Jeg drar ?i Norge
+- Jeg drar fra Norge.
++ Jeg drar i Norge.
 
-Some movement verbs demand a place (vs. source), then the lok-argument
-is not «fra» but «på/i» (as for "hállat + dán kanálas"). We need to
-distinguish
+Some movement verbs (not "vuolgit" and "mannat") demand a place (vs. source), then the lok-argument is not «fra» but «på/i» (as for "hállat + dán kanálas"). We need to
+distinguish.   
 
 semantisk rolle:
 PLACE - translates to i/på
@@ -127,9 +141,10 @@ leat + PLACE
 + Han er ?i Island.
 
   Mun lean gávppis.
-  Jeg er i butikken.
+- Jeg er i butikken.
++ Jeg er på handelen.
 
-leat+ SOURCE (lokativ + eret)
+leat + SOURCE (lokativ + eret)
   Son lea Islandas eret.
   Han/hun er fra Island.
 
@@ -139,15 +154,15 @@ Fixed expressions:
 ============================================================
 
 X.Gen oktavuođas.Loc => i forbindelse med X:
-  Ihttin son lea modealla ja čájeha bivttasmálle Kárášjogas beassážiid oktavuođas
-- I morgen er hun modell og viser klesmønsteret i Karasjok (i forbindelse med påsken?)
-+ I morgen er han *modealla og viser #klesmønstret i Karasjok av påskenes forbindelse
+  Ihttin son lea modealla ja čájeha bivttasmálle Kárášjogas beassážiid oktavuođas (beassážat is a Pl.noun)
+- I morgen er han modell og viser klesmote i Karasjok i forbindelse med påsken
++ I morgen er han *modealla og viser #klesmønstret i Karasjok i påskenes forbindelse
 
 
 X.Gen mielas.Loc => i/etter X.Gen mening/oppfatning / X syns:
-  su mielas leat bohccot fávrus eallit
-- i hennes oppfatning er reiner vakre vesen
-+ ?på hennes oppfatning er reiner #vakker person leve
+  su mielas leat bohccot fávrros eallit
+- etter hans oppfatning er rein vakre dyr
++ i hans oppfatning er reiner @fávru leve
 
 (are there more Locatives which should get 'i' based on lemma? in that
 case we could just use a def-list loc-i in t1x -- or we could use 'i'
@@ -157,8 +172,8 @@ as default for Loc, it might be better to just keep a lemma-list of
 
 dasa.Ill lassin.Ess => i tillegg (til det):
   ja dasa lassin bargá golmma barggus
-- og i tillegg (til det?) har hun tre jobber (???)
-+ og ?til det ?som tillegg hun gjør ?på tre arbeidene
+- og dessuten arbeider hun i tre jobber
++ og til det som tillegg gjør han på tre arbeidenes
 
 
 
@@ -166,25 +181,25 @@ TODO: categorise these, make the references more literal, check for CG errors, f
 ============================================================
   Dán báhkis šaddá čáppa gohppu. 
 - Av denne rirkula blir det en fin kopp.
-+ på Denne rirkulen blir han en pen kopp.
++ På denne rirkulen blir han en pen kopp.
 
   Jávregáttis leat guokte olbmo. 
-- Ved elvebredden er det to mennesker.
-+ på Innsjøstranden være to mennesker.
+- Ved innsjøen (På innsjøbredden) er det to mennesker.
++ På innsjøstranden være to mennesker.
 
   Bártniide lei juohkán stuoribuš osiid go nieiddaide. 
-- Guttene hadde han tildelt noe større porsjoner enn jentene.
-+ til Guttene hadde det delt større deler når til jentene.
+- Til guttene hadde han tildelt noe større porsjoner enn til jentene.
++ Til guttene hadde han delt større deler når til jentene.
 
   Mun lean morrašis. 
-- Jeg er trist.
+- Jeg er i sorg.
 + Jeg er på sorgen.
 
   Bárdni leai rikkis sogas. 
 - Gutten var av en rik slekt.
 + Gutten var på den rike slekten.
 
-  Niibi lea stális. 
+  Niibi lea stális.   (stális @<SPRED)
 - Kniven er av stål.
 + Kniven er på stålet.
 
@@ -193,39 +208,38 @@ TODO: categorise these, make the references more literal, check for CG errors, f
 + Bestefar er på hjemmet.
 
   Čoahkkin lea eahkedis.  
-- Møtet er om kvelden.
-+ Møtet er på kvelden.
+  Møtet er på kvelden.
 
-  Dain lea fáktemuš juohke balvva. 
-- De må passe på enhver sky.
-+ @Dat har #passe til hver sky.
+  Dain lea fáktemuš juohke balvva. (very infrequent construction)
+- De må passe på enhver sky.  
++ De har #passe til hver sky.
 
   Lea váttis dadjat man ollu davvisápmelaččat leat geat eai huma sámegiela.
-- Det er vanskelig å gi et tall for hvor mange nordsamer som ikke snakker samisk.
-+ Det er vanskelig å si som de mange nordsamene være som snakker ikke samisken.
+- Det er vanskelig å si hvor mange nordsamer det er som ikke snakker samisk.
++ Det er vanskelig å si som de #mange @davvi samer være som snakker ikke samisk.
 
   Sátneriggodat ja giellamáhttu unnu, erenoamážit nuorat gearddis. 
-- Ordforråd og språkkunnskaper blir stadig mindre, spesielt hos den yngre generasjon.
-+ Ordrikdom  og  språkkvalifikasjon minsker, spesielt ungt på gangen.
+- Ordforråd og språkkunnskap minsker, spesielt hos den yngre generasjon.
++ Ordrikdom og språkkvalifikasjon minsker, spesielt ungt på gangen.
 
   Guovlluin gos sámegiella lea nanus leat ollugat geat eai leat diđolaččat gielaset ektui. 
-- I områder hvor samisk står sterkt er mange ikke bevisste i sin språkbruk.
-+ på Traktene hvor er samisken solid være @ollugat som er ikke en @diehtu  mot språket.
+- I områder hvor samisk står sterkt er det mange som ikke bevisste på sin egen språkbruk.
++ På traktene hvor er samisk solid være @ollugat som er ikke en @diehtu mot språket.
 
   su ustitvuohta presideanttabárain attii sutnje váikkuhanfámu.
-- hennes vennskap med presidentparet bidro til å gi henne gjennomslag.
-+ hans vennskap på presidentbarrene gav han til ham #virkemakten.
+- hans vennskap med presidentparet ga han påvirkningskraft.
++ hans vennskap på presidentparene gav han til ham å virke makten.
 
   Lei miessemánu álgu.
 - Det var i begynnelsen av mai.
-+ Det var maiens begynnelse. 
++ Det var mais begynnelse. 
 
   Dát lohku lea sturron jagis jahkái; gč. tabealla:
-- Dette tallet har økt fra år til år, se tabell:
-+ Dette tallet har blitt stort på året til året; @gč tabellens:
+- Dette tallet har økt fra år til år, se tabellen:
++ Dette tallet har blitt stort på året til året; @gč tabellen:
 
 Loc, i vs. ut av:
   eanas stuoradiggeáirasat besse Oslos báhtarussii ovdalgo duiskalaččat bohte gávpogii
-- de fleste av stortingsrepresentantene kom seg ut av Oslo før tyskerne rykket inn i byen.
-+ de fleste #stor #representant fikk i Oslo *báhtarussii @ovdalgo *duiskalaččat kom til byen
+- de fleste stortingsrepresentantene fikk rømt ut av (fra) Oslo før tyskerne kom til byen.
++ #de fleste store ting representanter de fikk i Oslo *báhtarussii før *duiskalaččat kom til byen
 
