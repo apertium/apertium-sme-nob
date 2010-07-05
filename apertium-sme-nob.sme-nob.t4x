@@ -336,6 +336,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <test><and>
           <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
           <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
+          <not><equal><clip pos="2" part="gen"/><lit v="GD_pers"/></equal></not>
         </and></test>
         <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
       </when></choose>
@@ -345,13 +346,20 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <let><clip pos="1" part="gen"/><lit-tag v="nt"/></let>
         </when>
         <when>
+          <test><equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal></test>
+          <let><clip pos="1" part="gen"/><lit-tag v="mf"/></let>
+        </when>
+        <when>
           <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
           <let><clip pos="1" part="grau"/><concat><clip pos="1" part="grau"/><lit-tag v="nt"/></concat></let>
         </when>
       </choose>
       <choose><when>
-        <test><equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal></test>
-        <let><clip pos="2" part="gen"/><lit-tag v="nt"/></let>
+        <test><or>
+          <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
+          <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
+        </or></test>
+        <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
       </when></choose>
       
       <choose><when>
@@ -459,6 +467,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
           <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
           <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
+          <not><equal><clip pos="2" part="gen"/><lit v="GD_pers"/></equal></not>
         </and></test>
         <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
         <!-- TODO: use prpers so we don't need these hacks (but that needs changes in nob.dix) -->
@@ -472,7 +481,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </when></choose>
       </when></choose>
       <choose><when>
-        <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
+        <test><or>
+          <equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal>
+          <equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal>
+        </or></test>
         <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
       </when></choose>
     </def-macro>
@@ -512,11 +524,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
           <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
           <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
+          <not><equal><clip pos="2" part="gen"/><lit v="GD_pers"/></equal></not>
         </and></test>
         <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
       </when></choose>
       <choose><when>
-        <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
+        <test><or>
+          <equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal>
+          <equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal>
+        </or></test>
         <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
         <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
       </when></choose>
