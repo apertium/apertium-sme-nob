@@ -135,6 +135,7 @@ SUBSTITUTE ("cegget") ("cegget:1") ;
 # Rules that change PoS (like slr entries, the targets must exist in bidix!)
 # --------------------------------------------------------------------------
 SUBSTITUTE ("ruoktu" N Sg Loc) ("ruovttus" Adv) ("ruoktu" N Sg Loc);
+# Áddjá lea ruovttus => Bestefar er hjemme
 
 
 # Rules that are not word-specific
