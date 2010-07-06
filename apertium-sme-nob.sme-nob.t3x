@@ -1091,8 +1091,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     <!-- <rules: pro-drop insertion for all finite verbs -->
     <!-- <rules: (PR)SPEC* FV: -->
     <rule comment="REGLA: SPEC FV
+                   -----
                    V2-rule with pro-drop insertion
-                   Doppe dihten => Der borte visste jeg">
+                   Doppe dihten => Der borte visste jeg
+                   
+                   Note: This rule is partly blocked by the 'maybe-LSUBJ FV' rule above.">
       <pattern>
         <pattern-item n="SPEC"/>
         <pattern-item n="FV"/>

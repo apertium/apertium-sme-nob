@@ -49,9 +49,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <def-cat n="adj_verb">
       <cat-item name="adj_verb"/>
     </def-cat>
-    <def-cat n="prop">
-      <cat-item name="prop"/>
-    </def-cat>
     <def-cat n="pron">
       <cat-item name="pron"/>
     </def-cat>
@@ -687,17 +684,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
     
-    <rule comment="CHUNK: prop">
-      <pattern>
-        <pattern-item n="prop"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_case_defnes"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <out>
-          <lu><clip pos="1" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
     <rule comment="CHUNK: nom
                    Maybe insert a determiner">
       <pattern>
