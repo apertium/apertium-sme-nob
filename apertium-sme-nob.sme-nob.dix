@@ -80,7 +80,8 @@
     <sdef n="n"       c="Noun"/>
     <sdef n="np"      c="Proper noun"/>
     <sdef n="Prop"    c="Proper noun"/>
-    <sdef n="ABBR"    c="Abbreviation"/>
+    <sdef n="ABBR"    c="Abbreviation/acronym"/>
+    <sdef n="acr"     c="Abbreviation/acronym"/>
 
     <sdef n="Org"     c="Organisation"/>
     <sdef n="Plc"     c="Toponym"/>
@@ -365,6 +366,13 @@
       <e><p><l></l><r></r></p></e>
     </pardef>
     
+    <pardef n=".?acr__n" c="Optional dot, add unc tag since we don't want abbreviations to go definite">
+      <e>   <re>.?</re><p><l><s n="N"/><s n="ABBR"/></l><r><s n="n"/><s n="acr"/></r></p><par n="unc__n"/></e>
+    </pardef>
+    <pardef n="acr__n" c="No change in dottedness, add unc tag since we don't want abbreviations to go definite">
+      <e>              <p><l><s n="N"/><s n="ABBR"/></l><r><s n="n"/><s n="acr"/></r></p><par n="unc__n"/></e>
+    </pardef>
+    
     <pardef n="__adj">
       <!-- TODO: adj.ord, adj.pp, adj.pprs (all of which need GD and ND) -->
       <e><p><l><s n="Attr"/></l>          <r><s n="posi"/><s n="GD"/><s n="ND"/></r></p></e>
@@ -608,6 +616,7 @@
       <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r></r></p><par n="__n"/></e>
     </pardef>
   </pardefs>
+  
   <section id="main" type="standard">
     <!-- Compound parts -->
     <e><p><l>vuođđo<s n="Cmp"/></l><r>grunn<s n="adj"/><s n="posi"/><s n="mf"/><s n="sg"/><s n="ind"/></r></p></e> 
@@ -642,6 +651,7 @@
     <e><p><l>ahte<s n="CS"/></l><r>at<s n="cnjsub"/></r></p></e>
     <e><p><l>nugo<s n="CS"/></l><r>som<s n="cnjsub"/></r></p></e>
     <e><p><l>mo<s n="CS"/></l><r>hvordan<s n="cnjsub"/></r></p></e> <!-- TODO: Check -->
+    <e><p><l>nu<b/>ahte<s n="CS"/></l><r>slik<b/>at<s n="cnjsub"/></r></p></e> <!-- TODO: Check -->
     <e><p><l>vai<s n="CS"/></l><r>for<b/>at<s n="cnjsub"/></r></p></e>
     <e slr="1"><p><l>vai<s n="CS"/></l><r>for<b/>å<s n="cnjsub"/></r></p></e>
     <e><p><l>vaikko<s n="CS"/></l><r>selv<b/>om<s n="cnjsub"/></r></p></e>
@@ -882,7 +892,47 @@
     <e><re>[½¹²³¼¾]</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p></e>
 
     <!-- Nouns -->
-    <e><re>[a-zA-ZæøåášŧŋđžčÆØÅÁŠŦŊĐŽČ]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
+<e><re>[a-zA-ZæøåášŧŋđžčÆØÅÁŠŦŊĐŽČ]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
+<e><re>[a-zA-ZæøåášŧŋđžčÆØÅÁŠŦŊĐŽČ]</re><p><l><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
+<!-- N, optional dot -->
+<e><p><l>1p</l><r>1p</r></p><par n=".?acr__n"/></e>
+<e><p><l>2p</l><r>2p</r></p><par n=".?acr__n"/></e>
+<e><p><l>3p</l><r>3p</r></p><par n=".?acr__n"/></e>
+<e><p><l>abess</l><r>abess</r></p><par n=".?acr__n"/></e>
+<e><p><l>abl</l><r>abl</r></p><par n=".?acr__n"/></e>
+<e><p><l>adess</l><r>adess</r></p><par n=".?acr__n"/></e>
+<e><p><l>adj</l><r>adj</r></p><par n=".?acr__n"/></e>
+<e><p><l>adv</l><r>adv</r></p><par n=".?acr__n"/></e>
+<e><p><l>advl</l><r>advl</r></p><par n=".?acr__n"/></e>
+<e><p><l>akk</l><r>akk</r></p><par n=".?acr__n"/></e>
+<e><p><l>akk/gen</l><r>akk/gen</r></p><par n=".?acr__n"/></e>
+<e><p><l>all</l><r>all</r></p><par n=".?acr__n"/></e>
+<e><p><l>att</l><r>att</r></p><par n=".?acr__n"/></e>
+<e><p><l>attr</l><r>attr</r></p><par n=".?acr__n"/></e>
+<e><p><l>ess</l><r>ess</r></p><par n=".?acr__n"/></e>
+<e><p><l>gen</l><r>gen</r></p><par n=".?acr__n"/></e>
+<e><p><l>ill</l><r>ill</r></p><par n=".?acr__n"/></e>
+<e><p><l>imp</l><r>imp</r></p><par n=".?acr__n"/></e>
+<e><p><l>imprt</l><r>imprt</r></p><par n=".?acr__n"/></e>
+<e><p><l>ind</l><r>ind</r></p><par n=".?acr__n"/></e>
+<e><p><l>komp</l><r>komp</r></p><par n=".?acr__n"/></e>
+<e><p><l>kond</l><r>kond</r></p><par n=".?acr__n"/></e>
+<e><p><l>konj</l><r>konj</r></p><par n=".?acr__n"/></e>
+<e><p><l>kr</l><r>kr</r></p><par n=".?acr__n"/></e>
+<e c="Musikk i Finnmark"><p><l>Muf</l><r>Muf</r></p><par n=".?acr__n"/></e>
+<e c="fleirtal? TODO check"><p><l>ml</l><r>fl</r></p><par n=".?acr__n"/></e>
+<e><p><l>nom</l><r>nom</r></p><par n=".?acr__n"/></e>
+<e c="månad"><p><l>njukč</l><r>mar</r></p><par n=".?acr__n"/></e>
+<e><p><l>obj</l><r>obj</r></p><par n=".?acr__n"/></e>
+<e c="datamaskin"><p><l>pc</l><r>pc</r></p><par n=".?acr__n"/></e>
+<e><p><l>pres</l><r>pres</r></p><par n=".?acr__n"/></e>
+<e><p><l>pret</l><r>pret</r></p><par n=".?acr__n"/></e>
+<e><p><l>prt</l><r>prt</r></p><par n=".?acr__n"/></e>
+<e><p><l>sek</l><r>sek</r></p><par n=".?acr__n"/></e>
+<e><p><l>sign</l><r>sign</r></p><par n=".?acr__n"/></e>
+<e c="månad"><p><l>skábm</l><r>nov</r></p><par n=".?acr__n"/></e>
+<e><p><l>subj</l><r>subj</r></p><par n=".?acr__n"/></e>
+<e><p><l>subst</l><r>subst</r></p><par n=".?acr__n"/></e>
     <!-- Family terms may be indefinite in more contexts, todo: some tag? (other than 'uncountable'..) transfer def-list? -->
     <e><p><l>eadni<s n="N"/></l><r>mor<s n="n"/><s n="f"/></r></p><par n="unc__n"/></e>
     <e><p><l>áhčči<s n="N"/></l><r>far<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
@@ -1013,6 +1063,7 @@
     <e><p><l>bárdni<s n="N"/></l><r>gutt<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
     <e><p><l>bargodepartemeanta<s n="N"/></l><r>arbeidsdepartement<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>bargonávccahisvuohta<s n="N"/></l><r>arbeidsuførhet<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+    <e><p><l>bargobiraslávdegoddi<s n="N"/></l><r>arbeidsmiljøutvalg<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e><p><l>bargu<s n="N"/></l><r>arbeid<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e c="might be a typo (párra), but seems very common!"><p><l>bárra<s n="N"/></l><r>par<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
     <e slr="1"><p><l>bárra<s n="N"/></l><r>barre<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
@@ -2787,6 +2838,7 @@
     <e><p><l>Norga<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Norge<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Davvi-Norga<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Nordnorge<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Lulli-Norga<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Sørnorge<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
+    <e c="korrekt term? TODO"><p><l>Lulli-Sápmi<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Sørsápmi<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>USA<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>USA<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e><p><l>Kárášjoga<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Karasjok<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
     <e r="LR"><p><l>Kárášjohka<s n="N"/><s n="Prop"/><s n="Plc"/></l><r>Karasjok<s n="np"/><s n="top"/></r></p><par n="__np"/></e>
@@ -21611,6 +21663,8 @@
     <e><p><l>dáppe<s n="Adv"/></l><r>her<s n="adv"/></r></p></e>
     <e><p><l>dás<s n="Adv"/></l><r>her<s n="adv"/></r></p></e>
     <e><p><l>dassá<s n="Adv"/></l><r>til<s n="adv"/></r></p></e>
+    <e r="LR"><p><l>dasalassin<s n="Adv"/></l><r>i<b/>tillegg<s n="adv"/></r></p></e>
+    <e><p><l>dasa<b/>lassin<s n="Adv"/></l><r>i<b/>tillegg<s n="adv"/></r></p></e>
     <e><p><l>dassái<s n="Adv"/></l><r>siden<s n="adv"/></r></p></e>
     <e><p><l>dasto<s n="Adv"/></l><r>deretter<s n="adv"/></r></p></e><!-- todo WSD så -->
     <e><p><l>datte<s n="Adv"/></l><r>likevel<s n="adv"/></r></p></e>
@@ -21718,6 +21772,10 @@
     <e><p><l>jorgut<s n="Adv"/></l><r>vrengt<s n="adv"/></r></p></e>
     <e><p><l>juo<s n="Adv"/></l><r>allerede<s n="adv"/></r></p></e>
     <e><p><l>jna<s n="Adv"/><s n="ABBR"/></l><r>osv<s n="adv"/></r></p></e>
+    <e r="LR"><p><l>jna.<s n="Adv"/><s n="ABBR"/></l><r>osv<s n="adv"/></r></p></e>
+    <e c="TODO check" r="LR"><p><l>jnv<s n="Adv"/><s n="ABBR"/></l><r>osv<s n="adv"/></r></p></e>
+    <e c="TODO check" r="LR"><p><l>jnv.<s n="Adv"/><s n="ABBR"/></l><r>osv<s n="adv"/></r></p></e>
+    <e><p><l>ja<b/>nu<b/>ain<s n="Adv"/></l><r>og<b/>så<b/>videre<s n="adv"/></r></p></e>
     <e><p><l>kánske<s n="Adv"/></l><r>kanskje<s n="adv"/></r></p></e>
     <e><p><l>lahka<s n="Adv"/></l><r>nær<s n="adv"/></r></p></e>
     <e><p><l>lahkalagaid<s n="Adv"/></l><r>nær<b/>hverandre<s n="adv"/></r></p></e>
