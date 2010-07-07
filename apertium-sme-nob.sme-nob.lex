@@ -97,6 +97,9 @@ SUBSTITUTE ("oktavuohta") ("oktavuohta:2") ("oktavuohta" N Sg Loc) ;
 SUBSTITUTE ("oktavuohta") ("oktavuohta:3") ("oktavuohta" N Pl Loc) ;
 # máŋgga oktavuođain => i mange sammenhenger
 
+SUBSTITUTE ("olmmoš") ("olmmoš:1") ("olmmoš" N Pl) ;
+# olbmot leat čoagganan => folk har samlet seg
+
 
 # Other parts of speech
 # ---------------------
