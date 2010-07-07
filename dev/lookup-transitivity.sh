@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### Usage: cat dev/inc-sme-nob-dic-verb.txt | dev/lookup-transitivity.sh
-### Note: If the <l> (sme lemma) has <b/> or other tags in it, this will fail
+### Note: If the <l> (sme lemma) has <b/> or other tags in it, this will ignore anything after the first <
 
 if [ ! -e $GTHOME  ]; then
 	echo "Please set the \$GTHOME environment variable";
@@ -9,7 +9,7 @@ if [ ! -e $GTHOME  ]; then
 fi
 FST=$GTHOME/trunk/gt/sme/bin/sme.hfst.ol
 
-sed 's/.*<l>//'| sed 's%</l>\(.*\)$%[\1]%' |\
+sed 's/.*<l>//'| sed 's%<.*</l>%</l>%' | sed 's%</l>\(.*\)$%[\1]%' |\
 hfst-proc $FST |\
 while read line; do
     lemma=$(echo $line | sed 's%\^\([^/]*\).*%\1%')
