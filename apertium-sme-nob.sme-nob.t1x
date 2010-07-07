@@ -432,31 +432,36 @@ TODO:
       <list-item v="&lt;PrfPrc&gt;"/>
       <list-item v="&lt;pp&gt;"/>
     </def-list>
-    <def-list n="nt-verbs">
-      <!-- These are not currently in use. -->
-      <!-- They're all tagged "impers" in sme-nob, trying that instead for now. -->
-      <!-- todo: "det" instead of "han" for pro-drop insertion with these verbs -->
-      <!-- Odne arvá. -->
-      <list-item v="arvit"/>
-      <list-item v="borgat"/>
-      <list-item v="bieggat"/>
-      <list-item v="bivaldit"/>
-      <list-item v="boŋkit"/>
-      <list-item v="bulžut"/>
-      <list-item v="bávkit"/>
-      <list-item v="bávkkihit"/>
-      <list-item v="firtet"/>
-      <list-item v="galbmit"/>
-      <list-item v="joavgat"/>
-      <list-item v="muohttit"/>
-      <list-item v="sevnnjodit"/>
-      <list-item v="veiggodit"/>
-      <list-item v="álddagastit"/>
-      <list-item v="čuorpmastit"/>
-      <list-item v="čuvggodit"/>
-      <list-item v="šlahttit"/>
+    
+    <def-list n="loc-NIL-verbs" c="TODO: add tag to verb chunk with these verbs, use that tag in t3x to remove caseprep.PR.loc chunk
+                                   TODO: use nob/tl verb instead?">
+      <list-item v="oahpahit"/>
+      <list-item v="guoskat"/>
+      <list-item v="joavdat"/>
+      <list-item v="deaivat"/>
+      <list-item v="riŋget"/>
+      <list-item v="čuojahit"/>
+      <list-item v="liikot"/>
     </def-list>
-    <def-list n="loc-i" c="Locatives default to 'på' unless in this list (or are np.top)">
+    <def-list n="ill-NIL-verbs" c="See 'loc-NIL-verbs' above.
+                                   (Note: recipient is moved behind theme in t2x (gi til meg gave => gi gave til meg),
+                                    and thus won't be affected by the planned t3x caseprep-removal,
+                                    maybe we don't need to do any caseprep-removal for illatives?)">
+      <list-item v="addit"/>
+      <list-item v="attestit"/>
+      <list-item v="oastit"/>
+      <list-item v="sáddet"/>
+      <list-item v="muitalit"/>
+      <list-item v="vuovdit"/>
+      <list-item v="čájehit"/>
+    </def-list>
+    <def-list n="ill-av-verbs" c="See 'loc-NIL-verbs' above.
+                                  TODO: Should contain lexicalised Der_halla verbs (with illative agents)
+                                  TODO: also all Der_halla verbs have illative agents, thus should have 'av'">
+      <list-item v="TODO"/>
+    </def-list>
+    
+    <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
       <list-item v="begynnelse"/>
       <list-item v="oppfatning"/>
       <list-item v="sammenheng"/>
@@ -507,6 +512,18 @@ TODO:
       <list-item v="øy"/>
       <list-item v="topp"/>
       <list-item v="kjøkken"/>
+    </def-list>
+    <def-list n="ill-i" c="Illative noun phrases default to 'til' unless in this list">
+      <list-item v="del"/>
+    </def-list>
+    <def-list n="ill-på" c="Illative noun phrases default to 'til' unless in this list">
+      <list-item v="ferie"/>
+      <list-item v="golv"/>
+      <list-item v="samisk"/>
+      <list-item v="norsk"/>
+      <list-item v="nynorsk"/>
+      <list-item v="bokmål"/>
+      <list-item v="engelsk"/>
     </def-list>
   </section-def-lists>
 
@@ -576,6 +593,18 @@ TODO:
           <let>
             <var n="case-prep"/><lit v="til"/>
           </let>
+          <choose><when>
+            <test><in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in></test>
+            <let>
+              <var n="case-prep"/><lit v="på"/>
+            </let>
+          </when></choose>
+          <choose><when>
+            <test><in><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in></test>
+            <let>
+              <var n="case-prep"/><lit v="i"/>
+            </let>
+          </when></choose>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal></test>
