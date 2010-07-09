@@ -44,6 +44,19 @@ SECTION
 # Verb rules
 # ----------
 
+# beassat 0 = få, 1 = slippe, 2 = komme Refl til
+	## Sii leat beassan eallit dego gonagasat.
+
+SUBSTITUTE ("beassat") ("beassat:1") ("beassat" V) (1 (Der/n Loc) OR (Actor Loc)) ;
+	## Mun bessen vuolgimis.
+SUBSTITUTE ("beassat") ("beassat:2") ("beassat" V) (1 Ill) ;
+	## In beassan skuvlii dan beaivve.  Jeg kom meg ikke på skolen den dagen.
+	## Maiddái Ranghild Nystad beassá Sámediggái. Også RN kommer seg inn på Sametinget.
+	## Sii ledje gáibidan ahte son galgá beassat riikastivrii. Du hadde krevd at han skulle komme seg inn i landsstyret.
+	## Mun nu illudan beassat duoddarii. Jeg gleder meg så til å komme meg på vidda.
+	## Nuoraidklubba nuorat besset dál Internehttii. Ungdomssklubbens ungdommer kommer seg nå på Internett.
+
+
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg) (-2 @HAB) ;
