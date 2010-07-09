@@ -7,7 +7,7 @@ Summary of possible translations from sme case to nob preposition:
 
 Illative => til (default), (inn) i, på, NIL, med, for, av, over
 
-Locative => på/i (default), fra, NIL, for, av, om, hos
+Locative => på/i (default), fra, NIL, for, av, om, hos, med, mot
 
 Comitative => med (default), og, NIL
 
@@ -16,7 +16,7 @@ Genetive => 's (default), NIL, Pl, som, om
 
 Accusative => NIL, om(???)
 
-Essive => som, til, for/NIL, …
+Essive => som, til, for/NIL, i
 
 
 Illative
@@ -323,6 +323,26 @@ ruoktu
 - Hans far døde.
 + Han døde far.
 
+vajálduttit + V Der/n N Loc  (=> å)
+vajáldattit + V Der/n N Loc  (=> å)
+beassat + V Der/n N Loc  (=> å)
+heaitit + V Der/n N Loc  (=> å)
+geargat + V Der/n N Loc  (=> å)
+
+  Son heittii borgguheames.
+  Han sluttet å røyke.
+
+  Mun gergen boradeames.
+  Jeg ble ferdig å spise.
+
+  Mun bessen vuolgimis.
+- Jeg slapp å reise. 
++ Jeg fikk å reise.
+
+  Mun vajáldahtten čállimis.
+- Jeg glemte å skrive.
++ Jeg glemte skrivende.
+
 
 Loc => i:
 
@@ -348,12 +368,24 @@ Loc => i:
 
 
 Loc => for:
-ballat + Loc
+ballat
+nohkkot
+váruhit
 
   Balat go beatnagis?
 - Er du redd for hunden?
 + Du frykter da på hunden?
-  
+
+  Mii nohkkuimet sálttis.
+- Vi ble fri for salt.
++ Vi ble presumert på saltet.
+
+  Várut beatnagis.
+- Pass deg for hunden.
++ #Passe på hunden.
+
+
+sihtat + Der/n N Loc  
   Maid Máret siđai goarrumis?	
 - Hva ville Máret ha for syiinga?
 + Hva Máret ønsket syende?
@@ -393,6 +425,21 @@ eret
 
 
 Loc => av:
+dolkat + både N og + V Der/n N Loc (=> av å)  
+váibat + både N og + V Der/n N Loc  (=> av å)
+
+  Dál lean dolkan guolis.
+- Nå er jeg blitt lei av fisk.
++ Nå er jeg blitt leit på fisken.
+
+  Mun dolken bargamis.
+- Jeg ble lei av å arbeide.
++ Jeg ble leit på #arbeide.
+
+  Mun váiben bargamis.
++ Jeg ble trøtt av å arbeide.
++ Jeg ble trøtt på #arbeide.
+
 cg-sett   MATERIAL
 
   Niibi lea stális.
@@ -414,11 +461,29 @@ cg-sett   MATERIAL
 
 
 Loc => om:
+beroštit
+fuollat
 
   Beroštit go mus?	
 - Bryr de seg om meg?  Brydde du deg om meg?  (ambigous)
 + De bryr seg da på meg?
 
+  Fuolatgo mus?
+- Bryr du deg om meg?
++ #Bry du deg på meg?
+
+
+Loc => mot:
+ceavzit
+bihtit
+
+  Mun gal ceavzzán dus goargŋumis.	
+- Jeg klarer jeg vel mot deg i klatring.
++ Jeg klarer vel meg på deg klatrende.
+
+  Don it biđe mus.
+- Du klarer det ikke mot meg.
++ Du klarer ikke på meg.
 
 Loc + leat => har:
 @HAB
@@ -440,10 +505,17 @@ Loc + leat => har:
 + Reis nå med meg, du skal ikke være en nød.
 
 
-Loc => hos
+Loc => hos:
   Susánná lei mus biigán diibmá.	
 - Susánná var hos meg som tjenestejente i fjor.
 + #Susánná var på meg som tjenestejente i fjor.
+
+Loc => med:
+ádjánit + V Der/n N Loc
+
+  Sii ádjánedje boahtimis.
+- De heftet med å komme.
++ De ble heftet å komme.
 
 
 Essive
@@ -459,10 +531,58 @@ Ess => for/NIL:
 - Han ble kalt (for) Mihkkalaš.
 + Det ble kalt som #Mihkkalaš.
 
+Ess => NIL:
+
+  Máret beasai dálu eamidin.
+- Máret fikk bli gårdens kone. Máret fikk være som gårdens kone.
++ Máret fikk som gårdens kone.
+
+  Guovdageaidnulaš Jostein Biti šattai Eurohpameašttirin skohtergilvvus.	
+- Kautkeino-væring J B ble europamester i scooterkonkurransen.
++ Kautokeino Jostein #Biti ble *Eurohpameašttirin på scooterkonkurransen.
+
+
 Ess => som:
   Son lea taksivuoddjin Oslos. 
 - Han arbeider som taxisjåfør i Oslo
 + Han er taxikjører i Oslo
+
+  Nuorran son juo mearridii dohko vuolgit.	
+- Som ung allrede bestemte han å reise dit.
++ Som han ungdom bestemte allerede #dit å reise.
+
+  Mii barggaimet oktan joavkun.	
+- vi arbeidet som en gruppe.
++ Vi #arbeide som en flokk.
+
+  Mii oaččuimet moaddása veahkkin.	
+- Vi fikk et par personer som hjelp.
++ Vi fikk *moaddása som hjelp.
+
+
+
+Ess => i:
+ESS-ADVL-N
+
+  Čuoikan olmmoš bálle rággasa siste oađđit ráfis.	
+- I mygg får man sove i fred i soveteltet.
++ Som mygg #ha fred til mennesket inni #sovetelt sove på freden.
+
+  Beaskkain gal bivvá buolašin.	
+- Med pesk holder man (absolutt?) varmen i kulde.
++ Med en pesk vel varmer han seg som kulde.
+
+  Mánát ledje čierastallame eahkedis mánoheahpin.	
+  Barna holdt på å renne om kvelden i måneskinn.
++ Barnene var i gang med å renne på kvelden som #måneskinn.
+
+  Buot lei varran.	
+- Alt var i blod.
++ Alt var blod.
+
+  Bassin ii galggaše kantuvrras čohkkát.	
++ På helligdager skulle man ikke sitt på kontoret.
+- Steikende han kan ikke skulle på kontoret sitte.
 
 
 Comitative
@@ -495,6 +615,7 @@ deaivvadit
   Olbmot dihte maid niegut dieđihedje, ja dan dihte sii ledje dávjá gergosat deaivvadit boahttevuođa dáhpáhusaiguin.	
 - Folk visste hva drømmene meddelte, og på grunn av det var de ofte klare til å møte framtidens hendinger.
 + Folk visste som drømmene meddelte, og på grunn av det var de ofte klare #møtes *boahttevuođa med hendinger.
+
 
 
 Genetive
@@ -563,6 +684,10 @@ ukedager
 ==========================
 
 Acc => om
+speech verb
+niegadit
+jurddašit
+
   hállat eará áššiid
 - snakke om andre saker
 + snakke de andre sakene
