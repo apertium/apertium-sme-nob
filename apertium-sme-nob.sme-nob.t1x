@@ -119,6 +119,9 @@ TODO:
     <def-cat n="nom_prop">
       <cat-item tags="N.Prop.*"/>
     </def-cat>
+    <def-cat n="nom_prop_mod">
+      <cat-item tags="N.Prop.*.*.Attr.*"/>
+    </def-cat>
     <def-cat n="nom_prop_gen">
       <cat-item tags="N.Prop.*.Gen"/>
       <cat-item tags="N.Prop.*.Gen.*"/>
@@ -1440,7 +1443,7 @@ TODO: OK to just discard syn_label from pret.passives?">
     <rule comment="REGLA: NOM_PROP NOM_PROP
                    Gender from the first np, syntax from the last one">
       <pattern>
-        <pattern-item n="nom_prop"/>
+        <pattern-item n="nom_prop_mod"/>
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
@@ -1479,8 +1482,8 @@ TODO: OK to just discard syn_label from pret.passives?">
     <rule comment="REGLA: NOM_PROP NOM_PROP NOM_PROP
                    Gender from the first np, syntax from the last one">
       <pattern>
-        <pattern-item n="nom_prop"/>
-        <pattern-item n="nom_prop"/>
+        <pattern-item n="nom_prop_mod"/>
+        <pattern-item n="nom_prop_mod"/>
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
