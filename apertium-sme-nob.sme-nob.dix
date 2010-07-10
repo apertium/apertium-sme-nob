@@ -44,6 +44,7 @@ dictionary didn't have the answers, feel free to improve...
 <sdef n="Rel"     c="Relative"/>
 <sdef n="Refl"    c="Reflexive (sme)"/>
 <sdef n="ref"     c="Reflexive (nob)"/>
+<sdef n="Recipr"  c="Reciprocal (sme)"/>
 <sdef n="res"     c="Reciprocal"/>
 <sdef n="caus"    c="Causative"/>
 <sdef n="Indef"   c="Indefinite"/>
@@ -229,6 +230,19 @@ dictionary didn't have the answers, feel free to improve...
 <e><p><l><s n="Sg"/><s n="Gen"/></l><r><s n="GD"/><s n="sg"/><s n="gen"/></r></p></e>
 <e><p><l><s n="Sg"/><s n="Ill"/></l><r><s n="GD"/><s n="sg"/><s n="ill"/></r></p></e>
 <e><p><l><s n="Sg"/><s n="Loc"/></l><r><s n="GD"/><s n="sg"/><s n="loc"/></r></p></e>
+
+<!-- er dualis => pl OK for desse? -->
+<e r="LR"><p><l><s n="Du"/><s n="Nom"/></l><r><s n="GD"/><s n="pl"/><s n="nom"/></r></p></e>
+<e r="LR"><p><l><s n="Du"/><s n="Acc"/></l><r><s n="GD"/><s n="pl"/><s n="acc"/></r></p></e>
+<e r="LR"><p><l><s n="Du"/><s n="Gen"/></l><r><s n="GD"/><s n="pl"/><s n="gen"/></r></p></e>
+<e r="LR"><p><l><s n="Du"/><s n="Ill"/></l><r><s n="GD"/><s n="pl"/><s n="ill"/></r></p></e>
+<e r="LR"><p><l><s n="Du"/><s n="Loc"/></l><r><s n="GD"/><s n="pl"/><s n="loc"/></r></p></e>
+
+<e><p><l><s n="Pl"/><s n="Nom"/></l><r><s n="GD"/><s n="pl"/><s n="nom"/></r></p></e>
+<e><p><l><s n="Pl"/><s n="Acc"/></l><r><s n="GD"/><s n="pl"/><s n="acc"/></r></p></e>
+<e><p><l><s n="Pl"/><s n="Gen"/></l><r><s n="GD"/><s n="pl"/><s n="gen"/></r></p></e>
+<e><p><l><s n="Pl"/><s n="Ill"/></l><r><s n="GD"/><s n="pl"/><s n="ill"/></r></p></e>
+<e><p><l><s n="Pl"/><s n="Loc"/></l><r><s n="GD"/><s n="pl"/><s n="loc"/></r></p></e>
 
 <e><p><l><s n="Ess"/></l>           <r><s n="GD"/><s n="ND"/><s n="ess"/></r></p></e>
 
@@ -847,6 +861,12 @@ use this rule then (o/w Der_h in __verb adds the 'caus' tag)">
 <e><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
 <e slr="1"><p><l>juohke<s n="Pron"/><s n="Indef"/></l><r>all<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e> <!-- juohke lágán => alle slags, alle måter -->
 <e c="'mange' kan jo tyde 'mange personer'"><p><l>olus<s n="Pron"/><s n="Indef"/></l><r>mange<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+<e><p><l>guhtet<s n="Pron"/><s n="Indef"/></l><r>enhver<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+<e><p><l>gallát<s n="Pron"/><s n="Indef"/></l><r>hvilken<s n="det"/><s n="itg"/></r></p><par n="pron__det"/></e>
+<e c="av to"><p><l>goabbat<s n="Pron"/><s n="Indef"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+<e c="av to"><p><l>goabbat<s n="Pron"/><s n="Recipr"/></l><r>hver<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
+
+<e c="TODO in nob.dix"><p><l>ihkinassii<s n="Pron"/><s n="Indef"/></l><r>som<b/>helst<s n="det"/><s n="qnt"/></r></p><par n="pron__det"/></e>
 
 <!-- the pron__det pardef transfers number & case, for the below
 we just use __prn-case to transfer case and specify number here: -->
@@ -35250,11 +35270,11 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>garnisoneret<s n="V"/><s n="IV"/></l><r>garnisonere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>gárrat<s n="V"/><s n="TV"/></l><r>surre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>garrudit<s n="V"/><s n="TV"/></l><r>banne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>gártat<s n="V"/><s n="IV"/></l><r>komme<b/>til<b/>å<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) gárttan-->
+<e><p><l>gártat<s n="V"/><s n="IV"/></l><r>komme<g><b/>til<b/>å</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) gárttan-->
 <e><p><l>garvilit<s n="V"/><s n="TV"/></l><r>unnvike<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>gárvodit<s n="V"/><s n="IV"/></l><r>kle<b/>på<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e> 
+<e><p><l>gárvodit<s n="V"/><s n="IV"/></l><r>påkle<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e> 
 <e><p><l>gárvvistit<s n="V"/><s n="TV"/></l><r>forberede<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>gárvvohit<s n="V"/><s n="TV"/></l><r>kle<b/>på<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+<e><p><l>gárvvohit<s n="V"/><s n="TV"/></l><r>påkle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>gáržudit<s n="V"/><s n="TV"/></l><r>innskrenke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>gáržut<s n="V"/><s n="IV"/></l><r>trang<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>gašeret<s n="V"/><s n="TV"/></l><r>gasjere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
