@@ -23,6 +23,11 @@ This is the second pass. Responsibilities of this file include:
   * See rule: PR SN-post adpos
 * Removing essive case-prep ('som') after vcop
   * See rule: FV-cop PR-caseprep-ess
+* Removing Pcle.Qst and putting the Qst tag on the preceding chunk,
+  so that they're treated as if there were no space
+  * See rule: SN PCLE.QST
+  * PCLE.QST variants could probably be added to many of the other rules here too,
+    still TODO, but the most likely seem to be covered.
 
 TODO:
 * relatives (SN "who" SV SV* -> SN), both 'real' and those that started life as Agent Constructions
@@ -139,6 +144,10 @@ TODO:
       <cat-item tags="SN.@-FADVL→.*.loc"/>
       <cat-item tags="SN.@-FADVL→.*.loc.*"/>
     </def-cat>
+    <def-cat n="pcle.qst">
+      <cat-item tags="@PCLE.Qst"/>
+      <cat-item tags="@PCLE.Qst.*"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
@@ -207,6 +216,10 @@ TODO:
       <attr-item tags="pl"/>
       <attr-item tags="ND"/>
     </def-attr>
+    <def-attr n="neg">
+      <attr-item tags="ConNeg"/>
+      <attr-item tags="Neg"/>
+    </def-attr>
     <def-attr n="syn_label">
       <attr-item tags="@X"/>
       <attr-item tags="@HNOUN"/>
@@ -267,6 +280,32 @@ TODO:
       <let><var n="tmpcase"/><get-case-from pos="1"><clip pos="1" part="lemh"/></get-case-from></let>
       <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
       <modify-case><clip pos="2" part="lemh"/><var n="tmpcase"/></modify-case>
+    </def-macro>
+    
+    <def-macro n="tag_qst" npar="1"
+               c="Add the Qst tag">
+      <choose>
+        <when>
+          <test><not><equal><clip pos="1" part="neg"/><lit v=""/></equal></not></test>
+          <let>
+            <clip pos="1" part="neg"/>
+            <concat><clip pos="1" part="neg"/><lit-tag v="Qst"/></concat>
+          </let>
+        </when>
+        <when>
+          <test><not><equal><clip pos="1" part="syn_label"/><lit v=""/></equal></not></test>
+          <let>
+            <clip pos="1" part="syn_label"/>
+            <concat><clip pos="1" part="syn_label"/><lit-tag v="Qst"/></concat>
+          </let>
+        </when>
+        <otherwise>
+          <let>
+            <clip pos="1" part="lemh"/>
+            <concat><clip pos="1" part="lemh"/><lit-tag v="Qst"/></concat>
+          </let>
+        </otherwise>
+      </choose>
     </def-macro>
     
     <def-macro n="clean_SN_of_adpos" npar="1"
@@ -815,6 +854,23 @@ TODO: does this generalise or should we remove the whole mechanism?">
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: FV PCLE.QST
+                   -----
+                   set anaphoric temps variable
+                   use anaphoric gen variable">
+      <pattern>
+        <pattern-item n="FV"/>
+        <pattern-item n="pcle.qst"/>
+      </pattern>
+      <action>
+        <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
+        <call-macro n="set_ana_temps"><with-param pos="1"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
     
     <rule comment="REGLA: V_TD
                    -----
@@ -835,6 +891,27 @@ TODO: does this generalise or should we remove the whole mechanism?">
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: V_TD PCLE.QST
+                   -----
+                   use anaphoric temps variables
+                   use/set anaphoric gen variable
+                   mun dieđán Máreha čállime dál => jeg vet Máret skriver nå">
+      <pattern>
+        <pattern-item n="V_TD"/>
+        <pattern-item n="pcle.qst"/>
+      </pattern>
+      <action>
+        <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><not><equal><var n="ana_temps"/><lit v=""/></equal></not></test>
+          <let><clip pos="1" part="temps"/><var n="ana_temps"/></let>
+        </when></choose>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
     
     <rule comment="REGLA: V
                    -----
@@ -843,6 +920,21 @@ TODO: does this generalise or should we remove the whole mechanism?">
         <pattern-item n="V"/>
       </pattern>
       <action>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: V PCLE.QST
+                   -----
+                   use/set anaphoric gen variable">
+      <pattern>
+        <pattern-item n="V"/>
+        <pattern-item n="pcle.qst"/>
+      </pattern>
+      <action>
+        <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -916,6 +1008,22 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: SN PCLE.QST
+                   -----
+                   set gen variable">
+      <pattern>
+        <pattern-item n="SN"/>
+        <pattern-item n="pcle.qst"/>
+      </pattern>
+      <action>
+        <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    
     <rule comment="REGLA: SA
                    -----
                    use gen variable">
@@ -928,6 +1036,22 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>
       </action>
+    </rule>    
+    <rule comment="REGLA: SA PCLE.QST
+                   -----
+                   use gen variable">
+      <pattern>
+        <pattern-item n="SA"/>
+        <pattern-item n="pcle.qst"/>
+      </pattern>
+      <action>
+        <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
+        <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
     </rule>
+    
   </section-rules>
 </interchunk>

@@ -36,11 +36,14 @@ TODO:
       <cat-item tags="Adv.*"/>
     </def-cat>
     <def-cat n="pcle">
+      <cat-item tags="Qst.Pcle.*"/>
+      <cat-item tags="Qst.Pcle"/>
       <cat-item tags="Pcle.*"/>
       <cat-item tags="Pcle"/>
     </def-cat>
     <def-cat n="pcle.qst">
-      <cat-item lemma="go" tags="Pcle.*"/>
+      <cat-item tags="Qst.Pcle"/>
+      <cat-item tags="Qst.Pcle.*"/>
     </def-cat>
     <def-cat n="adj">
       <cat-item tags="A.*"/>
@@ -2927,27 +2930,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <let><var n="c_name"/><lit v=""/></let>
         <call-macro n="out_verb"><with-param pos="1"/></call-macro>
       </action>
-    </rule>
-    
-    <rule comment="REGLA: VERB GO
-                   treat 'boađát go' as if it were 'boađátgo'">
-      <pattern>
-        <pattern-item n="verb"/>
-        <pattern-item n="pcle.qst"/>
-      </pattern>
-      <action>
-        <let>
-          <clip pos="1" side="sl" part="syn_label"/>
-          <concat><lit-tag v="Qst"/><clip pos="1" side="sl" part="syn_label"/></concat>
-        </let>
-        
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <let><var n="pre-verb"/><lit v=""/></let>
-        <let><var n="c_name"/><lit v=""/></let>
-        <call-macro n="out_verb"><with-param pos="1"/></call-macro>
-      </action>
-    </rule>
-    
+    </rule>    
     
     <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å si
                    needs to be several chunks to cover: ii lohkagoađe => han begynner ikke å si
@@ -3351,6 +3334,6 @@ TODO: this should be an mwe in the analyser.">
           </chunk>
         </out>
       </action>
-    </rule>    
+    </rule>
   </section-rules>
 </transfer>
