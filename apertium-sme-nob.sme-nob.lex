@@ -162,7 +162,7 @@ SUBSTITUTE ("go") ("go:1") ("go" CS) (-1 COPULAS LINK -1 (A Nom)) ;
 ## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
 ## Buorre lei go bohtet.
 
-SUBSTITUTE ("go") ("go:2") ("go" CS) (1 (@COMP-CS<)) ;
+SUBSTITUTE ("go") ("go:2") ("go" CS) (1 (@COMP-CS←)) ;
 SUBSTITUTE ("go") ("go:2") ("go" CS) (-1 ("veara")) ;
 SUBSTITUTE ("go") ("go:2") ("go" CS) (*-1 ("ovdal" Adv) BARRIER S-BOUNDARY) ;
 SUBSTITUTE ("go") ("go:2") ("go" CS) (*-1 Comp BARRIER VERB OR S-BOUNDARY) ;
@@ -175,9 +175,9 @@ SUBSTITUTE ("go") ("go:2") ("go" CS) (*-1 Comp BARRIER VERB OR S-BOUNDARY) ;
 SUBSTITUTE ("go") ("go:3") ("go" CS) ((-1 ("nu" Adv) OR ("seamma") OR ("seammá")) OR (-1 Adv OR A LINK -1 ("nu" Adv))) ;
 # Elvenes oaččui Niehkostipeandda nu go lei sávvan 
 
-SUBSTITUTE ("go") ("go:4") ("go" CS) (*1 (V Prt) BARRIER (@HAB) OR (@ADVL>)) ;
+SUBSTITUTE ("go") ("go:4") ("go" CS) (*1 (V Prt) BARRIER (@HAB) OR (@ADVL→)) ;
 
-SUBSTITUTE ("go") ("go:5") ("go" CS) (1 (@ADVL>) OR (@HAB) LINK 1 COPULAS) ;
+SUBSTITUTE ("go") ("go:5") ("go" CS) (1 (@ADVL→) OR (@HAB) LINK 1 COPULAS) ;
 # Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
 
 
