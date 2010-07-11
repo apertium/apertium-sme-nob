@@ -2,6 +2,7 @@
 
 ### Usage: cat dev/inc-sme-nob-dic-verb.txt | dev/lookup-transitivity.sh
 ### Note: If the <l> (sme lemma) has <b/> or other tags in it, this will ignore anything after the first <
+### Also removes everything up until the <l> (eg. c attribute of <e>)
 
 if [ ! -e $GTHOME  ]; then
 	echo "Please set the \$GTHOME environment variable";
@@ -16,9 +17,9 @@ while read line; do
     rhs=$(echo $line | gsed 's%.*\[\(.*\)\].*%\1%')
     valences=$(echo $line | sed 's%\[.*%%' | tr '/' '\n' | grep "^${lemma}+V+" | grep -v "+Der" | sed 's/.*\+\([TI]V\)\+.*/\1/' | uniq)
     if [ ${#valences} -eq 0 ]; then
-	echo "    <e><p><l>${lemma}<s n=\"V\"/><s n=\"TODO\"/></l>${rhs}"
+	echo "<e><p><l>${lemma}<s n=\"V\"/><s n=\"TODO\"/></l>${rhs}"
     fi;
     for trans in ${valences}; do
-	echo "    <e><p><l>${lemma}<s n=\"V\"/><s n=\"${trans}\"/></l>${rhs}"
+	echo "<e><p><l>${lemma}<s n=\"V\"/><s n=\"${trans}\"/></l>${rhs}"
     done
 done
