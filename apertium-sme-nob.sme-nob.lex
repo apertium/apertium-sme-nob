@@ -142,8 +142,6 @@ SUBSTITUTE ("stuibmi") ("stuibmi:1") ("stuibmi" N Sg) (-1 ("Álta") OR ("Álahea
 # Other parts of speech
 # ---------------------
 
-SUBSTITUTE ("easkka") ("easkka:1") ("easkka" Adv) (-1 ("de") OR ("dál")) ;
-
 
 SUBSTITUTE ("juohke") ("juohke:1") ("juohke" Pron Indef) (1 ("lágan") OR ("lágán")) ;
 
