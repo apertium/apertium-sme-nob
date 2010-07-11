@@ -2929,6 +2929,25 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
     
+    <rule comment="REGLA: VERB GO
+                   treat 'boađát go' as if it were 'boađátgo'">
+      <pattern>
+        <pattern-item n="verb"/>
+        <pattern-item n="pcle.qst"/>
+      </pattern>
+      <action>
+        <let>
+          <clip pos="1" side="sl" part="syn_label"/>
+          <concat><lit-tag v="Qst"/><clip pos="1" side="sl" part="syn_label"/></concat>
+        </let>
+        
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <call-macro n="out_verb"><with-param pos="1"/></call-macro>
+      </action>
+    </rule>
+    
     
     <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å si
                    needs to be several chunks to cover: ii lohkagoađe => han begynner ikke å si
