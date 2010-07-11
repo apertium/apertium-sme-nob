@@ -20,6 +20,7 @@ LIST Sur = Sur ;
 LIST FAUXV = @+FAUXV @-FAUXV ;
 LIST @SUBJ→ = @SUBJ→ ;
 LIST ActioEss = (Actio Ess) ;
+LIST ActioLoc = (Actio Loc) ;
 LIST PronPers = (Pron Pers) ;
 LIST PronPersIll = (Pron Pers Ill) ;
 LIST CURRENCY = "denara" "dollár" "euro" "kruvdnu" "kr" "ru" "rubel" "ruvdno" "ruvdnu" "¢" "€" "$";
@@ -28,6 +29,20 @@ LIST ConNeg = (ConNeg) ;
 LIST Inf = (Inf) ;
 LIST PrfPrc = (PrfPrc) ;
 LIST IndPrt = (Ind Prt) ;
+LIST Comp = Comp ;
+LIST Adv = Adv ;
+LIST V = V ;
+LIST A = A ;
+
+LIST COPULAS = "dáidit" "gártat" "leahkit" "leat" "orrut" "soaitit" "šaddat" "veadjit" ;
+
+LIST MO-MANge = "goas" "gokko" "gos" "gosa" "govt" "makkár" "man" "manne" "mo" "mot" "mov" "movt" ("nugo" @CVP) (V Qst);
+SET MO = MO-MANge - ("man" Foc/ge) ; 
+SET S-BOUNDARY = (Pron Interr) OR (Pron Rel) OR ("muhto") OR ("de" CC) OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR (@CVP) ;
+
+SET VERB = V - (V N);
+
+
 
 LIST PERSON = Mal Fem Sur Pers ;
 LIST FISH = "bálddis" "čuska" "dápmot" "diddi" "diksu" "dorskeguolli" "dorski" "duovvi" "gilot" "guolli" "hávga" "juksu" "luosjuolgi" "luossa" "luossaguolli" "luossanálli" "muortu" "sallit" "sáidi" "sáivaguolli" "šákšadorski" "stábbasáidi" "stáinnir" "stuorasáidi" "rutnot" "veajet" ;
@@ -47,7 +62,7 @@ SECTION
 # beassat 0 = få, 1 = slippe, 2 = komme Refl til
 	## Sii leat beassan eallit dego gonagasat.
 
-SUBSTITUTE ("beassat") ("beassat:1") ("beassat" V) (1 (Der/n Loc) OR (Actor Loc)) ;
+SUBSTITUTE ("beassat") ("beassat:1") ("beassat" V) (1 (Der_n Loc) OR (Actio Loc)) ;
 	## Mun bessen vuolgimis.
 SUBSTITUTE ("beassat") ("beassat:2") ("beassat" V) (1 Ill) ;
 	## In beassan skuvlii dan beaivve.  Jeg kom meg ikke på skolen den dagen.
@@ -85,7 +100,7 @@ SUBSTITUTE ("mannat") ("mannat:1") ("mannat" V) (*-1 ("mo") OR ("dat"))(0 (Sg3))
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
 SUBSTITUTE ("bivdit") ("bivdit:1") ("bivdit" V)(*1 Qst);
 SUBSTITUTE ("bivdit") ("bivdit:2") ("bivdit" V)(*0 FISH);
-SUBSTITUTE ("bivdit") ("bivdit:3") ("bivdit" V)(*0 NATURE-PLACE OR HUNT-ANIMAL OR BIRD);
+SUBSTITUTE ("bivdit") ("bivdit:3") ("bivdit" V)((*0 NATURE-PLACE OR HUNT-ANIMAL OR BIRD) OR (0 (Actor)));
 
 # orrut 0 = bo, 1 = synes, 2 = bli, 3 = være
 SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego") OR ActioEss) ;
@@ -141,8 +156,32 @@ SUBSTITUTE ("duohta") ("duohta:1") ("duohta" A Sg Loc) (0 @ADVL) ;
 
 
 # go (default)=> når
-SUBSTITUTE ("go") ("go:3") ("go" CS) (-1 ("nu" Adv)) ;
-# Elvenes oaččuiga Niehkostipeandda nu go leigga sávvan 
+# go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
+
+
+SUBSTITUTE ("go") ("go:1") ("go" CS) (-1 ("maŋŋil" Adv) OR ("maŋŋel" Adv) OR ("ovdal" Adv)) ;
+SUBSTITUTE ("go") ("go:1") ("go" CS) (-1 COPULAS LINK -1 (A Nom)) ;
+## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
+## Buorre lei go bohtet.
+
+SUBSTITUTE ("go") ("go:2") ("go" CS) (1 (@COMP-CS<)) ;
+SUBSTITUTE ("go") ("go:2") ("go" CS) (-1 ("veara")) ;
+SUBSTITUTE ("go") ("go:2") ("go" CS) (*-1 ("ovdal" Adv) BARRIER S-BOUNDARY) ;
+SUBSTITUTE ("go") ("go:2") ("go" CS) (*-1 Comp BARRIER VERB OR S-BOUNDARY) ;
+## Son lea viššaleabbo go mun.
+## Dat dáidá riggát go mii jáhkkit.
+## Dii han lehpet eanet veara go ollu cizážat.
+## Viššalat ohppet eanet go láikkit.
+## Ovdal buorida son dálkkiidis go neavrres olmmoš dábiidis.
+
+SUBSTITUTE ("go") ("go:3") ("go" CS) ((-1 ("nu" Adv) OR ("seamma") OR ("seammá")) OR (-1 Adv OR A LINK -1 ("nu" Adv))) ;
+# Elvenes oaččui Niehkostipeandda nu go lei sávvan 
+
+SUBSTITUTE ("go") ("go:4") ("go" CS) (*1 (V Prt) BARRIER (@HAB) OR (@ADVL>)) ;
+
+SUBSTITUTE ("go") ("go:5") ("go" CS) (1 (@ADVL>) OR (@HAB) LINK 1 COPULAS) ;
+# Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
+
 
 # ieš (default)=> seg
 SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl) (0 (@Pron←) OR (@N←)) ;
