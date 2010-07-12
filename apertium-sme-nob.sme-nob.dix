@@ -502,7 +502,8 @@ The derived nob noun might not exist. -->
 <e r="LR"><p><l><s n="Du"/></l><r></r></p></e>
 <e r="LR"><p><l><s n="Pl"/></l><r></r></p></e>
 </pardef>
-<pardef n="__verb">
+
+<pardef n="common__verb" c="Used by __verb and pstv__verb">
 <e><p><l><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/></r></p><par n="__nbr_pers"/></e>
 <e><p><l><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/></r></p><par n="__nbr_pers"/></e>
 <e><p><l><s n="Inf"/></l><r><s n="inf"/></r></p></e>
@@ -568,11 +569,6 @@ The derived nob noun might not exist. -->
 <e><p><l><s n="Der1"/><s n="Der_st"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
 <e><p><l><s n="Der1"/><s n="Der_st"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="sg"/><s n="p2"/></r></p></e>
 
-<!-- Definitely not sure about this: -->
-<e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
-
-<e><p><l><s n="Der1"/><s n="Der2"/><s n="Der_las"/><s n="A"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
-
 <!-- We don't specify the full sme entries for these derivations, deverbal__n does that in order to override these -->
 <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/><s n="Du"/></l><r><s n="m"/><s n="pl"/><s n="pres"/></r></p></e>
 <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/><s n="Pl"/></l><r><s n="m"/><s n="pl"/><s n="pres"/></r></p></e>
@@ -612,14 +608,36 @@ The derived nob noun might not exist. -->
 <e><p><l><s n="Actio"/><s n="Acc"/></l><r><s n="TD"/></r></p></e>
 <!-- Gerundium: same time and logical subject as main verb -->
 <e><p><l><s n="Ger"/></l><r><s n="TD"/><s n="ND"/><s n="PD"/></r></p></e>
-<!-- Present participle: attribute in relative sentences (suomagiela hálli => som snakker finsk / finsksnakkende) -->
-<e><p><l><s n="PrsPrc"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
-<!-- Verb genitive: manner -->
-<e><p><l><s n="VGen"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
+
 <!-- Verbal Abessive: an action that is not performed (insert 'uten') -->
 <e><p><l><s n="VAbess"/></l><r><s n="inf"/></r></p></e>
 <e><p><l></l><r></r></p></e>
 </pardef>
+
+<pardef n="__verb" c="Regular verb, nob side should include adj.pp and adj.pprs forms">
+  <e><p><l></l><r></r></p><par n="common__verb"/></e>
+
+  <!-- Definitely not sure about this: -->
+  <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
+  <e><p><l><s n="Der1"/><s n="Der2"/><s n="Der_las"/><s n="A"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
+
+  <!-- Present participle: attribute in relative sentences (suomagiela hálli => som snakker finsk / finsksnakkende) -->
+  <e><p><l><s n="PrsPrc"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
+  <!-- Verb genitive: manner -->
+  <e><p><l><s n="VGen"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
+</pardef>
+
+<pardef n="pstv__verb" c="Verb which in nob is lexicalised passive
+                          nob side does not include adj.pp and adj.pprs forms
+                          Note: 'pass' forms are not in nob.dix either, but if we have passive + pstv, t1x just appends 'bli' as aux.">
+  <e><p><l></l><r><s n="pstv"/></r></p><par n="common__verb"/></e>
+  <!-- There are no adj forms for these on the nob side. Use present tense just to have something (if you want a real translation: lexicalise!) -->
+  <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="pstv"/><s n="pres"/></r></p></e>
+  <e><p><l><s n="Der1"/><s n="Der2"/><s n="Der_las"/><s n="A"/></l><r><s n="pstv"/><s n="pres"/></r></p></e>
+  <e><p><l><s n="PrsPrc"/></l><r><s n="pstv"/><s n="pres"/></r></p></e>
+  <e><p><l><s n="VGen"/></l><r><s n="pstv"/><s n="pres"/></r></p></e>
+</pardef>
+
 <pardef n="caus__verb" c="TODO: might want to force causative transfer rules on some verbs,
 use this rule then (o/w Der_h in __verb adds the 'caus' tag)">
 <e><p><l></l><r><s n="caus"/></r></p><par n="__verb"/></e>
@@ -630,14 +648,13 @@ use this rule then (o/w Der_h in __verb adds the 'caus' tag)">
 <pardef n="pass__verb">
 <e><p><l></l><r><s n="pass"/></r></p><par n="__verb"/></e>
 </pardef>
-<pardef n="pstv__verb">
-<e><p><l></l><r><s n="pstv"/></r></p><par n="__verb"/></e>
-</pardef>
 <pardef n="deverbal__n" c="by calling __n, we get more specific matches, making this override the entries in __verb">
 <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r></r></p><par n="__n"/></e>
 <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r></r></p><par n="__n"/></e>
 </pardef>
+
 </pardefs>
+
 
 <section id="main" type="standard">
 <!-- Compound parts -->
@@ -33661,7 +33678,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>agiteret<s n="V"/><s n="IV"/></l><r>agitere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>áhcagastit<s n="V"/><s n="IV"/></l><r>gløde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>áhčástaddat<s n="V"/><s n="IV"/></l><r>bruke<b/>benevnelsen<b/>far<b/>til<b/>noen<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>ahkiduššat<s n="V"/><s n="IV"/></l><r>vantrives<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>ahkiduššat<s n="V"/><s n="IV"/></l><r>vantrives<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>ahtanuššat<s n="V"/><s n="IV"/></l><r>utvikle<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e> 
 <e><p><l>áhtat<s n="V"/><s n="TV"/></l><r>komme<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e>
 <e><p><l>áibadit<s n="V"/><s n="TV"/></l><r>gjøre<b/>at<b/>noe<b/>forsvinner<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -33707,7 +33724,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>allittereret<s n="V"/><s n="TV"/></l><r>allitterere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>allokeret<s n="V"/><s n="TV"/></l><r>allokere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>almmáskit<s n="V"/><s n="IV"/></l><r>snø<s n="vblex"/><s n="impers"/></r></p><par n="pass__verb"/></e>
-<e><p><l>álmmehuvvat<s n="V"/><s n="IV"/></l><r>kraftløs<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
+<e c="pass+adj=>bli adj"><p><l>álmmehuvvat<s n="V"/><s n="IV"/></l><r>kraftløs<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>almmuhit<s n="V"/><s n="TV"/></l><r>publisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>almmustahttit<s n="V"/><s n="TV"/></l><r>avdekke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>altereret<s n="V"/><s n="TV"/></l><r>alterere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -33824,7 +33841,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>bálddalastit<s n="V"/><s n="TV"/></l><r>sidestille<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>bálddastahttit<s n="V"/><s n="TV"/></l><r>gå<b/>ved<b/>siden<b/>av<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>baldit<s n="V"/><s n="TV"/></l><r>skremme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) balddán-->
-<e><p><l>bálgat<s n="V"/><s n="IV"/></l><r>plages<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+<e><p><l>bálgat<s n="V"/><s n="IV"/></l><r>plage<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
 <e><p><l>bálkáhit<s n="V"/><s n="TV"/></l><r>leie<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>balkaniseret<s n="V"/><s n="TV"/></l><r>balkanisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>bálkásit<s n="V"/><s n="IV"/></l><r>gå<b/>til<b/>spille<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
@@ -33916,16 +33933,16 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>bihcudit<s n="V"/><s n="TV"/></l><r>gjøre<b/>at<b/>noe<b/>blir<b/>rimbelagt<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>bihcut<s n="V"/><s n="IV"/></l><r>rimbelegge<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
 <e><p><l>bihtit<s n="V"/><s n="IV"/></l><r>klare<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>biidnašuvvat<s n="V"/><s n="IV"/></l><r>pines<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--šuvai-->
+<e><p><l>biidnašuvvat<s n="V"/><s n="IV"/></l><r>pine<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--šuvai-->
 <e><p><l>biigostit<s n="V"/><s n="TV"/></l><r>gjøre<b/>piketjeneste<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>biinnidit<s n="V"/><s n="TV"/></l><r>pine<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>bijahallat<s n="V"/><s n="IV"/></l><r>få<b/>i<b/>oppdrag<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>bilaidit<s n="V"/><s n="IV"/></l><r>tindre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>bildadit<s n="V"/><s n="TV"/></l><r>legge<b/>noe<b/>på<b/>stillas<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e c="TODO betre omsetjing"><p><l>bildadit<s n="V"/><s n="TV"/></l><r>legge<g><b/>på<b/>stillas</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>bilgádit<s n="V"/><s n="TV"/></l><r>flette<b/>sennegressknipper<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>bilidit<s n="V"/><s n="TV"/></l><r>ødelegge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>bilkidit<s n="V"/><s n="TV"/></l><r>gjøre<g><b/>narr</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>billahuvvat<s n="V"/><s n="IV"/></l><r>ødelegges<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> 
+<e><p><l>billahuvvat<s n="V"/><s n="IV"/></l><r>ødelegge<s n="vblex"/><s n="impers"/></r></p><par n="pass__verb"/></e> 
 <e><p><l>billašuvvat<s n="V"/><s n="IV"/></l><r>ødelegge<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--šuvai-->
 <e><p><l>billetteret<s n="V"/><s n="TV"/></l><r>billettere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>billistit<s n="V"/><s n="TV"/></l><r>ødelegge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -33934,7 +33951,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>birccostit<s n="V"/><s n="TV"/></l><r>en<b/>gang<b/>kaste<b/>terning<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e c="en gang"><p><l>birccostit<s n="V"/><s n="TV"/></l><r>kaste<g><b/>terning</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>bircut<s n="V"/><s n="IV"/></l><r>kaste<b/>terninger<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>birgehallat<s n="V"/><s n="IV"/></l><r>berges<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>birgehallat<s n="V"/><s n="IV"/></l><r>berge<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>birget<s n="V"/><s n="IV"/></l><r>greie<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e> <!--(sii) birgejit-->
 <e><p><l>bisánit<s n="V"/><s n="IV"/></l><r>stoppe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>biškut<s n="V"/><s n="IV"/></l><r>skrike<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34061,7 +34078,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>buoridit<s n="V"/><s n="TV"/></l><r>forbedre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>buorránit<s n="V"/><s n="IV"/></l><r>bedre<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
 <e><p><l>buoššodit<s n="V"/><s n="TV"/></l><r>herde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>buozahit<s n="V"/><s n="TV"/></l><r>plages<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>buozahit<s n="V"/><s n="TV"/></l><r>plage<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>buozastit<s n="V"/><s n="IV"/></l><r>være<b/>syk<b/>en<b/>kort<b/>tid<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>buresboahtit<s n="V"/><s n="IV"/></l><r>ønske<g><b/>velkommen</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>buressivdnidit<s n="V"/><s n="TV"/></l><r>velsigne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -34069,7 +34086,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>buvihit<s n="V"/><s n="TV"/></l><r>kvele<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>buvttadit<s n="V"/><s n="TV"/></l><r>produsere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>buvttihit<s n="V"/><s n="IV"/></l><r>rekke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>buvvánit<s n="V"/><s n="IV"/></l><r>kveles<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+<e><p><l>buvvánit<s n="V"/><s n="IV"/></l><r>kvele<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> 
 <e><p><l>buzzet<s n="V"/><s n="IV"/></l><r>sprette<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>cábadit<s n="V"/><s n="TV"/></l><r>makulere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>cábmit<s n="V"/><s n="TV"/></l><r>slå<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34080,7 +34097,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>čáhkat<s n="V"/><s n="IV"/></l><r>få<g><b/>plass</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(dat) čágai-->
 <e><p><l>cahkat<s n="V"/><s n="IV"/></l><r>ulme<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) cagai-->
 <e><p><l>cahkkehit<s n="V"/><s n="TV"/></l><r>tenne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>čáhkket<s n="V"/><s n="TV"/></l><r>gjøre<b/>plass<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>čáhkket<s n="V"/><s n="TV"/></l><r>gjøre<g><b/>plass</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>cáhpat<s n="V"/><s n="TV"/></l><r>hakke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>čaibmat<s n="V"/><s n="IV"/></l><r>le<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>čájáhallat<s n="V"/><s n="TV"/></l><r>framvise<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -34147,10 +34164,10 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>čivttadit<s n="V"/><s n="TV"/></l><r>bøte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>čivttašit<s n="V"/><s n="TV"/></l><r>bøte<b/>garn/<b/>not<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>čivttihit<s n="V"/><s n="TV"/></l><r>få<b/>garnet/<b/>noten<b/>bøtt<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>čoagganit<s n="V"/><s n="IV"/></l><r>samles<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>čoagganit<s n="V"/><s n="IV"/></l><r>samle<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>čoaggit<s n="V"/><s n="TV"/></l><r>plukke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) čokkii-->
 <e><p><l>čoahkáidit<s n="V"/><s n="TV"/></l><r>konsentrere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>čoahkkanit<s n="V"/><s n="IV"/></l><r>samles<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>čoahkkanit<s n="V"/><s n="IV"/></l><r>samle<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>čoahkkimastit<s n="V"/><s n="IV"/></l><r>avholde<b/>møte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>coahkkit<s n="V"/><s n="IV"/></l><r>tikke<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) cohkii-->
 <e><p><l>coahkut<s n="V"/><s n="IV"/></l><r>minke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34163,7 +34180,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>čoavdilit<s n="V"/><s n="TV"/></l><r>løse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>čoavdit<s n="V"/><s n="TV"/></l><r>løse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>coggat<s n="V"/><s n="TV"/></l><r>putte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>čoggot<s n="V"/><s n="IV"/></l><r>samles<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>čoggot<s n="V"/><s n="IV"/></l><r>samles<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>čohkánit<s n="V"/><s n="IV"/></l><r>sette<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e> 
 <e><p><l>čohkat<s n="V"/><s n="TV"/></l><r>spisse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) čogan-->
 <e><p><l>čohkkát<s n="V"/><s n="IV"/></l><r>sitte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) čohkkájit-->
@@ -34178,7 +34195,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>čorbmadit<s n="V"/><s n="TV"/></l><r>slå<b/>med<b/>knyttneven<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--  (en gang)-->
 <e><p><l>čorbmat<s n="V"/><s n="TV"/></l><r>slå<b/>med<b/>knyttneven<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) čorpman-->
 <e><p><l>čorget<s n="V"/><s n="TV"/></l><r>gjøre<g><b/>reint</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>čovdot<s n="V"/><s n="IV"/></l><r>løses<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>čovdot<s n="V"/><s n="IV"/></l><r>løse<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>čuččodit<s n="V"/><s n="IV"/></l><r>stående<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>čugget<s n="V"/><s n="TV"/></l><r>stikke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>cuiget<s n="V"/><s n="IV"/></l><r>påpeke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) cuigejin  (en gang)-->
@@ -34213,12 +34230,12 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>čuolbmalit<s n="V"/><s n="TV"/></l><r>knytte,<b/>knytte<b/>fort<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>čuoldit<s n="V"/><s n="TV"/></l><r>skille<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>čuollat<s n="V"/><s n="TV"/></l><r>hogge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) čuolan, (sii) čullet-->
-<e><p><l>čuomastuvvat<s n="V"/><s n="IV"/></l><r>tørkes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>čuomastuvvat<s n="V"/><s n="IV"/></l><r>tørke<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>čuopmat<s n="V"/><s n="TV"/></l><r>rubbe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>čuorpmastit<s n="V"/><s n="IV"/></l><r>hagle<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
 <e><p><l>čuorvut<s n="V"/><s n="TV"/></l><r>rope<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) čuorvvun, (sii) čurvot-->
 <e><p><l>čuovgat<s n="V"/><s n="TV"/></l><r>skinne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>cuovkanit<s n="V"/><s n="IV"/></l><r>knuses<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>cuovkanit<s n="V"/><s n="IV"/></l><r>knuse<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>čuovvulit<s n="V"/><s n="TV"/></l><r>følge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e slr="1"><p><l>čuovvolit<s n="V"/><s n="TV"/></l><r>følge<b/>etter<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e slr="2"><p><l>čuovvolit<s n="V"/><s n="TV"/></l><r>følge<b/>opp<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34245,7 +34262,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e c="MWE daguhit ieš => risikere? TODO" slr="1"><p><l>daguhit<s n="V"/><s n="TV"/></l><r>risikere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>dahkaluddat<s n="V"/><s n="IV"/></l><r>late<g><b/>som</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>dahkat<s n="V"/><s n="TV"/></l><r>gjøre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) dagan-->
-<e><p><l>dahppasit<s n="V"/><s n="IV"/></l><r>tilstoppes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) dagan-->
+<e><p><l>dahppasit<s n="V"/><s n="IV"/></l><r>tilstoppes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> <!--(mon) dagan-->
 <e><p><l>dáhkidit<s n="V"/><s n="TV"/></l><r>bekrefte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) dagan-->
 <e slr="1"><p><l>dáhkidit<s n="V"/><s n="TV"/></l><r>garantere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) dagan-->
 <e slr="2"><p><l>dáhkidit<s n="V"/><s n="TV"/></l><r>forsikre<g><b/>om</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) dagan-->
@@ -34297,7 +34314,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>deahpanit<s n="V"/><s n="IV"/></l><r>deformere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>deaimmáskit<s n="V"/><s n="IV"/></l><r>svime<b/>av<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>deaivat<s n="V"/><s n="TV"/></l><r>treffe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) deaivvan, (sii) deivet-->
-<e><p><l>deaivvadit<s n="V"/><s n="IV"/></l><r>møtes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>deaivvadit<s n="V"/><s n="IV"/></l><r>møtes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>dearbbadit<s n="V"/><s n="IV"/></l><r>pendle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>dearpalit<s n="V"/><s n="TV"/></l><r>klubbe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>dearpat<s n="V"/><s n="TV"/></l><r>slå<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34358,7 +34375,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>diđoštit<s n="V"/><s n="TV"/></l><r>innhente<b/>opplysninger<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>dieđihit<s n="V"/><s n="TV"/></l><r>meddele<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>diehtit<s n="V"/><s n="TV"/></l><r>vite<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) diđii, (sii) dihtet-->
-<e><p><l>dierrut<s n="V"/><s n="IV"/></l><r>tilsmusses<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>dierrut<s n="V"/><s n="IV"/></l><r>tilsmusses<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>dievasmahttit<s n="V"/><s n="TV"/></l><r>fullføre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>dievvat<s n="V"/><s n="IV"/></l><r>full<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>differensieret<s n="V"/><s n="TV"/></l><r>differensiere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34457,7 +34474,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>dovddastit<s n="V"/><s n="TV"/></l><r>innrømme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>dovddiidahttit<s n="V"/><s n="TV"/></l><r>identifisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>dovdnjet<s n="V"/><s n="TV"/></l><r>dekke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>dovdot<s n="V"/><s n="IV"/></l><r>føles<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>dovdot<s n="V"/><s n="IV"/></l><r>føles<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>dramatiseret<s n="V"/><s n="TV"/></l><r>dramatisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>draperet<s n="V"/><s n="TV"/></l><r>drapere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>drašeret<s n="V"/><s n="TV"/></l><r>drasjere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34521,8 +34538,8 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>ealáskit<s n="V"/><s n="IV"/></l><r>livne<g><b/>til</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>ealihit<s n="V"/><s n="TV"/></l><r>livberge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>eallit<s n="V"/><s n="IV"/></l><r>leve<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) ealán, (son) elii-->
-<e><p><l>earáhuvvat<s n="V"/><s n="IV"/></l><r>forandres<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>earránit<s n="V"/><s n="IV"/></l><r>skilles<s n="vblex"/><s n="pstv"/><s n="pers"/></r></p><par n="__verb"/></e> 
+<e><p><l>earáhuvvat<s n="V"/><s n="IV"/></l><r>forandre<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
+<e><p><l>earránit<s n="V"/><s n="IV"/></l><r>skilles<s n="vblex"/><s n="pstv"/><s n="pers"/></r></p><par n="pstv__verb"/></e> 
 <e><p><l>earuhit<s n="V"/><s n="TV"/></l><r>skille<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e slr="1"><p><l>earuhit<s n="V"/><s n="TV"/></l><r>skjelne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e slr="2"><p><l>earuhit<s n="V"/><s n="TV"/></l><r>differensiere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34696,12 +34713,12 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>fuođardit<s n="V"/><s n="TV"/></l><r>fore<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>fuoikut<s n="V"/><s n="TV"/></l><r>jamre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>fuolahit<s n="V"/><s n="TV"/></l><r>sørge<g><b/>for</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>fuolastuvvat<s n="V"/><s n="TV"/></l><r>bekymres<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>fuolastuvvat<s n="V"/><s n="TV"/></l><r>bekymre<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>fuolkkástallat<s n="V"/><s n="IV"/></l><r>kalle<b/>for<b/>slektning<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>fuollat<s n="V"/><s n="TV"/></l><r>bry<g><b/>om</g><s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e>
 <e><p><l>fuomášit<s n="V"/><s n="TV"/></l><r>oppdage<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>fuomášuhttit<s n="V"/><s n="TV"/></l><r>gjøre<b/>oppmerksom<b/>på<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>fuotnánit<s n="V"/><s n="IV"/></l><r>forverres<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>fuotnánit<s n="V"/><s n="IV"/></l><r>forverre<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>furageret<s n="V"/><s n="TV"/></l><r>furagere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>furašeret<s n="V"/><s n="TV"/></l><r>furasjere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>furneret<s n="V"/><s n="TV"/></l><r>furnere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34779,9 +34796,9 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>gávastit<s n="V"/><s n="IV"/></l><r>gjespe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>gávdnat<s n="V"/><s n="TV"/></l><r>finne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) gávnnai-->
 <e><p><l>gavdnjet<s n="V"/><s n="TV"/></l><r>jage<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>gávdnot<s n="V"/><s n="IV"/></l><r>finnes<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) gávdnojit-->
+<e><p><l>gávdnot<s n="V"/><s n="IV"/></l><r>finnes<s n="vblex"/><s n="impers"/></r></p><par n="pstv__verb"/></e> <!--(dat) gávdnojit-->
 <e><p><l>gávkat<s n="V"/><s n="TV"/></l><r>glane<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>gávnnadit<s n="V"/><s n="TV"/></l><r>møtes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+<e><p><l>gávnnadit<s n="V"/><s n="TV"/></l><r>møtes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> 
 <e><p><l>gávnnahaddat<s n="V"/><s n="IV"/></l><r>oppdage<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--hattai-->
 <e><p><l>gávnnahit<s n="V"/><s n="TV"/></l><r>finne<b/>ut<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>gávppahit<s n="V"/><s n="TV"/></l><r>handle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -34830,7 +34847,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>geavvat<s n="V"/><s n="IV"/></l><r>heve<s n="vblex"/><s n="impers"/></r></p><par n="refl__verb"/></e> 
 <e><p><l>geažidit<s n="V"/><s n="TV"/></l><r>antyde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>geažuhit<s n="V"/><s n="TV"/></l><r>antyde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>geđđot<s n="V"/><s n="IV"/></l><r>blendes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>geđđot<s n="V"/><s n="IV"/></l><r>blende<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>gefot<s n="V"/><s n="IV"/></l><r>fattig<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--(sii) gefojit-->
 <e><p><l>gehlát<s n="V"/><s n="IV"/></l><r>dra,<b/>trekke<b/>not<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>geiget<s n="V"/><s n="TV"/></l><r>strekke<g><b/>ut</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34862,7 +34879,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>giktit<s n="V"/><s n="TV"/></l><r>lokke<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) givttii-->
 <e><p><l>gildit<s n="V"/><s n="IV"/></l><r>glinse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>gildot<s n="V"/><s n="IV"/></l><r>få<b/>kurven<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>gilggodit<s n="V"/><s n="IV"/></l><r>misfarges<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>gilggodit<s n="V"/><s n="IV"/></l><r>misfarge<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>giljotineret<s n="V"/><s n="TV"/></l><r>giljotinere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>gillát<s n="V"/><s n="TV"/></l><r>tåle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e slr="1"><p><l>gillát<s n="V"/><s n="TV"/></l><r>lide<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -34899,7 +34916,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>goargŋut<s n="V"/><s n="IV"/></l><r>klatre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>goaridit<s n="V"/><s n="TV"/></l><r>vanskjøtte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>goarjut<s n="V"/><s n="IV"/></l><r>legge<g><b/>ned</g><s n="vblex"/><s n="impers"/></r></p><par n="refl__verb"/></e> <!--(dat) goarjjui, gorjot-->
-<e><p><l>goarránit<s n="V"/><s n="IV"/></l><r>vantrives<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>goarránit<s n="V"/><s n="IV"/></l><r>vantrives<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>goarrut<s n="V"/><s n="TV"/></l><r>sy<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) goarui, (sii) gorrot-->
 <e><p><l>goarvanit<s n="V"/><s n="IV"/></l><r>få<b/>posefasong<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e c="TODO caus?"><p><l>goastadit<s n="V"/><s n="TV"/></l><r>greie<b/>å<b/>få<b/>med<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e> 
@@ -34930,7 +34947,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>gollat<s n="V"/><s n="IV"/></l><r>gå<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>goluiduhttit<s n="V"/><s n="TV"/></l><r>kostnadsføre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>gomihit<s n="V"/><s n="TV"/></l><r>velte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>gopmánit<s n="V"/><s n="IV"/></l><r>veltes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>gopmánit<s n="V"/><s n="IV"/></l><r>velte<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>gopmirdit<s n="V"/><s n="TV"/></l><r>bukke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>gorgŋet<s n="V"/><s n="IV"/></l><r>klatre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) gorgŋejit  (en gang)-->
 <e><p><l>gosádit<s n="V"/><s n="IV"/></l><r>hoste<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--  (en gang)-->
@@ -34967,7 +34984,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>guldalit<s n="V"/><s n="TV"/></l><r>lytte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>gullat<s n="V"/><s n="TV"/></l><r>høre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>gullet<s n="V"/><s n="IV"/></l><r>fiske<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>gullot<s n="V"/><s n="IV"/></l><r>høres<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) gullojit-->
+<e><p><l>gullot<s n="V"/><s n="IV"/></l><r>høres<s n="vblex"/><s n="impers"/></r></p><par n="pstv__verb"/></e> <!--(dat) gullojit-->
 <e><p><l>gumppostit<s n="V"/><s n="TV"/></l><r>lage<b/>blodklubb<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>guođahit<s n="V"/><s n="TV"/></l><r>tilbakeholde<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>guoddalit<s n="V"/><s n="TV"/></l><r>klage<g><b/>på</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -35413,8 +35430,8 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>juolgguštit<s n="V"/><s n="IV"/></l><r>mobilisere<b/>etter<b/>sengeleie<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>juolludit<s n="V"/><s n="TV"/></l><r>avse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>juolludit<s n="V"/><s n="TV"/></l><r>avse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e c="TODO betre ord"><p><l>juollut<s n="V"/><s n="IV"/></l><r>at<b/>det<b/>er<b/>nok<b/>til<b/>overs<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--juolui, (dat) jullot-->
-<e c="TODO betre ord"><p><l>juollut<s n="V"/><s n="IV"/></l><r>at<b/>det<b/>er<b/>nok<b/>til<b/>overs<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--juolui, (dat) jullot-->
+<e c="TODO betre omsetjing"><p><l>juollut<s n="V"/><s n="IV"/></l><r>være<g>nok<b/>til<b/>overs</g><s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--juolui, (dat) jullot-->
+<e c="TODO betre omsetjing"><p><l>juollut<s n="V"/><s n="IV"/></l><r>være<g>nok<b/>til<b/>overs</g><s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--juolui, (dat) jullot-->
 <e c="isfiske? TODO"><p><l>juoŋastit<s n="V"/><s n="TV"/></l><r>fiske<b/>med<b/>garn<b/>under<b/>isen<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e c="isfiske? TODO"><p><l>juoŋastit<s n="V"/><s n="TV"/></l><r>fiske<b/>med<b/>garn<b/>under<b/>isen<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>jupmat<s n="V"/><s n="IV"/></l><r>larme<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) jumai-->
@@ -35703,8 +35720,8 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>lábmet<s n="V"/><s n="TV"/></l><r>skade<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>lađastallat<s n="V"/><s n="TV"/></l><r>analysere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>lađastallat<s n="V"/><s n="TV"/></l><r>analysere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>láddat<s n="V"/><s n="IV"/></l><r>modnes<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) láttai-->
-<e><p><l>láddat<s n="V"/><s n="IV"/></l><r>modnes<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) láttai-->
+<e><p><l>láddat<s n="V"/><s n="IV"/></l><r>modnes<s n="vblex"/><s n="impers"/></r></p><par n="pstv__verb"/></e> <!--(dat) láttai-->
+<e><p><l>láddat<s n="V"/><s n="IV"/></l><r>modnes<s n="vblex"/><s n="impers"/></r></p><par n="pstv__verb"/></e> <!--(dat) láttai-->
 <e><p><l>láddet<s n="V"/><s n="TV"/></l><r>legge<b/>til<b/>land<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) láddejit-->
 <e><p><l>láddet<s n="V"/><s n="TV"/></l><r>legge<b/>til<b/>land<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) láddejit-->
 <e><p><l>láddjet<s n="V"/><s n="TV"/></l><r>slå<g><b/>gras</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -35750,8 +35767,8 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>láikošit<s n="V"/><s n="IV"/></l><r>late<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e> 
 <e><p><l>láitit<s n="V"/><s n="TV"/></l><r>klandre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>láitit<s n="V"/><s n="TV"/></l><r>klandre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>láittastuvvat<s n="V"/><s n="IV"/></l><r>vantrives<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>láittastuvvat<s n="V"/><s n="IV"/></l><r>vantrives<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+<e><p><l>láittastuvvat<s n="V"/><s n="IV"/></l><r>vantrives<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> 
+<e><p><l>láittastuvvat<s n="V"/><s n="IV"/></l><r>vantrives<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> 
 <e><p><l>láivudit<s n="V"/><s n="TV"/></l><r>utvanne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>lakkeret<s n="V"/><s n="TV"/></l><r>lakkere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>lakkeret<s n="V"/><s n="TV"/></l><r>lakkere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -35867,8 +35884,8 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>lihkahit<s n="V"/><s n="TV"/></l><r>røre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>lihkkat<s n="V"/><s n="IV"/></l><r>stå<g><b/>opp</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. bevege seg-->
 <e><p><l>lihkkat<s n="V"/><s n="IV"/></l><r>stå<g><b/>opp</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--evt. bevege seg-->
-<e><p><l>lihkostuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--tuvai-->
-<e><p><l>lihkostuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--tuvai-->
+<e><p><l>lihkostuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> <!--tuvai-->
+<e><p><l>lihkostuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> <!--tuvai-->
 <e><p><l>liibmet<s n="V"/><s n="TV"/></l><r>lime<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>liibmet<s n="V"/><s n="TV"/></l><r>lime<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>liigudit<s n="V"/><s n="TV"/></l><r>avse<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -35921,8 +35938,8 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e slr="1"><p><l>lohkat<s n="V"/><s n="TV"/></l><r>lese<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e slr="2"><p><l>lohkat<s n="V"/><s n="TV"/></l><r>telle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e slr="2"><p><l>lohkat<s n="V"/><s n="TV"/></l><r>telle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>lohkkot<s n="V"/><s n="IV"/></l><r>avregnes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>lohkkot<s n="V"/><s n="IV"/></l><r>avregnes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+<e><p><l>lohkkot<s n="V"/><s n="IV"/></l><r>avregnes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> 
+<e><p><l>lohkkot<s n="V"/><s n="IV"/></l><r>avregnes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> 
 <e><p><l>lohpidit<s n="V"/><s n="TV"/></l><r>love<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>lohpidit<s n="V"/><s n="TV"/></l><r>love<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>loikat<s n="V"/><s n="IV"/></l><r>lunken<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e>
@@ -36141,8 +36158,8 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>medicineret<s n="V"/><s n="TV"/></l><r>medisinere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>medisineret<s n="V"/><s n="TV"/></l><r>medisinere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>medisineret<s n="V"/><s n="TV"/></l><r>medisinere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>meinnestuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>meinnestuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>meinnestuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
+<e><p><l>meinnestuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>meisset<s n="V"/></l><r>messing<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>meisset<s n="V"/></l><r>messing<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>mekaniseret<s n="V"/><s n="TV"/></l><r>mekanisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -36150,8 +36167,8 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>meleret<s n="V"/><s n="TV"/></l><r>melere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>memoreret<s n="V"/><s n="TV"/></l><r>memorere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>memoreret<s n="V"/><s n="TV"/></l><r>memorere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>menestuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--tuvai-->
-<e><p><l>menestuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--tuvai-->
+<e><p><l>menestuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> <!--tuvai-->
+<e><p><l>menestuvvat<s n="V"/><s n="IV"/></l><r>lykkes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> <!--tuvai-->
 <e><p><l>meriteret<s n="V"/><s n="TV"/></l><r>meritere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>meriteret<s n="V"/><s n="TV"/></l><r>meritere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>meritteret<s n="V"/><s n="TV"/></l><r>merittere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -36546,8 +36563,8 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>nuolahit<s n="V"/><s n="TV"/></l><r>avkle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>nuollat<s n="V"/><s n="TV"/></l><r>vikle<g><b/>opp</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>nuollat<s n="V"/><s n="TV"/></l><r>vikle<g><b/>opp</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>nuorrahuvvat<s n="V"/><s n="IV"/></l><r>sløves<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>nuorrahuvvat<s n="V"/><s n="IV"/></l><r>sløves<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>nuorrahuvvat<s n="V"/><s n="IV"/></l><r>sløve<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
+<e><p><l>nuorrahuvvat<s n="V"/><s n="IV"/></l><r>sløve<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>nuossat<s n="V"/><s n="IV"/></l><r>være<b/>i<b/>ne<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--nuosai-->
 <e><p><l>nuossat<s n="V"/><s n="IV"/></l><r>være<b/>i<b/>ne<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--nuosai-->
 <e><p><l>nuppástit<s n="V"/><s n="TV"/></l><r>forsømme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -36569,8 +36586,8 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>oaguhit<s n="V"/><s n="TV"/></l><r>forfølge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>oahcudit<s n="V"/><s n="TV"/></l><r>berolige<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>oahcudit<s n="V"/><s n="TV"/></l><r>berolige<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>oahcut<s n="V"/><s n="IV"/></l><r>beroliges<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>oahcut<s n="V"/><s n="IV"/></l><r>beroliges<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>oahcut<s n="V"/><s n="IV"/></l><r>beroliges<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
+<e><p><l>oahcut<s n="V"/><s n="IV"/></l><r>beroliges<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e c="om firbente dyr"><p><l>oahkut<s n="V"/><s n="IV"/></l><r>gå<g><b/>sakte</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e c="om firbente dyr"><p><l>oahkut<s n="V"/><s n="IV"/></l><r>gå<g><b/>sakte</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>oahpadit<s n="V"/><s n="TV"/></l><r>se<b/>til<b/>garn<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -36585,8 +36602,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>oahpásmuvvat<s n="V"/><s n="IV"/></l><r>kjenne<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>oahppat<s n="V"/><s n="TV"/></l><r>lære<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>oahppat<s n="V"/><s n="TV"/></l><r>lære<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>oaidnalit<s n="V"/><s n="IV"/></l><r>sees<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>oaidnalit<s n="V"/><s n="IV"/></l><r>sees<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>oaidnalit<s n="V"/><s n="IV"/></l><r>sees<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 
 <e><p><l>oaidnit<s n="V"/><s n="TV"/></l><r>se<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) oinnii-->
 <e><p><l>oaidnit<s n="V"/><s n="TV"/><s n="Der1"/><s n="Der_st"/><s n="V"/></l><r>skimte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -36617,7 +36633,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>ohcalit<s n="V"/><s n="TV"/></l><r>savne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>ohcat<s n="V"/><s n="TV"/></l><r>lete<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) ozan-->
 <e><p><l>oidit<s n="V"/><s n="TV"/></l><r>preferere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>oidnot<s n="V"/><s n="IV"/></l><r>synes<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--(dat) oidnojit-->
+<e><p><l>oidnot<s n="V"/><s n="IV"/></l><r>synes<s n="vblex"/><s n="impers"/></r></p><par n="pstv__verb"/></e> <!--(dat) oidnojit-->
 <e><p><l>okkulteret<s n="V"/><s n="IV"/></l><r>okkultere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>okkuperet<s n="V"/><s n="TV"/></l><r>okkupere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>oksideret<s n="V"/><s n="TV"/></l><r>oksidere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -36648,7 +36664,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>orostaddat<s n="V"/><s n="IV"/></l><r>stoppe<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e>
 <e><p><l>orrot<s n="V"/><s n="IV"/></l><r>bo<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>orrut<s n="V"/><s n="IV"/></l><r>bo<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e slr="1"><p><l>orrut<s n="V"/><s n="IV"/></l><r>synes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
+<e slr="1"><p><l>orrut<s n="V"/><s n="IV"/></l><r>synes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> 
 <e slr="2"><p><l>orrut<s n="V"/><s n="IV"/></l><r>bli<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e slr="3"><p><l>orrut<s n="V"/><s n="IV"/></l><r>være<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>orustahttit<s n="V"/><s n="TV"/></l><r>sette<b/>til<b/>side<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -36666,7 +36682,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>ovttaiduhttit<s n="V"/><s n="TV"/></l><r>integrere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>ovttasbargat<s n="V"/><s n="IV"/></l><r>samarbeide<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>ovttastahttit<s n="V"/><s n="TV"/></l><r>forene<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>ovttastuvvat<s n="V"/><s n="IV"/></l><r>forenes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>ovttastuvvat<s n="V"/><s n="IV"/></l><r>forene<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>pagineret<s n="V"/><s n="TV"/></l><r>paginere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>palataliseret<s n="V"/><s n="TV"/></l><r>palatalisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>palleteret<s n="V"/><s n="TV"/></l><r>palletere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -36948,7 +36964,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>revitaliseret<s n="V"/><s n="TV"/></l><r>revitalisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>revolteret<s n="V"/><s n="IV"/></l><r>revoltere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>revolušoneret<s n="V"/><s n="TV"/></l><r>revolusjonere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>ribadit<s n="V"/><s n="TV"/></l><r>strides<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>  <!-- // (om) -->
+<e><p><l>ribadit<s n="V"/><s n="TV"/></l><r>stride<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>  <!-- // (om) -->
 <e><p><l>ribahit<s n="V"/><s n="TV"/></l><r>bryte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e c="le?"><p><l>riedjadit<s n="V"/><s n="IV"/></l><r>skråle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e c="le?"><p><l>riedjat<s n="V"/><s n="IV"/></l><r>skråle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) riejai, (sii) ridjet-->
@@ -37112,14 +37128,14 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>serrateret<s n="V"/><s n="TV"/></l><r>serratere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>sertifiseret<s n="V"/><s n="TV"/></l><r>sertifisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>serveret<s n="V"/><s n="TV"/></l><r>servere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>servvoštallat<s n="V"/><s n="IV"/></l><r>omgås<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>servvoštallat<s n="V"/><s n="IV"/></l><r>omgås<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>sevlet<s n="V"/><s n="TV"/></l><r>sikte<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>sevnnjodit<s n="V"/><s n="IV"/></l><r>mørkne<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e>
 <e><p><l>šieđđaluvvat<s n="V"/><s n="IV"/></l><r>andpusten<s n="adj"/><s n="pers"/></r></p><par n="pass__verb"/></e> <!--luvai-->
 <e><p><l>šiehtadallat<s n="V"/><s n="IV"/></l><r>forhandle<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>šiehtadit<s n="V"/><s n="TV"/></l><r>avtale<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>šiehttat<s n="V"/><s n="TV"/></l><r>få<g><b/>plass</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>sierranit<s n="V"/><s n="IV"/></l><r>skilles<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>sierranit<s n="V"/><s n="IV"/></l><r>skilles<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>sifreret<s n="V"/><s n="TV"/></l><r>sifrere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>šiggut<s n="V"/><s n="TV"/></l><r>hysse<g><b/>på</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) šikkui-->
 <e><p><l>signaleret<s n="V"/><s n="TV"/></l><r>signalere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -37186,7 +37202,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>šlápmat<s n="V"/><s n="IV"/></l><r>støye<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>šláttardit<s n="V"/><s n="IV"/></l><r>sladre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>šleađgut<s n="V"/><s n="IV"/></l><r>blinke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>šleaŋgasit<s n="V"/><s n="IV"/></l><r>få<b/>skrens<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>šleaŋgasit<s n="V"/><s n="IV"/></l><r>skrense<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>šliipet<s n="V"/><s n="TV"/></l><r>slipe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) šliipejit-->
 <e><p><l>šlivget<s n="V"/><s n="TV"/></l><r>slenge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) šlivgejin (en gang)-->
 <e><p><l>šlivgut<s n="V"/><s n="TV"/></l><r>slenge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) šlivggun-->
@@ -37431,7 +37447,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>váikkuhit<s n="V"/><s n="TV"/></l><r>påvirke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>váillahit<s n="V"/><s n="TV"/></l><r>savne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>váilut<s n="V"/><s n="IV"/></l><r>mangle<s n="vblex"/><s n="impers"/></r></p><par n="__verb"/></e> <!--váillui-->
-<e><p><l>váivašuvvat<s n="V"/><s n="IV"/></l><r>plages<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--šuvai-->
+<e><p><l>váivašuvvat<s n="V"/><s n="IV"/></l><r>plages<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e> <!--šuvai-->
 <e><p><l>vajáldahttit<s n="V"/><s n="TV"/></l><r>glemme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vajálduhttit<s n="V"/><s n="TV"/></l><r>glemme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vaksineret<s n="V"/><s n="TV"/></l><r>vaksinere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -37464,7 +37480,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>vásihit<s n="V"/><s n="TV"/></l><r>erfare<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vássit<s n="V"/><s n="IV"/></l><r>svinne<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vástidit<s n="V"/><s n="TV"/></l><r>svare<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>vatnat<s n="V"/><s n="IV"/></l><r>tøyes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>vatnat<s n="V"/><s n="IV"/></l><r>tøye<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>váttásmahttit<s n="V"/><s n="TV"/></l><r>forvanske<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vatteret<s n="V"/><s n="TV"/></l><r>vattere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vavdadit<s n="V"/><s n="TV"/></l><r>henge<g><b/>fast</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -37477,7 +37493,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>veadjehahttit<s n="V"/><s n="TV"/></l><r>sannsynliggjøre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>veahkehit<s n="V"/><s n="TV"/></l><r>hjelpe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>  <!-- seg reflx. -->
 <e><p><l>veajahahttit<s n="V"/><s n="TV"/></l><r>klekke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>veajuiduhttit<s n="V"/><s n="TV"/></l><r>styrkes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>veajuiduhttit<s n="V"/><s n="TV"/></l><r>styrke<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>vealahit<s n="V"/><s n="TV"/></l><r>berøve<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>veallánit<s n="V"/><s n="IV"/></l><r>legge<s n="vblex"/><s n="pers"/></r></p><par n="refl__verb"/></e>  <!-- seg reflx. -->
 <e><p><l>veallát<s n="V"/><s n="IV"/></l><r>ligge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(sii) veallájit-->
@@ -37524,7 +37540,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>vispet<s n="V"/><s n="TV"/></l><r>vispe<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>viššalit<s n="V"/><s n="TV"/></l><r>gjø<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>viššat<s n="V"/><s n="TV"/></l><r>orke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>visttehuvvat<s n="V"/><s n="IV"/></l><r>miste<b/>muligheten<b/>for<b/>å<b/>få<b/>laks<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e c="TODO betre omsetjing"><p><l>visttehuvvat<s n="V"/><s n="IV"/></l><r>miste<g><b/>muligheten<b/>for<b/>å<b/>få<b/>laks</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vitaliseret<s n="V"/><s n="TV"/></l><r>vitalisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>vitaminiseret<s n="V"/><s n="TV"/></l><r>vitaminisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vivisekeret<s n="V"/><s n="TV"/></l><r>vivisekere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -37534,12 +37550,12 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>voltigeret<s n="V"/><s n="TV"/></l><r>voltigere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vomeret<s n="V"/><s n="TV"/></l><r>vomere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>voteret<s n="V"/><s n="IV"/></l><r>votere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>vuhttot<s n="V"/><s n="IV"/></l><r>spores<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>vuhttot<s n="V"/><s n="IV"/></l><r>spore<s n="vblex"/><s n="pers"/></r></p><par n="pass__verb"/></e>
 <e><p><l>vulgariseret<s n="V"/><s n="TV"/></l><r>vulgarisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vulkaniseret<s n="V"/><s n="TV"/></l><r>vulkanisere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vuoddját<s n="V"/><s n="IV"/></l><r>kjøre<b/>avsted<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vuođđudit<s n="V"/><s n="TV"/></l><r>grunnlegge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
-<e><p><l>vuođđuduvvat<s n="V"/><s n="IV"/></l><r>begrunnes<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>vuođđuduvvat<s n="V"/><s n="IV"/></l><r>begrunnes<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>vuodjat<s n="V"/><s n="IV"/></l><r>svømme<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(mon) vuojan, (sii) vudjet-->
 <e><p><l>vuodjit<s n="V"/><s n="TV"/></l><r>kjøre<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vuodjudit<s n="V"/><s n="TV"/></l><r>senke<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
@@ -37577,7 +37593,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>vuorbádit<s n="V"/><s n="TV"/></l><r>kaste<g><b/>lodd</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vuordit<s n="V"/><s n="TV"/></l><r>vente<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) vurddii-->
 <e><p><l>vuordnut<s n="V"/><s n="TV"/></l><r>sverge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
-<e><p><l>vuorjašuvvat<s n="V"/><s n="IV"/></l><r>plages<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e><p><l>vuorjašuvvat<s n="V"/><s n="IV"/></l><r>plages<s n="vblex"/><s n="pers"/></r></p><par n="pstv__verb"/></e>
 <e><p><l>vuorjat<s n="V"/><s n="TV"/></l><r>plage<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vuortnuhit<s n="V"/><s n="TV"/></l><r>plage<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
 <e><p><l>vuoruhit<s n="V"/><s n="TV"/></l><r>prioritere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
@@ -37590,7 +37606,7 @@ and cg-proc puts the syntax tag on the first unit (the verb). -->
 <e><p><l>vuovdit<s n="V"/><s n="TV"/></l><r>selge<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> <!--(son) vuvddii-->
 <e><p><l>vuovssadit<s n="V"/><s n="IV"/></l><r>spy<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>vuovssihit<s n="V"/><s n="TV"/></l><r>spy<s n="vblex"/><s n="impers"/></r></p><par n="caus__verb"/></e>
-<e><p><l>vuovssuhit<s n="V"/><s n="TV"/></l><r>få<b/>til<b/>å<b/>nå<b/>bunn<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
+<e c="caus=>få/la"><p><l>vuovssuhit<s n="V"/><s n="TV"/></l><r>nå<g><b/>bunn</g><s n="vblex"/><s n="pers"/></r></p><par n="caus__verb"/></e>
 <e><p><l>vurderet<s n="V"/><s n="TV"/></l><r>vurdere<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>vurdet<s n="V"/><s n="TV"/></l><r>ha<g><b/>i<b/>saltlake</g><s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e> 
 <e><p><l>vurket<s n="V"/><s n="TV"/></l><r>oppbevare<s n="vblex"/><s n="pers"/></r></p><par n="__verb"/></e>
