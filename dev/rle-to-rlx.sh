@@ -11,7 +11,7 @@ then
     exit 0;
 fi
 
-SYNLABELS=("OBJ→" "@-FOBJ→" "@-FSUBJ→" "@-F←OBJ" "@ADVL←" "@ADVL→" "@APP-ADVL←" "@APP-Num←" "@APP-N←" "@APP-Pron←" "@APP→Pron" "@A←" "@COMP-CS←" "@Num←" "@N←" "@OBJ→" "@OBJ→SPRED" "@OPRED→" "@P←" "@SPRED→" "@SPRED←OBJ" "@SUBJ→" "@SUBJ←ADVL" "@SUBJ←OBJ" "@→A" "@←ADVL" "@→ADVL" "@→N" "@→Num" "@←OBJ" "@←OPRED" "@→P" "@→Pron" "@Pron←" "@←SPRED" "@←SUBJ" "@→CC" "@←PPRED" "←uttv→" "←vdic→" "@-F←ADVL" "@-FADVL→")
+SYNLABELS=("OBJ→" "@ADVL←" "@ADVL→" "@APP-ADVL←" "@APP-Num←" "@APP-N←" "@APP-Pron←" "@APP→Pron" "@A←" "@COMP-CS←" "@Num←" "@N←" "@OBJ→" "@OBJ→SPRED" "@OPRED→" "@P←" "@SPRED→" "@SPRED←OBJ" "@SUBJ→" "@SUBJ←ADVL" "@SUBJ←OBJ" "@→A" "@←ADVL" "@→ADVL" "@→N" "@→Num" "@←OBJ" "@←OPRED" "@→P" "@→Pron" "@Pron←" "@←SPRED" "@←SUBJ" "@→CC" "@←PPRED" "←uttv→" "←vdic→" "@-FOBJ→" "@-FSUBJ→" "@-F←OBJ" "@-F←ADVL" "@-FADVL→" "@-F←SPRED" "@-FSPRED→" "@-F←OPRED" "@-FOPRED→")
 
 echo "Turning < and > into arrows in syntactic labels..."
 for A in ${SYNLABELS[*]}

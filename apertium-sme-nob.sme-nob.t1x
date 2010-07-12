@@ -412,6 +412,10 @@ TODO:
       <attr-item tags="@-FADVL"/>
       <attr-item tags="@-F←ADVL"/>
       <attr-item tags="@-FADVL→"/>
+      <attr-item tags="@-F←SPRED"/>
+      <attr-item tags="@-SPRED→"/>
+      <attr-item tags="@-F←OPRED"/>
+      <attr-item tags="@-OPRED→"/>
       <attr-item tags="@APP-N←"/>
     </def-attr>
   </section-def-attrs>
@@ -1377,7 +1381,8 @@ TODO: OK to just discard syn_label from pret.passives?">
     </rule>
     <rule comment="REGLA: SEASON YEAR
                    1990 giđa => våren 1990
-                   Always definite (should not add a determiner in t4x)">
+                   Always definite (should not add a determiner in t4x)
+                   Removes genitive from season (selected by numeral)">
       <pattern>
         <pattern-item n="year"/>
         <pattern-item n="season"/>
@@ -1401,7 +1406,6 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <lit-tag v="def"/>
-              <clip pos="2" side="tl" part="gen-case"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
             <b pos="1"/>
