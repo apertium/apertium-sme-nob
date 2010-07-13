@@ -105,6 +105,9 @@ SUBSTITUTE ("bivdit") ("bivdit:3") ("bivdit" V)((*0 NATURE-PLACE OR HUNT-ANIMAL 
 # orrut 0 = bo, 1 = synes, 2 = bli, 3 = være
 SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego") OR ActioEss) ;
 
+# guorrassit 0 = slutte seg, 1 = tilslutte seg
+SUBSTITUTE ("guorrasit") ("guorrasit:1") ("guorrasit" V IV) (NOT *0 Ill) ;
+# Ráđđehus guorrasii Gonagasa oaivilii => Regjeringen sluttet seg til Kongens mening
 
 # Noun rules
 # ----------
