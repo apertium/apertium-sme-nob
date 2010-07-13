@@ -150,6 +150,7 @@ dictionary didn't have the answers, feel free to improve...
 <sdef n="Der_halla" c="Passive derivation with illative agent"/>
 <sdef n="Der_Dimin" c="Diminutive derivation"/>
 <sdef n="Der3"     c="Derivation #3"/>
+<sdef n="Der_j"    c="V->Actor.N, V->V"/>
 <sdef n="Der_h"    c="causative??? TODO"/>
 <sdef n="Der_ahtti" c="causative??? TODO"/>
 <sdef n="Der_d"    c="reflexive??? TODO"/>
@@ -159,6 +160,7 @@ dictionary didn't have the answers, feel free to improve...
 <sdef n="Der_las"   c="V->Adj"/>
 <sdef n="Der_n"    c="general deverbal noun??? TODO"/>
 <sdef n="Der_eapmi" c="deverbal noun (action/process)"/>
+<sdef n="Der_muš"   c="deverbal noun (action/process)"/>
 <sdef n="Der_st"    c="general deverbal noun??? TODO"/>
 <sdef n="pass"     c="Passive"/>
 <sdef n="pstv"     c="Lexicalised passive (st-verb)"/>
@@ -521,8 +523,16 @@ The derived nob noun might not exist. -->
 <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
 <!-- Not sure what to do about this: -->
 <e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
+
 <!-- Double derivation (eg. geavahuvvomis), I think this is the best we can do: -->
-<e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
+<e><p><l><s n="Der2"/><s n="Der_PassL"/><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
+
+<!-- Double derivation (eg. huksejuvvui) -->
+<e><p><l><s n="Der1"/><s n="Der_j"/><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Inf"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
+<e><p><l><s n="Der1"/><s n="Der_j"/><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
+<e><p><l><s n="Der1"/><s n="Der_j"/><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Ind"/><s n="Prt"/></l><r><s n="pret"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
+<e><p><l><s n="Der1"/><s n="Der_j"/><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="PrfPrc"/></l><r><s n="pp"/></r></p></e>
+<e><p><l><s n="Der1"/><s n="Der_j"/><s n="Der2"/><s n="Der_PassL"/><s n="V"/><s n="Imprt"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
 
 <e><p><l><s n="Der_PassS"/><s n="V"/><s n="Inf"/></l><r><s n="inf"/><s n="pass"/></r></p></e>
 <e><p><l><s n="Der_PassS"/><s n="V"/><s n="Ind"/><s n="Prs"/></l><r><s n="pres"/><s n="pass"/></r></p><par n="__nbr_pers"/></e>
@@ -577,9 +587,18 @@ The derived nob noun might not exist. -->
 <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/><s n="Pl"/></l><r><s n="m"/><s n="pl"/><s n="pres"/></r></p></e>
 <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r><s n="m"/><s n="sg"/><s n="pres"/></r></p></e>
 
+<e><p><l><s n="Der1"/><s n="Der_j"/><s n="Der2"/><s n="Actor"/><s n="N"/><s n="Du"/></l><r><s n="m"/><s n="pl"/><s n="pres"/></r></p></e>
+<e><p><l><s n="Der1"/><s n="Der_j"/><s n="Der2"/><s n="Actor"/><s n="N"/><s n="Pl"/></l><r><s n="m"/><s n="pl"/><s n="pres"/></r></p></e>
+<e><p><l><s n="Der1"/><s n="Der_j"/><s n="Der2"/><s n="Actor"/><s n="N"/></l><r><s n="m"/><s n="sg"/><s n="pres"/></r></p></e>
+
 <e><p><l><s n="Der2"/><s n="Der_eapmi"/><s n="N"/><s n="Du"/></l><r><s n="nt"/><s n="pl"/><s n="inf"/></r></p></e>
 <e><p><l><s n="Der2"/><s n="Der_eapmi"/><s n="N"/><s n="Pl"/></l><r><s n="nt"/><s n="pl"/><s n="inf"/></r></p></e>
 <e><p><l><s n="Der2"/><s n="Der_eapmi"/><s n="N"/></l><r><s n="nt"/><s n="sg"/><s n="inf"/></r></p></e>
+
+<!-- Der_muš is stuff like uttale=>uttalelse, ville=>vilje; fallback is thus 'uttale', 'ville' -->
+<e><p><l><s n="Der3"/><s n="Der_muš"/><s n="N"/><s n="Du"/></l><r><s n="nt"/><s n="pl"/><s n="inf"/></r></p></e>
+<e><p><l><s n="Der3"/><s n="Der_muš"/><s n="N"/><s n="Pl"/></l><r><s n="nt"/><s n="pl"/><s n="inf"/></r></p></e>
+<e><p><l><s n="Der3"/><s n="Der_muš"/><s n="N"/></l><r><s n="nt"/><s n="sg"/><s n="inf"/></r></p></e>
 
 <!-- Modals, e.g. "Itgo boađáše?". We need the temps from boađáše, and the pro (nbr,pers) from "It"-->
 <e><p><l><s n="Cond"/><s n="Prs"/><s n="ConNeg"/></l><r><s n="pres"/></r></p></e>
@@ -623,7 +642,6 @@ The derived nob noun might not exist. -->
   <!-- Definitely not sure about this: -->
   <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
   <e><p><l><s n="Der1"/><s n="Der2"/><s n="Der_las"/><s n="A"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
-
   <!-- Present participle: attribute in relative sentences (suomagiela hálli => som snakker finsk / finsksnakkende) -->
   <e><p><l><s n="PrsPrc"/></l><r><s n="adj"/><s n="pprs"/></r></p></e>
   <!-- Verb genitive: manner -->
@@ -652,6 +670,7 @@ use this rule then (o/w Der_h in __verb adds the 'caus' tag)">
 <e><p><l></l><r><s n="pass"/></r></p><par n="__verb"/></e>
 </pardef>
 <pardef n="deverbal__n" c="by calling __n, we get more specific matches, making this override the entries in __verb">
+<e><p><l><s n="Der1"/><s n="Der_j"/><s n="Der2"/><s n="Actor"/><s n="N"/></l><r></r></p><par n="__n"/></e>
 <e><p><l><s n="Der2"/><s n="Actor"/><s n="N"/></l><r></r></p><par n="__n"/></e>
 <e><p><l><s n="Der3"/><s n="Der_n"/><s n="N"/></l><r></r></p><par n="__n"/></e>
 </pardef>
@@ -13630,7 +13649,7 @@ we just use __prn-case to transfer case and specify number here: -->
 <e><p><l>váldorádju<s n="N"/></l><r>hovedlager<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
 <e><p><l>váldoriggi<s n="N"/></l><r>hovedbæresystem<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
 <e><p><l>váldorolla<s n="N"/></l><r>hovedrolle<s n="n"/><s n="f"/></r></p><par n="__n"/></e>
-<e><p><l>váldoságastalli<s n="N"/></l><r>hovedinnleder<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+<e><p><l>váldoságastalli<s n="N"/><s n="Actor"/></l><r>hovedinnleder<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
 <e><p><l>váldosáhka<s n="N"/></l><r>hovedsak<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
 <e><p><l>váldosárdnideaddji<s n="N"/></l><r>hovedtaler<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
 <e><p><l>váldošiehtadus<s n="N"/></l><r>hovedavtale<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
