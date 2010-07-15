@@ -17,7 +17,7 @@ This is the first pass. Responsibilities of this file include:
   * See macro: out_nom
 * Insert prepositions based on case
   * These get their own chunk; t2x might have to remove them in co-ordination or post-position rules
-  * See macro: set_case-prep
+  * See macro: set_caseprep
 
 TODO:
 * Perhaps chunk simple periphrastic verb combinations (verb, vaux pp, vaux inf)
@@ -26,6 +26,9 @@ TODO:
 
 <transfer default="chunk">
   <section-def-cats>
+    <def-cat n="CLB">
+      <cat-item tags="CLB"/>
+    </def-cat>
     <def-cat n="adpos">
       <cat-item tags="Adp.*"/>
       <cat-item tags="Pr.*"/>
@@ -193,6 +196,7 @@ TODO:
       <attr-item tags="Der2.Actor"/>
       <attr-item tags="Der3.Der_n"/>
       <attr-item tags="Der2.Der_eapmi"/>
+      <attr-item tags="Der1.Der2.Der_halla"/>
     </def-attr>
     <def-attr n="a_sintagma">
       <attr-item tags="SN"/>
@@ -435,7 +439,7 @@ TODO:
     <def-var n="c_def_pos"      c="chunk defnes tag position"/>
     <def-var n="c_syn"          c="chunk syn_label"/>
     <def-var n="caseFirstWord"  c="typographic case of first word"/>
-    <def-var n="case-prep"      c="nob preposition (whole chunk) based on sme case"/>
+    <def-var n="caseprep"      c="nob preposition (whole chunk) based on sme case"/>
   </section-def-vars>
 
   <section-def-lists>
@@ -446,7 +450,8 @@ TODO:
       <list-item v="&lt;pp&gt;"/>
     </def-list>
     
-    <def-list n="loc-NIL-verbs" c="TODO: add tag to verb chunk with these verbs, use that tag in t3x to remove caseprep.PR.loc chunk
+    <def-list n="ill-NIL-verbs" c="We add the 'ill-NIL' tag to verb chunks with these verbs,
+                                   use that tag in t2x to remove the caseprep.PR.ill chunk
                                    TODO: use nob/tl verb instead?">
       <list-item v="oahpahit"/>
       <list-item v="guoskat"/>
@@ -456,22 +461,24 @@ TODO:
       <list-item v="čuojahit"/>
       <list-item v="liikot"/>
     </def-list>
-    <def-list n="ill-NIL-verbs" c="See 'loc-NIL-verbs' above.
-                                   (Note: recipient is moved behind theme in t2x (gi til meg gave => gi gave til meg),
-                                    and thus won't be affected by the planned t3x caseprep-removal,
-                                    maybe we don't need to do any caseprep-removal for illatives?)">
-      <list-item v="addit"/>
-      <list-item v="attestit"/>
-      <list-item v="oastit"/>
-      <list-item v="sáddet"/>
-      <list-item v="muitalit"/>
-      <list-item v="vuovdit"/>
-      <list-item v="čájehit"/>
+    <def-list n="ill-på-verbs" c="See 'ill-NIL-verbs' above.
+                                  Speech verbs, emotional(?) verbs">
+      <list-item v="čállit"/>
+      <list-item v="lohkat"/>
+      <list-item v="hállat"/>
+      <list-item v="suhttat"/>
+      <list-item v="luohttit"/>
+      <list-item v="jáhkkit"/>
     </def-list>
-    <def-list n="ill-av-verbs" c="See 'loc-NIL-verbs' above.
-                                  TODO: Should contain lexicalised Der_halla verbs (with illative agents)
-                                  TODO: also all Der_halla verbs have illative agents, thus should have 'av'">
+    <def-list n="ill-av-verbs" c="See 'ill-NIL-verbs' above.
+                                  TODO: Add all lexicalised Der_halla verbs (with illative agents)
+                                  (Verbs tagged Der_halla are added in out_verb)">
       <list-item v="TODO"/>
+    </def-list>
+    <def-list n="loc-for-verbs" c="See 'ill-NIL-verbs' above.">
+      <list-item v="ballat"/>
+      <list-item v="nohkkot"/>
+      <list-item v="váruhit"/>
     </def-list>
     
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
@@ -558,18 +565,18 @@ TODO:
       </when></choose>
     </def-macro>
     
-    <def-macro n="set_case-prep" npar="1"
+    <def-macro n="set_caseprep" npar="1"
                c="arg.1: noun, pronoun
                   -----
                   First attempt (may be changed in later stages).">
       <let>
-        <var n="case-prep"/><lit v=""/>
+        <var n="caseprep"/><lit v=""/>
       </let>
       <choose>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal></test>
           <let>
-            <var n="case-prep"/><lit v="på"/>
+            <var n="caseprep"/><lit v="på"/>
           </let>
           <choose><when>
             <test><or>
@@ -580,43 +587,43 @@ TODO:
               </and>
             </or></test>
             <let>
-              <var n="case-prep"/><lit v="i"/>
+              <var n="caseprep"/><lit v="i"/>
             </let>
           </when></choose>
           <choose><when>
             <test><equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@HAB"/></equal></test>
             <let>
-              <var n="case-prep"/><lit v=""/>
+              <var n="caseprep"/><lit v=""/>
             </let>
           </when></choose>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Com"/></equal></test>
           <let>
-            <var n="case-prep"/><lit v="med"/>
+            <var n="caseprep"/><lit v="med"/>
           </let>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></test>
           <let>
-            <var n="case-prep"/><lit v="som"/>
+            <var n="caseprep"/><lit v="som"/>
           </let>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ill"/></equal></test>
           <let>
-            <var n="case-prep"/><lit v="til"/>
+            <var n="caseprep"/><lit v="til"/>
           </let>
           <choose><when>
             <test><in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in></test>
             <let>
-              <var n="case-prep"/><lit v="på"/>
+              <var n="caseprep"/><lit v="på"/>
             </let>
           </when></choose>
           <choose><when>
             <test><in><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in></test>
             <let>
-              <var n="case-prep"/><lit v="i"/>
+              <var n="caseprep"/><lit v="i"/>
             </let>
           </when></choose>
         </when>
@@ -630,11 +637,11 @@ TODO:
                 <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
               </or></test>
               <let>
-                <var n="case-prep"/><lit v=""/>                <!--sin-->
+                <var n="caseprep"/><lit v=""/>                <!--sin-->
               </let>
             </when>
             <otherwise>
-              <let><var n="case-prep"/><lit v="til"/></let>
+              <let><var n="caseprep"/><lit v="til"/></let>
               <choose><when>
                 <test><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></test>
                 <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
@@ -646,16 +653,16 @@ TODO:
       <!-- Now output it: -->
       <choose>
         <when>
-          <test><not><equal><var n="case-prep"/><lit v=""/></equal></not></test>
+          <test><not><equal><var n="caseprep"/><lit v=""/></equal></not></test>
           <let>
-            <var n="case-prep"/>
+            <var n="caseprep"/>
             <concat>
               <lit v="^"/>
               <lit v="caseprep"/>
               <lit-tag v="PR"/>
               <clip pos="1" side="tl" part="case"/>
               <lit v="{^"/>
-              <var n="case-prep"/>
+              <var n="caseprep"/>
               <lit-tag v="pr"/>
               <lit v="$}$ "/>
             </concat>
@@ -667,6 +674,7 @@ TODO:
     <def-macro n="modify_pron_case" npar="1"
                c="arg.1: Pron (which might end up as a nob determiner)
                   -----
+                  If pron is the chunk head, make sure to call this after set_caseprep!
                   - Personal pronouns can only be nom or acc (note: @HAB / @-FSUBJ→ / @-FOBJ→ => nom),
                   - Demonstrative and indefinites can only be gen in nob,
                   - det.pos (personal genitives) have no case, but this is handled in transfer rules.">
@@ -901,11 +909,11 @@ TODO:
                   ASSUMES THAT pre-nom, c_name, defnes AND caseFirstWord HAVE BEEN SET!
                   This macro is used to output nominal heads, possibly prepended by determiners
                   or adjectives (stored in pre-nom). It uses the case of the argument to find the
-                  case-prep, outputting this before any det/adj's. The resulting chunk has the
+                  caseprep, outputting this before any det/adj's. The resulting chunk has the
                   syn_label of the nominal.
                   Removes nbr if given proper noun.">
-      <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
-      <out><var n="case-prep"/></out>
+      <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+      <out><var n="caseprep"/></out>
 
       <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
       <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
@@ -1060,6 +1068,38 @@ TODO:
                               temps may have changed by the above operations)
                   - insert reflexive if we have a 'ref' tag
 TODO: caseSecondWord ?">
+  
+      <choose c="Certain verbs interact with case prepositions, tag that here;
+                 if so change preposition in t3x.
+TODO: this is only added to 'real' main verb chunks so far, 
+should we add them to the finite chunk, or to all main predicates or what?">
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-NIL-verbs"/></in></test>
+          <let><var n="caseprep"/><lit-tag v="ill-NIL"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-på-verbs"/></in></test>
+          <let><var n="caseprep"/><lit-tag v="ill-på"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-av-verbs"/></in></test>
+          <let><var n="caseprep"/><lit-tag v="ill-av"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-for-verbs"/></in></test>
+          <let><var n="caseprep"/><lit-tag v="loc-for"/></let>
+        </when>
+        <when>
+          <test><or>
+            <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-av-verbs"/></in>
+            <ends-with><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der_halla"/></ends-with>
+          </or></test>
+          <let><var n="caseprep"/><lit-tag v="ill-av"/></let>
+        </when>
+        <otherwise c="No Change">
+          <let><var n="caseprep"/><lit-tag v="NC"/></let>
+        </otherwise>
+      </choose>
       
       <choose c="Prepend cnjsub if present progressive:
 TODO: better translation possible? ('drev og'? 'holdt på å'?)"><when>
@@ -1281,6 +1321,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                <tag><var n="caseprep"/></tag>
               </tags>
               <var n="pre-verb"/>
               <lu>
@@ -1429,10 +1470,10 @@ TODO: OK to just discard syn_label from pret.passives?">
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
-        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="prop" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -1461,10 +1502,10 @@ TODO: OK to just discard syn_label from pret.passives?">
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
-        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="prop_prop" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -1501,10 +1542,10 @@ TODO: OK to just discard syn_label from pret.passives?">
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
-        <call-macro n="set_case-prep"><with-param pos="3"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="3"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="prop_prop_prop" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -1549,7 +1590,7 @@ TODO: OK to just discard syn_label from pret.passives?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
         <choose><when>
           <test><not><equal><clip pos="2" side="tl" part="gen"/><lit v=""/></equal></not></test>
@@ -1557,7 +1598,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         </when></choose>
         
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="nom_prop" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -1597,7 +1638,7 @@ TODO: OK to just discard syn_label from pret.passives?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
-        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
         <choose><when>
           <test><not><equal><clip pos="3" side="tl" part="gen"/><lit v=""/></equal></not></test>
@@ -1605,7 +1646,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         </when></choose>
         
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="cmp_nom_prop" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -1659,7 +1700,7 @@ TODO: OK to just discard syn_label from pret.passives?">
 
     <rule comment="REGLA: NUM NOM_GEN_LNUM
                    -----
-                   Here the head (case-prep, syn_label) is the numeral!
+                   Here the head (caseprep, syn_label) is the numeral!
                    Numerals take genitive case, chunk case is numeral case,
                    so we don't use out_nom.
                    TODO: enforce double defnes? (de tre bilene)">
@@ -1668,7 +1709,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <pattern-item n="nom_gen_LNUM"/>
       </pattern>
       <action>
-        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <!-- Here we call set_defnes2 because after a numeral quantifier it should be indefinite -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro> 
         
@@ -1683,7 +1724,7 @@ TODO: OK to just discard syn_label from pret.passives?">
 
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="det_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -1719,7 +1760,7 @@ TODO: OK to just discard syn_label from pret.passives?">
 
     <rule comment="REGLA: NUM_MOD NOM
                    -----
-                   Oblique use of num nom, here the nominal is the head (case-prep, syn_label)
+                   Oblique use of num nom, here the nominal is the head (caseprep, syn_label)
                    so we use out_nom
                    (but we copy genitive-case and number from the numeral onto the nom).
                    TODO: should we really copy genitive-case over? ('lea vuosttaš prinsa 567 jahkái')">
@@ -2003,10 +2044,10 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
-        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="cmp_adj" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SA"/></tag>
@@ -2105,9 +2146,9 @@ TODO: OK to just discard syn_label from pret.passives?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         
-        <out><var n="case-prep"/></out>
+        <out><var n="caseprep"/></out>
         
         <choose>
           <when>
@@ -2206,12 +2247,12 @@ TODO: OK to just discard syn_label from pret.passives?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         
         <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
         
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="pron" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -2264,11 +2305,11 @@ TODO: OK to just discard syn_label from pret.passives?">
       <action>
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
 
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="det" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -2296,10 +2337,10 @@ TODO: OK to just discard syn_label from pret.passives?">
         <pattern-item n="pronitg"/>
       </pattern>
       <action>
-        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="pron" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -2326,12 +2367,12 @@ TODO: OK to just discard syn_label from pret.passives?">
         <pattern-item n="pronpers"/>
       </pattern>
       <action>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
 
-        <call-macro n="set_case-prep"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="pron" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -2787,10 +2828,10 @@ TODO: OK to just discard syn_label from pret.passives?">
 
         <let><var n="defnes"/><lit-tag v="def"/></let>
         
-        <call-macro n="set_case-prep"><with-param pos="2"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
 
         <out>
-          <var n="case-prep"/>
+          <var n="caseprep"/>
           <chunk name="det_adj" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SA"/></tag>
@@ -3398,6 +3439,25 @@ TODO: this should be an mwe in the analyser.">
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_adv"/>
               <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: CLB">
+      <pattern>
+        <pattern-item n="CLB"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="clb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="CLB"/></tag>
+              <tag><clip pos="1" side="tl" part="tags"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="whole"/>
             </lu>
           </chunk>
         </out>

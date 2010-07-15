@@ -162,6 +162,7 @@ dictionary didn't have the answers, feel free to improve...
 <sdef n="Der_eapmi" c="deverbal noun (action/process)"/>
 <sdef n="Der_muš"   c="deverbal noun (action/process)"/>
 <sdef n="Der_st"    c="general deverbal noun??? TODO"/>
+
 <sdef n="pass"     c="Passive"/>
 <sdef n="pstv"     c="Lexicalised passive (st-verb)"/>
 
@@ -222,14 +223,16 @@ dictionary didn't have the answers, feel free to improve...
 <sdef n="ep-e"    c="e-epenthesis"/>
 </sdefs>
 <pardefs>
-<pardef n="__prn-case">
+<pardef n="__prn-case" c="Although the actual pronoun turns into acc for most of these,
+                          we tag the caseprep with the 'real' case
+                          (so we can modify it in interchunk)">
 <e><p><l><s n="Nom"/></l><r><s n="nom"/></r></p></e>
 <e><p><l><s n="Acc"/></l><r><s n="acc"/></r></p></e>
 <e><p><l><s n="Gen"/></l><r><s n="gen"/></r></p></e>
-<e><p><l><s n="Com"/></l><r><s n="acc"/></r></p></e>
-<e><p><l><s n="Ess"/></l><r><s n="acc"/></r></p></e>
-<e><p><l><s n="Ill"/></l><r><s n="acc"/></r></p></e>
-<e><p><l><s n="Loc"/></l><r><s n="acc"/></r></p></e>
+<e><p><l><s n="Com"/></l><r><s n="com"/></r></p></e>
+<e><p><l><s n="Ess"/></l><r><s n="ess"/></r></p></e>
+<e><p><l><s n="Ill"/></l><r><s n="ill"/></r></p></e>
+<e><p><l><s n="Loc"/></l><r><s n="loc"/></r></p></e>
 <e><p><l/><r/></p></e>
 </pardef>
 <pardef n="pron__det">

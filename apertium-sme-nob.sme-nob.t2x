@@ -21,7 +21,7 @@ This is the second pass. Responsibilities of this file include:
   * See rule: SN ADPOS -> ADPOS SN
 * Removing prepositions when case is governed by adpositions
   * See rule: PR SN-post adpos
-* Removing essive case-prep ('som') after vcop
+* Removing essive caseprep ('som') after vcop
   * See rule: FV-cop PR-caseprep-ess
 * Removing Pcle.Qst and putting the Qst tag on the preceding chunk,
   so that they're treated as if there were no space
@@ -37,6 +37,9 @@ TODO:
 <interchunk>
 
   <section-def-cats>
+    <def-cat n="CLB">
+      <cat-item tags="CLB.*"/>
+    </def-cat>
     <def-cat n="SA">
       <cat-item tags="SA"/>
       <cat-item tags="SA.*"/>
@@ -184,6 +187,12 @@ TODO:
       <attr-item tags="ine"/>
       <attr-item tags="ela"/>
     </def-attr>
+    <def-attr n="a_caseprep_verb">
+      <attr-item tags="loc-NIL"/>
+      <attr-item tags="ill-NIL"/>
+      <attr-item tags="ill-av"/>
+      <attr-item tags="NC"/>
+    </def-attr>
     <def-attr n="art">
       <attr-item tags="def"/>
       <attr-item tags="ind"/>
@@ -270,6 +279,7 @@ TODO:
 
   <section-def-vars>
     <def-var n="tmpcase" c="tmp variable for switch_cases"/>
+    <def-var n="caseprep_verb" c="For changing/removing prepositions based on verb argument structure"/>
     <def-var n="c_name"/>
     <def-var n="c_tags"/>
     <def-var n="ana_temps" c="set by FV's, used on TD's"/>
@@ -357,6 +367,14 @@ TODO:
       </when></choose>
     </def-macro>
 
+    <def-macro n="set_caseprep" npar="1"
+               c="arg.1: verb">
+      <choose><when>
+        <test><not><equal><clip pos="1" part="a_caseprep_verb"/><lit v=""/></equal></not></test>
+        <let><var n="caseprep_verb"/><clip pos="1" part="a_caseprep_verb"/></let>
+      </when></choose>
+    </def-macro>
+
     <def-macro n="apply_ana_gen" npar="1"
                c="arg.1: SN or verb
                   -----
@@ -409,7 +427,8 @@ TODO:
                     * If gender is nt or we're given a verb, store nt in 'ana_gen' only;
                   - If sg/pl: set 'ana_nbr'
 
-                  Call 'apply_ana_gen' regardless (in case we have a GD).">
+                  Call 'apply_ana_gen' regardless (in case we have a GD).
+                  Call 'set_caseprep' regardless">
       <choose><when>
         <test><or>
           <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
@@ -448,7 +467,8 @@ TODO:
         </when></choose>
       </when></choose>
       
-      <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>  
+      <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
+      <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>  
     </def-macro>
     
   </section-def-macros>
@@ -730,9 +750,83 @@ TODO: does this generalise or should we remove the whole mechanism?">
       </pattern>
       <action>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <choose>
+          <when>
+            <test><and>
+              <equal><var n="caseprep_verb"/><lit-tag v="ill-på"/></equal>
+              <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
+            </and></test>
+            <out>
+              <chunk>
+                <concat>
+                  <lit v="caseprep"/>
+                  <lit-tag v="PR"/>
+                  <clip pos="1" part="case"/>
+                  <lit v="{^"/>
+                  <lit v="på"/>
+                  <lit-tag v="pr"/>
+                  <lit v="$}"/>
+                </concat>
+              </chunk>
+              <b pos="1"/>
+            </out>
+          </when>
+          <when>
+            <test><and>
+              <equal><var n="caseprep_verb"/><lit-tag v="ill-av"/></equal>
+              <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
+            </and></test>
+            <out>
+              <chunk>
+                <concat>
+                  <lit v="caseprep"/>
+                  <lit-tag v="PR"/>
+                  <clip pos="1" part="case"/>
+                  <lit v="{^"/>
+                  <lit v="av"/>
+                  <lit-tag v="pr"/>
+                  <lit v="$}"/>
+                </concat>
+              </chunk>
+              <b pos="1"/>
+            </out>
+          </when>
+          <when>
+            <test><and>
+              <equal><var n="caseprep_verb"/><lit-tag v="loc-for"/></equal>
+              <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
+            </and></test>
+            <out>
+              <chunk>
+                <concat>
+                  <lit v="caseprep"/>
+                  <lit-tag v="PR"/>
+                  <clip pos="1" part="case"/>
+                  <lit v="{^"/>
+                  <lit v="for"/>
+                  <lit-tag v="pr"/>
+                  <lit v="$}"/>
+                </concat>
+              </chunk>
+              <b pos="1"/>
+            </out>
+          </when>
+          <otherwise>
+            <choose><when>
+              <test><not>
+                <and>
+                  <equal><var n="caseprep_verb"/><lit-tag v="ill-NIL"/></equal>
+                  <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
+                </and>
+              </not></test>
+              <out>
+                <chunk><clip pos="1" part="whole"/></chunk>
+                <b pos="1"/>
+              </out>
+            </when></choose>
+          </otherwise>
+        </choose>
         <out>
-          <chunk><clip pos="1" part="whole"/></chunk>
-          <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
       </action>
@@ -766,7 +860,7 @@ TODO: does this generalise or should we remove the whole mechanism?">
       </action>
     </rule>
 
-    <!-- <rules: ditransitives -->
+    <!-- <rules: ditransitives (just switch order instead of removing caseprep) -->
     <rule comment="REGLA: PR-caseprep SN ROBJ (og RSPRED?)
                    -----
                    dutnje 60 000 ruvnnu =1> til deg 60 000 kroner =2> 60 000 kroner til deg">
@@ -1057,5 +1151,17 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
       </action>
     </rule>
     
+    <!-- <rules: Clause boundary -->
+    <rule comment="REGLA: CLB">
+      <pattern>
+        <pattern-item n="CLB"/>
+      </pattern>
+      <action>
+        <let><var n="caseprep_verb"/><lit v=""/></let>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
   </section-rules>
 </interchunk>
