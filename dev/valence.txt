@@ -1,9 +1,12 @@
 Interactions of Northern Sámi verbs with prepositions of adjuncts/arguments in Bokmål
 ====================================================================================
 
+TODO: mark which of the examples below are based on the noun, and
+which are based on verb.
+
 
 Summary of possible translations from sme case to nob preposition:
-============================================================
+==================================================================
 
 Illative => til (default), (inn) i, på, NIL, med, for, av, over
 
@@ -22,44 +25,13 @@ Essive => som, til, for/NIL, i
 Illative
 ==========
 
-Ill => NIL (Pers acc):
-----------------------
-oahpahit
-guoskat
-joavdat
-deaivat
-riŋget
-čuojahit
-liikot 
-
-  Mun liikon dutnje.
-- Jeg liker deg.
-+ Jeg liker til deg.
-
-  Eadni oahpaha nieidasis beaskka goarrut. 
-- Mora lærer dattera si å sy pesk.
-+ Mor lærer til jenta pesken å sy.
-
-  Spábba guoskkai čiekčái ja manai mollii.
-- Ballen berørte en fotballspiller og gikk i mål.
-+ Ballen berørte til fiskeørnen og han drog til målet.
-
-  Mun geahčastin áigetávvalii go jovden mollii.
-- Jeg så på tidtabellen da jeg ankom mål. (general translation)
-+ Jeg #se litt på *áigetávvalii når jeg #nå fram til målet.
-  
-  Son manai guđa viesus, ovdalgo deaivvai rivttes vissui.
-- Han gikk innom seks hus, før han traff riktig hus.
-+ Han drog i seks husenes, før han traff til det riktige huset.
-
-  Sire riŋgii sutnje, go lei geargan bihtáid bargamis.
-- Sire ringte (til) han, da hun var (blitt) ferdig med å gjøre lekser.
-+ #Sire ringte til ham, når det hadde blitt ferdig stykker å gjøre.
-
-Ill => NIL (Pers acc) + object:
-
-Ill => object + til:
+Ill => til, default:
 --------------------
+Noun-based exception-lists: ill-på, ill-i
+
+
+Ditransitives: either "V THEME til-REC" or "V NIL-REC THEME"
+
 addit 
 attestit
 oastit	
@@ -104,6 +76,46 @@ vuovdit
   Son čájeha midjiide mo galgat guliid čoallut.
 - Han viser (til) oss hvordan vi skal sløye fiskene. 
 + Han viser til oss #hvordan vi skal sløye fiskene. 
+
+
+Ill => NIL (Pers acc):
+----------------------
+oahpahit
+guoskat
+joavdat
+deaivat
+riŋget
+čuojahit
+liikot 
+
+  Mun liikon dutnje.
+- Jeg liker deg.
++ Jeg liker til deg.
+
+  Eadni oahpaha nieidasis beaskka goarrut. 
+- Mora lærer dattera si å sy pesk.
++ Mor lærer til jenta pesken å sy.
+
+  Spábba guoskkai čiekčái ja manai mollii.
+- Ballen berørte en fotballspiller og gikk i mål.
++ Ballen berørte til fiskeørnen og han drog til målet.
+
+  Mun geahčastin áigetávvalii go jovden mollii.
+- Jeg så på tidtabellen da jeg ankom mål. (general translation)
++ Jeg #se litt på *áigetávvalii når jeg #nå fram til målet.
+  
+  Son manai guđa viesus, ovdalgo deaivvai rivttes vissui.
+- Han gikk innom seks hus, før han traff riktig hus.
++ Han drog i seks husenes, før han traff til det riktige huset.
+
+  Sire riŋgii sutnje, go lei geargan bihtáid bargamis.
+- Sire ringte (til) han, da hun var (blitt) ferdig med å gjøre lekser.
++ #Sire ringte til ham, når det hadde blitt ferdig stykker å gjøre.
+
+
+Ill => NIL (Pers acc) + object:
+-------------------------------
+
 
 Ill => (inn) i/på:
 ------------------
@@ -181,27 +193,25 @@ Ill => på, due to noun:
 - (De) rike reiser på ferie hvert år.
 + Rike de reiser til ferien til hvert år.  
 
-Ill => på:
-----------
+Ill => på, due to verb:
+-----------------------
   Manne don geahčat munnje?
-- Hvorfor ser du på meg?
-+ Hvorfor ser du til meg?  
+  Hvorfor ser du på meg?
 
   Fertebeahtti jáhkkigoahtit dakkár balddonasmuitalusaide.
-- Dere to må begynne å tro på slike skremselfortellinger.
-+ Dere to må begynne å tro til slike skremselfortellingene.  
-
-  Juhán-gázzi báhcet gáddái.
-- Juhán og de andre ble igjen på stranden.
-+ *Juhán igjen til stranden.  
+  Dere to må begynne å tro på slike skremselfortellinger.
 
   Son bođii fáhkkestaga gievkkanii.
 - Han kom plutselig på kjøkkenet.
-+ Han kom *fáhkkestaga til kjøkkenet.  
++ Han kom #plutselig til kjøkkenet.
 
   Ollu nuorat čoahkkanit dáidda meassuide.
 - Mange ungdommer samler seg på denne festligheten.   
-+ De Mange ungdommene #samles kunsten *meassuide.
++ Mange ungdommene samles til disse #festlighet.
+
+  Juhán-gázzi báhcet gáddái.
+  Máhtte blir igjen på stranden.
+
 
 
 speech verbs (cg: VERBAL-ACTIVITY-V) + illativ (cg: LANGUAGE)
@@ -209,28 +219,23 @@ speech verbs (cg: VERBAL-ACTIVITY-V) + illativ (cg: LANGUAGE)
 lohkat
 
   Mun ohppen čállit dárogillii.
-- Jeg lærte å skrive på norsk.
-+ Jeg lærte å skrive til norsk.  
+  Jeg lærte å skrive på norsk.
 
   kánske mun galggan hállat dušše sámegillii 
-- kanskje jeg skal snakke bare på samisk   
-+ kanskje skal jeg snakke bare til samisk 
+  kanskje jeg skal snakke bare på samisk   
 
   mun dadjen dan sámegillii
-- jeg sa det på samisk
-+ jeg sa det til samisk
+  jeg sa det på samisk
 
 suhttat
 luohttit
 jáhkkit 
 
   Mun suhtan dutnje.
-- Jeg blir sint på deg.
-+ Jeg blir sint til deg.
+  Jeg blir sint på deg.
 
   Mun luohtán dutnje.
-- Jeg stoler på deg.
-+ Jeg #stole til deg.
+  Jeg stoler på deg.
 
 Ill => med: 
 -----------
@@ -272,16 +277,14 @@ oainnahallat - bli oppdaget
 vuojáhallat - bli påkjørt
 
   Mii fillehalaimet sidjiide.
-- Vi ble narret av dem.
-+ Vi #narre til dem.  
+  Vi ble narret av dem.
 
   Miessi borahalai gumpii.
 - Reinkalven ble spist av ulven.
 + Reinkalven matet seg til ulven.  
 
   Mánná gáskkáhalai beatnagii.
-- Barnet ble bitt av hunden.
-+ Barnet #bite til hunden.
+  Barnet ble bitt av hunden.
 
 Ill => over: 
 ------------
@@ -292,9 +295,13 @@ beahtahallat - bli skuffet
 + #Elle ble skuffet til handelmannen.  
 
 
+
 Locative
 ==========
-Loc => på:
+Loc => på, default for common nouns:
+------------------------------------
+Common noun-based exception-lists: loc-i
+
   Tine Chris Mathisen lea beassan leat mielde boazobargguin
   - Tine Chris Mathisen har fått være med på (i) reinarbeidet (arbeidet med rein). 
   + Tine Chris Mathisen har fått være med på reinarbeidene.
@@ -306,8 +313,38 @@ Loc => på:
   Čoahkkin lea eahkedis.
   Møtet er på kvelden.
 
+ 
+Loc => i, default for proper nouns:
+-----------------------------------
+Proper noun-based exception-lists: loc-på
+
+
+Loc => i (common nouns):
+------------------------
+
+  kánske mun galggan hállat dán kanálas 
+- kanskje skal jeg snakke i denne kanalen
++ kanskje skal jeg snakke på denne kanalen
+  
+  Sus leat golbma barggu, bivttasbuvddas ...
+- Hun/han har tre jobber, i klesbutikken ...
++ #Han har tre arbeid, på #klesbutikken...
+
+  Álggus Ipmil sivdnidii almmi ja eatnama.
++ I begynnelsen skapte skapte Gud himmelen og jorden.
+- På begynnelsen skapte skapte #Ipmil himmelen og jorden.
+
+  Jos válddát 60 poeaŋgga sámegielas,
+- Hvis du tar 60 poeng i samisk,
++ Hvis du tar 60 poeng på samisk,
+
+  Mun gal ceavzzán dus goargŋumis.	
+- Jeg klarer jeg vel mot deg i klatring.
++ Jeg klarer vel meg på deg klatrende.
+
 
 Loc => NIL:
+-----------
 ruoktu
 
   Áddjá lea ruovttus.
@@ -344,30 +381,8 @@ geargat + V Der/n N Loc  (=> å)
 + Jeg glemte skrivende.
 
 
-Loc => i:
-
-  kánske mun galggan hállat dán kanálas 
-- kanskje skal jeg snakke i denne kanalen
-+ kanskje skal jeg snakke på denne kanalen
-  
-  Sus leat golbma barggu, bivttasbuvddas ...
-- Hun/han har tre jobber, i klesbutikken ...
-+ #Han har tre arbeid, på #klesbutikken...
-
-  Álggus Ipmil sivdnidii almmi ja eatnama.
-+ I begynnelsen skapte skapte Gud himmelen og jorden.
-- På begynnelsen skapte skapte #Ipmil himmelen og jorden.
-
-  Jos válddát 60 poeaŋgga sámegielas,
-- Hvis du tar 60 poeng i samisk,
-+ Hvis du tar 60 poeng på samisk,
-
-  Mun gal ceavzzán dus goargŋumis.	
-- Jeg klarer jeg vel mot deg i klatring.
-+ Jeg klarer vel meg på deg klatrende.
-
-
 Loc => for:
+-----------
 ballat
 nohkkot
 váruhit
@@ -392,6 +407,8 @@ sihtat + Der/n N Loc
   
 
 Loc => fra:
+-----------
+
 N Loc + N Ill eller cg-settet DOHKO  (adverbs with a illativic form, but they don´t get Ill as a tag.)
 
 ruokto Loc + Ill eller DOHKO
@@ -425,6 +442,7 @@ eret
 
 
 Loc => av:
+----------
 dolkat + både N og + V Der/n N Loc (=> av å)  
 váibat + både N og + V Der/n N Loc  (=> av å)
 
@@ -461,6 +479,8 @@ cg-sett   MATERIAL
 
 
 Loc => om:
+----------
+
 beroštit
 fuollat
 
@@ -474,6 +494,8 @@ fuollat
 
 
 Loc => mot:
+-----------
+
 ceavzit
 bihtit
 
@@ -486,6 +508,7 @@ bihtit
 + Du klarer ikke på meg.
 
 Loc + leat => har:
+------------------
 @HAB
 
   Mánás orru leamen borranmiella.	
@@ -506,11 +529,16 @@ Loc + leat => har:
 
 
 Loc => hos:
+-----------
+
   Susánná lei mus biigán diibmá.	
 - Susánná var hos meg som tjenestejente i fjor.
 + #Susánná var på meg som tjenestejente i fjor.
 
+
 Loc => med:
+-----------
+
 ádjánit + V Der/n N Loc
 
   Sii ádjánedje boahtimis.
@@ -521,28 +549,9 @@ Loc => med:
 Essive
 ==========
 
-Ess => til:
-  Moraš šattai illun.
-- Sorg ble til glede.
-+ Sorgen ble som glede.
+Ess => som, default:
+--------------------
 
-Ess => for/NIL:
-  Son gohčoduvvui Mihkkalažžan. 
-- Han ble kalt (for) Mihkkalaš.
-+ Det ble kalt som #Mihkkalaš.
-
-Ess => NIL:
-
-  Máret beasai dálu eamidin.
-- Máret fikk bli gårdens kone. Máret fikk være som gårdens kone.
-+ Máret fikk som gårdens kone.
-
-  Guovdageaidnulaš Jostein Biti šattai Eurohpameašttirin skohtergilvvus.	
-- Kautkeino-væring J B ble europamester i scooterkonkurransen.
-+ Kautokeino Jostein #Biti ble *Eurohpameašttirin på scooterkonkurransen.
-
-
-Ess => som:
   Son lea taksivuoddjin Oslos. 
 - Han arbeider som taxisjåfør i Oslo
 + Han er taxikjører i Oslo
@@ -560,8 +569,35 @@ Ess => som:
 + Vi fikk *moaddása som hjelp.
 
 
+Ess => til:
+-----------
+
+  Moraš šattai illun.
+- Sorg ble til glede.
++ Sorgen ble som glede.
+
+Ess => for/NIL:
+---------------
+
+  Son gohčoduvvui Mihkkalažžan. 
+- Han ble kalt (for) Mihkkalaš.
++ Det ble kalt som #Mihkkalaš.
+
+Ess => NIL:
+-----------
+
+  Máret beasai dálu eamidin.
+- Máret fikk bli gårdens kone. Máret fikk være som gårdens kone.
++ Máret fikk som gårdens kone.
+
+  Guovdageaidnulaš Jostein Biti šattai Eurohpameašttirin skohtergilvvus.	
+- Kautkeino-væring J B ble europamester i scooterkonkurransen.
++ Kautokeino Jostein #Biti ble *Eurohpameašttirin på scooterkonkurransen.
+
 
 Ess => i:
+---------
+
 ESS-ADVL-N
 
   Čuoikan olmmoš bálle rággasa siste oađđit ráfis.	
@@ -585,13 +621,16 @@ ESS-ADVL-N
 - Steikende han kan ikke skulle på kontoret sitte.
 
 
+
 Comitative
 ==========
 
-Com => med default
-
+Com => med, default:
+--------------------
 
 Com => og
+---------
+
 guovttos
 guovttis
 
@@ -605,6 +644,8 @@ guovttis
 
 
 Com => NIL
+----------
+
 vuodjit + VEHICLE
 
   Eadni vuojihii ádjá, dasgo son ii máhttán ieš vuodjit biillain.	
@@ -618,9 +659,16 @@ deaivvadit
 
 
 
-Genetive
+Genitive
 ========
-Gen =>  's
+Gen => til, default:
+--------------------
+Exception for @→N, @→A or det.pos: NIL 
+(no preposition, keep genitive case)
+
+
+Gen =>  's (NIL, keep genitive case):
+-------------------------------------
 
   Boarráseamos oahppit váldet govaid skuvlla ruovttusiidui.	
 - De eldste elevene tar bilder til skolens hjemmeside.
@@ -632,7 +680,9 @@ Gen =>  's
 
 
 
-Gen => NIL
+Gen => NIL (and remove genitive case):
+--------------------------------------
+
 cg-sets TIME, ROUTE
 
 
@@ -662,6 +712,8 @@ Pr, Po
 
 
 Gen => Pl
+---------
+
 Num + Gen
 
   Gáivuonas su áhčis leat guokte oambeali ja okta vilbealli.	
@@ -669,21 +721,38 @@ Num + Gen
 + i Kåfjord har hans far to #kusine  og  #en fetter.
 
 Gen => som
+----------
+
 Gen + Actio Gen + N
 
   Máreha čállin girji lei hui buorre.	
 + Boka som Máret hadde skrevet, var svært bra.
 + boka som Máret hadde skrevet det var svært bra.
 
+The Agent Construction is treated by special t1x transfer rules, see:
+- REGLA: PRONPERSGEN VACTIO NOM
+- REGLA: NOM_GEN VACTIO NOM
+
+Merging relative clauses into one chunk is a job for t2x, still on the
+TODO list, but that would get rid of the erroneous pro-drop-insertion
+in the above example.
+
 Gen => om
+---------
+
 ukedager
   Bearjadaga ja lávvordaga leat feasttat.	
 - Om fredagen og lørdagen er det fester.
 + til Fredagen og lørdagen er de fester.
 
-==========================
+
+
+Accusative
+==========
 
 Acc => om
+---------
+
 speech verb
 niegadit
 jurddašit
@@ -695,8 +764,9 @@ jurddašit
 
   
 
-Movement verbs
-============================================================  
+Movement verbs + locative vs illiative
+======================================
+
 movement verbs + lok
     - vuolgit + GÁLDU (lok) - fra
     - vuolgit + MEARRI (ill) - til
@@ -731,12 +801,16 @@ Fixed expressions:
 ============================================================
 
 X.Gen oktavuođas.Loc => i forbindelse med X:
+--------------------------------------------
+
   Ihttin son lea modealla ja čájeha bivttasmálle Kárášjogas beassážiid oktavuođas (beassážat is a Pl.noun)
 - I morgen er han modell og viser klesmote i Karasjok i forbindelse med påsken
 + I morgen er han *modealla og viser #klesmønstret i Karasjok i påskenes forbindelse
 
 
 X.Gen mielas.Loc => i/etter X.Gen mening/oppfatning / X syns:
+-------------------------------------------------------------
+
   su mielas leat bohccot fávrros eallit
 - etter hans oppfatning er rein vakre dyr
 + i hans oppfatning er reiner @fávru leve
@@ -748,6 +822,8 @@ as default for Loc, it might be better to just keep a lemma-list of
 
 
 dasa.Ill lassin.Ess => i tillegg (til det):
+-------------------------------------------
+
   ja dasa lassin bargá golmma barggus
 - og dessuten arbeider hun i tre jobber
 + og til det som tillegg gjør han på tre arbeidenes

@@ -468,12 +468,25 @@ TODO:
       <list-item v="hállat"/>
       <list-item v="suhttat"/>
       <list-item v="luohttit"/>
+      <list-item v="dorvvastit"/>
       <list-item v="jáhkkit"/>
+      <list-item v="geahččat"/>
+      <list-item v="báhcit"/>
+      <list-item v="boahtit"/>
     </def-list>
     <def-list n="ill-av-verbs" c="See 'ill-NIL-verbs' above.
                                   TODO: Add all lexicalised Der_halla verbs (with illative agents)
                                   (Verbs tagged Der_halla are added in out_verb)">
-      <list-item v="TODO"/>
+      <list-item v="fillehallat"/>
+      <list-item v="borahallat"/>
+      <list-item v="gáskkáhallat"/>
+      <list-item v="dorohallat"/>
+      <list-item v="bovttáhallat"/>
+      <list-item v="bealkkáhallat"/>
+      <list-item v="rissehallat"/>
+      <list-item v="gávnnahallat"/>
+      <list-item v="oainnahallat"/>
+      <list-item v="vuojáhallat"/>
     </def-list>
     <def-list n="loc-for-verbs" c="See 'ill-NIL-verbs' above.">
       <list-item v="ballat"/>
@@ -821,6 +834,7 @@ TODO:
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
+            <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
           </or></test>
 	  <let><var n="defnes"/><lit-tag v="ind"/></let>
 	</when>
@@ -1070,9 +1084,9 @@ TODO:
 TODO: caseSecondWord ?">
   
       <choose c="Certain verbs interact with case prepositions, tag that here;
-                 if so change preposition in t3x.
-TODO: this is only added to 'real' main verb chunks so far, 
-should we add them to the finite chunk, or to all main predicates or what?">
+                 if so change preposition in t2x.
+This tag is added to both main predicate chunks (except noun, TODO)
+and to Conditional, Causative and and Passive chunks, just to make sure...">
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-NIL-verbs"/></in></test>
           <let><var n="caseprep"/><lit-tag v="ill-NIL"/></let>
@@ -1151,6 +1165,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?)"><when>
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              <tag><var n="caseprep"/></tag>
             </tags>
             <lu>
               <var n="tmp"/>
@@ -1180,6 +1195,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              <tag><var n="caseprep"/></tag>
             </tags>
             <lu>
               <lit v="la"/>
@@ -1200,6 +1216,8 @@ TODO: OK to just discard syn_label from pret.passives?">
             <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal>
             <or>
               <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
+              <not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not>
+              <not><equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal></not>
               <not><equal><clip pos="1" side="tl" part="a_pstv"/><lit v=""/></equal></not>
               <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
               <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></equal>
@@ -1221,6 +1239,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                <tag><var n="caseprep"/></tag>
               </tags>
               <lu>
                 <lit v="bli"/>
@@ -1254,6 +1273,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                <tag><var n="caseprep"/></tag>
               </tags>
               <var n="pre-verb"/>
               <lu>
@@ -1287,6 +1307,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                 <tag><var n="c_gen"/></tag>
                 <tag><var n="c_nbr"/></tag>
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                <tag><var n="caseprep"/></tag>
               </tags>
               <var n="pre-verb"/>
               <lu>
