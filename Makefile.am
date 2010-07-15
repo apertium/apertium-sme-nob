@@ -47,12 +47,25 @@ $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
 	if [ ! -d .deps ]; then mkdir .deps; fi
 	hfst-twolc -r -i dev/xfst2apertium.hashtags.twol -o $@
 
-$(PREFIX1).automorf.hfst: $(PREFIX2).autogen.hfst dev/xfst2apertium.relabel .deps/xfst2apertium.useless.twol.hfst .deps/xfst2apertium.hashtags.twol.hfst
-	hfst-invert $(PREFIX2).autogen.hfst -o $@.1.tmp
-	hfst-compose-intersect -l $@.1.tmp .deps/xfst2apertium.useless.twol.hfst -o $@.2.tmp
-	hfst-compose-intersect -l $@.2.tmp .deps/xfst2apertium.hashtags.twol.hfst -o $@.3.tmp
-	hfst-substitute -F dev/xfst2apertium.relabel -i $@.3.tmp -o $@
-	@rm $@.1.tmp $@.2.tmp $@.3.tmp
+## Split this up into several goals while we're still developing, making this takes too long :/
+# $(PREFIX1).automorf.hfst: $(PREFIX2).autogen.hfst dev/xfst2apertium.relabel .deps/xfst2apertium.useless.twol.hfst .deps/xfst2apertium.hashtags.twol.hfst
+# 	hfst-invert $(PREFIX2).autogen.hfst -o $@.1.tmp
+# 	hfst-compose-intersect -l $@.1.tmp .deps/xfst2apertium.useless.twol.hfst -o $@.2.tmp
+# 	hfst-compose-intersect -l $@.2.tmp .deps/xfst2apertium.hashtags.twol.hfst -o $@.3.tmp
+# 	hfst-substitute -F dev/xfst2apertium.relabel -i $@.3.tmp -o $@
+# 	@rm $@.1.tmp $@.2.tmp $@.3.tmp
+
+.deps/$(PREFIX1).automorf.inverted.hfst: $(PREFIX2).autogen.hfst
+	hfst-invert $(PREFIX2).autogen.hfst -o $@
+
+.deps/$(PREFIX1).automorf.useless.hfst: .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst
+	hfst-compose-intersect -l .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst -o $@
+
+.deps/$(PREFIX1).automorf.hashtags.hfst: .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst
+	hfst-compose-intersect -l .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst -o $@
+
+$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst dev/xfst2apertium.relabel
+	hfst-substitute -F dev/xfst2apertium.relabel -i .deps/$(PREFIX1).automorf.hashtags.hfst -o $@
 
 $(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
 	hfst-lookup-optimize -i $(PREFIX1).automorf.hfst -o $@
