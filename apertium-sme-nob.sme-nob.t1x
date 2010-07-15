@@ -475,6 +475,7 @@ TODO:
     </def-list>
     
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
+      <list-item v="skuff"/>
       <list-item v="begynnelse"/>
       <list-item v="oppfatning"/>
       <list-item v="sammenheng"/>
@@ -2664,6 +2665,56 @@ TODO: OK to just discard syn_label from pret.passives?">
           </concat>
         </let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+    
+    <rule comment="REGLA: DET NOMCMP NOMCMP NOM
+                   du idjabeavdeskuffas => i din nattbordskuff">
+      <pattern>
+        <pattern-item n="det"/>
+        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pron_gen_nbr_art"><with-param pos="4"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        
+        <let><var n="c_name"/><lit v="det_cmp_cmp_"/></let>
+        <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <var n="pron_gen"/>
+              <var n="pron_nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <lit v="^"/>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_nom"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
      
