@@ -62,7 +62,7 @@ SECTION
 # beassat 0 = få, 1 = slippe, 2 = komme Refl til
 	## Sii leat beassan eallit dego gonagasat.
 
-SUBSTITUTE ("beassat") ("beassat:1") ("beassat" V) (1 (Der_n Loc) OR (Actio Loc)) ;
+SUBSTITUTE ("beassat") ("beassat:1") ("beassat" V) (1 (Der_n Loc) OR (Actio Loc) OR ("olggos") OR ("sisa")) ;
 	## Mun bessen vuolgimis.
 SUBSTITUTE ("beassat") ("beassat:2") ("beassat" V) (1 Ill) ;
 	## In beassan skuvlii dan beaivve.  Jeg kom meg ikke på skolen den dagen.
@@ -105,6 +105,10 @@ SUBSTITUTE ("bivdit") ("bivdit:3") ("bivdit" V)((*0 NATURE-PLACE OR HUNT-ANIMAL 
 # orrut 0 = bo, 1 = synes, 2 = bli, 3 = være
 SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego") OR ActioEss) ;
 
+# šaddat 0 = bli, 1 = vokse
+SUBSTITUTE ("šaddat") ("šaddat:1") ("šaddat" V IV) (1 ("bajás")) ;
+
+
 # guorrassit 0 = slutte seg, 1 = tilslutte seg
 SUBSTITUTE ("guorrasit") ("guorrasit:1") ("guorrasit" V IV) (NOT *0 Ill) ;
 # Ráđđehus guorrasii Gonagasa oaivilii => Regjeringen sluttet seg til Kongens mening
@@ -112,8 +116,10 @@ SUBSTITUTE ("guorrasit") ("guorrasit:1") ("guorrasit" V IV) (NOT *0 Ill) ;
 # Noun rules
 # ----------
 
+# miella 0 = sinn, 1 = oppfatning, 2 = behag
 SUBSTITUTE ("miella") ("miella:1") ("miella" N Sg Loc) (-1 @→N) ;
 # sinn => oppfatning (kan regelen vere meir generell?)
+SUBSTITUTE ("miella") ("miella:2") ("miella" N) (1 ("mielde")) ;
 
 # gonagas 0 = konge, 1 = kong
 SUBSTITUTE ("gonagas") ("gonagas:1") ("gonagas" N Sg) (1 NPropMal) ;
@@ -144,6 +150,9 @@ SUBSTITUTE ("stuibmi") ("stuibmi:1") ("stuibmi" N Sg) (-1 ("Álta") OR ("Álahea
 
 # Other parts of speech
 # ---------------------
+# ge 0 = også, 1 = heller
+SUBSTITUTE ("go") ("go:1") ("go" Pcle) (*-1 Neg BARRIER S-BOUNDARY) ;
+## In mun ge háliidivčče. In munge háliidivčče.
 
 
 SUBSTITUTE ("juohke") ("juohke:1") ("juohke" Pron Indef) (1 ("lágan") OR ("lágán")) ;
@@ -196,9 +205,9 @@ SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@SUBJ→)) ;
 SUBSTITUTE ("ieš") ("ieš:4") ("ieš" Pron Refl) (0 (@←ADVL)) (NOT -1 PronPers) ;
 # Mun jurddašin iežainan => jeg tenkte med _meg selv_
 
-# XXX LENE CHANGE THIS RULE BELOW XXX
-SUBSTITUTE ("cegget") ("cegget:1") ;
-# Mun ceggen vaikke ieš filbmafestivála
+# Po: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
+SUBSTITUTE ("mielde") ("mielde:3") ("mielde" Po) (-1 ("dárbu") OR ("miella")) ;
+# Don vieččat boaldinmuoraid dárbbu mielde.
 
 
 # Rules that change PoS (like slr entries, the targets must exist in bidix!)
