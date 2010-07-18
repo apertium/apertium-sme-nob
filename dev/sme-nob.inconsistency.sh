@@ -27,7 +27,7 @@ makepaste () {
 sed 's%<b/>% %g' |\
 sort | uniq |\
 tee ${ANALYSES} |\
-lt-proc -g sme-nob.autogen.bin > ${SURFACES} ;
+lt-proc -g ${DEV}/../sme-nob.autogen.bin > ${SURFACES} ;
     paste -d : ${SURFACES} ${ANALYSES}
 }    
 
