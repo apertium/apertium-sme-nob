@@ -147,6 +147,8 @@ SUBSTITUTE ("johtu") ("johtu:2") ("johtu" N Sg) (0 Ill) ;
 SUBSTITUTE ("stuibmi") ("stuibmi:1") ("stuibmi" N Sg) (-1 ("Álta") OR ("Álaheadju")) ;
 # til farten => i gang
 
+# goddi 0 = villrein, 1 = komite
+SUBSTITUTE (+goddi) (+goddi:1) (+goddi) ; # as a compound part
 
 # Other parts of speech
 # ---------------------
