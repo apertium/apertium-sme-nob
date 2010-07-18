@@ -1,15 +1,15 @@
-! This file moves the +G3 tag after the +N tag, and turns
+!! This file moves the +G3 tag after the +N tag, and turns
 !    vuođđogeađggit  vuođđu+N+SgNomCmp#geađgi+N+Pl+Nom
 !    vuođđogeađggit  vuođđo#geađgi+N+Pl+Nom
-! into
+!! into
 !    vuođđogeađggit  vuođđu+N+SgNomCmp#geađgi+N+Pl+Nom
 !    vuođđogeađggit  vuođđogeađgi+N+Pl+Nom
-! and
+!! and
 !    sámegiela       sápmi+SgGenCmp+N+SgGenCmp#giella+N+Sg+Gen
 !    sámegiela       sápmi+SgGenCmp+N+SgGenCmp#giella+N+Sg+Acc
 !    sámegiela       sápmi+SgGenCmp+PlGenCmp+N+SgGenCmp#giella+N+Sg+Gen
 !    sámegiela       sápmi+SgGenCmp+PlGenCmp+N+SgGenCmp#giella+N+Sg+Acc
-! into
+!! into
 !    sámegiela       sápmi+N+SgGenCmp#giella+N+Sg+Gen
 !    sámegiela       sápmi+N+SgGenCmp#giella+N+Sg+Acc
 
@@ -29,10 +29,18 @@ Alphabet
 %#:0
 %# ! Need this, since otherwise #-words not matched by our rule will disappear
 
-%+N
 %+Actor
+%+N
 %+A
 %+Attr
+%+V
+
+%+N:%+N%*
+%+A:%+A%*
+%+Attr:%+Attr%*
+%+V:%+V%*
+%+SgNomCmp:%+SgNomCmp%*
+%+SgGenCmp:%+SgGenCmp%*
 
 %+Cmpnd%+
 %+Cmpnd%+:0
@@ -113,7 +121,23 @@ KeepCmpAfter =			! could expand to include lemmas...
 %+Attr
 ;
 
+Unstarred =
+%+N
+%+A
+%+Attr
+%+V
+%+SgNomCmp
+%+SgGenCmp
+;
 
+Starred = 			! Remember to put them in relabel too!
+%+N%*
+%+A%*
+%+Attr%*
+%+V%*
+%+SgNomCmp%*	 ! SgNomCmp is turned into <Sg*><Nom*><Cmp> in relabel
+%+SgGenCmp%*	 ! SgGenCmp is turned into <Sg*><Gen*><Cmp> in relabel
+;
 
 Rules 
 
@@ -121,29 +145,43 @@ Rules
 "#-deletion after alphabetic characters"
 %#:0 <=> Alphabetic _ ;  
 
-! After inversion, we get
+!! After inversion, we get
 !    ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sáme#giella+N+Sg+Nom$
-! After this file, we get
+!! After this file, we get
 !    ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sámegiella+N+Sg+Nom$
-! After substitution/relabelling, we get
+!! After substitution/relabelling, we get
 !    ^sámegiella/sápmi<N><Sg><Gen><Cmp>+giella<N><Sg><Nom>/sámegiella<N><Sg><Nom>$
-! which after pretransfer turns into 
+!! which after pretransfer turns into 
 !    ^sápmi<N><Sg><Gen><Cmp>$ ^giella<N><Sg><Nom>$
 !    ^sámegiella<N><Sg><Nom>$
 
 
 "Delete compound tags (except Cmp/ShCmp) that weren't followed by an N or A tag"
-RemCmptag:0  <=>  \KeepCmpAfter  _  ; 
-! We don't remove +Cmp or +ShCmp tags since they follow lemmas, not +N or +A:
-! mielbargin      miel+ShCmp#bargat+V+TV+Der2+Actor+N+Ess
+RemCmptag:0  <=>  \[ KeepCmpAfter:? | 0:%+G3 ]  _  ; 
+!! We don't remove +Cmp or +ShCmp tags since they follow lemmas, not +N or +A:
+!    mielbargin      miel+ShCmp#bargat+V+TV+Der2+Actor+N+Ess
+!! The :? is needed since we may have eg. %+N:%+N%* there, also the
+!! below rules can insert a +G3 after a +N or a +N*
 
 "Delete compound tags at the beginning of words"
 RemWICmptag:0  <=>  [ # | #: ]  _  ; 
 
 
 "Add +G3 tag once after +N tag"
-0:%+G3  <=>  %+G3:?  %+N  _  [ \0:%+G3 | # | #: ]  ;
-! Will \0:%+G3 also match end-of-word? (In that case we can remove the disjunction)
+0:%+G3  <=>  %+G3:0  [ %+N | %+N:%+N%* ]   _    [ \0:%+G3 | # | #: ]  ;
+!! Will \0:%+G3 also match end-of-word? (In that case we can remove the disjunction)
 
 "Remove +G3 tag before +N tag"
-%+G3:0  <=>  _  %+N  ; 
+%+G3:0  <=>     _    [ %+N | %+N:%+N%* ]  ; 
+!! We may have %+N:%+N%* there due to the below rule
+
+
+!! Starring is commented out until we figure out a way to remove the
+!! stars again:
+
+! "Add stars to tags that appear before a compound border"
+! Unstarred:Starred  <=>  _ [ Unstarred:Starred ]* (0:%+G3 [ Unstarred:Starred ]*)  %#  ;
+!! The above rules may insert a +G3 after a starred N
+
+"Never add stars (need to figure out a way to remove them before bidix first)"
+Unstarred:Starred /<= _ ;
