@@ -190,6 +190,7 @@ TODO:
     <def-attr n="a_caseprep_verb">
       <attr-item tags="loc-NIL"/>
       <attr-item tags="loc-for"/>
+      <attr-item tags="loc-fra"/>
       <attr-item tags="ill-NIL"/>
       <attr-item tags="ill-av"/>
       <attr-item tags="ill-på"/>
@@ -806,6 +807,26 @@ TODO: does this generalise or should we remove the whole mechanism?">
                   <clip pos="1" part="case"/>
                   <lit v="{^"/>
                   <lit v="for"/>
+                  <lit-tag v="pr"/>
+                  <lit v="$}"/>
+                </concat>
+              </chunk>
+              <b pos="1"/>
+            </out>
+          </when>
+          <when>
+            <test><and>
+              <equal><var n="caseprep_verb"/><lit-tag v="loc-fra"/></equal>
+              <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
+            </and></test>
+            <out>
+              <chunk>
+                <concat>
+                  <lit v="caseprep"/>
+                  <lit-tag v="PR"/>
+                  <clip pos="1" part="case"/>
+                  <lit v="{^"/>
+                  <lit v="fra"/>
                   <lit-tag v="pr"/>
                   <lit v="$}"/>
                 </concat>

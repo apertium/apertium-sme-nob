@@ -86,13 +86,10 @@ TODO:
     </def-cat>
     <def-cat n="det" c="Pronouns most likely to end up as determiners">
       <cat-item tags="Pron.Pers.*.Gen.*"/>
+      <cat-item tags="Pron.Refl.Gen.*"/>
       <cat-item tags="Pron.Dem.*"/>
       <cat-item tags="Pron.Indef.*"/>
       <cat-item lemma="makkár" tags="Pron.Interr.*"/>
-    </def-cat>
-    <def-cat n="detpos_ADVL" c="Pronouns most likely to end up as det.pos">
-      <cat-item tags="Pron.Pers.*.Gen.@X"/>
-      <cat-item tags="Pron.Pers.*.Gen.@ADVL"/>
     </def-cat>
     <def-cat n="detdemqnt_gen">
       <cat-item tags="Pron.Dem.*.Gen.*"/>
@@ -471,6 +468,7 @@ TODO:
       <list-item v="dorvvastit"/>
       <list-item v="jáhkkit"/>
       <list-item v="geahččat"/>
+      <list-item v="guovlat"/>
       <list-item v="báhcit"/>
     </def-list>
     <def-list n="ill-av-verbs" c="See 'ill-NIL-verbs' above.
@@ -492,9 +490,13 @@ TODO:
       <list-item v="nohkkot"/>
       <list-item v="váruhit"/>
     </def-list>
+    <def-list n="loc-fra-verbs" c="See 'ill-NIL-verbs' above.">
+      <list-item v="gullat"/>
+    </def-list>
     
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
       <list-item v="skuff"/>
+      <list-item v="speil"/>
       <list-item v="begynnelse"/>
       <list-item v="oppfatning"/>
       <list-item v="sammenheng"/>
@@ -602,8 +604,15 @@ TODO:
               <var n="caseprep"/><lit v="i"/>
             </let>
           </when></choose>
-          <choose><when>
-            <test><equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@HAB"/></equal></test>
+          <choose><when c="Habitive, or reflexive of habitive">
+            <test><or>
+              <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@HAB"/></equal>
+              <and>
+                <equal><clip pos="1" side="sl" part="a_pron"/><lit-tag v="Pron"/></equal>
+                <equal><clip pos="1" side="sl" part="a_rel"/><lit-tag v="Refl"/></equal>
+                <equal><clip pos="1" side="sl" part="lemh"/><lit v="ieš:1"/></equal>
+              </and>
+            </or></test>
             <let>
               <var n="caseprep"/><lit v=""/>
             </let>
@@ -1103,6 +1112,10 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
           <let><var n="caseprep"/><lit-tag v="loc-for"/></let>
         </when>
         <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-fra-verbs"/></in></test>
+          <let><var n="caseprep"/><lit-tag v="loc-fra"/></let>
+        </when>
+        <when>
           <test><or>
             <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-av-verbs"/></in>
             <ends-with><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der_halla"/></ends-with>
@@ -1373,6 +1386,7 @@ TODO: OK to just discard syn_label from pret.passives?">
           <b/>
           <chunk name="ref">
             <tags>
+              <tag><lit-tag v="SN"/></tag>
               <tag><lit-tag v="@←OBJ"/></tag>
               <tag><var n="pron_pers"/></tag>
               <tag><var n="pron_nbr"/></tag>
@@ -2100,15 +2114,21 @@ TODO: OK to just discard syn_label from pret.passives?">
     </rule>
 
     <!-- <rules: Lone determiners, pronouns, adverbs -->    
-    <rule comment="REGLA: DETPOS_ADVL (lone genitive pronoun likely to be a determiner)
-                   TODO: any reason to do GD ND here?">
+    <rule comment="REGLA: DET dán => dette
+                              munno [geažil] => [på grunn av] oss to
+                   TODO: set_pron_case needs more work
+                   Blocked by DETPOS_ADVL for genitives">
       <pattern>
-        <pattern-item n="detpos_ADVL"/>
+        <pattern-item n="det"/>
       </pattern>
       <action>
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
+          <var n="caseprep"/>
           <chunk name="det" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -2121,14 +2141,16 @@ TODO: OK to just discard syn_label from pret.passives?">
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_det"/>
+              <clip pos="1" side="tl" part="pers"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>
       </action>
-    </rule>
+    </rule>    
     
     <rule comment="REGLA: RELATIVE_PRONOUN gii => som
                    Just removes everything.
@@ -2160,6 +2182,7 @@ TODO: OK to just discard syn_label from pret.passives?">
     <rule comment="REGLA: REFLEXIVE_PRONOUN ieš => seg / h*n
                    Just removes everything from normal reflexives,
                    changes @-FOBJ→ reflexives into personal pronouns with GD + nom
+                   Does not match genitive reflexives (treated as det.pos)
                    TODO: Son osku iežas(@-FSUBJ→) bestojuvvon(@X)">
       <pattern>
         <pattern-item n="pronref"/>
@@ -2168,12 +2191,11 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         
-        <out><var n="caseprep"/></out>
-        
         <choose>
           <when>
             <test><equal><clip pos="1" side="tl" part="lemh"/><lit v="prpers"/></equal></test>
             <out>
+              <var n="caseprep"/>
               <chunk name="pron" case="caseFirstWord">
                 <tags>
                   <tag><lit-tag v="SN"/></tag>
@@ -2195,7 +2217,7 @@ TODO: OK to just discard syn_label from pret.passives?">
               </chunk>
             </out>
           </when>
-          <when>
+          <when c="Adverb (eg. 'på egen hånd'): no caseprep">
             <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
             <out>
               <chunk name="adv" case="caseFirstWord">
@@ -2211,9 +2233,10 @@ TODO: OK to just discard syn_label from pret.passives?">
               </chunk>
             </out>
           </when>
-          <when>
+          <when c="selv.det.emph">
             <test><not><equal><clip pos="1" side="tl" part="a_det"/><lit v=""/></equal></not></test>
             <out>
+              <var n="caseprep"/>
               <chunk name="det" case="caseFirstWord">
                 <tags>
                   <tag><lit-tag v="SN"/></tag>
@@ -2226,8 +2249,10 @@ TODO: OK to just discard syn_label from pret.passives?">
                 <lu>
                   <clip pos="1" side="tl" part="lemh"/>
                   <clip pos="1" side="tl" part="a_det"/>
+                  <clip pos="1" side="tl" part="pers"/>
                   <clip pos="1" side="tl" part="gen"/>
                   <clip pos="1" side="tl" part="nbr"/>
+                  <clip pos="1" side="tl" part="case"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
@@ -2235,8 +2260,10 @@ TODO: OK to just discard syn_label from pret.passives?">
           </when>
         <otherwise>
           <out>
+            <var n="caseprep"/>
             <chunk name="ref" case="caseFirstWord">
               <tags>
+                <tag><lit-tag v="SN"/></tag>
                 <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="gen"/></tag>
@@ -2307,8 +2334,10 @@ TODO: OK to just discard syn_label from pret.passives?">
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_det"/>
+              <clip pos="2" side="tl" part="pers"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="case"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -2316,42 +2345,6 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
 
-    <rule comment="REGLA: DET dán => dette
-                              munno [geažil] => [på grunn av] oss to
-                   TODO: set_pron_case needs more work">
-      <pattern>
-        <pattern-item n="det"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-
-        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <var n="caseprep"/>
-          <chunk name="det" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="tl" part="pers"/></tag>
-              <tag><clip pos="1" side="tl" part="gen"/></tag>
-              <tag><clip pos="1" side="tl" part="nbr"/></tag>
-              <tag><clip pos="1" side="tl" part="case"/></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_det"/>
-              <clip pos="1" side="tl" part="pers"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <clip pos="1" side="tl" part="case"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
-      </action>
-    </rule>
     <rule comment="REGLA: INTERROGATIVE_PRONOUN mii => hva">
       <pattern>
         <pattern-item n="pronitg"/>

@@ -196,16 +196,38 @@ SUBSTITUTE ("go") ("go:5") ("go" CS) (1 (@ADVL→) OR (@HAB) LINK 1 COPULAS) ;
 
 
 # ieš (default)=> seg
-SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl) (0 (@Pron←) OR (@N←)) ;
-# mun ieš:1 => meg _selv_
+# Nominativ: selv (ieš:1)
+# Akkusativ: seg selv (ieš:4), men seg (ieš) er au mogleg
+# Akkusativ @-FSUBJ + Actio Ess/Inf: prpers (ieš:2)
+# Genitiv: sin (ieš, eigne bidix-oppslag for genitiv => prn.gen, transfer gjer til det.pos)
+# (kan bli gjort om til vanleg pronomen viss genitiv var pga. adposisjon)
+# Genitiv etter Pron.Pers: egen (ieš:5)
+# Komitativ: seg selv (ieš:4)
+# Illativ: seg selv (ieš:4)
+# Lokativ: selv (ieš:1)
+# Essiv: på egen hånd (ieš:6)
+
+SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl Nom) ;
+# Ieš:1 don mearridat => Du bestemmer _selv_
+SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl Loc) ;
+# Mis leat alddámet:1 ain šibihat => Vi har _selv_ fremdeles husdyr
 SUBSTITUTE ("ieš") ("ieš:2") ("ieš" Pron Refl) (0 (@-FOBJ→) OR (@-FSUBJ→)) ;
 # Máhtte rábmui iežas:2 vuoitit => Máhtte skrøt at _han_ skulle vinne 
-SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@→Pron) OR (@→N)) ;
-# ieš:3 dat muitalii => han _bare_ fortalte det
-SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@SUBJ→)) ;
-# ieža:3 mun dájun => jeg _bare_ tøver
-SUBSTITUTE ("ieš") ("ieš:4") ("ieš" Pron Refl) (0 (@←ADVL)) (NOT -1 PronPers) ;
+SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl) (0 (@SUBJ→)) ;
+# Ieža:1 dihtet maid dagažit => De vet _selv_ hva de gjør
+SUBSTITUTE ("ieš") ("ieš:4") ("ieš" Pron Refl) (0 (Acc) OR (Com) OR (Ill)) ;
 # Mun jurddašin iežainan => jeg tenkte med _meg selv_
+SUBSTITUTE ("ieš") ("ieš:5") ("ieš" Pron Refl Gen) (-1 (Pron Pers Gen)) ;
+# Dá lea mu iežan:5 girji => Her er min _egen_ bok
+SUBSTITUTE ("ieš") ("ieš:6") ("ieš" Pron Refl Ess) ;
+# Gal moai goste iehčaneame => Klart vi to kommer oss dit på egen hånd
+
+SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@SUBJ→)) (1 (@SUBJ→)) ;
+# ieža:3 mun dájun => jeg _bare_ tøver  --- fjerne?
+
+# There is a transfer rule for "Pron.Pers Pron.Refl.@Pron←" => prpers.acc selv
+
+SUBSTITUTE ("iehčanassii") ("iehčanassii:1") ("iehčanassii" Adv) (-1 ("leat")) ;
 
 # Po: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
 SUBSTITUTE ("mielde") ("mielde:3") ("mielde" Po) (-1 ("dárbu") OR ("miella")) ;
