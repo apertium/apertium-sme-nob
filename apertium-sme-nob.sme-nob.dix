@@ -883,7 +883,22 @@ use this rule then (o/w Der_h in __verb adds the 'caus' tag)">
 <e r="LR"><p><l>mii<s n="Pron"/><s n="Rel"/><s n="Pl"/><s n="Loc"/></l><r>hvor<s n="cnjsub"/><s n="loc"/></r></p></e>
 <e><p><l>mii<s n="Pron"/><s n="Rel"/></l><r>som<s n="cnjsub"/></r></p><par n="__prn-case"/></e>
 
-<!-- det.pos needs genitive added -->
+<!-- Reflexive pronoun (ieš), split into each case -->
+<!-- Nominative
+     Ieš.Nom don mearridat => Du bestemmer _selv_  -->
+<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Sg"/><s n="Nom"/></l><r>selv<s n="det"/><s n="emph"/><s n="nom"/></r></p></e>
+<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Du"/><s n="Nom"/></l><r>selv<s n="det"/><s n="emph"/><s n="nom"/></r></p></e>
+<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Pl"/><s n="Nom"/></l><r>selv<s n="det"/><s n="emph"/><s n="nom"/></r></p></e>
+<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Nom"/></l><r>selv<s n="det"/><s n="emph"/><s n="nom"/></r></p><par n="LR_remove_nbr_pers"/></e>
+<!-- Accusative
+     Áhkku geahčai iežas speadjalis => Bestemora så seg selv i speilet -->
+<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Acc"/></l><r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="acc"/></r></p><par n="__nbr_pers"/></e>
+<!-- Accusative subject/object of V.Actio/Inf
+     Elle muitalii iežas vuolgime => Elle fortalte at hun reiste -->
+<e slr="1"><p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Acc"/></l><r>prpers<s n="prn"/><s n="acc"/></r></p><par n="__nbr_pers"/></e>
+<!-- Genitive        (Possessor number mapped to lemma)
+     Mun ferten čorget iežan lanja => Jeg må rydde mitt rom
+     Váldde biergasiid iežat fárrui => Ta sakene med deg (adpositional genitive turned back into non-genitive in t2x) -->
 <e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Gen"/><s n="PxSg1"/></l><r>jeg<s n="prn"/><s n="p1"/><s n="gen"/><s n="mf"/><s n="sg"/></r></p></e>
 <e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Gen"/><s n="PxSg2"/></l><r>du<s n="prn"/><s n="p2"/><s n="gen"/><s n="mf"/><s n="sg"/></r></p></e>
 <e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Gen"/><s n="PxSg3"/></l><r>seg<s n="prn"/><s n="p3"/><s n="gen"/><s n="mf"/><s n="sg"/></r></p></e>
@@ -893,22 +908,22 @@ use this rule then (o/w Der_h in __verb adds the 'caus' tag)">
 <e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Gen"/><s n="PxPl1"/></l><r>vi<s n="prn"/><s n="p1"/><s n="gen"/><s n="mf"/><s n="pl"/></r></p></e>
 <e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Gen"/><s n="PxPl2"/></l><r>de<s n="prn"/><s n="p2"/><s n="gen"/><s n="mf"/><s n="pl"/></r></p></e>
 <e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Gen"/><s n="PxPl3"/></l><r>dere<s n="prn"/><s n="p3"/><s n="gen"/><s n="mf"/><s n="pl"/></r></p></e>
-<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Sg"/><s n="Nom"/></l><r>seg<s n="prn"/><s n="ref"/><s n="nom"/><s n="sg"/><s n="p3"/></r></p></e>
-<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Du"/><s n="Nom"/></l><r>seg<s n="prn"/><s n="ref"/><s n="nom"/><s n="du"/><s n="p3"/></r></p></e>
-<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Pl"/><s n="Nom"/></l><r>seg<s n="prn"/><s n="ref"/><s n="nom"/><s n="pl"/><s n="p3"/></r></p></e>
-<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Nom"/></l><r>seg<s n="prn"/><s n="ref"/><s n="nom"/></r></p><par n="__nbr_pers"/></e>
-<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Acc"/></l><r>seg<s n="prn"/><s n="ref"/><s n="acc"/></r></p><par n="__nbr_pers"/></e>
-<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Com"/></l><r>seg<s n="prn"/><s n="ref"/><s n="com"/></r></p><par n="__nbr_pers"/></e>
-<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Ess"/></l><r>seg<s n="prn"/><s n="ref"/><s n="ess"/></r></p><par n="__nbr_pers"/></e>
-<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Ill"/></l><r>seg<s n="prn"/><s n="ref"/><s n="ill"/></r></p><par n="__nbr_pers"/></e>
-<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Loc"/></l><r>seg<s n="prn"/><s n="ref"/><s n="loc"/></r></p><par n="__nbr_pers"/></e>
-
-<e slr="1"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>selv<s n="det"/><s n="emph"/></r></p><par n="__prn-case"/><par n="LR_remove_nbr_pers"/></e>
-<e slr="2"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>prpers<s n="prn"/></r></p><par n="__prn-case"/><par n="__nbr_pers"/></e>
-<e slr="3"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>bare<s n="adv"/></r></p><par n="__prn-case"/><par n="LR_remove_nbr_pers"/></e>
-<e slr="4"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>seg<b/>selv<s n="prn"/><s n="ref"/></r></p><par n="__prn-case"/><par n="__nbr_pers"/></e>
-<e slr="5"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>egen<s n="det"/><s n="emph"/></r></p><par n="__prn-case"/><par n="LR_remove_nbr_pers"/></e>
-<e slr="6"><p><l>ieš<s n="Pron"/><s n="Refl"/></l><r>på<b/>egen<b/>hånd<s n="adv"/></r></p><par n="__prn-case"/><par n="LR_remove_nbr_pers"/></e>
+<!-- Genitive after Pron.Pers
+     Dá lea mu iežan girji => Her er min egen bok -->
+<e slr="2"><p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Gen"/></l><r>egen<s n="det"/><s n="emph"/><s n="gen"/></r></p><par n="LR_remove_nbr_pers"/></e>
+<!-- Komitative
+     Mun jurddašin iežainan => jeg tenkte med _meg selv_ -->
+<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Com"/></l><r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="com"/></r></p><par n="__nbr_pers"/></e>
+<!-- Illative
+     Mánát guvle alcceseaset speadjalis => Barnene kikte på seg selv i speilet -->
+<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Ill"/></l><r>seg<b/>selv<s n="prn"/><s n="ref"/><s n="ill"/></r></p><par n="__nbr_pers"/></e>
+<!-- Locative        (t1x inserts no caseprep here)
+     Mis leat alddámet.Loc ain šibihat => Vi har _selv_ fremdeles husdyr -->
+<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Loc"/></l><r>selv<s n="det"/><s n="emph"/><s n="loc"/></r></p><par n="LR_remove_nbr_pers"/></e>
+<!-- Essive
+     Gal moai goste iehčaneame => Klart vi to kommer oss dit på egen hånd -->
+<e>       <p><l>ieš<s n="Pron"/><s n="Refl"/><s n="Ess"/></l><r>på<b/>egen<b/>hånd<s n="adv"/><s n="ess"/></r></p><par n="LR_remove_nbr_pers"/></e>
+<!-- /Reflexive -->
 
 
 <!-- Quantifiers (nob determiners correspond to sme pronouns) -->

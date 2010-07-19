@@ -195,37 +195,35 @@ SUBSTITUTE ("go") ("go:5") ("go" CS) (1 (@ADVL→) OR (@HAB) LINK 1 COPULAS) ;
 # Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
 
 
-# ieš (default)=> seg
-# Nominativ: selv (ieš:1)
-# Akkusativ: seg selv (ieš:4), men seg (ieš) er au mogleg
-# Akkusativ @-FSUBJ + Actio Ess/Inf: prpers (ieš:2)
-# Genitiv: sin (ieš, eigne bidix-oppslag for genitiv => prn.gen, transfer gjer til det.pos)
-# (kan bli gjort om til vanleg pronomen viss genitiv var pga. adposisjon)
-# Genitiv etter Pron.Pers: egen (ieš:5)
-# Komitativ: seg selv (ieš:4)
-# Illativ: seg selv (ieš:4)
-# Lokativ: selv (ieš:1)
-# Essiv: på egen hånd (ieš:6)
-
-SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl Nom) ;
-# Ieš:1 don mearridat => Du bestemmer _selv_
-SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl Loc) ;
-# Mis leat alddámet:1 ain šibihat => Vi har _selv_ fremdeles husdyr
-SUBSTITUTE ("ieš") ("ieš:2") ("ieš" Pron Refl) (0 (@-FOBJ→) OR (@-FSUBJ→)) ;
-# Máhtte rábmui iežas:2 vuoitit => Máhtte skrøt at _han_ skulle vinne 
-SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl) (0 (@SUBJ→)) ;
-# Ieža:1 dihtet maid dagažit => De vet _selv_ hva de gjør
-SUBSTITUTE ("ieš") ("ieš:4") ("ieš" Pron Refl) (0 (Acc) OR (Com) OR (Ill)) ;
-# Mun jurddašin iežainan => jeg tenkte med _meg selv_
-SUBSTITUTE ("ieš") ("ieš:5") ("ieš" Pron Refl Gen) (-1 (Pron Pers Gen)) ;
-# Dá lea mu iežan:5 girji => Her er min _egen_ bok
-SUBSTITUTE ("ieš") ("ieš:6") ("ieš" Pron Refl Ess) ;
-# Gal moai goste iehčaneame => Klart vi to kommer oss dit på egen hånd
-
-SUBSTITUTE ("ieš") ("ieš:3") ("ieš" Pron Refl) (0 (@SUBJ→)) (1 (@SUBJ→)) ;
-# ieža:3 mun dájun => jeg _bare_ tøver  --- fjerne?
-
+# The 'default' translation of ieš depends on the case, see bidix.
+# Nominative: 
+# ----------- selv (ieš, handled in bidix)
+# Accusative: 
+# ----------- seg selv (ieš, handled in bidix)
+#             seg (ieš) could be possible too, which contexts though?
+# Accusative @-FSUBJ + Actio Ess/Inf: 
+# ----------- prpers (ieš:2)
+# Genitive: 
+# ----------- sin (ieš, handled in bidix, mapping PxSg1 to jeg.prn.gen, etc)
+#             (may turn into regular pronoun if genitiv was selected by adposition)
+# Genitive after Pron.Pers: 
+# ----------- egen (ieš:5)
+# Komitativ: 
+# ----------- seg selv (ieš, handled in bidix)
+# Illativ: 
+# ----------- seg selv (ieš, handled in bidix)
+# Lokativ: 
+# ----------- selv (ieš, handled in bidix)
+# Essiv: 
+# ----------- på egen hånd (ieš, handled in bidix)
+# 
 # There is a transfer rule for "Pron.Pers Pron.Refl.@Pron←" => prpers.acc selv
+# (that turns the Pron.Pers into accusative)
+
+SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl) (0 (@-FOBJ→) OR (@-FSUBJ→)) ;
+# Máhtte rábmui iežas:1 vuoitit => Máhtte skrøt at _han_ skulle vinne 
+SUBSTITUTE ("ieš") ("ieš:2") ("ieš" Pron Refl Gen) (-1 (Pron Pers Gen)) ;
+# Dá lea mu iežan:2 girji => Her er min _egen_ bok
 
 SUBSTITUTE ("iehčanassii") ("iehčanassii:1") ("iehčanassii" Adv) (-1 ("leat")) ;
 
