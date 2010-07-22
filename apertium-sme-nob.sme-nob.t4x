@@ -10,7 +10,9 @@ This is the fourth pass. Responsibilities of this file include:
   * Making sure tags are consistent with nob.dix (esp. adjectives, personal pronouns)
   * See macro: clean_adj
   * See macro: clean_det (also used for numerals)
-  
+* Does not output spaces occuring after a 'cmp'
+  * See rule: det_cmp_nom
+
 TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 -->
 
@@ -674,6 +676,44 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 
 
   <section-rules>
+    <!-- <rules: Non-trivial -->
+    <rule comment="CHUNK: pron">
+      <pattern>
+        <pattern-item n="pron"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_case_defnes"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: det
+                   Might have begun life as a pronoun.
+                   (Might turn back into one if t2x removed genitive from chunk.)">
+      <pattern>
+        <pattern-item n="det"/>
+      </pattern>
+      <action>
+        <choose>
+          <when>
+            <test><and>
+              <equal><clip pos="1" part="a_det"/><lit-tag v="det.pos"/></equal>
+              <not><equal><clip pos="0" part="case"/><lit-tag v="gen"/></equal></not>
+            </and></test>
+            <let><clip pos="1" part="a_det"/><lit-tag v="prn"/></let>
+            <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
+          </when>
+          <otherwise>
+            <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
+          </otherwise>
+        </choose>        
+        <out> 
+          <lu><clip pos="1" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
     <rule comment="CHUNK: verb">
       <pattern>
         <pattern-item n="verb"/>
@@ -702,7 +742,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    
+    <!-- <rules: Trivial, these rules all follow a regular scheme, created by out_nom -->
     <rule comment="CHUNK: nom
                    Maybe insert a determiner">
       <pattern>
@@ -726,8 +766,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
-          <!-- Compound; we keep the given space but don't add anything: -->
-          <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
         </out>
       </action>
@@ -742,10 +780,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
-          <!-- Compound; we keep the given space but don't add anything: -->
-          <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
           <lu><clip pos="3" part="whole"/></lu>
         </out>
       </action>
@@ -843,7 +878,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <lu><clip pos="3" part="whole"/></lu>
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
-          <b pos="4"/>
           <lu><clip pos="5" part="whole"/></lu>
         </out>
       </action>
@@ -906,7 +940,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
           <lu><clip pos="3" part="whole"/></lu>
         </out>
       </action>
@@ -923,9 +956,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
           <lu><clip pos="3" part="whole"/></lu>
-          <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
         </out>
       </action>
@@ -991,10 +1022,39 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
           <lu><clip pos="3" part="whole"/></lu>
-          <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: cmp_adj
+                   Clean adjective tags">
+      <pattern>
+        <pattern-item n="cmp_adj"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <lu><clip pos="2" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    
+    
+
+    <!-- <rules: *_verb (sl was typically derived from a noun) -->
+    <rule comment="CHUNK: adj_verb">
+      <pattern>
+        <pattern-item n="adj_verb"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <out> 
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
         </out>
       </action>
     </rule>
@@ -1008,77 +1068,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
           <lu><clip pos="3" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
-    <rule comment="CHUNK: cmp_adj
-                   Clean adjective tags">
-      <pattern>
-        <pattern-item n="cmp_adj"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <out>
-          <lu><clip pos="1" part="whole"/></lu>
-          <b pos="1"/>
-          <lu><clip pos="2" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
-    
-    
-    <rule comment="CHUNK: pron">
-      <pattern>
-        <pattern-item n="pron"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_case_defnes"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <out>
-          <lu><clip pos="1" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
-    <rule comment="CHUNK: det
-                   Might have begun life as a pronoun.
-                   (Might turn back into one if t2x removed genitive from chunk.)">
-      <pattern>
-        <pattern-item n="det"/>
-      </pattern>
-      <action>
-        <choose>
-          <when>
-            <test><and>
-              <equal><clip pos="1" part="a_det"/><lit-tag v="det.pos"/></equal>
-              <not><equal><clip pos="0" part="case"/><lit-tag v="gen"/></equal></not>
-            </and></test>
-            <let><clip pos="1" part="a_det"/><lit-tag v="prn"/></let>
-            <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
-          </when>
-          <otherwise>
-            <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
-          </otherwise>
-        </choose>        
-        <out> 
-          <lu><clip pos="1" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
-
-    <!-- <rules: *_verb -->
-    <rule comment="CHUNK: adj_verb">
-      <pattern>
-        <pattern-item n="adj_verb"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
-        <out> 
-          <lu><clip pos="1" part="whole"/></lu>
-          <b pos="1"/>
-          <lu><clip pos="2" part="whole"/></lu>
         </out>
       </action>
     </rule>
