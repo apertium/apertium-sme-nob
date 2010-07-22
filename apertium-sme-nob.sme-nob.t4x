@@ -19,107 +19,135 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 <!-- -*- nxml -*- -->
 <postchunk>
   <section-def-cats>
-    <def-cat n="nom">
-      <cat-item name="nom"/>
-      <cat-item name="prop"/>
-    </def-cat>
-    <def-cat n="cmp_nom">
-      <cat-item name="cmp_nom"/>
-      <cat-item name="cmp_prop"/>
-    </def-cat>
-    <def-cat n="cmp_cmp_nom">
-      <cat-item name="cmp_cmp_nom"/>
-      <cat-item name="cmp_cmp_prop"/>
-    </def-cat>
-    <def-cat n="det_cmp_nom">
-      <cat-item name="det_cmp_nom"/>
-      <cat-item name="det_cmp_prop"/>
-    </def-cat>
-    <def-cat n="det_cmp_cmp_nom">
-      <cat-item name="det_cmp_cmp_nom"/>
-      <cat-item name="det_cmp_cmp_prop"/>
-    </def-cat>
-    <def-cat n="rel_verb">
-      <cat-item name="rel_verb"/>
-    </def-cat>
-    <def-cat n="rel_verb_conj_nom">
-      <cat-item name="rel_verb_conj_nom"/>
-      <cat-item name="rel_verb_conj_prop"/>
-    </def-cat>
-    <def-cat n="det_adj_rel_verb">
-      <cat-item name="det_adj_rel_verb"/>
-    </def-cat>
-    <def-cat n="adj_verb">
-      <cat-item name="adj_verb"/>
+    <!-- <def-cats: Non-trivial -->
+    <def-cat n="verb">
+<cat-item name="verb"/>
+<cat-item name="vcop"/>
     </def-cat>
     <def-cat n="pron">
-      <cat-item name="pron"/>
+<cat-item name="pron"/>
     </def-cat>
-    <def-cat n="adj_conj_adj">
-      <cat-item name="adj_conj_adj"/>
+    <!-- <def-cats: Trivial, SN -->
+    <def-cat n="nom">
+<cat-item name="nom"/>
+<cat-item name="prop"/>
+    </def-cat>
+    <def-cat n="cmp_nom">
+<cat-item name="cmp_nom"/>
+<cat-item name="cmp_prop"/>
+    </def-cat>
+    <def-cat n="cmp_cmp_nom">
+<cat-item name="cmp_cmp_nom"/>
+<cat-item name="cmp_cmp_prop"/>
+    </def-cat>
+    <def-cat n="det_cmp_nom">
+<cat-item name="det_cmp_nom"/>
+<cat-item name="det_cmp_prop"/>
+    </def-cat>
+    <def-cat n="det_cmp_cmp_nom">
+<cat-item name="det_cmp_cmp_nom"/>
+<cat-item name="det_cmp_cmp_prop"/>
+    </def-cat>
+    <def-cat n="rel_verb">
+<cat-item name="rel_verb"/>
+    </def-cat>
+    <def-cat n="rel_verb_conj_nom">
+<cat-item name="rel_verb_conj_nom"/>
+<cat-item name="rel_verb_conj_prop"/>
+    </def-cat>
+    <def-cat n="det_adj_rel_verb">
+<cat-item name="det_adj_rel_verb"/>
+    </def-cat>
+    <def-cat n="adj_verb">
+<cat-item name="adj_verb"/>
     </def-cat>
     <def-cat n="nom_conj_nom">
-      <cat-item name="nom_conj_nom"/>
-      <cat-item name="nom_conj_prop"/>
-      <cat-item name="prop_conj_nom"/>
-      <cat-item name="prop_conj_prop"/>
+<cat-item name="nom_conj_nom"/>
+<cat-item name="nom_conj_prop"/>
+<cat-item name="prop_conj_nom"/>
+<cat-item name="prop_conj_prop"/>
     </def-cat>
     <def-cat n="det_nom_conj_nom">
-      <cat-item name="det_nom_conj_nom"/>
-      <cat-item name="det_nom_conj_prop"/>
-      <cat-item name="det_prop_conj_nom"/>
-      <cat-item name="det_prop_conj_prop"/>
+<cat-item name="det_nom_conj_nom"/>
+<cat-item name="det_nom_conj_prop"/>
+<cat-item name="det_prop_conj_nom"/>
+<cat-item name="det_prop_conj_prop"/>
     </def-cat>
     <def-cat n="det_nom_conj_cmp_nom">
-      <cat-item name="det_nom_conj_cmp_nom"/>
-      <cat-item name="det_nom_conj_cmp_prop"/>
-      <cat-item name="det_prop_conj_cmp_nom"/>
-      <cat-item name="det_prop_conj_cmp_prop"/>
+<cat-item name="det_nom_conj_cmp_nom"/>
+<cat-item name="det_nom_conj_cmp_prop"/>
+<cat-item name="det_prop_conj_cmp_nom"/>
+<cat-item name="det_prop_conj_cmp_prop"/>
     </def-cat>
     <def-cat n="adj_nom_conj_nom">
-      <cat-item name="adj_nom_conj_nom"/>
-      <cat-item name="adj_nom_conj_prop"/>
-      <cat-item name="adj_prop_conj_nom"/>
-      <cat-item name="adj_prop_conj_prop"/>
-    </def-cat>
-    <def-cat n="verb">
-      <cat-item name="verb"/>
-      <cat-item name="vcop"/>
-    </def-cat>
-    <def-cat n="adj">
-      <cat-item name="adj"/>
+<cat-item name="adj_nom_conj_nom"/>
+<cat-item name="adj_nom_conj_prop"/>
+<cat-item name="adj_prop_conj_nom"/>
+<cat-item name="adj_prop_conj_prop"/>
     </def-cat>
     <def-cat n="det_adj_nom">
-      <cat-item name="det_adj_nom"/>
-      <cat-item name="det_adj_prop"/>
+<cat-item name="det_adj_nom"/>
+<cat-item name="det_adj_prop"/>
     </def-cat>
     <def-cat n="det_nom">
-      <cat-item name="det_nom"/>
-      <cat-item name="det_prop"/>
-    </def-cat>
-    <def-cat n="det_adj">
-      <cat-item name="det_adj"/>
+<cat-item name="det_nom"/>
+<cat-item name="det_prop"/>
     </def-cat>
     <def-cat n="adj_nom">
-      <cat-item name="adj_nom"/>
-      <cat-item name="adj_prop"/>
+<cat-item name="adj_nom"/>
+<cat-item name="adj_prop"/>
     </def-cat>
     <def-cat n="adj_cmp_nom">
-      <cat-item name="adj_cmp_nom"/>
-      <cat-item name="adj_cmp_prop"/>
+<cat-item name="adj_cmp_nom"/>
+<cat-item name="adj_cmp_prop"/>
     </def-cat>
     <def-cat n="adj_cmp_cmp_nom">
-      <cat-item name="adj_cmp_cmp_nom"/>
-      <cat-item name="adj_cmp_cmp_prop"/>
+<cat-item name="adj_cmp_cmp_nom"/>
+<cat-item name="adj_cmp_cmp_prop"/>
     </def-cat>
     <def-cat n="adj_cmp_verb">
-      <cat-item name="adj_cmp_verb"/>
-    </def-cat>
-    <def-cat n="cmp_adj">
-      <cat-item name="cmp_adj"/>
+<cat-item name="adj_cmp_verb"/>
     </def-cat>
     <def-cat n="det">
-      <cat-item name="det"/>
+<cat-item name="det"/>
+    </def-cat>
+    <!-- <def-cats: SA -->
+    <def-cat n="adj">
+<cat-item name="adj"/>
+    </def-cat>
+    <def-cat n="cmp_adj">
+<cat-item name="cmp_adj"/>
+    </def-cat>
+    <def-cat n="det_adj">
+<cat-item name="det_adj"/>
+    </def-cat>
+    <!-- <def-cats: SA CC SA -->
+    <def-cat n="adj_conj_adj">
+<cat-item name="adj_conj_adj"/>
+    </def-cat>
+    <def-cat n="det_adj_conj_adj">
+<cat-item name="det_adj_conj_adj"/>
+    </def-cat>
+    <def-cat n="adj_conj_det_adj">
+<cat-item name="adj_conj_det_adj"/>
+    </def-cat>
+    <def-cat n="det_adj_conj_det_adj">
+<cat-item name="det_adj_conj_det_adj"/>
+    </def-cat>
+    <def-cat n="cmp_adj_conj_adj">
+<cat-item name="cmp_adj_conj_adj"/>
+    </def-cat>
+    <def-cat n="adj_conj_cmp_adj">
+<cat-item name="adj_conj_cmp_adj"/>
+    </def-cat>
+    <def-cat n="cmp_adj_conj_cmp_adj">
+<cat-item name="cmp_adj_conj_cmp_adj"/>
+    </def-cat>
+    <def-cat n="det_adj_conj_cmp_adj">
+<cat-item name="det_adj_conj_cmp_adj"/>
+    </def-cat>
+    <def-cat n="cmp_adj_conj_det_adj">
+<cat-item name="cmp_adj_conj_det_adj"/>
     </def-cat>
   </section-def-cats>
 
@@ -675,9 +703,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
   <section-rules>
     <!-- <rules: Non-trivial -->
     <rule comment="CHUNK: pron">
-      <pattern>
-        <pattern-item n="pron"/>
-      </pattern>
+<pattern><pattern-item n="pron"/></pattern>
       <action>
         <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_case_defnes"><with-param pos="1"/><with-param pos="0"/></call-macro>
@@ -689,9 +715,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: det
                    Might have begun life as a pronoun.
                    (Might turn back into one if t2x removed genitive from chunk.)">
-      <pattern>
-        <pattern-item n="det"/>
-      </pattern>
+<pattern><pattern-item n="det"/></pattern>
       <action>
         <choose>
           <when>
@@ -712,9 +736,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
     <rule comment="CHUNK: verb">
-      <pattern>
-        <pattern-item n="verb"/>
-      </pattern>
+<pattern><pattern-item n="verb"/></pattern>
       <action>
         <let><clip pos="1" part="temps"/><clip pos="0" part="temps"/></let>
         <choose><when>
@@ -739,12 +761,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    <!-- <rules: Trivial, these rules all follow a regular scheme, created by out_nom -->
+    
+    <!-- <rules: Trivial, SN -->
     <rule comment="CHUNK: nom
                    Maybe insert a determiner">
-      <pattern>
-        <pattern-item n="nom"/>
-      </pattern>
+<pattern><pattern-item n="nom"/></pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
@@ -755,9 +776,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>
     <rule comment="CHUNK: cmp_nom
                    Maybe insert a determiner">
-      <pattern>
-        <pattern-item n="cmp_nom"/>
-      </pattern>
+<pattern><pattern-item n="cmp_nom"/></pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="2"/><with-param pos="0"/></call-macro>
         <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
@@ -769,9 +788,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>
     <rule comment="CHUNK: cmp_cmp_nom
                    Maybe insert a determiner">
-      <pattern>
-        <pattern-item n="cmp_cmp_nom"/>
-      </pattern>
+<pattern><pattern-item n="cmp_cmp_nom"/></pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="3"/><with-param pos="0"/></call-macro>
         <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
@@ -783,9 +800,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
     <rule comment="CHUNK: det_nom">
-      <pattern>
-        <pattern-item n="det_nom"/>
-      </pattern>
+<pattern><pattern-item n="det_nom"/></pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="2"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
@@ -799,9 +814,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>
     <rule comment="CHUNK: nom_conj_nom (SN CC SN)
                    Maybe insert a determiner">
-      <pattern>
-        <pattern-item n="nom_conj_nom"/>
-      </pattern>
+<pattern><pattern-item n="nom_conj_nom"/></pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_case_defnes"><with-param pos="3"/><with-param pos="0"/></call-macro>
@@ -817,9 +830,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>
     <rule comment="CHUNK: adj_nom_conj_nom (SN CC SN)
                    Maybe insert a determiner">
-      <pattern>
-        <pattern-item n="adj_nom_conj_nom"/>
-      </pattern>
+<pattern><pattern-item n="adj_nom_conj_nom"/></pattern>
       <action>
         <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_case_defnes"><with-param pos="2"/><with-param pos="0"/></call-macro>
@@ -838,9 +849,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>
     <rule comment="CHUNK: det_nom_conj_nom (SN CC SN)
                    Maybe insert a determiner">
-      <pattern>
-        <pattern-item n="det_nom_conj_nom"/>
-      </pattern>
+<pattern><pattern-item n="det_nom_conj_nom"/></pattern>
       <action>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_case_defnes"><with-param pos="2"/><with-param pos="0"/></call-macro>
@@ -859,9 +868,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>
     <rule comment="CHUNK: det_nom_conj_cmp_nom (SN CC SN)
                    Maybe insert a determiner">
-      <pattern>
-        <pattern-item n="det_nom_conj_cmp_nom"/>
-      </pattern>
+<pattern><pattern-item n="det_nom_conj_cmp_nom"/></pattern>
       <action>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_case_defnes"><with-param pos="2"/><with-param pos="0"/></call-macro>
@@ -879,38 +886,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: adj_conj_adj (SA CC SA)">
-      <pattern>
-        <pattern-item n="adj_conj_adj"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_adj"><with-param pos="3"/><with-param pos="0"/></call-macro>
-        <out>
-          <lu><clip pos="1" part="whole"/></lu>
-          <b pos="1"/>
-          <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
-          <lu><clip pos="3" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
-    <rule comment="CHUNK: adj
-                   Clean adjective tags">
-      <pattern>
-        <pattern-item n="adj"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <out>
-          <lu><clip pos="1" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
     <rule comment="CHUNK: det_adj_nom">
-      <pattern>
-        <pattern-item n="det_adj_nom"/>
-      </pattern>
+<pattern><pattern-item n="det_adj_nom"/></pattern>
       <action>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_case_defnes"><with-param pos="3"/><with-param pos="0"/></call-macro>
@@ -926,9 +903,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
     <rule comment="CHUNK: det_cmp_nom">
-      <pattern>
-        <pattern-item n="det_cmp_nom"/>
-      </pattern>
+<pattern><pattern-item n="det_cmp_nom"/></pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="3"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
@@ -942,9 +917,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
     <rule comment="CHUNK: det_cmp_cmp_nom">
-      <pattern>
-        <pattern-item n="det_cmp_cmp_nom"/>
-      </pattern>
+<pattern><pattern-item n="det_cmp_cmp_nom"/></pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="4"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
@@ -958,26 +931,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: det_adj">
-      <pattern>
-        <pattern-item n="det_adj"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
-        <out> 
-          <lu><clip pos="1" part="whole"/></lu>
-          <b pos="1"/>         
-          <lu><clip pos="2" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
     <rule comment="CHUNK: adj_nom
                    Maybe insert a determiner">
-      <pattern>
-        <pattern-item n="adj_nom"/>
-      </pattern>
+<pattern><pattern-item n="adj_nom"/></pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="2"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
@@ -991,9 +947,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>
     <rule comment="CHUNK: adj_cmp_nom
                    Maybe insert a determiner">
-      <pattern>
-        <pattern-item n="adj_cmp_nom"/>
-      </pattern>
+<pattern><pattern-item n="adj_cmp_nom"/></pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="3"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
@@ -1008,9 +962,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>    
     <rule comment="CHUNK: adj_cmp_cmp_nom
                    Maybe insert a determiner">
-      <pattern>
-        <pattern-item n="adj_cmp_cmp_nom"/>
-      </pattern>
+<pattern><pattern-item n="adj_cmp_cmp_nom"/></pattern>
       <action>
         <call-macro n="clean_case_defnes"><with-param pos="4"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
@@ -1024,27 +976,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: cmp_adj
-                   Clean adjective tags">
-      <pattern>
-        <pattern-item n="cmp_adj"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <out>
-          <lu><clip pos="1" part="whole"/></lu>
-          <lu><clip pos="2" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
     
     
 
     <!-- <rules: *_verb (sl was typically derived from a noun) -->
     <rule comment="CHUNK: adj_verb">
-      <pattern>
-        <pattern-item n="adj_verb"/>
-      </pattern>
+<pattern><pattern-item n="adj_verb"/></pattern>
       <action>
         <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
@@ -1056,9 +993,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
     <rule comment="CHUNK: adj_cmp_verb">
-      <pattern>
-        <pattern-item n="adj_cmp_verb"/>
-      </pattern>
+<pattern><pattern-item n="adj_cmp_verb"/></pattern>
       <action>
         <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <out>
@@ -1071,9 +1006,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>
     
     <rule comment="CHUNK: rel_verb">
-      <pattern>
-        <pattern-item n="rel_verb"/>
-      </pattern>
+<pattern><pattern-item n="rel_verb"/></pattern>
       <action>
         <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out> 
@@ -1085,9 +1018,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>
     
     <rule comment="CHUNK: det_adj_rel_verb">
-      <pattern>
-        <pattern-item n="det_adj_rel_verb"/>
-      </pattern>
+<pattern><pattern-item n="det_adj_rel_verb"/></pattern>
       <action>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
@@ -1105,9 +1036,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </rule>
 
     <rule comment="CHUNK: rel_verb_conj_nom">
-      <pattern>
-        <pattern-item n="rel_verb_conj_nom"/>
-      </pattern>
+<pattern><pattern-item n="rel_verb_conj_nom"/></pattern>
       <action>
         <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <call-macro n="clean_case_defnes"><with-param pos="4"/><with-param pos="0"/></call-macro>
@@ -1119,6 +1048,198 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <lu><clip pos="3" part="whole"/></lu>
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+
+    <!-- <rules: Trivial, SA -->
+    <rule comment="CHUNK: adj">
+<pattern><pattern-item n="adj"/></pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: cmp_adj">
+<pattern><pattern-item n="cmp_adj"/></pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <lu><clip pos="2" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: det_adj">
+<pattern><pattern-item n="det_adj"/></pattern>
+      <action>
+        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <out> 
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>         
+          <lu><clip pos="2" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <!-- <rules: Trivial, SA CC SA -->
+    <rule comment="CHUNK: adj_conj_adj">
+<pattern><pattern-item n="adj_conj_adj"/></pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: det_adj_conj_adj">
+<pattern><pattern-item n="det_adj_conj_adj"/></pattern>
+      <action>
+        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: adj_conj_det_adj">
+<pattern><pattern-item n="adj_conj_det_adj"/></pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_det"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: det_adj_conj_det_adj">
+<pattern><pattern-item n="det_adj_conj_det_adj"/></pattern>
+      <action>
+        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_det"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="5"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    
+    <rule comment="CHUNK: cmp_adj_conj_adj">
+<pattern><pattern-item n="cmp_adj_conj_adj"/></pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: adj_conj_cmp_adj">
+<pattern><pattern-item n="adj_conj_cmp_adj"/></pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: cmp_adj_conj_cmp_adj">
+<pattern><pattern-item n="cmp_adj_conj_cmp_adj"/></pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="5"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    
+    <rule comment="CHUNK: det_adj_conj_cmp_adj">
+<pattern><pattern-item n="det_adj_conj_cmp_adj"/></pattern>
+      <action>
+        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="5"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: cmp_adj_conj_det_adj">
+<pattern><pattern-item n="cmp_adj_conj_det_adj"/></pattern>
+      <action>
+        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_det"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="5"/><with-param pos="0"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
         </out>
       </action>
     </rule>
