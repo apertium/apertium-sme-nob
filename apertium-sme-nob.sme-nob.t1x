@@ -947,7 +947,7 @@ TODO:
 
           <choose>
             <when c="V.Der2.Actor => (den) pre-nom som V
-                     pre-nom gets 'den' in front (unless determined already), and 'som' after
+                     pre-nom gets 'som' after (t4x adds 'den' in front unless already determined)
                      Only do the 'den som' if non-sg definite or there is a lemq
                      If we have a compound in pre-nom, put it after the verb instead.">
               <test><and>
@@ -968,22 +968,6 @@ TODO:
                 <let><var n="c_name"/><lit v=""/></let>
               </when></choose>
 
-              <choose><when c="Only add determiner if it doesn't already have one
-                               TODO: other chunk lemh for those 'semi-determiners' (eg. quantifiers)">
-                <test><not><begins-with caseless="yes"><var n="c_name"/><lit v="det"/></begins-with></not></test>
-                <let><var n="c_name"/><concat><lit v="det_"/><var n="c_name"/></concat></let>
-                <call-macro n="set_pron_gen_nbr_art"><with-param pos="1"/></call-macro>
-                <let>
-                  <var n="pre-nom"/>
-                  <concat>
-                    <lit v="^den"/><lit-tag v="det.dem"/>
-                    <var n="pron_gen"/><var n="pron_nbr"/>
-                    <lit v="$"/>
-                    <b/>
-                    <var n="pre-nom"/>
-                  </concat>
-                </let>
-              </when></choose>
               <append n="c_name"><lit v="rel_verb"/></append>
               <append n="pre-nom">
                 <concat>

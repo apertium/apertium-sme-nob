@@ -39,18 +39,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <cat-item name="det_cmp_cmp_nom"/>
       <cat-item name="det_cmp_cmp_prop"/>
     </def-cat>
-    <def-cat n="det_rel_verb">
-      <cat-item name="det_rel_verb"/>
+    <def-cat n="rel_verb">
+      <cat-item name="rel_verb"/>
     </def-cat>
-    <def-cat n="det_rel_verb_conj_nom">
-      <cat-item name="det_rel_verb_conj_nom"/>
-      <cat-item name="det_rel_verb_conj_prop"/>
+    <def-cat n="rel_verb_conj_nom">
+      <cat-item name="rel_verb_conj_nom"/>
+      <cat-item name="rel_verb_conj_prop"/>
     </def-cat>
     <def-cat n="det_adj_rel_verb">
       <cat-item name="det_adj_rel_verb"/>
-    </def-cat>
-    <def-cat n="det_det_adj_rel_verb">
-      <cat-item name="det_det_adj_rel_verb"/>
     </def-cat>
     <def-cat n="adj_verb">
       <cat-item name="adj_verb"/>
@@ -1073,19 +1070,16 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
     
-    <rule comment="CHUNK: det_rel_verb">
+    <rule comment="CHUNK: rel_verb">
       <pattern>
-        <pattern-item n="det_rel_verb"/>
+        <pattern-item n="rel_verb"/>
       </pattern>
       <action>
-        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
         <out> 
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
-          <lu><clip pos="3" part="whole"/></lu>
         </out>
       </action>
     </rule>
@@ -1110,15 +1104,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
 
-    <rule comment="CHUNK: det_det_adj_rel_verb">
+    <rule comment="CHUNK: rel_verb_conj_nom">
       <pattern>
-        <pattern-item n="det_det_adj_rel_verb"/>
+        <pattern-item n="rel_verb_conj_nom"/>
       </pattern>
       <action>
-        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_det"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_adj"><with-param pos="3"/><with-param pos="0"/></call-macro>
-        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <call-macro n="maybe_out_det"><with-param pos="0"/></call-macro>
+        <call-macro n="clean_case_defnes"><with-param pos="4"/><with-param pos="0"/></call-macro>
         <out> 
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -1127,30 +1119,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <lu><clip pos="3" part="whole"/></lu>
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
-          <b pos="4"/>
-          <lu><clip pos="5" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
-
-    <rule comment="CHUNK: det_rel_verb_conj_nom">
-      <pattern>
-        <pattern-item n="det_rel_verb_conj_nom"/>
-      </pattern>
-      <action>
-        <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
-        <call-macro n="clean_case_defnes"><with-param pos="5"/><with-param pos="0"/></call-macro>
-        <out> 
-          <lu><clip pos="1" part="whole"/></lu>
-          <b pos="1"/>
-          <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
-          <lu><clip pos="3" part="whole"/></lu>
-          <b pos="3"/>
-          <lu><clip pos="4" part="whole"/></lu>
-          <b pos="4"/>
-          <lu><clip pos="5" part="whole"/></lu>
         </out>
       </action>
     </rule>
