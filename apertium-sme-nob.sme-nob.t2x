@@ -564,6 +564,7 @@ TODO: does this generalise or should we remove the whole mechanism?">
         <pattern-item n="SA"/>
       </pattern>
       <action>
+        <!-- <exception><test><not><equal><clip pos="1" part="case"/><clip pos="3" part="case"/></equal></not></test></exception> -->
         <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
         <call-macro n="apply_ana_gen"><with-param pos="3"/></call-macro>
         <call-macro n="set_c_name3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
@@ -596,6 +597,7 @@ TODO: does this generalise or should we remove the whole mechanism?">
         <pattern-item n="SN"/>
       </pattern>
       <action>
+        <!-- <exception><test><not><equal><clip pos="1" part="case"/><clip pos="3" part="case"/></equal></not></test></exception> -->
         <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
         <call-macro n="set_c_name3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
@@ -626,6 +628,7 @@ TODO: does this generalise or should we remove the whole mechanism?">
         <pattern-item n="SN"/>
       </pattern>
       <action>
+        <!-- <exception><test><not><equal><clip pos="1" part="case"/><clip pos="4" part="case"/></equal></not></test></exception> -->
         <call-macro n="set_ana_gen"><with-param pos="5"/></call-macro>
         <call-macro n="set_c_name3"><with-param pos="2"/><with-param pos="3"/><with-param pos="5"/></call-macro>
         <call-macro n="set_c_tags2"><with-param pos="2"/><with-param pos="5"/></call-macro>
@@ -637,16 +640,16 @@ TODO: does this generalise or should we remove the whole mechanism?">
           <chunk>
             <var n="c_name"/>
             <var n="c_tags"/>
-           <lit v="{"/>
-           <clip pos="2" part="content"/>
-           <b pos="2"/>
-           <clip pos="3" part="content"/>
-           <b pos="3"/>
-           <b pos="4"/>
-           <clip pos="5" part="content"/>
-           <lit v="}"/>
-           <clip pos="2" part="lemq"/>
-         </chunk>
+            <lit v="{"/>
+            <clip pos="2" part="content"/>
+            <b pos="2"/>
+            <clip pos="3" part="content"/>
+            <b pos="3"/>
+            <b pos="4"/>
+            <clip pos="5" part="content"/>
+            <lit v="}"/>
+            <clip pos="2" part="lemq"/>
+          </chunk>
         </out>
       </action>
     </rule>
@@ -944,7 +947,7 @@ TODO: does this generalise or should we remove the whole mechanism?">
               </chunk>
             </out>
           </when>
-          <otherwise>
+          <otherwise c="exception">
             <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
             <call-macro n="apply_ana_gen"><with-param pos="3"/></call-macro>
             <call-macro n="set_ana_temps"><with-param pos="3"/></call-macro>

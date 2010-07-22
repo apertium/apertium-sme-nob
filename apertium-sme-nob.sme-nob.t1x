@@ -2662,6 +2662,8 @@ TODO: OK to just discard syn_label from pret.passives?">
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
+        <!-- TODO earáin ruovttusiidduide => av_andre til_hjemmesidene: -->
+        <!-- <exception><test><not><equal><clip pos="1" side="sl" part="case"/><clip pos="2" side="sl" part="case"/></equal></not></test></exception> -->
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
