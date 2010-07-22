@@ -943,7 +943,8 @@ TODO:
       <choose>
         <when c="tl PoS is verb">
           <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
-        
+          <let><var n="post-nom"/><lit v=""/></let>
+
           <choose>
             <when c="V.Der2.Actor => (den) pre-nom som V
                      pre-nom gets 'den' in front (unless determined already), and 'som' after
@@ -958,7 +959,6 @@ TODO:
                 </or>
               </and></test>
 
-              <let><var n="post-nom"/><lit v=""/></let>
               <let><var n="tmp"/><lit v=""/></let>
               <choose><when>
                 <test><equal caseless="yes"><var n="c_name"/><lit v="cmp_"/></equal></test>
