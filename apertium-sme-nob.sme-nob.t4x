@@ -39,18 +39,18 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <cat-item name="det_cmp_cmp_nom"/>
       <cat-item name="det_cmp_cmp_prop"/>
     </def-cat>
-    <def-cat n="det_conj_verb">
-      <cat-item name="det_conj_verb"/>
+    <def-cat n="det_rel_verb">
+      <cat-item name="det_rel_verb"/>
     </def-cat>
-    <def-cat n="det_conj_verb_conj_nom">
-      <cat-item name="det_conj_verb_conj_nom"/>
-      <cat-item name="det_conj_verb_conj_prop"/>
+    <def-cat n="det_rel_verb_conj_nom">
+      <cat-item name="det_rel_verb_conj_nom"/>
+      <cat-item name="det_rel_verb_conj_prop"/>
     </def-cat>
-    <def-cat n="det_adj_conj_verb">
-      <cat-item name="det_adj_conj_verb"/>
+    <def-cat n="det_adj_rel_verb">
+      <cat-item name="det_adj_rel_verb"/>
     </def-cat>
-    <def-cat n="det_det_adj_conj_verb">
-      <cat-item name="det_det_adj_conj_verb"/>
+    <def-cat n="det_det_adj_rel_verb">
+      <cat-item name="det_det_adj_rel_verb"/>
     </def-cat>
     <def-cat n="adj_verb">
       <cat-item name="adj_verb"/>
@@ -1073,9 +1073,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
     
-    <rule comment="CHUNK: det_conj_verb">
+    <rule comment="CHUNK: det_rel_verb">
       <pattern>
-        <pattern-item n="det_conj_verb"/>
+        <pattern-item n="det_rel_verb"/>
       </pattern>
       <action>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
@@ -1090,9 +1090,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
     
-    <rule comment="CHUNK: det_adj_conj_verb">
+    <rule comment="CHUNK: det_adj_rel_verb">
       <pattern>
-        <pattern-item n="det_adj_conj_verb"/>
+        <pattern-item n="det_adj_rel_verb"/>
       </pattern>
       <action>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
@@ -1110,9 +1110,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
 
-    <rule comment="CHUNK: det_det_adj_conj_verb">
+    <rule comment="CHUNK: det_det_adj_rel_verb">
       <pattern>
-        <pattern-item n="det_det_adj_conj_verb"/>
+        <pattern-item n="det_det_adj_rel_verb"/>
       </pattern>
       <action>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
@@ -1133,9 +1133,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
 
-    <rule comment="CHUNK: det_conj_verb_conj_nom">
+    <rule comment="CHUNK: det_rel_verb_conj_nom">
       <pattern>
-        <pattern-item n="det_conj_verb_conj_nom"/>
+        <pattern-item n="det_rel_verb_conj_nom"/>
       </pattern>
       <action>
         <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
