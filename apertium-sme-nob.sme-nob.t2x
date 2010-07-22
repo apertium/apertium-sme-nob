@@ -549,10 +549,8 @@ TODO:
            <lit v="{"/>
            <clip pos="1" part="content"/>
            <b pos="1"/>
-           <lit v=" "/>
            <clip pos="2" part="content"/>
            <b pos="2"/>
-           <lit v=" "/>
            <clip pos="3" part="content"/>
            <lit v="}"/>
            <clip pos="1" part="lemq"/>
@@ -581,10 +579,8 @@ TODO:
             <lit v="{"/>
             <clip pos="1" part="content"/>
             <b pos="1"/>
-            <lit v=" "/>
             <clip pos="2" part="content"/>
             <b pos="2"/>
-            <lit v=" "/>
             <clip pos="3" part="content"/>
             <lit v="}"/>
             <clip pos="1" part="lemq"/>
@@ -618,12 +614,15 @@ TODO:
             <b pos="2"/>
             <clip pos="3" part="content"/>
             <b pos="3"/>
-            <b pos="4"/>
             <clip pos="5" part="content"/>
             <lit v="}"/>
             <clip pos="2" part="lemq"/>
           </chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="4"/><b/></equal></not></test>
+          <out><b pos="4"/></out>
+        </when></choose>
       </action>
     </rule>
 
