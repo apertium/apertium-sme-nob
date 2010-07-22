@@ -262,7 +262,3 @@ SUBSTITUTE (Cond) (Cond2) (Cond) (*-1 ("jos") LINK 1 ("vel")) ;
 SUBSTITUTE (Cond) (Cond3) (Cond) (*-1 ("vai")) ;
 # Dan mun dutnje muitalan, vai oahpašit => Den forteller jeg til deg for at du skal lære
 
-SUBSTITUTE (N Ess) (N Ess V) (N Ess @←SPRED) (-1 PronPersIll) ;
-# In certain contexts, N.Ess might be translated with a verb
-# (if bidix gives such a translation):
-# itgo boađáše munnje veahkkin → kommer du ikke og hjelper meg

@@ -528,33 +528,6 @@ TODO:
         </out>
       </action>
     </rule>
-
-    <!-- <rules: Weird stuff -->
-    <rule comment="REGLA: PR pron-RADVL spred-ess
-                   til meg som hjelper => og hjelper meg
-TODO: does this generalise or should we remove the whole mechanism?">
-      <pattern>
-        <pattern-item n="PR"/>
-        <pattern-item n="pron-RADVL"/>
-        <pattern-item n="PR-caseprep"/>
-        <pattern-item n="spred-ess"/>
-      </pattern>
-      <action>
-        <out>
-          <chunk>
-            <lit v="conj{^og"/><lit-tag v="cnjcoo"/><lit v="$}"/>
-          </chunk>
-          <b pos="1"/>
-          <chunk>
-            <clip pos="4" part="whole"/>
-          </chunk>
-          <b pos="2"/>
-          <chunk>
-            <clip pos="2" part="whole"/>
-          </chunk>
-        </out>
-      </action>
-    </rule>
     
     <!-- <rules: Coordination -->
     <rule comment="REGLA: SA CNP SA">

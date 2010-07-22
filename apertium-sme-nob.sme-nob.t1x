@@ -991,22 +991,12 @@ TODO:
                   <b/>
                 </concat>
               </append>
-              <let><var n="c_syn"/><lit-tag v="SN"/></let>
               <append n="c_name"><var n="tmp"/></append>
             </when>
             <otherwise c="Just the verb and unchanged pre-nom, no 'som'
                           If we have a Der2.Actor, it should work pretty much like a regular noun.
                           TODO: do anything about pre-nom here?">
               <append n="c_name"><lit v="verb"/></append>
-              <choose>
-                <when>
-                  <test><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der2.Actor"/></equal></test>
-                  <let><var n="c_syn"/><lit-tag v="SN"/></let>
-                </when>
-                <otherwise c="So far only happens with lemma-specific N.Ess=>V.Pres exceptions in bidix">
-                  <let><var n="c_syn"/><lit-tag v="SV"/></let>
-                </otherwise>
-              </choose>
             </otherwise>
           </choose>
           
@@ -1014,7 +1004,7 @@ TODO:
             <chunk namefrom="c_name" case="caseFirstWord"
                    c="The tag order corresponds with nouns, to make c_def_pos work.">
               <tags>
-                <tag><var n="c_syn"/></tag>
+                <tag><lit-tag v="SN"/></tag>
                 <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
                 <tag><var n="c_gen"/></tag>
