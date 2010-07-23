@@ -994,8 +994,10 @@ we just use __prn-case to transfer case and specify number here: -->
 <e><p><l>galle<s n="Num"/></l><r>hvor<b/>mange<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
 
 <e><p><l>1<s n="Num"/></l><r>1<s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_sg"/></e>
-<e><re>([§\+–] ?)?[0-9]+([.,][0-9]+)*([ \-]+[0-9]+([.,][0-9]+)*)*</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
 <e><re>[½¹²³¼¾]</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/><s n="pl"/></r></p></e>
+<e><re>([§\+–] ?)?[0-9]+([.,][0-9]+)*([ \-]+[0-9]+([.,][0-9]+)*)*</re><p><l><s n="Num"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
+<!-- for some reason, % gets a Nom added after Num by the lexc (also, doesn't have an adj.ord reading) -->
+<e><re>([§\+–] ?)?[0-9]+([.,][0-9]+)*([ \-]+[0-9]+([.,][0-9]+)*)* *%</re><p><l><s n="Num"/><s n="Nom"/></l><r><s n="det"/><s n="qnt"/></r></p><par n="num__det_qnt_pl"/></e>
 
 <!-- Nouns -->
 <e><re>[a-zA-ZæøåášŧŋđžčÆØÅÁŠŦŊĐŽČ]</re><p><l><s n="N"/><s n="ABBR"/></l><r>alphabet<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
@@ -11041,7 +11043,7 @@ we just use __prn-case to transfer case and specify number here: -->
 <e><p><l>prošeakta<s n="N"/></l><r>prosjekt<s n="n"/><s n="nt"/></r></p><par n="__n"/></e>
 <e><p><l>prošeaktadoarjja<s n="N"/></l><r>prosjektstønad<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
 <e><p><l>prošeaktamielbargi<s n="N"/><s n="Actor"/></l><r>prosjektmedarbeider<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
-<e><p><l>proseanta<s n="N"/></l><r>prosent<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
+<e><p><l>proseanta<s n="N"/></l><r>prosent<s n="n"/><s n="m"/></r></p><par n="unc__n"/></e>
 <e><p><l>proseantamearri<s n="N"/></l><r>prosentsats<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
 <e><p><l>proseassafámuheaddji<s n="N"/><s n="Actor"/></l><r>prosessfullmektig<s n="n"/><s n="m"/></r></p><par n="__n"/></e>
 <e><p><l>prosodiija<s n="N"/></l><r>prosodi<s n="n"/><s n="m"/></r></p><par n="__n"/></e>

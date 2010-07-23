@@ -305,120 +305,169 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 
   <section-def-macros>
     <def-macro n="clean_pron" npar="2"
-               c="arg.1: pronoun/determiner, arg.2: chunk
+               c="arg.1: chunk, arg.2: pronoun
                   -----
-                  Put non-GD chunk gender on pronoun/determiner.">
+                  Put non-GD chunk gender on pronoun.">
       <choose><when>
         <test><and>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal>
-          <not><equal><clip pos="2" part="nbr"/><lit v=""/></equal></not>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="ND"/></equal>
+          <not><equal><clip pos="1" part="nbr"/><lit v=""/></equal></not>
         </and></test>
-        <let><clip pos="1" part="nbr"/><clip pos="2" part="nbr"/></let>
+        <let><clip pos="2" part="nbr"/><clip pos="1" part="nbr"/></let>
       </when></choose>
       <choose><when>
-        <test><equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal></test>
-        <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
+        <test><equal><clip pos="2" part="nbr"/><lit-tag v="ND"/></equal></test>
+        <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
       </when></choose>
 
       <choose><when>
-        <test><not><equal><clip pos="2" part="case"/><lit v=""/></equal></not></test>
-        <let><clip pos="1" part="case"/><clip pos="2" part="case"/></let>
+        <test><not><equal><clip pos="1" part="case"/><lit v=""/></equal></not></test>
+        <let><clip pos="2" part="case"/><clip pos="1" part="case"/></let>
       </when></choose>
       
       <choose><when>
         <test><and>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
-          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
-          <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
-          <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
-          <not><equal><clip pos="2" part="gen"/><lit v="GD_pers"/></equal></not>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
+          <equal><clip pos="2" part="pers"/><lit-tag v="p3"/></equal>
+          <not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not>
+          <not><equal><clip pos="1" part="gen"/><lit v="GD"/></equal></not>
+          <not><equal><clip pos="1" part="gen"/><lit v="GD_pers"/></equal></not>
         </and></test>
-        <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
+        <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
         <!-- TODO: use prpers so we don't need these hacks (but that needs changes in nob.dix) -->
         <choose><when>
-          <test><equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal></test>
-          <let><clip pos="1" part="lemh"/><get-case-from pos="2"><lit v="hun"/></get-case-from></let>
+          <test><equal><clip pos="2" part="gen"/><lit-tag v="f"/></equal></test>
+          <let><clip pos="2" part="lemh"/><get-case-from pos="1"><lit v="hun"/></get-case-from></let>
         </when></choose>
         <choose><when>
-          <test><equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal></test>
-          <let><clip pos="1" part="lemh"/><get-case-from pos="2"><lit v="det"/></get-case-from></let>
+          <test><equal><clip pos="2" part="gen"/><lit-tag v="nt"/></equal></test>
+          <let><clip pos="2" part="lemh"/><get-case-from pos="1"><lit v="det"/></get-case-from></let>
         </when></choose>
       </when></choose>
       <choose><when>
         <test><or>
-          <equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal>
-          <equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal>
+          <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
+          <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
         </or></test>
-        <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
+        <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
       </when></choose>
     </def-macro>
     
-    <def-macro n="clean_det" npar="2"
-               c="arg.1: determiner (including numerals), arg.2: chunk
+    <def-macro n="clean_det2" npar="3"
+               c="arg.1: chunk, arg.2: determiner (including numerals)
                   -----
-                  Put non-GD chunk gender and non-ND chunk number on determiner.">
-      <choose><when>
+                  - if DD, try chunk defnes, default ind
+                  - if ND, try chunk number, default sg
+                  - if GD sg, try chunk gender, default m
+                  - remove gender from plurals / definites
+                  - remove defnes from plurals
+                  - remove case/pers (added in t1x since we don't know until interchunk
+                    if it'll be a determiner or pronoun)">
+      <choose><when c="try chunk defnes">
         <test><and>
-          <equal><clip pos="1" part="art"/><lit-tag v="DD"/></equal>
-          <not><equal><clip pos="2" part="art"/><lit v=""/></equal></not>
+          <equal><clip pos="2" part="art"/><lit-tag v="DD"/></equal>
+          <not><equal><clip pos="1" part="art"/><lit v=""/></equal></not>
         </and></test>
-        <let><clip pos="1" part="art"/><clip pos="2" part="art"/></let>
+        <let><clip pos="2" part="art"/><clip pos="1" part="art"/></let>
       </when></choose>
-      <choose><when>
-        <test><equal><clip pos="1" part="art"/><lit-tag v="DD"/></equal></test>
-        <let><clip pos="1" part="art"/><lit-tag v="ind"/></let>
+      <choose><when c="default defnes">
+        <test><equal><clip pos="2" part="art"/><lit-tag v="DD"/></equal></test>
         <let><clip pos="2" part="art"/><lit-tag v="ind"/></let>
+        <let><clip pos="1" part="art"/><lit-tag v="ind"/></let>
       </when></choose>
       
-      <choose><when>
+      <choose><when c="try chunk number">
         <test><and>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal>
-          <not><equal><clip pos="2" part="nbr"/><lit v=""/></equal></not>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="ND"/></equal>
+          <not><equal><clip pos="1" part="nbr"/><lit v=""/></equal></not>
         </and></test>
-        <let><clip pos="1" part="nbr"/><clip pos="2" part="nbr"/></let>
+        <let><clip pos="2" part="nbr"/><clip pos="1" part="nbr"/></let>
       </when></choose>
-      <choose><when>
-        <test><equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal></test>
-        <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
+      <choose><when c="default number">
+        <test><equal><clip pos="2" part="nbr"/><lit-tag v="ND"/></equal></test>
         <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
+        <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
       </when></choose>
       
-      <choose><when>
+      <choose><when c="only gender on singular determiners">
         <test><and>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
-          <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
-          <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
-          <not><equal><clip pos="2" part="gen"/><lit v="GD_pers"/></equal></not>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
+          <or>
+            <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
+            <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
+          </or>
         </and></test>
-        <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
-      </when></choose>
-      <choose><when>
-        <test><or>
-          <equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal>
-          <equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal>
-        </or></test>
-        <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
-        <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
-      </when></choose>
-
-      <choose><when>
-        <test><or>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="pl"/></equal>
-          <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
-        </or></test>
-        <let><clip pos="1" part="gen"/><lit v=""/></let>
-      </when></choose>
-      <choose><when>
-        <test><equal><clip pos="1" part="nbr"/><lit-tag v="pl"/></equal></test>
-        <let><clip pos="1" part="art"/><lit v=""/></let>
+        <choose><when c="try chunk gender">
+          <test><and>
+            <not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not>
+            <not><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></not>
+            <not><equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal></not>
+          </and></test>
+          <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
+        </when></choose>
+        <choose><when c="default gender">
+          <test><or>
+            <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
+            <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
+          </or></test>
+          <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
+          <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
+        </when></choose>
       </when></choose>
 
-      <let><clip pos="1" part="case"/><lit v=""/></let>
-      <let><clip pos="1" part="pers"/><lit v=""/></let>
+      <choose><when c="no gender on plural or definite determiners">
+        <test><or>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal>
+          <equal><clip pos="2" part="art"/><lit-tag v="def"/></equal>
+        </or></test>
+        <let><clip pos="2" part="gen"/><lit v=""/></let>
+      </when></choose>
+      <choose><when c="no defnes on plural determiners">
+        <test><equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal></test>
+        <let><clip pos="2" part="art"/><lit v=""/></let>
+      </when></choose>
+
+      <let><clip pos="2" part="case"/><lit v=""/></let>
+      <let><clip pos="2" part="pers"/><lit v=""/></let>
+    </def-macro>
+
+    <def-macro n="clean_det3" npar="3"
+               c="arg.1: chunk, arg.2: determiner (including numerals), arg.3: determined word
+                  -----
+                  - if ND, try number of determined object
+                  - if GD sg, try gender of determined object
+                  - call clean_det2">      
+      <choose><when c="try object number">
+        <test><and>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="ND"/></equal>
+          <not><equal><clip pos="3" part="nbr"/><lit v=""/></equal></not>
+        </and></test>
+        <let><clip pos="2" part="nbr"/><clip pos="3" part="nbr"/></let>
+      </when></choose>
+      
+      <choose><when c="only gender on singular determiners">
+        <test><and>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
+          <or>
+            <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
+            <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
+          </or>
+        </and></test>
+        <choose><when c="try object gender">
+          <test><and>
+            <not><equal><clip pos="3" part="gen"/><lit v=""/></equal></not>
+            <not><equal><clip pos="3" part="gen"/><lit-tag v="GD"/></equal></not>
+            <not><equal><clip pos="3" part="gen"/><lit-tag v="GD_pers"/></equal></not>
+          </and></test>
+          <let><clip pos="2" part="gen"/><clip pos="3" part="gen"/></let>
+        </when></choose>
+      </when></choose>
+
+      <call-macro n="clean_det2"><with-param pos="1"/><with-param pos="2"/></call-macro>
     </def-macro>
     
     <def-macro n="clean_adj" npar="2"
-               c="arg.1: adj, arg.2: chunk
+               c="arg.1: chunk, arg.2: adj
                   -----
                   - Try to apply chunk nbr/gender if ND/GD, else set to sg/nt.
                   - Change m or f to mf.
@@ -430,75 +479,75 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                   ">
       <choose><when>
         <test><and>
-          <equal><clip pos="1" part="grau"/><lit v=""/></equal>
-          <not><equal><clip pos="1" part="a_adj"/><lit-tag v="adj.pprs"/></equal></not>
+          <equal><clip pos="2" part="grau"/><lit v=""/></equal>
+          <not><equal><clip pos="2" part="a_adj"/><lit-tag v="adj.pprs"/></equal></not>
         </and></test>
-        <let><clip pos="1" part="a_adj"/><concat><clip pos="1" part="a_adj"/><lit-tag v="posi"/></concat></let>
+        <let><clip pos="2" part="a_adj"/><concat><clip pos="2" part="a_adj"/><lit-tag v="posi"/></concat></let>
       </when></choose>
       
       <choose><when>
         <test><and>
-          <not><equal><clip pos="2" part="gen"/><lit v=""/></equal></not>
-          <not><equal><clip pos="2" part="gen"/><lit v="GD"/></equal></not>
-          <not><equal><clip pos="2" part="gen"/><lit v="GD_pers"/></equal></not>
+          <not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not>
+          <not><equal><clip pos="1" part="gen"/><lit v="GD"/></equal></not>
+          <not><equal><clip pos="1" part="gen"/><lit v="GD_pers"/></equal></not>
         </and></test>
-        <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
+        <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
       </when></choose>
       <choose>
         <when>
-          <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
-          <let><clip pos="1" part="gen"/><lit-tag v="nt"/></let>
+          <test><equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal></test>
+          <let><clip pos="2" part="gen"/><lit-tag v="nt"/></let>
         </when>
         <when>
-          <test><equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal></test>
-          <let><clip pos="1" part="gen"/><lit-tag v="mf"/></let>
+          <test><equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal></test>
+          <let><clip pos="2" part="gen"/><lit-tag v="mf"/></let>
         </when>
         <when>
-          <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
-          <let><clip pos="1" part="grau"/><concat><clip pos="1" part="grau"/><lit-tag v="nt"/></concat></let>
+          <test><equal><clip pos="2" part="gen"/><lit v=""/></equal></test>
+          <let><clip pos="2" part="grau"/><concat><clip pos="2" part="grau"/><lit-tag v="nt"/></concat></let>
         </when>
       </choose>
       <choose><when>
         <test><or>
-          <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
-          <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
+          <equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal>
+          <equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal>
         </or></test>
-        <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
+        <let><clip pos="1" part="gen"/><clip pos="2" part="gen"/></let>
       </when></choose>
       
       <choose><when>
         <test><or>
-          <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
-          <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
+          <equal><clip pos="2" part="gen"/><lit-tag v="m"/></equal>
+          <equal><clip pos="2" part="gen"/><lit-tag v="f"/></equal>
         </or></test>
-        <let><clip pos="1" part="gen"/><lit-tag v="mf"/></let>
+        <let><clip pos="2" part="gen"/><lit-tag v="mf"/></let>
       </when></choose>
       
       <choose><when>
         <test><and>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal>
-          <not><equal><clip pos="2" part="nbr"/><lit v=""/></equal></not>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="ND"/></equal>
+          <not><equal><clip pos="1" part="nbr"/><lit v=""/></equal></not>
         </and></test>
-        <let><clip pos="1" part="nbr"/><clip pos="2" part="nbr"/></let>
+        <let><clip pos="2" part="nbr"/><clip pos="1" part="nbr"/></let>
       </when></choose>
       <choose><when>
-        <test><equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal></test>
-        <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
+        <test><equal><clip pos="2" part="nbr"/><lit-tag v="ND"/></equal></test>
+        <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
       </when></choose>
       
       <choose><when>
-        <test><equal><clip pos="1" part="nbr"/><lit v=""/></equal></test>
+        <test><equal><clip pos="2" part="nbr"/><lit v=""/></equal></test>
         <choose>
           <when>
             <test><or>
-              <equal><clip pos="1" part="temps"/><lit-tag v="pp"/></equal>
-              <equal><clip pos="1" part="grau"/><lit-tag v="posi"/></equal>
+              <equal><clip pos="2" part="temps"/><lit-tag v="pp"/></equal>
+              <equal><clip pos="2" part="grau"/><lit-tag v="posi"/></equal>
             </or></test>
-            <let><clip pos="1" part="gen"/><concat><clip pos="1" part="gen"/><lit-tag v="sg"/></concat></let>
+            <let><clip pos="2" part="gen"/><concat><clip pos="2" part="gen"/><lit-tag v="sg"/></concat></let>
           </when>
           <when>
-            <test><begins-with><clip pos="1" part="grau"/><lit-tag v="ord"/></begins-with></test>
-            <let><clip pos="1" part="gen"/><concat><clip pos="1" part="gen"/><lit-tag v="pl"/></concat></let>
+            <test><begins-with><clip pos="2" part="grau"/><lit-tag v="ord"/></begins-with></test>
+            <let><clip pos="2" part="gen"/><concat><clip pos="2" part="gen"/><lit-tag v="pl"/></concat></let>
           </when>
         </choose>          
       </when></choose>
@@ -506,60 +555,60 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <choose><when>
         <test><not>
           <or>
-            <equal><clip pos="1" part="grau"/><lit-tag v="sup"/></equal>
+            <equal><clip pos="2" part="grau"/><lit-tag v="sup"/></equal>
             <and>
-              <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+              <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
               <or>
-                <equal><clip pos="1" part="temps"/><lit-tag v="pp"/></equal>
-                <ends-with><clip pos="1" part="grau"/><lit-tag v="posi"/></ends-with>
+                <equal><clip pos="2" part="temps"/><lit-tag v="pp"/></equal>
+                <ends-with><clip pos="2" part="grau"/><lit-tag v="posi"/></ends-with>
               </or>
             </and>
           </or>
         </not></test>
-        <let><clip pos="1" part="art"/><lit v=""/></let>
+        <let><clip pos="2" part="art"/><lit v=""/></let>
       </when></choose>
       
       <choose><when>
         <test><not>
           <and>
-            <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
-            <equal><clip pos="1" part="art"/><lit-tag v="ind"/></equal>
+            <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
+            <equal><clip pos="2" part="art"/><lit-tag v="ind"/></equal>
             <or>
-              <equal><clip pos="1" part="temps"/><lit-tag v="pp"/></equal>
-              <ends-with><clip pos="1" part="grau"/><lit-tag v="posi"/></ends-with>
+              <equal><clip pos="2" part="temps"/><lit-tag v="pp"/></equal>
+              <ends-with><clip pos="2" part="grau"/><lit-tag v="posi"/></ends-with>
             </or>
           </and>
         </not></test>
-        <let><clip pos="1" part="gen"/><lit v=""/></let>
+        <let><clip pos="2" part="gen"/><lit v=""/></let>
       </when></choose>
       
       <choose><when>
         <test><not>
           <or>
-            <equal><clip pos="1" part="temps"/><lit-tag v="pp"/></equal>
-            <ends-with><clip pos="1" part="grau"/><lit-tag v="posi"/></ends-with>
+            <equal><clip pos="2" part="temps"/><lit-tag v="pp"/></equal>
+            <ends-with><clip pos="2" part="grau"/><lit-tag v="posi"/></ends-with>
           </or>
         </not></test>
-        <let><clip pos="1" part="nbr"/><lit v=""/></let>
+        <let><clip pos="2" part="nbr"/><lit v=""/></let>
       </when></choose>
     </def-macro>
 
-    <def-macro n="clean_pre-nominal" npar="2"
-               c="arg.1: det/adj, arg.2: chunk">
+    <def-macro n="clean_pre-nominal" npar="3"
+               c="arg.1: chunk, arg.2: det/adj, arg.3: the word after arg.2">
       <choose>
         <when>
-          <test><not><equal><clip pos="1" part="a_det"/><lit v=""/></equal></not></test>
-          <call-macro n="clean_det"><with-param pos="1"/><with-param pos="2"/></call-macro>
+          <test><not><equal><clip pos="2" part="a_det"/><lit v=""/></equal></not></test>
+          <call-macro n="clean_det3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         </when>
         <when>
-          <test><not><equal><clip pos="1" part="a_adj"/><lit v=""/></equal></not></test>
+          <test><not><equal><clip pos="2" part="a_adj"/><lit v=""/></equal></not></test>
           <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
         </when>
       </choose>
     </def-macro>
     
     <def-macro n="clean_nominal" npar="2"
-               c="arg.1: n,np,verb,prn (possible prepositional object), arg.2: chunk
+               c="arg.1: chunk, arg.2: n,np,verb,prn (possible prepositional object)
                   -----
                   Remove object genitive if chunk doesn't have genitive
                   Remove defnes if noun is proper.
@@ -567,23 +616,23 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <choose>
         <when>
           <test><and>
-            <equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal>
-            <not><equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal></not>
+            <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
+            <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
           </and></test>
-          <let><clip pos="1" part="case"/><lit v=""/></let>
+          <let><clip pos="2" part="case"/><lit v=""/></let>
         </when>
       </choose>
       <choose>
         <when>
-          <test><begins-with><clip pos="1" part="a_nom"/><lit-tag v="np"/></begins-with></test>
-          <let><clip pos="1" part="art"/><lit v=""/></let>
+          <test><begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><clip pos="2" part="art"/><lit v=""/></let>
         </when>
       </choose>
     </def-macro>
     
     <!-- Output macros: -->    
     <def-macro n="maybe_out_det2" npar="2"
-               c="arg.1: nominal chunk, arg.2: first word in nominal chunk
+               c="arg.1: chunk, arg.2: first word in nominal chunk
                   -----
                   For eg. 'det_nom' or 'adj_nom', to make sure we say 'den andre/lyse hunden' (not 'andre/lyse hunden')
                   If pre-nominal is indefinite and nominal definite, we do not output a determiner,
@@ -661,7 +710,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </def-macro>
 
     <def-macro n="maybe_out_det3" npar="3"
-               c="arg.1: nominal chunk, arg.2: determiner or other pre-nominal, arg.3: head-nominal of chunk
+               c="arg.1: chunk, arg.2: determiner or other pre-nominal, arg.3: head-nominal of chunk
                   -----
                   Don't add determiner if chunk ends in np">
       <choose>
@@ -683,8 +732,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pron">
 <pattern><pattern-item n="pron"/></pattern>
       <action>
-        <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_pron"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
         </out>
@@ -702,10 +751,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
               <not><equal><clip pos="0" part="case"/><lit-tag v="gen"/></equal></not>
             </and></test>
             <let><clip pos="1" part="a_det"/><lit-tag v="prn"/></let>
-            <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="0"/></call-macro>
+            <call-macro n="clean_pron"><with-param pos="0"/><with-param pos="1"/></call-macro>
           </when>
           <otherwise>
-            <call-macro n="clean_det"><with-param pos="1"/><with-param pos="0"/></call-macro>
+            <call-macro n="clean_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
           </otherwise>
         </choose>        
         <out> 
@@ -744,7 +793,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: nom">
 <pattern><pattern-item n="nom"/></pattern>
       <action>
-        <call-macro n="clean_nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
+
         <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
@@ -754,8 +804,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_nom">
 <pattern><pattern-item n="pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
@@ -767,9 +818,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_pre_nom">
 <pattern><pattern-item n="pre_pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="3"/></call-macro>
         <out> 
           <lu><clip pos="1" part="whole"/></lu>
@@ -783,10 +835,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_pre_pre_nom">
 <pattern><pattern-item n="pre_pre_pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="3"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="4"/></call-macro>
         <out> 
           <lu><clip pos="1" part="whole"/></lu>
@@ -803,9 +856,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: nom_conj_nom">
 <pattern><pattern-item n="nom_conj_nom"/></pattern>
       <action>
-        <call-macro n="clean_nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
+
         <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="3"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -818,10 +873,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_nom_conj_nom">
 <pattern><pattern-item n="pre_nom_conj_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="4"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -836,10 +893,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: nom_conj_pre_nom">
 <pattern><pattern-item n="nom_conj_pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
+
         <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="3"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="4"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -854,11 +913,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_nom_conj_pre_nom">
 <pattern><pattern-item n="pre_nom_conj_pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="5"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="4"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="5"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -875,12 +936,14 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_pre_nom_conj_pre_nom">
 <pattern><pattern-item n="pre_pre_nom_conj_pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="3"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="5"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="6"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -899,12 +962,14 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_nom_conj_pre_pre_nom">
 <pattern><pattern-item n="pre_nom_conj_pre_pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="4"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="5"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="6"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -923,13 +988,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_pre_nom_conj_pre_pre_nom">
 <pattern><pattern-item n="pre_pre_nom_conj_pre_pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="7"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="3"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="5"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="6"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="7"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -950,14 +1017,16 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_pre_pre_nom_conj_pre_pre_nom">
 <pattern><pattern-item n="pre_pre_pre_nom_conj_pre_pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="3"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="8"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="4"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="6"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="7"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="8"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -980,14 +1049,16 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_pre_nom_conj_pre_pre_pre_nom">
 <pattern><pattern-item n="pre_pre_nom_conj_pre_pre_pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="8"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="3"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="5"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="6"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="7"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="8"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -1010,15 +1081,17 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_pre_pre_nom_conj_pre_pre_pre_nom">
 <pattern><pattern-item n="pre_pre_pre_nom_conj_pre_pre_pre_nom"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="3"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="9"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="8"/><with-param pos="9"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="4"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="6"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="7"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="8"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_nominal"><with-param pos="9"/><with-param pos="0"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -1045,7 +1118,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: adj">
 <pattern><pattern-item n="adj"/></pattern>
       <action>
-        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
         </out>
@@ -1054,8 +1127,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_adj">
 <pattern><pattern-item n="pre_adj"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out> 
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>         
@@ -1067,8 +1140,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: adj_conj_adj">
 <pattern><pattern-item n="adj_conj_adj"/></pattern>
       <action>
-        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_adj"><with-param pos="3"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="3"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -1081,9 +1155,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_adj_conj_adj">
 <pattern><pattern-item n="pre_adj_conj_adj"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_adj"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="4"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -1098,9 +1173,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: adj_conj_pre_adj">
 <pattern><pattern-item n="adj_conj_pre_adj"/></pattern>
       <action>
-        <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="3"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_adj"><with-param pos="4"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
@@ -1115,10 +1191,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <rule comment="CHUNK: pre_adj_conj_pre_adj">
 <pattern><pattern-item n="pre_adj_conj_pre_adj"/></pattern>
       <action>
-        <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_adj"><with-param pos="2"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="4"/><with-param pos="0"/></call-macro>
-        <call-macro n="clean_adj"><with-param pos="5"/><with-param pos="0"/></call-macro>
+        <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="5"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
