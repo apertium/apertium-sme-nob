@@ -44,6 +44,9 @@ sed 's%<s n="vblex"/>.*%<vblex><inf>$%'
 n () {
     rhsbidix |\
 grep '<s n="n"/>' |\
+sed 's%<s n="n"/><s n="\([^"]*\)"/></r></p><par n="\(unc_\)*sp__n"/></e>%<n><\1><sp>$%' |\
+sed 's%<s n="n"/><s n="\([^"]*\)"/></r></p><par n="\(unc_\)*pl__n"/></e>%<n><\1><pl><ind>$%' |\
+sed 's%<s n="n"/><s n="acr"/>.*%<n><acr>$%' |\
 sed 's%<s n="n"/><s n="\([^"]*\)"/>.*%<n><\1><sg><ind>$%' |\
 sed 's%<s n="n"/></r></p><par n="\(unc_\)*m_RL_f__n"/></e>%<n><m><sg><ind>$%' |\
 sed 's%<s n="n"/></r></p><par n="\(unc_\)*f_RL_m__n"/></e>%<n><f><sg><ind>$%'
