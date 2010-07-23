@@ -15,7 +15,6 @@ This is the fourth pass. Responsibilities of this file include:
 
 TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 
-TODO: 
 -->
 
 <!-- -*- nxml -*- -->
@@ -583,11 +582,12 @@ TODO:
     
     <!-- Output macros: -->    
     <def-macro n="maybe_out_det2" npar="2"
-               c="arg.1: nominal chunk, arg.2: determiner or other pre-nominal
+               c="arg.1: nominal chunk, arg.2: first word in nominal chunk
                   -----
                   For eg. 'det_nom' or 'adj_nom', to make sure we say 'den andre/lyse hunden' (not 'andre/lyse hunden')
+                  If pre-nominal is indefinite and nominal definite, we do not output a determiner,
+                  since it's most likely a compound (eg. ovttaskasolbmui => enslig.adj.ind mennesket.n.def).
                   Ignores chunks where pre-nominal is np or genitive.
-                  TODO: need to send in (as arg) the lexical unit that switches case with the determiner!
                   No determiner if it already has some determiner other than 'annen',
                   or has a genitive before it">
       <choose>
@@ -605,11 +605,8 @@ TODO:
             <when c="den">
               <test><and>
                 <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="n"/></begins-with></not>
-                <!-- how to do
-                     <not><begins-with caseless="yes"><clip pos="1" part="lemh"/><lit v="cmp"/></begins-with></not>
-                     ?
-                -->
                 <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
+                <not><equal><clip pos="2" part="art"/><lit-tag v="ind"/></equal></not>
               </and></test>
               <choose>
                 <when>
@@ -634,7 +631,7 @@ TODO:
                   </out>
                 </otherwise>
               </choose>
-              <modify-case><clip pos="1" part="lemh"/><lit v="aa"/></modify-case>
+              <modify-case><clip pos="2" part="lemh"/><lit v="aa"/></modify-case>
             </when>
             <when c="en">
               <test><and>
@@ -653,7 +650,7 @@ TODO:
                 </lu>
                 <b/>
               </out>
-              <modify-case><clip pos="1" part="lemh"/><lit v="aa"/></modify-case>
+              <modify-case><clip pos="2" part="lemh"/><lit v="aa"/></modify-case>
             </when>
             <!-- otherwise: no determiner -->
           </choose>
@@ -759,7 +756,7 @@ TODO:
         <call-macro n="clean_pre-nominal"><with-param pos="1"/><with-param pos="0"/></call-macro>
         <call-macro n="clean_nominal"><with-param pos="2"/><with-param pos="0"/></call-macro>
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
-        <out> 
+        <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
