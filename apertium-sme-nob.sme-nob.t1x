@@ -94,6 +94,22 @@ TODO:
       <cat-item tags="Pron.Indef.*"/>
       <cat-item lemma="makkár" tags="Pron.Interr.*"/>
     </def-cat>
+    <def-cat n="det_mod" c="Pronouns most likely to end up as determiners, modifying an adj/noun">
+      <cat-item tags="Pron.Pers.*.Gen.@→N"/>
+      <cat-item tags="Pron.Pers.*.Gen.@→A"/>
+      <cat-item tags="Pron.Refl.Gen.*.@→N"/>
+      <cat-item tags="Pron.Refl.Gen.*.@→A"/>
+      <cat-item tags="Pron.Refl.Gen.@→N"/>
+      <cat-item tags="Pron.Refl.Gen.@→A"/>
+      <cat-item tags="Pron.Dem.*.@→N"/>
+      <cat-item tags="Pron.Dem.*.@→A"/>
+      <cat-item tags="Pron.Indef.*.@→N"/>
+      <cat-item tags="Pron.Indef.*.@→A"/>
+      <cat-item tags="Pron.Indef.@→N"/>
+      <cat-item tags="Pron.Indef.@→A"/>
+      <cat-item lemma="makkár" tags="Pron.Interr.*.@→N"/>
+      <cat-item lemma="makkár" tags="Pron.Interr.*.@→A"/>
+    </def-cat>
     <def-cat n="detdemqnt_gen">
       <cat-item tags="Pron.Dem.*.Gen.*"/>
       <cat-item tags="Pron.Indef.*.Gen.*"/>
@@ -1815,6 +1831,69 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
+    <rule comment="REGLA: NUM_MOD DET_MOD ADJ_ATTR NOM
+                   -----
+                   máŋggain eará smávit fatnasiiguin => med de mange andre mindre båtene">
+      <pattern>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="det_mod"/>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_pron_case"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pron_gen_nbr_art"><with-param pos="4"/></call-macro>
+
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
+
+        <!-- Here we call set_defnes2 because after a numeral quantifier it should be indefinite -->
+        <call-macro n="set_defnes2"><with-param pos="1"/><with-param pos="4"/></call-macro>
+        
+        <!-- We set c_def_pos here and use that for both adj and nom,
+             so that if defnes changes in t2x/t3x, both adj and nom
+             get the change in t4x: -->
+        <call-macro n="set_c_def_pos"><with-param pos="3"/></call-macro>        
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_det"/>
+              <var n="pron_gen"/>
+              <var n="pron_nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+            <lit v="^"/>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_adj"/>
+              <clip pos="3" side="tl" part="grau"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <clip pos="3" side="tl" part="nbr"/>
+              <var n="c_def_pos"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="3"/>
+          </concat>
+        </let>
+        <let><clip pos="4" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
+        <let><clip pos="4" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+      </action>
+    </rule>
     <rule comment="REGLA: NUM_MOD NOM_MOD NOM
                    -----
                    Oblique use of num nom, here the final nominal is the head
@@ -2081,6 +2160,7 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="1" side="tl" part="pers"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
               <clip pos="1" side="tl" part="case"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
@@ -2595,7 +2675,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                    du bávččas => din smerte
                    eará sámi => annen same">
       <pattern>
-        <pattern-item n="det"/>
+        <pattern-item n="det_mod"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -2629,7 +2709,7 @@ TODO: OK to just discard syn_label from pret.passives?">
     <rule comment="REGLA: DET NOMCMP NOM
                    eará skuvlamánáin => andre skolebarnene">
       <pattern>
-        <pattern-item n="det"/>
+        <pattern-item n="det_mod"/>
         <pattern-item n="nom_cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
@@ -2671,7 +2751,7 @@ TODO: OK to just discard syn_label from pret.passives?">
     <rule comment="REGLA: DET NOMCMP NOMCMP NOM
                    du idjabeavdeskuffas => i din nattbordskuff">
       <pattern>
-        <pattern-item n="det"/>
+        <pattern-item n="det_mod"/>
         <pattern-item n="nom_cmp"/>
         <pattern-item n="nom_cmp"/>
         <pattern-item n="nom_head"/>
@@ -2726,7 +2806,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                    juohke lágán geđggiiguin => med alle slags steiner
                    TODO: demonstrative 'denne viktige oppgaven' (def!)">
       <pattern>
-        <pattern-item n="det"/>
+        <pattern-item n="det_mod"/>
         <pattern-item n="adj_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
@@ -2774,7 +2854,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                    TODO: defnes for other determiners, perhaps need c_def_pos
                    TODO: is this a common pattern?">
       <pattern>
-        <pattern-item n="det"/>
+        <pattern-item n="det_mod"/>
         <pattern-item n="adj"/>
       </pattern>
       <action>
@@ -2984,7 +3064,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                    dán jagi válggas => dette år(et)s valg
                    Sets defnes of possessor NOM_GEN based on DET, defnes of possessed NOM is ind.">
       <pattern>
-        <pattern-item n="det"/>
+        <pattern-item n="det_mod"/>
         <pattern-item n="nom_gen"/>
         <pattern-item n="nom_head"/>
       </pattern>
