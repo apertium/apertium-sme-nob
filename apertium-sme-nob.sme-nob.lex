@@ -85,6 +85,10 @@ SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 IndPrt) (1 Inf) ;
 # (unfortunately no animacy, and impers isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
+# lohkat 0 = lese, 1 = si, 2 = telle
+SUBSTITUTE ("lohkat") ("lohkat:1") ("lohkat" V) (1 ("ahte") OR (Nom) OR (Attr Prop) OR (Ess) OR (Refl Acc) OR (Relf Loc) OR (PrfPrc) OR (Ill)) ;
+## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii.
+
 # máksit 0 = bety, 1 = koste, 2 = betale
 SUBSTITUTE ("máksit") ("máksit:1") ("máksit" V) (*-1 (@SUBJ→) LINK NOT 0 PERSON)(0* CURRENCY OR Num BARRIER Ill) ;
  ## Duhpát máksá guokte ruvnnu. # Tobakken koster to kroner.
