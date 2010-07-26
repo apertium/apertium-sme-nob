@@ -677,13 +677,13 @@ deaivvadit
 
 Genitive
 ========
-Gen => til, default:
+Gen => NIL, remove genitive case (no -s), default:
 --------------------
-Exception for @→N, @→A or det.pos: NIL 
+Exception for @→N, @→A, @←SPRED or det.pos: NIL
 (no preposition, keep genitive case)
 
 
-Gen =>  's (NIL, keep genitive case):
+Gen =>  NIL, keep genitive case (-s)
 -------------------------------------
 
   Boarráseamos oahppit váldet govaid skuvlla ruovttusiidui.	
@@ -716,7 +716,7 @@ cg-sets TIME, ROUTE
 + De to kommer til denne veien.
 
 
-Pr, Po
+Pr, Po (here any possible prep/case is removed anyway in t2x)
 
   Beaskka geavahedje gávtti badjel.	
 - De brukte pesken over kofta.
