@@ -682,8 +682,8 @@ TODO:
                 <var n="caseprep"/><lit v=""/>                <!--sin-->
               </let>
             </when>
-            <otherwise>
-              <let><var n="caseprep"/><lit v="til"/></let>
+            <otherwise c="Not a modifier: neither prep nor genitive case">
+              <let><var n="caseprep"/><lit v=""/></let>
               <choose><when>
                 <test><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></test>
                 <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
