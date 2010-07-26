@@ -179,6 +179,8 @@ ABBRLEXC=$SRC/abbr-$LANG1-lex.txt
 
 cat $ABBRLEXC >> $OUTFILE;
 
+echo 'done.';
+
 ### Add punctuation
 echo -n '+++ Punctuation... ';
 
@@ -186,7 +188,6 @@ PUNCTLEXC=$SRC/punct-$LANG1-lex.txt
 
 punct_point=`grep -nH ' real pilcrow' $PUNCTLEXC | cut -f2 -d':'`;
 head -n $punct_point $PUNCTLEXC >> $OUTFILE;
-
 
 echo 'done.';
 
