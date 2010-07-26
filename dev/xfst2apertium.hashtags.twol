@@ -29,6 +29,14 @@ Alphabet
 %#:0
 %# ! Need this, since otherwise #-words not matched by our rule will disappear
 
+%+Num 
+%-
+%:
+%'7
+%-:0
+%::0
+%'7:0
+
 %+Actor
 %+N
 %+A
@@ -121,6 +129,13 @@ KeepCmpAfter =			! could expand to include lemmas...
 %+Attr
 ;
 
+NumSym =
+ %:
+ %-
+ %'7
+;
+
+
 Unstarred =
 %+N
 %+A
@@ -167,6 +182,7 @@ RemCmptag:0  <=>  \[ KeepCmpAfter:? | 0:%+G3 ]  _  ;
 RemWICmptag:0  <=>  [ # | #: ]  _  ; 
 
 
+
 "Add +G3 tag once after +N tag"
 0:%+G3  <=>  %+G3:0  [ %+N | %+N:%+N%* ]   _    [ \0:%+G3 | # | #: ]  ;
 !! Will \0:%+G3 also match end-of-word? (In that case we can remove the disjunction)
@@ -174,6 +190,13 @@ RemWICmptag:0  <=>  [ # | #: ]  _  ;
 "Remove +G3 tag before +N tag"
 %+G3:0  <=>     _    [ %+N | %+N:%+N%* ]  ; 
 !! We may have %+N:%+N%* there due to the below rule
+
+
+
+"Delete - and : after +Num"
+NumSym:0 <=> %+Num _ ; 
+
+
 
 
 !! Starring is commented out until we figure out a way to remove the
