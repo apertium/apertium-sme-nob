@@ -70,6 +70,19 @@ grep '<s n="pr"/>' |\
 sed 's%<s n="pr"/>.*%<pr>$%'
 }
 
+cnjsub () {
+    rhsbidix |\
+grep '<s n="cnjsub"/>' |\
+sed 's%<s n="cnjsub"/>.*%<cnjsub>$%'
+}
+
+cnjcoo () {
+    rhsbidix |\
+grep '<s n="cnjcoo"/>' |\
+sed 's%<s n="cnjcoo"/><s n="clb"/>.*%<cnjcoo><clb>$%' |\
+sed 's%<s n="cnjcoo"/>.*%<cnjcoo>$%'
+}
+
 np () {
     rhsbidix |\
 grep '<s n="np"/>' |\
@@ -78,7 +91,7 @@ sed 's%<s n="np"/><s n="\([^"]*\)"/></r>.*%<np><\1>$%' |\
 sed 's%<s n="np"/></r>.*%<np>$%'
 }
 
-for pos in vblex n adv adj pr np ; do
+for pos in vblex n adv adj pr cnjsub cnjcoo np ; do
     if [ $# -eq 0 ]; then
 	${pos} >> ${UNSORTED}
     else
