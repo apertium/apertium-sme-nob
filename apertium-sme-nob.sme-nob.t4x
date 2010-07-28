@@ -284,7 +284,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="foo"/>
+    <def-var n="gender"/>
   </section-def-vars>
 
   <section-def-lists>
@@ -389,7 +389,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
         <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
       </when></choose>
-      
+
       <choose><when c="only gender on singular determiners">
         <test><and>
           <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
@@ -658,6 +658,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
               <equal><clip pos="2" part="lemh"/><lit v="annen"/></equal>
             </or>
           </and></test>
+          <let><var n="gender"/><lit-tag v="m"/></let>
+          <choose><when>
+            <test><or>
+              <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
+              <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
+              <equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal>
+            </or></test>
+            <let><var n="gender"/><clip pos="1" part="gen"/></let>
+          </when></choose>
           <choose>
             <when c="den">
               <test><and>
@@ -672,7 +681,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                     <lu>
                       <get-case-from pos="1"><lit v="den"/></get-case-from>
                       <lit-tag v="det.dem"/>
-                      <clip pos="1" part="gen"/>
+                      <var n="gender"/>
                       <clip pos="1" part="nbr"/>
                     </lu>
                     <b/>
@@ -702,7 +711,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                 <lu>
                   <get-case-from pos="1"><lit v="en"/></get-case-from>
                   <lit-tag v="det.qnt"/>
-                  <clip pos="1" part="gen"/>
+                  <var n="gender"/>
                   <clip pos="1" part="nbr"/>
                 </lu>
                 <b/>

@@ -761,15 +761,21 @@ TODO:
                   -----
                   Note: lone pronouns/determiners just keep GD/ND, this might change
                   in interchunk (postchunk cleans it up if not).">
-      <let><var n="pron_gen"/><clip pos="1" side="tl" part="gen"/></let>
       <let><var n="pron_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
       <choose>
         <when>
           <test>
-            <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+            <equal><var n="pron_nbr"/><lit-tag v="pl"/></equal>
           </test>
           <let><var n="pron_gen"/><lit v=""/></let>
         </when>
+        <otherwise>
+          <let><var n="pron_gen"/><clip pos="1" side="tl" part="gen"/></let>
+          <choose><when>
+            <test><equal><var n="pron_gen"/><lit v=""/></equal></test>
+            <let><var n="pron_gen"/><lit-tag v="m"/></let>
+          </when></choose>
+        </otherwise>
       </choose>
       <choose><when>
           <test><equal><clip pos="1" side="tl" part="art"/><lit v="DD"/></equal></test>
@@ -1001,6 +1007,7 @@ TODO:
           <choose><when>
             <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
             <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+            <let><var n="c_def_pos"/><lit v=""/></let>
           </when></choose>
 
           <out>
@@ -1464,7 +1471,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
-          <chunk name="prop" case="caseFirstWord">
+          <chunk name="nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
@@ -1496,7 +1503,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
-          <chunk name="prop_prop" case="caseFirstWord">
+          <chunk name="nom_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
@@ -1536,7 +1543,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
-          <chunk name="prop_prop_prop" case="caseFirstWord">
+          <chunk name="nom_nom_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="3" side="sl" part="syn_label"/></tag>
@@ -2689,7 +2696,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
         <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_pron_gen_nbr_art"><with-param pos="2"/></call-macro>
-        
+
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <let><var n="c_name"/><lit v="pre_"/></let>
         <let>

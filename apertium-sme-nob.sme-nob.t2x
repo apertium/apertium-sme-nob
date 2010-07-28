@@ -342,7 +342,8 @@ TODO:
       </choose>
     </def-macro>
 
-    <def-macro n="set_c_name3" npar="3" c="args should be given in order of output">
+    <def-macro n="set_c_name3" npar="3" c="args should be given in order of output
+                                           Case of whole chunk is based on first element.">
       <let>
         <var n="c_name"/>
         <concat>
@@ -353,6 +354,7 @@ TODO:
           <clip pos="3" part="lemh"/>
         </concat>
       </let>
+      <modify-case><var n="c_name"/><clip pos="1" part="lemh"/></modify-case>
     </def-macro>
     
     <def-macro n="set_c_tags2" npar="2">      
