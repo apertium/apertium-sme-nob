@@ -1377,10 +1377,11 @@ TODO: OK to just discard syn_label from pret.passives?">
           <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
           <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
           <equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal>
+          <not><equal><clip pos="1" side="tl" part="lemq"/><lit v=""/></equal></not>
         </and></test>
         <out>
           <chunk name="lemq">
-            <tags><tag><lit-tag v="vblex.lemq"/></tag></tags>
+            <tags><tag><lit-tag v="lemq"/></tag></tags>
             <lu><clip pos="1" side="tl" part="lemq"/></lu>
           </chunk>
         </out>
