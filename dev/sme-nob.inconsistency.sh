@@ -23,7 +23,7 @@ SURFACES=`mktemp /tmp/surfaces.XXXXX`
 makepaste () {
     # given analyses, one per line, remove duplicates and output lines
     # of surfaceform:analysis
-    sed 's%<g>\(.*\)</g>\(.*\)%\2#\1%' |\
+    sed 's%<g>\(.*\)</g>\(.*\)\$%\2#\1$%' |\
 sed 's%<b/>% %g' |\
 sort | uniq |\
 tee ${ANALYSES} |\
@@ -38,7 +38,9 @@ vblex () {
     rhsbidix |\
 grep -v '"pstv__verb"' |\
 grep '<s n="vblex"/>' |\
-sed 's%<s n="vblex"/>.*%<vblex><inf>$%'
+sed 's%<s n="vblex"/>.*%<vblex><inf>$%' |\
+# output vblex lemq's on their own too, since they may be moved by transfer:
+gsed 's%\(<g>.*</g>\)\(.*\)%\1\2\n^\1$%'
 }
 
 n () {

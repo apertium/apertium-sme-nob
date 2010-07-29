@@ -1333,7 +1333,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                 <clip pos="1" side="tl" part="a_pstv"/>
                 <clip pos="1" side="tl" part="temps"/>
                 <clip pos="1" side="tl" part="voice"/>
-                <clip pos="1" side="tl" part="lemq"/>
+                <!-- lemq is given its own chunk below -->
               </lu>
             </chunk>
           </out>
@@ -1368,6 +1368,20 @@ TODO: OK to just discard syn_label from pret.passives?">
               <var n="pron_pers"/>
               <var n="pron_nbr"/>
             </lu>
+          </chunk>
+        </out>
+      </when></choose>
+
+      <choose><when c="the lemq was not output in the above 'otherwise'; output as a chunk here">
+        <test><and>
+          <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
+          <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
+          <equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal>
+        </and></test>
+        <out>
+          <chunk name="lemq">
+            <tags><tag><lit-tag v="vblex.lemq"/></tag></tags>
+            <lu><clip pos="1" side="tl" part="lemq"/></lu>
           </chunk>
         </out>
       </when></choose>
