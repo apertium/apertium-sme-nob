@@ -36,8 +36,8 @@ rhsbidix () {
 }
 vblex () {
     rhsbidix |\
-grep -v '"pstv__verb"' |\
 grep '<s n="vblex"/>' |\
+sed 's%<s n="vblex"/>.*<par n="pstv__verb"/>.*%<vblex><pstv><inf>$%' |\
 sed 's%<s n="vblex"/>.*%<vblex><inf>$%' |\
 # output vblex lemq's on their own too, since they may be moved by transfer:
 gsed 's%\(<g>.*</g>\)\(.*\)%\1\2\n^\1$%'
