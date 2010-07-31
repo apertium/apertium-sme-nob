@@ -1930,7 +1930,8 @@ SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg) (-2 @HAB) ;
 SUBSTITUTE ("leat:1") ("leat:2") ("leat:1" V IV) (1 Inf) ;
 # mis lea cahkkehit dola
-SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) (NOT 1 (Actio Ess)) ;
+SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) (NOT 1 (Actio Ess)) (NOT 1 (Der_PassL PrfPrc)) ;
+# sin giella lea<er> áitojuvvon ja sáhttá jávkat
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 (Ind Prt)) (1 Inf) ;
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # (Perf Cond 2)
