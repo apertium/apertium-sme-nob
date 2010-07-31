@@ -9,18 +9,20 @@ This is the first pass. Responsibilities of this file include:
     (this leads to some redundancy, hopefully we'll get a bidix module soon)
 * (De-)compounding
   * See rule: NOMCMP NOM
-* Derivation
+* goahti-derivation
   * See rule: VERB Der/goahti
 * Simple noun phrases
   * Heads and their simple modifiers/specifiers: adj nom, adj adj nom, det adj adj nom, num adj nom
   * See rule: DET ADJ_ATTR NOM
   * See macro: out_nom
-* Insert prepositions based on case
+* Insert prepositions based on nominal case
   * These get their own chunk; t2x might have to remove them in co-ordination or post-position rules
+    or might change them if the verb requires something else
   * See macro: set_caseprep
-
-TODO:
-* Perhaps chunk simple periphrastic verb combinations (verb, vaux pp, vaux inf)
+* Verb auxiliaries
+  * Tags from sme verbs are used to output finite verb auxiliaries before the main verb.
+    All verbs get their own chunks, as do lemq's (since they can move around noun phrases in t3x)
+  * See rule: out_verb
 
 -->
 

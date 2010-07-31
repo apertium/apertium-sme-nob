@@ -25,7 +25,12 @@ LM=`mktemp /tmp/lm.XXXXX`;
 ENTRY=`mktemp /tmp/entry.XXXXX`;
 
 # mac sed is horribly slow for certain operations
-GSED=sed; if test x$(uname -s) = xDarwin; then GSED=gsed; fi
+GSED=sed; 
+if test x$(uname -s) = xDarwin; then 
+    type -P gsed &>/dev/null || { echo "This script requires gsed (or a real GNU/Linux machine) but it's not installed.  Aborting." >&2; exit 1; }
+    GSED=gsed; 
+fi
+
 
 FROM=$(grep -n PPP ${BIDIX}|sed 's/:.*//'|head -n1) 
 TO=$(grep -n PPP ${BIDIX}|sed 's/:.*//'|tail -n1)
