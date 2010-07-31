@@ -228,6 +228,9 @@ TODO:
     <def-attr n="a_pstv">
       <attr-item tags="pstv"/>
     </def-attr>
+    <def-attr n="a_lemq">
+      <attr-item tags="lemq-obj"/>
+    </def-attr>
     <def-attr n="a_adj">
       <attr-item tags="A"/>
       <attr-item tags="adj"/>
@@ -1383,7 +1386,10 @@ TODO: OK to just discard syn_label from pret.passives?">
         </and></test>
         <out>
           <chunk name="lemq">
-            <tags><tag><lit-tag v="lemq"/></tag></tags>
+            <tags>
+              <tag><lit-tag v="lemq"/></tag>
+              <tag><clip pos="1" side="tl" part="a_lemq"/></tag>
+            </tags>
             <lu><clip pos="1" side="tl" part="lemq"/></lu>
           </chunk>
         </out>
