@@ -34,16 +34,16 @@ TODO
       <cat-item tags="PR"/>
       <cat-item tags="PR.*"/>
     </def-cat>
-    <def-cat n="maybe-LSUBJ">
+    <def-cat n="maybe-LSUBJ" c="not relatives, use rel-LSUBJ for those">
       <cat-item lemma="unknown" tags="unknown"/>
       <cat-item tags="SN.@HAB.*"/>
       <cat-item tags="SN.@SUBJ→.*"/>
       <cat-item tags="SV.@SUBJ→.*"/>
       <cat-item tags="SN.@X.*"/>
+    </def-cat>
+    <def-cat n="rel-LSUBJ">
       <cat-item lemma="rel" tags="*.@SUBJ→"/>
       <cat-item lemma="rel" tags="@SUBJ→.*"/>
-      <cat-item lemma="rel" tags="*.@←SPRED"/>
-      <cat-item lemma="rel" tags="@←SPRED.*"/>
     </def-cat>
     <def-cat n="maybe-RSUBJ">
       <cat-item lemma="unknown" tags="unknown"/>
@@ -675,8 +675,67 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
       </action>
-    </rule>    
+    </rule>
     
+    <!-- <rules: rel FV -->
+    <rule comment="REGLA: rel-LSUBJ FV">
+      <pattern>
+        <pattern-item n="rel-LSUBJ"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <var n="adv"/><var n="adv-blank"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: SPEC rel-LSUBJ FV">
+      <pattern>
+        <pattern-item n="SPEC"/>
+        <pattern-item n="rel-LSUBJ"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <var n="adv"/><var n="adv-blank"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: PR SPEC rel-LSUBJ FV">
+      <pattern>
+        <pattern-item n="PR"/>
+        <pattern-item n="SPEC"/>
+        <pattern-item n="rel-LSUBJ"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="3"/>
+          <var n="adv"/><var n="adv-blank"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
     <!-- <rules: maybe-LSUBJ ADVL* FV IV* -->
     <rule comment="REGLA: SPEC maybe-LSUBJ FV
                    V2-rule
@@ -697,7 +756,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="2"/>
           <with-param pos="3"/>
         </call-macro>
-        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
@@ -724,7 +783,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="3"/>
           <with-param pos="4"/>
         </call-macro>
-        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
@@ -759,7 +818,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: maybe-LSUBJ FV-Neg IV
+    <rule comment="REGLA: maybe-LSUBJ adv-FV-Neg IV
                    Máhtte ii leat (boahtán) => Máhtte har ikke (kommet)
                    TODO: gii in dárbbaš => som ikke behøver (needs new rule!)
                    Override prodrop rule (below) if we might have a subject to the left">
@@ -789,7 +848,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: maybe-LSUBJ FV-Neg adv-IV IV
+    <rule comment="REGLA: maybe-LSUBJ adv-FV-Neg adv-IV IV
                    Son ii dáidde jienastit => Han stemmer nok ikke
                    Note: although 'dáidde' is tagged -FAUXV, it has tempus.
                    Override prodrop rule (TODO below) if we might have a subject to the left
@@ -1057,7 +1116,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC FV IV maybe-RSUBJ
+    <rule comment="REGLA: PR SPEC FV IV maybe-RSUBJ
                    (PR) dan maŋŋá gildui sámegiella => etter det ble forbudt samisken => etter det ble samisken forbudt
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -1089,7 +1148,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
     <!-- <rules: CS SUBJ FV IV* -->
-    <rule comment="REGLA: CS maybe-LSUBJ FV-Neg IV
+    <rule comment="REGLA: CS maybe-LSUBJ adv-FV-Neg IV
                    Subordinate clause.
                    ahte áddjá ii dovdan => at bestefar (evt. ADV) ikke kjente">
       <pattern>
@@ -1198,7 +1257,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: CS FV-Neg IV
+    <rule comment="REGLA: CS adv-FV-Neg IV
                    Subordinate clause.
                    go it boađáše => at/når du ikke kommer
                    Insert dropped pronoun">
@@ -1272,7 +1331,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV-Neg-Qst IV
+    <rule comment="REGLA: adv-FV-Neg-Qst IV
                    itgo boađáše => kommer du ikke
                    Insert dropped pronoun">
       <pattern>
@@ -1293,7 +1352,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV-Neg IV
+    <rule comment="REGLA: adv-FV-Neg IV
                    it boađáše => du kommer ikke
                    Insert dropped pronoun">
       <pattern>
@@ -1316,7 +1375,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
     <!-- <rules: V* LOBJ_LSA ADVL* V ROPRED* -->
-    <rule comment="REGLA: FV-Neg-Qst LOBJ_LSA IV
+    <rule comment="REGLA: adv-FV-Neg-Qst LOBJ_LSA IV
                    Itgo gáfe juga => Drikker du ikke kaffe
                    Insert dropped pronoun">
       <pattern>
