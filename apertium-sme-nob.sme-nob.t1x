@@ -1081,7 +1081,10 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
           <let><var n="caseprep"/><lit-tag v="ill-på"/></let>
         </when>
         <when>
-          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-av-verbs"/></in></test>
+          <test><or>
+            <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-av-verbs"/></in>
+            <ends-with><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der_halla"/></ends-with>
+          </or></test>
           <let><var n="caseprep"/><lit-tag v="ill-av"/></let>
         </when>
         <when>
@@ -1091,13 +1094,6 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-fra-verbs"/></in></test>
           <let><var n="caseprep"/><lit-tag v="loc-fra"/></let>
-        </when>
-        <when>
-          <test><or>
-            <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-av-verbs"/></in>
-            <ends-with><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der_halla"/></ends-with>
-          </or></test>
-          <let><var n="caseprep"/><lit-tag v="ill-av"/></let>
         </when>
         <otherwise c="No Change">
           <let><var n="caseprep"/><lit-tag v="NC"/></let>

@@ -188,12 +188,12 @@ TODO:
       <attr-item tags="ela"/>
     </def-attr>
     <def-attr n="a_caseprep_verb">
-      <attr-item tags="loc-NIL"/>
+      <attr-item tags="ill-NIL"/>
+      <attr-item tags="ill-på"/>
+      <attr-item tags="ill-av"/>
       <attr-item tags="loc-for"/>
       <attr-item tags="loc-fra"/>
-      <attr-item tags="ill-NIL"/>
-      <attr-item tags="ill-av"/>
-      <attr-item tags="ill-på"/>
+      <attr-item tags="loc-NIL"/>
       <attr-item tags="NC"/>
     </def-attr>
     <def-attr n="art">
@@ -282,8 +282,9 @@ TODO:
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="tmpcase" c="tmp variable for switch_cases"/>
+    <def-var n="tmp"/>
     <def-var n="caseprep_verb" c="For changing/removing prepositions based on verb argument structure"/>
+    <def-var n="caseprep"      c="nob preposition (whole chunk) based on sme case, perhaps changed based on caseprep_verb"/>
     <def-var n="c_name"/>
     <def-var n="c_tags"/>
     <def-var n="ana_temps" c="set by FV's, used on TD's"/>
@@ -295,9 +296,9 @@ TODO:
   <section-def-macros>
     <def-macro n="switch_cases" npar="2"
                c="Simply switch the typographic cases (upper/lower/capital) of the two arguments.">
-      <let><var n="tmpcase"/><get-case-from pos="1"><clip pos="1" part="lemh"/></get-case-from></let>
+      <let><var n="tmp"/><get-case-from pos="1"><clip pos="1" part="lemh"/></get-case-from></let>
       <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
-      <modify-case><clip pos="2" part="lemh"/><var n="tmpcase"/></modify-case>
+      <modify-case><clip pos="2" part="lemh"/><var n="tmp"/></modify-case>
     </def-macro>
     
     <def-macro n="tag_qst" npar="1"
@@ -379,6 +380,72 @@ TODO:
         <test><not><equal><clip pos="1" part="a_caseprep_verb"/><lit v=""/></equal></not></test>
         <let><var n="caseprep_verb"/><clip pos="1" part="a_caseprep_verb"/></let>
       </when></choose>
+    </def-macro>
+
+    <def-macro n="modify_caseprep" npar="1"
+               c="arg.1: PR-caseprep">
+      <let><var n="tmp"/><lit v=""/></let>
+      <choose c="maybe let caseprep have the wanted preposition lemma">
+        <when>
+          <test><and>
+            <equal><var n="caseprep_verb"/><lit-tag v="ill-på"/></equal>
+            <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
+          </and></test>
+          <let><var n="tmp"/><lit v="på"/></let>
+        </when>
+        <when>
+          <test><and>
+            <equal><var n="caseprep_verb"/><lit-tag v="ill-av"/></equal>
+            <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
+          </and></test>
+          <let><var n="tmp"/><lit v="av"/></let>
+        </when>
+        <when>
+          <test><and>
+            <equal><var n="caseprep_verb"/><lit-tag v="loc-for"/></equal>
+            <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
+          </and></test>
+          <let><var n="tmp"/><lit v="for"/></let>
+        </when>
+        <when>
+          <test><and>
+            <equal><var n="caseprep_verb"/><lit-tag v="loc-fra"/></equal>
+            <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
+          </and></test>
+          <let><var n="tmp"/><lit v="fra"/></let>
+        </when>
+        <when>
+          <test><and>
+            <equal><var n="caseprep_verb"/><lit-tag v="ill-NIL"/></equal>
+            <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
+          </and></test>
+          <let><var n="tmp"/><lit v="NIL"/></let>
+        </when>
+      </choose>
+
+      <choose>
+        <when c="No change">
+          <test><equal><var n="tmp"/><lit v=""/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat><lit v="^"/><clip pos="1" part="whole"/><lit v="$ "/></concat>
+          </let>
+        </when>
+        <when c="Remove completely">
+          <test><equal><var n="tmp"/><lit v="NIL"/></equal></test>
+          <let><var n="caseprep"/><lit v=""/></let>
+        </when>
+        <otherwise c="Enforce a certain preposition">
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/><clip pos="1" part="tags"/><lit v="{^"/>
+              <var n="tmp"/><lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+        </otherwise>
+      </choose>
     </def-macro>
 
     <def-macro n="apply_ana_gen" npar="1"
@@ -731,103 +798,9 @@ TODO:
       </pattern>
       <action>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
-        <choose>
-          <when>
-            <test><and>
-              <equal><var n="caseprep_verb"/><lit-tag v="ill-på"/></equal>
-              <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
-            </and></test>
-            <out>
-              <chunk>
-                <concat>
-                  <lit v="caseprep"/>
-                  <lit-tag v="PR"/>
-                  <clip pos="1" part="case"/>
-                  <lit v="{^"/>
-                  <lit v="på"/>
-                  <lit-tag v="pr"/>
-                  <lit v="$}"/>
-                </concat>
-              </chunk>
-              <b pos="1"/>
-            </out>
-          </when>
-          <when>
-            <test><and>
-              <equal><var n="caseprep_verb"/><lit-tag v="ill-av"/></equal>
-              <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
-            </and></test>
-            <out>
-              <chunk>
-                <concat>
-                  <lit v="caseprep"/>
-                  <lit-tag v="PR"/>
-                  <clip pos="1" part="case"/>
-                  <lit v="{^"/>
-                  <lit v="av"/>
-                  <lit-tag v="pr"/>
-                  <lit v="$}"/>
-                </concat>
-              </chunk>
-              <b pos="1"/>
-            </out>
-          </when>
-          <when>
-            <test><and>
-              <equal><var n="caseprep_verb"/><lit-tag v="loc-for"/></equal>
-              <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
-            </and></test>
-            <out>
-              <chunk>
-                <concat>
-                  <lit v="caseprep"/>
-                  <lit-tag v="PR"/>
-                  <clip pos="1" part="case"/>
-                  <lit v="{^"/>
-                  <lit v="for"/>
-                  <lit-tag v="pr"/>
-                  <lit v="$}"/>
-                </concat>
-              </chunk>
-              <b pos="1"/>
-            </out>
-          </when>
-          <when>
-            <test><and>
-              <equal><var n="caseprep_verb"/><lit-tag v="loc-fra"/></equal>
-              <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
-            </and></test>
-            <out>
-              <chunk>
-                <concat>
-                  <lit v="caseprep"/>
-                  <lit-tag v="PR"/>
-                  <clip pos="1" part="case"/>
-                  <lit v="{^"/>
-                  <lit v="fra"/>
-                  <lit-tag v="pr"/>
-                  <lit v="$}"/>
-                </concat>
-              </chunk>
-              <b pos="1"/>
-            </out>
-          </when>
-          <otherwise>
-            <choose><when>
-              <test><not>
-                <and>
-                  <equal><var n="caseprep_verb"/><lit-tag v="ill-NIL"/></equal>
-                  <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
-                </and>
-              </not></test>
-              <out>
-                <chunk><clip pos="1" part="whole"/></chunk>
-                <b pos="1"/>
-              </out>
-            </when></choose>
-          </otherwise>
-        </choose>
+        <call-macro n="modify_caseprep"><with-param pos="1"/></call-macro>
         <out>
+          <var n="caseprep"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
       </action>
@@ -1046,6 +1019,7 @@ TODO:
                    -----
                    Son lea taksivuoddjin Oslos => Han er taxisjåfør i Oslo
                    Delete 'som'
+                   (can't use set/modify_caseprep for leat+essive, only certain contexts)
                    set anaphoric temps variable
                    use anaphoric gen variable
 TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs rule.">
