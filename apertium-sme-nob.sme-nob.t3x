@@ -58,15 +58,27 @@ TODO
       <cat-item tags="SN.@←SPRED.*"/>
       <cat-item tags="SA.@←SPRED.*"/>
     </def-cat>
+    <def-cat n="LSA">
+      <cat-item tags="SA.@ADVL→"/>
+      <cat-item tags="SA.@ADVL→.*"/>
+    </def-cat>
     <def-cat n="LOBJ_LSA">
+      <cat-item tags="SN.@OBJ→"/>
       <cat-item tags="SN.@OBJ→.*"/>
+      <cat-item tags="SA.@OBJ→"/>
       <cat-item tags="SA.@OBJ→.*"/>
+      <cat-item tags="SA.@ADVL→"/>
       <cat-item tags="SA.@ADVL→.*"/>
     </def-cat>
     <def-cat n="ROPRED">
       <cat-item tags="SV.@←OPRED.*"/>
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
+    </def-cat>
+    <def-cat n="ROBJ">
+      <cat-item tags="SV.@←OBJ.*"/>
+      <cat-item tags="SN.@←OBJ.*"/>
+      <cat-item tags="SA.@←OBJ.*"/>
     </def-cat>
     <def-cat n="ROBJ_ROPRED">
       <cat-item tags="SV.@←OBJ.*"/>
@@ -93,14 +105,20 @@ TODO
       <cat-item lemma="adv" tags="@ADVL.*"/>
       <cat-item tags="SN.@ADVL"/>
       <cat-item tags="SN.@ADVL.*"/>
+      <cat-item tags="SA.@ADVL"/>
+      <cat-item tags="SA.@ADVL.*"/>
       <cat-item lemma="adv" tags="@←ADVL"/>
       <cat-item lemma="adv" tags="@←ADVL.*"/>
       <cat-item tags="SN.@←ADVL"/>
       <cat-item tags="SN.@←ADVL.*"/>
+      <cat-item tags="SA.@←ADVL"/>
+      <cat-item tags="SA.@←ADVL.*"/>
       <cat-item lemma="adv" tags="@ADVL→"/>
       <cat-item lemma="adv" tags="@ADVL→.*"/>
       <cat-item tags="SN.@ADVL→"/>
       <cat-item tags="SN.@ADVL→.*"/>
+      <cat-item tags="SA.@ADVL→"/>
+      <cat-item tags="SA.@ADVL→.*"/>
     </def-cat>
     <def-cat n="adv-FV-Neg">
       <cat-item lemma="adv" tags="SV.@+FAUXV.Neg.*"/>
@@ -150,10 +168,14 @@ TODO
       <cat-item lemma="adv" tags="@ADVL.*"/>
       <cat-item tags="SN.@ADVL"/>
       <cat-item tags="SN.@ADVL.*"/>
+      <cat-item tags="SA.@ADVL"/>
+      <cat-item tags="SA.@ADVL.*"/>
       <cat-item lemma="adv" tags="@ADVL→"/>
       <cat-item lemma="adv" tags="@ADVL→.*"/>
       <cat-item tags="SN.@ADVL→"/>
       <cat-item tags="SN.@ADVL→.*"/>
+      <cat-item tags="SA.@ADVL→"/>
+      <cat-item tags="SA.@ADVL→.*"/>
       <cat-item tags="SN.@SPRED→"/>
       <cat-item tags="SN.@SPRED→.*"/>
       <cat-item tags="SN.@→P"/> <!-- object of postposition, moved by t2x -->
@@ -1374,6 +1396,33 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
+    <!-- <rules: LSA FV ROBJ -->
+    <rule comment="REGLA: LSA FV ROBJ
+                   heajubut geavvat => vi hever oss dårligere
+                   (that example needs some bidix/lex.sel work TODO)">
+      <pattern>
+        <pattern-item n="LSA"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="ROBJ"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes2">
+          <with-param pos="3"/>
+          <with-param pos="2"/>
+        </call-macro>
+        <call-macro n="set_pro_verb_case"><with-param pos="2"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <out>
+          <var n="pro"/><var n="pro-blank"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="2"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
     <!-- <rules: V* LOBJ_LSA ADVL* V ROPRED* -->
     <rule comment="REGLA: adv-FV-Neg-Qst LOBJ_LSA IV
                    Itgo gáfe juga => Drikker du ikke kaffe
