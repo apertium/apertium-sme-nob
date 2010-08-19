@@ -524,7 +524,17 @@ This is the first pass. Responsibilities of this file include:
     <def-list n="loc-fra-verbs" c="See 'ill-NIL-verbs' above.">
       <list-item v="gullat" c="Problematic; Leat go gullan sus alddis? vs Go gullen sámegiela dien mátkkis."/>
     </def-list>
-    
+
+
+<!--
+    <def-list n="loc-om" c="Locative noun phrases default to 'på' unless in this or nextlist (or are np.top)">
+      <list-item v="kveld"/>
+      <list-item v="dag"/>
+      <list-item v="morgen"/>
+      <list-item v="natt"/>
+    </def-list>
+
+-->    
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
       <list-item v="skuff"/>
       <list-item v="speil"/>
@@ -533,6 +543,21 @@ This is the first pass. Responsibilities of this file include:
       <list-item v="sammenheng"/>
       <list-item v="forbindelse"/>
       <list-item v="hus"/>
+      <list-item v="by"/>
+      <list-item v="liv"/>
+      <list-item v="krukke"/>
+      <list-item v="rom"/>
+      <list-item v="mellomrom"/>
+      <list-item v="dråpe"/>
+      <list-item v="hjerte"/>
+      <list-item v="bygd"/>
+      <list-item v="hage"/>
+      <list-item v="stue"/>
+      <list-item v="seng"/>
+      <list-item v="skap"/>
+      <list-item v="vask"/>
+      <list-item v="gamme"/>
+      <list-item v="navn"/>
       <list-item v="januar"/>
       <list-item v="februar"/>
       <list-item v="mars"/>
@@ -562,6 +587,7 @@ This is the first pass. Responsibilities of this file include:
       <list-item v="Svalbard"/>
       <list-item v="Hovedøya"/>
       <list-item v="Kreta"/>
+      <list-item v="Kvaløya"/>
       <list-item v="Madagaskar"/>
       <list-item v="Hitra"/>
       <list-item v="Hidra"/>
@@ -1494,6 +1520,7 @@ TODO: OK to just discard syn_label from pret.passives?">
     <rule comment="REGLA: NOM_PROP
                    Needs to be before the NOM rule.">
       <pattern>
+<!--        <pattern-item n="nom_prop_attr"/> -->
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
