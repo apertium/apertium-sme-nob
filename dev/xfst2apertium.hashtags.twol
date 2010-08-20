@@ -129,12 +129,6 @@ KeepCmpAfter =			! could expand to include lemmas...
 %+Attr
 ;
 
-NumSym =
- %:
- %-
- %'7
-;
-
 
 Unstarred =
 %+N
@@ -191,10 +185,6 @@ RemWICmptag:0  <=>  [ # | #: ]  _  ;
 %+G3:0  <=>     _    [ %+N | %+N:%+N%* ]  ; 
 !! We may have %+N:%+N%* there due to the below rule
 
-
-
-"Delete - and : after +Num"
-NumSym:0 <=> %+Num _ ; 
 
 
 

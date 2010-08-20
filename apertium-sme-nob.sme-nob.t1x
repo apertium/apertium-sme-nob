@@ -203,6 +203,12 @@ This is the first pass. Responsibilities of this file include:
     <def-cat n="year">
       <cat-item tags="Num.*"/>
     </def-cat>
+    <def-cat n="yearcmp">
+      <cat-item tags="Num"/>
+    </def-cat>
+    <def-cat n="lohku">
+      <cat-item lemma="lohku" tags="N.*"/>
+    </def-cat>
     <def-cat n="ord">
       <cat-item tags="A.Ord.*"/>
       <cat-item tags="A.Ord"/>
@@ -1511,6 +1517,48 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: YEARCMP LOHKU
+                   1990-logu => 1990-tallet
+                   Always definite (should not add a determiner in t4x)
+                   Keep the dash by adding the 'cmp' tag here (should probably do it in lexc instead, todo),
+                   nob.dix adds a - for cmp numerals">
+      <pattern>
+        <pattern-item n="yearcmp"/>
+        <pattern-item n="lohku"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="cmp_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="tl" part="gen"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><lit-tag v="def"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="cmp"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>
