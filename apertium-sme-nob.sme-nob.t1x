@@ -153,7 +153,7 @@ This is the first pass. Responsibilities of this file include:
       <cat-item tags="N.Prop.*.Gen"/>
       <cat-item tags="N.Prop.*.Gen.*"/>
     </def-cat>
-    <def-cat n="nom_hon">
+    <def-cat n="nom_prop_attr">
       <cat-item tags="N.Prop.Attr.*"/>
       <cat-item lemma="gonagas" tags="N.*"/>
       <cat-item lemma="gonagas:1" tags="N.*"/>
@@ -1521,7 +1521,6 @@ TODO: OK to just discard syn_label from pret.passives?">
     <rule comment="REGLA: NOM_PROP
                    Needs to be before the NOM rule.">
       <pattern>
-<!--        <pattern-item n="nom_prop_attr"/> -->
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
@@ -1636,11 +1635,11 @@ TODO: OK to just discard syn_label from pret.passives?">
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOM_HON NOM_PROP
+    <rule comment="REGLA: NOM_PROP_ATTR NOM_PROP
                    (šattai) Prinsa Harald (Ruvdnaprinsan) => (ble) Prins Harald (kronprins)
                    Uses NOM_PROP gender if possible as chunk gender.">
       <pattern>
-        <pattern-item n="nom_hon"/>
+        <pattern-item n="nom_prop_attr"/>
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
@@ -1683,12 +1682,12 @@ TODO: OK to just discard syn_label from pret.passives?">
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOMCMP NOM_HON NOM_PROP
+    <rule comment="REGLA: NOMCMP NOM_PROP_ATTR NOM_PROP
                    Ruvdnaprinsa Harald => Kronprins Harald
                    Uses NOM_PROP gender if possible as chunk gender.">
       <pattern>
         <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom_hon"/>
+        <pattern-item n="nom_prop_attr"/>
         <pattern-item n="nom_prop"/>
       </pattern>
       <action>
