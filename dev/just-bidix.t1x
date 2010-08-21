@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transfer>
+  <section-def-cats>
+    <def-cat n="foo">
+      <cat-item tags="foobarfie.*"/>
+    </def-cat>
+  </section-def-cats>
+  <section-def-attrs>
+    <def-attr n="a_foo">
+      <attr-item tags="foo"/>
+    </def-attr>
+  </section-def-attrs>
+  
+  <section-def-vars>
+    <def-var n="v_foo"      c="bar"/>
+  </section-def-vars>
+
+  <section-rules>
+    <rule comment="foo">
+      <pattern>
+        <pattern-item n="foo"/>
+      </pattern>
+      <action>
+        <out><lu><clip pos="1" side="tl" part="whole"/></lu></out>
+      </action>
+    </rule>
+  </section-rules>
+</transfer>
