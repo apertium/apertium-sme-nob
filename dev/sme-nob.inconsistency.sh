@@ -110,3 +110,9 @@ makepaste < ${UNSORTED}
 
 
 rm ${SURFACES} ${ANALYSES} ${UNSORTED}
+
+
+### TODO: entries missing from bidix:
+# alias s5b='apertium-transfer /l/s/dev/just-bidix.t1x /l/s/dev/just-bidix.t1x.bin /l/s/sme-nob.autobil.bin'
+# $ cat sme/src/subjunction-sme-lex.txt |sed 's/ *!.*//'|grep '\(Cs\) *; *$'|sed 's%+Use/Sub%%'|sed 's/^ *//'|sed 's/^\(.*\):\1\(9\)* /\1 /'|sed 's/:[^ ]*//'|sed 's/ *Cs *; *//'|sed 's/% / /g'|sed 's/^/^/'|sed 's/$/<CS><@X>$/'|s5b|grep '^\^@'|sed 's%^\^@%<e><p><l>%'|sed 's/<CS>.*//'|sed 's/ /<b\/>/g'|sed 's%$%<s n="CS"/></l><r>TODO<s n="cnjsub"/></r></p></e>%' 
+# $ cat sme/src/conjunction-sme-lex.txt |sed 's/ *!.*//'|grep '\(Cc\) *; *$'|sed 's%+Use/Sub%%'|sed 's/^ *//'|sed 's/^\(.*\):\1\(9\)* /\1 /'|sed 's/:[^ ]*//'|sed 's/ *Cc *; *//'|sed 's/% / /g'|sed 's/^/^/'|sed 's/$/<CC><@X>$/'|s5b|grep '^\^@'|sed 's%^\^@%<e><p><l>%'|sed 's/<CC>.*//'|sed 's/ /<b\/>/g'|sed 's%$%<s n="CC"/></l><r>TODO<s n="cnjcoo"/></r></p></e>%' 
