@@ -359,7 +359,7 @@ def extract(data, fname, pos_filter, split=False, no_header=False, split2=False,
 		# 'foo0bar%0fie% foe%%fum' => 'foobar0fie foe%fum'
 		
 		# šikaneret+Use/Sub:sjikanere DOHPPE ; ! ^LOAN NOR
-		colon_plus = re.compile(r'(:|\+)')
+		colon_plus = re.compile(r'(?<!%)(:|\+)')
 		split_cplus = lambda x: colon_plus.split(x.strip(), maxsplit=0)
 		
 		# bivval BIVVAL ;
