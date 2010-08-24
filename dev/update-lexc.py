@@ -354,22 +354,25 @@ def extract(data, fname, pos_filter, split=False, no_header=False, split2=False,
 		# priorisointi'][POS=NOUN][KTN=5][KAV=J]:priorisoin{t~~}{J}	kotus_5i_NOUN/stemfiller;
 		clip_line = lambda x: x.split("'")[0]
 	else:
-		# remove some symbols
-		chstr = lambda x: re.compile(r'(?<!%)[0\^\#%]').sub('', x)
-		# 'foo0bar%0fie% foe%%fum' => 'foobar0fie foe%fum'
-		
-		# šikaneret+Use/Sub:sjikanere DOHPPE ; ! ^LOAN NOR
-		colon_plus = re.compile(r'(?<!%)(:|\+)')
-		split_cplus = lambda x: colon_plus.split(x.strip(), maxsplit=0)
-		
-		# bivval BIVVAL ;
-		split_space = lambda x: re.compile(r'(?<!%)\s').split(x.strip(), maxsplit=0)
+		def clip_line(l):
+			# remove some symbols
+			chstr = lambda x: re.compile(r'(?<!%)[0\^\#%]').sub('', x)
+			# 'foo0bar%0fie% foe%%fum' => 'foobar0fie foe%fum'
 
-		rem_comment = lambda x: re.compile(r'(?<!%)\!').split(x)[0]
-		
-		# Return clip if matches + or :, otherwise try matching with space.
-		clip_line = lambda x: chstr(split_cplus(rem_comment(x))[0]) if colon_plus.findall(rem_comment(x)) else chstr(split_space(rem_comment(x))[0])
-	
+			# šikaneret+Use/Sub:sjikanere DOHPPE ; ! ^LOAN NOR
+			colon_plus = re.compile(r'(?<!%)(:|\+)')
+			split_cplus = lambda x: colon_plus.split(x.strip(), maxsplit=0)
+
+			# bivval BIVVAL ;
+			split_space = lambda x: re.compile(r'(?<!%)\s').split(x.strip(), maxsplit=0)
+
+			# make sure we don't get confused by comments containing eg. colon_plus:
+			l = re.compile(r'(?<!%)\!').split(l)[0]
+
+			# Return clip if matches + or :, otherwise try matching with space.
+			if colon_plus.findall(l): return chstr(split_cplus(l)[0])
+			else: return chstr(split_space(l)[0])
+
 	commented = re.compile('^\s*\!').match
 
 	not_in_morph = []
