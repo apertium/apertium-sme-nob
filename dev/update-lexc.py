@@ -313,9 +313,9 @@ def extract(data, fname, pos_filter, split=False, no_header=False, split2=False,
 	else:
 		words = list(set([lx(a) for a in data]))
 	
-	# Account for lt_expand's conversion of <b/> -> ' ', <j/> -> '+', by removing these
-	
-	words = [word.replace(' ', '').replace('+', '') for word in words]
+	# Account for lt_expand's conversion of <j/> -> '+' by removing it
+	# Why? Shouldn't it be changed into whatever the equivalent is in lexc?
+	words = [word.replace('+', '') for word in words] 
 	
 	if debug:
 		print str(len(words)) + ' unique words matching %s in .dix' % (str(search_key))
@@ -340,7 +340,7 @@ def extract(data, fname, pos_filter, split=False, no_header=False, split2=False,
 		rest = clip[0]        # footer is "exclusive"
 		foot = clip[1]
 	else:
-		rest = text
+		# keep rest as-is
 		foot = '\n'
 	
 	# Filter out text based on excludes
@@ -355,20 +355,21 @@ def extract(data, fname, pos_filter, split=False, no_header=False, split2=False,
 		clip_line = lambda x: x.split("'")[0]
 	else:
 		# remove some symbols
-		chstr = lambda x: re.compile(r'[0\^\#]').sub('', x)
+		chstr = lambda x: re.compile(r'(?<!%)[0\^\#%]').sub('', x)
+		# 'foo0bar%0fie% foe%%fum' => 'foobar0fie foe%fum'
 		
 		# šikaneret+Use/Sub:sjikanere DOHPPE ; ! ^LOAN NOR
 		colon_plus = re.compile(r'(:|\+)')
 		split_cplus = lambda x: colon_plus.split(x.strip(), maxsplit=0)
 		
 		# bivval BIVVAL ;
-		split_space = lambda x: re.compile(r'\s').split(x.strip(), maxsplit=0)
+		split_space = lambda x: re.compile(r'(?<!%)\s').split(x.strip(), maxsplit=0)
 		
 		# Return clip if matches + or :, otherwise try matching with space.
 		clip_line = lambda x: chstr(split_cplus(x)[0]) if colon_plus.findall(x) else chstr(split_space(x)[0])
 	
 	commented = re.compile('^\s*\!').match
-	
+
 	not_in_morph = []
 	if no_trim:
 		trim = rest
