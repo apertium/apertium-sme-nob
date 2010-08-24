@@ -364,9 +364,11 @@ def extract(data, fname, pos_filter, split=False, no_header=False, split2=False,
 		
 		# bivval BIVVAL ;
 		split_space = lambda x: re.compile(r'(?<!%)\s').split(x.strip(), maxsplit=0)
+
+		rem_comment = lambda x: re.compile(r'(?<!%)\!').split(x)[0]
 		
 		# Return clip if matches + or :, otherwise try matching with space.
-		clip_line = lambda x: chstr(split_cplus(x)[0]) if colon_plus.findall(x) else chstr(split_space(x)[0])
+		clip_line = lambda x: chstr(split_cplus(rem_comment(x))[0]) if colon_plus.findall(rem_comment(x)) else chstr(split_space(rem_comment(x))[0])
 	
 	commented = re.compile('^\s*\!').match
 
