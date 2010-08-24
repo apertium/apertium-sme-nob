@@ -219,7 +219,7 @@ lex_excludes = [
 	'LEXICON PRSPRCTOADJ \!SUB',
 	'\+Imprt(.*)\+Use\/Sub',
 ]
-
+lex_excludes=['aslkdjfaalsdjf']
 excl_symbols = re.compile(r'|'.join(['(?:' + a + ')' for a in lex_excludes]))
 
 def cat_file(fname, ret_type=False, exclude=False):
@@ -251,7 +251,7 @@ def cat_file(fname, ret_type=False, exclude=False):
 		return data
 
 
-def extract(data, fname, pos_filter, split=False, no_header=False, no_trim=False, debug=False, side=None, remove_empty_lex=False):
+def extract(data, fname, pos_filter, split=False, no_header=False, split2=False, no_footer=False, no_trim=False, debug=False, side=None, remove_empty_lex=False):
 	"""
 		Given a pattern (e.g., V, N, N><Prop), extract matching intersecting words between lt-expanded data and lex file (fname).
 		
@@ -323,9 +323,9 @@ def extract(data, fname, pos_filter, split=False, no_header=False, no_trim=False
 	
 	with open(fname, 'r') as F:
 		text = F.read()
-	point = 'LEXICON %s' % split
-	
+
 	# split text
+	point = 'LEXICON %s' % split
 	if split:
 		clip = text.split(point)
 		head = clip[0] + point # '\n' + point + '\n'
@@ -334,6 +334,14 @@ def extract(data, fname, pos_filter, split=False, no_header=False, no_trim=False
 		head = '\n'
 		clip = text
 		rest = text
+	point2 = 'LEXICON %s' % split2
+	if split2:
+		clip = rest.split(point2)
+		rest = clip[0]        # footer is "exclusive"
+		foot = clip[1]
+	else:
+		rest = text
+		foot = '\n'
 	
 	# Filter out text based on excludes
 	rest = rest.splitlines()
@@ -416,7 +424,12 @@ def extract(data, fname, pos_filter, split=False, no_header=False, no_trim=False
 		lexica3 = re.sub(r'(LEXICON(.*))(?P<lex>\nLEXICON(.*))', '\g<lex>\n', lexica2)
 		
 		trim = lexica3
-	
+
+	if split2:
+		trim += "\n"
+		if no_footer == False:
+			trim = "%s\n%s\n%s\n" % (trim, point2, foot)
+
 	if no_header:
 		return '\n', "%s\n%s" % (point, trim)
 	else:
