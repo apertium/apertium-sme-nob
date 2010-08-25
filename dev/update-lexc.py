@@ -325,18 +325,16 @@ def extract(data, fname, pos_filter, split=False, no_header=False, split2=False,
 		text = F.read()
 
 	# split text
-	point = 'LEXICON %s' % split
 	if split:
-		clip = text.split(point)
-		head = clip[0] + point # '\n' + point + '\n'
+		clip = text.split(split)
+		head = clip[0] + split # '\n' + split + '\n'
 		rest = clip[1]
 	else:
 		head = '\n'
 		clip = text
 		rest = text
-	point2 = 'LEXICON %s' % split2
 	if split2:
-		clip = rest.split(point2)
+		clip = rest.split(split2)
 		rest = clip[0]        # footer is "exclusive"
 		foot = clip[1]
 	else:
@@ -434,10 +432,10 @@ def extract(data, fname, pos_filter, split=False, no_header=False, split2=False,
 	if split2:
 		trim += "\n"
 		if no_footer == False:
-			trim = "%s\n%s\n%s\n" % (trim, point2, foot)
+			trim = "%s\n%s\n%s\n" % (trim, split2, foot)
 
 	if no_header:
-		return '\n', "%s\n%s" % (point, trim)
+		return '\n', "%s\n%s" % (split, trim)
 	else:
 		return head, trim
 
