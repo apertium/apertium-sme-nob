@@ -18,12 +18,12 @@ The following files are all needed for compilation:
 Scripts for keeping up-to-date with the Giellatekno resources:
 --------------------------------------------------------------
 
-- `update-lexc.sh` is used to update the analyser lexicon, but only
-  adding words that already are in bidix
-- `update-lexc.py` does the same as `update-lexc.sh`, but faster, and
-  ensures closed class categories are trimmed too
+- `update-lexc.py` updates the analyser with with words from
+  Giellatekno, only adding those that are in bidix
 - `langs.cfg.in` is a default configuration file for `update-lexc.py`,
   copy it to `langs.cfg` and edit it to use `update-lexc.py`
+- `update-lexc.sh` is an older, slower version of `update-lexc.py`,
+  not in use any longer
 - `full-lexc.sh` is used if you want the analyser to have the full
   Giellatekno lexicon (including words not found in bidix)
 - `rle-to-rlx.sh` is used to update the CG disambiguator
