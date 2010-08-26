@@ -1974,6 +1974,11 @@ SUBSTITUTE ("guorrasit") ("guorrasit:1") ("guorrasit" V IV) (NOT *0 Ill) ;
 # Noun rules
 # ----------
 
+# diibmu 0 = time, 1 = klokke
+SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (1 Num OR Ord) ;
+	## Boahtte gaskavahku diibmu 11.00 rahpá kurdarbearaš Mehidi Kárášjohkii ođđa kaféa.
+	# Ord because of possible incorrect analysis of Num + punctuation.
+	
 # miella 0 = sinn, 1 = oppfatning, 2 = behag
 SUBSTITUTE ("miella") ("miella:1") ("miella" N Sg Loc) (-1 @→N) ;
 # sinn => oppfatning (kan regelen vere meir generell?)
