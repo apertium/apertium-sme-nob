@@ -200,11 +200,12 @@ This is the first pass. Responsibilities of this file include:
       <cat-item lemma="dálvi" tags="N.*"/>
       <cat-item lemma="čakča" tags="N.*"/>
     </def-cat>
-    <def-cat n="year">
-      <cat-item tags="Num.*"/>
-    </def-cat>
     <def-cat n="yearcmp">
       <cat-item tags="Num"/>
+    </def-cat>
+    <def-cat n="diibmu">
+      <cat-item lemma="diibmu" tags="N.*"/>
+      <cat-item lemma="diibmu:1" tags="N.*"/>
     </def-cat>
     <def-cat n="lohku">
       <cat-item lemma="lohku" tags="N.*"/>
@@ -1481,12 +1482,51 @@ TODO: OK to just discard syn_label from pret.passives?">
         </when></choose>
       </action>
     </rule>
-    <rule comment="REGLA: SEASON YEAR
+    <rule comment="REGLA: DIIBMU NUM
+                   diibmu 11.00 => klokken 11.00">
+      <pattern>
+        <pattern-item n="diibmu"/>
+        <pattern-item n="num"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="nom_det" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><lit-tag v="def"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_num"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: SEASON NUM
                    1990 giđa => våren 1990
                    Always definite (should not add a determiner in t4x)
                    Removes genitive from season (selected by numeral)">
       <pattern>
-        <pattern-item n="year"/>
+        <pattern-item n="num"/>
         <pattern-item n="season"/>
       </pattern>
       <action>
