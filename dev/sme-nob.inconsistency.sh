@@ -20,6 +20,12 @@ UNSORTED=`mktemp /tmp/unsorted.XXXXX`
 ANALYSES=`mktemp /tmp/analyses.XXXXX`
 SURFACES=`mktemp /tmp/surfaces.XXXXX`
 
+GSED=sed; 
+if test x$(uname -s) = xDarwin; then 
+    type -P gsed &>/dev/null || { echo "This script requires gsed (or a real GNU/Linux machine) but it's not installed.  Aborting." >&2; exit 1; }
+    GSED=gsed; 
+fi
+
 makepaste () {
     # given analyses, one per line, remove duplicates and output lines
     # of surfaceform:analysis
@@ -40,7 +46,7 @@ grep '<s n="vblex"/>' |\
 sed 's%<s n="vblex"/>.*<par n="pstv__verb"/>.*%<vblex><pstv><inf>$%' |\
 sed 's%<s n="vblex"/>.*%<vblex><inf>$%' |\
 # output vblex lemq's on their own too, since they may be moved by transfer:
-gsed 's%\(<g>.*</g>\)\(.*\)%\1\2\n^\1$%'
+$GSED 's%\(<g>.*</g>\)\(.*\)%\1\2\n^\1$%'
 }
 
 n () {
@@ -48,6 +54,7 @@ n () {
 grep '<s n="n"/>' |\
 sed 's%<s n="n"/><s n="\([^"]*\)"/></r></p><par n="\(unc_\)*sp__n"/></e>%<n><\1><sp>$%' |\
 sed 's%<s n="n"/><s n="\([^"]*\)"/></r></p><par n="\(unc_\)*pl__n"/></e>%<n><\1><pl><ind>$%' |\
+sed 's%<s n="n"/><s n="\([^"]*\)"/></r></p><par n="coll__n"/></e>%<n><\1><pl><ind>$%' |\
 sed 's%<s n="n"/><s n="acr"/>.*%<n><acr>$%' |\
 sed 's%<s n="n"/><s n="\([^"]*\)"/>.*%<n><\1><sg><ind>$%' |\
 sed 's%<s n="n"/></r></p><par n="\(unc_\)*m_RL_f__n"/></e>%<n><m><sg><ind>$%' |\
