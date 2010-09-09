@@ -52,6 +52,7 @@ $GSED 's%\(<g>.*</g>\)\(.*\)%\1\2\n^\1$%'
 n () {
     rhsbidix |\
 grep '<s n="n"/>' |\
+grep -v 'alphabet<s n="n"/>' |\
 sed 's%<s n="n"/><s n="\([^"]*\)"/></r></p><par n="\(unc_\)*sp__n"/></e>%<n><\1><sp>$%' |\
 sed 's%<s n="n"/><s n="\([^"]*\)"/></r></p><par n="\(unc_\)*pl__n"/></e>%<n><\1><pl><ind>$%' |\
 sed 's%<s n="n"/><s n="\([^"]*\)"/></r></p><par n="coll__n"/></e>%<n><\1><pl><ind>$%' |\
