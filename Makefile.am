@@ -56,12 +56,15 @@ $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
 # 	@rm $@.1.tmp $@.2.tmp $@.3.tmp
 
 .deps/$(PREFIX1).automorf.inverted.hfst: $(PREFIX2).autogen.hfst
-	hfst-invert $(PREFIX2).autogen.hfst -o $@
+	if [ ! -d .deps ]; then mkdir .deps; fi
+	hfst-invert -i $(PREFIX2).autogen.hfst -o $@
 
 .deps/$(PREFIX1).automorf.useless.hfst: .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst
+	if [ ! -d .deps ]; then mkdir .deps; fi
 	hfst-compose-intersect -l .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst -o $@
 
 .deps/$(PREFIX1).automorf.hashtags.hfst: .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst
+	if [ ! -d .deps ]; then mkdir .deps; fi
 	hfst-compose-intersect -l .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst -o $@
 
 $(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst dev/xfst2apertium.relabel
