@@ -39,18 +39,19 @@ results := $(patsubst %.$(LANG1),%.res,$(wildcard *.$(LANG1)))
 all : $(results) allbeam
 
 
-allbeam : $(MT)
+allMT : $(MT)
+	@cat $(MT) > allMT
+
+allbeam : allMT $(MT)
 	@echo ""
 	@echo "Running beam search (n=5) on all translations"
 	@echo "(use 'make allres' to eval everything with full search, takes a while)"
-	@cat $(MT) > allMT
 	@cat $(patsubst %.MT,%.$(LANG2),$(MT)) > all$(LANG2)
 	@cat $(patsubst %.MT,%.$(LANG1),$(MT)) > all$(LANG1)
 	apertium-eval-translator -t allMT -r all$(LANG2) -b 5 > $@
 
-allres : $(MT)
+allres : allMT $(MT)
 	@echo "Full evaluation of all files, this takes a while..."
-	@cat $(MT) > allMT
 	@cat $(patsubst %.MT,%.$(LANG2),$(MT)) > all$(LANG2)
 	@cat $(patsubst %.MT,%.$(LANG1),$(MT)) > all$(LANG1)
 	apertium-eval-translator -t allMT -r all$(LANG2) > $@
