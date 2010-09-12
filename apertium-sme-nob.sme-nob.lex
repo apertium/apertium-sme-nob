@@ -2083,7 +2083,7 @@ SUBSTITUTE ("go") ("go:5") ("go" CS) (1 (@ADVL→) OR (@HAB) LINK 1 COPULAS) ;
 # There is a transfer rule for "Pron.Pers Pron.Refl.@Pron←" => prpers.acc selv
 # (that turns the Pron.Pers into accusative)
 
-SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl) (0 (@-FOBJ→) OR (@-FSUBJ→)) ;
+SUBSTITUTE ("ieš") ("ieš:1") ("ieš" Pron Refl Acc) (0 (@-FOBJ→) OR (@-FSUBJ→)) ;
 # Máhtte rábmui iežas:1 vuoitit => Máhtte skrøt at _han_ skulle vinne 
 SUBSTITUTE ("ieš") ("ieš:2") ("ieš" Pron Refl Gen) (-1 (Pron Pers Gen)) ;
 # Dá lea mu iežan:2 girji => Her er min _egen_ bok
