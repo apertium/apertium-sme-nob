@@ -2016,7 +2016,7 @@ SUBSTITUTE (+goddi) (+goddi:1) (+goddi) ; # as a compound part
 # Other parts of speech
 # ---------------------
 # ge 0 = også, 1 = heller
-SUBSTITUTE ("go") ("go:1") ("go" Pcle) (*-1 Neg BARRIER S-BOUNDARY) ;
+SUBSTITUTE ("ge") ("ge:1") ("ge" Pcle) (*-1 Neg BARRIER S-BOUNDARY) ;
 ## In mun ge háliidivčče. In munge háliidivčče.
 
 
