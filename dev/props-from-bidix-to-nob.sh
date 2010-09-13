@@ -35,7 +35,9 @@ fi
 FROM=$(grep -n PPP ${BIDIX}|sed 's/:.*//'|head -n1) 
 TO=$(grep -n PPP ${BIDIX}|sed 's/:.*//'|tail -n1)
 
-tail +$FROM ${BIDIX}|head -n `expr $TO - $FROM` |\
+N="-n"
+if test x$(uname -s) = xDarwin; then N=""; fi
+tail "$N" +$FROM ${BIDIX}|head -n `expr $TO - $FROM` |\
 
 grep '<s n="Prop"/>' |\
 sed 's/.*<r>//'|sed 's%</r>.*%%' | tee ${RHS} |\
