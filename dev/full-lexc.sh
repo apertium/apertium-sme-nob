@@ -13,7 +13,7 @@ LANG1=sme
 LANG2=nob
 BASENAME=apertium-$LANG1-$LANG2
 PREFIX1=$LANG1-$LANG2
-SRC=$GTHOME/trunk/gt/$LANG1/src
+SRC=$GTHOME/gt/$LANG1/src
 DEV=`dirname $0`
 OUTFILE=$DEV/../$BASENAME.$LANG1.lexc
 
