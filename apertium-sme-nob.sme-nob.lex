@@ -2114,6 +2114,26 @@ SUBSTITUTE (Pron Indef) (A Attr) ("iešguhtet" Pron Indef);
 # iešguhtet/iešguđet are actually «hver sine/enhver», but are used like «forskjellig/ulik» in all contexts I've seen so far --KBU
 
 
+
+# Adverbs
+# =======
+
+# fal = bare. 1: til
+
+SUBSTITUTE ("fal") ("fal:1") ("fal" Adv) (-2 BOS)(-1 Neg + Sg3)(*1 N BARRIER NPNH) ;
+## Ii fal
+
+
+# oba
+
+SUBSTITUTE ("oba") ("oba:1) ("oba" Adv) (*-1 Neg BARRIER ConNeg) ;
+## Dat ii oba gula ge min servodahkii.
+##  Dál ii sáhte šat bálljo oba jurddašit ge.
+
+
+
+
+
 # Rules that are not word-specific
 # --------------------------------
 
