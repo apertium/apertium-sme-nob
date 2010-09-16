@@ -37,9 +37,11 @@ Multichar_Symbols
  +Use/Sub  
  +Use/Marg 
  +Use/Circ  ! circular paths (old ^C^)
+ Use/Circ  ! due to bug http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=872
  +Use/CircN ! circular paths for the numerals (old ^N^)
  +Use/Ped   ! remove from pedagogical speller, not yet utilised
  +Use/NG    ! not-generate, for ped generation isme-ped.fst
+ Use/NG    ! due to bug http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=872
  +Use/NA    ! not-analyse, for restricting analyses needed for MT 
             ! generation not to pop up elsewhere
  +Dial/-KJ  ! forms not in use in KJ (Kárásjohka)
@@ -83,6 +85,7 @@ Multichar_Symbols
  +Multi ! Multiword phrase tag
  +G3 ! Grade 3 for homonymies
  +Guess ! for the name guesser
+ Guess ! due to bug http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=872
 
 ! Question and Focus particles:
  +Qst
@@ -16240,7 +16243,7 @@ lulli LULLILONG ;
 lulli#sáme#giella GOAHTI ;
 lulli#sápmelaš+CmpN/SgN+CmpN/SgG+CmpN/PlG:lulli#sápmelažž JOHTOLAT ;
 lulli+N+CmpN/SgN+Cmpnd:lulá%>%- # ; !ovdda- ja maŋábealli
-lulli+N+CmpN/SgN:lulli%> R ;
+! lulli+N+CmpN/SgN:lulli%> R ; ! removed due to http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=873
 lum0ma:lum'ma GOAHTI ;
 lun0ta+CmpN/SgN+CmpN/SgG+CmpN/PlG:lun'ta GOAHTI ;
 luo0mi+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen:luopmin8 SEAMU ;
