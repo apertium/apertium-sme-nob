@@ -340,8 +340,9 @@ def extract(data, fname, excl_symbols=False, pos_filter=False, split=False, no_h
 	
 	# Filter out text based on excludes
 	rest = rest.splitlines()
-	rest = [a for a in rest if not excl_symbols.search(a)]
-		
+	if excl_symbols:
+		rest = [a for a in rest if not excl_symbols.search(a)]
+	
 	if debug:
 		print "Sorting through %d lines" % len(rest)
 	
@@ -551,8 +552,10 @@ help_message += """
 Currently which *-lex.txt files are processed is specified in a somewhat complicated way, however
 if one file is missing, then the file skips and processing should continue anyway.
 
-Note: when trimming, all REGEX entries are ignored, so make sure you
+When trimming, all REGEX entries are ignored, so make sure you
 don't expect to include REGEX entries from bidix in trimmed files!
+
+If you don't want any LEX_EXCLUDES, simply don't include that option in your config file.
 """
 
 class Usage(Exception):

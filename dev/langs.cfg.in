@@ -19,7 +19,7 @@
 			["conjunction-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<CC\\>", "split": "LEXICON Conjunction\n", "split2": "LEXICON Cc\n"}],
 			["adv-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<Adv\\>", "split": "LEXICON Adverb\n", "split2": "LEXICON gadv ! adv that can form compounds\n"}],
 			["subjunction-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<CS\\>", "split": "LEXICON Subjunction\n", "split2": "LEXICON Cs\n"}],
-			["pronoun-sme-lex.txt", "cat"],
+			["pronoun-sme-lex.txt", "clip", {"no_trim": true, "pos_filter": ""}],
 			["particle-sme-lex.txt", "cat"],
 			["pp-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<P[or]\\>", "split": "LEXICON Adposition\n"}],
 			["numeral-sme-lex.txt", "cat"],
