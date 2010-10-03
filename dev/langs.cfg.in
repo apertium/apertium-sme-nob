@@ -10,7 +10,8 @@
 		"LEXTYPE": "",
 		"files": [
 			["sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split2": "LEXICON Prefixes\t! ^C^\n", "no_footer": true}],
-			["sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split": "LEXICON R    ! lexicalising the 3-part compounds, with the tag ShCmp\n", "no_header": true}],
+			["sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split": "LEXICON R    ! lexicalising the 3-part compounds, with the tag ShCmp\n", "no_header": true, "split2": " #  Rmiddle ;\n", "no_footer": true}],
+			["sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split": "LEXICON Rnoun\n", "no_header": true}],
 			["verb-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<V\\>", "split": "LEXICON VerbRoot\n"}],
 			["noun-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<N\\>", "split": "LEXICON NounRoot\n"}],
 			["adj-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<A\\>", "split": "LEXICON AdjectiveRoot\n"}],
