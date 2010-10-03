@@ -625,8 +625,17 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </choose>
       <choose>
         <when>
-          <test><begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <test><or>
+            <begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with>
+            <equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal>
+          </or></test>
           <let><clip pos="2" part="art"/><lit v=""/></let>
+        </when>
+      </choose>
+      <choose>
+        <when>
+          <test><equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal></test>
+          <let><clip pos="2" part="case"/><lit v=""/></let>
         </when>
       </choose>
       <choose>

@@ -328,7 +328,7 @@ def extract(data, fname, pos_filter, split=False, no_header=False, split2=False,
 	if split:
 		clip = text.split(split)
 		head = clip[0] + split # '\n' + split + '\n'
-		rest = clip[1]
+		rest = clip[1]	       # If it fails here, check your "split" value!
 	else:
 		head = '\n'
 		clip = text
@@ -551,6 +551,9 @@ help_message += """
 help_message += """
 Currently which *-lex.txt files are processed is specified in a somewhat complicated way, however
 if one file is missing, then the file skips and processing should continue anyway.
+
+Note: when trimming, all REGEX entries are ignored, so make sure you
+don't expect to include REGEX entries from bidix in trimmed files!
 """
 
 class Usage(Exception):
