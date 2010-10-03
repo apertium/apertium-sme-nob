@@ -411,51 +411,10 @@ LEXICON Root
 LEXICON R    ! lexicalising the 3-part compounds, with the tag ShCmp
 
     Rreal ;  ! Business as usual: Normal compounds right on th Rreal
- #  Rmiddle ;
 
-LEXICON Rmiddle
- al+ShCmp+Use/Sub:al           Rreal ; 
- beai+ShCmp:beai               Rreal ;
- beal+ShCmp:beal               Rreal ;
- báldd+ShCmp+Use/Sub:báldd     Rreal ; 
- gabb+ShCmp+Use/Sub:gabb	   Rreal ; 
- garr+ShCmp+Use/Sub:garr	   Rreal ; 
- gask+ShCmp+Use/Sub:gask	   Rreal ; 
- geai+ShCmp+Use/Sub:geaj       Rreal ; 
- geaš+ShCmp:geaš               Rreal ;
- gieh+ShCmp+Use/Sub:gieh       Rreal ; 
- giet+ShCmp+Use/Sub:giet       Rreal ; 
- guodd+ShCmp+Use/Sub:guodd     Rreal ; 
- guoih+ShCmp+Use/Sub:guoih     Rreal ; 
- guoikk+ShCmp+Use/Sub:guoikk   Rreal ; 
- oahpaheai+ShCmp:oahpaheai     Rreal ;
- jot+ShCmp+Use/Sub:jot         Rinter ;
- joh+ShCmp+Use/Sub:joh         Rreal ; 
- liig+ShCmp+Use/Sub:liig	   Rreal ; 
- miel+ShCmp:miel               Rreal ;
- mies+ShCmp+Use/Sub:mies	   Rreal ; 
- muorr+ShCmp+Use/Sub:muorr     Rreal ; 
- niib+ShCmp+Use/Sub:niib9	   Rreal ; 
- njun+ShCmp+Use/Sub:njun       Rreal ; 
- njár+ShCmp+Use/Sub:njár	   Rreal ; 
- námm+ShCmp+Use/Sub:námm	   Rreal ; 
- oaiv+ShCmp+Use/Sub:oaiv	   Rreal ; 
- oai+ShCmp+Use/Sub:oai 	       Rreal ; 
- ris+ShCmp+Use/Sub:ris	       Rreal ; 
- sai+ShCmp+Use/Sub:sai         Rreal ; 
- sis+ShCmp+Use/Sub:sis         Rreal ; 
- vuohpp+ShCmp+Use/Sub:vuohpp   Rreal ; 
- vuol+ShCmp:vuol               Rreal ;
- váh+ShCmp+Use/Sub:váh         Rreal ; 
- vár+ShCmp+Use/Sub:vár         Rreal ; 
- vát+ShCmp+Use/Sub:vát         Rreal ; 
- čip+ShCmp+Use/Sub:čip	       Rreal ; 
- čáz+ShCmp+Use/Sub:čáz	       Rreal ; 
- šlubb+ShCmp+Use/Sub:šlubb     Rreal ; 
- sáh+ShCmp+Use/Sub:sáh         Rreal ; 
- sát+ShCmp+Use/Sub:sát         Rreal ; 
 
 LEXICON Rnoun
+
  Rreal ;
  +N+Attr+Use/Sub: # ;   !Kárášjot
 ! Intermediate solution. Words pointing here come from
@@ -2728,6 +2687,17 @@ LEXICON VUDDJII
  +A:%>j GAPPUS0 ; ! also VUOHTA, but with j
  +A: VUOHTA ;  ! VUOHTA, without j
  +A:%>Y5 FALLA- ;
+ 
+LEXICON VUDDJII_DECLINED !misses most cases
+ +A+Attr:%>Y5s ATTR ;
+ +A+SgNomCmp:%>jW1 R ;
+ +A:%>j GAPPUS0 ; ! also VUOHTA, but with j
+ +A: VUOHTA ;  ! VUOHTA, without j
+ +A:%>Y5 FALLA- ; !replaced by the 3 following indivudual pointers
+ +A+Sg+Acc:%>Y5 K ;
+ +A+Pl+Nom:%>Y5t K ;
+ +A+Pl+Acc:%>Y5jd K ;
+
 
  LEXICON JIEDNAI
  +A+Der2+Der/at+Adv:%>jit K ;
@@ -2736,6 +2706,19 @@ LEXICON VUDDJII
  +A:%>j GAPPUS0 ; ! VUOHTA j
  +A: VUOHTA ;  ! VUOHTA, no j
  +A:%>Y5 FALLA- ;
+ +A+Comp:%>Y5b BUStem ;
+ +A+Superl:%>Y5muss BUOREMUS ;
+ 
+ LEXICON JIEDNAI_DECLINED !misses most cases
+ +A+Der2+Der/at+Adv:%>jit K ;
+ +A+Attr:%>Q3s ATTR ;
+ +A+SgNomCmp:%>jW1 R ;
+ +A:%>j GAPPUS0 ; ! VUOHTA j
+ +A: VUOHTA ;  ! VUOHTA, no j
+! +A:%>Y5 FALLA- ; !replaced by the 3 following indivudual pointers
+ +A+Sg+Acc:%>Y5 K ;
+ +A+Pl+Nom:%>Y5t K ;
+ +A+Pl+Acc:%>Y5jd K ;
  +A+Comp:%>Y5b BUStem ;
  +A+Superl:%>Y5muss BUOREMUS ;
 
@@ -7914,7 +7897,7 @@ hálbbidit:hálbbid MUITAL ;
 hálddašit:hálddaš MUITTASJ ;
 háldet:hálde DOHPPE ;
 háleštit:hálešt ALIST ;
-hálidit+Use/Sub:hálid MUITTASJ ; !
+háliidit+Use/Sub:hálid MUITTASJ ; ! this sub is very frequent and we want it in the dictionary with pointer to the normative form 
 háliidit:hálijd HALIID ;
 hállat:hálla BORRA ;
 hállet:hálle DOHPPE ;
@@ -15360,7 +15343,7 @@ juovla#lávlla:juovla#láv'lag8 SEAMU ;
 juovla#muorra+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen:juovla#muorra GOAHTI ;
 juovla#mánnu+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen:juovla#mánnu AIGI ;
 juovla#páhkka GOAHTI ;
-juovla#ruohtta+CmpN/SgN+CmpN/SgG+CmpN/PlGl:juovla#ruohtta GOAHTI ;
+juovla#ruohtta+CmpN/SgN+CmpN/SgG+CmpN/PlGen:juovla#ruohtta GOAHTI ;
 juovla#skeaŋ0ka:juovla#skeaŋ'ka GOAHTI ;
 juovla#stállu+CmpN/SgN+CmpN/SgG+CmpN/PlG:juovla#stállu GOAHTI-IU ;
 juovla#čikŋa GOAHTI ;
@@ -15433,7 +15416,8 @@ ka^oliidna:ka^ol MASKIN ; !^LOAN
 kabbalis0ma:kabbalis'ma GOAHTI ; !^LOAN
 kabineahtta GOAHTI ;
 kabineahtta#gažaldat:kabineahtta#gažaldah'k JOHTOLAT ;
-kafeá+Use/Sub:kafeá GOAHTI ;
+kaféa+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:kafea GOAHTI;
+kaféa+Use/Sub:kafeá GOAHTI ;
 kaffe^iidna:kaffe^ MASKIN ; !^LOAN
 kaféa+CmpN/SgN+CmpN/SgG+CmpN/PlG:kafé ESSAYA ;
 kajenne#bihppor GAHPIR ;
@@ -17202,6 +17186,7 @@ málli GOAHTI-IU ;
 mállásat:mállis BADJOSAT ;
 mándel GAHPIR ;
 mándel#veardna GOAHTI ;
+mán0ná:mán'ná ALBMILONG ; ! Biblical mánna (Hebrew: "manna")
 mánno#lahkke#guoddá ALBMILONG ;
 mánnodat+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen:mánnodah'k JOHTOLAT ;
 mánnu+CmpN/SgN+CmpN/SgG+CmpN/PlG:mánnu AIGI ;
@@ -17209,7 +17194,7 @@ mánná#bii0gá+CmpN/SgN+CmpN/SgG+CmpN/PlG:mánná#bij'gá ALBMILONG ;
 mánná#dikšun#doarjja:mánná#dikšun#doar'jag8 SEAMU ;
 mánná#fuolaheapmi+CmpN/Sg:mánná#fuolah EAPMI ;
 mánná#seaŋ0ga:mánná#seaŋ'ga GOAHTI ;
-mánná+CmpN/SgN+CmpN/SgG+CmpN/PlG:mánná ALBMILONG ;
+mánná+CmpN/SgN+CmpN/SgG+CmpN/PlG:mánná ALBMI ;
 mánoheah0pi+CmpN/SgN+CmpN/SgG:mánoheah'pi GOAHTI-IU ;
 mánáid#bajás#geassin+CmpN/Sg:mánáid9#bajás#geassim BOAHTIN ;
 mánáid#boddu+CmpN/SgN+CmpN/SgG+CmpN/PlG:mánáid9#boddu GOAHTI-IU ;
@@ -22732,7 +22717,7 @@ bajimus#mearridan#gáibádus:bajimusmearridangáibáduss JOHTOLAT ;
 mearal#vuoládus:mearal#vuoláduss JOHTOLAT ;
 fievrrádus:fievrráduss JOHTOLAT ;
 vearro#maŋádus:vearro#maŋáduss JOHTOLAT ;
-fitno#oahpahus:fitnooahpahuss JOHTOLAT ;
+fitno#oahpahus:fitno#oahpahuss JOHTOLAT ;
 bálggis#čujuhus:bálggis#čujuhuss JOHTOLAT ;
 čáláhus:čáláhuss JOHTOLAT ;
 beavde#girje#čáláhus:beavde#girje#čáláhuss JOHTOLAT ;
@@ -22878,6 +22863,18 @@ sis#buk0sa:sis#buk'sa GOAHTI ;
 loahpahan#meanut+CmpN/SgN+CmpN/DefPlGen:loahpahan#meannu BUVSSAT ;
 guovddáš#gier0du:guovddáš#gier'du GOAHTI-IU ;
 ovttastus#beallalaš+CmpN/SgN+CmpN/SgG+CmpN/PlG:ovttastus#beallalažž JOHTOLAT ;
+eanan#doallo#departemean0ta+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Use/Sub:eanan#doallo#departemean'ta GOAHTI ; !
+sosiála#bálvalus:sosiála#bálvaluss JOHTOLAT ;
+eanan#doallo#departemean0ta:eanan#doallo#departemean'ta GOAHTI ; !
+albmadeaddji:albmadeaddji¤ ACTOR ;
+bearaš#mánáid#gárde#jođiheaddji:bearaš#mánáid#gárde#jođiheaddji¤ ACTOR ;
+bággo#lonisteaddji:bággo#lonisteaddji¤ ACTOR ;
+dustejeaddji:dustejeaddji¤ ACTOR ;
+kultur#oaivadeaddji:kultur#oaivadeaddji¤ ACTOR ;
+lonejeaddji:lonejeaddji¤ ACTOR ;
+ovda#ságasteaddji:ovda#ságasteaddji¤ ACTOR ;
+ášše#čuoččuheaddji:ášše#čuoččuheaddji¤ ACTOR ;
+njunuš#čiek0či+CmpN/SgN+CmpN/SgG+CmpN/PlG:njunuš#čiek'či¤ ACTOR ;
 ! Divvun & Giellatekno - open source grammars for Sámi and other languages
 ! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
 ! http://giellatekno.uit.no & http://divvun.no
@@ -23121,7 +23118,7 @@ priváhta#rievttálaš:priváhta#rievttál ETNOLOGALAS ;
 geretriijalaš:geretriijal ETNOLOGALAS ;
 jurddalaš:jurddal ETNOLOGALAS ;
 du^alisttalaš:du^alisttal ETNOLOGALAS ;
-váibmui:váibmu JIEDNAI ;
+váibmui+CmpN/SgN+CmpN/SgG+CmpN/PlG:váibmo JIEDNAI ;
 bahá+CmpN/SgN+CmpN/SgG+CmpN/PlG:bahá LAIKI; !
 gastrologalaš:gastrologal ETNOLOGALAS ;
 persovnnalaš:persovnnal ETNOLOGALAS ;
@@ -23158,7 +23155,7 @@ liekkus+CmpN/SgN+CmpN/SgG+CmpN/PlG:lieggus LIEKKUS "warm A" ; !
 guoh0ca:guohccag8 GUOHCA "rotten A" ;
 asehaš:aseh ASEHAS "thin A" ;
 njuo0ras+CmpN/SgN+CmpN/SgG+CmpN/PlG:njuorra NJUORAS "tender A" ; !
-girjái:girjá JIEDNAI ;
+girjái:girjá JIEDNAI_DECLINED ;
 njálggat:njál'g NJALGGAT "sweet A" ;
 gearggus+CmpN/SgN+CmpN/SgG+CmpN/PlG:gear'gus GEARGGUS "ready A" ; !
 dearvvaslaš+CmpN/SgN+CmpN/SgG+CmpN/PlG:dearvvasl DABALAS "healthy A" ; !
@@ -23220,18 +23217,18 @@ sáhppat:sáhpp VIELG ;
 čáhppat+CmpN/SgN+CmpN/SgG+CmpN/PlG:čáhpp VIELG ; !
 guvges#ruoksat:guvges#ruoks VIELG ;
 ruoksat:ruoks VIELG ;
-hohppui+CmpN/SgN+CmpN/SgG+CmpN/PlG:hohppu JIEDNAI ; !
-virkui+CmpN/SgN+CmpN/SgG+CmpN/PlG:virku JIEDNAI ; !
-siivui+CmpN/SgN+CmpN/SgG+CmpN/PlG:siivu JIEDNAI ; !
+hohppui+CmpN/SgN+CmpN/SgG+CmpN/PlG:hohppo JIEDNAI ; !
+virkui+CmpN/SgN+CmpN/SgG+CmpN/PlG:virko JIEDNAI ; !
+siivui+CmpN/SgN+CmpN/SgG+CmpN/PlG:siivo JIEDNAI ; !
 vuovdái+CmpN/SgN+CmpN/SgG+CmpN/PlG:vuovdá JIEDNAI ; !
 ceaggái+CmpN/SgN+CmpN/SgG+CmpN/PlG:ceaggá JIEDNAI ; !
 hutkái+CmpN/SgN+CmpN/SgG+CmpN/PlG:hutká JIEDNAI ; !
 čeavlái+CmpN/SgN+CmpN/SgG+CmpN/PlG:čeavlá JIEDNAI ; !
-álbmái:álbmá JIEDNAI ;
+álbmái:álbmá JIEDNAI_DECLINED ;
 jierbmái+CmpN/SgN+CmpN/SgG+CmpN/PlG:jierbmá JIEDNAI ; !
 vuovdnái+CmpN/SgN+CmpN/SgG+CmpN/PlG:vuovdná JIEDNAI ; !
 vearrái+CmpN/SgN+CmpN/SgG+CmpN/PlG:vearrá JIEDNAI ; !
-assái:assá JIEDNAI ;
+assái:assá JIEDNAI_DECLINED ;
 hearvái+CmpN/SgN+CmpN/SgG+CmpN/PlG:hearvá JIEDNAI ; !
 váfi+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:váfi LODJI; !
 váfi+CmpN/SgN+CmpN/SgG+CmpN/PlG:váfi LAIKI; !
@@ -71739,41 +71736,35 @@ LEXICON Cs
 ! Other licensing options are available upon request, please contact
 ! giellatekno@hum.uit.no or divvun@samediggi.no
 
-! ############################## !
-!This file contains the Pronouns !
-! ############################## !
-
+! ################################################## !
+!This file contains the morphology for the  Pronouns !
+! ################################################## !
 
 
 ! Pronoun
 ! =======
 
-!Pointing to all the subgrops, presented in this order below.
-LEXICON Pronoun
-Personal ;
-Interrogative ;
-Relative ;
-Demonstrative ;
-Reflexive ;
-Reciprocal ;
-Indefinite ;
 
 
 ! Personal pronouns
 ! -----------------
 
-!Personal pronouns, splitting in 1st, 2nd, 3rd
-LEXICON Personal
-mun+Pron+Pers+Sg1:m firstperspronsg ;
-mun+Pron+Pers+Du1:m firstpersprondu ;
-mun+Pron+Pers+Pl1:m perspronpl ;
-don+Pron+Pers+Sg2:d nonfirstperspronsg ;
-don+Pron+Pers+Du2:d nonfirstpersprondu ;
-don+Pron+Pers+Pl2:d perspronpl ;
-son+Pron+Pers+Sg3:s nonfirstperspronsg ;
-son+Pron+Pers+Du3:s nonfirstpersprondu ;
-son+Pron+Pers+Pl3:s perspronpl ;
-dat+Pron+Pers:da%> datpers ;                ! Dat lea ruovttus.
+
+LEXICON MUNLEX
++Sg1: firstperspronsg ;
++Du1: firstpersprondu ;
++Pl1: perspronpl ;
+
+LEXICON DONLEX
++Sg2: nonfirstperspronsg ;
++Du2: nonfirstpersprondu ;
++Pl2: perspronpl ;
+
+LEXICON SONLEX
++Sg3: nonfirstperspronsg ;
++Du3: nonfirstpersprondu ;
++Pl3: perspronpl ;
+
 
 !Case suffixes for 1st Sg, pointing to K lexicon
 LEXICON firstperspronsg
@@ -71787,7 +71778,7 @@ LEXICON firstperspronsg
 +Com:u%>jnna K ;
 +Ess:u%>nin K ;
 
-!Case suffixes for noŋst Sg, pointing to K lexicon
+!Case suffixes for non-1st Sg, pointing to K lexicon
 LEXICON nonfirstperspronsg
 +Nom:o%>n K ;
 +Acc:u%> K ;
@@ -71809,7 +71800,7 @@ LEXICON firstpersprondu
 +Com:unnu%>jn K ;
 +Ess:unno%>n K ;
 
-!Case suffixes for noŋst Du, pointing to K lexicon
+!Case suffixes for non-1st Du, pointing to K lexicon
 LEXICON nonfirstpersprondu
 +Nom:oaj%> K ;
 +Acc:udno%> K ;
@@ -71846,43 +71837,30 @@ LEXICON datpers
 +Ess:nin K ;
 
 
-! Interrogative pronouns
-! ----------------------
-
-!Giving ideosyncratic Sg Nom of gii, mii lexically
-!Sending the oblique forms of gii, mii to an oblique sublexicon
-!Giving the stem of guhte, guhtemuš, goabbá
-LEXICON Interrogative
-mii+Pron+Interr+Sg+Nom:mij%> K-son ;
-mii+Pron+Interr+Sg+Acc+Use/Sub:májd9 K-son ; !
-gii+Pron+Interr+Sg+Nom:gij%> K-son ;
-gii+Pron+Interr+Sg+Ill+Foc:gea%>sagii # ;
-mii+Pron+Interr:ma%> oblintercas ;
-gii+Pron+Interr:gea%>X5 oblintercas ;
-guh0te+Pron+Interr:guh'te GUHTECASE ;
-guhte+Pron+Interr+Sg+Nom:guhte%>s K ;
-guhtemuš+Pron+Interr:guđemužž GUHTEMUŠCASE ;
-guhtemuš+Pron+Interr:guhtemuš%> K-son ; !deviating Nom alternant.
-goabbá+Pron+Interr:goabbá GUHTECASE ;
-makkár+Pron+Interr:makkár DAKKARInterr ;
-man% láhkái+Pron+Interr+Sg+Com+Use/Sub:mainna#lágiin K-son ; !
 
 
-! Relative pronouns
-! -----------------
+! Interrogative and relative pronouns
+! -----------------------------------
 
-LEXICON Relative
-mii+Pron+Rel+Sg+Nom:mij%> K-son ;
-mii+Pron+Rel+Sg+Acc+Use/Sub:májd9 K-son ; !
-gii+Pron+Rel+Sg+Nom:gij%> K-son ;
-mii+Pron+Rel:ma%> oblintercas ;
-gii+Pron+Rel:gea%>X5 oblintercas ;
-guh0te+Pron+Rel:guh'te GUHTECASE ;
-guhte+Pron+Rel+Sg+Nom:guhte%>s K ;
-guhtemuš+Pron+Rel:guđemužž GUHTEMUŠCASE ;
-guhtemuš+Pron+Rel:guhtemuš%> K-son ; !deviating Nom alternant.
-goabbá+Pron+Rel:goabbá GUHTECASE ;
-man% láhkái+Pron+Rel+Sg+Com:mainna#lági%>in K-son ;
+LEXICON MIIINTERLEX
++Sg+Nom:mij%> K-son ;
++Sg+Acc+Use/Sub:májd9 K-son ; !
+:ma%> oblintercas ;
+
+LEXICON GIIINTERLEX
++Sg+Nom:gij%> K-son ;
++Sg+Ill+Foc:gea%>sagii # ; ! Now both Interr and Rel. ok?
+:gea%>X5 oblintercas ;
+
+LEXICON GUHTELEX
+:guh'te GUHTECASE ;
++Sg+Nom:guhte%>s K ;
+
+LEXICON GUHTEMUSLEX
+:guđemužž GUHTEMUŠCASE ;
+:guhtemuš%> K-son ; !deviating Nom alternant.
+
+
 
 LEXICON oblintercas
 +Sg+Acc+Use/NG:jd9 K-son ; ! XXX check this, tt
@@ -71930,41 +71908,11 @@ LEXICON GU-GU-OBL
 +Pl+Com:%>X5jgujn K-son ;
 
 
+
 ! Demonstrative pronouns
 ! ----------------------
 
-!Giving baseform + all demonstrative stems
-!Pointing to case paradigms
 
-LEXICON Demonstrative
-dat+Pron+Dem:da%> datdemcas ;
-die-dat+Pron+Dem:die-da%> demcas ;
-diet+Pron+Dem:die%> demcas ;
-die-diet+Pron+Dem:die-die%> demcas ;
-dát+Pron+Dem:dá%> demcas ;
-dá-dát+Pron+Dem:dá-dá%> demcas ;
-duot+Pron+Dem:duo%> demcas ;
-duo-duot+Pron+Dem:duo-duo%> demcas ;
-dot+Pron+Dem:do%> demcas ;
-do-dot+Pron+Dem:do-do%> demcas ;
-doot+Pron+Dem+Use/Sub:doo demcas ; !
-
-dahtanaga+Pron+Dem:da%> Dahtanaga-par ;
-dakkár+Pron+Dem:dakkár DAKKAR ;
-dákkar+Pron+Dem+Use/Sub:dákkar DAKKAR ; ! XXX
-dakkar+Pron+Dem+Use/Sub:dakkar DAKKAR ; ! XXX
-dákkár+Pron+Dem:dákkár DAKKAR ;
-diekkár+Pron+Dem:diekkár DAKKAR ;
-duokkár+Pron+Dem:duokkár DAKKAR ;
-dokkár+Pron+Dem:dokkár DAKKAR ;
-!makkár+Pron+Dem:makkár DAKKAR ; ! Give this one Interr
-
-dakkáraš+Pron+Dem:dakkáražž DAKKARAS ;
-dákkáraš+Pron+Dem:dákkáražž DAKKARAS ;
-diekkáraš+Pron+Dem:diekkáražž DAKKARAS ;
-duokkáraš+Pron+Dem:duokkáražž DAKKARAS ;
-dokkáraš+Pron+Dem:dokkáražž DAKKARAS ;
-makkáraš+Pron+Dem:makkáražž DAKKARAS ;
 
 
 !Splitting into Sg, Pl and Ess, different paradigms
@@ -72113,30 +72061,33 @@ LEXICON DAKKARASSA-
 
 
 
+
+
 ! Reflexive pronouns
 ! ------------------
 
-LEXICON Reflexive
-!Two nominative reflexives, and pointer to the rest
-!The Pl one is used for Du as well, here given two entries.
-!Should one of them be removed?
-ieš+Pron+Refl+Sg+Nom:ieš%> K ;
-ieš+Pron+Refl+Sg+Nom:ieš»# NAMAT ;  ! <======= ok
-ieš+Pron+Refl+Du+Nom:ieža%> K ;
-ieš+Pron+Refl+Du+Nom+Use/Sub:ieža»# NAMAT ; !
-ieš+Pron+Refl+Pl+Nom:ieža%> K ;
-ieš+Pron+Refl+Pl+Nom+Use/Sub:ieža»# NAMAT ; !
-ieš+Pron+Refl+Gen+PxSg3+Use/Sub:ald9 # ;   ! !SOUTH
-ieš+Pron+Refl+Ess:iehča%>nassij K ;
-ieš+Pron+Refl:0 reflobl ;
-jieš+Pron+Refl+Sg+Nom:jieš%> K ;
-jieš+Pron+Refl+Sg+Nom+Use/NG:jieš»# NAMAT ;  ! <======= ok
-jieš+Pron+Refl+Du+Nom:jieža%> K ;
-jieš+Pron+Refl+Du+Nom+Use/Sub:jieža»# NAMAT ; !
-jieš+Pron+Refl+Pl+Nom:jieža%> K ;
-jieš+Pron+Refl+Pl+Nom+Use/Sub:jieža»# NAMAT ; !
-jieš+Pron+Refl+Ess:jiehča%>nassij K ;
-jieš+Pron+Refl:j refloblalt ;
+
+
+LEXICON IESLEX
++Sg+Nom:ieš%> K ;
++Sg+Nom:ieš»# NAMAT ;  ! <======= ok
++Du+Nom:ieža%> K ;
++Du+Nom+Use/Sub:ieža»# NAMAT ; !
++Pl+Nom:ieža%> K ;
++Pl+Nom+Use/Sub:ieža»# NAMAT ; !
++Gen+PxSg3+Use/Sub:ald9 # ;   ! !SOUTH
++Ess:iehča%>nassij K ;
+ reflobl ;
+
+LEXICON JIESLEX
++Sg+Nom:jieš%> K ;
++Sg+Nom+Use/NG:jieš»# NAMAT ;  ! <======= ok
++Du+Nom:jieža%> K ;
++Du+Nom+Use/Sub:jieža»# NAMAT ; !
++Pl+Nom:jieža%> K ;
++Pl+Nom+Use/Sub:jieža»# NAMAT ; !
++Ess:jiehča%>nassij K ;
+:j refloblalt ;
 
 LEXICON reflobl
 !The V/V2 alternation due to 3rd person vocalism
@@ -72239,50 +72190,49 @@ LEXICON PxCPlCom ! +Use/NG
 +PxPl3+Use/NG:easetguin K ;
 
 
+
+
+
 ! Reciprocal pronouns
 ! -------------------
 
-! The first 6 entries handle the first element of the recipr.
-! The next 12 handle the 2nd part of the non-Px recipr.
-! The members of the third section  point to Px lexica.
 
-LEXICON Reciprocal
-!nubbi+Pron+Recipr+Du:nubbi # ;     
-!nubbi+Pron+Recipr+Pl:nuppit # ;    
-goabbat+Pron+Recipr+Du:goabbat # ; 
-goabbat+Pron+Recipr+Pl:guhtet # ;  
-goabbat+Pron+Recipr+Du+Use/Sub:goappat # ; ! ! Dialectal forms. Norm?
-goabbat+Pron+Recipr+Pl+Use/Sub:guđet # ;   ! ! Dialectal forms. Norm?
+LEXICON GOABBATLEX
++Du:goabbat # ; 
++Pl:guhtet # ;  
++Du+Use/Sub:goappat # ; ! ! Dialectal forms. Norm?
++Pl+Use/Sub:guđet # ;   ! ! Dialectal forms. Norm?
 
+LEXICON GUOIBMILEX
++Sg+Acc:guoibmá Px1VRecipr ;   
++Sg+Gen:guoibmá Px1VRecipr ;   
++Sg+Acc:guoimmi Px23VRecipr ;  
++Sg+Gen:guoimmi Px23VRecipr ;  
++Sg+Acc:guoimmi Px3VPlStem ;  
++Sg+Gen:guoimmi Px3VPlStem ;  
++Sg+Ill:guoibmás PxCPlstem ;   
++Sg+Loc:guoimmist PxCPlstem ;  
++Sg+Com:guimmiin PxCPlstem ;  
 
-guoibmi+Pron+Recipr+Sg+Acc:guoibmá Px1VRecipr ;   
-guoibmi+Pron+Recipr+Sg+Gen:guoibmá Px1VRecipr ;   
-guoibmi+Pron+Recipr+Sg+Acc:guoimmi Px23VRecipr ;  
-guoibmi+Pron+Recipr+Sg+Gen:guoimmi Px23VRecipr ;  
-guoibmi+Pron+Recipr+Sg+Acc:guoimmi Px3VPlStem ;  
-guoibmi+Pron+Recipr+Sg+Gen:guoimmi Px3VPlStem ;  
-guoibmi+Pron+Recipr+Sg+Ill:guoibmás PxCPlstem ;   
-guoibmi+Pron+Recipr+Sg+Loc:guoimmist PxCPlstem ;  
-guoibmi+Pron+Recipr+Sg+Com:guimmiin PxCPlstem ;  
++Pl+Acc:guimmiid PxCPlstem ;   
++Pl+Gen:guimmiid PxCPlstem ;   
++Pl+Ill:guimmiidasa PxVPlStemRecipr ; 
++Pl+Loc:guimmiin PxCPlstem ;    
++Pl+Com:guimmiid PxCPlComRecipr ; 
 
-guoibmi+Pron+Recipr+Pl+Acc:guimmiid PxCPlstem ;   
-guoibmi+Pron+Recipr+Pl+Gen:guimmiid PxCPlstem ;   
-guoibmi+Pron+Recipr+Pl+Ill:guimmiidasa PxVPlStemRecipr ; 
-guoibmi+Pron+Recipr+Pl+Loc:guimmiin PxCPlstem ;    
-guoibmi+Pron+Recipr+Pl+Com:guimmiid PxCPlComRecipr ; 
+LEXICON NUBBILEX
++Gen:nuppi%>id nubbiPxDu ;
++Acc:nuppi%>id nubbiPxDu ;
++Ill:nuppi%>idasa Px1VRecipr ;
++Loc:nuppi%>in nubbiPxDu ;
++Com:nuppi%>id nubbiPxDuCom ;
 
-nubbi+Pron+Recipr+Pl+Gen:nuppi%>id nubbiPxDu ;
-nubbi+Pron+Recipr+Pl+Acc:nuppi%>id nubbiPxDu ;
-nubbi+Pron+Recipr+Pl+Ill:nuppi%>idasa Px1VRecipr ;
-nubbi+Pron+Recipr+Pl+Loc:nuppi%>in nubbiPxDu ;
-nubbi+Pron+Recipr+Pl+Com:nuppi%>id nubbiPxDuCom ;
-
-nubbi+Pron+Recipr+Pl+Gen:nuppi%>id nubbiPxPl ;
-nubbi+Pron+Recipr+Pl+Acc:nuppi%>id nubbiPxPl ;
-nubbi+Pron+Recipr+Pl+Ill:nuppi%>idasa Px23VRecipr ;
-nubbi+Pron+Recipr+Pl+Ill:nuppi%>idasa Px3VPlStem ;
-nubbi+Pron+Recipr+Pl+Loc:nuppi%>in nubbiPxPl ;
-nubbi+Pron+Recipr+Pl+Com:nuppi%>id nubbiPxPlCom ;
++Gen:nuppi%>id nubbiPxPl ;
++Acc:nuppi%>id nubbiPxPl ;
++Ill:nuppi%>idasa Px23VRecipr ;
++Ill:nuppi%>idasa Px3VPlStem ;
++Loc:nuppi%>in nubbiPxPl ;
++Com:nuppi%>id nubbiPxPlCom ;
 
 LEXICON Px1VRecipr      
 +PxDu1:me K ;          
@@ -72328,64 +72278,12 @@ LEXICON nubbiPxPlCom
 +PxPl3:easetguin K ;
 
 
+
+
 ! Indefinite pronouns
 ! -------------------
 
-! Dividing the indefinites in three groups
-LEXICON Indefinite
-declindef-cl ;
-declindef ;
-declindef-idiosync ;
-indeclindef ;
-+Use/Sub: indefmulti ; ! feara mii
 
-! Declineable indefinite pronouns with case + clitic
-! - - - - - - - - - - - - - - - - - - - - - - - - -
-
-LEXICON declindef-cl
-
-! Exceptional nominatives
-mihkkege+Pron+Indef+Sg+Nom:mihkke%>ge # ;
-mahkkege+Pron+Indef+Pl+Nom:mahkke%>ge # ;
-maidege+Pron+Indef+Pl+Gen:maide%>ge # ;
-mihkke+Pron+Indef+Sg+Nom:mihkke%> # ;
-mihkket+Pron+Indef+Sg+Nom+Use/Sub:mihkke%>t # ; !
-mihkkige+Pron+Indef+Sg+Nom:mihkki%>ge # ;
-mahkkige+Pron+Indef+Pl+Nom:mahkki%>ge # ;
-maidige+Pron+Indef+Pl+Gen:maidi%>ge # ;
-giige+Pron+Indef+Sg+Nom:gii%>ge # ;
-giinai+Pron+Indef+Sg+Nom:gii%>nai # ;
-giijai+Pron+Indef+Sg+Nom:gii%>jai # ;
-giiat+Pron+Indef+Sg+Nom:gii%>at # ;
-dahtai+Pron+Indef+Sg+Nom:daht%>ai # ;
-miinai+Pron+Indef+Sg+Nom:mii%>nai # ;
-miijai+Pron+Indef+Sg+Nom:mii%>jai # ;
-ieš#giige+Pron+Indef+Sg+Nom:ieš#gii%>ge # ;
-ieš#giinai+Pron+Indef+Sg+Nom:ieš#gii%>nai # ;
-ieš#giijai+Pron+Indef+Sg+Nom:ieš#gii%>jai # ;
-
-! Pointers to obl sublexicon
-mihkkege+Pron+Indef:ma%> oblindefcas ;
-giige+Pron+Indef:gea%> oblindefcas ;
-giinai+Pron+Indef:gea%> oblindefcas-giinai ;
-miinai+Pron+Indef:ma%> oblindefcas-miinai ;
-ieš#giige+Pron+Indef:ieš#gea%> oblindefcas ;
-ieš#giinai+Pron+Indef:ieš#gea%> oblindefcas-giinai ;
-guhtege+Pron+Indef:guh'te GUHTEGECASE ;
-guhtenai+Pron+Indef:guh'te GUHTENAI ;
-!ieš#guh0te+Pron+Indef:ieš#guh'te GUHTECASE ;
-ieš#guhtege+Pron+Indef:ieš#guh'te GUHTEGECASE ;
-ieš#guhtenai+Pron+Indef:ieš#guh'te GUHTENAI ;
-guhtemušge+Pron+Indef:guđemužž GUHTEMUSGECASE ;
-guhtemušge+Pron+Indef:guhtemuš%>ge # ; !deviating Nom altarnant.
-goabbáge+Pron+Indef:goabbá GUHTEGECASE ;
-goabbánai+Pron+Indef:goabbá GUHTENAI ;
-!makkárge+Pron+Indef (have a look at this one)
-!oktage+Pron+Indef (wait with this one until numerals are treated)
-
-!The difference between mihkkege and mihkkige
-!continues through declination (maidege-maidige etc.).
-!Should they be separated in different lexicons to make it logical? IK
 
 LEXICON oblindefcas
 +Sg:0 oblindemcassg ;
@@ -72529,93 +72427,29 @@ LEXICON GUHTENAI
 
 
 
+
+
+
+
+
+
+
+
+
+
 ! Declineable indefinites with normal case paradigms
 ! - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-LEXICON declindef
-
-eará+Pron+Indef:eará%>               indef-a-even-v ;
-iežá+Pron+Indef:iežá%>                   indef-a-even-v ;
-uhccánaš+Pron+Indef:uhccánažž       indef-a-even-c ;
-unnánaš+Pron+Indef:unnánažž           indef-a-even-c ;
-
-ea0nas+Pron+Indef:eatnas%>           indef-a-uneven ;
-ea0naš+Pron+Indef:eatnaš%>               indef-a-uneven ;
-
-muhtin+Pron+Indef:muhtim%>           indef-a-uneven-gahpir ;
-muhtun+Pron+Indef:muhtum%>           indef-a-uneven-gahpir ;
-muhtun+Pron+Indef+Use/Sub:muhtom%>           indef-a-uneven-gahpir ; !
-
-muhtin+Pron+Indef+Sg+Gen:muhtin»#       NAMAT ;
-muhtun+Pron+Indef+Sg+Gen:muhtun»#       NAMAT ;
-muhtin+Pron+Indef+Pl+Gen:muhtim%>ijd9»#       NAMAT ;
-muhtun+Pron+Indef+Pl+Gen:muhtum%>ijd9»#       NAMAT ;
-muhtin+Pron+Indef+Pl+Loc+Use/Sub:muhttuin K ; !
 
 
-uhccán+Pron+Indef:uhccán%>       indef-a-uneven-gahpir ;
 
-unnán+Pron+Indef:unnán%>           indef-a-uneven-gahpir ;
-veháš+Pron+Indef:veháž%>           indef-a-uneven-gahpir ;
-váháš+Pron+Indef:váháž%>           indef-a-uneven-gahpir ;
-veaháš+Pron+Indef:veaháž%>           indef-a-uneven-gahpir ;
 
-soa0mes+Pron+Indef+Sg+Nom:soames%>   K ;
-soa0mes+Pron+Indef+Ess:soapmás%>in   K ;
-soa0mes+Pron+Indef:soapmás%>          indefattr ;
-soa0mes+Pron+Indef:soapmás%>X2      indefdeclsguneven-ag ;
-soa0mes+Pron+Indef:soapmás%>          indefdeclsguneven-ilc ;
-soa0mes+Pron+Indef:soapmás%>X2      indefdeclpluneven-n ;
-soa0mes+Pron+Indef:soapmás%>i          indefdeclpluneven-obl ;
 
-nuppát+Pron+Indef:nuppád%>              indefsg-a-uneven ;
 
-duobbá+Pron+Indef:duobbá%>              indef-a-even-v ;
-dábbá+Pron+Indef:dábbá%>              indef-a-even-v ;
-juobbá+Pron+Indef:juobbá%>              indef-a-even-v ;
-juobbá#goabbá+Pron+Indef: JUOBBAGOABBA ;
 
-nubbi+Pron+Indef:nubbi%>             nubbicase ;
-nubbi+Pron+Recipr:nubbi%>             nubbicase ;
 
-juohkehaš+Pron+Indef:juohkehažž         indef-a-even-c ;
 
-ollut+Pron+Indef:ollu%>           indefdeclpleven ;
-olut+Pron+Indef:olu%>           indefdeclpleven ;
-moanat+Pron+Indef:moana%>           indefdeclpleven ;
-gallát+Pron+Indef+Attr:gallát%>       K ;
-buohkat+Pron+Indef:buohka%>       indefdeclpleven ;
-gait#divnnat+Pron+Indef:gait#divnna%> indefdeclpleven ;
-gait#diinnat+Pron+Indef:gait#dijnna%> indefdeclpleven ;
-gait#tiinnat+Pron+Indef:gait#tijnna%> indefdeclpleven ;
-gaikkat+Pron+Indef:gajkka%>       indefdeclpleven ;
-goappašagat+Pron+Indef:goappašaga%>  indefdeclpleven ;
 
-ollugat+Pron+Indef:ollug%>       indu-pl-gahpir ;
-oallugat+Pron+Indef:oallug%>       indu-pl-gahpir ;
-olugat+Pron+Indef:olug%>           indu-pl-gahpir ;
-gal0lis+Pron+Indef:gal'lis%>       indefdecluneven ;
-olus+Pron+Indef:olus%>           indefdecluneven ;
-ol0lus+Pron+Indef+Use/Sub:ol'lus%>           indefdecluneven ; ! substandard
-soamis+Pron+Indef:soamis%>       indefdecluneven ;
-
-eambbosat+Pron+Indef:eambbos%>       indu-pl-gahpir ;
-eambbogat+Pron+Indef:eambbog%>       indu-pl-gahpir ;
-guoktásat+Pron+Indef:guoktás%>       indu-pl-gahpir ;
-goappašat+Pron+Indef:goappaš%>       indu-pl-gahpir ;
-goappašat+Pron+Indef+Pl+Gen:goappaš%>ijd9»# NAMAT ;
-goappešat+Pron+Indef:goappeš%>        indu-pl-gahpir ;
-
-eanebut+Pron+Indef+Nom:eaneb%>ut       K ;
-eanebut+Pron+Indef:eaneb%>u       indefdeclpluneven-obl ;
-eanemusat+Pron+Indef:eanemus%>X2       indefdeclpluneven-n ;
-eanemusat+Pron+Indef:eanemus%>iX2       indefdeclpluneven-obl ;
-
-eanebat+Pron+Indef+Nom:eaneb%>at       K ;
-eanebat+Pron+Indef:eaneb%>i       indefdeclpluneven-obl ;
-
-eatnagat+Pron+Indef:eatnag%>       indu-pl-gahpir ;
-galládat+Pron+Indef:gallád%>       indu-pl-gahpir ;
 
 
 ! Declension lexica for the declineable indefinites
@@ -72806,87 +72640,15 @@ makkár% nu+Use/Sub:makkár% nu iind;  ! spellera
 makkáraš% nu+Use/Sub:makkáraš% nu iind;  ! spellera
 
 
-! The indeclineable indefinites
-! - - - - - - - - - - - - - - -
 
-LEXICON indeclindef
-ald+Use/Sub:ald9 iind ; !
-buot iind ;
-buot:buot»# NAMAT ;
-gait:gajt iind ;
-gait:gajt»# NAMAT ;
-eatnat iind ;
-eatnat:eatnat»# NAMAT ;
-!fal iind ; ! cf. Nickel s. 126.
-gallát iind ;
-goabbat iind ;
-goabbat:goabbat»# NAMAT ;
-goappaš iind ;
-goappaš:goappaš»# NAMAT ;
-!goappašat iind ; ! thus both Nom and non-Nom. XXX.
-guhtet iind ;
-ieš#guhtet iind ;
-ieš#guđet iind ;
-ieš#guđet:ieš#guđet»# NAMAT ;
-ieš#guhtet:ieš#guhtet»# NAMAT ;
-ihkinassii iind ;
-juohke iind ;
-juohke:juohke»# NAMAT ;
-ollu iind ;
-olu iind ;
-!vaikko iind ; !This is CS, not pron
-
-
-LEXICON iind
-+Pron+Indef:%>0 K ;
 
 
 
 ! Separate lexica for exceptional entries
 ! - - - - - - - - - - - - - - - - - - - -
 
-LEXICON declindef-idiosync
-! separate lexica for these entries:
-! oktat
-oktahat:ovttaha OVTTAHAT ;
-seammahat+Use/Sub:seammaha OVTTAHAT ; !
-seammahat+Pron+Indef+Attr+Use/Sub:seammahat # ; !
-seammahat+Pron+Indef+Nom+Sg+Use/Sub:seammahat # ; !
-oktahat+Pron+Indef+Attr:oktahat%> K ;
-aktahat+Pron+Indef+Attr:aktahat%> K ;
-oktahat+Pron+Indef+Nom+Sg:oktahat%> K ;
-aktahat+Pron+Indef+Nom+Sg:aktahat%> K ;
 
-earrás+Pron+Indef:earrás EARRAS ;
-ieš#guhtet+Pron+Indef+Nom:ieš#guhtet%> K ;
-ieš#guhtet+Pron+Indef+Gen+Use/Sub:ieš#guđet%> K ; !
-ieš#guhtet+Pron+Indef+Gen+Use/Sub:ieš#guđet»# NAMAT ; !
-ieš#guhtet+Pron+Indef+Acc+Use/Sub:ieš#guđet%> K ; !
-simme+Pron+Indef+Use/Sub:simme SIMME ; !
-seamma+Pron+Indef+Use/Sub:seamma SEAMMA ; !
-seammá+Pron+Indef:seammá SEAMMA ;
-seamma+Pron+Indef+Attr:seamma»# NAMAT ;
-seamma+Pron+Indef+Attr:seamma%> K ;
-seammá+Pron+Indef+Attr+Use/Sub:seammá # ; !, dict says seamma ~ seammá (#seamma)
-juoga+Pron+Indef:juo JUOGA ;
-gal0le+Pron+Indef+Use/CircN:gal'l GUOKTE ; !
-guktot+Pron+Indef:gukto indefdeclplcontr ;
-juogamii+Pron+Indef+Sg+Nom:juogamij%> K-son ;
-juogamii+Pron+Indef+Sg+Acc+Use/Sub:juogamájd9 K-son ; !
-juogamii+Pron+Indef:juogama%> oblintercas ;
 
-! okta
-! juoga mii
-!oktahat         +       no      OKTAHAT => indefeven / Nom=aktahat / OKTAttr
-!        OKTattr:n=oktahat, aktahat, oktat, aktat
-!                o=ovttahat, ovttat
-!hárvvis        +       a       indef-a-      uneven  hárve, hárvves
-!hárvvis        +       a       indef-a-      contr   hárve, hárvves
-!Some problematic ones, one form for nsg, one for the rest
-!oktat+Pron+Indef+Sg+Nom:oktat%> K ;
-!oktat+Pron+Indef:ovttat%> K ;
-!oktahat+Pron+Indef+Sg+Nom:oktahat%> K ;
-!oktahat+Pron+Indef+:ovttahat%> K ;
 
 LEXICON indefdeclplcontr ! so far guktot
 +Pl+Nom:%>t K ;
@@ -72972,6 +72734,149 @@ LEXICON OVTTAHAT
 +Pl+Loc:g%>ajn K ;
 +Pl+Com:g%>ajgujn K ;
 
+
+
+
+
+
+! The indeclineable indefinites
+! - - - - - - - - - - - - - - -
+
+
+LEXICON iind
++Pron+Indef:%>0 K ;
+
+
+
+
+
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or divvun@samediggi.no
+
+! ############################## !
+!This file contains the Pronouns !
+! ############################## !
+
+
+
+! Pronoun
+! =======
+
+!Pointing to all the subgrops, presented in this order below.
+LEXICON Pronoun
+Personal ;
+Interrogative ;
+Relative ;
+Demonstrative ;
+Reflexive ;
+Reciprocal ;
+Indefinite ;
+
+
+! Personal pronouns
+! -----------------
+
+!Personal pronouns, splitting in 1st, 2nd, 3rd
+LEXICON Personal
+mun+Pron+Pers:m MUNLEX ;
+don+Pron+Pers:d DONLEX ;
+son+Pron+Pers:s SONLEX ;
+dat+Pron+Pers:da datpers ; ! Dat lea ruovttus.
+LEXICON Interrogative
+mii+Pron+Interr: MIIINTERLEX ;
+gii+Pron+Interr: GIIINTERLEX ;
+guhte+Pron+Interr:guh'te GUHTELEX ;
+guhtemuš+Pron+Interr: GUHTEMUSLEX ;
+goabbá+Pron+Interr:goabbá GUHTECASE ;
+makkár+Pron+Interr:makkár DAKKARInterr ;
+LEXICON Relative
+mii+Pron+Rel: MIIINTERLEX ;
+gii+Pron+Rel: GIIINTERLEX ;
+guhte+Pron+Rel:guh'te GUHTELEX ;
+guhtemuš+Pron+Rel: GUHTEMUSLEX ;
+goabbá+Pron+Rel:goabbá GUHTECASE ;
+LEXICON Demonstrative
+dat+Pron+Dem:da%> datdemcas ;
+diet+Pron+Dem:die%> demcas ;
+dát+Pron+Dem:dá%> demcas ;
+duot+Pron+Dem:duo%> demcas ;
+dot+Pron+Dem:do%> demcas ;
+dakkár+Pron+Dem:dakkár DAKKAR ;
+dákkár+Pron+Dem:dákkár DAKKAR ;
+LEXICON Reflexive
+ieš+Pron+Refl: IESLEX ;
+jieš+Pron+Refl: JIESLEX ;
+LEXICON Reciprocal
+goabbat+Pron+Recipr: GOABBATLEX ;
+nubbi+Pron+Recipr+Pl: NUBBILEX ;
+
+
+LEXICON Indefinite
+
+declindef-cl ;
+declindef ;
+declindef-idiosync ;
+indeclindef ;
++Use/Sub: indefmulti ; ! feara mii
+
+! Declineable indefinite pronouns with case + clitic
+! - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+LEXICON declindef-cl
+
+giige+Pron+Indef+Sg+Nom:gii%>ge # ;
+giige+Pron+Indef:gea%> oblindefcas ;
+goabbáge+Pron+Indef:goabbá GUHTEGECASE ;
+LEXICON declindef
+eará+Pron+Indef:eará%>               indef-a-even-v ;
+ea0nas+Pron+Indef:eatnas%>           indef-a-uneven ;
+ea0naš+Pron+Indef:eatnaš%>               indef-a-uneven ;
+muhtin+Pron+Indef:muhtim%>           indef-a-uneven-gahpir ;
+muhtun+Pron+Indef:muhtum%>           indef-a-uneven-gahpir ;
+muhtun+Pron+Indef+Use/Sub:muhtom%>           indef-a-uneven-gahpir ; !
+muhtin+Pron+Indef+Sg+Gen:muhtin»#       NAMAT ;
+muhtun+Pron+Indef+Sg+Gen:muhtun»#       NAMAT ;
+muhtin+Pron+Indef+Pl+Gen:muhtim%>ijd9»#       NAMAT ;
+muhtun+Pron+Indef+Pl+Gen:muhtum%>ijd9»#       NAMAT ;
+muhtin+Pron+Indef+Pl+Loc+Use/Sub:muhttuin K ; !
+nubbi+Pron+Indef:nubbi%>             nubbicase ;
+nubbi+Pron+Recipr:nubbi%>             nubbicase ;
+gallát+Pron+Indef+Attr:gallát%>       K ;
+buohkat+Pron+Indef:buohka%>       indefdeclpleven ;
+gal0lis+Pron+Indef:gal'lis%>       indefdecluneven ;
+olus+Pron+Indef:olus%>           indefdecluneven ;
+LEXICON declindef-idiosync
+seamma+Pron+Indef+Use/Sub:seamma SEAMMA ; !
+seammá+Pron+Indef:seammá SEAMMA ;
+seamma+Pron+Indef+Attr:seamma»# NAMAT ;
+seamma+Pron+Indef+Attr:seamma%> K ;
+seammá+Pron+Indef+Attr+Use/Sub:seammá # ; !, dict says seamma ~ seammá (#seamma)
+juoga+Pron+Indef:juo JUOGA ;
+gal0le+Pron+Indef+Use/CircN:gal'l GUOKTE ; !
+LEXICON indeclindef
+buot iind ;
+buot:buot»# NAMAT ;
+gallát iind ;
+goabbat iind ;
+goabbat:goabbat»# NAMAT ;
+guhtet iind ;
+ihkinassii iind ;
+juohke iind ;
+juohke:juohke»# NAMAT ;
+ollu iind ;
 ! Divvun & Giellatekno - open source grammars for Sámi and other languages
 ! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
 ! http://giellatekno.uit.no & http://divvun.no
@@ -73023,6 +72928,7 @@ galahal pcle ;
 galahan pcle ;
 galhal pcle ;
 ge pcle ;
+gen pcle ;
 ges pcle ;
 gis pcle ;
 go qpcle ;
@@ -78277,6 +78183,7 @@ LEXICON ARABICLOOP !^C^
 % %/+Use/Circ:% %/ ARABIC ; ! 24 /12 !
 '+Use/Circ:'7 ARABIC ; ! Since ' denotes cons.grad. This is not optimal either. !
 
+! TODO: should't these have a +Cmpnd tag? -KBU
 %-+Num+Use/Circ:%- Rreal_hyph ; ! Number compounds, with hyphen !
 %-+Num+Use/Circ:%- Rreal_nonhyph ; ! Hyphen also when other than arabic have not !
 
@@ -78285,6 +78192,7 @@ LEXICON ARABICLOOP !^C^
 
  % %-+Use/Sub+Use/Circ:% %- ARABICDELIMITER; ! 1 - multipart numbers - "1 - :s"? !	!
  % %-%-+Use/Sub+Use/Circ:% %-%- ARABICDELIMITER; ! 1 -- multipart numbers 
+! TODO: why is Num Nom added here in addition? -KBU
  %%+Num+Nom+Use/Circ:%%  ARABICDELIMITER ; ! 50%. It is wrong, but 75 % of us write "75%". !
  % %%+Num+Nom+Use/Circ:% %%  ARABICDELIMITER ; ! the correct ones as well... 50 % etc. !
  ARABICDELIMITER ; ! list of number-case delimiters !
@@ -78812,7 +78720,6 @@ jr ab-dot-noun ; !junior
 komp ab-noun ;
 kond ab-noun ;
 konj ab-noun ;
-Kr ab-noun ; !
 lok ab-dot-noun ; !lokatiiva
 lád ab-dot-noun ; !lassiárvodivat
 lávv+Use/Sub:lávv ab-dot-noun; !Lávvardat !
@@ -78857,7 +78764,6 @@ nr ab-noun ;
 tlf ab-noun ; !Also used without dot
 LEXICON TRAB 
 1.aman+Use/Circ:1.aman ab-dot-noun; ! !1.amanuensis
-Adr ab-dot-noun ; !Adreassa
 aman ab-dot-noun ; !amanuenssa
 art ab-dot-noun ; !artihkkal, artium
 ass:ass9 ab-dot-noun ; !assisteanta, assortemeanta
@@ -78878,7 +78784,6 @@ Innst ab-dot-noun ; !Innstilling
 Joh:Joh9 ab-noun ; !Johannes
 Johs ab-dot-noun ; !Johannes
 juovlam+Use/Sub:juovlam ab-dot-noun; ! !
-Kr ab-dot-noun ; !Kristian, Kristin, Kristus
 Luk ab-noun ; !Lukas
 Od.dieđ.nr ab-dot-noun ; !Odeldikkedieđahusa nummar
 Od.prop ab-dot-noun ; !Odeldikkeproposišuvdna
