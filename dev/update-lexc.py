@@ -37,6 +37,7 @@ class Config(object):
 		self.LANG1 = "sme"
 		self.LANG2 = "fin"
 		self.GTHOME = os.environ.get("GTHOME")
+		if not self.GTHOME: self.GTHOME = ""
 		self.PRODUCE_LEXC_FOR = "sme"
 		self.OUTPUT_DIR = os.getcwd() + '/../'
 		self.GTPFX = 'gt'
@@ -45,6 +46,18 @@ class Config(object):
 		self.LEXTYPE = 'hlexc'
 		self.REMOVE_EMPTY_LEXICONS = 'no'
 		self.SRC = self.GTHOME + '/' + self.GTPFX + '/' + self.PRODUCE_LEXC_FOR + '/src/'
+		self.LEX_EXCLUDES = [
+			"\!\^NG\^",
+			"; \!SUB",
+			"\! \!SOUTH",
+			"\+Use\/NG",
+			"\+Nom(.*)\+Use\/Sub",
+			"\+Gen(.*)\+Use\/Sub",
+			"\+Use\/Sub(.*)\+V\+TV",
+			"\+Attr(.*)\+Use\/Sub",
+			"LEXICON PRSPRCTOADJ \!SUB",
+			"\+Imprt(.*)\+Use\/Sub",
+			]
 		self.files = [
 			["verb-sme-lex.txt", 	'clip', 	{'pos_filter': 'V', 'split': 'VerbRoot\n'}],
 			["noun-sme-lex.txt", 	'clip', 	{'pos_filter': 'N', 'split': 'NounRoot\n'}],
@@ -78,6 +91,7 @@ class Config(object):
 			self.OUTPUT_DIR = '.'
 			self.GTPFX = ''
 			self.LEXTYPE = ''
+			self.LEX_EXCLUDES = False
 			self.REMOVE_EMPTY_LEXICONS = ''
 		
 			self.SRC = ''
@@ -105,6 +119,7 @@ class Config(object):
 			"files": self.files,
 			"SRC": self.SRC,
 			"LEXTYPE": self.LEXTYPE,
+			"LEX_EXCLUDES": self.LEX_EXCLUDES,
 			"REMOVE_EMPTY_LEXICONS": self.REMOVE_EMPTY_LEXICONS
 		}
 		return D
@@ -119,6 +134,10 @@ class Config(object):
 			self.__setattr__(str(k), str(v))
 				
 		self.files = D['files']
+		if 'LEX_EXCLUDES' in D:
+			self.excl_symbols = re.compile(r'|'.join(['(?:' + a + ')' for a in D['LEX_EXCLUDES']]))
+		else:
+			self.excl_symbols = False
 		# if not self.SRC:
 		# 	self.SRC = SRC = self.GTHOME + '/' + self.GTPFX + '/' + self.PRODUCE_LEXC_FOR + '/src/'
 
@@ -207,37 +226,15 @@ def lt_exp(fname):
 	return output
 
 
-lex_excludes = [
-	'\!\^NG\^',
-	'; \!SUB',
-	'\! \!SOUTH',
-	'\+Use\/NG',
-	'\+Nom(.*)\+Use\/Sub',
-	'\+Gen(.*)\+Use\/Sub',
-	'\+Use\/Sub(.*)\+V\+TV',
-	'\+Attr(.*)\+Use\/Sub',
-	'LEXICON PRSPRCTOADJ \!SUB',
-	'\+Imprt(.*)\+Use\/Sub',
-]
-lex_excludes=['aslkdjfaalsdjf']
-excl_symbols = re.compile(r'|'.join(['(?:' + a + ')' for a in lex_excludes]))
-
-def cat_file(fname, ret_type=False, exclude=False):
+def cat_file(fname, ret_type=False, excl_symbols=False):
 	"""
-		Get data from file, if exclude=True, then exclude lines; otherwise return all data.
+		Get data from file, if given excl_symbols, then exclude lines in LEX_EXCLUDES; otherwise return all data.
 		
 		Returns list.
 	"""
 	
-	# with open(fname, 'r') as F:
-	# 	lines = F.readlines()
-	# 	if exclude:
-	# 		data = [a for a in lines if not excl_symbols.search(a)]
-	# 	else:
-	# 		data = lines
-	
 	with open(fname, 'r') as F:
-		if exclude:
+		if excl_symbols:
 			data = [a for a in F if not excl_symbols.search(a)]
 		else:
 			data = F.readlines()
@@ -251,7 +248,7 @@ def cat_file(fname, ret_type=False, exclude=False):
 		return data
 
 
-def extract(data, fname, pos_filter, split=False, no_header=False, split2=False, no_footer=False, no_trim=False, debug=False, side=None, remove_empty_lex=False):
+def extract(data, fname, excl_symbols=False, pos_filter=False, split=False, no_header=False, split2=False, no_footer=False, no_trim=False, debug=False, side=None, remove_empty_lex=False):
 	"""
 		Given a pattern (e.g., V, N, N><Prop), extract matching intersecting words between lt-expanded data and lex file (fname).
 		
@@ -481,7 +478,7 @@ def make_lexc(COBJ=False):
 	if len(COBJ.HEADER) > 0:
 		header_fname = COBJ.SRC + "/" + COBJ.HEADER
 		print "... Reading header from %s" % header_fname
-		main_header = cat_file(header_fname, list, exclude=True)  # TODO: header variable in conf
+		main_header = cat_file(header_fname, list, COBJ.excl_symbols)  # TODO: header variable in conf
 		output_ = [''.join(main_header)]
 	else:
 		print "... Assuming header is provided in 'files'."
@@ -492,8 +489,10 @@ def make_lexc(COBJ=False):
 	for step in STEPS:
 		fname, action = SRC + step[0], step[1]
 		
-		if len(step) == 3:		opts = dict([(str(a), str(b)) for a, b in step[2].items()]) ; opts['side'] = BIDIX_SIDE ; opts['remove_empty_lex'] = REMOVE_EMPTY
-		else:					opts = None
+		if len(step) == 3:
+			opts = dict([(str(a), str(b)) for a, b in step[2].items()]) ; opts['side'] = BIDIX_SIDE ; opts['remove_empty_lex'] = REMOVE_EMPTY
+		else:
+			opts = None
 		
 		try:
 			with open(fname, 'r') as F:
@@ -506,13 +505,13 @@ def make_lexc(COBJ=False):
 		if action == 'clip':
 			print "... Fetching words from %s" % fname
 			if opts:
-				head, trim = extract(lt_expand_data, fname, **opts)
+				head, trim = extract(lt_expand_data, fname, COBJ.excl_symbols, **opts)
 			else:
-				head, trim = extract(lt_expand_data, fname)
+				head, trim = extract(lt_expand_data, fname, COBJ.excl_symbols)
 			data = head + trim
 		elif action == 'cat':
 			print "... Reading all of %s" % fname
-			data = cat_file(fname, str, exclude=False)
+			data = cat_file(fname, str) # ignores excl_symbols!
 		
 		output_app(data)
 	
