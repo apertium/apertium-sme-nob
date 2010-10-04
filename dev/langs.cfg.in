@@ -28,7 +28,7 @@
 			["pronoun-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<Pron\\>", "split": "LEXICON Personal\n", "split2": "LEXICON Indefinite\n", "no_footer": true}],
 			["pronoun-sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split": "LEXICON Indefinite\n", "no_header": true, "split2": "LEXICON declindef-cl\n", "no_footer": true}],
 			["pronoun-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<Pron\\>", "split": "LEXICON declindef-cl\n", "no_header": true}],
-			["particle-sme-lex.txt", "cat"],
+			["particle-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*(\\<Qst\\>)?\\<Pcle\\>", "split2": "LEXICON pcle\n"}],
 			["pp-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<P[or]\\>", "split": "LEXICON Adposition\n"}],
 			["numeral-sme-lex.txt", "cat"],
 			["abbr-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<N\\>", "split": "LEXICON ITRAB\n", "split2": "LEXICON NOAB\n", "no_footer": true}],
