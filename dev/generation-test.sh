@@ -40,9 +40,9 @@ cat /tmp/sme.gentest.postchunk  | sed 's/^ //g' | grep -v -e '@' -e '*' -e '[0-9
 cat /tmp/sme.gentest.stripped | lt-proc -d ${DEV}/../sme-nob.autogen.bin > /tmp/sme.gentest.surface
 cat /tmp/sme.gentest.stripped | sed 's/^ *[0-9]* \^/^/g' > /tmp/sme.gentest.nofreq
 paste /tmp/sme.gentest.surface /tmp/sme.gentest.nofreq | grep -e '\/' -e '#'  > /tmp/sme.generation.errors.txt
-cat /tmp/sme.generation.errors.txt  | grep -v '#' | grep '\/' > /tmp/sme-nob.multiform
-cat /tmp/sme.generation.errors.txt  | grep '#.*\/' > /tmp/sme-nob.multibidix 
-cat /tmp/sme.generation.errors.txt  | grep '#' | grep -v '\/' > /tmp/sme-nob.tagmismatch 
+cat /tmp/sme.generation.errors.txt  | grep '[0-9] #' | grep -v '#' | grep '\/' > /tmp/sme-nob.multiform
+cat /tmp/sme.generation.errors.txt  | grep '[0-9] #' | grep '#.*\/' > /tmp/sme-nob.multibidix 
+cat /tmp/sme.generation.errors.txt  | grep '[0-9] #' | grep '#' | grep -v '\/' > /tmp/sme-nob.tagmismatch 
 
 echo "";
 echo "===============================================================================";
