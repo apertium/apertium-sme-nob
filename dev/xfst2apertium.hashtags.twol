@@ -50,8 +50,8 @@ Alphabet
 %+SgNomCmp:%+SgNomCmp%*
 %+SgGenCmp:%+SgGenCmp%*
 
-%+Cmpnd%+
-%+Cmpnd%+:0
+%+LCmpnd%+
+%+LCmpnd%+:0
 
 %+Cmp
 %+ShCmp
@@ -109,7 +109,7 @@ Cmptag =
 
 RemCmptag = 			! don't remove Cmp and ShCmp
 %+Cmpnd
-%+Cmpnd%+
+%+LCmpnd%+
 %+SgCmp      	%+PlCmp
 %+SgLeft      	%+PlLeft
 %+SgNomCmp   	%+PlNomCmp
@@ -120,7 +120,7 @@ RemCmptag = 			! don't remove Cmp and ShCmp
 ;
 
 RemWICmptag =
-%+Cmpnd%+
+%+LCmpnd%+
 ;
 
 KeepCmpAfter =			! could expand to include lemmas...
