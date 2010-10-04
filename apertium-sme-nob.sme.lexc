@@ -9829,137 +9829,9 @@ vázzit:vázzi BOAHTI ;
 šuvvat:šuvva DIEVVA ;
 šállošit:šálloš MUITTASJ ;
 šávvat:šávva DIEVVA ;
-! Divvun & Giellatekno - open source grammars for Sámi and other languages
-! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
-! http://giellatekno.uit.no & http://divvun.no
-!
-! This program is free software; you can redistribute and/or modify
-! this file under the terms of the GNU General Public License as published by
-! the Free Software Foundation, either version 3 of the License, or
-! (at your option) any later version. The GNU General Public License
-! is found at http://www.gnu.org/licenses/gpl.html. It is
-! also available in the file $GTHOME/LICENSE.txt.
-!
-! Other licensing options are available upon request, please contact
-! giellatekno@hum.uit.no or divvun@samediggi.no
-
-! ========================================================================== !
-!                     North Sámi noun lexicon                                !
-! ========================================================================== !
-
-! This is a lexicon to be used with aspell spell checker only.
-! It is at the moment not in use. Remove the string "!aSPell: " if you want to use it.
-! Target is to use as many sublexicons as possible with as many variables
-! as possible to create aspell affix file.
-!aSPell: LEXICON AspellAffix
-!aSPell: 
-!aSPell: !BISYLLABIC
-!aSPell: ! GOAHTI lexicon has consonant gradation and dipthtong simplification
-!aSPell: ! Cases: -i, -á, -u, -a, -e, and -o endings
-!aSPell: ! Obsolete because GOAHTI has same endings as GADDI ??
-!aSPell: !buohkki GOAHTI-IU ;
-!aSPell: !buohkká GOAHTI ;
-!aSPell: !duohkku GOAHTI-IU ;
-!aSPell: !fuohkka GOAHTI ;
-!aSPell: !fuohkke GOAHTI ;
-!aSPell: !buohkko GOAHTI ;
-!aSPell: ! GADDI lexicon has comparative forms
-!aSPell: ! Cases: -i, -á, -u, -a, -e, and -o endings
-!aSPell: buohkki GADDI ;
-!aSPell: cuohkká GADDI ;
-!aSPell: duohkku GADDI ;
-!aSPell: fuohkka GADDI ;
-!aSPell: guohkke GADDI ;
-!aSPell: huohkko GADDI ;
-!aSPell: ! IIJA non-gradating w/ a-ill
-!aSPell: guohkkinymiija IIJA ; ! other case endings?
-!aSPell: ! STAHTA non-gradating w/ a/i-ill/
-!aSPell: buohkkistáhta STAHTA ;
-!aSPell: 
-!aSPell: !TRISYLLABIC
-!aSPell: ! SEAMU gradating trisyllabic
-!aSPell: ! Cases: -i, -a, and -u endings
-!aSPell: jea0lu:jeallum8 SEAMU ;
-!aSPell: kuo0mi:kuopmán8 SEAMU ;
-!aSPell: muo0mu:muopmum8 SEAMU ;
-!aSPell: nea0na:neatnag8 SEAMU ;
-!aSPell: ! MALIS gradating w/ consonant endings
-!aSPell: ! Cases: -is, -uš, and -ir endings
-!aSPell: buoh0pis:buoh'pis MALIS ;
-!aSPell: duoh0puš:duoh'puš MALIS ;
-!aSPell: goah0pir:goah'pir MALIS ;
-!aSPell: ! Cases: -is, -uš, and -ir endings
-!aSPell: 
-!aSPell: !CONTRACTED
-!aSPell: ! SUOLU contracted
-!aSPell: ! Cases: -u ending only?
-!aSPell: suo00zu:suohccu SUOLU ;
-!aSPell: ! FALIS contracted
-!aSPell: ! Cases: -is only?
-!aSPell: fálggis:fál'gis FALIS ;
-!aSPell: 
-!aSPell: !MISC
-!aSPell: ! LEXDIMINC diminutives
-!aSPell: beanáš:beanáž LEXDIMINC ;
-!aSPell: 
-!aSPell: ! Add more and correct these.
-
-! LEXICON GuessNoun
-! GOAHTI ;
-! STAHTA ;
-! IIJA ;
-! ACCRA ;
-! MATTAR ;
-! MALIS ;
-! BEANA ;
-! SEAMU ;
-! NIILLAS ;
-! BOAZU ;
-! SUOLU ;
-! SATTU ;
-! GISTTA ;-
-! FALIS ;
-! LASIS ;
-! GADDI ;
-! !OLLUVUOHTA ;
-! MAGASH ;
-! EGEZHAGAT ;
-! GARGIA ;
-! BUFFALO ;
 
 LEXICON NounSecond
-! some stray affixes, look at these
-! Trying them without the initial hyphen
-bea0lis+CmpN/Last+CmpN/Only+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/PlGenLeft:beallis LASIS ;
-čor0gi+CmpN/Last+CmpN/Only+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/PlGenLeft:čor'gi GOAHTI-IU ;
-giel+CmpN/Last+CmpN/Only+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:giel At ;
-miese#beas0ka+CmpN/Last:miese#beas'ka GOAHTI ;
-nammasaš+CmpN/Last+CmpN/Only+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:nammas AHKASAS ;
 niehkki+CmpN/Last+CmpN/Only:niehkki AIGI ;
-sahán+CmpN/Last+CmpN/Only:sahám BOAHTIN ;
-sis#muotkun:sis#muotkum BOAHTIN ;
-!čiegahas:čiegahass JOHTOLAT ; !Especially with numerals, moved to LEXICON SAS
-
-! Yes, this is what they used to look like.
-! We remove these obsolete ones if we like the hyphenless ones.
-!-bea0lis:-beallis LASIS ;
-!-čor0gi:-čor'gi GOAHTI-IU ;
-!-giel At ;
-!-miese#beas0ka:-miese#beas'ka GOAHTI ;
-!-nammasaš:-nammasažž JOHTOLAT ;
-!-niehkki:-niehkki AIGI ;
-!-sahán:-sahám BOAHTIN ; !+CmpN/Sg +CmpN/SgLeft +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
-!-sis#muotkun:-sis#muotkum BOAHTIN ; !+CmpN/Sg +CmpN/SgLeft +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
-
-!LEXICON NOUNONLYAFTERNUMBER
-!čiegahas:čiegahass JOHTOLAT ;
-
-!LEXICON NOUNALSOAFTERNUMBER
-!# ;
-
-! bahá: Seamma subst ferte lea guokte geardde. Čiegahas ii gávdno okto.
-! molssueaktu: Vqldit miellahtutut eret NounRoot:as, ja geavahit 121.
-
 LEXICON NounRoot
 eise#váldi+N+Pl+Gen+Use/Sub:eiseváldiid9 K ; ! Wrong, but 18x in corp.
 eise#váldi+N+Pl+Acc+Use/Sub:eiseváldiid9 K ;
@@ -22880,8 +22752,7 @@ kultur#oaivadeaddji:kultur#oaivadeaddji¤ ACTOR ;
 lonejeaddji:lonejeaddji¤ ACTOR ;
 ovda#ságasteaddji:ovda#ságasteaddji¤ ACTOR ;
 ášše#čuoččuheaddji:ášše#čuoččuheaddji¤ ACTOR ;
-njunuš#čiek0či+CmpN/SgN+CmpN/SgG+CmpN/PlG:njunuš#čiek'či¤ ACTOR ;
-! Divvun & Giellatekno - open source grammars for Sámi and other languages
+njunuš#čiek0či+CmpN/SgN+CmpN/SgG+CmpN/PlG:njunuš#čiek'či¤ ACTOR ;! Divvun & Giellatekno - open source grammars for Sámi and other languages
 ! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
 ! http://giellatekno.uit.no & http://divvun.no
 !
@@ -72883,7 +72754,6 @@ ihkinassii iind ;
 juohke iind ;
 juohke:juohke»# NAMAT ;
 ollu iind ;
-
 LEXICON Particles
 aitto pcle ;
 almma pcle ;
