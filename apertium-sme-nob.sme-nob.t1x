@@ -459,6 +459,7 @@ This is the first pass. Responsibilities of this file include:
   </section-def-attrs>
   
   <section-def-vars>
+    <def-var n="n_nbr"          c="noun number"/>
     <def-var n="pron_gen"       c="pronoun gender"/>
     <def-var n="pron_nbr"       c="pronoun number"/>
     <def-var n="pron_pers"      c="pronoun person (esp. for reflexive)"/>
@@ -1870,6 +1871,20 @@ TODO: OK to just discard syn_label from pret.passives?">
           <let><var n="c_def_pos"/><lit-tag v="6"/></let>
         </when></choose>
 
+        <choose>
+          <when>
+            <test><or>
+              <begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
+              <equal><clip pos="2" side="tl" part="a_nom"/><lit-tag v="n.acr"/></equal>
+            </or></test>
+            <let><var n="n_nbr"/><lit v=""/></let>
+            <let><var n="c_def_pos"/><lit v=""/></let>
+          </when>
+          <otherwise>
+            <let><var n="n_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+          </otherwise>
+        </choose>
+
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
@@ -1896,7 +1911,7 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
+              <var n="n_nbr"/>
               <var n="c_def_pos"/>
               <clip pos="1" side="tl" part="gen-case"/>
               <clip pos="2" side="tl" part="lemq"/>
