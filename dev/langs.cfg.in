@@ -8,6 +8,9 @@
 		"BIDIX_SIDE": "L",
 		"HEADER": "",
 		"LEXTYPE": "",
+		"LEX_EXCLUDES": [
+		"^lulli\\+N\\+CmpN/SgN:lulli%> R ;"
+		],
 		"files": [
 			["sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split2": "LEXICON Prefixes\t! ^C^\n", "no_footer": true}],
 			["sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split": "LEXICON R    ! lexicalising the 3-part compounds, with the tag ShCmp\n", "no_header": true, "split2": "LEXICON Rmiddle\n", "no_footer": true}],
