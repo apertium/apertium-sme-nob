@@ -364,6 +364,15 @@ TODO:
         <test><equal><clip pos="1" part="syn_label"/><lit v=""/></equal></test>
         <let><var n="c_tags"/><clip pos="2" part="tags"/></let>
       </when></choose>
+
+      <choose><when c="hack to work around differing defnes positions...not good :/
+                       TODO get rid of the whole number thing, too many hacks needed.">
+        <test><and>
+          <equal><clip pos="2" part="a_sintagma"/><lit-tag v="SN"/></equal>
+          <equal><clip pos="1" part="gen"/><lit v=""/></equal>
+        </and></test>
+        <let><var n="c_tags"/><clip pos="2" part="tags"/></let>
+      </when></choose>
     </def-macro>
     
     <def-macro n="set_ana_temps" npar="1"
