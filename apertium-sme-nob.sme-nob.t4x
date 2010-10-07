@@ -47,36 +47,22 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 <cat-item name="pre_pre_pre_nom"/>
     </def-cat>
     <!-- <def-cats: Trivial, conjunctions -->
-    <def-cat n="nom_conj_nom">
-<cat-item name="nom_conj_nom"/>
-    </def-cat>
-    <def-cat n="pre_nom_conj_nom">
-<cat-item name="pre_nom_conj_nom"/>
-    </def-cat>
-    <def-cat n="nom_conj_pre_nom">
-<cat-item name="nom_conj_pre_nom"/>
-    </def-cat>
-    <def-cat n="pre_nom_conj_pre_nom">
-<cat-item name="pre_nom_conj_pre_nom"/>
-    </def-cat>
-    <def-cat n="pre_pre_nom_conj_pre_nom">
-<cat-item name="pre_pre_nom_conj_pre_nom"/>
-    </def-cat>
-    <def-cat n="pre_nom_conj_pre_pre_nom">
-<cat-item name="pre_nom_conj_pre_pre_nom"/>
-    </def-cat>
-    <def-cat n="pre_pre_nom_conj_pre_pre_nom">
-<cat-item name="pre_pre_nom_conj_pre_pre_nom"/>
-    </def-cat>
-    <def-cat n="pre_pre_pre_nom_conj_pre_pre_nom">
-<cat-item name="pre_pre_pre_nom_conj_pre_pre_nom"/>
-    </def-cat>
-    <def-cat n="pre_pre_nom_conj_pre_pre_pre_nom">
-<cat-item name="pre_pre_nom_conj_pre_pre_pre_nom"/>
-    </def-cat>
-    <def-cat n="pre_pre_pre_nom_conj_pre_pre_pre_nom">
-<cat-item name="pre_pre_pre_nom_conj_pre_pre_pre_nom"/>
-    </def-cat>
+<def-cat n="nom_conj_nom">                        <cat-item name="nom_conj_nom"/></def-cat>
+<def-cat n="nom_conj_pre_nom">                    <cat-item name="nom_conj_pre_nom"/></def-cat>
+<def-cat n="nom_conj_pre_pre_nom">                <cat-item name="nom_conj_pre_pre_nom"/></def-cat>
+<def-cat n="nom_conj_pre_pre_pre_nom">            <cat-item name="nom_conj_pre_pre_pre_nom"/></def-cat>
+<def-cat n="pre_nom_conj_nom">                    <cat-item name="pre_nom_conj_nom"/></def-cat>
+<def-cat n="pre_nom_conj_pre_nom">                <cat-item name="pre_nom_conj_pre_nom"/></def-cat>
+<def-cat n="pre_nom_conj_pre_pre_nom">            <cat-item name="pre_nom_conj_pre_pre_nom"/></def-cat>
+<def-cat n="pre_nom_conj_pre_pre_pre_nom">        <cat-item name="pre_nom_conj_pre_pre_pre_nom"/></def-cat>
+<def-cat n="pre_pre_nom_conj_nom">                <cat-item name="pre_pre_nom_conj_nom"/></def-cat>
+<def-cat n="pre_pre_nom_conj_pre_nom">            <cat-item name="pre_pre_nom_conj_pre_nom"/></def-cat>
+<def-cat n="pre_pre_nom_conj_pre_pre_nom">        <cat-item name="pre_pre_nom_conj_pre_pre_nom"/></def-cat>
+<def-cat n="pre_pre_nom_conj_pre_pre_pre_nom">    <cat-item name="pre_pre_nom_conj_pre_pre_pre_nom"/></def-cat>
+<def-cat n="pre_pre_pre_nom_conj_nom">            <cat-item name="pre_pre_pre_nom_conj_nom"/></def-cat>
+<def-cat n="pre_pre_pre_nom_conj_pre_nom">        <cat-item name="pre_pre_pre_nom_conj_pre_nom"/></def-cat>
+<def-cat n="pre_pre_pre_nom_conj_pre_pre_nom">    <cat-item name="pre_pre_pre_nom_conj_pre_pre_nom"/></def-cat>
+<def-cat n="pre_pre_pre_nom_conj_pre_pre_pre_nom"><cat-item name="pre_pre_pre_nom_conj_pre_pre_pre_nom"/></def-cat>
     <!-- <def-cats: SA -->
     <def-cat n="adj">
 <cat-item name="adj"/>
@@ -878,7 +864,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </action>
     </rule>
     <!-- <rules: Trivial, SN CC SN -->
-    <rule comment="CHUNK: nom_conj_nom">
+    <rule comment="CHUNK: nom_conj_nom                         0-0">
 <pattern><pattern-item n="nom_conj_nom"/></pattern>
       <action>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
@@ -895,27 +881,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: pre_nom_conj_nom">
-<pattern><pattern-item n="pre_nom_conj_nom"/></pattern>
-      <action>
-        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
-        <!-- conj -->
-        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
-
-        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
-        <out>
-          <lu><clip pos="1" part="whole"/></lu>
-          <b pos="1"/>
-          <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
-          <lu><clip pos="3" part="whole"/></lu>
-          <b pos="3"/>
-          <lu><clip pos="4" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
-    <rule comment="CHUNK: nom_conj_pre_nom">
+    <rule comment="CHUNK: nom_conj_pre_nom                     0-1">
 <pattern><pattern-item n="nom_conj_pre_nom"/></pattern>
       <action>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
@@ -935,7 +901,76 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: pre_nom_conj_pre_nom">
+    <rule comment="CHUNK: nom_conj_pre_pre_nom                 0-2">
+<pattern><pattern-item n="nom_conj_pre_pre_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="5"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
+
+        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: nom_conj_pre_pre_pre_nom             0-3">
+<pattern><pattern-item n="nom_conj_pre_pre_pre_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
+
+        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+          <b pos="5"/>
+          <lu><clip pos="6" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_nom_conj_nom                     1-0">
+<pattern><pattern-item n="pre_nom_conj_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_nom_conj_pre_nom                 1-1">
 <pattern><pattern-item n="pre_nom_conj_pre_nom"/></pattern>
       <action>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="5"/></call-macro>
@@ -958,33 +993,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: pre_pre_nom_conj_pre_nom">
-<pattern><pattern-item n="pre_pre_nom_conj_pre_nom"/></pattern>
-      <action>
-        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
-        <!-- conj -->
-        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
-
-        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="3"/></call-macro>
-        <out>
-          <lu><clip pos="1" part="whole"/></lu>
-          <b pos="1"/>
-          <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
-          <lu><clip pos="3" part="whole"/></lu>
-          <b pos="3"/>
-          <lu><clip pos="4" part="whole"/></lu>
-          <b pos="4"/>
-          <lu><clip pos="5" part="whole"/></lu>
-          <b pos="5"/>
-          <lu><clip pos="6" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
-    <rule comment="CHUNK: pre_nom_conj_pre_pre_nom">
+    <rule comment="CHUNK: pre_nom_conj_pre_pre_nom             1-2">
 <pattern><pattern-item n="pre_nom_conj_pre_pre_nom"/></pattern>
       <action>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
@@ -1010,7 +1019,85 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: pre_pre_nom_conj_pre_pre_nom">
+    <rule comment="CHUNK: pre_nom_conj_pre_pre_pre_nom         1-3">
+<pattern><pattern-item n="pre_nom_conj_pre_pre_pre_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="7"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+          <b pos="5"/>
+          <lu><clip pos="6" part="whole"/></lu>
+          <b pos="6"/>
+          <lu><clip pos="7" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_pre_nom_conj_nom                 2-0">
+<pattern><pattern-item n="pre_pre_nom_conj_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="5"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_pre_nom_conj_pre_nom             2-1">
+<pattern><pattern-item n="pre_pre_nom_conj_pre_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+          <b pos="5"/>
+          <lu><clip pos="6" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_pre_nom_conj_pre_pre_nom         2-2">
 <pattern><pattern-item n="pre_pre_nom_conj_pre_pre_nom"/></pattern>
       <action>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="7"/></call-macro>
@@ -1039,39 +1126,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: pre_pre_pre_nom_conj_pre_pre_nom">
-<pattern><pattern-item n="pre_pre_pre_nom_conj_pre_pre_nom"/></pattern>
-      <action>
-        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="8"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
-        <!-- conj -->
-        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
-
-        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="4"/></call-macro>
-        <out>
-          <lu><clip pos="1" part="whole"/></lu>
-          <b pos="1"/>
-          <lu><clip pos="2" part="whole"/></lu>
-          <b pos="2"/>
-          <lu><clip pos="3" part="whole"/></lu>
-          <b pos="3"/>
-          <lu><clip pos="4" part="whole"/></lu>
-          <b pos="4"/>
-          <lu><clip pos="5" part="whole"/></lu>
-          <b pos="5"/>
-          <lu><clip pos="6" part="whole"/></lu>
-          <b pos="6"/>
-          <lu><clip pos="7" part="whole"/></lu>
-          <b pos="7"/>
-          <lu><clip pos="8" part="whole"/></lu>
-        </out>
-      </action>
-    </rule>
-    <rule comment="CHUNK: pre_pre_nom_conj_pre_pre_pre_nom">
+    <rule comment="CHUNK: pre_pre_nom_conj_pre_pre_pre_nom     2-3">
 <pattern><pattern-item n="pre_pre_nom_conj_pre_pre_pre_nom"/></pattern>
       <action>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="8"/></call-macro>
@@ -1103,7 +1158,94 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </out>
       </action>
     </rule>
-    <rule comment="CHUNK: pre_pre_pre_nom_conj_pre_pre_pre_nom">
+    <rule comment="CHUNK: pre_pre_pre_nom_conj_nom             3-0">
+<pattern><pattern-item n="pre_pre_pre_nom_conj_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="4"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+          <b pos="5"/>
+          <lu><clip pos="6" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_pre_pre_nom_conj_pre_nom         3-1">
+<pattern><pattern-item n="pre_pre_pre_nom_conj_pre_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="7"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="4"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+          <b pos="5"/>
+          <lu><clip pos="6" part="whole"/></lu>
+          <b pos="6"/>
+          <lu><clip pos="7" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_pre_pre_nom_conj_pre_pre_nom     3-2">
+<pattern><pattern-item n="pre_pre_pre_nom_conj_pre_pre_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="8"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
+        <!-- conj -->
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="4"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+          <b pos="5"/>
+          <lu><clip pos="6" part="whole"/></lu>
+          <b pos="6"/>
+          <lu><clip pos="7" part="whole"/></lu>
+          <b pos="7"/>
+          <lu><clip pos="8" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_pre_pre_nom_conj_pre_pre_pre_nom 3-3">
 <pattern><pattern-item n="pre_pre_pre_nom_conj_pre_pre_pre_nom"/></pattern>
       <action>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="9"/></call-macro>
