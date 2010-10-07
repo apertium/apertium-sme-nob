@@ -869,6 +869,32 @@ This is the first pass. Responsibilities of this file include:
       </when></choose>
     </def-macro>
 
+    <def-macro n="modify_nomcmp_nbr_art" npar="1"
+               c="arg.1: non-final noun in a compound
+                  -----
+                  The sp ones in nob.dix never have defnes tags.
+                  Regular nouns are always sg.ind when non-final in compounds.
+                  Bidix often does not supply defnes/number, making clip fail; in that case, append to tags">
+      <choose>
+        <when>
+          <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sp"/></equal></test>
+          <let><clip pos="1" side="tl" part="art"/><lit v=""/></let>
+        </when>
+        <otherwise>
+          <let><clip pos="1" side="tl" part="nbr"/><concat><lit-tag v="sg"/></concat></let>
+          <let><clip pos="1" side="tl" part="art"/><concat><lit-tag v="ind"/></concat></let>
+          <choose><when>
+            <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
+            <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="tags"/><lit-tag v="sg"/></concat></let>
+          </when></choose>
+          <choose><when>
+            <test><equal><clip pos="1" side="tl" part="art"/><lit v=""/></equal></test>
+            <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="tags"/><lit-tag v="ind"/></concat></let>
+          </when></choose>
+        </otherwise>
+      </choose>
+    </def-macro>
+
     <def-macro n="set_defnes" npar="1"
                c="arg.1: noun/adj, with syn_label
                   -----
@@ -1789,6 +1815,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
         <choose><when>
           <test><not><equal><clip pos="3" side="tl" part="gen"/><lit v=""/></equal></not></test>
           <let><var n="c_gen"/><clip pos="3" side="tl" part="gen"/></let>
@@ -1810,7 +1837,9 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
             <lu>
@@ -2169,6 +2198,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         
         <let><var n="c_name"/><lit v="pre_"/></let>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
         
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
@@ -2179,7 +2209,9 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -2201,6 +2233,8 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
         
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
@@ -2212,14 +2246,18 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <lit v="^"/>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -2270,6 +2308,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
         <out>
@@ -2287,7 +2326,9 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
             <b pos="1"/>
@@ -2752,6 +2793,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
 
         <!-- most likely both ADJ and NOM are ind: -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
@@ -2777,7 +2819,9 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -2803,6 +2847,8 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="3"/></call-macro>
 
         <!-- most likely both ADJ and NOM are ind: -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
@@ -2828,14 +2874,18 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
               <lit v="$"/>
             <lit v="^"/>
               <clip pos="3" side="tl" part="lemh"/>
               <clip pos="3" side="tl" part="a_nom"/>
               <clip pos="3" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="3" side="tl" part="nbr"/>
+              <clip pos="3" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="3" side="tl" part="lemq"/>
               <lit v="$"/>
           </concat>
@@ -2894,6 +2944,7 @@ TODO: OK to just discard syn_label from pret.passives?">
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
         <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
         <call-macro n="set_pron_gen_nbr_art"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
         
@@ -2915,7 +2966,9 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -2937,6 +2990,8 @@ TODO: OK to just discard syn_label from pret.passives?">
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
         <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="3"/></call-macro>
         <call-macro n="set_pron_gen_nbr_art"><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="1"/></call-macro>
         
@@ -2958,14 +3013,18 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
             <lit v="^"/>
               <clip pos="3" side="tl" part="lemh"/>
               <clip pos="3" side="tl" part="a_nom"/>
               <clip pos="3" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="3" side="tl" part="nbr"/>
+              <clip pos="3" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="3" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -3160,7 +3219,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
-        
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>        
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
         <let>
@@ -3178,7 +3237,9 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -3201,6 +3262,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
 
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
@@ -3223,7 +3285,9 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -3409,6 +3473,7 @@ TODO: OK to just discard syn_label from pret.passives?">
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let>
 
@@ -3420,7 +3485,9 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
               <clip pos="1" side="tl" part="gen"/>
-              <lit-tag v="sg.ind.cmp"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
