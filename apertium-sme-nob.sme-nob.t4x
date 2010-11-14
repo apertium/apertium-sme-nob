@@ -294,7 +294,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <def-macro n="clean_pron" npar="2"
                c="arg.1: chunk, arg.2: pronoun
                   -----
-                  Put non-GD chunk gender on pronoun.">
+                  Put non-GD chunk gender on pronoun.
+                  Ensure reflexive has right tags (these are a bit odd)">
       <choose><when>
         <test><and>
           <equal><clip pos="2" part="nbr"/><lit-tag v="ND"/></equal>
@@ -337,6 +338,18 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
         </or></test>
         <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
+      </when></choose>
+
+      <choose><when c="Reflexive, ensure it's got the right tags (might have started as genitive that was selected by adposition)">
+        <test><equal><clip pos="2" part="lemh"/><lit v="seg"/></equal></test>
+        <let>
+          <clip pos="2" part="tags"/>
+          <concat>
+            <lit-tag v="prn.ref"/>
+            <clip pos="2" part="pers"/>
+            <clip pos="2" part="nbr"/>
+          </concat>
+        </let>
       </when></choose>
     </def-macro>
     
