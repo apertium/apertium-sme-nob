@@ -46,20 +46,22 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <def-cat n="pre_pre_pre_nom">
 <cat-item name="pre_pre_pre_nom"/>
     </def-cat>
-    <!-- <def-cats: Trivial, conjunctions -->
-<def-cat n="nom_conj_nom">                        <cat-item name="nom_conj_nom"/></def-cat>
-<def-cat n="nom_conj_pre_nom">                    <cat-item name="nom_conj_pre_nom"/></def-cat>
-<def-cat n="nom_conj_pre_pre_nom">                <cat-item name="nom_conj_pre_pre_nom"/></def-cat>
-<def-cat n="nom_conj_pre_pre_pre_nom">            <cat-item name="nom_conj_pre_pre_pre_nom"/></def-cat>
-<def-cat n="pre_nom_conj_nom">                    <cat-item name="pre_nom_conj_nom"/></def-cat>
+    <!-- <def-cats: Trivial, conjunctions
+                    For every single nom, alternatively allow a det.
+                    There are no 'pre_det' etc. -->
+<def-cat n="nom_conj_nom">                        <cat-item name="nom_conj_nom"/>            <cat-item name="nom_conj_det"/><cat-item name="det_conj_nom"/></def-cat>
+<def-cat n="nom_conj_pre_nom">                    <cat-item name="nom_conj_pre_nom"/>        <cat-item name="det_conj_pre_nom"/></def-cat>
+<def-cat n="nom_conj_pre_pre_nom">                <cat-item name="nom_conj_pre_pre_nom"/>    <cat-item name="det_conj_pre_pre_nom"/></def-cat>
+<def-cat n="nom_conj_pre_pre_pre_nom">            <cat-item name="nom_conj_pre_pre_pre_nom"/><cat-item name="det_conj_pre_pre_pre_nom"/></def-cat>
+<def-cat n="pre_nom_conj_nom">                    <cat-item name="pre_nom_conj_nom"/>        <cat-item name="pre_nom_conj_det"/></def-cat>
 <def-cat n="pre_nom_conj_pre_nom">                <cat-item name="pre_nom_conj_pre_nom"/></def-cat>
 <def-cat n="pre_nom_conj_pre_pre_nom">            <cat-item name="pre_nom_conj_pre_pre_nom"/></def-cat>
 <def-cat n="pre_nom_conj_pre_pre_pre_nom">        <cat-item name="pre_nom_conj_pre_pre_pre_nom"/></def-cat>
-<def-cat n="pre_pre_nom_conj_nom">                <cat-item name="pre_pre_nom_conj_nom"/></def-cat>
+<def-cat n="pre_pre_nom_conj_nom">                <cat-item name="pre_pre_nom_conj_nom"/>    <cat-item name="pre_pre_nom_conj_det"/></def-cat>
 <def-cat n="pre_pre_nom_conj_pre_nom">            <cat-item name="pre_pre_nom_conj_pre_nom"/></def-cat>
 <def-cat n="pre_pre_nom_conj_pre_pre_nom">        <cat-item name="pre_pre_nom_conj_pre_pre_nom"/></def-cat>
 <def-cat n="pre_pre_nom_conj_pre_pre_pre_nom">    <cat-item name="pre_pre_nom_conj_pre_pre_pre_nom"/></def-cat>
-<def-cat n="pre_pre_pre_nom_conj_nom">            <cat-item name="pre_pre_pre_nom_conj_nom"/></def-cat>
+<def-cat n="pre_pre_pre_nom_conj_nom">            <cat-item name="pre_pre_pre_nom_conj_nom"/><cat-item name="pre_pre_pre_nom_conj_det"/></def-cat>
 <def-cat n="pre_pre_pre_nom_conj_pre_nom">        <cat-item name="pre_pre_pre_nom_conj_pre_nom"/></def-cat>
 <def-cat n="pre_pre_pre_nom_conj_pre_pre_nom">    <cat-item name="pre_pre_pre_nom_conj_pre_pre_nom"/></def-cat>
 <def-cat n="pre_pre_pre_nom_conj_pre_pre_pre_nom"><cat-item name="pre_pre_pre_nom_conj_pre_pre_pre_nom"/></def-cat>
@@ -608,41 +610,63 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     </def-macro>
     
     <def-macro n="clean_nominal" npar="2"
-               c="arg.1: chunk, arg.2: n,np,verb,prn (possible prepositional object)
+               c="arg.1: chunk, arg.2: n,np,verb,prn,det (possible prepositional object)
                   -----
                   Remove object genitive if chunk doesn't have genitive
                   Remove defnes if noun is proper.
                   Note: also used for verbs (see out_nom in t1x)">
       <choose>
-        <when>
-          <test><and>
-            <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
-            <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
-          </and></test>
-          <let><clip pos="2" part="case"/><lit v=""/></let>
-        </when>
-      </choose>
-      <choose>
-        <when>
-          <test><or>
-            <begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with>
-            <equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal>
-          </or></test>
-          <let><clip pos="2" part="art"/><lit v=""/></let>
-        </when>
-      </choose>
-      <choose>
-        <when>
-          <test><equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal></test>
-          <let><clip pos="2" part="case"/><lit v=""/></let>
-        </when>
-      </choose>
-      <choose>
-        <when>
-          <test><equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal></test>
-          <let><clip pos="2" part="art"/><lit v=""/></let>
-        </when>
-      </choose>
+        <when c="determiner (possibly turning back into a pronoun)">
+        <test><not><equal><clip pos="2" part="a_det"/><lit v=""/></equal></not></test>
+                
+        <choose>
+          <when>
+            <test><and>
+              <equal><clip pos="2" part="a_det"/><lit-tag v="det.pos"/></equal>
+              <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
+            </and></test>
+            <let><clip pos="2" part="a_det"/><lit-tag v="prn"/></let>
+            <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="2"/></call-macro>
+          </when>
+          <otherwise>
+            <call-macro n="clean_det2"><with-param pos="1"/><with-param pos="2"/></call-macro>
+          </otherwise>
+        </choose>
+      </when>
+      
+      <otherwise c="n,np,verb">
+        <choose>
+          <when>
+            <test><and>
+              <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
+              <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
+            </and></test>
+            <let><clip pos="2" part="case"/><lit v=""/></let>
+          </when>
+        </choose>
+        <choose>
+          <when>
+            <test><or>
+              <begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with>
+              <equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal>
+            </or></test>
+            <let><clip pos="2" part="art"/><lit v=""/></let>
+          </when>
+        </choose>
+        <choose>
+          <when>
+            <test><equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal></test>
+            <let><clip pos="2" part="case"/><lit v=""/></let>
+          </when>
+        </choose>
+        <choose>
+          <when>
+            <test><equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal></test>
+            <let><clip pos="2" part="art"/><lit v=""/></let>
+          </when>
+        </choose>        
+      </otherwise>
+    </choose>
     </def-macro>
     
     <!-- Output macros: -->    
@@ -757,7 +781,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 <pattern><pattern-item n="pron"/></pattern>
       <action>
         <call-macro n="clean_pron"><with-param pos="0"/><with-param pos="1"/></call-macro>
-        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
+        <!-- <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro> -->
         <out>
           <lu><clip pos="1" part="whole"/></lu>
         </out>
@@ -768,19 +792,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                    (Might turn back into one if t2x removed genitive from chunk.)">
 <pattern><pattern-item n="det"/></pattern>
       <action>
-        <choose>
-          <when>
-            <test><and>
-              <equal><clip pos="1" part="a_det"/><lit-tag v="det.pos"/></equal>
-              <not><equal><clip pos="0" part="case"/><lit-tag v="gen"/></equal></not>
-            </and></test>
-            <let><clip pos="1" part="a_det"/><lit-tag v="prn"/></let>
-            <call-macro n="clean_pron"><with-param pos="0"/><with-param pos="1"/></call-macro>
-          </when>
-          <otherwise>
-            <call-macro n="clean_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
-          </otherwise>
-        </choose>        
+        <call-macro n="clean_nominal"><with-param pos="0"/><with-param pos="1"/></call-macro>
         <out> 
           <lu><clip pos="1" part="whole"/></lu>
         </out>
