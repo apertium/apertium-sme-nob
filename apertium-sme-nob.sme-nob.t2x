@@ -376,10 +376,14 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <modify-case><var n="c_name"/><clip pos="1" part="lemh"/></modify-case>
     </def-macro>
     
-    <def-macro n="set_c_tags2" npar="2">      
+    <def-macro n="set_c_tags2" npar="2"
+               c="For conjunctions.
+                  We might get pronouns, which t1x doesn't give defnes tags;
+                  in that case, just use the tags from the other conjunct.
+                  (Might want to put defnes on pronouns in t1x?)">
       <let><var n="c_tags"/><clip pos="1" part="tags"/></let>
       <choose><when>
-        <test><equal><clip pos="1" part="syn_label"/><lit v=""/></equal></test>
+        <test><equal><clip pos="1" part="art"/><lit v=""/></equal></test>
         <let><var n="c_tags"/><clip pos="2" part="tags"/></let>
       </when></choose>
     </def-macro>
