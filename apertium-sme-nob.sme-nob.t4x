@@ -436,7 +436,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </when></choose>
 
       <choose><when c="'samme' etc. have a bit special tags in nob.dix">
-        <test><in><clip pos="2" part="lemh"/><list n="det.sp.def"/></in></test>
+        <test><in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sp.def"/></in></test>
         <let><clip pos="2" part="nbr"/><lit-tag v="sp"/></let>
         <let><clip pos="2" part="art"/><lit-tag v="def"/></let>
         <choose><when c="just in case it was set to plural, no number">
