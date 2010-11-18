@@ -404,15 +404,15 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="ConNeg"/>
       <attr-item tags="Neg"/>
     </def-attr>
+    <def-attr n="mode">
+      <attr-item tags="Qst"/>
+    </def-attr>
     <def-attr n="modality">
       <attr-item tags="Ind"/>
       <attr-item tags="Cond"/>
       <attr-item tags="Cond2"/>
       <attr-item tags="Cond3"/>
       <attr-item tags="Pot"/>
-    </def-attr>
-    <def-attr n="mode">
-      <attr-item tags="Qst"/>
     </def-attr>
     <def-attr n="syn_label">
       <attr-item tags="@X"/>
@@ -837,8 +837,7 @@ And then there are some categories like "month", with all the months.
       </choose>
       <choose><when>
           <test><equal><clip pos="1" side="tl" part="art"/><lit v="DD"/></equal></test>
-          <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
-          <let><clip pos="1" side="tl" part="art"/><var n="c_def_pos"/></let>
+          <let><clip pos="1" side="tl" part="art"/><lit v="3"/></let>
       </when></choose>
     </def-macro>
     
@@ -1016,24 +1015,15 @@ And then there are some categories like "month", with all the months.
       </choose>
     </def-macro>
 
-    <def-macro n="set_c_def_pos" npar="1"
-               c="Set variable for the position of the defnes tag in the SN chunk">
+    <def-macro n="set_c_syn" npar="1"
+               c="We always have '3' as the defnes position in chunks, following chunk tag and syn_label, 
+                  this macro just ensures that there _is_ a syn_label.">
+      <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
       <choose>
         <when>
-          <test><and>
-            <equal><clip pos="1" side="sl" part="mode"/><lit v=""/></equal>
-            <equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal>
-          </and></test>
-          <let><var n="c_def_pos"/><lit-tag v="4"/></let>
+          <test><equal><var n="c_syn"/><lit v=""/></equal></test>
+          <let><var n="c_syn"/><lit-tag v="@X"/></let>
         </when>
-        <when>
-          <test><or>
-            <equal><clip pos="1" side="sl" part="mode"/><lit v=""/></equal>
-            <equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal>
-          </or></test>
-          <let><var n="c_def_pos"/><lit-tag v="5"/></let>
-        </when>
-        <otherwise><let><var n="c_def_pos"/><lit-tag v="6"/></let></otherwise>
       </choose>
     </def-macro>
 
@@ -1051,7 +1041,7 @@ And then there are some categories like "month", with all the months.
       <out><var n="caseprep"/></out>
 
       <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
-      <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
+      <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
       <append n="c_name"><lit v="nom"/></append>
 
@@ -1061,14 +1051,14 @@ And then there are some categories like "month", with all the months.
           
           <out>
             <chunk namefrom="c_name" case="caseFirstWord"
-                   c="The tag order corresponds with nouns, to make c_def_pos work.">
+                   c="The tag order corresponds with nouns, to make c_def_pos (e.g. on pre-nominals) work.">
               <tags>
                 <tag><lit-tag v="SN"/></tag>
-                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><var n="defnes"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
                 <tag><var n="c_gen"/></tag>
                 <tag><var n="c_nbr"/></tag>
-                <tag><var n="defnes"/></tag>
                 <tag><clip pos="1" side="tl" part="case"/></tag>
                 <tag><clip pos="1" side="tl" part="voice"/></tag>
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
@@ -1088,24 +1078,29 @@ And then there are some categories like "month", with all the months.
         </when>
         
         <otherwise c="Regular Noun=>Noun">
-          <choose><when>
-            <test><or>
-              <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
-              <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n.acr"/></equal>
-            </or></test>
-            <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-            <let><var n="c_def_pos"/><lit v=""/></let>
-          </when></choose>
+          <choose>
+            <when>
+              <test><or>
+                <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
+                <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n.acr"/></equal>
+              </or></test>
+              <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+              <let><var n="c_def_pos"/><lit v=""/></let>
+            </when>
+            <otherwise>
+              <let><var n="c_def_pos"/><lit-tag v="3"/></let>
+            </otherwise>
+          </choose>
 
           <out>
             <chunk namefrom="c_name" case="caseFirstWord">
               <tags>
                 <tag><lit-tag v="SN"/></tag>
-                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><var n="defnes"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
                 <tag><var n="c_gen"/></tag>
                 <tag><var n="c_nbr"/></tag>
-                <tag><var n="defnes"/></tag>
                 <tag><clip pos="1" side="tl" part="case"/></tag>
                 <tag><clip pos="1" side="tl" part="a_count"/></tag>
               </tags>
@@ -1657,10 +1652,10 @@ TODO: OK to just discard syn_label from pret.passives?">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="gen"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
-              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
             </tags>
             <lu>
@@ -1689,10 +1684,10 @@ TODO: OK to just discard syn_label from pret.passives?">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="2" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="gen"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
-              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="2" side="tl" part="case"/></tag>
             </tags>
             <lu>
@@ -1729,10 +1724,10 @@ TODO: OK to just discard syn_label from pret.passives?">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="3" side="sl" part="syn_label"/></tag>
+              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="3" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="gen"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
-              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="3" side="tl" part="case"/></tag>
             </tags>
             <lu>
@@ -1787,10 +1782,10 @@ TODO: OK to just discard syn_label from pret.passives?">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="2" side="sl" part="mode"/></tag>
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
-              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="2" side="tl" part="case"/></tag>
             </tags>
             <lu>
@@ -1841,10 +1836,10 @@ TODO: OK to just discard syn_label from pret.passives?">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="3" side="sl" part="syn_label"/></tag>
+              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="3" side="sl" part="mode"/></tag>
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
-              <tag><lit-tag v="ind"/></tag>
               <tag><clip pos="3" side="tl" part="case"/></tag>
             </tags>
             <lu>
@@ -1906,13 +1901,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro> 
         
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
-        <let><var n="c_def_pos"/><lit-tag v="5"/></let> 
-        <choose><when>
-          <test><not><equal>
-            <clip pos="1" side="sl" part="mode"/><lit v=""/>
-          </equal></not></test>
-          <let><var n="c_def_pos"/><lit-tag v="6"/></let>
-        </when></choose>
+        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
         <choose>
           <when>
@@ -1925,6 +1914,7 @@ TODO: OK to just discard syn_label from pret.passives?">
           </when>
           <otherwise>
             <let><var n="n_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+            <let><var n="c_def_pos"/><lit-tag v="3"/></let>
           </otherwise>
         </choose>
 
@@ -1934,11 +1924,11 @@ TODO: OK to just discard syn_label from pret.passives?">
           <chunk name="pre_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><var n="c_syn"/></tag>
+              <tag><var n="defnes"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
-              <tag><var n="defnes"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
               <tag><clip pos="1" side="tl" part="a_count"/></tag>
             </tags>
@@ -2017,10 +2007,6 @@ TODO: OK to just discard syn_label from pret.passives?">
         <!-- Here we call set_defnes2 because after a numeral quantifier it should be indefinite -->
         <call-macro n="set_defnes2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         
-        <!-- We set c_def_pos here and use that for both adj and nom,
-             so that if defnes changes in t2x/t3x, both adj and nom
-             get the change in t4x: -->
-        <call-macro n="set_c_def_pos"><with-param pos="2"/></call-macro>        
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <let>
           <var n="pre-nom"/>
@@ -2039,7 +2025,10 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="2" side="tl" part="grau"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="3"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="2"/>
@@ -2065,16 +2054,13 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
         <call-macro n="modify_pron_case"><with-param pos="2"/></call-macro>
         <call-macro n="set_pron_gen_nbr_art"><with-param pos="4"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
 
         <!-- Here we call set_defnes2 because after a numeral quantifier it should be indefinite -->
         <call-macro n="set_defnes2"><with-param pos="1"/><with-param pos="4"/></call-macro>
         
-        <!-- We set c_def_pos here and use that for both adj and nom,
-             so that if defnes changes in t2x/t3x, both adj and nom
-             get the change in t4x: -->
-        <call-macro n="set_c_def_pos"><with-param pos="3"/></call-macro>        
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
         <let>
           <var n="pre-nom"/>
@@ -2102,7 +2088,10 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="3" side="tl" part="grau"/>
               <clip pos="3" side="tl" part="gen"/>
               <clip pos="3" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="3"/>
               <clip pos="3" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="3"/>
@@ -2331,10 +2320,10 @@ TODO: OK to just discard syn_label from pret.passives?">
             <tags>
               <tag><lit-tag v="SA"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><var n="defnes"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
-              <tag><var n="defnes"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -2680,21 +2669,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         
         <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-        <let><var n="c_def_pos"/><lit-tag v="6"/></let>
-        <choose><when>
-          <test><or>
-            <equal><clip pos="1" side="sl" part="mode"/><lit v=""/></equal>
-            <equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal>
-          </or></test>
-          <let><var n="c_def_pos"/><lit-tag v="5"/></let>
-        </when></choose>
-        <choose><when>
-          <test><and>
-            <equal><clip pos="1" side="sl" part="mode"/><lit v=""/></equal>
-            <equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal>
-          </and></test>
-          <let><var n="c_def_pos"/><lit-tag v="4"/></let>
-        </when></choose>
+        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
         <choose>
           <when>
@@ -2704,11 +2679,11 @@ TODO: OK to just discard syn_label from pret.passives?">
               <chunk name="pre_adj" case="caseFirstWord">
                 <tags>
                   <tag><lit-tag v="SA"/></tag>
-                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><var n="c_syn"/></tag>
+                  <tag><var n="defnes"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                   <tag><lit-tag v="nt"/></tag>
                   <tag><lit-tag v="sg"/></tag>
-                  <tag><var n="defnes"/></tag>
                 </tags>
                 <lu>
                   <lit v="den"/><lit-tag v="det.dem.nt.sg"/>
@@ -2720,22 +2695,22 @@ TODO: OK to just discard syn_label from pret.passives?">
                   <clip pos="1" side="tl" part="grau"/>
                   <clip pos="1" side="tl" part="gen"/>
                   <clip pos="1" side="tl" part="nbr"/>
-                  <var n="c_def_pos"/>
+                  <lit-tag v="3"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
             </out>
-          </when>            
+          </when>
           <otherwise>
             <out>
               <chunk name="adj" case="caseFirstWord">
                 <tags>
                   <tag><lit-tag v="SA"/></tag>
-                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><var n="c_syn"/></tag>
+                  <tag><var n="defnes"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                   <tag><var n="c_gen"/></tag>
                   <tag><var n="c_nbr"/></tag>
-                  <tag><var n="defnes"/></tag>
                 </tags>
                 <lu>
                   <clip pos="1" side="tl" part="lemh"/>
@@ -2743,7 +2718,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                   <clip pos="1" side="tl" part="grau"/>
                   <clip pos="1" side="tl" part="gen"/>
                   <clip pos="1" side="tl" part="nbr"/>
-                  <var n="c_def_pos"/>
+                  <lit-tag v="3"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
@@ -2770,10 +2745,6 @@ TODO: OK to just discard syn_label from pret.passives?">
 
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
         
-        <!-- We set c_def_pos here and use that for both adj and nom,
-             so that if defnes changes in t2x/t3x, both adj and nom
-             get the change in t4x: -->
-        <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -2783,7 +2754,10 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="1" side="tl" part="grau"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="3"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="1"/>
@@ -2812,10 +2786,6 @@ TODO: OK to just discard syn_label from pret.passives?">
         <!-- most likely both ADJ and NOM are ind: -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
 
-        <!-- We set c_def_pos here and use that for both adj and nom,
-             so that if defnes changes in t2x/t3x, both adj and nom
-             get the change in t4x: -->
-        <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -2825,7 +2795,10 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="1" side="tl" part="grau"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="3"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="1"/>
@@ -2867,10 +2840,6 @@ TODO: OK to just discard syn_label from pret.passives?">
         <!-- most likely both ADJ and NOM are ind: -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
 
-        <!-- We set c_def_pos here and use that for both adj and nom,
-             so that if defnes changes in t2x/t3x, both adj and nom
-             get the change in t4x: -->
-        <call-macro n="set_c_def_pos"><with-param pos="1"/></call-macro>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -2880,7 +2849,10 @@ TODO: OK to just discard syn_label from pret.passives?">
               <clip pos="1" side="tl" part="grau"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="3"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="1"/>
@@ -3191,10 +3163,10 @@ TODO: OK to just discard syn_label from pret.passives?">
             <tags>
               <tag><lit-tag v="SA"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><var n="defnes"/></tag>
               <tag><clip pos="2" side="sl" part="mode"/></tag>
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
-              <tag><var n="defnes"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>

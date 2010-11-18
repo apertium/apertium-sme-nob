@@ -227,6 +227,16 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="ConNeg"/>
       <attr-item tags="Neg"/>
     </def-attr>
+    <def-attr n="mode">
+      <attr-item tags="Qst"/>
+    </def-attr>
+    <def-attr n="modality">
+      <attr-item tags="Ind"/>
+      <attr-item tags="Cond"/>
+      <attr-item tags="Cond2"/>
+      <attr-item tags="Cond3"/>
+      <attr-item tags="Pot"/>
+    </def-attr>
     <def-attr n="syn_label">
       <attr-item tags="@X"/>
       <attr-item tags="@HNOUN"/>
@@ -296,13 +306,27 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-macro>
     
     <def-macro n="tag_qst" npar="1"
-               c="Add the Qst tag">
+               c="Add the Qst tag, preferably after 'neg' or defnes tags.
+                  TODO: perhaps it would be simpler to just explicitly re-set the chunk tags
+                  instead of all this concatting.">
       <choose>
         <when>
           <test><not><equal><clip pos="1" part="neg"/><lit v=""/></equal></not></test>
           <let>
             <clip pos="1" part="neg"/>
             <concat><clip pos="1" part="neg"/><lit-tag v="Qst"/></concat>
+          </let>
+        </when>
+        <when c="Unfortunately, 'clip' is case-insensitive so modality (Ind) conflicts with defnes (ind).
+                 Using positive checks works around this.">
+          <test><or>
+            <equal><clip pos="1" part="art"/><lit-tag v="ind"/></equal>
+            <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
+            <equal><clip pos="1" part="art"/><lit-tag v="DD"/></equal>
+          </or></test>
+          <let>
+            <clip pos="1" part="art"/>
+            <concat><clip pos="1" part="art"/><lit-tag v="Qst"/></concat>
           </let>
         </when>
         <when>
@@ -356,15 +380,6 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <let><var n="c_tags"/><clip pos="1" part="tags"/></let>
       <choose><when>
         <test><equal><clip pos="1" part="syn_label"/><lit v=""/></equal></test>
-        <let><var n="c_tags"/><clip pos="2" part="tags"/></let>
-      </when></choose>
-
-      <choose><when c="hack to work around differing defnes positions...not good :/
-                       TODO get rid of the whole number thing, too many hacks needed.">
-        <test><and>
-          <equal><clip pos="2" part="a_sintagma"/><lit-tag v="SN"/></equal>
-          <equal><clip pos="1" part="gen"/><lit v=""/></equal>
-        </and></test>
         <let><var n="c_tags"/><clip pos="2" part="tags"/></let>
       </when></choose>
     </def-macro>

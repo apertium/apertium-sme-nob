@@ -193,7 +193,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
     <def-cat n="SPEC_SUBJr.Qst">
-      <cat-item tags="SN.@SUBJ→.Qst.*"/>
+      <cat-item tags="SN.@SUBJ→.*.Qst.*"/>
     </def-cat>
     <def-cat n="SADV">
       <cat-item tags="@SADV"/>
@@ -272,13 +272,19 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="pp"/>
       <attr-item tags="TD"/>
     </def-attr>
-    <def-attr n="modality">
-      <attr-item tags="Ind"/>
-      <attr-item tags="Cond"/>
-      <attr-item tags="Pot"/>
+    <def-attr n="neg">
+      <attr-item tags="ConNeg"/>
+      <attr-item tags="Neg"/>
     </def-attr>
     <def-attr n="mode">
       <attr-item tags="Qst"/>
+    </def-attr>
+    <def-attr n="modality">
+      <attr-item tags="Ind"/>
+      <attr-item tags="Cond"/>
+      <attr-item tags="Cond2"/>
+      <attr-item tags="Cond3"/>
+      <attr-item tags="Pot"/>
     </def-attr>
     <def-attr n="animacy">
       <attr-item tags="impers"/>
