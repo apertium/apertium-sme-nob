@@ -8,7 +8,7 @@ This is the first pass. Responsibilities of this file include:
     as a nob noun has to be handled by the verb rule
     (this leads to some redundancy, hopefully we'll get a bidix module soon)
 * (De-)compounding
-  * See rule: NOMCMP NOM
+  * See rule: NOM.CMP NOM
 * goahti-derivation
   * See rule: VERB Der/goahti
 * Simple noun phrases
@@ -23,6 +23,16 @@ This is the first pass. Responsibilities of this file include:
   * Tags from sme verbs are used to output finite verb auxiliaries before the main verb.
     All verbs get their own chunks, as do lemq's (since they can move around noun phrases in t3x)
   * See rule: out_verb
+
+
+
+DEF-CAT NAMING SCHEME:
+                       lemma-pos.tag.tag_SYNTAG
+
+where the SYNTAG part may have an l or r before or after to signify the arrow
+(where l corresponds to ← and r to →);
+alternatively the SYNTAG part is something like "mod", "attr" or "head".
+And then there are some categories like "month", with all the months.
 
 -->
 
@@ -40,13 +50,13 @@ This is the first pass. Responsibilities of this file include:
       <cat-item tags="Adv"/>
       <cat-item tags="Adv.*"/>
     </def-cat>
-    <def-cat n="pcle">
+    <def-cat n="Pcle">
       <cat-item tags="Qst.Pcle.*"/>
       <cat-item tags="Qst.Pcle"/>
       <cat-item tags="Pcle.*"/>
       <cat-item tags="Pcle"/>
     </def-cat>
-    <def-cat n="pcle.qst">
+    <def-cat n="Qst.Pcle">
       <cat-item tags="Qst.Pcle"/>
       <cat-item tags="Qst.Pcle.*"/>
     </def-cat>
@@ -58,7 +68,8 @@ This is the first pass. Responsibilities of this file include:
       <cat-item tags="A.Attr"/>
       <cat-item tags="A.Attr.*"/>
       <cat-item tags="A.*.Attr.*"/>
-      <!-- TODO: pstv verbs don't have adj forms, should have transfer <exception> if tl pstv -->
+      <!-- TODO: pstv verbs don't have adj forms, should have transfer
+           <exception> if tl pstv -->
       <cat-item tags="V.IV.A.Attr.*"/>
       <cat-item tags="V.TV.A.Attr.*"/>
     </def-cat>
@@ -72,22 +83,22 @@ This is the first pass. Responsibilities of this file include:
     <def-cat n="pron">
       <cat-item tags="Pron.*"/>
     </def-cat>
-    <def-cat n="pronrel">
+    <def-cat n="pron.rel">
       <cat-item tags="Pron.Rel.*"/>
     </def-cat>
-    <def-cat n="pronref">
+    <def-cat n="pron.ref">
       <cat-item tags="Pron.Refl.*"/>
     </def-cat>
-    <def-cat n="pronref-PRONL">
+    <def-cat n="pron.ref_PRONl">
       <cat-item tags="Pron.Refl.*.@Pron←"/>
     </def-cat>
     <def-cat n="pronitg">
       <cat-item tags="Pron.Interr.*"/>
     </def-cat>
-    <def-cat n="pronpers">
+    <def-cat n="pron.pers">
       <cat-item tags="Pron.Pers.*"/>
     </def-cat>
-    <def-cat n="pronpersgen">
+    <def-cat n="pron.pers.gen">
       <cat-item tags="Pron.Pers.*.Gen.*"/>
     </def-cat>
     <def-cat n="det" c="Pronouns most likely to end up as determiners">
@@ -115,21 +126,17 @@ This is the first pass. Responsibilities of this file include:
       <cat-item lemma="makkár" tags="Pron.Interr.*.@→N"/>
       <cat-item lemma="makkár" tags="Pron.Interr.*.@→A"/>
     </def-cat>
-    <def-cat n="detdemqnt_gen">
-      <cat-item tags="Pron.Dem.*.Gen.*"/>
-      <cat-item tags="Pron.Indef.*.Gen.*"/>
-    </def-cat>
     <def-cat n="cmp" c="Words only seen as compund parts">
       <cat-item tags="Cmp.*"/>
       <cat-item tags="ShCmp.*"/>
       <cat-item tags="Cmp"/>
       <cat-item tags="ShCmp"/>
     </def-cat>
-    <def-cat n="adj_cmp">
+    <def-cat n="adj.cmp">
       <cat-item tags="A.*.Cmp"/>
       <cat-item tags="A.*.Cmp.*"/>
     </def-cat>
-    <def-cat n="nom_cmp">
+    <def-cat n="nom.cmp">
       <cat-item tags="N.*.Cmp"/>
       <cat-item tags="N.*.Cmp.*"/>
     </def-cat>
@@ -137,23 +144,23 @@ This is the first pass. Responsibilities of this file include:
       <cat-item tags="V.*.Der2.*.N.*"/>
       <cat-item tags="N.*"/>
     </def-cat>
-    <def-cat n="nom_gen">
+    <def-cat n="nom.gen">
       <cat-item tags="N.*.Gen.*"/>
     </def-cat>
-    <def-cat n="nom_gen_LNUM">
+    <def-cat n="nom.gen_NUMl">
       <cat-item tags="N.*.Gen.@Num←"/>
     </def-cat>
-    <def-cat n="nom_prop">
+    <def-cat n="nom.prop">
       <cat-item tags="N.Prop.*"/>
     </def-cat>
-    <def-cat n="nom_prop_mod">
+    <def-cat n="nom.prop_mod">
       <cat-item tags="N.Prop.*.Attr.*"/>
     </def-cat>
-    <def-cat n="nom_prop_gen">
+    <def-cat n="nom.prop.gen">
       <cat-item tags="N.Prop.*.Gen"/>
       <cat-item tags="N.Prop.*.Gen.*"/>
     </def-cat>
-    <def-cat n="nom_prop_attr">
+    <def-cat n="nom.prop_attr">
       <cat-item tags="N.Prop.Attr.*"/>
       <cat-item lemma="gonagas" tags="N.*"/>
       <cat-item lemma="gonagas:1" tags="N.*"/>
@@ -166,13 +173,10 @@ This is the first pass. Responsibilities of this file include:
     <def-cat n="verb">
       <cat-item tags="V.*"/>
     </def-cat>
-    <def-cat n="vneg">
-      <cat-item tags="V.*.Neg.*"/>
-    </def-cat>
-    <def-cat n="vactio">
+    <def-cat n="v.actio">
       <cat-item tags="V.*.Actio.*"/>
     </def-cat>
-    <def-cat n="vgoahti">
+    <def-cat n="goahti-v">
       <cat-item lemma="goahti" tags="V.*"/>
     </def-cat>
     <def-cat n="conj">
@@ -1639,10 +1643,10 @@ TODO: OK to just discard syn_label from pret.passives?">
     </rule>
     
     <!-- <rules: Proper nouns -->
-    <rule comment="REGLA: NOM_PROP
+    <rule comment="REGLA: NOM.PROP
                    Needs to be before the NOM rule.">
       <pattern>
-        <pattern-item n="nom_prop"/>
+        <pattern-item n="nom.prop"/>
       </pattern>
       <action>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
@@ -1670,11 +1674,11 @@ TODO: OK to just discard syn_label from pret.passives?">
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOM_PROP NOM_PROP
+    <rule comment="REGLA: NOM.PROP NOM.PROP
                    Gender from the first np, syntax from the last one">
       <pattern>
-        <pattern-item n="nom_prop_mod"/>
-        <pattern-item n="nom_prop"/>
+        <pattern-item n="nom.prop_mod"/>
+        <pattern-item n="nom.prop"/>
       </pattern>
       <action>
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
@@ -1709,12 +1713,12 @@ TODO: OK to just discard syn_label from pret.passives?">
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOM_PROP NOM_PROP NOM_PROP
+    <rule comment="REGLA: NOM.PROP NOM.PROP NOM.PROP
                    Gender from the first np, syntax from the last one">
       <pattern>
-        <pattern-item n="nom_prop_mod"/>
-        <pattern-item n="nom_prop_mod"/>
-        <pattern-item n="nom_prop"/>
+        <pattern-item n="nom.prop_mod"/>
+        <pattern-item n="nom.prop_mod"/>
+        <pattern-item n="nom.prop"/>
       </pattern>
       <action>
         <call-macro n="set_caseprep"><with-param pos="3"/></call-macro>
@@ -1756,12 +1760,12 @@ TODO: OK to just discard syn_label from pret.passives?">
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOM_PROP_ATTR NOM_PROP
+    <rule comment="REGLA: NOM.PROP_ATTR NOM.PROP
                    (šattai) Prinsa Harald (Ruvdnaprinsan) => (ble) Prins Harald (kronprins)
-                   Uses NOM_PROP gender if possible as chunk gender.">
+                   Uses NOM.PROP gender if possible as chunk gender.">
       <pattern>
-        <pattern-item n="nom_prop_attr"/>
-        <pattern-item n="nom_prop"/>
+        <pattern-item n="nom.prop_attr"/>
+        <pattern-item n="nom.prop"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -1808,13 +1812,13 @@ TODO: OK to just discard syn_label from pret.passives?">
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOMCMP NOM_PROP_ATTR NOM_PROP
+    <rule comment="REGLA: NOM.CMP NOM.PROP_ATTR NOM.PROP
                    Ruvdnaprinsa Harald => Kronprins Harald
-                   Uses NOM_PROP gender if possible as chunk gender.">
+                   Uses NOM.PROP gender if possible as chunk gender.">
       <pattern>
-        <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom_prop_attr"/>
-        <pattern-item n="nom_prop"/>
+        <pattern-item n="nom.cmp"/>
+        <pattern-item n="nom.prop_attr"/>
+        <pattern-item n="nom.prop"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
@@ -1886,7 +1890,7 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
 
-    <rule comment="REGLA: NUM NOM_GEN_LNUM
+    <rule comment="REGLA: NUM NOM.GEN_NUMl
                    -----
                    Here the head (caseprep, syn_label) is the numeral!
                    Numerals take genitive case, chunk case is numeral case,
@@ -1894,7 +1898,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                    TODO: enforce double defnes? (de tre bilene)">
       <pattern>
         <pattern-item n="num"/>
-        <pattern-item n="nom_gen_LNUM"/>
+        <pattern-item n="nom.gen_NUMl"/>
       </pattern>
       <action>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
@@ -2115,7 +2119,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                    See NUM_MOD NOM rule.">
       <pattern>
         <pattern-item n="num_mod"/>
-        <pattern-item n="nom_gen"/>
+        <pattern-item n="nom.gen"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -2136,7 +2140,7 @@ TODO: OK to just discard syn_label from pret.passives?">
           </concat>
         </let>
         
-        <!-- for NOM_GEN -->
+        <!-- for NOM.GEN -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <append n="pre-nom">
           <concat>
@@ -2161,12 +2165,12 @@ TODO: OK to just discard syn_label from pret.passives?">
     </rule>
 
 
-    <rule comment="REGLA: ADJCMP NOM
+    <rule comment="REGLA: ADJ.CMP NOM
                    -----
                    allaskuvla => høyskole
                    Moves syn_label from CMP to NOM">
       <pattern>
-        <pattern-item n="adj_cmp"/>
+        <pattern-item n="adj.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -2196,12 +2200,12 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
     
-    <rule comment="REGLA: NOMCMP NOM
+    <rule comment="REGLA: NOM.CMP NOM
                    -----
                    politiijastašuvnna => politistasjon(s)
                    Moves syn_label from CMP to NOM">
       <pattern>
-        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -2230,13 +2234,13 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
     
-    <rule comment="REGLA: NOMCMP NOMCMP NOM
+    <rule comment="REGLA: NOM.CMP NOM.CMP NOM
                    -----
                    Ruvdnaprinsabáras => Kronprinsparet
                    Moves syn_label from first CMP to NOM">
       <pattern>
-        <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom.cmp"/>
+        <pattern-item n="nom.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -2306,12 +2310,12 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
     
-    <rule comment="REGLA: NOMCMP ADJ
+    <rule comment="REGLA: NOM.CMP ADJ
                    -----
                    sámegiel => samespråklig
                    Moves syn_label from CMP to NOM">
       <pattern>
-        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom.cmp"/>
         <pattern-item n="adj"/>
       </pattern>
       <action>
@@ -2400,7 +2404,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                    Just removes everything.
                    (Should we call the chunk something else maybe?)">
       <pattern>
-        <pattern-item n="pronrel"/>
+        <pattern-item n="pron.rel"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2429,7 +2433,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                    Does not match genitive reflexives (treated as det.pos)
                    TODO: Son osku iežas(@-FSUBJ→) bestojuvvon(@X)">
       <pattern>
-        <pattern-item n="pronref"/>
+        <pattern-item n="pron.ref"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2534,8 +2538,8 @@ TODO: OK to just discard syn_label from pret.passives?">
                    Changes prpers case to accusative unless subject.
                    TODO: this really ought to be an mwe specified in the sme dictionary. Will this rule catch too much?">
       <pattern>
-        <pattern-item n="pronpers"/>
-        <pattern-item n="pronref-PRONL"/>
+        <pattern-item n="pron.pers"/>
+        <pattern-item n="pron.ref_PRONl"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2628,7 +2632,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                    This will catch genitive pronouns too (we're outputting both a_pron and a_det).
                    Not all genitive pronouns turn into determiners.">
       <pattern>
-        <pattern-item n="pronpers"/>
+        <pattern-item n="pron.pers"/>
       </pattern>
       <action>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
@@ -2789,14 +2793,14 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
 
-    <rule comment="REGLA: ADJ_ATTR NOMCMP NOM
+    <rule comment="REGLA: ADJ_ATTR NOM.CMP NOM
                    -----
                    duiska okkupašuvdnafápmu => tysk okkupasjonsmakt
                    TODO: epenthesis!
                    Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="adj_attr"/>
-        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -2843,14 +2847,14 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
 
-    <rule comment="REGLA: ADJ_ATTR NOMCMP NOMCMP NOM
+    <rule comment="REGLA: ADJ_ATTR NOM.CMP NOM.CMP NOM
                    -----
                    Dalá Ruvdnaprinsabáras => Daværende Kronprinsparet
                    Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="adj_attr"/>
-        <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom.cmp"/>
+        <pattern-item n="nom.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -2942,11 +2946,11 @@ TODO: OK to just discard syn_label from pret.passives?">
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-    <rule comment="REGLA: DET NOMCMP NOM
+    <rule comment="REGLA: DET NOM.CMP NOM
                    eará skuvlamánáin => andre skolebarnene">
       <pattern>
         <pattern-item n="det_mod"/>
-        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -2987,12 +2991,12 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
     
-    <rule comment="REGLA: DET NOMCMP NOMCMP NOM
+    <rule comment="REGLA: DET NOM.CMP NOM.CMP NOM
                    du idjabeavdeskuffas => i din nattbordskuff">
       <pattern>
         <pattern-item n="det_mod"/>
-        <pattern-item n="nom_cmp"/>
-        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom.cmp"/>
+        <pattern-item n="nom.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -3094,13 +3098,13 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
 
-    <rule comment="REGLA: NOM_GEN DET ADJ_ATTR NOM
+    <rule comment="REGLA: NOM.GEN DET ADJ_ATTR NOM
                    -----
                    riikka nubbi davvisámegiel namma => landets andre nordsamiske navn
-                   Sets defnes of possessor NOM_GEN using set_defnes, defnes of possessed NOM is ind.
+                   Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.
                    Ensure det is definite (using clip, only sets if it has a defnes tag).">
       <pattern>
-        <pattern-item n="nom_gen"/>
+        <pattern-item n="nom.gen"/>
         <pattern-item n="det_mod"/>
         <pattern-item n="adj_attr"/>
         <pattern-item n="nom_head"/>
@@ -3117,7 +3121,7 @@ TODO: OK to just discard syn_label from pret.passives?">
         
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
 
-        <!-- for NOM_GEN -->
+        <!-- for NOM.GEN -->
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <let>
           <var n="pre-nom"/>
@@ -3215,12 +3219,12 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
 
-    <rule comment="REGLA: NOM_PROP_GEN NOM
+    <rule comment="REGLA: NOM.PROP_GEN NOM
                    -----
-                   Defnes of possessed NOM is ind (NOM_PROP has no defnes).
-                   Needs to be before NOM_GEN NOM">
+                   Defnes of possessed NOM is ind (NOM.PROP has no defnes).
+                   Needs to be before NOM.GEN NOM">
       <pattern>
-        <pattern-item n="nom_prop_gen"/>
+        <pattern-item n="nom.prop.gen"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -3247,11 +3251,11 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
     
-    <rule comment="REGLA: NOM_GEN NOM
+    <rule comment="REGLA: NOM.GEN NOM
                    -----
-                   Sets defnes of possessor NOM_GEN using set_defnes, defnes of possessed NOM is ind.">
+                   Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
-        <pattern-item n="nom_gen"/>
+        <pattern-item n="nom.gen"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -3259,7 +3263,7 @@ TODO: OK to just discard syn_label from pret.passives?">
 
         <let><var n="c_name"/><lit v="pre_"/></let>
 
-        <!-- for NOM_GEN -->
+        <!-- for NOM.GEN -->
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <let>
           <var n="pre-nom"/>
@@ -3283,13 +3287,13 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
 
-    <rule comment="REGLA: NOM_PROP_GEN NOMCMP NOM
+    <rule comment="REGLA: NOM.PROP_GEN NOM.CMP NOM
                    -----
-                   Defnes of possessed NOM is ind (NOM_PROP has no defnes).
-                   Needs to be before NOM_GEN NOM">
+                   Defnes of possessed NOM is ind (NOM.PROP has no defnes).
+                   Needs to be before NOM.GEN NOM">
       <pattern>
-        <pattern-item n="nom_prop_gen"/>
-        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom.prop.gen"/>
+        <pattern-item n="nom.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -3327,12 +3331,12 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
 
-    <rule comment="REGLA: NOM_GEN NOMCMP NOM
+    <rule comment="REGLA: NOM.GEN NOM.CMP NOM
                    -----
-                   Sets defnes of possessor NOM_GEN using set_defnes, defnes of possessed NOM is ind.">
+                   Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
-        <pattern-item n="nom_gen"/>
-        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -3343,7 +3347,7 @@ TODO: OK to just discard syn_label from pret.passives?">
 
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
-        <!-- for NOM_GEN -->
+        <!-- for NOM.GEN -->
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <let>
           <var n="pre-nom"/>
@@ -3376,13 +3380,13 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
 
-    <rule comment="REGLA: DET NOM_GEN NOM
+    <rule comment="REGLA: DET NOM.GEN NOM
                    -----
                    dán jagi válggas => dette år(et)s valg
-                   Sets defnes of possessor NOM_GEN based on DET, defnes of possessed NOM is ind.">
+                   Sets defnes of possessor NOM.GEN based on DET, defnes of possessed NOM is ind.">
       <pattern>
         <pattern-item n="det_mod"/>
-        <pattern-item n="nom_gen"/>
+        <pattern-item n="nom.gen"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -3394,7 +3398,7 @@ TODO: OK to just discard syn_label from pret.passives?">
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
 
-        <!-- for NOM_GEN -->
+        <!-- for NOM.GEN -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <let>
           <var n="pre-nom"/>
@@ -3486,7 +3490,7 @@ TODO: OK to just discard syn_label from pret.passives?">
                    TODO: pret pass exception">
       <pattern>
         <pattern-item n="verb"/>
-        <pattern-item n="vgoahti"/>
+        <pattern-item n="goahti-v"/>
       </pattern>
       <action>
         <call-macro n="switch_cases"><with-param pos="2"/><with-param pos="1"/></call-macro>
@@ -3539,12 +3543,12 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
     
-    <rule comment="REGLA: NOMCMP VERB
+    <rule comment="REGLA: NOM.CMP VERB
                    -----
                    skuvlavázzima => skolegående
                    (should be 'skolegang', but if it's not in bidix, adj.pprs is the best we can do)">
       <pattern>
-        <pattern-item n="nom_cmp"/>
+        <pattern-item n="nom.cmp"/>
         <pattern-item n="verb"/>
       </pattern>
       <action>
@@ -3574,8 +3578,8 @@ TODO: OK to just discard syn_label from pret.passives?">
       </action>
     </rule>
 
-    <!-- <rules: NOM/PRON VACTIO NOM -->
-    <rule comment="REGLA: PRONPERSGEN VACTIO NOM
+    <!-- <rules: NOM/PRON V.ACTIO NOM -->
+    <rule comment="REGLA: PRON.PERS.GEN V.ACTIO NOM
                    -----
                    du čállin reivve => brevet som du hadde skrevet
                    The Agent Construction.
@@ -3583,8 +3587,8 @@ TODO! We make several chunks, should be possible to handle in interchunk like
    other relative clauses; perhaps we could make t2x relative chunking rules.
 TODO: should we restrict to V.Actio.Nom/Gen ?">
       <pattern>
-        <pattern-item n="pronpersgen"/>
-        <pattern-item n="vactio"/>
+        <pattern-item n="pron.pers.gen"/>
+        <pattern-item n="v.actio"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -3667,13 +3671,13 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOM_GEN VACTIO NOM
+    <rule comment="REGLA: NOM.GEN V.ACTIO NOM
                    -----
                    irggi čállin reivve => brevet som kjæresten hadde skrevet
                    The Agent Construction. See above rule.">
       <pattern>
-        <pattern-item n="nom_gen"/>
-        <pattern-item n="vactio"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="v.actio"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -3835,7 +3839,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
         </choose>
       </action>
     </rule>
-    <rule comment="REGLA: ADV PCLE.QST
+    <rule comment="REGLA: adverb Qst.Pcle
                    guhká go => hvor lenge
                    Since we match on chunk lemma 'adv' in t3x, even two-lu chunks
                    here are named 'adv' (no postchunking rules, so that's OK).
@@ -3843,7 +3847,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
 TODO: this should be an mwe in the analyser.">
       <pattern>
         <pattern-item n="adverb"/>
-        <pattern-item n="pcle.qst"/>
+        <pattern-item n="Qst.Pcle"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -3865,10 +3869,10 @@ TODO: this should be an mwe in the analyser.">
       </action>
     </rule>
     
-    <rule comment="REGLA: PCLE
+    <rule comment="REGLA: Pcle
                    ba => engang">
       <pattern>
-        <pattern-item n="pcle"/>
+        <pattern-item n="Pcle"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>

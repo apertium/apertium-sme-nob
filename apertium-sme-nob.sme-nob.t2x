@@ -11,27 +11,36 @@ This is the second pass. Responsibilities of this file include:
     from the noun to pronoun in 'Pron is N' constructions happens in t3x
 * Keeping track of verb temps for eg. Actio.Ess
   (which is tagged TD) using the variable "ana_temps"
-  * See rule: FV, V_TD
+  * See rule: FV, V.TD
 * Co-ordination
   * Removes superfluous prepositons
   * See rule: SN CNP SN, FV CVP FV
 * Some definiteness changes for genitive clauses etc.
-  * See rule: SN-prenom SN
+  * See rule: SN_rN SN
 * Moving postpositions
   * See rule: SN ADPOS -> ADPOS SN
 * Removing prepositions when case is governed by adpositions
-  * See rule: PR SN-post adpos
+  * See rule: PR SN_RPOST adpos
 * Removing essive caseprep ('som') after vcop
-  * See rule: FV-cop PR-caseprep-ess
+  * See rule: vcop-FV caseprep-PR.ess
 * Removing Pcle.Qst and putting the Qst tag on the preceding chunk,
   so that they're treated as if there were no space
-  * See rule: SN PCLE.QST
-  * PCLE.QST variants could probably be added to many of the other rules here too,
+  * See rule: SN PCLE.Qst
+  * PCLE.Qst variants could probably be added to many of the other rules here too,
     still TODO, but the most likely seem to be covered.
 
 TODO:
 * relatives (SN "who" SV SV* -> SN), both 'real' and those that started life as Agent Constructions
 * 'adpos' covers both Pr and Po, tag them as such in t1x so that the rules here don't overgeneralise
+
+
+DEF-CAT NAMING SCHEME:
+                       chunklemma-CHUNKTAG_SYNTAG.tag.tag
+
+where the SYNTAG part may have an l or r before or after to signify the arrow
+(where l corresponds to ← and r to →).
+So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>{...}
+
 -->
 
 <interchunk>
@@ -48,63 +57,48 @@ TODO:
       <cat-item tags="SN"/>
       <cat-item tags="SN.*"/>
     </def-cat>
-    <def-cat n="SN-prenom">
+    <def-cat n="SN_rN">
       <cat-item tags="SN.@→N.*"/>
     </def-cat>
-    <def-cat n="SN-nom">
+    <def-cat n="SN.nom">
       <cat-item tags="SN.*.nom"/>
-    </def-cat>
-    <def-cat n="SN-pron">
-      <cat-item lemma="pron" tags="SN.*"/>
-    </def-cat>
-    <def-cat n="spred-ess">
-      <cat-item tags="SV.@←SPRED.*.ess"/>
-      <cat-item tags="SV.@←SPRED.*.ess.*"/>
-      <cat-item tags="SV.@←SPRED.*.ess"/>
-      <cat-item tags="SV.@←SPRED.*.ess.*"/>
     </def-cat>
     <def-cat n="V">
       <cat-item tags="SV.*"/>
     </def-cat>
-    <def-cat n="RADVL">
+    <def-cat n="lADVL">
       <cat-item lemma="adv" tags="@←ADVL"/>
     </def-cat>
-    <def-cat n="pron-RADVL">
+    <def-cat n="pron-lADVL">
       <cat-item lemma="pron" tags="SN.@←ADVL.*"/>
-    </def-cat>
-    <def-cat n="ADVL-pronl" c="ieš used as adverbial, dependent on pron">
-      <cat-item lemma="adv" tags="@→Pron"/>
-    </def-cat>
-    <def-cat n="ADVL-noml" c="ieš used as adverbial, dependent on nom">
-      <cat-item lemma="adv" tags="@→Nom"/>
     </def-cat>
     <def-cat n="PR">
       <cat-item tags="PR"/>
       <cat-item tags="PR.*"/>
     </def-cat>
-    <def-cat n="PR-caseprep">
+    <def-cat n="caseprep-PR">
       <cat-item lemma="caseprep" tags="PR"/>
       <cat-item lemma="caseprep" tags="PR.*"/>
     </def-cat>
-    <def-cat n="PR-caseprep-ess">
+    <def-cat n="caseprep-PR.ess">
       <cat-item lemma="caseprep" tags="PR.ess"/>
       <cat-item lemma="caseprep" tags="PR.Ess"/>
     </def-cat>
-    <def-cat n="SN-prep">
+    <def-cat n="SN_PREPl">
       <cat-item tags="SN.@P←.*"/>
       <cat-item lemma="ref" tags="@P←.*"/>
     </def-cat>
-    <def-cat n="SN-post">
+    <def-cat n="SN_rPOST">
       <cat-item tags="SN.@→P.*"/>
       <cat-item lemma="ref" tags="@→P.*"/>
     </def-cat>
-    <def-cat n="SN-post-advl">
+    <def-cat n="SN_rADVL">
       <cat-item tags="SN.@→ADVL.*"/>
     </def-cat>
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
     </def-cat>
-    <def-cat n="ROBJ">
+    <def-cat n="lOBJ">
       <cat-item tags="SV.@←OBJ.*"/>
       <cat-item tags="SN.@←OBJ.*"/>
       <cat-item tags="SA.@←OBJ.*"/>
@@ -121,19 +115,19 @@ TODO:
       <cat-item tags="SV.@+FAUXV"/>
       <cat-item tags="SV.@+FAUXV.*"/>
     </def-cat>
-    <def-cat n="FV-cop">
+    <def-cat n="vcop-FV">
       <cat-item lemma="vcop" tags="SV.@+FMAINV"/>
       <cat-item lemma="vcop" tags="SV.@+FMAINV.*"/>
       <cat-item lemma="vcop" tags="SV.@+FAUXV"/>
       <cat-item lemma="vcop" tags="SV.@+FAUXV.*"/>
     </def-cat>
-    <def-cat n="V_TD">
+    <def-cat n="V.TD">
       <cat-item tags="SV.@←OBJ.TD.*"/>
     </def-cat>
-    <def-cat n="LN-gen">
+    <def-cat n="SN_rN.gen">
       <cat-item tags="SN.@→N.*.gen"/>
     </def-cat>
-    <def-cat n="ADVL-loc">
+    <def-cat n="ADVL.loc">
       <cat-item tags="SN.@ADVL.*.loc"/>
       <cat-item tags="SN.@ADVL.*.loc.*"/>
       <cat-item tags="SN.@←ADVL.*.loc"/>
@@ -147,7 +141,7 @@ TODO:
       <cat-item tags="SN.@-FADVL→.*.loc"/>
       <cat-item tags="SN.@-FADVL→.*.loc.*"/>
     </def-cat>
-    <def-cat n="pcle.qst">
+    <def-cat n="PCLE.Qst">
       <cat-item tags="@PCLE.Qst"/>
       <cat-item tags="@PCLE.Qst.*"/>
     </def-cat>
@@ -557,14 +551,14 @@ TODO:
 
   <section-rules>
     <!-- <rules: nom modifiers: -->
-    <rule comment="REGLA: SN-prenom SN-prenom SN-nom
+    <rule comment="REGLA: SN_rN SN_rN SN.nom
                    -----
                    NRK Radio oaivil => NRK Radios mening
                    Correct defnes">
       <pattern>
-        <pattern-item n="SN-prenom"/>
-        <pattern-item n="SN-prenom"/>
-        <pattern-item n="SN-nom"/>
+        <pattern-item n="SN_rN"/>
+        <pattern-item n="SN_rN"/>
+        <pattern-item n="SN.nom"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
@@ -585,13 +579,13 @@ TODO:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN-prenom SN-nom
+    <rule comment="REGLA: SN_rN SN.nom
                    -----
                    NRK oaivil => NRKs mening
                    Correct defnes">
       <pattern>
-        <pattern-item n="SN-prenom"/>
-        <pattern-item n="SN-nom"/>
+        <pattern-item n="SN_rN"/>
+        <pattern-item n="SN.nom"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
@@ -707,14 +701,14 @@ TODO:
 
     <!-- <rules: Adpositions -->
     
-    <rule comment="REGLA: PR-caseprep SN-post-advl RADVL
+    <rule comment="REGLA: caseprep-PR SN-rADVL lADVL
                    -----
                    Islandas eret => fra Island                                              
                    Don't output the PR since case was selected by the adverb anyway.">
       <pattern>
-        <pattern-item n="PR-caseprep"/>
-        <pattern-item n="SN-post-advl"/>
-        <pattern-item n="RADVL"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN_rADVL"/>
+        <pattern-item n="lADVL"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
@@ -730,14 +724,14 @@ TODO:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR-caseprep SN-post adpos
+    <rule comment="REGLA: caseprep-PR SN_rPOST adpos
                    -----
                    garra dálkki geažil => på_grunn_av dårlig vær
                    dan geažil => på_grunn_av det
                    Don't output the PR since case was selected by the adpos anyway.">
       <pattern>
-        <pattern-item n="PR-caseprep"/>
-        <pattern-item n="SN-post"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN_rPOST"/>
         <pattern-item n="adpos"/>
       </pattern>
       <action>
@@ -754,11 +748,11 @@ TODO:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN-post adpos
+    <rule comment="REGLA: SN-rPOST adpos
                    -----
                    Move postposition to front">
       <pattern>
-        <pattern-item n="SN-post"/>
+        <pattern-item n="SN_rPOST"/>
         <pattern-item n="adpos"/>
       </pattern>
       <action>
@@ -772,14 +766,14 @@ TODO:
       </action>
     </rule>
     
-    <rule comment="REGLA: adpos PR-caseprep SN-prep
+    <rule comment="REGLA: adpos PR SN_PREPl
                    -----
                    badjel ráji =1> over til grensen =2> over grensen
                    Don't output the PR since case was selected by the adpos anyway.">
       <pattern>
         <pattern-item n="adpos"/>
         <pattern-item n="PR"/>
-        <pattern-item n="SN-prep"/>
+        <pattern-item n="SN_PREPl"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
@@ -797,12 +791,12 @@ TODO:
     </rule>
     
     
-    <rule comment="REGLA: PR-caseprep SN
+    <rule comment="REGLA: caseprep-PR SN
                    If the above rules didn't match, we keep the PR.
                    Then we have to switch cases of PR and SN,
                    since a PR with lemh caseprep must've been added in t1x.">
       <pattern>
-        <pattern-item n="PR-caseprep"/>
+        <pattern-item n="caseprep-PR"/>
         <pattern-item n="SN"/>
       </pattern>
       <action>
@@ -817,15 +811,15 @@ TODO:
 
     
     <!-- <rules: →N ADVL -->    
-    <rule comment="REGLA: LN-gen ADVL-loc
+    <rule comment="REGLA: SN_rN.gen caseprep-PR ADVL.loc
                    -----
                    (málet olbmuid) earenoamáš dáhpáhusaid oktavuođas => (male mennesker) i forbindelse med spesielle hendelser
                    Switch order, insert 'med'
                    TODO: case should be acc or something, not nil, when pron/det">
       <pattern>
-        <pattern-item n="LN-gen"/>
-        <pattern-item n="PR-caseprep"/>
-        <pattern-item n="ADVL-loc"/>
+        <pattern-item n="SN_rN.gen"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="ADVL.loc"/>
       </pattern>
       <action>
         <let><clip pos="1" part="case"/><lit v=""/></let>
@@ -844,13 +838,13 @@ TODO:
     </rule>
 
     <!-- <rules: ditransitives (just switch order instead of removing caseprep) -->
-    <rule comment="REGLA: PR-caseprep SN ROBJ (og RSPRED?)
+    <rule comment="REGLA: caseprep-PR SN lOBJ
                    -----
                    dutnje 60 000 ruvnnu =1> til deg 60 000 kroner =2> 60 000 kroner til deg">
       <pattern>
-        <pattern-item n="PR-caseprep"/>
+        <pattern-item n="caseprep-PR"/>
         <pattern-item n="SN"/>
-        <pattern-item n="ROBJ"/>
+        <pattern-item n="lOBJ"/>
       </pattern>
       <action>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="3"/></call-macro>
@@ -935,13 +929,13 @@ TODO:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV PCLE.QST
+    <rule comment="REGLA: FV PCLE.Qst
                    -----
                    set anaphoric temps variable
                    use anaphoric gen variable">
       <pattern>
         <pattern-item n="FV"/>
-        <pattern-item n="pcle.qst"/>
+        <pattern-item n="PCLE.Qst"/>
       </pattern>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
@@ -953,13 +947,13 @@ TODO:
       </action>
     </rule>
     
-    <rule comment="REGLA: V_TD
+    <rule comment="REGLA: V.TD
                    -----
                    use anaphoric temps variables
                    use/set anaphoric gen variable
                    mun dieđán Máreha čállime dál => jeg vet Máret skriver nå">
       <pattern>
-        <pattern-item n="V_TD"/>
+        <pattern-item n="V.TD"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
@@ -972,14 +966,14 @@ TODO:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: V_TD PCLE.QST
+    <rule comment="REGLA: V.TD PCLE.Qst
                    -----
                    use anaphoric temps variables
                    use/set anaphoric gen variable
                    mun dieđán Máreha čállime dál => jeg vet Máret skriver nå">
       <pattern>
-        <pattern-item n="V_TD"/>
-        <pattern-item n="pcle.qst"/>
+        <pattern-item n="V.TD"/>
+        <pattern-item n="PCLE.Qst"/>
       </pattern>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
@@ -1007,12 +1001,12 @@ TODO:
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: V PCLE.QST
+    <rule comment="REGLA: V PCLE.Qst
                    -----
                    use/set anaphoric gen variable">
       <pattern>
         <pattern-item n="V"/>
-        <pattern-item n="pcle.qst"/>
+        <pattern-item n="PCLE.Qst"/>
       </pattern>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
@@ -1024,7 +1018,7 @@ TODO:
     </rule>
     
     <!-- FV-cop 'som' -->
-    <rule comment="REGLA: FV-cop PR-caseprep-ess
+    <rule comment="REGLA: vcop-FV caseprep-PR.ess
                    -----
                    Son lea taksivuoddjin Oslos => Han er taxisjåfør i Oslo
                    Delete 'som'
@@ -1033,8 +1027,8 @@ TODO:
                    use anaphoric gen variable
 TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs rule.">
       <pattern>
-        <pattern-item n="FV-cop"/>
-        <pattern-item n="PR-caseprep-ess"/>
+        <pattern-item n="vcop-FV"/>
+        <pattern-item n="caseprep-PR.ess"/>
       </pattern>
       <action>
         <call-macro n="set_ana_temps"><with-param pos="1"/></call-macro>
@@ -1049,16 +1043,16 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
       </action>
     </rule>
 
-    <rule comment="REGLA: PR-caseprep-ess SN FV-cop
+    <rule comment="REGLA: caseprep-PR.ess SN vcop-FV
                    -----
                    
                    Delete 'som'
                    set anaphoric temps variable
                    use anaphoric gen variable">
       <pattern>
-        <pattern-item n="PR-caseprep-ess"/>
+        <pattern-item n="caseprep-PR.ess"/>
         <pattern-item n="SN"/>
-        <pattern-item n="FV-cop"/>
+        <pattern-item n="vcop-FV"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
@@ -1090,12 +1084,12 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN PCLE.QST
+    <rule comment="REGLA: SN PCLE.Qst
                    -----
                    set gen variable">
       <pattern>
         <pattern-item n="SN"/>
-        <pattern-item n="pcle.qst"/>
+        <pattern-item n="PCLE.Qst"/>
       </pattern>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
@@ -1119,12 +1113,12 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
         </out>
       </action>
     </rule>    
-    <rule comment="REGLA: SA PCLE.QST
+    <rule comment="REGLA: SA PCLE.Qst
                    -----
                    use gen variable">
       <pattern>
         <pattern-item n="SA"/>
-        <pattern-item n="pcle.qst"/>
+        <pattern-item n="PCLE.Qst"/>
       </pattern>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>

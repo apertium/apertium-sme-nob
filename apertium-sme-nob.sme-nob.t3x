@@ -14,7 +14,7 @@ This is the third pass. Responsibilities of this file include:
 * Correct definiteness using the larger context (eg. verb animacy / number / temps)
   * See macro: set_defnes2
 * Change perfect participle of non-finites to preterite when following the negation verb
-  * See rules with FV-Neg
+  * See rules with FV.Neg
 * Using verb animacy/number to guess GD/ND subject gender/number
   * See macro modify_GD_ND_subj3
   * Only regards pre-verbal GD/ND subjects, post-verbal are handled in t2x
@@ -22,6 +22,15 @@ This is the third pass. Responsibilities of this file include:
 TODO
 * Using verb animacy/number to guess GD/ND subject gender/number
   * See macro modify_GD_ND_subj3
+
+
+DEF-CAT NAMING SCHEME:
+                       chunklemma-CHUNKTAG_SYNTAG.tag.tag
+
+where the SYNTAG part may have an l or r before or after to signify the arrow
+(where l corresponds to ← and r to →).
+So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>{...}
+
 -->
 
 <interchunk>
@@ -34,18 +43,18 @@ TODO
       <cat-item tags="PR"/>
       <cat-item tags="PR.*"/>
     </def-cat>
-    <def-cat n="maybe-LSUBJ" c="not relatives, use rel-LSUBJ for those">
+    <def-cat n="maybe-SUBJr" c="not relatives, use rel-SUBJr for those">
       <cat-item lemma="unknown" tags="unknown"/>
       <cat-item tags="SN.@HAB.*"/>
       <cat-item tags="SN.@SUBJ→.*"/>
       <cat-item tags="SV.@SUBJ→.*"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
-    <def-cat n="rel-LSUBJ">
+    <def-cat n="rel-SUBJr">
       <cat-item lemma="rel" tags="*.@SUBJ→"/>
       <cat-item lemma="rel" tags="@SUBJ→.*"/>
     </def-cat>
-    <def-cat n="maybe-RSUBJ">
+    <def-cat n="maybe-lSUBJ">
       <cat-item lemma="unknown" tags="unknown"/>
       <cat-item tags="SN.@HAB.*"/>           <!-- HAB or not here? -->
       <cat-item tags="SV.@←SUBJ.*"/>
@@ -53,16 +62,16 @@ TODO
       <cat-item tags="SA.@←SUBJ.*"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
-    <def-cat n="RSPRED">
+    <def-cat n="lSPRED">
       <cat-item tags="SV.@←SPRED.*"/>
       <cat-item tags="SN.@←SPRED.*"/>
       <cat-item tags="SA.@←SPRED.*"/>
     </def-cat>
-    <def-cat n="LSA">
+    <def-cat n="SA_ADVLr">
       <cat-item tags="SA.@ADVL→"/>
       <cat-item tags="SA.@ADVL→.*"/>
     </def-cat>
-    <def-cat n="LOBJ_LSA">
+    <def-cat n="ADVLrOBJr">
       <cat-item tags="SN.@OBJ→"/>
       <cat-item tags="SN.@OBJ→.*"/>
       <cat-item tags="SA.@OBJ→"/>
@@ -70,17 +79,17 @@ TODO
       <cat-item tags="SA.@ADVL→"/>
       <cat-item tags="SA.@ADVL→.*"/>
     </def-cat>
-    <def-cat n="ROPRED">
+    <def-cat n="lOPRED">
       <cat-item tags="SV.@←OPRED.*"/>
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
     </def-cat>
-    <def-cat n="ROBJ">
+    <def-cat n="lOBJ">
       <cat-item tags="SV.@←OBJ.*"/>
       <cat-item tags="SN.@←OBJ.*"/>
       <cat-item tags="SA.@←OBJ.*"/>
     </def-cat>
-    <def-cat n="ROBJ_ROPRED">
+    <def-cat n="lOBJ_lOPRED">
       <cat-item tags="SV.@←OBJ.*"/>
       <cat-item tags="SN.@←OBJ.*"/>
       <cat-item tags="SA.@←OBJ.*"/>
@@ -88,11 +97,11 @@ TODO
       <cat-item tags="SN.@←OPRED.*"/>
       <cat-item tags="SA.@←OPRED.*"/>
     </def-cat>
-    <def-cat n="ILSUBJ" c="subject of infinite verb (setningstilsvar). @-FOBJ should not be here, was a CG error">
+    <def-cat n="ISUBJr" c="subject of infinite verb (setningstilsvar). @-FOBJ should not be here, was a CG error">
       <cat-item tags="SN.@-FSUBJ→.*"/>
       <cat-item tags="SV.@-FSUBJ→.*"/>
     </def-cat>
-    <def-cat n="IV-tilsvar">
+    <def-cat n="SV_lOBJ-tilsvar">
       <cat-item tags="SV.@←OBJ.*"/>
     </def-cat>
     <def-cat n="CS">
@@ -120,13 +129,13 @@ TODO
       <cat-item tags="SA.@ADVL→"/>
       <cat-item tags="SA.@ADVL→.*"/>
     </def-cat>
-    <def-cat n="adv-FV-Neg">
+    <def-cat n="adv-FV.Neg">
       <cat-item lemma="adv" tags="SV.@+FAUXV.Neg.*"/>
     </def-cat>
-    <def-cat n="adv-FV-Neg-Qst">
+    <def-cat n="adv-FV.Neg.Qst">
       <cat-item lemma="adv" tags="SV.@+FAUXV.Neg.Qst.*"/>
     </def-cat>
-    <def-cat n="FV-Qst">
+    <def-cat n="FV.Qst">
       <cat-item tags="SV.@+FMAINV.Qst.*"/>
       <cat-item tags="SV.@+FAUXV.Qst.*"/>
       <cat-item lemma="adv" tags="SV.@+FAUXV.Neg.Qst.*"/>
@@ -160,7 +169,7 @@ TODO
       <cat-item tags="lemq.lemq-obj"/>
       <cat-item tags="lemq.lemq-obj.*"/>
     </def-cat>
-    <def-cat n="SPEC">
+    <def-cat n="SPEC" c="'Specifiyer', sort of... rather diffuse category here">
       <cat-item lemma="adv" tags="@PCLE"/> <!-- TODO check -->
       <cat-item lemma="adv" tags="@←ADVL"/>
       <cat-item lemma="adv" tags="@←ADVL.*"/>
@@ -183,7 +192,7 @@ TODO
       <cat-item tags="SN.@X"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
-    <def-cat n="SPEC-LSUBJ-Qst">
+    <def-cat n="SPEC_SUBJr.Qst">
       <cat-item tags="SN.@SUBJ→.Qst.*"/>
     </def-cat>
     <def-cat n="SADV">
@@ -602,15 +611,15 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
   <section-rules>
     <!-- <rules: no pro-drop insertion -->
     
-    <!-- <rules: ILSUBJ IV
+    <!-- <rules: ISUBJr IV
          Setningstilsvar (infinite=>finite in subordinate sentences) -->
-    <rule comment="REGLA: ILSUBJ IV
+    <rule comment="REGLA: ISUBJr IV
                    (Máhtte muitalii) ádjá boahtit => (Máhtte fortalte) bestefar skulle komme
                    TODO: set_defnes2 ? set_adv ?
                    Adds 'skulle' if infinitive (and changes syn_label so t4x doesn't add 'å')">
       <pattern>
-        <pattern-item n="ILSUBJ"/>
-        <pattern-item n="IV-tilsvar"/>
+        <pattern-item n="ISUBJr"/>
+        <pattern-item n="SV_lOBJ-tilsvar"/>
       </pattern>
       <action>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
@@ -646,13 +655,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
     
 
-    <!-- <rules: SPEC-LSUBJ-Qst FV RSPRED* (insert existential 'det') -->    
-    <rule comment="REGLA: SPEC-LSUBJ-Qst FV
+    <!-- <rules: SPEC_SUBJr.Qst FV RSPRED* (insert existential 'det') -->    
+    <rule comment="REGLA: SPEC_SUBJr.Qst FV
                    Áhččigo boahtá (ihttin) => Er det far som kommer (i morgen)
                    Áhččigo bođii (ikte) => Var det far som kom (i går)
                    Nom.Qst.@SUBJ→ => Er det X som ...">
       <pattern>
-        <pattern-item n="SPEC-LSUBJ-Qst"/>
+        <pattern-item n="SPEC_SUBJr.Qst"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -701,9 +710,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
     
     <!-- <rules: rel FV -->
-    <rule comment="REGLA: rel-LSUBJ FV">
+    <rule comment="REGLA: rel-SUBJr FV">
       <pattern>
-        <pattern-item n="rel-LSUBJ"/>
+        <pattern-item n="rel-SUBJr"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -717,10 +726,10 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC rel-LSUBJ FV">
+    <rule comment="REGLA: SPEC rel-SUBJr FV">
       <pattern>
         <pattern-item n="SPEC"/>
-        <pattern-item n="rel-LSUBJ"/>
+        <pattern-item n="rel-SUBJr"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -736,11 +745,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC rel-LSUBJ FV">
+    <rule comment="REGLA: PR SPEC rel-SUBJr FV">
       <pattern>
         <pattern-item n="PR"/>
         <pattern-item n="SPEC"/>
-        <pattern-item n="rel-LSUBJ"/>
+        <pattern-item n="rel-SUBJr"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -759,8 +768,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <!-- <rules: maybe-LSUBJ ADVL* FV IV* -->
-    <rule comment="REGLA: SPEC maybe-LSUBJ FV
+    <!-- <rules: maybe-SUBJr ADVL* FV IV* -->
+    <rule comment="REGLA: SPEC maybe-SUBJr FV
                    V2-rule
                    -----
                    Doppe son orui (vahku) => Der_borte bodde han (ei uke)
@@ -770,7 +779,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                    (don't have to match the PR if we can rely on the syn_label)">
       <pattern>
         <pattern-item n="SPEC"/>
-        <pattern-item n="maybe-LSUBJ"/>
+        <pattern-item n="maybe-SUBJr"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -790,14 +799,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC maybe-LSUBJ FV
+    <rule comment="REGLA: PR SPEC maybe-SUBJr FV
                    V2-rule
                    dan maŋŋá son logai => etter det lærte han
                    ('maŋŋá(PR) dan(SPEC)' after t2x)">
       <pattern>
         <pattern-item n="PR"/>
         <pattern-item n="SPEC"/>
-        <pattern-item n="maybe-LSUBJ"/>
+        <pattern-item n="maybe-SUBJr"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -820,10 +829,10 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: maybe-LSUBJ FV
+    <rule comment="REGLA: maybe-SUBJr FV
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
-        <pattern-item n="maybe-LSUBJ"/>
+        <pattern-item n="maybe-SUBJr"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -841,13 +850,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: maybe-LSUBJ adv-FV-Neg IV
+    <rule comment="REGLA: maybe-SUBJr adv-FV.Neg IV
                    Máhtte ii leat (boahtán) => Máhtte har ikke (kommet)
                    TODO: gii in dárbbaš => som ikke behøver (needs new rule!)
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
-        <pattern-item n="maybe-LSUBJ"/>
-        <pattern-item n="adv-FV-Neg"/>
+        <pattern-item n="maybe-SUBJr"/>
+        <pattern-item n="adv-FV.Neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -871,14 +880,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: maybe-LSUBJ adv-FV-Neg adv-IV IV
+    <rule comment="REGLA: maybe-SUBJr adv-FV.Neg adv-IV IV
                    Son ii dáidde jienastit => Han stemmer nok ikke
                    Note: although 'dáidde' is tagged -FAUXV, it has tempus.
                    Override prodrop rule (TODO below) if we might have a subject to the left
                    We don't introduce Cond/Pot adverbs here.">
       <pattern>
-        <pattern-item n="maybe-LSUBJ"/>
-        <pattern-item n="adv-FV-Neg"/>
+        <pattern-item n="maybe-SUBJr"/>
+        <pattern-item n="adv-FV.Neg"/>
         <pattern-item n="adv-IV"/>
         <pattern-item n="IV"/>
       </pattern>
@@ -904,13 +913,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: maybe-LSUBJ ADVL FV
+    <rule comment="REGLA: maybe-SUBJr ADVL FV
                    -----
                    V2-rule
                    Son maiddái gažada => Han spør også
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
-        <pattern-item n="maybe-LSUBJ"/>
+        <pattern-item n="maybe-SUBJr"/>
         <pattern-item n="ADVL"/>
         <pattern-item n="FV"/>
       </pattern>
@@ -931,7 +940,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: ADVL maybe-LSUBJ ADVL FV
+    <rule comment="REGLA: ADVL maybe-SUBJr ADVL FV
                    -----
                    ieža moai dáppe váccašetne =1> bare vi_to her spaserer =3> vi_to bare spaserer her
                    (The ieža @ADVL tag is given in t1x, originally @→Pron.)
@@ -939,7 +948,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
         <pattern-item n="ADVL"/>
-        <pattern-item n="maybe-LSUBJ"/>
+        <pattern-item n="maybe-SUBJr"/>
         <pattern-item n="ADVL"/>
         <pattern-item n="FV"/>
       </pattern>
@@ -964,12 +973,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
     <!-- <rules: SPEC* FV IV* RSUBJ: -->
-    <rule comment="REGLA: FV maybe-RSUBJ
+    <rule comment="REGLA: FV maybe-lSUBJ
                    -----
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
         <pattern-item n="FV"/>
-        <pattern-item n="maybe-RSUBJ"/>
+        <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -985,14 +994,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV lemq maybe-RSUBJ
+    <rule comment="REGLA: FV lemq maybe-lSUBJ
                    -----
                    ovddasvástideigga soai => hadde de_to ansvar_for
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
         <pattern-item n="FV"/>
         <pattern-item n="lemq"/>
-        <pattern-item n="maybe-RSUBJ"/>
+        <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1011,13 +1020,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC FV maybe-RSUBJ
+    <rule comment="REGLA: SPEC FV maybe-lSUBJ
                    de lei son (juo) => så hadde han (allerede)
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
         <pattern-item n="SPEC"/>
         <pattern-item n="FV"/>
-        <pattern-item n="maybe-RSUBJ"/>
+        <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1043,7 +1052,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       <pattern>
         <pattern-item n="SPEC"/>
         <pattern-item n="FV"/>
-        <pattern-item n="RSPRED"/>
+        <pattern-item n="lSPRED"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1061,14 +1070,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC FV maybe-RSUBJ
+    <rule comment="REGLA: PR SPEC FV maybe-lSUBJ
                    (PR) su_mielas leat bohccot => i_hans_oppfatning er reinene
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
         <pattern-item n="PR"/>
         <pattern-item n="SPEC"/>
         <pattern-item n="FV"/>
-        <pattern-item n="maybe-RSUBJ"/>
+        <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1088,13 +1097,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV IV maybe-RSUBJ
+    <rule comment="REGLA: FV IV maybe-lSUBJ
                    gildui sámegiella => ble forbudt samisken => samisken ble forbudt
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
         <pattern-item n="FV"/>
         <pattern-item n="IV"/>
-        <pattern-item n="maybe-RSUBJ"/>
+        <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1112,14 +1121,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC FV IV maybe-RSUBJ
+    <rule comment="REGLA: SPEC FV IV maybe-lSUBJ
                    dađistaga gildui sámegiella => etterhvert ble forbudt samisken => etterhvert ble samisken forbudt
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
         <pattern-item n="SPEC"/>
         <pattern-item n="FV"/>
         <pattern-item n="IV"/>
-        <pattern-item n="maybe-RSUBJ"/>
+        <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1139,7 +1148,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC FV IV maybe-RSUBJ
+    <rule comment="REGLA: PR SPEC FV IV maybe-lSUBJ
                    (PR) dan maŋŋá gildui sámegiella => etter det ble forbudt samisken => etter det ble samisken forbudt
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -1147,7 +1156,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="SPEC"/>
         <pattern-item n="FV"/>
         <pattern-item n="IV"/>
-        <pattern-item n="maybe-RSUBJ"/>
+        <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1171,13 +1180,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
     <!-- <rules: CS SUBJ FV IV* -->
-    <rule comment="REGLA: CS maybe-LSUBJ adv-FV-Neg IV
+    <rule comment="REGLA: CS maybe-SUBJr adv-FV.Neg IV
                    Subordinate clause.
                    ahte áddjá ii dovdan => at bestefar (evt. ADV) ikke kjente">
       <pattern>
         <pattern-item n="CS"/>
-        <pattern-item n="maybe-LSUBJ"/>
-        <pattern-item n="adv-FV-Neg"/>
+        <pattern-item n="maybe-SUBJr"/>
+        <pattern-item n="adv-FV.Neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -1208,7 +1217,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                    V2-rule with pro-drop insertion
                    Doppe dihten => Der borte visste jeg
                    
-                   Note: This rule is partly blocked by the 'maybe-LSUBJ FV' rule above.">
+                   Note: This rule is partly blocked by the 'maybe-SUBJr FV' rule above.">
       <pattern>
         <pattern-item n="SPEC"/>
         <pattern-item n="FV"/>
@@ -1280,13 +1289,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: CS adv-FV-Neg IV
+    <rule comment="REGLA: CS adv-FV.Neg IV
                    Subordinate clause.
                    go it boađáše => at/når du ikke kommer
                    Insert dropped pronoun">
       <pattern>
         <pattern-item n="CS"/>
-        <pattern-item n="adv-FV-Neg"/>
+        <pattern-item n="adv-FV.Neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -1309,12 +1318,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <!-- <rules: FV-Qst IV*: -->
-    <rule comment="REGLA: FV-Qst
+    <!-- <rules: FV.Qst IV*: -->
+    <rule comment="REGLA: FV.Qst
                    Oainnátgo => Ser du
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="FV-Qst"/>
+        <pattern-item n="FV.Qst"/>
       </pattern>
       <action>
         <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>        
@@ -1327,12 +1336,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV-Qst ROBJ_RPRED
+    <rule comment="REGLA: FV.Qst lOBJ_RPRED
                    Oainnátgo máná => Ser du barnet
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="FV-Qst"/>
-        <pattern-item n="ROBJ_ROPRED"/>
+        <pattern-item n="FV.Qst"/>
+        <pattern-item n="lOBJ_lOPRED"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1354,11 +1363,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: adv-FV-Neg-Qst IV
+    <rule comment="REGLA: adv-FV.Neg.Qst IV
                    itgo boađáše => kommer du ikke
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="adv-FV-Neg-Qst"/>
+        <pattern-item n="adv-FV.Neg.Qst"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -1375,11 +1384,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: adv-FV-Neg IV
+    <rule comment="REGLA: adv-FV.Neg IV
                    it boađáše => du kommer ikke
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="adv-FV-Neg"/>
+        <pattern-item n="adv-FV.Neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -1397,14 +1406,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <!-- <rules: LSA FV ROBJ -->
-    <rule comment="REGLA: LSA FV ROBJ
+    <!-- <rules: SA_ADVLr FV lOBJ -->
+    <rule comment="REGLA: SA_ADVLr FV lOBJ
                    heajubut geavvat => vi hever oss dårligere
                    (that example needs some bidix/lex.sel work TODO)">
       <pattern>
-        <pattern-item n="LSA"/>
+        <pattern-item n="SA_ADVLr"/>
         <pattern-item n="FV"/>
-        <pattern-item n="ROBJ"/>
+        <pattern-item n="lOBJ"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1424,13 +1433,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <!-- <rules: V* LOBJ_LSA ADVL* V ROPRED* -->
-    <rule comment="REGLA: adv-FV-Neg-Qst LOBJ_LSA IV
+    <!-- <rules: V* ADVLrOBJr ADVL* V lOPRED* -->
+    <rule comment="REGLA: adv-FV.Neg.Qst ADVLrOBJr IV
                    Itgo gáfe juga => Drikker du ikke kaffe
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="adv-FV-Neg-Qst"/>
-        <pattern-item n="LOBJ_LSA"/>
+        <pattern-item n="adv-FV.Neg.Qst"/>
+        <pattern-item n="ADVLrOBJr"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -1453,7 +1462,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: LOBJ_LSA V
+    <rule comment="REGLA: ADVLrOBJr V
                    OV => VO order:
                    - dan oahppan => lært det
                    - dan jearat => du spør det
@@ -1461,7 +1470,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                    - árrat.OBJ→  lávlut  => synge tidlig
                    - árrat.ADVL→ goallut => fryse tidlig">
       <pattern>
-        <pattern-item n="LOBJ_LSA"/>
+        <pattern-item n="ADVLrOBJr"/>
         <pattern-item n="V"/>
       </pattern>
       <action>
@@ -1482,12 +1491,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: LOBJ_LSA ADVL V
+    <rule comment="REGLA: ADVLrOBJr ADVL V
                    dan juo oahppan => allerede lært det
                    dan juo jearat => du allerede spør det (TODO!!)
                    OV => VO order">
       <pattern>
-        <pattern-item n="LOBJ_LSA"/>
+        <pattern-item n="ADVLrOBJr"/>
         <pattern-item n="ADVL"/>
         <pattern-item n="V"/>
       </pattern>
@@ -1511,14 +1520,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: LOBJ_LSA FV ROPRED
+    <rule comment="REGLA: ADVLrOBJr FV lOPRED
                    Dan dieđán váddása => Det vet jeg er vanskelig
                    Insert 'være'
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="LOBJ_LSA"/>
+        <pattern-item n="ADVLrOBJr"/>
         <pattern-item n="FV"/>
-        <pattern-item n="ROPRED"/>
+        <pattern-item n="lOPRED"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1547,15 +1556,15 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: LOBJ_LSA ADVL FV ROPRED
+    <rule comment="REGLA: ADVLrOBJr ADVL FV lOPRED
                    Dan gal dieđán váddása => Det vet jeg vel er vanskelig
                    Insert 'være'
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="LOBJ_LSA"/>
+        <pattern-item n="ADVLrOBJr"/>
         <pattern-item n="ADVL"/>
         <pattern-item n="FV"/>
-        <pattern-item n="ROPRED"/>
+        <pattern-item n="lOPRED"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1587,13 +1596,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
     
-    <!-- FV ROBJ_RPRED -->
-    <rule comment="REGLA: FV ROBJ_RPRED
+    <!-- FV lOBJ_RPRED -->
+    <rule comment="REGLA: FV lOBJ_RPRED
                    Váldde biergasiid => Ta sakene
                    geahččaledje jeđđet min = de prøvde å trøste oss">
       <pattern>
         <pattern-item n="FV"/>
-        <pattern-item n="ROBJ_ROPRED"/>
+        <pattern-item n="lOBJ_lOPRED"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
@@ -1611,14 +1620,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: V lemq-obj ROBJ_RPRED
+    <rule comment="REGLA: V lemq-obj lOBJ_RPRED
                    -----
                    fuomášuhttit máná => gjøre barnet oppmerksom på
                    Might insert pro">
       <pattern>
         <pattern-item n="V"/>
         <pattern-item n="lemq-obj"/>
-        <pattern-item n="ROBJ_ROPRED"/>
+        <pattern-item n="lOBJ_lOPRED"/>
       </pattern>
       <action>
         <call-macro n="set_defnes2">
