@@ -329,7 +329,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <not><equal><clip pos="1" part="gen"/><lit v="GD"/></equal></not>
           <not><equal><clip pos="1" part="gen"/><lit v="GD_pers"/></equal></not>
         </and></test>
+        <choose><when>
+          <test><not><and>
+            <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
+            <equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal>
+          </and></not></test>
         <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
+        </when></choose>
         <!-- TODO: use prpers so we don't need these hacks (but that needs changes in nob.dix) -->
         <choose><when>
           <test><equal><clip pos="2" part="gen"/><lit-tag v="f"/></equal></test>
@@ -705,6 +711,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
             <not><in><clip pos="1" part="syn_label"/><list n="no-determiner"/></in></not>
             <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with></not>
             <not><equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal></not>
+            <equal><clip pos="2" part="a_pron"/><lit v=""/></equal>
             <or>
               <equal><clip pos="2" part="a_det"/><lit v=""/></equal>
               <equal><clip pos="2" part="lemh"/><lit v="annen"/></equal>
