@@ -47,21 +47,21 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 <cat-item name="pre_pre_pre_nom"/>
     </def-cat>
     <!-- <def-cats: Trivial, conjunctions
-                    For every single nom, alternatively allow a det.
-                    There are no 'pre_det' etc. -->
-<def-cat n="nom_conj_nom">                        <cat-item name="nom_conj_nom"/>            <cat-item name="nom_conj_det"/><cat-item name="det_conj_nom"/></def-cat>
-<def-cat n="nom_conj_pre_nom">                    <cat-item name="nom_conj_pre_nom"/>        <cat-item name="det_conj_pre_nom"/></def-cat>
-<def-cat n="nom_conj_pre_pre_nom">                <cat-item name="nom_conj_pre_pre_nom"/>    <cat-item name="det_conj_pre_pre_nom"/></def-cat>
-<def-cat n="nom_conj_pre_pre_pre_nom">            <cat-item name="nom_conj_pre_pre_pre_nom"/><cat-item name="det_conj_pre_pre_pre_nom"/></def-cat>
-<def-cat n="pre_nom_conj_nom">                    <cat-item name="pre_nom_conj_nom"/>        <cat-item name="pre_nom_conj_det"/></def-cat>
+                    For every single nom, alternatively allow a det or pron.
+                    There are no 'pre_det' or 'pre_pron' etc. -->
+<def-cat n="nom_conj_nom">                        <cat-item name="nom_conj_nom"/>            <cat-item name="nom_conj_det"/><cat-item name="det_conj_nom"/><cat-item name="nom_conj_pron"/><cat-item name="pron_conj_nom"/></def-cat>
+<def-cat n="nom_conj_pre_nom">                    <cat-item name="nom_conj_pre_nom"/>        <cat-item name="det_conj_pre_nom"/><cat-item name="pron_conj_pre_nom"/></def-cat>
+<def-cat n="nom_conj_pre_pre_nom">                <cat-item name="nom_conj_pre_pre_nom"/>    <cat-item name="det_conj_pre_pre_nom"/><cat-item name="pron_conj_pre_pre_nom"/></def-cat>
+<def-cat n="nom_conj_pre_pre_pre_nom">            <cat-item name="nom_conj_pre_pre_pre_nom"/><cat-item name="det_conj_pre_pre_pre_nom"/><cat-item name="pron_conj_pre_pre_pre_nom"/></def-cat>
+<def-cat n="pre_nom_conj_nom">                    <cat-item name="pre_nom_conj_nom"/>        <cat-item name="pre_nom_conj_det"/><cat-item name="pre_nom_conj_pron"/></def-cat>
 <def-cat n="pre_nom_conj_pre_nom">                <cat-item name="pre_nom_conj_pre_nom"/></def-cat>
 <def-cat n="pre_nom_conj_pre_pre_nom">            <cat-item name="pre_nom_conj_pre_pre_nom"/></def-cat>
 <def-cat n="pre_nom_conj_pre_pre_pre_nom">        <cat-item name="pre_nom_conj_pre_pre_pre_nom"/></def-cat>
-<def-cat n="pre_pre_nom_conj_nom">                <cat-item name="pre_pre_nom_conj_nom"/>    <cat-item name="pre_pre_nom_conj_det"/></def-cat>
+<def-cat n="pre_pre_nom_conj_nom">                <cat-item name="pre_pre_nom_conj_nom"/>    <cat-item name="pre_pre_nom_conj_det"/><cat-item name="pre_pre_nom_conj_pron"/></def-cat>
 <def-cat n="pre_pre_nom_conj_pre_nom">            <cat-item name="pre_pre_nom_conj_pre_nom"/></def-cat>
 <def-cat n="pre_pre_nom_conj_pre_pre_nom">        <cat-item name="pre_pre_nom_conj_pre_pre_nom"/></def-cat>
 <def-cat n="pre_pre_nom_conj_pre_pre_pre_nom">    <cat-item name="pre_pre_nom_conj_pre_pre_pre_nom"/></def-cat>
-<def-cat n="pre_pre_pre_nom_conj_nom">            <cat-item name="pre_pre_pre_nom_conj_nom"/><cat-item name="pre_pre_pre_nom_conj_det"/></def-cat>
+<def-cat n="pre_pre_pre_nom_conj_nom">            <cat-item name="pre_pre_pre_nom_conj_nom"/><cat-item name="pre_pre_pre_nom_conj_det"/><cat-item name="pre_pre_pre_nom_conj_pron"/></def-cat>
 <def-cat n="pre_pre_pre_nom_conj_pre_nom">        <cat-item name="pre_pre_pre_nom_conj_pre_nom"/></def-cat>
 <def-cat n="pre_pre_pre_nom_conj_pre_pre_nom">    <cat-item name="pre_pre_pre_nom_conj_pre_pre_nom"/></def-cat>
 <def-cat n="pre_pre_pre_nom_conj_pre_pre_pre_nom"><cat-item name="pre_pre_pre_nom_conj_pre_pre_pre_nom"/></def-cat>
@@ -633,8 +633,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                   Note: also used for verbs (see out_nom in t1x)">
       <choose>
         <when c="determiner (possibly turning back into a pronoun)">
-        <test><not><equal><clip pos="2" part="a_det"/><lit v=""/></equal></not></test>
-                
+        <test><not><equal><clip pos="2" part="a_det"/><lit v=""/></equal></not></test>                
         <choose>
           <when>
             <test><and>
@@ -648,6 +647,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
             <call-macro n="clean_det2"><with-param pos="1"/><with-param pos="2"/></call-macro>
           </otherwise>
         </choose>
+      </when>
+
+      <when c="pronoun">
+        <test><not><equal><clip pos="2" part="a_pron"/><lit v=""/></equal></not></test>
+        <call-macro n="clean_pron"><with-param pos="1"/><with-param pos="2"/></call-macro>
       </when>
       
       <otherwise c="n,np,verb">
