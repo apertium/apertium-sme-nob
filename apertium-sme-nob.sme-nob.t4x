@@ -290,6 +290,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
               c="Noun phrases with these syntactic functions should not have a determiner (neither ind nor def)">
       <list-item v="&lt;@←PPRED&gt;"/>
     </def-list>
+    <def-list n="det.sp.def"
+              c="These determiners only ever have sp as number, def as defnes.">
+      <list-item v="samme"/>
+      <list-item v="neste"/>
+      <list-item v="forrige"/>
+    </def-list>
   </section-def-lists>
 
   <section-def-macros>
@@ -427,6 +433,16 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <choose><when c="no defnes on plural determiners">
         <test><equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal></test>
         <let><clip pos="2" part="art"/><lit v=""/></let>
+      </when></choose>
+
+      <choose><when c="'samme' etc. have a bit special tags in nob.dix">
+        <test><in><clip pos="2" part="lemh"/><list n="det.sp.def"/></in></test>
+        <let><clip pos="2" part="nbr"/><lit-tag v="sp"/></let>
+        <let><clip pos="2" part="art"/><lit-tag v="def"/></let>
+        <choose><when c="just in case it was set to plural, no number">
+          <test><equal><clip pos="2" part="gen"/><lit v=""/></equal></test>
+          <let><clip pos="2" part="a_det"/><lit-tag v="det.dem.m"/></let>
+        </when></choose>
       </when></choose>
 
       <let><clip pos="2" part="case"/><lit v=""/></let>
