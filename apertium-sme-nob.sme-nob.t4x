@@ -429,27 +429,30 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </when></choose>
       </when></choose>
 
-      <choose><when c="no gender on plural or definite determiners">
-        <test><or>
-          <equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal>
-          <equal><clip pos="2" part="art"/><lit-tag v="def"/></equal>
-        </or></test>
-        <let><clip pos="2" part="gen"/><lit v=""/></let>
-      </when></choose>
-      <choose><when c="no defnes on plural determiners">
-        <test><equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal></test>
-        <let><clip pos="2" part="art"/><lit v=""/></let>
-      </when></choose>
-
-      <choose><when c="'samme' etc. have a bit special tags in nob.dix">
-        <test><in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sp.def"/></in></test>
-        <let><clip pos="2" part="nbr"/><lit-tag v="sp"/></let>
-        <let><clip pos="2" part="art"/><lit-tag v="def"/></let>
-        <choose><when c="just in case it was set to plural, no number">
-          <test><equal><clip pos="2" part="gen"/><lit v=""/></equal></test>
-          <let><clip pos="2" part="a_det"/><lit-tag v="det.dem.m"/></let>
-        </when></choose>
-      </when></choose>
+      <choose>
+        <when c="'samme' etc. have a bit special tags in nob.dix">
+          <test><in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sp.def"/></in></test>
+          <let><clip pos="2" part="nbr"/><lit-tag v="sp"/></let>
+          <let><clip pos="2" part="art"/><lit-tag v="def"/></let>
+          <choose><when c="just in case it was set to plural, no number">
+            <test><equal><clip pos="2" part="gen"/><lit v=""/></equal></test>
+            <let><clip pos="2" part="a_det"/><lit-tag v="det.dem.m"/></let>
+          </when></choose>
+        </when>
+        <otherwise>
+          <choose><when c="no gender on plural or definite determiners">
+            <test><or>
+              <equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal>
+              <equal><clip pos="2" part="art"/><lit-tag v="def"/></equal>
+            </or></test>
+            <let><clip pos="2" part="gen"/><lit v=""/></let>
+          </when></choose>
+          <choose><when c="no defnes on plural determiners">
+            <test><equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal></test>
+            <let><clip pos="2" part="art"/><lit v=""/></let>
+          </when></choose>
+        </otherwise>
+      </choose>
 
       <let><clip pos="2" part="case"/><lit v=""/></let>
       <let><clip pos="2" part="pers"/><lit v=""/></let>
@@ -715,6 +718,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
             <or>
               <equal><clip pos="2" part="a_det"/><lit v=""/></equal>
               <equal><clip pos="2" part="lemh"/><lit v="annen"/></equal>
+              <in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sp.def"/></in>
             </or>
           </and></test>
           <let><var n="gender"/><lit-tag v="m"/></let>
