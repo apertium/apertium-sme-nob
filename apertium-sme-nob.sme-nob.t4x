@@ -110,7 +110,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <attr-item tags="prn"/>
     </def-attr>
     <def-attr n="a_adj">
+      <attr-item tags="A"/>
       <attr-item tags="adj"/>
+      <attr-item tags="adj.sint"/>
       <attr-item tags="adj.pp"/>
       <attr-item tags="adj.pprs"/>
     </def-attr>
@@ -132,6 +134,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <attr-item tags="ord.posi"/>
       <attr-item tags="ord.comp"/>
       <attr-item tags="ord.sup"/>
+    </def-attr>
+    <def-attr n="grau-pure">
+      <attr-item tags="posi"/>
+      <attr-item tags="comp"/>
+      <attr-item tags="sup"/>
     </def-attr>
     <def-attr n="pers">
       <attr-item tags="p1"/>
@@ -194,6 +201,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <attr-item tags="def"/>
       <attr-item tags="ind"/>
       <attr-item tags="DD"/>
+    </def-attr>
+    <def-attr n="art-ind">
+      <attr-item tags="ind"/>
     </def-attr>
     <def-attr n="a_verb">
       <attr-item tags="V"/>
@@ -273,6 +283,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 
   <section-def-vars>
     <def-var n="gender"/>
+    <def-var n="defnes"/>
   </section-def-vars>
 
   <section-def-lists>
@@ -618,7 +629,50 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </not></test>
         <let><clip pos="2" part="nbr"/><lit v=""/></let>
       </when></choose>
+
+      <call-macro n="prepend_moremost"><with-param pos="2"/></call-macro>      
     </def-macro>
+
+
+    <def-macro n="prepend_moremost" npar="1"
+               c="arg.1: adj (not the chunk), after having run through clean_adj
+                  -----
+                  Prepend 'more'/'most' if adj is non-synthetic and comp/sup;
+                  also change the main adj tags back to mf.posi.sg.ind.
+                  By this point, the tags should be completely 'cleaned',
+                  so we shouldn't have to worry about inconsistencies.
+                  ">
+      <let><var n="defnes"/><clip pos="1" part="art"/></let>
+      <choose><when>
+        <test><equal><var n="defnes"/><lit v=""/></equal></test>
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+      </when></choose>
+      <choose><when>
+        <test><and>
+          <not><equal><clip pos="1" part="a_adj"/><lit-tag v="adj.sint"/></equal></not>
+          <or>
+            <equal><clip pos="1" part="grau-pure"/><lit-tag v="comp"/></equal>
+            <equal><clip pos="1" part="grau-pure"/><lit-tag v="sup"/></equal>
+          </or>
+        </and></test>
+        <let>
+          <clip pos="1" part="whole"/>
+          <concat>
+            <lit v="mye"/>
+            <lit-tag v="adj.sint"/>
+            <clip pos="1" part="grau-pure"/>
+            <clip pos="1" part="art-ind"/>
+            <lit v="$ ^"/>
+            <clip pos="1" part="lemh"/>
+            <clip pos="1" part="a_adj"/>
+            <lit-tag v="posi.mf.sg"/>
+            <var n="defnes"/>
+            <clip pos="1" part="lemq"/>
+          </concat>
+        </let>
+      </when></choose>
+    </def-macro>
+    
 
     <def-macro n="clean_pre-nominal" npar="3"
                c="arg.1: chunk, arg.2: det/adj, arg.3: the word after arg.2">
@@ -1356,7 +1410,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <action>
         <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="2"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
-        <out> 
+        <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>         
           <lu><clip pos="2" part="whole"/></lu>
