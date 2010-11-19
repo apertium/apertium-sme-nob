@@ -22,7 +22,7 @@ This is the first pass. Responsibilities of this file include:
 * Verb auxiliaries
   * Tags from sme verbs are used to output finite verb auxiliaries before the main verb.
     All verbs get their own chunks, as do lemq's (since they can move around noun phrases in t3x)
-  * See rule: out_verb
+  * See macro: out_verb
 
 
 
@@ -1266,9 +1266,10 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       
       <choose c="Prepend 'bli' aux (moving over temps) if passive and pret/pp/pstv/adj:
 TODO: OK to just discard syn_label from pret.passives?">
-        <when c="iff passive pret/pp/adj">
+        <when c="iff passive pret/pp/adj AND not a nominal derivation">
           <test><and>
             <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal>
+            <equal><clip pos="1" side="sl" part="a_nom"/><lit v=""/></equal>
             <or>
               <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
               <not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not>

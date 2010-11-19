@@ -833,6 +833,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <test><equal><clip pos="1" part="temps"/><lit-tag v="TD"/></equal></test>
           <let><clip pos="1" part="temps"/><lit-tag v="inf"/></let>
         </when></choose>
+        <choose><when>
+          <test><equal><clip pos="1" part="temps"/><lit v=""/></equal></test>
+          <let><clip pos="1" part="a_verb"/><concat><clip pos="1" part="a_verb"/><lit-tag v="inf"/></concat></let>
+        </when></choose>
         <choose>
           <when>
             <test><and>
