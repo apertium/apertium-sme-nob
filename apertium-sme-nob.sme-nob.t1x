@@ -823,6 +823,10 @@ And then there are some categories like "month", with all the months.
                   Note: lone pronouns/determiners just keep GD/ND, this might change
                   in interchunk (postchunk cleans it up if not).">
       <let><var n="pron_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+      <choose><when c="default plural if no nbr">
+        <test><equal><var n="pron_nbr"/><lit v=""/></equal></test>
+        <let><var n="pron_nbr"/><lit-tag v="pl"/></let>
+      </when></choose>
       <choose>
         <when>
           <test>
