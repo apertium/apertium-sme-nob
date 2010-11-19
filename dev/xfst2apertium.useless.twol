@@ -531,6 +531,11 @@ Derivation /<= Derivation+ PartOfSpeech+ _ ;
 !! Although Der/foo and Der/bar might be handled by bidix/transfer,
 !! Der/foo N Der/bar isn't necessarily.
 
+
+"No consecutive V tags (giellatekno bug?)"
+%+V /<= %+V _ ;
+
+
 !! We create exceptions to the above rule by simply removing the inner
 !! PartOfSpeech tag in those contexts where the double derivation has
 !! bidix entries:
