@@ -252,9 +252,16 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_adj">
       <attr-item tags="A"/>
       <attr-item tags="adj"/>
-      <attr-item tags="adj.sint"/>
       <attr-item tags="adj.pp"/>
       <attr-item tags="adj.pprs"/>
+      <attr-item tags="adj.sint"/>
+      <attr-item tags="adj.sint.pp"/>
+      <attr-item tags="adj.sint.pprs"/>
+    </def-attr>
+    <def-attr n="a_adj-pure">
+      <attr-item tags="A"/>
+      <attr-item tags="adj"/>
+      <attr-item tags="adj.sint"/>
     </def-attr>
     <def-attr n="a_adv">
       <attr-item tags="Adv"/>
@@ -1055,7 +1062,7 @@ And then there are some categories like "month", with all the months.
 
       <choose>
         <when c="tl PoS is verb">
-          <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test> 
+          <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
           
           <out>
             <chunk namefrom="c_name" case="caseFirstWord"
@@ -1079,6 +1086,36 @@ And then there are some categories like "month", with all the months.
                 <clip pos="1" side="tl" part="a_pstv"/>
                 <clip pos="1" side="tl" part="temps"/>
                 <clip pos="1" side="tl" part="voice"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+        
+        <when c="tl PoS is an adj (ie. V.Der2.Actor.N, but bidix changed lemma PoS to an adj)
+                 Just output posi.mf.sg.ind; TODO: different bidix verb pardef for these PoS changes.">
+          <test><not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
+
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord"
+                   c="The tag order corresponds with nouns, to make c_def_pos (e.g. on pre-nominals) work.">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_adj-pure"/>
+                <lit-tag v="posi.mf.sg.ind"/>
                 <clip pos="1" side="tl" part="lemq"/>
               </lu>
             </chunk>
@@ -1116,6 +1153,7 @@ And then there are some categories like "month", with all the months.
               <lu>
                 <clip pos="1" side="tl" part="lemh"/>
                 <clip pos="1" side="tl" part="a_nom"/>
+                <clip pos="1" side="tl" part="a_adj"/>
                 <clip pos="1" side="tl" part="gen"/>
                 <clip pos="1" side="tl" part="nbr"/>
                 <var n="c_def_pos"/>
