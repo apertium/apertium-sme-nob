@@ -1094,7 +1094,10 @@ And then there are some categories like "month", with all the months.
         
         <when c="tl PoS is an adj (ie. V.Der2.Actor.N, but bidix changed lemma PoS to an adj)
                  Just output posi.mf.sg.ind; TODO: different bidix verb pardef for these PoS changes.">
-          <test><not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
+          <test><and>
+            <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
+            <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
+          </and></test>
 
           <out>
             <chunk namefrom="c_name" case="caseFirstWord"
