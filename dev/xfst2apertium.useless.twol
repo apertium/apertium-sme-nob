@@ -530,7 +530,7 @@ UnhandledDerivation /<= _ ;
 !! bidix/transfer.
 
 "No derivations of derivations"
-Derivation /<= Derivation+ PartOfSpeech+ _ ;
+Derivation /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | [] ] _ ;
 !! Although Der/foo and Der/bar might be handled by bidix/transfer,
 !! Der/foo N Der/bar isn't necessarily.
 
