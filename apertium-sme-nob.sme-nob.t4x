@@ -358,6 +358,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <test><equal><clip pos="2" part="gen"/><lit-tag v="nt"/></equal></test>
           <let><clip pos="2" part="lemh"/><get-case-from pos="1"><lit v="det"/></get-case-from></let>
         </when></choose>
+        <choose><when>
+          <test><equal><clip pos="2" part="gen"/><lit-tag v="m"/></equal></test>
+          <let><clip pos="2" part="lemh"/><get-case-from pos="1"><lit v="han"/></get-case-from></let>
+        </when></choose>
       </when></choose>
       <choose><when>
         <test><or>
@@ -567,6 +571,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <test><and>
           <equal><clip pos="2" part="nbr"/><lit-tag v="ND"/></equal>
           <not><equal><clip pos="1" part="nbr"/><lit v=""/></equal></not>
+          <not><equal><clip pos="1" part="nbr"/><lit-tag v="du"/></equal></not>
         </and></test>
         <let><clip pos="2" part="nbr"/><clip pos="1" part="nbr"/></let>
       </when></choose>

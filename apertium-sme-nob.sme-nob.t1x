@@ -1570,6 +1570,10 @@ TODO: OK to just discard syn_label from pret.passives?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <choose><when c="shouldn't happen, but might get a mistagging">
+          <test><equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD"/></equal></test>
+          <let><clip pos="1" side="tl" part="gen"/><clip pos="2" side="tl" part="gen"/></let>
+        </when></choose>
         <out>
           <chunk name="nom_det" case="caseFirstWord">
             <tags>
@@ -1611,6 +1615,10 @@ TODO: OK to just discard syn_label from pret.passives?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <choose><when c="shouldn't happen, but might get a mistagging">
+          <test><equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD"/></equal></test>
+          <let><clip pos="1" side="tl" part="gen"/><clip pos="2" side="tl" part="gen"/></let>
+        </when></choose>
         <out>
           <chunk name="nom_det" case="caseFirstWord">
             <tags>
