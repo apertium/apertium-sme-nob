@@ -309,6 +309,25 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <list-item v="neste"/>
       <list-item v="forrige"/>
     </def-list>
+    <def-list n="det.pl"
+              c="These determiners only ever have pl as number">
+      <list-item v="mange"/>
+      <list-item v="så mange"/>
+      <list-item v="hvor mange"/>
+      <list-item v="begge"/>
+      <list-item v="samtlige"/>
+      <list-item v="de fleste"/>
+    </def-list>
+    <def-list n="det.sg"
+              c="These determiners only ever have sg as number">
+      <list-item v="en"/>
+      <list-item v="én"/>
+    </def-list>
+    <def-list n="det.emph.TODO"
+              c="These determiners have odd tags, should they be postchunked?">
+      <list-item v="egen"/>
+      <list-item v="selv"/>
+    </def-list>
   </section-def-lists>
 
   <section-def-macros>
@@ -419,6 +438,16 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
         <let><clip pos="1" part="nbr"/><lit-tag v="sg"/></let>
       </when></choose>
+      <choose>
+        <when c="some determiners are plural-only">
+          <test><in caseless="yes"><clip pos="2" part="lemh"/><list n="det.pl"/></in></test>
+          <let><clip pos="2" part="nbr"/><lit-tag v="pl"/></let>
+        </when>
+        <when c="some determiners are singular-only">
+          <test><in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sg"/></in></test>
+          <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
+        </when>
+      </choose>
 
       <choose><when c="only gender on singular determiners">
         <test><and>
