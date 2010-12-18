@@ -841,7 +841,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         <pattern-item n="ADVL.loc"/>
       </pattern>
       <action>
-        <let><clip pos="1" part="case"/><lit v=""/></let>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="1"/>
