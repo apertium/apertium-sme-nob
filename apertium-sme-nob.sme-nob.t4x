@@ -352,6 +352,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <test><not><equal><clip pos="1" part="case"/><lit v=""/></equal></not></test>
         <let><clip pos="2" part="case"/><clip pos="1" part="case"/></let>
       </when></choose>
+      <choose><when>
+        <test><equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal></test>
+        <let><clip pos="2" part="case"/><lit-tag v="acc"/></let>
+      </when></choose>
       
       <choose><when>
         <test><and>
