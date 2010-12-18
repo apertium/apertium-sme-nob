@@ -37,7 +37,7 @@
       </program>
     </pipeline>
   </mode>
-  <mode name="sme-nob-old" install="yes">                      <!-- using hfst-lookup instead of hfst-proc -->
+  <mode name="sme-nob-old" install="no">                      <!-- using hfst-lookup instead of hfst-proc -->
     <pipeline>
       <program name="hfst-lookup -f apertium">
         <file name="sme-nob.automorf.hfst"/>
