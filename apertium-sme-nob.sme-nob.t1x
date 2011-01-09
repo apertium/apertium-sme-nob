@@ -294,6 +294,9 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="det.qnt"/>
       <attr-item tags="det.pos"/>
     </def-attr>
+    <def-attr n="lettercase">
+      <attr-item tags="fixedcase"/>
+    </def-attr>
     <def-attr n="a_conj">
       <attr-item tags="CC"/>
       <attr-item tags="CS"/>
@@ -651,7 +654,10 @@ And then there are some categories like "month", with all the months.
                    'FirstWordSeen' that is set to false on periods and true for all other lexical units, but this is low priority.)">
       <let><var n="caseFirstWord"/><lit v="aa"/></let>
       <choose><when>
-        <test><not><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></not></test>        
+        <test><not><or>
+          <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
+          <equal><clip pos="1" side="tl" part="lettercase"/><lit-tag v="fixedcase"/></equal>
+        </or></not></test>
         <let><var n="caseFirstWord"/><get-case-from pos="1"><lit v="aa"/></get-case-from></let>
         <modify-case><clip pos="1" side="tl" part="lemh"/><lit v="aa"/></modify-case>
       </when></choose>
