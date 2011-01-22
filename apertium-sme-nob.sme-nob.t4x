@@ -348,12 +348,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
       </when></choose>
 
-      <choose><when>
+      <choose><when c="use chunk case if possible">
         <test><not><equal><clip pos="1" part="case"/><lit v=""/></equal></not></test>
         <let><clip pos="2" part="case"/><clip pos="1" part="case"/></let>
       </when></choose>
-      <choose><when>
-        <test><equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal></test>
+      <choose><when c="nob prn cases are only ever nom or acc">
+        <test><not><or>
+          <equal><clip pos="2" part="case"/><lit-tag v="nom"/></equal>
+          <equal><clip pos="2" part="case"/><lit-tag v="acc"/></equal>
+        </or></not></test>
         <let><clip pos="2" part="case"/><lit-tag v="acc"/></let>
       </when></choose>
       
