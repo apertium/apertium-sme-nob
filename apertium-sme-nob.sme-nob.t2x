@@ -208,6 +208,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="pp"/>
       <attr-item tags="TD"/>
     </def-attr>
+    <def-attr n="voice">
+      <attr-item tags="pass"/>
+    </def-attr>
     <def-attr n="pers">
       <attr-item tags="p1"/>
       <attr-item tags="p2"/>
@@ -393,6 +396,16 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <choose><when>
         <test><not><equal><clip pos="1" part="temps"/><lit v=""/></equal></not></test>
         <let><var n="ana_temps"/><clip pos="1" part="temps"/></let>
+      </when></choose>
+    </def-macro>
+    <def-macro n="apply_ana_temps" npar="1"
+               c="arg.1: verb">
+      <choose><when>
+        <test><and>
+          <not><equal><var n="ana_temps"/><lit v=""/></equal></not>
+          <equal><clip pos="1" part="voice"/><lit v=""/></equal>
+        </and></test>
+        <let><clip pos="1" part="temps"/><var n="ana_temps"/></let>
       </when></choose>
     </def-macro>
 
@@ -976,10 +989,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
-        <choose><when>
-          <test><not><equal><var n="ana_temps"/><lit v=""/></equal></not></test>
-          <let><clip pos="1" part="temps"/><var n="ana_temps"/></let>
-        </when></choose>
+        <call-macro n="apply_ana_temps"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>
@@ -997,10 +1007,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
-        <choose><when>
-          <test><not><equal><var n="ana_temps"/><lit v=""/></equal></not></test>
-          <let><clip pos="1" part="temps"/><var n="ana_temps"/></let>
-        </when></choose>
+        <call-macro n="apply_ana_temps"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>
