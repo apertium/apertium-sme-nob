@@ -461,9 +461,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </when>
       </choose>
 
-      <choose><when c="only gender on singular determiners">
+      <choose><when c="only gender on singular or sp determiners">
         <test><and>
-          <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
+          <or>
+            <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
+            <equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal>
+            <in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sp.def"/></in>
+          </or>
           <or>
             <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
             <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
