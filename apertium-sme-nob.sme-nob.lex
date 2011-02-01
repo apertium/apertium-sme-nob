@@ -1962,6 +1962,7 @@ SUBSTITUTE ("bivdit") ("bivdit:3") ("bivdit" V)((*0 NATURE-PLACE OR HUNT-ANIMAL 
 
 # orrut 0 = bo, 1 = synes, 2 = bli, 3 = være
 SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego") OR (Actio Ess)) ;
+SUBSTITUTE ("orrut") ("orrut:3") ("orrut" V IV) (1 ("jaska" Adv)) ;
 
 # šaddat 0 = bli, 1 = vokse
 SUBSTITUTE ("šaddat") ("šaddat:1") ("šaddat" V IV) (1 ("bajás")) ;
