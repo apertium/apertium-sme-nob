@@ -762,7 +762,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     
 
     <def-macro n="clean_pre-nominal" npar="3"
-               c="arg.1: chunk, arg.2: det/adj, arg.3: the word after arg.2">
+               c="arg.1: chunk, arg.2: det/adj/ngen, arg.3: the word after arg.2">
       <choose>
         <when>
           <test><not><equal><clip pos="2" part="a_det"/><lit v=""/></equal></not></test>
@@ -771,6 +771,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <when>
           <test><not><equal><clip pos="2" part="a_adj"/><lit v=""/></equal></not></test>
           <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        </when>
+        <when>
+          <test><and>
+            <not><equal><clip pos="2" part="a_nom"/><lit v=""/></equal></not>
+            <equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal>
+          </and></test>
+          <let><clip pos="2" part="art"/><lit v=""/></let>
         </when>
       </choose>
     </def-macro>
