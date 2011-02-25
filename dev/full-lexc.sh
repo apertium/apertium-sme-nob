@@ -31,24 +31,21 @@ cat $SRC/$LANG1-lex.txt > $OUTFILE
 ### Extract verbs
 echo -n '+++ Verbs... '
 
-VERBLEXC=$SRC/verb-$LANG1-lex.txt
-cat $VERBLEXC >> $OUTFILE; 
+cat $SRC/verb-$LANG1-lex.txt >> $OUTFILE; 
 
 echo 'done.';
 
 ### Extract noun
 echo -n '+++ Nouns... '
 
-NOUNLEXC=$SRC/noun-$LANG1-lex.txt
-cat $NOUNLEXC >> $OUTFILE; 
+cat $SRC/noun-$LANG1-lex.txt >> $OUTFILE; 
 
 echo 'done.';
 
 ### Extract adjectives 
 echo -n '+++ Adjectives... '
 
-ADJLEXC=$SRC/adj-$LANG1-lex.txt
-cat $ADJLEXC >> $OUTFILE;
+cat $SRC/adj-$LANG1-lex.txt >> $OUTFILE;
 
 echo 'done.';
 
@@ -58,79 +55,64 @@ echo -n '+++ Proper nouns... ';
 
 cat $SRC/propernoun-$LANG1-morph.txt >> $OUTFILE;
 
-NPLEXC=$SRC/propernoun-$LANG1-lex.txt
-cat $NPLEXC >> $OUTFILE;
+cat $SRC/propernoun-$LANG1-lex.txt >> $OUTFILE;
 
 echo 'done.';
 
 ### Extract conjunctions
 echo -n '+++ Conjunctions... ';
 
-CCLEXC=$SRC/conjunction-$LANG1-lex.txt
-
-cat $CCLEXC >> $OUTFILE;
+cat $SRC/conjunction-$LANG1-lex.txt >> $OUTFILE;
 
 echo 'done.';
 
 ### Extract adverbs
 echo -n '+++ Adverbs... '
 
-ADVLEXC=$SRC/adv-$LANG1-lex.txt
-cat $ADVLEXC >> $OUTFILE; 
+cat $SRC/adv-$LANG1-lex.txt >> $OUTFILE; 
 
 echo 'done.';
 
 ### Extract subordinating conjunctions 
 echo -n '+++ Subjunctions... ';
 
-CSLEXC=$SRC/subjunction-$LANG1-lex.txt
-
-cat $CSLEXC >> $OUTFILE;
+cat $SRC/subjunction-$LANG1-lex.txt >> $OUTFILE;
 
 echo 'done.';
 
 ### Extract pronouns 
 echo -n '+++ Pronouns... ';
 
-PRONLEXC=$SRC/pronoun-$LANG1-lex.txt
-
-cat $PRONLEXC >> $OUTFILE;
+cat $SRC/pronoun-$LANG1-morph.txt >> $OUTFILE;
+cat $SRC/pronoun-$LANG1-lex.txt >> $OUTFILE;
 
 echo 'done.';
 
 ### Extract particles
 echo -n '+++ Particles... ';
 
-PARTLEXC=$SRC/particle-$LANG1-lex.txt
-
-cat $PARTLEXC >> $OUTFILE;
+cat $SRC/particle-$LANG1-lex.txt >> $OUTFILE;
 
 echo 'done.';
 
 ### Extract adpositions
 echo -n '+++ Adpositions... ';
 
-PPLEXC=$SRC/pp-$LANG1-lex.txt
-
-cat $PPLEXC >> $OUTFILE;
+cat $SRC/pp-$LANG1-lex.txt >> $OUTFILE;
 
 echo 'done.';
 
 ### Extract adpositions
 echo -n '+++ Numerals... ';
 
-NUMLEXC=$SRC/numeral-$LANG1-lex.txt
-
-cat $NUMLEXC >> $OUTFILE;
+cat $SRC/numeral-$LANG1-lex.txt >> $OUTFILE;
 
 echo 'done.';
 
 ### Add abbreviations
 echo -n '+++ Abbreviations... ';
 
-ABBRLEXC=$SRC/abbr-$LANG1-lex.txt
-
-cat $ABBRLEXC >> $OUTFILE;
+cat $SRC/abbr-$LANG1-lex.txt >> $OUTFILE;
 
 ### Add punctuation
 echo -n '+++ Punctuation... ';
