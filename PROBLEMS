@@ -1,0 +1,76 @@
+# -*- mode: markdown -*-
+
+PROBLEMS in apertium-sme-nob
+============================
+
+Quality
+-------
+
+On a small set of nob texts and their sme translations from
+kongehuset.no, apertium-eval-translator.pl gives:
+
+    Statistics about input files
+    -------------------------------------------------------
+    Number of words in reference: 3836
+    Number of words in test: 4136
+    Number of unknown words (marked with a star) in test: 358
+    Percentage of unknown words: 8.66 %
+    
+    Results when removing unknown-word marks (stars)
+    -------------------------------------------------------
+    Edit distance: 3067
+    Word error rate (WER): 79.95 %
+    Number of position-independent correct words: 2115
+    Position-independent word error rate (PER): 52.69 %
+    
+    Results when unknown-word marks (stars) are not removed
+    -------------------------------------------------------
+    Edit distance: 3138
+    Word Error Rate (WER): 81.80 %
+    Number of position-independent correct words: 2030
+    Position-independent word error rate (PER): 54.90 %
+    
+    Statistics about the translation of unknown words
+    -------------------------------------------------------
+    Number of unknown words which were free rides: 71
+    Percentage of unknown words that were free rides: 19.83 %
+
+Unsurprisingly, there are very few free-rides for such different
+languages. Note: these texts were most likely originally translated
+from nob to sme, *they are not post-edits*. Real evaluation is still
+on the TODO...
+
+The
+[Regression tests](http://wiki.apertium.org/wiki/Northern_S%C3%A1mi_and_Norwegian/Regression_tests)
+should give sme-nob bilinguals some indication of the current
+translation quality (try also running the scripts regression-tests.sh
+and pending-tests.sh).
+
+
+Testvoc
+-------
+
+The main problem is missing testvoc; making dictionary expansions
+(like lt-expand) is not trivial with the Sámi HFST analyser. Testvoc
+thus is mainly based on corpus tests, where at least the 10000 first
+lines of a newspaper + bible corpus passes through without error
+marks.
+
+The sme analyser and the bidict contains a lot of proper nouns that
+are not yet in the nob generator; adding them with the right pardefs
+is trivial (run dev/props-from-bidix-to-nob.sh), but hasn't been done
+yet since not all bidix proper nouns have been checked for
+non-identical translations.
+
+See also
+[the /release page on the wiki](http://wiki.apertium.org/wiki/Northern_S%C3%A1mi_and_Norwegian/release#TODO:_Testvoc)
+for some more testvoc issues.
+
+Miscellaneous
+-------------
+
+On the technical side, the pair has only been tested with revision 627
+of hfst2, the last stable enough revision before hfst3. This really
+should be tested with the recently-released hfst3.
+
+Also, the Constraint Grammar disambigurator is rather slow :)
