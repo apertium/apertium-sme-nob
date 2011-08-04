@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python2.6
 # encoding: utf-8
 
 
