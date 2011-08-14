@@ -30,33 +30,25 @@ TARGETS_COMMON = \
 ##
 
 $(LANG1).twol.hfst: $(BASENAME).$(LANG1).twol
-#	hfst-twolc -r -i $(BASENAME).$(LANG1).twol -o $@
 	hfst-twolc -R -i $(BASENAME).$(LANG1).twol -o $@ # hfst3
+#	hfst-twolc -r -i $(BASENAME).$(LANG1).twol -o $@ # hfst2
 
 $(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
 	hfst-lexc -o $@ $(BASENAME).$(LANG1).lexc
 
 $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
-#	hfst-compose-intersect -l $(LANG1).lexc.hfst $(LANG1).twol.hfst -o $@
 	hfst-compose-intersect -1 $(LANG1).lexc.hfst -2 $(LANG1).twol.hfst -o $@ # hfst3
+#	hfst-compose-intersect -l $(LANG1).lexc.hfst $(LANG1).twol.hfst -o $@ # hfst2
 
 .deps/xfst2apertium.useless.twol.hfst: dev/xfst2apertium.useless.twol
 	if [ ! -d .deps ]; then mkdir .deps; fi
-#	hfst-twolc -r -i dev/xfst2apertium.useless.twol -o $@
 	hfst-twolc -R -i dev/xfst2apertium.useless.twol -o $@ # hfst3
+#	hfst-twolc -r -i dev/xfst2apertium.useless.twol -o $@ # hfst2
 
 .deps/xfst2apertium.hashtags.twol.hfst: dev/xfst2apertium.hashtags.twol
 	if [ ! -d .deps ]; then mkdir .deps; fi
-#	hfst-twolc -r -i dev/xfst2apertium.hashtags.twol -o $@
 	hfst-twolc -R -i dev/xfst2apertium.hashtags.twol -o $@ # hfst3
-
-## Split this up into several goals while we're still developing, making this takes too long :/
-# $(PREFIX1).automorf.hfst: $(PREFIX2).autogen.hfst dev/xfst2apertium.relabel .deps/xfst2apertium.useless.twol.hfst .deps/xfst2apertium.hashtags.twol.hfst
-# 	hfst-invert $(PREFIX2).autogen.hfst -o $@.1.tmp
-# 	hfst-compose-intersect -l $@.1.tmp .deps/xfst2apertium.useless.twol.hfst -o $@.2.tmp
-# 	hfst-compose-intersect -l $@.2.tmp .deps/xfst2apertium.hashtags.twol.hfst -o $@.3.tmp
-# 	hfst-substitute -F dev/xfst2apertium.relabel -i $@.3.tmp -o $@
-# 	@rm $@.1.tmp $@.2.tmp $@.3.tmp
+#	hfst-twolc -r -i dev/xfst2apertium.hashtags.twol -o $@ # hfst2
 
 .deps/$(PREFIX1).automorf.inverted.hfst: $(PREFIX2).autogen.hfst
 	if [ ! -d .deps ]; then mkdir .deps; fi
@@ -64,20 +56,20 @@ $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
 
 .deps/$(PREFIX1).automorf.useless.hfst: .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst
 	if [ ! -d .deps ]; then mkdir .deps; fi
-#	hfst-compose-intersect -l .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst -o $@
 	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.inverted.hfst -2 .deps/xfst2apertium.useless.twol.hfst -o $@ # hfst3
+#	hfst-compose-intersect -l .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst -o $@ # hfst2
 
 .deps/$(PREFIX1).automorf.hashtags.hfst: .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst
 	if [ ! -d .deps ]; then mkdir .deps; fi
-#	hfst-compose-intersect -l .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst -o $@
 	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.useless.hfst -2 .deps/xfst2apertium.hashtags.twol.hfst -o $@ # hfst3
+#	hfst-compose-intersect -l .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst -o $@ # hfst2
 
 $(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst dev/xfst2apertium.relabel
 	hfst-substitute -F dev/xfst2apertium.relabel -i .deps/$(PREFIX1).automorf.hashtags.hfst -o $@
 
 $(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
-#	hfst-lookup-optimize -i $(PREFIX1).automorf.hfst -o $@
 	hfst-fst2fst -O -i $(PREFIX1).automorf.hfst -o $@ # hfst3
+#	hfst-lookup-optimize -i $(PREFIX1).automorf.hfst -o $@ # hfst2
 
 ##
 ## 	BILINGUAL DICTIONARY
