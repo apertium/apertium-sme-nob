@@ -163,11 +163,13 @@ Rules
 
 
 "Delete compound tags (except Cmp/ShCmp) that weren't followed by an N or A tag"
-Vr:0  <=>  \[ KeepCmpAfter:? | 0:%+G3 ]  _  ; where Vr in RemCmptag;
+Vr:0  <=>  \[ KeepCmpAfter: | 0:%+G3 ]  _  ; where Vr in RemCmptag;
 !! We don't remove +Cmp or +ShCmp tags since they follow lemmas, not +N or +A:
 !    mielbargin      miel+ShCmp#bargat+V+TV+Der2+Actor+N+Ess
 !! The :? is needed since we may have eg. %+N:%+N%* there, also the
 !! below rules can insert a +G3 after a +N or a +N*
+!! Trond: Changed  KeepCmpAfter:? to  KeepCmpAfter: since the ? broke
+!!        compilation. Follow this!
 
 "Delete compound tags at the beginning of words"
 Vw:0  <=>  [ # | #: ]  _  ; where Vw in RemWICmptag;
