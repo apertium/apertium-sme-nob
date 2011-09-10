@@ -47,9 +47,8 @@ class Config(object):
 		self.REMOVE_EMPTY_LEXICONS = 'no'
 		self.SRC = self.GTHOME + '/' + self.GTPFX + '/' + self.PRODUCE_LEXC_FOR + '/src/'
 		self.LEX_EXCLUDES = [
-			"\!\^NG\^",
-			"; \!SUB",
-			"\! \!SOUTH",
+			"\+Use\/NG",
+			"\+Use\/Sub",
 			"\+Use\/NG",
 			"\+Nom(.*)\+Use\/Sub",
 			"\+Gen(.*)\+Use\/Sub",
