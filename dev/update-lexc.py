@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+!/usr/bin/python2.6
 # encoding: utf-8
 
 
@@ -58,9 +58,9 @@ class Config(object):
 			"\+Imprt(.*)\+Use\/Sub",
 			]
 		self.files = [
-			["verb-sme-lex.txt", 	'clip', 	{'pos_filter': 'V', 'split': 'VerbRoot\n'}],
+			["verb-sme-lex.txt", 	'clip', 	{'pos_filter': 'V', 'split': 'Verb\n'}],
 			["noun-sme-lex.txt", 	'clip', 	{'pos_filter': 'N', 'split': 'NounRoot\n'}],
-			["adj-sme-lex.txt", 		'clip', 	{'pos_filter': 'A', 'split': 'AdjectiveRoot\n'}],
+			["adj-sme-lex.txt", 		'clip', 	{'pos_filter': 'A', 'split': 'Adjective\n'}],
 			["propernoun-sme-morph.txt", 	'cat'],
 			["propernoun-sme-lex.txt", 'clip', 	{'pos_filter': 'N><Prop', 'split': 'ProperNoun\n'}],
 			["conjunction-sme-lex.txt", 	'cat'],
