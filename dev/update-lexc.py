@@ -482,8 +482,14 @@ def make_lexc(COBJ=False):
 		error = 'BIDIX_SIDE must have a value of "L" or "R"'
 		raise Conf_Validation_Error(error)
 	
-	print "... Reading words from bidix."
-	lt_expand_data = lt_exp(fname="%s/../%s.%s.dix" % (DEV, BASENAME, PREFIX))
+	if any([u'clip' in s and ('no_trim' not in s[2]
+				     or not s[2]['no_trim'])
+		   for s in STEPS]):
+		print "... Reading words from bidix."
+		lt_expand_data = lt_exp(fname="%s/../%s.%s.dix" % (DEV, BASENAME, PREFIX))
+	else:
+		lt_expand_data = []
+		print "... Config has no 'clip' entries without no_trim, no need to read words from bidix."
 	
 	if len(COBJ.HEADER) > 0:
 		header_fname = COBJ.SRC + "/" + COBJ.HEADER
