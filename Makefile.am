@@ -124,6 +124,29 @@ $(PREFIX1).t4x.bin: $(BASENAME).$(PREFIX1).t4x
 	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t4x $@
 
 
+# Alternative versions using vm-for-transfer-cpp:
+$(PREFIX1).v1x.bin: $(BASENAME).$(PREFIX1).t1x
+	apertium-validate-transfer $(BASENAME).$(PREFIX1).t1x
+	apertium-compiler -i $(BASENAME).$(PREFIX1).t1x -o $@
+
+$(PREFIX1).v2x.bin: $(BASENAME).$(PREFIX1).t2x
+	apertium-validate-interchunk $(BASENAME).$(PREFIX1).t2x
+	apertium-compiler -i $(BASENAME).$(PREFIX1).t2x -o $@
+
+$(PREFIX1).v3x.bin: $(BASENAME).$(PREFIX1).t3x
+	apertium-validate-interchunk $(BASENAME).$(PREFIX1).t3x
+	apertium-compiler -i $(BASENAME).$(PREFIX1).t3x -o $@
+
+$(PREFIX1).v4x.bin: $(BASENAME).$(PREFIX1).t4x
+	apertium-validate-postchunk $(BASENAME).$(PREFIX1).t4x
+	apertium-compiler -i $(BASENAME).$(PREFIX1).t4x -o $@
+
+vm-transfer: $(PREFIX1).v1x.bin \
+             $(PREFIX1).v2x.bin \
+             $(PREFIX1).v3x.bin \
+             $(PREFIX1).v4x.bin
+
+
 #
 #	MODE FILE(S)
 #
