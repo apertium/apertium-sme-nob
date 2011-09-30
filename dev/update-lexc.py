@@ -32,6 +32,12 @@ class Conf_Validation_Error(Exception):
 		print msg
 
 
+class Split_Error(Exception):
+	def __init__(self, msg):
+		print "Error: couldn't find the splitting point. Check the config value for:"
+		print msg
+
+
 class Config(object):
 	def default_options(self):
 		self.LANG1 = "sme"
@@ -323,6 +329,8 @@ def extract(data, fname, excl_symbols=False, pos_filter=False, split=False, no_h
 	# split text
 	if split:
 		clip = text.split(split)
+		if len(clip) != 2:
+			raise Split_Error("split of %s, currently set to:\n%s" %(fname,split))
 		head = clip[0] + split # '\n' + split + '\n'
 		rest = clip[1]	       # If it fails here, check your "split" value!
 	else:
@@ -331,6 +339,8 @@ def extract(data, fname, excl_symbols=False, pos_filter=False, split=False, no_h
 		rest = text
 	if split2:
 		clip = rest.split(split2)
+		if len(clip) != 2:
+			raise Split_Error("split2 of %s, currently set to:\n%s" %(fname,split2))
 		rest = clip[0]        # footer is "exclusive"
 		foot = clip[1]
 	else:

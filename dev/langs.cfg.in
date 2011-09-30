@@ -459,13 +459,11 @@
 			" NUMERALCOMPOUNDS +;"
 		],
 		"files": [
-			["sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split2": "LEXICON Prefixes\t! ^C^\n", "no_footer": true}],
-			["sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split": "LEXICON R    ! lexicalising the 3-part compounds, with the tag ShCmp\n", "no_header": true, "split2": "LEXICON Rmiddle\n", "no_footer": true}],
-			["sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<ShCmp\\>", "split": "LEXICON Rmiddle\n", "no_header": true, "split2": "LEXICON Rnoun\n", "no_footer": true}],
+			["sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split2": "LEXICON Prefixes\n", "no_footer": true}],
 			["sme-lex.txt", "clip", {"no_trim": true, "pos_filter": "", "split": "LEXICON Rnoun\n", "no_header": true}],
-			["verb-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<V\\>", "split": "LEXICON VerbRoot\n"}],
+			["verb-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<V\\>", "split": "LEXICON Verb\n"}],
 			["noun-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<N\\>"}],
-			["adj-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<A\\>", "split": "LEXICON AdjectiveRoot\n"}],
+			["adj-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<A\\>", "split": "LEXICON Adjective\n"}],
 			["propernoun-sme-morph.txt", "cat"],
 			["propernoun-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<N\\>\\<Prop\\>", "split": "LEXICON ProperNoun\n"}],
 			["conjunction-sme-lex.txt", "clip", {"pos_filter": "^[^\\<]*\\<CC\\>", "split": "LEXICON Conjunction\n", "split2": "LEXICON Cc\n"}],
