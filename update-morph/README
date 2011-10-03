@@ -1,0 +1,51 @@
+== Compilation ==
+
+This lexicon trimmer needs a little compilation first:
+
+    $ sh autogen.sh
+    $ make
+
+(Don't "make install". I'm not sure what that will do.) As long as
+lttoolbox is installed correctly according to
+http://wiki.apertium.org/wiki/Minimal_installation_from_SVN, this
+should work just fine. You may have to do
+
+    $ PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig sh autogen.sh
+    $ make
+
+if you installed lttoolbox in some strange $PREFIX.
+
+
+== Usage ==
+
+To update the Sámi morphology, first make your private langs.cfg file
+if you haven't already:
+
+    $ cp langs.cfg.in langs.cfg
+    $ edit langs.cfg
+
+and make sure to change "SRC" to point to the sme src directory in
+giellatekno, probably something like
+"/home/username/giellatekno-svn/trunk/gt/sme/src/". The "OUTPUT_DIR"
+should point to your apertium-sme-nob directory (if you're running the
+script from this sub-directory of apertium-sme-nob, "../" should
+work). 
+
+Then, make sure ../sme-nob.autobil.bin is compiled and run:
+
+    $ python2 ./update-lexc.py --config=langs.cfg
+
+(perhaps exchanging python2 for python2.6 or whatever python2 version
+you have)
+
+
+If you don't want to trim the lexicon down to the bidix, you can use
+the notrim-langs.cfg.in file as your basis (it will still strip a lot
+of stuff that causes errors, but keep the lexicon large).
+
+
+== TODO ==
+
+* maybe move this into trunk/apertium-tools/apertium-hfst-tools if it
+  becomes generally useful, as it's a lot less painful than using the
+  lt-expand method
