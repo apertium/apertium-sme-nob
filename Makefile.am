@@ -148,6 +148,14 @@ vm-transfer: $(PREFIX1).v1x.bin \
 
 
 #
+#	Python lttoolbox API (for update-lexc):
+#
+lib_LTLIBRARIES = libltpy.la
+libltpy_la_SOURCES = libltpy.cpp
+libltpy_la_LDFLAGS = $(LTTOOLBOX_LIBS)
+
+
+#
 #	MODE FILE(S)
 #
 

@@ -118,5 +118,11 @@ then
 fi
 
 
+dnl for Lttoolbox library
+AC_PROG_CXX
+ifdef([LT_INIT], [LT_INIT], [AC_PROG_LIBTOOL])
+CXXFLAGS="$CXXFLAGS -Wall -Werror -fvisibility=hidden"
+CXXFLAGS="$CXXFLAGS $LTTOOLBOX_CFLAGS"
+
 
 AC_OUTPUT([Makefile])

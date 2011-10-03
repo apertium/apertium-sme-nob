@@ -33,6 +33,8 @@ rm -f config.cache acconfig.h
 
 DARWINPATH=/opt/local/bin
 
+echo "- libtoolize."		&& \
+if test x$(uname -s) = xDarwin; then glibtoolize --force; else libtoolize --force; fi && \
 echo "- aclocal."		&& \
 if test x$(uname -s) = xDarwin; then $DARWINPATH/aclocal -I /opt/local/share/aclocal ; else aclocal ; fi && \
 echo "- autoconf."		&& \
