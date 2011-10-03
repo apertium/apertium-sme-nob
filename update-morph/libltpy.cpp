@@ -24,13 +24,16 @@ Analyser::Analyser(const string & analyserpath) throw(exception) {
 }
     
 wstring Analyser::analyse(wstring const &word) {
-	pair <wstring,int> analysis = fst.biltransWithQueue(word, false);
-	if (analysis.second != 0) {
-		return L"@"+word;
-	}
-	else {
-		return analysis.first;
- 	}
+	pair <wstring,int> analysis = fst.biltransWithQueue(L"^"+word+L"$");
+	wcerr << analysis.second << L":" << analysis.first <<endl;
+	return analysis.first;
+	
+	// if (analysis.second != 0) {
+	// 	return L"@"+word;
+	// }
+	// else {
+	// 	return analysis.first;
+ 	// }
 }
 
 EXTERN wstring * analyse(Analyser * a, const wchar_t * word) {
