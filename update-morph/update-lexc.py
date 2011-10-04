@@ -66,7 +66,7 @@ class Config(object):
 			]
 		self.files = [
 			["verb-sme-lex.txt", 	'clip', 	{'pos_filter': '<V>', 'split': 'Verb\n'}],
-			["noun-sme-lex.txt", 	'clip', 	{'pos_tasg': '<N>', 'split': 'NounRoot\n'}],
+			["noun-sme-lex.txt", 	'clip', 	{'pos_filter': '<N>', 'split': 'NounRoot\n'}],
 			["adj-sme-lex.txt", 		'clip', 	{'pos_filter': '<A>', 'split': 'Adjective\n'}],
 			["propernoun-sme-morph.txt", 	'cat'],
 			["propernoun-sme-lex.txt", 'clip', 	{'pos_filter': '<N><Prop>', 'split': 'ProperNoun\n'}],
@@ -133,10 +133,6 @@ class Config(object):
 	def read_from_dict(self, D):
 		# convert all arguments to str, json module is a little funny
 		for k, v in D.items():
-			# if type(k) == unicode:
-			# 	a = str(k)
-			# if type(v) == unicode:
-			# 	b = str(v)
 			self.__setattr__(str(k), str(v))
 				
 		self.files = D['files']
@@ -144,8 +140,6 @@ class Config(object):
 			self.excl_symbols = re.compile(r'|'.join(['(?:' + a + ')' for a in D['LEX_EXCLUDES']]))
 		else:
 			self.excl_symbols = False
-		# if not self.SRC:
-		# 	self.SRC = SRC = self.GTHOME + '/' + self.GTPFX + '/' + self.PRODUCE_LEXC_FOR + '/src/'
 
 class Configs(object):
 	def __init__(self):
@@ -321,7 +315,7 @@ def extract(fst, fname, excl_symbols=False, pos_filter="", split=False, no_heade
 		if len(clip) != 2:
 			raise Split_Error("split of %s, currently set to:\n%s" %(fname,split))
 		head = clip[0] + split # '\n' + split + '\n'
-		rest = clip[1]	       # If it fails here, check your "split" value!
+		rest = clip[1]
 	else:
 		head = '\n'
 		clip = text
@@ -430,10 +424,9 @@ def make_lexc(COBJ=False):
 	
 	BASENAME = "apertium-" + PREFIX
 	
-	DEV = os.getcwd() # Expecting we're in the dev directory... TODO: Fix
 	OUTFILE = "%s.%s.lexc" % (BASENAME, PROC_LANG)
 
-	BIDIX_BIN = "../%s.autobil.bin" % PREFIX
+	BIDIX_BIN = "%s/%s.autobil.bin" % (COBJ.OUTPUT_DIR.rstrip('/'), PREFIX)
 	
 	STEPS = COBJ.files
 	
@@ -453,7 +446,7 @@ def make_lexc(COBJ=False):
 	if any([u'clip' in s and ('no_trim' not in s[2]
 				     or not s[2]['no_trim'])
 		   for s in STEPS]):
-		print "... With bidix FST"
+		print "... With bidix FST: %s" % (BIDIX_BIN,)
 		fst = liblt.FST(".libs/libltpy.so", BIDIX_BIN)
 	else:
 		fst = None
@@ -499,13 +492,9 @@ def make_lexc(COBJ=False):
 			data = head + trim
 		elif action == 'cat':
 			print "... Reading all of %s" % fname
-			data = cat_file(fname, str) # ignores excl_symbols!
+			data = cat_file(fname, str) # ignores excl_symbols! TODO?
 		
 		output_app(data)
-	
-	# TODO: maybe this isn't a problem anymore
-	# punct_point=`grep -nH ' real pilcrow' $PUNCTLEXC | cut -f2 -d':'`;
-	# head -n $punct_point $PUNCTLEXC >> $OUTFILE;
 	
 	out_ = '\n'.join([a for a in output_])
 	OUTFILE = COBJ.OUTPUT_DIR + OUTFILE
@@ -577,7 +566,7 @@ def main(argv=None):
 		except getopt.error, msg:
 			raise Usage(msg)
 			
-		# option processing
+		# Option processing:
 		if len(opts) == 0:
 			print "\nNo options, using defaults in file, or langs.cfg."
 			print "See --help for more information. \n"
@@ -608,13 +597,5 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-	# make_lexc()
-	profile = False
-	# import profile
-	if profile:
-		profile.run("sys.exit(main())")
-	else:
-		sys.exit(main())
-
-
+	sys.exit(main())
 
