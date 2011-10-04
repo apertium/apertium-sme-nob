@@ -446,7 +446,7 @@ def make_lexc(COBJ=False):
 	if any([u'clip' in s and ('no_trim' not in s[2]
 				     or not s[2]['no_trim'])
 		   for s in STEPS]):
-		print "... With bidix FST: %s" % (BIDIX_BIN,)
+		print "... Loading bidix FST %s (you did compile it, right?)" % (BIDIX_BIN,)
 		fst = liblt.FST(".libs/libltpy.so", BIDIX_BIN)
 	else:
 		fst = None
