@@ -5,6 +5,8 @@
 AC_PREREQ(2.52)
 
 AC_INIT([apertium-update-morph], [0.1.0], [unhammer@fsfe.org])
+# Don't put/look for auxiliary files in the parent directory:
+AC_CONFIG_AUX_DIR([.])
 AM_INIT_AUTOMAKE([apertium-update-morph], [0.1.0], no-define)
 AC_PROG_LN_S
 
