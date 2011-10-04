@@ -21,8 +21,8 @@ You will need the following software installed:
 
 * lttoolbox (>= 3.1.2)
 * apertium (>= 3.1.1)
-* vislcg3 (>= 0.9.7.5129)
-* hfst3 (last tested with SVN revision 1549)
+* vislcg3 (>= 0.9.7.7456)
+* hfst3 (last tested with SVN revision 1683)
 * foma (last tested with SVN revision 28)
 
 If this does not make any sense, we recommend you look at: wiki.apertium.org
@@ -36,9 +36,9 @@ $ ./configure
 $ make
 # make install
 
-You can use ./autogen.sh instead of ./configure you're compiling from
-SVN. If you're using a --prefix to ./configure, make sure it's the
-same one you used to install apertium itself.
+You can use ./autogen.sh instead of ./configure if you're compiling
+from SVN. If you're using a --prefix to ./configure, make sure it's
+the same one you used to install apertium itself.
 
 Testing
 ===============================================================================
@@ -106,7 +106,7 @@ SME:
 * The monodix is a subset of the GT sme transducer. 
 ** The file apertium-sme-smj.sme.twol should be kept up to date with twol-sme.txt
 ** The file apertium-sme-smj.sme.lexc should be kept up to date using 
-   the dev/update-lexc.sh script
+   the update-morph/update-lexc.py script
 
 NOB: 
 

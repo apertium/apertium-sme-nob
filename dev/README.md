@@ -19,14 +19,12 @@ The rest of the files in dev/ are "development files".
 Scripts for keeping up-to-date with the Giellatekno resources:
 --------------------------------------------------------------
 
-- `update-lexc.py` updates the analyser with with words from
-  Giellatekno, only adding those that are in bidix.
-- `langs.cfg.in` is a default configuration file for `update-lexc.py`,
-  copy it to `langs.cfg` and edit it to use `update-lexc.py`.
-- `full-lexc.sh` is used if you want the analyser to have the full
-  Giellatekno lexicon (including words not found in bidix). You could
-  achieve the same effect by editing `langs.cfg` though.
 - `rle-to-rlx.sh` is used to update the CG disambiguator.
+
+See also `../update-morph/` for scripts to update the analyser with
+words from Giellatekno (`langs.cfg.in` only adds those that are in
+bidix, while `notrim-langs.cfg.in` includes all lemmas).
+
 
 
 Other scripts:
