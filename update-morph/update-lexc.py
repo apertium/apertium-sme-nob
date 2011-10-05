@@ -447,7 +447,13 @@ def make_lexc(COBJ=False):
 				     or not s[2]['no_trim'])
 		   for s in STEPS]):
 		print "... Loading bidix FST %s (you did compile it, right?)" % (BIDIX_BIN,)
-		fst = liblt.FST(".libs/libltpy.so", BIDIX_BIN)
+		if os.uname()[0] == "Linux":
+			fst = liblt.FST(".libs/libltpy.so", BIDIX_BIN)
+		elif os.uname()[0] == "Darwin":
+			fst = liblt.FST(".libs/libltpy.dylib", BIDIX_BIN)
+		else:
+			print "Warning: Unknown platform, guessing Darwin"
+			fst = liblt.FST(".libs/libltpy.dylib", BIDIX_BIN)
 	else:
 		fst = None
 		print "... Config has no 'clip' entries without no_trim, no need to use bidix."
