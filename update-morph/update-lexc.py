@@ -35,86 +35,39 @@ class Split_Error(Exception):
 
 
 class Config(object):
-	def default_options(self):
-		self.LANG1 = "sme"
-		self.LANG2 = "fin"
-		self.GTHOME = os.environ.get("GTHOME")
-		if not self.GTHOME: self.GTHOME = ""
-		self.PRODUCE_LEXC_FOR = "sme"
-		self.OUTPUT_DIR = os.getcwd() + '/../'
-		self.GTPFX = 'gt'
-		self.BIDIX_SIDE = 'R' # or L
-		self.HEADER = "sme-lex.txt"
-		self.LEXTYPE = 'hlexc'
-		self.REMOVE_EMPTY_LEXICONS = 'no'
-		self.SRC = self.GTHOME + '/' + self.GTPFX + '/' + self.PRODUCE_LEXC_FOR + '/src/'
-		self.LEX_EXCLUDES = [
-			"\+Use\/NG",
-			"\+Use\/Sub",
-			"\+Use\/NG",
-			"\+Nom(.*)\+Use\/Sub",
-			"\+Gen(.*)\+Use\/Sub",
-			"\+Use\/Sub(.*)\+V\+TV",
-			"\+Attr(.*)\+Use\/Sub",
-			"LEXICON PRSPRCTOADJ \!SUB",
-			"\+Imprt(.*)\+Use\/Sub",
-			]
-		self.files = [
-			["verb-sme-lex.txt", 	'clip', 	{'pos_filter': '<V>', 'split': 'Verb\n'}],
-			["noun-sme-lex.txt", 	'clip', 	{'pos_filter': '<N>', 'split': 'NounRoot\n'}],
-			["adj-sme-lex.txt", 		'clip', 	{'pos_filter': '<A>', 'split': 'Adjective\n'}],
-			["propernoun-sme-morph.txt", 	'cat'],
-			["propernoun-sme-lex.txt", 'clip', 	{'pos_filter': '<N><Prop>', 'split': 'ProperNoun\n'}],
-			["conjunction-sme-lex.txt", 	'cat'],
-			["adv-sme-lex.txt", 		'clip', 	{'pos_filter': '<Adv>', 'split': 'Adverb'}],
-			["adv-sme-lex.txt", 		'clip', 	{'pos_filter': '<Adv>', 'split': 'gadv ! adv that can form compounds', 'no_header': True, 'no_trim': True}],
-			["subjunction-sme-lex.txt", 	'cat'],
-			["pronoun-sme-lex.txt", 		'cat'],
-			["particle-sme-lex.txt", 		'cat'],
-			["pp-sme-lex.txt", 			'cat'],
-			["numeral-sme-lex.txt", 		'cat'],
-			["abbr-sme-lex.txt", 			'cat'],
-			["punct-sme-lex.txt", 			'cat']
-		]
-		
-	
-	def __init__(self, defaults=False):
+	def __init__(self):
 		"""
-			Set default options. Don't change them here if you're editing the file. Change below.
+			Initialise options. If you want to change the defaults, use langs.cfg.in.
 		"""
-		if defaults:
-			self.default_options()
-		else:
-			self.LANG1 = ""
-			self.LANG2 = ""
-			self.GTHOME = os.environ.get("GTHOME")
-			self.PRODUCE_LEXC_FOR = ""
-			self.OUTPUT_DIR = '.'
-			self.GTPFX = ''
-			self.LEXTYPE = ''
-			self.LEX_EXCLUDES = False
-			self.REMOVE_EMPTY_LEXICONS = ''
-		
-			self.SRC = ''
-		
-			proc_lang = self.PRODUCE_LEXC_FOR
-		
-			self.HEADER = ""
-		
-			# List of lists, first item is filename, second item is action 'clip' or 'cat', third is dictionary of options.
-			self.files = [
-				["verb-sme-lex.txt", 	'clip', 	{'pos_filter': '<V>', 'split': 'VerbRoot\n'}],
-				["punct-sme-lex.txt", 			'cat']
-			]
+		self.LANG1 = ""
+		self.LANG2 = ""
+		self.PRODUCE_LEXC_FOR = ""
+		self.OUTPUT_DIR = '.'
+		self.LEXTYPE = ''
+		self.LEX_EXCLUDES = False
+		self.REMOVE_EMPTY_LEXICONS = ''
+		self.SRC = ''
+		self.path = 'langs.cfg'
+
+		proc_lang = self.PRODUCE_LEXC_FOR
+
+		self.HEADER = ""
+
+		# List of lists, first item is filename, second item is action 'clip' or 'cat', third is dictionary of options.
+		self.files = []
 		
 		return None
 		
+	def abs_output_dir(self):
+		if os.path.isabs(self.OUTPUT_DIR):
+			return self.OUTPUT_DIR
+		else:
+			return os.path.dirname('./'+ self.path) + '/' + self.OUTPUT_DIR
+
 	def return_dict(self):
 		D = {
 			"LANG1": self.LANG1,
 			"LANG2": self.LANG2,
-			"GTHOME": self.GTHOME,
-			"GTPFX": self.GTPFX,
 			"OUTPUT_DIR": self.OUTPUT_DIR,
 			"PRODUCE_LEXC_FOR": self.PRODUCE_LEXC_FOR,
 			"files": self.files,
@@ -129,10 +82,8 @@ class Config(object):
 		# convert all arguments to str, json module is a little funny
 		for k, v in D.items():
 			self.__setattr__(str(k), str(v))
- 
-		if not os.path.isabs(self.OUTPUT_DIR):
-			self.OUTPUT_DIR = os.path.dirname('./'+ conf_path) + '/' + self.OUTPUT_DIR
 
+		self.path = conf_path
 		self.files = D['files']
 		if 'LEX_EXCLUDES' in D:
 			self.excl_symbols = re.compile(r'|'.join(['(?:' + a + ')' for a in D['LEX_EXCLUDES']]))
@@ -156,13 +107,12 @@ def load_conf(fname, create=False):
 	"""
 	
 	if create:
-		print "Creating default config file: %s" % fname
+		print "Creating default config file: %s using langs.cfg.in as a template" % fname
 		with open(fname, 'w') as F:
-			DEFAULTS = Configs()
-			DEFAULTS.langs = [Config(defaults=True)]
+			DEFAULTS = load_conf(os.path.dirname('./'+sys.argv[0]) + "/langs.cfg.in")
 			json.dump([DEFAULTS.langs[0].return_dict()], F, ensure_ascii=True, sort_keys=True, indent=4)
 			print "Done."
-			print "Note, indentation of JSON does not matter so long as it is valid JSON."
+			print "NOTE: indentation of JSON does not matter so long as it is valid JSON."
 		return True
 	else:
 		if not os.path.isfile(fname):
@@ -403,7 +353,7 @@ def make_lexc(COBJ=False):
 	
 	OUTFILE = "%s.%s.lexc" % (BASENAME, PROC_LANG)
 
-	BIDIX_BIN = "%s/%s.autobil.bin" % (COBJ.OUTPUT_DIR.rstrip('/'), PREFIX)
+	BIDIX_BIN = "%s/%s.autobil.bin" % (COBJ.abs_output_dir().rstrip('/'), PREFIX)
 	
 	STEPS = COBJ.files
 	
@@ -481,7 +431,7 @@ def make_lexc(COBJ=False):
 		output_app(data)
 	
 	out_ = '\n'.join([a for a in output_])
-	OUTFILE = COBJ.OUTPUT_DIR + OUTFILE
+	OUTFILE = COBJ.abs_output_dir() + OUTFILE
 	
 	with open(OUTFILE, 'w') as F:
 		F.write(out_)
@@ -527,12 +477,9 @@ def run_with_conf(C):
 	# Wrapping here is for better ease at error handling.
 	try:
 		for lang in C.langs:
-			try:
-				make_lexc(
-					lang
+			make_lexc(
+				lang
 				)
-			except LTExpError:
-				return 2
 	except AttributeError:
 		if type(C) in [type(Config), type(Configs)]:
 			print "Config file could not be read or was malformed."
@@ -564,12 +511,12 @@ def main(argv=None):
 					raise Usage(help_message)
 				if option in ("-x", "--create"):
 					load_conf(value, create=True)
-					return 2
+					return 0
 				if option in ("-c", "--config"):
 					fn = value
 					XC = load_conf(fname=fn)
 					run_with_conf(XC)
-					return 2
+					return 0
 		
 	
 	except Usage, err:
