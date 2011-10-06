@@ -130,11 +130,14 @@ class Config(object):
 		}
 		return D
 	
-	def read_from_dict(self, D):
+	def read_from_dict(self, D, conf_path):
 		# convert all arguments to str, json module is a little funny
 		for k, v in D.items():
 			self.__setattr__(str(k), str(v))
-				
+ 
+		if not os.path.isabs(self.OUTPUT_DIR):
+			self.OUTPUT_DIR = os.path.dirname('./'+ conf_path) + '/' + self.OUTPUT_DIR
+
 		self.files = D['files']
 		if 'LEX_EXCLUDES' in D:
 			self.excl_symbols = re.compile(r'|'.join(['(?:' + a + ')' for a in D['LEX_EXCLUDES']]))
@@ -188,13 +191,13 @@ def load_conf(fname, create=False):
 			new_confs = Configs()
 			if len(D) == 1:
 				new = Config()
-				new.read_from_dict(D[0])
+				new.read_from_dict(D[0], F.name)
 				new_confs.langs = [new]
 			elif len(D) > 1:
 				new_confs.langs = []
 				for item in D:
 					new = Config()
-					new.read_from_dict(item)
+					new.read_from_dict(item, F.name)
 					new_confs.langs.append(new)	
 			print "Loaded config from %s" % F.name
 			
@@ -417,7 +420,7 @@ def make_lexc(COBJ=False):
 		TODO: switch everything to conf. object, so less things need to be passed in.
 		
 	"""
-	
+	THISDIR = os.path.dirname('./'+sys.argv[0]) + '/'
 	SRC = COBJ.SRC
 	PROC_LANG = COBJ.PRODUCE_LEXC_FOR
 	PREFIX = "%s-%s" % (COBJ.LANG1, COBJ.LANG2)
@@ -447,13 +450,14 @@ def make_lexc(COBJ=False):
 				     or not s[2]['no_trim'])
 		   for s in STEPS]):
 		print "... Loading bidix FST %s (you did compile it, right?)" % (BIDIX_BIN,)
+		# Finding the library file, should be in the same directory as this script
+		# TODO: if we ever get around to sudo make installing this, ctypes.util.find_library() should do the trick
+		LIBPATH = THISDIR + ".libs/libltpy.dylib"
 		if os.uname()[0] == "Linux":
-			fst = liblt.FST(".libs/libltpy.so", BIDIX_BIN)
-		elif os.uname()[0] == "Darwin":
-			fst = liblt.FST(".libs/libltpy.dylib", BIDIX_BIN)
-		else:
+			LIBPATH = THISDIR + ".libs/libltpy.so"
+		elif os.uname()[0] != "Darwin":
 			print "Warning: Unknown platform, guessing Darwin"
-			fst = liblt.FST(".libs/libltpy.dylib", BIDIX_BIN)
+		fst = liblt.FST(LIBPATH, BIDIX_BIN)
 	else:
 		fst = None
 		print "... Config has no 'clip' entries without no_trim, no need to use bidix."
@@ -523,7 +527,6 @@ def make_lexc(COBJ=False):
 help_message = '''\n\nOPTIONS:
 	--config=FILE 	Specify the path to another config file.
 	--create=FILE	Create a default config file at FILE.
-DEFAULT VALUES IN FILE:
 '''
 
 # Describe structure of default conf fig.

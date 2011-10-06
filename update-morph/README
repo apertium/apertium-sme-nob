@@ -2,7 +2,7 @@
 
 This lexicon trimmer needs a little compilation first:
 
-    $ sh autogen.sh
+    $ ./autogen.sh
     $ make
 
 (Don't "make install". I'm not sure what that will do.) As long as
@@ -10,10 +10,16 @@ lttoolbox is installed correctly according to
 http://wiki.apertium.org/wiki/Minimal_installation_from_SVN, this
 should work just fine. You may have to do
 
-    $ PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig sh autogen.sh
+    $ PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
+    $ export PKG_CONFIG_PATH
+    $ ./autogen.sh
     $ make
 
-if you installed lttoolbox in some strange $PREFIX.
+if you installed lttoolbox in some strange $PREFIX, or are using a
+Mac.
+
+Check that compilation succeeded by doing `ls .libs`, it should show
+some files named `libltpy.*`.
 
 
 == Usage ==
@@ -26,10 +32,11 @@ if you haven't already:
 
 and make sure to change "SRC" to point to the sme src directory in
 giellatekno, probably something like
-"/home/username/giellatekno-svn/trunk/gt/sme/src/". The "OUTPUT_DIR"
-should point to your apertium-sme-nob directory (if you're running the
-script from this sub-directory of apertium-sme-nob, "../" should
-work). 
+"/home/username/giellatekno-svn/trunk/gt/sme/src/".
+
+The "OUTPUT_DIR" should point to your apertium-sme-nob directory,
+either with an absolute path, or relative to the path of the
+`langs.cfg` file.
 
 Then, make sure ../sme-nob.autobil.bin is compiled and run:
 
@@ -43,6 +50,46 @@ If you don't want to trim the lexicon down to the bidix, you can use
 the notrim-langs.cfg.in file as your basis (it will still strip a lot
 of stuff that causes errors, but keep the lexicon large).
 
+
+== Troubleshooting ==
+
+=== Error: mach-o, but wrong architecture ===
+
+If you get an error like:
+
+    Traceback (most recent call last):
+      File "update-lexc.py", line 606, in <module>
+        sys.exit(main())
+      File "update-lexc.py", line 594, in main
+        run_with_conf(XC)
+      File "update-lexc.py", line 555, in run_with_conf
+        lang
+      File "update-lexc.py", line 453, in make_lexc
+        fst = liblt.FST(".libs/libltpy.dylib", BIDIX_BIN)
+      File
+    		 "/apertium/staging/apertium-sme-nob/update-morph/liblt.py",
+    		 line 6, in __init__
+        self.__lib = CDLL(libpath)
+      File
+    		 "/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/ctypes/__init__.py",
+    		 line 353, in __init__
+        self._handle = _dlopen(self._name, mode)
+    OSError: dlopen(.libs/libltpy.dylib, 6): no suitable image found.  Did find:
+     .libs/libltpy.dylib: mach-o, but wrong architecture
+    Exception AttributeError: "'FST' object has no attribute '_FST__handle'" in <bound method FST.__del__ of <liblt.FST object at 0x412fb0>> ignored
+    
+then it's likely that the python version you are running is not the
+same architecture (32-bit vs 64-bit) as the compiled file. To find out
+the architectures of the files, do:
+
+    $ file .libs/ltlibpy.dylib
+    $ file `which python2.6`   # or python2.7 or whatever
+
+and if you get something like "symbolic link to X", do `file X` until
+you see something that says either 32-bit or 64-bit. If your python
+turns out to be 32-bit and you're on a Mac, you should be able to use
+`/usr/bin/python2.6` instead (which is Universal, ie. both 32-bit and
+64-bit).
 
 == TODO ==
 
