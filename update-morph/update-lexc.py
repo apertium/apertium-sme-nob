@@ -22,11 +22,6 @@ except ImportError:
 
 PIPE = sp.PIPE
 
-class LTExpError(Exception):
-	def __init__(self, msg):
-		print "lt-expand failed processing. Error:"
-		print msg
-
 class Conf_Validation_Error(Exception):
 	def __init__(self, msg):
 		print "The config file is invalid:"
@@ -205,29 +200,6 @@ def load_conf(fname, create=False):
 	return new_confs
 
 	
-def Popen(cmd):
-	proc = sp.Popen(cmd.split(' '), shell=False, stdout=PIPE, stderr=PIPE, stdin=PIPE)
-	output, err = proc.communicate() # split('\n')
-	return output, err
-
-def lt_exp(fname):
-	"""
-		Validates for errors in dix, then returns expanded data.		
-	"""
-	
-	output, err = Popen("apertium-validate-dictionary %s" % fname)
-	if len(err) > 0:
-		raise LTExpError(err)
-	
-	output, err = Popen("lt-expand %s" % fname)
-	if len(err) > 0:
-		raise LTExpError(err)
-	
-	# Remove REGEX and empty lines
-	output = [l for l in output.splitlines() if "REGEX" not in l and l.strip()]
-	
-	return output
-
 
 def cat_file(fname, ret_type=False, excl_symbols=False):
 	"""
@@ -274,7 +246,11 @@ def any_analysis(fst, word, pos_filter, debug=False):
 
 def extract(fst, fname, excl_symbols=False, pos_filter="", split=False, no_header=False, split2=False, no_footer=False, no_trim=False, debug=False, side=None, remove_empty_lex=False, partial_matches=True):
 	"""
-		Given a pattern (e.g., V, N, N><Prop), extract matching intersecting words between lt-expanded data and lex file (fname).
+		Given a POS tag string or list of such (e.g.
+		['<V><TV>', '<V><IV>']), find the intersection of
+		lemmas in lex file (fname) and lemmas with one of
+		those taggings in bidix by looking up lemmas from lex
+		file in the bidix FST.
 		
 		fst (liblt.FST)		- the bidix FST
 		fname (str) 		- File name to read.
@@ -293,8 +269,6 @@ def extract(fst, fname, excl_symbols=False, pos_filter="", split=False, no_heade
 	
 	if fname.find('hlexc') > -1:	hlexc = True
 	else:							hlexc = False
-	
-	# lt_expand side -- move this to lt_expand func?
 	
 	# dieđusge<Adv>:tietenkään<Pcle>
 	# Unjárga<N><Prop><Plc>:Uuniemi<N><Prop>
