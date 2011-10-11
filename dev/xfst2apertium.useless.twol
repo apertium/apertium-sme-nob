@@ -263,34 +263,54 @@ Alphabet
 
 Sets
 
-Useless =	    ! Keep consistent with tags in  sme-lex.txt:36..62
- %+Use%/Sub   
- %+Use%/Marg  
- %+Use%/Circ  
- %+Use%/CircN 
- %+Use%/Ped   
- %+Use%/NG    
- %+Dial%/%-KJ  
- %+Dial%/%-GG  
- %+Dial%/%-GS  
- %+Dial%/KJ   
- %+Dial%/GG   
- %+Dial%/GS   
- %+Guess
- %+Allegro
- 
- %+First %+Last 
- %+None 
- %+CmpOnly 
- %+SgNomLeft %+SgGenLeft %+PlGenLeft %+SgLeft 
- %+AllCmp 
- %+DefSgGenCmp %+DefPlGenCmp %+DefCmp 
+Useless =	    ! Keep consistent with tags in  sme-lex.txt:36..118
+ %+Use%/Sub   ! substandard, not in normative fst
+ %+Use%/Marg  ! marginal (?)
+ %+Use%/Circ  ! circular paths (old ^C^)
+ %+Use%/CircN ! circular paths for the numerals (old ^N^)
+ %+Use%/Ped   ! remove from pedagogical speller, not yet utilised
+ %+Use%/NG    ! not-generate, for ped generation isme-ped.fst
+ %+Use%/NA    ! not-analyse, for restricting analyses needed for 
+            ! MT generation not to pop up elsewhere
+ %+Dial%/%-KJ  ! forms not in use in KJ (Kárásjohka)
+ %+Dial%/%-GG  ! forms not in use in GG (Guovdageaidnu)
+ %+Dial%/%-GS  ! forms not in use in GS (Gárasavvon)
+ %+Dial%/KJ   ! forms only in use in KJ
+ %+Dial%/GG   ! forms only in use in GG
+ %+Dial%/GS   ! forms only in use in GS
 
- %+CmpN%/Sg %+CmpN%/SgN %+CmpN%/SgG %+CmpN%/PlG
- %+CmpN%/First %+CmpN%/Last %+CmpN%/None %+CmpN%/Only
- %+CmpN%/SgLeft %+CmpN%/SgNomLeft %+CmpN%/SgGenLeft %+CmpN%/PlGenLeft
- %+CmpN%/All %+CmpN%/Def %+CmpN%/DefSgGen %+CmpN%/DefPlGen
+
+! Normative/prescriptive compounding tags
+! (to govern compound behaviour for the speller, ie what a compound SHOULD BE):
+
+ %+First %+Last ! Spellertag: Can be first/last member of compound
+ %+None        ! Spellertag: Can not participate in compounds
+ %+CmpOnly     ! spellertag: can *only* participate in compounds
+ %+SgNomLeft %+SgGenLeft %+PlGenLeft %+SgLeft ! Restriction on compound to the left
+ %+AllCmp      ! Allow all compounding patterns
+ %+DefSgGenCmp %+DefPlGenCmp %+DefCmp ! Default values
+! to be renamed:  +§SgNomCmp +§SgGenCmp +§PlGenCmp
+
+ %+CmpN%/Sg %+CmpN%/SgN                 ! Can take right compound if self is Sg, SgN 
+ %+CmpN%/SgG %+CmpN%/PlG                ! Can take right compound if self is SgG, PlG 
+ %+CmpN%/First %+CmpN%/Last             ! prefix only
+ %+CmpN%/None %+CmpN%/Only              ! prefix only
+ %+CmpN%/Pref                         ! prefix only
+ %+CmpN%/SgLeft %+CmpN%/SgNomLeft       ! Can take left compound if self is Sg, SgNom
+ %+CmpN%/SgGenLeft %+CmpN%/PlGenLeft    ! Can take left compound if self is SgGen, … 
+ %+CmpN%/All                          ! 
+ %+CmpN%/Def %+CmpN%/DefSgGen %+CmpN%/DefPlGen
+
+!!! tags for compound analysis (%+Cmpnd etc.) are _NOT_ removed!
+
+ %+Multi ! Multiword phrase tag
+ %+Guess ! for the name guesser
+ %+v1 %+v2 %+v3 %+v4 %+v5  ! Versions 
+
+ %+Allegro			! from LEXICON GOADE-IU-
+
 ;
+
 
 
 UnhandledDerivation =
