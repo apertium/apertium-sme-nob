@@ -2652,7 +2652,7 @@ LEXICON HOHPI !Bisyll. V-Adj's with s-Attr. in WeG & Adv.
  +A:%> LAIKI0 ;
  +A:%>X4 BU/MUS ;
  +A:%> ADVV ;
- +A: VUOHTA ;         ! ... to A > N -vuohta derivation
+ +A: VUOHTA ;        ! ... to A > N -vuohta derivation
 
 LEXICON LAIKI !Bisyll. V-Adj's with es-Attr. in WeG & Adv.
  +A+Attr:%>W1s ATTR ;
@@ -2717,6 +2717,18 @@ LEXICON VIELGAT
  +SgNomCmp#:»X7# NAMAT ;
 ! GARRAS- ; ! GAPPUS- instead
 
+LEXICON VIELG_NOCOMP ! adj with -es -attrib. (cns final adj)
+ +A+Attr:e%>Y9s ATTR ;
+ +A:ad VIELGAT_NOCOMP ;
+
+LEXICON VIELGAT_NOCOMP
+! :%> EABBO/EAMOS ;
+ :%> MALLASadj- ;
+ :%> GAPPUS0 ;
+ +SgNomCmp#:»X7# NAMAT ;
+! GARRAS- ; ! GAPPUS- instead
+
+
 LEXICON CAHKK
  +A+Attr:ad%>is ATTR ;
  +A+Attr+Use/NG:e%>Y9s ATTR ;
@@ -2734,9 +2746,6 @@ LEXICON UHCC
 
 LEXICON JEAGOHEAPMI
  +A+Attr:%>is ATTR ;
- BIVNNUHEAPME ;
-
-LEXICON BIVNNUHEAPME ! no bivnnuhis here
  +A+Sg+Nom+Use/Sub:%>in K ;
  +A+Pl+Nom:%>eame%>t K ; ! parallel form, -it also poss.
  +A+Comp+Sg+Nom:%>at K ;   ! parallel form
@@ -2757,6 +2766,49 @@ LEXICON BIVNNUHEAPME ! no bivnnuhis here
  +A+Der1+Der2+Der/huvva+V+IV:»uvva%> BOAHTIINCH ;
  +A+Der1+Der/huhtti+V+TV:»uhtti%> DIEHTIStem ;
 
+LEXICON BIVNNUHEAPME ! no bivnnuhis here
+ +A+Sg+Nom+Use/Sub:%>in K ;
+ +A+Pl+Nom:%>eame%>t K ; ! parallel form, -it also poss.
+ +A+Comp+Sg+Nom:%>at K ;   ! parallel form
+ +A:%>eapmi%> HEAPMI ;
+ +A+Use/Sub:%>eapme7%> HEAPMI ;
+ +A+Ess:%>eapmi%>X1n K ;
+ +A+Ess+Use/Sub:%>eapmi%>X7n K ;
+ +A+Ess+Use/Ped+Use/Sub:%>eapmi%>X1n%> PxC ;
+ +A+Ess+Use/Ped+Use/Sub:%>eapmi%>X7n%> PxC ;
+ +A+Sg+Nom+PxSg3+Use/Ped+Use/Sub:%>eapme%>s K ; ! !parallel form
+ +A+Sg+Gen:%>eame%> R ;
+ +A+Sg+Gen+Use/NG:%>eami%> R ;
+ +A+Pl+Gen:%>emi%>jd R ;
+ +A+Sg+Gen+PxSg3+Use/Ped+Use/Sub:%>eame%>s K ; !  !parallel form
+ +A+Sg+Acc+PxSg3+Use/Ped+Use/Sub:%>eame%>s K ; !  !parallel form
+! +A:%> EABBO/EAMOS ;
+! +A:%>is VUOHTA ; !moved to LEXICON VUOHTA
+ +A+Der1+Der2+Der/huvva+V+IV:»uvva%> BOAHTIINCH ;
+ +A+Der1+Der/huhtti+V+TV:»uhtti%> DIEHTIStem ;
+
+LEXICON JEAGOHEAPMI_NOCOMP
+ +A+Attr:%>is ATTR ;
+ +A+Sg+Nom+Use/Sub:%>in K ;
+ +A+Pl+Nom:%>eame%>t K ; ! parallel form, -it also poss.
+ +A+Comp+Sg+Nom:%>at K ;   ! parallel form
+ +A:%>eapmi%> HEAPMI ;
+ +A+Use/Sub:%>eapme7%> HEAPMI ;
+ +A+Ess:%>eapmi%>X1n K ;
+ +A+Ess+Use/Sub:%>eapmi%>X7n K ;
+ +A+Ess+Use/Ped+Use/Sub:%>eapmi%>X1n%> PxC ;
+ +A+Ess+Use/Ped+Use/Sub:%>eapmi%>X7n%> PxC ;
+ +A+Sg+Nom+PxSg3+Use/Ped+Use/Sub:%>eapme%>s K ; ! !parallel form
+ +A+Sg+Gen:%>eame%> R ;
+ +A+Sg+Gen+Use/NG:%>eami%> R ;
+ +A+Pl+Gen:%>emi%>jd R ;
+ +A+Sg+Gen+PxSg3+Use/Ped+Use/Sub:%>eame%>s K ; !  !parallel form
+ +A+Sg+Acc+PxSg3+Use/Ped+Use/Sub:%>eame%>s K ; !  !parallel form
+! +A:%> EABBO/EAMOS ;
+! +A:%>is VUOHTA ; !moved to LEXICON VUOHTA
+ +A+Der1+Der2+Der/huvva+V+IV:»uvva%> BOAHTIINCH ;
+ +A+Der1+Der/huhtti+V+TV:»uhtti%> DIEHTIStem ;
+
 LEXICON OATNI !only this adj
  +A:%> LAIKI0 ;
  +A:%>X4 BU/MUS ;
@@ -2772,8 +2824,6 @@ LEXICON ISSORAS ! issoras and certain as-adj. also derivations, final -s
  :ass DEARVVASLAS ;
 
 LEXICON DABALAS ! -laš adjectives with short Adv/Comp forms
-+A+Dial/%-GG:%> EABBO/EAMOS_CONT ; 
-
  +A+Dial/%-GG:%> EABBO/EAMOS_CONT ; 
              :ažž DEARVVASLAS2 ;
      +Use+Sub:ážž  DEARVVASLAS2 ; ! This form (á pro a) is wrong but common. Sub.
@@ -2875,6 +2925,24 @@ LEXICON BEAKKAN !Trisyll. Non-gradating C-Adj. without Separate Attr.
  +A+Sg+Acc+Use/NG:%> K ;
  +A+Pl+Nom+Use/Ped+Use/Sub:%>iiddá%> Px1V ;
  +A+Pl+Nom:%>at VUOHTA ;
+ 
+LEXICON BEAKKAN_NOCOMP !Trisyll. Non-gradating C-Adj. without Separate Attr.
+ +A+Attr:%> ATTR ;
+! +A:%> EABBO/EAMOS ;
+ +A:%> GAPPUS0 ;   ! NE and vuohta
+ +A+Sg+Gen:%>a K ; ! Stem vowel -a-, no short genitive
+ +A+Sg+Acc:%>a K ;
+ +A+Pl+Nom:%>at K ;
+ +A:%>i MALLASI-/NUORABUadj- ;  ! obl
+ +A+Sg+Nom+Use/Ped+Use/Sub:%> PxC ;
+ +A+Sg+Gen+Use/Ped+Use/Sub:%> PxC ;
+ +A+Sg+Acc+Use/Ped+Use/Sub:%> PxC ;
+ +A+Sg+Ill+Use/Ped+Use/Sub:%>asa%> PxV ;
+ +A+Sg+Gen+Use/NG:%> K ; ! 
+ +A+Sg+Acc+Use/NG:%> K ;
+ +A+Pl+Nom+Use/Ped+Use/Sub:%>iiddá%> Px1V ;
+ +A+Pl+Nom:%>at VUOHTA ;
+
 
 LEXICON JOHTIL !Trisyll. Non-gradating C-Adj. with is-Attr.
  +A+Attr:%>is ATTR ;
@@ -12719,7 +12787,7 @@ demografiija+Use/Sub:demo^grafiija IIJA ;
 demokratiija+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:demo^kratiija IIJA ;
 demonstrašuvdna:demonstrašu TELEFON ;
 denotašuvdna:denotašu TELEFON ;
-departemeanta#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:departemeanta#ráđđi GOAHTI-IU ;
+departemeanta#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:departemeanta#ráđđi AIGI ;
 departemeanta+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:departemean'ta GOAHTI ;
 deponiija IIJA ; !^LOAN
 depositumma:depositum'ma GOAHTI ;
@@ -14508,7 +14576,7 @@ giella#oamasteapmi+CmpN/Sg:giella#oamast EAPMI ;
 giella#politihkka GOAHTI ;
 giella#prošeakta:giella#prošeak'ta GOAHTI ;
 giella#revitaliseren#prošeakta:giella#revitaliseren#prošeak'ta GOAHTI ;
-giella#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:giella#ráđđi GOAHTI-IU ;
+giella#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:giella#ráđđi AIGI ;
 giella#stivrra#válga:giella#stivrra#vál'ga GOAHTI ;
 giella#teknologiija IIJA ;
 giella#vealgu+CmpN/SgN+CmpN/SgG+CmpN/PlG:giella#veal'gu GOAHTI-IU ;
@@ -17980,7 +18048,7 @@ mođđi GOAHTI-IU ;
 mudden#belle GOAHTI ;
 mudden#fápmudus:mudden#fápmuduss JOHTOLAT ;
 mudden#láhka:mudden#láh'ka GOAHTI ;
-mudden#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:mudden#ráđđi GOAHTI-IU ;
+mudden#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:mudden#ráđđi AIGI ;
 mudden#vuogádat:mudden#vuogádah'k JOHTOLAT ;
 mudden#vuohki:mudden#vuoh'ki AIGI ;
 muddo#sirdu:muddo#sir'du GOAHTI-IU ;
@@ -18872,7 +18940,7 @@ ohcu+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenL
 ohki+CmpN/SgN+CmpN/SgG+CmpN/PlG:oh'ki GOAHTI-IU ;
 ohppiid#latnja+CmpN/SgN+CmpN/SgG+CmpN/PlG:ohppiid9#latnja GOAHTI ;
 ohppiid#oaidnu:ohppiid9#oajdnu AIGI ;
-ohppiid#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:ohppiid9#ráđđi GOAHTI-IU ;
+ohppiid#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:ohppiid9#ráđđi AIGI ;
 ohter GAHPIR ;
 oidnolat:oidnolah'k JOHTOLAT ;
 oidojupmi:oidoj UPMI ;
@@ -19289,7 +19357,6 @@ pedofiliija IIJA ; !^LOAN
 pektiidna:pekt MASKIN ; !^LOAN
 pellets#buvttadeapmi+CmpN/Sg:pellets#buvttad EAPMI ;
 penicilliidna:penicill MASKIN ; !^LOAN
-pennála+Use/Sub:pennál SOSIAL ; !^LOAN
 pentagrámma:penta^grám'ma GOAHTI ; !^LOAN
 penšuvdna:penšu TELEFON ;
 pepsiidna:peps MASKIN ; !^LOAN
@@ -19589,7 +19656,8 @@ rakeahtta GOAHTI ;
 ramas#guolga:ramas#guol'ga GOAHTI ;
 ran#seahkka GOAHTI ;
 raporta#hápmi AIGI ;
-raporta:rapor'ta GOAHTI ;
+raporta+v1:rapor'ta GOAHTI ;
+raporta+v2:rappor'ta GOAHTI ;
 rapsodiija IIJA ;
 raseriija IIJA ; !^LOAN
 rasisma:rasis'ma GOAHTI ;
@@ -19884,7 +19952,7 @@ riikka#politihkka GOAHTI ;
 riikka#revišuvdna+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:riikka#revišu TELEFON ;
 riikka#rádji:riikka#rád'ji GOAHTI-IU ;
 riikka#rádjá:riikka#rád'já ALBMILONGSHORT ;
-riikka#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:riikka#ráđđi GOAHTI-IU ;
+riikka#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:riikka#ráđđi AIGI ;
 riikka#searvi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:riikka#sear'vi GOAHTI-IU ;
 riikka#vearru GOAHTI-IU ;
 riipu+CmpN/SgN+CmpN/SgG+CmpN/PlG:rij'pu GOAHTI-IU ;
@@ -20310,7 +20378,7 @@ ráđđen#ráddjen+CmpN/Sg:ráđđen#ráddjem BOAHTIN ;
 ráđđen#ráđđejupmi:ráđđen#ráđđej UPMI ;
 ráđđen#vuohki:ráđđen#vuoh'ki AIGI ;
 ráđđen#vuoigatvuohta+CmpN/SgG+CmpN/DefPlGen:ráđđen#vuoigatvuoh'ta LUONDU ;
-ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:ráđđi GOAHTI-IU ;
+ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:ráđđi AIGI ;
 ráđđádallan#goddi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:ráđđádallan#goddi AIGI ;
 ráđđádallan+CmpN/Sg:ráđđádallam BOAHTIN ;
 røntgen#govva GOAHTI ;
@@ -20835,7 +20903,7 @@ soabadan#kommišuvdna+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:soabadan#kommišu TELEFON 
 soabahan#evttohus:soabahan#evttohuss JOHTOLAT ;
 soabaheaddji+CmpN/SgN+CmpN/SgG+CmpN/PlG:soabaheaddji¤ ACTOR ;
 soabaheapmi+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:soabah EAPMI ;
-soabahus#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:soabahus#ráđđi GOAHTI-IU ;
+soabahus#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:soabahus#ráđđi AIGI ;
 soabahus:soabahuss JOHTOLAT ;
 soabat#evttohus:soabat#evttohuss JOHTOLAT ;
 soabbe#piika:soabbe#pij'ka GOAHTI ;
@@ -21152,7 +21220,7 @@ stáhta#minister+CmpN/SgN+CmpN/SgG+CmpN/PlG:stáhta#minister GAHPIR ;
 stáhta#ministtar+CmpN/SgN+CmpN/SgG+CmpN/PlG:stáhta#minis'tar MATTAR ;
 stáhta#politihkka GOAHTI ;
 stáhta#ruhta#ministeriija+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:stáhta#ruhta#ministeriija IIJA ;
-stáhta#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:stáhta#ráđđi GOAHTI-IU ;
+stáhta#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:stáhta#ráđđi AIGI ;
 stáhta#váidalan#riekti:stáhta#váidalan#riek'ti ALBMI ;
 stáhta+CmpN/SgN+CmpN/SgG+CmpN/PlG:stáhta STAHTA "state N" ;
 stáhta+Use/Sub:stáhtta GOAHTI ; ! Check
@@ -21447,7 +21515,7 @@ sálvia+Use/Sub:sálvia GARGIA ;
 sálvu:sál'vu GOAHTI-IU ;
 sáme#digge#joavku+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:sáme#digge#joav'ku GOAHTI-IU ;
 sáme#digge#presideanta+CmpN/SgN+CmpN/SgG+CmpN/PlG:sáme#digge#presidean'ta GOAHTI ;
-sáme#digge#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:sáme#digge#ráđđi GOAHTI-IU ;
+sáme#digge#ráđđi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:sáme#digge#ráđđi AIGI ;
 sáme#digge#válga:sáme#digge#vál'ga GOAHTI ;
 sáme#diggi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:sáme#diggi AIGI ;
 sáme#dikke#válga+Use/Sub:sáme#dikke#vál'ga GOAHTI ;
@@ -22475,7 +22543,7 @@ váhkká#deahkki AIGI ;
 váhnen#fuolaheapmi+CmpN/Sg:váhnen#fuolah EAPMI ;
 váhnen#ovddas#vástádus:váhnen#ovddas#vástáduss JOHTOLAT ;
 váhnen#ráđđe#lávde#goddi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:váhnen#ráđđe#lávde#goddi AIGI ;
-váhnen#ráđđi+CmpN/SgN+CmpN/SgG+CmpN/PlG:váhnen#ráđđi GOAHTI-IU ;
+váhnen#ráđđi+CmpN/SgN+CmpN/SgG+CmpN/PlG:váhnen#ráđđi AIGI ;
 váhnen#ságastallan+CmpN/Sg:váhnen#ságastallam BOAHTIN ;
 váhnen#čoahkkin:váhnen#čoahkkim GAHPIRLONG ;
 váhnen+CmpN/SgN+CmpN/SgG+CmpN/PlG:váhnem GAHPIR ;
@@ -23641,6 +23709,8 @@ sáme#giel#oahppu AIGI ;
 alit#gaccet+CmpN/SgN+CmpN/SgG+CmpN/PlG:alit#gacceh GAHPIR ;
 boazo#doallo#hálddahus+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:boazo#doalo#hálddahuss JOHTOLAT ;
 čohka#čiehka:čohka#čieh'ka GOAHTI ;
+loahpaheapmi+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:loahpah EAPMI ;
+vuojadeapmi+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:vuojad EAPMI ;
 ! Divvun & Giellatekno - open source grammars for Sámi and other languages
 ! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
 ! http://giellatekno.uit.no & http://divvun.no
@@ -23906,8 +23976,8 @@ bahás#mielalaš+CmpN/SgN+CmpN/PlG:bahás#mielal ETNOLOGALAS ;
 bahča:bahččag8 GUOHCA ;
 balahahkes+CmpN/SgN+CmpN/PlG:balahahkke7s GAPPUS ;
 barbáralaš:barbáral DABALAS ;
-bargguheapme+CmpN/SgN+CmpN/PlG:bargguh JEAGOHEAPMI ;
-bargo#návccalaš+CmpN/SgN+CmpN/PlG:bargo7#návccal DABALAS ;
+bargguheapme+CmpN/SgN+CmpN/PlG:bargguh JEAGOHEAPMI_NOCOMP ;
+bargo#návccalaš+CmpN/SgN+CmpN/PlG:bargo7#návccal AHKASAS ;
 baski:bas'ki LAIKI ;
 bassi NUORRA ;
 bastil JOHTIL ;
@@ -23953,7 +24023,7 @@ buorre#oskkolaš+CmpN/SgN+CmpN/PlG:buorre7#oskkol DABALAS ;
 buorre+CmpN/SgN+CmpN/PlG:buorri BUORRE ;
 buorre+Use/Sub: BUOROT ; ! !lexeme in e
 buot#diđolaš+CmpN/SgN+CmpN/PlG:buot#diđol DABALAS ;
-buot#guoskevaš:buot#guoskev ETNOLOGALAS ;
+buot#guoskevaš:buot#guoskev AHKASAS ;
 buot#oaidnevaš+CmpN/SgN+CmpN/PlG:buot#oaidnev ETNOLOGALAS ;
 buot#veagalaš+CmpN/SgN+CmpN/PlG:buot#veagal DABALAS ;
 byrokráhtalaš:byro^kráhtal DABALAS ;
@@ -24021,7 +24091,7 @@ doaibma#ekonomalaš:doaibma#ekonomal ETNOLOGALAS ;
 doaibmi LEXATTR ;
 doaimmahuslaš:doaimmahusl ETNOLOGALAS ;
 doaimmalaš+CmpN/SgN+CmpN/PlG:doaimmal DABALAS ;
-doares#fágalaš:doares#fágal DABALAS ;
+doares#fágalaš:doares#fágal ETNOLOGALAS ;
 doares#politihkalaš:doare7s#politihkal ETNOLOGALAS ;
 doares#politihkkalaš:doare7s#politihkkal ETNOLOGALAS ;
 doaris:doarri BOARIS ;
@@ -24123,7 +24193,6 @@ eana#dieđálaš+Use/Sub:eana#dieđál ETNOLOGALAS ;
 eana#gottálaš:eana#gottál ETNOLOGALAS ;
 eanan#dieđálaš+Use/Sub:eanan#dieđál ETNOLOGALAS ;
 eanet+A:eane%> BU/MUS ;
-earenoamáš:earenoamáž AGAdj ;
 eastatmeahttun:eastatmeahttu MEAHTTUS ;
 eatnan#dieđalaš:eatnan#dieđal ETNOLOGALAS ;
 eatnanlaš:eatnanl ETNOLOGALAS ;
@@ -24151,8 +24220,15 @@ empiralaš:empiral ETNOLOGALAS ;
 endosentrihkalaš:endosentrihkal ETNOLOGALAS ;
 enklihtalaš:en^klihtal ETNOLOGALAS ;
 epihkalaš:epihkal ETNOLOGALAS ;
+erenoamáš+Use/Sub:erenoamaž AGAdj ;
+erenoamáš+Use/Sub:erenom AHKASAS ;
+erenoamáš+Use/Sub:earenoamaž AGAdj ;
+erenoamáš+Use/Sub:earenom AHKASAS ;
 erenoamáš#pedagogalaš:erenoamáš#pedagogal ETNOLOGALAS ;
-erenoamáš:erenoamáž AGAdj ;
+erenoamáš+v1:erenoamáž AGAdj ;
+erenoamáš+v2:erenomáž AGAdj ;
+erenoamáš+v3:earenoamáž AGAdj ;
+erenoamáš+v4:earenomáž AGAdj ;
 eret#geassemeahttun:eret#geassemeahttu MEAHTTUS ;
 erohtalaš:erohtal DABALAS ;
 erotihkalaš:erotihkal DABALAS ;
@@ -24194,7 +24270,8 @@ fonemáhtalaš:fonemáhtal ETNOLOGALAS ;
 fono#távttalaš:fono#távttal ETNOLOGALAS ;
 fonologalaš:fonologal ETNOLOGALAS ;
 fonologálaš:fonologál ETNOLOGALAS ;
-formálalaš:formalal DABALAS ;
+formálalaš:formálal DABALAS ;
+formálalaš+Use/Sub:formalal DABALAS ;
 friddja+CmpN/SgN+CmpN/PlG:frid'dja AKTIIVA ;
 fundamentalisttalaš:fundamentalisttal DABALAS ;
 fuolaheapme+CmpN/SgN+CmpN/PlG:fuolah JEAGOHEAPMI ;
@@ -24259,7 +24336,7 @@ gillil+CmpN/SgN+CmpN/PlG:gillil JOHTIL; !
 gillámeahttun:gillámeahttu MEAHTTUS ;
 girjái:girjá JIEDNAI_DECLINED ;
 girkat:girk VIELG ;
-girkolaš:girkol DABALAS ;
+girkolaš:girkol AHKASAS ;
 givssas:gik'sa GARAS ;
 globálalaš:globálal ETNOLOGALAS ;
 goalus+CmpN/SgN+CmpN/PlG:goallus GAPPUS ;
@@ -24303,7 +24380,7 @@ guorahallameahttun:guorahallameahttu MEAHTTUS ;
 guorranmeahttun:guorranmeahttu MEAHTTUS ;
 guorus:guorrus GEARGGUS ;
 guoskameahttun:guoskameahttu MEAHTTUS ;
-guoskevaš:guoskevažž DEARVVASLAS ;
+guoskevaš:guoskev AHKASAS ;
 guovddášlaš:guovddášl DABALAS ;
 guovllulaš+Use/Sub:guovllul ETNOLOGALAS ;
 guovlu#politihkalaš+Use/Sub:guovlu#politihkal ETNOLOGALAS ;
@@ -24315,11 +24392,11 @@ guovtte#lágan:guovtte# LAGAN ;
 gurut LEXATTR ;
 gustojeaddji:gustojeaddji¤ HAHTTI ;
 gustomeahttun:gustomeahttu MEAHTTUS ;
-gustovaš:gustovažž DEARVVASLAS ;
+gustovaš:gustov AHKASAS ;
 gutneheapme+CmpN/SgN+CmpN/PlG:gutneh JEAGOHEAPMI ;
 gutnálaš+CmpN/SgN+CmpN/PlG:gutnál DABALAS ;
 guttaheapme+CmpN/SgN+CmpN/PlG:guttah JEAGOHEAPMI ;
-guvges#ruoksat:guvges#ruoks VIELG ;
+guvges#ruoksat:guvges#ruoks VIELG_NOCOMP ;
 guvlolaš+Use/Sub:guvlol ETNOLOGALAS ;
 gáiddus:gáj'dus GAPPUS ;
 gánnáhahtti:gánnáhahtti¤ HAHTTI ;
@@ -24675,7 +24752,7 @@ njuoras+CmpN/SgN+CmpN/PlG:njuorra NJUORAS "tender A" ;
 njuoskkas:njuos'ka GARAS ;
 njálggat:njál'g NJALGGAT "sweet A" ;
 njálggis:njál'g CAPPIS ;
-njálmmálaš:njálmmál DABALAS ;
+njálmmálaš:njálmmál ETNOLOGALAS ;
 njárbat:njárb VIELG ;
 nohkameahttun:nohkameahttu MEAHTTUS ;
 nubbi:nubbe LEXATTR; !
@@ -24813,7 +24890,7 @@ pássiivvalaš+Use/Sub:pássiivval DABALAS ;
 rabas#mielalaš+CmpN/SgN+CmpN/PlG:rabas#mielal ETNOLOGALAS ;
 rabas+CmpN/SgN+CmpN/PlG:rah'pas GAPPUS ;
 radikála+CmpN/SgN+CmpN/PlG:radikála NUORRA; !
-radikála+CmpN/SgN+CmpN/PlG:radikál AKTIIVA ; 
+radikála+CmpN/SgN+CmpN/PlG:radikála AKTIIVA ; 
 rasisttalaš:rasisttal DABALAS ;
 ravda#mearálaš:ravda#mearál ETNOLOGALAS ;
 rašši LAIKI ;
@@ -24888,8 +24965,8 @@ seavdnjat:seavdnj CAHKK ;
 segmentálalaš:segmentálal ETNOLOGALAS ;
 seismalaš:seismal ETNOLOGALAS ; ! ^LOAN
 seksuála:seksu^ála BOREALA ;
-seksualálaš+Use/Sub:seksu^alál DABALAS ;
-seksuálalaš:seksu^álal DABALAS ;
+seksuálalaš+Use/Sub:seksu^alál DABALAS ;
+seksuálalaš:seksu^álal ETNOLOGALAS ;
 seksuálaš+Use/Sub:seksu^ál ETNOLOGALAS ;
 semantihkalaš:semantihkal ETNOLOGALAS ;
 semanttalaš:semanttal ETNOLOGALAS ;
@@ -25062,8 +25139,8 @@ vilddas+CmpN/SgN+CmpN/PlG:vil'da GARAS ;
 villas+CmpN/SgN+CmpN/PlG:vil'la GARAS ;
 virkui+CmpN/SgN+CmpN/PlG:virko JIEDNAI ;
 virolaš:virol DABALAS ;
-vissis+CmpN/SgN+CmpN/PlG:vis's VIISSIS ;
-vissis+CmpN/SgN+CmpN/PlG:vis'sis GAPPUS ;
+vissis+v1+CmpN/SgN+CmpN/PlG:vis's VIISSIS ;
+vissis+v2+CmpN/SgN+CmpN/PlG:vis'sis GAPPUS ;
 visuála:visu^ála BOREALA ;
 vitmat+CmpN/SgN+CmpN/PlG:vitm VIELG ;
 viššal+CmpN/SgN+CmpN/PlG:viššal JOHTIL; !
@@ -25126,15 +25203,19 @@ váttis:váddis VATTIS ;
 áddehahtti:áddehahtti¤ HAHTTI ;
 áddemeahttun:áddemeahttu MEAHTTUS ;
 áddetmeahttun:áddetmeahttu MEAHTTUS ;
-áhpeheapme+CmpN/SgN+CmpN/PlG:áhpeh JEAGOHEAPMI ;
+áhpeheapme+CmpN/SgN+CmpN/PlG:áhpeh JEAGOHEAPMI_NOCOMP ;
 áidna At ;
 áige#guovdil+CmpN/SgN+CmpN/PlG:áige#guovdil JOHTIL; !
+áige#guovdil+A+Comp:áige#guovdilaččabu HEAPMIOBL ;
+áige#guovdil+A+Comp+Ess:áige#guovdilaččabun K ;
+áige#guovdil+A+Comp+Sg+Nom:áige#guovdilaččat K ;
+áige#guovdil+A+Superl:áige#guovdilaččamuss BUOREMUS ;
 áigodatlaš:áigodatl DABALAS ;
 áigái#heivvolaš:áigái#heivvol ETNOLOGALAS ;
 ákusttalaš+Use/Sub:ákusttal ETNOLOGALAS ;
 álbmot#rievttalaš:álbmo7t#rievttal DABALAS ;
 álbmot#válddálaš:álbmot#válddál ETNOLOGALAS ;
-álbmotlaš:álbmotl DABALAS ;
+álbmotlaš:álbmotl ETNOLOGALAS ;
 álbmái:álbmá JIEDNAI_DECLINED ;
 álgo#vuolggalaš:álgo7#vuolggal ETNOLOGALAS ;
 álki ALKI ;
@@ -25189,7 +25270,7 @@ váttis:váddis VATTIS ;
 čujolaš:čujol DABALAS ;
 čuorbi+CmpN/SgN+CmpN/PlG:čuor'bi LAIKI ;
 čuovvovaš:čuovvov ETNOLOGALAS ;
-čuožžovaš:čuožžovažž DEARVVASLAS ;
+čuožžovaš:čuožžov ETNOLOGALAS ;
 čáhppat+CmpN/SgN+CmpN/PlG:čáhpp VIELG ;
 čálalaš:čálal ETNOLOGALAS ;
 čáppa#girjjálaš:čáppa#girjjál ETNOLOGALAS ;
@@ -72483,10 +72564,10 @@ LEXICON reflobl
 +Ill+PxSg1+Use/Sub:allasim9# K ; ! !SOUTH
 +Loc+Use/NG:alddi%> PxV ;
 +Loc+Use/NG:aldde%> Px3V ;
-+Loc:aldde%>st PxC ;
++Loc+Use/NG:aldde%>st PxC ;
 +Loc+Use/Sub:alddi%>n PxCPlstem ; !
 +Loc+Use/NG:alddi%>jn PxCPlstem ;
-+Loc+Use/NG:alddá%>n PxCPlstem ;
++Loc:alddá%>n PxCPlstem ;
 +Loc+PxSg1+Use/Sub:ieža%>stan»# K ;
 +Loc+PxSg1+Use/Sub:ieža%>stam»# K ;  ! !SOUTH
 +Loc+PxSg2+Use/Sub:ieža%>stat»# K ;
