@@ -1,5 +1,5 @@
-!!! This file removes derivations that are not handled in
-!!! bidix/transfer (see
+!!! This file, meant to be composed _before_ xfst2apertium.hashtags.twol,
+!!! removes derivations that are not handled in bidix/transfer (see
 !!! http://wiki.apertium.org/wiki/Northern_S%C3%A1mi_and_Norwegian/Derivations )
 !!! and removes tags that are not useful for MT
 !!! (eg. prescriptive tags)
@@ -31,14 +31,15 @@
 
 Alphabet
 
- %+Allegro:0
- %+Guess:0
  %+Use%/Sub:0
  %+Use%/Marg:0  
+ %+Use%/%-Spell:0
  %+Use%/Circ:0  
  %+Use%/CircN:0 
  %+Use%/Ped:0   
  %+Use%/NG:0    
+ %+Use%/NA:0
+
  %+Dial%/%-KJ:0  
  %+Dial%/%-GG:0  
  %+Dial%/%-GS:0  
@@ -53,10 +54,21 @@ Alphabet
  %+AllCmp:0 
  %+DefSgGenCmp:0 %+DefPlGenCmp:0 %+DefCmp:0 
 
- %+CmpN%/Sg:0 %+CmpN%/SgN:0 %+CmpN%/SgG:0 %+CmpN%/PlG:0
- %+CmpN%/First:0 %+CmpN%/Last:0 %+CmpN%/None:0 %+CmpN%/Only:0
- %+CmpN%/SgLeft:0 %+CmpN%/SgNomLeft:0 %+CmpN%/SgGenLeft:0 %+CmpN%/PlGenLeft:0
- %+CmpN%/All:0 %+CmpN%/Def:0 %+CmpN%/DefSgGen:0 %+CmpN%/DefPlGen:0
+ %+CmpN%/Sg:0 %+CmpN%/SgN:0
+ %+CmpN%/SgG:0 %+CmpN%/PlG:0
+ %+CmpN%/First:0 %+CmpN%/Last:0
+ %+CmpN%/None:0 %+CmpN%/Only:0
+ %+CmpN%/Pref:0
+ %+CmpN%/SgLeft:0 %+CmpN%/SgNomLeft:0
+ %+CmpN%/SgGenLeft:0 %+CmpN%/PlGenLeft:0
+ %+CmpN%/All:0
+ %+CmpN%/Def:0 %+CmpN%/DefSgGen:0 %+CmpN%/DefPlGen:0
+
+ %+Multi:0
+ %+Guess:0
+ %+v1:0 %+v2:0 %+v3:0 %+v4:0 %+v5:0
+
+ %+Allegro:0
 
 !!! Derivation tags copied in from  sme.lex.txt:123..184
 ! Der#begin
@@ -256,6 +268,21 @@ Alphabet
 
  !! Transitivity 
  %+TV %+IV 
+
+
+%-
+%-:0
+
+%+Cmp
+%+ShCmp
+%+Cmpnd
+%+SgCmp      	%+PlCmp
+%+SgLeft      	%+PlLeft
+%+SgNomCmp   	%+PlNomCmp
+%+SgNomLeft  	%+PlNomLeft
+%+SgGenCmp   	%+PlGenCmp
+%+SgGenLeft  	%+PlGenLeft
+%+DefSgGenCmp 	%+DefPlGenCmp
 
 ;				! end of alphabet
 
@@ -531,7 +558,18 @@ Derivation =	 ! Keep consistent with tags in  sme-lex.txt:123..184
  %+Der%/PassS    ! VV - short passive
 ;
 
-
+Cmptag = 
+%+Cmp
+%+ShCmp
+%+Cmpnd
+%+SgCmp      	%+PlCmp
+%+SgLeft      	%+PlLeft
+%+SgNomCmp   	%+PlNomCmp
+%+SgNomLeft  	%+PlNomLeft
+%+SgGenCmp   	%+PlGenCmp
+%+SgGenLeft  	%+PlGenLeft
+%+DefSgGenCmp 	%+DefPlGenCmp
+;
 
 
 Rules 
@@ -569,3 +607,7 @@ Vd /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | [] ] _ ; where Vd in Derivation
 "Allow +V+Der1+Der/j+V+Der2+Der/PassL+V (removing inner PoS tag)"
 %+V:0 <=> %+V Transitivity %+Der1 %+Der%/j _ %+Der2 %+Der%/PassL %+V ;
 
+
+
+"Delete the %- that was added to a lemma used in a dynamic compound"
+%-:0 <=> _ Cmptag ;
