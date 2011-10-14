@@ -130,9 +130,8 @@ def load_conf(fname, create=False):
 			try:
 				D = json.load(F)
 			except Exception, e:
-				print e
 				print "Oops, config file is farked up."
-				return 2
+				raise e
 			new_confs = Configs()
 			if len(D) == 1:
 				new = Config()
