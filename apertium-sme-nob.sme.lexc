@@ -71835,6 +71835,7 @@ jaska adv ;
 jeavda adv ;
 jitnosii adv ;
 jitnosit adv ;
+jo adv ;
 jođánit adv ;
 jorgut adv ;
 juo adv ;
@@ -71940,6 +71941,7 @@ unnán adv ;
 vare adv ;
 veagal adv ; 
 veahá adv ;
+veaháš adv ;
 vealggás adv ;
 veallut adv ;
 vehá adv ;
@@ -79470,6 +79472,191 @@ z+Use/-Spell:z ab-dot-noun; !
 ö+Use/-Spell:ö ab-dot-noun; !
 č+Use/-Spell:č ab-dot-noun; !
 š+Use/-Spell:š ab-dot-noun; !
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or divvun@samediggi.no
+
+LEXICON Acronym
+
+ +Use/Circ: FIRSTLETTER ;  ! Dynamically generated acronyms, 	! Remove these from nonrec?
+                ! between two and four letters long.
+ LETTERNUMBER ; ! Listed (still not monitored)		!
+                ! Perhaps we should allow for a final arabic number at
+                ! the end of the acronyms, the NRK and NRK2 pattern.
+ SOMELONGACRO ; ! Here, we collect some long acronyms, perhaps we should  !
+                ! open for dynamic generation of longer acronyms, if this
+                ! list gets long.
+ smallacro ;    ! This is a pointer to a lexicon of manually listed small-letter
+                ! acronyms. They are not generated, since it would interfer with the
+                ! ordinary transducer, but listed here, as they then can point to the
+                ! same ACRO lexicon as the generated capital-letter acronyms.
+! quasiacro ;    move to LEXICON HyphNouns  ! This is compounds with acronyms in the beginning.
+                ! They are here since they make compounds with hyphen to the left.
+
+LEXICON FIRSTLETTER	
+LEXICON SCND													
+LEXICON THRD													
+LEXICON FRTH													
+LEXICON LETTERNUMBER
+LEXICON SOMELONGACRO		
+CD ACRO ;
+LEXICON smallacro
+
+!<-----the alphabet----->
+
+!a ACRO ;
+!á ACRO ;
+!b ACRO ;
+!c ACRO ;
+!č ACRO ;
+!d ACRO ;
+!đ ACRO ;
+!e ACRO ;
+!f ACRO ;
+!g ACRO ;
+!h ACRO ;
+!i ACRO ;
+!j ACRO ;
+!k ACRO ;
+!l ACRO ;
+!m ACRO ;
+!n ACRO ;
+!ŋ ACRO ;
+!o ACRO ;
+!p ACRO ;
+!q ACRO ;
+!r ACRO ;
+!s ACRO ;
+!š ACRO ;
+!t ACRO ;
+!ŧ ACRO ;
+!u ACRO ;
+!v ACRO ;
+!x ACRO ;
+!y ACRO ;
+!z ACRO ;
+!ž ACRO ;
+!å ACRO ;
+!æ ACRO ;
+!ø ACRO ;
+!ä ACRO ;
+!ö ACRO ;
+
+
+!LEXICON quasiacro  move to LEXICON HyphNouns
+! A-finála+CmpN/First:A-finál SOSIAL ; !
+! CD-ROM:CD-ROM BUFFALO ;
+! TV-o0đas:TV-ođđas MALIS ;
+! CD-rom:CD-rom9 BUFFALO ;
+! E-boas0ta:E-boas'ta GOAHTI ;
+! P2-kanála:P2-kanál SOSIAL ;
+! TV-geahččo#guov0lu+CmpN/SgN+CmpN/SgG+CmpN/PlG:TV-geahččo#guov'lu ALBMI ;
+! A-vitamiidna+CmpN/First:A-vitam MASKIN ; !
+! B-vitamiidna+CmpN/First:B-vitam MASKIN ; !
+! C-vitamiidna+CmpN/First:C-vitam MASKIN ; !
+! CD-siŋgel+CmpN/First:CD-siŋgel GAHPIR; !
+! D-vitamiidna+CmpN/First:D-vitam MASKIN ; !
+! DNA-molekyla+CmpN/First:DNA-molekyla GOAHTI; !
+! ILO-tráktáhta+CmpN/First:ILO-tráktáhta STAHTA; !
+! T-bohcci+CmpN/First:T-bohcci¤ ALBMI ; !
+! T-bái0di+CmpN/First:T-báj'di ALBMI ; !
+! T-rev0re+CmpN/First:T-rev're GOAHTI ; !
+! TV-kamera+CmpN/First:TV-kamera STAHTA; !
+! TV-pro^grám0ma+CmpN/First:TV-pro^grám'ma GOAHTI ; !
+! U-hápmi+CmpN/First:U-hápmi ALBMI; !
+! U-mohkki+CmpN/First:U-mohkki ALBMI; !
+! Vær-varsom-plakáhta+CmpN/First:Vær-varsom9-plakáhta STAHTA ; !
+! SI-systema+CmpN/First:SI-systema GOAHTI; !
+! St.dieđáhus+CmpN/First:St.dieđáhuss JOHTOLAT ; !
+!VVS-teknihkalaš:VVS-teknihkal ETNOLOGALAS ;
+
+
+
+LEXICON ACRO
+ %-+Cmpnd+Use/Circ:%- ARABIC;     !       ! Here we dive over to the numerals: NRK-2
+ +Use/Sub+Use/Circ: ARABIC ;     ! !  ! Without hyphen: we don't want these in the normative transducers:  NRK23
+ +N+ACR: acroconnector ;    ! Here we add the POS tag and go ACRO
+
+LEXICON acroconnector      ! Here comes a set of possible symbols to
+ acronull    ;          ! put between the abbreviation and its suffix
+ :%>%:  acrooblique ;          ! NRK:as
+ +Use/Sub: acrooblique ; !     ! NRKas
+ +Use/Sub:'7 acrooblique ; !     ! NRK's
+ +Use/Sub:%`  acrooblique ; !     ! NRK`s
+ +Use/Sub:%´  acrooblique ; !     ! NRK´s
+ +Cmpnd:  RHyph     ;          ! NRK-bargi (compound)
+
+LEXICON acronull
++Sg+Nom+Use/Sub:%> K ;
++Sg+Gen+Use/Sub:%> K ;
++Sg+Acc+Use/Sub:%> K ;
++Sg+Nom:%> # ;
++Sg+Gen:%> # ;
++Sg+Acc:%> # ;
+
+LEXICON acrooblique
+ +Sg+Gen+Use/Sub:a K ; !
+ +Sg+Acc+Use/Sub:a K ; !
+ +Sg+Ill+Use/Sub:ij K ; !
+ +Sg+Ill+Use/Sub:i K ;   ! NSR:i
+ +Sg+Loc+Use/Sub:s K ;   ! NRK:s
+ +Sg+Loc+Use/Sub:as K ;  ! NRK:as !
++Sg+Com+Use/Sub:in K ;
+ +Ess+Use/Sub:n K ;	    ! NBR:n
+ +Ess+Use/Sub:an K ;     ! NBR:an ! (check!)
+ +Pl+Nom+Use/Sub:at K ;  !
+ +Pl+Gen+Use/Sub:ajd K ; !
+ +Pl+Acc+Use/Sub:ajd K ; !
+ +Pl+Ill+Use/Sub:ajde K ; !
+ +Pl+Loc+Use/Sub:ajn K ;  !
+ +Pl+Com+Use/Sub:ajgujn K ; !
++Pl+Nom+Use/Sub:t K ;
++Pl+Gen+Use/Sub:id9 K ;
++Pl+Acc+Use/Sub:id9 K ;
++Pl+Ill+Use/Sub:ide K ;
++Pl+Loc+Use/Sub:in K ;
++Pl+Com+Use/Sub:igujn K ;
+ +Sg+Gen+Use/Sub:a # ; !
+ +Sg+Acc+Use/Sub:a # ; !
+ +Sg+Ill+Use/Sub:ij # ; !
+ +Sg+Ill:i # ;   ! NSR:i
+ +Sg+Loc:s # ;   ! NRK:s
+ +Sg+Loc+Use/Sub:as # ;  ! NRK:as !
++Sg+Com:in # ;
+ +Ess:n # ;	    ! NBR:n
+ +Ess+Use/Sub:an # ;     ! NBR:an ! (check!)
+ +Pl+Nom+Use/Sub:at # ;  !
+ +Pl+Gen+Use/Sub:ajd # ; !
+ +Pl+Acc+Use/Sub:ajd # ; !
+ +Pl+Ill+Use/Sub:ajde # ; !
+ +Pl+Loc+Use/Sub:ajn # ;  !
+ +Pl+Com+Use/Sub:ajgujn # ; !
++Pl+Nom:t # ;
++Pl+Gen:id9 # ;
++Pl+Acc:id9 # ;
++Pl+Ill:ide # ;
++Pl+Loc:in # ;
++Pl+Com:igujn # ;
+
+
+
+!------Der/ár------
+ +Der1+Der/ár+CmpN/SgN+CmpN/SgG+CmpN/PlG:»ár GAHPIRLONG ;  !
+
+
+
+
+
 
 LEXICON Interjection
 LEXICON Ij
