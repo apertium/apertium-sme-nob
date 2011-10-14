@@ -1199,7 +1199,7 @@ SET TIME-ADV = TIME-MARKER OR OTHER-TIME-ADV OR GEASSET;
 
 SET NOT-TIME-ADV = WORD - TIME-ADV ;
 
-#SET ORRUT-BO = NOT-TIME-ADV OR NPNH ;
+SET ORRUT-BO = WORD - PRE-NP-HEAD - TIME-ADV  ;
 
 
 # Amount sets
@@ -1986,7 +1986,7 @@ SUBSTITUTE ("bivdit") ("bivdit:3") ("bivdit" V)((*0 NATURE-PLACE OR HUNT-ANIMAL 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
 #SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego") OR (Actio Ess)) ;
 SUBSTITUTE ("orrut") ("orrut:3") ("orrut" V IV) (1 ("jaska" Adv)) ;
-SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (*1 Loc BARRIER NPNH) ;
+SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (*1 Loc BARRIER ORRUT-BO) ;
 #This rule should have another barrier, a set of all words except TIME-ADV.
 #For sentences like: Mun orron diibmá Romssas.
 #Check SET ORRUT-BO
