@@ -1193,9 +1193,13 @@ LIST PRESENT-MARKER = "dál" "ihttin" "odne" "otne" ("boahtteáigi" Loc) ("boaht
 
 SET TIME-MARKER = PAST-MARKER OR PRESENT-MARKER ;
 
-LIST OTHER-TIME-ADV =  "árabuš" "árrat" "easkka" "guhká" ("guhkit" Adv) "maŋemustá" "maŋŋel" "maŋŋelaš" "maŋŋeleappos" "maŋŋit" "muhtumin" "ovdal" ;
+LIST OTHER-TIME-ADV =  "árabuš" "árrat" "easkka" "guhká" ("guhkit" Adv) "maŋemustá" "maŋŋel" "maŋŋelaš" "maŋŋeleappos" "maŋŋit" "muhtumin" "ovdal" "álo" "álohii" "álot" ;
 
 SET TIME-ADV = TIME-MARKER OR OTHER-TIME-ADV OR GEASSET;
+
+SET NOT-TIME-ADV = WORD - TIME-ADV ;
+
+#SET ORRUT-BO = NOT-TIME-ADV OR NPNH ;
 
 
 # Amount sets
@@ -1940,11 +1944,30 @@ SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 (Ind Prt)) (1 Inf) ;
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
 # lohkat 0 = lese, 1 = si, 2 = telle
-SUBSTITUTE ("lohkat") ("lohkat:1") ("lohkat" V) ((1 ("ahte") OR (Refl Acc) OR (Refl Loc) OR PrfPrc) OR (*1 Nom OR Ess OR Ill BARRIER NPNH))  ;
-## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii.
+SUBSTITUTE ("lohkat") ("lohkat:1")
+	TARGET ("lohkat" V)
+	IF (
+		(1 ("ahte") OR (Refl Acc) OR (Refl Loc) OR PrfPrc)
+		OR
+		(*1 FMAINV OR Actio OR PrfPrc OR Inf BARRIER S-BOUNDARY OR ("galle") OR ("man"))
+	   ) ;
+	## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
+	## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
+	## Lars Anders Baer ii eahpit ii veahášge go lohká dákkáraš álbmotsirren lea lága ja álbmotrievtti vuostá. - Lars Anders Baer tviler ikke ikke *veahášge når han sier *dákkáraš en folkeisolering er loven og folkeretten mot.
+	## Son lohká ádjá boahtit. - Han sier at bestefar skulle komme.
+SUBSTITUTE ("lohkat") ("lohkat:2")
+	TARGET ("lohkat" V)
+	IF (*1 (@←OBJ) LINK NOT 0 TEXT BARRIER S-BOUNDARY);
+SUBSTITUTE ("lohkat") ("lohkat:2")
+	TARGET ("lohkat" V)
+	IF (1 ("galle") OR ("man") LINK 1 QUANT-PRON LINK *1 (@←OBJ) BARRIER NPNH);
+
+	## Son lohká ruđaid. - Han teller penger.
+	## Son lohká galle girjji mis leat. - Han teller mange bøker på oss være.
+
 
 # máksit 0 = bety, 1 = koste, 2 = betale
-SUBSTITUTE ("máksit") ("máksit:1") ("máksit" V) (*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CURRENCY OR Num BARRIER Ill) ;
+SUBSTITUTE ("máksit") ("máksit:1") ("máksit" V) (*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CURRENCY OR QUANT-PRON OR Num BARRIER Ill OR S-BOUNDARY) ;
  ## Duhpát máksá guokte ruvnnu. # Tobakken koster to kroner.
 SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*1 Ill LINK *1 CURRENCY OR Num) ;
  ## Son máksá munnje guokte ruvnnu. # Han betaler meg to kroner.
@@ -1960,10 +1983,17 @@ SUBSTITUTE ("bivdit") ("bivdit:1") ("bivdit" V)(*1 Qst);
 SUBSTITUTE ("bivdit") ("bivdit:2") ("bivdit" V)(*0 FISH);
 SUBSTITUTE ("bivdit") ("bivdit:3") ("bivdit" V)((*0 NATURE-PLACE OR HUNT-ANIMAL OR BIRD) OR (0 (Actor)));
 
-# orrut 0 = bo, 1 = synes, 2 = bli, 3 = være
-SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego") OR (Actio Ess)) ;
+# orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
+#SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego") OR (Actio Ess)) ;
 SUBSTITUTE ("orrut") ("orrut:3") ("orrut" V IV) (1 ("jaska" Adv)) ;
+SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (*1 Loc BARRIER NPNH) ;
+#This rule should have another barrier, a set of all words except TIME-ADV.
+#For sentences like: Mun orron diibmá Romssas.
+#Check SET ORRUT-BO
 
+	## Sii orrot goit čeahpit hutkat vugiid movt ávkkástallat sin sámegielmáhtuin, čilge son.
+	## Mun orun Romssas.
+	## Oro jaska.
 # šaddat 0 = bli, 1 = vokse
 SUBSTITUTE ("šaddat") ("šaddat:1") ("šaddat" V IV) (1 ("bajás")) ;
 
