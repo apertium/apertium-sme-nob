@@ -78,6 +78,8 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SA.@OBJ→.*"/>
       <cat-item tags="SA.@ADVL→"/>
       <cat-item tags="SA.@ADVL→.*"/>
+      <cat-item lemma="adv" tags="@ADVL→"/>
+      <cat-item lemma="adv" tags="@ADVL→.*"/>
     </def-cat>
     <def-cat n="lOPRED">
       <cat-item tags="SV.@←OPRED.*"/>
@@ -1056,6 +1058,27 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+    
+    <!-- <rule comment="REGLA: PREDICATE leat INF -->
+    <!--                Buoret lea johtit => Det er bedre å bevege seg"> -->
+    <!--   <pattern> -->
+    <!--     <pattern-item n="PREDICATE"/> -->
+    <!--     <pattern-item n="vcop"/> -->
+    <!--     <pattern-item n="INF"/> -->
+    <!--   </pattern> -->
+    <!--   <action> -->
+    <!--     <call-macro n="set_adv"><with-param pos="2"/></call-macro> -->
+    <!--     <out> -->
+    <!--       <chunk><clip pos="1" part="whole"/></chunk> -->
+    <!--       <b pos="1"/> -->
+    <!--       <chunk><clip pos="2" part="whole"/></chunk> -->
+    <!--       <b pos="2"/> -->
+    <!--       <chunk><clip pos="3" part="whole"/></chunk> -->
+    <!--       <var n="adv-blank"/><var n="adv"/> -->
+    <!--     </out> -->
+    <!--   </action> -->
+    <!-- </rule> -->
+    
     <rule comment="REGLA: SPEC FV maybe-lSUBJ
                    de lei son (juo) => så hadde han (allerede)
                    Override prodrop rule if we might have a subject to the right">
@@ -1527,7 +1550,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+    
     <rule comment="REGLA: ADVLrOBJr ADVL V
+                   when we have two ADVL→'s in a row:
+                   dađi buoret lea => desto bedre er (det) (da)
+
+                   otherwise:
                    dan juo oahppan => allerede lært det
                    dan juo jearat => du allerede spør det (TODO!!)
                    OV => VO order">
@@ -1541,19 +1569,37 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
-        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
-        <call-macro n="set_pro_verb_case"><with-param pos="3"/></call-macro>
-        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
-        <out>
-          <var n="pro"/>
-          <var n="pro-blank"/>
-          <chunk><clip pos="2" part="whole"/></chunk>
-          <var n="adv-blank"/><var n="adv"/>
-          <b pos="1"/>
-          <chunk><clip pos="3" part="whole"/></chunk>
-          <b pos="2"/>
-          <chunk><clip pos="1" part="whole"/></chunk>
-        </out>
+        <choose><when>
+          <test><equal><clip pos="2" part="syn_label"/><lit-tag v="@ADVL→"></lit-tag></equal></test>
+          <call-macro n="set_pro_lowercase"><with-param pos="3"/></call-macro>
+          <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+          <out>
+            <chunk><clip pos="1" part="whole"/></chunk>
+            <b pos="1"/>
+            <chunk><clip pos="2" part="whole"/></chunk>
+            <b pos="2"/>
+            <chunk><clip pos="3" part="whole"/></chunk>
+            <var n="pro-blank"/>
+            <var n="pro"/>
+            <var n="adv-blank"/><var n="adv"/>
+          </out>
+        </when>
+        <otherwise>
+          <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
+          <call-macro n="set_pro_verb_case"><with-param pos="3"/></call-macro>
+          <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+          <out>
+            <var n="pro"/>
+            <var n="pro-blank"/>
+            <chunk><clip pos="2" part="whole"/></chunk>
+            <var n="adv-blank"/><var n="adv"/>
+            <b pos="1"/>
+            <chunk><clip pos="3" part="whole"/></chunk>
+            <b pos="2"/>
+            <chunk><clip pos="1" part="whole"/></chunk>
+          </out>
+        </otherwise>
+        </choose>
       </action>
     </rule>
     <rule comment="REGLA: ADVLrOBJr FV lOPRED
