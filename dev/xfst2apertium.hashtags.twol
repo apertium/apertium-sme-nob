@@ -1,18 +1,10 @@
 !!! This file, meant to be composed _after_ xfst2apertium.useless.twol,
 !!! moves the +G3 tag after the +N tag, and turns
-!    vuođđogeađggit  vuođđu+N+SgNomCmp#geađgi+N+Pl+Nom
+!    vuođđogeađggit  vuođđu+N+SgNomCmp+Cmp#geađgi+N+Pl+Nom
 !    vuođđogeađggit  vuođđo#geađgi+N+Pl+Nom
 !! into
-!    vuođđogeađggit  vuođđu+N+SgNomCmp#geađgi+N+Pl+Nom
+!    vuođđogeađggit  vuođđu+N+SgNomCmp+Cmp#geađgi+N+Pl+Nom
 !    vuođđogeađggit  vuođđogeađgi+N+Pl+Nom
-!! and
-!    sámegiela       sápmi+SgGenCmp+N+SgGenCmp#giella+N+Sg+Gen
-!    sámegiela       sápmi+SgGenCmp+N+SgGenCmp#giella+N+Sg+Acc
-!    sámegiela       sápmi+SgGenCmp+PlGenCmp+N+SgGenCmp#giella+N+Sg+Gen
-!    sámegiela       sápmi+SgGenCmp+PlGenCmp+N+SgGenCmp#giella+N+Sg+Acc
-!! into
-!    sámegiela       sápmi+N+SgGenCmp#giella+N+Sg+Gen
-!    sámegiela       sápmi+N+SgGenCmp#giella+N+Sg+Acc
 
 Alphabet
 
@@ -30,46 +22,10 @@ Alphabet
 %#:0
 %# ! Need this, since otherwise #-words not matched by our rule will disappear
 
-%+Num 
-%-
-%:
-
-%+Actor
 %+N
-%+A
-%+Attr
-%+ACR
-%+V
-
-%+N:%+N%*
-%+A:%+A%*
-%+Attr:%+Attr%*
-%+V:%+V%*
-%+SgNomCmp:%+SgNomCmp%*
-%+SgGenCmp:%+SgGenCmp%*
 
 %+LCmpnd%+
 %+LCmpnd%+:0
-
-%+Cmp
-%+ShCmp
-%+Cmpnd
-%+SgCmp      	%+PlCmp
-%+SgLeft      	%+PlLeft
-%+SgNomCmp   	%+PlNomCmp
-%+SgNomLeft  	%+PlNomLeft
-%+SgGenCmp   	%+PlGenCmp
-%+SgGenLeft  	%+PlGenLeft
-%+DefSgGenCmp 	%+DefPlGenCmp
-
-%+Cmpnd:0
-%+SgCmp:0    	%+PlCmp:0
-%+SgLeft:0    	%+PlLeft:0
-%+SgNomCmp:0 	%+PlNomCmp:0
-%+SgNomLeft:0  	%+PlNomLeft:0
-%+SgGenCmp:0 	%+PlGenCmp:0
-%+SgGenLeft:0  	%+PlGenLeft:0
-%+DefSgGenCmp:0 %+DefPlGenCmp:0
 
  !! Stadieveksling
  %+G3
@@ -92,61 +48,7 @@ Alphabetic =
  Č Đ Ŋ Š Ŧ Ž          !
 ;
 
-Cmptag = 
-%+Cmp
-%+ShCmp
-%+Cmpnd
-%+SgCmp      	%+PlCmp
-%+SgLeft      	%+PlLeft
-%+SgNomCmp   	%+PlNomCmp
-%+SgNomLeft  	%+PlNomLeft
-%+SgGenCmp   	%+PlGenCmp
-%+SgGenLeft  	%+PlGenLeft
-%+DefSgGenCmp 	%+DefPlGenCmp
-;
 
-RemCmptag = 			! don't remove Cmp and ShCmp
-%+Cmpnd
-%+LCmpnd%+
-%+SgCmp      	%+PlCmp
-%+SgLeft      	%+PlLeft
-%+SgNomCmp   	%+PlNomCmp
-%+SgNomLeft  	%+PlNomLeft
-%+SgGenCmp   	%+PlGenCmp
-%+SgGenLeft  	%+PlGenLeft
-%+DefSgGenCmp 	%+DefPlGenCmp
-;
-
-RemWICmptag =
-%+LCmpnd%+
-;
-
-KeepCmpAfter =			! could expand to include lemmas...
-%+N
-%+Actor
-%+A
-%+Attr
-%+ACR
-;
-
-
-Unstarred =
-%+N
-%+A
-%+Attr
-%+V
-%+SgNomCmp
-%+SgGenCmp
-;
-
-Starred = 			! Remember to put them in relabel too!
-%+N%*
-%+A%*
-%+Attr%*
-%+V%*
-%+SgNomCmp%*	 ! SgNomCmp is turned into <Sg*><Nom*><Cmp> in relabel
-%+SgGenCmp%*	 ! SgGenCmp is turned into <Sg*><Gen*><Cmp> in relabel
-;
 
 Rules 
 
@@ -155,9 +57,9 @@ Rules
 %#:0 <=> Alphabetic _ ;  
 
 !! After inversion, we get
-!    ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sáme#giella+N+Sg+Nom$
+!    ^sámegiella/sápmi+N+SgGenCmp+Cmp#giella+N+Sg+Nom/sáme#giella+N+Sg+Nom$
 !! After this file, we get
-!    ^sámegiella/sápmi+N+SgGenCmp#giella+N+Sg+Nom/sámegiella+N+Sg+Nom$
+!    ^sámegiella/sápmi+N+SgGenCmp+Cmp#giella+N+Sg+Nom/sámegiella+N+Sg+Nom$
 !! After substitution/relabelling, we get
 !    ^sámegiella/sápmi<N><Sg><Gen><Cmp>+giella<N><Sg><Nom>/sámegiella<N><Sg><Nom>$
 !! which after pretransfer turns into 
@@ -165,37 +67,14 @@ Rules
 !    ^sámegiella<N><Sg><Nom>$
 
 
-"Delete compound tags (except Cmp/ShCmp) that weren't followed by an N or A tag"
-Vr:0  <=>  \[ KeepCmpAfter: | 0:%+G3 ]  _  ; where Vr in RemCmptag;
-!! We don't remove +Cmp or +ShCmp tags since they follow lemmas, not +N or +A:
-!    mielbargin      miel+ShCmp#bargat+V+TV+Der2+Actor+N+Ess
-!! The `:' after KeepCmpAfter is needed since we may have eg.
-!! %+N:%+N%* there, also the below rules can insert a +G3 after a +N
-!! or a +N*
-
-"Delete compound tags at the beginning of words"
-Vw:0  <=>  [ # | #: ]  _  ; where Vw in RemWICmptag;
+"Delete split compound tag +LCmpnd+ when word-initial"
+%+LCmpnd%+:0  <=>  [ # | #: ]  _  ; 
 
 
 
 "Add +G3 tag once after +N tag"
-0:%+G3  <=>  %+G3:0  [ %+N | %+N:%+N%* ]   _    [ \0:%+G3 | # | #: ]  ;
+0:%+G3  <=>  %+G3:0   %+N    _    [ \0:%+G3 | # | #: ]  ;
 !! Will \0:%+G3 also match end-of-word? (In that case we can remove the disjunction)
 
 "Remove +G3 tag before +N tag"
-%+G3:0  <=>     _    [ %+N | %+N:%+N%* ]  ; 
-!! We may have %+N:%+N%* there due to the below rule
-
-
-
-
-
-!! Starring is commented out until we figure out a way to remove the
-!! stars again:
-
-! "Add stars to tags that appear before a compound border"
-! Unstarred:Starred  <=>  _ [ Unstarred:Starred ]* (0:%+G3 [ Unstarred:Starred ]*)  %#  ;
-!! The above rules may insert a +G3 after a starred N
-
-"Never add stars (need to figure out a way to remove them before bidix first)"
-Vu:Vs /<= _ ; where Vu in Unstarred Vs in Starred;
+%+G3:0  <=>     _     %+N  ; 

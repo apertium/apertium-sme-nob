@@ -2,7 +2,7 @@
 !!! removes derivations that are not handled in bidix/transfer (see
 !!! http://wiki.apertium.org/wiki/Northern_S%C3%A1mi_and_Norwegian/Derivations )
 !!! and removes tags that are not useful for MT
-!!! (eg. prescriptive tags)
+!!! (eg. prescriptive tags), and hyphens (%-) added to dynamic compound lemmas.
 
 !!! Eg. from
 !    sámegiela       sápmi+SgGenCmp+Use/Sub+N+SgGenCmp+Use/Circ#+Use/Circgiella+N+Sg+Gen
@@ -274,15 +274,6 @@ Alphabet
 %-:0
 
 %+Cmp
-%+ShCmp
-%+Cmpnd
-%+SgCmp      	%+PlCmp
-%+SgLeft      	%+PlLeft
-%+SgNomCmp   	%+PlNomCmp
-%+SgNomLeft  	%+PlNomLeft
-%+SgGenCmp   	%+PlGenCmp
-%+SgGenLeft  	%+PlGenLeft
-%+DefSgGenCmp 	%+DefPlGenCmp
 
 ;				! end of alphabet
 
@@ -558,19 +549,6 @@ Derivation =	 ! Keep consistent with tags in  sme-lex.txt:123..184
  %+Der%/PassS    ! VV - short passive
 ;
 
-Cmptag = 
-%+Cmp
-%+ShCmp
-%+Cmpnd
-%+SgCmp      	%+PlCmp
-%+SgLeft      	%+PlLeft
-%+SgNomCmp   	%+PlNomCmp
-%+SgNomLeft  	%+PlNomLeft
-%+SgGenCmp   	%+PlGenCmp
-%+SgGenLeft  	%+PlGenLeft
-%+DefSgGenCmp 	%+DefPlGenCmp
-;
-
 
 Rules 
 
@@ -610,4 +588,4 @@ Vd /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | [] ] _ ; where Vd in Derivation
 
 
 "Delete the %- that was added to a lemma used in a dynamic compound"
-%-:0 <=> _ Cmptag ;
+%-:0 <=> %+Cmp _ ;
