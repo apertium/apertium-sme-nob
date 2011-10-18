@@ -520,7 +520,8 @@ And then there are some categories like "month", with all the months.
     <def-var n="c_def_pos"      c="chunk defnes tag position"/>
     <def-var n="c_syn"          c="chunk syn_label"/>
     <def-var n="caseFirstWord"  c="typographic case of first word"/>
-    <def-var n="caseprep"      c="nob preposition (whole chunk) based on sme case"/>
+    <def-var n="caseprep"       c="nob preposition (whole chunk) based on sme case"/>
+    <def-var n="previous-nhead" c="lemh of the previous NP chunk" v=""/>
   </section-def-vars>
 
   <section-def-lists>
@@ -661,6 +662,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="topp"/>
       <list-item v="kjøkken"/>
     </def-list>
+    <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="del"/>
+    </def-list>
     <def-list n="ess-NIL" c="Essive noun phrases default to 'som' unless in this list">
       <list-item v="del"/>
     </def-list>
@@ -718,37 +722,45 @@ And then there are some categories like "month", with all the months.
           <let>
             <var n="caseprep"/><lit v="på"/>
           </let>
-          <choose><when>
-            <test><or>
-              <in><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
-              <and>
-                <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
-                <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
-              </and>
-            </or></test>
-            <let>
-              <var n="caseprep"/><lit v="i"/>
-            </let>
-          </when></choose>
-          <choose><when>
-            <test><in><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in></test>
-            <let>
-              <var n="caseprep"/><lit v="om"/>
-            </let>
-          </when></choose>
-          <choose><when c="Habitive, or reflexive of habitive">
-            <test><or>
-              <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@HAB"/></equal>
-              <and>
-                <equal><clip pos="1" side="sl" part="a_pron"/><lit-tag v="Pron"/></equal>
-                <equal><clip pos="1" side="sl" part="a_rel"/><lit-tag v="Refl"/></equal>
-                <equal><clip pos="1" side="tl" part="lemh"/><lit v="selv"/></equal>
-              </and>
-            </or></test>
-            <let>
-              <var n="caseprep"/><lit v=""/>
-            </let>
-          </when></choose>
+          <choose c="Exceptions to the locative→på rule:">
+            <when>
+              <test><in><var n="previous-nhead"/><list n="loc-av-head"/></in></test>
+              <let>
+                <var n="caseprep"/><lit v="av"/>
+              </let>
+            </when>
+            <when>
+              <test><or>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
+                <and>
+                  <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
+                  <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
+                </and>
+              </or></test>
+              <let>
+                <var n="caseprep"/><lit v="i"/>
+              </let>
+            </when>
+            <when>
+              <test><in><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in></test>
+              <let>
+                <var n="caseprep"/><lit v="om"/>
+              </let>
+            </when>
+            <when c="Habitive, or reflexive of habitive">
+              <test><or>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@HAB"/></equal>
+                <and>
+                  <equal><clip pos="1" side="sl" part="a_pron"/><lit-tag v="Pron"/></equal>
+                  <equal><clip pos="1" side="sl" part="a_rel"/><lit-tag v="Refl"/></equal>
+                  <equal><clip pos="1" side="tl" part="lemh"/><lit v="selv"/></equal>
+                </and>
+              </or></test>
+              <let>
+                <var n="caseprep"/><lit v=""/>
+              </let>
+            </when>
+          </choose>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Com"/></equal></test>
@@ -810,6 +822,12 @@ And then there are some categories like "month", with all the months.
           </choose>
         </when>
       </choose>
+
+      <let>
+        <var n="previous-nhead"/>
+        <clip pos="1" side="tl" part="lemh"/>
+      </let>
+
       <!-- Now output it: -->
       <choose>
         <when>
