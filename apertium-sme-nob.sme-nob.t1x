@@ -521,7 +521,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="c_syn"          c="chunk syn_label"/>
     <def-var n="caseFirstWord"  c="typographic case of first word"/>
     <def-var n="caseprep"       c="nob preposition (whole chunk) based on sme case"/>
-    <def-var n="previous-nhead" c="lemh of the previous NP chunk" v=""/>
+    <def-var n="previous-nhead" c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
   </section-def-vars>
 
   <section-def-lists>
@@ -585,6 +585,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="dag"/>
       <list-item v="morgen"/>
       <list-item v="natt"/>
+    </def-list>
+    <def-list n="loc-av" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
+      <list-item v="slekt"/>
     </def-list>    
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
       <list-item v="skuff"/>
@@ -664,6 +667,7 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="del"/>
+      <list-item v="NUMERAL"/>      <!-- special value set by numerals, see NUMERAL rule -->
     </def-list>
     <def-list n="ess-NIL" c="Essive noun phrases default to 'som' unless in this list">
       <list-item v="del"/>
@@ -724,7 +728,10 @@ And then there are some categories like "month", with all the months.
           </let>
           <choose c="Exceptions to the locative→på rule:">
             <when>
-              <test><in><var n="previous-nhead"/><list n="loc-av-head"/></in></test>
+              <test><or>
+                <in><var n="previous-nhead"/><list n="loc-av-head"/></in>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-av"/></in>
+              </or></test>
               <let>
                 <var n="caseprep"/><lit v="av"/>
               </let>
@@ -3567,6 +3574,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             </lu>
           </chunk>
         </out>
+        <let><var n="previous-nhead"/><lit v="NUMERAL"/></let>
       </action>
     </rule>
 
