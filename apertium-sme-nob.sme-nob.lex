@@ -2005,6 +2005,19 @@ SUBSTITUTE ("guorrasit") ("guorrasit:1") ("guorrasit" V IV) (NOT *0 Ill) ;
 # Noun rules
 # ----------
 
+# luohkká 0 = bakke, 1 = klasse
+SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (*1 EDUCATION OR LESSON OR ("oahpaheaddji"));
+    
+SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (*-1 EDUCATION OR LESSON OR ("oahpaheaddji"));
+    
+SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (-1 Num OR Ord);
+    # Son lea vuosttaš luohkás.
+    # Son lea 1A luohkás.
+	# Biera vázzá sámi luohkás.
+	# Biera vázzá sámegiel luohkás.
+	# Bireha luohkás leat eanaš nieiddat.
+	# Mu luohkás leat vihtta nieidda ja golbma bártni.
+
 # diibmu 0 = time, 1 = klokke
 SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (1 Num OR Ord) ;
 	## Boahtte gaskavahku diibmu 11.00 rahpá kurdarbearaš Mehidi Kárášjohkii ođđa kaféa.
