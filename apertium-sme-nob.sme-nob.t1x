@@ -208,7 +208,7 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="čakča" tags="N.*"/>
     </def-cat>
     <def-cat n="yearcmp">
-      <cat-item tags="Num"/>
+      <cat-item tags="Num.Cmp"/>
     </def-cat>
     <def-cat n="diibmu">
       <cat-item lemma="diibmu" tags="N.*"/>
@@ -275,6 +275,10 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_num">
       <attr-item tags="Num"/>
       <attr-item tags="det.qnt"/>
+    </def-attr>
+    <def-attr n="a_cmp">
+      <attr-item tags="Cmp"/>
+      <attr-item tags="cmp"/>
     </def-attr>
     <def-attr n="a_pron">
       <attr-item tags="Pron"/>
@@ -3571,6 +3575,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
               <clip pos="1" side="tl" part="a_num"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
