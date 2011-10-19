@@ -689,6 +689,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="bokmål"/>
       <list-item v="engelsk"/>
     </def-list>
+    <def-list n="no-gen-after-prop" c="If a noun in this list is preceded by a prop.gen, remove the gen from the prop">
+      <list-item v="skole"/>
+    </def-list>
   </section-def-lists>
 
   <section-def-macros>
@@ -3353,6 +3356,10 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
+        <choose><when>
+          <test><in><clip pos="2" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in></test>
+          <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
+        </when></choose>
         
         <let>
           <var n="pre-nom"/>
