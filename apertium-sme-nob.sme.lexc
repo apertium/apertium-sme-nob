@@ -1,5 +1,5 @@
 
-! Divvun & Giellatekno - open source grammars for Sámi and other languages
+!! Divvun & Giellatekno - open source grammars for Sámi and other languages
 ! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
 ! http://giellatekno.uit.no & http://divvun.no
 !
@@ -21,19 +21,17 @@
 ! The file contains morphological affixes for the nouns, verbs and adjectives
 
 
-
-
-
 Multichar_Symbols
 
 ! Tags for POS
  +N +A +Adv +V
  +Pron +CS +CC +Adp +Po +Pr +Interj +Pcle +Num 
- +Coll ! Collective numerals
 
 ! Tags for sub-POS
  +Prop +Pers +Dem +Interr +Refl +Recipr +Rel +Indef
+ +Coll ! Collective numerals
 
+! Usage tags
  +Use/Sub   ! substandard, not in normative fst
  +Use/Marg  ! marginal (?)
  +Use/-Spell !recognized but not suggested in speller
@@ -43,6 +41,8 @@ Multichar_Symbols
  +Use/NG    ! not-generate, for ped generation isme-ped.fst
  +Use/NA    ! not-analyse, for restricting analyses needed for 
             ! MT generation not to pop up elsewhere
+
+! Dialect tags:
  +Dial/-KJ  ! forms not in use in KJ (Kárásjohka)
  +Dial/-GG  ! forms not in use in GG (Guovdageaidnu)
  +Dial/-GS  ! forms not in use in GS (Gárasavvon)
@@ -79,8 +79,10 @@ Multichar_Symbols
  +RCmpnd  ! This is a split compound with the other part to the right:
           ! "Arbeids- og inkluderingsdepartementet" => Arbeids- = +RCmpnd
  +LCmpnd+ ! This is a split compound with the other part to the left
- +Guess +ShCmp !testing ShCmp
+ +ShCmp !testing ShCmp
  +Hyph				! on compounds that have a hyphens
+
+!!!! === Tags for Inflection ===
 
 ! Tags for Case and Number Inflection
  +Sg +Du +Pl                           ! Number
@@ -94,7 +96,9 @@ Multichar_Symbols
  +Ind +Prs +Prt +Pot +Cond +Imprt
  +Sg1 +Sg2 +Sg3 +Du1 +Du2 +Du3 +Pl1 +Pl2 +Pl3
  +Inf +Ger +ConNeg +ConNegII +Neg +ImprtII +PrsPrc +PrfPrc +Sup +VGen +VAbess
- +Actio +Actor 
+ +Actio +Actor
+
+! Other tags
  +ABBR +ACR +CLB +PUNCT +LEFT +RIGHT ^GUESSNOUNROOT
  +TV +IV ! Transitivity tags
  +Multi ! Multiword phrase tag
@@ -120,6 +124,15 @@ Multichar_Symbols
  +Foc/han
  +Foc/bat
  +Foc/son
+
+
+! Semantic tags to help disambiguation & synt. analysis:
+ +Mal +Fem +Sur ! Names
+ +Plc ! Place
+ +Org ! Organisation
+ +Obj ! Object
+ +Ani ! Animate
+ +Hum ! Human
 
 
 ! Not sure which section this goes in:
@@ -338,11 +351,6 @@ Multichar_Symbols
 
 
 
-
-! Semantic tags
- +Ani +Mal +Fem +Sur +Plc +Org +Obj
-
-
 ! Valency tags
 
 +%<loc%> +%<ill%> +%<com%>                              ! case
@@ -439,9 +447,9 @@ LEXICON Rreal ! This is the former R lexicon, renamed to avoid the MiddleNouns l
                      @U.NeedsVowRed.ON@@C.NeedsVowRed@+Use/Circ+Cmp#:@U.NeedsVowRed.ON@@C.NeedsVowRed@# Noun ;                     ! This is the normal case.		         
       @P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@+Use/Circ+Cmp#:@P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@# Verb ;      ! Flag diacr declares that the compound   
       @P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@+Use/Circ+Cmp#:@P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@# Adjective ; ! needs a N tag later in the derivation  
-                +Hyph@U.NeedsVowRed.ON@@C.NeedsVowRed@+Use/Circ+Cmp#:@U.NeedsVowRed.ON@@C.NeedsVowRed@%- Noun ;                    ! These 3 cases add a hyphen, so     
- +Hyph@P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@+Use/Circ+Cmp#:@P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@%-  Verb ;      ! Sem-julggaštus and maana-gåetie	      
- +Hyph@P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@+Use/Circ+Cmp#:@P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@%-  Adjective ; ! are allowed.			              
+                @U.NeedsVowRed.ON@@C.NeedsVowRed@+Hyph+Use/Circ+Cmp#:@U.NeedsVowRed.ON@@C.NeedsVowRed@%- Noun ;                    ! These 3 cases add a hyphen, so     
+ @P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@+Hyph+Use/Circ+Cmp#:@P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@%-  Verb ;      ! Sem-julggaštus and maana-gåetie	      
+ @P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@+Hyph+Use/Circ+Cmp#:@P.NeedNoun.ON@@U.NeedsVowRed.ON@@C.NeedsVowRed@%-  Adjective ; ! are allowed.			              
 
  @U.NeedsVowRed.OFF@@C.NeedsVowRed@+Use/Circ+Cmp%-#:@U.NeedsVowRed.OFF@@C.NeedsVowRed@%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
  @U.NeedsVowRed.OFF@@C.NeedsVowRed@+Use/Circ+Cmp%-#:@U.NeedsVowRed.OFF@@C.NeedsVowRed@%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for non-hyph.
@@ -866,7 +874,7 @@ LEXICON ACTOR !+CmpN/SgN +CmpN/SgG +CmpN/PlG !Long compound-forms
  +N+Actor:%> GOAHTILONGCMP ;
  +N+Actor+Sg+Nom:%> K ;
  +N+Actor+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped:%> Px3V ;
- +N+Der/viđá+Adv:»viđá K ;
+ +N+Actor+Der/viđá+Adv:»viđá K ;
  +N+Actor:%> EssV ;
  +N+Actor:%>X2 GOAHTA- ; ! Px sublexicon
  +N+Actor:%>X3 GOAHTAI ; ! Ill sublexicon
@@ -880,7 +888,7 @@ LEXICON ACTORLONGSHORT !+CmpN/SgN +CmpN/SgG +CmpN/PlG !Sometimes long compound-f
  +N+Actor:%> GOAHTILONGSHORTCMP ;
  +N+Actor+Sg+Nom:%> K ;
  +N+Actor+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped:%> Px3V ;
- +N+Der/viđá+Adv:»X7viđá K ;
+ +N+Actor+Der/viđá+Adv:»X7viđá K ;
 ! +N+Der/viđi+Adv:»X7viđi K ;
  +N+Actor:%> EssV ;
  +N+Actor:%>X2 GOAHTA- ; ! Px sublexicon
@@ -893,10 +901,10 @@ LEXICON ACTORLONGSHORT !+CmpN/SgN +CmpN/SgG +CmpN/PlG !Sometimes long compound-f
  +N+Actor:%>X8 GOADE- ; ! Ditto (?)
 
 
-!LEXICON ACTORLONGSHORTTV not in use at the moment!+CmpN/SgNCmp +SgGenCmp +PlGenCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
-! +N+SgNomCmp:%> R ;
-! +N+SgNomCmp@U.NeedsVowRed.OFF@:%>@U.NeedsVowRed.OFF@ R ;
-! +N+SgNomCmp@U.NeedsVowRed.ON@:%>X7@U.NeedsVowRed.ON@ R ;
+!LEXICON ACTORLONGSHORTTV not in use at the moment!+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgLeft +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+! +N+CmpN/SgN:%> R ;
+! +N+CmpN/SgN@U.NeedsVowRed.OFF@:%>@U.NeedsVowRed.OFF@ R ;
+! +N+CmpN/SgN@U.NeedsVowRed.ON@:%>X7@U.NeedsVowRed.ON@ R ;
 ! +N+Sg+Nom:%> K ;
 ! +N+Actor+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped:%> Px3V ;
 ! +N+Der/viđá+Adv:»X7viđá K ;
@@ -905,14 +913,15 @@ LEXICON ACTORLONGSHORT !+CmpN/SgN +CmpN/SgG +CmpN/PlG !Sometimes long compound-f
 !! +N: DenominalAdjsV1Long ; !not plausible
 !! +N: DenominalAdjsV2 ; !not plausible
 !! +N: DenominalNounsV ; !not plausible
- +N:%>X2 GOAHTA- ; ! Px sublexicon
- +N:%>X3 GOAHTAI ; ! Ill sublexicon
- +N+Use/Sub:%> GOAHTAI ; ! Ill sublexicon
- +N:%>X4 GOADI- ; ! weak grade abs decl
- +N+Use/Sub:%>X5 GODII- ; ! weak gr dipth simpl
- +N:%>%^DISIMP GODII- ; ! weak gr dipth simpl
- +N:%>X6 GOADA- ; ! AG Px
- +N:%>X8 GOADE- ; ! Ditto (?)
+
+! +N:%>X2 GOAHTA- ; ! Px sublexicon
+! +N:%>X3 GOAHTAI ; ! Ill sublexicon
+! +N+Use/Sub:%> GOAHTAI ; ! Ill sublexicon
+! +N:%>X4 GOADI- ; ! weak grade abs decl
+! +N+Use/Sub:%>X5 GODII- ; ! weak gr dipth simpl
+! +N:%>%^DISIMP GODII- ; ! weak gr dipth simpl
+! +N:%>X6 GOADA- ; ! AG Px
+! +N:%>X8 GOADE- ; ! Ditto (?)
 
 
 
@@ -5057,10 +5066,10 @@ LEXICON ACTORTVder !+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgLeft +CmpN/SgNomLeft +
 ! +N: DenominalAdjsV2 ; !not plausible
 ! +N: DenominalNounsV ; !not plausible
 
-!LEXICON ACTORLONGSHORTTVder not in use at the moment!+CmpN/SgNCmp +SgGenCmp +PlGenCmp +SgLeft +SgNomLeft +SgGenLeft +PlGenLeft
-! +N+SgNomCmp: R ;
-! +N+SgNomCmp@U.NeedsVowRed.ON@:X7@U.NeedsVowRed.ON@ R ;
-! +N+SgNomCmp@U.NeedsVowRed.OFF@:@U.NeedsVowRed.OFF@ R ;
+!LEXICON ACTORLONGSHORTTVder not in use at the moment!+CmpN/SgN +CmpN/SgGen +CmpN/PlGen +CmpN/SgLeft +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+! +N+CmpN/SgN: R ;
+! +N+CmpN/SgN@U.NeedsVowRed.ON@:X7@U.NeedsVowRed.ON@ R ;
+! +N+CmpN/SgN@U.NeedsVowRed.OFF@:@U.NeedsVowRed.OFF@ R ;
 ! +N+SgCmp:W3 R ; !SUB
 ! +N+Sg+Nom: K ;
 ! +N+Sg+Nom+Use/Ped: Px3V ;
@@ -9308,6 +9317,7 @@ merret:merre DOHPPE_TV ;
 metalliseret:metallisere DOHPPE_TV ; ! ^LOAN
 miehtat:mieh'ta BORRA_TV ;
 mieigat:miej'ga DIEVVA_IV ;
+mielddis#buktit:mielddis#buk'ti DIEHTI_TV ;
 mielkkehuvvat:mielkke7h UVVA_IV ;
 mieskat:mies'ka DIEVVA_IV ;
 miettaštallat:miettaštalla DIEHTALADDA_TV ;
@@ -11102,6 +11112,7 @@ aprikosa+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen:a^prikosa GOAHTI;
 areál#plána+Use/Sub:are^ál#plána GOAHTI ;
 areála#geavaheapmi+CmpN/Sg:are^ála#geavah EAPMI ;
 areála+CmpN/SgN+CmpN/SgG+CmpN/PlG:are^ál SOSIAL ;
+netto#areála+CmpN/SgN+CmpN/SgG+CmpN/PlG:netto#are^ál SOSIAL ;
 aristokratiija:aristo^kratiija IIJA ; !^LOAN
 aritmetihkka GOAHTI ;
 arka#tiipa+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:arka#tij'pa GOAHTI ;
@@ -13024,6 +13035,7 @@ doaba:doah'pag8 SEAMU ;
 doaba:doahpag8 BEANA ;
 doahkki GOAHTI-IU ;
 doaibma#almmái#ortnet:doaibma#almmái#ortneg GAHPIR ;
+doaibma#bidju:doaibma#bid'ju ALBMI ;
 doaibma#boađus:doaibma#boah'tus MALISLONG ;
 doaibma#bušeahtta GOAHTI ;
 doaibma#dahku:doaibma#dah'ku ALBMILONG ;
@@ -15477,6 +15489,8 @@ gávpe#rehket#doallu GOAHTI-IU ;
 gávpe#visti:gávpe#vis'ti GOAHTI-IU ;
 gávpe#vuođđo#šiehtadus:gávpe#vuođđo#šiehtaduss JOHTOLAT ;
 gávpe#vuođđudus:gávpe#vuođđuduss JOHTOLAT ;
+gávpe#čiegusvuohta+CmpN/SgG+CmpN/DefPlGen:gávpe#čiegusvuoh'ta LUONDU ;
+gávpe#čiegusvuohta+CmpN/SgG+CmpN/DefPlGen+Use/Sub:gávppe#čiegusvuoh'ta LUONDU ;
 gávpejas#searvi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:gávpejas#sear'vi GOAHTI-IU ;
 gávpejas+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:gávpijass JOHTOLAT ;
 gávpejas+CmpN/SgN+CmpN/SgG+CmpN/PlG:gávpejass JOHTOLAT ;
@@ -15488,7 +15502,6 @@ gávpot#stivra+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:gávpot#stiv'ra GOAHTI ;
 gávpot#stivrra#válga:gávpot#stivrra#vál'ga GOAHTI ;
 gávpot+CmpN/SgN+CmpN/SgG+CmpN/PlG:gávpog GAHPIR ;
 gávppašeaddji#vuoládus:gávppašeaddji#vuoláduss JOHTOLAT ;
-gávppe#čiegusvuohta+CmpN/SgG+CmpN/DefPlGen+Use/Sub:gávppe#čiegusvuoh'ta LUONDU ;
 gávppálaš+CmpN/SgN+CmpN/SgG+CmpN/PlG:gávppálažž JOHTOLAT ;
 gávriŋga:gávriŋ'ga GOAHTI ;
 gávttehas+CmpN/SgN+CmpN/SgG+CmpN/PlG:gávttehass JOHTOLAT ;
@@ -17089,6 +17102,7 @@ limšku:limš'ku GOAHTI-IU ;
 linearisašuvdna:linearisašu TELEFON ;
 lingvistihkka GOAHTI ;
 linjá#biila:linjá#bij'la GOAHTI ;
+linjá:lin'já GOAHTILONGSHORT ;
 linjála:linjál SOSIAL ; !^LOAN
 linnjá#biila:linnjá#bij'la GOAHTI ;
 linnjá#fierpmádat:linnjá#fierpmádah'k JOHTOLAT ;
@@ -17666,6 +17680,7 @@ maŋŋe#čiekčan+CmpN/Sg:maŋŋe#čiekčam BOAHTIN ;
 maŋŋe#čiekči+CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:maŋŋe#čiek'či¤ ACTOR ;
 maŋŋe#čuovga:maŋŋe#čuov'ga GOAHTI ;
 maŋŋeb#árga+CmpN/SgN+CmpN/SgG+CmpN/PlG:maŋŋeb9#ár'ga GOAHTI ;
+maŋŋeb#árga+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:maŋŋeb9#ar'ga GOAHTI ;
 maŋŋil#geahčču+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:maŋŋil#geahčču GOAHTI-IU ;
 maŋŋil#gáibádus+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:maŋŋil#gáibáduss JOHTOLAT ;
 maŋŋil#máksin+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:maŋŋil#máksim BOAHTIN ;
@@ -19189,6 +19204,7 @@ ovda#oastin#šiehtadus:ovda#oastin#šiehtaduss JOHTOLAT ;
 ovda#olbmo#doaibma:ovda#olbmo#doajbma GOAHTI ;
 ovda#olbmo#evttohas+CmpN/SgN+CmpN/SgG+CmpN/PlG:ovda#olbmo#evttohass JOHTOLAT ;
 ovda#olmmoš+CmpN/SgN+CmpN/SgG+CmpN/PlG:ovda#olbmož FALIS ;
+ovda#siidu:ovda#sij'du GOAHTI-IU ;
 ovda#skohtas:ovda#skohttas MALIS ;
 ovda#skuvla#oahpaheaddji+CmpN/SgN+CmpN/SgG+CmpN/PlG:ovda#skuvla#oahpaheaddji¤ ACTOR ;
 ovda#skuvla+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:ovda#skuv'la GOAHTI ;
@@ -20167,20 +20183,20 @@ ruovde#raŧŧi GOAHTI-IU ;
 ruovde#reahka:ruovde#reah'ka GOAHTI ;
 ruovde#šákša:ruovde#šák'ša GOAHTI ;
 ruovdi+CmpN/SgN+CmpN/SgG+CmpN/PlG:ruov'di GOAHTI-IU ;
-ruovtto#luodda GOAHTI ;
 ruovtto#luodda+Use/Sub:ruovtto#luodda GOAHTI ;
 ruovtto#luotta#bileahtta GOAHTI ;
 ruovtto#luotta#čievččasteapmi+CmpN/Sg:ruovtto#luotta#čievččast EAPMI ;
-ruovtto#riika+Use/Sub:ruovtto#rij'ka GOAHTI ;
 ruovttu#bargu:ruovttu#bar'gu ALBMI ;
+ruovttu#bargu+Use/Sub:ruovtto#bar'gu ALBMI ;
 ruovttu#buohcce#dikšun+CmpN/Sg:ruovttu#buohcce#dikšum BOAHTIN ;
 ruovttu#divššár+CmpN/SgN+CmpN/SgG+CmpN/PlG:ruovttu#divššár GAHPIRLONG ;
 ruovttu#doallo#oahppu AIGI ;
 ruovttu#doallu GOAHTI-IU ;
 ruovttu#gieddi+CmpN/SgN+CmpN/SgG+CmpN/PlG:ruovttu#gieddi AIGI ;
+ruovttu#gieddi+Use/Sub:ruovtto#gieddi AIGI ;
 ruovttu#luodda+Use/Sub:ruovttu#luodda GOAHTI ;
 ruovttu#siidu+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:ruovttu#sij'du GOAHTI-IU ;
-ruovttu#veahkke#kantovra+Use/Sub:ruovttu#veahkke#kantov'ra GOAHTI ;
+ruovttu#siidu+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Use/Sub:ruovtto#sij'du GOAHTI-IU ;
 ruovttu#veahkki+CmpN/SgN+CmpN/SgG+CmpN/PlG:ruovttu#veahkki AIGI ;
 ruoŧa#giella GOAHTI ;
 ruoške#mándel GAHPIR ;
@@ -20612,6 +20628,7 @@ siessá+CmpN/SgN+CmpN/SgG+CmpN/PlG:siessá ALBMILONG ;
 sieđga#civkkán+CmpN/SgN+CmpN/SgG+CmpN/PlG:sieđga#civkkán9 GAHPIRLONG ;
 sieđga+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen:sieđ'ga GOAHTI ;
 siffar GAHPIR ;
+siffar+Use/Sub:siffár GAHPIR ;
 siffer#telegrámma:siffer#tele^grám'ma GOAHTI ; !^LOAN
 sigareahtta GOAHTI ;
 sigilla+G3:sigil'la GOAHTI ; !^LOAN
@@ -22416,6 +22433,7 @@ vuoruhan#suorgi:vuoruhan#suor'gi GOAHTI-IU ;
 vuoskku+CmpN/SgN+CmpN/SgG+CmpN/PlG:vuos'ku BOAZU ;
 vuoskku+CmpN/SgN+CmpN/SgG+CmpN/PlG:vuos'kun8 BEANA ;
 vuoss#árga+CmpN/SgN+CmpN/SgG+CmpN/PlG:vuoss9#ár'ga GOAHTI ;
+vuoss#árga+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:vuoss9#ar'ga GOAHTI ;
 vuossi:vuossi¤ GOAHTI ;
 vuossu:vuossu¤ GOAHTI ;
 vuosta#njuvddus:vuosta#njuv'dus MALISLONG ;
@@ -22692,6 +22710,7 @@ várre#boatka:várre#boat'ka GOAHTI ;
 várre#foanda:várre#foan'da GOAHTI ;
 várre#gilga:várre#gil'ga GOAHTI ;
 várre#lahttu+CmpN/SgN+CmpN/SgG+CmpN/PlG:várre#lahttu GOAHTILONGSHORT ;
+várre#lahttu+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:várre#láhttu GOAHTILONGSHORT ;
 várre#láhka:várre#láh'ka GOAHTI ;
 várre#presideanta+CmpN/SgN+CmpN/SgG+CmpN/PlG:várre#presidean'ta GOAHTI ;
 várre#stivrra#válga:várre#stivrra#vál'ga GOAHTI ;
@@ -24056,6 +24075,7 @@ cealkemeahttun:cealkemeahttu MEAHTTUS ;
 coagis+CmpN/SgN+CmpN/PlG:coah'ki BOARIS ;
 cuvkemeahttun:cuvkemeahttu MEAHTTUS ;
 dalá LEXATTR ;
+davvi#riikkalaš+CmpN/SgN+CmpN/PlG:davvi#riikkal AHKASAS ;
 davvi#sáme#giel At ;
 dearvvas+CmpN/SgN+CmpN/PlG:dear'vas GAPPUS ;
 dearvvaslaš+CmpN/SgN+CmpN/PlG:dearvvasl DABALAS "healthy A" ;
@@ -24071,7 +24091,6 @@ dehálaš:dehál DABALAS ;
 demográfalaš:demo^gráfal ETNOLOGALAS ;
 demokráhtalaš:demo^kráhtal DABALAS ;
 deonttalaš:de^onttal ETNOLOGALAS ;
-deskriptiivalaš:de^skriptiival DABALAS ;
 detáljalaš:detáljal DABALAS ;
 diagnostalaš:dia^gnostal ETNOLOGALAS ;
 diakronalaš:dia^kronal ETNOLOGALAS ;
@@ -24500,7 +24519,6 @@ industriijalaš:indu^striijal ETNOLOGALAS ;
 infernálalaš:infernálal ETNOLOGALAS ;
 innovatiiva+CmpN/SgN+CmpN/PlG:innovatij'va AKTIIVA ;
 intensiiva+CmpN/SgN+CmpN/PlG:intensij'va AKTIIVA ;
-inter#aktiivalaš:inter#aktijval DABALAS ;
 inter#našunála BOREALA ;
 inter#našunálalaš+Use/Sub:inter#našunálal ETNOLOGALAS ;
 inter#našuvnnalaš:inter#našuvnnal ETNOLOGALAS ;
@@ -24574,12 +24592,14 @@ klimáhtalaš:klimáhtal ETNOLOGALAS ;
 klinalaš:klinal ETNOLOGALAS ;
 kognitiiva:ko^gnitij'va BOREALA ;
 kollektiiva:kollektij'va BOREALA ;
+kollektiivvalaš+Use/Sub:kollektiival DABALAS ;
 kollektiivvalaš:kollektiivval DABALAS ;
 kolonialisttalaš:koloni^alisttal ETNOLOGALAS ;
 komihkalaš:komihkal ETNOLOGALAS ;
+konkrehta:kon^kre7hta AKTIIVA ;
 konkrehtalaš:kon^krehtal DABALAS ;
 konservatiiva+CmpN/SgN+CmpN/PlG:konservatij'va AKTIIVA ;
-konstruktiivalaš+CmpN/SgN+CmpN/PlG:kon^struktijval DABALAS ;
+konstruktiivvalaš+CmpN/SgN+CmpN/PlG+Use/Sub:kon^struktijval DABALAS ;
 konstruktiivvalaš+CmpN/SgN+CmpN/PlG:kon^struktijvval DABALAS ;
 kontrastiivvalaš:kontrastiivval DABALAS ;
 kosmehtalaš:kosmehtal ETNOLOGALAS ;
@@ -24592,8 +24612,6 @@ kronologalaš:kronologal ETNOLOGALAS ;
 kultur#politihkalaš:kultur#politihkal ETNOLOGALAS ;
 kultuvrralaš:kultuvrral	 ETNOLOGALAS ;
 kvalitatiiva:kvalitatij'va BOREALA ;
-kvalitatiivalaš:kvalitatiival DABALAS ;
-kvantitatiivalaš:kvantitatiival DABALAS ;
 lagas At ;
 lagaš LEXATTR ;
 leahkemeahttun:leahkemeahttu MEAHTTUS ;
@@ -24662,6 +24680,7 @@ maŋemus+A+Superl:maŋemuss BUOREMUSS ;
 maŋŋelaš:maŋŋe7l DABALAS ;
 meariheapme+CmpN/SgN+CmpN/PlG:meari7h JEAGOHEAPMI ;
 mearkkalaš:mearkkal DABALAS ;
+mearkkašahtti:mearkkašahtti¤ HAHTTI ;
 mearkkašmeahttun:mearkkašmeahttu MEAHTTUS ;
 mearre#diđolaš+CmpN/SgN+CmpN/PlG:mearre7#diđol ETNOLOGALAS ;
 mearridan#fámolaš+CmpN/SgN+CmpN/PlG:mearridan#fámol ETNOLOGALAS ;
@@ -24703,7 +24722,6 @@ movttet+CmpN/SgN+CmpN/PlG:movtteg BEAKKAN ;
 muittoheapme+CmpN/SgN+CmpN/PlG:muittoh JEAGOHEAPMI ;
 multi#medialaš:multi#medial ETNOLOGALAS ;
 muoseheapme+CmpN/SgN+CmpN/PlG:muoseh JEAGOHEAPMI ;
-musihkkalaš:musihkkal DABALAS ;
 musikálalaš:musikálal DABALAS ;
 muttát:muttág BEAKKAN ;
 mystihkalaš:mystihkal DABALAS ;
@@ -24743,7 +24761,7 @@ našunálalaš:našunálal ETNOLOGALAS ;
 našuvnnalaš+Use/NG:natiovnnal ETNOLOGALAS ;
 našuvnnalaš:našuvnnal ETNOLOGALAS ;
 neavri+CmpN/SgN+CmpN/PlG:neav'ri LAIKI ;
-negatiivalaš+CmpN/SgN+CmpN/PlG:negatijval DABALAS ;
+negatiivvalaš+CmpN/SgN+CmpN/PlG+Use/Sub:negatijval DABALAS ;
 negatiivvalaš+CmpN/SgN+CmpN/PlG:negatiivval DABALAS ;
 neo#lihtalaš:neo#lihtal ETNOLOGALAS ;
 neogrammatihkalaš:neo^grammatihkal ETNOLOGALAS ;
@@ -24865,7 +24883,7 @@ politihkálaš+Use/Sub:politihkál ETNOLOGALAS ;
 polygamiijalaš:polygamiijal ETNOLOGALAS ;
 polygámalaš:polygámal ETNOLOGALAS ;
 populeara#dieđalaš:populeara#dieđal ETNOLOGALAS ;
-positiivalaš+CmpN/SgN+CmpN/PlG:positijval DABALAS ;
+positiivvalaš+CmpN/SgN+CmpN/PlG+Use/Sub:positijval DABALAS ;
 positiivvalaš+CmpN/SgN+CmpN/PlG:positijvval DABALAS ;
 pragmatihkalaš:pragmatihkal ETNOLOGALAS ;
 pragmáhtalaš:pragmáhtal DABALAS ;
@@ -24905,12 +24923,12 @@ rašši LAIKI ;
 reahalaš+Use/Sub:reahal DABALAS ;
 realistalaš+Use/Sub:re^alistal DABALAS ;
 realisttalaš+CmpN/SgN+CmpN/PlG:re^alisttal DABALAS ;
+regionála:regi^onála AKTIIVA ;
 regionálalaš:regi^onálal DABALAS ;
 regionálaš:regi^onál ETNOLOGALAS ;
 regiovdna#politihkalaš:regi^ovdna#politihkal ETNOLOGALAS ;
 rehelaš:rehel DABALAS ;
 rehálaš+CmpN/SgN+CmpN/PlG:rehál DABALAS ;
-relatiivalaš:relatijval ETNOLOGALAS ;
 retoralaš:retoral ETNOLOGALAS ;
 retorihkalaš:retorihkal ETNOLOGALAS ;
 reumáhtalaš:reumáhtal ETNOLOGALAS ;
@@ -24926,6 +24944,7 @@ rievdameahttun:rievdameahttu MEAHTTUS ;
 rievttalaš:rievttal DABALAS ;
 rihkolaš:rihkol DABALAS ;
 rihča:rihččag8 GUOHCA ;
+riikkaid#gaskasaš:riikkaid9#gaskas AHKASAS ;
 rikkis+CmpN/SgN+CmpN/PlG:rigg VIISSIS ;
 rimssas+CmpN/SgN+CmpN/PlG:rim'sas BOAKKAS ;
 risttalaš:risttal DABALAS ;
@@ -25013,6 +25032,7 @@ somá+CmpN/SgN+CmpN/PlG:somá LAIKI; !
 somáhtalaš:somáhtal ETNOLOGALAS ;
 sorjavaš+CmpN/SgN+CmpN/PlG:sorjavažž DEARVVASLAS ;
 sorjjasmeahttun:sorjjasmeahttu MEAHTTUS ;
+sosiála:sosi^ála AKTIIVA ;
 sosialisttalaš:sosi^alisttal DABALAS ;
 sosio#ekonomálaš:sosio#ekonomál ETNOLOGALAS ;
 sosio#kultuvrralaš:sosio#kultuvrral  ETNOLOGALAS ;
@@ -25076,6 +25096,7 @@ systemáhtalaš:systemáhtal DABALAS ;
 sáhppat:sáhpp VIELG ;
 sálttis:sál'tis GAPPUS ;
 sáme#giel At ;
+sáme#gielalaš+CmpN/SgN+CmpN/PlG:sáme7#gielal AHKASAS ;
 sáme#politihkalaš:sáme7#politihkal ETNOLOGALAS ;
 sápmelaš+CmpN/SgN+CmpN/PlG+Use/Sub:sápmel AHKASAS "Saami A" ; ! because of the speller !
 sávri+CmpN/SgN+CmpN/PlG:sáv'ri LAIKI ;
@@ -25221,9 +25242,9 @@ váttis:váddis VATTIS ;
 áigodatlaš:áigodatl DABALAS ;
 áigái#heivvolaš:áigái#heivvol ETNOLOGALAS ;
 ákusttalaš+Use/Sub:ákusttal ETNOLOGALAS ;
-álbmot#rievttalaš:álbmo7t#rievttal DABALAS ;
 álbmot#válddálaš:álbmot#válddál ETNOLOGALAS ;
 álbmotlaš:álbmotl ETNOLOGALAS ;
+álbmotrievttálaš:álbmotrievttál ETNOLOGALAS ;
 álbmái:álbmá JIEDNAI_DECLINED ;
 álgo#vuolggalaš:álgo7#vuolggal ETNOLOGALAS ;
 álki ALKI ;
@@ -25233,6 +25254,7 @@ váttis:váddis VATTIS ;
 árbmugas+CmpN/SgN+CmpN/PlG:árbmug ISSORAS ;
 árgi+CmpN/SgN+CmpN/PlG:ár'gi LAIKI ;
 árjjalaš+CmpN/SgN+CmpN/PlG:árjjal DABALAS ;
+árktalaš+CmpN/SgN+CmpN/PlG:árktal AHKASAS ;
 árrat+A:ára%> BU/MUS ;
 árrat+A:árrad ALLAGA ;
 árrat:árra LEXATTR ;
@@ -71962,6 +71984,8 @@ vitnjut adv ;
 vuhtii adv ;
 vuollin adv ;
 vuos adv ;
+vuosttažettiin adv ;
+vuosttažettiin+Use/Sub:vuostážettiin adv ; ! CORR
 vuot adv ;
 várra adv ;
 várás adv ;
@@ -73274,6 +73298,7 @@ duot+Pron+Dem:duo%> demcas ;
 dot+Pron+Dem:do%> demcas ;
 dakkár+Pron+Dem:dakkár DAKKAR ;
 dákkár+Pron+Dem:dákkár DAKKAR ;
+diekkár+Pron+Dem:diekkár DAKKAR ;
 LEXICON Reflexive
 ieš+Pron+Refl: IESLEX ;
 jieš+Pron+Refl: JIESLEX ;
@@ -73320,6 +73345,10 @@ buohkat+Pron+Indef:buohka%>       indefdeclpleven ;
 gallis+Pron+Indef:gal'lis%>       indefdecluneven ;
 olus+Pron+Indef:olus%>           indefdecluneven ;
 LEXICON declindef-idiosync
+ieš#guhtet+Pron+Indef+Nom:ieš#guhtet%> K ;
+ieš#guhtet+Pron+Indef+Gen+Use/Sub:ieš#guđet%> K ; !
+ieš#guhtet+Pron+Indef+Gen+Use/Sub:ieš#guđet»# NAMAT ; !
+ieš#guhtet+Pron+Indef+Acc+Use/Sub:ieš#guđet%> K ; !
 seamma+Pron+Indef+Use/Sub:seamma SEAMMA ; !
 seammá+Pron+Indef:seammá SEAMMA ;
 seamma+Pron+Indef+Attr:seamma»# NAMAT ;
@@ -73334,6 +73363,10 @@ gallát iind ;
 goabbat iind ;
 goabbat:goabbat»# NAMAT ;
 guhtet iind ;
+ieš#guhtet iind ;
+ieš#guđet iind ;
+ieš#guđet:ieš#guđet»# NAMAT ;
+ieš#guhtet:ieš#guhtet»# NAMAT ;
 ihkinassii iind ;
 juohke iind ;
 juohke:juohke»# NAMAT ;
@@ -73434,6 +73467,7 @@ beallái+Po:beallá%>s PxC ;
 beallái Pp ;
 siskko#bealde Pp ;
 olggo#bealde Pp ;
+oarjja#bealde Pp ;
 birra+Po:bira%> PxV2 ;
 birra Pp ;
 bokte Postp ;
@@ -79590,7 +79624,7 @@ LEXICON smallacro
 
 
 LEXICON ACRO
- +N+ACR: Rhyph;     !       ! Here we dive over to the numerals: NRK-2
+ +N+ACR: RHyph;     !       ! Here we dive over to the numerals: NRK-2
  +N+ACR+Use/Sub: Rreal ;     ! !  ! Without hyphen: we don't want these in the normative transducers:  NRK23
  +N+ACR: acroconnector ;    ! Here we add the POS tag and go ACRO
 

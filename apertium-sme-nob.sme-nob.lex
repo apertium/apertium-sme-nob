@@ -2157,6 +2157,18 @@ SUBSTITUTE (Pron Indef) (A Attr) ("iešguđet" Pron Indef);
 SUBSTITUTE (Pron Indef) (A Attr) ("iešguhtet" Pron Indef);
 # iešguhtet/iešguđet are actually «hver sine/enhver», but are used like «forskjellig/ulik» in all contexts I've seen so far --KBU
 
+# For iešguđet+ge:
+SUBSTITUTE SUB:1 (Pron Indef Gen Der1 Der_lágan A Attr) (A Attr) ("iešguđet" Pron Indef);
+SUBSTITUTE SUB:1 (Pron Indef Gen Der1 Der_lágan A Attr) (A Attr) ("iešguhtet" Pron Indef);
+SUBSTITUTE SUB:1 (Pron Indef Acc Der1 Der_lágan A Attr) (A Attr) ("iešguđet" Pron Indef);
+SUBSTITUTE SUB:1 (Pron Indef Acc Der1 Der_lágan A Attr) (A Attr) ("iešguhtet" Pron Indef);
+SUBSTITUTE SUB:1 (Pron Indef Gen) (A Attr) ("iešguđet" Pron Indef);
+SUBSTITUTE SUB:1 (Pron Indef Gen) (A Attr) ("iešguhtet" Pron Indef);
+SUBSTITUTE SUB:1 (Pron Indef Acc) (A Attr) ("iešguđet" Pron Indef);
+SUBSTITUTE SUB:1 (Pron Indef Acc) (A Attr) ("iešguhtet" Pron Indef);
+SUBSTITUTE SUB:1 (Pron Indef) (A Attr) ("iešguđet" Pron Indef);
+SUBSTITUTE SUB:1 (Pron Indef) (A Attr) ("iešguhtet" Pron Indef);
+
 
 
 # Adverbs
