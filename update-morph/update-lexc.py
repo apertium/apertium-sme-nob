@@ -352,7 +352,8 @@ def make_lexc(COBJ=False):
 	
 	OUTFILE = "%s.%s.lexc" % (BASENAME, PROC_LANG)
 
-	BIDIX_BIN = "%s/%s.autobil.bin" % (COBJ.abs_output_dir().rstrip('/'), PREFIX)
+	BIDIX_DIR = COBJ.abs_output_dir().rstrip('/')
+	BIDIX_BIN = "%s/%s.autobil.bin" % (BIDIX_DIR, PREFIX)
 	
 	STEPS = COBJ.files
 	
@@ -372,7 +373,9 @@ def make_lexc(COBJ=False):
 	if any([u'clip' in s and ('no_trim' not in s[2]
 				     or not s[2]['no_trim'])
 		   for s in STEPS]):
-		print "... Loading bidix FST %s (you did compile it, right?)" % (BIDIX_BIN,)
+		print "... Loading bidix FST %s" % (BIDIX_BIN,)
+		if sp.call(["make", "-q", "sme-nob.autobil.bin"], cwd=BIDIX_DIR) == 1:
+			print "WARNING: It seems like %s is not compiled! If this is correct, please compile the bidix, then re-run this script." % (BIDIX_BIN,)
 		# Finding the library file, should be in the same directory as this script
 		# TODO: if we ever get around to sudo make installing this, ctypes.util.find_library() should do the trick
 		LIBPATH = THISDIR + ".libs/libltpy.dylib"
