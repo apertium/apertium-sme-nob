@@ -14,6 +14,7 @@ expandforms () {
     wget --quiet -O - "$URL" \
 	| grep '<font color="red"' \
 	| sed 's%.*"red">\(.*\)</font>.*%\1%'
+    sleep 5;			# don't hurt their server too much
 }
 
 forms2bidix () {
@@ -25,12 +26,6 @@ forms2bidix () {
 	| lt-proc -b $DEV/../sme-nob.autobil.bin
 }
 
-
-
 while read line; do
-    LM=$(echo -e "$line"|cut -f1);
-    POS=$(echo -e "$line"|cut -f2);
-    sleep 5;			# don't hurt their server too much
-    expandforms "$LM" "$POS";
-done \
-    | forms2bidix
+    expandforms "${line/	*/}" "${line/*	/}";
+done | forms2bidix
