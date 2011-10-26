@@ -279,6 +279,7 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_cmp">
       <attr-item tags="Cmp"/>
       <attr-item tags="cmp"/>
+      <attr-item tags="RCmpnd"/>
     </def-attr>
     <def-attr n="a_pron">
       <attr-item tags="Pron"/>
@@ -1220,6 +1221,14 @@ And then there are some categories like "month", with all the months.
               <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
               <let><var n="c_def_pos"/><lit v=""/></let>
             </when>
+            <when c="RCmpnd → sg.ind.dash (split compounds)
+                     eanan-(RCmpnd) ja luonddudoahpagiid => jord-(sg.ind) og naturfagord
+                     NOTE: the dash tag is only defined for sg.ind words in nob.dix (like cmp)">
+              <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="RCmpnd"/></equal></test>
+              <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+              <let><var n="c_def_pos"/><lit-tag v="ind.dash"/></let>
+              <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
+            </when>
             <otherwise>
               <let><var n="c_def_pos"/><lit-tag v="3"/></let>
             </otherwise>
@@ -1778,7 +1787,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
               <clip pos="1" side="tl" part="a_num"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="cmp"/>
+              <lit-tag v="dash"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
             <lu>
