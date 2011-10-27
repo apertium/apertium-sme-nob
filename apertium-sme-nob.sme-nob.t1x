@@ -207,7 +207,7 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="dálvi" tags="N.*"/>
       <cat-item lemma="čakča" tags="N.*"/>
     </def-cat>
-    <def-cat n="yearcmp">
+    <def-cat n="num.cmp">
       <cat-item tags="Num.Cmp"/>
     </def-cat>
     <def-cat n="diibmu">
@@ -1760,46 +1760,91 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: YEARCMP LOHKU
+    <rule comment="REGLA: NUM.CMP NOM
                    1990-logu => 1990-tallet
                    Always definite (should not add a determiner in t4x)
-                   Keep the dash by adding the 'cmp' tag here (should probably do it in lexc instead, todo),
-                   nob.dix adds a - for cmp numerals">
+                   Keep the dash by adding the 'dash' tag here,
+                   nob.dix adds a - for numerals tagged 'dash'">
       <pattern>
-        <pattern-item n="yearcmp"/>
-        <pattern-item n="lohku"/>
+        <pattern-item n="num.cmp"/>
+        <pattern-item n="nom_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <chunk name="cmp_nom" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="2" side="sl" part="mode"/></tag>
-              <tag><clip pos="2" side="tl" part="gen"/></tag>
-              <tag><clip pos="2" side="tl" part="nbr"/></tag>
-              <tag><lit-tag v="def"/></tag>
-              <tag><clip pos="2" side="tl" part="case"/></tag>
-            </tags>
-            <lu>
+
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <!-- no modify_nomcmp_nbr_art for numcmp -->
+
+        <choose><when>
+          <test><equal><clip pos="2" side="tl" part="lemh"/><lit v="lohku"/></equal></test>
+          <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+        </when></choose>
+        
+        <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <let><var n="defnes"/><lit-tag v="def"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_num"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <lit-tag v="dash"/>
               <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-            <lu>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+    <rule comment="REGLA: NUM.CMP NOM.CMP NOM
+                   1990-logu => 1990-tallet
+                   Always definite (should not add a determiner in t4x)
+                   Keep the dash by adding the 'dash' tag here,
+                   nob.dix adds a - for numerals tagged 'dash'">
+      <pattern>
+        <pattern-item n="num.cmp"/>
+        <pattern-item n="nom.cmp"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <!-- no modify_nomcmp_nbr_art for numcmp -->
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+
+        <choose><when>
+          <test><equal><clip pos="3" side="tl" part="lemh"/><lit v="lohku"/></equal></test>
+          <let><clip pos="3" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+        </when></choose>
+        
+        <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <let><var n="defnes"/><lit-tag v="def"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="dash"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <lit v="^"/>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
-              <lit-tag v="def"/>
+              <clip pos="2" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
     
