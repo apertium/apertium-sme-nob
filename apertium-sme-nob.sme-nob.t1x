@@ -980,6 +980,9 @@ And then there are some categories like "month", with all the months.
                   Regular nouns are always sg.ind when non-final in compounds.
                   Bidix often does not supply defnes/number, making clip fail; in that case, append to tags">
       <choose>
+        <when c="Do nothing for proper nouns">
+          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+        </when>
         <when>
           <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sp"/></equal></test>
           <let><clip pos="1" side="tl" part="art"/><lit v=""/></let>
