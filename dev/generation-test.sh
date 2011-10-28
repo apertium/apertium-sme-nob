@@ -36,13 +36,13 @@ if [[ ! -f /tmp/sme.gentest.postchunk ]]; then
 	exit;
 fi
 
-cat /tmp/sme.gentest.postchunk  | sed 's/^ //g' | grep -v -e '@' -e '*' -e '[0-9]<Num>' -e '#}' -e '#{' | sed 's/\$>/$/g' | LC_ALL='C' sort -f | uniq -c | sort -gr > /tmp/sme.gentest.stripped
-cat /tmp/sme.gentest.stripped | lt-proc -d ${DEV}/../sme-nob.autogen.bin > /tmp/sme.gentest.surface
-cat /tmp/sme.gentest.stripped | sed 's/^ *[0-9]* \^/^/g' > /tmp/sme.gentest.nofreq
-paste /tmp/sme.gentest.surface /tmp/sme.gentest.nofreq | grep -e '\/' -e '#'  > /tmp/sme.generation.errors.txt
-cat /tmp/sme.generation.errors.txt  | grep '[0-9] #' | grep -v '#' | grep '\/' > /tmp/sme-nob.multiform
-cat /tmp/sme.generation.errors.txt  | grep '[0-9] #' | grep '#.*\/' > /tmp/sme-nob.multibidix 
-cat /tmp/sme.generation.errors.txt  | grep '[0-9] #' | grep '#' | grep -v '\/' > /tmp/sme-nob.tagmismatch 
+sed 's/^ //g' < /tmp/sme.gentest.postchunk | grep -v -e '@' -e '*' -e '[0-9]<Num>' -e '#}' -e '#{' | sed 's/\$>/$/g' | LC_ALL='C' sort -f | uniq -c | sort -gr > /tmp/sme.gentest.stripped
+lt-proc -d ${DEV}/../sme-nob.autogen.bin < /tmp/sme.gentest.stripped > /tmp/sme.gentest.surface
+sed 's/^ *[0-9]* \^/^/g'                 < /tmp/sme.gentest.stripped > /tmp/sme.gentest.nofreq
+paste /tmp/sme.gentest.surface /tmp/sme.gentest.nofreq | grep -e '\/' -e '^[^	]*#'  > /tmp/sme.generation.errors.txt
+grep -v '^[^	]*#' /tmp/sme.generation.errors.txt | grep    '\/' > /tmp/sme-nob.multiform
+grep    '^[^	]*#' /tmp/sme.generation.errors.txt | grep    '\/' > /tmp/sme-nob.multibidix
+grep    '^[^	]*#' /tmp/sme.generation.errors.txt | grep -v '\/' > /tmp/sme-nob.tagmismatch 
 
 echo "";
 echo "===============================================================================";
