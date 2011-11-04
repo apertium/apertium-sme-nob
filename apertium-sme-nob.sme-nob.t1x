@@ -1049,7 +1049,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="set_defnes2" npar="2"
                c="arg.1: noun, arg.2: determiner. With 'det (adj) nom' the noun is definitely
-                  * indefinite if the determiner is a possessive or quantifier,
+                  * indefinite if the determiner is a possessive
                   * definite if it is a demonstrative
                   Otherwise, keep old defnes.
                   Assumes that clean_a_det has been called.">      
@@ -2113,7 +2113,6 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <!-- Here we call set_defnes2 because after a numeral quantifier it should be indefinite -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro> 
         
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
@@ -2183,8 +2182,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <!-- Here we call set_defnes2 because after a numeral quantifier it should be indefinite -->
-        <call-macro n="set_defnes2"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
         
         
         <let><var n="c_name"/><lit v="pre_"/></let>
@@ -2206,10 +2204,57 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
+    <rule comment="REGLA: NUM_MOD NOM.CMP NOM
+                   -----
+                   See NUM_MOD NOM">
+      <pattern>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="nom.cmp"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <!-- no modify_nomcmp_nbr_art for numcmp -->
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+
+        <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
+
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <let><clip pos="3" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
+        <let><clip pos="3" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+    
     <rule comment="REGLA: NUM_MOD ADJ_ATTR NOM
                    -----
                    22 jahkásaš Tine
-                   (see above rule)">
+                   See NUM_MOD NOM">
       <pattern>
         <pattern-item n="num_mod"/>
         <pattern-item n="adj_attr"/>
@@ -2220,8 +2265,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
-        <!-- Here we call set_defnes2 because after a numeral quantifier it should be indefinite -->
-        <call-macro n="set_defnes2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <!-- not set_defnes2 here, seems to work better just looking at head syntax tag: -->
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
         
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <let>
@@ -2274,8 +2319,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
 
-        <!-- Here we call set_defnes2 because after a numeral quantifier it should be indefinite -->
-        <call-macro n="set_defnes2"><with-param pos="1"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="1"/></call-macro>
         
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
         <let>
