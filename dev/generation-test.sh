@@ -37,13 +37,13 @@ if [[ ! -f $TMP/sme.gentest.postchunk ]]; then
 	exit;
 fi
 
-sed 's/^ //g' < $TMP/sme.gentest.postchunk | grep -v -e '@' -e '*' -e '[0-9]<Num>' -e '#}' -e '#{' | sed 's/\$>/$/g' | LC_ALL='C' sort -f | uniq -c | sort -gr > $TMP/sme.gentest.stripped
+sed 's/^[ –	]*//g' < $TMP/sme.gentest.postchunk | grep -v -e '@' -e '*' -e '[0-9]<Num>' -e '#}' -e '#{' | sed 's/\$>/$/g' | LC_ALL='C' sort -f | uniq -c | sort -gr > $TMP/sme.gentest.stripped
 lt-proc -d ${DEV}/../sme-nob.autogen.bin < $TMP/sme.gentest.stripped > $TMP/sme.gentest.surface
 sed 's/^ *[0-9]* \^/^/g'                 < $TMP/sme.gentest.stripped > $TMP/sme.gentest.nofreq
 paste $TMP/sme.gentest.surface $TMP/sme.gentest.nofreq | grep -e '\/' -e '^[^	]*#'  > $TMP/sme.generation.errors.txt
-grep -v '^[^	]*#' $TMP/sme.generation.errors.txt | grep    '\/' > $TMP/sme-nob.multiform
-grep    '^[^	]*#' $TMP/sme.generation.errors.txt | grep    '\/' > $TMP/sme-nob.multibidix
-grep    '^[^	]*#' $TMP/sme.generation.errors.txt | grep -v '\/' > $TMP/sme-nob.tagmismatch 
+grep -v '^[^	]*#' $TMP/sme.generation.errors.txt | grep    '\/[^	>]' > $TMP/sme-nob.multiform
+grep    '^[^	]*#' $TMP/sme.generation.errors.txt | grep    '\/[^	>]' > $TMP/sme-nob.multibidix
+grep    '^[^	]*#' $TMP/sme.generation.errors.txt | grep -v '\/[^	>]' > $TMP/sme-nob.tagmismatch
 
 echo "";
 echo "===============================================================================";
