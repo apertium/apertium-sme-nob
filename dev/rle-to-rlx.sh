@@ -49,9 +49,9 @@ echo "* fix MAP:r16 (@PCLE) TARGET Pcle ; to demand 'NOT 0 Pron OR N OR etc.'"
 
 #### The diff from manual changes in last update:
 
-# --- sme-dis.rle	2011-10-06 18:18:11.693336515 +0200
-# +++ apertium-sme-nob.sme-nob.rlx	2011-10-06 18:41:45.806034535 +0200
-# @@ -423,17 +423,18 @@
+# --- sme-dis.rle	2011-11-04 13:08:45.318040880 +0100
+# +++ apertium-sme-nob.sme-nob.rlx	2011-11-04 13:11:02.382018714 +0100
+# @@ -425,17 +425,18 @@
   
 #  LIST Qst = Qst ;
   
@@ -81,7 +81,7 @@ echo "* fix MAP:r16 (@PCLE) TARGET Pcle ; to demand 'NOT 0 Pron OR N OR etc.'"
  
 #  LIST IV = IV ;
 #  LIST TV = TV ;
-# @@ -13778,7 +13779,8 @@
+# @@ -13779,7 +13780,8 @@
 #  MAP:r15 (@INTERJ) TARGET Interj ;
 #  	## Maid, iigo leat boahtán?
  
@@ -91,7 +91,7 @@ echo "* fix MAP:r16 (@PCLE) TARGET Pcle ; to demand 'NOT 0 Pron OR N OR etc.'"
 #  	## Amma mii eat leat máksán? 
  
 #  MAP:r17 (@APP-Num←) TARGET ABBR IF (*-1 Num BARRIER NOT-QMARK)(0 INITIAL LINK NOT *1 NP-MEMBER BARRIER NOT-QMARK);
-# @@ -16323,7 +16325,8 @@
+# @@ -16324,7 +16326,8 @@
 #      ## Njáv, váidalii Busi ja gávastalai.
 #      ## Njáv, njávggádii Busi fas ja fanahalai.
      
