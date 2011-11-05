@@ -48,22 +48,33 @@ Alphabet
  %+Dial%/GG:0   
  %+Dial%/GS:0   
 
- %+First:0 %+Last:0 
- %+None:0 
- %+CmpOnly:0 
- %+SgNomLeft:0 %+SgGenLeft:0 %+PlGenLeft:0 %+SgLeft:0 
- %+AllCmp:0 
- %+DefSgGenCmp:0 %+DefPlGenCmp:0 %+DefCmp:0 
+! Normative/prescriptive compounding tags
+! (to govern compound behaviour for the speller, ie what a compound SHOULD BE):
 
- %+CmpN%/Sg:0 %+CmpN%/SgN:0
- %+CmpN%/SgG:0 %+CmpN%/PlG:0
- %+CmpN%/First:0 %+CmpN%/Last:0
- %+CmpN%/None:0 %+CmpN%/Only:0
- %+CmpN%/Pref:0
- %+CmpN%/SgLeft:0 %+CmpN%/SgNomLeft:0
- %+CmpN%/SgGenLeft:0 %+CmpN%/PlGenLeft:0
- %+CmpN%/All:0
- %+CmpN%/Def:0 %+CmpN%/DefSgGen:0 %+CmpN%/DefPlGen:0
+! The first part of the component may be ..
+%+CmpN%/Sg:0       ! Sg
+%+CmpN%/SgN:0      ! SgNominative
+%+CmpN%/SgG:0      ! SgGenitive
+%+CmpN%/PlG:0      ! PlGenitive
+
+! This part of the component might be ..
+%+CmpN%/First:0     ! first
+%+CmpN%/Last:0      ! last
+%+CmpN%/None:0      ! Can not take part in compounds
+%+CmpN%/Only:0      ! Can only be part of a compound
+%+CmpN%/Pref:0      ! prefix only
+
+! The second part of the compound may take ..
+%+CmpN%/SgLeft:0     ! Sg to the left
+%+CmpN%/SgNomLeft:0  ! etc.
+%+CmpN%/SgGenLeft:0  ! 
+%+CmpN%/PlGenLeft:0  ! 
+
+! This part of the compound may ... 
+%+CmpN%/All:0        ! all positions, _default_, this tag does not have to be written
+%+CmpN%/Def:0        ! works along with Left compound-tagging
+%+CmpN%/DefSgGen:0   ! works along with Left compound-tagging
+%+CmpN%/DefPlGen:0   ! works along with Left compound-tagging
 
  %+Multi:0
  %+Guess:0
@@ -311,25 +322,32 @@ Useless =	    ! Keep consistent with tags in  sme-lex.txt:36..118
 ! Normative/prescriptive compounding tags
 ! (to govern compound behaviour for the speller, ie what a compound SHOULD BE):
 
- %+First %+Last ! Spellertag: Can be first/last member of compound
- %+None        ! Spellertag: Can not participate in compounds
- %+CmpOnly     ! spellertag: can *only* participate in compounds
- %+SgNomLeft %+SgGenLeft %+PlGenLeft %+SgLeft ! Restriction on compound to the left
- %+AllCmp      ! Allow all compounding patterns
- %+DefSgGenCmp %+DefPlGenCmp %+DefCmp ! Default values
-! to be renamed:  +§SgNomCmp +§SgGenCmp +§PlGenCmp
+! The first part of the component may be ..
+%+CmpN%/Sg       ! Sg
+%+CmpN%/SgN      ! SgNominative
+%+CmpN%/SgG      ! SgGenitive
+%+CmpN%/PlG      ! PlGenitive
 
- %+CmpN%/Sg %+CmpN%/SgN                 ! Can take right compound if self is Sg, SgN 
- %+CmpN%/SgG %+CmpN%/PlG                ! Can take right compound if self is SgG, PlG 
- %+CmpN%/First %+CmpN%/Last             ! prefix only
- %+CmpN%/None %+CmpN%/Only              ! prefix only
- %+CmpN%/Pref                         ! prefix only
- %+CmpN%/SgLeft %+CmpN%/SgNomLeft       ! Can take left compound if self is Sg, SgNom
- %+CmpN%/SgGenLeft %+CmpN%/PlGenLeft    ! Can take left compound if self is SgGen, … 
- %+CmpN%/All                          ! 
- %+CmpN%/Def %+CmpN%/DefSgGen %+CmpN%/DefPlGen
+! This part of the component might be ..
+%+CmpN%/First     ! first
+%+CmpN%/Last      ! last
+%+CmpN%/None      ! Can not take part in compounds
+%+CmpN%/Only      ! Can only be part of a compound
+%+CmpN%/Pref      ! prefix only
 
-!!! tags for compound analysis (%+Cmpnd etc.) are _NOT_ removed!
+! The second part of the compound may take ..
+%+CmpN%/SgLeft     ! Sg to the left
+%+CmpN%/SgNomLeft  ! etc.
+%+CmpN%/SgGenLeft  ! 
+%+CmpN%/PlGenLeft  ! 
+
+! This part of the compound may ... 
+%+CmpN%/All        ! all positions, _default_, this tag does not have to be written
+%+CmpN%/Def        ! works along with Left compound-tagging
+%+CmpN%/DefSgGen   ! works along with Left compound-tagging
+%+CmpN%/DefPlGen   ! works along with Left compound-tagging
+
+!!! Descriptive tags for compound analysis (%+Cmpnd etc.) are _NOT_ removed!
 
  %+Multi ! Multiword phrase tag
  %+Guess ! for the name guesser
