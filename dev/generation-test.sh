@@ -26,7 +26,7 @@ if [[ $1 == "-r" ]]; then
 	done
 	echo "done.";
 	echo -n "Translating corpus for generation test (this could take some time)... ";
-	cat $TMP/sme-nob.corpus.txt | apertium -d ${DEV}/../ sme-nob-postchunk | sed 's/\$\W*\^/$\n^/g' > $TMP/sme.gentest.postchunk
+	cat $TMP/sme-nob.corpus.txt | apertium -d ${DEV}/../ sme-nob-postchunk | sed 's/\$[^^]*\^/$\n^/g' > $TMP/sme.gentest.postchunk
 	echo "done.";
 fi
 
