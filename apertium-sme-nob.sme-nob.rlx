@@ -425,18 +425,17 @@ LIST Ord = Ord ;
  
 LIST Qst = Qst ;
  
-# +ge etc. added for Apertium:
-LIST Foc_ge = Foc_ge +ge ;
-LIST Foc_gen = Foc_gen +gen ;
-LIST Foc_ges = Foc_ges +ges ;
-LIST Foc_gis = Foc_gis +gis ;
-LIST Foc_naj = Foc_naj +naj ;
-LIST Foc_ba = Foc_ba +ba ;
-LIST Foc_be = Foc_be +be ;
-LIST Foc_hal = Foc_hal +hal ;
-LIST Foc_han = Foc_han +han ;
-LIST Foc_bat = Foc_bat +bat ;
-LIST Foc_son = Foc_son +son ;
+LIST Foc_ge = Foc_ge ;
+LIST Foc_gen = Foc_gen ;
+LIST Foc_ges = Foc_ges ;
+LIST Foc_gis = Foc_gis ;
+LIST Foc_naj = Foc_naj ;
+LIST Foc_ba = Foc_ba ;
+LIST Foc_be = Foc_be ;
+LIST Foc_hal = Foc_hal ;
+LIST Foc_han = Foc_han ;
+LIST Foc_bat = Foc_bat ;
+LIST Foc_son = Foc_son ;
 
 LIST IV = IV ;
 LIST TV = TV ;
@@ -8461,8 +8460,9 @@ MAP (@-FAUXV) TARGET ("orrut") IF (NEGATE 0 VFIN)(*1 PrfPrc OR (Actio Ess) BARRI
 
 MAP (@+FMAINV) TARGET ("orrut") IF (0 VFIN)(NEGATE *1 PrfPrc OR (Actio Ess) BARRIER SV-BOUNDARY) ;
 
-MAP (@-FMAINV) TARGET ("orrut") IF (NEGATE 0 VFIN)(NEGATE *1 PrfPrc OR (Actio Ess) BARRIER SV-BOUNDARY) ;  
+MAP (@-FMAINV) TARGET ("orrut") IF (NEGATE 0 VFIN)(NEGATE *1 PrfPrc OR (Actio Ess) BARRIER SV-BOUNDARY)(NEGATE *-1 A BARRIER WORD - Adv - Ill LINK *-1 COPULAS BARRIER NOT-ADV LINK NOT *-1 Nom BARRIER S-BOUNDARY2) ;  
  	## It don leat mus goahtemuorran orron.
+ 	#$ Ja ii leatge buorre sutnje orrut suhkkes vuvddiid siste, gos lea liegga ilbmi.
 
 
 
@@ -8472,8 +8472,9 @@ MAP:r350 (@-FMAINV) TARGET Inf IF (*-1 AUX BARRIER V LINK NOT 0 ("leat") LINK NO
 MAP:r351 (@←SUBJ) TARGET Inf IF (NEGATE 0 AUX LINK 1 Inf)(*-1 ("leat") BARRIER NOT-ADV-PCLE LINK -1 NP-HEAD-NOM LINK -1 (Interr Gen) LINK *-1 BOC BARRIER WORD) ;
 	## Gean vuorru lea dál bálkestit birccu?
 
-MAP:r352 (@←SUBJ) TARGET Inf IF (NEGATE 0 AUX LINK 1 Inf)(*-1 A BARRIER NOT-ADV LINK *-1 COPULAS BARRIER NOT-ADV LINK NOT *-1 Nom BARRIER S-BOUNDARY2);
+MAP:r352 (@←SUBJ) TARGET Inf IF (NEGATE 0 AUX LINK 1 Inf)(*-1 A BARRIER WORD - Ill - Adv LINK *-1 COPULAS BARRIER NOT-ADV LINK NOT *-1 Nom BARRIER S-BOUNDARY2);
 	## Mu mielas lea suohtas oahppat sámegiela.
+	## Ja ii leatge buorre sutnje orrut suhkkes vuvddiid siste, gos lea liegga ilbmi.
 
 MAP:r353 (@←SUBJ) TARGET Inf IF (NEGATE 0 AUX LINK 1 Inf)(-1 COPULAS LINK -1 A LINK *-1 BOC BARRIER NOT-ADV);	
 	## Vearrámus lea go nu váttis lea oažžut eret dan gova, lohká nisu, gii ii hálit namas aviisii. 
@@ -13780,8 +13781,7 @@ MAP:r14 (@INTERJ) TARGET ("beargalat") IF (*-1 Nom BARRIER S-BOUNDARY2 LINK NEGA
 MAP:r15 (@INTERJ) TARGET Interj ;
 	## Maid, iigo leat boahtán?
 
-# was MAP:r16 (@PCLE) TARGET Pcle ; # but in Apertium we can have the Pcle tag on other PoS too
-MAP:r16 (@PCLE) TARGET Pcle IF (NOT 0 N OR A OR Adv OR V OR Pron OR CS OR CC OR Po OR Pr OR Interj OR Num OR ABBR OR ACR) ;
+MAP:r16 (@PCLE) TARGET Pcle ;
 	## Amma mii eat leat máksán? 
 
 MAP:r17 (@APP-Num←) TARGET ABBR IF (*-1 Num BARRIER NOT-QMARK)(0 INITIAL LINK NOT *1 NP-MEMBER BARRIER NOT-QMARK);
@@ -14857,6 +14857,9 @@ MAP:r501 (@HAB) TARGET Ill IF (0 HAB-ACTOR LINK *-1 BOS BARRIER NPNHA)(*1 COPULA
 
 MAP:r502 (@HAB) TARGET Loc IF (-1 Mal OR Fem)(0 Ord)(NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(*1 ("leat") BARRIER NOT-ADV-PCLE);
 	## Heinrich njealjádis lea rikkis eamit.
+	
+MAP (@HAB) TARGET Loc IF (0 HAB-ACTOR)(NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(-1 ("leat") LINK -1 ADVL);
+    ## Dál leat sus 137 gáicca.
 
 # before relative clause
 MAP:r497 (@HAB) TARGET Loc IF (0 HAB-ACTOR)(NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(*1 Rel BARRIER WORD LINK *1 VFIN BARRIER SV-BOUNDARY2 LINK *1 ("leat") BARRIER SV-BOUNDARY2);
@@ -16326,8 +16329,7 @@ LIST MUITALIT = "árvalit" "bivdit" "boagustit" "cealkit" "cuoigut" "čilget" "�
     ## Njáv, váidalii Busi ja gávastalai.
     ## Njáv, njávggádii Busi fas ja fanahalai.
     
-# Apertium doesn't like non-syntax-tags being altered after morphology:
-#SUBSTITUTE:muitalit (V) (←vdic→ V) TARGET MUITALIT (0 FMAINV) ;
+SUBSTITUTE:muitalit (V) (←vdic→ V) TARGET MUITALIT (0 FMAINV) ;
 
 #===================#
 # Rules for getting rid of ambiguitity which is bad e.g. Apertium:
