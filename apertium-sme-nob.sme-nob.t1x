@@ -2528,7 +2528,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: CMP NOM
                    -----
                    vuođđofága => grunnfag
@@ -4125,6 +4125,27 @@ TODO: this should be an mwe in the analyser.">
             <tags>
               <tag><var n="c_syn"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adv"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: CMP">
+      <pattern>
+        <pattern-item n="cmp"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><var n="c_syn"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
