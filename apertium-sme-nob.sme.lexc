@@ -41,6 +41,7 @@ Multichar_Symbols
  +Use/NG    ! not-generate, for ped generation isme-ped.fst
  +Use/NA    ! not-analyse, for restricting analyses needed for 
             ! MT generation not to pop up elsewhere
+ +Use/NVD   ! Not for miniparadigm in VD dicts
 
 ! Dialect tags:
  +Dial/-KJ  ! forms not in use in KJ (Kárásjohka)
@@ -54,24 +55,32 @@ Multichar_Symbols
 ! Normative/prescriptive compounding tags
 ! (to govern compound behaviour for the speller, ie what a compound SHOULD BE):
 
- +First +Last ! Spellertag: Can be first/last member of compound
- +None        ! Spellertag: Can not participate in compounds
- +CmpOnly     ! spellertag: can *only* participate in compounds
- +SgNomLeft +SgGenLeft +PlGenLeft +SgLeft ! Restriction on compound to the left
- +AllCmp      ! Allow all compounding patterns
- +DefSgGenCmp +DefPlGenCmp +DefCmp ! Default values
-! to be renamed:  +§SgNomCmp +§SgGenCmp +§PlGenCmp
+! The first part of the component may be ..
++CmpN/Sg       ! Sg
++CmpN/SgN      ! SgNominative
++CmpN/SgG      ! SgGenitive
++CmpN/PlG      ! PlGenitive
 
- +CmpN/Sg +CmpN/SgN                 ! Can take right compound if self is Sg, SgN 
- +CmpN/SgG +CmpN/PlG                ! Can take right compound if self is SgG, PlG 
- +CmpN/First +CmpN/Last             ! prefix only
- +CmpN/None +CmpN/Only              ! prefix only
- +CmpN/Pref                         ! prefix only
- +CmpN/SgLeft +CmpN/SgNomLeft       ! Can take left compound if self is Sg, SgNom
- +CmpN/SgGenLeft +CmpN/PlGenLeft    ! Can take left compound if self is SgGen, … 
- +CmpN/All                          ! 
- +CmpN/Def +CmpN/DefSgGen +CmpN/DefPlGen
+! This part of the component might be ..
++CmpN/First     ! first
++CmpN/Last      ! last
++CmpN/None      ! Can not take part in compounds
++CmpN/Only      ! Can only be part of a compound
++CmpN/Pref      ! prefix only
 
+! The second part of the compound may take ..
++CmpN/SgLeft     ! Sg to the left
++CmpN/SgNomLeft  ! etc.
++CmpN/SgGenLeft  ! 
++CmpN/PlGenLeft  ! 
+
+! This part of the compound may ... 
++CmpN/All        ! all positions, _default_, this tag does not have to be written
++CmpN/Def        ! works along with Left compound-tagging
++CmpN/DefSgGen   ! works along with Left compound-tagging
++CmpN/DefPlGen   ! works along with Left compound-tagging
+
+! Descriptive compounding tags:
 ! Tags for compound analysis - this is what a compound is:
  +SgCmp +SgNomCmp +SgGenCmp +PlGenCmp ! Different case + number combinations
  +Cmp ! Dynamic compound - this tag should always be part of a dynamic compound.
@@ -1136,35 +1145,35 @@ LEXICON LUONDU !this word (+vuohta) because of behavior in compounds
  +N+Pl+Nom+Use/Sub:%>X4k K ; ! !Skániid dialect
  +N+Sg+Com+Use/Sub:%>X5jn K ;
  +N+Sg+Com:%>%^DISIMPjn K ;
- +N+Sg+Com+Use/Ped+Use/Sub:%>X5jn%> PxC ;
+ +N+Sg+Com+Use/Sub:%>X5jn%> PxC ;
  +N+Sg+Com+Use/Ped:%>%^DISIMPjn%> PxC ;
- +N+Pl+Nom+Use/Ped+Use/Sub:%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:%>X5jd K ;
  +N+Pl+Gen:%>%^DISIMPjd K ;
- +N+Pl+Gen+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+PlGenCmp+Use/Sub:%>X5jd R ;
  +N+PlGenCmp:%>%^DISIMPjd R ;
  +N+Pl+Acc+Use/Sub:%>X5jd K ;
  +N+Pl+Acc:%>%^DISIMPjd K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:%>X5jde K ;
  +N+Pl+Ill:%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:%>X5jn K ;
  +N+Pl+Loc:%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:%>X5jgujn K ;
  +N+Pl+Com:%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:%>%^DISIMPjd%> PxPlComC ;
  +N:%>X6 GOADA- ; ! AG Px
  +N: DenominalAdjsV1Long ;
@@ -1191,35 +1200,35 @@ LEXICON RUOKTU !only this word because of its behavior in compounds
  +N+Pl+Nom+Use/Sub:%>X4k K ; ! !Skániid dialect
  +N+Sg+Com+Use/Sub:%>X5jn K ;
  +N+Sg+Com:%>%^DISIMPjn K ;
- +N+Sg+Com+Use/Ped+Use/Sub:%>X5jn%> PxC ;
+ +N+Sg+Com+Use/Sub:%>X5jn%> PxC ;
  +N+Sg+Com+Use/Ped:%>%^DISIMPjn%> PxC ;
- +N+Pl+Nom+Use/Ped+Use/Sub:%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:%>X5jd K ;
  +N+Pl+Gen:%>%^DISIMPjd K ;
- +N+Pl+Gen+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+PlGenCmp+Use/Sub:%>X5jd R ;
  +N+PlGenCmp:%>%^DISIMPjd R ;
  +N+Pl+Acc+Use/Sub:%>X5jd K ;
  +N+Pl+Acc:%>%^DISIMPjd K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:%>X5jde K ;
  +N+Pl+Ill:%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:%>X5jn K ;
  +N+Pl+Loc:%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:%>X5jgujn K ;
  +N+Pl+Com:%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:%>%^DISIMPjd%> PxPlComC ;
  +N:%>X6 GOADA- ; ! AG Px
  +N: DenominalAdjsV1Long ;
@@ -1354,6 +1363,12 @@ LEXICON MANNI !Bisyll. V-Nouns. Long/SHORT nom-compound-forms, long gen. ILL:m�
 ! Trisyllabic nouns
 ! - - - - - - - - -
 
+LEXICON EANA
++v1:eatnam8 SEAMU ;
++v2:eatnam MALIS ;
++v3:eatnam GAHPIR ;
+
+
 LEXICON MATTAR !Tris. Anim. Gradating C-Nouns
  MALIS ;
 
@@ -1483,6 +1498,8 @@ LEXICON DAIVVAS !Tris. Gradating C-Nouns, The Troms declension: dáivvaš:dáiva
 
 
 
+
+
 ! What about Trisyll. Non-Gradating 0-Nouns ??? Are there some?
 ! Yes there are: "kamela" is one of them, and in corp the
 ! Pl Gen PxSg3 is kamelaiddis. Right or wrong?
@@ -1584,21 +1601,21 @@ LEXICON GUOVTTU !Here because other lexicons don't fit for it
  +N+Pl+Gen:ovttu%>%^DISIMPjd K ;
  +N+PlGenCmp+Use/Sub:ovttu%>X5jd R ;
  +N+PlGenCmp:ovttu%>%^DISIMPjd R ;
- +N+Pl+Gen+Use/Ped+Use/Sub:ovttu%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:ovttu%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:ovttu%>%^DISIMPjd%> PxC ;
  +N+Pl+Gen+Use/Sub:ktu%>X5jd K ;
  +N+Pl+Gen:ktu%>%^DISIMPjd K ;
  +N+PlGenCmp+Use/Sub:ktu%>X5jd R ;
  +N+PlGenCmp:ktu%>%^DISIMPjd R ;
- +N+Pl+Gen+Use/Ped+Use/Sub:ktu%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:ktu%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:ktu%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:ovttu%>X5jd K ;
  +N+Pl+Acc:ovttu%>%^DISIMPjd K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:ovttu%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:ovttu%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:ovttu%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:ktu%>X5jd K ;
  +N+Pl+Acc:ktu%>%^DISIMPjd K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:ktu%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:ktu%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:ktu%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill:ktu%>jde K ;
  +N+Pl+Ill+Use/Ped:ktu%>jdasa%> PxV ;
@@ -1898,33 +1915,33 @@ LEXICON BUVSSAT  !Pl.
  +N: DenominalAdjsV1 ;
 ! +N: DenominalAdjsV2 ;					!not very plausible
  +N+Pl+Nom:%>X4t K ;
- +N+Pl+Nom+Use/Ped+Use/Sub:%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:%>X5jd K ;
  +N+Pl+Gen:%>%^DISIMPjd K ;
  +N+PlGenCmp+Use/Sub:%>X5jd R ;
  +N+PlGenCmp:%>%^DISIMPjd R ;
- +N+Pl+Gen+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:%>X5jd K ;
  +N+Pl+Acc:%>%^DISIMPjd K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:%>X5jde K ;
  +N+Pl+Ill:%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:%>X5jn K ;
  +N+Pl+Loc:%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:%>X5jgujn K ;
  +N+Pl+Com:%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:%>%^DISIMPjd%> PxPlComC ;
  +N+Der1+Der/Dimin+N+Ess:»X6žin K ;
  +N+Der1+Der/Dimin+N+Pl+Nom:»X6žat K ;
@@ -1954,33 +1971,33 @@ LEXICON BUVSSATLONG  !Pl.
  +N: DenominalAdjsV1 ;
 ! +N: DenominalAdjsV2 ;					!not very plausible
  +N+Pl+Nom:%>X4t K ;
- +N+Pl+Nom+Use/Ped+Use/Sub:%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:%>X5jd K ;
  +N+Pl+Gen:%>%^DISIMPjd K ;
  +N+PlGenCmp+Use/Sub:%>X5jd R ;
  +N+PlGenCmp:%>%^DISIMPjd R ;
- +N+Pl+Gen+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:%>X5jd K ;
  +N+Pl+Acc:%>%^DISIMPjd K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:%>X5jde K ;
  +N+Pl+Ill:%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:%>X5jn K ;
  +N+Pl+Loc:%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:%>X5jgujn K ;
  +N+Pl+Com:%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:%>%^DISIMPjd%> PxPlComC ;
  +N+Der1+Der/Dimin+N+Ess:»X6žin K ;
  +N+Der1+Der/Dimin+N+Pl+Nom:»X6žat K ;
@@ -2004,33 +2021,33 @@ LEXICON MUODUT !Like BASSI, but plural only
  +N:%> GOAHTICMP ;
  +N:%> EssV ;
  +N+Pl+Nom:%>X4t K ;
- +N+Pl+Nom+Use/Ped+Use/Sub:%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:%>X5jd9 K ;
  +N+Pl+Gen:%>%^DISIMPjd9 K ;
  +N+PlGenCmp+Use/Sub:%>X5jd R ;
  +N+PlGenCmp:%>%^DISIMPjd R ;
- +N+Pl+Gen+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:%>X5jd9 K ;
  +N+Pl+Acc:%>%^DISIMPjd9 K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:%>X5jde K ;
  +N+Pl+Ill:%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:%>X5jn K ;
  +N+Pl+Loc:%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:%>X5jgujn K ;
  +N+Pl+Com:%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:%>%^DISIMPjd%> PxPlComC ;
  +N: DenominalAdjsV1Long ;
 ! +N: DenominalAdjsV2 ; not very plausible
@@ -2057,33 +2074,33 @@ LEXICON DEAHKIT !like AIGI but plural only
  +N:%> GOAHTICMP ;
  +N:%> EssV ;
  +N+Pl+Nom:%>X4t K ;
- +N+Pl+Nom+Use/Ped+Use/Sub:%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:%>X5jd9 K ;
  +N+Pl+Gen:%>%^DISIMPjd9 K ;
  +N+PlGenCmp+Use/Sub:%>X5jd R ;
  +N+PlGenCmp:%>%^DISIMPjd R ;
- +N+Pl+Gen+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:%>X5jd9 K ;
  +N+Pl+Acc:%>%^DISIMPjd9 K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:%>X5jde K ;
  +N+Pl+Ill:%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:%>X5jn K ;
  +N+Pl+Loc:%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:%>X5jgujn K ;
  +N+Pl+Com:%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:%>%^DISIMPjd%> PxPlComC ;
  +N: DenominalAdjsV1Short ;
 ! +N: DenominalAdjsV2 ; not very plausible
@@ -2113,33 +2130,33 @@ LEXICON DIEDUT !like ALBMI but plural only
  +N+Pl+Nom+Use/Sub:%>X4k K ;
  +N+Use/Sub:%>X5 GODII- ; ! weak gr dipth simpl
  +N:%>%^DISIMP GODII- ; ! weak gr dipth simpl
- +N+Pl+Nom+Use/Ped+Use/Sub:%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:%>X5jd9 K ;
  +N+Pl+Gen:%>%^DISIMPjd9 K ;
  +N+PlGenCmp+Use/Sub:%>X5jd R ;
  +N+PlGenCmp:%>%^DISIMPjd R ;
- +N+Pl+Gen+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:%>X5jd9 K ;
  +N+Pl+Acc:%>%^DISIMPjd9 K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:%>X5jde K ;
  +N+Pl+Ill:%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:%>X5jn K ;
  +N+Pl+Loc:%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:%>X5jgujn K ;
  +N+Pl+Com:%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:%>%^DISIMPjd%> PxPlComC ;
  +N: DenominalAdjsV1Long ;
 ! +N: DenominalAdjsV2 ; not very plausible
@@ -2191,33 +2208,33 @@ LEXICON BADJOSAT   !Pl. bajus:badjosat
  +N+Der1+Der/Dimin+N+Ess:»X2ažžan K ;
  +N+Der1+Der/Dimin+N+Ess+Use/Ped:»X2ažža%>n%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Nom:»X2ažža%>X4t K ;
- +N+Der1+Der/Dimin+N+Pl+Nom+Use/Ped+Use/Sub:»X2ažža%>X5jd%> Px1C ;
+ +N+Der1+Der/Dimin+N+Pl+Nom+Use/Sub:»X2ažža%>X5jd%> Px1C ;
  +N+Der1+Der/Dimin+N+Pl+Nom+Use/Ped:»X2ažža%>%^DISIMPjd%> Px1C ;
  +N+Der1+Der/Dimin+N+Pl+Gen+Use/Sub:»X2ažža%>X5jd K ;
  +N+Der1+Der/Dimin+N+Pl+Gen:»X2ažža%>%^DISIMPjd K ;
  +N+Der1+Der/Dimin+N+PlGenCmp+Use/Sub:»X2ažža%>X5jd R ;
  +N+Der1+Der/Dimin+N+PlGenCmp:»X2ažža%>%^DISIMPjd R ;
- +N+Der1+Der/Dimin+N+Pl+Gen+Use/Ped+Use/Sub:»X2ažža%>X5jd%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Gen+Use/Sub:»X2ažža%>X5jd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Gen+Use/Ped:»X2ažža%>%^DISIMPjd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Acc+Use/Sub:»X2ažža%>X5jd K ;
  +N+Der1+Der/Dimin+N+Pl+Acc:»X2ažža%>%^DISIMPjd K ;
- +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped+Use/Sub:»X2ažža%>X5jd%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Sub:»X2ažža%>X5jd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»X2ažža%>%^DISIMPjd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Ill+Use/Sub:»X2ažža%>X5jde K ;
  +N+Der1+Der/Dimin+N+Pl+Ill:»X2ažža%>%^DISIMPjde K ;
- +N+Der1+Der/Dimin+N+Pl+Ill+Use/Ped+Use/Sub:»X2ažža%>X5jdasa%> PxV ;
+ +N+Der1+Der/Dimin+N+Pl+Ill+Use/Sub:»X2ažža%>X5jdasa%> PxV ;
  +N+Der1+Der/Dimin+N+Pl+Ill+Use/Ped:»X2ažža%>%^DISIMPjdasa%> PxV ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>X5jn K ;
  +N+Der1+Der/Dimin+N+Pl+Loc:»X2ažža%>%^DISIMPjn K ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>X5js K ; ! !SOUTH
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>%^DISIMPjs K ; ! !SOUTH
- +N+Der1+Der/Dimin+N+Pl+Loc+Use/Ped+Use/Sub:»X2ažža%>X5jn%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>X5jn%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Ped:»X2ažža%>%^DISIMPjn%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Com+Use/Sub:»X2ažža%>X5jgujn K ;
  +N+Der1+Der/Dimin+N+Pl+Com:»X2ažža%>%^DISIMPjgujn K ;
  +N+Der1+Der/Dimin+N+Pl+Com/Sh+Use/Sub:»X2ažža%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Der1+Der/Dimin+N+Pl+Com/Sh:»X2ažža%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Der1+Der/Dimin+N+Pl+Com+Use/Ped+Use/Sub:»X2ažža%>X5jd%> PxPlComC ;
+ +N+Der1+Der/Dimin+N+Pl+Com+Use/Sub:»X2ažža%>X5jd%> PxPlComC ;
  +N+Der1+Der/Dimin+N+Pl+Com+Use/Ped:»X2ažža%>%^DISIMPjd%> PxPlComC ;
  +N+Der1+Der2+Der/heapmi+A:»X4W4#heapmi%> HEAPMI ;
  +Der1+Der2+Der/heapmi+A+Ess:»X4W4#heapmi%>X1n K ;
@@ -2255,33 +2272,33 @@ LEXICON BADJOSATLONG   !Pl. bajus:badjosat
  +N+Der1+Der/Dimin+N+Ess:»X2ažžan K ;
  +N+Der1+Der/Dimin+N+Ess+Use/Ped:»X2ažža%>n%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Nom:»X2ažža%>X4t K ;
- +N+Der1+Der/Dimin+N+Pl+Nom+Use/Ped+Use/Sub:»X2ažža%>X5jd%> Px1C ;
+ +N+Der1+Der/Dimin+N+Pl+Nom+Use/Sub:»X2ažža%>X5jd%> Px1C ;
  +N+Der1+Der/Dimin+N+Pl+Nom+Use/Ped:»X2ažža%>%^DISIMPjd%> Px1C ;
  +N+Der1+Der/Dimin+N+Pl+Gen+Use/Sub:»X2ažža%>X5jd K ;
  +N+Der1+Der/Dimin+N+Pl+Gen:»X2ažža%>%^DISIMPjd K ;
  +N+Der1+Der/Dimin+N+PlGenCmp+Use/Sub:»X2ažža%>X5jd R ;
  +N+Der1+Der/Dimin+N+PlGenCmp:»X2ažža%>%^DISIMPjd R ;
- +N+Der1+Der/Dimin+N+Pl+Gen+Use/Ped+Use/Sub:»X2ažža%>X5jd%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Gen+Use/Sub:»X2ažža%>X5jd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Gen+Use/Ped:»X2ažža%>%^DISIMPjd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Acc+Use/Sub:»X2ažža%>X5jd K ;
  +N+Der1+Der/Dimin+N+Pl+Acc:»X2ažža%>%^DISIMPjd K ;
- +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped+Use/Sub:»X2ažža%>X5jd%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Sub:»X2ažža%>X5jd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»X2ažža%>%^DISIMPjd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Ill+Use/Sub:»X2ažža%>X5jde K ;
  +N+Der1+Der/Dimin+N+Pl+Ill:»X2ažža%>%^DISIMPjde K ;
- +N+Der1+Der/Dimin+N+Pl+Ill+Use/Ped+Use/Sub:»X2ažža%>X5jdasa%> PxV ;
+ +N+Der1+Der/Dimin+N+Pl+Ill+Use/Sub:»X2ažža%>X5jdasa%> PxV ;
  +N+Der1+Der/Dimin+N+Pl+Ill+Use/Ped:»X2ažža%>%^DISIMPjdasa%> PxV ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>X5jn K ;
  +N+Der1+Der/Dimin+N+Pl+Loc:»X2ažža%>%^DISIMPjn K ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>X5js K ; ! !SOUTH
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>%^DISIMPjs K ; ! !SOUTH
- +N+Der1+Der/Dimin+N+Pl+Loc+Use/Ped+Use/Sub:»X2ažža%>X5jn%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>X5jn%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Ped:»X2ažža%>%^DISIMPjn%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Com+Use/Sub:»X2ažža%>X5jgujn K ;
  +N+Der1+Der/Dimin+N+Pl+Com:»X2ažža%>%^DISIMPjgujn K ;
  +N+Der1+Der/Dimin+N+Pl+Com/Sh+Use/Sub:»X2ažža%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Der1+Der/Dimin+N+Pl+Com/Sh:»X2ažža%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Der1+Der/Dimin+N+Pl+Com+Use/Ped+Use/Sub:»X2ažža%>X5jd%> PxPlComC ;
+ +N+Der1+Der/Dimin+N+Pl+Com+Use/Sub:»X2ažža%>X5jd%> PxPlComC ;
  +N+Der1+Der/Dimin+N+Pl+Com+Use/Ped:»X2ažža%>%^DISIMPjd%> PxPlComC ;
  +N+Der1+Der2+Der/heapmi+A:»X4W4#heapmi%> HEAPMI ;
  +Der1+Der2+Der/heapmi+A+Ess:»X4W4#heapmi%>X1n K ;
@@ -2316,33 +2333,33 @@ LEXICON ALIMAT   !Pl. alin:alimat
  +N+Der1+Der/Dimin+N+Ess:»ažža%>n K ;
  +N+Der1+Der/Dimin+N+Ess+Use/Ped:»ažža%>n%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Nom:»ažža%>X4t K ;
- +N+Der1+Der/Dimin+N+Pl+Nom+Use/Ped+Use/Sub:»ažža%>X5jd%> Px1C ;
+ +N+Der1+Der/Dimin+N+Pl+Nom+Use/Sub:»ažža%>X5jd%> Px1C ;
  +N+Der1+Der/Dimin+N+Pl+Nom+Use/Ped:»ažža%>%^DISIMPjd%> Px1C ;
  +N+Der1+Der/Dimin+N+Pl+Gen+Use/Sub:»ažža%>X5jd K ;
  +N+Der1+Der/Dimin+N+Pl+Gen:»ažža%>%^DISIMPjd K ;
  +N+Der1+Der/Dimin+N+PlGenCmp+Use/Sub:»ažža%>X5jd R ;
  +N+Der1+Der/Dimin+N+PlGenCmp:»ažža%>%^DISIMPjd R ;
- +N+Der1+Der/Dimin+N+Pl+Gen+Use/Ped+Use/Sub:»ažža%>X5jd%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Gen+Use/Sub:»ažža%>X5jd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Gen+Use/Ped:»ažža%>%^DISIMPjd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Acc+Use/Sub:»ažža%>X5jd K ;
  +N+Der1+Der/Dimin+N+Pl+Acc:»ažža%>%^DISIMPjd K ;
- +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped+Use/Sub:»ažža%>X5jd%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Sub:»ažža%>X5jd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»ažža%>%^DISIMPjd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Ill+Use/Sub:»ažža%>X5jde K ;
  +N+Der1+Der/Dimin+N+Pl+Ill:»ažža%>%^DISIMPjde K ;
- +N+Der1+Der/Dimin+N+Pl+Ill+Use/Ped+Use/Sub:»ažža%>X5jdasa%> PxV ;
+ +N+Der1+Der/Dimin+N+Pl+Ill+Use/Sub:»ažža%>X5jdasa%> PxV ;
  +N+Der1+Der/Dimin+N+Pl+Ill+Use/Ped:»ažža%>%^DISIMPjdasa%> PxV ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»ažža%>X5jn K ;
  +N+Der1+Der/Dimin+N+Pl+Loc:»ažža%>%^DISIMPjn K ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»ažža%>X5js K ; ! !SOUTH
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»ažža%>%^DISIMPjs K ; ! !SOUTH
- +N+Der1+Der/Dimin+N+Pl+Loc+Use/Ped+Use/Sub:»ažža%>X5jn%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»ažža%>X5jn%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Ped:»ažža%>%^DISIMPjn%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Com+Use/Sub:»ažža%>X5jgujn K ;
  +N+Der1+Der/Dimin+N+Pl+Com:»ažža%>%^DISIMPjgujn K ;
  +N+Der1+Der/Dimin+N+Pl+Com/Sh+Use/Sub:»ažža%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Der1+Der/Dimin+N+Pl+Com/Sh:»ažža%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Der1+Der/Dimin+N+Pl+Com+Use/Ped+Use/Sub:»ažža%>X5jd%> PxPlComC ;
+ +N+Der1+Der/Dimin+N+Pl+Com+Use/Sub:»ažža%>X5jd%> PxPlComC ;
  +N+Der1+Der/Dimin+N+Pl+Com+Use/Ped:»ažža%>%^DISIMPjd%> PxPlComC ;
  +N+Der1+Der2+Der/heapmi+A:»W4#heapmi%> HEAPMI ;
  +Der1+Der2+Der/heapmi+A+Ess:»W4#heapmi%>X1n K ;
@@ -2381,33 +2398,33 @@ LEXICON CEAKCAGAT !Like seamu but plural only
  +N+Der1+Der/Dimin+N+Ess:»X2ažža%>n K ;
  +N+Der1+Der/Dimin+N+Ess+Use/Ped:»X2ažža%>n%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Nom:»X2ažža%>X4t K ;
- +N+Der1+Der/Dimin+N+Pl+Nom+Use/Ped+Use/Sub:»X2ažža%>X5jd%> Px1C ;
+ +N+Der1+Der/Dimin+N+Pl+Nom+Use/Sub:»X2ažža%>X5jd%> Px1C ;
  +N+Der1+Der/Dimin+N+Pl+Nom+Use/Ped:»X2ažža%>%^DISIMPjd%> Px1C ;
  +N+Der1+Der/Dimin+N+Pl+Gen+Use/Sub:»X2ažža%>X5jd K ;
  +N+Der1+Der/Dimin+N+Pl+Gen:»X2ažža%>%^DISIMPjd K ;
  +N+Der1+Der/Dimin+N+PlGenCmp+Use/Sub:»X2ažža%>X5jd R ;
  +N+Der1+Der/Dimin+N+PlGenCmp:»X2ažža%>%^DISIMPjd R ;
- +N+Der1+Der/Dimin+N+Pl+Gen+Use/Ped+Use/Sub:»X2ažža%>X5jd%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Gen+Use/Sub:»X2ažža%>X5jd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Gen+Use/Ped:»X2ažža%>%^DISIMPjd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Acc+Use/Sub:»X2ažža%>X5jd K ;
  +N+Der1+Der/Dimin+N+Pl+Acc:»X2ažža%>%^DISIMPjd K ;
- +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped+Use/Sub:»X2ažža%>X5jd%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Sub:»X2ažža%>X5jd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»X2ažža%>%^DISIMPjd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Ill+Use/Sub:»X2ažža%>X5jde K ;
  +N+Der1+Der/Dimin+N+Pl+Ill:»X2ažža%>%^DISIMPjde K ;
- +N+Der1+Der/Dimin+N+Pl+Ill+Use/Ped+Use/Sub:»X2ažža%>X5jdasa%> PxV ;
+ +N+Der1+Der/Dimin+N+Pl+Ill+Use/Sub:»X2ažža%>X5jdasa%> PxV ;
  +N+Der1+Der/Dimin+N+Pl+Ill+Use/Ped:»X2ažža%>%^DISIMPjdasa%> PxV ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>X5jn K ;
  +N+Der1+Der/Dimin+N+Pl+Loc:»X2ažža%>%^DISIMPjn K ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>X5js K ; ! !SOUTH
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>%^DISIMPjs K ; ! !SOUTH
- +N+Der1+Der/Dimin+N+Pl+Loc+Use/Ped+Use/Sub:»X2ažža%>X5jn%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X2ažža%>X5jn%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Ped:»X2ažža%>%^DISIMPjn%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Com+Use/Sub:»X2ažža%>X5jgujn K ;
  +N+Der1+Der/Dimin+N+Pl+Com:»X2ažža%>%^DISIMPjgujn K ;
  +N+Der1+Der/Dimin+N+Pl+Com/Sh+Use/Sub:»X2ažža%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Der1+Der/Dimin+N+Pl+Com/Sh:»X2ažža%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Der1+Der/Dimin+N+Pl+Com+Use/Ped+Use/Sub:»X2ažža%>X5jd%> PxPlComC ;
+ +N+Der1+Der/Dimin+N+Pl+Com+Use/Sub:»X2ažža%>X5jd%> PxPlComC ;
  +N+Der1+Der/Dimin+N+Pl+Com+Use/Ped:»X2ažža%>%^DISIMPjd%> PxPlComC ;
  +N: DenominalAdjsV1 ;
 
@@ -2421,33 +2438,33 @@ LEXICON BORALMASAT !like JOHTOLAT but plural only
  +N:a DenominalAdjsV1 ;
 ! +N:a DenominalAdjsV2 ;		!not very plausible
  +N+Pl+Nom:a%>X4t K ;
- +N+Pl+Nom+Use/Ped+Use/Sub:a%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:a%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:a%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:a%>X5jd K ;
  +N+Pl+Gen:a%>%^DISIMPjd K ;
  +N+PlGenCmp+Use/Sub:a%>X5jd R ;
  +N+PlGenCmp:a%>%^DISIMPjd R ;
- +N+Pl+Gen+Use/Ped+Use/Sub:a%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:a%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:a%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:a%>X5jd K ;
  +N+Pl+Acc:a%>%^DISIMPjd K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:a%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:a%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:a%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:a%>X5jde K ;
  +N+Pl+Ill:a%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:a%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:a%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:a%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:a%>X5jn K ;
  +N+Pl+Loc:a%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:a%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:a%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:a%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:a%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:a%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:a%>X5jgujn K ;
  +N+Pl+Com:a%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:a%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:a%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:a%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:a%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:a%>%^DISIMPjd%> PxPlComC ;
  +N+Der1+Der/Dimin+N+Ess:a»X6žin K ;
  +N+Der1+Der/Dimin+N+Pl+Nom:a»X6žat K ;
@@ -2574,33 +2591,33 @@ LEXICON VUOIGNAHAT   !Like DAIVVAS but only Pl. vuoiŋŋaš:vuoigŋahat
  +N+Der1+Der/Dimin+N+Ess:h»X2ažža%>n K ;
  +N+Der1+Der/Dimin+N+Ess+Use/Ped:h»X2ažža%>n%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Nom:h»X2ažža%>X4t K ;
- +N+Der1+Der/Dimin+N+Pl+Nom+Use/Ped+Use/Sub:h»X2ažža%>X5jd%> Px1C ;
+ +N+Der1+Der/Dimin+N+Pl+Nom+Use/Sub:h»X2ažža%>X5jd%> Px1C ;
  +N+Der1+Der/Dimin+N+Pl+Nom+Use/Ped:h»X2ažža%>%^DISIMPjd%> Px1C ;
  +N+Der1+Der/Dimin+N+Pl+Gen+Use/Sub:h»X2ažža%>X5jd K ;
  +N+Der1+Der/Dimin+N+Pl+Gen:h»X2ažža%>%^DISIMPjd K ;
  +N+Der1+Der/Dimin+N+PlGenCmp+Use/Sub:h»X2ažža%>X5jd R ;
  +N+Der1+Der/Dimin+N+PlGenCmp:h»X2ažža%>%^DISIMPjd R ;
- +N+Der1+Der/Dimin+N+Pl+Gen+Use/Ped+Use/Sub:h»X2ažža%>X5jd%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Gen+Use/Sub:h»X2ažža%>X5jd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Gen+Use/Ped:h»X2ažža%>%^DISIMPjd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Acc+Use/Sub:h»X2ažža%>X5jd K ;
  +N+Der1+Der/Dimin+N+Pl+Acc:h»X2ažža%>%^DISIMPjd K ;
- +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped+Use/Sub:h»X2ažža%>X5jd%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Sub:h»X2ažža%>X5jd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:h»X2ažža%>%^DISIMPjd%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Ill+Use/Sub:h»X2ažža%>X5jde K ;
  +N+Der1+Der/Dimin+N+Pl+Ill:h»X2ažža%>%^DISIMPjde K ;
- +N+Der1+Der/Dimin+N+Pl+Ill+Use/Ped+Use/Sub:h»X2ažža%>X5jdasa%> PxV ;
+ +N+Der1+Der/Dimin+N+Pl+Ill+Use/Sub:h»X2ažža%>X5jdasa%> PxV ;
  +N+Der1+Der/Dimin+N+Pl+Ill+Use/Ped:h»X2ažža%>%^DISIMPjdasa%> PxV ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:h»X2ažža%>X5jn K ;
  +N+Der1+Der/Dimin+N+Pl+Loc:h»X2ažža%>%^DISIMPjn K ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:h»X2ažža%>X5js K ; ! !SOUTH
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:h»X2ažža%>%^DISIMPjs K ; ! !SOUTH
- +N+Der1+Der/Dimin+N+Pl+Loc+Use/Ped+Use/Sub:h»X2ažža%>X5jn%> PxC ;
+ +N+Der1+Der/Dimin+N+Pl+Loc+Use/Sub:h»X2ažža%>X5jn%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Loc+Use/Ped:h»X2ažža%>%^DISIMPjn%> PxC ;
  +N+Der1+Der/Dimin+N+Pl+Com+Use/Sub:h»X2ažža%>X5jgujn K ;
  +N+Der1+Der/Dimin+N+Pl+Com:h»X2ažža%>%^DISIMPjgujn K ;
  +N+Der1+Der/Dimin+N+Pl+Com/Sh+Use/Sub:h»X2ažža%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Der1+Der/Dimin+N+Pl+Com/Sh:h»X2ažža%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Der1+Der/Dimin+N+Pl+Com+Use/Ped+Use/Sub:h»X2ažža%>X5jd%> PxPlComC ;
+ +N+Der1+Der/Dimin+N+Pl+Com+Use/Sub:h»X2ažža%>X5jd%> PxPlComC ;
  +N+Der1+Der/Dimin+N+Pl+Com+Use/Ped:h»X2ažža%>%^DISIMPjd%> PxPlComC ;
  +N+Der1+Der2+Der/heapmi+A:š»X4W4#heapmi%> HEAPMI ;
  +Der1+Der2+Der/heapmi+A+Ess:š»X4W4#heapmi%>X1n K ;
@@ -2636,10 +2653,10 @@ LEXICON BUORRE ! For this adj only
  +A:%>X1 EssVadj "good A" ;
  +A:%>X7 EssVadj ;
  +A:%>   GOAHTI-OBLadj "good A" ;
- +A+Sg+Nom+Use/Ped+Use/Sub:%> Px3V ;
- +A+Sg+Gen+Use/Ped+Use/Sub:%>X8 Px3V ;
- +A+Pl+Nom+Use/Ped+Use/Sub:%>X5jd%> Px1C ;
- +A+Pl+Nom+Use/Ped+Use/Sub:%>%^DISIMPjd%> Px1C ;
+ +A+Sg+Nom+Use/Sub:%> Px3V ;
+ +A+Sg+Gen+Use/Sub:%>X8 Px3V ;
+ +A+Pl+Nom+Use/Sub:%>X5jd%> Px1C ;
+ +A+Pl+Nom+Use/Sub:%>%^DISIMPjd%> Px1C ;
  +A: VUOHTA ;         ! ... to A > N -vuohta derivation
 
 ! Comparative and superlative
@@ -2725,8 +2742,8 @@ LEXICON RIEKTA ! Bisyll adj w/o obl sg forms, WeG Attr
  +A+Use/Sub:as%> EABBO/EAMOS ;
  +A:a%>X4 BU/MUS ;
  +A:a%> ADVV ;
- +A+Sg+Nom+Use/Ped+Use/Sub:a%> PxV ;
- +A+Ess+Use/Ped+Use/Sub:a%>n%> PxC ;
+ +A+Sg+Nom+Use/Sub:a%> PxV ;
+ +A+Ess+Use/Sub:a%>n%> PxC ;
  +A:a  VUOHTA ;         ! ... to A > N -vuohta derivation
 
 
@@ -2773,19 +2790,19 @@ LEXICON JEAGOHEAPMI
  +A+Attr:%>is ATTR ;
  +A+Sg+Nom+Use/Sub:%>in K ;
  +A+Pl+Nom:%>eame%>t K ; ! parallel form, -it also poss.
- +A+Comp+Sg+Nom:%>at K ;   ! parallel form
+! +A+Comp+Sg+Nom:%>at K ;   ! parallel form
  +A:%>eapmi%> HEAPMI ;
  +A+Use/Sub:%>eapme7%> HEAPMI ;
  +A+Ess:%>eapmi%>X1n K ;
  +A+Ess+Use/Sub:%>eapmi%>X7n K ;
- +A+Ess+Use/Ped+Use/Sub:%>eapmi%>X1n%> PxC ;
- +A+Ess+Use/Ped+Use/Sub:%>eapmi%>X7n%> PxC ;
- +A+Sg+Nom+PxSg3+Use/Ped+Use/Sub:%>eapme%>s K ; ! !parallel form
+ +A+Ess+Use/Sub:%>eapmi%>X1n%> PxC ;
+ +A+Ess+Use/Sub:%>eapmi%>X7n%> PxC ;
+ +A+Sg+Nom+PxSg3+Use/Sub:%>eapme%>s K ; ! !parallel form
  +A+Sg+Gen:%>eame%> R ;
  +A+Sg+Gen+Use/NG:%>eami%> R ;
  +A+Pl+Gen:%>emi%>jd R ;
- +A+Sg+Gen+PxSg3+Use/Ped+Use/Sub:%>eame%>s K ; !  !parallel form
- +A+Sg+Acc+PxSg3+Use/Ped+Use/Sub:%>eame%>s K ; !  !parallel form
+ +A+Sg+Gen+PxSg3+Use/Sub:%>eame%>s K ; !  !parallel form
+ +A+Sg+Acc+PxSg3+Use/Sub:%>eame%>s K ; !  !parallel form
  +A:%> EABBO/EAMOS ;
 ! +A:%>is VUOHTA ; !moved to LEXICON VUOHTA
  +A+Der1+Der2+Der/huvva+V+IV:»uvva%> BOAHTIINCH ;
@@ -2799,14 +2816,14 @@ LEXICON BIVNNUHEAPME ! no bivnnuhis here
  +A+Use/Sub:%>eapme7%> HEAPMI ;
  +A+Ess:%>eapmi%>X1n K ;
  +A+Ess+Use/Sub:%>eapmi%>X7n K ;
- +A+Ess+Use/Ped+Use/Sub:%>eapmi%>X1n%> PxC ;
- +A+Ess+Use/Ped+Use/Sub:%>eapmi%>X7n%> PxC ;
- +A+Sg+Nom+PxSg3+Use/Ped+Use/Sub:%>eapme%>s K ; ! !parallel form
+ +A+Ess+Use/Sub:%>eapmi%>X1n%> PxC ;
+ +A+Ess+Use/Sub:%>eapmi%>X7n%> PxC ;
+ +A+Sg+Nom+PxSg3+Use/Sub:%>eapme%>s K ; ! !parallel form
  +A+Sg+Gen:%>eame%> R ;
  +A+Sg+Gen+Use/NG:%>eami%> R ;
  +A+Pl+Gen:%>emi%>jd R ;
- +A+Sg+Gen+PxSg3+Use/Ped+Use/Sub:%>eame%>s K ; !  !parallel form
- +A+Sg+Acc+PxSg3+Use/Ped+Use/Sub:%>eame%>s K ; !  !parallel form
+ +A+Sg+Gen+PxSg3+Use/Sub:%>eame%>s K ; !  !parallel form
+ +A+Sg+Acc+PxSg3+Use/Sub:%>eame%>s K ; !  !parallel form
 ! +A:%> EABBO/EAMOS ;
 ! +A:%>is VUOHTA ; !moved to LEXICON VUOHTA
  +A+Der1+Der2+Der/huvva+V+IV:»uvva%> BOAHTIINCH ;
@@ -2821,14 +2838,14 @@ LEXICON JEAGOHEAPMI_NOCOMP
  +A+Use/Sub:%>eapme7%> HEAPMI ;
  +A+Ess:%>eapmi%>X1n K ;
  +A+Ess+Use/Sub:%>eapmi%>X7n K ;
- +A+Ess+Use/Ped+Use/Sub:%>eapmi%>X1n%> PxC ;
- +A+Ess+Use/Ped+Use/Sub:%>eapmi%>X7n%> PxC ;
- +A+Sg+Nom+PxSg3+Use/Ped+Use/Sub:%>eapme%>s K ; ! !parallel form
+ +A+Ess+Use/Sub:%>eapmi%>X1n%> PxC ;
+ +A+Ess+Use/Sub:%>eapmi%>X7n%> PxC ;
+ +A+Sg+Nom+PxSg3+Use/Sub:%>eapme%>s K ; ! !parallel form
  +A+Sg+Gen:%>eame%> R ;
  +A+Sg+Gen+Use/NG:%>eami%> R ;
  +A+Pl+Gen:%>emi%>jd R ;
- +A+Sg+Gen+PxSg3+Use/Ped+Use/Sub:%>eame%>s K ; !  !parallel form
- +A+Sg+Acc+PxSg3+Use/Ped+Use/Sub:%>eame%>s K ; !  !parallel form
+ +A+Sg+Gen+PxSg3+Use/Sub:%>eame%>s K ; !  !parallel form
+ +A+Sg+Acc+PxSg3+Use/Sub:%>eame%>s K ; !  !parallel form
 ! +A:%> EABBO/EAMOS ;
 ! +A:%>is VUOHTA ; !moved to LEXICON VUOHTA
  +A+Der1+Der2+Der/huvva+V+IV:»uvva%> BOAHTIINCH ;
@@ -2891,21 +2908,21 @@ LEXICON UNOHAS  ! for this word only
 LEXICON IPMAHA !Tris. Gradating C-adj:s, The Troms declension: imaš:ipmaha, gáđaš:gáhtaha
  +A:š%>X4 MALIS0 ;
  +A:š%>X4 R ;
- +A+Sg+Nom+Use/Ped+Use/Sub:h%>X2 PxC ;
+ +A+Sg+Nom+Use/Sub:h%>X2 PxC ;
  +A+Sg+Gen:h%>X2a K ;
  +A+Sg+Gen+Use/Sub:h%>X2 K ;
  +A+SgGenCmp:h%>X2a R ; !compound also for these
  +A+SgGenCmp+Use/Sub:h%>X2 R ; ! !compound also for these
- +A+Sg+Gen+Use/Ped+Use/Sub:h%>X2 PxC ;
+ +A+Sg+Gen+Use/Sub:h%>X2 PxC ;
  +A+Sg+Acc:h%>X2a K ;
  +A+Sg+Acc+Use/Sub:h%>X2 K ;
- +A+Sg+Acc+Use/Ped+Use/Sub:h%>X2 PxC ;
- +A+Pl+Nom:h%>X2at K ;
+ +A+Sg+Acc+Use/Sub:h%>X2 PxC ;
+ +A+Pl+Nom+Use/NVD:h%>X2at K ;
  +A+Pl+Nom+Use/Sub:h%>X2ak K ;
- +A+Sg+Ill+Use/Ped+Use/Sub:h%>X2asa%> PxV ;
- +A+Pl+Nom+Use/Ped+Use/Sub:h%>X2ijddá%> Px1V ;
+ +A+Sg+Ill+Use/Sub:h%>X2asa%> PxV ;
+ +A+Pl+Nom+Use/Sub:h%>X2ijddá%> Px1V ;
  +A:h%>X2i MALLASI-/NUORABUadj- ;
- +A:h%>X2 EABBO/EAMOS_CONT ;
+ +A:h%>X2 EABBO/EAMOS_CONT_NVD ;
 
 
 
@@ -2917,7 +2934,7 @@ LEXICON IPMAHA !Tris. Gradating C-adj:s, The Troms declension: imaš:ipmaha, gá
 
 LEXICON MEAHTTUS ! meahttun-adj. with comp. and superl. forms -seabbo, -seamos etc.
  +A+Attr:n%> ATTR ;
- +A:s%> EABBO/EAMOS ;
+ +A:s%> EABBO/EAMOS_NVD ;
  +A:m%> ADVC ; !Adverb form -meahttumit
  +A:m%> GAPPUS0 ;   ! NE and vuohta
  +A+Sg+Gen:m%>a K ; ! Stem vowel -a-, no short genitive
@@ -2925,13 +2942,13 @@ LEXICON MEAHTTUS ! meahttun-adj. with comp. and superl. forms -seabbo, -seamos e
  +A+Sg+Acc:m%>a K ;
  +A+Pl+Nom:m%>at K ;
  +A:m%>i MALLASI-/NUORABUadj- ;  ! obl
- +A+Sg+Nom+Use/Ped+Use/Sub:m%> PxC ;
- +A+Sg+Gen+Use/Ped+Use/Sub:m%> PxC ;
- +A+Sg+Acc+Use/Ped+Use/Sub:m%> PxC ;
- +A+Sg+Ill+Use/Ped+Use/Sub:m%>asa%> PxV ;
+ +A+Sg+Nom+Use/Sub:m%> PxC ;
+ +A+Sg+Gen+Use/Sub:m%> PxC ;
+ +A+Sg+Acc+Use/Sub:m%> PxC ;
+ +A+Sg+Ill+Use/Sub:m%>asa%> PxV ;
  +A+Sg+Gen+Use/NG:m%> K ;
  +A+Sg+Acc+Use/NG:m%> K ;
- +A+Pl+Nom+Use/Ped+Use/Sub:m%>iiddá%> Px1V ;
+ +A+Pl+Nom+Use/Sub:m%>iiddá%> Px1V ;
  +A+Pl+Nom:m%>at VUOHTA ;
 
 LEXICON BEAKKAN !Trisyll. Non-gradating C-Adj. without Separate Attr.
@@ -2942,13 +2959,13 @@ LEXICON BEAKKAN !Trisyll. Non-gradating C-Adj. without Separate Attr.
  +A+Sg+Acc:%>a K ;
  +A+Pl+Nom:%>at K ;
  +A:%>i MALLASI-/NUORABUadj- ;  ! obl
- +A+Sg+Nom+Use/Ped+Use/Sub:%> PxC ;
- +A+Sg+Gen+Use/Ped+Use/Sub:%> PxC ;
- +A+Sg+Acc+Use/Ped+Use/Sub:%> PxC ;
- +A+Sg+Ill+Use/Ped+Use/Sub:%>asa%> PxV ;
+ +A+Sg+Nom+Use/Sub:%> PxC ;
+ +A+Sg+Gen+Use/Sub:%> PxC ;
+ +A+Sg+Acc+Use/Sub:%> PxC ;
+ +A+Sg+Ill+Use/Sub:%>asa%> PxV ;
  +A+Sg+Gen+Use/NG:%> K ; ! 
  +A+Sg+Acc+Use/NG:%> K ;
- +A+Pl+Nom+Use/Ped+Use/Sub:%>iiddá%> Px1V ;
+ +A+Pl+Nom+Use/Sub:%>iiddá%> Px1V ;
  +A+Pl+Nom:%>at VUOHTA ;
  
 LEXICON BEAKKAN_NOCOMP !Trisyll. Non-gradating C-Adj. without Separate Attr.
@@ -2959,13 +2976,13 @@ LEXICON BEAKKAN_NOCOMP !Trisyll. Non-gradating C-Adj. without Separate Attr.
  +A+Sg+Acc:%>a K ;
  +A+Pl+Nom:%>at K ;
  +A:%>i MALLASI-/NUORABUadj- ;  ! obl
- +A+Sg+Nom+Use/Ped+Use/Sub:%> PxC ;
- +A+Sg+Gen+Use/Ped+Use/Sub:%> PxC ;
- +A+Sg+Acc+Use/Ped+Use/Sub:%> PxC ;
- +A+Sg+Ill+Use/Ped+Use/Sub:%>asa%> PxV ;
+ +A+Sg+Nom+Use/Sub:%> PxC ;
+ +A+Sg+Gen+Use/Sub:%> PxC ;
+ +A+Sg+Acc+Use/Sub:%> PxC ;
+ +A+Sg+Ill+Use/Sub:%>asa%> PxV ;
  +A+Sg+Gen+Use/NG:%> K ; ! 
  +A+Sg+Acc+Use/NG:%> K ;
- +A+Pl+Nom+Use/Ped+Use/Sub:%>iiddá%> Px1V ;
+ +A+Pl+Nom+Use/Sub:%>iiddá%> Px1V ;
  +A+Pl+Nom:%>at VUOHTA ;
 
 
@@ -2974,6 +2991,13 @@ LEXICON JOHTIL !Trisyll. Non-gradating C-Adj. with is-Attr.
  +A:%> EABBO/EAMOS ;
  +A:%> GAPPUS0 ;    ! NE and vuohta
  +A:%> MALLASadj- ;    ! leads to MALLAS- and then to MALLASI-/NUORABU-
+                  ! Has stem vowel -a- but also short genitive
+
+LEXICON HEITTOHA !Trisyll. Non-gradating C-Adj. with is-Attr.
+ +A+Attr+Use/NVD:%>is ATTR ;
+ +A:%> EABBO/EAMOS_NVD ;
+ +A:%> GAPPUS0 ;    ! NE and vuohta
+ +A:%> MALLASadj-_NVD ;    ! leads to MALLAS- and then to MALLASI-/NUORABU-
                   ! Has stem vowel -a- but also short genitive
 
 LEXICON GUOHCA !Trisyll. Gradating V-Adj., no sep. Attr.
@@ -2987,7 +3011,7 @@ LEXICON GUOHCA !Trisyll. Gradating V-Adj., no sep. Attr.
  +A+Der+Der/viđá+Adv:%>X4»X7viđá K ;
 ! +A+Der/viđi+Adv:%>X4»X7viđi K ;
  +A+Ess:%>X4n K ;
- +A+Ess+Use/Ped+Use/Sub:%>X4n%> PxC ;
+ +A+Ess+Use/Sub:%>X4n%> PxC ;
 
 LEXICON GARAS !Trisyll. Gradating C-Adj. with Bisyll. a-Attr. and final s
  +A+Attr:%> ATTR ;
@@ -3033,17 +3057,17 @@ LEXICON LOSSAT !Trisyll. Gradating C-Adj. with Bisyll. a-Attr. and final t
 ! +A+Comp+Sg+Nom+Use/Sub:i%>X4bu%> PxSgV ; !^P^
 ! +A+Comp+Sg+Gen+Use/Sub:i%>X4bu%> PxSgV ; !^P^
 ! +A+Comp+Sg+Acc+Use/Sub:i%>X4bu%> PxSgV ; !^P^
- +A+Comp+Sg+Nom+Use/Ped+Use/Sub:i%>X4bu%> Px1V ;
- +A+Comp+Sg+Nom+Use/Ped+Use/Sub:i%>X4bu%> Px2V ;
- +A+Comp+Sg+Nom+Use/Ped+Use/Sub:i%>X4bu%> Px3V ;
- +A+Comp+Sg+Gen+Use/Ped+Use/Sub:i%>X4bu%> Px1V ;
- +A+Comp+Sg+Gen+Use/Ped+Use/Sub:i%>X4bu%> Px2V ;
- +A+Comp+Sg+Gen+Use/Ped+Use/Sub:i%>X4bu%> Px3V ;
- +A+Comp+Sg+Acc+Use/Ped+Use/Sub:i%>X4bu%> Px1V ;
- +A+Comp+Sg+Acc+Use/Ped+Use/Sub:i%>X4bu%> Px2V ;
- +A+Comp+Sg+Acc+Use/Ped+Use/Sub:i%>X4bu%> Px3V ;
- +A+Comp+Sg+Ill+Use/Ped+Use/Sub:i%>X4busa%> PxV ;
- +A+Comp+Pl+Nom+Use/Ped+Use/Sub:i%>X4buiddá%> Px1V ;
+ +A+Comp+Sg+Nom+Use/Sub:i%>X4bu%> Px1V ;
+ +A+Comp+Sg+Nom+Use/Sub:i%>X4bu%> Px2V ;
+ +A+Comp+Sg+Nom+Use/Sub:i%>X4bu%> Px3V ;
+ +A+Comp+Sg+Gen+Use/Sub:i%>X4bu%> Px1V ;
+ +A+Comp+Sg+Gen+Use/Sub:i%>X4bu%> Px2V ;
+ +A+Comp+Sg+Gen+Use/Sub:i%>X4bu%> Px3V ;
+ +A+Comp+Sg+Acc+Use/Sub:i%>X4bu%> Px1V ;
+ +A+Comp+Sg+Acc+Use/Sub:i%>X4bu%> Px2V ;
+ +A+Comp+Sg+Acc+Use/Sub:i%>X4bu%> Px3V ;
+ +A+Comp+Sg+Ill+Use/Sub:i%>X4busa%> PxV ;
+ +A+Comp+Pl+Nom+Use/Sub:i%>X4buiddá%> Px1V ;
 ! +A+Superl:i%>X4muss BUOREMUS ; !Replaced to avoid adverb losimusat etc.
  +A+Superl+Attr:i%>X4mus%> K ; ! Attributive superlatives
  +A+Superl:i%>X4muss JOHTOLAT0 ;
@@ -3051,8 +3075,8 @@ LEXICON LOSSAT !Trisyll. Gradating C-Adj. with Bisyll. a-Attr. and final t
  +A+Superl+Ess:i%>X4mussa%>n K ;
  +A+Superl+Der2+Der/at+Adv:%>ad%>epmos%>it K ;
  +A+Superl+Der2+Der/at+Adv:%>ad%>amos%>it K ;
- +A+Superl+Sg+Nom+Use/Ped+Use/Sub:i%>X4mussa%> PxV ;
- +A+Superl+Ess+Use/Ped+Use/Sub:i%>X4mussa%>n%> PxC ;
+ +A+Superl+Sg+Nom+Use/Sub:i%>X4mussa%> PxV ;
+ +A+Superl+Ess+Use/Sub:i%>X4mussa%>n%> PxC ;
  +A+Superl:i%>X4mussa%> EABBUCASE2 ;
  +A:ad%>X2 MALLASadj- ;
  +A:ad%> GAPPUS0 ;
@@ -3237,17 +3261,17 @@ LEXICON ALLAT
  +A+Comp+Der2+Der/at+Adv:ag%>eappo%>t K ;
  +A+Comp+Der2+Der/at+Adv:ad%>abbo%>t K ;
  +A+Comp+Der2+Der/at+Adv:ag%>abbo%>t K ;
- +A+Comp+Sg+Nom+Use/Ped+Use/Sub:i%>X4bu%> Px1V ;
- +A+Comp+Sg+Nom+Use/Ped+Use/Sub:i%>X4bu%> Px2V ;
- +A+Comp+Sg+Nom+Use/Ped+Use/Sub:i%>X4bu%> Px3V ;
- +A+Comp+Sg+Gen+Use/Ped+Use/Sub:i%>X4bu%> Px1V ;
- +A+Comp+Sg+Gen+Use/Ped+Use/Sub:i%>X4bu%> Px2V ;
- +A+Comp+Sg+Gen+Use/Ped+Use/Sub:i%>X4bu%> Px3V ;
- +A+Comp+Sg+Acc+Use/Ped+Use/Sub:i%>X4bu%> Px1V ;
- +A+Comp+Sg+Acc+Use/Ped+Use/Sub:i%>X4bu%> Px2V ;
- +A+Comp+Sg+Acc+Use/Ped+Use/Sub:i%>X4bu%> Px3V ;
- +A+Comp+Sg+Ill+Use/Ped+Use/Sub:i%>X4busa%> PxV ;
- +A+Comp+Pl+Nom+Use/Ped+Use/Sub:i%>X4buiddá%> Px1V ;
+ +A+Comp+Sg+Nom+Use/Sub:i%>X4bu%> Px1V ;
+ +A+Comp+Sg+Nom+Use/Sub:i%>X4bu%> Px2V ;
+ +A+Comp+Sg+Nom+Use/Sub:i%>X4bu%> Px3V ;
+ +A+Comp+Sg+Gen+Use/Sub:i%>X4bu%> Px1V ;
+ +A+Comp+Sg+Gen+Use/Sub:i%>X4bu%> Px2V ;
+ +A+Comp+Sg+Gen+Use/Sub:i%>X4bu%> Px3V ;
+ +A+Comp+Sg+Acc+Use/Sub:i%>X4bu%> Px1V ;
+ +A+Comp+Sg+Acc+Use/Sub:i%>X4bu%> Px2V ;
+ +A+Comp+Sg+Acc+Use/Sub:i%>X4bu%> Px3V ;
+ +A+Comp+Sg+Ill+Use/Sub:i%>X4busa%> PxV ;
+ +A+Comp+Pl+Nom+Use/Sub:i%>X4buiddá%> Px1V ;
  +A+Superl+Attr:i%>X4mus K ;
  +A+Superl:i%>X4muss JOHTOLAT0 ;
  +A+Superl+Ess:i%>X4mussa%>n K ;
@@ -3255,8 +3279,8 @@ LEXICON ALLAT
  +A+Superl+Der2+Der/at+Adv:ag%>epmos%>it K ;
  +A+Superl+Der2+Der/at+Adv:ad%>amos%>it K ;
  +A+Superl+Der2+Der/at+Adv:ag%>amos%>it K ;
- +A+Superl+Sg+Nom+Use/Ped+Use/Sub:i%>X4mussa%> PxV ;
- +A+Superl+Ess+Use/Ped+Use/Sub:i%>X4mussa%>n%> PxC ;
+ +A+Superl+Sg+Nom+Use/Sub:i%>X4mussa%> PxV ;
+ +A+Superl+Ess+Use/Sub:i%>X4mussa%>n%> PxC ;
  +A+Superl:i%>X4mussa%> EABBUCASE2 ;
  +A:ad ALLAGA ;
  +A+Use/NG:ag ALLAGA ;
@@ -3415,7 +3439,7 @@ LEXICON GOAHTI-NEadj
 
 LEXICON NomVadj
  +Sg+Nom: K ;
- +Sg+Nom+Use/Ped+Use/Sub: Px3V ;
+ +Sg+Nom+Use/Sub: Px3V ;
  +SgNomCmp: R ;
  +Der+Der/viđá+Adv:»viđá K ;
 ! +Der/viđi+Adv:»viđi K ;
@@ -3423,7 +3447,7 @@ LEXICON NomVadj
 
 LEXICON EssVadj
  +Ess:n K ;
- +Ess+Use/Ped+Use/Sub:n%> PxC ;
+ +Ess+Use/Sub:n%> PxC ;
 
 LEXICON GOAHTI-OBL
  :X2 GOAHTA- ; ! Px sublexicon
@@ -3504,11 +3528,11 @@ LEXICON GOADIadj-
  +Sg+Gen: K ;
  +Sg+Acc: K ;
  +SgGenCmp+Use/NG: R ; !  !Note! Same entry under GOADE-
- +Sg+Gen+Use/Ped+Use/Sub: Px3V ;
- +Sg+Acc+Use/Ped+Use/Sub: Px3V ;
+ +Sg+Gen+Use/Sub: Px3V ;
+ +Sg+Acc+Use/Sub: Px3V ;
  +Sg+Loc:s K ;
  +Sg+Loc+Use/Sub:n K ; ! !SOUTH
- +Sg+Loc+Use/Ped+Use/Sub:st%> PxC ;
+ +Sg+Loc+Use/Sub:st%> PxC ;
  +Pl+Nom:t K ;
  +Pl+Nom+Use/Sub:k K ;
 
@@ -3533,21 +3557,21 @@ LEXICON GODII-
 
 LEXICON GODIIadj-
  +Sg+Com:jn K ;
- +Sg+Com+Use/Ped+Use/Sub:jn%> PxC ;
- +Pl+Nom+Use/Ped+Use/Sub:jd%> PxC ; !changed Px1C into PxC, TT.
+ +Sg+Com+Use/Sub:jn%> PxC ;
+ +Pl+Nom+Use/Sub:jd%> PxC ; !changed Px1C into PxC, TT.
  +Pl+Gen:jd9 K ;
  +PlGenCmp:jd R ;
- +Pl+Gen+Use/Ped+Use/Sub:jd%> PxC ;
+ +Pl+Gen+Use/Sub:jd%> PxC ;
  +Pl+Acc:jd9 K ;
- +Pl+Acc+Use/Ped+Use/Sub:jd%> PxC ;
+ +Pl+Acc+Use/Sub:jd%> PxC ;
  +Pl+Ill:jde K ;
- +Pl+Ill+Use/Ped+Use/Sub:jdasa%> PxV ;
+ +Pl+Ill+Use/Sub:jdasa%> PxV ;
  +Pl+Loc:jn K ;
  +Pl+Loc+Use/Sub:js K ; ! !SOUTH
- +Pl+Loc+Use/Ped+Use/Sub:jn%> PxC ;
+ +Pl+Loc+Use/Sub:jn%> PxC ;
  +Pl+Com:jgujn K ;
  +Pl+Com/Sh:j%- ENDLEX ; !guosai- ja beziiguin
- +Pl+Com+Use/Ped+Use/Sub:jd%> PxPlComC ;
+ +Pl+Com+Use/Sub:jd%> PxPlComC ;
 
 LEXICON GOADA-
  +Sg+Gen+Use/Ped: Px2V ;
@@ -3601,21 +3625,36 @@ LEXICON MALLAS-
  :i MALLASI-/NUORABU- ;
  
 LEXICON MALLASadj-
- +Sg+Nom+Use/Ped+Use/Sub:00 PxC ;
+ +Sg+Nom+Use/Sub:00 PxC ;
  +Sg+Gen:a K ;
  +Sg+Gen+Use/Sub: K ; 
  +SgGenCmp+Use/Sub:a R ; ! !compound also for these
  +SgGenCmp: R ; !compound also for these
- +Sg+Gen+Use/Ped+Use/Sub: PxC ;
+ +Sg+Gen+Use/Sub: PxC ;
  +Sg+Acc:a K ;
  +Sg+Acc+Use/Sub: K ;
- +Sg+Acc+Use/Ped+Use/Sub: PxC ;
+ +Sg+Acc+Use/Sub: PxC ;
  +Pl+Nom:at K ;
  +Pl+Nom+Use/Sub:ak K ;
- +Sg+Ill+Use/Ped+Use/Sub:asa%> PxV ;
-! +Pl+Nom+Use/Ped+Use/Sub:ijddá%> Px1V ; ! not this TT, BÁB
+ +Sg+Ill+Use/Sub:asa%> PxV ;
+! +Pl+Nom+Use/Sub:ijddá%> Px1V ; ! not this TT, BÁB
  :i MALLASI-/NUORABUadj- ;
 
+LEXICON MALLASadj-_NVD
+ +Sg+Nom+Use/Sub:00 PxC ;
+ +Sg+Gen:a K ;
+ +Sg+Gen+Use/Sub: K ; 
+ +SgGenCmp+Use/Sub:a R ; ! !compound also for these
+ +SgGenCmp: R ; !compound also for these
+ +Sg+Gen+Use/Sub: PxC ;
+ +Sg+Acc:a K ;
+ +Sg+Acc+Use/Sub: K ;
+ +Sg+Acc+Use/Sub: PxC ;
+ +Pl+Nom+Use/NVD:at K ;
+ +Pl+Nom+Use/Sub:ak K ;
+ +Sg+Ill+Use/Sub:asa%> PxV ;
+! +Pl+Nom+Use/Sub:ijddá%> Px1V ; ! not this TT, BÁB
+ :i MALLASI-/NUORABUadj- ;
 
 
 LEXICON MALLASI-/NUORABU-
@@ -3657,14 +3696,14 @@ LEXICON MALLASI-/NUORABUadj-
  +Pl+Loc+Use/Sub:js K ; ! !SOUTH
  +Pl+Com:jgujn K ;
  +Pl+Com/Sh:j%- ENDLEX ; !guosai- ja beziiguin
- +Sg+Loc+Use/Ped+Use/Sub:stti%> PxV ;
- +Sg+Com+Use/Ped+Use/Sub:jnni%> PxV ;
+ +Sg+Loc+Use/Sub:stti%> PxV ;
+ +Sg+Com+Use/Sub:jnni%> PxV ;
  +Pl+Nom+Use/Sub:jddi%> PxV ; !^P^ ! was commented out...
- +Pl+Gen+Use/Ped+Use/Sub:jddi%> PxV ;
- +Pl+Acc+Use/Ped+Use/Sub:jddi%> PxV ;
- +Pl+Ill+Use/Ped+Use/Sub:jddás%> PxC ;
- +Pl+Loc+Use/Ped+Use/Sub:jnni%> PxV ;
- +Pl+Com+Use/Ped+Use/Sub:jddi%> PxPlComV1 ;
+ +Pl+Gen+Use/Sub:jddi%> PxV ;
+ +Pl+Acc+Use/Sub:jddi%> PxV ;
+ +Pl+Ill+Use/Sub:jddás%> PxC ;
+ +Pl+Loc+Use/Sub:jnni%> PxV ;
+ +Pl+Com+Use/Sub:jddi%> PxPlComV1 ;
 
 
 LEXICON EAMOSH  ! Deverbal nouns
@@ -4206,37 +4245,37 @@ LEXICON VUDDJI-
  BOHCCUadj ;
 
 LEXICON BOHCCOadj
- +Sg+Nom+Use/Ped+Use/Sub: PxV2 ;
+ +Sg+Nom+Use/Sub: PxV2 ;
  +Sg+Gen: K ;
- +Sg+Gen+Use/Ped+Use/Sub: PxV2 ;
+ +Sg+Gen+Use/Sub: PxV2 ;
  +SgGenCmp: R ; 		! Already in LEXICON BOAZU
  +Sg+Acc: K ;
- +Sg+Acc+Use/Ped+Use/Sub: PxV2 ;
- +Sg+Ill+Use/Ped+Use/Sub:s%> PxC ;
+ +Sg+Acc+Use/Sub: PxV2 ;
+ +Sg+Ill+Use/Sub:s%> PxC ;
  +Sg+Loc:s K ;
  +Sg+Loc+Use/Sub:n K ; ! !SOUTH
- +Sg+Loc+Use/Ped+Use/Sub:st%> PxC ;
+ +Sg+Loc+Use/Sub:st%> PxC ;
  +Pl+Nom:t K ;
  +Pl+Nom+Use/Sub:k K ; ! !Skániid dialect
 
 LEXICON BOHCCUadj
  +Sg+Ill:j K ;
  +Sg+Com:jn K ;
- +Sg+Com+Use/Ped+Use/Sub:jn%> PxC ;
+ +Sg+Com+Use/Sub:jn%> PxC ;
  +Pl+Gen:jd K ;
  +PlGenCmp:jd R ;
- +Pl+Nom+Use/Ped+Use/Sub:jd%> Px1C ;
- +Pl+Gen+Use/Ped+Use/Sub:jd%> PxC ;
+ +Pl+Nom+Use/Sub:jd%> Px1C ;
+ +Pl+Gen+Use/Sub:jd%> PxC ;
  +Pl+Acc:jd K ;
- +Pl+Acc+Use/Ped+Use/Sub:jd%> PxC ;
+ +Pl+Acc+Use/Sub:jd%> PxC ;
  +Pl+Ill:jde K ;
- +Pl+Ill+Use/Ped+Use/Sub:jdasa%> PxV ;
+ +Pl+Ill+Use/Sub:jdasa%> PxV ;
  +Pl+Loc:jn K ;
  +Pl+Loc+Use/Sub:js K ; ! !SOUTH
- +Pl+Loc+Use/Ped+Use/Sub:jn%> PxC ;
+ +Pl+Loc+Use/Sub:jn%> PxC ;
  +Pl+Com:jgujn K ;
  +Pl+Com/Sh:j%- ENDLEX ;  !guosai- ja beziiguin
- +Pl+Com+Use/Ped+Use/Sub:jd%> PxPlComC ;
+ +Pl+Com+Use/Sub:jd%> PxPlComC ;
 
 
 
@@ -4312,9 +4351,9 @@ LEXICON JOHTOLAHKA-
 
 
 LEXICON ISSORASSA-
- +Sg+Nom+Use/Ped+Use/Sub: PxV ; ! ! tentative.
+ +Sg+Nom+Use/Sub: PxV ; ! ! tentative.
  +Ess:n K ;
- +Ess+Use/Ped+Use/Sub:n%> PxC ; ! ! tentative, check.
+ +Ess+Use/Sub:n%> PxC ; ! ! tentative, check.
    +Dial/%-KJ:X4 BU/MUS ; ! Added dial tag. Check!
  HEAPMIOBL ;
 
@@ -4322,12 +4361,17 @@ LEXICON ISSORASSA-
 LEXICON EABBO/EAMOS
  ADVC ;
  EABBO/EAMOS_CONT ;
+ 
+LEXICON EABBO/EAMOS_NVD
+ ADVC ;
+ EABBO/EAMOS_CONT_NVD ;
+
 
 LEXICON EABBO/EAMOS_CONT
- +Comp+Dial/%-GG:at SHORTCOMP ; ! 
- +Comp+Use/NG:it SHORTCOMP ; ! !In use in Gg, not in Kj. Not generated
- +Comp+Dial/%-KJ:et SHORTCOMP ;
- +Comp+Use/NG:ut SHORTCOMP ; ! !In use in Kj, not in Gg. Not generated
+ +Comp+Dial/%-GG:at SHORTCOMP_PREDNVD ; ! 
+ +Comp+Use/NG:it SHORTCOMP_NVD ; ! !In use in Gg, not in Kj. Not generated
+ +Comp+Dial/%-KJ:et SHORTCOMP_PREDNVD ;
+ +Comp+Use/NG:ut SHORTCOMP_NVD ; ! !In use in Kj, not in Gg. Not generated
  +Comp+Use/Sub+Dial/%-KJ:eabbu EABBU ;  ! Parallel form. Not standard. 
  +Comp+Dial/%-KJ:eabbo EABBU ;  ! Parallel form. Standard. 
  +Comp+Dial/%-GG:ab'bo EABBU ;  ! Parallel form. Standard.   
@@ -4336,37 +4380,100 @@ LEXICON EABBO/EAMOS_CONT
  +Superl+Dial/%-KJ:eapmo7s EAMOS ; ! 
  +Superl+Use/Sub:eapmus EAMOS ;
 
+LEXICON EABBO/EAMOS_CONT_NVD
+ +Comp+Dial/%-GG:at SHORTCOMP_NVD ; ! 
+ +Comp+Use/NG:it SHORTCOMP_NVD ; ! !In use in Gg, not in Kj. Not generated
+ +Comp+Dial/%-KJ:et SHORTCOMP_NVD ;
+ +Comp+Use/NG:ut SHORTCOMP_NVD ; ! !In use in Kj, not in Gg. Not generated
+ +Comp+Use/Sub+Dial/%-KJ:eabbu EABBU ;  ! Parallel form. Not standard. 
+ +Comp+Dial/%-KJ:eabbo EABBU_NVD ;  ! Parallel form. Standard. 
+ +Comp+Dial/%-GG:ab'bo EABBU_NVD ;  ! Parallel form. Standard.   
+ +Comp+Use/Sub+Dial/%-GG:ab'bu EABBU_NVD ;  ! Parallel form. Not standard. 
+ +Superl+Dial/%-GG:amos EAMOS_NVD ; !  
+ +Superl+Dial/%-KJ:eapmo7s EAMOS_NVD ; ! 
+ +Superl+Use/Sub:eapmus EAMOS_NVD ;
+
+
+LEXICON EAMOS_NVD
+ +Sg+Nom+Use/NVD:%>X4 K ;
+ +Ess:%>X4in K ;
+ +Sg+Nom+Use/Marg+Use/Sub:%>X2 PxC ;
+ +Sg+Gen:%>X2a K ;
+ +Sg+Gen+Use/Sub:%>X2 K ;
+ +Sg+Gen+Use/Marg+Use/Sub:%>X2 PxC ;
+ +Sg+Acc:%>X2a K ;
+ +Sg+Acc+Use/Sub:%>X2 K ;
+ +Sg+Acc+Use/Marg+Use/Sub:%>X2 PxC ;
+ +Pl+Nom+Use/NVD:%>X2at K ;
+ +Sg+Ill+Use/Marg+Use/Sub:%>X2asa%> PxV ;
+ +Pl+Nom+Use/Marg+Use/Sub:%>X2ijddá%> Px1V ;
+ +Sg+Ill:%>X2ij K ;
+ +Sg+Loc:%>X2is K ;
+ +Sg+Loc+Use/Sub:%>X2in K ; ! !SOUTH
+ +Sg+Com:%>X2ijn K ;
+ +Sg+Com+Use/Sub:%>X2ijnna K ;
+ +Pl+Gen:%>X2ijd K ;
+ +PlGenCmp:%>X2ijd R ;
+ +Pl+Acc:%>X2ijd K ;
+ +Pl+Ill:%>X2ijdda K ;
+ +Pl+Loc:%>X2ijn K ;
+ +Pl+Loc+Use/Sub:%>X2ijnna K ;
+ +Pl+Loc+Use/Sub:%>X2ijs K ; ! !SOUTH
+ +Pl+Com:%>X2ijgujn K ;
+ +Pl+Com/Sh:%>X2ij%- ENDLEX ; !guosai- ja beziiguin
+ +Sg+Loc+Use/Marg+Use/Sub:%>X2istti%> PxV ;
+ +Sg+Com+Use/Marg+Use/Sub:%>X2ijnni%> PxV ;
+! +Pl+Nom+Use/Sub:%>X2ijddi%> PxV ; !^P^ !MARG
+ +Pl+Gen+Use/Marg+Use/Sub:%>X2ijddi%> PxV ;
+ +Pl+Acc+Use/Marg+Use/Sub:%>X2ijddi%> PxV ;
+ +Pl+Ill+Use/Marg+Use/Sub:%>X2ijddás%> PxC ;
+ +Pl+Loc+Use/Marg+Use/Sub:%>X2ijnni%> PxV ;
+ +Pl+Com+Use/Marg+Use/Sub:%>X2ijddi%> PxPlComV1 ;
+ :%>X2 ADVC ;
+ +Attr+Use/NVD:%>X4 K ; ! Attributive superaltives
+
+
+
 LEXICON EABBO/EAMOS_CONT-contracted 
  +Comp+Dial/%-GG:at SHORTCOMP ; !  
- +Comp+Use/NG:it SHORTCOMP ; !  !In use in Gg, not in Kj. Not generated
- +Comp+Use/NG:et SHORTCOMP ; !   
- +Comp+Use/NG:ut SHORTCOMP ; !  !In use in Kj, not in Gg. Not generated
- +Comp+Use/Sub+Use/NG+Dial/%-KJ:eabbu EABBU ;  ! Parallel form. Not standard. 
- +Comp+Use/NG+Dial/%-KJ:eabbo EABBU ;  ! Parallel form. Standard. 
+! +Comp+Use/NG:it SHORTCOMP ; !  !In use in Gg, not in Kj. Not generated
+! +Comp+Use/NG:et SHORTCOMP ; !   
+ +Comp+Use/NG:ut SHORTCOMP_NVD ; !  !In use in Kj, not in Gg. Not generated
+! +Comp+Use/Sub+Use/NG+Dial/%-KJ:eabbu EABBU ;  ! Parallel form. Not standard. 
+! +Comp+Use/NG+Dial/%-KJ:eabbo EABBU ;  ! Parallel form. Standard. 
  +Comp+Dial/%-GG:ab'bo EABBU ;  ! Parallel form. Standard.  
  +Comp+Use/Sub+Dial/%-GG:ab'bu EABBU ;  ! Parallel form. Not standard. 
  +Superl+Dial/%-GG:amos EAMOS ; ! 
- +Superl+Use/NG:eapmo7s EAMOS ;
- +Superl+Use/Sub+Use/NG:eapmus EAMOS ;
+! +Superl+Use/NG:eapmo7s EAMOS ;
+! +Superl+Use/Sub+Use/NG:eapmus EAMOS ;
 
 LEXICON SHORTCOMP
  +Sg+Nom+Dial/%-GG:%> K ; ! 
+ ATTRCONT ;
+
+LEXICON SHORTCOMP_NVD
+ +Sg+Nom+Use/NVD+Dial/%-GG:%> K ; ! 
+ +Attr+Use/NVD:%> K ;  ! Comp are also Attr.
+ +Use/Sub: Rreal ;    
+
+LEXICON SHORTCOMP_PREDNVD
+ +Sg+Nom+Use/NVD+Dial/%-GG:%> K ; ! 
  ATTRCONT ;
 
 
 LEXICON EABBU
  +Der1+Der/Dimin+N+Sg+Nom:»X6ž K ;
  +Der1+Der/Dimin+N+Ess:»X6žin K ;
- +Der1+Der/Dimin+N+Sg+Nom+Use/Marg+Use/Ped+Use/Sub:»X6ž%> PxC ;
+ +Der1+Der/Dimin+N+Sg+Nom+Use/Marg+Use/Sub:»X6ž%> PxC ;
  +Der1+Der/Dimin+N+Sg+Gen:»X6ža K ;
  +Der1+Der/Dimin+N+Sg+Gen+Use/Sub:»X6ž K ;
- +Der1+Der/Dimin+N+Sg+Gen+Use/Marg+Use/Ped+Use/Sub:»X6ž%> PxC ;
+ +Der1+Der/Dimin+N+Sg+Gen+Use/Marg+Use/Sub:»X6ž%> PxC ;
  +Der1+Der/Dimin+N+Sg+Acc:»X6ža K ;
  +Der1+Der/Dimin+N+Sg+Acc+Use/Sub:»X6ž K ;
- +Der1+Der/Dimin+N+Sg+Acc+Use/Marg+Use/Ped+Use/Sub:»X6ž%> PxC ;
+ +Der1+Der/Dimin+N+Sg+Acc+Use/Marg+Use/Sub:»X6ž%> PxC ;
  +Der1+Der/Dimin+N+Pl+Nom:»X6žat K ;
- +Der1+Der/Dimin+N+Sg+Ill+Use/Marg+Use/Ped+Use/Sub:»X6žasa%> PxV ;
- +Der1+Der/Dimin+N+Pl+Nom+Use/Marg+Use/Ped+Use/Sub:»X6žijddá%> Px1V ;
+ +Der1+Der/Dimin+N+Sg+Ill+Use/Marg+Use/Sub:»X6žasa%> PxV ;
+ +Der1+Der/Dimin+N+Pl+Nom+Use/Marg+Use/Sub:»X6žijddá%> Px1V ;
  +Der1+Der/Dimin+N+Sg+Ill:»X6žij K ;
  +Der1+Der/Dimin+N+Sg+Loc:»X6žis K ;
  +Der1+Der/Dimin+N+Sg+Loc+Use/Sub:»X6žin K ; ! !SOUTH
@@ -4381,13 +4488,13 @@ LEXICON EABBU
  +Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X6žijs K ; ! !SOUTH
  +Der1+Der/Dimin+N+Pl+Com:»X6žijgujn K ;
  +Der1+Der/Dimin+N+Pl+Com/Sh:»X6žij%- ENDLEX ; !guosai- ja beziiguin
- +Der1+Der/Dimin+N+Sg+Loc+Use/Marg+Use/Ped+Use/Sub:»X6žistti%> PxV ;
- +Der1+Der/Dimin+N+Sg+Com+Use/Marg+Use/Ped+Use/Sub:»X6žijnni%> PxV ;
- +Der1+Der/Dimin+N+Pl+Gen+Use/Marg+Use/Ped+Use/Sub:»X6žijddi%> PxV ;
- +Der1+Der/Dimin+N+Pl+Acc+Use/Marg+Use/Ped+Use/Sub:»X6žijddi%> PxV ;
- +Der1+Der/Dimin+N+Pl+Ill+Use/Marg+Use/Ped+Use/Sub:»X6žijddás%> PxC ;
- +Der1+Der/Dimin+N+Pl+Loc+Use/Marg+Use/Ped+Use/Sub:»X6žijnni%> PxV ;
- +Der1+Der/Dimin+N+Pl+Com+Use/Marg+Use/Ped+Use/Sub:»X6žijddi%> PxPlComV1 ;
+ +Der1+Der/Dimin+N+Sg+Loc+Use/Marg+Use/Sub:»X6žistti%> PxV ;
+ +Der1+Der/Dimin+N+Sg+Com+Use/Marg+Use/Sub:»X6žijnni%> PxV ;
+ +Der1+Der/Dimin+N+Pl+Gen+Use/Marg+Use/Sub:»X6žijddi%> PxV ;
+ +Der1+Der/Dimin+N+Pl+Acc+Use/Marg+Use/Sub:»X6žijddi%> PxV ;
+ +Der1+Der/Dimin+N+Pl+Ill+Use/Marg+Use/Sub:»X6žijddás%> PxC ;
+ +Der1+Der/Dimin+N+Pl+Loc+Use/Marg+Use/Sub:»X6žijnni%> PxV ;
+ +Der1+Der/Dimin+N+Pl+Com+Use/Marg+Use/Sub:»X6žijddi%> PxPlComV1 ;
  +Der1+Der/Dimin+A:»X6š%> ATTRCONT ;
  +Der1+Der/Dimin+A+Der2+Der/at+Adv:»X6žit K ;
  :%> EABBUCASE1 ;
@@ -4399,62 +4506,165 @@ LEXICON EABBU
 LEXICON EABBUCASE1
  +Sg+Nom+Dial/%-KJ:X1 K ; ! 
  +Sg+Nom+Dial/%-KJ:X7 K ; ! 
- +Sg+Nom+Use/Marg+Use/Ped+Use/Sub: PxV ;
+ +Sg+Nom+Use/Marg+Use/Sub: PxV ;
  +Ess:X1n K ;
  +Ess+Use/NG:X7n K ;
- +Ess+Use/Marg+Use/Ped+Use/Sub:X1n%> PxC ;
- +Ess+Use/Marg+Use/Ped+Use/Sub:X7n%> PxC ;
+ +Ess+Use/Marg+Use/Sub:X1n%> PxC ;
+ +Ess+Use/Marg+Use/Sub:X7n%> PxC ;
 
 LEXICON EABBUCASE2
  +Sg+Gen:X4 K ;
  +Sg+Gen+Use/NG:X8 K ;
- +Sg+Gen+Use/Marg+Use/Ped+Use/Sub:X2 Px1V ;
- +Sg+Gen+Use/Marg+Use/Ped+Use/Sub:X6 Px2V ;
- +Sg+Gen+Use/Marg+Use/Ped+Use/Sub:X4 Px3V ;
+ +Sg+Gen+Use/Marg+Use/Sub:X2 Px1V ;
+ +Sg+Gen+Use/Marg+Use/Sub:X6 Px2V ;
+ +Sg+Gen+Use/Marg+Use/Sub:X4 Px3V ;
  +Sg+Acc:X4 K ;
  +Sg+Acc+Use/NG:X8 K ;
- +Sg+Acc+Use/Marg+Use/Ped+Use/Sub:X2 Px1V ;
- +Sg+Acc+Use/Marg+Use/Ped+Use/Sub:X6 Px2V ;
- +Sg+Acc+Use/Marg+Use/Ped+Use/Sub:X4 Px3V ;
+ +Sg+Acc+Use/Marg+Use/Sub:X2 Px1V ;
+ +Sg+Acc+Use/Marg+Use/Sub:X6 Px2V ;
+ +Sg+Acc+Use/Marg+Use/Sub:X4 Px3V ;
  +Sg+Ill:X3j K ;
  +Sg+Ill+Use/Sub:j K ;
- +Sg+Ill+Use/Marg+Use/Ped+Use/Sub:X2s%> PxC ;
+ +Sg+Ill+Use/Marg+Use/Sub:X2s%> PxC ;
  +Sg+Loc:X4s K ;
  +Sg+Loc+Use/NG:X8s K ;
  +Sg+Loc+Use/Sub:X4n K ; ! !SOUTH
  +Sg+Loc+Use/Sub:X8n K ; ! !SOUTH
- +Sg+Loc+Use/Marg+Use/Ped+Use/Sub:X4st%> PxC ;
- +Sg+Loc+Use/Marg+Use/Ped+Use/Sub:X8st%> PxC ;
+ +Sg+Loc+Use/Marg+Use/Sub:X4st%> PxC ;
+ +Sg+Loc+Use/Marg+Use/Sub:X8st%> PxC ;
  +Sg+Com+Use/Sub:X5jn K ;
  +Sg+Com:%^DISIMPjn K ;
- +Sg+Com+Use/Marg+Use/Ped+Use/Sub:X5jn%> PxC ;
- +Sg+Com+Use/Marg+Use/Ped+Use/Sub:%^DISIMPjn%> PxC ;
+ +Sg+Com+Use/Marg+Use/Sub:X5jn%> PxC ;
+ +Sg+Com+Use/Marg+Use/Sub:%^DISIMPjn%> PxC ;
  +Pl+Nom:X4t K ;
  +Pl+Nom+Use/Sub:X4k K ; ! !Skániid dialect
- +Pl+Nom+Use/Marg+Use/Ped+Use/Sub:X5jd%> Px1C ;
- +Pl+Nom+Use/Marg+Use/Ped+Use/Sub:%^DISIMPjd%> Px1C ;
+ +Pl+Nom+Use/Marg+Use/Sub:X5jd%> Px1C ;
+ +Pl+Nom+Use/Marg+Use/Sub:%^DISIMPjd%> Px1C ;
  +Pl+Gen+Use/Sub:X5jd K ;
  +Pl+Gen:%^DISIMPjd K ;
- +Pl+Gen+Use/Marg+Use/Ped+Use/Sub:X5jd%> PxC ;
- +Pl+Gen+Use/Marg+Use/Ped+Use/Sub:%^DISIMPjd%> PxC ;
+ +Pl+Gen+Use/Marg+Use/Sub:X5jd%> PxC ;
+ +Pl+Gen+Use/Marg+Use/Sub:%^DISIMPjd%> PxC ;
  +Pl+Acc+Use/Sub:X5jd K ;
  +Pl+Acc:%^DISIMPjd K ;
- +Pl+Acc+Use/Marg+Use/Ped+Use/Sub:X5jd%> PxC ;
- +Pl+Acc+Use/Marg+Use/Ped+Use/Sub:%^DISIMPjd%> PxC ;
+ +Pl+Acc+Use/Marg+Use/Sub:X5jd%> PxC ;
+ +Pl+Acc+Use/Marg+Use/Sub:%^DISIMPjd%> PxC ;
  +Pl+Ill+Use/Sub:X5jde K ;
  +Pl+Ill:%^DISIMPjde K ;
- +Pl+Ill+Use/Marg+Use/Ped+Use/Sub:X5jdasa%> PxV  ;
- +Pl+Ill+Use/Marg+Use/Ped+Use/Sub:%^DISIMPjdasa%> PxV  ;
+ +Pl+Ill+Use/Marg+Use/Sub:X5jdasa%> PxV  ;
+ +Pl+Ill+Use/Marg+Use/Sub:%^DISIMPjdasa%> PxV  ;
  +Pl+Loc+Use/Sub:X5jn K ;
  +Pl+Loc:%^DISIMPjn K ;
- +Pl+Loc+Use/Marg+Use/Ped+Use/Sub:X5jn%> PxC ;
- +Pl+Loc+Use/Marg+Use/Ped+Use/Sub:%^DISIMPjn%> PxC ;
+ +Pl+Loc+Use/Marg+Use/Sub:X5jn%> PxC ;
+ +Pl+Loc+Use/Marg+Use/Sub:%^DISIMPjn%> PxC ;
  +Pl+Com+Use/Sub:X5jgujn K ;
  +Pl+Com:%^DISIMPjgujn K ;
  +Pl+Com/Sh+Use/Sub:X5j%- ENDLEX ; !guosai- ja beziiguin
  +Pl+Com/Sh:%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +Pl+Com+Use/Marg+Use/Ped+Use/Sub:X5jd%> PxPlComC ;
- +Pl+Com+Use/Marg+Use/Ped+Use/Sub:%^DISIMPjd%> PxPlComC ;
+ +Pl+Com+Use/Marg+Use/Sub:X5jd%> PxPlComC ;
+ +Pl+Com+Use/Marg+Use/Sub:%^DISIMPjd%> PxPlComC ;
+
+LEXICON EABBU_NVD
+ +Der1+Der/Dimin+N+Sg+Nom:»X6ž K ;
+ +Der1+Der/Dimin+N+Ess:»X6žin K ;
+ +Der1+Der/Dimin+N+Sg+Nom+Use/Marg+Use/Sub:»X6ž%> PxC ;
+ +Der1+Der/Dimin+N+Sg+Gen:»X6ža K ;
+ +Der1+Der/Dimin+N+Sg+Gen+Use/Sub:»X6ž K ;
+ +Der1+Der/Dimin+N+Sg+Gen+Use/Marg+Use/Sub:»X6ž%> PxC ;
+ +Der1+Der/Dimin+N+Sg+Acc:»X6ža K ;
+ +Der1+Der/Dimin+N+Sg+Acc+Use/Sub:»X6ž K ;
+ +Der1+Der/Dimin+N+Sg+Acc+Use/Marg+Use/Sub:»X6ž%> PxC ;
+ +Der1+Der/Dimin+N+Pl+Nom:»X6žat K ;
+ +Der1+Der/Dimin+N+Sg+Ill+Use/Marg+Use/Sub:»X6žasa%> PxV ;
+ +Der1+Der/Dimin+N+Pl+Nom+Use/Marg+Use/Sub:»X6žijddá%> Px1V ;
+ +Der1+Der/Dimin+N+Sg+Ill:»X6žij K ;
+ +Der1+Der/Dimin+N+Sg+Loc:»X6žis K ;
+ +Der1+Der/Dimin+N+Sg+Loc+Use/Sub:»X6žin K ; ! !SOUTH
+ +Der1+Der/Dimin+N+Sg+Com:»X6žijn K ;
+ +Der1+Der/Dimin+N+Sg+Com+Use/Sub:»X6žijnna K ;
+ +Der1+Der/Dimin+N+Pl+Gen:»X6žijd K ;
+ +Der1+Der/Dimin+N+PlGenCmp:»X6žijd R ;
+ +Der1+Der/Dimin+N+Pl+Acc:»X6žijd K ;
+ +Der1+Der/Dimin+N+Pl+Ill:»X6žijdda K ;
+ +Der1+Der/Dimin+N+Pl+Loc:»X6žijn K ;
+ +Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X6žijnna K ;
+ +Der1+Der/Dimin+N+Pl+Loc+Use/Sub:»X6žijs K ; ! !SOUTH
+ +Der1+Der/Dimin+N+Pl+Com:»X6žijgujn K ;
+ +Der1+Der/Dimin+N+Pl+Com/Sh:»X6žij%- ENDLEX ; !guosai- ja beziiguin
+ +Der1+Der/Dimin+N+Sg+Loc+Use/Marg+Use/Sub:»X6žistti%> PxV ;
+ +Der1+Der/Dimin+N+Sg+Com+Use/Marg+Use/Sub:»X6žijnni%> PxV ;
+ +Der1+Der/Dimin+N+Pl+Gen+Use/Marg+Use/Sub:»X6žijddi%> PxV ;
+ +Der1+Der/Dimin+N+Pl+Acc+Use/Marg+Use/Sub:»X6žijddi%> PxV ;
+ +Der1+Der/Dimin+N+Pl+Ill+Use/Marg+Use/Sub:»X6žijddás%> PxC ;
+ +Der1+Der/Dimin+N+Pl+Loc+Use/Marg+Use/Sub:»X6žijnni%> PxV ;
+ +Der1+Der/Dimin+N+Pl+Com+Use/Marg+Use/Sub:»X6žijddi%> PxPlComV1 ;
+ +Der1+Der/Dimin+A:»X6š%> ATTRCONT ;
+ +Der1+Der/Dimin+A+Der2+Der/at+Adv:»X6žit K ;
+ :%> EABBUCASE1_NVD ;
+ :%> EABBUCASE2_NVD ;
+ +Der2+Der/at+Adv:%>X8t K ;
+ +Der2+Der/at+Adv+Use/Sub:%>X7t K ;
+ +Attr+Use/Sub: ATTR  ;
+
+LEXICON EABBUCASE1_NVD
+ +Sg+Nom+Use/NVD+Dial/%-KJ:X1 K ; ! 
+ +Sg+Nom+Use/NVD+Dial/%-KJ:X7 K ; ! 
+ +Sg+Nom+Use/Marg+Use/Sub: PxV ;
+ +Ess:X1n K ;
+ +Ess+Use/NG:X7n K ;
+ +Ess+Use/Marg+Use/Sub:X1n%> PxC ;
+ +Ess+Use/Marg+Use/Sub:X7n%> PxC ;
+
+LEXICON EABBUCASE2_NVD
+ +Sg+Gen:X4 K ;
+ +Sg+Gen+Use/NG:X8 K ;
+ +Sg+Gen+Use/Marg+Use/Sub:X2 Px1V ;
+ +Sg+Gen+Use/Marg+Use/Sub:X6 Px2V ;
+ +Sg+Gen+Use/Marg+Use/Sub:X4 Px3V ;
+ +Sg+Acc:X4 K ;
+ +Sg+Acc+Use/NG:X8 K ;
+ +Sg+Acc+Use/Marg+Use/Sub:X2 Px1V ;
+ +Sg+Acc+Use/Marg+Use/Sub:X6 Px2V ;
+ +Sg+Acc+Use/Marg+Use/Sub:X4 Px3V ;
+ +Sg+Ill:X3j K ;
+ +Sg+Ill+Use/Sub:j K ;
+ +Sg+Ill+Use/Marg+Use/Sub:X2s%> PxC ;
+ +Sg+Loc:X4s K ;
+ +Sg+Loc+Use/NG:X8s K ;
+ +Sg+Loc+Use/Sub:X4n K ; ! !SOUTH
+ +Sg+Loc+Use/Sub:X8n K ; ! !SOUTH
+ +Sg+Loc+Use/Marg+Use/Sub:X4st%> PxC ;
+ +Sg+Loc+Use/Marg+Use/Sub:X8st%> PxC ;
+ +Sg+Com+Use/Sub:X5jn K ;
+ +Sg+Com:%^DISIMPjn K ;
+ +Sg+Com+Use/Marg+Use/Sub:X5jn%> PxC ;
+ +Sg+Com+Use/Marg+Use/Sub:%^DISIMPjn%> PxC ;
+ +Pl+Nom+Use/NVD:X4t K ;
+ +Pl+Nom+Use/Sub:X4k K ; ! !Skániid dialect
+ +Pl+Nom+Use/Marg+Use/Sub:X5jd%> Px1C ;
+ +Pl+Nom+Use/Marg+Use/Sub:%^DISIMPjd%> Px1C ;
+ +Pl+Gen+Use/Sub:X5jd K ;
+ +Pl+Gen:%^DISIMPjd K ;
+ +Pl+Gen+Use/Marg+Use/Sub:X5jd%> PxC ;
+ +Pl+Gen+Use/Marg+Use/Sub:%^DISIMPjd%> PxC ;
+ +Pl+Acc+Use/Sub:X5jd K ;
+ +Pl+Acc:%^DISIMPjd K ;
+ +Pl+Acc+Use/Marg+Use/Sub:X5jd%> PxC ;
+ +Pl+Acc+Use/Marg+Use/Sub:%^DISIMPjd%> PxC ;
+ +Pl+Ill+Use/Sub:X5jde K ;
+ +Pl+Ill:%^DISIMPjde K ;
+ +Pl+Ill+Use/Marg+Use/Sub:X5jdasa%> PxV  ;
+ +Pl+Ill+Use/Marg+Use/Sub:%^DISIMPjdasa%> PxV  ;
+ +Pl+Loc+Use/Sub:X5jn K ;
+ +Pl+Loc:%^DISIMPjn K ;
+ +Pl+Loc+Use/Marg+Use/Sub:X5jn%> PxC ;
+ +Pl+Loc+Use/Marg+Use/Sub:%^DISIMPjn%> PxC ;
+ +Pl+Com+Use/Sub:X5jgujn K ;
+ +Pl+Com:%^DISIMPjgujn K ;
+ +Pl+Com/Sh+Use/Sub:X5j%- ENDLEX ; !guosai- ja beziiguin
+ +Pl+Com/Sh:%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
+ +Pl+Com+Use/Marg+Use/Sub:X5jd%> PxPlComC ;
+ +Pl+Com+Use/Marg+Use/Sub:%^DISIMPjd%> PxPlComC ;
+
 
 LEXICON BU/MUS
  +Comp:b BUStem ;
@@ -4486,42 +4696,42 @@ LEXICON BUStem
  +Pl+Loc+Use/Sub:ujs K ; ! !SOUTH
  +Pl+Com:ujgujn K ;
  +Pl+Com/Sh:uj%- ENDLEX ; !guosai- ja beziiguin
- +Sg+Loc+Use/Marg+Use/Ped+Use/Sub:ustti%> PxV ;
- +Sg+Com+Use/Marg+Use/Ped+Use/Sub:ujnni%> PxV ;
+ +Sg+Loc+Use/Marg+Use/Sub:ustti%> PxV ;
+ +Sg+Com+Use/Marg+Use/Sub:ujnni%> PxV ;
 ! +Pl+Nom+Use/Sub:ujddi%> PxV ; !^P^ !MARG
- +Pl+Gen+Use/Marg+Use/Ped+Use/Sub:ujddi%> PxV ;
- +Pl+Acc+Use/Marg+Use/Ped+Use/Sub:ujddi%> PxV ;
- +Pl+Ill+Use/Marg+Use/Ped+Use/Sub:ujddás%> PxC ;
- +Pl+Loc+Use/Marg+Use/Ped+Use/Sub:ujnni%> PxV ;
- +Pl+Com+Use/Marg+Use/Ped+Use/Sub:ujddi%> PxPlComV1 ;
+ +Pl+Gen+Use/Marg+Use/Sub:ujddi%> PxV ;
+ +Pl+Acc+Use/Marg+Use/Sub:ujddi%> PxV ;
+ +Pl+Ill+Use/Marg+Use/Sub:ujddás%> PxC ;
+ +Pl+Loc+Use/Marg+Use/Sub:ujnni%> PxV ;
+ +Pl+Com+Use/Marg+Use/Sub:ujddi%> PxPlComV1 ;
  +Der2+Der/at+Adv:ut K ;
- +Sg+Nom+Use/Marg+Use/Ped+Use/Sub:u%> Px1V ;
- +Sg+Nom+Use/Marg+Use/Ped+Use/Sub:u%> Px2V ;
- +Sg+Nom+Use/Marg+Use/Ped+Use/Sub:u%> Px3V ;
- +Sg+Gen+Use/Marg+Use/Ped+Use/Sub:u%> Px1V ;
- +Sg+Gen+Use/Marg+Use/Ped+Use/Sub:u%> Px2V ;
- +Sg+Gen+Use/Marg+Use/Ped+Use/Sub:u%> Px3V ;
- +Sg+Acc+Use/Marg+Use/Ped+Use/Sub:u%> Px1V ;
- +Sg+Acc+Use/Marg+Use/Ped+Use/Sub:u%> Px2V ;
- +Sg+Acc+Use/Marg+Use/Ped+Use/Sub:u%> Px3V ;
- +Sg+Ill+Use/Marg+Use/Ped+Use/Sub:usa%> PxV ;
- +Pl+Nom+Use/Marg+Use/Ped+Use/Sub:uiddá%> Px1V ;
+ +Sg+Nom+Use/Marg+Use/Sub:u%> Px1V ;
+ +Sg+Nom+Use/Marg+Use/Sub:u%> Px2V ;
+ +Sg+Nom+Use/Marg+Use/Sub:u%> Px3V ;
+ +Sg+Gen+Use/Marg+Use/Sub:u%> Px1V ;
+ +Sg+Gen+Use/Marg+Use/Sub:u%> Px2V ;
+ +Sg+Gen+Use/Marg+Use/Sub:u%> Px3V ;
+ +Sg+Acc+Use/Marg+Use/Sub:u%> Px1V ;
+ +Sg+Acc+Use/Marg+Use/Sub:u%> Px2V ;
+ +Sg+Acc+Use/Marg+Use/Sub:u%> Px3V ;
+ +Sg+Ill+Use/Marg+Use/Sub:usa%> PxV ;
+ +Pl+Nom+Use/Marg+Use/Sub:uiddá%> Px1V ;
 
 LEXICON EAMOS
 ! The 3 next lines are for MALIS0
 ! minus the pointer to Ess Px.
  +Sg+Nom:%>X4 K ;
  +Ess:%>X4in K ;
- +Sg+Nom+Use/Marg+Use/Ped+Use/Sub:%>X2 PxC ;
+ +Sg+Nom+Use/Marg+Use/Sub:%>X2 PxC ;
  +Sg+Gen:%>X2a K ;
  +Sg+Gen+Use/Sub:%>X2 K ;
- +Sg+Gen+Use/Marg+Use/Ped+Use/Sub:%>X2 PxC ;
+ +Sg+Gen+Use/Marg+Use/Sub:%>X2 PxC ;
  +Sg+Acc:%>X2a K ;
  +Sg+Acc+Use/Sub:%>X2 K ;
- +Sg+Acc+Use/Marg+Use/Ped+Use/Sub:%>X2 PxC ;
+ +Sg+Acc+Use/Marg+Use/Sub:%>X2 PxC ;
  +Pl+Nom:%>X2at K ;
- +Sg+Ill+Use/Marg+Use/Ped+Use/Sub:%>X2asa%> PxV ;
- +Pl+Nom+Use/Marg+Use/Ped+Use/Sub:%>X2ijddá%> Px1V ;
+ +Sg+Ill+Use/Marg+Use/Sub:%>X2asa%> PxV ;
+ +Pl+Nom+Use/Marg+Use/Sub:%>X2ijddá%> Px1V ;
  +Sg+Ill:%>X2ij K ;
  +Sg+Loc:%>X2is K ;
  +Sg+Loc+Use/Sub:%>X2in K ; ! !SOUTH
@@ -4536,14 +4746,14 @@ LEXICON EAMOS
  +Pl+Loc+Use/Sub:%>X2ijs K ; ! !SOUTH
  +Pl+Com:%>X2ijgujn K ;
  +Pl+Com/Sh:%>X2ij%- ENDLEX ; !guosai- ja beziiguin
- +Sg+Loc+Use/Marg+Use/Ped+Use/Sub:%>X2istti%> PxV ;
- +Sg+Com+Use/Marg+Use/Ped+Use/Sub:%>X2ijnni%> PxV ;
+ +Sg+Loc+Use/Marg+Use/Sub:%>X2istti%> PxV ;
+ +Sg+Com+Use/Marg+Use/Sub:%>X2ijnni%> PxV ;
 ! +Pl+Nom+Use/Sub:%>X2ijddi%> PxV ; !^P^ !MARG
- +Pl+Gen+Use/Marg+Use/Ped+Use/Sub:%>X2ijddi%> PxV ;
- +Pl+Acc+Use/Marg+Use/Ped+Use/Sub:%>X2ijddi%> PxV ;
- +Pl+Ill+Use/Marg+Use/Ped+Use/Sub:%>X2ijddás%> PxC ;
- +Pl+Loc+Use/Marg+Use/Ped+Use/Sub:%>X2ijnni%> PxV ;
- +Pl+Com+Use/Marg+Use/Ped+Use/Sub:%>X2ijddi%> PxPlComV1 ;
+ +Pl+Gen+Use/Marg+Use/Sub:%>X2ijddi%> PxV ;
+ +Pl+Acc+Use/Marg+Use/Sub:%>X2ijddi%> PxV ;
+ +Pl+Ill+Use/Marg+Use/Sub:%>X2ijddás%> PxC ;
+ +Pl+Loc+Use/Marg+Use/Sub:%>X2ijnni%> PxV ;
+ +Pl+Com+Use/Marg+Use/Sub:%>X2ijddi%> PxPlComV1 ;
  :%>X2 ADVC ;
  +Attr:%>X4 K ; ! Attributive superaltives
               ! Here and not in MALIS0 because
@@ -4589,13 +4799,13 @@ LEXICON MEAHTTUN  ! Deverbal adjectives.
  +A+Sg+Acc:m%>a K ;
  +A+Pl+Nom:m%>at K ;
  +A:m%>i MALLASI-/NUORABU- ;  ! obl
- +A+Sg+Nom+Use/Ped+Use/Sub:m%> PxC ;
- +A+Sg+Gen+Use/Ped+Use/Sub:m%> PxC ;
- +A+Sg+Acc+Use/Ped+Use/Sub:m%> PxC ;
- +A+Sg+Ill+Use/Ped+Use/Sub:m%>asa%> PxV ;
+ +A+Sg+Nom+Use/Sub:m%> PxC ;
+ +A+Sg+Gen+Use/Sub:m%> PxC ;
+ +A+Sg+Acc+Use/Sub:m%> PxC ;
+ +A+Sg+Ill+Use/Sub:m%>asa%> PxV ;
  +A+Sg+Gen:m%> K ;
  +A+Sg+Acc:m%> K ;
- +A+Pl+Nom+Use/Ped+Use/Sub:m%>iiddá%> Px1V ;
+ +A+Pl+Nom+Use/Sub:m%>iiddá%> Px1V ;
 
 
 LEXICON GEAHTES
@@ -4687,35 +4897,35 @@ LEXICON EAPMI
  +N+Pl+Nom:eapmi%>X4t K ;
  +N+Sg+Com+Use/Sub:eapmi%>X5jn K ;
  +N+Sg+Com:eapmi%>%^DISIMPjn K ;
- +N+Sg+Com+Use/Ped+Use/Sub:eapmi%>X5jn%> PxC ;
+ +N+Sg+Com+Use/Sub:eapmi%>X5jn%> PxC ;
  +N+Sg+Com+Use/Ped:eapmi%>%^DISIMPjn%> PxC ;
- +N+Pl+Nom+Use/Ped+Use/Sub:eapmi%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:eapmi%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:eapmi%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:eapmi%>X5jd K ;
  +N+Pl+Gen:eapmi%>%^DISIMPjd K ;
  +N+PlGenCmp+Use/Sub:eapmi%>X5jd R ;
  +N+PlGenCmp:eapmi%>%^DISIMPjd R ;
- +N+Pl+Gen+Use/Ped+Use/Sub:eapmi%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:eapmi%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:eapmi%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:eapmi%>X5jd K ;
  +N+Pl+Acc:eapmi%>%^DISIMPjd K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:eapmi%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:eapmi%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:eapmi%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:eapmi%>X5jde K ;
  +N+Pl+Ill:eapmi%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:eapmi%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:eapmi%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:eapmi%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:eapmi%>X5jn K ;
  +N+Pl+Loc:eapmi%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:eapmi%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:eapmi%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:eapmi%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:eapmi%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:eapmi%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:eapmi%>X5jgujn K ;
  +N+Pl+Com:eapmi%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:eapmi%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:eapmi%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:eapmi%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:eapmi%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:eapmi%>%^DISIMPjd%> PxPlComC ;
  +N:eapmi%>X6 GOADA- ; ! AG Px
  +N+Sg+Gen+Use/NG:eapmi%>X8 K ; ! Ditto (?) 
@@ -4747,35 +4957,35 @@ LEXICON MUITTASJEAPMI
  +N+Pl+Nom:eapmi%>X4t K ;
  +N+Sg+Com+Use/Sub:eapmi%>X5jn K ;
  +N+Sg+Com:eapmi%>%^DISIMPjn K ;
- +N+Sg+Com+Use/Ped+Use/Sub:eapmi%>X5jn%> PxC ;
+ +N+Sg+Com+Use/Sub:eapmi%>X5jn%> PxC ;
  +N+Sg+Com+Use/Ped:eapmi%>%^DISIMPjn%> PxC ;
- +N+Pl+Nom+Use/Ped+Use/Sub:eapmi%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:eapmi%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:eapmi%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:eapmi%>X5jd K ;
  +N+Pl+Gen:eapmi%>%^DISIMPjd K ;
- +N+PlGenCmp+Use/Ped+Use/Sub:eapmi%>X5jd R ;
+ +N+PlGenCmp+Use/Sub:eapmi%>X5jd R ;
  +N+PlGenCmp+Use/Ped:eapmi%>%^DISIMPjd R ;
- +N+Pl+Gen+Use/Ped+Use/Sub:eapmi%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:eapmi%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:eapmi%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:eapmi%>X5jd K ;
  +N+Pl+Acc:eapmi%>%^DISIMPjd K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:eapmi%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:eapmi%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:eapmi%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:eapmi%>X5jde K ;
  +N+Pl+Ill:eapmi%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:eapmi%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:eapmi%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:eapmi%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:eapmi%>X5jn K ;
  +N+Pl+Loc:eapmi%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:eapmi%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:eapmi%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:eapmi%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:eapmi%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:eapmi%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:eapmi%>X5jgujn K ;
  +N+Pl+Com:eapmi%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:eapmi%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:eapmi%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:eapmi%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:eapmi%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:eapmi%>%^DISIMPjd%> PxPlComC ;
  +N:eapmi%>X6 GOADA- ; ! AG Px
  +N+Sg+Gen:eapmi%>X8 K ; ! Ditto (?)
@@ -4807,35 +5017,35 @@ LEXICON EAPMITV  !+CmpN/Sg +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgLeft +CmpN/SgNo
  +N+Pl+Nom:eapmi%>X4t K ;
  +N+Sg+Com+Use/Sub:eapmi%>X5jn K ;
  +N+Sg+Com:eapmi%>%^DISIMPjn K ;
- +N+Sg+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jn%> PxC ;
+ +N+Sg+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jn%> PxC ;
  +N+Sg+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjn%> PxC ;
- +N+Pl+Nom+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jd%> Px1C ;
+ +N+Pl+Nom+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jd%> Px1C ;
  +N+Pl+Nom+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:eapmi%>X5jd K ;
  +N+Pl+Gen:eapmi%>%^DISIMPjd K ;
  +N+PlGenCmp+Use/Sub:eapmi%>X5jd R ;
  +N+PlGenCmp:eapmi%>%^DISIMPjd R ;
- +N+Pl+Gen+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jd%> PxC ;
+ +N+Pl+Gen+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jd%> PxC ;
  +N+Pl+Gen+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:eapmi%>X5jd K ;
  +N+Pl+Acc:eapmi%>%^DISIMPjd K ;
- +N+Pl+Acc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jd%> PxC ;
+ +N+Pl+Acc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jd%> PxC ;
  +N+Pl+Acc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:eapmi%>X5jde K ;
  +N+Pl+Ill:eapmi%>%^DISIMPjde K ;
- +N+Pl+Ill+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jdasa%> PxV ;
+ +N+Pl+Ill+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jdasa%> PxV ;
  +N+Pl+Ill+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:eapmi%>X5jn K ;
  +N+Pl+Loc:eapmi%>%^DISIMPjn K ;
  +N+Pl+Loc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5js K ; ! !SOUTH
  +N+Pl+Loc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jn%> PxC ;
+ +N+Pl+Loc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jn%> PxC ;
  +N+Pl+Loc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:eapmi%>X5jgujn K ;
  +N+Pl+Com:eapmi%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:eapmi%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:eapmi%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jd%> PxPlComC ;
+ +N+Pl+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jd%> PxPlComC ;
  +N+Pl+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjd%> PxPlComC ;
  +N:eapmi%>X6 GOADA- ; ! AG Px
  +N+Sg+Gen:eapmi%>X8 K ; ! Ditto (?)
@@ -4867,35 +5077,35 @@ LEXICON MUITTASJEAPMITV  !+CmpN/Sg +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgLeft +C
  +N+Pl+Nom:eapmi%>X4t K ;
  +N+Sg+Com+Use/Sub:eapmi%>X5jn K ;
  +N+Sg+Com:eapmi%>%^DISIMPjn K ;
- +N+Sg+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jn%> PxC ;
+ +N+Sg+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jn%> PxC ;
  +N+Sg+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjn%> PxC ;
- +N+Pl+Nom+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jd%> Px1C ;
+ +N+Pl+Nom+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jd%> Px1C ;
  +N+Pl+Nom+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:eapmi%>X5jd K ;
  +N+Pl+Gen:eapmi%>%^DISIMPjd K ;
  +N+PlGenCmp+Use/Sub:eapmi%>X5jd R ;
  +N+PlGenCmp:eapmi%>%^DISIMPjd R ;
- +N+Pl+Gen+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jd%> PxC ;
+ +N+Pl+Gen+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jd%> PxC ;
  +N+Pl+Gen+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:eapmi%>X5jd K ;
  +N+Pl+Acc:eapmi%>%^DISIMPjd K ;
- +N+Pl+Acc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jd%> PxC ;
+ +N+Pl+Acc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jd%> PxC ;
  +N+Pl+Acc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:eapmi%>X5jde K ;
  +N+Pl+Ill:eapmi%>%^DISIMPjde K ;
- +N+Pl+Ill+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jdasa%> PxV ;
+ +N+Pl+Ill+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jdasa%> PxV ;
  +N+Pl+Ill+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:eapmi%>X5jn K ;
  +N+Pl+Loc:eapmi%>%^DISIMPjn K ;
  +N+Pl+Loc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5js K ; ! !SOUTH
  +N+Pl+Loc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jn%> PxC ;
+ +N+Pl+Loc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jn%> PxC ;
  +N+Pl+Loc+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:eapmi%>X5jgujn K ;
  +N+Pl+Com:eapmi%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:eapmi%>X5j%- ENDLEX ; !guosai- ja beziiguin
  +N+Pl+Com/Sh:eapmi%>%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +N+Pl+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped+Use/Sub:eapmi%>X5jd%> PxPlComC ;
+ +N+Pl+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:eapmi%>X5jd%> PxPlComC ;
  +N+Pl+Com+CmpN/Sg+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:eapmi%>%^DISIMPjd%> PxPlComC ;
  +N:eapmi%>X6 GOADA- ; ! AG Px
  +N+Sg+Gen:eapmi%>X8 K ; ! Ditto (?)
@@ -4921,35 +5131,35 @@ LEXICON UPMI
  +N+Pl+Nom:upmi%>X4t K ;
  +N+Sg+Com+Use/Sub:upmi%>X5jn K ;
  +N+Sg+Com:upmi%>%^DISIMPjn K ;
- +N+Sg+Com+Use/Ped+Use/Sub:upmi%>X5jn%> PxC ;
+ +N+Sg+Com+Use/Sub:upmi%>X5jn%> PxC ;
  +N+Sg+Com+Use/Ped:upmi%>%^DISIMPjn%> PxC ;
- +N+Pl+Nom+Use/Ped+Use/Sub:upmi%>X5jd%> Px1C ;
+ +N+Pl+Nom+Use/Sub:upmi%>X5jd%> Px1C ;
  +N+Pl+Nom+Use/Ped:upmi%>%^DISIMPjd%> Px1C ;
  +N+Pl+Gen+Use/Sub:upmi%>X5jd K ;
  +N+Pl+Gen:upmi%>%^DISIMPjd K ;
  +N+PlGenCmp+Use/Sub:upmi%>X5jd R ;	!
  +N+PlGenCmp+Use/Sub:upmi%>%^DISIMPjd R ;	!
- +N+Pl+Gen+Use/Ped+Use/Sub:upmi%>X5jd%> PxC ;
+ +N+Pl+Gen+Use/Sub:upmi%>X5jd%> PxC ;
  +N+Pl+Gen+Use/Ped:upmi%>%^DISIMPjd%> PxC ;
  +N+Pl+Acc+Use/Sub:upmi%>X5jd K ;
  +N+Pl+Acc:upmi%>%^DISIMPjd K ;
- +N+Pl+Acc+Use/Ped+Use/Sub:upmi%>X5jd%> PxC ;
+ +N+Pl+Acc+Use/Sub:upmi%>X5jd%> PxC ;
  +N+Pl+Acc+Use/Ped:upmi%>%^DISIMPjd%> PxC ;
  +N+Pl+Ill+Use/Sub:upmi%>X5jde K ;
  +N+Pl+Ill:upmi%>%^DISIMPjde K ;
- +N+Pl+Ill+Use/Ped+Use/Sub:upmi%>X5jdasa%> PxV ;
+ +N+Pl+Ill+Use/Sub:upmi%>X5jdasa%> PxV ;
  +N+Pl+Ill+Use/Ped:upmi%>%^DISIMPjdasa%> PxV ;
  +N+Pl+Loc+Use/Sub:upmi%>X5jn K ;
  +N+Pl+Loc:upmi%>%^DISIMPjn K ;
  +N+Pl+Loc+Use/Sub:upmi%>X5js K ; ! !SOUTH
  +N+Pl+Loc+Use/Sub:upmi%>%^DISIMPjs K ; ! !SOUTH
- +N+Pl+Loc+Use/Ped+Use/Sub:upmi%>X5jn%> PxC ;
+ +N+Pl+Loc+Use/Sub:upmi%>X5jn%> PxC ;
  +N+Pl+Loc+Use/Ped:upmi%>%^DISIMPjn%> PxC ;
  +N+Pl+Com+Use/Sub:upmi%>X5jgujn K ;
  +N+Pl+Com:upmi%>%^DISIMPjgujn K ;
  +N+Pl+Com/Sh+Use/Sub:upmi%>X5j%- ENDLEX ;  !guosai- ja beziiguin
  +N+Pl+Com/Sh:upmi%>%^DISIMPj%- ENDLEX ;  !guosai- ja beziiguin
- +N+Pl+Com+Use/Ped+Use/Sub:upmi%>X5jd%> PxPlComC ;
+ +N+Pl+Com+Use/Sub:upmi%>X5jd%> PxPlComC ;
  +N+Pl+Com+Use/Ped:upmi%>%^DISIMPjd%> PxPlComC ;
  +N:upmi%>X6 GOADA- ; ! AG Px
  +N+Sg+Gen+Use/NG:upmi%>X8 K ; ! 
@@ -5134,8 +5344,8 @@ LEXICON BUOREMUS
 LEXICON BUOREMUSSA-
  +Ess:n K ;
  +Der2+Der/at+Adv:X8t K ;
- +Sg+Nom+Use/Marg+Use/Ped+Use/Sub: PxV ;
- +Ess+Use/Ped+Use/Sub:n%> PxC ;
+ +Sg+Nom+Use/Marg+Use/Sub: PxV ;
+ +Ess+Use/Sub:n%> PxC ;
  EABBUCASE2 ;
 
 LEXICON LEXDIMINC
@@ -5153,7 +5363,7 @@ LEXICON DIMINV
 LEXICON HEAPMI
  +Sg+Nom+Use/Sub:X1 K ;
  +Sg+Nom:X7 K ;
- +Sg+Nom+Use/Ped+Use/Sub: PxV ;
+ +Sg+Nom+Use/Sub: PxV ;
  HEAPMIOBL ;
  +Der2+Der/at+Adv:X8t K ;
 
@@ -5172,17 +5382,17 @@ LEXICON LAGAN_LAGAS
  +A+Sg+Nom:%> K ;
  +A: VUOHTA ;
  +A+Ess:%>in K ;
- +A+Sg+Nom+Use/Ped+Use/Sub:00%> PxC ;
+ +A+Sg+Nom+Use/Sub:00%> PxC ;
  +A+Sg+Gen:%>a K ;
  +A+Sg+Gen+Use/Sub:%> K ;
  +A+SgGenCmp:%>a R ;
- +A+Sg+Gen+Use/Ped+Use/Sub:%> PxC ;
+ +A+Sg+Gen+Use/Sub:%> PxC ;
  +A+Sg+Acc:%>a K ;
  +A+Sg+Acc:%> K ;
- +A+Sg+Acc+Use/Ped+Use/Sub:%> PxC ;
+ +A+Sg+Acc+Use/Sub:%> PxC ;
  +A+Pl+Nom:%>at K ;
- +A+Sg+Ill+Use/Ped+Use/Sub:%>asa%> PxV ;
- +A+Pl+Nom+Use/Ped+Use/Sub:%>ijddá%> Px1V ;
+ +A+Sg+Ill+Use/Sub:%>asa%> PxV ;
+ +A+Pl+Nom+Use/Sub:%>ijddá%> Px1V ;
  +A+Sg+Ill:%>ij K ;
  +A+Sg+Loc:%>is K ;
  +A+Sg+Loc+Use/Sub:%>in K ; ! !SOUTH
@@ -5197,24 +5407,24 @@ LEXICON LAGAN_LAGAS
  +A+Pl+Loc+Use/Sub:%>ijs K ; ! !SOUTH
  +A+Pl+Com:%>ijgujn K ;
  +A+Pl+Com/Sh:%>ij%- ENDLEX ; !guosai- ja beziiguin
- +A+Sg+Loc+Use/Ped+Use/Sub:%>istti%> PxV ;
- +A+Sg+Com+Use/Ped+Use/Sub:%>ijnni%> PxV ;
+ +A+Sg+Loc+Use/Sub:%>istti%> PxV ;
+ +A+Sg+Com+Use/Sub:%>ijnni%> PxV ;
 ! +A+Pl+Nom+Use/Sub:%>ijddi%> PxV ; !^P^
- +A+Pl+Gen+Use/Ped+Use/Sub:%>ijddi%> PxV ;
- +A+Pl+Acc+Use/Ped+Use/Sub:%>ijddi%> PxV ;
- +A+Pl+Ill+Use/Ped+Use/Sub:%>ijddás%> PxC ;
- +A+Pl+Loc+Use/Ped+Use/Sub:%>ijnni%> PxV ;
- +A+Pl+Com+Use/Ped+Use/Sub:%>ijddi%> PxPlComV1 ;
+ +A+Pl+Gen+Use/Sub:%>ijddi%> PxV ;
+ +A+Pl+Acc+Use/Sub:%>ijddi%> PxV ;
+ +A+Pl+Ill+Use/Sub:%>ijddás%> PxC ;
+ +A+Pl+Loc+Use/Sub:%>ijnni%> PxV ;
+ +A+Pl+Com+Use/Sub:%>ijddi%> PxPlComV1 ;
  -+Use/Circ:#- ProperNoun ; ! ! Definitely circular x 35000.
 
 
 LEXICON AHKASAS
  +A+Attr:aš%> K ;
  +A+Sg+Nom:aš%> K ;
- +A+Sg+Nom+Use/Ped+Use/Sub:ažža%> PxV ; ! ! tentative.
+ +A+Sg+Nom+Use/Sub:ažža%> PxV ; ! ! tentative.
  +A+SgNomCmp:aš%> R ;
  +A+Ess:ažža%>n K ;
- +A+Ess+Use/Ped+Use/Sub:ažža%>n%> PxC ;
+ +A+Ess+Use/Sub:ažža%>n%> PxC ;
  +A:aš VUOHTA ;
  +A:ažža%> HEAPMIOBL ;
 ! :ažž DEARVVASLAS ; !not here since these have no comp. forms
@@ -5227,10 +5437,10 @@ AHKASAS ;
 LEXICON SISKKALDAS
  +A+Attr:as%> K ;
  +A+Sg+Nom:as%> K ;
- +A+Sg+Nom+Use/Ped+Use/Sub:assa%> PxV ; ! ! tentative.
+ +A+Sg+Nom+Use/Sub:assa%> PxV ; ! ! tentative.
  +A+SgNomCmp:as%> R ;
  +A+Ess:assa%>n K ;
- +A+Ess+Use/Ped+Use/Sub:assa%>n%> PxC ;
+ +A+Ess+Use/Sub:assa%>n%> PxC ;
  +A:as VUOHTA ;
  +A+Der2+Der/at+Adv:asa%>t K ;
  +A:assa%> EABBUCASE2 ;	!not to LASJOBL
@@ -5240,8 +5450,8 @@ LEXICON SISKKALDAS
 LEXICON DenominalAdjsV1
  +Der1+Der2+Der/heapmi+A:»W4heapmi%> HEAPMI ;
  +Der1+Der2+Der/heapmi+A+Ess:»W4heapmi%>X1n K ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»W4heapmi%>X1n%> PxC ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»W4heapmi%>X7n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»W4heapmi%>X1n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»W4heapmi%>X7n%> PxC ;
  +Der1+Der2+Der/heapmi+A+Sg+Nom+Use/Sub:»W4hin K ;		!
  +Der1+Der2+Der/heapmi+A+Attr:»W4his%> ATTR ;
  +Der1+Der2+Der/heapmi+A:»W4h EABBO/EAMOS_CONT ;
@@ -5252,8 +5462,8 @@ LEXICON DenominalAdjsV1Long
  +Der1+Der2+Der/heapmi+A:»X4heapmi%> HEAPMI ;
  +Der1+Der2+Der/heapmi+A+Ess:»X4heapmi%>X1n K ;
  +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»X4heapmi%>X7n K ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»X4heapmi%>X1n%> PxC ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»X4heapmi%>X7n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»X4heapmi%>X1n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»X4heapmi%>X7n%> PxC ;
  +Der1+Der2+Der/heapmi+A+Sg+Nom+Use/Sub:»X4hin K ;		!
  +Der1+Der2+Der/heapmi+A+Attr:»X4his%> ATTR ;
  +Der1+Der2+Der/heapmi+A:»X4h EABBO/EAMOS_CONT ;
@@ -5264,8 +5474,8 @@ LEXICON DenominalAdjsV1Short
  +Der1+Der2+Der/heapmi+A:»X8heapmi%> HEAPMI ;
  +Der1+Der2+Der/heapmi+A+Ess:»X8heapmi%>X1n K ;
  +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»X8heapmi%>X7n K ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»X8heapmi%>X1n%> PxC ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»X8heapmi%>X7n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»X8heapmi%>X1n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»X8heapmi%>X7n%> PxC ;
  +Der1+Der2+Der/heapmi+A+Sg+Nom+Use/Sub:»X8hin K ;		!
  +Der1+Der2+Der/heapmi+A+Attr:»X8his%> ATTR ;
 ! +Der1+Der2+Der/heapmi+A:»X8his VUOHTA ; !moved to LEXICON VUOHTA
@@ -5285,8 +5495,8 @@ LEXICON DenominalAdjsC
  +Der1+Der2+Der/heapmi+A:»W4#heapmi%> HEAPMI ;
  +Der1+Der2+Der/heapmi+A+Ess:»W4#heapmi%>X1n K ;
  +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»W4#heapmi%>X7n K ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»W4#heapmi%>X1n%> PxC ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»W4#heapmi%>X7n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»W4#heapmi%>X1n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»W4#heapmi%>X7n%> PxC ;
  +Der1+Der2+Der/heapmi+A+Attr:»W4#his%> ATTR ;
 ! +Der1+Der2+Der/heapmi+A:»W4#his VUOHTA ; !moved to LEXICON VUOHTA
 
@@ -5295,8 +5505,8 @@ LEXICON DenominalAdjsCLong
  +Der1+Der2+Der/heapmi+A:»#heapmi%> HEAPMI ;
  +Der1+Der2+Der/heapmi+A+Ess:»#heapmi%>X1n K ;
  +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»#heapmi%>X7n K ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»#heapmi%>X1n%> PxC ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»#heapmi%>X7n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»#heapmi%>X1n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»#heapmi%>X7n%> PxC ;
  +Der1+Der2+Der/heapmi+A+Attr:»#his%> ATTR ;
 ! +Der1+Der2+Der/heapmi+A:»#his VUOHTA ; !moved to LEXICON VUOHTA
 
@@ -5305,8 +5515,8 @@ LEXICON DenominalAdjsCShort
  +Der1+Der2+Der/heapmi+A:»X7#heapmi%> HEAPMI ;
  +Der1+Der2+Der/heapmi+A+Ess:»X7#heapmi%>X1n K ;
  +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»X7#heapmi%>X7n K ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»X7#heapmi%>X1n%> PxC ;
- +Der1+Der2+Der/heapmi+A+Ess+Use/Ped+Use/Sub:»X7#heapmi%>X7n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»X7#heapmi%>X1n%> PxC ;
+ +Der1+Der2+Der/heapmi+A+Ess+Use/Sub:»X7#heapmi%>X7n%> PxC ;
  +Der1+Der2+Der/heapmi+A+Attr:»X7#his%> ATTR ;
 ! +Der1+Der2+Der/heapmi+A:»X7#his VUOHTA ; !moved to LEXICON VUOHTA
 
@@ -5315,9 +5525,9 @@ LEXICON DenominalAdjsV3 !+CmpN/SgN +CmpN/SgG +CmpN/PlG !from Propernames
  +Der1+Der/laš+A+Attr:»X6lažž%> ATTR ;
  +Der1+Der/laš+A:»X6lažž JOHTOLAT0 ;
 ! +Der1+Der/laš+A:»X6lažž VUOHTA ;
- +Der1+Der/laš+A+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped+Use/Sub:»X6lažža%> PxV ; ! ! tentative.
+ +Der1+Der/laš+A+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:»X6lažža%> PxV ; ! ! tentative.
  +Der1+Der/laš+A+Ess:»X6lažža%>n K ;
- +Der1+Der/laš+A+Ess+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped+Use/Sub:»X6lažža%>n%> PxC ; ! ! tentative, check.
+ +Der1+Der/laš+A+Ess+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:»X6lažža%>n%> PxC ; ! ! tentative, check.
  +Der1+Der/laš+A:»X6lažža%> HEAPMIOBL ;
 
 
@@ -5325,27 +5535,27 @@ LEXICON DenominalAdjsC2 !+CmpN/SgN +CmpN/SgG +CmpN/PlG	!from Propernames
  +Der1+Der/laš+A+Attr:»#lažž%> ATTR ;
  +Der1+Der/laš+A:»#lažž JOHTOLAT0 ;
 ! +Der1+Der/laš+A:»#lažž VUOHTA ;
- +Der1+Der/laš+A+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped+Use/Sub:»#lažža%> PxV ; ! ! tentative.
+ +Der1+Der/laš+A+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:»#lažža%> PxV ; ! ! tentative.
  +Der1+Der/laš+A+Ess:»#lažža%>n K ;
- +Der1+Der/laš+A+Ess+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped+Use/Sub:»#lažža%>n%> PxC ; ! ! tentative, check.
+ +Der1+Der/laš+A+Ess+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:»#lažža%>n%> PxC ; ! ! tentative, check.
  +Der1+Der/laš+A:»#lažža%> HEAPMIOBL ;
 
 LEXICON DenominalAdjsV4 !+CmpN/SgN +CmpN/SgG +CmpN/PlG  !from Propernames
  +Der1+Der/laš+A+Attr:»X6lažž%> ATTR ;
  +Der1+Der/laš+A:»X6lažž JOHTOLAT0 ;
 ! +Der1+Der/laš+A:»X6lažž VUOHTA ;
- +Der1+Der/laš+A+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped+Use/Sub:»X6lažža%> PxV ; ! ! tentative.
+ +Der1+Der/laš+A+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:»X6lažža%> PxV ; ! ! tentative.
  +Der1+Der/laš+A+Ess:»X6lažža%>n K ;
- +Der1+Der/laš+A+Ess+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped+Use/Sub:»X6lažža%>n%> PxC ; ! ! tentative, check.
+ +Der1+Der/laš+A+Ess+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:»X6lažža%>n%> PxC ; ! ! tentative, check.
  +Der1+Der/laš+A:»X6lažža%> HEAPMIOBL ;
 
 LEXICON DenominalAdjsC3 !+CmpN/SgN +CmpN/SgG +CmpN/PlG	 !from Propernames
  +Der1+Der/laš+A+Attr:»#lažž%> ATTR ;
  +Der1+Der/laš+A:»#lažž JOHTOLAT0 ;
 ! +Der1+Der/laš+A:»#lažž VUOHTA ;
- +Der1+Der/laš+A+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped+Use/Sub:»#lažža%> PxV ; ! ! tentative.
+ +Der1+Der/laš+A+Sg+Nom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:»#lažža%> PxV ; ! ! tentative.
  +Der1+Der/laš+A+Ess:»#lažža%>n K ;
- +Der1+Der/laš+A+Ess+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Ped+Use/Sub:»#lažža%>n%> PxC ; ! ! tentative, check.
+ +Der1+Der/laš+A+Ess+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:»#lažža%>n%> PxC ; ! ! tentative, check.
  +Der1+Der/laš+A:»#lažža%> HEAPMIOBL ;
 
 LEXICON LASJOBL
@@ -5378,35 +5588,35 @@ LEXICON LASJOBL
  +Sg+Loc+Use/Ped:X8st%> PxC ;
  +Sg+Com+Use/Sub:X5jn K ;
  +Sg+Com:%^DISIMPjn K ;
- +Sg+Com+Use/Ped+Use/Sub:X5jn%> PxC ;
+ +Sg+Com+Use/Sub:X5jn%> PxC ;
  +Sg+Com+Use/Ped:%^DISIMPjn%> PxC ;
  +Pl+Nom:X4t K ;
  +Pl+Nom+Use/Sub:X4k K ; ! !Skániid dialect
- +Pl+Nom+Use/Ped+Use/Sub:X5jd%> Px1C ;
+ +Pl+Nom+Use/Sub:X5jd%> Px1C ;
  +Pl+Nom+Use/Ped:%^DISIMPjd%> Px1C ;
  +Pl+Gen+Use/Sub:X5jd K ;
  +Pl+Gen:%^DISIMPjd K ;
  +PlGenCmp+Use/Sub:X5jd R ;
  +PlGenCmp:%^DISIMPjd R ;
- +Pl+Gen+Use/Ped+Use/Sub:X5jd%> PxC ;
+ +Pl+Gen+Use/Sub:X5jd%> PxC ;
  +Pl+Gen+Use/Ped:%^DISIMPjd%> PxC ;
  +Pl+Acc+Use/Sub:X5jd K ;
  +Pl+Acc:%^DISIMPjd K ;
- +Pl+Acc+Use/Ped+Use/Sub:X5jd%> PxC ;
+ +Pl+Acc+Use/Sub:X5jd%> PxC ;
  +Pl+Acc+Use/Ped:%^DISIMPjd%> PxC ;
  +Pl+Ill+Use/Sub:X5jde K ;
  +Pl+Ill:%^DISIMPjde K ;
- +Pl+Ill+Use/Ped+Use/Sub:X5jdasa%> PxV  ;
+ +Pl+Ill+Use/Sub:X5jdasa%> PxV  ;
  +Pl+Ill+Use/Ped:%^DISIMPjdasa%> PxV  ;
  +Pl+Loc+Use/Sub:X5jn K ;
  +Pl+Loc:%^DISIMPjn K ;
- +Pl+Loc+Use/Ped+Use/Sub:X5jn%> PxC ;
+ +Pl+Loc+Use/Sub:X5jn%> PxC ;
  +Pl+Loc+Use/Ped:%^DISIMPjn%> PxC ;
  +Pl+Com+Use/Sub:X5jgujn K ;
  +Pl+Com:%^DISIMPjgujn K ;
  +Pl+Com/Sh+Use/Sub:X5j%- ENDLEX ; !guosai- ja beziiguin
  +Pl+Com/Sh:%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +Pl+Com+Use/Ped+Use/Sub:X5jd%> PxPlComC ;
+ +Pl+Com+Use/Sub:X5jd%> PxPlComC ;
  +Pl+Com+Use/Ped:%^DISIMPjd%> PxPlComC ;
 
 LEXICON HEAPMIOBL
@@ -5416,59 +5626,59 @@ LEXICON HEAPMIOBL
  +SgGenCmp:X8 R ;
 ! +Sg+Gen+Use/Sub:X4 PxV ; !^P^
 ! +Sg+Gen+Use/Sub:X8 PxV ; !^P^
- +Sg+Gen+Use/Ped+Use/Sub:X2 Px1V ;
- +Sg+Gen+Use/Ped+Use/Sub:X6 Px2V ;
- +Sg+Gen+Use/Ped+Use/Sub:X4 Px3V ;
+ +Sg+Gen+Use/Sub:X2 Px1V ;
+ +Sg+Gen+Use/Sub:X6 Px2V ;
+ +Sg+Gen+Use/Sub:X4 Px3V ;
  +Sg+Acc:X4 K ;
  +Sg+Acc:X8 K ;
- +Sg+Acc+Use/Ped+Use/Sub:X2 Px1V ;
- +Sg+Acc+Use/Ped+Use/Sub:X6 Px2V ;
- +Sg+Acc+Use/Ped+Use/Sub:X4 Px3V ;
+ +Sg+Acc+Use/Sub:X2 Px1V ;
+ +Sg+Acc+Use/Sub:X6 Px2V ;
+ +Sg+Acc+Use/Sub:X4 Px3V ;
 ! +Sg+Acc+Use/Sub:X4 PxV ; !^P^
 ! +Sg+Acc+Use/Sub:X8 PxV ; !^P^
  +Sg+Ill+Use/Sub:j K ;
  +Sg+Ill:X3j K ;
  +Sg+Ill+Use/Sub:j K ;
 ! +Sg+Ill+Use/Sub:s%> PxC ; !^P^
- +Sg+Ill+Use/Ped+Use/Sub:X2s%> PxC ;
+ +Sg+Ill+Use/Sub:X2s%> PxC ;
  +Sg+Loc:X4s K ;
  +Sg+Loc:X8s K ;
  +Sg+Loc+Use/Sub:X4n K ; ! !SOUTH
  +Sg+Loc+Use/Sub:X8n K ; ! !SOUTH
- +Sg+Loc+Use/Ped+Use/Sub:X4st%> PxC ;
- +Sg+Loc+Use/Ped+Use/Sub:X8st%> PxC ;
+ +Sg+Loc+Use/Sub:X4st%> PxC ;
+ +Sg+Loc+Use/Sub:X8st%> PxC ;
  +Sg+Com+Use/Sub:X5jn K ;
  +Sg+Com:%^DISIMPjn K ;
- +Sg+Com+Use/Ped+Use/Sub:X5jn%> PxC ;
- +Sg+Com+Use/Ped+Use/Sub:%^DISIMPjn%> PxC ;
+ +Sg+Com+Use/Sub:X5jn%> PxC ;
+ +Sg+Com+Use/Sub:%^DISIMPjn%> PxC ;
  +Pl+Nom:X4t K ;
  +Pl+Nom+Use/Sub:X4k K ; ! !Skániid dialect
- +Pl+Nom+Use/Ped+Use/Sub:X5jd%> Px1C ;
- +Pl+Nom+Use/Ped+Use/Sub:%^DISIMPjd%> Px1C ;
+ +Pl+Nom+Use/Sub:X5jd%> Px1C ;
+ +Pl+Nom+Use/Sub:%^DISIMPjd%> Px1C ;
  +Pl+Gen+Use/Sub:X5jd K ;
  +Pl+Gen:%^DISIMPjd K ;
  +PlGenCmp+Use/Sub:X5jd R ;
  +PlGenCmp:%^DISIMPjd R ;
- +Pl+Gen+Use/Ped+Use/Sub:X5jd%> PxC ;
- +Pl+Gen+Use/Ped+Use/Sub:%^DISIMPjd%> PxC ;
+ +Pl+Gen+Use/Sub:X5jd%> PxC ;
+ +Pl+Gen+Use/Sub:%^DISIMPjd%> PxC ;
  +Pl+Acc+Use/Sub:X5jd K ;
  +Pl+Acc:%^DISIMPjd K ;
- +Pl+Acc+Use/Ped+Use/Sub:X5jd%> PxC ;
- +Pl+Acc+Use/Ped+Use/Sub:%^DISIMPjd%> PxC ;
+ +Pl+Acc+Use/Sub:X5jd%> PxC ;
+ +Pl+Acc+Use/Sub:%^DISIMPjd%> PxC ;
  +Pl+Ill+Use/Sub:X5jde K ;
  +Pl+Ill:%^DISIMPjde K ;
- +Pl+Ill+Use/Ped+Use/Sub:X5jdasa%> PxV  ;
- +Pl+Ill+Use/Ped+Use/Sub:%^DISIMPjdasa%> PxV  ;
+ +Pl+Ill+Use/Sub:X5jdasa%> PxV  ;
+ +Pl+Ill+Use/Sub:%^DISIMPjdasa%> PxV  ;
  +Pl+Loc+Use/Sub:X5jn K ;
  +Pl+Loc:%^DISIMPjn K ;
- +Pl+Loc+Use/Ped+Use/Sub:X5jn%> PxC ;
- +Pl+Loc+Use/Ped+Use/Sub:%^DISIMPjn%> PxC ;
+ +Pl+Loc+Use/Sub:X5jn%> PxC ;
+ +Pl+Loc+Use/Sub:%^DISIMPjn%> PxC ;
  +Pl+Com+Use/Sub:X5jgujn K ;
  +Pl+Com:%^DISIMPjgujn K ;
  +Pl+Com/Sh+Use/Sub:X5j%- ENDLEX ; !guosai- ja beziiguin
  +Pl+Com/Sh:%^DISIMPj%- ENDLEX ; !guosai- ja beziiguin
- +Pl+Com+Use/Ped+Use/Sub:X5jd%> PxPlComC ;
- +Pl+Com+Use/Ped+Use/Sub:%^DISIMPjd%> PxPlComC ;
+ +Pl+Com+Use/Sub:X5jd%> PxPlComC ;
+ +Pl+Com+Use/Sub:%^DISIMPjd%> PxPlComC ;
 
 !LEXICON AGADJECT !Denominal Adj's with Deriv. -ag/og
 ! agat:agag BEAKKAN "aged A" ;
@@ -5495,14 +5705,14 @@ LEXICON AGAdj
  +A+Sg+Acc:%>a K ;
  +A+Pl+Nom:%>at K ;
  +A:%>i MALLASI-/NUORABUadj- ;  ! obl
- +A+Sg+Nom+Use/Ped+Use/Sub:%> PxC ;
- +A+Sg+Gen+Use/Ped+Use/Sub:%> PxC ;
+ +A+Sg+Nom+Use/Sub:%> PxC ;
+ +A+Sg+Gen+Use/Sub:%> PxC ;
  +A+SgGenCmp:%> R ;
- +A+Sg+Acc+Use/Ped+Use/Sub:%> PxC ;
- +A+Sg+Ill+Use/Ped+Use/Sub:%>asa%> PxV ;
+ +A+Sg+Acc+Use/Sub:%> PxC ;
+ +A+Sg+Ill+Use/Sub:%>asa%> PxV ;
  +A+Sg+Gen+Use/Sub:%> K ;
  +A+Sg+Acc+Use/Sub:%> K ;
- +A+Pl+Nom+Use/Ped+Use/Sub:%>iiddá%> Px1V ;
+ +A+Pl+Nom+Use/Sub:%>iiddá%> Px1V ;
 
 
 
@@ -10890,7 +11100,6 @@ beroštupmi+N+CmpN/Pref+CmpN/SgN+Use/Sub:beroštupmi Rreal ;
 vuođđo+N+CmpN/Pref+CmpN/SgN+Use/Sub:vuođđo Rreal ;
 lassi+N+CmpN/Pref+CmpN/SgN+Use/Sub:lassi Rreal ;
 Ohcejot+N+CmpN/Pref+CmpN/SgN+Use/Sub:Ohcejot Rnoun ; ! Can stand alone
-eanan+N+CmpN/Pref+CmpN/SgN:eanan%> R ;
 streaŋga+N+CmpN/Pref+CmpN/SgN:streaŋga Rreal ;
 LEXICON Noun
 eise#váldi+N+Pl+Gen+Use/Sub:eiseváldiid9 K ; ! Wrong, but 18x in corp.
@@ -13615,7 +13824,6 @@ eana#assi GOAHTI-IU ;
 eana#bihttá#eaiggát+CmpN/SgN+CmpN/SgG+CmpN/PlG:eana#bihttá#eaiggád GAHPIRLONG ;
 eana#bihttá#láigoheapmi+CmpN/Sg:eana#bihttá#láigoh EAPMI ;
 eana#divat#sisa#boahtu:eana#divat#sisa#boah'tu GOAHTI-IU ;
-eanan#doallo#departemeanta+v2+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:eana#doallo#departemean'ta GOAHTI ; !
 eana#doallo#ministeriija+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:eana#doallo#ministeriija IIJA ;
 eana#doallo#politihkka GOAHTI ;
 eana#doallu GOAHTI-IU ;
@@ -13659,11 +13867,12 @@ eana#ávkkástallan+CmpN/Sg:eana#ávkkástallam BOAHTALADDAN ;
 eana#šládja:eana#šlád'ja GOAHTI ;
 eana#čujuhan#cealkámuš:eana#čujuhan#cealkámušš LEXMUSH ;
 eana#čujuhus:eana#čujuhuss JOHTOLAT ;
-eana+CmpN/SgN+CmpN/SgG+CmpN/PlG:eatnam8 SEAMU ;
+eana+CmpN/SgN+CmpN/SgG+CmpN/PlG: EANA ;
 eanadat#láhka:eanadat#láh'ka GOAHTI ;
 eanadat#suodjalan#guovlu+CmpN/SgN+CmpN/SgG+CmpN/PlG:eanadat#suodjalan#guov'lu ALBMI ;
 eanadat+CmpN/SgN+CmpN/SgG+CmpN/PlG:eanadah'k JOHTOLAT ;
 eanan#doallo#departemeanta+v1+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:eanan#doallo#departemean'ta GOAHTI ;
+eanan#doallo#departemeanta+v2+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:eana#doallo#departemean'ta GOAHTI ; !
 eanan#doallo#politihkka GOAHTI ;
 eanan#doallo#ulbmil GAHPIRLONG ;
 eanan#doallo#álggahan#doaibma:eanan#doallo#álggahan#doajbma GOAHTI ;
@@ -13688,9 +13897,6 @@ eanan#vuovdin#kantovra+Use/Sub:eanan#vuovdin#kantov'ra GOAHTI ;
 eanan#vuovdin#láhka:eanan#vuovdin#láh'ka GOAHTI ;
 eanan#vuovdin#stivrra#válga:eanan#vuovdin#stivrra#vál'ga GOAHTI ;
 eanan#šládja:eanan#šlád'ja GOAHTI ;
-eanan+CmpN/SgN+CmpN/SgG+CmpN/PlG:eatnam MALIS ;
-eanan+N+Ess:eanam%>in K ;
-eanan+N+Sg+Nom:eanan%> K ; !XXX eana
 eanas#oassi+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen:eanas#oassi AIGI ;
 eanet#lohko#evttohus:eanet#lohko#evttohuss JOHTOLAT ;
 eanet#lohko#mearrideapmi+CmpN/Sg:eanet#lohko#mearrid EAPMI ;
@@ -13723,7 +13929,6 @@ eatnan#hearrá+CmpN/SgN+CmpN/SgG+CmpN/PlG:eatnan#hear'rá ALBMILONG ;
 eatnan#muorji+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen:eatnan#muor'ji GOAHTI-IU ;
 eatnan#spábba GOAHTI ;
 eatnan#vuloš#doaibma:eatnan#vuloš#doajbma GOAHTI ;
-eatnan:eatnam GAHPIR ;
 eatni#giella GOAHTI ;
 eatni#heagga GOAHTI ;
 eavru+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen:eav'ru GOAHTI-IU ;
@@ -15185,7 +15390,6 @@ guosse#oahppi+CmpN/SgN+CmpN/SgG+CmpN/PlG:guosse#oahppi¤ ACTOR ;
 guosse#čoahkkin:guosse#čoahkkim GAHPIRLONG ;
 guossi+G3+CmpN/SgN+CmpN/SgG+CmpN/PlG:guos'si GOAHTI-IU ;
 guossoheapmi+CmpN/Sg:guossoh EAPMI ;
-guottet#eanan+CmpN/SgN+CmpN/SgG+CmpN/PlG:guottet#eatnam MALIS ;
 guottet#áigi+CmpN/SgN+CmpN/SgG+CmpN/PlG:guottet#áj'gi AIGI ;
 guottu:guoddu SUOLU ;
 guovda#sáhcu:guovda#sáh'cu GOAHTI-IU ;
@@ -17493,7 +17697,6 @@ láige#jeagil+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen:láige#jeah'kil MALIS ;
 láigi:láj'gi GOAHTI-IU ;
 láigo#dálolaš#šiehtadus:láigo#dálolaš#šiehtaduss JOHTOLAT ;
 láigo#eaktu:láigo#eak'tu ALBMI ;
-láigo#eanan+CmpN/SgN+CmpN/SgG+CmpN/PlG:láigo#eatnam MALIS ;
 láigo#gaskavuohta+CmpN/SgG+CmpN/DefPlGen:láigo#gaskavuoh'ta LUONDU ;
 láigo#huksen#sadji+CmpN/SgN+CmpN/SgG+CmpN/PlG:láigo#huksen#sad'ji ALBMI ;
 láigo#latnja#visti:láigo#latnja#vis'ti GOAHTI-IU ;
@@ -20623,7 +20826,7 @@ siepman GAHPIR ;
 sierra#doarjja:sierra#doar'jag8 SEAMU ;
 sierra#doavttir+CmpN/SgN+CmpN/SgG+CmpN/PlG:sierra#doak'tir MALISLONGSHORT ;
 sierra#duopmo#stuollu+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:sierra#duopmo#stuollu GOAHTI-IU ;
-sierra#eaiggát#eana+CmpN/SgN+CmpN/SgG+CmpN/PlG:sierra#eaiggát#eatnam8 SEAMU ;
+sierra#eaiggát#eana+CmpN/SgN+CmpN/SgG+CmpN/PlG:sierra#eaiggát# EANA ;
 sierra#lasáhus:sierra#lasáhuss JOHTOLAT ;
 sierra#lohpi:sierra#loh'pi ALBMI ;
 sierra#láhka:sierra#láh'ka GOAHTI ;
@@ -20712,7 +20915,7 @@ sis#buksa:sis#buk'sa GOAHTI ;
 sis#buvssat:sis#buk'sa BUVSSAT ; !(pl.)
 sis#báidi:sis#báj'di AIGI ;
 sis#doallu GOAHTI-IU ;
-sis#eana+CmpN/SgN+CmpN/SgG+CmpN/PlG:sis#eatnam8 SEAMU ;
+sis#eana+CmpN/SgN+CmpN/SgG+CmpN/PlG:sis# EANA ;
 sis#johtolat+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:sis#johtolah'k JOHTOLAT ;
 sis#juohkin+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:sis#juohkim BOAHTIN ;
 sis#máhtu+CmpN/SgN+CmpN/SgG+CmpN/PlG:sis#máh'tu GOAHTI-IU ;
@@ -21569,7 +21772,8 @@ sáme#láhka:sáme#láh'ka GOAHTI ;
 sáme#politihkka GOAHTI ;
 sáme#siida+Use/Sub:sáme#sij'da GOAHTI ;
 sáme#vearro#duottar+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG:sáme#vearro#duoddar MALIS ;
-sáme#vearro#eana+CmpN/SgN+CmpN/SgG+CmpN/PlG:sáme#vearro#eatnam8 SEAMU ;
+sáme#vearro#eana+CmpN/SgN+CmpN/SgG+CmpN/PlG:sáme#vearro# EANA ;
+sáme#vearro#eana+CmpN/SgN+CmpN/SgG+CmpN/PlG+Use/Sub:sámi#vearro# EANA ; !
 sáme#vearro#ođastus:sáme#vearro#ođastuss JOHTOLAT ;
 sáme#vearro#plakáhta STAHTA ;
 sáme#válga#stivrra#válga:sáme#válga#stivrra#vál'ga GOAHTI ;
@@ -24486,7 +24690,7 @@ heakka#várálaš:heakka#várál ETNOLOGALAS ;
 hearki+CmpN/SgN+CmpN/PlG:hear'ki LAIKI ;
 hearvái+CmpN/SgN+CmpN/PlG:hearvá JIEDNAI ;
 heavskkálaš+CmpN/SgN+CmpN/PlG:heavskkál DABALAS ;
-heittot+CmpN/SgN+CmpN/PlG:heittoh JOHTIL ;
+heittot+CmpN/SgN+CmpN/PlG:heittoh HEITTOHA ;
 heittot:heittog JOHTIL ; ! also :heittoh
 heivemeahttun:heivemeahttu MEAHTTUS ;
 heivetmeahttun:heivetmeahttu MEAHTTUS ;
@@ -26121,8 +26325,6 @@ LEXICON LONDON-obj
 LEXICON LONDON-LOAN-obj
 +N+Prop+Obj:%> LONDONDECL-LOAN ;
 
-LEXICON LONDON
-+N+Prop:%> LONDONDECL ;
 
 LEXICON LONDONDECL ! Final foot structure (X.) and (X..) => Loc:is
 @U.Cap.Obl@ LONDON-UCASE ;
@@ -72830,14 +73032,24 @@ LEXICON nubbiPxPlCom
 ! Indefinite pronouns
 ! -------------------
 
+LEXICON oblindefcasge
++Sg:0 oblindemcassgge ;
++Pl:0 oblindemcasplge ;
 
 
 LEXICON oblindefcas
-+Sg:0 oblindemcassg ;
 +Pl:0 oblindemcaspl ;
 
+LEXICON oblindemcasplge
+!+Gen+Foc/ge+Use/NG:jdige # ;  !Trenger vi disse?
++Gen+Foc/ge+Use/NG:jdige»# NAMAT ;
+!+Acc+Foc/ge+Use/NG:jdige # ;  !Trenger vi disse?
++Ill:jddage # ;
++Loc:jnge # ;
+!Here we do not go to the case paradigm of the demonstratives,
+!since the clitic path is different. ComPl lacks (intentionally) from paradigm.
 
-LEXICON oblindemcassg
+LEXICON oblindemcassgge
 !The other cases, then pointing to clitics
 +Gen:nge # ;
 +Gen:nge»# NAMAT ;
@@ -72847,20 +73059,14 @@ LEXICON oblindemcassg
 +Loc+Use/NG:stege # ;
 +Com:jnnage # ;
 
+
 LEXICON oblindemcaspl
 +Gen:jde # ;
 +Gen:jde»# NAMAT ;
 +Acc:jde # ;
-+Gen+Foc/ge:jdege # ;
+!+Gen+Foc/ge:jdege # ;   !Trenger vi disse?
 +Gen+Foc/ge:jdege»# NAMAT ;
-+Acc:jdege # ;
-+Gen+Foc/ge+Use/NG:jdige # ;
-+Gen+Foc/ge+Use/NG:jdige»# NAMAT ;
-+Acc+Foc/ge+Use/NG:jdige # ;
-+Ill:jddage # ;
-+Loc:jnge # ;
-!Here we do not go to the case paradigm of the demonstratives,
-!since the clitic path is different. ComPl lacks (intentionally) from paradigm.
+
 
 LEXICON oblindefcas-giinai
 +Gen:nnai # ;
@@ -73663,11 +73869,11 @@ NUPPELOHKAI ;
 ! --------------------------
 
 LEXICON MILJON
-miljon+Num+Sg+Nom:miljon%> K ;                !Num or N?
-miljun+Num+Sg+Nom+Use/Sub:miljun%> K ;                         !
-miljovdna:miljovdna OKTA ;
-millijovdna:millijovdna OKTA ;
-millijuvdna:millijuvdna OKTA ;
+miljovdna+v4+Num+Sg+Nom:miljon%> K ;                !Num or N?
+miljovdna+Num+Sg+Nom+Use/Sub:miljun%> K ;                         !
+miljovdna+v1:miljovdna OKTA ;
+miljovdna+v2:millijovdna OKTA ;
+miljovdna+v3:millijuvdna OKTA ;
 miljovnnat+A+Ord:miljovnnag VUOSTTAS ;    ! This should NOT be N, since it is the starting point of the Ordinal
 miljovnnat+A+Ord:millijovnnag VUOSTTAS ;
 miljovnnat+A+Ord:miljonag VUOSTTAS ;
@@ -74596,6 +74802,19 @@ okta#čuohti#:okta#čuohti# LOHKI ;
 okta#čuohti# 21TO99 ;
 okta#čuohti# 111TO119 ;
 čuođi+Num+Sg+Nom:čuođi%> K ;
+čuođi+Num+Sg+Acc:čuođi%> K ;
+čuođi+Num+Sg+Gen:čuođi%> K ;
+čuođi+Num+Sg+Loc:čuođi%>s K ;
+čuođi+Num+Sg+Loc+Use/Sub:čuođi%>n K ; ! !SOUTH
+čuođi+Num+Pl+Nom:čuođi%>t K ;
+čuođi+Num+Sg+Ill:čuohtá%>j K ;
+čuođi+Num+Sg+Com:čuđi%>jn K ;
+čuođi+Num+Pl+Acc:čuđi%>X5jd K ;
+čuođi+Num+Pl+Gen:čuđi%>X5jd K ;
+čuođi+Num+Pl+Ill:čuđi%>jde K ;
+čuođi+Num+Pl+Loc:čuđi%>jn K ;
+čuođi+Num+Pl+Com:čuđi%>jgujn K ;
+čuođi+Num+Ess:čuođi%>n K ;
 !Troms:
 čuohti+Num+Attr:čuohti%> K ;
 čuohti#+Num+Attr:čuohti»# NUMERALCOMPOUNDS ;
@@ -79689,81 +79908,80 @@ LEXICON smallacro
 
 
 LEXICON ACRO
- +N+ACR: RHyph;     !       ! Here we dive over to the compounds: NRK-2, NRK-bargi
- +N+ACR+Use/Sub: Rreal ;     ! !  ! Without hyphen: we don't want these in the normative transducers:  NRK23
  +N+ACR: acroconnector ;    ! Here we add the POS tag and go ACRO
 
-LEXICON acroconnector      ! Here comes a set of possible symbols to
- acronull    ;          ! put between the abbreviation and its suffix
- :%>%:  acrooblique ;          ! NRK:as
- +Use/Sub: acrooblique ; !     ! NRKas
- +Use/Sub:'7 acrooblique ; !     ! NRK's
- +Use/Sub:%`  acrooblique ; !     ! NRK`s
- +Use/Sub:%´  acrooblique ; !     ! NRK´s
+LEXICON acroconnector        ! Here comes a set of possible symbols to
+               acronull ;    ! put between the abbreviation and its suffix
+         :%>%: acrooblique ; ! NRK:as
+ +Use/Sub:     acrooblique ; ! NRKas
+ +Use/Sub:%>'7 acrooblique ; ! NRK's
+ +Use/Sub:%>%` acrooblique ; ! NRK`s
+ +Use/Sub:%>%´ acrooblique ; ! NRK´s
+               RHyph ;       ! Here we dive over to the compounds: NRK-2, NRK-bargi
+ +Use/Sub:     Rreal ;       ! Without hyphen, not normative:  NRK23
 
 LEXICON acronull
 +Sg+Nom+Use/Sub:%> K ;
 +Sg+Gen+Use/Sub:%> K ;
 +Sg+Acc+Use/Sub:%> K ;
-+Sg+Nom:%> # ;
-+Sg+Gen:%> # ;
-+Sg+Acc:%> # ;
++Sg+Nom:%>         # ;
++Sg+Gen:%>         # ;
++Sg+Acc:%>         # ;
 
 LEXICON acrooblique
- +Sg+Gen+Use/Sub:a K ; !
- +Sg+Acc+Use/Sub:a K ; !
- +Sg+Ill+Use/Sub:ij K ; !
- +Sg+Ill+Use/Sub:i K ;   ! NSR:i
- +Sg+Loc+Use/Sub:s K ;   ! NRK:s
- +Sg+Loc+Use/Sub:as K ;  ! NRK:as !
-+Sg+Com+Use/Sub:in K ;
- +Ess+Use/Sub:n K ;	    ! NBR:n
- +Ess+Use/Sub:an K ;     ! NBR:an ! (check!)
- +Pl+Nom+Use/Sub:at K ;  !
- +Pl+Gen+Use/Sub:ajd K ; !
- +Pl+Acc+Use/Sub:ajd K ; !
- +Pl+Ill+Use/Sub:ajde K ; !
- +Pl+Loc+Use/Sub:ajn K ;  !
- +Pl+Com+Use/Sub:ajgujn K ; !
-+Pl+Nom+Use/Sub:t K ;
-+Pl+Gen+Use/Sub:id9 K ;
-+Pl+Acc+Use/Sub:id9 K ;
-+Pl+Ill+Use/Sub:ide K ;
-+Pl+Loc+Use/Sub:in K ;
-+Pl+Com+Use/Sub:igujn K ;
- +Sg+Gen+Use/Sub:a # ; !
- +Sg+Acc+Use/Sub:a # ; !
- +Sg+Ill+Use/Sub:ij # ; !
- +Sg+Ill:i # ;   ! NSR:i
- +Sg+Loc:s # ;   ! NRK:s
- +Sg+Loc+Use/Sub:as # ;  ! NRK:as !
-+Sg+Com:in # ;
- +Ess:n # ;	    ! NBR:n
- +Ess+Use/Sub:an # ;     ! NBR:an ! (check!)
- +Pl+Nom+Use/Sub:at # ;  !
- +Pl+Gen+Use/Sub:ajd # ; !
- +Pl+Acc+Use/Sub:ajd # ; !
- +Pl+Ill+Use/Sub:ajde # ; !
- +Pl+Loc+Use/Sub:ajn # ;  !
- +Pl+Com+Use/Sub:ajgujn # ; !
-+Pl+Nom:t # ;
-+Pl+Gen:id9 # ;
-+Pl+Acc:id9 # ;
-+Pl+Ill:ide # ;
-+Pl+Loc:in # ;
-+Pl+Com:igujn # ;
-
-
+ +Sg+Gen+Use/Sub:a      K ;
+ +Sg+Acc+Use/Sub:a      K ;
+ +Sg+Ill+Use/Sub:ij     K ;
+ +Sg+Ill+Use/Sub:i      K ; ! NSR:i
+ +Sg+Loc+Use/Sub:s      K ; ! NRK:s
+ +Sg+Loc+Use/Sub:as     K ; ! NRK:as
+ +Sg+Com+Use/Sub:in     K ;
+ +Ess+Use/Sub:n         K ;	! NBR:n
+ +Ess+Use/Sub:an        K ; ! NBR:an ! (check!)
+ +Pl+Nom+Use/Sub:at     K ;
+ +Pl+Gen+Use/Sub:ajd    K ;
+ +Pl+Acc+Use/Sub:ajd    K ;
+ +Pl+Ill+Use/Sub:ajde   K ;
+ +Pl+Loc+Use/Sub:ajn    K ;
+ +Pl+Com+Use/Sub:ajgujn K ;
+ +Pl+Nom+Use/Sub:t      K ;
+ +Pl+Gen+Use/Sub:id9    K ;
+ +Pl+Acc+Use/Sub:id9    K ;
+ +Pl+Ill+Use/Sub:ide    K ;
+ +Pl+Loc+Use/Sub:in     K ;
+ +Pl+Com+Use/Sub:igujn  K ;
+ +Sg+Gen+Use/Sub:a      # ;
+ +Sg+Acc+Use/Sub:a      # ;
+ +Sg+Ill+Use/Sub:ij     # ;
+ +Sg+Ill:i              # ; ! NSR:i
+ +Sg+Loc:s              # ; ! NRK:s
+ +Sg+Loc+Use/Sub:as     # ; ! NRK:as
+ +Sg+Com:in             # ;
+ +Ess:n                 # ;	! NBR:n
+ +Ess+Use/Sub:an        # ; ! NBR:an ! (check!)
+ +Pl+Nom+Use/Sub:at     # ;
+ +Pl+Gen+Use/Sub:ajd    # ;
+ +Pl+Acc+Use/Sub:ajd    # ;
+ +Pl+Ill+Use/Sub:ajde   # ;
+ +Pl+Loc+Use/Sub:ajn    # ;
+ +Pl+Com+Use/Sub:ajgujn # ;
+ +Pl+Nom:t              # ;
+ +Pl+Gen:id9            # ;
+ +Pl+Acc:id9            # ;
+ +Pl+Ill:ide            # ;
+ +Pl+Loc:in             # ;
+ +Pl+Com:igujn          # ;
 
 !------Der/ár------
  +Der1+Der/ár+CmpN/SgN+CmpN/SgG+CmpN/PlG:»ár GAHPIRLONG ;  !
 
 
 
-
-
-
 LEXICON Interjection
+buorre% beaivi Ij
+bures% boahtin Ij;
+juo Ij ;
+juo Ij ;
 LEXICON Ij
 
 ! Divvun & Giellatekno - open source grammars for Sámi and other languages
