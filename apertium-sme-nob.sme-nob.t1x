@@ -56,6 +56,10 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="Pcle.*"/>
       <cat-item tags="Pcle"/>
     </def-cat>
+    <def-cat n="ij">
+      <cat-item tags="Interj.*"/>
+      <cat-item tags="Interj"/>
+    </def-cat>
     <def-cat n="Qst.Pcle">
       <cat-item tags="Qst.Pcle"/>
       <cat-item tags="Qst.Pcle.*"/>
@@ -266,6 +270,10 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_adv">
       <attr-item tags="Adv"/>
       <attr-item tags="adv"/>
+    </def-attr>
+    <def-attr n="a_ij">
+      <attr-item tags="Ij"/>
+      <attr-item tags="ij"/>
     </def-attr>
     <def-attr n="a_prep">
       <attr-item tags="Po"/>
@@ -4129,6 +4137,27 @@ TODO: this should be an mwe in the analyser.">
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_adv"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: Interj / ij">
+      <pattern>
+        <pattern-item n="ij"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
+        <out>
+          <chunk name="ij" case="caseFirstWord">
+            <tags>
+              <tag><var n="c_syn"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_ij"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
