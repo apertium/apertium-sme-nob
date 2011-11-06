@@ -248,4 +248,26 @@
     </pipeline>
   </mode>
 
+
+  <mode name="sme-nob-postchunk-from-transfer">
+    <pipeline>
+      <program name="apertium-transfer">
+        <file name="apertium-sme-nob.sme-nob.t1x"/>
+        <file name="sme-nob.t1x.bin"/>
+        <file name="sme-nob.autobil.bin"/>
+      </program>
+      <program name="apertium-interchunk">
+        <file name="apertium-sme-nob.sme-nob.t2x"/>
+        <file name="sme-nob.t2x.bin"/>
+      </program>
+      <program name="apertium-interchunk">
+        <file name="apertium-sme-nob.sme-nob.t3x"/>
+        <file name="sme-nob.t3x.bin"/>
+      </program>
+      <program name="apertium-postchunk">
+        <file name="apertium-sme-nob.sme-nob.t4x"/>
+        <file name="sme-nob.t4x.bin"/>
+      </program>
+    </pipeline>
+  </mode>
 </modes>
