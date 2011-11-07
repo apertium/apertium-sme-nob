@@ -510,13 +510,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           </and></test>
           <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
         </when></choose>
-        <choose><when c="only det.pos has mf">
-          <test><and>
-            <not><equal><clip pos="2" part="a_det"/><lit-tag v="det.pos"/></equal></not>
-            <equal><clip pos="2" part="gen"/><lit-tag v="mf"/></equal>
-          </and></test>
-          <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
-        </when></choose>
         <choose><when c="default gender">
           <test><or>
             <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
@@ -525,6 +518,14 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
           <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
         </when></choose>
+      </when></choose>
+
+      <choose><when c="only det.pos has mf">
+        <test><and>
+          <not><equal><clip pos="2" part="a_det"/><lit-tag v="det.pos"/></equal></not>
+          <equal><clip pos="2" part="gen"/><lit-tag v="mf"/></equal>
+        </and></test>
+        <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
       </when></choose>
 
       <choose>
