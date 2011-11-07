@@ -6,8 +6,10 @@ if [ $# -ne 2 ];then
     echo "where 'word<tag><tag> is from the dev/generation-test.sh report"
     echo ""
     echo "Assumes corpus was preprocessed like:"
-    echo "\$ awk 'p&&/^ *$/{print NR\"¶\";p=0} {print} /[^ ]/{p=1}' corpus > corpus.pilcrowed"
+    echo "\$ awk 'p&&/^ *$/{print \"|\"NR\"¶\";p=0} {print} /[^ ]/{p=1}' corpus > corpus.pilcrowed"
     echo "before running dev/generation-test.sh"
+    # The | is just used as a separator, ensures possible preceding numbers are not seen as part of this one.
+    # It's of course possible to write "|NR¶" on _each_ line, but that's rather invasive and you might miss some errors.
     exit 1
 fi
 needle="$1"
@@ -31,7 +33,7 @@ extract () {
 IFS=$' \t\n' read -a lines <<< `extract "${needle}" "$POSTCHUNKOUT"`
 if [ "${#lines[@]}" == "2" ]; then
     echo "found ${needle} between lines ${lines[0]} and ${lines[1]}" 1>&2
-    awk "/^${lines[0]}$pilcrow\$/,/^${lines[1]}$pilcrow$/{print}" "$CORPUS"
+    awk "/^\|${lines[0]}$pilcrow\$/,/^\|${lines[1]}$pilcrow$/{print}" "$CORPUS"
 else
     echo "Couldn't find ${needle}!" 1>&2
     exit 1
