@@ -287,6 +287,7 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_cmp">
       <attr-item tags="Cmp"/>
       <attr-item tags="cmp"/>
+      <attr-item tags="dash"/>
       <attr-item tags="RCmpnd"/>
     </def-attr>
     <def-attr n="a_pron">
@@ -3684,6 +3685,10 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="RCmpnd"/></equal></test>
+          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="dash"/></let>
+        </when></choose>
         <out>
           <chunk name="det" case="caseFirstWord">
             <tags>
