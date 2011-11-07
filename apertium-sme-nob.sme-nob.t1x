@@ -213,6 +213,7 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="num.cmp">
       <cat-item tags="Num.Cmp"/>
+      <cat-item tags="Num.*.Cmp"/>
     </def-cat>
     <def-cat n="diibmu">
       <cat-item lemma="diibmu" tags="N.*"/>
@@ -1237,7 +1238,8 @@ And then there are some categories like "month", with all the months.
             </when>
             <when c="RCmpnd → sg.ind.dash (split compounds)
                      eanan-(RCmpnd) ja luonddudoahpagiid => jord-(sg.ind) og naturfagord
-                     NOTE: the dash tag is only defined for sg.ind words in nob.dix (like cmp)">
+                     NOTE: the dash tag is only defined for the sg.ind form of nouns in nob.dix (like cmp)
+                           (as well as all numerals, where the change is handled in bidix)">
               <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="RCmpnd"/></equal></test>
               <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
               <let><var n="c_def_pos"/><lit-tag v="ind.dash"/></let>
@@ -1777,8 +1779,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
     <rule comment="REGLA: NUM.CMP NOM
                    1990-logu => 1990-tallet
                    Always definite (should not add a determiner in t4x)
-                   Keep the dash by adding the 'dash' tag here,
-                   nob.dix adds a - for numerals tagged 'dash'">
+                   if a_cmp is 'dash', nob.dix adds a dash">
       <pattern>
         <pattern-item n="num.cmp"/>
         <pattern-item n="nom_head"/>
@@ -1793,7 +1794,12 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           <test><equal><clip pos="2" side="tl" part="lemh"/><lit v="lohku"/></equal></test>
           <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
         </when></choose>
-        
+
+        <choose><when c="Remove dash from spelled out numbers preceding non-numbers (logi-jagáš → tiåret)">
+          <test><not><equal><clip pos="1" side="sl" part="nbr"/><lit v=""/></equal></not></test>
+          <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
+        </when></choose>
+
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <let><var n="defnes"/><lit-tag v="def"/></let>
         <let>
@@ -1804,7 +1810,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
               <clip pos="1" side="tl" part="a_num"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="dash"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -1815,8 +1821,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
     <rule comment="REGLA: NUM.CMP NOM.CMP NOM
                    1990-logu => 1990-tallet
                    Always definite (should not add a determiner in t4x)
-                   Keep the dash by adding the 'dash' tag here,
-                   nob.dix adds a - for numerals tagged 'dash'">
+                   if a_cmp is 'dash', nob.dix adds a dash">
       <pattern>
         <pattern-item n="num.cmp"/>
         <pattern-item n="nom.cmp"/>
@@ -1833,6 +1838,11 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           <test><equal><clip pos="3" side="tl" part="lemh"/><lit v="lohku"/></equal></test>
           <let><clip pos="3" side="tl" part="nbr"/><lit-tag v="sg"/></let>
         </when></choose>
+
+        <choose><when c="Remove dash from spelled out numbers preceding non-numbers (logi-jagáš → tiåret)">
+          <test><not><equal><clip pos="1" side="sl" part="nbr"/><lit v=""/></equal></not></test>
+          <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
+        </when></choose>
         
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <let><var n="defnes"/><lit-tag v="def"/></let>
@@ -1844,7 +1854,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
               <clip pos="1" side="tl" part="a_num"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="dash"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <lit v="^"/>
@@ -3685,10 +3695,6 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <choose><when>
-          <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="RCmpnd"/></equal></test>
-          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="dash"/></let>
-        </when></choose>
         <out>
           <chunk name="det" case="caseFirstWord">
             <tags>
