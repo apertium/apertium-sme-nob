@@ -2180,6 +2180,17 @@ SUBSTITUTE ("fal") ("fal:1") ("fal" Adv) (-2 BOS)(-1 Neg + Sg3)(*1 N BARRIER NPN
 ## Ii fal
 
 
+# Adjectives
+# ==========
+
+# buorre:0 → bra, buorre:1→god
+LIST IJ-TIME = "beaivi" "eahket" "beassážat" "juovllat" ;
+SUBSTITUTE ("buorre") ("buorre:1") ("buorre" A) (1 IJ-TIME + N) ;
+SUBSTITUTE ("buorre") ("buorre:1") ("buorre" A) (1 ("ođas" A Attr)) (2 ("jahki" N)) ;
+
+
+
+
 # oba
 
 SUBSTITUTE ("oba") ("oba:1) ("oba" Adv) (*-1 Neg BARRIER ConNeg) ;

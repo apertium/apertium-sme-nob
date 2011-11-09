@@ -231,6 +231,20 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="b" tags="ABBR.*"/>
       <cat-item lemma="b" tags="N.ABBR.*"/>
     </def-cat>
+    <def-cat n="ij-adj">
+      <cat-item lemma="buorre:1" tags="A.Sg.*"/>
+      <cat-item lemma="ilolaš" tags="A.Sg.*"/>
+      <cat-item lemma="ilolaš" tags="A.Attr.*"/>
+    </def-cat>
+    <def-cat n="ij-adj2">
+      <cat-item lemma="ođas" tags="A.Attr.*"/>
+    </def-cat>
+    <def-cat n="ij-nom">
+      <cat-item lemma="beaivi" tags="N.Sg.*"/>
+      <cat-item lemma="eahket" tags="N.Sg.*"/>
+      <cat-item lemma="juovllat" tags="N.Pl.*"/>
+      <cat-item lemma="jahki" tags="N.Sg.*"/>
+    </def-cat>
   </section-def-cats>
   <section-def-attrs>
     <def-attr n="a_der">
@@ -1641,6 +1655,94 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
   </section-def-macros>
   
   <section-rules>
+    <!-- <rules: MWE interjections (which can't be in analyser as multiwords) -->
+    <rule comment="REGLA: IJ-ADJ IJ-NOM">
+      <pattern>
+        <pattern-item n="ij-adj"/>
+        <pattern-item n="ij-nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
+
+        <out>
+          <chunk name="pre_nom" case="caseFirstWord">
+            <tags>
+              <tag><var n="c_syn"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+              <lit-tag v="ind"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+              <lit-tag v="ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: IJ-ADJ IJ-ADJ2 IJ-NOM">
+      <pattern>
+        <pattern-item n="ij-adj"/>
+        <pattern-item n="ij-adj2"/>
+        <pattern-item n="ij-nom"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="3"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
+
+        <out>
+          <chunk name="pre_pre_nom" case="caseFirstWord">
+            <tags>
+              <tag><var n="c_syn"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+              <lit-tag v="ind"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+              <lit-tag v="ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <b pos="2"/>
+            <lu>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_nom"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+              <lit-tag v="ind"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <!-- <rules: Dates (need to be before num_nom rules) -->
     <rule comment="REGLA: MONTH ORD BEAIVI
                    guovvamánu 17. beaivvi => 17. februar
