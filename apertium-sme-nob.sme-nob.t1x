@@ -2483,7 +2483,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
-    <rule comment="REGLA: NUM_MOD NOM_MOD NOM
+    <rule comment="REGLA: NUM_MOD NOM.GEN NOM
                    -----
                    Oblique use of num nom, here the final nominal is the head
                    See NUM_MOD NOM rule.">
@@ -2512,6 +2512,11 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><var n="defnes"/><lit v=""/></let>
+          <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
+        </when></choose>
         <append n="pre-nom">
           <concat>
             <lit v="^"/>
@@ -3477,6 +3482,11 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
 
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><var n="defnes"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+        </when></choose>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -3623,6 +3633,11 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
 
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><var n="defnes"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+        </when></choose>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -3707,6 +3722,11 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
 
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><var n="defnes"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+        </when></choose>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -3758,6 +3778,11 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
 
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><var n="defnes"/><lit v=""/></let>
+          <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
+        </when></choose>
         <let>
           <var n="pre-nom"/>
           <concat>
