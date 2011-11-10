@@ -551,6 +551,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="c_nbr"          c="chunk number"/>
     <def-var n="c_def_pos"      c="chunk defnes tag position"/>
     <def-var n="c_syn"          c="chunk syn_label"/>
+    <def-var n="c_animacy"      c="chunk animacy (pers, impers)"/>
     <def-var n="caseFirstWord"  c="typographic case of first word"/>
     <def-var n="caseprep"       c="nob preposition (whole chunk) based on sme case"/>
     <def-var n="previous-nhead" c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
@@ -563,7 +564,129 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;PrfPrc&gt;"/>
       <list-item v="&lt;pp&gt;"/>
     </def-list>
-    
+
+    <def-list n="animate_nonagent-verbs" c="Passive versions of these have 'pers' tag on 'bli', else 'impers',
+                                            in order to make the inserted subject pronoun animate.">
+      <!-- From newspaper corpus, grep 'h[au]n ble'|sort|uniq -c|sort -n, then filter out 'det ble' hits etc.: -->
+      <list-item v="pågripe"/>
+      <list-item v="arrestere"/>
+      <list-item v="drepe"/>
+      <list-item v="hente"/>
+      <list-item v="spørre"/>
+      <list-item v="dømme"/>
+      <list-item v="stoppe"/>
+      <list-item v="velge"/>
+      <list-item v="løslate"/>
+      <list-item v="kåre"/>
+      <list-item v="frakte"/>
+      <list-item v="påføre"/>
+      <list-item v="tvinge"/>
+      <list-item v="påkjøre"/>
+      <list-item v="overraske"/>
+      <list-item v="anmelde"/>
+      <list-item v="utnevne"/>
+      <list-item v="skade"/>
+      <list-item v="intervjue"/>
+      <list-item v="be"/>
+      <list-item v="utvise"/>
+      <list-item v="bytte"/>
+      <list-item v="anklage"/>
+      <list-item v="operere"/>
+      <list-item v="fly"/>
+      <list-item v="ansette"/>
+      <list-item v="styrte"/>
+      <list-item v="sparke"/>
+      <list-item v="sikte"/>
+      <list-item v="nekte"/>
+      <list-item v="konfrontere"/>
+      <list-item v="såre"/>
+      <list-item v="sjokkere"/>
+      <list-item v="redde"/>
+      <list-item v="presse"/>
+      <list-item v="gjenvelge"/>
+      <list-item v="frikjenne"/>
+      <list-item v="fengsle"/>
+      <list-item v="tildele"/>
+      <list-item v="forsinke"/>
+      <list-item v="utestenge"/>
+      <list-item v="overmanne"/>
+      <list-item v="oppringe"/>
+      <list-item v="ringe"/>
+      <list-item v="kontakte"/>
+      <list-item v="filme"/>
+      <list-item v="fange"/>
+      <list-item v="bære"/>
+      <list-item v="anrope"/>
+      <list-item v="sykemelde"/>
+      <list-item v="knivstikke"/>
+      <list-item v="henrette"/>
+      <list-item v="flytte"/>
+      <list-item v="erstatte"/>
+      <list-item v="banke"/>
+      <list-item v="avhøre"/>
+      <list-item v="vekke"/>
+      <list-item v="overkjøre"/>
+      <list-item v="nominere"/>
+      <list-item v="lure"/>
+      <list-item v="innkalle"/>
+      <list-item v="idømme"/>
+      <list-item v="hylle"/>
+      <list-item v="frata"/>
+      <list-item v="etterforske"/>
+      <list-item v="ekskludere"/>
+      <list-item v="bøtelegge"/>
+      <list-item v="bortføre"/>
+      <list-item v="beskyte"/>
+      <list-item v="begrave"/>
+      <list-item v="baktale"/>
+      <list-item v="varetektsfengsle"/>
+      <list-item v="utstøte"/>
+      <list-item v="utlevere"/>
+      <list-item v="utelate"/>
+      <list-item v="transportere"/>
+      <list-item v="smitte"/>
+      <list-item v="skade"/>
+      <list-item v="rane"/>
+      <list-item v="provosere"/>
+      <list-item v="plassere"/>
+      <list-item v="overlevere"/>
+      <list-item v="overbevise"/>
+      <list-item v="omringe"/>
+      <list-item v="myrde"/>
+      <list-item v="irritere"/>
+      <list-item v="involvere"/>
+      <list-item v="invitere"/>
+      <list-item v="innhente"/>
+      <list-item v="imponere"/>
+      <list-item v="gjenkjenne"/>
+      <list-item v="geleide"/>
+      <list-item v="forkjøle"/>
+      <list-item v="dytte"/>
+      <list-item v="deportere"/>
+      <list-item v="binde"/>
+      <list-item v="blende"/>
+      <list-item v="avsette"/>
+      <list-item v="avlytte"/>
+      <list-item v="avbryte"/>
+      <list-item v="avbilde"/>
+      <list-item v="anholde"/>
+      <!-- Newspaper-animate_nonagent-verbs are so depressing, here are some happier ones: -->
+      <list-item v="forundre"/>
+      <list-item v="elske"/>
+      <list-item v="pålegge"/>
+      <list-item v="fotografere"/>
+      <list-item v="inspirere"/>
+      <list-item v="klemme"/>
+      <list-item v="kysse"/>
+      <list-item v="rose"/>
+      <list-item v="oppmuntre"/>
+      <list-item v="frigjøre"/>
+      <list-item v="unnskylde"/>
+      <list-item v="forlate"/>
+      <list-item v="beklage"/>
+      <list-item v="savne"/>
+    </def-list>
+
     <def-list n="ill-NIL-verbs" c="We add the 'ill-NIL' tag to verb chunks with these verbs,
                                    use that tag in t2x to remove the caseprep.PR.ill chunk
                                    TODO: use nob/tl verb instead?">
@@ -717,6 +840,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="bokmål"/>
       <list-item v="engelsk"/>
     </def-list>
+
     <def-list n="no-gen-after-prop" c="If a noun in this list is preceded by a prop.gen, remove the gen from the prop">
       <list-item v="skole"/>
       <list-item v="ungdomssskole"/>
@@ -1474,6 +1598,11 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <test><in><clip pos="1" side="tl" part="temps"/><list n="infinite_temps"/></in></test>
             <let><var n="c_syn"/><lit-tag v="@-FAUXV"/></let>
           </when></choose>
+          <let><var n="c_animacy"/><lit-tag v="impers"/></let>
+          <choose><when>
+            <test><in><clip pos="1" side="tl" part="lem"/><list n="animate_nonagent-verbs"/></in></test>
+            <let><var n="c_animacy"/><lit-tag v="pers"/></let>
+          </when></choose>
           <out>
             <chunk name="verb" case="caseFirstWord">
               <tags>
@@ -1484,7 +1613,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
                 <tag><clip pos="1" side="tl" part="temps"/></tag>
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                <tag><var n="c_animacy"/></tag>
                 <tag><var n="caseprep"/></tag>
               </tags>
               <lu>
