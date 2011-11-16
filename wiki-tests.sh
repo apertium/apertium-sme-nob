@@ -35,19 +35,13 @@ fi
 
 
 cleansrc () {
-    grep "<li> ($SRCLANG)" | $SED 's/<.*li>//g' | $SED 's/ /_/g' | cut -f2 -d')' | $SED 's/<i>//g' | $SED 's/<\/i>//g' | cut -f2 -d'*' | $SED 's/→/!/g' | cut -f1 -d'!' | $SED 's/(note:/!/g' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/\([^,.?!:;]\)$/\1./g' |\
-    if [ "$TRGLANG" == "nob-old" ]; then
-        # split into one lexical unit per line
-	$SED 's/[.]*$/. /' | $SED 's/\([,?.]\) / \1 /g'  | sed 's/?/ ?/g' | $SED 's/$/\n¶/g' | $SED 's/ /\n/g' | grep -v '^ *$'
-    else
-	cat
-    fi
+    grep "<li> ($SRCLANG)" | $SED 's/<.*li>//g' | $SED 's/ /_/g' | cut -f2- -d')' | $SED 's/<i>//g' | $SED 's/<\/i>//g' | cut -f2 -d'*' | $SED 's/→/!/g' | cut -f1 -d'!' | $SED 's/(note:/!/g' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/\([^,.?!:;]\)$/\1./g'
 }
 cleantrg () {
     grep "<li> ($SRCLANG)" | $SED 's/<.*li>//g' | $SED 's/ /_/g' | $SED 's/(\w\w)//g' | $SED 's/<i>//g' | cut -f2 -d'*' | $SED 's/<\/i>_→/!/g' | cut -f2 -d'!' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/\([^,.?!:;]\)$/\1./g'
 }
-cat $HTML | cleansrc > $SRCLIST;
-cat $HTML | cleantrg > $TRGLIST;
+cleansrc < "$HTML" > "$SRCLIST"
+cleantrg < "$HTML" > "$TRGLIST"
 
 
 # Translate
@@ -97,5 +91,5 @@ if [ -n "$CALC" ]; then
 fi
 echo $CORRECT" / "$TOTAL$WORKING;
 
-#rm $SRCLIST $TRGLIST $TSTLIST;
+rm -f $SRCLIST $TRGLIST $TSTLIST;
 #echo $SRCLIST $TRGLIST $TSTLIST;
