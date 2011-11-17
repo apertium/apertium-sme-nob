@@ -30,46 +30,39 @@ TARGETS_COMMON = \
 ##
 
 $(LANG1).twol.hfst: $(BASENAME).$(LANG1).twol
-	hfst-twolc -R -i $(BASENAME).$(LANG1).twol -o $@ # hfst3
-#	hfst-twolc -r -i $(BASENAME).$(LANG1).twol -o $@ # hfst2
+	hfst-twolc -R -i $< -o $@
 
 $(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
-	hfst-lexc -o $@ $(BASENAME).$(LANG1).lexc
+	hfst-lexc -o $@ $<
 
 $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
-	hfst-compose-intersect -1 $(LANG1).lexc.hfst -2 $(LANG1).twol.hfst -o $@ # hfst3
-#	hfst-compose-intersect -l $(LANG1).lexc.hfst $(LANG1).twol.hfst -o $@ # hfst2
+	hfst-compose-intersect -1 $(LANG1).lexc.hfst -2 $(LANG1).twol.hfst -o $@
 
 .deps/xfst2apertium.useless.twol.hfst: dev/xfst2apertium.useless.twol
 	if [ ! -d .deps ]; then mkdir .deps; fi
-	hfst-twolc -R -i dev/xfst2apertium.useless.twol -o $@ # hfst3
-#	hfst-twolc -r -i dev/xfst2apertium.useless.twol -o $@ # hfst2
+	hfst-twolc -R -i $< -o $@
 
 .deps/xfst2apertium.hashtags.twol.hfst: dev/xfst2apertium.hashtags.twol
 	if [ ! -d .deps ]; then mkdir .deps; fi
-	hfst-twolc -R -i dev/xfst2apertium.hashtags.twol -o $@ # hfst3
-#	hfst-twolc -r -i dev/xfst2apertium.hashtags.twol -o $@ # hfst2
+	hfst-twolc -R -i $< -o $@
 
 .deps/$(PREFIX1).automorf.inverted.hfst: $(PREFIX2).autogen.hfst
 	if [ ! -d .deps ]; then mkdir .deps; fi
-	hfst-invert -i $(PREFIX2).autogen.hfst -o $@
+	hfst-invert -i $< -o $@
 
 .deps/$(PREFIX1).automorf.useless.hfst: .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst
 	if [ ! -d .deps ]; then mkdir .deps; fi
-	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.inverted.hfst -2 .deps/xfst2apertium.useless.twol.hfst -o $@ # hfst3
-#	hfst-compose-intersect -l .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst -o $@ # hfst2
+	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.inverted.hfst -2 .deps/xfst2apertium.useless.twol.hfst -o $@
 
 .deps/$(PREFIX1).automorf.hashtags.hfst: .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst
 	if [ ! -d .deps ]; then mkdir .deps; fi
-	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.useless.hfst -2 .deps/xfst2apertium.hashtags.twol.hfst -o $@ # hfst3
-#	hfst-compose-intersect -l .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst -o $@ # hfst2
+	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.useless.hfst -2 .deps/xfst2apertium.hashtags.twol.hfst -o $@
 
 $(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst dev/xfst2apertium.relabel
 	hfst-substitute -F dev/xfst2apertium.relabel -i .deps/$(PREFIX1).automorf.hashtags.hfst -o $@
 
 $(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
-	hfst-fst2fst -O -i $(PREFIX1).automorf.hfst -o $@ # hfst3
-#	hfst-lookup-optimize -i $(PREFIX1).automorf.hfst -o $@ # hfst2
+	hfst-fst2fst -O -i $< -o $@
 
 
 # Debug/development goals for testing before/after the various twol's:
@@ -90,67 +83,67 @@ $(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
 	xsltproc lexchoicebil.xsl $(BASENAME).$(PREFIX1).dix > $@
 
 $(PREFIX1).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
-	apertium-validate-dictionary .deps/$(BASENAME).$(PREFIX1).dix
-	lt-comp lr .deps/$(BASENAME).$(PREFIX1).dix $@
+	apertium-validate-dictionary $<
+	lt-comp lr $< $@
 
 ##
 ## 	NOB GENERATOR DICTIONARY
 ##
 $(PREFIX1).autogen.bin: $(BASENAME).$(LANG2).dix
-	apertium-validate-dictionary $(BASENAME).$(LANG2).dix
-	lt-comp rl $(BASENAME).$(LANG2).dix $@
+	apertium-validate-dictionary $<
+	lt-comp rl $< $@
 
 ##
 ##	PRE-TAGGING
 ##
 
 $(PREFIX1).rlx.bin: $(BASENAME).$(PREFIX1).rlx
-	cg-comp $(BASENAME).$(PREFIX1).rlx $@
+	cg-comp $< $@
 
 ##
 ##	LEXICAL SELECTION
 ##
 
 $(PREFIX1).lex.bin: $(BASENAME).$(PREFIX1).lex
-	cg-comp $(BASENAME).$(PREFIX1).lex $@
+	cg-comp $< $@
 
 ##
 ##	TRANSFER RULES
 ##
 
 $(PREFIX1).t1x.bin: $(BASENAME).$(PREFIX1).t1x
-	apertium-validate-transfer $(BASENAME).$(PREFIX1).t1x
-	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t1x $@
+	apertium-validate-transfer $<
+	apertium-preprocess-transfer $< $@
 
 $(PREFIX1).t2x.bin: $(BASENAME).$(PREFIX1).t2x
-	apertium-validate-interchunk $(BASENAME).$(PREFIX1).t2x
-	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t2x $@
+	apertium-validate-interchunk $<
+	apertium-preprocess-transfer $< $@
 
 $(PREFIX1).t3x.bin: $(BASENAME).$(PREFIX1).t3x
-	apertium-validate-interchunk $(BASENAME).$(PREFIX1).t3x
-	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t3x $@
+	apertium-validate-interchunk $<
+	apertium-preprocess-transfer $< $@
 
 $(PREFIX1).t4x.bin: $(BASENAME).$(PREFIX1).t4x
-	apertium-validate-postchunk $(BASENAME).$(PREFIX1).t4x
-	apertium-preprocess-transfer $(BASENAME).$(PREFIX1).t4x $@
+	apertium-validate-postchunk $<
+	apertium-preprocess-transfer $< $@
 
 
 # Alternative versions using vm-for-transfer-cpp:
 $(PREFIX1).v1x.bin: $(BASENAME).$(PREFIX1).t1x
-	apertium-validate-transfer $(BASENAME).$(PREFIX1).t1x
-	apertium-transfervm-compiler -i $(BASENAME).$(PREFIX1).t1x -o $@
+	apertium-validate-transfer $<
+	apertium-transfervm-compiler -i $< -o $@
 
 $(PREFIX1).v2x.bin: $(BASENAME).$(PREFIX1).t2x
-	apertium-validate-interchunk $(BASENAME).$(PREFIX1).t2x
-	apertium-transfervm-compiler -i $(BASENAME).$(PREFIX1).t2x -o $@
+	apertium-validate-interchunk $<
+	apertium-transfervm-compiler -i $< -o $@
 
 $(PREFIX1).v3x.bin: $(BASENAME).$(PREFIX1).t3x
-	apertium-validate-interchunk $(BASENAME).$(PREFIX1).t3x
-	apertium-transfervm-compiler -i $(BASENAME).$(PREFIX1).t3x -o $@
+	apertium-validate-interchunk $<
+	apertium-transfervm-compiler -i $< -o $@
 
 $(PREFIX1).v4x.bin: $(BASENAME).$(PREFIX1).t4x
-	apertium-validate-postchunk $(BASENAME).$(PREFIX1).t4x
-	apertium-transfervm-compiler -i $(BASENAME).$(PREFIX1).t4x -o $@
+	apertium-validate-postchunk $<
+	apertium-transfervm-compiler -i $< -o $@
 
 vm-transfer: $(PREFIX1).v1x.bin \
              $(PREFIX1).v2x.bin \
