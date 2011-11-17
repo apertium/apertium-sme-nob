@@ -71,6 +71,17 @@ $(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
 	hfst-fst2fst -O -i $(PREFIX1).automorf.hfst -o $@ # hfst3
 #	hfst-lookup-optimize -i $(PREFIX1).automorf.hfst -o $@ # hfst2
 
+
+# Debug/development goals for testing before/after the various twol's:
+.deps/$(PREFIX1).automorf.inverted.hfst.ol: .deps/$(PREFIX1).automorf.inverted.hfst
+	hfst-fst2fst -O -i $< -o $@
+.deps/$(PREFIX1).automorf.useless.hfst.ol: .deps/$(PREFIX1).automorf.useless.hfst
+	hfst-fst2fst -O -i $< -o $@
+.deps/$(PREFIX1).automorf.hashtags.hfst.ol: .deps/$(PREFIX1).automorf.hashtags.hfst
+	hfst-fst2fst -O -i $< -o $@
+
+
+
 ##
 ## 	BILINGUAL DICTIONARY
 ##
