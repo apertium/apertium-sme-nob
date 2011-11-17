@@ -786,9 +786,10 @@ Vu /<= _ ; where Vu in UnhandledDerivation;
 !! bidix/transfer.
 
 "No derivations of derivations"
-Vd /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | %+Attr | [] ] _ ; where Vd in Derivation;
+Vd /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | %+Attr | [] ] Useless:0* _ ; where Vd in Derivation;
 !! Although Der/foo and Der/bar might be handled by bidix/transfer,
 !! Der/foo N Der/bar isn't necessarily.
+
 
 
 "No consecutive V tags (giellatekno bug?)"
