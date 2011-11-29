@@ -1029,7 +1029,7 @@ LIST MOD-ASP = "bállet" "berret" "dáidit" "fertet" "galgat" "gillet" "lávet" 
 
  # Verbs that never have arguments of their own - so we leave out "áigut", for ex.
 
-LIST AUX-OR-MAIN = "áigut" "álgit" "beassat" "galgat" "hálidit" "háliidit" "máhttit" "nagodit" "ollit" "orrut" "sihtat" "veadjit";
+LIST AUX-OR-MAIN = "áigut" "álgit" "beassat" "galgat" "hálidit" "háliidit" "máhttit" "nagadit" "nagodit" "ollit" "orrut" "sihtat" "veadjit";
 
  # These verbs can take arguments, so they do not belong in the AUX group, 
  # but they are nevertheless mapped to (@+FAUXV). 
@@ -5373,7 +5373,7 @@ SELECT:r1217 Adv IF (0 ("mielde"))(*-1 ("leat" Qst) BARRIER VFIN);
 SELECT:r1218 Adv IF (*-1 V-TRANS-ACT-NOT-ACT OR COPULAS BARRIER NPNH)(-1 Pers OR HUMAN LINK 0 Gen LINK NOT 0 DAT-PRON)(0 ("mielde"));
 	## Dat ii leat mu mielde. # Can be ambiguos.	
   
-REMOVE:r1219 Adv IF (-1 (N Gen) OR (Pron Gen) LINK NOT 0 MEASURE OR PrfPrc)(NEGATE -1 Adv OR VFIN OR ("leat" PrfPrc))(0 Po)(NEGATE 0 ("bajil") LINK *-1 ("oahppat") BARRIER SV-BOUNDARY)(NEGATE 0 ("mielde") OR ("fárrui") OR ("mađe") LINK *-1 MIELDE-V BARRIER VFIN) ;
+REMOVE:r1219 Adv IF (-1 (N Gen) OR (Pron Gen) LINK NOT 0 MEASURE OR PrfPrc)(NEGATE -1 Adv OR VFIN OR ("leat" PrfPrc))(0 Po)(NEGATE 0 ("bajil") LINK *-1 ("oahppat") BARRIER SV-BOUNDARY)(NEGATE 0 ("mielde") OR ("fárrui") OR ("mađe") LINK *-1 MIELDE-V BARRIER VFIN)(NEGATE 0 ("ládje") LINK -1 ("juoga") OR ("eará")) ;
   	## Válddán girjji mielde.
   	## Válddán dorski mielde.  	
   
@@ -7481,7 +7481,7 @@ REMOVE:r1723 Adv IF (NEGATE *-1 VERB BARRIER S-BOUNDARY2)(NEGATE 0 ("gosa") OR (
 	## Diehtojuohkin divššohasa lagamuš oapmahažžii.
 	## Stuorát guolit mat eai bisán čalmmiide, mannet čađa.
 
-SELECT: (A Attr) IF (*-1 BOC2 BARRIER NPNHA)(NEGATE 0 VERB)(NEGATE 1 Dem OR VERB OR Prop)(NEGATE 0 Prop LINK -1 (Prop Attr) LINK 2 CC)(NEGATE 0 Prop LINK 1 CC LINK 1 Prop LINK NOT 1 Prop)(*1 N BARRIER NPNH LINK NOT 1 Po)(NEGATE 1 COMMA LINK 1 N);
+SELECT (A Attr) IF (*-1 BOC2 BARRIER NPNHA)(NEGATE 0 VERB)(NEGATE 1 Dem OR VERB OR Prop)(NEGATE 0 Prop LINK -1 (Prop Attr) LINK 2 CC)(NEGATE 0 Prop LINK 1 CC LINK 1 Prop LINK NOT 1 Prop)(*1 N BARRIER NPNH LINK NOT 1 Po)(NEGATE 1 COMMA LINK 1 N);
 	## Golbma čáppa, doaimmalaš nieidda livžo áhčiset riegádanbeaivve.
 
 SELECT:r1725 (A Attr) IF (*-1 COPULAS BARRIER NOT-ADV)(NEGATE 0 Adv LINK 1 A)(1 A OR N LINK NOT 0 Acc OR Superl OR Ord)(NEGATE 1 Gen LINK *1 Po OR Loc OR Inf BARRIER NP-BOUNDARY)(NEGATE 1 Adv OR VERB OR ADVLCASE)(*2 go OR EOC OR Neg BARRIER NOT-NP);
@@ -8109,7 +8109,7 @@ REMOVE:r1842 VGen IF (0 (VGen));
 	# Supinum vs. potential
 	# --------------------
 SELECT:r3584 Pot IF (NEGATE *-1 VFIN BARRIER SV-BOUNDARY OR COMMA)(0 Sup);
-REMOVE: Pot IF (*-1 VFIN BARRIER SV-BOUNDARY OR COMMA)(0 Sup);	
+REMOVE Pot IF (*-1 VFIN BARRIER SV-BOUNDARY OR COMMA)(0 Sup);	
 	
 	## Eat dieđe, vuoššažit go bierggu dál.   (Pot)
 	## Son bođii sisa biepmu vieččažit.    (Sup)
@@ -14877,7 +14877,7 @@ MAP (@→ADVL) TARGET @ADVL (1 ILL-ADJ) ;
 MAP (@→ADVL) TARGET ("gitta" Adv)(NOT *-1 ("váldit") OR ("doallat") OR ("čatnat") OR ("bidjat") OR ("leat") OR ("mannat") BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(*1 DOHKO OR DOPPE OR Loc OR Ill OR TIME BARRIER NPNH) ;
 
 MAP (@ADVL→) TARGET MO + Adv OR ADVL + Rel (*1 FMAINV BARRIER S-BOUNDARY2) ;
-MAP (@ADVL→CS) TARGET Adv (0 ("dan_dihte") OR ("maŋŋel") OR ("justa") OR ("danne") OR ("dalle") OR ("beare") OR ("dakkaviđe") OR ("dál") OR ("ovdal") OR ("danin") OR ("dan_dihte") OR ("dassážii"))(1 CS LINK 0 ("go"))  ;
+MAP (@ADVL→CS) TARGET Adv (0 ("dan_dihte") OR ("maŋŋel") OR ("justa") OR ("danne") OR ("dalle") OR ("beare") OR ("dakkaviđe") OR ("dál") OR ("ovdal") OR ("danin") OR ("dan_dihte") OR ("dassážii") OR ("dassá"))(1 CS LINK 0 ("go"))  ;
 
 MAP (@-F←ADVL) TARGET ADVL (*-1 Ger BARRIER NPNH) ; 
 MAP (@-F←ADVL) TARGET ADVL OR TIME + Gen (NOT 0 EASKKA)(*-1 Inf OR (Actio Ess) BARRIER SV-BOUNDARY2 LINK 0 SUBJ OR OBJ OR @ADVL OR (@A←) OR (@N←))(NOT 0 ("de") LINK -1 COMMA);
