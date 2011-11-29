@@ -81,7 +81,24 @@ Alphabet
  %+Guess:0
  %+v1:0 %+v2:0 %+v3:0 %+v4:0 %+v5:0
 
- %+Allegro:0
+! Semantic tags to help disambiguation & synt. analysis:
+ %+Mal %+Mal:0 %+Fem %+Fem:0 %+Sur %+Sur:0 ! Names
+ %+Plc %+Plc:0 ! Place
+ %+Org %+Org:0 ! Organisation
+ %+Obj %+Obj:0 ! Object
+ %+Ani %+Ani:0 ! Animate
+ !!! The below are removed no matter what, the above are kept when following proper noun tags --KBU
+ %+Hum:0 ! Human
+ %+Time:0 
+ %+Txt:0 !(girji, lávlla...)
+ %+Route:0
+ %+Measr:0 
+ %+Wthr:0
+ %+Build:0 
+ %+Edu:0
+
+! Not sure which section this goes in:
+ %+Allegro:0			! from LEXICON GOADE-IU-
 
 !!! Derivation tags copied in from  sme.lex.txt:166..356
 ! Der#begin
@@ -358,11 +375,30 @@ Useless =	    ! Keep consistent with tags in  sme-lex.txt:36..118
  %+Guess ! for the name guesser
  %+v1 %+v2 %+v3 %+v4 %+v5  ! Versions 
 
+ ! The other semantic tags are in ProperSemantic
+ %+Hum ! Human
+ %+Time 
+ %+Txt !(girji, lávlla...)
+ %+Route
+ %+Measr 
+ %+Wthr
+ %+Build 
+ %+Edu
+
+! Not sure which section this goes in:
  %+Allegro			! from LEXICON GOADE-IU-
 
 ;
 
-
+ProperSemantic =	    ! Keep consistent with tags in  sme-lex.txt:138..151
+! Semantic tags to help disambiguation & synt. analysis:
+ %+Mal %+Fem %+Sur ! Names
+ %+Plc ! Place
+ %+Org ! Organisation
+ %+Obj ! Object
+ %+Ani ! Animate
+ ! The rest are in Useless
+;
 
 PartOfSpeech =
  %+N %+A %+Adv %+V
@@ -809,3 +845,7 @@ Vd /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | %+Attr | [] ] Useless:0* _ ; wh
 
 "Delete the %- that was added to a lemma used in a dynamic compound"
 %-:0 <=> %+Cmp _ ;
+
+"Delete semantic tags that appear before noun tags"
+ProperSemantic:0 <=> _ Useless:0* %+N ;
+! These should be allowed only after proper nouns: %+Mal %+Fem %+Sur  %+Plc  %+Org  %+Obj  %+Ani 
