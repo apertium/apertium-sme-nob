@@ -847,5 +847,5 @@ Vd /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | %+Attr | [] ] Useless:0* _ ; wh
 %-:0 <=> %+Cmp _ ;
 
 "Delete semantic tags that appear before noun tags"
-ProperSemantic:0 <=> _ Useless:0* %+N ;
+ProperSemantic:0 <=> _ ProperSemantic:0* Useless:0* %+N ;
 ! These should be allowed only after proper nouns: %+Mal %+Fem %+Sur  %+Plc  %+Org  %+Obj  %+Ani 
