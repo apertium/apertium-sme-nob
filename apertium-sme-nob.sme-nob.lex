@@ -2189,6 +2189,11 @@ SUBSTITUTE ("buorre") ("buorre:1") ("buorre" A) (1 IJ-TIME + N) ;
 SUBSTITUTE ("buorre") ("buorre:1") ("buorre" A) (1 ("ođas" A Attr)) (2 ("jahki" N)) ;
 
 
+# vissis:0 → sikker, vissis:1 → viss
+SUBSTITUTE ("vissis") ("vissis:1") ("vissis" A) (*1 N BARRIER NOT-ADJ) ;
+# muhtun vissis:1 áiggi maŋŋel, doallat viesu rabasin vissis:1 áiggiid 
+# (vs. mun lean vissis:0 ahte)
+
 
 
 # oba
