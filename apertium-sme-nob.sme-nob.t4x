@@ -357,6 +357,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <list-item v="egen"/>
       <list-item v="selv"/>
     </def-list>
+    <def-list n="adj.pseudo-det"
+              c="Adjectives like 'certain' never take have determiners 'den/de' in front of them.">
+      <list-item v="viss"/>
+    </def-list>
   </section-def-lists>
 
   <section-def-macros>
@@ -897,6 +901,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                 <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="n"/></begins-with></not>
                 <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
                 <not><equal><clip pos="2" part="art"/><lit-tag v="ind"/></equal></not>
+                <not><in><clip pos="2" part="lem"/><list n="adj.pseudo-det"/></in></not>
               </and></test>
               <choose>
                 <when>
