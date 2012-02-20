@@ -732,6 +732,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="nohkkot"/>
       <list-item v="váruhit"/>
     </def-list>
+    <def-list n="loc-om-verbs" c="See 'ill-NIL-verbs' above.">
+      <list-item v="beroštit"/>
+    </def-list>
     <def-list n="loc-fra-verbs" c="See 'ill-NIL-verbs' above.">
       <list-item v="gullat" c="Problematic; Leat go gullan sus alddis? vs Go gullen sámegiela dien mátkkis."/>
     </def-list>
@@ -1455,6 +1458,10 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-for-verbs"/></in></test>
           <let><var n="caseprep"/><lit-tag v="loc-for"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-om-verbs"/></in></test>
+          <let><var n="caseprep"/><lit-tag v="loc-om"/></let>
         </when>
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-fra-verbs"/></in></test>

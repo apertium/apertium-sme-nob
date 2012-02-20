@@ -186,6 +186,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="ill-på"/>
       <attr-item tags="ill-av"/>
       <attr-item tags="loc-for"/>
+      <attr-item tags="loc-om"/>
       <attr-item tags="loc-fra"/>
       <attr-item tags="loc-NIL"/>
       <attr-item tags="NC"/>
@@ -469,6 +470,13 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
             <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
           </and></test>
           <let><var n="tmp"/><lit v="for"/></let>
+        </when>
+        <when>
+          <test><and>
+            <equal><var n="caseprep_verb"/><lit-tag v="loc-om"/></equal>
+            <equal><clip pos="1" part="case"/><lit-tag v="loc"/></equal>
+          </and></test>
+          <let><var n="tmp"/><lit v="om"/></let>
         </when>
         <when>
           <test><and>
