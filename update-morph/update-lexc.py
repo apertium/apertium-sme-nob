@@ -375,7 +375,7 @@ def make_lexc(COBJ=False):
 		   for s in STEPS]):
 		print "... Loading bidix FST %s" % (BIDIX_BIN,)
 		if sp.call(["make", "-q", "sme-nob.autobil.bin"], cwd=BIDIX_DIR) == 1:
-			print "\nWARNING: It seems like %s is not compiled! If this is correct, please compile the bidix, then re-run this script.\n" % (BIDIX_BIN,)
+			print "\nWARNING: It seems like %s is not compiled! If this is correct, please compile the bidix (make sme-nob.autobil.bin), then re-run this script.\n" % (BIDIX_BIN,)
 		# Finding the library file, should be in the same directory as this script
 		# TODO: if we ever get around to sudo make installing this, ctypes.util.find_library() should do the trick
 		LIBPATH = THISDIR + ".libs/libltpy.dylib"
