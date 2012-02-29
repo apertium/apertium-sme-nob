@@ -383,6 +383,11 @@ def make_lexc(COBJ=False):
 			LIBPATH = THISDIR + ".libs/libltpy.so"
 		elif os.uname()[0] != "Darwin":
 			print "Warning: Unknown platform, guessing Darwin"
+		try:
+			os.stat(LIBPATH)
+		except Exception, e:
+			print "\nCouldn't stat %s, did you forget to compile?\n" % (LIBPATH,)
+			raise e
 		fst = liblt.FST(LIBPATH, BIDIX_BIN)
 	else:
 		fst = None
