@@ -8749,7 +8749,7 @@ fierpmástallat:fierpmástalla DIEHTALADDA_TV ;
 fierralit:fierral SUOTNJAL_IV ;
 fierrat:fierra DIEVVA_IV ;
 fierrut:fierru DEAKCU_TV ;
-fievrredit:fievrre7d MUITAL_TV ;
+fievrridit:fievrre7d MUITAL_TV ;
 fievrridit:fievrrid MUITAL_TV ;
 figureret:figurere DOHPPE_TV ; ! ^LOAN
 fihttet:fihtte DOHPPE_TV ;
@@ -14486,6 +14486,7 @@ fri#mearka:fri#mear'ka GOAHTI-A ;
 friddja#minuhtta+CmpN/SgN+CmpN/SgG+CmpN/PlG+Time:friddja#minuhtta GOAHTI-A ;
 friddja#suohkan#geahččaleapmi+CmpN/Sg:friddja#suohkan#geahččal EAPMI ;
 friddja#suohkan#njuolggadus:friddja#suohkan#njuolggaduss JOHTOLAT ;
+sierra#njuolggadus:sierra#njuolggaduss JOHTOLAT ;
 friddja#suohkan#ortnet:friddja#suohkan#ortneg GAHPIR ;
 friddja#áigi+CmpN/SgN+CmpN/SgG:friddja#áj'gi GOAHTI-I ;
 friddjavuođa#reive:friddjavuođa#rej've GOAHTI ;
@@ -15591,7 +15592,6 @@ guovdo#rávdnje#oalli AIGI ;
 guovllo#kantuvra+Use/Sub:guovllo#k KANTUR ;
 guovllo#politihkka+Use/Sub:guovllo#politihkka GOAHTI-A ;
 guovllu#buohcce#viessu+CmpN/SgN+CmpN/SgG+CmpN/PlG+Build+Org:guovllu#buohcce#viessu GOAHTI-U ;
-guovllu#foanda:guovllu#foan'da GOAHTI-A ;
 guovllu#inšenevra+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:guovllu#inšenev'ra GOAHTI-A ;
 guovllu#inšenevra+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum+Use/Sub:guovllu#inšenov'ra GOAHTI-A ;
 guovllu#kántuvra+Use/Sub:guovllu#kántu KULTUR ;
@@ -17607,7 +17607,7 @@ lohti:loh'ti GOAHTI-I ;
 lojalitehta STAHTA ;
 lokal#patriotisma+Use/Sub:lokal#patri^otis'ma GOAHTI-A ; !^LOAN
 lokatiiva:lokatij'va GOAHTI-A ;
-lokomotiiva:lokomotij'va GOAHTI-A ;
+lokomotiiva+Veh:lokomotij'va GOAHTI-A ;
 lokta:lok'ta GOAHTI-A ;
 lokten#hárjehallan+CmpN/Sg:lokten#hárjehallam BOAHTALADDAN ;
 lokten#loavdda:lokten#loav'dag8 SEAMU ;
@@ -79866,8 +79866,6 @@ ill ab-noun ;
 imp ab-noun ;
 imprt ab-noun ;
 ind ab-noun ;
-jna ab-adv ; !ja nu ain !
-jnv ab-adv ; !
 jr ab-dot-noun ; !junior
 komp ab-noun ;
 kond ab-noun ;
@@ -79925,7 +79923,6 @@ Adr ab-dot-noun ; !Adreassa
 Bj ab-dot-noun ; !Bjørn, Bjarne
 Edv ab-dot-noun ; !Edvard
 Gnr ab-dot-noun ;
-Gč ab-dot-verb ; ! Reintrod. !
 Innst ab-dot-noun ; !Innstilling
 Joh:Joh9 ab-noun ; !Johannes
 Johs ab-dot-noun ; !Johannes
@@ -79945,7 +79942,6 @@ Seb ab-dot-noun ; !Sebastian, Sebedeus
 St ab-noun ; !
 St.prp ab-dot-noun ; !Stortingsproposisjon
 St.prp.nr ab-dot-noun ; !Stortingsproposisjon nummer
-Vrd ab-dot-verb ; !
 adr ab-dot-noun ; !adreassa
 art ab-dot-noun ; !artihkkal, artium
 ass:ass9 ab-dot-noun ; !assisteanta, assortemeanta
@@ -79957,13 +79953,10 @@ dir ab-dot-noun ; !direktevra
 dr ab-dot-noun ; !doktor
 dr.art ab-dot-noun ; !doktor artium
 ex ab-noun ; !
-geahč ab-verb ; !Must accept no-dot
 geassem+Use/Sub:geassem ab-dot-noun; ! !
 golggotm+Use/Sub:golggotm ab-dot-noun; ! !
-gč ab-verb ; ! XXX accept no-dot (?) !
 juovlam+Use/Sub:juovlam ab-dot-noun; ! !
 milj ab-dot-num ; !
-omd ab-dot-adv ; !
 osd ab-dot-noun ;
 ordf ab-dot-noun ; !ordførar
 ossod.dir ab-dot-noun ; !ossodatdirektevra
@@ -79973,7 +79966,6 @@ skábmam+Use/Sub:skábmam ab-dot-noun; ! !
 spes.ped ab-dot-noun ; !spesiála
 tel ab-noun ; !Used also without dots
 tlf ab-dot-noun ;
-vrd ab-dot-verb ; !
 
 
 ! Here comes the initials
@@ -80196,117 +80188,12 @@ z+Use/-Spell:z ab-dot-noun; !
 !UiTø ab-nodot-noun ;
 !Gwh:Gwh9 ab-nodot-noun ;
 
+LEXICON NUMNOAB 
+! This class contains homonyms, which are both abbrs for which numerals are complements and normal words. The abbreviation usage
+! is less common and thus only the occurences in the middle of
+! the sentnece can be considered as true cases.
 
-! Divvun & Giellatekno - open source grammars for Sámi and other languages
-! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
-! http://giellatekno.uit.no & http://divvun.no
-!
-! This program is free software; you can redistribute and/or modify
-! this file under the terms of the GNU General Public License as published by
-! the Free Software Foundation, either version 3 of the License, or
-! (at your option) any later version. The GNU General Public License
-! is found at http://www.gnu.org/licenses/gpl.html. It is
-! also available in the file $GTHOME/LICENSE.txt.
-!
-! Other licensing options are available upon request, please contact
-! giellatekno@hum.uit.no or divvun@samediggi.no
-
-LEXICON Acronym
-
- +Use/Circ: FIRSTLETTER ;  ! Dynamically generated acronyms, 	! Remove these from nonrec?
-                ! between two and four letters long.
- LETTERNUMBER ; ! Listed (still not monitored)		!
-                ! Perhaps we should allow for a final arabic number at
-                ! the end of the acronyms, the NRK and NRK2 pattern.
- SOMELONGACRO ; ! Here, we collect some long acronyms, perhaps we should  !
-                ! open for dynamic generation of longer acronyms, if this
-                ! list gets long.
- smallacro ;    ! This is a pointer to a lexicon of manually listed small-letter
-                ! acronyms. They are not generated, since it would interfer with the
-                ! ordinary transducer, but listed here, as they then can point to the
-                ! same ACRO lexicon as the generated capital-letter acronyms.
-! quasiacro ;    move to LEXICON HyphNouns  ! This is compounds with acronyms in the beginning.
-                ! They are here since they make compounds with hyphen to the left.
-
-LEXICON FIRSTLETTER	
-LEXICON SCND													
-LEXICON THRD													
-LEXICON FRTH													
-LEXICON LETTERNUMBER
-LEXICON SOMELONGACRO		
-II ACRO ;
-LEXICON smallacro
-Vrd:Vrd9 ab-nodot-verb ; !
-vrd:vrd9 ab-nodot-verb ; !veardit !
-
-LEXICON ACRO
-
- +N+ACR: acroconnector ;    ! Here we add the POS tag and go ACRO
-
-LEXICON acroconnector        ! Here comes a set of possible symbols to
-               acronull ;    ! put between the abbreviation and its suffix
-         :%>%: acrooblique ; ! NRK:as
- +Use/Sub:     acrooblique ; ! NRKas
- +Use/Sub:%>'7 acrooblique ; ! NRK's
- +Use/Sub:%>%` acrooblique ; ! NRK`s
- +Use/Sub:%>%´ acrooblique ; ! NRK´s
-               RHyph ;       ! Here we dive over to the compounds: NRK-2, NRK-bargi
- +Use/Sub:     Rreal ;       ! Without hyphen, not normative:  NRK23
-
-LEXICON acronull
-+Sg+Nom+Use/Sub:%> K ;
-+Sg+Gen+Use/Sub:%> K ;
-+Sg+Acc+Use/Sub:%> K ;
-+Sg+Nom:%>         # ;
-+Sg+Gen:%>         # ;
-+Sg+Acc:%>         # ;
-
-LEXICON acrooblique
- +Sg+Gen+Use/Sub:a      K ;
- +Sg+Acc+Use/Sub:a      K ;
- +Sg+Ill+Use/Sub:ij     K ;
- +Sg+Ill+Use/Sub:i      K ; ! NSR:i
- +Sg+Loc+Use/Sub:s      K ; ! NRK:s
- +Sg+Loc+Use/Sub:as     K ; ! NRK:as
- +Sg+Com+Use/Sub:in     K ;
- +Ess+Use/Sub:n         K ;	! NBR:n
- +Ess+Use/Sub:an        K ; ! NBR:an ! (check!)
- +Pl+Nom+Use/Sub:at     K ;
- +Pl+Gen+Use/Sub:ajd    K ;
- +Pl+Acc+Use/Sub:ajd    K ;
- +Pl+Ill+Use/Sub:ajde   K ;
- +Pl+Loc+Use/Sub:ajn    K ;
- +Pl+Com+Use/Sub:ajgujn K ;
- +Pl+Nom+Use/Sub:t      K ;
- +Pl+Gen+Use/Sub:id9    K ;
- +Pl+Acc+Use/Sub:id9    K ;
- +Pl+Ill+Use/Sub:ide    K ;
- +Pl+Loc+Use/Sub:in     K ;
- +Pl+Com+Use/Sub:igujn  K ;
- +Sg+Gen+Use/Sub:a      # ;
- +Sg+Acc+Use/Sub:a      # ;
- +Sg+Ill+Use/Sub:ij     # ;
- +Sg+Ill:i              # ; ! NSR:i
- +Sg+Loc:s              # ; ! NRK:s
- +Sg+Loc+Use/Sub:as     # ; ! NRK:as
- +Sg+Com:in             # ;
- +Ess:n                 # ;	! NBR:n
- +Ess+Use/Sub:an        # ; ! NBR:an ! (check!)
- +Pl+Nom+Use/Sub:at     # ;
- +Pl+Gen+Use/Sub:ajd    # ;
- +Pl+Acc+Use/Sub:ajd    # ;
- +Pl+Ill+Use/Sub:ajde   # ;
- +Pl+Loc+Use/Sub:ajn    # ;
- +Pl+Com+Use/Sub:ajgujn # ;
- +Pl+Nom:t              # ;
- +Pl+Gen:id9            # ;
- +Pl+Acc:id9            # ;
- +Pl+Ill:ide            # ;
- +Pl+Loc:in             # ;
- +Pl+Com:igujn          # ;
-
-!------Der/ár------
- +Der1+Der/ár+CmpN/SgN+CmpN/SgG+CmpN/PlG:»ár GAHPIRLONG ;  !
+su ab-dot-adv ; !La stå!
 
 
 
@@ -80316,15 +80203,7 @@ giitu Ij ;
 juo Ij ;
 juo Ij ;
 leage% buorre Ij ;
-
 LEXICON Ij
-
-
-+Interj:%>0 # ;
-
-
-
-
 
 ! Divvun & Giellatekno - open source grammars for Sámi and other languages
 ! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
