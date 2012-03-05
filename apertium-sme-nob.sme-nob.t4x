@@ -493,12 +493,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
         </when>
       </choose>
-      <choose><when c="don't allow sp tag if not in det.sp.def list">
+      <choose><when c="don't allow sp tag if not in det.sp.def list; sg.m sounds most natural">
         <test><and>
           <not><in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sp.def"/></in></not>
           <equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal>
         </and></test>
         <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
+        <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
       </when></choose>
 
       <choose><when c="only gender on singular or sp determiners">
