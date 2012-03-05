@@ -77,9 +77,6 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="V.IV.A.Attr.*"/>
       <cat-item tags="V.TV.A.Attr.*"/>
     </def-cat>
-    <def-cat n="nom_mod">
-      <cat-item tags="N.*.@→N"/>
-    </def-cat>
     <def-cat n="num_mod">
       <cat-item tags="Num.*.@→N"/>
       <cat-item tags="Num.*.@→A"/>
@@ -182,6 +179,7 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="nom.prop_attr">
       <cat-item tags="N.Prop.Attr.*"/>
+      <cat-item tags="N.*.@→N"/>
       <cat-item lemma="gonagas" tags="N.*"/>
       <cat-item lemma="gonagas:1" tags="N.*"/>
       <cat-item lemma="dronnet" tags="N.*"/>
@@ -2195,60 +2193,9 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOM_MOD NOM.PROP.ANTCOG_MOD NOM.PROP.ANTCOG
-                   Gender from the first np, syntax from the last one
-                   « ..., muitala rektor Liisa Holmberg. »">
-      <pattern>
-        <pattern-item n="nom_mod"/>
-        <pattern-item n="nom.prop.antcog_mod"/>
-        <pattern-item n="nom.prop.antcog"/>
-      </pattern>
-      <action>
-        <call-macro n="set_caseprep"><with-param pos="3"/></call-macro>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <var n="caseprep"/>
-          <chunk name="pre_pre_nom" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
-              <tag><lit-tag v="ind"/></tag>
-              <tag><clip pos="3" side="sl" part="mode"/></tag>
-              <tag><clip pos="2" side="tl" part="gen"/></tag>
-              <tag><clip pos="2" side="tl" part="nbr"/></tag>
-              <tag><clip pos="3" side="tl" part="case"/></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_nom"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="ind"/>
-              <clip pos="1" side="tl" part="gen-case"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-            <b pos="1"/>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-            <b pos="2"/>
-            <lu>
-              <clip pos="3" side="tl" part="lemh"/>
-              <clip pos="3" side="tl" part="a_nom"/>
-              <clip pos="3" side="tl" part="gen"/>
-              <clip pos="3" side="tl" part="gen-case"/>
-              <clip pos="3" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
-      </action>
-    </rule>
 
 
-    <rule comment="REGLA: NOM.PROP NOM.PROP NOM.PROP
+    <rule comment="REGLA: NOM.PROP_MOD NOM.PROP_MOD NOM.PROP
                    Gender from the first np, syntax from the last one">
       <pattern>
         <pattern-item n="nom.prop_mod"/>
@@ -2295,12 +2242,12 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOM.PROP_ATTR NOM.PROP
+    <rule comment="REGLA: NOM.PROP_ATTR NOM.PROP.ANTCOG
                    (šattai) Prinsa Harald (Ruvdnaprinsan) => (ble) Prins Harald (kronprins)
                    Uses NOM.PROP gender if possible as chunk gender.">
       <pattern>
         <pattern-item n="nom.prop_attr"/>
-        <pattern-item n="nom.prop"/>
+        <pattern-item n="nom.prop.antcog"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2347,13 +2294,75 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NOM.CMP NOM.PROP_ATTR NOM.PROP
+    <rule comment="REGLA: NOM.PROP_ATTR NOM.PROP.ANTCOG_MOD NOM.PROP.ANTCOG
+                   « ..., muitala rektor Liisa Holmberg. »
+                   Uses middle NOM.PROP gender if possible as chunk gender.">
+      <pattern>
+        <pattern-item n="nom.prop_attr"/>
+        <pattern-item n="nom.prop.antcog_mod"/>
+        <pattern-item n="nom.prop.antcog"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><not><equal><clip pos="2" side="tl" part="gen"/><lit v=""/></equal></not></test>
+          <let><var n="c_gen"/><clip pos="2" side="tl" part="gen"/></let>
+        </when></choose>
+        
+        <choose><when>
+          <test><not><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></not></test>
+          <let><clip pos="1" side="tl" part="whole"/><concat><clip pos="1" side="tl" part="whole"/><lit-tag v="ind"/></concat></let>
+        </when></choose>
+        
+        <out>
+          <var n="caseprep"/>
+          <chunk name="pre_pre_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
+              <tag><lit-tag v="ind"/></tag>
+              <tag><clip pos="3" side="sl" part="mode"/></tag>
+              <tag><var n="c_gen"/></tag>
+              <tag><var n="c_nbr"/></tag>
+              <tag><clip pos="3" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <b pos="2"/>
+            <lu>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_nom"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <clip pos="3" side="tl" part="gen-case"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    
+    <rule comment="REGLA: NOM.CMP NOM.PROP_ATTR NOM.PROP.ANTCOG
                    Ruvdnaprinsa Harald => Kronprins Harald
                    Uses NOM.PROP gender if possible as chunk gender.">
       <pattern>
         <pattern-item n="nom.cmp"/>
         <pattern-item n="nom.prop_attr"/>
-        <pattern-item n="nom.prop"/>
+        <pattern-item n="nom.prop.antcog"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
