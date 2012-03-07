@@ -863,6 +863,26 @@ And then there are some categories like "month", with all the months.
       <list-item v="bru"/>
       <list-item v="bro"/>
     </def-list>
+    <def-list n="noun.pseudo-prop"
+              c="Nouns that act proper (indefinite in the singular, no determiner)">
+      <list-item v="mor"/>
+      <list-item v="far"/>
+      <list-item v="bestemor"/>
+      <list-item v="bestefar"/>
+      <list-item v="velkommen"/>
+      <list-item v="januar"/>
+      <list-item v="februar"/>
+      <list-item v="mars"/>
+      <list-item v="april"/>
+      <list-item v="mai"/>
+      <list-item v="juni"/>
+      <list-item v="juli"/>
+      <list-item v="august"/>
+      <list-item v="september"/>
+      <list-item v="oktober"/>
+      <list-item v="november"/>
+      <list-item v="desember"/>
+    </def-list>
   </section-def-lists>
 
   <section-def-macros>
@@ -1179,6 +1199,10 @@ And then there are some categories like "month", with all the months.
         <when>
           <test><and>
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
+            <not><and>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in>
+            </and></not>
             <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
             <or>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@OBJ→"/></equal>

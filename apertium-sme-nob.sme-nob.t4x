@@ -361,6 +361,26 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
               c="Adjectives like 'certain' never take have determiners 'den/de' in front of them.">
       <list-item v="viss"/>
     </def-list>
+    <def-list n="noun.pseudo-prop"
+              c="Nouns that act proper (indefinite in the singular, no determiner)">
+      <list-item v="mor"/>
+      <list-item v="far"/>
+      <list-item v="bestemor"/>
+      <list-item v="bestefar"/>
+      <list-item v="velkommen"/>
+      <list-item v="januar"/>
+      <list-item v="februar"/>
+      <list-item v="mars"/>
+      <list-item v="april"/>
+      <list-item v="mai"/>
+      <list-item v="juni"/>
+      <list-item v="juli"/>
+      <list-item v="august"/>
+      <list-item v="september"/>
+      <list-item v="oktober"/>
+      <list-item v="november"/>
+      <list-item v="desember"/>
+    </def-list>
   </section-def-lists>
 
   <section-def-macros>
@@ -967,10 +987,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                   Don't add determiner if chunk ends in np">
       <choose>
         <when c="not 'en Kong.n Håkon.np', but 'det frie.adj Norge.np'">
-          <test><not><and>
-            <begins-with><clip pos="2" part="a_nom"/><lit-tag v="n"/></begins-with>
-            <begins-with><clip pos="3" part="a_nom"/><lit-tag v="np"/></begins-with>
-          </and></not></test>
+          <test><and>
+            <not><and>
+              <begins-with><clip pos="2" part="a_nom"/><lit-tag v="n"/></begins-with>
+              <begins-with><clip pos="3" part="a_nom"/><lit-tag v="np"/></begins-with>
+            </and></not>
+            <not><in caseless="yes"><clip pos="3" part="lemh"/><list n="noun.pseudo-prop"/></in></not>
+          </and></test>
           <call-macro n="maybe_out_det2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         </when>
         <!-- otherwise: no determiner -->
@@ -1039,7 +1062,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <action>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
 
-        <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
         </out>
