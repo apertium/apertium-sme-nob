@@ -396,7 +396,13 @@ Multichar_Symbols
  s9 t9 u7 z9 ž9 '7 š9 r9 æ7 u6 æ9
 ! B9 E7 E9 D9 G8 G9 H7 H8 H9 I7 J9 K9 M8 M9 N8 N9 O7 O9 P9
 ! S9 T9 U7 Z9 Ž9 Š9 R9
- »7 %>7
+
+! Symbols that need to be escaped on the lower side (towards twolc):
+ »7     ! »
+ «7     ! «
+ %[%>%] ! >
+ %[%<%] ! <
+
 ! æ7 for Valkeapæ7æ7, a sub form not to be triggered by Valkeapää
 
 ! Aspell tags
@@ -12396,7 +12402,7 @@ biras#politihkka GOAHTI-A ;
 biras#terapevta+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:biras#terapev'ta GOAHTI-A ;
 biras#viessu+Build:biras#viessu GOAHTI-U ;
 biras+CmpN/SgN+CmpN/SgG+CmpN/PlG+Plc+Org:birras MALIS ;
-bircu:bir'cu GOAHTI-U ;
+bircu:bir'cu ALBMILONGSHORT ;
 birgejupmi:birgej UPMI ;
 birgen#doarjja:birgen#doar'jag8 SEAMU ;
 birgen#dássi AIGI ;
@@ -12512,7 +12518,7 @@ boagan#oaivi:boagan#oaj'vi AIGI ;
 boagan#ravda:boagan#rav'da GOAHTI-A ;
 boagán#mohtor#sihkkel+Veh:boagán#mohtor#sihkkel GAHPIR ;
 boagán:boah'kán MALIS "belt N" ;
-boahe#návli+CmpN/SgN+CmpN/SgG:boahe#náv'li GOAHTI-I ;
+boahe#návli+CmpN/SgN+CmpN/SgG+Use/Sub:boahe#náv'li GOAHTI-I ;
 boahkke#biergu:boahkke#bier'gu GOAHTI-U ;
 boahkke#guolli+CmpN/SgN+CmpN/SgG+CmpN/PlG+Ani:boahkke#guolli AIGI ;
 boahkku GOAHTI-U ;
@@ -12811,7 +12817,7 @@ buddostat#namma+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+
 buddu GOAHTI-U ;
 budjeahtta GOAHTI-A ;
 buhcciid#dikšu+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:buhcciid9#dikšu¤ ACTOR ;
-buhcciid#ruoktu+CmpN/SgG+CmpN/PlG:buhcciid9#ruok'tu RUOKTU ;
+buhcciid#ruoktu+CmpN/SgG+CmpN/PlG+Plc:buhcciid9#ruok'tu RUOKTU ;
 buhtadan#ortnet:buhtadan#ortneg GAHPIR ;
 buhtadas:buhtadass JOHTOLAT ;
 buhtadus#ovddas#vástádus:buhtadus#ovddas#vástáduss JOHTOLAT ;
@@ -13569,7 +13575,7 @@ dikšu+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGe
 dikšu+CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Hum:dikšu¤ ACTOR ;
 dikšun#latnja+CmpN/SgN+CmpN/SgG+CmpN/PlG+Plc:dikšun#latnja GOAHTI-A ;
 dikšun#mearka:dikšun#mear'ka GOAHTI-A ;
-dikšun#ruoktu+CmpN/SgG+CmpN/PlG:dikšun#ruok'tu RUOKTU ;
+dikšun#ruoktu+CmpN/SgG+CmpN/PlG+Plc:dikšun#ruok'tu RUOKTU ;
 dikšun#rusttet:dikšun#rustteg GAHPIR ;
 dikšun+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:dikšum BOAHTIN ;
 dildi:dil'di GOAHTI-I ;
@@ -14767,6 +14773,7 @@ friddjavuođa#reive:friddjavuođa#rej've GOAHTI ;
 friija#minuhtta+CmpN/SgN+CmpN/SgG+CmpN/PlG+Time:friija#minuhtta GOAHTI-A ;
 frustrašuvdna:frustrašu TELEFON ;
 fráŋken#mašiidna:fráŋken#maš MASKIN ;
+bovren#mašiidna:bovren#maš MASKIN ;
 fulkkežat+CmpN/SgN+CmpN/PlG:fulkkež MAGASH ;
 fundamentalisma:fundamentalis'ma GOAHTI-A ; !^LOAN
 funkšuvdna:funkšu TELEFON ;
@@ -15450,7 +15457,7 @@ goadjin+CmpN/SgN+CmpN/SgG+CmpN/PlG+Ani:goadjim GAHPIR ;
 goadjin+Use/Sub:goadjin9 GAHPIR ;
 goahca#lakta:goahca#lak'ta GOAHTI-A ;
 goahca:goah'ca GOAHTI-A ;
-goahcan#bircu:goahcan#bir'cu GOAHTI-U ;
+goahcan#bircu:goahcan#bir'cu ALBMILONGSHORT ;
 goahcan#fápmu+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:goahcan#fápmu GOAHTI-U ;
 goahcan#fárppal:goahcan#fár'pal MALIS ;
 goahcan#gáma:goahcan#gápmag8 SEAMU ;
@@ -17531,6 +17538,7 @@ kubisma:kubis'ma GOAHTI-A ; !^LOAN
 kulihkka+Use/Sub:ku^lihkka GOAHTI-A ;
 kultur#antropologiija IIJA ;
 kultur#bálkkašupmi:kultur#bálkkaš UPMI ;
+boazo#doallo#láhka:boazo#doallo#láh'ka GOAHTI-A ;
 kultur#doarjja:kultur#doar'jag8 SEAMU ;
 guovtte#gielalašvuođa#doarjja:guovtte#gielalašvuođa#doar'jag8 SEAMU ;
 kultur#dovdo#mearka:kultur#dovdo#mear'ka GOAHTI-A ;
@@ -18216,7 +18224,7 @@ luođđa#doalan GAHPIR ;
 luođđa#láger GAHPIR ;
 luvdá:luv'dá ALBMILONG ;
 luvvadan#ávnnas:luvvadan#ávdnas MATTAR ;
-luvven#bircu:luvven#bir'cu GOAHTI-U ;
+luvven#bircu:luvven#bir'cu ALBMILONGSHORT ;
 luvven#lohti:luvven#loh'ti GOAHTI-I ;
 luvven#ávdnasat+CmpN/SgN+CmpN/DefPlGen:luvven#ávdnas BADJOSAT ;
 luvvodat:luvvodah'k JOHTOLAT ;
@@ -19516,7 +19524,7 @@ nuonda#jeagil+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen+Plant:nuonda#jeah'kil MALIS ;
 nuorahaš#luohkká+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Group+Hum:nuorahaš#luohkká ALBMILONG ;
 nuorahaš+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:nuorahažž JOHTOLAT ;
 nuoraid#klubba+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum+Group:nuoraid9#klub'ba GOAHTI-A ;
-nuoraid#mátke#ruoktu+CmpN/SgG+CmpN/PlG:nuoraid9#mátke#ruok'tu RUOKTU ;
+nuoraid#mátke#ruoktu+CmpN/SgG+CmpN/PlG+Plc:nuoraid9#mátke#ruok'tu RUOKTU ;
 nuoraid#politihkka:nuoraid9#politihkka GOAHTI-A ;
 nuoraid#prošeakta:nuoraid9#prošeak'ta GOAHTI-A ;
 nuoraid#skuvla+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Org+Build:nuoraid9#skuv'la GOAHTI-A ;
@@ -21136,7 +21144,7 @@ ruoida:ruoj'da GOAHTI-A ;
 ruoivát+CmpN/SgN+CmpN/DefPlGen:ruoj'vis DURVAT ;
 ruoksi:ruok'si GOAHTI-I ;
 ruoktot#mákso#vuohki:ruoktot#mákso#vuoh'ki AIGI ;
-ruoktu+CmpN/SgG+CmpN/PlG:ruok'tu RUOKTU ;
+ruoktu+CmpN/SgG+CmpN/PlG+Plc:ruok'tu RUOKTU ;
 ruonas#borsta:ruonas#bors'ta GOAHTI-A ;
 ruonas:ruotnas MALIS ;
 ruoná#beibboš+CmpN/SgN+CmpN/SgG+CmpN/PlG+Ani:ruoná#beibbož LEXDIMINC ;
@@ -22990,7 +22998,7 @@ vadjan#mašiidna:vadjan#maš MASKIN ;
 vaginisma:vaginis'ma GOAHTI-A ; !^LOAN
 vahca+CmpN/SgN+CmpN/SgG:vah'ca GOAHTI-A ;
 vahkko#loahppa+CmpN/SgN+CmpN/SgG+CmpN/PlG+Time:vahkko#loahppa GOAHTI-A ;
-vahkku+CmpN/SgN+CmpN/SgG+CmpN/PlG:vahkku¤ AIGI ;
+vahkku+CmpN/SgN+CmpN/SgG+CmpN/PlG+Time:vahkku¤ AIGI ;
 vahkku+CmpN/SgN+CmpN/SgG+CmpN/PlG+Time+Use/NG:vahkku GOAHTI-U ;
 vahát#buhtadus:vahát#buhtaduss JOHTOLAT ;
 vahát#laboratoriija+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Org+Plc+Use/Sub:vahát#laboratoriija IIJA ; !
@@ -28350,6 +28358,10 @@ Lulli-Helgelánda:Lulli-Helge^lán'da MARJA-plc ;
 Lulli-Hålogalánda:Lulli-Håloga^lán'da MARJA-plc ;
 Davvi-Hålogalánda:Davvi-Håloga^lán'da MARJA-plc ;
 Lulli-Trøndeláhka:Lulli-Trønde^láh'ka MARJA-plc ;
+Boahji MARJA-obj ;
+Boahjidávgi:Boahji^dáv'gi MARJA-obj ;
+Boahi MARJA-obj ;
+Boahidávgi:Boahji^dáv'gi MARJA-obj ;
 Mátta-Norga:Mátta-Nor'ga MARJA-plc ;
 Lulli-Norga:Lulli-Nor'ga MARJA-plc ;
 Mátta-Várjjat:Mátta-Várjjag ANAR-plc ;
@@ -29832,6 +29844,7 @@ Báhtegohppi:Báhte^gohppi MARJA-plc ;
 Báhtevárri:Báhte^várri MARJA-plc ;
 Báhtoaivi:Báht^oaj'vi MARJA-plc ;
 Báhtošguoika:Báhtoš^guoj'ka MARJA-plc ;
+Buollánguoika:Buollán^guoj'ka MARJA-plc ;
 Báhtošjávri:Báhtoš^jáv'ri MARJA-plc ;
 Báhtošvárri:Báhtoš^várri MARJA-plc ;
 Báhttejeaggi:Báhtte^jeaggi MARJA-plc ;
@@ -32949,7 +32962,7 @@ Guovdavárlokta:Guovda^vár^lok'ta MARJA-plc ;
 Guovdavárri:Guovda^várri MARJA-plc ;
 Guovddesgáisi:Guovddes^gáj'si MARJA-plc ;
 Guovddesjohka:Guovddes^joh'ka MARJA-plc ;
-Guovddáš#bellodat:Guovddáš#bellodah'k HEANDARAT-org ;
+Guovddášbellodat:Guovddáš^bellodah'k HEANDARAT-org ;
 Guovdelasjávri:Guovdelas^jáv'ri MARJA-plc ;
 Guovdelasoaivi:Guovdelas^oaj'vi MARJA-plc ;
 Guovdelasvuopmi:Guovdelas^vuopmi MARJA-plc ;
@@ -80153,8 +80166,8 @@ LEXICON NUM-PREFIXES
  %*+Use/Circ:%* ARABIC ; ! *24
  %$+Use/Circ:%$ ARABIC ; ! $24
  %€+Use/Circ:%€ ARABIC ; ! €24
- %<+Use/Circ:%< ARABIC ; ! <24
- %>+Use/Circ:%>7 ARABIC ; ! >24
+ %<+Use/Circ:%[%<%] ARABIC ; ! <24
+ %>+Use/Circ:%[%>%] ARABIC ; ! >24
  s%.+Use/Circ:s%. ARABIC ; ! s.24
 
 LEXICON ARABIC
@@ -81162,15 +81175,15 @@ LEXICON Punctuation
 
 ! Clause boundary symbols
 
-%,+CLB:%,   # ;
-%.+CLB:%.   # ;
-%.%.+CLB:%.%.   # ;
-%.%.%.+CLB:%.%.%.   # ;
-%:+CLB:%:   # ;
-%;+CLB:%;	  # ;
- ^excl+CLB+Use/Circ:%!	  # ;	!
- ^pipe+CLB:%|  # ;
- %?+CLB:%?	  # ; !Question mark
+%,+CLB:%,         # ;
+%.+CLB:%.         # ;
+%.%.+CLB:%.%.     # ;
+%.%.%.+CLB:%.%.%. # ;
+%:+CLB:%:         # ;
+%;+CLB:%;	      # ;
+ ^excl+CLB:%!	  # ;
+ ^pipe+CLB:%|     # ;
+ %?+CLB:%?	      # ; !Question mark
  …+CLB:…		  # ;
  ¿+CLB:¿		  # ;	! Only seen as noise.
  ¶+CLB:¶		  # ;	! This sign is for titles, it is introduced by the
