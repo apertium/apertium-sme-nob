@@ -2002,6 +2002,16 @@ SUBSTITUTE ("šaddat") ("šaddat:1") ("šaddat" V IV) (1 ("bajás")) ;
 SUBSTITUTE ("guorrasit") ("guorrasit:1") ("guorrasit" V IV) (NOT *0 Ill) ;
 # Ráđđehus guorrasii Gonagasa oaivilii => Regjeringen sluttet seg til Kongens mening
 
+
+# Dynamically deverbal nouns:
+SUBSTITUTE ("dánset") ("dánset:1") ("dánset" N) ;
+SUBSTITUTE ("dánsut") ("dánsut:1") ("dánsut" N) ;
+SUBSTITUTE ("geavahit") ("geavahit:1") ("geavahit" N) ;
+SUBSTITUTE ("miehtat") ("miehtat:1") ("miehtat" N) ;
+
+
+
+
 # Noun rules
 # ----------
 
