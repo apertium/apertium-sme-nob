@@ -883,6 +883,19 @@ And then there are some categories like "month", with all the months.
       <list-item v="november"/>
       <list-item v="desember"/>
     </def-list>
+
+    <def-list n="pron-indef"
+              c="Turns to nt.sg in Norwegian if used as lone pron, although it may be pl in sme
+                 Nickel p.128--129">
+      <list-item v="mihkkege"/>
+      <list-item v="mihkke"/>
+      <list-item v="giige"/>
+      <list-item v="guhtege"/>
+      <list-item v="goabbáge"/>
+      <list-item v="guhtemušge"/>
+      <list-item v="makkárge"/>
+      <list-item v="oktage"/>
+    </def-list>
   </section-def-lists>
 
   <section-def-macros>
@@ -2986,6 +2999,15 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <choose><when>
+          <test>
+            <in><clip pos="1" side="sl" part="lemh"/><list n="pron-indef"/></in>
+          </test>
+          <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+          <let><clip pos="1" side="tl" part="gen"/><lit-tag v="nt"/></let>
+        </when></choose>
+
         <out>
           <var n="caseprep"/>
           <chunk name="det" case="caseFirstWord">
