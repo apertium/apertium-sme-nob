@@ -44,46 +44,14 @@ tSTART' "$1"
 echo "Done."
 echo "Things to check manually for:"
 echo "* remove any SUBSTITUTE lines adding tags like ←uttv→ / ←vdic→"
-echo "* add +naj etc to LIST Foc_naj etc"
 echo "* fix MAP:r16 (@PCLE) TARGET Pcle ; to demand 'NOT 0 Pron OR N OR etc.'"
 
-#### The diff from manual changes in last update:
+#### The relevant diff from manual changes in last update:
 
 # --- sme-dis.rle	2011-11-04 13:08:45.318040880 +0100
 # +++ apertium-sme-nob.sme-nob.rlx	2011-11-04 13:11:02.382018714 +0100
 # @@ -425,17 +425,18 @@
   
-#  LIST Qst = Qst ;
-  
-# -LIST Foc_ge = Foc_ge ;
-# -LIST Foc_gen = Foc_gen ;
-# -LIST Foc_ges = Foc_ges ;
-# -LIST Foc_gis = Foc_gis ;
-# -LIST Foc_naj = Foc_naj ;
-# -LIST Foc_ba = Foc_ba ;
-# -LIST Foc_be = Foc_be ;
-# -LIST Foc_hal = Foc_hal ;
-# -LIST Foc_han = Foc_han ;
-# -LIST Foc_bat = Foc_bat ;
-# -LIST Foc_son = Foc_son ;
-# +# +ge etc. added for Apertium:
-# +LIST Foc_ge = Foc_ge +ge ;
-# +LIST Foc_gen = Foc_gen +gen ;
-# +LIST Foc_ges = Foc_ges +ges ;
-# +LIST Foc_gis = Foc_gis +gis ;
-# +LIST Foc_naj = Foc_naj +naj ;
-# +LIST Foc_ba = Foc_ba +ba ;
-# +LIST Foc_be = Foc_be +be ;
-# +LIST Foc_hal = Foc_hal +hal ;
-# +LIST Foc_han = Foc_han +han ;
-# +LIST Foc_bat = Foc_bat +bat ;
-# +LIST Foc_son = Foc_son +son ;
- 
-#  LIST IV = IV ;
-#  LIST TV = TV ;
-# @@ -13779,7 +13780,8 @@
-#  MAP:r15 (@INTERJ) TARGET Interj ;
-#  	## Maid, iigo leat boahtán?
  
 # -MAP:r16 (@PCLE) TARGET Pcle ;
 # +# was MAP:r16 (@PCLE) TARGET Pcle ; # but in Apertium we can have the Pcle tag on other PoS too
@@ -95,9 +63,5 @@ echo "* fix MAP:r16 (@PCLE) TARGET Pcle ; to demand 'NOT 0 Pron OR N OR etc.'"
 #      ## Njáv, váidalii Busi ja gávastalai.
 #      ## Njáv, njávggádii Busi fas ja fanahalai.
      
-# -SUBSTITUTE:muitalit (V) (←vdic→ V) TARGET MUITALIT (0 FMAINV) ;
-# +# Apertium doesn't like non-syntax-tags being altered after morphology:
-# +#SUBSTITUTE:muitalit (V) (←vdic→ V) TARGET MUITALIT (0 FMAINV) ;
- 
 #  #===================#
 #  # Rules for getting rid of ambiguitity which is bad e.g. Apertium:
