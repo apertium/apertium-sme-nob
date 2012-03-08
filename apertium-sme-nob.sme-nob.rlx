@@ -424,8 +424,8 @@ LIST Attr = Attr ;
 LIST Ord = Ord ;
  
 LIST Qst = Qst ;
- 
-# +ge etc. added for Apertium:
+
+
 LIST Foc_ge = Foc_ge +ge ;
 LIST Foc_gen = Foc_gen +gen ;
 LIST Foc_ges = Foc_ges +ges ;
@@ -437,6 +437,18 @@ LIST Foc_hal = Foc_hal +hal ;
 LIST Foc_han = Foc_han +han ;
 LIST Foc_bat = Foc_bat +bat ;
 LIST Foc_son = Foc_son +son ;
+ 
+#LIST Foc_ge = Foc_ge ;
+#LIST Foc_gen = Foc_gen ;
+#LIST Foc_ges = Foc_ges ;
+#LIST Foc_gis = Foc_gis ;
+#LIST Foc_naj = Foc_naj ;
+#LIST Foc_ba = Foc_ba ;
+#LIST Foc_be = Foc_be ;
+#LIST Foc_hal = Foc_hal ;
+#LIST Foc_han = Foc_han ;
+#LIST Foc_bat = Foc_bat ;
+#LIST Foc_son = Foc_son ;
 
 LIST IV = IV ;
 LIST TV = TV ;
@@ -13812,8 +13824,7 @@ MAP:r14 (@INTERJ) TARGET ("beargalat") IF (*-1 Nom BARRIER S-BOUNDARY2 LINK NEGA
 MAP:r15 (@INTERJ) TARGET Interj ;
 	## Maid, iigo leat boahtán?
 
-# was MAP:r16 (@PCLE) TARGET Pcle ; # but in Apertium we can have the Pcle tag on other PoS too
-MAP:r16 (@PCLE) TARGET Pcle IF (NOT 0 N OR A OR Adv OR V OR Pron OR CS OR CC OR Po OR Pr OR Interj OR Num OR ABBR OR ACR) ;
+MAP:r16 (@PCLE) TARGET Pcle ;
 	## Amma mii eat leat máksán? 
 
 MAP:r17 (@APP-Num←) TARGET ABBR IF (*-1 Num BARRIER NOT-QMARK)(0 INITIAL LINK NOT *1 NP-MEMBER BARRIER NOT-QMARK);
@@ -16365,7 +16376,7 @@ LIST MUITALIT = "árvalit" "bivdit" "boagustit" "cealkit" "cuoigut" "čilget" "�
     ## Njáv, váidalii Busi ja gávastalai.
     ## Njáv, njávggádii Busi fas ja fanahalai.
     
-# SUBSTITUTE:muitalit (V) (←vdic→ V) TARGET MUITALIT (0 FMAINV) ; # Apertium remove
+# SUBSTITUTE:muitalit (V) (←vdic→ V) TARGET MUITALIT (0 FMAINV) ; # Moved to dep, bec of Apertium-compatability
 
 #===================#
 # Rules for getting rid of ambiguitity which is bad e.g. Apertium:
