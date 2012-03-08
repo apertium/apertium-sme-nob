@@ -3,7 +3,7 @@ if [ $# -ne 1 ];
 then
     echo "Usage:"
     echo "$ cp /PATH/TO/sme-dis.rle apertium-sme-nob.sme-nob.rlx"
-    echo "$ dev/rle-to-rlx.rlx apertium-sme-nob.sme-nob.rlx"
+    echo "$ dev/rle-to-rlx.sh apertium-sme-nob.sme-nob.rlx"
     echo "$ svn diff apertium-sme-nob.sme-nob.rlx"
     echo ''
     echo 'Note: this script changes the input file directly!'
