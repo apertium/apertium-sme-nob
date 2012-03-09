@@ -33,7 +33,6 @@ class Split_Error(Exception):
 		print "Error: couldn't find the splitting point. Check the config value for:"
 		print msg
 
-
 class Config(object):
 	def __init__(self):
 		"""
@@ -48,6 +47,7 @@ class Config(object):
 		self.REMOVE_EMPTY_LEXICONS = ''
 		self.SRC = ''
 		self.path = 'langs.cfg'
+		self.excl_symbols = False
 
 		proc_lang = self.PRODUCE_LEXC_FOR
 
@@ -58,11 +58,18 @@ class Config(object):
 		
 		return None
 		
-	def abs_output_dir(self):
-		if os.path.isabs(self.OUTPUT_DIR):
-			return self.OUTPUT_DIR
+	def abs_dir(self, directory):
+		"Return the absolute path to `directory', which may be specified relative to this config file"
+		if os.path.isabs(directory):
+			return directory
 		else:
-			return os.path.dirname('./'+ self.path) + '/' + self.OUTPUT_DIR
+			if os.path.isabs(self.path):
+				return os.path.dirname(self.path) + '/' + directory
+			else:
+				return os.path.dirname('./'+ self.path) + '/' + directory
+
+	def abs_output_dir(self):
+		return self.abs_dir(self.OUTPUT_DIR)
 
 	def return_dict(self):
 		D = {
@@ -77,18 +84,34 @@ class Config(object):
 			"REMOVE_EMPTY_LEXICONS": self.REMOVE_EMPTY_LEXICONS
 		}
 		return D
-	
+
 	def read_from_dict(self, D, conf_path):
+		"May return a new version of the object, so don't use without setting self to the return value."
+		self.path = conf_path
+		if 'INCLUDE' in D:
+			incfile = self.abs_dir(D['INCLUDE'])
+			print >>sys.stderr, 'Including config %s ... ' % (incfile,),
+			includes = load_conf(incfile)
+			if len(includes.langs)>1:
+				raise Conf_Validation_Error("Don't know how to include multiple-language configs!")
+			elif len(includes.langs)<1:
+				raise Conf_Validation_Error("Didn't find any configuration in %s" % (incfile,))
+			self = includes.langs[0]
 		# convert all arguments to str, json module is a little funny
 		for k, v in D.items():
 			self.__setattr__(str(k), str(v))
 
-		self.path = conf_path
-		self.files = D['files']
+		if 'files' in D:
+			self.files = D['files']
+		elif not self.files:
+			print >>sys.stderr, "WARNING: No 'files' defined in %s (nor in any sub-config of %s)." % (conf_path,conf_path)
 		if 'LEX_EXCLUDES' in D:
 			self.excl_symbols = re.compile(r'|'.join(['(?:' + a + ')' for a in D['LEX_EXCLUDES']]))
-		else:
-			self.excl_symbols = False
+
+		return self
+		
+			
+
 
 class Configs(object):
 	def __init__(self):
@@ -135,15 +158,17 @@ def load_conf(fname, create=False):
 			new_confs = Configs()
 			if len(D) == 1:
 				new = Config()
-				new.read_from_dict(D[0], F.name)
+				new = new.read_from_dict(D[0], F.name)
 				new_confs.langs = [new]
 			elif len(D) > 1:
 				new_confs.langs = []
 				for item in D:
 					new = Config()
-					new.read_from_dict(item, F.name)
+					new = new.read_from_dict(item, F.name)
 					new_confs.langs.append(new)	
 			print "Loaded config from %s" % F.name
+	if not new_confs.langs[0].files:
+		print "    no files in %s!!" % (fname,)
 			
 	DEFAULTS = False
 	return new_confs

@@ -36,7 +36,9 @@ giellatekno, probably something like
 
 The "OUTPUT_DIR" should point to your apertium-sme-nob directory,
 either with an absolute path, or relative to the path of the
-`langs.cfg` file.
+`langs.cfg` file. Typically you'll have an INCLUDE line which
+specifies a path to a file with the configurations which are common to
+all users of the project.
 
 Then, make sure ../sme-nob.autobil.bin is compiled and then you run:
 
