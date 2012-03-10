@@ -927,8 +927,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
             <when c="den">
               <test><and>
                 <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="n"/></begins-with></not>
-                <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
-                <not><equal><clip pos="2" part="art"/><lit-tag v="ind"/></equal></not>
+                <or>
+                  <equal><clip pos="2" part="art"/><lit-tag v="def"/></equal>
+                  <and>
+                    <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
+                    <not><equal><clip pos="2" part="art"/><lit-tag v="ind"/></equal></not>
+                  </and>
+                </or>
                 <not><in><clip pos="2" part="lem"/><list n="adj.pseudo-det"/></in></not>
               </and></test>
               <choose>
