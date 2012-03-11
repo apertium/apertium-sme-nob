@@ -15957,6 +15957,7 @@ guovtte#olbmo#latnja+CmpN/SgN+CmpN/SgG+CmpN/PlG+Plc:guovtte#olbmo#latnja GOAHTI-
 guovttet#dávttat#mohtor:guovttet#dávttat#mohtor GAHPIR ;
 guovttis+v1+CmpN/Last+CmpN/SgGenLeft:guok'tis GUOVTTIS ;
 guovttis+v2+N+Coll+Sg+Nom+CmpN/Last+CmpN/SgGenLeft+Use/NG:guovttes%> K ;
+guovttos+CmpN/None:gu GUOVTTU ;
 guovva#mánnu+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen+Time:guovva#mánnu AIGI ;
 guovža+CmpN/SgN+CmpN/SgG+CmpN/PlG+Ani:guov'ža GOAHTI-A ;
 guođohan#barta:guođohan#bar'ta GOAHTI-A ;
@@ -26253,6 +26254,7 @@ reahalaš+Use/Sub:reahal DABALAS ;
 realistalaš+Use/Sub:re^alistal DABALAS ;
 realisttalaš+CmpN/SgN+CmpN/PlG:re^alisttal DABALAS ;
 regionála:regi^onála AKTIIVA ;
+regionálaš+Use/Sub:regiovnnal DABALAS ;
 regionálalaš:regi^onálal DABALAS ;
 regionálaš:regi^onál ETNOLOGALAS ;
 regiovdna#politihkalaš:regi^ovdna#politihkal ETNOLOGALAS ;
@@ -26964,6 +26966,28 @@ LEXICON DAVVISUOLU-OBL
 +Pl+Loc:Y6jn K ;
 +Pl+Com:Y6jgujn K ;
 
+LEXICON MARJA-A-ani
+ MARJA-ani ;
+ 
+LEXICON MARJA-A-fem
+ MARJA-fem ;
+ 
+LEXICON MARJA-A-mal
+ MARJA-mal ;
+ 
+LEXICON MARJA-A-obj
+ MARJA-obj ;
+
+LEXICON MARJA-A-org
+ MARJA-org ;
+
+
+LEXICON MARJA-A-plc 
+ MARJA-plc ;
+ 
+LEXICON MARJA-A-sur
+ MARJA-sur ;
+
 
 LEXICON MARJA-ani
 +N+Prop+Ani:%> MARJADECL ;
@@ -26999,12 +27023,95 @@ LEXICON MARJA-sur
 +N+Prop+Sur:%> MARJADECL ;
 @U.Cap.Obl@+N+Prop+Sur+Sg+Attr+Use/Sub:%>@U.Cap.Obl@ # ; ! it shall be used in cases like Konrad Nielsenii
 
+
+
+LEXICON MARJA-I-ani
+ MARJA-IU-ani ;
+ 
+LEXICON MARJA-I-fem
+ MARJA-IU-fem ;
+ 
+LEXICON MARJA-I-mal
+ MARJA-IU-mal ;
+ 
+LEXICON MARJA-I-obj
+ MARJA-IU-obj ;
+ 
+LEXICON MARJA-I-org
+ MARJA-IU-org ;
+  
+LEXICON MARJA-I-plc 
+ MARJA-IU-plc ;
+ 
+LEXICON MARJA-I-sur
+ MARJA-IU-sur ;
+ 
+LEXICON MARJA-U-ani
+ MARJA-IU-ani ;
+ 
+LEXICON MARJA-U-fem
+ MARJA-IU-fem ;
+ 
+LEXICON MARJA-U-mal
+ MARJA-IU-mal ;
+ 
+LEXICON MARJA-U-obj
+ MARJA-IU-obj ;
+ 
+LEXICON MARJA-U-org
+  MARJA-IU-org ;
+  
+LEXICON MARJA-U-plc 
+ MARJA-IU-plc ;
+ 
+LEXICON MARJA-U-sur
+ MARJA-IU-sur ;
+
+
+LEXICON MARJA-IU-ani
++N+Prop+Ani:%> MARJADECL-IU ;
+@U.Cap.Obl@+N+Prop+Ani+Der/Dimin:%>X6ž@U.Cap.Obl@ PLACE-DIMDECL ; !From PIERADECL
+
+LEXICON MARJA-IU-fem
++N+Prop+Fem:%> MARJADECL-IU ;
+@U.Cap.Obl@+N+Prop+Fem+Sg+Attr+Use/Sub:%>@U.Cap.Obl@ # ; ! Konrad Nielsenii
+@U.Cap.Obl@+N+Prop+Fem+Der/Dimin:%>X6ž@U.Cap.Obl@ PLACE-DIMDECL ; !From PIERADECL
+
+LEXICON MARJA-IU-mal
++N+Prop+Mal:%> MARJADECL-IU ;
+@U.Cap.Obl@+N+Prop+Mal+Sg+Attr+Use/Sub:%>@U.Cap.Obl@ # ; ! it shall be used in cases like Konrad Nielsenii
+@U.Cap.Obl@+N+Prop+Mal+Der/Dimin:%>X6ž@U.Cap.Obl@ PLACE-DIMDECL ; !From PIERADECL
+
+LEXICON MARJA-IU-obj
++N+Prop+Obj:%> MARJADECL-IU ;
+
+LEXICON MARJA-IU-org
++N+Prop+Org:%> MARJADECL-IU ;
+
+LEXICON MARJA-IU-plc ! Vowel final names with Gradation and Ill ^change (place names)
++N+Prop+Plc:%> MARJADECL-IU ;
+:%> PLACELASH ;
++N+Prop+Plc+Sg+Gen:%>X4 VUONAT ;
+
+LEXICON MARJA-IU-sur
++N+Prop+Sur:%> MARJADECL-IU ;
+@U.Cap.Obl@+N+Prop+Sur+Sg+Attr+Use/Sub:%>@U.Cap.Obl@ # ; ! it shall be used in cases like Konrad Nielsenii
+
+
+
 LEXICON MARJADECL ! Vowel-final names with Gradation and Ill ^change (person names)
+ACCRA-DC ;
+@U.Cap.Obl@:@U.Cap.Obl@X3 ACCRA-I ;
+@U.Cap.Obl@:@U.Cap.Obl@X4 ACCRA-OBL ;
+@U.Cap.Obl@:@U.Cap.Obl@X5 ACCRA-IICASE ;
+
+LEXICON MARJADECL-IU ! Vowel-final names with Gradation and Ill ^change (person names)
 ACCRA-DC ;
 @U.Cap.Obl@:@U.Cap.Obl@X3 ACCRA-I ;
 @U.Cap.Obl@:@U.Cap.Obl@X4 ACCRA-OBL ;
 @U.Cap.Obl@:@U.Cap.Obl@X8 MARJA-SHORTGEN ;
 @U.Cap.Obl@:@U.Cap.Obl@X5 ACCRA-IICASE ;
+
 
 LEXICON MARJADECL-LOAN ! Vowel-final names with Gradation and Ill ^change (person names)
 ACCRA-DC-LOAN ;
@@ -28269,74 +28376,74 @@ LEXICON NENPLACELASH
 ! The lexica
 ! ==========
 LEXICON Prefix-Proper
-Jorba-Mávnna MARJA-plc ; !FIN
-Jorba-Čierti:Jorba-Čier'ti MARJA-plc ; !FIN
-Jorb-Makkirjohoaivi:Jorb9-Makkir^joh^oaj'vi MARJA-plc ;
-Orjješ-Ráisa:Orjješ-Ráj'sa MARJA-plc ;
-Orjješ-Rállegeahči:Orjješ-Rálle^geah'či MARJA-plc ; !Sør^roll^nes
-Badje-Boarkaoaivi:Badje-Boarka^oai'vi MARJA-plc ;
-Badje-Deatnu MARJA-plc ;
-Nuortta-Lulimusvarri:Nuortta-Lulimus^varri MARJA-plc ; !sub?
+Jorba-Mávnna MARJA-A-plc ; !FIN
+Jorba-Čierti:Jorba-Čier'ti MARJA-I-plc ; !FIN
+Jorb-Makkirjohoaivi:Jorb9-Makkir^joh^oaj'vi MARJA-I-plc ;
+Orjješ-Ráisa:Orjješ-Ráj'sa MARJA-A-plc ;
+Orjješ-Rállegeahči:Orjješ-Rálle^geah'či MARJA-I-plc ; !Sør^roll^nes
+Badje-Boarkaoaivi:Badje-Boarka^oai'vi MARJA-I-plc ;
+Badje-Deatnu MARJA-U-plc ;
+Nuortta-Lulimusvarri:Nuortta-Lulimus^varri MARJA-I-plc ; !sub?
 Badje-Doallán:Badje-Doallán9 ANAR-plc ;
-Badje-Giigajávri:Badje-Giiga^jáv'ri MARJA-plc ;
-Lulágeaš-Lávvoaivi:Lulá^geaš-Lávv^oaj'vi MARJA-plc ;
+Badje-Giigajávri:Badje-Giiga^jáv'ri MARJA-I-plc ;
+Lulágeaš-Lávvoaivi:Lulá^geaš-Lávv^oaj'vi MARJA-I-plc ;
 Badje-Guoldná MARJA-plc ;
-Badje-Jalvi:Badje-Jal'vi MARJA-plc ;
+Badje-Jalvi:Badje-Jal'vi MARJA-I-plc ;
 Badje-Máze MARJA-plc ;
 Oarbbes-Gollum:Oarbbes-Gollum9 ANAR-plc ; !FIN
 Badje-Njávdán:Badje-Njávdám LONDON-plc ;
-Badje-Riebevággi:Badje-Riebe^vággi MARJA-plc ;
-Almmáivággi:Almmái^vággi MARJA-plc ;
+Badje-Riebevággi:Badje-Riebe^vággi MARJA-I-plc ;
+Almmáivággi:Almmái^vággi MARJA-I-plc ;
 Vuolle-Sáksi ACCRA-plc ;
 Nuorta-Borgašgáisá:Nuorta-Borgaš^gáj'sá MARJA-plc ;
-Nuorta-Finnmárku:Nuorta-Finnmár'ku MARJA-plc ;
-Nuorta-Hárroaivi:Nuorta-Hárr^oaj'vi MARJA-plc ; !FIN
-Nuorta-Rállegeahči:Nuorta-Rálle^geah'či MARJA-plc ; !Nord-Roll^nes
+Nuorta-Finnmárku:Nuorta-Finnmár'ku MARJA-U-plc ;
+Nuorta-Hárroaivi:Nuorta-Hárr^oaj'vi MARJA-I-plc ; !FIN
+Nuorta-Rállegeahči:Nuorta-Rálle^geah'či MARJA-I-plc ; !Nord-Roll^nes
 Nuorta-Agder LONDON-plc ;
 Oarjelii-Báidár:Oarjelii-Báidár ANAR-plc ;
 Oarjelii-Foalda ACCRA-plc ;
 Nuorta-Eurohpá ACCRA-plc ;
-Vuolle-Boarkaoaivi:Vuolle-Boarka^oai'vi MARJA-plc ;
-Vuolle-Deatnu MARJA-plc ;
-Vuolle-Duiska:Vuolle-Duis'ka MARJA-plc ;
+Vuolle-Boarkaoaivi:Vuolle-Boarka^oai'vi MARJA-I-plc ;
+Vuolle-Deatnu MARJA-U-plc ;
+Vuolle-Duiska:Vuolle-Duis'ka MARJA-A-plc ;
 Vuolle-Geavŋŋis:Vuolle-Geavgŋis GEAVNNIS-plc ;
-Vuolle-Gilbbesjávri:Vuolle-Gilbbes^jáv'ri MARJA-plc ; !FIN
-Vuolle-Jalvi:Vuolle-Jal'vi MARJA-plc ;
-Vuolle-Luopmošjohka:Vuolle-Luopmoš^joh'ka MARJA-plc ; !FIN
+Vuolle-Gilbbesjávri:Vuolle-Gilbbes^jáv'ri MARJA-I-plc ; !FIN
+Vuolle-Jalvi:Vuolle-Jal'vi MARJA-I-plc ;
+Vuolle-Luopmošjohka:Vuolle-Luopmoš^joh'ka MARJA-A-plc ; !FIN
 Gaska-Amerihkká SUOPMA-plc ;
 Olgo-Vuoksá:Olgo-Vuok'sá MARJA-plc ;
-Uhc-Oardu:Uhc-Oar'du MARJA-plc ;
+Uhc-Oardu:Uhc-Oar'du MARJA-U-plc ;
 Uhc-Áhkováráš:Uhc-Áhko^váráž PLACE-DIM-plc ; !FIN
-Uhc-Áhkovárášskáidi:Uhc-Áhko^váráš^skáj'di MARJA-plc ; !FIN
+Uhc-Áhkovárášskáidi:Uhc-Áhko^váráš^skáj'di MARJA-I-plc ; !FIN
 Nuorta-Antárktis LONDON-plc ;
 Gaska-Andamansullot:Gaska-Andaman^suollu SULLOT-plc ;
-Gaska-Biesvárri:Gaska-Bies^várri MARJA-plc ;
-Gaska-Boarkaoaivi:Gaska-Boarka^oai'vi MARJA-plc ;
-Gaska-Dorskavuotna:Gaska-Dorska^vuotna MARJA-plc ;
-Gaska-Hárji:Gaska-Hár'ji MARJA-plc ;
-Gaska-Nordlánda:Gaska-Nord^lán'da MARJA-plc ;
-Gaska-Norga:Gaska-Nor'ga MARJA-org ;
+Gaska-Biesvárri:Gaska-Bies^várri MARJA-I-plc ;
+Gaska-Boarkaoaivi:Gaska-Boarka^oai'vi MARJA-I-plc ;
+Gaska-Dorskavuotna:Gaska-Dorska^vuotna MARJA-A-plc ;
+Gaska-Hárji:Gaska-Hár'ji MARJA-I-plc ;
+Gaska-Nordlánda:Gaska-Nord^lán'da MARJA-A-plc ;
+Gaska-Norga:Gaska-Nor'ga MARJA-A-org ;
 Uhca-Bađđá MARJA-plc ; !FIN
-Uhca-Bealsa:Uhca-Beal'sa MARJA-plc ; !FIN
-Uhca-Báišjávri+Use/Sub:Uhca-Báiš^jáv'ri MARJA-plc ; !
-Uhca-Bárššáš% jeaggi MARJA-plc ; !FIN
+Uhca-Bealsa:Uhca-Beal'sa MARJA-A-plc ; !FIN
+Uhca-Báišjávri+Use/Sub:Uhca-Báiš^jáv'ri MARJA-I-plc ; !
+Uhca-Bárššáš% jeaggi MARJA-I-plc ; !FIN
 Uhca-Bárššáš% ája:Uhca-Bárššáš% ád'jag8 GUOLBBA-plc ; !FIN
 Uhca-Bárššáš:Uhca-Bárššáž PLACE-DIM-plc ; !FIN
 Uhca-Gádjoaivváš:Uhca-Gádj^oaivváž PLACE-DIM-plc ;
-Davve#nuorta-Ruošša:Davve#nuorta-Ruoš'ša MARJA-plc ;
+Davve#nuorta-Ruošša:Davve#nuorta-Ruoš'ša MARJA-A-plc ;
 Ođđa-Guinea ACCRA-plc ;
-Stuorra-Bealsa:Stuorra-Beal'sa MARJA-plc ; !FIN
+Stuorra-Bealsa:Stuorra-Beal'sa MARJA-A-plc ; !FIN
 Ođđa-Kaledonia ACCRA-plc ;
-Gaska-Norlánda:Gaska-Nor^lán'da MARJA-plc ;
-Gaska-Nuorti:Gaska-Nuor'ti MARJA-plc ;
-Uhca-Piervárri:Uhca-Pier^várri MARJA-plc ;
-Uhca-Ánddo-johka+Use/Sub:Uhca-Ánddo-joh'ka MARJA-plc ; !
-Uhca-Ánddo-jávri+Use/Sub:Uhca-Ánddo-jáv'ri MARJA-plc ; !
-Uhca-Ánddojohka:Uhca-Ánddojoh'ka MARJA-plc ;
-Uhca-Ánddojávri:Uhca-Ánddojáv'ri MARJA-plc ;
+Gaska-Norlánda:Gaska-Nor^lán'da MARJA-A-plc ;
+Gaska-Nuorti:Gaska-Nuor'ti MARJA-I-plc ;
+Uhca-Piervárri:Uhca-Pier^várri MARJA-I-plc ;
+Uhca-Ánddo-johka+Use/Sub:Uhca-Ánddo-joh'ka MARJA-A-plc ; !
+Uhca-Ánddo-jávri+Use/Sub:Uhca-Ánddo-jáv'ri MARJA-I-plc ; !
+Uhca-Ánddojohka:Uhca-Ánddojoh'ka MARJA-A-plc ;
+Uhca-Ánddojávri:Uhca-Ánddojáv'ri MARJA-I-plc ;
 Uhca-Šlieddan:Uhca-Šlieddam ANAR-plc ; !FIN
-Gaska-Romsa:Gaska-Roms'a MARJA-plc ;
-Gaska-Álla:Gaska-Ál'la MARJA-plc ;
+Gaska-Romsa:Gaska-Roms'a MARJA-A-plc ;
+Gaska-Álla:Gaska-Ál'la MARJA-A-plc ;
 Davvi-Fosen:Davvi-Fosen9 LONDON-sur ;
 Davvi-Atlanter+Use/Sub:Davvi-Atlanter LONDON-plc ; !
 Davvi-Fron:Davvi-Fron9 BERN-plc ;
@@ -28346,63 +28453,63 @@ Sis-Vuoksá:Sis-Vuok'sá MARJA-plc ;
 Unna-Habát:Unna-Habág ANAR-plc ; !FIN
 Unna-Jierttáš+Use/Sub:Unna-Jierttáž PLACE-DIM-plc ; !
 Unna-Loasaš+Use/Sub:Unna-Loasaž PLACE-DIM-plc ; !
-Unna-Ádjatoaivi:Unna-Ádjat^oaj'vi MARJA-plc ; !FIN
-Sis-Vuotna MARJA-plc ;
+Unna-Ádjatoaivi:Unna-Ádjat^oaj'vi MARJA-I-plc ; !FIN
+Sis-Vuotna MARJA-A-plc ;
 Sis-Válát:Sis-Váláh ANAR-plc ;
-Sis-Romsa:Sis-Rom'sa MARJA-plc ;
-Sis-Finnmárku:Sis-Finn^már'ku MARJA-plc ;
+Sis-Romsa:Sis-Rom'sa MARJA-A-plc ;
+Sis-Finnmárku:Sis-Finn^már'ku MARJA-U-plc ;
 Papua-Ođđa-Guinea ACCRA-plc ;
-Davvi-Norlánda:Davvi-Nor^lán'da MARJA-plc ;
+Davvi-Norlánda:Davvi-Nor^lán'da MARJA-A-plc ;
 Mátta-Gudbrandsdalen+Use/Sub:Mátta-Gud^brands^dalen9 LONDON-plc ; !
-Davvi-Atlanteráhpi:Davvi-Atlanter^áh'pi MARJA-plc ;
-Davvi-Nordlánda:Davvi-Nord^lán'da MARJA-plc ;
-Veasta-Gáđešnjárga:Veasta-Gáđeš^njár'ga MARJA-plc ;
-Veasta-Gáđešvárri:Veasta-Gáđeš^várri MARJA-plc ;
-Davvi-Norga:Davvi-Nor'ga MARJA-plc ;
+Davvi-Atlanteráhpi:Davvi-Atlanter^áh'pi MARJA-I-plc ;
+Davvi-Nordlánda:Davvi-Nord^lán'da MARJA-A-plc ;
+Veasta-Gáđešnjárga:Veasta-Gáđeš^njár'ga MARJA-A-plc ;
+Veasta-Gáđešvárri:Veasta-Gáđeš^várri MARJA-I-plc ;
+Davvi-Norga:Davvi-Nor'ga MARJA-A-plc ;
 Lulle-Wales BERN-plc ;
 Davvi-Amerihkká SUOPMA-plc ;
 Alla-Bárit:Alla-Bárri VARGGAT-plc ;
-Alla-Fášku:Alla-Fáš'ku MARJA-plc ;
-Alla-Gápmasroavejeaggi:Alla-Gápmas^roave^jeaggi MARJA-plc ;
+Alla-Fášku:Alla-Fáš'ku MARJA-U-plc ;
+Alla-Gápmasroavejeaggi:Alla-Gápmas^roave^jeaggi MARJA-I-plc ;
 Alla-Gápmasroaveája:Alla-Gápmas^roave^ád'jag8 GUOLBBA-plc ;
 Lulli-Amerihkká SUOPMA-plc ;
-Vilges-Ruošša:Vilges-Ruoš'ša MARJA-plc ;
-Lulli-Helgelánda:Lulli-Helge^lán'da MARJA-plc ;
-Lulli-Hålogalánda:Lulli-Håloga^lán'da MARJA-plc ;
-Davvi-Hålogalánda:Davvi-Håloga^lán'da MARJA-plc ;
-Lulli-Trøndeláhka:Lulli-Trønde^láh'ka MARJA-plc ;
-Boahji MARJA-obj ;
-Boahjidávgi:Boahji^dáv'gi MARJA-obj ;
-Boahi MARJA-obj ;
-Boahidávgi:Boahji^dáv'gi MARJA-obj ;
-Mátta-Norga:Mátta-Nor'ga MARJA-plc ;
-Lulli-Norga:Lulli-Nor'ga MARJA-plc ;
+Vilges-Ruošša:Vilges-Ruoš'ša MARJA-A-plc ;
+Lulli-Helgelánda:Lulli-Helge^lán'da MARJA-A-plc ;
+Lulli-Hålogalánda:Lulli-Håloga^lán'da MARJA-A-plc ;
+Davvi-Hålogalánda:Davvi-Håloga^lán'da MARJA-A-plc ;
+Lulli-Trøndeláhka:Lulli-Trønde^láh'ka MARJA-A-plc ;
+Boahji MARJA-I-obj ;
+Boahjidávgi:Boahji^dáv'gi MARJA-I-obj ;
+Boahi MARJA-I-obj ;
+Boahidávgi:Boahi^dáv'gi MARJA-I-obj ; 
+Mátta-Norga:Mátta-Nor'ga MARJA-A-plc ;
+Lulli-Norga:Lulli-Nor'ga MARJA-A-plc ;
 Mátta-Várjjat:Mátta-Várjjag ANAR-plc ;
-Oarje-Finnmárku:Oarje-Finnmár'ku MARJA-plc ;
-Oarje-Romsa:Oarje-Rom'sa MARJA-plc ;
-Lulli-Romsa:Lulli-Rom'sa MARJA-plc ;
+Oarje-Finnmárku:Oarje-Finnmár'ku MARJA-U-plc ;
+Oarje-Romsa:Oarje-Rom'sa MARJA-A-plc ;
+Lulli-Romsa:Lulli-Rom'sa MARJA-A-plc ;
 Davvi-Ruoŧŧa SUOPMA-plc ;
 Lulli-Ruoŧŧa SUOPMA-plc ;
 Lulli-Sápmi+CmpN/SgG:Lulli-Sápmi SUOPMA-plc ;
-Davvi-Tromsa:Davvi-Trom'sa MARJA-plc ;
-Lulli-Tromsa:Lulli-Trom'sa MARJA-plc ;
+Davvi-Tromsa:Davvi-Trom'sa MARJA-A-plc ;
+Lulli-Tromsa:Lulli-Trom'sa MARJA-A-plc ;
 Lulli-Várjjat:Lulli-Várjjag ANAR-plc ;
-Davvi-Norlánda+Use/Sub:Davvi-Nor^lán'da MARJA-plc ; !
-Davvi-Norrlánda:Davvi-Norr^lán'da MARJA-plc ;
-Davvi-Romsa:Davvi-Rom'sa MARJA-plc ;
+Davvi-Norlánda+Use/Sub:Davvi-Nor^lán'da MARJA-A-plc ; !
+Davvi-Norrlánda:Davvi-Norr^lán'da MARJA-A-plc ;
+Davvi-Romsa:Davvi-Rom'sa MARJA-A-plc ;
 Guovddáš-Eurohpá ACCRA-plc ;
-Mátta-Romsa:Mátta-Rom'sa MARJA-plc ;
+Mátta-Romsa:Mátta-Rom'sa MARJA-A-plc ;
 Davvi-Suopma+CmpN/SgG:Davvi-Suopma SUOPMA-plc ; !
-Davvi-Trøndeláhka:Davvi-Trønde^láh'ka MARJA-plc ;
+Davvi-Trøndeláhka:Davvi-Trønde^láh'ka MARJA-A-plc ;
 Davvi-Várjjat:Davvi-Várjjag ANAR-plc ;
-Gaska-Finnmárku:Gaska-Finn^már'ku MARJA-plc ;
-Gaska-Romsa:Gaska-Rom'sa MARJA-plc ;
-Gaska-Tromsa:Gaska-Trom'sa MARJA-plc ;
-Duolba-Skállovárri:Duolba-Skállo^várri MARJA-plc ;
-Mátta-Tromsa:Mátta-Trom'sa MARJA-plc ;
-Mátta-Trøndeláhka:Mátta-Trønde^láh'ka MARJA-plc ;
+Gaska-Finnmárku:Gaska-Finn^már'ku MARJA-U-plc ;
+Gaska-Romsa:Gaska-Rom'sa MARJA-A-plc ;
+Gaska-Tromsa:Gaska-Trom'sa MARJA-A-plc ;
+Duolba-Skállovárri:Duolba-Skállo^várri MARJA-I-plc ;
+Mátta-Tromsa:Mátta-Trom'sa MARJA-A-plc ;
+Mátta-Trøndeláhka:Mátta-Trønde^láh'ka MARJA-A-plc ;
 Mátta-Sápmi+CmpN/SgG:Mátta-Sápmi SUOPMA-plc ;
-Gáiddus-Nuorti:Gáiddus-Nuor'ti MARJA-plc ;
+Gáiddus-Nuorti:Gáiddus-Nuor'ti MARJA-I-plc ;
 
 
 LEXICON ProperNoun
@@ -28421,14 +28528,14 @@ Aavikko:Aa^vikko9 ACCRA-sur ;
 Abisko:Abisko9 ACCRA-LOAN-plc ;
 Acapulco:Acapulco9 ACCRA-plc ;
 Adas% Dansestudio:Adas% Dansestudio9 ACCRA-org ;
-Adealerdoaibmagoddi:Adealer^doaibma^goddi MARJA-org ;
+Adealerdoaibmagoddi:Adealer^doaibma^goddi MARJA-I-org ;
 Adjágas:Adjágass HEANDARAT-org ;
-Adriamearra:Adria^mearra MARJA-plc ;
+Adriamearra:Adria^mearra MARJA-A-plc ;
 Affonso:Affonso9 ACCRA-plc ;
-Afrihka+Use/Sub:Afrihka MARJA-plc ; !
+Afrihka+Use/Sub:Afrihka MARJA-A-plc ; !
 Afrihkká MARJA-plc ;
 Afrihká+Use/Sub:Afrihká MARJA-plc ; !
-Afriika+Use/Sub:Afrij'ka MARJA-plc ; !
+Afriika+Use/Sub:Afrij'ka MARJA-A-plc ; !
 Agrigento:Agrigento9 ACCRA-plc ;
 Ahmasalo:Ahmasalo9 ACCRA-sur ;
 Aho:Aho9 ACCRA-sur ;
@@ -28453,7 +28560,7 @@ Alanko:Alanko9 ACCRA-sur ;
 Alastalo:Alas^talo9 ACCRA-sur ;
 Alatalo:Ala^talo9 ACCRA-sur ;
 Alavuoma-Johanas:Ala^vuoma-Johanass HEANDARAT-mal ;
-Albertnjárga:Albert^njár'ga MARJA-plc ;
+Albertnjárga:Albert^njár'ga MARJA-A-plc ;
 Aleppo:Aleppo9 ACCRA-plc ;
 Alestalo:Ales^talo9 ACCRA-sur ;
 Alfreds:Al^freds FirstTag ;
@@ -28470,11 +28577,11 @@ Amarillo:Amarillo9 ACCRA-plc ;
 Ambarčik BERN-plc ;
 Amerigo:Amerigo9 ACCRA-mal ;
 Amerihkká SUOPMA-plc ;
-Ameriika+Use/Sub:Amerij'ka MARJA-plc ; !
+Ameriika+Use/Sub:Amerij'ka MARJA-A-plc ; !
 Ammun ANAR ;
 Ando:Ando9 ACCRA-mal ;
 Andreevič:Andre^evič BERN-sur ;
-Ankara+Use/Sub:Ankara MARJA-plc ; !
+Ankara+Use/Sub:Ankara MARJA-A-plc ; !
 Annanpalo:Annanpalo9 ACCRA-plc ;
 Ansio:Ansio9 ACCRA-sur ;
 Anta ACCRA-mal ;
@@ -28487,11 +28594,11 @@ Antonio:Antonio9 ACCRA-mal ;
 Anzio:Anzio9 ACCRA-mal ;
 Anár ANAR-plc ;
 Apollo:Apollo9 ACCRA-obj ;
-Arafuramearra:Arafura^mearra MARJA-plc ;
+Arafuramearra:Arafura^mearra MARJA-A-plc ;
 Arctic% Cat BERN-obj ;
 Arecibo:Arecibo9 ACCRA-plc ;
 Arezzo:Arezzo9 ACCRA-plc ;
-Argentina+Use/Sub:Argentina MARJA-plc ; !
+Argentina+Use/Sub:Argentina MARJA-A-plc ; !
 Arkivfoto:Arkiv^foto9 ACCRA-org ;
 Arkko:Arkko9 ACCRA-sur ;
 Arno:Arno9 ACCRA-mal ;
@@ -28499,27 +28606,27 @@ Aro:Aro9 ACCRA-sur ;
 Arpakšad:Arpakšad9 BERN-plc ;
 Arredondo:Arredondo9 ACCRA-sur ;
 Arto:Arto9 ACCRA-mal ;
-Arvedávgi:Arve^dáv'gi MARJA-obj ;
-Arvenjárga:Arve^njár'ga MARJA-plc ;
+Arvedávgi:Arve^dáv'gi MARJA-I-obj ;
+Arvenjárga:Arve^njár'ga MARJA-A-plc ;
 Arvio:Arvio9 ACCRA-sur ;
 Arvo:Arvo9 ACCRA-mal ;
-Arábiamearra:Arábia^mearra MARJA-plc ;
-Asajávri+Use/Sub:Asa^jáv'ri MARJA-plc ; !
+Arábiamearra:Arábia^mearra MARJA-A-plc ;
+Asajávri+Use/Sub:Asa^jáv'ri MARJA-I-plc ; !
 Aserbaižan:Aserbaižan9 BERN-plc ;
 Asko:Asko9 ACCRA-mal ;
-Asovamearra:Asova^mearra MARJA-plc ;
-Asteregievra:Asteregiev'ra MARJA-mal ;
+Asovamearra:Asova^mearra MARJA-A-plc ;
+Asteregievra:Asteregiev'ra MARJA-A-mal ;
 Asvo:Asvo9 ACCRA-org ;
-Athena MARJA-plc ;
-Atlántta+Use/Sub:Atlántta MARJA-plc ; !
+Athena MARJA-A-plc ;
+Atlántta+Use/Sub:Atlántta MARJA-A-plc ; !
 Aunio:Aunio9 ACCRA-sur ;
 Auramo:Auramo9 ACCRA-sur ;
-Aursunda+Use/Sub:Aur^sun'da MARJA-plc ; !
+Aursunda+Use/Sub:Aur^sun'da MARJA-A-plc ; !
 Autero:Autero9 ACCRA-sur ;
 Autio:Autio9 ACCRA-sur ;
 Autto:Autto9 ACCRA-plc ;
 Aveiro:Aveiro9 ACCRA-plc ;
-Avju+Use/Sub:Av'ju MARJA-plc ; !
+Avju+Use/Sub:Av'ju MARJA-U-plc ; !
 Avko+Use/Sub:Av'ko MARJA-plc ; !
 Avvil ANAR-plc ;
 Avvil-Máhtte MARJA-mal ;
@@ -28527,64 +28634,64 @@ Avvir ANAR-plc ;
 Ayacucho:A^yacucho9 ACCRA-plc ;
 Azazello:Azazello9 ACCRA-org ;
 Ašbel LONDON-mal ;
-Ašen-nieida:Ašen-niej'da MARJA-fem ;
-Ašeneadni:Ašen^eadni MARJA-fem ;
+Ašen-nieida:Ašen-niej'da MARJA-A-fem ;
+Ašeneadni:Ašen^eadni MARJA-I-fem ;
 Ašer LONDON-sur ;
 Ašterot BERN-mal ;
 Badje FirstTag ;
-Badjenjárga:Badje^njár'ga MARJA-plc ;
+Badjenjárga:Badje^njár'ga MARJA-A-plc ;
 Baguio:Bagu^io9 ACCRA-plc ;
 Ballo:Ballo9 ACCRA-sur ;
 Balsajeaggejogaš:Balsa^jeagge^jogaž PLACE-DIM-plc ;
-Balsajeaggi:Balsa^jeaggi MARJA-plc ;
-Balsajávri:Balsa^jáv'ri MARJA-plc ;
-Balsaláhku:Balsa^láh'ku MARJA-plc ;
-Balsaskáidi:Balsa^skáj'di MARJA-plc ;
+Balsajeaggi:Balsa^jeaggi MARJA-I-plc ;
+Balsajávri:Balsa^jáv'ri MARJA-I-plc ;
+Balsaláhku:Balsa^láh'ku MARJA-U-plc ;
+Balsaskáidi:Balsa^skáj'di MARJA-I-plc ;
 Balto:Balto9 ACCRA-sur ;
 Bamako:Bamako9 ACCRA-plc ;
 Bao:Bao9 ACCRA-mal ;
 Barbro:Barbro9 ACCRA-fem ;
-Barents#guovlu+Use/Sub:Barents#guov'lu MARJA-plc ;
-Barentsmearra+Use/Sub:Barents^mearra MARJA-plc ;
-Barentsregiovdna+Use/Sub:Barents^regiovdna MARJA-plc ;
-Barentsáhpi+Use/Sub:Barents^áh'pi MARJA-plc ;
-Barentsčállingoddi+Use/Sub:Barents^čállin^goddi MARJA-org ;
+Barents#guovlu+Use/Sub:Barents#guov'lu MARJA-U-plc ;
+Barentsmearra+Use/Sub:Barents^mearra MARJA-A-plc ;
+Barentsregiovdna+Use/Sub:Barents^regiovdna MARJA-A-plc ;
+Barentsáhpi+Use/Sub:Barents^áh'pi MARJA-I-plc ;
+Barentsčállingoddi+Use/Sub:Barents^čállin^goddi MARJA-I-org ;
 Bargiid#bellodat:Bargiid9#bellodah'k HEANDARAT-org ;
 Barquisimeto:Barquisimeto9 ACCRA-plc ;
-Barta:Bar'ta MARJA-plc ;
+Barta:Bar'ta MARJA-A-plc ;
 Bas-Prinssaš:Bas-Prinssaž ANAR-mal ;
-Baskerlánda:Basker^lán'da MARJA-plc ;
+Baskerlánda:Basker^lán'da MARJA-A-plc ;
 Bassi FirstTag ;
-Bassi% Vuoigŋa:Bassi% Vuojgŋa MARJA-obj ;
-Beahcebuolža:Beahce^buol'ža MARJA-plc ;
+Bassi% Vuoigŋa:Bassi% Vuojgŋa MARJA-A-obj ;
+Beahcebuolža:Beahce^buol'ža MARJA-A-plc ;
 Beahcedievvá:Beahce^dievvá MARJA-plc ;
-Beahcejávri:Beahce^jáv'ri MARJA-plc ;
-Beahceleahki:Beahce^leah'ki MARJA-plc ;
+Beahcejávri:Beahce^jáv'ri MARJA-I-plc ;
+Beahceleahki:Beahce^leah'ki MARJA-I-plc ;
 Beahceluohkká:Beahce^luohkká MARJA-plc ;
-Beahcenjunni:Beahce^njunni MARJA-plc ;
-Beahcenjárga:Beahce^njár'ga MARJA-plc ;
+Beahcenjunni:Beahce^njunni MARJA-I-plc ;
+Beahcenjárga:Beahce^njár'ga MARJA-A-plc ;
 Beahcet:Beahceh ANAR-plc ;
-Beahcevárri:Beahce^várri MARJA-plc ;
+Beahcevárri:Beahce^várri MARJA-I-plc ;
 Beahceváráš:Beahce^váráž PLACE-DIM-plc ;
-Beahcečielggejohka:Beahce^čielgge^joh'ka MARJA-plc ;
+Beahcečielggejohka:Beahce^čielgge^joh'ka MARJA-A-plc ;
 Beahcán:Beahcám ANAR-plc ;
-Beahkágurra:Beahká^gurra MARJA-plc ;
+Beahkágurra:Beahká^gurra MARJA-A-plc ;
 Beahkáláttu:Beahká^láddu DAVVISUOLU-plc ;
-Beahkávárri:Beahká^várri MARJA-plc ;
-Beaivvašgieddi+Use/Sub:Beaivvaš^gieddi MARJA-plc ; !
-Bearaguoika:Beara^guoj'ka MARJA-plc ;
-Bearajávri:Beara^jáv'ri MARJA-plc ;
+Beahkávárri:Beahká^várri MARJA-I-plc ;
+Beaivvašgieddi+Use/Sub:Beaivvaš^gieddi MARJA-I-plc ; !
+Bearaguoika:Beara^guoj'ka MARJA-A-plc ;
+Bearajávri:Beara^jáv'ri MARJA-I-plc ;
 Bearamohkkemaras:Beara^mohkke^marras DUORTNUS-plc ;
-Bearamohkki:Beara^mohkki MARJA-plc ;
-Bearanibba:Beara^nibba MARJA-plc ;
-Bearavárri:Beara^várri MARJA-plc ;
-Bearačielggejávri:Beara^čielgge^jáv'ri MARJA-plc ;
-Bearačielgi:Beara^čiel'gi MARJA-plc ;
-Beardu MARJA-plc ;
-Beardu+Use/Sub:Bear'du MARJA-plc ; !
-Beaufort-mearra+Use/Sub:Beaufort-mearra MARJA-plc ; !
-Beaufortmearra:Beaufort^mearra MARJA-plc ;
-Bechuanalánda:Bechu^ana^lán'da MARJA-plc ;
+Bearamohkki:Beara^mohkki MARJA-I-plc ;
+Bearanibba:Beara^nibba MARJA-A-plc ;
+Bearavárri:Beara^várri MARJA-I-plc ;
+Bearačielggejávri:Beara^čielgge^jáv'ri MARJA-I-plc ;
+Bearačielgi:Beara^čiel'gi MARJA-I-plc ;
+Beardu MARJA-U-plc ;
+Beardu+Use/Sub:Bear'du MARJA-U-plc ; !
+Beaufort-mearra+Use/Sub:Beaufort-mearra MARJA-A-plc ; !
+Beaufortmearra:Beaufort^mearra MARJA-A-plc ;
+Bechuanalánda:Bechu^ana^lán'da MARJA-A-plc ;
 Beijin:Beijin9 BERN-plc ;
 Beijing:Beijing9 BERN-plc ;
 Bekhterevs FirstTag ;
@@ -28592,7 +28699,7 @@ Bel% Canto:Bel% Canto9 ACCRA-org ;
 Belbo:Bel^bo9 NYSTØ-sur ;
 Beldo:Beldo9 ACCRA-sur ;
 Bellingmo:Belling^mo9 NYSTØ ;
-Bellingshausenamearra:Bellings^hausena^mearra MARJA-plc ;
+Bellingshausenamearra:Bellings^hausena^mearra MARJA-A-plc ;
 Belo:Belo9 ACCRA-plc ;
 Benevento:Benevento9 ACCRA-plc ;
 Bengalo:Bengalo9 ACCRA-org ;
@@ -28600,58 +28707,58 @@ Bergamo:Berga^mo9 NYSTØ ;
 Bergmo:Berg^mo9 ACCRA-sur ;
 Bergo:Bergo9 ACCRA-plc ;
 Bergsmo:Bergs^mo9 NYSTØ ;
-Beringmearra:Bering^mearra MARJA-plc ;
-Bern-konvenšuvdna MARJA-obj ;
+Beringmearra:Bering^mearra MARJA-A-plc ;
+Bern-konvenšuvdna MARJA-A-obj ;
 Bernardino:Bernardino9 ACCRA-plc ;
-Bernkonvenšuvdna+Use/Sub:Bern^konvenšuvdna MARJA-obj ; !
+Bernkonvenšuvdna+Use/Sub:Bern^konvenšuvdna MARJA-A-obj ; !
 Betio:Betio9 ACCRA-plc ;
 Bianco:Bi^anco9 ACCRA-sur ;
 Biehtáragielas:Biehtára^giellas DUORTNUS-plc ;
-Biehtárnjárga:Biehtár^njár'ga MARJA-plc ;
-Biehtárskáidi:Biehtár^skáj'di MARJA-plc ;
+Biehtárnjárga:Biehtár^njár'ga MARJA-A-plc ;
+Biehtárskáidi:Biehtár^skáj'di MARJA-I-plc ;
 Biejaš:Biejaž ANAR-mal ;
 Bielloluoppal:Biello^luobbal DUORTNUS-plc ;
 Biennaš-Jon:Biennaš-Jon9 BERN-mal ;
-Biennejávri:Bienne^jáv'ri MARJA-plc ;
-Bienneroavvi:Bienne^roavvi MARJA-plc ;
-Biennerášša:Bienne^ráš'ša MARJA-plc ;
-Biennečohkka:Bienne^čohkka MARJA-plc ;
-Bierajohka:Biera^joh'ka MARJA-plc ;
-Bierajávri:Biera^jáv'ri MARJA-plc ;
+Biennejávri:Bienne^jáv'ri MARJA-I-plc ;
+Bienneroavvi:Bienne^roavvi MARJA-I-plc ;
+Biennerášša:Bienne^ráš'ša MARJA-A-plc ;
+Biennečohkka:Bienne^čohkka MARJA-A-plc ;
+Bierajohka:Biera^joh'ka MARJA-A-plc ;
+Bierajávri:Biera^jáv'ri MARJA-I-plc ;
 Bieramaras:Biera^marras DUORTNUS-plc ;
-Bieranibba:Biera^nibba MARJA-plc ;
+Bieranibba:Biera^nibba MARJA-A-plc ;
 Bieraš:Bieraž ANAR-mal ;
-Bierfalanoaivi:Bierfalan^oaj'vi MARJA-plc ;
-Biernamoski:Bierna^mos'ki MARJA-plc ;
+Bierfalanoaivi:Bierfalan^oaj'vi MARJA-I-plc ;
+Biernamoski:Bierna^mos'ki MARJA-I-plc ;
 Bierrelaš:Bierrelažž HEANDARAT-mal ;
-Biertavárri:Bierta^várri MARJA-plc ;
+Biertavárri:Bierta^várri MARJA-I-plc ;
 Bieržá:Bier'žá MARJA-mal ;
-Bieskkenjárga:Bieskke^njár'ga MARJA-plc ;
+Bieskkenjárga:Bieskke^njár'ga MARJA-A-plc ;
 Bievrrá MARJA-plc ; !Is this MARJA?
-Biggejohka:Bigge^joh'ka MARJA-plc ;
-Biggejávri:Bigge^jáv'ri MARJA-plc ;
+Biggejohka:Bigge^joh'ka MARJA-A-plc ;
+Biggejávri:Bigge^jáv'ri MARJA-I-plc ;
 Biggeluoppal:Bigge^luobbal DUORTNUS-plc ;
-Biggeskáidi:Bigge^skáj'di MARJA-plc ;
-Biggevárri:Bigge^várri MARJA-plc ;
-Bihtovárri:Bihto^várri MARJA-plc ;
+Biggeskáidi:Bigge^skáj'di MARJA-I-plc ;
+Biggevárri:Bigge^várri MARJA-I-plc ;
+Bihtovárri:Bihto^várri MARJA-I-plc ;
 Bijáš:Bijáž ANAR-mal ;
-Bikkejohka:Bikke^joh'ka MARJA-plc ;
-Bikkejávri:Bikke^jáv'ri MARJA-plc ;
+Bikkejohka:Bikke^joh'ka MARJA-A-plc ;
+Bikkejávri:Bikke^jáv'ri MARJA-I-plc ;
 Bikkeluoppal:Bikke^luobbal DUORTNUS-plc ;
-Bikkágohppi:Bikká^gohppi MARJA-plc ;
+Bikkágohppi:Bikká^gohppi MARJA-I-plc ;
 Bilbao:Bilbao9 ACCRA-mal ;
-Billávuotna:Billá^vuotna MARJA-plc ;
+Billávuotna:Billá^vuotna MARJA-A-plc ;
 Bilto:Bilto9 ACCRA-sur ;
 Biltojávrrit:Bilto^jáv'ri VARGGAT-plc ;
 Bioko:Bi^oko9 ACCRA-plc ;
-Birasgáhttendepartemeanta:Biras^gáhtten^departemean'ta MARJA-org ;
+Birasgáhttendepartemeanta:Biras^gáhtten^departemean'ta MARJA-A-org ;
 Birehaš:Birehažž HEANDARAT-fem ;
-Birjjágáddi:Birjjá^gáddi MARJA-plc ;
-Birjjájávri:Birjjá^jáv'ri MARJA-plc ;
-Birjjáluokta:Birjjá^luok'ta MARJA-plc ;
+Birjjágáddi:Birjjá^gáddi MARJA-I-plc ;
+Birjjájávri:Birjjá^jáv'ri MARJA-I-plc ;
+Birjjáluokta:Birjjá^luok'ta MARJA-A-plc ;
 Bismo:Bismo9 NYSTØ ;
-Bissojohka:Bisso^joh'ka MARJA-plc ;
-Bjarmalánda:Bjarma^lán'da MARJA-plc ;
+Bissojohka:Bisso^joh'ka MARJA-A-plc ;
+Bjarmalánda:Bjarma^lán'da MARJA-A-plc ;
 Bjerringbro:Bjerring^bro9 ACCRA-plc ;
 Bjølstadmo:Bjøl^stad^mo9 NYSTØ ;
 Bjølvo:Bjølvo9 ACCRA-plc ;
@@ -28661,85 +28768,85 @@ Bjørlo:Bjørlo9 ACCRA-plc ;
 Bjørsmo:Bjørs^mo9 NYSTØ-sur ;
 Blagoveščensk:Blagoveščensk9 BERN-plc ;
 Bo+CmpN/None:Bo9 NYSTØ-plc ; !
-Boazovuotna:Boazo^vuotna MARJA-plc ;
+Boazovuotna:Boazo^vuotna MARJA-A-plc ;
 Boccaccio:Boccaccio9 ACCRA-mal ;
-Bogejohka:Boge^joh'ka MARJA-plc ;
-Bogejávri:Boge^jáv'ri MARJA-plc ;
+Bogejohka:Boge^joh'ka MARJA-A-plc ;
+Bogejávri:Boge^jáv'ri MARJA-I-plc ;
 Bogno:Bogno9 ACCRA-plc ;
-Boknabákti:Bokna^bák'ti MARJA-plc ;
+Boknabákti:Bokna^bák'ti MARJA-I-plc ;
 Bolzano:Bolzano9 ACCRA-plc ;
-Bomokkslánda+Use/Sub:Bo^mokks^lán'da MARJA-plc ; !
-Bongo-báddi MARJA-plc ;
+Bomokkslánda+Use/Sub:Bo^mokks^lán'da MARJA-A-plc ; !
+Bongo-báddi MARJA-I-plc ;
 Bongo:Bongo9 ACCRA-sur ;
 Bonifacio:Bonifacio9 ACCRA-plc ;
 Bonjákas:Bonjákass HEANDARAT-plc ;
 Boo:Boo9 ACCRA-plc ;
-Borga-Áborášša:Borga-Ábo^ráš'ša MARJA-plc ;
-Borgagurra:Borga^gurra MARJA-plc ;
-Borgajohka:Borga^joh'ka MARJA-plc ;
-Borgajávri:Borga^jáv'ri MARJA-plc ;
-Borgebeaskaávži:Borge^beaska^áv'ži MARJA-plc ;
-Borgebeaskačopma:Borge^beaska^čopma MARJA-plc ;
+Borga-Áborášša:Borga-Ábo^ráš'ša MARJA-A-plc ;
+Borgagurra:Borga^gurra MARJA-A-plc ;
+Borgajohka:Borga^joh'ka MARJA-A-plc ;
+Borgajávri:Borga^jáv'ri MARJA-I-plc ;
+Borgebeaskaávži:Borge^beaska^áv'ži MARJA-I-plc ;
+Borgebeaskačopma:Borge^beaska^čopma MARJA-A-plc ;
 Borkamo:Borka^mo9 NYSTØ ;
 Borlo:Borlo9 NYSTØ ;
 Borneo:Borneo9 ACCRA-plc ;
 Borno:Borno9 ACCRA-plc ;
 Borodino:Borodino9 ACCRA-plc ;
-Borsi:Bor'si MARJA-plc ;
-Bossegohppi+Use/Sub:Bosse^gohppi MARJA-plc ; !
-Bossogohpi+Use/Sub:Bosso^goh'pi MARJA-plc ; !
-Bossojohka:Bosso^joh'ka MARJA-plc ;
+Borsi:Bor'si MARJA-I-plc ;
+Bossegohppi+Use/Sub:Bosse^gohppi MARJA-I-plc ; !
+Bossogohpi+Use/Sub:Bosso^goh'pi MARJA-I-plc ; !
+Bossojohka:Bosso^joh'ka MARJA-A-plc ;
 Branco:Branco9 ACCRA-plc ;
 Brando:Brando9 ACCRA-sur ;
 Bravo:Bravo9 ACCRA-ani ;
 Bredo:Bredo9 ACCRA-mal ;
-Bristolkanála:Bristol^kanála MARJA-obj ;
+Bristolkanála:Bristol^kanála MARJA-A-obj ;
 British FirstTag ;
 Brno:Brno9 ACCRA-plc ;
-Brundtlandkommišuvdna:Brundt^land^kommišuvdna MARJA-org ;
+Brundtlandkommišuvdna:Brundt^land^kommišuvdna MARJA-A-org ;
 Bruno:Bruno9 ACCRA-mal ;
 Brænna ACCRA-plc ;
 Brødrene FirstTag ;
 Brøndbo:Brønd^bo9 ACCRA-plc ;
 Buffalo:Buffalo9 ACCRA-plc ;
 Bulawayo:Bulawa^yo9 ACCRA-plc ;
-Buletjávri:Bulet^jáv'ri MARJA-plc ;
+Buletjávri:Bulet^jáv'ri MARJA-I-plc ;
 Buljo:Buljo9 ACCRA-sur ;
-Buljojohka:Buljo^joh'ka MARJA-plc ;
-Buljojávri:Buljo^jáv'ri MARJA-plc ;
-Buljovárri:Buljo^várri MARJA-plc ;
+Buljojohka:Buljo^joh'ka MARJA-A-plc ;
+Buljojávri:Buljo^jáv'ri MARJA-I-plc ;
+Buljovárri:Buljo^várri MARJA-I-plc ;
 Buolbmák+Use/Sub:Buolbmá BALAK-plc ; !
 Buolbmát:Buolbmág ANAR-plc ;
 Buollán FirstTag ;
 Buollán:Buollám ANAR-plc ;
-Buollánnjárga:Buollán^njár'ga MARJA-plc ;
+Buollánnjárga:Buollán^njár'ga MARJA-A-plc ;
 Burgen:Burgen9 LONDON-plc ;
-Burma+Use/Sub:Burma MARJA-plc ; !
-Buvrovuotna:Buvro^vuotna MARJA-plc ;
-Buđeadju+Use/Sub:Buđead'ju MARJA-plc ; !
+Burma+Use/Sub:Burma MARJA-A-plc ; !
+Buvrovuotna:Buvro^vuotna MARJA-A-plc ;
+Buđeadju+Use/Sub:Buđead'ju MARJA-U-plc ; !
 Byremo:Byremo9 NYSTØ ;
 Byrkjelo:Byrkje^lo9 NYSTØ ;
-Báhcavuotna:Báhca^vuotna MARJA-plc ;
-Báhccavuotna:Báhcca^vuotna MARJA-plc ;
-Báhkiljohka:Báhkil^joh'ka MARJA-plc ;
-Báhkiljohnjárga:Báhkil^joh^njár'ga MARJA-plc ;
-Báhpajávri:Báhpa^jáv'ri MARJA-plc ;
-Báhčaveadji:Báhča^vead'ji MARJA-plc ;
+Báhcavuotna:Báhca^vuotna MARJA-A-plc ;
+Báhccavuotna:Báhcca^vuotna MARJA-A-plc ;
+Báhkiljohka:Báhkil^joh'ka MARJA-A-plc ;
+Báhkiljohnjárga:Báhkil^joh^njár'ga MARJA-A-plc ;
+Báhpajávri:Báhpa^jáv'ri MARJA-I-plc ;
+Báhčaveadji:Báhča^vead'ji MARJA-I-plc ;
 Báiddarhuksen:Báiddar^huksen9 LONDON-sur ; !XXX sur? seems more like org. translated into sámi
 Báidár:Bájdár ANAR-plc ;
-Báktemohkenjárga:Bákte^mohke^njár'ga MARJA-plc ;
+Báktemohkenjárga:Bákte^mohke^njár'ga MARJA-A-plc ;
 Bálat+Use/Sub:Bálag ANAR-plc ; !
 Bálák:Bálá BALAK-plc ;
-Bánccojohka:Báncco^joh'ka MARJA-plc ;
-Bánccu MARJA-mal ;
+Bánccojohka:Báncco^joh'ka MARJA-A-plc ;
+Bánccu MARJA-U-mal ;
 Bárttán:Bárttán9 DUORTNUS-mal ;
 Eurohpa+Use/Sub:Eurohpa ACCRA-plc ; !
 Eurohpá ACCRA-plc ;
-Bávvaljávri:Bávval^jáv'ri MARJA-plc ;
+Bávvaljávri:Bávval^jáv'ri MARJA-I-plc ;
 Bávvalluoppal:Bávval^luobbal DUORTNUS-plc ;
-Bávváljávri:Bávvál^jáv'ri MARJA-plc ;
+Bávváljávri:Bávvál^jáv'ri MARJA-I-plc ;
 Bávválláttu:Bávvál^láddu DAVVISUOLU-plc ;
-Bávválroavvi:Bávvál^roavvi MARJA-plc ;
+Bávválroavvi:Bávvál^roavvi MARJA-I-plc ;
 Bávválsuolu:Bávvál^suollu DAVVISUOLU-plc ;
 Bådåddjo:Bådåddjo MARJA-plc ;
 Bømlo:Bømlo9 ACCRA-plc ;
@@ -28773,11 +28880,11 @@ Chisimaio:Chisima^io9 ACCRA-plc ;
 Christensens FirstTag ;
 Cicero:Cicero9 ACCRA-mal ;
 Clio:Clio9 ACCRA-mal ;
-Clydekanála:Clyde^kanála MARJA-obj ;
+Clydekanála:Clyde^kanála MARJA-A-obj ;
 Coages FirstTag ;
 Colombo:Colombo9 ACCRA-plc ;
 Colorado:Colorado9 ACCRA-plc ;
-Coloradoeatnu:Colorado^eatnu MARJA-plc ;
+Coloradoeatnu:Colorado^eatnu MARJA-U-plc ;
 Colorin-Colorado:Colorin-Colorado9 ACCRA-obj ; !an expedition
 Comino:Comino9 ACCRA-plc ;
 Como:Como9 ACCRA-plc ;
@@ -28793,92 +28900,92 @@ Cueto:Cueto9 ACCRA-sur ;
 Cupido:Cupido9 ACCRA-org ;
 Curaçao:Curaçao9 ACCRA-plc ;
 Cuzco:Cuzco9 ACCRA-sur ;
-D'Urvillemearra:D'7Urville^mearra MARJA-plc ;
+D'Urvillemearra:D'7Urville^mearra MARJA-A-plc ;
 D-Norlánda:D-Nor^lán'da MARJA-LOAN-plc ;
-Dagspresselávdegoddi:Dags^presse^lávde^goddi MARJA-org ;
-Daleatnu:Dal^eatnu MARJA-plc ;
-Dalslánda:Dals^lán'da MARJA-plc ;
+Dagspresselávdegoddi:Dags^presse^lávde^goddi MARJA-I-org ;
+Daleatnu:Dal^eatnu MARJA-U-plc ;
+Dalslánda:Dals^lán'da MARJA-A-plc ;
 Danmarks:Dan^marks FirstTag ;
-Danmárku:Dan^már'ku MARJA-plc ; ! XXX IS WRONG WITH A
+Danmárku:Dan^már'ku MARJA-U-plc ; ! XXX IS WRONG WITH A
 Dančenko:Dančenko9 ACCRA-sur ;
 Dao:Dao9 ACCRA-org ;
 Davao:Davao9 ACCRA-plc ;
-Davvemearra:Davve^mearra MARJA-plc ;
-Davvikalohtta:Davvi^kalohtta MARJA-plc ;
-Davvimearra:Davvi^mearra MARJA-plc ;
-Davvinorga+Use/Sub:Davvi^nor'ga MARJA-plc ; !
-Davvipola:Davvi^pola MARJA-plc ;
-Deahppánnuorri:Deahppán^nuorri MARJA-plc ;
+Davvemearra:Davve^mearra MARJA-A-plc ;
+Davvikalohtta:Davvi^kalohtta MARJA-A-plc ;
+Davvimearra:Davvi^mearra MARJA-A-plc ;
+Davvinorga+Use/Sub:Davvi^nor'ga MARJA-A-plc ; !
+Davvipola:Davvi^pola MARJA-A-plc ;
+Deahppánnuorri:Deahppán^nuorri MARJA-I-plc ;
 Deahppánsuolu:Deahppán^suollu DAVVISUOLU-plc ;
 Deanodat:Deanodah'k HEANDARAT-plc ;
-Deanuvuotna:Deanu^vuotna MARJA-plc ;
-Dearvvašvuođadepartemeanta:Dearvvašvuođa^departemean'ta MARJA-org ;
-Dearvvašvuođadirektoráhta:Dearvvašvuođa^direktoráhta MARJA-org ;
-Deatnu MARJA-plc ;
-Derba MARJA-plc ; ! Occurs only in ill-form
+Deanuvuotna:Deanu^vuotna MARJA-A-plc ;
+Dearvvašvuođadepartemeanta:Dearvvašvuođa^departemean'ta MARJA-A-org ;
+Dearvvašvuođadirektoráhta:Dearvvašvuođa^direktoráhta MARJA-A-org ;
+Deatnu MARJA-U-plc ;
+Derba MARJA-A-plc ; ! Occurs only in ill-form
 Dergačeva ACCRA-sur ;
 Dervo:Dervo9 ACCRA-sur ;
 DiCaprio:DiCaprio9 NYSTØ-sur ;
 Diego:Di^ego9 ACCRA-plc ; !Also mal
-Dielddanuorri:Dieldda^nuorri MARJA-plc ;
+Dielddanuorri:Dieldda^nuorri MARJA-I-plc ;
 Disko:Disko9 ACCRA-plc ;
-Dittejohka+Use/Sub:Ditte^joh'ka MARJA-plc ; !
-Dittejávri+Use/Sub:Ditte^jáv'ri MARJA-plc ; !
-Dittenjunni+Use/Sub:Ditte^njunni MARJA-plc ; !
-Ditteriehppi+Use/Sub:Ditte^riehppi MARJA-plc ; !
-Divttasvuotna:Divttas^vuotna MARJA-plc ;
+Dittejohka+Use/Sub:Ditte^joh'ka MARJA-A-plc ; !
+Dittejávri+Use/Sub:Ditte^jáv'ri MARJA-I-plc ; !
+Dittenjunni+Use/Sub:Ditte^njunni MARJA-I-plc ; !
+Ditteriehppi+Use/Sub:Ditte^riehppi MARJA-I-plc ; !
+Divttasvuotna:Divttas^vuotna MARJA-A-plc ;
 Dišon:Dišon9 LONDON-sur ;
 Djailolo:Djailolo9 ACCRA-plc ;
 Djønno:Djønno9 ACCRA-plc ;
-Dnepr-Bug-kanála:Dnepr-Bug9-kanála MARJA-obj ;
+Dnepr-Bug-kanála:Dnepr-Bug9-kanála MARJA-A-obj ;
 Doggeráhppát:Dogge^ráhppá SULLOT-plc ;
-Dolpenjunni:Dolpe^njunni MARJA-plc ;
-Dolpi:Dol'pi MARJA-plc ;
+Dolpenjunni:Dolpe^njunni MARJA-I-plc ;
+Dolpi:Dol'pi MARJA-I-plc ;
 Domenico:Domenico9 ACCRA-sur ;
 Domingo:Domingo9 ACCRA-plc ;
 Domino:Domino9 ACCRA-org ;
-Dortmund-Emskanála:Dort^mund-Ems^kanála MARJA-obj ;
-Dorvonjárga:Dorvo^njár'ga MARJA-plc ;
+Dortmund-Emskanála:Dort^mund-Ems^kanála MARJA-A-obj ;
+Dorvonjárga:Dorvo^njár'ga MARJA-A-plc ;
 Douro:Douro9 ACCRA-plc ;
 Downs FirstTag ;
-Drakenuorri:Drake^nuorri MARJA-plc ;
+Drakenuorri:Drake^nuorri MARJA-I-plc ;
 Drillo:Drillo9 ACCRA-mal ;
 Dronnet FirstTag ;
 Duero:Duero9 ACCRA-plc ;
-Duiska:Duis'ka MARJA-plc ;
-Duna MARJA-plc ;
-Dunderlánda:Dunder^lán'da MARJA-plc ;
+Duiska:Duis'ka MARJA-A-plc ;
+Duna MARJA-A-plc ;
+Dunderlánda:Dunder^lán'da MARJA-A-plc ;
 Duomis:Duommis GEAVNNIS-mal ;
-Duommágurra:Duommá^gurra MARJA-plc ;
+Duommágurra:Duommá^gurra MARJA-A-plc ;
 Duomás:Duopmás DUORTNUS-mal ;
-Duopmasnjárga:Duopmas^njár'ga MARJA-plc ;
+Duopmasnjárga:Duopmas^njár'ga MARJA-A-plc ;
 Duopmassuolu:Duopmas^suollu DAVVISUOLU-plc ;
 Durango:Durango9 ACCRA-plc ;
-Dálošvággi:Dáloš^vággi MARJA-plc ;
-Dánelgohppi:Dánel^gohppi MARJA-plc ;
-Dánelluokta:Dánel^luok'ta MARJA-plc ;
-Dánelnjárga:Dánel^njár'ga MARJA-plc ;
-Dánelvárri:Dánel^várri MARJA-plc ;
-Dánmárku:Dán^már'ku MARJA-plc ;
-Dánska-Norga:Dánska-Norga MARJA-plc ;
-Dárogiela-islánda+Use/Sub:Dáro^giela-is^lán'da MARJA-plc ; !
+Dálošvággi:Dáloš^vággi MARJA-I-plc ;
+Dánelgohppi:Dánel^gohppi MARJA-I-plc ;
+Dánelluokta:Dánel^luok'ta MARJA-A-plc ;
+Dánelnjárga:Dánel^njár'ga MARJA-A-plc ;
+Dánelvárri:Dánel^várri MARJA-I-plc ;
+Dánmárku:Dán^már'ku MARJA-U-plc ;
+Dánska-Norga:Dánska-Norga MARJA-A-plc ;
+Dárogiela-islánda+Use/Sub:Dáro^giela-is^lán'da MARJA-A-plc ; !
 Dávvet FirstTag ;
-Dávvet-Ásllat-jávri+Use/Sub:Dávvet-Ásllat-jáv'ri MARJA-plc ; !
-Dážavággi:Dáža^vággi MARJA-plc ;
-Dážavággi:Dáža^vággi MARJA-plc ;
+Dávvet-Ásllat-jávri+Use/Sub:Dávvet-Ásllat-jáv'ri MARJA-I-plc ; !
+Dážavággi:Dáža^vággi MARJA-I-plc ;
+Dážavággi:Dáža^vággi MARJA-I-plc ;
 Dão:Dão9 ACCRA-plc ;
-Dåasa MARJA-plc ;
+Dåasa MARJA-A-plc ;
 Dølemo:Døle^mo9 NYSTØ ;
 E-Norlánda:E-Nor^lán'da MARJA-LOAN-plc ;
-Eanadoallodepartemeanta:Eana^doallo^departemean'ta MARJA-org ;
+Eanadoallodepartemeanta:Eana^doallo^departemean'ta MARJA-A-org ;
 Eanodat:Eanodah'k HEANDARAT-plc ;
 Ebro:Ebro9 ACCRA-plc ;
 Echbo:Echbo9 NYSTØ ;
 Eero:Eero9 ACCRA-mal ;
-Egeamearra:Egea^mearra MARJA-plc ;
-Egypta MARJA-plc ;
-Eiderkanála:Eider^kanála MARJA-obj ;
-Eiffeldoardna:Eiffel^doardna MARJA-obj ;
+Egeamearra:Egea^mearra MARJA-A-plc ;
+Egypta MARJA-A-plc ;
+Eiderkanála:Eider^kanála MARJA-A-obj ;
+Eiffeldoardna:Eiffel^doardna MARJA-A-obj ;
 Eikemo:Eike^mo9 NYSTØ ;
 Einmo:Ein^mo9 NYSTØ-sur ;
 Eino:Eino9 ACCRA-mal ;
@@ -28886,56 +28993,56 @@ Ekvatoriála FirstTag ;
 El+CmpN/None:El FirstTag ; !
 Eldorado:Eldorado9 ACCRA-plc ;
 Eliasgárggu:Eli^as^gár'gu DAVVISUOLU-plc ;
-Eliasjohka:Eli^as^joh'ka MARJA-plc ;
-Eliasnjárga:Eli^as^njár'ga MARJA-plc ;
-Eliasnuorri:Eli^as^nuorri MARJA-plc ;
-Elle-Márjjajávri+Use/Sub:Elle-Márjja^jáv'ri MARJA-plc ; !
-Elle-Márjjá-jávri+Use/Sub:Elle-Márjjá-jáv'ri MARJA-plc ; !
-Ellejohka:Elle^joh'ka MARJA-plc ;
-Ellenjárga:Elle^njár'ga MARJA-plc ;
-Elleskáidi:Elle^skáj'di MARJA-plc ;
+Eliasjohka:Eli^as^joh'ka MARJA-A-plc ;
+Eliasnjárga:Eli^as^njár'ga MARJA-A-plc ;
+Eliasnuorri:Eli^as^nuorri MARJA-I-plc ;
+Elle-Márjjajávri+Use/Sub:Elle-Márjja^jáv'ri MARJA-I-plc ; !
+Elle-Márjjá-jávri+Use/Sub:Elle-Márjjá-jáv'ri MARJA-I-plc ; !
+Ellejohka:Elle^joh'ka MARJA-A-plc ;
+Ellenjárga:Elle^njár'ga MARJA-A-plc ;
+Elleskáidi:Elle^skáj'di MARJA-I-plc ;
 Ellesuolu:Elle^suollu DAVVISUOLU-plc ;
 Ellswortheana:Ellsworth^eatnam8 GUOLBBA-plc ;
 Elmo:Elmo9 ACCRA-fem ;
 Elo:Elo9 ACCRA-sur ;
 Elvemo:Elve^mo9 NYSTØ ;
 Emmoš:Em'mož ANAR-fem ;
-Englánda:Eng^lán'da MARJA-plc ;
+Englánda:Eng^lán'da MARJA-A-plc ;
 Enmo:En^mo9 NYSTØ ;
 Enodat:Enodah'k HEANDARAT-plc ;
 Enoš LONDON-malsur ;
 Ensio:Ensio9 ACCRA-mal ;
 Enso:Enso9 ACCRA-org ;
 Erato:Erato9 ACCRA-sur ;
-Eriekanála:Erie^kanála MARJA-obj ;
+Eriekanála:Erie^kanála MARJA-A-obj ;
 Erkinaro:Erkin^aro9 ACCRA-sur ;
-Erkkejohka:Erkke^joh'ka MARJA-plc ;
-Erkkenjárga:Erkke^njár'ga MARJA-plc ;
-Erkkeroavvi:Erkke^roavvi MARJA-plc ;
+Erkkejohka:Erkke^joh'ka MARJA-A-plc ;
+Erkkenjárga:Erkke^njár'ga MARJA-A-plc ;
+Erkkeroavvi:Erkke^roavvi MARJA-I-plc ;
 Erkkesavu:Erkke^savvun8 GUOLBBA-plc ;
-Erkkevárri:Erkke^várri MARJA-plc ;
+Erkkevárri:Erkke^várri MARJA-I-plc ;
 Erkko:Erkko9 ACCRA-mal ;
 Erno:Erno9 ACCRA-mal ;
 Esbo:Es^bo9 NYSTØ-plc ;
 Esko:Esko9 ACCRA-mal ;
 Eskonsipo:Eskon^sipo9 ACCRA-sur ;
 Espo:Espo9 ACCRA-sur ;
-Espánja+Use/Sub:Espán'ja MARJA-plc ; !
+Espánja+Use/Sub:Espán'ja MARJA-A-plc ; !
 Espírito:Espírito9 ACCRA-plc ;
 Essequibo:Essequibo9 ACCRA-plc ;
 Esso:Esso9 ACCRA-org ;
 Esteeana+Use/Sub:Este^eatnam8 GUOLBBA-plc ; !
-Estlánda:Est^lán'da MARJA-plc ;
+Estlánda:Est^lán'da MARJA-A-plc ;
 Eteläaho:Etelä^aho9 ACCRA-sur ;
-Eurohpáráđđi:Eurohpá^ráđđi MARJA-org ;
-Evenášši:Eve^náš'ši MARJA-plc ;
-Evenášši:Eve^nášši MARJA-plc ;
+Eurohpáráđđi:Eurohpá^ráđđi MARJA-I-org ;
+Evenášši:Eve^náš'ši MARJA-I-plc ;
+Evenášši:Eve^nášši MARJA-I-plc ;
 Ešban:Ešban9 LONDON-mal ;
-Eŋglánda+Use/Sub:Eŋg^lán'da MARJA-plc ; !
+Eŋglánda+Use/Sub:Eŋg^lán'da MARJA-A-plc ; !
 Eškol LONDON-sur ;
-Eŋlánda+Use/Sub:Eŋ^lán'da MARJA-plc ; !
+Eŋlánda+Use/Sub:Eŋ^lán'da MARJA-A-plc ; !
 Fagermo:Fager^mo9 NYSTØ ;
-Fanasgieddi:Fanas^gieddi MARJA-plc ;
+Fanasgieddi:Fanas^gieddi MARJA-I-plc ;
 Fargo:Fargo9 ACCRA-plc ;
 Faso:Faso9 ACCRA-plc ;
 Faste FirstTag ;
@@ -28948,25 +29055,25 @@ Filippiinnat+Use/Sub:Filippij'na ALEUHTAT-plc ; !
 Filippiinnat:Filippijdna ALEUHTAT-plc ;
 Finlandia ACCRA-obj ;
 Finmarkens:Fin^markens FirstTag ;
-Finmmárku+Use/Sub:Finm^már'ku MARJA-plc ; !
-Finmárku+Use/Sub:Fin^már'ku MARJA-plc ; !
+Finmmárku+Use/Sub:Finm^már'ku MARJA-U-plc ; !
+Finmárku+Use/Sub:Fin^már'ku MARJA-U-plc ; !
 Finnlands:Finn^lands FirstTag ;
 Finnmarkens:Finn^markens FirstTag ;
 Finnmarks:Finn^marks FirstTag ;
-Finnmarku+Use/Sub:Finn^mar'ku MARJA-plc ; !
-Finnmárkkovuotna+Use/Sub:Finn^márkko^vuotna MARJA-plc ; !
+Finnmarku+Use/Sub:Finn^mar'ku MARJA-U-plc ; !
+Finnmárkkovuotna+Use/Sub:Finn^márkko^vuotna MARJA-A-plc ; !
 Finnmárkku#opmodat:Finn^márkku#opmodah'k HEANDARAT-obj ; !dasgo dát opmodat lea addojuvvon Finnmárkui duoinna lágain ja lea  nappo Finnmárkku hálddus; vrd. gilišillju, gielddaviessu, searvegotteviessu
-Finnmárkkuhálla:Finn^márkku^hál'la MARJA-plc ;
-Finnmárkkukommišuvdna+Use/Sub:Finn^márkku^kommišuvdna MARJA-org ;
-Finnmárkkuláhka+Use/Sub:Finn^márkku^láh'ka MARJA-obj ;
-Finnmárkoláhka:Finn^márko^láh'ka MARJA-obj ; !dasgo láhka ii leat Finnmárkku hálddus muhto dušše guoská dasa; vrd.  giellaláhka, gieldaláhka,  skuvlaláhka
-Finnmárkkulávdegoddi:Finn^márkku^lávde^goddi MARJA-org ;
-Finnmárkkuvuotna:Finn^márkku^vuotna MARJA-plc ;
-Finnmárku:Finn^már'ku MARJA-plc ;
+Finnmárkkuhálla:Finn^márkku^hál'la MARJA-A-plc ;
+Finnmárkkukommišuvdna+Use/Sub:Finn^márkku^kommišuvdna MARJA-A-org ;
+Finnmárkkuláhka+Use/Sub:Finn^márkku^láh'ka MARJA-A-obj ;
+Finnmárkoláhka:Finn^márko^láh'ka MARJA-A-obj ; !dasgo láhka ii leat Finnmárkku hálddus muhto dušše guoská dasa; vrd.  giellaláhka, gieldaláhka,  skuvlaláhka
+Finnmárkkulávdegoddi:Finn^márkku^lávde^goddi MARJA-I-org ;
+Finnmárkkuvuotna:Finn^márkku^vuotna MARJA-A-plc ;
+Finnmárku:Finn^már'ku MARJA-U-plc ;
 Finska FirstTag ;
 Finslo:Finslo9 NYSTØ ;
-Firdafylka:Firda^fyl'ka MARJA-plc ;
-Fiskesmearra:Fiskes^mearra MARJA-plc ;
+Firdafylka:Firda^fyl'ka MARJA-A-plc ;
+Fiskesmearra:Fiskes^mearra MARJA-A-plc ;
 Fladmo:Flad^mo9 NYSTØ ;
 Flatmo:Flat^mo9 NYSTØ ;
 Flo:Flo9 ACCRA-plc ;
@@ -28976,7 +29083,7 @@ Follo:Follo9 ACCRA-plc ;
 Fonno:Fonno9 ACCRA-plc ;
 Formo:For^mo9 NYSTØ-sur ;
 Forsmo:Fors^mo9 NYSTØ ;
-Forth-Clyde-kanála MARJA-obj ;
+Forth-Clyde-kanála MARJA-A-obj ;
 Forvirringens FirstTag ;
 Foråstadsætra:Forå^stad^sætra ACCRA-plc ;
 Fossmo:Foss^mo9 NYSTØ ;
@@ -28984,63 +29091,63 @@ Francesco:Francesco9 ACCRA-mal ;
 Francis LONDON-mal ;
 Francisco:Francisco9 ACCRA-mal ;
 Franco:Franco9 ACCRA-sur ;
-Frankriika:Frank^rij'ka MARJA-plc ;
+Frankriika:Frank^rij'ka MARJA-A-plc ;
 Fransciso:Fransciso9 ACCRA-plc ;
 Fresno:Fresno9 ACCRA-plc ;
-Frieslánda:Fries^lán'da MARJA-plc ;
+Frieslánda:Fries^lán'da MARJA-A-plc ;
 Frisco:Frisco9 ACCRA-mal ;
-Frislánda:Fris^lán'da MARJA-plc ;
-Frostadiggeláhka:Frosta^digge^láh'ka MARJA-obj ;
+Frislánda:Fris^lán'da MARJA-A-plc ;
+Frostadiggeláhka:Frosta^digge^láh'ka MARJA-A-obj ;
 Frostvikens:Frost^vikens FirstTag ;
-Fránkariika+Use/Sub:Fránka^rij'ka MARJA-plc ; !
-Fránska+Use/Sub:Fránska MARJA-plc ; !
-Fránskka+Use/Sub:Fránskka MARJA-plc ; !
+Fránkariika+Use/Sub:Fránka^rij'ka MARJA-A-plc ; !
+Fránska+Use/Sub:Fránska MARJA-A-plc ; !
+Fránskka+Use/Sub:Fránskka MARJA-A-plc ; !
 Fræna ACCRA-plc ;
 Fuosku+Prop+Plc+Sg+Ill+Use/Sub:@U.Cap.Obl@Fuoskui K ; ! !Alternative illative
-Fuosku:Fuos'ku MARJA-plc ;
+Fuosku:Fuos'ku MARJA-U-plc ;
 Furumo:Furu^mo9 NYSTØ ;
-Fálesnuorri:Fáles^nuorri MARJA-plc ;
-Fállejohka:Fálle^joh'ka MARJA-plc ;
-Fárpenjárga:Fárpe^njár'ga MARJA-plc ;
+Fálesnuorri:Fáles^nuorri MARJA-I-plc ;
+Fállejohka:Fálle^joh'ka MARJA-A-plc ;
+Fárpenjárga:Fárpe^njár'ga MARJA-A-plc ;
 Gaino:Gaino9 ACCRA-sur ;
 Gallio:Gallio9 ACCRA-sur ;
 Gando:Gando9 ACCRA-plc ;
 Garbo:Garbo9 ACCRA-sur ;
-Garegasnjárga+Use/Sub:Garegas^njár'ga MARJA-plc ; !
+Garegasnjárga+Use/Sub:Garegas^njár'ga MARJA-A-plc ; !
 Gargano:Gargano9 ACCRA-plc ;
 Garmo:Gar^mo9 NYSTØ ;
-Gaskamearra:Gaska^mearra MARJA-plc ;
-Gasska-Norlánda+Use/Sub:Gasska-Nor^lán'da MARJA-plc ; !
-Gauldølafylka:Gaul^døla^fyl'ka MARJA-plc ;
-Gavkevuotna+Use/Sub:Gavke^vuotna MARJA-plc ; !
+Gaskamearra:Gaska^mearra MARJA-A-plc ;
+Gasska-Norlánda+Use/Sub:Gasska-Nor^lán'da MARJA-A-plc ; !
+Gauldølafylka:Gaul^døla^fyl'ka MARJA-A-plc ;
+Gavkevuotna+Use/Sub:Gavke^vuotna MARJA-A-plc ; !
 Gačina ACCRA-plc ;
-Geahtaveadji:Geahta^vead'ji MARJA-plc ;
-Geaidno#direktoráhtta MARJA-org ;
+Geahtaveadji:Geahta^vead'ji MARJA-I-plc ;
+Geaidno#direktoráhtta MARJA-A-org ;
 Geassesullot:Geasse^suollu SULLOT-plc ;
-Barentsáhpi:Barents^áh'pi MARJA-plc ;
+Barentsáhpi:Barents^áh'pi MARJA-I-plc ;
 Geilo:Geilo9 ACCRA-plc ;
 Geronimo:Geronimo9 ACCRA-sur ;
 Gestapo:Gestapo9 ACCRA-obj ;
-Gieldadepartemeanta:Gielda^departemean'ta MARJA-org ;
+Gieldadepartemeanta:Gielda^departemean'ta MARJA-A-org ;
 Giellatekno:Giella^tekno9 ACCRA-org ;
-Gihtejávri:Gihte^jáv'ri MARJA-plc ;
+Gihtejávri:Gihte^jáv'ri MARJA-I-plc ;
 Gihteluoppal:Gihte^luobbal DUORTNUS-plc ;
 Gillan:Gillam ANAR-plc ;
-Gillarávži:Gillar^áv'ži MARJA-plc ;
-Girkonjárga:Girko^njár'ga MARJA-plc ;
+Gillarávži:Gillar^áv'ži MARJA-I-plc ;
+Girkonjárga:Girko^njár'ga MARJA-A-plc ;
 Giron:Giron9 ANAR-plc ;
-Girstteluhpojávri:Girstte^luhpo^jáv'ri MARJA-plc ;
-Giskejeaggi:Giske^jeaggi MARJA-plc ;
-Giskejávri:Giske^jáv'ri MARJA-plc ;
+Girstteluhpojávri:Girstte^luhpo^jáv'ri MARJA-I-plc ;
+Giskejeaggi:Giske^jeaggi MARJA-I-plc ;
+Giskejávri:Giske^jáv'ri MARJA-I-plc ;
 Glarbo:Glar^bo9 NYSTØ ;
 Gnučeva ACCRA-sur ;
-Goldenjávri:Golden^jáv'ri MARJA-plc ;
-Goldenvuohppi:Golden^vuohppi MARJA-plc ;
-Goldenvárri:Golden^várri MARJA-plc ;
+Goldenjávri:Golden^jáv'ri MARJA-I-plc ;
+Goldenvuohppi:Golden^vuohppi MARJA-I-plc ;
+Goldenvárri:Golden^várri MARJA-I-plc ;
 Gorgŋehat:Gorgŋehah'k HEANDARAT-plc ;
 Gotlands:Got^lands FirstTag ;
-Gotlánda:Got^lán'da MARJA-plc ;
-Govda:Gov'da MARJA-plc ; !FIN
+Gotlánda:Got^lán'da MARJA-A-plc ;
+Govda:Gov'da MARJA-A-plc ; !FIN
 Govdasavvon:Govda^savvon9 LONDON-plc ;
 Gozo:Gozo9 ACCRA-plc ;
 Grahameana:Graham^eatnam8 GUOLBBA-plc ;
@@ -29048,7 +29155,7 @@ Granmo:Gran^mo9 NYSTØ ;
 Great FirstTag ;
 Greco:Greco9 ACCRA-sur ;
 Greensboro:Greens^boro9 ACCRA-plc ;
-Grenlánda:Gren^lán'da MARJA-plc ;
+Grenlánda:Gren^lán'da MARJA-A-plc ;
 Grensemo+Use/Sub:Grense^mo9 NYSTØ-sur ;
 Grensemo:Grense^mo9 ACCRA-sur ;
 Grimo:Grimo9 NYSTØ ;
@@ -29056,67 +29163,67 @@ Grimsmo:Grims^mo9 NYSTØ-sur ;
 Gro:Gro9 ACCRA-fem ;
 Grosseto:Grosseto9 ACCRA-plc ;
 Grosso:Grosso9 ACCRA-plc ;
-Grønlanda+Use/Sub:Grøn^lan'da MARJA-plc ; !
-Grønlánda+Use/Sub:Grøn^lán'da MARJA-plc ; !
+Grønlanda+Use/Sub:Grøn^lan'da MARJA-A-plc ; !
+Grønlánda+Use/Sub:Grøn^lán'da MARJA-A-plc ; !
 Grønmo:Grøn^mo9 NYSTØ-plc ;
 Grønnåsen:Grønn^åsen9 LONDON-plc ;
 Guanajuato:Gu^anaju^ato9 ACCRA-plc ;
 Guantánamo:Gu^antánamo9 ACCRA-plc ;
 Guerrero:Guerrero9 ACCRA-plc ;
-Guhttorvárri:Guhttor^várri MARJA-plc ;
-Guhturgurajávri:Guhtur^gura^jáv'ri MARJA-plc ;
-Guhturgurra:Guhtur^gurra MARJA-plc ;
-Guhturvággi:Guhtur^vággi MARJA-plc ;
+Guhttorvárri:Guhttor^várri MARJA-I-plc ;
+Guhturgurajávri:Guhtur^gura^jáv'ri MARJA-I-plc ;
+Guhturgurra:Guhtur^gurra MARJA-A-plc ;
+Guhturvággi:Guhtur^vággi MARJA-I-plc ;
 Guinea ACCRA-plc ;
-Guivvenjoaski:Guivve^njoas'ki MARJA-plc ;
-Guivveroavvi:Guivve^roavvi MARJA-plc ;
-Guivverášša:Guivve^ráš'ša MARJA-plc ;
-Guivvevárri:Guivve^várri MARJA-plc ;
+Guivvenjoaski:Guivve^njoas'ki MARJA-I-plc ;
+Guivveroavvi:Guivve^roavvi MARJA-I-plc ;
+Guivverášša:Guivve^ráš'ša MARJA-A-plc ;
+Guivvevárri:Guivve^várri MARJA-I-plc ;
 Guoládat:Guoládah'k HEANDARAT-plc ;
-Guoládatnjárga:Guoládat^njár'ga MARJA-plc ;
-Guolástandirektoráhtta:Guolástan^direktoráhtta MARJA-org ;
-Guolástus#direktoráhtta MARJA-org ;
-Guolástusdepartemeanta:Guolástus^departemean'ta MARJA-org ;
-Guovdageaidnu:Guovda^geajdnu MARJA-plc ;
+Guoládatnjárga:Guoládat^njár'ga MARJA-A-plc ;
+Guolástandirektoráhtta:Guolástan^direktoráhtta MARJA-A-org ;
+Guolástus#direktoráhtta MARJA-A-org ;
+Guolástusdepartemeanta:Guolástus^departemean'ta MARJA-A-org ;
+Guovdageaidnu:Guovda^geajdnu MARJA-U-plc ;
 Guovddášbellodat:Guovddáš^bellodah'k HEANDARAT-org ;
 Guro:Guro9 ACCRA-fem ;
 Gurutbellodat:Gurut^bellodah'k HEANDARAT-org ;
-Gussanjárga:Gussa^njár'ga MARJA-plc ;
-Gusttojeaggi:Gustto^jeaggi MARJA-plc ;
-Guvžajávri:Guvža^jáv'ri MARJA-plc ;
+Gussanjárga:Gussa^njár'ga MARJA-A-plc ;
+Gusttojeaggi:Gustto^jeaggi MARJA-I-plc ;
+Guvžajávri:Guvža^jáv'ri MARJA-I-plc ;
 Gáddjágielas:Gáddjá^giellas DUORTNUS-plc ;
-Gáddjájávri:Gáddjá^jáv'ri MARJA-plc ;
-Gádjájohka:Gádjá^joh'ka MARJA-plc ;
-Gádjáriegádanjávri:Gádjá^riegádan^jáv'ri MARJA-plc ;
-Gádjáriegádanoaivi:Gádjá^riegádan^oaj'vi MARJA-plc ;
-Gáiskeriidi:Gáiskerij'di MARJA-plc ;
-Gáivuonvággi:Gái^vuon^vággi MARJA-plc ;
-Gáivuotna:Gái^vuotna MARJA-plc ;
+Gáddjájávri:Gáddjá^jáv'ri MARJA-I-plc ;
+Gádjájohka:Gádjá^joh'ka MARJA-A-plc ;
+Gádjáriegádanjávri:Gádjá^riegádan^jáv'ri MARJA-I-plc ;
+Gádjáriegádanoaivi:Gádjá^riegádan^oaj'vi MARJA-I-plc ;
+Gáiskeriidi:Gáiskerij'di MARJA-I-plc ;
+Gáivuonvággi:Gái^vuon^vággi MARJA-I-plc ;
+Gáivuotna:Gái^vuotna MARJA-A-plc ;
 Gájáš:Gájáž PLACE-DIM-sur ;
-Gállágáibbejohka:Gállá^gáibbe^joh'ka MARJA-plc ;
-Gállájohka:Gállá^joh'ka MARJA-plc ; !FIN
-Gállájávri:Gállá^jáv'ri MARJA-plc ;
+Gállágáibbejohka:Gállá^gáibbe^joh'ka MARJA-A-plc ;
+Gállájohka:Gállá^joh'ka MARJA-A-plc ; !FIN
+Gállájávri:Gállá^jáv'ri MARJA-I-plc ;
 Gállájávrrit:Gállá^jáv'ri ALEUHTAT-plc ; !FIN
-Gálláskáidi:Gállá^skáj'di MARJA-plc ; !FIN
-Gállávárri:Gállá^várri MARJA-plc ; !FIN
-Gálláčorru:Gállá^čorru MARJA-plc ; !FIN
-Gámavuotna:Gáma^vuotna MARJA-plc ;
-Gámehisnjárga:Gámehis^njár'ga MARJA-plc ;
-Gáranasvuotna:Gáranas^vuotna MARJA-plc ;
+Gálláskáidi:Gállá^skáj'di MARJA-I-plc ; !FIN
+Gállávárri:Gállá^várri MARJA-I-plc ; !FIN
+Gálláčorru:Gállá^čorru MARJA-U-plc ; !FIN
+Gámavuotna:Gáma^vuotna MARJA-A-plc ;
+Gámehisnjárga:Gámehis^njár'ga MARJA-A-plc ;
+Gáranasvuotna:Gáranas^vuotna MARJA-A-plc ;
 Gárasavvon:Gára^savvon ANAR-plc ; !FIN
 Gárdin:Gárdim LONDON-plc ;
-Gáregasnjárga:Gáregas^njár'ga MARJA-plc ; !FIN
-Gárášjohka:Gáráš^joh'ka MARJA-plc ;
-Gávkevuotna:Gávke^vuotna MARJA-plc ;
-Gávpesearvi:Gávpe^sear'vi MARJA-org ;
+Gáregasnjárga:Gáregas^njár'ga MARJA-A-plc ; !FIN
+Gárášjohka:Gáráš^joh'ka MARJA-A-plc ;
+Gávkevuotna:Gávke^vuotna MARJA-A-plc ;
+Gávpesearvi:Gávpe^sear'vi MARJA-I-org ;
 Gávvir ANAR-plc ;
-Gávvuotna:Gáv^vuotna MARJA-plc ;
-Gáŋgaviika:Gáŋga^vij'ka MARJA-plc ;
-Gästriklánda:Gäst^rik^lán'da MARJA-plc ;
+Gávvuotna:Gáv^vuotna MARJA-A-plc ;
+Gáŋgaviika:Gáŋga^vij'ka MARJA-A-plc ;
+Gästriklánda:Gäst^rik^lán'da MARJA-A-plc ;
 Gävleborgs:Gävle^borgs FirstTag ;
-Götaeatnu:Göta^eatnu MARJA-plc ;
-Götakanála:Göta^kanála MARJA-obj ;
-Götalánda:Göta^lán'da MARJA-plc ;
+Götaeatnu:Göta^eatnu MARJA-U-plc ;
+Götakanála:Göta^kanála MARJA-A-obj ;
+Götalánda:Göta^lán'da MARJA-A-plc ;
 Göteborgs:Göte^borgs FirstTag ;
 Haapa-aho:Haapa-aho9 ACCRA-sur ;
 Haapalehto:Haapalehto9 ACCRA-sur ;
@@ -29135,14 +29242,14 @@ Halla-aho:Halla-aho9 ACCRA-sur ;
 Hallands:Hal^lands FirstTag ;
 Hamas LONDON-org ;
 Hambro:Ham^bro9 NYSTØ-plc ;
-Hammerfeasta+Use/Sub:Hammer^feas'ta MARJA-plc ; !
+Hammerfeasta+Use/Sub:Hammer^feas'ta MARJA-A-plc ; !
 Hanhisalo:Hanhi^salo9 ACCRA-sur ;
 Hanhisuanto:Hanhi^su^anto9 ACCRA-sur ;
 Hanko:Hanko9 ACCRA-plc ;
 Hanno:Hanno9 ACCRA-mal ;
 Happo:Happo9 ACCRA-sur ;
 Harbo:Harbo9 ACCRA-sur ;
-Hardangervuotna:Hard^anger^vuotna MARJA-plc ;
+Hardangervuotna:Hard^anger^vuotna MARJA-A-plc ;
 Harjo:Harjo9 ACCRA-sur ;
 Haslemo:Hasle^mo9 NYSTØ ;
 Haso:Haso9 ACCRA-sur ;
@@ -29153,55 +29260,55 @@ Haukipuro:Hauki^puro9 ACCRA-sur ;
 Hauta-aho:Hauta-aho9 ACCRA-sur ;
 Hautsalo:Haut^salo9 ACCRA-sur ;
 Heahttá MARJA-plc ; !FIN
-Heaikajohka:Heaika^joh'ka MARJA-plc ;
-Heaikka-Bier-várri+Use/Sub:Heaikka-Bier-várri MARJA-plc ; !
-Heaikkajohka:Heaikka^joh'ka MARJA-plc ;
-Heaikkajávri:Heaikka^jáv'ri MARJA-plc ;
+Heaikajohka:Heaika^joh'ka MARJA-A-plc ;
+Heaikka-Bier-várri+Use/Sub:Heaikka-Bier-várri MARJA-I-plc ; !
+Heaikkajohka:Heaikka^joh'ka MARJA-A-plc ;
+Heaikkajávri:Heaikka^jáv'ri MARJA-I-plc ;
 Heaikkasuolu:Heaikka^suollu DAVVISUOLU-plc ; !FIN
-Heammogieddi:Heammo^gieddi MARJA-plc ;
+Heammogieddi:Heammo^gieddi MARJA-I-plc ;
 Heandarat:Heandarah'k HEANDARAT-mal ;
 Hearjjak:Hearjja BALAK-plc ; !Herjangen
 Hearrá:Hear'rá MARJA-mal ;
-Hearrágoahtenjárga:Hearrá^goahte^njár'ga MARJA-plc ;
-Heavdne-Mánni:Heavdne-Mán'ni MARJA-mal ;
-Hedeguohppi:Hede^guohppi MARJA-plc ;
+Hearrágoahtenjárga:Hearrá^goahte^njár'ga MARJA-A-plc ;
+Heavdne-Mánni:Heavdne-Mán'ni MARJA-I-mal ;
+Hedeguohppi:Hede^guohppi MARJA-I-plc ;
 Hedemarkens:Hede^markens FirstTag ;
-Hedmarku+Use/Sub:Hed^mar'ku MARJA-plc ; !
-Hedmárkku+Use/Sub:Hed^márkku MARJA-plc ; !
-Hedmárku:Hed^már'ku MARJA-plc ;
+Hedmarku+Use/Sub:Hed^mar'ku MARJA-U-plc ; !
+Hedmárkku+Use/Sub:Hed^márkku MARJA-U-plc ; !
+Hedmárku:Hed^már'ku MARJA-U-plc ;
 Heigen:Heigen9 ANAR-plc ;
 Heijari:Heij9ari ACCRA-sur ;
 Heijjá:Heij9j9á ACCRA-sur ;
 Heikinheimo:Heikin^heimo9 ACCRA-sur ;
-Heikkočahca:Heikko^čah'ca MARJA-plc ; !FIN
-Heikkočazajohka:Heikko^čaza^joh'ka MARJA-plc ; !FIN
-Heikkočazajávri:Heikko^čaza^jáv'ri MARJA-plc ; !FIN
+Heikkočahca:Heikko^čah'ca MARJA-A-plc ; !FIN
+Heikkočazajohka:Heikko^čaza^joh'ka MARJA-A-plc ; !FIN
+Heikkočazajávri:Heikko^čaza^jáv'ri MARJA-I-plc ; !FIN
 Heimo:Heimo9 ACCRA-mal ; ! Finnish name
 Heinisuo:Heini^suo9 ACCRA-sur ;
 Heino:Heino9 ACCRA-mal ;
 Heinäaho:Heinä^aho9 ACCRA-sur ;
 Hejjá:Hej9j9á ACCRA-mal ;
 Helgebuollán:Helge^buollám ANAR-plc ; !FIN
-Helgeguoika:Helge^guoj'ka MARJA-plc ; !FIN
-Helgejávri:Helge^jáv'ri MARJA-plc ; !FIN
-Helgelánda:Helge^lán'da MARJA-plc ;
+Helgeguoika:Helge^guoj'ka MARJA-A-plc ; !FIN
+Helgejávri:Helge^jáv'ri MARJA-I-plc ; !FIN
+Helgelánda:Helge^lán'da MARJA-A-plc ;
 Helgesavvonabuollán:Helge^savvona^buollám ANAR-plc ; !FIN
-Helgevárri:Helge^várri MARJA-plc ; !FIN
-Helgeáhpi:Helge^áh'pi MARJA-plc ; !FIN
+Helgevárri:Helge^várri MARJA-I-plc ; !FIN
+Helgeáhpi:Helge^áh'pi MARJA-I-plc ; !FIN
 Helgeája:Helge^ád'jag8 GUOLBBA-plc ; !FIN
-Helgolánda:Helgo^lán'da MARJA-plc ;
+Helgolánda:Helgo^lán'da MARJA-A-plc ;
 Hellemo:Hellemo9 NYSTØ-plc ;
-Hellemoprošeakta:Hellemo^prošeak'ta MARJA-obj ;
+Hellemoprošeakta:Hellemo^prošeak'ta MARJA-A-obj ;
 Helo:Helo9 ACCRA-sur ;
 Helse FirstTag ;
 Helsset:Helsseg ANAR-plc ;
 Hemmo:Hemmo9 ACCRA-mal ;
-Hemmogiettenjárga:Hemmo^giette^njár'ga MARJA-plc ;
-Hemmojávri:Hemmo^jáv'ri MARJA-plc ;
+Hemmogiettenjárga:Hemmo^giette^njár'ga MARJA-A-plc ;
+Hemmojávri:Hemmo^jáv'ri MARJA-I-plc ;
 Hemmonjavvesuolu:Hemmo^njavve^suollu DAVVISUOLU-plc ;
-Hemmonjavvi:Hemmo^njavvi MARJA-plc ;
+Hemmonjavvi:Hemmo^njavvi MARJA-I-plc ;
 Henddo:Henddo MARJA-mal ;
-Henddovággi:Henddo^vággi MARJA-plc ;
+Henddovággi:Henddo^vággi MARJA-I-plc ;
 Hentto:Hentto9 ACCRA-sur ;
 Herkko:Herkko9 ACCRA-mal ;
 Hermosillo:Hermosillo9 ACCRA-plc ;
@@ -29211,31 +29318,31 @@ Hidalgo:Hidalgo9 ACCRA-mal ;
 Hierro:Hierro9 ACCRA-plc ;
 Hietikko:Hietikko9 ACCRA-sur ;
 Hillo:Hillo9 ACCRA-sur ;
-Hillágurra:Hillá^gurra MARJA-plc ;
+Hillágurra:Hillá^gurra MARJA-A-plc ;
 Hilo:Hilo9 ACCRA-sur ;
 Hirvasvuopio:Hirvas^vuopio9 ACCRA-plc ;
 Hirvensalo:Hirven^salo9 ACCRA-sur ;
 Hirvikallio:Hirvi^kallio9 ACCRA-sur ;
 Hjo:Hjo9 ACCRA-sur ;
 Hobro:Ho^bro9 ACCRA-plc ;
-Hoglánda:Hog^lán'da MARJA-plc ;
+Hoglánda:Hog^lán'da MARJA-A-plc ;
 Hokkaido:Hokkaido9 ACCRA-plc ;
-Holganjárga:Holga^njár'ga MARJA-plc ;
+Holganjárga:Holga^njár'ga MARJA-A-plc ;
 Holkko:Holkko9 ACCRA-sur ;
 Hollo:Hollo9 ACCRA-sur ;
-Hollánda:Hol^lán'da MARJA-plc ;
-Holmbergjávri:Holm^berg^jáv'ri MARJA-plc ; !FIN
-Holsengáddi:Holsen^gáddi MARJA-plc ; !FIN
-Holsennuorri:Holsen^nuorri MARJA-plc ; !FIN
+Hollánda:Hol^lán'da MARJA-A-plc ;
+Holmbergjávri:Holm^berg^jáv'ri MARJA-I-plc ; !FIN
+Holsengáddi:Holsen^gáddi MARJA-I-plc ; !FIN
+Holsennuorri:Holsen^nuorri MARJA-I-plc ; !FIN
 Holstebro:Holste^bro9 ACCRA-plc ;
 Homero:Homero9 ACCRA-plc ;
 Hondo:Hondo9 ACCRA-plc ;
 Hongisto:Hongisto9 ACCRA-sur ;
 Honkasalo:Honka^salo9 ACCRA-sur ;
 Honko:Honko9 ACCRA-sur ;
-Honnesváhki:Honnes^váh'ki MARJA-plc ;
-Hordafylka:Horda^fyl'ka MARJA-plc ;
-Hordalánda:Horda^lán'da MARJA-plc ;
+Honnesváhki:Honnes^váh'ki MARJA-I-plc ;
+Hordafylka:Horda^fyl'ka MARJA-A-plc ;
+Hordalánda:Horda^lán'da MARJA-A-plc ;
 Hosio:Hosio9 ACCRA-sur ;
 Huambo:Hu^ambo9 ACCRA-plc ;
 Hugo:Hugo9 ACCRA-mal ;
@@ -29252,45 +29359,45 @@ Huánuco:Huánuco9 ACCRA-plc ;
 Hušam:Hušam9 LONDON-sur ;
 Hydro:Hydro9 ACCRA-org ;
 Hábmer:Hábmer ANAR-plc ; !
-Háldenjárga:Hálde^njár'ga MARJA-plc ;
-Hálkavárri MARJA-plc ;
-Hámmarfeasta+Use/Sub:Hámmar^feas'ta MARJA-plc ; !
-Hámmerfeasta+Use/Sub:Hámmer^feas'ta MARJA-plc ; !
-Hámmárfeasta:Hámmár^feas'ta MARJA-plc ;
+Háldenjárga:Hálde^njár'ga MARJA-A-plc ;
+Hálkavárri MARJA-I-plc ;
+Hámmarfeasta+Use/Sub:Hámmar^feas'ta MARJA-A-plc ; !
+Hámmerfeasta+Use/Sub:Hámmer^feas'ta MARJA-A-plc ; !
+Hámmárfeasta:Hámmár^feas'ta MARJA-A-plc ;
 Hánassuolu:Hánas^suollu DAVVISUOLU-plc ; !FIN
 Hánasája:Hánas^ád'jag8 GUOLBBA-plc ; !FIN
-Hánnofávli:Hánno^fáv'li MARJA-plc ; !FIN
-Hánnogurra:Hánno^gurra MARJA-plc ;
-Hánnojohka:Hánno^joh'ka MARJA-plc ; !FIN
-Hánnojávri:Hánno^jáv'ri MARJA-plc ; !FIN
+Hánnofávli:Hánno^fáv'li MARJA-I-plc ; !FIN
+Hánnogurra:Hánno^gurra MARJA-A-plc ;
+Hánnojohka:Hánno^joh'ka MARJA-A-plc ; !FIN
+Hánnojávri:Hánno^jáv'ri MARJA-I-plc ; !FIN
 Hánnoluohkká:Hánno^luohkká MARJA-plc ;
 Hánnomaras:Hánno^marras DUORTNUS-plc ; !FIN
-Hánsajávri:Hánsa^jáv'ri MARJA-plc ; !FIN
+Hánsajávri:Hánsa^jáv'ri MARJA-I-plc ; !FIN
 Hánsamaras:Hánsa^marras DUORTNUS-plc ; !FIN
-Hánssagieddi:Hánssa^gieddi MARJA-plc ;
-Hánssajeaggi:Hánssa^jeaggi MARJA-plc ;
-Hánssajávri:Hánssa^jáv'ri MARJA-plc ;
-Hánssariehppi:Hánssa^riehppi MARJA-plc ;
-Hánssavárri:Hánssa^várri MARJA-plc ;
-Hánssánjavvi:Hánssá^njavvi MARJA-plc ;
-Hälsinglánda:Hälsing^lán'da MARJA-plc ;
+Hánssagieddi:Hánssa^gieddi MARJA-I-plc ;
+Hánssajeaggi:Hánssa^jeaggi MARJA-I-plc ;
+Hánssajávri:Hánssa^jáv'ri MARJA-I-plc ;
+Hánssariehppi:Hánssa^riehppi MARJA-I-plc ;
+Hánssavárri:Hánssa^várri MARJA-I-plc ;
+Hánssánjavvi:Hánssá^njavvi MARJA-I-plc ;
+Hälsinglánda:Hälsing^lán'da MARJA-A-plc ;
 Hämeenaho:Hämeen^aho9 ACCRA-sur ;
-Hålogaláddi:Håloga^láddi MARJA-plc ;
-Hålogalánda:Håloga^lán'da MARJA-plc ;
-Håløygjafylka:Hål^øygja^fyl'ka MARJA-plc ;
+Hålogaláddi:Håloga^láddi MARJA-I-plc ;
+Hålogalánda:Håloga^lán'da MARJA-A-plc ;
+Håløygjafylka:Hål^øygja^fyl'ka MARJA-A-plc ;
 Höykinpuro:Höykin^puro9 ACCRA-sur ;
 Høgmo:Høg^mo9 NYSTØ ;
 Høgsbro:Høgs^bro9 ACCRA-plc ;
 Høydalsmo:Høy^dals^mo9 NYSTØ ;
 Høylo:Høy^lo9 NYSTØ-sur ;
-ILO-konvenšuvdna:ILO-konvenšuvdna MARJA-obj ;
-Iccemihásnjárga:Iccemihás^njár'ga MARJA-plc ;
+ILO-konvenšuvdna:ILO-konvenšuvdna MARJA-A-obj ;
+Iccemihásnjárga:Iccemihás^njár'ga MARJA-A-plc ;
 Idaho:Idaho9 ACCRA-plc ;
-Idjajávri:Idja^jáv'ri MARJA-plc ;
-Idjavuotna:Idja^vuotna MARJA-plc ;
-Iešjohka:Ieš^joh'ka MARJA-plc ;
-Iešjávri:Ieš^jáv'ri MARJA-plc ;
-Iggavuotna:Igga^vuotna MARJA-plc ;
+Idjajávri:Idja^jáv'ri MARJA-I-plc ;
+Idjavuotna:Idja^vuotna MARJA-A-plc ;
+Iešjohka:Ieš^joh'ka MARJA-A-plc ;
+Iešjávri:Ieš^jáv'ri MARJA-I-plc ;
+Iggavuotna:Igga^vuotna MARJA-A-plc ;
 Iisko:Iisko9 ACCRA-sur ;
 Ikkaldas:Ikkaldass HEANDARAT-plc ;
 Ikäheimo:Ikä^heimo9 ACCRA-sur ;
@@ -29299,63 +29406,63 @@ Ilebo:Ile^bo9 ACCRA-plc ;
 Ilis LONDON-plc ;
 Ilo:Ilo9 ACCRA-obj ;
 Ilpo:Ilpo9 ACCRA-mal ;
-Imagáisi:Ima^gáj'si MARJA-plc ;
-Imajávri:Ima^jáv'ri MARJA-plc ;
+Imagáisi:Ima^gáj'si MARJA-I-plc ;
+Imajávri:Ima^jáv'ri MARJA-I-plc ;
 Indre FirstTag ;
-Ingermanlánda:Inger^man^lán'da MARJA-plc ;
+Ingermanlánda:Inger^man^lán'da MARJA-A-plc ;
 Ingo:Ingo9 ACCRA-mal ;
 Inner FirstTag ;
-Interregprošeakta:Interreg^prošeak'ta MARJA-obj ;
+Interregprošeakta:Interreg^prošeak'ta MARJA-A-obj ;
 Into:Into9 ACCRA-mal ;
-Ipmeláhčči+v1:Ipmel^áhčči MARJA-mal ;
-Ipmeláhčči+v2:Ipmil^áhčči MARJA-mal ;
+Ipmeláhčči+v1:Ipmel^áhčči MARJA-I-mal ;
+Ipmeláhčči+v2:Ipmil^áhčči MARJA-I-mal ;
 Ipmil LONDON-mal ;
-Ipmila% Bárdni MARJA-mal ;
+Ipmila% Bárdni MARJA-I-mal ;
 Irapuato:Irapu^ato9 ACCRA-plc ;
-Irgavuotna:Irga^vuotna MARJA-plc ;
-Irgevuotna+Use/Sub:Irge^vuotna MARJA-plc ; !
+Irgavuotna:Irga^vuotna MARJA-A-plc ;
+Irgevuotna+Use/Sub:Irge^vuotna MARJA-A-plc ; !
 Irjánmaras:Irján^marras DUORTNUS-plc ; !FIN
-Irlánda:Ir^lán'da MARJA-plc ;
-Iráhka+Use/Sub:Iráhka MARJA-plc ; !
-Ishavshotealla+Use/Sub:Is^havs^hoteal'la MARJA-obj ; !
+Irlánda:Ir^lán'da MARJA-A-plc ;
+Iráhka+Use/Sub:Iráhka MARJA-A-plc ; !
+Ishavshotealla+Use/Sub:Is^havs^hoteal'la MARJA-A-obj ; !
 Iskko:Iskko MARJA-mal ;
-Iskkojávri:Iskko^jáv'ri MARJA-plc ;
+Iskkojávri:Iskko^jáv'ri MARJA-I-plc ;
 Islands:Is^lands FirstTag ;
-Islánda:Is^lán'da MARJA-plc ;
+Islánda:Is^lán'da MARJA-A-plc ;
 Isoaho:Iso^aho9 ACCRA-plc ;
 Isokallio:Iso^kallio9 ACCRA-sur ;
 Isosalo:Isosalo9 ACCRA-sur ;
 Isotalo:Iso^talo9 ACCRA-sur ;
-Issáhaguollejávri:Issáha^guolle^jáv'ri MARJA-plc ;
-Itkkonjárga:Itkko^njár'ga MARJA-plc ;
-Ittarvuotna:Ittar^vuotna MARJA-plc ;
+Issáhaguollejávri:Issáha^guolle^jáv'ri MARJA-I-plc ;
+Itkkonjárga:Itkko^njár'ga MARJA-A-plc ;
+Ittarvuotna:Ittar^vuotna MARJA-A-plc ;
 Ivalo:Ivalo9 ACCRA-plc ;
 Ivanovo:Ivanovo9 ACCRA-plc ;
-Ivgu:Iv'gu MARJA-plc ;
-Ivgubahta+Use/Sub:Ivgu^bah'ta MARJA-plc ;
-Ivgumuotki:Ivgu^muot'ki MARJA-plc ;
-Ivguvuotna:Ivgu^vuotna MARJA-plc ;
-Ivvangåđiidnjárga+Use/Sub:Ivvan^gåđiid^njár'ga MARJA-plc ; !
-Ivvárasággi:Ivvára^sággi MARJA-plc ;
-Ivvárgoahtejávri:Ivvár^goahte^jáv'ri MARJA-plc ; !FIN
-Ivvárgoahtevuovdi:Ivvár^goahte^vuov'di MARJA-plc ; !FIN
-Ivvárgoađejávri:Ivvár^goađe^jáv'ri MARJA-plc ;
-Ivvárjohka:Ivvár^joh'ka MARJA-plc ;
-Ivvárluokta:Ivvár^luok'ta MARJA-plc ;
-Ivvárstáda+Use/Sub:Ivvár^stáda MARJA-plc ; !
-Ivvárvárri:Ivvár^várri MARJA-plc ; !FIN
+Ivgu:Iv'gu MARJA-U-plc ;
+Ivgubahta+Use/Sub:Ivgu^bah'ta MARJA-A-plc ;
+Ivgumuotki:Ivgu^muot'ki MARJA-I-plc ;
+Ivguvuotna:Ivgu^vuotna MARJA-A-plc ;
+Ivvangåđiidnjárga+Use/Sub:Ivvan^gåđiid^njár'ga MARJA-A-plc ; !
+Ivvárasággi:Ivvára^sággi MARJA-I-plc ;
+Ivvárgoahtejávri:Ivvár^goahte^jáv'ri MARJA-I-plc ; !FIN
+Ivvárgoahtevuovdi:Ivvár^goahte^vuov'di MARJA-I-plc ; !FIN
+Ivvárgoađejávri:Ivvár^goađe^jáv'ri MARJA-I-plc ;
+Ivvárjohka:Ivvár^joh'ka MARJA-A-plc ;
+Ivvárluokta:Ivvár^luok'ta MARJA-A-plc ;
+Ivvárstáda+Use/Sub:Ivvár^stáda MARJA-A-plc ; !
+Ivvárvárri:Ivvár^várri MARJA-I-plc ; !FIN
 Iwo:Iwo9 ACCRA-plc ;
 Iŋggá FirstTag ;
-Iŋggájohka:Iŋggá^joh'ka MARJA-plc ;
-Iŋggájávri:Iŋggá^jáv'ri MARJA-plc ; !FIN
-Iŋggáriegádanjávri:Iŋggá^riegádan^jáv'ri MARJA-plc ; !FIN
-Iŋggároggi:Iŋggá^roggi MARJA-plc ;
-Iŋggáskáidi:Iŋggá^skáj'di MARJA-plc ;
-Iŋggávággi:Iŋggá^vággi MARJA-plc ;
-Iŋggávárri:Iŋggá^várri MARJA-plc ; !FIN
-Iŋgorjávri:Iŋgor^jáv'ri MARJA-plc ;
-Iŋgunjohka:Iŋgun^joh'ka MARJA-plc ;
-Iškorasjohka:Iškoras^joh'ka MARJA-plc ;
+Iŋggájohka:Iŋggá^joh'ka MARJA-A-plc ;
+Iŋggájávri:Iŋggá^jáv'ri MARJA-I-plc ; !FIN
+Iŋggáriegádanjávri:Iŋggá^riegádan^jáv'ri MARJA-I-plc ; !FIN
+Iŋggároggi:Iŋggá^roggi MARJA-I-plc ;
+Iŋggáskáidi:Iŋggá^skáj'di MARJA-I-plc ;
+Iŋggávággi:Iŋggá^vággi MARJA-I-plc ;
+Iŋggávárri:Iŋggá^várri MARJA-I-plc ; !FIN
+Iŋgorjávri:Iŋgor^jáv'ri MARJA-I-plc ;
+Iŋgunjohka:Iŋgun^joh'ka MARJA-A-plc ;
+Iškorasjohka:Iškoras^joh'ka MARJA-A-plc ;
 Iđut:Iđuh ANAR-obj ;
 Jaakko:Jaakko9 ACCRA-mal ;
 Jaako:Jaako9 ACCRA-mal ;
@@ -29364,36 +29471,36 @@ Jagello:Jagello9 ACCRA-sur ;
 Jagiello:Jagi^ello9 ACCRA-sur ;
 Jalisco:Jalisco9 ACCRA-mal ;
 Jalo:Jalo9 ACCRA-mal ;
-Jamalnjárga:Jamal^njár'ga MARJA-plc ;
+Jamalnjárga:Jamal^njár'ga MARJA-A-plc ;
 Janbo:Janbo9 ACCRA-plc ;
 Janoš LONDON-mal ;
 Janoš:Janož ANAR-mal ;
-Japána MARJA-plc ;
-Japánamearra:Japána^mearra MARJA-plc ;
+Japána MARJA-A-plc ;
+Japánamearra:Japána^mearra MARJA-A-plc ;
 Jarkko:Jarkko9 ACCRA-mal ;
 Jarmo:Jarmo9 ACCRA-mal ;
-Jaskesáhpi:Jaskes^áh'pi MARJA-plc ;
+Jaskesáhpi:Jaskes^áh'pi MARJA-I-plc ;
 Jauho:Jauho9 ACCRA-sur ;
-Javamearra:Java^mearra MARJA-plc ;
+Javamearra:Java^mearra MARJA-A-plc ;
 Javo:Javo9 ACCRA-sur ;
 Jašženko:Jašženko9 ACCRA-sur ;
 Jegerkommando:Jeger^komman'do MARJA-obj ;
-Jergoljohka:Jergol^joh'ka MARJA-plc ;
-Jergolnjavvi:Jergol^njavvi MARJA-plc ;
-Jergolvárri:Jergol^várri MARJA-plc ;
+Jergoljohka:Jergol^joh'ka MARJA-A-plc ;
+Jergolnjavvi:Jergol^njavvi MARJA-I-plc ;
+Jergolvárri:Jergol^várri MARJA-I-plc ;
 Jeriko:Jeriko9 ACCRA-plc ;
 Jeuš:Je^uš BERN-sur ;
 Jeuša+Use/Sub:Je^uša ACCRA-plc ; ! !XXX Just Gen of Je^uš ???
-Jiekŋamearra:Jiekŋa^mearra MARJA-plc ;
-Jiellevárri:Jielle^várri MARJA-plc ;
+Jiekŋamearra:Jiekŋa^mearra MARJA-A-plc ;
+Jiellevárri:Jielle^várri MARJA-I-plc ;
 Jišbak:Jiš^bak BERN-sur ;
 Jišvi ACCRA-plc ;
-Joavnnajohka:Joavnna^joh'ka MARJA-plc ;
-Joavnnajávri:Joavnna^jáv'ri MARJA-plc ;
+Joavnnajohka:Joavnna^joh'ka MARJA-A-plc ;
+Joavnnajávri:Joavnna^jáv'ri MARJA-I-plc ;
 Johanas:Johanass HEANDARAT-mal ;
-Johkamohkki:Johka^mohkki MARJA-plc ;
+Johkamohkki:Johka^mohkki MARJA-I-plc ;
 Johnsen-Butto:Johnsen-Butto9 ACCRA-sur ;
-Johtalusdepartemeanta:Johtalus^departemean'ta MARJA-org ;
+Johtalusdepartemeanta:Johtalus^departemean'ta MARJA-A-org ;
 Johánsuolu:Johán^suollu DAVVISUOLU-plc ; !FIN
 Jokiaho:Joki^aho9 ACCRA-sur ;
 Jokikokko:Joki^kokko9 ACCRA-sur ;
@@ -29402,30 +29509,30 @@ Jokio:Jokio9 ACCRA-sur ;
 Jokisalo:Joki^salo9 ACCRA-sur ;
 Jokitalo:Joki^talo9 ACCRA-sur ;
 Joppe ACCRA-plc ;
-Joppejávri:Joppe^jáv'ri MARJA-plc ;
-Joppevárri:Joppe^várri MARJA-plc ;
+Joppejávri:Joppe^jáv'ri MARJA-I-plc ;
+Joppevárri:Joppe^várri MARJA-I-plc ;
 Joramo:Joramo9 NYSTØ ;
 Joret:Joreg ANAR-mal ;
 Joret:Joreh ANAR-mal ;
 Joro:Joro9 ACCRA-sur ;
-Jorrenjárga:Jorre^njár'ga MARJA-plc ;
-Josát-Per-várri+Use/Sub:Josát-Per-várri MARJA-plc ; !
+Jorrenjárga:Jorre^njár'ga MARJA-A-plc ;
+Josát-Per-várri+Use/Sub:Josát-Per-várri MARJA-I-plc ; !
 Josát:Josáb BERN-mal ;
 Jouko:Jouko9 ACCRA-mal ;
-Jovnnajeaggi:Jovnna^jeaggi MARJA-plc ;
-Jovnnajohka:Jovnna^joh'ka MARJA-plc ;
-Jovnnajávri:Jovnna^jáv'ri MARJA-plc ;
-Jovnnanjárga:Jovnna^njár'ga MARJA-plc ;
-Jovnnavárri:Jovnna^várri MARJA-plc ;
+Jovnnajeaggi:Jovnna^jeaggi MARJA-I-plc ;
+Jovnnajohka:Jovnna^joh'ka MARJA-A-plc ;
+Jovnnajávri:Jovnna^jáv'ri MARJA-I-plc ;
+Jovnnanjárga:Jovnna^njár'ga MARJA-A-plc ;
+Jovnnavárri:Jovnna^várri MARJA-I-plc ;
 Jovnnaš:Jovnnaž ANAR-mal ;
-Jovssebajohka:Jovsseba^joh'ka MARJA-plc ;
-Jovssebajávri:Jovsseba^jáv'ri MARJA-plc ;
+Jovssebajohka:Jovsseba^joh'ka MARJA-A-plc ;
+Jovssebajávri:Jovsseba^jáv'ri MARJA-I-plc ;
 Jovssut:Jovssub ANAR-mal ;
 João:João9 ACCRA-plc ;
 Jošafat BERN-mal ;
 Jošia ACCRA-mal ;
 Juho:Juho9 ACCRA-mal ;
-Juhánjávri:Juhán^jáv'ri MARJA-plc ;
+Juhánjávri:Juhán^jáv'ri MARJA-I-plc ;
 Julevsámegiel:Julev^sáme^giel FirstTag ;
 Julio:Julio9 ACCRA-mal ;
 Jumisko:Jumisko9 ACCRA-plc ;
@@ -29434,46 +29541,46 @@ Junnonaho:Junnon^aho9 ACCRA-sur ;
 Juno:Juno9 ACCRA-fem ;
 Junossuando:Junos^su^ando9 ACCRA-LOAN-plc ;
 Junosuando:Juno^su^ando9 ACCRA-LOAN-plc ;
-Juntejeaggi:Junte^jeaggi MARJA-plc ;
-Juntejohka:Junte^joh'ka MARJA-plc ;
-Juntevađđa:Junte^vađđa MARJA-plc ;
-Junttejohka:Juntte^joh'ka MARJA-plc ; !FIN
-Junttejávri:Juntte^jáv'ri MARJA-plc ;
-Junttenjárga:Juntte^njár'ga MARJA-plc ;
-Junttenuorri:Juntte^nuorri MARJA-plc ; !FIN
-Junttevággi:Juntte^vággi MARJA-plc ;
+Juntejeaggi:Junte^jeaggi MARJA-I-plc ;
+Juntejohka:Junte^joh'ka MARJA-A-plc ;
+Juntevađđa:Junte^vađđa MARJA-A-plc ;
+Junttejohka:Juntte^joh'ka MARJA-A-plc ; !FIN
+Junttejávri:Juntte^jáv'ri MARJA-I-plc ;
+Junttenjárga:Juntte^njár'ga MARJA-A-plc ;
+Junttenuorri:Juntte^nuorri MARJA-I-plc ; !FIN
+Junttevággi:Juntte^vággi MARJA-I-plc ;
 Juntto:Juntto9 ACCRA-sur ;
-Juovlavuotna:Juovla^vuotna MARJA-plc ;
-Jussenaš:Jussenažž HEANDARAT-mal ; ! MARJA 
-Jussávađđa:Jussá^vađđa MARJA-plc ;
-Justiisa MARJA-org ;
-Justiisadepartemeanta:Justiisa^departemean'ta MARJA-org ;
-Justiisalávdegoddi:Justiisa^lávde^goddi MARJA-org ;
+Juovlavuotna:Juovla^vuotna MARJA-A-plc ;
+Jussenaš:Jussenažž HEANDARAT-mal ;  
+Jussávađđa:Jussá^vađđa MARJA-A-plc ;
+Justiisa MARJA-A-org ;
+Justiisadepartemeanta:Justiisa^departemean'ta MARJA-A-org ;
+Justiisalávdegoddi:Justiisa^lávde^goddi MARJA-I-org ;
 Justiisaministtar:Justiisa^minis'tar DUORTNUS-mal ;
-Justislávdegoddi:Justis^lávde^goddi MARJA-org ;
+Justislávdegoddi:Justis^lávde^goddi MARJA-I-org ;
 Jusát:Jusáb ANAR-mal ;
 Juurakko:Juurakko9 ACCRA-sur ;
 Juuso:Juuso9 ACCRA-sur ;
-Juvvájohka:Juvvá^joh'ka MARJA-plc ; !FIN
+Juvvájohka:Juvvá^joh'ka MARJA-A-plc ; !FIN
 Juššan-Lemet:Juššan-Lemeh ANAR-mal ;
-Jyllánda:Jyl^lán'da MARJA-plc ;
+Jyllánda:Jyl^lán'da MARJA-A-plc ;
 Jágo:Jágo9 ACCRA-sur ;
 Jágát:Jágáb ANAR-mal ;
 Jáhkobačohkat:Jáhkoba^čohkka ALEUHTAT-plc ;
-Jáhkogohppi:Jáhko^gohppi MARJA-plc ;
-Jáhkovuotna:Jáhko^vuotna MARJA-plc ;
-Jámtlánda+Use/Sub:Jámt^lán'da MARJA-plc ; !
+Jáhkogohppi:Jáhko^gohppi MARJA-I-plc ;
+Jáhkovuotna:Jáhko^vuotna MARJA-A-plc ;
+Jámtlánda+Use/Sub:Jámt^lán'da MARJA-A-plc ; !
 Jánoš:Jánož ANAR-mal ;
 Jávo:Jávo9 ACCRA-sur ;
-Jávrebainjárga:Jávre^bai^njár'ga MARJA-plc ;
-Jämtlanda+Use/Sub:Jämt^lan'da MARJA-plc ; !
+Jávrebainjárga:Jávre^bai^njár'ga MARJA-A-plc ;
+Jämtlanda+Use/Sub:Jämt^lan'da MARJA-A-plc ; !
 Jämtlands:Jämt^lands FirstTag ;
-Jämtlánda:Jämt^lán'da MARJA-plc ;
-Jämtánda+Use/Sub:Jämt^án'da MARJA-plc ; !
+Jämtlánda:Jämt^lán'da MARJA-A-plc ;
+Jämtánda+Use/Sub:Jämt^án'da MARJA-A-plc ; !
 Järvilehto:Järvi^lehto9 ACCRA-sur ;
 Järvisalo:Järvi^salo9 ACCRA-sur ;
 Järvitalo:Järvi^talo9 ACCRA-sur ;
-Jæmtelánda+Use/Sub:Jæmte^lán'da MARJA-plc ; !
+Jæmtelánda+Use/Sub:Jæmte^lán'da MARJA-A-plc ; !
 Jönköpings:Jön^köpings FirstTag ;
 Kaakko:Kaakko9 ACCRA-sur ;
 Kaario:Kaario9 ACCRA-sur ;
@@ -29488,10 +29595,10 @@ Kaipio:Kaipio9 ACCRA-sur ;
 Kairo:Kairo9 ACCRA-plc ;
 Kaisko:Kaisko9 ACCRA-plc ;
 Kaisto:Kaisto9 ACCRA-mal ;
-Kaivosjávri:Kaivos^jáv'ri MARJA-plc ; !FIN
+Kaivosjávri:Kaivos^jáv'ri MARJA-I-plc ; !FIN
 Kakko:Kakko9 ACCRA-sur ;
 Kalervo:Kalervo9 ACCRA-mal ;
-Kalifornianjárga:Kalifornia^njár'ga MARJA-plc ;
+Kalifornianjárga:Kalifornia^njár'ga MARJA-A-plc ;
 Kallio:Kallio9 ACCRA-plc ;
 Kalliosalo:Kallio^salo9 ACCRA-sur ;
 Kallo:Kallo9 ACCRA-plc ;
@@ -29513,10 +29620,10 @@ Kansanaho:Kansan^aho9 ACCRA-sur ;
 Kanto:Kanto9 ACCRA-sur ;
 Kantoluoto:Kanto^luoto9 ACCRA-sur ;
 Kap+CmpN/None:Kap9 FirstTag ; !
-Karamearra:Kara^mearra MARJA-plc ;
-Karašjohka+Use/Sub:Karaš^joh'ka MARJA-plc ; !
+Karamearra:Kara^mearra MARJA-A-plc ;
+Karašjohka+Use/Sub:Karaš^joh'ka MARJA-A-plc ; !
 Karesuando:Kare^su^ando9 ACCRA-LOAN-plc ;
-Karibiamearra:Karibia^mearra MARJA-plc ;
+Karibiamearra:Karibia^mearra MARJA-A-plc ;
 Kariluoto:Kari^luoto9 ACCRA-sur ;
 Karjaluoto:Karja^luoto9 ACCRA-sur ;
 Karlo:Karlo9 ACCRA-mal ;
@@ -29545,10 +29652,10 @@ Keijonen:Keijo C-FI-NEN-sur ;
 Keiko:Keiko9 ACCRA-fem ;
 Kelo:Kelo9 ACCRA-sur ;
 Kemerovo:Kemerovo9 ACCRA-plc ;
-Keopspyramiida:Ke^ops^pyramij'da MARJA-obj ;
+Keopspyramiida:Ke^ops^pyramij'da MARJA-A-obj ;
 Keppo:Keppo9 ACCRA-sur ;
 Kero:Kero9 ACCRA-sur ;
-Keräsjávri:Keräs^jáv'ri MARJA-plc ; !FIN
+Keräsjávri:Keräs^jáv'ri MARJA-I-plc ; !FIN
 Keräskero:Keräskero9 ACCRA-plc ;
 Keskitalo:Keski^talo9 ACCRA-sur ;
 Keso:Keso9 ACCRA-sur ;
@@ -29556,9 +29663,9 @@ Ketkesuando:Ketke^su^ando9 ACCRA-plc ;
 Keto:Keto9 ACCRA-sur ;
 Kibo:Kibo9 NYSTØ ;
 Kidjo:Kidjo9 ACCRA-sur ;
-Kielkanála:Kiel^kanála MARJA-obj ;
+Kielkanála:Kiel^kanála MARJA-A-obj ;
 Kiinná:Kijnná MARJA-plc ;
-Kiinnámearra:Kiinná^mearra MARJA-plc ;
+Kiinnámearra:Kiinná^mearra MARJA-A-plc ;
 Kilimanjaro:Kilimanjaro9 ACCRA-plc ;
 Kilimanžaro:Kilimanžaro9 ACCRA-plc ;
 Kimmo:Kimmo9 ACCRA-mal ;
@@ -29567,7 +29674,7 @@ Kingo:Kingo9 ACCRA-sur ;
 Kippo:Kippo9 ACCRA-sur ;
 Kirkhusmo:Kirk^hus^mo9 NYSTØ ;
 Kiviaho:Kivi^aho9 ACCRA-sur ;
-Kivijoganjárga:Kivi^joga^njár'ga MARJA-plc ; !FIN
+Kivijoganjárga:Kivi^joga^njár'ga MARJA-A-plc ; !FIN
 Kivikko:Kivikko9 ACCRA-plc ;
 Kivilompolo:Kivi^lompolo9 ACCRA-plc ;
 Kiviluoto:Kivi^luoto9 ACCRA-sur ;
@@ -29594,12 +29701,12 @@ Kommunes FirstTag ;
 Komodo:Komodo9 ACCRA-plc ;
 Komšilov BERN-sur ;
 Kongo:Kongo9 ACCRA-plc ;
-Kongoeatnu:Kongo^eatnu MARJA-plc ;
+Kongoeatnu:Kongo^eatnu MARJA-U-plc ;
 Kontio:Kontio9 ACCRA-sur ;
 Kontro:Kontro9 ACCRA-sur ;
 Kontto:Kontto9 ACCRA-sur ;
 Kopparbergs:Koppar^bergs FirstTag ;
-Korintkanála:Korint^kanála MARJA-obj ;
+Korintkanála:Korint^kanála MARJA-A-obj ;
 Korkalo:Korkalo9 ACCRA-sur ;
 Korkea-aho:Korkea-aho9 ACCRA-sur ;
 Korkia-aho:Korkia-aho9 ACCRA-sur ;
@@ -29611,7 +29718,7 @@ Korpilombolo:Korpi^lombolo9 ACCRA-plc ;
 Korpisalo:Korpi^salo9 ACCRA-sur ;
 Korpo:Korpo9 ACCRA-sur ;
 Korsmo:Kors^mo9 NYSTØ ;
-Korállamearra:Korálla^mearra MARJA-plc ;
+Korállamearra:Korálla^mearra MARJA-A-plc ;
 Kosamo:Kosamo9 ACCRA-sur ;
 Kosciusko:Kosci^usko9 ACCRA-plc ;
 Koskamo:Koskamo9 ACCRA-sur ;
@@ -29626,7 +29733,7 @@ Kotiaho:Koti^aho9 ACCRA-sur ;
 Kotiteollisuusjärjestöjen% keskusliitto:Koti^teollisuus^järjestöjen% keskus^liitto9 ACCRA-org ;
 Kotro:Kotro9 ACCRA-sur ;
 Kouvo:Kouvo9 ACCRA-sur ;
-Kovenleahki:Koven^leah'ki MARJA-plc ;
+Kovenleahki:Koven^leah'ki MARJA-I-plc ;
 Kovensuolu:Koven^suollu DAVVISUOLU-plc ;
 Kovero:Kovero9 ACCRA-sur ;
 Kristent FirstTag ;
@@ -29644,7 +29751,7 @@ Kulo:Kulo9 ACCRA-mal ;
 Kumamoto:Kumamoto9 ACCRA-plc ;
 Kuopio:Kuopio9 ACCRA-plc ;
 Kurko:Kurko9 ACCRA-sur ; !And obj
-Kurlánda:Kur^lán'da MARJA-plc ;
+Kurlánda:Kur^lán'da MARJA-A-plc ;
 Kuroshio:Kuroshio9 ACCRA-plc ;
 Kurttio:Kurttio9 ACCRA-sur ;
 Kuuppo:Kuuppo9 ACCRA-sur ;
@@ -29661,22 +29768,22 @@ Kwando:Kwando9 ACCRA-plc ;
 Kwango:Kwango9 ACCRA-plc ;
 Kynsilehto:Kynsi^lehto9 ACCRA-sur ;
 Kyoto:Ky^oto9 ACCRA-plc ;
-Káhppa MARJA-plc ;
+Káhppa MARJA-A-plc ;
 Káisá:Káj'sá MARJA-fem ;
-Káreluokta:Káre^luok'ta MARJA-plc ;
-Kárásjohka+Use/Sub:Kárás^joh'ka MARJA-plc ; !
-Kárášjohka:Káráš^joh'ka MARJA-plc ;
-Káspiamearra:Káspia^mearra MARJA-plc ;
+Káreluokta:Káre^luok'ta MARJA-A-plc ;
+Kárásjohka+Use/Sub:Kárás^joh'ka MARJA-A-plc ; !
+Kárášjohka:Káráš^joh'ka MARJA-A-plc ;
+Káspiamearra:Káspia^mearra MARJA-A-plc ;
 Käpyaho:Käpy^aho9 ACCRA-sur ;
 Kåfjord% kommune ACCRA-LOAN-org ;
-Kåvenjohka:Kåven^joh'ka MARJA-plc ;
+Kåvenjohka:Kåven^joh'ka MARJA-A-plc ;
 Laakko:Laakko9 ACCRA-sur ;
 Laakso:Laakso9 ACCRA-sur ;
 Laalo:Laalo9 ACCRA-sur ;
 Laapio:Laapio9 ACCRA-sur ;
-Labradormearra:Labrador^mearra MARJA-plc ;
-Ladnesunda+Use/Sub:Ladne^sun'da MARJA-plc ; !
-Ladoga+Use/Sub:Ladoga MARJA-plc ; !
+Labradormearra:Labrador^mearra MARJA-A-plc ;
+Ladnesunda+Use/Sub:Ladne^sun'da MARJA-A-plc ; !
+Ladoga+Use/Sub:Ladoga MARJA-A-plc ; !
 LagasRadio:Lagas^Radio9 ACCRA-org ;
 Lago:Lago9 ACCRA-plc ;
 Lahdensuo:Lahden^suo9 ACCRA-sur ;
@@ -29688,7 +29795,7 @@ Laivo:Laivo9 ACCRA-sur ;
 Laksefiskeri:Lakse^fiskeri FirstTag ;
 Lakso:Lakso9 ACCRA-plc ;
 Lallo:Lallo9 ACCRA-sur ;
-Lambertjiehkki:Lambert^jiehkki MARJA-plc ;
+Lambertjiehkki:Lambert^jiehkki MARJA-I-plc ;
 Lamminaho:Lammin^aho9 ACCRA-plc ;
 Lampio:Lampio9 ACCRA-sur ;
 Landro:Landro9 ACCRA-plc ;
@@ -29697,8 +29804,8 @@ Langmo:Lang^mo9 NYSTØ ;
 Lango:Lango9 ACCRA-sur ;
 Lantto:Lantto9 ACCRA-sur ;
 Lappiske FirstTag ;
-Lapplanda+Use/Sub:Lapp^lan'da MARJA-plc ; !
-Lapplánda:Lapp^lán'da MARJA-plc ;
+Lapplanda+Use/Sub:Lapp^lan'da MARJA-A-plc ; !
+Lapplánda:Lapp^lán'da MARJA-A-plc ;
 Laredo:Laredo9 ACCRA-plc ;
 Laten-Amerihkká+Use/Sub:Laten-Amerihkká SUOPMA-plc ;!
 Laten-Amerihká+Use/Sub:Laten-Amerihká ACCRA-plc ; !
@@ -29707,12 +29814,12 @@ Latin-Amerihká+Use/Sub:Latin-Amerihká ACCRA-plc ; !
 Latvalehto:Latva^lehto9 ACCRA-sur ;
 Laulajainen:Laulajai C-FI-NEN-sur ;
 Lazio:Lazio9 ACCRA-mal ;
-Leaibevuotna:Leaibe^vuotna MARJA-plc ;
-Leammojohka:Leammo^joh'ka MARJA-plc ;
-Leammonurki:Leammo^nur'ki MARJA-plc ;
-Leavdnja MARJA-plc ;
-Leavdnjavuotna:Leavdnja^vuotna MARJA-plc ;
-Leavvajohka:Leavva^joh'ka MARJA-plc ;
+Leaibevuotna:Leaibe^vuotna MARJA-A-plc ;
+Leammojohka:Leammo^joh'ka MARJA-A-plc ;
+Leammonurki:Leammo^nur'ki MARJA-I-plc ;
+Leavdnja MARJA-A-plc ;
+Leavdnjavuotna:Leavdnja^vuotna MARJA-A-plc ;
+Leavvajohka:Leavva^joh'ka MARJA-A-plc ;
 Lehmuskallio:Lehmus^kallio9 ACCRA-sur ;
 Lehmusto:Lehmusto9 ACCRA-sur ;
 Lehtisalo:Lehti^salo9 ACCRA-sur ;
@@ -29724,9 +29831,9 @@ Lemet:Lemeh ANAR-mal ;
 Lemetaš-Piera ACCRA-mal ;
 Lemgo:Lemgo9 ACCRA-plc ;
 Lemmo:Lemmo9 ACCRA-sur ;
-Lemmoroavvi:Lemmo^roavvi MARJA-plc ; !FIN
-Lemmájeaggi:Lemmá^jeaggi MARJA-plc ;
-Lenaeatnu:Lena^eatnu MARJA-plc ;
+Lemmoroavvi:Lemmo^roavvi MARJA-I-plc ; !FIN
+Lemmájeaggi:Lemmá^jeaggi MARJA-I-plc ;
+Lenaeatnu:Lena^eatnu MARJA-U-plc ;
 Lento:Lento9 ACCRA-plc ;
 Leo:Leo9 ACCRA-mal ;
 Leonardo:Leonardo9 ACCRA-mal ;
@@ -29738,7 +29845,7 @@ Lessebo:Lesse^bo9 ACCRA-plc ;
 Levo:Levo9 ACCRA-sur ;
 Liao:Li^ao9 ACCRA-mal ;
 Liemmajoen% Anni ACCRA-obj ;
-Liidnavuotna:Liidna^vuotna MARJA-plc ;
+Liidnavuotna:Liidna^vuotna MARJA-A-plc ;
 Likssjuo:Liks^sjuo9 ACCRA-plc ;
 Lillebo:Lille^bo9 ACCRA-sur ;
 Lillemo:Lille^mo9 NYSTØ ;
@@ -29747,12 +29854,12 @@ Lindbo:Lind^bo9 NYSTØ ;
 Linko:Linko9 ACCRA-sur ;
 Linkukero:Linkukero9 ACCRA-plc ;
 Linkupalo:Linkupalo9 ACCRA-plc ;
-Linájávri:Liná^jáv'ri MARJA-plc ;
+Linájávri:Liná^jáv'ri MARJA-I-plc ;
 Lippo:Lippo9 ACCRA-sur ;
 Lisačomat:Lisa^čopma ALEUHTAT-plc ; !FIN
 Litto:Litto9 ACCRA-org ;
 Liukko:Liukko9 ACCRA-sur ;
-Livlánda:Liv^lán'da MARJA-plc ;
+Livlánda:Liv^lán'da MARJA-A-plc ;
 Livorno:Livorno9 ACCRA-plc ;
 Ljono:Ljono9 ACCRA-plc ;
 Llandudno:L^landudno9 ACCRA-plc ;
@@ -29762,72 +29869,72 @@ Loabát:Loabág ANAR-plc ;
 Lobito:Lobito9 ACCRA-plc ;
 Locarno:Locarno9 ACCRA-plc ;
 Lodegat:Lodeg EATNAMAT-plc ;
-Lofuohta MARJA-plc ;
+Lofuohta MARJA-A-plc ;
 Logroño:Logroño9 ACCRA-plc ;
-Lohelajeaggi:Lohela^jeaggi MARJA-plc ; !FIN
+Lohelajeaggi:Lohela^jeaggi MARJA-I-plc ; !FIN
 Lohelaája:Lohela^ád'jag8 GUOLBBA-plc ; !FIN
 Lompolo:Lompolo9 ACCRA-plc ;
-Lossavárri:Lossa^várri MARJA-plc ;
+Lossavárri:Lossa^várri MARJA-I-plc ;
 Lotto:Lotto9 ACCRA-org ;
 Louko:Louko9 ACCRA-plc ;
 Lourenço:Lourenço9 ACCRA-plc ;
 Lovavdelingens:Lov^avdelingens FirstTag ;
 Lovozero:Lovozero9 ACCRA-plc ;
 Loččá ACCRA-fem ;
-Lufuohta+Use/Sub:Lufuohta MARJA-plc ; !
+Lufuohta+Use/Sub:Lufuohta MARJA-A-plc ; !
 Lugano:Lugano9 ACCRA-plc ;
 Lugo:Lugo9 ACCRA-plc ;
 Luhanko:Luhanko9 ACCRA-plc ;
 Luiro:Luiro9 ACCRA-plc ;
-Lujávri:Lu^jáv'ri MARJA-plc ;
+Lujávri:Lu^jáv'ri MARJA-I-plc ;
 Lulip FirstTag ;
 Lulip:Lulip9 FirstTag ;
 Lulli FirstTag ;
-Lullipola:Lulli^pola MARJA-plc ;
+Lullipola:Lulli^pola MARJA-A-plc ;
 Lumiaho:Lumi^aho9 ACCRA-sur ;
 Lumio:Lumio9 ACCRA-sur ;
 Lundamo:Lunda^mo9 NYSTØ ;
 Lundemo:Lunde^mo9 NYSTØ ;
 Luoma-aho:Luoma-aho9 ACCRA-sur ;
-Luonddu#hálddašan#direktoráhtta MARJA-org ;
-Luonddugáhttensearvi:Luonddu^gáhtten^sear'vi MARJA-org ;
+Luonddu#hálddašan#direktoráhtta MARJA-A-org ;
+Luonddugáhttensearvi:Luonddu^gáhtten^sear'vi MARJA-I-org ;
 Luoto:Luoto9 ACCRA-plc ;
 Luukko:Luukko9 ACCRA-sur ;
 Lyftingsmo:Lyftings^mo9 NYSTØ-plc ;
 Lyngmo:Lyng^mo9 NYSTØ ;
-Lágesvuotna:Láges^vuotna MARJA-plc ;
+Lágesvuotna:Láges^vuotna MARJA-A-plc ;
 Láhpoluoppal:Láhpo^luobbal DUORTNUS-plc ;
-Láila:Láj'la MARJA-fem ;
-Láillágorži:Láillá^gor'ži MARJA-plc ;
+Láila:Láj'la MARJA-A-fem ;
+Láillágorži:Láillá^gor'ži MARJA-I-plc ;
 Láilá:Láj'lá MARJA-fem ;
-Lákkovuotna:Lákko^vuotna MARJA-plc ;
-Lárasjávri:Láras^jáv'ri MARJA-plc ;
-Lássejávri:Lásse^jáv'ri MARJA-plc ; !FIN
-Lásseluokta:Lásse^luok'ta MARJA-plc ;
-Lásseroavejeaggi:Lásse^roave^jeaggi MARJA-plc ; !FIN
+Lákkovuotna:Lákko^vuotna MARJA-A-plc ;
+Lárasjávri:Láras^jáv'ri MARJA-I-plc ;
+Lássejávri:Lásse^jáv'ri MARJA-I-plc ; !FIN
+Lásseluokta:Lásse^luok'ta MARJA-A-plc ;
+Lásseroavejeaggi:Lásse^roave^jeaggi MARJA-I-plc ; !FIN
 Lásseroavveája:Lásse^roavve^ád'jag8 GUOLBBA-plc ; !FIN
-Lásseroavvi:Lásse^roavvi MARJA-plc ; !FIN
-Lásserášša:Lásse^ráš'ša MARJA-plc ;
-Lássevággi:Lásse^vággi MARJA-plc ;
-Lássevárri:Lásse^várri MARJA-plc ;
+Lásseroavvi:Lásse^roavvi MARJA-I-plc ; !FIN
+Lásserášša:Lásse^ráš'ša MARJA-A-plc ;
+Lássevággi:Lásse^vággi MARJA-I-plc ;
+Lássevárri:Lásse^várri MARJA-I-plc ;
 Lávrrahaš:Lávrrahažž HEANDARAT-mal ;
-Lávrrejohka:Lávrre^joh'ka MARJA-plc ; !FIN
+Lávrrejohka:Lávrre^joh'ka MARJA-A-plc ; !FIN
 Lávrrohaš:Lávrrohažž HEANDARAT-mal ;
 Lähdeaho:Lähde^aho9 ACCRA-sur ;
 Maatti#vuono:Maatti#vuono9 ACCRA-plc ;
 Macao:Macao9 ACCRA-plc ;
-Madeira+Use/Sub:Madeira MARJA-plc ; !
-Magellannuorri:Magellan^nuorri MARJA-plc ;
+Madeira+Use/Sub:Madeira MARJA-A-plc ; !
+Magellannuorri:Magellan^nuorri MARJA-I-plc ;
 Mahlakaarto:Mahlakaarto9 ACCRA-sur ;
 Maijanen:Maija C-FI-NEN-sur ;
 Maijen:Maijen9 LONDON-fem ;
-Majavajohka:Majava^joh'ka MARJA-plc ; !FIN
-Majavaskáidi:Majava^skáj'di MARJA-plc ; !FIN
+Majavajohka:Majava^joh'ka MARJA-A-plc ; !FIN
+Majavaskáidi:Majava^skáj'di MARJA-I-plc ; !FIN
 Majoinen:Majoi C-FI-NEN-sur ;
 Majuro:Majuro9 ACCRA-plc ;
 Malabo:Malabo9 ACCRA-plc ;
-Malla:Mal'la MARJA-plc ; !FIN
-Mallajohka:Malla^joh'ka MARJA-plc ; !FIN
+Malla:Mal'la MARJA-A-plc ; !FIN
+Mallajohka:Malla^joh'ka MARJA-A-plc ; !FIN
 Malo:Malo9 ACCRA-plc ;
 Mamre MARJA-plc ; !http://en.wikipedia.org/wiki/Mamre
 Manasse SIJTE-mal ; !Also sur, but not in our corpus, yet
@@ -29842,26 +29949,26 @@ Marcello:Marcello9 ACCRA-sur ;
 Marco:Marco9 ACCRA-mal ;
 Mareno:Mareno9 ACCRA-plc ;
 Margido:Margido9 ACCRA-mal ;
-Margåppi+Use/Sub:Mar^gåppi MARJA-plc ; !
+Margåppi+Use/Sub:Mar^gåppi MARJA-I-plc ; !
 Maribo:Maribo9 ACCRA-plc ;
 Mariero:Mari^ero9 ACCRA-sur ;
 Marino:Marino9 ACCRA-plc ;
 Marko:Marko9 ACCRA-mal ;
 Marokko:Marokko9 ACCRA-plc ;
 Martimo:Martimo9 ACCRA-sur ;
-Mashonalánda:Mashona^lán'da MARJA-plc ;
+Mashonalánda:Mashona^lán'da MARJA-A-plc ;
 Matero:Matero9 ACCRA-sur ;
 Matinlompolo:Matin^lompolo9 ACCRA-plc ;
 Mato:Mato9 ACCRA-plc ;
 Mattit+Use/Sub:Mattit FirstTag ; !?
 Matto:Matto9 ACCRA-mal ;
-Mattusnjunni+Use/Sub:Mattus^njunni MARJA-plc ; !
+Mattusnjunni+Use/Sub:Mattus^njunni MARJA-I-plc ; !
 Mauno:Mauno9 ACCRA-mal ;
 Mayo:Ma^yo9 ACCRA-plc ;
 Maš BERN-sur ;
 Mc+CmpN/None:Mc FirstTag ; !
-Meavke-Arvenjárga+Use/Sub:Meavke-Arve^njár'ga MARJA-plc ; !
-Meavki-Arvenjárga:Meavki-Arve^njár'ga MARJA-plc ;
+Meavke-Arvenjárga+Use/Sub:Meavke-Arve^njár'ga MARJA-A-plc ; !
+Meavki-Arvenjárga:Meavki-Arve^njár'ga MARJA-A-plc ;
 Mefisto:Mefisto9 ACCRA-mal ;
 Mehto:Mehto9 ACCRA-sur ;
 Meksiko:Meksiko9 ACCRA-plc ;
@@ -29886,47 +29993,47 @@ Mešek LONDON-plc ;
 Miaš:Mi^až PLACE-DIM-ani ;
 Michelangelo:Michelangelo9 ACCRA-mal ;
 Midlands:Mid^lands BERN-plc ;
-Mielli:Miel'li MARJA-plc ;
-Miennagohppi:Mienna^gohppi MARJA-plc ;
-Miennajohka:Mienna^joh'ka MARJA-plc ;
-Miennajávri:Mienna^jáv'ri MARJA-plc ;
+Mielli:Miel'li MARJA-I-plc ;
+Miennagohppi:Mienna^gohppi MARJA-I-plc ;
+Miennajohka:Mienna^joh'ka MARJA-A-plc ;
+Miennajávri:Mienna^jáv'ri MARJA-I-plc ;
 Miennaluoppal:Mienna^luobbal DUORTNUS-plc ;
-Miennavuotna:Mienna^vuotna MARJA-plc ;
-Miennavárri:Mienna^várri MARJA-plc ;
-Miennačohkka:Mienna^čohkka MARJA-plc ;
-Mierojávri:Miero^jáv'ri MARJA-plc ;
+Miennavuotna:Mienna^vuotna MARJA-A-plc ;
+Miennavárri:Mienna^várri MARJA-I-plc ;
+Miennačohkka:Mienna^čohkka MARJA-A-plc ;
+Mierojávri:Miero^jáv'ri MARJA-I-plc ;
 Migoš:Migož ANAR-mal ;
 Migáš:Migáž ANAR-mal ;
-Mihkiljohka:Mihkil^joh'ka MARJA-plc ;
-Mihkiljávri:Mihkil^jáv'ri MARJA-plc ;
+Mihkiljohka:Mihkil^joh'ka MARJA-A-plc ;
+Mihkiljávri:Mihkil^jáv'ri MARJA-I-plc ;
 Mihkkalaš:Mihkkalažž HEANDARAT-mal ;
-Mihkkalgohppi:Mihkkal^gohppi MARJA-plc ;
-Mihkkaljávri:Mihkkal^jáv'ri MARJA-plc ;
-Mihkkalnjárga:Mihkkal^njár'ga MARJA-plc ;
-Mihkkaloaivi:Mihkkal^oaj'vi MARJA-plc ; !FIN
-Mihkkalrášša:Mihkkal^ráš'ša MARJA-plc ;
-Mihkkalvárri:Mihkkal^várri MARJA-plc ;
+Mihkkalgohppi:Mihkkal^gohppi MARJA-I-plc ;
+Mihkkaljávri:Mihkkal^jáv'ri MARJA-I-plc ;
+Mihkkalnjárga:Mihkkal^njár'ga MARJA-A-plc ;
+Mihkkaloaivi:Mihkkal^oaj'vi MARJA-I-plc ; !FIN
+Mihkkalrášša:Mihkkal^ráš'ša MARJA-A-plc ;
+Mihkkalvárri:Mihkkal^várri MARJA-I-plc ;
 Mihkkelaš:Mihkkelažž HEANDARAT-mal ;
-Mihkkeljávri:Mihkkel^jáv'ri MARJA-plc ;
-Mihkkelroavvi:Mihkkel^roavvi MARJA-plc ;
-Mihkojávri:Mihko^jáv'ri MARJA-plc ;
-Mihkujohka:Mihku^joh'ka MARJA-plc ; !FIN
-Mihkujávri:Mihku^jáv'ri MARJA-plc ; !FIN
+Mihkkeljávri:Mihkkel^jáv'ri MARJA-I-plc ;
+Mihkkelroavvi:Mihkkel^roavvi MARJA-I-plc ;
+Mihkojávri:Mihko^jáv'ri MARJA-I-plc ;
+Mihkujohka:Mihku^joh'ka MARJA-A-plc ; !FIN
+Mihkujávri:Mihku^jáv'ri MARJA-I-plc ; !FIN
 Mikkalaš:Mikkalažž HEANDARAT-mal ;
 Mikko:Mikko9 ACCRA-mal ;
 Milano:Milano9 ACCRA-plc ;
-Millaguoika:Milla^guoi'ka MARJA-plc ;
-Millajohka:Milla^joh'ka MARJA-plc ;
+Millaguoika:Milla^guoi'ka MARJA-A-plc ;
+Millajohka:Milla^joh'ka MARJA-A-plc ;
 Min+CmpN/None:Min FirstTag ; !
 Mindanao:Mindanao9 ACCRA-mal ;
 Mindoro:Mindoro9 ACCRA-plc ;
 Minho:Minho9 ACCRA-plc ;
-Missourieatnu:Missouri^eatnu MARJA-plc ;
-Mittellandakanála+Use/Sub:Mittel^landa^kanála MARJA-obj ; !
-Mittellandkanála:Mittel^land^kanála MARJA-obj ;
+Missourieatnu:Missouri^eatnu MARJA-U-plc ;
+Mittellandakanála+Use/Sub:Mittel^landa^kanála MARJA-A-obj ; !
+Mittellandkanála:Mittel^land^kanála MARJA-A-obj ;
 Mišma ACCRA-plc ;
-Mjøsajávri:Mjøsa^jáv'ri MARJA-plc ;
-Mjøslávdegoddi:Mjøs^lávde^goddi MARJA-org ;
+Mjøsajávri:Mjøsa^jáv'ri MARJA-I-plc ;
+Mjøslávdegoddi:Mjøs^lávde^goddi MARJA-I-org ;
 Mo+CmpN/None:Mo9 NYSTØ-plc ; !
 MoDo:MoDo9 ACCRA-org ;
 Modesto:Modesto9 ACCRA-plc ;
@@ -29941,63 +30048,63 @@ Monaco:Monaco9 ACCRA-plc ;
 Montenegro:Montenegro9 ACCRA-plc ;
 Montevideo:Montevideo9 ACCRA-plc ;
 Monto:Monto9 ACCRA-plc ;
-Morganjávri:Morgan^jáv'ri MARJA-plc ; !FIN
+Morganjávri:Morgan^jáv'ri MARJA-I-plc ; !FIN
 Morkemo:Morke^mo9 NYSTØ ;
-Mortengeađggenjárga:Morten^geađgge^njár'ga MARJA-plc ;
-Mosambikkanála:Mosambik^kanála MARJA-obj ;
+Mortengeađggenjárga:Morten^geađgge^njár'ga MARJA-A-plc ;
+Mosambikkanála:Mosambik^kanála MARJA-A-obj ;
 Moscow% Art% Trio:Moscow% Art% Trio9 ACCRA-org ;
-Moskavuotna:Moska^vuotna MARJA-plc ;
+Moskavuotna:Moska^vuotna MARJA-A-plc ;
 Mosko:Mosko9 ACCRA-plc ; !sub?
-Movssesnjárga:Movsses^njár'ga MARJA-plc ;
-Mumivággi:Mumi^vággi MARJA-plc ;
-Mummivággi:Mummi^vággi MARJA-plc ;
+Movssesnjárga:Movsses^njár'ga MARJA-A-plc ;
+Mumivággi:Mumi^vággi MARJA-I-plc ;
+Mummivággi:Mummi^vággi MARJA-I-plc ;
 Munkebro:Munke^bro9 ACCRA-plc ;
 Muonio:Muonio9 ACCRA-LOAN-plc ;
 Muosát:Muosá VARGGAT-plc ;
-Muotkkenjárga:Muotkke^njár'ga MARJA-plc ;
+Muotkkenjárga:Muotkke^njár'ga MARJA-A-plc ;
 Murano:Murano9 ACCRA-plc ;
-Murmánska:Murmáns'ka MARJA-plc ;
+Murmánska:Murmáns'ka MARJA-A-plc ;
 Murto:Murto9 ACCRA-plc ;
 Mussalo:Mussalo9 ACCRA-plc ;
 Mustakallio:Musta^kallio9 ACCRA-sur ;
 Mustakero:Mustakero9 ACCRA-plc ;
 Myllyaho:Mylly^aho9 ACCRA-sur ;
 Mággádievvá:Mággá^dievvá MARJA-plc ; !FIN
-Mággájohka:Mággá^joh'ka MARJA-plc ;
-Máhkarávju:Máhkaráv'ju MARJA-plc ;
+Mággájohka:Mággá^joh'ka MARJA-A-plc ;
+Máhkarávju:Máhkaráv'ju MARJA-U-plc ;
 Máhtedievvá:Máhte^dievvá MARJA-plc ; !FIN
 Máhtegeavŋŋis:Máhte^geavgŋis GEAVNNIS-plc ; !FIN
-Máhtejeaggi:Máhte^jeaggi MARJA-plc ;
-Máhtejohka:Máhte^joh'ka MARJA-plc ;
-Máhtejávri:Máhte^jáv'ri MARJA-plc ; !FIN
-Máhteleahki:Máhte^leah'ki MARJA-plc ; !FIN
+Máhtejeaggi:Máhte^jeaggi MARJA-I-plc ;
+Máhtejohka:Máhte^joh'ka MARJA-A-plc ;
+Máhtejávri:Máhte^jáv'ri MARJA-I-plc ; !FIN
+Máhteleahki:Máhte^leah'ki MARJA-I-plc ; !FIN
 Máhteoaivvit:Máhte^oaj'vi ALEUHTAT-plc ; !FIN
 Máhttegeavŋŋis:Máhtte^geavgŋis GEAVNNIS-plc ;
 Máijan:Máijan9 LONDON-fem ; ! is this correct, or is it Essive?
 Máijá:Máj'já MARJA-fem ;
-Mákkágálgojávri:Mákká^gálgo^jáv'ri MARJA-plc ;
-Mákkágálgooaivi:Mákká^gálgo^oaj'vi MARJA-plc ;
-Mákkájávri:Mákká^jáv'ri MARJA-plc ;
-Mákkáluokta:Mákká^luok'ta MARJA-plc ;
+Mákkágálgojávri:Mákká^gálgo^jáv'ri MARJA-I-plc ;
+Mákkágálgooaivi:Mákká^gálgo^oaj'vi MARJA-I-plc ;
+Mákkájávri:Mákká^jáv'ri MARJA-I-plc ;
+Mákkáluokta:Mákká^luok'ta MARJA-A-plc ;
 Mákkásavu:Mákká^savvun8 GUOLBBA-plc ; !FIN
-Mákkávárri:Mákká^várri MARJA-plc ;
+Mákkávárri:Mákká^várri MARJA-I-plc ;
 Mákkáája:Mákká^ád'jag8 GUOLBBA-plc ; !FIN
 Mákredáža ACCRA-fem ;
-Málatvuopmi:Málat^vuopmi MARJA-plc ;
-Málatvuotna:Málat^vuotna MARJA-plc ;
-Mánnevárnjárga:Mánne^vár^njár'ga MARJA-plc ;
-Máregohppi:Máre^gohppi MARJA-plc ;
-Márgget-Ellejávri+Use/Sub:Márgget-Elle^jáv'ri MARJA-plc ; !
-Márjjájeaggi:Márjjá^jeaggi MARJA-plc ; !FIN
+Málatvuopmi:Málat^vuopmi MARJA-I-plc ;
+Málatvuotna:Málat^vuotna MARJA-A-plc ;
+Mánnevárnjárga:Mánne^vár^njár'ga MARJA-A-plc ;
+Máregohppi:Máre^gohppi MARJA-I-plc ;
+Márgget-Ellejávri+Use/Sub:Márgget-Elle^jáv'ri MARJA-I-plc ; !
+Márjjájeaggi:Márjjá^jeaggi MARJA-I-plc ; !FIN
 Márkománák:Márko^máná SKANIK-org ;
-Mártejohka:Márte^joh'ka MARJA-plc ;
-Mártevárri:Márte^várri MARJA-plc ;
-Márttejávri:Mártte^jáv'ri MARJA-plc ;
-Márttenjunni:Mártte^njunni MARJA-plc ;
-Márttenjárga:Mártte^njár'ga MARJA-plc ; !FIN
-Mávnnosjohka:Mávnnos^joh'ka MARJA-plc ;
-Mávnnosoaivi:Mávnnos^oaj'vi MARJA-plc ;
-Mávnnosčahca:Mávnnos^čah'ca MARJA-plc ;
+Mártejohka:Márte^joh'ka MARJA-A-plc ;
+Mártevárri:Márte^várri MARJA-I-plc ;
+Márttejávri:Mártte^jáv'ri MARJA-I-plc ;
+Márttenjunni:Mártte^njunni MARJA-I-plc ;
+Márttenjárga:Mártte^njár'ga MARJA-A-plc ; !FIN
+Mávnnosjohka:Mávnnos^joh'ka MARJA-A-plc ;
+Mávnnosoaivi:Mávnnos^oaj'vi MARJA-I-plc ;
+Mávnnosčahca:Mávnnos^čah'ca MARJA-A-plc ;
 Máze MARJA-plc ; !In this the ill. is Mázii as it should be
 Mäkiaho:Mäki^aho9 ACCRA-sur ;
 Mäkipelto:Mäki^pelto9 ACCRA-sur ;
@@ -30006,24 +30113,24 @@ Mäkitalo:Mäki^talo9 ACCRA-sur ;
 Mäntysalo:Mänty^salo9 ACCRA-sur ;
 Märak:Mära BALAK-sur ;
 Måske:Mås'ke MARJA-plc ;
-Måvsesnjárga:Måvses^njár'ga MARJA-plc ;
+Måvsesnjárga:Måvses^njár'ga MARJA-A-plc ;
 México:México9 ACCRA-plc ;
 NATO:NATO ACCRA-org ;
 NAVO:NAVO ACCRA-obj ;
 Nafiš LONDON-plc ;
-Nanabealjohka:Nana^beal^joh'ka MARJA-plc ; !FIN
-Nanabealjávri:Nana^beal^jáv'ri MARJA-plc ; !FIN
-Narviika:Nar^vij'ka MARJA-plc ;
-Nasserjávri:Nasser^jáv'ri MARJA-plc ;
+Nanabealjohka:Nana^beal^joh'ka MARJA-A-plc ; !FIN
+Nanabealjávri:Nana^beal^jáv'ri MARJA-I-plc ; !FIN
+Narviika:Nar^vij'ka MARJA-A-plc ;
+Nasserjávri:Nasser^jáv'ri MARJA-I-plc ;
 Nataša ACCRA-fem ;
 Nato:Nato9 ACCRA-org ;
-Naumdølafylka:Naum^døla^fyl'ka MARJA-plc ;
+Naumdølafylka:Naum^døla^fyl'ka MARJA-A-plc ;
 Navaho:Navaho9 ACCRA-obj ;
 Navajo:Navajo9 ACCRA-plc ;
 Navarro:Navarro9 ACCRA-plc ;
 Navo:Navo9 ACCRA-obj ;
-Neanjunni:Nea^njunni MARJA-plc ;
-Nederlánda:Neder^lán'da MARJA-plc ;
+Neanjunni:Nea^njunni MARJA-I-plc ;
+Nederlánda:Neder^lán'da MARJA-A-plc ;
 Nedertanens FirstTag ;
 Negro:Negro9 ACCRA-plc ;
 Neidens FirstTag ;
@@ -30033,65 +30140,65 @@ Nevo:Nevo9 ACCRA-sur ;
 Ngo:Ngo9 NYSTØ-plc ;
 Ngoro:Ngoro9 ACCRA-plc ;
 Nicko:Nicko9 ACCRA-mal ;
-Nieidavággi:Nieida^vággi MARJA-plc ;
+Nieidavággi:Nieida^vággi MARJA-I-plc ;
 Niemiaho:Niemi^aho9 ACCRA-sur ;
 Niemitalo:Niemi^talo9 ACCRA-sur ;
 Niesakero:Niesakero9 ACCRA-plc ;
-Nihkávađđa:Nihká^vađđa MARJA-plc ; !FIN
+Nihkávađđa:Nihká^vađđa MARJA-A-plc ; !FIN
 Niihkko:Niihkko9 ACCRA-plc ;
 Niiladeanoluoppal:Niila^deano^luobbal DUORTNUS-plc ;
-Niilaeatnogáddi:Niila^eatno^gáddi MARJA-plc ;
-Niilaeatnu:Niila^eatnu MARJA-plc ;
-Niilagáddi:Niila^gáddi MARJA-plc ;
-Niilasjávri+Use/Sub:Niilas^jáv'ri MARJA-plc ; !
-Niiles-Máhte-njárga+Use/Sub:Niiles-Máhte-njár'ga MARJA-plc ; !
-Niillasjávri:Niillas^jáv'ri MARJA-plc ;
+Niilaeatnogáddi:Niila^eatno^gáddi MARJA-I-plc ;
+Niilaeatnu:Niila^eatnu MARJA-U-plc ;
+Niilagáddi:Niila^gáddi MARJA-I-plc ;
+Niilasjávri+Use/Sub:Niilas^jáv'ri MARJA-I-plc ; !
+Niiles-Máhte-njárga+Use/Sub:Niiles-Máhte-njár'ga MARJA-A-plc ; !
+Niillasjávri:Niillas^jáv'ri MARJA-I-plc ;
 Niilo:Niilo9 ACCRA-mal ;
-Niiláčohkka:Niilá^čohkka MARJA-plc ;
+Niiláčohkka:Niilá^čohkka MARJA-A-plc ;
 Niinisalo:Niini^salo9 ACCRA-plc ;
 Niitovuopio:Niito^vuopio9 ACCRA-sur ;
 Niittyvuopio:Niitty^vuopio9 ACCRA-sur ;
 Nikken LONDON-mal ;
 Nikko:Nikko9 ACCRA-mal ;
 Niko:Niko9 ACCRA-mal ;
-Nillájávri:Nillá^jáv'ri MARJA-plc ;
-Nillávárri:Nillá^várri MARJA-plc ; !FIN
+Nillájávri:Nillá^jáv'ri MARJA-I-plc ;
+Nillávárri:Nillá^várri MARJA-I-plc ; !FIN
 Nilo:Nilo9 ACCRA-mal ;
 Nils-Biehtár FirstTag ;
-Nils-Biehtár-jávri+Use/Sub:Nils-Biehtár-jáv'ri MARJA-plc ; !
+Nils-Biehtár-jávri+Use/Sub:Nils-Biehtár-jáv'ri MARJA-I-plc ; !
 Ningbo:Ning^bo9 ACCRA-plc ;
 Nino:Nino9 ACCRA-mal ;
 Nirkko:Nirkko9 ACCRA-sur ;
 Njellin+Use/Sub:Njellim ANAR-plc ; !
 Njuorggán:Njuorggám ANAR-plc ; !FIN
-Njárga-Buljojávri:Njárga-Buljo^jáv'ri MARJA-plc ;
+Njárga-Buljojávri:Njárga-Buljo^jáv'ri MARJA-I-plc ;
 Njávdán:Njávdám ANAR-plc ;
-Noaidi:Noaj'di MARJA-plc ;
-Noammervággi:Noammer^vággi MARJA-plc ;
+Noaidi:Noaj'di MARJA-I-plc ;
+Noammervággi:Noammer^vággi MARJA-I-plc ;
 Nordfinlands:Nord^fin^lands FirstTag ;
 Nordhuglo:Nord^huglo9 NYSTØ ;
-Nordkáhppa:Nord^káhppa MARJA-plc ;
+Nordkáhppa:Nord^káhppa MARJA-A-plc ;
 Nordlandia% Kautokeino:Nord^landia% Kauto^keino9 ACCRA-org ;
-Nordlánda:Nord^lán'da MARJA-plc ;
+Nordlánda:Nord^lán'da MARJA-A-plc ;
 Nordmo:Nord^mo9 NYSTØ ;
-Nordmørafylka:Nord^møra^fyl'ka MARJA-plc ;
+Nordmørafylka:Nord^møra^fyl'ka MARJA-A-plc ;
 Nordstrøno:Nord^strøno9 ACCRA-plc ;
-Norga:Nor'ga MARJA-plc ;
+Norga:Nor'ga MARJA-A-plc ;
 Norges-gruppen:Norges-gruppen9 LONDON-org ;
-Norggamearra:Norgga^mearra MARJA-plc ;
-Norlánda:Nor^lán'da MARJA-plc ;
+Norggamearra:Norgga^mearra MARJA-A-plc ;
+Norlánda:Nor^lán'da MARJA-A-plc ;
 Noro:Noro9 ACCRA-sur ;
 Norrbottens:Norr^bottens FirstTag ;
-Norrlánda:Norr^lán'da MARJA-plc ;
+Norrlánda:Norr^lán'da MARJA-A-plc ;
 Northcape:North^cape FirstTag ;
 Nossebro:Nosse^bro9 ACCRA-plc ;
 Novaja:Novaja FirstTag ;
 Nuccio:Nuccio9 ACCRA-mal ;
 Nuevo:Nuevo9 ACCRA-plc ;
-Nuoraidlávdegoddi:Nuoraid^lávde^goddi MARJA-org ;
-NuortaFinnmárku+Use/Sub:NuortaFinnmár'ku MARJA-plc ; !
-Nuortamearra:Nuorta^mearra MARJA-plc ;
-Nuortariika:Nuorta^rij'ka MARJA-plc ;
+Nuoraidlávdegoddi:Nuoraid^lávde^goddi MARJA-I-org ;
+NuortaFinnmárku+Use/Sub:NuortaFinnmár'ku MARJA-U-plc ; !
+Nuortamearra:Nuorta^mearra MARJA-A-plc ;
+Nuortariika:Nuorta^rij'ka MARJA-A-plc ;
 Nuotio:Nuotio9 ACCRA-sur ;
 Nurmio:Nurmio9 ACCRA-sur ;
 Nurmisto:Nurmisto9 ACCRA-sur ;
@@ -30099,27 +30206,27 @@ Nurmo:Nurmo9 ACCRA-plc ;
 Nurro:Nurro9 ACCRA-sur ;
 Nussir ANAR-plc ;
 Nuvttejávrrit:Nuvtte^jáv'ri VARGGAT-plc ;
-Nuvttenjárga:Nuvtte^njár'ga MARJA-plc ; !FIN
-Nyasalánda:Ny^asa^lán'da MARJA-plc ;
+Nuvttenjárga:Nuvtte^njár'ga MARJA-A-plc ; !FIN
+Nyasalánda:Ny^asa^lán'da MARJA-A-plc ;
 Nyco:Nyco9 ACCRA-org ;
 Nymo:Ny^mo9 NYSTØ ;
-Nárviika+Use/Sub:Nár^vij'ka MARJA-plc ; !
-Návuotna:Ná^vuotna MARJA-plc ;
+Nárviika+Use/Sub:Nár^vij'ka MARJA-A-plc ; !
+Návuotna:Ná^vuotna MARJA-A-plc ;
 OOSMO:OOSMO ACCRA-org ;
-Oaggovuotna:Oaggo^vuotna MARJA-plc ;
-Oahpahus#direktoráhtta MARJA-org ;
-Oalgevárri:Oalge^várri MARJA-plc ;
+Oaggovuotna:Oaggo^vuotna MARJA-A-plc ;
+Oahpahus#direktoráhtta MARJA-A-org ;
+Oalgevárri:Oalge^várri MARJA-I-plc ;
 Oarje+Use/Sub:Oarje FirstTag ; !
-Oazessainjárga:Oazes^sai^njár'ga MARJA-plc ;
+Oazessainjárga:Oazes^sai^njár'ga MARJA-A-plc ;
 Obihiro:Obihiro9 ACCRA-plc ;
 Ockelbo:Ockel^bo9 NYSTØ-plc ;
-Ofuohta:O^fuohta MARJA-plc ;
+Ofuohta:O^fuohta MARJA-A-plc ;
 Ogbomosho:Ogbomosho9 ACCRA-plc ;
-Ohcejohka:Ohce^joh'ka MARJA-plc ; !FIN
-Ohcejotnjálbmi+Use/Sub:Ohce^jot^njálbmi MARJA-plc ; !
+Ohcejohka:Ohce^joh'ka MARJA-A-plc ; !FIN
+Ohcejotnjálbmi+Use/Sub:Ohce^jot^njálbmi MARJA-I-plc ; !
 Ohio:Ohio9 ACCRA-plc ;
-Ohioeatnu:Ohio^eatnu MARJA-plc ;
-Ohotamearra:Ohota^mearra MARJA-plc ;
+Ohioeatnu:Ohio^eatnu MARJA-U-plc ;
+Ohotamearra:Ohota^mearra MARJA-A-plc ;
 Ohra-aho:Ohra-aho9 ACCRA-sur ;
 Ohvo:Ohvo9 ACCRA-plc ;
 Oivo:Oivo9 ACCRA-sur ;
@@ -30131,15 +30238,15 @@ Okavango:Okavango9 ACCRA-plc ;
 Okko:Okko9 ACCRA-plc ;
 Olgeš#bellodat:Olgeš#bellodah'k HEANDARAT-org ;
 Olgeš:Olgež ANAR-org ;
-Olgoriikadepartemeanta:Olgo^riika^departemean'ta MARJA-org ;
+Olgoriikadepartemeanta:Olgo^riika^departemean'ta MARJA-A-org ;
 Ollanketo:Ollanketo9 ACCRA-sur ;
-Ollevárri:Olle^várri MARJA-plc ;
+Ollevárri:Olle^várri MARJA-I-plc ;
 Ollitervo:Ollitervo9 ACCRA-sur ;
-Olmmaivággi+Use/Sub:Olmmai^vággi MARJA-plc ; !
-Olmmáivággi:Olmmái^vággi MARJA-plc ;
-Omasvuotna:Omas^vuotna MARJA-plc ;
+Olmmaivággi+Use/Sub:Olmmai^vággi MARJA-I-plc ; !
+Olmmáivággi:Olmmái^vággi MARJA-I-plc ;
+Omasvuotna:Omas^vuotna MARJA-A-plc ;
 Ombo:Ombo9 ACCRA-sur ;
-Ommaluokta:Omma^luok'ta MARJA-plc ;
+Ommaluokta:Omma^luok'ta MARJA-A-plc ;
 Ommot:Ommod ANAR-mal ;
 Onkalo:Onkalo9 ACCRA-sur ;
 Onkamo:Onkamo9 ACCRA-plc ;
@@ -30147,9 +30254,9 @@ Ono:Ono9 ACCRA-sur ;
 Ontario:Ontario9 ACCRA-plc ;
 Oosmo:Oosmo9 ACCRA-org ;
 Oporto:Oporto9 ACCRA-plc ;
-Opplánda:Opp^lán'da MARJA-plc ;
+Opplánda:Opp^lán'da MARJA-A-plc ;
 Orinoco:Orinoco9 ACCRA-plc ;
-Orkdølafylka:Orkdøla^fyl'ka MARJA-plc ;
+Orkdølafylka:Orkdøla^fyl'ka MARJA-A-plc ;
 Orlando:Orlando9 ACCRA-plc ;
 Oshogbo:Oshog^bo9 ACCRA-plc ;
 Oslo:Oslo9 ACCRA-plc ;
@@ -30158,14 +30265,14 @@ Otranto:Otranto9 ACCRA-plc ;
 Otto:Otto9 ACCRA-mal ;
 Ovddádus#bellodat:Ovddádus#bellodah'k HEANDARAT-org ;
 Oviedo:Ovi^edo9 ACCRA-plc ;
-Ovlinjávri:Ovlin^jáv'ri MARJA-plc ;
-Ovlinvárri:Ovlin^várri MARJA-plc ;
+Ovlinjávri:Ovlin^jáv'ri MARJA-I-plc ;
+Ovlinvárri:Ovlin^várri MARJA-I-plc ;
 Ovllágoahteguolbba:Ovllá^goahte^guol'ban8 GUOLBBA-plc ; !FIN
-Ovlláriehppi:Ovllá^riehppi MARJA-plc ;
+Ovlláriehppi:Ovllá^riehppi MARJA-I-plc ;
 Ovllásavu:Ovllá^savvun8 GUOLBBA-plc ; !FIN
 Ovlláš:Ovlláž ANAR-mal ;
 Ozero:Ozero9 ACCRA-plc ;
-Ođasmahttindepartemeanta:Ođasmahttin^departemean'ta MARJA-org ;
+Ođasmahttindepartemeanta:Ođasmahttin^departemean'ta MARJA-A-org ;
 Ođđa FirstTag ;
 Paasio:Paasio9 ACCRA-sur ;
 Paaso:Paaso9 ACCRA-sur ;
@@ -30183,12 +30290,12 @@ Palo:Palo9 ACCRA-sur ;
 Paloheimo:Palo^heimo9 ACCRA-sur ;
 Paltto:Paltto9 ACCRA-sur ;
 Palvio:Palvio9 ACCRA-sur ;
-Panama+Use/Sub:Panama MARJA-plc ; !
-Panamakanála:Panama^kanála MARJA-obj ;
+Panama+Use/Sub:Panama MARJA-A-plc ; !
+Panamakanála:Panama^kanála MARJA-A-obj ;
 Pango:Pango9 ACCRA-plc ;
 Papinaho:Papin^aho9 ACCRA-sur ;
 Paramaribo:Paramaribo9 ACCRA-plc ;
-Pariisa:Parij'sa MARJA-plc ;
+Pariisa:Parij'sa MARJA-A-plc ;
 Parkko:Parkko9 ACCRA-sur ;
 Partio:Partio9 ACCRA-sur ;
 Paso:Paso9 ACCRA-plc ;
@@ -30214,9 +30321,9 @@ Peurakaltio:Peurakaltio9 ACCRA-plc ;
 Pečora ACCRA-plc ;
 Pharo:Pharo9 ACCRA-plc ;
 Picasso:Picasso9 ACCRA-sur ;
-Pierajohka:Piera^joh'ka MARJA-plc ;
-Pierajávri:Piera^jáv'ri MARJA-plc ;
-Pieraskáidi:Piera^skáj'di MARJA-plc ;
+Pierajohka:Piera^joh'ka MARJA-A-plc ;
+Pierajávri:Piera^jáv'ri MARJA-I-plc ;
+Pieraskáidi:Piera^skáj'di MARJA-I-plc ;
 Piippo:Piippo9 ACCRA-sur ;
 Piirto:Piirto9 ACCRA-sur ;
 Pikko:Pikko9 ACCRA-sur ;
@@ -30234,29 +30341,29 @@ Pitkäaho:Pitkä^aho9 ACCRA-sur ;
 Pizarro:Pizarro9 ACCRA-plc ;
 Pluto:Pluto9 ACCRA-obj ;
 Po+CmpN/None:Po9 ACCRA-mal ; !
-Poastajeaggi:Poasta^jeaggi MARJA-plc ;
-Poastajohka:Poasta^joh'ka MARJA-plc ;
+Poastajeaggi:Poasta^jeaggi MARJA-I-plc ;
+Poastajohka:Poasta^joh'ka MARJA-A-plc ;
 Podujevo:Podujevo9 ACCRA-plc ;
 Pohjanheimo:Pohjan^heimo9 ACCRA-sur ;
 Pohjanpalo:Pohjan^palo9 ACCRA-sur ;
 Pohjanraito:Pohjan^raito9 ACCRA-sur ;
-Pohjasjeaggi:Pohjas^jeaggi MARJA-plc ; !FIN
+Pohjasjeaggi:Pohjas^jeaggi MARJA-I-plc ; !FIN
 Pohjasjeakkejogaš:Pohjas^jeakke^jogaž PLACE-DIM-plc ; !FIN
-Pohjasjeakkejávri:Pohjas^jeakke^jáv'ri MARJA-plc ; !FIN
+Pohjasjeakkejávri:Pohjas^jeakke^jáv'ri MARJA-I-plc ; !FIN
 Pohjoisaho:Pohjois^aho9 ACCRA-plc ;
 Pohto:Pohto9 ACCRA-sur ;
 Polo:Polo9 ACCRA-sur ;
-Polska:Pols'ka MARJA-plc ;
+Polska:Pols'ka MARJA-A-plc ;
 Polso:Polso9 ACCRA-plc ;
 Porko:Porko9 ACCRA-plc ;
-Porsa:Por'sa MARJA-plc ;
-Porsáŋgguvuotna:Porsáŋggu^vuotna MARJA-plc ;
-Porsáŋgu:Porsáŋ'gu MARJA-plc ;
+Porsa:Por'sa MARJA-A-plc ;
+Porsáŋgguvuotna:Porsáŋggu^vuotna MARJA-A-plc ;
+Porsáŋgu:Porsáŋ'gu MARJA-U-plc ;
 Porto-Novo:Porto-Novo9 ACCRA-plc ;
 Porto:Porto9 ACCRA-plc ;
-Portugála MARJA-plc ;
+Portugála MARJA-A-plc ;
 Porvoo:Porvoo9 ACCRA-plc ;
-Poršáŋgu+Use/Sub:Poršáŋ'gu MARJA-plc ; !
+Poršáŋgu+Use/Sub:Poršáŋ'gu MARJA-U-plc ; !
 Posio:Posio9 ACCRA-plc ;
 Poulsbo+Use/Sub:Pouls^bo9 NYSTØ-plc ; !
 Poulsbo:Pouls^bo9 ACCRA-plc ;
@@ -30267,7 +30374,7 @@ Pressefoto:Presse^foto9 ACCRA-obj ;
 Prestbakmo:Prest^bak^mo9 NYSTØ-plc ;
 Priština ACCRA-plc ;
 Provo:Provo9 ACCRA-plc ;
-Psoriasissearvi:Psoriasis^sear'vi MARJA-org ;
+Psoriasissearvi:Psoriasis^sear'vi MARJA-I-org ;
 Pueblo:Pueblo9 ACCRA-mal ;
 Puerto:Puerto9 ACCRA-plc ;
 Puhto:Puhto9 ACCRA-sur ;
@@ -30280,9 +30387,9 @@ Purtilo:Purtilo9 ACCRA-sur ;
 Putto:Putto9 ACCRA-sur ;
 Putumayo:Putuma^yo9 ACCRA-plc ;
 Puukko:Puukko9 ACCRA-sur ;
-Puukkojohka:Puukko^joh'ka MARJA-plc ; !FIN
-Puukkojávri:Puukko^jáv'ri MARJA-plc ; !FIN
-Puukkovárri:Puukko^várri MARJA-plc ; !FIN
+Puukkojohka:Puukko^joh'ka MARJA-A-plc ; !FIN
+Puukkojávri:Puukko^jáv'ri MARJA-I-plc ; !FIN
+Puukkovárri:Puukko^várri MARJA-I-plc ; !FIN
 Puutio:Puutio9 ACCRA-sur ;
 Pyhäluoto:Pyhä^luoto9 ACCRA-sur ;
 Pyysalo:Pyy^salo9 ACCRA-sur ;
@@ -30296,7 +30403,7 @@ Querétaro:Querétaro9 ACCRA-plc ;
 Quezaltenango:Quezaltenango9 ACCRA-plc ;
 Quito:Quito9 ACCRA-plc ;
 Radio:Radio9 ACCRA-org ;
-Radiumhospitála:Radi^um^hospitála MARJA-obj ;
+Radiumhospitála:Radi^um^hospitála MARJA-A-obj ;
 Rafto:Rafto9 ACCRA-sur ;
 Rahko:Rahko9 ACCRA-mal ;
 Rahnasto:Rahnasto9 ACCRA-sur ;
@@ -30318,21 +30425,21 @@ Rantakaulio:Ranta^kaulio9 ACCRA-sur ;
 Rantakokko:Ranta^kokko9 ACCRA-sur ;
 Rantasalo:Ranta^salo9 ACCRA-sur ;
 Rantatalo:Ranta^talo9 ACCRA-sur ;
-Rantačielgi:Ranta^čiel'gi MARJA-plc ; !FIN
+Rantačielgi:Ranta^čiel'gi MARJA-I-plc ; !FIN
 Rantio:Rantio9 ACCRA-sur ;
 Ranto:Ranto9 ACCRA-sur ;
 Rapakko:Rapakko9 ACCRA-sur ;
 Rapo:Rapo9 ACCRA-sur ;
 Raukko:Raukko9 ACCRA-sur ;
 Raumo:Raumo9 NYSTØ ;
-Raumsdølafylka:Raums^døla^fyl'ka MARJA-plc ;
+Raumsdølafylka:Raums^døla^fyl'ka MARJA-A-plc ;
 Raunio:Raunio9 ACCRA-sur ;
 Rauno:Rauno9 ACCRA-mal ;
 Rautasalo:Rauta^salo9 ACCRA-sur ;
 Rautio:Rautio9 ACCRA-sur ;
 Ravlo:Ravlo9 ACCRA-sur ;
-Ravnajávri+Use/Sub:Ravna^jáv'ri MARJA-plc ; !
-Reaisavuotna:Reaisa^vuotna MARJA-plc ;
+Ravnajávri+Use/Sub:Ravna^jáv'ri MARJA-I-plc ; !
+Reaisavuotna:Reaisa^vuotna MARJA-A-plc ;
 RealAudio:Real^Audio9 ACCRA-obj ;
 Reggio:Reggio9 ACCRA-plc ;
 Reijo:Reijo9 ACCRA-mal ;
@@ -30345,31 +30452,31 @@ Remo:Remo9 ACCRA-plc ;
 Renko:Renko9 ACCRA-plc ;
 Renmælmo:Renmælmo9 ACCRA-sur ;
 Repo:Repo9 ACCRA-mal ;
-Rettaoaivi:Retta^oaj'vi MARJA-plc ;
+Rettaoaivi:Retta^oaj'vi MARJA-I-plc ;
 Ricardo:Ricardo9 ACCRA-mal ;
 Rico:Rico9 ACCRA-mal ;
-Riddu MARJA-plc ;
+Riddu MARJA-U-plc ;
 Riderbo:Riderbo9 NYSTØ-sur ;
 Riekko:Riekko9 ACCRA-sur ;
 Riesto:Riesto9 ACCRA-sur ;
-Riestovárri:Riesto^várri MARJA-plc ;
-Riffanvággi:Riffan^vággi MARJA-plc ;
+Riestovárri:Riesto^várri MARJA-I-plc ;
+Riffanvággi:Riffan^vággi MARJA-I-plc ;
 Rift FirstTag ;
 Riho:Riho9 ACCRA-mal ;
 Rihtáluoppal:Rihtá^luobbal DUORTNUS-plc ; !FIN
-Rihtánjárga:Rihtá^njár'ga MARJA-plc ; !FIN
-Rihtáoaivi:Rihtá^oaj'vi MARJA-plc ; !FIN
-Rihtávárri:Rihtá^várri MARJA-plc ;
-Rihtáčielgi:Rihtá^čiel'gi MARJA-plc ; !FIN
-Rihtáčohkka:Rihtá^čohkka MARJA-plc ; !FIN
-Rihtáčopma:Rihtá^čopma MARJA-plc ; !FIN
-Riidonjárga:Riido^njár'ga MARJA-plc ;
+Rihtánjárga:Rihtá^njár'ga MARJA-A-plc ; !FIN
+Rihtáoaivi:Rihtá^oaj'vi MARJA-I-plc ; !FIN
+Rihtávárri:Rihtá^várri MARJA-I-plc ;
+Rihtáčielgi:Rihtá^čiel'gi MARJA-I-plc ; !FIN
+Rihtáčohkka:Rihtá^čohkka MARJA-A-plc ; !FIN
+Rihtáčopma:Rihtá^čopma MARJA-A-plc ; !FIN
+Riidonjárga:Riido^njár'ga MARJA-A-plc ;
 Riihiaho:Riihi^aho9 ACCRA-sur ;
-Riikagárdejávri:Riika^gárde^jáv'ri MARJA-plc ; !FIN
-Riikagárdevárri:Riika^gárde^várri MARJA-plc ; !FIN
-Rikshospitála:Riks^hospitála MARJA-obj ;
-Rikskonsearta:Riks^konsear'ta MARJA-org ;
-Riksrevišuvdna:Riks^revišuvdna MARJA-org ;
+Riikagárdejávri:Riika^gárde^jáv'ri MARJA-I-plc ; !FIN
+Riikagárdevárri:Riika^gárde^várri MARJA-I-plc ; !FIN
+Rikshospitála:Riks^hospitála MARJA-A-obj ;
+Rikskonsearta:Riks^konsear'ta MARJA-A-org ;
+Riksrevišuvdna:Riks^revišuvdna MARJA-A-org ;
 Rimbo:Rim^bo9 ACCRA-plc ;
 Ringo:Ringo9 ACCRA-mal ;
 RinneRadio:Rinne^Radio9 ACCRA-org ;
@@ -30378,71 +30485,71 @@ Rinta-aho:Rinta-^aho9 ACCRA-sur ;
 Rio% de% Janeiro+CmpN/None:Rio% de% Janeiro9 ACCRA-plc ;
 Rio:Rio9 ACCRA-plc ;
 Ristaduottar:Rista^duoddar DUORTNUS-plc ;
-Ristenjohka:Risten^joh'ka MARJA-plc ;
-Ristenjávri:Risten^jáv'ri MARJA-plc ;
-Ristenvárri:Risten^várri MARJA-plc ;
+Ristenjohka:Risten^joh'ka MARJA-A-plc ;
+Ristenjávri:Risten^jáv'ri MARJA-I-plc ;
+Ristenvárri:Risten^várri MARJA-I-plc ;
 Risto:Risto9 ACCRA-mal ;
 Rivaldo:Rivaldo9 ACCRA-sur ;
-Roavvegieddi:Roavve^gieddi MARJA-plc ;
-Roavvenjárga:Roavve^njár'ga MARJA-plc ; !FIN
+Roavvegieddi:Roavve^gieddi MARJA-I-plc ;
+Roavvenjárga:Roavve^njár'ga MARJA-A-plc ; !FIN
 Roberto:Roberto9 ACCRA-mal ;
 Rodolfo:Rodolfo9 ACCRA-mal ;
-Rogalánda:Roga^lán'da MARJA-plc ;
+Rogalánda:Roga^lán'da MARJA-A-plc ;
 Rognmo:Rogn^mo9 NYSTØ ;
 Roigáivo:Roi^gái'vo MARJA-plc ;
 Roisko:Roisko9 ACCRA-sur ;
 Roitto:Roitto9 ACCRA-sur ;
 Rollo:Rollo9 ACCRA-plc ;
 Romeo:Romeo9 ACCRA-mal ;
-Romsa:Rom'sa MARJA-plc ;
-Romssavággi:Romssa^vággi MARJA-plc ;
+Romsa:Rom'sa MARJA-A-plc ;
+Romssavággi:Romssa^vággi MARJA-I-plc ;
 Ronaldo:Ronaldo9 ACCRA-sur ;
 Roo:Roo9 ACCRA-plc ;
 Ropo:Ropo9 ACCRA-sur ;
 Rosario:Rosario9 ACCRA-mal ;
-Rossmearra:Ross^mearra MARJA-plc ;
+Rossmearra:Ross^mearra MARJA-A-plc ;
 Rovio:Rovio9 ACCRA-sur ;
 Roš BERN-sur ;
 Roškov LONDON-sur ;
 Rudolfo:Rudolfo9 ACCRA-mal ;
 Rugaš ANAR-sur ;
-Ruhtadandepartemeanta:Ruhtadan^departemean'ta MARJA-org ;
-Ruikkajávri:Ruikka^jáv'ri MARJA-plc ; !FIN
-Ruikkaoaivi:Ruikka^oaj'vi MARJA-plc ; !FIN
+Ruhtadandepartemeanta:Ruhtadan^departemean'ta MARJA-A-org ;
+Ruikkajávri:Ruikka^jáv'ri MARJA-I-plc ; !FIN
+Ruikkaoaivi:Ruikka^oaj'vi MARJA-I-plc ; !FIN
 Ruikkaája:Ruikka^ád'jag8 GUOLBBA-plc ; !FIN
 Ruippo:Ruippo9 ACCRA-sur ;
 Ruissalo:Ruis^salo9 ACCRA-plc ;
 Rukolompolo:Ruko^lompolo9 ACCRA-plc ;
-Ruksesmearra:Rukses^mearra MARJA-plc ;
+Ruksesmearra:Rukses^mearra MARJA-A-plc ;
 Ruoho:Ruoho9 ACCRA-sur ;
 Ruokamo:Ruokamo9 ACCRA-sur ;
 Ruokso:Ruokso9 ACCRA-ani ;
-Ruonáeatnanmearra:Ruoná^eatnan^mearra MARJA-plc ;
-Ruoppajohka:Ruoppa^joh'ka MARJA-plc ;
+Ruonáeatnanmearra:Ruoná^eatnan^mearra MARJA-A-plc ;
+Ruoppajohka:Ruoppa^joh'ka MARJA-A-plc ;
 Ruoppat:Ruoppah ANAR-plc ;
-Ruoppavárri:Ruoppa^várri MARJA-plc ; !FIN
-Ruotta+Use/Sub:Ruotta MARJA-plc ; !
+Ruoppavárri:Ruoppa^várri MARJA-I-plc ; !FIN
+Ruotta+Use/Sub:Ruotta MARJA-A-plc ; !
 Ruoŧŧa SUOPMA-plc ;
 Ruoŧŧa+Use/Sub:Ruoŧ'ŧa SUOPMA-plc ; !
-Ruošša:Ruoš'ša MARJA-plc ;
-Ruoššanjárga:Ruošša^njár'ga MARJA-plc ;
-Rygjafylka:Rygja^fyl'ka MARJA-plc ;
-Ráidenjárga:Ráide^njár'ga MARJA-plc ;
+Ruošša:Ruoš'ša MARJA-A-plc ;
+Ruoššanjárga:Ruošša^njár'ga MARJA-A-plc ;
+Rygjafylka:Rygja^fyl'ka MARJA-A-plc ;
+Ráidenjárga:Ráide^njár'ga MARJA-A-plc ;
 Ráipásaš:Ráipásažž HEANDARAT-plc ;
 Ráipásjávrrit:Ráipás^jáv'ri VARGGAT-plc ;
-Ráisa:Ráj'sa MARJA-plc ;
-Ránska+Use/Sub:Ráns'ka MARJA-plc ; !
+Ráisa:Ráj'sa MARJA-A-plc ;
+Ránska+Use/Sub:Ráns'ka MARJA-A-plc ; !
 Rástegáisá:Ráste^gáj'sá MARJA-plc ;
-Rástejeaggi:Ráste^jeaggi MARJA-plc ;
+Rástejeaggi:Ráste^jeaggi MARJA-I-plc ;
 Rásteluoppal:Ráste^luobbal DUORTNUS-plc ;
 Rástoš:Rástož ANAR-mal ;
 Rásttoš:Rásttož ANAR-mal ;
-Rávdojohnjárga:Rávdo^joh^njár'ga MARJA-plc ;
-Rávnnajohka:Rávnna^joh'ka MARJA-plc ;
-Rávnnajávri:Rávnna^jáv'ri MARJA-plc ;
-Rávnnánjárga:Rávnná^njár'ga MARJA-plc ; !FIN
-Råttuvagnjárga+Use/Sub:Råttu^vag^njár'ga MARJA-plc ; !
-Råvvenjárga+Use/Sub:Råvve^njár'ga MARJA-plc ; !
+Rávdojohnjárga:Rávdo^joh^njár'ga MARJA-A-plc ;
+Rávnnajohka:Rávnna^joh'ka MARJA-A-plc ;
+Rávnnajávri:Rávnna^jáv'ri MARJA-I-plc ;
+Rávnnánjárga:Rávnná^njár'ga MARJA-A-plc ; !FIN
+Råttuvagnjárga+Use/Sub:Råttu^vag^njár'ga MARJA-A-plc ; !
+Råvvenjárga+Use/Sub:Råvve^njár'ga MARJA-A-plc ; !
 Río:Río9 ACCRA-plc ;
 Rødekro:Røde^kro9 ACCRA-obj ;
 Rømo:Rømo9 NYSTØ ;
@@ -30459,7 +30566,7 @@ Sacramento:Sacramento9 ACCRA-plc ;
 Saemien FirstTag ;
 Sagelvmo:Sag^elvmo9 NYSTØ-sur ;
 Sagmo:Sag^mo9 NYSTØ ;
-Sahara+Use/Sub:Sahara MARJA-plc ; !
+Sahara+Use/Sub:Sahara MARJA-A-plc ; !
 Saikko:Saikko9 ACCRA-mal ;
 Sainio:Sainio9 ACCRA-sur ;
 Saint FirstTag ;
@@ -30489,13 +30596,13 @@ Sančuari:Sanču^ari ACCRA-org ;
 Sapfo:Sapfo9 ACCRA-plc ;
 Sapporo:Sapporo9 ACCRA-plc ;
 Sara-aho:Sara-aho9 ACCRA-sur ;
-Saragassomearra:Saragasso^mearra MARJA-plc ;
+Saragassomearra:Saragasso^mearra MARJA-A-plc ;
 Sarajevo:Sarajevo9 ACCRA-plc ;
-Sarajávri:Sara^jáv'ri MARJA-plc ;
+Sarajávri:Sara^jáv'ri MARJA-I-plc ;
 Sarak:Sara BALAK-fem ;
 Sarak:Sara SARAK-fem ;
 Sario:Sario9 ACCRA-sur ;
-Saskatchewaneatnu:Saskatchewan^eatnu MARJA-plc ;
+Saskatchewaneatnu:Saskatchewan^eatnu MARJA-U-plc ;
 Sasso:Sasso9 ACCRA-plc ;
 Saukko:Saukko9 ACCRA-sur ;
 Sauna-aho:Sauna-aho9 ACCRA-sur ;
@@ -30508,7 +30615,7 @@ Savtso:Savtso9 ACCRA-LOAN-plc ;
 Saxo:Saxo9 ACCRA-mal ;
 Sašša ACCRA-fem ;
 Scandinavia% Golf% Business:Scandinavia% Golf% Business9 BERN-org ;
-Scheilávdegoddi:Schei^lávde^goddi MARJA-org ;
+Scheilávdegoddi:Schei^lávde^goddi MARJA-I-org ;
 Science FirstTag ;
 Scipio:Scipio9 ACCRA-mal ;
 Scottsuolu:Scott^suollu DAVVISUOLU-plc ;
@@ -30516,47 +30623,47 @@ Sefo:Sefo9 ACCRA-org ;
 Selbo:Sel^bo9 ACCRA-sur ;
 Selkäinaho:Selkäin^aho9 ACCRA-sur ;
 Seluzcko:Seluzcko9 ACCRA-plc ;
-Semlja+Use/Sub:Semlja MARJA-plc ; !
-Sentralbanestašuvdna:Sentral^bane^stašuvdna MARJA-obj ;
+Semlja+Use/Sub:Semlja MARJA-A-plc ; !
+Sentralbanestašuvdna:Sentral^bane^stašuvdna MARJA-A-obj ;
 Seppo:Seppo9 ACCRA-mal ;
 Seveso:Seveso9 ACCRA-plc ;
 Siao:Si^ao9 ACCRA-mal ;
 Sidanko:Sidanko9 ACCRA-sur ;
-Sigfredčievra:Sig^fred^čiev'ra MARJA-plc ;
+Sigfredčievra:Sig^fred^čiev'ra MARJA-A-plc ;
 Signysullot:Signy^suollu SULLOT-plc ;
 Sihto:Sihto9 ACCRA-sur ;
 Sihvo:Sihvo9 ACCRA-mal ;
 Siipo:Siipo9 ACCRA-sur ;
 Siivikko:Sii^vikko9 ACCRA-sur ;
-Sikkájohka:Sikká^joh'ka MARJA-plc ;
-Sikkájávri:Sikká^jáv'ri MARJA-plc ;
-Silda:Sil'da MARJA-plc ;
+Sikkájohka:Sikká^joh'ka MARJA-A-plc ;
+Sikkájávri:Sikká^jáv'ri MARJA-I-plc ;
+Silda:Sil'da MARJA-A-plc ;
 Silo:Silo9 ACCRA-sur ;
-Silvetnjárga:Silvet^njár'ga MARJA-plc ;
+Silvetnjárga:Silvet^njár'ga MARJA-A-plc ;
 Silvino:Silvino9 ACCRA-sur ;
 Silvo:Silvo9 ACCRA-sur ;
 Simo:Simo9 ACCRA-mal ;
 Simo:Simo9 ACCRA-plc ;
 Simonaho:Simon^aho9 ACCRA-sur ;
-Simonnjunni:Simon^njunni MARJA-plc ;
+Simonnjunni:Simon^njunni MARJA-I-plc ;
 Sinervo:Sinervo9 ACCRA-mal ;
 Siniluoto:Sini^luoto9 ACCRA-sur ;
 Sinisalo:Sini^salo9 ACCRA-sur ;
 Sinkko:Sinkko9 ACCRA-sur ;
 Sippo:Sippo9 ACCRA-sur ;
 Sirbmá MARJA-plc ;
-Sirddagohppi:Sirdda^gohppi MARJA-plc ;
+Sirddagohppi:Sirdda^gohppi MARJA-I-plc ;
 Sire FirstTag ;
 Sirgurđur LONDON-mal ;
 Siro:Siro9 ACCRA-sur ;
-Sirpmá% Sanitetsearvi:Sirpmá% Sanitet^sear'vi MARJA-org ;
+Sirpmá% Sanitetsearvi:Sirpmá% Sanitet^sear'vi MARJA-I-org ;
 Sirvio:Sirvio9 ACCRA-sur ;
-SisFinnmárku+Use/Sub:Sis^Finn^már'ku MARJA-plc ; !
+SisFinnmárku+Use/Sub:Sis^Finn^már'ku MARJA-U-plc ; !
 Siskkit FirstTag ;
 Siuko:Siuko9 ACCRA-plc ;
 Sjilo:Sjilo9 ACCRA-plc ;
 Sjo:Sjo9 ACCRA-sur ;
-Sjællánda:Sjæl^lán'da MARJA-plc ;
+Sjællánda:Sjæl^lán'da MARJA-A-plc ;
 Sjöbo:Sjö^bo9 ACCRA-plc ;
 Skamo:Skamo9 NYSTØ ;
 Skaraborgs:Skara^borgs FirstTag ;
@@ -30564,33 +30671,33 @@ Skedsmo:Skeds^mo9 NYSTØ ;
 Ski-Doo:Ski-Doo9 NYSTØ-ani ;
 Skidoo:Skidoo9 NYSTØ-obj ;
 Skiervá:Skier'vá MARJA-plc ;
-Skiippagurra:Skiippa^gurra MARJA-plc ;
+Skiippagurra:Skiippa^gurra MARJA-A-plc ;
 Skinmo:Skin^mo9 NYSTØ ;
 Skogmo:Skog^mo9 NYSTØ ;
 Skorpo:Skorpo9 ACCRA-plc ;
-Skotlánda+Use/Sub:Skot^lán'da MARJA-plc ; !
-Skottlánda:Skott^lán'da MARJA-plc ;
+Skotlánda+Use/Sub:Skot^lán'da MARJA-A-plc ; !
+Skottlánda:Skott^lán'da MARJA-A-plc ;
 Skovbo:Skov^bo9 NYSTØ ;
 Skulstadmo:Skul^stad^mo9 NYSTØ ;
-Skuvgi:Skuv'gi MARJA-plc ;
-Skáidi:Skáj'di MARJA-plc ; !FIN
+Skuvgi:Skuv'gi MARJA-I-plc ;
+Skáidi:Skáj'di MARJA-I-plc ; !FIN
 Skánik:Skáni SKANIK-plc ;
-Skárfvággi:Skárf^vággi MARJA-plc ;
-Skøynafylka:Skøyna^fyl'ka MARJA-plc ;
+Skárfvággi:Skárf^vággi MARJA-I-plc ;
+Skøynafylka:Skøyna^fyl'ka MARJA-A-plc ;
 Slaatto:Slaatto9 ACCRA-sur ;
 Slangsvolls:Slangs^volls FirstTag ;
 Sligo:Sligo9 ACCRA-plc ;
 Sluč BERN-sur ;
-Smiervuotna:Smier^vuotna MARJA-plc ;
-Smålánda:Små^lán'da MARJA-plc ;
+Smiervuotna:Smier^vuotna MARJA-A-plc ;
+Smålánda:Små^lán'da MARJA-A-plc ;
 Snartemo:Snarte^mo9 NYSTØ ;
-Snøhvitprošeakta:Snøhvit^prošeak'ta MARJA-obj ;
+Snøhvitprošeakta:Snøhvit^prošeak'ta MARJA-A-obj ;
 Soho:Soho9 ACCRA-plc ;
-Sohppargobba:Sohppar^gobba MARJA-plc ;
-Sohpparjohka:Sohppar^joh'ka MARJA-plc ;
+Sohppargobba:Sohppar^gobba MARJA-A-plc ;
+Sohpparjohka:Sohppar^joh'ka MARJA-A-plc ;
 Sohpparsáttu:Sohppar^sáddu DAVVISUOLU-plc ; !FIN
-Sohpparvađđa:Sohppar^vađđa MARJA-plc ;
-Sohpparávžženjálbmi:Sohppar^ávžže^njálbmi MARJA-plc ;
+Sohpparvađđa:Sohppar^vađđa MARJA-A-plc ;
+Sohpparávžženjálbmi:Sohppar^ávžže^njálbmi MARJA-I-plc ;
 Soinio:Soinio9 ACCRA-sur ;
 Soisalo:Soi^salo9 ACCRA-sur ;
 Soivio:Soivio9 ACCRA-sur ;
@@ -30599,109 +30706,109 @@ Sollo:Sollo9 ACCRA-sur ;
 Somero:Somero9 ACCRA-plc ;
 Soppero:Soppero9 ACCRA-sur ;
 Sorrento:Sorrento9 ACCRA-plc ;
-Sortlánda+Use/Sub:Sortlán'da MARJA-plc ; !
+Sortlánda+Use/Sub:Sortlán'da MARJA-A-plc ; !
 Sorvisto:Sorvisto9 ACCRA-sur ;
 Sorvo:Sorvo9 ACCRA-plc ;
-Sosiáladepartemeanta:Sosi^ála^departemean'ta MARJA-org ;
-Sosiálakantuvra:Sosiála^kantuv'ra MARJA-org ;
-Sosiálkantuvra+Use/Sub:Sosiál^kantuv'ra MARJA-org ; !
+Sosiáladepartemeanta:Sosi^ála^departemean'ta MARJA-A-org ;
+Sosiálakantuvra:Sosiála^kantuv'ra MARJA-A-org ;
+Sosiálkantuvra+Use/Sub:Sosiál^kantuv'ra MARJA-A-org ; !
 Sottinen:Sotti C-FI-NEN-sur ;
-Sovjetlihttu:Sovjet^lihttu MARJA-org ;
+Sovjetlihttu:Sovjet^lihttu MARJA-U-org ;
 Soweto:Soweto9 ACCRA-plc ;
-Spalca:Spal'ca MARJA-plc ;
-Sparbyggjafylka:Spar^byg^gja^fyl'ka MARJA-plc ;
-Spiikaloapmi:Spiika^loapmi MARJA-plc ;
-Spiinniidgieddi:Spiinniid^gieddi MARJA-plc ;
+Spalca:Spal'ca MARJA-A-plc ;
+Sparbyggjafylka:Spar^byg^gja^fyl'ka MARJA-A-plc ;
+Spiikaloapmi:Spiika^loapmi MARJA-I-plc ;
+Spiinniidgieddi:Spiinniid^gieddi MARJA-I-plc ;
 Stanleygoržžit:Stanley^gor'ži ALEUHTAT-plc ;
 Statens FirstTag ;
 Steiro:Steiro9 ACCRA-sur ;
 Stierdná MARJA-plc ;
-Stockholbma+Use/Sub:Stock^holbma MARJA-plc ; !
+Stockholbma+Use/Sub:Stock^holbma MARJA-A-plc ; !
 Stockholms:Stock^holms FirstTag ;
 Storaenso:Stora^enso9 ACCRA-org ;
 Stormo:Stor^mo9 NYSTØ-plc ;
-Strandagohppi+Use/Sub:Stranda^gohppi MARJA-plc ; !
-Strandajohka+Use/Sub:Stranda^joh'ka MARJA-plc ; !
-Strandavuotna+Use/Sub:Stranda^vuotna MARJA-plc ; !
-Strandavággi+Use/Sub:Stranda^vággi MARJA-plc ; !
-Strukturlávdegoddi:Struktur^lávde^goddi MARJA-org ;
+Strandagohppi+Use/Sub:Stranda^gohppi MARJA-I-plc ; !
+Strandajohka+Use/Sub:Stranda^joh'ka MARJA-A-plc ; !
+Strandavuotna+Use/Sub:Stranda^vuotna MARJA-A-plc ; !
+Strandavággi+Use/Sub:Stranda^vággi MARJA-I-plc ; !
+Strukturlávdegoddi:Struktur^lávde^goddi MARJA-I-org ;
 Stuora FirstTag ;
 Stuorit FirstTag ;
 Stuorra FirstTag ;
-Stuorradiggi:Stuorra^diggi MARJA-org ;
-Stuorravuotna:Stuorra^vuotna MARJA-plc ;
+Stuorradiggi:Stuorra^diggi MARJA-I-org ;
+Stuorravuotna:Stuorra^vuotna MARJA-A-plc ;
 Stuorát FirstTag ;
-Stáhpogieddi:Stáhpo^gieddi MARJA-plc ;
-Ståkkåhajohka:Ståkkåha^joh'ka MARJA-plc ;
-Suezkanála:Suez^kanála MARJA-obj ;
+Stáhpogieddi:Stáhpo^gieddi MARJA-I-plc ;
+Ståkkåhajohka:Ståkkåha^joh'ka MARJA-A-plc ;
+Suezkanála:Suez^kanála MARJA-A-obj ;
 Suihko:Suihko9 ACCRA-sur ;
 Suivakko:Suivakko9 ACCRA-ani ;
 Sulo:Sulo9 ACCRA-mal ;
 Sundasullot:Sunda^suollu SULLOT-plc ;
-Sundebákti:Sunde^bák'ti MARJA-plc ; !FIN
-Sundejohka:Sunde^joh'ka MARJA-plc ;
-Sundevárri:Sunde^várri MARJA-plc ;
-Sundoaivi:Sund^oaj'vi MARJA-plc ;
-Sunnmørafylka:Sunn^møra^fyl'ka MARJA-plc ;
+Sundebákti:Sunde^bák'ti MARJA-I-plc ; !FIN
+Sundejohka:Sunde^joh'ka MARJA-A-plc ;
+Sundevárri:Sunde^várri MARJA-I-plc ;
+Sundoaivi:Sund^oaj'vi MARJA-I-plc ;
+Sunnmørafylka:Sunn^møra^fyl'ka MARJA-A-plc ;
 Suntio:Suntio9 ACCRA-sur ;
-Suodjalusdepartemeanta:Suodjalus^departemean'ta MARJA-org ;
-Suohpanjárga:Suohpa^njár'ga MARJA-plc ; !FIN
+Suodjalusdepartemeanta:Suodjalus^departemean'ta MARJA-A-org ;
+Suohpanjárga:Suohpa^njár'ga MARJA-A-plc ; !FIN
 Suokko:Suokko9 ACCRA-sur ;
 Suonio:Suonio9 ACCRA-sur ;
 Suopma+CmpN/SgG:Suopma SUOPMA-plc ; !
-Suorravárri:Suorra^várri MARJA-plc ;
+Suorravárri:Suorra^várri MARJA-I-plc ;
 Suovasgielas:Suovas^giellas DUORTNUS-plc ; !FIN
-Suovasjávri:Suovas^jáv'ri MARJA-plc ; !FIN
-Suovasvárri:Suovas^várri MARJA-plc ; !FIN
+Suovasjávri:Suovas^jáv'ri MARJA-I-plc ; !FIN
+Suovasvárri:Suovas^várri MARJA-I-plc ; !FIN
 Sureflo:Sure^flo9 NYSTØ ;
 Suurhasko:Suurhasko9 ACCRA-sur ;
 Suvanto:Suvanto9 ACCRA-plc ;
 Suđuroy:Suđur^oy BERN-plc ;
 Svakko:Svakko9 ACCRA-sur ;
-Svalbarda+Use/Sub:Sval^bar'da MARJA-plc ; !
-Svalbárda:Sval^bár'da MARJA-plc ;
+Svalbarda+Use/Sub:Sval^bar'da MARJA-A-plc ; !
+Svalbárda:Sval^bár'da MARJA-A-plc ;
 Svanelvmo:Svan^elv^mo9 NYSTØ ;
-Svealánda:Svea^lán'da MARJA-plc ;
+Svealánda:Svea^lán'da MARJA-A-plc ;
 Sveio:Sve^io9 ACCRA-plc ;
 Svorkmo:Svork^mo9 NYSTØ ;
-Swazilánda:Swazi^lán'da MARJA-plc ;
-Sygnafylka:Sygna^fyl'ka MARJA-plc ;
+Swazilánda:Swazi^lán'da MARJA-A-plc ;
+Sygnafylka:Sygna^fyl'ka MARJA-A-plc ;
 Ságat:Ságah ANAR-org ;
-Sálašvággi:Sálaš^vággi MARJA-plc ;
+Sálašvággi:Sálaš^vággi MARJA-I-plc ;
 Sállan:Sállan9 ANAR-plc ;
-Sállevárri:Sálle^várri MARJA-plc ;
+Sállevárri:Sálle^várri MARJA-I-plc ;
 Sállir ANAR-plc ;
 Sálmmo:Sálmmo9 ACCRA-sur ;
-Sálmmonjárgajávri:Sálmmo^njárga^jáv'ri MARJA-plc ; !FIN
+Sálmmonjárgajávri:Sálmmo^njárga^jáv'ri MARJA-I-plc ; !FIN
 Sálmo:Sálmo9 ACCRA-sur ;
-Sámediggeráđđi:Sáme^digge^ráđđi MARJA-org ;
-Sámeráđđi:Sáme^ráđđi MARJA-org ;
-Sámediggi:Sáme^diggi MARJA-org ;
-Sámekonferánsa:Sáme^konferán'sa MARJA-org ;
-Sámemiššuvdna:Sáme^miššuvdna MARJA-org ;
+Sámediggeráđđi:Sáme^digge^ráđđi MARJA-I-org ;
+Sámeráđđi:Sáme^ráđđi MARJA-I-org ;
+Sámediggi:Sáme^diggi MARJA-I-org ;
+Sámekonferánsa:Sáme^konferán'sa MARJA-A-org ;
+Sámemiššuvdna:Sáme^miššuvdna MARJA-A-org ;
 Sámeradio:Sáme^radio9 ACCRA-org ;
-Sámeráđđi+Use/Sub:Sáme^ráđđi MARJA-org ; !
-Sámeskuvla:Sáme^skuv'la MARJA-org ;
-Sámevuoigatvuođalávdegoddi:Sáme^vuoigatvuođa^lávde^goddi MARJA-org ;
-Sámeálbmotfoanda:Sáme^álbmot^foan'da MARJA-org ;
-Sámiálbmotfoanda:Sámi^álbmot^foan'da MARJA-org ;
-Sámmoljohka:Sámmol^joh'ka MARJA-plc ;
-Sámmolnjárga:Sámmol^njár'ga MARJA-plc ;
-Sámmolvárri:Sámmol^várri MARJA-plc ;
-Sámmolčohkajávri:Sámmol^čohka^jáv'ri MARJA-plc ;
-Sámmáljohnjálbmi:Sámmál^joh^njálbmi MARJA-plc ;
+Sámeráđđi+Use/Sub:Sáme^ráđđi MARJA-I-org ; !
+Sámeskuvla:Sáme^skuv'la MARJA-A-org ;
+Sámevuoigatvuođalávdegoddi:Sáme^vuoigatvuođa^lávde^goddi MARJA-I-org ;
+Sámeálbmotfoanda:Sáme^álbmot^foan'da MARJA-A-org ;
+Sámiálbmotfoanda:Sámi^álbmot^foan'da MARJA-A-org ;
+Sámmoljohka:Sámmol^joh'ka MARJA-A-plc ;
+Sámmolnjárga:Sámmol^njár'ga MARJA-A-plc ;
+Sámmolvárri:Sámmol^várri MARJA-I-plc ;
+Sámmolčohkajávri:Sámmol^čohka^jáv'ri MARJA-I-plc ;
+Sámmáljohnjálbmi:Sámmál^joh^njálbmi MARJA-I-plc ;
 Sánkta FirstTag ;
 Sápmi+CmpN/SgG:Sápmi SUOPMA-plc ;
-Sáppatbáddi:Sáppat^báddi MARJA-mal ;
+Sáppatbáddi:Sáppat^báddi MARJA-I-mal ;
 Sárábuolžžat:Sárá^buol'ža ALEUHTAT-plc ;
 Sárásuolu:Sárá^suollu DAVVISUOLU-plc ;
-Sárávuopmi:Sárá^vuopmi MARJA-plc ; !FIN
+Sárávuopmi:Sárá^vuopmi MARJA-I-plc ; !FIN
 Sážžá MARJA-plc ;
 São:São9 ACCRA-plc ;
 Sætermo:Sæter^mo9 ACCRA-sur ;
 Södermanlands:Söder^man^lands FirstTag ;
-Södermanlánda:Söder^man^lán'da MARJA-plc ;
-Sörmlánda:Sörm^lán'da MARJA-plc ;
+Södermanlánda:Söder^man^lán'da MARJA-A-plc ;
+Sörmlánda:Sörm^lán'da MARJA-A-plc ;
 Sørmo:Sør^mo9 NYSTØ ;
 Tabasco:Tabasco9 ACCRA-obj ;
 Tahaš LONDON-plc ;
@@ -30731,8 +30838,8 @@ Taro:Taro9 ACCRA-ani ;
 Tarto:Tarto9 ACCRA-plc ;
 Taršiš LONDON-plc ;
 Tasanko:Tasanko9 ACCRA-sur ;
-Tasmanmearra+Use/Sub:Tasman^mearra MARJA-plc ; !
-Tasmánmearra:Tasmán^mearra MARJA-plc ;
+Tasmanmearra+Use/Sub:Tasman^mearra MARJA-A-plc ; !
+Tasmánmearra:Tasmán^mearra MARJA-A-plc ;
 Tasso:Tasso9 ACCRA-plc ;
 Tauno:Tauno9 ACCRA-mal ;
 Tažikistan:Tažiki^stan9 BERN-plc ;
@@ -30740,7 +30847,7 @@ Taškent BERN-sur ;
 Teigmo:Teig^mo9 NYSTØ-plc ;
 Teitto:Teitto9 ACCRA-sur ;
 Tejo:Tejo9 ACCRA-plc ;
-Telemárku:Tele^már'ku MARJA-plc ;
+Telemárku:Tele^már'ku MARJA-U-plc ;
 Tellervo:Tellervo9 ACCRA-fem ;
 Temuco:Temuco9 ACCRA-plc ;
 Tenho:Tenho9 ACCRA-mal ;
@@ -30754,7 +30861,7 @@ Tero:Tero9 ACCRA-mal ;
 Tervo:Tervo9 ACCRA-mal ;
 Teuvo:Teuvo9 ACCRA-mal ;
 Texaco:Texaco9 ACCRA-org ;
-Thailánda+Use/Sub:Thai^lán'da MARJA-plc ; !
+Thailánda+Use/Sub:Thai^lán'da MARJA-A-plc ; !
 The+CmpN/None:The FirstTag ; !
 Theo:Theo9 ACCRA-mal ;
 Tiago:Ti^ago9 ACCRA-plc ;
@@ -30763,7 +30870,7 @@ Ticino:Ticino9 ACCRA-plc ;
 Tiiro:Tiiro9 ACCRA-plc ;
 Tiitto:Tiitto9 ACCRA-sur ;
 Timo:Timo9 ACCRA-mal ;
-Timormearra:Timor^mearra MARJA-plc ;
+Timormearra:Timor^mearra MARJA-A-plc ;
 Tkačev BERN-sur ;
 Tobago:Tobago9 ACCRA-plc ;
 Tobro:To^bro9 ACCRA-plc ;
@@ -30775,7 +30882,7 @@ Toivo:Toivo9 ACCRA-mal ;
 Tokyo:Tokyo9 ACCRA-plc ;
 Toledo:Toledo9 ACCRA-plc ;
 Toljamo:Toljamo9 ACCRA-sur ;
-Torbennjárga:Torben^njár'ga MARJA-plc ;
+Torbennjárga:Torben^njár'ga MARJA-A-plc ;
 Torino:Torino9 ACCRA-plc ;
 Torkko:Torkko9 ACCRA-sur ;
 Toro:Toro9 ACCRA-plc ;
@@ -30789,7 +30896,7 @@ Treviso:Treviso9 ACCRA-plc ;
 Tro:Tro9 ACCRA-sur ;
 Troanddin:Troanddim ANAR-plc ;
 Troandin:Troandim ANAR-plc ;
-Tromsa:Trom'sa MARJA-plc ;
+Tromsa:Trom'sa MARJA-A-plc ;
 Trondhjems:Trond^hjems FirstTag ;
 Tronmo:Tron^mo9 NYSTØ ;
 Trujillo:Trujillo9 ACCRA-sur ;
@@ -30804,30 +30911,30 @@ Tuomisalo:Tuomi^salo9 ACCRA-sur ;
 Tuomisto:Tuomisto9 ACCRA-sur ;
 Tuomo:Tuomo9 ACCRA-mal ;
 Turistforeningens:Turist^foreningens FirstTag ;
-Turkiija+Use/Sub:Turkiija MARJA-plc ; !
+Turkiija+Use/Sub:Turkiija MARJA-A-plc ; !
 Tveito:Tveito9 ACCRA-plc ;
 Tycho:Tycho9 ACCRA-mal ;
-Tyrrhenamearra:Tyrrhena^mearra MARJA-plc ;
+Tyrrhenamearra:Tyrrhena^mearra MARJA-A-plc ;
 Tzepo:Tzepo9 ACCRA-plc ;
 Tzupo:Tzupo9 ACCRA-plc ;
 Törmälehto:Törmä^lehto9 ACCRA-sur ;
 UNESCO:UNESCO ACCRA-org ;
-Ubmi+Use/Sub:Ubmi MARJA-plc ;
-Ubmi:Ub'mi MARJA-plc ;
+Ubmi+Use/Sub:Ubmi MARJA-I-plc ;
+Ubmi:Ub'mi MARJA-I-plc ;
 Uitto:Uitto9 ACCRA-sur ;
 Ukonaho:Ukon^aho9 ACCRA-sur ;
-Ullovuotna:Ullo^vuotna MARJA-plc ;
+Ullovuotna:Ullo^vuotna MARJA-A-plc ;
 Unesco:Unesco9 ACCRA-org ;
-Unjárga:U^njár'ga MARJA-plc ;
+Unjárga:U^njár'ga MARJA-A-plc ;
 Unna FirstTag ;
 Unnit FirstTag ;
 Uno:Uno9 ACCRA-mal ;
-Upplánda:Upp^lán'da MARJA-plc ;
-Uraleatnu:Ural^eatnu MARJA-plc ;
+Upplánda:Upp^lán'da MARJA-A-plc ;
+Uraleatnu:Ural^eatnu MARJA-U-plc ;
 Urbino:Urbino9 ACCRA-plc ;
 Urheilutalo:Urheilu^talo9 ACCRA-plc ; !or Org?
 Urho:Urho9 ACCRA-mal ;
-Urvillemearra:Urville^mearra MARJA-plc ;
+Urvillemearra:Urville^mearra MARJA-A-plc ;
 Usko:Usko9 ACCRA-mal ;
 Uusikartano:Uusi^kartano9 ACCRA-plc ;
 Ušakova ACCRA-sur ;
@@ -30842,11 +30949,11 @@ Vanamo:Vana^mo9 ACCRA-plc ;
 Vanhatalo:Vanha^talo9 ACCRA-sur ;
 Vansbro:Vans^bro9 ACCRA-plc ;
 Varho:Varho9 ACCRA-sur ;
-Varisjohka:Varis^joh'ka MARJA-plc ;
-Varisjávri:Varis^jáv'ri MARJA-plc ;
+Varisjohka:Varis^joh'ka MARJA-A-plc ;
+Varisjávri:Varis^jáv'ri MARJA-I-plc ;
 Varjo:Varjo9 ACCRA-mal ;
 Varmbo:Varm^bo9 NYSTØ ;
-Varnjárga+Use/Sub:Var^njár'ga MARJA-plc ; !
+Varnjárga+Use/Sub:Var^njár'ga MARJA-A-plc ; !
 Vartio:Vartio9 ACCRA-sur ;
 Varvikko:Varvikko9 ACCRA-sur ;
 Vasco:Vasco9 ACCRA-mal ;
@@ -30866,41 +30973,41 @@ Verho:Verho9 ACCRA-mal ;
 Verso:Verso9 ACCRA-obj ;
 Vesanto:Vesanto9 ACCRA-plc ;
 Vesikko:Vesikko9 ACCRA-sur ;
-Vestfolda+Use/Sub:Vest^fol'da MARJA-plc ; !
-Vestlánda:Vest^lán'da MARJA-plc ;
+Vestfolda+Use/Sub:Vest^fol'da MARJA-A-plc ; !
+Vestlánda:Vest^lán'da MARJA-A-plc ;
 Vestnordens:Vest^nordens FirstTag ;
 Vibo:Vi^bo9 NYSTØ-plc ;
 Victoriaeana:Victoria^eatnam8 GUOLBBA-plc ;
 Victoriagoržžit:Victoria^gor'ži ALEUHTAT-plc ;
-Victoriajávri:Victoria^jáv'ri MARJA-plc ;
+Victoriajávri:Victoria^jáv'ri MARJA-I-plc ;
 Victoriasuolu:Victoria^suollu DAVVISUOLU-plc ;
 Vidaro:Vidaro9 ACCRA-sur ;
 Vieno:Vieno9 ACCRA-fem ; !Also sur
 Vierikko:Vierikko9 ACCRA-sur ;
 Vigdalsmo:Vig^dals^mo9 NYSTØ ;
-Vigelánda:Vige^lán'da MARJA-plc ;
+Vigelánda:Vige^lán'da MARJA-A-plc ;
 Viggo:Viggo9 ACCRA-mal ;
 Vigo:Vigo9 ACCRA-mal ;
 Vihanto:Vihanto9 ACCRA-sur ;
 Vihersalo:Viher^salo9 ACCRA-sur ;
 Vihko:Vihko9 ACCRA-sur ;
-Viikanjárga:Viika^njár'ga MARJA-plc ;
+Viikanjárga:Viika^njár'ga MARJA-A-plc ;
 Viio:Viio9 ACCRA-sur ;
 Viita-aho:Viita-aho9 ACCRA-sur ;
 Viitasalo:Viita^salo9 ACCRA-sur ;
 Viitikko:Viitikko9 ACCRA-sur ;
-Vilgesmearra:Vilges^mearra MARJA-plc ;
-Vilgesvárri:Vilges^várri MARJA-plc ;
+Vilgesmearra:Vilges^mearra MARJA-A-plc ;
+Vilgesvárri:Vilges^várri MARJA-I-plc ;
 Viljo:Viljo9 ACCRA-mal ;
 Vilkko:Vilkko9 ACCRA-sur ;
-Villebáiki:Ville^báj'ki MARJA-plc ; !FIN
-Villejohka:Ville^joh'ka MARJA-plc ; !FIN
-Villejávri:Ville^jáv'ri MARJA-plc ; !FIN
+Villebáiki:Ville^báj'ki MARJA-I-plc ; !FIN
+Villejohka:Ville^joh'ka MARJA-A-plc ; !FIN
+Villejávri:Ville^jáv'ri MARJA-I-plc ; !FIN
 Villmo:Vill^mo9 NYSTØ ;
 Vilo:Vilo9 ACCRA-sur ;
-Vinlánda:Vin^lán'da MARJA-plc ;
+Vinlánda:Vin^lán'da MARJA-A-plc ;
 Viro:Viro9 ACCRA-plc ;
-Virta:Vir'ta MARJA-plc ; !Does this have C-grad?
+Virta:Vir'ta MARJA-A-plc ; !Does this have C-grad?
 Virtamo:Virta^mo9 ACCRA-sur ;
 Visio:Visio9 ACCRA-org ;
 Viterbo:Viter^bo9 NYSTØ-plc ;
@@ -30914,83 +31021,83 @@ Voksenåsen-julggaštus:Voksenåsen-julggaštuss HEANDARAT-obj ;
 Volvo:Volvo9 ACCRA-obj ;
 Vormisto:Vormisto9 ACCRA-sur ;
 Vulcano:Vulcano9 ACCRA-plc ;
-Vullegeassebáiki:Vulle^geasse^báj'ki MARJA-plc ; !FIN
-Vullejeaggi:Vulle^jeaggi MARJA-plc ; !FIN
-Vullejávri:Vulle^jáv'ri MARJA-plc ; !FIN
-Vullevárri:Vulle^várri MARJA-plc ; !FIN
-Vulležiidgirku:Vulležiid^gir'ku MARJA-plc ; !FIN
-Vulležiidoaivi:Vulležiid^oaj'vi MARJA-plc ;
-Vullošnjárga:Vulloš^njár'ga MARJA-plc ;
-Vuohčču MARJA-plc ; !FIN
+Vullegeassebáiki:Vulle^geasse^báj'ki MARJA-I-plc ; !FIN
+Vullejeaggi:Vulle^jeaggi MARJA-I-plc ; !FIN
+Vullejávri:Vulle^jáv'ri MARJA-I-plc ; !FIN
+Vullevárri:Vulle^várri MARJA-I-plc ; !FIN
+Vulležiidgirku:Vulležiid^gir'ku MARJA-U-plc ; !FIN
+Vulležiidoaivi:Vulležiid^oaj'vi MARJA-I-plc ;
+Vullošnjárga:Vulloš^njár'ga MARJA-A-plc ;
+Vuohčču MARJA-U-plc ; !FIN
 Vuojaš:Vuojaž ANAR-sur ;
 Vuojolainen:Vuojolai C-FI-NEN-sur ;
 Vuokko:Vuokko9 ACCRA-fem ;
-Vuolajohka:Vuola^joh'ka MARJA-plc ;
+Vuolajohka:Vuola^joh'ka MARJA-A-plc ;
 Vuolanjunnásgáisá:Vuola^njunnás^gáj'sá MARJA-plc ;
-Vuolitnjárga:Vuolit^njár'ga MARJA-plc ;
-Vuolledállu:Vuolle^dállu MARJA-plc ; !FIN
+Vuolitnjárga:Vuolit^njár'ga MARJA-A-plc ;
+Vuolledállu:Vuolle^dállu MARJA-U-plc ; !FIN
 Vuolleeatnamat:Vuolle^eat'nam8 EATNAMAT-plc ;
 Vuollegeavŋŋis:Vuolle^geavgŋis GEAVNNIS-plc ; !FIN
-Vuollejalvi:Vuolle^jal'vi MARJA-plc ; !FIN
-Vuollejohka:Vuolle^joh'ka MARJA-plc ;
-Vuollesainjárga:Vuolle^sai^njár'ga MARJA-plc ;
-Vuollevuohpenjárga:Vuolle^vuohpe^njár'ga MARJA-plc ;
-Vuollevuohpevárri:Vuolle^vuohpe^várri MARJA-plc ;
-Vuollevuotna:Vuolle^vuotna MARJA-plc ;
+Vuollejalvi:Vuolle^jal'vi MARJA-I-plc ; !FIN
+Vuollejohka:Vuolle^joh'ka MARJA-A-plc ;
+Vuollesainjárga:Vuolle^sai^njár'ga MARJA-A-plc ;
+Vuollevuohpenjárga:Vuolle^vuohpe^njár'ga MARJA-A-plc ;
+Vuollevuohpevárri:Vuolle^vuohpe^várri MARJA-I-plc ;
+Vuollevuotna:Vuolle^vuotna MARJA-A-plc ;
 Vuollo:Vuollo9 ACCRA-sur ;
 Vuolteenaho:Vuolteen^aho9 ACCRA-sur ;
 Vuolát:Vuoláb ANAR-sur ;
-Vuonnabahta:Vuonna^bah'ta MARJA-plc ;
+Vuonnabahta:Vuonna^bah'ta MARJA-A-plc ;
 Vuontiskero:Vuontiskero9 ACCRA-plc ;
 Vuorio:Vuorio9 ACCRA-sur ;
 Vuorisalo:Vuori^salo9 ACCRA-sur ;
 Vuoristo:Vuoristo9 ACCRA-sur ;
-Vuotnasiida:Vuotna^sij'da MARJA-plc ;
+Vuotnasiida:Vuotna^sij'da MARJA-A-plc ;
 Vuotso:Vuotso9 ACCRA-LOAN-plc ;
-Vuošvággi:Vuoš^vággi MARJA-plc ;
-Vuođđoláhka:Vuođđo^láh'ka MARJA-obj ;
-Vábučohkka:Vábu^čohkka MARJA-plc ;
-Vággi MARJA-plc ;
+Vuošvággi:Vuoš^vággi MARJA-I-plc ;
+Vuođđoláhka:Vuođđo^láh'ka MARJA-A-obj ;
+Vábučohkka:Vábu^čohkka MARJA-A-plc ;
+Vággi MARJA-I-plc ;
 Váhčir ANAR-plc ; !FIN
-Vájamohkenjárga:Vája^mohke^njár'ga MARJA-plc ;
-Vájamohkki:Vája^mohkki MARJA-plc ;
-Váljohka:Vál^joh'ka MARJA-plc ;
-Várggáidladni:Várggáid9^lad'ni MARJA-plc ;
+Vájamohkenjárga:Vája^mohke^njár'ga MARJA-A-plc ;
+Vájamohkki:Vája^mohkki MARJA-I-plc ;
+Váljohka:Vál^joh'ka MARJA-A-plc ;
+Várggáidladni:Várggáid9^lad'ni MARJA-I-plc ;
 Várggát:Vár'gá VARGGAT-plc ;
 Várjjat:Várjjag ANAR-plc ;
 Vähäaho:Vähä^aho9 ACCRA-sur ;
 Vähäsalo:Vähä^salo9 ACCRA-sur ;
 Vähätalo:Vähä^talo9 ACCRA-sur ;
 Vähätiitto:Vähä^tiitto9 ACCRA-sur ;
-Väkkäraš-Heaika:Väkkäraš-Heaj'ka MARJA-mal ;
+Väkkäraš-Heaika:Väkkäraš-Heaj'ka MARJA-A-mal ;
 Väkkäraš:Väkkäražž HEANDARAT-mal ;
 Väliaho:Väli^aho9 ACCRA-sur ;
 Välisalo:Väli^salo9 ACCRA-sur ;
 Välitalo:Väli^talo9 ACCRA-sur ;
 Värmlands:Värm^lands FirstTag ;
-Värmlánda:Värm^lán'da MARJA-plc ;
+Värmlánda:Värm^lán'da MARJA-A-plc ;
 Värnamo:Värna^mo9 NYSTØ ;
 Västerbottens:Väster^bottens FirstTag ;
-Västerdaleatnu:Väster^dal^eatnu MARJA-plc ;
-Västergötlánda:Väster^göt^lán'da MARJA-plc ;
+Västerdaleatnu:Väster^dal^eatnu MARJA-U-plc ;
+Västergötlánda:Väster^göt^lán'da MARJA-A-plc ;
 Västmanlands:Väst^man^lands FirstTag ;
-Västmanlánda:Väst^man^lán'da MARJA-plc ;
+Västmanlánda:Väst^man^lán'da MARJA-A-plc ;
 Västre FirstTag ;
 Vågåmo:Vågå^mo9 NYSTØ ;
 Vælidalo:Væli^dalo9 ACCRA-sur ;
 Waco:Waco9 ACCRA-plc ;
-Warszawa+Use/Sub:Warszawa MARJA-plc ; !
+Warszawa+Use/Sub:Warszawa MARJA-A-plc ; !
 Waterloo:Waterloo9 ACCRA-plc ;
 Webbradio:Webb^radio9 ACCRA-obj ;
-Weddellamearra:Weddella^mearra MARJA-plc ;
+Weddellamearra:Weddella^mearra MARJA-A-plc ;
 Wiggo:Wiggo9 ACCRA-mal ;
 Wilkeseana:Wilkes^eatnam8 GUOLBBA-plc ;
 Xiao:Xi^ao9 ACCRA-mal ;
 Yahoo:Yahoo9 ACCRA-org ;
 Yamomoto:Yamomoto9 ACCRA-sur ;
 Yamoussoukro:Yamoussoukro9 ACCRA-plc ;
-Yanaeatnogáddi:Yana^eatno^gáddi MARJA-plc ;
-Yanaeatnu:Yana^eatnu MARJA-plc ;
+Yanaeatnogáddi:Yana^eatno^gáddi MARJA-I-plc ;
+Yanaeatnu:Yana^eatnu MARJA-U-plc ;
 Yenbo:Yenbo9 ACCRA-plc ;
 Yleisradio:Yleis^radio9 ACCRA-org ;
 Yli-Riesto:Yli-Riesto9 ACCRA-sur ;
@@ -31004,98 +31111,98 @@ Ylätalo:Ylä^talo9 ACCRA-sur ;
 Ylöstalo:Ylös^talo9 ACCRA-sur ;
 Yrttiaho:Yrtti^aho9 ACCRA-sur ;
 Ytre FirstTag ;
-Yukoneatnu:Yukon^eatnu MARJA-plc ;
+Yukoneatnu:Yukon^eatnu MARJA-U-plc ;
 Zabno:Zabno9 ACCRA-plc ;
 Zakho:Zakho9 ACCRA-plc ;
 Zapadnaja:Zapadnaja FirstTag ;
-Zealánda+Use/Sub:Zea^lán'da MARJA-plc ; !
+Zealánda+Use/Sub:Zea^lán'da MARJA-A-plc ; !
 Zibo:Zibo9 ACCRA-plc ;
-Zululánda:Zulu^lán'da MARJA-plc ;
+Zululánda:Zulu^lán'da MARJA-A-plc ;
 af+CmpN/None:af FirstTag ;    !
 bin+CmpN/None:bin9 FirstTag ; !
-eNorga:e^Nor'ga MARJA-org ;
-eSkuvla:e^Skuv'la MARJA-org ;
+eNorga:e^Nor'ga MARJA-A-org ;
+eSkuvla:e^Skuv'la MARJA-A-org ;
 van% der+CmpN/None:van% der FirstTag ;  !
 van+CmpN/None:van9 FirstTag ; !
 von% der+CmpN/None:von% der FirstTag ;  !
 von+CmpN/None:von9 FirstTag ; !
 Ábo:Ábo9 ACCRA-mal ;
-Ábojohka:Ábo^joh'ka MARJA-plc ;
-Ábojávri:Ábo^jáv'ri MARJA-plc ;
-Áborášša:Ábo^ráš'ša MARJA-plc ;
+Ábojohka:Ábo^joh'ka MARJA-A-plc ;
+Ábojávri:Ábo^jáv'ri MARJA-I-plc ;
+Áborášša:Ábo^ráš'ša MARJA-A-plc ;
 Áboája:Ábo^ád'jag8 GUOLBBA-plc ; !FIN
-Ábočielgi:Ábo^čiel'gi MARJA-plc ; !FIN
+Ábočielgi:Ábo^čiel'gi MARJA-I-plc ; !FIN
 Ábrrán:Ábrrám ANAR-mal ;
 Ádo:Ádo9 ACCRA-sur ;
 Áfrihkká+Use/Sub:Áfrihkká MARJA-plc ; !
-Áhkkávággi+Use/Sub:Áhkká^vággi MARJA-plc ; !
-Áhkávággi:Áhká^vággi MARJA-plc ; !
-Áidejávri+Use/Sub:Áide^jávri MARJA-plc ; !
-Áidejávri:Áide^jáv'ri MARJA-plc ;
-Áigi:Áj'gi MARJA-org ;
+Áhkkávággi+Use/Sub:Áhkká^vággi MARJA-I-plc ; !
+Áhkávággi:Áhká^vággi MARJA-I-plc ; !
+Áidejávri+Use/Sub:Áide^jávri MARJA-I-plc ; !
+Áidejávri:Áide^jáv'ri MARJA-I-plc ;
+Áigi:Áj'gi MARJA-I-org ;
 Áigir ANAR-plc ;
 Áike:Áj'ke MARJA-mal ;
-Áilejohka:Áile^joh'ka MARJA-plc ; !FIN
+Áilejohka:Áile^joh'ka MARJA-A-plc ; !FIN
 Áillohaš:Áillohažž HEANDARAT-mal ;
 Áilloš LONDON-mal ;
 Áilluhaš+Use/Sub:Áilluhažž HEANDARAT-mal ; !
-Áilu:Áj'lu MARJA-plc ;
-Áisaroaivi+Use/Sub:Áisar^oaivi MARJA-plc ; !
-Áisaroaivi:Áisar^oai'vi MARJA-plc ;
-Áisaroaivi:Áisar^oaj'vi MARJA-plc ;
+Áilu:Áj'lu MARJA-U-plc ;
+Áisaroaivi+Use/Sub:Áisar^oaivi MARJA-I-plc ; !
+Áisaroaivi:Áisar^oai'vi MARJA-I-plc ;
+Áisaroaivi:Áisar^oaj'vi MARJA-I-plc ;
 Áitesavu:Áite^savvun8 GUOLBBA-plc ; !FIN
-Ájluokta:Áj9^luok'ta MARJA-plc ;
-Ájonjárga:Ájo^njár'ga MARJA-plc ;
-Ákšomuotki:Ákšo^muot'ki MARJA-plc ;
-Álaheadju:Álahead'ju MARJA-plc ;
-Álaheaivuotna:Álaheai^vuotna MARJA-plc ;
+Ájluokta:Áj9^luok'ta MARJA-A-plc ;
+Ájonjárga:Ájo^njár'ga MARJA-A-plc ;
+Ákšomuotki:Ákšo^muot'ki MARJA-I-plc ;
+Álaheadju:Álahead'ju MARJA-U-plc ;
+Álaheaivuotna:Álaheai^vuotna MARJA-A-plc ;
 Álbmot#bellodat:Álbmot#bellodah'k HEANDARAT-org ;
-Álletnjárga:Állet^njár'ga MARJA-plc ;
-Álttávuotna:Álttá^vuotna MARJA-plc ;
+Álletnjárga:Állet^njár'ga MARJA-A-plc ;
+Álttávuotna:Álttá^vuotna MARJA-A-plc ;
 Áltá+Use/Sub:Áltá MARJA-plc ; !
 Áltá:Ál'tá MARJA-plc ;
 Ámmongárggu:Ámmon^gár'gu DAVVISUOLU-plc ; !FIN
-Ámmonjávri:Ámmon^jáv'ri MARJA-plc ;
-Ándaras-Máhte-jávri+Use/Sub:Ándaras-Máhte-jáv'ri MARJA-plc ; !
-Ándarasuvllájeaggi+Use/Sub:Ándaras^uvllá^jeaggi MARJA-plc ; !
-Ándarasvárri:Ándaras^várri MARJA-plc ; !FIN
+Ámmonjávri:Ámmon^jáv'ri MARJA-I-plc ;
+Ándaras-Máhte-jávri+Use/Sub:Ándaras-Máhte-jáv'ri MARJA-I-plc ; !
+Ándarasuvllájeaggi+Use/Sub:Ándaras^uvllá^jeaggi MARJA-I-plc ; !
+Ándarasvárri:Ándaras^várri MARJA-I-plc ; !FIN
 Ándarguolban:Ándar^guolban9 LONDON-plc ;
-Ándarjohka:Ándar^joh'ka MARJA-plc ;
-Ándarjávri:Ándar^jáv'ri MARJA-plc ;
+Ándarjohka:Ándar^joh'ka MARJA-A-plc ;
+Ándarjávri:Ándar^jáv'ri MARJA-I-plc ;
 Ánddar:Án'dar DUORTNUS-mal ;
 Ánddeláttu:Ándde^láddu DAVVISUOLU-plc ; !FIN
-Ánddevárri:Ándde^várri MARJA-plc ;
+Ánddevárri:Ándde^várri MARJA-I-plc ;
 Ánddeš FirstTag ;
 Ánddeš-Bier FirstTag ;
-Ánddeš-Bier-johka+Use/Sub:Ánddeš-Bier-joh'ka MARJA-plc ; !
-Ánddeš-Bier-jávri+Use/Sub:Ánddeš-Bier-jáv'ri MARJA-plc ; !
-Ánddeš-Bierjohka+Use/Sub:Ánddeš-Bier^joh'ka MARJA-plc ; !
-Ánddisavojávri:Ánddi^savo^jáv'ri MARJA-plc ;
-Ánnejohka:Ánne^joh'ka MARJA-plc ;
-Ánnejávri:Ánne^jáv'ri MARJA-plc ;
-Ánnevárri:Ánne^várri MARJA-plc ; !FIN
-Ánnábearttošjeaggi:Ánná^bearttoš^jeaggi MARJA-plc ; !FIN
-Ánnábearttošávži:Ánná^bearttoš^áv'ži MARJA-plc ; !FIN
-Ánnábearttoščielgi:Ánná^bearttoš^čiel'gi MARJA-plc ; !FIN
-Ánnágurra:Ánná^gurra MARJA-plc ; !FIN
-Ánnájeaggi:Ánná^jeaggi MARJA-plc ;
-Ánnájohka:Ánná^joh'ka MARJA-plc ;
-Ánnájávri:Ánná^jáv'ri MARJA-plc ;
-Ánnáluokta:Ánná^luok'ta MARJA-plc ; !FIN
+Ánddeš-Bier-johka+Use/Sub:Ánddeš-Bier-joh'ka MARJA-A-plc ; !
+Ánddeš-Bier-jávri+Use/Sub:Ánddeš-Bier-jáv'ri MARJA-I-plc ; !
+Ánddeš-Bierjohka+Use/Sub:Ánddeš-Bier^joh'ka MARJA-A-plc ; !
+Ánddisavojávri:Ánddi^savo^jáv'ri MARJA-I-plc ;
+Ánnejohka:Ánne^joh'ka MARJA-A-plc ;
+Ánnejávri:Ánne^jáv'ri MARJA-I-plc ;
+Ánnevárri:Ánne^várri MARJA-I-plc ; !FIN
+Ánnábearttošjeaggi:Ánná^bearttoš^jeaggi MARJA-I-plc ; !FIN
+Ánnábearttošávži:Ánná^bearttoš^áv'ži MARJA-I-plc ; !FIN
+Ánnábearttoščielgi:Ánná^bearttoš^čiel'gi MARJA-I-plc ; !FIN
+Ánnágurra:Ánná^gurra MARJA-A-plc ; !FIN
+Ánnájeaggi:Ánná^jeaggi MARJA-I-plc ;
+Ánnájohka:Ánná^joh'ka MARJA-A-plc ;
+Ánnájávri:Ánná^jáv'ri MARJA-I-plc ;
+Ánnáluokta:Ánná^luok'ta MARJA-A-plc ; !FIN
 Áno:Áno9 ACCRA-plc ;
 Ápparan:Ápparam BERN-plc ;
 Áro:Áro9 ACCRA-plc ;
-Ártni+Use/Sub:Ártni MARJA-plc ; !
-Ásllagajávri:Ásllaga^jáv'ri MARJA-plc ;
-Ássebákti:Ásse^bák'ti MARJA-plc ;
-Áttámajávri:Áttáma^jáv'ri MARJA-plc ; !FIN
+Ártni+Use/Sub:Ártni MARJA-I-plc ; !
+Ásllagajávri:Ásllaga^jáv'ri MARJA-I-plc ;
+Ássebákti:Ásse^bák'ti MARJA-I-plc ;
+Áttámajávri:Áttáma^jáv'ri MARJA-I-plc ; !FIN
 Áttán:Áttám ANAR-mal ;
-Ávjovárri:Ávjo^várri MARJA-plc ;
-Ávju:Áv'ju MARJA-plc ;
+Ávjovárri:Ávjo^várri MARJA-I-plc ;
+Ávju:Áv'ju MARJA-U-plc ;
 Ávvir ANAR-org ;
-Ávži:Áv'ži MARJA-plc ; !FIN
+Ávži:Áv'ži MARJA-I-plc ; !FIN
 Áŋŋel ANAR-plc ; !FIN
-Áššu MARJA-org ;
+Áššu MARJA-U-org ;
 Áššur LONDON-mal ;
 Äkäskero:Äkäskero9 ACCRA-plc ;
 Äkäslompolo:Äkäslompolo9 ACCRA-plc ;
@@ -31105,20 +31212,20 @@ von+CmpN/None:von9 FirstTag ; !
 Åarjelsaemien:Åarjel^saemien9 FirstTag ;
 Åbo:Å^bo9 ACCRA-plc ;
 Åbybro:Å^by^bro9 NYSTØ-plc ;
-Ålánda:Å^lán'da MARJA-plc ;
+Ålánda:Å^lán'da MARJA-A-plc ;
 Åmo:Åmo9 ACCRA-sur ;
-Ångermanlánda:Ånger^man^lán'da MARJA-plc ;
-Åsgårda+Use/Sub:Ås^går'da MARJA-plc ; !
+Ångermanlánda:Ånger^man^lán'da MARJA-A-plc ;
+Åsgårda+Use/Sub:Ås^går'da MARJA-A-plc ; !
 Åstot:Åstoh ANAR-sur ;
-Åstrømjávri:Å^strøm^jáv'ri MARJA-plc ;
+Åstrømjávri:Å^strøm^jáv'ri MARJA-I-plc ;
 Åtlo:Åtlo9 ACCRA-plc ;
-Ölánda:Ö^lán'da MARJA-plc ;
+Ölánda:Ö^lán'da MARJA-A-plc ;
 Örebro:Öre^bro9 NYSTØ-plc ;
 Öræfajökull:Öræfa^jökull LONDON-plc ;
 Östergötlands:Öster^göt^lands FirstTag ;
-Östergötlánda:Öster^göt^lán'da MARJA-plc ;
-Østeriika+Use/Sub:Øste^rij'ka MARJA-plc ; !
-Østlánda:Øst^lán'da MARJA-plc ;
+Östergötlánda:Öster^göt^lán'da MARJA-A-plc ;
+Østeriika+Use/Sub:Øste^rij'ka MARJA-A-plc ; !
+Østlánda:Øst^lán'da MARJA-A-plc ;
 Østmo:Øst^mo9 NYSTØ ;
 Østsibirsk:Øst^sibirsk9 FirstTag ;
 Øylo:Øylo9 NYSTØ ;
@@ -31127,7 +31234,7 @@ von+CmpN/None:von9 FirstTag ; !
 Šamma ACCRA-plc ;
 Šave ACCRA-plc ;
 Šealtiel LONDON-mal ;
-Čeavetjávri:Čeavet^jáv'ri MARJA-plc ; !FIN
+Čeavetjávri:Čeavet^jáv'ri MARJA-I-plc ; !FIN
 Šeba ACCRA-plc ;
 Čebo:Čebo9 ACCRA-plc ;
 Čebu ACCRA-ani ;
@@ -31143,8 +31250,8 @@ von+CmpN/None:von9 FirstTag ; !
 Četčenia+Use/Sub:Čet^čenia ACCRA-plc ; !
 Šiauliai+Use/Sub:Ši^auli^ai LONDON-sur ; !
 Šiauliai:Ši^auli^ai DUBAI-sur ;
-Čiekŋalvággi:Čiekŋal^vággi MARJA-plc ;
-Čietnjalvággi+Use/Sub:Čietnjal^vággi MARJA-plc ; !
+Čiekŋalvággi:Čiekŋal^vággi MARJA-I-plc ;
+Čietnjalvággi+Use/Sub:Čietnjal^vággi MARJA-I-plc ; !
 Šillem:Šillem9 LONDON-sur ;
 Šilo:Šilo9 ACCRA-sur ;
 Šimi ACCRA-mal ;
@@ -31152,31 +31259,31 @@ von+CmpN/None:von9 FirstTag ; !
 Čirri-Áne MARJA-fem ;
 Čirri-Ánne:Čirri-Án'ne MARJA-fem ;
 Škoda ACCRA-obj ;
-Šlumpi:Šlum'pi MARJA-mal ;
-Šlurfi:Šlur'fi MARJA-ani ;
-Čoallejárnjárga:Čoalle^jár^njár'ga MARJA-plc ;
-Čoavddatmohkki:Čoavddat^mohkki MARJA-plc ;
+Šlumpi:Šlum'pi MARJA-I-mal ;
+Šlurfi:Šlur'fi MARJA-I-ani ;
+Čoallejárnjárga:Čoalle^jár^njár'ga MARJA-A-plc ;
+Čoavddatmohkki:Čoavddat^mohkki MARJA-I-plc ;
 Čohk BERN-sur ;
-Čohkadoggejávri:Čohka^dogge^jáv'ri MARJA-plc ;
-Čohkarášša:Čohka^ráš'ša MARJA-plc ;
+Čohkadoggejávri:Čohka^dogge^jáv'ri MARJA-I-plc ;
+Čohkarášša:Čohka^ráš'ša MARJA-A-plc ;
 Čohkavuoleláttu:Čohka^vuole^láddu DAVVISUOLU-plc ; !FIN
-Čohkavárri:Čohka^várri MARJA-plc ; !FIN
+Čohkavárri:Čohka^várri MARJA-I-plc ; !FIN
 Čohkkiras:Čohkkirass HEANDARAT-plc ;
-Čohkoaivvejávri:Čohk^oaivve^jáv'ri MARJA-plc ;
-Čohkájojohka:Čohk^ájo^joh'ka MARJA-plc ;
+Čohkoaivvejávri:Čohk^oaivve^jáv'ri MARJA-I-plc ;
+Čohkájojohka:Čohk^ájo^joh'ka MARJA-A-plc ;
 Čorgaš ANAR-plc ;
 Šua ACCRA-plc ;
 Šuah:Šu^ah9 BERN-sur ;
 Čum:Čum9 BERN-org ;
 Šuni ACCRA-sur ;
-Čunovuohppi:Čuno^vuohppi MARJA-plc ;
-Šuoššjohka:Šuošš^joh'ka MARJA-plc ;
-Šuoššjávri:Šuošš^jáv'ri MARJA-plc ;
+Čunovuohppi:Čuno^vuohppi MARJA-I-plc ;
+Šuoššjohka:Šuošš^joh'ka MARJA-A-plc ;
+Šuoššjávri:Šuošš^jáv'ri MARJA-I-plc ;
 Šur BERN-mal ;
-Šveica:Švej'ca MARJA-plc ;
+Šveica:Švej'ca MARJA-A-plc ;
 Čáhcesuolu:Čáhce^suollu DAVVISUOLU-plc ; !FIN
 Šáhkkaolympiaden+Use/Sub:Šáhkka^olympi^aden9 LONDON-org ; !
-Čáhppesmearra:Čáhppes^mearra MARJA-plc ;
+Čáhppesmearra:Čáhppes^mearra MARJA-A-plc ;
 ABC-company ACCRA-org ;
 ABC-company+Use/Sub:ABC-company NYSTØ-org ; !
 ACTA ACCRA-org ;
@@ -31250,7 +31357,7 @@ Aarre ACCRA-mal ;
 Aarrestad:Aarre^stad9 BERN-sur ;
 Aars:Aars9 BERN-sur ;
 Aarsberetningen:Aars^beretningen9 LONDON-obj ;
-Aarsehtta MARJA-sur ;
+Aarsehtta MARJA-A-sur ;
 Aarset BERN-sur ;
 Aarseth:Aarseth9 BERN-sur ;
 Aarskog:Aar^skog9 BERN-sur ;
@@ -31386,7 +31493,7 @@ Adygia ACCRA-plc ;
 Aejlies% gaaltije+Use/Sub:Aej9lies% gaaltije SIJTE-obj ;
 Aeroflot:Aero^flot BERN-org ;
 Aetat BERN-org ;
-Aetáhta MARJA-org ;
+Aetáhta MARJA-A-org ;
 Afanasjeva ACCRA-sur ;
 Affairs BERN-org ;
 Afganistan+Use/Sub:Afgani^stan9 BERN-plc ;
@@ -31664,7 +31771,7 @@ Aldridge ACCRA-plc ;
 Aldus LONDON-org ;
 Alec LONDON-mal ;
 Alegre ACCRA-plc ;
-Alehtta MARJA-fem ;
+Alehtta MARJA-A-fem ;
 Alehttá MARJA-fem ;
 Alejandra ACCRA-fem ;
 Aleksandar LONDON-mal ;
@@ -32537,7 +32644,7 @@ Atayal BERN-plc ;
 Atbara ACCRA-plc ;
 Aten:Aten9 BERN-plc ;
 Atene ACCRA-fem ;
-Atex% Sápmi MARJA-org ;
+Atex% Sápmi MARJA-I-org ;
 Athabasca ACCRA-plc ;
 Athar LONDON-mal ;
 Athen:Athen9 BERN-plc ;
@@ -32917,7 +33024,7 @@ Bardujord:Bardu^jord9 BERN-plc ;
 Barekstad:Barek^stad9 BERN-sur ;
 Barents LONDON-LOAN-plc ;
 Barentshavet:Barents^havet LONDON-LOAN-plc ;
-Barentsprográmma+Use/Sub:Barents^pro^grám'ma MARJA-obj ;
+Barentsprográmma+Use/Sub:Barents^pro^grám'ma MARJA-A-obj ;
 Barentsregionen+Use/Sub:Barents^regi^onen9 LONDON-plc ; !
 Barentssekretariatet:Barents^sekretariatet9 LONDON-org ;
 Barfod:Barfod9 BERN-sur ;
@@ -33030,7 +33137,7 @@ Beahcce MARJA-mal ;
 Beahkká MARJA-mal ;
 Bealjehkh LONDON-plc ;
 Bear BERN-sur ;
-Beardna MARJA-mal ;
+Beardna MARJA-A-mal ;
 Beate:Be^ate ACCRA-fem ;
 Beathe:Be^athe ACCRA-fem ;
 Beatles LONDON-org ;
@@ -33149,7 +33256,7 @@ Benfeldt BERN-sur ;
 Benfica ACCRA-plc ;
 Bengal BERN-plc ;
 Bengalac BERN-obj ;
-Bengaláhkka MARJA-obj ;
+Bengaláhkka MARJA-A-obj ;
 Bengbu ACCRA-plc ;
 Benghazi ACCRA-plc ;
 Bengt BERN-mal ;
@@ -33380,7 +33487,7 @@ Bientie ACCRA-sur ;
 Bier BERN-mal ;
 Biera ACCRA-mal ;
 Bierna ACCRA-mal ;
-Bierra MARJA-mal ;
+Bierra MARJA-A-mal ;
 Bierril LONDON-mal ;
 Bierrán:Bier'rán LONDON-mal ;
 Biette ACCRA-plc ;
@@ -33959,7 +34066,7 @@ Boye:Bo^ye ACCRA-mal ;
 Boym:Boym9 BERN-sur ;
 Boyne ACCRA-sur ;
 Boysen:Boysen9 LONDON-sur ;
-Boŋgu:Boŋ'gu MARJA-sur ;
+Boŋgu:Boŋ'gu MARJA-U-sur ;
 Braastad:Braa^stad9 BERN-sur ;
 Braaten:Braaten9 LONDON-sur ;
 Braathen:Braathen9 LONDON-org ;
@@ -34491,7 +34598,7 @@ Bárnabas BERN-mal ;
 Báv-Ingá:Báv-In'gá MARJA-fem ;
 Bávllos LONDON-mal ;
 Bávlos LONDON-mal ;
-Bávva:Báv'va MARJA-mal ;
+Bávva:Báv'va MARJA-A-mal ;
 Bávval LONDON-mal ;
 Bávvál LONDON-mal ;
 Bäckman:Bäck^man9 BERN-sur ;
@@ -35506,7 +35613,7 @@ Dollsteinshola:Doll^steins^hola ACCRA-plc ;
 Dolly ACCRA-fem ;
 Dolly+Use/Sub:Dolly NYSTØ-fem ; !
 Dolmen:Dolmen9 LONDON-sur ;
-Dolpi MARJA-sur ;
+Dolpi MARJA-I-sur ;
 Dolva ACCRA-plc ;
 Dolven:Dolven9 LONDON-sur ;
 Domba ACCRA-plc ;
@@ -36016,7 +36123,7 @@ Einunna ACCRA-plc ;
 Einvik:Ein^vik BERN-sur ;
 Einár LONDON-mal ;
 Eira ACCRA-femsur ;
-Eira:Ej'ra MARJA-sur ;
+Eira:Ej'ra MARJA-A-sur ;
 Eire ACCRA-sur ;
 Eirik LONDON-mal ;
 Eirin:Eirin9 LONDON-fem ;
@@ -36958,7 +37065,7 @@ Finnmix BERN-org ;
 Finnmork+Use/Sub:Finn^mork BERN-plc ; !
 Finnmárk+Use/Sub:Finn^márk LONDON-plc ; !
 Finnmárken+Use/Sub:Finn^márken9 LONDON-plc ; !
-Finnmárkkolávdegoddi+Use/Sub:Finn^márkko^lávde^goddi MARJA-org ; !
+Finnmárkkolávdegoddi+Use/Sub:Finn^márkko^lávde^goddi MARJA-I-org ; !
 Finnskatt:Finn^skatt BERN-obj ;
 Finnskogen:Finn^skogen9 LONDON-plc ;
 Finnsnes:Finns^nes BERN-sur ;
@@ -36983,7 +37090,7 @@ Firat LONDON-plc ;
 Firdafylke:Firda^fylke ACCRA-LOAN-plc ;
 Firdausi ACCRA-plc ;
 Firdusi ACCRA-plc ;
-Fire-Joavnna MARJA-mal ;
+Fire-Joavnna MARJA-A-mal ;
 Fire-Máhtte MARJA-mal ;
 Firekeepers:Fire^keepers LONDON-obj ;
 Firenze ACCRA-plc ;
@@ -37928,7 +38035,7 @@ Geitvatnet:Geit^vatnet LONDON-plc ;
 Gelderland:Gelder^land9 BERN-plc ;
 Gelencser LONDON-sur ;
 Gelibolu ACCRA-plc ;
-Geliidna:Gelijdna MARJA-fem ;
+Geliidna:Gelijdna MARJA-A-fem ;
 Gellein:Gellein9 BERN-sur ;
 Gellerup:Gellerup9 BERN-plc ;
 Gellielaaketje ACCRA-org ; !or obj
@@ -37999,7 +38106,7 @@ Gibsen:Gibsen9 LONDON-sur ;
 Gibson:Gibson9 LONDON-sur ;
 Gideon:Gideon9 LONDON-mal ;
 Gieje ACCRA-obj ;
-Giellagas-instituhtta MARJA-org ;
+Giellagas-instituhtta MARJA-A-org ;
 Gieril LONDON-mal ;
 Gierløff LONDON-sur ;
 Gifu ACCRA-plc ;
@@ -38586,7 +38693,7 @@ Guilini ACCRA-sur ;
 Guinea-Bissau ACCRA-plc ;
 Guipúzcoa ACCRA-plc ;
 Guise ACCRA-sur ;
-Guivi:Guj'vi MARJA-mal ;
+Guivi:Guj'vi MARJA-I-mal ;
 Guiyang:Gui^yang9 BERN-sur ;
 Guizhou ACCRA-plc ;
 Gujarat BERN-obj ;
@@ -38669,7 +38776,7 @@ Gunvald:Gunvald9 LONDON-mal ;
 Gunvor LONDON-fem ;
 Guoirran LONDON-ani ;
 Guri ACCRA-fem ;
-Guriidna:Gurijdna MARJA-fem ;
+Guriidna:Gurijdna MARJA-A-fem ;
 Gurina ACCRA-sur ;
 Gurine ACCRA-fem ;
 Gurjev LONDON-sur ;
@@ -38690,7 +38797,7 @@ Gustavson:Gustavson9 LONDON-sur ;
 Gustavsson:Gustavs^son BERN-sur ;
 Gustaw LONDON-mal ;
 Gusto:Gus'to MARJA-mal ;
-Gustu:Gus'tu MARJA-mal ;
+Gustu:Gus'tu MARJA-U-mal ;
 Gutenberg:Gutenberg9 BERN-sur ;
 Gutiérrez:Gutiérrez9 BERN-plc ;
 Gutnel ANAR-fem ;
@@ -38728,7 +38835,7 @@ Gysler LONDON-sur ;
 Gystad:Gy^stad9 BERN-sur ;
 Gyöngyös LONDON-plc ;
 Györ BERN-sur ;
-Gába MARJA-org ;
+Gába MARJA-A-org ;
 Gábe ACCRA-sur ;
 Gábna ACCRA-plc ;
 Gáddjá MARJA-fem ;
@@ -38741,7 +38848,7 @@ Gáppe MARJA-mal ;
 Gáren:Gáren9 LONDON-sur ;
 Gárjil LONDON-plc ;
 Gárral LONDON-sur ;
-Gáŋgaviika:Gáŋga^vij'ka MARJA-plc ;
+Gáŋgaviika:Gáŋga^vij'ka MARJA-A-plc ;
 Gäddede ACCRA-plc ;
 Gällivare:Gälli^vare ACCRA-LOAN-plc ;
 Gästrikland:Gäst^rik^land9 BERN-LOAN-plc ;
@@ -39460,8 +39567,8 @@ Hazel LONDON-sur ;
 Hazeland:Haze^land9 BERN-plc ;
 Hazzelrot BERN-sur ;
 Head:Head9 BERN-sur ;
-Heaika:Heaj'ka MARJA-mal ;
-Heammu:Heammu MARJA-mal ;
+Heaika:Heaj'ka MARJA-A-mal ;
+Heammu:Heammu MARJA-U-mal ;
 Heath:Heath9 BERN-sur ;
 Heathrow BERN-sur ;
 Heatta ACCRA-sur ;
@@ -39553,7 +39660,7 @@ Heien:He^ien9 LONDON-sur ;
 Heier:He^ier LONDON-sur ;
 Heige:Hej'ge MARJA-mal ;
 Heijá:Hej'já MARJA-mal ;
-Heika:Hej'ka MARJA-mal ;
+Heika:Hej'ka MARJA-A-mal ;
 Heike:Hej'ke MARJA-mal ;
 Heikka ACCRA-sur ;
 Heikkala ACCRA-sur ;
@@ -40757,9 +40864,9 @@ Hámmerfest+Use/Sub:Hámmer^fest9 BERN-plc ; !
 Hánas ANAR-mal ;
 Hánno:Hán'no MARJA-mal ;
 Hánná:Hán'ná MARJA-fem ;
-Hánsa:Hán'sa MARJA-mal ;
+Hánsa:Hán'sa MARJA-A-mal ;
 Hánssa-Jovn:Hánssa-Jovn9 BERN-mal ;
-Hánsu:Hán'su MARJA-mal ;
+Hánsu:Hán'su MARJA-U-mal ;
 Hánsá:Hán'sá MARJA-mal ;
 Häggnäs:Hägg^näs BERN-plc ;
 Häikiö ACCRA-plc ;
@@ -41030,7 +41137,7 @@ Iisko-Hemminki ACCRA-mal ;
 Iisko-Matti ACCRA-mal ;
 Iiskola ACCRA-sur ;
 Iiskon-Máhtte MARJA-mal ;
-Iisku:Iis'ku MARJA-mal ;
+Iisku:Iis'ku MARJA-U-mal ;
 Iitti ACCRA-plc ;
 Iivanainen:Iivanai C-FI-NEN-sur ;
 Iivar LONDON-mal ;
@@ -41144,9 +41251,9 @@ Industriell:Industri^ell BERN-obj ;
 Ine ACCRA-fem ;
 Inez:Inez9 BERN-fem ;
 Infiniti NYSTØ-obj ;
-Info-nuorra+Use/Sub:Info-nuorra MARJA-org ; !
+Info-nuorra+Use/Sub:Info-nuorra MARJA-A-org ; !
 Infonor:Info^nor BERN-org ;
-Infonuorra:Info^nuorra MARJA-org ;
+Infonuorra:Info^nuorra MARJA-A-org ;
 Ing-Lill:Ing9-Lill LONDON-fem ;
 Inga ACCRA-fem ;
 Ingar LONDON-mal ;
@@ -41357,7 +41464,7 @@ Iskkon-Máhte ACCRA-mal ;
 Iskkon-Máhtte MARJA-mal ;
 Iskkon:Iskkon9 ANAR-mal ;
 Iskon-Máhte ACCRA-mal ;
-Isku:Is'ku MARJA-mal ;
+Isku:Is'ku MARJA-U-mal ;
 Islamabad:Islamabad9 BERN-plc ;
 Island:Is^land9 BERN-LOAN-plc ;
 Islas LONDON-plc ;
@@ -41622,8 +41729,8 @@ Jeanett BERN-fem ;
 Jeanette ACCRA-fem ;
 Jeanne ACCRA-fem ;
 Jeanoe NYSTØ-sur ;
-Jeansa:Jean'sa MARJA-mal ;
-Márkomeannu:Márko^meannu MARJA-org ;
+Jeansa:Jean'sa MARJA-A-mal ;
+Márkomeannu:Márko^meannu MARJA-U-org ;
 Jebe ACCRA-sur ;
 Jebens LONDON-sur ;
 Jebens:Jebens LONDON-sur ;
@@ -41966,13 +42073,13 @@ Jousmäki:Jous^mäki ACCRA-sur ;
 Joutjärvi:Jout^järvi ACCRA-plc ;
 Joutsen:Joutsen9 LONDON-sur ;
 Joutsi ACCRA-sur ;
-Jovdna MARJA-mal ;
+Jovdna MARJA-A-mal ;
 Joveng:Jov^eng9 BERN-sur ;
 Jovian:Jovi^an9 LONDON-mal ;
 Jovis LONDON-sur ;
-Jovna:Jov'na MARJA-mal ;
-Jovni MARJA-mal ;
-Jovnna MARJA-mal ;
+Jovna:Jov'na MARJA-A-mal ;
+Jovni MARJA-I-mal ;
+Jovnna MARJA-A-mal ;
 Jovná ACCRA-mal ;
 Jovsses LONDON-mal ;
 Jovsset:Jovsseb ANAR-mal ; ! XXX 3?
@@ -43174,7 +43281,7 @@ Kirste:Kirs'te MARJA-fem ;
 Kirstebom:Kirstebom9 BERN-sur ;
 Kirsten:Kir^sten9 LONDON-fem ;
 Kirsti ACCRA-fem ;
-Kirsti:Kirs'ti MARJA-fem ;
+Kirsti:Kirs'ti MARJA-I-fem ;
 Kirstin:Kirstin9 LONDON-fem ;
 Kirstine ACCRA-fem ;
 Kiruna ACCRA-LOAN-plc ;
@@ -44078,7 +44185,7 @@ Kronolensmann:Krono^lens^mann9 BERN-sur ;
 Kronstad:Kron^stad9 BERN-sur ;
 Kronstadt:Kron^stadt BERN-plc ;
 Krook:Krook9 BERN-sur ;
-Krooka-Riika:Krooka-Rij'ka MARJA-fem ;
+Krooka-Riika:Krooka-Rij'ka MARJA-A-fem ;
 Krooka-Verneri ACCRA-mal ;
 Kroonstad:Kroon^stad9 BERN-sur ;
 Kropsu ACCRA-sur ;
@@ -44511,7 +44618,7 @@ Kyzyl LONDON-plc ;
 Kyösti ACCRA-mal ;
 Kyöstilä ACCRA-sur ;
 Kyötikki ACCRA-sur ;
-Káhtariidna:Káhtarijdna MARJA-fem ;
+Káhtariidna:Káhtarijdna MARJA-A-fem ;
 Káhtarin:Káhtarin9 BERN-fem ;
 Kákáos BERN-obj ;
 Kálle:Kál'le MARJA-mal ;
@@ -44909,7 +45016,7 @@ Lappbyn:Lapp^byn9 BERN-LOAN-org ;
 LappeKirke:Lappe^Kirke ACCRA-obj ;
 Lappecodicillen:Lappe^codicillen9 LONDON-obj ;
 Lappekodicillen:Lappe^kodicillen9 LONDON-obj ;
-Lappekodisilla:Lappe^kodisil'la MARJA-obj ;
+Lappekodisilla:Lappe^kodisil'la MARJA-A-obj ;
 Lappekodisillen:Lappe^kodisillen9 LONDON-obj ;
 Lappekommisjonen:Lappe^kommisjonen9 LONDON-obj ;
 Lappekommissionen:Lappe^kommissionen9 LONDON-org ;
@@ -45068,7 +45175,7 @@ Laâyoune:Laâ^youne ACCRA-plc ;
 Lea ACCRA-fem ;
 Leader LONDON-org ;
 Leaf LONDON-org ;
-Leammu:Leam'mu MARJA-mal ;
+Leammu:Leam'mu MARJA-U-mal ;
 Leammá:Leam'má MARJA-mal ;
 Leander:Le^ander LONDON-sur ;
 Leangen:Le^angen9 LONDON-plc ;
@@ -46065,7 +46172,7 @@ Lájlá:Láj9'lá MARJA-fem ;
 Lájár BERN-plc ;
 Láras LONDON-mal ;
 Lárin:Lárin9 ANAR-mal ;
-Lársa:Lár'sa MARJA-mal ;
+Lársa:Lár'sa MARJA-A-mal ;
 Lásse:Lás'se MARJA-mal ;
 László ACCRA-mal ;
 Látvia ACCRA-plc ;
@@ -47232,7 +47339,7 @@ Mihkil LONDON-mal ;
 Mihkkal LONDON-mal ;
 Mihkkel LONDON-mal ;
 Mihkkil LONDON-mal ;
-Mihkku MARJA-mal ;
+Mihkku MARJA-U-mal ;
 Miikki ACCRA-sur ;
 Miikkulainen:Miikkulai C-FI-NEN-sur ;
 Miilumäki:Miilu^mäki ACCRA-plc ;
@@ -47263,7 +47370,7 @@ Mikkilä ACCRA-sur ;
 Mikkol LONDON-mal ;
 Mikkolainen:Mikkolai C-FI-NEN-sur ;
 Mikkonen:Mikko C-FI-NEN-sur ;
-Mikku MARJA-mal ;
+Mikku MARJA-U-mal ;
 Mikká MARJA-mal ;
 Mikkál ANAR-mal ;
 Miklagard:Mikla^gard9 BERN-plc ;
@@ -47281,7 +47388,7 @@ Miljeteig:Milje^teig9 BERN-sur ;
 Miljø NYSTØ-obj ;
 Miljøplan:Miljø^plan9 BERN-LOAN-obj ;
 Miljøtjeneste:Miljø^tjeneste ACCRA-org ;
-Milka MARJA-mal ;
+Milka MARJA-A-mal ;
 Milkshake:Milk^shake ACCRA-obj ;
 Mill BERN-sur ;
 Milly ACCRA-fem ;
@@ -47552,7 +47659,7 @@ Mortensen:Mortensen9 LONDON-sur ;
 Mortensnes:Mortens^nes BERN-plc ;
 Mortensson:Mortens^son BERN-sur ;
 Mortsund:Mort^sund9 SUND-plc ;
-Mortu:Mor'tu MARJA-mal ;
+Mortu:Mor'tu MARJA-U-mal ;
 Morvik:Mor^vik BERN-sur ;
 Mosaic BERN-org ;
 Mosambik BERN-plc ;
@@ -47841,7 +47948,7 @@ Myyry ACCRA-fem ;
 Myyryläinen:Myyryläi C-FI-NEN-sur ;
 Myyrä ACCRA-plc ;
 Myöhänen:Myöhä C-FI-NEN-sur ;
-Máddji MARJA-fem ;
+Máddji MARJA-I-fem ;
 Máddjá MARJA-fem ;
 Mádes LONDON-plc ;
 Mágge MARJA-fem ;
@@ -47863,15 +47970,15 @@ Márge:Már'ge MARJA-mal ;
 Márget:Márgeh ANAR-fem ;
 Márgget:Márggeh ANAR-fem ;
 Márgrehtá:Már^greh'tá MARJA-fem ;
-Márgu:Már'gu MARJA-fem ;
+Márgu:Már'gu MARJA-U-fem ;
 Máriá MARJA-fem ;
-Márja:Már'ja MARJA-fem ;
+Márja:Már'ja MARJA-A-fem ;
 Márjon:Márjon9 LONDON-fem ;
 Márjá:Már'já MARJA-fem ;
 Márte:Már'te MARJA-fem ;
 Mártá:Már'tá MARJA-fem ;
 Mávdnos LONDON-mal ;
-Mávdnu MARJA-mal ;
+Mávdnu MARJA-U-mal ;
 Mávnnos LONDON-mal ;
 Mávnos LONDON-mal ;
 Mäenpää:Mäen^pää ACCRA-plc ;
@@ -48511,7 +48618,7 @@ Nillukka ACCRA-sur ;
 Nillá:Nil'lá MARJA-mal ;
 Nilppi ACCRA-mal ;
 Nils BERN-mal ;
-Nilsa:Nil'sa MARJA-mal ;
+Nilsa:Nil'sa MARJA-A-mal ;
 Nilsadalen:Nilsa^dalen9 LONDON-plc ;
 Nilsdatter:Nils^datter LONDON-sur ;
 Nilse:Nil'se MARJA-mal ;
@@ -48520,7 +48627,7 @@ Nilsine ACCRA-fem ;
 Nilssen:Nilssen9 LONDON-sur ;
 Nilsson:Nilsson9 LONDON-sur ;
 Nilut:Niluh ANAR-sur ;
-Nilutjoavku:Nilut^joav'ku MARJA-org ;
+Nilutjoavku:Nilut^joav'ku MARJA-U-org ;
 Nilz BERN-mal ;
 Nilá ACCRA-mal ;
 Nilán:Nilán9 BERN-plc ;
@@ -48531,7 +48638,7 @@ Ningxia ACCRA-plc ;
 Ninive ACCRA-plc ;
 Ninja ACCRA-fem ;
 Ninn:Ninn9 BERN-sur ;
-Ninna:Nin'na MARJA-fem ;
+Ninna:Nin'na MARJA-A-fem ;
 Ninni ACCRA-fem ;
 Niobe:Ni^obe ACCRA-plc ;
 Nipiaa ACCRA-org ;
@@ -49582,7 +49689,7 @@ Otto-automáhta ACCRA-obj ;
 Ottosen:Ottosen9 LONDON-sur ;
 Ouagadougou:Ou^agadougou ACCRA-plc ;
 Oujda:Ouj9da ACCRA-fem ;
-Oula MARJA-mal ;
+Oula MARJA-A-mal ;
 Oulie ACCRA-sur ;
 Oulu ACCRA-plc ;
 Oulujoki:Oulu^joki ACCRA-plc ;
@@ -49619,9 +49726,9 @@ Ovidia ACCRA-plc ;
 Ovidie ACCRA-sur ;
 Oviken:O^viken9 LONDON-plc ;
 Ovis LONDON-sur ;
-Ovla+Use/Sub:Ov'la MARJA-mal ; !
+Ovla+Use/Sub:Ov'la MARJA-A-mal ; !
 Ovlin LONDON-sur ;
-Ovlla+Use/Sub:Ovlla MARJA-mal ; !
+Ovlla+Use/Sub:Ovlla MARJA-A-mal ; !
 Ovllá MARJA-mal ;
 Ovllá+Use/NG:Ov'lá MARJA-mal ;
 Owe ACCRA-mal ;
@@ -50158,7 +50265,7 @@ Peuranen:Peura C-FI-NEN-sur ;
 Peuraniemi:Peura^niemi ACCRA-sur ;
 Peussa ACCRA-plc ;
 Peyron:Peyron9 LONDON-plc ;
-Peđar-Hánsa:Peđar-Hán'sa MARJA-mal ;
+Peđar-Hánsa:Peđar-Hán'sa MARJA-A-mal ;
 Pfaff BERN-sur ;
 Pfalz:Pfalz9 BERN-plc ;
 Pfeiff BERN-sur ;
@@ -50201,7 +50308,7 @@ Pienimäki:Pieni^mäki ACCRA-sur ;
 Pieniniemi:Pieni^niemi ACCRA-sur ;
 Piepponen:Pieppo C-FI-NEN-sur ;
 Piera ACCRA-mal ;
-Pierra MARJA-mal ;
+Pierra MARJA-A-mal ;
 Pierre:Pi^erre ACCRA-mal ;
 Piesanen:Piesa C-FI-NEN-sur ;
 Pieski ACCRA-sur ;
@@ -51137,14 +51244,14 @@ Ravensburg:Ravens^burg9 BERN-plc ;
 Ravi ACCRA-plc ;
 Ravila ACCRA-sur ;
 Ravn:Ravn9 BERN-plc ;
-Ravna MARJA-fem ;
+Ravna MARJA-A-fem ;
 Ravndal:Ravn^dal BERN-plc ;
 Ravnestad:Ravne^stad9 BERN-sur ;
 Ravnsborg:Ravns^borg9 BERN-plc ;
 Ravnås:Ravn^ås BERN-sur ;
 Ravrvihke:Ravr^vihke ACCRA-plc ;
 Rawalpindi ACCRA-plc ;
-Rawdna MARJA-fem ;
+Rawdna MARJA-A-fem ;
 Raymond:Raymond9 LONDON-mal ;
 Rayner LONDON-sur ;
 Rea ACCRA-fem ;
@@ -51408,9 +51515,9 @@ Ridanpää:Ridan^pää ACCRA-plc ;
 Ridaura ACCRA-obj ;
 Riddarevva ACCRA-mal ;
 Riddervold:Ridder^vold9 BERN-sur ;
-Riddu% Riđđu MARJA-org ;
+Riddu% Riđđu MARJA-U-org ;
 Riddu-Lene ACCRA-fem ;
-Riddu-Riđđu MARJA-org ;
+Riddu-Riđđu MARJA-U-org ;
 Ridge ACCRA-mal ;
 Rieber LONDON-sur ;
 Rieck:Ri^eck BERN-sur ;
@@ -51459,7 +51566,7 @@ Riihinen:Riihi C-FI-NEN-sur ;
 Riihioja:Riihi^oja ACCRA-sur ;
 Riihonen:Riiho C-FI-NEN-sur ;
 Riika ACCRA-fem ;
-Riikaarkivára+Use/Sub:Riika^arkivára MARJA-org ; !
+Riikaarkivára+Use/Sub:Riika^arkivára MARJA-A-org ; !
 Riikola ACCRA-sur ;
 Riikonen:Riiko C-FI-NEN-sur ;
 Riina ACCRA-sur ;
@@ -51499,7 +51606,7 @@ Rikstad:Rik^stad9 BERN-sur ;
 Riksteater:Riks^teater LONDON-org ;
 Riksteatret:Riks^teatret LONDON-org ;
 Riksuniversitetet:Riks^universitetet LONDON-obj ;
-Rilka MARJA-fem ;
+Rilka MARJA-A-fem ;
 Riller:Riller LONDON-sur ;
 Rimbaud:Rimbaud9 BERN-sur ;
 Rimbegla ACCRA-plc ;
@@ -51584,8 +51691,8 @@ Rissanen:Rissa C-FI-NEN-sur ;
 Risskov:Ris^skov BERN-plc ;
 Rist:Rist9 BERN-sur ;
 Risten:Risten9 LONDON-sur ;
-Ristenrauna MARJA-fem ;
-Ristiinna:Ristijnna MARJA-fem ;
+Ristenrauna MARJA-A-fem ;
+Ristiinna:Ristijnna MARJA-A-fem ;
 Ristiinná:Ristijnná MARJA-fem ;
 Ristiluoma:Risti^luoma ACCRA-sur ;
 Ristilä ACCRA-sur ;
@@ -52056,7 +52163,7 @@ Ráipis ANAR-mal ;
 Ráipás ANAR-mal ;
 Rásmos LONDON-mal ;
 Ráste ACCRA-mal ;
-Rávdna MARJA-fem ;
+Rávdna MARJA-A-fem ;
 Rávdná MARJA-fem ;
 Rávna ACCRA-fem ;
 Rávná:Ráv'ná MARJA-fem ;
@@ -52203,9 +52310,9 @@ Røyslund:Røys^lund9 BERN-sur ;
 Røytvoll:Røyt^voll BERN-plc ;
 Rüdesheim:Rüdes^heim9 HEIM-plc ;
 Rügen:Rügen9 LONDON-plc ;
-S-Gabba MARJA-ani ;
+S-Gabba MARJA-A-ani ;
 S-Lag:S-Lag9 BERN-org ;
-S-lága MARJA-org ;
+S-lága MARJA-A-org ;
 SATø:SA^Tø ACCRA-org ;
 SF-Purnu ACCRA-org ;
 SISA ACCRA-org ;
@@ -52277,7 +52384,7 @@ Safenat BERN-obj ;
 Safira ACCRA-obj ;
 Saga ACCRA-plc ;
 Sagalstad:Sagal^stad9 BERN-sur ;
-Sagarmatha MARJA-fem ;
+Sagarmatha MARJA-A-fem ;
 Sagasig:Sagasig9 BERN-sur ;
 Sagbakken:Sag^bakken9 LONDON-plc ;
 Sagebø:Sage^bø NYSTØ ;
@@ -52505,7 +52612,7 @@ Samuli ACCRA-mal ;
 Samvirke:Sam^virke ACCRA-org ;
 Samvirkekafea+Use/Sub:Sam^virke^kafea ACCRA-obj ; !
 Samvirkelag:Sam^virke^lag9 BERN-org ;
-Samvirkelága:Sam^virke^lága MARJA-obj ;
+Samvirkelága:Sam^virke^lága MARJA-A-obj ;
 San:San9 BERN-sur ;
 Sana ACCRA-plc ;
 Sanaa ACCRA-plc ;
@@ -54549,7 +54656,7 @@ Stockport:Stock^port BERN-plc ;
 Stockton-on-Tees BERN-plc ;
 Stockton:Stockton9 LONDON-plc ;
 Stod:Stod9 BERN-plc ;
-Stofeleahtta MARJA-sur ;
+Stofeleahtta MARJA-A-sur ;
 Stoke-on-Trent BERN-plc ;
 Stokka ACCRA-sur ;
 Stokkabekken:Stokka^bekken9 LONDON-plc ;
@@ -54750,7 +54857,7 @@ Stumpf BERN-sur ;
 Stuora% Británnia ACCRA-plc ;
 Stuora% Julev LONDON-plc ;
 Stuorabritannia+Use/Sub:Stuora^britannia ACCRA-plc ; !
-Stuoradiggi+Use/Sub:Stuora^diggi MARJA-org ; !
+Stuoradiggi+Use/Sub:Stuora^diggi MARJA-I-org ; !
 Stuoralule ACCRA-org ;
 Stuorjulev LONDON-plc ;
 Stuorra% Británnia ACCRA-plc ;
@@ -54990,7 +55097,7 @@ Susendal:Susen^dal BERN-plc ;
 Susi ACCRA-sur ;
 Susort BERN-plc ;
 Sussex LONDON-plc ;
-Sussu:Sus'su MARJA-fem ;
+Sussu:Sus'su MARJA-U-fem ;
 Susánná:Susán'ná MARJA-fem ;
 Sutela ACCRA-sur ;
 Sutelainen:Sutelai C-FI-NEN-sur ;
@@ -55234,16 +55341,16 @@ Szombathely ACCRA-plc ;
 Székesfehérvár BERN-plc ;
 Sábin:Sábin9 LONDON-sur ;
 Sámedigge+Use/Sub:Sáme^digge MARJA-org ; !
-Sámediggeráddi+Use/Sub:Sáme^digge^ráddi MARJA-org ; !
-Sámi#ráđđi:Sámi#ráđđi MARJA-org ;
+Sámediggeráddi+Use/Sub:Sáme^digge^ráddi MARJA-I-org ; !
+Sámi#ráđđi:Sámi#ráđđi MARJA-I-org ;
 Sámi% Boy+CmpN/None:Sámi% Boy BERN-obj ; !
 Sámi% Grand% Prix BERN-obj ;
-Sámi% Joatkka-% ja% boazodoalloskuvla+CmpN/None:Sámi% Joatkka-% ja% boazo^doallo^skuv'la MARJA-org ; !
+Sámi% Joatkka-% ja% boazodoalloskuvla+CmpN/None:Sámi% Joatkka-% ja% boazo^doallo^skuv'la MARJA-A-org ; !
 Sámi% boy+Use/Sub:Sámi% boy BERN-obj ; !
 Sámi-Cup:Sámi-Cup9 BERN-org ;
-Sámidiggeráddi+Use/Sub:Sámi^digge^ráddi MARJA-org ; !
-Sámidiggi+Use/Sub:Sámi^diggi MARJA-org ; !
-Sámilávdegoddi+Use/Sub:Sámi^lávde^goddi MARJA-org ; !
+Sámidiggeráddi+Use/Sub:Sámi^digge^ráddi MARJA-I-org ; !
+Sámidiggi+Use/Sub:Sámi^diggi MARJA-I-org ; !
+Sámilávdegoddi+Use/Sub:Sámi^lávde^goddi MARJA-I-org ; !
 Sámmol LONDON-mal ;
 Sámmul ANAR-mal ;
 Sámoa ACCRA-plc ;
@@ -55427,7 +55534,7 @@ Sørgården:Sør^gården9 LONDON-plc ;
 Sørhaug:Sør^haug9 BERN-sur ;
 Sørheim:Sør^heim9 HEIM-sur ;
 Sørhus:Sør^hus BERN-sur ;
-Søriidna:Sørijdna MARJA-fem ;
+Søriidna:Sørijdna MARJA-A-fem ;
 Søril BERN-sur ;
 Sørild:Sørild9 BERN-org ; !Also plc?
 Sørishavet:Sør^is^havet LONDON-LOAN-plc ;
@@ -55567,7 +55674,7 @@ Tallberg:Tall^berg9 BERN-sur ;
 Tallin:Tallin9 LONDON-plc ;
 Tallinn:Tallinn9 BERN-sur ;
 Talma ACCRA-plc ;
-Talma+Use/Sub:Tal'ma MARJA-org ; !
+Talma+Use/Sub:Tal'ma MARJA-A-org ; !
 Talmud:Talmud9 BERN-obj ;
 Talola ACCRA-sur ;
 Talonen:Talo C-FI-NEN-sur ;
@@ -57277,7 +57384,7 @@ Utvær:Ut^vær BERN-plc ;
 Utzon:Utzon9 LONDON-sur ;
 Utæker LONDON-sur ;
 Uuksulainen:Uuksulai C-FI-NEN-sur ;
-Uula MARJA-mal ;
+Uula MARJA-A-mal ;
 Uummannaq BERN-plc ;
 Uunila ACCRA-sur ;
 Uusi-Illikainen:Uusi^-Illikai C-FI-NEN-sur ;
@@ -57606,7 +57713,7 @@ Vauxhall:Vaux^hall BERN-obj ;
 Vavuli ACCRA-sur ;
 Vaxholm:Vax^holm9 BERN-plc ;
 Vea ACCRA-plc ;
-Veaidnu:Veajdnu MARJA-mal ;
+Veaidnu:Veajdnu MARJA-U-mal ;
 Vebjørn:Ve^bjørn9 LONDON-mal ;
 Veblungsnes:Veb^lungs^nes BERN-plc ;
 Veda ACCRA-plc ;
@@ -58262,7 +58369,7 @@ Vygotsky ACCRA-sur ;
 Vylka ACCRA-sur ;
 Vytsjegda ACCRA-plc ;
 Vyyryläinen:Vyyryläi C-FI-NEN-sur ;
-Vábu MARJA-mal ; !or just First Tag?
+Vábu MARJA-U-mal ; !or just First Tag?
 Vác BERN-sur ;
 Vádel-Erke:Vádel-Er'ke MARJA-mal ;
 Vágar LONDON-plc ;
@@ -59054,7 +59161,7 @@ Zürich:Zürich9 LONDON-plc ;
 al-Qaeda+Use/Sub:al-Qaeda ACCRA-org ; !
 al-Qaida ACCRA-org ;
 eNorge:e^Norge ACCRA-org ;
-eSápmi:e^Sápmi MARJA-org ;
+eSápmi:e^Sápmi MARJA-I-org ;
 emacs:e^macs BERN-obj ;
 fisker#serie+Use/Sub:fisker#serie ACCRA-obj ; !
 fylkesbibliotek:fylkes^bibliotek BERN-org ;
@@ -59068,14 +59175,14 @@ samtidskunst:samtidskunst9 BERN-org ;
 ski-doo:ski-doo9 ACCRA-obj ;
 ÁJA ACCRA-org ;
 Ágá ACCRA-sur ;
-Áila MARJA-mal ;
-Áila:Áj'la MARJA-fem ;
+Áila MARJA-A-mal ;
+Áila:Áj'la MARJA-A-fem ;
 Áile MARJA-fem ;
-Áili MARJA-fem ;
-Áillonieida:Áillo^niejda MARJA-fem ;
+Áili MARJA-I-fem ;
+Áillonieida:Áillo^niejda MARJA-A-fem ;
 Áillun LONDON-mal ;
 Áilo MARJA-mal ;
-Áilu MARJA-mal ;
+Áilu MARJA-U-mal ;
 Ája ACCRA-org ;
 Ájtte:Áj9tte ACCRA-org ; !Ájtte Sámimusea
 Álaska+Use/Sub:Álaska ACCRA-plc ; !
@@ -59095,9 +59202,9 @@ ski-doo:ski-doo9 ACCRA-obj ;
 Ánde ACCRA-mal ;
 Ánde:Án'de MARJA-mal ;
 Ánderijá ACCRA-mal ;
-Ándi:Án'di MARJA-mal ;
+Ándi:Án'di MARJA-I-mal ;
 Ándá:Án'dá MARJA-mal ;
-Ánna:Án'na MARJA-fem ;
+Ánna:Án'na MARJA-A-fem ;
 Ánne:Án'ne MARJA-fem ;
 Ánnjá:Án'njá MARJA-fem ;
 Ánná-Hildá:Ánná-Hil'dá MARJA-fem ;
@@ -59124,7 +59231,7 @@ ski-doo:ski-doo9 ACCRA-obj ;
 Ássá:Ás'sá MARJA-fem ;
 Ávanus LONDON-plc ;
 Ávdnos LONDON-fem ;
-Ávju:Áv'ju MARJA-org ;
+Ávju:Áv'ju MARJA-U-org ;
 Áŋŋaras% Ánte:Áŋŋaras% Án'te MARJA-mal ;
 Ähtäri ACCRA-plc ;
 Äijälä ACCRA-sur ;
@@ -59293,8 +59400,8 @@ ski-doo:ski-doo9 ACCRA-obj ;
 Åtvidaberg:Åtvida^berg9 BERN-sur ;
 Åvall:Å^vall LONDON-sur ;
 Åvik:Å^vik BERN-sur ;
-Ædnamsærvi+Use/Sub:Ædnam^sær'vi MARJA-org ; !
-Ædnansærvi:Ædnan^sær'vi MARJA-org ;
+Ædnamsærvi+Use/Sub:Ædnam^sær'vi MARJA-I-org ; !
+Ædnansærvi:Ædnan^sær'vi MARJA-I-org ;
 Æge ACCRA-mal ;
 Æmilius:Æmili^us BERN-sur ;
 Æneas:Æne^as LONDON-mal ;
@@ -60651,6 +60758,7 @@ nie adv ;
 njulgestaga adv ;
 njuolgga adv ;
 nu adv ;
+numo adv ;
 nuortta#bealde adv ;
 nuppes adv ;
 nuvt adv ;
@@ -68360,14 +68468,12 @@ z+Use/-Spell:z ab-dot-noun; !
 
 LEXICON Acronym
 
+
  +Use/Circ: FIRSTLETTER ;  ! Dynamically generated acronyms, 	! Remove these from nonrec?
                 ! between two and four letters long.
  LETTERNUMBER ; ! Listed (still not monitored)		!
                 ! Perhaps we should allow for a final arabic number at
                 ! the end of the acronyms, the NRK and NRK2 pattern.
- SOMELONGACRO ; ! Here, we collect some long acronyms, perhaps we should  !
-                ! open for dynamic generation of longer acronyms, if this
-                ! list gets long.
  smallacro ;    ! This is a pointer to a lexicon of manually listed small-letter
                 ! acronyms. They are not generated, since it would interfer with the
                 ! ordinary transducer, but listed here, as they then can point to the
@@ -68375,13 +68481,591 @@ LEXICON Acronym
 ! quasiacro ;    move to LEXICON HyphNouns  ! This is compounds with acronyms in the beginning.
                 ! They are here since they make compounds with hyphen to the left.
 
+
+NSR ACRO ; 
+
+MUVÁ+Use/Sub:MUVÁ ACRO ; ! MuVá
+AB ACRO ;
+ABC ACRO ;
+ABM ACRO ;
+AD ACRO ;
+ADHD ACRO ;
+ADSL ACRO ;
+AFP ACRO ;
+AFS ACRO ;
+AL ACRO ;
+AMT ACRO ;
+AN ACRO ;
+ANC ACRO ;
+ANS ACRO ;
+AP ACRO ;
+APTN ACRO ;
+AR ACRO ;
+ARN ACRO ;
+AS ACRO ;
+ASA ACRO ;
+ASS ACRO ;
+AT ACRO ;
+ATSIC ACRO ;
+ATV ACRO ;
+AU ACRO ;
+AUF ACRO ;
+AV ACRO ;
+AVI ACRO ;
+AWG ACRO ;
+AYC ACRO ;
+AÁF ACRO ;
+BA ACRO ;
+BB ACRO ;
+BBC ACRO ;
+BBL ACRO ;
+BD ACRO ;
+BDF ACRO ;
+BES ACRO ;
+BHD ACRO ;
+BI ACRO ;
+BK ACRO ;
+BMB ACRO ;
+BNB ACRO ;
+BNO ACRO ;
+BOF ACRO ;
+BOL ACRO ;
+BONO ACRO ;
+BPA ACRO ;
+BSD ACRO ;
+BSS ACRO ;
+BST ACRO ;
+BT ACRO ;
+BU ACRO ;
+BUL ACRO ;
+BUORIT ACRO ;
+BUP ACRO ;
+CBS ACRO ;
+CC ACRO ;
+CD ACRO ;
+CERD ACRO ;
+CIA ACRO ;
+CNN ACRO ;
+CO ACRO ;
+CPJ ACRO ;
+CV ACRO ;
+DA ACRO ;
+DAB ACRO ;
+DAN ACRO ;
+DAT ACRO ;
+DBE ACRO ;
+DD ACRO ;
+DE ACRO ;
+DES ACRO ;
+DFD ACRO ;
+DGT ACRO ;
+DILLI ACRO ;
+DIR ACRO ;
+DJ ACRO ;
+DKS ACRO ;
+DL ACRO ;
+DLBS ACRO ;
+DN ACRO ;
+DNA ACRO ;
+DON ACRO ;
+DPS ACRO ;
+DS ACRO ;
+DSE ACRO ;
+DSF ACRO ;
+DSI ACRO ;
+DSJ ACRO ;
+DSK ACRO ;
+DT ACRO ;
+DUS ACRO ;
+DVD ACRO ;
+DÁ ACRO ;
+DÁL ACRO ;
+EAI ACRO ;
+ECA ACRO ;
+ED ACRO ;
+EDB ACRO ;
+EEK ACRO ;
+EEO ACRO ;
+EES ACRO ;
+EFS ACRO ;
+EG ACRO ;
+EGD ACRO ;
+EKG ACRO ;
+EM ACRO ;
+EMM ACRO ;
+ENA ACRO ;
+EO ACRO ;
+EP ACRO ;
+ER ACRO ;
+ERUF ACRO ;
+ESA ACRO ;
+ETA ACRO ;
+EU ACRO ;
+EZLN ACRO ;
+EØF ACRO ;
+EØS ACRO ;
+FA ACRO ;
+FAB ACRO ;
+FAF ACRO ;
+FAO ACRO ;
+FAS ACRO ;
+FC ACRO ;
+FD ACRO ;
+FE ACRO ;
+FFA ACRO ;
+FFF ACRO ;
+FFR ACRO ;
+FGDL ACRO ;
+FIM ACRO ;
+FJ ACRO ;
+FK ACRO ;
+FLL ACRO ;
+FLS ACRO ;
+FM ACRO ;
+FMX ACRO ;
+FN ACRO ;
+FNUC ACRO ;
+FO ACRO ;
+FPPS ACRO ;
+FS ACRO ;
+FSG ACRO ;
+FUOM ACRO ;
+FÁGA ACRO ;
+GB ACRO ;
+GD ACRO ;
+GDL ACRO ;
+GFDL-R ACRO ;
+GG ACRO ;
+GGD ACRO ;
+GHVS ACRO ;
+GII ACRO ;
+GJ ACRO ;
+GJSL ACRO ;
+GJSS ACRO ;
+GL ACRO ;
+GLR ACRO ;
+GO ACRO ;
+GOD ACRO ;
+GP ACRO ;
+GPS ACRO ;
+GS ACRO ;
+GSG ACRO ;
+GSM ACRO ;
+GSS ACRO ;
+GWAPA ACRO ;
+HB ACRO ;
+HBO ACRO ;
+HE ACRO ;
+HEI ACRO ;
+HFK ACRO ;
+HIV ACRO ;
+HK ACRO ;
+HO ACRO ;
+HRW ACRO ;
+HT ACRO ;
+HV ACRO ;
+HVS ACRO ;
+IBK ACRO ;
+IBM ACRO ;
+IBSS-NSR ACRO ;
+ICC ACRO ;
+ICES ACRO ;
+ID ACRO ;
+IF ACRO ;
+IFU ACRO ;
+II ACRO ;
+III ACRO ;
+IIIA ACRO ;
+IKO ACRO ;
+IKT ACRO ;
+IL ACRO ;
+ILAR ACRO ;
+ILO ACRO ;
+ILUS ACRO ;
+IMA ACRO ;
+IN ACRO ;
+IOC ACRO ;
+IPS ACRO ;
+IRA ACRO ;
+IRE ACRO ;
+IS ACRO ;
+ISAN ACRO ;
+ISBN ACRO ;
+ISDN ACRO ;
+IT ACRO ;
+IV ACRO ;
+IW ACRO ;
+IWGIA ACRO ;
+JA ACRO ;
+JB ACRO ;
+JH ACRO ;
+JK ACRO ;
+JL ACRO ;
+JOD ACRO ;
+JPD ACRO ;
+JPG ACRO ;
+JR ACRO ;
+JSL ACRO ;
+JUO ACRO ;
+JUS ACRO ;
+KAB ACRO ;
+KBB ACRO ;
+KD ACRO ;
+KF ACRO ;
+KFK ACRO ;
+KGD ACRO ;
+KIBK ACRO ;
+KIM ACRO ;
+KISP ACRO ;
+KJJS ACRO ;
+KJSS ACRO ;
+KKS ACRO ;
+KLM ACRO ;
+KLP ACRO ;
+KM ACRO ;
+KPK ACRO ;
+KR ACRO ;
+KRD ACRO ;
+KS ACRO ;
+KSG	ACRO ;
+KSS ACRO ;
+KU ACRO ;
+KUF ACRO ;
+LA ACRO ;
+LD ACRO ;
+LEA ACRO ;
+LEI ACRO ;
+LHL ACRO ;
+LKAB ACRO ;
+LLH ACRO ;
+LMK ACRO ;
+LMS ACRO ;
+LN-PAB ACRO ;
+LO ACRO ;
+LOBI ACRO ;
+LSD ACRO ;
+LU ACRO ;
+MAS ACRO ;
+MB ACRO ;
+MBD ACRO ;
+MBL ACRO ;
+MC ACRO ;
+MD ACRO ;
+MEAHC ACRO ;
+MEGA ACRO ;
+MGD ACRO ;
+MGP ACRO ;
+MIEHTÁ ACRO ;
+MIELDE ACRO ;
+MK ACRO ;
+ML ACRO ;
+MM ACRO ;
+MMI ACRO ;
+MNOSS ACRO ;
+MNP ACRO ;
+MP ACRO ;
+MS ACRO ;
+MS-DOS ACRO ;
+MSN ACRO ;
+MUHTO ACRO ;
+MW ACRO ;
+MY ACRO ;
+MÁ ACRO ;
+NA ACRO ;
+NAF ACRO ;
+NASCO ACRO ;
+NATO+Use/Sub:NATO ACRO ; !  - propername according to čállinrávvagat
+NAV ACRO ;
+NAVO+Use/Sub:NAVO ACRO ; !  - proper according to čállinrávvagat
+NAČ ACRO ;
+NB ACRO ;
+NBR ACRO ;
+NBR-N ACRO ;
+NBČ ACRO ;
+NCS ACRO ;
+NEG ACRO ;
+NGO ACRO ;
+NGU ACRO ;
+NHO ACRO ;
+NIBR ACRO ;
+NIF ACRO ;
+NILF ACRO ;
+NINA ACRO ;
+NINA-NIKU ACRO ;
+NIPIAA+Use/Sub:NIPIAA ACRO ; !  - proper according to čállinrávvagat
+NJ ACRO ;
+NJFF ACRO ;
+NKK ACRO ;
+NKS ACRO ;
+NLS ACRO ;
+NM ACRO ;
+NMK ACRO ;
+NMT ACRO ;
+NN ACRO ;
+NNS ACRO ;
+NOK ACRO ;
+NOPA ACRO ;
+NOR ACRO ;
+NORM ACRO ;
+NOS ACRO ;
+NOU ACRO ;
+NRK ACRO ;
+NRQ ACRO ;
+NSB ACRO ;
+NSD ACRO ;
+NSI ACRO ;
+NSR ACRO ;
+NSR-N ACRO ;
+NTB ACRO ;
+NTL ACRO ;
+NTNU ACRO ;
+NU ACRO ;
+NVE ACRO ;
+Neahtta-TV ACRO ;
+Noereh%!+Use/Sub:Noereh%! ACRO ;
+NÁČ ACRO ;
+NČE ACRO ;
+OAS ACRO ;
+OB ACRO ;
+OD ACRO ;
+ODD ACRO ;
+OED ACRO ;
+OG ACRO ;
+OH ACRO ;
+OHCAN ACRO ;
+OIPA ACRO ;
+OK ACRO ;
+OL ACRO ;
+OLU ACRO ;
+ON ACRO ;
+ORO ACRO ;
+OS ACRO ;
+OSL ACRO ;
+OSS ACRO ;
+OT ACRO ;
+OVB ACRO ;
+OVDAL ACRO ;
+PB ACRO ;
+PC ACRO ;
+PETA ACRO ;
+PFK ACRO ;
+PFL ACRO ;
+PFU ACRO ;
+PIL ACRO ;
+PIPE ACRO ;
+PL ACRO ;
+PM ACRO ;
+POOGP ACRO ;
+POT ACRO ;
+PPB ACRO ;
+PPC ACRO ;
+PPS ACRO ;
+PPT ACRO ;
+PR ACRO ;
+PS ACRO ;
+PUT ACRO ;
+RAF ACRO ;
+RAG ACRO ;
+RBK ACRO ;
+RBL ACRO ;
+RD ACRO ;
+RDA ACRO ;
+RKTL ACRO ;
+RMS ACRO ;
+RNNU ACRO ;
+RO ACRO ;
+ROP ACRO ;
+RS ACRO ;
+RSDAP ACRO ;
+RSFSR ACRO ;
+RSR ACRO ;
+RSS ACRO ;
+RUF ACRO ;
+RV ACRO ;
+RWGYI ACRO ;
+Radisson-SAS ACRO ;
+SAF ACRO ;
+SAFE ACRO ;
+SAK ACRO ;
+SAP ACRO ;
+SAS ACRO ;
+SAÁO ACRO ;
+SB ACRO ;
+SBB ACRO ;
+SBS ACRO ;
+SBSS ACRO ;
+SCA ACRO ;
+SCPAR ACRO ;
+SD ACRO ;
+SDD ACRO ;
+SDG ACRO ;
+SDGB ACRO ;
+SDR ACRO ;
+SDS ACRO ;
+SE ACRO ;
+SED ACRO ;
+SEG ACRO ;
+SEK ACRO ;
+SF ACRO ;
+SF- ACRO ;
+SF-012 ACRO ;
+SFF ACRO ;
+SFGJS ACRO ;
+SFO ACRO ;
+SFR ACRO ;
+SFS ACRO ;
+SFT ACRO ;
+SG ACRO ;
+SGL ACRO ;
+SGP ACRO ;
+SGR ACRO ;
+SGRN ACRO ;
+SGS ACRO ;
+SGSBL ACRO ;
+SI ACRO ;
+SIFI ACRO ;
+SISA ACRO ;
+SIVA ACRO ;
+SJ ACRO ;
+SJS ACRO ;
+SJSBS ACRO ;
+SK ACRO ;
+SKES ACRO ;
+SKINN ACRO ;
+SKR ACRO ;
+SKS ACRO ;
+SKUP ACRO ;
+SL ACRO ;
+SLF ACRO ;
+SLČ ACRO ;
+SM ACRO ;
+SMK ACRO ;
+SMS ACRO ;
+SN ACRO ;
+SND ACRO ;
+SNF ACRO ;
+SNJ ACRO ;
+SNO ACRO ;
+SNPL ACRO ;
+SNPN ACRO ;
+SOD ACRO ;
+SOF ACRO ;
+SOG ACRO ;
+SOIF ACRO ;
+SOL ACRO ;
+SOR ACRO ;
+SOS ACRO ;
+SOU ACRO ;
+SP ACRO ;
+SPOR ACRO ;
+SPR ACRO ;
+SPR-N ACRO ;
+SR ACRO ;
+SRJ ACRO ;
+SRV ACRO ;
+SS ACRO ;
+SSA ACRO ;
+SSB ACRO ;
+SSF ACRO ;
+SSG ACRO ;
+SSL ACRO ;
+SSN ACRO ;
+SSO ACRO ;
+SSR ACRO ;
+SSS ACRO ;
+SSSR ACRO ;
+STIL ACRO ;
+SU ACRO ;
+SUF ACRO ;
+SUFUR+Use/Sub:SUFUR ACRO ; !proper
+SUPU+Use/Sub:SUPU ACRO ; !proper
+SUS ACRO ;
+SV ACRO ;
+SVD ACRO ;
+SVF ACRO ;
+SVL ACRO ;
+SVL-N ACRO ;
+SVL-S ACRO ;
+SVT ACRO ;
+SÁ ACRO ;
+SÁB ACRO ;
+SÁL ACRO ;
+Sámi-TV ACRO ;
+TAC ACRO ;
+TCO ACRO ;
+TD ACRO ;
+TIL ACRO ;
+TNT ACRO ;
+TONO ACRO ;
+TRAS ACRO ;
+TSI ACRO ;
+TT ACRO ;
+TV ACRO ;
+UB ACRO ;
+UD ACRO ;
+UDI ACRO ;
+UDSL ACRO ;
+UEW ACRO ;
+UKM ACRO ;
+UN ACRO ;
+UNDP ACRO ;
+UNEP ACRO ;
+UNG ACRO ;
+UNHCR ACRO ;
+UNICODE ACRO ;
+UNN ACRO ;
+UNPFII ACRO ;
+UNTAK ACRO ;
+UR ACRO ;
+URACCAN ACRO ;
+US ACRO ;
+USA ACRO ;
+USKAV ACRO ;
+UV ACRO ;
+VBL ACRO ;
+VG ACRO ;
+VI ACRO ;
+VII ACRO ;
+VIII ACRO ;
+VM ACRO ;
+VOX ACRO ;
+VR ACRO ;
+VS ACRO ;
+VUK ACRO ;
+VVS ACRO ;
+VW ACRO ;
+WC ACRO ;
+WCIP ACRO ;
+WHO ACRO ;
+WINHEC ACRO ;
+WIPO ACRO ;
+WIVC ACRO ;
+WRH ACRO ;
+WSOY ACRO ;
+WTO ACRO ;
+WWA ACRO ;
+WWF ACRO ;
+WWM ACRO ;
+XX ACRO ;
+YEH ACRO ;
+YLE ACRO ;
+YSS ACRO ;
+duolba-TV ACRO ;
+juoigan-CD ACRO ;
+mánáid-TV:mánáid9-TV ACRO ;
+siskkáldas-TV ACRO ;
+sálbma-CD ACRO ;
+teaksta-TV ACRO ;
+ÁVD ACRO ;
+ÅT ACRO ;
+ČSV ACRO ;
+
+
 LEXICON FIRSTLETTER	
 LEXICON SCND													
 LEXICON THRD													
 LEXICON FRTH													
 LEXICON LETTERNUMBER
-LEXICON SOMELONGACRO		
-II ACRO ;
 LEXICON smallacro
 Vrd:Vrd9 ab-nodot-verb ; !
 vrd:vrd9 ab-nodot-verb ; !veardit !
