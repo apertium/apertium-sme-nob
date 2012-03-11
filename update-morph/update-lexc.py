@@ -274,7 +274,10 @@ def extract(fst, fname, excl_symbols=False, pos_filter="", split=False, no_heade
 	if split2:
 		clip = rest.split(split2)
 		if len(clip) != 2:
-			raise Split_Error("split2 of %s, currently set to:\n%s" %(fname,split2))
+			if text.split(split2):
+				raise Split_Error("split2 of %s, currently set to:\n%s\nIt seems to appear before split?" %(fname,split2))
+			else:
+				raise Split_Error("split2 of %s, currently set to:\n%s" %(fname,split2))
 		rest = clip[0]        # footer is "exclusive"
 		foot = clip[1]
 	else:
