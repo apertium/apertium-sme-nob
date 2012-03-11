@@ -2205,6 +2205,10 @@ SUBSTITUTE ("vissis") ("vissis:1") ("vissis" A) (*1 N BARRIER NOT-ADJ) ;
 # (vs. mun lean vissis:0 ahte)
 
 
+# guovttos
+
+SUBSTITUTE ("guovttos") ("guovttos:1") ("guovttos" N) (-1 N) (*1 (N Com) BARRIER NPNH);
+SUBSTITUTE ("guovttos") ("guovttos:2") ("guovttos" N) (-1 N) (*1 N BARRIER NPNH LINK 1 CC);
 
 # oba
 
