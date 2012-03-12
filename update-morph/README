@@ -76,10 +76,10 @@ ignored. The following is an example configuration file:
           " NUMERALCOMPOUNDS +;"
         ],
         "files": [
-          ["sme-lex.txt", "cat"],
-          ["propernoun-sme-lex.txt", "clip", {"pos_filter": "<N><Prop>", "split": "LEXICON ProperNoun\n"}],
-	  ["pp-sme-lex.txt", "clip", {"pos_filter": ["<Po>", "<Pr>"], "split": "LEXICON Adposition\n"}],
-          ["punct-sme-lex.txt", "clip", {"no_trim": true, "split2": "\t! Rare punctiation:\n", "no_footer": true}]
+          ["sme-lex.txt",            {"no_trim": true}],
+          ["propernoun-sme-lex.txt", {"pos_filter": "<N><Prop>",      "split": "LEXICON ProperNoun\n"}],
+	  ["pp-sme-lex.txt",         {"pos_filter": ["<Po>", "<Pr>"], "split": "LEXICON Adposition\n"}],
+          ["punct-sme-lex.txt",      {"no_trim": true, "split2": "\t! Rare punctiation:\n", "no_footer": true}]
         ]
       }
     ]
@@ -106,20 +106,18 @@ output lexc.
 
 `files` is the bit that requires most tweaking. This is a list of
 files, where you define how to include each file. The first element is
-the file name (relative to `SRC`), the second is either `cat` or
-`clip`. The first line in the example has `cat`, and says that the
-whole file `sme-lex.txt` should be included first, with no
-modifications (except what `LEX_EXCLUDES` defines).
+the file name (relative to `SRC`), the second is a table of options.
+The first line in the example has `"no_trim":true` (the default is
+false), and says that the whole file `sme-lex.txt` should be included
+first, with no modifications (except what `LEX_EXCLUDES` defines).
 
-The second uses the `clip` method, and says that proper nouns should
-be trimmed to bidix. When we use `clip`, we have a table after the
-`clip` keyword, which defines how trimming should happen. The
-`pos_filter` is `<N><Prop>`, which means that we require any entry in
-the proper noun file to have an entry in bidix which has the tags
-`<N><Prop>` right after the lemma. As the following line shows,
-`pos_filter` can also be a list of tags – the file `pp-sme-lex.txt`
-defines both postpositions with the bidix tag `<Po>` and prepositions
-with the bidix tag `<Pr>`.
+The second entry says that proper nouns should be trimmed to bidix.
+The `pos_filter` in the options table is `<N><Prop>`, which means that
+we require any entry in the proper noun file to have an entry in bidix
+which has the tags `<N><Prop>` right after the lemma. As the following
+line shows, `pos_filter` can also be a list of tags – the file
+`pp-sme-lex.txt` defines both postpositions with the bidix tag `<Po>`
+and prepositions with the bidix tag `<Pr>`.
 
 Both the second and third files have a `split` point, this must match
 a line in the file from which we start trimming. Anything above this
@@ -130,10 +128,13 @@ Similarly, we can have a `split2` point, anything below this line is
 included verbatim, or not at all if we have a `"no_footer:true` entry
 in the table. The final file entry in the example defines both a
 `split2` point `"no_footer:true`, so it only includes anything above
-the line which says `\t! Rare punctiation:`. It also says
-`"no_trim":true`, which means it won't do any bidix trimming. So using
-`"no_trim":true` is similar to `cat`, only we can stick to parts of
-the file.
+the line which says `\t! Rare punctiation:` (it also says
+`"no_trim":true`, so it won't do any bidix trimming).
+
+There is of course nothing stopping you from adding the same file name
+twice to the list; if you want, you can define lots of different
+"slices" of a file by using `no_header` with `split` and `no_footer`
+with `split2`.
 
 **Note**: use `\t`, not literal tabs in JSON strings. And
 unfortunately only ASCII symbols are allowed for now.
