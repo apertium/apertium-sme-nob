@@ -2067,8 +2067,12 @@ SUBSTITUTE ("stuibmi") ("stuibmi:1") ("stuibmi" N Sg) (-1 ("Álta") OR ("Álahea
 # goddi 0 = villrein, 1 = komite
 SUBSTITUTE (+goddi) (+goddi:1) (+goddi) ; # as a compound part
 
-# Other parts of speech
-# ---------------------
+    # Other parts of speech
+    # ---------------------
+    
+SUBSTITUTE ("maŋŋel") ("maŋŋel:1") ("maŋŋel" Adv) (1 ("go")) ;
+    ## Maŋŋel go guovtte geardde leat vuoitán eretčiekčamiin ja buriin álgguin dan gohčoduvvon fiskerseries, ledje valljit ruovttuguovllu olbmot boahtán geahččat iežaset lunttaid vuoitit badjel joavku maid atne heajubun.
+
 # ge 0 = også, 1 = heller
 SUBSTITUTE ("ge") ("ge:1") ("ge" Pcle) (*-1 Neg BARRIER S-BOUNDARY) ;
 ## In mun ge háliidivčče. In munge háliidivčče.
@@ -2088,7 +2092,7 @@ SUBSTITUTE ("duohta") ("duohta:1") ("duohta" A Sg Loc) (0 @ADVL) ;
 # go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
 
 
-SUBSTITUTE ("go") ("go:1") ("go" CS) (-1 ("maŋŋil" Adv) OR ("maŋŋel" Adv) OR ("ovdal" Adv)) ;
+SUBSTITUTE ("go") ("go:1") ("go" CS) (-1 ("maŋŋil" Adv) OR ("maŋŋel" Adv) OR ("maŋŋel:1" Adv) OR ("ovdal" Adv)) ;
 SUBSTITUTE ("go") ("go:1") ("go" CS) (-1 COPULAS LINK -1 (A Nom)) ;
 ## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
 ## Buorre lei go bohtet.
