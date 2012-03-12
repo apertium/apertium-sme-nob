@@ -87,7 +87,7 @@ class Config(object):
 
 	def read_from_dict(self, D, conf_path):
 		"May return a new version of the object, so don't use without setting self to the return value."
-		self.path = conf_path
+		self.path = conf_path # Need to set this both before and after including
 		if 'INCLUDE' in D:
 			incfile = self.abs_dir(D['INCLUDE'])
 			print >>sys.stderr, 'Including config %s ... ' % (incfile,),
@@ -97,6 +97,7 @@ class Config(object):
 			elif len(includes.langs)<1:
 				raise Conf_Validation_Error("Didn't find any configuration in %s" % (incfile,))
 			self = includes.langs[0]
+			self.path = conf_path
 		# convert all arguments to str, json module is a little funny
 		for k, v in D.items():
 			self.__setattr__(str(k), str(v))
