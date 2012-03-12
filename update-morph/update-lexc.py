@@ -50,7 +50,7 @@ class Config(object):
 
 		proc_lang = self.PRODUCE_LEXC_FOR
 
-		# List of lists, first item is filename, second item is action 'clip' or 'cat', third is dictionary of options.
+		# List of lists, first item is filename, second item is dictionary of options.
 		self.files = []
 		
 		return None
@@ -171,28 +171,6 @@ def load_conf(fname, create=False):
 	return new_confs
 
 	
-
-def cat_file(fname, ret_type=False, excl_symbols=False):
-	"""
-		Get data from file, if given excl_symbols, then exclude lines in LEX_EXCLUDES; otherwise return all data.
-		
-		Returns list.
-	"""
-	
-	with open(fname, 'r') as F:
-		if excl_symbols:
-			data = [a for a in F if not excl_symbols.search(a)]
-		else:
-			data = F.readlines()
-	
-	if ret_type:
-		if ret_type == list:
-			return data
-		elif ret_type == str:
-			return ''.join(data)
-	else:
-		return data
-
 
 def any_analysis(fst, word, pos_filter, debug=False):
 	"""Iterates through pos_filter, returning the first matching
@@ -395,9 +373,8 @@ def make_lexc(COBJ=False):
 		error = 'BIDIX_SIDE must have a value of "L" or "R"'
 		raise Conf_Validation_Error(error)
 	
-	if any([u'clip' in s and ('no_trim' not in s[2]
-				     or not s[2]['no_trim'])
-		   for s in STEPS]):
+	if any([ ('no_trim' not in s[1] or not s[1]['no_trim'])
+		 for s in STEPS ]):
 		print "... Loading bidix FST %s" % (BIDIX_BIN,)
 		if sp.call(["make", "-q", "sme-nob.autobil.bin"], cwd=BIDIX_DIR) == 1:
 			print "\nWARNING: It seems like %s is not compiled! If this is correct, please compile the bidix (make sme-nob.autobil.bin), then re-run this script.\n" % (BIDIX_BIN,)
@@ -423,35 +400,32 @@ def make_lexc(COBJ=False):
 	output_app = output_.append
 	
 	for step in STEPS:
-		fname, action = SRC + step[0], step[1]
+		fname = SRC + step[0]
 		
-		if len(step) == 3:
+		if len(step) == 2:
 			opts = { 'side' : BIDIX_SIDE, 'remove_empty_lex': REMOVE_EMPTY }
-			for a, b in step[2].items():
+			for a, b in step[1].items():
 				if type(b) == type(u''):
 					b = str(b)
 				opts[str(a)] = b
 		else:
+			print "WARNING: No options defined for %s!" % fname
 			opts = None
 		
 		try:
 			with open(fname, 'r') as F:
 				exists = True			
 		except IOError, e:
-			print "*** File %s does not exist. Skipping. ***" % fname
+			print "WARNING: File %s does not exist. Skipping." % fname
 			# TODO: do not continue?
 			continue
 		
-		if action == 'clip':
-			print "... Fetching words from %s" % fname
-			if opts:
-				head, trim = extract(fst, fname, COBJ.excl_symbols, **opts)
-			else:
-				head, trim = extract(fst, fname, COBJ.excl_symbols)
-			data = head + trim
-		elif action == 'cat':
-			print "... Reading all of %s" % fname
-			data = cat_file(fname, str) # ignores excl_symbols! TODO?
+		print "... Fetching words from %s" % fname
+		if opts:
+			head, trim = extract(fst, fname, COBJ.excl_symbols, **opts)
+		else:
+			head, trim = extract(fst, fname, COBJ.excl_symbols)
+		data = head + trim
 		
 		output_app(data)
 	
