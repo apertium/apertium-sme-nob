@@ -42,7 +42,6 @@ class Config(object):
 		self.LANG2 = ""
 		self.PRODUCE_LEXC_FOR = ""
 		self.OUTPUT_DIR = '.'
-		self.LEXTYPE = ''
 		self.LEX_EXCLUDES = False
 		self.REMOVE_EMPTY_LEXICONS = ''
 		self.SRC = ''
@@ -50,8 +49,6 @@ class Config(object):
 		self.excl_symbols = False
 
 		proc_lang = self.PRODUCE_LEXC_FOR
-
-		self.HEADER = ""
 
 		# List of lists, first item is filename, second item is action 'clip' or 'cat', third is dictionary of options.
 		self.files = []
@@ -79,7 +76,6 @@ class Config(object):
 			"PRODUCE_LEXC_FOR": self.PRODUCE_LEXC_FOR,
 			"files": self.files,
 			"SRC": self.SRC,
-			"LEXTYPE": self.LEXTYPE,
 			"LEX_EXCLUDES": self.LEX_EXCLUDES,
 			"REMOVE_EMPTY_LEXICONS": self.REMOVE_EMPTY_LEXICONS
 		}
@@ -422,14 +418,7 @@ def make_lexc(COBJ=False):
 		fst = None
 		print "... Config has no 'clip' entries without no_trim, no need to use bidix."
 	
-	if len(COBJ.HEADER) > 0:
-		header_fname = COBJ.SRC + "/" + COBJ.HEADER
-		print "... Reading header from %s" % header_fname
-		main_header = cat_file(header_fname, list, COBJ.excl_symbols)  # TODO: header variable in conf
-		output_ = [''.join(main_header)]
-	else:
-		print "... Assuming header is provided in 'files'."
-		output_ = []
+	output_ = []
 	
 	output_app = output_.append
 	
