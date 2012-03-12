@@ -1,3 +1,5 @@
+# -*- mode:markdown; -*-
+
 == Compilation ==
 
 This lexicon trimmer needs a little compilation first:
@@ -51,6 +53,90 @@ whatever python2 version you have)
 If you don't want to trim the lexicon down to the bidix, you can use
 the sme-nob-notrim.langs.cfg file in your INCLUDE line (it will still
 strip a lot of stuff that causes errors, but keep the lexicon large).
+
+
+== Configuration format (langs.cfg) ==
+
+The configuration files are in the
+[JSON format](http://en.wikipedia.org/wiki/JSON), which consists of
+ordered lists of strings like `["item1","item2"]` and unordered tables
+of string-pairs like `{"name":"Joe","nose":"big"}`. Whitespace is
+ignored. The following is an example configuration file:
+
+    [
+      {
+        "LANG1": "sme",
+        "LANG2": "nob",
+        "PRODUCE_LEXC_FOR": "sme",
+        "BIDIX_SIDE": "L",
+        "OUTPUT_DIR": "../",
+        "SRC": "/path/to/giellatekno/trunk/gt/sme/src/",
+        "LEX_EXCLUDES": [
+          " FIRSTCOMPOUND +;",
+          " NUMERALCOMPOUNDS +;"
+        ],
+        "files": [
+          ["sme-lex.txt", "cat"],
+          ["propernoun-sme-lex.txt", "clip", {"pos_filter": "<N><Prop>", "split": "LEXICON ProperNoun\n"}],
+	  ["pp-sme-lex.txt", "clip", {"pos_filter": ["<Po>", "<Pr>"], "split": "LEXICON Adposition\n"}],
+          ["punct-sme-lex.txt", "clip", {"no_trim": true, "split2": "\t! Rare punctiation:\n", "no_footer": true}]
+        ]
+      }
+    ]
+
+We have an outer list `[]` consisting of one main table `{}`, this
+defines how to create one lexc file (one config could be used to hold
+definitions for several lexc files, then we'd have several main tables
+in that outer list). The main table says that the languages involved
+are `LANG1` "sme" and `LANG2` "nob" (ie. the language pair is named
+`apertium-sme-nob`), and we want to `PRODUCE_LEXC_FOR` "sme", which is
+the left (`L`) side of our bidix. The script assumes standard Apertium
+naming schemes, so given this information, we assume the compiled
+bidix named `sme-nob.autobil.bin`, and the lexc is written to
+`apertium-sme-nob.sme.lexc`.
+
+The `OUTPUT_DIR` is the path to where the output lexc file should end
+up (and where we find the compiled bidix), it can be relative to this
+configuration file, or an absolute path. The `SRC` is the path to the
+directory where the below list of files below reside. 
+
+`LEX_EXCLUDES` is a list of Python regular expressions. Any line of
+any source file which matches such an expression, will not be in the
+output lexc.
+
+`files` is the bit that requires most tweaking. This is a list of
+files, where you define how to include each file. The first element is
+the file name (relative to `SRC`), the second is either `cat` or
+`clip`. The first line in the example has `cat`, and says that the
+whole file `sme-lex.txt` should be included first, with no
+modifications (except what `LEX_EXCLUDES` defines).
+
+The second uses the `clip` method, and says that proper nouns should
+be trimmed to bidix. When we use `clip`, we have a table after the
+`clip` keyword, which defines how trimming should happen. The
+`pos_filter` is `<N><Prop>`, which means that we require any entry in
+the proper noun file to have an entry in bidix which has the tags
+`<N><Prop>` right after the lemma. As the following line shows,
+`pos_filter` can also be a list of tags – the file `pp-sme-lex.txt`
+defines both postpositions with the bidix tag `<Po>` and prepositions
+with the bidix tag `<Pr>`.
+
+Both the second and third files have a `split` point, this must match
+a line in the file from which we start trimming. Anything above this
+line is included verbatim (unless there is a `"no_header":true` entry
+in the table, in which we include nothing above the `split` line).
+
+Similarly, we can have a `split2` point, anything below this line is
+included verbatim, or not at all if we have a `"no_footer:true` entry
+in the table. The final file entry in the example defines both a
+`split2` point `"no_footer:true`, so it only includes anything above
+the line which says `\t! Rare punctiation:`. It also says
+`"no_trim":true`, which means it won't do any bidix trimming. So using
+`"no_trim":true` is similar to `cat`, only we can stick to parts of
+the file.
+
+**Note**: use `\t`, not literal tabs in JSON strings. And
+unfortunately only ASCII symbols are allowed for now.
 
 
 == Troubleshooting ==
