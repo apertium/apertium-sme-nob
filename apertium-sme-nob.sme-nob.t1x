@@ -2496,6 +2496,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
+        <let><var n="tmp"/><b pos="1"/></let>
         <choose>
           <when>
             <test><or>
@@ -2504,6 +2505,15 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             </or></test>
             <let><var n="n_nbr"/><lit v=""/></let>
             <let><var n="c_def_pos"/><lit v=""/></let>
+          </when>
+          <when c="logi-jagáš → tiåret">
+            <test><and>
+              <equal><clip pos="2" side="tl" part="lemh"/><lit v="år"/></equal>
+              <equal><b pos="1"/><lit v="-"/></equal>
+            </and></test>
+            <let><var n="n_nbr"/><lit-tag v="sg"/></let>
+            <let><var n="c_def_pos"/><lit-tag v="def"/></let>
+            <let><var n="tmp"/><lit v=""/></let>
           </when>
           <otherwise>
             <let><var n="n_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
@@ -2532,7 +2542,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
-            <b pos="1"/>
+            <var n="tmp"/>      <!-- b pos=1 by default -->
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
