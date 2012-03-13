@@ -1944,13 +1944,16 @@ SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 (Ind Prt)) (1 Inf) ;
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
 # lohkat 0 = lese, 1 = si, 2 = telle
+
+LIST READABLE = "aviisa" "girji" ;
+
 SUBSTITUTE ("lohkat") ("lohkat:1")
 	TARGET ("lohkat" V)
 	IF (
 		(1 ("ahte") OR (Refl Acc) OR (Refl Loc) OR PrfPrc)
 		OR
 		(*1 FMAINV OR Actio OR PrfPrc OR Inf BARRIER S-BOUNDARY OR ("galle") OR ("man"))
-	   ) ;
+	   ) (NEGATE *0 OBJ LINK 0 READABLE BARRIER S-BOUNDARY);
 	## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
 	## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
 	## Lars Anders Baer ii eahpit ii veahášge go lohká dákkáraš álbmotsirren lea lága ja álbmotrievtti vuostá. - Lars Anders Baer tviler ikke ikke *veahášge når han sier *dákkáraš en folkeisolering er loven og folkeretten mot.
