@@ -1933,9 +1933,10 @@ SUBSTITUTE ("beassat") ("beassat:2") ("beassat" V) (1 Ill) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg) (-2 @HAB) ;
 SUBSTITUTE ("leat:1") ("leat:2") ("leat:1" V IV) (1 Inf) ;
-# mis lea cahkkehit dola
-SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) (NOT *1 (Actio Ess) BARRIER NOT-ADV) (NOT 1 (Der_PassL PrfPrc)) ;
-# sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
+    # mis lea cahkkehit dola
+SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) (NOT *1 (Actio Ess) BARRIER S-BOUNDARY) (NOT 1 (Der_PassL PrfPrc)) ;
+    # sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
+    ## Leat go Ibsenii sáddemin dieđu?
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 (Ind Prt)) (1 Inf) ;
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # (Perf Cond 2)
@@ -2070,6 +2071,13 @@ SUBSTITUTE ("stuibmi") ("stuibmi:1") ("stuibmi" N Sg) (-1 ("Álta") OR ("Álahea
 # goddi 0 = villrein, 1 = komite
 SUBSTITUTE (+goddi) (+goddi:1) (+goddi) ; # as a compound part
 
+
+# diehtu 0 = informasjon, 1 = kunnskap, 2 = viten, 3 = beskjed
+SUBSTITUTE ("diehtu") ("diehtu:3") ("diehtu") (0 Nom OR Acc LINK *0  ("mobiltelefuvdna") OR ("mobiila")) ;
+SUBSTITUTE ("diehtu") ("diehtu:3") ("diehtu") (0 OBJ LINK *0  ("sáddet") OR ("čállit") OR ("lohkat")) ;
+    ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu. 
+    ## Lei Ájlin gii sáddii dieđu.
+
     # Other parts of speech
     # ---------------------
     
@@ -2153,7 +2161,7 @@ SUBSTITUTE ("iehčanassii") ("iehčanassii:1") ("iehčanassii" Adv) (-1 ("leat")
 
 # Po: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
 SUBSTITUTE ("mielde") ("mielde:3") ("mielde" Po) (-1 ("dárbu") OR ("miella")) ;
-# Don vieččat boaldinmuoraid dárbbu mielde.
+    ## Don vieččat boaldinmuoraid dárbbu mielde.
 
 
 # Rules that change PoS (like slr entries, the targets must exist in bidix!)
