@@ -2013,11 +2013,14 @@ SUBSTITUTE ("dánsut") ("dánsut:1") ("dánsut" N) ;
 SUBSTITUTE ("geavahit") ("geavahit:1") ("geavahit" N) ;
 SUBSTITUTE ("miehtat") ("miehtat:1") ("miehtat" N) ;
 
+    # less frequent verbs
+    # - - - - - - - - - -
+# civkkádit 0 = kvitre, 1 = pipe
+SUBSTITUTE ("civkkádit") ("civkkádit:1") ("civkkádit" V IV) (*0 ("mobiltelefuvdna") OR ("mobiila") OR ("telefuvdna") BARRIER S-BOUNDARY1) ;
+## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
 
-
-
-# Noun rules
-# ----------
+    # Noun rules
+    # ----------
 
 # luohkká 0 = bakke, 1 = klasse
 SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (*1 EDUCATION OR LESSON OR ("oahpaheaddji"));
