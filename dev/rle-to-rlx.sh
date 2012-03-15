@@ -43,7 +43,7 @@ tSTART' "$1"
 
 echo "Done."
 echo "Things to check manually for:"
-echo "* remove any SUBSTITUTE lines adding tags like ←uttv→ / ←vdic→"
+echo "* add +naj etc to LIST Foc_naj etc"
 echo "* fix MAP:r16 (@PCLE) TARGET Pcle ; to demand 'NOT 0 Pron OR N OR etc.'"
 
 #### The relevant diff from manual changes in last update:
