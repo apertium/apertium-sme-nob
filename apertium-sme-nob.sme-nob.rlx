@@ -424,8 +424,7 @@ LIST Attr = Attr ;
 LIST Ord = Ord ;
  
 LIST Qst = Qst ;
-
-
+ 
 LIST Foc_ge = Foc_ge +ge ;
 LIST Foc_gen = Foc_gen +gen ;
 LIST Foc_ges = Foc_ges +ges ;
@@ -437,18 +436,6 @@ LIST Foc_hal = Foc_hal +hal ;
 LIST Foc_han = Foc_han +han ;
 LIST Foc_bat = Foc_bat +bat ;
 LIST Foc_son = Foc_son +son ;
- 
-#LIST Foc_ge = Foc_ge ;
-#LIST Foc_gen = Foc_gen ;
-#LIST Foc_ges = Foc_ges ;
-#LIST Foc_gis = Foc_gis ;
-#LIST Foc_naj = Foc_naj ;
-#LIST Foc_ba = Foc_ba ;
-#LIST Foc_be = Foc_be ;
-#LIST Foc_hal = Foc_hal ;
-#LIST Foc_han = Foc_han ;
-#LIST Foc_bat = Foc_bat ;
-#LIST Foc_son = Foc_son ;
 
 LIST IV = IV ;
 LIST TV = TV ;
@@ -1616,7 +1603,7 @@ LIST GIELDDA = "gieldda" ;
 LIST SPATIALNOUN = "guovlu" "osku" "sadji" "vuođđu" ;
  
 # These nouns in essiv get @ADVL:
-LIST ESS-ADVL-N = "arvi" "árga" "baika" ("bassi" N) ("báhkka" N) "beaivvádat" "biegga" "bievla" ("buolaš" N) "čuoika" "čuovga"  (".*dálki"r) "dulvi" "mánoheahpi" "muohta" "njáhcu" ("seavdnjat" N) "varra" "veaigi";
+LIST ESS-ADVL-N = "arvedálki" "arvi" "árga" "baika" "bajándálki" ("bassi" N) ("báhkka" N) "beaivvádat" "beaivvadat" "biegga" "bievla" ("buolaš" N) "borga" "čáppadálki" "čuoika" "čuovga" "cuoŋu"  (".*dálki"r) "dulvi" "fiertu" "goalki" "guoldu" "mánoheahpi" "mierká" "muohta" "njáhcu" "obbadálki" ("seavdnjat" N) "varra" "veaigi";
 
 # These nouns/adjectives in essiv can get @ADVL:
 LIST ESS-PROB-ADVL-N = ("bassi" N) "boaris" ("nuorra" N) ;
@@ -2320,8 +2307,7 @@ LIST RIEKTEDILLI = "bajithearrávuohta" "bálvalusfálaldat" "čearddalašvuohta
 
 # FYLKA in front of the set is usually in Gen.
 
-LIST STAHTA-GEN = 
-"IT-doaibmaplána" "almennet" "bargiidgiehtagirji" "boazodoallohálddahus" "bálvalus" "dearvvašvuođageahčču" "dearvvašvuođaiskkadeapmi" "dearvvašvuođagozáhus" "doaibma" "doaibmaplána" "doarjja" "doarjjavuogádat" "dássi" "eaiggáduššanvuoigatvuohta" "eaiggátgáibádus" "eana" "eiseváldi" "gaskadilleortnetdoarjja" "geahččoortnet" "geatnegasvuohta" "geavat" "gáibádus" "háldu" "joatkkaskuvla" "kulturráđđi" "mearrabodni" "oahppodoaibma" "oaidnu" "oaivil" "orgána" "ovddasteaddji" "peršonalgiehtagirji" "ruhta" "sosiálapolitihkka" "spesialistadearvvašvuođabálvalus" "tariffašiehtadus" "vuostebealli" "áddejupmi" "ámmátolmmoš" "ásahus" ("jávri" Pl) ("oassálastit" Actio) ("vuovdi" Pl) ("áŋgiruššat" Actio) ;
+LIST STAHTA-GEN = "IT-doaibmaplána" "almennet" "bargiidgiehtagirji" "boazodoallohálddahus" "bálvalus" "dearvvašvuođageahčču" "dearvvašvuođaiskkadeapmi" "dearvvašvuođagozáhus" "doaibma" "doaibmaplána" "doarjja" "doarjjavuogádat" "dássi" "eaiggáduššanvuoigatvuohta" "eaiggátgáibádus" "eana" "eiseváldi" "gaskadilleortnetdoarjja" "geahččoortnet" "geatnegasvuohta" "geavat" "gáibádus" "háldu" "joatkkaskuvla" "kulturráđđi" "mearrabodni" "oahppodoaibma" "oaidnu" "oaivil" "orgána" "ovddasteaddji" "peršonalgiehtagirji" "ruhta" "sosiálapolitihkka" "spesialistadearvvašvuođabálvalus" "tariffašiehtadus" "vuostebealli" "áddejupmi" "ámmátolmmoš" "ásahus" ("jávri" Pl) ("oassálastit" Actio) ("vuovdi" Pl) ("áŋgiruššat" Actio) ;
 
  # "stáhta" in front of the set, is usually Gen.
 
@@ -2637,6 +2623,13 @@ REMOVE ABBR (0 Adv OR Pcle OR Pron) ;
 # For Apertium: remove dynamic compound readings if there's a
 # lexicalised reading
 REMOVE:dynamic-compound SUB:1 (Cmp) ;
+
+# For Apertium: remove dynamic derivational readings if there's a
+# lexicalised reading
+LIST Der_apertium =  "Use_Ped" "Use_CircN" "Use_Circ" "Der_oaivvat" "Der_t" "Der_Dimin" "Der_NuA" "Der_Pass" "Der_PassL" "Der_PassS" "Der_adda" "Der_ahtti" "Der_alla" "Der_amoš" "Der_asti" "Der_d" "Der_diibmosaš" "Der_duohkai" "Der_duohke" "Der_eaddji" "Der_eamoš" "Der_eapmi" "Der_easti" "Der_g" "Der_geahtes" "Der_gielat" "Der_goahti" "Der_h" "Der_halla" "Der_hat" "Der_heapmi" "Der_hudda" "Der_huhtti" "Der_huvva" "Der_j" "Der_jagáš" "Der_jahkásaš" "Der_keahtes" "Der_l" "Der_las" "Der_laš" "Der_lágan" "Der_lágaš" "Der_lágán" "Der_meahttun" "Der_muš" "Der_n" "Der_st" "Der_stuvva" "Der_supmi" "Der_upmi" "Der_us" "Der_veara" "Der_viđi" "Der_viđá" "Der_vuohta" "Der_vuolde" "Der_vuollai" "Der_vuolle" "Der_š" ;
+# Since only underscores are used the tags in this list, instead of
+# slashes, it shouldn't affect non-Apertium users.
+REMOVE:dynamic-derivation Der_apertium ;
 
 # Turi: Muitalus sámiid birra
 REMOVE ("Man") (0 ("man")) ;
@@ -3249,7 +3242,7 @@ REMOVE:r679 ("friddjaagoarta") IF (0 ("friddjagoarta"));
 SELECT:r680 ("giđđageassi") IF (0 ("giđđageasis"));
 SELECT:r674 ("čakčageassi") IF (0 ("čakčageasis"));
 REMOVE Actor (0 ("geassi") LINK -1 DURATION-A OR TIME-A) ;
-REMOVE Actor (0 ("geassi")) ;  # This is preliminary
+REMOVE Actor (0 ("geassi")) ; #  This is preliminary
 SELECT Actor (0 ("geresgeassi")) ;
 
 	# gielda vs gieldda
@@ -3686,9 +3679,9 @@ REMOVE:r826 Px IF (0 N-NOPX OR Num OR Der_n);
 REMOVE:r827 Px IF (0 MANNU OR WEATHER-SITUATION);	
 
    
-	# Adposition + Px
+	# Postposition + Px
 	# - - - - - - - -
-SELECT:r828 Adp IF (0 ("gaska" N Ess)); 	## Sii árvališgohte gaskaneaset.
+SELECT:r828 Po IF (0 ("gaska" N Ess)); 	## Sii árvališgohte gaskaneaset.
 
 	# Some verb rules
 	# ---------------
@@ -13824,7 +13817,7 @@ MAP:r14 (@INTERJ) TARGET ("beargalat") IF (*-1 Nom BARRIER S-BOUNDARY2 LINK NEGA
 MAP:r15 (@INTERJ) TARGET Interj ;
 	## Maid, iigo leat boahtán?
 
-MAP:r16 (@PCLE) TARGET Pcle ;
+MAP:r16 (@PCLE) TARGET Pcle IF (NOT 0 N OR A OR Adv OR V OR Pron OR CS OR CC OR Po OR Pr OR Interj OR Num OR ABBR OR ACR) ;
 	## Amma mii eat leat máksán? 
 
 MAP:r17 (@APP-Num←) TARGET ABBR IF (*-1 Num BARRIER NOT-QMARK)(0 INITIAL LINK NOT *1 NP-MEMBER BARRIER NOT-QMARK);
