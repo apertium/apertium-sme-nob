@@ -2202,11 +2202,16 @@ SUBSTITUTE SUB:1 (Pron Indef) (A Attr) ("iešguhtet" Pron Indef);
 # Adverbs
 # =======
 
-# fal = bare. 1: til
+# fal 0: bare. 1: til
 
 SUBSTITUTE ("fal") ("fal:1") ("fal" Adv) (-2 BOS)(-1 Neg + Sg3)(*1 N BARRIER NPNH) ;
-## Ii fal
+    ## Ii fal
 
+# nu 0 = slik, 1 = så
+
+SUBSTITUTE ("nu") ("nu:1") ("nu" Adv) (*1 A BARRIER NOT-ADV) ;
+    ## Matematihkka lei nu váttis!
+    ## Matematihkka lei nu hirbmat váttis!
 
 # Adjectives
 # ==========
