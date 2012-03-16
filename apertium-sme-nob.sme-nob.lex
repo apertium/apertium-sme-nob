@@ -1930,8 +1930,8 @@ SUBSTITUTE ("beassat") ("beassat:2") ("beassat" V) (1 Ill) ;
 
 
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
-SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 @HAB) ;
-SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg) (-2 @HAB) ;
+SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (*-1 @HAB BARRIER NOT-ADV) ;
+SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (-1 Neg) (*-2 @HAB BARRIER NOT-ADV) ;
 SUBSTITUTE ("leat:1") ("leat:2") ("leat:1" V IV) (1 Inf) ;
     # mis lea cahkkehit dola
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (0 FAUXV) (NOT *1 (Actio Ess) BARRIER S-BOUNDARY) (NOT 1 (Der_PassL PrfPrc)) ;
@@ -1998,9 +1998,13 @@ SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (*1 Loc BARRIER ORRUT-BO) ;
 	## Sii orrot goit čeahpit hutkat vugiid movt ávkkástallat sin sámegielmáhtuin, čilge son.
 	## Mun orun Romssas.
 	## Oro jaska.
-# šaddat 0 = bli, 1 = vokse
+	
+    # šaddat 0 = bli, 1 = vokse, 2 = komme til å, 3 = vokse, 4 = bli, 5 = få
 SUBSTITUTE ("šaddat") ("šaddat:1") ("šaddat" V IV) (1 ("bajás")) ;
-
+SUBSTITUTE ("šaddat") ("šaddat:5") ("šaddat" V IV) (*-1 @HAB BARRIER NOT-ADV) ;
+    # Sutnje šattai hoahppu.
+SUBSTITUTE ("šaddat") ("šaddat:5") ("šaddat" V IV) (-1 Neg) (*-2 @HAB BARRIER NOT-ADV) ;
+    # Sutnje šattai álo nu hoahppu.
 
 # guorrassit 0 = slutte seg, 1 = tilslutte seg
 SUBSTITUTE ("guorrasit") ("guorrasit:1") ("guorrasit" V IV) (NOT *0 Ill) ;
