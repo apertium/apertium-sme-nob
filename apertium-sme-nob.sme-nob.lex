@@ -2011,6 +2011,10 @@ SUBSTITUTE ("guorrasit") ("guorrasit:1") ("guorrasit" V IV) (NOT *0 Ill) ;
 # Ráđđehus guorrasii Gonagasa oaivilii => Regjeringen sluttet seg til Kongens mening
 
 
+# ohcat 0 = søke, 1 = søke etter, 3 = lete
+SUBSTITUTE ("ohcat") ("ohcat:1") ("ohcat" V TV) (*1 ("olmmoš:1") OR ("olmmoš")) ;
+
+
 # Dynamically deverbal nouns:
 SUBSTITUTE ("dánset") ("dánset:1") ("dánset" N) ;
 SUBSTITUTE ("dánsut") ("dánsut:1") ("dánsut" N) ;
