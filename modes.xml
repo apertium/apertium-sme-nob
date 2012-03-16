@@ -248,6 +248,17 @@
     </pipeline>
   </mode>
 
+  <mode name="sme-nob-cg">
+    <pipeline>
+      <program name="hfst-proc -w -p">
+        <file name="sme-nob.automorf.hfst.ol"/>
+      </program>
+      <program name="cg-proc">
+        <file name="sme-nob.rlx.bin"/>
+      </program>
+    </pipeline>
+  </mode>
+
   <mode name="sme-nob-tagger">
     <pipeline>
       <program name="hfst-proc -w -p">
