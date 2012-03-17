@@ -1954,11 +1954,14 @@ SUBSTITUTE ("lohkat") ("lohkat:1")
 		(1 ("ahte") OR (Refl Acc) OR (Refl Loc) OR PrfPrc)
 		OR
 		(*1 FMAINV OR Actio OR PrfPrc OR Inf BARRIER S-BOUNDARY OR ("galle") OR ("man"))
-	   ) (NEGATE *0 OBJ LINK 0 READABLE BARRIER S-BOUNDARY);
+	   ) (NEGATE *0 OBJ LINK 0 READABLE BARRIER S-BOUNDARY)
+	   (NEGATE *0 ("jitnosit") OR ("hiđis" Adv) OR ("jaskat" Adv) BARRIER S-BOUNDARY OR V);
 	## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
 	## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
 	## Lars Anders Baer ii eahpit ii veahášge go lohká dákkáraš álbmotsirren lea lága ja álbmotrievtti vuostá. - Lars Anders Baer tviler ikke ikke *veahášge når han sier *dákkáraš en folkeisolering er loven og folkeretten mot.
 	## Son lohká ádjá boahtit. - Han sier at bestefar skulle komme.
+	#$ Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
+	
 SUBSTITUTE ("lohkat") ("lohkat:2")
 	TARGET ("lohkat" V)
 	IF (*1 (@←OBJ) LINK NOT 0 TEXT BARRIER S-BOUNDARY);
@@ -2033,7 +2036,10 @@ SUBSTITUTE ("civkkádit") ("civkkádit:1") ("civkkádit" V IV) (*0 ("mobiltelefu
 # luohkká 0 = bakke, 1 = klasse
 SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (*1 EDUCATION OR LESSON OR ("oahpaheaddji"));
     
-SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (*-1 EDUCATION OR LESSON OR ("oahpaheaddji"));
+SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (*<-1 EDUCATION OR LESSON OR ("oahpaheaddji"));
+
+SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (-1 Gen LINK 0 Pers OR Refl);
+    ## Earát su luohkás ledje juo vissa njeallje siiddu su ovdalis matematihkka-girjjis.
     
 SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (-1 Num OR Ord);
     # Son lea vuosttaš luohkás.
@@ -2094,6 +2100,10 @@ SUBSTITUTE ("diehtu") ("diehtu:3") ("diehtu") (0 OBJ LINK *0  ("sáddet") OR ("�
     
 SUBSTITUTE ("maŋŋel") ("maŋŋel:1") ("maŋŋel" Adv) (1 ("go")) ;
     ## Maŋŋel go guovtte geardde leat vuoitán eretčiekčamiin ja buriin álgguin dan gohčoduvvon fiskerseries, ledje valljit ruovttuguovllu olbmot boahtán geahččat iežaset lunttaid vuoitit badjel joavku maid atne heajubun.
+
+#maŋit 0 = bakre, 1 = sist    
+SUBSTITUTE ("maŋit") ("maŋit:1") ("maŋit" Superl) (*1 TIME BARRIER NPNH) ;
+    ## Maŋemus guokte diimmu sis lei duodji.
 
 # ge 0 = også, 1 = heller
 SUBSTITUTE ("ge") ("ge:1") ("ge" Pcle) (*-1 Neg BARRIER S-BOUNDARY) ;
