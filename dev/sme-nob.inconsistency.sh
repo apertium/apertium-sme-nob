@@ -72,8 +72,10 @@ adj () {
     rhsbidix |\
 grep '<s n="adj"/>' |\
 grep -v '<s n="adj"/><s n="pprs"/>' |\
+sed 's%<s n="adj"/><s n="sint"/>.*<par n="pl__adj"/>%<adj><sint><posi><pl>$%' |\
 sed 's%<s n="adj"/>.*<par n="pl__adj"/>%<adj><posi><pl>$%' |\
 sed 's%<s n="adj"/><s n="ord"/>.*%<adj><ord><posi><mf><sg><ind>$%' |\
+sed 's%<s n="adj"/><s n="sint"/>.*%<adj><sint><posi><mf><sg><ind>$%' |\
 sed 's%<s n="adj"/>.*%<adj><posi><mf><sg><ind>$%'
 }
 
