@@ -87,7 +87,7 @@ set -o pipefail
   svn co https://hfst.svn.sourceforge.net/svnroot/hfst/trunk/hfst3 &&
   cd hfst3 &&
   ./autogen.sh &&
-  ./configure LDFLAGS=-L$PREFIX/lib --prefix=$PREFIX --enable-lexc --with-foma --without-sfst --with-unicode-handler=ICU &&
+  ./configure LDFLAGS=-L$PREFIX/lib --prefix=$PREFIX --enable-lexc --enable-proc --with-foma --without-sfst --with-unicode-handler=ICU &&
   make $J CXXFLAGS="-fpermissive -I$PREFIX/include" &&
   make install &&
   (ldconfig || true) &&
