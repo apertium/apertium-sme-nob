@@ -38,7 +38,7 @@ lt-proc -g ${DEV}/../sme-nob.autogen.bin > ${SURFACES} ;
 }    
 
 rhsbidix () {
-    cat ${BIDIX} | sed 's%.*<r>%^%'
+    sed 's%.*<r>%^%' ${BIDIX}
 }
 vblex () {
     rhsbidix |\
