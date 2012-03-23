@@ -11317,6 +11317,8 @@ LEXICON NonFirstNouns
 
 niehkki+CmpN/Last+CmpN/Only:niehkki AIGI ;
 LEXICON HyphNouns
+Wackernagel-posišuvdna+CmpN/First:Wackernagel-posišu TELEFON ; !
+Wackernagel-posišuvdna+CmpN/First:Wackernagel-posišu TELEFON ; !
 A-vitamiidna:A-vitam MASKIN ; !
 B-vitamiidna:B-vitam MASKIN ; !
 C-vitamiidna:C-vitam MASKIN ; !
@@ -11383,8 +11385,6 @@ eiseváldi+N+Pl+Acc+Use/Sub:eiseváldiid9 K ;
 eiseváldi+N+Pl+Nom+Use/Sub:eiseváldit K ; ! Wrong, but 97x in corp.
 mátki+N+Pl+Gen+Use/Sub:mátkiid K ; ! Wrong.
 vánhen+N+Pl+Nom+Use/Sub:vánhemmat K ; ! Wrong, probably dialectal form.
-Wackernagel-posišuvdna+CmpN/First:Wackernagel-posišu TELEFON ; !
-Wackernagel-posišuvdna+CmpN/First:Wackernagel-posišu TELEFON ; !
 abbediija+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:abbediija IIJA ;
 abessiiva:abessij'va GOAHTI-A "abessive N" ;
 ablatiiva:ablatij'va GOAHTI-A "ablative N" ;
@@ -11891,6 +11891,7 @@ bargokapitála:bargo#kapitál SOSIAL ;
 bargolatnja+CmpN/SgN+CmpN/SgG+CmpN/PlG+Plc:bargo#latnja GOAHTI-A ;
 bargolohpi:bargo#loh'pi ALBMI ;
 bargomašiidna:bargo#maš MASKIN ;
+guolástusministtar+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:guolástus#minis'tar MATTAR ;
 bargomokta:bargo#mok'ta GOAHTI-A ;
 bargomunni:bargo#munni GOAHTI-I ;
 bargomárkan:bargo#márkan GAHPIR ;
@@ -13114,7 +13115,6 @@ bánnogáhkku:bánno#gáhkku GOAHTI-U ;
 bára:bára GOAHTI-A ;
 bárbmofálli+G3+CmpN/SgN+CmpN/SgG+CmpN/PlG+Ani:bárbmo#fál'li GOAHTI-I ;
 bárbmoloddi+CmpN/SgN+CmpN/SgG+CmpN/PlG+Ani:bárbmo#loddi AIGI ;
-bárbmu+CmpN/SgN+CmpN/SgG:bárbmu ALBMI ;
 bárdni+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:bárdni GOAHTI-I ;
 bárduvdna:bárdu TELEFON ;
 bárehuoš+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:báre7huožž JOHTOLAT ;
@@ -13214,7 +13214,7 @@ ciiku+CmpN/SgN+CmpN/SgG+CmpN/PlG+Ani:cij'ku ALBMI ;
 cikcenbasttat+CmpN/SgN+CmpN/DefPlGen:cikcen#bas'ta BUVSSAT ;
 cinnabavssa:cinna#bak'sam8 SEAMU ;
 cinná:cin'ná ALBMI ;
-cirgganguovddáš:cirggan#guovddáž LEXDIMINC ;
+cirgganguovddáš+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Plc:cirggan#guovddáž LEXDIMINC ;
 cirgganjunni:cirgga#njunni AIGI ;
 cirggon:cirggon GAHPIR ;
 cirgoventiila:cirgo#ventij'la GOAHTI-A ;
@@ -14043,7 +14043,7 @@ dánsa:dán'sa GOAHTI-A ;
 dánsenossodat+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Org+Plc:dánsen#ossodah'k JOHTOLAT ;
 dánskagiella+Use/Sub:dánska#giella GOAHTI-A ;
 dánskalaš+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:dánskalažž JOHTOLAT ;
-dánsun+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:dánsum BOAHTIN ;
+dánsun+CmpN/Sg:dánsum BOAHTIN ;
 dápmot+CmpN/SgN+CmpN/SgG+CmpN/PlG+Ani+Use/NG:dápmog GAHPIR ;
 dápmot+CmpN/SgN+CmpN/SgG+CmpN/PlG+Ani:dápmoh GAHPIR ;
 dárbbaš:dár'ba DAIVVAS ;
@@ -14611,7 +14611,7 @@ fievrredandoarjja:fievrre7dan#doar'jag8 SEAMU ;
 fievrredannávccat+CmpN/SgN+CmpN/DefPlGen:fievrredan#nák'ca BUVSSAT ;
 fievrredanolggosgollu:fievrredan#olggos#gollu GOAHTI-U ;
 fievrredanrusttet:fievrredan#rustteg GAHPIR ;
-fievrridanguovddáš:fievrridan#guovddáž LEXDIMINC ;
+fievrridanguovddáš+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Plc:fievrridan#guovddáž LEXDIMINC ;
 fievrrádus:fievrráduss JOHTOLAT ;
 fievrrádusbábir:fievrrádus#báh'pi7r MALIS ;
 fievru+Veh:fiev'ru GOAHTI-U ;
@@ -14629,7 +14629,7 @@ fiilaválljengieddi+CmpN/SgN+CmpN/SgG+CmpN/PlG+Plc:fiila#válljen#gieddi AIGI ;
 fiilačujuhus:fiila#čujuhuss JOHTOLAT ;
 fiilogazza:fiilo#gazza GOAHTI-A ;
 fiilu:fij'lu GOAHTI-U ;
-fiinnakoordinerenmuddu+CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Time+Plc:fiinna#ko^ordineren#muddu GOAHTI-U ;
+fiinnakoordinerenmuddu+CmpN/SgN+CmpN/SgG+CmpN/PlG+Time+Plc:fiinna#ko^ordineren#muddu GOAHTI-U ;
 fiinnamotorihkka+CmpN/SgN+CmpN/DefSgGen:fiinna#motorihkka GOAHTI-A ;
 fiksfakseriija:fiksfakseriija IIJA ; !^LOAN
 fikšuvdna:fikšu TELEFON ;
@@ -15321,7 +15321,7 @@ gilvobiila+Veh:gilvo#bij'la GOAHTI-A ;
 gilvobotnjašupmi:gilvo#botnjaš UPMI ;
 gilvojienasteapmi+CmpN/Sg:gilvo#jienast EAPMI ;
 gilvoviehkan+CmpN/Sg:gilvo#viehkam BOAHTIN ;
-gilvovuodjin+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:gilvo#vuodjim BOAHTINLONGSHORT ;
+gilvovuodjin+CmpN/Sg:gilvo#vuodjim BOAHTINLONGSHORT ;
 gilvošillju+Plc:gilvo#šillju AIGI ;
 gilvu:gil'vu GOAHTI-U ;
 gilvva:gil'vag8 SEAMU ;
@@ -15405,7 +15405,6 @@ gluten:gluten GAHPIR ; !^LOAN
 glykogen+Use/Sub:glykogen BUFFALO ; !^LOAN
 glyptoteahka+Use/Sub:glyptoteahka STAHTA ;
 glássa:glássa GOAHTI-A ;
-glássalávdi:glássa#láv'di GOAHTI-I ;
 gnostisisma:gnostisis'ma GOAHTI-A ; !^LOAN
 goadjin+CmpN/SgN+CmpN/SgG+CmpN/PlG+Ani:goadjim GAHPIR ;
 goadjin+Use/Sub:goadjin9 GAHPIR ;
@@ -16089,7 +16088,7 @@ gálvohivvodat:gálvo#hivvodah'k JOHTOLAT ;
 gálvohálbbideapmi+CmpN/Sg:gálvo#hálbbid EAPMI ;
 gálvojohtolađas+Use/Sub:gálvo#johto#lađđas MALIS ;
 gálvokartotehka:gálvo#kartotehka STAHTA ;
-gálvolohkan+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:gálvo#lohkam BOAHTIN ;
+gálvolohkan+CmpN/Sg:gálvo#lohkam BOAHTIN ;
 gálvolágideapmi+CmpN/Sg:gálvo#lágid EAPMI ;
 gálvomannu:gálvo#mannu ALBMI ;
 gálvorádju+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Org:gálvo#rád'ju AIGI ;
@@ -16151,7 +16150,7 @@ gásár:gásár GAHPIRLONG ;
 gáttesseahkka:gáttes#seahkka GOAHTI-A ;
 gávcceš:gávccež LEXDIMINC ;
 gávccádasboatka:gávccádas#boat'ka GOAHTI-A ;
-gávdneguovddáš:gávdne#guovddáž LEXDIMINC ;
+gávdneguovddáš+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Plc:gávdne#guovddáž LEXDIMINC ;
 gávdnejuohkin+CmpN/Sg:gávdne#juohkim BOAHTIN ;
 gávdnerádju:gávdne#rád'ju ALBMI ;
 gávdni:gávdni AIGI ;
@@ -18316,6 +18315,9 @@ láseliidnelávdi:láse#liidne#láv'di GOAHTI-I ;
 láseliidni:láse#lijdni GOAHTI-I ;
 láseluŋka:láse#luŋ'ka GOAHTI-A ;
 láseraban:láse#raban GAHPIR ;
+glássalávdi:glássa#láv'di GOAHTI-I ;
+lássaliidni:lássa#lijdni GOAHTI-I ;
+lássalávdi:lássa#láv'di GOAHTI-I ;
 lásis+CmpN/SgN+CmpN/SgG+CmpN/PlG+Plc:lássis LASIS ;
 láskkodássi:láskko#dássi AIGI ;
 lássa:lássa GOAHTI-A ;
@@ -18389,7 +18391,6 @@ lášmmohallanlatnja+CmpN/SgN+CmpN/SgG+CmpN/PlG+Plc:lášmmohallan#latnja GOAHTI
 lášmmohallanreaidu:lášmmohallan#reaj'du GOAHTI-U ;
 lášmmohallanvuloš:lášmmohallan#vulož LEXDIMINC ;
 madapoláma:madapoláma GOAHTI-A ; !^LOAN
-madda:madda GOAHTI-A ;
 magasiidna:magas MASKIN ; !^LOAN
 magnehta+v1:magneahtta GOAHTI-A ;
 magnehta+v2:magnehta STAHTA ;
@@ -19085,7 +19086,7 @@ mánotbadji+CmpN/SgN+CmpN/SgG+CmpN/PlG+Time:mánot#bad'ji AIGI ;
 mánáidbajásgeassin+CmpN/Sg:mánáid9#bajás#geassim BOAHTIN ;
 mánáidboddu+CmpN/SgN+CmpN/SgG+CmpN/PlG+Time:mánáid9#boddu GOAHTI-U ;
 mánáidgirji:mánáid9#gir'ji GOAHTI-I ;
-mánáidguovddáš:mánáid9#guovddáž LEXDIMINC ;
+mánáidguovddáš+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Plc:mánáid9#guovddáž LEXDIMINC ;
 mánáidgárdedoarjja:mánáid9#gárde#doar'jag8 SEAMU ;
 mánáidgárdejođiheaddji+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:mánáid9#gárde#jođiheaddji¤ ACTORLONGSHORT ;
 mánáidgárdeláhka:mánáid9#gárde#láh'ka GOAHTI-A ;
@@ -19538,10 +19539,10 @@ náhpi:náh'pi GOAHTI-I ;
 náhpol:náhpol GAHPIR ;
 náhpoš+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen+Plant:náhpož LEXDIMINC ;
 náhppi:náhppi GOAHTI-I ;
-náittosbárra+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum+Group:náittos#bárra GOAHTI-A ;
 náittosgovva:náittos#govva GOAHTI-A ;
 náittosláhka:náittos#láh'ka GOAHTI-A ;
 náittospárra+CmpN/SgN+CmpN/SgG+CmpN/PlG+Group+Hum:náittos#párra GOAHTI-A ;
+náittosbárra+CmpN/SgN+CmpN/SgG+CmpN/PlG+Group+Hum:náittos#bárra GOAHTI-A ;
 náittosseaŋga:náittos#seaŋ'ga GOAHTI-A ;
 náittosšiehtadus:náittos#šiehtaduss JOHTOLAT ;
 náittus:náj'tus MALIS ;
@@ -19937,6 +19938,7 @@ olgoáibmoboahtu:olgo#áibmo#boah'tu GOAHTI-U ;
 olgoáibmoláhka:olgo#áibmo#láh'ka GOAHTI-A ;
 olgoáibmu:olgo#ájbmu ALBMI ;
 olgošlápma:olgo#šlápma GOAHTI-A ;
+olgu:ol'gu OLGU ;
 olgunastinláhka:olgunastin#láhka GOAHTI-A ;
 oligarkiija+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Org:olig^arkiija IIJA ;
 oliiva+CmpN/SgN+CmpN/SgG+CmpN/DefPlGen+Plant:olij'va GOAHTI-A ;
@@ -20193,7 +20195,7 @@ ovttastallanriekti:ovttastallan#riek'ti ALBMI ;
 ovttastallanvuohki:ovttastallan#vuoh'ki AIGI ;
 ovttastallanvuoigatvuohta+CmpN/SgG+CmpN/DefPlGen:ovttastallan#vuoigatvuoh'ta LUONDU ;
 ovttastupmi:ovttast UPMI ;
-ovttastus+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/PlGenLeft:ovttastuss JOHTOLAT ;
+ovttastus+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen:ovttastuss JOHTOLAT ;
 ovttastusbeallalaš+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:ovttastus#beallalažž JOHTOLAT ;
 ovtteš:ovttež LEXDIMINC ;
 ozolaš+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:ozolažž JOHTOLAT ;
@@ -20448,7 +20450,7 @@ preassadieđiheaddji+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:preassa#dieđiheaddji¤ ACTO
 preassadieđáhus:preassa#dieđáhuss JOHTOLAT ;
 preassadoarjja:preassa#doar'jag8 SEAMU ;
 preassagovva:preassa#govva GOAHTI-A ;
-preassaguovddáš:preassa#guovddáž LEXDIMINC ;
+preassaguovddáš+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Plc:preassa#guovddáž LEXDIMINC ;
 preassakonferánsa+v2:pressa#konferean'sa GOAHTI-A ;
 preassakonferánsa+v1:preassa#konferán'sa GOAHTI-A ;
 preassapolitihkka:preassa#politihkka GOAHTI-A ;
@@ -23044,7 +23046,7 @@ veahkkedivššár+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:veahkke#divššár GAHPIRLONG ;
 veahkkedoarjja:veahkke#doar'jag8 SEAMU ;
 veahkkegaskaoapmi:veahkke#gaska#oapmi GOAHTI-I ;
 veahkkehoavda+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:veahkke#hoav'da GOAHTI-A ;
-veahkkeneavvoguovddáš:veahkke#neavvo#guovddáž LEXDIMINC ;
+veahkkeneavvoguovddáš+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Plc:veahkke#neavvo#guovddáž LEXDIMINC ;
 veahkkeneavvu:veahkke#neav'vu GOAHTI-U ;
 veahkkeorganisašuvdna+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Org:veahkke#organisašu TELEFON ;
 veahkkeregisttar:veahkke#regis'tar MALIS ;
@@ -23676,6 +23678,7 @@ váidinvuoigatvuohta+CmpN/SgG+CmpN/DefPlGen:váidin#vuoigatvuoh'ta LUONDU ;
 váidnahádja:váidna#hád'ja GOAHTI-A ;
 váidni+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:vájdni GOAHTI-I ;
 váidámuš+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:váidámušš LEXMUSH ;
+váikkuhangaskaoapmeapparáhta:váikkuhan#gaska#oapme#apparáhta STAHTA ;
 váikkuhanfápmu+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:váikkuhan#fápmu GOAHTI-U ;
 váikkuhangaskaoapmeapparáhtta:váikkuhan#gaska#oapme#apparáhtta GOAHTI-A ;
 váikkuhanjoavku+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Group+Hum:váikkuhan#joav'ku GOAHTI-U ;
@@ -23978,7 +23981,7 @@ zoologiija:zoologiija IIJA ;
 áitta:áj'tag8 SEAMU ;
 áittardeaddji+CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Hum:áittardeaddji¤ ACTOR ;
 áitteboardda:áitte#boar'dag8 SEAMU ;
-ája:ád'jag8 SEAMU ;
+ája+Plc:ád'jag8 SEAMU ;
 ájánasgirjjálašvuohta+CmpN/SgG+CmpN/DefPlGen:ájánas#girjjálašvuoh'ta LUONDU ;
 áksi:ák'si GOAHTI-I ;
 áksil:áksil GAHPIRLONGSHORT ;
@@ -24481,7 +24484,7 @@ zoologiija:zoologiija IIJA ;
 čora:čorrag8 SEAMU ;
 čorbma:čorbma GOAHTI-A ;
 čorbmaláhka:čorbma#láh'ka GOAHTI-A ;
-čorgenguovddáš:čorgen#guovddáž LEXDIMINC ;
+čorgenguovddáš+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Plc:čorgen#guovddáž LEXDIMINC ;
 čorgenortnet:čorgen#ortneg GAHPIR ;
 čorgenossodat+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Org+Plc:čorgen#ossodah'k JOHTOLAT ;
 čorru+Plc:čorru AIGI ;
@@ -24680,7 +24683,7 @@ zoologiija:zoologiija IIJA ;
 čállingilvu:čállin#gil'vu GOAHTI-U ;
 čállingirji:čállin#gir'ji GOAHTI-I ;
 čállingoddi+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Org:čállin#goddi AIGI ;
-čállinguovddáš:čállin#guovddáž LEXDIMINC ;
+čállinguovddáš+CmpN/SgN+CmpN/DefSgGen+CmpN/PlG+Plc:čállin#guovddáž LEXDIMINC ;
 čállingursa:čállin#gur'sa GOAHTI-A ;
 čállinkursa:čállin#kur'sa GOAHTI-A ;
 čállinlatnja+CmpN/SgN+CmpN/SgG+CmpN/PlG+Plc:čállin#latnja GOAHTI-A ;
@@ -28369,6 +28372,7 @@ Gaska-Amerihkká SUOPMA-plc ;
 Olgo-Vuoksá:Olgo-Vuok'sá MARJA-plc ;
 Uhc-Oardu:Uhc-Oar'du MARJA-U-plc ;
 Uhc-Áhkováráš:Uhc-Áhko^váráž PLACE-DIM-plc ; !FIN
+Gállováráš:Gállo^váráž PLACE-DIM-plc ;
 Uhc-Áhkovárášskáidi:Uhc-Áhko^váráš^skáj'di MARJA-I-plc ; !FIN
 Nuorta-Antárktis LONDON-plc ;
 Gaska-Andamansullot:Gaska-Andaman^suollu SULLOT-plc ;
@@ -28419,6 +28423,7 @@ Mátta-Gudbrandsdalen+Use/Sub:Mátta-Gud^brands^dalen9 LONDON-plc ; !
 Davvi-Atlanteráhpi:Davvi-Atlanter^áh'pi MARJA-I-plc ;
 Davvi-Nordlánda:Davvi-Nord^lán'da MARJA-A-plc ;
 Veasta-Gáđešnjárga:Veasta-Gáđeš^njár'ga MARJA-A-plc ;
+Gámasnjárga:Gámas^njár'ga MARJA-A-plc ;
 Veasta-Gáđešvárri:Veasta-Gáđeš^várri MARJA-I-plc ;
 Davvi-Norga:Davvi-Nor'ga MARJA-A-plc ;
 Lulle-Wales BERN-plc ;
@@ -33014,7 +33019,6 @@ Ceakkojohrášša:Ceakko^joh^ráš'ša MARJA-A-plc ;
 Ceakkojávri:Ceakko^jáv'ri MARJA-I-plc ;
 Ceakkovuopmi:Ceakko^vuopmi MARJA-I-plc ;
 Ceavccageađggohppi:Ceavcca^geađg^gohppi MARJA-I-plc ;
-Ceavccageađgi:Ceavcca^geađ'gi MARJA-I-plc ;
 Ceavccageađgi:Ceavcca^geađgi MARJA-I-plc ;
 Ceavccageađgnjárga:Ceavcca^geađg^njár'ga MARJA-A-plc ;
 Cebu ACCRA-plc ;
@@ -37779,6 +37783,7 @@ Goa ACCRA-plc ;
 Goadjinjohka:Goadjin^joh'ka MARJA-A-plc ;
 Goagginjávri:Goaggin^jáv'ri MARJA-I-plc ;
 Goahkkebávttjávri:Goahkke^bávtt^jáv'ri MARJA-I-plc ;
+Gievdneguoika:Gievdne^guoj'ka MARJA-A-plc ;
 Goahtedievvá:Goahte^dievvá MARJA-plc ;
 Goahtejeaggi:Goahte^jeaggi MARJA-I-plc ;
 Goahtejohka:Goahte^joh'ka MARJA-A-plc ;
@@ -38931,7 +38936,7 @@ Gákkalokta:Gákka^lok'ta MARJA-A-plc ;
 Gákkašjunni:Gákkaš^junni MARJA-I-plc ;
 Gákkešjávri:Gákkeš^jáv'ri MARJA-I-plc ;
 Gálagohppi:Gála^gohppi MARJA-I-plc ;
-Gálaniitu:Gála^niitu MARJA-U-plc ;
+Gálaniitu:Gála^nij'tu MARJA-U-plc ;
 Gálbbejávri:Gálbbe^jáv'ri MARJA-I-plc ;
 Gálbbejávrrit:Gálbbe^jáv'ri VARGGAT-plc ;
 Gálbbenjoasjohka:Gálbbe^njoas^joh'ka MARJA-A-plc ;
@@ -66409,6 +66414,7 @@ von+CmpN/None:von9 FirstTag ; !
 Čávárri:Čá^várri MARJA-I-plc ;
 Čávžu:Čáv'žu MARJA-U-plc ;
 Čáŋahatjohka:Čáŋahat^joh'ka MARJA-A-plc ;
+Ijäs BERN-sur;
 ! Divvun & Giellatekno - open source grammars for Sámi and other languages
 ! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
 ! http://giellatekno.uit.no & http://divvun.no
