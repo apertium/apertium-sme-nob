@@ -1317,6 +1317,16 @@ And then there are some categories like "month", with all the months.
             </or>
           </test>
           <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+          <choose>
+            <when><test><not>
+              <or>
+                <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+                <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+              </or>
+            </not></test>
+            <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+            </when>
+          </choose>
         </when>
         <otherwise>
           <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
@@ -1328,10 +1338,9 @@ And then there are some categories like "month", with all the months.
       <choose>
         <when>
           <test>
-            <or>
-              <equal><clip pos="2" side="tl" part="gen"/><lit-tag v="m"/></equal>
-              <equal><clip pos="2" side="tl" part="gen"/><lit-tag v="f"/></equal>
-            </or>
+            <not>
+              <equal><clip pos="2" side="tl" part="gen"/><lit-tag v="nt"/></equal>
+            </not>
           </test>
           <let><clip pos="2" side="tl" part="gen"/><lit-tag v="mf"/></let>
         </when>
