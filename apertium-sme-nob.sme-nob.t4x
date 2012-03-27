@@ -205,9 +205,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <attr-item tags="ind"/>
       <attr-item tags="DD"/>
     </def-attr>
-    <def-attr n="art-ind">
-      <attr-item tags="ind"/>
-    </def-attr>
     <def-attr n="a_verb">
       <attr-item tags="V"/>
       <attr-item tags="vblex"/>
@@ -315,6 +312,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
   <section-def-vars>
     <def-var n="gender"/>
     <def-var n="defnes"/>
+    <def-var n="moremost-defnes"/>
   </section-def-vars>
 
   <section-def-lists>
@@ -623,6 +621,52 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 
       <call-macro n="clean_det2"><with-param pos="1"/><with-param pos="2"/></call-macro>
     </def-macro>
+
+
+    <def-macro n="prepend_moremost" npar="1"
+               c="arg.1: adj (not the chunk), after having run through clean_adj
+                  -----
+                  Prepend 'more'/'most' if adj is non-synthetic and comp/sup;
+                  also change the main adj tags back to mf.posi.sg.ind.
+                  By this point, the tags should be completely 'cleaned',
+                  so we shouldn't have to worry about inconsistencies.
+                  ">
+      <choose><when>
+        <test><and>
+          <not><equal><clip pos="1" part="a_adj"/><lit-tag v="adj.sint"/></equal></not>
+          <or>
+            <equal><clip pos="1" part="grau-pure"/><lit-tag v="comp"/></equal>
+            <equal><clip pos="1" part="grau-pure"/><lit-tag v="sup"/></equal>
+          </or>
+        </and></test>
+        
+        <let><var n="defnes"/><clip pos="1" part="art"/></let>
+        <choose><when>
+          <test><equal><var n="defnes"/><lit v=""/></equal></test>
+          <let><var n="defnes"/><lit-tag v="ind"/></let>
+        </when></choose>
+        <choose><when>
+          <test><equal><clip pos="1" part="grau-pure"/><lit-tag v="sup"/></equal></test>
+          <let><var n="moremost-defnes"/><lit-tag v="ind"/></let>
+        </when></choose>
+        <let>
+          <clip pos="1" part="whole"/>
+          <concat>
+            <lit v="mye"/>
+            <lit-tag v="adj.sint"/>
+            <clip pos="1" part="grau-pure"/>
+            <var n="moremost-defnes"/>
+            <lit v="$ ^"/>
+            <clip pos="1" part="lemh"/>
+            <clip pos="1" part="a_adj"/>
+            <lit-tag v="posi.mf.sg"/>
+            <var n="defnes"/>
+            <clip pos="1" part="lemq"/>
+          </concat>
+        </let>
+        
+      </when></choose>
+    </def-macro>
     
     <def-macro n="clean_adj" npar="2"
                c="arg.1: chunk, arg.2: adj
@@ -752,46 +796,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </when></choose>
 
       <call-macro n="prepend_moremost"><with-param pos="2"/></call-macro>      
-    </def-macro>
-
-
-    <def-macro n="prepend_moremost" npar="1"
-               c="arg.1: adj (not the chunk), after having run through clean_adj
-                  -----
-                  Prepend 'more'/'most' if adj is non-synthetic and comp/sup;
-                  also change the main adj tags back to mf.posi.sg.ind.
-                  By this point, the tags should be completely 'cleaned',
-                  so we shouldn't have to worry about inconsistencies.
-                  ">
-      <let><var n="defnes"/><clip pos="1" part="art"/></let>
-      <choose><when>
-        <test><equal><var n="defnes"/><lit v=""/></equal></test>
-        <let><var n="defnes"/><lit-tag v="ind"/></let>
-      </when></choose>
-      <choose><when>
-        <test><and>
-          <not><equal><clip pos="1" part="a_adj"/><lit-tag v="adj.sint"/></equal></not>
-          <or>
-            <equal><clip pos="1" part="grau-pure"/><lit-tag v="comp"/></equal>
-            <equal><clip pos="1" part="grau-pure"/><lit-tag v="sup"/></equal>
-          </or>
-        </and></test>
-        <let>
-          <clip pos="1" part="whole"/>
-          <concat>
-            <lit v="mye"/>
-            <lit-tag v="adj.sint"/>
-            <clip pos="1" part="grau-pure"/>
-            <clip pos="1" part="art-ind"/>
-            <lit v="$ ^"/>
-            <clip pos="1" part="lemh"/>
-            <clip pos="1" part="a_adj"/>
-            <lit-tag v="posi.mf.sg"/>
-            <var n="defnes"/>
-            <clip pos="1" part="lemq"/>
-          </concat>
-        </let>
-      </when></choose>
     </def-macro>
     
 
