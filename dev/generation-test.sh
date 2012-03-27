@@ -55,7 +55,7 @@ if [[ ! -f $TMP/sme.gentest.postchunk ]]; then
 fi
 
 
-sed 's/^[ –	]*//g' < $TMP/sme.gentest.postchunk | grep -v -e '@' -e '*' -e '[0-9]<Num>' -e '#}' -e '#{' | sed 's/\$>/$/g' | LC_ALL='C' sort -f | uniq -c | sort -gr > $TMP/sme.gentest.stripped
+sed 's/^[^^][^^]*//g' < $TMP/sme.gentest.postchunk| sed 's/\$..*/$/g' | grep -v -e '@' -e '*' -e '[0-9]<Num>' -e '#}' -e '#{' | LC_ALL='C' sort -f | uniq -c | sort -gr > $TMP/sme.gentest.stripped
 lt-proc -d ${DEV}/../sme-nob.autogen.bin < $TMP/sme.gentest.stripped > $TMP/sme.gentest.surface
 sed 's/^ *[0-9]* \^/^/g'                 < $TMP/sme.gentest.stripped > $TMP/sme.gentest.nofreq
 paste $TMP/sme.gentest.surface $TMP/sme.gentest.nofreq | grep -e '\/' -e '^[^	]*#'  > $TMP/sme.generation.errors.txt
