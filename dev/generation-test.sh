@@ -1,6 +1,6 @@
 #!/bin/bash
 DEV=`dirname $0`
-tmp_prefix=/tmp/gentest.$pair
+tmp_prefix=/tmp/gentest.sme-nob
 # $tmp_prefix is prepended to all files used by this script
 
 RERUN=false
