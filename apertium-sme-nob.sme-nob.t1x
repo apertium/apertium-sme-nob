@@ -370,17 +370,29 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="Coll"/>
       <attr-item tags="unc"/>
     </def-attr>
-    <def-attr n="a_nom">
+    <def-attr n="a_nom_all">
       <attr-item tags="ABBR"/>
       <attr-item tags="N"/>
-      <attr-item tags="n"/>
-      <attr-item tags="n.acr"/>
       <attr-item tags="N.Prop"/>
       <attr-item tags="N.Prop.Sur"/>
+      <attr-item tags="N.Prop.Plc"/>
+      <attr-item tags="N.Prop.Org"/>
+      <attr-item tags="N.Prop.Mal"/>
+      <attr-item tags="N.Prop.Fem"/>
+      <attr-item tags="N.Prop.Ani"/>
       <attr-item tags="N.Prop.Attr"/>
+      <attr-item tags="n"/>
+      <attr-item tags="n.acr"/>
+      <attr-item tags="np"/>
       <attr-item tags="np.top"/>
       <attr-item tags="np.attr"/>
+    </def-attr>
+    <def-attr n="a_nom">
+      <attr-item tags="n"/>
+      <attr-item tags="n.acr"/>
       <attr-item tags="np"/>
+      <attr-item tags="np.top"/>
+      <attr-item tags="np.attr"/>
     </def-attr>
     <def-attr n="a_rel">
       <attr-item tags="Refl"/>
@@ -1412,7 +1424,7 @@ And then there are some categories like "month", with all the months.
         <when c="tl PoS is an adj (ie. V.Der2.Actor.N, but bidix changed lemma PoS to an adj)
                  Just output posi.mf.sg.ind; TODO: different bidix verb pardef for these PoS changes.">
           <test><and>
-            <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
+            <equal><clip pos="1" side="tl" part="a_nom_all"/><lit v=""/></equal>
             <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
           </and></test>
 
@@ -1663,11 +1675,11 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <when>
           <test><and>
             <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal>
-            <equal><clip pos="1" side="sl" part="a_nom"/><lit v=""/></equal>
+            <equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal>
             <or>
               <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
               <not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not>
-              <not><equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal></not>
+              <not><equal><clip pos="1" side="tl" part="a_nom_all"/><lit v=""/></equal></not>
               <not><equal><clip pos="1" side="tl" part="a_pstv"/><lit v=""/></equal></not>
               <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
               <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></equal>
@@ -1740,7 +1752,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           </out>
         </when>
         <when c="Noun">
-          <test><not><equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal></not></test>
+          <test><not><equal><clip pos="1" side="tl" part="a_nom_all"/><lit v=""/></equal></not></test>
           <let><var n="pre-nom"/><var n="pre-verb"/></let>
           <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
           <call-macro n="out_nom"><with-param pos="1"/></call-macro>
@@ -1848,7 +1860,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       <choose><when c="the lemq was not output in the above 'otherwise'; output as a chunk here">
         <test><and>
           <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
-          <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
+          <equal><clip pos="1" side="tl" part="a_nom_all"/><lit v=""/></equal>
           <equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal>
           <not><equal><clip pos="1" side="tl" part="lemq"/><lit v=""/></equal></not>
         </and></test>
@@ -3402,7 +3414,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
 
         <choose>
           <when>
-            <test><not><equal><clip pos="1" side="sl" part="a_nom"/><lit v=""/></equal></not></test>
+            <test><not><equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal></not></test>
             <let><var n="defnes"/><lit-tag v="def"/></let>
             <out>
               <chunk name="pre_adj" case="caseFirstWord">
