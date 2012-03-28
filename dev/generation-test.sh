@@ -41,7 +41,7 @@ if $RERUN || $FROMTRANSFER; then
 			cat ${args[$i]} >> $TMP/sme-nob.corpus.txt
 		fi
 	done
-	echo "done.";
+	echo "done." 1>&2;
 	echo -n "Translating corpus for generation test" 1>&2
 	apertium_morph_to_pretransfer | apertium -d ${DEV}/../ sme-nob-postchunk-from-transfer -f none | apertium-retxt | sed 's/\$[^^]*\^/$\n^/g' > $TMP/sme.gentest.postchunk
 	echo "done." 1>&2
