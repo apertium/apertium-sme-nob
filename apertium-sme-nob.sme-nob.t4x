@@ -445,7 +445,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
           <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
         </or></test>
-        <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
+        <choose>
+          <when>
+            <test><equal><clip pos="2" part="pers"/><lit-tag v="p3"/></equal></test>
+            <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="2" part="gen"/><lit-tag v="mf"/></let>
+          </otherwise>
+        </choose>
       </when></choose>
       
       <choose><when c="plurals are either mf or empty; if gen is already empty, this has no effect">
