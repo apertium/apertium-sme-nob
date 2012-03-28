@@ -26,6 +26,9 @@ if test x$(uname -s) = xDarwin; then
     GSED=gsed; 
 fi
 
+grep '<!--.*<!--' ${BIDIX} >&2 && echo '^^^ several comments on one line, may lead to false negatives' >&2
+
+
 makepaste () {
     # given analyses, one per line, remove duplicates and output lines
     # of surfaceform:analysis
@@ -38,7 +41,7 @@ lt-proc -g ${DEV}/../sme-nob.autogen.bin > ${SURFACES} ;
 }    
 
 rhsbidix () {
-    sed 's%.*<r>%^%' ${BIDIX}
+    <${BIDIX} sed 's%<!--.*-->%%' | sed 's%.*<r>%^%'
 }
 vblex () {
     rhsbidix |\
