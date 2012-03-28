@@ -825,6 +825,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <let><clip pos="2" part="gen"/><lit v=""/></let>
         </when>
       </choose>
+      <choose c="Workaround for http://bugs.apertium.org/cgi-bin/bugzilla/show_bug.cgi?id=133
+                 (if tl is 'np.Attr' and 'a_nom' contains 'np.attr', it still outputs 'np.Attr' even though attr!=Attr)">
+        <when>
+          <test><equal><clip pos="2" part="a_nom"/><lit-tag v="np.Attr"/></equal></test>
+          <let><clip pos="2" part="a_nom"/><lit-tag v="np"/></let>
+        </when>
+      </choose>
     </def-macro>
     
     <def-macro n="clean_nominal" npar="2"
