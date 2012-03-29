@@ -1064,12 +1064,18 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <test><equal><clip pos="1" part="temps"/><lit-tag v="TD"/></equal></test>
           <let><clip pos="1" part="temps"/><lit-tag v="inf"/></let>
         </when></choose>
-        <choose>
-          <when>
-            <test><equal><clip pos="1" part="temps"/><lit v=""/></equal></test>
-            <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><lit-tag v="inf"/></concat></let>
-          </when>
-        </choose>
+        <choose><when>
+          <test><equal><clip pos="1" part="temps"/><lit v=""/></equal></test>
+          <choose>
+            <when>
+              <test><equal><clip pos="1" part="voice"/><lit v=""/></equal></test>
+              <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><lit-tag v="inf"/></concat></let>
+            </when>
+            <otherwise>
+              <let><clip pos="1" part="voice"/><concat><clip pos="1" part="voice"/><lit-tag v="inf"/></concat></let>
+            </otherwise>
+          </choose>
+        </when></choose>
         <choose>
           <when>
             <test><and>
