@@ -314,6 +314,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <def-var n="gender"/>
     <def-var n="defnes"/>
     <def-var n="moremost-defnes"/>
+    <def-var n="adj-gender"/>
   </section-def-vars>
 
   <section-def-lists>
@@ -658,6 +659,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <test><equal><clip pos="1" part="grau-pure"/><lit-tag v="sup"/></equal></test>
           <let><var n="moremost-defnes"/><lit-tag v="ind"/></let>
         </when></choose>
+        <let><var n="adj-gender"/><lit-tag v="mf"/></let>
+        <choose><when>
+          <test><equal><var n="defnes"/><lit-tag v="def"/></equal></test>
+          <let><var n="adj-gender"/><lit v=""/></let>
+        </when></choose>
+
         <let>
           <clip pos="1" part="whole"/>
           <concat>
@@ -668,7 +675,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
             <lit v="$ ^"/>
             <clip pos="1" part="lemh"/>
             <clip pos="1" part="a_adj"/>
-            <lit-tag v="posi.mf.sg"/>
+            <lit-tag v="posi"/>
+            <var n="adj-gender"/>
+            <lit-tag v="sg"/>
             <var n="defnes"/>
             <clip pos="1" part="lemq"/>
           </concat>
@@ -779,7 +788,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </not></test>
         <let><clip pos="2" part="art"/><lit v=""/></let>
       </when></choose>
-      
+
       <choose><when>
         <test><not>
           <and>
