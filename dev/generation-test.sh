@@ -21,13 +21,13 @@ if $FROMTRANSFER; then
 		exit 1;
 	else
 		apertium_morph_to_pretransfer () {
-			echo -n " re-using results up to pretransfer $tmp_prefix.pretransfer ... " 1>&2
+			echo -n " re-using results up to pretransfer ($tmp_prefix.pretransfer) ... " 1>&2
 			cat $tmp_prefix.pretransfer
 		}
 	fi
 else
 	apertium_morph_to_pretransfer () {
-		echo -n " from scratch (this could take some time)... " 1>&2
+		echo -n " from scratch (this could take some time) ... " 1>&2
 		apertium-destxt < $tmp_prefix.corpus.txt | apertium -d ${DEV}/../ sme-nob-pretransfer -f none | tee $tmp_prefix.pretransfer
 	}
 fi
@@ -35,7 +35,7 @@ fi
 if $RERUN || $FROMTRANSFER; then
 	args=("$@")
 	echo "Corpus in: "`dirname $1` 1>&2
-	echo -n "Processing corpus for generation test... " 1>&2
+	echo -n "Processing corpus for generation test ... " 1>&2
 	rm -f $tmp_prefix.corpus.txt
 	for ((i=0; i <= $# ; i++)); do
 		if [[ ${args[$i]} != "" && -f ${args[$i]} ]]; then 
@@ -44,7 +44,7 @@ if $RERUN || $FROMTRANSFER; then
 	done
 	echo "done." 1>&2;
 	echo -n "Translating corpus for generation test" 1>&2
-	apertium_morph_to_pretransfer | apertium -d ${DEV}/../ sme-nob-postchunk-from-transfer -f none | apertium-retxt | sed 's/\$[^^]*\^/$\n^/g' > $tmp_prefix.postchunk
+	apertium_morph_to_pretransfer | apertium -d ${DEV}/../ sme-nob-postchunk-from-transfer -f none | apertium-retxt > $tmp_prefix.postchunk
 	echo "done." 1>&2
 fi
 
@@ -55,10 +55,14 @@ if [[ ! -f $tmp_prefix.postchunk ]]; then
 	exit 1;
 fi
 
+echo -n "Running generation test on postchunk output ... " 1>&2
+<$tmp_prefix.postchunk sed 's/\$[^^]*\^/$\n^/g' | sed 's/^[^^][^^]*//g' | sed 's/\$..*/$/g' | grep -v -e '@' -e '*' -e '[0-9]<Num>' -e '#}' -e '#{' | LC_ALL='C' sort -f | uniq -c | sort -gr > $tmp_prefix.stripped
 
-sed 's/^[^^][^^]*//g' < $tmp_prefix.postchunk| sed 's/\$..*/$/g' | grep -v -e '@' -e '*' -e '[0-9]<Num>' -e '#}' -e '#{' | LC_ALL='C' sort -f | uniq -c | sort -gr > $tmp_prefix.stripped
 lt-proc -d ${DEV}/../sme-nob.autogen.bin < $tmp_prefix.stripped > $tmp_prefix.surface
+
 sed 's/^ *[0-9]* \^/^/g'                 < $tmp_prefix.stripped > $tmp_prefix.nofreq
+echo "done." 1>&2
+
 paste $tmp_prefix.surface $tmp_prefix.nofreq | grep -e '\/' -e '^[^	]*#'  > $tmp_prefix.errors.txt
 grep -v '^[^	]*#' $tmp_prefix.errors.txt | grep    '\/[^	>]' > $tmp_prefix.multiform
 grep    '^[^	]*#' $tmp_prefix.errors.txt | grep    '\/[^	>]' > $tmp_prefix.multibidix
@@ -88,3 +92,14 @@ echo "==========================================================================
 echo "Summary";
 echo "===============================================================================";
 wc -l $tmp_prefix.multiform $tmp_prefix.multibidix $tmp_prefix.tagmismatch
+
+
+
+##### PROTIP: #####
+### If the report output shows that somewhere you generate e.g.
+### ^foo<n><m><sg><sg>$ (ie. something wrong), you can do
+# $ diff -y -W500 /tmp/gentest.sme-nob.pretransfer  /tmp/gentest.sme-nob.postchunk |grep '^foo<n><m><sg><sg>$'
+### to (hopefully) get back to the pretransfer input that created the
+### error. The -W500 is so that the side-by-side-diff shows at least
+### the full line, you can most likely make it a bit less if the lines
+### are shorter.
