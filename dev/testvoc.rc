@@ -34,6 +34,6 @@ CONTEXT=$(( $BEFORE*2+1 ))
 
 function testvoc-print-line {
     if [ $# -ne 1 ]; then echo "Expects a line number as an argument" 1>&2; fi
-    LINE=$(calc "$1" + $B)
+    LINE=$(calc "$1" + $BEFORE)
     tail -n "+$OFFSET" $CORPUS | head -n $LINE | tail -n $CONTEXT
 }
