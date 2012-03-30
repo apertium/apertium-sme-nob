@@ -1082,7 +1082,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
               <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><lit-tag v="inf"/></concat></let>
             </when>
             <otherwise>
-              <let><clip pos="1" part="voice"/><concat><clip pos="1" part="voice"/><lit-tag v="inf"/></concat></let>
+              <let><clip pos="1" part="voice"/><concat><lit-tag v="inf"/><clip pos="1" part="voice"/></concat></let>
             </otherwise>
           </choose>
         </when></choose>
