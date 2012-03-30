@@ -402,6 +402,9 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="ref"/>
       <attr-item tags="res" c="Reciprocal"/>
     </def-attr>
+    <def-attr n="a_abess">
+      <attr-item tags="VAbess"/>
+    </def-attr>
     <def-attr n="voice">
       <attr-item tags="pass"/>
     </def-attr>
@@ -1591,6 +1594,22 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
           <let><var n="caseprep"/><lit-tag v="NC"/></let>
         </otherwise>
       </choose>
+      
+      <choose c="Prepend 'ikke' if VAbess (should it be 'uten'?) TODO"><when>
+        <test><equal><clip pos="1" side="sl" part="a_abess"/><lit-tag v="VAbess"/></equal></test>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="@ADVL"/></tag>
+            </tags>
+            <lu>
+              <lit v="ikke"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+          <b/>
+        </out>
+      </when></choose>
       
       <choose c="Prepend cnjsub if present progressive:
 TODO: better translation possible? ('drev og'? 'holdt på å'?)"><when>
