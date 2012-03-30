@@ -1506,7 +1506,10 @@ And then there are some categories like "month", with all the months.
                      NOTE: the dash tag is only defined for the sg.ind form of nouns in nob.dix (like cmp)
                      (as well as all numerals, where the change is handled in bidix)">
               <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="RCmpnd"/></equal></test>
-              <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+              <choose><when>
+                <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal></test>
+                <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+              </when></choose>
               <let><var n="c_def_pos"/><lit-tag v="ind.dash"/></let>
               <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
             </when>
