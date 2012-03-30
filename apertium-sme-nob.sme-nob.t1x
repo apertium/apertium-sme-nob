@@ -4475,6 +4475,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
                    The Agent Construction.
 TODO! We make several chunks, should be possible to handle in interchunk like
    other relative clauses; perhaps we could make t2x relative chunking rules.
+TODO sin geargan áššiin
 TODO: should we restrict to V.Actio.Nom/Gen ?">
       <pattern>
         <pattern-item n="pron.pers.gen"/>
@@ -4540,25 +4541,10 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
             </lu>
           </chunk>
           <b/>
-          <chunk name="verb" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SV.@-FMAINV"/></tag>
-              <tag><clip pos="2" side="sl" part="mode"/></tag>
-              <tag><clip pos="2" side="sl" part="modality"/></tag>
-              <tag><lit-tag v="pp"/></tag>
-              <tag><clip pos="2" side="tl" part="pers"/></tag>
-              <tag><clip pos="2" side="tl" part="nbr"/></tag>
-              <tag><clip pos="2" side="tl" part="animacy"/></tag>
-            </tags>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_verb"/>
-              <clip pos="2" side="tl" part="a_pstv"/>
-              <lit-tag v="pp"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
         </out>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><clip pos="2" side="tl" part="temps"/><lit-tag v="pp"/></let>
+        <call-macro n="out_verb"><with-param pos="2"/></call-macro>
       </action>
     </rule>
     <rule comment="REGLA: NOM.GEN V.ACTIO NOM
