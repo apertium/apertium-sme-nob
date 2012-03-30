@@ -4,8 +4,8 @@
 
 AC_PREREQ(2.52)
 
-AC_INIT([apertium-sme-nob], [0.1.0], [trontr@users.sourceforge.net])
-AM_INIT_AUTOMAKE([apertium-sme-nob], [0.1.0], no-define)
+AC_INIT([apertium-sme-nob], [0.5.0], [trondtr@users.sourceforge.net])
+AM_INIT_AUTOMAKE([apertium-sme-nob], [0.5.0], no-define)
 AC_PROG_LN_S
 AC_PROG_AWK
 
