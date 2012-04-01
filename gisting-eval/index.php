@@ -1,11 +1,12 @@
 <?php
+
 foreach ($_POST as $k => $v) {
 	/* Ensure the directory is writable by httpd/apache: */
 	$out = shell_exec("echo \"$k,$v\" >> /poormansdb/results.csv");
 }
 
-
 require_once('gists.php')
+
 ?>
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html>
@@ -77,11 +78,12 @@ div {float:left;}
     }
 </style>
 
+<title>Apertium-evaluering</title>
 </head>
 <body>
 
 
-<h1>Velg rett ord og klikk send</h1>
+<h2>Velg det du tror er rett ord og klikk «Send inn svar»</h2>
 
 <form name="theForm" method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
 
