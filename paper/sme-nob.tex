@@ -1,0 +1,106 @@
+% Created 2009-09-15 Tue 22:47
+\documentclass[11pt]{article}
+\usepackage{freerbmt09}
+\usepackage[utf8x]{inputenc}
+\usepackage{times}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[small,bf]{caption}
+\usepackage{linguex}
+\usepackage{latexsym}
+%\usepackage{setspace}
+
+\usepackage{hyperref}
+
+\title{apertium-sme-nob: using an HFST lexicon in a long-distance RBMT system} % ugh TODO
+
+%\author{NN\\  X \\ X \\  X \\  {\tt \small   X@X} \And  NN \\  X \\  X \\  X \\    {\tt \small  X@X}}
+\author{N.N.\\  Department of X \\ University of Y\\  Y, Z \\  {\tt \small   email@example.com} % \And  Trond Trosterud \\  Department of Linguistics \\  University of Tromsø \\  Tromsø, Norway \\    {\tt \small  trond.trosterud@uit.no}
+}
+
+
+\newcommand{\comment}[1]{\textbf{SKRIV} {\it #1}}
+%\renewcommand{\comment}[1]{} % uncomment for final version
+
+\begin{document}
+
+\maketitle
+
+  \begin{abstract}
+    We describe the development of a rule-based machine translation
+    system from Northern Sámi to Norwegian Bokmål built on a
+    combination of Free and Open Source resources: the Apertium
+    platform and the Giellatekno HFST lexicon and Constraint Grammar
+    disambiguator.
+    \comment{more}
+    We detail the integration of these and other resources in the
+    system along with the construction of the lexical and structural
+    transfer, and evaluate the translation quality in comparison with
+    another system. Finally, some future work is suggested.
+  \end{abstract}
+
+\section{Introduction}
+Northern Sámi (sme) is an Uralic language spoken by about 20,000
+people in the northern parts of Norway, Sweden and Finland. Norwegian
+Bokmål (nob) is a North Germanic language with about 4.5 speakers,
+mostly in Norway.
+
+Most sme speakers in Norway understand nob, while most nob speakers do
+not understand sme. The languages are completely unrelated, and the
+linguistic distance is great, making it hard to achieve high quality.
+A nob→sme system would only be useful if the quality were good enough
+that it could be used for text production (post-editing). On the other
+hand, a sme→nob gisting-quality system can be useful for the large
+group of nob speakers who don't understand sme. Thus we chose to focus
+on the sme→nob direction first.
+
+
+
+
+\section{Design}
+ \label{sec:design}
+\subsection{The Apertium Pipeline}
+\subsection{HFST}
+
+
+\section{Development}
+
+  \label{sec:development}
+\subsection{Resources}
+
+\subsection{Analysis and generation}
+
+\subsection{Disambiguation}
+\subsection{Lexical selection}
+
+\subsection{Lexical transfer}
+
+\subsection{Structural transfer}
+\label{sec:structural-transfer}
+
+\section{Evaluation}
+\label{sec:eval}
+
+
+
+\subsection{Word Error Rate on Post-Edited text}
+\label{sec:WER}
+\comment{or at least on scraped web sites ...}
+\subsection{Gisting eval}
+
+
+\subsection{Error analysis}
+
+\section{Discussion and outlook}
+
+\section*{Acknowledgements}
+Development was funded by \comment{what are they called now?}
+Thanks to N.N.
+
+
+\nocite{zubizarreta2009amt}
+
+\bibliographystyle{apalike}
+\bibliography{apertium}
+
+\end{document}
