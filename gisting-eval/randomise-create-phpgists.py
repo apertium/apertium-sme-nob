@@ -1,69 +1,104 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8; -*-
 
-#$ tr ' ' '\n' < ../WER/eu.MT |grep '^[a-zæøåéêèóôò][a-zæøåéêèóôò]*$' > words
+import sys, re, random
 
-# then for each line that has an entry in words, add 7 random
-# alternatives from words to it.
+# Constants:
+LEN_DIFF=1 # maximum difference in length between alternatives and correct answer
+MIN_LEN=6  # minimum length of words to pick
+N_ALT=4    # including the right answer we get N_ALT+1
 
-import sys,re, random
+TRICK_RATIO=0.1        # chance of a question having no correct answer
 
-
-LEN_DIFF=1
-MIN_LEN=6
-N_ALT=4                         # these plus the right answer
-
-all_words = set()
-all_lines = []
-
-
-
-def gistise(lines):
-    for line_num,(filename,l) in enumerate(lines):
-        tokens = l.split(' ')
-        answer = None
-        can_substitute=[(i,t) for i,t in enumerate(tokens)
-                        if t in all_words]
-        if can_substitute:
-            random.shuffle(can_substitute)
-            i,answer=can_substitute[0]
-
-            candidates = [c for c in all_words
-                          if  len(c)>=len(answer)-LEN_DIFF
-                          and len(c)<=len(answer)+LEN_DIFF]
-            random.shuffle(candidates)
-            alternatives = candidates[0:N_ALT] + [answer]
-            random.shuffle(alternatives)
-
-            html = "<div class=\"par\"><div>%s</div><div>\n%s\n</div><div>%s</div></div>" % (
-                ' '.join(tokens[:i]),
-                "<br/>\n".join(
-                    ['\t<input type="radio" name="s%s" id="s%s_%s" value="%s" class="nice"></input><label for="s%s_%s" class="nice radio">%s</label>' % (
-                            line_num, line_num, a_i, a, line_num, a_i, a)
-                     for a_i,a in enumerate(alternatives)] ),
-                ' '.join(tokens[i+1:]).rstrip()
-                )
-        else:
-            html = "<div class=\"par\"><div>%s</div></div>" %(' '.join(tokens))
-        print "//s%s,%s,%s"%(line_num,answer,filename)
-        print "$q[]=array('%s', 's%s', '%s', '%s');" % (filename, line_num, answer, html.replace("'","&apos;"))
+WINDOW_LEN=60           # number of words to show each time
+WINDOW_OVERLAP=20       # maximum overlap between two paragraphs shown
+Q_PER_WINDOW=5          # number of questions to create within each
+                        # shown paragraph
 
 
 
+
+
+def token_html(window_choices, q_i, t, line_num):
+    if q_i in window_choices:
+        return "\n%s\n" % "<br/>\n".join(
+            ['\t<input type="radio" name="w%s_q%s" id="w%s_q%s_%s" value="%s" class="nice"></input><label for="w%s_q%s_%s" class="nice radio">%s</label>' % (
+                    line_num, q_i,      # name
+                    line_num, q_i, c_i, # id
+                    c,                  # value
+                    line_num, q_i, c_i, # for
+                    c,                  # shown value
+                    )
+             for c_i,c in enumerate(window_choices[q_i])] )
+    else:
+        return t.replace("'","&apos;")
+
+def gistise(all_windows, all_candidates):
+    for win_num,(filename,tokens) in enumerate(all_windows):
+        answers = []
+        can_substitute=[ (i,t) for i,t in enumerate(tokens)
+                         if t in all_candidates
+                         # picking the first/last ones is mean:
+                         and i>2 and i<len(tokens)-2 ]
+
+        if len(can_substitute) < Q_PER_WINDOW:
+            continue
+
+        random.shuffle(can_substitute)
+        window_choices = {}
+        answers = can_substitute[0:Q_PER_WINDOW]
+
+        for i,correct in answers:
+            wrong = [c for c in all_candidates
+                     if c != correct
+                     and len(c)>=len(correct)-LEN_DIFF
+                     and len(c)<=len(correct)+LEN_DIFF]
+            random.shuffle(wrong)
+            if random.random() < TRICK_RATIO:
+                choice = wrong[0:N_ALT + 1]
+            else:
+                choice = wrong[0:N_ALT]+[correct]
+                random.shuffle(choice)
+            window_choices[i]=choice + ['(ingen passer)']
+
+        html = '<div class="par">\n'
+        last = 0
+        for i in sorted(window_choices.keys()):
+            if last < len(tokens):
+                html += "<div>%s</div>\n" % ' '.join(tokens[last:i]).replace("'", "&apos;")
+            html += "<div>%s</div>\n" % token_html(window_choices, i, tokens[i], win_num)
+            last = i+1
+        if last < len(tokens):
+            html += "<div>%s</div>\n" % ' '.join(tokens[last:]).replace("'", "&apos;")
+        html += "\n</div>"
+
+        for i,a in answers:
+            print "//w%s,q%s,%s,%s"%(win_num,i,a,filename)
+
+        print "$paragraphs['w%s']=array('%s', %s, '%s');" % (
+            win_num,
+            filename,
+            "array(%s)" % ','.join(["'q%s'=>'%s'" % (i,a) for i,a in answers]),
+            html)
+
+
+
+all_candidates = set()
+all_windows = []
 for f in sys.argv[1:]:
-    lines = open(f).readlines()
-    for l in lines:
-        sublines = l.split('. ')
-        for sl in sublines:
-            all_lines.append((f,sl.replace('*','')))
-            sl = re.sub('[.,()]', '', sl)
-            w = [t for t in sl.split()
-                 if re.match('^[a-zæøåéêèóôò]+$', t)
-                 and len(t)>=MIN_LEN]
-            all_words = all_words.union(w)
+    slurp = open(f).read()
 
-print '<?php $q=array();'
-gistise(all_lines)
+    candidates = [w for w in re.sub('[,()]|[.]$', '', slurp).split()
+                  if re.match('^[a-zæøåéêèóôò]+$', w)
+                  and len(w)>=MIN_LEN]
+    all_candidates = all_candidates.union(candidates)
+
+    words = slurp.replace('*','').split()
+    all_windows.extend([ (f,words[i:i+WINDOW_LEN])
+                         for i in range(0, len(words), WINDOW_LEN-WINDOW_OVERLAP) ])
+
+print '<?php $paragraphs=array();'
+gistise(all_windows, all_candidates)
 print '?>'
 
 
@@ -77,3 +112,9 @@ print '?>'
 # $ grep    'nob$' results.csv.parsed | grep -c '^correct'
 # 23
 # (ie. 36/44 for sme-nob, 23/24 for reference)
+
+# TODO: candidates from the same PoS or not? Same PoS wouldn't catch
+# grammar bugs, would it?
+
+# TODO: Multiple Choice position bias, could simply show answers twice
+# with different orders. Or find another system to compare with ...
