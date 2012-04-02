@@ -1,9 +1,9 @@
 \newcommand{\comment}[1]{\textbf{SKRIV} {\it #1}}
 %\renewcommand{\comment}[1]{} % uncomment for final version
 
-\newcommand{\href}[1]{{\tt #1}} % put hyperref in preamble? TODO
+\newcommand{\href}[2]{{\tt #1}} % put hyperref in preamble? TODO
 
-\achapter{apertium-sme-nob:using an HFST lexicon in a long-distance RBMT system}{The Author}
+\achapter{apertium-sme-nob:using an HFST lexicon in a long-distance RBMT system}{N.N.}
 
 
   
@@ -60,8 +60,8 @@ analysis and generation; lttoolbox dictionaries are written in XML,
 where one dictionary be compiled both to an analyser and a generator.
 This pair uses lttoolbox for nob generation, but the sme analyser is
 written in the Xerox lexc/twol format\citep{beesley2003fsm}. We use
-the FOSS package HFST\comment{cite} to compile and run the analyser
-(see section \ref{sec:hfst}).
+the FOSS package Helsinki Finite State Tools (HFST) \comment{cite} to
+compile and run the analyser (see section \ref{sec:hfst}).
 
 The morphological analysis gives us ambiguous output with no syntactic
 information. For morphological (e.g.~part-of-speech) disambiguation,
@@ -70,7 +70,7 @@ selection\footnote{Similar to Word Sense Disambiguation, but
   restricted to senses that have differing translations.}, we use
 Constraint Grammar \citep{karlsson1990cgf}\footnote{Using the FOSS
   package {\tt \small VISL CG-3},
-  \href{http://beta.visl.sdu.dk/cg3.html}}. Morphological
+  \href{http://beta.visl.sdu.dk/cg3.html}{http://beta.visl.sdu.dk/cg3.html}}. Morphological
 disambiguation and syntactic annotation/disambiguation are run as one
 CG module, the output of which is unambiguous both morphologically
 (one analysis per form) and syntactically (each form/analysis is
@@ -96,21 +96,43 @@ various document types.
 
 \subsection{HFST}
 \label{sec:hfst}
-One novel feature of apertium-sme-nob is the use of 
+One novel feature of apertium-sme-nob is the HFST-based analyser. HFST
+makes it possible to compile lexicons and morphologies originally
+written for the closed-source Xerox Finite State Tools using only free
+and open source tools, and run them with Apertium-compatible output
+formats. The sme analyser is written in the Xerox-based lexc and twol
+formalisms. HFST analysers are slower at compiling and processing than
+lttoolbox, but certain morphological phenomena are impossible or at
+least very hard to describe in lttoolbox. Since Northern Sámi is quite
+morphologically complex, a purely lttoolbox-based analyser would be
+difficult to maintain.
+
 \section{Development}
   \label{sec:development}
 
+This section describes how the language pair was developed.
 \subsection{Resources}
+We re-used several FOSS resources in creating this language pair. The
+nob generator came from {\tt apertium-nn-nb}\citep{unhammer2009rfr},
+while most of the sme resources came from N.N.\footnote{See
+  \href{http://example.com}{http://example.com}.} \comment{Sámi
+  Giellatekno at the University of Tromsø}, including the
+lexicon/morphology and disambiguator/syntactic annotation CG. These
+were continually updated as the ``upstream'' versions changed.
 
-\subsection{Analysis and generation}
+\subsection{Analysis}
+As mentioned, the 
 
 \subsection{Disambiguation}
 \subsection{Lexical selection}
+The lexical selection CG was written from scratch.
 
 \subsection{Lexical transfer}
 
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
+
+\subsection{Generation}
 
 \section{Evaluation}
 \label{sec:eval}
