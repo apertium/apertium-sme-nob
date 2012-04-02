@@ -9,7 +9,7 @@
     % \begin{abstract}
     We describe the development of a rule-based machine translation
     system from Northern Sámi to Norwegian Bokmål built on a
-    combination of Free and Open Source resources: the Apertium
+    combination of Free and Open Source (FOSS) resources: the Apertium
     platform and the Giellatekno HFST lexicon and Constraint Grammar
     disambiguator.
     \comment{more}
@@ -41,9 +41,65 @@ sme$\rightarrow{}$nob direction first.
 
 \section{Design}
  \label{sec:design}
-\subsection{The Apertium Pipeline}
-\subsection{HFST}
 
+
+
+\subsection{The Apertium Pipeline}
+Apertium is a highly modular, shallow-transfer pipeline MT system. The
+typical pipeline consist of source language analysis with a finite
+state transducer (FST), followed by disambiguation using a Hidden
+Markov Model (HMM) and/or Constraint Grammar (CG), then lexical
+transfer (word-translation on the disambiguated source) and one or
+more levels of structural transfer (ie.~reordering and changes to
+morphological features), followed by target-language generation with
+an FST.
+
+Most Apertium language pairs use the lttoolbox FST package for
+analysis and generation; lttoolbox dictionaries are written in XML,
+where one dictionary be compiled both to an analyser and a generator.
+This pair uses lttoolbox for nob generation, but the sme analyser is
+written in the Xerox lexc/twol format\citep{beesley2003fsm}. We use
+the FOSS package HFST\comment{cite} to compile and run the analyser
+(see sec.~\ref{sec:hfst}).
+
+For disambiguation, syntactic annotation and lexical selection, we use
+Constraint Grammar \citep{karlsson1990cgf}\footnote{Using {\tt \small
+    VISL CG-3}, \tt{http://beta.visl.sdu.dk/cg3.html} \comment{href
+    todo}}
+
+This is followed by
+pretransfer, four-stage chunk-based transfer and lttoolbox generation.
+
+
+
+Dictionaries written in either the lttoolbox XML format or the Xerox
+lexc format are compiled into finite state transducers, so that
+word-for-word translations are in principle possible in both
+directions using only two monolingual dictionaries (morphological
+analysis/generation) and one translational (transfer) dictionary.
+
+
+
+For disambiguation and syntactic annotation, we use Constraint
+Grammar, CG. A CG
+\citep{karlsson1990cgf} consists of hand-written rules \comment{...}
+
+If the CG leaves us ambiguity, we simply choose the first
+analysis\footnote{We plan on training an HMM to get rid of leftover
+  ambiguity}.
+
+
+The transfer module is finite state based and handles three-stage
+chunking transfer, although we so far only use one-stage transfer,
+applying operations directly on patterns of morphological categories
+(described in further detail in section
+\ref{sec:structural-transfer}). Output from the transfer module is fed
+to morphological generation. De-/reformatters applied to the beginning
+and end of the pipeline let us preserve formatting of various document
+types.
+
+\subsection{HFST}
+\label{sec:hfst}
 
 \section{Development}
 
