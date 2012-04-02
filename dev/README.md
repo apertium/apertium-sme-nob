@@ -1,19 +1,7 @@
 README for apertium-sme-nob/dev
 ===============================
 
-The files in this directory are used for development purposes, with
-three exceptions.
-
-The following files are all needed for compilation:
----------------------------------------------------
-
-- `xfst2apertium.hashtags.twol`
-- `xfst2apertium.relabel`
-- `xfst2apertium.useless.twol`
-
-(TODO: move into main dir maybe?)
-
-The rest of the files in dev/ are "development files".
+The files in this directory are used for development purposes.
 
 
 Scripts for keeping up-to-date with the Giellatekno resources:

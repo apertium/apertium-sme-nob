@@ -38,11 +38,11 @@ $(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
 $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
 	hfst-compose-intersect -1 $(LANG1).lexc.hfst -2 $(LANG1).twol.hfst -o $@
 
-.deps/xfst2apertium.useless.twol.hfst: dev/xfst2apertium.useless.twol
+.deps/xfst2apertium.useless.twol.hfst: xfst2apertium.useless.twol
 	if [ ! -d .deps ]; then mkdir .deps; fi
 	hfst-twolc -R -i $< -o $@
 
-.deps/xfst2apertium.hashtags.twol.hfst: dev/xfst2apertium.hashtags.twol
+.deps/xfst2apertium.hashtags.twol.hfst: xfst2apertium.hashtags.twol
 	if [ ! -d .deps ]; then mkdir .deps; fi
 	hfst-twolc -R -i $< -o $@
 
@@ -58,8 +58,8 @@ $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
 	if [ ! -d .deps ]; then mkdir .deps; fi
 	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.useless.hfst -2 .deps/xfst2apertium.hashtags.twol.hfst -o $@
 
-$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst dev/xfst2apertium.relabel
-	hfst-substitute -F dev/xfst2apertium.relabel -i .deps/$(PREFIX1).automorf.hashtags.hfst -o $@
+$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst xfst2apertium.relabel
+	hfst-substitute -F xfst2apertium.relabel -i .deps/$(PREFIX1).automorf.hashtags.hfst -o $@
 
 $(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
 	hfst-fst2fst -O -i $< -o $@
@@ -175,6 +175,9 @@ EXTRA_DIST=\
 	$(BASENAME).$(PREFIX1).t2x \
 	$(BASENAME).$(PREFIX1).t3x \
 	$(BASENAME).$(PREFIX1).t4x \
+	xfst2apertium.useless.twol \
+	xfst2apertium.hashtags.twol \
+	xfst2apertium.relabel \
 	modes.xml 
 
 
