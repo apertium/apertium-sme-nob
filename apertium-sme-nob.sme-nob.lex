@@ -2085,8 +2085,8 @@ SUBSTITUTE ("johtu") ("johtu:2") ("johtu" N Sg) (0 Ill) ;
 SUBSTITUTE ("stuibmi") ("stuibmi:1") ("stuibmi" N Sg) (-1 ("Álta") OR ("Álaheadju")) ;
 # til farten => i gang
 
-# goddi 0 = villrein, 1 = komite
-SUBSTITUTE (+goddi) (+goddi:1) (+goddi) ; # as a compound part
+# goddi 0 = komite, 1 = villrein
+SUBSTITUTE ("goddi") ("goddi:1") ("goddi") (NOT 0/1 (*)) ;
 
 
 # diehtu 0 = informasjon, 1 = kunnskap, 2 = viten, 3 = beskjed
