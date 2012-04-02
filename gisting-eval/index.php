@@ -1,11 +1,20 @@
 <?php
+require_once('gists.php');
 
 foreach ($_POST as $k => $v) {
-	/* Ensure the directory is writable by httpd/apache: */
-	$out = shell_exec("echo \"$k,$v\" >> /poormansdb/results.csv");
+	/* Add filename and answer here so it's easier to check the results: */
+	$filename='';
+	$answer='';
+	foreach($q as $gist) {
+		if($k==$gist[1]) {
+			$filename=$gist[0];
+			$answer=$gist[2];
+			break;
+		}
+	}
+	/* Ensure this directory is writable by httpd/apache: */
+	$out = shell_exec("echo \"$k,$v,$answer,$filename\" >> /poormansdb/results.csv");
 }
-
-require_once('gists.php')
 
 ?>
 <!DOCTYPE html
@@ -91,7 +100,7 @@ div {float:left;}
 $to_show=5;
 $i=0;
 $offset=rand(0,intval(count($q)/$to_show))*$to_show;
-for($i=$offset; $i< $offset+$to_show && $i < count($q); $i++) {
+for($i=$offset; $i< $offset+$to_show && $i < count($q)-5; $i++) {
 	echo($q[$i][3]);
 	echo("\n");
 }

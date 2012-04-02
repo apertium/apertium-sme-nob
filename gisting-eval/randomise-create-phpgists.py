@@ -38,8 +38,8 @@ def gistise(lines):
             html = "<div class=\"par\"><div>%s</div><div>\n%s\n</div><div>%s</div></div>" % (
                 ' '.join(tokens[:i]),
                 "<br/>\n".join(
-                    ['\t<input type="radio" name="s%s" id="s%s_%s" value="%s,%s" class="nice"></input><label for="s%s_%s" class="nice radio">%s</label>' % (
-                            line_num, line_num, a_i, a, filename, line_num, a_i, a)
+                    ['\t<input type="radio" name="s%s" id="s%s_%s" value="%s" class="nice"></input><label for="s%s_%s" class="nice radio">%s</label>' % (
+                            line_num, line_num, a_i, a, line_num, a_i, a)
                      for a_i,a in enumerate(alternatives)] ),
                 ' '.join(tokens[i+1:]).rstrip()
                 )
