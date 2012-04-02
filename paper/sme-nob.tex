@@ -162,12 +162,49 @@ word-lists from
 N.N.\footnote{\href{http://example.com}{http://example.com}}
 \comment{was Vuosttaš Digisánit used?}, but expanded throughout
 development.
-\subsection{Analysis}
+\subsection{Analysis and derivational morphology}
 The morphological analyser from N.N.\comment{Giellatekno} was not
 originally made with machine translation in mind, and we had to make
-several modifications.
+several modifications, from using the Apertium tag format, to
+restricting derivational morphology and removing root forms without
+translations.
 
-The original analyser defines many rules for derivational processes.
+We trim the lexicon \comment{more}
+
+The original analyser defines quite a lot of rules for derivational
+processes. Allowing for derivational morphology expands the coverage
+of the analyser without having to add new root forms, but also makes
+transfer much harder to deal with, as well as most of the time giving
+very odd-sounding translations.
+
+To give an example of the latter, `geafivuohta' is an
+adjective$\rightarrow{}$noun derivation of `geafi', meaning `poor'.
+Simply carrying over the information that this is an
+adjective$\rightarrow{}$noun derivation into the target language
+dictionary (if that dictionary also defined derivational processes)
+could give us forms that sound like `poorness' or `poority' or
+`poordom', whereas giving `geafivuohta' status as a real root form
+would let us specify that `geafivuohta' should translate to `poverty'.
+
+However, since \smenob is meant for gisting, where an odd-sounding
+translation is more understandable than an untranslated word, we
+decided to allow certain derivations. We define legal derivations by
+the use of twol rules which simply forbid analyses containing certain
+tags or tag sequences. This twol file is composed onto the main
+analyser.\comment{more}
+
+A causative verb derivation requires transfer rules that turn the
+causative verb into a periphrastic construction ('let NP VERB'). If a
+derivation changes the part-of-speech from verb to noun, we have to
+translate the derivation into a certain verb form that looks like a
+noun (e.g.~present tense of \nob verbs will most of the time look like
+an actor noun)\footnote{The alternative would be to define, for each
+  \sme verb, both a noun and a verb translation on the \nob side of
+  the translational dictionary, but this takes away the whole point of
+  increasing coverage without adding all the root forms.}
+
+
+
 
 \subsection{Disambiguation}
 \subsection{Lexical selection}
