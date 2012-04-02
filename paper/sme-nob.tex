@@ -1,6 +1,7 @@
 \newcommand{\comment}[1]{\textbf{SKRIV} {\it #1}}
 %\renewcommand{\comment}[1]{} % uncomment for final version
 
+\newcommand{\href}[1]{{\tt #1}} % put hyperref in preamble? TODO
 
 \achapter{apertium-sme-nob:using an HFST lexicon in a long-distance RBMT system}{The Author}
 
@@ -60,50 +61,45 @@ where one dictionary be compiled both to an analyser and a generator.
 This pair uses lttoolbox for nob generation, but the sme analyser is
 written in the Xerox lexc/twol format\citep{beesley2003fsm}. We use
 the FOSS package HFST\comment{cite} to compile and run the analyser
-(see sec.~\ref{sec:hfst}).
+(see section \ref{sec:hfst}).
 
-For disambiguation, syntactic annotation and lexical selection, we use
-Constraint Grammar \citep{karlsson1990cgf}\footnote{Using {\tt \small
-    VISL CG-3}, \tt{http://beta.visl.sdu.dk/cg3.html} \comment{href
-    todo}}
+The morphological analysis gives us ambiguous output with no syntactic
+information. For morphological (e.g.~part-of-speech) disambiguation,
+syntactic annotation/disambiguation and lexical
+selection\footnote{Similar to Word Sense Disambiguation, but
+  restricted to senses that have differing translations.}, we use
+Constraint Grammar \citep{karlsson1990cgf}\footnote{Using the FOSS
+  package {\tt \small VISL CG-3},
+  \href{http://beta.visl.sdu.dk/cg3.html}}. Morphological
+disambiguation and syntactic annotation/disambiguation are run as one
+CG module, the output of which is unambiguous both morphologically
+(one analysis per form) and syntactically (each form/analysis is
+annotated with one syntactic tag). 
 
-This is followed by
-pretransfer, four-stage chunk-based transfer and lttoolbox generation.
+The first CG module is directly followed by a lexical selection CG
+module\footnote{If the disambiguation rules leaves any ambiguity, that
+  module is configured only print the first analysis. We may later
+  train an HMM to get rid of leftover ambiguity, this would go between
+  the two CG modules.}, which may add subscripts to lemmas in certain
+contexts in order to select a different lexical translation. 
 
+Lexical selection is followed by pretransfer (minor format changes in
+preparation of transfer) and then a four-stage finite-state-based
+chunking transfer. The first stage handles lexical transfer as well as
+chunking based on patterns of morphological and syntactic tags
+(further detail in section \ref{sec:structural-transfer}).
 
-
-Dictionaries written in either the lttoolbox XML format or the Xerox
-lexc format are compiled into finite state transducers, so that
-word-for-word translations are in principle possible in both
-directions using only two monolingual dictionaries (morphological
-analysis/generation) and one translational (transfer) dictionary.
-
-
-
-For disambiguation and syntactic annotation, we use Constraint
-Grammar, CG. A CG
-\citep{karlsson1990cgf} consists of hand-written rules \comment{...}
-
-If the CG leaves us ambiguity, we simply choose the first
-analysis\footnote{We plan on training an HMM to get rid of leftover
-  ambiguity}.
-
-
-The transfer module is finite state based and handles three-stage
-chunking transfer, although we so far only use one-stage transfer,
-applying operations directly on patterns of morphological categories
-(described in further detail in section
-\ref{sec:structural-transfer}). Output from the transfer module is fed
-to morphological generation. De-/reformatters applied to the beginning
-and end of the pipeline let us preserve formatting of various document
-types.
+Output from the transfer module is fed to morphological generation
+with the lttoolbox-based nob generator. De-/reformatters applied to
+the beginning and end of the pipeline let us preserve formatting of
+various document types.
 
 \subsection{HFST}
 \label{sec:hfst}
-
+One novel feature of apertium-sme-nob is the use of 
 \section{Development}
-
   \label{sec:development}
+
 \subsection{Resources}
 
 \subsection{Analysis and generation}
