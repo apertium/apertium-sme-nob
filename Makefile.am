@@ -178,6 +178,7 @@ EXTRA_DIST=\
 	xfst2apertium.useless.twol \
 	xfst2apertium.hashtags.twol \
 	xfst2apertium.relabel \
+	lexchoicebil.xsl \
 	modes.xml 
 
 
@@ -185,7 +186,6 @@ apertium_sme_nobdir=$(prefix)/share/apertium/$(BASENAME)/
 apertium_sme_modesdir=$(prefix)/share/apertium/modes/
 
 apertium_sme_nob_DATA=$(TARGETS_COMMON) \
-                    $(PREFIX1).prob \
 		    modes.xml
 
 noinst_DATA=modes/$(PREFIX1).mode 
