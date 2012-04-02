@@ -1,7 +1,15 @@
-\newcommand{\comment}[1]{\textbf{SKRIV} {\it #1}}
+\newcommand{\comment}[1]{\textbf{TODO:~#1}}
 %\renewcommand{\comment}[1]{} % uncomment for final version
 
+% TODO:
+%\usepackage[utf8x]{inputenc}
+
 \newcommand{\href}[2]{{\tt #1}} % put hyperref in preamble? TODO
+
+\newcommand{\sme}{{\tt sme}}
+\newcommand{\nob}{{\tt nob}}
+\newcommand{\smenob}{\sme$\rightarrow{}$\nob}
+\newcommand{\nobsme}{\nob$\rightarrow{}$\sme}
 
 \achapter{apertium-sme-nob:using an HFST lexicon in a long-distance RBMT system}{N.N.}
 
@@ -24,44 +32,70 @@
 
 
 \section{Introduction}
-Northern Sámi (sme) is an Uralic language spoken by about 20,000
-people in the northern parts of Norway, Sweden and Finland. Norwegian
-Bokmål (nob) is a North Germanic language with about 4.5 speakers,
-mostly in Norway.
+This paper describes the development of a rule-based machine
+translation system from Northern Sámi to Norwegian Bokmål, re-using
+several existing free and open source resources. \comment{Roadmap}
 
-Most sme speakers in Norway understand nob, while most nob speakers do
-not understand sme. The languages are completely unrelated, and the
-linguistic distance is great, making it hard to achieve high quality.
-A nob$\rightarrow{}$sme system would only be useful if the quality
-were good enough that it could be used for text production
-(post-editing). On the other hand, a sme$\rightarrow{}$nob
-gisting-quality system can be useful for the large group of nob
-speakers who don't understand sme. Thus we chose to focus on the
-sme$\rightarrow{}$nob direction first.
+\subsection{The Languages}
+Northern Sámi (\sme{}) is a Finno-Ugric language spoken by between
+15,000 and 25,000 people in the northern parts of Norway, Sweden and
+Finland. Norwegian Bokmål (\nob{}) is a North Germanic language with
+about 4.5 speakers, mostly in Norway. Northern Sámi is a highly
+inflected, agglutinative language, whereas Norwegian morphology is
+comparatively simple.
+
+Most \sme{} speakers in Norway understand \nob{}, while most \nob{}
+speakers do not understand \sme{}. The languages are completely
+unrelated, and the linguistic distance is great, making it hard to
+achieve high quality. A \nobsme{} system would only be useful if the
+quality were good enough that it could be used for text production
+(post-editing). On the other hand, a \smenob{} gisting-quality system
+can be useful for the large group of \nob{} speakers who don't
+understand \sme{}. Thus we chose to focus on the \smenob{} direction
+first.
+
+We do not know of other machine translation (MT) systems between \sme
+and any Indo-European language, although \citet{tyers2009dpm} describe
+a prototype system between Northern Sámi and Lule Sámi.
+
 
 
 \section{Design}
  \label{sec:design}
 
-
-
 \subsection{The Apertium Pipeline}
-Apertium is a highly modular, shallow-transfer pipeline MT system. The
-typical pipeline consist of source language analysis with a finite
-state transducer (FST), followed by disambiguation using a Hidden
-Markov Model (HMM) and/or Constraint Grammar (CG), then lexical
-transfer (word-translation on the disambiguated source) and one or
-more levels of structural transfer (ie.~reordering and changes to
-morphological features), followed by target-language generation with
-an FST.
+This language pair is based on the Apertium MT
+platform\citep{forcada2011afp}. Apertium provides a highly modular,
+shallow-transfer pipeline MT engine, as well as data for language
+pairs. Both the engine and the data for all language pairs (about 30
+released pairs as of now) are licensed under the
+GPL\footnote{\href{http://www.fsf.org/licensing/licenses/gpl.html}{http://www.fsf.org/licensing/licenses/gpl.html}}.
+
+Apertium language pairs are defined by Unix pipelines, where the
+typical pipeline consists of:
+
+\begin{itemize}
+\item deformatting (hiding format information or markup from the
+  engine),
+\item source language morphological analysis with a finite state
+  transducer (FST),
+\item disambiguation using a Hidden Markov Model (HMM) and/or
+  Constraint Grammar (CG), 
+\item lexical transfer (word-translation on the disambiguated source),
+\item one and one or more levels of structural transfer
+  (ie.~reordering and changes to morphological features), 
+\item target-language generation with an FST
+\item reformatting (letting format information be shown again)
+\end{itemize}
 
 Most Apertium language pairs use the lttoolbox FST package for
-analysis and generation; lttoolbox dictionaries are written in XML,
-where one dictionary be compiled both to an analyser and a generator.
-This pair uses lttoolbox for nob generation, but the sme analyser is
-written in the Xerox lexc/twol format\citep{beesley2003fsm}. We use
-the FOSS package Helsinki Finite State Tools (HFST) \comment{cite} to
-compile and run the analyser (see section \ref{sec:hfst}).
+analysis and generation. The lttoolbox dictionaries are written in
+XML, where one dictionary may be compiled both to an analyser and a
+generator. The \smenob{} pair uses lttoolbox for \nob{}
+generation, while the \sme{} analyser is written in the Xerox lexc/twol
+format\citep{beesley2003fsm}. We use the FOSS package Helsinki Finite
+State Tools, HFST \citep{linden2011hfst} to compile and run the
+analyser (see section \ref{sec:hfst}).
 
 The morphological analysis gives us ambiguous output with no syntactic
 information. For morphological (e.g.~part-of-speech) disambiguation,
@@ -70,11 +104,11 @@ selection\footnote{Similar to Word Sense Disambiguation, but
   restricted to senses that have differing translations.}, we use
 Constraint Grammar \citep{karlsson1990cgf}\footnote{Using the FOSS
   package {\tt \small VISL CG-3},
-  \href{http://beta.visl.sdu.dk/cg3.html}{http://beta.visl.sdu.dk/cg3.html}}. Morphological
-disambiguation and syntactic annotation/disambiguation are run as one
-CG module, the output of which is unambiguous both morphologically
-(one analysis per form) and syntactically (each form/analysis is
-annotated with one syntactic tag). 
+  \href{http://beta.visl.sdu.dk/cg3.html}{http://beta.visl.sdu.dk/cg3.html}}.
+Morphological disambiguation and syntactic annotation/disambiguation
+are run as one CG module, the output of which is unambiguous both
+morphologically (one analysis per form) and syntactically (each
+form/analysis is annotated with one syntactic tag).
 
 The first CG module is directly followed by a lexical selection CG
 module\footnote{If the disambiguation rules leaves any ambiguity, that
@@ -90,7 +124,7 @@ chunking based on patterns of morphological and syntactic tags
 (further detail in section \ref{sec:structural-transfer}).
 
 Output from the transfer module is fed to morphological generation
-with the lttoolbox-based nob generator. De-/reformatters applied to
+with the lttoolbox-based \nob{} generator. De-/reformatters applied to
 the beginning and end of the pipeline let us preserve formatting of
 various document types.
 
@@ -100,10 +134,12 @@ One novel feature of apertium-sme-nob is the HFST-based analyser. HFST
 makes it possible to compile lexicons and morphologies originally
 written for the closed-source Xerox Finite State Tools using only free
 and open source tools, and run them with Apertium-compatible output
-formats. The sme analyser is written in the Xerox-based lexc and twol
-formalisms. HFST analysers are slower at compiling and processing than
-lttoolbox, but certain morphological phenomena are impossible or at
-least very hard to describe in lttoolbox. Since Northern Sámi is quite
+formats. The \sme{} analyser is written in the Xerox-based
+\textbf{lexc} and \textbf{twol} formalisms. HFST analysers are slower
+at compiling and processing than lttoolbox, but certain morphological
+phenomena, especially non-concatenative phenomena \comment{e.g. \sme
+  consonant gradation?} are impossible---or at least very
+difficult---to describe in lttoolbox. Since Northern Sámi is quite
 morphologically complex, a purely lttoolbox-based analyser would be
 difficult to maintain.
 
@@ -113,19 +149,29 @@ difficult to maintain.
 This section describes how the language pair was developed.
 \subsection{Resources}
 We re-used several FOSS resources in creating this language pair. The
-nob generator came from {\tt apertium-nn-nb}\citep{unhammer2009rfr},
-while most of the sme resources came from N.N.\footnote{See
-  \href{http://example.com}{http://example.com}.} \comment{Sámi
-  Giellatekno at the University of Tromsø}, including the
+\nob{} generator came from {\tt apertium-nn-nb}\citep{unhammer2009rfr},
+while most of the \sme{} resources came from N.N.\footnote{See
+ \href{http://example.com}{http://example.com}.} \comment{Sámi
+  Giellatekno at the University of Tromsø, ref?}, including the
 lexicon/morphology and disambiguator/syntactic annotation CG. These
 were continually updated as the ``upstream'' versions changed.
 
+The lexical selection CG and the transfer rules were written from
+scratch. The translation lexicon was originally based on various
+word-lists from
+N.N.\footnote{\href{http://example.com}{http://example.com}}
+\comment{was Vuosttaš Digisánit used?}, but expanded throughout
+development.
 \subsection{Analysis}
-As mentioned, the 
+The morphological analyser from N.N.\comment{Giellatekno} was not
+originally made with machine translation in mind, and we had to make
+several modifications.
+
+The original analyser defines many rules for derivational processes.
 
 \subsection{Disambiguation}
 \subsection{Lexical selection}
-The lexical selection CG was written from scratch.
+
 
 \subsection{Lexical transfer}
 
