@@ -22,7 +22,8 @@ foreach ($_POST as $k => $v) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
-div {float:left; margin: 40px 5px;}
+div {float:left; margin: 40px 3px;}
+div.form {margin-top:-20px;}
 .par {float:none;clear:both;}
 
 </style>

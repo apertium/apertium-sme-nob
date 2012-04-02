@@ -8,7 +8,7 @@ LEN_DIFF=1 # maximum difference in length between alternatives and correct answe
 MIN_LEN=6  # minimum length of words to pick
 N_ALT=4    # including the right answer we get N_ALT+1
 
-TRICK_RATIO=0.1        # chance of a question having no correct answer
+TRICK_RATIO=0.05        # chance of a question having no correct answer
 
 WINDOW_LEN=60           # number of words to show each time
 WINDOW_OVERLAP=20       # maximum overlap between two paragraphs shown
@@ -65,11 +65,11 @@ def gistise(all_windows, all_candidates):
         last = 0
         for i in sorted(window_choices.keys()):
             if last < len(tokens):
-                html += "<div>%s</div>\n" % ' '.join(tokens[last:i]).replace("'", "&apos;")
-            html += "<div>%s</div>\n" % token_html(window_choices, i, tokens[i], win_num)
+                html += "<div>%s</div>\n" % ' '.join(tokens[last:i]).replace("'", "&apos;").replace('\\n','</div><div style="clear:both">')
+            html += "<div class=\"form\">%s</div>\n" % token_html(window_choices, i, tokens[i], win_num)
             last = i+1
         if last < len(tokens):
-            html += "<div>%s</div>\n" % ' '.join(tokens[last:]).replace("'", "&apos;")
+            html += "<div>%s</div>\n" % ' '.join(tokens[last:]).replace("'", "&apos;").replace('\\n','</div><div style="clear:both">')
         html += "\n</div>"
 
         for i,a in answers:
@@ -93,7 +93,7 @@ for f in sys.argv[1:]:
                   and len(w)>=MIN_LEN]
     all_candidates = all_candidates.union(candidates)
 
-    words = slurp.replace('*','').split()
+    words = slurp.replace('*','').replace('\n',' \\n ').split()
     all_windows.extend([ (f,words[i:i+WINDOW_LEN])
                          for i in range(0, len(words), WINDOW_LEN-WINDOW_OVERLAP) ])
 
