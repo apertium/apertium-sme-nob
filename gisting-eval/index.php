@@ -1,14 +1,21 @@
 <?php
 require_once('gists.php');
 
+$MAX=10;		     /* how many questions to ask each user */
+
 session_start();
 // Use $HTTP_SESSION_VARS with PHP 4.0.6 or less
 if (!isset($_SESSION['user'])) {
 	$_SESSION['user'] = rand();
 }
 $user = $_SESSION['user'];
-session_write_close(); 
 
+$i = 0;
+if (isset($_SESSION['i'])) {
+	$i = $_SESSION['i'];
+}
+
+$answered = 0;
 foreach ($_POST as $k => $v) {
 	/* Add filename and answer here so it's easier to check the results: */
 	$k_a = explode('_', $k);
@@ -20,9 +27,14 @@ foreach ($_POST as $k => $v) {
 		$answer=$gist[1][$q];
 		/* Ensure this directory is writable by httpd/apache: */
 		$out = shell_exec("echo \"$l,$q,$v,$answer,$filename,$user\" >> /poormansdb/results.csv");
+		$answered = 1;
 	}
 
 }
+if ($answered==1) { $i++; }
+
+$_SESSION['i'] = $i;
+session_write_close(); 
 
 ?>
 <!DOCTYPE html
@@ -98,24 +110,52 @@ input.nice:checked + label.radio {
     border: solid 1px #999;
 }
 </style>
+<script type="text/javascript">
+function send_if_valid(form)
+{
+	var qs = form.getElementsByClassName('form');
+	for (var i=0; i < qs.length; i++) {
+		var inputs = qs[i].getElementsByTagName('input');
+		var checked = 0;
+		for (var j=0; j < inputs.length; j++) {
+			if (inputs[j].checked) {
+				checked = 1;
+			}
+		}
+		if (checked == 0) {				
+			alert("Du må svare på alle spørsmålene.");
+			qs[i].focus();
+			return false;
+		}
+	}
+	form.submit();
+}
+</script>
+
 
 <title>Apertium-evaluering</title>
 </head>
 <body>
 
+<?php if ($i >= $MAX) : ?>
+<h1>Takk for svarene :)</h1>
+<?php else: ?>
 
-<h2>Velg det du tror er rett ord og klikk «Send inn svar»</h2>
+<h2><?php $show_i=$i+1; echo "$show_i av $MAX";?> – velg det du tror er rett ord og klikk «Send inn svar»</h2>
 
 <form name="theForm" method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
 
 <?php
 
-echo $paragraphs[array_rand($paragraphs)][2];
+$k = array_keys($paragraphs);
+$l = $k[$i];
+echo $paragraphs[$l][2];
 
 ?>
 <div class="par">&nbsp;</div>
-<input class="par" type="button" value="Send inn svar" onclick="document.theForm.submit();" />
+<input class="par" type="button" value="Send inn svar" onclick="return send_if_valid(document.theForm);" />
 <br/><br/>
 </form>
 
+<?php endif; ?>
 </body>
