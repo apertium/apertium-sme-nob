@@ -1,17 +1,25 @@
 <?php
 require_once('gists.php');
 
+session_start();
+// Use $HTTP_SESSION_VARS with PHP 4.0.6 or less
+if (!isset($_SESSION['user'])) {
+	$_SESSION['user'] = rand();
+}
+$user = $_SESSION['user'];
+session_write_close(); 
+
 foreach ($_POST as $k => $v) {
 	/* Add filename and answer here so it's easier to check the results: */
 	$k_a = explode('_', $k);
 	if(count($k_a)==2) {
-		$w = $k_a[0];
+		$l = $k_a[0];
 		$q = $k_a[1];
-		$gist = $paragraphs[$w];
+		$gist = $paragraphs[$l];
 		$filename=$gist[0];
 		$answer=$gist[1][$q];
 		/* Ensure this directory is writable by httpd/apache: */
-		$out = shell_exec("echo \"$k,$v,$answer,$filename\" >> /poormansdb/results.csv");
+		$out = shell_exec("echo \"$l,$q,$v,$answer,$filename,$user\" >> /poormansdb/results.csv");
 	}
 
 }

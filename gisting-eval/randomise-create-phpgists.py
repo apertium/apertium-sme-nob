@@ -137,7 +137,7 @@ for lnum,(lnob,lsme,lmt) in enumerate(zip(noblines,smelines,mtlines)):
     print ""
     for i in sorted(answers.keys()):
         print "//l%s,q%s,%s,%s"%(lnum,i,answers[i],sys.argv[2])
-    print "$paragraphs['w%s']=array('%s', %s, '%s');" % (
+    print "$paragraphs['l%s']=array('%s', %s, '%s');" % (
         lnum,
         sys.argv[2],
         "array(%s)" % ','.join(["'q%s'=>'%s'" % (i,answers[i])
