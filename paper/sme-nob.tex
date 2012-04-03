@@ -181,7 +181,9 @@ of forms that \textit{have} translations, we ``trim'' the analyser
 down to those forms which are in the translational dictionary. To do
 this, we use a script which analyses the lexc source files with the
 translational dictionary, and outputs only those entries which have
-translational analyses (this script runs in <10 seconds).
+translational analyses. The untrimmed source files weigh in at about
+3.5 MB, trimming this down to 2.6 MB is done by a script which runs in
+<10 seconds.
 
 The original analyser defines quite a lot of rules for derivational
 processes. Allowing for derivational morphology expands the coverage
