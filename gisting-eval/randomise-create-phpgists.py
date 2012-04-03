@@ -6,10 +6,15 @@ import itertools, collections
 
 # Constants:
 LEN_DIFF=3 # maximum difference in length between alternatives and correct answer
-MIN_LEN=5  # minimum length of words to pick
+MIN_LEN=4  # minimum length of words to pick
 N_ALT=5    # including the right answer we get N_ALT+1
 
-TRICK_RATIO=0.05        # chance of a question having no correct answer
+MAX_LINE_LEN=15  # no longer lines than this, in words
+MIN_LINE_LEN=5  # no shorter lines than this, in words
+MIN_QUESTIONS=2  # per line
+
+
+TRICK_RATIO=0.00        # chance of a question having no correct answer
 
 TAGS_USE=['<n><m><sg><def>$', '<n><m><sg><ind>$', '<n><m><pl><def>$', '<n><m><pl><ind>$']
 TAGS_BAN=['<pr>', '<vblex>'] # even if a word has TAGS_USE, don't allow it if it has TAGS_BAN
@@ -89,6 +94,8 @@ for lnum,(lnob,lsme,lmt) in enumerate(zip(noblines,smelines,mtlines)):
     choices={}
     answers={}
     tokens = lnob.split()
+    if len(tokens)<MIN_LINE_LEN or len(tokens)>MAX_LINE_LEN:
+        continue
     for (i,w) in enumerate(tokens):
         wrong={}
         trick=bool(random.random() < TRICK_RATIO)
@@ -117,7 +124,7 @@ for lnum,(lnob,lsme,lmt) in enumerate(zip(noblines,smelines,mtlines)):
         choices[i]=choice + ['(ingen som passer)']
         answers[i]=w
 
-    if len(answers) < 1:        # or?
+    if len(answers) < MIN_QUESTIONS:
         continue                # TODO: remove consecutive ones?
 
     html = ''
