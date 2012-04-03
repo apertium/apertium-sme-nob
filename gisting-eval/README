@@ -1,0 +1,18 @@
+# Assuming apache runs as the user www-data:
+$ sudo mkdir /poormansdb
+$ sudo chown www-data /poormansdb
+$ sudo chgrp www-data /poormansdb
+
+# then, from this directory:
+$ cd abc
+$ make
+$ cd ..
+$ cd fyll_inn
+$ make
+$ cd ..
+$ make
+
+# Assuming /var/www is where you keep your web pages:
+$ ln -s `pwd` /var/www/gisting-eval
+
+# or copy it over, or put it in ~/public_html 
