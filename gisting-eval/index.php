@@ -26,7 +26,7 @@ foreach ($_POST as $k => $v) {
 		$filename=$gist[0];
 		$answer=$gist[1][$q];
 		/* Ensure this directory is writable by httpd/apache: */
-		$out = shell_exec("echo \"$l,$q,$v,$answer,$filename,$user\" >> /poormansdb/results.csv");
+		$out = shell_exec("echo \"$l,$q,$v,$answer,$filename,$user\" >> /poormansdb/generated-results.csv");
 		$answered = 1;
 	}
 

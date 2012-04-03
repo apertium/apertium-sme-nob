@@ -1,3 +1,12 @@
+<?php
+session_start();
+// Use $HTTP_SESSION_VARS with PHP 4.0.6 or less
+if (!isset($_SESSION['user'])) {
+	$_SESSION['user'] = rand();
+}
+$user = $_SESSION['user'];
+session_write_close(); 
+?>
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html>
 <head>
@@ -28,7 +37,7 @@ function send_if_valid(form)
 $answered=0;
 foreach ($_POST as $k => $v) {
 	/* Ensure this directory is writable by httpd/apache: */
-	$out = shell_exec("echo \"$k,$v\" >> /poormansdb/spml-results.csv");
+	$out = shell_exec("echo \"$k,$v,$user\" >> /poormansdb/fyll_inn-results.csv");
 	$answered=1;
 }
 if ($answered==1) : ?>
