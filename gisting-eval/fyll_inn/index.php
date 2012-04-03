@@ -1,0 +1,48 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	.spml, .MT { margin-top: 1em;}
+</style>
+<script type="text/javascript">
+function send_if_valid(form)
+{
+	var nodes = form.getElementsByTagName('input');
+	for (var i=0; i < nodes.length; i++) {
+		if (nodes[i].value=="") {
+			alert("Du må svare på alle spørsmålene.");
+			form.q1.focus();
+			return false;
+		}
+	}
+	form.submit();
+}
+</script>
+
+<title>Apertium-evaluering</title>
+</head>
+<body>
+
+<?php
+$answered=0;
+foreach ($_POST as $k => $v) {
+	/* Ensure this directory is writable by httpd/apache: */
+	$out = shell_exec("echo \"$k,$v\" >> /poormansdb/spml-results.csv");
+	$answered=1;
+}
+if ($answered==1) : ?>
+<h1>Takk for svarene :)</h1>
+<?php else: ?>
+
+<h1>Svar på alle spørsmålene og klikk «Send inn svar»</h1>
+
+<form name="theForm" method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
+
+<?php require_once("spml.php"); ?>
+
+<input class="par" type="button" value="Send inn svar" onclick="return send_if_valid(document.theForm);" />
+
+</form>
+<?php endif; ?>
+</body>
