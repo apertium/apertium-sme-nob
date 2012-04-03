@@ -25,6 +25,9 @@ foreach ($_POST as $k => $v) {
 div {float:left; margin: 40px 3px;}
 div.form {margin-top:-20px;}
 .par {float:none;clear:both;}
+.h {float:none;clear:both;font-style:italic;font-weight:bold;}
+.sme { color:#353;}
+.MT { color:#335;}
 
 </style>
 
