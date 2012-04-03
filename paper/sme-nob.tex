@@ -149,17 +149,20 @@ difficult to maintain.
 This section describes how the language pair was developed.
 \subsection{Resources}
 We re-used several FOSS resources in creating this language pair. The
-\nob{} generator came from {\tt apertium-nn-nb}\citep{unhammer2009rfr},
-while most of the \sme{} resources came from N.N.\footnote{See
- \href{http://example.com}{http://example.com}.} \comment{Sámi
-  Giellatekno at the University of Tromsø, ref?}, including the
-lexicon/morphology and disambiguator/syntactic annotation CG. These
-were continually updated as the ``upstream'' versions changed.
+\nob{} generator came from {\tt
+  apertium-nn-nb}\citep{unhammer2009rfr}, while most of the \sme{}
+resources came from the Divvun and Giellatekno Sámi language
+technology projects \footnote{See
+  \href{http://divvun.no}{http://divvun.no} and
+  \href{http://giellatekno.uit.no}{http://giellatekno.uit.no}.},
+including the lexicon/morphology and disambiguator/syntactic
+annotation CG. These were continually updated as the ``upstream''
+versions changed.
 
 The lexical selection CG and the transfer rules were written from
 scratch. The translation lexicon was originally based on various
-word-lists from
-N.N.\footnote{\href{http://example.com}{http://example.com}}
+word-lists from Giellatekno
+\href{http://giellatekno.uit.no}{http://giellatekno.uit.no}
 \comment{was Vuosttaš Digisánit used?}, but expanded throughout
 development.
 \subsection{Analysis and derivational morphology}
@@ -167,9 +170,18 @@ The morphological analyser from N.N.\comment{Giellatekno} was not
 originally made with machine translation in mind, and we had to make
 several modifications, from using the Apertium tag format, to
 restricting derivational morphology and removing root forms without
-translations.
+translations. The modifications in the language pair are all done
+automatically using scripts, so that we can keep the analyser
+up-to-date with the upstream version.
 
-We trim the lexicon \comment{more}
+The upstream analyser contains many lemmas that are not in our
+translational dictionary. Since these often lead to transfer errors
+that can affect the surrounding context, and can suppress the choice
+of forms that \textit{have} translations, we ``trim'' the analyser
+down to those forms which are in the translational dictionary. To do
+this, we use a script which analyses the lexc source files with the
+translational dictionary, and outputs only those entries which have
+translational analyses (this script runs in <10 seconds).
 
 The original analyser defines quite a lot of rules for derivational
 processes. Allowing for derivational morphology expands the coverage
@@ -189,9 +201,9 @@ would let us specify that `geafivuohta' should translate to `poverty'.
 However, since \smenob is meant for gisting, where an odd-sounding
 translation is more understandable than an untranslated word, we
 decided to allow certain derivations. We define legal derivations by
-the use of twol rules which simply forbid analyses containing certain
-tags or tag sequences. This twol file is composed onto the main
-analyser.\comment{more}
+the use of additional twol rules which simply forbid analyses
+containing certain tags or tag sequences. This twol file is composed
+onto the main analyser.\comment{more}
 
 A causative verb derivation requires transfer rules that turn the
 causative verb into a periphrastic construction ('let NP VERB'). If a
