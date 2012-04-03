@@ -1,3 +1,5 @@
+CORPUS=laws
+
 all: gists.php
 
 apertium-cleanstream: apertium-cleanstream.cc
@@ -6,17 +8,17 @@ apertium-cleanstream: apertium-cleanstream.cc
 nob-sme.automorf.bin: ../apertium-sme-nob.nob.dix
 	lt-comp lr $< $@
 
-laws.nob.analyses: laws.nob nob-sme.automorf.bin apertium-cleanstream
+$(CORPUS).nob.analyses: $(CORPUS).nob nob-sme.automorf.bin apertium-cleanstream
 	apertium-destxt < $< | lt-proc -zwe nob-sme.automorf.bin | ./apertium-cleanstream -n | grep -F '^' > $@
 
-laws.MT: laws.nobsme
+$(CORPUS).MT: $(CORPUS).nobsme
 	cut -f2 $< | apertium -u -d .. sme-nob > $@
 
-laws.nob: laws.nobsme
+$(CORPUS).nob: $(CORPUS).nobsme
 	cut -f1 $< > $@
 
-laws.sme: laws.nobsme
+$(CORPUS).sme: $(CORPUS).nobsme
 	cut -f2 $< > $@
 
-gists.php:      randomise-create-phpgists.py laws.nob.analyses laws.nob laws.sme laws.MT
-	python2 randomise-create-phpgists.py laws.nob.analyses laws.nob laws.sme laws.MT > $@
+gists.php:      randomise-create-phpgists.py $(CORPUS).nob.analyses $(CORPUS).nob $(CORPUS).sme $(CORPUS).MT
+	python2 randomise-create-phpgists.py $(CORPUS).nob.analyses $(CORPUS).nob $(CORPUS).sme $(CORPUS).MT > $@

@@ -5,8 +5,8 @@ import sys, re, random
 import itertools, collections
 
 # Constants:
-LEN_DIFF=2 # maximum difference in length between alternatives and correct answer
-MIN_LEN=6  # minimum length of words to pick
+LEN_DIFF=3 # maximum difference in length between alternatives and correct answer
+MIN_LEN=5  # minimum length of words to pick
 N_ALT=5    # including the right answer we get N_ALT+1
 
 TRICK_RATIO=0.05        # chance of a question having no correct answer
@@ -114,7 +114,7 @@ for lnum,(lnob,lsme,lmt) in enumerate(zip(noblines,smelines,mtlines)):
         if not trick:
             choice.append(w)
         random.shuffle(choice)
-        choices[i]=choice
+        choices[i]=choice + ['(ingen som passer)']
         answers[i]=w
 
     if len(answers) < 1:        # or?
