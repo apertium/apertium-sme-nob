@@ -12,6 +12,30 @@
 \newcommand{\nobsme}{\nob$\rightarrow{}$\sme}
 
 \achapter{apertium-sme-nob:using an HFST lexicon in a long-distance RBMT system}{N.N.}
+% … or this title?
+% Evaluating a North Sami to Norwegian dissimilation system
+
+% testen:
+% a. teste ut 5x5x5
+% b. evaluere og lage 5 til av dei ikkje-genererte (opne for fleire genererte?)
+% c. verve folk til å bruke påska til dette (må vere slike som ikkje kan samisk)
+% d. på eit tidspunkt setje strek
+
+% 5x5x5
+% http://baldur.dyndns.tv/~kiwibird/gist-sme-nob/fyll_inn/
+% http://baldur.dyndns.tv/~kiwibird/gist-sme-nob/abc/
+% http://baldur.dyndns.tv/~kiwibird/gist-sme-nob/
+
+% skrivinga:
+% - leite etter litteratur om evaluering av system for å forstå tekst
+% - skrive rammetekst, lage dummy-tabellar for testresultat
+% - så, når testinga er ferdig, fylle inn resultat, skrive ferdig, 
+
+% disposisjon
+% - intro: mål og plan for artikkelen
+% - samisk, gisting, tidlegare litteratur
+% - vår test, vår analyse
+% - oppsummering og konklusjon, evaluering av kva som er potensiale for forbetring
 
 
   
@@ -47,7 +71,7 @@ comparatively simple.
 Most \sme{} speakers in Norway understand \nob{}, while most \nob{}
 speakers do not understand \sme{}. The languages are completely
 unrelated, and the linguistic distance is great, making it hard to
-achieve high quality. A \nobsme{} system would only be useful if the
+achieve high quality MT results. A \nobsme{} system would only be useful if the
 quality were good enough that it could be used for text production
 (post-editing). On the other hand, a \smenob{} gisting-quality system
 can be useful for the large group of \nob{} speakers who don't
@@ -138,7 +162,7 @@ formats. The \sme{} analyser is written in the Xerox-based
 \textbf{lexc} and \textbf{twol} formalisms. HFST analysers are slower
 at compiling and processing than lttoolbox, but certain morphological
 phenomena, especially non-concatenative phenomena \comment{e.g. \sme
-  consonant gradation?} are impossible---or at least very
+  consonant gradation} are impossible---or at least very
 difficult---to describe in lttoolbox. Since Northern Sámi is quite
 morphologically complex, a purely lttoolbox-based analyser would be
 difficult to maintain.
@@ -248,6 +272,8 @@ an actor noun)\footnote{The alternative would be to define, for each
   sentence are never consistently skewed towards the same wrong
   meaning, selecting the right alternative will be a sign of
   comprehending the meaning.}
+
+
 
 \subsection{Error analysis}
 
