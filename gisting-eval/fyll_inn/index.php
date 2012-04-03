@@ -12,7 +12,7 @@ function send_if_valid(form)
 	for (var i=0; i < nodes.length; i++) {
 		if (nodes[i].value=="") {
 			alert("Du må svare på alle spørsmålene.");
-			form.q1.focus();
+			nodes[i].focus();
 			return false;
 		}
 	}
