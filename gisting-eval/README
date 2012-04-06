@@ -1,7 +1,11 @@
 # Assuming apache runs as the user www-data:
-$ sudo mkdir /poormansdb
-$ sudo chown www-data /poormansdb
-$ sudo chgrp www-data /poormansdb
+$ sudo mkdir /srv/http/poormansdb
+$ sudo chown www-data /srv/http/poormansdb
+$ sudo chgrp www-data /srv/http/poormansdb
+
+# Note: if you don't keep www-stuff in /srv/http, you have to change
+# the directory in each of the index.php files! Look for the string
+# `file_put_contents'.
 
 # then, from this directory:
 $ cd abc
