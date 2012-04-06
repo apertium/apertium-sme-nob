@@ -76,14 +76,20 @@ def pick_k_random_weighted(k, tab):
 
 
 
+def all_true(list):
+    """Seems there are old pythons that don't have `all'"""
+    for elt in list:
+        if not bool(elt):
+            return False
+    return True
 
 # Fetch all analyses:
 for tags in TAGS_USE:
     all_candidates[tags]={}
     for f in [form(w).lower() for w in analyses
               if w.find(tags) > -1
-              and all([w.find(ban) == -1
-                       for ban in TAGS_BAN])]:
+              and all_true([w.find(ban) == -1
+                            for ban in TAGS_BAN])]:
         if f in all_candidates[tags]: all_candidates[tags][f]+=1
         else: all_candidates[tags][f]=1
     #print all_candidates[tags]
