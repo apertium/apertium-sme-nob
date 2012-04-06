@@ -37,7 +37,7 @@ function send_if_valid(form)
 $answered=0;
 foreach ($_POST as $k => $v) {
 	/* Ensure this directory is writable by httpd/apache: */
-	$out = shell_exec("echo \"$k,$v,$user\" >> /poormansdb/fyll_inn-results.csv");
+	file_put_contents("/srv/http/poormansdb/fyll_inn-results.csv", "$k,$v,$user\n", FILE_APPEND);
 	$answered=1;
 }
 if ($answered==1) : ?>
