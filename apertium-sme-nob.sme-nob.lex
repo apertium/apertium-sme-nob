@@ -1978,7 +1978,7 @@ SUBSTITUTE ("máksit") ("máksit:1") ("máksit" V) (*-1 (@SUBJ→) LINK NOT 0 HU
  ## Duhpát máksá guokte ruvnnu. # Tobakken koster to kroner.
 SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*1 Ill LINK *1 CURRENCY OR Num) ;
  ## Son máksá munnje guokte ruvnnu. # Han betaler meg to kroner.
-SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*-1 HUMAN LINK 0 (@SUBJ→));
+SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*-1 HUMAN OR Org LINK 0 (@SUBJ→));
 
 ## Máret máksá guokte ruvnnu.
  
@@ -2018,6 +2018,11 @@ SUBSTITUTE ("guorrasit") ("guorrasit:1") ("guorrasit" V IV) (NOT *0 Ill) ;
 SUBSTITUTE ("ohcat") ("ohcat:1") ("ohcat" V TV) (*1 ("olmmoš:1") OR ("olmmoš")) ;
 
 
+# ásahit 0 = ordne, 1 = innføre, 2 = grunnlegge
+SUBSTITUTE ("ásahit") ("ásahit:2") TARGET ("ásahit" V) 
+        IF (*1 (Num Loc) OR (TIME) OR (TIME-ADV));
+
+
 # Dynamically deverbal nouns:
 SUBSTITUTE ("dánset") ("dánset:1") ("dánset" N) ;
 SUBSTITUTE ("dánsut") ("dánsut:1") ("dánsut" N) ;
@@ -2029,6 +2034,10 @@ SUBSTITUTE ("miehtat") ("miehtat:1") ("miehtat" N) ;
 # civkkádit 0 = kvitre, 1 = pipe
 SUBSTITUTE ("civkkádit") ("civkkádit:1") ("civkkádit" V IV) (*0 ("mobiltelefuvdna") OR ("mobiila") OR ("telefuvdna") BARRIER S-BOUNDARY1) ;
 ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
+
+SUBSTITUTE ("árvalus") ("árvalus:1") ("árvalus" N) (1 ("meannudit") OR ("ovddidit") OR ("sáddet"));
+SUBSTITUTE ("árvalus") ("árvalus:1") ("árvalus" N) (-1 ("fágalaš") OR ("loahpalaš") OR ("lávdegoddi") OR ("Sámediggi"));
+
 
     # Noun rules
     # ----------
@@ -2184,6 +2193,10 @@ SUBSTITUTE ("iehčanassii") ("iehčanassii:1") ("iehčanassii" Adv) (-1 ("leat")
 SUBSTITUTE ("mielde") ("mielde:3") ("mielde" Po) (-1 ("dárbu") OR ("miella")) ;
     ## Don vieččat boaldinmuoraid dárbbu mielde.
 
+SUBSTITUTE ("vai") ("vai:2") 
+   TARGET ("vai" CS)
+       IF (1 Inf) ;
+ ## vai - for å
 
 # Rules that change PoS (like slr entries, the targets must exist in bidix!)
 # --------------------------------------------------------------------------
