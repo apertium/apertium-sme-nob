@@ -2193,7 +2193,8 @@ SUBSTITUTE ("iehčanassii") ("iehčanassii:1") ("iehčanassii" Adv) (-1 ("leat")
 SUBSTITUTE ("mielde") ("mielde:3") ("mielde" Po) (-1 ("dárbu") OR ("miella")) ;
     ## Don vieččat boaldinmuoraid dárbbu mielde.
 
-SUBSTITUTE ("vai") ("vai:2") 
+# vai => for at, vai:1 => for å
+SUBSTITUTE ("vai") ("vai:1") 
    TARGET ("vai" CS)
        IF (1 Inf) ;
  ## vai - for å
