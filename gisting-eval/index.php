@@ -2,6 +2,7 @@
 require_once('gists.php');
 
 $MAX=10;		     /* how many questions to ask each user */
+$OFFSET=10;		     /* on which question of gists.php to start */
 
 session_start();
 // Use $HTTP_SESSION_VARS with PHP 4.0.6 or less
@@ -148,7 +149,7 @@ function send_if_valid(form)
 <?php
 
 $k = array_keys($paragraphs);
-$l = $k[$i];
+$l = $k[$i+$OFFSET];
 echo $paragraphs[$l][2];
 
 ?>
