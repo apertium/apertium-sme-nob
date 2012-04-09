@@ -117,7 +117,7 @@ analysis and generation. The lttoolbox dictionaries are written in
 XML, where one dictionary may be compiled both to an analyser and a
 generator. The \smenob{} pair uses lttoolbox for \nob{}
 generation, while the \sme{} analyser is written in the Xerox lexc/twol
-format\citep{beesley2003fsm}. We use the FOSS package Helsinki Finite
+formats\citep{beesley2003fsm}. We use the FOSS package Helsinki Finite
 State Tools, HFST \citep{linden2011hfst} to compile and run the
 analyser (see section \ref{sec:hfst}).
 
@@ -158,14 +158,16 @@ One novel feature of apertium-sme-nob is the HFST-based analyser. HFST
 makes it possible to compile lexicons and morphologies originally
 written for the closed-source Xerox Finite State Tools using only free
 and open source tools, and run them with Apertium-compatible output
-formats. The \sme{} analyser is written in the Xerox-based
-\textbf{lexc} and \textbf{twol} formalisms. HFST analysers are slower
-at compiling and processing than lttoolbox, but certain morphological
-phenomena, especially non-concatenative phenomena \comment{e.g. \sme
-  consonant gradation} are impossible---or at least very
-difficult---to describe in lttoolbox. Since Northern Sámi is quite
-morphologically complex, a purely lttoolbox-based analyser would be
-difficult to maintain.
+formats. As with most Xerox-based analysers, the \sme lexicon and
+morphology are written in \textbf{lexc} and compiled into an FST, onto
+which \textbf{twol} rules are composed which define the
+morphophonology. HFST analysers are slower at compiling and processing
+than lttoolbox, but certain morphological phenomena, especially
+non-concatenative phenomena (e.g. \sme consonant gradation) are
+impossible---or at least very difficult---to describe in lttoolbox.
+Since Northern Sámi is quite morphologically complex, a purely
+lttoolbox-based analyser would be difficult to maintain.
+
 
 \section{Development}
   \label{sec:development}
@@ -211,9 +213,9 @@ translational analyses. The untrimmed source files weigh in at about
 
 The original analyser defines quite a lot of rules for derivational
 processes. Allowing for derivational morphology expands the coverage
-of the analyser without having to add new root forms, but also makes
-transfer much harder to deal with, as well as most of the time giving
-very odd-sounding translations.
+of the analyser without having to add new root forms (lexicalisation),
+but also makes transfer much harder to deal with, as well as most of
+the time giving very odd-sounding translations.
 
 To give an example of the latter, `geafivuohta' is an
 adjective$\rightarrow{}$noun derivation of `geafi', meaning `poor'.
@@ -223,32 +225,50 @@ dictionary (if that dictionary also defined derivational processes)
 could give us forms that sound like `poorness' or `poority' or
 `poordom', whereas giving `geafivuohta' status as a real root form
 would let us specify that `geafivuohta' should translate to `poverty'.
+Without derivations, `geafivuohta' would either be lexicalised and
+translated to `poverty', or not translated at all.
+
+Derivations also create extra transfer complexity. A causative verb
+derivation requires transfer rules that turn the causative verb into a
+periphrastic construction (e.g. `let NP VERB'). If a derivation
+changes the part-of-speech from verb to noun, we have to translate the
+derivation into a certain verb form that looks right in a noun context
+(e.g.~present tense of \nob verbs will most of the time look like an
+actor noun)\footnote{The alternative would be to define, for each \sme
+  verb, both a noun and a verb translation on the \nob side of the
+  translational dictionary, but this takes away the whole point of
+  increasing coverage without adding all the root forms.}. To make
+this even more complex, even a lexicalised form might require a
+part-of-speech change in the transfer lexicon if there is no word with
+the same meaning and part-of-speech in the target language; in that
+case, we also have to ensure transfer works for all possible
+derivations of all possible defined part-of-speech changes.
 
 However, since \smenob is meant for gisting, where an odd-sounding
-translation is more understandable than an untranslated word, we
+translation is more useful than an untranslated word, and resources
+for automatically expanding the bilingual dictionary are scarce, we
 decided to allow certain derivations. We define legal derivations by
 the use of additional twol rules which simply forbid analyses
-containing certain tags or tag sequences. This twol file is composed
-onto the main analyser.\comment{more}
-
-A causative verb derivation requires transfer rules that turn the
-causative verb into a periphrastic construction ('let NP VERB'). If a
-derivation changes the part-of-speech from verb to noun, we have to
-translate the derivation into a certain verb form that looks like a
-noun (e.g.~present tense of \nob verbs will most of the time look like
-an actor noun)\footnote{The alternative would be to define, for each
-  \sme verb, both a noun and a verb translation on the \nob side of
-  the translational dictionary, but this takes away the whole point of
-  increasing coverage without adding all the root forms.}
-
-
-
+containing certain tags or tag sequences. These twol rules are
+composed onto the main analyser in Apertium, but not used upstream.
 
 \subsection{Disambiguation}
-\subsection{Lexical selection}
+The CG created by Giellatekno was usable in Apertium with only minor
+changes to tag naming, requiring very little manual intervention to
+keep up-to-date. However, we did add Apertium-only rules which remove
+derivations and compound readings if there are lexicalised readings
+available, since we want lexically specified translations to override
+the guesswork done by derivation transfer.
 
+\subsection{Lexical selection}
+A lexical selection CG was created in order to select between
+different possible translations that otherwise share the same
+part-of-speech information. Currently it has only 102 rules covering
+52 lemmas, mostly high-frequency ones, although 802 lemmas of the
+transfer lexicon have at least one alternative translation.
 
 \subsection{Lexical transfer}
+
 
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
@@ -278,6 +298,10 @@ an actor noun)\footnote{The alternative would be to define, for each
 \subsection{Error analysis}
 
 \section{Discussion and outlook}
+
+The lexical selection CG can be automatically expanded with rules
+created by the Apertium package \texttt{apertium-lex-tools}
+\citep{???}.
 
 \section*{Acknowledgements}
 Development was funded by \comment{what are they called now?}
