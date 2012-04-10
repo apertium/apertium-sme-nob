@@ -85,10 +85,10 @@ a prototype system between Northern S\'{a}mi and Lule S\'{a}mi.
 
 \subsection{The Apertium Pipeline}
 This language pair is based on the Apertium MT
-platform\citep{forcada2011afp}. Apertium provides a highly modular,
-shallow-transfer pipeline MT engine, as well as data for language
-pairs. Both the engine and the data for all language pairs (about 30
-released pairs as of now) are licensed under the
+platform\citep{forcada2011afp,zubizarreta2009amt}. Apertium provides a
+highly modular, shallow-transfer pipeline MT engine, as well as data
+for language pairs. Both the engine and the data for all language
+pairs (about 30 released pairs as of now) are licensed under the
 GPL\footnote{\href{http://www.fsf.org/licensing/licenses/gpl.html}{http://www.fsf.org/licensing/licenses/gpl.html}}.
 
 Apertium language pairs are defined by Unix pipelines, where the
@@ -325,18 +325,22 @@ or analytic (which might later be used to improve
 
 \section{Evaluation}
 \label{sec:eval}
-The na\"{i}ve coverage\footnote{A form is counted as covered if it gets at
-  least one analysis. It might have ambiguity which the analyser does
-  not cover, thus `na\"{i}ve'.} of the analyser is shown in table
-\ref{table:cov} for legal text (laws), the \sme{} Wikipedia (wiki) and
-a corpus of \sme{} news articles. All forms which pass through the
-analyser, will also pass through the transfer lexicon, transfer rules
-and generator, so this shows the coverage of the other dictionaries
-(in the \smenob{} direction) as well. Since derivations are not
-specified in the translational dictionary, we show coverage with and
-without derivation-only analyses counted. The table also shows the
-ambiguity rate (amount of analyses per known word) with and without
-derivations counted. 
+The na\"{i}ve coverage\footnote{A form is counted as covered if it
+  gets at least one analysis. It might have ambiguity which the
+  analyser does not cover, thus `na\"{i}ve'.} of the analyser is shown
+in table \ref{table:cov} for legal text (laws), the \sme{} Wikipedia
+(wiki) and a corpus of \sme{} news articles. All forms which pass
+through the analyser, will also pass through the transfer lexicon,
+transfer rules and generator, so this shows the coverage of the other
+dictionaries (in the \smenob{} direction) as well. Since derivations
+are not specified in the translational dictionary, we show coverage
+with and without derivation-only analyses counted. The table also
+shows the ambiguity rate (amount of analyses per known word) with and
+without derivations counted. \footnote{Currently, the ambiguity rate
+  is reduced to about 1.04 by the constraint grammar disambiguator if
+  we turn off the switch to choose the first analysis given remaining
+  ambiguity.}
+
 
 The Wikipedia corpus seems to have very low coverage, but looking over
 the unknown words, it seems that many of them are in Finnish, English
@@ -460,7 +464,10 @@ Lexical selection could be better. There is an experimental Apertium
 package \texttt{apertium-lex-tools} that we plan to use to
 automatically create more lexical selection rules. Disambiguation
 might be improved by training an HMM to run after the rule-based
-disambiguator (and of course by improving the rules).
+disambiguator, although the ambiguity rate is already reduced to 1.04
+by the rules that are there \footnote{an HMM after CG would not help
+  with the analyses that are erroneously removed, only those that are
+  erroneously left ambiguous}.
 
 \section*{Acknowledgements}
 Development was funded by the Norwegian Ministry of Government
@@ -469,4 +476,3 @@ N.N. who also contributed much to the development of this language
 pair.
 
 
-\nocite{zubizarreta2009amt}
