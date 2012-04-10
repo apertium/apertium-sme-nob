@@ -2107,6 +2107,12 @@ SUBSTITUTE ("diehtu") ("diehtu:3") ("diehtu") (0 OBJ LINK *0  ("sáddet") OR ("�
     # Other parts of speech
     # ---------------------
     
+# oktii 0 = sammen, 1 = en gang
+SUBSTITUTE ("oktii") ("oktii:1") ("oktii" Adv) (1 ("vel") OR TIME);
+SUBSTITUTE ("oktii") ("oktii:1") ("oktii" Adv) (-1 ("vel") OR TIME);  
+SUBSTITUTE ("oktii") ("oktii:1") ("oktii" Adv) (-1 ("go") LINK -1 ("eanet"));
+    ## Jo dalle go ledjen Tessalonikas, dii sáddiidet munnje eanet go oktii daid maid mun dárbbašin.
+    
 SUBSTITUTE ("maŋŋel") ("maŋŋel:1") ("maŋŋel" Adv) (1 ("go")) ;
     ## Maŋŋel go guovtte geardde leat vuoitán eretčiekčamiin ja buriin álgguin dan gohčoduvvon fiskerseries, ledje valljit ruovttuguovllu olbmot boahtán geahččat iežaset lunttaid vuoitit badjel joavku maid atne heajubun.
 
