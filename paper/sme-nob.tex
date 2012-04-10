@@ -69,7 +69,7 @@ can be useful for the large group of \nob{} speakers who don't
 understand \sme{}. Thus we chose to focus on the \smenob{} direction
 first.
 
-We do not know of other machine translation (MT) systems between \sme
+We do not know of other machine translation (MT) systems between \sme{}
 and any Indo-European language, although \citet{tyers2009dpm} describe
 a prototype system between Northern Sámi and Lule Sámi.
 
@@ -149,12 +149,12 @@ One novel feature of apertium-sme-nob is the HFST-based analyser. HFST
 makes it possible to compile lexicons and morphologies originally
 written for the closed-source Xerox Finite State Tools using only free
 and open source tools, and run them with Apertium-compatible output
-formats. As with most Xerox-based analysers, the \sme lexicon and
+formats. As with most Xerox-based analysers, the \sme{} lexicon and
 morphology are written in \textbf{lexc} and compiled into an FST, onto
 which \textbf{twol} rules are composed which define the
 morphophonology. HFST analysers are slower at compiling and processing
 than lttoolbox, but certain morphological phenomena, especially
-non-concatenative phenomena (e.g. \sme consonant gradation) are
+non-concatenative phenomena (e.g. \sme{} consonant gradation) are
 impossible---or at least very difficult---to describe in lttoolbox.
 Since Northern Sámi is quite morphologically complex, a purely
 lttoolbox-based analyser would be difficult to maintain.
@@ -225,7 +225,7 @@ periphrastic construction (e.g. `let NP VERB'). If a derivation
 changes the part-of-speech from verb to noun, we have to translate the
 derivation into a certain verb form that looks right in a noun context
 (e.g.~present tense of \nob verbs will most of the time look like an
-actor noun)\footnote{The alternative would be to define, for each \sme
+actor noun)\footnote{The alternative would be to define, for each \sme{}
   verb, both a noun and a verb translation on the \nob side of the
   translational dictionary, but this takes away the whole point of
   increasing coverage without adding all the root forms.}. To make
@@ -235,7 +235,7 @@ the same meaning and part-of-speech in the target language; in that
 case, we also have to ensure transfer works for all possible
 derivations of all possible defined part-of-speech changes.
 
-However, since \smenob is meant for gisting, where an odd-sounding
+However, since \smenob{} is meant for gisting, where an odd-sounding
 translation is more useful than an untranslated word, and resources
 for automatically expanding the bilingual dictionary are scarce, we
 decided to allow certain derivations. We define legal derivations by
@@ -278,11 +278,11 @@ adjectives and 14000 nouns in the transfer lexicon.
 The naïve coverage\footnote{A form is counted as covered if it gets at
   least one analysis. It might have ambiguity which the analyser does
   not cover, thus `naïve'.} of the analyser is shown in table
-\ref{table:cov} for legal text (laws), the \sme Wikipedia (wiki) and a
-corpus of \sme news articles. All forms which pass through the
+\ref{table:cov} for legal text (laws), the \sme{} Wikipedia (wiki) and a
+corpus of \sme{} news articles. All forms which pass through the
 analyser, will also pass through the transfer lexicon, transfer rules
 and generator, so this shows the coverage of the other dictionaries
-(in the \smenob direction) as well. Since derivations are not
+(in the \smenob{} direction) as well. Since derivations are not
 specified in the translational dictionary, we show coverage with and
 without derivation-only analyses counted. The table also shows the
 ambiguity rate (amount of analyses per known word) with and without
@@ -346,7 +346,7 @@ translation, and 3 alternative paraphrases. The second test was set up
 as the first, but instead of the 3 alternatives the test presented an
 open question related to the translation.
 
-The third test showed a \sme source sentence, then the MT output of
+The third test showed a \sme{} source sentence, then the MT output of
 that sentence, followed by the reference translation (5-15 words long)
 where at least two of the nouns were removed. For each removed noun,
 we instead showed a randomised, clickable list consisting of the
@@ -355,7 +355,7 @@ nouns\footnote{Nouns were of the same length (+- 3 characters), pulled
   from the same 55128 word long legal text, had the same morphological
   features (gender, definiteness, number) and were never ambiguous
   with verbs.} and finally a "none seem to fit" choice. The users (who
-did not understand \sme) were instructed to click what seemed to be
+did not understand \sme{}) were instructed to click what seemed to be
 the removed word, using the MT as a guide.
 
 \begin{table}[htdp]
