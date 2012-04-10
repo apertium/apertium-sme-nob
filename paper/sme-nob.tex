@@ -276,10 +276,26 @@ standard (apart from minor format differences). The change from e.g.
 \texttt{<N><Prop>} (proper noun) to \texttt{<np>} or \texttt{<Sg1>} to
 \texttt{<sg><p1>} happens in the transfer lexicon, mostly using a
 \textbf{paradigm} definition to generalise over changes for each part
-of speech.
+of speech. Part of the derivation handling also happens here, e.g. the
+most passive derivations turn into plain passive forms, while verbs
+derived into actor-nouns are transferred to present tense verbs.
+
+We also add tags which are used only as a signal to transfer, which
+are removed before generation. The causative derivation of a form gets
+a tag which makes transfer form a periphrastic `let'-construction, but
+we also add the same tag to all forms if the root itself is a
+lexicalised causative (similarly with lexicalised passives).
 
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
+Structural transfer is divided into four stages:
+\begin{itemize}
+\item chunking
+\item interchunk1
+\item interchunk2
+\item postchunk
+\end{itemize}
+
 
 \subsection{Generation}
 
