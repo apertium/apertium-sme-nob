@@ -284,17 +284,31 @@ We also add tags which are used only as a signal to transfer, which
 are removed before generation. The causative derivation of a form gets
 a tag which makes transfer form a periphrastic `let'-construction, but
 we also add the same tag to all forms if the root itself is a
-lexicalised causative (similarly with lexicalised passives).
+lexicalised causative (similarly with lexicalised passives). Verbs are
+tagged according to the most likely animacy of the agent.
 
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
-Structural transfer is divided into four stages:
-\begin{itemize}
-\item chunking
-\item interchunk1
-\item interchunk2
-\item postchunk
-\end{itemize}
+Structural transfer is divided into four stages, with different
+responsibilities:
+
+\begin{enumerate}
+
+\item Chunking: noun phrases turn into larger chunks, prepositions are
+  output based on case information, verb auxiliaries and adverbs are
+  output based on verb modality, voice and derivation tags.
+
+\item Interchunk1: simple anaphora resolution (most recent subject
+  gender), merging coordinated noun phrase chunks, moving
+  postpositions before noun phrases.
+
+\item Interchunk2: major word order changes, inserting dropped
+  pronouns, inserting adverbs to indicate verb modality, correcting
+  noun phrase definiteness using verb information.
+
+\item Postchunk: inserting articles/determiners and the infinitive
+  marker, tag cleanup in preparation of generation.
+\end{enumerate}
 
 
 \subsection{Generation}
