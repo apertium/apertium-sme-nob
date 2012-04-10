@@ -11,20 +11,11 @@
 \newcommand{\smenob}{\sme$\rightarrow{}$\nob}
 \newcommand{\nobsme}{\nob$\rightarrow{}$\sme}
 
-\achapter{apertium-sme-nob:using an HFST lexicon in a long-distance RBMT system}{N.N.}
-% … or this title?
-% Evaluating a North Sami to Norwegian dissimilation system
+\achapter{Evaluating a North Sami to Norwegian assimilation RBMT system}{N.N. and N.N.}
 
 % testen:
-% a. teste ut 5x5x5
-% b. evaluere og lage 5 til av dei ikkje-genererte (opne for fleire genererte?)
-% c. verve folk til å bruke påska til dette (må vere slike som ikkje kan samisk)
-% d. på eit tidspunkt setje strek
-
-% 5x5x5
-% http://baldur.dyndns.tv/~kiwibird/gist-sme-nob/fyll_inn/
-% http://baldur.dyndns.tv/~kiwibird/gist-sme-nob/abc/
-% http://baldur.dyndns.tv/~kiwibird/gist-sme-nob/
+% a. teste ut 10x10x10
+% b. evaluere 
 
 % skrivinga:
 % - leite etter litteratur om evaluering av system for å forstå tekst
@@ -277,7 +268,12 @@ transfer lexicon have at least one alternative translation.
 
 \section{Evaluation}
 \label{sec:eval}
-
+In this section we evaluate the system using several methods. First we
+do a word-error rate test, which shows how well the system performs in
+a post-editing/dissemination setting, then a set of tests meant to
+find out how well the system performs in a gisting/assimilation
+setting. All tests were run on revision 37177 of
+\texttt{apertium-sme-nob}.
 
 
 \subsection{Word Error Rate on Post-Edited text}
@@ -306,16 +302,28 @@ way to go before being useful for post-editing.
 
 
 \subsection{Gisting eval}
-\comment{The idea here is that if the user can select the right
-  alternative, she must have some comprehension of the meaning. Now,
-  the sentence might have errors such that both the 'right'
-  alternative and the context are wrong in the same way, but if errors
-  are random enough, and the words that are translated within a
-  sentence are never consistently skewed towards the same wrong
-  meaning, selecting the right alternative will be a sign of
-  comprehending the meaning.}
+  
+In order to evaluate to what extent the system was able to convey the
+meaning of the original, we arranged a test containing 3 parts. All
+the test were based on sentences from a parallel corpus of
+non-fiction, the corpus had not been used during development of the MT
+system. The first test, a multiple choice test, presented 10 sentences
+drawn from the corpus. For each sentence, the test person also got the
+translation, and 3 alternative paraphrases. The second test was set up
+as the first, but instead of the 3 alternatives the test presented an
+open question related to the translation.
 
-All tests were run on revision 37177
+The third test showed a \sme source sentence, then the MT output of
+that sentence, followed by the reference translation (5-15 words long)
+where at least two of the nouns were removed. For each removed noun,
+we instead showed a randomised, clickable list consisting of the
+originally removed word, along with a random choice of other
+nouns\footnote{Nouns were of the same length (+- 3 characters), pulled
+  from the same 55128 word long legal text, had the same morphological
+  features (gender, definiteness, number) and were never ambiguous
+  with verbs.} and finally a "none seem to fit" choice. The users (who
+did not understand \sme) were instructed to click what seemed to be
+the removed word, using the MT as a guide.
 
 
 \subsection{Error analysis}
