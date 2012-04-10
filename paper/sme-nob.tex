@@ -106,9 +106,11 @@ typical pipeline consists of:
 Most Apertium language pairs use the lttoolbox FST package for
 analysis and generation. The lttoolbox dictionaries are written in
 XML, where one dictionary may be compiled both to an analyser and a
-generator. The \smenob{} pair uses lttoolbox for \nob{}
-generation, while the \sme{} analyser is written in the Xerox lexc/twol
-formats\citep{beesley2003fsm}. We use the FOSS package Helsinki Finite
+generator. The \smenob{} pair uses lttoolbox for \nob{} generation and
+the transfer lexicon, while the \sme{} analyser is written in the
+Xerox lexc/twol formats\citep{beesley2003fsm}. Both systems allow
+generalising over classes using paradigms/continuation lexicons, but
+differ in other features. We use the FOSS package Helsinki Finite
 State Tools, HFST \citep{linden2011hfst} to compile and run the
 analyser (see section \ref{sec:hfst}).
 
@@ -268,6 +270,14 @@ later on, entries were mostly added manually. Not including lexical
 selection alternatives, there are currently about 3300 verbs, 1400
 adjectives and 14000 nouns in the transfer lexicon.
 
+Unlike with most Apertium language pairs, we did not make an attempt
+to change the tag set in the analyser to conform with the Apertium
+standard (apart from minor format differences). The change from e.g.
+\texttt{<N><Prop>} (proper noun) to \texttt{<np>} or \texttt{<Sg1>} to
+\texttt{<sg><p1>} happens in the transfer lexicon, mostly using a
+\textbf{paradigm} definition to generalise over changes for each part
+of speech.
+
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
 
@@ -278,15 +288,20 @@ adjectives and 14000 nouns in the transfer lexicon.
 The naïve coverage\footnote{A form is counted as covered if it gets at
   least one analysis. It might have ambiguity which the analyser does
   not cover, thus `naïve'.} of the analyser is shown in table
-\ref{table:cov} for legal text (laws), the \sme{} Wikipedia (wiki) and a
-corpus of \sme{} news articles. All forms which pass through the
+\ref{table:cov} for legal text (laws), the \sme{} Wikipedia (wiki) and
+a corpus of \sme{} news articles. All forms which pass through the
 analyser, will also pass through the transfer lexicon, transfer rules
 and generator, so this shows the coverage of the other dictionaries
 (in the \smenob{} direction) as well. Since derivations are not
 specified in the translational dictionary, we show coverage with and
 without derivation-only analyses counted. The table also shows the
 ambiguity rate (amount of analyses per known word) with and without
-derivations counted.
+derivations counted. 
+
+The Wikipedia corpus seems to have very low coverage, but looking over
+the unknown words, it seems that many of them are in Finnish, English
+or Norwegian (the rest are mostly proper names).
+
 
 \begin{table}
   \begin{center}
