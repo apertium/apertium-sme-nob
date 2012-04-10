@@ -1,0 +1,11 @@
+1       HVOR DUOMMÁ LEA?
+2       Duomis og Máret de to er i huset. Det er bra et vær i dag, det er svært varmt.  Endre i går var det svært kaldt! De to kunne ikke støye da ute. Duommá og Máret liker å støye, de to stokken engang alltid ei av huset den store gården *olgobealde.
+3       Duomis det er liten *gánddáš og hun er seks år gammel. Den lille jenta er hans lillesøster, hun er fem år gammel. Duomis har en liten hund, det er også nå i huset. Hunden liker å støye med den med to barn. Hunden er svært gledelig nå.
+4       Lea Máret også en hund? Han ikke, Máret har ikke en hund, han har en katt. Endre katten det er på gården, en katt han sover.
+5       Deres mor er inni gården med en katt sammen, hun hun ser glasshullet ut og hun ser Duommá og Máret støyer. Duommá løper hurtig stor til det gamle treet, han gjemmer seg på Máret. Vet du hvorfor? Máret sitter og hun ha hender for øynene. Hun ser ikke noe og hun leser. Hvorfor gjør hun slik? Og hva Duommá gjør hos treet?
+6       er Det en leke. Når Máret blir ferdig å si, hun ser om. Hun søker Duomis: hvor gikk det? Ser de henne?
+hun ikke 7       Máret vet hvor er Duommá. Han spør hunden: "Ser de Duomis?".  Endre hunden ikke selvfølgelig kan snakke! Máret får ikke svaret til spørsmålet. Ikke noe får svaret, når de snakker med hunder!
+hun ser 8       Máret mors glass bak, hans mor ler. Máret tenker, at det har sett hvor har Duommá dratt: " Fortell til meg hvor er han!", han sier til mor. "Ikke Máret, jeg kan ikke fortelle til deg!", han svarer. Selv om montro kanskje vet han hvor er gutten, han han ønsker ikke fortelle.
+9       Máret går sent gjennom huset. Hun prøver enda å søke Duomis. Hun ser under bordet og under stolene,  endre Duommá er ikke derfra. Han ser på hvert sted,  endre ikke han kan finne Duomis.
+10      Så hører han lyden, det kommer stort det gamle treet bak. Kan han Kunne være Duommá? Der er den lyden igjen! Han lytter nøyaktig. Han er ikke en fugl ikke heller noen den andre lever. Nå hører han det godt. Han må være Duommá!
+11      Så ser han *unná hånden også og når han kommer *lágabui, så ser han hans hode også! Máret ler og sier: "Jeg fant deg!". De to *goappašagat er på gleden og de to drar til gården, er tiden å spise noe og drikke litt vann!
