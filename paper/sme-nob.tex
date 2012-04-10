@@ -11,7 +11,7 @@
 \newcommand{\smenob}{\sme$\rightarrow{}$\nob}
 \newcommand{\nobsme}{\nob$\rightarrow{}$\sme}
 
-\achapter{Evaluating North Sami to Norwegian assimilation RBMT}{N.N. and N.N.}
+\achapter{Evaluating North S\'{a}mi to Norwegian assimilation RBMT}{N.N. and N.N.}
 
 % testen:
 % a. teste ut 10x10x10
@@ -32,7 +32,7 @@
   
     % \begin{abstract}
 We describe the development and evaluation of a rule-based machine
-translation assimilation system from Northern Sámi to Norwegian Bokmål,
+translation assimilation system from Northern S\'{a}mi to Norwegian Bokm{\aa}l,
 built on a combination of Free and Open Source (FOSS) resources: the
 Apertium platform and the Giellatekno HFST lexicon and Constraint
 Grammar disambiguator.
@@ -48,7 +48,7 @@ some future work is suggested.
 
 \section{Introduction} % and roadmap
 This paper describes and evaluates a rule-based machine translation
-system from Northern Sámi to Norwegian Bokmål, re-using several
+system from Northern S\'{a}mi to Norwegian Bokm{\aa}l, re-using several
 existing free and open source resources. 
 
 We begin with an introduction to the languages and the technology
@@ -57,10 +57,10 @@ we evaluate the system with respect to the assimilation purpose, and
 discuss the results and ideas for improvements.
 
 \subsection{The Languages}
-Northern Sámi (\sme{}) is a Finno-Ugric language spoken by between
+Northern S\'{a}mi (\sme{}) is a Finno-Ugric language spoken by between
 15,000 and 25,000 people in the northern parts of Norway, Sweden and
-Finland. Norwegian Bokmål (\nob{}) is a North Germanic language with
-about 4.5 speakers, mostly in Norway. Northern Sámi is a highly
+Finland. Norwegian Bokm{\aa}l (\nob{}) is a North Germanic language with
+about 4.5 speakers, mostly in Norway. Northern S\'{a}mi is a highly
 inflected, agglutinative language, whereas Norwegian morphology is
 comparatively simple.
 
@@ -76,7 +76,7 @@ first.
 
 We do not know of other machine translation (MT) systems between \sme{}
 and any Indo-European language, although \citet{tyers2009dpm} describe
-a prototype system between Northern Sámi and Lule Sámi.
+a prototype system between Northern S\'{a}mi and Lule S\'{a}mi.
 
 
 
@@ -163,7 +163,7 @@ morphophonology. HFST analysers are slower at compiling and processing
 than lttoolbox, but certain morphological phenomena, especially
 non-concatenative phenomena (e.g. \sme{} consonant gradation) are
 impossible---or at least very difficult---to describe in lttoolbox.
-Since Northern Sámi is quite morphologically complex, a purely
+Since Northern S\'{a}mi is quite morphologically complex, a purely
 lttoolbox-based analyser would be difficult to maintain.
 
 
@@ -175,7 +175,7 @@ This section describes how the language pair was developed.
 We re-used several FOSS resources in creating this language pair. The
 \nob{} generator came from {\tt
   apertium-nn-nb}\citep{unhammer2009rfr}, while most of the \sme{}
-resources came from the Divvun and Giellatekno Sámi language
+resources came from the Divvun and Giellatekno S\'{a}mi language
 technology projects \footnote{See
   \href{http://divvun.no}{http://divvun.no} and
   \href{http://giellatekno.uit.no}{http://giellatekno.uit.no}.},
@@ -187,7 +187,7 @@ The lexical selection CG and the transfer rules were written from
 scratch. The translation lexicon was originally based on various
 word-lists from Giellatekno
 \href{http://giellatekno.uit.no}{http://giellatekno.uit.no}
-\comment{was Vuosttaš Digisánit used?}, but expanded throughout
+\comment{was Vuosttaš Digis\'{a}nit used?}, but expanded throughout
 development.
 \subsection{Analysis and derivational morphology}
 The morphological analyser from N.N.\comment{Giellatekno} was not
@@ -267,7 +267,7 @@ transfer lexicon have at least one alternative translation.
 
 \subsection{Lexical transfer}
 The open classes of the transfer lexicon were initiated with entries
-from the 9900 lemma dictionary Vuosttaš Digisánit\footnote{GPL and CC,
+from the 9900 lemma dictionary Vuosttaš Digis\'{a}nit\footnote{GPL and CC,
   see
   \href{http://giellatekno.uit.no/words/dicts/index.eng.html}{http://giellatekno.uit.no/words/dicts/index.eng.html}.},
 although many multiword translations had to be removed or simplified;
@@ -431,9 +431,9 @@ Result & 77 \% & 41 \% & 75 \% \\
 
 The results from the multiple choice and random word tests correlate with each other, whereas the fill-in test shows much worse results. The reason for that is that the fill-in test was more vulnerable to holes in the MT output. Four of the 10 test sentences got no or only one correct answers. What made these sentences so hard was that the system failed to translate the key word in the sentence.
 
-\enumsentence[(a)]{Mun muittán ahte Lillemor Isaksen, geas lei gymnása, measta ii fidnen oahpaheaddjibarggu go son lei sámegielat.}{I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{saami-speaking}}
+\enumsentence[(a)]{Mun muitt\'{a}n ahte Lillemor Isaksen, geas lei gymn\'{a}sa, measta ii fidnen oahpaheaddjibarggu go son lei s\'{a}megielat.}{I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{saami-speaking}}
 
-\enumsentence[(b)]{Jeg husker at Lillemor Isaksen, som hadde *gymnása, nesten ikke han fått lærerarbeidet da han var samisker.}{I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{a saamier}.}
+\enumsentence[(b)]{Jeg husker at Lillemor Isaksen, som hadde *gymn\'{a}sa, nesten ikke han f{\aa}tt l{\ae}rerarbeidet da han var samisker.}{I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{a saamier}.}
 
 The word $samier$ (here interpreted as a agent noun, on a par with $snekker$ ($carpenter$) does not exist, and is interpreted by 9 of the informants as "a Saami", instead of the correct "a Saami speaker". Here the missing translation of the key word blocked a proper understanding of the sentence.
 
