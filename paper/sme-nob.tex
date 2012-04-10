@@ -299,28 +299,31 @@ responsibilities:
 
 \begin{enumerate}
 
-\item Chunking: noun phrases turn into larger chunks, prepositions are
-  output based on case information, verb auxiliaries and adverbs are
-  output based on verb modality, voice and derivation tags.
+\item Chunking, 63 rules: noun phrases turn into larger chunks,
+  prepositions are output based on case information, verb auxiliaries
+  and adverbs are output based on verb modality, voice and derivation
+  tags.
 
-\item Interchunk1: simple anaphora resolution (most recent subject
-  gender), merging coordinated noun phrase chunks, moving
+\item Interchunk 1, 26 rules: simple anaphora resolution (most recent
+  subject gender), merging coordinated noun phrase chunks, moving
   postpositions before noun phrases.
 
-\item Interchunk2: major word order changes, inserting dropped
-  pronouns, inserting adverbs to indicate verb modality, correcting
-  noun phrase definiteness using verb information.
+\item Interchunk 2, 39 rules: major word order changes, inserting
+  dropped pronouns, inserting adverbs to indicate verb modality,
+  correcting noun phrase definiteness using verb information.
 
-\item Postchunk: inserting articles/determiners and the infinitive
-  marker, tag cleanup in preparation of generation.
+\item Postchunk, 29 rules: inserting articles/determiners and the
+  infinitive marker, tag cleanup in preparation of generation.
 \end{enumerate}
 
+A lot of work went into structural transfer compared to what is
+typical of Apertium language pairs between more related languages.
 
 \subsection{Generation}
 The generator was re-used from the language pair
-\texttt{apertium-nn-nb} with almost no changes apart from some root
-form additions to the lexicon, and marking of adjectives as synthetic
-or analytic (which might later be used to improve
+\texttt{apertium-nn-nb} with very few changes: We added some root
+forms to the lexicon, and added a tag to mark synthetic from analytic
+adjectives (a change which might later be useful in improving
 \texttt{apertium-nn-nb}).
 
 \section{Evaluation}
