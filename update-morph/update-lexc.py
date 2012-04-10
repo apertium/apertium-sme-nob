@@ -428,8 +428,19 @@ def make_lexc(COBJ=False):
 		data = head + trim
 		
 		output_app(data)
-	
-	out_ = '\n'.join([a for a in output_])
+
+	warning = """
+!!!!! 
+!!!!! This file was automatically generated using update-lexc.py.
+!!!!! 
+!!!!! It is not meant to contain every line from the upstream lexc files,
+!!!!! only those root entries which are also in bidix.
+!!!!! 
+!!!!! DO NOT EDIT MANUALLY UNLESS YOU WANT YOUR CHANGES OVERWRITTEN.
+!!!!! 
+
+"""
+	out_ = warning + '\n'.join([a for a in output_])
 	OUTFILE = COBJ.abs_output_dir() + OUTFILE
 	
 	with open(OUTFILE, 'w') as F:
