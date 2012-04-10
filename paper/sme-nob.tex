@@ -446,11 +446,17 @@ The word $samier$ (here interpreted as a agent noun, on a par with $snekker$ ($c
 
 
 \section{Discussion and outlook}
+Currently, the results of the gisting evaluation indicate that the MT
+output provides some help for non-Sámi speakers in understanding
+Northern Sámi, but as the results of the fill-in sentence test showed,
+users miss important points from isolated sentences at least.
 
-
-The lexical selection CG can be automatically expanded with rules
-created by the Apertium package \texttt{apertium-lex-tools}
-\citep{???}.
+The naïve coverage is very good, even disregarding derivations, but
+lexical selection could be better. There is an experimental Apertium
+package \texttt{apertium-lex-tools} that we plan to use to
+automatically create more lexical selection rules. Disambiguation
+might be improved by training an HMM to run after the rule-based
+disambiguator (and of course by improving the rules).
 
 \section*{Acknowledgements}
 Development was funded by \comment{what are they called now?}
