@@ -39,7 +39,8 @@ Grammar disambiguator.
 
 We detail the integration of these and other resources in the system
 along with the construction of the lexical and structural transfer,
-and evaluate the translation quality using various methods. Finally,
+and evaluate the translation quality using various methods, focusing
+on evaluating the users' \textit{comprehension} of the text. Finally,
 some future work is suggested.
     % \end{abstract}
 
@@ -48,13 +49,16 @@ some future work is suggested.
 
 \section{Introduction} % and roadmap
 This paper describes and evaluates a rule-based machine translation
-system from Northern S\'{a}mi to Norwegian Bokm{\aa}l, re-using several
-existing free and open source resources. 
+(MT) system from Northern S\'{a}mi to Norwegian Bokm{\aa}l, re-using
+several existing free and open source resources.
 
 We begin with an introduction to the languages and the technology
 used, followed by a description of how the system was developed. Then
-we evaluate the system with respect to the assimilation purpose, and
-discuss the results and ideas for improvements.
+we evaluate the system with respect to \textit{assimilation}: MT with
+the purpose of letting users understand a text written in a language
+foreign to them (as opposed to \textit{dissemination}, where the
+purpose is MT for post-editing). Finally we discuss the results and
+ideas for improvements.
 
 \subsection{The Languages}
 Northern S\'{a}mi (\sme{}) is a Finno-Ugric language spoken by between
@@ -429,6 +433,7 @@ of text were shown one at a time.
 \begin{tabular}{lccc}
 Type & Multiple & Fill-in & Random \\
 Result & 77 \% & 41 \% & 75 \% \\
+Number of test subjects & 10 & 14  & 10  \\
 \end{tabular}
 \end{center}
 \label{eval}
