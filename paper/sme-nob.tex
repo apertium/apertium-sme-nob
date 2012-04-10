@@ -100,13 +100,13 @@ typical pipeline consists of:
 
 \begin{itemize}
 \item deformatting (hiding formatting/markup from the engine),
-\item source language morphological analysis with a finite state
-  transducer (FST),
+\item source morphological analysis with a finite state transducer
+  (FST),
 \item disambiguation using a Hidden Markov Model (HMM) and/or
   Constraint Grammar (CG), 
 \item lexical transfer (word-translation on the disambiguated source),
-\item one and one or more levels of structural transfer
-  (ie.~reordering and changes to morphological features), 
+\item one or more levels of structural transfer
+  (reordering, and changes to morphological features), 
 \item target-language generation with an FST
 \item reformatting (letting format information be shown again)
 \end{itemize}
