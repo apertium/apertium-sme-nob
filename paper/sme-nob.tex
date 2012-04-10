@@ -301,6 +301,7 @@ out how well the system performs in a gisting/assimilation setting.
 All tests were run on revision 37177 of \texttt{apertium-sme-nob}.
 
 
+
 \subsection{Word Error Rate on Post-Edited text}
 \label{sec:WER}
 We did a Word Error Rate test on a short children's story
@@ -349,6 +350,46 @@ nouns\footnote{Nouns were of the same length (+- 3 characters), pulled
   with verbs.} and finally a "none seem to fit" choice. The users (who
 did not understand \sme) were instructed to click what seemed to be
 the removed word, using the MT as a guide.
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{lccc}
+Type & Multiple & Fill-in & Random \\
+Result & 77 \% & 41 \% & 75 \% \\
+\end{tabular}
+\end{center}
+\label{eval}
+\end{table}%
+
+
+
+The results from the multiple choice and random word tests correlate with each other, whereas the fill-in test shows much worse results. The reason for that is that the fill-in test was more vulnerable to holes in the MT output. Four of the 10 test sentences got no or only one correct answers. What made these sentences so hard was that the system failed to translate the key word in the sentence.
+
+\enumsentence[(a)]{Mun muittán ahte Lillemor Isaksen , geas lei gymnása , measta ii fidnen oahpaheaddjibarggu go son lei sámegielat .}
+
+\enumsentence[(a)]{Jeg husker at Lillemor Isaksen , som hadde *gymnása , nesten ikke han fått lærerarbeidet da han var samisker .}
+\enumsentence[(a)]{Mun muittán ahte Lillemor Isaksen , geas lei gymnása , measta ii fidnen oahpaheaddjibarggu go son lei sámegielat .}
+
+
+
+ \eenumsentence{\item \shortex{3}
+        {kalk-n & apra & kpa-ra}
+        {sago pudding V SG-OBL & plate VII PL & big-VII PL}
+        {`big plates of sago pudding'}
+\toplabel{sago}
+ \item \shortex{1}
+        {pia-ka-tim{\'{\i}}}
+        {words O-1SG A-say}
+        {`I talked.'}
+ \item \shortex{1}
+        {na-mpu-wap{\'a}t-ncut}
+        {3SG O-3PL A-climb-RM PAST}
+        {`They climbed it (the tree).'}
+ \item \shortex{2}
+        {nan-{\'a}wkura-na & amtra}
+        {PL IMP-gather-IMP & food V PL}
+        {`Collect food!'}}
 
 
 \subsection{Error analysis}
