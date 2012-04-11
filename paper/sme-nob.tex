@@ -506,7 +506,10 @@ sound non-fluent, but in other cases (e.g. \textit{lohkat},
 \textbf{say/count}), the meaning is altered or lost.
 
 The more complex the text, the more we see problems relating to
-structural transfer, often with regards to NP chunking and 
+structural transfer; some times we simply don't catch large enough NP
+chunks (since we only match fixed-length patterns, they turn into two
+chunks instead of one), Derivations that work fine by themselves, can
+give problems when part of complex NP's.
 
 
 %% plan:
@@ -534,7 +537,7 @@ might be improved by training an HMM to run after the rule-based
 disambiguator, although the ambiguity rate is already reduced to 1.04
 by the rules that are there \footnote{an HMM after CG would not help
   with the analyses that are erroneously removed, only those that are
-  erroneously left ambiguous}.
+  erroneously left ambiguous}. 
 
 \section*{Acknowledgements}
 Development was funded by the Norwegian Ministry of Government
