@@ -106,8 +106,8 @@ typical pipeline consists of:
 \item disambiguation using a Hidden Markov Model (HMM) and/or
   Constraint Grammar (CG), 
 \item lexical transfer (word-translation on the disambiguated source),
-\item one or more levels of structural transfer
-  (reordering, and changes to morphological features), 
+\item one or more levels of finite-state based structural transfer
+  (reordering, and changes to morphological features),
 \item target-language generation with an FST
 \item reformatting (letting format information be shown again)
 \end{itemize}
@@ -117,7 +117,7 @@ analysis and generation. The lttoolbox dictionaries are written in
 XML, where one dictionary may be compiled both to an analyser and a
 generator. The \smenob{} pair uses lttoolbox for \nob{} generation and
 the transfer lexicon, while the \sme{} analyser is written in the
-Xerox lexc/twol formats\citep{beesley2003fsm}. Both systems allow
+Xerox lexc/twol formats~\citep{beesley2003fsm}. Both systems allow
 generalising over classes using paradigms/continuation lexicons, but
 differ in other features. We use the FOSS package Helsinki Finite
 State Tools, HFST \citep{linden2011hfst} to compile and run the
@@ -126,28 +126,28 @@ analyser (see section \ref{sec:hfst}).
 The morphological analysis gives us ambiguous output with no syntactic
 information. For morphological (e.g.~part-of-speech) disambiguation,
 syntactic annotation/disambiguation and lexical
-selection\footnote{Similar to Word Sense Disambiguation, but
-  restricted to senses that have differing translations.}, we use
-Constraint Grammar \citep{karlsson1990cgf}\footnote{Using the FOSS
-  package {\tt \small VISL CG-3},
+selection\footnote{Like Word Sense Disambiguation, restricted to
+  senses that have differing translations.}, we use Constraint Grammar
+\citep{karlsson1990cgf}\footnote{Using the FOSS package {\tt \small
+    VISL CG-3},
   \href{http://beta.visl.sdu.dk/cg3.html}{http://beta.visl.sdu.dk/cg3.html}}.
-Morphological disambiguation and syntactic annotation/disambiguation
+Morphological disambiguation and syntax
 are run as one CG module, the output of which is unambiguous both
 morphologically (one analysis per form) and syntactically (each
 form/analysis is annotated with one syntactic tag).
 
 The first CG module is directly followed by a lexical selection CG
 module\footnote{If the disambiguation rules leaves any ambiguity, that
-  module is configured only print the first analysis. We may later
-  train an HMM to get rid of leftover ambiguity, this would go between
-  the two CG modules.}, which may add subscripts to lemmas in certain
-contexts in order to select a different lexical translation. 
+  CG only prints the first analysis. We may later train an HMM to get
+  rid of leftover ambiguity, this would go between the two CG
+  modules.}, which may add subscripts to lemmas in certain contexts in
+order to select a different lexical translation.
 
 Lexical selection is followed by pretransfer (minor format changes in
-preparation of transfer) and then a four-stage finite-state-based
-chunking transfer. The first stage handles lexical transfer as well as
-chunking based on patterns of morphological and syntactic tags
-(further detail in section \ref{sec:structural-transfer}).
+preparation of transfer) and then a four-stage chunking transfer. The
+first stage handles lexical transfer as well as chunking based on
+patterns of morphological and syntactic tags (further detail in
+section \ref{sec:structural-transfer}).
 
 Output from the transfer module is fed to morphological generation
 with the lttoolbox-based \nob{} generator. De-/reformatters applied to
@@ -465,7 +465,10 @@ The word $samisker$ (here interpreted as a agent noun, on a par with $snekker$ (
 
 The lexical coverage of the arbitrary sentences was good.
 
-
+%% plan:
+%% look at output, figure out what went wrong and what next
+%% thus , bring evaluation beyond what hitchhikersguide characterised as
+%% 42
 
 
 
