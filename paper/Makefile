@@ -34,7 +34,7 @@ clean:
 	cd cslipubscollection && rm -f *.ilg *.dvi *~ *.blg *.log
 
 veryclean:
-	cd cslipubscollection && rm -f *.ilg *.dvi *~ *.blg *.log *.ind *.bbl *.idx  *.toc *.aux
+	rm -rf cslipubscollection
 
 
 
