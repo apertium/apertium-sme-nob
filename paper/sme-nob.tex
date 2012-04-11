@@ -456,14 +456,13 @@ The reason for that is that the fill-in test was more vulnerable to
 holes in the MT output. Four of the 10 test sentences got no or only
 one correct answers. What made these sentences so hard was that the
 system failed to translate the key word in the sentence. Sentence
-(\ref{a}) gives an example.
+(\ex{1}) gives an example.
 %Linda: hard? hard to understand or maybe difficult?
 
-\enumsentence[(a)]{{Mun muitt\'{a}n ahte Lillemor Isaksen, geas lei gymn\'{a}sa, measta ii fidnen oahpaheaddjibarggu go son lei s\'{a}megielat.} \\ 
-{I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{saami-speaking}}}
-
-\enumsentence[(b)]{{Jeg husker at Lillemor Isaksen, som hadde *gymn\'{a}sa, nesten ikke han f{\aa}tt l{\ae}rerarbeidet da han var samisker.} \\
-{I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{a saamier}.}}
+\eenumsentence{\item[a.]{Mun muitt\'{a}n ahte Lillemor Isaksen, geas lei gymn\'{a}sa, measta ii fidnen oahpaheaddjibarggu go son lei s\'{a}megielat. \\ 
+I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{saami-speaking}}
+\item[b.]{Jeg husker at Lillemor Isaksen, som hadde *gymn\'{a}sa, nesten ikke han f{\aa}tt l{\ae}rerarbeidet da han var samisker. \\
+I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{a saamier}.}}
 
 %Linda: maybe glossing is a good idea? with \exg. dont remember the package
 %Kevin: eh...they require this hellish special latex system, so glosses
@@ -505,74 +504,80 @@ is likely to carry new meaning, but also be new to
 the system. 
 
 % grammatikk
-Another challenge is the errounoeous insertion of pronouns in pro-drop
-sentneces. This is more of a proglem for dissemination than for
+Another challenge is the erroneous insertion of pronouns in pro-drop
+sentences. This is more of a problem for dissemination than for
 assimilation, but in certain cases the superfluous pronouns may
-break the causality chain of the sentence, as in (x):
-
-\enumsentence{{På rapporten i Kautokeino 1877 meddeles han at bare omtrent 1/3
-skuvllageatnegahtton med en lærer kom de til undervisning .} \\
-{on report in Kautokeino 1977 is.informed he that only approximately
-  1/ skuvllageatnegahtton with a teacher came $they$ to class}}
+break the causality chain of the sentence, as in (\ex{1}):
 
 
-% The poin here is the meaning ``it was told that only 1/3 came to
+%\item 
+\enumsentence{{... dieđihuvvo ahte du\v{s}\v{s}e sullii 1/3 skuvllageatnegahtton ohppiin bohte oahpahussii}\\
+\shortexnt{7}
+{... meddeles & han & at & bare & omtrent & 1/3 & skuvllageatnegahtton}
+{... is.informed & he & that & only & approximately & 1/3 & skuvllageatnegahtton}
+{}
+\shortexnt{7}
+{med & en & l{\ae}rer & kom & de & til & undervisning}
+{with & a & teacher & came & $they$ & to class}
+{}
+}
+
+% The point here is the meaning ``it was told that only 1/3 came to
 % class''.
-But the subject status of (the untranslated) 1/3 skuvllageatnegahtton
-is blocked by the insertion of ``they''. Thus, the likely 8and
+But the subject status of (the untranslated) \textit{1/3 skuvllageatnegahtton}
+is blocked by the insertion of ``they''. Thus, the likely (and
 correct) interpretation (only 1/3 of X came to class) is blocked
 by ``they''.
-% for rotut???
-% det er nok riktig, men ikkje heilt det eg ville seie
-% eg ville ha ein feilomsett viss X så Y
-
 
 % det eg pröver på er å forstå korfor ting gjekk skeis:
 % - manglande ord? .dix ==> her har vi 96.7, det bör vere ein del
 % - dårleg grammatikk .tNx
 % - feil ordval? .lex
 
-Some grammatical constructions were too complicated for the system.
 
-Jos ii lean vejolaš váhnemiid lusa vuolgit
+Some grammatical constructions were too complicated for the system, 
+like the sentence
+%her treng vi shortex -formatet, med gloss og omsetjing:
+\enumsentence{\shortex{8}
+{Jos & ii & lean & vejolaš & v\'{a}hnemiid & lusa & vuolgit, & de ...}
+{if & not & was & possible & to.parents & to.PO & travel, & then ... }
+{If it was not possible to travel to the parents, then ...}}
 
-The system interpreted this as a 3rd person pro-drop
 
-TRANS Hvis han ikke hadde til de mulige foreldrene reiser ,
+
+The system interpreted this as a 3rd person pro-drop, and translated
+as follows:
+\enumsentence{\shortex{9}
+{Hvis & han & ikke & hadde & til & de & mulige & foreldrene & reiser ,..}
+{If   & he  & not  & had   & to.PR & the & possible & parents & travels, ...}
+{If he not had to the possible parents travels, ...}}
 
 but the correct interpretation is one of a formal subject of
-what in Norwegian would have been a cleft construction
+what in Norwegian would have been a cleft construction.
 
-if IT not was possible to travel to the 
+% Also, 'possible' gets Attr by rlx and is thus chunked with 'parents'
 
-In itself, the errouneous translation ``If he not hat to the 
-possible parents travels...'' would probably be understandable
-but as part of an causal if X then Y construction, it proved
-too difficult for half of the informants. What is needed here
-is thus better handling of the grammatical construction in question.
+In itself, the erroneous translation ``If he not had to the possible
+parents travels ...'' would probably be understandable, but as part of
+an causal if-X-then-Y construction, it proved too difficult for half
+of the informants. What is needed here is thus better handling of the
+grammatical construction in question.
 
-
-
-% eg har sett mykje som er anten lex/dis (ev. at me berre har eine av
-% fleire moglege lemma i ordboka for ein form), eller dårleg
-% chunking/transfer, då helst at me ikkje tek alle variantar av NP-ar,
-% eller manglar noko slags idiomatisk unntak
-
-
-
+% Over-specification is a feature, not a bug, for us:
 In the WER tests, we see some errors that are due to our translator
 over-specifying, e.g. using ``the two'' as a subject for dual verbs
 where ``they'' might be more natural. But for a gisting translator,
 over-specific translation is a feature, not a bug.
 
-Bad disambiguation is often at fault. The ambiguity rate after the
-rules have run is quite low, but we seem to get many erroneous
-readings, especially for high-frequency function words (e.g.
-\textit{maid}, \textbf{also/what/that}). It is also obvious that we
-need more lexical selection rules; some times the translations simply
-sound non-fluent, but in other cases (e.g. \textit{lohkat},
-\textbf{say/count}), the meaning is altered or lost.
+The ambiguity rate after the disambiguation rules have run is quite
+low, but on the other hand we get many erroneous readings, especially
+for high-frequency function words (e.g. \textit{maid},
+\textbf{also/what/that}). It is also obvious that we need more lexical
+selection rules; some times the translations simply sound non-fluent,
+but in other cases (e.g. \textit{lohkat}, \textbf{say/count}), the
+meaning is altered or lost.
 
+% Maybe just ditch this paragraph:
 The more complex the text, the more we see problems relating to
 structural transfer; some times we simply don't catch large enough NP
 chunks (since we only match fixed-length patterns, they turn into two
@@ -580,13 +585,8 @@ chunks instead of one), Derivations that work fine by themselves, can
 give problems when part of complex NP's.
 
 
-
-%% plan:
-%% look at output, figure out what went wrong and what next
-%% thus , bring evaluation beyond what hitchhikersguide characterised as
-%% 42
-
-So, 
+% Short conclusion:
+% So, 
 
 
 
