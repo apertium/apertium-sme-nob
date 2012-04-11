@@ -45,7 +45,9 @@ along with the construction of the lexical and structural transfer,
 and evaluate the translation quality using various methods, focusing
 on evaluating the users' \textit{comprehension} of the text. Finally,
 some future work is suggested.
-% Linda: the abstract sounds a bit boring, we do this, then that, then this.. maybe you can put an exciting first sentence including the special thing about the work
+% Linda: the abstract sounds a bit boring, we do this, then that, 
+% then this.. maybe you can put an exciting first sentence including 
+% 000the special thing about the work
     % \end{abstract}
 
 
@@ -420,7 +422,10 @@ system. The first test, a multiple choice test, presented 10 sentences
 drawn from the corpus. For each sentence, the test person also got the
 translation, and 3 alternative paraphrases. The second test was set up
 as the first, but instead of the 3 alternatives the test presented an
-open question related to the translation.
+open question related to the translation. For both test sets the 
+questions and paraphrases were prepared before the sentences were 
+translated by the system, in order not to be influenced by the 
+translated output.
 
 The third test showed a \sme{} source sentence, then the MT output of
 that sentence, followed by the reference translation (5-15 words long)
@@ -481,16 +486,23 @@ recognised, but understandable as it is a loan from Norwegian
 
 
 
-
 \subsection{Error analysis}
 
-The lexical coverage of the arbitrary sentences was good, although for
+<<<<<<< .mine
+The na\"{i}ve lexical coverage of the test sentences was good, 96.7\%, 
+as compared to the coverage measured on our news corpus (91\%). With
+an average sentence length of 14.5 words (as in our test set), the coverage
+implies one lexical omission in every second sentence. For
 some words, our analysis didn't include all likely readings (e.g.
 \textit{muhte} should be ambiguous between a subjunction and a verb,
 we only had the verb). In other cases, short (but non-compositional)
-idioms are treated as individual words. A lot of anaphora get the
+idioms were treated as individual words. A lot of anaphora get the
 wrong gender, but it's hard to tell how badly this affects
 comprehension.
+
+For 3 of the 10 fill-in test
+sentences the key word (the one
+
 
 In the WER tests, we see some errors that are due to our translator
 over-specifying, e.g. using ``the two'' as a subject for dual verbs
@@ -512,10 +524,13 @@ chunks instead of one), Derivations that work fine by themselves, can
 give problems when part of complex NP's.
 
 
+
 %% plan:
 %% look at output, figure out what went wrong and what next
 %% thus , bring evaluation beyond what hitchhikersguide characterised as
 %% 42
+
+So, 
 
 
 
