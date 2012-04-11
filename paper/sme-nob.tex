@@ -163,16 +163,17 @@ with the lttoolbox-based \nob{} generator.
 One novel feature of apertium-sme-nob is the HFST-based analyser. HFST
 makes it possible to compile lexicons and morphologies originally
 written for the closed-source Xerox Finite State Tools using FOSS
-tools, and run them with Apertium-compatible output formats. As with
-most Xerox-based analysers, the \sme{} lexicon and morphology are
-written in \textbf{lexc} and compiled into an FST, onto which
-\textbf{twol} rules are composed which define the morphophonology.
-HFST analysers are slower at compiling and processing than lttoolbox,
-but certain morphological phenomena, especially non-concatenative
-phenomena (e.g. \sme{} consonant gradation) are impossible---or at
-least very difficult---to describe in lttoolbox. Since North S\'{a}mi
-is quite morphologically complex, a purely lttoolbox-based analyser
-would be difficult to maintain.
+tools, and run them with Apertium-compatible output formats
+\citep{pirinen2011compiling}. As with most Xerox-based analysers, the
+\sme{} lexicon and morphology are written in \textbf{lexc} and
+compiled into an FST, onto which \textbf{twol} rules are composed
+which define the morphophonology. HFST analysers are slower at
+compiling and processing than lttoolbox, but certain morphological
+phenomena, especially non-concatenative phenomena (e.g. \sme{}
+consonant gradation) are impossible---or at least very difficult---to
+describe in lttoolbox. Since North S\'{a}mi is quite morphologically
+complex, a purely lttoolbox-based analyser would be difficult to
+maintain.
 
 
 \section{Development}
