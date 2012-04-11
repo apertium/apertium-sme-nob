@@ -459,9 +459,9 @@ system failed to translate the key word in the sentence. Sentence
 (\ex{1}) gives an example.
 %Linda: hard? hard to understand or maybe difficult?
 
-\eenumsentence{\item[a.]{Mun muitt\'{a}n ahte Lillemor Isaksen, geas lei gymn\'{a}sa, measta ii fidnen oahpaheaddjibarggu go son lei s\'{a}megielat. \\ 
+\eenumsentence{\item{Mun muitt\'{a}n ahte Lillemor Isaksen, geas lei gymn\'{a}sa, measta ii fidnen oahpaheaddjibarggu go son lei s\'{a}megielat. \\ 
 I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{saami-speaking}}
-\item[b.]{Jeg husker at Lillemor Isaksen, som hadde *gymn\'{a}sa, nesten ikke han f{\aa}tt l{\ae}rerarbeidet da han var samisker. \\
+\item{Jeg husker at Lillemor Isaksen, som hadde *gymn\'{a}sa, nesten ikke han f{\aa}tt l{\ae}rerarbeidet da han var samisker. \\
 I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{a saamier}.}}
 
 %Linda: maybe glossing is a good idea? with \exg. dont remember the package
@@ -511,20 +511,20 @@ break the causality chain of the sentence, as in (\ex{1}):
 
 
 %\item 
-\enumsentence{{... dieđihuvvo ahte du\v{s}\v{s}e sullii 1/3 skuvllageatnegahtton ohppiin bohte oahpahussii}\\
+\enumsentence{{... dieđihuvvo ahte du\v{s}\v{s}e sullii 1/3 skuvllageatnegahtton ohppiin bohte oahpahussii}\\~\\
 \shortexnt{7}
 {... meddeles & han & at & bare & omtrent & 1/3 & skuvllageatnegahtton}
 {... is.informed & he & that & only & approximately & 1/3 & skuvllageatnegahtton}
 {}
 \shortexnt{7}
-{med & en & l{\ae}rer & kom & de & til & undervisning}
-{with & a & teacher & came & $they$ & to class}
+{med & en & l{\ae}rer & kom & \textbf{de} & til & undervisning}
+{with & a & teacher & came & \textbf{they} & to class}
 {}
 }
 
 % The point here is the meaning ``it was told that only 1/3 came to
 % class''.
-But the subject status of (the untranslated) \textit{1/3 skuvllageatnegahtton}
+The subject status of (the untranslated) \textit{1/3 skuvllageatnegahtton}
 is blocked by the insertion of ``they''. Thus, the likely (and
 correct) interpretation (only 1/3 of X came to class) is blocked
 by ``they''.
@@ -537,7 +537,6 @@ by ``they''.
 
 Some grammatical constructions were too complicated for the system, 
 like the sentence
-%her treng vi shortex -formatet, med gloss og omsetjing:
 \enumsentence{\shortex{8}
 {Jos & ii & lean & vejolaš & v\'{a}hnemiid & lusa & vuolgit, & de ...}
 {if & not & was & possible & to.parents & to.PO & travel, & then ... }
@@ -557,11 +556,10 @@ what in Norwegian would have been a cleft construction.
 
 % Also, 'possible' gets Attr by rlx and is thus chunked with 'parents'
 
-In itself, the erroneous translation ``If he not had to the possible
-parents travels ...'' would probably be understandable, but as part of
-an causal if-X-then-Y construction, it proved too difficult for half
-of the informants. What is needed here is thus better handling of the
-grammatical construction in question.
+In itself, the erroneous translation in (\ex{0}) would probably be
+understandable, but as part of an causal if-X-then-Y construction, it
+proved too difficult for half of the informants. What is needed here
+is thus better handling of the grammatical construction in question.
 
 % Over-specification is a feature, not a bug, for us:
 In the WER tests, we see some errors that are due to our translator
