@@ -350,16 +350,21 @@ without derivations counted. \footnote{Currently, the ambiguity rate
 
 The Wikipedia corpus seems to have very low coverage, but looking over
 the unknown words, it seems that many of them are in Finnish, English
-or Norwegian (the rest are mostly proper names).
+or Norwegian (the rest are mostly proper names). The S\'{a}mi Wikipedia
+is also written by non-natives, 12.5\% of its 101000 words are not recognised
+even by Giellatekno's non-normative analyser, as opposed to only 3.5 \% for
+a larger, 6.1m reference corpus. The lower coverage for Wikipedia is thus to
+be expected.
 
 
 \begin{table}
   \begin{center}
   \begin{tabular}{crrrrr}
-   Corpus     & tokens   & coverage & ambig.rate  & coverage w/o deriv & ambig.rate w/o deriv \\
-   laws       &  51706   & 94.68\%  & 2.65        & 86.02\%            & 2.32 \\
-   wiki       & 19942    & 77.52\%  & 2.36        & 74.56\%            & 2.19 \\
-   news       & 1020250  & 94.72\%  & 2.59        & 90.96\%            & 2.34 \\
+   Corpus     & tokens   & coverage & ambig.      & coverage   & ambig.rate  \\
+              &          &          & rate        & w/o deriv  & w/o deriv \\
+   laws       &  51706   & 94.68\%  & 2.65        & 86.02\%    & 2.32 \\
+   wiki       & 19942    & 77.52\%  & 2.36        & 74.56\%    & 2.19 \\
+   news       & 1020250  & 94.72\%  & 2.59        & 90.96\%    & 2.34 \\
   \end{tabular}
     \caption{Na\"{i}ve coverage on several corpora.}
     \label{table:cov}
@@ -427,7 +432,7 @@ using the MT as a guide. Ten consecutive sentences from the same piece
 of text were shown one at a time.
 
 \begin{table}[htdp]
-\caption{default}
+\caption{Results of gisting evaluation, 3 different tests}
 \begin{center}
 \begin{tabular}{lccc}
 Type & Multiple & Fill-in & Random \\
@@ -448,12 +453,17 @@ The results from the multiple choice and random word tests correlate with each o
 \enumsentence[(b)]{{Jeg husker at Lillemor Isaksen, som hadde *gymn\'{a}sa, nesten ikke han f{\aa}tt l{\ae}rerarbeidet da han var samisker.} \\
 {I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{a saamier}.}}
 
-The word $samier$ (here interpreted as a agent noun, on a par with $snekker$ ($carpenter$) does not exist, and is interpreted by 9 of the informants as "a Saami", instead of the correct "a Saami speaker". Here the missing translation of the key word blocked a proper understanding of the sentence.
+The word $samisker$ (here interpreted as a agent noun, on a par with $snekker$ ($carpenter$) does not exist, and is interpreted by 9 of the informants as "a Saami", instead of the correct "a Saami speaker". Here the missing translation of the key word blocked a proper understanding of the sentence, despite the rest of the sentence being translated correctly. The loan word \textit{gymn\'{a}sa} was not recognised, but understandable as it is a loan from Norwegian ($gymnas$).
 
 
 
 
 \subsection{Error analysis}
+
+The lexical coverage of the arbitrary sentences was good.
+
+
+
 
 
 \section{Discussion and outlook}
