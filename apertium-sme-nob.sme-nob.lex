@@ -2062,6 +2062,10 @@ SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (-1 Num OR Ord);
 SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (1 Num OR Ord) ;
 	## Boahtte gaskavahku diibmu 11.00 rahpá kurdarbearaš Mehidi Kárášjohkii ođđa kaféa.
 	# Ord because of possible incorrect analysis of Num + punctuation.
+SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (*-1 ("ollu") LINK 0 Qst);
+SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (*-1 ("ollu") LINK 1 ("go"));
+SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (*-1 ("ollu") LINK -1 ("man"));
+
 	
 # miella 0 = sinn, 1 = oppfatning, 2 = behag
 SUBSTITUTE ("miella") ("miella:1") ("miella" N Sg Loc) (-1 @→N) ;
@@ -2114,6 +2118,13 @@ SUBSTITUTE ("oktii") ("oktii:1") ("oktii" Adv) (-1 ("go") LINK -1 ("eanet"));
     ## Jo dalle go ledjen Tessalonikas, dii sáddiidet munnje eanet go oktii daid maid mun dárbbašin.
 SUBSTITUTE ("oktii") ("oktii:1") ("oktii" Adv) (NEGATE @1 OKTII-V);
     ## Dan áiggi Jesus lei oktii vázzimin gordnebealdduid čađa sábbáhin.
+
+# ollu 0 = mange, 1 = mye, 2 = hvor mye
+SUBSTITUTE ("ollu") ("ollu:1") ("ollu" Adv) (-1 BOS)(0 Qst LINK 1 ("diibmu")) ; 
+SUBSTITUTE ("ollu") ("ollu:2") ("ollu" Adv) (-1 BOS)(*1 QMARK) ; 
+    ## Ollu diibmu lea?
+    ## Ollu go diibmu lea?
+    ## Ollugo diibmu lea? 
     
 SUBSTITUTE ("maŋŋel") ("maŋŋel:1") ("maŋŋel" Adv) (1 ("go")) ;
     ## Maŋŋel go guovtte geardde leat vuoitán eretčiekčamiin ja buriin álgguin dan gohčoduvvon fiskerseries, ledje valljit ruovttuguovllu olbmot boahtán geahččat iežaset lunttaid vuoitit badjel joavku maid atne heajubun.
