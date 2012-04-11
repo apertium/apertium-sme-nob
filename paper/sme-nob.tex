@@ -32,16 +32,17 @@
   
     % \begin{abstract}
 We describe the development and evaluation of a rule-based machine
-translation assimilation system from Northern S\'{a}mi to Norwegian Bokm{\aa}l,
+translation assimilation system from North S\'{a}mi to Norwegian Bokm{\aa}l,
 built on a combination of Free and Open Source (FOSS) resources: the
 Apertium platform and the Giellatekno HFST lexicon and Constraint
-Grammar disambiguator.
+Grammar disambiguator. %Linda: whats the difference between free and OS ?
 
 We detail the integration of these and other resources in the system
 along with the construction of the lexical and structural transfer,
 and evaluate the translation quality using various methods, focusing
 on evaluating the users' \textit{comprehension} of the text. Finally,
 some future work is suggested.
+% Linda: the abstract sounds a bit boring, we do this, then that, then this.. maybe you can put an exciting first sentence including the special thing about the work
     % \end{abstract}
 
 
@@ -49,8 +50,8 @@ some future work is suggested.
 
 \section{Introduction} % and roadmap
 This paper describes and evaluates a rule-based machine translation
-(MT) system from Northern S\'{a}mi to Norwegian Bokm{\aa}l, re-using
-several existing free and open source resources.
+(MT) system from North S\'{a}mi to Norwegian Bokm{\aa}l, re-using
+several existing free and open source resources. %Linda: North not North
 
 We begin with an introduction to the languages and the technology
 used, followed by a description of how the system was developed. Then
@@ -61,10 +62,10 @@ purpose is MT for post-editing). Finally we discuss the results and
 ideas for improvements.
 
 \subsection{The Languages}
-Northern S\'{a}mi (\sme{}) is a Finno-Ugric language spoken by between
+North S\'{a}mi (\sme{}) is a Finno-Ugric language spoken by between 
 15,000 and 25,000 people in the northern parts of Norway, Sweden and
 Finland. Norwegian Bokm{\aa}l (\nob{}) is a North Germanic language
-with about 4.5 million speakers, mostly in Norway. Northern S\'{a}mi
+with about 4.5 million speakers, mostly in Norway. North S\'{a}mi %mostly in Norway and where else?
 is a highly inflected, agglutinative language, whereas Norwegian
 morphology is comparatively simple.
 
@@ -79,8 +80,8 @@ understand \sme{}. Thus we chose to focus on the \smenob{} direction
 first.
 
 We do not know of other machine translation (MT) systems between \sme{}
-and any Indo-European language, although \citet{tyers2009dpm} describe
-a prototype system between Northern S\'{a}mi and Lule S\'{a}mi.
+and any Indo-European language, although \citet{tyers2009dpm} describe %Linda: thanks for the citation ;)
+a prototype system between North S\'{a}mi and Lule S\'{a}mi.
 
 
 
@@ -91,7 +92,7 @@ a prototype system between Northern S\'{a}mi and Lule S\'{a}mi.
 This language pair is based on the Apertium MT
 platform \citep{forcada2011afp,zubizarreta2009amt}. Apertium provides a
 highly modular, shallow-transfer pipeline MT engine, as well as data
-for language pairs. Both the engine and the data for all language
+for language pairs. Both, the engine and the data for all language
 pairs (about 30 released pairs as of now) are licensed under the
 GPL\footnote{\href{http://www.fsf.org/licensing/licenses/gpl.html}{http://www.fsf.org/licensing/licenses/gpl.html}}.
 
@@ -166,7 +167,7 @@ morphophonology. HFST analysers are slower at compiling and processing
 than lttoolbox, but certain morphological phenomena, especially
 non-concatenative phenomena (e.g. \sme{} consonant gradation) are
 impossible---or at least very difficult---to describe in lttoolbox.
-Since Northern S\'{a}mi is quite morphologically complex, a purely
+Since North S\'{a}mi is quite morphologically complex, a purely
 lttoolbox-based analyser would be difficult to maintain.
 
 
@@ -218,7 +219,7 @@ of the analyser without having to add new root forms (lexicalisation),
 but also makes transfer much harder to deal with, as well as most of
 the time giving very odd-sounding translations.
 
-To give an example of the latter, `geafivuohta' is an
+To give an example of the latter, `geafivuohta' is an 
 adjective$\rightarrow{}$noun derivation of `geafi', meaning `poor'.
 Simply carrying over the information that this is an
 adjective$\rightarrow{}$noun derivation into the target language
@@ -266,7 +267,7 @@ A lexical selection CG was created in order to select between
 different possible translations that otherwise share the same
 part-of-speech information. Currently it has only 102 rules covering
 52 lemmas, mostly high-frequency ones, although 802 lemmas of the
-transfer lexicon have at least one alternative translation.
+transfer lexicon have at least one alternative translation. %Linda: that's a bit short
 
 \subsection{Lexical transfer}
 The open classes of the transfer lexicon were initiated with entries
@@ -288,7 +289,7 @@ of speech. Part of the derivation handling also happens here, e.g. the
 most passive derivations turn into plain passive forms, while verbs
 derived into actor-nouns are transferred to present tense verbs.
 
-We also add tags which are used only as a signal to transfer, which
+We also add tags, which are used only as a signal to transfer, which
 are removed before generation. The causative derivation of a form gets
 a tag which makes transfer form a periphrastic `let'-construction, but
 we also add the same tag to all forms if the root itself is a
@@ -325,7 +326,7 @@ typical of Apertium language pairs between more related languages.
 \subsection{Generation}
 The generator was re-used from the language pair
 \texttt{apertium-nn-nb} with very few changes: We added some root
-forms to the lexicon, and added a tag to mark synthetic from analytic
+forms to the lexicon, and added a tag to mark synthetic from analytic %Linda: distinguish? (instead of mark)
 adjectives (a change which might later be useful in improving
 \texttt{apertium-nn-nb}).
 
@@ -335,7 +336,7 @@ The na\"{i}ve coverage\footnote{A form is counted as covered if it
   gets at least one analysis. It might have ambiguity which the
   analyser does not cover, thus `na\"{i}ve'.} of the analyser is shown
 in table \ref{table:cov} for legal text (laws), the \sme{} Wikipedia
-(wiki) and a corpus of \sme{} news articles. All forms which pass
+(wiki) and a corpus of \sme{} news articles. All forms that pass
 through the analyser, will also pass through the transfer lexicon,
 transfer rules and generator, so this shows the coverage of the other
 dictionaries (in the \smenob{} direction) as well. Since derivations
@@ -445,7 +446,7 @@ Number of test subjects & 10 & 14  & 10  \\
 
 
 
-The results from the multiple choice and random word tests correlate with each other, whereas the fill-in test shows much worse results. The reason for that is that the fill-in test was more vulnerable to holes in the MT output. Four of the 10 test sentences got no or only one correct answers. What made these sentences so hard was that the system failed to translate the key word in the sentence. Sentence (\ref{a}) gives an example.
+The results from the multiple choice and random word tests correlate with each other, whereas the fill-in test shows much worse results. The reason for that is that the fill-in test was more vulnerable to holes in the MT output. Four of the 10 test sentences got no or only one correct answers. What made these sentences so hard was that the system failed to translate the key word in the sentence. Sentence (\ref{a}) gives an example.%Linda: hard? hard to understand or maybe difficult?
 
 \enumsentence[(a)]{{Mun muitt\'{a}n ahte Lillemor Isaksen, geas lei gymn\'{a}sa, measta ii fidnen oahpaheaddjibarggu go son lei s\'{a}megielat.} \\ 
 {I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{saami-speaking}}}
@@ -453,7 +454,9 @@ The results from the multiple choice and random word tests correlate with each o
 \enumsentence[(b)]{{Jeg husker at Lillemor Isaksen, som hadde *gymn\'{a}sa, nesten ikke han f{\aa}tt l{\ae}rerarbeidet da han var samisker.} \\
 {I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{a saamier}.}}
 
-The word $samisker$ (here interpreted as a agent noun, on a par with $snekker$ ($carpenter$) does not exist, and is interpreted by 9 of the informants as "a Saami", instead of the correct "a Saami speaker". Here the missing translation of the key word blocked a proper understanding of the sentence, despite the rest of the sentence being translated correctly. The loan word \textit{gymn\'{a}sa} was not recognised, but understandable as it is a loan from Norwegian ($gymnas$).
+%Linda: maybe glossing is a good idea? with \exg. dont remember the package
+
+The word $samisker$ (here interpreted as a agent noun, on a par with $snekker$ ($carpenter$) does not exist, and is interpreted by 9 of the informants as "a Saami", instead of the correct "a Saami speaker". Here, the missing translation of the key word blocked a proper understanding of the sentence, despite the rest of the sentence being translated correctly. The loan word \textit{gymn\'{a}sa} was not recognised, but understandable as it is a loan from Norwegian ($gymnas$).
 
 
 
@@ -469,7 +472,7 @@ The lexical coverage of the arbitrary sentences was good.
 \section{Discussion and outlook}
 Currently, the results of the gisting evaluation indicate that the MT
 output provides some help for non-Sámi speakers in understanding
-Northern Sámi, but as the results of the fill-in sentence test showed,
+North Sámi, but as the results of the fill-in sentence test showed,
 users miss important points from isolated sentences at least.
 
 The naïve coverage is very good on paper, even disregarding
