@@ -36,9 +36,6 @@ translation assimilation system from North S\'{a}mi to Norwegian Bokm{\aa}l,
 built on a combination of Free and Open Source (FOSS) resources: the
 Apertium platform and the Giellatekno HFST lexicon and Constraint
 Grammar disambiguator. 
-%Linda: whats the difference between free and OS ?
-%Kevin: http://en.wikipedia.org/wiki/Free_and_open_source_software
-%FOSS is a fairly established term
 
 We detail the integration of these and other resources in the system
 along with the construction of the lexical and structural transfer,
@@ -273,7 +270,7 @@ transfer lexicon have at least one alternative translation. %Linda: that's a bit
 
 \subsection{Lexical transfer}
 The open classes of the transfer lexicon were initiated with entries
-from the 9900 lemma dictionary Vuosttaš Digis\'{a}nit\footnote{GPL and CC,
+from the 9900 lemma dictionary Vuostta\v{s} Digis\'{a}nit\footnote{GPL and CC,
   see
   \href{http://giellatekno.uit.no/words/dicts/index.eng.html}{http://giellatekno.uit.no/words/dicts/index.eng.html}.},
 although many multiword translations had to be removed or simplified;
@@ -499,7 +496,7 @@ comprehension.
 
 For 3 of the 10 fill-in test sentences the key word (the topic of
 the question to be addressed) was not translated. This illuminates
-the importance of a good lexical coverage: 95\% coverage implies
+the importance of a good lexical coverage: On average, 95\% coverage implies
 one error for each sentence. Also, the pivotal word in the discourse
 is likely to carry new meaning, but also be new to
 the system. 
@@ -510,9 +507,9 @@ sentences. This is more of a problem for dissemination than for
 assimilation, but in certain cases the superfluous pronouns may
 break the causality chain of the sentence, as in (\ex{1}):
 
-
+% NB dieđihuvvo
 %\item 
-\enumsentence{{... dieđihuvvo ahte du\v{s}\v{s}e sullii 1/3 skuvllageatnegahtton ohppiin bohte oahpahussii}\\~\\
+\enumsentence{{... diedihuvvo ahte du\v{s}\v{s}e sullii 1/3 skuvllageatnegahtton ohppiin bohte oahpahussii}\\~\\
 \shortexnt{7}
 {... meddeles & han & at & bare & omtrent & 1/3 & skuvllageatnegahtton}
 {... is.informed & he & that & only & approximately & 1/3 & skuvllageatnegahtton}
@@ -525,10 +522,13 @@ break the causality chain of the sentence, as in (\ex{1}):
 
 % The point here is the meaning ``it was told that only 1/3 came to
 % class''.
-The subject status of (the untranslated) \textit{1/3 skuvllageatnegahtton}
-is blocked by the insertion of ``they''. Thus, the likely (and
-correct) interpretation (only 1/3 of X came to class) is blocked
-by ``they''.
+
+The subject status of (the untranslated) \textit{1/3
+  skuvllageatnegahtton} is blocked by the insertion of $de$
+(``they''). Thus, the otherwise probable (and correct) interpretation
+(only 1/3 of X came to class) is suddenly less likely to be detected,
+and it is missed by 8 of our informants, several of whom interpret
+the sentence as describing a situation where the teacher does not show up.
 
 % det eg pröver på er å forstå korfor ting gjekk skeis:
 % - manglande ord? .dix ==> her har vi 96.7, det bör vere ein del
@@ -539,7 +539,7 @@ by ``they''.
 Some grammatical constructions were too complicated for the system, 
 like the sentence
 \enumsentence{\shortex{8}
-{Jos & ii & lean & vejolaš & v\'{a}hnemiid & lusa & vuolgit, & de ...}
+{Jos & ii & lean & vejola\v{s} & v\'{a}hnemiid & lusa & vuolgit, & de ...}
 {if & not & was & possible & to.parents & to.PO & travel, & then ... }
 {If it was not possible to travel to the parents, then ...}}
 
@@ -579,7 +579,7 @@ The more complex the text, the more we see problems relating to
 structural transfer; some times we simply don't catch large enough NP
 chunks (since we only match fixed-length patterns, they turn into two
 chunks instead of one), Derivations that work fine by themselves, can
-give problems when part of complex NP's.
+give problems when they form part of complex NP's.
 
 
 % Short conclusion:
@@ -588,12 +588,13 @@ give problems when part of complex NP's.
 
 
 \section{Discussion and outlook}
-Currently, the results of the gisting evaluation indicate that the MT
-output provides some help for non-Sámi speakers in understanding
-North Sámi, but as the results of the fill-in sentence test showed,
-users miss important points from isolated sentences at least.
+Currently, the results of the evaluation of the assimilation indicate
+that the MT output provides some help for non-S\'{a}mi speakers in
+understanding North S\'{a}mi, but as the results of the fill-in sentence
+test showed, users miss important points from isolated sentences at
+least.
 
-The naïve coverage is very good on paper, even disregarding
+The na\"{i}ve coverage is very good on paper, even disregarding
 derivations, but on the other hand, with a system meant for gisting,
 one missing word can take away any chance of understanding the
 sentence.
@@ -603,7 +604,7 @@ package \texttt{apertium-lex-tools} that we plan to use to
 automatically create more lexical selection rules. Disambiguation
 might be improved by training an HMM to run after the rule-based
 disambiguator, although the ambiguity rate is already reduced to 1.04
-by the rules that are there \footnote{an HMM after CG would not help
+by the rules that are in place \footnote{an HMM after CG would not help
   with the analyses that are erroneously removed, only those that are
   erroneously left ambiguous}. 
 
