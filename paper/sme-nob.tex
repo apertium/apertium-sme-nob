@@ -263,7 +263,9 @@ changes to tag naming, requiring very little manual intervention to
 keep up-to-date. However, we did add Apertium-only rules which remove
 derivations and compound readings if there are lexicalised readings
 available, since we want lexically specified translations to override
-the guesswork done by derivation transfer.
+the guesswork done by derivation transfer. Certain discrepancies in
+the tag set still exist though, which may affect disambiguation
+quality.
 
 \subsection{Lexical selection}
 A lexical selection CG was created in order to select between
@@ -482,8 +484,29 @@ recognised, but understandable as it is a loan from Norwegian
 
 \subsection{Error analysis}
 
-The lexical coverage of the arbitrary sentences was good.
+The lexical coverage of the arbitrary sentences was good, although for
+some words, our analysis didn't include all likely readings (e.g.
+\textit{muhte} should be ambiguous between a subjunction and a verb,
+we only had the verb). In other cases, short (but non-compositional)
+idioms are treated as individual words. A lot of anaphora get the
+wrong gender, but it's hard to tell how badly this affects
+comprehension.
 
+In the WER tests, we see some errors that are due to our translator
+over-specifying, e.g. using ``the two'' as a subject for dual verbs
+where ``they'' might be more natural. But for a gisting translator,
+over-specific translation is a feature, not a bug.
+
+Bad disambiguation is often at fault. The ambiguity rate after the
+rules have run is quite low, but we seem to get many erroneous
+readings, especially for high-frequency function words (e.g.
+\textit{maid}, \textbf{also/what/that}). It is also obvious that we
+need more lexical selection rules; some times the translations simply
+sound non-fluent, but in other cases (e.g. \textit{lohkat},
+\textbf{say/count}), the meaning is altered or lost.
+
+The more complex the text, the more we see problems relating to
+structural transfer, often with regards to NP chunking and 
 
 
 %% plan:
