@@ -35,7 +35,10 @@ We describe the development and evaluation of a rule-based machine
 translation assimilation system from North S\'{a}mi to Norwegian Bokm{\aa}l,
 built on a combination of Free and Open Source (FOSS) resources: the
 Apertium platform and the Giellatekno HFST lexicon and Constraint
-Grammar disambiguator. %Linda: whats the difference between free and OS ?
+Grammar disambiguator. 
+%Linda: whats the difference between free and OS ?
+%Kevin: http://en.wikipedia.org/wiki/Free_and_open_source_software
+%FOSS is a fairly established term
 
 We detail the integration of these and other resources in the system
 along with the construction of the lexical and structural transfer,
@@ -51,7 +54,7 @@ some future work is suggested.
 \section{Introduction} % and roadmap
 This paper describes and evaluates a rule-based machine translation
 (MT) system from North S\'{a}mi to Norwegian Bokm{\aa}l, re-using
-several existing free and open source resources. %Linda: North not North
+several existing free and open source resources. 
 
 We begin with an introduction to the languages and the technology
 used, followed by a description of how the system was developed. Then
@@ -326,7 +329,7 @@ typical of Apertium language pairs between more related languages.
 \subsection{Generation}
 The generator was re-used from the language pair
 \texttt{apertium-nn-nb} with very few changes: We added some root
-forms to the lexicon, and added a tag to mark synthetic from analytic %Linda: distinguish? (instead of mark)
+forms to the lexicon, and added a tag to distinguish synthetic from analytic
 adjectives (a change which might later be useful in improving
 \texttt{apertium-nn-nb}).
 
@@ -455,6 +458,8 @@ The results from the multiple choice and random word tests correlate with each o
 {I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{a saamier}.}}
 
 %Linda: maybe glossing is a good idea? with \exg. dont remember the package
+%Kevin: eh...they require this hellish special latex system, so glosses
+%might get low priority :/
 
 The word $samisker$ (here interpreted as a agent noun, on a par with $snekker$ ($carpenter$) does not exist, and is interpreted by 9 of the informants as "a Saami", instead of the correct "a Saami speaker". Here, the missing translation of the key word blocked a proper understanding of the sentence, despite the rest of the sentence being translated correctly. The loan word \textit{gymn\'{a}sa} was not recognised, but understandable as it is a loan from Norwegian ($gymnas$).
 
