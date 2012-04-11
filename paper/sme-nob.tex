@@ -131,7 +131,7 @@ analyser (see section \ref{sec:hfst}).
 The morphological analysis gives us ambiguous output with no syntactic
 information. For morphological (e.g.~part-of-speech) disambiguation,
 syntactic annotation/disambiguation and lexical
-selection\footnote{Like Word Sense Disambiguation, restricted to
+selection\footnote{Like Word Sense Disambiguation, but restricted to
   senses that have differing translations.}, we use Constraint Grammar
 \citep{karlsson1990cgf}\footnote{Using the FOSS package {\tt \small
     VISL CG-3},
@@ -139,7 +139,7 @@ selection\footnote{Like Word Sense Disambiguation, restricted to
 Morphological disambiguation and syntax
 are run as one CG module, the output of which is unambiguous both
 morphologically (one analysis per form) and syntactically (each
-form/analysis is annotated with one syntactic tag).
+form/analysis is annotated with exactly one syntactic tag).
 
 The first CG module is directly followed by a lexical selection CG
 module\footnote{If the disambiguation rules leaves any ambiguity, that
@@ -155,25 +155,24 @@ patterns of morphological and syntactic tags (further detail in
 section \ref{sec:structural-transfer}).
 
 Output from the transfer module is fed to morphological generation
-with the lttoolbox-based \nob{} generator. De-/reformatters applied to
-the beginning and end of the pipeline let us preserve formatting of
-various document types.
+with the lttoolbox-based \nob{} generator.
+% de/reformatters have been mentioned above
 
 \subsection{HFST}
 \label{sec:hfst}
 One novel feature of apertium-sme-nob is the HFST-based analyser. HFST
 makes it possible to compile lexicons and morphologies originally
-written for the closed-source Xerox Finite State Tools using only free
-and open source tools, and run them with Apertium-compatible output
-formats. As with most Xerox-based analysers, the \sme{} lexicon and
-morphology are written in \textbf{lexc} and compiled into an FST, onto
-which \textbf{twol} rules are composed which define the
-morphophonology. HFST analysers are slower at compiling and processing
-than lttoolbox, but certain morphological phenomena, especially
-non-concatenative phenomena (e.g. \sme{} consonant gradation) are
-impossible---or at least very difficult---to describe in lttoolbox.
-Since North S\'{a}mi is quite morphologically complex, a purely
-lttoolbox-based analyser would be difficult to maintain.
+written for the closed-source Xerox Finite State Tools using FOSS
+tools, and run them with Apertium-compatible output formats. As with
+most Xerox-based analysers, the \sme{} lexicon and morphology are
+written in \textbf{lexc} and compiled into an FST, onto which
+\textbf{twol} rules are composed which define the morphophonology.
+HFST analysers are slower at compiling and processing than lttoolbox,
+but certain morphological phenomena, especially non-concatenative
+phenomena (e.g. \sme{} consonant gradation) are impossible---or at
+least very difficult---to describe in lttoolbox. Since North S\'{a}mi
+is quite morphologically complex, a purely lttoolbox-based analyser
+would be difficult to maintain.
 
 
 \section{Development}
@@ -182,29 +181,24 @@ lttoolbox-based analyser would be difficult to maintain.
 This section describes how the language pair was developed.
 \subsection{Resources}
 We re-used several FOSS resources in creating this language pair. The
-\nob{} generator came from {\tt
-  apertium-nn-nb} \citep{unhammer2009rfr}, while most of the \sme{}
-resources came from the Divvun and Giellatekno S\'{a}mi language
-technology projects \footnote{See
-  \href{http://divvun.no}{http://divvun.no} and
+\nob{} generator came from {\tt apertium-nn-nb}
+\citep{unhammer2009rfr}, while most of the \sme{} resources came from
+the Divvun and Giellatekno S\'{a}mi language technology
+projects\footnote{See \href{http://divvun.no}{http://divvun.no} and
   \href{http://giellatekno.uit.no}{http://giellatekno.uit.no}.},
-including the lexicon/morphology and disambiguator/syntactic
-annotation CG. These were continually updated as the ``upstream''
-versions changed.
+including the lexicon/morphology and disambiguator/syntax CG. These
+were continually updated as the ``upstream'' versions changed.
 
 The lexical selection CG and the transfer rules were written from
 scratch. The translation lexicon was originally based on various
-word-lists from Giellatekno
-but expanded throughout
-development.
+word-lists from Giellatekno but expanded throughout development.
 \subsection{Analysis and derivational morphology}
-The morphological analyser from N.N.\comment{Giellatekno} was not
-originally made with machine translation in mind, and we had to make
-several modifications, from using the Apertium tag format, to
-restricting derivational morphology and removing root forms without
-translations. The modifications in the language pair are all done
-automatically using scripts, so that we can keep the analyser
-up-to-date with the upstream version.
+The morphological analyser was not originally made with machine
+translation in mind, and we had to make several modifications, from
+using the Apertium tag format, to restricting derivational morphology
+and removing root forms without translations. The modifications in the
+language pair are all done automatically using scripts, so that we can
+keep the analyser up-to-date with the upstream version.
 
 The upstream analyser contains many lemmas that are not in our
 translational dictionary. Since these often lead to transfer errors
@@ -213,15 +207,16 @@ of forms that \textit{have} translations, we ``trim'' the analyser
 down to those forms which are in the translational dictionary. To do
 this, we use a script which analyses the lexc source files with the
 translational dictionary, and outputs only those entries which have
-translational analyses. The untrimmed source files weigh in at about
-3.5 MB, trimming this down to 2.6 MB is done by a script which runs in
-<10 seconds.
+translational analyses\footnote{The untrimmed source files weigh in at
+  about 3.5 MB, trimming this down to 2.6 MB is done by a script which
+  runs in $<10$ seconds, and is general enough that other lexc-based
+  language pairs can easily use it.}.
 
 The original analyser defines quite a lot of rules for derivational
-processes. Allowing for derivational morphology expands the coverage
-of the analyser without having to add new root forms (lexicalisation),
-but also makes transfer much harder to deal with, as well as most of
-the time giving very odd-sounding translations.
+processes. Derivational morphology expands the coverage of the
+analyser without having to add new root forms (lexicalisation), but
+also makes transfer much harder to deal with, as well as often giving
+very odd-sounding translations.
 
 To give an example of the latter, `geafivuohta' is an 
 adjective$\rightarrow{}$noun derivation of `geafi', meaning `poor'.
@@ -265,8 +260,8 @@ keep up-to-date. However, we did add Apertium-only rules which remove
 derivations and compound readings if there are lexicalised readings
 available, since we want lexically specified translations to override
 the guesswork done by derivation transfer. Certain discrepancies in
-the tag set still exist though, which may affect disambiguation
-quality.
+the tag set of the analyser still exist though, which may affect
+disambiguation quality.
 
 \subsection{Lexical selection}
 A lexical selection CG was created in order to select between
@@ -487,6 +482,10 @@ recognised, but understandable as it is a loan from Norwegian
 
 \subsection{Error analysis}
 
+% eg pröver å sjå på strukturen...
+
+
+% coverage
 The na\"{i}ve lexical coverage of the test sentences was good, 96.7\%, 
 as compared to the coverage measured on our news corpus (91\%). With
 an average sentence length of 14.5 words (as in our test set), the coverage
@@ -498,8 +497,67 @@ idioms were treated as individual words. A lot of anaphora get the
 wrong gender, but it's hard to tell how badly this affects
 comprehension.
 
-For 3 of the 10 fill-in test
-sentences the key word (the one
+For 3 of the 10 fill-in test sentences the key word (the topic of
+the question to be addressed) was not translated. This illuminates
+the importance of a good lexical coverage: 95\% coverage implies
+one error for each sentence. Also, the pivotal word in the discourse
+is likely to carry new meaning, but also be new to
+the system. 
+
+% grammatikk
+Another challenge is the errounoeous insertion of pronouns in pro-drop
+sentneces. This is more of a proglem for dissemination than for
+assimilation, but in certain cases the superfluous pronouns may
+break the causality chain of the sentence, as in (x):
+
+\enumsentence{{På rapporten i Kautokeino 1877 meddeles han at bare omtrent 1/3
+skuvllageatnegahtton med en lærer kom de til undervisning .} \\
+{on report in Kautokeino 1977 is.informed he that only approximately
+  1/ skuvllageatnegahtton with a teacher came $they$ to class}}
+
+
+% The poin here is the meaning ``it was told that only 1/3 came to
+% class''.
+But the subject status of (the untranslated) 1/3 skuvllageatnegahtton
+is blocked by the insertion of ``they''. Thus, the likely 8and
+correct) interpretation (only 1/3 of X came to class) is blocked
+by ``they''.
+% for rotut???
+% det er nok riktig, men ikkje heilt det eg ville seie
+% eg ville ha ein feilomsett viss X så Y
+
+
+% det eg pröver på er å forstå korfor ting gjekk skeis:
+% - manglande ord? .dix ==> her har vi 96.7, det bör vere ein del
+% - dårleg grammatikk .tNx
+% - feil ordval? .lex
+
+Some grammatical constructions were too complicated for the system.
+
+Jos ii lean vejolaš váhnemiid lusa vuolgit
+
+The system interpreted this as a 3rd person pro-drop
+
+TRANS Hvis han ikke hadde til de mulige foreldrene reiser ,
+
+but the correct interpretation is one of a formal subject of
+what in Norwegian would have been a cleft construction
+
+if IT not was possible to travel to the 
+
+In itself, the errouneous translation ``If he not hat to the 
+possible parents travels...'' would probably be understandable
+but as part of an causal if X then Y construction, it proved
+too difficult for half of the informants. What is needed here
+is thus better handling of the grammatical construction in question.
+
+
+
+% eg har sett mykje som er anten lex/dis (ev. at me berre har eine av
+% fleire moglege lemma i ordboka for ein form), eller dårleg
+% chunking/transfer, då helst at me ikkje tek alle variantar av NP-ar,
+% eller manglar noko slags idiomatisk unntak
+
 
 
 In the WER tests, we see some errors that are due to our translator
