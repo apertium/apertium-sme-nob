@@ -36,7 +36,6 @@ translation assimilation system from North S\'{a}mi to Norwegian Bokm{\aa}l,
 built on a combination of Free and Open Source (FOSS) resources: the
 Apertium platform and the Giellatekno HFST lexicon and Constraint
 Grammar disambiguator. 
-
 We detail the integration of these and other resources in the system
 along with the construction of the lexical and structural transfer,
 and evaluate the translation quality using various methods, focusing
@@ -53,7 +52,7 @@ some future work is suggested.
 \section{Introduction} % and roadmap
 This paper describes and evaluates a rule-based machine translation
 (MT) system from North S\'{a}mi to Norwegian Bokm{\aa}l, re-using
-several existing free and open source resources. 
+several existing FOSS resources. 
 
 We begin with an introduction to the languages and the technology
 used, followed by a description of how the system was developed. Then
@@ -94,9 +93,9 @@ a prototype system between North S\'{a}mi and Lule S\'{a}mi.
 This language pair is based on the Apertium MT
 platform \citep{forcada2011afp,zubizarreta2009amt}. Apertium provides a
 highly modular, shallow-transfer pipeline MT engine, as well as data
-for language pairs. Both, the engine and the data for all language
+for language pairs. Both the engine and the data for all language
 pairs (about 30 released pairs as of now) are licensed under the
-GPL\footnote{\href{http://www.fsf.org/licensing/licenses/gpl.html}{http://www.fsf.org/licensing/licenses/gpl.html}}.
+GPL.\footnote{\href{http://www.fsf.org/licensing/licenses/gpl.html}{http://www.fsf.org/licensing/licenses/gpl.html}}
 
 Apertium language pairs are defined by Unix pipelines, where the
 typical pipeline consists of:
@@ -169,8 +168,7 @@ compiling and processing than lttoolbox, but certain morphological
 phenomena, especially non-concatenative phenomena (e.g. \sme{}
 consonant gradation) are impossible---or at least very difficult---to
 describe in lttoolbox. Since North S\'{a}mi is quite morphologically
-complex, a purely lttoolbox-based analyser would be difficult to
-maintain.
+complex, a pure lttoolbox analyser would be hard to maintain.
 
 
 \section{Development}
@@ -191,12 +189,12 @@ The lexical selection CG and the transfer rules were written from
 scratch. The translation lexicon was originally based on various
 word-lists from Giellatekno but expanded throughout development.
 \subsection{Analysis and derivational morphology}
-The morphological analyser was not originally made with machine
-translation in mind, and we had to make several modifications, from
-using the Apertium tag format, to restricting derivational morphology
-and removing root forms without translations. The modifications in the
-language pair are all done automatically using scripts, so that we can
-keep the analyser up-to-date with the upstream version.
+The morphological analyser was not originally made for machine
+translation, and we made several modifications, from minor tag format
+changes, to restricting derivational morphology and removing root
+forms without translations. Our modifications are all done
+automatically using scripts, letting us easily keep the analyser
+up-to-date with the upstream version.
 
 The upstream analyser contains many lemmas that are not in our
 translational dictionary. Since these often lead to transfer errors
@@ -205,27 +203,26 @@ of forms that \textit{have} translations, we ``trim'' the analyser
 down to those forms which are in the translational dictionary. To do
 this, we use a script which analyses the lexc source files with the
 translational dictionary, and outputs only those entries which have
-translational analyses\footnote{The untrimmed source files weigh in at
-  about 3.5 MB, trimming this down to 2.6 MB is done by a script which
-  runs in $<10$ seconds, and is general enough that other lexc-based
-  language pairs can easily use it.}.
+translational analyses.\footnote{The untrimmed source files weigh in at
+  about 3.5 MB, trimming this down to 2.6 MB is done by a script in
+  our public repository which runs in $<10$ seconds, and is general
+  enough that other lexc-based language pairs can easily use it.}
 
 The original analyser defines quite a lot of rules for derivational
 processes. Derivational morphology expands the coverage of the
 analyser without having to add new root forms (lexicalisation), but
 also makes transfer much harder to deal with, as well as often giving
 very odd-sounding translations.
-
-To give an example of the latter, `geafivuohta' is an 
+To give an example of the latter, `geafivuohta' is an
 adjective$\rightarrow{}$noun derivation of `geafi', meaning `poor'.
 Simply carrying over the information that this is an
 adjective$\rightarrow{}$noun derivation into the target language
 dictionary (if that dictionary also defined derivational processes)
 could give us forms that sound like `poorness' or `poority' or
-`poordom', whereas giving `geafivuohta' status as a real root form
-would let us specify that `geafivuohta' should translate to `poverty'.
-Without derivations, on the other hand, `geafivuohta' would either be lexicalised and
-translated to `poverty', or not translated at all.
+`poordom', whereas giving `geafivuohta' status as a real lexicalised
+root form would let us specify that `geafivuohta' should translate to
+`poverty'. If we did not use derivations, `geafivuohta' would either
+be lexicalised and translated to `poverty', or not translated at all.
 
 Derivations also create extra transfer complexity. A causative verb
 derivation requires transfer rules that turn the causative verb into a
@@ -233,10 +230,10 @@ periphrastic construction (e.g. `let NP VERB'). If a derivation
 changes the part-of-speech from verb to noun, we have to translate the
 derivation into a certain verb form that looks right in a noun context
 (e.g.~present tense of \nob{} verbs will most of the time look like an
-actor noun)\footnote{The alternative would be to define, for each \sme{}
+actor noun).\footnote{The alternative would be to define, for each \sme{}
   verb, both a noun and a verb translation on the \nob{} side of the
   translational dictionary, but this takes away the whole point of
-  increasing coverage without adding all the root forms.}. To make
+  increasing coverage without adding all the root forms.} To make
 this even more complex, even a lexicalised form might require a
 part-of-speech change in the transfer lexicon if there is no word with
 the same meaning and part-of-speech in the target language; in that
@@ -246,10 +243,11 @@ derivations of all possible defined part-of-speech changes.
 However, since \smenob{} is meant for gisting, where an odd-sounding
 translation is more useful than an untranslated word, and resources
 for automatically expanding the bilingual dictionary are scarce, we
-decided to allow certain derivations. We define legal derivations by
-the use of additional twol rules which simply forbid analyses
-containing certain tags or tag sequences. These twol rules are
-composed onto the main analyser in Apertium, but not used upstream.
+decided to allow a restricted set of derivations. We define legal
+derivations by the use of additional twol rules which simply forbid
+analyses containing certain tags or tag sequences. These twol rules
+are composed onto the main analyser in Apertium, but not used
+upstream.
 
 \subsection{Disambiguation}
 The CG created by Giellatekno was usable in Apertium with only minor
@@ -266,17 +264,22 @@ A lexical selection CG was created in order to select between
 different possible translations that otherwise share the same
 part-of-speech information. Currently it has only 102 rules covering
 52 lemmas, mostly high-frequency ones, although 802 lemmas of the
-transfer lexicon have at least one alternative translation. %Linda: that's a bit short
+transfer lexicon have at least one alternative translation. This CG
+particularly depends on valency and semantic sets (e.g. selecting the
+\textbf{class} instead of \textbf{hill} translation if we see a context
+word related to the EDUCATION set).
+
+%Linda: that's a bit short
 
 \subsection{Lexical transfer}
 The open classes of the transfer lexicon were initiated with entries
-from the 9900 lemma dictionary Vuostta\v{s} Digis\'{a}nit\footnote{GPL and CC,
+from the 9900 lemma dictionary Vuostta\v{s} Digis\'{a}nit,\footnote{GPL and CC,
   see
-  \href{http://giellatekno.uit.no/words/dicts/index.eng.html}{http://giellatekno.uit.no/words/dicts/index.eng.html}.},
+  \href{http://giellatekno.uit.no/words/dicts/index.eng.html}{http://giellatekno.uit.no/words/dicts/index.eng.html}.}
 although many multiword translations had to be removed or simplified;
 later on, entries were mostly added manually. Not including lexical
 selection alternatives, there are currently about 3300 verbs, 1400
-adjectives and 14000 nouns in the transfer lexicon.
+adjectives and 14000 common nouns in the transfer lexicon.
 
 Unlike with most Apertium language pairs, we did not make an attempt
 to change the tag set in the analyser to conform with the Apertium
@@ -284,16 +287,16 @@ standard (apart from minor format differences). The change from e.g.
 \texttt{<N><Prop>} (proper noun) to \texttt{<np>} or \texttt{<Sg1>} to
 \texttt{<sg><p1>} happens in the transfer lexicon, mostly using a
 \textbf{paradigm} definition to generalise over changes for each part
-of speech. Part of the derivation handling also happens here, e.g. the
+of speech. Part of the derivation handling also happens here, e.g. 
 most passive derivations turn into plain passive forms, while verbs
 derived into actor-nouns are transferred to present tense verbs.
 
-We also add tags, which are used only as a signal to transfer, which
-are removed before generation. The causative derivation of a form gets
-a tag which makes transfer form a periphrastic `let'-construction, but
+We also add special tags used only as a signal to transfer, which are
+removed before generation. The causative derivation of a form gets a
+tag which makes transfer form a periphrastic `let'-construction, but
 we also add the same tag to all forms if the root itself is a
-lexicalised causative (similarly with lexicalised passives). Verbs are
-tagged according to the most likely animacy of the agent.
+lexicalised causative. Verbs are also tagged according to the most
+likely animacy of the agent, for pro-drop insertion.
 
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
@@ -307,9 +310,9 @@ responsibilities:
   and adverbs are output based on verb modality, voice and derivation
   tags.
 
-\item Interchunk 1, 26 rules: simple anaphora resolution (most recent
-  subject gender), merging coordinated noun phrase chunks, moving
-  postpositions before noun phrases.
+\item Interchunk 1, 26 rules: simple anaphora resolution (based onmost
+  recent subject gender), merging coordinated noun phrase chunks,
+  moving postpositions before noun phrases.
 
 \item Interchunk 2, 39 rules: major word order changes, inserting
   dropped pronouns, inserting adverbs to indicate verb modality,
@@ -319,7 +322,9 @@ responsibilities:
   infinitive marker, tag cleanup in preparation of generation.
 \end{enumerate}
 
-A lot of work went into structural transfer compared to what is
+Wherever generalisations are possible, we use \textbf{macros} (e.g.
+for tranferring agreement information), so rules tend to be fairly
+short. A lot of work went into structural transfer compared to what is
 typical of Apertium language pairs between more related languages.
 
 \subsection{Generation}
@@ -342,7 +347,7 @@ dictionaries (in the \smenob{} direction) as well. Since derivations
 are not specified in the translational dictionary, we show coverage
 with and without derivation-only analyses counted. The table also
 shows the ambiguity rate (amount of analyses per known word) with and
-without derivations counted. \footnote{Currently, the ambiguity rate
+without derivations counted.\footnote{Currently, the ambiguity rate
   is reduced to about 1.04 by the constraint grammar disambiguator if
   we turn off the switch to choose the first analysis given remaining
   ambiguity.}
@@ -351,7 +356,7 @@ without derivations counted. \footnote{Currently, the ambiguity rate
 The Wikipedia corpus seems to have very low coverage, but looking over
 the unknown words, it seems that many of them are in Finnish, English
 or Norwegian (the rest are mostly proper names). The S\'{a}mi Wikipedia
-is also written by non-natives, 12.5\% of its 101000 words are not recognised
+is also written by non-natives, 12.5\% of its words are not recognised
 even by Giellatekno's non-normative analyser, as opposed to only 3.5 \% for
 a larger, 6.1m reference corpus. The lower coverage for Wikipedia is thus to
 be expected.
@@ -381,12 +386,12 @@ All tests were run on revision 37177 of \texttt{apertium-sme-nob}.
 
 \subsection{Word Error Rate on Post-Edited text}
 \label{sec:WER}
-We did a Word Error Rate test on a short children's story
-\footnote{\href{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/xupaixkar/rasskaz}{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/xupaixkar/rasskaz}}
-and some paragraphs from a history web page
-\footnote{\href{http://skuvla.info/skolehist/siri97-s.htm}{http://skuvla.info/skolehist/siri97-s.htm}}.
-The results are shown in table \ref{table:wer}\footnote{Our post-edits are
-  available from our public repository.}. The translator obviously
+We did a Word Error Rate test on a short children's
+story\footnote{\href{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/xupaixkar/rasskaz}{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/xupaixkar/rasskaz}}
+and some paragraphs from a history web
+page.\footnote{\href{http://skuvla.info/skolehist/siri97-s.htm}{http://skuvla.info/skolehist/siri97-s.htm}}
+The results are shown in table \ref{table:wer}.\footnote{Our post-edits
+  are available from our public repository.} The translator obviously
 struggles with the more complex formulations in the history text, and
 has a long way to go before being useful for post-editing.
 
@@ -412,12 +417,12 @@ the test were based on sentences from a parallel corpus of
 non-fiction, the corpus had not been used during development of the MT
 system. The first test, a multiple choice test, presented 10 sentences
 drawn from the corpus. For each sentence, the test person also got the
-translation, and 3 alternative paraphrases. The second test was set up
-as the first, but instead of the 3 alternatives the test presented an
-open question related to the translation. For both test sets the 
-questions and paraphrases were prepared before the sentences were 
-translated by the system, in order not to be influenced by the 
-translated output.
+translation, and 3 alternative hand-written paraphrases. The second
+test was set up as the first, but instead of the 3 alternatives the
+test presented an open question related to the translation. For both
+test sets the questions and paraphrases were prepared before the
+sentences were translated by the system, in order not to be influenced
+by the translated output.
 
 The third test showed a \sme{} source sentence, then the MT output of
 that sentence, followed by the reference translation (5-15 words long)
@@ -432,7 +437,8 @@ nouns\footnote{Nouns were of the same length (+- 3 characters), pulled
 finally a "none seem to fit" choice. The users (who did not understand
 \sme{}) were instructed to click what seemed to be the removed word,
 using the MT as a guide. Ten consecutive sentences from the same piece
-of text were shown one at a time. The results are shown in table (\ref{eval}).
+of text were shown one at a time. The results of all tests are shown
+in table \ref{eval}.
 
 \begin{table}[htdp]
 \caption{Results of gisting evaluation, 3 different tests}
@@ -449,12 +455,12 @@ Number of test subjects & 10 & 14  & 10  \\
 
 
 The results from the multiple choice and random word tests correlate
-with each other, whereas the fill-in test shows much worse results.
-The reason for that is that the fill-in test was more vulnerable to
-holes in the MT output. Four of the 10 test sentences got no or only
-one correct answers. What made these sentences so hard was that the
-system failed to translate the key word in the sentence. Sentence
-(\ex{1}) gives an example.
+with each other, whereas the fill-in test seems much worse. Open
+questions don't allow ``correct guesses'', and the fill-in test was
+more vulnerable to holes in the MT output. Four of the 10 test
+sentences got no or only one correct answers. What made these
+sentences so hard was that the system failed to translate the key word
+in the sentence. Sentence (\ex{1}) gives an example.
 %Linda: hard? hard to understand or maybe difficult?
 
 \eenumsentence{\item{Mun muitt\'{a}n ahte Lillemor Isaksen, geas lei gymn\'{a}sa, measta ii fidnen oahpaheaddjibarggu go son lei s\'{a}megielat. \\ 
@@ -466,9 +472,9 @@ I remember that Lillemor Isaksen, who had secondary high school, almost did not 
 %Kevin: eh...they require this hellish special latex system, so glosses
 %might get low priority :/
 
-The word $samisker$ (here interpreted as a agent noun, on a par with
-$snekker$ ($carpenter$) does not exist, and is interpreted by 9 of the
-informants as "a Saami", instead of the correct "a Saami speaker".
+The word \textit{samisker} (here interpreted as a agent noun, on a par
+with \textbf{carpenter}) does not exist, and is interpreted by 9 of
+the informants as "a Saami", instead of the correct "a Saami speaker".
 Here, the missing translation of the key word blocked a proper
 understanding of the sentence, despite the rest of the sentence being
 translated correctly. The loan word \textit{gymn\'{a}sa} was not
@@ -550,7 +556,7 @@ as follows:
 \enumsentence{\shortex{9}
 {Hvis & han & ikke & hadde & til & de & mulige & foreldrene & reiser ,..}
 {If   & he  & not  & had   & to.PR & the & possible & parents & travels, ...}
-{If he not had to the possible parents travels, ...}}
+{If he had not to the possible parents travels, ...}}
 
 but the correct interpretation is one of a formal subject of
 what in Norwegian would have been a cleft construction.
@@ -578,9 +584,8 @@ meaning is altered or lost.
 The more complex the text, the more we see problems relating to
 structural transfer; sometimes we simply do not catch large enough NP
 chunks (since we only match fixed-length patterns, they turn into two
-chunks instead of one). Derivations that work fine by themselves can
-give problems when they form part of complex NP's.
-
+chunks instead of one).
+% Derivations that work fine by themselves can give problems when they form part of complex NP's.
 
 
 \section{Discussion and outlook}
@@ -590,19 +595,19 @@ understanding North S\'{a}mi, but as the results of the fill-in sentence
 test showed, users miss important points from isolated sentences at
 least.
 
+Both transfer rules and lexical selection could be better. There is an
+experimental Apertium package \texttt{apertium-lex-tools} that we plan
+to use to automatically create more lexical selection rules.
+Disambiguation might be improved by training an HMM to run after the
+rule-based disambiguator, although the ambiguity rate is already well
+reduced by the rules that are in place.\footnote{An HMM after CG would
+  not help with the analyses that are erroneously removed, only those
+  that are erroneously left ambiguous}
+
 The na\"{i}ve coverage is very good on paper, even disregarding
 derivations, but on the other hand, with a system meant for gisting,
 one missing word can take away any chance of understanding the
 sentence.
-
-Lexical selection could be better. There is an experimental Apertium
-package \texttt{apertium-lex-tools} that we plan to use to
-automatically create more lexical selection rules. Disambiguation
-might be improved by training an HMM to run after the rule-based
-disambiguator, although the ambiguity rate is already reduced to 1.04
-by the rules that are in place \footnote{an HMM after CG would not help
-  with the analyses that are erroneously removed, only those that are
-  erroneously left ambiguous}. 
 
 \section*{Acknowledgements}
 Development was funded by the Norwegian Ministry of Government
