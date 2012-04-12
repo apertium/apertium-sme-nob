@@ -42,49 +42,5 @@ s/\("[^" ;()]*\)#\([^" ;()]*"\)/\1\2/
 tSTART' "$1"
 
 echo "Done."
-echo "Things to check manually for:"
-echo "* add +naj etc to LIST Foc_naj etc"
-echo "* fix MAP:r16 (@PCLE) TARGET Pcle ; to demand 'NOT 0 Pron OR N OR etc.'"
 
-#### The relevant diff from manual changes in last update:
-
-# --- sme-dis.rle	2012-03-15 14:28:22.311850436 +0100
-# +++ apertium-sme-nob.sme-nob.rlx	2012-03-15 14:27:51.040645737 +0100
-# @@ -425,17 +425,17 @@
-  
-#  LIST Qst = Qst ;
-  
-# -LIST Foc_ge = Foc_ge ;
-# -LIST Foc_gen = Foc_gen ;
-# -LIST Foc_ges = Foc_ges ;
-# -LIST Foc_gis = Foc_gis ;
-# -LIST Foc_naj = Foc_naj ;
-# -LIST Foc_ba = Foc_ba ;
-# -LIST Foc_be = Foc_be ;
-# -LIST Foc_hal = Foc_hal ;
-# -LIST Foc_han = Foc_han ;
-# -LIST Foc_bat = Foc_bat ;
-# -LIST Foc_son = Foc_son ;
-# +LIST Foc_ge = Foc_ge +ge ;
-# +LIST Foc_gen = Foc_gen +gen ;
-# +LIST Foc_ges = Foc_ges +ges ;
-# +LIST Foc_gis = Foc_gis +gis ;
-# +LIST Foc_naj = Foc_naj +naj ;
-# +LIST Foc_ba = Foc_ba +ba ;
-# +LIST Foc_be = Foc_be +be ;
-# +LIST Foc_hal = Foc_hal +hal ;
-# +LIST Foc_han = Foc_han +han ;
-# +LIST Foc_bat = Foc_bat +bat ;
-# +LIST Foc_son = Foc_son +son ;
- 
-#  LIST IV = IV ;
-#  LIST TV = TV ;
-# @@ -13817,7 +13817,7 @@
-#  MAP:r15 (@INTERJ) TARGET Interj ;
-#  	## Maid, iigo leat boahtán?
- 
-# -MAP:r16 (@PCLE) TARGET Pcle ;
-# +MAP:r16 (@PCLE) TARGET Pcle IF (NOT 0 N OR A OR Adv OR V OR Pron OR CS OR CC OR Po OR Pr OR Interj OR Num OR ABBR OR ACR) ;
-#  	## Amma mii eat leat máksán? 
- 
-#  MAP:r17 (@APP-Num←) TARGET ABBR IF (*-1 Num BARRIER NOT-QMARK)(0 INITIAL LINK NOT *1 NP-MEMBER BARRIER NOT-QMARK);
+# No longer need manual fixes after this script.
