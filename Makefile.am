@@ -33,7 +33,7 @@ $(LANG1).twol.hfst: $(BASENAME).$(LANG1).twol
 	hfst-twolc -R -i $< -o $@
 
 $(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
-	hfst-lexc -o $@ $<
+	hfst-lexc --format=foma -o $@ $<
 
 $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
 	hfst-compose-intersect -1 $(LANG1).lexc.hfst -2 $(LANG1).twol.hfst -o $@
