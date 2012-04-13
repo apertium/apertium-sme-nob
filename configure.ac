@@ -9,6 +9,18 @@ AM_INIT_AUTOMAKE([apertium-sme-nob], [0.5.0], no-define)
 AC_PROG_LN_S
 AC_PROG_AWK
 
+AM_PATH_PYTHON(
+	2.6,
+	AS_CASE([$PYTHON_VERSION],
+	[2*],[]			dnl less than 3, pass
+	[*], [			dnl greater than 3, fail
+		AC_MSG_WARN([Detected too high PYTHON_VERSION: $PYTHON_VERSION; re-run with PYTHON=/path/to/python2 if you wish to re-generate the lexc.
+])
+		PYTHON=:
+ 	]),
+	AC_MSG_WARN([No python executable found; re-run with PYTHON=/path/to/python2 if you wish to re-generate the lexc
+]))
+
 AC_DEFUN([PKG_CHECK_LTTOOLBOX], [
   LTTOOLBOX_VER=0
   PKG_CHECK_MODULES(LTTOOLBOX, lttoolbox-3.1 >= 3.1.0,
@@ -116,7 +128,6 @@ if test x$ac_cv_path_XSLTPROC = xno
 then
   AC_MSG_ERROR([You don't have xsltproc installed.])
 fi
-
 
 
 AC_OUTPUT([Makefile])

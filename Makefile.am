@@ -29,6 +29,20 @@ TARGETS_COMMON = \
 ## 	SME ANALYSER DICTIONARY
 ##
 
+$(BASENAME).$(LANG1).lexc: $(PREFIX1).autobil.bin
+	@if ! test -f update-morph/langs.cfg; then \
+		echo ""; \
+		echo "update-morph/langs.cfg does not exist, not re-generating the lexc"; \
+		echo ""; \
+	elif test $(PYTHON) != :; then \
+		$(PYTHON) update-morph/update-lexc.py --config=update-morph/langs.cfg; \
+	else \
+		echo ""; \
+		echo "PYTHON not set. Re-run with \"autogen.sh PYTHON=/PATH/TO/python2\" if you wish to re-generate the lexc"; \
+		echo ""; \
+	fi;
+
+
 $(LANG1).twol.hfst: $(BASENAME).$(LANG1).twol
 	hfst-twolc -R -i $< -o $@
 
