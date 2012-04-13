@@ -142,6 +142,15 @@ set -o pipefail
 
 echo ""
 echo "All done."
-echo "Ensure $PREFIX/bin is in your PATH, e.g. by adding"
-echo "PATH=\"$PREFIX/bin:\$PATH\""
-echo "to your ~/.bashrc"
+echo ""
+echo "To be able to compile and run the translator, ensure these lines"
+echo "are in your ~/.bashrc:"
+echo ""
+echo "PATH=\"$PREFIX/bin:\$PATH\"" >>~/.bash_profile_local
+echo "" >>~/.bash_profile_local
+echo "PKG_CONFIG_PATH=\"$PREFIX/lib/pkgconfig\"" >>~/.bash_profile_local
+echo "export PKG_CONFIG_PATH" >>~/.bash_profile_local
+echo "LD_LIBRARY_PATH=\"$PREFIX/lib\"" >>~/.bash_profile_local
+echo "export LD_LIBRARY_PATH" >>~/.bash_profile_local
+echo "DYLD_LIBRARY_PATH=\"$PREFIX/lib\"" >>~/.bash_profile_local
+echo "export DYLD_LIBRARY_PATH" >>~/.bash_profile_local
