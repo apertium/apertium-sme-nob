@@ -31,9 +31,7 @@ TARGETS_COMMON = \
 
 $(BASENAME).$(LANG1).lexc: $(PREFIX1).autobil.bin
 	@if ! test -f update-morph/langs.cfg; then \
-		echo ""; \
-		echo "update-morph/langs.cfg does not exist, not re-generating the lexc"; \
-		echo ""; \
+		echo "(update-morph/langs.cfg does not exist, not re-generating the lexc)"; \
 	elif test $(PYTHON) != :; then \
 		$(PYTHON) update-morph/update-lexc.py --config=update-morph/langs.cfg; \
 	else \
