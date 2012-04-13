@@ -12,8 +12,8 @@ AC_PROG_AWK
 AM_PATH_PYTHON(
 	2.6,
 	AS_CASE([$PYTHON_VERSION],
-	[2*],[]			dnl less than 3, pass
-	[*], [			dnl greater than 3, fail
+	[2*],[],		dnl less than 3, pass
+	[*],[			dnl greater than 3, fail
 		AC_MSG_WARN([Detected too high PYTHON_VERSION: $PYTHON_VERSION; re-run with PYTHON=/path/to/python2 if you wish to re-generate the lexc.
 ])
 		PYTHON=:
