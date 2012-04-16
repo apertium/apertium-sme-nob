@@ -7,6 +7,8 @@ cslipubscollection/example.tex: cslipubscollection
 
 cslipubscollection: cslipubscollection.tar.gz
 	tar xzvf $<
+	mv cslipubscollection/example.tex cslipubscollection/example.tex.old
+	sed -e '6 i \\\\usepackage[T1]{fontenc}' cslipubscollection/example.tex.old > cslipubscollection/example.tex
 	mv cslipubscollection/example-ch01/ch01.tex cslipubscollection/example-ch01/ch01.tex.old
 	mv cslipubscollection/example-ch01/ch01.bib cslipubscollection/example-ch01/ch01.bib.old
 
