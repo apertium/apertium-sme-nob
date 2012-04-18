@@ -237,6 +237,17 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst.ol"/>
       </program>
+      <program name="cg-proc -1 -t">
+        <file name="sme-nob.rlx.bin"/>
+      </program>
+    </pipeline>
+  </mode>
+
+  <mode name="sme-nob-dis-trace-full">
+    <pipeline>
+      <program name="hfst-proc -w -p">
+        <file name="sme-nob.automorf.hfst.ol"/>
+      </program>
       <program name="cg-conv -a"/>
       <program name="vislcg3 --trace -g">
         <file name="apertium-sme-nob.sme-nob.rlx"/>
