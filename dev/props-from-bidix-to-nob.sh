@@ -17,7 +17,14 @@ if [ ${NPPP} -ne 2 ]; then
     exit 1
 fi
 
+if ( cd ${DEV}/..; ! make -q sme-nob.autogen.bin ); then 
+    echo "sme-nob.autogen.bin needs compiling. Run"
+    echo "    make sme-nob.autogen.bin"
+    echo "and then re-run $0"
+    exit 1
+fi
 GEN=${DEV}/../sme-nob.autogen.bin
+
 ANALYSES=`mktemp /tmp/ana.XXXXX`;
 SURFACES=`mktemp /tmp/surf.XXXXX`;
 RHS=`mktemp /tmp/rhs.XXXXX`;
