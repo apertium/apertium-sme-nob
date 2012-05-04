@@ -215,15 +215,12 @@
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
       </program>
-      <program name="cg-proc">
+      <program name="cg-conv -a">
+      <program name="vislcg3 --grammar --trace">
         <file name="sme-nob.val.bin"/>
-      </program>
-      <program name="cg-proc -w -n">
-        <file name="sme-nob.lex.bin"/>
       </program>
     </pipeline>
   </mode>
-
 
   <mode name="sme-nob-lex">
     <pipeline>
