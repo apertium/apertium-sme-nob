@@ -207,6 +207,24 @@
     </pipeline>
   </mode>
 
+  <mode name="sme-nob-val">
+    <pipeline>
+      <program name="hfst-proc -w -p">
+        <file name="sme-nob.automorf.hfst.ol"/>
+      </program>
+      <program name="cg-proc -1">
+        <file name="sme-nob.rlx.bin"/>
+      </program>
+      <program name="cg-proc">
+        <file name="sme-nob.val.bin"/>
+      </program>
+      <program name="cg-proc -w -n">
+        <file name="sme-nob.lex.bin"/>
+      </program>
+    </pipeline>
+  </mode>
+
+
   <mode name="sme-nob-lex">
     <pipeline>
       <program name="hfst-proc -w -p">
