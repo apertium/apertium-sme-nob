@@ -18,6 +18,7 @@ TARGETS_COMMON = \
 	$(PREFIX2).autogen.hfst \
 	$(PREFIX1).rlx.bin \
 	$(PREFIX1).lex.bin \
+	$(PREFIX1).val.bin \
 	$(PREFIX1).autobil.bin \
 	$(PREFIX1).autogen.bin \
 	$(PREFIX1).t1x.bin \
@@ -121,6 +122,14 @@ $(PREFIX1).lex.bin: $(BASENAME).$(PREFIX1).lex
 	cg-comp $< $@
 
 ##
+##	VALENCY
+##
+
+$(PREFIX1).val.bin: $(BASENAME).$(PREFIX1).val
+	cg-comp $< $@
+
+
+##
 ##	TRANSFER RULES
 ##
 
@@ -181,6 +190,7 @@ EXTRA_DIST=\
 	$(BASENAME).$(LANG1).lexc \
 	$(BASENAME).$(PREFIX1).rlx \
 	$(BASENAME).$(PREFIX1).lex \
+	$(BASENAME).$(PREFIX1).val \
 	$(BASENAME).$(PREFIX1).dix \
 	$(BASENAME).$(LANG2).dix \
 	$(BASENAME).$(PREFIX1).t1x \
