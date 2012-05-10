@@ -103,7 +103,7 @@ Most Apertium language pairs use the lttoolbox FST package for
 analysis and generation. The lttoolbox dictionaries are written in
 XML, where one dictionary may be compiled both to an analyser and a
 generator. The \smenob{} pair uses lttoolbox for \nob{} generation and
-the transfer lexicon, while the \sme{} analyser is written in the
+the translation dictionary, while the \sme{} analyser is written in the
 Xerox lexc/twol formats~\citep{beesley2003fsm}. Both systems allow
 generalising over classes using paradigms/continuation lexicons, but
 differ in other features. We use the FOSS package Helsinki Finite
@@ -123,18 +123,18 @@ are run as one CG module, the output of which is unambiguous both
 morphologically (one analysis per form) and syntactically (each
 form/analysis is annotated with exactly one syntactic tag).
 
-The first CG module is directly followed by a lexical selection CG
-module\footnote{If the disambiguation rules leaves any ambiguity, that
-  CG only prints the first analysis. We may later train an HMM to get
-  rid of leftover ambiguity, this would go between the two CG
-  modules.}, which may add subscripts to lemmas in certain contexts in
+The first CG module\footnote{If the disambiguation rules leaves any
+  ambiguity, that CG only prints the first analysis. We may later
+  train an HMM to get rid of leftover ambiguity, this would go between
+  the two CG modules.} is directly followed by a lexical selection CG
+module, which may add subscripts to lemmas in certain contexts in
 order to select a different lexical translation.
 
 Lexical selection is followed by pretransfer (minor format changes in
 preparation of transfer) and then a four-stage chunking transfer. The
-first stage handles lexical transfer as well as chunking based on
-patterns of morphological and syntactic tags (further detail in
-section \ref{sec:structural-transfer}).
+first stage handles lexical transfer using the translation dictionary,
+as well as chunking based on patterns of morphological and syntactic
+tags (further detail in section \ref{sec:structural-transfer}).
 
 Output from the transfer module is fed to morphological generation
 with the lttoolbox-based \nob{} generator.
@@ -168,8 +168,10 @@ We re-used several FOSS resources in creating this language pair. The
 the Divvun and Giellatekno S\'{a}mi language technology
 projects\footnote{See \href{http://divvun.no}{http://divvun.no} and
   \href{http://giellatekno.uit.no}{http://giellatekno.uit.no}.},
-including the lexicon/morphology and disambiguator/syntax CG. These
-were continually updated as the ``upstream'' versions changed.
+including the lexicon/morphology and disambiguator/syntax CG. Although
+we altered our copies from the originals, we continually merged in the
+changes that were made in the ``upstream'' versions (ie. the ones
+maintaned by Divvun/Giellatekno).
 
 The lexical selection CG and the transfer rules were written from
 scratch. The translation lexicon was originally based on various
@@ -183,16 +185,18 @@ automatically using scripts, letting us easily keep the analyser
 up-to-date with the upstream version.
 
 The upstream analyser contains many lemmas that are not in our
-translational dictionary. Since these often lead to transfer errors
-that can affect the surrounding context, and can suppress the choice
-of forms that \textit{have} translations, we ``trim'' the analyser
-down to those forms which are in the translational dictionary. To do
-this, we use a script which analyses the lexc source files with the
-translational dictionary, and outputs only those entries which have
-translational analyses.\footnote{The untrimmed source files weigh in at
-  about 3.5 MB, trimming this down to 2.6 MB is done by a script in
-  our public repository which runs in $<10$ seconds, and is general
-  enough that other lexc-based language pairs can easily use it.}
+translation dictionary. These often lead to transfer errors that can
+affect the surrounding context, and can suppress the choice of forms
+that \textit{have} translations.
+
+We ``trim'' the analyser down to those forms which are in the
+translation dictionary. To do this, we use a script which analyses the
+lexc source files with the translation dictionary, and outputs only
+those entries which have translation analyses.\footnote{The untrimmed
+  source files weigh in at about 3.5 MB, trimming this down to 2.6 MB
+  is done by a script in our public repository which runs in $<10$
+  seconds, and is general enough that other lexc-based language pairs
+  can easily use it.}
 
 The original analyser defines quite a lot of rules for derivational
 processes. Derivational morphology expands the coverage of the
@@ -216,19 +220,19 @@ periphrastic construction (e.g. `let NP VERB'). If a derivation
 changes the part-of-speech from verb to noun, we have to translate the
 derivation into a certain verb form that looks right in a noun context
 (e.g.~present tense of \nob{} verbs will most of the time look like an
-actor noun).\footnote{The alternative would be to define, for each \sme{}
-  verb, both a noun and a verb translation on the \nob{} side of the
-  translational dictionary, but this takes away the whole point of
-  increasing coverage without adding all the root forms.} To make
+actor noun).\footnote{The alternative would be to define, for each
+  \sme{} verb, both a noun and a verb translation on the \nob{} side
+  of the translation dictionary, but this takes away the whole point
+  of increasing coverage without adding all the root forms.} To make
 this even more complex, even a lexicalised form might require a
-part-of-speech change in the transfer lexicon if there is no word with
-the same meaning and part-of-speech in the target language; in that
-case, we also have to ensure transfer works for all possible
+part-of-speech change in the translation dictionary if there is no
+word with the same meaning and part-of-speech in the target language;
+in that case, we also have to ensure transfer works for all possible
 derivations of all possible defined part-of-speech changes.
 
 However, since \smenob{} is meant for gisting, where an odd-sounding
 translation is more useful than an untranslated word, and resources
-for automatically expanding the bilingual dictionary are scarce, we
+for automatically expanding the translation dictionary are scarce, we
 decided to allow a restricted set of derivations. We define legal
 derivations by the use of additional twol rules which simply forbid
 analyses containing certain tags or tag sequences. These twol rules
@@ -250,8 +254,8 @@ A lexical selection CG was created in order to select between
 different possible translations that otherwise share the same
 part-of-speech information. Currently it has only 102 rules covering
 52 lemmas, mostly high-frequency ones, although 802 lemmas of the
-transfer lexicon have at least one alternative translation. This CG
-particularly depends on valency and semantic sets (e.g.
+translation dictionary have at least one alternative translation. This
+CG particularly depends on valency and semantic sets (e.g.
 \textit{luohkká} by default translates into \textit{bakke},
 \textbf{hill}, but if we see a context word related to the
 \textsc{EDUCATION} set, we translate into \textit{klasse},
@@ -260,31 +264,32 @@ particularly depends on valency and semantic sets (e.g.
 %Linda: that's a bit short
 
 \subsection{Lexical transfer}
-The open classes of the transfer lexicon were initiated with entries
+The open classes of the translation dictionary were initiated with entries
 from the 9900 lemma dictionary Vuostta\v{s} Digis\'{a}nit,\footnote{GPL and CC,
   see
   \href{http://giellatekno.uit.no/words/dicts/index.eng.html}{http://giellatekno.uit.no/words/dicts/index.eng.html}.}
 although many multiword translations had to be removed or simplified;
 later on, entries were mostly added manually. Not including lexical
 selection alternatives, there are currently about 3300 verbs, 1400
-adjectives and 14000 common nouns in the transfer lexicon.
+adjectives and 14000 common nouns in the translation dictionary.
 
 Unlike with most Apertium language pairs, we did not make an attempt
 to change the tag set in the analyser to conform with the Apertium
 standard (apart from minor format differences). The change from e.g.
 \texttt{<N><Prop>} (proper noun) to \texttt{<np>} or \texttt{<Sg1>} to
-\texttt{<sg><p1>} happens in the transfer lexicon, mostly using a
+\texttt{<sg><p1>} happens in the translation dictionary, mostly using a
 \textbf{paradigm} definition to generalise over changes for each part
 of speech. Part of the derivation handling also happens here, e.g. 
 most passive derivations turn into plain passive forms, while verbs
 derived into actor-nouns are transferred to present tense verbs.
 
-We also add special tags used only as a signal to transfer, which are
-removed before generation. The causative derivation of a form gets a
-tag which makes transfer form a periphrastic `let'-construction, but
-we also add the same tag to all forms if the root itself is a
-lexicalised causative. Verbs are also tagged according to the most
-likely animacy of the agent, for pro-drop insertion.
+We also add special tags used only as a signal to structural transfer,
+which are removed before generation. The causative derivation of a
+form gets a tag which makes transfer form a periphrastic
+`let'-construction, but we also add the same tag to all forms if the
+root itself is a lexicalised causative. Verbs are also tagged
+according to the most likely animacy of the agent, for pro-drop
+insertion.
 
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
@@ -329,16 +334,16 @@ The na\"{i}ve coverage\footnote{A form is counted as covered if it
   analyser does not cover, thus `na\"{i}ve'.} of the analyser is shown
 in table \ref{table:cov} for legal text (laws), the \sme{} Wikipedia
 (wiki) and a corpus of \sme{} news articles. All forms that pass
-through the analyser, will also pass through the transfer lexicon,
-transfer rules and generator, so this shows the coverage of the other
-dictionaries (in the \smenob{} direction) as well. Since derivations
-are not specified in the translational dictionary, we show coverage
-with and without derivation-only analyses counted. The table also
-shows the ambiguity rate (amount of analyses per known word) with and
-without derivations counted.\footnote{Currently, the ambiguity rate
-  is reduced to about 1.04 by the constraint grammar disambiguator if
-  we turn off the switch to choose the first analysis given remaining
-  ambiguity.}
+through the analyser, will also pass through the translation
+dictionary, transfer rules and generator, so this shows the coverage
+of the other dictionaries (in the \smenob{} direction) as well. Since
+derivations are not specified in the translation dictionary, we show
+coverage with and without derivation-only analyses counted. The table
+also shows the ambiguity rate (amount of analyses per known word) with
+and without derivations counted.\footnote{Currently, the ambiguity
+  rate is reduced to about 1.04 by the constraint grammar
+  disambiguator if we turn off the switch to choose the first analysis
+  given remaining ambiguity.}
 
 
 The Wikipedia corpus seems to have very low coverage, but looking over
