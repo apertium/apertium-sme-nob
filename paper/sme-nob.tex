@@ -1,5 +1,5 @@
-\newcommand{\comment}[1]{\textbf{TODO:~#1}}
-\renewcommand{\comment}[1]{} % uncomment for final version
+% TODO: Mention other _design_ choices that had to do with
+% assimilation (vs dissemination)
 
 % TODO:
 %\usepackage[utf8x]{inputenc}
@@ -13,34 +13,20 @@
 
 \achapter{Evaluating North S\'{a}mi to Norwegian assimilation RBMT}{N.N. and N.N.}
 
-% testen:
-% a. teste ut 10x10x10
-% b. evaluere 
-
-% skrivinga:
-% - leite etter litteratur om evaluering av system for å forstå tekst
-% - skrive rammetekst, lage dummy-tabellar for testresultat
-% - så, når testinga er ferdig, fylle inn resultat, skrive ferdig, 
-
-% disposisjon
-% - intro: mål og plan for artikkelen
-% - samisk, gisting, tidlegare litteratur
-% - vår test, vår analyse
-% - oppsummering og konklusjon, evaluering av kva som er potensiale for forbetring
 
 
   
     % \begin{abstract}
 We describe the development and evaluation of a rule-based machine
-translation assimilation system from North S\'{a}mi to Norwegian Bokm{\aa}l,
-built on a combination of Free and Open Source (FOSS) resources: the
-Apertium platform and the Giellatekno HFST lexicon and Constraint
-Grammar disambiguator. 
-We detail the integration of these and other resources in the system
-along with the construction of the lexical and structural transfer,
-and evaluate the translation quality using various methods, focusing
-on evaluating the users' \textit{comprehension} of the text. Finally,
-some future work is suggested.
+translation assimilation system from North S\'{a}mi to Norwegian
+Bokm{\aa}l, built on a combination of Free and Open Source Software
+(FOSS) resources: the Apertium platform and the Giellatekno HFST
+lexicon and Constraint Grammar disambiguator. We detail the
+integration of these and other resources in the system along with the
+construction of the lexical and structural transfer, and evaluate the
+translation quality using various methods, focusing on evaluating the
+users' \textit{comprehension} of the text. Finally, some future work
+is suggested.
 % Linda: the abstract sounds a bit boring, we do this, then that, 
 % then this.. maybe you can put an exciting first sentence including 
 % 000the special thing about the work
@@ -73,12 +59,12 @@ morphology is comparatively simple.
 Most \sme{} speakers in Norway understand \nob{}, while most \nob{}
 speakers do not understand \sme{}. The languages are completely
 unrelated, and the linguistic distance is great, making it hard to
-achieve high quality MT results. A \nobsme{} system would only be useful if the
-quality were good enough that it could be used for text production
-(post-editing). On the other hand, a \smenob{} gisting-quality system
-can be useful for the large group of \nob{} speakers who do not
-understand \sme{}. Thus we chose to focus on the \smenob{} direction
-first.
+achieve high quality MT results. For a \nobsme{} system to be widely
+useful, the quality would have to be good enough that it could be used
+for text production (post-editing). On the other hand, a \smenob{}
+gisting-quality system can be useful for the large group of \nob{}
+speakers who do not understand \sme{}. Thus we chose to focus on the
+\smenob{} direction first.
 
 We do not know of other machine translation (MT) systems between \sme{}
 and any Indo-European language, although \citet{tyers2009dpm} describe %Linda: thanks for the citation ;)
@@ -265,9 +251,11 @@ different possible translations that otherwise share the same
 part-of-speech information. Currently it has only 102 rules covering
 52 lemmas, mostly high-frequency ones, although 802 lemmas of the
 transfer lexicon have at least one alternative translation. This CG
-particularly depends on valency and semantic sets (e.g. selecting the
-\textbf{class} instead of \textbf{hill} translation if we see a context
-word related to the EDUCATION set).
+particularly depends on valency and semantic sets (e.g.
+\textit{luohkká} by default translates into \textit{bakke},
+\textbf{hill}, but if we see a context word related to the
+\textsc{EDUCATION} set, we translate into \textit{klasse},
+\textbf{(school) class}).
 
 %Linda: that's a bit short
 
@@ -310,8 +298,8 @@ responsibilities:
   and adverbs are output based on verb modality, voice and derivation
   tags.
 
-\item Interchunk 1, 26 rules: simple anaphora resolution (based onmost
-  recent subject gender), merging coordinated noun phrase chunks,
+\item Interchunk 1, 26 rules: simple anaphora resolution (based on
+  most recent subject gender), merging coordinated noun phrase chunks,
   moving postpositions before noun phrases.
 
 \item Interchunk 2, 39 rules: major word order changes, inserting
