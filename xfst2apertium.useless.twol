@@ -101,6 +101,10 @@ Alphabet
  %+Edu:0
  %+Veh:0 !Vehicle
  %+Clth:0 !Clothes
+ %+Wpn:0 !Weapon
+ %+Body:0
+ %+Food:0
+
 
 ! Not sure which section this goes in:
  %+Allegro:0			! from LEXICON GOADE-IU-
@@ -132,7 +136,7 @@ Alphabet
 ! Der#2
               %+Actor
               %+Der%/Dimin                                 ! NN
-              %+Der%/eapmi                                 ! VN
+              %+Der%/NomAct                                 ! VN Der/NomAct har to realisasjonar, med ulike restriksjonar, this is previous Der/eapmi
               %+Der%/adda                                  ! VV
               %+Der%/ahtti                                 ! VV
               %+Der%/alla                                  ! VV
@@ -155,7 +159,7 @@ Alphabet
                                         %+Der%/geahtes     ! VA
                                         %+Der%/muš         ! VN
                                         %+Der%/supmi       ! VN
-                                        %+Der%/n           ! VN
+                                        %+Der%/NomAct           ! VN Der/NomAct har to realisasjonar, med ulike restriksjonar, this is previous Der/n
                                         %+Der%/upmi        ! VN
 
 ! Der#other
@@ -397,6 +401,9 @@ Useless =	    ! Keep consistent with tags in  sme-lex.txt:36..118
  %+Edu
  %+Veh !Vehicle
  %+Clth !Clothes
+ %+Wpn !Weapon
+ %+Body
+ %+Food
 
 ! Not sure which section this goes in:
  %+Allegro			! from LEXICON GOADE-IU-
@@ -451,7 +458,7 @@ Derivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 ! Der#2
               %+Actor
               %+Der%/Dimin                                 ! NN
-              %+Der%/eapmi                                 ! VN
+              %+Der%/NomAct                                 ! VN Der/NomAct har to realisasjonar, med ulike restriksjonar, this is previous Der/eapmi
               %+Der%/adda                                  ! VV
               %+Der%/ahtti                                 ! VV
               %+Der%/alla                                  ! VV
@@ -474,7 +481,7 @@ Derivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
                                         %+Der%/geahtes     ! VA
                                         %+Der%/muš         ! VN
                                         %+Der%/supmi       ! VN
-                                        %+Der%/n           ! VN
+                                        %+Der%/NomAct           ! VN Der/NomAct har to realisasjonar, med ulike restriksjonar, this is previous Der/n
                                         %+Der%/upmi        ! VN
 
 ! Der#other
@@ -848,8 +855,8 @@ Vd /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | %+Attr | [] ] Useless:0* _ ; wh
 !! We create exceptions to the above rule by simply removing the inner
 !! PartOfSpeech tag in those contexts where the double derivation has
 !! bidix entries:
-"Allow +V+Der2+Der/PassL+V+Der3+Der/n+N (removing inner PoS tag)"
-%+V:0 <=> %+V Transitivity %+Der2 %+Der%/PassL _ %+Der3 %+Der%/n %+N ;
+"Allow +V+Der2+Der/PassL+V+Der3+Der/NomAct+N (removing inner PoS tag)"
+%+V:0 <=> %+V Transitivity %+Der2 %+Der%/PassL _ %+Der3 %+Der%/NomAct %+N ;
 
 "Allow +V+Der1+Der/j+V+Der2+Der/PassL+V (removing inner PoS tag)"
 %+V:0 <=> %+V Transitivity %+Der1 %+Der%/j _ %+Der2 %+Der%/PassL %+V ;
