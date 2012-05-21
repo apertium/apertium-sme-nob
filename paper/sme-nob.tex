@@ -176,6 +176,7 @@ maintaned by Divvun/Giellatekno).
 The lexical selection CG and the transfer rules were written from
 scratch. The translation lexicon was originally based on various
 word-lists from Giellatekno but expanded throughout development.
+
 \subsection{Analysis and derivational morphology}
 The morphological analyser was not originally made for machine
 translation, and we made several modifications, from minor tag format
@@ -184,10 +185,24 @@ forms without translations. Our modifications are all done
 automatically using scripts, letting us easily keep the analyser
 up-to-date with the upstream version.
 
-The upstream analyser contains many lemmas that are not in our
-translation dictionary. These often lead to transfer errors that can
-affect the surrounding context, and can suppress the choice of forms
-that \textit{have} translations.
+The upstream analyser contains many lemmas and readings that are not
+in our translation dictionary. These often lead to transfer errors
+that can affect the surrounding context, and can suppress the choice
+of forms that do have translations. As an example of the latter, the
+form \textit{vuovdi} (\textbf{salesperson}) gets a reading both as the
+underived noun, and as a derivation of the verb \textit{vuovdit}
+(\textbf{to sell}); if both were in the analyser, but only the verb
+were in the translation dictionary, the disambiguator might still
+choose the noun, and we would end up with an untranslated word where
+we could have had a translation. Transfer errors in surrounding
+context occur with untrimmed analysers since the translation
+dictionary is also used to translate morphological features; e.g. the
+\nob{} noun gender is necessarily specified per entry in the
+translation dictionary, and the transfer rules may insert
+gender-agreeing determiners based on the tags output from the
+translation dictionary. Writing heuristic exceptions for every
+possible tag omission would be more work than simply adding more good
+translations to the dictionary.
 
 We ``trim'' the analyser down to those forms which are in the
 translation dictionary. To do this, we use a script which analyses the
