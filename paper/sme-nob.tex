@@ -1,20 +1,97 @@
+\documentclass{book}
+
+\usepackage[DRAFT]{cslipubs}
+
+\usepackage[T1]{fontenc}
+
+% \usepackage{footnote}
+% \usepackage{multibib}
+% \usepackage{threeparttable}
+
+\title{A \LaTeX\ Package for CSLI Collections}    % \title{__}  is necessary.
+\author{Edie Tor and Ed Itor (eds.)}              % \author{__} is necessary.
+\date{May 23, 2002}                               % \date{__}   is optional.
+
+
+%\raggedbottom   % Uncomment this line if large diagrams cause vertical gaps.
+
+\hfuzz = 2pt
+
+%\crop[]         % Uncomment for centered pages while using [FINAL] option.
+%\crop[cam]      % Uncomment for crosshairs that show corners of each page.
+%\crop[frame]    % Uncomment for rectangle that shows edges of each page.
+
+\usepackage[comma]{natbib}  % CSLI Pubs favored bibliography package.
+
+\usepackage{chapterbib}     % Allows chapters to have separate bibliographies.
+                            % The files example-ch01.tex and example-ch02.tex
+                            % contain their own \bibliographystyle{__} and
+                            % \bibliography{__} commands.  Run BibTeX
+                            % individually on each chapter as follows:
+                            %     bibtex example-ch01
+                            %     bibtex example-ch02
+                            % Do NOT run BibTeX on the main document file.
+
+
+\usepackage{import}         % Allows chapters to have separate subdirectories.
+
+
+\usepackage{makeidx}        % Necessary if this book has an Index.
+\makeindex                  % Comment out this line when Index is final.
+
+
+% Some extra macros that CSLI publications sometimes uses.  Not essential.
+\usepackage{cslipubs-extra}
+
+% Some more bells and whistles.
+%\usepackage{avm}
+\usepackage{lingmacros}
+
+% Create your own separate style file and load here to avoid cluttering
+% up the preamble more than necessary.  There should be no definitions,
+% etc. after the \begin{document} command.
+%\usepackage{mymacros}
+
+
+% The \includeonly{__} command is very useful for processing subsections
+% of the entire document.  Read about it in the LaTeX Manual.
+%
+%\includeonly{example-ch00,example-ch01}
+
+
+\begin{document}
+
+\frontmatter      %%%%%% Start with Roman page numbers and unnumbered chapters
+
+\maketitle
+
+\setcounter{page}{5}
+\setcounter{tocdepth}{0}  % 0 = chapters only in Contents, 1 = sections also.
+%\tableofcontents          % LaTeX at least twice for correct Table of Contents.
+
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of apertium-sme-nob chapter %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % TODO: Mention other _design_ choices that had to do with
 % assimilation (vs dissemination)
 
-% TODO:
+% TODO not sure we need this:
 %\usepackage[utf8x]{inputenc}
 
 \newcommand{\href}[2]{{\tt #1}} % put hyperref in preamble? TODO
-
 \newcommand{\sme}{{\tt sme}}
 \newcommand{\nob}{{\tt nob}}
 \newcommand{\smenob}{\sme$\rightarrow{}$\nob}
 \newcommand{\nobsme}{\nob$\rightarrow{}$\sme}
 
-\achapter{Evaluating North S\'{a}mi to Norwegian assimilation RBMT}{N.N. and N.N.}
 
+\achapter{Evaluating North S\'{a}mi to Norwegian assimilation RBMT}{N.N., N.N.}
 
-
+\section{Introduction} % and roadmap
   
     % \begin{abstract}
 We describe the development and evaluation of a rule-based machine
@@ -33,9 +110,6 @@ is suggested.
     % \end{abstract}
 
 
-
-
-\section{Introduction} % and roadmap
 This paper describes and evaluates a rule-based machine translation
 (MT) system from North S\'{a}mi to Norwegian Bokm{\aa}l, re-using
 several existing FOSS resources. 
@@ -47,6 +121,7 @@ the purpose of letting users understand a text written in a language
 foreign to them (as opposed to \textit{dissemination}, where the
 purpose is MT for post-editing). Finally we discuss the results and
 ideas for improvements.
+
 
 \subsection{The Languages}
 North S\'{a}mi (\sme{}) is a Finno-Ugric language spoken by between 
@@ -619,8 +694,19 @@ sentence.
 
 \section*{Acknowledgements}
 Development was funded by the Norwegian Ministry of Government
-Administration, Reform and Church Affairs. Thanks to N.N., N.N. and
-N.N. who also contributed much to the development of this language
+Administration, Reform and Church Affairs. Many thanks to N.N., N.N.
+and N.N. who also contributed much to the development of this language
 pair.
 
+
+
+\bibliographystyle {cslipubs-natbib}
+\bibliography {apertium}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End of apertium-sme-nob chapter %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\backmatter
+\end{document}
 

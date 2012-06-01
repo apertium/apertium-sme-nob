@@ -1,42 +1,35 @@
-all: sme-nob.pdf
+TARGET=sme-nob
+all: $(TARGET).pdf
 
+
+TEXDEPS=cslipubs.sty cslipubs-extra.sty cslipubs-natbib.bst
 cslipubscollection.tar.gz:
 	wget "http://cslipublications.stanford.edu/ftp-pub/publications/latex-package/latex2e-native/cslipubscollection.tar.gz" -O $@
-
-cslipubscollection/example.tex: cslipubscollection
-
 cslipubscollection: cslipubscollection.tar.gz
 	tar xzvf $<
-	mv cslipubscollection/example.tex cslipubscollection/example.tex.old
-	sed -e '6 i \\\\usepackage[T1]{fontenc}' cslipubscollection/example.tex.old > cslipubscollection/example.tex
-	mv cslipubscollection/example-ch01/ch01.tex cslipubscollection/example-ch01/ch01.tex.old
-	mv cslipubscollection/example-ch01/ch01.bib cslipubscollection/example-ch01/ch01.bib.old
-
-cslipubscollection/example-ch01/ch01.tex: sme-nob.tex cslipubscollection
-	cp $< $@
-
-cslipubscollection/example-ch01/ch01.bib: apertium.bib cslipubscollection
-	cp $< $@
+cslipubs.sty: cslipubscollection
+	cp cslipubscollection/$@ $@
+cslipubs-extra.sty: cslipubscollection
+	cp cslipubscollection/$@ $@
+cslipubs-natbib.bst: cslipubscollection
+	cp cslipubscollection/$@ $@
 
 
-sme-nob.pdf: cslipubscollection/example.dvi
-	cd cslipubscollection && pdflatex example && cp example.pdf ../sme-nob.pdf
-
-cslipubscollection/example.dvi:  cslipubscollection/example.tex cslipubscollection/example-ch00.tex cslipubscollection/example-ch01.tex cslipubscollection/example-ch02.tex cslipubscollection/example-ch01/ch01.tex cslipubscollection/example-ch01/ch01.bib cslipubscollection/example-ch02/ch02.tex cslipubscollection/example-ch02/ch02.bib cslipubscollection/example-index.tex
-	cd cslipubscollection && latex -halt-on-error     example
-	cd cslipubscollection && bibtex    example-ch01
-	cd cslipubscollection && bibtex    example-ch02
-	cd cslipubscollection && makeindex example
-	cd cslipubscollection && latex -halt-on-error     example
-	cd cslipubscollection && latex -halt-on-error     example
-	cd cslipubscollection && makeindex example
-	cd cslipubscollection && latex -halt-on-error     example
+$(TARGET).pdf: $(TARGET).tex apertium.bib  $(TEXDEPS)
+	latex -halt-on-error $(TARGET)
+	bibtex               $(TARGET)
+	makeindex            $(TARGET)
+	latex -halt-on-error $(TARGET)
+	latex -halt-on-error $(TARGET)
+	makeindex            $(TARGET)
+	latex -halt-on-error $(TARGET)
+	pdflatex             $(TARGET)
 
 clean:
-	cd cslipubscollection && rm -f *.ilg *.dvi *~ *.blg *.log
+	rm -f $(TARGET).{ilg,dvi.blg,log,aux,bbl,idx,ind}
 
-veryclean:
-	rm -rf cslipubscollection
+veryclean: clean
+	rm -rf cslipubscollection $(TARGET).pdf $(TEXDEPS)
 
 
 
