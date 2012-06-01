@@ -391,7 +391,9 @@ form gets a tag which makes transfer form a periphrastic
 root itself is a lexicalised causative. Verbs are also tagged
 according to the most likely animacy of the agent\footnote{Currently
   just manual tagging, a corpus-based method should be possible with
-  the use of semantic CG sets like HUMAN.}, for pro-drop insertion.
+  the use of semantic CG sets like HUMAN.}; \sme{} can omit subject
+pronouns (\textbf{pro-drop}), when translating to \nob{} we need to
+insert either a neuter or masculine/feminine pronoun.
 
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
@@ -411,7 +413,8 @@ responsibilities:
 
 \item Interchunk 2, 39 rules: major word order changes, inserting
   dropped pronouns, inserting adverbs to indicate verb modality,
-  correcting noun phrase definiteness using verb information.
+  correcting noun phrase definiteness using verb information (e.g.
+  subjects of duals are definite).
 
 \item Postchunk, 29 rules: inserting articles/determiners and the
   infinitive marker, tag cleanup in preparation of generation.
@@ -443,9 +446,9 @@ derivations are not specified in the translation dictionary, we show
 coverage with and without derivation-only analyses counted. The table
 also shows the ambiguity rate (amount of analyses per known word) with
 and without derivations counted.\footnote{Currently, the ambiguity
-  rate is reduced to about 1.04 by the constraint grammar
-  disambiguator if we turn off the switch to choose the first analysis
-  given remaining ambiguity.}
+  rate is reduced to about 1.04 by the CG disambiguator; in actual
+  translations we set the module to simply choose the first analysis
+  when there is remaining ambiguity.}
 
 
 The Wikipedia corpus seems to have very low coverage, but looking over
@@ -508,7 +511,7 @@ has a long way to go before being useful for post-editing.
   
 In order to evaluate to what extent the system was able to convey the
 meaning of the original, we arranged a test containing 3 parts. All
-the test were based on sentences from a parallel corpus of
+the tests were based on sentences from a parallel corpus of
 non-fiction, the corpus had not been used during development of the MT
 system. The first test, a multiple choice test, presented 10 sentences
 drawn from the corpus. For each sentence, the test person also got the
@@ -529,7 +532,7 @@ nouns\footnote{Nouns were of the same length (+- 3 characters), pulled
   features (gender, definiteness, number) and were never ambiguous
   with verbs. This questionnaire generator is available from our
   public repository and should be usable with other translators.} and
-finally a "none seem to fit" choice. The users (who did not understand
+finally a ``none seem to fit'' choice. The users (who did not understand
 \sme{}) were instructed to click what seemed to be the removed word,
 using the MT as a guide. Ten consecutive sentences from the same piece
 of text were shown one at a time. The results of all tests are shown
@@ -569,7 +572,7 @@ I remember that Lillemor Isaksen, who had secondary high school, almost did not 
 
 The word \textit{samisker} (here interpreted as a agent noun, on a par
 with \textbf{carpenter}) does not exist, and is interpreted by 9 of
-the informants as "a Saami", instead of the correct "a Saami speaker".
+the informants as ``a Saami'', instead of the correct ``a Saami speaker''.
 Here, the missing translation of the key word blocked a proper
 understanding of the sentence, despite the rest of the sentence being
 translated correctly. The loan word \textit{gymn\'{a}sa} was not
@@ -584,16 +587,16 @@ recognised, but understandable as it is a loan from Norwegian
 
 
 % coverage
-The na\"{i}ve lexical coverage of the test sentences was good, 96.7\%, 
+The na\"{i}ve lexical coverage of the test sentences was good, 96.7\%,
 as compared to the coverage measured on our news corpus (91\%). With
-an average sentence length of 14.5 words (as in our test set), the coverage
-implies one lexical omission in every second sentence. For
+an average sentence length of 14.5 words (as in our test set), the
+coverage implies one lexical omission in every second sentence. For
 some words, our analysis didn't include all likely readings (e.g.
 \textit{muhte} should be ambiguous between a subjunction and a verb,
 we only had the verb). In other cases, short (but non-compositional)
-idioms were treated as individual words. A lot of anaphora get the
-wrong gender, but it's hard to tell how badly this affects
-comprehension.
+idioms were treated as compositional individual words. A lot of
+anaphora get the wrong gender, but it's hard to tell how badly this
+affects comprehension.
 
 For 3 of the 10 fill-in test sentences the key word (the topic of
 the question to be addressed) was not translated. This illuminates
@@ -605,31 +608,34 @@ the system.
 % grammatikk
 Another challenge is the erroneous insertion of pronouns in pro-drop
 sentences. This is more of a problem for dissemination than for
-assimilation, but in certain cases the superfluous pronouns may
-break the causality chain of the sentence, as in (\ex{1}):
+assimilation, but in certain cases the superfluous pronouns may break
+the causality chain of the sentence, as in (\ex{1}), with \nob{} MT
+output in (\ex{2}):
 
-% NB dieđihuvvo
-%\item 
-\enumsentence{{... die\dj{}ihuvvo ahte du\v{s}\v{s}e sullii 1/3 skuvllageatnegahtton ohppiin bohte oahpahussii}\\~\\
-\shortexnt{7}
-{... meddeles & han & at & bare & omtrent & 1/3 & skuvllageatnegahtton}
-{... is.informed & he & that & only & approximately & 1/3 & skuvllageatnegahtton}
-{}
-\shortexnt{7}
-{med & en & l{\ae}rer & kom & \textbf{de} & til & undervisning}
-{with & a & teacher & came & \textbf{they} & to class}
-{}
+% NB dieđihuvvo requires T1 fontenc
+\enumsentence{
+  \longex{5}{5}
+  {... die\dj{}ihuvvo  & ahte  & du\v{s}\v{s}e  & sullii         & 1/3}{skuvllageatnegahtton & ohppiin       & bohte  & oahpahussii}
+  {... is.informed     & that  & only           & approximately  & 1/3}{school.duty          & with.teacher  & came   & to.class'}
+  {`... tells us that only about 1/3 of those of school age with a teacher\\ came to class'} % "with a teacher"? er det rett? TODO
+}
+\enumsentence{
+  \longex{6}{8}
+  {... meddeles     & han  & at    & bare  & omtrent        & 1/3}{skuvllageatnegahtton & med   & en  & l{\ae}rer  & kom   & \textbf{de}    & til  & undervisning}
+  {... is.informed  & he   & that  & only  & approximately  & 1/3}{skuvllageatnegahtton & with  & a   & teacher    & came  & \textbf{they}  & to   & class}
+  {`... is he informed that only about 1/3 skuvllageatnegahtton\\with a teacher they came to class'}
 }
 
 % The point here is the meaning ``it was told that only 1/3 came to
 % class''.
+%I en rapport fra Kautokeino i 1877 opplyses det at bare om lag 1/3 av de skolepliktige i soknet møtte til undervisning .
 
 The subject status of (the untranslated) \textit{1/3
   skuvllageatnegahtton} is blocked by the insertion of $de$
 (``they''). Thus, the otherwise probable (and correct) interpretation
 (only 1/3 of X came to class) is suddenly less likely to be detected,
-and it is missed by 8 of our informants, several of whom interpret
-the sentence as describing a situation where the teacher does not show up.
+and it is missed by 8 of our informants, several of whom interpret the
+sentence as describing a situation where the teacher does not show up.
 
 % det eg pröver på er å forstå korfor ting gjekk skeis:
 % - manglande ord? .dix ==> her har vi 96.7, det bör vere ein del
@@ -640,8 +646,8 @@ the sentence as describing a situation where the teacher does not show up.
 Some grammatical constructions were too complicated for the system, 
 like the sentence
 \enumsentence{\shortex{8}
-{Jos & ii & lean & vejola\v{s} & v\'{a}hnemiid & lusa & vuolgit, & de ...}
-{if & not & was & possible & to.parents & to.PO & travel, & then ... }
+{Jos & ii &  lean & vejola\v{s} & v\'{a}hnemiid & lusa &  vuolgit, & de ...}
+{if &  not & was &  possible &    to.parents &    to.PO & travel, &  then ... }
 {If it was not possible to travel to the parents, then ...}}
 
 
@@ -649,8 +655,8 @@ like the sentence
 The system interpreted this as a 3rd person pro-drop, and translated
 as follows:
 \enumsentence{\shortex{9}
-{Hvis & han & ikke & hadde & til & de & mulige & foreldrene & reiser ,..}
-{If   & he  & not  & had   & to.PR & the & possible & parents & travels, ...}
+{Hvis & han & ikke & hadde & til &   de &  mulige &   foreldrene & reiser ,..}
+{If   & he  & not  & had   & to.PR & the & possible & parents &    travels, ...}
 {If he had not to the possible parents travels, ...}}
 
 but the correct interpretation is one of a formal subject of
