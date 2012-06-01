@@ -2,11 +2,11 @@
 
 \usepackage[DRAFT]{cslipubs}
 
+% Give us a font that can print \'{a} as á:
 \usepackage[T1]{fontenc}
+% Let us write á and get á:
+\usepackage[utf8]{inputenc}     % had some bug with this, but seems to be gone?
 
-% \usepackage{footnote}
-% \usepackage{multibib}
-% \usepackage{threeparttable}
 
 \title{A \LaTeX\ Package for CSLI Collections}    % \title{__}  is necessary.
 \author{Edie Tor and Ed Itor (eds.)}              % \author{__} is necessary.
@@ -78,9 +78,6 @@
 
 % TODO: Mention other _design_ choices that had to do with
 % assimilation (vs dissemination)
-
-% TODO not sure we need this:
-%\usepackage[utf8x]{inputenc}
 
 \newcommand{\href}[2]{{\tt #1}} % put hyperref in preamble? TODO
 \newcommand{\sme}{{\tt sme}}
@@ -316,9 +313,16 @@ actor noun).\footnote{The alternative would be to define, for each
   of increasing coverage without adding all the root forms.} To make
 this even more complex, even a lexicalised form might require a
 part-of-speech change in the translation dictionary if there is no
-word with the same meaning and part-of-speech in the target language;
-in that case, we also have to ensure transfer works for all possible
-derivations of all possible defined part-of-speech changes.
+word with the same meaning and part-of-speech in the target language.
+The most natural translation to \nob{} of the verb
+\textit{muittohuvvat} (``become forgetful'') would be to an auxiliary
++ adjective, \textit{bli glemsk}, and this is what the translational
+dictionary specifies. But \textit{muittohuvvat} is not a dynamically
+formed derivation, it has a regular entry in the analyser, so we can
+also form derivations of it. This means that we also have to ensure
+that transfer works for all possible derivations that the analyser can
+make, combined with all possible part-of-speech changes specified in
+the translational dictionary.
 
 However, since \smenob{} is meant for gisting, where an odd-sounding
 translation is more useful than an untranslated word, and resources
@@ -343,13 +347,15 @@ disambiguation quality.
 A lexical selection CG was created in order to select between
 different possible translations that otherwise share the same
 part-of-speech information. Currently it has only 102 rules covering
-52 lemmas, mostly high-frequency ones, although 802 lemmas of the
-translation dictionary have at least one alternative translation. This
-CG particularly depends on valency and semantic sets (e.g.
-\textit{luohkká} by default translates into \textit{bakke},
+52 lemmas, mostly high-frequency ones (although 750 other lemmas of
+the translation dictionary have at least one alternative translation,
+and are awaiting rules). This CG particularly depends on valency and
+semantic sets,\footnote{The sets themselves were originally developed
+  by Giellatekno for use in the disambiguator.} e.g.
+\textit{luohkk\'{a}} by default translates into \textit{bakke},
 \textbf{hill}, but if we see a context word related to the
 \textsc{EDUCATION} set, we translate into \textit{klasse},
-\textbf{(school) class}).
+\textbf{(school) class}.
 
 %Linda: that's a bit short
 
@@ -383,8 +389,9 @@ which are removed before generation. The causative derivation of a
 form gets a tag which makes transfer form a periphrastic
 `let'-construction, but we also add the same tag to all forms if the
 root itself is a lexicalised causative. Verbs are also tagged
-according to the most likely animacy of the agent, for pro-drop
-insertion.
+according to the most likely animacy of the agent\footnote{Currently
+  just manual tagging, a corpus-based method should be possible with
+  the use of semantic CG sets like HUMAN.}, for pro-drop insertion.
 
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
