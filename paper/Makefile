@@ -1,5 +1,5 @@
 TARGET=sme-nob
-all: $(TARGET).tar.gz
+all: $(TARGET).tgz
 
 
 TEXDEPS=cslipubs.sty cslipubs-extra.sty cslipubs-natbib.bst
@@ -33,7 +33,7 @@ veryclean: clean
 	rm -rf cslipubscollection $(TARGET).pdf $(TEXDEPS)
 
 
-$(TARGET).tar.gz: $(TARGET).pdf $(TARGET).tex apertium.bib Makefile
+$(TARGET).tgz: $(TARGET).pdf $(TARGET).tex apertium.bib Makefile
 	tar czvf $@ --numeric-owner -C .. paper/$(TARGET).pdf paper/$(TARGET).tex paper/apertium.bib paper/Makefile
 # -C .. is such a hack, can't tar add a fake root dir to avoid tarbombing? 
 
