@@ -7,6 +7,7 @@ cslipubscollection.tar.gz:
 	wget "http://cslipublications.stanford.edu/ftp-pub/publications/latex-package/latex2e-native/cslipubscollection.tar.gz" -O $@
 cslipubscollection: cslipubscollection.tar.gz
 	tar xzvf $<
+	touch cslipubscollection
 cslipubs.sty: cslipubscollection
 	cp cslipubscollection/$@ $@
 cslipubs-extra.sty: cslipubscollection
