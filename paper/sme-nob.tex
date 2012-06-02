@@ -386,14 +386,33 @@ derived into actor-nouns are transferred to present tense verbs.
 
 We also add special tags used only as a signal to structural transfer,
 which are removed before generation. The causative derivation of a
-form gets a tag which makes transfer form a periphrastic
-`let'-construction, but we also add the same tag to all forms if the
-root itself is a lexicalised causative. Verbs are also tagged
-according to the most likely animacy of the agent\footnote{Currently
-  just manual tagging, a corpus-based method should be possible with
-  the use of semantic CG sets like HUMAN.}; \sme{} can omit subject
-pronouns (\textbf{pro-drop}), when translating to \nob{} we need to
-insert either a neuter or masculine/feminine pronoun.
+word gets a tag which signals structural transfer to create a
+periphrastic `let'-construction, but we also add the same tag to all
+forms if the root itself is a lexicalised causative. E.g.
+\textit{čálihit} ``let write'' is a lexicalised causative with the
+lemma \textit{čállit}; since it is lexicalised, the infinitive is
+simply tagged \texttt{<V><TV><Inf>}; since there's no good lexicalised
+translation to \nob{}, we translate this lemma (and thus all its
+forms) to \textit{skrive} ``write'' along with the tag \texttt{<caus>}
+in the translational dictionary. Structural transfer removes
+\texttt{<caus>} and outputs \textit{la} ``let'' (putting the main verb
+after the causee), and the \nob{} generator never sees any
+\texttt{<caus>} tag. If \textit{čálihit} were analysed as a dynamic
+derivation of \textit{čállit} ``write'', the lemma would be
+\textit{čállit}, while the tag sequence would be
+\texttt{<V><TV><Der\_h><V><TV><Inf>} (the ``h-derivation''
+\texttt{<Der\_h>} is a causative derivation). In that case we wouldn't
+mark the lemma (ie. all forms) with \texttt{<caus>}, but a
+\textbf{paradigm} for tag translation would add \texttt{<caus>} only
+if the tag sequence contained \texttt{<Der\_h>}.
+
+Verbs are also tagged in the translational dictionary according to the
+most likely animacy of the agent\footnote{Currently just manual
+  tagging, a corpus-based method should be possible with the use of
+  semantic CG sets like HUMAN.} as a signal to structural transfer;
+\sme{} often omits subject pronouns (\textbf{pro-drop}), so when
+translating to \nob{} and inserting a pronoun we need to know whether
+the inserted pronoun should be animate or not.
 
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
@@ -678,8 +697,10 @@ low, but on the other hand we get many erroneous readings, especially
 for high-frequency function words (e.g. \textit{maid},
 \textbf{also/what/that}). It is also obvious that we need more lexical
 selection rules; sometimes the translations simply sound non-fluent,
-but in other cases (e.g. \textit{lohkat}, \textbf{say/count}), the
-meaning is altered or lost.
+but in other cases the meaning is altered or lost. E.g.
+\textit{lohkat} can mean either \textbf{say} (as in ``Go, he said'')
+or \textbf{count} (as in ``I counted to three''), picking the wrong
+word here severely hurts understanding.
 
 % Maybe just ditch this paragraph:
 The more complex the text, the more we see problems relating to
