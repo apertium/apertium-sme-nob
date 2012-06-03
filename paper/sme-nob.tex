@@ -76,8 +76,21 @@
 % Beginning of apertium-sme-nob chapter %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% TODO: Mention other _design_ choices that had to do with
-% assimilation (vs dissemination)
+% TODO general stuff:
+% 
+% - Mention other _design_ choices that had to do with
+%   assimilation (vs dissemination)
+% - figure showing the pipeline
+% - run-through with example sentence from analyser through
+%   disambiguation and changes from the lexical selection
+% - "a lot of work went into structural transfer" can we quantify
+%   somehow?
+% - example test sentence(s) from evaluation
+% - how many users took each test set?
+% - forall tests: Why does this test the system for assimilation quality?
+% - saamier-example needs glossing and to be more explicit on what is
+%   MT
+
 
 \newcommand{\href}[2]{{\tt #1}} % put hyperref in preamble? TODO
 \newcommand{\sme}{{\tt sme}}
@@ -535,17 +548,23 @@ the tests were based on sentences from a parallel corpus of
 non-fiction, the corpus had not been used during development of the MT
 system. The first test, a multiple choice test, presented 10 \sme{}
 sentences drawn from the corpus. For each sentence, the test person
-also got the MT output, and 3 alternative hand-written \nob{}
-paraphrases, and had to choose which paraphrase corresponded to the
-\sme{} sentence with the help of the MT.
+also got the MT output, along with 3 alternative hand-written \nob{}
+paraphrases (based on the \sme{} sentence set). Only one of the three
+paraphrases was paraphrasing that \sme{} sentence correctly (the other
+two were written to be similar but contain factual mistakes), and the
+user had to use the MT output as a guide to pick which paraphrase
+corresponded with the original \sme{} sentence.
 
 The second test was set up as the first, but instead of the 3
-alternatives, the test presented an open question related to the
-translation.
+alternatives, the test presented an open question to be answered using
+the MT as a guide.
 
 For both test sets the paraphrases / questions were prepared on the
 basis of the \sme{} sentence, before they were translated by the
 system, in order not to be influenced by the translated output.
+
+% TODO Was the original nob reference not used at all in the above two
+% tests?
 
 % TODO example open question / paraphrase
 
