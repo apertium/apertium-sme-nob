@@ -84,10 +84,7 @@
 % - run-through with example sentence from analyser through
 %   disambiguation and changes from the lexical selection
 % - example test sentence(s) from evaluation
-% - how many users took each test set?
 % - forall tests: Why does this test the system for assimilation quality?
-% - saamier-example needs glossing and to be more explicit on what is
-%   MT
 
 
 \newcommand{\href}[2]{{\tt #1}} % put hyperref in preamble? TODO
@@ -590,12 +587,12 @@ nouns\footnote{Nouns were of the same length (+- 3 characters), pulled
   from the same 55128 word long legal text, had the same morphological
   features (gender, definiteness, number) and were never ambiguous
   with verbs. This questionnaire generator is available from our
-  public repository and should be usable with other translators.} and
-finally a ``none seem to fit'' choice. The users (who did not understand
-\sme{}) were instructed to click what seemed to be the removed word,
-using the MT as a guide. Ten consecutive sentences from the same piece
-of text were shown one at a time. The results of all tests are shown
-in Table \ref{eval}.
+  public repository (subdirectory \texttt{gisting-eval}) and should be
+  usable with other translators.} and finally a ``none seem to fit''
+choice. The users (who did not understand \sme{}) were instructed to
+click what seemed to be the removed word, using the MT as a guide. Ten
+consecutive sentences from the same piece of text were shown one at a
+time. The results of all tests are shown in Table \ref{eval}.
 
 \begin{table}[htdp]
 \caption{Results of gisting evaluation, 3 different tests}
@@ -616,27 +613,38 @@ with each other, whereas the fill-in test seems much worse. Open
 questions don't allow ``correct guesses'', and the fill-in test was
 more vulnerable to holes in the MT output. Four of the 10 test
 sentences got no or only one correct answers. What made these
-sentences so hard was that the system failed to translate the key word
-in the sentence. Sentence (\ex{1}) gives an example.
-%Linda: hard? hard to understand or maybe difficult?
+sentences so hard to understand was that the system failed to
+translate the key word in the sentence. Sentence (\ex{1}), with \nob{}
+MT output in (\ex{2}), gives an example.
 
-\eenumsentence{\item{Mun muitt\'{a}n ahte Lillemor Isaksen, geas lei gymn\'{a}sa, measta ii fidnen oahpaheaddjibarggu go son lei s\'{a}megielat. \\ 
-I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{saami-speaking}}
-\item{Jeg husker at Lillemor Isaksen, som hadde *gymn\'{a}sa, nesten ikke han f{\aa}tt l{\ae}rerarbeidet da han var samisker. \\
-I remember that Lillemor Isaksen, who had secondary high school, almost did not get any work as a teacher, since she was \textbf{a saamier}.}}
+\enumsentence{
+  \longex{6}{6}
+  {... Lillemor Isaksen,  & geas  & lei & gymn\'{a}sa,      & measta & ii}     {fidnen & oahpaheaddjibarggu & go     & son  & lei  & s\'{a}megielat}
+  {... Lillemor Isaksen,  & who   & had & secondary.school, & almost & did.not}{get    & teacher.work       & since  & she  & was  & \textbf{saami-speaking}}
+  {`... Lillemor Isaksen, who had secondary school, almost did\\
+    not get any work as a teacher, since she was \textbf{saami-speaking}'}
+}
+\enumsentence{
+  \longex{6}{7}
+  {... Lillemor Isaksen,  & som  & hadde  & $*$gymn\'{a}sa,  & nesten  & ikke}{han  & f{\aa}tt  & l{\ae}rerarbeidet  & da     & han  & var & samisker}
+  {... Lillemor Isaksen,  & who  & had    & $*$gymn\'{a}sa,  & almost  & not }{he   & gotten    & the.teacher.work   & since  & he   & was  & \textbf{saamier}}
+  {`... Lillemor Isaksen, who had secondary school, almost did he\\
+    not get the teacher work, since he was \textbf{a saamier}'}
+}
+% wp says 'secondary school' is a general term for what's between primary and university, also it makes the gloss fit better than secondary.high.school
 
-%Linda: maybe glossing is a good idea? with \exg. dont remember the package
-%Kevin: eh...they require this hellish special latex system, so glosses
-%might get low priority :/
-
-The word \textit{samisker} (here interpreted as a agent noun, on a par
-with \textbf{carpenter}) does not exist, and is interpreted by 9 of
-the informants as ``a Saami'', instead of the correct ``a Saami speaker''.
-Here, the missing translation of the key word blocked a proper
-understanding of the sentence, despite the rest of the sentence being
-translated correctly. The loan word \textit{gymn\'{a}sa} was not
-recognised, but understandable as it is a loan from Norwegian
-($gymnas$).
+The word \textit{samisker} (here most likely to be interpreted as an
+agent noun, on a par with \textbf{carpenter}) does not exist, and is
+interpreted by 9 of the informants as ``a Saami'', instead of the
+correct ``a Saami speaker''.\footnote{Neither interpretation was in
+  the analyser (trimmed or not); the analysis given was the plural of
+  the language name, and plurals of common-gendered nouns have the
+  same suffix as singular agent nouns in \nob{}, while language names
+  are ambiguous with nationality names.} Here, the mistranslation of
+the key word blocked a proper understanding of the sentence, despite
+the rest of the sentence being translated correctly. The loan word
+\textit{gymn\'{a}sa} was not recognised (here marked by a star), but
+understandable as it is a loan from Norwegian (\textit{gymnas}).
 
 
 
@@ -675,13 +683,13 @@ output in (\ex{2}):
 \enumsentence{
   \longex{5}{5}
   {... die\dj{}ihuvvo  & ahte  & du\v{s}\v{s}e  & sullii         & 1/3}{skuvllageatnegahtton & ohppiin       & bohte  & oahpahussii}
-  {... is.informed     & that  & only           & approximately  & 1/3}{school.duty          & with.teacher  & came   & to.class'}
+  {... is.informed     & that  & only           & approximately  & 1/3}{school.duty          & with.teacher  & came   & to.class}
   {`... tells us that only about 1/3 of those of school age with a teacher\\ came to class'} % "with a teacher"? er det rett? TODO
 }
 \enumsentence{
   \longex{6}{8}
-  {... meddeles     & han  & at    & bare  & omtrent        & 1/3}{skuvllageatnegahtton & med   & en  & l{\ae}rer  & kom   & \textbf{de}    & til  & undervisning}
-  {... is.informed  & he   & that  & only  & approximately  & 1/3}{skuvllageatnegahtton & with  & a   & teacher    & came  & \textbf{they}  & to   & class}
+  {... meddeles     & han  & at    & bare  & omtrent        & 1/3}{$*$skuvllageatnegahtton & med   & en  & l{\ae}rer  & kom   & \textbf{de}    & til  & undervisning}
+  {... is.informed  & he   & that  & only  & approximately  & 1/3}{$*$skuvllageatnegahtton & with  & a   & teacher    & came  & \textbf{they}  & to   & class}
   {`... is he informed that only about 1/3 skuvllageatnegahtton\\with a teacher they came to class'}
 }
 
@@ -707,7 +715,7 @@ like the sentence
 \enumsentence{\shortex{8}
 {Jos & ii &  lean & vejola\v{s} & v\'{a}hnemiid & lusa &  vuolgit, & de ...}
 {if &  not & was &  possible &    to.parents &    to.PO & travel, &  then ... }
-{If it was not possible to travel to the parents, then ...}}
+{`If it was not possible to travel to the parents, then ...'}}
 
 
 
@@ -716,7 +724,7 @@ as follows:
 \enumsentence{\shortex{9}
 {Hvis & han & ikke & hadde & til &   de &  mulige &   foreldrene & reiser ,..}
 {If   & he  & not  & had   & to.PR & the & possible & parents &    travels, ...}
-{If he had not to the possible parents travels, ...}}
+{`If he had not to the possible parents travels, ...'}}
 
 but the correct interpretation is one of a formal subject of
 what in Norwegian would have been a cleft construction.
