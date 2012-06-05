@@ -83,13 +83,12 @@
 % - figure showing the pipeline
 % - run-through with example sentence from analyser through
 %   disambiguation and changes from the lexical selection
-% - "a lot of work went into structural transfer" can we quantify
-%   somehow?
 % - example test sentence(s) from evaluation
 % - how many users took each test set?
 % - forall tests: Why does this test the system for assimilation quality?
 % - saamier-example needs glossing and to be more explicit on what is
 %   MT
+% - URL to the code.
 
 
 \newcommand{\href}[2]{{\tt #1}} % put hyperref in preamble? TODO
@@ -456,7 +455,17 @@ responsibilities:
 Wherever generalisations are possible, we use \textbf{macros} (e.g.
 for tranferring agreement information), so rules tend to be fairly
 short. A lot of work went into structural transfer compared to what is
-typical of Apertium language pairs between more related languages.
+typical of Apertium language pairs between more related languages;
+e.g. the translator for the closely-related pair
+Bokmål$\rightarrow{}$Nynorsk \citep{unhammer2009rfr}, is quite mature
+and achieves post-edit quality translations with 2745 lines of
+structural transfer code and 107 lines of tag transfer paradigms,
+whereas the corresponding numbers for \smenob{} are 9556 and
+1002\footnote{Lines of code of course does not correspond one-to-one
+  with amount of work, but since the same people did the bulk of the
+  work, the numbers should be fairly comparable with each other. All
+  numbers are from SVN revision 38590.}.
+% TODO: "and numbers from other pairs are also around blah"
 
 \subsection{Generation}
 The generator was re-used from the language pair
