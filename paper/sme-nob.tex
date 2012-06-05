@@ -89,8 +89,8 @@
 % 
 % - Mention other _design_ choices that had to do with
 %   assimilation (vs dissemination)?
-% - run-through with example sentence from analyser through
-%   disambiguation and changes from the lexical selection
+% - should have examples from transfer too, but we've hit the
+%   page limit :/
 
 
 \newcommand{\href}[2]{{\tt #1}} % put hyperref in preamble? TODO
@@ -106,27 +106,21 @@
 \subsection{Roadmap}  
     % \begin{abstract}
 We describe the development and evaluation of a rule-based machine
-translation assimilation system from North S\'{a}mi to Norwegian
-Bokm{\aa}l, built on a combination of Free and Open Source Software
-(FOSS) resources: the Apertium platform and the Giellatekno HFST
-lexicon and Constraint Grammar disambiguator. We detail the
-integration of these and other resources in the system along with the
-construction of the lexical and structural transfer, and evaluate the
-translation quality using various methods, focusing on evaluating the
-users' \textit{comprehension} of the text. Finally, some future work
-is suggested.
+translation (MT) assimilation system from North S\'{a}mi to Norwegian
+Bokm{\aa}l\footnote{Source code available from SVN repository\\
+  \href{http://apertium.svn.sourceforge.net/svnroot/apertium/trunk/apertium-sme-nob}{http://apertium.svn.sourceforge.net/svnroot/apertium/trunk/apertium-sme-nob}
+  under the GNU General Public License.}, built on a combination of
+Free and Open Source Software (FOSS) resources: the Apertium platform
+and the Giellatekno HFST lexicon and Constraint Grammar disambiguator.
+We detail the integration of these and other resources in the system
+along with the construction of the lexical and structural transfer,
+and evaluate the translation quality using various methods, focusing
+on evaluating the users' \textit{comprehension} of the text. Finally,
+some future work is suggested.
 % Linda: the abstract sounds a bit boring, we do this, then that, 
 % then this.. maybe you can put an exciting first sentence including 
 % 000the special thing about the work
     % \end{abstract}
-
-
-This paper describes and evaluates a rule-based machine translation
-(MT) system from North S\'{a}mi to Norwegian
-Bokm{\aa}l\footnote{Source code available from SVN repository\\
-  \href{http://apertium.svn.sourceforge.net/svnroot/apertium/trunk/apertium-sme-nob}{http://apertium.svn.sourceforge.net/svnroot/apertium/trunk/apertium-sme-nob}
-  under the GNU General Public License.}, re-using several existing
-FOSS resources.
 
 We begin with an introduction to the languages and the technology
 used, followed by a description of how the system was developed. Then
@@ -222,6 +216,39 @@ The first CG module\footnote{If the disambiguation rules leaves any
 module, which may add subscripts to lemmas in certain contexts in
 order to select a different lexical translation.
 
+To make this more concrete, the morphological analysis of the
+sentence \textit{Mus lea biebmu vuoššat} ``I have food to boil'' is\\
+\texttt{\small \^{}Mus/mun<Pron><Pers><Sg1><Loc>\${}
+  \^{}lea/leat<V><IV><Ind><Prs><Sg3>\${}
+  \^{}biebmu/biebmat<V><TV><Imprt><Du1>/biebmu<N><Sg><Nom>\${}\\
+  \^{}vuoššat/vuoššat<V><TV><Ind><Prs><Pl1>/vuoššat<V><TV><Ind><Prs><Sg2>
+  /vuoššat<V><TV><Inf>\${}}, read as \texttt{\small
+  \^{}form/lemma1<tags1>/lemma2<tags2>\${}}. The disambiguator removes
+the imperative ``feed'' reading of \textit{biebmu} ``food'' by i.a.
+checking for the lack of left-hand clause boundaries or conjunctions.
+The finite readings of \textit{vuoššat} ``boil'' are removed since
+there is a left-hand nominal with an unambiguous finite verb to its
+left. Then the readings have syntactic tags appended, e.g.
+\textit{vuoššat} gets \texttt{<@$\leftarrow$ADVL>} since it's an
+infinitive with a non-abstract nominative to the right.\footnote{The
+  actual rules have several other context conditions.} Then the
+lexical selection module runs, the only change it makes is adding a
+subscript \texttt{:1} to \textit{leat} ``have/be'' in order to select
+the ``have'' reading. Its output is \texttt{\small
+  \^{}Mun<Pron><Pers><Sg1><Loc><@HAB>\${}
+  \^{}leat:1<V><IV><Ind><Prs><Sg3><@+FMAINV>\${}
+  \^{}biebmu<N><Sg><Nom><@$\leftarrow{}$SPRED>\${}
+  \^{}vuoššat<V><TV><Inf><@$\leftarrow{}$ADVL>\${}}.
+
+% The rest of the output, not enough space for it:
+% {\small
+% \texttt{\^{}Pron<SN><@HAB><p1><mf><sg><nom>{\^{}jeg<prn><p1><mf><sg><nom>\${}}\${} \^{}verb<SV><@+FMAINV><Ind><pres><p3><sg><impers><NC>{\^{}ha<vblex><pres>\${}}\${} \^{}nom<SN><@$\leftarrow{}$SPRED><ind><m><sg><nom><unc>{\^{}mat<n><m><sg><3>\${}}\${} \^{}verb<SV><@$\leftarrow{}$ADVL><inf><pers><NC>{\^{}koke<vblex><inf>\${}}\${}}\\
+% \texttt{\^{}Pron<SN><@HAB><p1><mf><sg><nom>{\^{}jeg<prn><p1><mf><sg><nom>\${}}\${} \^{}verb<SV><@+FMAINV><Ind><pres><p3><sg><impers><NC>{\^{}ha<vblex><pres>\${}}\${} \^{}nom<SN><@$\leftarrow{}$SPRED><ind><m><sg><nom><unc>{\^{}mat<n><m><sg><3>\${}}\${} \^{}verb<SV><@$\leftarrow{}$ADVL><inf><pers><NC>{\^{}koke<vblex><inf>\${}}\${}}\\
+% \texttt{\^{}Pron<SN><@HAB><p1><mf><sg><nom>{\^{}jeg<prn><p1><mf><sg><nom>\${}}\${} \^{}verb<SV><@+FMAINV><Ind><pres><p3><sg><impers><NC>{\^{}ha<vblex><pres>\${}}\${} \^{}nom<SN><@$\leftarrow{}$SPRED><ind><m><sg><nom><unc>{\^{}mat<n><m><sg><3>\${}}\${} \^{}verb<SV><@$\leftarrow{}$ADVL><inf><pers><NC>{\^{}koke<vblex><inf>\${}}\${}}\\
+% \texttt{\^{}Jeg<prn><p1><mf><sg><nom>\${} \^{}ha<vblex><pres>\${} \^{}mat<n><m><sg><ind>\${} \^{}å<part>\${} \^{}koke<vblex><inf>\${}}\\
+% Jeg har mat å koke
+% }
+
 Lexical selection is followed by pretransfer (minor format changes in
 preparation of transfer) and then a four-stage chunking transfer. The
 first stage module first handles lexical transfer using the
@@ -230,8 +257,8 @@ translation dictionary, and then performs chunking\footnote{Newer
   before chunking. This is the plan for \smenob{} too, as it would
   allow matching on both SL and TL patterns, but the possibility was
   only recently added to the transfer engine.} based on patterns of
-morphological and syntactic tags (further detail on structural
-transfer in Section \ref{sec:structural-transfer}).
+morphological and syntactic tags (more on structural transfer in
+Section \ref{sec:structural-transfer}).
 
 Output from the last transfer module is fed to morphological
 generation with the lttoolbox-based \nob{} generator.
@@ -245,6 +272,7 @@ generation with the lttoolbox-based \nob{} generator.
 \label{fig:modules}
 %\vspace{-1em}
 \end{figure*}
+
 
 \subsection{HFST}
 \label{sec:hfst}
@@ -387,9 +415,9 @@ and are awaiting rules). This CG particularly depends on valency and
 semantic sets,\footnote{The sets themselves were originally developed
   by Giellatekno for use in the disambiguator.} e.g.
 \textit{luohkk\'{a}} by default translates into \textit{bakke},
-\textbf{hill}, but if we see a context word related to the
-\textsc{EDUCATION} set, we translate into \textit{klasse},
-\textbf{(school) class}.
+``hill'', but if we see a context word related to the
+\textsc{education} set, we translate into \textit{klasse}, ``(school)
+class''.
 
 %Linda: that's a bit short
 
@@ -450,7 +478,7 @@ the inserted pronoun should be animate or not.
 
 \subsection{Structural transfer}
 \label{sec:structural-transfer}
-Structural transfer is divided into four stages, with different
+Our structural transfer is divided into four stages, with different
 responsibilities:
 
 \begin{enumerate}
