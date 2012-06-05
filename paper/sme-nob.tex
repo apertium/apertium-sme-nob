@@ -578,18 +578,36 @@ In order to evaluate to what extent the system was able to convey the
 meaning of the original, we arranged a test containing 3 parts. All
 the tests were based on sentences from a parallel corpus of
 non-fiction, the corpus had not been used during development of the MT
-system. The first test, a multiple choice test, presented 10 \sme{}
-sentences drawn from the corpus. For each sentence, the test person
-also got the MT output, along with 3 alternative hand-written \nob{}
-paraphrases (based on the \sme{} sentence set). Only one of the three
-paraphrases was paraphrasing that \sme{} sentence correctly (the other
-two were written to be similar but contain factual mistakes), and the
-user had to use the MT output as a guide to pick which paraphrase
-corresponded with the original \sme{} sentence.
+system. 
+
+The first test, a multiple choice test, presented 10 \sme{} sentences
+drawn from the corpus. For each sentence, the test person also got the
+MT output, along with 3 alternative hand-written \nob{} paraphrases
+(based on the \sme{} sentence set). Only one of the three paraphrases
+was paraphrasing that \sme{} sentence correctly (the other two were
+written to be similar but contain factual mistakes), and the user had
+to use the MT output as a guide to pick which paraphrase corresponded
+with the original \sme{} sentence. Example (\ex{1}) shows the test for
+one of the sentences (English glosses were of course not shown), where
+the user could pick one of a., b. or c., b. being correct.
+
+\enumsentence{
+  Original: Muhto eat diehtán maid mii čáliimet (`But we didn't know what we wrote')\\
+  Translated: Men vi visst ikke også skrev vi (`But we didn't known also wrote we')\\
+  a. Vi visste hva vi skrev (`We knew what we wrote')\\
+  b. Vi visste ikke hva vi skrev (`We didn't know what we wrote')\\
+  c. Vi visste ikke hva de skrev (`We didn't know what they wrote')\\
+}
 
 The second test was set up as the first, but instead of the 3
 alternatives, the test presented an open question to be answered using
 the MT as a guide.
+
+\enumsentence{
+  Original: Goappaš riikkain lea nammaduvvon hálddahuslaš gulahallanolmmoš (`There is appointed an administrative contact from both countries')\\
+  Translated: Goappaš på rikene er det oppnevnt administrativt forstående hverandre seg mennesket (`Goappaš on the countries there is appointed an administrative understanding eachother self person)\\
+  Hvor kommer kontaktpersonene fra? (`Where do the contact persons come from?')
+}
 
 For both test sets the paraphrases / questions were prepared on the
 basis of the \sme{} sentence, before they were translated by the
@@ -598,7 +616,6 @@ system, in order not to be influenced by the translated output.
 % TODO Was the original nob reference not used at all in the above two
 % tests?
 
-% TODO example open question / paraphrase
 
 The third test showed a \sme{} source sentence, then the MT output of
 that sentence, followed by the reference translation (5-15 words long)
@@ -609,12 +626,14 @@ nouns\footnote{Nouns were of the same length (+- 3 characters), pulled
   from the same 55128 word long legal text, had the same morphological
   features (gender, definiteness, number) and were never ambiguous
   with verbs. This questionnaire generator is available from our
-  public repository (subdirectory \texttt{gisting-eval}) and should be
+  public repository (subdirectory \texttt{gisting-eval/generated}) and should be
   usable with other translators.} and finally a ``none seem to fit''
 choice. The users (who did not understand \sme{}) were instructed to
 click what seemed to be the removed word, using the MT as a guide. Ten
 consecutive sentences from the same piece of text were shown one at a
-time. The results of all tests are shown in Table \ref{eval}.
+time. 
+
+The results of all tests are shown in Table \ref{eval}.
 
 \begin{table}[htdp]
 \caption{Results of gisting evaluation, 3 different tests}
