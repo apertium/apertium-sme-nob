@@ -88,7 +88,6 @@
 % - forall tests: Why does this test the system for assimilation quality?
 % - saamier-example needs glossing and to be more explicit on what is
 %   MT
-% - URL to the code.
 
 
 \newcommand{\href}[2]{{\tt #1}} % put hyperref in preamble? TODO
@@ -120,8 +119,11 @@ is suggested.
 
 
 This paper describes and evaluates a rule-based machine translation
-(MT) system from North S\'{a}mi to Norwegian Bokm{\aa}l, re-using
-several existing FOSS resources. 
+(MT) system from North S\'{a}mi to Norwegian
+Bokm{\aa}l\footnote{Source code available from SVN repository\\
+  \href{http://apertium.svn.sourceforge.net/svnroot/apertium/trunk/apertium-sme-nob}{http://apertium.svn.sourceforge.net/svnroot/apertium/trunk/apertium-sme-nob}
+  under the GNU General Public License.}, re-using several existing
+FOSS resources.
 
 We begin with an introduction to the languages and the technology
 used, followed by a description of how the system was developed. Then
@@ -192,8 +194,9 @@ the Xerox lexc/twol formats~\citep{beesley2003fsm}; the reason for
 this is explained in Section~\ref{sec:hfst}. Both systems allow
 generalising over classes using paradigms/continuation lexicons, but
 differ in other features. We use the FOSS package Helsinki Finite
-State Tools, HFST \citep{linden2011hfst} to compile and run the
-analyser (see Section~\ref{sec:hfst}).
+State Tools, HFST
+\citep{linden2011hfst}\footnote{\href{http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/}{http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/}}
+to compile and run the analyser (see Section~\ref{sec:hfst}).
 
 The morphological analysis gives us ambiguous output with no syntactic
 information. For morphological (e.g.~part-of-speech) disambiguation,
@@ -520,7 +523,8 @@ the system using several methods. First we do a word-error rate test,
 which shows how well the system would perform in a
 post-editing/dissemination setting, then a set of tests meant to find
 out how well the system performs in a gisting/assimilation setting.
-All tests were run on revision 37177 of \texttt{apertium-sme-nob}.
+All tests were run on revision 37177 of \texttt{apertium-sme-nob}\footnote{At which point the repository address was\\
+  \href{http://apertium.svn.sourceforge.net/svnroot/apertium/staging/apertium-sme-nob}{http://apertium.svn.sourceforge.net/svnroot/apertium/staging/apertium-sme-nob}}.
 
 
 
