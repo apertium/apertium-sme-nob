@@ -1,11 +1,19 @@
 \documentclass{book}
 
-\usepackage[DRAFT]{cslipubs}
+\usepackage[FINAL]{cslipubs}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of apertium-sme-nob header stuff %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Give us a font that can print \'{a} as á:
 \usepackage[T1]{fontenc}
-% Let us write á and get á:
+% Let us write á in tex and get á:
 \usepackage[utf8]{inputenc}     % had some bug with this, but seems to be gone?
+\usepackage{graphicx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End of apertium-sme-nob header stuff %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \title{A \LaTeX\ Package for CSLI Collections}    % \title{__}  is necessary.
@@ -80,7 +88,6 @@
 % 
 % - Mention other _design_ choices that had to do with
 %   assimilation (vs dissemination)
-% - figure showing the pipeline
 % - run-through with example sentence from analyser through
 %   disambiguation and changes from the lexical selection
 % - example test sentence(s) from evaluation
@@ -171,27 +178,28 @@ typical pipeline consists of:
 
 \begin{itemize}
 \item deformatting (hiding formatting/markup from the engine),
-\item source morphological analysis with a finite state transducer
-  (FST),
+\item source-language (SL) morphological analysis with a finite state
+  transducer (FST),
 \item disambiguation using a Hidden Markov Model (HMM) and/or
   Constraint Grammar (CG), 
 \item lexical transfer (word-translation on the disambiguated source),
 \item one or more levels of finite-state based structural transfer
   (reordering, and changes to morphological features),
-\item target-language generation with an FST
+\item target-language (TL) generation with an FST
 \item reformatting (letting format information be shown again)
 \end{itemize}
 
-Most Apertium language pairs use the Apertium lttoolbox FST package
-for analysis and generation. The lttoolbox dictionaries are written in
-XML, where one dictionary may be compiled both to an analyser and a
-generator. The \smenob{} pair uses lttoolbox for \nob{} generation and
-the translation dictionary, while the \sme{} analyser is written in
-the Xerox lexc/twol formats~\citep{beesley2003fsm}; the reason for
-this is explained in Section~\ref{sec:hfst}. Both systems allow
-generalising over classes using paradigms/continuation lexicons, but
-differ in other features. We use the FOSS package Helsinki Finite
-State Tools, HFST
+See Figure \ref{fig:modules} below for an overview of the modules used
+in this particular language pair. Most Apertium language pairs use the
+Apertium lttoolbox FST package for analysis and generation. The
+lttoolbox dictionaries are written in XML, where one dictionary may be
+compiled both to an analyser and a generator. The \smenob{} pair uses
+lttoolbox for \nob{} generation and the translation dictionary, while
+the \sme{} analyser is written in the Xerox lexc/twol
+formats~\citep{beesley2003fsm}; the reason for this is explained in
+Section~\ref{sec:hfst}. Both systems allow generalising over classes
+using paradigms/continuation lexicons, but differ in other features.
+We use the FOSS package Helsinki Finite State Tools, HFST
 \citep{linden2011hfst}\footnote{\href{http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/}{http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/}}
 to compile and run the analyser (see Section~\ref{sec:hfst}).
 
@@ -217,13 +225,27 @@ order to select a different lexical translation.
 
 Lexical selection is followed by pretransfer (minor format changes in
 preparation of transfer) and then a four-stage chunking transfer. The
-first stage handles lexical transfer using the translation dictionary,
-as well as chunking based on patterns of morphological and syntactic
-tags (further detail in Section \ref{sec:structural-transfer}).
+first stage module first handles lexical transfer using the
+translation dictionary, and then performs chunking\footnote{Newer
+  Apertium language pairs have lexical transfer as a separate module
+  before chunking. This is the plan for \smenob{} too, as it would
+  allow matching on both SL and TL patterns, but the possibility was
+  only recently added to the transfer engine.} based on patterns of
+morphological and syntactic tags (further detail on structural
+transfer in Section \ref{sec:structural-transfer}).
 
-Output from the transfer module is fed to morphological generation
-with the lttoolbox-based \nob{} generator.
+Output from the last transfer module is fed to morphological
+generation with the lttoolbox-based \nob{} generator.
 % de/reformatters have been mentioned above
+
+\begin{figure*}[htbp]
+\begin{center}
+ \includegraphics[width=1.0\textwidth]{architecture}
+\end{center}
+\caption{The Apertium pipeline architecture for \smenob.}
+\label{fig:modules}
+%\vspace{-1em}
+\end{figure*}
 
 \subsection{HFST}
 \label{sec:hfst}
@@ -259,7 +281,7 @@ changes that were made in the ``upstream'' versions (ie. the ones
 maintaned by Divvun/Giellatekno).
 
 The lexical selection CG and the transfer rules were written from
-scratch. The translation lexicon was originally based on various
+scratch. The translational dictionary was originally based on various
 word-lists from Giellatekno but expanded throughout development.
 
 \subsection{Analysis and derivational morphology}
