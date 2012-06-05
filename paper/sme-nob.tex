@@ -88,10 +88,9 @@
 % TODO general stuff:
 % 
 % - Mention other _design_ choices that had to do with
-%   assimilation (vs dissemination)
+%   assimilation (vs dissemination)?
 % - run-through with example sentence from analyser through
 %   disambiguation and changes from the lexical selection
-% - forall tests: Why does this test the system for assimilation quality?
 
 
 \newcommand{\href}[2]{{\tt #1}} % put hyperref in preamble? TODO
@@ -585,14 +584,18 @@ drawn from the corpus. For each sentence, the test person also got the
 MT output, along with 3 alternative hand-written \nob{} paraphrases
 (based on the \sme{} sentence set). Only one of the three paraphrases
 was paraphrasing that \sme{} sentence correctly (the other two were
-written to be similar but contain factual mistakes), and the subject
+written to be similar, but contain factual mistakes), and the subject
 had to use the MT output as a guide to pick which paraphrase
 corresponded with the original \sme{} sentence. Example (\ex{1}) shows
 the test for one of the sentences\footnote{English glosses were of
   course not shown; note that we keep un-/mistranslated terms
   untranslated in the glosses to indicate what the user actually
-  saw.}, where the subject could pick one of a., b. or c., b. being
-correct.
+  saw.}, where the subject could pick one of a., b. or c., the correct
+choice being b. Since the other paraphrases were kept as close as
+possible to the meaning of the \sme{} sentence, but had changes that
+crucially altered the semantics (e.g. removing the negation, changing
+the main content word), an incorrect choice should indicate that the
+translation was inadequate in providing understanding.
 
 \enumsentence{
   \small
@@ -606,7 +609,8 @@ correct.
 
 The second test was set up as the first, but instead of the 3
 alternatives, the test presented an open question to be answered using
-the MT as a guide.
+the MT as a guide. This we assumed to test understanding as in Test 1,
+but with more reliance on the meaning of content words.
 
 \enumsentence{
   \small
@@ -637,10 +641,14 @@ nouns\footnote{Nouns were of the same length ($\pm{} 3$ characters),
 seem to fit'' choice. The subjects were instructed to click what
 seemed to be the removed word, using the MT as a guide. Ten
 consecutive sentences from the same piece of text were shown one at a
-time. Example (\ex{1}) below shows one of the test sentences, with two
-word choices had to be made (in this case both key words happened to
-translate correctly). All tests were performed using simple HTML
-forms.
+time. The test should indicate whether the main content/theme (though
+perhaps not the truth conditions) are sufficiently well understood;
+the MT output might use the same word used in the answer alternatives,
+or one quite similar, or the context might be well enough translated
+that the correct alternative seems obvious. Example (\ex{1}) below
+shows one of the test sentences, where two word choices had to be made
+(in this case both key words happened to translate correctly). All
+tests were performed using simple HTML forms.
 
 \enumsentence{
   \small
@@ -678,8 +686,8 @@ The results from the multiple choice and random word tests correlate
 with each other, whereas the fill-in test seems much worse. Open
 questions don't allow ``correct guesses'', and the fill-in test was
 more vulnerable to holes in the MT output. Four of the 10 test
-sentences got no or only one correct answers. What made these
-sentences so hard to understand was that the system failed to
+sentences got no or only one correct answers. It seems that what made
+these sentences so hard to understand, was that the system failed to
 translate the key word in the sentence. Sentence (\ex{1}), with \nob{}
 MT output in (\ex{2}), gives an example.
 
