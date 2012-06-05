@@ -9,8 +9,9 @@
 % Give us a font that can print \'{a} as á:
 \usepackage[T1]{fontenc}
 % Let us write á in tex and get á:
-\usepackage[utf8]{inputenc}     % had some bug with this, but seems to be gone?
-\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % had some bug with this, but seems to be gone?
+\usepackage{graphicx}       % for \includegraphics, only works when {cslipubs} is [FINAL]
+\usepackage{amssymb}        % for \square
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % End of apertium-sme-nob header stuff %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -90,7 +91,6 @@
 %   assimilation (vs dissemination)
 % - run-through with example sentence from analyser through
 %   disambiguation and changes from the lexical selection
-% - example test sentence(s) from evaluation
 % - forall tests: Why does this test the system for assimilation quality?
 
 
@@ -575,25 +575,30 @@ has a long way to go before being useful for post-editing.
 \subsection{Gisting evaluation}
   
 In order to evaluate to what extent the system was able to convey the
-meaning of the original, we arranged a test containing 3 parts. All
-the tests were based on sentences from a parallel corpus of
-non-fiction, the corpus had not been used during development of the MT
-system. 
+meaning of the original to human users, we arranged a test containing
+3 parts. All the tests were based on sentences from a parallel corpus
+of non-fiction, the corpus had not been used during development of the
+MT system. None of the test subjects had any knowledge of \sme{}.
 
 The first test, a multiple choice test, presented 10 \sme{} sentences
 drawn from the corpus. For each sentence, the test person also got the
 MT output, along with 3 alternative hand-written \nob{} paraphrases
 (based on the \sme{} sentence set). Only one of the three paraphrases
 was paraphrasing that \sme{} sentence correctly (the other two were
-written to be similar but contain factual mistakes), and the user had
-to use the MT output as a guide to pick which paraphrase corresponded
-with the original \sme{} sentence. Example (\ex{1}) shows the test for
-one of the sentences (English glosses were of course not shown), where
-the user could pick one of a., b. or c., b. being correct.
+written to be similar but contain factual mistakes), and the subject
+had to use the MT output as a guide to pick which paraphrase
+corresponded with the original \sme{} sentence. Example (\ex{1}) shows
+the test for one of the sentences\footnote{English glosses were of
+  course not shown; note that we keep un-/mistranslated terms
+  untranslated in the glosses to indicate what the user actually
+  saw.}, where the subject could pick one of a., b. or c., b. being
+correct.
 
 \enumsentence{
-  Original: Muhto eat diehtán maid mii čáliimet (`But we didn't know what we wrote')\\
-  Translated: Men vi visst ikke også skrev vi (`But we didn't known also wrote we')\\
+  \small
+  \texttt{Original:} Muhto eat diehtán maid mii čáliimet (`But we didn't know what we wrote')\\
+  \texttt{Translated:} Men vi visst ikke også skrev vi (`But we didn't known also wrote we')\\
+  \texttt{Pick the right alternative:}\\
   a. Vi visste hva vi skrev (`We knew what we wrote')\\
   b. Vi visste ikke hva vi skrev (`We didn't know what we wrote')\\
   c. Vi visste ikke hva de skrev (`We didn't know what they wrote')\\
@@ -604,9 +609,10 @@ alternatives, the test presented an open question to be answered using
 the MT as a guide.
 
 \enumsentence{
-  Original: Goappaš riikkain lea nammaduvvon hálddahuslaš gulahallanolmmoš (`There is appointed an administrative contact from both countries')\\
-  Translated: Goappaš på rikene er det oppnevnt administrativt forstående hverandre seg mennesket (`Goappaš on the countries there is appointed an administrative understanding eachother self person)\\
-  Hvor kommer kontaktpersonene fra? (`Where do the contact persons come from?')
+  \small
+  \texttt{Original:} Goappaš riikkain lea nammaduvvon hálddahuslaš gulahallanolmmoš (`There is appointed an administrative contact from both countries')\\
+  \texttt{Translated:} Goappaš på rikene er det oppnevnt administrativt forstående hverandre seg mennesket (`Goappaš on the countries there is appointed an administrative understanding eachother self person')\\
+  \texttt{Answer the question:} Hvor kommer kontaktpersonene fra? (`Where do the contact persons come from?')
 }
 
 For both test sets the paraphrases / questions were prepared on the
@@ -622,16 +628,35 @@ that sentence, followed by the reference translation (5-15 words long)
 where at least two of the nouns were removed. For each removed noun,
 we instead showed a randomised, clickable list consisting of the
 originally removed word, along with a random choice of other
-nouns\footnote{Nouns were of the same length (+- 3 characters), pulled
-  from the same 55128 word long legal text, had the same morphological
-  features (gender, definiteness, number) and were never ambiguous
-  with verbs. This questionnaire generator is available from our
-  public repository (subdirectory \texttt{gisting-eval/generated}) and should be
-  usable with other translators.} and finally a ``none seem to fit''
-choice. The users (who did not understand \sme{}) were instructed to
-click what seemed to be the removed word, using the MT as a guide. Ten
+nouns\footnote{Nouns were of the same length ($\pm{} 3$ characters),
+  pulled from the same 55128 word long legal text, had the same
+  morphological features (gender, definiteness, number) and were never
+  ambiguous with verbs. This questionnaire generator is available from
+  our public repository (subdirectory \texttt{gisting-eval/generated})
+  and should be usable with other translators.} and finally a ``none
+seem to fit'' choice. The subjects were instructed to click what
+seemed to be the removed word, using the MT as a guide. Ten
 consecutive sentences from the same piece of text were shown one at a
-time. 
+time. Example (\ex{1}) below shows one of the test sentences, with two
+word choices had to be made (in this case both key words happened to
+translate correctly). All tests were performed using simple HTML
+forms.
+
+\enumsentence{
+  \small
+  \texttt{Original:} Finnmárkkuopmodaga áššegirjjit leat almmolaččat almmolašvuođalága njuolggadusaid mielde
+  (`The Finnmark Property's case documents are public according to the rules of the Freedom of Information Legislation')\\
+  \texttt{Translated:} Finnmárkkuopmodat saksbøker er offentlig med offentlighetslovens regler
+  (`Finnmárkkuopmodat case books are public with the Freedom of Information Legislation's rules')\\
+  \texttt{Pick the right alternative:} Finnmarkseiendommens saksdokumenter er offentlige etter \\
+  \textsc{$\square$domstolene $\square$kommunene $\square$reglene $\square$deltakerne $\square$ressursene $\square$partene $\square$(ingen som passer)}\\
+  i\\
+  \textsc{$\square$salgsorganisasjonen $\square$offentlighetsloven $\square$distriktsinndelingen $\square$jordskifteretten $\square$undersøkelsesretten $\square$utmarksdomstolen $\square$(ingen som passer)}\\
+  (`The Finnmark Property's case documents are public according to the \\
+  \textsc{$\square$court $\square$county $\square$rules $\square$participants $\square$resources $\square$parts $\square$(none of the above)}\\
+  of the \\
+  \textsc{$\square$sales organisation $\square$Freedom of Information Legislation $\square$regional division $\square$land consolidation $\square$examination right $\square$wilderness court}')
+}
 
 The results of all tests are shown in Table \ref{eval}.
 
@@ -659,6 +684,7 @@ translate the key word in the sentence. Sentence (\ex{1}), with \nob{}
 MT output in (\ex{2}), gives an example.
 
 \enumsentence{
+  \small
   \longex{6}{6}
   {... Lillemor Isaksen,  & geas  & lei & gymn\'{a}sa,      & measta & ii}     {fidnen & oahpaheaddjibarggu & go     & son  & lei  & s\'{a}megielat}
   {... Lillemor Isaksen,  & who   & had & secondary.school, & almost & did.not}{get    & teacher.work       & since  & she  & was  & \textbf{saami-speaking}}
@@ -666,6 +692,7 @@ MT output in (\ex{2}), gives an example.
     not get any work as a teacher, since she was \textbf{saami-speaking}'}
 }
 \enumsentence{
+  \small
   \longex{6}{7}
   {... Lillemor Isaksen,  & som  & hadde  & $*$gymn\'{a}sa,  & nesten  & ikke}{han  & f{\aa}tt  & l{\ae}rerarbeidet  & da     & han  & var & samisker}
   {... Lillemor Isaksen,  & who  & had    & $*$gymn\'{a}sa,  & almost  & not }{he   & gotten    & the.teacher.work   & since  & he   & was  & \textbf{saamier}}
@@ -722,12 +749,14 @@ output in (\ex{2}):
 
 % NB dieđihuvvo requires T1 fontenc
 \enumsentence{
+  \small
   \longex{5}{5}
   {... die\dj{}ihuvvo  & ahte  & du\v{s}\v{s}e  & sullii         & 1/3}{skuvllageatnegahtton & ohppiin       & bohte  & oahpahussii}
   {... is.informed     & that  & only           & approximately  & 1/3}{school.duty          & with.teacher  & came   & to.class}
   {`... tells us that only about 1/3 of those of school age with a teacher\\ came to class'} % "with a teacher"? er det rett? TODO
 }
 \enumsentence{
+  \small
   \longex{6}{8}
   {... meddeles     & han  & at    & bare  & omtrent        & 1/3}{$*$skuvllageatnegahtton & med   & en  & l{\ae}rer  & kom   & \textbf{de}    & til  & undervisning}
   {... is.informed  & he   & that  & only  & approximately  & 1/3}{$*$skuvllageatnegahtton & with  & a   & teacher    & came  & \textbf{they}  & to   & class}
@@ -753,19 +782,25 @@ sentence as describing a situation where the teacher does not show up.
 
 Some grammatical constructions were too complicated for the system, 
 like the sentence
-\enumsentence{\shortex{8}
+\enumsentence{
+  \small
+  \shortex{8}
 {Jos & ii &  lean & vejola\v{s} & v\'{a}hnemiid & lusa &  vuolgit, & de ...}
 {if &  not & was &  possible &    to.parents &    to.PO & travel, &  then ... }
-{`If it was not possible to travel to the parents, then ...'}}
+{`If it was not possible to travel to the parents, then ...'}
+}
 
 
 
 The system interpreted this as a 3rd person pro-drop, and translated
 as follows:
-\enumsentence{\shortex{9}
+\enumsentence{
+  \small
+  \shortex{9}
 {Hvis & han & ikke & hadde & til &   de &  mulige &   foreldrene & reiser ,..}
 {If   & he  & not  & had   & to.PR & the & possible & parents &    travels, ...}
-{`If he had not to the possible parents travels, ...'}}
+{`If he had not to the possible parents travels, ...'}
+}
 
 but the correct interpretation is one of a formal subject of
 what in Norwegian would have been a cleft construction.
