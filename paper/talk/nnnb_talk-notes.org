@@ -1,0 +1,602 @@
+#+TITLE: CG in Apertium
+#+SEQ_TODO: TOGROK TODO DONE
+#+TAGS: ROTETE(r)
+#+STARTUP: hidestars
+#+EMAIL: Unhammer at gmail dot com
+#+OPTIONS: H:4 toc:nil f:t skip:nil num:t
+#+LANGUAGE: en
+#+LaTeX_CLASS: prosper
+
+#+BEGIN_LaTeX
+\selectlanguage{english}
+#+END_LaTeX
+
+#+EXPORT_EXCLUDE_TAGS: ROTETE
+
+[[http://www.student.uib.no/~kun041/doc/CGtalk.pdf][presentation (pdf)]]
+
+
+* manuscript
+** slide 1: CG in Apertium
+Hi, my name is Kevin Unhammer, and I'll be giving a talk about The
+Apertium project and how we use Constraint Grammar. Originally,
+Francis Tyers and Kevin Donnelly were going to give a talk on Celtic
+languages in Apertium, but neither of them could make it, so you get
+another Kevin talking about Apertium in more general terms. I'm a new
+recruit to the project, so I might not be able to answer more
+complicated questions, but I'll try my best.
+
+** slide 2: What is Apertium?
+Now, what is Apertium. It's an open source, free machine translation
+platform. Both the source code and the data have free, open
+licences. This means that you can download, run, edit, and
+redistribute both the programs, and the data. (Data might here be the
+corpora you use for training statistical disambiguators.) 
+
+Also, it's _modular_. It's comprised of several programs that, in the
+classic Unix philosophy Do One Thing Well. These modules communicate
+with each other in an agreed upon format through standard Unix pipes
+(meaning you stream output from one program into another). Also, the
+modularity means that any one language pair doesn't have to use all
+modules, in fact, you can get a bare-bones system using only two or
+three of the modules.
+
+Apertium is and has been developed by various universities, companies
+and independent developers like myself. Some get paid for it, others
+just have pet projects that they'd like to work on.
+** slide 3: History of Apertium
+Apertium was initially developed at the University of Alacant, for
+closely related and especially marginalised languages. Later on,
+extensions were made to cover more distant language pairs, and Unicode
+support was added to cope with all those strange scripts of the world.
+
+Now, there are Apertium projects going on at various companies in
+Spain and universities in Vigo, Reykjavík, Oviedo, Pompeu Fabra in
+Barcelona, and others.
+** slide 4: Language pairs
+Here we see a list of language pairs considered mature, and some that
+are being developed. I believe Oviedo handles Asturian, while
+Icelandic is being developed by the University of Reykjavík; Michael
+Kristensen who's sitting right over there is working on
+Swedish-Danish, while I'll be working on translation between two
+written variants of Norwegian, Bokmål and Nynorsk.
+
+Now, marginalised languages have always been a central concern for the
+Apertium project. Marginalised languages are those which typically
+have
+- little or no official recognition
+- low visibility
+- little prestige
+- maybe no written standard
+- little or no localised software, language technology nor internet
+  presence
+- little educational materials, news, official information, even advertising!
+
+These last ones are summed up by the term "lack of text", and it's
+this problem that machine translation can help.
+
+You'll see that many of the languages that are in this list of stable
+pairs are closely related ones, they are often spoken in the same
+country, but are very asymmetrical with regard to
+resources. 
+
+Translation between a majority language and a marginalised one is a
+Good Thing for several reasons: (1) it provides speakers of
+marginalised languages with more written material in their mother
+tongue, like computer software, web pages or public information, in
+some cases this would include work on a written standard; (2) written
+material in a marginalised language becomes accessible for speakers of
+the majority language while still allowing speakers to write in their
+mother tongue.
+
+All in all it gives the marginalised language a higher status and
+allows speakers to identify with it and use it with more confidence.
+** slide 5 (image of language pairs)
+Here's an illustration of the translational pairs we have, courtesy of
+Francis Tyers. Languages considered marginalised are written in
+*bold*, and occur in most of the pairings here. (Nynorsk seems to have
+a semi-bold font, which seems about right.) The grey backgrounds
+indicate that there are few /freely/ available resources. This doesn't
+/necessarily/ mean that there are few resources in general, only that
+they're under licences that wouldn't be acceptible for a Free and Open
+project and couldn't benefit the community at large. Of course, the
+sentence aligned EU corpora exist for Danish and Swedish, which is
+cool if you're doing prue statistical machine translation, but there's
+nothing more annotated that we know of; morphological annotation is a
+bare minimum for rule based MT.
+
+See, if we have morphological annotation, we use that to develop one
+of the most important modules in our MT system, the dictionary.
+** slide 6: Modules
+We normally use an XML format for describing lemma and paradigms in
+the lexica of the languages involved, these are compiled into finite
+state transducers. The information here provides both analysis and
+generation. For example, the analyser lets us know that 'reading'
+could be either a verb or a noun, and gives us the associated lemmata,
+'read' or 'reading'. The generator does the inverse.
+
+A program called /lttoolbox/ is used for compiling the XML into FSTs,
+and these are quite /fast/.  On testing, they seem to perform about 5
+times faster than the Stuttgart Finite State Tools, so most language
+pairs use /lttoolbox/, even though Stuttgart and Helsinki FSTs are
+supported.
+
+Now, 'reading' had two readings, so we need to disambiguate. We have a
+statistical disambiguator running a hidden markov model, that is, the
+Baum-Welch algorithm. This is in fact being extended from bigram to
+trigram tagging this summer, but statistical tagging requires big
+corpora, and it's really hard to correct /specific/ errors. So for
+/pre/-disambiguation we have a constraint grammar module,
+ie. vislcg3. I'll get back to that in a couple of slides.
+
+Of course we also need to find translations of disambiguated words and
+phrases, here we have a translational dictionary, which also lets us
+specify directional constraints. Then transfer rules kick in. 
+
+In Apertium version 1, transfer was one-stage; version 2 gave
+three-stage transfer due to the needs of more distant language
+pairs. This means, not only can we make sure Spanish puts the
+adjective after the noun, but we can translate from SOV to SVO word
+order; we can insert, delete or substitute both individual lexical
+units and whole chunks. Chunks, by the way correspond more or less to
+/phrases/.
+
+A bare-bones system only needs monolingual and bilingual dictionaries,
+so it's easy and cheap to get some quick and dirty results, which may
+later be improved upon. 
+** slide 7: A sketch of the architecture
+Here we see a sketch of the Apertium pipeline. First we seperate
+/formatting/ from /text/, then we analyze morphology, disambiguate the
+analyses, find the lemma-level translations and possibly perform some
+transfer operations (a simple one would be to make sure we get the
+gender from the target language noun onto the target language
+determiner). Then, we generate target-language surface forms, and
+possibly some orthographic operations which I won't go into here, and
+make sure the formatting is readable again, even though the words
+changed. 
+
+These modules are all separate programs, you can run them on their own
+and they perform their duty without needing to call on the other
+programs. The examples here are in a rather small font, so I've got a
+slide here to show the stream format...
+** slide 8: The Apertium stream format
+This little example shows two small steps of the translation
+process. Running "lese en" through the analyser gives this
+output. It's a bit different from the typical CG format, but it tells
+the same story. We have one reading of the first word, a verb in the
+infinitive, while there are three readings for the second one. One of
+these readings is definitely wrong, we don't have imperatives after
+infinitives, so the constraint grammar removes that one. As a
+fragment, it's inherently ambiguous though so this grammar leaves some
+options open. Note that CG is just another module in Apertium, and
+vislcg3 is able to read and write this Apertium stream format.
+
+I mentioned that we separate formatting from text, this is done by
+marking formatting using /superblanks/, anything in superblanks is
+ignored throughout the translation, letting us preserve formatting in
+for example HTML or other well defined document types.
+** slide 9: Visualising the process
+The Apertium Project has some nice tools for grammar writers too, like
+this Apertium Viewer, automatically finds out which modules are used
+in your language pair, and runs the translation process as you
+type. In this example, I don't know if you can read it, but the first
+word here gets a hash-mark, meaning we didn't manage to generate a
+surface form from the target language analysis. I see here that we
+actually got the wrong verb reading from the constraint grammar
+module, which means I'll have to go check this grammar for errors.
+** slide 10: The platform provides
+So, Apertium gives us a machine translation engine for our language
+pair of choice, and the tools to manage our linguistic
+data. Especially for dictionaries there are many advanced tools, for
+example we may sort dictionaries, merge them, and do more advanced
+operations. Very little programming knowledge is required to get
+started, and tools like the one I showed in the last slide simplify
+debugging a lot. There are also a lot of tools already out there for
+XML editing.
+
+Apertium also, importantly, provides a "bank" of monolingual data. So
+if you have a monolingual constraint grammar for a language not in any
+existing pairs, we want it! And if we have data you need, you can have
+it! Thus Apertium provides a nice resource for Free linguistic data.
+
+We also have what we call an "Incubator" for any kind of dictionaries
+and grammars and so on which are still under construction, or haven't
+been put to use in any language pairs yet. We're not the LDC, but then
+we don't charge anything either.
+** slide 11: CG in Apertium (where and how)
+So, constraint grammar is one of modules an Apertium language pair may
+benefit from. Disambiguation is of course one of the most important
+steps in any MT system, and CG is already used for pre-disambiguation
+when translating from Welsh, Irish Gaelic, Breton, and the two
+Norwegian variants (although this last pair is very much in an alpha
+stage). And if CG can't quite make a final choice, the statistical
+disambiguator says enough's enough and chooses the highest ranking
+analysis according to its magical, that is, statistical weightings.
+** slide 12: CG in Apertium (sources)
+Some of the constraint grammars in Apertium were hand-crafted by
+Apertium members. Francis Tyers has mostly been working on Breton,
+with input from Fulup Jakez at the Ofis ar Brezhoneg; Kevin Donnelly
+and Francis have been collaborating on the Welsh grammar.
+
+Others grammars were converted from various external sources. The
+Norwegian CG is from the Oslo-Bergen Tagger; this still needs some
+manual labor since we use a different part-of-speech tag system, but
+that's mostly search-and-replace; there's a Faroese grammar that's
+available but not put to use in a translational pair yet, and then
+there's a grammar for Irish Gaelic that comes from a grammar checking
+system. Since that system was open source, we could use their grammar
+with only minor changes.
+
+** slide 13: Some statistics
+Many of these grammars are rather small at the moment, since Apertium
+has only used CG for about a year. The Oslo-Bergen Tagger for Bokmål
+morphology is nearing four thousand rules, but from what I understand
+it's also taken about 12 years to achieve its current status.
+
+** slide 14: Same concepts apply
+CG fits nicely into the Apertium stream format; the same concepts
+apply, only there's some differences in terminology. What CG calls a
+wordform, Apertium calls a surface form; a baseform is called a lemma,
+while a cohort is an /ambiguous lexical unit/. We see examples here in
+the right column of how it's represented in the stream format; also a
+reading is called an analysis, this is what's between the slashes
+here. So this mapping makes modules play nicely with one another.
+
+
+** slide 15: Same format readable by all modules
+Also, fortunately for us grammar writers, the same format is readable
+by a bunch of disparate modules. vislcg3, Stuttgart and Helsinki
+Finite State Tools, all have Apertium interfaces. So you write CG
+files the same way, but they are able to run on the Apertium output.
+
+What's cool about all this, is that if you've written a nice CG
+disambiguator for Finnish, but don't have the initial,
+undisambiguated, morphological analysis, you can apply /your/
+disambiguator to the output of the freely available OMorFi grammar of
+Finnish. Apertium lets you plug these together. Now all you need is a
+bilingual dictionary and some transfer rules, and you can translate
+between Finnish and, say, one of the Sámi languages already in
+Apertium.
+
+Of course, this does require commitment, and good knowledge of both
+languages. In general, the more different the languages, the harder
+the transfer step becomes.
+
+** slide 16: Why Apertium
+So, to sum up a bit before I move on again; what's good about the
+Apertium system?
+
+It's a rule-based MT system. Now, if you want "cheap and easy" MT
+results, statistical methods trump, right? But these require huge
+corpora, which just aren't available for more marginalised
+languages. Most of the languages in the world have very little textual
+data available, let alone sentence aligned corpora, but many of them
+/do/ have descriptive grammars and dictionaries. Apertium is quite
+suitable for these languages.
+
+Also, rule-based systems are of linguistic interest, you test your
+theory whenever you write a machine translation rule. In fact, when
+the Sámi grammars were implemented into an Apertium pair, errors in it
+were discovered simply due to mistakes in translation.
+Applying your constraint grammar to a task helps you with debugging
+it.
+
+The second reason is a more "economical" one. Apertium already has a
+good dictionary and tagger for Spanish, these are directly reusable in
+new language pairs. And it provides a toolbox for manipulating
+linguistic data. If you have two bilingual dictionaries like, I don't
+know, Basque-Spanish and Catalan-Spanish, you can use these to create
+the beginnings of Basque-Catalan. 
+
+All modules in the system communicate in the same format, not only can
+you use constraint grammar, but also other morphological
+analysers. 
+
+And since all the data and source code are under Free licences,
+Apertium data and tools may be used in other NLP projects, like
+spelling or grammar checking, question-answering systems, and so on and
+so forth.
+** slide 17: Why Apertium (learning curve+contributors)
+Being open source also makes it an interesting project for potential
+contributors. Apertium has quite a gentle learning curve. Jacob
+Nordfalk, from Copenhagen, entered the project last fall, and had a
+high quality English-to-Esperanto system going by March. He just
+released a new version of it last week, actually.
+
+This kind of progress would not be possible if not for the friendly
+community, though. I got to know about Apertium because they had a
+nice-looking manual for installing Giza++, the famous statistical
+corpus alignment program, but I couldn't get it working on my Mac. So
+I joined their chat channel, and Francis Tyers and Jim Regan, also of
+Apertium, walked me through the whole process---for a program that's
+actually peripheral to Apertium! And still they somehow find time to
+learn Swahili and write grammars...
+
+So, now I've talked a lot about what Apertium is and was, I want to
+say a few things about Apertium's near future with respect to
+Constraint Grammar.
+
+** slide 18: Future Work
+At the moment, we only use Constraint Grammar for pre-disambiguation,
+however, many of you have probably written syntactic rules in
+CG. 
+
+Apertium has traditionally taken syntax a bit lightly, dealing mostly
+with closely-related languages, but there are a lot of constraint
+grammars out there which give dependency information, and some of them
+are freely available. We could definitely benefit from these, by using
+the dependency information to help with the transfer step. If we're
+going from a case-based language with relatively free word order, to a
+language with a strict constraint on, say, having the verb second,
+object last, we could benefit a lot from dependency analyses.
+
+A dependency-based transfer rule could make use of, say, the head of a
+dependency tree, stating that "this and all its dependents" should
+move behind the verb. This would make expansion to more distant
+langauge pairs a lot easier.
+
+Now, this seems like it requires some work to implement in Apertium,
+we'd need a way to describe a new type of transfer rules, with other
+concepts that we haven't dealt with before, at least not on the
+implementation level. Fortunately, though, others have done similar
+things... 
+
+** slide 19: Integration with Matxin
+/matʃin/, I've been told that it's pronounced this way, it's a sister
+project of Apertium, a machine translation project that is. There's
+been a lot of collaboration between the projects, but Matxin was
+developed for more distantly related languages, and their transfer
+module does have a system for dependency-based reordering.
+
+Now, they get their dependency analyses from a module called FreeLing,
+it works in quite a different manner, and produces output of the form
+we see here on this slide. However, the information in there is pretty
+much the same as that given by our CG dependency analysis; we have the
+words "Un triple" which depend on "atentado", which again depends on
+"sacude", the attribute "mi" gives part of speech and some
+morphological information, and the tag called "chunk" says that this
+is a subject.
+
+** slide 20: Integration with Matxin
+So, we would like to get Constraint Grammar analyses into this same,
+Matxin-compatible, or FreeLing-like, format. Then Apertium, using the
+VISL CG processor, could handle morphology, disambiguation and
+dependency analysis; while we plug in a Matxin-module for the transfer
+step. 
+
+Faroese has a free dependency analyser. If we have the following
+analysis, it shouldn't be a problem to convert it into...
+
+** slide 21: Integration with Matxin
+...a format that looks more or less like this. 
+
+Then the Matxin-module can handle reordering and other transfer
+operations. So this was just one example of how reuse and
+interoperability play an important role in open source machine
+translation. And both Apertium and Matxin gain from this, as do the
+other projects involved; the more users you have, and especially, the
+more users you have who are also developers, the more bugs get
+discovered. Your documentation improves for free; both Giza++, VISL
+CG, Matxin and various finite state toolkits all have extensive
+install procedures listed on the Apertium wiki. 
+
+So, to sum up, we want your constraint grammars. Or, more precisely,
+we want them to be Free, so that our buddies at An Gramadóir can make
+more grammar checkers, so that speakers of marginalised languages
+can write with confidence in their mother tongue, so that we /don't/
+reinvent the wheel all the time, but instead help each other out with
+our related projects.
+
+#So that's it for me, if there are any questions, I'm sure /someone/ in
+#here will be able to answer them?
+** slide 22: Thanks for listening
+** slide 23: Licence
+ 
+
+
+
+
+
+* notes								     :ROTETE:
+** What is Apertium? 
+** Apertium is
+- An Open Source Machine Translation platform
+  - both /source code/ and /data/ have Free / Open Source licences
+- Modular
+  - stand-alone programs communicate through standard Unix pipes
+  - particular language pairs need not use all modules!
+- Developed by universities, companies and independent (volunteer and
+  paid) developers
+
+** History of Apertium
+- Initially developed for closely related languages (Portuguese ⇆
+  Spanish ⇆ Catalan) by the Transducens group at the Universitat
+  d'Alacant
+- Now also involves Universitat Pompeu Fabra in Barcelona,
+  Universidade de Vigo, Prompsit Language Engineering, etc.
+** Language pairs
+- "Stable": Spanish ⇆ Catalan, Spanish ← Romanian, French ⇆ Catalan,
+  Occitan ⇆ Catalan, English ⇆ Galician, Occitan ⇆ Spanish, Spanish ⇆
+  Portuguese, English ⇆ Catalan, English ⇆ Spanish, English →
+  Esperanto, Spanish ⇆ Galician, French ⇆ Spanish, Esperanto ←
+  Spanish, Welsh → English, Esperanto ← Catalan, Portuguese ⇆ Catalan,
+  Portuguese ⇆ Galician, Basque → Spanish
+- Other pairs being developed (Spanish ⇆ Asturian, Icelandic ⇆
+  English, Swedish ⇆ Danish, Nynorsk ⇆ Bokmål, ...)
+*** Note
+    - Icelandic: Reykjavík
+    - Asturian: Oviedo
+
+Marginalised languages have always been a central concern for the
+Apertium project. 
+
+What does it mean for a language to have few Free resources?
+- no morphologies
+- no taggers
+- no tagged corpora
+
+
+** Modules
+- Morphological dictionaries
+  - XML format, compiles to FSTs
+  - one dictionary gives both analysis and generation
+- CG pre-disambiguation 
+- Statistical disambiguation (HMM)
+- Bilingual dictionary for lexical transfer
+- Shallow syntactic transfer rules
+  - Local re-ordering (nom adj → adj nom) 
+  - Chunking (adj adj nom → SN[adj adj nom]) 
+  - Insertions, deletions and substitutions of lexical units and
+    chunks
+*** Note
+In Apertium version 1, transfer was one-stage; version 2 gave
+three-stage transfer due to the needs of more distant language pairs.
+
+A bare-bones system would consist only of monolingual and bilingual
+dictionaries, it's easy and cheap to get some quick and dirty results.
+
+Also dictionary support for SFST/HFST.
+** Sketch of the architecture
+
+
+** Apertium stream format
+*** Note
+CG is just another module in Apertium, and vislcg3 is able to both
+read and output the Apertium stream format.
+
+A CG rule has here removed one reading from the "en" cohort, but we
+need more context to disambiguate further.
+** Visualising the process
+*** Note
+Nice GUIs give a quick overview of where in a translation things go
+wrong. In this example, the constraint grammar (the cg-proc step)
+keeps the passive instead of the imperative verb, now I know what I
+have to fix.
+** The platform provides
+- a language-independent MT engine
+- tools to manage the linguistic data necessary to build a MT system
+  for a given language pair
+  - little programming knowledge required to get started
+  - graphical user interfaces that show each step in the translation process 
+- linguistic data for a growing number of language pairs
+  - also usable for other NLP purposes (spelling and grammar checking,
+    ...)
+*** Note
+   Apertium provides a "bank" of monolingual data, eg. if you have a
+   monolingual CG for a language not in any of the existing pairs, /we
+   want it/! Thus provides a central resource for Free linguistic
+   data.
+   
+   We have an Incubator for any kind of dictionaries, grammars
+   etc. which are still under construction or haven't been put to use
+   in any language pairs yet.
+** CG in Apertium						    
+   - Used after morphological analysis for pre-disambiguation in
+     Nynorsk ⇆ Bokmål, Welsh ⇆ English, Breton ⇆ French, Irish Gaelic ⇆
+     Scottish Gaelic
+   - Apertium's own statistical disambiguator makes a choice if CG
+     doesn't completely disambiguate
+*** Note
+Disambiguation is of course one of the most important steps in any MT
+system.
+    
+The apertium format is slightly different from the format used by
+vislcg3 etc., in vislcg3 there is a separate reader and compiler for
+this format. CG files are still written the same way, but the input
+and output is in the Apertium stream format.
+** CG reuse
+  - Norwegian CG is from the Oslo-Bergen Tagger (GPL)
+  - [[http://giellatekno.uit.no/][Sámi giellatekno]] provides free grammars for Sámi languages and
+    Faroese
+  - Irish grammar mostly converted manually from the [[http://borel.slu.edu/gramadoir/][An Gramadóir
+    project]]
+*** Note
+Sámi pairs still under development, there are also "unstable" grammars
+in the incubator.
+
+Most of them are under development and have low coverage. We are
+working on adapting them more effectively to the CG formalism.
+
+** Same concepts apply between modules
+*** Note
+But there are some minor terminological differences.
+** Same format readable by all modules
+*** Note
+Just like vislcg3, other modules like SFST/HFST are able to read and
+output the Apertium stream format. This means that if you've written a
+nice CG disambiguator for Finnish but don't have the initial
+undisambiguated morphological analysis, you can use the freely
+available Finnish grammar since Apertium lets you plug these
+together. Now all you need is a bilingual dictionary and some transfer
+rules, and you can translate between Finnish and one of the Sámi
+languages already in Apertium. 
+
+Of course, this requires commitment, and good knowledge of both
+languages. In general, the more different the languages, the harder
+the transfer step becomes.
+** Why Apertium							    
+   - Mainly rule-based
+     - most languages of the world have little freely available textual
+       data, let alone parallel corpora for SMT purposes; Apertium is
+       thus suitable for marginalised languages.
+   - Reuse and Interoperability
+     - Monolingual dictionaries and constraint grammars are directly
+       reusable for new language pairs
+     - apertium-dixtools: generates new language pairs from existing
+       ones 
+     - vislcg3 reads and outputs the Apertium stream format, as does
+       Stuttgart/Helsinki Finite State Tools 
+     - Free licences allow other systems to use Apertium data and tools
+** Note
+RBMT: If you have a (regular) dictionary and grammar and a person
+dedicated to working on it, you can have an MT system up in about a
+year
+   
+dixtools of course requires some post-editing
+
+SFST/HFST are other Free systems, with some freely available analyzers
+** Open Source + Small learning curve => quick results!
+: <jacobEo> but I think there should be a slide bout the combination "Open
+: 	  source" + "learnable in 6 months" => big potential.
+: <Unhammer> hmm.. maybe I'll put something on the Why Apertium page on OS and
+: 	   potential for lots of contributors. And mention that someone just
+: 	   came and talked about doing eo-fr (wasn't there some italian on the
+: 	   mailing lists too?)
+: 
+: <spectie> Unhammer, you could mention the small learning curve
+: <spectie> Unhammer, e.g. "create language pair in 6 months"
+: <spectie> (just ask Jacob Nordfalk -- give email addr!) ;D
+: <jimregan2> 'ask noted Esperantist Jacob Norfalk' ;)			[21:13]
+: <jacobEo> and Unhammer, tell f.ex. story about me making eo-en. I didnt know
+: 	  ANYthing 8 months ago :-)
+
+** Future work
+** dependency-based reordering
+   - Many constraint grammars out there give dependency information,
+     this could be integrated into Apertium to provide /dependency
+     based reordering/ (ie. by first building a dependency tree)
+
+*** Note
+Of course, it might be easier if we didn't have to do the actual
+reordering ourselves...
+
+** Integration with Matxin
+*** Note
+Matxin uses more syntactic information than Apertium.
+
+** Note
+As mentioned, the transfer step is difficult the more different the
+languages are. DG could help here. (Reuse again...)
+
+Matxin, a sister MT project which is also Free, already does
+something close to this.
+
+** Licences							    
+This presentation may be distributed under the terms of the 
+GNU GPL, GNU FDL and CC-BY-SA licences. 
+- GNU GPL v. 3.0 \\
+  http://www.gnu.org/licenses/gpl.html 
+- GNU FDL v. 1.2 \\
+  http://www.gnu.org/licenses/gfdl.html 
+- CC-BY-SA v. 3.0 \\
+  http://creativecommons.org/licenses/by-sa/3.0/ 

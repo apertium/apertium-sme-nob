@@ -1,0 +1,61 @@
+
+* Title page
+  Hi, my name is Kevin Unhammer, and I'm here to talk about a
+  long-distance, rule-based free machine translation pair, and some
+  methods of evaluating how well users understand the MT – that is,
+  how well it fulfils the purpose of *assimilation*, or *gisting*
+
+* Outline of talk
+  Our language pair, apertium-sme-nob, is from North Sámi to Norwegian
+  Bokmål, so I'll first tell you a bit about those, and then a little
+  introduction to the frameworks we used, Apertium, Constraint Grammar
+  and HFST. There'll be an Apertium workshop tomorrow though, so I
+  guess I shouldn't go too deep into that.
+    
+  Then I'll try and explain the various methods used in developing the
+  pair, including how we integrated existing free and open source
+  resources, and what the challenges were there.
+    
+  Finally, we have the evaluation of the system, where we've tried to
+  evaluate with respect to how well users *understand* the output.
+
+* Languages
+  North Sámi is a Finno-Ugric language (so, it's related to Finnish),
+  it's the most widely spoken of the Sámi languages, with somewhere
+  around 20,000 speakers. In spite of that low number, it does have a
+  stable *ortography*. It's *agglutinative*, got a fairly rich
+  morphology and case system, including 4 *adverbial* cases, it's got
+  *pro-drop* (like with Spanish, you can drop the subject pronoun
+  since the verb holds enough info). It's also got lots of productive
+  *derivations* and compounding.
+
+  Norwegian, on the other hand, has apart from some compunding, quite
+  simple and straight-forward morphology, uses *prepositions* or
+  compounds where Sámi uses adverbial cases, and has *no pro-drop*.
+
+  I don't think there's been any MT systems between Sámi and other
+  Indo-European languages before (though there's been at least one
+  within different Sámi languages).
+
+  The two languages are both spoken in Norway, but there's an
+  asymmetry; most all Sámi speakers understand the majority language
+  Norwegian, while very few Norwegian speakers understand Sámi. 
+
+* The system
+** MT Architecture
+*** HFST
+
+** Resources
+
+** Issues with development
+*** Derivations, trimming
+
+
+* Evaluation
+** WER, coverage, simple stuff
+
+** Gisting evaluations
+
+** Error analysis
+
+* In conclusion, future work
