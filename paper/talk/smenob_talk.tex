@@ -88,7 +88,7 @@
     \vskip -0.1\textheight
     \hspace*{-0.03\textwidth}
     \centerline{\includegraphics[width=1.2\textwidth]{apertium-general-architecture}}
-    \tiny{(stock photo)}
+    \tiny{(stock photage)}
     \label{fig:general-architecture}
   \end{figure}
 \end{frame}
@@ -211,7 +211,7 @@
 
 \begin{frame}\frametitle{Lexical selection}
   \begin{itemize}
-  \item Ruels created from scratch
+  \item Rules created from scratch
   \item Tag and word sets copied from disambiguator
   \item Semantic sets from disambiguator useful here. E.g. the verb
     \textit{bivdit} translates into:
@@ -325,8 +325,8 @@
 
 \subsection{Coverage, WER}
 \begin{frame}\frametitle{Coverage and ambiguity rate}
-  \begin{table}
-    \begin{center}
+  \begin{center}
+    \begin{table}
       \begin{tabular}{crrrrr}
         Corpus     & tokens   & coverage & ambig.      & coverage   & ambig.rate  \\
         &          &          & rate        & w/o deriv  & w/o deriv \\
@@ -336,8 +336,10 @@
       \end{tabular}
       \caption{Na\"{i}ve coverage on several corpora.}
       \label{table:cov}
-    \end{center}
-  \end{table}
+
+      (ambiguity rate reduced to about 1.04 by CG rules)
+    \end{table}
+  \end{center}
 \end{frame}
 
 \begin{frame}\frametitle{Word Error Rate}
@@ -419,6 +421,13 @@
 
 \section{Conclusion}
 \begin{frame}\frametitle{Future work}
+  \begin{itemize}
+  \item More structural transfer rules, we don't catch all major
+    constructions
+  \item Automatically create lexical selection rules with \tool{apertium-lex-tools}
+  \item Better disambiguation: improve rules, perhaps train HMM
+  \item More entries for the translational dictionary
+  \end{itemize}
 \end{frame}
 
 \begin{frame}\frametitle{Licences}
