@@ -94,6 +94,29 @@
 \end{frame}
 
 
+\subsection{\smenob{} pipeline}
+\begin{frame}\frametitle{\smenob{} pipeline}
+    \begin{figure}
+    \begin{center}
+      \includegraphics[width=1.0\textwidth]{../architecture}
+    \end{center}
+    \label{fig:modules}
+  \end{figure}
+
+    \vskip -0.1\textheight
+  \begin{itemize}
+  \item Analysis with HFST,
+  \item lexical transfer and generation with lttoolbox
+  \end{itemize}
+  \begin{itemize}
+  \item Disambiguation and lexical selection with Constraint
+    Grammar
+  \end{itemize}
+  \begin{itemize}
+  \item Four stage structural transfer
+  \end{itemize}
+\end{frame}
+
 \subsection{HFST}
 \begin{frame}\frametitle{Helsinki Finite State Tools}
   \begin{center}
@@ -120,29 +143,6 @@
   \end{itemize}
 \end{frame}
 
-\subsection{\smenob{} pipeline}
-\begin{frame}\frametitle{\smenob{} pipeline}
-    \begin{figure}
-    \begin{center}
-      \includegraphics[width=1.0\textwidth]{../architecture}
-    \end{center}
-    \label{fig:modules}
-  \end{figure}
-
-    \vskip -0.1\textheight
-  \begin{itemize}
-  \item Analysis with HFST,
-  \item lexical transfer and generation with lttoolbox
-  \end{itemize}
-  \begin{itemize}
-  \item Disambiguation and lexical selection with Constraint
-    Grammar
-  \end{itemize}
-  \begin{itemize}
-  \item Four stage structural transfer
-  \end{itemize}
-\end{frame}
-
 \section{Resources and development}
 \begin{frame}
   \frametitle{Resources}
@@ -154,7 +154,7 @@
     \item ... manually excluding some
       ``explanatory'' entries, e.g. \textit{madda} $\rightarrow$
       \textit{branching part of deer's antlers}
-    \item Many entries manually entered (now over 20,000, excluding
+    \item Many entries (semi-)manually entered (now over 20,000, excluding
       proper nouns)
     \end{itemize}
   \end{itemize}
