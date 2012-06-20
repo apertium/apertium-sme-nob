@@ -135,9 +135,9 @@
   \item More expressive power than lttoolbox, e.g. \textbf{flag
       diacritics}:
     \begin{itemize}
-    \item see a certain prefix, set a variable
-    \item analyse some more of the word
-    \item only allow certain suffixes if you've set the variable
+    \item in prefix paradigm: see a certain prefix, set a variable
+    \item ... analyse some more of the word ...
+    \item in suffix paradigm: only allow certain suffix if variable set
     \end{itemize}
   \item ... but slower          % nob is 21x faster than sme, but need comparable morphologies to test with
   \end{itemize}
@@ -154,8 +154,11 @@
     \item ... manually excluding some
       ``explanatory'' entries, e.g. \textit{madda} $\rightarrow$
       \textit{branching part of deer's antlers}
-    \item Many entries (semi-)manually entered (now over 20,000, excluding
-      proper nouns)
+    \item Many entries (semi-)manually entered
+      \begin{itemize}
+      \item now over 20,000, excluding proper nouns
+      \end{itemize}
+
     \end{itemize}
   \end{itemize}
   \begin{itemize}
@@ -280,9 +283,10 @@
   \item We do \textit{not} invent suffixes:
     \begin{itemize}
     \item `clear' as a noun, is it: `clearhood'? `clearness'?
-      `clearment'? `clearship'? `clearerty'?
+      `clearment'? `clearship'? `clearerty'? (`clarity')
     \item `unemployed' as a noun, is it: `unemployedhood'?
       `unemployedness'? `unemployity'? `unemployedship'?
+      (`unemployment')
     \end{itemize}
   \item We pick from \textit{possible} forms, taking advantage of
     \nob{} PoS ambiguity:
@@ -424,7 +428,8 @@
   \begin{itemize}
   \item More structural transfer rules, we don't catch all major
     constructions
-  \item Automatically create lexical selection rules with \tool{apertium-lex-tools}
+  \item Automatically create lexical selection rules with
+    \tool{apertium-lex-tools}
   \item Better disambiguation: improve rules, perhaps train HMM
   \item More entries for the translational dictionary
   \end{itemize}
