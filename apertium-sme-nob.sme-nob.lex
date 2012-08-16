@@ -1911,6 +1911,20 @@ SET INTR = Rel OR PUNCT-LEFT ;
 SET INTR-END = COMMA OR PUNCT-RIGHT ;
 
 
+
+
+
+
+#############################################
+####      								 ####
+####      								 ####
+####           RULES START HERE 		 ####
+####      								 ####
+####      								 ####
+#############################################
+
+
+
 SECTION
 
 # Verb rules
@@ -2042,6 +2056,9 @@ SUBSTITUTE ("árvalus") ("árvalus:1") ("árvalus" N) (-1 ("fágalaš") OR ("loa
     # Noun rules
     # ----------
 
+SUBSTITUTE ("beaivi") ("beaivi:1") ("beaivi" N) (*1 ("báitit"));
+	# Beaivi báitá.
+	
 # luohkká 0 = bakke, 1 = klasse
 SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (*1 EDUCATION OR LESSON OR ("oahpaheaddji"));
     
