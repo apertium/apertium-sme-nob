@@ -2056,7 +2056,16 @@ SUBSTITUTE ("árvalus") ("árvalus:1") ("árvalus" N) (-1 ("fágalaš") OR ("loa
     # Noun rules
     # ----------
 
-SUBSTITUTE ("beaivi") ("beaivi:1") ("beaivi" N) (*1 ("báitit"));
+# soadji 0 = vinge, 1 = skovl, 2 = fløy, 3 = erme
+SUBSTITUTE ("soadji") ("soadji:2") ("soadji" N) (0* ORGANIZATION);
+	# Bellodaga radikála soajis bođii garra proteasta.
+	
+SUBSTITUTE ("soadji") ("soadji:3") ("soadji" N) (0* CLOTHES);
+	# Mu báiddi soajis lea ráigi.
+
+
+# beaivi 0 = dag, 1 = sol
+SUBSTITUTE ("beaivi") ("beaivi:1") ("beaivi" N) (0* ("báitit"));
 	# Beaivi báitá.
 	
 # luohkká 0 = bakke, 1 = klasse
