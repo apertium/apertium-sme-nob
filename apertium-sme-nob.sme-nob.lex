@@ -1930,6 +1930,10 @@ SECTION
 # Verb rules
 # ----------
 
+# bargat 0 = arbeide, 1 = gjøre
+SUBSTITUTE ("bargat") ("bargat:1") ("bargat" V) (*-1 ("mii" Pron Acc))(NOT *1 Com BARRIER S-BOUNDARY) ;
+
+
 # beassat 0 = få, 1 = slippe, 2 = komme Refl til
 	## Sii leat beassan eallit dego gonagasat.
 
@@ -2003,6 +2007,10 @@ SUBSTITUTE ("mannat") ("mannat:1") ("mannat" V) (*-1 ("mo") OR ("dat"))(0 (Sg3))
 SUBSTITUTE ("bivdit") ("bivdit:1") ("bivdit" V)(*1 Qst);
 SUBSTITUTE ("bivdit") ("bivdit:2") ("bivdit" V)(*0 FISH);
 SUBSTITUTE ("bivdit") ("bivdit:3") ("bivdit" V)((*0 NATURE-PLACE OR HUNT-ANIMAL OR BIRD) OR (0 (Actor)));
+
+# borahit 0 = mate, 1 = fôre
+SUBSTITUTE ("borahit") ("borahit:1") ("borahit" V)(*0 ANIMAL);
+	# Son borahi máná. Son borahi spiinniid.
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
 #SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (1 ("dego") OR (Actio Ess)) ;
