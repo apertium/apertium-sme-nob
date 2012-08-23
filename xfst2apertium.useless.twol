@@ -31,7 +31,6 @@
 
 Alphabet
 
-%+Hyph:0
  %+Use%/Sub:0
  %+Use%/Marg:0  
  %+Use%/%-Spell:0
@@ -77,6 +76,9 @@ Alphabet
 %+CmpN%/Def:0        ! works along with Left compound-tagging
 %+CmpN%/DefSgGen:0   ! works along with Left compound-tagging
 %+CmpN%/DefPlGen:0   ! works along with Left compound-tagging
+
+ %+Hyph:0				! on compounds that have a hyphens
+ %+Use%/NoHyph:0 ! On compounds that SHOULD have had a hyphen, but doesn't
 
  %+Multi:0
  %+Guess:0
@@ -144,7 +146,6 @@ Alphabet
               %+Der%/asti                                  ! VV
               %+Der%/at                                    ! QA ! check this!
               %+Der%/easti                                 ! VV
-              %+Der%/gielat                                ! QA
               %+Der%/jagáš                                 ! QA
               %+Der%/lágaš                                 ! QA
               %+Der%/lágáš                                 ! QA ! Check this!
@@ -179,22 +180,28 @@ Alphabet
 
 ! See lexicons NAMAT and SAS for these:
 %+Der%/agat
+%+Der%/ahkásaš
+%+Der%/asat
+%+Der%/beaivásaš
 %+Der%/bealat
 %+Der%/bealjat
 %+Der%/borat
+%+Der%/buddásaš
 %+Der%/bánat
+%+Der%/diibmosaš
 %+Der%/dábat
 %+Der%/dáfot
 %+Der%/dáhtot
 %+Der%/dásat
+%+Der%/dássásaš
 %+Der%/dávddat
 %+Der%/dávttat
 %+Der%/fárddat
 %+Der%/gaccat
 %+Der%/garat
 %+Der%/gearddat
+%+Der%/geardásaš
 %+Der%/geažat
-%+Der%/gielat
 %+Der%/gieđat
 %+Der%/gieškkat
 %+Der%/gilggat
@@ -205,14 +212,15 @@ Alphabet
 %+Der%/hámat
 %+Der%/ivnnat
 %+Der%/jagat
+%+Der%/jahkásaš
 %+Der%/jearggat
 %+Der%/jienat
 %+Der%/jierpmat
 %+Der%/joccat
 %+Der%/juolggat
 %+Der%/juvllat
+%+Der%/kilosaš
 %+Der%/kultuvrrat
-%+Der%/asat
 %+Der%/lahkat
 %+Der%/lahtot
 %+Der%/lanjat
@@ -220,26 +228,28 @@ Alphabet
 %+Der%/liikkat
 %+Der%/linjjat
 %+Der%/lunddot
+%+Der%/luohkkálaš
+%+Der%/luohkálaš
 %+Der%/luottat
 %+Der%/láiddat
+%+Der%/mannosaš
 %+Der%/mearkkat
 %+Der%/mielat
 %+Der%/mohkat
 %+Der%/muđot
 %+Der%/máhtat
 %+Der%/mállet
+%+Der%/mánnosaš
 %+Der%/namat
 %+Der%/nađat
 %+Der%/nierat
 %+Der%/njunat
 %+Der%/njálmmat
-%+Der%/nuo0lus
+%+Der%/nuolus
 %+Der%/náittot
-%+Der%/sorttat
 %+Der%/nálat
 %+Der%/oaivvat
 %+Der%/oasat
-%+Der%/áissat
 %+Der%/olat
 %+Der%/orddat
 %+Der%/pláhtat
@@ -249,10 +259,12 @@ Alphabet
 %+Der%/seagat
 %+Der%/seaibbat
 %+Der%/seainnat
+%+Der%/siessat
 %+Der%/siiddot
 %+Der%/soajat
-%+Der%/sogat
 %+Der%/soarttat
+%+Der%/sogat
+%+Der%/sorttat
 %+Der%/stábat
 %+Der%/stávval
 %+Der%/suorat
@@ -261,48 +273,35 @@ Alphabet
 %+Der%/suttat
 %+Der%/sánat
 %+Der%/sávnnjat
-%+Der%/šlájat
 %+Der%/uvssat
 %+Der%/uvssot
+%+Der%/vahkkosaš
+%+Der%/vahkosaš
 %+Der%/varat
 %+Der%/vigat
+%+Der%/viidosaš
 %+Der%/vuovttat
 %+Der%/vuđot
 %+Der%/váillat
 %+Der%/váimmot
 %+Der%/válddat
 %+Der%/váttot
+%+Der%/áigásaš
+%+Der%/áissat
 %+Der%/ávjjot
 %+Der%/čalmmat
 %+Der%/čeavžžat
+%+Der%/čiegahas
 %+Der%/čiegat
 %+Der%/čielggat
 %+Der%/čoalat
 %+Der%/čoarvvat
 %+Der%/čuolmmat
 %+Der%/čuvddat
-%+Der%/hámat
-%+Der%/vahkkosaš
-%+Der%/čiegahas
-%+Der%/luohkálaš
-%+Der%/luohkkálaš
-%+Der%/viidosaš
-%+Der%/kilosaš
-%+Der%/diibmosaš
-%+Der%/dássásaš
-%+Der%/mánnosaš
-%+Der%/buddásaš
-%+Der%/geardásaš
-%+Der%/áigásaš
-%+Der%/ahkásaš
-%+Der%/jahkásaš
-%+Der%/beaivásaš
-%+Der%/vahkosaš
-%+Der%/mannosaš
-%+Der%/siessat
+%+Der%/šlájat
 
 %+Der%/A
-! Der#end
+
 
 
 
@@ -333,7 +332,7 @@ Alphabet
 Sets
 
 Useless =	    ! Keep consistent with tags in  sme-lex.txt:36..118
-%+Hyph
+
  %+Use%/Sub   ! substandard, not in normative fst
  %+Use%/Marg  ! marginal (?)
  %+Use%/%-Spell !Excluded in speller
@@ -382,6 +381,9 @@ Useless =	    ! Keep consistent with tags in  sme-lex.txt:36..118
 %+CmpN%/Def        ! works along with Left compound-tagging
 %+CmpN%/DefSgGen   ! works along with Left compound-tagging
 %+CmpN%/DefPlGen   ! works along with Left compound-tagging
+
+ %+Hyph				! on compounds that have a hyphens
+ %+Use%/NoHyph ! On compounds that SHOULD have had a hyphen, but doesn't
 
 !!! Descriptive tags for compound analysis (%+Cmpnd etc.) are _NOT_ removed!
 
@@ -502,22 +504,28 @@ Derivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 
 ! See lexicons NAMAT and SAS for these:
 %+Der%/agat
+%+Der%/ahkásaš
+%+Der%/asat
+%+Der%/beaivásaš
 %+Der%/bealat
 %+Der%/bealjat
 %+Der%/borat
+%+Der%/buddásaš
 %+Der%/bánat
+%+Der%/diibmosaš
 %+Der%/dábat
 %+Der%/dáfot
 %+Der%/dáhtot
 %+Der%/dásat
+%+Der%/dássásaš
 %+Der%/dávddat
 %+Der%/dávttat
 %+Der%/fárddat
 %+Der%/gaccat
 %+Der%/garat
 %+Der%/gearddat
+%+Der%/geardásaš
 %+Der%/geažat
-%+Der%/gielat
 %+Der%/gieđat
 %+Der%/gieškkat
 %+Der%/gilggat
@@ -528,14 +536,15 @@ Derivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/hámat
 %+Der%/ivnnat
 %+Der%/jagat
+%+Der%/jahkásaš
 %+Der%/jearggat
 %+Der%/jienat
 %+Der%/jierpmat
 %+Der%/joccat
 %+Der%/juolggat
 %+Der%/juvllat
+%+Der%/kilosaš
 %+Der%/kultuvrrat
-%+Der%/asat
 %+Der%/lahkat
 %+Der%/lahtot
 %+Der%/lanjat
@@ -543,26 +552,28 @@ Derivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/liikkat
 %+Der%/linjjat
 %+Der%/lunddot
+%+Der%/luohkkálaš
+%+Der%/luohkálaš
 %+Der%/luottat
 %+Der%/láiddat
+%+Der%/mannosaš
 %+Der%/mearkkat
 %+Der%/mielat
 %+Der%/mohkat
 %+Der%/muđot
 %+Der%/máhtat
 %+Der%/mállet
+%+Der%/mánnosaš
 %+Der%/namat
 %+Der%/nađat
 %+Der%/nierat
 %+Der%/njunat
 %+Der%/njálmmat
-%+Der%/nuo0lus
+%+Der%/nuolus
 %+Der%/náittot
-%+Der%/sorttat
 %+Der%/nálat
 %+Der%/oaivvat
 %+Der%/oasat
-%+Der%/áissat
 %+Der%/olat
 %+Der%/orddat
 %+Der%/pláhtat
@@ -572,10 +583,12 @@ Derivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/seagat
 %+Der%/seaibbat
 %+Der%/seainnat
+%+Der%/siessat
 %+Der%/siiddot
 %+Der%/soajat
-%+Der%/sogat
 %+Der%/soarttat
+%+Der%/sogat
+%+Der%/sorttat
 %+Der%/stábat
 %+Der%/stávval
 %+Der%/suorat
@@ -584,48 +597,34 @@ Derivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/suttat
 %+Der%/sánat
 %+Der%/sávnnjat
-%+Der%/šlájat
 %+Der%/uvssat
 %+Der%/uvssot
+%+Der%/vahkkosaš
+%+Der%/vahkosaš
 %+Der%/varat
 %+Der%/vigat
+%+Der%/viidosaš
 %+Der%/vuovttat
 %+Der%/vuđot
 %+Der%/váillat
 %+Der%/váimmot
 %+Der%/válddat
 %+Der%/váttot
+%+Der%/áigásaš
+%+Der%/áissat
 %+Der%/ávjjot
 %+Der%/čalmmat
 %+Der%/čeavžžat
+%+Der%/čiegahas
 %+Der%/čiegat
 %+Der%/čielggat
 %+Der%/čoalat
 %+Der%/čoarvvat
 %+Der%/čuolmmat
 %+Der%/čuvddat
-%+Der%/hámat
-%+Der%/vahkkosaš
-%+Der%/čiegahas
-%+Der%/luohkálaš
-%+Der%/luohkkálaš
-%+Der%/viidosaš
-%+Der%/kilosaš
-%+Der%/diibmosaš
-%+Der%/dássásaš
-%+Der%/mánnosaš
-%+Der%/buddásaš
-%+Der%/geardásaš
-%+Der%/áigásaš
-%+Der%/ahkásaš
-%+Der%/jahkásaš
-%+Der%/beaivásaš
-%+Der%/vahkosaš
-%+Der%/mannosaš
-%+Der%/siessat
+%+Der%/šlájat
 
 %+Der%/A
-! Der#end
 ;
 
 
@@ -700,22 +699,28 @@ UnhandledDerivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 
 ! See lexicons NAMAT and SAS for these:
 %+Der%/agat
+%+Der%/ahkásaš
+%+Der%/asat
+%+Der%/beaivásaš
 %+Der%/bealat
 %+Der%/bealjat
 %+Der%/borat
+%+Der%/buddásaš
 %+Der%/bánat
+%+Der%/diibmosaš
 %+Der%/dábat
 %+Der%/dáfot
 %+Der%/dáhtot
 %+Der%/dásat
+%+Der%/dássásaš
 %+Der%/dávddat
 %+Der%/dávttat
 %+Der%/fárddat
 %+Der%/gaccat
 %+Der%/garat
 %+Der%/gearddat
+%+Der%/geardásaš
 %+Der%/geažat
-%+Der%/gielat
 %+Der%/gieđat
 %+Der%/gieškkat
 %+Der%/gilggat
@@ -726,14 +731,15 @@ UnhandledDerivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/hámat
 %+Der%/ivnnat
 %+Der%/jagat
+%+Der%/jahkásaš
 %+Der%/jearggat
 %+Der%/jienat
 %+Der%/jierpmat
 %+Der%/joccat
 %+Der%/juolggat
 %+Der%/juvllat
+%+Der%/kilosaš
 %+Der%/kultuvrrat
-%+Der%/asat
 %+Der%/lahkat
 %+Der%/lahtot
 %+Der%/lanjat
@@ -741,14 +747,18 @@ UnhandledDerivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/liikkat
 %+Der%/linjjat
 %+Der%/lunddot
+%+Der%/luohkkálaš
+%+Der%/luohkálaš
 %+Der%/luottat
 %+Der%/láiddat
+%+Der%/mannosaš
 %+Der%/mearkkat
 %+Der%/mielat
 %+Der%/mohkat
 %+Der%/muđot
 %+Der%/máhtat
 %+Der%/mállet
+%+Der%/mánnosaš
 %+Der%/namat
 %+Der%/nađat
 %+Der%/nierat
@@ -756,11 +766,9 @@ UnhandledDerivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/njálmmat
 %+Der%/nuo0lus
 %+Der%/náittot
-%+Der%/sorttat
 %+Der%/nálat
 %+Der%/oaivvat
 %+Der%/oasat
-%+Der%/áissat
 %+Der%/olat
 %+Der%/orddat
 %+Der%/pláhtat
@@ -770,10 +778,12 @@ UnhandledDerivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/seagat
 %+Der%/seaibbat
 %+Der%/seainnat
+%+Der%/siessat
 %+Der%/siiddot
 %+Der%/soajat
-%+Der%/sogat
 %+Der%/soarttat
+%+Der%/sogat
+%+Der%/sorttat
 %+Der%/stábat
 %+Der%/stávval
 %+Der%/suorat
@@ -782,45 +792,32 @@ UnhandledDerivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/suttat
 %+Der%/sánat
 %+Der%/sávnnjat
-%+Der%/šlájat
 %+Der%/uvssat
 %+Der%/uvssot
+%+Der%/vahkkosaš
+%+Der%/vahkosaš
 %+Der%/varat
 %+Der%/vigat
+%+Der%/viidosaš
 %+Der%/vuovttat
 %+Der%/vuđot
 %+Der%/váillat
 %+Der%/váimmot
 %+Der%/válddat
 %+Der%/váttot
+%+Der%/áigásaš
+%+Der%/áissat
 %+Der%/ávjjot
 %+Der%/čalmmat
 %+Der%/čeavžžat
+%+Der%/čiegahas
 %+Der%/čiegat
 %+Der%/čielggat
 %+Der%/čoalat
 %+Der%/čoarvvat
 %+Der%/čuolmmat
 %+Der%/čuvddat
-%+Der%/hámat
-%+Der%/vahkkosaš
-%+Der%/čiegahas
-%+Der%/luohkálaš
-%+Der%/luohkkálaš
-%+Der%/viidosaš
-%+Der%/kilosaš
-%+Der%/diibmosaš
-%+Der%/dássásaš
-%+Der%/mánnosaš
-%+Der%/buddásaš
-%+Der%/geardásaš
-%+Der%/áigásaš
-%+Der%/ahkásaš
-%+Der%/jahkásaš
-%+Der%/beaivásaš
-%+Der%/vahkosaš
-%+Der%/mannosaš
-%+Der%/siessat
+%+Der%/šlájat
 
 %+Der%/A
 ! Der#end
