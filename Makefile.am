@@ -226,4 +226,6 @@ install-data-local:
 	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t4x $(DESTDIR)$(apertium_sme_nobdir)
 
 
-CLEANFILES= -rf $(TARGETS_COMMON) .deps modes
+CLEANFILES = $(TARGETS_COMMON)
+clean-local:
+	-rm -rf .deps modes
