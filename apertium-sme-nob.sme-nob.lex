@@ -2024,12 +2024,18 @@ SUBSTITUTE ("orrut") ("orrut:1") ("orrut" V IV) (*1 Loc BARRIER ORRUT-BO) ;
 	## Mun orun Romssas.
 	## Oro jaska.
 	
-    # šaddat 0 = bli, 1 = vokse, 2 = komme til å, 3 = vokse, 4 = bli, 5 = få
+    # šaddat 0 = bli, 1 = vokse, 2 = komme til å, 3 = vokse, 4 = bli, 5 = få, 6 = føde
 SUBSTITUTE ("šaddat") ("šaddat:1") ("šaddat" V IV) (1 ("bajás")) ;
 SUBSTITUTE ("šaddat") ("šaddat:5") ("šaddat" V IV) (*-1 @HAB BARRIER NOT-ADV) ;
     # Sutnje šattai hoahppu.
 SUBSTITUTE ("šaddat") ("šaddat:5") ("šaddat" V IV) (-1 Neg) (*-2 @HAB BARRIER NOT-ADV) ;
     # Sutnje šattai álo nu hoahppu.
+SUBSTITUTE ("šaddat") ("šaddat:6") ("šaddat" V IV) (*0 @ADVL)(NEGATE *0 SPRED) ;
+    # Mun lean šaddan Kárášjogas.
+    # Kárášjogas mun lean šaddan.
+    # Mun lean šadden oahpaheaddjin Guovdageainnus
+    # Guovdageainnus mun lea šáddan oahpaheaddjin
+
 
 # guorrassit 0 = slutte seg, 1 = tilslutte seg
 SUBSTITUTE ("guorrasit") ("guorrasit:1") ("guorrasit" V IV) (NOT *0 Ill) ;
