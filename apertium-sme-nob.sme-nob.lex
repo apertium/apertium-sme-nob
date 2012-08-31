@@ -2100,11 +2100,12 @@ SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (-1 Num OR Ord);
 
 # diibmu 0 = time, 1 = klokke
 SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (1 Num OR Ord) ;
-	## Boahtte gaskavahku diibmu 11.00 rahpá kurdarbearaš Mehidi Kárášjohkii ođđa kaféa.
+	# Boahtte gaskavahku diibmu 11.00 rahpá kurdarbearaš Mehidi Kárášjohkii ođđa kaféa.
 	# Ord because of possible incorrect analysis of Num + punctuation.
-SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (*-1 ("ollu") LINK 0 Qst);
-SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (*-1 ("ollu") LINK 1 ("go"));
-SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (*-1 ("ollu") LINK -1 ("man"));
+SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (*0 ("ollu")) ;
+	# Ollugo diibmu lea.
+SUBSTITUTE ("diibmu") ("diibmu:1") ("diibmu" N Sg) (1 COPULAS LINK *1 Num) ;
+	# Dál diibmu lea fargga vihtta.
 
 	
 # miella 0 = sinn, 1 = oppfatning, 2 = behag
