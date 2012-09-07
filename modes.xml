@@ -197,6 +197,18 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst.ol"/>
       </program>
+      <program name="cg-proc -1 -w -n">
+        <file name="sme-nob.rlx.bin"/>
+      </program>
+      <program name="apertium-pretransfer"/>
+    </pipeline>
+  </mode>
+
+  <mode name="sme-nob-pretransfer2">
+    <pipeline>
+      <program name="hfst-proc -w -p">
+        <file name="sme-nob.automorf.hfst.ol"/>
+      </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
       </program>
@@ -300,4 +312,22 @@
       </program>
     </pipeline>
   </mode>
+
+
+  <mode name="nob-sme-pretransfer">
+    <pipeline>
+      <program name="lt-proc -w">
+        <file name="nob-sme.automorf.bin"/>
+      </program>
+      <program name="cg-proc  -w">
+        <file name="nob-sme.rlx.bin"/>
+      </program>
+      <program name="apertium-tagger -g">
+        <file name="nob-sme.prob"/>
+      </program>
+      <program name="apertium-pretransfer"/>
+    </pipeline>
+  </mode>
+
+
 </modes>

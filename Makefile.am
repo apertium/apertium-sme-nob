@@ -24,7 +24,9 @@ TARGETS_COMMON = \
 	$(PREFIX1).t1x.bin \
 	$(PREFIX1).t2x.bin \
 	$(PREFIX1).t3x.bin \
-	$(PREFIX1).t4x.bin
+	$(PREFIX1).t4x.bin \
+	$(PREFIX2).automorf.bin \
+	$(PREFIX2).rlx.bin 
 
 ##
 ## 	SME ANALYSER DICTIONARY
@@ -107,12 +109,21 @@ $(PREFIX1).autogen.bin: $(BASENAME).$(LANG2).dix
 	apertium-validate-dictionary $<
 	lt-comp rl $< $@
 
+
+$(PREFIX2).automorf.bin: $(BASENAME).$(LANG2).dix
+	apertium-validate-dictionary $<
+	lt-comp lr $< $@
+
 ##
 ##	PRE-TAGGING
 ##
 
 $(PREFIX1).rlx.bin: $(BASENAME).$(PREFIX1).rlx
 	cg-comp $< $@
+
+$(PREFIX2).rlx.bin: $(BASENAME).$(PREFIX2).rlx
+	cg-comp $< $@
+
 
 ##
 ##	LEXICAL SELECTION
