@@ -1211,7 +1211,7 @@ LIST WEIGHT = "mg" "kg" "kilo" "kilu" "gilo" "tonna" ;
 
 LIST LENGTH = "čuoldabadji" "dumá" "fierbmebadji" "gaska" "miila" (".*mehtar"r) (".*mehter"r) "mehtar" "mehter" "sente" "cm" "tumá" "állan" "salla" ;
 
-LIST TEMPERATURE = "buolašceahkki" "buolašgráda" "lieggaceahkki" "lieggagráda" ;
+LIST TEMPERATURE = "buolašceahkki" "buolašgráda" "lieggaceahkki" "lieggagráda" "galbmaceahkki" "galbmagráda" "temperatuvra" ;
 
 LIST AMOUNT = "uhcánaš" "unnánaš" ;
 
@@ -2148,6 +2148,9 @@ SUBSTITUTE ("diehtu") ("diehtu:3") ("diehtu") (0 Nom OR Acc LINK *0  ("mobiltele
 SUBSTITUTE ("diehtu") ("diehtu:3") ("diehtu") (0 OBJ LINK *0  ("sáddet") OR ("čállit") OR ("lohkat")) ;
     ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu. 
     ## Lei Ájlin gii sáddii dieđu.
+
+# ceahkki 0 = trinn, 1= grad
+SUBSTITUTE ("ceahkki") ("ceahkki:1") ("ceahkki") 
 
     # Other parts of speech
     # ---------------------
