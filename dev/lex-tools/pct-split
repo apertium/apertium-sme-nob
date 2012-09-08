@@ -1,0 +1,12 @@
+#!/bin/bash
+
+pct=$2
+fullfile=$3
+lines=$(wc -l<"$fullfile")
+
+case "$1" in
+    head) head -$(calc -p "round($lines * ((100-$pct)/100))") "$fullfile" ;;
+    tail) tail -$(calc -p "round($lines * (  $pct    /100))") "$fullfile" ;;
+    *)    echo "usage: ./$0 [head|tail] percentage file > partoffile";
+	  echo "head is the big part, tail is the small part" ;;
+esac
