@@ -1996,9 +1996,10 @@ SUBSTITUTE ("máksit") ("máksit:1") ("máksit" V) (*-1 (@SUBJ→) LINK NOT 0 HU
  ## Duhpát máksá guokte ruvnnu. # Tobakken koster to kroner.
 SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*1 Ill LINK *1 CURRENCY OR Num) ;
  ## Son máksá munnje guokte ruvnnu. # Han betaler meg to kroner.
-SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*-1 HUMAN OR Org LINK 0 (@SUBJ→));
+SUBSTITUTE ("máksit") ("máksit:2") ("máksit" V) (*-1 HUMAN OR Org OR ORGANIZATION OR INSTITUTION LINK 0 (@SUBJ→));
+ ## Máret máksá guokte ruvnnu.
+ ## Skuvla máksá sáhttu.
 
-## Máret máksá guokte ruvnnu.
  
 # mannat 0 = dra, 1 = gå
 SUBSTITUTE ("mannat") ("mannat:1") ("mannat" V) (*-1 ("mo") OR ("dat"))(0 (Sg3));
