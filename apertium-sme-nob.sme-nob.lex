@@ -2150,9 +2150,6 @@ SUBSTITUTE ("diehtu") ("diehtu:3") ("diehtu") (0 OBJ LINK *0  ("sáddet") OR ("�
     ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu. 
     ## Lei Ájlin gii sáddii dieđu.
 
-# ceahkki 0 = trinn, 1= grad
-SUBSTITUTE ("ceahkki") ("ceahkki:1") ("ceahkki") 
-
     # Other parts of speech
     # ---------------------
     
