@@ -481,7 +481,7 @@ LEXICON Root
  Acronym ;
  Abbreviation ;
  Punctuation ;
- MiddleNouns ; ! gaskbeaivi, this is the "new" R, not Rreal
+! MiddleNouns ; ! gaskbeaivi, this is the "new" R, not Rreal
  NomActVEARA ;
 
 
@@ -3854,7 +3854,7 @@ LEXICON VUDDJII_DECLINED !misses most cases
  +A:%>Q3s ATTR ;
  +A+SgNomCmp:%>jW1 R ;
  +A:%>j GAPPUS0 ; ! VUOHTA j
- +A+Use/-Spell: VUOHTA ;  ! VUOHTA, no j
+ +A+Use/-Spell+Use/Sub: VUOHTA ;  ! VUOHTA, no j
  +A:%>Y5 VUDDJI- ;
  +A+Comp:%>Y5b BUStem ;
  +A+Superl:%>Y5muss BUOREMUS ;
@@ -3864,7 +3864,7 @@ LEXICON VUDDJII_DECLINED !misses most cases
  +A:%>Q3s ATTR ;
  +A+SgNomCmp:%>jW1 R ;
  +A:%>j GAPPUS0 ; ! VUOHTA j
- +A+Use/-Spell: VUOHTA ;  ! VUOHTA, no j
+ +A+Use/-Spell+Use/Sub: VUOHTA ;  ! VUOHTA, no j
 ! +A:%>Y5 VUDDJI- ; !replaced by the 3 following indivudual pointers
  +A+Sg+Acc:%>Y5 K ;
  +A+Pl+Nom:%>Y5t K ;
@@ -15168,7 +15168,6 @@ epos:epos GAHPIR ;
 erenoamášdoaibma:erenoamáš#doajbma GOAHTI-A ;
 erenoamášoahpahus:erenoamáš#oahpahuss JOHTOLAT ;
 erenoamášpedagogihkka:erenoamáš#pedagogihkka GOAHTI-A ;
-erenoamášvuohta+CmpN/SgG+CmpN/DefPlGen:erenoamášvuoh'ta LUONDU ;
 eretbidjan+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:eret#bidjam BOAHTIN ;
 eretcealkin+CmpN/Sg+CmpN/SgLeft+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:eret#cealkim BOAHTIN ;
 eretcealkindivat:eret#cealkin#divad GAHPIR ;
@@ -19363,7 +19362,8 @@ medieteahka+Use/Sub:medi^eteahka STAHTA ; !^LOAN
 media+Use/Sub:mediija IIJA ;
 medija+Use/Sub:medija IIJA ;
 medisiidna:medis MASKIN ;
-medálja:medál'ja GOAHTI-A ;
+medállja:medállja GOAHTI-A ;
+bronsamedállja:bronsa#medállja GOAHTI-A ;
 medállja+Use/Sub:medállja GOAHTI-A ;
 mehtarmihtádas:mehtar#mihtádass JOHTOLAT ;
 mehter:mehter GAHPIR ;
@@ -25685,8 +25685,15 @@ resursadábuhanvejolašvuohta+CmpN/SgG+CmpN/DefPlGen:resursa#dábuhan#vejolašvu
 várrogasvuohta+CmpN/SgG+CmpN/DefPlGen:várrogasvuoh'ta LUONDU ;
 eananeaiggátvuohta+CmpN/SgG+CmpN/DefPlGen:eanan#eaiggátvuoh'ta LUONDU ;
 doallogeatnegasvuohta+CmpN/SgG+CmpN/DefPlGen:doallo#geatnegasvuoh'ta LUONDU ;
-lieggaceahkki:liegga#ceahkki GOAHTI-I ;
 galbmagráda:galbma#gráda GOAHTI-A ;
+lieggaceahkki:liegga#ceahkki GOAHTI-I ;
+váidinvuogasvuohta+CmpN/SgG+CmpN/DefPlGen:váidin#vuogasvuoh'ta LUONDU ;
+vuoigatvuođadilálašvuohta+CmpN/SgG+CmpN/DefPlGen:vuoigatvuođa#dilálašvuoh'ta LUONDU ;
+eaiggáduššanvuoigatvuohta+CmpN/SgG+CmpN/DefPlGen:eaiggáduššan#vuoigatvuoh'ta LUONDU ;
+erenoamášvuohta+CmpN/SgG+CmpN/DefPlGen+v1+Use/NG:erenoamášvuoh'ta LUONDU ;
+erenoamášvuohta+CmpN/SgG+CmpN/DefPlGen+v2+Dial/%-GG:erenomášvuoh'ta LUONDU ;
+erenoamášvuohta+CmpN/SgG+CmpN/DefPlGen+v3+Dial/%-KJ:earenoamášvuoh'ta LUONDU ;
+erenoamášvuohta+CmpN/SgG+CmpN/DefPlGen+v4+Use/NG:earenomášvuoh'ta LUONDU ;
 ! Divvun & Giellatekno - open source grammars for Sámi and other languages
 ! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
 ! http://giellatekno.uit.no & http://divvun.no
@@ -26972,8 +26979,8 @@ sadjásaš+CmpN/SgN+CmpN/PlG+CmpN/SgGenLeft+CmpN/PlGenLeft:sadjás AHKASAS ;
 seaggi+CmpN/SgN+CmpN/PlG:seagg UHCC ;
 seaggi+Use/NG:seakkes LEXATTR ;  !irregular attr. form
 seahkalas:seahkalas LEXATTR ;
-seammalágan+v3+Use/NG:seammá#lágan LAGAN_LAGAS ;
-seammalágan+v4+Use/NG:seammá#lágán LAGAN_LAGAS ;
+seammalágan+v3+Use/NG+Use/Sub:seammá#lágan LAGAN_LAGAS ;
+seammalágan+v4+Use/NG+Use/Sub:seammá#lágán LAGAN_LAGAS ;
 seammalágan:seamma# LAGAN ;
 seammamielalaš+CmpN/SgN+CmpN/PlG:seamma#mielal ETNOLOGALAS ;
 searalaš+CmpN/SgN+CmpN/PlG:searal DABALAS ;
@@ -27064,7 +27071,7 @@ subsidiáralaš:subsidi^áral ETNOLOGALAS ;
 subtropalaš:sub^tropal ETNOLOGALAS ;
 sujalaš:sujal DABALAS ;
 sullasaš+CmpN/SgN+CmpN/SgGenLeft+CmpN/PlGenLeft:sullas AHKASAS ;
-sullásaš+CmpN/SgN+CmpN/SgGenLeft+CmpN/PlGenLeft:sullás AHKASAS ;
+sullásaš+CmpN/SgN+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Sub:sullás AHKASAS ;
 sulolaš:sulol DABALAS ;
 suohkanlaš:suohkanl ETNOLOGALAS ;
 suohkat+Use/NG:suohkadis LEXATTR ;
