@@ -1,6 +1,7 @@
 CORPUS=forvaltningsordbok
 LANG1=sme
 LANG2=nob
+PAIRNAME=apertium-sme-nob
 DIR=/l/s
 CLEANCORPUS=$(HOME)/src/smt/mosesdecoder/scripts/training/clean-corpus-n.perl
 TRAINMODEL=$(HOME)/src/smt/mosesdecoder/scripts/training/train-model.perl
@@ -9,11 +10,11 @@ LEXTOOLSDIR=$(HOME)/src/apertium/trunk/apertium-lex-tools
 TESTINGPCT=5
 PYTHON2=python2
 PYTHON3=python3
+CRISPHOLD=1.5
+# CRISPiness thresHOLD is how many times you see the alternative translation compared to the default (used by ngram-count-patterns.py, ngrams-to-rules.py)
 
 
 all:    $(CORPUS).ngrams.$(LANG1)-$(LANG2).lrx \
-	model/moses.ini $(CORPUS).phrasetable.$(LANG1)-$(LANG2) \
-	        $(CORPUS).lines         $(CORPUS).tag-tok.$(LANG1)        $(CORPUS).tag-tok.$(LANG2)        $(CORPUS).biltrans-tok.$(LANG1)-$(LANG2) \
 	testing/$(CORPUS).lines testing/$(CORPUS).tagged.$(LANG1) testing/$(CORPUS).tagged.$(LANG2) testing/$(CORPUS).biltrans.$(LANG1)-$(LANG2)
 
 
@@ -50,9 +51,12 @@ $(CORPUS).tagged1.$(LANG1): $(CORPUS).lines0 $(CORPUS).tagged0.$(LANG1) $(CORPUS
 $(CORPUS).tagged1.$(LANG2): $(CORPUS).lines0 $(CORPUS).tagged0.$(LANG1) $(CORPUS).tagged0.$(LANG2)
 	paste $+ | grep '<' | cut -f3 > $@
 
+
+$(LANG1)-$(LANG2).autobil-LS.bin: $(DIR)/$(PAIRNAME).$(LANG1)-$(LANG2).dix
+	lt-comp lr $< $@
 # Run bilingual analyses on remaining lines:
-$(CORPUS).biltrans1.$(LANG1)-$(LANG2): $(CORPUS).tagged1.$(LANG1)
-	<$< lt-proc -b $(DIR)/$(LANG1)-$(LANG2).autobil.bin > $@
+$(CORPUS).biltrans1.$(LANG1)-$(LANG2): $(CORPUS).tagged1.$(LANG1) $(LANG1)-$(LANG2).autobil-LS.bin
+	<$< lt-proc -b $(LANG1)-$(LANG2).autobil-LS.bin > $@
 
 
 
@@ -83,11 +87,11 @@ $(CORPUS).biltrans.$(LANG1)-$(LANG2): $(CORPUS).biltrans1.$(LANG1)-$(LANG2)
 
 # Tokenise into moses format, and do some tag replacements to increase lemma-frequency a bit:
 $(CORPUS).tag-tok.$(LANG1): $(CORPUS).tagged.$(LANG1)
-	<$< $(PYTHON2) $(LEXTOOLSDIR)/scripts/process-tagger-output.py $(LANG1) >$@ || rm $@
+	<$< $(PYTHON2) $(LEXTOOLSDIR)/scripts/process-tagger-output.py $(LANG1) >$@ || (rm $@; exit 1)
 $(CORPUS).tag-tok.$(LANG2): $(CORPUS).tagged.$(LANG2)
-	<$< $(PYTHON2) $(LEXTOOLSDIR)/scripts/process-tagger-output.py $(LANG2) >$@ || rm $@
+	<$< $(PYTHON2) $(LEXTOOLSDIR)/scripts/process-tagger-output.py $(LANG2) >$@ || (rm $@; exit 1)
 $(CORPUS).biltrans-tok.$(LANG1)-$(LANG2): $(CORPUS).biltrans.$(LANG1)-$(LANG2)
-	<$< $(PYTHON2) $(LEXTOOLSDIR)/scripts/process-biltrans-output.py >$@ || rm $@
+	<$< $(PYTHON2) $(LEXTOOLSDIR)/scripts/process-biltrans-output.py >$@ || (rm $@; exit 1)
 
 # Clean corpus yet again before trainmodel:
 $(CORPUS).tag-tok-clean.lines: $(CORPUS).tag-tok-clean.$(LANG1)
@@ -97,7 +101,7 @@ $(CORPUS).tag-tok-clean.$(LANG1): $(CORPUS).tag-tok.$(LANG1) $(CORPUS).tag-tok.$
 	perl $(CLEANCORPUS) $(CORPUS).tag-tok $(LANG1) $(LANG2) $(CORPUS).tag-tok-clean 1 40 $(CORPUS).tag-tok-clean.lines
 
 $(CORPUS).biltrans-tok-clean.$(LANG1)-$(LANG2): $(CORPUS).biltrans-tok.$(LANG1)-$(LANG2) $(CORPUS).tag-tok-clean.lines
-	$(PYTHON3) $(LEXTOOLSDIR)/scripts/biltrans-only-retained.py $+ >$@ || rm $@
+	$(PYTHON3) $(LEXTOOLSDIR)/scripts/biltrans-only-retained.py $+ >$@ || (rm $@; exit 1)
 
 
 # Fake lm, won't be used:
@@ -115,7 +119,7 @@ model/moses.ini: $(CORPUS).lm $(CORPUS).tag-tok-clean.$(LANG1) $(CORPUS).tag-tok
 	perl $(TRAINMODEL) -external-bin-dir $(GIZADIR) -root-dir . -corpus $(CORPUS).tag-tok-clean -f $(LANG1) -e $(LANG2) -alignment grow-diag-final-and -reordering msd-bidirectional-fe -lm "0:5:`pwd`/$(CORPUS).lm:0" >trainmodel.log 2>&1
 
 
-$(CORPUS).phrasetable.$(LANG1)-$(LANG2): giza.$(LANG1)-$(LANG2)/$(LANG1)-$(LANG2).A3.final.gz
+$(CORPUS).phrasetable.$(LANG1)-$(LANG2): giza.$(LANG1)-$(LANG2)/$(LANG1)-$(LANG2).A3.final.gz model/moses.ini
 	zcat $< | $(LEXTOOLSDIR)/scripts/giza-to-moses.awk > $@
 # should be the same number of lines as *tok-clean
 
@@ -123,7 +127,7 @@ $(CORPUS).phrasetable.$(LANG1)-$(LANG2): giza.$(LANG1)-$(LANG2)/$(LANG1)-$(LANG2
 # Then we want to extract the sentences where the target language word aligned to a source language word is a possible translation in the bilingual dictionary:
 
 $(CORPUS).candidates.$(LANG1)-$(LANG2): $(CORPUS).phrasetable.$(LANG1)-$(LANG2) $(CORPUS).biltrans-tok-clean.$(LANG1)-$(LANG2) 
-	$(PYTHON3) $(LEXTOOLSDIR)/scripts/extract-sentences.py $+ >$@ 2>$@.err || rm $@
+	$(PYTHON3) $(LEXTOOLSDIR)/scripts/extract-sentences.py $+ >$@ 2>$@.err || (rm $@; exit 1)
 
 
 # These are basically sentences that we can hope that Apertium might be able to generate.
@@ -132,7 +136,7 @@ $(CORPUS).candidates.$(LANG1)-$(LANG2): $(CORPUS).phrasetable.$(LANG1)-$(LANG2) 
 # The next step is to extract the frequency lexicon.
 
 $(CORPUS).lex.$(LANG1)-$(LANG2): $(CORPUS).candidates.$(LANG1)-$(LANG2)
-	$(PYTHON2) $(LEXTOOLSDIR)/scripts/extract-freq-lexicon.py $< > $@
+	$(PYTHON2) $(LEXTOOLSDIR)/scripts/extract-freq-lexicon.py $< > $@ || (rm $@; exit 1)
 
 # This file should look like:
 
@@ -151,7 +155,7 @@ $(CORPUS).lex.$(LANG1)-$(LANG2): $(CORPUS).candidates.$(LANG1)-$(LANG2)
 
 # Now we generate the ngrams that we are going to generate the rules from.
 $(CORPUS).ngrams.$(LANG1)-$(LANG2): $(CORPUS).lex.$(LANG1)-$(LANG2) $(CORPUS).candidates.$(LANG1)-$(LANG2)
-	$(PYTHON2) $(LEXTOOLSDIR)/scripts/ngram-count-patterns.py $+ >$@ 2>$@.err
+	$(PYTHON2) $(LEXTOOLSDIR)/scripts/ngram-count-patterns.py $+ $(CRISPHOLD) >$@ 2>$@.err || (rm $@; exit 1)
 
 # This script outputs lines in the following format:
 
@@ -177,4 +181,4 @@ $(CORPUS).ngrams.$(LANG1)-$(LANG2): $(CORPUS).lex.$(LANG1)-$(LANG2) $(CORPUS).ca
 # The final stage is to generate the rules,
 
 $(CORPUS).ngrams.$(LANG1)-$(LANG2).lrx: $(CORPUS).ngrams.$(LANG1)-$(LANG2)
-	<$< $(PYTHON2) $(LEXTOOLSDIR)/scripts/ngrams-to-rules.py+ >$@
+	$(PYTHON3) $(LEXTOOLSDIR)/scripts/ngrams-to-rules.py $< $(CRISPHOLD) >$@ 2>$@.err || ( rm $@; exit 1)
