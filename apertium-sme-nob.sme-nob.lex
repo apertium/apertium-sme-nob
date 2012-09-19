@@ -1946,6 +1946,10 @@ SUBSTITUTE ("beassat") ("beassat:2") ("beassat" V) (1 Ill) ;
 	## Mun nu illudan beassat duoddarii. Jeg gleder meg så til å komme meg på vidda.
 	## Nuoraidklubba nuorat besset dál Internehttii. Ungdomssklubbens ungdommer kommer seg nå på Internett.
 
+# Ritva Test: lágidit 0 = ordne, 1 = arrangere, 2 = stelle, 3 = drive
+SUBSTITUTE ("lágidit") ("lágidit:1") ("lágidit") (*0 ORGANIZATION LINK 0 (@SUBJ→));
+SUBSTITUTE ("lágidit") ("lágidit:1") ("lágidit") (*0 EVENT);
+	## Lea Norut Áltá ja Finnmárkku allaskuvla mat lágidit konferánsa.
 
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
 SUBSTITUTE ("leat") ("leat:1") ("leat" V IV) (*-1 @HAB BARRIER NOT-ADV) ;
