@@ -3638,6 +3638,75 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </action>
     </rule>
 
+    <rule comment="REGLA: ADJ_ATTR ADJ_ATTR NOM.CMP NOM
+                   -----
+                   ođđa digitála heahtefierpmádat => det nye digitale nødnettverket
+                   TODO: epenthesis!
+                   Moves syn_label from CMP to NOM">
+      <pattern>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom.cmp"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="3"/></call-macro>
+
+        <!-- most likely both ADJ and NOM are ind: -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="3"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="3"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+            <lit v="^"/>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_nom"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <clip pos="3" side="tl" part="nbr"/>
+              <clip pos="3" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>        
+        <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="4"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+      </action>
+    </rule>
+
+
     <rule comment="REGLA: ADJ_ATTR NOM.CMP NOM
                    -----
                    duiska okkupašuvdnafápmu => tysk okkupasjonsmakt
