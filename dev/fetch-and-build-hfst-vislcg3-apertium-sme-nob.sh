@@ -131,7 +131,7 @@ set -o pipefail
 } | sed 's/^/apertium: /' &&
 
 { cd "$SRC" &&
-  svn co https://apertium.svn.sourceforge.net/svnroot/apertium/staging/apertium-sme-nob &&
+  svn co https://apertium.svn.sourceforge.net/svnroot/apertium/trunk/apertium-sme-nob &&
   cd apertium-sme-nob &&
   ./autogen.sh --prefix=$PREFIX &&
   make $J &&
