@@ -28,6 +28,15 @@ TARGETS_COMMON = \
 	$(PREFIX2).automorf.bin \
 	$(PREFIX2).rlx.bin 
 
+# Use this goal for creating .deps, otherwise make -j2 will give problems:
+.deps/.d:
+	if [ ! -d .deps ]; then mkdir .deps; fi
+	touch $@
+
+# Prevent the .d file from being removed automatically:
+.PRECIOUS: .deps/.d
+
+
 ##
 ## 	SME ANALYSER DICTIONARY
 ##
@@ -53,24 +62,19 @@ $(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
 $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
 	hfst-compose-intersect -1 $(LANG1).lexc.hfst -2 $(LANG1).twol.hfst -o $@
 
-.deps/xfst2apertium.useless.twol.hfst: xfst2apertium.useless.twol
-	if [ ! -d .deps ]; then mkdir .deps; fi
+.deps/xfst2apertium.useless.twol.hfst: xfst2apertium.useless.twol .deps/.d
 	hfst-twolc -R -i $< -o $@
 
-.deps/xfst2apertium.hashtags.twol.hfst: xfst2apertium.hashtags.twol
-	if [ ! -d .deps ]; then mkdir .deps; fi
+.deps/xfst2apertium.hashtags.twol.hfst: xfst2apertium.hashtags.twol .deps/.d
 	hfst-twolc -R -i $< -o $@
 
-.deps/$(PREFIX1).automorf.inverted.hfst: $(PREFIX2).autogen.hfst
-	if [ ! -d .deps ]; then mkdir .deps; fi
+.deps/$(PREFIX1).automorf.inverted.hfst: $(PREFIX2).autogen.hfst .deps/.d
 	hfst-invert -i $< -o $@
 
 .deps/$(PREFIX1).automorf.useless.hfst: .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst
-	if [ ! -d .deps ]; then mkdir .deps; fi
 	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.inverted.hfst -2 .deps/xfst2apertium.useless.twol.hfst -o $@
 
 .deps/$(PREFIX1).automorf.hashtags.hfst: .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst
-	if [ ! -d .deps ]; then mkdir .deps; fi
 	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.useless.hfst -2 .deps/xfst2apertium.hashtags.twol.hfst -o $@
 
 $(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst xfst2apertium.relabel
@@ -93,8 +97,7 @@ $(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
 ##
 ## 	BILINGUAL DICTIONARY
 ##
-.deps/$(BASENAME).$(PREFIX1).dix: $(BASENAME).$(PREFIX1).dix lexchoicebil.xsl
-	if [ ! -d .deps ]; then mkdir .deps; fi
+.deps/$(BASENAME).$(PREFIX1).dix: $(BASENAME).$(PREFIX1).dix lexchoicebil.xsl .deps/.d
 	apertium-validate-dictionary $<
 	xsltproc lexchoicebil.xsl $(BASENAME).$(PREFIX1).dix > $@
 
