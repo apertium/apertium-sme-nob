@@ -4,6 +4,9 @@
 
 AC_PREREQ(2.52)
 
+m4_define([required_apertium_version], [3.2.0])
+m4_define([required_lttoolbox_version], [3.2.0])
+
 AC_INIT([apertium-sme-nob], [0.5.0], [trondtr@users.sourceforge.net])
 AM_INIT_AUTOMAKE([apertium-sme-nob], [0.5.0], no-define)
 AC_PROG_LN_S
@@ -21,38 +24,8 @@ AM_PATH_PYTHON(
 	AC_MSG_WARN([No python executable found; re-run with PYTHON=/path/to/python2 if you wish to re-generate the lexc
 ]))
 
-AC_DEFUN([PKG_CHECK_LTTOOLBOX], [
-  LTTOOLBOX_VER=0
-  PKG_CHECK_MODULES(LTTOOLBOX, lttoolbox-3.1 >= 3.1.0,
-  [
-    LTTOOLBOX_VER=31
-  ],
-  [
-    PKG_CHECK_MODULES(LTTOOLBOX, lttoolbox-3.2 >= 3.2.0)
-    LTTOOLBOX_VER=32
-  ])
-  AC_SUBST(LTTOOLBOX_VER)
-])
-
-AC_DEFUN([PKG_CHECK_APERTIUM], [
-  APERTIUM_VER=0
-  PKG_CHECK_MODULES(APERTIUM, apertium-3.1 >= 3.1.0,
-  [
-    APERTIUM_VER=31
-  ],
-  [
-    PKG_CHECK_MODULES(APERTIUM, apertium-3.2 >= 3.2.0)
-    APERTIUM_VER=32
-  ])
-  AC_SUBST(APERTIUM_VER)
-])
-
-PKG_CHECK_LTTOOLBOX
-PKG_CHECK_APERTIUM
-
-APERTIUM_VER=30
-
-AC_SUBST(APERTIUM_VER)
+PKG_CHECK_MODULES(APERTIUM,   apertium >= required_apertium_version, [], [PKG_CHECK_MODULES(APERTIUM,   apertium-3.2 >= required_apertium_version)])
+PKG_CHECK_MODULES(LTTOOLBOX,   lttoolbox >= required_lttoolbox_version, [], [PKG_CHECK_MODULES(LTTOOLBOX,   lttoolbox-3.2 >= required_lttoolbox_version)])
 
 AC_PATH_PROG(CGCOMP, cg-comp, no)
 if test x$ac_cv_path_CGCOMP = x
