@@ -52,18 +52,19 @@ test -d "$SRC" || mkdir "$SRC"
 
 set -o pipefail
 
+# OpenFST is now included with HFST by default
+# { cd "$SRC" &&
+#   curl http://openfst.cs.nyu.edu/twiki/pub/FST/FstDownload/openfst-1.2.9.tar.gz >openfst-1.2.9.tar.gz  &&
+#   tar -xzvf openfst-1.2.9.tar.gz &&
+#   cd openfst-1.2.9/  &&
+#   ./configure --prefix=$PREFIX &&
+#   make $J &&
+#   make install &&
+#   echo 'OpenFST successfully installed'
+# } | sed 's/^/OpenFST: /' &&
+
 { cd "$SRC" &&
-  curl http://openfst.cs.nyu.edu/twiki/pub/FST/FstDownload/openfst-1.2.9.tar.gz >openfst-1.2.9.tar.gz  &&
-  tar -xzvf openfst-1.2.9.tar.gz &&
-  cd openfst-1.2.9/  &&
-  ./configure --prefix=$PREFIX &&
-  make $J &&
-  make install &&
-  echo 'OpenFST successfully installed'
-} | sed 's/^/OpenFST: /' &&
-  
-{ cd "$SRC" &&
-  svn co http://foma.svn.sourceforge.net/svnroot/foma/trunk/foma &&
+  svn co svn://svn.code.sf.net/p/foma/code/trunk/foma &&
   cd foma &&
   sed -i.tmp "s%prefix = /usr/local%prefix = $PREFIX%" Makefile &&
   ( make $J || ( sed -i.tmp2 "s%-ltermcap%-lncurses%" Makefile && make $J ) ) &&
@@ -84,7 +85,7 @@ set -o pipefail
 # } | sed 's/^/SFST: /' &&
    
 { cd "$SRC" &&
-  svn co https://hfst.svn.sourceforge.net/svnroot/hfst/trunk/hfst3 &&
+  svn co svn://svn.code.sf.net/p/hfst/code/trunk/hfst3 &&
   cd hfst3 &&
   ./autogen.sh &&
   ./configure LDFLAGS=-L$PREFIX/lib --prefix=$PREFIX --enable-lexc --enable-proc --with-foma --without-sfst --with-unicode-handler=ICU &&
@@ -111,7 +112,7 @@ set -o pipefail
 
 
 { cd "$SRC" &&
-  svn co https://apertium.svn.sourceforge.net/svnroot/apertium/trunk/lttoolbox &&
+  svn co svn://svn.code.sf.net/p/apertium/code/trunk/lttoolbox &&
   cd lttoolbox &&
   ./autogen.sh --prefix=$PREFIX &&
   make $J &&
@@ -121,7 +122,7 @@ set -o pipefail
 } | sed 's/^/lttoolbox: /' &&
 
 { cd "$SRC" &&
-  svn co https://apertium.svn.sourceforge.net/svnroot/apertium/trunk/apertium &&
+  svn co svn://svn.code.sf.net/p/apertium/code/trunk/apertium &&
   cd apertium &&
   ./autogen.sh --prefix=$PREFIX &&
   make $J &&
@@ -131,7 +132,7 @@ set -o pipefail
 } | sed 's/^/apertium: /' &&
 
 { cd "$SRC" &&
-  svn co https://apertium.svn.sourceforge.net/svnroot/apertium/trunk/apertium-sme-nob &&
+  svn co svn://svn.code.sf.net/p/apertium/code/trunk/apertium-sme-nob &&
   cd apertium-sme-nob &&
   ./autogen.sh --prefix=$PREFIX &&
   make $J &&
