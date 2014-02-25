@@ -141,17 +141,19 @@ set -o pipefail
   echo 'apertium-sme-nob successfully installed'
 } | sed 's/^/apertium-sme-nob: /' &&
 
-echo ""
-echo "All done."
-echo ""
-echo "To be able to compile and run the translator, ensure these lines"
-echo "are in your ~/.bashrc:"
-echo ""
-echo "PATH=\"$PREFIX/bin:\$PATH\"" >>~/.bash_profile_local
-echo "" >>~/.bash_profile_local
-echo "PKG_CONFIG_PATH=\"$PREFIX/lib/pkgconfig\"" >>~/.bash_profile_local
-echo "export PKG_CONFIG_PATH" >>~/.bash_profile_local
-echo "LD_LIBRARY_PATH=\"$PREFIX/lib\"" >>~/.bash_profile_local
-echo "export LD_LIBRARY_PATH" >>~/.bash_profile_local
-echo "DYLD_LIBRARY_PATH=\"$PREFIX/lib\"" >>~/.bash_profile_local
-echo "export DYLD_LIBRARY_PATH" >>~/.bash_profile_local
+{
+  echo ""
+  echo "All done."
+  echo ""
+  echo "To be able to compile and run the translator, ensure these lines"
+  echo "are in your ~/.bashrc:"
+  echo ""
+  echo "PATH=\"$PREFIX/bin:\$PATH\"" >>~/.bash_profile_local
+  echo "" >>~/.bash_profile_local
+  echo "PKG_CONFIG_PATH=\"$PREFIX/lib/pkgconfig\"" >>~/.bash_profile_local
+  echo "export PKG_CONFIG_PATH" >>~/.bash_profile_local
+  echo "LD_LIBRARY_PATH=\"$PREFIX/lib\"" >>~/.bash_profile_local
+  echo "export LD_LIBRARY_PATH" >>~/.bash_profile_local
+  echo "DYLD_LIBRARY_PATH=\"$PREFIX/lib\"" >>~/.bash_profile_local
+  echo "export DYLD_LIBRARY_PATH" >>~/.bash_profile_local
+}
