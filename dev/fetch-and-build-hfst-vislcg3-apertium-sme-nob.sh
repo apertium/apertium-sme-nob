@@ -112,7 +112,7 @@ set -o pipefail
 
 
 { cd "$SRC" &&
-  svn co svn://svn.code.sf.net/p/apertium/code/trunk/lttoolbox &&
+  svn co svn://svn.code.sf.net/p/apertium/svn/trunk/lttoolbox &&
   cd lttoolbox &&
   ./autogen.sh --prefix=$PREFIX &&
   make $J &&
@@ -122,7 +122,7 @@ set -o pipefail
 } | sed 's/^/lttoolbox: /' &&
 
 { cd "$SRC" &&
-  svn co svn://svn.code.sf.net/p/apertium/code/trunk/apertium &&
+  svn co svn://svn.code.sf.net/p/apertium/svn/trunk/apertium &&
   cd apertium &&
   ./autogen.sh --prefix=$PREFIX &&
   make $J &&
@@ -132,7 +132,7 @@ set -o pipefail
 } | sed 's/^/apertium: /' &&
 
 { cd "$SRC" &&
-  svn co svn://svn.code.sf.net/p/apertium/code/trunk/apertium-sme-nob &&
+  svn co svn://svn.code.sf.net/p/apertium/svn/trunk/apertium-sme-nob &&
   cd apertium-sme-nob &&
   ./autogen.sh --prefix=$PREFIX &&
   make $J &&
