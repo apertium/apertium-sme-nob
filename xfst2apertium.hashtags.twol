@@ -22,13 +22,13 @@ Alphabet
 %#:0
 %# ! Need this, since otherwise #-words not matched by our rule will disappear
 
-%+N
+%<n%>
 
-%+LCmpnd%+
-%+LCmpnd%+:0
+%<lcmpnd%>%+
+%<lcmpnd%>%+:0
 
  !! Stadieveksling
- %+G3
+ %<g3%>
 
 ! Escaped chars
  % 
@@ -72,13 +72,13 @@ Rules
 
 
 "Delete split compound tag +LCmpnd+ when word-initial"
-%+LCmpnd%+:0  <=>  [ # | #: ]  _  ; 
+%<lcmpnd%>%+:0  <=>  [ # | #: ]  _  ; 
 
 
 
 "Add +G3 tag once after +N tag"
-0:%+G3  <=>  %+G3:0   %+N    _    [ \0:%+G3 | # | #: ]  ;
+0:%<g3%>  <=>  %<g3%>:0   %<n%>    _    [ \0:%<g3%> | # | #: ]  ;
 !! Will \0:%+G3 also match end-of-word? (In that case we can remove the disjunction)
 
-"Remove +G3 tag before +N tag"
-%+G3:0  <=>     _     %+N  ; 
+"Remove +G3 tag before <n> tag"
+%<g3%>:0  <=>     _     %<n%>  ; 
