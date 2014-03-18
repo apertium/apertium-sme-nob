@@ -89,7 +89,7 @@ Alphabet
  %+Plc %+Plc:0 ! Place
  %+Org %+Org:0 ! Organisation
  %+Obj %+Obj:0 ! Object
- %+Ani %+Ani:0 ! Animate
+ %<ani%> %<ani%>:0 ! Animate
  !!! The below are removed no matter what, the above are kept when following proper noun tags --KBU
  %+Hum:0 ! Human
  %+Plant:0
@@ -102,7 +102,7 @@ Alphabet
  %+Build:0 
  %+Event:0 
  %+Edu:0
- %+Veh:0 !Vehicle
+ %<veh%>:0 !Vehicle
  %+Clth:0 !Clothes
  %+Wpn:0 !Weapon
  %+Body:0
@@ -110,7 +110,7 @@ Alphabet
 
 
 ! Not sure which section this goes in:
- %+Allegro:0			! from LEXICON GOADE-IU-
+ %<allegro%>:0			! from LEXICON GOADE-IU-
 
 !!! Derivation tags copied in from  sme.lex.txt:166..356
 ! Der#begin
@@ -137,7 +137,7 @@ Alphabet
 %+Der%/huvva                                               ! VV * %+Der1%+Der2 - can only combine with Der3
 %+Der%/stuvva                                              ! VV * %+Der1%+Der2 - can only combine with Der3
 ! Der#2
-              %+Actor
+              %<actor%>
               %+Der%/Dimin                                 ! NN
               %+Der%/NomAct                                 ! VN Der/NomAct har to realisasjonar, med ulike restriksjonar, this is previous Der/eapmi
               %+Der%/adda                                  ! VV
@@ -306,16 +306,16 @@ Alphabet
 
 
  !! Parts of Speech
- %+N %+A %+Adv %+V
- %+Pron %+CS %+CC %+Adp %+Po %+Pr %+Interj %+Pcle %+Num 
- %+Coll
+ %<n%> %<a%> %<adv%> %<v%>
+ %<pron%> %<cs%> %<cc%> %<adp%> %<po%> %<pr%> %<interj%> %<pcle%> %<num%>
+ %<coll%>
 
- %+V:0
+ %<v%>:0
 
  !! Transitivity 
- %+TV %+IV 
+ %<tv%> %<iv%> 
 
- %+Attr
+ %<attr%>
 
 %-
 %-:0
@@ -403,14 +403,14 @@ Useless =	    ! Keep consistent with tags in  sme-lex.txt:36..118
  %+Build 
  %+Event 
  %+Edu
- %+Veh !Vehicle
+ %<veh%> !Vehicle
  %+Clth !Clothes
  %+Wpn !Weapon
  %+Body
  %+Food
 
 ! Not sure which section this goes in:
- %+Allegro			! from LEXICON GOADE-IU-
+ %<allegro%>			! from LEXICON GOADE-IU-
 
 ;
 
@@ -420,18 +420,18 @@ ProperSemantic =	    ! Keep consistent with tags in  sme-lex.txt:138..151
  %+Plc ! Place
  %+Org ! Organisation
  %+Obj ! Object
- %+Ani ! Animate
+ %<ani%> ! Animate
  ! The rest are in Useless
 ;
 
 PartOfSpeech =
- %+N %+A %+Adv %+V
- %+Pron %+CS %+CC %+Adp %+Po %+Pr %+Interj %+Pcle %+Num 
- %+Coll
+ %<n%> %<a%> %<adv%> %<v%>
+ %<pron%> %<cs%> %<cc%> %<adp%> %<po%> %<pr%> %<interj%> %<pcle%> %<num%> 
+ %<coll%>
 ;
 
 Transitivity =
- %+TV %+IV 
+ %<tv%> %<iv%> 
 ;
 
 
@@ -460,7 +460,7 @@ Derivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/huvva                                               ! VV * %+Der1%+Der2 - can only combine with Der3
 %+Der%/stuvva                                              ! VV * %+Der1%+Der2 - can only combine with Der3
 ! Der#2
-              %+Actor
+              %<actor%>
               %+Der%/Dimin                                 ! NN
               %+Der%/NomAct                                 ! VN Der/NomAct har to realisasjonar, med ulike restriksjonar, this is previous Der/eapmi
               %+Der%/adda                                  ! VV
@@ -655,7 +655,7 @@ UnhandledDerivation =	 ! Keep consistent with tags in  sme-lex.txt:166..356
 %+Der%/huvva                                               ! VV * %+Der1%+Der2 - can only combine with Der3
 %+Der%/stuvva                                              ! VV * %+Der1%+Der2 - can only combine with Der3
 ! Der#2
-!              %+Actor
+!              %<actor%>
 !              %+Der%/Dimin                                 ! NN
               %+Der%/NomAct                                 ! VN Der/NomAct har to realisasjonar, med ulike restriksjonar, this is previous Der/eapmi
               %+Der%/adda                                  ! VV
@@ -841,24 +841,24 @@ Vu /<= _ ; where Vu in UnhandledDerivation;
 !! bidix/transfer.
 
 "No derivations of derivations"
-Vd /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | %+Attr | [] ] Useless:0* _ ; where Vd in Derivation;
+Vd /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | %<attr%> | [] ] Useless:0* _ ; where Vd in Derivation;
 !! Although Der/foo and Der/bar might be handled by bidix/transfer,
 !! Der/foo N Der/bar isn't necessarily.
 
 
 
 "No consecutive V tags (giellatekno bug?)"
-%+V /<= %+V _ ;
+%<v%> /<= %<v%> _ ;
 
 
 !! We create exceptions to the above rule by simply removing the inner
 !! PartOfSpeech tag in those contexts where the double derivation has
 !! bidix entries:
 "Allow +V+Der2+Der/PassL+V+Der3+Der/NomAct+N (removing inner PoS tag)"
-%+V:0 <=> %+V Transitivity %+Der2 %+Der%/PassL _ %+Der3 %+Der%/NomAct %+N ;
+%<v%>:0 <=> %<v%> Transitivity %+Der2 %+Der%/PassL _ %+Der3 %+Der%/NomAct %<n%> ;
 
 "Allow +V+Der1+Der/j+V+Der2+Der/PassL+V (removing inner PoS tag)"
-%+V:0 <=> %+V Transitivity %+Der1 %+Der%/j _ %+Der2 %+Der%/PassL %+V ;
+%<v%>:0 <=> %<v%> Transitivity %+Der1 %+Der%/j _ %+Der2 %+Der%/PassL %<v%> ;
 
 
 
@@ -866,5 +866,5 @@ Vd /<= Derivation+ PartOfSpeech+ [ %+TV | %+IV | %+Attr | [] ] Useless:0* _ ; wh
 %-:0 <=> %+Cmp _ ;
 
 "Delete semantic tags that appear before noun tags"
-ProperSemantic:0 <=> _ ProperSemantic:0* Useless:0* %+N ;
-! These should be allowed only after proper nouns: %+Mal %+Fem %+Sur  %+Plc  %+Org  %+Obj  %+Ani 
+ProperSemantic:0 <=> _ ProperSemantic:0* Useless:0* %<n%> ;
+! These should be allowed only after proper nouns: %+Mal %+Fem %+Sur  %+Plc  %+Org  %+Obj  %<ani%> 
