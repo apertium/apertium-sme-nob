@@ -10,16 +10,17 @@ BASENAME=apertium-$(PREFIX1)
 ##	BUILD TARGETS
 ##
 
+#	$(LANG1).twol.hfst 
+#	$(LANG1).lexc.hfst 
+
 TARGETS_COMMON = \
-	$(LANG1).twol.hfst \
-	$(LANG1).lexc.hfst \
 	$(PREFIX1).automorf.hfst \
-	$(PREFIX1).automorf.hfst.ol \
 	$(PREFIX2).autogen.hfst \
 	$(PREFIX1).rlx.bin \
 	$(PREFIX1).lex.bin \
 	$(PREFIX1).val.bin \
 	$(PREFIX1).autobil.bin \
+	$(PREFIX2).autobil.bin \
 	$(PREFIX1).autogen.bin \
 	$(PREFIX1).t1x.bin \
 	$(PREFIX1).t2x.bin \
@@ -54,14 +55,26 @@ $(BASENAME).$(LANG1).lexc: $(PREFIX1).autobil.bin
 	fi;
 
 
-$(LANG1).twol.hfst: $(BASENAME).$(LANG1).twol
-	hfst-twolc -R -i $< -o $@
+#$(LANG1).twol.hfst: $(BASENAME).$(LANG1).twol
+#	hfst-twolc -R -i $< -o $@
 
-$(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
-	hfst-lexc --format=foma -o $@ $<
+#$(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
+#	hfst-lexc --format=foma -o $@ $<
 
-$(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
-	hfst-compose-intersect -1 $(LANG1).lexc.hfst -2 $(LANG1).twol.hfst -o $@
+#$(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
+#	hfst-compose-intersect -1 $(LANG1).lexc.hfst -2 $(LANG1).twol.hfst -o $@
+
+.deps/$(PREFIX1).autobil.prefixes: $(PREFIX1).autobil.bin
+	if [ ! -d .deps ]; then mkdir .deps; fi
+	lt-print $(PREFIX1).autobil.bin | sed 's/ /@_SPACE_@/g' > .deps/$(PREFIX1).autobil.att
+	hfst-txt2fst -e ε <  .deps/$(PREFIX1).autobil.att > .deps/$(PREFIX1).autobil.hfst
+	hfst-project -p upper .deps/$(PREFIX1).autobil.hfst > .deps/$(PREFIX1).autobil.upper
+	echo " ?* " | hfst-regexp2fst > .deps/any-symbol.hfst
+	hfst-concatenate -1 .deps/$(PREFIX1).autobil.upper -2 .deps/any-symbol.hfst -o .deps/$(PREFIX1).autobil.prefixes
+
+$(PREFIX2).autogen.hfst: $(BASENAME).$(PREFIX1).LR.att.gz .deps/$(PREFIX1).autobil.prefixes
+	$(ZCAT) $< | hfst-txt2fst | hfst-invert > .deps/$(LANG1).automorf.hfst
+	hfst-compose-intersect -1 .deps/$(LANG1).automorf.hfst -2 .deps/$(PREFIX1).autobil.prefixes -o $@
 
 .deps/xfst2apertium.useless.twol.hfst: xfst2apertium.useless.twol .deps/.d
 	hfst-twolc -R -i $< -o $@
@@ -78,10 +91,7 @@ $(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
 .deps/$(PREFIX1).automorf.hashtags.hfst: .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst
 	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.useless.hfst -2 .deps/xfst2apertium.hashtags.twol.hfst -o $@
 
-$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst xfst2apertium.relabel
-	hfst-substitute -F xfst2apertium.relabel -i .deps/$(PREFIX1).automorf.hashtags.hfst -o $@
-
-$(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
+$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst
 	hfst-fst2fst -O -i $< -o $@
 
 
@@ -105,6 +115,11 @@ $(PREFIX1).automorf.hfst.ol: $(PREFIX1).automorf.hfst
 $(PREFIX1).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
 	apertium-validate-dictionary $<
 	lt-comp lr $< $@
+
+$(PREFIX2).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
+	apertium-validate-dictionary $<
+	lt-comp rl $< $@
+
 
 ##
 ## 	NOB GENERATOR DICTIONARY
