@@ -26,6 +26,7 @@ TARGETS_COMMON = \
 	$(PREFIX1).t3x.bin \
 	$(PREFIX1).t4x.bin \
 	$(PREFIX2).automorf.bin \
+	$(PREFIX2).prob \
 	$(PREFIX2).rlx.bin 
 
 # Use this goal for creating .deps, otherwise make -j2 will give problems:
@@ -108,14 +109,12 @@ $(PREFIX1).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
 ##
 ## 	NOB GENERATOR DICTIONARY
 ##
-$(PREFIX1).autogen.bin: $(BASENAME).$(LANG2).dix
-	apertium-validate-dictionary $<
-	lt-comp rl $< $@
+$(PREFIX1).autogen.bin: $(AP_LIB2)/$(LANG2).autogen.bin
+	cp $< $@
 
 
-$(PREFIX2).automorf.bin: $(BASENAME).$(LANG2).dix
-	apertium-validate-dictionary $<
-	lt-comp lr $< $@
+$(PREFIX2).automorf.bin: $(AP_LIB2)/$(LANG2).automorf.bin $(PREFIX2).autobil.bin
+	lt-trim $^ $@
 
 ##
 ##	PRE-TAGGING
@@ -124,9 +123,11 @@ $(PREFIX2).automorf.bin: $(BASENAME).$(LANG2).dix
 $(PREFIX1).rlx.bin: $(BASENAME).$(PREFIX1).rlx
 	cg-comp $< $@
 
-$(PREFIX2).rlx.bin: $(BASENAME).$(PREFIX2).rlx
-	cg-comp $< $@
+$(PREFIX2).rlx.bin: $(AP_LIB2)/$(LANG2).rlx.bin
+	cp $< $@
 
+$(PREFIX2).prob: $(AP_LIB2)/$(LANG2).prob
+	cp $< $@
 
 ##
 ##	LEXICAL SELECTION
@@ -196,7 +197,7 @@ modes/$(PREFIX1).mode: modes.xml
 	cp *.mode modes/
 
 ## 
-##	FILES WHICH AREN'T BUILD BUT ARE DISTRIBUTED
+##	FILES WHICH AREN'T BUILT BUT ARE DISTRIBUTED
 ## 
 
 EXTRA_DIST=\
@@ -213,13 +214,12 @@ EXTRA_DIST=\
 	$(BASENAME).$(PREFIX1).t4x \
 	xfst2apertium.useless.twol \
 	xfst2apertium.hashtags.twol \
-	xfst2apertium.relabel \
 	lexchoicebil.xsl \
 	modes.xml 
 
 
 apertium_sme_nobdir=$(prefix)/share/apertium/$(BASENAME)/
-apertium_sme_modesdir=$(prefix)/share/apertium/modes/
+apertium_modesdir=$(prefix)/share/apertium/modes/
 
 apertium_sme_nob_DATA=$(TARGETS_COMMON) \
 		    modes.xml
@@ -231,9 +231,9 @@ install-data-local:
 	apertium-gen-modes modes.xml $(BASENAME)
 	rm -rf modes
 	mv modes.bak modes
-	test -d $(DESTDIR)$(apertium_sme_modesdir) || mkdir $(DESTDIR)$(apertium_sme_modesdir)
+	test -d $(DESTDIR)$(apertium_modesdir) || mkdir $(DESTDIR)$(apertium_modesdir)
 	modes=`xmllint --xpath '//mode[@install="yes"]/@name' modes.xml | sed 's/ *name="\([^"]*\)"/\1.mode /g'`; \
-		$(INSTALL_DATA) $$modes $(DESTDIR)$(apertium_nn_modesdir); \
+		$(INSTALL_DATA) $$modes $(DESTDIR)$(apertium_modesdir); \
 		rm $$modes
 	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(DESTDIR)$(apertium_sme_nobdir)
 	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t2x $(DESTDIR)$(apertium_sme_nobdir)
