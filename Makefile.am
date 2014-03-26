@@ -1,3 +1,7 @@
+###############################################################################
+## Makefile for Northern Sámi--Bokmål
+###############################################################################
+
 VERSION=0.5.0
 LANG1=sme
 LANG2=nob
@@ -9,9 +13,6 @@ BASENAME=apertium-$(PREFIX1)
 ##
 ##	BUILD TARGETS
 ##
-
-#	$(LANG1).twol.hfst 
-#	$(LANG1).lexc.hfst 
 
 TARGETS_COMMON = \
 	$(PREFIX1).automorf.hfst \
@@ -30,30 +31,16 @@ TARGETS_COMMON = \
 	$(PREFIX2).prob \
 	$(PREFIX2).rlx.bin 
 
-# Use this goal for creating .deps, otherwise make -j2 will give problems:
-.deps/.d:
-	if [ ! -d .deps ]; then mkdir .deps; fi
-	touch $@
+# This include defines goals for install-modes, .deps/.d and .mode files:
+@ap_include@
 
-# Prevent the .d file from being removed automatically:
-.PRECIOUS: .deps/.d
-
+###############################################################################
+## Transducers, disambiguation rules, transfer
+###############################################################################
 
 ##
 ## 	SME ANALYSER DICTIONARY
 ##
-
-$(BASENAME).$(LANG1).lexc: $(PREFIX1).autobil.bin
-	@if ! test -f update-morph/langs.cfg; then \
-		echo "(update-morph/langs.cfg does not exist, not re-generating the lexc)"; \
-	elif test $(PYTHON) != :; then \
-		$(PYTHON) update-morph/update-lexc.py --config=update-morph/langs.cfg; \
-	else \
-		echo ""; \
-		echo "PYTHON not set. Re-run with \"autogen.sh PYTHON=/PATH/TO/python2\" if you wish to re-generate the lexc"; \
-		echo ""; \
-	fi;
-
 
 #$(LANG1).twol.hfst: $(BASENAME).$(LANG1).twol
 #	hfst-twolc -R -i $< -o $@
@@ -202,19 +189,11 @@ vm-transfer: $(PREFIX1).v1x.bin \
              $(PREFIX1).v3x.bin \
              $(PREFIX1).v4x.bin
 
-#
-#	MODE FILE(S)
-#
+###############################################################################
+## Distribution
+###############################################################################
 
-modes/$(PREFIX1).mode: modes.xml
-	apertium-validate-modes modes.xml
-	apertium-gen-modes modes.xml
-	cp *.mode modes/
-
-## 
-##	FILES WHICH AREN'T BUILT BUT ARE DISTRIBUTED
-## 
-
+# Files which aren't built, but are distributed:
 EXTRA_DIST=\
 	$(BASENAME).$(LANG1).twol \
 	$(BASENAME).$(LANG1).lexc \
@@ -232,29 +211,28 @@ EXTRA_DIST=\
 	lexchoicebil.xsl \
 	modes.xml 
 
+###############################################################################
+## Installation
+###############################################################################
 
 apertium_sme_nobdir=$(prefix)/share/apertium/$(BASENAME)/
-apertium_modesdir=$(prefix)/share/apertium/modes/
 
+# Files which should be installed to $(prefix)/share/apertium/$(BASENAME)/:
 apertium_sme_nob_DATA=$(TARGETS_COMMON) \
-		    modes.xml
+	$(BASENAME).$(PREFIX1).t1x \
+	$(BASENAME).$(PREFIX1).t2x \
+	$(BASENAME).$(PREFIX1).t3x \
+	$(BASENAME).$(PREFIX1).t4x
 
-noinst_DATA=modes/$(PREFIX1).mode 
+# All modes are created by the same goal, listing several will just give problems with make -j2
+noinst_DATA=modes/$(PREFIX1).mode
 
-install-data-local:
-	mv modes modes.bak
-	apertium-gen-modes modes.xml $(BASENAME)
-	rm -rf modes
-	mv modes.bak modes
-	test -d $(DESTDIR)$(apertium_modesdir) || mkdir $(DESTDIR)$(apertium_modesdir)
-	modes=`xmllint --xpath '//mode[@install="yes"]/@name' modes.xml | sed 's/ *name="\([^"]*\)"/\1.mode /g'`; \
-		$(INSTALL_DATA) $$modes $(DESTDIR)$(apertium_modesdir); \
-		rm $$modes
-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t1x $(DESTDIR)$(apertium_sme_nobdir)
-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t2x $(DESTDIR)$(apertium_sme_nobdir)
-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t3x $(DESTDIR)$(apertium_sme_nobdir)
-	$(INSTALL_DATA) $(BASENAME).$(PREFIX1).t4x $(DESTDIR)$(apertium_sme_nobdir)
+install-data-local: install-modes
 
+
+###############################################################################
+## Cleanup
+###############################################################################
 
 CLEANFILES = $(TARGETS_COMMON)
 clean-local:

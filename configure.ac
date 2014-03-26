@@ -12,20 +12,9 @@ AM_INIT_AUTOMAKE([apertium-sme-nob], [0.5.0], no-define)
 AC_PROG_LN_S
 AC_PROG_AWK
 
-AM_PATH_PYTHON(
-	2.6,
-	AS_CASE([$PYTHON_VERSION],
-	[2*],[],		dnl less than 3, pass
-	[*],[			dnl greater than 3, fail
-		AC_MSG_WARN([Detected too high PYTHON_VERSION: $PYTHON_VERSION; re-run with PYTHON=/path/to/python2 if you wish to re-generate the lexc.
-])
-		PYTHON=:
- 	]),
-	AC_MSG_WARN([No python executable found; re-run with PYTHON=/path/to/python2 if you wish to re-generate the lexc
-]))
-
 PKG_CHECK_MODULES(APERTIUM,   apertium >= required_apertium_version, [], [PKG_CHECK_MODULES(APERTIUM,   apertium-3.2 >= required_apertium_version)])
 PKG_CHECK_MODULES(LTTOOLBOX,   lttoolbox >= required_lttoolbox_version, [], [PKG_CHECK_MODULES(LTTOOLBOX,   lttoolbox-3.2 >= required_lttoolbox_version)])
+
 
 AC_PATH_PROG(CGCOMP, cg-comp, no)
 if test x$ac_cv_path_CGCOMP = x
@@ -88,10 +77,6 @@ then
 fi
 
 
-#
-# Check for xsltproc
-#
-
 AC_PATH_PROG(XSLTPROC, xsltproc, no)
 if test x$ac_cv_path_XSLTPROC = x
 then
@@ -106,6 +91,8 @@ fi
 m4_ifdef([AP_CHECK_LING],[],[AC_MSG_ERROR([AP_CHECK_LING not defined, is apertium.m4 in ACLOCAL_PATH? See: http://wiki.apertium.org/wiki/Installation_troubleshooting])])
 
 AP_CHECK_LING([2], [apertium-nob])
+
+AP_MKINCLUDE
 
 
 AC_OUTPUT([Makefile])
