@@ -3,7 +3,7 @@
   <mode name="sme-nob" install="yes">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -38,7 +38,7 @@
   <mode name="sme-nob-biltrans" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -57,7 +57,7 @@
   <mode name="sme-nob-vm" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -91,7 +91,7 @@
   <mode name="sme-nob-postchunk">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -123,7 +123,7 @@
   <mode name="sme-nob-interchunk2">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -151,7 +151,7 @@
   <mode name="sme-nob-interchunk1">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -175,7 +175,7 @@
   <mode name="sme-nob-chunker">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -195,7 +195,7 @@
   <mode name="sme-nob-pretransfer">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1 -w -n">
         <file name="sme-nob.rlx.bin"/>
@@ -207,7 +207,7 @@
   <mode name="sme-nob-pretransfer2">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -222,7 +222,7 @@
   <mode name="sme-nob-val">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -237,7 +237,7 @@
   <mode name="sme-nob-lex">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -251,7 +251,7 @@
   <mode name="sme-nob-dis">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
         <file name="sme-nob.rlx.bin"/>
@@ -262,7 +262,7 @@
   <mode name="sme-nob-dis-trace">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1 -t">
         <file name="sme-nob.rlx.bin"/>
@@ -273,7 +273,7 @@
   <mode name="sme-nob-dis-trace-full">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-conv -a"/>
       <program name="vislcg3 --trace -g">
@@ -285,7 +285,7 @@
   <mode name="sme-nob-morph">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf.hfst.ol"/>
+        <file name="sme-nob.automorf.hfst"/>
       </program>
     </pipeline>
   </mode>
