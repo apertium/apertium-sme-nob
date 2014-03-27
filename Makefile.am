@@ -51,8 +51,7 @@ TARGETS_COMMON = \
 #$(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
 #	hfst-compose-intersect -1 $(LANG1).lexc.hfst -2 $(LANG1).twol.hfst -o $@
 
-.deps/$(PREFIX1).autobil.prefixes: $(PREFIX1).autobil.bin
-	if [ ! -d .deps ]; then mkdir .deps; fi
+.deps/$(PREFIX1).autobil.prefixes: $(PREFIX1).autobil.bin .deps/.d
 	lt-print $(PREFIX1).autobil.bin | sed 's/ /@_SPACE_@/g' > .deps/$(PREFIX1).autobil.att
 	hfst-txt2fst -e ε <  .deps/$(PREFIX1).autobil.att > .deps/$(PREFIX1).autobil.hfst
 	hfst-project -p upper .deps/$(PREFIX1).autobil.hfst > .deps/$(PREFIX1).autobil.upper
