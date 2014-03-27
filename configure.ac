@@ -87,6 +87,21 @@ then
   AC_MSG_ERROR([You don't have xsltproc installed.])
 fi
 
+AC_PATH_PROG(GZCAT, gzcat, no)
+AC_PATH_PROG(ZCAT, zcat, no)
+
+if test x$ac_cv_path_GZCAT = xno
+then
+  if test x$ac_cv_path_ZCAT = xno
+  then
+    AC_MSG_ERROR([No working zcat installed.])
+  else
+    AC_SUBST(ZCAT,[zcat])
+  fi
+else
+  AC_SUBST(ZCAT,[gzcat])
+fi
+
 
 m4_ifdef([AP_CHECK_LING],[],[AC_MSG_ERROR([AP_CHECK_LING not defined, is apertium.m4 in ACLOCAL_PATH? See: http://wiki.apertium.org/wiki/Installation_troubleshooting])])
 

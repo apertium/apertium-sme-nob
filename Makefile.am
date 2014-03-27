@@ -66,19 +66,13 @@ $(PREFIX2).autogen.hfst: $(BASENAME).$(PREFIX1).LR.att.gz .deps/$(PREFIX1).autob
 .deps/xfst2apertium.useless.twol.hfst: xfst2apertium.useless.twol .deps/.d
 	hfst-twolc -R -i $< -o $@
 
-.deps/xfst2apertium.hashtags.twol.hfst: xfst2apertium.hashtags.twol .deps/.d
-	hfst-twolc -R -i $< -o $@
-
 .deps/$(PREFIX1).automorf.inverted.hfst: $(PREFIX2).autogen.hfst .deps/.d
 	hfst-invert -i $< -o $@
 
 .deps/$(PREFIX1).automorf.useless.hfst: .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst
 	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.inverted.hfst -2 .deps/xfst2apertium.useless.twol.hfst -o $@
 
-.deps/$(PREFIX1).automorf.hashtags.hfst: .deps/$(PREFIX1).automorf.useless.hfst .deps/xfst2apertium.hashtags.twol.hfst
-	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.useless.hfst -2 .deps/xfst2apertium.hashtags.twol.hfst -o $@
-
-$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst
+$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.useless.hfst
 	hfst-fst2fst -O -i $< -o $@
 
 
@@ -87,10 +81,6 @@ $(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hashtags.hfst
 	hfst-fst2fst -O -i $< -o $@
 .deps/$(PREFIX1).automorf.useless.hfst.ol: .deps/$(PREFIX1).automorf.useless.hfst
 	hfst-fst2fst -O -i $< -o $@
-.deps/$(PREFIX1).automorf.hashtags.hfst.ol: .deps/$(PREFIX1).automorf.hashtags.hfst
-	hfst-fst2fst -O -i $< -o $@
-
-
 
 ##
 ## 	BILINGUAL DICTIONARY
@@ -207,7 +197,6 @@ EXTRA_DIST=\
 	$(BASENAME).$(PREFIX1).t3x \
 	$(BASENAME).$(PREFIX1).t4x \
 	xfst2apertium.useless.twol \
-	xfst2apertium.hashtags.twol \
 	lexchoicebil.xsl \
 	modes.xml 
 
