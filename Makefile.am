@@ -42,15 +42,6 @@ TARGETS_COMMON = \
 ## 	SME ANALYSER DICTIONARY
 ##
 
-#$(LANG1).twol.hfst: $(BASENAME).$(LANG1).twol
-#	hfst-twolc -R -i $< -o $@
-
-#$(LANG1).lexc.hfst: $(BASENAME).$(LANG1).lexc
-#	hfst-lexc --format=foma -o $@ $<
-
-#$(PREFIX2).autogen.hfst: $(LANG1).twol.hfst $(LANG1).lexc.hfst
-#	hfst-compose-intersect -1 $(LANG1).lexc.hfst -2 $(LANG1).twol.hfst -o $@
-
 .deps/$(PREFIX1).autobil.prefixes: $(PREFIX1).autobil.bin .deps/.d
 	lt-print $(PREFIX1).autobil.bin | sed 's/ /@_SPACE_@/g' > .deps/$(PREFIX1).autobil.att
 	hfst-txt2fst -e ε <  .deps/$(PREFIX1).autobil.att > .deps/$(PREFIX1).autobil.hfst
@@ -62,23 +53,10 @@ $(PREFIX2).autogen.hfst: $(BASENAME).$(PREFIX1).LR.att.gz .deps/$(PREFIX1).autob
 	$(ZCAT) $< | hfst-txt2fst | hfst-invert > .deps/$(LANG1).automorf.hfst
 	hfst-compose-intersect -1 .deps/$(LANG1).automorf.hfst -2 .deps/$(PREFIX1).autobil.prefixes -o $@
 
-.deps/xfst2apertium.useless.twol.hfst: xfst2apertium.useless.twol .deps/.d
-	hfst-twolc -R -i $< -o $@
-
 .deps/$(PREFIX1).automorf.inverted.hfst: $(PREFIX2).autogen.hfst .deps/.d
 	hfst-invert -i $< -o $@
 
-.deps/$(PREFIX1).automorf.useless.hfst: .deps/$(PREFIX1).automorf.inverted.hfst .deps/xfst2apertium.useless.twol.hfst
-	hfst-compose-intersect -1 .deps/$(PREFIX1).automorf.inverted.hfst -2 .deps/xfst2apertium.useless.twol.hfst -o $@
-
-$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.useless.hfst
-	hfst-fst2fst -O -i $< -o $@
-
-
-# Debug/development goals for testing before/after the various twol's:
-.deps/$(PREFIX1).automorf.inverted.hfst.ol: .deps/$(PREFIX1).automorf.inverted.hfst
-	hfst-fst2fst -O -i $< -o $@
-.deps/$(PREFIX1).automorf.useless.hfst.ol: .deps/$(PREFIX1).automorf.useless.hfst
+$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.inverted.hfst
 	hfst-fst2fst -O -i $< -o $@
 
 ##
