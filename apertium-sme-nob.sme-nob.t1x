@@ -2691,7 +2691,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </let>
         <let><clip pos="2" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <choose><when>
-          <test><not><equal><clip pos="2" side="sl" part="a_count"/><lit-tag v="Coll"/></equal></not></test>
+          <test><not><equal><clip pos="2" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not></test>
           <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         </when></choose>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
@@ -2740,7 +2740,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </let>
         <let><clip pos="3" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <choose><when>
-          <test><not><equal><clip pos="3" side="sl" part="a_count"/><lit-tag v="Coll"/></equal></not></test>
+          <test><not><equal><clip pos="3" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not></test>
           <let><clip pos="3" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         </when></choose>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
@@ -2793,7 +2793,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </let>
         <let><clip pos="3" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <choose><when>
-          <test><not><equal><clip pos="3" side="sl" part="a_count"/><lit-tag v="Coll"/></equal></not></test>
+          <test><not><equal><clip pos="3" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not></test>
           <let><clip pos="3" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         </when></choose>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
@@ -2858,7 +2858,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </let>
         <let><clip pos="4" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <choose><when>
-          <test><not><equal><clip pos="4" side="sl" part="a_count"/><lit-tag v="Coll"/></equal></not></test>
+          <test><not><equal><clip pos="4" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not></test>
           <let><clip pos="4" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         </when></choose>
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
