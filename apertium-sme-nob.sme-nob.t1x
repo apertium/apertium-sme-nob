@@ -61,12 +61,12 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="pcle"/>
     </def-cat>
     <def-cat n="ij">
-      <cat-item tags="Interj.*"/>
-      <cat-item tags="Interj"/>
+      <cat-item tags="interj.*"/>
+      <cat-item tags="interj"/>
     </def-cat>
     <def-cat n="Qst.Pcle">
-      <cat-item tags="Qst.Pcle"/>
-      <cat-item tags="Qst.Pcle.*"/>
+      <cat-item tags="qst.pcle"/>
+      <cat-item tags="qst.pcle.*"/>
     </def-cat>
     <def-cat n="adj">
       <cat-item tags="a.*"/>
@@ -78,12 +78,12 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="a.*.attr.*"/>
       <!-- TODO: pstv verbs don't have adj forms, should have transfer
            <exception> if tl pstv -->
-      <cat-item tags="V.IV.A.Attr.*"/>
-      <cat-item tags="V.TV.A.Attr.*"/>
+      <cat-item tags="v.iv.a.attr.*"/>
+      <cat-item tags="v.tv.a.attr.*"/>
     </def-cat>
     <def-cat n="num_mod">
-      <cat-item tags="Num.*.@→N"/>
-      <cat-item tags="Num.*.@→A"/>
+      <cat-item tags="num.*.@→N"/>
+      <cat-item tags="num.*.@→A"/>
     </def-cat>
     <def-cat n="num">
       <cat-item tags="num.*"/>
@@ -95,62 +95,62 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="Pron.Rel.*"/>
     </def-cat>
     <def-cat n="pron.ref">
-      <cat-item tags="Pron.Refl.*"/>
+      <cat-item tags="pron.refl.*"/>
     </def-cat>
     <def-cat n="pron.ref_PRONl">
-      <cat-item tags="Pron.Refl.*.@Pron←"/>
+      <cat-item tags="pron.refl.*.@Pron←"/>
     </def-cat>
     <def-cat n="pronitg">
-      <cat-item tags="Pron.Interr.*"/>
+      <cat-item tags="pron.interr.*"/>
     </def-cat>
     <def-cat n="pron.pers">
-      <cat-item tags="Pron.Pers.*"/>
+      <cat-item tags="pron.pers.*"/>
     </def-cat>
     <def-cat n="pron.pers.gen">
-      <cat-item tags="Pron.Pers.*.Gen.*"/>
+      <cat-item tags="pron.pers.*.gen.*"/>
     </def-cat>
     <def-cat n="det" c="Pronouns most likely to end up as determiners">
-      <cat-item tags="Pron.Pers.*.Gen.*"/>
-      <cat-item tags="Pron.Refl.Gen.*"/>
-      <cat-item tags="Pron.Dem.*"/>
-      <cat-item tags="Pron.Indef.*"/>
-      <cat-item tags="Pron.Recipr.*"/>
-      <cat-item tags="Pron.Dem"/>
-      <cat-item tags="Pron.Indef"/>
-      <cat-item tags="Pron.Recipr"/>
-      <cat-item lemma="makkár" tags="Pron.Interr.*"/>
-      <cat-item lemma="vaikko guhte" tags="Pron.Interr.*"/>
-      <cat-item lemma="vaikko goabbá" tags="Pron.Interr.*"/>
+      <cat-item tags="pron.pers.*.gen.*"/>
+      <cat-item tags="pron.refl.gen.*"/>
+      <cat-item tags="pron.dem.*"/>
+      <cat-item tags="pron.indef.*"/>
+      <cat-item tags="pron.recipr.*"/>
+      <cat-item tags="pron.dem"/>
+      <cat-item tags="pron.indef"/>
+      <cat-item tags="pron.recipr"/>
+      <cat-item lemma="makkár" tags="pron.interr.*"/>
+      <cat-item lemma="vaikko guhte" tags="pron.interr.*"/>
+      <cat-item lemma="vaikko goabbá" tags="pron.interr.*"/>
     </def-cat>
     <def-cat n="det_mod" c="Pronouns most likely to end up as determiners, modifying an adj/noun">
-      <cat-item tags="Pron.Pers.*.Gen.@→N"/>
-      <cat-item tags="Pron.Pers.*.Gen.@→A"/>
-      <cat-item tags="Pron.Refl.Gen.*.@→N"/>
-      <cat-item tags="Pron.Refl.Gen.*.@→A"/>
-      <cat-item tags="Pron.Refl.Gen.@→N"/>
-      <cat-item tags="Pron.Refl.Gen.@→A"/>
-      <cat-item tags="Pron.Dem.*.@→N"/>
-      <cat-item tags="Pron.Dem.*.@→A"/>
-      <cat-item tags="Pron.Indef.*.@→N"/>
-      <cat-item tags="Pron.Indef.*.@→A"/>
-      <cat-item tags="Pron.Indef.@→N"/>
-      <cat-item tags="Pron.Indef.@→A"/>
-      <cat-item lemma="makkár" tags="Pron.Interr.*.@→N"/>
-      <cat-item lemma="makkár" tags="Pron.Interr.*.@→A"/>
+      <cat-item tags="pron.pers.*.gen.@→N"/>
+      <cat-item tags="pron.pers.*.gen.@→A"/>
+      <cat-item tags="pron.refl.gen.*.@→N"/>
+      <cat-item tags="pron.refl.gen.*.@→A"/>
+      <cat-item tags="pron.refl.gen.@→N"/>
+      <cat-item tags="pron.refl.gen.@→A"/>
+      <cat-item tags="pron.dem.*.@→N"/>
+      <cat-item tags="pron.dem.*.@→A"/>
+      <cat-item tags="pron.indef.*.@→N"/>
+      <cat-item tags="pron.indef.*.@→A"/>
+      <cat-item tags="pron.indef.@→N"/>
+      <cat-item tags="pron.indef.@→A"/>
+      <cat-item lemma="makkár" tags="pron.interr.*.@→N"/>
+      <cat-item lemma="makkár" tags="pron.interr.*.@→A"/>
     </def-cat>
     <def-cat n="cmp" c="Words only seen as compund parts">
-      <cat-item tags="Cmp.*"/>
-      <cat-item tags="ShCmp.*"/>
-      <cat-item tags="Cmp"/>
-      <cat-item tags="ShCmp"/>
+      <cat-item tags="cmp.*"/>
+      <cat-item tags="shcmp.*"/>
+      <cat-item tags="cmp"/>
+      <cat-item tags="shcmp"/>
     </def-cat>
     <def-cat n="adj.cmp">
-      <cat-item tags="A.*.Cmp"/>
-      <cat-item tags="A.*.Cmp.*"/>
+      <cat-item tags="a.*.cmp"/>
+      <cat-item tags="a.*.cmp.*"/>
     </def-cat>
     <def-cat n="nom.cmp">
-      <cat-item tags="N.*.Cmp"/>
-      <cat-item tags="N.*.Cmp.*"/>
+      <cat-item tags="n.*.cmp"/>
+      <cat-item tags="n.*.cmp.*"/>
     </def-cat>
     <def-cat n="nom_head" c="Head nom's are sent to out_nom, thus we can have Verb derivatives here.">
       <cat-item tags="v.*.*.n.*"/>
@@ -159,102 +159,103 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="abbr.*"/>
     </def-cat>
     <def-cat n="nom_rP" c="Head nom before a postposition, sent to out_nom">
-      <cat-item tags="V.*.Der2.*.N.*.@→P"/>
-      <cat-item tags="N.*.@→P"/>
-      <cat-item tags="ABBR.*.@→P"/>
+      <cat-item tags="v.*.*.n.*.@→P"/>
+      <cat-item tags="n.*.@→P"/>
+      <cat-item tags="abbr.*.@→P"/>
     </def-cat>
     <def-cat n="nom.gen">
-      <cat-item tags="N.*.Gen.*"/>
+      <cat-item tags="n.*.gen.*"/>
     </def-cat>
     <def-cat n="nom.gen_NUMl">
-      <cat-item tags="N.*.Gen.@Num←"/>
+      <cat-item tags="n.*.gen.@Num←"/>
     </def-cat>
     <def-cat n="nom.prop.antcog_mod">
-      <cat-item tags="N.Prop.Sur.*.@→N"/>
-      <cat-item tags="N.Prop.Fem.*.@→N"/>
-      <cat-item tags="N.Prop.Mal.*.@→N"/>
+      <cat-item tags="n.prop.sur.*.@→N"/>
+      <cat-item tags="n.prop.fem.*.@→N"/>
+      <cat-item tags="n.prop.mal.*.@→N"/>
     </def-cat>
     <def-cat n="nom.prop.antcog">
-      <cat-item tags="N.Prop.Sur.*"/>
-      <cat-item tags="N.Prop.Fem.*"/>
-      <cat-item tags="N.Prop.Mal.*"/>
+      <cat-item tags="n.prop.sur.*"/>
+      <cat-item tags="n.prop.fem.*"/>
+      <cat-item tags="n.prop.mal.*"/>
     </def-cat>
     <def-cat n="nom.prop">
-      <cat-item tags="N.Prop.*"/>
+      <cat-item tags="n.prop.*"/>
     </def-cat>
     <def-cat n="nom.prop_mod">
-      <cat-item tags="N.Prop.*.Attr.*"/>
+      <cat-item tags="n.prop.*.attr.*"/>
     </def-cat>
     <def-cat n="nom.prop.gen">
-      <cat-item tags="N.Prop.*.Gen"/>
-      <cat-item tags="N.Prop.*.Gen.*"/>
+      <cat-item tags="n.prop.*.gen"/>
+      <cat-item tags="n.prop.*.gen.*"/>
     </def-cat>
     <def-cat n="nom.prop_attr">
-      <cat-item tags="N.Prop.Attr.*"/>
-      <cat-item tags="N.*.@→N"/>
-      <cat-item lemma="gonagas" tags="N.*"/>
-      <cat-item lemma="gonagas:1" tags="N.*"/>
-      <cat-item lemma="dronnet" tags="N.*"/>
-      <cat-item lemma="prinsa" tags="N.*"/>
-      <cat-item lemma="ruvdnaprinsa" tags="N.*"/>
-      <cat-item lemma="prinseassa" tags="N.*"/>
-      <cat-item lemma="ruvdnaprinseassa" tags="N.*"/>
+      <cat-item tags="n.prop.attr.*"/>
+      <cat-item tags="n.*.@→N"/>
+      <cat-item lemma="gonagas" tags="n.*"/>
+      <cat-item lemma="gonagas:1" tags="n.*"/> <!-- FIXME -->
+      <cat-item lemma="dronnet" tags="n.*"/>
+      <cat-item lemma="prinsa" tags="n.*"/>
+      <cat-item lemma="ruvdnaprinsa" tags="n.*"/>
+      <cat-item lemma="prinseassa" tags="n.*"/>
+      <cat-item lemma="ruvdnaprinseassa" tags="n.*"/>
     </def-cat>
     <def-cat n="verb">
-      <cat-item tags="V.*"/>
+      <cat-item tags="v.*"/>
     </def-cat>
     <def-cat n="v.actio">
-      <cat-item tags="V.*.Actio.*"/>
+      <cat-item tags="v.*.actio.*"/>
     </def-cat>
     <def-cat n="goahti-v">
-      <cat-item lemma="goahti" tags="V.*"/>
+      <cat-item lemma="goahti" tags="v.*"/>
     </def-cat>
     <def-cat n="conj">
-      <cat-item tags="CC.*"/>
-      <cat-item tags="CS.*"/>
+      <cat-item tags="cc.*"/>
+      <cat-item tags="cs.*"/>
     </def-cat>
     <def-cat n="month">
-      <cat-item lemma="guovvamánnu" tags="N.*"/>
-      <cat-item lemma="ođđajagimánnu" tags="N.*"/>
-      <cat-item lemma="guovvamánnu" tags="N.*"/>
-      <cat-item lemma="njukčamánnu" tags="N.*"/>
-      <cat-item lemma="cuoŋománnu" tags="N.*"/>
-      <cat-item lemma="miessemánnu" tags="N.*"/>
-      <cat-item lemma="geassemánnu" tags="N.*"/>
-      <cat-item lemma="suoidnemánnu" tags="N.*"/>
-      <cat-item lemma="borgemánnu" tags="N.*"/>
-      <cat-item lemma="čakčamánnu" tags="N.*"/>
-      <cat-item lemma="golggotmánnu" tags="N.*"/>
-      <cat-item lemma="skábmamánnu" tags="N.*"/>
-      <cat-item lemma="juovlamánnu" tags="N.*"/>
+      <cat-item lemma="guovvamánnu" tags="n.*"/>
+      <cat-item lemma="ođđajagimánnu" tags="n.*"/>
+      <cat-item lemma="guovvamánnu" tags="n.*"/>
+      <cat-item lemma="njukčamánnu" tags="n.*"/>
+      <cat-item lemma="cuoŋománnu" tags="n.*"/>
+      <cat-item lemma="miessemánnu" tags="n.*"/>
+      <cat-item lemma="geassemánnu" tags="n.*"/>
+      <cat-item lemma="suoidnemánnu" tags="n.*"/>
+      <cat-item lemma="borgemánnu" tags="n.*"/>
+      <cat-item lemma="čakčamánnu" tags="n.*"/>
+      <cat-item lemma="golggotmánnu" tags="n.*"/>
+      <cat-item lemma="skábmamánnu" tags="n.*"/>
+      <cat-item lemma="juovlamánnu" tags="n.*"/>
     </def-cat>
     <def-cat n="season">
-      <cat-item lemma="giđđa" tags="N.*"/>
-      <cat-item lemma="geassi" tags="N.*"/>
-      <cat-item lemma="dálvi" tags="N.*"/>
-      <cat-item lemma="čakča" tags="N.*"/>
+      <cat-item lemma="giđđa" tags="n.*"/>
+      <cat-item lemma="geassi" tags="n.*"/>
+      <cat-item lemma="dálvi" tags="n.*"/>
+      <cat-item lemma="čakča" tags="n.*"/>
     </def-cat>
     <def-cat n="num.cmp">
-      <cat-item tags="Num.Cmp"/>
-      <cat-item tags="Num.*.Cmp"/>
+      <cat-item tags="num.cmp"/>
+      <cat-item tags="num.*.cmp"/>
     </def-cat>
     <def-cat n="diibmu">
-      <cat-item lemma="diibmu" tags="N.*"/>
-      <cat-item lemma="diibmu:1" tags="N.*"/>
+      <cat-item lemma="diibmu" tags="n.*"/>
+      <cat-item lemma="diibmu:1" tags="n.*"/> <!-- FIXME -->
     </def-cat>
     <def-cat n="lohku">
-      <cat-item lemma="lohku" tags="N.*"/>
+      <cat-item lemma="lohku" tags="n.*"/>
     </def-cat>
     <def-cat n="ord">
-      <cat-item tags="A.Ord.*"/>
-      <cat-item tags="A.Ord"/>
+      <cat-item tags="a.ord.*"/>
+      <cat-item tags="a.ord"/>
     </def-cat>
     <def-cat n="beaivi">
-      <cat-item lemma="beaivi" tags="N.*"/>
-      <cat-item lemma="b" tags="ABBR.*"/>
-      <cat-item lemma="b" tags="N.ABBR.*"/>
-      <cat-item lemma="b" tags="Adv.ABBR.*"/>
+      <cat-item lemma="beaivi" tags="n.*"/>
+      <cat-item lemma="b" tags="abbr.*"/>
+      <cat-item lemma="b" tags="n.abbr.*"/>
+      <cat-item lemma="b" tags="adv.abbr.*"/>
     </def-cat>
+<!--@@@-->
     <def-cat n="ij-adj">
       <cat-item lemma="buorre:1" tags="A.Sg.*"/>
       <cat-item lemma="ilolaš" tags="A.Sg.*"/>
