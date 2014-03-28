@@ -39,26 +39,26 @@ And then there are some categories like "month", with all the months.
 <transfer default="chunk">
   <section-def-cats>
     <def-cat n="CLB">
-      <cat-item tags="CLB"/>
+      <cat-item tags="clb"/>
     </def-cat>
     <def-cat n="adpos">
-      <cat-item tags="Adp.*"/>
-      <cat-item tags="Pr.*"/>
-      <cat-item tags="Po.*"/>
+      <cat-item tags="adp.*"/>
+      <cat-item tags="pr.*"/>
+      <cat-item tags="po.*"/>
     </def-cat>
     <def-cat n="postpos">
-      <cat-item tags="Adp.*"/>
-      <cat-item tags="Po.*"/>
+      <cat-item tags="adp.*"/>
+      <cat-item tags="po.*"/>
     </def-cat>
     <def-cat n="adverb">
-      <cat-item tags="Adv"/>
-      <cat-item tags="Adv.*"/>
+      <cat-item tags="adv"/>
+      <cat-item tags="adv.*"/>
     </def-cat>
     <def-cat n="Pcle">
-      <cat-item tags="Qst.Pcle.*"/>
-      <cat-item tags="Qst.Pcle"/>
-      <cat-item tags="Pcle.*"/>
-      <cat-item tags="Pcle"/>
+      <cat-item tags="qst.pcle.*"/>
+      <cat-item tags="qst.pcle"/>
+      <cat-item tags="pcle.*"/>
+      <cat-item tags="pcle"/>
     </def-cat>
     <def-cat n="ij">
       <cat-item tags="Interj.*"/>
@@ -69,13 +69,13 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="Qst.Pcle.*"/>
     </def-cat>
     <def-cat n="adj">
-      <cat-item tags="A.*"/>
+      <cat-item tags="a.*"/>
     </def-cat>
     <def-cat n="adj_attr">
-      <cat-item tags="A.Ess.*"/>
-      <cat-item tags="A.Attr"/>
-      <cat-item tags="A.Attr.*"/>
-      <cat-item tags="A.*.Attr.*"/>
+      <cat-item tags="a.ess.*"/>
+      <cat-item tags="a.attr"/>
+      <cat-item tags="a.attr.*"/>
+      <cat-item tags="a.*.attr.*"/>
       <!-- TODO: pstv verbs don't have adj forms, should have transfer
            <exception> if tl pstv -->
       <cat-item tags="V.IV.A.Attr.*"/>
@@ -86,10 +86,10 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="Num.*.@→A"/>
     </def-cat>
     <def-cat n="num">
-      <cat-item tags="Num.*"/>
+      <cat-item tags="num.*"/>
     </def-cat>
     <def-cat n="pron">
-      <cat-item tags="Pron.*"/>
+      <cat-item tags="pron.*"/>
     </def-cat>
     <def-cat n="pron.rel">
       <cat-item tags="Pron.Rel.*"/>
@@ -153,10 +153,10 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="N.*.Cmp.*"/>
     </def-cat>
     <def-cat n="nom_head" c="Head nom's are sent to out_nom, thus we can have Verb derivatives here.">
-      <cat-item tags="V.*.Der2.*.N.*"/>
-      <cat-item tags="N.*"/>
-      <cat-item tags="ABBR"/>
-      <cat-item tags="ABBR.*"/>
+      <cat-item tags="v.*.*.n.*"/>
+      <cat-item tags="n.*"/>
+      <cat-item tags="abbr"/>
+      <cat-item tags="abbr.*"/>
     </def-cat>
     <def-cat n="nom_rP" c="Head nom before a postposition, sent to out_nom">
       <cat-item tags="V.*.Der2.*.N.*.@→P"/>
