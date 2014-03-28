@@ -50,7 +50,7 @@ TARGETS_COMMON = \
 	hfst-concatenate -1 .deps/$(PREFIX1).autobil.upper -2 .deps/any-symbol.hfst -o $@
 
 .deps/$(LANG1).automorf.hfst: $(BASENAME).$(PREFIX1).LR.att.gz .deps/.d
-	$(ZCAT) $< | hfst-txt2fst | hfst-invert > $@
+	$(ZCAT) $< | hfst-txt2fst > $@
 
 .deps/$(LANG1).autogen.hfst: .deps/$(LANG1).automorf.hfst
 	hfst-invert -i $< -o $@
