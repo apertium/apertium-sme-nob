@@ -67,12 +67,13 @@ $(PREFIX2).autogen.hfst: .deps/$(LANG1).autogen.hfst
 
 ##
 ## 	BILINGUAL DICTIONARY
-##
-.deps/$(BASENAME).$(PREFIX1).dix: $(BASENAME).$(PREFIX1).dix lexchoicebil.xsl .deps/.d
-	apertium-validate-dictionary $<
-	xsltproc lexchoicebil.xsl $(BASENAME).$(PREFIX1).dix > $@
+###
+#.deps/$(BASENAME).$(PREFIX1).dix: $(BASENAME).$(PREFIX1).dix lexchoicebil.xsl .deps/.d
+#	apertium-validate-dictionary $<
+#	xsltproc lexchoicebil.xsl $(BASENAME).$(PREFIX1).dix > $@
 
-$(PREFIX1).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
+#$(PREFIX1).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
+$(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
 	apertium-validate-dictionary $<
 	lt-comp lr $< $@
 
