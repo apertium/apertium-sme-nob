@@ -50,7 +50,7 @@ TARGETS_COMMON = \
 	hfst-concatenate -1 .deps/$(PREFIX1).autobil.upper -2 .deps/any-symbol.hfst -o $@
 
 .deps/$(LANG1).automorf.hfst: $(BASENAME).$(PREFIX1).LR.att.gz .deps/.d
-	$(ZCAT) $< | hfst-txt2fst > $@
+	$(ZCAT) $< | hfst-txt2fst | hfst-invert > $@
 
 .deps/$(LANG1).autogen.hfst: .deps/$(LANG1).automorf.hfst
 	hfst-invert -i $< -o $@
@@ -77,7 +77,8 @@ $(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
 	apertium-validate-dictionary $<
 	lt-comp lr $< $@
 
-$(PREFIX2).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
+#$(PREFIX2).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
+$(PREFIX2).autobil.bin: $(BASENAME).$(PREFIX1).dix
 	apertium-validate-dictionary $<
 	lt-comp rl $< $@
 
