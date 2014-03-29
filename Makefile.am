@@ -17,7 +17,8 @@ BASENAME=apertium-$(PREFIX1)
 TARGETS_COMMON = \
 	$(PREFIX1).automorf.hfst \
 	$(PREFIX2).autogen.hfst \
-	$(PREFIX1).rlx.bin \
+	$(PREFIX1).mor.rlx.bin \
+	$(PREFIX1).syn.rlx.bin \
 	$(PREFIX1).lex.bin \
 	$(PREFIX1).val.bin \
 	$(PREFIX1).autobil.bin \
@@ -97,7 +98,10 @@ $(PREFIX2).automorf.bin: $(AP_LIB2)/$(LANG2).automorf.bin $(PREFIX2).autobil.bin
 ##	PRE-TAGGING
 ##
 
-$(PREFIX1).rlx.bin: $(BASENAME).$(PREFIX1).rlx
+$(PREFIX1).mor.rlx.bin: $(BASENAME).$(PREFIX1).mor.rlx
+	cg-comp $< $@
+
+$(PREFIX1).syn.rlx.bin: $(BASENAME).$(PREFIX1).syn.rlx
 	cg-comp $< $@
 
 $(PREFIX2).rlx.bin: $(AP_LIB2)/$(LANG2).rlx.bin

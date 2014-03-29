@@ -5,8 +5,11 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
       <program name="cg-proc -1 -n -w">
-        <file name="sme-nob.rlx.bin"/>
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
       <program name="apertium-pretransfer"/>
       <program name="lt-proc -b">
@@ -50,8 +53,11 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-proc -1 -w -n">
-        <file name="sme-nob.rlx.bin"/>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
     </pipeline>
   </mode>
@@ -63,7 +69,10 @@
       </program>
       <program name="cg-conv -a"/>
       <program name="vislcg3 --trace -g">
-        <file name="apertium-sme-nob.sme-nob.rlx"/>
+        <file name="apertium-sme-nob.sme-nob.mor.rlx"/>
+      </program>
+      <program name="vislcg3 --trace -g">
+        <file name="apertium-sme-nob.sme-nob.syn.rlx"/>
       </program>
     </pipeline>
   </mode>
@@ -73,8 +82,11 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-proc -1 -w -n">
-        <file name="sme-nob.rlx.bin"/>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
       <program name="apertium-pretransfer"/>
     </pipeline>
@@ -85,8 +97,11 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-proc -1 -w -n">
-        <file name="sme-nob.rlx.bin"/>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
       <program name="apertium-pretransfer"/>
       <program name="lt-proc -b">
@@ -100,8 +115,11 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-proc -w -1 -n">
-        <file name="sme-nob.rlx.bin"/>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
       <program name="apertium-pretransfer"/>
       <program name="lt-proc -b">
@@ -118,8 +136,11 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-proc -w -1 -n">
-        <file name="sme-nob.rlx.bin"/>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
       <program name="apertium-pretransfer"/>
       <program name="lt-proc -b">
@@ -141,8 +162,11 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-proc -w -1 -n">
-        <file name="sme-nob.rlx.bin"/>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
       <program name="apertium-pretransfer"/>
       <program name="lt-proc -b">
@@ -175,8 +199,11 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-proc -1 -w -n">
-        <file name="sme-nob.rlx.bin"/>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
       <program name="apertium-pretransfer"/>
       <program name="lt-proc -b">
@@ -201,8 +228,11 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-proc -n -w -1">
-        <file name="sme-nob.rlx.bin"/>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
       <program name="apertium-pretransfer"/>
       <program name="lt-proc -b">
@@ -232,7 +262,7 @@
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">
-        <file name="sme-nob.rlx.bin"/>
+        <file name="sme-nob.mor.rlx.bin"/>
       </program>
       <program name="cg-conv -a"/>
       <program name="vislcg3 --trace --grammar">

@@ -4,8 +4,8 @@ import sys, re ;
 
 first = False;
 for line in sys.stdin.readlines(): #{
-	line = line.replace('<sme>','');
-	line = line.replace('←sme→','');
+#	line = line.replace('<sme>','');
+#	line = line.replace('←sme→','');
 	if line.strip(' \t')[0] == '#' or 'LIST BOS' in line or 'LIST EOS' in line: #{
 		sys.stdout.write(line);
 		continue;
