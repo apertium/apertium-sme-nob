@@ -2,12 +2,14 @@
 # or any later version.
 
 # ==================================================================== #
-#    N O R T H E R N  S Á M I  D I S A M B I G U A T O R               
+#!!    S Y N T A C T I C   F U N C T I O N S   F O R   S Á M I
 # ==================================================================== #
 # ==================================================================== 
 
-#  Sámi language technology project 2003-2006, University of Tromsø # 
+#!!  Sámi language technology project 2003-2014, University of Tromsø # 
 
+#!! This file adds syntactic functions. It is common for all the Saami
+##! languages, so far for sma, sme, smj.
 
 # ========== #
 # Delimiters #
@@ -1027,7 +1029,10 @@ MAP:→a (@→A) TARGET DUSSE (1 A) ;
 
 MAP:→nAttr (@→Num) TARGET Num - (sg nom) - (Sg Acc) (1 Num) ;
 MAP:→nAttr (@→Num) TARGET Attr (1 Num) ;
-MAP:→nAttr (@→A) TARGET Attr - Dem - Pron (*1 A - Gen OR Ord - Gen BARRIER NOT-NPMOD OR CC OR (n gen) OR COMMA OR PUNCT) ;
+MAP:→nAttr (@→A) TARGET Attr - Dem - Pron (*1 A - Attr OR Ord - Gen BARRIER NOT-NPMOD OR CC OR (n gen) OR COMMA OR PUNCT) ;
+MAP:→nAttr (@→A) TARGET ("juohke") (1 (a ord)) ;
+	#$ Árktalaš parlamentáralaččaid konferánsa lágiduvvo juohke nuppi jagi.
+
 
 MAP:→nAttr (@→A) TARGET (indef attr) (*1 A - Gen OR Ord - Gen BARRIER NOT-NPMOD OR CC OR (n gen) OR COMMA OR PUNCT) ;
 	#$ Dattetge ii leat muitaluvvon makkárge namahan veara geavahanriiddu birra dálolaččaid ja boazodoalu gaskkas.
@@ -1049,7 +1054,10 @@ MAP:→nNum (@→N) TARGET Num - (sg nom) - (Sg Acc) - Sem_Date (*1 N BARRIER NO
 
 MAP:→n (@→Num) TARGET Gen - JAHKI (1 Num) (NEGATE 0 OKTA + Nom LINK *1 (n pl loc) BARRIER NOT-NPMOD) (NEGATE 0 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) ;
 MAP:→n (@→Num) TARGET $$CASE (0 Dem OR OKTA OR ("buorre" a) LINK 1 $$CASE + Num) ;
-MAP:→a (@→A) TARGET Gen - TIME-N (1 A) (NEGATE 0 OKTA + Nom LINK *1 (n pl loc) BARRIER NOT-NPMOD) (NEGATE 0 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) ;
+#MAP:>a (@>A) TARGET Gen - TIME-N (1 A)(NEGATE 0 OKTA + Nom LINK *1 (N Pl Loc) BARRIER NOT-NPMOD)(NEGATE 0 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) ;
+MAP:→a (@→A) TARGET Gen - TIME-N (1 A) (NEGATE 1 Attr LINK *1 N BARRIER NOT-A-ADV) (NEGATE 0 OKTA + Nom LINK *1 (n pl loc) BARRIER NOT-NPMOD) (NEGATE 0 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) ;
+
+
 #!! * __noun>n__ (@>N) for Gen; if there is a noun to your right. Restrictions: Not if you are: a time related word. Not if you are OKTA with Pl Loc to your right. Not if CC is to your right followed by another Gen and then Po. Not if you are HUMAN and to your right is Actio Nom folloed by a noun.
 MAP:→nNoun (@→N) TARGET Gen - TIME-N - Sem_Date (*1 N BARRIER NOT-NPMODADV OR A - Attr) (NEGATE 0 OKTA + Nom LINK *1 (n pl loc) BARRIER NOT-NPMOD) (NEGATE 0 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) (NEGATE 0 HUMAN LINK 1 (actio nom) LINK 1 N) ;
 	#$ Miehtá čájáhuslanja lea lebbejuvvon plastihkkagovččas ja gávcci máná njuni ovddas lea čáhcemála.
@@ -1997,10 +2005,11 @@ REMOVE:WORD WORD - ALLSYNTAG ;
 
 MAP:leftoversX (@X) TARGET WORD ;
 
+#!! ! __smeRemove__ removes the language tags <sma>, <sme>,  etc, before proceeding to the dep file.
 
-SUBSTITUTE (←sme→) (*) TARGET (←sme→) ;
-SUBSTITUTE (←smj→) (*) TARGET (←smj→) ;
-SUBSTITUTE (←sma→) (*) TARGET (←sma→) ;
+SUBSTITUTE:smeRemove (←sme→) (*) TARGET (←sme→) ;
+SUBSTITUTE:smjRemove (←smj→) (*) TARGET (←smj→) ;
+SUBSTITUTE:smaRemove (←sma→) (*) TARGET (←sma→) ;
 
 #MT RULES
 #SUBSTITUTE ("váldit" V) ("váldit2" V) ("váldit" V) (*1 ("vuostá" Adv) BARRIER SV-BOUNDARY OR REAL-V) ;
@@ -2027,10 +2036,13 @@ SUBSTITUTE (←sma→) (*) TARGET (←sma→) ;
 #SUBSTITUTE (@Pron<) (@Pron< <compl_subj>) TARGET (@Pron<) (-1 SUBJ) ;
 #SUBSTITUTE (@Pron<) (@Pron< <compl_advl>) TARGET (@Pron<) (-1 @ADVL) ;
 
-#For MT:
+#!! !!For MT:
+
+#!! Here we remove semantic tags for all other words than
+#!! proper nouns. In the Apertium bidix, only names have semtags.
 
 SUBSTITUTE (sem_act) (*) TARGET (sem_act) ;
-SUBSTITUTE (sem_ani) (*) TARGET (sem_ani) ;
+SUBSTITUTE (sem_ani) (*) TARGET (sem_ani) (NOT 0 Prop) ;
 SUBSTITUTE (sem_aniprod) (*) TARGET (sem_aniprod) ;
 SUBSTITUTE (sem_body) (*) TARGET (sem_body) ;
 SUBSTITUTE (sem_build) (*) TARGET (sem_build) ;
@@ -2044,31 +2056,31 @@ SUBSTITUTE (sem_curr) (*) TARGET (sem_curr) ;
 SUBSTITUTE (sem_date) (*) TARGET (sem_date) ;
 SUBSTITUTE (sem_edu) (*) TARGET (sem_edu) ;
 SUBSTITUTE (sem_emo) (*) TARGET (sem_emo) ;
-SUBSTITUTE (sem_event) (*) TARGET (sem_event) ;
+SUBSTITUTE (sem_event) (*) TARGET (sem_event) (NOT 0 Prop) ;
 SUBSTITUTE (sem_feat-psych) (*) TARGET (sem_feat-psych) ;
-SUBSTITUTE (sem_fem) (*) TARGET (sem_fem) ;
+SUBSTITUTE (sem_fem) (*) TARGET (sem_fem) (NOT 0 Prop) ;
 SUBSTITUTE (sem_food) (*) TARGET (sem_food) ;
 SUBSTITUTE (sem_furn) (*) TARGET (sem_furn) ;
 SUBSTITUTE (sem_group) (*) TARGET (sem_group) ;
-SUBSTITUTE (sem_hum) (*) TARGET (sem_hum) ;
+SUBSTITUTE (sem_hum) (*) TARGET (sem_hum) (NOT 0 Prop) ;
 SUBSTITUTE (sem_year) (*) TARGET (sem_year) ;
 SUBSTITUTE (sem_lang) (*) TARGET (sem_lang) ;
-SUBSTITUTE (sem_mal) (*) TARGET (sem_mal) ;
+SUBSTITUTE (sem_mal) (*) TARGET (sem_mal) (NOT 0 Prop) ;
 SUBSTITUTE (sem_mat) (*) TARGET (sem_mat) ;
 SUBSTITUTE (sem_measr) (*) TARGET (sem_measr) ;
 SUBSTITUTE (sem_money) (*) TARGET (sem_money) ;
-SUBSTITUTE (sem_obj) (*) TARGET (sem_obj) ;
+SUBSTITUTE (sem_obj) (*) TARGET (sem_obj) (NOT 0 Prop) ;
 SUBSTITUTE (sem_obj-clo) (*) TARGET (sem_obj-clo) ;
 SUBSTITUTE (sem_obj-el) (*) TARGET (sem_obj-el) ;
-SUBSTITUTE (sem_org) (*) TARGET (sem_org) ;
+SUBSTITUTE (sem_org) (*) TARGET (sem_org) (NOT 0 Prop) ;
 SUBSTITUTE (sem_perc-emo) (*) TARGET (sem_perc-emo) ;
 SUBSTITUTE (sem_plant) (*) TARGET (sem_plant) ;
-SUBSTITUTE (sem_plc) (*) TARGET (sem_plc) ;
+SUBSTITUTE (sem_plc) (*) TARGET (sem_plc) (NOT 0 Prop) ;
 SUBSTITUTE (sem_plc-line) (*) TARGET (sem_plc-line) ;
 SUBSTITUTE (sem_plc-water) (*) TARGET (sem_plc-water) ;
 SUBSTITUTE (sem_plc-elevate) (*) TARGET (sem_plc-elevate) ;
 SUBSTITUTE (sem_substnc) (*) TARGET (sem_substnc) ;
-SUBSTITUTE (sem_sur) (*) TARGET (sem_sur) ;
+SUBSTITUTE (sem_sur) (*) TARGET (sem_sur) (NOT 0 Prop) ;
 SUBSTITUTE (sem_route) (*) TARGET (sem_route) ;
 SUBSTITUTE (sem_semcon) (*) TARGET (sem_semcon) ;
 SUBSTITUTE (sem_time) (*) TARGET (sem_time) ;
