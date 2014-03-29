@@ -960,7 +960,7 @@ And then there are some categories like "month", with all the months.
       </let>
       <choose>
         <when>
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal></test>
           <let>
             <var n="caseprep"/><lit v="på"/>
           </let>
@@ -996,8 +996,8 @@ And then there are some categories like "month", with all the months.
               <test><or>
                 <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@HAB"/></equal>
                 <and>
-                  <equal><clip pos="1" side="sl" part="a_pron"/><lit-tag v="Pron"/></equal>
-                  <equal><clip pos="1" side="sl" part="a_rel"/><lit-tag v="Refl"/></equal>
+                  <equal><clip pos="1" side="sl" part="a_pron"/><lit-tag v="pron"/></equal>
+                  <equal><clip pos="1" side="sl" part="a_rel"/><lit-tag v="refl"/></equal>
                   <equal><clip pos="1" side="tl" part="lemh"/><lit v="selv"/></equal>
                 </and>
               </or></test>
@@ -1008,13 +1008,13 @@ And then there are some categories like "month", with all the months.
           </choose>
         </when>
         <when>
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Com"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="com"/></equal></test>
           <let>
             <var n="caseprep"/><lit v="med"/>
           </let>
         </when>
         <when>
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal></test>
           <let>
             <var n="caseprep"/><lit v="som"/>
           </let>
@@ -1026,7 +1026,7 @@ And then there are some categories like "month", with all the months.
           </when></choose>
         </when>
         <when>
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ill"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal></test>
           <let>
             <var n="caseprep"/><lit v="til"/>
           </let>
@@ -1050,7 +1050,7 @@ And then there are some categories like "month", with all the months.
           </when></choose>
         </when>
         <when>
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></test>
           <choose>
             <when>
               <test><or>
@@ -1109,7 +1109,7 @@ And then there are some categories like "month", with all the months.
                   - det.pos (personal genitives) have no case, but this is handled in transfer rules.">
       <choose>
         <when>
-          <test><equal><clip pos="1" side="sl" part="a_pron"/><lit-tag v="Pron.Pers"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="a_pron"/><lit-tag v="pron.pers"/></equal></test>
           <choose>
             <when>
               <test><or>
@@ -1122,8 +1122,8 @@ And then there are some categories like "month", with all the months.
             <when>
               <test><not>
                 <or>
-                  <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></equal>
-                  <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
+                  <equal><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></equal>
+                  <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
                 </or>
               </not></test>
               <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
@@ -1133,7 +1133,7 @@ And then there are some categories like "month", with all the months.
         <otherwise>
           <choose><when>
             <test>
-              <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal></not>
+              <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></not>
             </test>
             <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
           </when></choose>
@@ -1253,9 +1253,9 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@OBJ→"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HAB"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
-              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
-              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Loc"/></equal>
-              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ill"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal>
               <and>
                 <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←PPRED"/></equal></not>
@@ -1269,8 +1269,8 @@ And then there are some categories like "month", with all the months.
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@X"/></equal></not>
-                <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal></not>
-                <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></not>
               </and>
             </or></and>
           </test>
@@ -1310,8 +1310,8 @@ And then there are some categories like "month", with all the months.
       <choose>
         <when>
           <test><and>
-            <begins-with><clip pos="1" side="sl" part="a_pron"/><lit-tag v="Pron"/></begins-with>
-            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Gen"/></equal>
+            <begins-with><clip pos="1" side="sl" part="a_pron"/><lit-tag v="pron"/></begins-with>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
           </and></test>
           <let><clip pos="1" side="tl" part="a_pron"/><lit-tag v="det.pos"/></let>
         </when>
@@ -1501,7 +1501,7 @@ And then there are some categories like "month", with all the months.
                      eanan-(RCmpnd) ja luonddudoahpagiid => jord-(sg.ind) og naturfagord
                      NOTE: the dash tag is only defined for the sg.ind form of nouns in nob.dix (like cmp)
                      (as well as all numerals, where the change is handled in bidix)">
-              <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="RCmpnd"/></equal></test>
+              <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="rcmpnd"/></equal></test>
               <choose><when>
                 <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal></test>
                 <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
@@ -1573,7 +1573,7 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
         <when>
           <test><or>
             <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-av-verbs"/></in>
-            <ends-with><clip pos="1" side="sl" part="a_der"/><lit-tag v="Der_halla"/></ends-with>
+            <ends-with><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_halla"/></ends-with>
           </or></test>
           <let><var n="caseprep"/><lit-tag v="ill-av"/></let>
         </when>
@@ -1595,7 +1595,7 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
       </choose>
       
       <choose c="Prepend 'ikke' if VAbess (should it be 'uten'?) TODO"><when>
-        <test><equal><clip pos="1" side="sl" part="a_abess"/><lit-tag v="VAbess"/></equal></test>
+        <test><equal><clip pos="1" side="sl" part="a_abess"/><lit-tag v="vabess"/></equal></test>
         <out>
           <chunk name="adv" case="caseFirstWord">
             <tags>
@@ -1613,8 +1613,8 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
       <choose c="Prepend cnjsub if present progressive:
 TODO: better translation possible? ('drev og'? 'holdt på å'?)"><when>
         <test><and>
-          <equal><clip pos="1" side="sl" part="case"/><lit-tag v="Ess"/></equal>
-          <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="Actio"/></equal>
+          <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal>
+          <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="actio"/></equal>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
         </and></test>
         <out>
@@ -1634,18 +1634,18 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?)"><when>
       
       <choose c="Prepend 'kunne/skulle/skal' if conditional:"><when>
         <test><or>
-          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond"/></equal>
-          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond2"/></equal>
-          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond3"/></equal>
+          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond"/></equal>
+          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond2"/></equal>
+          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond3"/></equal>
         </or></test>
         <let><var n="tmp"/><lit v="kunne"/></let>
         <choose><when>
-          <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond2"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond2"/></equal></test>
           <let><var n="tmp"/><lit v="skulle"/></let>
           <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
         </when></choose>
         <choose><when>
-          <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="Cond3"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond3"/></equal></test>
           <let><var n="tmp"/><lit v="skulle"/></let>
           <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pres"/></let>
         </when></choose>
@@ -4647,7 +4647,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
           <chunk name="rel" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="@OBJ→"/></tag>
-              <tag><lit-tag v="Acc"/></tag>
+              <tag><lit-tag v="acc"/></tag>
             </tags>
             <lu><lit v="som"/><lit-tag v="cnjsub"/></lu>
           </chunk>
@@ -4721,7 +4721,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
           <chunk name="rel" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="@OBJ→"/></tag>
-              <tag><lit-tag v="Acc"/></tag>
+              <tag><lit-tag v="acc"/></tag>
             </tags>
             <lu><lit v="som"/><lit-tag v="cnjsub"/></lu>
           </chunk>
@@ -4729,7 +4729,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
         </out>
         
         <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></let>
-        <let><clip pos="1" side="sl" part="case"/><lit-tag v="Nom"/></let>
+        <let><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></let>
         <let><clip pos="1" side="tl" part="case"/><lit v="nom"/></let>
         <let><var n="c_name"/><lit v=""/></let>
         <let><var n="pre-nom"/><lit v=""/></let>
@@ -4832,7 +4832,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
         <choose>
           <when c="Since we match on chunk lemma 'adv' in t3x, we have a two-lu chunks
                    here with the single name 'adv' (no postchunking rules for adverbs, so that's OK).">
-            <test><equal><clip pos="1" side="sl" part="mode"/><lit-tag v="Qst"/></equal></test>
+            <test><equal><clip pos="1" side="sl" part="mode"/><lit-tag v="qst"/></equal></test>
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
