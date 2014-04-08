@@ -1,3 +1,8 @@
+
+DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
+
+SETS
+
 LIST Inf = inf ;
 
 SECTION
