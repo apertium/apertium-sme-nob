@@ -45,7 +45,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="maybe-SUBJr" c="not relatives, use rel-SUBJr for those">
       <cat-item lemma="unknown" tags="unknown"/>
-      <cat-item tags="SN.@HAB.*"/>
+      <cat-item tags="SN.←hab→.*"/>
       <cat-item tags="SN.@SUBJ→.*"/>
       <cat-item tags="SV.@SUBJ→.*"/>
       <cat-item tags="SN.@X.*"/>
@@ -56,7 +56,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="maybe-lSUBJ">
       <cat-item lemma="unknown" tags="unknown"/>
-      <cat-item tags="SN.@HAB.*"/>           <!-- HAB or not here? -->
+      <cat-item tags="SN.←hab→.*"/>           <!-- HAB or not here? -->
       <cat-item tags="SV.@←SUBJ.*"/>
       <cat-item tags="SN.@←SUBJ.*"/>
       <cat-item tags="SA.@←SUBJ.*"/>
@@ -323,7 +323,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="@-F←SPRED"/>
       <attr-item tags="@-FSPRED→"/>
       <attr-item tags="@-FSUBJ→"/>
-      <attr-item tags="@HAB"/>
+      <attr-item tags="←hab→"/>
       <attr-item tags="@HNOUN"/>
       <attr-item tags="@INTERJ"/>
       <attr-item tags="@→N"/>
@@ -427,7 +427,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
               <and>
                 <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="verb"/></equal>
                 <or>
-                  <equal><clip pos="1" part="syn_label"/><lit-tag v="@HAB"/></equal>
+                  <equal><clip pos="1" part="syn_label"/><lit-tag v="←hab→"/></equal>
                   <equal><clip pos="1" part="syn_label"/><lit-tag v="@ADVL"/></equal>
                   <equal><clip pos="1" part="case"/><lit-tag v="Loc"/></equal>
                   <equal><clip pos="1" part="case"/><lit-tag v="Ill"/></equal>
