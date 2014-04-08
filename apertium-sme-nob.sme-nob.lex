@@ -864,4 +864,34 @@ SELECT ("for å"i) IF (0 ("<vai>"i)) (1 Inf) ;
 
 SELECT ("mat"i) IF (0 ("<biebmu>"i)) ; 
 
-SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ; 
+SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
+
+#Verbs
+
+#leat
+
+# leat 0 = være, 1 = ha, 2 = måtte («ha å»)
+SELECT ("ha"i) IF (0 ("<leat>"i)) (*-1 ←hab→ BARRIER NOT-ADV) ;
+SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 Neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
+SELECT ("måtte"i) IF (0 ("<leat>"i)) (1 Inf) ;
+    # mis lea cahkkehit dola
+SELECT ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NOT *1 (Actio Ess) BARRIER S-BOUNDARY) (NOT 1 (Der_PassL PrfPrc)) ;
+    # sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
+	## Leat go Ibsenii sáddemin dieđu?
+SELECT ("ha"i) IF (0 ("<leat>"i))(0 (Ind Prt)) (1 Inf) ;
+# Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
+# (Perf Cond 2)
+# TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon 
+# (unfortunately no animacy, and impers isn't until bidix...)
+# TODO: ledje<ha> ovdalaččas guokte nieidda
+
+
+LIST CURRENCY = "denara" "dollár" "euro" "kruvdnu" "kr" "ru" "rubel" "ruvdno" "ruvdnu" "¢" "€" "$" ;
+
+
+SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR Sem_Org LINK 0 (@SUBJ→)) ;
+	#$ Máhtte máksá guokte ruvnnu.
+ 
+SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CURRENCY OR QUANT-PRON OR Num BARRIER Ill OR S-BOUNDARY) ;
+	#$ Girji máksá guokte ruvnnu.
+ 
