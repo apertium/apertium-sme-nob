@@ -871,10 +871,10 @@ SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
 #leat
 
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
-SELECT ("ha"i) IF (0 ("<leat>"i)) (*-1 ←hab→ BARRIER NOT-ADV) ;
-SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 Neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 SELECT ("måtte"i) IF (0 ("<leat>"i)) (1 Inf) ;
     # mis lea cahkkehit dola
+SELECT ("ha"i) IF (0 ("<leat>"i)) (*-1 ←hab→ BARRIER NOT-ADV) ;
+SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 Neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 SELECT ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NOT *1 (Actio Ess) BARRIER S-BOUNDARY) (NOT 1 (Der_PassL PrfPrc)) ;
     # sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
 	## Leat go Ibsenii sáddemin dieđu?
