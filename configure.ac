@@ -4,8 +4,8 @@
 
 AC_PREREQ(2.52)
 
-m4_define([required_apertium_version], [3.2.0])
-m4_define([required_lttoolbox_version], [3.2.0])
+m4_define([required_apertium_version], [3.3.0])
+m4_define([required_lttoolbox_version], [3.3.0])
 
 AC_INIT([apertium-sme-nob], [0.5.0], [trondtr@users.sourceforge.net])
 AM_INIT_AUTOMAKE([apertium-sme-nob], [0.5.0], no-define)
