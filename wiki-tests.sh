@@ -29,10 +29,9 @@ TSTLIST=`mktemp -t tmp.$SRCLANG-tst.XXXXXXXXXX`;
 ECHOE="echo -e"
 SED=sed
 if test x$(uname -s) = xDarwin; then 
-	ECHOE="builtin echo"
+	ECHOE="gecho -e"
 	SED=gsed
 fi
-
 
 cleansrc () {
     grep "<li> ($SRCLANG)" | $SED 's/<.*li>//g' | $SED 's/ /_/g' | cut -f2- -d')' | $SED 's/<i>//g' | $SED 's/<\/i>//g' | cut -f2 -d'*' | $SED 's/→/!/g' | cut -f1 -d'!' | $SED 's/(note:/!/g' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/\([^,.?!:;]\)$/\1./g'
@@ -68,7 +67,7 @@ for LINE in `paste $SRCLIST $TRGLIST $TSTLIST | $SED 's/ /%_%/g' | $SED 's/\t/!/
 	fi
 	echo $TRG | grep "^${TST}$" > /dev/null;	
 	if [ $? -eq 1 ]; then
-		$ECHOE $mode"\t  ${SRC}\n\t- ${TRG}\n\t+ ${TST}\n\n";
+		$ECHOE -e $mode"\t  ${SRC}\n\t- ${TRG}\n\t+ ${TST}\n\n";
 	else
 		$ECHOE $mode"\t  ${SRC}\nWORKS\t  ${TST}\n\n";
 		CORRECT=`expr $CORRECT + 1`;
