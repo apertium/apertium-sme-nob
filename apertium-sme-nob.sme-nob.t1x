@@ -3994,6 +3994,59 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
+ 
+    <rule comment="REGLA: DET ADJ.CMP NOM
+                   min nuoramus bártni => til vår yngste gutt
+                   min nuoramus olbmot => våre yngste mennesker
+                   du deháleamos doaibma => din viktigste oppgave
+                   mu stuora givssi => til min store plage
+                   juohke lágán geđggiiguin => med alle slags steiner
+                   TODO: demonstrative 'denne viktige oppgaven' (def!)">
+      <pattern>
+        <pattern-item n="det_mod"/>
+        <pattern-item n="adj.cmp"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_pron_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pron_gen_nbr_art"><with-param pos="3"/></call-macro>
+
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <var n="pron_gen"/>
+              <var n="pron_nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <!--<b pos="2"/>-->
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+
+
      
     <rule comment="REGLA: DET ADJ_ATTR NOM
                    min nuoramus bártni => til vår yngste gutt
