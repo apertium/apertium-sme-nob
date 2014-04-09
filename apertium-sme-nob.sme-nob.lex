@@ -816,13 +816,44 @@ LIST HEAD = @SUBJ→ @←SUBJ @SUBJ @OBJ @OBJ→ @←OBJ @ADVL @ADVL→ @←ADVL
 
 SECTION
 
+# go (default)=> når
+# go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
+
+
+SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
+SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
+	## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
+	## Buorre lei go bohtet.
+
+SELECT ("enn"i) (0 ("<go>"i))(0 @CNP LINK 1 (@COMP-CS←)) ;
+SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (-1 ("<veara>"i)) ;
+SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 ("<ovdal>"i) BARRIER S-BOUNDARY LINK 0 adv) ;
+SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 comp BARRIER v OR S-BOUNDARY) ;
+	## Son lea viššaleabbo go mun.
+	## Dat dáidá riggát go mii jáhkkit.
+	## Dii han lehpet eanet veara go ollu cizážat.
+	## Viššalat ohppet eanet go láikkit.
+	## Ovdal buorida son dálkkiidis go neavrres olmmoš dábiidis.
+
+SELECT ("som"i) (0 ("<go>"i))(0 cs) ((-1 ("<nu>"i) OR ("<seammá>") LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
+	## Elvenes oaččui Niehkostipeandda nu go lei sávvan. 
+
+SELECT ("da"i) (0 ("<go>"i))(0 cs) (*1 (v prt) BARRIER (←hab→) OR (@ADVL→)) ;
+
+SELECT ("fordi"i) (0 ("<go>"i))(0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
+	## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
+
+
+SELECT ("alene") (0 ("<iehčanassii>")) (-1 ("leat")) ;
+
+# Po: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
+SELECT ("etter") (0 ("<mielde>")) (0 po) (-1 ("<dárbu>") OR ("<miella>")) ;
+	## Don vieččat boaldinmuoraid dárbbu mielde.
+
 SELECT ("for at"i) IF (0 ("<vai>"i)) (NOT 1 inf) ; 
 
 SELECT ("for å"i) IF (0 ("<vai>"i)) (1 inf) ;
 
-SELECT ("mat"i) IF (0 ("<biebmu>"i)) ; 
-
-SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
 
 #Verbs
 
@@ -845,9 +876,9 @@ SELECT ("ha"i) IF (0 ("<leat>"i))(0 (ind prt)) (1 inf) ;
 
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
-#SELECT ("bo"i) (0 ("<orrut>")) (1 ("<dego>") OR (actio ess)) ;
-SELECT ("være"i) (0 ("<orrut>")) (1 ("<jaska>" adv)) ;
-SELECT ("bo"i) (0 ("<orrut>") LINK 1 loc OR DOPPE) ; # BARRIER ORRUT-BO) ;
+#SELECT ("bo"i) (0 ("<orrut>"i)) (1 ("<dego>") OR (actio ess)) ;
+SELECT ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>" adv)) ;
+SELECT ("bo"i) (0 ("<orrut>"i) LINK 1 loc OR DOPPE) ; # BARRIER ORRUT-BO) ;
 #This rule should have another barrier, a set of all words except TIME-ADV.
 #For sentences like: Mun orron diibmá Romssas.
 #Check SET ORRUT-BO
@@ -871,15 +902,15 @@ SELECT ("føde"i) (0 ("<šaddat>"i)) (*0 @ADVL)(NEGATE *0 SPRED) ;
 
 
 # bargat 0 = arbeide, 1 = gjøre
-SELECT ("gjøre"i) (0 ("<bargat>")) (*-1 ("<mii>" pron acc)) ;
-SELECT ("arbeide"i) (0 ("<bargat>")) (*0 com OR ("<dainna>")) ;
+SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>" pron acc)) ;
+SELECT ("arbeide"i) (0 ("<bargat>"i)) (*0 com OR ("<dainna>")) ;
 
 # beassat 0 = få, 1 = slippe, 2 = komme Refl til
 	## Sii leat beassan eallit dego gonagasat.
 
-#SELECT ("slippe# inn") (0 ("<beassat>")) (1 ill) ; # (1 (der_nomact loc) OR (actio loc) OR ("<olggos>")) ;
+#SELECT ("slippe# inn") (0 ("<beassat>"i)) (1 ill) ; # (1 (der_nomact loc) OR (actio loc) OR ("<olggos>"i)) ;
 	## Mun bessen vuolgimis.
-SELECT ("komme") (0 ("<beassat>")) (1 ill OR DOHKO) ;
+SELECT ("komme") (0 ("<beassat>"i)) (1 ill OR DOHKO) ;
 	## In beassan skuvlii dan beaivve.  Jeg kom meg ikke på skolen den dagen.
 	## Maiddái Ranghild Nystad beassá Sámediggái. Også RN kommer seg inn på Sametinget.
 	## Sii ledje gáibidan ahte son galgá beassat riikastivrii. Du hadde krevd at han skulle komme seg inn i landsstyret.
@@ -896,10 +927,10 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 LIST TEXT = "<aviisa>" "<girji>" sem_text ;
 
-SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>") OR (refl acc) OR (refl loc) OR prfprc ) ; 
+SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (refl acc) OR (refl loc) OR prfprc ) ; 
 # OR ("<jitnosit>") OR ("<hihtásit>" adv)) ;
 
-SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>") OR ("<man>"))
+SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i))
 	    (NEGATE *0 OBJ + TEXT BARRIER S-BOUNDARY)
 	   ;
 	## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
@@ -909,7 +940,7 @@ SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR actio OR prfprc OR inf BARRIER S-B
 	#$ Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
 	
 SELECT ("telle"i) (0 ("<lohkat>"i))
-	(1 (@←OBJ) OR ("<galle>") OR ("<man>") LINK NOT 0 TEXT);
+	(1 (@←OBJ) OR ("<galle>"i) OR ("<man>"i) LINK NOT 0 TEXT);
 	## Son lohká ruđaid. 
 	## Son lohká galle girjji mis leat.
 
@@ -917,9 +948,9 @@ SELECT ("telle"i) (0 ("<lohkat>"i))
 
 
 # mannat 0 = dra, 1 = gå
-SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>") OR ("<dat>"))(0 sg3);
+SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i))(0 sg3);
 	#$ Mo manná dál?
-#SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>") OR ("<dat>"));
+#SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>"i) OR ("<dat>"i));
 	#$ Mun manan dál.
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR sem_org LINK 0 (@SUBJ→)) ;
@@ -928,5 +959,24 @@ SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR sem_org LINK 0 (@SUBJ→
 SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
 	#$ Girji máksá guokte ruvnnu.
  
- 
+#NOUNS
+SELECT ("mat"i) IF (0 ("<biebmu>"i)) ; 
+
+SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
+
+# Adjectives
+# ==========
+
+# buorre:0 → bra, buorre:1→god
+
+LIST IJ-TIME = "<beaivi>" "<eahket>" "<beassážat>" "<juovllat>" ;
+SELECT ("god"i) (0 ("<buorre>")) (1 IJ-TIME + n) ;
+SELECT ("god"i) (0 ("<buorre>")) (1 ("<ođas>") LINK 1 ("<jahki>")) ;
+
+
+# vissis:0 → sikker, vissis:1 → viss
+SELECT ("viss") (0 ("<vissis>")) (*1 n BARRIER NOT-A) ;
+# muhtun vissis:1 áiggi maŋŋel, doallat viesu rabasin vissis:1 áiggiid 
+# (vs. mun lean vissis:0 ahte)
+
  
