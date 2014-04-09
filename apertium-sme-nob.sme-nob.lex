@@ -885,13 +885,54 @@ SELECT ("ha"i) IF (0 ("<leat>"i))(0 (Ind Prt)) (1 Inf) ;
 # (unfortunately no animacy, and impers isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
+# šaddat 0 = bli, 1 = vokse, 2 = komme til å, 3 = vokse, 4 = bli, 5 = få, 6 = føde
+
+SELECT ("vokse"i) (0 ("<šaddat>"i)) (1 ("bajás")) ;
+SELECT ("få"i) (0 ("<šaddat>"i)) (*-1 HUMAN + Ill OR HUMAN + Loc BARRIER NOT-ADV) ;
+    # Sutnje šattai hoahppu.
+    # Sutnje šattai álo nu hoahppu.
+SELECT ("få"i) (0 ("<šaddat>"i)) (-1 Neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
+SELECT ("føde"i) (0 ("<šaddat>"i)) (*0 @ADVL)(NEGATE *0 SPRED) ;
+    # Mun lean šaddan Kárášjogas.
+    # Kárášjogas mun lean šaddan.
 
 LIST CURRENCY = "denara" "dollár" "euro" "kruvdnu" "kr" "ru" "rubel" "ruvdno" "ruvdnu" "¢" "€" "$" ;
 
+
+# lohkat 0 = lese, 1 = si, 2 = telle
+
+LIST TEXT = "aviisa" "girji" Sem_text ;
+
+SELECT ("si"i) (0 ("<lohkat>"i))(1 ("ahte") OR (Refl Acc) OR (Refl Loc) OR PrfPrc OR ("jitnosit") OR ("hiđis" Adv)) ;
+
+SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR Actio OR PrfPrc OR Inf BARRIER S-BOUNDARY OR ("galle") OR ("man"))
+	    (NEGATE *0 OBJ + TEXT BARRIER S-BOUNDARY)
+	   (NEGATE *0 ("jitnosit") OR ("hiđis" Adv) OR ("jaskat" Adv) BARRIER S-BOUNDARY OR V);
+	## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
+	## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
+	## Lars Anders Baer ii eahpit ii veahášge go lohká dákkáraš álbmotsirren lea lága ja álbmotrievtti vuostá. - Lars Anders Baer tviler ikke ikke *veahášge når han sier *dákkáraš en folkeisolering er loven og folkeretten mot.
+	## Son lohká ádjá boahtit. - Han sier at bestefar skulle komme.
+	#$ Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
+	
+SELECT ("telle"i) (0 ("<lohkat>"i))
+	(1 (@←OBJ) OR ("galle") OR ("man") LINK NOT 0 TEXT);
+	## Son lohká ruđaid. 
+	## Son lohká galle girjji mis leat.
+
+
+
+
+# mannat 0 = dra, 1 = gå
+SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("mo") OR ("dat"))(0 Sg3);
+	#$ Mo manná dál?
+#SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 Sg3 LINK *-1 ("mo") OR ("dat"));
+	#$ Mun manan dál.
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR Sem_Org LINK 0 (@SUBJ→)) ;
 	#$ Máhtte máksá guokte ruvnnu.
  
 SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CURRENCY OR QUANT-PRON OR Num BARRIER Ill OR S-BOUNDARY) ;
 	#$ Girji máksá guokte ruvnnu.
+ 
+ 
  
