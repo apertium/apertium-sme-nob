@@ -89,7 +89,7 @@ for line in sys.stdin.readlines(): #{
 			outline = outline + ' ';
 			ntoken = ntoken + 1;
 		#}
-	elif oper == 'SELECT' or oper == 'REMOVE':
+	elif oper == 'SELECT' or oper == 'REMOVE' or oper == 'IFF':
 		#- SELECT True ||| SELECT ("albmi") (0 ("almmái")) ;
 		# ['SELECT', '(', '"albmi"', ')', '(', '0', '(', '"almmái"', ')', ')', ';\n']
 		# + SELECT True ||| SELECT:KillCom ( Pl Loc ) IF ( 0 ( sg com ) ) ;
@@ -218,10 +218,12 @@ for line in sys.stdin.readlines(): #{
 			outline = outline + ' ';
 			ntoken = ntoken + 1;
 		#}
-
-	elif oper == 'IFF': #{
-		outline = '#';
-	#}
+#
+#	elif oper == 'IFF': #{
+#		# IFF:miiIndef ("mii" Indef) IF ((-1 ("vaikko")) OR (1 ("beare")))(NOT *0 (V Pl1) BARRIER SV-BOUNDARY) ;
+#		
+#		outline = '#';
+#	#}
 
 
 	outline = outline.strip(' ');
