@@ -89,7 +89,7 @@ LIST Sem_Year = sem_year ;
 SET FIRSTNAME = (prop sem_fem) OR (prop sem_mal) ;
 
 LIST TIME-N-SET = (n sem_time) ;
-LIST NOT-TIME = "dulvi" "lohpi" "vuorru" ;
+LIST NOT-TIME = "<dulvi>" "<lohpi>" "<vuorru>" ;
 SET TIME-N = TIME-N-SET - NOT-TIME ;
 
 
@@ -358,8 +358,8 @@ SET SYN-V = V + SUBJ OR OBJ + V OR @ADVL + V OR (v @n←) OR (v @a←) OR V + SP
 LIST @X = @X ;
 
 
-LIST OKTA = "akta" "okta";
-LIST go = "go" ;
+LIST OKTA = "<akta>" "<okta>";
+LIST go = "<go>" ;
  
 
 # Initials
@@ -406,7 +406,7 @@ SET V-IND-FIN = Prs OR Prt ;
 
 SET V-MOOD = Ind OR Pot OR Imprt OR ImprtII OR Cond OR (neg sup) ;
 
-LIST GC = ("gč") ;
+LIST GC = ("<gč>") ;
 
 SET VFIN = GC OR V-MOOD - ConNeg ;
 
@@ -476,17 +476,17 @@ SET V-3 = V-SG3 OR V-DU3 OR V-PL3 ;
 
 # Sets consisting of LEAT
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-LIST LEAT = "leat" "liehket" "lea" ;
+LIST LEAT = "<leat>" ;
 
 SET LEAT-FIN-NOT-IMP = LEAT - Imprt;
  
 LIST VPRFPRC = (v prfprc) ;
-LIST LEATPRFPRC = ("leat" prfprc) ("liehket" prfprc) ("lea" prfprc) ;
+LIST LEATPRFPRC = ("<leat>" prfprc) ;
 SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
     # In order to distinguish between real leat-constructions and participles of other verbs
-LIST HABEO-SG3 = ("leat" sg3) (v neg sg3) ("šaddat" sg3) ("sjaddat" sg3) ("liehket" sg3) ("lea" sg3) ;
+LIST HABEO-SG3 = ("<leat>" sg3) (v neg sg3) ("<šaddat>" sg3) ;
 
-LIST HABEO-PL3 = ("leat" pl3) (v neg pl3) ("šaddat" pl3) ("sjaddat" pl3) ("liehket" pl3) ("lea" pl3) ;
+LIST HABEO-PL3 = ("<leat>" pl3) (v neg pl3) ("<šadda>t" pl3)  ;
 
 SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
 
@@ -505,7 +505,7 @@ LIST SII = ("son" pron pers pl3 nom) ;
 
 SET PPRON-NOM-NOT-DAT = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
 
-SET PPRON-NOT-DAT = (pron pers) - ("dat") ;
+SET PPRON-NOT-DAT = (pron pers) - ("<dat>") ;
 
 SET PPRON-DU-PL = MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
 SET PPRON-PL = MII-PERS OR DII OR SII ;
@@ -532,7 +532,7 @@ SET PRON-NOT-SG = DUPRON OR PLPRON ;
 
 LIST DAT-PRON = ("dat") ("dát") ("diet") ("duot") ("dot") ;
 
-LIST QUANT-PRON = "ollu" "olu" "unnán" "váháš" "veaháš" "veháš" ;
+LIST QUANT-PRON = "<ollu>" "<olu>" "<unnán>" "<váháš>" "<veaháš>" "<veháš>" ;
 # This set is for choosing between Adv and Pron Indef.
 
 # Adjectival sets and their complements
@@ -543,9 +543,9 @@ SET NOT-A-COMMA = WORD - A - COMMA ;
 SET NOT-Attr = WORD - Attr ;
 SET NOT-A-PCLE = WORD - A - Pcle ;
 
-SET NOT-A-ADV = WORD - A - Adv OR ("maid") ;
+SET NOT-A-ADV = WORD - A - Adv OR ("<maid>") ;
 
-LIST NOMINAL-ADJ = "guoktilaš" "lámis" "oasálaš" ("suddu" der_laš) "viissis";
+LIST NOMINAL-ADJ = "<guoktilaš>" "<lámis>" "<oasálaš>" ("<suddu>" der_laš) "viissis";
  
  # and many others
  
@@ -565,74 +565,48 @@ SET NOT-ADV-PCLE-NEG = WORD - Adv - Pcle - Neg ;
 SET NOT-ADVL-PCLE-NEG = WORD - @ADVL - @P← - Pcle - Neg ;
 
 
-LIST MO-MANge = "goas" "gokko" "gos" "gosa" "govt" "makkár" "man" "manne" ("manin" adv) "mo" "mot" "mov" "movt" ("nugo" @cvp) (v qst) ;
+LIST MO-MANge = "<goas>" "<gokko>" "<gos>" "<gosa>" "<govt>" "<makkár>" "<man>" "<manne>" ("<manin>" adv) "<mo>" "<mot>" "<movt>" ("<nugo>" @cvp) (v qst) ;
  
 SET MO = MO-MANge - ("man" foc_ge) ; 
  
  # Introduce finite clauses.
  
-LIST PLACE-ADV = "davá#bealde" "mátta#bealde" "nuortta#bealde" "oarje#bealde" "olggo#beale" ;
+LIST PLACE-ADV = (sem_plc adv) ;
 # There will usually be a Gen in front. 
 
-LIST TIME-ADVL = "dalle" "diibmá" "dolin" "dovle" "duvle" "eske" "gieskat" "ikte" "ovdal" ("ovdditbeaivi" gen) ("vássánáigi" loc) ("boaresáigi" gen) "dál" "ihttin" "odne" "otne" ("boahtteáigi" loc) ("boahtteáigi" gen) ;
+LIST TIME-ADVL = (sem_time gen) (sem_time loc) ;
 
 LIST TIME-ADV = (adv sem_time) ;
 
 
-LIST DOPPE = "badjin" "bajil" "dakko" "dá" "dákko" "dáppe" "diekko" "dieppe" "do" "dokko" "doppe" "duo" "duokko" "duoppe" "olgun" ;
+LIST DOPPE = "<badjin>" "<bajil>" "<dakko>" "<dá>" "<dákko>" "<dáppe>" "<diekko>" "<dieppe>" "<do>" "<dokko>" "<doppe>" "<duo>" "<duokko>" "<duoppe>" "<olgun>" ;
 # Adverbs with a locativic form, but don´t get Loc as a tag. 
 
-LIST DOHKO = "bajás" "deike" "diehke" "diehko" "dohko" "duohko" "lulás" "olggos" "ruoktot" "sisa" "vuovdimassii" ;
+LIST DOHKO = "<bajás>" "<deike>" "<diehke>" "<diehko>" "<dohko>" "<duohko>" "<lulás>" "<olggos>" "<ruoktot>" "<sisa>" "<vuovdimassii>" ;
 # Adverbs with a illativic form, but they don´t get Ill as a tag.
 
 
 # Coordinators
 # ------------
-SET Foc = Foc_ge OR Foc_gen OR Foc_ges OR Foc_gis OR Foc_naj OR Foc_ba OR Foc_be OR Foc_hal OR Foc_han OR Foc_bat OR Foc_son ;
+LIST Foc = Foc_ge Foc_gen Foc_ges Foc_gis Foc_naj Foc_ba Foc_be Foc_hal Foc_han Foc_bat Foc_son ;
 
 LIST NEGFOC = (neg foc_ge) ;
 
-LIST XGO = "dego" "dugo" "nugo" "seammaládjego" "seammaláhkaigo" ;
+LIST XGO = "<dego>" "<dugo>" "<nugo>" "<seammaládjego>" "<seammaláhkaigo>" ;
   # Compounds
-LIST SEAMMAX = "seamma#ládje" "seamma#láhkai" "seamma#láhkái" ;
+LIST SEAMMAX = "<seamma ládje>" "<seamma láhkai>" ;
   # Those combine with go
   
-LIST MADE = "mađe" "mađi" ;
-LIST DADE = "dađe" "dađi" ; 
+LIST MADE = "<mađe>" "<mađi>" ;
+LIST DADE = "<dađe>" "<dađi>" ; 
   
  
 SET CRD = @CNP OR COMMA OR NEGFOC OR XGO OR ("_") OR ("-") OR DADE ;
     # AFTER LCRD vs. GCRD disambiguation
     
-
-LIST ADV-AFTER-NUM = "geardde" ;
-
-LIST DUSSE = "áibbas" "dušše" "erenoamážit" "goitge" "man" "measta" "meastui" "oalle" "oba" "oktiibuot" "oppa" "sullii" ;
-
-LIST GRADE-ADV = "áibbas" "beare" ("eanet" adv) "erenoamán" "erenoamáš" "hirbmat" "hui" "ila" "issoras" ("man" adv) ("mealgat" adv) "measta" "menddo" "muđui" "muhtun_muddui" "nu" "oalle" "oba" ("oppa" adv) "sakka" "seammá" ("veaháš" adv) ("uhccán" adv) ("unnán" adv) "vehá" "veháš" "veahá" "veaháš" "viehka" ;
-
-LIST BUOT = "buot" "gait" "gaitin" "gaitdivnnat" "visot" ;
-
-
-LIST EASKKA = "easkka" ("easka" adv) ; 
-
-LIST ADV-NOT-ARG = "aiddo" "ain" "aivve" "albma" "aŋkke" "álggos" "bái#fáhkka" "beanta" "beare" ;
-
-
-
-LIST ADV-NOT-VERB = "dušše" "viimmat" ;
-
-LIST ADV-NOT-NOUN = "easka" "várra" ;
-
-LIST ADV-NOT-NAMES = "Ain" "Anne" "Diego" "Dieppe" "Enge" "Galle" "Haga"
-"Joba" "Johan" "Liikka" "Mai" "Mannes" "Mo" "Mot" "Naba"
-"Nan" "Oktan" "Sierra" "Sokka" "Villa" ;
-
-SET ADV-NOT-OTHER-POS = ADV-NOT-VERB OR ADV-NOT-NOUN OR ADV-NOT-NAMES ;
-
 LIST HAB-CASE = loc (←smj→ ine) (←sma→ gen) ;
 LIST HAB-ACTOR-ALL = sem_hum sem_mal sem_sur sem_fem sem_ani pers ("gii") indef coll ;
-SET HAB-ACTOR = HAB-ACTOR-ALL - ("cihca") ;
+SET HAB-ACTOR = HAB-ACTOR-ALL - ("<cihca>") ;
 SET HAB-ACTOR-NOT-HUMAN = Sem_Org ;
 
 # Sets of elements with common syntactic behaviour
@@ -652,10 +626,10 @@ SET REAL-V = V - NOT-REAL-V ;
             
  
  # The set REAL is smaller than COPULAS, made for verbs with PrfPrc complements: Seammás REAL-COPULAS son dovdan iežas...
-LIST REAL-COPULAS = "dáidit" "leat" "soaitit" "veadjit" "liehket" "lea";
+LIST REAL-COPULAS = "<dáidit>" "<leat>" "<soaitit>" "<veadjit>" ;
 
 #!! * The set COPULAS is for predicative constructions
-LIST COPULAS = "dáidit" "gártat" "leat" "soaitit" "šaddat" "orrut" "veadjit" "liehket" "sjaddat" "lea" "sjïdtedh" ;
+LIST COPULAS = "<dáidit>" "<gártat>" "<leat>" "<soaitit>" "<šaddat>" "<orrut>" "<veadjit>"  ;
  #  "bissut" ? 
  # 'Dáidit' can appear without 'leat'.
 
@@ -683,14 +657,14 @@ SET HEAD-N-NOM = (n nom) - RCmpnd ;
 SET SUBJECTHEAD = N OR A OR Pron - Refl ; # These, can be subject heads
 
 SET NP = N OR A ; # anything that can take except numerals
-SET NP-HEAD = Pron OR HEAD-N - ("buorre") ;
-SET NP-HEAD-SG = SGPRON OR (n sg) OR (a sg) - RCmpnd - Dem - ("buorre") ;
-SET NP-HEAD-PL = PLPRON OR (n pl) OR (a pl) - RCmpnd - Dem - ("buorre") ;
-SET NP-HEAD-SG-NOM = SGPRON + Nom OR (n sg nom) OR (a sg nom) - ("buorre") - RCmpnd ;
-SET NP-HEAD-PL-NOM = PLPRON + Nom OR (n pl nom) OR (a pl nom) - RCmpnd - ("buorre") ;
+SET NP-HEAD = Pron OR HEAD-N - ("<buorre>") ;
+SET NP-HEAD-SG = SGPRON OR (n sg) OR (a sg) - RCmpnd - Dem - ("<buorre>") ;
+SET NP-HEAD-PL = PLPRON OR (n pl) OR (a pl) - RCmpnd - Dem - ("<buorre>") ;
+SET NP-HEAD-SG-NOM = SGPRON + Nom OR (n sg nom) OR (a sg nom) - ("<buorre>") - RCmpnd ;
+SET NP-HEAD-PL-NOM = PLPRON + Nom OR (n pl nom) OR (a pl nom) - RCmpnd - ("<buorre>") ;
 SET NP-HEAD-NOM = NP-HEAD-SG-NOM OR NP-HEAD-PL-NOM ;
-SET NP-HEAD-ACC = (pron acc) OR (n acc) OR (a acc) - RCmpnd - (dem attr) - ("buorre") ;
-SET NP-HEAD-GEN = (pron gen) OR (n gen) OR (a gen) - Der_NomAct - RCmpnd - (dem attr) - ("buorre") ;
+SET NP-HEAD-ACC = (pron acc) OR (n acc) OR (a acc) - RCmpnd - (dem attr) - ("<buorre>") ;
+SET NP-HEAD-GEN = (pron gen) OR (n gen) OR (a gen) - Der_NomAct - RCmpnd - (dem attr) - ("<buorre>") ;
 
 #!! * The PRE-NP-HEAD family of sets
 
@@ -699,8 +673,8 @@ SET NP-HEAD-GEN = (pron gen) OR (n gen) OR (a gen) - Der_NomAct - RCmpnd - (dem 
 #!! expression __WORD - premodifiers__.
 
 
-SET PRE-NP-HEAD = (prop attr) OR (prop @→n) OR (a attr) OR (abbr attr) OR ("buorre") 
-OR (pron pers gen) OR (n gen) OR (a gen) OR ("buot") OR
+SET PRE-NP-HEAD = (prop attr) OR (prop @→n) OR (a attr) OR (abbr attr) OR ("<buorre>") 
+OR (pron pers gen) OR (n gen) OR (a gen) OR ("<buot>") OR
 Num OR RCmpnd OR CC OR (pron dem) OR (pron refl gen) OR (indef attr) OR 
 (prfprc @→n) OR PrsPrc OR (a ord) OR (num @→n) OR (a @→n) OR @→N OR @→A OR @→Pron OR @Num← OR (cc @cnp) OR (@→cc) OR (action gen) OR (@pron←) ;
          # The strict version of items that can only be premodifiers, not parts of the predicate
@@ -756,11 +730,11 @@ SET NAPP = WORD - PRE-APP ;
 # ------------------
 LIST Px = pxsg1 pxsg2 pxsg3 pxdu1 pxdu2 pxdu3 pxpl1 pxpl2 pxpl3 ;
 
-LIST GASKAL = "gaskal" "gaskkal" "gaskii" "gaskka" "gaskkas" ;
+LIST GASKAL = "<gaskal>" "<gaskkal>" "<gaskii>" "<gaskka>" "<gaskkas>" ;
  
  # p-positions that like coordination
  
-LIST TIME-PP = "badjel" "čađa" "earret" "gaskkal" "guovddáš" "maŋŋel" "maŋŋil" "maŋŋá" "miehtá" "ovdal" ;
+LIST TIME-PP = "<badjel>" "<čađa>" "<earret>" "<gaskkal>" "<guovddáš>" "<maŋŋel>" "<maŋŋil>" "<maŋŋá>" "<miehtá>" "<ovdal>" ;
  
 
 SET NUM = Num - OKTA ;
@@ -769,7 +743,7 @@ SET NUM = Num - OKTA ;
 
 SET NOT-NUM = WORD - Num ;
 
-LIST MANGA = "máŋga" "galle" ;
+LIST MANGA = "<máŋga>" "<galle>" ;
  # Not referred to by any rule.
 
 SET CARDINALS = Num - Ord - MANGA ;
@@ -778,15 +752,15 @@ SET NOT-CC = WORD - CC ;
 
 SET NOT-PCLE = WORD - Pcle ;
 
-LIST COMPAR = ("dávji" a comp) "eanet" "earalágan" "eará" "earret" "seammás" "seammalágan" "seamma_láhkái" ;
+LIST COMPAR = ("<dávji>" a comp) "<eanet>" "<earalágan>" "<eará>" "<earret>" "<seammás>" "<seammalágan>" "<seamma_láhkái>" ;
  
  # These combine with "go" Pcle, but COMPAR stands for 'comparison' rather than
  # 'comparative'.
 
-LIST CONTRA = "muhto" ;
+LIST CONTRA = "<muhto>" ;
  # In lean muitalan, muhto dál muitalan.
 
-LIST PROSEANTA = "proseanta" "%" ;
+LIST PROSEANTA = "<proseanta>" "<%>" ;
 
 SET REAL-CLB = CLB - COMMA ;
 
@@ -802,7 +776,7 @@ SET CP = (pron interr) OR (pron rel) OR MO ;
 
 LIST BOUNDARYSYMBOLS = "\;" ":" "-" "–" ;
 	
-SET S-BOUNDARY = CP OR BOUNDARYSYMBOLS OR ("muhto") OR ("de" adv) OR (neg sup) OR @CVP OR ("vel" adv qst) ;
+SET S-BOUNDARY = CP OR BOUNDARYSYMBOLS OR ("<muhto>") OR ("<de>" adv) OR (neg sup) OR @CVP OR ("<vel>" adv qst) ;
 	# does not include CS, because of "go" in questions, before it is disambugated.
 	# includes CP
 	# this one includes @CVP, the conjunction which actually connects two sentences (each with a finite verb) to each other, 
@@ -885,9 +859,24 @@ SELECT ("ha"i) IF (0 ("<leat>"i))(0 (Ind Prt)) (1 Inf) ;
 # (unfortunately no animacy, and impers isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
+
+# orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
+#SELECT ("bo"i) (0 ("<orrut>")) (1 ("dego") OR (Actio Ess)) ;
+SELECT ("være"i) (0 ("<orrut>")) (1 ("jaska" Adv)) ;
+SELECT ("bo"i) (0 ("<orrut>") LINK 1 Loc OR DOPPE) ; # BARRIER ORRUT-BO) ;
+#This rule should have another barrier, a set of all words except TIME-ADV.
+#For sentences like: Mun orron diibmá Romssas.
+#Check SET ORRUT-BO
+
+	## Sii orrot goit čeahpit hutkat vugiid movt ávkkástallat sin sámegielmáhtuin, čilge son.
+	## Mun orun Romssas.
+	## Oro jaska.
+
+
+
 # šaddat 0 = bli, 1 = vokse, 2 = komme til å, 3 = vokse, 4 = bli, 5 = få, 6 = føde
 
-SELECT ("vokse"i) (0 ("<šaddat>"i)) (1 ("bajás")) ;
+SELECT ("vokse"i) (0 ("<šaddat>"i)) (1 ("<bajás>")) ;
 SELECT ("få"i) (0 ("<šaddat>"i)) (*-1 HUMAN + Ill OR HUMAN + Loc BARRIER NOT-ADV) ;
     # Sutnje šattai hoahppu.
     # Sutnje šattai álo nu hoahppu.
@@ -903,11 +892,12 @@ LIST CURRENCY = "denara" "dollár" "euro" "kruvdnu" "kr" "ru" "rubel" "ruvdno" "
 
 LIST TEXT = "aviisa" "girji" Sem_text ;
 
-SELECT ("si"i) (0 ("<lohkat>"i))(1 ("ahte") OR (Refl Acc) OR (Refl Loc) OR PrfPrc OR ("jitnosit") OR ("hiđis" Adv)) ;
+SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>") OR (Refl Acc) OR (Refl Loc) OR PrfPrc ) ; 
+# OR ("<jitnosit>") OR ("<hihtásit>" Adv)) ;
 
-SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR Actio OR PrfPrc OR Inf BARRIER S-BOUNDARY OR ("galle") OR ("man"))
+SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR Actio OR PrfPrc OR Inf BARRIER S-BOUNDARY OR ("<galle>") OR ("<man>"))
 	    (NEGATE *0 OBJ + TEXT BARRIER S-BOUNDARY)
-	   (NEGATE *0 ("jitnosit") OR ("hiđis" Adv) OR ("jaskat" Adv) BARRIER S-BOUNDARY OR V);
+	   ;
 	## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
 	## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
 	## Lars Anders Baer ii eahpit ii veahášge go lohká dákkáraš álbmotsirren lea lága ja álbmotrievtti vuostá. - Lars Anders Baer tviler ikke ikke *veahášge når han sier *dákkáraš en folkeisolering er loven og folkeretten mot.
@@ -923,9 +913,9 @@ SELECT ("telle"i) (0 ("<lohkat>"i))
 
 
 # mannat 0 = dra, 1 = gå
-SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("mo") OR ("dat"))(0 Sg3);
+SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>") OR ("<dat>"))(0 Sg3);
 	#$ Mo manná dál?
-#SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 Sg3 LINK *-1 ("mo") OR ("dat"));
+#SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 Sg3 LINK *-1 ("<mo>") OR ("<dat>"));
 	#$ Mun manan dál.
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR Sem_Org LINK 0 (@SUBJ→)) ;
