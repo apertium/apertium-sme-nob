@@ -835,7 +835,7 @@ SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 comp BARRIER v OR S-BOUNDARY) ;
 	## Viššalat ohppet eanet go láikkit.
 	## Ovdal buorida son dálkkiidis go neavrres olmmoš dábiidis.
 
-SELECT ("som"i) (0 ("<go>"i))(0 cs) ((-1 ("<nu>"i) OR ("<seammá>") LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
+SELECT ("som"i) (0 ("<go>"i))(0 cs) ((-1 ("<nu>"i) OR ("<seammá>"i) LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
 	## Elvenes oaččui Niehkostipeandda nu go lei sávvan. 
 
 SELECT ("da"i) (0 ("<go>"i))(0 cs) (*1 (v prt) BARRIER (←hab→) OR (@ADVL→)) ;
@@ -844,10 +844,10 @@ SELECT ("fordi"i) (0 ("<go>"i))(0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULA
 	## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
 
 
-SELECT ("alene") (0 ("<iehčanassii>")) (-1 ("leat")) ;
+SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 
 # Po: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
-SELECT ("etter") (0 ("<mielde>")) (0 po) (-1 ("<dárbu>") OR ("<miella>")) ;
+SELECT ("etter") (0 ("<mielde>"i)) (0 po) (-1 ("<dárbu>"i) OR ("<miella>"i)) ;
 	## Don vieččat boaldinmuoraid dárbbu mielde.
 
 SELECT ("for at"i) IF (0 ("<vai>"i)) (NOT 1 inf) ; 
@@ -876,8 +876,8 @@ SELECT ("ha"i) IF (0 ("<leat>"i))(0 (ind prt)) (1 inf) ;
 
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
-#SELECT ("bo"i) (0 ("<orrut>"i)) (1 ("<dego>") OR (actio ess)) ;
-SELECT ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>" adv)) ;
+#SELECT ("bo"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
+SELECT ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>"i)) ;
 SELECT ("bo"i) (0 ("<orrut>"i) LINK 1 loc OR DOPPE) ; # BARRIER ORRUT-BO) ;
 #This rule should have another barrier, a set of all words except TIME-ADV.
 #For sentences like: Mun orron diibmá Romssas.
@@ -891,7 +891,7 @@ SELECT ("bo"i) (0 ("<orrut>"i) LINK 1 loc OR DOPPE) ; # BARRIER ORRUT-BO) ;
 
 # šaddat 0 = bli, 1 = vokse, 2 = komme til å, 3 = vokse, 4 = bli, 5 = få, 6 = føde
 
-SELECT ("vokse"i) (0 ("<šaddat>"i)) (1 ("<bajás>")) ;
+SELECT ("vokse"i) (0 ("<šaddat>"i)) (1 ("<bajás>"i)) ;
 SELECT ("få"i) (0 ("<šaddat>"i)) (*-1 HUMAN + ill OR HUMAN + loc BARRIER NOT-ADV) ;
     # Sutnje šattai hoahppu.
     # Sutnje šattai álo nu hoahppu.
@@ -902,8 +902,8 @@ SELECT ("føde"i) (0 ("<šaddat>"i)) (*0 @ADVL)(NEGATE *0 SPRED) ;
 
 
 # bargat 0 = arbeide, 1 = gjøre
-SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>" pron acc)) ;
-SELECT ("arbeide"i) (0 ("<bargat>"i)) (*0 com OR ("<dainna>")) ;
+SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>"i) LINK 0 (pron acc)) ;
+SELECT ("arbeide"i) (0 ("<bargat>"i)) (*0 com OR ("<dainna>"i)) ;
 
 # beassat 0 = få, 1 = slippe, 2 = komme Refl til
 	## Sii leat beassan eallit dego gonagasat.
@@ -928,7 +928,7 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 LIST TEXT = "<aviisa>" "<girji>" sem_text ;
 
 SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (refl acc) OR (refl loc) OR prfprc ) ; 
-# OR ("<jitnosit>") OR ("<hihtásit>" adv)) ;
+# OR ("<jitnosit>"i) OR ("<hihtásit>"i)) ;
 
 SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i))
 	    (NEGATE *0 OBJ + TEXT BARRIER S-BOUNDARY)
@@ -970,12 +970,12 @@ SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
 # buorre:0 → bra, buorre:1→god
 
 LIST IJ-TIME = "<beaivi>" "<eahket>" "<beassážat>" "<juovllat>" ;
-SELECT ("god"i) (0 ("<buorre>")) (1 IJ-TIME + n) ;
-SELECT ("god"i) (0 ("<buorre>")) (1 ("<ođas>") LINK 1 ("<jahki>")) ;
+SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME) ;
+SELECT ("god"i) (0 ("<buorre>"i)) (1 ("<ođas>"i) LINK 1 ("<jahki>"i)) ;
 
 
 # vissis:0 → sikker, vissis:1 → viss
-SELECT ("viss") (0 ("<vissis>")) (*1 n BARRIER NOT-A) ;
+SELECT ("viss") (0 ("<vissis>"i)) (*1 n BARRIER NOT-A) ;
 # muhtun vissis:1 áiggi maŋŋel, doallat viesu rabasin vissis:1 áiggiid 
 # (vs. mun lean vissis:0 ahte)
 
