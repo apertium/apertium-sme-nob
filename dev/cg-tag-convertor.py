@@ -63,6 +63,7 @@ for line in sys.stdin.readlines(): #{
 			elif '@' in token: #{
 				outline = outline + token;
 			else: #{
+				token = token.replace('Ind','Indic');
 				outline = outline + token.lower();
 			#}
 			outline = outline + ' ';

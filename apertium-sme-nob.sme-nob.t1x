@@ -193,7 +193,6 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.prop.attr.*"/>
       <cat-item tags="n.*.@→N"/>
       <cat-item lemma="gonagas" tags="n.*"/>
-      <cat-item lemma="gonagas:1" tags="n.*"/> <!-- FIXME -->
       <cat-item lemma="dronnet" tags="n.*"/>
       <cat-item lemma="prinsa" tags="n.*"/>
       <cat-item lemma="ruvdnaprinsa" tags="n.*"/>
@@ -242,7 +241,6 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="diibmu">
       <cat-item lemma="diibmu" tags="n.*"/>
-      <cat-item lemma="diibmu:1" tags="n.*"/> <!-- FIXME -->
     </def-cat>
     <def-cat n="lohku">
       <cat-item lemma="lohku" tags="n.*"/>
@@ -258,7 +256,6 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="b" tags="adv.abbr.*"/>
     </def-cat>
     <def-cat n="ij-adj">
-      <cat-item lemma="buorre:1" tags="a.sg.*"/>
       <cat-item lemma="ilolaš" tags="a.sg.*"/>
       <cat-item lemma="ilolaš" tags="a.attr.*"/>
     </def-cat>
@@ -322,6 +319,7 @@ And then there are some categories like "month", with all the months.
     </def-attr>
     <def-attr n="a_adv">
       <attr-item tags="adv"/>
+      <attr-item tags="cnjcoo"/>
     </def-attr>
     <def-attr n="a_ij">
       <attr-item tags="interj"/>
@@ -415,7 +413,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="iv"/>
     </def-attr>
     <def-attr n="actio">                                       <!--TODO: what's the category name?-->
-      <attr-item tags="Actio"/>
+      <attr-item tags="actio"/>
     </def-attr>
     <def-attr n="a_caus">                                      <!--TODO: what's the category name?-->
       <attr-item tags="caus"/>
@@ -444,10 +442,9 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="ord.posi"/>
       <attr-item tags="ord.comp"/>
       <attr-item tags="ord.sup"/>
-      <attr-item tags="Comp"/>
-      <attr-item tags="Superl"/>
-      <attr-item tags="posi"/>
       <attr-item tags="comp"/>
+      <attr-item tags="superl"/>
+      <attr-item tags="posi"/>
       <attr-item tags="sup"/>
     </def-attr>
     <def-attr n="gen">
@@ -460,14 +457,11 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="GD_pers"/>
     </def-attr>
     <def-attr n="nbr">
-      <attr-item tags="Sg"/>
-      <attr-item tags="Du"/>
-      <attr-item tags="Pl"/>
       <attr-item tags="sg"/>
       <attr-item tags="du"/>
       <attr-item tags="pl"/>
-      <attr-item tags="ND"/>
       <attr-item tags="sp"/>
+      <attr-item tags="ND"/>
     </def-attr>
     <def-attr n="art">
       <attr-item tags="def"/>
@@ -475,31 +469,30 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="DD"/>
     </def-attr>
     <def-attr n="temps">
-      <attr-item tags="Prs"/>
-      <attr-item tags="Prt"/>
+      <attr-item tags="prs"/>
+      <attr-item tags="prt"/>
       <attr-item tags="pres"/>
       <attr-item tags="pret"/>
-      <attr-item tags="Inf"/>
       <attr-item tags="inf"/>
-      <attr-item tags="Imprt"/>
+      <attr-item tags="imprt"/>
       <attr-item tags="imp"/>
-      <attr-item tags="PrfPrc"/>
+      <attr-item tags="prfprc"/>
       <attr-item tags="pp"/>
       <attr-item tags="TD"/>
     </def-attr>
     <def-attr n="neg">
-      <attr-item tags="ConNeg"/>
-      <attr-item tags="Neg"/>
+      <attr-item tags="conneg"/>
+      <attr-item tags="neg"/>
     </def-attr>
     <def-attr n="mode">
-      <attr-item tags="Qst"/>
+      <attr-item tags="qst"/>
     </def-attr>
     <def-attr n="modality">
-      <attr-item tags="Ind"/>
-      <attr-item tags="Cond"/>
-      <attr-item tags="Cond2"/>
-      <attr-item tags="Cond3"/>
-      <attr-item tags="Pot"/>
+      <attr-item tags="indic"/> <!-- vi burde endre til 'indic' kannskje -->
+      <attr-item tags="cond"/>
+      <attr-item tags="cond2"/>
+      <attr-item tags="cond3"/>
+      <attr-item tags="pot"/>
     </def-attr>
     <def-attr n="syn_label">
       <attr-item tags="@→A"/>
@@ -601,9 +594,8 @@ And then there are some categories like "month", with all the months.
 
   <section-def-lists>
     <def-list n="infinite_temps">
-      <list-item v="&lt;Inf&gt;"/>
       <list-item v="&lt;inf&gt;"/>
-      <list-item v="&lt;PrfPrc&gt;"/>
+      <list-item v="&lt;prfprc&gt;"/>
       <list-item v="&lt;pp&gt;"/>
     </def-list>
 
