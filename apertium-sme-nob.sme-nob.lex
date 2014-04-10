@@ -964,6 +964,80 @@ SELECT ("mat"i) IF (0 ("<biebmu>"i)) ;
 
 SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
 
+# soadji 0 = vinge, 1 = skovl, 2 = fløy, 3 = erme
+SELECT ("fløy"i) (0 ("<soadji>")) (0* ("<bellodat>"i));
+	# Bellodaga radikála soajis bođii garra proteasta.
+	
+SELECT ("erme"i) (0 ("<soadji>"i) LINK 0* ("<báidi>"i));
+	# Mu báiddi soajis lea ráigi.
+
+
+# beaivi 0 = dag, 1 = sol
+SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i));
+	# Beaivi báitá.
+	
+# luohkká 0 = bakke, 1 = klasse
+SELECT ("klasse"i) (0 ("<luohkká>"i) LINK 1 ("<oahpaheaddji>"i));
+    
+#SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (-1 gen LINK 0 pers OR refl);
+    ## Earát su luohkás ledje juo vissa njeallje siiddu su ovdalis matematihkka-girjjis.
+    
+SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 num OR ord OR @→N);
+    # Son lea vuosttaš luohkás.
+    # Son lea 1A luohkás.
+	# Biera vázzá sámi luohkás.
+	# Biera vázzá sámegiel luohkás.
+	# Bireha luohkás leat eanaš nieiddat.
+	# Mu luohkás leat vihtta nieidda ja golbma bártni.
+
+# diibmu 0 = time, 1 = klokke
+SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 num OR ord) ;
+	# Boahtte gaskavahku diibmu 11.00 rahpá kurdarbearaš Mehidi Kárášjohkii ođđa kaféa.
+	# Ord because of possible incorrect analysis of Num + punctuation.
+SELECT ("klokke"i) (0 ("<diibmu>"i) LINK *0 ("<ollu>"i)) ;
+	# Ollugo diibmu lea.
+SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 COPULAS LINK *1 num) ;
+	# Dál diibmu lea fargga vihtta.
+
+	
+# miella 0 = sinn, 1 = oppfatning, 2 = behag
+SELECT ("oppfatning"i) (0 ("<miella>") LINK 0 loc LINK -1 @→N) ;
+# sinn => oppfatning (kan regelen vere meir generell?)
+
+# gonagas 0 = konge, 1 = kong
+SELECT ("kong"i) (0 ("<gonagas>"i) LINK 1 sem_mal) ;
+# Konge Harald => Kong Harald
+
+# johtu 0 = fart, 1 = bevegelse, 2 = gang
+SELECT ("gang"i) (0 ("<johtu>"i) LINK 0 ill) ;
+# til farten => i gang
+
+# oktavuohta 0 = kontakt, 1 = henvendelse, 2 = forbindelse, 3 = sammenheng
+SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 (sg loc)) ;
+# dan oktavuođas go => i den forbindelse når
+SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 (pl loc)) ;
+# máŋgga oktavuođas => i mange sammenhenger
+# máŋggain oktavuođain => i mange sammenhenger
+
+SELECT ("folk") (0 ("<olmmoš>"i) LINK 0 pl) ;
+# olbmot leat čoagganan => folk har samlet seg
+
+# stuibmi 0 = bråk, 1 = konflikt
+SELECT ("bråk"i) (0 ("<stuibmi>"i) LINK -1 prop) ;
+# til farten => i gang
+
+# goddi 0 = komite, 1 = villrein
+#SELECT ("goddi") ("goddi:1") ("goddi") (NOT 0/1 (*)) ;
+
+
+# diehtu 0 = informasjon, 1 = kunnskap, 2 = viten, 3 = beskjed
+SELECT ("beskjed"i) (0 ("<diehtu>"i)) (0 nom OR OBJ LINK *0 ("<mobiltelefuvdna>"i) OR ("<mobiila>"i)) ;
+SELECT ("beskjed"i) (0 ("<diehtu>"i)) (0 OBJ LINK *0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
+    ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu. 
+    ## Lei Ájlin gii sáddii dieđu.
+
+
+
 # Adjectives
 # ==========
 
