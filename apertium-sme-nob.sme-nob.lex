@@ -70,6 +70,7 @@ LIST prop = prop ;
 LIST sem_ani = sem_ani ;
 LIST sem_date = sem_date ;
 LIST sem_fem = sem_fem ;
+LIST sem_clth = sem_clth ;
 LIST sem_group = sem_group ;
 LIST sem_hum = sem_hum ;
 LIST sem_mal = sem_mal ;
@@ -81,6 +82,8 @@ LIST sem_plc = sem_plc ;
 LIST sem_sur = sem_sur ;
 LIST sem_time = sem_time ;
 LIST sem_year = sem_year ;
+LIST sem_txt = sem_txt ;
+
 SET FIRSTNAME = (prop sem_fem) OR (prop sem_mal) ;
 
 LIST TIME-N-SET = (n sem_time) ;
@@ -741,7 +744,7 @@ SET NOT-CC = WORD - cc ;
 
 SET NOT-PCLE = WORD - pcle ;
 
-LIST COMPAR = ("<dávji>" a comp) "<eanet>" "<earalágan>" "<eará>" "<earret>" "<seammás>" "<seammalágan>" "<seamma_láhkái>" ;
+LIST COMPAR = "<dávji>" "<eanet>" "<earalágan>" "<eará>" "<earret>" "<seammás>" "<seammalágan>" "<seamma láhkái>" ;
  
  # These combine with "go" Pcle, but COMPAR stands for 'comparison' rather than
  # 'comparative'.
@@ -908,7 +911,7 @@ SELECT ("arbeide"i) (0 ("<bargat>"i)) (*0 com OR ("<dainna>"i)) ;
 # beassat 0 = få, 1 = slippe, 2 = komme Refl til
 	## Sii leat beassan eallit dego gonagasat.
 
-#SELECT ("slippe# inn") (0 ("<beassat>"i)) (1 ill) ; # (1 (der_nomact loc) OR (actio loc) OR ("<olggos>"i)) ;
+#SELECT ("slippe") (0 ("<beassat>"i)) (1 ill) ; # (1 (der_nomact loc) OR (actio loc) OR ("<olggos>"i)) ;
 	## Mun bessen vuolgimis.
 SELECT ("komme") (0 ("<beassat>"i)) (1 ill OR DOHKO) ;
 	## In beassan skuvlii dan beaivve.  Jeg kom meg ikke på skolen den dagen.
@@ -925,13 +928,15 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 # lohkat 0 = lese, 1 = si, 2 = telle
 
-LIST TEXT = "<aviisa>" "<girji>" sem_text ;
-
 SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (refl acc) OR (refl loc) OR prfprc ) ; 
 # OR ("<jitnosit>"i) OR ("<hihtásit>"i)) ;
 
+SELECT ("lese"i) (0 ("<lohkat>"i))(1 sem_txt LINK 0 acc OR loc) ;
+	## Son lohká ahte lea buorre doppe.
+
+
 SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i))
-	    (NEGATE *0 OBJ + TEXT BARRIER S-BOUNDARY)
+	    (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)
 	   ;
 	## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
 	## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
@@ -940,7 +945,7 @@ SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR actio OR prfprc OR inf BARRIER S-B
 	#$ Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
 	
 SELECT ("telle"i) (0 ("<lohkat>"i))
-	(1 (@←OBJ) OR ("<galle>"i) OR ("<man>"i) LINK NOT 0 TEXT);
+	(1 acc OR ("<galle>"i) OR ("<man>"i) LINK NOT 0 sem_txt);
 	## Son lohká ruđaid. 
 	## Son lohká galle girjji mis leat.
 
@@ -965,22 +970,22 @@ SELECT ("mat"i) IF (0 ("<biebmu>"i)) ;
 SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
 
 # soadji 0 = vinge, 1 = skovl, 2 = fløy, 3 = erme
-SELECT ("fløy"i) (0 ("<soadji>")) (0* ("<bellodat>"i));
+SELECT ("fløy"i) (0 ("<soadji>")) (0* sem_org);
 	# Bellodaga radikála soajis bođii garra proteasta.
 	
-SELECT ("erme"i) (0 ("<soadji>"i) LINK 0* ("<báidi>"i));
+SELECT ("erme"i) (0 ("<soadji>"i)) (0* sem_clth);
 	# Mu báiddi soajis lea ráigi.
 
 
 # beaivi 0 = dag, 1 = sol
 SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i));
-	# Beaivi báitá.
+	## Beaivi báitá.
 	
 # luohkká 0 = bakke, 1 = klasse
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK 1 ("<oahpaheaddji>"i));
     
 #SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (-1 gen LINK 0 pers OR refl);
-    ## Earát su luohkás ledje juo vissa njeallje siiddu su ovdalis matematihkka-girjjis.
+	## Earát su luohkás ledje juo vissa njeallje siiddu su ovdalis matematihkka-girjjis.
     
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 num OR ord OR @→N);
     # Son lea vuosttaš luohkás.
@@ -1001,7 +1006,7 @@ SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 COPULAS LINK *1 num) ;
 
 	
 # miella 0 = sinn, 1 = oppfatning, 2 = behag
-SELECT ("oppfatning"i) (0 ("<miella>") LINK 0 loc LINK -1 @→N) ;
+SELECT ("oppfatning"i) (0 ("<miella>"i) LINK 0 loc LINK -1 @→N) ;
 # sinn => oppfatning (kan regelen vere meir generell?)
 
 # gonagas 0 = konge, 1 = kong
@@ -1031,10 +1036,10 @@ SELECT ("bråk"i) (0 ("<stuibmi>"i) LINK -1 prop) ;
 
 
 # diehtu 0 = informasjon, 1 = kunnskap, 2 = viten, 3 = beskjed
-SELECT ("beskjed"i) (0 ("<diehtu>"i)) (0 nom OR OBJ LINK *0 ("<mobiltelefuvdna>"i) OR ("<mobiila>"i)) ;
-SELECT ("beskjed"i) (0 ("<diehtu>"i)) (0 OBJ LINK *0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
-    ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu. 
-    ## Lei Ájlin gii sáddii dieđu.
+SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna>"i) OR ("<mobiila>"i)) ;
+SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 acc)(*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
+	## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu. 
+	## Lei Ájlin gii sáddii dieđu.
 
 
 
