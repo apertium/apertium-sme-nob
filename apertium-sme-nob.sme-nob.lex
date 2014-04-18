@@ -850,6 +850,7 @@ SELECT ("da"i) (0 ("<go>"i))(0 cs) (*1 (v prt) BARRIER (←hab→) OR (@ADVL→)
 SELECT ("fordi"i) (0 ("<go>"i))(0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
 	## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
 
+SELECT ("når"i) (0 ("<go>"i))(0 cs) ;
 
 SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 
@@ -883,7 +884,7 @@ SELECT ("ha"i) IF (0 ("<leat>"i))(0 (ind prt)) (1 inf) ;
 
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
-#SELECT ("bo"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
+SELECT ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
 SELECT ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>"i)) ;
 SELECT ("bo"i) (0 ("<orrut>"i) LINK 1 loc OR DOPPE) ; # BARRIER ORRUT-BO) ;
 #This rule should have another barrier, a set of all words except TIME-ADV.
@@ -893,8 +894,6 @@ SELECT ("bo"i) (0 ("<orrut>"i) LINK 1 loc OR DOPPE) ; # BARRIER ORRUT-BO) ;
 	## Sii orrot goit čeahpit hutkat vugiid movt ávkkástallat sin sámegielmáhtuin, čilge son.
 	## Mun orun Romssas.
 	## Oro jaska.
-
-
 
 # šaddat 0 = bli, 1 = vokse, 2 = komme til å, 3 = vokse, 4 = bli, 5 = få, 6 = føde
 
