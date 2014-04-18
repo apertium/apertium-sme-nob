@@ -923,7 +923,17 @@ SELECT ("komme") (0 ("<beassat>"i)) (1 ill OR DOHKO) ;
 	## Mun nu illudan beassat duoddarii. Jeg gleder meg så til å komme meg på vidda.
 	## Nuoraidklubba nuorat besset dál Internehttii. Ungdomssklubbens ungdommer kommer seg nå på Internett.
 
+# bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
+SELECT ("spørre"i) (0 ("<bivdit>"i) LINK *1 qst);
+SELECT ("fiske"i) (0 ("<bivdit>"i))(*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r));
+SELECT ("jakte"i) (0 ("<bivdit>"i)) ;
+	## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá.
+	## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá mearas.
 
+# borahit 0 = mate, 1 = fôre
+SELECT ("fôre"i) (0 ("<borahit>"))(*0 sem_ani);
+SELECT ("mate"i) (0 ("<borahit>"))(NOT *0 sem_ani);
+	## Son borahii máná. Son borahii spiinniid.
 
 
 LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rubel>" "<ruvdno>" "<ruvdnu>" "<¢>" "<€>" "<$>" ;
