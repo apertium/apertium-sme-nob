@@ -823,6 +823,10 @@ SECTION
 # go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
 
 
+REMCOHORT TARGET ("<go>")(0 qst) ;
+	## Boađát go dál?
+
+
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
 	## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
