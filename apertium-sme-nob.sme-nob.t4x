@@ -778,18 +778,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </when></choose>
       
       <choose><when>
-        <test><not>
-          <or>
-            <equal><clip pos="2" part="grau"/><lit-tag v="sup"/></equal>
-            <and>
-              <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
-              <or>
-                <equal><clip pos="2" part="temps"/><lit-tag v="pp"/></equal>
-                <ends-with><clip pos="2" part="grau"/><lit-tag v="posi"/></ends-with>
-              </or>
-            </and>
-          </or>
-        </not></test>
+        <test><equal><clip pos="2" part="grau"/><lit-tag v="comp"/></equal></test>
         <let><clip pos="2" part="art"/><lit v=""/></let>
       </when></choose>
 
@@ -804,7 +793,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
             </or>
           </and>
         </not></test>
-        <let><clip pos="2" part="gen"/><lit v=""/></let>
+        <let><clip pos="2" part="gen"/><lit-tag v="un"/></let>
       </when></choose>
       
       <choose><when>
