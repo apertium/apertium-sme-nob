@@ -868,7 +868,7 @@ SELECT ("for å"i) IF (0 ("<vai>"i)) (1 inf) ;
 #leat
 
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
-SELECT ("måtte"i) IF (0 ("<leat>"i)) (1 inf) ;
+SELECT ("måtte"i) IF (0 ("<leat>"i) LINK -1 loc + HUMAN) (1 inf) ;
     # mis lea cahkkehit dola
 SELECT ("ha"i) IF (0 ("<leat>"i)) (*-1 ←hab→ BARRIER NOT-ADV) ;
 SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
@@ -931,9 +931,14 @@ SELECT ("jakte"i) (0 ("<bivdit>"i)) ;
 	## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá mearas.
 
 # borahit 0 = mate, 1 = fôre
-SELECT ("fôre"i) (0 ("<borahit>"))(*0 sem_ani);
-SELECT ("mate"i) (0 ("<borahit>"))(NOT *0 sem_ani);
+SELECT ("fôre"i) (0 ("<borahit>"i))(*0 sem_ani);
+SELECT ("mate"i) (0 ("<borahit>"i))(NOT *0 sem_ani);
 	## Son borahii máná. Son borahii spiinniid.
+
+
+# čuohppat: skjære vs klippe
+SELECT ("klippe"i) (0 ("<čuohppat>"i))(*0 ("<vuokta>"i) OR ("<liidni>"i));
+SELECT ("skjære"i) (0 ("<čuohppat>"i)) ;
 
 
 LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rubel>" "<ruvdno>" "<ruvdnu>" "<¢>" "<€>" "<$>" ;
@@ -955,7 +960,7 @@ SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR actio OR prfprc OR inf BARRIER S-B
 	## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
 	## Lars Anders Baer ii eahpit ii veahášge go lohká dákkáraš álbmotsirren lea lága ja álbmotrievtti vuostá. - Lars Anders Baer tviler ikke ikke *veahášge når han sier *dákkáraš en folkeisolering er loven og folkeretten mot.
 	## Son lohká ádjá boahtit. - Han sier at bestefar skulle komme.
-	#$ Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
+	## Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
 	
 SELECT ("telle"i) (0 ("<lohkat>"i))
 	(1 acc OR ("<galle>"i) OR ("<man>"i) LINK NOT 0 sem_txt);
@@ -967,32 +972,37 @@ SELECT ("telle"i) (0 ("<lohkat>"i))
 
 # mannat 0 = dra, 1 = gå
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i))(0 sg3);
-	#$ Mo manná dál?
+	## Mo manná dál?
 #SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>"i) OR ("<dat>"i));
-	#$ Mun manan dál.
+	## Mun manan dál.
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR sem_org LINK 0 (@SUBJ→)) ;
-	#$ Máhtte máksá guokte ruvnnu.
+	## Máhtte máksá guokte ruvnnu.
  
 SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
-	#$ Girji máksá guokte ruvnnu.
+	## Girji máksá guokte ruvnnu.
  
 #NOUNS
-SELECT ("mat"i) IF (0 ("<biebmu>"i)) ; 
 
-SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
-
-# soadji 0 = vinge, 1 = skovl, 2 = fløy, 3 = erme
-SELECT ("fløy"i) (0 ("<soadji>")) (0* sem_org);
-	# Bellodaga radikála soajis bođii garra proteasta.
+# áddjá: bestefar vs gamling
+SELECT ("gamling"i) (0 ("<áddjá>"i) LINK -1 num LINK NOT *-1 ←hab→);
+SELECT ("bestefar"i) (0 ("<áddjá>"i));
+	## Mus leat guokte ádjá.
+	## Doppe čohkkába guokte ádjá.
 	
-SELECT ("erme"i) (0 ("<soadji>"i)) (0* sem_clth);
-	# Mu báiddi soajis lea ráigi.
+
+# áhkku: bestemor vs eldre kvinne
+REMOVE ("bestemor"i) (0 ("<áhkku>"i) LINK -1 num LINK NOT *-1 ←hab→);
+SELECT ("bestemor"i) (0 ("<áhkku>"i));
+	## Mus leat šiega áhkku.
+	## Doppe čohkkába guokte áhkku.
 
 
 # beaivi 0 = dag, 1 = sol
 SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i));
 	## Beaivi báitá.
+
+SELECT ("mat"i) IF (0 ("<biebmu>"i)) ; 
 	
 # luohkká 0 = bakke, 1 = klasse
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK 1 ("<oahpaheaddji>"i));
@@ -1039,6 +1049,17 @@ SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 (pl loc)) ;
 
 SELECT ("folk") (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
+
+SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
+
+# soadji 0 = vinge, 1 = skovl, 2 = fløy, 3 = erme
+SELECT ("fløy"i) (0 ("<soadji>")) (0* sem_org);
+	# Bellodaga radikála soajis bođii garra proteasta.
+	
+SELECT ("erme"i) (0 ("<soadji>"i)) (0* sem_clth);
+	# Mu báiddi soajis lea ráigi.
+
+
 
 # stuibmi 0 = bråk, 1 = konflikt
 SELECT ("bråk"i) (0 ("<stuibmi>"i) LINK -1 prop) ;
