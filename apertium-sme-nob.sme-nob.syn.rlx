@@ -113,7 +113,6 @@ SET TIME-N = TIME-N-SET - NOT-TIME ;
 
 
 LIST HUMAN = sem_hum sem_mal sem_fem sem_sur pers numag der_numag ;
-LIST SEMTAGS = sem_act sem_ani sem_body sem_build sem_build-part sem_clth sem_curr sem_edu sem_hum sem_lang sem_measr sem_org sem_plc sem_time sem_tool sem_txt sem_group sem_semcon sem_veh  ;
 
 #!! * Sets for Morphosyntactic properties
 # --------------------------
@@ -186,7 +185,7 @@ LIST Prt = prt;
 LIST Prs = prs ;
  
 
-LIST Ind = indic ;
+LIST Ind = indic indic ;
 LIST Pot = pot ;
 LIST Cond = cond ;
 
@@ -442,32 +441,24 @@ SET NOT-PRFPRC = WORD - PrfPrc ;
 # Person
 # - - - - 
 
-LIST V-SG1 = (v ind prs sg1) (v ind prt sg1) (v cond prs sg1) 
-(v cond prt sg1) (v pot prs sg1) (v neg ind sg1) ;
+LIST V-SG1 = (v sg1) ;
  
-LIST V-SG2 = (v ind prs sg2) (v ind prt sg2) (v cond prs sg2) 
-(v cond prt sg2) (v pot prs sg2) (v neg ind sg2) ;
+LIST V-SG2 = (v sg2) ;
  
-LIST V-SG3 = (v ind prs sg3) (v ind prt sg3) (v cond prs sg3) 
-(v cond prt sg3) (v pot prs sg3) (v neg ind sg3) ;
+LIST V-SG3 = (v sg3) ;
  
-LIST V-DU1 = (v ind prs du1) (v ind prt du1) (v cond prs du1) 
-	 (v cond prt du1) (v pot prs du1) (v neg ind du1) ;
+LIST V-DU1 = (v du1) ;
  
-LIST V-DU2 = (v ind prs du2) (v ind prt du2) (v cond prs du2) 
-	 (v cond prt du2) (v pot prs du2) (v neg ind du2) ;
+LIST V-DU2 = (v du2) ;
  
-LIST V-DU3 = (v ind prs du3) (v ind prt du3) (v cond prs du3) 
-	 (v cond prt du3) (v pot prs du3) (v neg ind du3) ;
+LIST V-DU3 = (v du3) ;
  
-LIST V-PL1 = (v ind prs pl1) (v ind prt pl1) (v cond prs pl1) 
-(v cond prt pl1) (v pot prs pl1) (v neg ind pl1) ;
+LIST V-PL1 = (v pl1) ;
  
-LIST V-PL2 = (v ind prs pl2) (v ind prt pl2) (v cond prs pl2) 
-(v cond prt pl2) (v pot prs pl2) (v neg ind pl2) ;
+LIST V-PL2 = (v pl2) ;
  
-LIST V-PL3 = (v ind prs pl3) (v ind prt pl3) (v cond prs pl3) 
-(v cond prt pl3) (v pot prs pl3) (v neg ind pl3) ;
+LIST V-PL3 = (v pl3) ;
+
  
 
  # Note that imperative verbs are not included in these sets!
@@ -727,7 +718,7 @@ Num OR RCmpnd OR CC OR (pron dem) OR (pron refl gen) OR (indef attr) OR
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
          
-SET PRE-NP-V = PrfPrc OR PrsPrc OR Der_NomAg OR Actio OR Der_NomAct OR (v a) OR (ind prs sg3) OR (ind prs sg1) OR (imprt du2) ;
+SET PRE-NP-V = PrfPrc OR PrsPrc OR Der_NomAg OR Actio OR Der_NomAct OR (v a) OR (prs sg3) + Ind OR (prs sg1) + Ind OR (imprt du2) ;
     # to be used together with PRE-NP-HEAD before @>N is disambiguated
          
 SET NP-MEMBER = PRE-NP-HEAD OR N ;
@@ -2002,8 +1993,7 @@ AFTER-SECTIONS
 
 REMOVE:WORD WORD - ALLSYNTAG ;
 
-# The analysis give double analysis, we go for the one with semtag.
-SELECT SEMTAGS ;
+
 
 #!! ! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
 
@@ -2015,7 +2005,7 @@ SUBSTITUTE:smeRemove (←sme→) (*) TARGET (←sme→) ;
 SUBSTITUTE:smjRemove (←smj→) (*) TARGET (←smj→) ;
 SUBSTITUTE:smaRemove (←sma→) (*) TARGET (←sma→) ;
 
-#MT RULES
+#MT RULES for sme-sma
 #SUBSTITUTE ("váldit" V) ("váldit2" V) ("váldit" V) (*1 ("vuostá" Adv) BARRIER SV-BOUNDARY OR REAL-V) ;
 #REMCOHORT TARGET ("vuostá" Adv) (*-1 ("váldit2") BARRIER SV-BOUNDARY OR REAL-V) ;
 
@@ -2039,6 +2029,14 @@ SUBSTITUTE:smaRemove (←sma→) (*) TARGET (←sma→) ;
 #SUBSTITUTE (@Pron<) (@Pron< <compl_obj>) TARGET (@Pron<) (-1 OBJ) ;
 #SUBSTITUTE (@Pron<) (@Pron< <compl_subj>) TARGET (@Pron<) (-1 SUBJ) ;
 #SUBSTITUTE (@Pron<) (@Pron< <compl_advl>) TARGET (@Pron<) (-1 @ADVL) ;
+
+
+#!! !!For Apertium: 
+#!! The analysis give double analysis because of optional semtags. We go for the one with semtag. 
+
+LIST SEMTAGS = sem_act sem_ani sem_body sem_build sem_build-part sem_clth sem_curr sem_edu sem_hum sem_lang sem_measr sem_org sem_plc sem_time sem_tool sem_txt sem_group sem_semcon sem_veh ;
+
+SELECT SEMTAGS ;
 
 #!! !!For Korp:
 
