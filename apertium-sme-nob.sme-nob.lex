@@ -1092,4 +1092,11 @@ SELECT ("viss") (0 ("<vissis>"i)) (*1 n BARRIER NOT-A) ;
 # muhtun vissis:1 áiggi maŋŋel, doallat viesu rabasin vissis:1 áiggiid 
 # (vs. mun lean vissis:0 ahte)
 
+SELECT ("samisk"i) (0 ("<sápmi>"i))(0 gen);
+
  
+# Proper nouns
+# ============
+
+SELECT prop IF (1 ("<suohkan>"));
+      ## Loabát suohkan.
