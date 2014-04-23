@@ -954,14 +954,17 @@ SELECT ("lese"i) (0 ("<lohkat>"i))(1 sem_txt LINK 0 acc OR loc) ;
 
 
 SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i))
-	    (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)
-	   ;
+	    (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)   ;
 	## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
 	## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
 	## Lars Anders Baer ii eahpit ii veahášge go lohká dákkáraš álbmotsirren lea lága ja álbmotrievtti vuostá. - Lars Anders Baer tviler ikke ikke *veahášge når han sier *dákkáraš en folkeisolering er loven og folkeretten mot.
 	## Son lohká ádjá boahtit. - Han sier at bestefar skulle komme.
 	## Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
-	
+
+
+SELECT ("si"i) (0 ("<lohkat>"i))(-1 COMMA)(*1 (@←SUBJ) BARRIER VFIN);
+	## Dat lea duohta, lohká Trond.
+
 SELECT ("telle"i) (0 ("<lohkat>"i))
 	(1 acc OR ("<galle>"i) OR ("<man>"i) LINK NOT 0 sem_txt);
 	## Son lohká ruđaid. 
@@ -981,6 +984,9 @@ SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR sem_org LINK 0 (@SUBJ→
  
 SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
 	## Girji máksá guokte ruvnnu.
+
+# vuodjit - vuodján kjørt / vuodjat - vuodján svømt
+REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) + prfprc);#(NOT 0* ("<čázi>"i) OR ("<basseaŋga>"i));
  
 #NOUNS
 
@@ -1059,7 +1065,8 @@ SELECT ("fløy"i) (0 ("<soadji>")) (0* sem_org);
 SELECT ("erme"i) (0 ("<soadji>"i)) (0* sem_clth);
 	# Mu báiddi soajis lea ráigi.
 
-
+# searvi 0 = forening, 1 = selskap
+SELECT ("forening"i) (0 ("<searvi>"i))(-1 ("<sápmi>"i));
 
 # stuibmi 0 = bråk, 1 = konflikt
 SELECT ("bråk"i) (0 ("<stuibmi>"i) LINK -1 prop) ;
@@ -1085,6 +1092,9 @@ SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 acc)(*0 ("<sáddet>"i) OR ("<čálli
 LIST IJ-TIME = "<beaivi>" "<eahket>" "<beassážat>" "<juovllat>" ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 ("<ođas>"i) LINK 1 ("<jahki>"i)) ;
+SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
+       ## Dat lei buorre girji (god)
+       ## Dat lei buorre. (bra)
 
 
 # vissis:0 → sikker, vissis:1 → viss
