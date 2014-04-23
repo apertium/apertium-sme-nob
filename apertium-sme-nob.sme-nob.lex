@@ -986,7 +986,7 @@ SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CUR
 	## Girji máksá guokte ruvnnu.
 
 # vuodjit - vuodján kjørt / vuodjat - vuodján svømt
-REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) + prfprc);#(NOT 0* ("<čázi>"i) OR ("<basseaŋga>"i));
+REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čázi>"i) OR ("<basseaŋga>"i));
  
 #NOUNS
 
