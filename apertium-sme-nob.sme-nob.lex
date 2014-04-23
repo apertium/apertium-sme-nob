@@ -1086,18 +1086,21 @@ SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 acc)(*0 ("<sáddet>"i) OR ("<čálli
 
 # Adjectives
 # ==========
+REMOVE ("god") (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
+REMOVE ("bra") (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
+
+	## leage buorre (vær så god)
 
 # buorre:0 → bra, buorre:1→god , så god
 
-LIST IJ-TIME = "<beaivi>" "<eahket>" "<beassážat>" "<juovllat>" ;
-SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME) ;
-SELECT ("god"i) (0 ("<buorre>"i)) (1 ("<ođas>"i) LINK 1 ("<jahki>"i)) ;
-SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
-	## Dat lei buorre girji (god)
-	## Dat lei buorre. (bra)
-REMOVE ("bra"i) (0 ("<buorre>"i) LINK -1 ("<leat>") LINK 0 imprt);
-REMOVE ("god"i) (0 ("<buorre>"i) LINK -1 ("<leat>") LINK 0 imprt);
-	## leage buorre (vær så god)
+#LIST IJ-TIME = "<beaivi>" "<eahket>" "<beassážat>" "<juovllat>" ;
+#SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME) ;
+#SELECT ("god"i) (0 ("<buorre>"i)) (1 ("<ođas>"i) LINK 1 ("<jahki>"i)) ;
+#SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
+#	## Dat lei buorre girji (god)
+#	## Dat lei buorre. (bra)
+
+REMCOHORT TARGET ("<leat>"i)(0 imprt) (1 ("<buorre>"));
 
 
 # vissis:0 → sikker, vissis:1 → viss
