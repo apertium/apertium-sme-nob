@@ -859,6 +859,8 @@ SELECT ("for at"i) IF (0 ("<vai>"i)) (NOT 1 inf) ;
 
 SELECT ("for å"i) IF (0 ("<vai>"i)) (1 inf) ;
 
+SELECT ("all"i) IF (0 ("<juohke>"i) LINK 1 ("<lágan>")) ;
+	#$ juohke lágán geđggiiguin
 
 #Verbs
 
