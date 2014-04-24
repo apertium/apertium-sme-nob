@@ -316,6 +316,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
     <def-var n="defnes"/>
     <def-var n="moremost-defnes"/>
     <def-var n="adj-gender"/>
+    <def-var n="adj-number"/>
   </section-def-vars>
 
   <section-def-lists>
@@ -805,6 +806,20 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         </not></test>
         <let><clip pos="2" part="nbr"/><lit v=""/></let>
       </when></choose>
+ 
+      <!-- FMT: Added this section to deal with "Mun human fiskes biilla birra." -->
+      <choose><when>
+        <test>
+          <and>
+            <equal><clip pos="2" part="art"/><lit-tag v="def"/></equal>
+            <equal><clip pos="2" part="gen"/><lit-tag v="un"/></equal>
+            <ends-with><clip pos="2" part="grau"/><lit-tag v="posi"/></ends-with>
+          </and>
+        </test>
+        <let><clip pos="2" part="nbr"/><lit-tag v="sp"/></let>
+      </when></choose>
+      <!-- // end FMT -->
+
 
       <call-macro n="prepend_moremost"><with-param pos="2"/></call-macro>      
     </def-macro>
