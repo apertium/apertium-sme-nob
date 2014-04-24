@@ -822,7 +822,7 @@ REMCOHORT TARGET ("<go>")(0 qst) ;
 
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
-SELECT ("at"i) (0 ("<go>"i))(0 cs) (NEGATE *-1 VFIN) ;
+SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
 	## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
 	## Buorre lei go bohtet.
 	## Gummá go ii boahtán.
