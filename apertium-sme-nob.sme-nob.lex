@@ -160,7 +160,7 @@ LIST prt = prt;
 LIST prs = prs ;
  
 
-LIST ind = ind ;
+LIST ind = indic ;
 LIST pot = pot ;
 LIST cond = cond ;
 
@@ -414,32 +414,23 @@ SET NOT-PRFPRC = WORD - prfprc ;
 # Person
 # - - - - 
 
-LIST V-SG1 = (v ind prs sg1) (v ind prt sg1) (v cond prs sg1) 
-(v cond prt sg1) (v pot prs sg1) (v neg ind sg1) ;
+LIST V-SG1 = (v sg1) ;
  
-LIST V-SG2 = (v ind prs sg2) (v ind prt sg2) (v cond prs sg2) 
-(v cond prt sg2) (v pot prs sg2) (v neg ind sg2) ;
+LIST V-SG2 = (v sg2) ;
  
-LIST V-SG3 = (v ind prs sg3) (v ind prt sg3) (v cond prs sg3) 
-(v cond prt sg3) (v pot prs sg3) (v neg ind sg3) ;
+LIST V-SG3 = (v sg3) ;
  
-LIST V-DU1 = (v ind prs du1) (v ind prt du1) (v cond prs du1) 
-	 (v cond prt du1) (v pot prs du1) (v neg ind du1) ;
+LIST V-DU1 = (v du1) ;
  
-LIST V-DU2 = (v ind prs du2) (v ind prt du2) (v cond prs du2) 
-	 (v cond prt du2) (v pot prs du2) (v neg ind du2) ;
+LIST V-DU2 = (v du2) ;
  
-LIST V-DU3 = (v ind prs du3) (v ind prt du3) (v cond prs du3) 
-	 (v cond prt du3) (v pot prs du3) (v neg ind du3) ;
+LIST V-DU3 = (v du3) ;
  
-LIST V-PL1 = (v ind prs pl1) (v ind prt pl1) (v cond prs pl1) 
-(v cond prt pl1) (v pot prs pl1) (v neg ind pl1) ;
+LIST V-PL1 = (v pl1) ;
  
-LIST V-PL2 = (v ind prs pl2) (v ind prt pl2) (v cond prs pl2) 
-(v cond prt pl2) (v pot prs pl2) (v neg ind pl2) ;
+LIST V-PL2 = (v pl2) ;
  
-LIST V-PL3 = (v ind prs pl3) (v ind prt pl3) (v cond prs pl3) 
-(v cond prt pl3) (v pot prs pl3) (v neg ind pl3) ;
+LIST V-PL3 = (v pl3) ;
  
 
  # Note that imperative verbs are not included in these sets!
@@ -673,7 +664,7 @@ num OR rcmpnd OR cc OR (pron dem) OR (pron refl gen) OR (indef attr) OR
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
          
-SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (v a) OR (ind prs sg3) OR (ind prs sg1) OR (imprt du2) ;
+SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (v a) OR (prs sg3) + ind OR (prs sg1) + ind OR (imprt du2) ;
     # to be used together with PRE-NP-HEAD before @>N is disambiguated
          
 SET NP-MEMBER = PRE-NP-HEAD OR n ;
@@ -819,6 +810,8 @@ LIST HEAD = @SUBJ→ @←SUBJ @SUBJ @OBJ @OBJ→ @←OBJ @ADVL @ADVL→ @←ADVL
 
 SECTION
 
+REMOVE (cmp) (0 n) ;
+
 # go (default)=> når
 # go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
 
@@ -829,8 +822,12 @@ REMCOHORT TARGET ("<go>")(0 qst) ;
 
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
+SELECT ("at"i) (0 ("<go>"i))(0 cs) (NEGATE *-1 VFIN) ;
 	## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
 	## Buorre lei go bohtet.
+	## Gummá go ii boahtán.
+
+
 
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP LINK 1 (@COMP-CS←)) ;
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (-1 ("<veara>"i)) ;
@@ -875,7 +872,7 @@ SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 SELECT ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NOT *1 (actio ess) BARRIER S-BOUNDARY) (NOT 1 (der_passl prfprc)) ;
     # sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
 	## Leat go Ibsenii sáddemin dieđu?
-SELECT ("ha"i) IF (0 ("<leat>"i))(0 (ind prt)) (1 inf) ;
+SELECT ("ha"i) IF (0 ("<leat>"i))(0 (indic prt)) (1 inf) ;
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # (Perf Cond 2)
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon 
@@ -1005,7 +1002,7 @@ SELECT ("bestemor"i) (0 ("<áhkku>"i));
 
 
 # beaivi 0 = dag, 1 = sol
-SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i));
+SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i) OR ("<luoitádit>"i) OR ("<goardit>"i) OR ("<ligget>"i));
 	## Beaivi báitá.
 
 SELECT ("mat"i) IF (0 ("<biebmu>"i)) ; 
