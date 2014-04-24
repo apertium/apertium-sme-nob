@@ -75,7 +75,7 @@ LIST ¶ = ¶;
 LIST Pers = pers ;
 LIST Dem = dem ;
 LIST Interr = interr ;
-LIST Indef = indicef ;
+LIST Indef = indef ;
 
 LIST Recipr = recipr ;
 LIST Refl = refl ;
@@ -185,7 +185,7 @@ LIST Prt = prt;
 LIST Prs = prs ;
  
 
-LIST Ind = indic indic ;
+LIST Ind = indic ;
 LIST Pot = pot ;
 LIST Cond = cond ;
 
@@ -642,7 +642,7 @@ LIST ADV-NOT-NAMES = "Ain" "Anne" "Diego" "Dieppe" "Enge" "Galle" "Haga"
 SET ADV-NOT-OTHER-POS = ADV-NOT-VERB OR ADV-NOT-NOUN OR ADV-NOT-NAMES ;
 
 LIST HAB-CASE = loc (←smj→ ine) (←sma→ gen) ;
-LIST HAB-ACTOR-ALL = sem_hum sem_mal sem_sur sem_fem sem_ani pers ("gii") indicef coll ;
+LIST HAB-ACTOR-ALL = sem_hum sem_mal sem_sur sem_fem sem_ani pers ("gii") indef coll ;
 SET HAB-ACTOR = HAB-ACTOR-ALL - ("cihca") ;
 SET HAB-ACTOR-NOT-HUMAN = Sem_Org ;
 
