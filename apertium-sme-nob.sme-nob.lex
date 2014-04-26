@@ -862,6 +862,15 @@ SELECT ("for å"i) IF (0 ("<vai>"i)) (1 inf) ;
 SELECT ("all"i) IF (0 ("<juohke>"i) LINK 1 ("<lágan>")) ;
 	#$ juohke lágán geđggiiguin
 
+SELECT ("mens"i) IF (0 ("<bodda>"i) LINK -1 ("<dat>") LINK 0 gen) ;
+REMCOHORT TARGET ("<dat>"i)(0 gen) (1 ("<bodda>") LINK 0 gen);
+REMCOHORT TARGET ("<go>"i) (-1 ("<bodda>") LINK 0 gen);
+	#$ dan botta go
+
+REMCOHORT TARGET ("<dat>"i)(0 gen) (1 ("<lahkái>"));
+	#$ dan lahkái
+
+
 #Verbs
 
 #leat
