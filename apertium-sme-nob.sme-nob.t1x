@@ -770,10 +770,11 @@ And then there are some categories like "month", with all the months.
       <list-item v="beroštit"/>
     </def-list>
     <def-list n="loc-fra-verbs" c="See 'ill-NIL-verbs' above.">
-      <list-item v="gullat" c="Problematic; Leat go gullan sus alddis? vs Go gullen sámegiela dien mátkkis."/>
+<!--      <list-item v="gullat" c="Problematic; Leat go gullan sus alddis? vs Go gullen sámegiela dien mátkkis."/>-->
       <list-item v="beassat" c="Mihttomearri lea beassat hálddašanguovvlus."/>
       <list-item v="beassat" c="Mihttomearri lea beassat hálddašanguovvlus."/>
       <list-item v="boahtit" c="Mun boađán gávpogis."/>
+      <list-item v="gáidat"  c="Son lea gáidan Ipmila sánis."/>      
       <list-item v="fárret" c="… juogo fárret sámi gilážis vai besset eallit homofiilan."/>
     </def-list>
     <def-list n="loc-om" c="Locative noun phrases default to 'på' unless in this or next list (or are np.top)">
@@ -785,88 +786,120 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-av" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="slekt"/>
     </def-list>    
-    <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
-      <list-item v="skuff"/>
-      <list-item v="klasse"/>
-      <list-item v="land"/>
-      <list-item v="utland"/>
-      <list-item v="speil"/>
-      <list-item v="begynnelse"/>
+    <def-list n="loc-etter" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="oppfatning"/>
-      <list-item v="sammenheng"/>
-      <list-item v="forbindelse"/>
-      <list-item v="hus"/>
-      <list-item v="by"/>
-      <list-item v="liv"/>
-      <list-item v="dokument"/>
-      <list-item v="lov"/>
-      <list-item v="bruk"/>
+      <list-item v="mening"/>
+    </def-list>    
+    <def-list n="loc-fra" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
+      <list-item v="ønske" c="Lihkkobeaivve sávaldagat Káre Márehis."/>
+    </def-list>    
+    <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
+      <list-item v="Arbeiderpartiet"/>
+      <list-item v="Guovdageainnu suohkan"/>
+      <list-item v="administrasjon"/>
       <list-item v="allmenning"/>
-      <list-item v="krukke"/>
-      <list-item v="rom"/>
-      <list-item v="mellomrom"/>
-      <list-item v="tidsrom"/>
-      <list-item v="periode"/>
-      <list-item v="dråpe"/>
-      <list-item v="hjerte"/>
-      <list-item v="bygd"/>
-      <list-item v="hage"/>
-      <list-item v="stue"/>
-      <list-item v="seng"/>
-      <list-item v="skap"/>
-      <list-item v="vask"/>
-      <list-item v="gamme"/>
-      <list-item v="navn"/>
-      <list-item v="januar"/>
-      <list-item v="februar"/>
-      <list-item v="mars"/>
       <list-item v="april"/>
-      <list-item v="mai"/>
-      <list-item v="juni"/>
-      <list-item v="juli"/>
       <list-item v="august"/>
-      <list-item v="september"/>
-      <list-item v="oktober"/>
-      <list-item v="november"/>
+      <list-item v="barnehage"/>
+      <list-item v="begynnelse"/>
+      <list-item v="brev"/>
+      <list-item v="bruk"/>
+      <list-item v="by"/>
+      <list-item v="bygd"/>
       <list-item v="desember"/>
+      <list-item v="dokument"/>
+      <list-item v="dråpe"/>
+      <list-item v="februar"/>
+      <list-item v="film"/>
+      <list-item v="forbindelse"/>
+      <list-item v="fylke"/>
+      <list-item v="fylkeskommune"/>
+      <list-item v="gamme"/>
+      <list-item v="hage"/>
+      <list-item v="hjerte"/>
+      <list-item v="hus"/>
+      <list-item v="januar"/>
+      <list-item v="juli"/>
+      <list-item v="juni"/>
+      <list-item v="kirke"/>
+      <list-item v="klasse"/>
+      <list-item v="kommune"/>
+      <list-item v="krukke"/>
+      <list-item v="land"/>
+      <list-item v="liv"/>
+      <list-item v="lov"/>
+      <list-item v="mai"/>
+      <list-item v="mars"/>
+      <list-item v="mellomrom"/>
+      <list-item v="mobiltelefon"/>
+      <list-item v="navn"/>
+      <list-item v="nominasjon"/>
+      <list-item v="november"/>
+      <list-item v="oktober"/>
+      <list-item v="oppfatning"/>
+      <list-item v="periode"/>
+      <list-item v="rom"/>
+      <list-item v="sak"/>
+      <list-item v="samfunn"/>
+      <list-item v="sammenheng"/>
+      <list-item v="seng"/>
+      <list-item v="september"/>
+      <list-item v="skap"/>
+      <list-item v="skuff"/>
+      <list-item v="speil"/>
+      <list-item v="stue"/>
+      <list-item v="telefon"/>
+      <list-item v="tidsrom"/>
+      <list-item v="utland"/>
+      <list-item v="vask"/>
+      <list-item v="verden"/>
     </def-list>
     <def-list n="loc-på" c="Proper place nouns (np.top) get preposition 'i' unless they're in this list.">
-      <list-item v="Vestlandet"/>
-      <list-item v="Østlandet"/>
-      <list-item v="Gjøvik"/>
-      <list-item v="Lillehammer"/>
-      <list-item v="Hamar"/>
-      <list-item v="Bygdøy"/>
       <list-item v="Andøya"/>
-      <list-item v="Sicilia"/>
+      <list-item v="Bygdøy"/>
       <list-item v="Cuba"/>
-      <list-item v="Grønland"/>
       <list-item v="Filippinene"/>
-      <list-item v="Island"/>
-      <list-item v="Svalbard"/>
-      <list-item v="Hovedøya"/>
-      <list-item v="Kreta"/>
-      <list-item v="Kvaløya"/>
-      <list-item v="Madagaskar"/>
-      <list-item v="Hitra"/>
+      <list-item v="Gjøvik"/>
+      <list-item v="Grønland"/>
+      <list-item v="Hamar"/>
       <list-item v="Hidra"/>
       <list-item v="Hispaniola"/>
+      <list-item v="Hitra"/>
+      <list-item v="Hovedøya"/>
       <list-item v="Island"/>
-      <list-item v="mandag"/>
-      <list-item v="tirsdag"/>
-      <list-item v="onsdag"/>
-      <list-item v="torsdag"/>
-      <list-item v="fredag"/>
-      <list-item v="lørdag"/>
-      <list-item v="søndag"/>
+      <list-item v="Kreta"/>
+      <list-item v="Kvaløya"/>
+      <list-item v="Lillehammer"/>
+      <list-item v="Madagaskar"/>
+      <list-item v="Sicilia"/>
+      <list-item v="Svalbard"/>
+      <list-item v="Vestlandet"/>
       <list-item v="dag"/>
-      <list-item v="øy"/>
-      <list-item v="topp"/>
+      <list-item v="fredag"/>
       <list-item v="kjøkken"/>
+      <list-item v="lørdag"/>
+      <list-item v="mandag"/>
+      <list-item v="onsdag"/>
+      <list-item v="søndag"/>
+      <list-item v="tirsdag"/>
+      <list-item v="topp"/>
+      <list-item v="torsdag"/>
+      <list-item v="Østlandet"/>
+      <list-item v="øy"/>
+    </def-list>
+    <def-list n="loc-NIL" c="Locative noun phrases default to 'i' unless in this list">
+      <list-item v="uke"/>
     </def-list>
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="del"/>
       <list-item v="NUMERAL"/>      <!-- special value set by numerals, see NUMERAL rule -->
+    </def-list>
+    <def-list n="loc-fra-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="ønske"/>
+    </def-list>
+    <def-list n="loc-etter-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="mening"/>
+      <list-item v="oppfatning"/>
     </def-list>
     <def-list n="ess-NIL" c="Essive noun phrases default to 'som' unless in this list">
       <list-item v="del"/>
@@ -965,6 +998,15 @@ And then there are some categories like "month", with all the months.
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="av"/>
+              </let>
+            </when>
+            <when>
+              <test><or>
+                <in><var n="previous-nhead"/><list n="loc-fra-head"/></in>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-fra"/></in>
+              </or></test>
+              <let>
+                <var n="caseprep"/><lit v="fra"/>
               </let>
             </when>
             <when>
