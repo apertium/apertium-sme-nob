@@ -954,8 +954,7 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 # lohkat 0 = lese, 1 = si, 2 = telle
 
-SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (refl acc) OR (refl loc) OR prfprc ) ; 
-# OR ("<jitnosit>"i) OR ("<hihtásit>"i)) ;
+SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (refl acc) OR (refl loc) OR prfprc or COMMA) ; 
 
 SELECT ("lese"i) (0 ("<lohkat>"i))(1 sem_txt LINK 0 acc OR loc) ;
 	## Son lohká ahte lea buorre doppe.
@@ -1041,10 +1040,21 @@ SELECT ("klokke"i) (0 ("<diibmu>"i) LINK *0 ("<ollu>"i)) ;
 SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 COPULAS LINK *1 num) ;
 	# Dál diibmu lea fargga vihtta.
 
+# háve gang
+SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 num + gen);
+SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 (<"dát">i) LINK 0 gen);
+SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 (<"boahtte">i));
+       ## Dán háve. Mun lean dan má
 	
 # miella 0 = sinn, 1 = oppfatning, 2 = behag
 SELECT ("oppfatning"i) (0 ("<miella>"i) LINK 0 loc LINK -1 @→N) ;
 # sinn => oppfatning (kan regelen vere meir generell?)
+
+# giella 0 = språk, 1 = snare
+SELECT ("språk"i) (0 ("<giella>"i));
+
+
+
 
 # gonagas 0 = konge, 1 = kong
 SELECT ("kong"i) (0 ("<gonagas>"i) LINK 1 sem_mal) ;
