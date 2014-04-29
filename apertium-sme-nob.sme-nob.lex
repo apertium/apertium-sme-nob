@@ -1042,8 +1042,8 @@ SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 COPULAS LINK *1 num) ;
 
 # háve gang
 SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 num + gen);
-SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 (<"dát">i) LINK 0 gen);
-SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 (<"boahtte">i));
+SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 ("<dát>"i) LINK 0 gen);
+SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 ("<boahtte>"i));
        ## Dán háve. Mun lean dan má
 	
 # miella 0 = sinn, 1 = oppfatning, 2 = behag
