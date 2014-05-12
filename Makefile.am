@@ -98,11 +98,11 @@ $(PREFIX2).automorf.bin: $(AP_LIB2)/$(LANG2).automorf.bin $(PREFIX2).autobil.bin
 ##	PRE-TAGGING
 ##
 
-$(PREFIX1).mor.rlx.bin: $(BASENAME).$(PREFIX1).mor.rlx
-	cg-comp $< $@
+$(PREFIX1).mor.rlx.bin: $(AP_LIB1)/$(LANG1).mor.rlx.bin
+	cp $< $@
 
-$(PREFIX1).syn.rlx.bin: $(BASENAME).$(PREFIX1).syn.rlx
-	cg-comp $< $@
+$(PREFIX1).syn.rlx.bin: $(AP_LIB1)/$(LANG1).syn.rlx.bin
+	cp $< $@
 
 $(PREFIX2).rlx.bin: $(AP_LIB2)/$(LANG2).rlx.bin
 	cp $< $@
