@@ -50,7 +50,7 @@ TARGETS_COMMON = \
 	echo " ?* " | hfst-regexp2fst > .deps/any-symbol.hfst
 	hfst-concatenate -1 .deps/$(PREFIX1).autobil.upper -2 .deps/any-symbol.hfst -o $@
 
-.deps/$(LANG1).automorf.hfst: $(BASENAME).$(PREFIX1).LR.att.gz .deps/.d
+.deps/$(LANG1).automorf.hfst: $(AP_LIB1)/$(BASENAME).$(PREFIX1).LR.att.gz .deps/.d
 	$(ZCAT) $< | hfst-txt2fst > $@
 
 .deps/$(LANG1).autogen.hfst: .deps/$(LANG1).automorf.hfst
