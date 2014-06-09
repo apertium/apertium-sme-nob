@@ -50,7 +50,7 @@ TARGETS_COMMON = \
 	echo " ?* " | hfst-regexp2fst > .deps/any-symbol.hfst
 	hfst-concatenate -1 .deps/$(PREFIX1).autobil.upper -2 .deps/any-symbol.hfst -o $@
 
-.deps/$(LANG1).automorf.hfst: $(AP_LIB1)/$(BASENAME).$(PREFIX1).LR.att.gz .deps/.d
+.deps/$(LANG1).automorf.hfst: $(AP_SRC1)/$(BASENAME).$(PREFIX1).LR.att.gz .deps/.d
 	$(ZCAT) $< | hfst-txt2fst > $@
 
 .deps/$(LANG1).autogen.hfst: .deps/$(LANG1).automorf.hfst
@@ -87,27 +87,27 @@ $(PREFIX2).autobil.bin: $(BASENAME).$(PREFIX1).dix
 ##
 ## 	NOB GENERATOR DICTIONARY
 ##
-$(PREFIX1).autogen.bin: $(AP_LIB2)/$(LANG2).autogen.bin
+$(PREFIX1).autogen.bin: $(AP_SRC2)/$(LANG2).autogen.bin
 	cp $< $@
 
 
-$(PREFIX2).automorf.bin: $(AP_LIB2)/$(LANG2).automorf.bin $(PREFIX2).autobil.bin
+$(PREFIX2).automorf.bin: $(AP_SRC2)/$(LANG2).automorf.bin $(PREFIX2).autobil.bin
 	lt-trim $^ $@
 
 ##
 ##	PRE-TAGGING
 ##
 
-$(PREFIX1).mor.rlx.bin: $(AP_LIB1)/$(LANG1).mor.rlx.bin
+$(PREFIX1).mor.rlx.bin: $(AP_SRC1)/$(LANG1).mor.rlx.bin
 	cp $< $@
 
-$(PREFIX1).syn.rlx.bin: $(AP_LIB1)/$(LANG1).syn.rlx.bin
+$(PREFIX1).syn.rlx.bin: $(AP_SRC1)/$(LANG1).syn.rlx.bin
 	cp $< $@
 
-$(PREFIX2).rlx.bin: $(AP_LIB2)/$(LANG2).rlx.bin
+$(PREFIX2).rlx.bin: $(AP_SRC2)/$(LANG2).rlx.bin
 	cp $< $@
 
-$(PREFIX2).prob: $(AP_LIB2)/$(LANG2).prob
+$(PREFIX2).prob: $(AP_SRC2)/$(LANG2).prob
 	cp $< $@
 
 ##
