@@ -48,21 +48,19 @@
     </pipeline>
   </mode>
 
-  <mode name="sme-nob-tagger">
+  <mode name="sme-nob-disam">
     <pipeline>
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-proc">
-        <file name="sme-nob.mor.rlx.bin"/>
-      </program>
-      <program name="cg-proc -1 -n -w">
-        <file name="sme-nob.syn.rlx.bin"/>
+      <program name="cg-conv -a"/>
+      <program name="vislcg3 --trace -g">
+        <file name="apertium-sme-nob.sme-nob.mor.rlx"/>
       </program>
     </pipeline>
   </mode>
 
-  <mode name="sme-nob-disam">
+  <mode name="sme-nob-syntax">
     <pipeline>
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
@@ -73,6 +71,20 @@
       </program>
       <program name="vislcg3 --trace -g">
         <file name="apertium-sme-nob.sme-nob.syn.rlx"/>
+      </program>
+    </pipeline>
+  </mode>
+
+  <mode name="sme-nob-tagger">
+    <pipeline>
+      <program name="hfst-proc -w -p">
+        <file name="sme-nob.automorf.hfst"/>
+      </program>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
     </pipeline>
   </mode>
