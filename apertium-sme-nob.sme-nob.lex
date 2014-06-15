@@ -1066,6 +1066,7 @@ SELECT ("gang"i) (0 ("<johtu>"i) LINK 0 ill) ;
 
 # oktavuohta 0 = kontakt, 1 = henvendelse, 2 = forbindelse, 3 = sammenheng
 SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 (sg loc)) ;
+SELECT ("forbindelse"i) (0 ("<oktavuohta>"i @←ADVL sg)) ;
 # dan oktavuođas go => i den forbindelse når
 SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 (pl loc)) ;
 # máŋgga oktavuođas => i mange sammenhenger
