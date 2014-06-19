@@ -35,6 +35,11 @@ TARGETS_COMMON = \
 # This include defines goals for install-modes, .deps/.d and .mode files:
 @ap_include@
 
+debug: \
+	$(BASENAME).$(PREFIX1).mor.rlx \
+	$(BASENAME).$(PREFIX1).syn.rlx \
+	$(BASENAME).$(PREFIX2).rlx
+
 ###############################################################################
 ## Transducers, disambiguation rules, transfer
 ###############################################################################
@@ -109,6 +114,19 @@ $(PREFIX2).rlx.bin: $(AP_SRC2)/$(LANG2).rlx.bin
 
 $(PREFIX2).prob: $(AP_SRC2)/$(LANG2).prob
 	cp $< $@
+
+
+# CG sources for debug modes:
+$(BASENAME).$(PREFIX1).mor.rlx: $(AP_SRC1)/disambiguation-mt-apertium.cg3
+	cp $< $@
+
+$(BASENAME).$(PREFIX1).syn.rlx: $(AP_SRC1)/functions-mt-apertium.cg3
+	cp $< $@
+
+$(BASENAME).$(PREFIX2).rlx: $(AP_SRC2)/apertium-$(LANG2).$(LANG2).rlx
+	cp $< $@
+
+
 
 ##
 ##	LEXICAL SELECTION
