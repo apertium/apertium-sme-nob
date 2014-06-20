@@ -1,0 +1,97 @@
+#!/bin/bash
+
+testtype="$1_tests"
+srclang="$2"
+trglang="$3"
+mode="$srclang-$trglang"
+html="$(dirname $0)/${testtype}.html"
+
+if [ "$#" -lt 3 ]; then echo "Usage: wiki-tests.sh {Regression,Pending} srclang trglang [update]"; exit 1; fi
+
+printf "Running $1-tests with mode \"$mode\""
+if [ "$4" == "update" ]; then
+    printf " with updated tests..."
+    tmphtml=`mktemp -t tmp.${srclang}-html.XXXXXXXXXX`;
+    wget -O "${tmphtml}" -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/"${testtype}"
+    if [[ -s "${tmphtml}" ]]; then
+	mv "${tmphtml}" "${html}"
+    else
+	rm "${tmphtml}"
+	echo "Couldn't fetch http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/${testtype}"
+    fi
+fi
+echo "..."
+
+if [[ ! -s "${html}" ]]; then echo "${html} does not exist or is empty (use 'update' option)"; exit 1; fi
+
+
+srclist=$(mktemp -t "tmp.${srclang}-src.XXXXXXXXXX")
+trglist=$(mktemp -t "tmp.${srclang}-trg.XXXXXXXXXX")
+tstlist=$(mktemp -t "tmp.${srclang}-tst.XXXXXXXXXX")
+
+ECHOE="echo -e"
+SED=sed
+if test x$(uname -s) = xDarwin; then 
+	ECHOE="gecho -e"
+	SED=gsed
+fi
+
+cleansrc () {
+    grep "<li> ($srclang)" | $SED 's/<.*li>//g' | $SED 's/ /_/g' | cut -f2- -d')' | $SED 's/<i>//g' | $SED 's/<\/i>//g' | cut -f2 -d'*' | $SED 's/→/!/g' | cut -f1 -d'!' | $SED 's/(note:/!/g' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/\([^,.?!:;]\)$/\1./g'
+}
+cleantrg () {
+    grep "<li> ($srclang)" | $SED 's/<.*li>//g' | $SED 's/ /_/g' | $SED 's/(\w\w)//g' | $SED 's/<i>//g' | cut -f2 -d'*' | $SED 's/<\/i>_→/!/g' | cut -f2 -d'!' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/\([^,.?!:;]\)$/\1./g'
+}
+cleansrc < "${html}" > "$srclist"
+cleantrg < "${html}" > "$trglist"
+
+
+# Translate
+apertium -d . "${mode}" < $srclist > $tstlist;
+
+if [ "$trglang" == "nob-old" ]; then
+    # put back on one line
+    cat $srclist | $SED 's/\.$//g' | $SED 's/$/ /g' | $SED ':a;N;$!ba;s/\n//g' | $SED 's/¶/\n/g' | $SED 's/^ *//g'  | $SED 's/ \([,?.]\) /\1 /g' | grep -v '^ *$' > $srclist.n; mv $srclist.n $srclist;
+    cat $trglist | $SED 's/\.$//g' > $trglist.n; mv $trglist.n $trglist;
+    cat $tstlist | $SED 's/\.$//g' | $SED 's/\t/ /g'  | $SED 's/$/ /g' | $SED ':a;N;$!ba;s/\n//g' | $SED 's/\\@¶/\n/g' | $SED 's/^ *//g'  | grep -v '^$' | $SED 's/ \([,?.]\) /\1 /g' > $tstlist.n; mv $tstlist.n $tstlist;
+fi
+
+
+# Output the MT vs ref translations:
+total=0
+correct=0
+for LINE in `paste $srclist $trglist $tstlist | $SED 's/ /%_%/g' | $SED 's/\t/!/g'`; do
+	SRC=`echo $LINE | $SED 's/%_%/ /g' | cut -f1 -d'!' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/   */ /g'`;
+	TRG=`echo $LINE | $SED 's/%_%/ /g' | cut -f2 -d'!' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/   */ /g'`;
+	TST=`echo $LINE | $SED 's/%_%/ /g' | cut -f3 -d'!' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/   */ /g'`;
+
+	if [ "$LINE" = "!!" ]; then
+		continue;
+	fi
+	echo $TRG | grep "^${TST}$" > /dev/null;	
+	if [ $? -eq 1 ]; then
+		$ECHOE -e "${mode}\t  ${SRC}\n\t- ${TRG}\n\t+ ${TST}\n\n";
+	else
+		$ECHOE "${mode}\t  ${SRC}\nWORKS\t  ${TST}\n\n";
+		correct=`expr $correct + 1`;
+	fi
+	total=`expr $total + 1`;
+done
+
+
+# Output the sums:
+CALC=
+working=
+if [ -x /usr/bin/calc ]; then
+    CALC="/usr/bin/calc"
+elif [ -x /opt/local/bin/calc ]; then
+    CALC="/opt/local/bin/calc"
+fi
+if [ -n "$CALC" ]; then
+	working=`$CALC $correct" / "$total" * 100" | head -c 7`;
+	working=", "$working"%";
+fi
+echo $correct" / "$total$working;
+
+rm -f $srclist $trglist $tstlist;
+#echo $srclist $trglist $tstlist;

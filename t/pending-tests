@@ -7,4 +7,4 @@ if [[ $# -eq 1 ]]; then
     GREP='WORKS'
 fi
 
-./wiki-tests.sh Pending sme nob update | grep -C $C "$GREP"
+$(dirname $0)/wiki-tests Pending sme nob update | grep -C $C "$GREP"
