@@ -70,7 +70,7 @@ $(PREFIX1).automorf-unrestricted.hfst: .deps/$(PREFIX1).automorf-unrestricted.hf
 	hfst-fst2fst -O -i $< -o $@
 
 # rm-deriv-cmp.twol is checked in to SVN since derivation-tags.txt is
-# not installed by giella-sme, this goal only run if --with-lang1 set
+# not installed by giella-sme; this goal only run if --with-lang1 set
 rm-deriv-cmp.twol: $(wildcard $(AP_SRC1)/filters/derivation-tags.txt*) dev/update-rm-deriv-cmp
 	test "$<" = "$^" || dev/update-rm-deriv-cmp $< $@
 # The wildcard+test means we ignore the goal if we don't find
