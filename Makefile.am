@@ -16,6 +16,7 @@ BASENAME=apertium-$(PREFIX1)
 
 TARGETS_COMMON = \
 	$(PREFIX1).automorf.hfst \
+	$(PREFIX1).automorf-unrestricted.hfst \
 	$(PREFIX2).autogen.hfst \
 	$(PREFIX1).mor.rlx.bin \
 	$(PREFIX1).syn.rlx.bin \
@@ -35,6 +36,7 @@ TARGETS_COMMON = \
 # This include defines goals for install-modes, .deps/.d and .mode files:
 @ap_include@
 
+# TODO: these should be installed by giella-sme
 debug: \
 	$(BASENAME).$(PREFIX1).mor.rlx \
 	$(BASENAME).$(PREFIX1).syn.rlx \
@@ -61,11 +63,28 @@ debug: \
 .deps/$(LANG1).autogen.hfst: .deps/$(LANG1).automorf.hfst
 	hfst-invert -i $< -o $@
 
-.deps/$(PREFIX1).automorf.hfst: .deps/$(LANG1).automorf.hfst .deps/$(PREFIX1).autobil.prefixes
-	hfst-compose-intersect -1 .deps/$(LANG1).automorf.hfst -2 .deps/$(PREFIX1).autobil.prefixes -o $@
+.deps/$(PREFIX1).automorf-unrestricted.hfst: .deps/$(LANG1).automorf.hfst .deps/$(PREFIX1).autobil.prefixes
+	hfst-compose-intersect -1 $< -2 .deps/$(PREFIX1).autobil.prefixes -o $@
+
+$(PREFIX1).automorf-unrestricted.hfst: .deps/$(PREFIX1).automorf-unrestricted.hfst
+	hfst-fst2fst -O -i $< -o $@
+
+# rm-deriv-cmp.twol is checked in to SVN since derivation-tags.txt is
+# not installed by giella-sme, this goal only run if --with-lang1 set
+rm-deriv-cmp.twol: $(wildcard $(AP_SRC1)/filters/derivation-tags.txt*) dev/update-rm-deriv-cmp
+	test "$<" = "$^" || dev/update-rm-deriv-cmp $< $@
+# The wildcard+test means we ignore the goal if we don't find
+# derivation-tags.txt
+
+.deps/rm-deriv-cmp.hfst: rm-deriv-cmp.twol .deps/.d
+	hfst-twolc -i $< -o $@
+
+.deps/$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf-unrestricted.hfst .deps/rm-deriv-cmp.hfst
+	hfst-compose-intersect -1 $< -2 .deps/rm-deriv-cmp.hfst -o $@
 
 $(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf.hfst
 	hfst-fst2fst -O -i $< -o $@
+
 
 $(PREFIX2).autogen.hfst: .deps/$(LANG1).autogen.hfst
 	hfst-fst2fst -O -i $< -o $@

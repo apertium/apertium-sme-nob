@@ -1,0 +1,58 @@
+#!/bin/bash
+
+set -e -u
+
+if [[ $# -ne 2 ]]; then
+    echo "Usage: $0 derivation-tags.txt rm-deriv-cmp.twol"
+    exit 2
+fi
+
+tagfile=$1
+twolfile=$2
+
+derivtags () {
+    # Does the same munging as the apertiumtags.txt rule in
+    # gtcore/langs-templates/und/src/tagsets/Makefile.am – except we
+    # also escape underscore `_' since it has special meaning in twol
+    <"${tagfile}" \
+	tr -d '+' \
+	| tr '#' '+' \
+	| tr '[:upper:]' '[:lower:]' \
+        | awk '{gsub(/\//, "%_"); print "%<"$0"%>"}'
+}
+
+cmptags () {
+    echo '%<cmp%>'
+}
+
+cat >"${twolfile}" <<EOF
+Alphabet
+
+$(cmptags)
+
+$(derivtags)
+
+;				! end of Alphabet
+
+Sets
+
+Cmp =
+$(cmptags)
+;
+
+Derivations =
+$(derivtags)
+;
+
+;				! end of Sets
+
+Rules
+
+"Don't allow compounds until we've fixed trimming, choosing-lexicalised-over-compounds, sem-tags-being-messed-up-in-compounds, etc. etc."
+V /<= _ ; where V in Cmp;
+
+"Only allow those derivations that we've made sure survive translation"
+V /<= _ ; where V in Derivations;
+
+;				! end of Rules
+EOF
