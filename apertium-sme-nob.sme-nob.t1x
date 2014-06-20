@@ -1812,7 +1812,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </when>
       </choose>
       
-      <choose c="Output the main predicate, verb/adj/noun/adv/etc.">
+      <choose c="Output the main predicate, verb/adj/adv/etc.">
         <when c="adv (eg. negative)">
           <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
           <append n="c_name"><lit v="adv"/></append>
@@ -1839,12 +1839,6 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
               </lu>
             </chunk>
           </out>
-        </when>
-        <when c="Noun">
-          <test><not><equal><clip pos="1" side="tl" part="a_nom_all"/><lit v=""/></equal></not></test>
-          <let><var n="pre-nom"/><var n="pre-verb"/></let>
-          <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-          <call-macro n="out_nom"><with-param pos="1"/></call-macro>
         </when>
         <when c="Adj">
           <test><not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
@@ -1949,7 +1943,6 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       <choose><when c="the lemq was not output in the above 'otherwise'; output as a chunk here">
         <test><and>
           <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
-          <equal><clip pos="1" side="tl" part="a_nom_all"/><lit v=""/></equal>
           <equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal>
           <not><equal><clip pos="1" side="tl" part="lemq"/><lit v=""/></equal></not>
         </and></test>
@@ -4599,7 +4592,6 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
     <rule comment="REGLA: VERB (tl: VERB, ADV, ADJ, NOUN)
                    See out_verb macro.
                    -----
-                   dansún => dans (noun, explicitly in bidix)
                    oažžun => fående (adj.pprs, using fallback rule)
                    ii => adv.p3.sg{ikke}
                    Itgo => adv.p2.sg.Qst{ikke}">
