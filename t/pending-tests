@@ -1,10 +1,10 @@
 #!/bin/bash
 
 C=2
-GREP='.'
+grep='.'
 if [[ $# -eq 1 ]]; then
     C=$1
-    GREP='WORKS'
+    grep='WORKS'
 fi
 
-$(dirname $0)/wiki-tests Pending sme nob update | grep -C $C "$GREP"
+$(dirname $0)/wiki-tests Pending sme nob update | grep -C $C "${grep}"

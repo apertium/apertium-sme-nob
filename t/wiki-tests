@@ -1,97 +1,112 @@
 #!/bin/bash
 
-testtype="$1_tests"
-srclang="$2"
-trglang="$3"
-mode="$srclang-$trglang"
-html="$(dirname $0)/${testtype}.html"
+set -e -u
 
-if [ "$#" -lt 3 ]; then echo "Usage: wiki-tests.sh {Regression,Pending} srclang trglang [update]"; exit 1; fi
+declare -r BASEURL="http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian"
 
-printf "Running $1-tests with mode \"$mode\""
-if [ "$4" == "update" ]; then
-    printf " with updated tests..."
-    tmphtml=`mktemp -t tmp.${srclang}-html.XXXXXXXXXX`;
-    wget -O "${tmphtml}" -q http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/"${testtype}"
-    if [[ -s "${tmphtml}" ]]; then
-	mv "${tmphtml}" "${html}"
-    else
-	rm "${tmphtml}"
-	echo "Couldn't fetch http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/${testtype}"
-    fi
+if [[ $# -lt 3 || $# -gt 4 ]]; then
+    echo "Usage: wiki-tests.sh {Regression,Pending} SRCLANG trglang [update]"
+    exit 2
 fi
-echo "..."
+declare -r TESTTYPE="$1_tests"
+declare -r SRCLANG="$2"
+declare -r TRGLANG="$3"
+if [[ $# -eq 4 ]]; then
+    declare -r UPDATE="$4"
+else
+    declare -r UPDATE=
+fi
+declare -r MODE="$SRCLANG-$TRGLANG"
+declare -r HTML="$(dirname $0)/${TESTTYPE}.html"
 
-if [[ ! -s "${html}" ]]; then echo "${html} does not exist or is empty (use 'update' option)"; exit 1; fi
 
-
-srclist=$(mktemp -t "tmp.${srclang}-src.XXXXXXXXXX")
-trglist=$(mktemp -t "tmp.${srclang}-trg.XXXXXXXXXX")
-tstlist=$(mktemp -t "tmp.${srclang}-tst.XXXXXXXXXX")
-
-ECHOE="echo -e"
+# Workarounds for Mac's:
 SED=sed
-if test x$(uname -s) = xDarwin; then 
-	ECHOE="gecho -e"
+if [[ "$(uname -s)" = Darwin ]]; then
 	SED=gsed
 fi
+declare -r SED
 
+
+
+fetchtests () {
+    if [[ "${UPDATE}" = update ]]; then
+	tmp=$(mktemp -t wiki-tests.html.XXXXXXXXXX)
+	wget -O "${tmp}" -q "${BASEURL}/${TESTTYPE}"
+	if [[ -s "${tmp}" ]]; then
+	    mv "${tmp}" "${HTML}"
+	else
+	    rm "${tmp}"
+	    echo "Couldn't fetch ${BASEURL}/${TESTTYPE}" >&2
+	fi
+    fi
+
+    if [[ ! -s "${HTML}" ]]; then
+	echo "${HTML} does not exist or is empty (use 'update' option)" >&2
+	exit 1
+    fi
+}
+
+cleantst () {
+    $SED 's/^ *//; s/ *$//; s/\([^,.?!:;]\)$/\1./g; s/   */ /g'
+}
 cleansrc () {
-    grep "<li> ($srclang)" | $SED 's/<.*li>//g' | $SED 's/ /_/g' | cut -f2- -d')' | $SED 's/<i>//g' | $SED 's/<\/i>//g' | cut -f2 -d'*' | $SED 's/→/!/g' | cut -f1 -d'!' | $SED 's/(note:/!/g' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/\([^,.?!:;]\)$/\1./g'
+    grep -o "<li> (${SRCLANG})[^→]*" |$SED "s%</*[^>]*>%%g; s% *(${SRCLANG}) *%%" | cleantst
 }
 cleantrg () {
-    grep "<li> ($srclang)" | $SED 's/<.*li>//g' | $SED 's/ /_/g' | $SED 's/(\w\w)//g' | $SED 's/<i>//g' | cut -f2 -d'*' | $SED 's/<\/i>_→/!/g' | cut -f2 -d'!' | $SED 's/_/ /g' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/\([^,.?!:;]\)$/\1./g'
+    grep -o "<li> (${SRCLANG}).*" | $SED 's%[^→]*→ *%%'  | cleantst
 }
-cleansrc < "${html}" > "$srclist"
-cleantrg < "${html}" > "$trglist"
 
-
-# Translate
-apertium -d . "${mode}" < $srclist > $tstlist;
-
-if [ "$trglang" == "nob-old" ]; then
-    # put back on one line
-    cat $srclist | $SED 's/\.$//g' | $SED 's/$/ /g' | $SED ':a;N;$!ba;s/\n//g' | $SED 's/¶/\n/g' | $SED 's/^ *//g'  | $SED 's/ \([,?.]\) /\1 /g' | grep -v '^ *$' > $srclist.n; mv $srclist.n $srclist;
-    cat $trglist | $SED 's/\.$//g' > $trglist.n; mv $trglist.n $trglist;
-    cat $tstlist | $SED 's/\.$//g' | $SED 's/\t/ /g'  | $SED 's/$/ /g' | $SED ':a;N;$!ba;s/\n//g' | $SED 's/\\@¶/\n/g' | $SED 's/^ *//g'  | grep -v '^$' | $SED 's/ \([,?.]\) /\1 /g' > $tstlist.n; mv $tstlist.n $tstlist;
-fi
-
-
-# Output the MT vs ref translations:
-total=0
-correct=0
-for LINE in `paste $srclist $trglist $tstlist | $SED 's/ /%_%/g' | $SED 's/\t/!/g'`; do
-	SRC=`echo $LINE | $SED 's/%_%/ /g' | cut -f1 -d'!' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/   */ /g'`;
-	TRG=`echo $LINE | $SED 's/%_%/ /g' | cut -f2 -d'!' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/   */ /g'`;
-	TST=`echo $LINE | $SED 's/%_%/ /g' | cut -f3 -d'!' | $SED 's/^ *//g' | $SED 's/ *$//g' | $SED 's/   */ /g'`;
-
-	if [ "$LINE" = "!!" ]; then
-		continue;
-	fi
-	echo $TRG | grep "^${TST}$" > /dev/null;	
-	if [ $? -eq 1 ]; then
-		$ECHOE -e "${mode}\t  ${SRC}\n\t- ${TRG}\n\t+ ${TST}\n\n";
+summary () {
+    # Output the MT vs ref translations:
+    declare -i total=0
+    declare -i correct=0
+    declare -r sep=''
+    while IFS="${sep}" read -r src trg tst; do
+	if [[ "${trg}" = "${tst}" ]]; then
+	    printf "%s\t  %s\nWORKS\t  %s\n\n\n" "${MODE}" "${src}" "${tst}"
+	    (( ++correct ))
 	else
-		$ECHOE "${mode}\t  ${SRC}\nWORKS\t  ${TST}\n\n";
-		correct=`expr $correct + 1`;
+	    (( 1 ))
+	    printf "%s\t  %s\n\t- %s\n\t+ %s\n\n\n" "${MODE}" "${src}" "${trg}" "${tst}"
 	fi
-	total=`expr $total + 1`;
-done
+	(( ++total ))
+    done < <(paste -d "${sep}" "${srclist}" "${trglist}" "${tstlist}")
 
+    # Output the sums:
+    pct=
+    if command -V calc &>/dev/null; then
+	pct=$(calc -p "${correct} / ${total} * 100")
+	pct=", ${pct}%"
+    fi
+    echo "${correct} / ${total}${pct}"
+}
 
-# Output the sums:
-CALC=
-working=
-if [ -x /usr/bin/calc ]; then
-    CALC="/usr/bin/calc"
-elif [ -x /opt/local/bin/calc ]; then
-    CALC="/opt/local/bin/calc"
-fi
-if [ -n "$CALC" ]; then
-	working=`$CALC $correct" / "$total" * 100" | head -c 7`;
-	working=", "$working"%";
-fi
-echo $correct" / "$total$working;
+showrevisions () {
+    ( svn info 2>/dev/null || git svn info  ) | grep ^Revision
+    grep ^AP_SRC "$(dirname $0)/../config.log" | while IFS='=' read -r var dir; do
+	printf "%s " "${var}"
+	( cd "${dir//\'}"; ( svn info 2>/dev/null || git svn info  ) | grep ^Revision )
+    done
+}
 
-rm -f $srclist $trglist $tstlist;
-#echo $srclist $trglist $tstlist;
+cleanup () {
+    echo
+    #rm -f "${srclist}" "${trglist}" "${tstlist}"
+}
+trap 'cleanup' EXIT
+srclist=$(mktemp -t "tmp.${SRCLANG}-src.XXXXXXXXXX")
+trglist=$(mktemp -t "tmp.${SRCLANG}-trg.XXXXXXXXXX")
+tstlist=$(mktemp -t "tmp.${SRCLANG}-tst.XXXXXXXXXX")
+
+showrevisions
+printf "Running $1-tests with mode \"${MODE}\" "; [[ -n "${UPDATE}" ]] && printf "with updated tests "; echo "..."
+echo
+fetchtests
+cleansrc < "${HTML}" > "${srclist}"
+cleantrg < "${HTML}" > "${trglist}"
+(
+    set -o pipefail
+    apertium -d . "${MODE}" < "${srclist}" | cleantst > "${tstlist}"
+)
+summary
