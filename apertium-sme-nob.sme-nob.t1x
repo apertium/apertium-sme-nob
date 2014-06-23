@@ -2780,6 +2780,14 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
                    -----
                    22 jahkásaš Tine
                    See NUM_MOD NOM">
+      <!--
+          intended matches:
+          okta<num><sg><nom><@→N>/en<det><qnt><GD><sg><nom><@→N> gassat<a><attr><@→N>/tykk<adj><sint><posi><GD><ND><@→N> nisu<n><sg><nom><@SUBJ→>/kvinne<n><f><sg><nom><@SUBJ→>
+          
+          more suspicious matches:
+          C<num><nom><@→N>/C<det><qnt><pl><nom><fixedcase><@→N> Liekkas<a><superl><attr><@→N>/Varm<adj><sint><sup><attr><@→N> mánotbadji<n><sg><nom><@SUBJ→>/måned<n><m><sg><nom><@SUBJ→>
+          1976<num><sg><acc><@→N>/1976<det><qnt><pl><acc><@→N> dálá<a><attr><@→N>/nåtidig<adj><sint><posi><GD><ND><@→N> lullisámegiella<n><sg><gen><@Num←>/sørsamisk<n><m><sg><gen><@Num←>
+      -->
       <pattern>
         <pattern-item n="num_mod"/>
         <pattern-item n="adj_attr"/>
@@ -2792,6 +2800,21 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
 
         <!-- not set_defnes2 here, seems to work better just looking at head syntax tag: -->
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+
+        <choose>
+          <when>
+            <!-- TODO: list of 'adj-noun' type adj's? (always def after num)-->
+            <!-- TODO: other relevant rules? -->
+            <test><equal><clip pos="2" side="tl" part="lemh"/><lit v="år gammel"/></equal></test>
+            <let><var n="tmp"/><lit-tag v="def"/></let>
+          </when>
+          <!-- We set use chunk defnes here for both adj and nom,
+               so that if defnes changes in t2x/t3x, both adj and nom
+               get the change in t4x -->
+          <otherwise>
+            <let><var n="tmp"/><lit-tag v="3"/></let>
+          </otherwise>
+        </choose>
         
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <let>
@@ -2811,10 +2834,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
               <clip pos="2" side="tl" part="grau"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
-              <!-- We set use chunk defnes here for both adj and nom,
-                   so that if defnes changes in t2x/t3x, both adj and nom
-                   get the change in t4x -->
-              <lit-tag v="3"/>
+              <var n="tmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="2"/>
