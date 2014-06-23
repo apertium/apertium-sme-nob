@@ -1101,6 +1101,14 @@ SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 acc)(*0 ("<sáddet>"i) OR ("<čálli
 	## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu. 
 	## Lei Ájlin gii sáddii dieđu.
 
+# lávki 0 = skritt, 1 = løk
+SELECT ("løk"i) (0 ("<lávki>"i))  (*1 ("<leat>") LINK 0 VFIN LINK *1 ("<čuohppat>"i) OR ("<čuohpadit>"i) LINK 0 prfprc) ;
+	## 	Danne go 	lávki 	lea antiseptalaš , de dat veahkeha go lea čuohpadan , gaskkahallan dahje go leat nárážat . 
+	##  Lilja 	lávkkit 	vuovdit ! 
+SELECT ("skritt"i) (0 ("<lávki>"i)) ;
+	## Sámi vuođđoskuvlaoahpaheaddjioahpu láhkaásahus lea 	lávkin 	dan guvlui , mainna sámiid iešmearrideapmi dahkko duohtan ja čalmmustahttojuvvo Norggas ja eará Davviriikkain .
+	## Joavkku bealis deattuhuvvo ahte raporta lea vuosttaš 	lávki 	stuorát ovddidanbarggus . 
+	#DEFAULT
 
 
 # Adjectives
