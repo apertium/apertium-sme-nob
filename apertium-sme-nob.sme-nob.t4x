@@ -334,6 +334,24 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
               c="Noun phrases with these syntactic functions should not have a determiner (neither ind nor def)">
       <list-item v="&lt;@←PPRED&gt;"/>
     </def-list>
+    <def-list n="adj-genders" c="possible adj genders">
+      <list-item v="&lt;m&gt;"/>
+      <list-item v="&lt;mf&gt;"/>
+      <list-item v="&lt;f&gt;"/>
+      <list-item v="&lt;nt&gt;"/>
+      <list-item v="&lt;un&gt;"/>
+    </def-list>
+    <def-list n="det-genders" c="possible determiner genders">
+      <list-item v="&lt;m&gt;"/>
+      <list-item v="&lt;f&gt;"/>
+      <list-item v="&lt;nt&gt;"/>
+    </def-list>
+    <def-list n="pron.p3.sg-genders" c="possible pronoun genders">
+      <list-item v="&lt;m&gt;"/>
+      <list-item v="&lt;mf&gt;"/>
+      <list-item v="&lt;f&gt;"/>
+      <list-item v="&lt;nt&gt;"/>
+    </def-list>
     <def-list n="det.sp.def"
               c="These determiners only ever have sp as number, def as defnes.">
       <list-item v="samme"/>
@@ -415,13 +433,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <let><clip pos="2" part="case"/><lit-tag v="acc"/></let>
       </when></choose>
       
-      <choose><when>
+      <choose><when c="try chunk gender">
         <test><and>
           <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
           <equal><clip pos="2" part="pers"/><lit-tag v="p3"/></equal>
-          <not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not>
-          <not><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></not>
-          <not><equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal></not>
+          <in><clip pos="1" part="gen"/><list n="pron.p3.sg-genders"/></in>
         </and></test>
         <choose><when>
           <test><not><and>
@@ -444,7 +460,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <let><clip pos="2" part="lemh"/><get-case-from pos="1"><lit v="han"/></get-case-from></let>
         </when></choose>
       </when></choose>
-      <choose><when>
+      <choose><when c="fallback if none of above">
         <test><or>
           <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
           <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
@@ -452,7 +468,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
         <let><clip pos="2" part="gen"/><lit-tag v="mf"/></let>
       </when></choose>
       <choose>
-        <when>
+        <when c="p3.sg.mf should be m">
           <test><and>
             <equal><clip pos="2" part="pers"/><lit-tag v="p3"/></equal>
             <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
@@ -548,11 +564,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           </or>
         </and></test>
         <choose><when c="try chunk gender">
-          <test><and>
-            <not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not>
-            <not><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></not>
-            <not><equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal></not>
-          </and></test>
+          <test><in><clip pos="1" part="gen"/><list n="det-genders"/></in></test>
           <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
         </when></choose>
         <choose><when c="default gender">
@@ -625,11 +637,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           </or>
         </and></test>
         <choose><when c="try object gender">
-          <test><and>
-            <not><equal><clip pos="3" part="gen"/><lit v=""/></equal></not>
-            <not><equal><clip pos="3" part="gen"/><lit-tag v="GD"/></equal></not>
-            <not><equal><clip pos="3" part="gen"/><lit-tag v="GD_pers"/></equal></not>
-          </and></test>
+          <test><in><clip pos="3" part="gen"/><list n="det-genders"/></in></test>
           <let><clip pos="2" part="gen"/><clip pos="3" part="gen"/></let>
         </when></choose>
       </when></choose>
@@ -711,11 +719,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       </when></choose>
       
       <choose><when>
-        <test><and>
-          <not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not>
-          <not><equal><clip pos="1" part="gen"/><lit v="GD"/></equal></not>
-          <not><equal><clip pos="1" part="gen"/><lit v="GD_pers"/></equal></not>
-        </and></test>
+        <test><in><clip pos="1" part="gen"/><list n="adj-genders"/></in></test>
         <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
       </when></choose>
       <choose>
