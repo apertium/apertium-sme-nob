@@ -256,6 +256,7 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="b" tags="adv.abbr.*"/>
     </def-cat>
     <def-cat n="ij-adj">
+      <cat-item lemma="buorre" tags="a.sg.*"/>
       <cat-item lemma="ilolaš" tags="a.sg.*"/>
       <cat-item lemma="ilolaš" tags="a.attr.*"/>
     </def-cat>
@@ -1961,7 +1962,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
   
   <section-rules>
     <!-- <rules: MWE interjections (which can't be in analyser as multiwords) -->
-    <rule comment="REGLA: IJ-ADJ IJ-NOM">
+    <rule comment="REGLA: IJ-ADJ IJ-NOM
+                   buorre eahket">
       <pattern>
         <pattern-item n="ij-adj"/>
         <pattern-item n="ij-nom"/>
