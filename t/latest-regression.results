@@ -1,5 +1,5 @@
-Revision: 54898
-AP_SRC1 Revision: 96709
+Revision: 54912
+AP_SRC1 Revision: 96738
 AP_SRC2 Revision: 54196
 Running Regression-tests with mode "sme-nob" with updated tests ...
 
@@ -937,8 +937,7 @@ WORKS	  1 () 1998-99 Utjamningsmeldingas ord.
 
 
 sme-nob	  u-vearba Burton-upon-Trent.
-	- et u-verb Burton-upon-Trent.
-	+ u-et verb Burton*upon-*Trent.
+WORKS	  et u-verb Burton-upon-Trent.
 
 
 sme-nob	  su iežas.
@@ -947,7 +946,8 @@ sme-nob	  su iežas.
 
 
 sme-nob	  eanan-.
-WORKS	  en jord-.
+	- en jord-.
+	+ som jord-.
 
 
 sme-nob	  eanan- ja luonddudoahpagiid.
