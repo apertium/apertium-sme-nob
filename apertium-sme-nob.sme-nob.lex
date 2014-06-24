@@ -1109,6 +1109,26 @@ SELECT ("skritt"i) (0 ("<lávki>"i)) ;
 	## Sámi vuođđoskuvlaoahpaheaddjioahpu láhkaásahus lea 	lávkin 	dan guvlui , mainna sámiid iešmearrideapmi dahkko duohtan ja čalmmustahttojuvvo Norggas ja eará Davviriikkain .
 	## Joavkku bealis deattuhuvvo ahte raporta lea vuosttaš 	lávki 	stuorát ovddidanbarggus . 
 	#DEFAULT
+	
+	
+	
+# gorka 0 = kork (badekar, flaske etc.), 1 = dupp, 2 = kjeft
+SELECT ("kjeft"i) (0 ("<gorka>"i) OR ("<goarka>"i))  (*-1 ("<doallat>"i))(*1 ("<gitta>"i)) ;
+	## 	Go ain rádjá ja garruda, de Vállán meron rogáda: «Doala gorkkat gitta!» Gohčui orrut jaska billa vuolin. 
+SELECT ("kjeft"i) (0 ("<gorka>"i) OR ("<goarka>"i))  (-1 ("<gallji>"i)) ;
+	## Mannan ija don leat mu buoremus vuojána gaikkodan , biro , beargalat , helveha sáhtánas , galjes 	gorka 	, guhkes bátni !
+#SELECT ("kjeft"i) (0 ("<gorka>"i))  (-1 (Sem/Hum) LINK 0 Gen) ; 
+	#SEMTAG rule
+
+SELECT ("dupp"i) (0 ("<gorka>"i) OR ("<goarka>"i)) (*-1 ("<siibma>"i)) ;
+	##	Siimma giddejedje erenoamáš 	korkii.
+	#SEMTAG rule: Tool-catch
+	
+SELECT ("kork"i) (0 ("<gorka>"i) OR ("<goarka>"i)) ;
+	## Son sruvii 	goarkka 	boahtalii ja rájai loahpa boahtte háve várás . - kork.
+	## Olmmoš oppaáigge guoraha 	goarkkaid 	čázis. 
+
+
 
 
 # Adjectives
