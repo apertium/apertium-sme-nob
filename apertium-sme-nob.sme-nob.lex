@@ -1118,17 +1118,32 @@ SELECT ("kjeft"i) (0 ("<gorka>"i) OR ("<goarka>"i))  (*-1 ("<doallat>"i))(*1 ("<
 SELECT ("kjeft"i) (0 ("<gorka>"i) OR ("<goarka>"i))  (-1 ("<gallji>"i)) ;
 	## Mannan ija don leat mu buoremus vuojána gaikkodan , biro , beargalat , helveha sáhtánas , galjes 	gorka 	, guhkes bátni !
 #SELECT ("kjeft"i) (0 ("<gorka>"i))  (-1 (Sem/Hum) LINK 0 Gen) ; 
-	#SEMTAG rule
-
+	#SEMTAG rule: Hum
 SELECT ("dupp"i) (0 ("<gorka>"i) OR ("<goarka>"i)) (*-1 ("<siibma>"i)) ;
 	##	Siimma giddejedje erenoamáš 	korkii.
 	#SEMTAG rule: Tool-catch
-	
-SELECT ("kork"i) (0 ("<gorka>"i) OR ("<goarka>"i)) ;
+	SELECT ("kork"i) (0 ("<gorka>"i) OR ("<goarka>"i)) ;
 	## Son sruvii 	goarkka 	boahtalii ja rájai loahpa boahtte háve várás . - kork.
 	## Olmmoš oppaáigge guoraha 	goarkkaid 	čázis. 
 
 
+# johtolat 0 = trafikk, 1 = flyttevei
+SELECT ("trafikk"i) (0 ("<johtolat>"i) LINK NOT 0 pl)(-1 ("<ollu>"i) OR ("<eanet>"i));
+	## 1938 rádjái lei Porsáŋggu-Kárášjoga máđija ráigge eanemus 	johtolat 	, go Kárášjoga ja Suoma gaskka vudje eanas dálvet , muhto maŋŋel go Kárášjohgeaidnu gárvánii.
+SELECT ("flyttevei"i) (0 ("<johtolat>"i) LINK 0 pl) ;
+	## 	Ii leat dasto čielggas ledje go dát vuotnasápmelaččat dalle juo álggahan guhkit 	johtolagaid.
+SELECT ("flyttevei"i) (0 ("<johtolat>"i)) ;
+	## Oallugat deattuhedje man deaŧalaš 	johtolat 	lei boazodollui . ???
+	## Dákkár johtin ja 	johtolat 	gaskal dálveorohagaid siseatnamis ja geasseorohagaid mearragátteváriin lea ekologalaš heiveheapmi mii gottiin lei ja masa boazobargi lea iežas eallima heivehan .
+	## lea šaddan nu ahte hámmandilálašvuođat ja guollebivdohámmana guovddáš sajádat riddoruvttu985 johtolaga ektui lea deaŧalaččat go lagamus 	johtolat 	guollebáikái . 
+
+
+# vealgi 0 = gjeld, 1 = lån
+SELECT ("lån"i) (0 ("<vealgi>"i) LINK 0 pl)(*-1 ("<dárbbašit>"i)) ;	
+	## Gáivuona suohkan áigo nannet ruhtadeamiid dakkár biergasiidda , jos olbmot dárbbašit 	velggiid 	go galget ruhtadit oastimiid .
+SELECT ("lån"i) (0 ("<vealgi>"i) LINK 0 pl)(*1 ("<guhkesáiggivealgi>"i)) ; 
+	## Dat 	vealgi 	lea guhkesáiggivealgi , nu ahte dat gal mákso dál ruovttoluotta nu movt galgá . 
+SELECT ("gjeld"i) (0 ("<vealgi>"i)) ;
 
 
 # Adjectives
