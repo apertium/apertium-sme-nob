@@ -1167,6 +1167,28 @@ SELECT ("triks"i) (0 ("<goansta>"i))(*-1 ("<fuobmát>"i) OR ("<dahkat>"i)) ;
 SELECT ("kunst"i) (0 ("<goansta>"i)) ;
 	## Dalle ii leat mihkke ge 	goansttaid 	jeakki rasttildit . (maybe translated in singular?)
 	## – Rektor doppe lei hui mielas ja oahpaheaddjit maiddái , ja go álggiimet hupmat dan birra , de ii orron goanstage 	. 
+	
+
+# jietna 0 = stemme, 1 = lyd
+
+SELECT ("lyd"i) (0 ("<jietna>"i))(1 cc OR COMMA LINK 1 ("<govva>"i)) ;
+  	## Ođđaáigásaš servodagas lea dárbbašlaš máhttit hálddašit iešguđet mediaid ja teavsttaid main leat ollu iešguđetlágan oasit biddjon oktii , nugo čála , 	jietna 	ja govva ja seammás oaidnit oktavuođaid giela ja árbemáhtu gaskkas . 
+  	## Multifunkšunála oahpponeavvuin sáhttet leat olu iešguđetlágán komponeanttat ja heivehuvvon oasit, nugo jienat, govat ja teavsttat , eaige dat dárbbaš leat dušše ovtta vásedin ulbmila váste ráhkaduvvon .
+SELECT ("lyd"i) (0 ("<jietna>"i))(-1 gen LINK 0 ("<luondu>"i) OR ("<skuter>"i));  
+  	## Go gullá luonddu jienaid, go oaidná - de sáhttá maid bidjat sániid sihke jienaide ja dasa maid oaidná luonddus .
+  	#Sem/Plc OR Sem/Veh
+
+SELECT ("lyd"i) (0 ("<jietna>"i))(-1 ("<geaidut>"i) OR ("<ráhkadit>"i));  
+  	## Skutera 	jietna 	juoga sajis gullo . 
+  	## Nils Petter Molvær geaidu 	jienaid 	iežas trompehtain . 
+  	## Eará ii ávkkut , nugo čuoikabalddonasat mat ráhkadit jiena, lohká divredutki Preben Ottesen . 
+  	## De soai gullaba issoras ártegis 	jiena 	. 
+  	
+SELECT ("stemme"i) (0 ("<jietna>"i));
+	## - Sámediggi cealká earret eará ahte dat stuora erohusat mat leat dan ektui galle 	jiena 	leat juohke áirasa duohken geanohuhttet Sámedikki lobálašvuođa sihke sámi servodagas ja eará eisseválddiid ektui . 
+  	## ( 1 ) Jus jienasteaddji ii goastta válgalatnjii , de sáhttá son addit 	jiena 	guovtti jietnavuostáváldái dastán válgalanja olggobealde . 
+
+
 
 # Adjectives
 # ==========
