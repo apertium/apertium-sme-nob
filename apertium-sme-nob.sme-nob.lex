@@ -1196,7 +1196,7 @@ SELECT ("kjørerein"i) (0 ("<vuoján>"i))(*1 ("<vuoitit>"i)) ;
   	## Máhtte Niillas Gaup 	vuoján 	Ieš vuittii reahkavuodjima ja Máret Áile Sara vuoján Dolgii vuittii ges sabetvuodjimiid Sámi Grand Prix gilvvuin  beassášlávvordaga Guovdageainnus .
 	## Nils Henrik Eira 	vuojániin 	Summitiin , mas lei buoremus áigi olles gilvvuin ja oaččui ge Máze Gilisearvvis dan ovddas  dan stuorámus pokála . 
 	## Sara vuot čájehii ahte son lea okta Sámi buoremus vuddjiin ja sus leat buorre 	vuoján, go mannan vahkkoloahpa vuittii SVL-heargecupa maŋemus vuodjima Mázes . 
-SELECT ("kjørertøy"i) (0 ("<vuoján>"i));  
+SELECT ("kjøretøy"i) (0 ("<vuoján>"i));  
   	## Guhkes gaskkaid ii leat gánnáhahtti dákkar 	vuojániiguin 	vuodjit .  - fartøy
 	## Diesel 	vuojánat 	main ollislaš deaddu lea 3500 gilus gitta 12000 gilui 990,- ru. . 
 	## Njealjejuvllat 	vuoján 	roasmmohuvai vehá . 
