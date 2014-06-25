@@ -4,18 +4,31 @@ set -e -u
 
 declare -r BASEURL="http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian"
 
-if [[ $# -lt 3 || $# -gt 4 ]]; then
-    echo "Usage: wiki-tests.sh {Regression,Pending} SRCLANG trglang [update]"
+UPDATE=false
+ONLYPASS=false
+ONLYFAIL=false
+while getopts "upf" opt; do
+     case "$opt" in
+         u) UPDATE=true;;
+         f) ONLYFAIL=true;;
+         p) ONLYPASS=true;;
+	 \?) echo "Invalid option" >&2; exit 2;;
+	 :) echo "Option requires an argument." >&2; exit 2;;
+     esac
+done
+shift "$((OPTIND-1))"
+if [[ $# -ne 3 ]] || ( $ONLYPASS && $ONLYFAIL ); then
+    echo "Usage: $0 [-u] [-p|-f] {Regression,Pending} srclang trglang"
+    echo "-u       Use updated tests"
+    echo "-p       Show only passing tests"
+    echo "-f       Show only failing tests"
     exit 2
 fi
 declare -r TESTTYPE="$1_tests"
 declare -r SRCLANG="$2"
 declare -r TRGLANG="$3"
-if [[ $# -eq 4 ]]; then
-    declare -r UPDATE="$4"
-else
-    declare -r UPDATE=
-fi
+
+# Derived options:
 declare -r MODE="$SRCLANG-$TRGLANG"
 declare -r HTML="$(dirname $0)/${TESTTYPE}.html"
 
@@ -30,7 +43,7 @@ declare -r SED
 
 
 fetchtests () {
-    if [[ "${UPDATE}" = update ]]; then
+    if ${UPDATE}; then
 	tmp=$(mktemp -t wiki-tests.html.XXXXXXXXXX)
 	wget -O "${tmp}" -q "${BASEURL}/${TESTTYPE}"
 	if [[ -s "${tmp}" ]]; then
@@ -42,7 +55,7 @@ fetchtests () {
     fi
 
     if [[ ! -s "${HTML}" ]]; then
-	echo "${HTML} does not exist or is empty (use 'update' option)" >&2
+	echo "${HTML} does not exist or is empty (use '-u' option)" >&2
 	exit 1
     fi
 }
@@ -64,11 +77,11 @@ summary () {
     declare -r sep=''
     while IFS="${sep}" read -r src trg tst; do
 	if [[ "${trg}" = "${tst}" ]]; then
-	    printf "%s\t  %s\nWORKS\t  %s\n\n\n" "${MODE}" "${src}" "${tst}"
 	    (( ++correct ))
+	    $ONLYFAIL || printf "%s\t  %s\nWORKS\t  %s\n\n\n" "${MODE}" "${src}" "${tst}"
 	else
 	    (( 1 ))
-	    printf "%s\t  %s\n\t- %s\n\t+ %s\n\n\n" "${MODE}" "${src}" "${trg}" "${tst}"
+	    $ONLYPASS || printf "%s\t  %s\n\t- %s\n\t+ %s\n\n\n" "${MODE}" "${src}" "${trg}" "${tst}"
 	fi
 	(( ++total ))
     done < <(paste -d "${sep}" "${srclist}" "${trglist}" "${tstlist}")
@@ -91,8 +104,7 @@ showrevisions () {
 }
 
 cleanup () {
-    echo
-    #rm -f "${srclist}" "${trglist}" "${tstlist}"
+    rm -f "${srclist}" "${trglist}" "${tstlist}"
 }
 trap 'cleanup' EXIT
 srclist=$(mktemp -t "tmp.${SRCLANG}-src.XXXXXXXXXX")
@@ -100,7 +112,7 @@ trglist=$(mktemp -t "tmp.${SRCLANG}-trg.XXXXXXXXXX")
 tstlist=$(mktemp -t "tmp.${SRCLANG}-tst.XXXXXXXXXX")
 
 showrevisions
-printf "Running $1-tests with mode \"${MODE}\" "; [[ -n "${UPDATE}" ]] && printf "with updated tests "; echo "..."
+printf "Running $1-tests with mode \"${MODE}\" "; ${UPDATE} && printf "with updated tests "; echo "..."
 echo
 fetchtests
 cleansrc < "${HTML}" > "${srclist}"

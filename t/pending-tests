@@ -1,10 +1,4 @@
 #!/bin/bash
 
-C=2
-grep='.'
-if [[ $# -eq 1 ]]; then
-    C=$1
-    grep='WORKS'
-fi
-
-$(dirname $0)/wiki-tests Pending sme nob update | grep -C $C "${grep}"
+# run with -p to show only passing tests
+exec -a "$(basename $0)" bash $(dirname $0)/wiki-tests -u "$@" Pending sme nob
