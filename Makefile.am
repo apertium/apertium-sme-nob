@@ -14,21 +14,28 @@ BASENAME=apertium-$(PREFIX1)
 ##	BUILD TARGETS
 ##
 
-TARGETS_COMMON = \
+TARGETS_COMMON = $(TARGETS1) 
+
+# simple make just builds sme-nob, `make nob-sme' to try that
+nob-sme: $(TARGETS2)
+
+TARGETS1 = \
 	$(PREFIX1).automorf.hfst \
 	$(PREFIX1).automorf-unrestricted.hfst \
-	$(PREFIX2).autogen.hfst \
 	$(PREFIX1).mor.rlx.bin \
 	$(PREFIX1).syn.rlx.bin \
 	$(PREFIX1).lex.bin \
 	$(PREFIX1).val.bin \
 	$(PREFIX1).autobil.bin \
-	$(PREFIX2).autobil.bin \
 	$(PREFIX1).autogen.bin \
 	$(PREFIX1).t1x.bin \
 	$(PREFIX1).t2x.bin \
 	$(PREFIX1).t3x.bin \
-	$(PREFIX1).t4x.bin \
+	$(PREFIX1).t4x.bin
+
+TARGETS2 = \
+	$(PREFIX2).autogen.hfst \
+	$(PREFIX2).autobil.bin \
 	$(PREFIX2).automorf.bin \
 	$(PREFIX2).prob \
 	$(PREFIX2).rlx.bin 
