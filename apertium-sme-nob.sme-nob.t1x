@@ -4,7 +4,7 @@
 This is the first pass. Responsibilities of this file include:
 * Chunking (all rules)
 * Handling part-of-speech changes introduced by bidix.
-  * Rules match on source tags, so a sme verb which is specified 
+  * Rules match on source tags, so a sme verb which is specified
     as a nob noun has to be handled by the verb rule
     (this leads to some redundancy, hopefully we'll get a bidix module soon)
 * (De-)compounding
@@ -350,7 +350,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="prn.ref"/>
     </def-attr>
     <def-attr n="a_det">
-      <attr-item tags="det"/> 
+      <attr-item tags="det"/>
       <attr-item tags="det.emph"/>
       <attr-item tags="det.dem"/>
       <attr-item tags="det.itg"/>
@@ -571,7 +571,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="@X"/>
     </def-attr>
   </section-def-attrs>
-  
+
   <section-def-vars>
     <def-var n="n_nbr"          c="noun number"/>
     <def-var n="pron_gen"       c="pronoun gender"/>
@@ -594,6 +594,13 @@ And then there are some categories like "month", with all the months.
   </section-def-vars>
 
   <section-def-lists>
+    <def-list n="adj-genders" c="possible nob adj genders">
+      <list-item v="&lt;m&gt;"/>
+      <list-item v="&lt;mf&gt;"/>
+      <list-item v="&lt;f&gt;"/>
+      <list-item v="&lt;nt&gt;"/>
+      <list-item v="&lt;un&gt;"/>
+    </def-list>
     <def-list n="infinite_temps">
       <list-item v="&lt;inf&gt;"/>
       <list-item v="&lt;prfprc&gt;"/>
@@ -775,7 +782,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="beassat" c="Mihttomearri lea beassat hálddašanguovvlus."/>
       <list-item v="beassat" c="Mihttomearri lea beassat hálddašanguovvlus."/>
       <list-item v="boahtit" c="Mun boađán gávpogis."/>
-      <list-item v="gáidat"  c="Son lea gáidan Ipmila sánis."/>      
+      <list-item v="gáidat"  c="Son lea gáidan Ipmila sánis."/>
       <list-item v="fárret" c="… juogo fárret sámi gilážis vai besset eallit homofiilan."/>
     </def-list>
     <def-list n="loc-om" c="Locative noun phrases default to 'på' unless in this or next list (or are np.top)">
@@ -786,14 +793,14 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="loc-av" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="slekt"/>
-    </def-list>    
+    </def-list>
     <def-list n="loc-etter" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="oppfatning"/>
       <list-item v="mening"/>
-    </def-list>    
+    </def-list>
     <def-list n="loc-fra" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="ønske" c="Lihkkobeaivve sávaldagat Káre Márehis."/>
-    </def-list>    
+    </def-list>
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
       <list-item v="Arbeiderpartiet"/>
       <list-item v="Guovdageainnu suohkan"/>
@@ -957,7 +964,7 @@ And then there are some categories like "month", with all the months.
                c="Set the typographic case to be carried by the chunk.
                   - if argument is _not_ a proper noun: caseFirstWord is the case of the lemma, and the lemma gets lowercase.
                   - if argument _is_ a proper noun: caseFirstWord is lowercase, and lemma stays unchanged.
-                  
+
                   (This means that if the sentence starts with a proper noun, and we insert eg. a preposition before that,
                    the preposition won't get capitalised in t2x. We _could_ circumvent this by having a global variable
                    'FirstWordSeen' that is set to false on periods and true for all other lexical units, but this is low priority.)">
@@ -978,7 +985,7 @@ And then there are some categories like "month", with all the months.
       <let><clip pos="1" side="tl" part="lemh"/><get-case-from pos="2"><clip pos="1" side="tl" part="lemh"/></get-case-from></let>
       <modify-case><clip pos="2" side="tl" part="lemh"/><var n="tmp"/></modify-case>
     </def-macro>
-    
+
     <def-macro n="set_caseprep" npar="1"
                c="arg.1: noun, pronoun
                   -----
@@ -1136,7 +1143,7 @@ And then there are some categories like "month", with all the months.
         </when>
       </choose>
     </def-macro>
-    
+
     <def-macro n="modify_pron_case" npar="1"
                c="arg.1: Pron (which might end up as a nob determiner)
                   -----
@@ -1177,7 +1184,7 @@ And then there are some categories like "month", with all the months.
         </otherwise>
       </choose>
     </def-macro>
-    
+
     <def-macro n="set_pron_gen_nbr_art" npar="1"
                c="arg.1: noun (or, the lu we want to base pron/det gen/nbr on)
                   -----
@@ -1208,14 +1215,22 @@ And then there are some categories like "month", with all the months.
           <let><clip pos="1" side="tl" part="art"/><lit-tag v="3"/></let>
       </when></choose>
     </def-macro>
-    
+
     <def-macro n="set_c_gen_nbr" npar="1"
                c="Make sure we have GD or ND if no gen or num given">
       <let><var n="c_gen"/><clip pos="1" side="tl" part="gen"/></let>
       <let><var n="c_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
       <choose><when>
         <test><equal><var n="c_gen"/><lit v=""/></equal></test>
-        <let><var n="c_gen"/><lit-tag v="GD"/></let>
+        <choose>
+          <when>
+            <test><equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal></test>
+            <let><var n="c_gen"/><lit-tag v="nt"/></let>
+          </when>
+          <otherwise>
+            <let><var n="c_gen"/><lit-tag v="GD"/></let>
+          </otherwise>
+        </choose>
       </when></choose>
       <choose><when>
         <test><equal><var n="c_nbr"/><lit v=""/></equal></test>
@@ -1321,7 +1336,7 @@ And then there are some categories like "month", with all the months.
                   * indefinite if the determiner is a possessive
                   * definite if it is a demonstrative
                   Otherwise, keep old defnes.
-                  Assumes that clean_a_det has been called.">      
+                  Assumes that clean_a_det has been called.">
       <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
       <choose>
 	<when>
@@ -1384,23 +1399,23 @@ And then there are some categories like "month", with all the months.
           <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
         </otherwise>
       </choose>
-      <let>
-        <clip pos="2" side="tl" part="gen"/><clip pos="1" side="tl" part="gen"/>
-      </let>
+      <choose>
+        <when><test><in><clip pos="1" side="tl" part="gen"/><list n="adj-genders"/></in></test>
+        <let><clip pos="2" side="tl" part="gen"/><clip pos="1" side="tl" part="gen"/></let>
+        </when>
+      </choose>
       <choose>
         <when>
           <test>
-            <not>
-              <equal><clip pos="2" side="tl" part="gen"/><lit-tag v="nt"/></equal>
-            </not>
+            <not><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="nt"/></equal></not>
           </test>
-          <let><clip pos="2" side="tl" part="gen"/><lit-tag v="mf"/></let> <!-- @@@-->
+          <let><clip pos="2" side="tl" part="gen"/><lit-tag v="mf"/></let>
         </when>
       </choose>
     </def-macro>
 
     <def-macro n="set_c_syn" npar="1"
-               c="We always have '3' as the defnes position in chunks, following chunk tag and syn_label, 
+               c="We always have '3' as the defnes position in chunks, following chunk tag and syn_label,
                   this macro just ensures that there _is_ a syn_label.">
       <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
       <choose>
@@ -1411,7 +1426,7 @@ And then there are some categories like "month", with all the months.
       </choose>
     </def-macro>
 
-    <!-- Output macros: -->    
+    <!-- Output macros: -->
     <def-macro n="out_nom" npar="1"
                c="arg.1: noun
                   -----
@@ -1432,7 +1447,7 @@ And then there are some categories like "month", with all the months.
       <choose>
         <when c="tl PoS is verb">
           <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
-          
+
           <out>
             <chunk namefrom="c_name" case="caseFirstWord"
                    c="The tag order corresponds with nouns, to make c_def_pos (e.g. on pre-nominals) work.">
@@ -1460,7 +1475,7 @@ And then there are some categories like "month", with all the months.
             </chunk>
           </out>
         </when>
-        
+
         <when c="tl PoS is an adv (ie. V.Der2.Actor.N, but bidix changed lemma PoS to an adv)">
           <test><and>
             <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
@@ -1523,7 +1538,7 @@ And then there are some categories like "month", with all the months.
             </chunk>
           </out>
         </when>
-        
+
         <otherwise c="Regular Noun=>Noun">
           <choose>
             <when>
@@ -1585,7 +1600,7 @@ And then there are some categories like "month", with all the months.
                   -----
                   ASSUMES THAT pre-verb, c_name AND caseFirstWord HAVE BEEN SET!
                   This macro is used to output verbal heads, possibly prepended by compound parts
-                  (stored in pre-verb).                  
+                  (stored in pre-verb).
                   This macro does the following, in this order:
                   - insert progressive aux if this is a progressive
                   - insert causative aux if we have a 'caus' tag
@@ -1594,7 +1609,7 @@ And then there are some categories like "month", with all the months.
                               temps may have changed by the above operations)
                   - insert reflexive if we have a 'ref' tag
 TODO: caseSecondWord ?">
-  
+
       <choose c="Certain verbs interact with case prepositions, tag that here;
                  if so change preposition in t2x.
 This tag is added to both main predicate chunks (except noun, TODO)
@@ -1630,7 +1645,7 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
           <let><var n="caseprep"/><lit-tag v="NC"/></let>
         </otherwise>
       </choose>
-      
+
       <choose c="Prepend 'ikke' if VAbess (should it be 'uten'?) TODO"><when>
         <test><equal><clip pos="1" side="sl" part="a_abess"/><lit-tag v="vabess"/></equal></test>
         <out>
@@ -1646,7 +1661,7 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
           <b/>
         </out>
       </when></choose>
-      
+
       <choose c="Prepend cnjsub if present progressive:
 TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the right, it should be inf."><when>
         <test><and>
@@ -1668,7 +1683,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
       </when></choose>
-      
+
       <choose c="Prepend 'kunne/skulle/skal' if conditional:"><when>
         <test><or>
           <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond"/></equal>
@@ -1710,7 +1725,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
         <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
       </when></choose>
-      
+
       <choose c="Prepend 'la' if causative:
 TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types..."><when>
         <test>
@@ -1756,10 +1771,10 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
         </when>
       </choose>
-      
+
       <choose c="Prepend 'bli' aux (moving over temps) if
                  passive and pret/pp/pstv/imp/adj (and not a nominal derivation)
-                 
+
                  TODO: OK to just discard syn_label from pret.passives?">
         <when>
           <test><and>
@@ -1812,7 +1827,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           <let><clip pos="1" side="tl" part="voice"/><lit v=""/></let> <!-- yes twice, bidix can add two tags :/ -->
         </when>
       </choose>
-      
+
       <choose c="Output the main predicate, verb/adj/adv/etc.">
         <when c="adv (eg. negative)">
           <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
@@ -1959,7 +1974,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </when></choose>
     </def-macro>
   </section-def-macros>
-  
+
   <section-rules>
     <!-- <rules: MWE interjections (which can't be in analyser as multiwords) -->
     <rule comment="REGLA: IJ-ADJ IJ-NOM
@@ -2253,7 +2268,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           <test><not><equal><clip pos="1" side="sl" part="nbr"/><lit v=""/></equal></not></test>
           <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
         </when></choose>
-        
+
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <let><var n="defnes"/><lit-tag v="def"/></let>
         <let>
@@ -2281,7 +2296,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
-    
+
     <!-- <rules: Proper nouns -->
     <rule comment="REGLA: NOM.PROP
                    Needs to be before the NOM rule.">
@@ -2417,7 +2432,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           <test><not><equal><clip pos="2" side="tl" part="gen"/><lit v=""/></equal></not></test>
           <let><var n="c_gen"/><clip pos="2" side="tl" part="gen"/></let>
         </when></choose>
-        
+
         <choose>
           <when>
             <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
@@ -2428,7 +2443,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <let><clip pos="1" side="tl" part="whole"/><concat><clip pos="1" side="tl" part="whole"/><lit-tag v="ind"/></concat></let>
           </otherwise>
         </choose>
-        
+
         <out>
           <var n="caseprep"/>
           <chunk name="pre_nom" case="caseFirstWord">
@@ -2476,7 +2491,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           <test><not><equal><clip pos="2" side="tl" part="gen"/><lit v=""/></equal></not></test>
           <let><var n="c_gen"/><clip pos="2" side="tl" part="gen"/></let>
         </when></choose>
-        
+
         <choose>
           <when>
             <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
@@ -2527,7 +2542,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </out>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: NOM.CMP NOM.PROP_ATTR NOM.PROP.ANTCOG
                    Ruvdnaprinsa Harald => Kronprins Harald
                    Uses NOM.PROP gender if possible as chunk gender.">
@@ -2545,7 +2560,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           <test><not><equal><clip pos="3" side="tl" part="gen"/><lit v=""/></equal></not></test>
           <let><var n="c_gen"/><clip pos="3" side="tl" part="gen"/></let>
         </when></choose>
-        
+
         <choose>
           <when>
             <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
@@ -2556,7 +2571,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <let><clip pos="2" side="tl" part="whole"/><concat><clip pos="2" side="tl" part="whole"/><lit-tag v="ind"/></concat></let>
           </otherwise>
         </choose>
-        
+
         <out>
           <var n="caseprep"/>
           <chunk name="pre_pre_nom" case="caseFirstWord">
@@ -2597,7 +2612,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </out>
       </action>
     </rule>
-    
+
     <!-- <rules: Noun, numeral+noun and compounds -->
     <rule comment="REGLA: NOM (tl: NOM, VERB)">
       <pattern>
@@ -2624,8 +2639,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro> 
-        
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
@@ -2704,8 +2719,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        
-        
+
+
         <let><var n="c_name"/><lit v="pre_"/></let>
         <let>
           <var n="pre-nom"/>
@@ -2740,7 +2755,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
-        
+
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <!-- no modify_nomcmp_nbr_art for numcmp -->
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
@@ -2777,7 +2792,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: NUM_MOD ADJ_ATTR NOM
                    -----
                    22 jahkásaš Tine
@@ -2785,7 +2800,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       <!--
           intended matches:
           okta<num><sg><nom><@→N>/en<det><qnt><GD><sg><nom><@→N> gassat<a><attr><@→N>/tykk<adj><sint><posi><GD><ND><@→N> nisu<n><sg><nom><@SUBJ→>/kvinne<n><f><sg><nom><@SUBJ→>
-          
+
           more suspicious matches:
           C<num><nom><@→N>/C<det><qnt><pl><nom><fixedcase><@→N> Liekkas<a><superl><attr><@→N>/Varm<adj><sint><sup><attr><@→N> mánotbadji<n><sg><nom><@SUBJ→>/måned<n><m><sg><nom><@SUBJ→>
           1976<num><sg><acc><@→N>/1976<det><qnt><pl><acc><@→N> dálá<a><attr><@→N>/nåtidig<adj><sint><posi><GD><ND><@→N> lullisámegiella<n><sg><gen><@Num←>/sørsamisk<n><m><sg><gen><@Num←>
@@ -2817,7 +2832,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <let><var n="tmp"/><lit-tag v="3"/></let>
           </otherwise>
         </choose>
-        
+
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <let>
           <var n="pre-nom"/>
@@ -2870,7 +2885,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
 
         <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="1"/></call-macro>
-        
+
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
         <let>
           <var n="pre-nom"/>
@@ -2941,7 +2956,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <b pos="1"/>
           </concat>
         </let>
-        
+
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <choose><when>
@@ -2963,8 +2978,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <b pos="2"/>
           </concat>
         </append>
-        
-        <!-- for possessed NOM -->        
+
+        <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
 
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
@@ -3006,7 +3021,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: NOM.CMP NOM
                    -----
                    politiijastašuvnna => politistasjon(s)
@@ -3017,10 +3032,10 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
+
         <let><var n="c_name"/><lit v="pre_"/></let>
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
-        
+
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
         <let>
@@ -3040,7 +3055,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: NOM.CMP NOM.CMP NOM
                    -----
                    Ruvdnaprinsabáras => Kronprinsparet
@@ -3052,14 +3067,14 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
+
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
-        
+
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
-        
+
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -3099,7 +3114,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
+
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
 
@@ -3117,7 +3132,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: NOM.CMP ADJ
                    -----
                    sámegiel => samespråklig
@@ -3128,7 +3143,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
+
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
@@ -3245,8 +3260,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           </chunk>
         </out>
       </action>
-    </rule>    
-    
+    </rule>
+
     <rule comment="REGLA: RELATIVE_PRONOUN gii => som
                    Just removes everything.
                    (Should we call the chunk something else maybe?)">
@@ -3273,7 +3288,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </out>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: REFLEXIVE_PRONOUN ieš => seg / h*n
                    Just removes everything from normal reflexives,
                    changes @-FOBJ→ reflexives into personal pronouns with GD + nom
@@ -3285,7 +3300,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        
+
         <choose>
           <when>
             <test><equal><clip pos="1" side="tl" part="lemh"/><lit v="prpers"/></equal></test>
@@ -3378,7 +3393,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </choose>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: PERSONAL_PRONOUN REFLEXIVE_PRONOUN
                    (Jus in livčče) mun ieš => (Hvis jeg ikke kan være) meg.acc selv
                    moai ieža vel válljejetne => vi_to.nom selv (vi_to velger)
@@ -3391,7 +3406,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        
+
         <choose><when>
           <test><not><or>
             <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
@@ -3399,7 +3414,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           </or></not></test>
           <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
         </when></choose>
-        
+
         <out>
           <var n="caseprep"/>
           <chunk name="pron" case="caseFirstWord">
@@ -3474,7 +3489,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </out>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: PERSONAL_PRONOUN
                    This will catch genitive pronouns too (we're outputting both a_pron and a_det).
                    Not all genitive pronouns turn into determiners.">
@@ -3522,9 +3537,9 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       <pattern>
         <pattern-item n="adj"/>
       </pattern>
-      <action>        
+      <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
+
         <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
@@ -3596,13 +3611,13 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
+
         <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
 
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
-        
+
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -3636,14 +3651,14 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
+
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
 
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
-        
+
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -3692,7 +3707,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
+
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="1"/></call-macro>
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="2"/></call-macro>
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="3"/></call-macro>
@@ -3740,7 +3755,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <lit v="$"/>
           </concat>
         </let>
-        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>        
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
         <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="4"/></call-macro>
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
@@ -3759,7 +3774,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
+
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
 
@@ -3793,7 +3808,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <lit v="$"/>
           </concat>
         </let>
-        <let><var n="c_name"/><lit v="pre_pre_"/></let>        
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
@@ -3812,7 +3827,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        
+
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="1"/></call-macro>
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="3"/></call-macro>
@@ -3856,13 +3871,13 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
               <lit v="$"/>
           </concat>
         </let>
-        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>        
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
         <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="4"/></call-macro>
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: PRON-NONREFERENTIAL NOM.@→P
                    (Ii daddjo)  mihkkege almenneha  (birra) → noe om allmenningen
                    Don't chunk in this case.">
@@ -3960,7 +3975,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
         <call-macro n="set_pron_gen_nbr_art"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
-        
+
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
         <let>
@@ -3989,7 +4004,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: DET NOM.CMP NOM.CMP NOM
                    du idjabeavdeskuffas => i din nattbordskuff">
       <pattern>
@@ -4007,7 +4022,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="modify_nomcmp_nbr_art"><with-param pos="3"/></call-macro>
         <call-macro n="set_pron_gen_nbr_art"><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="1"/></call-macro>
-        
+
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
         <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="2"/></call-macro>
         <let>
@@ -4045,7 +4060,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
- 
+
     <rule comment="REGLA: DET ADJ.CMP NOM
                    min nuoramus bártni => til vår yngste gutt
                    min nuoramus olbmot => våre yngste mennesker
@@ -4066,7 +4081,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="set_pron_gen_nbr_art"><with-param pos="3"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
-        
+
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <let>
@@ -4098,7 +4113,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
     </rule>
 
 
-     
+
     <rule comment="REGLA: DET ADJ_ATTR NOM
                    min nuoramus bártni => til vår yngste gutt
                    min nuoramus olbmot => våre yngste mennesker
@@ -4119,7 +4134,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="set_pron_gen_nbr_art"><with-param pos="3"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
-        
+
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <let>
@@ -4170,7 +4185,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <let><clip pos="2" side="tl" part="art"/><lit-tag v="def"/></let>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
-        
+
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
 
         <!-- for NOM.GEN -->
@@ -4214,8 +4229,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <b pos="3"/>
           </concat>
         </let>
-        
-        <!-- for possessed NOM -->        
+
+        <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
@@ -4237,7 +4252,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
         <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        
+
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
 
         <!-- for NOM.GEN -->
@@ -4282,13 +4297,13 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <b pos="3"/>
           </concat>
         </let>
-        
-        <!-- for possessed NOM -->        
+
+        <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: DET ADJ
                    -----
                    Always definite in nob if det is a possessive,
@@ -4307,7 +4322,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
 
         <let><var n="defnes"/><lit-tag v="def"/></let>
-        
+
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
 
         <out>
@@ -4360,7 +4375,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           <test><in><clip pos="2" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in></test>
           <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
         </when></choose>
-        
+
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -4373,13 +4388,13 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <lit v="$"/>
             <b pos="1"/>
           </concat>
-        </let>        
-        <!-- for possessed NOM -->        
+        </let>
+        <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: NOM.GEN NOM
                    -----
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
@@ -4414,8 +4429,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <b pos="1"/>
           </concat>
         </let>
-        
-        <!-- for possessed NOM -->        
+
+        <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
@@ -4434,7 +4449,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>        
+        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
         <let>
@@ -4458,8 +4473,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
-        </let>        
-        <!-- for possessed NOM -->        
+        </let>
+        <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
@@ -4512,8 +4527,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <lit v="$"/>
           </concat>
         </let>
-        
-        <!-- for possessed NOM -->        
+
+        <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
@@ -4568,8 +4583,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <b pos="2"/>
           </concat>
         </let>
-        
-        <!-- for possessed NOM -->        
+
+        <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
@@ -4609,8 +4624,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
 
 
 
-    <!-- <rules VERBS ETC. -->        
-    
+    <!-- <rules VERBS ETC. -->
+
     <rule comment="REGLA: VERB (tl: VERB, ADV, ADJ, NOUN)
                    See out_verb macro.
                    -----
@@ -4626,8 +4641,8 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <let><var n="c_name"/><lit v=""/></let>
         <call-macro n="out_verb"><with-param pos="1"/></call-macro>
       </action>
-    </rule>    
-    
+    </rule>
+
     <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å si
                    needs to be several chunks to cover: ii lohkagoađe => han begynner ikke å si
                    TODO: caseSecondWord
@@ -4687,7 +4702,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         <call-macro n="out_verb"><with-param pos="1"/></call-macro>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: NOM.CMP VERB
                    -----
                    skuvlavázzima => skolegående
@@ -4743,7 +4758,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
         <let><var n="pre-nom"/><lit v=""/></let>
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
-        
+
         <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
         <out>
           <b pos="1"/>
@@ -4817,7 +4832,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
         <let><var n="pre-nom"/><lit v=""/></let>
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
-        
+
         <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
         <out>
           <b pos="1"/>
@@ -4830,7 +4845,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
           </chunk>
           <b/>
         </out>
-        
+
         <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></let>
         <let><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></let>
         <let><clip pos="1" side="tl" part="case"/><lit v="nom"/></let>
@@ -4952,7 +4967,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
               </chunk>
             </out>
           </when>
-          <otherwise>        
+          <otherwise>
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
@@ -4999,7 +5014,7 @@ TODO: this should be an mwe in the analyser.">
         </out>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: Pcle
                    ba => engang">
       <pattern>
