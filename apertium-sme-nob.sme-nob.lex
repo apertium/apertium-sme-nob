@@ -1208,7 +1208,7 @@ SELECT ("kjørerein"i) (0 ("<vuoján>"i))(1 COMMA LINK 1 ("«^.*"r));
 	## Sara vuot čájehii ahte son lea okta Sámi buoremus vuddjiin ja sus leat buorre 	vuoján, go mannan vahkkoloahpa vuittii SVL-heargecupa maŋemus vuodjima Mázes . 
 	## Dát ledje várra 	vuojánat 	ja geahččobohccot .
 	## Ámtta 1866-70 viđajagidieđáhusas muitaluvvo boazodoalu birra ahte riddosuohkaniin ledje olbmuin bohccot 	vuojánin 	, dahje mearrasápmelaččat ledje árben bohccuid boazosáminieiddaiguin náitalemiid bokte . 
-SELECT ("kjørertøy"i) (0 ("<vuoján>"i));  
+SELECT ("kjøretøy"i) (0 ("<vuoján>"i));  
   	## Guhkes gaskkaid ii leat gánnáhahtti dákkar 	vuojániiguin 	vuodjit .  - fartøy
 	## Diesel 	vuojánat 	main ollislaš deaddu lea 3500 gilus gitta 12000 gilui 990,- ru. . 
 	## Njealjejuvllat 	vuoján 	roasmmohuvai vehá . 
