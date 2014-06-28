@@ -67,7 +67,7 @@ cleansrc () {
     grep -o "<li> (${SRCLANG})[^→]*" |$SED "s%</*[^>]*>%%g; s% *(${SRCLANG}) *%%" | cleantst
 }
 cleantrg () {
-    grep -o "<li> (${SRCLANG}).*" | $SED 's%[^→]*→ *%%'  | cleantst
+    grep -o "<li> (${SRCLANG}).*" | $SED 's%[^→]*→ *%%; s%::.*%%'  | cleantst
 }
 
 summary () {
