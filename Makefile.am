@@ -263,3 +263,12 @@ install-data-local: install-modes
 CLEANFILES = $(TARGETS_COMMON)
 clean-local:
 	-rm -rf .deps modes
+
+###############################################################################
+## Test
+###############################################################################
+
+test: all
+	echo "Mus lea oahpahus gaskkal guovtti ja njealji." | apertium -d . sme-nob | tee .test-mt
+	@echo "Jeg har undervisninga mellom to og fire." > .test-ref
+	@diff .test-ref .test-mt
