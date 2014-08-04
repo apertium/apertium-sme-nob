@@ -81,6 +81,57 @@ For more information
 * http://wiki.apertium.org/wiki/HFST
 * http://wiki.apertium.org/wiki/Constraint_Grammar
 
+Citing
+===============================================================================
+
+Academic users of this package are requested to cite the following article:
+
+@inproceedings{trosterud2012evaluating,
+  address = {Gothenburg, Sweden},
+  author = {Trosterud, Trond and Unhammer, Kevin Brubeck},
+  booktitle = {Proceedings of the Third International Workshop on Free/Open-Source Rule-Based Machine Translation (FreeRBMT 2012)},
+  editor = {España-Bonet, Cristina and Ranta, Aarne},
+  month = {June},
+  number = {2013:03},
+  pages = {13--26},
+  publisher = {Chalmers University of Technology},
+  title = {{Evaluating North Sámi to Norwegian assimilation RBMT}},
+  url = {http://www.molto-project.eu/sites/default/files/FreeRBMT-2012.pdf#19},
+  year = 2012
+}
+
+The nob resources used were adapted from the apertium-nno-nob package;
+to cite that, please use:
+
+@inproceedings{unhammer2009rfr,
+  address = {Alicante},
+  author = {Unhammer, Kevin Brubeck and Trosterud, Trond},
+  booktitle = {{Proceedings of the First International Workshop on Free/Open-Source Rule-Based Machine Translation}},
+  editor = {Pérez-Ortiz, Juan Antonio and Sánchez-Martínez, Felipe and Tyers, Francis M.},
+  pages = {35--42},
+  publisher = {Universidad de Alicante. Departamento de Lenguajes y Sistemas Informáticos},
+  title = {{Reuse of Free Resources in Machine Translation between Nynorsk and Bokm{\aa}l}},
+  url = {http://hdl.handle.net/10045/12025},
+  year = 2009
+}
+
+To cite Apertium, please use the following:
+
+@article{apertium,year={2011},
+issn={0922-6567},
+journal={Machine Translation},
+volume={25},
+number={2},
+doi={10.1007/s10590-011-9090-0},
+title={Apertium: a free/open-source platform for rule-based machine translation},
+url={http://dx.doi.org/10.1007/s10590-011-9090-0},publisher={Springer Netherlands},
+keywords={Free/open-source machine translation; Rule-based machine translation; 
+Apertium; Shallow transfer; Finite-state transducers},
+author={Forcada, Mikel~L. and Ginestí-Rosell, Mireia and Nordfalk, Jacob and O’Regan, Jim and Ortiz-Rojas, Sergio and Pérez-Ortiz, Juan~Antonio and Sánchez-Martínez, Felipe and Ramírez-Sánchez, Gema and Tyers, Francis~M.},
+pages={127-144},
+language={English}
+}
+
 Help and support
 ===============================================================================
 
@@ -90,71 +141,3 @@ If you need help using this language pair or data, you can contact:
 * IRC: #apertium on irc.freenode.net
 
 See also the file AUTHORS included in this distribution.
-
-Technical information
-===============================================================================
-
-Important Giellatekno SVN addresses:
-
-SME Monodix: https://victorio.uit.no/langtech/trunk/gt/sme
-
-Bidix: https://victorio.uit.no/langtech/trunk/words/dicts
-
-==Monodix==
-
-SME:
-
-* The monodix is a subset of the GT sme transducer. 
-** The file apertium-sme-nob.sme.twol should be kept up to date with
-   twol-sme.txt (or, `tmp/sme-twol.hfst.txt` as produced by
-   `make GTLANG=sme hfst` in the giellatekno/trunk/gt folder)
-** The file apertium-sme-nob.sme.lexc should be kept up to date using 
-   the update-morph/update-lexc.py script
-
-NOB: 
-
-* The monodix should probably be kept up to date with the 
-  one in apertium-sme-nob, however
-* we allow some differences in closed category words. 
-
-==Bidix==
-
-From the DTD for the GTSVN bidix:
-
-<!--
-This document is not quite finished yet...
-
-Here are the pos tags:
- a  = Adjective
- m  = Masculine (nob)
- f  = Feminine (nob) 
- n  = Neuter (nob), noun (sme)
- S  = noun, still not given gender (nob)
- v  = verb
- adv  = adverb
- num = numeral
- pcle = particle
- p  = preposition (nob)
- pr = preposition (sme)
- po = postposition (sme)
- pron  = pronoun
- i  = interjection
- cc  = conjunction
- cs  = subjunction
- im = infinitive mark Ã¥ (nob)
- s  = sentence, or explanation
- x  = still no pos
-
-Documenting
-(the tags are short due to a manual cleanup)
-r  root
-e  entry
-l  lemma
-lc lemma comment 
-m  meaning
-re restriction (semantic restriction of the following t)
-t  translation
-x  example
-xt example translation
-.g group 
--->

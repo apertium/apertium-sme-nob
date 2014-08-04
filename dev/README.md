@@ -9,11 +9,6 @@ Scripts for keeping up-to-date with the Giellatekno resources:
 
 - `rle-to-rlx.sh` is used to update the CG disambiguator.
 
-See also `../update-morph/` for scripts to update the analyser with
-words from Giellatekno (`langs.cfg.in` only adds those that are in
-bidix, while `notrim-langs.cfg.in` includes all lemmas).
-
-
 
 Other scripts:
 --------------
@@ -68,3 +63,49 @@ nob.generator (and possibly containing mistaggings or duplicates).
 
 `MoreNewLemmas`: what is this? Seems like these entries are already in
 bidix?
+
+
+Bidix conversion notes
+===============================================================================
+
+Bidix sources: https://victorio.uit.no/langtech/trunk/words/dicts
+
+From the DTD for the GTSVN bidix:
+
+<!--
+This document is not quite finished yet...
+
+Here are the pos tags:
+ a  = Adjective
+ m  = Masculine (nob)
+ f  = Feminine (nob) 
+ n  = Neuter (nob), noun (sme)
+ S  = noun, still not given gender (nob)
+ v  = verb
+ adv  = adverb
+ num = numeral
+ pcle = particle
+ p  = preposition (nob)
+ pr = preposition (sme)
+ po = postposition (sme)
+ pron  = pronoun
+ i  = interjection
+ cc  = conjunction
+ cs  = subjunction
+ im = infinitive mark Ã¥ (nob)
+ s  = sentence, or explanation
+ x  = still no pos
+
+Documenting
+(the tags are short due to a manual cleanup)
+r  root
+e  entry
+l  lemma
+lc lemma comment 
+m  meaning
+re restriction (semantic restriction of the following t)
+t  translation
+x  example
+xt example translation
+.g group 
+-->
