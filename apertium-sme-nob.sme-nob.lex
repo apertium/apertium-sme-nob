@@ -816,10 +816,6 @@ REMOVE (cmp) (0 n) ;
 # go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
 
 
-REMCOHORT TARGET ("<go>")(0 qst) ;
-	## Boađát go dál?
-
-
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
@@ -863,12 +859,7 @@ SELECT ("all"i) IF (0 ("<juohke>"i) LINK 1 ("<lágan>")) ;
 	#$ juohke lágán geđggiiguin
 
 SELECT ("mens"i) IF (0 ("<bodda>"i) LINK -1 ("<dat>") LINK 0 gen) ;
-REMCOHORT TARGET ("<dat>"i)(0 gen) (1 ("<bodda>") LINK 0 gen);
-REMCOHORT TARGET ("<go>"i) (-1 ("<bodda>") LINK 0 gen);
-	#$ dan botta go
 
-REMCOHORT TARGET ("<dat>"i)(0 gen) (1 ("<lahkái>"));
-	#$ dan lahkái
 
 
 #Verbs
@@ -1268,7 +1259,7 @@ SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
 	## Dat lei buorre girji (god)
 	## Dat lei buorre. (bra)
 
-REMCOHORT TARGET ("<leat>"i)(0 imprt) (1 ("<buorre>"));
+#REMCOHORT TARGET ("<leat>"i)(0 imprt) (1 ("<buorre>"));
 
 
 # vissis:0 → sikker, vissis:1 → viss
