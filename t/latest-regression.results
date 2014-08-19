@@ -1,5 +1,5 @@
-Revision: 56229
-AP_SRC1 Revision: 98033
+Revision: 56798
+AP_SRC1 Revision: 98458
 AP_SRC2 Revision: 55966
 Running Regression-tests with mode "sme-nob" with updated tests ...
 
@@ -16,8 +16,7 @@ WORKS	  biler.
 
 
 sme-nob	  Oainnátgo máná?
-	- Ser du barnet?
-	+ Du ser barnet?
+WORKS	  Ser du barnet?
 
 
 sme-nob	  Mii lea máná namma?
@@ -120,7 +119,7 @@ sme-nob	  Son lábmii iežas.
 
 sme-nob	  Ale rábmo iežat.
 	- Ikke skryt av deg selv.
-	+ Ikke ros du.
+	+ Ros ikke du.
 
 
 sme-nob	  Elle muitalii iežas vuolgime.
@@ -283,7 +282,7 @@ sme-nob	  jearašin.
 
 sme-nob	  ii livčče čállán.
 	- hun ville ikke ha skrevet.
-	+ hun ikke kan ha skrevet.
+	+ hun kan ikke ha skrevet.
 
 
 sme-nob	  jearažan.
@@ -293,12 +292,12 @@ sme-nob	  jearažan.
 
 sme-nob	  Máhtte ii leačča čállán.
 	- Máhtte har da ikke skrevet.
-	+ Máhtte ikke har skrevet.
+	+ Máhtte har ikke skrevet.
 
 
 sme-nob	  ii leačča čállán.
 	- han har da ikke skrevet.
-	+ han ikke har skrevet.
+	+ han har ikke skrevet.
 
 
 sme-nob	  dihten.
@@ -327,13 +326,11 @@ WORKS	  det regner.
 
 
 sme-nob	  Máhtte ii dáidde jienastit Bargiidbellodaga doppe.
-	- Máhtte stemmer nok ikke Arbeiderpartiet der borte.
-	+ Máhtte ikke nok stemme Arbeiderpartiet der borte.
+WORKS	  Máhtte stemmer nok ikke Arbeiderpartiet der borte.
 
 
 sme-nob	  ii leat čállán.
-	- han har ikke skrevet.
-	+ han ikke har skrevet.
+WORKS	  han har ikke skrevet.
 
 
 sme-nob	  Máhtte lea boahtán.
@@ -341,33 +338,27 @@ WORKS	  Máhtte har kommet.
 
 
 sme-nob	  ii leat boahtán.
-	- han har ikke kommet.
-	+ han ikke har kommet.
+WORKS	  han har ikke kommet.
 
 
 sme-nob	  Ii leat čállán.
-	- Han har ikke skrevet.
-	+ Han ikke har skrevet.
+WORKS	  Han har ikke skrevet.
 
 
 sme-nob	  Máhtte ii leat boahtán.
-	- Máhtte har ikke kommet.
-	+ Máhtte ikke har kommet.
+WORKS	  Máhtte har ikke kommet.
 
 
 sme-nob	  itgo boađáše?
-	- kan du ikke komme?
-	+ du ikke kan komme?
+WORKS	  kan du ikke komme?
 
 
 sme-nob	  it boađáše.
-	- du kan ikke komme.
-	+ du ikke kan komme.
+WORKS	  du kan ikke komme.
 
 
 sme-nob	  Máhtte ii boađe.
-	- Máhtte kommer ikke.
-	+ Máhtte ikke kommer.
+WORKS	  Máhtte kommer ikke.
 
 
 sme-nob	  go it boađáše.
@@ -375,8 +366,7 @@ WORKS	  når du ikke kan komme.
 
 
 sme-nob	  itgo gáfe juga?
-	- drikker du ikke kaffen?
-	+ du ikke drikker kaffen?
+WORKS	  drikker du ikke kaffen?
 
 
 sme-nob	  Mii maiddái ássat.
@@ -400,23 +390,21 @@ WORKS	  Máhtte er i gang med å skrive.
 
 
 sme-nob	  ii leat čállimin.
-	- han er ikke i gang med å skrive.
-	+ han ikke er i gang med å skrive.
+WORKS	  han er ikke i gang med å skrive.
 
 
 sme-nob	  ii leat čállime.
-	- han er ikke i gang med å skrive.
-	+ han ikke er i gang med å skrive.
+WORKS	  han er ikke i gang med å skrive.
 
 
 sme-nob	  ii leačča čállimin.
 	- han er da ikke i gang med å skrive.
-	+ han ikke er i gang med å skrive.
+	+ han er ikke i gang med å skrive.
 
 
 sme-nob	  ii leačča čállime.
 	- han er da ikke i gang med å skrive.
-	+ han ikke er i gang med å skrive.
+	+ han er ikke i gang med å skrive.
 
 
 sme-nob	  Son lea taksivuoddjin Oslos.
@@ -446,8 +434,7 @@ WORKS	  Kommer far i morgen?
 
 
 sme-nob	  Áhččigo boahtá ihttin?
-	- Er det far som kommer i morgen?
-	+ Far kommer i morgen?
+WORKS	  Er det far som kommer i morgen?
 
 
 sme-nob	  Go su áhčči jámii de gildui.
@@ -489,7 +476,7 @@ WORKS	  Máhtte sa at de skulle reise nå allerede.
 
 sme-nob	  Mon gullen ahte áddjá ii dovdan dan lottáža.
 	- Jeg hørte at bestefar ikke kjente den fuglen.
-	+ Jeg hørte at bestefar ikke kjenne den *lottáža.
+	+ Jeg hørte at bestefar kjenne ikke den *lottáža.
 
 
 sme-nob	  vai flegmáhtalaš okkupašuvdnafápmu ii beassan sin váldit gitta.
@@ -498,12 +485,13 @@ sme-nob	  vai flegmáhtalaš okkupašuvdnafápmu ii beassan sin váldit gitta.
 
 
 sme-nob	  Harald vuortnui ahte ii áigon čuohppat vuovttaid.
-WORKS	  Harald sverget at han ikke skulle klippe hår.
+	- Harald sverget at han ikke skulle klippe hår.
+	+ Harald sverget at han skulle ikke klippe hår.
 
 
 sme-nob	  ahte Norga ii sáhttán birget flegmáhtalaš soahtefámu vuostá.
 	- at Norge ikke kunne greie seg mot den flegmatiske krigsmakten.
-	+ at Norge ikke kunne greie seg flegmatisk *soahtefámu ost.
+	+ at Norge kunne ikke greie seg flegmatisk *soahtefámu ost.
 
 
 sme-nob	  boradišgohten.
@@ -517,7 +505,7 @@ sme-nob	  lohkagohten.
 
 sme-nob	  ii lohkagoađe.
 	- han begynner ikke å lese.
-	+ han ikke begynner å si.
+	+ han begynner ikke å si.
 
 
 sme-nob	  don borrojuvvot.
@@ -613,8 +601,7 @@ WORKS	  Máhtte lager mat.
 
 
 sme-nob	  Oainnátgo máná?
-	- Ser du barnet?
-	+ Du ser barnet?
+WORKS	  Ser du barnet?
 
 
 sme-nob	  Mis lea cahkkehit dola.
@@ -813,23 +800,19 @@ WORKS	  hvor lenge var du der borte?
 
 
 sme-nob	  guhká go don ledjet doppe?
-	- hvor lenge var du der borte?
-	+ lenge var du der borte?
+WORKS	  hvor lenge var du der borte?
 
 
 sme-nob	  it go boađáše?
-	- kan du ikke komme?
-	+ du ikke kan komme?
+WORKS	  kan du ikke komme?
 
 
 sme-nob	  Baldur go lea boahtán?
-	- er det Baldur som har kommet?
-	+ Baldur har kommet?
+WORKS	  er det Baldur som har kommet?
 
 
 sme-nob	  boađát go dál?
-	- kommer du nå?
-	+ du kommer nå?
+WORKS	  kommer du nå?
 
 
 sme-nob	  1982:s 1982's 1982-s 1982%.
@@ -1044,4 +1027,4 @@ sme-nob	  Od.prp. nr. 41 1949 ja Od.prp. nr. 9 1951.
 	+ O'sd*prp. nr 41 1949 og od*prp. nr 9 1951.
 
 
-124 / 233, ~53.21888412017167381974%
+141 / 233, ~60.51502145922746781116%
