@@ -14,7 +14,7 @@ This is the third pass. Responsibilities of this file include:
 * Correct definiteness using the larger context (eg. verb animacy / number / temps)
   * See macro: set_defnes2
 * Change perfect participle of non-finites to preterite when following the negation verb
-  * See rules with FV.Neg
+  * See rules with FV.neg
 * Using verb animacy/number to guess GD/ND subject gender/number
   * See macro modify_GD_ND_subj3
   * Only regards pre-verbal GD/ND subjects, post-verbal are handled in t2x
@@ -129,16 +129,16 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SA.@ADVL→"/>
       <cat-item tags="SA.@ADVL→.*"/>
     </def-cat>
-    <def-cat n="adv-FV.Neg">
-      <cat-item lemma="adv" tags="SV.@+FAUXV.Neg.*"/>
+    <def-cat n="adv-FV.neg">
+      <cat-item lemma="adv" tags="SV.@+FAUXV.neg.*"/>
     </def-cat>
-    <def-cat n="adv-FV.Neg.Qst">
-      <cat-item lemma="adv" tags="SV.@+FAUXV.Neg.Qst.*"/>
+    <def-cat n="adv-FV.neg.qst">
+      <cat-item lemma="adv" tags="SV.@+FAUXV.neg.qst.*"/>
     </def-cat>
-    <def-cat n="FV.Qst">
-      <cat-item tags="SV.@+FMAINV.Qst.*"/>
-      <cat-item tags="SV.@+FAUXV.Qst.*"/>
-      <cat-item lemma="adv" tags="SV.@+FAUXV.Neg.Qst.*"/>
+    <def-cat n="FV.qst">
+      <cat-item tags="SV.@+FMAINV.qst.*"/>
+      <cat-item tags="SV.@+FAUXV.qst.*"/>
+      <cat-item lemma="adv" tags="SV.@+FAUXV.neg.qst.*"/>
     </def-cat>
     <def-cat n="FV">
       <cat-item tags="SV.@+FMAINV"/>
@@ -192,8 +192,8 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SN.@X"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
-    <def-cat n="SPEC_SUBJr.Qst">
-      <cat-item tags="SN.@SUBJ→.*.Qst.*"/>
+    <def-cat n="SPEC_SUBJr.qst">
+      <cat-item tags="SN.@SUBJ→.*.qst.*"/>
     </def-cat>
     <def-cat n="SADV">
       <cat-item tags="@SADV"/>
@@ -678,13 +678,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
     
 
-    <!-- <rules: SPEC_SUBJr.Qst FV RSPRED* (insert existential 'det') -->    
-    <rule comment="REGLA: SPEC_SUBJr.Qst FV
+    <!-- <rules: SPEC_SUBJr.qst FV RSPRED* (insert existential 'det') -->    
+    <rule comment="REGLA: SPEC_SUBJr.qst FV
                    Áhččigo boahtá (ihttin) => Er det far som kommer (i morgen)
                    Áhččigo bođii (ikte) => Var det far som kom (i går)
-                   Nom.Qst.@SUBJ→ => Er det X som ...">
+                   Nom.qst.@SUBJ→ => Er det X som ...">
       <pattern>
-        <pattern-item n="SPEC_SUBJr.Qst"/>
+        <pattern-item n="SPEC_SUBJr.qst"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -697,7 +697,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <out>
           <chunk>
             <get-case-from pos="1"><lit v="verb"/></get-case-from>
-            <lit-tag v="@+FMAINV.Qst.pres.p3.sg"/>
+            <lit-tag v="@+FMAINV.qst.pres.p3.sg"/>
             <lit v="{^"/>
             <lit v="være"/><lit-tag v="vblex"/><clip pos="2" part="temps"/>
             <lit v="$}"/>
@@ -873,13 +873,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: maybe-SUBJr adv-FV.Neg IV
+    <rule comment="REGLA: maybe-SUBJr adv-FV.neg IV
                    Máhtte ii leat (boahtán) => Máhtte har ikke (kommet)
                    TODO: gii in dárbbaš => som ikke behøver (needs new rule!)
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
         <pattern-item n="maybe-SUBJr"/>
-        <pattern-item n="adv-FV.Neg"/>
+        <pattern-item n="adv-FV.neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -903,14 +903,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: maybe-SUBJr adv-FV.Neg adv-IV IV
+    <rule comment="REGLA: maybe-SUBJr adv-FV.neg adv-IV IV
                    Son ii dáidde jienastit => Han stemmer nok ikke
                    Note: although 'dáidde' is tagged -FAUXV, it has tempus.
                    Override prodrop rule (TODO below) if we might have a subject to the left
                    We don't introduce Cond/Pot adverbs here.">
       <pattern>
         <pattern-item n="maybe-SUBJr"/>
-        <pattern-item n="adv-FV.Neg"/>
+        <pattern-item n="adv-FV.neg"/>
         <pattern-item n="adv-IV"/>
         <pattern-item n="IV"/>
       </pattern>
@@ -1224,13 +1224,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
     <!-- <rules: CS SUBJ FV IV* -->
-    <rule comment="REGLA: CS maybe-SUBJr adv-FV.Neg IV
+    <rule comment="REGLA: CS maybe-SUBJr adv-FV.neg IV
                    Subordinate clause.
                    ahte áddjá ii dovdan => at bestefar (evt. ADV) ikke kjente">
       <pattern>
         <pattern-item n="CS"/>
         <pattern-item n="maybe-SUBJr"/>
-        <pattern-item n="adv-FV.Neg"/>
+        <pattern-item n="adv-FV.neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -1333,13 +1333,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: CS adv-FV.Neg IV
+    <rule comment="REGLA: CS adv-FV.neg IV
                    Subordinate clause.
                    go it boađáše => at/når du ikke kommer
                    Insert dropped pronoun">
       <pattern>
         <pattern-item n="CS"/>
-        <pattern-item n="adv-FV.Neg"/>
+        <pattern-item n="adv-FV.neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -1362,12 +1362,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <!-- <rules: FV.Qst IV*: -->
-    <rule comment="REGLA: FV.Qst
+    <!-- <rules: FV.qst IV*: -->
+    <rule comment="REGLA: FV.qst
                    Oainnátgo => Ser du
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="FV.Qst"/>
+        <pattern-item n="FV.qst"/>
       </pattern>
       <action>
         <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>        
@@ -1380,11 +1380,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV.Qst lOBJ_RPRED
+    <rule comment="REGLA: FV.qst lOBJ_RPRED
                    Oainnátgo máná => Ser du barnet
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="FV.Qst"/>
+        <pattern-item n="FV.qst"/>
         <pattern-item n="lOBJ_lOPRED"/>
       </pattern>
       <action>
@@ -1407,11 +1407,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: adv-FV.Neg.Qst IV
+    <rule comment="REGLA: adv-FV.neg.qst IV
                    itgo boađáše => kommer du ikke
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="adv-FV.Neg.Qst"/>
+        <pattern-item n="adv-FV.neg.qst"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -1428,11 +1428,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: adv-FV.Neg IV
+    <rule comment="REGLA: adv-FV.neg IV
                    it boađáše => du kommer ikke
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="adv-FV.Neg"/>
+        <pattern-item n="adv-FV.neg"/>
         <pattern-item n="IV"/>
       </pattern>
       <action>
@@ -1478,11 +1478,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
     <!-- <rules: V* ADVLrOBJr ADVL* V lOPRED* -->
-    <rule comment="REGLA: adv-FV.Neg.Qst ADVLrOBJr IV
+    <rule comment="REGLA: adv-FV.neg.qst ADVLrOBJr IV
                    Itgo gáfe juga => Drikker du ikke kaffe
                    Insert dropped pronoun">
       <pattern>
-        <pattern-item n="adv-FV.Neg.Qst"/>
+        <pattern-item n="adv-FV.neg.qst"/>
         <pattern-item n="ADVLrOBJr"/>
         <pattern-item n="IV"/>
       </pattern>

@@ -23,10 +23,10 @@ This is the second pass. Responsibilities of this file include:
   * See rule: PR SN_RPOST adpos
 * Removing essive caseprep ('som') after vcop
   * See rule: vcop-FV caseprep-PR.ess
-* Removing Pcle.Qst and putting the Qst tag on the preceding chunk,
+* Removing Pcle.qst and putting the qst tag on the preceding chunk,
   so that they're treated as if there were no space
-  * See rule: SN PCLE.Qst
-  * PCLE.Qst variants could probably be added to many of the other rules here too,
+  * See rule: SN PCLE.qst
+  * PCLE.qst variants could probably be added to many of the other rules here too,
     still TODO, but the most likely seem to be covered.
 
 TODO:
@@ -141,9 +141,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SN.@-FADVL→.*.loc"/>
       <cat-item tags="SN.@-FADVL→.*.loc.*"/>
     </def-cat>
-    <def-cat n="PCLE.Qst">
-      <cat-item tags="@PCLE.Qst"/>
-      <cat-item tags="@PCLE.Qst.*"/>
+    <def-cat n="PCLE.qst">
+      <cat-item tags="@PCLE.qst"/>
+      <cat-item tags="@PCLE.qst.*"/>
     </def-cat>
   </section-def-cats>
 
@@ -223,7 +223,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="Neg"/>
     </def-attr>
     <def-attr n="mode">
-      <attr-item tags="Qst"/>
+      <attr-item tags="qst"/>
     </def-attr>
     <def-attr n="modality">
       <attr-item tags="Ind"/>
@@ -330,7 +330,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-macro>
     
     <def-macro n="tag_qst" npar="1"
-               c="Add the Qst tag, preferably after 'neg' or defnes tags.
+               c="Add the qst tag, preferably after 'neg' or defnes tags.
                   TODO: perhaps it would be simpler to just explicitly re-set the chunk tags
                   instead of all this concatting.">
       <choose>
@@ -338,7 +338,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           <test><not><equal><clip pos="1" part="neg"/><lit v=""/></equal></not></test>
           <let>
             <clip pos="1" part="neg"/>
-            <concat><clip pos="1" part="neg"/><lit-tag v="Qst"/></concat>
+            <concat><clip pos="1" part="neg"/><lit-tag v="qst"/></concat>
           </let>
         </when>
         <when c="Unfortunately, 'clip' is case-insensitive so modality (Ind) conflicts with defnes (ind).
@@ -350,20 +350,20 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           </or></test>
           <let>
             <clip pos="1" part="art"/>
-            <concat><clip pos="1" part="art"/><lit-tag v="Qst"/></concat>
+            <concat><clip pos="1" part="art"/><lit-tag v="qst"/></concat>
           </let>
         </when>
         <when>
           <test><not><equal><clip pos="1" part="syn_label"/><lit v=""/></equal></not></test>
           <let>
             <clip pos="1" part="syn_label"/>
-            <concat><clip pos="1" part="syn_label"/><lit-tag v="Qst"/></concat>
+            <concat><clip pos="1" part="syn_label"/><lit-tag v="qst"/></concat>
           </let>
         </when>
         <otherwise>
           <let>
             <clip pos="1" part="lemh"/>
-            <concat><clip pos="1" part="lemh"/><lit-tag v="Qst"/></concat>
+            <concat><clip pos="1" part="lemh"/><lit-tag v="qst"/></concat>
           </let>
         </otherwise>
       </choose>
@@ -995,13 +995,13 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV PCLE.Qst
+    <rule comment="REGLA: FV PCLE.qst
                    -----
                    set anaphoric temps variable
                    use anaphoric gen variable">
       <pattern>
         <pattern-item n="FV"/>
-        <pattern-item n="PCLE.Qst"/>
+        <pattern-item n="PCLE.qst"/>
       </pattern>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
@@ -1029,14 +1029,14 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: V.TD PCLE.Qst
+    <rule comment="REGLA: V.TD PCLE.qst
                    -----
                    use anaphoric temps variables
                    use/set anaphoric gen variable
                    mun dieđán Máreha čállime dál => jeg vet Máret skriver nå">
       <pattern>
         <pattern-item n="V.TD"/>
-        <pattern-item n="PCLE.Qst"/>
+        <pattern-item n="PCLE.qst"/>
       </pattern>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
@@ -1061,12 +1061,12 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: V PCLE.Qst
+    <rule comment="REGLA: V PCLE.qst
                    -----
                    use/set anaphoric gen variable">
       <pattern>
         <pattern-item n="V"/>
-        <pattern-item n="PCLE.Qst"/>
+        <pattern-item n="PCLE.qst"/>
       </pattern>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
@@ -1144,12 +1144,12 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SN PCLE.Qst
+    <rule comment="REGLA: SN PCLE.qst
                    -----
                    set gen variable">
       <pattern>
         <pattern-item n="SN"/>
-        <pattern-item n="PCLE.Qst"/>
+        <pattern-item n="PCLE.qst"/>
       </pattern>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>
@@ -1173,12 +1173,12 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
         </out>
       </action>
     </rule>    
-    <rule comment="REGLA: SA PCLE.Qst
+    <rule comment="REGLA: SA PCLE.qst
                    -----
                    use gen variable">
       <pattern>
         <pattern-item n="SA"/>
-        <pattern-item n="PCLE.Qst"/>
+        <pattern-item n="PCLE.qst"/>
       </pattern>
       <action>
         <call-macro n="tag_qst"><with-param pos="1"/></call-macro>

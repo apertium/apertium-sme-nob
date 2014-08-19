@@ -55,8 +55,8 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="adv.*"/>
     </def-cat>
     <def-cat n="Pcle">
-      <cat-item tags="qst.pcle.*"/>
-      <cat-item tags="qst.pcle"/>
+      <cat-item tags="pcle.qst.*"/>
+      <cat-item tags="pcle.qst"/>
       <cat-item tags="pcle.*"/>
       <cat-item tags="pcle"/>
     </def-cat>
@@ -64,9 +64,9 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="interj.*"/>
       <cat-item tags="interj"/>
     </def-cat>
-    <def-cat n="Qst.Pcle">
-      <cat-item tags="qst.pcle"/>
-      <cat-item tags="qst.pcle.*"/>
+    <def-cat n="PcleQst">
+      <cat-item tags="pcle.qst"/>
+      <cat-item tags="pcle.qst.*"/>
     </def-cat>
     <def-cat n="adj">
       <cat-item tags="a.*"/>
@@ -4631,7 +4631,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
                    -----
                    oažžun => fående (adj.pprs, using fallback rule)
                    ii => adv.p3.sg{ikke}
-                   Itgo => adv.p2.sg.Qst{ikke}">
+                   Itgo => adv.p2.sg.qst{ikke}">
       <pattern>
         <pattern-item n="verb"/>
       </pattern>
@@ -4985,7 +4985,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
         </choose>
       </action>
     </rule>
-    <rule comment="REGLA: adverb Qst.Pcle
+    <rule comment="REGLA: adverb PcleQst
                    guhká go => hvor lenge
                    Since we match on chunk lemma 'adv' in t3x, even two-lu chunks
                    here are named 'adv' (no postchunking rules, so that's OK).
@@ -4993,7 +4993,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
 TODO: this should be an mwe in the analyser.">
       <pattern>
         <pattern-item n="adverb"/>
-        <pattern-item n="Qst.Pcle"/>
+        <pattern-item n="PcleQst"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
