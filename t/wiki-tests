@@ -96,11 +96,20 @@ summary () {
     echo "${correct} / ${total}${pct}"
 }
 
+echo_revision () {
+    if rev=$(svn info 2>/dev/null); then
+	echo "${rev}" | grep ^Revision
+    elif git config --get svn-remote.svn.fetch &>/dev/null; then
+	git svn info | grep ^Revision
+    else
+	echo "(doesn't seem to be a repo)"
+    fi
+}
 showrevisions () {
-    ( svn info 2>/dev/null || git svn info  ) | grep ^Revision
+    echo_revision
     grep ^AP_SRC "$(dirname $0)/../config.log" | while IFS='=' read -r var dir; do
 	printf "%s " "${var}"
-	( cd "${dir//\'}"; ( svn info 2>/dev/null || git svn info  ) | grep ^Revision )
+	( cd "${dir//\'}"; echo_revision )
     done
 }
 
