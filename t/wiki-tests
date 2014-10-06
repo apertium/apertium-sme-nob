@@ -46,8 +46,7 @@ declare -r SED
 fetchtests () {
     if ${UPDATE}; then
 	tmp=$(mktemp -t wiki-tests.html.XXXXXXXXXX)
-	wget -O "${tmp}" -q "${BASEURL}/${TESTTYPE}"
-	if [[ -s "${tmp}" ]]; then
+	if wget -O "${tmp}" -q "${BASEURL}/${TESTTYPE}" && [[ -s "${tmp}" ]]; then
 	    mv "${tmp}" "${HTML}"
 	else
 	    rm "${tmp}"
