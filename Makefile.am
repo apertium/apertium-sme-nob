@@ -82,7 +82,7 @@ $(PREFIX1).automorf-unrestricted.hfst: .deps/$(PREFIX1).automorf-unrestricted.hf
 
 # rm-deriv-cmp.twol is checked in to SVN since derivation-tags.txt is
 # not installed by giella-sme; this goal only run if --with-lang1 set
-rm-deriv-cmp.twol: $(wildcard $(AP_SRC1)/filters/derivation-tags.txt*) dev/update-rm-deriv-cmp
+rm-deriv-cmp.twol: $(wildcard $(AP_SRC1)/../../../src/filters/derivation-tags.txt*) dev/update-rm-deriv-cmp
 	test "$<" = "$^" || dev/update-rm-deriv-cmp $< $@
 # The wildcard+test means we ignore the goal if we don't find
 # derivation-tags.txt
@@ -272,3 +272,4 @@ test: all
 	echo "Mus lea oahpahus gaskkal guovtti ja njealji." | apertium -d . sme-nob | tee .test-mt
 	@echo "Jeg har undervisninga mellom to og fire." > .test-ref
 	@diff .test-ref .test-mt
+	@rm .test-ref .test-mt
