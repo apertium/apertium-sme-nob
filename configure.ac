@@ -111,5 +111,4 @@ AP_CHECK_LING([2], [apertium-nob])
 AP_MKINCLUDE
 
 
-AC_REVISION([m4_esyscmd_s([svn info|grep -m1 '^Last Changed Rev:'])])
 AC_OUTPUT([Makefile])
