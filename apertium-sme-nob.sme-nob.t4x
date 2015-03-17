@@ -131,15 +131,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
       <attr-item tags="res" c="Reciprocal"/>
     </def-attr>
     <def-attr n="grau">
-      <attr-item tags="posi"/>
+      <attr-item tags="pst"/>
       <attr-item tags="comp"/>
       <attr-item tags="sup"/>
-      <attr-item tags="ord.posi"/>
+      <attr-item tags="ord.pst"/>
       <attr-item tags="ord.comp"/>
       <attr-item tags="ord.sup"/>
     </def-attr>
     <def-attr n="grau-pure">
-      <attr-item tags="posi"/>
+      <attr-item tags="pst"/>
       <attr-item tags="comp"/>
       <attr-item tags="sup"/>
     </def-attr>
@@ -651,7 +651,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                c="arg.1: adj (not the chunk), after having run through clean_adj
                   -----
                   Prepend 'more'/'most' if adj is non-synthetic and comp/sup;
-                  also change the main adj tags back to mf.posi.sg.ind.
+                  also change the main adj tags back to mf.pst.sg.ind.
                   By this point, the tags should be completely 'cleaned',
                   so we shouldn't have to worry about inconsistencies.
                   ">
@@ -685,7 +685,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
             <lit v="$ ^"/>
             <clip pos="1" part="lemh"/>
             <clip pos="1" part="a_adj"/>
-            <lit-tag v="posi.mf.sg.ind"/>
+            <lit-tag v="pst.mf.sg.ind"/>
             <clip pos="1" part="lemq"/>
           </concat>
         </let>
@@ -698,10 +698,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
                   -----
                   - Try to apply chunk nbr/gender if ND/GD, else set to sg/nt.
                   - Change m or f to mf.
-                  - If empty number tag and posi/pp, set to sg.
+                  - If empty number tag and pst/pp, set to sg.
                     - Can we fix this in bidix?
-                  - Remove defness unless superlatives or posi/pp.sg
-                  - Remove gender unless posi/pp.sg.ind
+                  - Remove defness unless superlatives or pst/pp.sg
+                  - Remove gender unless pst/pp.sg.ind
                   - Make all adj.ord plural
                   ">
       <!-- clean grau -->
@@ -711,7 +711,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <not><equal><clip pos="2" part="a_adj"/><lit-tag v="adj.pprs"/></equal></not>
           <not><equal><clip pos="2" part="a_adj"/><lit-tag v="adj.pp"/></equal></not>
         </and></test>
-        <let><clip pos="2" part="a_adj"/><concat><clip pos="2" part="a_adj"/><lit-tag v="posi"/></concat></let>
+        <let><clip pos="2" part="a_adj"/><concat><clip pos="2" part="a_adj"/><lit-tag v="pst"/></concat></let>
       </when></choose>
 
       <!-- clean nbr -->
@@ -739,7 +739,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
               <when>
                 <test><or>
                   <equal><clip pos="2" part="temps"/><lit-tag v="pp"/></equal>
-                  <equal><clip pos="2" part="grau"/><lit-tag v="posi"/></equal>
+                  <equal><clip pos="2" part="grau"/><lit-tag v="pst"/></equal>
                 </or></test>
                 <let><clip pos="2" part="gen"/><concat><clip pos="2" part="gen"/><lit-tag v="sg"/></concat></let>
               </when>
@@ -768,11 +768,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
 
       <!-- clean gen -->
       <choose>
-        <when c="Only pp/posi.sg.ind has gender">
+        <when c="Only pp/pst.sg.ind has gender">
           <test><and>
             <or>
               <equal><clip pos="2" part="temps"/><lit-tag v="pp"/></equal>
-              <equal><clip pos="2" part="grau-pure"/><lit-tag v="posi"/></equal>
+              <equal><clip pos="2" part="grau-pure"/><lit-tag v="pst"/></equal>
             </or>
             <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
             <equal><clip pos="2" part="art"/><lit-tag v="ind"/></equal>
@@ -833,7 +833,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_pron mess.
           <and>
             <equal><clip pos="2" part="art"/><lit-tag v="def"/></equal>
             <equal><clip pos="2" part="gen"/><lit-tag v="un"/></equal>
-            <ends-with><clip pos="2" part="grau"/><lit-tag v="posi"/></ends-with>
+            <ends-with><clip pos="2" part="grau"/><lit-tag v="pst"/></ends-with>
           </and>
         </test>
         <let><clip pos="2" part="nbr"/><lit-tag v="sp"/></let>

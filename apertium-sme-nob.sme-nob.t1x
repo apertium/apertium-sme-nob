@@ -440,12 +440,12 @@ And then there are some categories like "month", with all the months.
     </def-attr>
 <!--@@@-->
     <def-attr n="grau">
-      <attr-item tags="ord.posi"/>
+      <attr-item tags="ord.pst"/>
       <attr-item tags="ord.comp"/>
       <attr-item tags="ord.sup"/>
       <attr-item tags="comp"/>
       <attr-item tags="superl"/>
-      <attr-item tags="posi"/>
+      <attr-item tags="pst"/>
       <attr-item tags="sup"/>
     </def-attr>
     <def-attr n="gen">
@@ -1380,7 +1380,7 @@ And then there are some categories like "month", with all the months.
           <test>
             <or>
               <equal><clip pos="2" side="tl" part="temps"/><lit-tag v="pp"/></equal>
-              <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="posi"/></ends-with>
+              <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="pst"/></ends-with>
             </or>
           </test>
           <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
@@ -1507,7 +1507,7 @@ And then there are some categories like "month", with all the months.
           </out>
         </when>
         <when c="tl PoS is an adj (ie. V.Der2.Actor.N, but bidix changed lemma PoS to an adj)
-                 Just output posi.mf.sg.ind; TODO: different bidix verb pardef for these PoS changes.">
+                 Just output pst.mf.sg.ind; TODO: different bidix verb pardef for these PoS changes.">
           <test><and>
             <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
             <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
@@ -1532,7 +1532,7 @@ And then there are some categories like "month", with all the months.
               <lu>
                 <clip pos="1" side="tl" part="lemh"/>
                 <clip pos="1" side="tl" part="a_adj-pure"/>
-                <lit-tag v="posi.mf.sg.ind"/>
+                <lit-tag v="pst.mf.sg.ind"/>
                 <clip pos="1" side="tl" part="lemq"/>
               </lu>
             </chunk>
@@ -2091,7 +2091,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             </tags>
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
-              <lit-tag v="adj.ord.posi.un.sp.def"/>
+              <lit-tag v="adj.ord.pst.un.sp.def"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
             <b pos="1"/>
@@ -2799,11 +2799,11 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
                    See NUM_MOD NOM">
       <!--
           intended matches:
-          okta<num><sg><nom><@→N>/en<det><qnt><GD><sg><nom><@→N> gassat<a><attr><@→N>/tykk<adj><sint><posi><GD><ND><@→N> nisu<n><sg><nom><@SUBJ→>/kvinne<n><f><sg><nom><@SUBJ→>
+          okta<num><sg><nom><@→N>/en<det><qnt><GD><sg><nom><@→N> gassat<a><attr><@→N>/tykk<adj><sint><pst><GD><ND><@→N> nisu<n><sg><nom><@SUBJ→>/kvinne<n><f><sg><nom><@SUBJ→>
 
           more suspicious matches:
           C<num><nom><@→N>/C<det><qnt><pl><nom><fixedcase><@→N> Liekkas<a><superl><attr><@→N>/Varm<adj><sint><sup><attr><@→N> mánotbadji<n><sg><nom><@SUBJ→>/måned<n><m><sg><nom><@SUBJ→>
-          1976<num><sg><acc><@→N>/1976<det><qnt><pl><acc><@→N> dálá<a><attr><@→N>/nåtidig<adj><sint><posi><GD><ND><@→N> lullisámegiella<n><sg><gen><@Num←>/sørsamisk<n><m><sg><gen><@Num←>
+          1976<num><sg><acc><@→N>/1976<det><qnt><pl><acc><@→N> dálá<a><attr><@→N>/nåtidig<adj><sint><pst><GD><ND><@→N> lullisámegiella<n><sg><gen><@Num←>/sørsamisk<n><m><sg><gen><@Num←>
       -->
       <pattern>
         <pattern-item n="num_mod"/>
