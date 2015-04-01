@@ -310,11 +310,11 @@
   </mode>
 
 
-  <!-- Unrestricted (derivations, compounding) sme-nob: -->
+  <!-- Untrimmed (and with compounding) sme-nob: -->
   <mode name="usme-nob" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.mor.rlx.bin"/>
@@ -354,7 +354,7 @@
   <mode name="usme-nob-morph" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
     </pipeline>
   </mode>
@@ -362,7 +362,7 @@
   <mode name="usme-nob-disam" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-conv -a"/>
       <program name="vislcg3 --trace -g">
@@ -374,7 +374,7 @@
   <mode name="usme-nob-syntax" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-conv -a"/>
       <program name="vislcg3 --trace -g">
@@ -389,7 +389,7 @@
   <mode name="usme-nob-tagger" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.mor.rlx.bin"/>
@@ -403,7 +403,7 @@
   <mode name="usme-nob-pretransfer" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.mor.rlx.bin"/>
@@ -418,7 +418,7 @@
   <mode name="usme-nob-biltrans" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.mor.rlx.bin"/>
@@ -436,7 +436,7 @@
   <mode name="usme-nob-lex" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.mor.rlx.bin"/>
@@ -457,7 +457,7 @@
   <mode name="usme-nob-chunker" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.mor.rlx.bin"/>
@@ -483,7 +483,7 @@
   <mode name="usme-nob-interchunk1" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.mor.rlx.bin"/>
@@ -512,7 +512,7 @@
   <mode name="usme-nob-interchunk2" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.mor.rlx.bin"/>
@@ -545,7 +545,7 @@
   <mode name="usme-nob-postchunk" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.mor.rlx.bin"/>
@@ -582,7 +582,7 @@
   <mode name="usme-nob-dgen" install="no">
     <pipeline>
       <program name="hfst-proc -w -p">
-        <file name="sme-nob.automorf-unrestricted.hfst"/>
+        <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
         <file name="sme-nob.mor.rlx.bin"/>
