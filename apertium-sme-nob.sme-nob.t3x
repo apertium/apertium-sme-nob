@@ -360,8 +360,8 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="@VOC"/>
       <attr-item tags="@X"/>
     </def-attr>
-    <def-attr n="a_pron">
-      <attr-item tags="Pron"/>
+    <def-attr n="a_prn">
+      <attr-item tags="Prn"/>
       <attr-item tags="prn"/>
     </def-attr>
     <def-attr n="art">
@@ -409,7 +409,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
     <def-macro n="set_defnes2" npar="2"
                c="arg.1: SN, arg.2: verb (the one with nbr, if there's a choice)
-                  Does nothing if arg.1 is relative pron.
+                  Does nothing if arg.1 is relative prn.
                   -----
                   TODO: parts of this should only be used when loc/ill is in 'first position', check syn_label?
                   Indefinite:
@@ -556,7 +556,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </when>
         <otherwise>
           <call-macro n="guess_gender"><with-param pos="1"/></call-macro>
-          <let><var n="pro"/><lit v="pron"/></let>
+          <let><var n="pro"/><lit v="prn"/></let>
           <choose><when>
             <test><equal><var n="case-switch"/><lit v="yes"/></equal></test>
             <let><var n="pro"/><get-case-from pos="1"><var n="pro"/></get-case-from></let>

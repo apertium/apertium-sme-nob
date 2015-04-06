@@ -69,8 +69,8 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="lADVL">
       <cat-item lemma="adv" tags="@←ADVL"/>
     </def-cat>
-    <def-cat n="pron-lADVL">
-      <cat-item lemma="pron" tags="SN.@←ADVL.*"/>
+    <def-cat n="prn-lADVL">
+      <cat-item lemma="prn" tags="SN.@←ADVL.*"/>
     </def-cat>
     <def-cat n="PR">
       <cat-item tags="PR"/>
@@ -374,7 +374,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <choose>
         <when>
           <test><or>
-            <equal caseless="yes"><clip pos="1" part="lemh"/><lit v="pron"/></equal>
+            <equal caseless="yes"><clip pos="1" part="lemh"/><lit v="prn"/></equal>
             <equal caseless="yes"><clip pos="1" part="lemh"/><lit v="det"/></equal>
           </or></test>
           <let><clip pos="1" part="case"/><lit-tag v="acc"/></let>
@@ -881,7 +881,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
                    -----
                    (málet olbmuid) earenoamáš dáhpáhusaid oktavuođas => (male mennesker) i forbindelse med spesielle hendelser
                    Switch order, insert 'med'
-                   TODO: case should be acc or something, not nil, when pron/det">
+                   TODO: case should be acc or something, not nil, when prn/det">
       <pattern>
         <pattern-item n="SN_rN.gen"/>
         <pattern-item n="caseprep-PR"/>

@@ -2,7 +2,7 @@
 ## Makefile for Northern Sámi--Bokmål
 ###############################################################################
 
-VERSION=0.5.1
+VERSION=0.5.2
 LANG1=sme
 LANG2=nob
 PREFIX1=$(LANG1)-$(LANG2)
@@ -14,7 +14,7 @@ BASENAME=apertium-$(PREFIX1)
 ##	BUILD TARGETS
 ##
 
-TARGETS_COMMON = $(TARGETS1) 
+TARGETS_COMMON = $(TARGETS1)
 
 # simple make just builds sme-nob, `make nob-sme' to try that
 nob-sme: $(TARGETS2)
@@ -38,7 +38,7 @@ TARGETS2 = \
 	$(PREFIX2).autobil.bin \
 	$(PREFIX2).automorf.bin \
 	$(PREFIX2).prob \
-	$(PREFIX2).rlx.bin 
+	$(PREFIX2).rlx.bin
 
 # This include defines goals for install-modes, .deps/.d and .mode files:
 @ap_include@
@@ -228,7 +228,7 @@ EXTRA_DIST=\
 	$(BASENAME).$(PREFIX1).t4x \
 	xfst2apertium.useless.twol \
 	lexchoicebil.xsl \
-	modes.xml 
+	modes.xml
 
 ###############################################################################
 ## Installation
