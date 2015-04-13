@@ -126,11 +126,15 @@ $(PREFIX2).automorf.bin: $(AP_SRC2)/$(LANG2).automorf.bin $(PREFIX2).autobil.bin
 ##	PRE-TAGGING
 ##
 
-$(PREFIX1).mor.rlx.bin: $(AP_SRC1)/$(LANG1).mor.rlx.bin
-	cp $< $@
+$(PREFIX1).mor.rlx.bin: $(BASENAME).$(PREFIX1).mor.rlx gt2apertium.cg3r .deps/.d
+	grep -ve ^SUBSTITUTE -e ^COPY -e RemoveFromApertium $< >.deps/$<.grepd
+	cg-relabel .deps/$<.grepd gt2apertium.cg3r .deps/$<.reld
+	cg-comp .deps/$<.reld $@
 
-$(PREFIX1).syn.rlx.bin: $(AP_SRC1)/$(LANG1).syn.rlx.bin
-	cp $< $@
+$(PREFIX1).syn.rlx.bin: $(BASENAME).$(PREFIX1).syn.rlx gt2apertium.cg3r .deps/.d
+	grep -ve ^SUBSTITUTE -e ^COPY -e RemoveFromApertium $< >.deps/$<.grepd
+	cg-relabel .deps/$<.grepd gt2apertium.cg3r .deps/$<.reld
+	cg-comp .deps/$<.reld $@
 
 $(PREFIX2).rlx.bin: $(AP_SRC2)/$(LANG2).rlx.bin
 	cp $< $@
@@ -139,11 +143,10 @@ $(PREFIX2).prob: $(AP_SRC2)/$(LANG2).prob
 	cp $< $@
 
 
-# CG sources for debug modes:
-$(BASENAME).$(PREFIX1).mor.rlx: $(AP_SRC1)/disambiguation-mt-apertium.cg3
+$(BASENAME).$(PREFIX1).mor.rlx: $(AP_SRC1)/disambiguation-mt-gt.cg3
 	cp $< $@
 
-$(BASENAME).$(PREFIX1).syn.rlx: $(AP_SRC1)/functions-mt-apertium.cg3
+$(BASENAME).$(PREFIX1).syn.rlx: $(AP_SRC1)/functions-mt-gt.cg3
 	cp $< $@
 
 $(BASENAME).$(PREFIX2).rlx: $(AP_SRC2)/apertium-$(LANG2).$(LANG2).rlx
