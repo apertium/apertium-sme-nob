@@ -78,8 +78,8 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="a.*.attr.*"/>
       <!-- TODO: pstv verbs don't have adj forms, should have transfer
            <exception> if tl pstv -->
-      <cat-item tags="v.iv.a.attr.*"/>
-      <cat-item tags="v.tv.a.attr.*"/>
+      <cat-item tags="vblex.iv.a.attr.*"/>
+      <cat-item tags="vblex.tv.a.attr.*"/>
     </def-cat>
     <def-cat n="num_mod">
       <cat-item tags="num.*.@→N"/>
@@ -153,13 +153,13 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.*.cmp.*"/>
     </def-cat>
     <def-cat n="nom_head" c="Head nom's are sent to out_nom, thus we can have Verb derivatives here.">
-      <cat-item tags="v.*.*.n.*"/>
+      <cat-item tags="vblex.*.*.n.*"/>
       <cat-item tags="n.*"/>
       <cat-item tags="abbr"/>
       <cat-item tags="abbr.*"/>
     </def-cat>
     <def-cat n="nom_rP" c="Head nom before a postposition, sent to out_nom">
-      <cat-item tags="v.*.*.n.*.@→P"/>
+      <cat-item tags="vblex.*.*.n.*.@→P"/>
       <cat-item tags="n.*.@→P"/>
       <cat-item tags="abbr.*.@→P"/>
     </def-cat>
@@ -199,20 +199,20 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="prinseassa" tags="n.*"/>
       <cat-item lemma="ruvdnaprinseassa" tags="n.*"/>
     </def-cat>
-    <def-cat n="verb">
-      <cat-item tags="v.*"/>
+    <def-cat n="vblex">
+      <cat-item tags="vblex.*"/>
     </def-cat>
-    <def-cat n="v.actio">
-      <cat-item tags="v.*.actio.*"/>
+    <def-cat n="vblex.actio">
+      <cat-item tags="vblex.*.actio.*"/>
     </def-cat>
     <def-cat n="goahti-v">
-      <cat-item lemma="goahti" tags="v.*"/>
+      <cat-item lemma="goahti" tags="vblex.*"/>
     </def-cat>
     <def-cat n="conj">
-      <cat-item tags="cc"/>
-      <cat-item tags="cs"/>
-      <cat-item tags="cc.*"/>
-      <cat-item tags="cs.*"/>
+      <cat-item tags="cnjcoo"/>
+      <cat-item tags="cnjsub"/>
+      <cat-item tags="cnjcoo.*"/>
+      <cat-item tags="cnjsub.*"/>
     </def-cat>
     <def-cat n="month">
       <cat-item lemma="guovvamánnu" tags="n.*"/>
@@ -361,8 +361,6 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="fixedcase"/>
     </def-attr>
     <def-attr n="a_conj">
-      <attr-item tags="cc"/>
-      <attr-item tags="cs"/>
       <attr-item tags="cnjcoo"/>
       <attr-item tags="cnjcoo.clb"/>
       <attr-item tags="cnjsub"/>
@@ -4633,7 +4631,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
                    ii => adv.p3.sg{ikke}
                    Itgo => adv.p2.sg.qst{ikke}">
       <pattern>
-        <pattern-item n="verb"/>
+        <pattern-item n="vblex"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -4649,7 +4647,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
                    TODO: insert 'i gang med å' if actio ess
                    TODO: pret pass exception">
       <pattern>
-        <pattern-item n="verb"/>
+        <pattern-item n="vblex"/>
         <pattern-item n="goahti-v"/>
       </pattern>
       <action>
@@ -4709,7 +4707,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
                    (should be 'skolegang', but if it's not in bidix, adj.pprs is the best we can do)">
       <pattern>
         <pattern-item n="nom.cmp"/>
-        <pattern-item n="verb"/>
+        <pattern-item n="vblex"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -4749,7 +4747,7 @@ TODO sin geargan áššiin
 TODO: should we restrict to V.Actio.Nom/Gen ?">
       <pattern>
         <pattern-item n="prn.pers.gen"/>
-        <pattern-item n="v.actio"/>
+        <pattern-item n="vblex.actio"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -4823,7 +4821,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                    The Agent Construction. See above rule.">
       <pattern>
         <pattern-item n="nom.gen"/>
-        <pattern-item n="v.actio"/>
+        <pattern-item n="vblex.actio"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
