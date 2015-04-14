@@ -296,6 +296,7 @@ And then there are some categories like "month", with all the months.
   <section-def-attrs>
     <def-attr n="a_der">
       <attr-item tags="der_halla"/>
+      <attr-item tags="der_dimin"/>
     </def-attr>
     <def-attr n="a_sintagma">
       <attr-item tags="SN"/>
@@ -1990,7 +1991,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
   </section-def-macros>
 
   <section-rules>
-    <!-- <rules: TODO MWE's or pos-changes that really should be in lexc
+    <!-- <rules: TODO MWE's or pos-changes that really should be lexicalised
 
          Main pos should preferably never change in bidix, leads to
          too many cases in transfer, better to keep exceptions here.
@@ -2281,7 +2282,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
           <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
         </when></choose>
 
-        <choose><when c="Remove dash from spelled out numbers preceding non-numbers (logi-jagáš → tiåret)">
+        <choose><when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
           <test><not><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="rcmpnd"/></equal></not></test>
           <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
         </when></choose>
@@ -2301,7 +2302,36 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
             <lit v="$"/>
           </concat>
         </let>
-        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+        <choose>
+          <when c="TODO: can we lexicalise logi-jagáš and logijagáš etc. as adj's?">
+            <test><and>
+              <equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_dimin"/></equal>
+              <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
+            </and></test>
+            <out>
+              <var n="caseprep"/>
+              <chunk name="pre_adj" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SA"/></tag>
+                  <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+                  <tag><lit-tag v="ind"/></tag>
+                  <tag><clip pos="2" side="sl" part="mode"/></tag>
+                  <tag><var n="c_gen"/></tag>
+                  <tag><var n="c_nbr"/></tag>
+                </tags>
+                <var n="pre-nom"/>
+                <b pos="1"/>
+                <lu>
+                  <lit v="årig"/>
+                  <lit-tag v="adj.sint.pst.nt.sg.ind"/>
+                </lu>
+              </chunk>
+            </out>
+          </when>
+          <otherwise>
+            <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+          </otherwise>
+        </choose>
       </action>
     </rule>
     <rule comment="REGLA: NUM.CMP NOM.CMP NOM
