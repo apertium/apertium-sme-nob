@@ -239,17 +239,23 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="num.cmp"/>
       <cat-item tags="num.*.cmp"/>
     </def-cat>
-    <def-cat n="diibmu">
+    <def-cat n="lex-diibmu">
       <cat-item lemma="diibmu" tags="n.*"/>
     </def-cat>
-    <def-cat n="lohku">
-      <cat-item lemma="lohku" tags="n.*"/>
+    <def-cat n="lex-dan">
+      <cat-item lemma="dat" tags="prn.dem.sg.*"/>
+    </def-cat>
+    <def-cat n="lex-botta">
+      <cat-item lemma="bodda" tags="n.*.sg.gen.*"/>
+      <cat-item lemma="bodda" tags="n.*.sg.acc.*"/>
+      <cat-item lemma="bodda" tags="n.sg.gen.*"/>
+      <cat-item lemma="bodda" tags="n.sg.acc.*"/>
     </def-cat>
     <def-cat n="ord">
       <cat-item tags="a.ord.*"/>
       <cat-item tags="a.ord"/>
     </def-cat>
-    <def-cat n="beaivi">
+    <def-cat n="lex-beaivi">
       <cat-item lemma="beaivi" tags="n.*"/>
       <cat-item lemma="b" tags="abbr.*"/>
       <cat-item lemma="b" tags="n.abbr.*"/>
@@ -1974,6 +1980,53 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
   </section-def-macros>
 
   <section-rules>
+    <!-- <rules: TODO MWE's or pos-changes that really should be in lexc
+
+         Main pos should preferably never change in bidix, leads to
+         too many cases in transfer, better to keep exceptions here.
+    -->
+    <rule comment="REGLA: dan botta → mens">
+      <pattern>
+        <pattern-item n="lex-dan"/>
+        <pattern-item n="lex-botta"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="tl" part="a_conj"/></tag>
+            </tags>
+            <lu>
+              <lit v="mens"/>
+              <lit-tag v="cnjsub"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: botta → mens">
+      <pattern>
+        <pattern-item n="lex-botta"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="a_conj"/></tag>
+            </tags>
+            <lu>
+              <lit v="mens"/>
+              <lit-tag v="cnjsub"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <!-- <rules: MWE interjections (which can't be in analyser as multiwords) -->
     <rule comment="REGLA: IJ-ADJ IJ-NOM
                    buorre eahket">
@@ -2072,7 +2125,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
       <pattern>
         <pattern-item n="month"/>
         <pattern-item n="ord"/>
-        <pattern-item n="beaivi"/>
+        <pattern-item n="lex-beaivi"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -2113,7 +2166,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
     <rule comment="REGLA: DIIBMU NUM
                    diibmu 11.00 => klokken 11.00">
       <pattern>
-        <pattern-item n="diibmu"/>
+        <pattern-item n="lex-diibmu"/>
         <pattern-item n="num"/>
       </pattern>
       <action>
@@ -5101,5 +5154,6 @@ TODO: this should be an mwe in the analyser.">
         </out>
       </action>
     </rule>
+
   </section-rules>
 </transfer>
