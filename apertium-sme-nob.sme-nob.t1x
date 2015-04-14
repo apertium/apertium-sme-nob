@@ -236,8 +236,10 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="čakča" tags="n.*"/>
     </def-cat>
     <def-cat n="num.cmp">
-      <cat-item tags="num.cmp"/>
-      <cat-item tags="num.*.cmp"/>
+      <cat-item tags="num.rcmpnd"/>
+      <cat-item tags="num.rcmpnd.*"/>
+      <cat-item tags="num.*.rcmpnd"/>
+      <cat-item tags="num.*.rcmpnd.*"/>
     </def-cat>
     <def-cat n="lex-diibmu">
       <cat-item lemma="diibmu" tags="n.*"/>
@@ -343,7 +345,15 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_cmp">
       <attr-item tags="cmp"/>
       <attr-item tags="dash"/>
+      <attr-item tags="plgencmp"/>
+      <attr-item tags="plnomcmp"/>
+      <attr-item tags="sggencmp"/>
+      <attr-item tags="sgnomcmp"/>
       <attr-item tags="rcmpnd"/>
+      <attr-item tags="plgencmp.rcmpnd"/>
+      <attr-item tags="plnomcmp.rcmpnd"/>
+      <attr-item tags="sggencmp.rcmpnd"/>
+      <attr-item tags="sgnomcmp.rcmpnd"/>
     </def-attr>
     <def-attr n="a_prn">
       <attr-item tags="prn"/>
@@ -2272,7 +2282,7 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </when></choose>
 
         <choose><when c="Remove dash from spelled out numbers preceding non-numbers (logi-jagáš → tiåret)">
-          <test><not><equal><clip pos="1" side="sl" part="nbr"/><lit v=""/></equal></not></test>
+          <test><not><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="rcmpnd"/></equal></not></test>
           <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
         </when></choose>
 
