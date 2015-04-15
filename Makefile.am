@@ -77,11 +77,11 @@ debug: \
 .deps/$(PREFIX1).automorf-trimmed.hfst: .deps/$(LANG1).automorf.hfst .deps/$(PREFIX1).autobil.prefixes
 	hfst-compose-intersect -1 $< -2 .deps/$(PREFIX1).autobil.prefixes -o $@
 
-.deps/rm-cmp.hfst: rm-cmp.twol .deps/.d
+.deps/rm-deriv-cmp.hfst: rm-deriv-cmp.twol .deps/.d
 	hfst-twolc -i $< -o $@
 
-.deps/$(PREFIX1).automorf-trimmed-nocmp.hfst: .deps/$(PREFIX1).automorf-trimmed.hfst .deps/rm-cmp.hfst
-	hfst-compose-intersect -1 $< -2 .deps/rm-cmp.hfst -o $@
+.deps/$(PREFIX1).automorf-trimmed-nocmp.hfst: .deps/$(PREFIX1).automorf-trimmed.hfst .deps/rm-deriv-cmp.hfst
+	hfst-compose-intersect -1 $< -2 .deps/rm-deriv-cmp.hfst -o $@
 
 $(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf-trimmed-nocmp.hfst
 	hfst-fst2fst -O -i $< -o $@
