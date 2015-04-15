@@ -1,5 +1,5 @@
-Revision: 59783
-AP_SRC1 Revision: 111047
+Revision: 59786
+AP_SRC1 Revision: 111084
 AP_SRC2 Revision: 59761
 Running Regression-tests with mode "sme-nob" with updated tests ...
 
@@ -481,17 +481,17 @@ WORKS	  Máhtte sa at de skulle reise nå allerede.
 
 sme-nob	  Mon gullen ahte áddjá ii dovdan dan lottáža.
 	- Jeg hørte at bestefar ikke kjente den fuglen.
-	+ Jeg hørte at bestefar kjenne ikke den fuglen.
+	+ Jeg hørte at bestefar kjente ikke den fuglen.
 
 
 sme-nob	  vai flegmáhtalaš okkupašuvdnafápmu ii beassan sin váldit gitta.
 	- for at den flegmatiske okkupasjonsmakten ikke fikk ta dem fast.
-	+ for å den flegmatiske okkupasjonsmakten ikke få ta dem fast.
+	+ for å den flegmatiske okkupasjonsmakten ikke fikk ta dem fast.
 
 
 sme-nob	  Harald vuortnui ahte ii áigon čuohppat vuovttaid.
 	- Harald sverget at han ikke skulle klippe hår.
-	+ Harald sverget at han skulle ikke klippe hår.
+	+ Harald sverget at han skullet ikke klippe hår.
 
 
 sme-nob	  ahte Norga ii sáhttán birget flegmáhtalaš soahtefámu vuostá.
@@ -500,17 +500,18 @@ sme-nob	  ahte Norga ii sáhttán birget flegmáhtalaš soahtefámu vuostá.
 
 
 sme-nob	  boradišgohten.
-WORKS	  jeg begynte å spise.
+	- jeg begynte å spise.
+	+ *boradišgohten.
 
 
 sme-nob	  lohkagohten.
 	- jeg begynte å lese.
-	+ jeg begynte å si.
+	+ *lohkagohten.
 
 
 sme-nob	  ii lohkagoađe.
 	- han begynner ikke å lese.
-	+ han begynner ikke å si.
+	+ ikke *lohkagoađe.
 
 
 sme-nob	  don borrojuvvot.
@@ -740,13 +741,11 @@ sme-nob	  du idjabeavdeskuffas?
 
 
 sme-nob	  Mánná gáskkáhalai beatnagii.
-	- Barnet ble bitt av hunden.
-	+ Barnet #bite av hunden.
+WORKS	  Barnet ble bitt av hunden.
 
 
 sme-nob	  Mii fillehalaimet sidjiide.
-	- Vi ble narret av dem.
-	+ Vi #narre av dem.
+WORKS	  Vi ble narret av dem.
 
 
 sme-nob	  Manne don geahčat munnje?
@@ -754,7 +753,8 @@ WORKS	  Hvorfor ser du på meg?
 
 
 sme-nob	  Fertebeahtti jáhkkigoahtit dakkár balddonasmuitalusaide.
-WORKS	  Dere to må begynne å tro på slike spøkelseshistorier.
+	- Dere to må begynne å tro på slike spøkelseshistorier.
+	+ Må *jáhkkigoahtit til slike spøkelseshistorier.
 
 
 sme-nob	  Máhtte báhcá gáddái.
