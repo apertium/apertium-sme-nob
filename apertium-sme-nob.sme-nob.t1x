@@ -1568,7 +1568,7 @@ And then there are some categories like "month", with all the months.
                      eanan-(RCmpnd) ja luonddudoahpagiid => jord-(sg.ind) og naturfagord
                      NOTE: the dash tag is only defined for the sg.ind form of nouns in nob.dix (like cmp)
                      (as well as all numerals, where the change is handled in bidix)">
-              <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="rcmpnd"/></equal></test>
+              <test><ends-with><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="rcmpnd"/></ends-with></test>
               <choose><when>
                 <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal></test>
                 <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
@@ -2283,7 +2283,10 @@ TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types
         </when></choose>
 
         <choose><when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
-          <test><not><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="rcmpnd"/></equal></not></test>
+          <test><or>
+            <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="sgnomcmp.rcmpnd"/></equal>
+            <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="sggencmp.rcmpnd"/></equal>
+          </or></test>
           <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
         </when></choose>
 
