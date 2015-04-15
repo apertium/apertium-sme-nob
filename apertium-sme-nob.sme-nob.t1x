@@ -972,6 +972,13 @@ And then there are some categories like "month", with all the months.
       <list-item v="november"/>
       <list-item v="desember"/>
     </def-list>
+
+    <def-list n="caus-la-verbs" c="Should get 'la' instead of 'få' in causative">
+      <list-item v="delegere"/>
+    </def-list>
+    <def-list n="caus-Ø-verbs" c="For some verbs, there is no need for a causative helper">
+      <list-item v="delegere"/>
+    </def-list>
   </section-def-lists>
 
   <section-def-macros>
@@ -1742,10 +1749,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </when></choose>
 
       <choose c="Prepend 'la' if causative:
-TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types..."><when>
-        <test>
+                 TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types..."><when>
+        <test><and>
           <equal><clip pos="1" side="tl" part="a_caus"/><lit-tag v="caus"/></equal>
-        </test>
+          <not><in><clip pos="1" side="tl" part="lemh"/><list n="caus-Ø-verbs"/></in></not>
+        </and></test>
         <out>
           <chunk name="verb" case="caseFirstWord">
             <tags>
