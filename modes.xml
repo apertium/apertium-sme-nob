@@ -55,8 +55,8 @@
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-conv -a"/>
-      <program name="vislcg3 --trace -g">
-        <file name="apertium-sme-nob.sme-nob.mor.rlx"/>
+      <program name="vislcg3 --trace --grammar">
+        <file name="sme-nob.mor.rlx.bin"/>
       </program>
     </pipeline>
   </mode>
@@ -66,12 +66,12 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-conv -a"/>
-      <program name="vislcg3 --trace -g">
-        <file name="apertium-sme-nob.sme-nob.mor.rlx"/>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
       </program>
-      <program name="vislcg3 --trace -g">
-        <file name="apertium-sme-nob.sme-nob.syn.rlx"/>
+      <program name="cg-conv -a"/>
+      <program name="vislcg3 --trace --grammar">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
     </pipeline>
   </mode>
@@ -365,8 +365,8 @@
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-conv -a"/>
-      <program name="vislcg3 --trace -g">
-        <file name="apertium-sme-nob.sme-nob.mor.rlx"/>
+      <program name="vislcg3 --trace --grammar">
+        <file name="sme-nob.mor.rlx.bin"/>
       </program>
     </pipeline>
   </mode>
@@ -376,12 +376,12 @@
       <program name="hfst-proc -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
-      <program name="cg-conv -a"/>
-      <program name="vislcg3 --trace -g">
-        <file name="apertium-sme-nob.sme-nob.mor.rlx"/>
+      <program name="cg-proc">
+        <file name="sme-nob.mor.rlx.bin"/>
       </program>
-      <program name="vislcg3 --trace -g">
-        <file name="apertium-sme-nob.sme-nob.syn.rlx"/>
+      <program name="cg-conv -a"/>
+      <program name="vislcg3 --trace --grammar">
+        <file name="sme-nob.syn.rlx.bin"/>
       </program>
     </pipeline>
   </mode>
