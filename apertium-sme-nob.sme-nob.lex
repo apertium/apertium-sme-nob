@@ -941,7 +941,9 @@ SELECT ("klippe"i) (0 ("<čuohppat>"i))(*0 ("<vuokta>"i) OR ("<liidni>"i));
 SELECT ("skjære"i) (0 ("<čuohppat>"i)) ;
 
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
-SELECT ("čilget") (0 ("<utgreie>"i)) (NOT 1 ("<.*skuvla>"ri) OR ("<ossodat>"ri)) ;
+SELECT ("utgreie"i) (0 ("<čilget>"i)) (NOT 1 ("<.*skuvla>"ri) OR ("<ossodat>"ri)) ;
+
+SELECT ("oversette"i) (0 ("<jorgalit>"i)) (NOT *0 ("fisk"i)) ;
 
 
 LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rubel>" "<ruvdno>" "<ruvdnu>" "<¢>" "<€>" "<$>" ;
