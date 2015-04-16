@@ -862,7 +862,8 @@ SELECT ("mens"i) IF (0 ("<bodda>"i) LINK -1 ("<dat>") LINK 0 gen) ;
 
 
 
-#Verbs
+# Verbs
+# =====
 
 #leat
 
@@ -986,7 +987,9 @@ SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CUR
 # vuodjit - vuodján kjørt / vuodjat - vuodján svømt
 REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čáhci>"i) OR ("<basseaŋga>"i));
  
-#NOUNS
+
+# Nouns
+# ============
 
 # áddjá: bestefar vs gamling
 SELECT ("gamling"i) (0 ("<áddjá>"i) LINK -1 num LINK NOT *-1 ←hab→);
