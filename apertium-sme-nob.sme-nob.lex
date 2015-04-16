@@ -131,7 +131,7 @@ LIST pxpl2 = pxpl2 ;
 LIST pxpl3 = pxpl3 ;
 
 LIST comp = comp ;
-LIST superl = superl ;
+LIST superl = sup ;
 
 LIST attr = attr ;
 LIST ord = ord ;
@@ -189,7 +189,7 @@ LIST prsprc = prsprc ;
  
 
 LIST ger = ger ;
-LIST sup = sup ;
+LIST sup = supn ;
 LIST actio = actio ;
 
 LIST der_passl = der_passl ;
