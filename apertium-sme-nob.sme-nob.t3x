@@ -60,6 +60,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SV.@←SUBJ.*"/>
       <cat-item tags="SN.@←SUBJ.*"/>
       <cat-item tags="SA.@←SUBJ.*"/>
+      <!-- also @SUBJ→, for avoiding pro-insertion with @+FAUXV @SUBJ→ @-FMAINV -->
+      <cat-item tags="SV.@SUBJ→.*"/>
+      <cat-item tags="SN.@SUBJ→.*"/>
+      <cat-item tags="SA.@SUBJ→.*"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
     <def-cat n="lSPRED">
