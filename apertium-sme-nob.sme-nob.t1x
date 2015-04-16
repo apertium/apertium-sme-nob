@@ -82,6 +82,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="vblex.tv.a.attr.*"/>
     </def-cat>
     <def-cat n="num_mod">
+      <cat-item tags="num.*.@HNOUN"/> <!-- HNOUN=syntax couldn't find a head; might still be a modifier -->
       <cat-item tags="num.*.@→N"/>
       <cat-item tags="num.*.@→A"/>
     </def-cat>
@@ -598,6 +599,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="defnes"         c="definiteness (noun, adj)"/>
     <def-var n="c_name"         c="chunk name"/>
     <def-var n="tmp"            c="temporary variable"/>
+    <def-var n="blank"          c="for removing blanks"/>
     <def-var n="c_gen"          c="chunk gender"/>
     <def-var n="c_nbr"          c="chunk number"/>
     <def-var n="c_def_pos"      c="chunk defnes tag position"/>
@@ -2931,10 +2933,13 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                    22 jahkásaš Tine
                    See NUM_MOD NOM">
       <!--
-          intended matches:
+          Intended matches:
+          ^9<num><sg><nom><@HNOUN>$ ^jahkásaš<a><attr><@→N>$ ^álbmotskuvla<n><sg><nom><@HNOUN>$
           okta<num><sg><nom><@→N>/en<det><qnt><GD><sg><nom><@→N> gassat<a><attr><@→N>/tykk<adj><sint><pst><GD><ND><@→N> nisu<n><sg><nom><@SUBJ→>/kvinne<n><f><sg><nom><@SUBJ→>
+          guokte dehálaš čilgehusa – her skal nbr over på adj/subst
 
-          more suspicious matches:
+          More suspicious matches:
+          1922:s parlamentáralaš skuvlakommišuvnna
           C<num><nom><@→N>/C<det><qnt><pl><nom><fixedcase><@→N> Liekkas<a><sup><attr><@→N>/Varm<adj><sint><sup><attr><@→N> mánotbadji<n><sg><nom><@SUBJ→>/måned<n><m><sg><nom><@SUBJ→>
           1976<num><sg><acc><@→N>/1976<det><qnt><pl><acc><@→N> dálá<a><attr><@→N>/nåtidig<adj><sint><pst><GD><ND><@→N> lullisámegiella<n><sg><gen><@Num←>/sørsamisk<n><m><sg><gen><@Num←>
       -->
@@ -2965,6 +2970,15 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <let><var n="tmp"/><lit-tag v="3"/></let>
           </otherwise>
         </choose>
+        <choose>
+          <when>
+            <test><begins-with><clip pos="2" side="tl" part="lemh"/><lit v="-"/></begins-with></test>
+            <let><var n="blank"/><lit v=""/></let>
+          </when>
+          <otherwise>
+            <let><var n="blank"/><b pos="1"/></let>
+          </otherwise>
+        </choose>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <let>
@@ -2977,7 +2991,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
-            <b pos="1"/>
+            <var n="blank"/>
             <lit v="^"/>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_adj"/>

@@ -1261,6 +1261,10 @@ SELECT ("vær så god") (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
 SELECT ("helhetlig") (0 ("<ollislaš>"i));
 
+SELECT ("forrige") (0 ("<ovddit>"i comp)) (1 n + sg);
+
+IFF ("-årig") (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
+
 	## leage buorre (vær så god)
 
 # buorre:0 → bra, buorre:1→god , så god

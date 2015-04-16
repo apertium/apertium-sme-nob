@@ -335,6 +335,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               c="Noun phrases with these syntactic functions should not have a determiner (neither ind nor def)">
       <list-item v="&lt;@←PPRED&gt;"/>
     </def-list>
+    <def-list n="no-moremost"
+              c="Adj's that are neither analytic nor work with more/most">
+      <list-item v="forrige"/>
+    </def-list>
     <def-list n="adj-genders" c="possible nob adj genders">
       <list-item v="&lt;m&gt;"/>
       <list-item v="&lt;mf&gt;"/>
@@ -674,21 +678,35 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           </otherwise>
         </choose>
 
-        <let>
-          <clip pos="1" part="whole"/>
-          <concat>
-            <lit v="mye"/>
-            <lit-tag v="adj.sint"/>
-            <clip pos="1" part="grau-pure"/>
-            <lit-tag v="un.sp"/>
-            <var n="moremost-defnes"/>
-            <lit v="$ ^"/>
-            <clip pos="1" part="lemh"/>
-            <clip pos="1" part="a_adj"/>
-            <lit-tag v="pst.mf.sg.ind"/>
-            <clip pos="1" part="lemq"/>
-          </concat>
-        </let>
+        <choose>
+          <when>
+            <test><in><clip pos="1" part="lemh"/><list n="no-moremost"/></in></test>
+            <let>
+              <clip pos="1" part="tags"/>
+              <concat>
+                <clip pos="1" part="a_adj"/>
+                <lit-tag v="pst.mf.sg.ind"/>
+              </concat>
+            </let>
+          </when>
+          <otherwise>
+            <let>
+              <clip pos="1" part="whole"/>
+              <concat>
+                <lit v="mye"/>
+                <lit-tag v="adj.sint"/>
+                <clip pos="1" part="grau-pure"/>
+                <lit-tag v="un.sp"/>
+                <var n="moremost-defnes"/>
+                <lit v="$ ^"/>
+                <clip pos="1" part="lemh"/>
+                <clip pos="1" part="a_adj"/>
+                <lit-tag v="pst.mf.sg.ind"/>
+                <clip pos="1" part="lemq"/>
+              </concat>
+            </let>
+          </otherwise>
+        </choose>
 
       </when></choose>
     </def-macro>
