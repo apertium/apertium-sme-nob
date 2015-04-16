@@ -296,6 +296,7 @@ And then there are some categories like "month", with all the months.
   <section-def-attrs>
     <def-attr n="a_der">
       <attr-item tags="der_halla"/>
+      <attr-item tags="der_goahti"/>
       <attr-item tags="der_dimin"/>
     </def-attr>
     <def-attr n="a_sintagma">
@@ -1740,6 +1741,42 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <var n="tmp"/>
               <lit-tag v="vblex"/>
               <clip pos="1" side="tl" part="temps"/>
+            </lu>
+          </chunk>
+          <b/>
+        </out>
+        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+        <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+      </when></choose>
+
+      <choose c="Prepend 'begynne' if ingressive:"><when>
+        <test><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_goahti"/></equal></test>
+        <out>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="sl" part="modality"/></tag>
+              <tag><clip pos="1" side="tl" part="temps"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              <tag><var n="caseprep"/></tag>
+            </tags>
+            <lu>
+              <lit v="begynne"/>
+              <lit-tag v="vblex"/>
+              <clip pos="1" side="tl" part="temps"/>
+            </lu>
+          </chunk>
+          <b/>
+          <chunk name="part">
+            <tags>
+              <tag><lit-tag v="part"/></tag>
+            </tags>
+            <lu>
+              <lit v="å"/><lit-tag v="part"/>
             </lu>
           </chunk>
           <b/>
@@ -4728,6 +4765,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <!-- <rules VERBS ETC. -->
 
+    
+
     <rule comment="REGLA: VERB (tl: VERB, ADV, ADJ, NOUN)
                    See out_verb macro.
                    -----
@@ -4741,66 +4780,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <let><var n="pre-verb"/><lit v=""/></let>
         <let><var n="c_name"/><lit v=""/></let>
-        <call-macro n="out_verb"><with-param pos="1"/></call-macro>
-      </action>
-    </rule>
-
-    <rule comment="REGLA: VERB Der/goahti: lohka+gohten => begynne å si
-                   needs to be several chunks to cover: ii lohkagoađe => han begynner ikke å si
-                   TODO: caseSecondWord
-                   TODO: insert 'i gang med å' if actio ess
-                   TODO: pret pass exception">
-      <pattern>
-        <pattern-item n="vblex"/>
-        <pattern-item n="goahti-v"/>
-      </pattern>
-      <action>
-        <call-macro n="switch_cases"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <chunk name="verb" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SV"/></tag>
-              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="2" side="sl" part="mode"/></tag>
-              <tag><clip pos="2" side="sl" part="modality"/></tag>
-              <tag><clip pos="2" side="tl" part="temps"/></tag>
-              <tag><clip pos="2" side="tl" part="voice"/></tag>
-              <tag><clip pos="2" side="tl" part="pers"/></tag>
-              <tag><clip pos="2" side="tl" part="nbr"/></tag>
-              <tag><clip pos="1" side="tl" part="animacy"/></tag>
-            </tags>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_verb"/>
-              <clip pos="2" side="tl" part="a_pstv"/>
-              <clip pos="2" side="tl" part="temps"/>
-              <clip pos="2" side="tl" part="voice"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-          <b pos="1"/>
-          <chunk name="part">
-            <tags>
-              <tag><lit-tag v="part"/></tag>
-            </tags>
-            <lu>
-              <lit v="å"/><lit-tag v="part"/>
-            </lu>
-          </chunk>
-          <b/>
-        </out>
-        <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
-        <let><var n="pre-verb"/><lit v=""/></let>
-        <let><var n="c_name"/><lit v=""/></let>
-        <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
-        <!-- There is no temps on pos=1 in this construction, so we just append one to the pstv tags (or, if empty, to the verb tags): -->
-        <let><clip pos="1" side="tl" part="a_pstv"/><concat><clip pos="1" side="tl" part="a_pstv"/><lit-tag v="inf"/></concat></let>
-        <choose><when>
-          <test><equal><clip pos="1" side="tl" part="a_pstv"/><lit v=""/></equal></test>
-          <let><clip pos="1" side="tl" part="a_verb"/><concat><clip pos="1" side="tl" part="a_verb"/><lit-tag v="inf"/></concat></let>
-        </when></choose>
         <call-macro n="out_verb"><with-param pos="1"/></call-macro>
       </action>
     </rule>
