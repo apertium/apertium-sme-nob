@@ -1395,43 +1395,38 @@ And then there are some categories like "month", with all the months.
     <def-macro n="modify_adj_gen_nbr" npar="2"
                c="arg.1: noun, arg.1: adjective
                   -----
-                  Number is only a feature of positive/pp adjectives in nob.
-                  nob adj's never have m or f tags.">
-      <choose>
+                  ">
+      <choose c="For positives, copy noun number over (if sg/pl).">
         <when>
-          <test>
+          <test><and>
+            <or>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+            </or>
             <or>
               <equal><clip pos="2" side="tl" part="temps"/><lit-tag v="pp"/></equal>
               <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="pst"/></ends-with>
             </or>
-          </test>
+          </and></test>
           <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
-          <choose>
-            <when><test><not>
-              <or>
-                <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
-                <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
-              </or>
-            </not></test>
-            <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+        </when>
+      </choose>
+      <choose c="When GD, nob adj's are either nt or mf">
+        <when>
+          <test><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="GD"/></equal></test>
+          <choose c="Try to copy from noun">
+            <when><test><in><clip pos="1" side="tl" part="gen"/><list n="adj-genders"/></in></test>
+            <let><clip pos="2" side="tl" part="gen"/><clip pos="1" side="tl" part="gen"/></let>
             </when>
           </choose>
-        </when>
-        <otherwise>
-          <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
-        </otherwise>
-      </choose>
-      <choose>
-        <when><test><in><clip pos="1" side="tl" part="gen"/><list n="adj-genders"/></in></test>
-        <let><clip pos="2" side="tl" part="gen"/><clip pos="1" side="tl" part="gen"/></let>
-        </when>
-      </choose>
-      <choose>
-        <when>
-          <test>
-            <not><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="nt"/></equal></not>
-          </test>
-          <let><clip pos="2" side="tl" part="gen"/><lit-tag v="mf"/></let>
+          <choose c="Default to mf if still unset">
+            <when>
+              <test>
+                <not><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="nt"/></equal></not>
+              </test>
+              <let><clip pos="2" side="tl" part="gen"/><lit-tag v="mf"/></let>
+            </when>
+          </choose>
         </when>
       </choose>
     </def-macro>
