@@ -940,6 +940,9 @@ SELECT ("mate"i) (0 ("<borahit>"i))(NOT *0 sem_ani);
 SELECT ("klippe"i) (0 ("<čuohppat>"i))(*0 ("<vuokta>"i) OR ("<liidni>"i));
 SELECT ("skjære"i) (0 ("<čuohppat>"i)) ;
 
+# Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
+SELECT ("čilget") (0 ("<utgreie>"i)) (NOT 1 ("<.*skuvla>"ri) OR ("<ossodat>"ri)) ;
+
 
 LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rubel>" "<ruvdno>" "<ruvdnu>" "<¢>" "<€>" "<$>" ;
 
@@ -990,6 +993,8 @@ REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čáhci>"i
 
 # Nouns
 # ============
+
+SELECT ("avdeling"i) (0 ("<ossodat>")); # parkorp har masse «avdeling»-døme, ingen «andel»
 
 # áddjá: bestefar vs gamling
 SELECT ("gamling"i) (0 ("<áddjá>"i) LINK -1 num LINK NOT *-1 ←hab→);
@@ -1250,6 +1255,9 @@ SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
 # Adjectives
 # ==========
 SELECT ("vær så god") (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
+
+# Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
+SELECT ("helhetlig") (0 ("<ollislaš>"i));
 
 	## leage buorre (vær så god)
 
