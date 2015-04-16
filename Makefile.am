@@ -60,13 +60,13 @@ debug: \
 .deps/$(PREFIX1).autobil.prefixes: $(PREFIX1).autobil.bin .deps/.d
 	lt-print $< | sed 's/ /@_SPACE_@/g' > .deps/$(PREFIX1).autobil.att
 	hfst-txt2fst -e ε <  .deps/$(PREFIX1).autobil.att > .deps/$(PREFIX1).autobil.hfst
-	hfst-project -p upper .deps/$(PREFIX1).autobil.hfst > .deps/$(PREFIX1).autobil.upper
-	echo ' [ ? - %+ ]* ' | hfst-regexp2fst > .deps/any-nonplus.hfst
-	hfst-concatenate -1 .deps/$(PREFIX1).autobil.upper -2 .deps/any-nonplus.hfst -o .deps/$(PREFIX1).autobil.nonplussed # bidix [^+]*
-	echo ' %+ ' | hfst-regexp2fst > .deps/single-plus.hfst
+	hfst-project -p upper .deps/$(PREFIX1).autobil.hfst > .deps/$(PREFIX1).autobil.upper                                   # bidix
+	echo ' [ ? - %+ ]* ' | hfst-regexp2fst > .deps/any-nonplus.hfst                                                        # [^+]*
+	hfst-concatenate -1 .deps/$(PREFIX1).autobil.upper -2 .deps/any-nonplus.hfst -o .deps/$(PREFIX1).autobil.nonplussed    # bidix [^+]*
+	echo ' %+ ' | hfst-regexp2fst > .deps/single-plus.hfst                                                                 # +
 	hfst-concatenate -1 .deps/single-plus.hfst -2 .deps/$(PREFIX1).autobil.nonplussed -o .deps/$(PREFIX1).autobil.postplus # + bidix [^+]*
-	hfst-repeat -f0 -t1 -i .deps/$(PREFIX1).autobil.postplus -o .deps/$(PREFIX1).autobil.postplus.0,1 # (+ bidix [^+]*){0,1} gives at most one +
-	hfst-concatenate -1 .deps/$(PREFIX1).autobil.nonplussed -2 .deps/$(PREFIX1).autobil.postplus.0,1 -o $@
+	hfst-repeat -f0 -t1 -i .deps/$(PREFIX1).autobil.postplus -o .deps/$(PREFIX1).autobil.postplus.0,1                      # (+ bidix [^+]*){0,1} -- gives at most one +
+	hfst-concatenate -1 .deps/$(PREFIX1).autobil.nonplussed -2 .deps/$(PREFIX1).autobil.postplus.0,1 -o $@                 # bidix [^+]* (+ bidix [^+]*){0,1}
 
 .deps/$(LANG1).automorf.hfst: $(AP_SRC1)/$(BASENAME).$(PREFIX1).LR.att.gz .deps/.d
 	$(ZCAT) $< | hfst-txt2fst > $@
