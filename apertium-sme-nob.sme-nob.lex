@@ -1,5 +1,7 @@
+# -*- cg-pre-pipe: "apertium -d . sme-nob-biltrans | cg-conv -a 2>/dev/null" -*-
 
-DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
+SOFT-DELIMITERS = "<,>" cm ;
+DELIMITERS = "<.>" "<:>" "<!>" "<?>" "<...>" "<|>" "<$.>" "<$:>" "<$!>" "<$?>" "<$|>" sent ;
 
 SETS
 
@@ -838,7 +840,7 @@ SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 comp BARRIER v OR S-BOUNDARY) ;
 SELECT ("som"i) (0 ("<go>"i))(0 cs) ((-1 ("<nu>"i) OR ("<seammá>"i) LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
 	## Elvenes oaččui Niehkostipeandda nu go lei sávvan. 
 
-SELECT ("da"i) (0 ("<go>"i))(0 cs) (*1 (v prt) BARRIER (←hab→) OR (@ADVL→)) ;
+SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (v prt) BARRIER (←hab→) OR (@ADVL→)) ;
 
 SELECT ("fordi"i) (0 ("<go>"i))(0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
 	## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
@@ -941,10 +943,13 @@ SELECT ("klippe"i) (0 ("<čuohppat>"i))(*0 ("<vuokta>"i) OR ("<liidni>"i));
 SELECT ("skjære"i) (0 ("<čuohppat>"i)) ;
 
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
-SELECT ("utgreie"i) (0 ("<čilget>"i)) (NOT 1 ("<.*skuvla>"ri) OR ("<ossodat>"ri)) ;
+SELECT ("utgreie"i) (0 ("<čilget>"i)) (NOT 1 ("<.*skuvla>"ri) OR ("<ossodat>"i)) ;
 
 SELECT ("oversette"i) (0 ("<jorgalit>"i)) (NOT *0 ("fisk"i)) ;
 
+SELECT ("legge"i) (0 ("<lágidit>"i)) (1 ("forhold")) (2 ("til rette for")) ;
+SELECT ("ordne"i) (0 ("<lágidit>"i)) (*1 ill BARRIER v OR S-BOUNDARY) ; # lágidit sáhtu buohccivissui
+SELECT ("arrangere"i) (0 ("<lágidit>"i)) ; # passar i fleire kontekstar enn «ordne»
 
 LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rubel>" "<ruvdno>" "<ruvdnu>" "<¢>" "<€>" "<$>" ;
 
@@ -997,6 +1002,8 @@ REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čáhci>"i
 # ============
 
 SELECT ("avdeling"i) (0 ("<ossodat>")); # parkorp har masse «avdeling»-døme, ingen «andel»
+
+SELECT ("forhold"i) (0 ("<dilálašvuohta>")) (NOT -1 ("<virggálaš>")) (NOT -2 ("<virggálaš>"));
 
 # áddjá: bestefar vs gamling
 SELECT ("gamling"i) (0 ("<áddjá>"i) LINK -1 num LINK NOT *-1 ←hab→);
@@ -1252,6 +1259,11 @@ SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
 	## Álggos ráhkadii Mihkkal hui unna 	rieggáža 	, ja dan olggobeallái fas veaháš stuorit rieggá . 
 	## OVTTAS : Ruošša álgoálbmotguossit bovdejedje gaskan konseartta olbmuid šilljui dánsut 	rieggás 	. 
 	## Oválavuodjima loahppavuorus golbma falimusa vulget oktanaga čáhcebána ala ja vudjet vihtta 	rieggá 	boijaid birra . 
+
+# Adverbs
+# =======
+SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
+SELECT ("slik") (0 ("<nu>"i)) ;
 
 
 # Adjectives
