@@ -28,8 +28,8 @@ Foc/son	TO	("son" pcle)
 Superl	TO	(sup)
 Sup	TO	(supn)
 
-# TODO: we never want to ADD/MAP these, but OTOH we don't want the
-# rules that look for these to match everything either ...
+# The CG rules that add these should all have a trailing comment
+# saying "#RemoveFromApertium" and be grepped out.
 <hab>	TO      (*)
 <ext>   TO      (*)
 <sme>   TO      (*)
