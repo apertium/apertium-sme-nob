@@ -28,12 +28,7 @@ Foc/son	TO	("son" pcle)
 Superl	TO	(sup)
 Sup	TO	(supn)
 
-# The CG rules that add these should all have a trailing comment
-# saying "#RemoveFromApertium" and be grepped out.
-<hab>	TO      (*)
-<ext>   TO      (*)
-<sme>   TO      (*)
-
+# Makefile.am adds a SUBSTITUTE rule to remove <hab>, <sme> and <ext>
 
 # The rest are simply lowercasing and s/>/→/;s/</←/;s/\//_/
 @>A	TO	(@→A)

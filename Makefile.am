@@ -134,6 +134,7 @@ $(PREFIX1).mor.rlx.bin: $(BASENAME).$(PREFIX1).mor.rlx gt2apertium.cg3r .deps/.d
 $(PREFIX1).syn.rlx.bin: $(BASENAME).$(PREFIX1).syn.rlx gt2apertium.cg3r .deps/.d
 	grep -ve ^SUBSTITUTE -e ^COPY -e RemoveFromApertium $< >.deps/$<.grepd
 	cg-relabel .deps/$<.grepd gt2apertium.cg3r .deps/$<.reld
+	echo 'SUBSTITUTE (<ext>) (*) (<ext>);SUBSTITUTE (<hab>) (*) (<hab>); SUBSTITUTE (<sme>) (*) (<sme>);' >> .deps/$<.reld
 	cg-comp .deps/$<.reld $@
 
 $(PREFIX2).rlx.bin: $(AP_SRC2)/$(LANG2).rlx.bin
