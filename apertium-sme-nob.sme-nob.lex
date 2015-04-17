@@ -25,11 +25,11 @@ LIST EOS = (<<<) (</s>);
 LIST n = n ;
 LIST a = a ;
 LIST adv = adv ;
-LIST v = v ;
-LIST pron = pron ;
+LIST v = vblex ;
+LIST pron = prn ;
 
-LIST cs = cs ;
-LIST cc = cc ;
+LIST cs = cnjsub ;
+LIST cc = cnjcoo ;
 LIST po = po ;
 LIST pr = pr ;
 LIST pcle = pcle ;
@@ -375,7 +375,7 @@ LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
 
 # Word or not
 # -----------
-LIST WORD = n a adv v pron cs cc po pr interj pcle num abbr acr \? ;
+LIST WORD = n a adv vblex prn cnjsub cnjcoo po pr interj pcle num abbr acr \? ;
  # any word
 
 SET REALWORD = WORD - num - ord ;
@@ -416,23 +416,23 @@ SET NOT-PRFPRC = WORD - prfprc ;
 # Person
 # - - - - 
 
-LIST V-SG1 = (v sg1) ;
+LIST V-SG1 = (vblex sg1) ;
  
-LIST V-SG2 = (v sg2) ;
+LIST V-SG2 = (vblex sg2) ;
  
-LIST V-SG3 = (v sg3) ;
+LIST V-SG3 = (vblex sg3) ;
  
-LIST V-DU1 = (v du1) ;
+LIST V-DU1 = (vblex du1) ;
  
-LIST V-DU2 = (v du2) ;
+LIST V-DU2 = (vblex du2) ;
  
-LIST V-DU3 = (v du3) ;
+LIST V-DU3 = (vblex du3) ;
  
-LIST V-PL1 = (v pl1) ;
+LIST V-PL1 = (vblex pl1) ;
  
-LIST V-PL2 = (v pl2) ;
+LIST V-PL2 = (vblex pl2) ;
  
-LIST V-PL3 = (v pl3) ;
+LIST V-PL3 = (vblex pl3) ;
  
 
  # Note that imperative verbs are not included in these sets!
@@ -465,32 +465,32 @@ LIST LEAT = "<leat>" ;
 
 SET LEAT-FIN-NOT-IMP = LEAT - imprt;
  
-LIST VPRFPRC = (v prfprc) ;
+LIST VPRFPRC = (vblex prfprc) ;
 LIST LEATPRFPRC = ("<leat>" prfprc) ;
 SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
     # In order to distinguish between real leat-constructions and participles of other verbs
-LIST HABEO-SG3 = ("<leat>" sg3) (v neg sg3) ("<šaddat>" sg3) ;
+LIST HABEO-SG3 = ("<leat>" sg3) (vblex neg sg3) ("<šaddat>" sg3) ;
 
-LIST HABEO-PL3 = ("<leat>" pl3) (v neg pl3) ("<šadda>t" pl3)  ;
+LIST HABEO-PL3 = ("<leat>" pl3) (vblex neg pl3) ("<šadda>t" pl3)  ;
 
 SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
 
 # Pronoun sets
 # ------------
 
-LIST MUN = (pron pers sg1 nom) ;
-LIST DON = (pron pers sg2 nom) ;
+LIST MUN = (prn pers sg1 nom) ;
+LIST DON = (prn pers sg2 nom) ;
 LIST SON = ("son" pron pers sg3 nom) ;
-LIST MOAI = (pron pers du1 nom) ;
-LIST DOAI = (pron pers du2 nom) ;
-LIST SOAI = (pron pers du3 nom) ;
-LIST MII-PERS = (pron pers pl1 nom) ;
-LIST DII = (pron pers pl2 nom) ;
+LIST MOAI = (prn pers du1 nom) ;
+LIST DOAI = (prn pers du2 nom) ;
+LIST SOAI = (prn pers du3 nom) ;
+LIST MII-PERS = (prn pers pl1 nom) ;
+LIST DII = (prn pers pl2 nom) ;
 LIST SII = ("son" pron pers pl3 nom) ;
 
 SET PPRON-NOM-NOT-DAT = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
 
-SET PPRON-NOT-DAT = (pron pers) - ("<dat>") ;
+SET PPRON-NOT-DAT = (prn pers) - ("<dat>") ;
 
 SET PPRON-DU-PL = MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
 SET PPRON-PL = MII-PERS OR DII OR SII ;
@@ -502,16 +502,16 @@ SET PPRON-NOT-SII = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII
 LIST PPRON-GEN = (sg1 gen) (sg2 gen) (sg3 gen) (du1 gen) (du2 gen) (du3 gen) 
 	 (pl1 gen) (pl2 gen) (pl3 gen) ;
 
-SET PPRON-NOT-GEN = (pron pers) - PPRON-GEN ;
+SET PPRON-NOT-GEN = (prn pers) - PPRON-GEN ;
 
-LIST DEM-SG = (pron dem sg nom) ;
-LIST DEM-PL = (pron dem pl nom) ;
+LIST DEM-SG = (prn dem sg nom) ;
+LIST DEM-PL = (prn dem pl nom) ;
 SET NOT-DEM = WORD - dem ;
 
-LIST SGPRON = (pron sg1) (pron sg2) (pron sg3) (pron sg) (pron pxsg1) (pron pxsg2) (pron pxsg3) ;
-LIST DUPRON = (pron du1) (pron du2) (pron du3) (pron pxdu1) (pron pxdu2) (pron pxdu3) ;
-LIST PLPRON = (pron pl1) (pron pl2) (pron pl3) (pron pl) (pron pxpl1) (pron pxpl2) (pron pxpl3) ;
-LIST DUPRON-NOTPX = (pron du1) (pron du2) (pron du3) ;
+LIST SGPRON = (prn sg1) (prn sg2) (prn sg3) (prn sg) (prn pxsg1) (prn pxsg2) (prn pxsg3) ;
+LIST DUPRON = (prn du1) (prn du2) (prn du3) (prn pxdu1) (prn pxdu2) (prn pxdu3) ;
+LIST PLPRON = (prn pl1) (prn pl2) (prn pl3) (prn pl) (prn pxpl1) (prn pxpl2) (prn pxpl3) ;
+LIST DUPRON-NOTPX = (prn du1) (prn du2) (prn du3) ;
 
 SET PRON-NOT-SG = DUPRON OR PLPRON ;
 
@@ -550,7 +550,7 @@ SET NOT-ADV-PCLE-NEG = WORD - adv - pcle - neg ;
 SET NOT-ADVL-PCLE-NEG = WORD - @ADVL - @P← - pcle - neg ;
 
 
-LIST MO-MANge = "<goas>" "<gokko>" "<gos>" "<gosa>" "<govt>" "<makkár>" "<man>" "<manne>" ("<manin>" adv) "<mo>" "<mot>" "<movt>" ("<nugo>" @CVP) (v qst) ;
+LIST MO-MANge = "<goas>" "<gokko>" "<gos>" "<gosa>" "<govt>" "<makkár>" "<man>" "<manne>" ("<manin>" adv) "<mo>" "<mot>" "<movt>" ("<nugo>" @CVP) (vblex qst) ;
  
 SET MO = MO-MANge - ("man" foc_ge) ; 
  
@@ -624,7 +624,7 @@ SET MAIN-V = v - FAUXV ;
  
 # All active verbs with a TV tag, including AUX-OR-MAIN.
 
-LIST V-TRANS = (v tv) (iv der_ahtti) (iv der_h) ;
+LIST V-TRANS = (vblex tv) (iv der_ahtti) (iv der_h) ;
 
 
 SET TRANS-V = V-TRANS - der_pass + REAL-V ;
@@ -648,8 +648,8 @@ SET NP-HEAD-PL = PLPRON OR (n pl) OR (a pl) - rcmpnd - dem - ("<buorre>") ;
 SET NP-HEAD-SG-NOM = SGPRON + nom OR (n sg nom) OR (a sg nom) - ("<buorre>") - rcmpnd ;
 SET NP-HEAD-PL-NOM = PLPRON + nom OR (n pl nom) OR (a pl nom) - rcmpnd - ("<buorre>") ;
 SET NP-HEAD-NOM = NP-HEAD-SG-NOM OR NP-HEAD-PL-NOM ;
-SET NP-HEAD-ACC = (pron acc) OR (n acc) OR (a acc) - rcmpnd - (dem attr) - ("<buorre>") ;
-SET NP-HEAD-GEN = (pron gen) OR (n gen) OR (a gen) - der_nomact - rcmpnd - (dem attr) - ("<buorre>") ;
+SET NP-HEAD-ACC = (prn acc) OR (n acc) OR (a acc) - rcmpnd - (dem attr) - ("<buorre>") ;
+SET NP-HEAD-GEN = (prn gen) OR (n gen) OR (a gen) - der_nomact - rcmpnd - (dem attr) - ("<buorre>") ;
 
 #!! * The PRE-NP-HEAD family of sets
 
@@ -659,19 +659,19 @@ SET NP-HEAD-GEN = (pron gen) OR (n gen) OR (a gen) - der_nomact - rcmpnd - (dem 
 
 
 SET PRE-NP-HEAD = (prop attr) OR (prop @→n) OR (a attr) OR (abbr attr) OR ("<buorre>") 
-OR (pron pers gen) OR (n gen) OR (a gen) OR ("<buot>") OR
-num OR rcmpnd OR cc OR (pron dem) OR (pron refl gen) OR (indef attr) OR 
+OR (prn pers gen) OR (n gen) OR (a gen) OR ("<buot>") OR
+num OR rcmpnd OR cc OR (prn dem) OR (prn refl gen) OR (indef attr) OR 
 (prfprc @→n) OR prsprc OR (a ord) OR (num @→N) OR (a @→N) OR @→N OR @→A OR @→Pron OR @Num← OR (cc @CNP) OR (@→CC) OR (action gen) OR (@Pron←) ;
          # The strict version of items that can only be premodifiers, not parts of the predicate
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
          
-SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (v a) OR (prs sg3) + ind OR (prs sg1) + ind OR (imprt du2) ;
+SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex a) OR (prs sg3) + ind OR (prs sg1) + ind OR (imprt du2) ;
     # to be used together with PRE-NP-HEAD before @>N is disambiguated
          
 SET NP-MEMBER = PRE-NP-HEAD OR n ;
 
-SET PRE-A-N = (pron pers gen) OR (pron pers acc) OR (pron indef) OR num OR (a ord) OR (pron dem) OR (pron refl gen) OR (pron refl acc) ; # Acc pga av manglende disambiguering tidlig i fila
+SET PRE-A-N = (prn pers gen) OR (prn pers acc) OR (prn indef) OR num OR (a ord) OR (prn dem) OR (prn refl gen) OR (prn refl acc) ; # Acc pga av manglende disambiguering tidlig i fila
 
 SET NOT-PRE-A-N = WORD - PRE-A-N ;
 
@@ -757,7 +757,7 @@ SET NOT-INITIAL-CC = WORD - INITIAL - cc ;
 #!! * Border sets and their complements
 # ---------------------------------
 
-SET CP = (pron interr) OR (pron rel) OR MO ;
+SET CP = (prn interr) OR (prn rel) OR MO ;
 
 LIST BOUNDARYSYMBOLS = "<\;>" "<:>" "<->" "<–>" ;
 	
@@ -840,7 +840,7 @@ SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 comp BARRIER v OR S-BOUNDARY) ;
 SELECT ("som"i) (0 ("<go>"i))(0 cs) ((-1 ("<nu>"i) OR ("<seammá>"i) LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
 	## Elvenes oaččui Niehkostipeandda nu go lei sávvan. 
 
-SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (v prt) BARRIER (←hab→) OR (@ADVL→)) ;
+SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (vblex prt) BARRIER (←hab→) OR (@ADVL→)) ;
 
 SELECT ("fordi"i) (0 ("<go>"i))(0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
 	## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
@@ -910,7 +910,7 @@ SELECT ("føde"i) (0 ("<šaddat>"i)) (*0 @ADVL)(NEGATE *0 SPRED) ;
 
 
 # bargat 0 = arbeide, 1 = gjøre
-SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>"i) LINK 0 (pron acc)) ;
+SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>"i) LINK 0 (prn acc)) ;
 SELECT ("arbeide"i) (0 ("<bargat>"i)) (*0 com OR ("<dainna>"i)) ;
 
 # beassat 0 = få, 1 = slippe, 2 = komme Refl til
