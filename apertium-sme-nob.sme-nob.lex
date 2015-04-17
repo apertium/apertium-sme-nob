@@ -1003,7 +1003,9 @@ REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čáhci>"i
 # Nouns
 # ============
 
-SELECT ("avdeling"i) (0 ("<ossodat>")); # parkorp har masse «avdeling»-døme, ingen «andel»
+SELECT ("avdeling"i) (0 ("<ossodat>"i)); # parkorp har masse «avdeling»-døme, ingen «andel»
+
+SELECT ("grad"i) (0 ("<muddu>"i)) (NOT -1 ord) ;
 
 SELECT ("forhold"i) (0 ("<dilálašvuohta>")) (NOT -1 ("<virggálaš>")) (NOT -2 ("<virggálaš>"));
 
