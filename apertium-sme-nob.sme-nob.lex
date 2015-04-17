@@ -947,6 +947,8 @@ SELECT ("utgreie"i) (0 ("<čilget>"i)) (NOT 1 ("<.*skuvla>"ri) OR ("<ossodat>"i)
 
 SELECT ("oversette"i) (0 ("<jorgalit>"i)) (NOT *0 ("fisk"i)) ;
 
+SELECT ("starte"i) (0 ("<álggahit>"i)) ;
+
 SELECT ("legge"i) (0 ("<lágidit>"i)) (1 ("forhold")) (2 ("til rette for")) ;
 SELECT ("ordne"i) (0 ("<lágidit>"i)) (*1 ill BARRIER v OR S-BOUNDARY) ; # lágidit sáhtu buohccivissui
 SELECT ("arrangere"i) (0 ("<lágidit>"i)) ; # passar i fleire kontekstar enn «ordne»
@@ -1263,7 +1265,7 @@ SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
 # Adverbs
 # =======
 SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
-SELECT ("slik") (0 ("<nu>"i)) ;
+SELECT ("slik") (0 ("<nu>"i)) (1 cs) ;
 
 
 # Adjectives
