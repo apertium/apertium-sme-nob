@@ -1267,7 +1267,8 @@ SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
 # Adverbs
 # =======
 SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
-SELECT ("slik") (0 ("<nu>"i)) (1 cs) ;
+SELECT ("så") (0 ("<nu>"i)) (1 a) ; # dat skuvla nu johtil ahte
+SELECT ("slik") (0 ("<nu>"i)) ;     # Ja nu leat sii
 
 
 # Adjectives
