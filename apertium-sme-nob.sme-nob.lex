@@ -953,6 +953,7 @@ SELECT ("legge"i) (0 ("<lágidit>"i)) (1 ("forhold")) (2 ("til rette for")) ;
 SELECT ("ordne"i) (0 ("<lágidit>"i)) (*1 ill BARRIER v OR S-BOUNDARY) ; # lágidit sáhtu buohccivissui
 SELECT ("arrangere"i) (0 ("<lágidit>"i)) ; # passar i fleire kontekstar enn «ordne»
 
+
 LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rubel>" "<ruvdno>" "<ruvdnu>" "<¢>" "<€>" "<$>" ;
 
 
@@ -998,7 +999,11 @@ SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CUR
 
 # vuodjit - vuodján kjørt / vuodjat - vuodján svømt
 REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čáhci>"i) OR ("<basseaŋga>"i));
- 
+
+
+# Based on frequency in parallel text:
+SELECT ("slåss"i) (0 ("<doarrut>"i)) ;
+SELECT ("forsvare"i) (0 ("<bealuštit>"i)) ;
 
 # Nouns
 # ============
@@ -1064,6 +1069,7 @@ SELECT ("oppfatning"i) (0 ("<miella>"i) LINK 0 loc LINK -1 @→N) ;
 
 # giella 0 = språk, 1 = snare
 SELECT ("språk"i) (0 ("<giella>"i));
+
 
 
 
@@ -1263,6 +1269,10 @@ SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
 	## Álggos ráhkadii Mihkkal hui unna 	rieggáža 	, ja dan olggobeallái fas veaháš stuorit rieggá . 
 	## OVTTAS : Ruošša álgoálbmotguossit bovdejedje gaskan konseartta olbmuid šilljui dánsut 	rieggás 	. 
 	## Oválavuodjima loahppavuorus golbma falimusa vulget oktanaga čáhcebána ala ja vudjet vihtta 	rieggá 	boijaid birra . 
+
+
+# Based on frequency in parallel text:
+SELECT ("sameby"i) (0 ("<čearru>"i));
 
 # Adverbs
 # =======
