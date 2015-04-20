@@ -248,6 +248,14 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-dan">
       <cat-item lemma="dat" tags="prn.dem.sg.*"/>
     </def-cat>
+    <def-cat n="lex-sivas">
+      <cat-item lemma="sivva" tags="n.*.sg.loc.*"/>
+      <cat-item lemma="sivva" tags="n.sg.loc.*"/>
+    </def-cat>
+    <def-cat n="lex-go">
+      <cat-item lemma="go" tags="cnjsub.*"/>
+      <cat-item lemma="go" tags="cnjsub"/>
+    </def-cat>
     <def-cat n="lex-botta">
       <cat-item lemma="bodda" tags="n.*.sg.gen.*"/>
       <cat-item lemma="bodda" tags="n.*.sg.acc.*"/>
@@ -810,8 +818,6 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="loc-av" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="slekt"/>
-      <list-item v="grunn"/>
-      <list-item v="årsak"/>
     </def-list>
     <def-list n="loc-etter" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="oppfatning"/>
@@ -1372,12 +1378,6 @@ And then there are some categories like "month", with all the months.
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
             <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
-            <and>
-              <!-- Exceptions for «av den grunn» -->
-              <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
-              <equal><clip pos="1" side="tl" part="lemh"/><lit v="grunn"/></equal>
-              <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
-            </and>
           </or></test>
 	  <let><var n="defnes"/><lit-tag v="ind"/></let>
 	</when>
@@ -2046,6 +2046,28 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
          Main pos should preferably never change in bidix, leads to
          too many cases in transfer, better to keep exceptions here.
     -->
+    <rule comment="REGLA: dan sivas go → fordi">
+      <pattern>
+        <pattern-item n="lex-dan"/>
+        <pattern-item n="lex-sivas"/>
+        <pattern-item n="lex-go"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="3" side="tl" part="a_conj"/></tag>
+            </tags>
+            <lu>
+              <lit v="fordi"/>
+              <lit-tag v="cnjsub"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: dan botta → mens">
       <pattern>
         <pattern-item n="lex-dan"/>
