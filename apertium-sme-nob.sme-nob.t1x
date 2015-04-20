@@ -810,6 +810,8 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="loc-av" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="slekt"/>
+      <list-item v="grunn"/>
+      <list-item v="årsak"/>
     </def-list>
     <def-list n="loc-etter" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="oppfatning"/>
@@ -1370,6 +1372,12 @@ And then there are some categories like "month", with all the months.
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
             <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
+            <and>
+              <!-- Exceptions for «av den grunn» -->
+              <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="grunn"/></equal>
+              <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
+            </and>
           </or></test>
 	  <let><var n="defnes"/><lit-tag v="ind"/></let>
 	</when>

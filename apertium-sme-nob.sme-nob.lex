@@ -818,6 +818,8 @@ REMOVE (cmp) (0 n) ;
 # go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
 
 
+SELECT:Dan-sivas-go ("at"i) (0 ("<go>")) (-1 ("<sivva>") + loc) (-2 ("<dat>"i) + loc) ;
+
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
@@ -845,7 +847,7 @@ SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (vblex prt) BARRIER (←hab→) OR (@ADV
 SELECT ("fordi"i) (0 ("<go>"i))(0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
 	## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
 
-SELECT ("når"i) (0 ("<go>"i))(0 cs) ;
+SELECT ("når"i) (0 ("<go>"i)) (0 cs) ;
 
 SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 
