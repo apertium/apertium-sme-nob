@@ -544,7 +544,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         </when>
         <when c="some determiners are singular-only">
           <test><in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sg"/></in></test>
-          <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
+          <choose>
+            <when>
+              <test><equal><clip pos="2" part="gen"/><lit v=""/></equal></test>
+              <let><clip pos="2" part="nbr"/><lit-tag v="m.sg"/></let>
+            </when>
+            <otherwise>
+              <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
+            </otherwise>
+          </choose>
         </when>
       </choose>
       <choose><when c="don't allow sp tag if not in det.sp.def list; sg.m sounds most natural">
