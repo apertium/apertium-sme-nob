@@ -1000,6 +1000,7 @@ SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CUR
 # vuodjit - vuodján kjørt / vuodjat - vuodján svømt
 REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čáhci>"i) OR ("<basseaŋga>"i));
 
+SELECT ("tilsøle"i) (0 ("<durdut>"i)) ;
 
 # Based on frequency in parallel text:
 SELECT ("slåss"i) (0 ("<doarrut>"i)) ;
@@ -1273,6 +1274,7 @@ SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
 
 # Based on frequency in parallel text:
 SELECT ("sameby"i) (0 ("<čearru>"i));
+SELECT ("urin"i) (0 ("<gužža>"i)) ;
 
 # Adverbs
 # =======
