@@ -659,8 +659,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     </def-macro>
 
 
-    <def-macro n="prepend_moremost" npar="1"
-               c="arg.1: adj (not the chunk), after having run through clean_adj
+    <def-macro n="prepend_moremost" npar="2"
+               c="arg.1: chunk, arg.2: adj, after having run through clean_adj
                   -----
                   Prepend 'more'/'most' if adj is non-synthetic and comp/sup;
                   also change the main adj tags back to mf.pst.sg.ind.
@@ -669,16 +669,16 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
                   ">
       <choose><when>
         <test><and>
-          <not><equal><clip pos="1" part="a_adj"/><lit-tag v="adj.sint"/></equal></not>
+          <not><equal><clip pos="2" part="a_adj"/><lit-tag v="adj.sint"/></equal></not>
           <or>
-            <equal><clip pos="1" part="grau-pure"/><lit-tag v="comp"/></equal>
-            <equal><clip pos="1" part="grau-pure"/><lit-tag v="sup"/></equal>
+            <equal><clip pos="2" part="grau-pure"/><lit-tag v="comp"/></equal>
+            <equal><clip pos="2" part="grau-pure"/><lit-tag v="sup"/></equal>
           </or>
         </and></test>
 
         <choose>
           <when>
-            <test><not><equal><clip pos="1" part="grau-pure"/><lit-tag v="comp"/></equal></not></test>
+            <test><not><equal><clip pos="2" part="grau-pure"/><lit-tag v="comp"/></equal></not></test>
             <let><var n="moremost-defnes"/><lit-tag v="ind"/></let>
           </when>
           <otherwise>
@@ -688,29 +688,43 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
 
         <choose>
           <when>
-            <test><in><clip pos="1" part="lemh"/><list n="no-moremost"/></in></test>
+            <test><equal><clip pos="1" part="gen"/><lit-tag v="mf"/></equal></test>
+            <let><var n="gender"/><clip pos="1" part="gen"/></let>
+          </when>
+          <otherwise>
+            <let><var n="gender"/><lit-tag v="nt"/></let>
+          </otherwise>
+        </choose>
+
+        <choose>
+          <when>
+            <test><in><clip pos="2" part="lemh"/><list n="no-moremost"/></in></test>
             <let>
-              <clip pos="1" part="tags"/>
+              <clip pos="2" part="tags"/>
               <concat>
-                <clip pos="1" part="a_adj"/>
-                <lit-tag v="pst.mf.sg.ind"/>
+                <clip pos="2" part="a_adj"/>
+                <lit-tag v="pst"/>
+                <var n="gender"/>
+                <lit-tag v="sg.ind"/>
               </concat>
             </let>
           </when>
           <otherwise>
             <let>
-              <clip pos="1" part="whole"/>
+              <clip pos="2" part="whole"/>
               <concat>
                 <lit v="mye"/>
                 <lit-tag v="adj.sint"/>
-                <clip pos="1" part="grau-pure"/>
+                <clip pos="2" part="grau-pure"/>
                 <lit-tag v="un.sp"/>
                 <var n="moremost-defnes"/>
                 <lit v="$ ^"/>
-                <clip pos="1" part="lemh"/>
-                <clip pos="1" part="a_adj"/>
-                <lit-tag v="pst.mf.sg.ind"/>
-                <clip pos="1" part="lemq"/>
+                <clip pos="2" part="lemh"/>
+                <clip pos="2" part="a_adj"/>
+                <lit-tag v="pst"/>
+                <var n="gender"/>
+                <lit-tag v="sg.ind"/>
+                <clip pos="2" part="lemq"/>
               </concat>
             </let>
           </otherwise>
@@ -866,7 +880,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       </when></choose>
 
       <!-- handle non-sint -->
-      <call-macro n="prepend_moremost"><with-param pos="2"/></call-macro>
+      <call-macro n="prepend_moremost"><with-param pos="1"/><with-param pos="2"/></call-macro>
     </def-macro>
 
     <def-macro n="clean_pre-nominal" npar="3"

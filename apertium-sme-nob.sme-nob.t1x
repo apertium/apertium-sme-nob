@@ -1275,21 +1275,37 @@ And then there are some categories like "month", with all the months.
     </def-macro>
 
     <def-macro n="set_c_gen_nbr" npar="1"
-               c="Make sure we have GD or ND if no gen or num given">
+               c="arg.1: Chunk 'head'.
+                  Make sure we have GD or ND if no gen or num given">
       <let><var n="c_gen"/><clip pos="1" side="tl" part="gen"/></let>
       <let><var n="c_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
-      <choose><when>
-        <test><equal><var n="c_gen"/><lit v=""/></equal></test>
-        <choose>
-          <when>
-            <test><equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal></test>
-            <let><var n="c_gen"/><lit-tag v="nt"/></let>
-          </when>
-          <otherwise>
-            <let><var n="c_gen"/><lit-tag v="GD"/></let>
-          </otherwise>
-        </choose>
-      </when></choose>
+      <choose c="If chunk head is adj, we probably want nt, but do GD in case t2x wants to change it.
+                 (Could do non-sint→GD in bidix, but we don't prepend more/most until t4x, meaning the
+                 adj has to have a comp/sup tagset until t4x.)">
+        <when>
+          <test>
+            <or>
+              <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal> <!-- non-sint is turned pos -->
+              <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="pst"/></equal>
+            </or>
+          </test>
+          <let><var n="c_gen"/><lit-tag v="GD"/></let>
+        </when>
+      </choose>
+      <choose>
+        <when>
+          <test><equal><var n="c_gen"/><lit v=""/></equal></test>
+          <choose>
+            <when>
+              <test><equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal></test>
+              <let><var n="c_gen"/><lit-tag v="nt"/></let>
+            </when>
+            <otherwise>
+              <let><var n="c_gen"/><lit-tag v="GD"/></let>
+            </otherwise>
+          </choose>
+        </when>
+      </choose>
       <choose><when>
         <test><equal><var n="c_nbr"/><lit v=""/></equal></test>
         <let><var n="c_nbr"/><lit-tag v="ND"/></let>
