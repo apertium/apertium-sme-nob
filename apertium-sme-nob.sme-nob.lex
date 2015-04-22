@@ -1276,6 +1276,8 @@ SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
 # Based on frequency in parallel text:
 SELECT ("sameby"i) (0 ("<čearru>"i));
 SELECT ("urin"i) (0 ("<gužža>"i)) ;
+SELECT ("måned"i) (0 ("<mánnu>"i)) ;
+
 
 # Adverbs
 # =======
