@@ -1075,9 +1075,17 @@ And then there are some categories like "month", with all the months.
             <when c="Habitive, or reflexive of habitive">
               <test><or>
                 <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="←hab→"/></equal>
+                <and>           <!-- «mus lea» now tagged like this: -->
+                  <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn"/></equal>
+                  <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
+                  <or>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL→"/></equal>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="←@ADVL"/></equal>
+                  </or>
+                </and>
                 <and>
-                  <equal><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn"/></equal>
-                  <equal><clip pos="1" side="sl" part="a_rel"/><lit-tag v="refl"/></equal>
+                  <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn"/></equal>
+                  <equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal>
                   <equal><clip pos="1" side="tl" part="lemh"/><lit v="selv"/></equal>
                 </and>
               </or></test>
@@ -1199,9 +1207,17 @@ And then there are some categories like "month", with all the months.
           <choose>
             <when>
               <test><or>
-                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="←hab→"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FSUBJ→"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FOBJ→"/></equal>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="←hab→"/></equal>
+                <and>           <!-- «mus lea» now tagged like this: -->
+                  <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn"/></equal>
+                  <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
+                  <or>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL→"/></equal>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="←@ADVL"/></equal>
+                  </or>
+                </and>
               </or></test>
               <let><clip pos="1" side="tl" part="case"/><lit-tag v="nom"/></let>
             </when>
