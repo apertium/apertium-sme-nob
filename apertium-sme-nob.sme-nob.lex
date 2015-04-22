@@ -1004,6 +1004,7 @@ SELECT ("tilsøle"i) (0 ("<durdut>"i)) ;
 
 # Based on frequency in parallel text:
 SELECT ("slåss"i) (0 ("<doarrut>"i)) ;
+SELECT ("skille"i) (0 ("<earuhit>"i)) ;
 SELECT ("forsvare"i) (0 ("<bealuštit>"i)) ;
 
 # Nouns

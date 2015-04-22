@@ -4,7 +4,7 @@
 This is the second pass. Responsibilities of this file include:
 
 * Simple anaphora resolution; we keep track of gender of p3 sg
-  subjects using the variables "ana_m_f" and "ana_gen", applying 
+  subjects using the variables "ana_m_f" and "ana_gen", applying
   this to GD-tagged SN's and all FV's.
   * See rule: FV, SN
   * Note: this only applies gender in a forward direction, applying gender
@@ -328,7 +328,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
       <modify-case><clip pos="2" part="lemh"/><var n="tmp"/></modify-case>
     </def-macro>
-    
+
     <def-macro n="tag_qst" npar="1"
                c="Add the qst tag, preferably after 'neg' or defnes tags.
                   TODO: perhaps it would be simpler to just explicitly re-set the chunk tags
@@ -368,7 +368,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </otherwise>
       </choose>
     </def-macro>
-    
+
     <def-macro n="clean_SN_of_adpos" npar="1"
                c="arg.1: SN, might be pronoun">
       <choose>
@@ -399,7 +399,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </let>
       <modify-case><var n="c_name"/><clip pos="1" part="lemh"/></modify-case>
     </def-macro>
-    
+
     <def-macro n="set_c_tags2" npar="2"
                c="For conjunctions.
                   We might get pronouns, which t1x doesn't give defnes tags;
@@ -417,7 +417,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </when></choose>
       </when></choose>
     </def-macro>
-    
+
     <def-macro n="set_ana_temps" npar="1"
                c="arg.1: verb">
       <choose><when>
@@ -542,7 +542,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           </when>
         </choose>
       </when></choose>
-      
+
       <choose><when>
         <test><and>
           <not><equal><var n="ana_gen"/><lit v=""/></equal></not>
@@ -550,7 +550,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </and></test>
         <let><clip pos="1" part="gen"/><var n="ana_gen"/></let>
       </when></choose>
-      
+
       <choose><when>
         <test><and>
           <not><equal><var n="ana_nbr"/><lit v=""/></equal></not>
@@ -576,9 +576,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
           <equal><clip pos="1" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
         </or></test>
-        
+
         <choose><when>
-          <test><and>            
+          <test><and>
             <not><equal><clip pos="1" part="nbr"/><lit-tag v="pl"/></equal></not>
             <not><equal><clip pos="1" part="pers"/><lit-tag v="p1"/></equal></not>
             <not><equal><clip pos="1" part="pers"/><lit-tag v="p2"/></equal></not>
@@ -608,11 +608,11 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           <let><var n="ana_nbr"/><clip pos="1" part="nbr"/></let>
         </when></choose>
       </when></choose>
-      
+
       <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
-      <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>  
+      <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
     </def-macro>
-    
+
   </section-def-macros>
 
   <section-rules>
@@ -667,7 +667,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
-    
+
     <!-- <rules: Coordination -->
     <rule comment="REGLA: SA CNP SA">
       <pattern>
@@ -766,10 +766,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </rule>
 
     <!-- <rules: Adpositions -->
-    
+
     <rule comment="REGLA: caseprep-PR SN-rADVL lADVL
                    -----
-                   Islandas eret => fra Island                                              
+                   Islandas eret => fra Island
                    Don't output the PR since case was selected by the adverb anyway.">
       <pattern>
         <pattern-item n="caseprep-PR"/>
@@ -831,7 +831,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: adpos PR SN_PREPl
                    -----
                    badjel ráji =1> over til grensen =2> over grensen
@@ -855,11 +855,11 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </when></choose>
       </action>
     </rule>
-    
-    
+
+
     <rule comment="REGLA: caseprep-PR SN
                    If the above rules didn't match, we keep the PR.
-                   Then we have to switch cases of PR and SN,
+                   Then we have to switch (upper/lower) cases of PR and SN,
                    since a PR with lemh caseprep must've been added in t1x.">
       <pattern>
         <pattern-item n="caseprep-PR"/>
@@ -875,8 +875,8 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </action>
     </rule>
 
-    
-    <!-- <rules: →N ADVL -->    
+
+    <!-- <rules: →N ADVL -->
     <rule comment="REGLA: SN_rN.gen caseprep-PR ADVL.loc
                    -----
                    (málet olbmuid) earenoamáš dáhpáhusaid oktavuođas => (male mennesker) i forbindelse med spesielle hendelser
@@ -1012,7 +1012,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: V.TD
                    -----
                    use anaphoric temps variables
@@ -1047,7 +1047,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: V
                    -----
                    use/set anaphoric gen variable">
@@ -1076,7 +1076,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
-    
+
     <!-- FV-cop 'som' -->
     <rule comment="REGLA: vcop-FV caseprep-PR.ess
                    -----
@@ -1095,7 +1095,7 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
-        </out>        
+        </out>
         <choose><when>
           <test><not><equal><b pos="1"/><b/></equal></not></test>
           <out><b pos="1"/></out>
@@ -1105,7 +1105,7 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
 
     <rule comment="REGLA: caseprep-PR.ess SN vcop-FV
                    -----
-                   
+
                    Delete 'som'
                    set anaphoric temps variable
                    use anaphoric gen variable">
@@ -1129,7 +1129,7 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
         </out>
       </action>
     </rule>
-    
+
     <!-- Single nominal -->
     <rule comment="REGLA: SN
                    -----
@@ -1159,7 +1159,7 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
         </out>
       </action>
     </rule>
-    
+
     <rule comment="REGLA: SA
                    -----
                    use gen variable">
@@ -1172,7 +1172,7 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>
       </action>
-    </rule>    
+    </rule>
     <rule comment="REGLA: SA PCLE.qst
                    -----
                    use gen variable">
@@ -1188,7 +1188,7 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
         </out>
       </action>
     </rule>
-    
+
     <!-- <rules: Clause boundary -->
     <rule comment="REGLA: CLB">
       <pattern>
