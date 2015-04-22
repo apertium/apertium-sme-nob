@@ -939,6 +939,9 @@ And then there are some categories like "month", with all the months.
     <def-list n="ess-NIL" c="Essive noun phrases default to 'som' unless in this list">
       <list-item v="del"/>
     </def-list>
+    <def-list n="ess-i" c="Essive noun phrases default to 'som' unless in this list">
+      <list-item v="tillegg"/>
+    </def-list>
     <def-list n="ill-i" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="del"/>
     </def-list>
@@ -1095,6 +1098,12 @@ And then there are some categories like "month", with all the months.
           <let>
             <var n="caseprep"/><lit v="som"/>
           </let>
+          <choose><when>
+            <test><in><clip pos="1" side="tl" part="lemh"/><list n="ess-i"/></in></test>
+            <let>
+              <var n="caseprep"/><lit v="i"/>
+            </let>
+          </when></choose>
           <choose><when>
             <test><in><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in></test>
             <let>
