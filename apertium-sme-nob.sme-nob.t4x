@@ -869,7 +869,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <call-macro n="prepend_moremost"><with-param pos="2"/></call-macro>
     </def-macro>
 
-
     <def-macro n="clean_pre-nominal" npar="3"
                c="arg.1: chunk, arg.2: det/adj/ngen, arg.3: the word after arg.2">
       <choose>
@@ -987,6 +986,24 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         </choose>
       </otherwise>
     </choose>
+    </def-macro>
+
+    <def-macro n="clean_post-conj" npar="3"
+               c="arg.1: chunk, arg.2: word after conj, arg.3: second word after conj (but not the last of the chunk)
+                  -----
+                  Set indef for noun after adj after conj; this is because 'maybe_out_det'
+                  only looks at the first half of the conjuction, and it sounds better with
+                  'biler og gamle menns måter' than 'biler og gamle mennenes båter'.
+
+                  Should be called whenever we have a at least two pre's after conj, e.g.
+                  conj_pre_pre_nom or conj_pre_pre_pre_nom">
+      <choose><when>
+        <test><and>
+          <not><equal><clip pos="2" part="a_adj"/><lit v=""/></equal></not>
+          <not><equal><clip pos="3" part="a_nom"/><lit v=""/></equal></not>
+        </and></test>
+        <let><clip pos="3" part="art"/><lit-tag v="ind"/></let>
+      </when></choose>
     </def-macro>
 
     <!-- Output macros: -->
@@ -1282,9 +1299,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="5"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
-        <!-- conj -->
+        <!-- 2 is conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
 
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
@@ -1306,9 +1324,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
-        <!-- conj -->
+        <!-- 2 is conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
 
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
         <call-macro n="maybe_out_det2"><with-param pos="0"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
@@ -1374,10 +1394,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
-        <!-- conj -->
+        <!-- 3 is conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
 
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
@@ -1401,10 +1422,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
-        <!-- conj -->
+        <!-- 3 is conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
 
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
@@ -1478,11 +1501,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="7"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
-        <!-- conj -->
+        <!-- 4 is conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
 
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="3"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
@@ -1508,11 +1532,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
-        <!-- conj -->
+        <!-- 4 is conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
 
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="3"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
@@ -1594,12 +1620,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="8"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
-        <!-- conj -->
+        <!-- 5 is conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
 
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="4"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
@@ -1627,12 +1654,14 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="8"/><with-param pos="9"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
-        <!-- conj -->
+        <!-- 5 is conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
 
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
+        <call-macro n="clean_post-conj"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="4"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
