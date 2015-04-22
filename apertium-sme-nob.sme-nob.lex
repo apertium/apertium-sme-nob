@@ -877,13 +877,16 @@ SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 SELECT ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NOT *1 (actio ess) BARRIER S-BOUNDARY) (NOT 1 (der_passl prfprc)) ;
     # sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
 	## Leat go Ibsenii sáddemin dieđu?
-SELECT ("ha"i) IF (0 ("<leat>"i))(0 (indic prt)) (1 inf) ;
+SELECT ("ha"i) IF (0 ("<leat>"i)) (0 (indic prt)) (1 inf) ;
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # (Perf Cond 2)
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon 
 # (unfortunately no animacy, and impers isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
+SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 loc) (*1 @←SUBJ - inf) ; # Buohkat lei sámegiella eatnigiella
+# NOT: dikki mielas livččii dehálaš oččodit olbmuide diđolašvuođa ahte …
+SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 loc) (NOT *1 inf) ; # Dat lea buot mii mus lea
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
 SELECT ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
