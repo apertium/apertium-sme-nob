@@ -36,6 +36,16 @@ then
   AC_MSG_ERROR([You don't have cg-proc installed.])
 fi
 
+AC_PATH_PROG(CGRELABEL, cg-relabel, no)
+if test x$ac_cv_path_CGRELABEL = x
+then
+  AC_MSG_ERROR([You don't have cg-relabel installed. For now, this requires https://github.com/unhammer/vislcg3/tree/tag-mangler .])
+fi
+if test x$ac_cv_path_CGRELABEL = xno
+then
+  AC_MSG_ERROR([You don't have cg-relabel installed. For now, this requires https://github.com/unhammer/vislcg3/tree/tag-mangler .])
+fi
+
 AC_PATH_PROG(HFSTPROC, hfst-proc, no)
 if test x$ac_cv_path_HFSTPROC = x
 then
