@@ -95,6 +95,8 @@ SET TIME-N = TIME-N-SET - NOT-TIME ;
 
 LIST HUMAN = sem_hum sem_mal sem_fem sem_sur pers numag der_numag ;
 
+LIST LANGUAGE = ("<.*giella>"ri n) ("<.*giel>"ri n) ("<.*giel>"ri a) "<dárrolaš>"i "<nuortalaš>"i "<oarjelsámegiel>"i "<sámegiel>"i "<sápmelaš>"i "<ubmisámegiel>"i ;
+
 #!! * Sets for Morphosyntactic properties
 # --------------------------
 
@@ -887,10 +889,17 @@ SELECT ("ha"i) IF (0 ("<leat>"i)) (0 (indic prt)) (1 inf) ;
 SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 loc) (*1 @←SUBJ - inf) ; # Buohkat lei sámegiella eatnigiella
 # Dat leat šaddan nu stuorat ahte dat šaddá nu váivi ja lossat dan oahpat dan dáfus go sii leat massán dan interessa mii sis lei go sii ledje unnibut
 # … ahte mis lea juo Guovdageainnus juo ovddit jagi …
+# Sis ledje olusat sápmelaččat ja sii oahpahedje sámegillii.
+# Bohccot mis ledje Árdnisullos.
+# Sámiid oahpaheamis lei prinsihpalaččat seammá mihttomearri go dážaid oahpaheamis.
 SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 loc) (NOT *1 inf) ; # Dat lea buot mii mus lea
 # Exceptions:
 # dikki mielas livččii dehálaš oččodit olbmuide diđolašvuođa ahte …
-# exceptions TODO:
+# TODO-exceptions:
+# Sámedikki váldovuoruheamit oahppoplánabargguin ledje departemeantta iežas vuođđojurdagiid mielde.
+# Skuvla eanas sámi guovlluin leai duššefal dábálaš dáčča skuvlla kopiija
+# Ráissas lei maiddái buorre dilli mánáid gaskkas.
+# Boarráseamos dovddus instruksa álbmotseađu oahpahusa olis lea Kristian 3. girkoordinánsa.
 # Das lea máhppa masa lei čállon «Kautokeino flyttsamelag»
 # Áidna fálaldat maid ožžo Guovdageainnus lei boazodoallu válljenfágan
 
@@ -970,12 +979,13 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (refl acc) OR (refl loc) OR prfprc or COMMA) ; 
 
-SELECT ("lese"i) (0 ("<lohkat>"i))(1 sem_txt LINK 0 acc OR loc) ;
-	## Son lohká ahte lea buorre doppe.
+SELECT ("lese"i) (0 ("<lohkat>"i)) (1 sem_txt LINK 0 acc OR loc) ;
+# Son lohká ahte lea buorre doppe.
 
+SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 LANGUAGE LINK 0 acc OR loc) ;
+# Ruth Larsena mielas dát vuoseha ahte lea vejolaš lohkagoahtit sámegiela easkka joatkkaskuvllas
 
-SELECT ("si"i) (0 ("<lohkat>"i))(*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i))
-	    (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)   ;
+SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i)) (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)   ;
 	## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
 	## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
 	## Lars Anders Baer ii eahpit ii veahášge go lohká dákkáraš álbmotsirren lea lága ja álbmotrievtti vuostá. - Lars Anders Baer tviler ikke ikke *veahášge når han sier *dákkáraš en folkeisolering er loven og folkeretten mot.
@@ -1287,6 +1297,8 @@ SELECT ("sameby"i) (0 ("<čearru>"i));
 SELECT ("urin"i) (0 ("<gužža>"i)) ;
 SELECT ("måned"i) (0 ("<mánnu>"i)) ;
 SELECT ("ting"i) (0 ("<diggi>"i)) ;
+SELECT ("område"i) (0 ("<guovlu>"i)) ;
+SELECT ("grunntanke"i) (0 ("<vuođđojurdda>"i)) ;
 
 
 # Adverbs
