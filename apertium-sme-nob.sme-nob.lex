@@ -885,8 +885,14 @@ SELECT ("ha"i) IF (0 ("<leat>"i)) (0 (indic prt)) (1 inf) ;
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
 SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 loc) (*1 @←SUBJ - inf) ; # Buohkat lei sámegiella eatnigiella
-# NOT: dikki mielas livččii dehálaš oččodit olbmuide diđolašvuođa ahte …
+# Dat leat šaddan nu stuorat ahte dat šaddá nu váivi ja lossat dan oahpat dan dáfus go sii leat massán dan interessa mii sis lei go sii ledje unnibut
+# … ahte mis lea juo Guovdageainnus juo ovddit jagi …
 SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 loc) (NOT *1 inf) ; # Dat lea buot mii mus lea
+# Exceptions:
+# dikki mielas livččii dehálaš oččodit olbmuide diđolašvuođa ahte …
+# exceptions TODO:
+# Das lea máhppa masa lei čállon «Kautokeino flyttsamelag»
+# Áidna fálaldat maid ožžo Guovdageainnus lei boazodoallu válljenfágan
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
 SELECT ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
