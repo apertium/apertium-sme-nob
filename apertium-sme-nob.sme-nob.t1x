@@ -925,6 +925,10 @@ And then there are some categories like "month", with all the months.
       <list-item v="uke"/>
       <list-item v="år"/>
     </def-list>
+    <def-list n="loc-om-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="tale"/>
+      <list-item v="snakk"/>
+    </def-list>
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="del"/>
       <list-item v="NUMERAL"/>      <!-- special value set by numerals, see NUMERAL rule -->
@@ -1067,7 +1071,10 @@ And then there are some categories like "month", with all the months.
               </let>
             </when>
             <when>
-              <test><in><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in></test>
+              <test><or>
+                <in><var n="previous-nhead"/><list n="loc-om-head"/></in>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in>
+              </or></test>
               <let>
                 <var n="caseprep"/><lit v="om"/>
               </let>
