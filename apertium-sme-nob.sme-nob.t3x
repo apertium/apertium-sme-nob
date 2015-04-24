@@ -849,6 +849,37 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: PR SPEC maybe-SUBJr ADVL FV
+                   V2-rule
+                   Mu bealis dat dušše nannejuvvui =2> for meg det bare ble =3> for meg ble det bare ">
+      <pattern>
+        <pattern-item n="PR"/>
+        <pattern-item n="SPEC"/>
+        <pattern-item n="maybe-SUBJr"/>
+        <pattern-item n="ADVL"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="3"/><with-param pos="5"/></call-macro>
+        <call-macro n="set_defnes2">
+          <with-param pos="3"/>
+          <with-param pos="5"/>
+        </call-macro>
+        <call-macro n="set_adv"><with-param pos="5"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="4"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: PR SPEC maybe-SUBJr FV
                    V2-rule
                    dan maŋŋá son logai => etter det lærte han
