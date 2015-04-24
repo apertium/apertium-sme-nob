@@ -282,7 +282,7 @@ LIST @←ADVL = @←ADVL ;
 LIST @ADVL→ = @ADVL→ ;
 LIST @ADVL→CS = @ADVL→CS ;
 
-LIST ←hab→ = ←hab→ ;
+LIST ←hab→ = ←hab→ (@ADVL→ prn loc) (@←ADVL prn loc);
 LIST ←ext→ = ←ext→ ;
 
  
@@ -873,12 +873,13 @@ SELECT ("mens"i) IF (0 ("<bodda>"i) LINK -1 ("<dat>") LINK 0 gen) ;
 
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
 SELECT ("måtte"i) IF (0 ("<leat>"i) LINK -1 loc + HUMAN) (1 inf) ;
-    # mis lea cahkkehit dola
-SELECT ("ha"i) IF (0 ("<leat>"i)) (*-1 ←hab→ BARRIER NOT-ADV) ;
+# mis lea cahkkehit dola
+SELECT ("ha"i) IF (0 ("<leat>"i)) (*-1 ←hab→ - dem BARRIER NOT-ADV) ;
 SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 SELECT ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NOT *1 (actio ess) BARRIER S-BOUNDARY) (NOT 1 (der_passl prfprc)) ;
-    # sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
-	## Leat go Ibsenii sáddemin dieđu?
+# sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
+# Dat leat šaddan nu stuorat ahte dat šaddá nu váivi ja lossat dan oahpat dan dáfus go sii leat massán dan interessa mii sis lei go sii ledje unnibut
+# Leat go Ibsenii sáddemin dieđu?
 SELECT ("ha"i) IF (0 ("<leat>"i)) (0 (indic prt)) (1 inf) ;
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # (Perf Cond 2)
@@ -886,13 +887,15 @@ SELECT ("ha"i) IF (0 ("<leat>"i)) (0 (indic prt)) (1 inf) ;
 # (unfortunately no animacy, and impers isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
-SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 loc) (*1 @←SUBJ - inf) ; # Buohkat lei sámegiella eatnigiella
-# Dat leat šaddan nu stuorat ahte dat šaddá nu váivi ja lossat dan oahpat dan dáfus go sii leat massán dan interessa mii sis lei go sii ledje unnibut
+SELECT:Det-er ("være"i) IF (0 ("<leat>"i)) (-1 ("<Dat>") + @SUBJ→) ; # Dat lea …
+
+SELECT:alle-hadde-samisk ("ha"i) IF (0 ("<leat>"i)) (-1 loc + @ADVL→ - dem) (*1 @←SUBJ - inf) ;
+# Buohkain lei sámegiella eatnigiella
 # … ahte mis lea juo Guovdageainnus juo ovddit jagi …
 # Sis ledje olusat sápmelaččat ja sii oahpahedje sámegillii.
 # Bohccot mis ledje Árdnisullos.
 # Sámiid oahpaheamis lei prinsihpalaččat seammá mihttomearri go dážaid oahpaheamis.
-SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 loc) (NOT *1 inf) ; # Dat lea buot mii mus lea
+SELECT:som-jeg-har. ("ha"i) IF (0 ("<leat>"i)) (-1 loc + @ADVL→ - dem) (NOT *1 inf) ; # Dat lea buot mii mus lea
 # Exceptions:
 # dikki mielas livččii dehálaš oččodit olbmuide diđolašvuođa ahte …
 # TODO-exceptions:
@@ -902,6 +905,10 @@ SELECT ("ha"i) IF (0 ("<leat>"i)) (-1 loc) (NOT *1 inf) ; # Dat lea buot mii mus
 # Boarráseamos dovddus instruksa álbmotseađu oahpahusa olis lea Kristian 3. girkoordinánsa.
 # Das lea máhppa masa lei čállon «Kautokeino flyttsamelag»
 # Áidna fálaldat maid ožžo Guovdageainnus lei boazodoallu válljenfágan
+
+SELECT:fallback ("være"i) IF  (0 ("<leat>"i)) ;
+
+
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
 SELECT ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
