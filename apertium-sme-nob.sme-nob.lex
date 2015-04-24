@@ -1311,6 +1311,11 @@ SELECT ("grunntanke"i) (0 ("<vuođđojurdda>"i)) ;
 SELECT ("slutt"i) (0 ("<loahppa>"i)) ;
 
 
+# Adpositions → Prepositions
+# ==========================
+SELECT ("for"i) (0 ("<bealis>"i)) ;
+# TODO: can we do "fra NP side" / "for NP del" ?
+
 # Adverbs
 # =======
 SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
