@@ -440,7 +440,10 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                   <equal><clip pos="1" part="case"/><lit-tag v="Ill"/></equal>
                   <equal><clip pos="1" part="syn_label"/><lit-tag v="←hab→"/></equal>
                   <and>           <!-- «mus lea» now tagged like this: -->
+                  <or>
                     <equal caseless="yes"><clip pos="1" part="a_prn"/><lit-tag v="prn"/></equal>
+                    <equal caseless="yes"><clip pos="1" part="a_det"/><lit-tag v="det.dem"/></equal>
+                  </or>
                     <equal><clip pos="1" part="case"/><lit-tag v="nom"/></equal> <!--loc→nom from t1x-->
                     <or>
                       <equal><clip pos="1" part="syn_label"/><lit-tag v="@ADVL→"/></equal>
