@@ -580,14 +580,18 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <test><in><clip pos="1" part="gen"/><list n="det-genders"/></in></test>
           <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
         </when></choose>
-        <choose><when c="default gender">
-          <test><or>
-            <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
-            <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
-          </or></test>
-          <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
-          <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
-        </when></choose>
+        <choose>
+          <when c="default gender when m or f">
+            <test><equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal></test>
+            <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
+            <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
+          </when>
+          <when c="default gender when nt allowed">
+            <test><equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal></test>
+            <let><clip pos="2" part="gen"/><lit-tag v="nt"/></let>
+            <let><clip pos="1" part="gen"/><lit-tag v="nt"/></let>
+          </when>
+        </choose>
       </when></choose>
 
       <choose><when c="only det.pos has mf">
@@ -932,74 +936,74 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
                   Note: also used for verbs (see out_nom in t1x)">
       <choose>
         <when c="determiner (possibly turning back into a pronoun)">
-        <test><not><equal><clip pos="2" part="a_det"/><lit v=""/></equal></not></test>
-        <choose>
-          <when>
-            <test><and>
-              <equal><clip pos="2" part="a_det"/><lit-tag v="det.pos"/></equal>
-              <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
-            </and></test>
-            <let><clip pos="2" part="a_det"/><lit-tag v="prn"/></let>
-            <call-macro n="clean_prn"><with-param pos="1"/><with-param pos="2"/></call-macro>
-          </when>
-          <otherwise>
-            <call-macro n="clean_det2"><with-param pos="1"/><with-param pos="2"/></call-macro>
-          </otherwise>
-        </choose>
-      </when>
+          <test><not><equal><clip pos="2" part="a_det"/><lit v=""/></equal></not></test>
+          <choose>
+            <when>
+              <test><and>
+                <equal><clip pos="2" part="a_det"/><lit-tag v="det.pos"/></equal>
+                <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
+              </and></test>
+              <let><clip pos="2" part="a_det"/><lit-tag v="prn"/></let>
+              <call-macro n="clean_prn"><with-param pos="1"/><with-param pos="2"/></call-macro>
+            </when>
+            <otherwise>
+              <call-macro n="clean_det2"><with-param pos="1"/><with-param pos="2"/></call-macro>
+            </otherwise>
+          </choose>
+        </when>
 
-      <when c="pronoun">
-        <test><not><equal><clip pos="2" part="a_prn"/><lit v=""/></equal></not></test>
-        <call-macro n="clean_prn"><with-param pos="1"/><with-param pos="2"/></call-macro>
-      </when>
+        <when c="pronoun">
+          <test><not><equal><clip pos="2" part="a_prn"/><lit v=""/></equal></not></test>
+          <call-macro n="clean_prn"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        </when>
 
-      <otherwise c="n,np,verb">
-        <choose c="Workaround for http://bugs.apertium.org/cgi-bin/bugzilla/show_bug.cgi?id=133">
-          <when>
-            <test><equal><clip pos="2" part="case"/><lit-tag v="Gen"/></equal></test>
-            <let><clip pos="1" part="case"/><lit-tag v="gen"/></let>
-            <let><clip pos="2" part="case"/><lit-tag v="gen"/></let>
-          </when>
-        </choose>
-        <choose>
-          <when>
-            <test><and>
-              <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
-              <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
-            </and></test>
-            <let><clip pos="2" part="case"/><lit v=""/></let>
-          </when>
-        </choose>
-        <choose>
-          <when>
-            <test><or>
-              <begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with>
-              <equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal>
-            </or></test>
-            <let><clip pos="2" part="art"/><lit v=""/></let>
-            <choose c="Workaround for http://bugs.apertium.org/cgi-bin/bugzilla/show_bug.cgi?id=133
-                       (if tl is 'np.Attr' and 'a_nom' contains 'np.attr', it still outputs 'np.Attr' even though attr!=Attr)">
-              <when>
-                <test><equal><clip pos="2" part="a_nom"/><lit-tag v="np.Attr"/></equal></test>
-                <let><clip pos="2" part="a_nom"/><lit-tag v="np"/></let>
-              </when>
-            </choose>
-          </when>
-        </choose>
-        <choose>
-          <when>
-            <test><equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal></test>
-            <let><clip pos="2" part="case"/><lit v=""/></let>
-          </when>
-        </choose>
-        <choose>
-          <when>
-            <test><equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal></test>
-            <let><clip pos="2" part="art"/><lit v=""/></let>
-          </when>
-        </choose>
-      </otherwise>
-    </choose>
+        <otherwise c="n,np,verb">
+          <choose c="Workaround for http://bugs.apertium.org/cgi-bin/bugzilla/show_bug.cgi?id=133">
+            <when>
+              <test><equal><clip pos="2" part="case"/><lit-tag v="Gen"/></equal></test>
+              <let><clip pos="1" part="case"/><lit-tag v="gen"/></let>
+              <let><clip pos="2" part="case"/><lit-tag v="gen"/></let>
+            </when>
+          </choose>
+          <choose>
+            <when>
+              <test><and>
+                <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
+                <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
+              </and></test>
+              <let><clip pos="2" part="case"/><lit v=""/></let>
+            </when>
+          </choose>
+          <choose>
+            <when>
+              <test><or>
+                <begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with>
+                <equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal>
+              </or></test>
+              <let><clip pos="2" part="art"/><lit v=""/></let>
+              <choose c="Workaround for http://bugs.apertium.org/cgi-bin/bugzilla/show_bug.cgi?id=133
+                         (if tl is 'np.Attr' and 'a_nom' contains 'np.attr', it still outputs 'np.Attr' even though attr!=Attr)">
+                <when>
+                  <test><equal><clip pos="2" part="a_nom"/><lit-tag v="np.Attr"/></equal></test>
+                  <let><clip pos="2" part="a_nom"/><lit-tag v="np"/></let>
+                </when>
+              </choose>
+            </when>
+          </choose>
+          <choose>
+            <when>
+              <test><equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal></test>
+              <let><clip pos="2" part="case"/><lit v=""/></let>
+            </when>
+          </choose>
+          <choose>
+            <when>
+              <test><equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal></test>
+              <let><clip pos="2" part="art"/><lit v=""/></let>
+            </when>
+          </choose>
+        </otherwise>
+      </choose>
     </def-macro>
 
     <def-macro n="clean_post-conj" npar="3"
