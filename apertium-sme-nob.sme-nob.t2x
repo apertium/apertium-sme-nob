@@ -826,6 +826,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         <pattern-item n="adpos"/>
       </pattern>
       <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
         <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
         <out>
