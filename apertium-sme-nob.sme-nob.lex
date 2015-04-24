@@ -1032,6 +1032,7 @@ SELECT ("tilsøle"i) (0 ("<durdut>"i)) ;
 SELECT ("slåss"i) (0 ("<doarrut>"i)) ;
 SELECT ("skille"i) (0 ("<earuhit>"i)) ;
 SELECT ("forsvare"i) (0 ("<bealuštit>"i)) ;
+SELECT ("vise# til"i) (0 ("<čujuhit>"i)) ;
 
 # Nouns
 # ============
@@ -1306,6 +1307,7 @@ SELECT ("måned"i) (0 ("<mánnu>"i)) ;
 SELECT ("ting"i) (0 ("<diggi>"i)) ;
 SELECT ("område"i) (0 ("<guovlu>"i)) ;
 SELECT ("grunntanke"i) (0 ("<vuođđojurdda>"i)) ;
+SELECT ("slutt"i) (0 ("<loahppa>"i)) ;
 
 
 # Adverbs
@@ -1313,6 +1315,8 @@ SELECT ("grunntanke"i) (0 ("<vuođđojurdda>"i)) ;
 SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
 SELECT ("så") (0 ("<nu>"i)) (1 a) ; # dat skuvla nu johtil ahte
 SELECT ("slik") (0 ("<nu>"i)) ;     # Ja nu leat sii
+SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
+SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
 
 # Adjectives
