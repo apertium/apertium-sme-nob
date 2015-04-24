@@ -1082,6 +1082,16 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="om"/>
               </let>
             </when>
+            <when c="Sometimes, das → av den">
+              <test><and>
+                <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+                <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+              </and></test>
+              <let>
+                <var n="caseprep"/><lit v="av"/>
+              </let>
+            </when>
             <when c="Habitive, or reflexive of habitive">
               <test><or>
                 <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="←hab→"/></equal>
