@@ -1297,8 +1297,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
-          <b/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
@@ -1324,8 +1323,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="2"/>
           <chunk><clip pos="3" part="whole"/></chunk>
-          <b/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
@@ -1345,8 +1343,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
-          <var n="pro-blank"/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <var n="adv-blank"/><var n="adv"/>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
@@ -1371,8 +1368,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </when></choose>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
-          <var n="pro-blank"/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <var n="adv-blank"/><var n="adv"/>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
@@ -1394,8 +1390,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
-          <b/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
@@ -1417,7 +1412,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <var n="adv-blank"/><var n="adv"/>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
@@ -1464,8 +1459,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="2" part="whole"/></chunk>
-          <b/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <b pos="1"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
@@ -1484,8 +1478,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>        
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
-          <var n="pro"/>
-          <var n="pro-blank"/>
+          <var n="pro"/><var n="pro-blank"/>
           <chunk><clip pos="2" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
           <b pos="1"/>
@@ -1540,8 +1533,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="3" part="whole"/></chunk>
-          <var n="pro-blank"/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <b pos="1"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
@@ -1572,8 +1564,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
             <call-macro n="set_pro_lowercase"><with-param pos="2"/></call-macro>
             <call-macro n="set_adv"><with-param pos="2"/></call-macro>
             <out>
-              <var n="pro"/>
-              <var n="pro-blank"/>
+              <var n="pro"/><var n="pro-blank"/>
               <var n="adv"/><var n="adv-blank"/>
               <chunk><clip pos="1" part="whole"/></chunk>
               <b pos="1"/>
@@ -1585,8 +1576,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
             <call-macro n="set_pro_verb_case"><with-param pos="2"/></call-macro>
             <call-macro n="set_adv"><with-param pos="2"/></call-macro>
             <out>
-              <var n="pro"/>
-              <var n="pro-blank"/>
+              <var n="pro"/><var n="pro-blank"/>
               <var n="adv"/><var n="adv-blank"/>
               <chunk><clip pos="2" part="whole"/></chunk>
               <b pos="1"/>
@@ -1628,8 +1618,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
             <chunk><clip pos="2" part="whole"/></chunk>
             <b pos="2"/>
             <chunk><clip pos="3" part="whole"/></chunk>
-            <var n="pro-blank"/>
-            <var n="pro"/>
+            <var n="pro-blank"/><var n="pro"/>
             <var n="adv-blank"/><var n="adv"/>
           </out>
         </when>
@@ -1638,8 +1627,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <call-macro n="set_pro_verb_case"><with-param pos="3"/></call-macro>
           <call-macro n="set_adv"><with-param pos="3"/></call-macro>
           <out>
-            <var n="pro"/>
-            <var n="pro-blank"/>
+            <var n="pro"/><var n="pro-blank"/>
             <chunk><clip pos="2" part="whole"/></chunk>
             <var n="adv-blank"/><var n="adv"/>
             <b pos="1"/>
@@ -1671,8 +1659,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
-          <var n="pro-blank"/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <var n="adv-blank"/><var n="adv"/>
           <b pos="2"/>
           <chunk>
@@ -1708,8 +1695,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="3" part="whole"/></chunk>
-          <var n="pro-blank"/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
@@ -1791,8 +1777,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <call-macro n="set_pro_verb_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>        
         <out>
-          <var n="pro"/>
-          <b/>
+          <var n="pro"/><var n="pro-blank"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
