@@ -820,6 +820,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="morgen"/>
       <list-item v="natt"/>
     </def-list>
+    <def-list n="loc-for" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
+      <list-item v="NOTHING HERE YET"/>
+    </def-list>
     <def-list n="loc-av" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="slekt"/>
     </def-list>
@@ -931,6 +934,9 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-om-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="tale"/>
       <list-item v="snakk"/>
+    </def-list>
+    <def-list n="loc-for-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="frykt"/>
     </def-list>
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="del"/>
@@ -1071,6 +1077,15 @@ And then there are some categories like "month", with all the months.
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="i"/>
+              </let>
+            </when>
+            <when>
+              <test><or>
+                <in><var n="previous-nhead"/><list n="loc-for-head"/></in>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-for"/></in>
+              </or></test>
+              <let>
+                <var n="caseprep"/><lit v="for"/>
               </let>
             </when>
             <when>
