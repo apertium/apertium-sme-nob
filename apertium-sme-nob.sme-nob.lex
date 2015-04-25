@@ -917,7 +917,7 @@ SELECT ("bo"i) (0 ("<orrut>"i) LINK 1 loc OR DOPPE) ; # BARRIER ORRUT-BO) ;
 #This rule should have another barrier, a set of all words except TIME-ADV.
 #For sentences like: Mun orron diibmá Romssas.
 #Check SET ORRUT-BO
-SELECT:fallback ("synes"i) (0 ("<orrut>"i));
+SELECT:fallback ("bo"i) (0 ("<orrut>"i)); # says parallel corpus
 
 ## Sii orrot goit čeahpit hutkat vugiid movt ávkkástallat sin sámegielmáhtuin, čilge son.
 ## Mun orun Romssas.
