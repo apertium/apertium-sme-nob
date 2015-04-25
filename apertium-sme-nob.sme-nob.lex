@@ -1564,6 +1564,14 @@ SELECT ("slutt"i) (0 ("<loahppa>"i)) ;
 SELECT ("for"i) (0 ("<bealis>"i)) ;
 # TODO: can we do "fra NP side" / "for NP del" ?
 
+# Pronouns, relativisers, conjuctions
+# ==========================
+SELECT ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + @+FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
+SELECT ("hva"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + @+FMAINV) ; # Minsttarplána čilge maid oahppit berrešedje máhttit.
+# TODO difficult: Hui hárve boahtá ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
+SELECT ("som"i) (0 ("<mii>"i)) ;
+
+
 # Adverbs
 # =======
 SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
