@@ -1609,5 +1609,3 @@ SELECT ("samisk"i) (0 ("<sápmi>"i))(0 gen);
 # Proper nouns
 # ============
 
-SELECT prop IF (1 ("<suohkan>"));
-## Loabát suohkan.
