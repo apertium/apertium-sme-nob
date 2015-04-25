@@ -378,7 +378,7 @@ LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
 # Word or not
 # -----------
 LIST WORD = n a adv vblex prn cnjsub cnjcoo po pr interj pcle num abbr acr \? ;
- # any word
+# any word
 
 SET REALWORD = WORD - num - ord ;
 
@@ -398,7 +398,7 @@ SET NOT-VERB = WORD - v ;
 # - - - - - - - - - -
 
 SET V-IND-FIN = prs OR prt ;
- # Problem: "In boahtán" is an invisible indicative
+# Problem: "In boahtán" is an invisible indicative
 
 SET V-MOOD = ind OR pot OR imprt OR cond OR (neg sup) ;
 
@@ -411,7 +411,7 @@ SET VFIN-POS = V-MOOD - conneg - neg ;
 SET VFIN-NOT-IMP = VFIN - imprt ;
 
 SET VFIN-NOT-NEG = VFIN - neg ;
-  # this might be to strict, besides, "iige" can be written "ii ge"
+# this might be to strict, besides, "iige" can be written "ii ge"
 
 SET NOT-PRFPRC = WORD - prfprc ;
 
@@ -437,7 +437,7 @@ LIST V-PL2 = (vblex pl2) ;
 LIST V-PL3 = (vblex pl3) ;
  
 
- # Note that imperative verbs are not included in these sets!
+# Note that imperative verbs are not included in these sets!
 
 # Some subsets of the VFIN sets
 # - - - - - - - - - - - - - - -
@@ -470,7 +470,7 @@ SET LEAT-FIN-NOT-IMP = LEAT - imprt;
 LIST VPRFPRC = (vblex prfprc) ;
 LIST LEATPRFPRC = ("<leat>" prfprc) ;
 SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
-    # In order to distinguish between real leat-constructions and participles of other verbs
+# In order to distinguish between real leat-constructions and participles of other verbs
 LIST HABEO-SG3 = ("<leat>" sg3) (vblex neg sg3) ("<šaddat>" sg3) ;
 
 LIST HABEO-PL3 = ("<leat>" pl3) (vblex neg pl3) ("<šadda>t" pl3)  ;
@@ -534,7 +534,7 @@ SET NOT-A-ADV = WORD - a - adv OR ("<maid>") ;
 
 LIST NOMINAL-ADJ = "<guoktilaš>" "<lámis>" "<oasálaš>" ("<suddu>" der_laš) "<viissis>";
  
- # and many others
+# and many others
  
 # Adverbial sets and their complements
 # ------------------------------------
@@ -556,7 +556,7 @@ LIST MO-MANge = "<goas>" "<gokko>" "<gos>" "<gosa>" "<govt>" "<makkár>" "<man>"
  
 SET MO = MO-MANge - ("man" foc_ge) ; 
  
- # Introduce finite clauses.
+# Introduce finite clauses.
  
 LIST PLACE-ADV = (sem_plc adv) ;
 # There will usually be a Gen in front. 
@@ -580,16 +580,16 @@ LIST Foc = Foc_ge Foc_gen Foc_ges Foc_gis Foc_naj Foc_ba Foc_be Foc_hal Foc_han 
 LIST NEGFOC = (neg foc_ge) ;
 
 LIST XGO = "<dego>" "<dugo>" "<nugo>" "<seammaládjego>" "<seammaláhkaigo>" ;
-  # Compounds
+# Compounds
 LIST SEAMMAX = "<seamma ládje>" "<seamma láhkai>" ;
-  # Those combine with go
+# Those combine with go
   
 LIST MADE = "<mađe>" "<mađi>" ;
 LIST DADE = "<dađe>" "<dađi>" ; 
   
  
 SET CRD = (@cnp) OR COMMA OR NEGFOC OR XGO OR ("_") OR ("-") OR DADE ;
-    # AFTER LCRD vs. GCRD disambiguation
+# AFTER LCRD vs. GCRD disambiguation
     
 LIST HAB-CASE = loc (←smj→ ine) (←sma→ gen) ;
 LIST HAB-ACTOR-ALL = sem_hum sem_mal sem_sur sem_fem sem_ani pers ("<gii>") indef coll ;
@@ -607,18 +607,18 @@ SETS
 LIST NOT-REAL-V = (actio nom) (actio gen) (actio loc) (actio com) prsprc ;
 
 SET REAL-V = v - NOT-REAL-V ;
-  #!! ** V is all readings with a V tag in them, REAL-V should
-  #!! be the ones without an N tag following the V.  
-  #!! The REAL-V set thus awaits a fix to the preprocess V ... N bug.
+#!! ** V is all readings with a V tag in them, REAL-V should
+#!! be the ones without an N tag following the V.  
+#!! The REAL-V set thus awaits a fix to the preprocess V ... N bug.
             
  
- # The set REAL is smaller than COPULAS, made for verbs with PrfPrc complements: Seammás REAL-COPULAS son dovdan iežas...
+# The set REAL is smaller than COPULAS, made for verbs with PrfPrc complements: Seammás REAL-COPULAS son dovdan iežas...
 LIST REAL-COPULAS = "<dáidit>" "<leat>" "<soaitit>" "<veadjit>" ;
 
 #!! * The set COPULAS is for predicative constructions
 LIST COPULAS = "<dáidit>" "<gártat>" "<leat>" "<soaitit>" "<šaddat>" "<orrut>" "<veadjit>"  ;
- #  "bissut" ? 
- # 'Dáidit' can appear without 'leat'.
+#  "bissut" ? 
+# 'Dáidit' can appear without 'leat'.
 
 SET NOT-COP-V = v - COPULAS ;
 
@@ -664,12 +664,12 @@ SET PRE-NP-HEAD = (prop attr) OR (prop @→n) OR (a attr) OR (abbr attr) OR ("<b
 OR (prn pers gen) OR (n gen) OR (a gen) OR ("<buot>") OR
 num OR rcmpnd OR cc OR (prn dem) OR (prn refl gen) OR (indef attr) OR 
 (prfprc @→n) OR prsprc OR (a ord) OR (num @→N) OR (a @→N) OR @→N OR @→A OR @→Pron OR @Num← OR (cc @CNP) OR (@→CC) OR (action gen) OR (@Pron←) ;
-         # The strict version of items that can only be premodifiers, not parts of the predicate
+# The strict version of items that can only be premodifiers, not parts of the predicate
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
          
 SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex a) OR (prs sg3) + ind OR (prs sg1) + ind OR (imprt du2) ;
-    # to be used together with PRE-NP-HEAD before @>N is disambiguated
+# to be used together with PRE-NP-HEAD before @>N is disambiguated
          
 SET NP-MEMBER = PRE-NP-HEAD OR n ;
 
@@ -681,9 +681,9 @@ LIST PUNCT-LEFT = (punct left) ;
 LIST PUNCT-RIGHT = (punct right) ;
 
 SET PRE-APP = COMMA OR PUNCT-LEFT OR PRE-NP-HEAD ;
- # This set ist not only for what can
-                            # stand in front of appositions but also
-                            # postmodifiers.
+# This set ist not only for what can
+# stand in front of appositions but also
+# postmodifiers.
 
 
 
@@ -719,7 +719,7 @@ LIST Px = pxsg1 pxsg2 pxsg3 pxdu1 pxdu2 pxdu3 pxpl1 pxpl2 pxpl3 ;
 
 LIST GASKAL = "<gaskal>" "<gaskkal>" "<gaskii>" "<gaskka>" "<gaskkas>" ;
  
- # p-positions that like coordination
+# p-positions that like coordination
  
 LIST TIME-PP = "<badjel>" "<čađa>" "<earret>" "<gaskkal>" "<guovddáš>" "<maŋŋel>" "<maŋŋil>" "<maŋŋá>" "<miehtá>" "<ovdal>" ;
  
@@ -731,7 +731,7 @@ SET NUM = num - OKTA ;
 SET NOT-NUM = WORD - num ;
 
 LIST MANGA = "<máŋga>" "<galle>" ;
- # Not referred to by any rule.
+# Not referred to by any rule.
 
 SET CARDINALS = num - ord - MANGA ;
 
@@ -741,11 +741,11 @@ SET NOT-PCLE = WORD - pcle ;
 
 LIST COMPAR = "<dávji>" "<eanet>" "<earalágan>" "<eará>" "<earret>" "<seammás>" "<seammalágan>" "<seamma láhkái>" ;
  
- # These combine with "go" Pcle, but COMPAR stands for 'comparison' rather than
- # 'comparative'.
+# These combine with "go" Pcle, but COMPAR stands for 'comparison' rather than
+# 'comparative'.
 
 LIST CONTRA = "<muhto>" ;
- # In lean muitalan, muhto dál muitalan.
+# In lean muitalan, muhto dál muitalan.
 
 LIST PROSEANTA = "<proseanta>" "<%>" ;
 
@@ -764,11 +764,11 @@ SET CP = (prn interr) OR (prn rel) OR MO ;
 LIST BOUNDARYSYMBOLS = "<\;>" "<:>" "<->" "<–>" ;
 	
 SET S-BOUNDARY = CP OR BOUNDARYSYMBOLS OR ("<muhto>") OR ("<de>" adv) OR (neg sup) OR @CVP OR ("<vel>" adv qst) ;
-	# does not include CS, because of "go" in questions, before it is disambugated.
-	# includes CP
-	# this one includes @CVP, the conjunction which actually connects two sentences (each with a finite verb) to each other, 
-	# and not @CNP, which coordinates internal NP-/AdvP-/AP ... coordination
-	# To be used only AFTER the disambiguation of @CVP and @CNP taking place in the chapter right before "Disambiguating pronouns"
+# does not include CS, because of "go" in questions, before it is disambugated.
+# includes CP
+# this one includes @CVP, the conjunction which actually connects two sentences (each with a finite verb) to each other, 
+# and not @CNP, which coordinates internal NP-/AdvP-/AP ... coordination
+# To be used only AFTER the disambiguation of @CVP and @CNP taking place in the chapter right before "Disambiguating pronouns"
 
 
 SET BOC = S-BOUNDARY OR BOS ;
@@ -782,8 +782,8 @@ SET APP-BOUNDARY = REAL-CLB OR VFIN OR inf OR (actio ess) OR conneg OR vgen OR s
 
 # This set contains FMAINV with @, which means that it functions for all kind of mainverbs after the verb-mapping rules 
 SET SV-BOUNDARY = S-BOUNDARY OR inf - FAUXV OR sup OR FMAINV ;
- # VFIN-NOT-AUX ;
- # should be MAIN-V linked to VFIN-aux to the left. (cg-3)
+# VFIN-NOT-AUX ;
+# should be MAIN-V linked to VFIN-aux to the left. (cg-3)
 # This set is ment to use in rules for disambiguating due to verbs or verbsets. It contents @.
 
 SET SVF-BOUNDARY = S-BOUNDARY OR VFIN ;
@@ -823,9 +823,9 @@ REMOVE (cmp) (0 n) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
-	## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
-	## Buorre lei go bohtet.
-	## Gummá go ii boahtán.
+## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
+## Buorre lei go bohtet.
+## Gummá go ii boahtán.
 
 
 
@@ -833,19 +833,19 @@ SELECT ("enn"i) (0 ("<go>"i))(0 @CNP LINK 1 (@COMP-CS←)) ;
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (-1 ("<veara>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 ("<ovdal>"i) BARRIER S-BOUNDARY LINK 0 adv) ;
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 comp BARRIER v OR S-BOUNDARY) ;
-	## Son lea viššaleabbo go mun.
-	## Dat dáidá riggát go mii jáhkkit.
-	## Dii han lehpet eanet veara go ollu cizážat.
-	## Viššalat ohppet eanet go láikkit.
-	## Ovdal buorida son dálkkiidis go neavrres olmmoš dábiidis.
+## Son lea viššaleabbo go mun.
+## Dat dáidá riggát go mii jáhkkit.
+## Dii han lehpet eanet veara go ollu cizážat.
+## Viššalat ohppet eanet go láikkit.
+## Ovdal buorida son dálkkiidis go neavrres olmmoš dábiidis.
 
 SELECT ("som"i) (0 ("<go>"i))(0 cs) ((-1 ("<nu>"i) OR ("<seammá>"i) LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
-	## Elvenes oaččui Niehkostipeandda nu go lei sávvan. 
+## Elvenes oaččui Niehkostipeandda nu go lei sávvan. 
 
 SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (vblex prt) BARRIER (←hab→) OR (@ADVL→)) ;
 
 SELECT ("fordi"i) (0 ("<go>"i))(0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
-	## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
+## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
 
 SELECT ("når"i) (0 ("<go>"i)) (0 cs) ;
 
@@ -853,14 +853,14 @@ SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 
 # Po: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
 SELECT ("etter") (0 ("<mielde>"i)) (0 po) (-1 ("<dárbu>"i) OR ("<miella>"i)) ;
-	## Don vieččat boaldinmuoraid dárbbu mielde.
+## Don vieččat boaldinmuoraid dárbbu mielde.
 
 SELECT ("for at"i) IF (0 ("<vai>"i)) (NOT 1 inf) ; 
 
 SELECT ("for å"i) IF (0 ("<vai>"i)) (1 inf) ;
 
 SELECT ("all"i) IF (0 ("<juohke>"i) LINK 1 ("<lágan>")) ;
-	#$ juohke lágán geđggiiguin
+#$ juohke lágán geđggiiguin
 
 SELECT ("mens"i) IF (0 ("<bodda>"i) LINK -1 ("<dat>") LINK 0 gen) ;
 
@@ -919,20 +919,20 @@ SELECT ("bo"i) (0 ("<orrut>"i) LINK 1 loc OR DOPPE) ; # BARRIER ORRUT-BO) ;
 #Check SET ORRUT-BO
 SELECT:fallback ("synes"i) (0 ("<orrut>"i));
 
-	## Sii orrot goit čeahpit hutkat vugiid movt ávkkástallat sin sámegielmáhtuin, čilge son.
-	## Mun orun Romssas.
-	## Oro jaska.
+## Sii orrot goit čeahpit hutkat vugiid movt ávkkástallat sin sámegielmáhtuin, čilge son.
+## Mun orun Romssas.
+## Oro jaska.
 
 # šaddat 0 = bli, 1 = vokse, 2 = komme til å, 3 = vokse, 4 = bli, 5 = få, 6 = føde
 
 SELECT ("vokse"i) (0 ("<šaddat>"i)) (1 ("<bajás>"i)) ;
 SELECT ("få"i) (0 ("<šaddat>"i)) (*-1 HUMAN + ill OR HUMAN + loc BARRIER NOT-ADV) ;
-    # Sutnje šattai hoahppu.
-    # Sutnje šattai álo nu hoahppu.
+# Sutnje šattai hoahppu.
+# Sutnje šattai álo nu hoahppu.
 SELECT ("få"i) (0 ("<šaddat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 SELECT ("føde"i) (0 ("<šaddat>"i)) (*0 @ADVL)(NEGATE *0 SPRED) ;
-    # Mun lean šaddan Kárášjogas.
-    # Kárášjogas mun lean šaddan.
+# Mun lean šaddan Kárášjogas.
+# Kárášjogas mun lean šaddan.
 SELECT:fallback ("bli"i) (0 ("<šaddat>"i)) ;
 
 # bargat 0 = arbeide, 1 = gjøre
@@ -941,31 +941,31 @@ SELECT ("arbeide"i) (0 ("<bargat>"i)) (*0 com OR ("<dainna>"i)) ;
 SELECT:fallback ("arbeide"i) (0 ("<bargat>"i));
 
 # beassat 0 = få, 1 = slippe, 2 = komme Refl til
-	## Sii leat beassan eallit dego gonagasat.
+## Sii leat beassan eallit dego gonagasat.
 
 #SELECT ("slippe") (0 ("<beassat>"i)) (1 ill) ; # (1 (der_nomact loc) OR (actio loc) OR ("<olggos>"i)) ;
-	## Mun bessen vuolgimis.
+## Mun bessen vuolgimis.
 SELECT ("komme") (0 ("<beassat>"i)) (1 ill OR DOHKO) ;
-	## In beassan skuvlii dan beaivve.  Jeg kom meg ikke på skolen den dagen.
-	## Maiddái Ranghild Nystad beassá Sámediggái. Også RN kommer seg inn på Sametinget.
-	## Sii ledje gáibidan ahte son galgá beassat riikastivrii. Du hadde krevd at han skulle komme seg inn i landsstyret.
-	## Mun nu illudan beassat duoddarii. Jeg gleder meg så til å komme meg på vidda.
-	## Nuoraidklubba nuorat besset dál Internehttii. Ungdomssklubbens ungdommer kommer seg nå på Internett.
+## In beassan skuvlii dan beaivve.  Jeg kom meg ikke på skolen den dagen.
+## Maiddái Ranghild Nystad beassá Sámediggái. Også RN kommer seg inn på Sametinget.
+## Sii ledje gáibidan ahte son galgá beassat riikastivrii. Du hadde krevd at han skulle komme seg inn i landsstyret.
+## Mun nu illudan beassat duoddarii. Jeg gleder meg så til å komme meg på vidda.
+## Nuoraidklubba nuorat besset dál Internehttii. Ungdomssklubbens ungdommer kommer seg nå på Internett.
 SELECT:fallback ("få"i) (0 ("<beassat>"i));
 
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
 SELECT ("spørre"i) (0 ("<bivdit>"i) LINK *1 qst);
 SELECT ("fiske"i) (0 ("<bivdit>"i))(*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r));
 SELECT ("jakte"i) (0 ("<bivdit>"i)) ;
-	## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá.
-	## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá mearas.
+## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá.
+## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá mearas.
 SELECT:fallback ("be"i) (0 ("<bivdit>"i));
 
 
 # borahit 0 = mate, 1 = fôre
 SELECT ("fôre"i) (0 ("<borahit>"i))(*0 sem_ani);
 SELECT ("mate"i) (0 ("<borahit>"i))(NOT *0 sem_ani);
-	## Son borahii máná. Son borahii spiinniid.
+## Son borahii máná. Son borahii spiinniid.
 SELECT:fallback ("mate"i) (0 ("<borahit>"i));
 
 
@@ -999,20 +999,20 @@ SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 LANGUAGE LINK 0 acc OR loc) ;
 # Ruth Larsena mielas dát vuoseha ahte lea vejolaš lohkagoahtit sámegiela easkka joatkkaskuvllas
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i)) (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)   ;
-	## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
-	## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
-	## Lars Anders Baer ii eahpit ii veahášge go lohká dákkáraš álbmotsirren lea lága ja álbmotrievtti vuostá. - Lars Anders Baer tviler ikke ikke *veahášge når han sier *dákkáraš en folkeisolering er loven og folkeretten mot.
-	## Son lohká ádjá boahtit. - Han sier at bestefar skulle komme.
-	## Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
+## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
+## Son lohká máddin Sámis lea sámit garrasabbot deddon dahje vealahuvvon go davvin. - Han sier sørfra har Sameland samer hardere trykt eller berøvd nordpå.
+## Lars Anders Baer ii eahpit ii veahášge go lohká dákkáraš álbmotsirren lea lága ja álbmotrievtti vuostá. - Lars Anders Baer tviler ikke ikke *veahášge når han sier *dákkáraš en folkeisolering er loven og folkeretten mot.
+## Son lohká ádjá boahtit. - Han sier at bestefar skulle komme.
+## Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
 
 
 SELECT ("si"i) (0 ("<lohkat>"i))(-1 COMMA)(*1 (@←SUBJ) BARRIER VFIN);
-	## Dat lea duohta, lohká Trond.
+## Dat lea duohta, lohká Trond.
 
 SELECT ("telle"i) (0 ("<lohkat>"i))
 	(1 acc OR ("<galle>"i) OR ("<man>"i) LINK NOT 0 sem_txt);
-	## Son lohká ruđaid. 
-	## Son lohká galle girjji mis leat.
+## Son lohká ruđaid. 
+## Son lohká galle girjji mis leat.
 SELECT:fallback ("lese"i) (0 ("<lohkat>"i));
 
 
@@ -1020,16 +1020,16 @@ SELECT:fallback ("lese"i) (0 ("<lohkat>"i));
 
 # mannat 0 = dra, 1 = gå
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i))(0 sg3);
-	## Mo manná dál?
+## Mo manná dál?
 #SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>"i) OR ("<dat>"i));
-	## Mun manan dál.
+## Mun manan dál.
 SELECT:fallback ("dra"i) (0 ("<mannat>"i));
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR sem_org LINK 0 (@SUBJ→)) ;
-	## Máhtte máksá guokte ruvnnu.
+## Máhtte máksá guokte ruvnnu.
  
 SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
-	## Girji máksá guokte ruvnnu.
+## Girji máksá guokte ruvnnu.
 
 # vuodjit - vuodján kjørt / vuodjat - vuodján svømt
 REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čáhci>"i) OR ("<basseaŋga>"i));
@@ -1054,20 +1054,20 @@ SELECT ("forhold"i) (0 ("<dilálašvuohta>")) (NOT -1 ("<virggálaš>")) (NOT -2
 # áddjá: bestefar vs gamling
 SELECT ("gamling"i) (0 ("<áddjá>"i) LINK -1 num LINK NOT *-1 ←hab→);
 SELECT ("bestefar"i) (0 ("<áddjá>"i));
-	## Mus leat guokte ádjá.
-	## Doppe čohkkába guokte ádjá.
+## Mus leat guokte ádjá.
+## Doppe čohkkába guokte ádjá.
 	
 
 # áhkku: bestemor vs eldre kvinne
 REMOVE ("bestemor"i) (0 ("<áhkku>"i) LINK -1 num LINK NOT *-1 ←hab→);
 SELECT ("bestemor"i) (0 ("<áhkku>"i));
-	## Mus leat šiega áhkku.
-	## Doppe čohkkába guokte áhkku.
+## Mus leat šiega áhkku.
+## Doppe čohkkába guokte áhkku.
 
 
 # beaivi 0 = dag, 1 = sol
 SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i) OR ("<luoitádit>"i) OR ("<goardit>"i) OR ("<ligget>"i));
-	## Beaivi báitá.
+## Beaivi báitá.
 SELECT:fallback ("dag"i) (0 ("<beaivi>"i));
 
 SELECT ("mat"i) IF (0 ("<biebmu>"i)) ; 
@@ -1076,32 +1076,32 @@ SELECT ("mat"i) IF (0 ("<biebmu>"i)) ;
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK 1 ("<oahpaheaddji>"i));
     
 #SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (-1 gen LINK 0 pers OR refl);
-	## Earát su luohkás ledje juo vissa njeallje siiddu su ovdalis matematihkka-girjjis.
+## Earát su luohkás ledje juo vissa njeallje siiddu su ovdalis matematihkka-girjjis.
     
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 num OR ord OR @→N);
-    # Son lea vuosttaš luohkás.
-    # Son lea 1A luohkás.
-	# Biera vázzá sámi luohkás.
-	# Biera vázzá sámegiel luohkás.
-	# Bireha luohkás leat eanaš nieiddat.
-	# Mu luohkás leat vihtta nieidda ja golbma bártni.
+# Son lea vuosttaš luohkás.
+# Son lea 1A luohkás.
+# Biera vázzá sámi luohkás.
+# Biera vázzá sámegiel luohkás.
+# Bireha luohkás leat eanaš nieiddat.
+# Mu luohkás leat vihtta nieidda ja golbma bártni.
 SELECT:fallback ("klasse"i) (0 ("<luohkká>"i));
 
 # diibmu 0 = time, 1 = klokke
 SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 num OR ord) ;
-	# Boahtte gaskavahku diibmu 11.00 rahpá kurdarbearaš Mehidi Kárášjohkii ođđa kaféa.
-	# Ord because of possible incorrect analysis of Num + punctuation.
+# Boahtte gaskavahku diibmu 11.00 rahpá kurdarbearaš Mehidi Kárášjohkii ođđa kaféa.
+# Ord because of possible incorrect analysis of Num + punctuation.
 SELECT ("klokke"i) (0 ("<diibmu>"i) LINK *0 ("<ollu>"i)) ;
-	# Ollugo diibmu lea.
+# Ollugo diibmu lea.
 SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 COPULAS LINK *1 num) ;
-	# Dál diibmu lea fargga vihtta.
+# Dál diibmu lea fargga vihtta.
 SELECT:fallback ("time"i) (0 ("<diibmu>"i));
 
 # háve gang
 SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 num + gen);
 SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 ("<dát>"i) LINK 0 gen);
 SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 ("<boahtte>"i));
-       ## Dán háve. Mun lean dan má
+## Dán háve. Mun lean dan má
 	
 # miella 0 = sinn, 1 = oppfatning, 2 = behag
 SELECT ("oppfatning"i) (0 ("<miella>"i) LINK 0 loc LINK -1 @→N) ;
@@ -1143,10 +1143,10 @@ SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
 
 # soadji 0 = vinge, 1 = skovl, 2 = fløy, 3 = erme
 SELECT ("fløy"i) (0 ("<soadji>")) (0* sem_org);
-	# Bellodaga radikála soajis bođii garra proteasta.
+# Bellodaga radikála soajis bođii garra proteasta.
 	
 SELECT ("erme"i) (0 ("<soadji>"i)) (0* sem_clth);
-	# Mu báiddi soajis lea ráigi.
+# Mu báiddi soajis lea ráigi.
 SELECT:fallback ("vinge"i) (0 ("<soadji>"i));
 
 # searvi 0 = forening, 1 = selskap
@@ -1164,145 +1164,145 @@ SELECT:fallback ("komite"i) (0 ("<goddi>"i));
 # diehtu 0 = informasjon, 1 = kunnskap, 2 = viten, 3 = beskjed
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna>"i) OR ("<mobiila>"i)) ;
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 acc)(*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
-	## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu. 
-	## Lei Ájlin gii sáddii dieđu.
+## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu. 
+## Lei Ájlin gii sáddii dieđu.
 SELECT:fallback ("informasjon"i) (0 ("<diehtu>"i));
 
 # lávki 0 = skritt, 1 = løk
 SELECT ("løk"i) (0 ("<lávki>"i))  (*1 ("<leat>") LINK 0 VFIN LINK *1 ("<čuohppat>"i) OR ("<čuohpadit>"i) LINK 0 prfprc) ;
-	## 	Danne go 	lávki 	lea antiseptalaš , de dat veahkeha go lea čuohpadan , gaskkahallan dahje go leat nárážat . 
-	##  Lilja 	lávkkit 	vuovdit ! 
+## 	Danne go 	lávki 	lea antiseptalaš , de dat veahkeha go lea čuohpadan , gaskkahallan dahje go leat nárážat . 
+##  Lilja 	lávkkit 	vuovdit ! 
 SELECT ("skritt"i) (0 ("<lávki>"i)) ;
-	## Sámi vuođđoskuvlaoahpaheaddjioahpu láhkaásahus lea 	lávkin 	dan guvlui , mainna sámiid iešmearrideapmi dahkko duohtan ja čalmmustahttojuvvo Norggas ja eará Davviriikkain .
-	## Joavkku bealis deattuhuvvo ahte raporta lea vuosttaš 	lávki 	stuorát ovddidanbarggus . 
+## Sámi vuođđoskuvlaoahpaheaddjioahpu láhkaásahus lea 	lávkin 	dan guvlui , mainna sámiid iešmearrideapmi dahkko duohtan ja čalmmustahttojuvvo Norggas ja eará Davviriikkain .
+## Joavkku bealis deattuhuvvo ahte raporta lea vuosttaš 	lávki 	stuorát ovddidanbarggus . 
 SELECT:fallback ("skritt"i) (0 ("<lávki>"i));
 
 
 # gorka 0 = kork (badekar, flaske etc.), 1 = dupp, 2 = kjeft
 SELECT ("kjeft"i) (0 ("<gorka>"i) OR ("<goarka>"i))  (*-1 ("<doallat>"i))(*1 ("<gitta>"i)) ;
-	## 	Go ain rádjá ja garruda, de Vállán meron rogáda: «Doala gorkkat gitta!» Gohčui orrut jaska billa vuolin. 
+## 	Go ain rádjá ja garruda, de Vállán meron rogáda: «Doala gorkkat gitta!» Gohčui orrut jaska billa vuolin. 
 SELECT ("kjeft"i) (0 ("<gorka>"i) OR ("<goarka>"i))  (-1 ("<gallji>"i)) ;
-	## Mannan ija don leat mu buoremus vuojána gaikkodan , biro , beargalat , helveha sáhtánas , galjes 	gorka 	, guhkes bátni !
+## Mannan ija don leat mu buoremus vuojána gaikkodan , biro , beargalat , helveha sáhtánas , galjes 	gorka 	, guhkes bátni !
 #SELECT ("kjeft"i) (0 ("<gorka>"i))  (-1 (Sem/Hum) LINK 0 Gen) ; 
-	#SEMTAG rule: Hum
+#SEMTAG rule: Hum
 SELECT ("dupp"i) (0 ("<gorka>"i) OR ("<goarka>"i)) (*-1 ("<siibma>"i)) ;
-	##	Siimma giddejedje erenoamáš 	korkii.
-	#SEMTAG rule: Tool-catch
+##	Siimma giddejedje erenoamáš 	korkii.
+#SEMTAG rule: Tool-catch
 	SELECT ("kork"i) (0 ("<gorka>"i) OR ("<goarka>"i)) ;
-	## Son sruvii 	goarkka 	boahtalii ja rájai loahpa boahtte háve várás . - kork.
-	## Olmmoš oppaáigge guoraha 	goarkkaid 	čázis. 
+## Son sruvii 	goarkka 	boahtalii ja rájai loahpa boahtte háve várás . - kork.
+## Olmmoš oppaáigge guoraha 	goarkkaid 	čázis. 
 SELECT:fallback ("kork"i) (0 ("<gorka>"i));
 
 # johtolat 0 = trafikk, 1 = flyttevei
 SELECT ("trafikk"i) (0 ("<johtolat>"i) LINK NOT 0 pl)(-1 ("<ollu>"i) OR ("<eanet>"i));
-	## 1938 rádjái lei Porsáŋggu-Kárášjoga máđija ráigge eanemus 	johtolat 	, go Kárášjoga ja Suoma gaskka vudje eanas dálvet , muhto maŋŋel go Kárášjohgeaidnu gárvánii.
+## 1938 rádjái lei Porsáŋggu-Kárášjoga máđija ráigge eanemus 	johtolat 	, go Kárášjoga ja Suoma gaskka vudje eanas dálvet , muhto maŋŋel go Kárášjohgeaidnu gárvánii.
 SELECT ("flyttevei"i) (0 ("<johtolat>"i) LINK 0 pl) ;
-	## 	Ii leat dasto čielggas ledje go dát vuotnasápmelaččat dalle juo álggahan guhkit 	johtolagaid.
+## 	Ii leat dasto čielggas ledje go dát vuotnasápmelaččat dalle juo álggahan guhkit 	johtolagaid.
 SELECT ("flyttevei"i) (0 ("<johtolat>"i)) ;
-	## Oallugat deattuhedje man deaŧalaš 	johtolat 	lei boazodollui . ???
-	## Dákkár johtin ja 	johtolat 	gaskal dálveorohagaid siseatnamis ja geasseorohagaid mearragátteváriin lea ekologalaš heiveheapmi mii gottiin lei ja masa boazobargi lea iežas eallima heivehan .
-	## lea šaddan nu ahte hámmandilálašvuođat ja guollebivdohámmana guovddáš sajádat riddoruvttu985 johtolaga ektui lea deaŧalaččat go lagamus 	johtolat 	guollebáikái . 
+## Oallugat deattuhedje man deaŧalaš 	johtolat 	lei boazodollui . ???
+## Dákkár johtin ja 	johtolat 	gaskal dálveorohagaid siseatnamis ja geasseorohagaid mearragátteváriin lea ekologalaš heiveheapmi mii gottiin lei ja masa boazobargi lea iežas eallima heivehan .
+## lea šaddan nu ahte hámmandilálašvuođat ja guollebivdohámmana guovddáš sajádat riddoruvttu985 johtolaga ektui lea deaŧalaččat go lagamus 	johtolat 	guollebáikái . 
 SELECT:fallback ("trafikk"i) (0 ("<johtolat>"i));
 
 
 # vealgi 0 = gjeld, 1 = lån
 SELECT ("lån"i) (0 ("<vealgi>"i) LINK 0 pl)(*-1 ("<dárbbašit>"i)) ;	
-	## Gáivuona suohkan áigo nannet ruhtadeamiid dakkár biergasiidda , jos olbmot dárbbašit 	velggiid 	go galget ruhtadit oastimiid .
+## Gáivuona suohkan áigo nannet ruhtadeamiid dakkár biergasiidda , jos olbmot dárbbašit 	velggiid 	go galget ruhtadit oastimiid .
 SELECT ("lån"i) (0 ("<vealgi>"i) LINK 0 pl)(*1 ("<guhkesáiggivealgi>"i)) ; 
-	## Dat 	vealgi 	lea guhkesáiggivealgi , nu ahte dat gal mákso dál ruovttoluotta nu movt galgá . 
-	## Fylkkagieldda guhkesáiggi 	vealgi 	lea lassánan 289,3 miljovnnain ruvnnuin 2009 rájes 2010 rádjái . 
-	## Vealggit lassánedje sullii 8 mill kr , mas oanehisáiggi 	vealgi 	lassánii sullii 4 mill kr.
-	## Mii mihtidit likviditehta go geahččat differánssa gaskal johtoomiid ( kássa // báŋkui sisabidju ja oanehisáigge bearramat ) ja oanehisáigge 	velggiid 	, man gohčoda bargokapitálan . 
+## Dat 	vealgi 	lea guhkesáiggivealgi , nu ahte dat gal mákso dál ruovttoluotta nu movt galgá . 
+## Fylkkagieldda guhkesáiggi 	vealgi 	lea lassánan 289,3 miljovnnain ruvnnuin 2009 rájes 2010 rádjái . 
+## Vealggit lassánedje sullii 8 mill kr , mas oanehisáiggi 	vealgi 	lassánii sullii 4 mill kr.
+## Mii mihtidit likviditehta go geahččat differánssa gaskal johtoomiid ( kássa // báŋkui sisabidju ja oanehisáigge bearramat ) ja oanehisáigge 	velggiid 	, man gohčoda bargokapitálan . 
 SELECT:fallback ("gjeld"i) (0 ("<vealgi>"i));
 
 # goansta 0 = kunst, 1 = triks, 2 = ferdighet, 3 = påfunn
 
 SELECT ("påfunn"i) (0 ("<goansta>"i))(-1 ("<buorre>"i)) ;
-	## Juste dál hálidivččet atnit eambbo áiggi iežat guoibmái , muhto dat liikká ii leat nu buorre 	goansta.
-	## Ii lean várra šat nu buorre 	goansta 	vuodjit , go eaiggát lei sihkkarit lensmánnái dieđihan .  ---påfunn
+## Juste dál hálidivččet atnit eambbo áiggi iežat guoibmái , muhto dat liikká ii leat nu buorre 	goansta.
+## Ii lean várra šat nu buorre 	goansta 	vuodjit , go eaiggát lei sihkkarit lensmánnái dieđihan .  ---påfunn
  
 SELECT ("ferdighet"i) (0 ("<goansta>"i) LINK 0 pl)(*-1 ("<ieš>"i)) ;	
-	## Fuobmájin iežan 	goansttaid 	ja álgen hárjehallat viesus . 
+## Fuobmájin iežan 	goansttaid 	ja álgen hárjehallat viesus . 
 	
 SELECT ("triks"i) (0 ("<goansta>"i))(*-1 ("<fuobmát>"i) OR ("<dahkat>"i)) ; 
-	## Áltálaš Jon Røkenes lea fuobmán álkit 	goansttaid 	ráhkadit dola . ---triks (måtene) 
-	## De jearrá rieban bussás : – Galle 	goanstta 	leat dus ? 
-	## Muhto go son manná vuostebiggii , dahje go son diehtá , gosa dan báikkis háliida boazu , de son manná ja guldala ja dainna 	goansttain 	gávdná ealu . 
-	## Filbmemis dahket ollu 	goansttaid 	, nugohčoduvvon filmtriks ja muhtomin eai sáhte diktit neavttáriid neaktit jus ballet sin lápmahuvvat . 
+## Áltálaš Jon Røkenes lea fuobmán álkit 	goansttaid 	ráhkadit dola . ---triks (måtene) 
+## De jearrá rieban bussás : – Galle 	goanstta 	leat dus ? 
+## Muhto go son manná vuostebiggii , dahje go son diehtá , gosa dan báikkis háliida boazu , de son manná ja guldala ja dainna 	goansttain 	gávdná ealu . 
+## Filbmemis dahket ollu 	goansttaid 	, nugohčoduvvon filmtriks ja muhtomin eai sáhte diktit neavttáriid neaktit jus ballet sin lápmahuvvat . 
 	
 SELECT ("kunst"i) (0 ("<goansta>"i)) ;
-	## Dalle ii leat mihkke ge 	goansttaid 	jeakki rasttildit . (maybe translated in singular?)
-	## – Rektor doppe lei hui mielas ja oahpaheaddjit maiddái , ja go álggiimet hupmat dan birra , de ii orron goanstage 	.
+## Dalle ii leat mihkke ge 	goansttaid 	jeakki rasttildit . (maybe translated in singular?)
+## – Rektor doppe lei hui mielas ja oahpaheaddjit maiddái , ja go álggiimet hupmat dan birra , de ii orron goanstage 	.
 SELECT:fallback ("kunst"i) (0 ("<goansta>"i));
 
 # jietna 0 = stemme, 1 = lyd
 
 SELECT ("lyd"i) (0 ("<jietna>"i))(1 cc OR COMMA LINK 1 ("<govva>"i)) ;
-  	## Ođđaáigásaš servodagas lea dárbbašlaš máhttit hálddašit iešguđet mediaid ja teavsttaid main leat ollu iešguđetlágan oasit biddjon oktii , nugo čála , 	jietna 	ja govva ja seammás oaidnit oktavuođaid giela ja árbemáhtu gaskkas . 
-  	## Multifunkšunála oahpponeavvuin sáhttet leat olu iešguđetlágán komponeanttat ja heivehuvvon oasit, nugo jienat, govat ja teavsttat , eaige dat dárbbaš leat dušše ovtta vásedin ulbmila váste ráhkaduvvon .
+## Ođđaáigásaš servodagas lea dárbbašlaš máhttit hálddašit iešguđet mediaid ja teavsttaid main leat ollu iešguđetlágan oasit biddjon oktii , nugo čála , 	jietna 	ja govva ja seammás oaidnit oktavuođaid giela ja árbemáhtu gaskkas . 
+## Multifunkšunála oahpponeavvuin sáhttet leat olu iešguđetlágán komponeanttat ja heivehuvvon oasit, nugo jienat, govat ja teavsttat , eaige dat dárbbaš leat dušše ovtta vásedin ulbmila váste ráhkaduvvon .
 SELECT ("lyd"i) (0 ("<jietna>"i))(-1 gen LINK 0 ("<luondu>"i) OR ("<skuter>"i));  
-  	## Go gullá luonddu jienaid, go oaidná - de sáhttá maid bidjat sániid sihke jienaide ja dasa maid oaidná luonddus .
-  	#Sem/Plc OR Sem/Veh
+## Go gullá luonddu jienaid, go oaidná - de sáhttá maid bidjat sániid sihke jienaide ja dasa maid oaidná luonddus .
+#Sem/Plc OR Sem/Veh
 
 SELECT ("lyd"i) (0 ("<jietna>"i))(-1 ("<geaidut>"i) OR ("<ráhkadit>"i));  
-  	## Skutera 	jietna 	juoga sajis gullo . 
-  	## Nils Petter Molvær geaidu 	jienaid 	iežas trompehtain . 
-  	## Eará ii ávkkut , nugo čuoikabalddonasat mat ráhkadit jiena, lohká divredutki Preben Ottesen . 
-  	## De soai gullaba issoras ártegis 	jiena 	. 
+## Skutera 	jietna 	juoga sajis gullo . 
+## Nils Petter Molvær geaidu 	jienaid 	iežas trompehtain . 
+## Eará ii ávkkut , nugo čuoikabalddonasat mat ráhkadit jiena, lohká divredutki Preben Ottesen . 
+## De soai gullaba issoras ártegis 	jiena 	. 
   	
 SELECT ("stemme"i) (0 ("<jietna>"i));
-	## - Sámediggi cealká earret eará ahte dat stuora erohusat mat leat dan ektui galle 	jiena 	leat juohke áirasa duohken geanohuhttet Sámedikki lobálašvuođa sihke sámi servodagas ja eará eisseválddiid ektui . 
-  	## ( 1 ) Jus jienasteaddji ii goastta válgalatnjii , de sáhttá son addit 	jiena 	guovtti jietnavuostáváldái dastán válgalanja olggobealde . 
+## - Sámediggi cealká earret eará ahte dat stuora erohusat mat leat dan ektui galle 	jiena 	leat juohke áirasa duohken geanohuhttet Sámedikki lobálašvuođa sihke sámi servodagas ja eará eisseválddiid ektui . 
+## ( 1 ) Jus jienasteaddji ii goastta válgalatnjii , de sáhttá son addit 	jiena 	guovtti jietnavuostáváldái dastán válgalanja olggobealde . 
 SELECT:fallback ("stemme"i) (0 ("<jietna>"i));
 
 
 # vuoján 0 = kjøretøy, 1 = kjørerein
 
 LIST VUOJAN-ANI-WORDS = ("<čearpmat>"i) ("<varit>"i) ("<vuoitit>"i) ("<boazu>"i) ("<gabba>"i) ("<reahka>"i) ("<juovlanigá>"i) ("<juovlastállu>"i) ("<heargi>"i) ("<sprinta>"i) ("<eallu>"i) ("<SHL-#máilmmicup"i) ("<reahkavuodjin>"i) ("<gonagasgilvu>"i) ("<SVL-hearge#cup>"i) ("<heargevuodjingilvu>"i) ;
-	#possibly semantic category Ani-reindeer usefull?
+#possibly semantic category Ani-reindeer usefull?
 LIST VUOJAN-ANI-ADJ = ("<sávri>"i) ("<buorre>"i) ("<sápmi>"i) ("<falli>"i) ("<nuorra>"i) ("<beakkán>"i) ;
 LIST VUOJAN-ANI-V = ("<biebmat>"i) ("<hárjehahttit>"i) ("<njuovvat>"i) ("<ruohttat>"i) ("<vuoitit>"i);
 
 SELECT ("kjørerein"i) (0 ("<vuoján>"i))(*0 VUOJAN-ANI-WORDS OR VUOJAN-ANI-V) ;
 SELECT ("kjørerein"i) (0 ("<vuoján>"i) LINK 0 ess) ;
 SELECT ("kjørerein"i) (0 ("<vuoján>"i)) (-1 VUOJAN-ANI-ADJ + attr) ;
-	## Bikko Máhte luohti lea dovddus Sančuari hámis “ Stállangazza ” , mii lei beakkán vuoján 	Bikko Máhtes . #disambiguation rule needs to fix beakkán analysis
-	## Dat lei erenoamáš fales vuoján , dadjá Eira , dan botta go njuovvá iežas 	vuojána 	máid massii .
+## Bikko Máhte luohti lea dovddus Sančuari hámis “ Stállangazza ” , mii lei beakkán vuoján 	Bikko Máhtes . #disambiguation rule needs to fix beakkán analysis
+## Dat lei erenoamáš fales vuoján , dadjá Eira , dan botta go njuovvá iežas 	vuojána 	máid massii .
 SELECT ("kjørerein"i) (0 ("<vuoján>"i))(1 COMMA LINK 1 ("«^.*"r));
-  	## Vuosttaš máilmmiolahus John Inge Eiras dán dálvvi iežas vuojániin, «Limoin».
-  	## Máhtte Niillas Gaup 	vuoján 	Ieš vuittii reahkavuodjima ja Máret Áile Sara vuoján Dolgii vuittii ges sabetvuodjimiid Sámi Grand Prix gilvvuin  beassášlávvordaga Guovdageainnus .
-	## Nils Henrik Eira 	vuojániin 	Summitiin , mas lei buoremus áigi olles gilvvuin ja oaččui ge Máze Gilisearvvis dan ovddas  dan stuorámus pokála . 
-	## Sara vuot čájehii ahte son lea okta Sámi buoremus vuddjiin ja sus leat buorre 	vuoján, go mannan vahkkoloahpa vuittii SVL-heargecupa maŋemus vuodjima Mázes . 
-	## Dát ledje várra 	vuojánat 	ja geahččobohccot .
-	## Ámtta 1866-70 viđajagidieđáhusas muitaluvvo boazodoalu birra ahte riddosuohkaniin ledje olbmuin bohccot 	vuojánin 	, dahje mearrasápmelaččat ledje árben bohccuid boazosáminieiddaiguin náitalemiid bokte . 
+## Vuosttaš máilmmiolahus John Inge Eiras dán dálvvi iežas vuojániin, «Limoin».
+## Máhtte Niillas Gaup 	vuoján 	Ieš vuittii reahkavuodjima ja Máret Áile Sara vuoján Dolgii vuittii ges sabetvuodjimiid Sámi Grand Prix gilvvuin  beassášlávvordaga Guovdageainnus .
+## Nils Henrik Eira 	vuojániin 	Summitiin , mas lei buoremus áigi olles gilvvuin ja oaččui ge Máze Gilisearvvis dan ovddas  dan stuorámus pokála . 
+## Sara vuot čájehii ahte son lea okta Sámi buoremus vuddjiin ja sus leat buorre 	vuoján, go mannan vahkkoloahpa vuittii SVL-heargecupa maŋemus vuodjima Mázes . 
+## Dát ledje várra 	vuojánat 	ja geahččobohccot .
+## Ámtta 1866-70 viđajagidieđáhusas muitaluvvo boazodoalu birra ahte riddosuohkaniin ledje olbmuin bohccot 	vuojánin 	, dahje mearrasápmelaččat ledje árben bohccuid boazosáminieiddaiguin náitalemiid bokte . 
 SELECT ("kjøretøy"i) (0 ("<vuoján>"i));  
-  	## Guhkes gaskkaid ii leat gánnáhahtti dákkar 	vuojániiguin 	vuodjit .  - fartøy
-	## Diesel 	vuojánat 	main ollislaš deaddu lea 3500 gilus gitta 12000 gilui 990,- ru. . 
-	## Njealjejuvllat 	vuoján 	roasmmohuvai vehá . 
-	## Registrerekeahtes 	vuojániid 	lea muđui váttis doalvut tuollu meattá , Nieminen muitala . 
-	## – Dát lei baicce somá , láhttestii Vicky Tauli-Corpus , ja leaikkastalai go lei sihke beassan vuodjit Juovlastálu 	vuojániin 	ja borrat bohccobierggu . ???
+## Guhkes gaskkaid ii leat gánnáhahtti dákkar 	vuojániiguin 	vuodjit .  - fartøy
+## Diesel 	vuojánat 	main ollislaš deaddu lea 3500 gilus gitta 12000 gilui 990,- ru. . 
+## Njealjejuvllat 	vuoján 	roasmmohuvai vehá . 
+## Registrerekeahtes 	vuojániid 	lea muđui váttis doalvut tuollu meattá , Nieminen muitala . 
+## – Dát lei baicce somá , láhttestii Vicky Tauli-Corpus , ja leaikkastalai go lei sihke beassan vuodjit Juovlastálu 	vuojániin 	ja borrat bohccobierggu . ???
 SELECT:fallback ("kjøretøy"i) (0 ("<vuoján>"i));
 
 	
 # bárti 0 = problem, 1 = uhell, 2 = skade, 3 = ulykke
 
 SELECT ("skade"i) (0 ("<bárti>"i))(-1 ("<dagahit>"i)) ;	
-	## Dálki lei ge ikte nu garas Finnmárkkus ahte dagahii 	bárttiid 	.  --- skapte skader
+## Dálki lei ge ikte nu garas Finnmárkkus ahte dagahii 	bárttiid 	.  --- skapte skader
 	
 SELECT ("uhell"i) (0 ("<bárti>"i))(-1 ("<oalle>"i)) ;	
-	## - Lei oalle 	bárti 	mus odne , go láhppen ruhtaburssa vuovdái , ja dál ii leat ruhtabinná ge .  -- uhell
+## - Lei oalle 	bárti 	mus odne , go láhppen ruhtaburssa vuovdái , ja dál ii leat ruhtabinná ge .  -- uhell
 
 	
 SELECT:fallback ("problem"i) (0 ("<bárti>"i));
-	## Ollu fierbmeguolásteaddjit erenoamážit Nuorta-Finnmárkkus leat gártan stuorra 	bárttiide 	go gonagasreabbá lea darvánan guollefirpmiide .  -- problemer
-	## Dasa lassin čatnasa stuorit riska 	bárttiide 	, roasmmuhuvvamiidda ja lihkuhisvuođaide alkohola návddašemiin . -- ulykke
-	## Porsáŋggu suohkanis leat ovdal leamaš 	bárttit 	go olbmot eai mávsse rehkegiid suohkanii rievttes áigái .  - problemer
-	## Gilvaleaddjit lávejit vaikko makkár 	bárttiid 	vásihit go leat mátkkis , muhto dábálaččat dat gal manná bures .
-	## Olu vuoddjit leat vásihan ahte sii leat vajálduhttán juste dan mii dalle adnui go sii bohte 	bárttiid 	sisa , vaikko lei geahččalan ráhkkanit nu bures go vejolaš . - havner i problemer
-	## – Mus lea seamma 	bárti 	, viessu ii oba lieggange .  - problem
-	## – Mis lea dávjá 	bárti 	gávdnat rievttes viesu dušše čujuhusa vuođul .  -- problem
-	## Son lávii hui dávjá iežas dagahit 	bárttiid 	sisa , iešguđetlágan bárttiid sisa , muhto dábálaččat dat manai bures loahpas . -- uheldige situasjoner
-	## Danin sáhttá stuorit vejolašvuohta leat boahtit 	bárttiid 	sisa , lohká Buljo .  -- havne i problemer
+## Ollu fierbmeguolásteaddjit erenoamážit Nuorta-Finnmárkkus leat gártan stuorra 	bárttiide 	go gonagasreabbá lea darvánan guollefirpmiide .  -- problemer
+## Dasa lassin čatnasa stuorit riska 	bárttiide 	, roasmmuhuvvamiidda ja lihkuhisvuođaide alkohola návddašemiin . -- ulykke
+## Porsáŋggu suohkanis leat ovdal leamaš 	bárttit 	go olbmot eai mávsse rehkegiid suohkanii rievttes áigái .  - problemer
+## Gilvaleaddjit lávejit vaikko makkár 	bárttiid 	vásihit go leat mátkkis , muhto dábálaččat dat gal manná bures .
+## Olu vuoddjit leat vásihan ahte sii leat vajálduhttán juste dan mii dalle adnui go sii bohte 	bárttiid 	sisa , vaikko lei geahččalan ráhkkanit nu bures go vejolaš . - havner i problemer
+## – Mus lea seamma 	bárti 	, viessu ii oba lieggange .  - problem
+## – Mis lea dávjá 	bárti 	gávdnat rievttes viesu dušše čujuhusa vuođul .  -- problem
+## Son lávii hui dávjá iežas dagahit 	bárttiid 	sisa , iešguđetlágan bárttiid sisa , muhto dábálaččat dat manai bures loahpas . -- uheldige situasjoner
+## Danin sáhttá stuorit vejolašvuohta leat boahtit 	bárttiid 	sisa , lohká Buljo .  -- havne i problemer
 
 	
 	
@@ -1310,17 +1310,17 @@ SELECT:fallback ("problem"i) (0 ("<bárti>"i));
 	
 SELECT ("dekk"i) (0 ("<riekkis>"i))(1 cc LINK 1 ("<juvla>")) ;
 SELECT ("dekk"i) (0 ("<riekkis>"i))(-1 ("<biila>") LINK 0 gen) ;	# Sem/Veh instead of biila
-	## Iskka iežat biilla ovdal go vuoddját gosage , earenoamžiid 	rieggáid 	dahje juvllaid . (Sem/Obj)
-	## Dalle sii masset vejolašvuođa Sámi bargguid ektui ja 	riekkis 	giddana Sámi guvlui máhccamis , Riitta Orti-Berg ( 41 ) máinnaša .
-	## – Oainnát , piikkat leat darvánan ja hárjánan vissis guvlui jorrat ja jus bidjá 	rieggá 	jorrat nuppe guvlui , de čolgada eret daid piikkaid .
+## Iskka iežat biilla ovdal go vuoddját gosage , earenoamžiid 	rieggáid 	dahje juvllaid . (Sem/Obj)
+## Dalle sii masset vejolašvuođa Sámi bargguid ektui ja 	riekkis 	giddana Sámi guvlui máhccamis , Riitta Orti-Berg ( 41 ) máinnaša .
+## – Oainnát , piikkat leat darvánan ja hárjánan vissis guvlui jorrat ja jus bidjá 	rieggá 	jorrat nuppe guvlui , de čolgada eret daid piikkaid .
 
 SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
-	## Jose Moncada álggahii kurssa nu go álgoálbmogat dávjá dahket , ahte čuožžut 	riekkisin 	, ja nu ovttastahttit fámuid ja dagahit oktavuođa . 
-	## Álggos galgá ráhkadit stuora 	rieggá 	muohttagii . (Sem/Geom)
-	## Sámi váhnemiid 	rieggá 	ulbmilin lea , maid sii ieža , mo sii ieža háliidit ja mat vejolašvuođaid sis lea ovddidit ja loktet sápmelaš kultuvrra ieža .  (Sem/Org)
-	## Álggos ráhkadii Mihkkal hui unna 	rieggáža 	, ja dan olggobeallái fas veaháš stuorit rieggá . 
-	## OVTTAS : Ruošša álgoálbmotguossit bovdejedje gaskan konseartta olbmuid šilljui dánsut 	rieggás 	. 
-	## Oválavuodjima loahppavuorus golbma falimusa vulget oktanaga čáhcebána ala ja vudjet vihtta 	rieggá 	boijaid birra . 
+## Jose Moncada álggahii kurssa nu go álgoálbmogat dávjá dahket , ahte čuožžut 	riekkisin 	, ja nu ovttastahttit fámuid ja dagahit oktavuođa . 
+## Álggos galgá ráhkadit stuora 	rieggá 	muohttagii . (Sem/Geom)
+## Sámi váhnemiid 	rieggá 	ulbmilin lea , maid sii ieža , mo sii ieža háliidit ja mat vejolašvuođaid sis lea ovddidit ja loktet sápmelaš kultuvrra ieža .  (Sem/Org)
+## Álggos ráhkadii Mihkkal hui unna 	rieggáža 	, ja dan olggobeallái fas veaháš stuorit rieggá . 
+## OVTTAS : Ruošša álgoálbmotguossit bovdejedje gaskan konseartta olbmuid šilljui dánsut 	rieggás 	. 
+## Oválavuodjima loahppavuorus golbma falimusa vulget oktanaga čáhcebána ala ja vudjet vihtta 	rieggá 	boijaid birra . 
 SELECT:fallback ("sirkel"i) (0 ("<riekkis>"i));
 
 
@@ -1359,7 +1359,7 @@ SELECT ("forrige") (0 ("<ovddit>"i comp)) (1 n + sg);
 
 IFF ("-årig") (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
 
-	## leage buorre (vær så god)
+## leage buorre (vær så god)
 
 # buorre:0 → bra, buorre:1→god , så god
 
@@ -1367,8 +1367,8 @@ LIST IJ-TIME = "<beaivi>" "<eahket>" "<beassážat>" "<juovllat>" ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 ("<ođas>"i) LINK 1 ("<jahki>"i)) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
-	## Dat lei buorre girji (god)
-	## Dat lei buorre. (bra)
+## Dat lei buorre girji (god)
+## Dat lei buorre. (bra)
 
 #REMCOHORT TARGET ("<leat>"i)(0 imprt) (1 ("<buorre>"));
 
@@ -1385,4 +1385,4 @@ SELECT ("samisk"i) (0 ("<sápmi>"i))(0 gen);
 # ============
 
 SELECT prop IF (1 ("<suohkan>"));
-      ## Loabát suohkan.
+## Loabát suohkan.
