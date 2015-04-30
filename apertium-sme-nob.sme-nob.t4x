@@ -872,16 +872,30 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       </when></choose>
 
       <!-- clean nbr sp (depends on gen) -->
-      <choose><when>
-        <test>
-          <and>
-            <equal><clip pos="2" part="art"/><lit-tag v="def"/></equal>
-            <equal><clip pos="2" part="gen"/><lit-tag v="un"/></equal>
-            <ends-with><clip pos="2" part="grau"/><lit-tag v="pst"/></ends-with>
-          </and>
-        </test>
-        <let><clip pos="2" part="nbr"/><lit-tag v="sp"/></let>
-      </when></choose>
+      <choose>
+        <when>
+          <test>
+            <and>
+              <equal><clip pos="2" part="art"/><lit-tag v="def"/></equal>
+              <equal><clip pos="2" part="gen"/><lit-tag v="un"/></equal>
+              <ends-with><clip pos="2" part="grau"/><lit-tag v="pst"/></ends-with>
+            </and>
+          </test>
+          <let><clip pos="2" part="nbr"/><lit-tag v="sp"/></let>
+        </when>
+        <when c="pst.un doesn't do ind, so go back to pst.mf.ind for that">
+          <test>
+            <and>
+              <equal><clip pos="2" part="art"/><lit-tag v="ind"/></equal>
+              <equal><clip pos="2" part="gen"/><lit-tag v="un"/></equal>
+              <equal><clip pos="2" part="gen"/><lit-tag v="sp"/></equal>
+              <ends-with><clip pos="2" part="grau"/><lit-tag v="pst"/></ends-with>
+            </and>
+          </test>
+          <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
+          <let><clip pos="2" part="gen"/><lit-tag v="mf"/></let>
+        </when>
+      </choose>
 
       <!-- handle non-sint -->
       <call-macro n="prepend_moremost"><with-param pos="1"/><with-param pos="2"/></call-macro>
