@@ -1580,6 +1580,10 @@ SELECT ("slik") (0 ("<nu>"i)) ;     # Ja nu leat sii
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
+SELECT ("bort"i) (0 ("<eret>"i)) (-1 v) ;
+SELECT:fallback ("fra"i) (0 ("<eret>"i)) ;
+SELECT:fallback ("frå"i) (0 ("<eret>"i)) ;
+
 
 # Adjectives
 # ==========
