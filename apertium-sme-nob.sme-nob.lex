@@ -820,6 +820,8 @@ REMOVE (cmp) (0 n) ;
 # go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
 
 
+SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0 cs) ;
+
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
@@ -1576,6 +1578,7 @@ SELECT ("som"i) (0 ("<mii>"i)) ;
 # =======
 SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
 SELECT ("så") (0 ("<nu>"i)) (1 a) ; # dat skuvla nu johtil ahte
+SELECT:så-langt-som ("så") (0 ("<nu>"i)) (1 adv) (2 cs) ;
 SELECT ("slik") (0 ("<nu>"i)) ;     # Ja nu leat sii
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
