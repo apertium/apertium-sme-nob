@@ -834,7 +834,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="ønske" c="Lihkkobeaivve sávaldagat Káre Márehis."/>
     </def-list>
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
-      <list-item v="Arbeiderpartiet"/>
+      <list-item v="USA"/>
       <list-item v="Guovdageainnu suohkan"/>
       <list-item v="administrasjon"/>
       <list-item v="allmenning"/>
@@ -1014,14 +1014,17 @@ And then there are some categories like "month", with all the months.
                   - if argument is _not_ a proper noun: caseFirstWord is the case of the lemma, and the lemma gets lowercase.
                   - if argument _is_ a proper noun: caseFirstWord is lowercase, and lemma stays unchanged.
 
-                  (This means that if the sentence starts with a proper noun, and we insert eg. a preposition before that,
-                   the preposition won't get capitalised in t2x. We _could_ circumvent this by having a global variable
-                   'FirstWordSeen' that is set to false on periods and true for all other lexical units, but this is low priority.)">
+                  This means that if the sentence starts with a proper noun, and we insert eg. a preposition before that,
+                  the preposition won't get capitalised in t2x. We _could_ circumvent this by having a global variable
+                  'FirstWordSeen' that is set to false on periods and true for all other lexical units, but this is low priority.
+
+                  We treat UPPERCASE as proper nouns.">
       <let><var n="caseFirstWord"/><lit v="aa"/></let>
       <choose><when>
         <test><not><or>
           <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
           <equal><clip pos="1" side="tl" part="lettercase"/><lit-tag v="fixedcase"/></equal>
+          <equal><get-case-from pos="1"><lit v="aa"/></get-case-from><lit v="AA"/></equal>
         </or></not></test>
         <let><var n="caseFirstWord"/><get-case-from pos="1"><lit v="aa"/></get-case-from></let>
         <modify-case><clip pos="1" side="tl" part="lemh"/><lit v="aa"/></modify-case>
