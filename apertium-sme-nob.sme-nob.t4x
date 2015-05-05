@@ -888,7 +888,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <and>
               <equal><clip pos="2" part="art"/><lit-tag v="ind"/></equal>
               <equal><clip pos="2" part="gen"/><lit-tag v="un"/></equal>
-              <equal><clip pos="2" part="gen"/><lit-tag v="sp"/></equal>
+              <not><equal><clip pos="2" part="gen"/><lit-tag v="pl"/></equal></not>
               <ends-with><clip pos="2" part="grau"/><lit-tag v="pst"/></ends-with>
             </and>
           </test>
