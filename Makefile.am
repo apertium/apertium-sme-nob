@@ -194,19 +194,19 @@ $(PREFIX1).t4x.bin: $(BASENAME).$(PREFIX1).t4x
 # Alternative versions using vm-for-transfer-cpp:
 $(PREFIX1).v1x.bin: $(BASENAME).$(PREFIX1).t1x
 	apertium-validate-transfer $<
-	apertium-transfervm-compiler -i $< -o $@
+	apertium-compile-transfer -i $< -o $@
 
 $(PREFIX1).v2x.bin: $(BASENAME).$(PREFIX1).t2x
 	apertium-validate-interchunk $<
-	apertium-transfervm-compiler -i $< -o $@
+	apertium-compile-transfer -i $< -o $@
 
 $(PREFIX1).v3x.bin: $(BASENAME).$(PREFIX1).t3x
 	apertium-validate-interchunk $<
-	apertium-transfervm-compiler -i $< -o $@
+	apertium-compile-transfer -i $< -o $@
 
 $(PREFIX1).v4x.bin: $(BASENAME).$(PREFIX1).t4x
 	apertium-validate-postchunk $<
-	apertium-transfervm-compiler -i $< -o $@
+	apertium-compile-transfer -i $< -o $@
 
 vm-transfer: $(PREFIX1).v1x.bin \
              $(PREFIX1).v2x.bin \
