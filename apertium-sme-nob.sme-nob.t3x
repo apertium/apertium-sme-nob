@@ -375,6 +375,14 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="Prn"/>
       <attr-item tags="prn"/>
     </def-attr>
+    <def-attr n="a_det">
+      <attr-item tags="det"/>
+      <attr-item tags="det.emph"/>
+      <attr-item tags="det.dem"/>
+      <attr-item tags="det.itg"/>
+      <attr-item tags="det.qnt"/>
+      <attr-item tags="det.pos"/>
+    </def-attr>
     <def-attr n="art">
       <attr-item tags="def"/>
       <attr-item tags="ind"/>
@@ -426,8 +434,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                   Indefinite:
                   o lokativ/(illativ) in first position + leat
                   o habitiv tag
-                  o advl 
-                  Definite: 
+                  o advl
+                  Definite:
                   o lokativ not in first position + leat
                   o subjects of dual verbforms">
       <choose><when>
@@ -486,43 +494,87 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </when></choose>
     </def-macro>
 
-    <def-macro n="guess_gender" npar="1"
-               c="arg.1: verb chunk
-                  Heuristics:
-                  o default: mf
-                  o p3 + sg
+    <def-macro n="guess_gender_p3sg" npar="1"
+               c="arg.1: verb chunk that is _known to be p3.sg_
+                  -----
                     - default: nt (since we use this as default elsewhere too)
                     - if animacy is impersonal (marked in bidix): nt
                     - else if chunk gender was set by t2x: chunk gender
                     - else if animacy is personal: m
                   So an impersonal verb animacy will override the gender found on earlier subjects by t2x.
+
+                  Don't call this directly, use guess_gender1 or guess_gender2!
                   ">
-      <let><var n="gender"/><lit-tag v="mf"/></let>
-      <choose><when>
-        <test><and>
-          <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
-          <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
-        </and></test>
-        <let><var n="gender"/><lit-tag v="nt"/></let>
-        <choose>
-          <when>
-            <test><equal><clip pos="1" part="animacy"/><lit-tag v="impers"/></equal></test>
-            <let><var n="gender"/><lit-tag v="nt"/></let>
-          </when>
-          <when>
-            <test><equal><clip pos="1" part="voice"/><lit-tag v="pass"/></equal></test>
-            <let><var n="gender"/><lit-tag v="nt"/></let>
-          </when>
-          <when>
-            <test><not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not></test>
-            <let><var n="gender"/><clip pos="1" part="gen"/></let>
-          </when>
-          <when>
-            <test><equal><clip pos="1" part="animacy"/><lit-tag v="pers"/></equal></test>
-            <let><var n="gender"/><lit-tag v="m"/></let>
-          </when>
-        </choose>
-      </when></choose>
+      <choose>
+        <when>
+          <test><equal><clip pos="1" part="animacy"/><lit-tag v="impers"/></equal></test>
+          <let><var n="gender"/><lit-tag v="nt"/></let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" part="voice"/><lit-tag v="pass"/></equal></test>
+          <let><var n="gender"/><lit-tag v="nt"/></let>
+        </when>
+        <when>
+          <test><not><equal><clip pos="1" part="gen"/><lit v=""/></equal></not></test>
+          <let><var n="gender"/><clip pos="1" part="gen"/></let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" part="animacy"/><lit-tag v="pers"/></equal></test>
+          <let><var n="gender"/><lit-tag v="m"/></let>
+        </when>
+        <otherwise>
+          <let><var n="gender"/><lit-tag v="nt"/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
+
+    <def-macro n="guess_gender1" npar="1"
+               c="arg.1: verb chunk
+                  Heuristics:
+                  o default: mf
+                  o p3 + sg
+                  - default: nt (since we use this as default elsewhere too)
+                  - if animacy is impersonal (marked in bidix): nt
+                  - else if chunk gender was set by t2x: chunk gender
+                  - else if animacy is personal: m
+                  So an impersonal verb animacy will override the gender found on earlier subjects by t2x.
+                  ">
+      <choose>
+        <when>
+          <test><and>
+            <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
+            <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+          </and></test>
+          <call-macro n="guess_gender_p3sg"><with-param pos="1"/></call-macro>
+        </when>
+        <otherwise>
+          <let><var n="gender"/><lit-tag v="mf"/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
+
+    <def-macro n="guess_gender2" npar="2"
+               c="arg.1: possibly finite verb chunk, arg.2: content verb chunk">
+      <choose>
+        <when>
+          <test><and>
+            <equal><clip pos="1" part="pers"/><lit-tag v="p3"/></equal>
+            <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+          </and></test>
+          <choose>
+            <when c="Infinitives are typically the head/main content verbs.">
+              <test><equal><clip pos="2" part="temps"/><lit-tag v="inf"/></equal></test>
+              <call-macro n="guess_gender_p3sg"><with-param pos="2"/></call-macro>
+            </when>
+            <otherwise c="Participles etc. are less likely to decide gender of subject.">
+              <call-macro n="guess_gender_p3sg"><with-param pos="1"/></call-macro>
+            </otherwise>
+          </choose>
+        </when>
+        <otherwise>
+          <let><var n="gender"/><lit-tag v="mf"/></let>
+        </otherwise>
+      </choose>
     </def-macro>
 
     <def-macro n="modify_GD_ND_subj3" npar="3"
@@ -530,7 +582,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                   ----
                   Apply verb gen/nbr to GD/ND non-pro left-subjects
                   (ie. those that weren't handled in t2x since they appear before the verb).">
-      <call-macro n="guess_gender"><with-param pos="3"/></call-macro>
+      <call-macro n="guess_gender1"><with-param pos="3"/></call-macro>
       <choose><when>
         <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
         <let><clip pos="1" part="gen"/><var n="gender"/></let>
@@ -562,10 +614,15 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <with-param pos="2"/>
       </call-macro>
     </def-macro>
-    
-    <def-macro n="set_pro" npar="1"
-               c="arg.1: verb chunk.
+
+    <def-macro n="set_pro" npar="2"
+               c="arg.1: possibly finite verb chunk, arg.2: content verb chunk
                   -----
+                  If only one verb, use that as both args. If two, the first one is used
+                  to check if there's any finiteness (we only insert pro's if we've found
+                  the finite verb), while the gender is guessed from the second if it's
+                  an infinitive.
+
                   Don't call this directly, use set_pro_lowercase or set_pro_verb_case!
                   (Assumes that case-switch is set.)
                   If given an infinitive or imperative, make pro and pro-blank empty.">
@@ -582,7 +639,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <let><var n="pro-blank"/><lit v=""/></let>
         </when>
         <otherwise>
-          <call-macro n="guess_gender"><with-param pos="1"/></call-macro>
+          <call-macro n="guess_gender2"><with-param pos="1"/><with-param pos="2"/></call-macro>
           <let><var n="pro"/><lit v="prn"/></let>
           <choose><when>
             <test><equal><var n="case-switch"/><lit v="yes"/></equal></test>
@@ -613,19 +670,31 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </otherwise>
       </choose>
     </def-macro>
-    <def-macro n="set_pro_lowercase" npar="1"
-               c="arg.1: verb chunk.
-                  Gives pro lowercase, lets verb chunk keep its case.">
+
+    <def-macro n="set_pro_lowercase1" npar="1"
+               c="Gives pro lowercase, lets verb chunk keep its case.">
       <let><var n="case-switch"/><lit v=""/></let>
-      <call-macro n="set_pro"><with-param pos="1"/></call-macro>
+      <call-macro n="set_pro"><with-param pos="1"/><with-param pos="1"/></call-macro>
     </def-macro>
-    <def-macro n="set_pro_verb_case" npar="1"
-               c="arg.1: verb chunk.
-                  Gives pro the case of verb chunk, gives verb chunk lowercase.">
+
+    <def-macro n="set_pro_verb_case1" npar="1"
+               c="Gives pro the case of verb chunk, gives verb chunk lowercase.">
       <let><var n="case-switch"/><lit v="yes"/></let>
-      <call-macro n="set_pro"><with-param pos="1"/></call-macro>
+      <call-macro n="set_pro"><with-param pos="1"/><with-param pos="1"/></call-macro>
     </def-macro>
-    
+
+    <def-macro n="set_pro_lowercase2" npar="2"
+               c="Gives pro lowercase, lets verb chunk keep its case.">
+      <let><var n="case-switch"/><lit v=""/></let>
+      <call-macro n="set_pro"><with-param pos="1"/><with-param pos="2"/></call-macro>
+    </def-macro>
+
+    <def-macro n="set_pro_verb_case2" npar="2"
+               c="Gives pro the case of verb chunk, gives verb chunk lowercase.">
+      <let><var n="case-switch"/><lit v="yes"/></let>
+      <call-macro n="set_pro"><with-param pos="1"/><with-param pos="2"/></call-macro>
+    </def-macro>
+
     <def-macro n="set_adv" npar="1"
                c="arg.1: verb chunk.
                   Creates an adverb chunk to indicate potentialis case.
@@ -635,7 +704,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <when>
           <test>
             <equal><clip pos="1" part="modality"/><lit-tag v="Pot"/></equal>
-          </test>          
+          </test>
           <let>
             <var n="adv"/>
             <concat>
@@ -657,10 +726,10 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </choose>
     </def-macro>
   </section-def-macros>
-  
+
   <section-rules>
     <!-- <rules: no pro-drop insertion -->
-    
+
     <!-- <rules: ISUBJr IV
          Setningstilsvar (infinite=>finite in subordinate sentences) -->
     <rule comment="REGLA: ISUBJr IV
@@ -680,12 +749,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           </chunk>
           <b/>
         </out>
-        
+
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
         </out>
-        
+
         <choose><when>
           <test><equal><clip pos="2" part="temps"/><lit-tag v="inf"/></equal></test>
           <out>
@@ -703,9 +772,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    
 
-    <!-- <rules: SPEC_SUBJr.qst FV RSPRED* (insert existential 'det') -->    
+
+    <!-- <rules: SPEC_SUBJr.qst FV RSPRED* (insert existential 'det') -->
     <rule comment="REGLA: SPEC_SUBJr.qst FV
                    Áhččigo boahtá (ihttin) => Er det far som kommer (i morgen)
                    Áhččigo bođii (ikte) => Var det far som kom (i går)
@@ -758,7 +827,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    
+
     <!-- <rules: rel FV -->
     <rule comment="REGLA: rel-SUBJr FV">
       <pattern>
@@ -927,7 +996,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
-          <var n="adv-blank"/><var n="adv"/> 
+          <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
     </rule>
@@ -957,7 +1026,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="3" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
           <b pos="2"/>
-          <chunk><clip pos="2" part="whole"/></chunk>                    
+          <chunk><clip pos="2" part="whole"/></chunk>
         </out>
       </action>
     </rule>
@@ -990,7 +1059,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="2"/>
           <chunk><clip pos="3" part="whole"/></chunk>
           <b pos="3"/>
-          <chunk><clip pos="2" part="whole"/></chunk>                    
+          <chunk><clip pos="2" part="whole"/></chunk>
         </out>
       </action>
     </rule>
@@ -1101,7 +1170,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    
+
     <!-- <rule comment="REGLA: PREDICATE leat INF -->
     <!--                Buoret lea johtit => Det er bedre å bevege seg"> -->
     <!--   <pattern> -->
@@ -1121,7 +1190,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     <!--     </out> -->
     <!--   </action> -->
     <!-- </rule> -->
-    
+
     <rule comment="REGLA: SPEC FV maybe-lSUBJ
                    de lei son (juo) => så hadde han (allerede)
                    Override prodrop rule if we might have a subject to the right">
@@ -1318,7 +1387,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                    -----
                    V2-rule with pro-drop insertion
                    Doppe dihten => Der borte visste jeg
-                   
+
                    Note: This rule is partly blocked by the 'maybe-SUBJr FV' rule above.">
       <pattern>
         <pattern-item n="SPEC"/>
@@ -1329,7 +1398,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
-        <call-macro n="set_pro_lowercase"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pro_lowercase1"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1337,6 +1406,35 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="2" part="whole"/></chunk>
           <var n="pro-blank"/><var n="pro"/>
           <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: SPEC FV IV
+                   -----
+                   V2-rule with pro-drop insertion (gender based on IV)
+                   duorastaga iđida sáhttá borgat => torsdag morgen kan det fyke
+
+                   Note: This rule is partly blocked by the 'maybe-SUBJr FV' rule above.">
+      <pattern>
+        <pattern-item n="SPEC"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes2">
+          <with-param pos="1"/>
+          <with-param pos="2"/>
+        </call-macro>
+        <call-macro n="set_pro_lowercase2"><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="pro-blank"/><var n="pro"/>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
         </out>
       </action>
     </rule>
@@ -1353,7 +1451,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="2"/>
           <with-param pos="3"/>
         </call-macro>
-        <call-macro n="set_pro_lowercase"><with-param pos="3"/></call-macro>
+        <call-macro n="set_pro_lowercase1"><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1366,7 +1464,36 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    
+    <rule comment="REGLA: PR SPEC FV IV
+                   V2-rule with pro-drop insertion (gender based on IV)
+                   ">
+      <pattern>
+        <pattern-item n="PR"/>
+        <pattern-item n="SPEC"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes2">
+          <with-param pos="2"/>
+          <with-param pos="3"/>
+        </call-macro>
+        <call-macro n="set_pro_lowercase2"><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="pro-blank"/><var n="pro"/>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
     <!-- <rules: CS FV IV*: -->
     <rule comment="REGLA: CS FV
                    Subordinate clause.
@@ -1377,7 +1504,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro_verb_case"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pro_verb_case1"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1398,7 +1525,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro_verb_case"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pro_verb_case1"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <choose><when>
           <test><equal><clip pos="3" part="temps"/><lit-tag v="pp"/></equal></test>
@@ -1424,7 +1551,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV.qst"/>
       </pattern>
       <action>
-        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pro_lowercase1"><with-param pos="1"/></call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1441,7 +1568,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="SA"/>
       </pattern>
       <action>
-        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pro_lowercase1"><with-param pos="1"/></call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <choose><when>
           <test><not><equal><var n="gender"/><lit v=""/></equal></not></test>
@@ -1469,7 +1596,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="2"/>
           <with-param pos="1"/>
         </call-macro>
-        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pro_lowercase1"><with-param pos="1"/></call-macro>
         <call-macro n="gender_pro_concord">
           <with-param pos="2"/>
           <with-param pos="1"/>
@@ -1492,7 +1619,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pro_lowercase2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
@@ -1512,15 +1639,15 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro_verb_case"><with-param pos="1"/></call-macro>        
-        <call-macro n="set_adv"><with-param pos="2"/></call-macro>        
+        <call-macro n="set_pro_verb_case1"><with-param pos="1"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <var n="pro"/><var n="pro-blank"/>
           <chunk><clip pos="2" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
           <b pos="1"/>
-          <chunk><clip pos="1" part="whole"/></chunk>                    
+          <chunk><clip pos="1" part="whole"/></chunk>
         </out>
       </action>
     </rule>
@@ -1539,7 +1666,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="3"/>
           <with-param pos="2"/>
         </call-macro>
-        <call-macro n="set_pro_verb_case"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pro_verb_case1"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <var n="pro"/><var n="pro-blank"/>
@@ -1567,7 +1694,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="3"/>
         </call-macro>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="3"/></call-macro>
-        <call-macro n="set_pro_lowercase"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_pro_lowercase2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="3" part="whole"/></chunk>
@@ -1599,7 +1726,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <choose>
           <when c="Don't switch order if ADVLrOBJr is an actual adverb">
             <test><equal><clip pos="1" part="lemh"/><lit v="adv"/></equal></test>
-            <call-macro n="set_pro_lowercase"><with-param pos="2"/></call-macro>
+            <call-macro n="set_pro_lowercase1"><with-param pos="2"/></call-macro>
             <call-macro n="set_adv"><with-param pos="2"/></call-macro>
             <out>
               <var n="pro"/><var n="pro-blank"/>
@@ -1611,7 +1738,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           </when>
           <otherwise>
             <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
-            <call-macro n="set_pro_verb_case"><with-param pos="2"/></call-macro>
+            <call-macro n="set_pro_verb_case1"><with-param pos="2"/></call-macro>
             <call-macro n="set_adv"><with-param pos="2"/></call-macro>
             <out>
               <var n="pro"/><var n="pro-blank"/>
@@ -1648,7 +1775,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
             <equal><clip pos="1" part="syn_label"/><lit-tag v="@ADVL→"></lit-tag></equal>
             <equal><clip pos="2" part="syn_label"/><lit-tag v="@ADVL→"></lit-tag></equal>
           </and></test>
-          <call-macro n="set_pro_lowercase"><with-param pos="3"/></call-macro>
+          <call-macro n="set_pro_lowercase1"><with-param pos="3"/></call-macro>
           <call-macro n="set_adv"><with-param pos="3"/></call-macro>
           <out>
             <chunk><clip pos="1" part="whole"/></chunk>
@@ -1662,7 +1789,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </when>
         <otherwise>
           <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
-          <call-macro n="set_pro_verb_case"><with-param pos="3"/></call-macro>
+          <call-macro n="set_pro_verb_case1"><with-param pos="3"/></call-macro>
           <call-macro n="set_adv"><with-param pos="3"/></call-macro>
           <out>
             <var n="pro"/><var n="pro-blank"/>
@@ -1691,7 +1818,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="1"/>
           <with-param pos="2"/>
         </call-macro>
-        <call-macro n="set_pro_lowercase"><with-param pos="2"/></call-macro>
+        <call-macro n="set_pro_lowercase1"><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1727,7 +1854,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="1"/>
           <with-param pos="3"/>
         </call-macro>
-        <call-macro n="set_pro_lowercase"><with-param pos="3"/></call-macro>
+        <call-macro n="set_pro_lowercase1"><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1750,7 +1877,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    
+
     <!-- FV lOBJ_RPRED -->
     <rule comment="REGLA: FV lOBJ_RPRED
                    Váldde biergasiid => Ta sakene
@@ -1764,7 +1891,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="2"/>
           <with-param pos="1"/>
         </call-macro>
-        <call-macro n="set_pro_verb_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pro_verb_case1"><with-param pos="1"/></call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <var n="pro"/><var n="pro-blank"/>
@@ -1789,7 +1916,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="3"/>
           <with-param pos="1"/>
         </call-macro>
-        <call-macro n="set_pro_verb_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_pro_verb_case1"><with-param pos="1"/></call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <var n="pro"/><var n="pro-blank"/>
@@ -1812,8 +1939,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
-        <call-macro n="set_pro_verb_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_adv"><with-param pos="1"/></call-macro>        
+        <call-macro n="set_pro_verb_case1"><with-param pos="1"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
           <var n="pro"/><var n="pro-blank"/>
           <chunk><clip pos="1" part="whole"/></chunk>
