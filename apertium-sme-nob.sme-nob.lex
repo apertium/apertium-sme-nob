@@ -1117,6 +1117,8 @@ SELECT ("vise# til"i) (0 ("<čujuhit>"i)) ;
 # Nouns
 # ============
 
+SELECT:fallback ("gå"i) (0 ("<mannat>"i));
+
 SELECT ("avdeling"i) (0 ("<ossodat>"i)); # parkorp har masse «avdeling»-døme, ingen «andel»
 
 SELECT ("grad"i) (0 ("<muddu>"i)) (NOT -1 ord) ;
