@@ -1587,6 +1587,8 @@ SELECT ("bort"i) (0 ("<eret>"i)) (-1 v) ;
 SELECT:fallback ("fra"i) (0 ("<eret>"i)) ;
 SELECT:fallback ("frå"i) (0 ("<eret>"i)) ;
 
+# Based on frequency in parallel text:
+SELECT ("lenger"i) (0 ("<šat>"i)) ;
 
 # Adjectives
 # ==========
