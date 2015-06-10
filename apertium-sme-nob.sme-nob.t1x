@@ -215,6 +215,32 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="cnjcoo.*"/>
       <cat-item tags="cnjsub.*"/>
     </def-cat>
+    <def-cat n="time-noun">
+      <cat-item lemma="guovvamánnu" tags="n.*"/>
+      <cat-item lemma="ođđajagimánnu" tags="n.*"/>
+      <cat-item lemma="guovvamánnu" tags="n.*"/>
+      <cat-item lemma="njukčamánnu" tags="n.*"/>
+      <cat-item lemma="cuoŋománnu" tags="n.*"/>
+      <cat-item lemma="miessemánnu" tags="n.*"/>
+      <cat-item lemma="geassemánnu" tags="n.*"/>
+      <cat-item lemma="suoidnemánnu" tags="n.*"/>
+      <cat-item lemma="borgemánnu" tags="n.*"/>
+      <cat-item lemma="čakčamánnu" tags="n.*"/>
+      <cat-item lemma="golggotmánnu" tags="n.*"/>
+      <cat-item lemma="skábmamánnu" tags="n.*"/>
+      <cat-item lemma="juovlamánnu" tags="n.*"/>
+      <cat-item lemma="giđđa" tags="n.*"/>
+      <cat-item lemma="geassi" tags="n.*"/>
+      <cat-item lemma="dálvi" tags="n.*"/>
+      <cat-item lemma="čakča" tags="n.*"/>
+      <cat-item lemma="jahki" tags="n.*"/>
+      <cat-item lemma="vahkku" tags="n.*"/>
+      <cat-item lemma="vahkuloahppa" tags="n.*"/>
+      <cat-item lemma="beaivi" tags="n.*"/>
+      <cat-item lemma="diibmu" tags="n.*"/>
+      <cat-item lemma="tiibmu" tags="n.*"/>
+      <cat-item lemma="tiibma" tags="n.*"/>
+    </def-cat>
     <def-cat n="month">
       <cat-item lemma="guovvamánnu" tags="n.*"/>
       <cat-item lemma="ođđajagimánnu" tags="n.*"/>
@@ -247,6 +273,9 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-das-her">
       <cat-item lemma="dat" tags="prn.dem.sg.loc.@ADVL→"/>
+    </def-cat>
+    <def-cat n="lex-mannan">
+      <cat-item lemma="mannat" tags="vblex.iv.prfprc.@→N"/>
     </def-cat>
     <def-cat n="lex-dan">
       <cat-item lemma="dat" tags="prn.dem.sg.*"/>
@@ -2140,7 +2169,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     <!-- <rules: TODO MWE's or pos-changes that really should be lexicalised
 
          Main pos should preferably never change in bidix, leads to
-         too many cases in transfer, better to keep exceptions here.
+         too many cases in transfer, better to keep exceptions here,
+         where we can avoid introducing complexity in the _regular_
+         transfer rules.
     -->
     <rule comment="REGLA: dan sivas go → fordi">
       <pattern>
@@ -2223,6 +2254,29 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </lu>
           </chunk>
         </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: Mannan vahku → Sist uke
+                   (could mannan get an adj reading?)">
+      <pattern>
+        <pattern-item n="lex-mannan"/>
+        <pattern-item n="time-noun"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+                <lit v="sist"/>
+                <lit-tag v="adj.sint.sup.un.sp.ind"/>
+            <lit v="$"/>
+            <b pos="1"/>
+          </concat>
+        </let>
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
 
