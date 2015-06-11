@@ -1625,6 +1625,12 @@ SELECT ("viss") (0 ("<vissis>"i)) (*1 n BARRIER NOT-A) ;
 SELECT ("samisk"i) (0 ("<sápmi>"i))(0 gen);
 
  
+# Subjunctions
+# ============
+
+SELECT ("at"i) (0 ("<nu ahte>"i)) (-1 ("sørge# for"));
+SELECT:fallback ("slik at"i) (0 ("<nu ahte>"i));
+ 
 # Proper nouns
 # ============
 

@@ -1490,28 +1490,32 @@ And then there are some categories like "month", with all the months.
     </def-macro>
 
     <def-macro n="set_defnes2" npar="2"
-               c="arg.1: noun, arg.2: determiner. With 'det (adj) nom' the noun is definitely
+               c="arg.1: noun, arg.2: determiner (or adj, but only if no det).
+                  With 'det (adj) nom' the noun is:
                   * indefinite if the determiner is a possessive
                   * definite if it is a demonstrative
+                  With superlatives, it's always definite.
                   Otherwise, keep old defnes.
                   Assumes that clean_a_det has been called.">
       <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
       <choose>
-	<when>
+        <when>
           <test><or>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
             <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
           </or></test>
-	  <let><var n="defnes"/><lit-tag v="ind"/></let>
-	</when>
+          <let><var n="defnes"/><lit-tag v="ind"/></let>
+        </when>
         <when>
-          <test>
-            <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
-          </test>
-	  <let><var n="defnes"/><lit-tag v="def"/></let>
-	</when>
+          <test><equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal></test>
+          <let><var n="defnes"/><lit-tag v="def"/></let>
+        </when>
+        <when>
+          <test><equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal></test>
+          <let><var n="defnes"/><lit-tag v="def"/></let>
+        </when>
       </choose>
     </def-macro>
 
@@ -3969,7 +3973,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <let><var n="c_name"/><lit v="pre_"/></let>
 
-        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
 
         <let>
           <var n="pre-nom"/>
@@ -4010,7 +4014,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
 
-        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
         <let>
           <var n="pre-nom"/>
@@ -4110,7 +4114,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </let>
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
         <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="1"/></call-macro>
-        <call-macro n="set_defnes"><with-param pos="4"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="2"/></call-macro>
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
@@ -4163,7 +4167,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </let>
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
-        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
@@ -4226,7 +4230,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </let>
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
         <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="2"/></call-macro>
-        <call-macro n="set_defnes"><with-param pos="4"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="1"/></call-macro>
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
@@ -4606,7 +4610,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
 
         <!-- for NOM.GEN -->
-        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <choose><when>
           <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
           <let><var n="defnes"/><lit v=""/></let>
@@ -4663,7 +4667,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
 
         <!-- for NOM.GEN -->
-        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <choose><when>
           <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
           <let><var n="defnes"/><lit v=""/></let>
