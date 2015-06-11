@@ -1,0 +1,1 @@
+PAIRS=( sme-nob )
