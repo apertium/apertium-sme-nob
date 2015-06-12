@@ -279,10 +279,15 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-dan">
       <cat-item lemma="dat" tags="prn.dem.sg.*"/>
+      <cat-item lemma="Dat" tags="prn.dem.sg.*"/>
     </def-cat>
     <def-cat n="lex-sivas">
       <cat-item lemma="sivva" tags="n.*.sg.loc.*"/>
       <cat-item lemma="sivva" tags="n.sg.loc.*"/>
+    </def-cat>
+    <def-cat n="lex-ektui">
+      <cat-item lemma="ektui" tags="po"/>
+      <cat-item lemma="ektui" tags="po.*"/>
     </def-cat>
     <def-cat n="lex-go">
       <cat-item lemma="go" tags="cnjsub.*"/>
@@ -2193,6 +2198,28 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </tags>
             <lu>
               <lit v="fordi"/>
+              <lit-tag v="cnjsub"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: dan ektui go → mens / mot">
+      <pattern>
+        <pattern-item n="lex-dan"/>
+        <pattern-item n="lex-ektui"/>
+        <pattern-item n="lex-go"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="3" side="tl" part="a_conj"/></tag>
+            </tags>
+            <lu>
+              <lit v="mens"/>
               <lit-tag v="cnjsub"/>
             </lu>
           </chunk>
