@@ -1601,6 +1601,9 @@ SELECT ("helhetlig") (0 ("<ollislaš>"i));
 
 SELECT ("forrige") (0 ("<ovddit>"i comp)) (1 n + sg);
 
+SELECT ("trygg") (0 ("<luohttevaš>"i)) (0 a) (NOT 0 n);
+SELECT:fallback ("tillitsfull") (0 ("<luohttevaš>"i));
+
 IFF ("-årig") (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
 
 ## leage buorre (vær så god)
