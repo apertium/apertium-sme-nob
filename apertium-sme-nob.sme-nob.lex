@@ -1422,7 +1422,6 @@ SELECT:fallback ("ønsker"i) (0 ("<dáhttu>"i));
 SELECT:fallback ("gård"i) (0 ("<dállu>"i));
 SELECT:fallback ("behov"i) (0 ("<dárbbaš>"i));
 SELECT:fallback ("eiendel"i) (0 ("<dávvir>"i));
-SELECT:fallback ("nordmann"i) (0 ("<dáčča>"i));
 SELECT:fallback ("norsk"i) (0 ("<dáčča>"i));
 SELECT:fallback ("flokk"i) (0 ("<eallu>"i));
 SELECT:fallback ("næring"i) (0 ("<ealáhus>"i));
