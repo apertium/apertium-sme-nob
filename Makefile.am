@@ -267,6 +267,6 @@ clean-local:
 
 test: all
 	echo "Mus lea oahpahus gaskkal guovtti ja njealji." | apertium -d . sme-nob | tee .test-mt
-	@echo "Jeg har undervisninga mellom to og fire." > .test-ref
+	@echo "Jeg har undervisning mellom to og fire." > .test-ref
 	@diff .test-ref .test-mt
 	@rm .test-ref .test-mt
