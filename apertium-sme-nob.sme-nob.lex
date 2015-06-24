@@ -1599,6 +1599,8 @@ SELECT ("vær så god") (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
 SELECT ("helhetlig") (0 ("<ollislaš>"i));
 
+SELECT:fallback ("sterk") (0 ("<nanus>"i));
+
 SELECT ("forrige") (0 ("<ovddit>"i comp)) (1 n + sg);
 
 SELECT ("trygg") (0 ("<luohttevaš>"i)) (0 a) (NOT 0 n);

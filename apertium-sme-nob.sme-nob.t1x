@@ -803,6 +803,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="čuojahit"/>
       <list-item v="liikot"/>
     </def-list>
+    <def-list n="ill-med-verbs" c="See 'ill-NIL-verbs' above.">
+      <list-item v="duhtat"/>
+    </def-list>
     <def-list n="ill-på-verbs" c="See 'ill-NIL-verbs' above.
                                   Speech verbs, emotional(?) verbs">
       <list-item v="čállit"/>
@@ -1784,6 +1787,10 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-på-verbs"/></in></test>
           <let><var n="caseprep"/><lit-tag v="ill-på"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-med-verbs"/></in></test>
+          <let><var n="caseprep"/><lit-tag v="ill-med"/></let>
         </when>
         <when>
           <test><or>
