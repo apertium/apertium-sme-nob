@@ -5165,6 +5165,60 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
 
 
+    <rule comment="REGLA: REL ADJ
+                   -----
+                   man mávssolaččat → hvor viktig
+                   (comp→pst in this construction)">
+      <pattern>
+        <pattern-item n="prn.rel"/>
+        <pattern-item n="adj"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="rel" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_conj"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+
+        <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
+        <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="2"/></call-macro>
+
+        <out>
+          <b pos="1"/>
+          <chunk name="adj" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SA"/></tag>
+              <tag><var n="c_syn"/></tag>
+              <tag><var n="defnes"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><var n="c_gen"/></tag>
+              <tag><var n="c_nbr"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <lit-tag v="pst.mf.sg.ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <rule comment="REGLA: NUMERAL">
       <pattern>
         <pattern-item n="num"/>
@@ -5194,7 +5248,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><var n="previous-nhead"/><lit v="NUMERAL"/></let>
       </action>
     </rule>
-
+    
 
 
     <!-- <rules VERBS ETC. -->
