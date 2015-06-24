@@ -990,6 +990,9 @@ And then there are some categories like "month", with all the months.
     <def-list n="ess-NIL" c="Essive noun phrases default to 'som' unless in this list">
       <list-item v="del"/>
     </def-list>
+    <def-list n="ess-til" c="Essive noun phrases default to 'som' unless in this list">
+      <list-item v="grunn"/>
+    </def-list>
     <def-list n="ess-til-gen" c="Essive noun phrases default to 'som' unless in this list (note: these are also turned genitive!)">
       <list-item v="lån"/>
     </def-list>
@@ -1010,6 +1013,20 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="ill-NIL" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="feil"/>
+    </def-list>
+    <def-list n="gen-av-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="kopi"/>
+      <list-item v="evaluering"/>
+    </def-list>
+    <def-list n="gen-i-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="undervisning"/>
+      <list-item v="opplæring"/>
+    </def-list>
+    <def-list n="gen-for-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="sjef"/>
+      <list-item v="grunnlag"/>
+      <list-item v="fundament"/>
+      <list-item v="basis"/>
     </def-list>
 
     <def-list n="no-gen-after-prop" c="If a noun in this list is preceded by a prop.gen, remove the gen from the prop">
@@ -1189,6 +1206,12 @@ And then there are some categories like "month", with all the months.
             <var n="caseprep"/><lit v="som"/>
           </let>
           <choose><when>
+            <test><in><clip pos="1" side="tl" part="lemh"/><list n="ess-til"/></in></test>
+            <let>
+              <var n="caseprep"/><lit v="til"/>
+            </let>
+          </when></choose>
+          <choose><when>
             <test><in><clip pos="1" side="tl" part="lemh"/><list n="ess-til-gen"/></in></test>
             <let>
               <var n="caseprep"/><lit v="til"/>
@@ -1236,24 +1259,54 @@ And then there are some categories like "month", with all the months.
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></test>
           <choose>
             <when>
-              <test><or>
-                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→N"/></equal>
-                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→A"/></equal>
-                <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
-                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal>
-              </or></test>
-              <let>
-                <var n="caseprep"/><lit v=""/>                <!--sin-->
-              </let>
+              <test><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal></test>
+              <choose>
+                <when>
+                  <test><in><var n="previous-nhead"/><list n="gen-av-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="av"/>
+                  </let>
+                </when>
+                <when>
+                  <test><in><var n="previous-nhead"/><list n="gen-i-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="i"/>
+                  </let>
+                </when>
+                <when>
+                  <test><in><var n="previous-nhead"/><list n="gen-for-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="for"/>
+                  </let>
+                </when>
+                <otherwise>
+                  <let><var n="caseprep"/><lit v="til"/></let>
+                </otherwise>
+              </choose>
             </when>
-            <otherwise c="Not a modifier: neither prep nor genitive case">
-              <let><var n="caseprep"/><lit v=""/></let>
-              <choose><when>
-                <test><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></test>
-                <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
-              </when></choose>
+            <otherwise>
+              <choose>
+                <when>
+                  <test><or>
+                    <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→N"/></equal>
+                    <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→A"/></equal>
+                    <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
+                    <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal>
+                  </or></test>
+                  <let>
+                    <var n="caseprep"/><lit v=""/>                <!--sin-->
+                  </let>
+                </when>
+                <otherwise c="Not a modifier: neither prep nor genitive case">
+                  <let><var n="caseprep"/><lit v=""/></let>
+                  <choose><when>
+                    <test><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></test>
+                    <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
+                  </when></choose>
+                </otherwise>
+              </choose>
             </otherwise>
-          </choose>
+        </choose>
         </when>
       </choose>
 
@@ -1518,6 +1571,10 @@ And then there are some categories like "month", with all the months.
           <let><var n="defnes"/><lit-tag v="ind"/></let>
         </when>
         <when>
+          <test><equal><clip pos="2" side="tl" part="case"/><lit-tag v="gen"/></equal></test>
+          <let><var n="defnes"/><lit-tag v="ind"/></let>
+        </when>
+        <when>
           <test><equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal></test>
           <let><var n="defnes"/><lit-tag v="def"/></let>
         </when>
@@ -1758,6 +1815,7 @@ And then there are some categories like "month", with all the months.
           </out>
         </otherwise>
       </choose>
+      <let><var n="pre-nom"/><lit v=""/></let>
     </def-macro>
 
 
@@ -4682,86 +4740,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
-
-    <rule comment="REGLA: ADJ_ATTR NOM.GEN NOM.GEN NOM
-                   -----
-                   dábálaš dáčča skuvlla kopija => den vanlige norske skoles kopi => ? TODO
-                   Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
-      <pattern>
-        <pattern-item n="adj_attr"/>
-        <pattern-item n="nom.gen"/>
-        <pattern-item n="nom.gen"/>
-        <pattern-item n="nom_head"/>
-      </pattern>
-      <action>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-
-        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
-
-        <!-- for NOM.GEN -->
-        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <choose><when>
-          <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
-          <let><var n="defnes"/><lit v=""/></let>
-          <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
-        </when></choose>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adj"/>
-              <clip pos="1" side="tl" part="grau"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="def"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-            <lit v="^"/>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <var n="defnes"/>
-              <clip pos="2" side="tl" part="gen-case"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="2"/>
-          </concat>
-        </let>
-
-        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro> <!-- TODO: or just set_defnes1 pos=3 ? -->
-        <choose><when>
-          <test><begins-with><clip pos="3" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
-          <let><var n="defnes"/><lit v=""/></let>
-          <let><clip pos="3" side="tl" part="nbr"/><lit v=""/></let>
-        </when></choose>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <var n="pre-nom"/>
-            <lit v="^"/>
-              <clip pos="3" side="tl" part="lemh"/>
-              <clip pos="3" side="tl" part="a_nom"/>
-              <clip pos="3" side="tl" part="gen"/>
-              <clip pos="3" side="tl" part="nbr"/>
-              <var n="defnes"/>
-              <clip pos="3" side="tl" part="gen-case"/>
-              <clip pos="3" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="3"/>
-          </concat>
-        </let>
-
-        <!-- for possessed NOM -->
-        <let><var n="defnes"/><lit-tag v="ind"/></let>
-        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
-      </action>
-    </rule>
-
     <rule comment="REGLA: NOM.GEN ADJ_ATTR NOM
                    -----
                    gieldda stuorimus mánáidgárdi → kommunens største barnehage
@@ -5133,7 +5111,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
 
         <!-- for NOM.GEN -->
-        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <choose><when>
           <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
           <let><var n="defnes"/><lit v=""/></let>
@@ -5257,6 +5235,187 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
     
 
+    <!-- <rules ADJ* GEN GEN+ NOM -->
+    <!-- These rules output several chunks, since we put the head noun
+         before the string of genitives. -->
+
+    <rule comment="REGLA: NOM.GEN NOM.GEN NOM
+                   -----
+                   dáčča skuvlla kopija => kopi av den norske skolen
+                   Outputs _two chunks_, head noun first.">
+      <pattern>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <!-- for possessed NOM -->
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+
+        <out><b pos="1"/></out>
+
+        <!-- for NOM.GEN NOM.GEN -->
+        <!-- TODO: np.top.gen n.gen → n i.pr np.top.gen -->
+        <let><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@N←"/></let>
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><var n="defnes"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+        </when></choose>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <var n="defnes"/>
+              <clip pos="1" side="tl" part="gen-case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+          </concat>
+        </let>
+        <let><clip pos="2" side="tl" part="gen-case"/><lit v=""/></let>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: NOM.GEN NOM.GEN NOM.GEN NOM
+                   -----
+                   sámi árvvuid oahpaheami vuođđu → et grunnlag for opplæringen i samens verdier
+                   Oarje-Finnmárkku oahpaheddjiid searvvi jahkečoahkkin → som årsmøte til foreningen til Vest-Finnmarks lærere (TODO better)
+                   Outputs _two chunks_, head noun first.">
+      <pattern>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <!-- for possessed NOM -->
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="4"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+
+        <out><b pos="1"/></out>
+
+        <!-- for third NOM.GEN -->
+        <let><clip pos="3" side="sl" part="syn_label"/><lit-tag v="@N←"/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <let><clip pos="3" side="tl" part="gen-case"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+
+        <out><b pos="2"/></out>
+
+        <!-- for first and second NOM.GEN -->
+        <!-- TODO: np.top.gen n.gen → n i.pr np.top.gen -->
+        <let><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@N←"/></let>
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><var n="defnes"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+        </when></choose>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <var n="defnes"/>
+              <clip pos="1" side="tl" part="gen-case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="3"/>
+          </concat>
+        </let>
+        <let><clip pos="2" side="tl" part="gen-case"/><lit v=""/></let>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="3"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: ADJ_ATTR NOM.GEN NOM.GEN NOM
+                   -----
+                   dábálaš dáčča skuvlla kopija => kopi av den vanlige norske skolen
+                   Outputs _two chunks_, head noun first.">
+      <pattern>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <!-- for possessed NOM -->
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="4"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+
+        <out><b pos="1"/></out>
+
+        <!-- for ADJ NOM.GEN NOM.GEN -->
+        <!-- TODO: np.top.gen n.gen → n i.pr np.top.gen -->
+        <let><clip pos="3" side="sl" part="syn_label"/><lit-tag v="@N←"/></let>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><var n="defnes"/><lit v=""/></let>
+          <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
+        </when></choose>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="defnes"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="3"/>
+          </concat>
+        </let>
+        <let><clip pos="3" side="tl" part="gen-case"/><lit v=""/></let>
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
 
     <!-- <rules VERBS ETC. -->
 
