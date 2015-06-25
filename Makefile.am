@@ -64,15 +64,12 @@ debug: \
 	hfst-repeat -f0 -t1 -i .deps/$*.autobil.postplus -o .deps/$*.autobil.postplus.0,1                      # (+ bidix [^+]*){0,1} -- gives at most one +
 	hfst-concatenate -1 .deps/$*.autobil.nonplussed -2 .deps/$*.autobil.postplus.0,1 -o $@                 # bidix [^+]* (+ bidix [^+]*){0,1}
 
-##
-## 	SME ANALYSER DICTIONARY
-##
+# -------------------
+# Northern Saami analysis:
+# -------------------
 
 .deps/$(LANG1).automorf.hfst: $(AP_SRC1)/$(BASENAME).$(PREFIX1).LR.att.gz .deps/.d
 	$(ZCAT) $< | hfst-txt2fst > $@
-
-.deps/$(LANG1).autogen.hfst: .deps/$(LANG1).automorf.hfst
-	hfst-invert -i $< -o $@
 
 .deps/$(PREFIX1).automorf-trimmed.hfst: .deps/$(LANG1).automorf.hfst .deps/$(PREFIX1).autobil.prefixes
 	hfst-compose-intersect -1 $< -2 .deps/$(PREFIX1).autobil.prefixes -o $@
@@ -89,6 +86,12 @@ $(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf-trimmed-nocmp.hfst
 $(PREFIX1).automorf-untrimmed.hfst: .deps/$(LANG1).automorf.hfst
 	hfst-fst2fst -O -i $< -o $@
 
+# -------------------
+# Northern Saami generation:
+# ---------------------
+
+.deps/$(LANG1).autogen.hfst: $(AP_SRC1)/apertium-$(LANG1).$(LANG1).RL.att.gz .deps/.d
+	$(ZCAT) $< | hfst-txt2fst > $@
 
 $(PREFIX2).autogen.hfst: .deps/$(LANG1).autogen.hfst
 	hfst-fst2fst -O -i $< -o $@
@@ -96,31 +99,31 @@ $(PREFIX2).autogen.hfst: .deps/$(LANG1).autogen.hfst
 
 ##
 ## 	BILINGUAL DICTIONARY
-###
-#.deps/$(BASENAME).$(PREFIX1).dix: $(BASENAME).$(PREFIX1).dix lexchoicebil.xsl .deps/.d
-#	apertium-validate-dictionary $<
-#	xsltproc lexchoicebil.xsl $(BASENAME).$(PREFIX1).dix > $@
+##
 
-#$(PREFIX1).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
 $(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
 	apertium-validate-dictionary $<
 	lt-comp lr $< $@
 
-#$(PREFIX2).autobil.bin: .deps/$(BASENAME).$(PREFIX1).dix
 $(PREFIX2).autobil.bin: $(BASENAME).$(PREFIX1).dix
 	apertium-validate-dictionary $<
 	lt-comp rl $< $@
 
 
-##
-## 	NOB GENERATOR DICTIONARY
-##
-$(PREFIX1).autogen.bin: $(AP_SRC2)/$(LANG2).autogen.bin
-	cp $< $@
-
+# -------------------
+# Norwegian Bokmål analysis:
+# ---------------------
 
 $(PREFIX2).automorf.bin: $(AP_SRC2)/$(LANG2).automorf.bin $(PREFIX2).autobil.bin
 	lt-trim $^ $@
+
+# -------------------
+# Norwegian Bokmål generation:
+# ---------------------
+
+$(PREFIX1).autogen.bin: $(AP_SRC2)/$(LANG2).autogen.bin
+	cp $< $@
+
 
 ##
 ##	PRE-TAGGING
