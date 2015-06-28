@@ -16,101 +16,30 @@ PKG_CHECK_MODULES(APERTIUM,   apertium >= required_apertium_version, [], [PKG_CH
 PKG_CHECK_MODULES(LTTOOLBOX,   lttoolbox >= required_lttoolbox_version, [], [PKG_CHECK_MODULES(LTTOOLBOX,   lttoolbox >= required_lttoolbox_version)])
 
 
-AC_PATH_PROG(CGCOMP, cg-comp, no)
-if test x$ac_cv_path_CGCOMP = x
-then
-  AC_MSG_ERROR([You don't have cg-comp installed.])
-fi
-if test x$ac_cv_path_CGCOMP = xno
-then
-  AC_MSG_ERROR([You don't have cg-comp installed.])
-fi
+AC_PATH_PROG([HFSTLEXC], [hfst-lexc], [false], [$PATH$PATH_SEPARATOR$with_hfst_lexc/bin])
+AS_IF([test x$HFSTLEXC = xfalse], [AC_MSG_ERROR([You don't have hfst-lexc installed])])
 
-AC_PATH_PROG(CGPROC, cg-proc, no)
-if test x$ac_cv_path_CGPROC = x
-then
-  AC_MSG_ERROR([You don't have cg-proc installed.])
-fi
-if test x$ac_cv_path_CGPROC = xno
-then
-  AC_MSG_ERROR([You don't have cg-proc installed.])
-fi
+AC_PATH_PROG([HFSTTWOLC], [hfst-twolc], [false], [$PATH$PATH_SEPARATOR$with_hfst_twolc/bin])
+AS_IF([test x$HFSTTWOLC = xfalse], [AC_MSG_ERROR([You don't have hfst-twolc installed])])
 
-AC_PATH_PROG(CGRELABEL, cg-relabel, no)
-if test x$ac_cv_path_CGRELABEL = x
-then
-  AC_MSG_ERROR([You don't have cg-relabel installed. For now, this requires https://github.com/unhammer/vislcg3/tree/tag-mangler .])
-fi
-if test x$ac_cv_path_CGRELABEL = xno
-then
-  AC_MSG_ERROR([You don't have cg-relabel installed. For now, this requires https://github.com/unhammer/vislcg3/tree/tag-mangler .])
-fi
+AC_PATH_PROG([HFSTPROC], [hfst-proc], [false], [$PATH$PATH_SEPARATOR$with_hfst_proc/bin])
+AS_IF([test x$HFSTPROC = xfalse], [AC_MSG_ERROR([You don't have hfst-proc installed])])
 
-AC_PATH_PROG(HFSTPROC, hfst-proc, no)
-if test x$ac_cv_path_HFSTPROC = x
-then
-  AC_MSG_ERROR([You don't have hfst-proc installed.])
-fi
-if test x$ac_cv_path_HFSTPROC = xno
-then
-  AC_MSG_ERROR([You don't have hfst-proc installed.])
-fi
-
-AC_PATH_PROG(HFSTLEXC, hfst-lexc, no)
-if test x$ac_cv_path_HFSTLEXC = x
-then
-  AC_MSG_ERROR([You don't have hfst-lexc installed.])
-fi
-if test x$ac_cv_path_HFSTLEXC = xno
-then
-  AC_MSG_ERROR([You don't have hfst-lexc installed.])
-fi
-
-AC_PATH_PROG(HFSTTWOLC, hfst-twolc, no)
-if test x$ac_cv_path_HFSTTWOLC = x
-then
-  AC_MSG_ERROR([You don't have hfst-twolc installed.])
-fi
-if test x$ac_cv_path_HFSTTWOLC = xno
-then
-  AC_MSG_ERROR([You don't have hfst-twolc installed.])
-fi
-
-AC_PATH_PROG(HFSTSUBSTITUTE, hfst-substitute, no)
-if test x$ac_cv_path_HFSTSUBSTITUTE = x
-then
-  AC_MSG_ERROR([You don't have hfst-subsitute installed.])
-fi
-if test x$ac_cv_path_HFSTSUBSTITUTE = xno
-then
-  AC_MSG_ERROR([You don't have hfst-substitute installed.])
-fi
+AC_PATH_PROG([HFSTSUBSTITUTE], [hfst-substitute], [false], [$PATH$PATH_SEPARATOR$with_hfst_substitute/bin])
+AS_IF([test x$HFSTSUBSTITUTE = xfalse], [AC_MSG_ERROR([You don't have hfst-substitute installed])])
 
 
-AC_PATH_PROG(XSLTPROC, xsltproc, no)
-if test x$ac_cv_path_XSLTPROC = x
-then
-  AC_MSG_ERROR([You don't have xsltproc installed.])
-fi
-if test x$ac_cv_path_XSLTPROC = xno
-then
-  AC_MSG_ERROR([You don't have xsltproc installed.])
-fi
+AC_PATH_PROG([CGCOMP], [cg-comp], [false], [$PATH$PATH_SEPARATOR$with_cg_comp/bin])
+AS_IF([test x$CGCOMP = xfalse], [AC_MSG_ERROR([You don't have cg-comp installed])])
 
-AC_PATH_PROG(GZCAT, gzcat, no)
-AC_PATH_PROG(ZCAT, zcat, no)
+AC_PATH_PROG([CGPROC], [cg-proc], [false], [$PATH$PATH_SEPARATOR$with_cg_proc/bin])
+AS_IF([test x$CGPROC = xfalse], [AC_MSG_ERROR([You don't have cg-proc installed])])
 
-if test x$ac_cv_path_GZCAT = xno
-then
-  if test x$ac_cv_path_ZCAT = xno
-  then
-    AC_MSG_ERROR([No working zcat installed.])
-  else
-    AC_SUBST(ZCAT,[zcat])
-  fi
-else
-  AC_SUBST(ZCAT,[gzcat])
-fi
+AC_PATH_PROG([CGRELABEL], [cg-relabel], [false], [$PATH$PATH_SEPARATOR$with_cg_relabel/bin])
+AS_IF([test x$CGRELABEL = xfalse], [AC_MSG_ERROR([You don't have cg-relabel installed. For now, this requires git clone -b tag-mangler https://github.com/unhammer/vislcg3 ])])
+
+AC_PATH_PROGS(ZCAT, [gzcat zcat], [false])
+AS_IF([test x$ZCAT = xfalse], [AC_MSG_ERROR([You don't have zcat nor gzcat installed])])
 
 
 m4_ifdef([AP_CHECK_LING],[],[AC_MSG_ERROR([AP_CHECK_LING not defined, is apertium.m4 in ACLOCAL_PATH? See: http://wiki.apertium.org/wiki/Installation_troubleshooting])])
