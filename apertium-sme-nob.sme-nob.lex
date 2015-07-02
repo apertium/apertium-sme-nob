@@ -1639,5 +1639,8 @@ SELECT ("samisk"i) (0 ("<sápmi>"i))(0 gen);
 SELECT ("at"i) (0 ("<nu ahte>"i)) (-1 ("sørge# for"));
 SELECT:fallback ("slik at"i) (0 ("<nu ahte>"i));
 
+SELECT ("når"i) (0 ("<dalle go>"i)) (-1 ("<earret>"i));
+SELECT:fallback ("da"i) (0 ("<dalle go>"i));
+
 # Proper nouns
 # ============
