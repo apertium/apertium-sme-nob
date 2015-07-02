@@ -23,7 +23,7 @@ LIST EOS = (<<<) (</s>);
 # ---------------
 
 LIST n = n ;
-LIST a = a ;
+LIST a = adj ;
 LIST adv = adv ;
 LIST v = vblex ;
 LIST pron = prn ;
@@ -34,7 +34,7 @@ LIST po = po ;
 LIST pr = pr ;
 LIST pcle = pcle ;
 LIST num = num ;
-LIST interj = interj ;
+LIST interj = ij ;
 LIST abbr = abbr ;
 LIST acr = acr ;
 
@@ -54,11 +54,11 @@ LIST ¶ = ¶;
 
 LIST pers = pers ;
 LIST dem = dem ;
-LIST interr = interr ;
-LIST indef = indef ;
+LIST interr = itg ;
+LIST indef = ind ;
 
-LIST recipr = recipr ;
-LIST refl = refl ;
+LIST recipr = res ;
+LIST refl = ref ;
 LIST rel = rel ;
 
 LIST coll = coll ;
@@ -114,7 +114,7 @@ LIST pl = pl ;
 
 LIST rcmpnd = rcmpnd ;
 
-LIST cmpnd = cmpnd ;
+LIST cmpnd = cmp ;
 
 LIST sgnomcmp = sgnomcmp ;
 
@@ -160,8 +160,8 @@ LIST tv = tv ;
 
 LIST der_pass = der_passl der_passs ;
 
-LIST prt = prt;
-LIST prs = prs ;
+LIST prt = pret;
+LIST prs = pres ;
 
 
 LIST ind = indic ;
@@ -361,7 +361,7 @@ LIST go = "<go>" ;
 # Initials
 # --------
 
-LIST INITIAL = "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m"
+LIST INITIAL = "adj" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m"
 "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
 "á" "æ" "ø" "å" "ö" "ä" ;
 
@@ -377,7 +377,7 @@ LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
 
 # Word or not
 # -----------
-LIST WORD = n a adv vblex prn cnjsub cnjcoo po pr interj pcle num abbr acr \? ;
+LIST WORD = n adj adv vblex prn cnjsub cnjcoo po pr ij pcle num abbr acr \? ;
 # any word
 
 SET REALWORD = WORD - num - ord ;
@@ -662,18 +662,18 @@ SET NP-HEAD-GEN = (prn gen) OR (n gen) OR (a gen) - der_nomact - rcmpnd - (dem a
 
 SET PRE-NP-HEAD = (prop attr) OR (prop @→n) OR (a attr) OR (abbr attr) OR ("<buorre>")
 OR (prn pers gen) OR (n gen) OR (a gen) OR ("<buot>") OR
-num OR rcmpnd OR cc OR (prn dem) OR (prn refl gen) OR (indef attr) OR
+num OR rcmpnd OR cc OR (prn dem) OR (prn ref gen) OR (ind attr) OR
 (prfprc @→n) OR prsprc OR (a ord) OR (num @→N) OR (a @→N) OR @→N OR @→A OR @→Pron OR @Num← OR (cc @CNP) OR (@→CC) OR (action gen) OR (@Pron←) ;
 # The strict version of items that can only be premodifiers, not parts of the predicate
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
 
-SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex a) OR (prs sg3) + ind OR (prs sg1) + ind OR (imprt du2) ;
+SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex a) OR (pres sg3) + ind OR (pres sg1) + ind OR (imprt du2) ;
 # to be used together with PRE-NP-HEAD before @>N is disambiguated
 
 SET NP-MEMBER = PRE-NP-HEAD OR n ;
 
-SET PRE-A-N = (prn pers gen) OR (prn pers acc) OR (prn indef) OR num OR (a ord) OR (prn dem) OR (prn refl gen) OR (prn refl acc) ; # Acc pga av manglende disambiguering tidlig i fila
+SET PRE-A-N = (prn pers gen) OR (prn pers acc) OR (prn ind) OR num OR (a ord) OR (prn dem) OR (prn ref gen) OR (prn ref acc) ; # Acc pga av manglende disambiguering tidlig i fila
 
 SET NOT-PRE-A-N = WORD - PRE-A-N ;
 
@@ -759,7 +759,7 @@ SET NOT-INITIAL-CC = WORD - INITIAL - cc ;
 #!! * Border sets and their complements
 # ---------------------------------
 
-SET CP = (prn interr) OR (prn rel) OR MO ;
+SET CP = (prn itg) OR (prn rel) OR MO ;
 
 LIST BOUNDARYSYMBOLS = "<\;>" "<:>" "<->" "<–>" ;
 
@@ -844,7 +844,7 @@ SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 comp BARRIER v OR S-BOUNDARY) ;
 SELECT ("som"i) (0 ("<go>"i))(0 cs) ((-1 ("<nu>"i) OR ("<seammá>"i) LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
 ## Elvenes oaččui Niehkostipeandda nu go lei sávvan.
 
-SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (vblex prt) BARRIER (←hab→) OR (@ADVL→)) ;
+SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (vblex pret) BARRIER (←hab→) OR (@ADVL→)) ;
 
 SELECT ("fordi"i) (0 ("<go>"i))(0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
 ## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
@@ -882,7 +882,7 @@ SELECT ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NOT *1 (actio ess) BARRIER S-BOUNDA
 # sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
 # Dat leat šaddan nu stuorat ahte dat šaddá nu váivi ja lossat dan oahpat dan dáfus go sii leat massán dan interessa mii sis lei go sii ledje unnibut
 # Leat go Ibsenii sáddemin dieđu?
-SELECT ("ha"i) IF (0 ("<leat>"i)) (0 (indic prt)) (1 inf) ;
+SELECT ("ha"i) IF (0 ("<leat>"i)) (0 (indic pret)) (1 inf) ;
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # (Perf Cond 2)
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon
@@ -992,7 +992,7 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 # lohkat 0 = lese, 1 = si, 2 = telle
 
-SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (refl acc) OR (refl loc) OR prfprc or COMMA) ;
+SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (ref acc) OR (ref loc) OR prfprc or COMMA) ;
 
 SELECT ("lese"i) (0 ("<lohkat>"i)) (1 sem_txt LINK 0 acc OR loc) ;
 # Son lohká ahte lea buorre doppe.

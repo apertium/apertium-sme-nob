@@ -61,25 +61,25 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="pcle"/>
     </def-cat>
     <def-cat n="ij">
-      <cat-item tags="interj.*"/>
-      <cat-item tags="interj"/>
+      <cat-item tags="ij.*"/>
+      <cat-item tags="ij"/>
     </def-cat>
     <def-cat n="PcleQst">
       <cat-item tags="pcle.qst"/>
       <cat-item tags="pcle.qst.*"/>
     </def-cat>
     <def-cat n="adj">
-      <cat-item tags="a.*"/>
+      <cat-item tags="adj.*"/>
     </def-cat>
     <def-cat n="adj_attr">
-      <cat-item tags="a.ess.*"/>
-      <cat-item tags="a.attr"/>
-      <cat-item tags="a.attr.*"/>
-      <cat-item tags="a.*.attr.*"/>
+      <cat-item tags="adj.ess.*"/>
+      <cat-item tags="adj.attr"/>
+      <cat-item tags="adj.attr.*"/>
+      <cat-item tags="adj.*.attr.*"/>
       <!-- TODO: pstv verbs don't have adj forms, should have transfer
            <exception> if tl pstv -->
-      <cat-item tags="vblex.iv.a.attr.*"/>
-      <cat-item tags="vblex.tv.a.attr.*"/>
+      <cat-item tags="vblex.iv.adj.attr.*"/>
+      <cat-item tags="vblex.tv.adj.attr.*"/>
     </def-cat>
     <def-cat n="num_mod">
       <cat-item tags="num.*.@HNOUN"/> <!-- HNOUN=syntax couldn't find a head; might still be a modifier -->
@@ -96,10 +96,10 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="prn.rel.*"/>
     </def-cat>
     <def-cat n="prn.ref">
-      <cat-item tags="prn.refl.*"/>
+      <cat-item tags="prn.ref.*"/>
     </def-cat>
     <def-cat n="prn.ref_PRONl">
-      <cat-item tags="prn.refl.*.@Pron←"/>
+      <cat-item tags="prn.ref.*.@Pron←"/>
     </def-cat>
     <def-cat n="prnitg">
       <cat-item tags="prn.itg.*"/>
@@ -112,13 +112,13 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="det" c="Pronouns that end up as determiners">
       <cat-item tags="prn.pers.*.gen.*"/>
-      <cat-item tags="prn.refl.gen.*"/>
+      <cat-item tags="prn.ref.gen.*"/>
       <cat-item tags="prn.dem.*"/>
-      <cat-item tags="prn.indef.*"/>
-      <cat-item tags="prn.recipr.*"/>
+      <cat-item tags="prn.ind.*"/>
+      <cat-item tags="prn.res.*"/>
       <cat-item tags="prn.dem"/>
-      <cat-item tags="prn.indef"/>
-      <cat-item tags="prn.recipr"/>
+      <cat-item tags="prn.ind"/>
+      <cat-item tags="prn.res"/>
       <cat-item lemma="makkár" tags="prn.itg.*"/>
       <cat-item lemma="vaikko guhte" tags="prn.itg.*"/>
       <cat-item lemma="vaikko goabbá" tags="prn.itg.*"/>
@@ -126,16 +126,16 @@ And then there are some categories like "month", with all the months.
     <def-cat n="det_mod" c="Pronouns that end up as determiners, modifying an adj/noun">
       <cat-item tags="prn.pers.*.gen.@→N"/>
       <cat-item tags="prn.pers.*.gen.@→A"/>
-      <cat-item tags="prn.refl.gen.*.@→N"/>
-      <cat-item tags="prn.refl.gen.*.@→A"/>
-      <cat-item tags="prn.refl.gen.@→N"/>
-      <cat-item tags="prn.refl.gen.@→A"/>
+      <cat-item tags="prn.ref.gen.*.@→N"/>
+      <cat-item tags="prn.ref.gen.*.@→A"/>
+      <cat-item tags="prn.ref.gen.@→N"/>
+      <cat-item tags="prn.ref.gen.@→A"/>
       <cat-item tags="prn.dem.*.@→N"/>
       <cat-item tags="prn.dem.*.@→A"/>
-      <cat-item tags="prn.indef.*.@→N"/>
-      <cat-item tags="prn.indef.*.@→A"/>
-      <cat-item tags="prn.indef.@→N"/>
-      <cat-item tags="prn.indef.@→A"/>
+      <cat-item tags="prn.ind.*.@→N"/>
+      <cat-item tags="prn.ind.*.@→A"/>
+      <cat-item tags="prn.ind.@→N"/>
+      <cat-item tags="prn.ind.@→A"/>
       <cat-item lemma="makkár" tags="prn.itg.*.@→N"/>
       <cat-item lemma="makkár" tags="prn.itg.*.@→A"/>
     </def-cat>
@@ -146,8 +146,8 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="shcmp"/>
     </def-cat>
     <def-cat n="adj.cmp">
-      <cat-item tags="a.*.cmp"/>
-      <cat-item tags="a.*.cmp.*"/>
+      <cat-item tags="adj.*.cmp"/>
+      <cat-item tags="adj.*.cmp.*"/>
     </def-cat>
     <def-cat n="nom.cmp">
       <cat-item tags="n.*.cmp"/>
@@ -300,8 +300,8 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="bodda" tags="n.sg.acc.*"/>
     </def-cat>
     <def-cat n="ord">
-      <cat-item tags="a.ord.*"/>
-      <cat-item tags="a.ord"/>
+      <cat-item tags="adj.ord.*"/>
+      <cat-item tags="adj.ord"/>
     </def-cat>
     <def-cat n="lex-beaivi">
       <cat-item lemma="beaivi" tags="n.*"/>
@@ -310,12 +310,12 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="b" tags="adv.abbr.*"/>
     </def-cat>
     <def-cat n="ij-adj">
-      <cat-item lemma="buorre" tags="a.sg.*"/>
-      <cat-item lemma="ilolaš" tags="a.sg.*"/>
-      <cat-item lemma="ilolaš" tags="a.attr.*"/>
+      <cat-item lemma="buorre" tags="adj.sg.*"/>
+      <cat-item lemma="ilolaš" tags="adj.sg.*"/>
+      <cat-item lemma="ilolaš" tags="adj.attr.*"/>
     </def-cat>
     <def-cat n="ij-adj2">
-      <cat-item lemma="ođas" tags="a.attr.*"/>
+      <cat-item lemma="ođas" tags="adj.attr.*"/>
     </def-cat>
     <def-cat n="ij-nom">
       <cat-item lemma="beaivi" tags="n.sg.*"/>
@@ -361,7 +361,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="lemq-obj"/>
     </def-attr>
     <def-attr n="a_adj">
-      <attr-item tags="a"/>
+      <attr-item tags="adj"/>
       <attr-item tags="adj"/>
       <attr-item tags="adj.pp"/>
       <attr-item tags="adj.pprs"/>
@@ -370,7 +370,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="adj.sint.pprs"/>
     </def-attr>
     <def-attr n="a_adj-pure">
-      <attr-item tags="a"/>
+      <attr-item tags="adj"/>
       <attr-item tags="adj"/>
       <attr-item tags="adj.sint"/>
     </def-attr>
@@ -379,7 +379,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="cnjcoo"/>
     </def-attr>
     <def-attr n="a_ij">
-      <attr-item tags="interj"/>
+      <attr-item tags="ij"/>
       <attr-item tags="ij"/>
     </def-attr>
     <def-attr n="a_prep">
@@ -406,7 +406,7 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_prn">
       <attr-item tags="prn"/>
       <attr-item tags="prn.rel"/>
-      <attr-item tags="prn.indef"/>
+      <attr-item tags="prn.ind"/>
       <attr-item tags="prn.dem"/>
       <attr-item tags="prn.pers"/>
       <attr-item tags="prn"/>
@@ -457,7 +457,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="np.attr"/>
     </def-attr>
     <def-attr n="a_rel">
-      <attr-item tags="refl"/>
+      <attr-item tags="ref"/>
       <attr-item tags="ref"/>
       <attr-item tags="res" c="Reciprocal"/>
     </def-attr>
@@ -531,8 +531,6 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="DD"/>
     </def-attr>
     <def-attr n="temps">
-      <attr-item tags="prs"/>
-      <attr-item tags="prt"/>
       <attr-item tags="pres"/>
       <attr-item tags="pret"/>
       <attr-item tags="inf"/>
