@@ -4,7 +4,7 @@
 # other tags are not correct. Expects no parameters.
 
 bidix="$(dirname $0)"/../apertium-sme-nob.sme-nob.dix
-analyser="$(dirname $0)"/../sme-nob.automorf.hfst.ol
+analyser="$(dirname $0)"/../sme-nob.automorf.hfst
 
 awk '/<section /{s++} {sub("<!--.*-->","")} s&&/<l>/{gsub("<b/>"," ");sub(/.*<l>/,"");sub(/<.*/,"");print}' "${bidix}" |
     hfst-optimised-lookup "${analyser}" |
