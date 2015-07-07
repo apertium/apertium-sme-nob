@@ -1570,6 +1570,8 @@ SELECT ("slutt"i) (0 ("<loahppa>"i)) ;
 SELECT ("for"i) (0 ("<bealis>"i)) ;
 # TODO: can we do "fra NP side" / "for NP del" ?
 
+SELECT ("i henhold til"i) (0 ("<olis>"i)) ;
+
 # Pronouns, relativisers, conjuctions
 # ==========================
 SELECT ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
