@@ -1580,6 +1580,9 @@ SELECT ("hva"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + FMAINV) ; # Minsttarplána či
 # TODO difficult: Hui hárve boahtá ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
 SELECT ("som"i) (0 ("<mii>"i)) ;
 
+SELECT ("egen"i) (0 ("<ieš>"i) + pron + refl + gen) (-1 pron + pers + gen) ;
+# Dá lea mu iežan girji => Her er min egen bok
+
 
 # Adverbs
 # =======
