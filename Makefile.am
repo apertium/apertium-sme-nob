@@ -129,16 +129,11 @@ $(PREFIX1).autogen.bin: $(AP_SRC2)/$(LANG2).autogen.bin
 ##	PRE-TAGGING
 ##
 
-$(PREFIX1).mor.rlx.bin: $(BASENAME).$(PREFIX1).mor.rlx gt2apertium.cg3r .deps/.d
-	grep -ve ^SUBSTITUTE -e ^COPY -e RemoveFromApertium $< >.deps/$<.grepd
-	cg-relabel .deps/$<.grepd gt2apertium.cg3r .deps/$<.reld
-	cg-comp .deps/$<.reld $@
+$(PREFIX1).rlx.bin: $(AP_SRC1)/$(LANG1).rlx.bin gt2apertium.cg3r
+	cg-relabel $^ $@
 
-$(PREFIX1).syn.rlx.bin: $(BASENAME).$(PREFIX1).syn.rlx gt2apertium.cg3r .deps/.d
-	grep -ve ^SUBSTITUTE -e ^COPY -e RemoveFromApertium $< >.deps/$<.grepd
-	cg-relabel .deps/$<.grepd gt2apertium.cg3r .deps/$<.reld
-	echo 'SUBSTITUTE (<ext>) (*) (<ext>);SUBSTITUTE (<hab>) (*) (<hab>); SUBSTITUTE (<sme>) (*) (<sme>);' >> .deps/$<.reld
-	cg-comp .deps/$<.reld $@
+$(PREFIX1).syn.rlx.bin: $(AP_SRC1)/$(LANG1).syn.rlx.bin gt2apertium.cg3r
+	cg-relabel $^ $@
 
 $(PREFIX2).rlx.bin: $(AP_SRC2)/$(LANG2).rlx.bin
 	cp $< $@
