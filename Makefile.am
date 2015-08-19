@@ -129,7 +129,7 @@ $(PREFIX1).autogen.bin: $(AP_SRC2)/$(LANG2).autogen.bin
 ##	PRE-TAGGING
 ##
 
-$(PREFIX1).rlx.bin: $(AP_SRC1)/$(LANG1).rlx.bin gt2apertium.cg3r
+$(PREFIX1).mor.rlx.bin: $(AP_SRC1)/$(LANG1).mor.rlx.bin gt2apertium.cg3r
 	cg-relabel $^ $@
 
 $(PREFIX1).syn.rlx.bin: $(AP_SRC1)/$(LANG1).syn.rlx.bin gt2apertium.cg3r
