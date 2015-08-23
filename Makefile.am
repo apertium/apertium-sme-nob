@@ -10,47 +10,41 @@ PREFIX2=$(LANG2)-$(LANG1)
 
 BASENAME=apertium-$(PREFIX1)
 
-##
-##	BUILD TARGETS
-##
-
-TARGETS_COMMON = $(TARGETS1)
-
-# simple make just builds sme-nob, `make nob-sme' to try that
-nob-sme: $(TARGETS2)
-
-TARGETS1 = \
-	$(PREFIX1).automorf.hfst \
-	$(PREFIX1).automorf-untrimmed.hfst \
-	$(PREFIX1).mor.rlx.bin \
-	$(PREFIX1).syn.rlx.bin \
-	$(PREFIX1).lex.bin \
-	$(PREFIX1).val.bin \
-	$(PREFIX1).autobil.bin \
-	$(PREFIX1).autogen.bin \
-	$(PREFIX1).t1x.bin \
-	$(PREFIX1).t2x.bin \
-	$(PREFIX1).t3x.bin \
+TARGETS_COMMON =				\
+	$(PREFIX1).automorf.hfst		\
+	$(PREFIX1).automorf-untrimmed.hfst	\
+	$(PREFIX1).mor.rlx.bin			\
+	$(PREFIX1).syn.rlx.bin			\
+	$(PREFIX1).lex.bin			\
+	$(PREFIX1).val.bin			\
+	$(PREFIX1).autobil.bin			\
+	$(PREFIX1).autogen.bin			\
+	$(PREFIX1).t1x.bin			\
+	$(PREFIX1).t2x.bin			\
+	$(PREFIX1).t3x.bin			\
 	$(PREFIX1).t4x.bin
 
-TARGETS2 = \
-	$(PREFIX2).autogen.hfst \
-	$(PREFIX2).autobil.bin \
-	$(PREFIX2).automorf.bin \
-	$(PREFIX2).prob \
-	$(PREFIX2).rlx.bin
 
 # This include defines goals for install-modes, .deps/.d and .mode files:
 @ap_include@
 
-# TODO: these should be installed by giella-sme
+# simple make just builds sme-nob, `make nob-sme' to try nob-sme
+nob-sme: $(TARGETS2)
+
+TARGETS2 =			\
+	$(PREFIX2).autogen.hfst \
+	$(PREFIX2).autobil.bin	\
+	$(PREFIX2).automorf.bin \
+	$(PREFIX2).prob		\
+	$(PREFIX2).rlx.bin
+
 debug: \
 	$(BASENAME).$(PREFIX1).mor.rlx \
 	$(BASENAME).$(PREFIX1).syn.rlx \
 	$(BASENAME).$(PREFIX2).rlx
 
 ###############################################################################
-## Transducers, disambiguation rules, transfer
+## Monolingual transducers
 ###############################################################################
 
 .deps/%.autobil.prefixes: %.autobil.bin .deps/.d
@@ -97,19 +91,6 @@ $(PREFIX2).autogen.hfst: .deps/$(LANG1).autogen.hfst
 	hfst-fst2fst -O -i $< -o $@
 
 
-##
-## 	BILINGUAL DICTIONARY
-##
-
-$(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
-	apertium-validate-dictionary $<
-	lt-comp lr $< $@
-
-$(PREFIX2).autobil.bin: $(BASENAME).$(PREFIX1).dix
-	apertium-validate-dictionary $<
-	lt-comp rl $< $@
-
-
 # -------------------
 # Norwegian Bokmål analysis:
 # ---------------------
@@ -125,9 +106,9 @@ $(PREFIX1).autogen.bin: $(AP_SRC2)/$(LANG2).autogen.bin
 	cp $< $@
 
 
-##
-##	PRE-TAGGING
-##
+###############################################################################
+## Disambiguation rules
+###############################################################################
 
 $(PREFIX1).mor.rlx.bin: $(AP_SRC1)/$(LANG1).mor.rlx.bin gt2apertium.cg3r
 	cg-relabel $^ $@
@@ -142,6 +123,7 @@ $(PREFIX2).prob: $(AP_SRC2)/$(LANG2).prob
 	cp $< $@
 
 
+# Debug goals:
 $(BASENAME).$(PREFIX1).mor.rlx: $(AP_SRC1)/disambiguation-mt-gt.cg3
 	cp $< $@
 
@@ -152,10 +134,21 @@ $(BASENAME).$(PREFIX2).rlx: $(AP_SRC2)/apertium-$(LANG2).$(LANG2).rlx
 	cp $< $@
 
 
+###############################################################################
+## Bilingual dictionaries
+###############################################################################
 
-##
-##	LEXICAL SELECTION
-##
+$(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
+	apertium-validate-dictionary $<
+	lt-comp lr $< $@
+
+$(PREFIX2).autobil.bin: $(BASENAME).$(PREFIX1).dix
+	apertium-validate-dictionary $<
+	lt-comp rl $< $@
+
+###############################################################################
+## Lexical selection rules
+###############################################################################
 
 $(PREFIX1).lex.bin: $(BASENAME).$(PREFIX1).lex
 	cg-comp $< $@
@@ -168,9 +161,9 @@ $(PREFIX1).val.bin: $(BASENAME).$(PREFIX1).val
 	cg-comp $< $@
 
 
-##
-##	TRANSFER RULES
-##
+###############################################################################
+## Structural transfer rules
+###############################################################################
 
 $(PREFIX1).t1x.bin: $(BASENAME).$(PREFIX1).t1x
 	apertium-validate-transfer $<
@@ -216,20 +209,20 @@ vm-transfer: $(PREFIX1).v1x.bin \
 ###############################################################################
 
 # Files which aren't built, but are distributed:
-EXTRA_DIST=\
-	$(BASENAME).$(LANG1).twol \
-	$(BASENAME).$(LANG1).lexc \
-	$(BASENAME).$(PREFIX1).rlx \
-	$(BASENAME).$(PREFIX1).lex \
-	$(BASENAME).$(PREFIX1).val \
-	$(BASENAME).$(PREFIX1).dix \
-	$(BASENAME).$(LANG2).dix \
-	$(BASENAME).$(PREFIX1).t1x \
-	$(BASENAME).$(PREFIX1).t2x \
-	$(BASENAME).$(PREFIX1).t3x \
-	$(BASENAME).$(PREFIX1).t4x \
-	xfst2apertium.useless.twol \
-	lexchoicebil.xsl \
+EXTRA_DIST=				\
+	$(BASENAME).$(LANG1).twol	\
+	$(BASENAME).$(LANG1).lexc	\
+	$(BASENAME).$(PREFIX1).rlx	\
+	$(BASENAME).$(PREFIX1).lex	\
+	$(BASENAME).$(PREFIX1).val	\
+	$(BASENAME).$(PREFIX1).dix	\
+	$(BASENAME).$(LANG2).dix	\
+	$(BASENAME).$(PREFIX1).t1x	\
+	$(BASENAME).$(PREFIX1).t2x	\
+	$(BASENAME).$(PREFIX1).t3x	\
+	$(BASENAME).$(PREFIX1).t4x	\
+	xfst2apertium.useless.twol	\
+	lexchoicebil.xsl		\
 	modes.xml
 
 ###############################################################################
