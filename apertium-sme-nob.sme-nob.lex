@@ -1106,7 +1106,7 @@ SELECT:fallback ("følge"i) (0 ("<čuovvolit>"i));
 SELECT:fallback ("følge"i) (0 ("<čuovvulit>"i));
 SELECT:fallback ("pynte"i) (0 ("<čábbudit>"i));
 SELECT:fallback ("dyrke"i) (0 ("<šaddadit>"i));
-
+SELECT:fallback ("gå"i) (0 ("<mannat>"i));
 
 # Based on frequency in parallel text:
 SELECT ("slåss"i) (0 ("<doarrut>"i)) ;
@@ -1117,7 +1117,6 @@ SELECT ("vise# til"i) (0 ("<čujuhit>"i)) ;
 # Nouns
 # ============
 
-SELECT:fallback ("gå"i) (0 ("<mannat>"i));
 
 SELECT ("grunn"i) (0 ("<vuođđu>"i)) (0 ess);
 SELECT:fallback ("grunnlag"i) (0 ("<vuođđu>"i));
