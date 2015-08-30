@@ -3,7 +3,7 @@
   <!-- sme-nob full and partial pipelines: -->
   <mode name="sme-nob" install="yes">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -43,7 +43,7 @@
 
   <mode name="sme-nob-morph" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
     </pipeline>
@@ -51,7 +51,7 @@
 
   <mode name="sme-nob-disam" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-conv -a"/>
@@ -63,7 +63,7 @@
 
   <mode name="sme-nob-syntax" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -78,7 +78,7 @@
 
   <mode name="sme-nob-tagger" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -92,7 +92,7 @@
 
   <mode name="sme-nob-pretransfer" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -107,7 +107,7 @@
 
   <mode name="sme-nob-biltrans" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -125,7 +125,7 @@
 
   <mode name="sme-nob-lex" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -147,7 +147,7 @@
 
   <mode name="sme-nob-chunker" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -173,7 +173,7 @@
 
   <mode name="sme-nob-interchunk1" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -202,7 +202,7 @@
 
   <mode name="sme-nob-interchunk2" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -235,7 +235,7 @@
 
   <mode name="sme-nob-postchunk" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -272,7 +272,7 @@
 
   <mode name="sme-nob-dgen" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc">
@@ -314,7 +314,7 @@
   <!-- Untrimmed (and with compounding) sme-nob: -->
   <mode name="usme-nob" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -354,7 +354,7 @@
 
   <mode name="usme-nob-morph" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
     </pipeline>
@@ -362,7 +362,7 @@
 
   <mode name="usme-nob-disam" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-conv -a"/>
@@ -374,7 +374,7 @@
 
   <mode name="usme-nob-syntax" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -389,7 +389,7 @@
 
   <mode name="usme-nob-tagger" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -403,7 +403,7 @@
 
   <mode name="usme-nob-pretransfer" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -418,7 +418,7 @@
 
   <mode name="usme-nob-biltrans" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -436,7 +436,7 @@
 
   <mode name="usme-nob-lex" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -458,7 +458,7 @@
 
   <mode name="usme-nob-chunker" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -484,7 +484,7 @@
 
   <mode name="usme-nob-interchunk1" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -513,7 +513,7 @@
 
   <mode name="usme-nob-interchunk2" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -546,7 +546,7 @@
 
   <mode name="usme-nob-postchunk" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -583,7 +583,7 @@
 
   <mode name="usme-nob-dgen" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf-untrimmed.hfst"/>
       </program>
       <program name="cg-proc">
@@ -625,7 +625,7 @@
   <!-- Modes not used by regular sme-nob: -->
   <mode name="sme-nob-val" install="no">
     <pipeline>
-      <program name="hfst-proc -w -p">
+      <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
       <program name="cg-proc -1">

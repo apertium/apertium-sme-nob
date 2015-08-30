@@ -75,10 +75,10 @@ debug: \
 	hfst-compose-intersect -1 $< -2 .deps/rm-deriv-cmp.hfst -o $@
 
 $(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf-trimmed-nocmp.hfst
-	hfst-fst2fst -O -i $< -o $@
+	hfst-fst2fst -w -i $< -o $@
 
 $(PREFIX1).automorf-untrimmed.hfst: .deps/$(LANG1).automorf.hfst
-	hfst-fst2fst -O -i $< -o $@
+	hfst-fst2fst -w -i $< -o $@
 
 # -------------------
 # Northern Saami generation:

@@ -360,8 +360,8 @@ UnhandledDerivations = Derivations - HandledDerivations ;
 
 Rules
 
-"Don't allow compounds until we've fixed trimming, choosing-lexicalised-over-compounds, sem-tags-being-messed-up-in-compounds, etc. etc."
-V /<= _ ; where V in Cmp ;
+! "Don't allow compounds until we've fixed trimming, choosing-lexicalised-over-compounds, sem-tags-being-messed-up-in-compounds, etc. etc."
+! V /<= _ ; where V in Cmp ;
 
 "Only allow those derivations that we've made sure survive translation"
 : /<= _ UnhandledDerivations ;

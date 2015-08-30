@@ -1,6 +1,6 @@
-Revision: 61556
-AP_SRC1 Revision: 119427
-AP_SRC2 Revision: 61596
+Revision: 61602
+AP_SRC1 Revision: 119511
+AP_SRC2 Revision: 61603
 Running Regression-tests with mode "sme-nob" with updated tests ...
 
 sme-nob	  biila.
@@ -145,7 +145,7 @@ sme-nob	  Mun ferten čorget iežan lanja.
 
 sme-nob	  mun ohppen čállit sámegiela, iežan eatnigiela.
 	- jeg lærte å skrive samisk, mitt eget morsmål.
-	+ jeg lærte å skrive samisk, eget morsmål.
+	+ jeg lærte å skrive samisk, eget morspråk.
 
 
 sme-nob	  Moai válde dušše iežame biergasiid mielde.
@@ -155,7 +155,7 @@ sme-nob	  Moai válde dušše iežame biergasiid mielde.
 
 sme-nob	  Doai váldibeahtti dušše iežade biergasiid mielde.
 	- Dere to tar bare deres egne ting med.
-	+ Dere to tar bare egne ting med.
+	+ Dere to den tar bedragende de omkom etter egne ting.
 
 
 sme-nob	  mu iežan girji.
@@ -198,8 +198,7 @@ WORKS	  noe om allmenningen.
 
 
 sme-nob	  Gávdnetgo maidege?
-	- Finner de noe?
-	+ Finner noe?
+WORKS	  Finner de noe?
 
 
 sme-nob	  goabbáge.
@@ -240,12 +239,11 @@ WORKS	  til mitt store besvær.
 
 sme-nob	  Mii lea du bávččas mu stuora givssi ektui?
 	- Hva er din smerte mot min store plage?
-	+ Hva er ditt vonde for min store plage?
+	+ Hva er di vonde for min store plage?
 
 
 sme-nob	  gáiddusoahpahussii.
-	- til fjernundervisning.
-	+ *gáiddusoahpahussii.
+WORKS	  til fjernundervisning.
 
 
 sme-nob	  gáiddus.
@@ -258,7 +256,7 @@ WORKS	  mer utholdende.
 
 sme-nob	  iešguđet.
 	- forskjellige.
-	+ ulikt.
+	+ ulik.
 
 
 sme-nob	  iešguđetge.
@@ -500,8 +498,7 @@ WORKS	  Harald sverget at han ikke skulle klippe hår.
 
 
 sme-nob	  ahte Norga ii sáhttán birget flegmáhtalaš soahtefámu vuostá.
-	- at Norge ikke kunne greie seg mot den flegmatiske krigsmakten.
-	+ at Norge ikke kunne greie seg flegmatisk *soahtefámu ost.
+WORKS	  at Norge ikke kunne greie seg mot den flegmatiske krigsmakten.
 
 
 sme-nob	  vuovssihahtti.
@@ -659,7 +656,8 @@ WORKS	  Han bodde i Tromsø som barn.
 
 
 sme-nob	  Hearggit ruhttet dego livčče.
-WORKS	  Kjørereinene løper som de kan være.
+	- Kjørereinene løper som de kan være.
+	+ Kjørereinene løper som det kan være.
 
 
 sme-nob	  Muhto mun orun Kárášjogas.
@@ -847,7 +845,7 @@ WORKS	  kommer du nå?
 
 sme-nob	  Son lei dalle sullii 60-jahkásaš.
 	- Han var da omtrent 60 år gammel.
-	+ Han var da omtrent 60-år gammel.
+	+ Han var da omtrent *60-jahkásaš.
 
 
 sme-nob	  1982:s 1982's 1982-s 1982%.
@@ -855,11 +853,13 @@ WORKS	  1982 1982 1982 1982%.
 
 
 sme-nob	  1300-logu.
-WORKS	  1300-tallet.
+	- 1300-tallet.
+	+ 1300- et tall.
 
 
 sme-nob	  113-heahtenummáris.
-WORKS	  på 113-nødnummeret.
+	- på 113-nødnummeret.
+	+ 113- av nødnummeret.
 
 
 sme-nob	  §§ 1-1984.
@@ -907,11 +907,13 @@ WORKS	  Tre- fire.
 
 
 sme-nob	  Golmma-njealje.
-WORKS	  Tre-fire.
+	- Tre-fire.
+	+ #Tre fire.
 
 
 sme-nob	  logi-jagáš.
-WORKS	  tiårig.
+	- tiårig.
+	+ #ti et år.
 
 
 sme-nob	  logijagáš.
@@ -991,7 +993,8 @@ WORKS	  Mor fortalte hvor viktig den var at.
 
 
 sme-nob	  Maŋŋá go Máhttolokten doaibmagođii, de lea dát ruhtadoarjja jávkan.
-WORKS	  Etter at Kunnskapsløftet begynte å fungere, så har denne pengestønaden forsvunnet.
+	- Etter at Kunnskapsløftet begynte å fungere, så har denne pengestønaden forsvunnet.
+	+ Etter at Máhtto-uttaket begynte å fungere, så har denne pengestønaden forsvunnet.
 
 
 sme-nob	  Gonagas Harald liiko návddašit luonddu, dan dahká son go bivdá.
@@ -1018,7 +1021,7 @@ WORKS	  jord-.
 
 sme-nob	  eanan- ja luonddudoahpagiid.
 	- jord- og naturbegrepene.
-	+ jord- og *luonddudoahpagiid.
+	+ jord- og naturbegrep.
 
 
 sme-nob	  munno.
@@ -1095,7 +1098,8 @@ WORKS	  Det var lite som skilte den unge Prinsens skolegang fra de andre skoleba
 
 
 sme-nob	  Sámi allaskuvla lea okta dain allaskuvllain.
-WORKS	  Samisk høgskole er en av de høyskolene.
+	- Samisk høgskole er en av de høyskolene.
+	+ Samisk høgskole er en av de fettlagskulene.
 
 
 sme-nob	  Dat lei nuppiin sániin.
@@ -1136,4 +1140,4 @@ sme-nob	  Lea nu guhkkin ahte eai mánát olle bohcco rádjái.
 WORKS	  Det er så langt borte at barnene ikke når frem til reinen.
 
 
-202 / 267, ~75.65543071161048689139%
+198 / 267, ~74.15730337078651685393%
