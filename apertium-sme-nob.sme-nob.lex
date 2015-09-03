@@ -1038,6 +1038,8 @@ REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čáhci>"i
 
 SELECT ("tilsøle"i) (0 ("<durdut>"i)) ;
 
+SELECT:fallback ("skje"i) (0 ("<dáhpáhuvvat>"i));
+
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 SELECT:fallback ("sette"i) (0 ("<bidjat>"i));
