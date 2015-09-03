@@ -272,7 +272,7 @@ LIST @SPRED←OBJ = @SPRED←OBJ ;
 LIST @-FADVL = @-FADVL ;
 
 SET FOBJ = @-F←OBJ OR @-FOBJ→ ;
-SET FMAINV = @-FMAINV OR @+FMAINV OR (v @←obj) OR (v @n←) OR (v @a←) OR (v @←subj) OR (v @←advl) ;
+SET FMAINV = @-FMAINV OR @+FMAINV OR (vblex @←obj) OR (vblex @n←) OR (vblex @a←) OR (vblex @←subj) OR (vblex @←advl) ;
 SET FAUXV = @-FAUXV OR @+FAUXV ;
 
 LIST @ADVL = @ADVL @ADVL→ @ADVL← @←ADVL @→ADVL @-F←ADVL ;
@@ -348,7 +348,7 @@ LIST OBJ→ = @OBJ→ @-FOBJ→ ;
 SET ←OBJ-OTHERS = ←OBJ OR gen OR nom OR ess OR loc OR adv ;
 SET OBJ→-OTHERS = OBJ→ OR gen OR nom OR ess OR loc OR adv  ;
 
-SET SYN-V = v + SUBJ OR OBJ + v OR @ADVL + v OR (v @n←) OR (v @a←) OR v + SPRED OR (v @comp-cs←) ;
+SET SYN-V = v + SUBJ OR OBJ + v OR @ADVL + v OR (vblex @n←) OR (vblex @a←) OR v + SPRED OR (vblex @comp-cs←) ;
 
 
 LIST @X = @X ;
