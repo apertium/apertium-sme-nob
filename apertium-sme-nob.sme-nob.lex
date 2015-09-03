@@ -566,7 +566,7 @@ LIST TIME-ADVL = (sem_time gen) (sem_time loc) ;
 LIST TIME-ADV = (adv sem_time) ;
 
 
-LIST DOPPE = "<badjin>" "<bajil>" "<dakko>" "<dá>" "<dákko>" "<dáppe>" "<diekko>" "<dieppe>" "<do>" "<dokko>" "<doppe>" "<duo>" "<duokko>" "<duoppe>" "<olgun>" ;
+LIST DOPPE = "<badjin>"i "<bajil>"i "<dakko>"i "<dá>"i "<dákko>"i "<dáppe>"i "<diekko>"i "<dieppe>"i "<do>"i "<dokko>"i "<doppe>"i "<duo>"i "<duokko>"i "<duoppe>"i "<olgun>"i ;
 # Adverbs with a locativic form, but don´t get Loc as a tag.
 
 LIST DOHKO = "<bajás>" "<deike>" "<diehke>" "<diehko>" "<dohko>" "<duohko>" "<lulás>" "<olggos>" "<ruoktot>" "<sisa>" "<vuovdimassii>" ;
@@ -913,13 +913,15 @@ SELECT:fallback ("være"i) IF  (0 ("<leat>"i)) ;
 
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
-SELECT ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
-SELECT ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>"i)) ;
-SELECT ("bo"i) (0 ("<orrut>"i) LINK 1 loc OR DOPPE) ; # BARRIER ORRUT-BO) ;
+SELECT:dego ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
+SELECT:jaska ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>"i)) ;
+SELECT:orron-doppe ("bo"i) (0 ("<orrut>"i)) (*1 loc OR DOPPE BARRIER (*) - TIME-ADV) ;
 #This rule should have another barrier, a set of all words except TIME-ADV.
 #For sentences like: Mun orron diibmá Romssas.
 #Check SET ORRUT-BO
-SELECT:fallback ("bo"i) (0 ("<orrut>"i)); # says parallel corpus
+SELECT:doppe-son-orui ("bo"i) (0 ("<orrut>"i)) (-1 @SUBJ→) (-2 loc OR DOPPE) ;
+
+SELECT:fallback ("synes"i) (0 ("<orrut>"i)); # says parallel corpus
 
 ## Sii orrot goit čeahpit hutkat vugiid movt ávkkástallat sin sámegielmáhtuin, čilge son.
 ## Mun orun Romssas.
