@@ -938,7 +938,7 @@ SELECT ("føde"i) (0 ("<šaddat>"i)) (*0 @ADVL)(NEGATE *0 SPRED) ;
 SELECT:fallback ("bli"i) (0 ("<šaddat>"i)) ;
 
 # bargat 0 = arbeide, 1 = gjøre
-SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>"i) LINK 0 (prn acc)) ;
+SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>"i prn acc) BARRIER V-IND-FIN) ;
 SELECT ("arbeide"i) (0 ("<bargat>"i)) (*0 com OR ("<dainna>"i)) ;
 SELECT:fallback ("arbeide"i) (0 ("<bargat>"i));
 
@@ -1576,8 +1576,11 @@ SELECT ("i henhold til"i) (0 ("<olis>"i)) ;
 SELECT ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
 SELECT:ge-man ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 pcle) (-2 tv + FMAINV) (1 a) ; # mihtidit ge man mávssolaččat sámi aviissat leat …
 SELECT ("hva"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + FMAINV) ; # Minsttarplána čilge maid oahppit berrešedje máhttit.
-# TODO difficult: Hui hárve boahtá ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
-SELECT ("som"i) (0 ("<mii>"i)) ;
+LIST loc/adv = loc adv;
+SELECT:test ("hva som"i) (0 ("<mii>"i) + @OBJ→) (*-1 FMAINV BARRIER (*) - loc/adv) ; # Hui hárve boahtá<iv!> ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
+SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV) ;
+SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
+
 
 SELECT ("egen"i) (0 ("<ieš>"i) + pron + refl + gen) (-1 pron + pers + gen) ;
 # Dá lea mu iežan girji => Her er min egen bok
