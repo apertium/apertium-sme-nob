@@ -2659,10 +2659,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </let>
         <choose>
           <when c="TODO: can we lexicalise logi-jagáš and logijagáš etc. as adj's?">
-            <test><and>
-              <equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_dimin"/></equal>
-              <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
-            </and></test>
+            <test><equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal></test>
             <out>
               <var n="caseprep"/>
               <chunk name="pre_adj" case="caseFirstWord">
@@ -2675,14 +2672,20 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                   <tag><var n="c_nbr"/></tag>
                 </tags>
                 <var n="pre-nom"/>
-                <b pos="1"/>
                 <lu>
                   <lit v="årig"/>
                   <lit-tag v="adj.sint.pst.nt.sg.ind"/>
                 </lu>
               </chunk>
             </out>
+            <choose>
+              <when>
+                <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+                <out><b pos="1"/></out>
+              </when>
+            </choose>
           </when>
+
           <otherwise>
             <call-macro n="out_nom"><with-param pos="2"/></call-macro>
           </otherwise>
