@@ -26,7 +26,7 @@ wrap () {
     sed "s%\(<apertium-notrans>${name}\)\(</apertium-notrans>\)\(.*\)%\1\3\2%"
 }
 
-tr -d '[]' |
+tr '[]#@' '()%!' |
 sed 's%^...\t.*%<apertium-notrans>&</apertium-notrans>%'  |
     unwrap-for MORPH |
     apertium -f html-noent -d . ${PAIR}-morph |
