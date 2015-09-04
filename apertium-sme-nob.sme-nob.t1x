@@ -263,6 +263,10 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="čakča" tags="n.*"/>
     </def-cat>
     <def-cat n="num.cmp">
+      <cat-item tags="num.cmp"/>
+      <cat-item tags="num.cmp.*"/>
+      <cat-item tags="num.*.cmp"/>
+      <cat-item tags="num.*.cmp.*"/>
       <cat-item tags="num.rcmpnd"/>
       <cat-item tags="num.rcmpnd.*"/>
       <cat-item tags="num.*.rcmpnd"/>
@@ -402,7 +406,8 @@ And then there are some categories like "month", with all the months.
     </def-attr>
     <def-attr n="a_cmp">
       <attr-item tags="cmp"/>
-      <attr-item tags="dash"/>
+      <attr-item tags="guio"/>
+      <attr-item tags="cmp.guio"/>
       <attr-item tags="plgencmp"/>
       <attr-item tags="plnomcmp"/>
       <attr-item tags="sggencmp"/>
@@ -1780,7 +1785,7 @@ And then there are some categories like "month", with all the months.
               <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
               <let><var n="c_def_pos"/><lit v=""/></let>
             </when>
-            <when c="RCmpnd → sg.ind.dash (split compounds)
+            <when c="RCmpnd → sg.ind.guio (split compounds)
                      eanan-(RCmpnd) ja luonddudoahpagiid => jord-(sg.ind) og naturfagord
                      NOTE: the dash tag is only defined for the sg.ind form of nouns in nob.dix (like cmp)
                      (as well as all numerals, where the change is handled in bidix)">
@@ -1789,7 +1794,7 @@ And then there are some categories like "month", with all the months.
                 <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal></test>
                 <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
               </when></choose>
-              <let><var n="c_def_pos"/><lit-tag v="ind.dash"/></let>
+              <let><var n="c_def_pos"/><lit-tag v="ind.guio"/></let>
               <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
             </when>
             <otherwise>
@@ -2613,7 +2618,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     <rule comment="REGLA: NUM.CMP NOM
                    1990-logu => 1990-tallet
                    Always definite (should not add a determiner in t4x)
-                   if a_cmp is 'dash', nob.dix adds a dash">
+                   if a_cmp is 'guio', nob.dix adds a dash">
       <pattern>
         <pattern-item n="num.cmp"/>
         <pattern-item n="nom_head"/>
@@ -2684,10 +2689,57 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </choose>
       </action>
     </rule>
+
+    <rule comment="REGLA: NUM.CMP NUM
+                   golbma-njealje → tre-fire">
+      <pattern>
+        <pattern-item n="num.cmp"/>
+        <pattern-item n="num"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="det_det" case="caseFirstWord"> <!-- no t4x rule yet, but no cleanup should be needed -->
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="tl" part="gen"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_num"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+        <choose>
+          <when>
+            <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+            <out><b pos="1"/></out>
+          </when>
+        </choose>
+        <let><var n="previous-nhead"/><lit v="NUMERAL"/></let>
+      </action>
+    </rule>
+
     <rule comment="REGLA: NUM.CMP NOM.CMP NOM
                    1990-logu => 1990-tallet
                    Always definite (should not add a determiner in t4x)
-                   if a_cmp is 'dash', nob.dix adds a dash">
+                   if a_cmp is 'guio', nob.dix adds a dash">
       <pattern>
         <pattern-item n="num.cmp"/>
         <pattern-item n="nom.cmp"/>
