@@ -669,6 +669,23 @@ And then there are some categories like "month", with all the months.
   </section-def-vars>
 
   <section-def-lists>
+    <def-list n="pers_nouns">
+      <list-item v="jente"/>
+      <list-item v="gutt"/>
+      <list-item v="mann"/>
+      <list-item v="kvinne"/>
+      <list-item v="dame"/>
+      <list-item v="leder"/>
+      <list-item v="student"/>
+      <list-item v="elev"/>
+      <list-item v="lærer"/>
+    </def-list>
+    <def-list n="pers_genders">
+      <list-item v="&lt;m&gt;"/>
+      <list-item v="&lt;f&gt;"/>
+      <list-item v="&lt;mf&gt;"/>
+      <list-item v="&lt;GD_pers&gt;"/>
+    </def-list>
     <def-list n="adj-genders" c="possible nob adj genders">
       <list-item v="&lt;m&gt;"/>
       <list-item v="&lt;mf&gt;"/>
@@ -1434,9 +1451,32 @@ And then there are some categories like "month", with all the months.
       </when></choose>
     </def-macro>
 
+    <def-macro n="guess_animacy" npar="1"
+               c="arg.1: Chunk 'head'.">
+      <choose c="Put a pers tag on it if it's a gendered proper noun
+                 TODO: list of animate common nouns?">
+        <when>
+          <test><or>
+            <and>
+              <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
+              <in><clip pos="1" side="tl" part="gen"/><list n="pers_genders"/></in>
+            </and>
+            <and>
+              <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n"/></begins-with>
+              <in><clip pos="1" side="tl" part="lemh"/><list n="pers_nouns"/></in>
+            </and>
+          </or></test>
+          <let><var n="c_animacy"/><lit-tag v="pers"/></let>
+        </when>
+        <otherwise>
+          <let><var n="c_animacy"/><lit-tag v="impers"/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
+
     <def-macro n="set_c_gen_nbr" npar="1"
                c="arg.1: Chunk 'head'.
-                  Make sure we have GD or ND if no gen or num given">
+                  Make sure we have GD or ND if no gen or num given.">
       <let><var n="c_gen"/><clip pos="1" side="tl" part="gen"/></let>
       <let><var n="c_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
       <choose c="If chunk head is adj, we probably want nt, but do GD in case t2x wants to change it.
@@ -1803,6 +1843,7 @@ And then there are some categories like "month", with all the months.
               <let><var n="c_def_pos"/><lit-tag v="3"/></let>
             </otherwise>
           </choose>
+          <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
 
           <out>
             <chunk namefrom="c_name" case="caseFirstWord">
@@ -1815,6 +1856,7 @@ And then there are some categories like "month", with all the months.
                 <tag><var n="c_nbr"/></tag>
                 <tag><clip pos="1" side="tl" part="case"/></tag>
                 <tag><clip pos="1" side="tl" part="a_count"/></tag>
+                <tag><var n="c_animacy"/></tag>
               </tags>
               <var n="pre-nom"/>
               <lu>
@@ -2804,6 +2846,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
           <chunk name="nom" case="caseFirstWord">
@@ -2815,6 +2858,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><clip pos="1" side="tl" part="gen"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><var n="c_animacy"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -2825,6 +2869,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </lu>
           </chunk>
         </out>
+        <let><var n="c_animacy"/><lit v=""/></let>
       </action>
     </rule>
     <rule comment="REGLA: NOM.PROP NOM.PROP
@@ -2836,6 +2881,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
           <chunk name="pre_nom" case="caseFirstWord">
@@ -2847,6 +2893,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><clip pos="1" side="tl" part="gen"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="2" side="tl" part="case"/></tag>
+              <tag><var n="c_animacy"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -2864,6 +2911,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </lu>
           </chunk>
         </out>
+        <let><var n="c_animacy"/><lit v=""/></let>
       </action>
     </rule>
 
@@ -2878,6 +2926,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseprep"><with-param pos="3"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
           <chunk name="pre_pre_nom" case="caseFirstWord">
@@ -2889,6 +2938,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><clip pos="1" side="tl" part="gen"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="3" side="tl" part="case"/></tag>
+              <tag><var n="c_animacy"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -2953,6 +3003,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
               <tag><clip pos="2" side="tl" part="case"/></tag>
+              <tag><lit-tag v="pers"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -3012,6 +3063,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
               <tag><clip pos="3" side="tl" part="case"/></tag>
+              <tag><lit-tag v="pers"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -3081,6 +3133,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
               <tag><clip pos="3" side="tl" part="case"/></tag>
+              <tag><lit-tag v="pers"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>

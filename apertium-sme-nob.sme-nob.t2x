@@ -319,8 +319,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-var n="c_name"/>
     <def-var n="c_tags"/>
     <def-var n="ana_temps" c="set by FV's, used on TD's"/>
-    <def-var n="ana_m_f" c="p3 sg gender (only m or f) set by SUBJ's, used on GD_pers's, stored in FV's for t3x pro insertion"/>
-    <def-var n="ana_gen" c="p3 sg gender (m, f, or nt) set by SUBJ's, used on GD's, stored in FV's for t3x pro insertion"/>
+    <def-var n="ana_m_f"      c="p3 sg gender (only m or f) set by SUBJ's, used on GD_pers's, stored in FV's for t3x pro insertion"/>
+    <def-var n="ana_m_f_pers" c="p3 sg gender (only m or f) set by pers-tagged chunks, used on GD_pers's, stored in pers-tagged FV's for t3x pro insertion"/>
+    <def-var n="ana_gen"      c="p3 sg gender (m, f, or nt) set by SUBJ's, used on GD's, stored in FV's for t3x pro insertion"/>
     <def-var n="ana_nbr" c="p3 number, set only if ana_gen is set, used on ND's."/>
   </section-def-vars>
 
@@ -553,6 +554,28 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </choose>
       </when></choose>
 
+      <choose><when c="If this word is tagged pers and missing (pers) gender, use the gender from ana_m_f_pers">
+        <test><and>
+          <not><equal><var n="ana_m_f_pers"/><lit v=""/></equal></not>
+          <or>
+            <equal><clip pos="1" part="gen"/><lit v=""/></equal>
+            <equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal>
+          </or>
+          <equal><clip pos="1" part="animacy"/><lit-tag v="pers"/></equal>
+        </and></test>
+        <let><clip pos="1" part="gen"/><var n="ana_m_f_pers"/></let>
+        <choose>
+          <when>
+            <test><equal><clip pos="1" part="tags"/><lit v=""/></equal></test>
+            <let><clip pos="1" part="lemh"/><concat><clip pos="1" part="lemh"/><var n="ana_m_f_pers"/></concat></let>
+          </when>
+          <when>
+            <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
+            <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><var n="ana_m_f_pers"/></concat></let>
+          </when>
+        </choose>
+      </when></choose>
+
       <choose><when>
         <test><and>
           <not><equal><var n="ana_gen"/><lit v=""/></equal></not>
@@ -581,6 +604,17 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
 
                   Call 'apply_ana_gen' regardless (in case we have a GD).
                   Call 'set_caseprep' regardless">
+      <choose><when>
+        <test><and>
+          <equal><clip pos="1" part="animacy"/><lit-tag v="pers"/></equal>
+          <or>
+            <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
+            <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>
+          </or>
+        </and></test>
+        <let><var n="ana_m_f_pers"/><clip pos="1" part="gen"/></let>
+      </when></choose>
+
       <choose><when>
         <test><or>
           <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
@@ -617,6 +651,11 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           </or></test>
           <let><var n="ana_nbr"/><clip pos="1" part="nbr"/></let>
         </when></choose>
+      </when></choose>
+
+      <choose><when>
+        <test><equal><var n="ana_m_f"/><lit v=""/></equal></test>
+        <let><var n="ana_m_f"/><var n="ana_m_f_pers"/></let>
       </when></choose>
 
       <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
