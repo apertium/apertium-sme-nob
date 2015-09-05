@@ -615,6 +615,31 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </call-macro>
     </def-macro>
 
+    <def-macro n="set_existential_pro" npar="2"
+               c="arg.1: verb chunk, arg.2: following word">
+      <let><var n="pro"/><lit v=""/></let>
+      <choose>
+        <when>
+          <test> <and>
+            <equal><clip pos="1" part="lemh"/><lit v="Vcop"/></equal>
+            <not><equal><clip pos="1" part="temps"/><lit-tag v="imp"/></equal></not>
+          </and></test>
+          <let>
+            <var n="pro"/>
+            <concat>
+              <lit v="^Prn"/>
+              <lit-tag v="SN.@SUBJ→.p3.nt.sg.nom"/>
+              <lit v="{^prpers"/>
+              <lit-tag v="prn.p3.nt.sg.nom"/>
+              <lit v="$}$"/>
+              <b/>
+            </concat>
+          </let>
+          <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
+        </when>
+      </choose>
+    </def-macro>
+
     <def-macro n="set_pro" npar="2"
                c="arg.1: possibly finite verb chunk, arg.2: content verb chunk
                   -----
@@ -1136,7 +1161,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="1"/>
         </call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
+        <call-macro n="set_existential_pro"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
+          <var n="pro"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
@@ -1159,7 +1186,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="1"/>
         </call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
+        <call-macro n="set_existential_pro"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
+          <var n="pro"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <!-- the lemq space is inside its chunk, output both here -->
           <b pos="1"/>
