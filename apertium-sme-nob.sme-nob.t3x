@@ -1795,6 +1795,48 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: rel-SUBJr ADVLrOBJr V
+                   OV => VO order, but no pro-insertion:
+                   - gii dan čađahii → som gjennomførte det">
+      <pattern>
+        <pattern-item n="rel-SUBJr"/>
+        <pattern-item n="ADVLrOBJr"/>
+        <pattern-item n="V"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+        </out>
+        <call-macro n="set_defnes2">
+          <with-param pos="2"/>
+          <with-param pos="3"/>
+        </call-macro>
+        <choose>
+          <when c="Don't switch order if ADVLrOBJr is an actual adverb">
+            <test><equal><clip pos="2" part="lemh"/><lit v="adv"/></equal></test>
+            <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+            <out>
+              <var n="adv"/><var n="adv-blank"/>
+              <chunk><clip pos="2" part="whole"/></chunk>
+              <b pos="2"/>
+              <chunk><clip pos="3" part="whole"/></chunk>
+            </out>
+          </when>
+          <otherwise>
+            <call-macro n="switch_cases"><with-param pos="2"/><with-param pos="3"/></call-macro>
+            <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+            <out>
+              <var n="adv"/><var n="adv-blank"/>
+              <chunk><clip pos="3" part="whole"/></chunk>
+              <b pos="2"/>
+              <chunk><clip pos="2" part="whole"/></chunk>
+            </out>
+          </otherwise>
+        </choose>
+      </action>
+    </rule>
     <rule comment="REGLA: ADVLrOBJr V
                    OV => VO order:
                    - dan oahppan => lært det
