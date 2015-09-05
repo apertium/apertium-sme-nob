@@ -536,45 +536,46 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
                   (If no tags at all, put it after lemh; if tags but no gen, put it after the tags.)
                   Else if 'ana_gen' is set, apply it if GD.
                   TODO: check that impers verbs still output nt pro's!">
-      <choose><when>
-        <test><not><equal><var n="ana_m_f"/><lit v=""/></equal></not></test>
-        <choose>
-          <when>
-            <test><equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal></test>
-            <let><clip pos="1" part="gen"/><var n="ana_m_f"/></let>
-          </when>
-          <when>
-            <test><equal><clip pos="1" part="tags"/><lit v=""/></equal></test>
-            <let><clip pos="1" part="lemh"/><concat><clip pos="1" part="lemh"/><var n="ana_m_f"/></concat></let>
-          </when>
-          <when>
-            <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
-            <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><var n="ana_m_f"/></concat></let>
-          </when>
-        </choose>
-      </when></choose>
-
-      <choose><when c="If this word is tagged pers and missing (pers) gender, use the gender from ana_m_f_pers">
-        <test><and>
-          <not><equal><var n="ana_m_f_pers"/><lit v=""/></equal></not>
-          <or>
-            <equal><clip pos="1" part="gen"/><lit v=""/></equal>
-            <equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal>
-          </or>
-          <equal><clip pos="1" part="animacy"/><lit-tag v="pers"/></equal>
-        </and></test>
-        <let><clip pos="1" part="gen"/><var n="ana_m_f_pers"/></let>
-        <choose>
-          <when>
-            <test><equal><clip pos="1" part="tags"/><lit v=""/></equal></test>
-            <let><clip pos="1" part="lemh"/><concat><clip pos="1" part="lemh"/><var n="ana_m_f_pers"/></concat></let>
-          </when>
-          <when>
-            <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
-            <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><var n="ana_m_f_pers"/></concat></let>
-          </when>
-        </choose>
-      </when></choose>
+      <choose>
+        <when c="If this word is tagged pers and missing (pers) gender, use the gender from ana_m_f_pers">
+          <test><and>
+            <not><equal><var n="ana_m_f_pers"/><lit v=""/></equal></not>
+            <or>
+              <equal><clip pos="1" part="gen"/><lit v=""/></equal>
+              <equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal>
+            </or>
+            <equal><clip pos="1" part="animacy"/><lit-tag v="pers"/></equal>
+          </and></test>
+          <let><clip pos="1" part="gen"/><var n="ana_m_f_pers"/></let>
+          <choose>
+            <when>
+              <test><equal><clip pos="1" part="tags"/><lit v=""/></equal></test>
+              <let><clip pos="1" part="lemh"/><concat><clip pos="1" part="lemh"/><var n="ana_m_f_pers"/></concat></let>
+            </when>
+            <when>
+              <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
+              <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><var n="ana_m_f_pers"/></concat></let>
+            </when>
+          </choose>
+        </when>
+        <when c="else fall back on ana_m_f (might be from inanimates)">
+          <test><not><equal><var n="ana_m_f"/><lit v=""/></equal></not></test>
+          <choose>
+            <when>
+              <test><equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal></test>
+              <let><clip pos="1" part="gen"/><var n="ana_m_f"/></let>
+            </when>
+            <when>
+              <test><equal><clip pos="1" part="tags"/><lit v=""/></equal></test>
+              <let><clip pos="1" part="lemh"/><concat><clip pos="1" part="lemh"/><var n="ana_m_f"/></concat></let>
+            </when>
+            <when>
+              <test><equal><clip pos="1" part="gen"/><lit v=""/></equal></test>
+              <let><clip pos="1" part="tags"/><concat><clip pos="1" part="tags"/><var n="ana_m_f"/></concat></let>
+            </when>
+          </choose>
+        </when>
+      </choose>
 
       <choose><when>
         <test><and>
