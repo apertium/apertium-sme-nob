@@ -968,6 +968,7 @@ SELECT ("jakte"i) (0 ("<bivdit>"i)) ;
 ## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá mearas.
 SELECT:fallback ("be"i) (0 ("<bivdit>"i));
 
+SELECT ("ta# hensyn") (0 ("<váldit>")) (*1 ("<vuhtii>")) ;
 
 # borahit 0 = mate, 1 = fôre
 SELECT ("fôre"i) (0 ("<borahit>"i))(*0 sem_ani);
@@ -1595,6 +1596,7 @@ SELECT ("egen"i) (0 ("<ieš>"i) + pron + refl + gen) (-1 pron + pers + gen) ;
 
 # Adverbs
 # =======
+SELECT ("til") (0 ("<vuhtii>")) (*-1 ("<váldit>")) ;
 SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
 SELECT ("så") (0 ("<nu>"i)) (1 a) ; # dat skuvla nu johtil ahte
 SELECT:så-langt-som ("så") (0 ("<nu>"i)) (1 adv) (2 cs) ;
