@@ -110,6 +110,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="prn.pers.gen">
       <cat-item tags="prn.pers.*.gen.*"/>
     </def-cat>
+    <def-cat n="prn.pers.acc">
+      <cat-item tags="prn.pers.*.acc.*"/>
+    </def-cat>
     <def-cat n="det" c="Pronouns that end up as determiners">
       <cat-item tags="prn.pers.*.gen.*"/>
       <cat-item tags="prn.ref.gen.*"/>
@@ -271,6 +274,16 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="num.rcmpnd.*"/>
       <cat-item tags="num.*.rcmpnd"/>
       <cat-item tags="num.*.rcmpnd.*"/>
+    </def-cat>
+    <def-cat n="lex-arvvus">
+      <cat-item lemma="árvu" tags="n.sg.loc"/>
+      <cat-item lemma="árvu" tags="n.sg.loc.*"/>
+      <cat-item lemma="árvu" tags="n.*.sg.loc"/>
+      <cat-item lemma="árvu" tags="n.*.sg.loc.*"/>
+    </def-cat>
+    <def-cat n="lex-adnojuvvon">
+      <cat-item lemma="atnit" tags="vblex.tv.der_passl.vblex.iv.prfprc"/>
+      <cat-item lemma="atnit" tags="vblex.tv.der_passl.vblex.iv.prfprc.*"/>
     </def-cat>
     <def-cat n="lex-diibmu">
       <cat-item lemma="diibmu" tags="n.*"/>
@@ -2305,6 +2318,88 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
          where we can avoid introducing complexity in the _regular_
          transfer rules.
     -->
+    <rule comment="REGLA: min árvvus adnojuvvon → vårt ærede">
+      <pattern>
+        <pattern-item n="prn.pers.acc"/>
+        <pattern-item n="lex-arvvus"/>
+        <pattern-item n="lex-adnojuvvon"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk name="det" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><lit-tag v="gen"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="det.pos"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+          <b pos="1"/>
+          <chunk name="adj_verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SA"/></tag>
+              <tag><var n="c_syn"/></tag>
+              <tag><lit-tag v="def"/></tag>
+              <tag><lit-tag v="sg"/></tag>
+            </tags>
+            <lu>
+              <lit v="ære"/>
+              <lit-tag v="adj.pp.sg.def"/>
+            </lu>
+          </chunk>
+        </out>
+        <choose>
+          <when>
+            <test><not><equal><b pos="2"/><lit v=" "/></equal></not></test>
+            <out><b pos="2"/></out>
+          </when>
+        </choose>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: árvvus adnojuvvon → ærede">
+      <pattern>
+        <pattern-item n="lex-arvvus"/>
+        <pattern-item n="lex-adnojuvvon"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adj_verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SA"/></tag>
+              <tag><var n="c_syn"/></tag>
+              <tag><lit-tag v="def"/></tag>
+              <tag><lit-tag v="sg"/></tag>
+            </tags>
+            <lu>
+              <lit v="ære"/>
+              <lit-tag v="adj.pp.sg.def"/>
+            </lu>
+          </chunk>
+        </out>
+        <choose>
+          <when>
+            <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+            <out><b pos="1"/></out>
+          </when>
+        </choose>
+      </action>
+    </rule>
+
     <rule comment="REGLA: dan sivas go → fordi">
       <pattern>
         <pattern-item n="lex-dan"/>
