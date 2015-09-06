@@ -2307,6 +2307,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </chunk>
         </out>
       </when></choose>
+      <let><var n="caseprep"/><lit v=""/></let>
     </def-macro>
   </section-def-macros>
 
@@ -2763,6 +2764,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
+        <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
