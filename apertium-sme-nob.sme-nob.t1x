@@ -307,6 +307,14 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="num.*.rcmpnd"/>
       <cat-item tags="num.*.rcmpnd.*"/>
     </def-cat>
+    <def-cat n="lex-vel">
+      <cat-item lemma="vel" tags="adv.*"/>
+      <cat-item lemma="vel" tags="adv"/>
+    </def-cat>
+    <def-cat n="lex-lassin">
+      <cat-item lemma="lassin" tags="n.*"/>
+      <cat-item lemma="*lássin" tags=""/> <!-- common typo -->
+    </def-cat>
     <def-cat n="lex-arvvus">
       <cat-item lemma="árvu" tags="n.sg.loc"/>
       <cat-item lemma="árvu" tags="n.sg.loc.*"/>
@@ -2473,6 +2481,28 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <lu>
               <lit v="fordi"/>
               <lit-tag v="cnjsub"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: vel lassin → i tillegg">
+      <pattern>
+        <pattern-item n="lex-vel"/>
+        <pattern-item n="lex-lassin"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="i tillegg"/>
+              <lit-tag v="adv"/>
             </lu>
           </chunk>
         </out>
