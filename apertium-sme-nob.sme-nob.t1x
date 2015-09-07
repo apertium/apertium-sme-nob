@@ -149,18 +149,50 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="shcmp"/>
     </def-cat>
     <def-cat n="adj.cmp">
+      <cat-item tags="adj.cmp"/>
+      <cat-item tags="adj.cmp.*"/>
       <cat-item tags="adj.*.cmp"/>
       <cat-item tags="adj.*.cmp.*"/>
     </def-cat>
     <def-cat n="nom.cmp">
+      <cat-item tags="n.cmp"/>
+      <cat-item tags="n.cmp.*"/>
       <cat-item tags="n.*.cmp"/>
       <cat-item tags="n.*.cmp.*"/>
     </def-cat>
     <def-cat n="nom_head" c="Head nom's are sent to out_nom, thus we can have Verb derivatives here.">
       <cat-item tags="vblex.*.*.n.*"/>
+      <!-- <cat-item tags="n.*"/> We don't want to catch cmp's with this! -->
+      <cat-item tags="n.rcmpnd.*"/>
+      <cat-item tags="n.*.rcmpnd.*"/>
+      <cat-item tags="n.*.rcmpnd"/>
+      <cat-item tags="n.pl"/>
+      <cat-item tags="n.pl.*"/>
+      <cat-item tags="n.sg"/>
+      <cat-item tags="n.sg.*"/>
+      <cat-item tags="n.ess.*"/>
+      <cat-item tags="n.*.pl"/>
+      <cat-item tags="n.*.pl.*"/>
+      <cat-item tags="n.*.sg"/>
+      <cat-item tags="n.*.sg.*"/>
+      <cat-item tags="n.*.ess.*"/>
+      <cat-item tags="n.*.ess"/>
+      <cat-item tags="n.abbr"/>
+      <cat-item tags="n.*.abbr"/>
+      <cat-item tags="n.*.abbr.*"/>
+      <cat-item tags="n.abbr.*"/>
+      <cat-item tags="n.prop"/>
+      <cat-item tags="n.*.prop"/>
+      <cat-item tags="n.*.prop.*"/>
+      <cat-item tags="n.prop.*"/>
+    </def-cat>
+    <def-cat n="nom_all" c="In case nom_head doesn't catch all non-compounds, use this for the single-word rule.">
+      <cat-item tags="vblex.*.*.n.*"/>
+      <cat-item tags="vblex.*.*.n"/>
       <cat-item tags="n.*"/>
-      <cat-item tags="abbr"/>
+      <cat-item tags="n"/>
       <cat-item tags="abbr.*"/>
+      <cat-item tags="abbr"/>
     </def-cat>
     <def-cat n="nom_rP" c="Head nom before a postposition, sent to out_nom">
       <cat-item tags="vblex.*.*.n.*.@→P"/>
@@ -3287,7 +3319,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     <!-- <rules: Noun, numeral+noun and compounds -->
     <rule comment="REGLA: NOM (tl: NOM, VERB)">
       <pattern>
-        <pattern-item n="nom_head"/>
+        <pattern-item n="nom_all"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
