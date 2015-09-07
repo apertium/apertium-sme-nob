@@ -1481,11 +1481,19 @@ And then there are some categories like "month", with all the months.
                   -----
                   Note: lone pronouns/determiners just keep GD/ND, this might change
                   in interchunk (postchunk cleans it up if not).">
-      <let><var n="prn_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
-      <choose><when c="default plural if no nbr">
-        <test><equal><var n="prn_nbr"/><lit v=""/></equal></test>
-        <let><var n="prn_nbr"/><lit-tag v="pl"/></let>
-      </when></choose>
+      <choose>
+        <when>
+          <test><or>
+            <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+            <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+          </or></test>
+          <let><var n="prn_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        </when>
+        <otherwise>
+          <let><var n="prn_nbr"/><lit-tag v="sg"/></let>
+        </otherwise>
+      </choose>
+
       <choose>
         <when>
           <test>
@@ -1496,14 +1504,18 @@ And then there are some categories like "month", with all the months.
         <otherwise>
           <let><var n="prn_gen"/><clip pos="1" side="tl" part="gen"/></let>
           <choose><when>
-            <test><equal><var n="prn_gen"/><lit v=""/></equal></test>
+            <test><or>
+              <equal><var n="prn_gen"/><lit v=""/></equal>
+              <equal><var n="prn_gen"/><lit-tag v="un"/></equal>
+            </or></test>
             <let><var n="prn_gen"/><lit-tag v="m"/></let>
           </when></choose>
         </otherwise>
       </choose>
+
       <choose><when>
-          <test><equal><clip pos="1" side="tl" part="art"/><lit v="DD"/></equal></test>
-          <let><clip pos="1" side="tl" part="art"/><lit-tag v="3"/></let>
+        <test><equal><clip pos="1" side="tl" part="art"/><lit v="DD"/></equal></test>
+        <let><clip pos="1" side="tl" part="art"/><lit-tag v="3"/></let>
       </when></choose>
     </def-macro>
 
