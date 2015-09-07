@@ -1385,7 +1385,10 @@ And then there are some categories like "month", with all the months.
                 <otherwise c="Not a modifier: neither prep nor genitive case">
                   <let><var n="caseprep"/><lit v=""/></let>
                   <choose><when>
-                    <test><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></test>
+                    <test><and>
+                      <equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal>
+                      <not><equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal></not>
+                    </and></test>
                     <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
                   </when></choose>
                 </otherwise>
