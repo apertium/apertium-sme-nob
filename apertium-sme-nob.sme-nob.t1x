@@ -1666,6 +1666,29 @@ And then there are some categories like "month", with all the months.
       </choose>
     </def-macro>
 
+    <def-macro n="maybe_det_nbr_to_adj" npar="2"
+               c="arg.1: det, arg.1: adjective
+                  -----
+                  Can be useful even if there's a noun, since noun may be sp.
+                  ">
+      <choose c="For positives, if use any number on ND">
+        <when>
+          <test><and>
+            <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="ND"/></equal>
+            <or>
+              <equal><clip pos="2" side="tl" part="temps"/><lit-tag v="pp"/></equal>
+              <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="pst"/></ends-with>
+            </or>
+            <or>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+            </or>
+          </and></test>
+          <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        </when>
+      </choose>
+    </def-macro>
+
     <def-macro n="modify_adj_gen_nbr" npar="2"
                c="arg.1: noun, arg.1: adjective
                   -----
@@ -3385,7 +3408,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </let>
         <let><clip pos="2" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <choose><when>
-          <test><not><equal><clip pos="2" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not></test>
+          <test><and>
+            <not><equal><clip pos="2" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not>
+            <not><equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+          </and></test>
           <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         </when></choose>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
@@ -3434,7 +3460,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </let>
         <let><clip pos="3" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <choose><when>
-          <test><not><equal><clip pos="3" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not></test>
+          <test><and>
+            <not><equal><clip pos="3" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not>
+            <not><equal><clip pos="3" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+          </and></test>
           <let><clip pos="3" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         </when></choose>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
@@ -3465,6 +3494,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
 
         <!-- not set_defnes2 here, seems to work better just looking at head syntax tag: -->
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
@@ -3519,7 +3549,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </let>
         <let><clip pos="3" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <choose><when>
-          <test><not><equal><clip pos="3" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not></test>
+          <test><and>
+            <not><equal><clip pos="3" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not>
+            <not><equal><clip pos="3" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+          </and></test>
           <let><clip pos="3" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         </when></choose>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
@@ -3543,6 +3576,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
+        <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="3"/></call-macro>
 
         <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="1"/></call-macro>
 
@@ -3584,7 +3618,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </let>
         <let><clip pos="4" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <choose><when>
-          <test><not><equal><clip pos="4" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not></test>
+          <test><and>
+            <not><equal><clip pos="4" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not>
+            <not><equal><clip pos="4" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+          </and></test>
           <let><clip pos="4" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         </when></choose>
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
@@ -4799,6 +4836,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_prn_gen_nbr_art"><with-param pos="3"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
@@ -4850,6 +4888,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><clip pos="2" side="tl" part="art"/><lit-tag v="def"/></let>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
+        <call-macro n="maybe_det_nbr_to_adj"><with-param pos="2"/><with-param pos="3"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
 
@@ -5093,6 +5132,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art"><with-param pos="2"/></call-macro>
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
+        <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
 
         <let><var n="defnes"/><lit-tag v="def"/></let>
 
