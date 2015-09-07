@@ -876,13 +876,14 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <!-- clean nbr sp (depends on gen) -->
       <choose>
         <when>
-          <test>
+          <test><or>
+            <ends-with><clip pos="2" part="grau"/><lit-tag v="comp"/></ends-with>
             <and>
+              <ends-with><clip pos="2" part="grau"/><lit-tag v="pst"/></ends-with>
               <equal><clip pos="2" part="art"/><lit-tag v="def"/></equal>
               <equal><clip pos="2" part="gen"/><lit-tag v="un"/></equal>
-              <ends-with><clip pos="2" part="grau"/><lit-tag v="pst"/></ends-with>
             </and>
-          </test>
+          </or></test>
           <let><clip pos="2" part="nbr"/><lit-tag v="sp"/></let>
         </when>
         <when c="pst.un doesn't do ind, so go back to pst.mf.ind for that">
