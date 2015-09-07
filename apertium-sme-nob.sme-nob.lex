@@ -464,17 +464,17 @@ SET V-3 = V-SG3 OR V-DU3 OR V-PL3 ;
 
 # Sets consisting of LEAT
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-LIST LEAT = "<leat>" ;
+LIST LEAT = "<leat>"i ;
 
 SET LEAT-FIN-NOT-IMP = LEAT - imprt;
 
 LIST VPRFPRC = (vblex prfprc) ;
-LIST LEATPRFPRC = ("<leat>" prfprc) ;
+LIST LEATPRFPRC = ("<leat>"i prfprc) ;
 SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
 # In order to distinguish between real leat-constructions and participles of other verbs
-LIST HABEO-SG3 = ("<leat>" sg3) (vblex neg sg3) ("<šaddat>" sg3) ;
+LIST HABEO-SG3 = ("<leat>"i sg3) (vblex neg sg3) ("<šaddat>" sg3) ;
 
-LIST HABEO-PL3 = ("<leat>" pl3) (vblex neg pl3) ("<šadda>t" pl3)  ;
+LIST HABEO-PL3 = ("<leat>"i pl3) (vblex neg pl3) ("<šadda>t" pl3)  ;
 
 SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
 
@@ -614,10 +614,10 @@ SET REAL-V = v - NOT-REAL-V ;
 
 
 # The set REAL is smaller than COPULAS, made for verbs with PrfPrc complements: Seammás REAL-COPULAS son dovdan iežas...
-LIST REAL-COPULAS = "<dáidit>" "<leat>" "<soaitit>" "<veadjit>" ;
+LIST REAL-COPULAS = "<dáidit>" "<leat>"i "<soaitit>" "<veadjit>" ;
 
 #!! * The set COPULAS is for predicative constructions
-LIST COPULAS = "<dáidit>" "<gártat>" "<leat>" "<soaitit>" "<šaddat>" "<orrut>" "<veadjit>"  ;
+LIST COPULAS = "<dáidit>" "<gártat>" "<leat>"i "<soaitit>" "<šaddat>" "<orrut>" "<veadjit>"  ;
 #  "bissut" ?
 # 'Dáidit' can appear without 'leat'.
 
@@ -1254,7 +1254,7 @@ SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 acc)(*0 ("<sáddet>"i) OR ("<čálli
 SELECT:fallback ("informasjon"i) (0 ("<diehtu>"i));
 
 # lávki 0 = skritt, 1 = løk
-SELECT ("løk"i) (0 ("<lávki>"i))  (*1 ("<leat>") LINK 0 VFIN LINK *1 ("<čuohppat>"i) OR ("<čuohpadit>"i) LINK 0 prfprc) ;
+SELECT ("løk"i) (0 ("<lávki>"i))  (*1 ("<leat>"i) LINK 0 VFIN LINK *1 ("<čuohppat>"i) OR ("<čuohpadit>"i) LINK 0 prfprc) ;
 ## 	Danne go 	lávki 	lea antiseptalaš , de dat veahkeha go lea čuohpadan , gaskkahallan dahje go leat nárážat .
 ##  Lilja 	lávkkit 	vuovdit !
 SELECT ("skritt"i) (0 ("<lávki>"i)) ;
@@ -1589,6 +1589,8 @@ LIST loc/adv = loc adv;
 SELECT:test ("hva som"i) (0 ("<mii>"i) + @OBJ→) (*-1 FMAINV BARRIER (*) - loc/adv) ; # Hui hárve boahtá<iv!> ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
 SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV) ;
 SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
+
+SELECT:Leimmet-muhtun ("noe"i) (-1 LEAT + pl) ;
 
 
 SELECT ("egen"i) (0 ("<ieš>"i) + pron + refl + gen) (-1 pron + pers + gen) ;
