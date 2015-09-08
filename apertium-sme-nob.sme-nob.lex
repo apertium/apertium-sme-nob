@@ -1410,6 +1410,9 @@ SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
 ## Oválavuodjima loahppavuorus golbma falimusa vulget oktanaga čáhcebána ala ja vudjet vihtta 	rieggá 	boijaid birra .
 SELECT:fallback ("sirkel"i) (0 ("<riekkis>"i));
 
+SELECT:lang-speakers (".*talende"ri) (0 ("<.*giella>"ri) + n + pl) ;
+# not sure about this analysis, but it does give nicer translations
+
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("energi"i) (0 ("<arva>"i));
