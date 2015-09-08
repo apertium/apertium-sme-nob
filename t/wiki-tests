@@ -71,7 +71,7 @@ summary () {
     # Output the sums:
     pct=
     if command -V calc &>/dev/null; then
-	pct=$(calc -p "${correct} / ${total} * 100")
+        pct=$(calc -p "round(${correct} / ${total}, 4) * 100")
 	pct=", ${pct}%"
     fi
     echo "${correct} / ${total}${pct}"
