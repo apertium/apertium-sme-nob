@@ -331,7 +331,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <list-item v="&lt;@←OBJ&gt;"/>
       <list-item v="&lt;@←ADVL&gt;"/>
     </def-list>
-    <def-list n="no-determiner"
+    <def-list n="lemh-no-def-determiner"
+              c="Noun phrases *starting with* these lemmas should not have a def determiner">
+      <list-item v="hel"/>
+    </def-list>
+    <def-list n="syn-no-determiner"
               c="Noun phrases with these syntactic functions should not have a determiner (neither ind nor def)">
       <list-item v="&lt;@←PPRED&gt;"/>
     </def-list>
@@ -1054,7 +1058,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <choose>
         <when c="determiner?">
           <test><and>
-            <not><in><clip pos="1" part="syn_label"/><list n="no-determiner"/></in></not>
+            <not><in><clip pos="1" part="syn_label"/><list n="syn-no-determiner"/></in></not>
+            <not><and>
+              <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
+              <in><clip pos="2" part="lemh"/><list n="lemh-no-def-determiner"/></in>
+            </and></not>
             <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with></not>
             <not><and>
               <equal><clip pos="1" part="lemh"/><lit v="nom"/></equal>

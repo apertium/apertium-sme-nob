@@ -1143,6 +1143,8 @@ SELECT ("bestefar"i) (0 ("<áddjá>"i));
 ## Doppe čohkkába guokte ádjá.
 
 
+SELECT ("fattigdom"i) (0 ("<geafi>"i) + n);
+
 # áhkku: bestemor vs eldre kvinne
 REMOVE ("bestemor"i) (0 ("<áhkku>"i) LINK -1 num LINK NOT *-1 ←hab→);
 SELECT ("bestemor"i) (0 ("<áhkku>"i));
@@ -1615,12 +1617,23 @@ SELECT:fallback ("frå"i) (0 ("<eret>"i)) ;
 # Based on frequency in parallel text:
 SELECT ("lenger"i) (0 ("<šat>"i)) ;
 
+SELECT ("avsides"i) (0 ("<boaittobealde>"i)) ;
+
+SELECT ("høsten"i) (0 ("<čakčat>"i) + adv) (-1 num + nom) ;
+SELECT ("vinteren"i) (0 ("<dálvet>"i) + adv) (-1 num + nom) ;
+SELECT ("vinteren"i) (0 ("<dálvit>"i) + adv) (-1 num + nom) ;
+SELECT ("sommeren"i) (0 ("<geasset>"i) + adv) (-1 num + nom) ;
+SELECT ("sommeren"i) (0 ("<geassit>"i) + adv) (-1 num + nom) ;
+SELECT ("våren"i) (0 ("<giđđat>"i) + adv) (-1 num + nom) ;
+
 # Adjectives
 # ==========
 SELECT ("vær så god") (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
 
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
 SELECT ("helhetlig") (0 ("<ollislaš>"i));
+
+SELECT ("hel") (0 ("<ollis>"i)) (1 ("tid"));
 
 SELECT:fallback ("sterk") (0 ("<nanus>"i));
 
