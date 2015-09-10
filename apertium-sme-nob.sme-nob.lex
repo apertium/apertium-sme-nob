@@ -1601,6 +1601,9 @@ SELECT:Leimmet-muhtun ("noe"i) (-1 LEAT + pl) ;
 SELECT ("egen"i) (0 ("<ieš>"i) + pron + refl + gen) (-1 pron + pers + gen) ;
 # Dá lea mu iežan girji => Her er min egen bok
 
+SELECT:oss-selv ("selv"i) (0 ("<ieš>"i) + pron + refl + acc) (-1 pron + pers + acc) ;
+# eai galgga soardit min iežamet → ikke skal gjøre vondt for oss selv
+
 
 # Adverbs
 # =======
