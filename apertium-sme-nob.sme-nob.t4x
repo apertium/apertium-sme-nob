@@ -1064,6 +1064,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
               <in><clip pos="2" part="lemh"/><list n="lemh-no-def-determiner"/></in>
             </and></not>
+            <not><ends-with><clip pos="2" part="lemh"/><lit v="og en halv"/></ends-with></not>
             <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with></not>
             <not><and>
               <equal><clip pos="1" part="lemh"/><lit v="nom"/></equal>

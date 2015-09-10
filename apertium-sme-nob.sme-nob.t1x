@@ -592,7 +592,6 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="p2"/>
       <attr-item tags="p3"/>
     </def-attr>
-<!--@@@-->
     <def-attr n="grau">
       <attr-item tags="ord.pst"/>
       <attr-item tags="ord.comp"/>
@@ -1721,6 +1720,7 @@ And then there are some categories like "month", with all the months.
         </when>
         <when>
           <test><or>
+            <begins-with><clip pos="2" side="tl" part="grau"/><lit-tag v="ord"/></begins-with>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
