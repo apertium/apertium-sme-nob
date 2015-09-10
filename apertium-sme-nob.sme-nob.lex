@@ -1622,12 +1622,26 @@ SELECT ("lenger"i) (0 ("<šat>"i)) ;
 
 SELECT ("avsides"i) (0 ("<boaittobealde>"i)) ;
 
-SELECT ("høsten"i) (0 ("<čakčat>"i) + adv) (-1 num + nom) ;
-SELECT ("vinteren"i) (0 ("<dálvet>"i) + adv) (-1 num + nom) ;
-SELECT ("vinteren"i) (0 ("<dálvit>"i) + adv) (-1 num + nom) ;
-SELECT ("sommeren"i) (0 ("<geasset>"i) + adv) (-1 num + nom) ;
-SELECT ("sommeren"i) (0 ("<geassit>"i) + adv) (-1 num + nom) ;
-SELECT ("våren"i) (0 ("<giđđat>"i) + adv) (-1 num + nom) ;
+LIST YEAR = ("[0-9][0-9]+"r);
+SELECT:year ("høsten"i) (0 ("<čakčat>"i) + adv)    (-1 YEAR) ;
+SELECT:year ("vinteren"i) (0 ("<dálvet>"i) + adv)  (-1 YEAR) ;
+SELECT:year ("vinteren"i) (0 ("<dálvit>"i) + adv)  (-1 YEAR) ;
+SELECT:year ("sommeren"i) (0 ("<geasset>"i) + adv) (-1 YEAR) ;
+SELECT:year ("sommeren"i) (0 ("<geassit>"i) + adv) (-1 YEAR) ;
+SELECT:year ("våren"i) (0 ("<giđđat>"i) + adv)     (-1 YEAR) ;
+SELECT:year ("høsten"i) (0 ("<čakčat>"i) + adv)    (1 YEAR) ;
+SELECT:year ("vinteren"i) (0 ("<dálvet>"i) + adv)  (1 YEAR) ;
+SELECT:year ("vinteren"i) (0 ("<dálvit>"i) + adv)  (1 YEAR) ;
+SELECT:year ("sommeren"i) (0 ("<geasset>"i) + adv) (1 YEAR) ;
+SELECT:year ("sommeren"i) (0 ("<geassit>"i) + adv) (1 YEAR) ;
+SELECT:year ("våren"i) (0 ("<giđđat>"i) + adv)     (1 YEAR) ;
+
+SELECT ("om høsten"i) (0 ("<čakčat>"i) + adv) ;
+SELECT ("om vinteren"i) (0 ("<dálvet>"i) + adv) ;
+SELECT ("om vinteren"i) (0 ("<dálvit>"i) + adv) ;
+SELECT ("om sommeren"i) (0 ("<geasset>"i) + adv) ;
+SELECT ("om sommeren"i) (0 ("<geassit>"i) + adv) ;
+SELECT ("om våren"i) (0 ("<giđđat>"i) + adv) ;
 
 # Adjectives
 # ==========

@@ -264,6 +264,8 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="golggotmánnu" tags="n.*"/>
       <cat-item lemma="skábmamánnu" tags="n.*"/>
       <cat-item lemma="juovlamánnu" tags="n.*"/>
+      <cat-item lemma="ođđajagemánnu" tags="n.*"/>
+
       <cat-item lemma="giđđa" tags="n.*"/>
       <cat-item lemma="geassi" tags="n.*"/>
       <cat-item lemma="dálvi" tags="n.*"/>
@@ -290,8 +292,24 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="golggotmánnu" tags="n.*"/>
       <cat-item lemma="skábmamánnu" tags="n.*"/>
       <cat-item lemma="juovlamánnu" tags="n.*"/>
+      <cat-item lemma="ođđajagemánnu" tags="n.*"/>
     </def-cat>
-    <def-cat n="season">
+    <def-cat n="season-month">
+      <cat-item lemma="guovvamánnu" tags="n.*"/>
+      <cat-item lemma="ođđajagimánnu" tags="n.*"/>
+      <cat-item lemma="guovvamánnu" tags="n.*"/>
+      <cat-item lemma="njukčamánnu" tags="n.*"/>
+      <cat-item lemma="cuoŋománnu" tags="n.*"/>
+      <cat-item lemma="miessemánnu" tags="n.*"/>
+      <cat-item lemma="geassemánnu" tags="n.*"/>
+      <cat-item lemma="suoidnemánnu" tags="n.*"/>
+      <cat-item lemma="borgemánnu" tags="n.*"/>
+      <cat-item lemma="čakčamánnu" tags="n.*"/>
+      <cat-item lemma="golggotmánnu" tags="n.*"/>
+      <cat-item lemma="skábmamánnu" tags="n.*"/>
+      <cat-item lemma="juovlamánnu" tags="n.*"/>
+      <cat-item lemma="ođđajagemánnu" tags="n.*"/>
+
       <cat-item lemma="giđđa" tags="n.*"/>
       <cat-item lemma="geassi" tags="n.*"/>
       <cat-item lemma="dálvi" tags="n.*"/>
@@ -2827,17 +2845,72 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: NUM SEASON
+    <rule comment="REGLA: NUM SEASON-MONTH
                    1990 giđa => våren 1990
                    Always definite (should not add a determiner in t4x)
-                   Removes genitive from season (selected by numeral)">
+                   Removes genitive from season-month (selected by numeral)
+
+                   Also unfortunately needs exceptions for num's like
+                   'okta' since they're tagged exactly like '1990' :-/">
       <pattern>
         <pattern-item n="num"/>
-        <pattern-item n="season"/>
+        <pattern-item n="season-month"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+
+        <choose><when c="dát alone is nearly always 'dette'">
+          <test><equal><clip pos="1" side="sl" part="lemh"/><lit v="dát"/></equal></test>
+          <let><clip pos="1" side="tl" part="gen"/><lit-tag v="nt"/></let>
+        </when></choose>
+
         <choose>
+          <when c="okta geasset → en om våren">
+            <test><and>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+              <not><equal><clip pos="2" side="tl" part="a_adv"/><lit v=""/></equal></not>
+            </and></test>
+            <out>
+              <chunk name="det" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SN"/></tag>
+                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="1" side="tl" part="pers"/></tag>
+                  <tag><clip pos="1" side="tl" part="gen"/></tag>
+                  <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                  <tag><clip pos="1" side="tl" part="case"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_det"/>
+                  <clip pos="1" side="tl" part="pers"/>
+                  <clip pos="1" side="tl" part="gen"/>
+                  <clip pos="1" side="tl" part="nbr"/>
+                  <clip pos="1" side="tl" part="art"/>
+                  <clip pos="1" side="tl" part="case"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+              <var n="caseprep"/>
+              <b pos="1"/>
+              <chunk name="adv" case="caseFirstWord">
+                <tags>
+                  <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="2" side="sl" part="mode"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="2" side="tl" part="lemh"/>
+                  <clip pos="2" side="tl" part="a_adv"/>
+                  <clip pos="2" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </when>
+
           <when c="adv">
             <test><not><equal><clip pos="2" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
             <out>
@@ -2867,11 +2940,37 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               </chunk>
             </out>
           </when>
-          <otherwise c="adv">
-            <choose><when c="shouldn't happen, but might get a mistagging">
-              <test><equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD"/></equal></test>
-              <let><clip pos="1" side="tl" part="gen"/><clip pos="2" side="tl" part="gen"/></let>
-            </when></choose>
+
+          <when c="okta giđa">
+            <test><or>
+              <equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD"/></equal>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+            </or></test>
+
+            <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
+            <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+            <call-macro n="set_prn_gen_nbr_art"><with-param pos="2"/></call-macro>
+
+            <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+            <let><var n="c_name"/><lit v="pre_"/></let>
+            <let>
+              <var n="pre-nom"/>
+              <concat>
+                <lit v="^"/>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_det"/>
+                <var n="prn_gen"/>
+                <var n="prn_nbr"/>
+                <clip pos="1" side="tl" part="art"/>
+                <clip pos="1" side="tl" part="lemq"/>
+                <lit v="$"/>
+                <b pos="1"/>
+              </concat>
+            </let>
+            <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+          </when>
+
+          <otherwise c="noun">
             <out>
               <chunk name="nom_det" case="caseFirstWord">
                 <tags>
