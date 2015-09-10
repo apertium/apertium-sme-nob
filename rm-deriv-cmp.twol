@@ -366,7 +366,13 @@ Rules
 "Only allow those derivations that we've made sure survive translation"
 : /<= _ UnhandledDerivations ;
 
-"Only allow those derivations that we've made sure survive translation"
+"Don't allow derivations as left-compounds"
+: /<= _ Derivations :* Cmp ;
+
+"Don't allow more than two left-compounds"
+: /<= _ Cmp :* Cmp :* Cmp ;
+
+"Don't allow derivations of derivations"
 : /<= _ Derivations :* Derivations ;
 
 ;				! end of Rules
