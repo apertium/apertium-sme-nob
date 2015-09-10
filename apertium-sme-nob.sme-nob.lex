@@ -1569,6 +1569,7 @@ SELECT:fallback ("slag"i) (0 ("<šládja>"i));
 SELECT:fallback ("surr"i) (0 ("<šurra>"i));
 
 # Based on frequency in parallel text:
+SELECT ("áigodat"i) (0 ("<periode>"i));
 SELECT ("sameby"i) (0 ("<čearru>"i));
 SELECT ("urin"i) (0 ("<gužža>"i)) ;
 SELECT ("måned"i) (0 ("<mánnu>"i)) ;

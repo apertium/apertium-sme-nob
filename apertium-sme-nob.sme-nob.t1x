@@ -1724,24 +1724,22 @@ And then there are some categories like "month", with all the months.
         </when>
         <when>
           <test><or>
-            <begins-with><clip pos="2" side="tl" part="grau"/><lit-tag v="ord"/></begins-with>
+            <ends-with><clip pos="2" side="tl" part="lemh"/><lit v="og en halv"/></ends-with>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
             <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
+            <equal><clip pos="2" side="tl" part="case"/><lit-tag v="gen"/></equal>
+            <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="comp"/></equal>
           </or></test>
           <let><var n="defnes"/><lit-tag v="ind"/></let>
         </when>
         <when>
-          <test><equal><clip pos="2" side="tl" part="case"/><lit-tag v="gen"/></equal></test>
-          <let><var n="defnes"/><lit-tag v="ind"/></let>
-        </when>
-        <when>
-          <test><equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal></test>
-          <let><var n="defnes"/><lit-tag v="def"/></let>
-        </when>
-        <when>
-          <test><equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal></test>
+          <test><or>
+            <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="ord.pst"/></equal>
+            <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal>
+            <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+          </or></test>
           <let><var n="defnes"/><lit-tag v="def"/></let>
         </when>
       </choose>
