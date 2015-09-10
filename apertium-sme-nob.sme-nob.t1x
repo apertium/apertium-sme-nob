@@ -386,6 +386,10 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="adj.ord.*"/>
       <cat-item tags="adj.ord"/>
     </def-cat>
+    <def-cat n="adj-nonord">
+      <cat-item tags="adj.sg.*"/>
+      <cat-item tags="adj.pl.*"/>
+    </def-cat>
     <def-cat n="lex-beaivi">
       <cat-item lemma="beaivi" tags="n.*"/>
       <cat-item lemma="b" tags="abbr.*"/>
@@ -2815,9 +2819,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <let><clip pos="2" side="tl" part="lemh"/><lit v="én"/></let> <!-- ett -->
         </when></choose>
         <out>
-          <chunk name="nom_det" case="caseFirstWord">
+          <chunk name="pre_nom" case="caseFirstWord">
             <tags>
-              <tag><lit-tag v="SN"/></tag>
+              <tag><lit-tag v="SA"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><lit-tag v="def"/></tag>
@@ -2972,7 +2976,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
           <otherwise c="noun">
             <out>
-              <chunk name="nom_det" case="caseFirstWord">
+              <chunk name="pre_nom" case="caseFirstWord">
                 <tags>
                   <tag><lit-tag v="SN"/></tag>
                   <tag><clip pos="2" side="sl" part="syn_label"/></tag>
@@ -5638,7 +5642,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                    (comp→pst in this construction)">
       <pattern>
         <pattern-item n="prn.rel"/>
-        <pattern-item n="adj"/>
+        <pattern-item n="adj-nonord"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
