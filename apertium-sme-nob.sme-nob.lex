@@ -1597,6 +1597,9 @@ SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
 
 SELECT:Leimmet-muhtun ("noe"i) (-1 LEAT + pl) ;
 
+SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>") BARRIER clb OR v OR adv) ;
+SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>")) ;
+SELECT:fallback ("en"i) (0 ("<okta>"i)) ;
 
 SELECT:hans-egen ("egen"i) (0 ("<ieš>"i) + pron + refl) (-1 pron + pers + gen) ;
 # Dá lea mu iežan girji => Her er min egen bok
