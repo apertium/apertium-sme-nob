@@ -1184,11 +1184,11 @@ SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 COPULAS LINK *1 num) ;
 # Dál diibmu lea fargga vihtta.
 SELECT:fallback ("time"i) (0 ("<diibmu>"i));
 
-# háve gang
-SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 num + gen);
-SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 ("<dát>"i) LINK 0 gen);
-SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen)(-1 ("<boahtte>"i));
-## Dán háve. Mun lean dan má
+# hávvi gen as sår is the exceptional/rare case:
+SELECT ("sår"i) (0 ("<hávvi>"i) + gen) (1 ("<vuostá>"));
+SELECT ("gang"i) (0 ("<hávvi>"i) + gen);
+SELECT ("sår"i) (0 ("<hávvi>"i) - gen);
+# genitive háve is always gang in corpus, and much more frequent than «sår»
 
 # miella 0 = sinn, 1 = oppfatning, 2 = behag
 SELECT ("oppfatning"i) (0 ("<miella>"i) LINK 0 loc LINK -1 @→N) ;
