@@ -1200,6 +1200,7 @@ SELECT:fallback ("sinn"i) (0 ("<miella>"i));
 SELECT:fallback ("språk"i) (0 ("<giella>"i));
 
 
+SELECT:fallback ("forfatter"i) (0 ("<čálli>"i));
 
 
 
