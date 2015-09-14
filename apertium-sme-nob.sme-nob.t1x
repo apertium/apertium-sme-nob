@@ -95,6 +95,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="prn.rel">
       <cat-item tags="prn.rel.*"/>
     </def-cat>
+    <def-cat n="prn.res">
+      <cat-item tags="prn.res.*"/>
+    </def-cat>
     <def-cat n="prn.ref">
       <cat-item tags="prn.ref.*"/>
     </def-cat>
@@ -118,7 +121,6 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="prn.ref.gen.*"/>
       <cat-item tags="prn.dem.*"/>
       <cat-item tags="prn.ind.*"/>
-      <cat-item tags="prn.res.*"/>
       <cat-item tags="prn.dem"/>
       <cat-item tags="prn.ind"/>
       <cat-item tags="prn.res"/>
@@ -502,6 +504,7 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_prn">
       <attr-item tags="prn"/>
       <attr-item tags="prn.rel"/>
+      <attr-item tags="prn.res"/>
       <attr-item tags="prn.ind"/>
       <attr-item tags="prn.dem"/>
       <attr-item tags="prn.pers"/>
@@ -4138,6 +4141,43 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_det"/>
+              <clip pos="1" side="tl" part="pers"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <clip pos="1" side="tl" part="case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: PRN.RES">
+      <pattern>
+        <pattern-item n="prn.res"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <out>
+          <var n="caseprep"/>
+          <chunk name="prn" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_prn"/>
               <clip pos="1" side="tl" part="pers"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
