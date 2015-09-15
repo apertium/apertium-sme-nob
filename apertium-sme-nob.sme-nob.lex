@@ -1603,15 +1603,18 @@ SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>") BARRIER
 SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>")) ;
 SELECT:fallback ("en"i) (0 ("<okta>"i)) ;
 
-SELECT:hans-egen ("egen"i) (0 ("<ieš>"i) + pron + refl) (-1 pron + pers + gen) ;
+SELECT:hans-egen ("egen"i) (0 ("<ieš>"i)) (-1 pron + pers + gen) ;
 # Dá lea mu iežan girji => Her er min egen bok
 
-SELECT:oss-selv ("selv"i) (0 ("<ieš>"i) + pron + refl + acc) (-1 pron + pers + acc) ;
+SELECT:oss-selv ("selv"i) (0 ("<ieš>"i) + acc) (-1 pron + pers + acc) ;
 # eai galgga soardit min iežamet → ikke skal gjøre vondt for oss selv
 
-SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) + pron + refl + acc) (NOT -1 pron + pers + acc) (NOT *1 v) ;
+SELECT:til-meg-selv ("selv"i) (0 ("<ieš>"i) +  ill) (-1 pers + ill) ;
+SELECT:på-seg-selv ("selv"i) (0 ("<ieš>"i) + ill) (NOT -1 pers + ill) ;
 
-SELECT:fallback ("prpers"i) (0 ("<ieš>"i) + pron + refl + acc) ;
+SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) + acc) (NOT -1 pron + pers + acc) (NOT *1 v) ;
+
+SELECT:fallback ("prpers"i) (0 ("<ieš>"i) + acc) ;
 
 
 # Adverbs

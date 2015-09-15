@@ -441,6 +441,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       </when></choose>
 
       <choose>
+        <when c="nob prn.ref never has case">
+          <test><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.ref"/></equal></test>
+          <let><clip pos="2" part="case"/><lit v=""/></let>
+        </when>
         <when c="nob prn.res cases are only ever gen or ∅">
           <test><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.res"/></equal></test>
           <choose><when>
