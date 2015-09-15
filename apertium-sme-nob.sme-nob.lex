@@ -1610,7 +1610,7 @@ SELECT:oss-selv ("selv"i) (0 ("<ieš>"i) + acc) (-1 pron + pers + acc) ;
 # eai galgga soardit min iežamet → ikke skal gjøre vondt for oss selv
 
 SELECT:til-meg-selv ("selv"i) (0 ("<ieš>"i) +  ill) (-1 pers + ill) ;
-SELECT:på-seg-selv ("selv"i) (0 ("<ieš>"i) + ill) (NOT -1 pers + ill) ;
+SELECT:på-seg-selv ("seg selv"i) (0 ("<ieš>"i) + ill) (NOT -1 pers + ill) ;
 
 SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) + acc) (NOT -1 pron + pers + acc) (NOT *1 v) ;
 
