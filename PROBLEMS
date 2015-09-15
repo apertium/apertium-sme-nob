@@ -7,7 +7,8 @@ Quality
 -------
 
 On a small set of nob texts and their sme translations from
-kongehuset.no, apertium-eval-translator.pl gives:
+kongehuset.no, `apertium-eval-translator.pl` on apertium-sme-nob back
+at `-r29118` gave:
 
     Statistics about input files
     -------------------------------------------------------
@@ -37,33 +38,26 @@ kongehuset.no, apertium-eval-translator.pl gives:
 
 Unsurprisingly, there are very few free-rides for such different
 languages. Note: these texts were most likely originally translated
-from nob to sme, *they are not post-edits*. Real evaluation is still
-on the TODO...
+from nob to sme, *they are not post-edits*.
 
-The
-[Regression tests](http://wiki.apertium.org/wiki/Northern_S%C3%A1mi_and_Norwegian/Regression_tests)
-should give sme-nob bilinguals some indication of the current
-translation quality (try also running the scripts regression-tests.sh
-and pending-tests.sh).
+An assimilation evaluation is described in `paper/sme-nob.tex`.
+
+The files t/latest-regression.results and t/latest-pending-results
+should give some indication of quality level for constructions that
+have received attention.
 
 
 Testvoc
 -------
 
-The main problem is missing testvoc; making dictionary expansions
-(like lt-expand) is not trivial with the Sámi HFST analyser. Testvoc
-thus is mainly based on corpus tests, where at least the 10000 first
-lines of a newspaper + bible corpus passes through without error
-marks.
-
-The sme analyser and the bidict contains a lot of proper nouns that
-are not yet in the nob generator; adding them with the right pardefs
-is trivial (run dev/props-from-bidix-to-nob.sh), but hasn't been done
-yet since not all bidix proper nouns have been checked for
-non-identical translations.
+The analyser is trimmed to the bidix. The script
+`dev/sme-nob.inconsistency.sh` sends the rhs of the bidix through the
+generator and should have no lines starting with an `#`. We also run
+corpus testvoc's and grep for `[@#]`. As of `-r61904`, the pair seems
+testvoc clean according to these tests.
 
 See also
-[the /release page on the wiki](http://wiki.apertium.org/wiki/Northern_S%C3%A1mi_and_Norwegian/release#TODO:_Testvoc)
+[the /release page on the wiki](http://wiki.apertium.org/wiki/Northern_S%C3%A1mi_and_Norwegian/release)
 for some more testvoc issues.
 
 Miscellaneous
