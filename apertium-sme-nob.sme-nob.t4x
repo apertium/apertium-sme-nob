@@ -102,12 +102,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <attr-item tags="det.pos"/>
     </def-attr>
     <def-attr n="a_prn">
-      <attr-item tags="Prn"/>
-      <attr-item tags="Prn.Rel"/>
-      <attr-item tags="Prn.Indef"/>
-      <attr-item tags="Prn.Dem"/>
-      <attr-item tags="Prn.Pers"/>
       <attr-item tags="prn"/>
+      <attr-item tags="prn.rel"/>
+      <attr-item tags="prn.res"/>
+      <attr-item tags="prn.ind"/>
+      <attr-item tags="prn.dem"/>
+      <attr-item tags="prn.pers"/>
+      <attr-item tags="prn"/>
+      <attr-item tags="prn.itg"/>
+      <attr-item tags="prn.ref"/>
     </def-attr>
     <def-attr n="a_adj">
       <attr-item tags="A"/>
@@ -436,13 +439,31 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <test><not><equal><clip pos="1" part="case"/><lit v=""/></equal></not></test>
         <let><clip pos="2" part="case"/><clip pos="1" part="case"/></let>
       </when></choose>
-      <choose><when c="nob prn cases are only ever nom or acc">
-        <test><not><or>
-          <equal><clip pos="2" part="case"/><lit-tag v="nom"/></equal>
-          <equal><clip pos="2" part="case"/><lit-tag v="acc"/></equal>
-        </or></not></test>
-        <let><clip pos="2" part="case"/><lit-tag v="acc"/></let>
-      </when></choose>
+
+      <choose>
+        <when c="nob prn.res cases are only ever gen or ∅">
+          <test><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.res"/></equal></test>
+          <choose><when>
+            <test><and>
+              <equal><clip pos="2" part="a_prn"/><lit-tag v="prn.res"/></equal>
+              <not><or>
+                <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
+                <equal><clip pos="2" part="case"/><lit v=""/></equal>
+              </or></not>
+            </and></test>
+            <let><clip pos="2" part="case"/><lit v=""/></let>
+          </when></choose>
+        </when>
+        <otherwise c="other nob prn cases are only ever nom or acc">
+          <choose><when>
+            <test><not><or>
+              <equal><clip pos="2" part="case"/><lit-tag v="nom"/></equal>
+              <equal><clip pos="2" part="case"/><lit-tag v="acc"/></equal>
+            </or></not></test>
+            <let><clip pos="2" part="case"/><lit-tag v="acc"/></let>
+          </when></choose>
+        </otherwise>
+      </choose>
 
       <choose><when c="try chunk gender">
         <test><and>
@@ -455,7 +476,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
             <equal><clip pos="1" part="gen"/><lit-tag v="nt"/></equal>
           </and></not></test>
-        <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
+          <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
         </when></choose>
         <!-- TODO: use prpers so we don't need these hacks (but that needs changes in nob.dix) -->
         <choose><when>

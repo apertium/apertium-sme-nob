@@ -379,8 +379,15 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="@X"/>
     </def-attr>
     <def-attr n="a_prn">
-      <attr-item tags="Prn"/>
       <attr-item tags="prn"/>
+      <attr-item tags="prn.rel"/>
+      <attr-item tags="prn.res"/>
+      <attr-item tags="prn.ind"/>
+      <attr-item tags="prn.dem"/>
+      <attr-item tags="prn.pers"/>
+      <attr-item tags="prn"/>
+      <attr-item tags="prn.itg"/>
+      <attr-item tags="prn.ref"/>
     </def-attr>
     <def-attr n="a_det">
       <attr-item tags="det"/>
@@ -459,8 +466,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                   <equal><clip pos="1" part="syn_label"/><lit-tag v="←hab→"/></equal>
                   <and>           <!-- «mus lea» now tagged like this: -->
                   <or>
-                    <equal caseless="yes"><clip pos="1" part="a_prn"/><lit-tag v="prn"/></equal>
-                    <equal caseless="yes"><clip pos="1" part="a_det"/><lit-tag v="det.dem"/></equal>
+                    <begins-with><clip pos="1" part="a_prn"/><lit-tag v="prn"/></begins-with>
+                    <equal><clip pos="1" part="a_det"/><lit-tag v="det.dem"/></equal>
                   </or>
                     <equal><clip pos="1" part="case"/><lit-tag v="nom"/></equal> <!--loc→nom from t1x-->
                     <or>
