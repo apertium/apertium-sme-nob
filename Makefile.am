@@ -2,7 +2,7 @@
 ## Makefile for Northern Sámi--Bokmål
 ###############################################################################
 
-VERSION=0.5.2
+VERSION=0.6.0
 LANG1=sme
 LANG2=nob
 PREFIX1=$(LANG1)-$(LANG2)
@@ -210,19 +210,15 @@ vm-transfer: $(PREFIX1).v1x.bin \
 
 # Files which aren't built, but are distributed:
 EXTRA_DIST=				\
-	$(BASENAME).$(LANG1).twol	\
-	$(BASENAME).$(LANG1).lexc	\
-	$(BASENAME).$(PREFIX1).rlx	\
 	$(BASENAME).$(PREFIX1).lex	\
 	$(BASENAME).$(PREFIX1).val	\
 	$(BASENAME).$(PREFIX1).dix	\
-	$(BASENAME).$(LANG2).dix	\
 	$(BASENAME).$(PREFIX1).t1x	\
 	$(BASENAME).$(PREFIX1).t2x	\
 	$(BASENAME).$(PREFIX1).t3x	\
 	$(BASENAME).$(PREFIX1).t4x	\
-	xfst2apertium.useless.twol	\
-	lexchoicebil.xsl		\
+	gt2apertium.cg3r		\
+	rm-deriv-cmp.twol		\
 	modes.xml
 
 ###############################################################################
