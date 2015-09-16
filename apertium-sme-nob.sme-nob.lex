@@ -273,7 +273,7 @@ LIST @SPRED←OBJ = @SPRED←OBJ ;
 LIST @-FADVL = @-FADVL ;
 
 SET FOBJ = @-F←OBJ OR @-FOBJ→ ;
-SET FMAINV = @-FMAINV OR @+FMAINV OR (vblex @←obj) OR (vblex @n←) OR (vblex @a←) OR (vblex @←subj) OR (vblex @←advl) ;
+SET FMAINV = @-FMAINV OR @+FMAINV OR (vblex @←OBJ) OR (vblex @N←) OR (vblex @A←) OR (vblex @←SUBJ) OR (vblex @←ADVL) ;
 SET FAUXV = @-FAUXV OR @+FAUXV ;
 
 LIST @ADVL = @ADVL @ADVL→ @ADVL← @←ADVL @→ADVL @-F←ADVL ;
@@ -342,14 +342,14 @@ LIST @VOC = @VOC ;
 LIST @CVP = @CVP ;
 LIST @CNP = @CNP ;
 
-SET OBJ = (@←obj) OR (@obj→) OR (@obj) OR (@-f←obj) OR (@-fobj→) ;
+SET OBJ = (@←OBJ) OR (@OBJ→) OR (@OBJ) OR (@-F←OBJ) OR (@-FOBJ→) ;
 LIST ←OBJ = @-F←OBJ @←OBJ ;
 LIST OBJ→ = @OBJ→ @-FOBJ→ ;
 
 SET ←OBJ-OTHERS = ←OBJ OR gen OR nom OR ess OR loc OR adv ;
 SET OBJ→-OTHERS = OBJ→ OR gen OR nom OR ess OR loc OR adv  ;
 
-SET SYN-V = v + SUBJ OR OBJ + v OR @ADVL + v OR (vblex @n←) OR (vblex @a←) OR v + SPRED OR (vblex @comp-cs←) ;
+SET SYN-V = v + SUBJ OR OBJ + v OR @ADVL + v OR (vblex @N←) OR (vblex @A←) OR v + SPRED OR (vblex @COMP-CS←) ;
 
 
 LIST @X = @X ;
@@ -589,7 +589,7 @@ LIST MADE = "<mađe>" "<mađi>" ;
 LIST DADE = "<dađe>" "<dađi>" ;
 
 
-SET CRD = (@cnp) OR COMMA OR NEGFOC OR XGO OR ("_") OR ("-") OR DADE ;
+SET CRD = (@CNP) OR COMMA OR NEGFOC OR XGO OR ("_") OR ("-") OR DADE ;
 # AFTER LCRD vs. GCRD disambiguation
 
 LIST HAB-CASE = loc (←smj→ ine) (←sma→ gen) ;
@@ -661,10 +661,10 @@ SET NP-HEAD-GEN = (prn gen) OR (n gen) OR (a gen) - der_nomact - rcmpnd - (dem a
 #!! expression __WORD - premodifiers__.
 
 
-SET PRE-NP-HEAD = (prop attr) OR (prop @→n) OR (a attr) OR (abbr attr) OR ("<buorre>")
+SET PRE-NP-HEAD = (prop attr) OR (prop @→N) OR (a attr) OR (abbr attr) OR ("<buorre>")
 OR (prn pers gen) OR (n gen) OR (a gen) OR ("<buot>") OR
 num OR rcmpnd OR cc OR (prn dem) OR (prn ref gen) OR (ind attr) OR
-(prfprc @→n) OR prsprc OR (a ord) OR (num @→N) OR (a @→N) OR @→N OR @→A OR @→Pron OR @Num← OR (cc @CNP) OR (@→CC) OR (action gen) OR (@Pron←) ;
+(prfprc @→N) OR prsprc OR (a ord) OR (num @→N) OR (a @→N) OR @→N OR @→A OR @→Pron OR @Num← OR (cc @CNP) OR (@→CC) OR (action gen) OR (@Pron←) ;
 # The strict version of items that can only be premodifiers, not parts of the predicate
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
@@ -911,6 +911,13 @@ SELECT:som-jeg-har. ("ha"i) IF (0 ("<leat>"i)) (-1 loc + @ADVL→ - dem) (NOT *1
 
 SELECT:fallback ("være"i) IF  (0 ("<leat>"i)) ;
 
+SELECT:fallback ("by# på"i) IF  (0 ("<guossohit>"i)) ;
+
+SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (1 cs) ;
+SELECT ("legge# opp"i) IF  (0 ("<láhčit>"i)) (1 ill) ;
+SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (-1 @OBJ→ + acc) ;
+SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (1 @←OBJ + acc) ;
+SELECT:fallback ("legge# opp til"i) IF  (0 ("<láhčit>"i)) ;
 
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
