@@ -4365,9 +4365,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="REGLA: PERSONAL_PRONOUN REFLEXIVE_PRONOUN
                    (Jus in livčče) mun ieš => (Hvis jeg ikke kan være) meg.acc selv
-                   moai ieža vel válljejetne => vi_to.nom selv (vi_to velger)
-                   Changes prpers case to accusative unless subject.
-                   TODO: this really ought to be an mwe specified in the sme dictionary. Will this rule catch too much?">
+                   Changes prpers case to accusative.
+                   TODO: Does it put acc on too much? E.g.
+                   moai ieža vel válljejetne => vi_to.nom selv (vi_to velger)">
       <pattern>
         <pattern-item n="prn.pers"/>
         <pattern-item n="prn.ref_PRONl"/>
@@ -4376,13 +4376,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
 
-        <choose><when>
-          <test><not><or>
-            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
-            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
-          </or></not></test>
-          <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
-        </when></choose>
+        <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
 
         <out>
           <var n="caseprep"/>
@@ -5756,7 +5750,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><var n="previous-nhead"/><lit v="NUMERAL"/></let>
       </action>
     </rule>
-    
+
 
     <!-- <rules ADJ* GEN GEN+ NOM -->
     <!-- These rules output several chunks, since we put the head noun
@@ -5942,7 +5936,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <!-- <rules VERBS ETC. -->
 
-    
+
 
     <rule comment="REGLA: VERB (tl: VERB, ADV, ADJ, NOUN)
                    See out_verb macro.
