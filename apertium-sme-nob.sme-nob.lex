@@ -913,6 +913,9 @@ SELECT:fallback ("være"i) IF  (0 ("<leat>"i)) ;
 
 SELECT:fallback ("by# på"i) IF  (0 ("<guossohit>"i)) ;
 
+SELECT ("ære"i) IF  (0 ("<gudnejahttit>"i)) (0* ("forelder"i) OR ("far"i) OR ("mor"i) OR ("<Ipmil>"i)) ;
+SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
+
 SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (1 cs) ;
 SELECT ("legge# opp"i) IF  (0 ("<láhčit>"i)) (1 ill) ;
 SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (-1 @OBJ→ + acc) ;
