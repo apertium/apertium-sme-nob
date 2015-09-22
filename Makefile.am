@@ -71,10 +71,10 @@ debug: \
 .deps/rm-deriv-cmp.hfst: rm-deriv-cmp.twol .deps/.d
 	hfst-twolc -i $< -o $@
 
-.deps/$(PREFIX1).automorf-trimmed-nocmp.hfst: .deps/$(PREFIX1).automorf-trimmed.hfst .deps/rm-deriv-cmp.hfst
+.deps/$(PREFIX1).automorf-trimmed-rmderiv.hfst: .deps/$(PREFIX1).automorf-trimmed.hfst .deps/rm-deriv-cmp.hfst
 	hfst-compose-intersect -1 $< -2 .deps/rm-deriv-cmp.hfst -o $@
 
-$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf-trimmed-nocmp.hfst
+$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf-trimmed-rmderiv.hfst
 	hfst-fst2fst -w -i $< -o $@
 
 $(PREFIX1).automorf-untrimmed.hfst: .deps/$(LANG1).automorf.hfst
