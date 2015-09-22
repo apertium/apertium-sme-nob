@@ -815,7 +815,9 @@ LIST HEAD = @SUBJ→ @←SUBJ @SUBJ @OBJ @OBJ→ @←OBJ @ADVL @ADVL→ @←ADVL
 
 SECTION
 
-REMOVE (cmp) (0 n) ;
+REMOVE (cmp) (0 prop) ;
+
+
 
 # go (default)=> når
 # go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
