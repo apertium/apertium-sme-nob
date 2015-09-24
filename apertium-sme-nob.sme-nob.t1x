@@ -955,6 +955,9 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-om-verbs" c="See 'ill-NIL-verbs' above.">
       <list-item v="beroštit"/>
     </def-list>
+    <def-list n="loc-som-verbs" c="See 'ill-NIL-verbs' above.">
+      <list-item v="beaggit" c="beaggán Sámi soga lávlaga čállin"/>
+    </def-list>
     <def-list n="loc-fra-verbs" c="See 'ill-NIL-verbs' above.">
 <!--      <list-item v="gullat" c="Problematic; Leat go gullan sus alddis? vs Go gullen sámegiela dien mátkkis."/>-->
       <list-item v="beassat" c="Mihttomearri lea beassat hálddašanguovvlus."/>
@@ -1128,11 +1131,16 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="ill-NIL" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="feil"/>
+      <list-item v="nok"/>
     </def-list>
     <def-list n="gen-av-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="forfatter"/>
       <list-item v="kopi"/>
       <list-item v="leder"/>
       <list-item v="evaluering"/>
+    </def-list>
+    <def-list n="gen-om-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="sang"/>
     </def-list>
     <def-list n="gen-i-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="undervisning"/>
@@ -1381,6 +1389,12 @@ And then there are some categories like "month", with all the months.
             <when>
               <test><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal></test>
               <choose>
+                <when>
+                  <test><in><var n="previous-nhead"/><list n="gen-om-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="om"/>
+                  </let>
+                </when>
                 <when>
                   <test><in><var n="previous-nhead"/><list n="gen-av-head"/></in></test>
                   <let>
@@ -2057,6 +2071,10 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-fra-verbs"/></in></test>
           <let><var n="caseprep"/><lit-tag v="loc-fra"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-som-verbs"/></in></test>
+          <let><var n="caseprep"/><lit-tag v="loc-som"/></let>
         </when>
         <otherwise c="No Change">
           <let><var n="caseprep"/><lit-tag v="NC"/></let>
@@ -5809,6 +5827,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="REGLA: NOM.GEN NOM.GEN NOM.GEN NOM
                    -----
+                   Sámi soga lávlaga čállin → forfatteren av sangen om Samelands slekt (TODO: Samelands slekt → Samefolket)
                    sámi árvvuid oahpaheami vuođđu → et grunnlag for opplæringen i samens verdier
                    Oarje-Finnmárkku oahpaheddjiid searvvi jahkečoahkkin → som årsmøte til foreningen til Vest-Finnmarks lærere (TODO better)
                    Outputs _two chunks_, head noun first.">
