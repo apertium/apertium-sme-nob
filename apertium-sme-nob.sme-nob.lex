@@ -1060,6 +1060,11 @@ SELECT ("tilsøle"i) (0 ("<durdut>"i)) ;
 
 SELECT:fallback ("skje"i) (0 ("<dáhpáhuvvat>"i));
 
+SELECT:berømt-forfatter ("berømme"i) (0 ("<beaggit>"i)) (0 @→N + prfprc) (NOT 1 clb) ; #  vaikko čálli lei beaggán girječálli
+SELECT:kjent-som ("kjenne"i) (0 ("<beaggit>"i)) (0 prfprc) (*1 loc BARRIER clb OR v); # mu ovddabealde bekkii Skuvvanvárrái boahtit sámásteaddji dáža oahpaheaddji
+SELECT:ble-kjent-i ("kjenne"i) (0 ("<beaggit>"i)) (0 prt) (*1 ill BARRIER clb OR v); # Son lea maiddái beaggán Sámi soga lávlaga čállin
+SELECT:fallback ("komme# frem"i) (0 ("<beaggit>"i)); # Maŋimuš áiggiid lea beaggán , maŋimustá
+
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 SELECT:fallback ("sette"i) (0 ("<bidjat>"i));
@@ -1427,6 +1432,8 @@ SELECT:fallback ("sirkel"i) (0 ("<riekkis>"i));
 SELECT:lang-speakers (".*talende"ri) (0 ("<.*giella>"ri) + n + pl) ;
 # not sure about this analysis, but it does give nicer translations
 
+SELECT ("nok"i) (0 ("<doarvi>"i)) (0 ill) ;
+SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("energi"i) (0 ("<arva>"i));
