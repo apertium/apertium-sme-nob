@@ -252,7 +252,10 @@ clean-local:
 ## Test
 ###############################################################################
 
-test: all
+test-bidix-gen:
+	dev/sme-nob.inconsistency.sh
+
+test: all test-bidix-gen
 	echo "Mus lea oahpahus gaskkal guovtti ja njealji." | apertium -d . sme-nob | tee .test-mt
 	@echo "Jeg har undervisning mellom to og fire." > .test-ref
 	@diff .test-ref .test-mt
