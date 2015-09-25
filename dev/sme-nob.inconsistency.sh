@@ -127,7 +127,8 @@ for pos in vblex n adv adj pr cnjsub cnjcoo np ; do
 done
 
 if generate_paste < "${UNSORTED}" | grep '^#'; then
-    echo 'Uh-oh, seems like there were entries in bidix that couldn'"''"'t be generated, please fix and then commit!'
+    echo 'Uh-oh, seems like there were entries in bidix that couldn'"''"'t be generated, please fix and then commit!' >&2
+    exit 1
 else
-    echo "$@ sme→nob generation seems testvoc clean for bidix entries :-)"
+    echo "sme→nob generation of bidix entries (${@:-all parts of speech}) seems testvoc clean :-)" >&2
 fi
