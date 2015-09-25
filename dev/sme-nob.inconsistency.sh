@@ -18,6 +18,7 @@ set -e -u
 
 DEV="$(dirname "$0")"
 BIDIX="${DEV}/../apertium-sme-nob.sme-nob.dix"
+GENERATOR="${DEV}/../sme-nob.autogen.bin"
 UNSORTED=$(mktemp -t unsorted.XXXXX)
 ANALYSES=$(mktemp -t analyses.XXXXX)
 SURFACES=$(mktemp -t surfaces.XXXXX)
@@ -26,16 +27,18 @@ trap 'rm "${SURFACES}" "${ANALYSES}" "${UNSORTED}"' EXIT
 grep '<!--.*<!--' "${BIDIX}" >&2 && echo '^^^ several comments on one line, may lead to false negatives' >&2
 
 
-makepaste () {
-    # given analyses, one per line, remove duplicates and output lines
-    # of surfaceform:analysis
+uniq_analyses () {
+    # given analyses, one per line, remove duplicates and output Apertium Stream Format
     sed 's%<g>\(.*\)</g>\(.*\)\$%\2#\1$%' |
         sed 's%<b/>% %g' |
         sort |
-        uniq |
-        tee "${ANALYSES}" |
-        lt-proc -g "${DEV}/../sme-nob.autogen.bin" > "${SURFACES}"
+        uniq
+}
 
+generate_paste () {
+    uniq_analyses |
+        tee "${ANALYSES}" |
+        lt-proc -g "${GENERATOR}" > "${SURFACES}"
     paste -d : "${SURFACES}" "${ANALYSES}"
 }
 
@@ -123,8 +126,8 @@ for pos in vblex n adv adj pr cnjsub cnjcoo np ; do
     fi
 done
 
-if makepaste < "${UNSORTED}" | grep '^#'; then
+if generate_paste < "${UNSORTED}" | grep '^#'; then
     echo 'Uh-oh, seems like there were entries in bidix that couldn'"''"'t be generated, please fix and then commit!'
 else
-    echo 'Bidix sme→nob generation seems testvoc clean :-)'
+    echo "$@ sme→nob generation seems testvoc clean for bidix entries :-)"
 fi
