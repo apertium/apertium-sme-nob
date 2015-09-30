@@ -1065,6 +1065,8 @@ SELECT:kjent-som ("kjenne"i) (0 ("<beaggit>"i)) (0 prfprc) (*1 loc BARRIER clb O
 SELECT:ble-kjent-i ("kjenne"i) (0 ("<beaggit>"i)) (0 prt) (*1 ill BARRIER clb OR v); # Son lea maiddái beaggán Sámi soga lávlaga čállin
 SELECT:fallback ("komme# frem"i) (0 ("<beaggit>"i)); # Maŋimuš áiggiid lea beaggán , maŋimustá
 
+SELECT:fallback ("rette"i) (0 ("<divvut>"i));
+
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 SELECT:fallback ("sette"i) (0 ("<bidjat>"i));
