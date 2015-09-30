@@ -333,6 +333,10 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="num.*.rcmpnd"/>
       <cat-item tags="num.*.rcmpnd.*"/>
     </def-cat>
+    <def-cat n="lex-sadjai">
+      <cat-item lemma="sadji" tags="n.*.sg.ill.*"/>
+      <cat-item lemma="sadji" tags="n.sg.ill.*"/>
+    </def-cat>
     <def-cat n="lex-vel">
       <cat-item lemma="vel" tags="adv.*"/>
       <cat-item lemma="vel" tags="adv"/>
@@ -989,6 +993,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
       <list-item v="første omgang"/>
       <list-item v="utgangspunkt"/>
+      <list-item v="mørke"/>
       <list-item v="arbeid"/>
       <list-item v="USA"/>
       <list-item v="Guovdageainnu suohkan"/>
@@ -1119,6 +1124,7 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="ill-i" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="del"/>
+      <list-item v="sted"/>
     </def-list>
     <def-list n="ill-på" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="ferie"/>
@@ -2456,6 +2462,50 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
          where we can avoid introducing complexity in the _regular_
          transfer rules.
     -->
+    <rule comment="REGLA: dan sadjái → i stedet">
+      <pattern>
+        <pattern-item n="lex-dan"/>
+        <pattern-item n="lex-sadjai"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="i stedet"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: dan sadjái go → i stedet for å">
+      <pattern>
+        <pattern-item n="lex-dan"/>
+        <pattern-item n="lex-sadjai"/>
+        <pattern-item n="lex-go"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><lit-tag v="cnjsub"/></tag>
+            </tags>
+            <lu>
+              <lit v="i stedet for å"/>
+              <lit-tag v="cnjsub"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <rule comment="REGLA: min árvvus adnojuvvon → vårt ærede">
       <pattern>
         <pattern-item n="prn.pers.acc"/>

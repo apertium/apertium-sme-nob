@@ -1067,6 +1067,8 @@ SELECT:fallback ("komme# frem"i) (0 ("<beaggit>"i)); # Maŋimuš áiggiid lea be
 
 SELECT:fallback ("rette"i) (0 ("<divvut>"i));
 
+SELECT:fallback ("rette# på"i) (0 ("<njulget>"i));
+
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 SELECT:fallback ("sette"i) (0 ("<bidjat>"i));
@@ -1619,7 +1621,8 @@ SELECT:test ("hva som"i) (0 ("<mii>"i) + @OBJ→) (*-1 FMAINV BARRIER (*) - loc/
 SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV) ;
 SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
 
-SELECT:Leimmet-muhtun ("noe"i) (-1 LEAT + pl) ;
+SELECT:Leimmet-muhtun ("noe"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtun>"i)) (1 n + pl) ;
 
 SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>") BARRIER clb OR v OR adv) ;
 SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>")) ;
@@ -1724,6 +1727,7 @@ SELECT ("viss") (0 ("<vissis>"i)) (*1 n BARRIER NOT-A) ;
 
 SELECT ("samisk"i) (0 ("<sápmi>"i))(0 gen);
 
+SELECT:fallback ("dårlig") (0 ("<headju>"i));
 
 # Subjunctions
 # ============
