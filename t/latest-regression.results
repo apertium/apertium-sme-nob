@@ -1,4 +1,4 @@
-Revision: 62148
+Revision: 62152
 AP_SRC1 Revision: 121849
 AP_SRC2 Revision: 62150
 Running Regression-tests with mode "sme-nob" with updated tests ...
@@ -511,7 +511,8 @@ WORKS	  Harald sverget at han ikke skulle klippe hår.
 
 
 sme-nob	  ahte Norga ii sáhttán birget flegmáhtalaš soahtefámu vuostá.
-WORKS	  at Norge ikke kunne greie seg mot den flegmatiske krigsmakten.
+	- at Norge ikke kunne greie seg mot den flegmatiske krigsmakten.
+	+ at Norge ikke kunne greie seg flegmatisk *soahtefámu ost.
 
 
 sme-nob	  vuovssihahtti.
@@ -877,7 +878,8 @@ WORKS	  1300-tallet.
 
 
 sme-nob	  1300-.
-WORKS	  1300-.
+	- 1300-.
+	+ 1300.
 
 
 sme-nob	  113-heahtenummáris.
@@ -930,16 +932,17 @@ WORKS	  19 Jovsset.
 
 sme-nob	  Golmma- njealje.
 	- Tre- fire.
-	+ Tre-fire.
+	+ Tre fire.
 
 
 sme-nob	  Golmma-njealje.
-WORKS	  Tre-fire.
+	- Tre-fire.
+	+ #Trefire.
 
 
 sme-nob	  logi-jagáš.
 	- tiårig.
-	+ ti-årig.
+	+ #tiårig.
 
 
 sme-nob	  logijagáš.
@@ -1050,12 +1053,13 @@ WORKS	  hans egen.
 
 
 sme-nob	  eanan-.
-WORKS	  jord-.
+	- jord-.
+	+ en jord-.
 
 
 sme-nob	  eanan- ja luonddudoahpagiid.
 	- jord- og naturbegrepene.
-	+ jord- og naturbegrep.
+	+ som jord- og *luonddudoahpagiid.
 
 
 sme-nob	  munno.
@@ -1063,7 +1067,8 @@ WORKS	  oss to.
 
 
 sme-nob	  Ruvdnaprinseassa Märtha ja moai letne.
-WORKS	  Kronprinsesse Märtha og vi to er.
+	- Kronprinsesse Märtha og vi to er.
+	+ *Ruvdnaprinseassa Märtha og vi to er.
 
 
 sme-nob	  Prinseassa Märtha ja earát.
@@ -1175,4 +1180,4 @@ sme-nob	  Lea nu guhkkin ahte eai mánát olle bohcco rádjái doppe.
 WORKS	  Det er så langt borte at barnene ikke når frem til reinen der borte.
 
 
-223 / 279, 79.93%
+218 / 279, 78.14%
