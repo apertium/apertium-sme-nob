@@ -146,9 +146,9 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="cmp" c="Words only seen as compund parts">
       <cat-item tags="cmp.*"/>
-      <cat-item tags="shcmp.*"/>
+      <cat-item tags="cmp_sh.*"/>
       <cat-item tags="cmp"/>
-      <cat-item tags="shcmp"/>
+      <cat-item tags="cmp_sh"/>
     </def-cat>
     <def-cat n="adj.cmp">
       <cat-item tags="adj.cmp"/>
@@ -165,9 +165,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="nom_head" c="Head nom's are sent to out_nom, thus we can have Verb derivatives here.">
       <cat-item tags="vblex.*.n.*"/>
       <!-- <cat-item tags="n.*"/> We don't want to catch cmp's with this! -->
-      <cat-item tags="n.rcmpnd.*"/>
-      <cat-item tags="n.*.rcmpnd.*"/>
-      <cat-item tags="n.*.rcmpnd"/>
+      <cat-item tags="n.cmp_splitr.*"/>
+      <cat-item tags="n.*.cmp_splitr.*"/>
+      <cat-item tags="n.*.cmp_splitr"/>
       <cat-item tags="n.pl"/>
       <cat-item tags="n.pl.*"/>
       <cat-item tags="n.sg"/>
@@ -328,10 +328,10 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="num.cmp.*"/>
       <cat-item tags="num.*.cmp"/>
       <cat-item tags="num.*.cmp.*"/>
-      <cat-item tags="num.rcmpnd"/>
-      <cat-item tags="num.rcmpnd.*"/>
-      <cat-item tags="num.*.rcmpnd"/>
-      <cat-item tags="num.*.rcmpnd.*"/>
+      <cat-item tags="num.cmp_splitr"/>
+      <cat-item tags="num.cmp_splitr.*"/>
+      <cat-item tags="num.*.cmp_splitr"/>
+      <cat-item tags="num.*.cmp_splitr.*"/>
     </def-cat>
     <def-cat n="lex-sadjai">
       <cat-item lemma="sadji" tags="n.*.sg.ill.*"/>
@@ -495,15 +495,15 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="cmp"/>
       <attr-item tags="guio"/>
       <attr-item tags="cmp.guio"/>
-      <attr-item tags="plgencmp"/>
-      <attr-item tags="plnomcmp"/>
-      <attr-item tags="sggencmp"/>
-      <attr-item tags="sgnomcmp"/>
-      <attr-item tags="rcmpnd"/>
-      <attr-item tags="plgencmp.rcmpnd"/>
-      <attr-item tags="plnomcmp.rcmpnd"/>
-      <attr-item tags="sggencmp.rcmpnd"/>
-      <attr-item tags="sgnomcmp.rcmpnd"/>
+      <attr-item tags="cmp_plgen"/>
+      <attr-item tags="cmp_plnom"/>
+      <attr-item tags="cmp_sggen"/>
+      <attr-item tags="cmp_sgnom"/>
+      <attr-item tags="cmp_splitr"/>
+      <attr-item tags="cmp_plgen.cmp_splitr"/>
+      <attr-item tags="cmp_plnom.cmp_splitr"/>
+      <attr-item tags="cmp_sggen.cmp_splitr"/>
+      <attr-item tags="cmp_sgnom.cmp_splitr"/>
     </def-attr>
     <def-attr n="a_prn">
       <attr-item tags="prn"/>
@@ -1983,7 +1983,7 @@ And then there are some categories like "month", with all the months.
                      eanan-(RCmpnd) ja luonddudoahpagiid => jord-(sg.ind) og naturfagord
                      NOTE: the dash tag is only defined for the sg.ind form of nouns in nob.dix (like cmp)
                      (as well as all numerals, where the change is handled in bidix)">
-              <test><ends-with><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="rcmpnd"/></ends-with></test>
+              <test><ends-with><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></ends-with></test>
               <choose><when>
                 <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal></test>
                 <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
@@ -3100,8 +3100,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <choose><when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
           <test><or>
-            <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="sgnomcmp.rcmpnd"/></equal>
-            <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="sggencmp.rcmpnd"/></equal>
+            <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_sgnom.cmp_splitr"/></equal>
+            <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_sggen.cmp_splitr"/></equal>
           </or></test>
           <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
         </when></choose>
