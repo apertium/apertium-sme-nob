@@ -182,13 +182,13 @@ LIST Sg = Sg ;
 LIST Pl = Pl ;
 LIST Du = Du ;
 
-LIST RCmpnd = RCmpnd ;
+LIST Cmp/SplitR = Cmp/SplitR ;
  
-LIST SgNomCmp = SgNomCmp ;
+LIST Cmp/SgNom = Cmp/SgNom ;
  
-LIST SgGenCmp = SgGenCmp ;
+LIST Cmp/SgGen = Cmp/SgGen ;
 
-LIST ShCmp = ShCmp ;
+LIST Cmp/Sh = Cmp/Sh ;
 
 LIST PxSg1 = PxSg1 ;
 LIST PxSg2 = PxSg2 ;
@@ -1597,21 +1597,21 @@ LIST PROP = (N Prop);
 
 SET CNOUN = N - Prop;
 
-SET HNOUN = N - RCmpnd ;
+SET HNOUN = N - Cmp/SplitR ;
 
-SET HNOUN-NOM = (N Nom) - RCmpnd ;
+SET HNOUN-NOM = (N Nom) - Cmp/SplitR ;
 
 SET N-NOT-GEN = N - (N Gen) ;
 
 SET NP = N OR A ;                      # anything that can take except numerals
 SET NP-HEAD        = Pron OR HNOUN - ("buorre") ;
-SET NP-HEAD-SG     = SGPRON OR (N Sg) OR (A Sg) - RCmpnd  - Dem - ("buorre");
-SET NP-HEAD-PL     = PLPRON OR (N Pl) OR (A Pl) - RCmpnd  - Dem - ("buorre");
-SET NP-HEAD-SG-NOM = SGPRON + Nom OR (N Sg Nom) OR (A Sg Nom) - ("buorre") - RCmpnd ;
-SET NP-HEAD-PL-NOM = PLPRON + Nom OR (N Pl Nom) OR (A Pl Nom) - RCmpnd  - ("buorre");
+SET NP-HEAD-SG     = SGPRON OR (N Sg) OR (A Sg) - Cmp/SplitR  - Dem - ("buorre");
+SET NP-HEAD-PL     = PLPRON OR (N Pl) OR (A Pl) - Cmp/SplitR  - Dem - ("buorre");
+SET NP-HEAD-SG-NOM = SGPRON + Nom OR (N Sg Nom) OR (A Sg Nom) - ("buorre") - Cmp/SplitR ;
+SET NP-HEAD-PL-NOM = PLPRON + Nom OR (N Pl Nom) OR (A Pl Nom) - Cmp/SplitR  - ("buorre");
 SET NP-HEAD-NOM    = NP-HEAD-SG-NOM OR NP-HEAD-PL-NOM ;
-SET NP-HEAD-ACC    = (Pron Acc) OR (N Acc) OR (A Acc) - RCmpnd - Dem - ("buorre");
-SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) OR (A Gen) - RCmpnd - Dem - ("buorre");
+SET NP-HEAD-ACC    = (Pron Acc) OR (N Acc) OR (A Acc) - Cmp/SplitR - Dem - ("buorre");
+SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) OR (A Gen) - Cmp/SplitR - Dem - ("buorre");
 
 SET NOT-NP-HEAD-COMMA-CC = WORD - NP-HEAD - COMMA - CC ;
 SET NOT-NP-HEAD-COMMA-CC-Adv-Neg = WORD - NP-HEAD - COMMA - CC - Adv - Neg ;
@@ -1626,7 +1626,7 @@ SET ADJ_ATTR/NOM = ADJ_ATTR/NOM ;
 
 
 SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr) OR ("buorre") OR (Pron Pers Gen) OR (N Gen) OR
-         Num OR RCmpnd OR CC OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Indef) OR 
+         Num OR Cmp/SplitR OR CC OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Indef) OR 
          (PrfPrc @>N) OR PrsPrc OR (A Ord) OR ("njiŋŋelas" Sg Nom) OR ("njiŋŋálas" Sg Nom) OR ("varis" Sg Nom) OR ("ollu" Sg Nom);
          # The strict version of items that can only be premodifiers, not parts of the predicate
          
