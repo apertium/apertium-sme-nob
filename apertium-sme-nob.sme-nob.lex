@@ -122,17 +122,17 @@ LIST sggencmp = sggencmp ;
 
 LIST shcmp = shcmp ;
 
-LIST pxsg1 = pxsg1 ;
-LIST pxsg2 = pxsg2 ;
-LIST pxsg3 = pxsg3 ;
+LIST px1sg = px1sg ;
+LIST px2sg = px2sg ;
+LIST px3sg = px3sg ;
 
-LIST pxdu1 = pxdu1 ;
-LIST pxdu2 = pxdu2 ;
-LIST pxdu3 = pxdu3 ;
+LIST px1du = px1du ;
+LIST px2du = px2du ;
+LIST px3du = px3du ;
 
-LIST pxpl1 = pxpl1 ;
-LIST pxpl2 = pxpl2 ;
-LIST pxpl3 = pxpl3 ;
+LIST px1pl = px1pl ;
+LIST px2pl = px2pl ;
+LIST px3pl = px3pl ;
 
 LIST comp = comp ;
 LIST superl = sup ;
@@ -171,17 +171,17 @@ LIST cond = cond ;
 
 LIST imprt = imprt ;
 
-LIST sg1 = sg1 ;
-LIST sg2 = sg2 ;
-LIST sg3 = sg3 ;
+LIST sg1 = (p1 sg) ;
+LIST sg2 = (p2 sg) ;
+LIST sg3 = (p3 sg) ;
 
-LIST du1 = du1 ;
-LIST du2 = du2 ;
-LIST du3 = du3 ;
+LIST du1 = (p1 du) ;
+LIST du2 = (p2 du) ;
+LIST du3 = (p3 du) ;
 
-LIST pl1 = pl1 ;
-LIST pl2 = pl2 ;
-LIST pl3 = pl3 ;
+LIST pl1 = (p1 pl) ;
+LIST pl2 = (p2 pl) ;
+LIST pl3 = (p3 pl) ;
 
 LIST inf = inf ;
 LIST conneg = conneg ;
@@ -287,7 +287,7 @@ LIST ←hab→ = ←hab→ (@ADVL→ prn loc) (@←ADVL prn loc);
 LIST ←ext→ = ←ext→ ;
 
 
-LIST HAB-V-TAGS = pl3 sg3 conneg prfprc inf ;
+LIST HAB-V-TAGS = (p3 pl) (p3 sg) conneg prfprc inf ;
 
 LIST @→N = @→N ;
 
@@ -419,23 +419,23 @@ SET NOT-PRFPRC = WORD - prfprc ;
 # Person
 # - - - -
 
-LIST V-SG1 = (vblex sg1) ;
+LIST V-SG1 = (vblex p1 sg) ;
 
-LIST V-SG2 = (vblex sg2) ;
+LIST V-SG2 = (vblex p2 sg) ;
 
-LIST V-SG3 = (vblex sg3) ;
+LIST V-SG3 = (vblex p3 sg) ;
 
-LIST V-DU1 = (vblex du1) ;
+LIST V-DU1 = (vblex p1 du) ;
 
-LIST V-DU2 = (vblex du2) ;
+LIST V-DU2 = (vblex p2 du) ;
 
-LIST V-DU3 = (vblex du3) ;
+LIST V-DU3 = (vblex p3 du) ;
 
-LIST V-PL1 = (vblex pl1) ;
+LIST V-PL1 = (vblex p1 pl) ;
 
-LIST V-PL2 = (vblex pl2) ;
+LIST V-PL2 = (vblex p2 pl) ;
 
-LIST V-PL3 = (vblex pl3) ;
+LIST V-PL3 = (vblex p3 pl) ;
 
 
 # Note that imperative verbs are not included in these sets!
@@ -472,24 +472,24 @@ LIST VPRFPRC = (vblex prfprc) ;
 LIST LEATPRFPRC = ("<leat>"i prfprc) ;
 SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
 # In order to distinguish between real leat-constructions and participles of other verbs
-LIST HABEO-SG3 = ("<leat>"i sg3) (vblex neg sg3) ("<šaddat>" sg3) ;
+LIST HABEO-SG3 = ("<leat>"i p3 sg) (vblex neg p3 sg) ("<šaddat>" p3 sg) ;
 
-LIST HABEO-PL3 = ("<leat>"i pl3) (vblex neg pl3) ("<šadda>t" pl3)  ;
+LIST HABEO-PL3 = ("<leat>"i p3 pl) (vblex neg p3 pl) ("<šadda>t" p3 pl)  ;
 
 SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
 
 # Pronoun sets
 # ------------
 
-LIST MUN = (prn pers sg1 nom) ;
-LIST DON = (prn pers sg2 nom) ;
-LIST SON = ("son" pron pers sg3 nom) ;
-LIST MOAI = (prn pers du1 nom) ;
-LIST DOAI = (prn pers du2 nom) ;
-LIST SOAI = (prn pers du3 nom) ;
-LIST MII-PERS = (prn pers pl1 nom) ;
-LIST DII = (prn pers pl2 nom) ;
-LIST SII = ("son" pron pers pl3 nom) ;
+LIST MUN = (prn pers p1 sg nom) ;
+LIST DON = (prn pers p2 sg nom) ;
+LIST SON = ("son" pron pers p3 sg nom) ;
+LIST MOAI = (prn pers p1 du nom) ;
+LIST DOAI = (prn pers p2 du nom) ;
+LIST SOAI = (prn pers p3 du nom) ;
+LIST MII-PERS = (prn pers p1 pl nom) ;
+LIST DII = (prn pers p2 pl nom) ;
+LIST SII = ("son" pron pers p3 pl nom) ;
 
 SET PPRON-NOM-NOT-DAT = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
 
@@ -502,8 +502,8 @@ SET PRON-DU = MOAI OR DOAI OR SOAI ;
 
 SET PPRON-NOT-SII = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII ;
 
-LIST PPRON-GEN = (sg1 gen) (sg2 gen) (sg3 gen) (du1 gen) (du2 gen) (du3 gen)
-	 (pl1 gen) (pl2 gen) (pl3 gen) ;
+LIST PPRON-GEN = (p1 sg gen) (p2 sg gen) (p3 sg gen) (p1 du gen) (p2 du gen) (p3 du gen)
+	 (p1 pl gen) (p2 pl gen) (p3 pl gen) ;
 
 SET PPRON-NOT-GEN = (prn pers) - PPRON-GEN ;
 
@@ -511,10 +511,10 @@ LIST DEM-SG = (prn dem sg nom) ;
 LIST DEM-PL = (prn dem pl nom) ;
 SET NOT-DEM = WORD - dem ;
 
-LIST SGPRON = (prn sg1) (prn sg2) (prn sg3) (prn sg) (prn pxsg1) (prn pxsg2) (prn pxsg3) ;
-LIST DUPRON = (prn du1) (prn du2) (prn du3) (prn pxdu1) (prn pxdu2) (prn pxdu3) ;
-LIST PLPRON = (prn pl1) (prn pl2) (prn pl3) (prn pl) (prn pxpl1) (prn pxpl2) (prn pxpl3) ;
-LIST DUPRON-NOTPX = (prn du1) (prn du2) (prn du3) ;
+LIST SGPRON = (prn p1 sg) (prn p2 sg) (prn p3 sg) (prn sg) (prn px1sg) (prn px2sg) (prn px3sg) ;
+LIST DUPRON = (prn p1 du) (prn p2 du) (prn p3 du) (prn px1du) (prn px2du) (prn px3du) ;
+LIST PLPRON = (prn p1 pl) (prn p2 pl) (prn p3 pl) (prn pl) (prn px1pl) (prn px2pl) (prn px3pl) ;
+LIST DUPRON-NOTPX = (prn p1 du) (prn p2 du) (prn p3 du) ;
 
 SET PRON-NOT-SG = DUPRON OR PLPRON ;
 
@@ -669,7 +669,7 @@ num OR rcmpnd OR cc OR (prn dem) OR (prn ref gen) OR (ind attr) OR
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
 
-SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex a) OR (pres sg3) + ind OR (pres sg1) + ind OR (imprt du2) ;
+SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex a) OR (pres p3 sg) + ind OR (pres p1 sg) + ind OR (imprt p2 du) ;
 # to be used together with PRE-NP-HEAD before @>N is disambiguated
 
 SET NP-MEMBER = PRE-NP-HEAD OR n ;
@@ -716,7 +716,7 @@ SET NAPP = WORD - PRE-APP ;
 
 #!! * Miscellaneous sets
 # ------------------
-LIST Px = pxsg1 pxsg2 pxsg3 pxdu1 pxdu2 pxdu3 pxpl1 pxpl2 pxpl3 ;
+LIST Px = px1sg px2sg px3sg px1du px2du px3du px1pl px2pl px3pl ;
 
 LIST GASKAL = "<gaskal>" "<gaskkal>" "<gaskii>" "<gaskka>" "<gaskkas>" ;
 
