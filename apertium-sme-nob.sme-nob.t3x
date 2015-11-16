@@ -297,7 +297,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="Pot"/>
     </def-attr>
     <def-attr n="voice">
-      <attr-item tags="pass"/>
+      <attr-item tags="pasv"/>
     </def-attr>
     <def-attr n="animacy">
       <attr-item tags="impers"/>
@@ -525,7 +525,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <let><var n="gender"/><lit-tag v="nt"/></let>
         </when>
         <when>
-          <test><equal><clip pos="1" part="voice"/><lit-tag v="pass"/></equal></test>
+          <test><equal><clip pos="1" part="voice"/><lit-tag v="pasv"/></equal></test>
           <let><var n="gender"/><lit-tag v="nt"/></let>
         </when>
         <when>

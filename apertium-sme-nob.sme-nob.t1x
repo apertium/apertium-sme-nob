@@ -568,7 +568,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="vabess"/>
     </def-attr>
     <def-attr n="voice">
-      <attr-item tags="pass"/>
+      <attr-item tags="pasv"/>
     </def-attr>
     <def-attr n="animacy">
       <attr-item tags="impers"/>
@@ -2256,7 +2256,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                  TODO: OK to just discard syn_label from pret.passives?">
         <when>
           <test><and>
-            <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pass"/></equal>
+            <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pasv"/></equal>
             <equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal>
             <or>
               <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
