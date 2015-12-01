@@ -158,7 +158,7 @@ LIST Foc_son = foc_son ("<son>" pcle) ;
 LIST iv = iv ;
 LIST tv = tv ;
 
-LIST pass = pass ;              # bidix-added
+LIST pasv = pasv ;              # bidix-added
 LIST der_pass = der_passl der_passs ;
 
 LIST prt = pret;
@@ -1649,7 +1649,7 @@ SELECT:fallback ("prpers"i) (0 ("<ieš>"i) + acc) ;
 
 # Adverbs
 # =======
-SELECT:ble-mye-verre ("mye") (0 ("<sakka>") + adv) (-1 a + pass LINK 0 v) ; # vearránii sakka
+SELECT:ble-mye-verre ("mye") (0 ("<sakka>") + adv) (-1 a + pasv LINK 0 v) ; # vearránii sakka
 SELECT ("til") (0 ("<vuhtii>")) (*-1 ("<váldit>")) ;
 SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
 SELECT ("så") (0 ("<nu>"i)) (1 a) ; # dat skuvla nu johtil ahte
