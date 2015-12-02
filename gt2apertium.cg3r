@@ -77,6 +77,9 @@ MAP ("excl") ("!");
 MAP (Prop) (np);
 MAP (N)    (n) OR (np);
 
+MAP (Sem/Fem) (sem_fem) OR (np ant f);
+MAP (Sem/Mal) (sem_mal) OR (np ant m);
+
 # The rest are simply lowercasing and s/>/→/;s/</←/;s/\//_/
 MAP (@>A) (@→A);
 MAP (@A<) (@A←);
@@ -335,7 +338,6 @@ MAP (Sem/Feat-phys_Wthr) (sem_feat-phys_wthr);
 MAP (Sem/Feat_Plant) (sem_feat_plant);
 MAP (Sem/Feat-psych) (sem_feat-psych);
 MAP (Sem/Feat-psych_Hum) (sem_feat-psych_hum);
-MAP (Sem/Fem) (sem_fem);
 MAP (Sem/Food) (sem_food);
 MAP (Sem/Food-med) (sem_food-med);
 MAP (Sem/Food_Perc-phys) (sem_food_perc-phys);
@@ -368,7 +370,6 @@ MAP (Sem/Hum_Wthr) (sem_hum_wthr);
 MAP (Sem/Ideol) (sem_ideol);
 MAP (Sem/Lang) (sem_lang);
 MAP (Sem/Lang_Tool) (sem_lang_tool);
-MAP (Sem/Mal) (sem_mal);
 MAP (Sem/Mat) (sem_mat);
 MAP (Sem/Mat_Plant) (sem_mat_plant);
 MAP (Sem/Mat_Txt) (sem_mat_txt);
