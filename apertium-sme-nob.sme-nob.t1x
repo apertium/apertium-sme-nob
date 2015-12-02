@@ -38,9 +38,6 @@ And then there are some categories like "month", with all the months.
 
 <transfer default="chunk">
   <section-def-cats>
-    <def-cat n="CLB">
-      <cat-item tags="clb"/>
-    </def-cat>
     <def-cat n="adpos">
       <cat-item tags="adp.*"/>
       <cat-item tags="pr.*"/>
@@ -6426,25 +6423,6 @@ TODO: this should be an mwe in the analyser.">
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_adv"/>
               <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
-      </action>
-    </rule>
-
-    <rule comment="REGLA: CLB">
-      <pattern>
-        <pattern-item n="CLB"/>
-      </pattern>
-      <action>
-        <out>
-          <chunk name="clb" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="CLB"/></tag>
-              <tag><clip pos="1" side="tl" part="tags"/></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="whole"/>
             </lu>
           </chunk>
         </out>

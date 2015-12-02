@@ -38,11 +38,11 @@ LIST interj = ij ;
 LIST abbr = abbr ;
 LIST acr = acr ;
 
-LIST clb = clb ;
-LIST left = left ;
-LIST right = right ;
+LIST clb = clb sent cm ;
+LIST left = left lquot ;
+LIST right = right rquot ;
 LIST web = web ;
-LIST punct = punct ;
+LIST punct = punct guio quot ;
 
 LIST COMMA = "," ;
 LIST ¶ = ¶;
@@ -678,8 +678,8 @@ SET PRE-A-N = (prn pers gen) OR (prn pers acc) OR (prn ind) OR num OR (a ord) OR
 
 SET NOT-PRE-A-N = WORD - PRE-A-N ;
 
-LIST PUNCT-LEFT = (punct left) ;
-LIST PUNCT-RIGHT = (punct right) ;
+LIST PUNCT-LEFT = lquot ;
+LIST PUNCT-RIGHT = rquot ;
 
 SET PRE-APP = COMMA OR PUNCT-LEFT OR PRE-NP-HEAD ;
 # This set ist not only for what can

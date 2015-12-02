@@ -66,6 +66,17 @@ MAP (<smj>) (←smj→);
 MAP (<ext>) (←ext→);
 MAP (<vdic>) (←vdic→);
 
+LIST was_clb = cm sent;
+MAP (CLB) was_clb;
+
+LIST was_punct = quot punct ("-" guio);
+MAP (PUNCT) was_punct;
+
+MAP ("excl") ("!");
+
+MAP (Prop) (np);
+MAP (N)    (n) OR (np);
+
 # The rest are simply lowercasing and s/>/→/;s/</←/;s/\//_/
 MAP (@>A) (@→A);
 MAP (@A<) (@A←);
@@ -122,7 +133,6 @@ MAP (ACR) (acr);
 MAP (Actio) (actio);
 MAP (Adv) (adv);
 MAP (Attr) (attr);
-MAP (CLB) (clb);
 MAP (Cmpnd) (cmpnd);
 MAP (Coll) (coll);
 MAP (Com) (com);
@@ -208,7 +218,6 @@ MAP (Inf) (inf);
 MAP (IV) (iv);
 MAP (LEFT) (left);
 MAP (Loc) (loc);
-MAP (N) (n);
 MAP (Neg) (neg);
 MAP (Nom) (nom);
 MAP (NomAg) (nomag);
@@ -222,9 +231,7 @@ MAP (Po) (po);
 MAP (Pot) (pot);
 MAP (Pr) (pr);
 MAP (PrfPrc) (prfprc);
-MAP (Prop) (prop);
 MAP (PrsPrc) (prsprc);
-MAP (PUNCT) (punct);
 MAP (Qst) (qst);
 MAP (Cmp/SplitR) (rcmpnd);
 MAP (Recipr) (recipr);
