@@ -71,11 +71,11 @@ LIST prop = prop ;
 
 LIST sem_ani = sem_ani ;
 LIST sem_date = sem_date ;
-LIST sem_fem = sem_fem ;
+LIST sem_fem = sem_fem (ant f) ;
 LIST sem_clth = sem_clth ;
 LIST sem_group = sem_group ;
 LIST sem_hum = sem_hum ;
-LIST sem_mal = sem_mal ;
+LIST sem_mal = sem_mal (ant m) ;
 LIST sem_measr = sem_measr ;
 LIST sem_money = sem_money ;
 LIST sem_obj = sem_obj ;
@@ -86,14 +86,14 @@ LIST sem_time = sem_time ;
 LIST sem_year = sem_year ;
 LIST sem_txt = sem_txt ;
 
-SET FIRSTNAME = (prop sem_fem) OR (prop sem_mal) ;
+SET FIRSTNAME = (np ant f) OR (np ant m) OR (prop sem_fem) OR (prop sem_mal) ;
 
 LIST TIME-N-SET = (n sem_time) ;
 LIST NOT-TIME = "<dulvi>" "<lohpi>" "<vuorru>" ;
 SET TIME-N = TIME-N-SET - NOT-TIME ;
 
 
-LIST HUMAN = sem_hum sem_mal sem_fem sem_sur pers numag der_numag ;
+LIST HUMAN = sem_hum sem_mal sem_fem ant sem_sur pers numag der_numag ;
 
 LIST LANGUAGE = ("<.*giella>"ri n) ("<.*giel>"ri n) ("<.*giel>"ri a) "<dárrolaš>"i "<nuortalaš>"i "<oarjelsámegiel>"i "<sámegiel>"i "<sápmelaš>"i "<ubmisámegiel>"i ;
 
@@ -593,7 +593,7 @@ SET CRD = (@CNP) OR COMMA OR NEGFOC OR XGO OR ("_") OR ("-") OR DADE ;
 # AFTER LCRD vs. GCRD disambiguation
 
 LIST HAB-CASE = loc (←smj→ ine) (←sma→ gen) ;
-LIST HAB-ACTOR-ALL = sem_hum sem_mal sem_sur sem_fem sem_ani pers ("<gii>") indef coll ;
+LIST HAB-ACTOR-ALL = sem_hum sem_mal sem_sur sem_fem ant sem_ani pers ("<gii>") indef coll ;
 SET HAB-ACTOR = HAB-ACTOR-ALL - ("<cihca>") ;
 SET HAB-ACTOR-NOT-HUMAN = sem_org ;
 

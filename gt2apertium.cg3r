@@ -77,8 +77,8 @@ MAP ("excl") ("!");
 MAP (Prop) (np);
 MAP (N)    (n) OR (np);
 
-MAP (Sem/Fem) (sem_fem) OR (np ant f);
-MAP (Sem/Mal) (sem_mal) OR (np ant m);
+MAP (Sem/Fem) (sem_fem) OR (ant f);
+MAP (Sem/Mal) (sem_mal) OR (ant m);
 
 # The rest are simply lowercasing and s/>/→/;s/</←/;s/\//_/
 MAP (@>A) (@→A);
