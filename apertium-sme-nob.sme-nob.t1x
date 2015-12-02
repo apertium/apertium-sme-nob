@@ -180,10 +180,8 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.*.abbr"/>
       <cat-item tags="n.*.abbr.*"/>
       <cat-item tags="n.abbr.*"/>
-      <cat-item tags="n.prop"/>
-      <cat-item tags="n.*.prop"/>
-      <cat-item tags="n.*.prop.*"/>
-      <cat-item tags="n.prop.*"/>
+      <cat-item tags="np"/>
+      <cat-item tags="np.*"/>
     </def-cat>
     <def-cat n="nom_all" c="In case nom_head doesn't catch all non-compounds, use this for the single-word rule.">
       <cat-item tags="vblex.*.*.n.*"/>
@@ -205,27 +203,27 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.*.gen.@Num←"/>
     </def-cat>
     <def-cat n="nom.prop.antcog_mod">
-      <cat-item tags="n.prop.sem_sur.*.@→N"/>
-      <cat-item tags="n.prop.sem_fem.*.@→N"/>
-      <cat-item tags="n.prop.sem_mal.*.@→N"/>
+      <cat-item tags="np.sem_sur.*.@→N"/>
+      <cat-item tags="np.ant.f.*.@→N"/>
+      <cat-item tags="np.ant.m.*.@→N"/>
     </def-cat>
     <def-cat n="nom.prop.antcog">
-      <cat-item tags="n.prop.sem_sur.*"/>
-      <cat-item tags="n.prop.sem_fem.*"/>
-      <cat-item tags="n.prop.sem_mal.*"/>
+      <cat-item tags="np.sem_sur.*"/>
+      <cat-item tags="np.ant.f.*"/>
+      <cat-item tags="np.ant.m.*"/>
     </def-cat>
     <def-cat n="nom.prop">
-      <cat-item tags="n.prop.*"/>
+      <cat-item tags="np.*"/>
     </def-cat>
     <def-cat n="nom.prop_mod">
-      <cat-item tags="n.prop.*.attr.*"/>
+      <cat-item tags="np.*.attr.*"/>
     </def-cat>
     <def-cat n="nom.prop.gen">
-      <cat-item tags="n.prop.*.gen"/>
-      <cat-item tags="n.prop.*.gen.*"/>
+      <cat-item tags="np.*.gen"/>
+      <cat-item tags="np.*.gen.*"/>
     </def-cat>
     <def-cat n="nom.prop_attr">
-      <cat-item tags="n.prop.attr.*"/>
+      <cat-item tags="np.attr.*"/>
       <cat-item tags="n.*.@→N"/>
       <cat-item lemma="gonagas" tags="n.*"/>
       <cat-item lemma="dronnet" tags="n.*"/>
@@ -535,14 +533,14 @@ And then there are some categories like "month", with all the months.
     </def-attr>
     <def-attr n="a_nom_all">
       <attr-item tags="abbr"/>
-      <attr-item tags="n.prop"/>
-      <attr-item tags="n.prop.sem_sur"/>
-      <attr-item tags="n.prop.sem_plc"/>
-      <attr-item tags="n.prop.sem_org"/>
-      <attr-item tags="n.prop.sem_mal"/>
-      <attr-item tags="n.prop.sem_fem"/>
-      <attr-item tags="n.prop.sem_ani"/>
-      <attr-item tags="n.prop.attr"/>
+      <attr-item tags="np"/>
+      <attr-item tags="np.sem_sur"/>
+      <attr-item tags="np.sem_plc"/>
+      <attr-item tags="np.sem_org"/>
+      <attr-item tags="np.ant.m"/>
+      <attr-item tags="np.ant.f"/>
+      <attr-item tags="np.sem_ani"/>
+      <attr-item tags="np.attr"/>
       <attr-item tags="n"/>
       <attr-item tags="n.acr"/>
       <attr-item tags="np"/>
