@@ -158,6 +158,8 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.cmp.*"/>
       <cat-item tags="n.*.cmp"/>
       <cat-item tags="n.*.cmp.*"/>
+      <cat-item tags="np.*.cmp"/>
+      <cat-item tags="np.*.cmp.*"/>
     </def-cat>
     <def-cat n="nom_head" c="Head nom's are sent to out_nom, thus we can have Verb derivatives here.">
       <cat-item tags="vblex.*.n.*"/>
@@ -188,19 +190,25 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="vblex.*.*.n"/>
       <cat-item tags="n.*"/>
       <cat-item tags="n"/>
+      <cat-item tags="np.*"/>
+      <cat-item tags="np"/>
       <cat-item tags="abbr.*"/>
       <cat-item tags="abbr"/>
     </def-cat>
     <def-cat n="nom_rP" c="Head nom before a postposition, sent to out_nom">
       <cat-item tags="vblex.*.*.n.*.@→P"/>
       <cat-item tags="n.*.@→P"/>
+      <cat-item tags="np.*.@→P"/>
       <cat-item tags="abbr.*.@→P"/>
     </def-cat>
     <def-cat n="nom.gen">
       <cat-item tags="n.*.gen.*"/>
+      <cat-item tags="np.*.gen"/>
+      <cat-item tags="np.*.gen.*"/>
     </def-cat>
     <def-cat n="nom.gen_NUMl">
       <cat-item tags="n.*.gen.@Num←"/>
+      <cat-item tags="np.*.gen.@Num←"/>
     </def-cat>
     <def-cat n="nom.prop.antcog_mod">
       <cat-item tags="np.sem_sur.*.@→N"/>
@@ -225,6 +233,7 @@ And then there are some categories like "month", with all the months.
     <def-cat n="nom.prop_attr">
       <cat-item tags="np.attr.*"/>
       <cat-item tags="n.*.@→N"/>
+      <cat-item tags="np.*.@→N"/>
       <cat-item lemma="gonagas" tags="n.*"/>
       <cat-item lemma="dronnet" tags="n.*"/>
       <cat-item lemma="prinsa" tags="n.*"/>
