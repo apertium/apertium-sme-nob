@@ -30,7 +30,7 @@ LIST pron = prn ;
 
 LIST cs = cnjsub ;
 LIST cc = cnjcoo ;
-LIST po = po ;
+LIST po = post ;
 LIST pr = pr ;
 LIST pcle = pcle ;
 LIST num = num ;
@@ -80,7 +80,7 @@ LIST sem_measr = sem_measr ;
 LIST sem_money = sem_money ;
 LIST sem_obj = sem_obj ;
 LIST sem_org = sem_org ;
-LIST sem_plc = sem_plc ;
+LIST sem_plc = sem_plc top ;
 LIST sem_sur = sem_sur ;
 LIST sem_time = sem_time ;
 LIST sem_year = sem_year ;
@@ -169,7 +169,7 @@ LIST ind = indic ;
 LIST pot = pot ;
 LIST cond = cond ;
 
-LIST imprt = imprt ;
+LIST imprt = imp ;
 
 LIST sg1 = (p1 sg) ;
 LIST sg2 = (p2 sg) ;
@@ -378,7 +378,7 @@ LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
 
 # Word or not
 # -----------
-LIST WORD = n adj adv vblex prn cnjsub cnjcoo po pr ij pcle num abbr acr \? ;
+LIST WORD = n adj adv vblex prn cnjsub cnjcoo post pr ij pcle num abbr acr \? ;
 # any word
 
 SET REALWORD = WORD - num - ord ;
@@ -669,7 +669,7 @@ num OR rcmpnd OR cc OR (prn dem) OR (prn ref gen) OR (ind attr) OR
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
 
-SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex a) OR (pres p3 sg) + ind OR (pres p1 sg) + ind OR (imprt p2 du) ;
+SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex a) OR (pres p3 sg) + ind OR (pres p1 sg) + ind OR (imp p2 du) ;
 # to be used together with PRE-NP-HEAD before @>N is disambiguated
 
 SET NP-MEMBER = PRE-NP-HEAD OR n ;
@@ -854,7 +854,7 @@ SELECT ("når"i) (0 ("<go>"i)) (0 cs) ;
 
 SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 
-# Po: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
+# post: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
 SELECT ("etter") (0 ("<mielde>"i)) (0 po) (-1 ("<dárbu>"i) OR ("<miella>"i)) ;
 ## Don vieččat boaldinmuoraid dárbbu mielde.
 

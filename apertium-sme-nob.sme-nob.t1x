@@ -41,11 +41,11 @@ And then there are some categories like "month", with all the months.
     <def-cat n="adpos">
       <cat-item tags="adp.*"/>
       <cat-item tags="pr.*"/>
-      <cat-item tags="po.*"/>
+      <cat-item tags="post.*"/>
     </def-cat>
     <def-cat n="postpos">
       <cat-item tags="adp.*"/>
-      <cat-item tags="po.*"/>
+      <cat-item tags="post.*"/>
     </def-cat>
     <def-cat n="adverb">
       <cat-item tags="adv"/>
@@ -377,8 +377,8 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="sivva" tags="n.sg.loc.*"/>
     </def-cat>
     <def-cat n="lex-ektui">
-      <cat-item lemma="ektui" tags="po"/>
-      <cat-item lemma="ektui" tags="po.*"/>
+      <cat-item lemma="ektui" tags="post"/>
+      <cat-item lemma="ektui" tags="post.*"/>
     </def-cat>
     <def-cat n="lex-go">
       <cat-item lemma="go" tags="cnjsub.*"/>
@@ -488,7 +488,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="ij"/>
     </def-attr>
     <def-attr n="a_prep">
-      <attr-item tags="po"/>
+      <attr-item tags="post"/>
       <attr-item tags="pr"/>
     </def-attr>
     <def-attr n="a_num">
@@ -544,7 +544,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="abbr"/>
       <attr-item tags="np"/>
       <attr-item tags="np.sem_sur"/>
-      <attr-item tags="np.sem_plc"/>
+      <attr-item tags="np.top"/>
       <attr-item tags="np.sem_org"/>
       <attr-item tags="np.ant.m"/>
       <attr-item tags="np.ant.f"/>
@@ -640,7 +640,6 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="pres"/>
       <attr-item tags="pret"/>
       <attr-item tags="inf"/>
-      <attr-item tags="imprt"/>
       <attr-item tags="imp"/>
       <attr-item tags="prfprc"/>
       <attr-item tags="pp"/>

@@ -74,6 +74,10 @@ MAP (PUNCT) was_punct;
 
 MAP ("excl") ("!");
 
+MAP (Sem/Plc) (top) OR (sem_plc);
+MAP (Imprt) (imp);
+MAP (Po) (post);
+
 MAP (Prop) (np);
 MAP (N)    (n) OR (np);
 
@@ -214,7 +218,6 @@ MAP (G3) (g3);
 MAP (Gen) (gen);
 MAP (Ger) (ger);
 MAP (Ill) (ill);
-MAP (Imprt) (imprt);
 MAP (ImprtII) (imprtii);
 MAP (Ine) (ine);
 MAP (Inf) (inf);
@@ -230,7 +233,6 @@ MAP (Ord) (ord);
 MAP (Pcle) (pcle);
 MAP (Pers) (pers);
 MAP (Pl) (pl);
-MAP (Po) (po);
 MAP (Pot) (pot);
 MAP (Pr) (pr);
 MAP (PrfPrc) (prfprc);
@@ -406,7 +408,6 @@ MAP (Sem/Plant-part) (sem_plant-part);
 MAP (Sem/Plant_Plant-part) (sem_plant_plant-part);
 MAP (Sem/Plant_Tool) (sem_plant_tool);
 MAP (Sem/Plant_Tool-measr) (sem_plant_tool-measr);
-MAP (Sem/Plc) (sem_plc);
 MAP (Sem/Plc-abstr) (sem_plc-abstr);
 MAP (Sem/Plc-abstr_Rel_State) (sem_plc-abstr_rel_state);
 MAP (Sem/Plc-abstr_Route) (sem_plc-abstr_route);
