@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ## Usage (to get entries missing from nob.dix):
 # dev/sme-nob.inconsistency.sh | grep '^#'
