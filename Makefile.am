@@ -49,10 +49,14 @@ debug: \
 
 .deps/%.autobil.prefixes: %.autobil.bin .deps/.d
 	lt-print $< | sed 's/ /@_SPACE_@/g' > .deps/$*.autobil.att
-	hfst-txt2fst -e ε <  .deps/$*.autobil.att > .deps/$*.autobil.hfst
-	hfst-project -p upper .deps/$*.autobil.hfst > .deps/$*.autobil.upper                                   # bidix
+	hfst-txt2fst -e ε -i  .deps/$*.autobil.att -o .deps/$*.autobil.hfst
+	hfst-project -p upper .deps/$*.autobil.hfst -o .deps/$*.autobil.upper                                   # bidix
+	echo '[ %<n%> -> [ %<n%> | %<nn%> ] ] | [ %<vblex%> -> [ %<vblex%> | %<vblexvblex%> ] ] | [ %<adv%> -> [ %<adv%> | %<advadv%> ] ]' \
+		| hfst-regexp2fst -o .deps/$*.derivpos.hfst
+	hfst-compose -1 .deps/$*.autobil.upper -2 .deps/$*.derivpos.hfst -o .deps/$*.autobil-derivpos.hfst
+	hfst-project -p lower .deps/$*.autobil-derivpos.hfst -o .deps/$*.autobil-derivpos.hfsa                  # bidix with n -> n|nn
 	echo ' [ ? - %+ ]* ' | hfst-regexp2fst > .deps/$*.any-nonplus.hfst                                                        # [^+]*
-	hfst-concatenate -1 .deps/$*.autobil.upper -2 .deps/$*.any-nonplus.hfst -o .deps/$*.autobil.nonplussed    # bidix [^+]*
+	hfst-concatenate -1 .deps/$*.autobil-derivpos.hfsa -2 .deps/$*.any-nonplus.hfst -o .deps/$*.autobil.nonplussed    # bidix [^+]*
 	echo ' %+ ' | hfst-regexp2fst > .deps/$*.single-plus.hfst                                                                 # +
 	hfst-concatenate -1 .deps/$*.single-plus.hfst -2 .deps/$*.autobil.nonplussed -o .deps/$*.autobil.postplus # + bidix [^+]*
 	hfst-repeat -f0 -t1 -i .deps/$*.autobil.postplus -o .deps/$*.autobil.postplus.0,1                      # (+ bidix [^+]*){0,1} -- gives at most one +
