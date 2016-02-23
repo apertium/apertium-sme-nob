@@ -47,11 +47,12 @@ debug: \
 ## Monolingual transducers
 ###############################################################################
 
+# Override prefixes from ap_include, since we need the derivation-pos-changes:
 .deps/%.autobil.prefixes: %.autobil.bin .deps/.d
 	lt-print $< | sed 's/ /@_SPACE_@/g' > .deps/$*.autobil.att
 	hfst-txt2fst -e ε -i  .deps/$*.autobil.att -o .deps/$*.autobil.hfst
 	hfst-project -p upper .deps/$*.autobil.hfst -o .deps/$*.autobil.upper                                   # bidix
-	echo '[ %<n%> -> [ %<n%> | %<ex_n%> ] ] | [ %<vblex%> -> [ %<vblex%> | %<ex_vblex%> ] ] | [ %<adj%> -> [ %<adj%> | %<ex_adj%> ] ]' \
+	echo '[ "<n>" -> [ "<n>" | "<ex_n>" ] ] | [ "<vblex>" -> [ "<vblex>" | "<ex_vblex>" ] ] | [ "<adj>" -> [ "<adj>" | "<ex_adj>" ] ]' \
 		| hfst-regexp2fst -o .deps/$*.derivpos.hfst
 	hfst-compose -1 .deps/$*.autobil.upper -2 .deps/$*.derivpos.hfst -o .deps/$*.autobil-derivpos.hfst
 	hfst-project -p lower .deps/$*.autobil-derivpos.hfst -o .deps/$*.autobil-derivpos.hfsa                  # bidix with n -> n|ex_n
