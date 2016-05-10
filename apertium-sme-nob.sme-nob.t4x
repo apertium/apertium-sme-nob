@@ -185,24 +185,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <attr-item tags="GD_pers"/>
     </def-attr>
     <def-attr n="nbr">
-      <attr-item tags="Sg"/>
-      <attr-item tags="Du"/>
-      <attr-item tags="Pl"/>
       <attr-item tags="sg"/>
       <attr-item tags="du"/>
       <attr-item tags="pl"/>
       <attr-item tags="ND"/>
       <attr-item tags="sp"/>
-      <!-- the bidix pardef __verb should split these: -->
-      <attr-item tags="Sg1"/>
-      <attr-item tags="Du1"/>
-      <attr-item tags="Pl1"/>
-      <attr-item tags="Sg2"/>
-      <attr-item tags="Du2"/>
-      <attr-item tags="Pl2"/>
-      <attr-item tags="Sg3"/>
-      <attr-item tags="Du3"/>
-      <attr-item tags="Pl3"/>
     </def-attr>
     <def-attr n="art">
       <attr-item tags="def"/>
@@ -231,9 +218,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <attr-item tags="TD"/>
     </def-attr>
     <def-attr n="modality">
-      <attr-item tags="Ind"/>
-      <attr-item tags="Cond"/>
-      <attr-item tags="Pot"/>
+      <attr-item tags="ind"/>
+      <attr-item tags="cond"/>
+      <attr-item tags="pot"/>
     </def-attr>
     <def-attr n="voice">
       <attr-item tags="pasv"/>
@@ -515,9 +502,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       </choose>
 
 
-      <choose><when c="plurals are either mf or empty; if gen is already empty, this has no effect">
+      <choose><when c="plurals are un">
         <test><equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal></test>
-        <let><clip pos="2" part="gen"/><lit-tag v="mf"/></let>
+        <let><clip pos="2" part="gen"/><lit-tag v="un"/></let>
       </when></choose>
 
       <choose><when c="Reflexive, ensure it's got the right tags (might have started as genitive that was selected by adposition)">
@@ -644,12 +631,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           </when></choose>
         </when>
         <otherwise>
-          <choose><when c="no gender on plural or definite determiners">
+          <choose><when c="un gender on plural or definite determiners">
             <test><or>
               <equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal>
               <equal><clip pos="2" part="art"/><lit-tag v="def"/></equal>
             </or></test>
-            <let><clip pos="2" part="gen"/><lit v=""/></let>
+            <let><clip pos="2" part="gen"/><lit v="un"/></let>
           </when></choose>
           <choose><when c="no defnes on plural determiners">
             <test><equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal></test>
@@ -1146,7 +1133,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
                   <out>
                     <lu>
                       <get-case-from pos="1"><lit v="den"/></get-case-from>
-                      <lit-tag v="det.dem.pl"/>
+                      <lit-tag v="det.dem.un.pl"/>
                     </lu>
                     <b/>
                   </out>
@@ -1248,7 +1235,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <when>
             <test><and>
               <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
-              <not><equal><clip pos="0" part="modality"/><lit-tag v="Cond"/></equal></not>
+              <not><equal><clip pos="0" part="modality"/><lit-tag v="cond"/></equal></not>
               <in><clip pos="0" part="syn_label"/><list n="inf-mark"/></in>
             </and></test>
             <out>
