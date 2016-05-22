@@ -222,7 +222,6 @@ EXTRA_DIST=				\
 	$(BASENAME).$(PREFIX1).t2x	\
 	$(BASENAME).$(PREFIX1).t3x	\
 	$(BASENAME).$(PREFIX1).t4x	\
-	gt2apertium.cg3r		\
 	rm-deriv-cmp.twol		\
 	modes.xml
 
