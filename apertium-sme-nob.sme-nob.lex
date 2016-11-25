@@ -238,8 +238,8 @@ LIST der_st = der_st ;
 LIST der_stuvva = der_stuvva ;
 LIST der_upmi = der_upmi ;
 LIST der_supmi = der_supmi ;
-LIST der_vuohta = der_vuohta ;
-LIST der_goahti = der_goahti ;
+LIST der_vuota = der_vuota ;
+LIST der_inchl = der_inchl ;
 
 LIST der_lágan = der_lágan ;
 LIST der_lágán = der_lágán ;

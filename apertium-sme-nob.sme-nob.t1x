@@ -9,8 +9,8 @@ This is the first pass. Responsibilities of this file include:
     (this leads to some redundancy, hopefully we'll get a bidix module soon)
 * (De-)compounding
   * See rule: NOM.CMP NOM
-* goahti-derivation
-  * See rule: VERB Der/goahti
+* inchl-derivation
+  * See rule: VERB Der/inchl
 * Simple noun phrases
   * Heads and their simple modifiers/specifiers: adj nom, adj adj nom, det adj adj nom, num adj nom
   * See rule: DET ADJ_ATTR NOM
@@ -247,9 +247,6 @@ And then there are some categories like "month", with all the months.
     <def-cat n="vblex.actio">
       <cat-item tags="vblex.*.actio.*"/>
     </def-cat>
-    <def-cat n="goahti-v">
-      <cat-item lemma="goahti" tags="vblex.*"/>
-    </def-cat>
     <def-cat n="conj">
       <cat-item tags="cnjcoo"/>
       <cat-item tags="cnjsub"/>
@@ -447,7 +444,7 @@ And then there are some categories like "month", with all the months.
   <section-def-attrs>
     <def-attr n="a_der">
       <attr-item tags="der_halla"/>
-      <attr-item tags="der_goahti"/>
+      <attr-item tags="der_inchl"/>
       <attr-item tags="der_dimin"/>
     </def-attr>
     <def-attr n="a_sintagma">
@@ -2171,7 +2168,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </when></choose>
 
       <choose c="Prepend 'begynne' if ingressive:"><when>
-        <test><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_goahti"/></equal></test>
+        <test><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_inchl"/></equal></test>
         <out>
           <chunk name="verb" case="caseFirstWord">
             <tags>
