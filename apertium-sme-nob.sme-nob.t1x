@@ -356,6 +356,10 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="atnit" tags="vblex.tv.der_passl.vblex.iv.prfprc"/>
       <cat-item lemma="atnit" tags="vblex.tv.der_passl.vblex.iv.prfprc.*"/>
     </def-cat>
+    <def-cat n="lex-buresboahtin">
+      <cat-item lemma="buresboahtin" tags="n.*"/>
+      <cat-item lemma="Buresboahtin" tags="n.*"/>
+    </def-cat>
     <def-cat n="lex-diibmu">
       <cat-item lemma="diibmu" tags="n.*"/>
     </def-cat>
@@ -2462,6 +2466,26 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
          where we can avoid introducing complexity in the _regular_
          transfer rules.
     -->
+    <rule comment="REGLA: buresboathin → velkommen">
+      <pattern>
+        <pattern-item n="lex-buresboahtin"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="ij" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="velkommen"/>
+              <lit-tag v="ij"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: dan sadjái → i stedet">
       <pattern>
         <pattern-item n="lex-dan"/>
@@ -5546,6 +5570,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
+        <choose><when>
+          <test><equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="velkommen"/></equal></test>
+          <reject-current-rule shifting="no"/>
+        </when></choose>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
