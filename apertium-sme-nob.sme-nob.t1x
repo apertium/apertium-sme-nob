@@ -206,6 +206,9 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="np.*.gen"/>
       <cat-item tags="np.*.gen.*"/>
     </def-cat>
+    <def-cat n="nom.unprop.gen">
+      <cat-item tags="n.*.gen.*"/>
+    </def-cat>
     <def-cat n="nom.gen_NUMl">
       <cat-item tags="n.*.gen.@Num←"/>
       <cat-item tags="np.*.gen.@Num←"/>
@@ -3609,7 +3612,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <!-- <rules: Noun, numeral+noun and compounds -->
-    <rule comment="REGLA: NOM (tl: NOM, VERB)">
+    <rule comment="REGLA: NOM (tl: NOM, VERB)
+                   This is a catch-all rule; it's OK that some paths are blocked by previous rules.">
       <pattern>
         <pattern-item n="nom_all"/>
       </pattern>
@@ -5562,11 +5566,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="REGLA: NOM.GEN NOM
+    <rule comment="REGLA: NOM.UNPROP.GEN NOM
                    -----
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
-        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom.unprop.gen"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -5651,11 +5655,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="REGLA: NOM.GEN NOM.CMP NOM
+    <rule comment="REGLA: NOM.UNPROP.GEN NOM.CMP NOM
                    -----
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
-        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom.unprop.gen"/>
         <pattern-item n="nom.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
