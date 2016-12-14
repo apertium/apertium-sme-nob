@@ -971,8 +971,7 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="loc-fra-verbs" c="See 'ill-NIL-verbs' above.">
 <!--      <list-item v="gullat" c="Problematic; Leat go gullan sus alddis? vs Go gullen sámegiela dien mátkkis."/>-->
-      <list-item v="beassat" c="Mihttomearri lea beassat hálddašanguovvlus."/>
-      <list-item v="beassat" c="Mihttomearri lea beassat hálddašanguovvlus."/>
+      <list-item v="beassat" c="Mihttomearri lea beassat hálddašanguovllus."/>
       <list-item v="boahtit" c="Mun boađán gávpogis."/>
       <list-item v="gáidat"  c="Son lea gáidan Ipmila sánis."/>
       <list-item v="fárret"  c="… juogo fárret sámi gilážis vai besset eallit homofiilan."/>
@@ -1009,6 +1008,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="april"/>
       <list-item v="august"/>
       <list-item v="barnehage"/>
+      <list-item v="forord"/>
       <list-item v="begynnelse"/>
       <list-item v="brev"/>
       <list-item v="bruk"/>
@@ -1132,6 +1132,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="ill-i" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="del"/>
       <list-item v="sted"/>
+      <list-item v="forord"/>
     </def-list>
     <def-list n="ill-på" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="ferie"/>
@@ -5877,7 +5878,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for NOM.GEN NOM.GEN -->
         <!-- TODO: np.top.gen n.gen → n i.pr np.top.gen -->
-        <let><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@N←"/></let>
+        <let><clip pos="2" side="tl" part="syn_label"/><lit-tag v="@N←"/></let>
         <let><var n="c_name"/><lit v="pre_"/></let>
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <choose><when>
@@ -5930,7 +5931,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <out><b pos="1"/></out>
 
         <!-- for third NOM.GEN -->
-        <let><clip pos="3" side="sl" part="syn_label"/><lit-tag v="@N←"/></let>
+        <let><clip pos="3" side="tl" part="syn_label"/><lit-tag v="@N←"/></let>
         <let><var n="c_name"/><lit v=""/></let>
         <let><var n="pre-nom"/><lit v=""/></let>
         <let><clip pos="3" side="tl" part="gen-case"/><lit v=""/></let>
@@ -5942,7 +5943,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for first and second NOM.GEN -->
         <!-- TODO: np.top.gen n.gen → n i.pr np.top.gen -->
-        <let><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@N←"/></let>
+        <let><clip pos="2" side="tl" part="syn_label"/><lit-tag v="@N←"/></let>
         <let><var n="c_name"/><lit v="pre_"/></let>
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <choose><when>
@@ -5994,7 +5995,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for ADJ NOM.GEN NOM.GEN -->
         <!-- TODO: np.top.gen n.gen → n i.pr np.top.gen -->
-        <let><clip pos="3" side="sl" part="syn_label"/><lit-tag v="@N←"/></let>
+        <let><clip pos="3" side="tl" part="syn_label"/><lit-tag v="@N←"/></let>
         <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
@@ -6200,8 +6201,8 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
           <b/>
         </out>
 
-        <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></let>
-        <let><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></let>
+        <let><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@SUBJ→"/></let>
+        <let><clip pos="1" side="tl" part="case"/><lit-tag v="nom"/></let>
         <let><clip pos="1" side="tl" part="case"/><lit v="nom"/></let>
         <let><var n="c_name"/><lit v=""/></let>
         <let><var n="pre-nom"/><lit v=""/></let>
