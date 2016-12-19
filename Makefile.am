@@ -16,7 +16,6 @@ TARGETS_COMMON =				\
 	$(PREFIX1).mor.rlx.bin			\
 	$(PREFIX1).syn.rlx.bin			\
 	$(PREFIX1).lex.bin			\
-	$(PREFIX1).val.bin			\
 	$(PREFIX1).autobil.bin			\
 	$(PREFIX1).autogen.bin			\
 	$(PREFIX1).t1x.bin			\
@@ -44,7 +43,8 @@ TARGETS2 =			\
 debug: \
 	$(BASENAME).$(PREFIX1).mor.rlx \
 	$(BASENAME).$(PREFIX1).syn.rlx \
-	$(BASENAME).$(PREFIX2).rlx
+	$(BASENAME).$(PREFIX2).rlx     \
+	$(PREFIX1).val.bin
 
 ###############################################################################
 ## Monolingual transducers
