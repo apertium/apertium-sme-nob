@@ -22,7 +22,9 @@ TARGETS_COMMON =				\
 	$(PREFIX1).t1x.bin			\
 	$(PREFIX1).t2x.bin			\
 	$(PREFIX1).t3x.bin			\
-	$(PREFIX1).t4x.bin
+	$(PREFIX1).t4x.bin		        \
+	$(PREFIX2).automorf.bin		        \
+	$(PREFIX2).automorf-untrimmed.bin
 
 
 # This include defines goals for install-modes, .deps/.d and .mode files:
@@ -96,9 +98,12 @@ $(PREFIX2).autogen.hfst: .deps/$(LANG1).autogen.hfst
 	hfst-fst2fst -O -i $< -o $@
 
 
-# -------------------
+# --------------------------
 # Norwegian Bokmål analysis:
-# ---------------------
+# --------------------------
+
+$(PREFIX2).automorf-untrimmed.bin: $(AP_SRC2)/$(LANG2).automorf.bin
+	cp $< $@
 
 $(PREFIX2).automorf.bin: $(AP_SRC2)/$(LANG2).automorf.bin $(PREFIX2).autobil.bin
 	lt-trim $^ $@
