@@ -1,4 +1,4 @@
-Revision: 74930
+Revision: 74932
 AP_SRC1 (doesn't seem to be a repo)
 AP_SRC2 (doesn't seem to be a repo)
 Running Regression-tests with mode "sme-nob" with updated tests ...
@@ -30,17 +30,15 @@ sme-nob	  dán jagi válggas.
 
 sme-nob	  Máhtte máksá guokte ruvnnu.
 	- Máhtte betaler to kroner.
-	+ #Máhtte betaler #to kroner.
+	+ #Máhtte betaler to kroner.
 
 
 sme-nob	  Girji máksá guokte ruvnnu.
-	- Boken koster to kroner.
-	+ Boken koster #to kroner.
+WORKS	  Boken koster to kroner.
 
 
 sme-nob	  Guokte ruvnnu lea boahtán.
-	- To kroner har kommet.
-	+ #To kroner har kommet.
+WORKS	  To kroner har kommet.
 
 
 sme-nob	  Dán lihtu ulbmil lea addit.
@@ -83,7 +81,7 @@ WORKS	  El.
 
 sme-nob	  Anne Tornensis Hætta.
 	- Anne Tornensis Hætta.
-	+ #Anne #Tornensis #Hætta.
+	+ #Anne #Tornensis Hætta.
 
 
 sme-nob	  Son lea čeahpes bárdni.
@@ -524,7 +522,7 @@ sme-nob	  Dál dii fertebehtet geargat.
 
 sme-nob	  Dát vártnuhis dilli vearránii sakka 1982:s.
 	- Dette håpløse forholdet ble mye verre i 1982.
-	+ Dette håpløse forholdet ble verre mye #1982.
+	+ Dette håpløse forholdet ble verre mye 1982.
 
 
 sme-nob	  Máhtte muitalii ádjá boahtit.
@@ -616,7 +614,7 @@ WORKS	  kjærlighet og fattigdom og det grunne.
 
 sme-nob	  riikka nubbi davvisámegiel namma.
 	- rikets andre nordsamiske navn.
-	+ *riikka det #annen nordsamiske navnet.
+	+ *riikka det andre nordsamiske navnet.
 
 
 sme-nob	  seammá sámiid.
@@ -655,7 +653,7 @@ WORKS	  Slik at sengene hadde blitt tilsølt med urin og ensomme barns tårer.
 
 sme-nob	  Mii manahit máŋgga vejolaš sámegieloahpaheddjiid.
 	- Vi mister mange mulige samisklærere.
-	+ Vi mister #mange mulig *sámegieloahpaheddjiid.
+	+ Vi mister mange mulig *sámegieloahpaheddjiid.
 
 
 sme-nob	  Mánná oađđá.
@@ -729,8 +727,7 @@ WORKS	  Men jeg bor i Karasjok.
 
 
 sme-nob	  Mus lea oahpahus gaskkal guovtti ja njealji.
-	- Jeg har undervisning mellom to og fire.
-	+ Jeg har undervisning mellom #to og #fire.
+WORKS	  Jeg har undervisning mellom to og fire.
 
 
 sme-nob	  dálkki geažil.
@@ -796,7 +793,7 @@ WORKS	  Han er i Norge.
 
 sme-nob	  Tine Chris Mathisen lea beassan leat mielde boazobargguin.
 	- Tine Chris Mathisen har fått være med på reindriftsarbeidene.
-	+ #Tine #Chris #Mathisen har fått være med på reindriftsarbeidene.
+	+ #Tine #Chris Mathisen har fått være med på reindriftsarbeidene.
 
 
 sme-nob	  Go gullen sámegiela dien mátkkis.
@@ -892,12 +889,12 @@ sme-nob	  dikki mielas livččii dehálaš oččodit olbmuide diđolašvuođa ja
 
 sme-nob	  Go Tine Chris Mathisen bođii deike davás de lei son juo oahppan sámegiela.
 	- Da Tine Chris Mathisen kom hit nordover så hadde hun allerede lært samisk.
-	+ Da #Tine #Chris #Mathisen kom hit nordover så hadde hun allerede lært samisk.
+	+ Da #Tine #Chris Mathisen kom hit nordover så hadde hun allerede lært samisk.
 
 
 sme-nob	  Go Per Mathisen bođii deike davás de lei son juo oahppan sámegiela.
 	- Da Per Mathisen kom hit nordover så hadde han allerede lært samisk.
-	+ Da #Per #Mathisen kom hit nordover så hadde han allerede lært samisk.
+	+ Da #Per Mathisen kom hit nordover så hadde han allerede lært samisk.
 
 
 sme-nob	  Dat lea buot mii mus lea.
@@ -935,12 +932,11 @@ sme-nob	  Son lei dalle sullii 60-jahkásaš.
 
 sme-nob	  1982:s 1982's 1982-s 1982%.
 	- 1982 1982 1982 1982%.
-	+ #1982 #1982's-er *1982-s #1982%.
+	+ 1982 1982's-er *1982-s 1982%.
 
 
 sme-nob	  1300-logu.
-	- 1300-tallet.
-	+ #1300tallet.
+WORKS	  1300-tallet.
 
 
 sme-nob	  1300-.
@@ -949,8 +945,7 @@ sme-nob	  1300-.
 
 
 sme-nob	  113-heahtenummáris.
-	- på 113-nødnummeret.
-	+ på #113nødnummeret.
+WORKS	  på 113-nødnummeret.
 
 
 sme-nob	  §§ 1-1984.
@@ -962,18 +957,15 @@ WORKS	  –1.
 
 
 sme-nob	  50%.
-	- 50%.
-	+ #50%.
+WORKS	  50%.
 
 
 sme-nob	  50&#160;%.
-	- 50&#160;%.
-	+ #50&##160;%.
+WORKS	  50&#160;%.
 
 
 sme-nob	  50.0&#160;%.
-	- 50.0&#160;%.
-	+ #50.0&##160;%.
+WORKS	  50.0&#160;%.
 
 
 sme-nob	  1.1.
@@ -981,28 +973,24 @@ WORKS	  1.1.
 
 
 sme-nob	  1,1 + 2.13 1,- 10.99.
-	- 1,1 + 2.13 1,- 10.99.
-	+ #1,1 #+ 2.13 1,- 10.99.
+WORKS	  1,1 + 2.13 1,- 10.99.
 
 
 sme-nob	  110f f ja §110a.
-	- 110f f og §110a.
-	+ #110f f og #§110a.
+WORKS	  110f f og §110a.
 
 
 sme-nob	  okta 6 filmmas.
-	- en av 6 filmer.
-	+ en av #6 filmer.
+WORKS	  en av 6 filmer.
 
 
 sme-nob	  gaskal diibmu 17.00 ja 21.00.
-	- mellom klokken 17.00 og 21.00.
-	+ mellom klokken #17.00 og 21.00.
+WORKS	  mellom klokken 17.00 og 21.00.
 
 
 sme-nob	  19 Jovsset.
 	- 19 Jovsset.
-	+ #19 #Jovsset.
+	+ 19 #Jovsset.
 
 
 sme-nob	  Golmma- njealje.
@@ -1016,7 +1004,7 @@ WORKS	  Tre-fire.
 
 sme-nob	  logi-jagáš.
 	- tiårig.
-	+ #tiårig.
+	+ ti-årig.
 
 
 sme-nob	  logijagáš.
@@ -1120,7 +1108,7 @@ sme-nob	  Gonagas Harald liiko návddašit luonddu, dan dahká son go bivdá.
 
 sme-nob	  1 () 1998-99 Utjamningsmeldinga sátni.
 	- 1 () 1998-99 Utjamningsmeldingas ord.
-	+ #1 () #1998-99 *Utjamningsmeldinga et ord.
+	+ 1 () 1998-99 *Utjamningsmeldinga et ord.
 
 
 sme-nob	  u-vearba Burton-upon-Trent.
@@ -1153,12 +1141,12 @@ sme-nob	  Ruvdnaprinseassa Märtha ja moai letne.
 
 sme-nob	  Prinseassa Märtha ja earát.
 	- Prinsesse Märtha og andre.
-	+ Prinsesse #Märtha og #annen.
+	+ Prinsesse #Märtha og andre.
 
 
 sme-nob	  Märtha ja earát.
 	- Märtha og andre.
-	+ #Märtha og #annen.
+	+ #Märtha og andre.
 
 
 sme-nob	  galbmit.
@@ -1187,7 +1175,7 @@ sme-nob	  Dat lea sihke buorre ja heittot.
 
 sme-nob	  22 jahkásaš Tine Chris Mathisen fárrii áibbas okto máddin Sápmái.
 	- 22 år gamle Tine Chris Mathisen flyttet helt alene sørfra til Sameland.
-	+ #22 år gamle #Tine #Chris #Mathisen flyttet helt alene sørfra til Sameland.
+	+ 22 år gamle #Tine #Chris Mathisen flyttet helt alene sørfra til Sameland.
 
 
 sme-nob	  vuolgit lea suohtas.
@@ -1196,7 +1184,7 @@ WORKS	  å reise er morsomt.
 
 sme-nob	  Go Gonagas Olav buohccái 1990 giđa.
 	- Da Kong Olav ble syk våren 1990.
-	+ Da Kong #Olav ble syk våren #1990.
+	+ Da Kong #Olav ble syk våren 1990.
 
 
 sme-nob	  cuoŋománu 15. b. lea.
@@ -1216,7 +1204,7 @@ sme-nob	  málet olbmuid earenoamáš dáhpáhusaid oktavuođas.
 
 sme-nob	  Geassemánu 30. beaivvi 1944 nammadii Ráđđehus Londonis Ruvdnaprinssa Olav suodjalushoavdan.
 	- 30. juni 1944 oppnevnte Regjeringen i London Kronprins Olav som forsvarssjef.
-	+ 30. juni #1944 oppnevnte *Ráđđehus av London Kronprins #Olav som forsvarssjef.
+	+ 30. juni 1944 oppnevnte *Ráđđehus av London Kronprins #Olav som forsvarssjef.
 
 
 sme-nob	  Lei unnán mii earuhii nuorra Prinssa skuvlavázzima eará skuvlamánáin.
@@ -1236,7 +1224,7 @@ sme-nob	  Dat lei nuppiin sániin.
 
 sme-nob	  (1998-99) Utjamningsmeldinga.
 	- (1998-99) Utjamningsmeldinga.
-	+ (#1998-99) *Utjamningsmeldinga.
+	+ (1998-99) *Utjamningsmeldinga.
 
 
 sme-nob	  Mii vurddiimet dálkki buorránit.
@@ -1249,8 +1237,7 @@ sme-nob	  Suohkan lei positiiva juste nu guhkás go láhka geatnegahtii.
 
 
 sme-nob	  Od.prp. nr. 41 1949 ja Od.prp. nr. 9 1951. Ja.
-	- Ot.prp. nr. 41 1949 og Ot.prp. nr. 9 1951. Og.
-	+ Ot.prp. nr. #41 1949 og Ot.prp. nr. 9 1951. Og.
+WORKS	  Ot.prp. nr. 41 1949 og Ot.prp. nr. 9 1951. Og.
 
 
 sme-nob	  olbmot elle gávpeguolástemiin.
@@ -1276,4 +1263,4 @@ sme-nob	  Lea nu guhkkin ahte eai mánát olle bohcco rádjái doppe.
 	+ #Det er så langt borte at barnene ikke når frem til reinen der borte.
 
 
-122 / 279, 43.73%
+135 / 279, 48.39%
