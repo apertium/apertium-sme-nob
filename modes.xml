@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modes>
   <!-- sme-nob full and partial pipelines: -->
-  <mode name="sme-nob" install="yes">
+  <mode name="sme-nob" install="yes" gendebug="yes">
     <pipeline>
       <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
