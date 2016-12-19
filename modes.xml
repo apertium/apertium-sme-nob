@@ -246,22 +246,6 @@
     </pipeline>
   </mode>
 
-  <mode name="nob-sme" install="no" gendebug="yes">
-    <pipeline>
-      <program name="lt-proc -w -e">
-        <file name="nob-sme.automorf.bin"/>
-      </program>
-      <program name="cg-proc  -w">
-        <file name="nob-sme.rlx.bin"/>
-      </program>
-      <program name="apertium-tagger -g">
-        <file name="nob-sme.prob"/>
-      </program>
-      <program name="apertium-pretransfer"/>
-      <!-- TODO -->
-    </pipeline>
-  </mode>
-
   <mode name="unob-sme" install="no" gendebug="yes">
     <pipeline>
       <program name="lt-proc -w -e">
