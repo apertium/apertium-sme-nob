@@ -1,16 +1,14 @@
-Revision: 65794
-AP_SRC1 Revision: 130274
-AP_SRC2 Revision: 66082
+Revision: 74930
+AP_SRC1 (doesn't seem to be a repo)
+AP_SRC2 (doesn't seem to be a repo)
 Running Regression-tests with mode "sme-nob" with updated tests ...
 
 sme-nob	  biila.
-	- en bil.
-	+ bilen.
+WORKS	  en bil.
 
 
 sme-nob	  biilla.
-	- en bil.
-	+ bilen.
+WORKS	  en bil.
 
 
 sme-nob	  biillat.
@@ -18,38 +16,36 @@ WORKS	  biler.
 
 
 sme-nob	  Oainnátgo máná?
-	- Ser du barnet?
-	+ Ser barnet?
+WORKS	  Ser du barnet?
 
 
 sme-nob	  Mii lea máná namma?
-	- Hva er barnets navn?
-	+ Hva er barnet navnet?
+WORKS	  Hva er barnets navn?
 
 
 sme-nob	  dán jagi válggas.
 	- på dette årets valg.
-	+ dette året på valget.
+	+ på dette års valg.
 
 
 sme-nob	  Máhtte máksá guokte ruvnnu.
 	- Máhtte betaler to kroner.
-	+ Máhtte han betaler to kronen.
+	+ #Máhtte betaler #to kroner.
 
 
 sme-nob	  Girji máksá guokte ruvnnu.
 	- Boken koster to kroner.
-	+ Boken betaler to kronen.
+	+ Boken koster #to kroner.
 
 
 sme-nob	  Guokte ruvnnu lea boahtán.
 	- To kroner har kommet.
-	+ To kronen har det kommet.
+	+ #To kroner har kommet.
 
 
 sme-nob	  Dán lihtu ulbmil lea addit.
 	- Denne alliansens mål er å gi.
-	+ Dette alliansen er målet å gi.
+	+ Denne *lihtu målet er å gi.
 
 
 sme-nob	  politiijastašuvdnii.
@@ -61,8 +57,7 @@ WORKS	  som medarbeider.
 
 
 sme-nob	  allaskuvla.
-	- en høyskole.
-	+ høyskolen.
+WORKS	  en høyskole.
 
 
 sme-nob	  muohtasuddama.
@@ -74,7 +69,8 @@ WORKS	  språkrevitalisering.
 
 
 sme-nob	  Gonagas Harald.
-WORKS	  Kong Harald.
+	- Kong Harald.
+	+ Kong #Harald.
 
 
 sme-nob	  friddja Norgii.
@@ -86,17 +82,17 @@ WORKS	  El.
 
 
 sme-nob	  Anne Tornensis Hætta.
-WORKS	  Anne Tornensis Hætta.
+	- Anne Tornensis Hætta.
+	+ #Anne #Tornensis #Hætta.
 
 
 sme-nob	  Son lea čeahpes bárdni.
-	- Han er en flink gutt.
-	+ Han er den flinke gutten.
+WORKS	  Han er en flink gutt.
 
 
 sme-nob	  buohtastahttit eará gielaiguin.
 	- sammenlign med de andre språkene.
-	+ sammenlign annet med språk.
+	+ sammenlign med de #annen språkene.
 
 
 sme-nob	  Mannan vahku.
@@ -104,8 +100,7 @@ WORKS	  Sist uke.
 
 
 sme-nob	  Vuosttas instruvssat.
-	- De første instruksene.
-	+ Første instrukser.
+WORKS	  De første instruksene.
 
 
 sme-nob	  dan.
@@ -113,8 +108,7 @@ WORKS	  det.
 
 
 sme-nob	  Dat lea.
-	- Det er.
-	+ Det det er.
+WORKS	  Det er.
 
 
 sme-nob	  goappat.
@@ -123,12 +117,12 @@ WORKS	  hvert.
 
 sme-nob	  Jus in livčče mun ieš.
 	- Hvis jeg ikke kan være meg selv.
-	+ Hvis jeg ikke kan være jeg selv.
+	+ Hvis jeg ikke kan være meg #selv.
 
 
 sme-nob	  Máhttu lea ieš namma.
 	- Kunnskapen er selv et navn.
-	+ Kunnskapen er selv navnet.
+	+ Kunnskapen er #selv navnet.
 
 
 sme-nob	  Áhkku geahčai iežas speadjalis.
@@ -136,8 +130,7 @@ WORKS	  Bestemor så seg selv i speilet.
 
 
 sme-nob	  Son lábmii iežas.
-	- Hun skadet seg selv.
-	+ Han han skadet seg selv.
+WORKS	  Hun skadet seg selv.
 
 
 sme-nob	  Ale rábmo iežat.
@@ -147,57 +140,54 @@ sme-nob	  Ale rábmo iežat.
 
 sme-nob	  Elle muitalii iežas vuolgime.
 	- Elle fortalte at hun skal reise.
-	+ Elle hun fortalte det reiste.
+	+ #Elle fortalte at #hun reiste.
 
 
 sme-nob	  Váldde biergasiid iežat fárrui.
 	- Ta tingene med deg.
-	+ Ta ting din med.
+	+ Ta tingene med #du.
 
 
 sme-nob	  Mun ferten čorget iežan lanja.
 	- Jeg må rydde mitt eget rom.
-	+ Jeg jeg må rydde min rommet.
+	+ Jeg må rydde mitt rom.
 
 
 sme-nob	  mun ohppen čállit sámegiela, iežan eatnigiela.
 	- jeg lærte å skrive samisk, mitt eget morsmål.
-	+ jeg jeg lærte å skrive samisk, min morsmålet.
+	+ jeg lærte å skrive samisk, mitt morsmål.
 
 
 sme-nob	  Moai válde dušše iežame biergasiid mielde.
 	- Vi to tar bare våre egne ting med.
-	+ Vi to vi to tar bare våre ting med.
+	+ #Vi tar bare #vi ting med.
 
 
 sme-nob	  Doai váldibeahtti dušše iežade biergasiid mielde.
 	- Dere to tar bare deres egne ting med.
-	+ Dere to dere to tar bare deres ting med.
+	+ #Dere tar bare #dere ting med.
 
 
 sme-nob	  mu iežan girji.
-	- min egen bok.
-	+ meg eget boken.
+WORKS	  min egen bok.
 
 
 sme-nob	  Nieida duddjui alccesis ođđa gielkká.
 	- Jenta laget en ny kjelke til seg selv.
-	+ Jenta laget til seg selv den nye kjelken.
+	+ Jenta laget den nye kjelken til seg selv.
 
 
 sme-nob	  Mánát guvle alcceseaset speadjalis.
-	- Barnene kikte på seg selv i speilet.
-	+ Barn kikte på seg selv i speilet.
+WORKS	  Barnene kikte på seg selv i speilet.
 
 
 sme-nob	  Mis leat alddámet ain šibihat.
 	- Vi har selv enda husdyr.
-	+ På oss de er på selv enda husdyr.
+	+ Vi har på #selv enda husdyrene.
 
 
 sme-nob	  Mun jurddašin iežainan.
-	- Jeg tenkte med meg selv.
-	+ Jeg jeg tenkte med meg selv.
+WORKS	  Jeg tenkte med meg selv.
 
 
 sme-nob	  iehčaneame.
@@ -205,18 +195,16 @@ WORKS	  på egen hånd.
 
 
 sme-nob	  Mánát leat iehčanassii ruovttus.
-	- Barnene er alene hjemme.
-	+ Barn er alene hjemme.
+WORKS	  Barnene er alene hjemme.
 
 
 sme-nob	  ieža moai dáppe váccašetne.
 	- vi to spaserer her.
-	+ selv vi to her vi to spaserer.
+	+ #selv #vi her vi to spaserer.
 
 
 sme-nob	  mihkkege almenneha birra.
-	- noe om allmenningen.
-	+ noe allmenningen om.
+WORKS	  noe om allmenningen.
 
 
 sme-nob	  Gávdnetgo maidege?
@@ -231,7 +219,7 @@ sme-nob	  goabbáge.
 
 sme-nob	  Lei nuorra nieida gii vujii biilla, ja son lea dál sáddejuvvon buohccevissui.
 	- Det var den unge jenta som kjørte bilen, og hun har nå blitt sendt til sykehuset.
-	+ Det var den unge jenta som kjørte bilen, og han det har nå blitt sendt til sykehuset.
+	+ #Det var den unge jenta som kjørte bilen, og hun er nå *sáddejuvvon til sykehuset.
 
 
 sme-nob	  deháleamos.
@@ -252,27 +240,24 @@ WORKS	  til de offentlige tjenestene.
 
 sme-nob	  min nuoramus olbmot.
 	- våre yngste folk.
-	+ oss yngst folk.
+	+ #vi yngste folk.
 
 
 sme-nob	  min nuoramus bárdnái.
-	- til vår yngste gutt.
-	+ oss yngst til gutten.
+WORKS	  til vår yngste gutt.
 
 
 sme-nob	  du deháleamos doaibma.
-	- din viktigste oppgave.
-	+ deg viktigst oppgaven.
+WORKS	  din viktigste oppgave.
 
 
 sme-nob	  mu stuora váivái.
-	- til mitt store besvær.
-	+ meg til det store besværet.
+WORKS	  til mitt store besvær.
 
 
 sme-nob	  Mii lea du bávččas mu stuora givssi ektui?
 	- Hva er din smerte mot min store plage?
-	+ Hva det er deg vondt meg den store plagen for?
+	+ Hva er di vonde for min store plage?
 
 
 sme-nob	  gáiddusoahpahussii.
@@ -290,7 +275,7 @@ WORKS	  mer utholdende.
 
 sme-nob	  iešguđet.
 	- forskjellige.
-	+ ulikt.
+	+ ulik.
 
 
 sme-nob	  iešguđetge.
@@ -304,8 +289,7 @@ sme-nob	  leat eahpit.
 
 
 sme-nob	  Jáhkán ahte dát lea váikkuhan positiivvalaččat sin identitehtaovdáneapmái.
-	- Jeg tror at dette har påvirket mer positivt til deres identitetsutvikling.
-	+ Jeg tror at dette det har påvirket positive dem til identitetsutviklingen.
+WORKS	  Jeg tror at dette har påvirket mer positivt til deres identitetsutvikling.
 
 
 sme-nob	  goarun.
@@ -323,7 +307,7 @@ sme-nob	  jearašin.
 
 sme-nob	  ii livčče čállán.
 	- hun ville ikke ha skrevet.
-	+ han kan ikke ha skrevet.
+	+ #hun kan ikke ha skrevet.
 
 
 sme-nob	  jearažan.
@@ -333,12 +317,12 @@ sme-nob	  jearažan.
 
 sme-nob	  Máhtte ii leačča čállán.
 	- Máhtte har da ikke skrevet.
-	+ Máhtte han har ikke skrevet.
+	+ #Máhtte har ikke skrevet.
 
 
 sme-nob	  ii leačča čállán.
 	- han har da ikke skrevet.
-	+ han har ikke skrevet.
+	+ #han har ikke skrevet.
 
 
 sme-nob	  dihten.
@@ -355,52 +339,57 @@ WORKS	  vi visste.
 
 sme-nob	  Leago leamaš bátnevárka ráiggi geažil?
 	- Har det vært tannverk på grunn av hullet?
-	+ tannverk Har vært hullet på grunn av?
+	+ tannverk Har vært på grunn av hullet?
 
 
 sme-nob	  Das čujuhuvvo.
 	- Her vises det til.
-	+ På det det vises til.
+	+ På det *čujuhuvvo.
 
 
 sme-nob	  báitá.
-WORKS	  det skinner.
+	- det skinner.
+	+ #det skinner.
 
 
 sme-nob	  arvá.
-WORKS	  det regner.
+	- det regner.
+	+ #det regner.
 
 
 sme-nob	  Ovddasvástádus lei biddjon girkui , ja lei báhppa gii dan čađahii.
 	- Ansvaret hadde blitt satt til kirken , og var presten som gjennomførte den.
-	+ Ansvaret hadde det blitt satt til kirken , og var presten som det han gjennomførte.
+	+ Ansvaret var *biddjon til kirken , og var presten som gjennomførte den.
 
 
 sme-nob	  Máhtte ii dáidde jienastit Bargiidbellodaga doppe.
 	- Máhtte stemmer nok ikke Arbeiderpartiet der borte.
-	+ Máhtte han nok ikke stemme Arbeiderpartiet der borte.
+	+ #Máhtte stemmer nok ikke *Bargiidbellodaga der borte.
 
 
 sme-nob	  ii leat čállán.
-WORKS	  han har ikke skrevet.
+	- han har ikke skrevet.
+	+ #han har ikke skrevet.
 
 
 sme-nob	  Máhtte lea boahtán.
 	- Máhtte har kommet.
-	+ Máhtte det har kommet.
+	+ #Máhtte har kommet.
 
 
 sme-nob	  ii leat boahtán.
-WORKS	  han har ikke kommet.
+	- han har ikke kommet.
+	+ #han har ikke kommet.
 
 
 sme-nob	  Ii leat čállán.
-WORKS	  Han har ikke skrevet.
+	- Han har ikke skrevet.
+	+ #Han har ikke skrevet.
 
 
 sme-nob	  Máhtte ii leat boahtán.
 	- Máhtte har ikke kommet.
-	+ Máhtte han har ikke kommet.
+	+ #Máhtte har ikke kommet.
 
 
 sme-nob	  itgo boađáše?
@@ -413,7 +402,7 @@ WORKS	  du kan ikke komme.
 
 sme-nob	  Máhtte ii boađe.
 	- Máhtte kommer ikke.
-	+ Máhtte han kommer ikke.
+	+ #Máhtte kommer ikke.
 
 
 sme-nob	  go it boađáše.
@@ -421,8 +410,7 @@ WORKS	  når du ikke kan komme.
 
 
 sme-nob	  itgo gáfe juga?
-	- drikker du ikke kaffe?
-	+ ikke kaffe drikker?
+WORKS	  drikker du ikke kaffe?
 
 
 sme-nob	  Mii maiddái ássat.
@@ -432,45 +420,44 @@ sme-nob	  Mii maiddái ássat.
 
 sme-nob	  Mu bealis dat dušše nannejuvvui.
 	- For meg ble den bare styrket.
-	+ Meg for det bare det ble styrket.
+	+ For #jeg det bare *nannejuvvui.
 
 
 sme-nob	  Mun ferten viežžat čázi.
-	- Jeg må hente vann.
-	+ Jeg vann må hente.
+WORKS	  Jeg må hente vann.
 
 
 sme-nob	  Mun lean heaitán borgguheames.
-	- Jeg har sluttet å røyke.
-	+ Jeg jeg har sluttet å røyke.
+WORKS	  Jeg har sluttet å røyke.
 
 
 sme-nob	  Mus lea biergu vuoššat.
-	- Jeg har kjøtt å koke.
-	+ På meg er kjøtt å koke.
+WORKS	  Jeg har kjøtt å koke.
 
 
 sme-nob	  Máhtte lea čállime.
 	- Máhtte er i ferd med å skrive.
-	+ Máhtte det er i ferd med å skrive.
+	+ #Máhtte er i ferd med å skrive.
 
 
 sme-nob	  ii leat čállimin.
-WORKS	  han er ikke i ferd med å skrive.
+	- han er ikke i ferd med å skrive.
+	+ #han er ikke i ferd med å skrive.
 
 
 sme-nob	  ii leat čállime.
-WORKS	  han er ikke i ferd med å skrive.
+	- han er ikke i ferd med å skrive.
+	+ #han er ikke i ferd med å skrive.
 
 
 sme-nob	  ii leačča čállimin.
 	- han er da ikke i ferd med å skrive.
-	+ han er ikke i ferd med å skrive.
+	+ #han er ikke i ferd med å skrive.
 
 
 sme-nob	  ii leačča čállime.
 	- han er da ikke i ferd med å skrive.
-	+ han er ikke i ferd med å skrive.
+	+ #han er ikke i ferd med å skrive.
 
 
 sme-nob	  Son lea taksivuoddjin Oslos.
@@ -479,12 +466,12 @@ WORKS	  Han er drosjesjåfør i Oslo.
 
 sme-nob	  Mus lea Ánde mielbargin.
 	- Jeg har Ánde som medarbeider.
-	+ På meg det er Ánde som medarbeider.
+	+ Jeg har #Ánde som medarbeider.
 
 
 sme-nob	  Sin bargun lei.
 	- Deres arbeid var det.
-	+ Dem arbeid var.
+	+ Deres arbeid var #det.
 
 
 sme-nob	  De son gullá beatnaga ciellame.
@@ -494,7 +481,7 @@ sme-nob	  De son gullá beatnaga ciellame.
 
 sme-nob	  mun dieđán Máreha čállime dál.
 	- jeg vet at Máret skriver nå.
-	+ jeg jeg vet Máret i ferd med å skrive nå.
+	+ jeg vet #Máret i ferd med å skrive nå.
 
 
 sme-nob	  Boahtágo áhčči ihttin?
@@ -502,75 +489,75 @@ WORKS	  Kommer far i morgen?
 
 
 sme-nob	  Áhččigo boahtá ihttin?
-	- Er det far som kommer i morgen?
-	+ Far kommer i morgen?
+WORKS	  Er det far som kommer i morgen?
 
 
 sme-nob	  Go su áhčči jámii de gildui.
 	- Da hans far døde så ble det forbudt.
-	+ Da ham far døde så det ble forbudt.
+	+ Da hans far døde så #hun fikk kurven.
 
 
 sme-nob	  gildui.
-WORKS	  det ble forbudt.
+	- det ble forbudt.
+	+ #hun fikk kurven.
 
 
 sme-nob	  gildui sámegiella.
-WORKS	  samisk ble forbudt.
+	- samisk ble forbudt.
+	+ fikk samisk kurven.
 
 
 sme-nob	  Dađistaga gildui sámegiella.
 	- Etter hvert ble samisk forbudt.
-	+ Etter hvert samisk ble forbudt.
+	+ Etter hvert fikk samisk kurven.
 
 
 sme-nob	  dan maŋŋá gildui sámegiella.
 	- etter det ble samisk forbudt.
-	+ det etter samisk ble forbudt.
+	+ etter den fikk #hun kurven samisk.
 
 
 sme-nob	  Dál dii fertebehtet geargat.
 	- Nå må dere bli ferdige.
-	+ Nå dere dere må bli ferdig.
+	+ Nå dere må bli ferdige.
 
 
 sme-nob	  Dát vártnuhis dilli vearránii sakka 1982:s.
 	- Dette håpløse forholdet ble mye verre i 1982.
-	+ Dette det håpløse forholdet ble verre mye 1982.
+	+ Dette håpløse forholdet ble verre mye #1982.
 
 
 sme-nob	  Máhtte muitalii ádjá boahtit.
 	- Máhtte fortalte at bestefar skulle komme.
-	+ Máhtte fortalte bestefar å komme.
+	+ #Máhtte fortalte at bestefar skulle komme.
 
 
 sme-nob	  Máhtte logai sin vuolgit dál juo.
 	- Máhtte sa at de skulle reise nå allerede.
-	+ Máhtte han sa dem å reise nå allerede.
+	+ #Máhtte sa at de skulle reise nå allerede.
 
 
 sme-nob	  Mon gullen ahte áddjá ii dovdan dan lottáža.
-	- Jeg hørte at bestefar ikke kjente den fuglen.
-	+ Jeg jeg hørte at bestefar ikke kjente det fuglen.
+WORKS	  Jeg hørte at bestefar ikke kjente den fuglen.
 
 
 sme-nob	  vai flegmáhtalaš okkupašuvdnafápmu ii beassan sin váldit gitta.
 	- for at den flegmatiske okkupasjonsmakten ikke fikk ta dem fast.
-	+ for å den flegmatiske okkupasjonsmakten ikke fikk dem ta fast.
+	+ for å den flegmatiske okkupasjonsmakten ikke fikk ta dem fast.
 
 
 sme-nob	  Harald vuortnui ahte ii áigon čuohppat vuovttaid.
 	- Harald sverget at han ikke skulle klippe hår.
-	+ Harald han sverget at han ikke skulle klippe hår.
+	+ #Harald sverget at #han ikke skulle klippe hår.
 
 
 sme-nob	  ahte Norga ii sáhttán birget flegmáhtalaš soahtefámu vuostá.
-	- at Norge ikke kunne greie seg mot den flegmatiske krigsmakten.
-	+ at Norge han kunne ikke greie seg den flegmatiske krigsmakten mot.
+WORKS	  at Norge ikke kunne greie seg mot den flegmatiske krigsmakten.
 
 
 sme-nob	  vuovssihahtti.
-WORKS	  få spy.
+	- få spy.
+	+ *vuovssihahtti.
 
 
 sme-nob	  boradišgohten.
@@ -582,12 +569,13 @@ WORKS	  jeg begynte å lese.
 
 
 sme-nob	  ii lohkagoađe.
-WORKS	  han begynner ikke å lese.
+	- han begynner ikke å lese.
+	+ #han begynner ikke å lese.
 
 
 sme-nob	  don borrojuvvot.
 	- du spises.
-	+ du du spises.
+	+ du *borrojuvvot.
 
 
 sme-nob	  go čukkodit.
@@ -596,13 +584,11 @@ sme-nob	  go čukkodit.
 
 
 sme-nob	  Son basadii.
-	- Han vasket seg.
-	+ Han han vasket seg.
+WORKS	  Han vasket seg.
 
 
 sme-nob	  Son lábmii iežas.
-	- Han skadet seg selv.
-	+ Han han skadet seg selv.
+WORKS	  Han skadet seg selv.
 
 
 sme-nob	  go fanahallat.
@@ -611,32 +597,30 @@ WORKS	  når vi tøyer oss.
 
 sme-nob	  don fertet vuos beatnaga čuogahit.
 	- du må først la hunden drikke.
-	+ du du må først hunden få drikke.
+	+ du må først hunden *čuogahit.
 
 
 sme-nob	  goaruhit.
 	- de lar sy.
-	+ vi syr.
+	+ sy.
 
 
 sme-nob	  muitalahtten.
 	- jeg lot fortelle.
-	+ jeg fikk fortelle.
+	+ *muitalahtten.
 
 
 sme-nob	  ráhkisvuohta ja geafivuohta ja coagisvuohta.
-	- kjærlighet og fattigdom og det grunne.
-	+ det kjære og fattigdom og det grunne.
+WORKS	  kjærlighet og fattigdom og det grunne.
 
 
 sme-nob	  riikka nubbi davvisámegiel namma.
 	- rikets andre nordsamiske navn.
-	+ landet annet det nordsamiske navnet.
+	+ *riikka det #annen nordsamiske navnet.
 
 
 sme-nob	  seammá sámiid.
-	- de samme samene.
-	+ samme samer.
+WORKS	  de samme samene.
 
 
 sme-nob	  olmmožin.
@@ -645,13 +629,11 @@ sme-nob	  olmmožin.
 
 
 sme-nob	  mánnán son orui Romssas.
-	- som barn bodde han i Tromsø.
-	+ som barn han han bodde i Tromsø.
+WORKS	  som barn bodde han i Tromsø.
 
 
 sme-nob	  nuorran son orui Romssas.
-	- som ungdom bodde han i Tromsø.
-	+ som ungdom han han bodde i Tromsø.
+WORKS	  som ungdom bodde han i Tromsø.
 
 
 sme-nob	  mánnán dihten.
@@ -660,7 +642,7 @@ WORKS	  som barn visste jeg.
 
 sme-nob	  Dan gal dieđán váddása, ja.
 	- Det vet jeg vel er vanskelig, og.
-	+ Det virkelig jeg vet vanskelig, og.
+	+ Den virkelig jeg vet vanskelig, og.
 
 
 sme-nob	  dákkár heahtegádjumiid.
@@ -668,13 +650,12 @@ WORKS	  slikt nødverge.
 
 
 sme-nob	  Nu ahte seaŋggat ledje durdon guččain ja aktonas mánáid gatnjaliiguin.
-	- Slik at sengene hadde blitt tilsølt med urin og ensomme barns tårer.
-	+ Slik at senger hadde de blitt tilsølt med urin og de ensomme barnene med tårer.
+WORKS	  Slik at sengene hadde blitt tilsølt med urin og ensomme barns tårer.
 
 
 sme-nob	  Mii manahit máŋgga vejolaš sámegieloahpaheddjiid.
 	- Vi mister mange mulige samisklærere.
-	+ Vi vi mister mange mulige samisklærere.
+	+ Vi mister #mange mulig *sámegieloahpaheddjiid.
 
 
 sme-nob	  Mánná oađđá.
@@ -683,12 +664,12 @@ WORKS	  Barnet sover.
 
 sme-nob	  skuvlii.
 	- til skolen.
-	+ han underviste.
+	+ #han underviste.
 
 
 sme-nob	  NRK Radio oaivil.
 	- NRK Radios mening.
-	+ NRK-EN Radios mening.
+	+ NRK-ENS Radio en mening.
 
 
 sme-nob	  Mannan dálvvi mátkkoštii joavku Kárášjohkii ja Guovdageidnui.
@@ -696,32 +677,29 @@ WORKS	  Sist vinter reiste laget til Karasjok og Kautokeino.
 
 
 sme-nob	  Giella lei stuorámus váttisvuohta.
-	- Språket var det største problemet.
-	+ Språket var størst problemet.
+WORKS	  Språket var det største problemet.
 
 
 sme-nob	  Mii leat dál gieldda stuorimus mánáidgárdi.
 	- Vi er nå kommunens største barnehage.
-	+ Vi vi er nå kommunen størst barnehagen.
+	+ Vi er nå forbudet den største barnehagen.
 
 
 sme-nob	  Máhtte ráhkada biepmu.
-WORKS	  Máhtte lager mat.
+	- Máhtte lager mat.
+	+ #Máhtte lager mat.
 
 
 sme-nob	  Oainnátgo máná?
-	- Ser du barnet?
-	+ Ser barnet?
+WORKS	  Ser du barnet?
 
 
 sme-nob	  Skuvla lea leamaš stuorimus oassi prošeavttas.
-	- Skolen har vært den største delen av prosjektet.
-	+ Skolen har det vært størst delen av prosjektet.
+WORKS	  Skolen har vært den største delen av prosjektet.
 
 
 sme-nob	  Mis lea cahkkehit dola.
-	- Vi må tenne bålet.
-	+ På oss bålet må tenne.
+WORKS	  Vi må tenne bålet.
 
 
 sme-nob	  Ruoŧas ja Norggas.
@@ -734,137 +712,122 @@ WORKS	  han eller de.
 
 sme-nob	  Harald liiko návddašit luonddu, dan dahká son go sihkkelastá.
 	- Harald liker å nyte naturen, det gjør han når han sykler.
-	+ Harald han liker å nyte naturen, det han gjør han når han sykler.
+	+ #Harald liker å nyte naturen, den gjør han når #han sykler.
 
 
 sme-nob	  Son orui Romssas mánnán.
-	- Han bodde i Tromsø som barn.
-	+ Han han bodde i Tromsø som barn.
+WORKS	  Han bodde i Tromsø som barn.
 
 
 sme-nob	  Hearggit ruhttet dego livčče.
 	- Kjørereinene løper som de kan være.
-	+ Kjørereiner løper som det kan være.
+	+ Kjørereinene løper som #det kan være.
 
 
 sme-nob	  Muhto mun orun Kárášjogas.
-	- Men jeg bor i Karasjok.
-	+ Men jeg jeg bor i Karasjok.
+WORKS	  Men jeg bor i Karasjok.
 
 
 sme-nob	  Mus lea oahpahus gaskkal guovtti ja njealji.
 	- Jeg har undervisning mellom to og fire.
-	+ På meg er undervisning mellom to og fire.
+	+ Jeg har undervisning mellom #to og #fire.
 
 
 sme-nob	  dálkki geažil.
-	- på grunn av været.
-	+ været på grunn av.
+WORKS	  på grunn av været.
 
 
 sme-nob	  dan geažil.
 	- på grunn av det.
-	+ det på grunn av.
+	+ på grunn av den.
 
 
 sme-nob	  dán geažil.
-	- på grunn av dette.
-	+ dette på grunn av.
+WORKS	  på grunn av dette.
 
 
 sme-nob	  munno geažil.
-	- på grunn av oss to.
-	+ oss to på grunn av.
+WORKS	  på grunn av oss to.
 
 
 sme-nob	  Juo cuoŋománu 10. beaivvi ija vuostá mátkkoštii Harald badjel ráji.
 	- Allerede 10. april mot natten reiste Harald over grensen.
-	+ Allerede 10. april natten mot han reiste Harald over grensen.
+	+ Allerede 10. april mot natten reiste #Harald over grensen.
 
 
 sme-nob	  nuorran son lea dan juo oahppan.
 	- som ungdom har han allerede lært det.
-	+ som ungdom han det har det allerede lært.
+	+ som ungdom har han den allerede lært.
 
 
 sme-nob	  nuorran son lea dan oahppan.
 	- som ungdom har han lært det.
-	+ som ungdom han det har det lært.
+	+ som ungdom har han lært den.
 
 
 sme-nob	  Mun láven dávjá lávlut.
-	- Jeg pleier ofte synge.
-	+ Jeg jeg pleier ofte synge.
+WORKS	  Jeg pleier ofte synge.
 
 
 sme-nob	  Mun láven árrat lávlut.
-	- Jeg pleier synge tidlig.
-	+ Jeg jeg pleier tidlig synge.
+WORKS	  Jeg pleier synge tidlig.
 
 
 sme-nob	  Mun láven dávjá goallut.
-	- Jeg pleier ofte fryse.
-	+ Jeg jeg pleier ofte fryse.
+WORKS	  Jeg pleier ofte fryse.
 
 
 sme-nob	  Mun láven árrat goallut.
 	- Jeg pleier fryse tidlig.
-	+ Jeg jeg pleier tidlig fryse.
+	+ Jeg pleier tidlig fryse.
 
 
 sme-nob	  Mun hálan dálkki birra.
-	- Jeg snakker om været.
-	+ Jeg snakker været om.
+WORKS	  Jeg snakker om været.
 
 
 sme-nob	  Mun human fiskes biilla birra.
-	- Jeg snakker om den gule bilen.
-	+ Jeg snakker den gule bilen om.
+WORKS	  Jeg snakker om den gule bilen.
 
 
 sme-nob	  Son lea Norggas.
-	- Han er i Norge.
-	+ Han det er i Norge.
+WORKS	  Han er i Norge.
 
 
 sme-nob	  Tine Chris Mathisen lea beassan leat mielde boazobargguin.
 	- Tine Chris Mathisen har fått være med på reindriftsarbeidene.
-	+ Tine Chris Mathisen det har fått være med på reindriftsarbeidene.
+	+ #Tine #Chris #Mathisen har fått være med på reindriftsarbeidene.
 
 
 sme-nob	  Go gullen sámegiela dien mátkkis.
-	- Da jeg hørte samisk på denne reisen.
-	+ Da jeg hørte samisk på dette på reisen.
+WORKS	  Da jeg hørte samisk på denne reisen.
 
 
 sme-nob	  Mun suhtan dutnje.
-	- Jeg blir sint på deg.
-	+ Jeg jeg blir sint på deg.
+WORKS	  Jeg blir sint på deg.
 
 
 sme-nob	  Mun liikon dutnje.
-	- Jeg liker deg.
-	+ Jeg jeg liker deg.
+WORKS	  Jeg liker deg.
 
 
 sme-nob	  Tine lea Norggas eret.
 	- Tine er fra Norge.
-	+ Tine det er i Norge fra.
+	+ #Tine er i Norge fra.
 
 
 sme-nob	  Son lea Norggas eret.
 	- Hun er fra Norge.
-	+ Han det er i Norge fra.
+	+ Hun er i Norge fra.
 
 
 sme-nob	  Son lea Islandas.
-	- Hun er på Island.
-	+ Han det er på Island.
+WORKS	  Hun er på Island.
 
 
 sme-nob	  Son lea Islandas eret.
 	- Hun er fra Island.
-	+ Han det er på Island fra.
+	+ Hun er på Island fra.
 
 
 sme-nob	  du idjabeavdeskuffas?
@@ -874,87 +837,82 @@ sme-nob	  du idjabeavdeskuffas?
 
 sme-nob	  Son lea maiddái beaggán Sámi soga lávlaga čállin.
 	- Hun har også blitt kjent som forfatteren av sangen om Samelands slekt.
-	+ Han det har også kommet frem Samelands slekt sangen som forfatter.
+	+ Hun har også kommet frem som forfatter sangen Samelands slekt.
 
 
 sme-nob	  Mánná gáskkáhalai beatnagii.
-	- Barnet ble bitt av hunden.
-	+ Barnet ble det bitt av hunden.
+WORKS	  Barnet ble bitt av hunden.
 
 
 sme-nob	  Mii fillehalaimet sidjiide.
-	- Vi ble narret av dem.
-	+ Vi vi ble narret av dem.
+WORKS	  Vi ble narret av dem.
 
 
 sme-nob	  Manne don geahčat munnje?
 	- Hvorfor ser du på meg?
-	+ Hvorfor du du ser på meg?
+	+ Hvorfor du ser på meg?
 
 
 sme-nob	  Fertebeahtti jáhkkigoahtit dakkár balddonasmuitalusaide.
 	- Dere to må begynne å tro på slike spøkelseshistorier.
-	+ Dere to må begynne å tro slikt på spøkelseshistoriene.
+	+ Dere to må begynne å tro på #slik spøkelseshistorier.
 
 
 sme-nob	  Máhtte báhcá gáddái.
 	- Máhtte blir igjen på stranden.
-	+ Máhtte det blir igjen på stranden.
+	+ #Máhtte blir igjen på stranden.
 
 
 sme-nob	  Mun ohppen čállit dárogillii.
-	- Jeg lærte å skrive på norsk.
-	+ Jeg jeg lærte å skrive på norsk.
+WORKS	  Jeg lærte å skrive på norsk.
 
 
 sme-nob	  kánske mun galggan hállat dušše sámegillii.
 	- kanskje skal jeg snakke bare på samisk.
-	+ kanskje jeg jeg skal snakke bare på samisk.
+	+ kanskje jeg skal snakke bare på samisk.
 
 
 sme-nob	  mun dadjen dan sámegillii.
 	- jeg sa det på samisk.
-	+ jeg jeg sa det på samisk.
+	+ jeg sa den på samisk.
 
 
 sme-nob	  Mun suhtan dutnje.
-	- Jeg blir sint på deg.
-	+ Jeg jeg blir sint på deg.
+WORKS	  Jeg blir sint på deg.
 
 
 sme-nob	  Mun luohtán dutnje.
-	- Jeg stoler på deg.
-	+ Jeg jeg stoler på deg.
+WORKS	  Jeg stoler på deg.
 
 
 sme-nob	  dikki mielas livččii dehálaš oččodit olbmuide diđolašvuođa ja ipmárdusa ahte sin giella lea áitojuvvon.
 	- i rettens oppfatning kan det være viktig å prøve å gi folk bevisstheten og forståelsen at deres språk er truet.
-	+ tinget på sinnet kan det være viktig å prøve å få folk bevisstheten og forståelsen at dem språket er det blitt truet.
+	+ *dikki på sinnet kan #det være viktig å prøve å få folk bevisstheten og forståelsen at deres språk er *áitojuvvon.
 
 
 sme-nob	  Go Tine Chris Mathisen bođii deike davás de lei son juo oahppan sámegiela.
 	- Da Tine Chris Mathisen kom hit nordover så hadde hun allerede lært samisk.
-	+ Da Tine Chris Mathisen han kom hit nordover så det hadde han allerede lært samisk.
+	+ Da #Tine #Chris #Mathisen kom hit nordover så hadde hun allerede lært samisk.
 
 
 sme-nob	  Go Per Mathisen bođii deike davás de lei son juo oahppan sámegiela.
 	- Da Per Mathisen kom hit nordover så hadde han allerede lært samisk.
-	+ Da Per Mathisen han kom hit nordover så det hadde han allerede lært samisk.
+	+ Da #Per #Mathisen kom hit nordover så hadde han allerede lært samisk.
 
 
 sme-nob	  Dat lea buot mii mus lea.
 	- Det er alt som jeg har.
-	+ Det det er alt som på meg det er.
+	+ Den er alt som jeg har.
 
 
 sme-nob	  guhkágo don ledjet doppe?
 	- hvor lenge var du der borte?
-	+ hvor lenge du du var der borte?
+	+ hvor lenge du var der borte?
 
 
 sme-nob	  guhká go don ledjet doppe?
 	- hvor lenge var du der borte?
-	+ hvor lenge du du var der borte?
+	+ hvor lenge du var der borte?
 
 
 sme-nob	  it go boađáše?
@@ -963,7 +921,7 @@ WORKS	  kan du ikke komme?
 
 sme-nob	  Baldur go lea boahtán?
 	- er det Baldur som har kommet?
-	+ Baldur det har kommet?
+	+ er det #Baldur som har kommet?
 
 
 sme-nob	  boađát go dál?
@@ -972,23 +930,27 @@ WORKS	  kommer du nå?
 
 sme-nob	  Son lei dalle sullii 60-jahkásaš.
 	- Han var da omtrent 60 år gammel.
-	+ Han det var da omtrent *60-jahkásaš.
+	+ Han var da omtrent *60-jahkásaš.
 
 
 sme-nob	  1982:s 1982's 1982-s 1982%.
-WORKS	  1982 1982 1982 1982%.
+	- 1982 1982 1982 1982%.
+	+ #1982 #1982's-er *1982-s #1982%.
 
 
 sme-nob	  1300-logu.
-WORKS	  1300-tallet.
+	- 1300-tallet.
+	+ #1300tallet.
 
 
 sme-nob	  1300-.
-WORKS	  1300-.
+	- 1300-.
+	+ #1300.
 
 
 sme-nob	  113-heahtenummáris.
-WORKS	  på 113-nødnummeret.
+	- på 113-nødnummeret.
+	+ på #113nødnummeret.
 
 
 sme-nob	  §§ 1-1984.
@@ -1000,15 +962,18 @@ WORKS	  –1.
 
 
 sme-nob	  50%.
-WORKS	  50%.
+	- 50%.
+	+ #50%.
 
 
 sme-nob	  50&#160;%.
-WORKS	  50&#160;%.
+	- 50&#160;%.
+	+ #50&##160;%.
 
 
 sme-nob	  50.0&#160;%.
-WORKS	  50.0&#160;%.
+	- 50.0&#160;%.
+	+ #50.0&##160;%.
 
 
 sme-nob	  1.1.
@@ -1016,24 +981,28 @@ WORKS	  1.1.
 
 
 sme-nob	  1,1 + 2.13 1,- 10.99.
-WORKS	  1,1 + 2.13 1,- 10.99.
+	- 1,1 + 2.13 1,- 10.99.
+	+ #1,1 #+ 2.13 1,- 10.99.
 
 
 sme-nob	  110f f ja §110a.
-WORKS	  110f f og §110a.
+	- 110f f og §110a.
+	+ #110f f og #§110a.
 
 
 sme-nob	  okta 6 filmmas.
 	- en av 6 filmer.
-	+ et 6 av filmen.
+	+ en av #6 filmer.
 
 
 sme-nob	  gaskal diibmu 17.00 ja 21.00.
-WORKS	  mellom klokken 17.00 og 21.00.
+	- mellom klokken 17.00 og 21.00.
+	+ mellom klokken #17.00 og 21.00.
 
 
 sme-nob	  19 Jovsset.
-WORKS	  19 Jovsset.
+	- 19 Jovsset.
+	+ #19 #Jovsset.
 
 
 sme-nob	  Golmma- njealje.
@@ -1047,27 +1016,25 @@ WORKS	  Tre-fire.
 
 sme-nob	  logi-jagáš.
 	- tiårig.
-	+ ti-årig.
+	+ #tiårig.
 
 
 sme-nob	  logijagáš.
 	- tiårig.
-	+ tiåret.
+	+ et tiår.
 
 
 sme-nob	  De jearragohten manne, ja fuomašin ovtta vejolaš sivva dasa.
 	- Så begynte jeg å spørre hvorfor, og jeg oppdaget en mulig grunn til det.
-	+ Så jeg begynte å spørre hvorfor, og jeg oppdaget et den mulige grunnen til det.
+	+ Så jeg begynte å spørre hvorfor, og jeg oppdaget en den mulige grunnen til det.
 
 
 sme-nob	  Mun lean heaitán borgguheames.
-	- Jeg har sluttet å røyke.
-	+ Jeg jeg har sluttet å røyke.
+WORKS	  Jeg har sluttet å røyke.
 
 
 sme-nob	  Mus lea biergu vuoššat.
-	- Jeg har kjøtt å koke.
-	+ På meg er kjøtt å koke.
+WORKS	  Jeg har kjøtt å koke.
 
 
 sme-nob	  Geahččaledje jeđđet min.
@@ -1076,21 +1043,20 @@ WORKS	  De prøvde å trøste oss.
 
 sme-nob	  ovddasvástideigga soai.
 	- hadde de to ansvar for.
-	+ de to hadde ansvar for de to.
+	+ *ovddasvástideigga #de.
 
 
 sme-nob	  Fuomášuhttit máná.
-WORKS	  Gjør barnet oppmerksom på.
+	- Gjør barnet oppmerksom på.
+	+ Gjøre barnet oppmerksom på.
 
 
 sme-nob	  du čállin reivve.
-	- brev som du har skrevet.
-	+ deg skrive brev.
+WORKS	  brev som du har skrevet.
 
 
 sme-nob	  gumppe čállin reivve.
-	- brev som ulven har skrevet.
-	+ ulven skrive brev.
+WORKS	  brev som ulven har skrevet.
 
 
 sme-nob	  Buorre eahket.
@@ -1106,8 +1072,7 @@ WORKS	  Velkommen.
 
 
 sme-nob	  Guldalat go don?
-	- Lytter du?
-	+ Lytter du du?
+WORKS	  Lytter du?
 
 
 sme-nob	  In guldal.
@@ -1120,12 +1085,11 @@ WORKS	  Gid jeg der borte eller han her.
 
 sme-nob	  Máhtte muitalii ahte áddjá boahtá.
 	- Máhtte fortalte at bestefar kommer.
-	+ Máhtte han fortalte at bestefar kommer.
+	+ #Máhtte fortalte at bestefar kommer.
 
 
 sme-nob	  Mánát leat boahtán skuvlii.
-	- Barnene har kommet til skolen.
-	+ Barn har de kommet til skolen.
+WORKS	  Barnene har kommet til skolen.
 
 
 sme-nob	  Leimmet nu boaittobealde ahte eat dárbbašan evakueret 1944 čakčat ja oruimet doppe olles áiggi.
@@ -1134,45 +1098,42 @@ WORKS	  Vi var så avsides at vi ikke behøvde å evakuere høsten 1944 og vi bo
 
 sme-nob	  Muhto unnimusat okte lea skuvla geavahuvvon dasa ahte njulget hilbes nuoraid dan sadjái go sáddet sin skuvlaruktui.
 	- Men minst en gang har skolen blitt brukt til det at vi retter på viltre ungdommer i stedet for å sende dem til skolehjemmet.
-	+ Men minst en gang har skolen blitt brukt til det at vi retter på viltre ungdommer til det i stedet når sende dem til skolehjemmet.
+	+ Men minst en gang er skolen *geavahuvvon til det at vi retter på viltre ungdommer i stedet for å sende dem til skolehjemmet.
 
 
 sme-nob	  Fuomášedje mii lea dáhpáhuvvamin.
-	- De oppdaget hva som er i ferd med å skje.
-	+ De oppdaget hva som det er i ferd med å skje.
+WORKS	  De oppdaget hva som er i ferd med å skje.
 
 
 sme-nob	  Eadni muitalii man dehálaš dat lei ahte.
-	- Mor fortalte hvor viktig den var at.
-	+ Mor fortalte hva som viktig det det var at.
+WORKS	  Mor fortalte hvor viktig den var at.
 
 
 sme-nob	  Maŋŋá go Máhttolokten doaibmagođii, de lea dát ruhtadoarjja jávkan.
-	- Etter at Kunnskapsløftet begynte å fungere, så har denne pengestønaden forsvunnet.
-	+ Etter at Kunnskapsløftet begynte å fungere, så det har dette pengestønaden forsvunnet.
+WORKS	  Etter at Kunnskapsløftet begynte å fungere, så har denne pengestønaden forsvunnet.
 
 
 sme-nob	  Gonagas Harald liiko návddašit luonddu, dan dahká son go bivdá.
 	- Kong Harald liker å nyte naturen, det gjør han når han jakter.
-	+ Kong Harald han liker å nyte naturen, det han gjør han når han jakter.
+	+ Kong #Harald liker å nyte naturen, den gjør han når #han jakter.
 
 
 sme-nob	  1 () 1998-99 Utjamningsmeldinga sátni.
-WORKS	  1 () 1998-99 Utjamningsmeldingas ord.
+	- 1 () 1998-99 Utjamningsmeldingas ord.
+	+ #1 () #1998-99 *Utjamningsmeldinga et ord.
 
 
 sme-nob	  u-vearba Burton-upon-Trent.
-	- et u-verb Burton-upon-Trent.
-	+ u-verbet Burton-upon-Trent.
+WORKS	  et u-verb Burton-upon-Trent.
 
 
 sme-nob	  su iežas.
-	- hans egen.
-	+ ham eget.
+WORKS	  hans egen.
 
 
 sme-nob	  eanan-.
-WORKS	  jord-.
+	- jord-.
+	+ en jord-.
 
 
 sme-nob	  eanan- ja luonddudoahpagiid.
@@ -1181,20 +1142,23 @@ sme-nob	  eanan- ja luonddudoahpagiid.
 
 
 sme-nob	  munno.
-WORKS	  oss to.
+	- oss to.
+	+ #vi.
 
 
 sme-nob	  Ruvdnaprinseassa Märtha ja moai letne.
 	- Kronprinsesse Märtha og vi to er.
-	+ Kronprinsesse Märtha og vi to vi to er.
+	+ Kronprinsesse #Märtha og #vi er.
 
 
 sme-nob	  Prinseassa Märtha ja earát.
-WORKS	  Prinsesse Märtha og andre.
+	- Prinsesse Märtha og andre.
+	+ Prinsesse #Märtha og #annen.
 
 
 sme-nob	  Märtha ja earát.
-WORKS	  Märtha og andre.
+	- Märtha og andre.
+	+ #Märtha og #annen.
 
 
 sme-nob	  galbmit.
@@ -1203,26 +1167,27 @@ WORKS	  fryse til.
 
 sme-nob	  sirdui.
 	- han ble flyttet.
-	+ hun ble flyttet.
+	+ *sirdui.
 
 
 sme-nob	  lei okta dehálaš erohus.
 	- det var en viktig forskjell.
-	+ det var et den viktige forskjellen.
+	+ var en viktige forskjellen.
 
 
 sme-nob	  Anne ráhkada biepmu.
-WORKS	  Anne lager mat.
+	- Anne lager mat.
+	+ La #hun lager mat.
 
 
 sme-nob	  Dat lea sihke buorre ja heittot.
 	- Det er både bra og dårlig.
-	+ Det det er @sihke bra og dårlig.
+	+ Den er både bra og dårlig.
 
 
 sme-nob	  22 jahkásaš Tine Chris Mathisen fárrii áibbas okto máddin Sápmái.
 	- 22 år gamle Tine Chris Mathisen flyttet helt alene sørfra til Sameland.
-	+ 22 år gammel Tine Chris Mathisen han flyttet helt alene sørfra til Sameland.
+	+ #22 år gamle #Tine #Chris #Mathisen flyttet helt alene sørfra til Sameland.
 
 
 sme-nob	  vuolgit lea suohtas.
@@ -1231,59 +1196,61 @@ WORKS	  å reise er morsomt.
 
 sme-nob	  Go Gonagas Olav buohccái 1990 giđa.
 	- Da Kong Olav ble syk våren 1990.
-	+ Da Kong Olav det ble sykt våren 1990.
+	+ Da Kong #Olav ble syk våren #1990.
 
 
 sme-nob	  cuoŋománu 15. b. lea.
 	- 15. april er det.
-	+ april 15. d. det er.
+	+ 15. april #det er.
 
 
 sme-nob	  juohke lágán geđggiiguin.
 	- med alle slags steiner.
-	+ alt med slags steiner.
+	+ med #all slags steiner.
 
 
 sme-nob	  málet olbmuid earenoamáš dáhpáhusaid oktavuođas.
 	- male folk i forbindelse med de spesielle hendelsene.
-	+ maler folk spesielle hendelser på kontakt.
+	+ male folks spesielle hendelser på kontakt.
 
 
 sme-nob	  Geassemánu 30. beaivvi 1944 nammadii Ráđđehus Londonis Ruvdnaprinssa Olav suodjalushoavdan.
-WORKS	  30. juni 1944 oppnevnte Regjeringen i London Kronprins Olav som forsvarssjef.
+	- 30. juni 1944 oppnevnte Regjeringen i London Kronprins Olav som forsvarssjef.
+	+ 30. juni #1944 oppnevnte *Ráđđehus av London Kronprins #Olav som forsvarssjef.
 
 
 sme-nob	  Lei unnán mii earuhii nuorra Prinssa skuvlavázzima eará skuvlamánáin.
 	- Det var lite som skilte den unge Prinsens skolegang fra de andre skolebarnene.
-	+ Det var lite som skilte den unge Prinsen skolegangen annet fra skolebarnene.
+	+ #Det var lite som skilte den unge Prinsens skolegang fra de #annen skolebarnene.
 
 
 sme-nob	  Sámi allaskuvla lea okta dain allaskuvllain.
 	- Samisk høgskole er en av de høyskolene.
-	+ Samisk høgskole det er et av de på høyskolene.
+	+ Samens høyskole er en av #den høyskolene.
 
 
 sme-nob	  Dat lei nuppiin sániin.
 	- Det var med det andre ordet.
-	+ Det det var med annet med ordet.
+	+ Den var med annet med et ord.
 
 
 sme-nob	  (1998-99) Utjamningsmeldinga.
-WORKS	  (1998-99) Utjamningsmeldinga.
+	- (1998-99) Utjamningsmeldinga.
+	+ (#1998-99) *Utjamningsmeldinga.
 
 
 sme-nob	  Mii vurddiimet dálkki buorránit.
-	- Vi ventet at været skulle bedres.
-	+ Vi ventet været å bedres.
+WORKS	  Vi ventet at været skulle bedres.
 
 
 sme-nob	  Suohkan lei positiiva juste nu guhkás go láhka geatnegahtii.
 	- Kommunen var positiv nettopp så langt som loven pliktet.
-	+ Kommunen var positivt nettopp så langt som loven pliktet.
+	+ *Suohkan var positiv nettopp så langt som loven pliktet.
 
 
 sme-nob	  Od.prp. nr. 41 1949 ja Od.prp. nr. 9 1951. Ja.
-WORKS	  Ot.prp. nr. 41 1949 og Ot.prp. nr. 9 1951. Og.
+	- Ot.prp. nr. 41 1949 og Ot.prp. nr. 9 1951. Og.
+	+ Ot.prp. nr. #41 1949 og Ot.prp. nr. 9 1951. Og.
 
 
 sme-nob	  olbmot elle gávpeguolástemiin.
@@ -1291,23 +1258,22 @@ WORKS	  folk levde på kommersielt fiske.
 
 
 sme-nob	  go dát ii leat suohkangeaidnu.
-	- når dette ikke er en kommunal vei.
-	+ når dette kommunale veien ikke er.
+WORKS	  når dette ikke er en kommunal vei.
 
 
 sme-nob	  Lea nu guhkkin ahte eai mánát šat olle bohcco rádjái.
 	- Det er så langt borte at barnene ikke lenger når frem til reinen.
-	+ Det er så langt borte at de ikke barn lenger når frem reinen til.
+	+ #Det er så langt borte at de ikke barnene lenger når frem til reinen.
 
 
 sme-nob	  Lea nu guhkkin ahte eai mánát olle bohcco rádjái.
 	- Det er så langt borte at barnene ikke når frem til reinen.
-	+ Det er så langt borte at barn ikke når frem reinen til.
+	+ #Det er så langt borte at barnene ikke når frem til reinen.
 
 
 sme-nob	  Lea nu guhkkin ahte eai mánát olle bohcco rádjái doppe.
 	- Det er så langt borte at barnene ikke når frem til reinen der borte.
-	+ Det er så langt borte at barn ikke når frem reinen til der borte.
+	+ #Det er så langt borte at barnene ikke når frem til reinen der borte.
 
 
-88 / 279, 31.54%
+122 / 279, 43.73%
