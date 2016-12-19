@@ -23,9 +23,8 @@ TARGETS_COMMON =				\
 	$(PREFIX1).t2x.bin			\
 	$(PREFIX1).t3x.bin			\
 	$(PREFIX1).t4x.bin		        \
-	$(PREFIX2).automorf.bin		        \
 	$(PREFIX2).automorf-untrimmed.bin
-
+# last one is technically nob→sme, but handy for debugging
 
 # This include defines goals for install-modes, .deps/.d and .mode files:
 @ap_include@
@@ -39,6 +38,7 @@ TARGETS2 =			\
 	$(PREFIX2).automorf.bin \
 	$(PREFIX2).prob		\
 	$(PREFIX2).rlx.bin
+	$(PREFIX2).automorf.bin		        \
 
 debug: \
 	$(BASENAME).$(PREFIX1).mor.rlx \
