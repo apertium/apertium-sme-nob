@@ -1,6 +1,6 @@
-Revision: 74970
+Revision: 74981
 AP_SRC1 (doesn't seem to be a repo)
-AP_SRC2 Revision: 74970
+AP_SRC2 Revision: 74981
 Running Regression-tests with mode "sme-nob" with updated tests ...
 
 sme-nob	  biila.
@@ -33,8 +33,7 @@ WORKS	  Máhtte betaler to kroner.
 
 
 sme-nob	  Girji máksá guokte ruvnnu.
-	- Boken koster to kroner.
-	+ Boka koster to kroner.
+WORKS	  Boka koster to kroner.
 
 
 sme-nob	  Guokte ruvnnu lea boahtán.
@@ -153,17 +152,16 @@ sme-nob	  Mun ferten čorget iežan lanja.
 
 
 sme-nob	  mun ohppen čállit sámegiela, iežan eatnigiela.
-	- jeg lærte å skrive samisk, mitt eget morsmål.
-	+ jeg lærte å skrive samisk, mitt morsmål.
+WORKS	  jeg lærte å skrive samisk, mitt morsmål.
 
 
 sme-nob	  Moai válde dušše iežame biergasiid mielde.
-	- Vi to tar bare våre egne ting med.
+	- Vi to tar bare våre ting med.
 	+ #Vi tar bare #vi ting med.
 
 
 sme-nob	  Doai váldibeahtti dušše iežade biergasiid mielde.
-	- Dere to tar bare deres egne ting med.
+	- Dere to tar bare deres ting med.
 	+ #Dere tar bare #dere ting med.
 
 
@@ -207,8 +205,7 @@ WORKS	  noe om allmenningen.
 
 
 sme-nob	  Gávdnetgo maidege?
-	- Finner de noe?
-	+ Fant du noe?
+WORKS	  Fant du noe?
 
 
 sme-nob	  goabbáge.
@@ -217,8 +214,7 @@ sme-nob	  goabbáge.
 
 
 sme-nob	  Lei nuorra nieida gii vujii biilla, ja son lea dál sáddejuvvon buohccevissui.
-	- Det var den unge jenta som kjørte bilen, og hun har nå blitt sendt til sykehuset.
-	+ Det var den unge jenta som kjørte bilen, og hun er nå *sáddejuvvon til sykehuset.
+WORKS	  Det var den unge jenta som kjørte bilen, og hun har nå blitt sendt til sykehuset.
 
 
 sme-nob	  deháleamos.
@@ -310,17 +306,17 @@ sme-nob	  ii livčče čállán.
 
 
 sme-nob	  jearažan.
-	- jeg spør da.
+	- jeg spør kanskje.
 	+ jeg spør.
 
 
 sme-nob	  Máhtte ii leačča čállán.
-	- Máhtte har da ikke skrevet.
+	- Máhtte har kanskje ikke skrevet.
 	+ Máhtte har ikke skrevet.
 
 
 sme-nob	  ii leačča čállán.
-	- han har da ikke skrevet.
+	- han har kanskje ikke skrevet.
 	+ han har ikke skrevet.
 
 
@@ -343,7 +339,7 @@ sme-nob	  Leago leamaš bátnevárka ráiggi geažil?
 
 sme-nob	  Das čujuhuvvo.
 	- Her vises det til.
-	+ På det *čujuhuvvo.
+	+ På det det vises til.
 
 
 sme-nob	  báitá.
@@ -356,7 +352,7 @@ WORKS	  det regner.
 
 sme-nob	  Ovddasvástádus lei biddjon girkui , ja lei báhppa gii dan čađahii.
 	- Ansvaret hadde blitt satt til kirken , og var presten som gjennomførte den.
-	+ Ansvaret var *biddjon til kirka , og var presten som gjennomførte den.
+	+ Ansvaret hadde blitt satt til kirka , og var presten som gjennomførte den.
 
 
 sme-nob	  Máhtte ii dáidde jienastit Bargiidbellodaga doppe.
@@ -411,7 +407,7 @@ sme-nob	  Mii maiddái ássat.
 
 sme-nob	  Mu bealis dat dušše nannejuvvui.
 	- For meg ble den bare styrket.
-	+ For #jeg det bare *nannejuvvui.
+	+ For #jeg den bare det ble styrket.
 
 
 sme-nob	  Mun ferten viežžat čázi.
@@ -439,12 +435,12 @@ WORKS	  han er ikke i ferd med å skrive.
 
 
 sme-nob	  ii leačča čállimin.
-	- han er da ikke i ferd med å skrive.
+	- han er kanskje ikke i ferd med å skrive.
 	+ han er ikke i ferd med å skrive.
 
 
 sme-nob	  ii leačča čállime.
-	- han er da ikke i ferd med å skrive.
+	- han er kanskje ikke i ferd med å skrive.
 	+ han er ikke i ferd med å skrive.
 
 
@@ -480,27 +476,25 @@ WORKS	  Er det far som kommer i morgen?
 
 sme-nob	  Go su áhčči jámii de gildui.
 	- Da hans far døde så ble det forbudt.
-	+ Da hans far døde så hun fikk kurven.
+	+ Da hans far døde så det ble forbudt.
 
 
 sme-nob	  gildui.
-	- det ble forbudt.
-	+ hun fikk kurven.
+WORKS	  det ble forbudt.
 
 
 sme-nob	  gildui sámegiella.
-	- samisk ble forbudt.
-	+ fikk samisk kurven.
+WORKS	  samisk ble forbudt.
 
 
 sme-nob	  Dađistaga gildui sámegiella.
 	- Etter hvert ble samisk forbudt.
-	+ Etter hvert fikk samisk kurven.
+	+ Etter hvert samisk ble forbudt.
 
 
 sme-nob	  dan maŋŋá gildui sámegiella.
 	- etter det ble samisk forbudt.
-	+ etter den fikk hun kurven samisk.
+	+ etter den ble samisk forbudt.
 
 
 sme-nob	  Dál dii fertebehtet geargat.
@@ -556,13 +550,11 @@ WORKS	  han begynner ikke å lese.
 
 
 sme-nob	  don borrojuvvot.
-	- du spises.
-	+ du *borrojuvvot.
+WORKS	  du spises.
 
 
 sme-nob	  go čukkodit.
-	- når de stikker seg.
-	+ når vi stikker oss.
+WORKS	  når vi stikker oss.
 
 
 sme-nob	  Son basadii.
@@ -579,7 +571,7 @@ WORKS	  når vi tøyer oss.
 
 sme-nob	  don fertet vuos beatnaga čuogahit.
 	- du må først la hunden drikke.
-	+ du må først hunden *čuogahit.
+	+ du må først få hunden drikke.
 
 
 sme-nob	  goaruhit.
@@ -730,8 +722,7 @@ WORKS	  på grunn av oss to.
 
 
 sme-nob	  Juo cuoŋománu 10. beaivvi ija vuostá mátkkoštii Harald badjel ráji.
-	- Allerede 10. april mot natten reiste Harald over grensen.
-	+ Allerede 10. april mot natta reiste Harald over grensa.
+WORKS	  Allerede 10. april mot natta reiste Harald over grensa.
 
 
 sme-nob	  nuorran son lea dan juo oahppan.
@@ -778,8 +769,7 @@ WORKS	  Tine Chris Mathisen har fått være med på reindriftsarbeidene.
 
 
 sme-nob	  Go gullen sámegiela dien mátkkis.
-	- Da jeg hørte samisk på denne reisen.
-	+ Da jeg hørte samisk på denne reisa.
+WORKS	  Da jeg hørte samisk på denne reisa.
 
 
 sme-nob	  Mun suhtan dutnje.
@@ -838,8 +828,7 @@ sme-nob	  Fertebeahtti jáhkkigoahtit dakkár balddonasmuitalusaide.
 
 
 sme-nob	  Máhtte báhcá gáddái.
-	- Máhtte blir igjen på stranden.
-	+ Máhtte blir igjen på stranda.
+WORKS	  Máhtte blir igjen på stranda.
 
 
 sme-nob	  Mun ohppen čállit dárogillii.
@@ -866,7 +855,7 @@ WORKS	  Jeg stoler på deg.
 
 sme-nob	  dikki mielas livččii dehálaš oččodit olbmuide diđolašvuođa ja ipmárdusa ahte sin giella lea áitojuvvon.
 	- i rettens oppfatning kan det være viktig å prøve å gi folk bevisstheten og forståelsen at deres språk er truet.
-	+ i tingets oppfatning kan det være viktig å prøve å få folk bevisstheten og forståelsen at deres språk er *áitojuvvon.
+	+ i tingets oppfatning kan det være viktig å prøve å få folk bevisstheten og forståelsen at deres språk er blitt truet.
 
 
 sme-nob	  Go Tine Chris Mathisen bođii deike davás de lei son juo oahppan sámegiela.
@@ -1014,8 +1003,7 @@ sme-nob	  ovddasvástideigga soai.
 
 
 sme-nob	  Fuomášuhttit máná.
-	- Gjør barnet oppmerksom på.
-	+ Gjøre barnet oppmerksom på.
+WORKS	  Gjøre barnet oppmerksom på.
 
 
 sme-nob	  du čállin reivve.
@@ -1059,13 +1047,11 @@ WORKS	  Barnene har kommet til skolen.
 
 
 sme-nob	  Leimmet nu boaittobealde ahte eat dárbbašan evakueret 1944 čakčat ja oruimet doppe olles áiggi.
-	- Vi var så avsides at vi ikke behøvde å evakuere høsten 1944 og vi bodde der borte hele tiden.
-	+ Vi var så avsides at vi ikke behøvde å evakuere høsten 1944 og vi bodde der borte hele tida.
+WORKS	  Vi var så avsides at vi ikke behøvde å evakuere høsten 1944 og vi bodde der borte hele tida.
 
 
 sme-nob	  Muhto unnimusat okte lea skuvla geavahuvvon dasa ahte njulget hilbes nuoraid dan sadjái go sáddet sin skuvlaruktui.
-	- Men minst en gang har skolen blitt brukt til det at vi retter på viltre ungdommer i stedet for å sende dem til skolehjemmet.
-	+ Men minst en gang det er en skole *geavahuvvon til det at vi retter på viltre ungdommer i stedet for å sende dem til skolehjemmet.
+WORKS	  Men minst en gang har skolen blitt brukt til det at vi retter på viltre ungdommer i stedet for å sende dem til skolehjemmet.
 
 
 sme-nob	  Fuomášedje mii lea dáhpáhuvvamin.
@@ -1132,7 +1118,7 @@ WORKS	  fryse til.
 
 sme-nob	  sirdui.
 	- han ble flyttet.
-	+ *sirdui.
+	+ hun ble flyttet.
 
 
 sme-nob	  lei okta dehálaš erohus.
@@ -1235,4 +1221,4 @@ sme-nob	  Lea nu guhkkin ahte eai mánát olle bohcco rádjái doppe.
 WORKS	  Det er så langt borte at barnene ikke når frem til reinen der borte.
 
 
-163 / 279, 58.42%
+177 / 279, 63.44%
