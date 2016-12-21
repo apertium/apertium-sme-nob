@@ -361,7 +361,7 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-buresboahtin">
       <cat-item lemma="buresboahtin" tags="n.*"/>
-      <cat-item lemma="Buresboahtin" tags="n.*"/> <!-- why big init letter for lemma? -->
+      <cat-item lemma="Buresboahtin" tags="n.*"/> <!-- big init letter so it'll match first word of sentence too -->
     </def-cat>
     <def-cat n="lex-diibmu">
       <cat-item lemma="diibmu" tags="n.*"/>
@@ -2472,7 +2472,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
          where we can avoid introducing complexity in the _regular_
          transfer rules.
     -->
-    <rule comment="C[L] lex-buresboahtin → velkommen" c="why this one as a rule?">
+    <rule comment="C[L] lex-buresboahtin → velkommen" c="No ij reading in sme analyser, so needs special rule.">
       <pattern>
         <pattern-item n="lex-buresboahtin"/>
       </pattern>
