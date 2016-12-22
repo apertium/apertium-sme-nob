@@ -3,20 +3,20 @@
 # Source this file, put a corpus in .deps/corpus.txt, then type
 # 'testvoc-find-lines' to start searching the corpus for generation
 # errors. Lines will have a line number before them, you can do
-# 'testvoc-print-line N' to print line number N from the corpus. 
+# 'testvoc-print-line N' to print line number N from the corpus.
 
 # If you've covered the first 10000 lines without error, you might
 # want to start the next testvoc-find-lines from line 10000; just do
 # OFFSET=10000, and the next testvoc-find-lines will start from that
 # line (and testvoc-print-line will add OFFSET to its argument).
 
-D=$(dirname ${BASH_SOURCE[0]})/..
+D=$(dirname "${BASH_SOURCE[0]}")/..
 
 CORPUS=$D/.deps/corpus.txt
 
 
-if [ -f $D/.deps/testvoc-OFFSET ]; then
-    OFFSET=$(cat $D/.deps/testvoc-OFFSET)
+if [ -f "$D/.deps/testvoc-OFFSET" ]; then
+    OFFSET=$(cat "$D/.deps/testvoc-OFFSET")
 else
     OFFSET=0
 fi
@@ -25,15 +25,15 @@ fi
 
 
 function testvoc-find-lines {
-    tail -n "+$OFFSET" $CORPUS | apertium-destxt | nl -ba | apertium -f none -d $D sme-nob | grep '#[^ ]'
+    tail -n "+$OFFSET" "$CORPUS" | apertium-destxt | nl -ba | apertium -f none -d "$D" sme-nob | grep '#[^ ]'
 }
 
 # How much context to show when printing a line:
 BEFORE=1
-CONTEXT=$(( $BEFORE*2+1 ))
+CONTEXT=$(( BEFORE*2+1 ))
 
 function testvoc-print-line {
     if [ $# -ne 1 ]; then echo "Expects a line number as an argument" 1>&2; fi
     LINE=$(calc "$1" + $BEFORE)
-    tail -n "+$OFFSET" $CORPUS | head -n $LINE | tail -n $CONTEXT
+    tail -n "+$OFFSET" "$CORPUS" | head -n "$LINE" | tail -n $CONTEXT
 }
