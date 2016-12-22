@@ -140,6 +140,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="prn.ind.@→A"/>
       <cat-item lemma="makkár" tags="prn.itg.*.@→N"/>
       <cat-item lemma="makkár" tags="prn.itg.*.@→A"/>
+      <cat-item lemma="ieš" tags="prn.ref.*.nom.*"/> <!-- Lene -->
     </def-cat>
     <def-cat n="cmp" c="Words only seen as compund parts">
       <cat-item tags="cmp.*"/>
@@ -1789,7 +1790,7 @@ And then there are some categories like "month", with all the months.
           </and></test>
           <let><clip pos="1" side="tl" part="a_prn"/><lit-tag v="det.pos"/></let>
         </when>
-      </choose>
+     </choose>
     </def-macro>
 
     <def-macro n="maybe_det_nbr_to_adj" npar="2"
@@ -3464,8 +3465,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
-    <rule comment="C[] NOM.PROP_ATTR NOM.PROP.ANTCOG_MOD NOM.PROP.ANTCOG
-                   « ..., muitala rektor Liisa Holmberg. »
+    <rule comment="C[TV] nom.prop_attr nom.prop.antcog_mod nom.prop.antcog" c=", muitala rektor Liisa Holmberg. 
                    Uses middle NOM.PROP gender if possible as chunk gender.">
       <pattern>
         <pattern-item n="nom.prop_attr"/>
@@ -3476,13 +3476,13 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
-        <choose><when>
+        <choose><when c="C[V] c_gen">
           <test><not><equal><clip pos="2" side="tl" part="gen"/><lit v=""/></equal></not></test>
           <let><var n="c_gen"/><clip pos="2" side="tl" part="gen"/></let>
         </when></choose>
 
         <choose>
-          <when>
+          <when c="remove tags if propernoun">
             <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
             <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
             <let><clip pos="1" side="tl" part="art"/><lit v=""/></let>
@@ -3533,8 +3533,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[] NOM.CMP NOM.PROP_ATTR NOM.PROP.ANTCOG
-                   Ruvdnaprinsa Harald => Kronprins Harald
+    <rule comment="C[TV] nom.cmp nom.prop_attr nom.prop.antcog" c="Ruvdnaprinsa Harald => Kronprins Harald
                    Uses NOM.PROP gender if possible as chunk gender.">
       <pattern>
         <pattern-item n="nom.cmp"/>
@@ -3605,7 +3604,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <!-- <rules: Noun, numeral+noun and compounds -->
-    <rule comment="C[] NOM (tl: NOM, VERB)
+    <rule comment="C[_] nom_all (tl: NOM, VERB)
                    This is a catch-all rule; it's OK that some paths are blocked by previous rules.">
       <pattern>
         <pattern-item n="nom_all"/>
@@ -3619,8 +3618,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[] NUM NOM.GEN_NUMl
-                   -----
+    <rule comment="C[TV] num nom.gen_NUMl" c="
                    Here the head (caseprep, syn_label) is the numeral!
                    Numerals take genitive case, chunk case is numeral case,
                    so we don't use out_nom
@@ -3697,8 +3695,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[] NUM_MOD NOM
-                   -----
+    <rule comment="C[V] num_mod nom_head" c="
                    Oblique use of num nom, here the nominal is the head (caseprep, syn_label)
                    so we use out_nom
                    (but we copy genitive-case and number from the numeral onto the nom).
@@ -3738,8 +3735,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-    <rule comment="C[] NUM_MOD NOM.CMP NOM
-                   -----
+    <rule comment="C[V] num_mod nom.cmp nom_head" c="
                    See NUM_MOD NOM">
       <pattern>
         <pattern-item n="num_mod"/>
@@ -3791,10 +3787,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[] NUM_MOD ADJ_ATTR NOM
-                   -----
+    <rule comment="C[] num_mod adj_attr nom_head" c="
                    22 jahkásaš Tine
-                   See NUM_MOD NOM">
+                   See num_mod nom_head">
       <!--
           Intended matches:
           ^9<num><sg><nom><@HNOUN>$ ^jahkásaš<a><attr><@→N>$ ^álbmotskuvla<n><sg><nom><@HNOUN>$
@@ -4994,7 +4989,16 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_prn_gen_nbr_art"><with-param pos="2"/></call-macro>
 
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <let><var n="c_name"/><lit v="pre_"/></let>
+        <choose c="Lene added this">
+         <when>
+          <test>
+            <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.emph"/></equal>
+          </test>
+          <let><var n="prn_gen"/><lit-tag v="un"/></let>
+         <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
+        </when>
+     </choose>
+      <let><var n="c_name"/><lit v="pre_"/></let>
         <let>
           <var n="pre-nom"/>
           <concat>

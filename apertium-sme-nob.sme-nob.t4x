@@ -358,7 +358,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <list-item v="samme"/>
       <list-item v="neste"/>
       <list-item v="forrige"/>
-      <list-item v="selv"/> <!-- Lene added -->
     </def-list>
     <def-list n="det.pl"
               c="These determiners only ever have pl as number">
@@ -374,7 +373,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <list-item v="en"/>
       <list-item v="én"/>
     </def-list>
-    <def-list n="det.emph.TODO"
+    <def-list n="selv.det.emph"> <!-- Lene -->
+      <list-item v="selv"/>
+    </def-list>
+    <def-list n="det.emph"
               c="These determiners have odd tags, should they be postchunked?">
       <list-item v="egen"/>
       <list-item v="selv"/>
@@ -568,9 +570,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           </choose>
         </when>
       </choose>
-      <choose><when c="don't allow sp tag if not in det.sp.def list; sg.m sounds most natural">
+      <choose>
+      <when c="don't allow sp tag if not in det.sp.def list; sg.m sounds most natural">
         <test><and>
-          <not><in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sp.def"/></in></not>
+          <not><or>
+          <in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sp.def"/></in>
+          <in caseless="yes"><clip pos="2" part="lemh"/><list n="selv.det.emph"/></in> <!-- Lene -->
+          </or></not>
           <equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal>
         </and></test>
         <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
