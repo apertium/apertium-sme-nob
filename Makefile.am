@@ -63,8 +63,8 @@ debug: \
 	hfst-concatenate -1 .deps/$*.autobil-derivpos.hfsa -2 .deps/$*.any-nonplus.hfst -o .deps/$*.autobil.nonplussed    # bidix [^+]*
 	echo ' %+ ' | hfst-regexp2fst > .deps/$*.single-plus.hfst                                                                 # +
 	hfst-concatenate -1 .deps/$*.single-plus.hfst -2 .deps/$*.autobil.nonplussed -o .deps/$*.autobil.postplus # + bidix [^+]*
-	hfst-repeat -f0 -t1 -i .deps/$*.autobil.postplus -o .deps/$*.autobil.postplus.0,1                      # (+ bidix [^+]*){0,1} -- gives at most one +
-	hfst-concatenate -1 .deps/$*.autobil.nonplussed -2 .deps/$*.autobil.postplus.0,1 -o $@                 # bidix [^+]* (+ bidix [^+]*){0,1}
+	hfst-repeat -f0 -t2 -i .deps/$*.autobil.postplus -o .deps/$*.autobil.postplus.0,2                      # (+ bidix [^+]*){0,2} -- gives at most two +
+	hfst-concatenate -1 .deps/$*.autobil.nonplussed -2 .deps/$*.autobil.postplus.0,2 -o $@                 # bidix [^+]* (+ bidix [^+]*){0,2}
 
 # -------------------
 # Northern Saami analysis:
