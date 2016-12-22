@@ -971,7 +971,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
                 <equal><clip pos="2" part="a_det"/><lit-tag v="det.pos"/></equal>
                 <not><equal><clip pos="1" part="case"/><lit-tag v="gen"/></equal></not>
               </and></test>
-              <let><clip pos="2" part="a_det"/><lit-tag v="prn"/></let>
+              <let><clip pos="2" part="a_det"/><lit-tag v="prn.pers"/></let> <!-- Lene added pers -->
               <call-macro n="clean_prn"><with-param pos="1"/><with-param pos="2"/></call-macro>
             </when>
             <otherwise>
