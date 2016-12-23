@@ -55,7 +55,7 @@ LIST ¶ = ¶;
 LIST pers = pers ;
 LIST dem = dem ;
 LIST interr = itg ;
-LIST indef = ind ;
+LIST ind = ind ;
 
 LIST recipr = res ;
 LIST refl = ref ;
@@ -93,7 +93,7 @@ LIST NOT-TIME = "<dulvi>" "<lohpi>" "<vuorru>" ;
 SET TIME-N = TIME-N-SET - NOT-TIME ;
 
 
-LIST HUMAN = sem_hum sem_mal sem_fem ant sem_sur pers numag der_numag ;
+LIST HUMAN = sem_hum sem_mal sem_fem cog ant sem_sur pers nomag der_nomag ;
 
 LIST LANGUAGE = ("<.*giella>"ri n) ("<.*giel>"ri n) ("<.*giel>"ri a) "<dárrolaš>"i "<nuortalaš>"i "<oarjelsámegiel>"i "<sámegiel>"i "<sápmelaš>"i "<ubmisámegiel>"i ;
 
@@ -165,7 +165,6 @@ LIST prt = pret;
 LIST prs = pres ;
 
 
-LIST ind = indic ;
 LIST pot = pot ;
 LIST cond = cond ;
 
@@ -214,9 +213,7 @@ LIST der_d = der_d ;
 LIST der_nomact = der_nomact ;
 LIST der_eamoš = der_eamoš ;
 LIST der_amoš = der_amoš ;
-LIST der_eapmi = der_eapmi ;
 LIST der_geahtes = der_geahtes ;
-LIST der_gielat = der_gielat ;
 LIST !better: = !better: ;
 
 LIST der_h = der_h ;
@@ -227,7 +224,7 @@ LIST der_huvva = der_huvva ;
 LIST der_halla = der_halla ;
 LIST der_j = der_j ;
 LIST der_l = der_l ;
-LIST der_laš = der_laš ;
+LIST der_lasj = der_lasj ;
 LIST der_las = der_las ;
 LIST der_hat = der_hat ;
 
@@ -533,7 +530,7 @@ SET NOT-A-PCLE = WORD - a - pcle ;
 
 SET NOT-A-ADV = WORD - a - adv OR ("<maid>") ;
 
-LIST NOMINAL-ADJ = "<guoktilaš>" "<lámis>" "<oasálaš>" ("<suddu>" der_laš) "<viissis>";
+LIST NOMINAL-ADJ = "<guoktilaš>" "<lámis>" "<oasálaš>" ("<suddu>" der_lasj) "<viissis>";
 
 # and many others
 
@@ -545,10 +542,10 @@ SET NOT-ADV-DE = WORD - adv ;
 SET NOT-ADV = NOT-ADV-DE OR ("<de>" adv) OR clb ;
 SET NOT-ADV-N = NOT-ADV - n ;
 SET NOT-ADV-PCLE = NOT-ADV - pcle ;
-SET NOT-ADV-INDEF = NOT-ADV - indef ;
+SET NOT-ADV-INDEF = NOT-ADV - ind ;
 SET NOT-ADV-PCLE-ILL = WORD - adv - pcle - ill ;
 SET NOT-ADV-PCLE-Refl = WORD - adv - pcle - refl ;
-SET NOT-ADV-PCLE-INDEF = WORD - adv - pcle - indef ;
+SET NOT-ADV-PCLE-INDEF = WORD - adv - pcle - ind ;
 SET NOT-ADV-PCLE-NEG = WORD - adv - pcle - neg ;
 SET NOT-ADVL-PCLE-NEG = WORD - @ADVL - @P← - pcle - neg ;
 
@@ -593,7 +590,7 @@ SET CRD = (@CNP) OR COMMA OR NEGFOC OR XGO OR ("_") OR ("-") OR DADE ;
 # AFTER LCRD vs. GCRD disambiguation
 
 LIST HAB-CASE = loc (←smj→ ine) (←sma→ gen) ;
-LIST HAB-ACTOR-ALL = sem_hum sem_mal sem_sur sem_fem ant sem_ani pers ("<gii>") indef coll ;
+LIST HAB-ACTOR-ALL = sem_hum sem_mal sem_sur sem_fem ant sem_ani pers ("<gii>") (prn ind) coll ;
 SET HAB-ACTOR = HAB-ACTOR-ALL - ("<cihca>") ;
 SET HAB-ACTOR-NOT-HUMAN = sem_org ;
 
@@ -703,11 +700,11 @@ SET NOT-NPMOD-ACC-ADV = NOT-NPMOD - acc - adv OR abbr ;
 
 SET NOT-NPMODADV = WORD - PRE-NP-HEAD - adv ;
 # NOT-NPMODADV = "NOT-PRE-NP-HEAD-OR-ADV"
-SET NOT-NPMODADV-INDEF = WORD - PRE-NP-HEAD - adv - indef ;
+SET NOT-NPMODADV-INDEF = WORD - PRE-NP-HEAD - adv - ind ;
 ## NOT-NPMODADVI = "     ...-OR-INDEF"
-SET NOT-NPMODADVII = WORD - PRE-NP-HEAD - adv - indef - ill ;
+SET NOT-NPMODADVII = WORD - PRE-NP-HEAD - adv - ind - ill ;
 # Illative indir.obj.
-SET NOT-NPMODADVIIP = WORD - PRE-NP-HEAD - adv - indef - ill - pcle ;
+SET NOT-NPMODADVIIP = WORD - PRE-NP-HEAD - adv - ind - ill - pcle ;
 # <== is this our NOT-NPMOD set?
 SET NOT-NPMODCC = WORD - PRE-NP-HEAD - COMMA - @CNP ;
 SET NAPP = WORD - PRE-APP ;
