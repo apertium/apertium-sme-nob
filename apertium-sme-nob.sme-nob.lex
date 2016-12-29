@@ -1688,6 +1688,12 @@ SELECT ("om våren"i) (0 ("<giđđat>"i) + adv) ;
 
 # Adjectives
 # ==========
+SELECT ("fjern") (0 ("<gáiddus>"i) + cmpnd);
+REMOVE ("fjern") (NOT 0 cmpnd);
+
+SELECT ("streif") (0 ("<golgu>"i) + adj + cmpnd);
+REMOVE ("streif") (NOT 0 adj + cmpnd);
+
 SELECT ("vær så god") (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
 
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
