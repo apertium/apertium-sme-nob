@@ -1246,6 +1246,10 @@ SELECT:fallback ("kontakt"i) (0 ("<oktavuohta>"i));
 SELECT ("folk") (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
 
+SELECT ("menneske") (0 ("<olmmoš>"i) LINK 0 ess) ;
+# olmmožin => som menneske
+
+
 SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
 
 # soadji 0 = vinge, 1 = skovl, 2 = fløy, 3 = erme
