@@ -1695,8 +1695,8 @@ SELECT ("om våren"i) (0 ("<giđđat>"i) + adv) ;
 SELECT ("fjern") (0 ("<gáiddus>"i) + cmpnd);
 REMOVE ("fjern") (NOT 0 cmpnd);
 
-SELECT ("streif") (0 ("<golgu>"i) + adj + cmpnd);
-REMOVE ("streif") (NOT 0 adj + cmpnd);
+SELECT ("streif") (0 ("<golgu>"i) + a + cmpnd);
+REMOVE ("streif") (NOT 0 a + cmpnd);
 
 SELECT ("vær så god") (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
 
