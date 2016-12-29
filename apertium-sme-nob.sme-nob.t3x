@@ -58,6 +58,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item lemma="rel" tags="*.@SUBJ→"/>
       <cat-item lemma="rel" tags="@SUBJ→.*"/>
     </def-cat>
+    <def-cat n="lSUBJ">
+      <cat-item tags="SN.@←SUBJ.*"/>
+    </def-cat>
     <def-cat n="maybe-lSUBJ">
       <cat-item lemma="unknown" tags="unknown"/>
       <cat-item tags="SN.←hab→.*"/>           <!-- HAB or not here? -->
@@ -77,18 +80,32 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="SA_ADVLr">
       <cat-item tags="SA.@ADVL→"/>
+      <cat-item tags="SA.@ADVL-ela→"/>
+      <cat-item tags="SA.@ADVL-ine→"/>
       <cat-item tags="SA.@ADVL→.*"/>
+      <cat-item tags="SA.@ADVL-ela→.*"/>
+      <cat-item tags="SA.@ADVL-ine→.*"/>
     </def-cat>
     <def-cat n="adv-lADVL">
       <cat-item lemma="adv" tags="@←ADVL"/>
+      <cat-item lemma="adv" tags="@←ADVL-ela"/>
+      <cat-item lemma="adv" tags="@←ADVL-ine"/>
     </def-cat>
     <def-cat n="ADVLrOBJr">
       <cat-item tags="*.@OBJ→"/>
       <cat-item tags="*.@OBJ→.*"/>
       <cat-item tags="*.@ADVL→"/>
       <cat-item tags="*.@ADVL→.*"/>
+      <cat-item tags="*.@ADVL-ela→"/>
+      <cat-item tags="*.@ADVL-ela→.*"/>
+      <cat-item tags="*.@ADVL-ine→"/>
+      <cat-item tags="*.@ADVL-ine→.*"/>
       <cat-item lemma="adv" tags="@ADVL→"/>
       <cat-item lemma="adv" tags="@ADVL→.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ela→"/>
+      <cat-item lemma="adv" tags="@ADVL-ela→.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ine→"/>
+      <cat-item lemma="adv" tags="@ADVL-ine→.*"/>
     </def-cat>
     <def-cat n="lOPRED">
       <cat-item tags="SV.@←OPRED.*"/>
@@ -115,6 +132,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="SV_lOBJ-tilsvar">
       <cat-item tags="SV.@←OBJ.*"/>
     </def-cat>
+    <def-cat n="border">
+      <cat-item lemma="conj" tags="@CVP.cnjcoo"/>
+    </def-cat>
     <def-cat n="CS">
       <cat-item lemma="conj" tags="@CVP.cnjsub"/>
       <cat-item lemma="conj" tags="@CNP.cnjsub"/>
@@ -123,22 +143,56 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item lemma="adv" tags="@PCLE"/>
       <cat-item lemma="adv" tags="@ADVL"/>
       <cat-item lemma="adv" tags="@ADVL.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ela.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ine.*"/>
       <cat-item tags="SN.@ADVL"/>
+      <cat-item tags="SN.@ADVL-ela"/>
+      <cat-item tags="SN.@ADVL-ine"/>
       <cat-item tags="SN.@ADVL.*"/>
+      <cat-item tags="SN.@ADVL-ela.*"/>
+      <cat-item tags="SN.@ADVL-ine.*"/>
       <cat-item tags="SA.@ADVL"/>
+      <cat-item tags="SA.@ADVL-ela"/>
+      <cat-item tags="SA.@ADVL-ine"/>
       <cat-item tags="SA.@ADVL.*"/>
+      <cat-item tags="SA.@ADVL-ine.*"/>
+      <cat-item tags="SA.@ADVL-ela.*"/>
       <cat-item lemma="adv" tags="@←ADVL"/>
       <cat-item lemma="adv" tags="@←ADVL.*"/>
+      <cat-item lemma="adv" tags="@←ADVL-ela"/>
+      <cat-item lemma="adv" tags="@←ADVL-ela.*"/>
+      <cat-item lemma="adv" tags="@←ADVL-ine"/>
+      <cat-item lemma="adv" tags="@←ADVL-ine.*"/>
       <cat-item tags="SN.@←ADVL"/>
       <cat-item tags="SN.@←ADVL.*"/>
+      <cat-item tags="SN.@←ADVL-ela"/>
+      <cat-item tags="SN.@←ADVL-ela.*"/>
+      <cat-item tags="SN.@←ADVL-ine"/>
+      <cat-item tags="SN.@←ADVL-ine.*"/>
       <cat-item tags="SA.@←ADVL"/>
       <cat-item tags="SA.@←ADVL.*"/>
+      <cat-item tags="SA.@←ADVL-ela"/>
+      <cat-item tags="SA.@←ADVL-ela.*"/>
+      <cat-item tags="SA.@←ADVL-ine"/>
+      <cat-item tags="SA.@←ADVL-ine.*"/>
       <cat-item lemma="adv" tags="@ADVL→"/>
       <cat-item lemma="adv" tags="@ADVL→.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ela→"/>
+      <cat-item lemma="adv" tags="@ADVL-ela→.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ine→"/>
+      <cat-item lemma="adv" tags="@ADVL-ine→.*"/>
       <cat-item tags="SN.@ADVL→"/>
       <cat-item tags="SN.@ADVL→.*"/>
+      <cat-item tags="SN.@ADVL-ine→"/>
+      <cat-item tags="SN.@ADVL-ine→.*"/>
+      <cat-item tags="SN.@ADVL-ela→"/>
+      <cat-item tags="SN.@ADVL-ela→.*"/>
       <cat-item tags="SA.@ADVL→"/>
       <cat-item tags="SA.@ADVL→.*"/>
+      <cat-item tags="SA.@ADVL-ela→"/>
+      <cat-item tags="SA.@ADVL-ela→.*"/>
+      <cat-item tags="SA.@ADVL-ine→"/>
+      <cat-item tags="SA.@ADVL-ine→.*"/>
     </def-cat>
     <def-cat n="adv-FV.neg">
       <cat-item lemma="adv" tags="SV.@+FAUXV.neg.*"/>
@@ -187,19 +241,47 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="SPEC" c="'Specifiyer', sort of... rather diffuse category here">
       <cat-item lemma="adv" tags="@PCLE"/> <!-- TODO check -->
       <cat-item lemma="adv" tags="@←ADVL"/>
+      <cat-item lemma="adv" tags="@←ADVL-ela"/>
+      <cat-item lemma="adv" tags="@←ADVL-ine"/>
       <cat-item lemma="adv" tags="@←ADVL.*"/>
+      <cat-item lemma="adv" tags="@←ADVL-ela.*"/>
+      <cat-item lemma="adv" tags="@←ADVL-ine.*"/>
       <cat-item lemma="adv" tags="@ADVL"/>
+      <cat-item lemma="adv" tags="@ADVL-ela"/>
+      <cat-item lemma="adv" tags="@ADVL-ine"/>
       <cat-item lemma="adv" tags="@ADVL.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ela.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ine.*"/>
       <cat-item tags="SN.@ADVL"/>
+      <cat-item tags="SN.@ADVL-ela"/>
+      <cat-item tags="SN.@ADVL-ine"/>
       <cat-item tags="SN.@ADVL.*"/>
+      <cat-item tags="SN.@ADVL-ela.*"/>
+      <cat-item tags="SN.@ADVL-ine.*"/>
       <cat-item tags="SA.@ADVL"/>
+      <cat-item tags="SA.@ADVL-ela"/>
+      <cat-item tags="SA.@ADVL-ine"/>
       <cat-item tags="SA.@ADVL.*"/>
+      <cat-item tags="SA.@ADVL-ela.*"/>
+      <cat-item tags="SA.@ADVL-ine.*"/>
       <cat-item lemma="adv" tags="@ADVL→"/>
       <cat-item lemma="adv" tags="@ADVL→.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ela→"/>
+      <cat-item lemma="adv" tags="@ADVL-ela→.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ine→"/>
+      <cat-item lemma="adv" tags="@ADVL-ine→.*"/>
       <cat-item tags="SN.@ADVL→"/>
       <cat-item tags="SN.@ADVL→.*"/>
+      <cat-item tags="SN.@ADVL-ela→"/>
+      <cat-item tags="SN.@ADVL-ela→.*"/>
+      <cat-item tags="SN.@ADVL-ine→"/>
+      <cat-item tags="SN.@ADVL-ine→.*"/>
       <cat-item tags="SA.@ADVL→"/>
       <cat-item tags="SA.@ADVL→.*"/>
+      <cat-item tags="SA.@ADVL-ela→"/>
+      <cat-item tags="SA.@ADVL-ela→.*"/>
+      <cat-item tags="SA.@ADVL-ine→"/>
+      <cat-item tags="SA.@ADVL-ine→.*"/>
       <cat-item tags="SN.@SPRED→"/>
       <cat-item tags="SN.@SPRED→.*"/>
       <cat-item tags="SN.@→P"/> <!-- object of postposition, moved by t2x -->
@@ -307,10 +389,14 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="@→A"/>
       <attr-item tags="@A←"/>
       <attr-item tags="@←ADVL"/>
-      <attr-item tags="@→ADVL"/>
+       <attr-item tags="@←ADVL-ela"/>
+       <attr-item tags="@←ADVL-ine"/>
+       <attr-item tags="@→ADVL"/>
       <attr-item tags="@ADVL"/>
       <attr-item tags="@ADVL←"/>
       <attr-item tags="@ADVL→"/>
+      <attr-item tags="@ADVL-ela→"/>
+      <attr-item tags="@ADVL-ine→"/>
       <attr-item tags="@ADVL→CS"/>
       <attr-item tags="@ADVL←OBJ"/>
       <attr-item tags="@ADVL→SUBJ"/>
@@ -325,8 +411,12 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="@COMP-CS←"/>
       <attr-item tags="@CVP"/>
       <attr-item tags="@-F←ADVL"/>
+      <attr-item tags="@-F←ADVL-ine"/>
+      <attr-item tags="@-F←ADVL-ela"/>
       <attr-item tags="@-FADVL"/>
       <attr-item tags="@-FADVL→"/>
+      <attr-item tags="@-FADVL-ine→"/>
+      <attr-item tags="@-FADVL-ela→"/>
       <attr-item tags="@-FAUXV"/>
       <attr-item tags="@\+FAUXV"/>
       <attr-item tags="@+FAUXV"/>
@@ -473,6 +563,10 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                     <or>
                       <equal><clip pos="1" part="syn_label"/><lit-tag v="@ADVL→"/></equal>
                       <equal><clip pos="1" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+                      <equal><clip pos="1" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+                      <equal><clip pos="1" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                      <equal><clip pos="1" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
+                      <equal><clip pos="1" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
                     </or>
                   </and>
                 </or>
@@ -629,7 +723,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </call-macro>
     </def-macro>
 
-    <def-macro n="set_existential_pro" npar="2"
+    <def-macro n="set_existential_pro_initial" npar="2"
                c="arg.1: verb chunk, arg.2: following word">
       <let><var n="pro"/><lit v=""/></let>
       <choose>
@@ -642,6 +736,30 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
             <var n="pro"/>
             <concat>
               <lit v="^Prn"/>
+              <lit-tag v="SN.@SUBJ→.p3.nt.sg.nom"/>
+              <lit v="{^prpers"/>
+              <lit-tag v="prn.pers.p3.nt.sg.nom"/>
+              <lit v="$}$"/>
+              <b/>
+            </concat>
+          </let>
+          <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
+        </when>
+      </choose>
+    </def-macro>
+    <def-macro n="set_existential_pro_general" npar="2"
+               c="arg.1: verb chunk, arg.2: following word">
+      <let><var n="pro"/><lit v=""/></let>
+      <choose>
+        <when>
+          <test> <and>
+            <equal><clip pos="1" part="lemh"/><lit v="vcop"/></equal>
+            <not><equal><clip pos="1" part="temps"/><lit-tag v="imp"/></equal></not>
+          </and></test>
+          <let>
+            <var n="pro"/>
+            <concat>
+              <lit v="^prn"/>
               <lit-tag v="SN.@SUBJ→.p3.nt.sg.nom"/>
               <lit v="{^prpers"/>
               <lit-tag v="prn.pers.p3.nt.sg.nom"/>
@@ -1175,7 +1293,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="1"/>
         </call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
-        <call-macro n="set_existential_pro"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_existential_pro_initial"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <var n="pro"/>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -1185,6 +1303,32 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+ <!--   <rule comment="REGLA: border FV maybe-lSUBJ 
+                   
+                   Override prodrop rule (below) if we might have a subject to the right" c="ja lei báhppa gii dan čađahii.">
+      <pattern>
+        <pattern-item n="border"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="lSUBJ"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes2">
+          <with-param pos="3"/>
+          <with-param pos="2"/>
+        </call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <call-macro n="set_existential_pro_general"><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+           <var n="pro"/>  
+         <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>  -->
     <rule comment="REGLA: FV lemq maybe-lSUBJ
                    -----
                    ovddasvástideigga soai => hadde de_to ansvar_for
@@ -1200,7 +1344,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <with-param pos="1"/>
         </call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
-        <call-macro n="set_existential_pro"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_existential_pro_initial"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <var n="pro"/>
           <chunk><clip pos="1" part="whole"/></chunk>

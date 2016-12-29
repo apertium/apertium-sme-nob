@@ -66,9 +66,13 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="lADVL">
       <cat-item lemma="adv" tags="@←ADVL"/>
+      <cat-item lemma="adv" tags="@←ADVL-ela"/>
+      <cat-item lemma="adv" tags="@←ADVL-ine"/>
     </def-cat>
     <def-cat n="prn-lADVL">
       <cat-item lemma="prn" tags="SN.@←ADVL.*"/>
+      <cat-item lemma="prn" tags="SN.@←ADVL-ela.*"/>
+      <cat-item lemma="prn" tags="SN.@←ADVL-ine.*"/>
     </def-cat>
     <def-cat n="PR">
       <cat-item tags="PR"/>
@@ -92,6 +96,8 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="SN_rADVL">
       <cat-item tags="SN.@→ADVL.*"/>
+      <cat-item tags="SN.@→ADVL-ela.*"/>
+      <cat-item tags="SN.@→ADVL-ine.*"/>
     </def-cat>
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
@@ -127,17 +133,41 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="ADVL.loc">
       <cat-item tags="SN.@ADVL.*.loc"/>
+      <cat-item tags="SN.@ADVL-ela.*.loc"/>
+      <cat-item tags="SN.@ADVL-ine.*.loc"/>
       <cat-item tags="SN.@ADVL.*.loc.*"/>
+      <cat-item tags="SN.@ADVL-ela.*.loc.*"/>
+      <cat-item tags="SN.@ADVL-ine.*.loc.*"/>
       <cat-item tags="SN.@←ADVL.*.loc"/>
+      <cat-item tags="SN.@←ADVL-ela.*.loc"/>
+      <cat-item tags="SN.@←ADVL-ine.*.loc"/>
       <cat-item tags="SN.@←ADVL.*.loc.*"/>
+      <cat-item tags="SN.@←ADVL-ela.*.loc.*"/>
+      <cat-item tags="SN.@←ADVL-ine.*.loc.*"/>
       <cat-item tags="SN.@ADVL→.*.loc"/>
+      <cat-item tags="SN.@ADVL-ela→.*.loc"/>
+      <cat-item tags="SN.@ADVL-ine→.*.loc"/>
       <cat-item tags="SN.@ADVL→.*.loc.*"/>
+      <cat-item tags="SN.@ADVL-ela→.*.loc.*"/>
+      <cat-item tags="SN.@ADVL-ine→.*.loc.*"/>
       <cat-item tags="SN.@-FADVL.*.loc"/>
+      <cat-item tags="SN.@-FADVL-ela.*.loc"/>
+      <cat-item tags="SN.@-FADVL-ine.*.loc"/>
       <cat-item tags="SN.@-FADVL.*.loc.*"/>
+      <cat-item tags="SN.@-FADVL-ela.*.loc.*"/>
+      <cat-item tags="SN.@-FADVL-ine.*.loc.*"/>
       <cat-item tags="SN.@-F←ADVL.*.loc"/>
+      <cat-item tags="SN.@-F←ADVL-ela.*.loc"/>
+      <cat-item tags="SN.@-F←ADVL-ine.*.loc"/>
       <cat-item tags="SN.@-F←ADVL.*.loc.*"/>
+      <cat-item tags="SN.@-F←ADVL-ela.*.loc.*"/>
+      <cat-item tags="SN.@-F←ADVL-ine.*.loc.*"/>
       <cat-item tags="SN.@-FADVL→.*.loc"/>
+      <cat-item tags="SN.@-FADVL-ela→.*.loc"/>
+      <cat-item tags="SN.@-FADVL-ine→.*.loc"/>
       <cat-item tags="SN.@-FADVL→.*.loc.*"/>
+      <cat-item tags="SN.@-FADVL-ela→.*.loc.*"/>
+      <cat-item tags="SN.@-FADVL-ine→.*.loc.*"/>
     </def-cat>
     <def-cat n="PCLE.qst">
       <cat-item tags="@PCLE.qst"/>
@@ -239,10 +269,14 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="@→A"/>
       <attr-item tags="@A←"/>
       <attr-item tags="@←ADVL"/>
-      <attr-item tags="@→ADVL"/>
+       <attr-item tags="@←ADVL-ela"/>
+       <attr-item tags="@←ADVL-ine"/>
+       <attr-item tags="@→ADVL"/>
       <attr-item tags="@ADVL"/>
       <attr-item tags="@ADVL←"/>
       <attr-item tags="@ADVL→"/>
+      <attr-item tags="@ADVL-ela→"/>
+      <attr-item tags="@ADVL-ine→"/>
       <attr-item tags="@ADVL→CS"/>
       <attr-item tags="@ADVL←OBJ"/>
       <attr-item tags="@ADVL→SUBJ"/>
@@ -257,8 +291,12 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="@COMP-CS←"/>
       <attr-item tags="@CVP"/>
       <attr-item tags="@-F←ADVL"/>
+      <attr-item tags="@-F←ADVL-ine"/>
+      <attr-item tags="@-F←ADVL-ela"/>
       <attr-item tags="@-FADVL"/>
       <attr-item tags="@-FADVL→"/>
+      <attr-item tags="@-FADVL-ine→"/>
+      <attr-item tags="@-FADVL-ela→"/>
       <attr-item tags="@-FAUXV"/>
       <attr-item tags="@\+FAUXV"/>
       <attr-item tags="@+FAUXV"/>

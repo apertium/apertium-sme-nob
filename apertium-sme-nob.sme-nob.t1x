@@ -369,6 +369,8 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-das-her">
       <cat-item lemma="dat" tags="prn.dem.sg.loc.@ADVL→"/> <!-- dát -->
+      <cat-item lemma="dat" tags="prn.dem.sg.loc.@ADVL-ela→"/> <!-- dát -->
+      <cat-item lemma="dat" tags="prn.dem.sg.loc.@ADVL-ine→"/> <!-- dát -->
     </def-cat>
     <def-cat n="lex-mannan">
       <cat-item lemma="mannat" tags="vblex.iv.prfprc.@→N"/>
@@ -673,10 +675,14 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="@→A"/>
       <attr-item tags="@A←"/>
       <attr-item tags="@←ADVL"/>
-      <attr-item tags="@→ADVL"/>
+       <attr-item tags="@←ADVL-ela"/>
+       <attr-item tags="@←ADVL-ine"/>
+       <attr-item tags="@→ADVL"/>
       <attr-item tags="@ADVL"/>
       <attr-item tags="@ADVL←"/>
       <attr-item tags="@ADVL→"/>
+      <attr-item tags="@ADVL-ela→"/>
+      <attr-item tags="@ADVL-ine→"/>
       <attr-item tags="@ADVL→CS"/>
       <attr-item tags="@ADVL←OBJ"/>
       <attr-item tags="@ADVL→SUBJ"/>
@@ -691,8 +697,12 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="@COMP-CS←"/>
       <attr-item tags="@CVP"/>
       <attr-item tags="@-F←ADVL"/>
+      <attr-item tags="@-F←ADVL-ine"/>
+      <attr-item tags="@-F←ADVL-ela"/>
       <attr-item tags="@-FADVL"/>
       <attr-item tags="@-FADVL→"/>
+      <attr-item tags="@-FADVL-ine→"/>
+      <attr-item tags="@-FADVL-ela→"/>
       <attr-item tags="@-FAUXV"/>
       <attr-item tags="@\+FAUXV"/>
       <attr-item tags="@+FAUXV"/>
@@ -1313,7 +1323,11 @@ And then there are some categories like "month", with all the months.
               <test><and>
                 <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
                 <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
+                <or>
                 <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                </or>
               </and></test>
               <let>
                 <var n="caseprep"/><lit v="av"/>
@@ -1330,7 +1344,11 @@ And then there are some categories like "month", with all the months.
                   <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
                   <or>
                     <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL→"/></equal>
-                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+                     <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
+                   <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+                   <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                   <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
                   </or>
                 </and>
                 <and>
@@ -1520,7 +1538,11 @@ And then there are some categories like "month", with all the months.
                   <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
                   <or>
                     <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL→"/></equal>
-                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="←@ADVL"/></equal>
+                     <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
+                   <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+                   <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                   <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
                   </or>
                 </and>
               </or></test>
@@ -1730,7 +1752,11 @@ And then there are some categories like "month", with all the months.
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OPRED"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine"/></equal></not>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL→"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal></not>
                 <!-- syn_label!=@←ADVL conflicts with 'Son ii dáidde
                      jienastit Bargiidbellodaga(def)' but is necessary
                      for 'Doppe son orui vahku(ind)' -->
@@ -6346,7 +6372,11 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                 <equal><clip pos="1" side="sl" part="lemh"/><lit v="mot"/></equal>
                 <equal><clip pos="1" side="sl" part="lemh"/><lit v="movt"/></equal>
               </or>
+              <or>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL→"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
+              </or>
             </and></test>
             <out>
               <chunk name="conj" case="caseFirstWord">
