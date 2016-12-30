@@ -1440,6 +1440,11 @@ SELECT:lang-speakers (".*talende"ri) (0 ("<.*giella>"ri) + n + pl) ;
 SELECT ("nok"i) (0 ("<doarvi>"i)) (0 ill) ;
 SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 
+SELECT ("gevinst"i) (0 ("<vuoitu>"i))(-1 ("<oppalaš>") OR ("<fasket>")) ;
+SELECT ("gevinst"i) (0 ("<vuoitu>"i))(*0 CURRENCY) ;	
+
+
+
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("energi"i) (0 ("<arva>"i));
 SELECT:fallback ("øre"i) (0 ("<beallji>"i));
