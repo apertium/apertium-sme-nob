@@ -441,7 +441,6 @@ And then there are some categories like "month", with all the months.
     <def-cat n="prn-nonreferential">
       <!-- Turns to nt.sg in Norwegian if used as lone pron, although it may be pl in sme. -->
       <!-- See Nickel p.128–129, http://giellatekno.uit.no/oahpa/pronomen.nno.html#Ubestemte+pronomen -->
-      <cat-item lemma="mihkkege" tags="prn.*"/>
       <cat-item lemma="mihkke" tags="prn.*"/>
       <cat-item lemma="giige" tags="prn.*"/>
       <cat-item lemma="guhtege" tags="prn.*"/>
@@ -449,7 +448,23 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="guhtemušge" tags="prn.*"/>
       <cat-item lemma="makkárge" tags="prn.*"/>
       <cat-item lemma="oktage" tags="prn.*"/>
+      <cat-item lemma="okta" tags="prn.ind.sg.*.foc_neg-ge.*"/>
+      <cat-item lemma="mihkke" tags="prn.ind.sg.*.foc_neg-ge.*"/>
+      <cat-item lemma="gii" tags="prn.ind.sg.*.foc_neg-ge.*"/>
+      <cat-item lemma="guhte" tags="prn.ind.sg.*.foc_neg-ge.*"/>
+      <cat-item lemma="guhte" tags="prn.ind.attr.foc_neg-ge.*"/>
+      <cat-item lemma="goabbá" tags="prn.ind.sg.*.foc_neg-ge.*"/>
+      <cat-item lemma="goabbá" tags="prn.ind.attr.foc_neg-ge.*"/>
+      <cat-item lemma="guhtemuš" tags="prn.ind.sg.*.foc_neg-ge.*"/>
+      <cat-item lemma="makkár" tags="prn.ind.sg.*.foc_neg-ge.*"/>
+      <cat-item lemma="makkár" tags="prn.ind.attr.foc_neg-ge.*"/>
     </def-cat>
+ 
+     <def-cat n="neg-verb">
+      <cat-item tags="vblex.iv.neg.*"/>
+    </def-cat>
+
+ 
   </section-def-cats>
   <section-def-attrs>
     <def-attr n="a_der">
@@ -1224,6 +1239,11 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="annen" c="Lene added">
       <list-item v="annen"/>
+    </def-list>
+    <def-list n="guhte" c="Lene added">
+      <list-item v="guhte"/>
+      <list-item v="goabbá"/>
+      <list-item v="guhtemuš"/>
     </def-list>
   </section-def-lists>
 
@@ -4239,6 +4259,86 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <!-- <rules: Lone determiners, pronouns, adverbs -->
+
+    <!-- <rules: Lone determiners, pronouns, adverbs -->
+    <rule comment="C[] PRN-NONREFERENTIAL ii goabbáge => ingen av dem
+                   Like DET rule, but force nt sg">
+      <pattern>
+        <pattern-item n="neg-verb"/>
+        <pattern-item n="prn-nonreferential"/>
+      </pattern>
+      <action>
+        <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
+		<choose>
+		<when>
+          <test><equal><clip pos="2" side="sl" part="lemh"/><lit v="mihkke"/></equal></test>
+          <let><clip pos="2" side="tl" part="lemh"/><lit v="ingenting"/></let>
+          <let><clip pos="2" side="tl" part="tags"/><lit-tag v="prn.ind.un.sg.acc"/></let>
+		</when>
+		<otherwise>
+          <let><clip pos="2" side="tl" part="lemh"/><lit v="ingen"/></let>
+          <let><clip pos="2" side="tl" part="tags"/><lit-tag v="det.qnt.m.sg"/></let>
+		</otherwise>
+		</choose>
+        
+		<choose>
+		<when>
+		<test><in caseless="yes"><clip pos="2" side="sl" part="lemh"/><list n="guhte"/></in></test> 
+        <out>
+          <var n="caseprep"/>
+          <chunk name="det" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="whole"/>
+            </lu>
+          </chunk>
+          <b pos="1"/>
+          <chunk name="det">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+           <lu>
+              <lit v="av"/>
+              <lit-tag v="pr"/>
+            </lu>
+          </chunk>
+            <b/>
+          <chunk name="det">
+             <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+           <lu>
+              <lit v="de"/>
+              <lit-tag v="prn.pers.p3.un.pl.acc"/>
+            </lu>
+          </chunk>
+        </out>
+        </when>
+        <otherwise>
+        <out>
+          <var n="caseprep"/>
+          <chunk name="det" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="whole"/>
+            </lu>
+          </chunk>
+        </out>
+        </otherwise>
+        </choose>
+      </action>
+    </rule>
+
+
     <rule comment="C[] PRN-NONREFERENTIAL maidege => noe
                    Like DET rule, but force nt sg">
       <pattern>

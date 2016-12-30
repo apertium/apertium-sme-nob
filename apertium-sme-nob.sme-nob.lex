@@ -1060,7 +1060,7 @@ SELECT:fallback ("skje"i) (0 ("<dáhpáhuvvat>"i));
 SELECT:berømt-forfatter ("berømme"i) (0 ("<beaggit>"i)) (0 @→N + prfprc) (NOT 1 clb) ; #  vaikko čálli lei beaggán girječálli
 SELECT:kjent-som ("kjenne"i) (0 ("<beaggit>"i)) (0 prfprc) (*1 loc BARRIER clb OR v); # mu ovddabealde bekkii Skuvvanvárrái boahtit sámásteaddji dáža oahpaheaddji
 SELECT:ble-kjent-i ("kjenne"i) (0 ("<beaggit>"i)) (0 prt) (*1 ill BARRIER clb OR v); # Son lea maiddái beaggán Sámi soga lávlaga čállin
-SELECT:fallback ("komme# frem"i) (0 ("<beaggit>"i)); # Maŋimuš áiggiid lea beaggán , maŋimustá
+SELECT:fallback ("kjenne"i) (0 ("<beaggit>"i)); # Maŋimuš áiggiid lea beaggán , maŋimustá
 
 SELECT:fallback ("rette"i) (0 ("<divvut>"i));
 
