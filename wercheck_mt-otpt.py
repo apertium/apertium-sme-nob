@@ -177,16 +177,16 @@ s_lang = 'sme'
 t_lang = 'nob'
 
 try:
-    os.environ["APERTIUM_HOME"]
+    os.environ["APERTIUM_TRUNK"]
 except KeyError:
-    print("Please set the environment variable APERTIUM_HOME.\n" +
+    print("Please set the environment variable APERTIUM_TRUNK.\n" +
     "This is the path to the directory where all apertium-SOURCE_LANG-TARGET_LANG reside.\n" +
     "To set the variable you open the $HOME/.profile file and add the following two line:\n" +
-    "APERTIUM_HOME=/path/to/your/apertium/directory\n" +
-	"export APERTIUM_HOME\n" +
+    "APERTIUM_TRUNK=/path/to/your/apertium/directory\n" +
+	"export APERTIUM_TRUNK\n" +
 	"The close the terminal and open it anew.")
     sys.exit(1)
-apertium_home=os.environ["APERTIUM_HOME"]
+apertium_home=os.environ["APERTIUM_TRUNK"]
 
 atm_dir = apertium_home + '/apertium' + '-' + s_lang + '-' + t_lang
 #print("APT home is " + atm_dir)
