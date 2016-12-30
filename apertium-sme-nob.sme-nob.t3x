@@ -132,7 +132,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="SV_lOBJ-tilsvar">
       <cat-item tags="SV.@←OBJ.*"/>
     </def-cat>
-    <def-cat n="border">
+    <def-cat n="sentenceborder">
       <cat-item lemma="conj" tags="@CVP.cnjcoo"/>
     </def-cat>
     <def-cat n="CS">
@@ -1303,11 +1303,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
- <!--   <rule comment="REGLA: border FV maybe-lSUBJ 
+    <rule comment="REGLA: sentenceborder FV lSUBJ 
                    
                    Override prodrop rule (below) if we might have a subject to the right" c="ja lei báhppa gii dan čađahii.">
       <pattern>
-        <pattern-item n="border"/>
+        <pattern-item n="sentenceborder"/>
         <pattern-item n="FV"/>
         <pattern-item n="lSUBJ"/>
       </pattern>
@@ -1328,7 +1328,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
-    </rule>  -->
+    </rule>  
     <rule comment="REGLA: FV lemq maybe-lSUBJ
                    -----
                    ovddasvástideigga soai => hadde de_to ansvar_for

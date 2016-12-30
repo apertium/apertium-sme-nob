@@ -1593,7 +1593,7 @@ And then there are some categories like "month", with all the months.
           <test>
             <equal><var n="prn_nbr"/><lit-tag v="pl"/></equal>
           </test>
-          <let><var n="prn_gen"/><lit v=""/></let>
+          <let><var n="prn_gen"/><lit-tag v="un"/></let> <!-- Lene added un -->
         </when>
         <otherwise>
           <let><var n="prn_gen"/><clip pos="1" side="tl" part="gen"/></let>
