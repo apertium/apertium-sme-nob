@@ -1791,24 +1791,33 @@ And then there are some categories like "month", with all the months.
           <let><var n="defnes"/><lit-tag v="def"/></let>
         </when>
         <when>
+          <test>
+          <and>
+          <or>
+            <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="ord.pst"/></equal>
+            <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal>
+            <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+          </or>
+            <not><equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal></not>
+            <not><ends-with><clip pos="2" side="tl" part="lemh"/><lit v="og en halv"/></ends-with></not>
+          </and>
+          </test>
+          <let><var n="defnes"/><lit-tag v="def"/></let>
+        </when>
+        <when>  <!-- Lene changed the order of these two whens, and tried to avoid overlap. -->
           <test><or>
             <ends-with><clip pos="2" side="tl" part="lemh"/><lit v="og en halv"/></ends-with>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
             <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
-            <equal><clip pos="2" side="tl" part="case"/><lit-tag v="gen"/></equal>
             <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="comp"/></equal>
+			<and>
+           <equal><clip pos="2" side="tl" part="case"/><lit-tag v="gen"/></equal>
+            <not><equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal></not>
+			</and>
           </or></test>
           <let><var n="defnes"/><lit-tag v="ind"/></let>
-        </when>
-        <when>
-          <test><or>
-            <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="ord.pst"/></equal>
-            <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal>
-            <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
-          </or></test>
-          <let><var n="defnes"/><lit-tag v="def"/></let>
         </when>
       </choose>
     </def-macro>
