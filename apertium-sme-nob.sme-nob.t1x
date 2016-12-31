@@ -6627,7 +6627,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                 </tags>
                 <lu>
-                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="whole"/>
                   <clip pos="1" side="tl" part="a_adv"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
@@ -6648,6 +6648,23 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                 <lu>
                   <clip pos="1" side="tl" part="lemh"/>
                   <clip pos="1" side="tl" part="a_adv"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </when>
+          <when c="Lene: gitta adv - stenge vblex stengt">
+            <test><equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
+            <out>
+              <chunk name="adv" case="caseFirstWord">
+                <tags>
+                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="1" side="sl" part="mode"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_verb"/>
+                  <clip pos="1" side="tl" part="temps"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
