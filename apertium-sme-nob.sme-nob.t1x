@@ -1831,6 +1831,7 @@ And then there are some categories like "month", with all the months.
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
             <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
+            <equal><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>  
             <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="comp"/></equal>
 			<and>
            <equal><clip pos="2" side="tl" part="case"/><lit-tag v="gen"/></equal>
@@ -5552,6 +5553,37 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <let><var n="defnes"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
         </when></choose>
+        <choose><when><test> <!-- Lene: for sápmi.n.sg.gen samisk.adj -->
+        <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal></test>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="3"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+          </concat>
+        </let>
+        </when>
+        <otherwise>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -5580,6 +5612,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
+        </otherwise>
+        </choose>
+
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
@@ -5609,6 +5644,47 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <let><var n="defnes"/><lit v=""/></let>
           <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
         </when></choose>
+        <choose><when><test> <!-- Lene: for sápmi.n.sg.gen samisk.adj -->
+        <equal><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></equal></test>
+        <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="3"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+            <lit v="^"/>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_adj"/>
+              <clip pos="3" side="tl" part="grau"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <clip pos="3" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="3"/>
+          </concat>
+        </let>
+        </when>
+         <otherwise>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -5647,7 +5723,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
-        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+         </otherwise>
+        </choose>
+       <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
 
@@ -5758,14 +5836,35 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
-
-        <!-- for NOM.GEN -->
-        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-        <choose><when>
+		<choose><when>
           <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
           <let><var n="defnes"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
         </when></choose>
+
+        <choose><when><test> <!-- Lene: for sápmi.n.sg.gen samisk.adj -->
+        <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal></test>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="3"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+          </concat>
+        </let>
+        </when>
+		<otherwise>        
+        <!-- for NOM.GEN -->
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -5784,6 +5883,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
+		</otherwise>        
+		</choose>        
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
@@ -5849,12 +5950,42 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
         <!-- for NOM.GEN -->
-        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <choose><when>
           <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
           <let><var n="defnes"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
         </when></choose>
+        <choose><when><test> <!-- Lene: for sápmi.n.sg.gen samisk.adj -->
+        <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal></test>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="3"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+          </concat>
+        </let>
+        </when>
+        <otherwise>
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -5879,9 +6010,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <lit v="$"/>
           </concat>
         </let>
-
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
+        </otherwise>
+        </choose>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>

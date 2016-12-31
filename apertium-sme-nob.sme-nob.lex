@@ -1108,7 +1108,7 @@ SELECT:fallback ("skifte"i) (0 ("<lonohallat>"i));
 SELECT:fallback ("stole"i) (0 ("<luohttit>"i));
 SELECT:fallback ("gå"i) (0 ("<luoitádit>"i));
 SELECT:fallback ("stige"i) (0 ("<luoitádit>"i));
-SELECT:fallback ("bemerke"i) (0 ("<mearkkašit>"i));
+SELECT:fallback ("bety"i) (0 ("<mearkkašit>"i));
 SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
 SELECT:fallback ("styrke"i) (0 ("<nannet>"i));
 SELECT:fallback ("slutte"i) (0 ("<nohkat>"i));
@@ -1443,6 +1443,13 @@ SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 SELECT ("gevinst"i) (0 ("<vuoitu>"i))(-1 ("<oppalaš>") OR ("<fasket>")) ;
 SELECT ("gevinst"i) (0 ("<vuoitu>"i))(*0 CURRENCY) ;	
 
+SELECT ("samisk"i) (0 ("<sápmi>"i) + sg + gen);
+SELECT:fallback ("same"i) (0 ("<sápmi>"i));
+
+SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
+
+SELECT ("fokus"i) (0 ("<guovddáš>"i) + sg + ill)(-1 ("<bidjat>"));
+SELECT:fallback ("sentrum"i) (0 ("<guovddáš>"i));
 
 
 # Nouns that were all 0-marked in the dix:
@@ -1483,7 +1490,6 @@ SELECT:fallback ("eng"i) (0 ("<gieddi>"i));
 SELECT:fallback ("hånd"i) (0 ("<giehta>"i));
 SELECT:fallback ("fly"i) (0 ("<girdi>"i));
 SELECT:fallback ("kamerat"i) (0 ("<guoibmi>"i));
-SELECT:fallback ("sentrum"i) (0 ("<guovddáš>"i));
 SELECT:fallback ("tak"i) (0 ("<gáhttu>"i));
 SELECT:fallback ("navnebror"i) (0 ("<gáibmi>"i));
 SELECT:fallback ("vare"i) (0 ("<gálvu>"i));
