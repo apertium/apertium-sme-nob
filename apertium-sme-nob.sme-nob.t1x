@@ -1491,6 +1491,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="fredag"/>
       <list-item v="lørdag"/>
       <list-item v="søndag"/>
+      <list-item v="takk"/>
     </def-list>
 
     <def-list n="bigrams-def" c="det/adj+noun lemma co-occurrences that are typically definite">
@@ -1604,6 +1605,14 @@ And then there are some categories like "month", with all the months.
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="om"/>
+              </let>
+            </when>
+            <when>
+              <test>
+                <equal><var n="previous-nhead"/><lit v="takk"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="for"/>
               </let>
             </when>
             <when c="Sometimes, das → av den">

@@ -1014,7 +1014,7 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 # lohkat 0 = lese, 1 = si, 2 = telle
 
-SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (ref acc) OR (ref loc) OR prfprc or COMMA) ;
+SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (ref acc) OR (ref loc) OR prfprc or COMMA OR a - attr) ;
 
 SELECT ("lese"i) (0 ("<lohkat>"i)) (1 sem_txt LINK 0 acc OR loc) ;
 # Son lohká ahte lea buorre doppe.
@@ -1071,6 +1071,13 @@ SELECT:fallback ("rette"i) (0 ("<divvut>"i));
 
 SELECT:fallback ("rette# på"i) (0 ("<njulget>"i));
 
+SELECT:ta-en-tur ("ta en tur"i) (0 ("<fitnat>"i) + inf )  ; 
+SELECT:fallback ("være"i) (0 ("<fitnat>"i));
+
+SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK *-1 ("<.*čoahkkin>"r));
+SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
+
+
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 SELECT:fallback ("sette"i) (0 ("<bidjat>"i));
@@ -1087,7 +1094,6 @@ SELECT:fallback ("stole"i) (0 ("<dorvvastit>"i));
 SELECT:fallback ("omkomme"i) (0 ("<duššat>"i));
 SELECT:fallback ("bekrefte"i) (0 ("<dáhkidit>"i));
 SELECT:fallback ("besøke"i) (0 ("<finadit>"i));
-SELECT:fallback ("være"i) (0 ("<fitnat>"i));
 SELECT:fallback ("tilby"i) (0 ("<fállat>"i));
 SELECT:fallback ("dra"i) (0 ("<geassit>"i));
 SELECT:fallback ("grave"i) (0 ("<goaivut>"i));
@@ -1114,7 +1120,6 @@ SELECT:fallback ("stole"i) (0 ("<luohttit>"i));
 SELECT:fallback ("gå"i) (0 ("<luoitádit>"i));
 SELECT:fallback ("stige"i) (0 ("<luoitádit>"i));
 SELECT:fallback ("bety"i) (0 ("<mearkkašit>"i));
-SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
 SELECT:fallback ("styrke"i) (0 ("<nannet>"i));
 SELECT:fallback ("slutte"i) (0 ("<nohkat>"i));
 SELECT:fallback ("sove"i) (0 ("<nohkkat>"i));
