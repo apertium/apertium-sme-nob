@@ -1646,6 +1646,16 @@ SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>") BARRIER
 SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>")) ;
 SELECT:fallback ("en"i) (0 ("<okta>"i)) ;
 
+SELECT:movt ("som"i) (0 ("<movt>"i)) (-1 ("<nie>") OR ("<nu>")) ;
+SELECT:fallback ("hvordan"i) (0 ("<movt>"i)) ;
+
+SELECT:oba ("en gang"i) (0 ("<oba>"i)) (-1 neg) ;
+SELECT:fallback ("ganske"i) (0 ("<oba>"i)) ;
+
+SELECT:ge ("heller"i) (0 ("<ge>"i)) (*-1 neg) ;
+SELECT:fallback ("også"i) (0 ("<ge>"i)) ;
+
+
 SELECT:hans-egen ("egen"i) (0 ("<ieš>"i)) (-1 pron + pers + gen) ;
 # Dá lea mu iežan girji => Her er min egen bok
 

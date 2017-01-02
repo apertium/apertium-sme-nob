@@ -5037,8 +5037,15 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
         <choose>
+          <when c="Lene added this: guovdageaidnulaš => kautokeinoværing">
+            <test><equal><clip pos="1" side="tl" part="a_nom_all"/><lit-tag v="n"/></equal></test>
+            <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <call-macro n="out_nom"><with-param pos="1"/></call-macro>
+          </when>
           <when>
-            <test><not><equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal></not></test>
+            <test><not><equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal></not></test> <!-- how this ? -->
             <let><var n="defnes"/><lit-tag v="def"/></let>
             <out>
               <chunk name="pre_adj" case="caseFirstWord">
@@ -6915,7 +6922,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                 </tags>
                 <lu>
-                  <clip pos="1" side="tl" part="whole"/>
+                  <clip pos="1" side="tl" part="lemh"/>
                   <clip pos="1" side="tl" part="a_adv"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
@@ -6942,7 +6949,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
             </out>
           </when>
           <when c="Lene: gitta adv - stenge vblex stengt">
-            <test><equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
+            <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
@@ -6953,6 +6960,22 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                   <clip pos="1" side="tl" part="lemh"/>
                   <clip pos="1" side="tl" part="a_verb"/>
                   <clip pos="1" side="tl" part="temps"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </when>
+          <when c="Lene: adv til cnjsub: movt  som">
+            <test><equal><clip pos="1" side="tl" part="a_conj"/><lit-tag v="cnjsub"/></equal></test>
+            <out>
+              <chunk name="cnjsub" case="caseFirstWord">
+                <tags>
+                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="1" side="sl" part="mode"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_conj"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
