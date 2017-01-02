@@ -1058,6 +1058,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;prfprc&gt;"/>
       <list-item v="&lt;pp&gt;"/>
     </def-list>
+    <def-list n="sem_plc">
+      <list-item v="&lt;sem_plc&gt;"/>
+    </def-list>
     <def-list n="sem_org">
       <list-item v="&lt;sem_org&gt;"/>
       <list-item v="&lt;sem_org_prod-cogn&gt;"/>
@@ -1575,6 +1578,7 @@ And then there are some categories like "month", with all the months.
             <when>
               <test><or>
                 <in><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
                 <and>
                   <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                   <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
