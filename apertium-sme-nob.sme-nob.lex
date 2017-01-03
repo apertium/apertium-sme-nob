@@ -1461,6 +1461,8 @@ SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 SELECT ("fokus"i) (0 ("<guovddáš>"i) + sg + ill)(-1 ("<bidjat>"));
 SELECT:fallback ("sentrum"i) (0 ("<guovddáš>"i));
 
+SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
+SELECT:fallback ("part"i) (0 ("<bealli>"i));
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("energi"i) (0 ("<arva>"i));
@@ -1559,7 +1561,6 @@ SELECT:fallback ("rett"i) (0 ("<riekti>"i));
 SELECT:fallback ("komma"i) (0 ("<rihkku>"i));
 SELECT:fallback ("trette"i) (0 ("<riidu>"i));
 SELECT:fallback ("land"i) (0 ("<riika>"i));
-SELECT:fallback ("part"i) (0 ("<bealli>"i));
 SELECT:fallback ("landsforening"i) (0 ("<riikkasearvi>"i));
 SELECT:fallback ("fyrstikk"i) (0 ("<rišša>"i));
 SELECT:fallback ("skvett"i) (0 ("<rišša>"i));
