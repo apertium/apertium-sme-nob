@@ -1099,6 +1099,7 @@ SELECT:fallback ("dra"i) (0 ("<geassit>"i));
 SELECT:fallback ("grave"i) (0 ("<goaivut>"i));
 SELECT:fallback ("lenke"i) (0 ("<goallostit>"i));
 SELECT:fallback ("gløde"i) (0 ("<goarddašit>"i));
+SELECT:fallback ("redusere"i) (0 ("<geahpedit>"i));
 SELECT:fallback ("svette"i) (0 ("<golggahit>"i));
 SELECT:fallback ("slutte"i) (0 ("<guorrasit>"i));
 SELECT:fallback ("sky"i) (0 ("<hirrut>"i));
