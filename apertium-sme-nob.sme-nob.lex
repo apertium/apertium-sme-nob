@@ -1637,6 +1637,9 @@ SELECT ("i henhold til"i) (0 ("<olis>"i)) ;
 
 # Pronouns, relativisers, conjuctions
 # ==========================
+
+SELECT:fallback ("den"i m) (0 ("<dat>"i)) ;
+
 SELECT ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
 SELECT:ge-man ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 pcle) (-2 tv + FMAINV) (1 a) ; # mihtidit ge man mávssolaččat sámi aviissat leat …
 SELECT ("hva"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + FMAINV) ; # Minsttarplána čilge maid oahppit berrešedje máhttit.
