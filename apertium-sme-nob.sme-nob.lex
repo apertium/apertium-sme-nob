@@ -1079,6 +1079,7 @@ SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
 
 
 # Verbs that were 0-marked in the dix:
+SELECT:fallback ("bevilge"i) (0 ("<juolludit>"i));
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 SELECT:fallback ("sette"i) (0 ("<bidjat>"i));
 SELECT:fallback ("avslå"i) (0 ("<biehttalit>"i));
@@ -1256,6 +1257,7 @@ SELECT:fallback ("kontakt"i) (0 ("<oktavuohta>"i));
 
 SELECT ("folk") (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
+SELECT ("person") (0 ("<olmmoš>"i) LINK -1 num) ;
 
 SELECT ("menneske") (0 ("<olmmoš>"i) LINK 0 ess) ;
 # olmmožin => som menneske
