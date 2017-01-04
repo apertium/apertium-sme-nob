@@ -301,22 +301,7 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="juovlamánnu" tags="n.*"/>
       <cat-item lemma="ođđajagemánnu" tags="n.*"/>
     </def-cat>
-    <def-cat n="season-month">
-      <cat-item lemma="guovvamánnu" tags="n.*"/>
-      <cat-item lemma="ođđajagimánnu" tags="n.*"/>
-      <cat-item lemma="guovvamánnu" tags="n.*"/>
-      <cat-item lemma="njukčamánnu" tags="n.*"/>
-      <cat-item lemma="cuoŋománnu" tags="n.*"/>
-      <cat-item lemma="miessemánnu" tags="n.*"/>
-      <cat-item lemma="geassemánnu" tags="n.*"/>
-      <cat-item lemma="suoidnemánnu" tags="n.*"/>
-      <cat-item lemma="borgemánnu" tags="n.*"/>
-      <cat-item lemma="čakčamánnu" tags="n.*"/>
-      <cat-item lemma="golggotmánnu" tags="n.*"/>
-      <cat-item lemma="skábmamánnu" tags="n.*"/>
-      <cat-item lemma="juovlamánnu" tags="n.*"/>
-      <cat-item lemma="ođđajagemánnu" tags="n.*"/>
-
+    <def-cat n="season">
       <cat-item lemma="giđđa" tags="n.*"/>
       <cat-item lemma="geassi" tags="n.*"/>
       <cat-item lemma="dálvi" tags="n.*"/>
@@ -3302,7 +3287,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                    'okta' since they're tagged exactly like '1990' :-/">
       <pattern>
         <pattern-item n="num"/>
-        <pattern-item n="season-month"/>
+        <pattern-item n="season"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
