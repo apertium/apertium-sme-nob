@@ -70,6 +70,7 @@ LIST prop = prop ;
 # -------------
 
 LIST sem_ani = sem_ani ;
+LIST sem_build = sem_amount_build sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_build sem_build_event_org sem_build_obj sem_build-part sem_build-part_plc sem_build_build-part sem_build_clth-part sem_build_edu_org sem_build_event_org sem_build_org sem_build_route  ;
 LIST sem_date = sem_date ;
 LIST sem_fem = sem_fem (ant f) ;
 LIST sem_clth = sem_clth ;
@@ -80,7 +81,7 @@ LIST sem_measr = sem_measr ;
 LIST sem_money = sem_money ;
 LIST sem_obj = sem_obj ;
 LIST sem_org = np.sem_org sem_build_event_org sem_build_edu_org sem_build_event_org sem_build_org sem_clth-jewl_org sem_ctain-abstr_org sem_curr_org sem_dance_org sem_edu_org sem_group_hum_org sem_group_org sem_hum_org sem_org sem_org_prod-cogn sem_org_rule sem_org_txt sem_org_veh sem_org  ;
-LIST sem_plc = sem_plc top ;
+LIST sem_plc = sem_act_plc sem_ani_hum_plc sem_ani_plc sem_ani_plc_txt sem_aniprod_plc sem_body_plc sem_build-part_plc sem_event_plc sem_event_plc-elevate sem_feat-measr_plc sem_group_hum_plc sem_hum_lang_plc sem_hum_plc sem_plc sem_plc-abstr sem_plc-abstr_rel_state sem_plc-abstr_route sem_plc-elevate sem_plc-line sem_plc-water sem_plc_pos sem_plc_route sem_plc_state sem_plc_substnc sem_plc_substnc_wthr sem_plc_time sem_plc_tool-catch sem_plc_wthr sem_plc top ;
 LIST sem_sur = sem_sur ;
 LIST sem_time = sem_time ;
 LIST sem_year = sem_year ;
@@ -829,12 +830,12 @@ SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
 
 
 
-SELECT ("avhengig av"i) (0 ("<duohken>"i) LINK -1 pers OR sem_hum OR sem_org OR prop) ;
-SELECT ("avhengig av"i) (0 ("<duohkin>"i) LINK -1 pers OR sem_hum OR sem_org OR prop) ;
+SELECT ("bak"i) (0 ("<duohken>"i) LINK -1 sem_build OR sem_plc - (top)) ;
+SELECT ("bak"i) (0 ("<duohkin>"i) LINK -1 sem_build OR sem_plc - (top)) ;
 
 
-SELECT:fallback ("bak"i) (0 ("<duohken>"i)) ;
-SELECT:fallback ("bak"i) (0 ("<duohkin>"i)) ;
+SELECT:fallback ("avhengig av"i) (0 ("<duohken>"i)) ;
+SELECT:fallback ("avhengig av"i) (0 ("<duohkin>"i)) ;
 
 
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP LINK 1 (@COMP-CS←)) ;
@@ -1174,6 +1175,7 @@ SELECT ("avdeling"i) (0 ("<ossodat>"i)); # parkorp har masse «avdeling»-døme,
 SELECT ("grad"i) (0 ("<muddu>"i)) (NOT -1 ord) ;
 
 SELECT ("forhold"i) (0 ("<dilálašvuohta>")) (NOT -1 ("<virggálaš>")) (NOT -2 ("<virggálaš>"));
+SELECT:fallback ("situasjon"i) (0 ("<dilálašvuohta>")) ;
 
 # áddjá: bestefar vs gamling
 SELECT ("gamling"i) (0 ("<áddjá>"i) LINK -1 num LINK NOT *-1 ←hab→);
@@ -1196,7 +1198,8 @@ SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i) OR ("<luoitádit>"i) OR 
 ## Beaivi báitá.
 SELECT:fallback ("dag"i) (0 ("<beaivi>"i));
 
-SELECT ("mat"i) IF (0 ("<biebmu>"i)) ;
+SELECT:fallback ("mat"i) IF (0 ("<biebmu>"i)) ;
+SELECT:fallback ("pitesame"i) IF (0 ("<bihtonsápmi>"i)) ;
 
 # luohkká 0 = bakke, 1 = klasse
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK 1 ("<oahpaheaddji>"i));
@@ -1211,7 +1214,7 @@ SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 num OR ord OR @→N);
 # Biera vázzá sámegiel luohkás.
 # Bireha luohkás leat eanaš nieiddat.
 # Mu luohkás leat vihtta nieidda ja golbma bártni.
-SELECT:fallback ("klasse"i) (0 ("<luohkká>"i));
+SELECT:fallback ("bakke"i) (0 ("<luohkká>"i));
 
 # diibmu 0 = time, 1 = klokke
 SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 num OR ord) ;
@@ -1293,7 +1296,7 @@ SELECT:fallback ("bråk"i) (0 ("<stuibmi>"i));
 #SELECT ("goddi") ("goddi:1") ("goddi") (NOT 0/1 (*)) ;
 SELECT:fallback ("komite"i) (0 ("<goddi>"i));
 
-# diehtu 0 = informasjon, 1 = kunnskap, 2 = viten, 3 = beskjed
+# diehtu 0 = informasjon,  3 = beskjed
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna>"i) OR ("<mobiila>"i)) ;
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 acc)(*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
 ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
@@ -1470,12 +1473,17 @@ SELECT:fallback ("same"i) (0 ("<sápmi>"i));
 SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 
 SELECT ("fokus"i) (0 ("<guovddáš>"i) + sg + ill)(-1 ("<bidjat>"));
-SELECT:fallback ("sentrum"i) (0 ("<guovddáš>"i));
+SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
 SELECT:fallback ("part"i) (0 ("<bealli>"i));
+SELECT:fallback ("hete"i) (0 ("<báhkka>"i));
 
 # Nouns that were all 0-marked in the dix:
+SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
+SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
+SELECT:fallback ("gjenstand"i) (0 ("<dávvir>"i));
+SELECT:fallback ("brukernavn"i) (0 ("<dovddaldat>"i));
 SELECT:fallback ("energi"i) (0 ("<arva>"i));
 SELECT:fallback ("øre"i) (0 ("<beallji>"i));
 SELECT:fallback ("nektelse"i) (0 ("<biehttalus>"i));
@@ -1490,18 +1498,15 @@ SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
 SELECT:fallback ("trinn"i) (0 ("<ceahkki>"i));
 SELECT:fallback ("vekt"i) (0 ("<deatta>"i));
 SELECT:fallback ("forhold"i) (0 ("<dilli>"i));
-SELECT:fallback ("oppgave"i) (0 ("<doaibma>"i));
+SELECT:fallback ("tiltak"i) (0 ("<doaibma>"i));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
 SELECT:fallback ("bål"i) (0 ("<dolla>"i));
 SELECT:fallback ("håndarbeid"i) (0 ("<duodji>"i));
 SELECT:fallback ("ønske"i) (0 ("<dáhttu>"i));
-SELECT:fallback ("ønsker"i) (0 ("<dáhttu>"i));
 SELECT:fallback ("hus"i) (0 ("<dállu>"i));
-SELECT:fallback ("behov"i) (0 ("<dárbbaš>"i));
 SELECT:fallback ("eiendel"i) (0 ("<dávvir>"i));
 SELECT:fallback ("norsk"i) (0 ("<dáčča>"i));
 SELECT:fallback ("flokk"i) (0 ("<eallu>"i));
-SELECT:fallback ("næring"i) (0 ("<ealáhus>"i));
 SELECT:fallback ("hustru"i) (0 ("<eamit>"i));
 SELECT:fallback ("makt"i) (0 ("<fápmu>"i));
 SELECT:fallback ("skall"i) (0 ("<garra>"i));
@@ -1520,7 +1525,7 @@ SELECT:fallback ("gjerde"i) (0 ("<gárdi>"i));
 SELECT:fallback ("kasse"i) (0 ("<gássa>"i));
 SELECT:fallback ("butikk"i) (0 ("<gávpi>"i));
 SELECT:fallback ("herre"i) (0 ("<hearrá>"i));
-SELECT:fallback ("stas"i) (0 ("<hearva>"i));
+SELECT:fallback ("pynt"i) (0 ("<hearva>"i));
 SELECT:fallback ("vestsame"i) (0 ("<hoammá>"i));
 SELECT:fallback ("bøy"i) (0 ("<hállan>"i));
 SELECT:fallback ("kjæreste"i) (0 ("<irgi>"i));
@@ -1535,7 +1540,7 @@ SELECT:fallback ("enke"i) (0 ("<leaska>"i));
 SELECT:fallback ("rørelse"i) (0 ("<lihkadus>"i));
 SELECT:fallback ("studie"i) (0 ("<lohkan>"i));
 SELECT:fallback ("tall"i) (0 ("<lohku>"i));
-SELECT:fallback ("spor"i) (0 ("<luodda>"i));
+SELECT:fallback ("vei"i) (0 ("<luodda>"i));
 SELECT:fallback ("geværpatron"i) (0 ("<ládda>"i));
 SELECT:fallback ("garn"i) (0 ("<láigi>"i));
 SELECT:fallback ("glass"i) (0 ("<láse>"i));
@@ -1543,7 +1548,7 @@ SELECT:fallback ("haug"i) (0 ("<látna>"i));
 SELECT:fallback ("venn"i) (0 ("<lávvi>"i));
 SELECT:fallback ("mark"i) (0 ("<meahcci>"i));
 SELECT:fallback ("betydning"i) (0 ("<mearkkašupmi>"i));
-SELECT:fallback ("mål"i) (0 ("<mearri>"i));
+SELECT:fallback ("mengde"i) (0 ("<mearri>"i));
 SELECT:fallback ("følgeskriv"i) (0 ("<mielddus>"i));
 SELECT:fallback ("mål"i) (0 ("<mihttu>"i));
 SELECT:fallback ("mål"i) (0 ("<moalla>"i));
@@ -1628,6 +1633,10 @@ SELECT:fallback ("notat"i) (0 ("<čálus>"i));
 SELECT:fallback ("slag"i) (0 ("<šládja>"i));
 SELECT:fallback ("surr"i) (0 ("<šurra>"i));
 
+SELECT:fallback ("ende"i) (0 ("<loahppa>"i) LINK -1 ("<máilbmi>") ;
+SELECT:fallback ("slutt"i) (0 ("<loahppa>"i)) ;
+
+
 # Based on frequency in parallel text:
 SELECT ("áigodat"i) (0 ("<periode>"i));
 SELECT ("sameby"i) (0 ("<čearru>"i));
@@ -1636,7 +1645,6 @@ SELECT ("måned"i) (0 ("<mánnu>"i)) ;
 SELECT ("ting"i) (0 ("<diggi>"i)) ;
 SELECT ("område"i) (0 ("<guovlu>"i)) ;
 SELECT ("grunntanke"i) (0 ("<vuođđojurdda>"i)) ;
-SELECT ("slutt"i) (0 ("<loahppa>"i)) ;
 
 
 # Adpositions → Prepositions
