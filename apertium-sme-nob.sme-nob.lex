@@ -1263,10 +1263,11 @@ SELECT:fallback ("fart"i) (0 ("<johtu>"i));
 SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 (sg loc)) ;
 SELECT ("forbindelse"i) (0 ("<oktavuohta>"i @←ADVL sg)) ;
 # dan oktavuođas go => i den forbindelse når
+SELECT ("kontakt"i) (0 ("<oktavuohta>"i) + (←ext→)) ;
 SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 (pl loc)) ;
 # máŋgga oktavuođas => i mange sammenhenger
 # máŋggain oktavuođain => i mange sammenhenger
-SELECT:fallback ("kontakt"i) (0 ("<oktavuohta>"i));
+SELECT:fallback ("sammenheng"i) (0 ("<oktavuohta>"i));
 
 SELECT ("folk") (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
