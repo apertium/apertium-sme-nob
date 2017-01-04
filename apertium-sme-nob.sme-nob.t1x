@@ -2014,7 +2014,7 @@ And then there are some categories like "month", with all the months.
           <test><and>
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="ext"/><lit-tag v="←ext→"/></equal></not> <!-- Lene added -->
-           <not><and>
+            <not><and>
               <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
               <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in>
             </and></not>
