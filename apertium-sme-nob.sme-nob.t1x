@@ -2313,6 +2313,35 @@ And then there are some categories like "month", with all the months.
           </out>
         </when>
 
+        <when c="cmp_splitr → sg.ind.guio (split compounds) 
+                 eanan-(cmp_splitr) ja luonddudoahpagiid => jord-(sg.ind) og naturfagord">
+          <test><ends-with><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></ends-with></test>
+          <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><lit-tag v="ind"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><lit-tag v="sg"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="a_count"/></tag>
+                <tag><var n="c_animacy"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_nom"/>
+                <clip pos="1" side="tl" part="gen"/>
+                <lit-tag v="sg.ind.guio"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+
         <otherwise c="Regular Noun=>Noun">
           <choose>
             <when>
@@ -2322,18 +2351,6 @@ And then there are some categories like "month", with all the months.
               </or></test>
               <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
               <let><var n="c_def_pos"/><lit v=""/></let>
-            </when>
-            <when c="RCmpnd → sg.ind.guio (split compounds)
-                     eanan-(RCmpnd) ja luonddudoahpagiid => jord-(sg.ind) og naturfagord
-                     NOTE: the dash tag is only defined for the sg.ind form of nouns in nob.dix (like cmp)
-                     (as well as all numerals, where the change is handled in bidix)">
-              <test><ends-with><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></ends-with></test>
-              <choose><when>
-                <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal></test>
-                <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
-              </when></choose>
-              <let><var n="c_def_pos"/><lit-tag v="ind.guio"/></let>
-              <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
             </when>
             <otherwise>
               <let><var n="c_def_pos"/><lit-tag v="3"/></let>
