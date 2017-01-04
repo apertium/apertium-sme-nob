@@ -74,12 +74,12 @@ LIST sem_date = sem_date ;
 LIST sem_fem = sem_fem (ant f) ;
 LIST sem_clth = sem_clth ;
 LIST sem_group = sem_group ;
-LIST sem_hum = sem_hum ;
+LIST sem_hum = sem_ani_body-abstr_hum sem_ani_build_hum_txt sem_ani_group_hum sem_ani_hum sem_ani_hum_plc sem_ani_hum_time sem_aniprod_hum sem_body_group_hum sem_body_group_hum_time sem_body_hum sem_clth_hum sem_edu_group_hum sem_event_hum sem_feat-psych_hum sem_group_hum sem_group_hum_org sem_group_hum_plc sem_group_hum_prod-vis sem_hum sem_hum-abstr sem_hum_lang sem_hum_lang_plc sem_hum_lang_time sem_hum_obj sem_hum_org sem_hum_plant sem_hum_plc sem_hum_tool sem_hum_veh sem_hum_wthr  ;
 LIST sem_mal = sem_mal (ant m) ;
 LIST sem_measr = sem_measr ;
 LIST sem_money = sem_money ;
 LIST sem_obj = sem_obj ;
-LIST sem_org = sem_org ;
+LIST sem_org = np.sem_org sem_build_event_org sem_build_edu_org sem_build_event_org sem_build_org sem_clth-jewl_org sem_ctain-abstr_org sem_curr_org sem_dance_org sem_edu_org sem_group_hum_org sem_group_org sem_hum_org sem_org sem_org_prod-cogn sem_org_rule sem_org_txt sem_org_veh sem_org  ;
 LIST sem_plc = sem_plc top ;
 LIST sem_sur = sem_sur ;
 LIST sem_time = sem_time ;
@@ -827,6 +827,14 @@ SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
 ## Buorre lei go bohtet.
 ## Gummá go ii boahtán.
 
+
+
+SELECT ("avhengig av"i) (0 ("<duohken>"i) LINK -1 pers OR sem_hum OR sem_org OR prop) ;
+SELECT ("avhengig av"i) (0 ("<duohkin>"i) LINK -1 pers OR sem_hum OR sem_org OR prop) ;
+
+
+SELECT:fallback ("bak"i) (0 ("<duohken>"i)) ;
+SELECT:fallback ("bak"i) (0 ("<duohkin>"i)) ;
 
 
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP LINK 1 (@COMP-CS←)) ;
