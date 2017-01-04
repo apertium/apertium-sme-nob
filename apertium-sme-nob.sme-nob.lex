@@ -828,6 +828,8 @@ SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
 ## Buorre lei go bohtet.
 ## Gummá go ii boahtán.
 
+SELECT ("mye"i) (0 ("<ollu>"i) LINK 1 (sem_plc_substnc_wthr)) ;
+SELECT:fallback ("mange"i) (0 ("<ollu>"i)) ;
 
 
 SELECT ("bak"i) (0 ("<duohken>"i) LINK -1 sem_build OR sem_plc - (top)) ;
@@ -1410,7 +1412,6 @@ SELECT ("kjørerein"i) (0 ("<vuoján>"i))(1 COMMA LINK 1 ("«^.*"r));
 ## Sara vuot čájehii ahte son lea okta Sámi buoremus vuddjiin ja sus leat buorre 	vuoján, go mannan vahkkoloahpa vuittii SVL-heargecupa maŋemus vuodjima Mázes .
 ## Dát ledje várra 	vuojánat 	ja geahččobohccot .
 ## Ámtta 1866-70 viđajagidieđáhusas muitaluvvo boazodoalu birra ahte riddosuohkaniin ledje olbmuin bohccot 	vuojánin 	, dahje mearrasápmelaččat ledje árben bohccuid boazosáminieiddaiguin náitalemiid bokte .
-SELECT ("kjøretøy"i) (0 ("<vuoján>"i));
 ## Guhkes gaskkaid ii leat gánnáhahtti dákkar 	vuojániiguin 	vuodjit .  - fartøy
 ## Diesel 	vuojánat 	main ollislaš deaddu lea 3500 gilus gitta 12000 gilui 990,- ru. .
 ## Njealjejuvllat 	vuoján 	roasmmohuvai vehá .
@@ -1479,6 +1480,17 @@ SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
 SELECT:fallback ("part"i) (0 ("<bealli>"i));
 SELECT:fallback ("hete"i) (0 ("<báhkka>"i));
 
+SELECT ("ved"i) (0 ("<muorra>"i) + loc);
+SELECT:fallback ("tre"i) (0 ("<muorra>"i));
+
+SELECT ("preken"i) (0 ("<sárdni>"i) LINK *-1 ("<báhppa>"i) OR ("<girku>"i));
+SELECT:fallback ("tale"i) (0 ("<sárdni>"i));
+
+SELECT ("samiske språk"i) (0 ("<sámegiella>"i) + pl);
+SELECT ("samiske språk"i) (0 ("<sámegiella>"i) + gen LINK -1 num);
+SELECT:fallback ("samisk"i) (0 ("<sámegiella>"i));
+
+
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
 SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
@@ -1498,7 +1510,7 @@ SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
 SELECT:fallback ("trinn"i) (0 ("<ceahkki>"i));
 SELECT:fallback ("vekt"i) (0 ("<deatta>"i));
 SELECT:fallback ("forhold"i) (0 ("<dilli>"i));
-SELECT:fallback ("tiltak"i) (0 ("<doaibma>"i));
+SELECT:fallback ("oppgave"i) (0 ("<doaibma>"i));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
 SELECT:fallback ("bål"i) (0 ("<dolla>"i));
 SELECT:fallback ("håndarbeid"i) (0 ("<duodji>"i));
@@ -1549,7 +1561,7 @@ SELECT:fallback ("venn"i) (0 ("<lávvi>"i));
 SELECT:fallback ("mark"i) (0 ("<meahcci>"i));
 SELECT:fallback ("betydning"i) (0 ("<mearkkašupmi>"i));
 SELECT:fallback ("mengde"i) (0 ("<mearri>"i));
-SELECT:fallback ("følgeskriv"i) (0 ("<mielddus>"i));
+SELECT:fallback ("vedlegg"i) (0 ("<mielddus>"i));
 SELECT:fallback ("mål"i) (0 ("<mihttu>"i));
 SELECT:fallback ("mål"i) (0 ("<moalla>"i));
 SELECT:fallback ("smule"i) (0 ("<moallu>"i));
@@ -1557,14 +1569,12 @@ SELECT:fallback ("vrede"i) (0 ("<moarri>"i));
 SELECT:fallback ("rot"i) (0 ("<moivi>"i));
 SELECT:fallback ("minne"i) (0 ("<muitu>"i));
 SELECT:fallback ("mold"i) (0 ("<muolda>"i));
-SELECT:fallback ("tre"i) (0 ("<muorra>"i));
 SELECT:fallback ("betaling"i) (0 ("<máksu>"i));
 SELECT:fallback ("suppe"i) (0 ("<mális>"i));
 SELECT:fallback ("mønster"i) (0 ("<málle>"i));
 SELECT:fallback ("skaft"i) (0 ("<nađđa>"i));
-SELECT:fallback ("tet"i) (0 ("<njunuš>"i));
+SELECT:fallback ("ledelse"i) (0 ("<njunuš>"i));
 SELECT:fallback ("grunne"i) (0 ("<njuorra>"i));
-SELECT:fallback ("østlending"i) (0 ("<nuortalaš>"i));
 SELECT:fallback ("skinn"i) (0 ("<náhkki>"i));
 SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));
 SELECT:fallback ("eie"i) (0 ("<oamastus>"i));
@@ -1586,15 +1596,14 @@ SELECT:fallback ("gras"i) (0 ("<rássi>"i));
 SELECT:fallback ("agn"i) (0 ("<seakti>"i));
 SELECT:fallback ("frø"i) (0 ("<siepman>"i));
 SELECT:fallback ("hjem"i) (0 ("<siida>"i));
+SELECT:fallback ("skoletur"i) (0 ("<skuvlamátki>"i));
 SELECT:fallback ("grunn"i) (0 ("<sivva>"i));
 SELECT:fallback ("trekk"i) (0 ("<skoađas>"i));
 SELECT:fallback ("blankett"i) (0 ("<skovvi>"i));
 SELECT:fallback ("gris"i) (0 ("<spiidni>"i));
-SELECT:fallback ("leke"i) (0 ("<stoagus>"i));
 SELECT:fallback ("ly"i) (0 ("<suodji>"i));
 SELECT:fallback ("dialekt"i) (0 ("<suopman>"i));
 SELECT:fallback ("forgreining"i) (0 ("<suorgi>"i));
-SELECT:fallback ("preken"i) (0 ("<sárdni>"i));
 SELECT:fallback ("venn"i) (0 ("<ustit>"i));
 SELECT:fallback ("hundeflokk"i) (0 ("<valvi>"i));
 SELECT:fallback ("hefte"i) (0 ("<veahtu>"i));
@@ -1604,15 +1613,12 @@ SELECT:fallback ("skikk"i) (0 ("<vierru>"i));
 SELECT:fallback ("stilling"i) (0 ("<virgi>"i));
 SELECT:fallback ("hus"i) (0 ("<visti>"i));
 SELECT:fallback ("smør"i) (0 ("<vuodja>"i));
-SELECT:fallback ("angel"i) (0 ("<vuogga>"i));
 SELECT:fallback ("måte"i) (0 ("<vuohki>"i));
 SELECT:fallback ("styrke"i) (0 ("<vuoibmi>"i));
 SELECT:fallback ("seier"i) (0 ("<vuoitu>"i));
 SELECT:fallback ("rekreasjon"i) (0 ("<vuoiŋŋasteapmi>"i));
 SELECT:fallback ("tur"i) (0 ("<vuorru>"i));
-SELECT:fallback ("grunn"i) (0 ("<vuođđu>"i));
 SELECT:fallback ("skade"i) (0 ("<váddu>"i));
-SELECT:fallback ("påvirkning"i) (0 ("<váikkuhus>"i));
 SELECT:fallback ("mangel"i) (0 ("<váili>"i));
 SELECT:fallback ("besvær"i) (0 ("<váivi>"i));
 SELECT:fallback ("fullmakt"i) (0 ("<váldi>"i));
@@ -1620,21 +1626,20 @@ SELECT:fallback ("pågriper"i) (0 ("<váldi>"i));
 SELECT:fallback ("taker"i) (0 ("<váldi>"i));
 SELECT:fallback ("advarsel"i) (0 ("<várrehus>"i));
 SELECT:fallback ("hustru"i) (0 ("<áhkká>"i));
-SELECT:fallback ("frist"i) (0 ("<áigemearri>"i));
 SELECT:fallback ("embete"i) (0 ("<ámmát>"i));
 SELECT:fallback ("tanke"i) (0 ("<árvalus>"i));
 SELECT:fallback ("hjørne"i) (0 ("<čiehka>"i));
 SELECT:fallback ("pynt"i) (0 ("<čikŋa>"i));
-SELECT:fallback ("møte"i) (0 ("<čoahkkin>"i));
-SELECT:fallback ("oppsummering"i) (0 ("<čoahkkáigeassu>"i));
-SELECT:fallback ("topp"i) (0 ("<čohkka>"i));
+SELECT:fallback ("sammendrag"i) (0 ("<čoahkkáigeassu>"i));
 SELECT:fallback ("poeng"i) (0 ("<čuokkis>"i));
 SELECT:fallback ("notat"i) (0 ("<čálus>"i));
 SELECT:fallback ("slag"i) (0 ("<šládja>"i));
 SELECT:fallback ("surr"i) (0 ("<šurra>"i));
 
-SELECT:fallback ("ende"i) (0 ("<loahppa>"i) LINK -1 ("<máilbmi>") ;
+SELECT:fallback ("ende"i) (0 ("<loahppa>"i) LINK -1 ("<máilbmi>")) ;
 SELECT:fallback ("slutt"i) (0 ("<loahppa>"i)) ;
+
+SELECT:fallback ("hovedforslag"i) (0 ("<váldoevttohus>"i)) ;
 
 
 # Based on frequency in parallel text:
