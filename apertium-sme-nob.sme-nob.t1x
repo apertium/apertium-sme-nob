@@ -252,6 +252,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="vblex.actio">
       <cat-item tags="vblex.*.actio.*"/>
     </def-cat>
+    <def-cat n="vblex.actio.ess">
+      <cat-item tags="vblex.*.actio.ess.*"/>
+    </def-cat>
     <def-cat n="conj">
       <cat-item tags="cnjcoo"/>
       <cat-item tags="cnjsub"/>
@@ -342,6 +345,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="árvu" tags="n.*.sg.loc"/>
       <cat-item lemma="árvu" tags="n.*.sg.loc.*"/>
     </def-cat>
+    <def-cat n="lex-orrut-indic">
+      <cat-item lemma="orrut" tags="vblex.*.indic.*"/>
+    </def-cat>
     <def-cat n="lex-adnojuvvon">
       <cat-item lemma="atnit" tags="vblex.tv.der_passl.vblex.iv.prfprc"/>
       <cat-item lemma="atnit" tags="vblex.tv.der_passl.vblex.iv.prfprc.*"/>
@@ -372,6 +378,10 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-ektui">
       <cat-item lemma="ektui" tags="post"/>
       <cat-item lemma="ektui" tags="post.*"/>
+    </def-cat>
+    <def-cat n="lex-mielde">
+      <cat-item lemma="mielde" tags="adv"/>
+      <cat-item lemma="mielde" tags="adv.*"/>
     </def-cat>
     <def-cat n="lex-go">
       <cat-item lemma="go" tags="cnjsub.*"/>
@@ -2465,7 +2475,7 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
       </when></choose>
 
       <choose c="Prepend cnjsub if present progressive:
-TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the right, it should be inf."><when>
+TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the left, it should be inf."><when>
         <test><and>
           <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal>
           <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="actio"/></equal>
@@ -6613,6 +6623,79 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <!-- <rules VERBS ETC. -->
 
+    <rule comment="C[T]-V lex-orrut-indic vblex.actio.ess" c="lea maid mielde váikkuheamen : er også med å påvirke">
+      <pattern>
+        <pattern-item n="lex-mielde"/>
+        <pattern-item n="vblex.actio.ess"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV.@ADVL"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+			  <lit-tag v="adv"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            </chunk>
+          <b pos="1"/>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV.@←ADVL"/></tag>
+              <tag><lit-tag v="inf"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_verb"/>
+              <clip pos="2" side="tl" part="temps"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="C[T]-V lex-orrut-indic vblex.actio.ess" c="dál gal orru leamen juovlaruohtta : nå virkelig synes være julaften">
+      <pattern>
+        <pattern-item n="lex-orrut-indic"/>
+        <pattern-item n="vblex.actio.ess"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <out>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV.@+FAUXV"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_verb"/>
+              <clip pos="1" side="tl" part="a_pstv"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            </chunk>
+          <b pos="1"/>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV.@-FMAINV"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_verb"/>
+              <clip pos="2" side="tl" part="a_pstv"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
 
 
     <rule comment="C[] VERB (tl: VERB, ADV, ADJ, NOUN)
