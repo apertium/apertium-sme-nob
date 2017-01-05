@@ -1116,7 +1116,7 @@ SELECT:fallback ("redusere"i) (0 ("<geahpedit>"i));
 SELECT:fallback ("svette"i) (0 ("<golggahit>"i));
 SELECT:fallback ("slutte"i) (0 ("<guorrasit>"i));
 SELECT:fallback ("sky"i) (0 ("<hirrut>"i));
-SELECT:fallback ("designe"i) (0 ("<hábmet>"i));
+SELECT:fallback ("forme"i) (0 ("<hábmet>"i));
 SELECT:fallback ("trene"i) (0 ("<hárjehit>"i));
 SELECT:fallback ("forstå"i) (0 ("<ipmirdit>"i));
 SELECT:fallback ("fryde"i) (0 ("<jierásmuvvat>"i));
