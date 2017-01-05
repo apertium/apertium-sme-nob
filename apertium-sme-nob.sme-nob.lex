@@ -72,6 +72,7 @@ LIST prop = prop ;
 LIST sem_ani = sem_ani ;
 LIST sem_build = sem_amount_build sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_build sem_build_event_org sem_build_obj sem_build-part sem_build-part_plc sem_build_build-part sem_build_clth-part sem_build_edu_org sem_build_event_org sem_build_org sem_build_route  ;
 LIST sem_date = sem_date ;
+LIST sem_edu = sem_edu ;
 LIST sem_fem = sem_fem (ant f) ;
 LIST sem_clth = sem_clth ;
 LIST sem_group = sem_group ;
@@ -1206,16 +1207,16 @@ SELECT:fallback ("pitesame"i) IF (0 ("<bihtonsápmi>"i)) ;
 # luohkká 0 = bakke, 1 = klasse
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK 1 ("<oahpaheaddji>"i));
 
-#SUBSTITUTE ("luohkká") ("luohkká:1") ("luohkká" N) (-1 gen LINK 0 pers OR refl);
-## Earát su luohkás ledje juo vissa njeallje siiddu su ovdalis matematihkka-girjjis.
 
-SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 num OR ord OR @→N);
+SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 num OR ord OR @→N OR sem_edu);
 # Son lea vuosttaš luohkás.
 # Son lea 1A luohkás.
 # Biera vázzá sámi luohkás.
 # Biera vázzá sámegiel luohkás.
 # Bireha luohkás leat eanaš nieiddat.
 # Mu luohkás leat vihtta nieidda ja golbma bártni.
+# Earát su luohkás ledje juo vissa njeallje siiddu su ovdalis matematihkka-girjjis.
+
 SELECT:fallback ("bakke"i) (0 ("<luohkká>"i));
 
 # diibmu 0 = time, 1 = klokke
@@ -1681,7 +1682,11 @@ SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>")) ;
 SELECT:fallback ("en"i) (0 ("<okta>"i)) ;
 
 SELECT:movt ("som"i) (0 ("<movt>"i)) (-1 ("<nie>") OR ("<nu>")) ;
+SELECT:mot ("som"i) (0 ("<mot>"i)) (-1 ("<nie>") OR ("<nu>")) ;
+SELECT:mo ("som"i) (0 ("<mo>"i)) (-1 ("<nie>") OR ("<nu>")) ;
 SELECT:fallback ("hvordan"i) (0 ("<movt>"i)) ;
+SELECT:fallback ("hvordan"i) (0 ("<mot>"i)) ;
+SELECT:fallback ("hvordan"i) (0 ("<mo>"i)) ;
 
 SELECT:oba ("en gang"i) (0 ("<oba>"i)) (-1 neg) ;
 SELECT:fallback ("ganske"i) (0 ("<oba>"i)) ;
