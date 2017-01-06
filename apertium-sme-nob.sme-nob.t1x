@@ -6523,6 +6523,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <choose><when c="Avoid «Indre Tromsøs kommune»">
           <test><or>
             <in><clip pos="2" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
+            <in><clip pos="2" side="sl" part="a_sem"/><list n="sem_org"/></in>
             <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal> <!-- example? -->
           </or></test>
           <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
