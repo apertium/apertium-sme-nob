@@ -2522,7 +2522,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal>
           <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="actio"/></equal>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
-        </and></test>
+          <not><equal><var n="aux-verb-lemma"/><lit v="synes"/></equal></not>
+        </and>
+        </test>
         <out>
           <chunk name="conj" case="caseFirstWord">
             <tags>
@@ -6766,43 +6768,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[T]-V lex-orrut-indic vblex.actio.ess" c="dál gal orru leamen juovlaruohtta : nå virkelig synes være julaften">
-      <pattern>
-        <pattern-item n="lex-orrut-indic"/>
-        <pattern-item n="vblex.actio.ess"/>
-      </pattern>
-      <action>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <let><var n="pre-verb"/><lit v=""/></let>
-        <let><var n="c_name"/><lit v=""/></let>
-        <out>
-          <chunk name="verb" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SV.@+FAUXV"/></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_verb"/>
-              <clip pos="1" side="tl" part="a_pstv"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-            </chunk>
-          <b pos="1"/>
-          <chunk name="verb">
-            <tags>
-              <tag><lit-tag v="SV.@-FMAINV"/></tag>
-            </tags>
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_verb"/>
-              <clip pos="2" side="tl" part="a_pstv"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
-      </action>
-    </rule>
-
 
     <rule comment="C[] VERB (tl: VERB, ADV, ADJ, NOUN)
                    See out_verb macro.
@@ -6815,6 +6780,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_verb-lemma"><with-param pos="1"/></call-macro>
         <let><var n="pre-verb"/><lit v=""/></let>
         <let><var n="c_name"/><lit v=""/></let>
         <call-macro n="out_verb"><with-param pos="1"/></call-macro>
