@@ -1920,6 +1920,13 @@ And then there are some categories like "month", with all the months.
           <test><equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.itg"/></equal></test>
           <let><var n="prn_nbr"/><lit v=""/></let>
         </when>
+        <when c="ref p3 has sp">
+          <test><and>
+            <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.ref"/></equal>
+            <equal><clip pos="1" side="tl" part="pers"/><lit-tag v="p3"/></equal>
+          </and></test>
+          <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
+        </when>
         <when c="sg/pl">
           <test><or>
             <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
@@ -1937,19 +1944,26 @@ And then there are some categories like "month", with all the months.
       </choose>
 
       <choose c="GENDER">
-        <when>
+        <when c="itg never has gender">
           <test><equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.itg"/></equal></test>
           <let><var n="prn_gen"/><lit v=""/></let>
         </when>
-        <when>
+        <when c="ref p3 has un">
+          <test><and>
+            <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.ref"/></equal>
+            <equal><clip pos="1" side="tl" part="pers"/><lit-tag v="p3"/></equal>
+          </and></test>
+          <let><var n="prn_nbr"/><lit-tag v="un"/></let>
+        </when>
+        <when c="pl are always un">
           <test><equal><var n="prn_nbr"/><lit-tag v="pl"/></equal></test>
           <let><var n="prn_gen"/><lit-tag v="un"/></let>
         </when>
-        <when>
-          <test><equal><var n="prn_nbr"/><lit-tag v="pl"/></equal></test>
-          <let><var n="prn_gen"/><lit-tag v="un"/></let>
+        <when c="du are always mf">
+          <test><equal><var n="prn_nbr"/><lit-tag v="du"/></equal></test>
+          <let><var n="prn_gen"/><lit-tag v="mf"/></let>
         </when>
-        <otherwise>
+        <otherwise c="sg">
           <let><var n="prn_gen"/><clip pos="2" side="tl" part="gen"/></let>
           <choose><when>
             <test><or>
@@ -2898,6 +2912,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <choose><when>
           <test><equal><var n="prn_nbr"/><lit v=""/></equal></test>
           <let><var n="prn_nbr"/><lit-tag v="sg"/></let>
+        </when></choose>
+        <choose><when c="pl always un">
+          <test><equal><var n="prn_nbr"/><lit-tag v="pl"/></equal></test>
+          <let><var n="prn_gen"/><lit-tag v="un"/></let>
         </when></choose>
         <choose><when c="form 'seg' has analysis p3.un.sp">
           <test><or>
