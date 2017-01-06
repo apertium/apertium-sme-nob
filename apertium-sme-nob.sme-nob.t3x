@@ -2250,12 +2250,25 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       <action>
         <call-macro n="set_pro_verb_case1"><with-param pos="1"/></call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
+        <choose><when><test><or>
+        <equal><clip pos="1" part="lemh"/><lit v="Verb"/></equal> <!-- does not function -->
+        <equal><clip pos="1" part="pers"/><lit-tag v="p1"/></equal>
+        <equal><clip pos="1" part="pers"/><lit-tag v="p2"/></equal>
+        </or></test>
         <out>
-          <var n="pro"/><var n="pro-blank"/>
+         <var n="pro"/><var n="pro-blank"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
-        </out>
-      </action>
+        </out> 
+        </when>
+        <otherwise>       
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out> 
+         </otherwise> 
+         </choose>      
+     </action>
     </rule>
   </section-rules>
 </interchunk>
