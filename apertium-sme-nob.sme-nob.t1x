@@ -1058,8 +1058,39 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;prfprc&gt;"/>
       <list-item v="&lt;pp&gt;"/>
     </def-list>
+    <def-list n="sem_time">
+      <list-item v="&lt;sem_time&gt;"/>
+      <list-item v="&lt;sem_time_wthr&gt;"/>
+    </def-list>
     <def-list n="sem_plc">
+      <list-item v="&lt;sem_act_plc&gt;"/>
+      <list-item v="&lt;sem_ani_hum_plc&gt;"/>
+      <list-item v="&lt;sem_ani_plc&gt;"/>
+      <list-item v="&lt;sem_ani_plc_txt&gt;"/>
+      <list-item v="&lt;sem_aniprod_plc&gt;"/>
+      <list-item v="&lt;sem_body_plc&gt;"/>
+      <list-item v="&lt;sem_build-part_plc&gt;"/>
+      <list-item v="&lt;sem_event_plc&gt;"/>
+      <list-item v="&lt;sem_event_plc-elevate&gt;"/>
+      <list-item v="&lt;sem_feat-measr_plc&gt;"/>
+      <list-item v="&lt;sem_group_hum_plc&gt;"/>
+      <list-item v="&lt;sem_hum_lang_plc&gt;"/>
+      <list-item v="&lt;sem_hum_plc&gt;"/>
       <list-item v="&lt;sem_plc&gt;"/>
+      <list-item v="&lt;sem_plc-abstr&gt;"/>
+      <list-item v="&lt;sem_plc-abstr_rel_state&gt;"/>
+      <list-item v="&lt;sem_plc-abstr_route&gt;"/>
+      <list-item v="&lt;sem_plc-elevate&gt;"/>
+      <list-item v="&lt;sem_plc-line&gt;"/>
+      <list-item v="&lt;sem_plc-water&gt;"/>
+      <list-item v="&lt;sem_plc_pos&gt;"/>
+      <list-item v="&lt;sem_plc_route&gt;"/>
+      <list-item v="&lt;sem_plc_state&gt;"/>
+      <list-item v="&lt;sem_plc_substnc&gt;"/>
+      <list-item v="&lt;sem_plc_substnc_wthr&gt;"/>
+      <list-item v="&lt;sem_plc_time&gt;"/>
+      <list-item v="&lt;sem_plc_tool-catch&gt;"/>
+      <list-item v="&lt;sem_plc_wthr&gt;"/>
     </def-list>
     <def-list n="sem_org">
       <list-item v="&lt;sem_org&gt;"/>
@@ -1213,7 +1244,11 @@ And then there are some categories like "month", with all the months.
       <list-item v="deaivat"/>
       <list-item v="riŋget"/>
       <list-item v="čuojahit"/>
+      <list-item v="váikkuhit"/>
       <list-item v="liikot"/>
+      <list-item v="påvirke"/>
+      <list-item v="utvikle"/>
+      <list-item v="ovdánahttit"/>
     </def-list>
     <def-list n="ill-med-verbs" c="See 'ill-NIL-verbs' above.">
       <list-item v="duhtat"/>
@@ -1580,6 +1615,7 @@ And then there are some categories like "month", with all the months.
               <test><or>
                 <in><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
                 <and>
                   <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                   <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
@@ -1714,7 +1750,12 @@ And then there are some categories like "month", with all the months.
             </let>
           </when></choose>
           <choose><when>
-            <test><in><clip pos="1" side="tl" part="lemh"/><list n="ill-NIL"/></in></test>
+            <test>
+            <or>
+            <in><clip pos="1" side="tl" part="lemh"/><list n="ill-NIL"/></in>
+            <in><var n="main-verb-lemma"/><list n="ill-NIL-verbs"/></in>
+            </or>
+            </test>
             <let>
               <var n="caseprep"/><lit v=""/>
             </let>
@@ -1738,8 +1779,11 @@ And then there are some categories like "month", with all the months.
                     <var n="caseprep"/><lit v="av"/>
                   </let>
                 </when>
-                <when>
-                  <test><in><var n="previous-nhead"/><list n="gen-i-head"/></in></test>
+                <when c="Guovdageainnu suohkana sátnejođiheaddji : ordføreren i Kautokeino kommune">
+                  <test><or>
+                  <in><var n="previous-nhead"/><list n="gen-i-head"/></in>
+                   <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+                </or></test>
                   <let>
                     <var n="caseprep"/><lit v="i"/>
                   </let>
@@ -6690,6 +6734,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <let><var n="pre-verb"/><lit v=""/></let>
         <let><var n="c_name"/><lit v=""/></let>
+        <call-macro n="set_verb-lemma"><with-param pos="1"/></call-macro>
+        <call-macro n="set_verb-lemma"><with-param pos="2"/></call-macro>
         <out>
           <chunk name="adv" case="caseFirstWord">
             <tags>
