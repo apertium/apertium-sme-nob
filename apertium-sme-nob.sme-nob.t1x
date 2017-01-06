@@ -255,6 +255,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="vblex.actio.ess">
       <cat-item tags="vblex.*.actio.ess.*"/>
     </def-cat>
+    <def-cat n="cc">
+      <cat-item tags="cnjcoo.*"/>
+    </def-cat>
     <def-cat n="conj">
       <cat-item tags="cnjcoo"/>
       <cat-item tags="cnjsub"/>
@@ -2225,6 +2228,11 @@ And then there are some categories like "month", with all the months.
 
       <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
       <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
+      <choose><when c="add sg to essive">
+      <test>
+      <equal><clip pos="1" side="tl" part="case"/><lit-tag v="ess"/></equal></test>
+      <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="a_nom_all"/>
+      <clip pos="1" side="tl" part="gen"/><lit-tag v="sg"/></concat></let></when></choose>
 
       <append n="c_name"><lit v="nom"/></append>
 
@@ -6660,6 +6668,70 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
+    <rule comment="C[T]-V lex-orrut-indic vblex.actio.ess cc vblex.actio.ess" c="lea maid mielde váikkuheamen : er også med å påvirke">
+      <pattern>
+        <pattern-item n="lex-mielde"/>
+        <pattern-item n="vblex.actio.ess"/>
+        <pattern-item n="cc"/>
+        <pattern-item n="vblex.actio.ess"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV.@ADVL"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+			  <lit-tag v="adv"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            </chunk>
+          <b pos="1"/>
+          <chunk name="verb" >
+            <tags>
+              <tag><lit-tag v="SV.@←ADVL"/></tag>
+              <tag><lit-tag v="inf"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_verb"/>
+              <clip pos="2" side="tl" part="temps"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+          <b pos="2"/>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="3" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="3" side="tl" part="a_conj"/></tag>
+            </tags>
+            <lu>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_conj"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+          <b pos="3"/>
+          <chunk name="verb">
+            <tags>
+              <tag><lit-tag v="SV.@ADVL"/></tag>
+              <tag><lit-tag v="inf"/></tag>
+            </tags>
+            <lu>
+              <clip pos="4" side="tl" part="lemh"/>
+              <clip pos="4" side="tl" part="a_verb"/>
+              <clip pos="4" side="tl" part="temps"/>
+              <clip pos="4" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <rule comment="C[T]-V lex-orrut-indic vblex.actio.ess" c="dál gal orru leamen juovlaruohtta : nå virkelig synes være julaften">
       <pattern>
         <pattern-item n="lex-orrut-indic"/>
@@ -6682,7 +6754,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </lu>
             </chunk>
           <b pos="1"/>
-          <chunk name="verb" case="caseFirstWord">
+          <chunk name="verb">
             <tags>
               <tag><lit-tag v="SV.@-FMAINV"/></tag>
             </tags>
