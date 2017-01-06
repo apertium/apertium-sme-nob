@@ -1024,6 +1024,8 @@ And then there are some categories like "month", with all the months.
     <def-var n="caseFirstWord"  c="typographic case of first word"/>
     <def-var n="caseprep"       c="nob preposition (whole chunk) based on sme case"/>
     <def-var n="previous-nhead" c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
+    <def-var n="main-verb-lemma" c="lemh of the previous main verb" /> 
+    <def-var n="aux-verb-lemma" c="lemh of the previous aux verb" /> 
   </section-def-vars>
 
   <section-def-lists>
@@ -2212,6 +2214,38 @@ And then there are some categories like "month", with all the months.
         </when>
       </choose>
     </def-macro>
+
+    <def-macro n="set_verb-lemma" npar="1">
+      <choose>
+        <when c="M[V] set main-verb-lemma">
+          <test>
+            <and><or>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FMAINV"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@A←"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal></or>
+              <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
+              <not><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_nomact"/></equal></not>
+            </and>
+          </test>
+          <let><var n="main-verb-lemma"/><clip pos="1" side="tl" part="lemh"/></let>
+        </when>
+        <when c="M[V] set aux-verb-lemma">
+          <test>
+            <and><or>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FAUXV"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal>
+              </or>
+              <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
+            </and>
+          </test>
+          <let><var n="aux-verb-lemma"/><clip pos="1" side="tl" part="lemh"/></let>
+        </when>
+      </choose>
+    </def-macro>
+
 
     <!-- Output macros: -->
     <def-macro n="out_nom" npar="1"
