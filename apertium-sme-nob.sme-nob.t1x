@@ -2395,18 +2395,32 @@ And then there are some categories like "month", with all the months.
         </when>
 
         <otherwise c="Regular Noun=>Noun">
-          <choose>
-            <when>
+          <let><var n="n_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+          <let><var n="c_def_pos"/><lit-tag v="3"/></let>
+          <choose c="Tag cleanup first">
+            <when c="np's and acr's have no number nor defnes:">
               <test><or>
                 <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
                 <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n.acr"/></equal>
               </or></test>
-              <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+              <let><var n="n_nbr"/><lit v=""/></let>
               <let><var n="c_def_pos"/><lit v=""/></let>
             </when>
-            <otherwise>
-              <let><var n="c_def_pos"/><lit-tag v="3"/></let>
-            </otherwise>
+            <when c="collective mf's always have pl as number:">
+              <test><and>
+                <equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="coll"/></equal>
+                <equal><clip pos="1" side="tl" part="gen"/><lit-tag v="mf"/></equal>
+              </and></test>
+              <let><var n="n_nbr"/><lit-tag v="pl"/></let>
+            </when>
+            <when c="other mf's always have sp as number:">
+              <test><equal><clip pos="1" side="tl" part="gen"/><lit-tag v="mf"/></equal></test>
+              <let><var n="n_nbr"/><lit-tag v="sp"/></let>
+            </when>
+            <when c="Other genders default to sg if unspecified:">
+              <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
+              <let><var n="n_nbr"/><lit-tag v="sg"/></let>
+            </when>
           </choose>
           <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
 
@@ -2428,7 +2442,7 @@ And then there are some categories like "month", with all the months.
                 <clip pos="1" side="tl" part="lemh"/>
                 <clip pos="1" side="tl" part="a_nom"/>
                 <clip pos="1" side="tl" part="gen"/>
-                <clip pos="1" side="tl" part="nbr"/>
+                <var n="n_nbr"/>
                 <var n="c_def_pos"/>
                 <clip pos="1" side="tl" part="gen-case"/>
                 <clip pos="1" side="tl" part="lemq"/>
