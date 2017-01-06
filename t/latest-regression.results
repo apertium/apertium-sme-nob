@@ -3,16 +3,17 @@ AP_SRC1 Revision: 146171
 AP_SRC2 Revision: 75416
 Running Regression-tests with mode "sme-nob" with updated tests ...
 
-sme-nob	  biila.
-WORKS	  en bil.
+sme-nob	  Mus lea biila.
+WORKS	  Jeg har en bil.
 
 
-sme-nob	  biilla.
-WORKS	  en bil.
+sme-nob	  Mun válden biilla.
+WORKS	  Jeg tok bilen.
 
 
-sme-nob	  biillat.
-WORKS	  biler.
+sme-nob	  Doppe leat biillat.
+	- Der borte er det biler.
+	+ Der borte er biler.
 
 
 sme-nob	  Oainnátgo máná?
@@ -23,8 +24,8 @@ sme-nob	  Mii lea máná namma?
 WORKS	  Hva er barnets navn?
 
 
-sme-nob	  dán jagi válggas.
-WORKS	  på dette årets valg.
+sme-nob	  Eadni lea dán jagi válggas.
+WORKS	  Mor er på dette årets valg.
 
 
 sme-nob	  Máhtte máksá guokte ruvnnu.
@@ -43,16 +44,16 @@ sme-nob	  Dán lihtu ulbmil lea addit.
 WORKS	  Denne alliansens mål er å gi.
 
 
-sme-nob	  politiijastašuvdnii.
-WORKS	  til politistasjonen.
+sme-nob	  Mii mannat politiijastašuvdnii.
+WORKS	  Vi drar til politistasjonen.
 
 
-sme-nob	  mielbargin.
-WORKS	  som medarbeider.
+sme-nob	  Mun bargen sin mielbargin.
+WORKS	  Jeg arbeidet som deres medarbeider.
 
 
-sme-nob	  allaskuvla.
-WORKS	  en høyskole.
+sme-nob	  Guovdageainnus lea allaskuvla.
+WORKS	  i Kautokeino er en høyskole.
 
 
 sme-nob	  muohtasuddama.
@@ -76,8 +77,7 @@ WORKS	  Anne Tornensis Hætta.
 
 
 sme-nob	  Son lea čeahpes bárdni.
-	- Han er en flink gutt.
-	+ Hun er en flink gutt.
+WORKS	  Han er en flink gutt.
 
 
 sme-nob	  buohtastahttit eará gielaiguin.
@@ -955,8 +955,7 @@ WORKS	  1,1 + 2.13 1,- 10.99.
 
 
 sme-nob	  110f f ja §110a.
-	- 110f f og §110a.
-	+ *110f f og §110.
+WORKS	  110f f og §110a.
 
 
 sme-nob	  okta 6 filmmas.
@@ -1129,9 +1128,8 @@ sme-nob	  galbmit.
 WORKS	  fryse til.
 
 
-sme-nob	  sirdui.
-	- han ble flyttet.
-	+ ble flyttet.
+sme-nob	  Beavdi sirdui nuppi latnjii.
+WORKS	  Bordet ble flyttet til det andre rommet.
 
 
 sme-nob	  Lei okta dehálaš erohus.
@@ -1227,4 +1225,4 @@ sme-nob	  Lea nu guhkkin ahte eai mánát olle bohcco rádjái doppe.
 WORKS	  Det er så langt borte at barna ikke når frem til reinen der borte.
 
 
-226 / 290
+228 / 290

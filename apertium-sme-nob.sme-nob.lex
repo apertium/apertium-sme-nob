@@ -1755,6 +1755,15 @@ SELECT ("om sommeren"i) (0 ("<geasset>"i) + adv) ;
 SELECT ("om sommeren"i) (0 ("<geassit>"i) + adv) ;
 SELECT ("om våren"i) (0 ("<giđđat>"i) + adv) ;
 
+
+SELECT ("med"i) (0 ("<mii>"i) + rel + sg + gen LINK 1 ("<bokte>"i)) ;
+SELECT ("som"i) (0 ("<mii>"i) + adv) ;
+
+SELECT ("med"i) (0 ("<bokte>"i) + po LINK -1 ("<mii>"i) + rel + sg + gen) ;
+SELECT ("ved"i) (0 ("<bokte>"i) + adv) ;
+
+
+
 # Adjectives
 # ==========
 SELECT ("fjern") (0 ("<gáiddus>"i) + cmpnd);
