@@ -2892,15 +2892,21 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
       <choose><when c="Append 'seg' if reflexive:">
         <test><equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal></test>
-        <let><var n="prn_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         <let><var n="prn_pers"/><clip pos="1" side="tl" part="pers"/></let>
+        <let><var n="prn_gen"/><lit-tag v="mf"/></let>
+        <let><var n="prn_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         <choose><when>
-          <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
+          <test><equal><var n="prn_nbr"/><lit v=""/></equal></test>
           <let><var n="prn_nbr"/><lit-tag v="sg"/></let>
         </when></choose>
-        <choose><when>
-          <test><equal><clip pos="1" side="tl" part="pers"/><lit v=""/></equal></test>
+        <choose><when c="form 'seg' has analysis p3.un.sp">
+          <test><or>
+            <equal><var n="prn_pers"/><lit v=""/></equal>
+            <equal><var n="prn_pers"/><lit v="p3"/></equal>
+          </or></test>
           <let><var n="prn_pers"/><lit-tag v="p3"/></let>
+          <let><var n="prn_gen"/><lit-tag v="un"/></let>
+          <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
         </when></choose>
         <out>
           <b/>
@@ -2916,6 +2922,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <lit v="seg"/>
               <lit-tag v="prn.ref"/>
               <var n="prn_pers"/>
+              <var n="prn_gen"/>
               <var n="prn_nbr"/>
             </lu>
           </chunk>
