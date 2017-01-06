@@ -458,12 +458,12 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="makkár" tags="prn.ind.sg.*.foc_neg-ge.*"/>
       <cat-item lemma="makkár" tags="prn.ind.attr.foc_neg-ge.*"/>
     </def-cat>
- 
+
      <def-cat n="neg-verb">
       <cat-item tags="vblex.iv.neg.*"/>
     </def-cat>
 
- 
+
   </section-def-cats>
   <section-def-attrs>
     <def-attr n="a_der">
@@ -943,7 +943,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_perc-emo"/>
       <attr-item tags="sem_perc-emo_wthr"/>
       <attr-item tags="sem_perc-phys"/>
-      <attr-item tags="sem_perc-psych"/> 
+      <attr-item tags="sem_perc-psych"/>
       <attr-item tags="sem_phonenr"/>
       <attr-item tags="sem_plant"/>
       <attr-item tags="sem_plant-part"/>
@@ -1024,8 +1024,8 @@ And then there are some categories like "month", with all the months.
     <def-var n="caseFirstWord"  c="typographic case of first word"/>
     <def-var n="caseprep"       c="nob preposition (whole chunk) based on sme case"/>
     <def-var n="previous-nhead" c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
-    <def-var n="main-verb-lemma" c="lemh of the previous main verb" /> 
-    <def-var n="aux-verb-lemma" c="lemh of the previous aux verb" /> 
+    <def-var n="main-verb-lemma" c="lemh of the previous main verb" />
+    <def-var n="aux-verb-lemma" c="lemh of the previous aux verb" />
   </section-def-vars>
 
   <section-def-lists>
@@ -2151,21 +2151,20 @@ And then there are some categories like "month", with all the months.
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
             <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
-            <equal><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>  
+            <equal><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>
             <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="comp"/></equal>
             <and> <!-- Lene added -->
               <equal><clip pos="2" side="tl" part="prop_type"/><lit-tag v="top"/></equal>
-               <in><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in> 
-            </and>   
+              <in><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
+            </and>
             <and> <!-- Lene added -->
               <equal><clip pos="2" side="tl" part="prop_type"/><lit-tag v="top"/></equal>
-               <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in> 
-            </and>   
-
-			<and>
-           <equal><clip pos="2" side="tl" part="case"/><lit-tag v="gen"/></equal>
-            <not><equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal></not>
-			</and>
+              <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+            </and>
+            <and>
+              <equal><clip pos="2" side="tl" part="case"/><lit-tag v="gen"/></equal>
+              <not><equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal></not>
+            </and>
           </or></test>
           <let><var n="defnes"/><lit-tag v="ind"/></let>
         </when>
@@ -2409,7 +2408,7 @@ And then there are some categories like "month", with all the months.
           </out>
         </when>
 
-        <when c="cmp_splitr → sg.ind.guio (split compounds) 
+        <when c="cmp_splitr → sg.ind.guio (split compounds)
                  eanan-(cmp_splitr) ja luonddudoahpagiid => jord-(sg.ind) og naturfagord">
           <test><ends-with><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></ends-with></test>
           <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
@@ -3850,7 +3849,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
-    <rule comment="C[TV] nom.prop_attr nom.prop.antcog_mod nom.prop.antcog" c=", muitala rektor Liisa Holmberg. 
+    <rule comment="C[TV] nom.prop_attr nom.prop.antcog_mod nom.prop.antcog" c=", muitala rektor Liisa Holmberg.
                    Uses middle NOM.PROP gender if possible as chunk gender.">
       <pattern>
         <pattern-item n="nom.prop_attr"/>
@@ -4604,10 +4603,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <let><clip pos="2" side="tl" part="tags"/><lit-tag v="det.qnt.m.sg"/></let>
 		</otherwise>
 		</choose>
-        
+
 		<choose>
 		<when>
-		<test><in caseless="yes"><clip pos="2" side="sl" part="lemh"/><list n="guhte"/></in></test> 
+		<test><in caseless="yes"><clip pos="2" side="sl" part="lemh"/><list n="guhte"/></in></test>
         <out>
           <var n="caseprep"/>
           <chunk name="det" case="caseFirstWord">
@@ -4889,10 +4888,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               </chunk>
             </out>
           </when>
-          <when c="selv.det.emph.@Pron← Lene added. Mis leat alddámet ain šibihat."> 
+          <when c="selv.det.emph.@Pron← Lene added. Mis leat alddámet ain šibihat.">
             <test><and>
-            <not><equal><clip pos="1" side="tl" part="a_det"/><lit v=""/></equal></not> 
-            <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@Pron←"/></equal></and></test> 
+            <not><equal><clip pos="1" side="tl" part="a_det"/><lit v=""/></equal></not>
+            <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@Pron←"/></equal></and></test>
            <out>
               <chunk name="det" case="caseFirstWord">
                 <tags>
@@ -4907,7 +4906,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                   <clip pos="1" side="tl" part="a_det"/>
                   <clip pos="1" side="tl" part="pers"/>
                   <clip pos="1" side="tl" part="gen"/>
-                  <lit-tag v="un.sp"/> 
+                  <lit-tag v="un.sp"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
@@ -5882,36 +5881,39 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <let><var n="defnes"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
         </when></choose>
-        <choose><when><test> <!-- Lene: for sápmi.n.sg.gen samisk.adj -->
-        <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal></test>
-        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adj"/>
-              <clip pos="1" side="tl" part="grau"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="3"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-            <lit v="^"/>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_adj"/>
-              <clip pos="2" side="tl" part="grau"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <lit-tag v="def"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="2"/>
-          </concat>
-        </let>
-        </when>
+        <choose>
+          <when c="Lene: for sápmi.n.sg.gen samisk.adj">
+            <!-- TODO: def-macro set_pre-nom -->
+            <test>
+            <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal></test>
+            <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+            <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
+            <let>
+              <var n="pre-nom"/>
+              <concat>
+                <lit v="^"/>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_adj"/>
+                  <clip pos="1" side="tl" part="grau"/>
+                  <clip pos="1" side="tl" part="gen"/>
+                  <clip pos="1" side="tl" part="nbr"/>
+                  <lit-tag v="3"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                <lit v="$"/>
+                <b pos="1"/>
+                <lit v="^"/>
+                  <clip pos="2" side="tl" part="lemh"/>
+                  <clip pos="2" side="tl" part="a_adj"/>
+                  <clip pos="2" side="tl" part="grau"/>
+                  <clip pos="2" side="tl" part="gen"/>
+                  <clip pos="2" side="tl" part="nbr"/>
+                  <lit-tag v="def"/>
+                  <clip pos="2" side="tl" part="lemq"/>
+                <lit v="$"/>
+                <b pos="2"/>
+              </concat>
+            </let>
+          </when>
         <otherwise>
         <let>
           <var n="pre-nom"/>
@@ -6114,7 +6116,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[] NOM.PROP_GEN NOM 
+    <rule comment="C[] NOM.PROP_GEN NOM
                    -----
                    Defnes of possessed NOM is ind (NOM.PROP has no defnes).
                    Needs to be before NOM.GEN NOM">
@@ -6126,9 +6128,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
-        <choose><when><test><or>
-          <in><clip pos="2" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in> 
-               <in><clip pos="2" side="sl" part="a_sem"/><list n="sem_org"/></in> <!-- Lene added -->
+        <choose><when c="Avoid «Tromsøs kommune»">
+          <test><or>
+            <in><clip pos="2" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
+            <in><clip pos="2" side="sl" part="a_sem"/><list n="sem_org"/></in>
           </or></test>
           <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
         </when></choose>
@@ -6193,7 +6196,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </concat>
         </let>
         </when>
-		<otherwise>        
+		<otherwise>
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <let>
@@ -6214,8 +6217,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
-		</otherwise>        
-		</choose>        
+		</otherwise>
+		</choose>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
@@ -6517,10 +6520,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for NOM.GEN NOM.GEN -->
         <!-- TODO: np.top.gen n.gen → n i.pr np.top.gen -->
-        <choose><when>
+        <choose><when c="Avoid «Indre Tromsøs kommune»">
           <test><or>
-            <in><clip pos="2" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>  <!-- Lene added -->
-            <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+            <in><clip pos="2" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
+            <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal> <!-- example? -->
           </or></test>
           <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
         </when></choose>
@@ -7116,7 +7119,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
               </chunk>
             </out>
           </when>
-          <when c="Since we match on chunk lemma 'adv' in t3x, we have a two-lu chunks 
+          <when c="Since we match on chunk lemma 'adv' in t3x, we have a two-lu chunks
                    here with the single name 'adv' (no postchunking rules for adverbs, so that's OK).">
             <test><equal><clip pos="1" side="sl" part="mode"/><lit-tag v="qst"/></equal></test>
             <out>
