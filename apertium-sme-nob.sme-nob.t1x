@@ -1904,6 +1904,10 @@ And then there are some categories like "month", with all the months.
                   - det.pos (personal genitives) have no case, but this is handled in transfer rules.">
       <choose>
         <when>
+          <test><equal><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn.ref"/></equal></test>
+          <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
+        </when>
+        <when>
           <test><equal><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn.pers"/></equal></test>
           <choose>
             <when>
@@ -2976,7 +2980,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <choose><when c="form 'seg' has analysis p3.un.sp">
           <test><or>
             <equal><var n="prn_pers"/><lit v=""/></equal>
-            <equal><var n="prn_pers"/><lit v="p3"/></equal>
+            <equal><var n="prn_pers"/><lit-tag v="p3"/></equal>
           </or></test>
           <let><var n="prn_pers"/><lit-tag v="p3"/></let>
           <let><var n="prn_gen"/><lit-tag v="un"/></let>
@@ -2998,6 +3002,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <var n="prn_pers"/>
               <var n="prn_gen"/>
               <var n="prn_nbr"/>
+              <lit-tag v="acc"/>
             </lu>
           </chunk>
         </out>
@@ -4983,8 +4988,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </when>
           <when c="selv.det.emph">
             <test><and>
-            <not><equal><clip pos="1" side="tl" part="a_det"/><lit v=""/></equal></not>
-             <not><equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@Pron←"/></equal></not>
+              <not><equal><clip pos="1" side="tl" part="a_det"/><lit v=""/></equal></not>
+              <not><equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@Pron←"/></equal></not>
             </and></test>
             <out>
               <var n="caseprep"/>
@@ -5011,9 +5016,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </when>
           <when c="selv.det.emph.@Pron← Lene added. Mis leat alddámet ain šibihat.">
             <test><and>
-            <not><equal><clip pos="1" side="tl" part="a_det"/><lit v=""/></equal></not>
+              <not><equal><clip pos="1" side="tl" part="a_det"/><lit v=""/></equal></not>
             <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@Pron←"/></equal></and></test>
-           <out>
+            <out>
               <chunk name="det" case="caseFirstWord">
                 <tags>
                   <tag><lit-tag v="SN"/></tag>
@@ -5033,28 +5038,53 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               </chunk>
             </out>
           </when>
-        <otherwise>
-          <out>
-            <var n="caseprep"/>
-            <chunk name="prn" case="caseFirstWord">
-              <tags>
-                <tag><lit-tag v="SN"/></tag>
-                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                <tag><clip pos="1" side="tl" part="pers"/></tag>
-                <tag><clip pos="1" side="tl" part="gen"/></tag>
-                <tag><clip pos="1" side="tl" part="nbr"/></tag>
-                <tag><clip pos="1" side="tl" part="case"/></tag>
-              </tags>
-              <lu>
-                <clip pos="1" side="tl" part="lemh"/>
-                <clip pos="1" side="tl" part="a_prn"/>
-                <clip pos="1" side="tl" part="pers"/>
-                <clip pos="1" side="tl" part="nbr"/>
-                <clip pos="1" side="tl" part="lemq"/>
-              </lu>
-            </chunk>
-          </out>
-        </otherwise>
+          <when c="prn.ref">
+            <test><equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.ref"/></equal></test>
+            <out>
+              <var n="caseprep"/>
+              <chunk name="prn" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SN"/></tag>
+                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="1" side="tl" part="pers"/></tag>
+                  <tag><clip pos="1" side="tl" part="gen"/></tag>
+                  <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                  <tag><clip pos="1" side="tl" part="case"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_prn"/>
+                  <clip pos="1" side="tl" part="pers"/>
+                  <lit-tag v="mf"/>
+                  <lit-tag v="ND"/>
+                  <clip pos="1" side="tl" part="case"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </when>
+          <otherwise>
+            <out>
+              <var n="caseprep"/>
+              <chunk name="prn" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SN"/></tag>
+                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><clip pos="1" side="tl" part="pers"/></tag>
+                  <tag><clip pos="1" side="tl" part="gen"/></tag>
+                  <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                  <tag><clip pos="1" side="tl" part="case"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_prn"/>
+                  <clip pos="1" side="tl" part="pers"/>
+                  <clip pos="1" side="tl" part="nbr"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </otherwise>
         </choose>
       </action>
     </rule>

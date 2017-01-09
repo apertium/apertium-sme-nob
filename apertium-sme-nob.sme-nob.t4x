@@ -442,10 +442,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       </when></choose>
 
       <choose>
-        <when c="nob prn.ref never has case">
-          <test><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.ref"/></equal></test>
-          <let><clip pos="2" part="case"/><lit v=""/></let>
-        </when>
         <when c="nob prn.res cases are only ever gen or ∅">
           <test><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.res"/></equal></test>
           <choose><when>
@@ -472,6 +468,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
 
       <choose><when c="try chunk gender">
         <test><and>
+          <not><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.ref"/></equal></not>
+          <not><equal><clip pos="2" part="lemh"/><lit-tag v="hen"/></equal></not>
+          <not><equal><clip pos="2" part="lemh"/><lit-tag v="den"/></equal></not>
           <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
           <equal><clip pos="2" part="pers"/><lit-tag v="p3"/></equal>
           <in><clip pos="1" part="gen"/><list n="prn.p3.sg-genders"/></in>
@@ -501,6 +500,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <choose>
         <when c="p3.sg.mf should be m">
           <test><and>
+            <not><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.ref"/></equal></not>
+            <not><equal><clip pos="2" part="lemh"/><lit-tag v="hen"/></equal></not>
+            <not><equal><clip pos="2" part="lemh"/><lit-tag v="den"/></equal></not>
             <equal><clip pos="2" part="pers"/><lit-tag v="p3"/></equal>
             <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
             <equal><clip pos="2" part="gen"/><lit-tag v="mf"/></equal>
@@ -509,22 +511,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         </when>
       </choose>
 
-
-      <choose><when c="plurals are un">
-        <test><equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal></test>
+      <choose><when c="sp and plurals are un">
+        <test><or>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="pl"/></equal>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal>
+        </or></test>
         <let><clip pos="2" part="gen"/><lit-tag v="un"/></let>
-      </when></choose>
-
-      <choose><when c="Reflexive, ensure it's got the right tags (might have started as genitive that was selected by adposition)">
-        <test><equal><clip pos="2" part="lemh"/><lit v="seg"/></equal></test>
-        <let>
-          <clip pos="2" part="tags"/>
-          <concat>
-            <lit-tag v="prn.ref"/>
-            <clip pos="2" part="pers"/>
-            <clip pos="2" part="nbr"/>
-          </concat>
-        </let>
       </when></choose>
     </def-macro>
 
