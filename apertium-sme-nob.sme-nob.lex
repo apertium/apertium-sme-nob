@@ -1492,6 +1492,10 @@ SELECT ("samiske språk"i) (0 ("<sámegiella>"i) + pl);
 SELECT ("samiske språk"i) (0 ("<sámegiella>"i) + gen LINK -1 num);
 SELECT:fallback ("samisk"i) (0 ("<sámegiella>"i));
 
+SELECT ("adresse"i) (0 ("<čujuhus>"i) + pl);
+SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK -1 gen);
+SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
+
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
@@ -1634,7 +1638,7 @@ SELECT:fallback ("hjørne"i) (0 ("<čiehka>"i));
 SELECT:fallback ("pynt"i) (0 ("<čikŋa>"i));
 SELECT:fallback ("sammendrag"i) (0 ("<čoahkkáigeassu>"i));
 SELECT:fallback ("poeng"i) (0 ("<čuokkis>"i));
-SELECT:fallback ("notat"i) (0 ("<čálus>"i));
+SELECT:fallback ("dokument"i) (0 ("<čálus>"i));
 SELECT:fallback ("slag"i) (0 ("<šládja>"i));
 SELECT:fallback ("surr"i) (0 ("<šurra>"i));
 
