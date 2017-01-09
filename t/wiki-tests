@@ -108,6 +108,14 @@ showrevisions () {
     done
 }
 
+translate () {
+    if [[ ${AP_LAZY} = true ]]; then
+        t/lazytranslate "$@"
+    else
+        command apertium "$@"
+    fi
+}
+
 main () {
     # Parse options:
     update=false
@@ -138,6 +146,7 @@ main () {
     declare -r mode="${srclang}-${trglang}"
     declare -r html="$(dirname $0)/${testtype}.html"
 
+
     srclist=$(mktemp -t "${mode}-src.XXXXXXXXXX")
     trglist=$(mktemp -t "${mode}-trg.XXXXXXXXXX")
     tstlist=$(mktemp -t "${mode}-tst.XXXXXXXXXX")
@@ -152,7 +161,7 @@ main () {
     cleantrg "${srclang}" "${trglang}" < "${html}" > "${trglist}"
     (
         set -o pipefail
-        if ! apertium -d . "${mode}" < "${srclist}" > "${rawlist}"; then
+        if ! translate -d . "${mode}" < "${srclist}" > "${rawlist}"; then
             cat "${rawlist}" >&2
             return 1
         fi

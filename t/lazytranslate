@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e -u
+
+cd "$(dirname -- "$0")/.."
+
+contents=$(cat)
+
+sha=$(sha256sum <<<"${contents}" | cut -f1 -d ' ' )
+
+# Only update timestamp of input if it really differs:
+if [[ ! -f ".cache/${sha}.input" ]]; then
+    mkdir -p .cache >&2
+    echo "${contents}" > ".cache/${sha}.input"
+fi
+
+make -f t/translate.make ".cache/${sha}.dgen" >&2
+cat ".cache/${sha}.dgen"
