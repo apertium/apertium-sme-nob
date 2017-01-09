@@ -829,7 +829,7 @@ SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
 ## Buorre lei go bohtet.
 ## Gummá go ii boahtán.
 
-SELECT ("mye"i) (0 ("<ollu>"i) LINK 1 (sem_plc_substnc_wthr)) ;
+SELECT ("mye"i) (0 ("<ollu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
 SELECT:fallback ("mange"i) (0 ("<ollu>"i)) ;
 
 

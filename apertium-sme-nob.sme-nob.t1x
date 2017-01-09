@@ -387,6 +387,14 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="mielde" tags="adv"/>
       <cat-item lemma="mielde" tags="adv.*"/>
     </def-cat>
+    <def-cat n="lex-dáfus">
+      <cat-item lemma="dáfus" tags="post"/>
+      <cat-item lemma="dáfus" tags="post.*"/>
+    </def-cat>
+    <def-cat n="lex-máŋga">
+      <cat-item lemma="máŋga" tags="num"/>
+      <cat-item lemma="máŋga" tags="num.*"/>
+    </def-cat>
     <def-cat n="lex-go">
       <cat-item lemma="go" tags="cnjsub.*"/>
       <cat-item lemma="go" tags="cnjsub"/>
@@ -1071,6 +1079,26 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_time&gt;"/>
       <list-item v="&lt;sem_time_wthr&gt;"/>
     </def-list>
+    <def-list n="sem_txt">
+      <list-item v="&lt;sem_ani_build_hum_txt&gt;"/>
+      <list-item v="&lt;sem_ani_plc_txt&gt;"/>
+      <list-item v="&lt;sem_group_txt&gt;"/>
+      <list-item v="&lt;sem_mat_txt&gt;"/>
+      <list-item v="&lt;sem_money_txt&gt;"/>
+      <list-item v="&lt;sem_org_txt&gt;"/>
+      <list-item v="&lt;sem_prod-audio_txt&gt;"/>
+      <list-item v="&lt;sem_prod-cogn_txt&gt;"/>
+      <list-item v="&lt;sem_semcon_txt&gt;"/>
+      <list-item v="&lt;sem_txt&gt;"/>
+    </def-list>
+    <def-list n="sem_state">
+      <list-item v="&lt;sem_obj_state&gt;"/>
+      <list-item v="&lt;sem_plc-abstr_rel_state&gt;"/>
+      <list-item v="&lt;sem_plc_state&gt;"/>
+      <list-item v="&lt;sem_state&gt;"/>
+      <list-item v="&lt;sem_state-sick&gt;"/>
+      <list-item v="&lt;sem_state-sick_substnc&gt;"/>
+    </def-list>
     <def-list n="sem_plc">
       <list-item v="&lt;sem_act_plc&gt;"/>
       <list-item v="&lt;sem_ani_hum_plc&gt;"/>
@@ -1382,11 +1410,13 @@ And then there are some categories like "month", with all the months.
       <list-item v="sak"/>
       <list-item v="samfunn"/>
       <list-item v="sammenheng"/>
+      <list-item v="søknad"/>
       <list-item v="seng"/>
       <list-item v="september"/>
       <list-item v="skap"/>
       <list-item v="skuff"/>
       <list-item v="speil"/>
+      <list-item v="spill"/>
       <list-item v="stue"/>
       <list-item v="telefon"/>
       <list-item v="tidsrom"/>
@@ -1625,6 +1655,8 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
                 <and>
                   <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                   <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
@@ -2419,6 +2451,7 @@ And then there are some categories like "month", with all the months.
                  Just output pst.mf.sg.ind; TODO: different bidix verb pardef for these PoS changes.">
           <test><and>
             <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
+            <equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="sg"/></equal>
             <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
           </and></test>
 
@@ -2442,6 +2475,38 @@ And then there are some categories like "month", with all the months.
                 <clip pos="1" side="tl" part="lemh"/>
                 <clip pos="1" side="tl" part="a_adj-pure"/>
                 <lit-tag v="pst.mf.sg.ind"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+        <when c="tl PoS is an adj pl">
+          <test><and>
+            <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
+            <equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="pl"/></equal>
+            <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
+          </and></test>
+
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord"
+                   c="The tag order corresponds with nouns, to make c_def_pos (e.g. on pre-nominals) work.">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_adj-pure"/>
+                <lit-tag v="pst.un.pl.ind"/>
                 <clip pos="1" side="tl" part="lemq"/>
               </lu>
             </chunk>
@@ -3175,6 +3240,30 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
+
+    <rule comment="C[L] lex-máŋga lex-dáfus" c="máŋgga dáfus → på mange måter">
+      <pattern>
+        <pattern-item n="lex-máŋga"/>
+        <pattern-item n="lex-dáfus"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="på mange måter"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+
     <rule comment="C[DL] lex-dan lex-ektui lex-go" c="dan ektui go → mens / mot">
       <pattern>
         <pattern-item n="lex-dan"/>
