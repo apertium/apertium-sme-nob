@@ -109,7 +109,7 @@ showrevisions () {
 }
 
 translate () {
-    if [[ ${AP_LAZY} = true ]]; then
+    if [[ ${AP_LAZY:-false} = true ]]; then
         t/lazytranslate "$@"
     else
         command apertium "$@"
