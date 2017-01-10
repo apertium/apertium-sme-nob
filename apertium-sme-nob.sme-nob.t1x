@@ -79,6 +79,11 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="vblex.iv.adj.attr.*"/>
       <cat-item tags="vblex.tv.adj.attr.*"/>
     </def-cat>
+    <def-cat n="sem_time_lex">
+      <cat-item tags="n.sem_time.*"/>
+      <cat-item tags="n.sem_time_wthr.*"/>
+      <cat-item tags="n.sem_measr_time.*"/>
+    </def-cat>
     <def-cat n="num_mod">
       <cat-item tags="num.*.@HNOUN"/> <!-- HNOUN=syntax couldn't find a head; might still be a modifier -->
       <cat-item tags="num.*.@→N"/>
@@ -334,6 +339,10 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-sadjai">
       <cat-item lemma="sadji" tags="n.*.sg.ill.*"/>
       <cat-item lemma="sadji" tags="n.sg.ill.*"/>
+    </def-cat>
+    <def-cat n="lex-siden">
+      <cat-item lemma="áigi" tags="n.*"/>
+      <cat-item lemma="dassái" tags="adv.*"/>
     </def-cat>
     <def-cat n="lex-vel">
       <cat-item lemma="vel" tags="adv.*"/>
@@ -1078,6 +1087,24 @@ And then there are some categories like "month", with all the months.
     <def-list n="sem_time">
       <list-item v="&lt;sem_time&gt;"/>
       <list-item v="&lt;sem_time_wthr&gt;"/>
+      <list-item v="&lt;sem_measr_time&gt;"/>
+      <list-item v="&lt;sem_ani_hum_time&gt;"/>
+      <list-item v="&lt;sem_ani_time&gt;"/>
+      <list-item v="&lt;sem_body_group_hum_time&gt;"/>
+      <list-item v="&lt;sem_body_time&gt;"/>
+      <list-item v="&lt;sem_event_time&gt;"/>
+      <list-item v="&lt;sem_hum_lang_time&gt;"/>
+      <list-item v="&lt;sem_plc_time&gt;"/>
+    </def-list>
+    <def-list n="sem_prod-ling">
+      <list-item v="&lt;sem_prod-ling&gt;"/>
+    </def-list>
+    <def-list n="sem_lang">
+      <list-item v="&lt;sem_lang&gt;"/>
+      <list-item v="&lt;sem_hum_lang&gt;"/>
+      <list-item v="&lt;sem_hum_lang_plc&gt;"/>
+      <list-item v="&lt;sem_hum_lang_time&gt;"/>
+      <list-item v="&lt;sem_lang_tool&gt;"/>
     </def-list>
     <def-list n="sem_txt">
       <list-item v="&lt;sem_ani_build_hum_txt&gt;"/>
@@ -1657,6 +1684,7 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
                 <and>
                   <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                   <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
@@ -1779,7 +1807,10 @@ And then there are some categories like "month", with all the months.
             <var n="caseprep"/><lit v="til"/>
           </let>
           <choose><when>
-            <test><in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in></test>
+            <test><or>
+            <in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
+            <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
+            </or></test>
             <let>
               <var n="caseprep"/><lit v="på"/>
             </let>
@@ -3333,10 +3364,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
-    <rule comment="C[LT] lex-mannan time-noun" c="Mannan vahku → Sist uke (could mannan get an adj reading?)">
+    <rule comment="C[LT] lex-mannan sem_time_lex" c="Mannan vahku → Sist uke (could mannan get an adj reading?)">
       <pattern>
         <pattern-item n="lex-mannan"/>
-        <pattern-item n="time-noun"/>
+        <pattern-item n="sem_time_lex"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -3353,6 +3384,64 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </let>
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+    <rule comment="C[LT] lex-mannan time-noun" c="Njealje jagi áigi → For fire år siden">
+      <pattern>
+        <pattern-item n="num"/>
+        <pattern-item n="sem_time_lex"/>
+        <pattern-item n="lex-siden"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="pre_nom">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><lit-tag v="ind"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <lit v="for"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+            <b pos="1"/>
+          <chunk name="adv">
+            <tags>
+              <tag><lit-tag v="ADV"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
+             </lu>
+          </chunk>
+            <b pos="2"/>
+          <chunk name="adv">
+            <tags>
+              <tag><lit-tag v="ADV"/></tag>
+            </tags>
+           <lu>
+              <lit v="siden"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
       </action>
     </rule>
 
