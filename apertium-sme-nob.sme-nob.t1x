@@ -336,6 +336,14 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="num.*.cmp_splitr"/>
       <cat-item tags="num.*.cmp_splitr.*"/>
     </def-cat>
+    <def-cat n="lex-guovttos">
+      <cat-item lemma="guovttos" tags="n.*.coll.*"/>
+      <cat-item lemma="guovttos" tags="n.coll.*"/>
+    </def-cat>
+    <def-cat n="hum_gen">
+      <cat-item tags="n.*.sem_hum.sg.gen.*"/>
+      <cat-item tags="n.sem_hum.sg.gen.*"/>
+    </def-cat>
     <def-cat n="lex-sadjai">
       <cat-item lemma="sadji" tags="n.*.sg.ill.*"/>
       <cat-item lemma="sadji" tags="n.sg.ill.*"/>
@@ -3191,6 +3199,39 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <lit v="i stedet"/>
               <lit-tag v="adv"/>
             </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[TW] hum_gen lex-guovttos" c="artistta guovttos → de to artistene">
+      <pattern>
+        <pattern-item n="hum_gen"/>
+        <pattern-item n="lex-guovttos"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="de"/>
+              <lit-tag v="prn.pers.p3.un.pl.nom"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="to"/>
+              <lit-tag v="det.qnt.un.pl"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <lit-tag v="m.pl.def"/>
+              <clip pos="1" side="tl" part="lemq"/>
+             </lu>
           </chunk>
         </out>
       </action>
