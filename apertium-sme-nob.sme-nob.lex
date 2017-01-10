@@ -1505,8 +1505,11 @@ SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
 SELECT ("tale"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i) LINK -1 loc);
 SELECT:fallback ("budskap"i) (0 ("<sáhka>"i));
 
-SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i));
+SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
+
+SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) BARRIER SV-BOUNDARY);
+SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
 
 # Nouns that were all 0-marked in the dix:
