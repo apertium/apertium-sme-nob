@@ -573,6 +573,9 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="cmp_sggen.cmp_splitr"/>
       <attr-item tags="cmp_sgnom.cmp_splitr"/>
     </def-attr>
+    <def-attr n="a_cmp_splitr">
+      <attr-item tags="cmp_splitr"/>
+    </def-attr>
     <def-attr n="a_prn">
       <attr-item tags="prn"/>
       <attr-item tags="prn.rel"/>
@@ -2173,6 +2176,16 @@ And then there are some categories like "month", with all the months.
                   Regular nouns are always sg.ind when non-final in compounds.
                   Bidix often does not supply defnes/number, making clip fail; in that case, append to tags">
       <choose c="cmp tags">
+        <when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
+          <test><and>
+            <equal><clip pos="1" side="sl" part="a_num"/><lit-tag v="num"/></equal>
+            <or>
+              <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_sgnom.cmp_splitr"/></equal>
+              <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_sggen.cmp_splitr"/></equal>
+            </or>
+          </and></test>
+          <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
+        </when>
         <when>
           <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp.guio"/></equal></test>
           <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
@@ -2183,8 +2196,8 @@ And then there are some categories like "month", with all the months.
         </when>
       </choose>
       <choose c="nbr/art tags">
-        <when c="Do nothing for proper nouns">
-          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+        <when c="do nothing for proper nouns / numbers">
+          <test><not><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n"/></begins-with></not></test>
         </when>
         <when>
           <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sp"/></equal></test>
@@ -2622,7 +2635,7 @@ And then there are some categories like "month", with all the months.
 
         <when c="cmp_splitr → sg.ind.guio (split compounds)
                  eanan-(cmp_splitr) ja luonddudoahpagiid → jord-(sg.ind) og naturfagord">
-          <test><ends-with><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></ends-with></test>
+          <test><equal><clip pos="1" side="sl" part="a_cmp_splitr"/><lit-tag v="cmp_splitr"/></equal></test>
           <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
           <out>
             <chunk namefrom="c_name" case="caseFirstWord">
@@ -3843,19 +3856,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
-        <!-- no modify_nomcmp_nbr_art for numcmp -->
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
 
         <choose><when>
           <test><equal><clip pos="2" side="tl" part="lemh"/><lit v="lohku"/></equal></test>
           <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
-        </when></choose>
-
-        <choose><when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
-          <test><or>
-            <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_sgnom.cmp_splitr"/></equal>
-            <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_sggen.cmp_splitr"/></equal>
-          </or></test>
-          <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
         </when></choose>
 
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
@@ -3916,6 +3921,20 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <!-- In this case we don't want to remove the dash: -->
+        <!-- <call-macro n="clean_cmp"><with-param pos="1"/></call-macro> -->
+        <choose>
+          <when>
+            <test><or>
+              <equal><clip pos="1" side="sl" part="a_cmp_splitr"/><lit-tag v="cmp_splitr"/></equal>
+              <not><equal><b pos="1"/><lit v=" "/></equal></not>
+            </or></test>
+            <let><var n="blank"/><b pos="1"/></let>
+          </when>
+          <otherwise>
+            <let><var n="blank"/><lit v=""/></let>
+          </otherwise>
+        </choose>
         <out>
           <chunk name="det_det" case="caseFirstWord"> <!-- no t4x rule yet, but no cleanup should be needed -->
             <tags>
@@ -3934,6 +3953,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="a_cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
+            <var n="blank"/>
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_num"/>
@@ -3944,17 +3964,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </lu>
           </chunk>
         </out>
-        <choose>
-          <when>
-            <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
-            <out><b pos="1"/></out>
-          </when>
-        </choose>
         <let><var n="previous-nhead"/><lit v="NUMERAL"/></let>
       </action>
     </rule>
 
-    <rule comment="C[ST] num.cmp nom.cmp nom_head" c="1990-logu → 1990-tallet
+    <rule comment="C[ST] num.cmp nom.cmp nom_head" c="1900-áibmomediagáffe → 1990-kringkastingskaffen
                    Always definite (should not add a determiner in t4x)
                    if a_cmp is 'guio', nob.dix adds a dash">
       <pattern>
@@ -3966,7 +3980,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
-        <!-- no modify_nomcmp_nbr_art for numcmp -->
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
         <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
 
         <choose><when>
@@ -3974,13 +3988,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <let><clip pos="3" side="tl" part="nbr"/><lit-tag v="sg"/></let>
         </when></choose>
 
-        <choose><when c="Remove dash from spelled out numbers preceding non-numbers (logi-jagáš → tiåret)">
-          <test><not><equal><clip pos="1" side="sl" part="nbr"/><lit v=""/></equal></not></test>
-          <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
-        </when></choose>
-
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
-        <let><var n="defnes"/><lit-tag v="def"/></let>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -4003,6 +4011,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <lit v="$"/>
           </concat>
         </let>
+        <let><var n="defnes"/><lit-tag v="def"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
@@ -4436,7 +4445,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
 
-
         <let><var n="c_name"/><lit v="pre_"/></let>
         <let>
           <var n="pre-nom"/>
@@ -4475,7 +4483,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
-        <!-- no modify_nomcmp_nbr_art for numcmp -->
         <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
 
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
