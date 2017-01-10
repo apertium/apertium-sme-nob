@@ -831,6 +831,8 @@ SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
 
 SELECT ("mye"i) (0 ("<ollu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
 SELECT:fallback ("mange"i) (0 ("<ollu>"i)) ;
+SELECT ("mye"i) (0 ("<olu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
+SELECT:fallback ("mange"i) (0 ("<olu>"i)) ;
 
 
 SELECT ("bak"i) (0 ("<duohken>"i) LINK -1 sem_build OR sem_plc - (top)) ;
@@ -932,6 +934,10 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("oaivi"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
+
+SELECT ("tilegne"i) IF  (0 ("<oamastit>"i)) ((1 ill) OR (-1 ill)) ;
+SELECT:fallback ("eie"i) IF  (0 ("<oamastit>"i)) ;
+
 
 SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (1 cs) ;
 SELECT ("legge# opp"i) IF  (0 ("<láhčit>"i)) (1 ill) ;
@@ -1496,6 +1502,12 @@ SELECT ("adresse"i) (0 ("<čujuhus>"i) + pl);
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK -1 gen);
 SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
 
+SELECT ("tale"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i) LINK -1 loc);
+SELECT:fallback ("budskap"i) (0 ("<sáhka>"i));
+
+SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i));
+SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
+
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
@@ -1729,6 +1741,7 @@ SELECT ("slik") (0 ("<nu>"i)) ;     # Ja nu leat sii
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
+SELECT ("opp"i) (0 ("<eret>"i)) (-1 ("<cealkit>"i)) ;
 SELECT ("bort"i) (0 ("<eret>"i)) (-1 v) ;
 SELECT:fallback ("fra"i) (0 ("<eret>"i)) ;
 SELECT:fallback ("frå"i) (0 ("<eret>"i)) ;
@@ -1764,7 +1777,8 @@ SELECT ("med"i) (0 ("<mii>"i) + rel + sg + gen LINK 1 ("<bokte>"i)) ;
 SELECT ("som"i) (0 ("<mii>"i) + adv) ;
 
 SELECT ("med"i) (0 ("<bokte>"i) + po LINK -1 ("<mii>"i) + rel + sg + gen) ;
-SELECT ("ved"i) (0 ("<bokte>"i) + adv) ;
+SELECT ("ved"i) (0 ("<bokte>"i) + adv LINK -1 FIRSTNAME OR pron) ;
+SELECT:fallback ("via"i) (0 ("<bokte>"i)) ;
 
 
 
