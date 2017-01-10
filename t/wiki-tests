@@ -161,7 +161,7 @@ main () {
     cleantrg "${srclang}" "${trglang}" < "${html}" > "${trglist}"
     (
         set -o pipefail
-        if ! translate -d . "${mode}" < "${srclist}" > "${rawlist}"; then
+        if ! translate -d . "${mode}"-dgen < "${srclist}" > "${rawlist}"; then
             cat "${rawlist}" >&2
             return 1
         fi

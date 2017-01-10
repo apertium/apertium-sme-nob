@@ -14,5 +14,5 @@ if [[ ! -f ".cache/${sha}.input" ]]; then
     echo "${contents}" > ".cache/${sha}.input"
 fi
 
-make -f t/translate.make ".cache/${sha}.dgen" >&2
-cat ".cache/${sha}.dgen"
+make -f t/translate.make ".cache/${sha}.output" >&2
+cat ".cache/${sha}.output"

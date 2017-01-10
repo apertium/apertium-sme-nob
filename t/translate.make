@@ -15,7 +15,10 @@ all: .cache/.d
 
 # TODO: generate from modes.xml:
 
-.cache/%.morph: .cache/%.input sme-nob.automorf.hfst
+.cache/%.destxt: .cache/%.input
+	apertium-destxt <$< >$@
+
+.cache/%.morph: .cache/%.destxt sme-nob.automorf.hfst
 	hfst-proc --weight-classes 1 -w -p 'sme-nob.automorf.hfst' <$< >$@
 
 .cache/%.disam: .cache/%.morph sme-nob.mor.rlx.bin
@@ -47,6 +50,9 @@ all: .cache/.d
 
 .cache/%.dgen: .cache/%.postchunk sme-nob.autogen.bin
 	lt-proc -d 'sme-nob.autogen.bin' <$< >$@
+
+.cache/%.output: .cache/%.dgen
+	apertium-retxt <$< >$@
 
 # If make deletes intermediates, we lose out on fast rebuilds:
 .PRECIOUS:			\
