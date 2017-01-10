@@ -555,6 +555,10 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="cmp_plnom"/>
       <attr-item tags="cmp_sggen"/>
       <attr-item tags="cmp_sgnom"/>
+      <attr-item tags="cmp_plgen.cmp"/>
+      <attr-item tags="cmp_plnom.cmp"/>
+      <attr-item tags="cmp_sggen.cmp"/>
+      <attr-item tags="cmp_sgnom.cmp"/>
       <attr-item tags="cmp_splitr"/>
       <attr-item tags="cmp_plgen.cmp_splitr"/>
       <attr-item tags="cmp_plnom.cmp_splitr"/>
@@ -2154,13 +2158,23 @@ And then there are some categories like "month", with all the months.
       </when></choose>
     </def-macro>
 
-    <def-macro n="modify_nomcmp_nbr_art" npar="1"
+    <def-macro n="clean_cmp" npar="1"
                c="arg.1: non-final noun in a compound
                   -----
                   The sp ones in nob.dix never have defnes tags.
                   Regular nouns are always sg.ind when non-final in compounds.
                   Bidix often does not supply defnes/number, making clip fail; in that case, append to tags">
-      <choose>
+      <choose c="cmp tags">
+        <when>
+          <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp.guio"/></equal></test>
+          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
+        </when>
+        <when c="remove cmp_plgen etc">
+          <test><ends-with><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp"/></ends-with></test>
+          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp"/></let>
+        </when>
+      </choose>
+      <choose c="nbr/art tags">
         <when c="Do nothing for proper nouns">
           <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
         </when>
@@ -3912,7 +3926,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <!-- no modify_nomcmp_nbr_art for numcmp -->
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
 
         <choose><when>
           <test><equal><clip pos="3" side="tl" part="lemh"/><lit v="lohku"/></equal></test>
@@ -3943,7 +3957,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -4216,7 +4230,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
         <choose><when>
           <test><not><equal><clip pos="3" side="tl" part="gen"/><lit v=""/></equal></not></test>
           <let><var n="c_gen"/><clip pos="3" side="tl" part="gen"/></let>
@@ -4252,7 +4266,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
             <lu>
@@ -4421,7 +4435,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
         <!-- no modify_nomcmp_nbr_art for numcmp -->
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
 
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
 
@@ -4442,7 +4456,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -4719,7 +4733,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
 
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
@@ -4732,7 +4746,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -4754,8 +4768,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
 
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
@@ -4769,7 +4783,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <lit v="^"/>
@@ -4778,7 +4792,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -4830,7 +4844,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
         <out>
@@ -4850,7 +4864,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
             <b pos="1"/>
@@ -5571,7 +5585,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="1"/></call-macro>
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="2"/></call-macro>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="3"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="3"/></call-macro>
 
         <!-- most likely both ADJ and NOM are ind: -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
@@ -5611,7 +5625,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="3" side="tl" part="gen"/>
               <clip pos="3" side="tl" part="nbr"/>
               <clip pos="3" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="3" side="tl" part="a_cmp"/>
               <clip pos="3" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -5637,7 +5651,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="1"/></call-macro>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
 
         <!-- most likely both ADJ and NOM are ind: -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
@@ -5664,7 +5678,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -5690,8 +5704,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="1"/></call-macro>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="3"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="3"/></call-macro>
 
         <!-- most likely both ADJ and NOM are ind: -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
@@ -5718,7 +5732,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
               <lit v="$"/>
             <lit v="^"/>
@@ -5727,7 +5741,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="3" side="tl" part="gen"/>
               <clip pos="3" side="tl" part="nbr"/>
               <clip pos="3" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="3" side="tl" part="a_cmp"/>
               <clip pos="3" side="tl" part="lemq"/>
               <lit v="$"/>
           </concat>
@@ -5851,7 +5865,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
         <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
 
@@ -5875,7 +5889,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -5897,8 +5911,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
         <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="3"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="3"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="1"/></call-macro>
 
@@ -5922,7 +5936,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
             <lit v="^"/>
@@ -5931,7 +5945,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="3" side="tl" part="gen"/>
               <clip pos="3" side="tl" part="nbr"/>
               <clip pos="3" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="3" side="tl" part="a_cmp"/>
               <clip pos="3" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -6415,7 +6429,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
         <let>
@@ -6435,7 +6449,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -6458,7 +6472,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
 
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
@@ -6491,7 +6505,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -6518,7 +6532,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <clip pos="2" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
@@ -7074,7 +7088,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="modify_nomcmp_nbr_art"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let>
 
@@ -7088,7 +7102,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="art"/>
-              <lit-tag v="cmp"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
