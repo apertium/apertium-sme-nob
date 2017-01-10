@@ -1946,7 +1946,7 @@ And then there are some categories like "month", with all the months.
                c="arg.1: Pron (which might end up as a nob determiner)
                   -----
                   If pron is the chunk head, make sure to call this after set_caseprep!
-                  - Personal pronouns can only be nom or acc (note: ←hab→ / @-FSUBJ→ / @-FOBJ→ => nom),
+                  - Personal pronouns can only be nom or acc (note: ←hab→ / @-FSUBJ→ / @-FOBJ→ to nom),
                   - Demonstrative and indefinites can only be gen in nob,
                   - det.pos (personal genitives) have no case, but this is handled in transfer rules.">
       <choose>
@@ -2599,7 +2599,7 @@ And then there are some categories like "month", with all the months.
         </when>
 
         <when c="cmp_splitr → sg.ind.guio (split compounds)
-                 eanan-(cmp_splitr) ja luonddudoahpagiid => jord-(sg.ind) og naturfagord">
+                 eanan-(cmp_splitr) ja luonddudoahpagiid → jord-(sg.ind) og naturfagord">
           <test><ends-with><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></ends-with></test>
           <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
           <out>
@@ -2627,7 +2627,7 @@ And then there are some categories like "month", with all the months.
           </out>
         </when>
 
-        <otherwise c="Regular Noun=>Noun">
+        <otherwise c="Regular Noun to Noun">
           <let><var n="n_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
           <let><var n="c_def_pos"/><lit-tag v="3"/></let>
           <choose c="Tag cleanup first">
@@ -3607,7 +3607,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <!-- <rules: Dates (need to be before num_nom rules) -->
-    <rule comment="C[DT] month ord lex-beaivi" c="guovvamánu 17. beaivvi => 17. februar
+    <rule comment="C[DT] month ord lex-beaivi" c="guovvamánu 17. beaivvi → 17. februar
                    TODO: should we also chunk MONTH NUM DOT BEAIVI YEAR ?
                    TODO: should we always delete the genitive here?
                    TODO: do we ever want definite? ('den 17.februar')?">
@@ -3652,7 +3652,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </when></choose>
       </action>
     </rule>
-    <rule comment="C[T] lex-diibmu num" c="diibmu 11.00 => klokken 11.00">
+    <rule comment="C[T] lex-diibmu num" c="diibmu 11.00 → klokken 11.00">
       <pattern>
         <pattern-item n="lex-diibmu"/>
         <pattern-item n="num"/>
@@ -3695,7 +3695,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
-    <rule comment="C[T] num-year season" c="1990 giđa => våren 1990
+    <rule comment="C[T] num-year season" c="1990 giđa → våren 1990
                    Always definite (should not add a determiner in t4x)
                    Removes genitive from season (selected by numeral)
 
@@ -3776,7 +3776,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </choose>
       </action>
     </rule>
-    <rule comment="C[T] num.cmp nom_head" c="1990-logu => 1990-tallet
+    <rule comment="C[T] num.cmp nom_head" c="1990-logu → 1990-tallet
                    Always definite (should not add a determiner in t4x)
                    if a_cmp is 'guio', nob.dix adds a dash">
       <pattern>
@@ -3899,7 +3899,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[ST] num.cmp nom.cmp nom_head" c="1990-logu => 1990-tallet
+    <rule comment="C[ST] num.cmp nom.cmp nom_head" c="1990-logu → 1990-tallet
                    Always definite (should not add a determiner in t4x)
                    if a_cmp is 'guio', nob.dix adds a dash">
       <pattern>
@@ -4080,7 +4080,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
-    <rule comment="C[T] nom.prop_attr nom.prop.antcog" c="(šattai) Prinsa Harald (Ruvdnaprinsan) => (ble) Prins Harald (kronprins) Uses NOM.PROP gender if possible as chunk gender.">
+    <rule comment="C[T] nom.prop_attr nom.prop.antcog" c="(šattai) Prinsa Harald (Ruvdnaprinsan) → (ble) Prins Harald (kronprins) Uses NOM.PROP gender if possible as chunk gender.">
       <pattern>
         <pattern-item n="nom.prop_attr"/>
         <pattern-item n="nom.prop.antcog"/>
@@ -4205,7 +4205,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[TV] nom.cmp nom.prop_attr nom.prop.antcog" c="Ruvdnaprinsa Harald => Kronprins Harald
+    <rule comment="C[TV] nom.cmp nom.prop_attr nom.prop.antcog" c="Ruvdnaprinsa Harald → Kronprins Harald
                    Uses NOM.PROP gender if possible as chunk gender.">
       <pattern>
         <pattern-item n="nom.cmp"/>
@@ -4548,7 +4548,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
     <rule comment="C[] NUM_MOD DET_MOD ADJ_ATTR NOM
                    -----
-                   máŋggain eará smávit fatnasiiguin => med de mange andre mindre båtene">
+                   máŋggain eará smávit fatnasiiguin → med de mange andre mindre båtene">
       <pattern>
         <pattern-item n="num_mod"/>
         <pattern-item n="det_mod"/>
@@ -4674,7 +4674,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] ADJ.CMP NOM
                    -----
-                   allaskuvla => høyskole
+                   allaskuvla → høyskole
                    Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="adj.cmp"/>
@@ -4709,7 +4709,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] NOM.CMP NOM
                    -----
-                   politiijastašuvnna => politistasjon(s)
+                   politiijastašuvnna → politistasjon(s)
                    Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="nom.cmp"/>
@@ -4743,7 +4743,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] NOM.CMP NOM.CMP NOM
                    -----
-                   Ruvdnaprinsabáras => Kronprinsparet
+                   Ruvdnaprinsabáras → Kronprinsparet
                    Moves syn_label from first CMP to NOM">
       <pattern>
         <pattern-item n="nom.cmp"/>
@@ -4789,8 +4789,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] CMP NOM
                    -----
-                   vuođđofága => grunnfag
-                   mielbargin => som medarbeider
+                   vuođđofága → grunnfag
+                   mielbargin → som medarbeider
                    Words which only appear as compound parts should be fully specified in bidix.
                    Moves syn_label from CMP to NOM">
       <pattern>
@@ -4820,7 +4820,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] NOM.CMP ADJ
                    -----
-                   sámegiel => samespråklig
+                   sámegiel → samespråklig
                    Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="nom.cmp"/>
@@ -4871,7 +4871,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     <!-- <rules: Lone determiners, pronouns, adverbs -->
 
     <!-- <rules: Lone determiners, pronouns, adverbs -->
-    <rule comment="C[] PRN-NONREFERENTIAL ii goabbáge => ingen av dem
+    <rule comment="C[] PRN-NONREFERENTIAL ii goabbáge → ingen av dem
                    Like DET rule, but force nt sg">
       <pattern>
         <pattern-item n="neg-verb"/>
@@ -4949,7 +4949,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
 
-    <rule comment="C[] PRN-NONREFERENTIAL maidege => noe
+    <rule comment="C[] PRN-NONREFERENTIAL maidege → noe
                    Like DET rule, but force nt sg">
       <pattern>
         <pattern-item n="prn-nonreferential"/>
@@ -5024,8 +5024,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
-    <rule comment="C[] DET dán => dette
-                              munno [geažil] => [på grunn av] oss to">
+    <rule comment="C[] DET dán → dette
+                              munno [geažil] → [på grunn av] oss to">
       <pattern>
         <pattern-item n="det"/>
       </pattern>
@@ -5067,7 +5067,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[] RELATIVE_PRONOUN gii => som
+    <rule comment="C[] RELATIVE_PRONOUN gii → som
                    Just removes everything.
                    (Should we call the chunk something else maybe?)">
       <pattern>
@@ -5094,7 +5094,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[] REFLEXIVE_PRONOUN ieš => seg / h*n
+    <rule comment="C[] REFLEXIVE_PRONOUN ieš → seg / h*n
                    Just removes everything from normal reflexives,
                    changes @-FOBJ→ reflexives into personal pronouns with GD + nom
                    Does not match genitive reflexives (treated as det.pos)
@@ -5252,10 +5252,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] PERSONAL_PRONOUN REFLEXIVE_PRONOUN
-                   (Jus in livčče) mun ieš => (Hvis jeg ikke kan være) meg.acc selv
+                   (Jus in livčče) mun ieš → (Hvis jeg ikke kan være) meg.acc selv
                    Changes prpers case to accusative.
                    TODO: Does it put acc on too much? E.g.
-                   moai ieža vel válljejetne => vi_to.nom selv (vi_to velger)">
+                   moai ieža vel válljejetne → vi_to.nom selv (vi_to velger)">
       <pattern>
         <pattern-item n="prn.pers"/>
         <pattern-item n="prn.ref_PRONl"/>
@@ -5316,7 +5316,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
 
 
-    <rule comment="C[] INTERROGATIVE_PRONOUN mii => hva">
+    <rule comment="C[] INTERROGATIVE_PRONOUN mii → hva">
       <pattern>
         <pattern-item n="prnitg"/>
       </pattern>
@@ -5386,8 +5386,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] ADJ
                    -----
-                   dehálaš => viktig, deháleamos => viktigst
-                   bassivuođa => det hellige">
+                   dehálaš → viktig, deháleamos → viktigst
+                   bassivuođa → det hellige">
       <pattern>
         <pattern-item n="adj"/>
       </pattern>
@@ -5399,7 +5399,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
         <choose>
-          <when c="Lene added this: guovdageaidnulaš => kautokeinoværing">
+          <when c="Lene added this: guovdageaidnulaš → kautokeinoværing">
             <test><equal><clip pos="1" side="tl" part="a_nom_all"/><lit-tag v="n"/></equal></test>
             <let><var n="defnes"/><lit-tag v="ind"/></let>
         <let><var n="c_name"/><lit v=""/></let>
@@ -5464,8 +5464,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] ADJ_ATTR NOM
                    -----
-                   almmolaš bálvalusaide => til offentlige tjenester
-                   almmolaš bálvalus => (den) offentlige tjenesten">
+                   almmolaš bálvalusaide → til offentlige tjenester
+                   almmolaš bálvalus → (den) offentlige tjenesten">
       <pattern>
         <pattern-item n="adj_attr"/>
         <pattern-item n="nom_head"/>
@@ -5503,8 +5503,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] ADJ_ATTR ADJ_ATTR NOM
                    -----
-                   ođđa almmolaš bálvalusaide => til nye offentlige tjenester
-                   ođđa almmolaš bálvalus => (den) nye offentlige tjenesten">
+                   ođđa almmolaš bálvalusaide → til nye offentlige tjenester
+                   ođđa almmolaš bálvalus → (den) nye offentlige tjenesten">
       <pattern>
         <pattern-item n="adj_attr"/>
         <pattern-item n="adj_attr"/>
@@ -5557,7 +5557,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] ADJ_ATTR ADJ_ATTR NOM.CMP NOM
                    -----
-                   ođđa digitála heahtefierpmádat => det nye digitale nødnettverket
+                   ođđa digitála heahtefierpmádat → det nye digitale nødnettverket
                    TODO: epenthesis!
                    Moves syn_label from CMP to NOM">
       <pattern>
@@ -5626,7 +5626,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] ADJ_ATTR NOM.CMP NOM
                    -----
-                   duiska okkupašuvdnafápmu => tysk okkupasjonsmakt
+                   duiska okkupašuvdnafápmu → tysk okkupasjonsmakt
                    Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="adj_attr"/>
@@ -5678,7 +5678,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] ADJ_ATTR NOM.CMP NOM.CMP NOM
                    -----
-                   Dalá Ruvdnaprinsabáras => Daværende Kronprinsparet
+                   Dalá Ruvdnaprinsabáras → Daværende Kronprinsparet
                    Moves syn_label from CMP to NOM">
       <pattern>
         <pattern-item n="adj_attr"/>
@@ -5786,14 +5786,14 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
     <rule comment="C[] DET NOM
-                   du bávččas => din smerte
-                   eará sámi => annen same">
+                   du bávččas → din smerte
+                   eará sámi → annen same">
       <pattern>
         <pattern-item n="det_mod"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
-        <!-- TODO earáin ruovttusiidduide => av_andre til_hjemmesidene: -->
+        <!-- TODO earáin ruovttusiidduide → av_andre til_hjemmesidene: -->
         <!-- <exception><test><not><equal><clip pos="1" side="sl" part="case"/><clip pos="2" side="sl" part="case"/></equal></not></test></exception> -->
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
@@ -5840,7 +5840,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] DET NOM.CMP NOM
-                   eará skuvlamánáin => andre skolebarnene">
+                   eará skuvlamánáin → andre skolebarnene">
       <pattern>
         <pattern-item n="det_mod"/>
         <pattern-item n="nom.cmp"/>
@@ -5885,7 +5885,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] DET NOM.CMP NOM.CMP NOM
-                   du idjabeavdeskuffas => i din nattbordskuff">
+                   du idjabeavdeskuffas → i din nattbordskuff">
       <pattern>
         <pattern-item n="det_mod"/>
         <pattern-item n="nom.cmp"/>
@@ -5941,11 +5941,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] DET ADJ.CMP NOM
-                   min nuoramus bártni => til vår yngste gutt
-                   min nuoramus olbmot => våre yngste mennesker
-                   du deháleamos doaibma => din viktigste oppgave
-                   mu stuora givssi => til min store plage
-                   juohke lágán geđggiiguin => med alle slags steiner
+                   min nuoramus bártni → til vår yngste gutt
+                   min nuoramus olbmot → våre yngste mennesker
+                   du deháleamos doaibma → din viktigste oppgave
+                   mu stuora givssi → til min store plage
+                   juohke lágán geđggiiguin → med alle slags steiner
                    TODO: demonstrative 'denne viktige oppgaven' (def!)">
       <pattern>
         <pattern-item n="det_mod"/>
@@ -5994,11 +5994,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
 
     <rule comment="C[] DET ADJ_ATTR NOM
-                   min nuoramus bártni => til vår yngste gutt
-                   min nuoramus olbmot => våre yngste mennesker
-                   du deháleamos doaibma => din viktigste oppgave
-                   mu stuora givssi => til min store plage
-                   juohke lágán geđggiiguin => med alle slags steiner
+                   min nuoramus bártni → til vår yngste gutt
+                   min nuoramus olbmot → våre yngste mennesker
+                   du deháleamos doaibma → din viktigste oppgave
+                   mu stuora givssi → til min store plage
+                   juohke lágán geđggiiguin → med alle slags steiner
                    TODO: demonstrative 'denne viktige oppgaven' (def!)">
       <pattern>
         <pattern-item n="det_mod"/>
@@ -6047,7 +6047,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] NOM.GEN DET ADJ_ATTR NOM
                    -----
-                   riikka nubbi davvisámegiel namma => landets andre nordsamiske navn
+                   riikka nubbi davvisámegiel namma → landets andre nordsamiske navn
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.
                    Ensure det is definite (using clip, only sets if it has a defnes tag).">
       <pattern>
@@ -6119,7 +6119,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] ADJ_ATTR NOM.GEN NOM
                    -----
-                   aktonas mánáid gatnjaliiguin => ensomme barns tårer
+                   aktonas mánáid gatnjaliiguin → ensomme barns tårer
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
         <pattern-item n="adj_attr"/>
@@ -6190,7 +6190,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] ADJ_ATTR NOM.GEN ADJ_ATTR NOM
                    -----
-                   Son lea nuorra Ristena boares biilla siste. => Han/Hun er i unge Ristens gamle bilen.
+                   Son lea nuorra Ristena boares biilla siste. → Han/Hun er i unge Ristens gamle bilen.
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
         <pattern-item n="adj_attr"/>
@@ -6592,7 +6592,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] DET NOM.GEN NOM
                    -----
-                   dán jagi válggas => dette år(et)s valg
+                   dán jagi válggas → dette år(et)s valg
                    Sets defnes of possessor NOM.GEN based on DET, defnes of possessed NOM is ind.">
       <pattern>
         <pattern-item n="det_mod"/>
@@ -6774,7 +6774,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] NOM.GEN NOM.GEN NOM
                    -----
-                   dáčča skuvlla kopija => kopi av den norske skolen
+                   dáčča skuvlla kopija → kopi av den norske skolen
                    Outputs _two chunks_, head noun first.">
       <pattern>
         <pattern-item n="nom.gen"/>
@@ -6939,7 +6939,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] ADJ_ATTR NOM.GEN NOM.GEN NOM
                    -----
-                   dábálaš dáčča skuvlla kopija => kopi av den vanlige norske skolen
+                   dábálaš dáčča skuvlla kopija → kopi av den vanlige norske skolen
                    Outputs _two chunks_, head noun first.">
       <pattern>
         <pattern-item n="adj_attr"/>
@@ -7109,9 +7109,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     <rule comment="C[] VERB (tl: VERB, ADV, ADJ, NOUN)
                    See out_verb macro.
                    -----
-                   oažžun => fående (adj.pprs, using fallback rule)
-                   ii => adv.p3.sg{ikke}
-                   Itgo => adv.p2.sg.qst{ikke}">
+                   oažžun → fående (adj.pprs, using fallback rule)
+                   ii → adv.p3.sg{ikke}
+                   Itgo → adv.p2.sg.qst{ikke}">
       <pattern>
         <pattern-item n="vblex"/>
       </pattern>
@@ -7124,7 +7124,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[] nom.cmp vblex" c="skuvlavázzima => skolegående
+    <rule comment="C[] nom.cmp vblex" c="skuvlavázzima → skolegående
                    (should be 'skolegang', but if it's not in bidix, adj.pprs is the best we can do)">
       <pattern>
         <pattern-item n="nom.cmp"/>
@@ -7159,7 +7159,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <!-- <rules: NOM/PRN V.ACTIO NOM -->
-    <rule comment="C[] prn.pers.gen vblex.actio nom_head" c="du čállin reivve => brevet som du hadde skrevet
+    <rule comment="C[] prn.pers.gen vblex.actio nom_head" c="du čállin reivve → brevet som du hadde skrevet
                    The Agent Construction.
 TODO! We make several chunks, should be possible to handle in interchunk like
    other relative clauses; perhaps we could make t2x relative chunking rules.
@@ -7235,7 +7235,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
         <call-macro n="out_verb"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-    <rule comment="C[AT] nom.gen vblex.actio nom_head" c="irggi čállin reivve => brevet som kjæresten hadde skrevet
+    <rule comment="C[AT] nom.gen vblex.actio nom_head" c="irggi čállin reivve → brevet som kjæresten hadde skrevet
                    The Agent Construction. See above rule.">
       <pattern>
         <pattern-item n="nom.gen"/>
@@ -7464,7 +7464,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
         </choose>
       </action>
     </rule>
-    <rule comment="C[] adverb PcleQst" c="guhká go => hvor lenge
+    <rule comment="C[] adverb PcleQst" c="guhká go → hvor lenge
                                           Since we match on chunk lemma 'adv' in t3x, even two-lu chunks
                                           here are named 'adv' (no postchunking rules, so that's OK).
 
@@ -7493,7 +7493,7 @@ TODO: this should be an mwe in the analyser.">
       </action>
     </rule>
 
-    <rule comment="C[] Pcle" c="ba => engang">
+    <rule comment="C[] Pcle" c="ba → engang">
       <pattern>
         <pattern-item n="Pcle"/>
       </pattern>
