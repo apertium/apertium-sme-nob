@@ -6227,8 +6227,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <test><equal><clip pos="2" side="tl" part="a_adj"/><lit v=""/></equal></test>
             <let><var n="defnes"/><lit-tag v="def"/></let>
           </when>
-          <otherwise c="Use defnes of previous word">
-          </otherwise>
+          <!-- <otherwise c="Use defnes of previous word"> -->
+          <!-- </otherwise> -->
         </choose>
         <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="3"/></call-macro>
         <append n="pre-nom"><b pos="3"/></append>
