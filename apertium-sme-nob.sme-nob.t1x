@@ -1106,6 +1106,15 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_hum_lang_time&gt;"/>
       <list-item v="&lt;sem_lang_tool&gt;"/>
     </def-list>
+
+
+    <def-list n="sem_domain">
+      <list-item v="&lt;sem_domain&gt;"/>
+      <list-item v="&lt;sem_domain_food-med&gt;"/>
+      <list-item v="&lt;sem_domain_prod-audio&gt;"/>
+    </def-list>
+
+
     <def-list n="sem_txt">
       <list-item v="&lt;sem_ani_build_hum_txt&gt;"/>
       <list-item v="&lt;sem_ani_plc_txt&gt;"/>
@@ -1316,6 +1325,9 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="ill-med-verbs" c="See 'ill-NIL-verbs' above.">
       <list-item v="duhtat"/>
+    </def-list>
+    <def-list n="ill-i-verbs" c="See 'ill-NIL-verbs' above.">
+      <list-item v="álgit"/>
     </def-list>
     <def-list n="ill-på-verbs" c="See 'ill-NIL-verbs' above.
                                   Speech verbs, emotional(?) verbs">
@@ -1685,6 +1697,7 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_domain"/></in>
                 <and>
                   <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                   <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
@@ -1814,9 +1827,12 @@ And then there are some categories like "month", with all the months.
             <let>
               <var n="caseprep"/><lit v="på"/>
             </let>
-          </when></choose>
-          <choose><when>
-            <test><in><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in></test>
+          </when>
+          <when>
+            <test><or>
+            <in><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
+            <in><var n="main-verb-lemma"/><list n="ill-i-verbs"/></in>
+            </or></test>
             <let>
               <var n="caseprep"/><lit v="i"/>
             </let>
@@ -2646,6 +2662,10 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-på-verbs"/></in></test>
           <let><var n="caseprep"/><lit-tag v="ill-på"/></let>
         </when>
+<!--        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-i-verbs"/></in></test>
+          <let><var n="caseprep"/><lit-tag v="ill-i"/></let>
+        </when> -->
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-med-verbs"/></in></test>
           <let><var n="caseprep"/><lit-tag v="ill-med"/></let>

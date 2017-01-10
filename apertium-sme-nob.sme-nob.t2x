@@ -499,6 +499,13 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </when>
         <when>
           <test><and>
+            <equal><var n="caseprep_verb"/><lit-tag v="ill-i"/></equal>
+            <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
+          </and></test>
+          <let><var n="tmp"/><lit v="i"/></let>
+        </when>
+        <when>
+          <test><and>
             <equal><var n="caseprep_verb"/><lit-tag v="ill-med"/></equal>
             <equal><clip pos="1" part="case"/><lit-tag v="ill"/></equal>
           </and></test>
