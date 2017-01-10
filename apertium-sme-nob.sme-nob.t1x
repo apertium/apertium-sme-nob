@@ -2254,17 +2254,15 @@ And then there are some categories like "month", with all the months.
           <let><var n="defnes"/><lit-tag v="def"/></let>
         </when>
         <when>
-          <test>
-          <and>
-          <or>
-            <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="ord.pst"/></equal>
-            <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal>
-            <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
-          </or>
+          <test><and>
+            <or>
+              <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="ord.pst"/></equal>
+              <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal>
+              <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+            </or>
             <not><equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal></not>
             <not><ends-with><clip pos="2" side="tl" part="lemh"/><lit v="og en halv"/></ends-with></not>
-          </and>
-          </test>
+          </and></test>
           <let><var n="defnes"/><lit-tag v="def"/></let>
         </when>
         <when>  <!-- Lene changed the order of these two whens, and tried to avoid overlap. -->
@@ -2413,6 +2411,53 @@ And then there are some categories like "month", with all the months.
     </def-macro>
 
 
+    <def-macro n="append_pre-nom" npar="2"
+               c="arg.1: nom head, arg.2: pre-nom (e.g. genitive-noun, adj)
+                  -----
+                  Appends arg2 to the pre-nom variable.
+                  Assumes defnes has been set!
+                  Assumes the space is appended inside the rule!
+                  -----
+                  TODO: The other possible tl PoS'es">
+      <choose>
+        <when c="Adjective, e.g. sápmi.n.sg.gen → samisk.adj">
+          <test><not><equal><clip pos="2" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
+          <call-macro n="modify_adj_gen_nbr"><with-param pos="1"/><with-param pos="2"/></call-macro>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="defnes"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+        </when>
+        <otherwise c="Noun">
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="defnes"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+
+          <!-- for possessed NOM -->
+        </otherwise>
+      </choose>
+    </def-macro>
+
+
     <!-- Output macros: -->
     <def-macro n="out_nom" npar="1"
                c="arg.1: noun
@@ -2428,11 +2473,19 @@ And then there are some categories like "month", with all the months.
 
       <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
       <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
-      <choose><when c="add sg to essive">
-      <test>
-      <equal><clip pos="1" side="tl" part="case"/><lit-tag v="ess"/></equal></test>
-      <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="a_nom_all"/>
-      <clip pos="1" side="tl" part="gen"/><lit-tag v="sg"/></concat></let></when></choose>
+      <choose>
+        <when c="add sg to essive">
+          <test><equal><clip pos="1" side="tl" part="case"/><lit-tag v="ess"/></equal></test>
+          <let>
+            <clip pos="1" side="tl" part="tags"/>
+            <concat>
+              <clip pos="1" side="tl" part="a_nom_all"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+            </concat>
+          </let>
+        </when>
+      </choose>
 
       <append n="c_name"><lit v="nom"/></append>
 
@@ -6076,9 +6129,12 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
+
+        <!-- for ADJ_ATTR -->
+        <let><var n="defnes"/><lit-tag v="def"/></let>
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
 
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
@@ -6087,71 +6143,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <let><var n="defnes"/><lit v=""/></let>
           <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
         </when></choose>
-         <choose>
-          <when c="Lene: for sápmi.n.sg.gen samisk.adj">
-            <!-- TODO: def-macro set_pre-nom -->
-            <test>
-            <equal><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></equal></test>
-            <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-            <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-            <let>
-              <var n="pre-nom"/>
-              <concat>
-                <lit v="^"/>
-                  <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adj"/>
-                  <clip pos="1" side="tl" part="grau"/>
-                  <clip pos="3" side="tl" part="gen"/>
-                  <clip pos="3" side="tl" part="nbr"/>
-                  <lit-tag v="3"/>
-                  <clip pos="1" side="tl" part="lemq"/>
-                <lit v="$"/>
-                <b pos="1"/>
-                <lit v="^"/>
-                  <clip pos="2" side="tl" part="lemh"/>
-                  <clip pos="2" side="tl" part="a_adj"/>
-                  <clip pos="2" side="tl" part="grau"/>
-                  <clip pos="3" side="tl" part="gen"/>
-                  <clip pos="3" side="tl" part="nbr"/>
-                  <lit-tag v="ind"/>
-                  <clip pos="2" side="tl" part="lemq"/>
-                <lit v="$"/>
-                <b pos="2"/>
-              </concat>
-            </let>
-          </when>
-        <otherwise>
-       <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adj"/>
-              <clip pos="1" side="tl" part="grau"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <lit-tag v="def"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-            <lit v="^"/>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <var n="defnes"/>
-              <clip pos="2" side="tl" part="gen-case"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="2"/>
-          </concat>
-        </let>
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
 
-        <!-- for possessed NOM -->
-        </otherwise>
-        </choose>
+        <!-- for NOM_HEAD -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
-        
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
