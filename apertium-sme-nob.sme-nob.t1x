@@ -559,22 +559,13 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="cmp"/>
       <attr-item tags="guio"/>
       <attr-item tags="cmp.guio"/>
+      <attr-item tags="cmp_splitr"/>
+    </def-attr>
+    <def-attr n="a_cmp_nbrcas">
       <attr-item tags="cmp_plgen"/>
       <attr-item tags="cmp_plnom"/>
       <attr-item tags="cmp_sggen"/>
       <attr-item tags="cmp_sgnom"/>
-      <attr-item tags="cmp_plgen.cmp"/>
-      <attr-item tags="cmp_plnom.cmp"/>
-      <attr-item tags="cmp_sggen.cmp"/>
-      <attr-item tags="cmp_sgnom.cmp"/>
-      <attr-item tags="cmp_splitr"/>
-      <attr-item tags="cmp_plgen.cmp_splitr"/>
-      <attr-item tags="cmp_plnom.cmp_splitr"/>
-      <attr-item tags="cmp_sggen.cmp_splitr"/>
-      <attr-item tags="cmp_sgnom.cmp_splitr"/>
-    </def-attr>
-    <def-attr n="a_cmp_splitr">
-      <attr-item tags="cmp_splitr"/>
     </def-attr>
     <def-attr n="a_prn">
       <attr-item tags="prn"/>
@@ -2179,20 +2170,13 @@ And then there are some categories like "month", with all the months.
         <when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
           <test><and>
             <equal><clip pos="1" side="sl" part="a_num"/><lit-tag v="num"/></equal>
-            <or>
-              <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_sgnom.cmp_splitr"/></equal>
-              <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_sggen.cmp_splitr"/></equal>
-            </or>
+            <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal>
           </and></test>
           <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
         </when>
         <when>
           <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp.guio"/></equal></test>
           <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
-        </when>
-        <when c="remove cmp_plgen etc">
-          <test><ends-with><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp"/></ends-with></test>
-          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp"/></let>
         </when>
       </choose>
       <choose c="nbr/art tags">
@@ -2635,7 +2619,7 @@ And then there are some categories like "month", with all the months.
 
         <when c="cmp_splitr → sg.ind.guio (split compounds)
                  eanan-(cmp_splitr) ja luonddudoahpagiid → jord-(sg.ind) og naturfagord">
-          <test><equal><clip pos="1" side="sl" part="a_cmp_splitr"/><lit-tag v="cmp_splitr"/></equal></test>
+          <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal></test>
           <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
           <out>
             <chunk namefrom="c_name" case="caseFirstWord">
@@ -3927,7 +3911,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <choose>
           <when>
             <test><or>
-              <equal><clip pos="1" side="sl" part="a_cmp_splitr"/><lit-tag v="cmp_splitr"/></equal>
+              <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal>
               <not><equal><b pos="1"/><lit v=" "/></equal></not>
             </or></test>
             <let><var n="blank"/><b pos="1"/></let>
