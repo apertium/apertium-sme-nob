@@ -2213,9 +2213,9 @@ And then there are some categories like "month", with all the months.
                   Adjectives given to this macro will be (predicative and) indefinite
                    (or do we ever get 'det er den røde.Def' here?)">
       <let><var n="defnes"/><lit-tag v="ind"/></let>
-      <choose>
-        <when>
-          <test><and>
+      <choose><when c="definite if this all matches:">
+        <test>
+          <and>
             <not><equal><clip pos="1" side="sl" part="a_acr"/><lit-tag v="acr"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="ext"/><lit-tag v="←ext→"/></equal></not> <!-- Lene added -->
@@ -2253,11 +2253,10 @@ And then there are some categories like "month", with all the months.
                 <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></not>
               </and>
             </or>
-            </and>
-          </test>
-          <let><var n="defnes"/><lit-tag v="def"/></let>
-        </when>
-      </choose>
+          </and>
+        </test>
+        <let><var n="defnes"/><lit-tag v="def"/></let>
+      </when></choose>
     </def-macro>
 
     <def-macro n="set_defnes2" npar="2"
