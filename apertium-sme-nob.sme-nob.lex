@@ -1682,7 +1682,7 @@ SELECT ("i henhold til"i) (0 ("<olis>"i)) ;
 
 SELECT ("den"i nt) (0 ("<dat>"i) LINK 1 ("<leat>"i)) ;
 
-SELECT:fallback ("den"i m) (0 ("<dat>"i)) ;
+SELECT:fallback ("den"i nt) (0 ("<dat>"i)) ;
 
 SELECT ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
 SELECT:ge-man ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 pcle) (-2 tv + FMAINV) (1 a) ; # mihtidit ge man mávssolaččat sámi aviissat leat …
