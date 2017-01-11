@@ -1049,6 +1049,7 @@ SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-
 
 
 SELECT ("si"i) (0 ("<lohkat>"i))(-1 COMMA)(*1 (@←SUBJ) BARRIER VFIN);
+SELECT ("si"i) (0 ("<lohkat>"i))(-1 (@SUBJ→) LINK -1 COMMA);
 ## Dat lea duohta, lohká Trond.
 
 SELECT ("telle"i) (0 ("<lohkat>"i))
