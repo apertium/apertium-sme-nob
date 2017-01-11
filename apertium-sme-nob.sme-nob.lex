@@ -69,24 +69,24 @@ LIST prop = prop ;
 #!! * Sets for Semantic tags
 # -------------
 
-LIST sem_ani = sem_ani ;
+LIST sem_ani = np.sem_ani sem_ani sem_ani_body-abstr_hum sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_ani_group sem_ani_group_hum sem_ani_hum sem_ani_hum_plc sem_ani_hum_time sem_ani_plc sem_ani_plc_txt sem_ani_time sem_ani_veh ;
 LIST sem_build = sem_amount_build sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_build sem_build_event_org sem_build_obj sem_build-part sem_build-part_plc sem_build_build-part sem_build_clth-part sem_build_edu_org sem_build_event_org sem_build_org sem_build_route  ;
 LIST sem_date = sem_date ;
-LIST sem_edu = sem_edu ;
+LIST sem_edu = sem_edu sem_build_edu_org sem_edu_event sem_edu_group_hum sem_edu_mat sem_edu_org ;
 LIST sem_fem = sem_fem (ant f) ;
-LIST sem_clth = sem_clth ;
-LIST sem_group = sem_group ;
+LIST sem_clth = sem_body_clth sem_build_clth-part sem_clth sem_clth-jewl sem_clth-jewl_curr sem_clth-jewl_money sem_clth-jewl_org sem_clth-jewl_plant sem_clth-part sem_clth_hum ;
+LIST sem_group = sem_act_group sem_ani_group sem_ani_group_hum sem_body_group_hum sem_body_group_hum_time sem_edu_group_hum sem_group sem_group_hum sem_group_hum_org sem_group_hum_plc sem_group_hum_prod-vis sem_group_org sem_group_sign sem_group_txt ;
 LIST sem_hum = sem_ani_body-abstr_hum sem_ani_build_hum_txt sem_ani_group_hum sem_ani_hum sem_ani_hum_plc sem_ani_hum_time sem_aniprod_hum sem_body_group_hum sem_body_group_hum_time sem_body_hum sem_clth_hum sem_edu_group_hum sem_event_hum sem_feat-psych_hum sem_group_hum sem_group_hum_org sem_group_hum_plc sem_group_hum_prod-vis sem_hum sem_hum-abstr sem_hum_lang sem_hum_lang_plc sem_hum_lang_time sem_hum_obj sem_hum_org sem_hum_plant sem_hum_plc sem_hum_tool sem_hum_veh sem_hum_wthr  ;
 LIST sem_mal = sem_mal (ant m) ;
-LIST sem_measr = sem_measr ;
+LIST sem_measr = sem_body_measr sem_measr sem_measr_sign sem_measr_time ;
 LIST sem_money = sem_money ;
-LIST sem_obj = sem_obj ;
+LIST sem_obj = sem_aniprod_obj-clo sem_body_obj_tool-catch sem_build_obj sem_game_obj-play sem_geom_obj sem_hum_obj sem_money_obj sem_obj sem_obj-clo sem_obj-cogn sem_obj-el sem_obj-ling sem_obj-play sem_obj-play_sport sem_obj-rope sem_obj-surfc sem_obj_semcon sem_obj_state ;
 LIST sem_org = np.sem_org sem_build_event_org sem_build_edu_org sem_build_event_org sem_build_org sem_clth-jewl_org sem_ctain-abstr_org sem_curr_org sem_dance_org sem_edu_org sem_group_hum_org sem_group_org sem_hum_org sem_org sem_org_prod-cogn sem_org_rule sem_org_txt sem_org_veh sem_org  ;
 LIST sem_plc = sem_act_plc sem_ani_hum_plc sem_ani_plc sem_ani_plc_txt sem_aniprod_plc sem_body_plc sem_build-part_plc sem_event_plc sem_event_plc-elevate sem_feat-measr_plc sem_group_hum_plc sem_hum_lang_plc sem_hum_plc sem_plc sem_plc-abstr sem_plc-abstr_rel_state sem_plc-abstr_route sem_plc-elevate sem_plc-line sem_plc-water sem_plc_pos sem_plc_route sem_plc_state sem_plc_substnc sem_plc_substnc_wthr sem_plc_time sem_plc_tool-catch sem_plc_wthr sem_plc top ;
 LIST sem_sur = sem_sur ;
-LIST sem_time = sem_time ;
+LIST sem_time = sem_time sem_ani_hum_time sem_ani_time sem_body_group_hum_time sem_body_time sem_event_time sem_hum_lang_time sem_measr_time sem_plc_time sem_time_wthr ;
 LIST sem_year = sem_year ;
-LIST sem_txt = sem_txt ;
+LIST sem_txt = sem_txt sem_ani_build_hum_txt sem_ani_plc_txt sem_group_txt sem_mat_txt sem_money_txt sem_org_txt sem_prod-audio_txt sem_prod-cogn_txt sem_semcon_txt sem_txt ;
 
 SET FIRSTNAME = (np ant f) OR (np ant m) OR (prop sem_fem) OR (prop sem_mal) ;
 
@@ -117,12 +117,6 @@ LIST pl = pl ;
 LIST rcmpnd = rcmpnd ;
 
 LIST cmpnd = cmp ;
-
-LIST sgnomcmp = sgnomcmp ;
-
-LIST sggencmp = sggencmp ;
-
-LIST shcmp = shcmp ;
 
 LIST px1sg = px1sg ;
 LIST px2sg = px2sg ;
@@ -1066,6 +1060,7 @@ SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i))(0 sg3);
 ## Mo manná dál?
 #SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>"i) OR ("<dat>"i));
 ## Mun manan dál.
+SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 sem_time + SUBJ BARRIER SV-BOUNDARY);
 SELECT:fallback ("dra"i) (0 ("<mannat>"i));
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR sem_org LINK 0 (@SUBJ→)) ;
@@ -1512,6 +1507,8 @@ SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
+SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
+SELECT:fallback ("grunn"i) (0 ("<sivva>"i));
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
@@ -1619,7 +1616,6 @@ SELECT:fallback ("agn"i) (0 ("<seakti>"i));
 SELECT:fallback ("frø"i) (0 ("<siepman>"i));
 SELECT:fallback ("hjem"i) (0 ("<siida>"i));
 SELECT:fallback ("skoletur"i) (0 ("<skuvlamátki>"i));
-SELECT:fallback ("grunn"i) (0 ("<sivva>"i));
 SELECT:fallback ("trekk"i) (0 ("<skoađas>"i));
 SELECT:fallback ("blankett"i) (0 ("<skovvi>"i));
 SELECT:fallback ("gris"i) (0 ("<spiidni>"i));
@@ -1683,6 +1679,8 @@ SELECT ("i henhold til"i) (0 ("<olis>"i)) ;
 
 # Pronouns, relativisers, conjuctions
 # ==========================
+
+SELECT ("den"i nt) (0 ("<dat>"i) LINK 1 ("<leat>"i)) ;
 
 SELECT:fallback ("den"i m) (0 ("<dat>"i)) ;
 

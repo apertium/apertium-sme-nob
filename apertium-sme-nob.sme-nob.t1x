@@ -88,6 +88,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="num.*.@HNOUN"/> <!-- HNOUN=syntax couldn't find a head; might still be a modifier -->
       <cat-item tags="num.*.@→N"/>
       <cat-item tags="num.*.@→A"/>
+      <cat-item tags="num.*.@←SUBJ"/>
     </def-cat>
     <def-cat n="num">
       <cat-item tags="num.*"/>
@@ -4666,6 +4667,115 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
+ 
+    <rule comment="C[] num_mod det_mod  nom_head
+                   -----
+                   čieža eará boazoeaiggádat ">
+      <pattern>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="det_mod"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_prn_case"><with-param pos="2"/></call-macro>
+        <call-macro n="set_prn_gen_nbr_art2"><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_det"/>
+              <var n="prn_gen"/>
+              <var n="prn_nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+          </concat>
+        </let>
+        <let><clip pos="2" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
+        <choose><when>
+          <test><and>
+            <not><equal><clip pos="3" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not>
+            <not><equal><clip pos="3" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+          </and></test>
+          <let><clip pos="3" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        </when></choose>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="C[] det_mod det_mod  nom_head
+                   -----
+                   dat eará boazoeaiggádat ">
+      <pattern>
+        <pattern-item n="det_mod"/>
+        <pattern-item n="det_mod"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_prn_case"><with-param pos="2"/></call-macro>
+        <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <var n="prn_gen"/>
+              <var n="prn_nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_det"/>
+              <var n="prn_gen"/>
+              <var n="prn_nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+          </concat>
+        </let>
+        <let><clip pos="2" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
+        <choose><when>
+          <test><and>
+            <not><equal><clip pos="3" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not>
+            <not><equal><clip pos="3" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+          </and></test>
+          <let><clip pos="3" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        </when></choose>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+ 
     <rule comment="C[] NUM_MOD NOM.GEN NOM
                    -----
                    Oblique use of num nom, here the final nominal is the head
