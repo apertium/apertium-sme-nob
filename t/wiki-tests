@@ -91,8 +91,16 @@ summary () {
     echo "${correct} / ${total}${pct}"
 }
 
+echo_dpkg_version () {
+    command -V dpkg-query &>/dev/null &&
+        pkg=$(dpkg-query -S "${PWD}") &&
+        dpkg-query -s "${pkg%%:*}" | grep ^Version
+}
+
 echo_revision () {
-    if rev=$(svn info 2>/dev/null); then
+    if [[ "${PWD}" = /usr/share* ]]; then
+        echo_dpkg_version || printf "from: %s" "${PWD}"
+    elif rev=$(svn info 2>/dev/null); then
 	echo "${rev}" | grep -e ^Revisjon -e ^Revision
     elif git config --get svn-remote.svn.fetch &>/dev/null; then
 	git svn info | grep -a -e ^Revisjon -e ^Revision
