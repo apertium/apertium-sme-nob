@@ -1852,5 +1852,9 @@ SELECT:fallback ("slik at"i) (0 ("<nu ahte>"i));
 SELECT ("når"i) (0 ("<dalle go>"i)) (-1 ("<earret>"i));
 SELECT:fallback ("da"i) (0 ("<dalle go>"i));
 
+SELECT ("å"i) (0 ("<ahte>"i) + cs) (1 inf);
+SELECT:fallback ("at"i) (0 ("<ahte>"i) + cs);
+
+
 # Proper nouns
 # ============

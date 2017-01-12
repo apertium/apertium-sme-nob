@@ -721,6 +721,9 @@ And then there are some categories like "month", with all the months.
     <def-attr n="ext">
       <attr-item tags="←ext→"/>
     </def-attr>
+    <def-attr n="a_part">
+      <attr-item tags="part"/>
+    </def-attr>
     <def-attr n="modality">
       <attr-item tags="indic"/>
       <attr-item tags="cond"/>
@@ -1054,6 +1057,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="pre-verb"       c="lu's before verb-lu in verbal chunk (only compounds for now)"/>
     <def-var n="defnes"         c="definiteness (noun, adj)"/>
     <def-var n="c_name"         c="chunk name"/>
+    <def-var n="n_type"         c="n_type"/>
     <def-var n="tmp"            c="temporary variable"/>
     <def-var n="blank"          c="for removing blanks"/>
     <def-var n="c_gen"          c="chunk gender"/>
@@ -2708,6 +2712,7 @@ And then there are some categories like "month", with all the months.
               <tags>
                 <tag><lit-tag v="SN"/></tag>
                 <tag><var n="c_syn"/></tag>
+                <tag><var n="n_type"/></tag>
                 <tag><var n="defnes"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
                 <tag><var n="c_gen"/></tag>
@@ -4363,7 +4368,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <let><var n="c_name"/><lit v=""/></let>
         <let><var n="pre-nom"/><lit v=""/></let>
-        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro> 
         <call-macro n="out_nom"><with-param pos="1"/></call-macro>
      </action>
     </rule>
@@ -7488,6 +7493,24 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+     <choose>
+     <when> 
+     <test><equal><clip pos="1" side="sl" part="a_part"/><lit-tag v="part"/></equal></test>
+        <out>
+          <chunk name="part" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="a_conj"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_part"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+     </when> 
+     <otherwise> 
         <out>
           <chunk name="conj" case="caseFirstWord">
             <tags>
@@ -7501,6 +7524,8 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
             </lu>
           </chunk>
         </out>
+     </otherwise> 
+     </choose>
       </action>
     </rule>
 
