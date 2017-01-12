@@ -877,6 +877,7 @@ SELECT ("inntil"i) IF (0 ("<gitta>"i) + @→Num) ;
 SELECT ("fast"i) IF (0 ("<gitta>"i))(*-1 ("<váldit>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
 SELECT:fallback ("stenge"i) IF (0 ("<gitta>"i))  ;
 
+SELECT:fallback ("slik"i) IF (0 ("<ná>"i))  ;
 
 
 # Verbs
@@ -1804,7 +1805,7 @@ SELECT ("vær så god") (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
 SELECT ("helhetlig") (0 ("<ollislaš>"i));
 
-SELECT ("hel") (0 ("<ollis>"i)) (1 ("tid"));
+SELECT:fallback ("hel") (0 ("<ollis>"i)) ; # (1 ("tid"));
 
 SELECT:fallback ("sterk") (0 ("<nanus>"i));
 

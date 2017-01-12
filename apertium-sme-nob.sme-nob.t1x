@@ -1329,6 +1329,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="guoskat"/>
       <list-item v="joavdat"/>
       <list-item v="deaivat"/>
+      <list-item v="čuohcit"/>
+      <list-item v="čuohcat"/>
       <list-item v="riŋget"/>
       <list-item v="čuojahit"/>
       <list-item v="váikkuhit"/>
@@ -1505,6 +1507,10 @@ And then there are some categories like "month", with all the months.
       <list-item v="onsdag"/>
       <list-item v="søndag"/>
       <list-item v="tirsdag"/>
+      <list-item v="skole"/>
+      <list-item v="grunnskole"/>
+      <list-item v="Sameskolen"/>
+      <list-item v="sameskole"/>
       <list-item v="topp"/>
       <list-item v="torsdag"/>
       <list-item v="Østlandet"/>
@@ -1557,6 +1563,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="nynorsk"/>
       <list-item v="bokmål"/>
       <list-item v="engelsk"/>
+      <list-item v="plass"/>
     </def-list>
     <def-list n="ill-NIL" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="feil"/>
@@ -1619,6 +1626,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="lørdag"/>
       <list-item v="søndag"/>
       <list-item v="takk"/>
+      <list-item v="midnatt"/>
     </def-list>
 
     <def-list n="bigrams-def" c="det/adj+noun lemma co-occurrences that are typically definite">
@@ -1712,7 +1720,11 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_domain"/></in>
-                <and>
+               <and>
+                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+                  <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
+                </and>
+               <and>
                   <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                   <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
                 </and>
@@ -1834,10 +1846,12 @@ And then there are some categories like "month", with all the months.
             <var n="caseprep"/><lit v="til"/>
           </let>
           <choose><when>
-            <test><or>
+            <test>
+            <or>
             <in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
             <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
-            </or></test>
+            </or>
+            </test>
             <let>
               <var n="caseprep"/><lit v="på"/>
             </let>
@@ -2316,6 +2330,7 @@ And then there are some categories like "month", with all the months.
               <not><equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal></not>
             </and>
               <equal><clip pos="2" side="tl" part="lemh"/><lit v="mye"/></equal>
+              <equal><clip pos="2" side="tl" part="lemh"/><lit v="mange"/></equal>
           </or></test>
           <let><var n="defnes"/><lit-tag v="ind"/></let>
         </when>
