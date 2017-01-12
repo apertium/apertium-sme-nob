@@ -1529,7 +1529,7 @@ SELECT:fallback ("kulde"i) (0 ("<buolaš>"i));
 SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
 SELECT:fallback ("trinn"i) (0 ("<ceahkki>"i));
 SELECT:fallback ("vekt"i) (0 ("<deatta>"i));
-SELECT:fallback ("forhold"i) (0 ("<dilli>"i));
+SELECT:fallback ("situasjon"i) (0 ("<dilli>"i));
 SELECT:fallback ("oppgave"i) (0 ("<doaibma>"i));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
 SELECT:fallback ("bål"i) (0 ("<dolla>"i));
