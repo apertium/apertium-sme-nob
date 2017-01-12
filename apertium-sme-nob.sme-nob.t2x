@@ -64,6 +64,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="V">
       <cat-item tags="SV.*"/>
     </def-cat>
+    <def-cat n="compl">
+      <cat-item tags="*.@N←.*"/>
+    </def-cat>
     <def-cat n="lADVL">
       <cat-item lemma="adv" tags="@←ADVL"/>
       <cat-item lemma="adv" tags="@←ADVL-ela"/>
@@ -882,6 +885,29 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: SN-rPOST compl adpos
+                   -----
+                   Move postposition to front">
+      <pattern>
+        <pattern-item n="SN_rPOST"/>
+        <pattern-item n="compl"/>
+        <pattern-item n="adpos"/>
+      </pattern>
+      <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
 
     <rule comment="REGLA: adpos PR SN_PREPl
                    -----
