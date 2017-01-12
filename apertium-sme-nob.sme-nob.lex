@@ -1048,7 +1048,7 @@ SELECT ("si"i) (0 ("<lohkat>"i))(-1 (@SUBJ→) LINK -1 COMMA);
 ## Dat lea duohta, lohká Trond.
 
 SELECT ("telle"i) (0 ("<lohkat>"i))
-	(1 acc OR ("<galle>"i) OR ("<man>"i) LINK NOT 0 sem_txt);
+	(1 acc OR ("<galle>"i) OR ("<man>"i) LINK NOT 0 sem_txt + nom);
 ## Son lohká ruđaid.
 ## Son lohká galle girjji mis leat.
 SELECT:fallback ("lese"i) (0 ("<lohkat>"i));
@@ -1088,6 +1088,10 @@ SELECT:fallback ("rette# på"i) (0 ("<njulget>"i));
 
 SELECT:ta-en-tur ("ta en tur"i) (0 ("<fitnat>"i) + inf )  ; 
 SELECT:fallback ("være"i) (0 ("<fitnat>"i));
+
+SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *-1 sem_txt )  ; 
+SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
+
 
 SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK *-1 ("<.*čoahkkin>"r));
 SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
@@ -1167,7 +1171,7 @@ SELECT:fallback ("gå"i) (0 ("<mannat>"i));
 SELECT ("slåss"i) (0 ("<doarrut>"i)) ;
 SELECT ("skille"i) (0 ("<earuhit>"i)) ;
 SELECT ("forsvare"i) (0 ("<bealuštit>"i)) ;
-SELECT ("vise# til"i) (0 ("<čujuhit>"i)) ;
+SELECT ("vise"i) (0 ("<čujuhit>"i)) ; 
 
 # Nouns
 # ============
