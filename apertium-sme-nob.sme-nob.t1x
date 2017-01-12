@@ -353,6 +353,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="áigi" tags="n.*"/>
       <cat-item lemma="dassái" tags="adv.*"/>
     </def-cat>
+    <def-cat n="lex-jahki">
+      <cat-item lemma="jahki" tags="n.*"/>
+    </def-cat>
     <def-cat n="lex-vel">
       <cat-item lemma="vel" tags="adv.*"/>
       <cat-item lemma="vel" tags="adv"/>
@@ -1034,6 +1037,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_tool-write"/>
       <attr-item tags="sem_txt"/>
       <attr-item tags="sem_veh"/>
+      <attr-item tags="sem_year"/>
       <attr-item tags="sem_wpn"/>
       <attr-item tags="sem_wthr"/>
     </def-attr>
@@ -1932,6 +1936,7 @@ And then there are some categories like "month", with all the months.
       </let>
 
       <!-- Now create it for outputting: -->
+      
       <choose>
         <when>
           <test><not><equal><var n="caseprep"/><lit v=""/></equal></not></test>
@@ -2484,6 +2489,7 @@ And then there are some categories like "month", with all the months.
 
 
     <!-- Output macros: -->
+    
     <def-macro n="out_nom" npar="1"
                c="arg.1: noun
                   -----
@@ -2994,6 +3000,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></let>
           <let><clip pos="1" side="tl" part="voice"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="voice"/><lit v=""/></let> <!-- yes twice, bidix can add two tags :/ -->
+          
         </when>
       </choose>
 
@@ -4331,6 +4338,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <!-- <rules: Noun, numeral+noun and compounds -->
+    
     <rule comment="C[_] nom_all (tl: NOM, VERB)
                    This is a catch-all rule; it's OK that some paths are blocked by previous rules.">
       <pattern>
@@ -4344,6 +4352,47 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="out_nom"><with-param pos="1"/></call-macro>
      </action>
     </rule>
+
+    <rule comment="C[_] num-year year"> 
+                  
+      <pattern>
+        <pattern-item n="lex-jahki"/>
+        <pattern-item n="num-year"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
+        <out>
+          <var n="caseprep"/>
+          <chunk name="pre_nom">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><var n="c_syn"/></tag>
+              <tag><var n="defnes"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><clip pos="1" side="tl" part="a_count"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>    
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_num"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+     </action>
+    </rule>
+
 
     <rule comment="C[TV] num nom.gen_NUMl" c="
                    Here the head (caseprep, syn_label) is the numeral!
@@ -4375,10 +4424,20 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <test><and>
               <equal><clip pos="2" side="tl" part="lemh"/><lit v="år"/></equal>
               <equal><b pos="1"/><lit v="-"/></equal>
-            </and></test>
+              <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_year"/></equal></not>
+            </and>
+            </test>
             <let><var n="n_nbr"/><lit-tag v="sg"/></let>
             <let><var n="c_def_pos"/><lit-tag v="def"/></let>
             <let><var n="tmp"/><lit v=""/></let>
+          </when>
+          <when c="2015 golggotmánu">
+            <test>
+              <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_year"/></equal>
+            </test>
+           <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+            <let><var n="n_nbr"/><lit-tag v="sg"/></let>
+            <let><var n="c_def_pos"/><lit-tag v="ind"/></let>
           </when>
           <otherwise>
             <let><var n="n_nbr"/><clip pos="1" side="tl" part="nbr"/></let>

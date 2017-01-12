@@ -1681,8 +1681,15 @@ SELECT ("i henhold til"i) (0 ("<olis>"i)) ;
 # ==========================
 
 SELECT ("den"i nt) (0 ("<dat>"i) LINK 1 ("<leat>"i)) ;
-
 SELECT:fallback ("den"i nt) (0 ("<dat>"i)) ;
+
+
+SELECT ("hun"i) (0 ("<son>"i) LINK *1 ("<nieida>"i) OR ("<nisu>"i) OR sem_fem BARRIER pron OR n) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK 1 ("<namma>"i) LINK *1 sem_fem BARRIER pron OR n) ;
+
+SELECT:fallback ("han"i) (0 ("<son>"i)) ;
+
+
 
 SELECT ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
 SELECT:ge-man ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 pcle) (-2 tv + FMAINV) (1 a) ; # mihtidit ge man mávssolaččat sámi aviissat leat …
