@@ -1057,6 +1057,8 @@ SELECT:fallback ("lese"i) (0 ("<lohkat>"i));
 
 
 # mannat 0 = dra, 1 = gå
+SELECT ("forrige"i) IF (0 ("<mannat>"i) + prfprc)(1 n);
+	
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i))(0 sg3);
 ## Mo manná dál?
 #SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>"i) OR ("<dat>"i));
@@ -1176,6 +1178,9 @@ SELECT ("vise"i) (0 ("<čujuhit>"i)) ;
 # Nouns
 # ============
 
+SELECT ("tale"i) (*-1 ("<doallat>"i))(0 ("sáhka"i));
+	
+SELECT ("villrein"i) (*-1 ("<bivdit>"i) OR ("dápmat"i) OR ("vuojihit"i))(0 ("<goddi>"i));
 
 SELECT ("grunn"i) (0 ("<vuođđu>"i)) (0 ess);
 SELECT:fallback ("grunnlag"i) (0 ("<vuođđu>"i));
