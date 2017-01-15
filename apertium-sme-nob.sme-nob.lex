@@ -1285,9 +1285,11 @@ SELECT:fallback ("sammenheng"i) (0 ("<oktavuohta>"i));
 SELECT ("folk") (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
 SELECT ("person") (0 ("<olmmoš>"i) LINK -1 num) ;
+SELECT ("person") (0 ("<olmmoš>"i) LINK 1 rel) ;
 
 SELECT ("menneske") (0 ("<olmmoš>"i) LINK 0 ess) ;
 # olmmožin => som menneske
+SELECT:fallback ("menneske") (0 ("<olmmoš>"i)) ;
 
 
 SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;

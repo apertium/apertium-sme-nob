@@ -89,6 +89,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="num.*.@→N"/>
       <cat-item tags="num.*.@→A"/>
       <cat-item tags="num.*.@←SUBJ"/>
+      <cat-item tags="num.*.@←OBJ"/>
     </def-cat>
     <def-cat n="num">
       <cat-item tags="num.*"/>
@@ -7645,6 +7646,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                 <tags>
                   <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
+                  <tag><clip pos="1" side="sl" part="a_sem"/></tag>
                 </tags>
                 <lu>
                   <clip pos="1" side="tl" part="lemh"/>
