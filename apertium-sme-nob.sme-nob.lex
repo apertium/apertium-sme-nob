@@ -1100,6 +1100,7 @@ SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
 
 
 # Verbs that were 0-marked in the dix:
+SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
 SELECT:fallback ("bevilge"i) (0 ("<juolludit>"i));
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 SELECT:fallback ("sette"i) (0 ("<bidjat>"i));
