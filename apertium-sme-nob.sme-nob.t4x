@@ -1150,7 +1150,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
                   </out>
                 </otherwise>
               </choose>
-              <modify-case><clip pos="2" part="lemh"/><lit v="aa"/></modify-case>
+              <choose><when>
+                <test><not><equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal></not></test>
+                <modify-case><clip pos="2" part="lemh"/><lit v="aa"/></modify-case>
+              </when></choose>
             </when>
             <when c="en">
               <test><and>
@@ -1169,7 +1172,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
                 </lu>
                 <b/>
               </out>
-              <modify-case><clip pos="2" part="lemh"/><lit v="aa"/></modify-case>
+              <choose><when>
+                <test><not><equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal></not></test>
+                <modify-case><clip pos="2" part="lemh"/><lit v="aa"/></modify-case>
+              </when></choose>
             </when>
             <!-- otherwise: no determiner -->
           </choose>
