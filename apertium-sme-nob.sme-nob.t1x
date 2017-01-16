@@ -1766,6 +1766,14 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="glad"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v=""/>
+              </let>
+            </when>
+            <when>
+              <test>
                 <equal><var n="previous-nhead"/><lit v="takk"/></equal>
               </test>
               <let>

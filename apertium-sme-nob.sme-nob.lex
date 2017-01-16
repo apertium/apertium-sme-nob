@@ -1494,11 +1494,17 @@ SELECT ("fokus"i) (0 ("<guovddáš>"i) + sg + ill)(-1 ("<bidjat>"));
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
+SELECT:halvpart ("halvpart"i) (0 ("<bealli>"i) LINK 1 n + pl);
 SELECT:fallback ("part"i) (0 ("<bealli>"i));
 SELECT:fallback ("hete"i) (0 ("<báhkka>"i));
 
 SELECT ("ved"i) (0 ("<muorra>"i) + loc);
 SELECT:fallback ("tre"i) (0 ("<muorra>"i));
+
+
+SELECT ("glad"i) (0 ("<illu>"i) + loc);
+SELECT:fallback ("glede"i) (0 ("<illu>"i));
+
 
 SELECT ("preken"i) (0 ("<sárdni>"i) LINK *-1 ("<báhppa>"i) OR ("<girku>"i));
 SELECT:fallback ("tale"i) (0 ("<sárdni>"i));
