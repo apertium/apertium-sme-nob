@@ -6,9 +6,12 @@
       <program name="hfst-proc --weight-classes 1 -w -p">
         <file name="sme-nob.automorf.hfst"/>
       </program>
-      <program name="cg-proc" debug-suff="disam">
-        <file name="sme-nob.mor.rlx.bin"/>
+      <program name="cg-proc" debug-suff="ex_vblex">
+        <file name="foo.cg3b"/>
       </program>
+      <!-- <program name="cg-proc" debug-suff="disam"> -->
+      <!--   <file name="sme-nob.mor.rlx.bin"/> -->
+      <!-- </program> -->
       <program name="cg-proc -1 -n -w" debug-suff="syntax">
         <file name="sme-nob.syn.rlx.bin"/>
       </program>

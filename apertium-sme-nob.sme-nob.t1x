@@ -509,6 +509,14 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="der_halla"/>
       <attr-item tags="der_inchl"/>
       <attr-item tags="der_dimin"/>
+      <attr-item tags="der_nomact"/>
+      <attr-item tags="der_nomag"/>
+      <attr-item tags="der_muš"/>
+    </def-attr>
+    <def-attr n="a_der_v2n">
+      <attr-item tags="der_nomact"/>
+      <attr-item tags="der_nomag"/>
+      <attr-item tags="der_muš"/>
     </def-attr>
     <def-attr n="a_sintagma">
       <attr-item tags="SN"/>
@@ -1048,6 +1056,7 @@ And then there are some categories like "month", with all the months.
   </section-def-attrs>
 
   <section-def-vars>
+    <def-var n="n_lem"          c="noun lemma"/>
     <def-var n="n_nbr"          c="noun number"/>
     <def-var n="adj_gen"        c="adj gender"/>
     <def-var n="prn_gen"        c="pronoun gender"/>
@@ -1058,7 +1067,6 @@ And then there are some categories like "month", with all the months.
     <def-var n="pre-verb"       c="lu's before verb-lu in verbal chunk (only compounds for now)"/>
     <def-var n="defnes"         c="definiteness (noun, adj)"/>
     <def-var n="c_name"         c="chunk name"/>
-    <def-var n="n_type"         c="n_type"/>
     <def-var n="tmp"            c="temporary variable"/>
     <def-var n="blank"          c="for removing blanks"/>
     <def-var n="c_gen"          c="chunk gender"/>
@@ -2420,6 +2428,7 @@ And then there are some categories like "month", with all the months.
     <def-macro n="set_c_syn" npar="1"
                c="We always have '3' as the defnes position in chunks, following chunk tag and syn_label,
                   this macro just ensures that there _is_ a syn_label.">
+      <!-- TODO: remove this and assume functions.cg3 always does what it should? -->
       <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
       <choose>
         <when>
@@ -2541,6 +2550,65 @@ And then there are some categories like "month", with all the months.
       <append n="c_name"><lit v="nom"/></append>
 
       <choose>
+        <when c="tl PoS is deverbal noun">
+          <test><not><equal><clip pos="1" side="sl" part="a_der_v2n"/><lit v=""/></equal></not></test>
+
+          <choose>
+            <when>
+              <test><equal><clip pos="1" side="sl" part="a_der_v2n"/><lit-tag v="der_nomag"/></equal></test>
+              <let><var n="n_lem"/><lit v="er"/></let>
+            </when>
+            <otherwise>
+              <let><var n="n_lem"/><lit v="ing"/></let>
+            </otherwise>
+          </choose>
+
+          <let><var n="n_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+          <choose><when>
+            <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
+            <let><var n="n_nbr"/><lit-tag v="sg"/></let>
+          </when></choose>
+
+          <let><var n="c_def_pos"/><lit-tag v="3"/></let>
+          <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
+
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="a_count"/></tag>
+                <tag><var n="c_animacy"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <mlu>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_verb"/>
+                  <clip pos="1" side="tl" part="a_pstv"/>
+                  <clip pos="1" side="tl" part="temps"/>
+                  <clip pos="1" side="tl" part="voice"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+                <lu>
+                  <var n="n_lem"/>
+                  <clip pos="1" side="tl" part="a_nom"/>
+                  <clip pos="1" side="tl" part="gen"/>
+                  <var n="n_nbr"/>
+                  <var n="c_def_pos"/>
+                  <clip pos="1" side="tl" part="gen-case"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </mlu>
+            </chunk>
+          </out>
+        </when>
+
         <when c="tl PoS is verb">
           <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
 
@@ -2713,7 +2781,6 @@ And then there are some categories like "month", with all the months.
               <tags>
                 <tag><lit-tag v="SN"/></tag>
                 <tag><var n="c_syn"/></tag>
-                <tag><var n="n_type"/></tag>
                 <tag><var n="defnes"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
                 <tag><var n="c_gen"/></tag>
@@ -3026,7 +3093,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </choose>
 
       <choose c="Output the main predicate, verb/adj/adv/etc.">
-        <when c="adv (eg. negative)">
+        <when c="tl PoS is adv (eg. negative)">
           <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
           <append n="c_name"><lit v="adv"/></append>
           <out>
@@ -3053,7 +3120,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </chunk>
           </out>
         </when>
-        <when c="Adj">
+        <when c="tl PoS is adj">
           <test><not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
           <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
           <append n="c_name"><lit v="adj"/></append>
@@ -3083,7 +3150,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </chunk>
           </out>
         </when>
-        <otherwise c="Verb">
+        <otherwise c="tl PoS is assumed to be verb">
           <choose>
             <when>
               <test><equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="være"/></equal></test>
