@@ -74,7 +74,7 @@ debug: \
 	$(ZCAT) $< | hfst-txt2fst > $@
 
 .deps/$(PREFIX1).automorf-rmderiv-trimmed.hfst: .deps/$(LANG1).automorf-rmderiv.hfst .deps/$(PREFIX1).autobil.prefixes
-	hfst-compose-intersect -1 $<.min -2 .deps/$(PREFIX1).autobil.prefixes -o $@
+	hfst-compose-intersect -1 $< -2 .deps/$(PREFIX1).autobil.prefixes -o $@
 
 .deps/rm-deriv-cmp.hfst: rm-deriv-cmp.twol .deps/.d
 	hfst-twolc -i $< -o $@
