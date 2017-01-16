@@ -73,16 +73,19 @@ debug: \
 .deps/$(LANG1).automorf.hfst: $(AP_SRC1)/apertium-und.$(LANG1)-und.LR.att.gz .deps/.d
 	$(ZCAT) $< | hfst-txt2fst > $@
 
-.deps/$(PREFIX1).automorf-trimmed.hfst: .deps/$(LANG1).automorf.hfst .deps/$(PREFIX1).autobil.prefixes
-	hfst-compose-intersect -1 $< -2 .deps/$(PREFIX1).autobil.prefixes -o $@
+.deps/$(PREFIX1).automorf-rmderiv-trimmed.hfst: .deps/$(LANG1).automorf-rmderiv.hfst .deps/$(PREFIX1).autobil.prefixes
+	hfst-compose-intersect -1 $<.min -2 .deps/$(PREFIX1).autobil.prefixes -o $@
 
 .deps/rm-deriv-cmp.hfst: rm-deriv-cmp.twol .deps/.d
 	hfst-twolc -i $< -o $@
 
-.deps/$(PREFIX1).automorf-trimmed-rmderiv.hfst: .deps/$(PREFIX1).automorf-trimmed.hfst .deps/rm-deriv-cmp.hfst
+.deps/$(LANG1).automorf-rmderiv.hfst:           .deps/$(LANG1).automorf.hfst          .deps/rm-deriv-cmp.hfst
 	hfst-compose-intersect -1 $< -2 .deps/rm-deriv-cmp.hfst -o $@
 
-$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf-trimmed-rmderiv.hfst
+.deps/$(PREFIX1).automorf-rmderiv-trimmed-min.hfst: .deps/$(PREFIX1).automorf-rmderiv-trimmed.hfst
+	hfst-minimize -i $< -o $@
+
+$(PREFIX1).automorf.hfst: .deps/$(PREFIX1).automorf-rmderiv-trimmed-min.hfst
 	hfst-fst2fst -w -i $< -o $@
 
 $(PREFIX1).automorf-untrimmed.hfst: .deps/$(LANG1).automorf.hfst
