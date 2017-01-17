@@ -818,7 +818,7 @@ SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0
 
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
-SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a) ;
+SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a - comp) ;
 ## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
 ## Buorre lei go bohtet.
 ## Gummá go ii boahtán.
@@ -1098,6 +1098,11 @@ SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
 SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK *-1 ("<.*čoahkkin>"r));
 SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
 
+SELECT:skyte ("skyte"i) (0 ("<bávkalit>"i) LINK *0 ("<rahkeahtta>"r));
+SELECT:fallback ("smelle"i) (0 ("<bávkalit>"i));
+
+SELECT:påkjøre ("påkjøre"i) (0 ("<vuodjit>"i) + der_pass);
+SELECT:kjøre ("kjøre"i) (0 ("<vuodjit>"i));
 
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
@@ -1504,6 +1509,9 @@ SELECT:fallback ("tre"i) (0 ("<muorra>"i));
 
 SELECT ("glad"i) (0 ("<illu>"i) + loc);
 SELECT:fallback ("glede"i) (0 ("<illu>"i));
+
+SELECT ("tale"i) (0 ("<ságat>"i) + ill);
+SELECT:fallback ("nyhet"i) (0 ("<ságat>"i));
 
 
 SELECT ("preken"i) (0 ("<sárdni>"i) LINK *-1 ("<báhppa>"i) OR ("<girku>"i));
