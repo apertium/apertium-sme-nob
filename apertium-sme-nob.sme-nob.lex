@@ -77,6 +77,7 @@ LIST sem_fem = sem_fem (ant f) ;
 LIST sem_clth = sem_body_clth sem_build_clth-part sem_clth sem_clth-jewl sem_clth-jewl_curr sem_clth-jewl_money sem_clth-jewl_org sem_clth-jewl_plant sem_clth-part sem_clth_hum ;
 LIST sem_group = sem_act_group sem_ani_group sem_ani_group_hum sem_body_group_hum sem_body_group_hum_time sem_edu_group_hum sem_group sem_group_hum sem_group_hum_org sem_group_hum_plc sem_group_hum_prod-vis sem_group_org sem_group_sign sem_group_txt ;
 LIST sem_hum = sem_ani_body-abstr_hum sem_ani_build_hum_txt sem_ani_group_hum sem_ani_hum sem_ani_hum_plc sem_ani_hum_time sem_aniprod_hum sem_body_group_hum sem_body_group_hum_time sem_body_hum sem_clth_hum sem_edu_group_hum sem_event_hum sem_feat-psych_hum sem_group_hum sem_group_hum_org sem_group_hum_plc sem_group_hum_prod-vis sem_hum sem_hum-abstr sem_hum_lang sem_hum_lang_plc sem_hum_lang_time sem_hum_obj sem_hum_org sem_hum_plant sem_hum_plc sem_hum_tool sem_hum_veh sem_hum_wthr  ;
+LIST sem_lang = sem_hum_lang sem_hum_lang_plc sem_hum_lang_time sem_lang sem_lang_tool  ;
 LIST sem_mal = sem_mal (ant m) ;
 LIST sem_measr = sem_body_measr sem_measr sem_measr_sign sem_measr_time ;
 LIST sem_money = sem_money ;
@@ -1022,6 +1023,8 @@ SELECT ("skjære"i) (0 ("<čuohppat>"i)) ;
 SELECT ("utgreie"i) (0 ("<čilget>"i)) (NOT 1 ("<.*skuvla>"ri) OR ("<ossodat>"i)) ;
 
 SELECT ("oversette"i) (0 ("<jorgalit>"i)) (NOT *0 ("fisk"i)) ;
+SELECT ("oversette"i) (0 ("<jorgalit>"i)) (*0 sem_lang OR sem_txt) ;
+SELECT:fallback ("snu"i) (0 ("<jorgalit>"i)) ;
 
 SELECT ("starte"i) (0 ("<álggahit>"i)) ;
 
