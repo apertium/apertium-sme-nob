@@ -861,6 +861,9 @@ SELECT:fallback ("som"i) (0 ("<go>"i) + cs) ;
 SELECT ("i"i) (0 ("<otná>"i) LINK 1 (sem_time)) ;
 SELECT:fallback ("dagens"i) (0 ("<otná>"i)) ;
 
+SELECT:fallback ("hvilken av de to"i) (0 ("<goabbá>"i)) ;
+
+
 
 SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 
