@@ -44,6 +44,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
 <interchunk>
 
   <section-def-cats>
+   <def-cat n="sent">
+      <cat-item tags="SENT.*"/>
+      <cat-item tags="SENT"/>
+    </def-cat>
     <def-cat n="CLB">
       <cat-item tags="CLB.*"/>
     </def-cat>
@@ -1296,12 +1300,15 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
     </rule>
 
     <!-- <rules: Clause boundary -->
-    <rule comment="REGLA: CLB">
+    <rule comment="REGLA: sent">
       <pattern>
-        <pattern-item n="CLB"/>
+        <pattern-item n="sent"/>
       </pattern>
       <action>
         <let><var n="caseprep_verb"/><lit v=""/></let>
+        <let><var n="ana_gen"/><lit-tag v="m"/></let>
+        <let><var n="ana_m_f"/><lit-tag v="m"/></let>
+        <let><var n="ana_m_f_pers"/><lit-tag v="m"/></let>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>

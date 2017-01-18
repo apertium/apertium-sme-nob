@@ -855,7 +855,12 @@ SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (vblex pret) BARRIER (←hab→) OR (@AD
 SELECT ("fordi"i) (0 ("<go>"i))(0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
 ## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
 
-SELECT ("når"i) (0 ("<go>"i)) (0 cs) ;
+SELECT ("når"i) (0 ("<go>"i) LINK *1 (indic)) ;
+SELECT:fallback ("som"i) (0 ("<go>"i) + cs) ;
+
+SELECT ("i"i) (0 ("<otná>"i) LINK 1 (sem_time)) ;
+SELECT:fallback ("dagens"i) (0 ("<otná>"i)) ;
+
 
 SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 
@@ -863,9 +868,9 @@ SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 SELECT ("etter") (0 ("<mielde>"i)) (0 po) (-1 ("<dárbu>"i) OR ("<miella>"i)) ;
 ## Don vieččat boaldinmuoraid dárbbu mielde.
 
-SELECT ("for at"i) IF (0 ("<vai>"i)) (NOT 1 inf) ;
+SELECT ("for å"i) IF (0 ("<vai>"i) + cs) (1 inf) ;
+SELECT:fallback ("for at"i) IF (0 ("<vai>"i) + cs) (NOT 1 inf) ;
 
-SELECT ("for å"i) IF (0 ("<vai>"i)) (1 inf) ;
 
 SELECT ("all"i) IF (0 ("<juohke>"i) LINK 1 ("<lágan>")) ;
 #$ juohke lágán geđggiiguin
@@ -1098,7 +1103,7 @@ SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
 SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK *-1 ("<.*čoahkkin>"r));
 SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
 
-SELECT:skyte ("skyte"i) (0 ("<bávkalit>"i) LINK *0 ("<rahkeahtta>"r));
+SELECT:skyte ("skyte"i) (0 ("<bávkalit>"i) LINK *0 ("<rakeahtta>"r)); 
 SELECT:fallback ("smelle"i) (0 ("<bávkalit>"i));
 
 SELECT:påkjøre ("påkjøre"i) (0 ("<vuodjit>"i) + der_pass);
