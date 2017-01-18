@@ -1026,6 +1026,10 @@ SELECT ("oversette"i) (0 ("<jorgalit>"i)) (NOT *0 ("fisk"i)) ;
 SELECT ("oversette"i) (0 ("<jorgalit>"i)) (*0 sem_lang OR sem_txt) ;
 SELECT:fallback ("snu"i) (0 ("<jorgalit>"i)) ;
 
+SELECT ("oversette"i) (0 ("<jorgalahttit>"i)) (*0 sem_lang OR sem_txt) ;
+SELECT:fallback ("snu"i) (0 ("<jorgalahttit>"i)) ;
+
+
 SELECT ("starte"i) (0 ("<álggahit>"i)) ;
 
 SELECT ("legge"i) (0 ("<lágidit>"i)) (1 ("forhold")) (2 ("til rette for")) ;
