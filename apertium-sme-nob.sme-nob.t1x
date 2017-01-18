@@ -1161,6 +1161,10 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_semcon_txt&gt;"/>
       <list-item v="&lt;sem_txt&gt;"/>
     </def-list>
+    <def-list n="sem_pos">
+      <list-item v="&lt;sem_plc_pos&gt;"/>
+      <list-item v="&lt;sem_pos&gt;"/>
+    </def-list>
     <def-list n="sem_state">
       <list-item v="&lt;sem_obj_state&gt;"/>
       <list-item v="&lt;sem_plc-abstr_rel_state&gt;"/>
@@ -1432,6 +1436,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="ønske" c="Lihkkobeaivve sávaldagat Káre Márehis."/>
     </def-list>
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
+      <list-item v="forvaltning"/>
+      <list-item v="debatt"/>
       <list-item v="første omgang"/>
       <list-item v="utgangspunkt"/>
       <list-item v="mørke"/>
@@ -1740,6 +1746,7 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_domain"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_pos"/></in>
                <and>
                  <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
                   <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
@@ -1879,7 +1886,10 @@ And then there are some categories like "month", with all the months.
             <test>
             <or>
             <in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
+            <and>
             <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
+            <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
+            </and>
             </or>
             </test>
             <let>

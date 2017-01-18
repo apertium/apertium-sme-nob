@@ -1294,7 +1294,8 @@ SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 (sg loc)) ;
 SELECT ("forbindelse"i) (0 ("<oktavuohta>"i @←ADVL sg)) ;
 # dan oktavuođas go => i den forbindelse når
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) + (←ext→)) ;
-SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 (pl loc)) ;
+SELECT ("kontakt"i) (0 ("<oktavuohta>"i) + loc LINK -2 v) ;
+SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ;
 # máŋgga oktavuođas => i mange sammenhenger
 # máŋggain oktavuođain => i mange sammenhenger
 SELECT:fallback ("sammenheng"i) (0 ("<oktavuohta>"i));
@@ -1523,6 +1524,8 @@ SELECT:fallback ("glede"i) (0 ("<illu>"i));
 
 SELECT ("tale"i) (0 ("<ságat>"i) + ill);
 SELECT:fallback ("nyhet"i) (0 ("<ságat>"i));
+
+SELECT:fallback ("tilbud"i) (0 ("<fálaldat>"i));
 
 
 SELECT ("preken"i) (0 ("<sárdni>"i) LINK *-1 ("<báhppa>"i) OR ("<girku>"i));
