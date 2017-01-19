@@ -1120,6 +1120,8 @@ SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
 SELECT:beherske ("beherske"i) (0 ("<hálddašit>"i) LINK *0 sem_lang);
 SELECT:fallback ("forvalte"i) (0 ("<hálddašit>"i));
 
+SELECT:fallback ("fornye"i) (0 ("<ođastit>"i));
+
 
 SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK *-1 ("<.*čoahkkin>"r));
 SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
@@ -1310,6 +1312,7 @@ SELECT ("forbindelse"i) (0 ("<oktavuohta>"i @←ADVL sg)) ;
 # dan oktavuođas go => i den forbindelse når
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) + (←ext→)) ;
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) + loc LINK -2 v) ;
+SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK *-1 ("<váldit>"i)) ;
 SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ;
 # máŋgga oktavuođas => i mange sammenhenger
 # máŋggain oktavuođain => i mange sammenhenger
