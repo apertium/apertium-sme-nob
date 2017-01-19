@@ -865,6 +865,7 @@ SELECT:fallback ("dagens"i) (0 ("<otná>"i)) ;
 
 SELECT:fallback ("hvilken av de to"i) (0 ("<goabbá>"i)) ;
 
+SELECT:fallback ("i hele"i) (0 ("<miehtá>"i)) ;
 
 
 SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
@@ -1080,6 +1081,8 @@ SELECT ("forrige"i) IF (0 ("<mannat>"i) + prfprc)(1 n);
 	
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i))(0 sg3);
 ## Mo manná dál?
+SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 ("<bures>"i) BARRIER v);
+
 #SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>"i) OR ("<dat>"i));
 ## Mun manan dál.
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 sem_time + SUBJ BARRIER SV-BOUNDARY);
@@ -1113,6 +1116,9 @@ SELECT:fallback ("være"i) (0 ("<fitnat>"i));
 SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *-1 sem_txt )  ; 
 SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK 1 sem_time )  ; 
 SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
+
+SELECT:beherske ("beherske"i) (0 ("<hálddašit>"i) LINK *0 sem_lang);
+SELECT:fallback ("forvalte"i) (0 ("<hálddašit>"i));
 
 
 SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK *-1 ("<.*čoahkkin>"r));
