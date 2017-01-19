@@ -1548,6 +1548,7 @@ SELECT:fallback ("humør"i) (0 ("<mokta>"i));
 
 
 SELECT:fallback ("tilbud"i) (0 ("<fálaldat>"i));
+SELECT:fallback ("innlegg"i) (0 ("<sátnevuorru>"i));
 
 
 SELECT ("preken"i) (0 ("<sárdni>"i) LINK *-1 ("<báhppa>"i) OR ("<girku>"i));
@@ -1900,6 +1901,7 @@ SELECT ("viss") (0 ("<vissis>"i)) (*1 n BARRIER NOT-A) ;
 SELECT ("samisk"i) (0 ("<sápmi>"i))(0 gen);
 
 SELECT:fallback ("dårlig") (0 ("<headju>"i));
+SELECT:fallback ("saklig") (0 ("<áššálaš>"i));
 
 # Subjunctions
 # ============
