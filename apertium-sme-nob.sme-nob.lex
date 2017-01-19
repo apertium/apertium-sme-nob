@@ -1540,6 +1540,10 @@ SELECT:fallback ("glede"i) (0 ("<illu>"i));
 SELECT ("tale"i) (0 ("<ságat>"i) + ill);
 SELECT:fallback ("nyhet"i) (0 ("<ságat>"i));
 
+SELECT ("engasjement"i) (0 ("<mokta>"i) LINK *0 ("<buolli>") OR ("<buollát>") OR ("<buollit>"));
+SELECT:fallback ("humør"i) (0 ("<mokta>"i));
+
+
 SELECT:fallback ("tilbud"i) (0 ("<fálaldat>"i));
 
 
@@ -1706,7 +1710,7 @@ SELECT:fallback ("hjørne"i) (0 ("<čiehka>"i));
 SELECT:fallback ("pynt"i) (0 ("<čikŋa>"i));
 SELECT:fallback ("sammendrag"i) (0 ("<čoahkkáigeassu>"i));
 SELECT:fallback ("poeng"i) (0 ("<čuokkis>"i));
-SELECT:fallback ("dokument"i) (0 ("<čálus>"i));
+SELECT:fallback ("tekst"i) (0 ("<čálus>"i));
 SELECT:fallback ("slag"i) (0 ("<šládja>"i));
 SELECT:fallback ("surr"i) (0 ("<šurra>"i));
 
