@@ -955,6 +955,7 @@ SELECT:fallback ("legge# opp til"i) IF  (0 ("<láhčit>"i)) ;
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
 SELECT:dego ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
 SELECT:jaska ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>"i)) ;
+SELECT:bli ("bli"i) (0 ("<orrut>"i)) (-1 ("<go>"i)) ;
 SELECT:orron-doppe ("bo"i) (0 ("<orrut>"i)) (*1 loc OR DOPPE BARRIER (*) - TIME-ADV) ;
 #This rule should have another barrier, a set of all words except TIME-ADV.
 #For sentences like: Mun orron diibmá Romssas.
@@ -1129,8 +1130,13 @@ SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
 SELECT:skyte ("skyte"i) (0 ("<bávkalit>"i) LINK *0 ("<rakeahtta>"r)); 
 SELECT:fallback ("smelle"i) (0 ("<bávkalit>"i));
 
-SELECT:påkjøre ("påkjøre"i) (0 ("<vuodjit>"i) + der_pass);
-SELECT:kjøre ("kjøre"i) (0 ("<vuodjit>"i));
+SELECT:påkjøre ("påkjøre"i) (0 ("<vuodjit>"i) + pasv);
+SELECT:fallback ("kjøre"i) (0 ("<vuodjit>"i));
+
+SELECT:kalle ("kalle"i) (0 ("<navdit>"i) LINK 1 acc LINK 1 ess );
+SELECT:kalle ("kalle"i) (0 ("<navdit>"i) LINK 1 ess );
+SELECT:fallback ("anta"i) (0 ("<navdit>"i));
+
 
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
@@ -1187,14 +1193,13 @@ SELECT:fallback ("oppholde"i) (0 ("<orostaddat>"i));
 SELECT:fallback ("skaffe"i) (0 ("<rabbat>"i));
 SELECT:fallback ("åpne"i) (0 ("<rabestit>"i));
 SELECT:fallback ("forandre"i) (0 ("<rievdat>"i));
-SELECT:fallback ("skryte"i) (0 ("<rábmot>"i));
+SELECT:fallback ("skryte av"i) (0 ("<rábmot>"i));
 SELECT:fallback ("forberede"i) (0 ("<ráhkkanahttit>"i));
 SELECT:fallback ("bevare"i) (0 ("<seailut>"i));
-SELECT:fallback ("fjerne"i) (0 ("<sihkkut>"i));
-SELECT:fallback ("slette"i) (0 ("<sihkkut>"i));
+SELECT:fallback ("stryke"i) (0 ("<sihkkut>"i));
 SELECT:fallback ("hente"i) (0 ("<viežžat>"i));
 SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
-SELECT:fallback ("ordne"i) (0 ("<ásahit>"i));
+SELECT:fallback ("grunnlegge"i) (0 ("<ásahit>"i));
 SELECT:fallback ("gjemme"i) (0 ("<čiehkádit>"i));
 SELECT:fallback ("spille"i) (0 ("<čuojahit>"i));
 SELECT:fallback ("følge"i) (0 ("<čuovvolit>"i));
