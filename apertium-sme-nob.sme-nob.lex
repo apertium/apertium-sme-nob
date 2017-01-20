@@ -1528,6 +1528,10 @@ SELECT ("gevinst"i) (0 ("<vuoitu>"i))(*0 CURRENCY) ;
 SELECT ("samisk"i) (0 ("<sápmi>"i) + sg + gen);
 SELECT:fallback ("same"i) (0 ("<sápmi>"i));
 
+SELECT ("Samisk"i) (0 ("<Sápmi>"i) + sg + gen);
+SELECT:fallback ("Sameland"i) (0 ("<Sápmi>"i));
+
+
 SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 
 SELECT ("fokus"i) (0 ("<guovddáš>"i) + sg + ill)(-1 ("<bidjat>"));
