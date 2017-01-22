@@ -87,6 +87,7 @@ LIST sem_org = np.sem_org sem_build_event_org sem_build_edu_org sem_build_event_
 LIST sem_plc = sem_act_plc sem_ani_hum_plc sem_ani_plc sem_ani_plc_txt sem_aniprod_plc sem_body_plc sem_build-part_plc sem_event_plc sem_event_plc-elevate sem_feat-measr_plc sem_group_hum_plc sem_hum_lang_plc sem_hum_plc sem_plc sem_plc-abstr sem_plc-abstr_rel_state sem_plc-abstr_route sem_plc-elevate sem_plc-line sem_plc-water sem_plc_pos sem_plc_route sem_plc_state sem_plc_substnc sem_plc_substnc_wthr sem_plc_time sem_plc_tool-catch sem_plc_wthr sem_plc top ;
 LIST sem_sur = sem_sur ;
 LIST sem_time = sem_time sem_ani_hum_time sem_ani_time sem_body_group_hum_time sem_body_time sem_event_time sem_hum_lang_time sem_measr_time sem_plc_time sem_time_wthr ;
+LIST sem_veh = sem_ani_veh sem_ctain-clth_veh sem_feat-phys_veh sem_hum_veh sem_org_veh sem_veh ;
 LIST sem_year = sem_year ;
 LIST sem_txt = sem_txt sem_ani_build_hum_txt sem_ani_plc_txt sem_group_txt sem_mat_txt sem_money_txt sem_org_txt sem_prod-audio_txt sem_prod-cogn_txt sem_semcon_txt sem_txt ;
 
@@ -1107,7 +1108,12 @@ SELECT:kjent-som ("kjenne"i) (0 ("<beaggit>"i)) (0 prfprc) (*1 loc BARRIER clb O
 SELECT:ble-kjent-i ("kjenne"i) (0 ("<beaggit>"i)) (0 prt) (*1 ill BARRIER clb OR v); # Son lea maiddái beaggán Sámi soga lávlaga čállin
 SELECT:fallback ("kjenne"i) (0 ("<beaggit>"i)); # Maŋimuš áiggiid lea beaggán , maŋimustá
 
+SELECT:reparere ("reparere"i) (0 ("<divvut>"i) LINK *0 ("<bátni>"i) OR sem_veh);
 SELECT:fallback ("rette"i) (0 ("<divvut>"i));
+
+SELECT:reparere ("innkalle"i) (0 ("<gohččut>"i) LINK *0 ("<diibmu>"i) OR ("<čoahkkin>"i));
+SELECT:fallback ("be"i) (0 ("<gohččut>"i));
+
 
 SELECT:fallback ("rette# på"i) (0 ("<njulget>"i));
 
@@ -1136,6 +1142,7 @@ SELECT:fallback ("kjøre"i) (0 ("<vuodjit>"i));
 SELECT:kalle ("kalle"i) (0 ("<navdit>"i) LINK 1 acc LINK 1 ess );
 SELECT:kalle ("kalle"i) (0 ("<navdit>"i) LINK 1 ess );
 SELECT:fallback ("anta"i) (0 ("<navdit>"i));
+SELECT:fallback ("etablere"i) (0 ("<ásahit>"i));
 
 
 # Verbs that were 0-marked in the dix:
@@ -1199,7 +1206,6 @@ SELECT:fallback ("bevare"i) (0 ("<seailut>"i));
 SELECT:fallback ("stryke"i) (0 ("<sihkkut>"i));
 SELECT:fallback ("hente"i) (0 ("<viežžat>"i));
 SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
-SELECT:fallback ("grunnlegge"i) (0 ("<ásahit>"i));
 SELECT:fallback ("gjemme"i) (0 ("<čiehkádit>"i));
 SELECT:fallback ("spille"i) (0 ("<čuojahit>"i));
 SELECT:fallback ("følge"i) (0 ("<čuovvolit>"i));

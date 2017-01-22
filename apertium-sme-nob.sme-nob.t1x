@@ -79,6 +79,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="adj.*.ess.*"/>
       <cat-item tags="adj.attr"/>
       <cat-item tags="adj.attr.*"/>
+      <cat-item tags="*.adj.attr.*"/>
       <cat-item tags="adj.*.attr.*"/>
       <!-- TODO: pstv verbs don't have adj forms, should have transfer
            <exception> if tl pstv -->
@@ -89,6 +90,12 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.sem_time.*"/>
       <cat-item tags="n.sem_time_wthr.*"/>
       <cat-item tags="n.sem_measr_time.*"/>
+    </def-cat>
+    <def-cat n="lex-loc">
+      <cat-item tags="n.*.sg.loc.*"/>
+    </def-cat>
+    <def-cat n="lex-ill">
+      <cat-item tags="n.*.sg.ill.*"/>
     </def-cat>
     <def-cat n="num_mod">
       <cat-item tags="num.*.@HNOUN"/> <!-- HNOUN=syntax couldn't find a head; might still be a modifier -->
@@ -520,6 +527,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="der_nomact"/>
       <attr-item tags="der_nomag"/>
       <attr-item tags="der_muš"/>
+      <attr-item tags="der_sasj"/>
     </def-attr>
     <def-attr n="a_der_v2n">
       <attr-item tags="der_nomact"/>
@@ -1380,6 +1388,8 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="ill-i-verbs" c="See 'ill-NIL-verbs' above.">
       <list-item v="álgit"/>
+      <list-item v="ásahit"/>
+      <list-item v="hukset"/>
     </def-list>
     <def-list n="ill-på-verbs" c="See 'ill-NIL-verbs' above.
                                   Speech verbs, emotional(?) verbs">
@@ -1744,6 +1754,7 @@ And then there are some categories like "month", with all the months.
               <test><or>
                 <in><var n="previous-nhead"/><list n="loc-fra-head"/></in>
                 <in><clip pos="1" side="tl" part="lemh"/><list n="loc-fra"/></in>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="fra"/>
@@ -1898,6 +1909,10 @@ And then there are some categories like "month", with all the months.
             <test>
             <or>
             <in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
+            <and>
+            <equal><var n="tmp"/><lit-tag v="num"/></equal>
+            <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
+            </and> 
             <and>
             <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
             <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
@@ -2996,7 +3011,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
       </when></choose>
 
-      <choose c="Prepend 'begynne' if ingressive:"><when>
+      <choose c="Prepend 'begynne' if inchoative:"><when>
         <test><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_inchl"/></equal></test>
         <out>
           <chunk name="verb" case="caseFirstWord">
@@ -3657,6 +3672,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
+
+
     <rule comment="C[LT] lex-mannan time-noun" c="Njealje jagi áigi → For fire år siden">
       <pattern>
         <pattern-item n="num"/>
@@ -4009,18 +4026,21 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </concat>
         </let>
         <choose>
-          <when c="TODO: can we lexicalise logi-jagáš and logijagáš etc. as adj's?">
-            <test><equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal></test>
+          <when><test>
+          <and>
+            <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
+            <not><equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_sasj"/></equal></not>
+          </and></test>
             <out>
               <var n="caseprep"/>
-              <chunk name="pre_adj" case="caseFirstWord">
+              <chunk name="pre_nom" case="caseFirstWord">
                 <tags>
-                  <tag><lit-tag v="SA"/></tag>
+                  <tag><lit-tag v="SN"/></tag>
                   <tag><clip pos="2" side="sl" part="syn_label"/></tag>
                   <tag><lit-tag v="ind"/></tag>
                   <tag><clip pos="2" side="sl" part="mode"/></tag>
-                  <tag><var n="c_gen"/></tag>
-                  <tag><var n="c_nbr"/></tag>
+                  <tag><clip pos="2" side="sl" part="nbr"/></tag>
+                  <tag><clip pos="2" side="sl" part="case"/></tag>
                 </tags>
                 <var n="pre-nom"/>
                 <lu>
@@ -4036,6 +4056,38 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               </when>
             </choose>
           </when>
+          <when><test>
+          <and>
+            <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
+            <equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_sasj"/></equal>
+          </and></test>
+            <out>
+              <var n="caseprep"/>
+              <chunk name="pre_nom" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SN"/></tag>
+                  <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+                  <tag><lit-tag v="ind"/></tag>
+                  <tag><clip pos="2" side="sl" part="mode"/></tag>
+                  <tag><clip pos="2" side="sl" part="nbr"/></tag>
+                  <tag><clip pos="2" side="sl" part="case"/></tag>
+                </tags>
+                <var n="pre-nom"/>
+                <lu>
+                  <lit v="åring"/>
+                  <lit-tag v="n.m"/>
+                  <clip pos="2" side="tl" part="nbr"/>
+                  <lit-tag v="ind"/>
+                </lu>
+              </chunk>
+            </out>
+            <choose>
+              <when>
+                <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+                <out><b pos="1"/></out>
+              </when>
+            </choose>
+              </when>       
 
           <otherwise>
             <call-macro n="out_nom"><with-param pos="2"/></call-macro>
@@ -4043,6 +4095,68 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </choose>
       </action>
     </rule>
+
+    <rule comment="C[] num.cmp adj_attr nom_head" c="
+                   22-jahkásaš nieida">
+      <!--
+          Intended matches:
+	^6<num><cmp><guio>/6<det><qnt><un><pl><guio>$ ^jahki<n><der_sasj><adj><attr><@→N>/-åring<n><m><attr><@→N>$ 	
+	^nieida<n><sem_hum><sg><nom><←ext→><@←SUBJ>/jente<n><f><sem_hum><sg><nom><←ext→><@←SUBJ>      -->
+      <pattern>
+        <pattern-item n="num.cmp"/>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <!-- not set_defnes2 here, seems to work better just looking at head syntax tag: -->
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+
+            <let><var n="tmp"/><lit-tag v="3"/></let>
+        <choose>
+          <when>
+            <test><begins-with><clip pos="2" side="tl" part="lemh"/><lit v="-"/></begins-with></test>
+            <let><var n="blank"/><lit v=""/></let>
+          </when>
+          <otherwise>
+            <let><var n="blank"/><b pos="1"/></let>
+          </otherwise>
+        </choose>
+
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <var n="blank"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="tmp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+          </concat>
+        </let>
+        <let><clip pos="3" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+
+
 
     <rule comment="C[S] num.cmp num" c="golbma-njealje → tre-fire">
       <pattern>
@@ -4702,8 +4816,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <let><var n="tmp"/><clip pos="1" side="sl" part="a_num"/></let> <!-- illative på -->
+
 
         <let><var n="c_name"/><lit v="pre_"/></let>
         <let>
@@ -4727,6 +4842,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </and></test>
           <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
         </when></choose>
+
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
@@ -6715,7 +6831,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_adj"/>
-              <clip pos="2" side="tl" part="grau"/>
+
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <var n="defnes"/>
