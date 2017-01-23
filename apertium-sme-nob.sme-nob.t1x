@@ -86,15 +86,15 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="vblex.iv.adj.attr.*"/>
       <cat-item tags="vblex.tv.adj.attr.*"/>
     </def-cat>
-    <def-cat n="sem_time_lex">
+    <def-cat n="n.sem_time">
       <cat-item tags="n.sem_time.*"/>
       <cat-item tags="n.sem_time_wthr.*"/>
       <cat-item tags="n.sem_measr_time.*"/>
     </def-cat>
-    <def-cat n="lex-loc">
+    <def-cat n="n.sg.loc">
       <cat-item tags="n.*.sg.loc.*"/>
     </def-cat>
-    <def-cat n="lex-ill">
+    <def-cat n="n.sg.ill">
       <cat-item tags="n.*.sg.ill.*"/>
     </def-cat>
     <def-cat n="num_mod">
@@ -3653,7 +3653,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     <rule comment="C[LT] lex-mannan sem_time_lex" c="Mannan vahku → Sist uke (could mannan get an adj reading?)">
       <pattern>
         <pattern-item n="lex-mannan"/>
-        <pattern-item n="sem_time_lex"/>
+        <pattern-item n="n.sem_time"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -3677,7 +3677,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     <rule comment="C[LT] lex-mannan time-noun" c="Njealje jagi áigi → For fire år siden">
       <pattern>
         <pattern-item n="num"/>
-        <pattern-item n="sem_time_lex"/>
+        <pattern-item n="n.sem_time"/>
         <pattern-item n="lex-siden"/>
       </pattern>
       <action>
