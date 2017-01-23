@@ -1770,11 +1770,11 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_domain"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_pos"/></in>
-               <and>
-                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+                <and>
+                  <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
                   <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
                 </and>
-               <and>
+                <and>
                   <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                   <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
                 </and>
@@ -1905,34 +1905,36 @@ And then there are some categories like "month", with all the months.
           <let>
             <var n="caseprep"/><lit v="til"/>
           </let>
-          <choose><when>
-            <test>
-              <or>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
-                <and>
-                  <equal><var n="tmp"/><lit-tag v="num"/></equal>
-                  <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
-                </and>
-                <and>
-                  <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
-                  <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
-                </and>
-              </or>
-            </test>
-            <let>
-              <var n="caseprep"/><lit v="på"/>
-            </let>
-          </when>
-          <when>
-            <test><or>
-              <in><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
-              <in><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
-              <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
-            </or></test>
-            <let>
-              <var n="caseprep"/><lit v="i"/>
-            </let>
-          </when></choose>
+          <choose>
+            <when>
+              <test>
+                <or>
+                  <in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
+                  <and>
+                    <equal><var n="tmp"/><lit-tag v="num"/></equal>
+                    <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
+                  </and>
+                  <and>
+                    <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
+                    <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
+                  </and>
+                </or>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="på"/>
+              </let>
+            </when>
+            <when>
+              <test><or>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
+                <in><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
+              </or></test>
+              <let>
+                <var n="caseprep"/><lit v="i"/>
+              </let>
+            </when>
+          </choose>
           <choose><when>
             <test>
               <or>
@@ -2401,8 +2403,8 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="2" side="tl" part="case"/><lit-tag v="gen"/></equal>
               <not><equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal></not>
             </and>
-              <equal><clip pos="2" side="tl" part="lemh"/><lit v="mye"/></equal>
-              <equal><clip pos="2" side="tl" part="lemh"/><lit v="mange"/></equal>
+            <equal><clip pos="2" side="tl" part="lemh"/><lit v="mye"/></equal>
+            <equal><clip pos="2" side="tl" part="lemh"/><lit v="mange"/></equal>
           </or></test>
           <let><var n="defnes"/><lit-tag v="ind"/></let>
         </when>
@@ -2893,6 +2895,7 @@ and to Conditional, Causative and and Passive chunks, just to make sure...">
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-på-verbs"/></in></test>
           <let><var n="caseprep"/><lit-tag v="ill-på"/></let>
         </when>
+        <!-- Why commented out? –KBU -->
 <!--        <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-i-verbs"/></in></test>
           <let><var n="caseprep"/><lit-tag v="ill-i"/></let>
@@ -3650,7 +3653,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
-    <rule comment="C[LT] lex-mannan sem_time_lex" c="Mannan vahku → Sist uke (could mannan get an adj reading?)">
+    <rule comment="C[LT] lex-mannan n.sem_time" c="Mannan vahku → Sist uke (could mannan get an adj reading?)">
       <pattern>
         <pattern-item n="lex-mannan"/>
         <pattern-item n="n.sem_time"/>
@@ -3674,7 +3677,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
 
-    <rule comment="C[LT] lex-mannan time-noun" c="Njealje jagi áigi → For fire år siden">
+    <rule comment="C[LT] lex-mannan n.sem_time lex-siden" c="Njealje jagi áigi → For fire år siden">
       <pattern>
         <pattern-item n="num"/>
         <pattern-item n="n.sem_time"/>
@@ -3682,7 +3685,17 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </pattern>
       <action>
         <out>
-          <chunk name="pre_nom">
+          <chunk name="adpos" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="PR"/></tag>
+            </tags>
+            <lu>
+              <lit v="for"/>
+              <lit-tag v="pr"/>
+            </lu>
+          </chunk>
+          <b/>
+          <chunk name="num">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
@@ -3693,11 +3706,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><clip pos="1" side="tl" part="case"/></tag>
             </tags>
             <lu>
-              <lit v="for"/>
-              <lit-tag v="pr"/>
-            </lu>
-            <b pos="1"/>
-            <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_num"/>
               <clip pos="1" side="tl" part="gen"/>
@@ -3705,7 +3713,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
-            <b pos="1"/>
+          <b pos="1"/>
           <chunk name="adv">
             <tags>
               <tag><lit-tag v="ADV"/></tag>
@@ -3717,14 +3725,14 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="nbr"/>
               <lit-tag v="ind"/>
               <clip pos="2" side="tl" part="lemq"/>
-             </lu>
+            </lu>
           </chunk>
-            <b pos="2"/>
+          <b pos="2"/>
           <chunk name="adv">
             <tags>
-              <tag><lit-tag v="ADV"/></tag>
+              <tag><lit-tag v="ADV.@ADVL←"/></tag>
             </tags>
-           <lu>
+            <lu>
               <lit v="siden"/>
               <lit-tag v="adv"/>
             </lu>
@@ -4678,7 +4686,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[_] num-year year">
-
       <pattern>
         <pattern-item n="lex-jahki"/>
         <pattern-item n="num-year"/>
@@ -4714,7 +4721,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </lu>
           </chunk>
         </out>
-     </action>
+      </action>
     </rule>
 
 
@@ -4759,7 +4766,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <test>
               <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_year"/></equal>
             </test>
-           <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+            <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></let>
             <let><var n="n_nbr"/><lit-tag v="sg"/></let>
             <let><var n="c_def_pos"/><lit-tag v="ind"/></let>
           </when>
@@ -5054,7 +5061,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[] num_mod det_mod  nom_head
+    <rule comment="C[] num_mod det_mod nom_head
                    -----
                    čieža eará boazoeaiggádat ">
       <pattern>
@@ -5107,7 +5114,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
-    <rule comment="C[] det_mod det_mod  nom_head
+    <rule comment="C[] det_mod det_mod nom_head
                    -----
                    dat eará boazoeaiggádat ">
       <pattern>
@@ -5417,7 +5424,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <!-- <rules: Lone determiners, pronouns, adverbs -->
 
-    <!-- <rules: Lone determiners, pronouns, adverbs -->
     <rule comment="C[] PRN-NONREFERENTIAL ii goabbáge → ingen av dem
                    Like DET rule, but force nt sg">
       <pattern>
@@ -5427,70 +5433,68 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
-		<choose>
-		<when>
-          <test><equal><clip pos="2" side="sl" part="lemh"/><lit v="mihkke"/></equal></test>
-          <let><clip pos="2" side="tl" part="lemh"/><lit v="ingenting"/></let>
-          <let><clip pos="2" side="tl" part="tags"/><lit-tag v="prn.ind.un.sg.acc"/></let>
-		</when>
-		<otherwise>
-          <let><clip pos="2" side="tl" part="lemh"/><lit v="ingen"/></let>
-          <let><clip pos="2" side="tl" part="tags"/><lit-tag v="det.qnt.m.sg"/></let>
-		</otherwise>
-		</choose>
+        <choose>
+          <when>
+            <test><equal><clip pos="2" side="sl" part="lemh"/><lit v="mihkke"/></equal></test>
+            <let><clip pos="2" side="tl" part="lemh"/><lit v="ingenting"/></let>
+            <let><clip pos="2" side="tl" part="tags"/><lit-tag v="prn.ind.un.sg.acc"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="2" side="tl" part="lemh"/><lit v="ingen"/></let>
+            <let><clip pos="2" side="tl" part="tags"/><lit-tag v="det.qnt.m.sg"/></let>
+          </otherwise>
+        </choose>
 
-		<choose>
-		<when>
-		<test><in caseless="yes"><clip pos="2" side="sl" part="lemh"/><list n="guhte"/></in></test>
-        <out>
-          <var n="caseprep"/>
-          <chunk name="det" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
-            </tags>
-            <lu>
-              <clip pos="2" side="tl" part="whole"/>
-            </lu>
-          </chunk>
-          <b pos="1"/>
-          <chunk name="det">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
-            </tags>
-           <lu>
-              <lit v="av"/>
-              <lit-tag v="pr"/>
-            </lu>
-          </chunk>
-            <b/>
-          <chunk name="det">
-             <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
-            </tags>
-           <lu>
-              <lit v="de"/>
-              <lit-tag v="prn.pers.p3.un.pl.acc"/>
-            </lu>
-          </chunk>
-        </out>
-        </when>
-        <otherwise>
-        <out>
-          <var n="caseprep"/>
-          <chunk name="det" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
-            </tags>
-            <lu>
-              <clip pos="2" side="tl" part="whole"/>
-            </lu>
-          </chunk>
-        </out>
-        </otherwise>
+        <choose>
+          <when>
+            <test><in caseless="yes"><clip pos="2" side="sl" part="lemh"/><list n="guhte"/></in></test>
+            <out>
+              <var n="caseprep"/>
+              <chunk name="det" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SN"/></tag>
+                  <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="2" side="tl" part="whole"/>
+                </lu>
+              </chunk>
+              <b pos="1"/>
+              <chunk name="adpos">
+                <tags>
+                  <tag><lit-tag v="PR"/></tag>
+                </tags>
+                <lu>
+                  <lit v="av"/>
+                  <lit-tag v="pr"/>
+                </lu>
+              </chunk>
+              <b/>
+              <chunk name="prn">
+                <tags>
+                  <tag><lit-tag v="SN"/></tag>
+                </tags>
+                <lu>
+                  <lit v="de"/>
+                  <lit-tag v="prn.pers.p3.un.pl.acc"/>
+                </lu>
+              </chunk>
+            </out>
+          </when>
+          <otherwise>
+            <out>
+              <var n="caseprep"/>
+              <chunk name="det" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SN"/></tag>
+                  <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="2" side="tl" part="whole"/>
+                </lu>
+              </chunk>
+            </out>
+          </otherwise>
         </choose>
       </action>
     </rule>
