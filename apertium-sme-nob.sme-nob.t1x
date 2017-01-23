@@ -1127,7 +1127,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;prfprc&gt;"/>
       <list-item v="&lt;pp&gt;"/>
     </def-list>
-    
+
     <def-list n="sem_food">
       <list-item v="&lt;sem_body_food&gt;"/>
       <list-item v="&lt;sem_domain_food-med&gt;"/>
@@ -1887,7 +1887,7 @@ And then there are some categories like "month", with all the months.
           </when></choose>
           <choose><when>
             <test>
-            <in><clip pos="1" side="tl" part="lemh"/><list n="ess-i"/></in>
+              <in><clip pos="1" side="tl" part="lemh"/><list n="ess-i"/></in>
             </test>
             <let>
               <var n="caseprep"/><lit v="i"/>
@@ -1907,17 +1907,17 @@ And then there are some categories like "month", with all the months.
           </let>
           <choose><when>
             <test>
-            <or>
-            <in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
-            <and>
-            <equal><var n="tmp"/><lit-tag v="num"/></equal>
-            <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
-            </and> 
-            <and>
-            <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
-            <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
-            </and>
-            </or>
+              <or>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
+                <and>
+                  <equal><var n="tmp"/><lit-tag v="num"/></equal>
+                  <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
+                </and>
+                <and>
+                  <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
+                  <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
+                </and>
+              </or>
             </test>
             <let>
               <var n="caseprep"/><lit v="på"/>
@@ -1925,9 +1925,9 @@ And then there are some categories like "month", with all the months.
           </when>
           <when>
             <test><or>
-            <in><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
-            <in><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
-            <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
+              <in><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
+              <in><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
+              <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
             </or></test>
             <let>
               <var n="caseprep"/><lit v="i"/>
@@ -1935,10 +1935,10 @@ And then there are some categories like "month", with all the months.
           </when></choose>
           <choose><when>
             <test>
-            <or>
-            <in><clip pos="1" side="tl" part="lemh"/><list n="ill-NIL"/></in>
-            <in><var n="main-verb-sl"/><list n="ill-NIL-verbs"/></in>
-            </or>
+              <or>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="ill-NIL"/></in>
+                <in><var n="main-verb-sl"/><list n="ill-NIL-verbs"/></in>
+              </or>
             </test>
             <let>
               <var n="caseprep"/><lit v=""/>
@@ -2018,7 +2018,7 @@ And then there are some categories like "month", with all the months.
       </let>
 
       <!-- Now create it for outputting: -->
-      
+
       <choose>
         <when>
           <test><not><equal><var n="caseprep"/><lit v=""/></equal></not></test>
@@ -2577,7 +2577,7 @@ And then there are some categories like "month", with all the months.
 
 
     <!-- Output macros: -->
-    
+
     <def-macro n="out_nom" npar="1"
                c="arg.1: noun
                   -----
@@ -3147,7 +3147,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></let>
           <let><clip pos="1" side="tl" part="voice"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="voice"/><lit v=""/></let> <!-- yes twice, bidix can add two tags :/ -->
-          
+
         </when>
       </choose>
 
@@ -4087,7 +4087,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                 <out><b pos="1"/></out>
               </when>
             </choose>
-              </when>       
+              </when>
 
           <otherwise>
             <call-macro n="out_nom"><with-param pos="2"/></call-macro>
@@ -4100,7 +4100,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                    22-jahkásaš nieida">
       <!--
           Intended matches:
-	^6<num><cmp><guio>/6<det><qnt><un><pl><guio>$ ^jahki<n><der_sasj><adj><attr><@→N>/-åring<n><m><attr><@→N>$ 	
+	^6<num><cmp><guio>/6<det><qnt><un><pl><guio>$ ^jahki<n><der_sasj><adj><attr><@→N>/-åring<n><m><attr><@→N>$
 	^nieida<n><sem_hum><sg><nom><←ext→><@←SUBJ>/jente<n><f><sem_hum><sg><nom><←ext→><@←SUBJ>      -->
       <pattern>
         <pattern-item n="num.cmp"/>
@@ -4662,7 +4662,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <!-- <rules: Noun, numeral+noun and compounds -->
-    
+
     <rule comment="C[_] nom_all (tl: NOM, VERB)
                    This is a catch-all rule; it's OK that some paths are blocked by previous rules.">
       <pattern>
@@ -4672,13 +4672,13 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <let><var n="c_name"/><lit v=""/></let>
         <let><var n="pre-nom"/><lit v=""/></let>
-        <call-macro n="set_defnes"><with-param pos="1"/></call-macro> 
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <call-macro n="out_nom"><with-param pos="1"/></call-macro>
      </action>
     </rule>
 
-    <rule comment="C[_] num-year year"> 
-                  
+    <rule comment="C[_] num-year year">
+
       <pattern>
         <pattern-item n="lex-jahki"/>
         <pattern-item n="num-year"/>
@@ -4704,7 +4704,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <lit-tag v="sg.ind"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
-            <b pos="1"/>    
+            <b pos="1"/>
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_num"/>
@@ -5053,7 +5053,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
- 
+
     <rule comment="C[] num_mod det_mod  nom_head
                    -----
                    čieža eará boazoeaiggádat ">
@@ -5161,7 +5161,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
- 
+
     <rule comment="C[] NUM_MOD NOM.GEN NOM
                    -----
                    Oblique use of num nom, here the final nominal is the head
@@ -7799,11 +7799,17 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-     <choose>
-     <when> 
-     <test><equal><clip pos="1" side="sl" part="a_part"/><lit-tag v="part"/></equal></test>
+        <choose>
+          <when>
+            <test><equal><clip pos="1" side="sl" part="a_part"/><lit-tag v="part"/></equal></test>
+            <let><var n="c_name"/><lit v="part"/></let>
+          </when>
+          <otherwise>
+            <let><var n="c_name"/><lit v="conj"/></let>
+          </otherwise>
+        </choose>
         <out>
-          <chunk name="part" case="caseFirstWord">
+          <chunk namefrom="c_name" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="a_conj"/></tag>
@@ -7815,23 +7821,6 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
             </lu>
           </chunk>
         </out>
-     </when> 
-     <otherwise> 
-        <out>
-          <chunk name="conj" case="caseFirstWord">
-            <tags>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="tl" part="a_conj"/></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_conj"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
-     </otherwise> 
-     </choose>
       </action>
     </rule>
 
