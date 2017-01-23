@@ -173,10 +173,10 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="cmp_sh"/>
     </def-cat>
     <def-cat n="adj.cmp">
-      <cat-item tags="adj.cmp"/>
-      <cat-item tags="adj.cmp.*"/>
       <cat-item tags="adj.*.cmp"/>
       <cat-item tags="adj.*.cmp.*"/>
+      <cat-item tags="adj.*.*.cmp"/>
+      <cat-item tags="adj.*.*.cmp.*"/>
     </def-cat>
     <def-cat n="nom.cmp">
       <cat-item tags="n.cmp"/>
@@ -5289,6 +5289,15 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+		<choose>
+        <when>
+          <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp.guio"/></equal></test>
+          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
+        </when>
+        <otherwise>
+          <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
+        </otherwise>
+		</choose>
         <let>
           <var n="pre-nom"/>
           <concat>
@@ -5299,9 +5308,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="gen"/>
 <!--              <clip pos="1" side="tl" part="nbr"/>-->
               <lit-tag v="sg.ind"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
           </concat>
+
         </let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
