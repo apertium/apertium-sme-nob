@@ -833,11 +833,12 @@ SELECT:fallback ("mange"i) (0 ("<olu>"i)) ;
 
 
 SELECT ("bak"i) (0 ("<duohken>"i) LINK -1 sem_build OR sem_plc - (top)) ;
-SELECT ("bak"i) (0 ("<duohkin>"i) LINK -1 sem_build OR sem_plc - (top)) ;
-
-
 SELECT:fallback ("avhengig av"i) (0 ("<duohken>"i)) ;
-SELECT:fallback ("avhengig av"i) (0 ("<duohkin>"i)) ;
+
+SELECT ("om"i) (0 ("<alde>"i) LINK *-2 ("<nággu>"i) OR ("<gilvu>"i) BARRIER SV-BOUNDARY) ;
+SELECT:fallback ("på"i) (0 ("<alde>"i)) ;
+SELECT ("om"i) (0 ("<nalde>"i) LINK *-2 ("<nággu>"i) OR ("<gilvu>"i) BARRIER SV-BOUNDARY) ;
+SELECT:fallback ("på"i) (0 ("<nalde>"i)) ;
 
 
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP LINK 1 (@COMP-CS←)) ;

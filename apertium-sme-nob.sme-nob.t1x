@@ -371,6 +371,14 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-jahki">
       <cat-item lemma="jahki" tags="n.*"/>
     </def-cat>
+  
+    <def-cat n="lex-minuhtta-loc">
+      <cat-item lemma="minuhtta" tags="n.*.loc.*"/>
+    </def-cat>
+    <def-cat n="lex-minuhtta-ill">
+      <cat-item lemma="minuhtta" tags="n.*.ill.*"/>
+    </def-cat>
+  
     <def-cat n="lex-vel">
       <cat-item lemma="vel" tags="adv.*"/>
       <cat-item lemma="vel" tags="adv"/>
@@ -528,6 +536,11 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="der_nomag"/>
       <attr-item tags="der_muš"/>
       <attr-item tags="der_sasj"/>
+      <attr-item tags="der_caus"/>
+      <attr-item tags="der_h"/>
+      <attr-item tags="der_d"/>
+      <attr-item tags="der_st"/>
+      <attr-item tags="der_vuota"/>
     </def-attr>
     <def-attr n="a_der_v2n">
       <attr-item tags="der_nomact"/>
@@ -1462,6 +1475,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="debatt"/>
       <list-item v="første omgang"/>
       <list-item v="utgangspunkt"/>
+      <list-item v="prosjekt"/>
       <list-item v="mørke"/>
       <list-item v="arbeid"/>
       <list-item v="USA"/>
@@ -1894,8 +1908,9 @@ And then there are some categories like "month", with all the months.
             </let>
           </when></choose>
           <choose><when>
-            <test><in><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in></test>
-            <let>
+            <test><or><in><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in>
+             <equal><var n="main-verb-sl"/><lit v="gohčodit"/></equal></or></test>
+           <let>
               <var n="caseprep"/><lit v=""/>
             </let>
           </when></choose>
@@ -3393,6 +3408,37 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <lit-tag v="pl.def"/>
               <clip pos="1" side="tl" part="lemq"/>
              </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[AT] lex-minuhtta lex-minuhtta" c="minuvttas minuktii → minutt for minutt">
+      <pattern>
+        <pattern-item n="lex-minuhtta-loc"/>
+        <pattern-item n="lex-minuhtta-ill"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="minutt"/>
+              <lit-tag v="n.nt.sg.ind"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="for"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="minutt"/>
+              <lit-tag v="n.nt.sg.ind"/>
+            </lu>
           </chunk>
         </out>
       </action>
