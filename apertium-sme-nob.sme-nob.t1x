@@ -1521,7 +1521,6 @@ And then there are some categories like "month", with all the months.
       <list-item v="nominasjon"/>
       <list-item v="november"/>
       <list-item v="oktober"/>
-      <list-item v="oppfatning"/>
       <list-item v="periode"/>
       <list-item v="rom"/>
       <list-item v="sak"/>
@@ -1813,6 +1812,14 @@ And then there are some categories like "month", with all the months.
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="om"/>
+              </let>
+            </when>
+            <when>
+              <test>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="oppfatning"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="etter"/>
               </let>
             </when>
             <when>

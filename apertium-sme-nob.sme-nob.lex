@@ -1294,8 +1294,7 @@ SELECT ("sår"i) (0 ("<hávvi>"i) - gen);
 # genitive háve is always gang in corpus, and much more frequent than «sår»
 
 # miella 0 = sinn, 1 = oppfatning, 2 = behag
-SELECT ("oppfatning"i) (0 ("<miella>"i) LINK 0 loc LINK -1 @→N) ;
-# sinn => oppfatning (kan regelen vere meir generell?)
+SELECT ("oppfatning"i) (0 ("<miella>"i) + loc LINK -1 @→N) ;
 SELECT:fallback ("sinn"i) (0 ("<miella>"i));
 
 
