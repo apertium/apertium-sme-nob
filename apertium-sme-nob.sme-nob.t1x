@@ -1935,6 +1935,7 @@ And then there are some categories like "month", with all the months.
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
                   </and>
+                    <equal><var n="main-verb-sl"/><lit v="bidjat"/></equal>
                 </or>
               </test>
               <let>
@@ -1949,6 +1950,14 @@ And then there are some categories like "month", with all the months.
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="i"/>
+              </let>
+            </when>
+            <when>
+              <test>
+                <equal><var n="main-verb-sl"/><lit v="mearkkašit"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="for"/>
               </let>
             </when>
           </choose>
