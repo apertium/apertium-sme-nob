@@ -1762,16 +1762,6 @@ And then there are some categories like "month", with all the months.
               </let>
             </when>
             <when>
-              <test><or>
-                <in><var n="previous-nhead"/><list n="loc-fra-head"/></in>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-fra"/></in>
-                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
-              </or></test>
-              <let>
-                <var n="caseprep"/><lit v="fra"/>
-              </let>
-            </when>
-            <when>
               <test><and><or>
                 <in><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
@@ -1811,7 +1801,7 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test>
-                <equal><clip pos="1" side="tl" part="lemh"/><lit v="oppfatning"/></equal>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-etter"/></in>
               </test>
               <let>
                 <var n="caseprep"/><lit v="etter"/>
@@ -1831,6 +1821,16 @@ And then there are some categories like "month", with all the months.
               </test>
               <let>
                 <var n="caseprep"/><lit v="for"/>
+              </let>
+            </when>
+            <when>
+              <test><or>
+                <in><var n="previous-nhead"/><list n="loc-fra-head"/></in>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-fra"/></in>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+              </or></test>
+              <let>
+                <var n="caseprep"/><lit v="fra"/>
               </let>
             </when>
             <when c="Sometimes, das → av den">

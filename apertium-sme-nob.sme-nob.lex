@@ -72,6 +72,7 @@ LIST prop = prop ;
 LIST sem_ani = np.sem_ani sem_ani sem_ani_body-abstr_hum sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_ani_group sem_ani_group_hum sem_ani_hum sem_ani_hum_plc sem_ani_hum_time sem_ani_plc sem_ani_plc_txt sem_ani_time sem_ani_veh ;
 LIST sem_build = sem_amount_build sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_build sem_build_event_org sem_build_obj sem_build-part sem_build-part_plc sem_build_build-part sem_build_clth-part sem_build_edu_org sem_build_event_org sem_build_org sem_build_route  ;
 LIST sem_date = sem_date ;
+LIST sem_domain = sem_domain sem_domain_food-med sem_domain_prod-audio ;
 LIST sem_edu = sem_edu sem_build_edu_org sem_edu_event sem_edu_group_hum sem_edu_mat sem_edu_org ;
 LIST sem_fem = sem_fem (ant f) ;
 LIST sem_food = sem_body_food sem_domain_food-med sem_event_food sem_food sem_food-med sem_food_perc-phys sem_food_plant  ;
@@ -1052,7 +1053,7 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (ref acc) OR (ref loc) OR prfprc or COMMA OR a - attr) ;
 
-SELECT ("lese"i) (0 ("<lohkat>"i)) (1 sem_txt LINK 0 acc OR loc) ;
+SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain LINK 0 acc OR loc) OR (-1 sem_txt OR sem_domain LINK 0 acc OR loc)) ;
 # Son lohká ahte lea buorre doppe.
 
 SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 LANGUAGE LINK 0 acc OR loc) ;
