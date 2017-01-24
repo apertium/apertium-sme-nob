@@ -2279,39 +2279,49 @@ And then there are some categories like "month", with all the months.
                   The sp ones in nob.dix never have defnes tags.
                   Regular nouns are always sg.ind when non-final in compounds.
                   Bidix often does not supply defnes/number, making clip fail; in that case, append to tags">
-      <choose c="cmp tags">
-        <when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
-          <test><and>
-            <equal><clip pos="1" side="sl" part="a_num"/><lit-tag v="num"/></equal>
-            <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal>
-          </and></test>
-          <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
-        </when>
+      <choose c="Only run on compound parts!">
         <when>
-          <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp.guio"/></equal></test>
-          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
+          <test><not><equal><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></equal></not></test>
+          <choose c="cmp tags">
+            <when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
+              <test><and>
+                <equal><clip pos="1" side="sl" part="a_num"/><lit-tag v="num"/></equal>
+                <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal>
+              </and></test>
+              <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
+            </when>
+            <when>
+              <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp.guio"/></equal></test>
+              <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
+            </when>
+          </choose>
+          <choose c="nbr/art tags">
+            <when c="noun sp's have no defnes">
+              <test><and>
+                <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n"/></begins-with>
+                <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sp"/></equal>
+              </and></test>
+              <let><clip pos="1" side="tl" part="art"/><lit v=""/></let>
+            </when>
+            <when c="other noun/adj's as compound parts should be sg.ind">
+              <test><or>
+                <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n"/></begins-with>
+                <begins-with><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></begins-with>
+              </or></test>
+              <let><clip pos="1" side="tl" part="nbr"/><concat><lit-tag v="sg"/></concat></let>
+              <let><clip pos="1" side="tl" part="art"/><concat><lit-tag v="ind"/></concat></let>
+              <choose><when>
+                <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
+                <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="tags"/><lit-tag v="sg"/></concat></let>
+              </when></choose>
+              <choose><when>
+                <test><equal><clip pos="1" side="tl" part="art"/><lit v=""/></equal></test>
+                <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="tags"/><lit-tag v="ind"/></concat></let>
+              </when></choose>
+            </when>
+          </choose>
+          <let><var n="defnes"/><clip pos="1" side="tl" part="art"/></let>
         </when>
-      </choose>
-      <choose c="nbr/art tags">
-        <when c="do nothing for proper nouns / numbers">
-          <test><not><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n"/></begins-with></not></test>
-        </when>
-        <when>
-          <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sp"/></equal></test>
-          <let><clip pos="1" side="tl" part="art"/><lit v=""/></let>
-        </when>
-        <otherwise>
-          <let><clip pos="1" side="tl" part="nbr"/><concat><lit-tag v="sg"/></concat></let>
-          <let><clip pos="1" side="tl" part="art"/><concat><lit-tag v="ind"/></concat></let>
-          <choose><when>
-            <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
-            <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="tags"/><lit-tag v="sg"/></concat></let>
-          </when></choose>
-          <choose><when>
-            <test><equal><clip pos="1" side="tl" part="art"/><lit v=""/></equal></test>
-            <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="tags"/><lit-tag v="ind"/></concat></let>
-          </when></choose>
-        </otherwise>
       </choose>
     </def-macro>
 
@@ -2556,6 +2566,7 @@ And then there are some categories like "month", with all the months.
                   -----
                   Appends arg2 to the pre-nom variable.
                   Assumes defnes has been set!
+                  Assumes clean_cmp has been run if it's a compound!
                   Assumes the space is appended inside the rule!
                   -----
                   TODO: The other possible tl PoS'es">
@@ -2563,6 +2574,11 @@ And then there are some categories like "month", with all the months.
         <when c="Adjective, e.g. sápmi.n.sg.gen → samisk.adj">
           <test><not><equal><clip pos="2" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
           <call-macro n="modify_adj_gen_nbr"><with-param pos="1"/><with-param pos="2"/></call-macro>
+          <choose><when>
+            <test><not><equal><clip pos="2" side="tl" part="a_cmp"/><lit v=""/></equal></not></test>
+            <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+            <let><var n="defnes"/><lit-tag v="ind"/></let>
+          </when></choose>
           <append n="pre-nom">
             <concat>
               <lit v="^"/>
@@ -2576,6 +2592,12 @@ And then there are some categories like "month", with all the months.
               <lit v="$"/>
             </concat>
           </append>
+          <choose>
+            <when>
+              <test><ends-with><clip pos="2" side="tl" part="a_cmp"/><lit-tag v="guio"/></ends-with></test>
+              <append n="pre-nom"><lit v="-"/></append>
+            </when>
+          </choose>
         </when>
         <otherwise c="Noun">
           <append n="pre-nom">
@@ -2587,12 +2609,11 @@ And then there are some categories like "month", with all the months.
               <clip pos="2" side="tl" part="nbr"/>
               <var n="defnes"/>
               <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
               <clip pos="2" side="tl" part="lemq"/>
               <lit v="$"/>
             </concat>
           </append>
-
-          <!-- for possessed NOM -->
         </otherwise>
       </choose>
     </def-macro>
@@ -5288,37 +5309,12 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-
         <let><var n="c_name"/><lit v="pre_"/></let>
 
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
-		<choose>
-        <when>
-          <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp.guio"/></equal></test>
-          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
-        </when>
-        <otherwise>
-          <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
-        </otherwise>
-		</choose>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adj"/>
-              <clip pos="1" side="tl" part="grau"/>
-              <clip pos="1" side="tl" part="gen"/>
-<!--              <clip pos="1" side="tl" part="nbr"/>-->
-              <lit-tag v="sg.ind"/>
-              <clip pos="1" side="tl" part="a_cmp"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-          </concat>
-
-        </let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
@@ -5335,24 +5331,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
-        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
 
         <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_nom"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <clip pos="1" side="tl" part="art"/>
-              <clip pos="1" side="tl" part="a_cmp"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-          </concat>
-        </let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
@@ -5370,35 +5353,18 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
-        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
-        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
 
         <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="1"/></call-macro>
-        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
 
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_nom"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <clip pos="1" side="tl" part="art"/>
-              <clip pos="1" side="tl" part="a_cmp"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <lit v="^"/>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <clip pos="2" side="tl" part="art"/>
-              <clip pos="2" side="tl" part="a_cmp"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            <lit v="$"/>
-          </concat>
-        </let>
+        <append n="pre-nom"><b pos="1"/></append>
+
+        <call-macro n="copy_syn_label"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
