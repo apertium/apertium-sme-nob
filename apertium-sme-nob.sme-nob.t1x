@@ -2281,7 +2281,7 @@ And then there are some categories like "month", with all the months.
                   Bidix often does not supply defnes/number, making clip fail; in that case, append to tags">
       <choose c="Only run on compound parts!">
         <when>
-          <test><not><equal><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></equal></not></test>
+          <test><not><equal><clip pos="1" side="sl" part="a_cmp"/><lit v=""/></equal></not></test>
           <choose c="cmp tags">
             <when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
               <test><and>
@@ -2303,13 +2303,11 @@ And then there are some categories like "month", with all the months.
               </and></test>
               <let><clip pos="1" side="tl" part="art"/><lit v=""/></let>
             </when>
-            <when c="other noun/adj's as compound parts should be sg.ind">
+            <when c="other noun/adj's as compound parts fallback to sg.ind">
               <test><or>
                 <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n"/></begins-with>
                 <begins-with><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></begins-with>
               </or></test>
-              <let><clip pos="1" side="tl" part="nbr"/><concat><lit-tag v="sg"/></concat></let>
-              <let><clip pos="1" side="tl" part="art"/><concat><lit-tag v="ind"/></concat></let>
               <choose><when>
                 <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
                 <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="tags"/><lit-tag v="sg"/></concat></let>
@@ -2481,39 +2479,42 @@ And then there are some categories like "month", with all the months.
                c="arg.1: noun, arg.1: adjective
                   -----
                   ">
-      <choose c="For positives, copy noun number over (if sg/pl).">
-        <when>
-          <test><and>
-            <or>
-              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
-              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
-            </or>
-            <or>
-              <equal><clip pos="2" side="tl" part="temps"/><lit-tag v="pp"/></equal>
-              <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="pst"/></ends-with>
-            </or>
-          </and></test>
-          <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
-        </when>
-      </choose>
-      <choose c="When GD, nob adj's are either nt or mf">
-        <when>
-          <test><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="GD"/></equal></test>
-          <choose c="Try to copy from noun">
-            <when><test><in><clip pos="1" side="tl" part="gen"/><list n="adj-genders"/></in></test>
-            <let><clip pos="2" side="tl" part="gen"/><clip pos="1" side="tl" part="gen"/></let>
-            </when>
-          </choose>
-          <choose c="Default to mf if still unset">
-            <when>
-              <test>
-                <not><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="nt"/></equal></not>
-              </test>
-              <let><clip pos="2" side="tl" part="gen"/><lit-tag v="mf"/></let>
-            </when>
-          </choose>
-        </when>
-      </choose>
+      <choose><when c="(for compound adj's, just keep bidix-specified tags)">
+        <test><equal><clip pos="2" side="sl" part="a_cmp"/><lit v=""/></equal></test>
+        <choose c="For positives, copy noun number over (if sg/pl).">
+          <when>
+            <test><and>
+              <or>
+                <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+                <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+              </or>
+              <or>
+                <equal><clip pos="2" side="tl" part="temps"/><lit-tag v="pp"/></equal>
+                <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="pst"/></ends-with>
+              </or>
+            </and></test>
+            <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+          </when>
+        </choose>
+        <choose c="When GD, nob adj's are either nt or mf">
+          <when>
+            <test><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="GD"/></equal></test>
+            <choose c="Try to copy from noun">
+              <when><test><in><clip pos="1" side="tl" part="gen"/><list n="adj-genders"/></in></test>
+              <let><clip pos="2" side="tl" part="gen"/><clip pos="1" side="tl" part="gen"/></let>
+              </when>
+            </choose>
+            <choose c="Default to mf if still unset">
+              <when>
+                <test>
+                  <not><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="nt"/></equal></not>
+                </test>
+                <let><clip pos="2" side="tl" part="gen"/><lit-tag v="mf"/></let>
+              </when>
+            </choose>
+          </when>
+        </choose>
+      </when></choose>
     </def-macro>
 
     <def-macro n="set_c_syn" npar="1"
@@ -2574,11 +2575,6 @@ And then there are some categories like "month", with all the months.
         <when c="Adjective, e.g. sápmi.n.sg.gen → samisk.adj">
           <test><not><equal><clip pos="2" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
           <call-macro n="modify_adj_gen_nbr"><with-param pos="1"/><with-param pos="2"/></call-macro>
-          <choose><when>
-            <test><not><equal><clip pos="2" side="tl" part="a_cmp"/><lit v=""/></equal></not></test>
-            <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
-            <let><var n="defnes"/><lit-tag v="ind"/></let>
-          </when></choose>
           <append n="pre-nom">
             <concat>
               <lit v="^"/>
