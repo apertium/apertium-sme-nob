@@ -3750,7 +3750,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </pattern>
       <action>
         <out>
-          <chunk name="adpos" case="caseFirstWord">
+          <chunk name="adpos">
             <tags>
               <tag><lit-tag v="PR"/></tag>
             </tags>
@@ -3760,7 +3760,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </lu>
           </chunk>
           <b/>
-          <chunk name="num">
+          <chunk name="num" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
