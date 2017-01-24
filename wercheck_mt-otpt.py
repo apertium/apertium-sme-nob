@@ -129,12 +129,12 @@ def getAMT(f,o_dir,src_only,wer,htrans,mtrans):
         out, err = p.communicate()
         
         if (not src_only):
-            tr_smj = ET.SubElement(o_table, 'tr')
-            th_smj = ET.SubElement(tr_smj, 'th')
-            th_smj.set('class', 'tg-smj')
-            th_smj.set('colspan', '2')
-            th_smj.text = tu[1][0].text
-            htrans = htrans + th_smj.text + ' ' 
+            tr_nob = ET.SubElement(o_table, 'tr')
+            th_nob = ET.SubElement(tr_nob, 'th')
+            th_nob.set('class', 'tg-nob')
+            th_nob.set('colspan', '2')
+            th_nob.text = tu[1][0].text
+            htrans = htrans + th_nob.text + ' ' 
         
         tr_amt = ET.SubElement(o_table, 'tr')
         th_amt = ET.SubElement(tr_amt, 'th')
@@ -146,7 +146,7 @@ def getAMT(f,o_dir,src_only,wer,htrans,mtrans):
             th_amt.set('style', 'border-bottom: 2pt solid;')
 
         if (wer):
-            wer_value = getWER(th_smj.text.split(),th_amt.text.split())
+            wer_value = getWER(th_nob.text.split(),th_amt.text.split())
             tr_wer = ET.SubElement(o_table, 'tr')
             td_wer = ET.SubElement(tr_wer, 'td')
             td_wer.set('class', 'tg-wer')
@@ -170,7 +170,7 @@ def getAMT(f,o_dir,src_only,wer,htrans,mtrans):
                 method="xml")
     print('DONE ' + str(f) + '\n\n')
 
-table_style = '<style type="text/css">\n.tg  {border-collapse:collapse;border-spacing:0;}\n.tg td{font-family:Arial, sans-serif;font-size:14px;padding:8px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}\n.tg th{text-align:left;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:8px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}\n.tg .tg-sme{background-color:#c0c0c0;vertical-align:top;font-weight:bold;}\n.tg .tg-smj{background-color:#efefef;vertical-align:top;font-style:normal;}\n.tg .tg-amt{vertical-align:top;font-style:normal;}\n.tg .tg-wer{vertical-align:top;font-style:normal;color:grey;font-style: italic;}\n.hr.vertical{width: 0px; height: 100%;}</style>'
+table_style = '<style type="text/css">\n.tg  {border-collapse:collapse;border-spacing:0;}\n.tg td{font-family:Arial, sans-serif;font-size:14px;padding:8px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}\n.tg th{text-align:left;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:8px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}\n.tg .tg-sme{background-color:#c0c0c0;vertical-align:top;font-weight:bold;}\n.tg .tg-nob{background-color:#efefef;vertical-align:top;font-style:normal;}\n.tg .tg-amt{vertical-align:top;font-style:normal;}\n.tg .tg-wer{vertical-align:top;font-style:normal;color:grey;font-style: italic;}\n.hr.vertical{width: 0px; height: 100%;}</style>'
 
 # parameters to be adjusted as needed
 s_lang = 'sme'
