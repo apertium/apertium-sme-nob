@@ -916,7 +916,7 @@ SELECT:ha-pret ("ha"i) IF (0 ("<leat>"i)) (0 (indic pret)) (1 inf) ;
 # (unfortunately no animacy, and impers isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
-SELECT:ha-prfprac  ("ha"i) IF (0 ("<leat>"i)) (*1 (prfprc));
+#SELECT:ha-prfprac  ("ha"i) IF (0 ("<leat>"i)) (*1 (prfprc)); LOOK AT THIS
 
 SELECT:Det-er ("være"i) IF (0 ("<leat>"i)) (-1 ("<Dat>") + @SUBJ→) ; # Dat lea …
 
