@@ -823,6 +823,45 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </action>
     </rule>
 
+
+
+    <rule comment="REGLA: SN CNP SN_rPOST adpos
+                   TV ja neahta bokte → via TV og nettet
+                   We assume CG only gives us SN CNP SN if they _should_ be coordinated.
+                   For now only uses the case etc. of the first conjunct.
+                   TODO: what should happen where we still have different cases? («i Norge og på Island»?)">
+      <pattern>
+        <pattern-item n="SN"/>
+        <pattern-item n="CNP"/>
+        <pattern-item n="SN_rPOST"/>
+        <pattern-item n="adpos"/>
+      </pattern>
+      <action>
+        <!-- <exception><test><not><equal><clip pos="1" part="case"/><clip pos="3" part="case"/></equal></not></test></exception> -->
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_name3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk>
+            <var n="c_name"/>
+            <var n="c_tags"/>
+            <lit v="{"/>
+            <clip pos="1" part="content"/>
+            <b pos="2"/>
+            <clip pos="2" part="content"/>
+            <b pos="3"/>
+            <clip pos="3" part="content"/>
+            <lit v="}"/>
+            <clip pos="1" part="lemq"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <!-- <rules: Adpositions -->
 
     <rule comment="REGLA: caseprep-PR SN-rADVL lADVL
