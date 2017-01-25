@@ -852,7 +852,7 @@ SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 comp BARRIER v OR S-BOUNDARY) ;
 ## Viššalat ohppet eanet go láikkit.
 ## Ovdal buorida son dálkkiidis go neavrres olmmoš dábiidis.
 
-SELECT ("som"i) (0 ("<go>"i))(0 cs) ((-1 ("<nu>"i) OR ("<seammá>"i) LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
+SELECT ("som"i) (0 ("<go>"i))(0 cs) ((-1 ("<nu>"i) OR ("<seammá>"i) OR ("<seammás>"i) LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
 ## Elvenes oaččui Niehkostipeandda nu go lei sávvan.
 
 SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (vblex pret) BARRIER (←hab→) OR (@ADVL→)) ;
