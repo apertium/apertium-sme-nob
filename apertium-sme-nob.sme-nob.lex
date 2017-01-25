@@ -814,18 +814,6 @@ SECTION
 
 REMOVE (cmp) (0 n) ;
 
-# go (default)=> når
-# go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
-
-
-SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0 cs) ;
-
-SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
-SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
-SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a - comp) ;
-## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
-## Buorre lei go bohtet.
-## Gummá go ii boahtán.
 
 SELECT ("mye"i) (0 ("<ollu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
 SELECT:fallback ("mange"i) (0 ("<ollu>"i)) ;
@@ -841,6 +829,18 @@ SELECT:fallback ("på"i) (0 ("<alde>"i)) ;
 SELECT ("om"i) (0 ("<nalde>"i) LINK *-2 ("<nággu>"i) OR ("<gilvu>"i) BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("på"i) (0 ("<nalde>"i)) ;
 
+# go (default)=> når
+# go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
+
+
+SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0 cs) ;
+
+SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
+SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
+SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a - comp) ;
+## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
+## Buorre lei go bohtet.
+## Gummá go ii boahtán.
 
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP LINK 1 (@COMP-CS←)) ;
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (-1 ("<veara>"i)) ;
