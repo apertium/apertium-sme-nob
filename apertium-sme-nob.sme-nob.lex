@@ -1773,6 +1773,7 @@ SELECT ("hun"i) (0 ("<son>"i) LINK 1 ("<namma>"i) LINK *1 sem_fem BARRIER pron O
 
 SELECT:fallback ("han"i) (0 ("<son>"i)) ;
 
+SELECT ("av hvem"i) (0 ("<gii>"i))(NEGATE 0 ←hab→ ) ;
 
 
 SELECT ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
