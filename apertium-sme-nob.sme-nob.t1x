@@ -2638,7 +2638,22 @@ And then there are some categories like "month", with all the months.
             </when>
           </choose>
         </when>
-        <otherwise c="Noun">
+        <when c="Proper noun – no nbr/defnes">
+          <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+        </when>
+        <otherwise c="Noun (we hope)">
           <append n="pre-nom">
             <concat>
               <lit v="^"/>
@@ -6951,20 +6966,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </or></test>
           <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
         </when></choose>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
 
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_nom"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="gen-case"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-          </concat>
-        </let>
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
