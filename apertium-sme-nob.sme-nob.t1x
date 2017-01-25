@@ -5409,6 +5409,48 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
 
+    <rule comment="C[] NOM.PROP.GEN NOM.UNPROP.GEN NOM.CMP NOM
+                   -----
+                   Finnmárkku journalistasearvvi journalistabálkkašumi → Finnmark journalistklubbs journalistpris
+                   Moves syn_label from CMP to NOM">
+      <pattern>
+        <pattern-item n="nom.prop.gen"/>
+        <pattern-item n="nom.unprop.gen"/>
+        <pattern-item n="nom.cmp"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
+
+        <!-- Prop -->
+        <choose><when c="Avoid «Tromsøs kommune»">
+          <test><or>
+            <in><clip pos="2" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
+            <in><clip pos="2" side="sl" part="a_sem"/><list n="sem_org"/></in>
+          </or></test>
+          <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
+        </when></choose>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+
+        <!-- possessed NOM -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
+
+        <!-- cmp -->
+        <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="3"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="3"/></call-macro>
+
+        <!-- head -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+      </action>
+    </rule>
+
     <rule comment="C[] NOM.CMP NOM.CMP NOM
                    -----
                    Ruvdnaprinsabáras → Kronprinsparet
