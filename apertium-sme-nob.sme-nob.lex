@@ -900,6 +900,7 @@ SELECT:fallback ("slik"i) IF (0 ("<ná>"i))  ;
 #leat
 
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
+
 SELECT ("måtte"i) IF (0 ("<leat>"i) LINK -1 loc + HUMAN) (1 inf) ;
 # mis lea cahkkehit dola
 SELECT:hab-ha ("ha"i) IF (0 ("<leat>"i)) (*-1 ←hab→ - dem BARRIER SV-BOUNDARY) ;
@@ -908,12 +909,14 @@ SELECT:ha-NOT-actio ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NEGATE *1 actio + ess 
 # sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
 # Dat leat šaddan nu stuorat ahte dat šaddá nu váivi ja lossat dan oahpat dan dáfus go sii leat massán dan interessa mii sis lei go sii ledje unnibut
 # Leat go Ibsenii sáddemin dieđu?
-SELECT ("ha"i) IF (0 ("<leat>"i)) (0 (indic pret)) (1 inf) ;
+SELECT:ha-pret ("ha"i) IF (0 ("<leat>"i)) (0 (indic pret)) (1 inf) ;
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # (Perf Cond 2)
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon
 # (unfortunately no animacy, and impers isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
+
+SELECT:ha-prfprac  ("ha"i) IF (0 ("<leat>"i)) (*1 (prfprc));
 
 SELECT:Det-er ("være"i) IF (0 ("<leat>"i)) (-1 ("<Dat>") + @SUBJ→) ; # Dat lea …
 
@@ -1896,6 +1899,9 @@ SELECT:fallback ("tillitsfull") (0 ("<luohttevaš>"i));
 
 IFF ("-årig") (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
 
+SELECT:fallback ("flere")(0 ("<eanet>"i))(*1 HUMAN BARRIER NOT-PRE-A-N );	
+SELECT:fallback ("mye")(0 ("<eanet>"i));
+	
 ## leage buorre (vær så god)
 
 # buorre:0 → bra, buorre:1→god , så god
