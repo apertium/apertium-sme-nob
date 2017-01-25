@@ -308,6 +308,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <attr-item tags="@VOC"/>
       <attr-item tags="@X"/>
     </def-attr>
+    <def-attr n="a_neverdet">
+      <attr-item tags="neverdet"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
@@ -1079,7 +1082,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
                   No determiner if it already has some determiner other than 'annen',
                   or has a genitive before it">
       <choose>
-        <when c="determiner?">
+        <when c="determiner at all?">
           <test><and>
             <not><in><clip pos="1" part="syn_label"/><list n="syn-no-determiner"/></in></not>
             <not><and>
@@ -1087,7 +1090,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <in><clip pos="2" part="lemh"/><list n="lemh-no-def-determiner"/></in>
             </and></not>
             <not><ends-with><clip pos="2" part="lemh"/><lit v="og en halv"/></ends-with></not>
+            <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></begins-with></not>
             <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with></not>
+            <equal><clip pos="1" part="a_neverdet"/><lit v=""/></equal>
             <not><and>
               <equal><clip pos="1" part="lemh"/><lit v="nom"/></equal>
               <not><equal><clip pos="2" part="a_adj"/><lit v=""/></equal></not>
@@ -1277,7 +1282,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <lu><clip pos="1" part="whole"/></lu>
         </out>
       </action>
-    </rule> 
+    </rule>
     <rule comment="CHUNK: pre_nom">
 <pattern><pattern-item n="pre_nom"/></pattern>
       <action>
@@ -1291,7 +1296,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <lu><clip pos="2" part="whole"/></lu>
         </out>
       </action>
-    </rule> 
+    </rule>
     <rule comment="CHUNK: pre_pre_nom">
 <pattern><pattern-item n="pre_pre_nom"/></pattern>
       <action>

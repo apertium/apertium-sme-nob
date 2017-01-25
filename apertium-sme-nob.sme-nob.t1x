@@ -376,14 +376,14 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-jahki">
       <cat-item lemma="jahki" tags="n.*"/>
     </def-cat>
-  
+
     <def-cat n="lex-minuhtta-loc">
       <cat-item lemma="minuhtta" tags="n.*.loc.*"/>
     </def-cat>
     <def-cat n="lex-minuhtta-ill">
       <cat-item lemma="minuhtta" tags="n.*.ill.*"/>
     </def-cat>
-  
+
     <def-cat n="lex-vel">
       <cat-item lemma="vel" tags="adv.*"/>
       <cat-item lemma="vel" tags="adv"/>
@@ -1087,6 +1087,9 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_wpn"/>
       <attr-item tags="sem_wthr"/>
     </def-attr>
+    <def-attr n="a_neverdet">
+      <attr-item tags="neverdet"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
@@ -1101,6 +1104,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="pre-verb"       c="lu's before verb-lu in verbal chunk (only compounds for now)"/>
     <def-var n="defnes"         c="definiteness (noun, adj)"/>
     <def-var n="c_name"         c="chunk name"/>
+    <def-var n="c_neverdet"     c="tell t4x never to output a determiner if this is set to something"/>
     <def-var n="tmp"            c="temporary variable"/>
     <def-var n="blank"          c="for removing blanks"/>
     <def-var n="c_gen"          c="chunk gender"/>
@@ -1712,6 +1716,27 @@ And then there are some categories like "month", with all the months.
       <list-item v="guhte"/>
       <list-item v="goabbá"/>
       <list-item v="guhtemuš"/>
+    </def-list>
+    <def-list n="determiner-although-determinerless_sem">
+      <list-item v="måned"/>
+      <list-item v="dag"/>
+      <list-item v="uke"/>
+      <list-item v="år"/>
+      <list-item v="time"/>
+      <list-item v="minutt"/>
+      <list-item v="sekund"/>
+    </def-list>
+    <def-list n="determinerless_sem">
+      <list-item v="&lt;sem_time&gt;"/>
+      <list-item v="&lt;sem_time_wthr&gt;"/>
+      <list-item v="&lt;sem_measr_time&gt;"/>
+      <list-item v="&lt;sem_ani_hum_time&gt;"/>
+      <list-item v="&lt;sem_ani_time&gt;"/>
+      <list-item v="&lt;sem_body_group_hum_time&gt;"/>
+      <list-item v="&lt;sem_body_time&gt;"/>
+      <list-item v="&lt;sem_event_time&gt;"/>
+      <list-item v="&lt;sem_hum_lang_time&gt;"/>
+      <list-item v="&lt;sem_plc_time&gt;"/>
     </def-list>
   </section-def-lists>
 
@@ -2632,6 +2657,16 @@ And then there are some categories like "month", with all the months.
       </choose>
     </def-macro>
 
+    <def-macro n="set_neverdet" npar="1">
+      <let><var n="c_neverdet"/><lit v=""/></let>
+      <choose><when>
+        <test><and>
+          <in><clip pos="1" side="tl" part="a_sem"/><list n="determinerless_sem"/></in>
+          <not><in><clip pos="1" side="tl" part="lemh"/><list n="determiner-although-determinerless_sem"/></in></not>
+        </and></test>
+        <let><var n="c_neverdet"/><lit-tag v="neverdet"/></let>
+      </when></choose>
+    </def-macro>
 
     <!-- Output macros: -->
 
@@ -2891,6 +2926,7 @@ And then there are some categories like "month", with all the months.
             </when>
           </choose>
           <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
+          <call-macro n="set_neverdet"><with-param pos="1"/></call-macro>
 
           <out>
             <chunk namefrom="c_name" case="caseFirstWord">
@@ -2904,6 +2940,7 @@ And then there are some categories like "month", with all the months.
                 <tag><clip pos="1" side="tl" part="case"/></tag>
                 <tag><clip pos="1" side="tl" part="a_count"/></tag>
                 <tag><var n="c_animacy"/></tag>
+                <tag><var n="c_neverdet"/></tag>
               </tags>
               <var n="pre-nom"/>
               <lu>
