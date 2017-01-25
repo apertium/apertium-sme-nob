@@ -3,6 +3,11 @@
 set -e -u
 
 tests=(
+    "Od.prp. nr. 41 1949 ja Od.prp. nr. 9 1951. Ja"
+    "daid sáhte suddjet"
+    "Ruvdnaprinseassa Märtha ja moai letne"
+    "ja eanet ovddastanbargguid"
+    "u-vearba Burton-upon-Trent ."
     "1 () 1998-99 Utjamningsmeldinga sátni."
     "1 () 1998-99 Utjamningsmeldinga sátni"
     "1300-."
