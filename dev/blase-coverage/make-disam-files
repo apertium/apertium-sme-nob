@@ -1,0 +1,6 @@
+#!/bin/bash
+
+./run-sme-nob-until-disam untrimmed <free_facta.txt > free_facta.untrimmed &
+./run-sme-nob-until-disam trimmed <free_facta.txt > free_facta.trimmed &
+
+wait

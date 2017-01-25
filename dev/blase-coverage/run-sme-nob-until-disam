@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e -u
+
+d="$(dirname "$0")"
+smenob="$d/../.."
+
+analyser=
+case $1 in
+  untrimmed) analyser='sme-nob.automorf-untrimmed.hfst';;
+  trimmed) analyser='sme-nob.automorf.hfst';;
+  *) echo "need argument 'trimmed' or 'untrimmed'" >&2;;
+esac
+
+apertium-deshtml | hfst-proc --weight-classes 1 -w -p "$smenob"/"${analyser}" | cg-proc "$smenob"/'sme-nob.mor.rlx.bin' | cg-conv -a | vislcg3 -g "$d"/select-sem.cg3b

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+clean () {
+    grep -e '^"' -e '^	' \
+        | sed 's, sem_\([^ ]*\),,; s," \([^ ]*\).*," \1,' \
+        | awk '{x=gensub(/^(	*).*/,"\\1","g",$0);indent=length(x)} line&&indent<=prev{print line;line=""} indent {line=line $0} !indent{print "";print}  {prev=indent}' \
+        | "$GTHOME"/giella-core/scripts/sort-cg-cohort.pl \
+        | uniq \
+        | grep .
+}
+
+[[ "${BASH_SOURCE[0]}" != "${0}" ]] || clean

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+python2 diff-large-files.py \
+        -U100               \
+        <(./clean < "$1" )  \
+        <(./clean < "$2" )  \
+    | awk '/^[+ -]"/{if(p&&m)print r; r="";p=0;m=0}/^[+]\t/{p++}/^-\t/{m++} r{r=r"\t"} {r=r$0}' \
+    | grep -v '^-'
+
+# ^- happens when tokenisation differs
