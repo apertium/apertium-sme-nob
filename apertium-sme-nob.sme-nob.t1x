@@ -380,9 +380,15 @@ And then there are some categories like "month", with all the months.
 
     <def-cat n="lex-minuhtta-loc">
       <cat-item lemma="minuhtta" tags="n.*.loc.*"/>
+      <cat-item lemma="diibmu" tags="n.*.loc.*"/>
+      <cat-item lemma="beaivi" tags="n.*.loc.*"/>
+      <cat-item lemma="jahki" tags="n.*.loc.*"/>
     </def-cat>
     <def-cat n="lex-minuhtta-ill">
       <cat-item lemma="minuhtta" tags="n.*.ill.*"/>
+      <cat-item lemma="diibmu" tags="n.*.ill.*"/>
+      <cat-item lemma="beaivi" tags="n.*.ill.*"/>
+      <cat-item lemma="jahki" tags="n.*.ill.*"/>
     </def-cat>
 
     <def-cat n="lex-vel">
@@ -3659,14 +3665,16 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
-          <chunk name="adv" case="caseFirstWord">
+          <chunk name="adv_mwe" case="caseFirstWord">
             <tags>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
             </tags>
             <lu>
-              <lit v="minutt"/>
-              <lit-tag v="n.nt.sg.ind"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="n"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
             </lu>
             <b pos="1"/>
             <lu>
@@ -3675,8 +3683,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </lu>
             <b pos="1"/>
             <lu>
-              <lit v="minutt"/>
-              <lit-tag v="n.nt.sg.ind"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <lit-tag v="n"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
             </lu>
           </chunk>
         </out>
