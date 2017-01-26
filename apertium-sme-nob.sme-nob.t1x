@@ -2508,6 +2508,16 @@ And then there are some categories like "month", with all the months.
                   –––––
                   If pron is the chunk head, make sure to call this AFTER set_caseprep!">
       <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+      <!-- TODO: maybe a macro / list in case more such: -->
+      <choose>
+        <when>
+          <test><and>
+            <equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="enhver"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal>
+          </and></test>
+          <let><clip pos="1" side="tl" part="gen"/><lit-tag v="m"/></let>
+        </when>
+     </choose>
       <choose>
         <when>
           <test><and>
