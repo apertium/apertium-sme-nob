@@ -1042,6 +1042,9 @@ SELECT:fallback ("snu"i) (0 ("<jorgalit>"i)) ;
 SELECT ("oversette"i) (0 ("<jorgalahttit>"i)) (*0 sem_lang OR sem_txt) ;
 SELECT:fallback ("snu"i) (0 ("<jorgalahttit>"i)) ;
 
+SELECT ("vedta"i) (0 ("<dohkkehit>"i)) ;
+
+
 SELECT ("heve"i) (0 ("<geavvat>"i)) (*0 sem_food) ;
 SELECT:fallback ("hende"i) (0 ("<geavvat>"i)) ;
 
