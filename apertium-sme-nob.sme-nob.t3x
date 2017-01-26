@@ -90,6 +90,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SN.@ADVL→.*.ill.*"/>
       <cat-item tags="SN.@ADVL-ela→.*.ill.*"/>
       <cat-item tags="SN.@ADVL-ine→.*.ill.*"/>
+      <cat-item tags="SN.@ADVL→.*.ill"/>
+      <cat-item tags="SN.@ADVL-ela→.*.ill"/>
+      <cat-item tags="SN.@ADVL-ine→.*.ill"/>
     </def-cat>
     <def-cat n="adv-lADVL">
       <cat-item lemma="adv" tags="@←ADVL"/>
@@ -1451,6 +1454,52 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="3"/>
           <var n="pro"/>
           <chunk><clip pos="4" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: PR ILL FV-esubj adv-lADVL lSUBJ
+                   Insert existential pro based on FV lemma (esubj-tag from t1x)
+
+                   Override prodrop rule (below) if we might have a subject to the right" c="Dása gálgá studeanta bidjat bargguid">
+      <pattern>
+        <pattern-item n="PR"/>
+        <pattern-item n="SN_ill.ADVLr"/>
+        <pattern-item n="FV-esubj"/>
+        <pattern-item n="adv-lADVL"/>
+        <pattern-item n="lSUBJ"/>
+      </pattern>
+      <action>
+        <call-macro n="set_defnes2">
+          <with-param pos="5"/>
+          <with-param pos="3"/>
+        </call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+
+        <let>
+          <var n="pro"/>
+          <concat>
+            <lit v="^prn"/>
+            <lit-tag v="SN.@SUBJ→.p3.nt.sg.nom"/>
+            <lit v="{^prpers"/>
+            <lit-tag v="prn.pers.p3.nt.sg.nom"/>
+            <lit v="$}$"/>
+            <b/>
+          </concat>
+        </let>
+
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <var n="pro"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="4"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
