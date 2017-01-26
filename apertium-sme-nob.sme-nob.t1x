@@ -2654,6 +2654,13 @@ And then there are some categories like "month", with all the months.
         </when>
         <when c="Proper noun – no nbr/defnes">
           <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <choose><when c="Avoid «Tromsøs kommune»">
+            <test><or>
+              <in><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
+              <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+            </or></test>
+            <let><clip pos="2" side="tl" part="gen-case"/><lit v=""/></let>
+          </when></choose>
           <append n="pre-nom">
             <concat>
               <lit v="^"/>
@@ -5439,13 +5446,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
 
         <!-- Prop -->
-        <choose><when c="Avoid «Tromsøs kommune»">
-          <test><or>
-            <in><clip pos="2" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
-            <in><clip pos="2" side="sl" part="a_sem"/><list n="sem_org"/></in>
-          </or></test>
-          <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
-        </when></choose>
         <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="1"/></call-macro>
         <append n="pre-nom"><b pos="1"/></append>
 
@@ -6843,11 +6843,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <choose><when>
-          <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
-          <let><var n="defnes"/><lit v=""/></let>
-          <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
-        </when></choose>
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
         <append n="pre-nom"><b pos="2"/></append>
 
@@ -6874,11 +6869,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-        <choose><when>
-          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
-          <let><var n="defnes"/><lit v=""/></let>
-          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-        </when></choose>
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <append n="pre-nom"><b pos="1"/></append>
 
@@ -6918,11 +6908,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
-        <choose><when>
-          <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
-          <let><var n="defnes"/><lit v=""/></let>
-          <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
-        </when></choose>
         <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="2"/></call-macro>
         <append n="pre-nom"><b pos="2"/></append>
 
@@ -7013,13 +6998,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
-        <choose><when c="Avoid «Tromsøs kommune»">
-          <test><or>
-            <in><clip pos="2" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
-            <in><clip pos="2" side="sl" part="a_sem"/><list n="sem_org"/></in>
-          </or></test>
-          <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
-        </when></choose>
         <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <append n="pre-nom"><b pos="1"/></append>
 
@@ -7584,11 +7562,6 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><clip pos="2" side="tl" part="syn_label"/><lit-tag v="@N←"/></let>
         <let><var n="c_name"/><lit v="pre_"/></let>
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-        <choose><when>
-          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
-          <let><var n="defnes"/><lit v=""/></let>
-          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-        </when></choose>
         <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <append n="pre-nom"><b pos="3"/></append>
 
