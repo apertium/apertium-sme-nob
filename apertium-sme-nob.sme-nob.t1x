@@ -1931,6 +1931,16 @@ And then there are some categories like "month", with all the months.
           <let>
             <var n="caseprep"/><lit v="med"/>
           </let>
+          <choose c="Exceptions to the comitative→med rule:">
+            <when>
+              <test>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="måte"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="på"/>
+              </let>
+            </when>
+            </choose>
         </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal></test>
