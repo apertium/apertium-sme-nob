@@ -369,11 +369,21 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-var n="ana_m_f_pers" c="p3 sg gender (only m or f) set by pers-tagged chunks, used on GD_pers's, stored in pers-tagged FV's for t3x pro insertion"/>
     <def-var n="ana_gen"      c="p3 sg gender (m, f, or nt) set by SUBJ's, used on GD's, stored in FV's for t3x pro insertion"/>
     <def-var n="ana_nbr" c="p3 number, set only if ana_gen is set, used on ND's."/>
+    <def-var n="caseFirstWord" v="Init"/>
   </section-def-vars>
 
   <section-def-macros>
     <def-macro n="switch_cases" npar="2"
                c="Simply switch the typographic cases (upper/lower/capital) of the two arguments.">
+      <choose>
+        <when>
+          <test><equal><var n="caseFirstWord"/><lit v="Init"/></equal></test>
+          <let><var n="caseFirstWord"/><lit v="Aa"/></let>
+        </when>
+        <otherwise>
+          <let><var n="caseFirstWord"/><lit v="aa"/></let>
+        </otherwise>
+      </choose>
       <let><var n="tmp"/><get-case-from pos="1"><clip pos="1" part="lemh"/></get-case-from></let>
       <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
       <modify-case><clip pos="2" part="lemh"/><var n="tmp"/></modify-case>
@@ -1012,7 +1022,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         <pattern-item n="SN"/>
       </pattern>
       <action>
-        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <!-- <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro> -->
         <call-macro n="modify_caseprep"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
@@ -1261,6 +1271,7 @@ TODO: would we ever see  FV CVP FV-cop PR-caseprep-ess  or similar? If so, needs
         <pattern-item n="vcop-FV"/>
       </pattern>
       <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
         <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
         <call-macro n="set_ana_temps"><with-param pos="3"/></call-macro>

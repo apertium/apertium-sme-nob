@@ -1118,8 +1118,9 @@ And then there are some categories like "month", with all the months.
     <def-var n="c_def_pos"      c="chunk defnes tag position"/>
     <def-var n="c_syn"          c="chunk syn_label"/>
     <def-var n="c_animacy"      c="chunk animacy (pers, impers)"/>
-    <def-var n="caseFirstWord"  c="typographic case of first word"/>
+    <def-var n="caseFirstWord"  c="typographic case of first word; initially titlecase" v="Init"/>
     <def-var n="caseprep"       c="nob preposition (whole chunk) based on sme case"/>
+    <def-var n="caseprep_c_name" c="chunk name for the caseprep chunk"/>
     <def-var n="previous-nhead" c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
     <def-var n="main-verb-sl" c="lemh of the previous main verb" />
     <def-var n="aux-verb-tl" c="lemh of the previous aux verb" />
@@ -1811,7 +1812,15 @@ And then there are some categories like "month", with all the months.
                   'FirstWordSeen' that is set to false on periods and true for all other lexical units, but this is low priority.
 
                   We treat UPPERCASE as proper nouns.">
-      <let><var n="caseFirstWord"/><lit v="aa"/></let>
+      <choose>
+        <when>
+          <test><equal><var n="caseFirstWord"/><lit v="Init"/></equal></test>
+          <let><var n="caseFirstWord"/><lit v="Aa"/></let>
+        </when>
+        <otherwise>
+          <let><var n="caseFirstWord"/><lit v="aa"/></let>
+        </otherwise>
+      </choose>
       <choose><when>
         <test><not><or>
           <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
@@ -1865,6 +1874,7 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
                 <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
+                <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_year"/></equal>
               </or>
               <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
               <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal></not>
@@ -2153,15 +2163,16 @@ And then there are some categories like "month", with all the months.
       </let>
 
       <!-- Now create it for outputting: -->
-
       <choose>
         <when>
           <test><not><equal><var n="caseprep"/><lit v=""/></equal></not></test>
+          <let><var n="caseprep_c_name"/><lit v="caseprep"/></let>
+          <modify-case><var n="caseprep_c_name"/><var n="caseFirstWord"/></modify-case>
           <let>
             <var n="caseprep"/>
             <concat>
               <lit v="^"/>
-              <lit v="caseprep"/>
+              <var n="caseprep_c_name"/>
               <lit-tag v="PR"/>
               <clip pos="1" side="tl" part="case"/>
               <lit v="{^"/>
@@ -2170,6 +2181,7 @@ And then there are some categories like "month", with all the months.
               <lit v="$}$ "/>
             </concat>
           </let>
+          <let><var n="caseFirstWord"/><lit v="aa"/></let>
         </when>
       </choose>
     </def-macro>
@@ -5758,9 +5770,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="prn-nonreferential"/>
       </pattern>
       <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
         <let><clip pos="1" side="tl" part="gen"/><lit-tag v="nt"/></let>
@@ -5796,9 +5808,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="prn.res"/>
       </pattern>
       <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <out>
           <var n="caseprep"/>
@@ -5831,9 +5843,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="det"/>
       </pattern>
       <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <choose><when c="dát alone is nearly always 'dette'">
           <test><equal><clip pos="1" side="sl" part="lemh"/><lit v="dát"/></equal></test>
@@ -6120,8 +6132,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="prnitg"/>
       </pattern>
       <action>
-        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
           <chunk name="prn" case="caseFirstWord">
@@ -6150,10 +6162,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="prn.pers"/>
       </pattern>
       <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
 
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
           <chunk name="prn" case="caseFirstWord">
@@ -6548,9 +6560,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="nom_rP"/>
       </pattern>
       <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
         <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
         <let><clip pos="1" side="tl" part="gen"/><lit-tag v="nt"/></let>
         <out>
@@ -7330,7 +7343,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <out>
+          <var n="caseprep"/>
           <chunk name="det" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
