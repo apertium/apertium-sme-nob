@@ -1781,7 +1781,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="set_caseprep" npar="1"
                c="arg.1: noun, pronoun
-                  -----
+                  –––––
                   First attempt (may be changed in later stages).">
       <let>
         <var n="caseprep"/><lit v=""/>
@@ -2115,7 +2115,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="modify_prn_case" npar="1"
                c="arg.1: Pron (which might end up as a nob determiner)
-                  -----
+                  –––––
                   If pron is the chunk head, make sure to call this after set_caseprep!
                   - Personal pronouns can only be nom or acc (note: ←hab→ / @-FSUBJ→ / @-FOBJ→ to nom),
                   - Demonstrative and indefinites can only be gen in nob,
@@ -2175,7 +2175,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="set_prn_gen_nbr_art2" npar="2"
                c="arg.1: prn/det, arg.2: noun (or, the lu we want to base prn/det gen/nbr on)
-                  -----
+                  –––––
                   Note: lone pronouns/determiners just keep GD/ND, this might change
                   in interchunk (postchunk cleans it up if not).">
       <choose c="NUMBER">
@@ -2310,7 +2310,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="copy_syn_label" npar="2"
                c="arg.1: might want a syn_label, arg.2: might have syn_label
-                  -----
+                  –––––
                   Used in compounds, where typically the left part gets the syn_label while
                   the right one needs it.">
       <choose><when>
@@ -2327,7 +2327,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="clean_cmp" npar="1"
                c="arg.1: non-final noun in a compound
-                  -----
+                  –––––
                   The sp ones in nob.dix never have defnes tags.
                   Regular nouns are always sg.ind when non-final in compounds.
                   Bidix often does not supply defnes/number, making clip fail; in that case, append to tags">
@@ -2377,7 +2377,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="set_defnes" npar="1"
                c="arg.1: noun/adj, with syn_label
-                  -----
+                  –––––
                   Default to indefinite, guess definite for certain GF's, genitives, ...
                   Locatives only indefinite in first position with leat
                   Adjectives given to this macro will be (predicative and) indefinite
@@ -2511,7 +2511,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="maybe_det_nbr_to_adj" npar="2"
                c="arg.1: det, arg.1: adjective
-                  -----
+                  –––––
                   Can be useful even if there's a noun, since noun may be sp.
                   ">
       <choose c="For positives, if use any number on ND">
@@ -2534,7 +2534,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="modify_adj_gen_nbr" npar="2"
                c="arg.1: noun, arg.1: adjective
-                  -----
+                  –––––
                   ">
       <choose><when c="(for compound adj's, just keep bidix-specified tags)">
         <test><equal><clip pos="2" side="sl" part="a_cmp"/><lit v=""/></equal></test>
@@ -2621,7 +2621,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="append_pre-nom" npar="2"
                c="arg.1: nom head, arg.2: pre-nom (e.g. genitive-noun, adj)
-                  -----
+                  –––––
                   Appends arg2 to the pre-nom variable.
                   ASSUMES defnes HAS BEEN SET!
                   ASSUMES clean_cmp HAS BEEN RUN IF IT'S A COMPOUND!
@@ -2728,7 +2728,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="out_nom" npar="1"
                c="arg.1: noun
-                  -----
+                  –––––
                   ASSUMES THAT pre-nom, c_name, defnes AND caseFirstWord HAVE BEEN SET!
                   This macro is used to output nominal heads, possibly prepended by determiners
                   or adjectives (stored in pre-nom). It uses the case of the argument to find the
@@ -3018,7 +3018,7 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="out_verb" npar="1"
                c="arg.1: verb
-                  -----
+                  –––––
                   ASSUMES THAT pre-verb, c_name AND caseFirstWord HAVE BEEN SET!
                   This macro is used to output verbal heads, possibly prepended by compound parts
                   (stored in pre-verb).
@@ -5174,7 +5174,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
     <rule comment="C[] NUM_MOD DET_MOD ADJ_ATTR NOM
-                   -----
+                   –––––
                    máŋggain eará smávit fatnasiiguin → med de mange andre mindre båtene">
       <pattern>
         <pattern-item n="num_mod"/>
@@ -5244,7 +5244,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] num_mod det_mod nom_head
-                   -----
+                   –––––
                    čieža eará boazoeaiggádat ">
       <pattern>
         <pattern-item n="num_mod"/>
@@ -5297,7 +5297,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] det_mod det_mod nom_head
-                   -----
+                   –––––
                    dat eará boazoeaiggádat ">
       <pattern>
         <pattern-item n="det_mod"/>
@@ -5352,7 +5352,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] NUM_MOD NOM.GEN NOM
-                   -----
+                   –––––
                    Oblique use of num nom, here the final nominal is the head
                    See NUM_MOD NOM rule.">
       <pattern>
@@ -5409,7 +5409,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
 
     <rule comment="C[] ADJ.CMP NOM
-                   -----
+                   –––––
                    allaskuvla → høyskole
                    Moves syn_label from CMP to NOM">
       <pattern>
@@ -5430,7 +5430,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] NOM.CMP NOM
-                   -----
+                   –––––
                    politiijastašuvnna → politistasjon(s)
                    Moves syn_label from CMP to NOM">
       <pattern>
@@ -5451,7 +5451,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] NOM.PROP.GEN NOM.UNPROP.GEN NOM.CMP NOM
-                   -----
+                   –––––
                    Finnmárkku journalistasearvvi journalistabálkkašumi → Finnmark journalistklubbs journalistpris
                    Moves syn_label from CMP to NOM">
       <pattern>
@@ -5486,7 +5486,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] NOM.CMP NOM.CMP NOM
-                   -----
+                   –––––
                    Ruvdnaprinsabáras → Kronprinsparet
                    Moves syn_label from first CMP to NOM">
       <pattern>
@@ -5513,7 +5513,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] CMP NOM
-                   -----
+                   –––––
                    vuođđofága → grunnfag
                    mielbargin → som medarbeider
                    Words which only appear as compound parts should be fully specified in bidix.
@@ -5544,7 +5544,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] NOM.CMP ADJ
-                   -----
+                   –––––
                    sámegiel → samespråklig
                    Moves syn_label from CMP to NOM">
       <pattern>
@@ -6108,7 +6108,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     <!-- <rules: DET* ADJ* NOM* -->
 
     <rule comment="C[] ADJ
-                   -----
+                   –––––
                    dehálaš → viktig, deháleamos → viktigst
                    bassivuođa → det hellige">
       <pattern>
@@ -6188,7 +6188,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] ADJ_ATTR NOM
-                   -----
+                   –––––
                    almmolaš bálvalusaide → til offentlige tjenester
                    almmolaš bálvalus → (den) offentlige tjenesten">
       <pattern>
@@ -6227,7 +6227,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] ADJ_ATTR ADJ_ATTR NOM
-                   -----
+                   –––––
                    ođđa almmolaš bálvalusaide → til nye offentlige tjenester
                    ođđa almmolaš bálvalus → (den) nye offentlige tjenesten">
       <pattern>
@@ -6281,7 +6281,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] ADJ_ATTR ADJ_ATTR NOM.CMP NOM
-                   -----
+                   –––––
                    ođđa digitála heahtefierpmádat → det nye digitale nødnettverket
                    TODO: epenthesis!
                    Moves syn_label from CMP to NOM">
@@ -6350,7 +6350,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
 
     <rule comment="C[] ADJ_ATTR NOM.CMP NOM
-                   -----
+                   –––––
                    duiska okkupašuvdnafápmu → tysk okkupasjonsmakt
                    Moves syn_label from CMP to NOM">
       <pattern>
@@ -6402,7 +6402,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] ADJ_ATTR NOM.CMP NOM.CMP NOM
-                   -----
+                   –––––
                    Dalá Ruvdnaprinsabáras → Daværende Kronprinsparet
                    Moves syn_label from CMP to NOM">
       <pattern>
@@ -6771,7 +6771,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] NOM.GEN DET ADJ_ATTR NOM
-                   -----
+                   –––––
                    riikka nubbi davvisámegiel namma → landets andre nordsamiske navn
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.
                    Ensure det is definite (using clip, only sets if it has a defnes tag).">
@@ -6843,7 +6843,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] ADJ_ATTR NOM.GEN NOM
-                   -----
+                   –––––
                    aktonas mánáid gatnjaliiguin → ensomme barns tårer
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
@@ -6872,7 +6872,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </action>
     </rule>
     <rule comment="C[] NOM.GEN ADJ_ATTR NOM
-                   -----
+                   –––––
                    gieldda stuorimus mánáidgárdi → kommunens største barnehage
                    Sámi pedagogalaš bargi bargá doppe → En samisk pedagogisk ansatt arbeider der borte
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.
@@ -6904,7 +6904,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] ADJ_ATTR NOM.GEN ADJ_ATTR NOM
-                   -----
+                   –––––
                    Son lea nuorra Ristena boares biilla siste. → Han/Hun er i unge Ristens gamle bil.
                    nuorra sámi boares biilla → en ung samisk gammel bil
                    nuorra Ristena boares biilla → den unge Ristens gamle bil
@@ -6950,7 +6950,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] DET ADJ
-                   -----
+                   –––––
                    Always definite in nob if det is a possessive,
                    TODO: defnes for other determiners, perhaps need c_def_pos
                    TODO: is this a common pattern?">
@@ -7007,7 +7007,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] NOM.PROP_GEN NOM
-                   -----
+                   –––––
                    Defnes of possessed NOM is ind (NOM.PROP has no defnes).
                    Needs to be before NOM.GEN NOM">
       <pattern>
@@ -7073,7 +7073,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] NOM.UNPROP.GEN NOM
-                   -----
+                   –––––
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
         <pattern-item n="nom.unprop.gen"/>
@@ -7141,7 +7141,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] NOM.GEN NOM.CMP NOM
-                   -----
+                   –––––
                    Sámi gievkkanbargi → Samisk kjøkkenansatt
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
@@ -7172,7 +7172,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] DET NOM.GEN NOM
-                   -----
+                   –––––
                    Min álbmoga boahtteáigi → Vårt folks framtid
                    dán jagi válggas → dette år(et)s valg
                    Sets defnes of possessor NOM.GEN based on DET, defnes of possessed NOM is ind.">
@@ -7203,7 +7203,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
 
     <rule comment="C[] REL ADJ
-                   -----
+                   –––––
                    man mávssolaččat → hvor viktig
                    (comp→pst in this construction)">
       <pattern>
@@ -7293,7 +7293,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
          before the string of genitives. -->
 
     <rule comment="C[] NOM.GEN NOM.GEN NOM
-                   -----
+                   –––––
                    dáčča skuvlla kopija → kopi av den norske skolen
                    Outputs _two chunks_, head noun first.">
       <pattern>
@@ -7328,7 +7328,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] NOM.GEN NOM.GEN NOM.GEN NOM
-                   -----
+                   –––––
                    Sámi soga lávlaga čállin → forfatteren av sangen om Samelands slekt (TODO: Samelands slekt → Samefolket)
                    sámi árvvuid oahpaheami vuođđu → et grunnlag for opplæringen i samens verdier
                    Oarje-Finnmárkku oahpaheddjiid searvvi jahkečoahkkin → som årsmøte til foreningen til Vest-Finnmarks lærere (TODO better)
@@ -7376,7 +7376,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] ADJ_ATTR NOM.GEN NOM.GEN NOM
-                   -----
+                   –––––
                    dábálaš dáčča skuvlla kopija → kopi av den vanlige norske skolen
                    Outputs _two chunks_, head noun first.">
       <pattern>
@@ -7520,7 +7520,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] VERB (tl: VERB, ADV, ADJ, NOUN)
                    See out_verb macro.
-                   -----
+                   –––––
                    oažžun → fående (adj.pprs, using fallback rule)
                    ii → adv.p3.sg{ikke}
                    Itgo → adv.p2.sg.qst{ikke}">
