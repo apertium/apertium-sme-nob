@@ -584,6 +584,11 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="adv"/>
       <attr-item tags="cnjcoo"/>
     </def-attr>
+    <def-attr n="a_adv_pr_cnjcoo">
+      <attr-item tags="adv"/>
+      <attr-item tags="cnjcoo"/>
+      <attr-item tags="pr"/>
+    </def-attr>
     <def-attr n="a_ij">
       <attr-item tags="ij"/>
       <attr-item tags="ij"/>
@@ -1588,6 +1593,7 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="loc-NIL" c="Locative noun phrases default to 'i' unless in this list">
       <list-item v="uke"/>
+      <list-item v="glad"/>
       <list-item v="år"/>
     </def-list>
     <def-list n="loc-om-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
@@ -1638,6 +1644,9 @@ And then there are some categories like "month", with all the months.
     <def-list n="ill-NIL" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="feil"/>
       <list-item v="nok"/>
+    </def-list>
+    <def-list n="ill-for-head" c="Illativ @←N noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="behov"/>
     </def-list>
     <def-list n="gen-av-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="forfatter"/>
@@ -1802,13 +1811,13 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_domain"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_pos"/></in>
-                  <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
-                  <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+                <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
-                </or>
-                  <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
-           <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal></not>
-                </and>
+              </or>
+              <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
+              <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal></not>
+            </and>
               </test>
               <let>
                 <var n="caseprep"/><lit v="i"/>
@@ -1842,7 +1851,7 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test>
-                <equal><clip pos="1" side="tl" part="lemh"/><lit v="glad"/></equal>
+                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-NIL"/></in>
               </test>
               <let>
                 <var n="caseprep"/><lit v=""/>
@@ -1987,7 +1996,10 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test>
-                <equal><var n="main-verb-sl"/><lit v="mearkkašit"/></equal>
+                <or>
+                  <equal><var n="main-verb-sl"/><lit v="mearkkašit"/></equal>
+                  <in><var n="previous-nhead"/><list n="ill-for-head"/></in>
+                </or>
               </test>
               <let>
                 <var n="caseprep"/><lit v="for"/>
@@ -2073,6 +2085,7 @@ And then there are some categories like "month", with all the months.
         </when>
       </choose>
 
+                  <!-- <out><lit v="let previous-nhead "/><clip pos="1" side="tl" part="lemh"/></out> -->
       <let>
         <var n="previous-nhead"/>
         <clip pos="1" side="tl" part="lemh"/>
@@ -3215,7 +3228,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal>
             <or>
               <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
-              <not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not>
+              <not><equal><clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/><lit v=""/></equal></not>
               <not><equal><clip pos="1" side="tl" part="a_nom_all"/><lit v=""/></equal></not>
               <not><equal><clip pos="1" side="tl" part="a_pstv"/><lit v=""/></equal></not>
               <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
@@ -5823,7 +5836,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </out>
           </when>
           <when c="Adverb (eg. 'på egen hånd'): no caseprep">
-            <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
+            <test><not><equal><clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/><lit v=""/></equal></not></test>
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
@@ -5832,7 +5845,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                 </tags>
                 <lu>
                   <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adv"/>
+                  <clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
@@ -8036,7 +8049,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
               </or>
-              <equal><clip pos="1" side="tl" part="a_adv"/><lit-tag v="adv"/></equal>
+              <equal><clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/><lit-tag v="adv"/></equal>
             </and></test>
             <out>
               <chunk name="conj" case="caseFirstWord">
@@ -8047,7 +8060,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                 </tags>
                 <lu>
                   <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adv"/>
+                  <clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
@@ -8066,7 +8079,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                 <b/>
                 <lu>
                   <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adv"/>
+                  <clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
@@ -8115,8 +8128,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                 </tags>
                 <lu>
                   <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adv"/>
-                  <clip pos="1" side="tl" part="a_prep"/>
+                  <clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
@@ -8146,7 +8158,7 @@ TODO: this should be an mwe in the analyser.">
             <b/>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adv"/>
+              <clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -8173,7 +8185,7 @@ TODO: this should be an mwe in the analyser.">
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adv"/>
+              <clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
@@ -8215,7 +8227,7 @@ TODO: this should be an mwe in the analyser.">
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adv"/>
+              <clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
