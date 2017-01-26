@@ -2652,6 +2652,28 @@ And then there are some categories like "month", with all the months.
             </when>
           </choose>
         </when>
+        <when c="Determiner">
+          <test><or>
+            <not><equal><clip pos="2" side="tl" part="a_det"/><lit v=""/></equal></not>
+            <not><equal><clip pos="2" side="tl" part="a_prn"/><lit v=""/></equal></not>
+          </or></test>
+          <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
+          <call-macro n="modify_prn_case"><with-param pos="2"/></call-macro>
+          <call-macro n="set_prn_gen_nbr_art2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_det"/>
+              <clip pos="2" side="tl" part="a_prn"/>
+              <var n="prn_gen"/>
+              <var n="prn_nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+        </when>
         <when c="Proper noun – no nbr/defnes">
           <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
           <choose><when c="Avoid «Tromsøs kommune»">
@@ -7252,6 +7274,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
     <rule comment="C[] DET NOM.GEN NOM
                    -----
+                   Min álbmoga boahtteáigi → Vårt folks framtid
                    dán jagi válggas → dette år(et)s valg
                    Sets defnes of possessor NOM.GEN based on DET, defnes of possessed NOM is ind.">
       <pattern>
@@ -7262,78 +7285,15 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
-        <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="2"/></call-macro>
-
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
 
-        <!-- for NOM.GEN -->
+        <!-- for DET_MOD NOM.GEN -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <choose><when>
-          <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
-          <let><var n="defnes"/><lit v=""/></let>
-          <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
-        </when></choose>
-         <choose>
-          <when c="Lene: for sápmi.n.sg.gen samisk.adj">
-            <!-- TODO: def-macro set_pre-nom -->
-            <test>
-            <equal><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></equal></test>
-            <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-            <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-            <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_det"/>
-              <var n="prn_gen"/>
-              <var n="prn_nbr"/>
-              <clip pos="1" side="tl" part="art"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-            <lit v="^"/>
-                  <clip pos="2" side="tl" part="lemh"/>
-                  <clip pos="2" side="tl" part="a_adj"/>
-                  <clip pos="2" side="tl" part="grau"/>
-                  <clip pos="2" side="tl" part="gen"/>
-                  <clip pos="2" side="tl" part="nbr"/>
-                  <lit-tag v="def"/>
-                  <clip pos="2" side="tl" part="lemq"/>
-                <lit v="$"/>
-                <b pos="2"/>
-              </concat>
-            </let>
-          </when>
-        <otherwise>
-       <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_det"/>
-              <var n="prn_gen"/>
-              <var n="prn_nbr"/>
-              <clip pos="1" side="tl" part="art"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-            <lit v="^"/>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <var n="defnes"/>
-              <clip pos="2" side="tl" part="gen-case"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="2"/>
-          </concat>
-        </let>
-        </otherwise>
-        </choose>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
 
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
