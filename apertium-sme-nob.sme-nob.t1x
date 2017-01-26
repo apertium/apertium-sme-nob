@@ -1098,6 +1098,7 @@ And then there are some categories like "month", with all the months.
   </section-def-attrs>
 
   <section-def-vars>
+    <def-var n="esubj"          c="tell t3x that this verb takes existential subject. sometimes."/>
     <def-var n="n_lem"          c="noun lemma"/>
     <def-var n="n_nbr"          c="noun number"/>
     <def-var n="adj_gen"        c="adj gender"/>
@@ -1125,6 +1126,11 @@ And then there are some categories like "month", with all the months.
   </section-def-vars>
 
   <section-def-lists>
+    <def-list n="esubj-verbs">
+      <list-item v="leat"/>
+      <list-item v="mannat"/>
+      <list-item v="šaddat"/>
+    </def-list>
     <def-list n="pers_nouns">
       <list-item v="jente"/>
       <list-item v="gutt"/>
@@ -3371,6 +3377,16 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <append n="c_name"><lit v="verb"/></append>
             </otherwise>
           </choose>
+          <choose>
+            <when>
+              <test><in><clip pos="1" side="sl" part="lemh"/><list n="esubj-verbs"/></in></test>
+              <let><var n="esubj"/><lit-tag v="esubj"/></let>
+            </when>
+            <otherwise>
+              <let><var n="esubj"/><lit v=""/></let>
+            </otherwise>
+          </choose>
+
           <out>
             <chunk namefrom="c_name" case="caseFirstWord">
               <tags>
@@ -3384,6 +3400,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
                 <tag><var n="caseprep"/></tag>
+                <tag><var n="esubj"/></tag>
               </tags>
               <var n="pre-verb"/>
               <lu>
