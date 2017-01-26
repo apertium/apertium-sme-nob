@@ -1,4 +1,6 @@
-all: free_facta.cmp free_facta.unk free_facta.amb.excluded
+all: \
+     free_facta.cmp free_facta.unk free_facta.amb.excluded \
+     tmx.cmp tmx.unk tmx.amb.excluded
 
 # Two tabs: compound
 %.cmp: %.hitparade
@@ -16,7 +18,7 @@ all: free_facta.cmp free_facta.unk free_facta.amb.excluded
 	grep -o '	+"[^	]*' $< | sed 's,^	+",/,; s/" /</; s/$$/>/'|sort -u >$@
 %.amb.exclude: %.amb.want %.amb.have
 	grep -oFf $^ | sort -u | sed 's,^/,+",; s/</" /; s/>$$//' >$@
-%.amb.excluded: free_facta.amb.exclude free_facta.amb
+%.amb.excluded: .amb.exclude %.amb
 	grep -vFf $^ >$@
 
 # Note: literal tabs!
@@ -26,14 +28,18 @@ all: free_facta.cmp free_facta.unk free_facta.amb.excluded
 %.diff: %.trimmed %.untrimmed
 	./make-diff $^ >$@
 
-%.trimmed: % select-sem.cg3b
+%.trimmed: %.txt select-sem.cg3b
 	./run-sme-nob-until-disam trimmed <$< >$@
 
-%.untrimmed: % select-sem.cg3b
+%.untrimmed: %.txt select-sem.cg3b
 	./run-sme-nob-until-disam untrimmed <$< >$@
 
 %.cg3b: %.cg3
 	cg-comp $< $@
+
+tmx.txt:
+	xmlstarlet sel -t -m '//tuv[@lang="sme"]/seg' -c 'text()' -n ../../*tmx_data/*.tmx >$@
+
 
 # Keep all intermediates:
 .SECONDARY:
