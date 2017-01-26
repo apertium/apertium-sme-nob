@@ -917,7 +917,7 @@ SELECT:ha-pret ("ha"i) IF (0 ("<leat>"i)) (0 (indic pret)) (1 inf) ;
 # (unfortunately no animacy, and impers isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
-#SELECT:ha-prfprac  ("ha"i) IF (0 ("<leat>"i)) (*1 (prfprc)); LOOK AT THIS
+SELECT:ha-prfprac  ("ha"i) IF (0 ("<leat>"i)) (*1 prfprc + @-FMAINV BARRIER SV-BOUNDARY) ; #LOOK AT THIS
 
 SELECT:Det-er ("være"i) IF (0 ("<leat>"i)) (-1 ("<Dat>") + @SUBJ→) ; # Dat lea …
 
@@ -1589,6 +1589,10 @@ SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
 
 SELECT ("tale"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i) LINK -1 loc);
 SELECT:fallback ("budskap"i) (0 ("<sáhka>"i));
+
+SELECT ("måte"i) (0 ("<hápmi>"i) + com LINK -1 a + attr);
+SELECT:fallback ("form"i) (0 ("<hápmi>"i));
+
 
 SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
