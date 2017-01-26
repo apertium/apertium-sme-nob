@@ -112,6 +112,14 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item lemma="adv" tags="@ADVL-ine→"/>
       <cat-item lemma="adv" tags="@ADVL-ine→.*"/>
     </def-cat>
+    <def-cat n="ADVLrsent">
+      <cat-item lemma="adv" tags="@ADVL→.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ela→.*"/>
+      <cat-item lemma="adv" tags="@ADVL-ine→.*"/>
+      <cat-item lemma="adv" tags="@ADVL→"/>
+      <cat-item lemma="adv" tags="@ADVL-ela→"/>
+      <cat-item lemma="adv" tags="@ADVL-ine→"/>
+    </def-cat>
     <def-cat n="lOPRED">
       <cat-item tags="SV.@←OPRED.*"/>
       <cat-item tags="SN.@←OPRED.*"/>
@@ -1687,6 +1695,36 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="4" part="whole"/></chunk>
           <b pos="4"/>
           <chunk><clip pos="5" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: maybe-SUBJr ADVLrtimeplc adv-FV.neg IV" c="Son almmatge ii dieđe dan. = Han vet likevel ikke det.">
+      <pattern>
+        <pattern-item n="maybe-SUBJr"/>
+        <pattern-item n="ADVLrsent"/>
+        <pattern-item n="adv-FV.neg"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_GD_ND_subj3"><with-param pos="1"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_defnes2">
+          <with-param pos="1"/>
+          <with-param pos="4"/>
+        </call-macro>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <choose><when>
+          <test><equal><clip pos="4" part="temps"/><lit-tag v="pp"/></equal></test>
+          <let><clip pos="4" part="temps"/><lit-tag v="pret"/></let>
+        </when></choose>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
         </out>
       </action>
     </rule>
