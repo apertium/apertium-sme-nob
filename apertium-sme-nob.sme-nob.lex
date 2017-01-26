@@ -913,7 +913,7 @@ SELECT:ha-pret ("ha"i) IF (0 ("<leat>"i)) (0 (indic pret)) (1 inf) ;
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # (Perf Cond 2)
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon
-# (unfortunately no animacy, and impers isn't until bidix...)
+# (unfortunately no animacy, and impers isn't until bidix...) #'
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
 #SELECT:ha-prfprac  ("ha"i) IF (0 ("<leat>"i)) (*1 (prfprc)); LOOK AT THIS
@@ -982,7 +982,7 @@ SELECT ("få"i) (0 ("<šaddat>"i)) (*-1 HUMAN + ill OR HUMAN + loc BARRIER NOT-A
 # Sutnje šattai álo nu hoahppu.
 SELECT ("få"i) (0 ("<šaddat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 
-# «føde» sounds much worse when it's wrong than «bli», need to work on this:
+# «føde» sounds much worse when it is wrong than «bli», need to work on this:
 SELECT ("føde"i) (0 ("<šaddat>"i)) (1 sem_plc) (NEGATE *0 SPRED) ;
 # Mun lean šaddan Kárášjogas.
 # Kárášjogas mun lean šaddan.
