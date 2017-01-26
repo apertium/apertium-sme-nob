@@ -881,6 +881,7 @@ SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 # post: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
 SELECT ("etter") (0 ("<mielde>"i)) (0 po) (-1 ("<dárbu>"i) OR ("<miella>"i)) ;
 ## Don vieččat boaldinmuoraid dárbbu mielde.
+SELECT ("med") (0 ("<mielde>"i)) (0 adv)  ;
 
 SELECT ("for å"i) IF (0 ("<vai>"i) + cs) (1 inf) ;
 SELECT:fallback ("for at"i) IF (0 ("<vai>"i) + cs) (NOT 1 inf) ;
