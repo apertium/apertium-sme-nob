@@ -1,5 +1,6 @@
 all: \
      free_facta.cmp free_facta.unk free_facta.amb.excluded \
+     translations-test.cmp translations-test.unk translations-test.amb.excluded \
      tmx.cmp tmx.unk tmx.amb.excluded
 
 # Two tabs: compound
@@ -18,7 +19,7 @@ all: \
 	grep -o '	+"[^	]*' $< | sed 's,^	+",/,; s/" /</; s/$$/>/'|sort -u >$@
 %.amb.exclude: %.amb.want %.amb.have
 	grep -oFf $^ | sort -u | sed 's,^/,+",; s/</" /; s/>$$//' >$@
-%.amb.excluded: .amb.exclude %.amb
+%.amb.excluded: %.amb.exclude %.amb
 	grep -vFf $^ >$@
 
 # Note: literal tabs!
@@ -39,6 +40,9 @@ all: \
 
 tmx.txt:
 	xmlstarlet sel -t -m '//tuv[@lang="sme"]/seg' -c 'text()' -n ../../*tmx_data/*.tmx >$@
+
+translations-test.txt: ../../translations-test.html
+	grep tg-sme $< | sed 's/<th class="tg-sme" colspan="2">//;s%</th>%%' >$@
 
 
 # Keep all intermediates:
