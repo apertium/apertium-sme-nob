@@ -1101,7 +1101,9 @@ And then there are some categories like "month", with all the months.
   <section-def-vars>
     <def-var n="esubj"          c="tell t3x that this verb takes existential subject. sometimes."/>
     <def-var n="n_lem"          c="noun lemma"/>
+    <def-var n="v_lem"          c="verb lemma"/>
     <def-var n="n_nbr"          c="noun number"/>
+    <def-var n="seen_num"       c="num if seen a num?"/>
     <def-var n="adj_gen"        c="adj gender"/>
     <def-var n="prn_gen"        c="pronoun gender"/>
     <def-var n="prn_nbr"        c="pronoun number"/>
@@ -2042,7 +2044,7 @@ And then there are some categories like "month", with all the months.
                 <or>
                   <in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
                   <and>
-                    <equal><var n="tmp"/><lit-tag v="num"/></equal>
+                    <equal><var n="seen_num"/><lit-tag v="num"/></equal>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
                   </and>
                   <and>
@@ -3212,15 +3214,15 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond2"/></equal>
           <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond3"/></equal>
         </or></test>
-        <let><var n="tmp"/><lit v="kunne"/></let>
+        <let><var n="v_lem"/><lit v="kunne"/></let>
         <choose><when>
           <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond2"/></equal></test>
-          <let><var n="tmp"/><lit v="skulle"/></let>
+          <let><var n="v_lem"/><lit v="skulle"/></let>
           <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
         </when></choose>
         <choose><when>
           <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond3"/></equal></test>
-          <let><var n="tmp"/><lit v="skulle"/></let>
+          <let><var n="v_lem"/><lit v="skulle"/></let>
           <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pres"/></let>
         </when></choose>
         <out>
@@ -3237,7 +3239,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><var n="caseprep"/></tag>
             </tags>
             <lu>
-              <var n="tmp"/>
+              <var n="v_lem"/>
               <lit-tag v="vblex"/>
               <clip pos="1" side="tl" part="temps"/>
             </lu>
@@ -4402,7 +4404,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <!-- not set_defnes2 here, seems to work better just looking at head syntax tag: -->
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
 
-            <let><var n="tmp"/><lit-tag v="3"/></let>
+        <let><var n="c_def_pos"/><lit-tag v="3"/></let>
         <choose>
           <when>
             <test><begins-with><clip pos="2" side="tl" part="lemh"/><lit v="-"/></begins-with></test>
@@ -4431,7 +4433,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="grau"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
-              <var n="tmp"/>
+              <var n="c_def_pos"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="2"/>
@@ -5019,7 +5021,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
-        <let><var n="tmp"/><b pos="1"/></let>
+        <let><var n="blank"/><b pos="1"/></let>
         <choose>
           <when>
             <test><or>
@@ -5038,7 +5040,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </test>
             <let><var n="n_nbr"/><lit-tag v="sg"/></let>
             <let><var n="c_def_pos"/><lit-tag v="def"/></let>
-            <let><var n="tmp"/><lit v=""/></let>
+            <let><var n="blank"/><lit v=""/></let>
           </when>
           <when c="2015 golggotmánu">
             <test>
@@ -5075,7 +5077,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
-            <var n="tmp"/>      <!-- b pos=1 by default -->
+            <var n="blank"/>      <!-- b pos=1 by default -->
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
@@ -5102,8 +5104,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <let><var n="tmp"/><clip pos="1" side="sl" part="a_num"/></let> <!-- illative på -->
-
+        <let><var n="seen_num"/><clip pos="1" side="sl" part="a_num"/></let> <!-- illative på -->
 
         <let><var n="c_name"/><lit v="pre_"/></let>
         <let>
@@ -5129,8 +5130,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </when></choose>
 
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+        <let><var n="seen_num"/><lit v=""/></let>
       </action>
     </rule>
+
     <rule comment="C[V] num_mod nom.cmp nom_head" c="
                    See NUM_MOD NOM">
       <pattern>
@@ -5215,13 +5218,13 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <!-- TODO: list of 'adj-noun' type adj's? (always def after num)-->
             <!-- TODO: other relevant rules? -->
             <test><equal><clip pos="2" side="tl" part="lemh"/><lit v="år gammel"/></equal></test>
-            <let><var n="tmp"/><lit-tag v="def"/></let>
+            <let><var n="c_def_pos"/><lit-tag v="def"/></let>
           </when>
           <!-- We set use chunk defnes here for both adj and nom,
                so that if defnes changes in t2x/t3x, both adj and nom
                get the change in t4x -->
           <otherwise>
-            <let><var n="tmp"/><lit-tag v="3"/></let>
+            <let><var n="c_def_pos"/><lit-tag v="3"/></let>
           </otherwise>
         </choose>
         <choose>
@@ -5252,7 +5255,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="2" side="tl" part="grau"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
-              <var n="tmp"/>
+              <var n="c_def_pos"/>
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="2"/>
