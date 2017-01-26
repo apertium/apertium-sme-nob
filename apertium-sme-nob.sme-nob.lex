@@ -1153,6 +1153,8 @@ SELECT:fallback ("etablere"i) (0 ("<ásahit>"i));
 SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 ("<ahte>"i) OR adv OR a);
 SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
 
+SELECT:fallback ("avvise"i) (0 ("<hilgut>"i)) ;
+
 
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
