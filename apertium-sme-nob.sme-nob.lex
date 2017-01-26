@@ -843,7 +843,9 @@ SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a - comp) ;
 ## Gummá go ii boahtán.
 
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP LINK 1 (@COMP-CS←)) ;
-SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (-1 ("<veara>"i)) ;
+SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (-1 ("<veara>"i) OR ("<eará>"i)) ;
+SELECT ("enn"i) (0 ("<go>"i)) (-1 ("<veara>"i) OR ("<eará>"i)) ;
+SELECT ("enn"i) (0 ("<go>"i)) (1 ("<dušše>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 ("<ovdal>"i) BARRIER S-BOUNDARY LINK 0 adv) ;
 SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 comp BARRIER v OR S-BOUNDARY) ;
 ## Son lea viššaleabbo go mun.
@@ -1846,7 +1848,7 @@ SELECT:fallback ("prpers"i) (0 ("<ieš>"i) + acc) ;
 SELECT:ble-mye-verre ("mye") (0 ("<sakka>") + adv) (-1 a + pasv LINK 0 v) ; # vearránii sakka
 SELECT ("til") (0 ("<vuhtii>")) (*-1 ("<váldit>")) ;
 SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
-SELECT ("så") (0 ("<nu>"i)) (1 a or ind) ; # dat skuvla nu johtil ahte
+SELECT ("så") (0 ("<nu>"i)) (1 a or ind or ("<galle>")) ; # dat skuvla nu johtil ahte
 SELECT:så-langt-som ("så") (0 ("<nu>"i)) (1 adv) (2 cs) ;
 SELECT ("slik") (0 ("<nu>"i)) ;     # Ja nu leat sii
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);

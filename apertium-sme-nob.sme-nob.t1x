@@ -4975,13 +4975,53 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
      </action>
     </rule>
 
-    <rule comment="C[_] num-year year">
+    <rule comment="C[D] lex-jahki num-year" c="áviisa vuođđuduvvui jagis 1899 = avisa ble grunnlagt i 1899">
       <pattern>
         <pattern-item n="lex-jahki"/>
         <pattern-item n="num-year"/>
       </pattern>
       <action>
-        <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
+        <out>
+          <var n="caseprep"/>
+          <chunk name="nom">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><var n="c_syn"/></tag>
+              <tag><var n="defnes"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><clip pos="1" side="tl" part="a_count"/></tag>
+            </tags>
+<!--            <lu>  not år
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>  -->
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_num"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="C[D] lex-jahki num-year month" c="Váldodoaimmaheaddjin jagi 2015 golggotmánu rájes lea Eilif Andreas Aslaksen = Som redaktør fra oktober 2015 er Eilif Andreas Aslaksen">
+      <pattern>
+        <pattern-item n="lex-jahki"/>
+        <pattern-item n="num-year"/>
+        <pattern-item n="month"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
         <out>
           <var n="caseprep"/>
@@ -4994,14 +5034,14 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><clip pos="1" side="tl" part="case"/></tag>
               <tag><clip pos="1" side="tl" part="a_count"/></tag>
             </tags>
-            <lu>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_nom"/>
-              <clip pos="1" side="tl" part="gen"/>
+            <lu>  
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_nom"/>
+              <clip pos="3" side="tl" part="gen"/>
               <lit-tag v="sg.ind"/>
-              <clip pos="1" side="tl" part="lemq"/>
+              <clip pos="3" side="tl" part="lemq"/>
             </lu>
-            <b pos="1"/>
+            <b pos="1"/>  
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_num"/>
