@@ -870,6 +870,9 @@ SELECT:fallback ("hvilken av de to"i) (0 ("<goabbá>"i)) ;
 
 SELECT:fallback ("i hele"i) (0 ("<miehtá>"i)) ;
 
+SELECT ("om"i) (0 ("<birra>"i) LINK 0 po) ;
+
+
 
 SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 
