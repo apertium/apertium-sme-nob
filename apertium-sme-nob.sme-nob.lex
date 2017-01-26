@@ -1770,6 +1770,7 @@ SELECT ("i henhold til"i) (0 ("<olis>"i)) ;
 # Pronouns, relativisers, conjuctions
 # ==========================
 
+# SELECT:todo ("denne"i nt) (0 ("<dat>"i) + ill LINK 1 ("<leat>"i)) ;
 SELECT ("den"i nt) (0 ("<dat>"i) LINK 1 ("<leat>"i)) ;
 SELECT:fallback ("den"i nt) (0 ("<dat>"i)) ;
 
