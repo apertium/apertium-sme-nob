@@ -892,6 +892,7 @@ SELECT ("fast"i) IF (0 ("<gitta>"i))(*-1 ("<váldit>"i) OR ("<darvánit>"i) OR (
 SELECT:fallback ("stenge"i) IF (0 ("<gitta>"i))  ;
 
 SELECT:fallback ("slik"i) IF (0 ("<ná>"i))  ;
+SELECT:fallback ("enda"i) IF (0 ("<vel>"i))  ;
 
 
 # Verbs
@@ -1831,7 +1832,7 @@ SELECT:fallback ("prpers"i) (0 ("<ieš>"i) + acc) ;
 SELECT:ble-mye-verre ("mye") (0 ("<sakka>") + adv) (-1 a + pasv LINK 0 v) ; # vearránii sakka
 SELECT ("til") (0 ("<vuhtii>")) (*-1 ("<váldit>")) ;
 SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
-SELECT ("så") (0 ("<nu>"i)) (1 a) ; # dat skuvla nu johtil ahte
+SELECT ("så") (0 ("<nu>"i)) (1 a or ind) ; # dat skuvla nu johtil ahte
 SELECT:så-langt-som ("så") (0 ("<nu>"i)) (1 adv) (2 cs) ;
 SELECT ("slik") (0 ("<nu>"i)) ;     # Ja nu leat sii
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
