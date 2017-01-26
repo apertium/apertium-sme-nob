@@ -2503,8 +2503,11 @@ And then there are some categories like "month", with all the months.
       </choose>
     </def-macro>
 
-    <def-macro n="clean_a_det" npar="1"
-               c="arg.1: determiner. Change prn.gen into det.pos">
+    <def-macro n="clean_det_prn" npar="1"
+               c="arg.1: determiner/pronoun. Change prn.gen into det.pos
+                  –––––
+                  If pron is the chunk head, make sure to call this AFTER set_caseprep!">
+      <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
       <choose>
         <when>
           <test><and>
@@ -2662,8 +2665,7 @@ And then there are some categories like "month", with all the months.
             <not><equal><clip pos="2" side="tl" part="a_det"/><lit v=""/></equal></not>
             <not><equal><clip pos="2" side="tl" part="a_prn"/><lit v=""/></equal></not>
           </or></test>
-          <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
-          <call-macro n="modify_prn_case"><with-param pos="2"/></call-macro>
+          <call-macro n="clean_det_prn"><with-param pos="2"/></call-macro>
           <call-macro n="set_prn_gen_nbr_art2"><with-param pos="2"/><with-param pos="1"/></call-macro>
           <append n="pre-nom">
             <concat>
@@ -4130,10 +4132,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
 
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
 
         <choose>
           <when c="adv">
@@ -5203,8 +5204,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="2"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="2"/><with-param pos="4"/></call-macro>
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
@@ -5272,8 +5272,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="2"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
@@ -5325,9 +5324,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="2"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
 
@@ -5621,8 +5619,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="prn-nonreferential"/>
       </pattern>
       <action>
-        <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="2"/></call-macro>
         <choose>
           <when>
             <test><equal><clip pos="2" side="sl" part="lemh"/><lit v="mihkke"/></equal></test>
@@ -5696,10 +5694,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="prn-nonreferential"/>
       </pattern>
       <action>
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
@@ -5737,7 +5733,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </pattern>
       <action>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <out>
@@ -5771,10 +5767,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="det"/>
       </pattern>
       <action>
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <choose><when c="dát alone is nearly always 'dette'">
@@ -6093,7 +6087,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </pattern>
       <action>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
 
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
@@ -6490,10 +6484,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="nom_rP"/>
       </pattern>
       <action>
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
         <let><clip pos="1" side="tl" part="gen"/><lit-tag v="nt"/></let>
@@ -6540,8 +6532,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <!-- <exception><test><not><equal><clip pos="1" side="sl" part="case"/><clip pos="2" side="sl" part="case"/></equal></not></test></exception> -->
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="2"/></call-macro>
 
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
@@ -6592,8 +6583,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
         <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
@@ -6638,8 +6628,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
         <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
         <call-macro n="clean_cmp"><with-param pos="3"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="4"/></call-macro>
@@ -6698,8 +6687,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="3"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
@@ -6751,8 +6739,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="3"/></call-macro>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
@@ -6802,8 +6789,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="2"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="2"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="2"/><with-param pos="4"/></call-macro>
         <let><clip pos="2" side="tl" part="art"/><lit-tag v="def"/></let>
 
@@ -6979,8 +6965,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="clean_a_det"><with-param pos="1"/></call-macro>
-        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
         <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
         <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
