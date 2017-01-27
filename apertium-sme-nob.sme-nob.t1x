@@ -5210,11 +5210,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <pattern-item n="nom.gen_NUMl"/>
       </pattern>
       <action>
-        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
-        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
 
         <let><var n="blank"/><b pos="1"/></let>
         <choose>
@@ -5223,8 +5221,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
               <equal><clip pos="2" side="tl" part="a_nom"/><lit-tag v="n.acr"/></equal>
             </or></test>
-            <let><var n="n_nbr"/><lit v=""/></let>
-            <let><var n="c_def_pos"/><lit v=""/></let>
+            <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
           </when>
           <when c="logi-jagáš → tiåret">
             <test><and>
@@ -5233,8 +5230,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_year"/></equal></not>
             </and>
             </test>
-            <let><var n="n_nbr"/><lit-tag v="sg"/></let>
-            <let><var n="c_def_pos"/><lit-tag v="def"/></let>
+            <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+            <let><var n="defnes"/><lit-tag v="def"/></let>
             <let><var n="blank"/><lit v=""/></let>
           </when>
           <when c="2015 golggotmánu">
@@ -5242,48 +5239,31 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_year"/></equal>
             </test>
             <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></let>
-            <let><var n="n_nbr"/><lit-tag v="sg"/></let>
-            <let><var n="c_def_pos"/><lit-tag v="ind"/></let>
+            <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+            <let><var n="defnes"/><lit-tag v="ind"/></let>
           </when>
           <otherwise>
-            <let><var n="n_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
-            <let><var n="c_def_pos"/><lit-tag v="3"/></let>
+            <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
           </otherwise>
         </choose>
 
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <var n="caseprep"/>
-          <chunk name="pre_nom" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-              <tag><var n="c_syn"/></tag>
-              <tag><var n="defnes"/></tag>
-              <tag><clip pos="1" side="sl" part="mode"/></tag>
-              <tag><var n="c_gen"/></tag>
-              <tag><var n="c_nbr"/></tag>
-              <tag><clip pos="1" side="tl" part="case"/></tag>
-              <tag><clip pos="1" side="tl" part="a_count"/></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_num"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            </lu>
-            <var n="blank"/>      <!-- b pos=1 by default -->
-            <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <var n="n_nbr"/>
-              <var n="c_def_pos"/>
-              <clip pos="1" side="tl" part="gen-case"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <let><var n="pre-nom"/>
+        <concat>
+          <lit v="^"/>
+            <clip pos="1" side="tl" part="lemh"/>
+            <clip pos="1" side="tl" part="a_num"/>
+            <clip pos="1" side="tl" part="gen"/>
+            <clip pos="1" side="tl" part="nbr"/>
+            <clip pos="1" side="tl" part="lemq"/>
+          <lit v="$"/>
+          <var n="blank"/>      <!-- b pos=1 by default -->
+        </concat>
+        </let>
+
+        <!-- This will warn, but we do want the numeral's syn_label on the chunk -->
+        <let><clip pos="2" side="sl" part="syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
 
@@ -5298,32 +5278,33 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <let><var n="seen_num"/><clip pos="1" side="sl" part="a_num"/></let> <!-- illative på -->
 
         <let><var n="c_name"/><lit v="pre_"/></let>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_num"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-          </concat>
-        </let>
-        <let><clip pos="2" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
-        <choose><when>
-          <test><and>
-            <not><equal><clip pos="2" side="sl" part="a_count"/><lit-tag v="coll"/></equal></not>
-            <not><equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
-          </and></test>
-          <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
-        </when></choose>
 
+        <let><var n="seen_num"/><clip pos="1" side="sl" part="a_num"/></let> <!-- illative på -->
+
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+
+        <choose>
+          <when>
+            <test><and>
+              <not><equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+              <or>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
+              </or>
+            </and></test>
+            <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+          </otherwise>
+        </choose>
+
+        <let><clip pos="2" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
         <let><var n="seen_num"/><lit v=""/></let>
       </action>
@@ -5389,6 +5370,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                    guokte buori viesu      → de to gode husene     / to gode hus
                    guokte buori jagi       → de to gode årene      / to gode år
                    okta sámegielalaš bargi → en samiskspråklig ansatt
+                   ALSO OBLIQUE:
+                   golmmain stuora vuogádagain → med tre store system
                    TODO: num_mod nom_head">
       <!--
           Intended matches:
@@ -5413,11 +5396,14 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <choose>
           <when>
-            <test><or>
-              <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
-              <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
-              <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
-            </or></test>
+            <test><and>
+              <not><equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+              <or>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
+              </or>
+            </and></test>
             <let><clip pos="3" side="tl" part="nbr"/><lit-tag v="sg"/></let>
           </when>
           <otherwise>
