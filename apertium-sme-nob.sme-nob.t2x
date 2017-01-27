@@ -72,9 +72,12 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="*.@Num←"/>
     </def-cat>
     <def-cat n="lADVL">
-      <cat-item lemma="adv" tags="@←ADVL"/>
-      <cat-item lemma="adv" tags="@←ADVL-ela"/>
-      <cat-item lemma="adv" tags="@←ADVL-ine"/>
+      <cat-item lemma="adv" tags="ADV.@←ADVL"/>
+      <cat-item lemma="adv" tags="ADV.@←ADVL-ela"/>
+      <cat-item lemma="adv" tags="ADV.@←ADVL-ine"/>
+      <cat-item lemma="adv" tags="ADV.@←ADVL.*"/>
+      <cat-item lemma="adv" tags="ADV.@←ADVL-ela.*"/>
+      <cat-item lemma="adv" tags="ADV.@←ADVL-ine.*"/>
     </def-cat>
     <def-cat n="prn-lADVL">
       <cat-item lemma="prn" tags="SN.@←ADVL.*"/>
@@ -91,7 +94,6 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="caseprep-PR.ess">
       <cat-item lemma="caseprep" tags="PR.ess"/>
-      <cat-item lemma="caseprep" tags="PR.Ess"/>
     </def-cat>
     <def-cat n="SN_PREPl">
       <cat-item tags="SN.@P←.*"/>
