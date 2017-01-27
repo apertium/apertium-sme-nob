@@ -1105,35 +1105,37 @@ And then there are some categories like "month", with all the months.
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="esubj"          c="tell t3x that this verb takes existential subject. sometimes."/>
-    <def-var n="n_lem"          c="noun lemma"/>
-    <def-var n="v_lem"          c="verb lemma"/>
-    <def-var n="n_nbr"          c="noun number"/>
-    <def-var n="seen_num"       c="num if seen a num?"/>
-    <def-var n="adj_gen"        c="adj gender"/>
-    <def-var n="prn_gen"        c="pronoun gender"/>
-    <def-var n="prn_nbr"        c="pronoun number"/>
-    <def-var n="prn_pers"       c="pronoun person (esp. for reflexive)"/>
-    <def-var n="pre-nom"        c="lu's before nom-lu in nominal chunk"/>
-    <def-var n="post-nom"       c="lu's after nom-lu in nominal chunk (only used in 'den som V cmp')"/>
-    <def-var n="pre-verb"       c="lu's before verb-lu in verbal chunk (only compounds for now)"/>
-    <def-var n="defnes"         c="definiteness (noun, adj)"/>
-    <def-var n="c_name"         c="chunk name"/>
-    <def-var n="c_neverdet"     c="tell t4x never to output a determiner if this is set to something"/>
-    <def-var n="tmp"            c="temporary variable"/>
-    <def-var n="blank"          c="for removing blanks"/>
-    <def-var n="c_gen"          c="chunk gender"/>
-    <def-var n="c_nbr"          c="chunk number"/>
-    <def-var n="c_def_pos"      c="chunk defnes tag position"/>
-    <def-var n="c_syn"          c="chunk syn_label"/>
-    <def-var n="c_animacy"      c="chunk animacy (pers, impers)"/>
-    <def-var n="uc_lemh"        c="the lemh, uppercased"/>
-    <def-var n="caseFirstWord"  c="has typographic case of first word; is 'init' if it's the first word of a sentence" v="Init"/>
-    <def-var n="caseprep"       c="nob preposition (whole chunk) based on sme case"/>
+    <def-var n="esubj"           c="tell t3x that this verb takes existential subject. sometimes."/>
+    <def-var n="n_lem"           c="noun lemma"/>
+    <def-var n="v_lem"           c="verb lemma"/>
+    <def-var n="n_nbr"           c="noun number"/>
+    <def-var n="seen_num"        c="num if seen a num?"/>
+    <def-var n="adj_gen"         c="adj gender"/>
+    <def-var n="prn_gen"         c="pronoun gender"/>
+    <def-var n="prn_nbr"         c="pronoun number"/>
+    <def-var n="prn_pers"        c="pronoun person (esp. for reflexive)"/>
+    <def-var n="pre-nom"         c="lu's before nom-lu in nominal chunk"/>
+    <def-var n="post-nom"        c="lu's after nom-lu in nominal chunk (only used in 'den som V cmp')"/>
+    <def-var n="pre-verb"        c="lu's before verb-lu in verbal chunk (only compounds for now)"/>
+    <def-var n="defnes"          c="definiteness (noun, adj)"/>
+    <def-var n="c_name"          c="chunk name"/>
+    <def-var n="c_neverdet"      c="tell t4x never to output a determiner if this is set to something"/>
+    <def-var n="tmp"             c="temporary variable"/>
+    <def-var n="blank"           c="for removing blanks"/>
+    <def-var n="c_gen"           c="chunk gender"/>
+    <def-var n="c_nbr"           c="chunk number"/>
+    <def-var n="c_def_pos"       c="chunk defnes tag position"/>
+    <def-var n="c_syn"           c="chunk syn_label"/>
+    <def-var n="c_animacy"       c="chunk animacy (pers, impers)"/>
+    <def-var n="uc_lemh"         c="the lemh, uppercased"/>
+    <def-var n="caseFirstWord"   c="has typographic case of first word; is 'init' if it's the first word of a sentence" v="Init"/>
+    <def-var n="caseprep"        c="nob preposition (whole chunk) based on sme case"/>
     <def-var n="caseprep_c_name" c="chunk name for the caseprep chunk"/>
-    <def-var n="previous-nhead" c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
-    <def-var n="main-verb-sl" c="lemh of the previous main verb" />
-    <def-var n="aux-verb-tl" c="lemh of the previous aux verb" />
+    <def-var n="previous-nhead"  c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
+    <def-var n="main-verb-sl"    c="sme lemh of the previous main verb" />
+    <def-var n="main-verb-tl"    c="nob lemh of the previous main verb" />
+    <def-var n="aux-verb-sl"     c="sme lemh of the previous aux verb" />
+    <def-var n="aux-verb-tl"     c="nob lemh of the previous aux verb" />
   </section-def-vars>
 
   <section-def-lists>
@@ -2708,6 +2710,7 @@ And then there are some categories like "month", with all the months.
             </and>
           </test>
           <let><var n="main-verb-sl"/><clip pos="1" side="sl" part="lemh"/></let>
+          <let><var n="main-verb-tl"/><clip pos="1" side="tl" part="lemh"/></let>
         </when>
         <when c="M[V] set aux-verb-lemma">
           <test>
@@ -2718,6 +2721,7 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
             </and>
           </test>
+          <let><var n="aux-verb-sl"/><clip pos="1" side="sl" part="lemh"/></let>
           <let><var n="aux-verb-tl"/><clip pos="1" side="tl" part="lemh"/></let>
         </when>
       </choose>
