@@ -830,10 +830,8 @@ SELECT:fallback ("mange"i) (0 ("<olu>"i)) ;
 SELECT ("bak"i) (0 ("<duohken>"i) LINK -1 sem_build OR sem_plc - (top)) ;
 SELECT:fallback ("avhengig av"i) (0 ("<duohken>"i)) ;
 
-SELECT ("om"i) (0 ("<alde>"i) LINK *-2 ("<nággu>"i) OR ("<gilvu>"i) BARRIER SV-BOUNDARY) ;
-SELECT:fallback ("på"i) (0 ("<alde>"i)) ;
-SELECT ("om"i) (0 ("<nalde>"i) LINK *-2 ("<nággu>"i) OR ("<gilvu>"i) BARRIER SV-BOUNDARY) ;
-SELECT:fallback ("på"i) (0 ("<nalde>"i)) ;
+SELECT ("om"i) (0 ("<alde>"i) OR ("<nalde>"i) LINK *-2 ("<nággu>"i) OR ("<gilvu>"i) OR ("<gilvalit>"i) OR ("<nágget>"i) OR ("<riidu>"i) OR ("<riidalit>"i) BARRIER SV-BOUNDARY) ;
+SELECT:fallback ("på"i) (0 ("<alde>"i) OR ("<nalde>"i)) ;
 
 # go (default)=> når
 # go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
@@ -1114,7 +1112,7 @@ SELECT ("forrige"i) IF (0 ("<mannat>"i) + prfprc)(1 n);
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i))(0 sg3);
 ## Mo manná dál?
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 ("<bures>"i) BARRIER v);
-SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i) BARRIER v);
+SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i));
 
 #SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>"i) OR ("<dat>"i));
 ## Mun manan dál.
@@ -1617,6 +1615,7 @@ SELECT:fallback ("budskap"i) (0 ("<sáhka>"i));
 
 SELECT ("måte"i) (0 ("<hápmi>"i) + com LINK -1 a + attr);
 SELECT:fallback ("form"i) (0 ("<hápmi>"i));
+SELECT:fallback ("skilt"i) IF (0 ("<galba>"i)) ;
 
 
 SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIER SV-BOUNDARY);
