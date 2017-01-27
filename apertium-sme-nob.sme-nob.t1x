@@ -1137,6 +1137,10 @@ And then there are some categories like "month", with all the months.
   </section-def-vars>
 
   <section-def-lists>
+    <def-list n="cond-NIL-verbs">
+      <list-item v="berret"/>
+      <list-item v="galgat"/>
+    </def-list>
     <def-list n="esubj-verbs">
       <list-item v="leat"/>
       <list-item v="mannat"/>
@@ -3221,7 +3225,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </when></choose>
 
       <choose c="Prepend 'kunne/skulle/skal' if conditional:"><when>
-        <test><begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with></test>
+        <test><and>
+          <not><in><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in></not>
+          <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
+        </and></test>
         <choose>
           <when>
             <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-skulle"/></equal></test>
