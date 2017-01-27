@@ -5912,7 +5912,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="clean_det_prn"><with-param pos="1"/></call-macro>
 
         <choose><when c="dát alone is nearly always 'dette'">
-          <test><equal><clip pos="1" side="sl" part="lemh"/><lit v="dát"/></equal></test>
+          <test><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="dát"/></equal></test>
           <let><clip pos="1" side="tl" part="gen"/><lit-tag v="nt"/></let>
         </when></choose>
 
