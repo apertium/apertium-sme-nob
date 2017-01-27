@@ -5371,9 +5371,15 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
     </rule>
 
     <rule comment="C[] num_mod adj_attr nom_head" c="
-                   22 jahkásaš Tine
-                   TODO: guokte buori viesu also hits this rule, fix!
-                   See num_mod nom_head">
+                   22 jahkásaš Tine        → 22 år gamle Tine
+                   22 jahkásaš viesu       → det 22 år gamle huset / 22 år gammelt hus
+                   guokte jahkásaš gumppe  → den to år gamle ulven / to år gammel ulv
+                   BUT:
+                   guokte stuora viesu     → de to store husene    / to store hus
+                   guokte buori viesu      → de to gode husene     / to gode hus
+                   guokte buori jagi       → de to gode årene      / to gode år
+                   okta sámegielalaš bargi → en samiskspråklig ansatt
+                   TODO: num_mod nom_head">
       <!--
           Intended matches:
           ^9<num><sg><nom><@HNOUN>$ ^jahkásaš<a><attr><@→N>$ ^álbmotskuvla<n><sg><nom><@HNOUN>$
@@ -5395,24 +5401,29 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
 
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
-        <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <choose>
+          <when>
+            <test><or>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
+            </or></test>
+            <let><clip pos="3" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="3" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+          </otherwise>
+        </choose>
 
-        <!-- not set_defnes2 here, seems to work better just looking at head syntax tag: -->
-        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
 
         <choose>
           <when>
-            <!-- TODO: list of 'adj-noun' type adj's? (always def after num)-->
-            <!-- TODO: other relevant rules? -->
             <test><equal><clip pos="2" side="tl" part="lemh"/><lit v="år gammel"/></equal></test>
-            <let><var n="c_def_pos"/><lit-tag v="def"/></let>
+            <let><var n="defnes"/><lit-tag v="def"/></let>
           </when>
-          <!-- We set use chunk defnes here for both adj and nom,
-               so that if defnes changes in t2x/t3x, both adj and nom
-               get the change in t4x -->
           <otherwise>
-            <let><var n="c_def_pos"/><lit-tag v="3"/></let>
+            <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
           </otherwise>
         </choose>
 
