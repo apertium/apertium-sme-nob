@@ -784,8 +784,6 @@ And then there are some categories like "month", with all the months.
     <def-attr n="modality">
       <attr-item tags="indic"/>
       <attr-item tags="cond"/>
-      <attr-item tags="cond2"/>
-      <attr-item tags="cond3"/>
       <attr-item tags="pot"/>
     </def-attr>
     <def-attr n="syn_label">
@@ -3223,22 +3221,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </when></choose>
 
       <choose c="Prepend 'kunne/skulle/skal' if conditional:"><when>
-        <test><or>
-          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond"/></equal>
-          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond2"/></equal>
-          <equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond3"/></equal>
-        </or></test>
+        <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond"/></equal></test>
         <let><var n="v_lem"/><lit v="kunne"/></let>
-        <choose><when>
-          <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond2"/></equal></test>
-          <let><var n="v_lem"/><lit v="skulle"/></let>
-          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
-        </when></choose>
-        <choose><when>
-          <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond3"/></equal></test>
-          <let><var n="v_lem"/><lit v="skulle"/></let>
-          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pres"/></let>
-        </when></choose>
         <out>
           <chunk name="verb" case="caseFirstWord">
             <tags>
@@ -3255,7 +3239,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <lu>
               <var n="v_lem"/>
               <lit-tag v="vblex"/>
-              <clip pos="1" side="tl" part="temps"/>
+              <lit-tag v="pret"/>
             </lu>
           </chunk>
           <b/>
