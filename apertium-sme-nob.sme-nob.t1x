@@ -2764,6 +2764,13 @@ And then there are some categories like "month", with all the months.
             </choose>
           </when>
         </choose>
+        <choose c="... but when @→A, use sg.nt">
+          <when>
+            <test><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→A"/></equal></test>
+            <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+            <let><clip pos="2" side="tl" part="gen"/><lit-tag v="nt"/></let>
+          </when>
+        </choose>
       </when></choose>
     </def-macro>
 
@@ -2834,6 +2841,24 @@ And then there are some categories like "month", with all the months.
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <var n="defnes"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+          <choose>
+            <when>
+              <test><ends-with><clip pos="2" side="tl" part="a_cmp"/><lit-tag v="guio"/></ends-with></test>
+              <append n="pre-nom"><lit v="-"/></append>
+            </when>
+          </choose>
+        </when>
+        <when c="Adverb">
+          <test><begins-with><clip pos="2" side="tl" part="a_adv"/><lit-tag v="adv"/></begins-with></test>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adv"/>
               <clip pos="2" side="tl" part="lemq"/>
               <lit v="$"/>
             </concat>
