@@ -815,6 +815,12 @@ SECTION
 REMOVE (cmp) (0 n) ;
 
 
+# Conditionalis: kunne vs skulle vs ville
+SELECT:buoremus-livččii (cond-ville) (-1 a + superl) (0 ("<leat>"i)) ;
+SELECT:sáhttit (cond-skulle) (0 ("<sáhttit>"i)) ;
+SELECT:fallback-kunne (cond) ;
+
+
 SELECT ("mye"i) (0 ("<ollu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
 SELECT:fallback ("mange"i) (0 ("<ollu>"i)) ;
 SELECT ("mye"i) (0 ("<olu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;

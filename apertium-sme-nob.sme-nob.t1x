@@ -3221,8 +3221,20 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </when></choose>
 
       <choose c="Prepend 'kunne/skulle/skal' if conditional:"><when>
-        <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond"/></equal></test>
-        <let><var n="v_lem"/><lit v="kunne"/></let>
+        <test><begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with></test>
+        <choose>
+          <when>
+            <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-skulle"/></equal></test>
+            <let><var n="v_lem"/><lit v="skulle"/></let>
+          </when>
+          <when>
+            <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-ville"/></equal></test>
+            <let><var n="v_lem"/><lit v="ville"/></let>
+          </when>
+          <otherwise>
+            <let><var n="v_lem"/><lit v="kunne"/></let>
+          </otherwise>
+        </choose>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
         <out>
           <chunk name="verb" case="caseFirstWord">
