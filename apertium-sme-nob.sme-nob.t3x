@@ -284,13 +284,6 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="SPEC" c="'Specifiyer', sort of... rather diffuse category here">
       <cat-item lemma="adv" tags="@PCLE"/> <!-- TODO check -->
-      <cat-item lemma="adv" tags="@←ADVL"/>
-      <cat-item lemma="adv" tags="@←ADVL-ela"/>
-      <cat-item lemma="adv" tags="@←ADVL-ine"/>
-      <cat-item lemma="adv" tags="@←ADVL.*"/>
-      <cat-item lemma="adv" tags="@←ADVL-ela.*"/>
-      <cat-item lemma="adv" tags="@←ADVL-ine.*"/>
-      <cat-item lemma="adv" tags="@ADVL"/>
       <cat-item lemma="adv" tags="@ADVL-ela"/>
       <cat-item lemma="adv" tags="@ADVL-ine"/>
       <cat-item lemma="adv" tags="@ADVL.*"/>
@@ -1460,8 +1453,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
-           <var n="pro"/>
-         <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="pro"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="2"/>
           <chunk><clip pos="3" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
