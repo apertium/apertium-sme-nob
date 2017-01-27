@@ -3223,6 +3223,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <choose c="Prepend 'kunne/skulle/skal' if conditional:"><when>
         <test><equal><clip pos="1" side="sl" part="modality"/><lit-tag v="cond"/></equal></test>
         <let><var n="v_lem"/><lit v="kunne"/></let>
+        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
         <out>
           <chunk name="verb" case="caseFirstWord">
             <tags>
@@ -3239,7 +3240,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <lu>
               <var n="v_lem"/>
               <lit-tag v="vblex"/>
-              <lit-tag v="pret"/>
+              <clip pos="1" side="tl" part="temps"/>
             </lu>
           </chunk>
           <b/>
