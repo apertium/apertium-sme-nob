@@ -874,12 +874,18 @@ SELECT:fallback ("i hele"i) (0 ("<miehtá>"i)) ;
 
 SELECT ("om"i) (0 ("<birra>"i) LINK 0 po) ;
 
+SELECT ("innen"i) (0 ("<sisa>"i) LINK 0 po LINK -1 sem_time) ;
+SELECT:fallback ("inn i"i) (0 ("<sisa>"i) LINK 0 po) ;
 
+SELECT:fallback ("foran"i) (0 ("<ovdalii>"i) ) ;
 
 SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 
 # post: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
 SELECT ("etter") (0 ("<mielde>"i)) (0 po) (-1 ("<dárbu>"i) OR ("<miella>"i)) ;
+SELECT ("i løpet av") (0 ("<mielde>"i)) (0 po LINK -1 sem_time)  ;
+
+
 ## Don vieččat boaldinmuoraid dárbbu mielde.
 SELECT ("med") (0 ("<mielde>"i)) (0 adv)  ;
 
@@ -1099,6 +1105,7 @@ SELECT ("forrige"i) IF (0 ("<mannat>"i) + prfprc)(1 n);
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i))(0 sg3);
 ## Mo manná dál?
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 ("<bures>"i) BARRIER v);
+SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i) BARRIER v);
 
 #SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>"i) OR ("<dat>"i));
 ## Mun manan dál.
@@ -1842,6 +1849,9 @@ SELECT:din ies-px + gen (0 ("<ieš>"i)) (0 Px) ;
 # Váldde biergasiid iežat fárrui → Ta sakene med deg (adpositional genitive turned back into non-genitive in t2x)
 
 SELECT:fallback ("prpers"i) (0 ("<ieš>"i) + acc) ;
+
+SELECT ("hvor mange") (0 ("<galle>"i)) (-1 v) ;
+#SELECT:fallback ("mange") (0 ("<galle>"i)) ;
 
 
 # Adverbs
