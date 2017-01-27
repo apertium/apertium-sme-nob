@@ -4,7 +4,7 @@
 This is the third pass. Responsibilities of this file include:
 
 * V2 Movement etc., rules which involve verb, adverb and/or noun chunks
-  * See rule: SPEC SN FV
+  * See rule: V2-trigger SN FV
 * Inserting dropped pronouns
   * Overridden by rules matching the maybe-[LR]SUBJ categories; these include
     unknowns and should just be passed through unchanged.
@@ -282,7 +282,8 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="lemq.lemq-obj"/>
       <cat-item tags="lemq.lemq-obj.*"/>
     </def-cat>
-    <def-cat n="SPEC" c="'Specifiyer', sort of... rather diffuse category here">
+    <def-cat n="V2-trigger" c="'Specifiyer', sort of... rather diffuse category here, including regular cnjsub (+CS)
+                               and longer chunks like «Etter min oppfatning»">
       <cat-item lemma="adv" tags="@PCLE"/> <!-- TODO check -->
       <cat-item lemma="adv" tags="@ADVL-ela"/>
       <cat-item lemma="adv" tags="@ADVL-ine"/>
@@ -326,7 +327,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SN.@X"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
-    <def-cat n="SPEC_SUBJr.qst">
+    <def-cat n="V2-trigger_SUBJr.qst">
       <cat-item tags="SN.@SUBJ→.*.qst.*"/>
     </def-cat>
     <def-cat n="SADV">
@@ -977,13 +978,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
 
 
-    <!-- <rules: SPEC_SUBJr.qst FV RSPRED* (insert existential 'det') -->
-    <rule comment="REGLA: SPEC_SUBJr.qst FV
+    <!-- <rules: V2-trigger_SUBJr.qst FV RSPRED* (insert existential 'det') -->
+    <rule comment="REGLA: V2-trigger_SUBJr.qst FV
                    Áhččigo boahtá (ihttin) => Er det far som kommer (i morgen)
                    Áhččigo bođii (ikte) => Var det far som kom (i går)
                    Nom.qst.@SUBJ→ => Er det X som ...">
       <pattern>
-        <pattern-item n="SPEC_SUBJr.qst"/>
+        <pattern-item n="V2-trigger_SUBJr.qst"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -1048,9 +1049,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC rel-SUBJr FV">
+    <rule comment="REGLA: V2-trigger rel-SUBJr FV">
       <pattern>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="rel-SUBJr"/>
         <pattern-item n="FV"/>
       </pattern>
@@ -1067,10 +1068,10 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC rel-SUBJr FV">
+    <rule comment="REGLA: PR V2-trigger rel-SUBJr FV">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="rel-SUBJr"/>
         <pattern-item n="FV"/>
       </pattern>
@@ -1091,7 +1092,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
     <!-- <rules: maybe-SUBJr ADVL* FV IV* -->
-    <rule comment="REGLA: SPEC maybe-SUBJr FV
+    <rule comment="REGLA: V2-trigger maybe-SUBJr FV
                    V2-rule
                    -----
                    Doppe son orui (vahku) => Der_borte bodde han (ei uke)
@@ -1100,7 +1101,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                    (PR)Mánnán/Nuorran son orui Romssas => (Som) barn/ungdom bodde han i Tromsø
                    (don't have to match the PR if we can rely on the syn_label)">
       <pattern>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="maybe-SUBJr"/>
         <pattern-item n="FV"/>
       </pattern>
@@ -1121,12 +1122,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC maybe-SUBJr ADVL FV
+    <rule comment="REGLA: PR V2-trigger maybe-SUBJr ADVL FV
                    V2-rule
                    Mu bealis dat dušše nannejuvvui =2> for meg det bare ble =3> for meg ble det bare ">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="maybe-SUBJr"/>
         <pattern-item n="ADVL"/>
         <pattern-item n="FV"/>
@@ -1152,13 +1153,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC maybe-SUBJr FV
+    <rule comment="REGLA: PR V2-trigger maybe-SUBJr FV
                    V2-rule
                    dan maŋŋá son logai => etter det lærte han
-                   ('maŋŋá(PR) dan(SPEC)' after t2x)">
+                   ('maŋŋá(PR) dan(V2-trigger)' after t2x)">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="maybe-SUBJr"/>
         <pattern-item n="FV"/>
       </pattern>
@@ -1357,7 +1358,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <!-- <rules: SPEC* FV IV* RSUBJ: -->
+    <!-- <rules: V2-trigger* FV IV* RSUBJ: -->
     <rule comment="REGLA: FV maybe-lSUBJ
                    -----
                    Override prodrop rule (below) if we might have a subject to the right">
@@ -1703,11 +1704,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     <!--   </action> -->
     <!-- </rule> -->
 
-    <rule comment="REGLA: SPEC FV maybe-lSUBJ
+    <rule comment="REGLA: V2-trigger FV maybe-lSUBJ
                    de lei son (juo) => så hadde han (allerede)
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
@@ -1727,13 +1728,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC FV RSPRED
+    <rule comment="REGLA: V2-trigger FV RSPRED
                    -----
                    (Muhto man) okto lei son? => (Men hvor) alene var han?
                    Override prodrop rule for certain subject predicates on the right
                    TODO: more general RSPRED handling">
       <pattern>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
         <pattern-item n="lSPRED"/>
       </pattern>
@@ -1753,12 +1754,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC FV maybe-lSUBJ
+    <rule comment="REGLA: PR V2-trigger FV maybe-lSUBJ
                    (PR) su_mielas leat bohccot => i_hans_oppfatning er reinene
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
@@ -1804,11 +1805,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC FV IV maybe-lSUBJ
+    <rule comment="REGLA: V2-trigger FV IV maybe-lSUBJ
                    dađistaga gildui sámegiella => etterhvert ble forbudt samisken => etterhvert ble samisken forbudt
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
         <pattern-item n="IV"/>
         <pattern-item n="maybe-lSUBJ"/>
@@ -1831,12 +1832,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC FV IV maybe-lSUBJ
+    <rule comment="REGLA: PR V2-trigger FV IV maybe-lSUBJ
                    (PR) dan maŋŋá gildui sámegiella => etter det ble forbudt samisken => etter det ble samisken forbudt
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
         <pattern-item n="IV"/>
         <pattern-item n="maybe-lSUBJ"/>
@@ -2004,15 +2005,15 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
 
     <!-- <rules: pro-drop insertion for all finite verbs -->
-    <!-- <rules: (PR)SPEC* FV: -->
-    <rule comment="REGLA: SPEC FV
+    <!-- <rules: (PR)V2-trigger* FV: -->
+    <rule comment="REGLA: V2-trigger FV
                    -----
                    V2-rule with pro-drop insertion
                    Doppe dihten => Der borte visste jeg
 
                    Note: This rule is partly blocked by the 'maybe-SUBJr FV' rule above.">
       <pattern>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -2031,14 +2032,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: SPEC FV IV
+    <rule comment="REGLA: V2-trigger FV IV
                    -----
                    V2-rule with pro-drop insertion (gender based on IV)
                    duorastaga iđida sáhttá borgat => torsdag morgen kan det fyke
 
                    Note: This rule is partly blocked by the 'maybe-SUBJr FV' rule above.">
       <pattern>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
         <pattern-item n="IV"/>
       </pattern>
@@ -2060,12 +2061,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC FV
+    <rule comment="REGLA: PR V2-trigger FV
                    V2-rule with pro-drop insertion
                    Mánnán dihten => Som barn visste jeg">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -2086,12 +2087,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR SPEC FV IV
+    <rule comment="REGLA: PR V2-trigger FV IV
                    V2-rule with pro-drop insertion (gender based on IV)
                    ">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="SPEC"/>
+        <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
         <pattern-item n="IV"/>
       </pattern>
