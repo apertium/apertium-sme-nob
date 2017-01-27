@@ -113,13 +113,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <attr-item tags="prn.ref"/>
     </def-attr>
     <def-attr n="a_adj">
-      <attr-item tags="A"/>
       <attr-item tags="adj"/>
       <attr-item tags="adj.pp"/>
       <attr-item tags="adj.pprs"/>
       <attr-item tags="adj.sint"/>
       <attr-item tags="adj.sint.pp"/>
       <attr-item tags="adj.sint.pprs"/>
+    </def-attr>
+    <def-attr n="a_adv">
+      <attr-item tags="adv"/>
     </def-attr>
     <def-attr n="a_nom">
       <attr-item tags="n"/>
@@ -1078,6 +1080,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
                c="arg.1: chunk, arg.2: first word in nominal chunk
                   -----
                   For eg. 'det_nom' or 'adj_nom', to make sure we say 'den andre/lyse hunden' (not 'andre/lyse hunden')
+		  og: det var lite (*en) kylling i salaten. (ADV + bar NP)
                   If pre-nominal is indefinite and nominal definite, we do not output a determiner,
                   since it's most likely a compound (eg. ovttaskasolbmui => enslig.adj.ind mennesket.n.def).
                   Ignores chunks where pre-nominal is np or genitive.
@@ -1094,6 +1097,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <not><ends-with><clip pos="2" part="lemh"/><lit v="og en halv"/></ends-with></not>
             <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></begins-with></not>
             <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with></not>
+            <not><begins-with><clip pos="2" part="a_adv"/><lit-tag v="adv"/></begins-with></not>
             <equal><clip pos="1" part="a_neverdet"/><lit v=""/></equal>
             <not><and>
               <equal><clip pos="1" part="lemh"/><lit v="nom"/></equal>
