@@ -1060,8 +1060,11 @@ SELECT:fallback ("snu"i) (0 ("<jorgalahttit>"i)) ;
 SELECT ("vedta"i) (0 ("<dohkkehit>"i)) ;
 
 
-SELECT ("heve"i) (0 ("<geavvat>"i)) (*0 sem_food) ;
+SELECT ("heve"i) (0 ("<geavvat>"i)) (*0 sem_food LINK 0 SUBJ) ;
+#  láibbit eai geargan geavvat ovdal go olbmot fertejedje hoahpus johttát .
 SELECT:fallback ("hende"i) (0 ("<geavvat>"i)) ;
+# Mii sáhttá leat geavvan?
+
 
 
 SELECT ("starte"i) (0 ("<álggahit>"i)) ;
