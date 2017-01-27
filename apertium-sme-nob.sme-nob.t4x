@@ -314,6 +314,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
   </section-def-attrs>
 
   <section-def-vars>
+    <def-var n="prev-verb-was-bli"/>
     <def-var n="gender"/>
     <def-var n="defnes"/>
     <def-var n="moremost-defnes"/>
@@ -332,7 +333,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <list-item v="&lt;@←ADVL-ela&gt;"/>
       <list-item v="&lt;@←ADVL-ine&gt;"/>
       <list-item v="&lt;@COMP-CS←&gt;"/>
-      <list-item v="&lt;@N←&gt;"/>    </def-list>
+      <list-item v="&lt;@N←&gt;"/>
+    </def-list>
     <def-list n="lemh-no-def-determiner"
               c="Noun phrases *starting with* these lemmas should not have a def determiner">
       <list-item v="hel"/>
@@ -1257,7 +1259,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <test><and>
               <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
               <not><equal><clip pos="0" part="modality"/><lit-tag v="cond"/></equal></not>
-              <in><clip pos="0" part="syn_label"/><list n="inf-mark"/></in>
+              <or>
+                <in><clip pos="0" part="syn_label"/><list n="inf-mark"/></in>
+                <equal><var n="prev-verb-was-bli"/><lit v="yes"/></equal>
+              </or>
             </and></test>
             <out>
               <lu><get-case-from pos="1"><lit v="å"/></get-case-from><lit-tag v="part"/></lu>
@@ -1268,6 +1273,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <out>
           <lu><clip pos="1" part="whole"/></lu>
         </out>
+        <choose>
+          <when>
+            <test><equal><clip pos="1" part="lemh"/><lit v="bli"/></equal></test>
+            <let><var n="prev-verb-was-bli"/><lit v="yes"/></let>
+          </when>
+          <otherwise>
+            <let><var n="prev-verb-was-bli"/><lit v="no"/></let>
+          </otherwise>
+        </choose>
       </action>
     </rule>
 
