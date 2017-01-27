@@ -2876,6 +2876,20 @@ And then there are some categories like "month", with all the months.
             </when>
           </choose>
         </when>
+        <when c="Number/det.qnt">
+          <test><not><equal><clip pos="2" side="tl" part="a_num"/><lit v=""/></equal></not></test>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_num"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+        </when>
         <when c="Determiner">
           <test><or>
             <not><equal><clip pos="2" side="tl" part="a_det"/><lit v=""/></equal></not>
@@ -4348,6 +4362,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
+
     <rule comment="C[T] num-year season" c="1990 giđa → våren 1990
                    Always definite (should not add a determiner in t4x)
                    Removes genitive from season (selected by numeral)
@@ -4428,6 +4443,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </choose>
       </action>
     </rule>
+
     <rule comment="C[T] num.cmp nom_head" c="1990-logu → 1990-tallet
                    Always definite (should not add a determiner in t4x)
                    if a_cmp is 'guio', nob.dix adds a dash">
@@ -4463,11 +4479,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </concat>
         </let>
         <choose>
-          <when><test>
-          <and>
-            <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
-            <not><equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_sasj"/></equal></not>
-          </and></test>
+          <when>
+            <test><and>
+              <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
+              <not><equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_sasj"/></equal></not>
+            </and></test>
             <out>
               <var n="caseprep"/>
               <chunk name="pre_nom" case="caseFirstWord">
@@ -4493,11 +4509,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               </when>
             </choose>
           </when>
-          <when><test>
-          <and>
-            <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
-            <equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_sasj"/></equal>
-          </and></test>
+          <when>
+            <test><and>
+              <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
+              <equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_sasj"/></equal>
+            </and></test>
             <out>
               <var n="caseprep"/>
               <chunk name="pre_nom" case="caseFirstWord">
@@ -4524,12 +4540,13 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                 <out><b pos="1"/></out>
               </when>
             </choose>
-              </when>
+          </when>
 
           <otherwise>
             <call-macro n="out_nom"><with-param pos="2"/></call-macro>
           </otherwise>
         </choose>
+        <let><var n="pre-nom"/><lit v=""/></let> <!-- since the above sets pre-nom without always using out_nom -->
       </action>
     </rule>
 
@@ -4547,6 +4564,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
         <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
 
@@ -4554,40 +4573,17 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
 
         <let><var n="c_def_pos"/><lit-tag v="3"/></let>
+
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <choose>
           <when>
-            <test><begins-with><clip pos="2" side="tl" part="lemh"/><lit v="-"/></begins-with></test>
-            <let><var n="blank"/><lit v=""/></let>
+            <test><not><begins-with><clip pos="2" side="tl" part="lemh"/><lit v="-"/></begins-with></not></test>
+            <out><b pos="1"/></out>
           </when>
-          <otherwise>
-            <let><var n="blank"/><b pos="1"/></let>
-          </otherwise>
         </choose>
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
 
-        <let><var n="c_name"/><lit v="pre_pre_"/></let>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_num"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <var n="blank"/>
-            <lit v="^"/>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_adj"/>
-              <clip pos="2" side="tl" part="grau"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <var n="c_def_pos"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="2"/>
-          </concat>
-        </let>
         <let><clip pos="3" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
@@ -6532,7 +6528,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <append n="pre-nom"><b pos="1"/></append>
 
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
-        <append n="pre-nom"><b pos="1"/></append>
+        <append n="pre-nom"><b pos="2"/></append>
 
         <!-- for NOM_HEAD -->
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
@@ -6553,55 +6549,26 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="1"/></call-macro>
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="2"/></call-macro>
-        <call-macro n="clean_cmp"><with-param pos="3"/></call-macro>
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
+
+        <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="3"/></call-macro>
+        <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="1"/></call-macro>
 
         <!-- most likely both ADJ and NOM are ind: -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
 
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adj"/>
-              <clip pos="1" side="tl" part="grau"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <!-- We set use chunk defnes here for both adj and nom,
-                   so that if defnes changes in t2x/t3x, both adj and nom
-                   get the change in t4x -->
-              <lit-tag v="3"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-            <lit v="^"/>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_adj"/>
-              <clip pos="2" side="tl" part="grau"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <!-- We set use chunk defnes here for both adj and nom,
-                   so that if defnes changes in t2x/t3x, both adj and nom
-                   get the change in t4x -->
-              <lit-tag v="3"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="2"/>
-            <lit v="^"/>
-              <clip pos="3" side="tl" part="lemh"/>
-              <clip pos="3" side="tl" part="a_nom"/>
-              <clip pos="3" side="tl" part="gen"/>
-              <clip pos="3" side="tl" part="nbr"/>
-              <clip pos="3" side="tl" part="art"/>
-              <clip pos="3" side="tl" part="a_cmp"/>
-              <clip pos="3" side="tl" part="lemq"/>
-            <lit v="$"/>
-          </concat>
-        </let>
-        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
-        <call-macro n="copy_syn_label"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        <!-- for ADJ_ATTR's -->
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
+
+        <!-- for NOM.CMP -->
+        <call-macro n="clean_cmp"><with-param pos="3"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="3"/></call-macro>
+
+        <!-- for NOM_HEAD -->
         <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="2"/></call-macro>
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
@@ -7241,34 +7208,14 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
-        <choose><when c="Avoid «Tromsøs kommune»">
-          <test><or>
-            <in><clip pos="3" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
-            <in><clip pos="3" side="sl" part="a_sem"/><list n="sem_org"/></in>
-          </or></test>
-          <let><clip pos="2" side="tl" part="gen-case"/><lit v=""/></let>
-        </when></choose>
 
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_nom"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-            <lit v="^"/>
-              <clip pos="2" side="tl" part="lemh"/>
-              <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="gen-case"/>
-              <clip pos="2" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="2"/>
-          </concat>
-        </let>
+        <!-- no defnes for prop's -->
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
+
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
@@ -7290,54 +7237,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_"/></let>
-		<choose><when>
-          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
-          <let><var n="defnes"/><lit v=""/></let>
-          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-        </when></choose>
 
-        <choose><when><test> <!-- Lene: for sápmi.n.sg.gen samisk.adj -->
-        <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal></test>
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_adj"/>
-              <clip pos="1" side="tl" part="grau"/>
-              <clip pos="2" side="tl" part="gen"/>
-              <clip pos="2" side="tl" part="nbr"/>
-              <lit-tag v="3"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-          </concat>
-        </let>
-        </when>
-		<otherwise>
-        <!-- for NOM.GEN -->
-        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-        <let>
-          <var n="pre-nom"/>
-          <concat>
-            <lit v="^"/>
-              <clip pos="1" side="tl" part="lemh"/>
-              <clip pos="1" side="tl" part="a_nom"/>
-              <clip pos="1" side="tl" part="gen"/>
-              <clip pos="1" side="tl" part="nbr"/>
-              <var n="defnes"/>
-              <clip pos="1" side="tl" part="gen-case"/>
-              <clip pos="1" side="tl" part="lemq"/>
-            <lit v="$"/>
-            <b pos="1"/>
-          </concat>
-        </let>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
 
-        <!-- for possessed NOM -->
-		</otherwise>
-		</choose>
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
