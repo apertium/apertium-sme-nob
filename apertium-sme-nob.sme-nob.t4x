@@ -336,6 +336,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <list-item v="&lt;@←ADVL-ine&gt;"/>
       <list-item v="&lt;@COMP-CS←&gt;"/>
       <list-item v="&lt;@N←&gt;"/>
+      <list-item v="&lt;@A←&gt;"/>
     </def-list>
     <def-list n="lemh-no-def-determiner"
               c="Noun phrases *starting with* these lemmas should not have a def determiner">
@@ -1238,8 +1239,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         </out>
       </action>
     </rule>
+
     <rule comment="CHUNK: verb">
-<pattern><pattern-item n="verb"/></pattern>
+      <pattern><pattern-item n="verb"/></pattern>
       <action>
         <let><clip pos="1" part="temps"/><clip pos="0" part="temps"/></let>
         <choose><when>
@@ -1263,6 +1265,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <test><and>
               <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
               <not><equal><clip pos="0" part="modality"/><lit-tag v="cond"/></equal></not>
+              <not><equal><clip pos="0" part="modality"/><lit-tag v="cond-ville"/></equal></not>
+              <not><equal><clip pos="0" part="modality"/><lit-tag v="cond-skulle"/></equal></not>
               <or>
                 <in><clip pos="0" part="syn_label"/><list n="inf-mark"/></in>
                 <equal><var n="prev-verb-was-bli"/><lit v="yes"/></equal>
