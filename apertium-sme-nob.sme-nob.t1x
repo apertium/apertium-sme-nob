@@ -876,6 +876,9 @@ And then there are some categories like "month", with all the months.
     <def-attr n="modality">
       <attr-item tags="indic"/>
       <attr-item tags="cond"/>
+      <attr-item tags="cond-ville"/>
+      <attr-item tags="cond-skulle"/>
+      <attr-item tags="cond-kunne"/>
       <attr-item tags="pot"/>
     </def-attr>
     <def-attr n="syn_label">
@@ -1352,6 +1355,12 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_domain&gt;"/>
       <list-item v="&lt;sem_domain_food-med&gt;"/>
       <list-item v="&lt;sem_domain_prod-audio&gt;"/>
+    </def-list>
+    <def-list n="sem_prod-cogn">
+      <list-item v="&lt;sem_prod-cogn&gt;"/>
+      <list-item v="&lt;sem_org_prod-cogn&gt;"/>
+      <list-item v="&lt;sem_part_prod-cogn&gt;"/>
+      <list-item v="&lt;sem_prod-cogn_txt&gt;"/>
     </def-list>
 
 
@@ -1972,6 +1981,7 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_domain"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-cogn"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_pos"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
                 <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>

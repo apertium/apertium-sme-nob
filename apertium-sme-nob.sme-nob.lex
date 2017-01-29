@@ -1167,6 +1167,7 @@ SELECT:fallback ("smelle"i) (0 ("<bávkalit>"i));
 
 SELECT:påkjøre ("påkjøre"i) (0 ("<vuodjit>"i) + pasv);
 SELECT:fallback ("kjøre"i) (0 ("<vuodjit>"i));
+SELECT:fallback ("skuffe"i) (0 ("<beahttit>"i));
 
 SELECT:kalle ("kalle"i) (0 ("<navdit>"i) LINK 1 acc LINK 1 ess );
 SELECT:kalle ("kalle"i) (0 ("<navdit>"i) LINK 1 ess );
@@ -1763,7 +1764,7 @@ SELECT:fallback ("taker"i) (0 ("<váldi>"i));
 SELECT:fallback ("advarsel"i) (0 ("<várrehus>"i));
 SELECT:fallback ("hustru"i) (0 ("<áhkká>"i));
 SELECT:fallback ("embete"i) (0 ("<ámmát>"i));
-SELECT:fallback ("tanke"i) (0 ("<árvalus>"i));
+SELECT:fallback ("forslag"i) (0 ("<árvalus>"i));
 SELECT:fallback ("hjørne"i) (0 ("<čiehka>"i));
 SELECT:fallback ("pynt"i) (0 ("<čikŋa>"i));
 SELECT:fallback ("sammendrag"i) (0 ("<čoahkkáigeassu>"i));
