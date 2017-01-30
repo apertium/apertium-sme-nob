@@ -1765,6 +1765,7 @@ SELECT:fallback ("advarsel"i) (0 ("<várrehus>"i));
 SELECT:fallback ("hustru"i) (0 ("<áhkká>"i));
 SELECT:fallback ("embete"i) (0 ("<ámmát>"i));
 SELECT:fallback ("forslag"i) (0 ("<árvalus>"i));
+SELECT:fallback ("styrking"i) (0 ("<nannen>"i));
 SELECT:fallback ("hjørne"i) (0 ("<čiehka>"i));
 SELECT:fallback ("pynt"i) (0 ("<čikŋa>"i));
 SELECT:fallback ("sammendrag"i) (0 ("<čoahkkáigeassu>"i));
