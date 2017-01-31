@@ -1,6 +1,6 @@
-Revision: 76034
+Revision: 76037
 AP_SRC1 Revision: 147555
-AP_SRC2 Revision: 76034
+AP_SRC2 Revision: 76037
 Running Regression-tests with mode "sme-nob" with updated tests ...
 
 sme-nob	  Mus lea biila.
@@ -139,12 +139,26 @@ sme-nob	  Son lábmii iežas.
 WORKS	  Han skadet seg selv.
 
 
+sme-nob	  Vibeke Larsen oinnii dan eahpeluohttámušcealkámuššan iežas vuostá.
+	- Vibeke Larsen så det som mistillituttalelse mot seg.
+	+ Vibeke Larsen så det som mistillitsuttalelse mot ham.
+
+
+sme-nob	  Mun oidnen dan eahpeluohttámuššan iežan vuostá.
+WORKS	  Jeg så det som mistillit mot meg.
+
+
 sme-nob	  Váldde biergasiid iežat fárrui.
 WORKS	  Ta tingene med deg.
 
 
 sme-nob	  Mun ferten čorget iežan lanja.
 WORKS	  Jeg må rydde mitt rom.
+
+
+sme-nob	  Son čorgii iežas lanja.
+	- H_n ryddet sitt rom.
+	+ Han ryddet sitt rom.
 
 
 sme-nob	  mun ohppen čállit sámegiela, iežan eatnigiela.
@@ -1059,7 +1073,8 @@ WORKS	  Bordet ble flyttet til det andre rommet.
 
 
 sme-nob	  Lei okta dehálaš erohus.
-WORKS	  Det var en viktig forskjell.
+	- Det var en viktig forskjell.
+	+ Det var en viktige forskjellen.
 
 
 sme-nob	  Ánne ráhkada biepmu.
@@ -1130,4 +1145,4 @@ sme-nob	  Lea nu guhkkin ahte eai mánát olle bohcco rádjái doppe.
 WORKS	  Det er så langt borte at barna ikke når frem til reinen der borte.
 
 
-248 / 275, 90.18%
+248 / 278, 89.21%
