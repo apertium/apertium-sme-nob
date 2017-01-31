@@ -505,26 +505,37 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <let><clip pos="2" part="lemh"/><get-case-from pos="1"><lit v="prpers"/></get-case-from></let>
         </when></choose>
       </when></choose>
-      <choose><when c="fallback if none of above">
-        <test><or>
-          <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
-          <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
-        </or></test>
-        <let><clip pos="2" part="gen"/><lit-tag v="mf"/></let>
-      </when></choose>
       <choose>
-        <when c="p3.sg.mf should be m">
-          <test><and>
-            <not><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.ref"/></equal></not>
-            <not><equal><clip pos="2" part="lemh"/><lit-tag v="hen"/></equal></not>
-            <not><equal><clip pos="2" part="lemh"/><lit-tag v="den"/></equal></not>
-            <equal><clip pos="2" part="pers"/><lit-tag v="p3"/></equal>
-            <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
-            <equal><clip pos="2" part="gen"/><lit-tag v="mf"/></equal>
-          </and></test>
-          <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
+        <when c="Chunk gender still GD: generate h_n if possible">
+          <test><or>
+            <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
+            <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
+          </or></test>
+          <choose><when c="h_n">
+            <test><or>
+              <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="han"/></equal>
+              <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="hun"/></equal>
+            </or></test>
+            <let><clip pos="2" part="lemh"/><get-case-from pos="2"><lit v="h_n"/></get-case-from></let>
+          </when>
+          <otherwise c="fallback if we can't generate GD_pers (e.g. not pers.p3.sg)">
+            <let><clip pos="2" part="gen"/><lit-tag v="mf"/></let>
+          </otherwise>
+          </choose>
         </when>
       </choose>
+      <choose><when c="p3.sg.mf should be m">
+        <test><and>
+          <not><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.ref"/></equal></not>
+          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit-tag v="hen"/></equal></not>
+          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit-tag v="h_n"/></equal></not>
+          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit-tag v="den"/></equal></not>
+          <equal><clip pos="2" part="pers"/><lit-tag v="p3"/></equal>
+          <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
+          <equal><clip pos="2" part="gen"/><lit-tag v="mf"/></equal>
+        </and></test>
+        <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
+      </when></choose>
 
       <choose><when c="sp and plurals are un">
         <test><or>
