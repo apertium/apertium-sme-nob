@@ -60,6 +60,7 @@ LIST ind = ind ;
 LIST recipr = res ;
 LIST refl = ref ;
 LIST rel = rel ;
+LIST pos = pos ;
 
 LIST coll = coll ;
 LIST nomag = nomag ;
@@ -1855,10 +1856,10 @@ SELECT:på-seg-selv ("seg selv"i) (0 ("<ieš>"i) + ill) (NOT -1 pers + ill) ;
 
 SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) + acc) (NOT -1 pron + pers + acc) (NOT *1 v) ;
 
-LIST ies-px = "de"i "dere"i "du"i "jeg"i "seg"i "vi"i;
-SELECT:din ies-px + gen (0 ("<ieš>"i)) (0 Px) ;
+SELECT:med-deg pron (0 ("<ieš>"i)) (0 @→P OR @P←) ;
+# Váldde biergasiid iežat fárrui → Ta sakene med deg
+SELECT:mitt-rom pos (0 ("<ieš>"i)) (NOT 0 @→P OR @P←) ;
 # Mun ferten čorget iežan lanja → Jeg må rydde mitt rom
-# Váldde biergasiid iežat fárrui → Ta sakene med deg (adpositional genitive turned back into non-genitive in t2x)
 
 SELECT:fallback ("prpers"i) (0 ("<ieš>"i) + acc) ;
 

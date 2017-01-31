@@ -2719,6 +2719,14 @@ And then there are some categories like "month", with all the months.
           <let><clip pos="1" side="tl" part="a_prn"/><lit-tag v="det.pos"/></let>
         </when>
      </choose>
+     <choose><when>
+       <test><equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal></test>
+       <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
+       <let><clip pos="1" side="tl" part="pers"/><lit v=""/></let>
+       <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="ND"/></let>
+       <let><clip pos="1" side="tl" part="gen"/><lit-tag v="GD"/></let>
+     </when></choose>
+
     </def-macro>
 
     <def-macro n="maybe_det_nbr_to_adj" npar="2"
