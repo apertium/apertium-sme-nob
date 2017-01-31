@@ -28,11 +28,13 @@ fetchtests () {
     local -r html=$3
 
     if ${update}; then
-	tmp=$(mktemp -t wiki-tests.html.XXXXXXXXXX)
-	if wget -O "${tmp}" -q "${BASEURL}/${testtype}" && [[ -s "${tmp}" ]]; then
-	    mv "${tmp}" "${html}"
+        # Download as e.g. Regression_tests (without .html); the -N
+        # ensures we don't re-download unless server version changed.
+	if ( cd "$(dirname "$0")" && wget -N -q "${BASEURL}/${testtype}" ); then
+	    command cp "$(dirname "$0")/${testtype}" "${html}"
 	else
-	    rm "${tmp}"
+            # Only cp to e.g. Regression_tests.html on success – that
+            # way we can still run even if wget failed.
 	    echo "Couldn't fetch ${BASEURL}/${testtype}" >&2
 	fi
     fi
