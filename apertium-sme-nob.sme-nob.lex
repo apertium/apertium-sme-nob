@@ -75,7 +75,7 @@ LIST sem_build = sem_amount_build sem_ani_build sem_ani_build-part sem_ani_build
 LIST sem_date = sem_date ;
 LIST sem_domain = sem_domain sem_domain_food-med sem_domain_prod-audio ;
 LIST sem_edu = sem_edu sem_build_edu_org sem_edu_event sem_edu_group_hum sem_edu_mat sem_edu_org ;
-LIST sem_fem = sem_fem (ant f) ;
+LIST sem_fem = sem_fem (ant f);
 LIST sem_food = sem_body_food sem_domain_food-med sem_event_food sem_food sem_food-med sem_food_perc-phys sem_food_plant  ;
 LIST sem_clth = sem_body_clth sem_build_clth-part sem_clth sem_clth-jewl sem_clth-jewl_curr sem_clth-jewl_money sem_clth-jewl_org sem_clth-jewl_plant sem_clth-part sem_clth_hum ;
 LIST sem_group = sem_act_group sem_ani_group sem_ani_group_hum sem_body_group_hum sem_body_group_hum_time sem_edu_group_hum sem_group sem_group_hum sem_group_hum_org sem_group_hum_plc sem_group_hum_prod-vis sem_group_org sem_group_sign sem_group_txt ;
@@ -92,7 +92,6 @@ LIST sem_time = sem_time sem_ani_hum_time sem_ani_time sem_body_group_hum_time s
 LIST sem_veh = sem_ani_veh sem_ctain-clth_veh sem_feat-phys_veh sem_hum_veh sem_org_veh sem_veh ;
 LIST sem_year = sem_year ;
 LIST sem_txt = sem_txt sem_ani_build_hum_txt sem_ani_plc_txt sem_group_txt sem_mat_txt sem_money_txt sem_org_txt sem_prod-audio_txt sem_prod-cogn_txt sem_semcon_txt sem_txt ;
-LIST male = m ;
 
 SET FIRSTNAME = (np ant f) OR (np ant m) OR (prop sem_fem) OR (prop sem_mal) ;
 
@@ -1809,9 +1808,12 @@ SELECT ("den"i nt) (0 ("<dat>"i) LINK 1 ("<leat>"i)) ;
 SELECT:fallback ("den"i nt) (0 ("<dat>"i)) ;
 
 
-SELECT ("hun"i) (0 ("<son>"i) LINK *1 ("<nieida>"i) OR ("<nisu>"i) OR sem_fem BARRIER pron OR n) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK *-1 ("<nieida>"i) OR ("<nisu>"i) OR sem_fem) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK *1 ("<nieida>"i) OR ("<nisu>"i)) ; # OR sem_fem BARRIER pron OR n) ;
 SELECT ("hun"i) (0 ("<son>"i) LINK 1 ("<namma>"i) LINK *1 sem_fem BARRIER pron OR n) ;
-SELECT ("han"i) + male (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER pron OR n) ;
+SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER pron OR n) ;
+
+
 
 SELECT:fallback ("han"i) + (GD_pers) (0 ("<son>"i)) ;
 
