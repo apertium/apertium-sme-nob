@@ -92,6 +92,7 @@ LIST sem_time = sem_time sem_ani_hum_time sem_ani_time sem_body_group_hum_time s
 LIST sem_veh = sem_ani_veh sem_ctain-clth_veh sem_feat-phys_veh sem_hum_veh sem_org_veh sem_veh ;
 LIST sem_year = sem_year ;
 LIST sem_txt = sem_txt sem_ani_build_hum_txt sem_ani_plc_txt sem_group_txt sem_mat_txt sem_money_txt sem_org_txt sem_prod-audio_txt sem_prod-cogn_txt sem_semcon_txt sem_txt ;
+LIST male = m ;
 
 SET FIRSTNAME = (np ant f) OR (np ant m) OR (prop sem_fem) OR (prop sem_mal) ;
 
@@ -1810,8 +1811,9 @@ SELECT:fallback ("den"i nt) (0 ("<dat>"i)) ;
 
 SELECT ("hun"i) (0 ("<son>"i) LINK *1 ("<nieida>"i) OR ("<nisu>"i) OR sem_fem BARRIER pron OR n) ;
 SELECT ("hun"i) (0 ("<son>"i) LINK 1 ("<namma>"i) LINK *1 sem_fem BARRIER pron OR n) ;
+SELECT ("han"i) + male (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER pron OR n) ;
 
-SELECT:fallback ("han"i) (0 ("<son>"i)) ;
+SELECT:fallback ("han"i) + (GD_pers) (0 ("<son>"i)) ;
 
 SELECT ("av hvem"i) (0 ("<gii>"i))(NEGATE 0 ←hab→ ) ;
 
