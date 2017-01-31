@@ -1180,6 +1180,8 @@ SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
 SELECT:fallback ("ringe"i) (0 ("<čuodjat>"i) LINK *0 ("<telefovdna>"i)) ;
 SELECT:fallback ("klinge"i) (0 ("<čuodjat>"i) LINK NEGATE *0 ("<telefuvdna>"i) ) ;
 
+SELECT:fallback ("kommunisere"i) (0 ("<gulahallat>"i) ) ;
+
 
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
