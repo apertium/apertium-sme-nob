@@ -381,6 +381,10 @@ And then there are some categories like "month", with all the months.
     <def-cat n="vblex.actio.ess">
       <cat-item tags="vblex.*.actio.ess.*"/>
     </def-cat>
+    <def-cat n="lex-state.actio.ess">
+      <cat-item lemma="vuordit" tags="vblex.*.actio.ess.*"/>
+      <cat-item lemma="oađđit" tags="vblex.*.actio.ess.*"/>
+    </def-cat>
     <def-cat n="cc">
       <cat-item tags="cnjcoo.*"/>
     </def-cat>
@@ -474,6 +478,9 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-jahki">
       <cat-item lemma="jahki" tags="n.*"/>
+    </def-cat>
+    <def-cat n="lex-leat">
+      <cat-item lemma="leat" tags="vblex.*"/>
     </def-cat>
 
     <def-cat n="lex-minuhtta-loc">
@@ -1240,6 +1247,10 @@ And then there are some categories like "month", with all the months.
   </section-def-vars>
 
   <section-def-lists>
+    <def-list n="no.actio.ess">
+      <list-item v="vuordit"/>
+      <list-item v="oađđit"/>
+    </def-list>
     <def-list n="cond-NIL-verbs">
       <list-item v="berret"/>
       <list-item v="galgat"/>
@@ -3369,6 +3380,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal>
           <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="actio"/></equal>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+      <not><in><clip pos="1" side="sl" part="lemh"/><list n="no.actio.ess"/></in></not>
           <not><equal><var n="aux-verb-tl"/><lit v="synes"/></equal></not>
         </and>
         </test>
@@ -3385,7 +3397,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <b/>
         </out>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
-      </when></choose>
+      </when>
+      </choose>
 
       <choose c="Prepend 'kunne/skulle/skal' if conditional:"><when>
         <test><and>
@@ -7643,6 +7656,28 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="out_verb"><with-param pos="2"/></call-macro>
       </action>
     </rule>
+
+    <rule comment="C[DT] lex-leat vblex.actio.ess" c="Sámediggeráđđi leat vuordime evttohusa - Sametingsrådet venter forslaget">
+      <pattern>
+        <pattern-item n="lex-leat"/>
+        <pattern-item n="lex-state.actio.ess"/>
+     </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <choose><when><test>
+        <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="pret"/></equal></test> 
+        <let><clip pos="2" side="tl" part="temps"/><lit-tag v="pret"/></let>
+        </when>    
+        <otherwise>  
+        <let><clip pos="2" side="tl" part="temps"/><lit-tag v="pres"/></let>  
+        </otherwise></choose>  
+        <call-macro n="out_verb"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+
+
 
     <!-- <rules: NOM/PRN V.ACTIO NOM -->
     <rule comment="C[] prn.pers.gen vblex.actio nom_head" c="du čállin reivve → brevet som du hadde skrevet
