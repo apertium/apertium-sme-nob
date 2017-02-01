@@ -2728,13 +2728,20 @@ And then there are some categories like "month", with all the months.
           <let><clip pos="1" side="tl" part="gen"/><lit-tag v="m"/></let>
         </when>
      </choose>
-      <choose>
+      <choose c="TODO: Might want to just make the tl ambiguous in bidix between prn.gen.@→P and det.pos instead?">
         <when>
           <test><and>
             <begins-with><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn"/></begins-with>
             <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
           </and></test>
           <let><clip pos="1" side="tl" part="a_prn"/><lit-tag v="det.pos"/></let>
+          <choose><when c="With det.pos, the *owner* gen/nbr is based on lemma">
+            <test><and>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="han"/></equal>
+              <equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD_pers"/></equal>
+            </and></test>
+            <let><clip pos="1" side="tl" part="lemh"/><lit v="h_ns"/></let>
+          </when></choose>
         </when>
      </choose>
      <choose><when>
