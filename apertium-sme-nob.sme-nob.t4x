@@ -501,6 +501,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <test><and>
             <equal><clip pos="2" part="a_prn"/><lit-tag v="prn.pers"/></equal>
             <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
+<!--            <not><equal><clip pos="2" part="gen"/><lit-tag v="f"/></equal></not>  -->
           </and></test>
           <let><clip pos="2" part="lemh"/><get-case-from pos="1"><lit v="prpers"/></get-case-from></let>
         </when></choose>
@@ -1228,7 +1229,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
 
 
   <section-rules>
-    <!-- <rules: Non-trivial -->
+    <!-- <rules: Non-trivial  asfd -->
     <rule comment="CHUNK: prn">
 <pattern><pattern-item n="prn"/></pattern>
       <action>

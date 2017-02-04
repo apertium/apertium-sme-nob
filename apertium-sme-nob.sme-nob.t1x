@@ -675,6 +675,9 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="v"/>
       <attr-item tags="vblex"/>
     </def-attr>
+    <def-attr n="a_ger">
+      <attr-item tags="ger"/>
+    </def-attr>
     <def-attr n="a_pstv">
       <attr-item tags="pstv"/>
     </def-attr>
@@ -7627,6 +7630,10 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="set_verb-lemma"><with-param pos="1"/></call-macro>
         <let><var n="pre-verb"/><lit v=""/></let>
         <let><var n="c_name"/><lit v=""/></let>
+      <choose><when c="ger to adj.pprs">
+        <test><equal><clip pos="1" side="sl" part="a_ger"/><lit-tag v="ger"/></equal></test>
+          <let><clip pos="1" side="tl" part="tags"/><lit-tag v="adj.pprs"/></let>
+          </when></choose>
         <call-macro n="out_verb"><with-param pos="1"/></call-macro>
       </action>
     </rule>
