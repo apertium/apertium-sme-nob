@@ -1157,11 +1157,19 @@ SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
 SELECT:beherske ("beherske"i) (0 ("<hálddašit>"i) LINK *0 sem_lang);
 SELECT:fallback ("forvalte"i) (0 ("<hálddašit>"i));
 
+SELECT:beherske ("få"i) (0 ("<gazzat>"i) LINK *0 ("<oahppu>"i) + acc);
+SELECT:fallback ("spise"i) (0 ("<gazzat>"i));
+
+
 SELECT:fallback ("fornye"i) (0 ("<ođastit>"i));
 
 
 SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK *-1 ("<.*čoahkkin>"r));
 SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
+
+SELECT:vite ("vite"i) (0 ("<dovdat>"i) LINK 1 rel);
+SELECT:fallback ("kjenne"i) (0 ("<dovdat>"i));
+
 
 SELECT:skyte ("skyte"i) (0 ("<bávkalit>"i) LINK *0 ("<rakeahtta>"r)); 
 SELECT:fallback ("smelle"i) (0 ("<bávkalit>"i));
@@ -1175,7 +1183,7 @@ SELECT:kalle ("kalle"i) (0 ("<navdit>"i) LINK 1 ess );
 SELECT:fallback ("anta"i) (0 ("<navdit>"i));
 SELECT:fallback ("etablere"i) (0 ("<ásahit>"i));
 
-SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 ("<ahte>"i) OR adv OR a);
+SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 ("<ahte>"i) OR adv OR a OR inf OR actio);
 SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
 
 SELECT: ("ringe"i) (0 ("<čuodjat>"i) LINK *0 ("<telefovdna>"i)) ;
@@ -1806,6 +1814,9 @@ SELECT ("for"i) (0 ("<bealis>"i)) ;
 
 SELECT ("i henhold til"i) (0 ("<olis>"i)) ;
 
+SELECT:fallback ("etter"i) (0 ("<maŋis>"i)) ;
+
+
 # Pronouns, relativisers, conjuctions
 # ==========================
 
@@ -1892,6 +1903,9 @@ SELECT ("opp"i) (0 ("<eret>"i)) (-1 ("<cealkit>"i)) ;
 SELECT ("bort"i) (0 ("<eret>"i)) (-1 v) ;
 SELECT:fallback ("fra"i) (0 ("<eret>"i)) ;
 SELECT:fallback ("frå"i) (0 ("<eret>"i)) ;
+
+SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
+
 
 # Based on frequency in parallel text:
 SELECT ("lenger"i) (0 ("<šat>"i)) ;
