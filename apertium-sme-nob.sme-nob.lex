@@ -1178,8 +1178,11 @@ SELECT:fallback ("etablere"i) (0 ("<ásahit>"i));
 SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 ("<ahte>"i) OR adv OR a);
 SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
 
-SELECT:fallback ("ringe"i) (0 ("<čuodjat>"i) LINK *0 ("<telefovdna>"i)) ;
+SELECT: ("ringe"i) (0 ("<čuodjat>"i) LINK *0 ("<telefovdna>"i)) ;
 SELECT:fallback ("klinge"i) (0 ("<čuodjat>"i) LINK NEGATE *0 ("<telefuvdna>"i) ) ;
+
+SELECT:fallback ("bli"i) (0 ("<bissut>"i) ) ;
+
 
 SELECT:fallback ("kommunisere"i) (0 ("<gulahallat>"i) ) ;
 
@@ -1582,7 +1585,7 @@ SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
 SELECT:halvpart ("halvpart"i) (0 ("<bealli>"i) LINK 1 n + pl);
-SELECT:fallback ("part"i) (0 ("<bealli>"i));
+SELECT:fallback ("halvpart"i) (0 ("<bealli>"i));
 SELECT:fallback ("hete"i) (0 ("<báhkka>"i));
 
 SELECT ("ved"i) (0 ("<muorra>"i) + loc);
@@ -1620,6 +1623,10 @@ SELECT:fallback ("budskap"i) (0 ("<sáhka>"i));
 SELECT ("måte"i) (0 ("<hápmi>"i) + com LINK -1 a + attr);
 SELECT:fallback ("form"i) (0 ("<hápmi>"i));
 SELECT:fallback ("skilt"i) IF (0 ("<galba>"i)) ;
+
+SELECT:fallback ("tur"i) (0 ("<vuorru>"i) LINK -1 pers + gen OR prop + gen);
+SELECT:fallback ("gang"i) (0 ("<vuorru>"i) LINK -1 dem + gen);
+SELECT:fallback ("omgang"i) (0 ("<vuorru>"i));
 
 
 SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIER SV-BOUNDARY);
@@ -1757,7 +1764,6 @@ SELECT:fallback ("måte"i) (0 ("<vuohki>"i));
 SELECT:fallback ("styrke"i) (0 ("<vuoibmi>"i));
 SELECT:fallback ("seier"i) (0 ("<vuoitu>"i));
 SELECT:fallback ("rekreasjon"i) (0 ("<vuoiŋŋasteapmi>"i));
-SELECT:fallback ("tur"i) (0 ("<vuorru>"i));
 SELECT:fallback ("skade"i) (0 ("<váddu>"i));
 SELECT:fallback ("mangel"i) (0 ("<váili>"i));
 SELECT:fallback ("besvær"i) (0 ("<váivi>"i));

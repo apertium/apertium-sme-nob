@@ -7936,6 +7936,15 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <choose>
+            <when>
+          <test><or><equal><clip pos="1" side="sl" part="lemh"/><lit v="gal"/></equal>
+           <equal><clip pos="1" side="sl" part="lemh"/><lit v="Gal"/></equal></or></test> 
+     <!--     <test><equal><clip pos="1" side="tl" part="lemh"/><lit v=""/></equal></test>  didn't function -->
+          <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let>
+          </when>
+        </choose>
         <choose>
           <when c="mo is used as a conj here, not sure why it just gets adv in lexc">
             <test><and>
@@ -8021,7 +8030,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
               </chunk>
             </out>
           </when>
-          <otherwise>
+        <otherwise>
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
@@ -8038,7 +8047,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                 </lu>
               </chunk>
             </out>
-          </otherwise>
+            </otherwise>
         </choose>
       </action>
     </rule>
