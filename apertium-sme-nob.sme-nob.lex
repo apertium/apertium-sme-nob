@@ -1027,11 +1027,13 @@ SELECT:fallback ("få"i) (0 ("<beassat>"i));
 
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
 SELECT ("spørre"i) (0 ("<bivdit>"i) LINK *1 qst);
-SELECT ("fiske"i) (0 ("<bivdit>"i))(*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r));
+SELECT ("fiske"i) (0 ("<bivdit>"i))(*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
+SELECT ("fisker"i) (0 ("<bivdi>"i))(*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
 SELECT ("jakte"i) (0 ("<bivdit>"i)) ;
 ## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá.
 ## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá mearas.
 SELECT:fallback ("be"i) (0 ("<bivdit>"i));
+SELECT:fallback ("jeger"i) (0 ("<bivdi>"i));
 
 SELECT ("ta# hensyn") (0 ("<váldit>")) (*1 ("<vuhtii>")) ;
 
