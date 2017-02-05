@@ -7942,14 +7942,6 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <choose>
-            <when>
-          <test><or><equal><clip pos="1" side="sl" part="lemh"/><lit v="gal"/></equal>
-           <equal><clip pos="1" side="sl" part="lemh"/><lit v="Gal"/></equal></or></test>
-     <!--     <test><equal><clip pos="1" side="tl" part="lemh"/><lit v=""/></equal></test>  didn't function -->
-          <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let>
-          </when>
-        </choose>
-        <choose>
           <when c="mo is used as a conj here, not sure why it just gets adv in lexc">
             <test><and>
               <or>
@@ -7981,24 +7973,24 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
           </when>
           <when c="Since we match on chunk lemma 'adv' in t3x, we have a two-lu chunks
                    here with the single name 'adv' (no postchunking rules for adverbs, so that's OK).">
-            <test><equal><clip pos="1" side="sl" part="mode"/><lit-tag v="qst"/></equal></test>
-            <out>
-              <chunk name="adv" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="ADV"/></tag>
-                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                  <tag><clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/></tag>
-                  <tag><clip pos="1" side="sl" part="mode"/></tag>
-                </tags>
-                <lu><lit v="hvor"/><lit-tag v="adv"/></lu>
-                <b/>
-                <lu>
-                  <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/>
-                  <clip pos="1" side="tl" part="lemq"/>
-                </lu>
-              </chunk>
-            </out>
+                   <test><equal><clip pos="1" side="sl" part="mode"/><lit-tag v="qst"/></equal></test>
+                   <out>
+                     <chunk name="adv" case="caseFirstWord">
+                       <tags>
+                         <tag><lit-tag v="ADV"/></tag>
+                         <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                         <tag><clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/></tag>
+                         <tag><clip pos="1" side="sl" part="mode"/></tag>
+                       </tags>
+                       <lu><lit v="hvor"/><lit-tag v="adv"/></lu>
+                       <b/>
+                       <lu>
+                         <clip pos="1" side="tl" part="lemh"/>
+                         <clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/>
+                         <clip pos="1" side="tl" part="lemq"/>
+                       </lu>
+                     </chunk>
+                   </out>
           </when>
           <when c="Lene: gitta adv - stenge vblex stengt">
             <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
@@ -8034,7 +8026,8 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
               </chunk>
             </out>
           </when>
-        <otherwise>
+          <when c="otherwise, as long as there's a target language lemma">
+            <test><equal><clip pos="1" side="tl" part="lemh"/><lit v=""/></equal></test>
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
@@ -8051,7 +8044,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                 </lu>
               </chunk>
             </out>
-            </otherwise>
+          </when>
         </choose>
       </action>
     </rule>
