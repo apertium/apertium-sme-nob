@@ -7940,6 +7940,8 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
+        <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let> <!-- workaround for empty clip lemh matching syntags -->
 
         <choose>
           <when c="mo is used as a conj here, not sure why it just gets adv in lexc">
@@ -8027,12 +8029,12 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
             </out>
           </when>
           <when c="otherwise, as long as there's a target language lemma">
-            <test><equal><clip pos="1" side="tl" part="lemh"/><lit v=""/></equal></test>
+            <test><not><equal><clip pos="1" side="tl" part="lemh"/><lit v=""/></equal></not></test>
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
                   <tag><lit-tag v="ADV"/></tag>
-                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><var n="c_syn"/></tag>
                   <tag><clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                   <tag><clip pos="1" side="sl" part="a_sem"/></tag>
