@@ -1594,6 +1594,7 @@ SELECT ("fokus"i) (0 ("<guovddáš>"i) + sg + ill)(-1 ("<bidjat>"));
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
+SELECT:side ("side"i) (0 ("<bealli>"i) + pl);
 SELECT:halvpart ("halvpart"i) (0 ("<bealli>"i) LINK 1 n + pl);
 SELECT:fallback ("halvpart"i) (0 ("<bealli>"i));
 SELECT:fallback ("hete"i) (0 ("<báhkka>"i));

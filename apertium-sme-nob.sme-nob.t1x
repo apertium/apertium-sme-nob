@@ -1826,6 +1826,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="ferie"/>
       <list-item v="golv"/>
       <list-item v="plass"/>
+      <list-item v="måte"/>
     </def-list>
     <def-list n="ill-NIL" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="feil"/>
@@ -1852,6 +1853,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="grunnlag"/>
       <list-item v="fundament"/>
       <list-item v="basis"/>
+    </def-list>
+    <def-list n="gen-på-head">
+      <list-item v="måte"/>
     </def-list>
 
     <def-list n="no-gen-after-prop" c="If a noun in this list is preceded by a prop.gen, remove the gen from the prop">
@@ -2256,6 +2260,12 @@ And then there are some categories like "month", with all the months.
                   <test><in><var n="previous-nhead"/><list n="gen-for-head"/></in></test>
                   <let>
                     <var n="caseprep"/><lit v="for"/>
+                  </let>
+                </when>
+                <when>
+                  <test><in><var n="previous-nhead"/><list n="gen-på-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="på"/>
                   </let>
                 </when>
                 <otherwise>
@@ -5279,6 +5289,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </when>
           <otherwise>
             <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+            <let><clip pos="2" side="tl" part="case"/><lit v=""/></let> <!-- Lene added -->
           </otherwise>
         </choose>
 
