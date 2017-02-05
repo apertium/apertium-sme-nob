@@ -7946,7 +7946,7 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
-        <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let> <!-- workaround for empty clip lemh matching syntags -->
+        <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let> <!-- workaround for empty clip lemh matching syntags; fixed in trunk/apertium r76155-->
 
         <choose>
           <when c="mo is used as a conj here, not sure why it just gets adv in lexc">
@@ -8096,7 +8096,7 @@ TODO: this should be an mwe in the analyser.">
           <test><equal><var n="c_syn"/><lit v=""/></equal></test>
           <let><var n="c_syn"/><lit-tag v="@PCLE"/></let>
         </when></choose>
-        <!-- Need to empty the tl syn_label so we can check for empty translations: -->
+        <!-- Need to empty the tl syn_label so we can check for empty translations; fixed in trunk/apertium r76155: -->
         <let><clip pos="1" side="tl" part="syn_label"/><lit v=""/></let>
         <choose><when>
           <test><not><equal><clip pos="1" side="tl" part="lemh"/><lit v=""/></equal></not></test>
