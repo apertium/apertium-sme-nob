@@ -7368,6 +7368,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal></test>
+          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
+        </when></choose>
+
         <out>
           <var n="caseprep"/>
           <chunk name="det" case="caseFirstWord">
