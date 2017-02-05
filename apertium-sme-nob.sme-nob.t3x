@@ -1287,7 +1287,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: maybe-SUBJr ADVL FV lOBJref
+    <rule comment="REGLA: maybe-SUBJr ADVL FV lOBJ
                    -----
                    V2-rule
                    Sámediggepresideanta Larsen fas doapmá  -
@@ -1297,7 +1297,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-SUBJr"/>
         <pattern-item n="ADVLr"/>
         <pattern-item n="FV"/>
-        <pattern-item n="lOBJref"/>
+        <pattern-item n="lOBJ"/>
       </pattern>
       <action>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="3"/></call-macro>
