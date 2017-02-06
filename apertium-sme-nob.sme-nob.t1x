@@ -5289,11 +5289,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </when>
           <otherwise>
             <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></let>
-            <let><clip pos="2" side="tl" part="case"/><lit v=""/></let> <!-- Lene added -->
           </otherwise>
         </choose>
 
-        <let><clip pos="2" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
+        <let><clip pos="2" side="tl" part="case"/><lit v=""/></let> <!-- Lene added -->
+        <!-- <let><clip pos="2" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let> -->
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
         <let><var n="seen_num"/><lit v=""/></let>
       </action>
