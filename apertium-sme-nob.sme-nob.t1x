@@ -4901,6 +4901,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
+
     <rule comment="C[T] nom.prop_attr nom.prop.antcog" c="(šattai) Prinsa Harald (Ruvdnaprinsan) → (ble) Prins Harald (kronprins) Uses NOM.PROP gender if possible as chunk gender.">
       <pattern>
         <pattern-item n="nom.prop_attr"/>
@@ -4911,7 +4912,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <let><var n="c_name"/><lit v="pre_"/></let>
 
-        <!-- for NOM.PROP_ATTR, ind -->
+        <!-- for NOM.PROP_ATTR, no defnes if proper, ind if n -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <append n="pre-nom"><b pos="1"/></append>
@@ -4920,6 +4921,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
+
     <rule comment="C[TV] nom.prop_attr nom.prop.antcog_mod nom.prop.antcog" c=", muitala rektor Liisa Holmberg.
                    Uses middle NOM.PROP gender if possible as chunk gender.">
       <pattern>
@@ -5084,7 +5086,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <!-- no space after cmp -->
 
-        <!-- for NOM.PROP_ATTR, no defnes -->
+        <!-- for NOM.PROP_ATTR, no defnes if proper, ind if n -->
+        <let><var n="defnes"/><lit v="ind"/></let>
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
         <append n="pre-nom"><b pos="2"/></append>
 
@@ -7218,7 +7221,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
 
-        <!-- no defnes for prop's -->
+        <!-- prop_attr can match n's as well, so set defnes: -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <append n="pre-nom"><b pos="1"/></append>
 

@@ -74,11 +74,10 @@ TMPFILES+=("${res}")
 cd "$(dirname "$0")/../.."
 printf "%s\n" "${tests[@]}" >"${inp}"
 apertium -d . sme-nob < "${inp}" >"${res}"
-bad=$(grep -c '#' "${res}")
-if [[ ${bad} -gt 0 ]]; then
+
+if bad=$(grep -c '#' "${res}"); then
     echo "=== Still giving generation errors: ==="
     paste -d '\n' "${inp}" "${res}" /dev/null | grep -B1 '#'
     echo "=== Errors: ${bad}/${#tests[@]} ==="
-else
-    echo '=== All good! ==='
+    exit 1
 fi
