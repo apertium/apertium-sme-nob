@@ -968,6 +968,10 @@ SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 SELECT ("tilegne"i) IF  (0 ("<oamastit>"i)) ((1 ill) OR (-1 ill)) ;
 SELECT:fallback ("eie"i) IF  (0 ("<oamastit>"i)) ;
 
+SELECT ("innvie"i) IF  (0 ("<vihahit>"i)) (*0 ("<áltár>") LINK 0 nom OR acc) ;
+SELECT:fallback ("vie"i) IF  (0 ("<vihahit>"i)) ;
+
+
 SELECT:fallback ("oppleve"i) IF  (0 ("<vásihit>"i)) ;
 
 
