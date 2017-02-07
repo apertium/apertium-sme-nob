@@ -176,6 +176,7 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="buorre" tags="adj.*"/>
       <!-- TODO: pstv verbs don't have adj forms, should have transfer
            <exception> if tl pstv -->
+      <cat-item tags="vblex.*.@→N"/>
       <cat-item tags="vblex.iv.adj.attr.*"/>
       <cat-item tags="vblex.tv.adj.attr.*"/>
     </def-cat>
@@ -2797,6 +2798,12 @@ And then there are some categories like "month", with all the months.
                   ">
       <choose><when c="(for compound adj's, just keep bidix-specified tags)">
         <test><equal><clip pos="2" side="sl" part="a_cmp"/><lit v=""/></equal></test>
+        <choose c="bovdejuvvon guossit : inviterte gjester">
+          <when>
+            <test><equal><clip pos="2" side="sl" part="temps"/><lit-tag v="prfprc"/></equal></test>
+            <let><clip pos="2" side="tl" part="tags"/><lit-tag v="adj.pp.sg" /></let>
+          </when>
+        </choose>
         <choose c="For positives, copy noun number over (if sg/pl).">
           <when>
             <test><and>
