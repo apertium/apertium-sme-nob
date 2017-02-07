@@ -94,6 +94,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SN.@ADVL-ela→.*.ill"/>
       <cat-item tags="SN.@ADVL-ine→.*.ill"/>
     </def-cat>
+    <def-cat n="ITG">
+      <cat-item tags="SN.*.itg.*"/>
+    </def-cat>
     <def-cat n="ADVLr">
       <cat-item tags="*.@ADVL→.*"/>
       <cat-item tags="*.@ADVL-ela→.*"/>
@@ -2217,6 +2220,49 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
+
+    <!-- <rules: ITG ADV* V: -->
+    <rule comment="REGLA: ITG V
+                   Maid áiggot [bargat go heaittát dálá barggus]? → Hva skal du [jobbe …]">
+      <pattern>
+        <pattern-item n="ITG"/>
+        <pattern-item n="V"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pro_verb_case1"><with-param pos="2"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk> <!-- hva -->
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk> <!-- skal -->
+          <var n="pro-blank"/><var n="pro"/>          <!-- du -->
+          <var n="adv-blank"/><var n="adv"/>          <!-- kanskje -->
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: ITG ADVL V
+                   Maid dalle áiggot [bargat go heaittát dálá barggus]? → Hva skal du da [jobbe …]">
+      <pattern>
+        <pattern-item n="ITG"/>
+        <pattern-item n="ADVL"/>
+        <pattern-item n="V"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pro_verb_case1"><with-param pos="3"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk> <!-- hva -->
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk> <!-- skal -->
+          <var n="pro-blank"/><var n="pro"/>          <!-- du -->
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk> <!-- da -->
+          <var n="adv-blank"/><var n="adv"/>          <!-- kanskje -->
+        </out>
+      </action>
+    </rule>
+    
     <!-- <rules: FV.qst IV*: -->
     <rule comment="REGLA: FV.qst
                    Oainnátgo => Ser du
