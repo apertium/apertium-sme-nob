@@ -1645,7 +1645,7 @@ SELECT:fallback ("omgang"i) (0 ("<vuorru>"i));
 SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
-SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) BARRIER SV-BOUNDARY);
+SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
 SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
