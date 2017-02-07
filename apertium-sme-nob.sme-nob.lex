@@ -968,6 +968,8 @@ SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 SELECT ("tilegne"i) IF  (0 ("<oamastit>"i)) ((1 ill) OR (-1 ill)) ;
 SELECT:fallback ("eie"i) IF  (0 ("<oamastit>"i)) ;
 
+SELECT:fallback ("oppleve"i) IF  (0 ("<vásihit>"i)) ;
+
 
 SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (1 cs) ;
 SELECT ("legge# opp"i) IF  (0 ("<láhčit>"i)) (1 ill) ;
@@ -1910,6 +1912,10 @@ SELECT:fallback ("frå"i) (0 ("<eret>"i)) ;
 SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
 
 
+SELECT ("mulig"i) (0 ("<vejolaččat>"i) LINK -1 ("<go>"i)) ;
+SELECT:fallback ("muligens"i) (0 ("<vejolaččat>"i)) ;
+
+
 # Based on frequency in parallel text:
 SELECT ("lenger"i) (0 ("<šat>"i)) ;
 
@@ -1985,6 +1991,8 @@ SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
 ## Dat lei buorre. (bra)
 
 #REMCOHORT TARGET ("<leat>"i)(0 imprt) (1 ("<buorre>"));
+
+SELECT:fallback ("ekstern")(0 ("<olgguldas>"i));
 
 
 # vissis:0 → sikker, vissis:1 → viss
