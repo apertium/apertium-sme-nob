@@ -1825,6 +1825,10 @@ SELECT ("i henhold til"i) (0 ("<olis>"i)) ;
 
 SELECT:fallback ("etter"i) (0 ("<maŋis>"i)) ;
 
+SELECT:fallback ("om"i) (0 ("<geahčen>"i) LINK -1 sem_time) ;
+SELECT:fallback ("hos"i) (0 ("<geahčen>"i)) ;
+
+
 
 # Pronouns, relativisers, conjuctions
 # ==========================
