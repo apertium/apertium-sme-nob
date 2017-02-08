@@ -1043,7 +1043,7 @@ SELECT:fallback ("jeger"i) (0 ("<bivdi>"i));
 
 SELECT ("ta# hensyn") (0 ("<váldit>")) (*1 ("<vuhtii>")) ;
 SELECT ("ta# hensyn") (0 ("<váldit>")) (-1 ("<vuhtii>")) ;
-SELECT ("bake") (0 ("<gáhkket>")) (*1 @←OBJ BARRIER NOT-ADJ) ;
+SELECT ("bake") (0 ("<gáhkket>")) (*1 @←OBJ BARRIER NOT-NPMOD) ;
 
 # borahit 0 = mate, 1 = fôre
 SELECT ("fôre"i) (0 ("<borahit>"i))(*0 sem_ani);
