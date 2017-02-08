@@ -1042,6 +1042,7 @@ SELECT:fallback ("be"i) (0 ("<bivdit>"i));
 SELECT:fallback ("jeger"i) (0 ("<bivdi>"i));
 
 SELECT ("ta# hensyn") (0 ("<váldit>")) (*1 ("<vuhtii>")) ;
+SELECT ("ta# hensyn") (0 ("<váldit>")) (-1 ("<vuhtii>")) ;
 
 # borahit 0 = mate, 1 = fôre
 SELECT ("fôre"i) (0 ("<borahit>"i))(*0 sem_ani);
@@ -1927,6 +1928,7 @@ SELECT:fallback ("muligens"i) (0 ("<vejolaččat>"i)) ;
 
 # Based on frequency in parallel text:
 SELECT ("lenger"i) (0 ("<šat>"i)) ;
+SELECT:fallback ("til"i) (0 ("<vuhtii>"i)) ;
 
 SELECT ("avsides"i) (0 ("<boaittobealde>"i)) ;
 
