@@ -2222,24 +2222,22 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test>
-              <and>
-                <or>
-                  <equal><var n="main-verb-sl"/><lit v="leat"/></equal>
-                  <equal><var n="main-verb-sl"/><lit v="mearkkašit"/></equal>
-                  <in><var n="previous-nhead"/><list n="ill-for-head"/></in>
-                </or>
-              <not><in><var n="main-verb-sl"/><list n="ill-NIL-verbs"/></in></not>
-              <not><in><clip pos="1" side="tl" part="lemh"/><list n="ill-NIL"/></in></not>
-              <not><equal><var n="previous-nhead"/><lit v="rettighet"/></equal></not>
-              <not><equal><var n="previous-nhead"/><lit v="rett"/></equal></not>
-              </and>
+                <and>
+                  <or>
+                    <equal><var n="main-verb-sl"/><lit v="leat"/></equal>
+                    <equal><var n="main-verb-sl"/><lit v="mearkkašit"/></equal>
+                    <in><var n="previous-nhead"/><list n="ill-for-head"/></in>
+                  </or>
+                  <not><equal><var n="previous-nhead"/><lit v="rettighet"/></equal></not>
+                  <not><equal><var n="previous-nhead"/><lit v="rett"/></equal></not>
+                </and>
               </test>
               <let>
                 <var n="caseprep"/><lit v="for"/>
               </let>
             </when>
           </choose>
-          <choose><when>
+          <choose><when c="but even if the above tests matched, we can override to nil here:">
             <test>
               <or>
                 <in><clip pos="1" side="tl" part="lemh"/><list n="ill-NIL"/></in>
