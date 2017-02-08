@@ -71,7 +71,7 @@ TMPFILES+=("${inp}")
 res=$(mktemp -t knownhashtestvoc.XXXXXXXXXXX)
 TMPFILES+=("${res}")
 
-cd "$(dirname "$0")/../.."
+cd "$(dirname "$0")/.."
 printf "%s\n" "${tests[@]}" >"${inp}"
 apertium -d . sme-nob < "${inp}" >"${res}"
 

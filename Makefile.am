@@ -268,8 +268,8 @@ clean-local:
 test-bidix-gen:
 	dev/sme-nob.inconsistency.sh
 
-test-previous-offenders:
-	dev/testvoc/previous-offenders.sh
+test-previous-offenders: all
+	t/previous-offenders
 
 # TODO: test-bidix-gen script needs fixing
 test: all test-previous-offenders
