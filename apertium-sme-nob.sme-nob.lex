@@ -1064,6 +1064,7 @@ SELECT:fallback ("snu"i) (0 ("<jorgalit>"i)) ;
 SELECT ("oversette"i) (0 ("<jorgalahttit>"i)) (*0 sem_lang OR sem_txt) ;
 SELECT:fallback ("snu"i) (0 ("<jorgalahttit>"i)) ;
 
+SELECT:vedta ("vedta"i) (0 ("<dohkkehit>"i))((*-1 (sem_rule)) OR (*1 (sem_rule))) ;
 SELECT:fallback ("godta"i) (0 ("<dohkkehit>"i)) ;
 
 
@@ -1158,7 +1159,7 @@ SELECT:fallback ("rette# på"i) (0 ("<njulget>"i));
 SELECT:ta-en-tur ("ta en tur"i) (0 ("<fitnat>"i) + inf )  ; 
 SELECT:fallback ("være"i) (0 ("<fitnat>"i));
 
-SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *-1 sem_txt )  ; 
+SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *-1 sem_txt OR (sem_rule) )  ; 
 SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK 1 sem_time )  ; 
 SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
 
@@ -1194,7 +1195,7 @@ SELECT:fallback ("etablere"i) (0 ("<ásahit>"i));
 SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 ("<ahte>"i) OR adv OR a OR inf OR actio);
 SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
 
-SELECT: ("ringe"i) (0 ("<čuodjat>"i) LINK *0 ("<telefovdna>"i)) ;
+SELECT:ringe ("ringe"i) (0 ("<čuodjat>"i) LINK *0 ("<telefovdna>"i)) ;
 SELECT:fallback ("klinge"i) (0 ("<čuodjat>"i) LINK NEGATE *0 ("<telefuvdna>"i) ) ;
 
 SELECT:fallback ("bli"i) (0 ("<bissut>"i) ) ;
