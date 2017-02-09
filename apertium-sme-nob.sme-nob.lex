@@ -1091,7 +1091,7 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (ref acc) OR (ref loc) OR prfprc or COMMA OR a - attr) ;
 
-SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain LINK 0 acc OR loc) OR (-1 sem_txt OR sem_domain LINK 0 acc OR loc)) ;
+SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain LINK 0 acc OR loc OR ("<cealkámuš>"i)) OR (-1 sem_txt OR sem_domain LINK 0 acc OR loc)) ;
 # Son lohká ahte lea buorre doppe.
 
 SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 LANGUAGE LINK 0 acc OR loc) ;
@@ -1110,7 +1110,7 @@ SELECT ("si"i) (0 ("<lohkat>"i))(-1 (@SUBJ→) LINK -1 COMMA);
 ## Dat lea duohta, lohká Trond.
 
 SELECT ("telle"i) (0 ("<lohkat>"i))
-	(1 acc OR ("<galle>"i) OR ("<man>"i) LINK NOT 0 sem_txt + nom);
+	(1 ("<galle>"i) OR ("<man>"i) LINK NOT 0 sem_txt + nom);
 ## Son lohká ruđaid.
 ## Son lohká galle girjji mis leat.
 SELECT:fallback ("lese"i) (0 ("<lohkat>"i));
