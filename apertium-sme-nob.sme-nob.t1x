@@ -2823,7 +2823,7 @@ And then there are some categories like "month", with all the months.
     </def-macro>
 
     <def-macro n="modify_adj_gen_nbr" npar="2"
-               c="arg.1: noun, arg.1: adjective
+               c="arg.1: noun, arg.2: adjective
                   –––––
                   ">
       <choose><when c="(for compound adj's, just keep bidix-specified tags)">
@@ -2875,6 +2875,7 @@ And then there are some categories like "month", with all the months.
           </when>
         </choose>
       </when></choose>
+      <call-macro n="set_neverdet"><with-param pos="2"/></call-macro>
     </def-macro>
 
     <def-macro n="set_c_syn" npar="1"
@@ -3050,12 +3051,16 @@ And then there are some categories like "month", with all the months.
     </def-macro>
 
     <def-macro n="set_neverdet" npar="1">
-      <let><var n="c_neverdet"/><lit v=""/></let>
       <choose><when>
-        <test><and>
+        <test>
+	  <or>
+	    <and>
           <in><clip pos="1" side="tl" part="a_sem"/><list n="determinerless_sem"/></in>
           <not><in><clip pos="1" side="tl" part="lemh"/><list n="determiner-although-determinerless_sem"/></in></not>
-        </and></test>
+            </and>
+	      <equal><clip pos="1" side="sl" part="lemh"/><lit v="olu"/></equal>
+	  </or>
+	</test>
         <let><var n="c_neverdet"/><lit-tag v="neverdet"/></let>
       </when></choose>
     </def-macro>
@@ -3349,6 +3354,7 @@ And then there are some categories like "month", with all the months.
         </otherwise>
       </choose>
       <let><var n="pre-nom"/><lit v=""/></let>
+      <let><var n="c_neverdet"/><lit-tag v=""/></let>
     </def-macro>
 
 
