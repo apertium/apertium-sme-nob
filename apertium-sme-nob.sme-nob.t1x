@@ -3076,6 +3076,7 @@ And then there are some categories like "month", with all the months.
                   caseprep, outputting this before any det/adj's. The resulting chunk has the
                   syn_label of the nominal.
                   Removes number from proper noun.">
+
       <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
       <out><var n="caseprep"/></out>
 
@@ -3087,8 +3088,7 @@ And then there are some categories like "month", with all the months.
           <let>
             <clip pos="1" side="tl" part="tags"/>
             <concat>
-              <clip pos="1" side="tl" part="a_nom_all"/>
-              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="tags"/>
               <lit-tag v="sg"/>
             </concat>
           </let>
