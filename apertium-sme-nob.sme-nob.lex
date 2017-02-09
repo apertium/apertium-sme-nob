@@ -1642,7 +1642,8 @@ SELECT ("adresse"i) (0 ("<čujuhus>"i) + pl);
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK -1 gen);
 SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
 
-SELECT ("tale"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i) LINK -1 loc);
+SELECT ("tale"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i)) (1 loc);
+SELECT ("tale om"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i))(NEGATE 1 loc);
 SELECT:fallback ("budskap"i) (0 ("<sáhka>"i));
 
 SELECT ("måte"i) (0 ("<hápmi>"i) + com LINK -1 a + attr);
@@ -1906,6 +1907,7 @@ SELECT:mitt-rom pos (0 ("<ieš>"i)) (NOT 0 @→P OR @P←) ;
 # Mun ferten čorget iežan lanja → Jeg må rydde mitt rom
 
 SELECT:fallback ("prpers"i) (0 ("<ieš>"i) + acc) ;
+SELECT:fallback ("hvem"i) (0 ("<gii>"i)) ;
 
 SELECT ("hvor mange") (0 ("<galle>"i)) (-1 v) ;
 #SELECT:fallback ("mange") (0 ("<galle>"i)) ;
@@ -2034,6 +2036,9 @@ SELECT ("når"i) (0 ("<dalle go>"i)) (-1 ("<earret>"i));
 SELECT:fallback ("da"i) (0 ("<dalle go>"i));
 
 SELECT ("å"i) (0 ("<ahte>"i) + cs) (1 inf);
+SELECT ("om at"i) (0 ("<ahte>"i) + cs) (-1 ("<diehtu>"i) OR ("<muittuhit>"i) OR ("<váruhit>"i));
+
+
 SELECT:fallback ("at"i) (0 ("<ahte>"i) + cs);
 
 
