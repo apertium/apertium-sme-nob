@@ -1115,7 +1115,9 @@ SELECT ("telle"i) (0 ("<lohkat>"i))
 ## Son lohká galle girjji mis leat.
 SELECT:fallback ("lese"i) (0 ("<lohkat>"i));
 
+SELECT:fallback ("høve"i) (0 ("<soahpat>"i) LINK 1 ill);
 
+SELECT:fallback ("forlike"i) (0 ("<soahpat>"i));
 
 
 # mannat 0 = dra, 1 = gå
@@ -1912,6 +1914,9 @@ SELECT:fallback ("hvem"i) (0 ("<gii>"i)) ;
 SELECT ("hvor mange") (0 ("<galle>"i)) (-1 v) ;
 #SELECT:fallback ("mange") (0 ("<galle>"i)) ;
 
+SELECT ("noe slik") (0 ("<dakkár>"i)) (*-1 neg BARRIER S-BOUNDARY) ;
+SELECT:fallback ("slik") (0 ("<dakkár>"i)) ;
+
 
 # Adverbs
 # =======
@@ -2022,6 +2027,9 @@ SELECT ("viss") (0 ("<vissis>"i)) (*1 n BARRIER NOT-A) ;
 # (vs. mun lean vissis:0 ahte)
 
 SELECT ("samisk"i) (0 ("<sápmi>"i))(0 gen);
+
+SELECT ("ydmyk"i) (0 ("<vuollegaš>"i))((*-1 COPULAS BARRIER NOT-ADV-PCLE LINK -1 sem_hum OR pers OR prop ) OR (1 sem_hum));
+SELECT:fallback ("lav"i) (0 ("<vuollegaš>"i));
 
 SELECT:fallback ("dårlig") (0 ("<headju>"i));
 SELECT:fallback ("saklig") (0 ("<áššálaš>"i));
