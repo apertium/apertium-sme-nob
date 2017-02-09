@@ -479,6 +479,16 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="dassái" tags="adv.*"/>
       <cat-item lemma="ovdal" tags="adv.*"/>
     </def-cat>
+    <def-cat n="lex-vaikko">
+      <cat-item lemma="vaikko" tags="adv.*"/>
+      <cat-item lemma="vaikke" tags="adv.*"/>
+    </def-cat>
+    <def-cat n="lex-vaikko-pluss">
+      <cat-item lemma="mii" tags="prn.ind.*"/>
+      <cat-item lemma="gii" tags="prn.ind.*"/>
+      <cat-item lemma="gos" tags="adv.*"/>
+      <cat-item lemma="gosa" tags="adv.*"/>
+    </def-cat>
     <def-cat n="lex-das">
       <cat-item lemma="dás" tags="adv.*"/>
     </def-cat>
@@ -4356,6 +4366,37 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
+
+    <rule comment="C[ALT] lex-vaikko lex-vaikko-pluss" c="vaikko mii → hva som helst">
+      <pattern>
+        <pattern-item n="lex-vaikko"/>
+        <pattern-item n="lex-vaikko-pluss"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <choose><when><test>
+        <equal><clip pos="2" side="tl" part="lemh"/><lit v="hva"/></equal></test>
+        <let><clip pos="2" side="tl" part="tags"/><lit-tag v="adv"/></let></when></choose>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+                <lu>
+                   <clip pos="2" side="tl" part="whole"/>                
+                </lu>
+                <b/>
+              <lu>
+              <lit v="som helst"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+
 
     <!-- <rules: MWE interjections (which can't be in analyser as multiwords) -->
     <rule comment="C[T] ij-adj ij-nom" c="buorre eahket">
