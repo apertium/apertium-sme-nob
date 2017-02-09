@@ -2036,7 +2036,7 @@ SELECT ("når"i) (0 ("<dalle go>"i)) (-1 ("<earret>"i));
 SELECT:fallback ("da"i) (0 ("<dalle go>"i));
 
 SELECT ("å"i) (0 ("<ahte>"i) + cs) (1 inf);
-SELECT ("om at"i) (0 ("<ahte>"i) + cs) (-1 ("<diehtu>"i) OR ("<muittuhit>"i) OR ("<váruhit>"i));
+SELECT ("om at"i) (0 ("<ahte>"i) + cs) (-1 ("<diehtu>"i) OR ("<muittuhit>"i) OR ("<váruhit>"i) OR ("<gáibádus>"i));
 
 
 SELECT:fallback ("at"i) (0 ("<ahte>"i) + cs);
