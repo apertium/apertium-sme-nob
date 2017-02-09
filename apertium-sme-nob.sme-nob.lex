@@ -1131,11 +1131,16 @@ SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i));
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 sem_time + SUBJ BARRIER SV-BOUNDARY);
 SELECT:fallback ("dra"i) (0 ("<mannat>"i));
 
+SELECT ("bety"i) IF (0 ("<máksit>"i) )(-1 ("<dat>"i))(1 ("<ahte>"i));
+SELECT ("bety"i) IF (0 ("<máksit>"i) )(-1 ("<dat>"i))(1 COMMA)(2 ("<ahte>"i));
+## Dat máksá, ahte mun dárbbašan dakkár njuolgadusa
+
 SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR sem_org LINK 0 (@SUBJ→)) ;
 ## Máhtte máksá guokte ruvnnu.
 
 SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
 ## Girji máksá guokte ruvnnu.
+
 
 # vuodjit - vuodján kjørt / vuodjat - vuodján svømt
 REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čáhci>"i) OR ("<basseaŋga>"i));
@@ -1657,6 +1662,8 @@ SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
 SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
 SELECT:fallback ("grunn"i) (0 ("<sivva>"i));
+
+SELECT ("omkring"i) (0 ("<biras>"i) + pl + gen)(1 ("<mánnu>"i));
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
