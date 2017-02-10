@@ -841,31 +841,31 @@ SELECT:fallback ("på"i) (0 ("<alde>"i) OR ("<nalde>"i)) ;
 
 SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0 cs) ;
 
-SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
-SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 COPULAS LINK -1 (a nom)) ;
-SELECT ("at"i) (0 ("<go>"i))(0 cs) (-1 a - comp) ;
+SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
+SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 COPULAS LINK -1 (a nom)) ;
+SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 a - comp) ;
 ## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
 ## Buorre lei go bohtet.
 ## Gummá go ii boahtán.
 
-SELECT ("enn"i) (0 ("<go>"i))(0 @CNP LINK 1 (@COMP-CS←)) ;
-SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (-1 ("<veara>"i) OR ("<eará>"i)) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 @CNP LINK 1 (@COMP-CS←)) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 @CNP) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (1 ("<dušše>"i)) ;
-SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 ("<ovdal>"i) BARRIER S-BOUNDARY LINK 0 adv) ;
-SELECT ("enn"i) (0 ("<go>"i))(0 @CNP) (*-1 comp BARRIER v OR S-BOUNDARY) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 @CNP) (*-1 ("<ovdal>"i) BARRIER S-BOUNDARY LINK 0 adv) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 @CNP) (*-1 comp BARRIER v OR S-BOUNDARY) ;
 ## Son lea viššaleabbo go mun.
 ## Dat dáidá riggát go mii jáhkkit.
 ## Dii han lehpet eanet veara go ollu cizážat.
 ## Viššalat ohppet eanet go láikkit.
 ## Ovdal buorida son dálkkiidis go neavrres olmmoš dábiidis.
 
-SELECT ("som"i) (0 ("<go>"i))(0 cs) ((-1 ("<nu>"i) OR ("<seammá>"i) OR ("<seammás>"i) LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
+SELECT ("som"i) (0 ("<go>"i)) (0 cs) ((-1 ("<nu>"i) OR ("<seammá>"i) OR ("<seammás>"i) LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
 ## Elvenes oaččui Niehkostipeandda nu go lei sávvan.
 
 SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (vblex pret) BARRIER (←hab→) OR (@ADVL→)) ;
 
-SELECT ("fordi"i) (0 ("<go>"i))(0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
+SELECT ("fordi"i) (0 ("<go>"i)) (0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
 ## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
 
 SELECT ("når"i) (0 ("<go>"i) LINK *1 (indic)) ;
@@ -906,7 +906,7 @@ SELECT ("mens"i) IF (0 ("<bodda>"i) LINK -1 ("<dat>") LINK 0 gen) ;
 
 SELECT ("helt"i) IF (0 ("<gitta>"i) + @→A OR ("<gitta>"i) + @→N) ;
 SELECT ("inntil"i) IF (0 ("<gitta>"i) + @→Num) ;
-SELECT ("fast"i) IF (0 ("<gitta>"i))(*-1 ("<váldit>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
+SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
 SELECT:fallback ("stenge"i) IF (0 ("<gitta>"i))  ;
 
 SELECT:fallback ("slik"i) IF (0 ("<ná>"i))  ;
@@ -963,7 +963,7 @@ SELECT:fallback ("by# på"i) IF  (0 ("<guossohit>"i)) ;
 SELECT ("ære"i) IF  (0 ("<gudnejahttit>"i)) (0* ("forelder"i) OR ("far"i) OR ("mor"i) OR ("<Ipmil>"i)) ;
 SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 
-SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("oaivi"i)) ;
+SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
 SELECT ("tilegne"i) IF  (0 ("<oamastit>"i)) ((1 ill) OR (-1 ill)) ;
@@ -1034,8 +1034,8 @@ SELECT:fallback ("få"i) (0 ("<beassat>"i));
 
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
 SELECT ("spørre"i) (0 ("<bivdit>"i) LINK *1 qst);
-SELECT ("fiske"i) (0 ("<bivdit>"i))(*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
-SELECT ("fisker"i) (0 ("<bivdi>"i))(*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
+SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
+SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
 SELECT ("jakte"i) (0 ("<bivdit>"i)) ;
 ## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá.
 ## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá mearas.
@@ -1047,14 +1047,14 @@ SELECT ("ta# hensyn") (0 ("<váldit>")) (-1 ("<vuhtii>")) ;
 SELECT ("bake") (0 ("<gáhkket>")) (*1 @←OBJ BARRIER NOT-NPMOD) ;
 
 # borahit 0 = mate, 1 = fôre
-SELECT ("fôre"i) (0 ("<borahit>"i))(*0 sem_ani);
-SELECT ("mate"i) (0 ("<borahit>"i))(NOT *0 sem_ani);
+SELECT ("fôre"i) (0 ("<borahit>"i)) (*0 sem_ani);
+SELECT ("mate"i) (0 ("<borahit>"i)) (NOT *0 sem_ani);
 ## Son borahii máná. Son borahii spiinniid.
 SELECT:fallback ("mate"i) (0 ("<borahit>"i));
 
 
 # čuohppat: skjære vs klippe
-SELECT ("klippe"i) (0 ("<čuohppat>"i))(*0 ("<vuokta>"i) OR ("<liidni>"i));
+SELECT ("klippe"i) (0 ("<čuohppat>"i)) (*0 ("<vuokta>"i) OR ("<liidni>"i));
 SELECT ("skjære"i) (0 ("<čuohppat>"i)) ;
 
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
@@ -1067,7 +1067,7 @@ SELECT:fallback ("snu"i) (0 ("<jorgalit>"i)) ;
 SELECT ("oversette"i) (0 ("<jorgalahttit>"i)) (*0 sem_lang OR sem_txt) ;
 SELECT:fallback ("snu"i) (0 ("<jorgalahttit>"i)) ;
 
-SELECT:vedta ("vedta"i) (0 ("<dohkkehit>"i))((*-1 (sem_rule)) OR (*1 (sem_rule))) ;
+SELECT:vedta ("vedta"i) (0 ("<dohkkehit>"i)) ((*-1 (sem_rule)) OR (*1 (sem_rule))) ;
 SELECT:fallback ("godta"i) (0 ("<dohkkehit>"i)) ;
 
 
@@ -1090,7 +1090,7 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 # lohkat 0 = lese, 1 = si, 2 = telle
 
-SELECT ("si"i) (0 ("<lohkat>"i))(1 ("<ahte>"i) OR (ref acc) OR (ref loc) OR prfprc or COMMA OR a - attr) ;
+SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR (ref acc) OR (ref loc) OR prfprc or COMMA OR a - attr) ;
 
 SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain LINK 0 acc OR loc OR ("<cealkámuš>"i)) OR (-1 sem_txt OR sem_domain LINK 0 acc OR loc)) ;
 # Son lohká ahte lea buorre doppe.
@@ -1106,8 +1106,8 @@ SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-
 ## Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
 
 
-SELECT ("si"i) (0 ("<lohkat>"i))(-1 COMMA)(*1 (@←SUBJ) BARRIER VFIN);
-SELECT ("si"i) (0 ("<lohkat>"i))(-1 (@SUBJ→) LINK -1 COMMA);
+SELECT ("si"i) (0 ("<lohkat>"i)) (-1 COMMA) (*1 (@←SUBJ) BARRIER VFIN);
+SELECT ("si"i) (0 ("<lohkat>"i)) (-1 (@SUBJ→) LINK -1 COMMA);
 ## Dat lea duohta, lohká Trond.
 
 SELECT ("telle"i) (0 ("<lohkat>"i))
@@ -1122,9 +1122,9 @@ SELECT:fallback ("forlike"i) (0 ("<soahpat>"i));
 
 
 # mannat 0 = dra, 1 = gå
-SELECT ("forrige"i) IF (0 ("<mannat>"i) + prfprc)(1 n);
+SELECT ("forrige"i) IF (0 ("<mannat>"i) + prfprc) (1 n);
 	
-SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i))(0 sg3);
+SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i)) (0 sg3);
 ## Mo manná dál?
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 ("<bures>"i) BARRIER v);
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i));
@@ -1134,16 +1134,16 @@ SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i));
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 sem_time + SUBJ BARRIER SV-BOUNDARY);
 SELECT:fallback ("dra"i) (0 ("<mannat>"i));
 
-SELECT ("bety"i) IF (0 ("<máksit>"i) )(-1 ("<dat>"i))(1 ("<ahte>"i));
-SELECT ("bety"i) IF (0 ("<máksit>"i) )(-1 ("<dat>"i))(1 COMMA)(2 ("<ahte>"i));
+SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 ("<ahte>"i));
+SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 COMMA) (2 ("<ahte>"i));
 SELECT ("bety"i) IF (0 ("<máksit>"i) )(-2 ("<dat>"i))(-1 neg)(1 ("<ahte>"i));
 SELECT ("bety"i) IF (0 ("<máksit>"i) )(-2 ("<dat>"i))(-1 neg)(1 COMMA)(2 ("<ahte>"i));
 ## Dat máksá, ahte mun dárbbašan dakkár njuolgadusa
 
-SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR sem_org LINK 0 (@SUBJ→)) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 HUMAN OR sem_org LINK 0 (@SUBJ→)) ;
 ## Máhtte máksá guokte ruvnnu.
 
-SELECT ("koste"i) IF (0 ("<máksit>"i) )(*-1 (@SUBJ→) LINK NOT 0 HUMAN)(0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
+SELECT ("koste"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK NOT 0 HUMAN) (0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
 ## Girji máksá guokte ruvnnu.
 
 
@@ -1293,9 +1293,9 @@ SELECT ("vise"i) (0 ("<čujuhit>"i)) ;
 # Nouns
 # ============
 
-SELECT ("tale"i) (*-1 ("<doallat>"i))(0 ("sáhka"i));
+SELECT ("tale"i) (*-1 ("<doallat>"i)) (0 ("sáhka"i));
 	
-SELECT ("villrein"i) (*-1 ("<bivdit>"i) OR ("dápmat"i) OR ("vuojihit"i))(0 ("<goddi>"i));
+SELECT ("villrein"i) (*-1 ("<bivdit>"i) OR ("dápmat"i) OR ("vuojihit"i)) (0 ("<goddi>"i));
 
 SELECT ("grunn"i) (0 ("<vuođđu>"i)) (0 ess);
 SELECT:fallback ("grunnlag"i) (0 ("<vuođđu>"i));
@@ -1419,7 +1419,7 @@ SELECT ("erme"i) (0 ("<soadji>"i)) (0* sem_clth);
 SELECT:fallback ("vinge"i) (0 ("<soadji>"i));
 
 # searvi 0 = forening, 1 = selskap
-SELECT ("forening"i) (0 ("<searvi>"i))(-1 ("<sápmi>"i));
+SELECT ("forening"i) (0 ("<searvi>"i)) (-1 ("<sápmi>"i));
 SELECT:fallback ("forening"i) (0 ("<searvi>"i));
 
 # stuibmi 0 = bråk, 1 = konflikt
@@ -1432,7 +1432,7 @@ SELECT:fallback ("komite"i) (0 ("<goddi>"i));
 
 # diehtu 0 = informasjon,  3 = beskjed
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna>"i) OR ("<mobiila>"i)) ;
-SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 acc)(*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
+SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 acc) (*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
 ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
 ## Lei Ájlin gii sáddii dieđu.
 SELECT:fallback ("informasjon"i) (0 ("<diehtu>"i));
@@ -1448,7 +1448,7 @@ SELECT:fallback ("skritt"i) (0 ("<lávki>"i));
 
 
 # gorka 0 = kork (badekar, flaske etc.), 1 = dupp, 2 = kjeft
-SELECT ("kjeft"i) (0 ("<gorka>"i) OR ("<goarka>"i))  (*-1 ("<doallat>"i))(*1 ("<gitta>"i)) ;
+SELECT ("kjeft"i) (0 ("<gorka>"i) OR ("<goarka>"i))  (*-1 ("<doallat>"i)) (*1 ("<gitta>"i)) ;
 ## 	Go ain rádjá ja garruda, de Vállán meron rogáda: «Doala gorkkat gitta!» Gohčui orrut jaska billa vuolin.
 SELECT ("kjeft"i) (0 ("<gorka>"i) OR ("<goarka>"i))  (-1 ("<gallji>"i)) ;
 ## Mannan ija don leat mu buoremus vuojána gaikkodan , biro , beargalat , helveha sáhtánas , galjes 	gorka 	, guhkes bátni !
@@ -1463,7 +1463,7 @@ SELECT ("dupp"i) (0 ("<gorka>"i) OR ("<goarka>"i)) (*-1 ("<siibma>"i)) ;
 SELECT:fallback ("kork"i) (0 ("<gorka>"i));
 
 # johtolat 0 = trafikk, 1 = flyttevei
-SELECT ("trafikk"i) (0 ("<johtolat>"i) LINK NOT 0 pl)(-1 ("<ollu>"i) OR ("<eanet>"i));
+SELECT ("trafikk"i) (0 ("<johtolat>"i) LINK NOT 0 pl) (-1 ("<ollu>"i) OR ("<eanet>"i));
 ## 1938 rádjái lei Porsáŋggu-Kárášjoga máđija ráigge eanemus 	johtolat 	, go Kárášjoga ja Suoma gaskka vudje eanas dálvet , muhto maŋŋel go Kárášjohgeaidnu gárvánii.
 SELECT ("flyttevei"i) (0 ("<johtolat>"i) LINK 0 pl) ;
 ## 	Ii leat dasto čielggas ledje go dát vuotnasápmelaččat dalle juo álggahan guhkit 	johtolagaid.
@@ -1475,9 +1475,9 @@ SELECT:fallback ("trafikk"i) (0 ("<johtolat>"i));
 
 
 # vealgi 0 = gjeld, 1 = lån
-SELECT ("lån"i) (0 ("<vealgi>"i) LINK 0 pl)(*-1 ("<dárbbašit>"i)) ;
+SELECT ("lån"i) (0 ("<vealgi>"i) LINK 0 pl) (*-1 ("<dárbbašit>"i)) ;
 ## Gáivuona suohkan áigo nannet ruhtadeamiid dakkár biergasiidda , jos olbmot dárbbašit 	velggiid 	go galget ruhtadit oastimiid .
-SELECT ("lån"i) (0 ("<vealgi>"i) LINK 0 pl)(*1 ("<guhkesáiggivealgi>"i)) ;
+SELECT ("lån"i) (0 ("<vealgi>"i) LINK 0 pl) (*1 ("<guhkesáiggivealgi>"i)) ;
 ## Dat 	vealgi 	lea guhkesáiggivealgi , nu ahte dat gal mákso dál ruovttoluotta nu movt galgá .
 ## Fylkkagieldda guhkesáiggi 	vealgi 	lea lassánan 289,3 miljovnnain ruvnnuin 2009 rájes 2010 rádjái .
 ## Vealggit lassánedje sullii 8 mill kr , mas oanehisáiggi 	vealgi 	lassánii sullii 4 mill kr.
@@ -1486,14 +1486,14 @@ SELECT:fallback ("gjeld"i) (0 ("<vealgi>"i));
 
 # goansta 0 = kunst, 1 = triks, 2 = ferdighet, 3 = påfunn
 
-SELECT ("påfunn"i) (0 ("<goansta>"i))(-1 ("<buorre>"i)) ;
+SELECT ("påfunn"i) (0 ("<goansta>"i)) (-1 ("<buorre>"i)) ;
 ## Juste dál hálidivččet atnit eambbo áiggi iežat guoibmái , muhto dat liikká ii leat nu buorre 	goansta.
 ## Ii lean várra šat nu buorre 	goansta 	vuodjit , go eaiggát lei sihkkarit lensmánnái dieđihan .  ---påfunn
 
-SELECT ("ferdighet"i) (0 ("<goansta>"i) LINK 0 pl)(*-1 ("<ieš>"i)) ;
+SELECT ("ferdighet"i) (0 ("<goansta>"i) LINK 0 pl) (*-1 ("<ieš>"i)) ;
 ## Fuobmájin iežan 	goansttaid 	ja álgen hárjehallat viesus .
 
-SELECT ("triks"i) (0 ("<goansta>"i))(*-1 ("<fuobmát>"i) OR ("<dahkat>"i)) ;
+SELECT ("triks"i) (0 ("<goansta>"i)) (*-1 ("<fuobmát>"i) OR ("<dahkat>"i)) ;
 ## Áltálaš Jon Røkenes lea fuobmán álkit 	goansttaid 	ráhkadit dola . ---triks (måtene)
 ## De jearrá rieban bussás : – Galle 	goanstta 	leat dus ?
 ## Muhto go son manná vuostebiggii , dahje go son diehtá , gosa dan báikkis háliida boazu , de son manná ja guldala ja dainna 	goansttain 	gávdná ealu .
@@ -1506,14 +1506,14 @@ SELECT:fallback ("kunst"i) (0 ("<goansta>"i));
 
 # jietna 0 = stemme, 1 = lyd
 
-SELECT ("lyd"i) (0 ("<jietna>"i))(1 cc OR COMMA LINK 1 ("<govva>"i)) ;
+SELECT ("lyd"i) (0 ("<jietna>"i)) (1 cc OR COMMA LINK 1 ("<govva>"i)) ;
 ## Ođđaáigásaš servodagas lea dárbbašlaš máhttit hálddašit iešguđet mediaid ja teavsttaid main leat ollu iešguđetlágan oasit biddjon oktii , nugo čála , 	jietna 	ja govva ja seammás oaidnit oktavuođaid giela ja árbemáhtu gaskkas .
 ## Multifunkšunála oahpponeavvuin sáhttet leat olu iešguđetlágán komponeanttat ja heivehuvvon oasit, nugo jienat, govat ja teavsttat , eaige dat dárbbaš leat dušše ovtta vásedin ulbmila váste ráhkaduvvon .
-SELECT ("lyd"i) (0 ("<jietna>"i))(-1 gen LINK 0 ("<luondu>"i) OR ("<skuter>"i));
+SELECT ("lyd"i) (0 ("<jietna>"i)) (-1 gen LINK 0 ("<luondu>"i) OR ("<skuter>"i));
 ## Go gullá luonddu jienaid, go oaidná - de sáhttá maid bidjat sániid sihke jienaide ja dasa maid oaidná luonddus .
 #Sem/Plc OR Sem/Veh
 
-SELECT ("lyd"i) (0 ("<jietna>"i))(-1 ("<geaidut>"i) OR ("<ráhkadit>"i));
+SELECT ("lyd"i) (0 ("<jietna>"i)) (-1 ("<geaidut>"i) OR ("<ráhkadit>"i));
 ## Skutera 	jietna 	juoga sajis gullo .
 ## Nils Petter Molvær geaidu 	jienaid 	iežas trompehtain .
 ## Eará ii ávkkut , nugo čuoikabalddonasat mat ráhkadit jiena, lohká divredutki Preben Ottesen .
@@ -1532,12 +1532,12 @@ LIST VUOJAN-ANI-WORDS = ("<čearpmat>"i) ("<varit>"i) ("<vuoitit>"i) ("<boazu>"i
 LIST VUOJAN-ANI-ADJ = ("<sávri>"i) ("<buorre>"i) ("<sápmi>"i) ("<falli>"i) ("<nuorra>"i) ("<beakkán>"i) ;
 LIST VUOJAN-ANI-V = ("<biebmat>"i) ("<hárjehahttit>"i) ("<njuovvat>"i) ("<ruohttat>"i) ("<vuoitit>"i);
 
-SELECT ("kjørerein"i) (0 ("<vuoján>"i))(*0 VUOJAN-ANI-WORDS OR VUOJAN-ANI-V) ;
+SELECT ("kjørerein"i) (0 ("<vuoján>"i)) (*0 VUOJAN-ANI-WORDS OR VUOJAN-ANI-V) ;
 SELECT ("kjørerein"i) (0 ("<vuoján>"i) LINK 0 ess) ;
 SELECT ("kjørerein"i) (0 ("<vuoján>"i)) (-1 VUOJAN-ANI-ADJ + attr) ;
 ## Bikko Máhte luohti lea dovddus Sančuari hámis “ Stállangazza ” , mii lei beakkán vuoján 	Bikko Máhtes . #disambiguation rule needs to fix beakkán analysis
 ## Dat lei erenoamáš fales vuoján , dadjá Eira , dan botta go njuovvá iežas 	vuojána 	máid massii .
-SELECT ("kjørerein"i) (0 ("<vuoján>"i))(1 COMMA LINK 1 ("«^.*"r));
+SELECT ("kjørerein"i) (0 ("<vuoján>"i)) (1 COMMA LINK 1 ("«^.*"r));
 ## Vuosttaš máilmmiolahus John Inge Eiras dán dálvvi iežas vuojániin, «Limoin».
 ## Máhtte Niillas Gaup 	vuoján 	Ieš vuittii reahkavuodjima ja Máret Áile Sara vuoján Dolgii vuittii ges sabetvuodjimiid Sámi Grand Prix gilvvuin  beassášlávvordaga Guovdageainnus .
 ## Nils Henrik Eira 	vuojániin 	Summitiin , mas lei buoremus áigi olles gilvvuin ja oaččui ge Máze Gilisearvvis dan ovddas  dan stuorámus pokála .
@@ -1554,10 +1554,10 @@ SELECT:fallback ("kjøretøy"i) (0 ("<vuoján>"i));
 
 # bárti 0 = problem, 1 = uhell, 2 = skade, 3 = ulykke
 
-SELECT ("skade"i) (0 ("<bárti>"i))(-1 ("<dagahit>"i)) ;
+SELECT ("skade"i) (0 ("<bárti>"i)) (-1 ("<dagahit>"i)) ;
 ## Dálki lei ge ikte nu garas Finnmárkkus ahte dagahii 	bárttiid 	.  --- skapte skader
 
-SELECT ("uhell"i) (0 ("<bárti>"i))(-1 ("<oalle>"i)) ;
+SELECT ("uhell"i) (0 ("<bárti>"i)) (-1 ("<oalle>"i)) ;
 ## - Lei oalle 	bárti 	mus odne , go láhppen ruhtaburssa vuovdái , ja dál ii leat ruhtabinná ge .  -- uhell
 
 
@@ -1576,8 +1576,8 @@ SELECT:fallback ("problem"i) (0 ("<bárti>"i));
 
 # riekkis 0 = sirkel Geom and Org, 1 = dekk Obj
 
-SELECT ("dekk"i) (0 ("<riekkis>"i))(1 cc LINK 1 ("<juvla>")) ;
-SELECT ("dekk"i) (0 ("<riekkis>"i))(-1 ("<biila>") LINK 0 gen) ;	# Sem/Veh instead of biila
+SELECT ("dekk"i) (0 ("<riekkis>"i)) (1 cc LINK 1 ("<juvla>")) ;
+SELECT ("dekk"i) (0 ("<riekkis>"i)) (-1 ("<biila>") LINK 0 gen) ;	# Sem/Veh instead of biila
 ## Iskka iežat biilla ovdal go vuoddját gosage , earenoamžiid 	rieggáid 	dahje juvllaid . (Sem/Obj)
 ## Dalle sii masset vejolašvuođa Sámi bargguid ektui ja 	riekkis 	giddana Sámi guvlui máhccamis , Riitta Orti-Berg ( 41 ) máinnaša .
 ## – Oainnát , piikkat leat darvánan ja hárjánan vissis guvlui jorrat ja jus bidjá 	rieggá 	jorrat nuppe guvlui , de čolgada eret daid piikkaid .
@@ -1597,8 +1597,8 @@ SELECT:lang-speakers (".*talende"ri) (0 ("<.*giella>"ri) + n + pl) ;
 SELECT ("nok"i) (0 ("<doarvi>"i)) (0 ill) ;
 SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 
-SELECT ("gevinst"i) (0 ("<vuoitu>"i))(-1 ("<oppalaš>") OR ("<fasket>")) ;
-SELECT ("gevinst"i) (0 ("<vuoitu>"i))(*0 CURRENCY) ;	
+SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>")) ;
+SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY) ;	
 
 SELECT ("samisk"i) (0 ("<sápmi>"i) + sg + gen);
 SELECT:fallback ("same"i) (0 ("<sápmi>"i));
@@ -1609,7 +1609,7 @@ SELECT:fallback ("Sameland"i) (0 ("<Sápmi>"i));
 
 SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 
-SELECT ("fokus"i) (0 ("<guovddáš>"i) + sg + ill)(-1 ("<bidjat>"));
+SELECT ("fokus"i) (0 ("<guovddáš>"i) + sg + ill) (-1 ("<bidjat>"));
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
@@ -1648,7 +1648,7 @@ SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK -1 gen);
 SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
 
 SELECT ("tale"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i)) (1 loc);
-SELECT ("tale om"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i))(NEGATE 1 loc);
+SELECT ("tale om"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i)) (NEGATE 1 loc);
 SELECT:fallback ("budskap"i) (0 ("<sáhka>"i));
 
 SELECT ("måte"i) (0 ("<hápmi>"i) + com LINK -1 a + attr);
@@ -1669,7 +1669,7 @@ SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
 SELECT:fallback ("grunn"i) (0 ("<sivva>"i));
 
-SELECT ("omkring"i) (0 ("<biras>"i) + pl + gen)(1 ("<mánnu>"i));
+SELECT ("omkring"i) (0 ("<biras>"i) + pl + gen) (1 ("<mánnu>"i));
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
@@ -1863,7 +1863,7 @@ SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR 
 
 SELECT:fallback ("han"i) + (GD_pers) (0 ("<son>"i)) ;
 
-SELECT ("av hvem"i) (0 ("<gii>"i))(NEGATE 0 ←hab→ ) ;
+SELECT ("av hvem"i) (0 ("<gii>"i)) (NEGATE 0 ←hab→ ) ;
 
 
 SELECT ("hvor"i) (0 ("<mii>"i) + @OBJ→) (-1 tv + FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
@@ -2008,8 +2008,8 @@ SELECT:fallback ("tillitsfull") (0 ("<luohttevaš>"i));
 
 IFF ("-årig") (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
 
-SELECT:fallback ("flere")(0 ("<eanet>"i))(*1 HUMAN BARRIER NOT-PRE-A-N );	
-SELECT:fallback ("mye")(0 ("<eanet>"i));
+SELECT:fallback ("flere") (0 ("<eanet>"i)) (*1 HUMAN BARRIER NOT-PRE-A-N );	
+SELECT:fallback ("mye") (0 ("<eanet>"i));
 	
 ## leage buorre (vær så god)
 
@@ -2022,9 +2022,9 @@ SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
 ## Dat lei buorre girji (god)
 ## Dat lei buorre. (bra)
 
-#REMCOHORT TARGET ("<leat>"i)(0 imprt) (1 ("<buorre>"));
+#REMCOHORT TARGET ("<leat>"i) (0 imprt) (1 ("<buorre>"));
 
-SELECT:fallback ("ekstern")(0 ("<olgguldas>"i));
+SELECT:fallback ("ekstern") (0 ("<olgguldas>"i));
 
 
 # vissis:0 → sikker, vissis:1 → viss
@@ -2032,9 +2032,9 @@ SELECT ("viss") (0 ("<vissis>"i)) (*1 n BARRIER NOT-A) ;
 # muhtun vissis:1 áiggi maŋŋel, doallat viesu rabasin vissis:1 áiggiid
 # (vs. mun lean vissis:0 ahte)
 
-SELECT ("samisk"i) (0 ("<sápmi>"i))(0 gen);
+SELECT ("samisk"i) (0 ("<sápmi>"i)) (0 gen);
 
-SELECT ("ydmyk"i) (0 ("<vuollegaš>"i))((*-1 COPULAS BARRIER NOT-ADV-PCLE LINK -1 sem_hum OR pers OR prop ) OR (1 sem_hum));
+SELECT ("ydmyk"i) (0 ("<vuollegaš>"i)) ((*-1 COPULAS BARRIER NOT-ADV-PCLE LINK -1 sem_hum OR pers OR prop ) OR (1 sem_hum));
 SELECT:fallback ("lav"i) (0 ("<vuollegaš>"i));
 
 SELECT:fallback ("dårlig") (0 ("<headju>"i));
