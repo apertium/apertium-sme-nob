@@ -339,10 +339,38 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <list-item v="&lt;@A←&gt;"/>
     </def-list>
     <def-list n="lemh-no-determiner"
+              c="No determiner at all, whether first or last in chunk">
+      <list-item v="mor"/>
+      <list-item v="far"/>
+      <list-item v="bestemor"/>
+      <list-item v="bestefar"/>
+      <list-item v="velkommen"/>
+      <list-item v="januar"/>
+      <list-item v="februar"/>
+      <list-item v="mars"/>
+      <list-item v="april"/>
+      <list-item v="mai"/>
+      <list-item v="juni"/>
+      <list-item v="juli"/>
+      <list-item v="august"/>
+      <list-item v="september"/>
+      <list-item v="oktober"/>
+      <list-item v="november"/>
+      <list-item v="desember"/>
+      <list-item v="julaften"/>
+      <list-item v="jul"/>
+      <list-item v="midnatt"/>
+      <list-item v="takk"/>
+      <list-item v="TV"/>
+      <list-item v="tv"/>
+      <list-item v="hast"/>
+      <list-item v="verden"/>
+    </def-list>
+    <def-list n="initial-lemh-no-determiner"
               c="Noun phrases *starting with* these lemmas should not have a determiner at all">
       <list-item v="fjorårets"/>
     </def-list>
-    <def-list n="lemh-no-def-determiner"
+    <def-list n="initial-lemh-no-def-determiner"
               c="Noun phrases *starting with* these lemmas should not have a def determiner">
       <list-item v="hel"/>
     </def-list>
@@ -406,34 +434,6 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <def-list n="adj.pseudo-det"
               c="Adjectives like 'certain' never take have determiners 'den/de' in front of them.">
       <list-item v="viss"/>
-    </def-list>
-    <def-list n="noun.pseudo-prop"
-              c="Nouns that act proper (indefinite in the singular, no determiner)">
-      <list-item v="mor"/>
-      <list-item v="far"/>
-      <list-item v="bestemor"/>
-      <list-item v="bestefar"/>
-      <list-item v="velkommen"/>
-      <list-item v="januar"/>
-      <list-item v="februar"/>
-      <list-item v="mars"/>
-      <list-item v="april"/>
-      <list-item v="mai"/>
-      <list-item v="juni"/>
-      <list-item v="juli"/>
-      <list-item v="august"/>
-      <list-item v="september"/>
-      <list-item v="oktober"/>
-      <list-item v="november"/>
-      <list-item v="desember"/>
-      <list-item v="julaften"/>
-      <list-item v="jul"/>
-      <list-item v="midnatt"/>
-      <list-item v="takk"/>
-      <list-item v="TV"/>
-      <list-item v="tv"/>
-      <list-item v="hast"/>
-      <list-item v="verden"/>
     </def-list>
   </section-def-lists>
 
@@ -1109,7 +1109,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <not><in><clip pos="1" part="syn_label"/><list n="syn-no-determiner"/></in></not>
             <not><and>
               <equal><clip pos="1" part="art"/><lit-tag v="def"/></equal>
-              <in><clip pos="2" part="lemh"/><list n="lemh-no-def-determiner"/></in>
+              <in caseless="yes"><clip pos="2" part="lemh"/><list n="initial-lemh-no-def-determiner"/></in>
             </and></not>
             <not><ends-with><clip pos="2" part="lemh"/><lit v="og en halv"/></ends-with></not>
             <not><begins-with><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></begins-with></not>
@@ -1121,11 +1121,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <not><equal><clip pos="2" part="a_adj"/><lit v=""/></equal></not>
             </and></not>
             <not><equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal></not>
-            <not><in><clip pos="2" part="lemh"/><list n="lemh-no-determiner"/></in></not>
+            <not><in caseless="yes"><clip pos="3" part="lemh"/><list n="lemh-no-determiner"/></in></not>
+            <not><in caseless="yes"><clip pos="2" part="lemh"/><list n="initial-lemh-no-determiner"/></in></not>
             <equal><clip pos="2" part="a_prn"/><lit v=""/></equal>
             <or>
               <equal><clip pos="2" part="a_det"/><lit v=""/></equal>
-              <equal><clip pos="2" part="lemh"/><lit v="annen"/></equal>
+              <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="annen"/></equal>
               <in caseless="yes"><clip pos="2" part="lemh"/><list n="det.sp.def"/></in>
             </or>
           </and></test>
@@ -1221,7 +1222,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <test>
               <not>
 		<or><begins-with><clip pos="3" part="a_nom"/><lit-tag v="np"/></begins-with>
-		<in caseless="yes"><clip pos="3" part="lemh"/><list n="noun.pseudo-prop"/></in></or>
+		<in caseless="yes"><clip pos="3" part="lemh"/><list n="lemh-no-determiner"/></in></or>
 	      </not>
 	  </test>
           <call-macro n="maybe_out_det2"><with-param pos="1"/><with-param pos="2"/></call-macro>
