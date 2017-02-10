@@ -731,7 +731,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <test><equal><clip pos="1" part="gen"/><lit-tag v="GD"/></equal></test>
         <let><clip pos="1" part="gen"/><var n="gender"/></let>
       </when></choose>
-      <choose><when>
+<!-- Lene commented out this      <choose><when>
         <test><and>
           <equal><clip pos="1" part="gen"/><lit-tag v="GD_pers"/></equal>
           <or>
@@ -740,7 +740,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           </or>
         </and></test>
         <let><clip pos="1" part="gen"/><var n="gender"/></let>
-      </when></choose>
+      </when></choose> -->
       <choose><when>
         <test><equal><clip pos="1" part="nbr"/><lit-tag v="ND"/></equal></test>
         <let><clip pos="1" part="nbr"/><clip pos="2" part="nbr"/></let>
