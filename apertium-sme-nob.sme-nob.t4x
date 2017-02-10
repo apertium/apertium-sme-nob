@@ -338,6 +338,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <list-item v="&lt;@N←&gt;"/>
       <list-item v="&lt;@A←&gt;"/>
     </def-list>
+    <def-list n="lemh-no-determiner"
+              c="Noun phrases *starting with* these lemmas should not have a determiner at all">
+      <list-item v="fjorårets"/>
+    </def-list>
     <def-list n="lemh-no-def-determiner"
               c="Noun phrases *starting with* these lemmas should not have a def determiner">
       <list-item v="hel"/>
@@ -1117,6 +1121,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <not><equal><clip pos="2" part="a_adj"/><lit v=""/></equal></not>
             </and></not>
             <not><equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal></not>
+            <not><in><clip pos="2" part="lemh"/><list n="lemh-no-determiner"/></in></not>
             <equal><clip pos="2" part="a_prn"/><lit v=""/></equal>
             <or>
               <equal><clip pos="2" part="a_det"/><lit v=""/></equal>
