@@ -27,6 +27,7 @@ LIST a = adj ;
 LIST adv = adv ;
 LIST v = vblex ;
 LIST pron = prn ;
+LIST det = det ;
 
 LIST cs = cnjsub ;
 LIST cc = cnjcoo ;
@@ -1135,6 +1136,8 @@ SELECT:fallback ("dra"i) (0 ("<mannat>"i));
 
 SELECT ("bety"i) IF (0 ("<máksit>"i) )(-1 ("<dat>"i))(1 ("<ahte>"i));
 SELECT ("bety"i) IF (0 ("<máksit>"i) )(-1 ("<dat>"i))(1 COMMA)(2 ("<ahte>"i));
+SELECT ("bety"i) IF (0 ("<máksit>"i) )(-2 ("<dat>"i))(-1 neg)(1 ("<ahte>"i));
+SELECT ("bety"i) IF (0 ("<máksit>"i) )(-2 ("<dat>"i))(-1 neg)(1 COMMA)(2 ("<ahte>"i));
 ## Dat máksá, ahte mun dárbbašan dakkár njuolgadusa
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) )(*-1 HUMAN OR sem_org LINK 0 (@SUBJ→)) ;
@@ -1980,6 +1983,9 @@ SELECT:fallback ("via"i) (0 ("<bokte>"i)) ;
 
 # Adjectives
 # ==========
+SELECT ("egen" det) (0 ("<sierra>"i));
+# Mii čujuhit ahte sámiin go lea sierra álbmot ja eamiálbmot
+
 SELECT ("fjern") (0 ("<gáiddus>"i) + cmpnd);
 REMOVE ("fjern") (NOT 0 cmpnd);
 
