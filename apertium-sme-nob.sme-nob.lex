@@ -1146,10 +1146,6 @@ SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 HUMAN OR sem_org LINK 0 (@SUBJ�
 SELECT ("koste"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK NOT 0 HUMAN) (0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
 ## Girji máksá guokte ruvnnu.
 
-
-# vuodjit - vuodján kjørt / vuodjat - vuodján svømt
-REMOVE ("<vuodjat>"i) IF (0 ("<vuodjit>"i) LINK 0 prfprc);#(NOT 0* ("<čáhci>"i) OR ("<basseaŋga>"i));
-
 SELECT ("tilsøle"i) (0 ("<durdut>"i)) ;
 
 SELECT:fallback ("skje"i) (0 ("<dáhpáhuvvat>"i));
