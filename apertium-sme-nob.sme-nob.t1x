@@ -1807,6 +1807,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-om-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="tale"/>
       <list-item v="snakk"/>
+      <list-item v="kontrakt"/>
     </def-list>
     <def-list n="loc-for-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="frykt"/>
@@ -2887,6 +2888,12 @@ And then there are some categories like "month", with all the months.
         <when>
           <test><equal><var n="c_syn"/><lit v=""/></equal></test>
           <let><var n="c_syn"/><lit-tag v="@X"/></let>
+        </when>
+        <when>
+          <test>
+          <not><equal><clip pos="1" side="sl" part="ext"/><lit v=""/></equal></not>
+          </test>
+          <let><var n="c_syn"/><lit-tag v="@←SUBJext"/></let>
         </when>
       </choose>
     </def-macro>
