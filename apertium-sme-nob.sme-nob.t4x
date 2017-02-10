@@ -1121,7 +1121,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <not><equal><clip pos="2" part="a_adj"/><lit v=""/></equal></not>
             </and></not>
             <not><equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal></not>
-            <not><in caseless="yes"><clip pos="3" part="lemh"/><list n="lemh-no-determiner"/></in></not>
+            <not><in caseless="yes"><clip pos="2" part="lemh"/><list n="lemh-no-determiner"/></in></not>
             <not><in caseless="yes"><clip pos="2" part="lemh"/><list n="initial-lemh-no-determiner"/></in></not>
             <equal><clip pos="2" part="a_prn"/><lit v=""/></equal>
             <or>
