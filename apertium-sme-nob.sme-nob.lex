@@ -924,7 +924,7 @@ SELECT ("måtte"i) IF (0 ("<leat>"i) LINK -1 loc + HUMAN) (1 inf) ;
 # mis lea cahkkehit dola
 SELECT:hab-ha ("ha"i) IF (0 ("<leat>"i)) (*-1 ←hab→ - dem BARRIER SV-BOUNDARY) ;
 SELECT:neg-ha ("ha"i) IF (0 ("<leat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
-SELECT:ha-NOT-actio ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NEGATE *1 actio + ess BARRIER S-BOUNDARY) (NOT 1 (der_passl prfprc)) ;
+SELECT:ha-NOT-actio ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NEGATE *1 actio + ess BARRIER S-BOUNDARY) (NOT *1 der_pass + prfprc) ;
 # sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
 # Dat leat šaddan nu stuorat ahte dat šaddá nu váivi ja lossat dan oahpat dan dáfus go sii leat massán dan interessa mii sis lei go sii ledje unnibut
 # Leat go Ibsenii sáddemin dieđu?
@@ -935,7 +935,7 @@ SELECT:ha-pret ("ha"i) IF (0 ("<leat>"i)) (0 (indic pret)) (1 inf) ;
 # (unfortunately no animacy, and impers isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
-SELECT:ha-prfprac  ("ha"i) IF (0 ("<leat>"i)) (*1 prfprc + @-FMAINV BARRIER SV-BOUNDARY) ; #LOOK AT THIS
+#SELECT:ha-prfprac  ("ha"i) IF (0 ("<leat>"i)) (*1 prfprc + @-FMAINV BARRIER SV-BOUNDARY) ; #LOOK AT THIS
 
 SELECT:Det-er ("være"i) IF (0 ("<leat>"i)) (-1 ("<Dat>") + @SUBJ→) ; # Dat lea …
 
