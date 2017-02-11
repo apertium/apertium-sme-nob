@@ -1134,16 +1134,16 @@ SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i));
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 sem_time + SUBJ BARRIER SV-BOUNDARY);
 SELECT:fallback ("dra"i) (0 ("<mannat>"i));
 
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_org OR pers ) ;
+## Máhtte máksá guokte ruvnnu.
+
 SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 ("<ahte>"i));
 SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 COMMA) (2 ("<ahte>"i));
 SELECT ("bety"i) IF (0 ("<máksit>"i) )(-2 ("<dat>"i))(-1 neg)(1 ("<ahte>"i));
 SELECT ("bety"i) IF (0 ("<máksit>"i) )(-2 ("<dat>"i))(-1 neg)(1 COMMA)(2 ("<ahte>"i));
 ## Dat máksá, ahte mun dárbbašan dakkár njuolgadusa
 
-SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 HUMAN OR sem_org LINK 0 (@SUBJ→)) ;
-## Máhtte máksá guokte ruvnnu.
-
-SELECT ("koste"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK NOT 0 HUMAN) (0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
+SELECT ("koste"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK NOT 0 HUMAN OR pers) (0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
 ## Girji máksá guokte ruvnnu.
 
 SELECT ("tilsøle"i) (0 ("<durdut>"i)) ;
@@ -1979,7 +1979,11 @@ SELECT:fallback ("via"i) (0 ("<bokte>"i)) ;
 
 # Adjectives
 # ==========
-SELECT ("egen" det) (0 ("<sierra>"i));
+
+
+SELECT (n f pl ind) (-1 num)(0 ("<ruvdnosaš>"i));
+
+SELECT (det) (0 ("<sierra>"i));
 # Mii čujuhit ahte sámiin go lea sierra álbmot ja eamiálbmot
 
 SELECT ("fjern") (0 ("<gáiddus>"i) + cmpnd);
