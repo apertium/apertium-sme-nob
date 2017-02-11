@@ -2036,6 +2036,10 @@ SELECT:fallback ("lav"i) (0 ("<vuollegaš>"i));
 SELECT:fallback ("dårlig") (0 ("<headju>"i));
 SELECT:fallback ("saklig") (0 ("<áššálaš>"i));
 
+SELECT:fallback ("dårlig") (0 ("<garas>"i) LINK 1 ("<dálki>"i));
+SELECT:fallback ("hard") (0 ("<garas>"i));
+
+
 # Subjunctions
 # ============
 
