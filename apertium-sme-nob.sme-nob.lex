@@ -843,7 +843,7 @@ SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0
 
 SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 COPULAS LINK -1 (a nom)) ;
-SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 a - comp) ;
+#SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 a - comp) ;
 ## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
 ## Buorre lei go bohtet.
 ## Gummá go ii boahtán.
@@ -867,6 +867,9 @@ SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (vblex pret) BARRIER (←hab→) OR (@AD
 
 SELECT ("fordi"i) (0 ("<go>"i)) (0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
 ## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
+
+SELECT ("fordi"i) (0 ("<go>"i)) (-1 a + nom) ;
+
 
 SELECT ("når"i) (0 ("<go>"i) LINK *1 (indic)) ;
 SELECT:fallback ("som"i) (0 ("<go>"i) + cs) ;
@@ -1132,7 +1135,8 @@ SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i));
 #SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>"i) OR ("<dat>"i));
 ## Mun manan dál.
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 sem_time + SUBJ BARRIER SV-BOUNDARY);
-SELECT:fallback ("dra"i) (0 ("<mannat>"i));
+SELECT ("dra"i) IF (0 ("<mannat>"i)) (*1 sem_plc + ill OR sem_org + ill);
+SELECT:fallback ("gå"i) (0 ("<mannat>"i));
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_org OR pers ) ;
 ## Máhtte máksá guokte ruvnnu.
@@ -1383,16 +1387,16 @@ SELECT ("gang"i) (0 ("<johtu>"i) LINK 0 ill) ;
 SELECT:fallback ("fart"i) (0 ("<johtu>"i));
 
 # oktavuohta 0 = kontakt, 1 = henvendelse, 2 = forbindelse, 3 = sammenheng
-SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 (sg loc)) ;
+SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 (sg loc) OR ill) ;
 SELECT ("forbindelse"i) (0 ("<oktavuohta>"i @←ADVL sg)) ;
 # dan oktavuođas go => i den forbindelse når
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) + (←ext→)) ;
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) + loc LINK -2 v) ;
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK *-1 ("<váldit>"i)) ;
-SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ;
+SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ;
 # máŋgga oktavuođas => i mange sammenhenger
 # máŋggain oktavuođain => i mange sammenhenger
-SELECT:fallback ("sammenheng"i) (0 ("<oktavuohta>"i));
+SELECT:fallback ("forbindelse"i) (0 ("<oktavuohta>"i));
 
 SELECT ("folk") (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
@@ -1428,7 +1432,7 @@ SELECT:fallback ("komite"i) (0 ("<goddi>"i));
 
 # diehtu 0 = informasjon,  3 = beskjed
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna>"i) OR ("<mobiila>"i)) ;
-SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 acc) (*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
+SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 sg + acc) (*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
 ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
 ## Lei Ájlin gii sáddii dieđu.
 SELECT:fallback ("informasjon"i) (0 ("<diehtu>"i));
@@ -1975,6 +1979,8 @@ SELECT ("med"i) (0 ("<bokte>"i) + po LINK -1 ("<mii>"i) + rel + sg + gen) ;
 SELECT ("ved"i) (0 ("<bokte>"i) + adv LINK -1 FIRSTNAME OR pron) ;
 SELECT:fallback ("via"i) (0 ("<bokte>"i)) ;
 
+SELECT:fallback ("på"i) (0 ("<badjelis>"i) LINK -1 sem_clth) ;
+SELECT:fallback ("ovenfor"i) (0 ("<badjelis>"i)) ;
 
 
 # Adjectives
