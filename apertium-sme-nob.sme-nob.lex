@@ -969,6 +969,10 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
+SELECT ("samle"i) IF  (0 ("<čoaggit>"i)) (0* ("<ruhta>"i) + acc OR ("<namma>"i) + acc) ;
+SELECT:fallback ("plukke"i) IF  (0 ("<čoaggit>"i)) ;
+
+
 SELECT ("tilegne"i) IF  (0 ("<oamastit>"i)) ((1 ill) OR (-1 ill)) ;
 SELECT:fallback ("eie"i) IF  (0 ("<oamastit>"i)) ;
 
@@ -1215,6 +1219,9 @@ SELECT:fallback ("bli"i) (0 ("<bissut>"i) ) ;
 
 SELECT:fallback ("kommunisere"i) (0 ("<gulahallat>"i) ) ;
 
+SELECT:stå ("stå# på") (0 ("<ceavzit>"i) LINK *0 ("<eksámen>"i) + acc);
+SELECT:fallback ("klare"i) (0 ("<ceavzit>"i));
+
 
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
@@ -1223,7 +1230,6 @@ SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 SELECT:fallback ("sette"i) (0 ("<bidjat>"i));
 SELECT:fallback ("avslå"i) (0 ("<biehttalit>"i));
 SELECT:fallback ("påvirke"i) (0 ("<báidnit>"i));
-SELECT:fallback ("klare"i) (0 ("<ceavzit>"i));
 SELECT:fallback ("kvitre"i) (0 ("<civkkádit>"i));
 SELECT:fallback ("forårsake"i) (0 ("<dagahit>"i));
 SELECT:fallback ("overdra"i) (0 ("<daguhit>"i));
