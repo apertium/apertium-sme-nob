@@ -1989,6 +1989,9 @@ SELECT:fallback ("via"i) (0 ("<bokte>"i)) ;
 SELECT:fallback ("på"i) (0 ("<badjelis>"i) LINK -1 sem_clth) ;
 SELECT:fallback ("ovenfor"i) (0 ("<badjelis>"i)) ;
 
+SELECT:bra ("bra"i) (0 ("<bures>"i) LINK *0 ("<mannat>"i) BARRIER SV-BOUNDARY) ;
+SELECT:fallback ("godt"i) (0 ("<bures>"i)) ;
+
 
 # Adjectives
 # ==========
