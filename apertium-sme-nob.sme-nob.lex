@@ -999,6 +999,7 @@ SELECT:orron-doppe ("bo"i) (0 ("<orrut>"i)) (*1 loc OR DOPPE BARRIER (*) - TIME-
 #For sentences like: Mun orron diibmá Romssas.
 #Check SET ORRUT-BO
 SELECT:doppe-son-orui ("bo"i) (0 ("<orrut>"i)) (-1 @SUBJ→) (-2 loc OR DOPPE) ;
+SELECT:doppe-son-orui ("bo"i) (0 ("<orrut>"i)) (-1 sem_plc + loc OR DOPPE) ;
 
 SELECT:fallback ("synes"i) (0 ("<orrut>"i)); # says parallel corpus
 
@@ -1675,6 +1676,10 @@ SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
 SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
 SELECT:fallback ("grunn"i) (0 ("<sivva>"i));
+
+SELECT ("leting"i) (0 ("<ohcan>"i) LINK -1 ("<diehtu>"i));
+SELECT:fallback ("søknad"i) (0 ("<ohcan>"i));
+
 
 SELECT ("omkring"i) (0 ("<biras>"i) + pl + gen) (1 ("<mánnu>"i));
 
