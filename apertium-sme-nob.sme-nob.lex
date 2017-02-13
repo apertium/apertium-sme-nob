@@ -1393,13 +1393,14 @@ SELECT ("gang"i) (0 ("<johtu>"i) LINK 0 ill) ;
 SELECT:fallback ("fart"i) (0 ("<johtu>"i));
 
 # oktavuohta 0 = kontakt, 1 = henvendelse, 2 = forbindelse, 3 = sammenheng
+SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) + loc) ;
 SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 (sg loc) OR ill) ;
 SELECT ("forbindelse"i) (0 ("<oktavuohta>"i @←ADVL sg)) ;
 # dan oktavuođas go => i den forbindelse når
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) + (←ext→)) ;
-SELECT ("kontakt"i) (0 ("<oktavuohta>"i) + loc LINK -2 v) ;
+#SELECT ("kontakt"i) (0 ("<oktavuohta>"i) + loc LINK -2 v) ;
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK *-1 ("<váldit>"i)) ;
-SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ;
+SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ; #?
 # máŋgga oktavuođas => i mange sammenhenger
 # máŋggain oktavuođain => i mange sammenhenger
 SELECT:fallback ("forbindelse"i) (0 ("<oktavuohta>"i));
@@ -2037,6 +2038,9 @@ SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
 #REMCOHORT TARGET ("<leat>"i) (0 imprt) (1 ("<buorre>"));
 
 SELECT:fallback ("ekstern") (0 ("<olgguldas>"i));
+
+SELECT:fallback ("sint") (0 ("<bahá>"i) + attr LINK 1 sem_hum OR sem_ani);
+SELECT:fallback ("dårlig") (0 ("<bahá>"i));
 
 
 # vissis:0 → sikker, vissis:1 → viss
