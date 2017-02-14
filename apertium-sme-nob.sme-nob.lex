@@ -1078,6 +1078,12 @@ SELECT:fallback ("snu"i) (0 ("<jorgalahttit>"i)) ;
 SELECT:vedta ("vedta"i) (0 ("<dohkkehit>"i)) ((*-1 (sem_rule)) OR (*1 (sem_rule))) ;
 SELECT:fallback ("godta"i) (0 ("<dohkkehit>"i)) ;
 
+#SELECT:vedta ("vrake"i) (0 ("<hilgut>"i))  ;
+SELECT:fallback ("avvise"i) (0 ("<hilgut>"i)) ;
+
+SELECT:savne ("savne"i) (0 ("<láhppot>"i) + @→N)  ;
+SELECT:fallback ("gå vill"i) (0 ("<láhppot>"i)) ;
+
 
 SELECT ("heve"i) (0 ("<geavvat>"i)) (*0 sem_food LINK 0 SUBJ) ;
 #  láibbit eai geargan geavvat ovdal go olbmot fertejedje hoahpus johttát .
