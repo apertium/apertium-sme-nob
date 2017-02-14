@@ -2851,7 +2851,14 @@ And then there are some categories like "month", with all the months.
                c="arg.1: noun, arg.2: adjective
                   –––––
                   ">
-      <choose><when c="(for compound adj's, just keep bidix-specified tags)">
+      <choose><when c="Fix possibly empty plural gender">
+        <test><and>
+          <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+          <equal><clip pos="1" side="tl" part="gen"/><lit v=""/></equal>
+        </and></test>
+        <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="un.pl"/></let>
+      </when></choose>
+      <choose><when c="The rest is just for non-compound adj's:">
         <test><equal><clip pos="2" side="sl" part="a_cmp"/><lit v=""/></equal></test>
         <choose c="bovdejuvvon guossit : inviterte gjester">
           <when>
@@ -2977,10 +2984,6 @@ And then there are some categories like "month", with all the months.
         <when c="Adjective, e.g. sápmi.n.sg.gen → samisk.adj">
           <test><not><equal><clip pos="2" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
           <call-macro n="modify_adj_gen_nbr"><with-param pos="1"/><with-param pos="2"/></call-macro>
-          <choose><when><test>
-          <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal></test>
-          <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="un.pl"/></let> <!-- Lene added: because gen is empty -->
-          </when></choose>
           <append n="pre-nom">
             <concat>
               <lit v="^"/>
