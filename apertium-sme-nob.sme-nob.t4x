@@ -326,6 +326,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <def-var n="moremost-defnes"/>
     <def-var n="adj-gender"/>
     <def-var n="adj-number"/>
+    <def-var n="former-chunk"/>
   </section-def-vars>
 
   <section-def-lists>
@@ -1292,9 +1293,24 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
               <equal><clip pos="0" part="a_actio"/><lit v=""/></equal>
               <equal><clip pos="0" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+              <not><equal><var n="former-chunk"/><lit-tag v="SA"/></equal></not>
             </and></test>
             <out>
               <lu><lit v="for"/><lit-tag v="pr"/></lu>
+              <b/>
+              <lu><lit v="å"/><lit-tag v="part"/></lu>
+              <b/>
+            </out>
+          </when>
+          <when>
+            <test><and>
+              <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
+              <equal><clip pos="0" part="a_actio"/><lit v=""/></equal>
+              <equal><clip pos="0" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+              <equal><var n="former-chunk"/><lit-tag v="SA"/></equal>
+            </and></test>
+            <out>
+              <lu><lit v="til"/><lit-tag v="pr"/></lu>
               <b/>
               <lu><lit v="å"/><lit-tag v="part"/></lu>
               <b/>
@@ -1330,6 +1346,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <let><var n="prev-verb-was-bli"/><lit v="no"/></let>
           </otherwise>
         </choose>
+        <let><var n="former-chunk"/><lit v=""/></let>
       </action>
     </rule>
 
@@ -1830,6 +1847,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <rule comment="CHUNK: adj">
 <pattern><pattern-item n="adj"/></pattern>
       <action>
+        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
         <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
