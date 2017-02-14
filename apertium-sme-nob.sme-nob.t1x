@@ -2042,8 +2042,8 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test><or>
-                <in><var n="previous-nhead"/><list n="loc-av-head"/></in>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-av"/></in>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-av-head"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-av"/></in>
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="av"/>
@@ -2051,7 +2051,7 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test><and><or>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
@@ -2064,7 +2064,7 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
                 <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_year"/></equal>
               </or>
-              <not><in><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
+              <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
               <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal></not>
               <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-F←ADVL-ela"/></equal></not>
             </and>
@@ -2075,8 +2075,8 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test><or>
-                <in><var n="previous-nhead"/><list n="loc-for-head"/></in>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-for"/></in>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-for-head"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-for"/></in>
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="for"/>
@@ -2084,8 +2084,8 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test><or>
-                <in><var n="previous-nhead"/><list n="loc-om-head"/></in>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-om-head"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in>
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="om"/>
@@ -2093,7 +2093,7 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-etter"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-etter"/></in>
               </test>
               <let>
                 <var n="caseprep"/><lit v="etter"/>
@@ -2101,7 +2101,7 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-NIL"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-NIL"/></in>
               </test>
               <let>
                 <var n="caseprep"/><lit v=""/>
@@ -2117,8 +2117,8 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test><or>
-                <in><var n="previous-nhead"/><list n="loc-fra-head"/></in>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="loc-fra"/></in>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-fra-head"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-fra"/></in>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-F←ADVL-ela"/></equal>
               </or></test>
@@ -2192,13 +2192,13 @@ And then there are some categories like "month", with all the months.
             <var n="caseprep"/><lit v="som"/>
           </let>
           <choose><when>
-            <test><in><clip pos="1" side="tl" part="lemh"/><list n="ess-til"/></in></test>
+            <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-til"/></in></test>
             <let>
               <var n="caseprep"/><lit v="til"/>
             </let>
           </when></choose>
           <choose><when>
-            <test><in><clip pos="1" side="tl" part="lemh"/><list n="ess-til-gen"/></in></test>
+            <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-til-gen"/></in></test>
             <let>
               <var n="caseprep"/><lit v="til"/>
             </let>
@@ -2206,14 +2206,14 @@ And then there are some categories like "month", with all the months.
           </when></choose>
           <choose><when>
             <test>
-              <in><clip pos="1" side="tl" part="lemh"/><list n="ess-i"/></in>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-i"/></in>
             </test>
             <let>
               <var n="caseprep"/><lit v="i"/>
             </let>
           </when></choose>
           <choose><when>
-            <test><or><in><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in>
+            <test><or><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in>
              <equal><var n="main-verb-sl"/><lit v="gohčodit"/></equal></or></test>
            <let>
               <var n="caseprep"/><lit v=""/>
@@ -2229,7 +2229,7 @@ And then there are some categories like "month", with all the months.
             <when>
               <test>
                 <or>
-                  <in><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
+                  <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
                   <and>
                     <equal><var n="seen_num"/><lit-tag v="num"/></equal>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
@@ -2248,8 +2248,8 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test><or>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
-                <in><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
               </or></test>
               <let>
@@ -2262,7 +2262,7 @@ And then there are some categories like "month", with all the months.
                   <or>
                     <equal><var n="main-verb-sl"/><lit v="leat"/></equal>
                     <equal><var n="main-verb-sl"/><lit v="mearkkašit"/></equal>
-                    <in><var n="previous-nhead"/><list n="ill-for-head"/></in>
+                    <in caseless="yes"><var n="previous-nhead"/><list n="ill-for-head"/></in>
                   </or>
                   <not><equal><var n="previous-nhead"/><lit v="rettighet"/></equal></not>
                   <not><equal><var n="previous-nhead"/><lit v="rett"/></equal></not>
@@ -2276,8 +2276,8 @@ And then there are some categories like "month", with all the months.
           <choose><when c="but even if the above tests matched, we can override to nil here:">
             <test>
               <or>
-                <in><clip pos="1" side="tl" part="lemh"/><list n="ill-NIL"/></in>
-                <in><var n="main-verb-sl"/><list n="ill-NIL-verbs"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-NIL"/></in>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-NIL-verbs"/></in>
               </or>
             </test>
             <let>
@@ -2292,20 +2292,20 @@ And then there are some categories like "month", with all the months.
               <test><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal></test>
               <choose>
                 <when>
-                  <test><in><var n="previous-nhead"/><list n="gen-om-head"/></in></test>
+                  <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-om-head"/></in></test>
                   <let>
                     <var n="caseprep"/><lit v="om"/>
                   </let>
                 </when>
                 <when>
-                  <test><in><var n="previous-nhead"/><list n="gen-av-head"/></in></test>
+                  <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-av-head"/></in></test>
                   <let>
                     <var n="caseprep"/><lit v="av"/>
                   </let>
                 </when>
                 <when c="Guovdageainnu suohkana sátnejođiheaddji : ordføreren i Kautokeino kommune">
                   <test><or>
-                  <in><var n="previous-nhead"/><list n="gen-i-head"/></in>
+                  <in caseless="yes"><var n="previous-nhead"/><list n="gen-i-head"/></in>
                    <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
                 </or></test>
                   <let>
@@ -2313,13 +2313,13 @@ And then there are some categories like "month", with all the months.
                   </let>
                 </when>
                 <when>
-                  <test><in><var n="previous-nhead"/><list n="gen-for-head"/></in></test>
+                  <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-for-head"/></in></test>
                   <let>
                     <var n="caseprep"/><lit v="for"/>
                   </let>
                 </when>
                 <when>
-                  <test><in><var n="previous-nhead"/><list n="gen-på-head"/></in></test>
+                  <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-på-head"/></in></test>
                   <let>
                     <var n="caseprep"/><lit v="på"/>
                   </let>
@@ -2545,7 +2545,7 @@ And then there are some categories like "month", with all the months.
             </and>
             <and>
               <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n"/></begins-with>
-              <in><clip pos="1" side="tl" part="lemh"/><list n="pers_nouns"/></in>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="pers_nouns"/></in>
             </and>
           </or></test>
           <let><var n="c_animacy"/><lit-tag v="pers"/></let>
@@ -2764,7 +2764,7 @@ And then there are some categories like "month", with all the months.
             <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="comp"/></equal>
             <and> <!-- Lene added -->
               <equal><clip pos="2" side="tl" part="prop_type"/><lit-tag v="top"/></equal>
-              <in><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
             </and>
             <and> <!-- Lene added -->
               <equal><clip pos="2" side="tl" part="prop_type"/><lit-tag v="top"/></equal>
@@ -3058,7 +3058,7 @@ And then there are some categories like "month", with all the months.
           <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
           <choose><when c="Avoid «Tromsøs kommune»">
             <test><or>
-              <in><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
               <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
             </or></test>
             <let><clip pos="2" side="tl" part="gen-case"/><lit v=""/></let>
@@ -3101,7 +3101,7 @@ And then there are some categories like "month", with all the months.
 	  <or>
 	    <and>
           <in><clip pos="1" side="tl" part="a_sem"/><list n="determinerless_sem"/></in>
-          <not><in><clip pos="1" side="tl" part="lemh"/><list n="determiner-although-determinerless_sem"/></in></not>
+          <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="determiner-although-determinerless_sem"/></in></not>
             </and>
 	    <equal><clip pos="1" side="sl" part="lemh"/><lit v="olu"/></equal>
 	    <equal><clip pos="1" side="sl" part="lemh"/><lit v="ollu"/></equal>
@@ -3515,7 +3515,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal>
           <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="actio"/></equal>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
-      <not><in><clip pos="1" side="sl" part="lemh"/><list n="no.actio.ess"/></in></not>
+      <not><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="no.actio.ess"/></in></not>
           <not><equal><var n="aux-verb-tl"/><lit v="synes"/></equal></not>
         </and>
         </test>
@@ -3537,7 +3537,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
 
       <choose c="Prepend 'kunne/skulle/skal' if conditional:"><when>
         <test><and>
-          <not><in><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in></not>
+          <not><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in></not>
           <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
         </and></test>
         <choose>
@@ -3580,7 +3580,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       </when>
       <when>
               <test><and>
-          <in><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in>
+          <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in>
           <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
         </and></test>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
@@ -3628,7 +3628,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                  TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types..."><when>
         <test><and>
           <equal><clip pos="1" side="tl" part="a_caus"/><lit-tag v="caus"/></equal>
-          <not><in><clip pos="1" side="tl" part="lemh"/><list n="caus-Ø-verbs"/></in></not>
+          <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="caus-Ø-verbs"/></in></not>
         </and></test>
         <out>
           <chunk name="verb" case="caseFirstWord">
@@ -3680,7 +3680,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </when></choose>
           <let><var n="c_animacy"/><lit-tag v="impers"/></let>
           <choose><when>
-            <test><in><clip pos="1" side="tl" part="lem"/><list n="animate_nonagent-verbs"/></in></test>
+            <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="animate_nonagent-verbs"/></in></test>
             <let><var n="c_animacy"/><lit-tag v="pers"/></let>
           </when></choose>
           <out>
@@ -3782,7 +3782,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </choose>
           <choose>
             <when>
-              <test><in><clip pos="1" side="sl" part="lemh"/><list n="esubj-verbs"/></in></test>
+              <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="esubj-verbs"/></in></test>
               <let><var n="esubj"/><lit-tag v="esubj"/></let>
             </when>
             <otherwise>
