@@ -22,6 +22,16 @@ declare -r SED
 
 ######## Functions:
 
+htmlSanity () {
+    local -r wgot="$1"
+    if ! grep -q '<li>.*→' "${wgot}"; then
+        echo "Found no tests in html (is the wiki down?)"
+        grep 'technical difficulties' "${wgot}" || true
+        return 1
+    fi
+    return 0
+}
+
 fetchtests () {
     local -r update=$1
     local -r testtype=$2
@@ -30,7 +40,7 @@ fetchtests () {
     if ${update}; then
         # Download as e.g. Regression_tests (without .html); the -N
         # ensures we don't re-download unless server version changed.
-	if ( cd "$(dirname "$0")" && wget -N -q "${BASEURL}/${testtype}" ); then
+	if ( cd "$(dirname "$0")" && wget -N -q "${BASEURL}/${testtype}" && htmlSanity "${testtype}" ); then
 	    command cp "$(dirname "$0")/${testtype}" "${html}"
 	else
             # Only cp to e.g. Regression_tests.html on success – that
