@@ -331,7 +331,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <list-item v="&lt;@←SPRED&gt;"/>
       <list-item v="&lt;@SUBJ→&gt;"/>
       <list-item v="&lt;@←OBJ&gt;"/>
-      <list-item v="&lt;@←ADVL&gt;"/>
+     <list-item v="&lt;@←ADVL&gt;"/>  <!-- To be commented out -->
       <list-item v="&lt;@←ADVL-ela&gt;"/>
       <list-item v="&lt;@←ADVL-ine&gt;"/>
       <list-item v="&lt;@COMP-CS←&gt;"/>
@@ -1286,6 +1286,17 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           </choose>
         </when></choose>
         <choose>
+<!--          <when c="This one gives for å to adverbials. It functions, but it demands correct tagging, so we will wait a little bit.">
+            <test>
+                <equal><clip pos="0" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+            </test>
+            <out>
+              <lu><lit v="for"/><lit-tag v="pr"/></lu>
+              <b/>
+              <lu><lit v="å"/><lit-tag v="part"/></lu>
+              <b/>
+            </out>
+          </when> -->
           <when>
             <test><and>
               <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
