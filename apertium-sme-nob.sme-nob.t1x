@@ -3274,9 +3274,14 @@ And then there are some categories like "month", with all the months.
             <or>
               <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
               <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="ND"/></equal>
             </or>
             <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
           </and></test>
+          <choose><when>
+            <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="ND"/></equal></test>
+            <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+          </when></choose>
           <choose>
             <when>
               <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal></test>
