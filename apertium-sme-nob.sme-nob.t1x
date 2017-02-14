@@ -3427,6 +3427,7 @@ And then there are some categories like "month", with all the months.
                   - output 'begynne'             if inchoative
                   - output 'la'                  if causative
                   - output 'bli'                 if passive
+                  - output 'for å'               if infintiv and @←ADVL
                   - output main predicate (tl PoS may be verb, adj, adv or n;
                               temps may have changed by the above operations)
                   - output reflexive if we have a 'ref' tag
@@ -3540,6 +3541,27 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <b/>
         </out>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+      </when>
+      </choose>
+
+      <choose c="for å/til å"><when>
+        <test><and>
+          <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="inf"/></equal>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+        </and>
+        </test>
+        <out>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="@CVP.cnjsub"/></tag>
+            </tags>
+            <lu>
+              <lit v="for å"/>
+              <lit-tag v="cnjsub"/>
+            </lu>
+          </chunk>
+          <b/>
+        </out>
       </when>
       </choose>
 
