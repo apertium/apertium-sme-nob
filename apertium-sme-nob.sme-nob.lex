@@ -1480,13 +1480,14 @@ SELECT:fallback ("kork"i) (0 ("<gorka>"i));
 SELECT ("trafikk"i) (0 ("<johtolat>"i) LINK NOT 0 pl) (-1 ("<ollu>"i) OR ("<eanet>"i));
 ## 1938 rádjái lei Porsáŋggu-Kárášjoga máđija ráigge eanemus 	johtolat 	, go Kárášjoga ja Suoma gaskka vudje eanas dálvet , muhto maŋŋel go Kárášjohgeaidnu gárvánii.
 SELECT ("flyttevei"i) (0 ("<johtolat>"i) LINK 0 pl) ;
-## 	Ii leat dasto čielggas ledje go dát vuotnasápmelaččat dalle juo álggahan guhkit 	johtolagaid.
-SELECT ("flyttevei"i) (0 ("<johtolat>"i)) ;
+## 	Ii leat dasto čielggas ledje go dát vuotnasápmelaččat dalle juo álggahan guhkit johtolagaid.
+SELECT ("flyttevei"i) (0 ("<johtolat>"i) LINK *0 ("<.*orohat>"ri)) ;
 ## Oallugat deattuhedje man deaŧalaš 	johtolat 	lei boazodollui . ???
 ## Dákkár johtin ja 	johtolat 	gaskal dálveorohagaid siseatnamis ja geasseorohagaid mearragátteváriin lea ekologalaš heiveheapmi mii gottiin lei ja masa boazobargi lea iežas eallima heivehan .
 ## lea šaddan nu ahte hámmandilálašvuođat ja guollebivdohámmana guovddáš sajádat riddoruvttu985 johtolaga ektui lea deaŧalaččat go lagamus 	johtolat 	guollebáikái .
 SELECT:fallback ("trafikk"i) (0 ("<johtolat>"i));
 
+#Geaidnopolitiijat leat disdaga dárkkistan johtolaga Stállogárgotuneallas
 
 # vealgi 0 = gjeld, 1 = lån
 SELECT ("lån"i) (0 ("<vealgi>"i) LINK 0 pl) (*-1 ("<dárbbašit>"i)) ;
