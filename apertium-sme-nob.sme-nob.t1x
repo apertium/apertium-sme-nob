@@ -841,8 +841,10 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="tv"/>
       <attr-item tags="iv"/>
     </def-attr>
-    <def-attr n="actio">                                       <!--TODO: what's the category name?-->
-      <attr-item tags="actio"/>
+    <def-attr n="a_actio">                                       <!--TODO: what's the category name?-->
+      <attr-item tags="actio.ess"/>
+      <attr-item tags="actio.loc"/>
+      <attr-item tags="actio.nom"/>
     </def-attr>
     <def-attr n="a_caus">                                      <!--TODO: what's the category name?-->
       <attr-item tags="caus"/>
@@ -3430,7 +3432,6 @@ And then there are some categories like "month", with all the months.
                   - output 'begynne'             if inchoative
                   - output 'la'                  if causative
                   - output 'bli'                 if passive
-                  - output 'for å'               if infintiv and @←ADVL
                   - output main predicate (tl PoS may be verb, adj, adv or n;
                               temps may have changed by the above operations)
                   - output reflexive if we have a 'ref' tag
@@ -3524,8 +3525,7 @@ And then there are some categories like "month", with all the months.
       <choose c="Prepend cnjsub if present progressive:
 TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the left, it should be inf."><when>
         <test><and>
-          <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal>
-          <equal><clip pos="1" side="sl" part="actio"/><lit-tag v="actio"/></equal>
+          <equal><clip pos="1" side="sl" part="a_actio"/><lit-tag v="actio.ess"/></equal>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
       <not><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="no.actio.ess"/></in></not>
           <not><equal><var n="aux-verb-tl"/><lit v="synes"/></equal></not>
@@ -3809,7 +3809,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                 <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
                 <tag><clip pos="1" side="sl" part="modality"/></tag>
-                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="sl" part="a_actio"/></tag>  
+                <tag><clip pos="1" side="tl" part="temps"/></tag>  
                 <tag><clip pos="1" side="tl" part="voice"/></tag>
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
