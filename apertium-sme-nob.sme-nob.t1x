@@ -1773,6 +1773,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="periode"/>
       <list-item v="rom"/>
       <list-item v="sak"/>
+      <list-item v="urfolkssak"/>
       <list-item v="samfunn"/>
       <list-item v="sammenheng"/>
       <list-item v="søknad"/>
@@ -1788,6 +1789,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="utland"/>
       <list-item v="vask"/>
       <list-item v="verden"/>
+      <list-item v="ledelse"/>
+      <list-item v="historie"/> <!-- i historia, men skrive på ei historie -->
     </def-list>
     <def-list n="loc-på" c="Proper place nouns (np.top) get preposition 'i' unless they're in this list.">
       <list-item v="Andøya"/>
@@ -1825,6 +1828,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="torsdag"/>
       <list-item v="Østlandet"/>
       <list-item v="øy"/>
+      <list-item v="liste"/>
     </def-list>
     <def-list n="loc-NIL" c="Locative noun phrases default to 'i' unless in this list">
       <list-item v="uke"/>
@@ -2689,6 +2693,7 @@ And then there are some categories like "month", with all the months.
               <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in>
             </and></not>
             <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
+<!--	    <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="samisk"/></equal></not>-->
             <or>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@OBJ→"/></equal>
               <equal><clip pos="1" side="sl" part="hab"/><lit-tag v="←hab→"/></equal>
