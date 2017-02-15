@@ -969,7 +969,7 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
-SELECT ("samle"i) IF  (0 ("<čoaggit>"i)) (0* ("<ruhta>"i) + acc OR ("<namma>"i) + acc) ;
+SELECT ("samle"i) IF  (0 ("<čoaggit>"i)) (0* ("<ruhta>"i) + acc OR ("<namma>"i) + acc OR ("<namma>"i) + gen) ;
 SELECT:fallback ("plukke"i) IF  (0 ("<čoaggit>"i)) ;
 
 
@@ -1772,7 +1772,7 @@ SELECT:fallback ("betaling"i) (0 ("<máksu>"i));
 SELECT:fallback ("suppe"i) (0 ("<mális>"i));
 SELECT:fallback ("mønster"i) (0 ("<málle>"i));
 SELECT:fallback ("skaft"i) (0 ("<nađđa>"i));
-SELECT:fallback ("ledelse"i) (0 ("<njunuš>"i));
+SELECT:fallback ("tet"i) (0 ("<njunuš>"i));
 SELECT:fallback ("grunne"i) (0 ("<njuorra>"i));
 SELECT:fallback ("skinn"i) (0 ("<náhkki>"i));
 SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));
