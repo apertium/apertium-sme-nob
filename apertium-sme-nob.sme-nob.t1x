@@ -1438,6 +1438,22 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_semcon_txt&gt;"/>
       <list-item v="&lt;sem_txt&gt;"/>
     </def-list>
+    <def-list n="sem_group">
+      <list-item v="&lt;sem_act_group&gt;"/>
+      <list-item v="&lt;sem_ani_group&gt;"/>
+      <list-item v="&lt;sem_ani_group_hum&gt;"/>
+      <list-item v="&lt;sem_body_group_hum&gt;"/>
+      <list-item v="&lt;sem_body_group_hum_time&gt;"/>
+      <list-item v="&lt;sem_edu_group_hum&gt;"/>
+      <list-item v="&lt;sem_group&gt;"/>
+      <list-item v="&lt;sem_group_hum&gt;"/>
+      <list-item v="&lt;sem_group_hum_org&gt;"/>
+      <list-item v="&lt;sem_group_hum_plc&gt;"/>
+      <list-item v="&lt;sem_group_hum_prod-vis&gt;"/>
+      <list-item v="&lt;sem_group_org&gt;"/>
+      <list-item v="&lt;sem_group_sign&gt;"/>
+      <list-item v="&lt;sem_group_txt&gt;"/>
+    </def-list>
     <def-list n="sem_pos">
       <list-item v="&lt;sem_plc_pos&gt;"/>
       <list-item v="&lt;sem_pos&gt;"/>
@@ -2068,6 +2084,7 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-cogn"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_pos"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_group"/></in>
                 <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
                 <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_year"/></equal>
@@ -7832,6 +7849,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SV.@←ADVL"/></tag>
+              <tag><clip pos="2" side="sl" part="a_actio"/></tag>  
               <tag><lit-tag v="inf"/></tag>
             </tags>
             <lu>
@@ -7871,6 +7889,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <chunk name="verb" >
             <tags>
               <tag><lit-tag v="SV.@←ADVL"/></tag>
+              <tag><clip pos="1" side="sl" part="a_actio"/></tag>  
               <tag><lit-tag v="inf"/></tag>
             </tags>
             <lu>
@@ -7896,6 +7915,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <chunk name="verb">
             <tags>
               <tag><lit-tag v="SV.@ADVL"/></tag>
+              <tag><clip pos="4" side="sl" part="a_actio"/></tag>  
               <tag><lit-tag v="inf"/></tag>
             </tags>
             <lu>
