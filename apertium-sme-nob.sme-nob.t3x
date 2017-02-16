@@ -62,6 +62,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item lemma="rel" tags="*.@SUBJ→"/>
       <cat-item lemma="rel" tags="@SUBJ→.*"/>
     </def-cat>
+    <def-cat n="lSUBJext">
+      <cat-item tags="SN.@←SUBJext.*"/>
+    </def-cat>
     <def-cat n="lSUBJ">
       <cat-item tags="SN.@←SUBJ.*"/>
       <cat-item tags="SN.@←SUBJext.*"/>
@@ -557,7 +560,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-var n="tmpcase" c="tmp variable for switch_cases"/>
     <def-var n="case-switch" c="should set_pro 'switch' cases of pro and verb chunk?"/>
     <def-var n="gender"/>
-    <def-var n="seen-hab" c="seen a habitive in this sentence"/>
+    <def-var n="seen-hab" c="seen a habitive in this sentence" v="no"/>
     <def-var n="pro" c="in case it was dropped"/>
     <def-var n="pro-blank" c="one space if there's a pro, else nothing"/>
     <def-var n="adv" c="potensialis 'kanskje'; see set_adv"/>
@@ -788,10 +791,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                   Only runs on titlecased verbs (more likely 'det' in the start of a sentence)
                   See set_existential_pro_general for non-titlecased verbs.">
       <let><var n="pro"/><lit v=""/></let>
+      <let><var n="pro-blank"/><lit v=""/></let>
       <choose>
         <when>
           <test> <and>
             <equal><clip pos="1" part="lemh"/><lit v="Vcop"/></equal>
+            <equal><clip pos="1" part="esubj"/><lit-tag v="esubj"/></equal>
+            <equal><var n="seen-hab"/><lit v="no"/></equal>
             <not><equal><clip pos="1" part="temps"/><lit-tag v="imp"/></equal></not>
           </and></test>
           <let>
@@ -805,6 +811,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
               <b/>
             </concat>
           </let>
+          <let><var n="pro-blank"/><lit v=" "/></let>
           <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
         </when>
       </choose>
@@ -812,11 +819,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     <def-macro n="set_existential_pro_general" npar="2"
                c="arg.1: verb chunk, arg.2: following word">
       <let><var n="pro"/><lit v=""/></let>
+      <let><var n="pro-blank"/><lit v=""/></let>
       <choose>
         <when>
           <test><and>
-            <equal><clip pos="1" part="lemh"/><lit v="vcop"/></equal>
-            <equal><clip pos="1" part="esubj"/><lit v="esubj"/></equal>
+            <equal caseless="yes"><clip pos="1" part="lemh"/><lit v="vcop"/></equal>
+            <equal><clip pos="1" part="esubj"/><lit-tag v="esubj"/></equal>
             <equal><var n="seen-hab"/><lit v="no"/></equal>
             <not><equal><clip pos="1" part="temps"/><lit-tag v="imp"/></equal></not>
           </and></test>
@@ -831,6 +839,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
               <b/>
             </concat>
           </let>
+          <let><var n="pro-blank"/><lit v=" "/></let>
           <let><clip pos="1" part="lemh"/><get-case-from pos="2"><clip pos="1" part="lemh"/></get-case-from></let>
         </when>
       </choose>
@@ -1548,7 +1557,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
-          <var n="pro"/>
+          <var n="pro-blank"/><var n="pro"/>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="2"/>
           <chunk><clip pos="3" part="whole"/></chunk>
@@ -2210,6 +2219,39 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv-blank"/><var n="adv"/>
           <b pos="2"/>
           <chunk><clip pos="3" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: V2-trigger adv-FV.neg IV lSUBJext
+                   -----
+                   V2-rule with pro-drop insertion (gender based on IV)
+                   duorastaga iđida sáhttá borgat => torsdag morgen kan det fyke
+
+                   Note: This rule is partly blocked by the 'maybe-SUBJr FV' rule above.">
+      <pattern>
+        <pattern-item n="V2-trigger"/>
+        <pattern-item n="adv-FV.neg"/>
+        <pattern-item n="IV"/>
+        <pattern-item n="lSUBJext"/>
+      </pattern>
+      <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes2">
+          <with-param pos="1"/>
+          <with-param pos="2"/>
+        </call-macro>
+        <call-macro n="set_existential_pro_general"><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="pro-blank"/><var n="pro"/>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
         </out>
       </action>
     </rule>
