@@ -3450,7 +3450,7 @@ And then there are some categories like "month", with all the months.
                   - change tags towards nob.dix (anything bidix didn't do)
                   - set the verb caseprep-tag
                   - output 'ikke'                if vabess
-                  - output 'i ferd med å'        if progressive
+                  - output 'i ferd med'        if progressive
                   - output 'kunne/skulle/ville'  if conditional
                   - output 'begynne'             if inchoative
                   - output 'la'                  if causative
@@ -3546,7 +3546,7 @@ And then there are some categories like "month", with all the months.
       </when></choose>
 
       <choose c="Prepend cnjsub if present progressive:
-TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the left, it should be inf."><when>
+TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the left, it should be inf. Infintive marker å is added in t4x"><when>
         <test><and>
           <equal><clip pos="1" side="sl" part="a_actio"/><lit-tag v="actio.ess"/></equal>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
@@ -3560,8 +3560,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><lit-tag v="@CVP.cnjsub"/></tag>
             </tags>
             <lu>
-              <lit v="i ferd med å"/>
-              <lit-tag v="cnjsub"/>
+              <lit v="i ferd med"/>
+              <lit-tag v="pr"/>
             </lu>
           </chunk>
           <b/>
