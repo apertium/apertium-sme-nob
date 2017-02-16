@@ -2050,7 +2050,7 @@ And then there are some categories like "month", with all the months.
         <var n="caseprep"/><lit v=""/>
       </let>
       <choose>
-        <when c="på">
+        <when c="på when loc">
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal></test>
           <let>
             <var n="caseprep"/><lit v="på"/>
@@ -2065,7 +2065,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="hos"/>
               </let>
             </when>
-            <when c="av">
+            <when c="av for loc-av">
               <test><or>
                 <in caseless="yes"><var n="previous-nhead"/><list n="loc-av-head"/></in>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-av"/></in>
@@ -2125,7 +2125,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="etter"/>
               </let>
             </when>
-            <when>
+            <when c="NIL for loc-NIL">
               <test c="empty">
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-NIL"/></in>
               </test>
@@ -2212,25 +2212,25 @@ And then there are some categories like "month", with all the months.
             </when>
             </choose>
         </when>
-        <when>
+        <when c="ess is som">
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal></test>
           <let>
             <var n="caseprep"/><lit v="som"/>
           </let>
-          <choose><when>
+          <choose><when c="ess is til">
             <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-til"/></in></test>
             <let>
               <var n="caseprep"/><lit v="til"/>
             </let>
           </when></choose>
-          <choose><when>
+          <choose><when c="ess is til">
             <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-til-gen"/></in></test>
             <let>
               <var n="caseprep"/><lit v="til"/>
             </let>
             <let><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></let>
           </when></choose>
-          <choose><when>
+          <choose><when c="ess is i">
             <test>
               <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-i"/></in>
             </test>
@@ -2238,7 +2238,7 @@ And then there are some categories like "month", with all the months.
               <var n="caseprep"/><lit v="i"/>
             </let>
           </when></choose>
-          <choose><when>
+          <choose><when c="ess is NIL">
             <test><or><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in>
              <equal><var n="main-verb-sl"/><lit v="gohčodit"/></equal></or></test>
            <let>
@@ -2246,13 +2246,13 @@ And then there are some categories like "month", with all the months.
             </let>
           </when></choose>
         </when>
-        <when>
+        <when c="ill is til">
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal></test>
           <let>
             <var n="caseprep"/><lit v="til"/>
           </let>
           <choose>
-            <when>
+            <when c="ill is på">
               <test>
                 <or>
                   <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
@@ -2272,7 +2272,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="på"/>
               </let>
             </when>
-            <when>
+            <when c="ill is i">
               <test><or>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
                 <in caseless="yes"><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
@@ -2282,7 +2282,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="i"/>
               </let>
             </when>
-            <when>
+            <when c="ill is for">
               <test>
                 <and>
                   <or>
