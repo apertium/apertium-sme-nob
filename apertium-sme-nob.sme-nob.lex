@@ -2001,8 +2001,18 @@ SELECT:fallback ("via"i) (0 ("<bokte>"i)) ;
 SELECT:fallback ("på"i) (0 ("<badjelis>"i) LINK -1 sem_clth) ;
 SELECT:fallback ("ovenfor"i) (0 ("<badjelis>"i)) ;
 
+
+SELECT ("ja") (0 ("<ja>i))(-1 cc)(1("<ja>i));
+SELECT ("ja") (0 ("<ja>i))(1 cc)(-1("<ja>i));
+# Dajai, ahte ja ja.
+
+SELECT:fallback ("og") (0 ("<ja>"i));
+
+
 SELECT:bra ("bra"i) (0 ("<bures>"i) LINK *0 ("<mannat>"i) BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("godt"i) (0 ("<bures>"i)) ;
+
+
 
 
 # Adjectives
