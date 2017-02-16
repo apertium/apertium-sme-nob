@@ -35,6 +35,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
 
 <interchunk>
   <section-def-cats>
+   <def-cat n="default">
+      <cat-item tags="*"/>
+    </def-cat>
     <def-cat n="SN">
       <cat-item tags="SN"/>
       <cat-item tags="SN.*"/>
@@ -421,6 +424,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-attr n="mode">
       <attr-item tags="qst"/>
     </def-attr>
+    <def-attr n="esubj">
+      <attr-item tags="esubj"/>
+    </def-attr>
     <def-attr n="modality">
       <attr-item tags="indic"/>
       <attr-item tags="cond"/>
@@ -551,6 +557,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-var n="tmpcase" c="tmp variable for switch_cases"/>
     <def-var n="case-switch" c="should set_pro 'switch' cases of pro and verb chunk?"/>
     <def-var n="gender"/>
+    <def-var n="seen-hab" c="seen a habitive in this sentence"/>
     <def-var n="pro" c="in case it was dropped"/>
     <def-var n="pro-blank" c="one space if there's a pro, else nothing"/>
     <def-var n="adv" c="potensialis 'kanskje'; see set_adv"/>
@@ -807,8 +814,10 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       <let><var n="pro"/><lit v=""/></let>
       <choose>
         <when>
-          <test> <and>
+          <test><and>
             <equal><clip pos="1" part="lemh"/><lit v="vcop"/></equal>
+            <equal><clip pos="1" part="esubj"/><lit v="esubj"/></equal>
+            <equal><var n="seen-hab"/><lit v="no"/></equal>
             <not><equal><clip pos="1" part="temps"/><lit-tag v="imp"/></equal></not>
           </and></test>
           <let>
@@ -914,8 +923,18 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       <call-macro n="set_pro"><with-param pos="1"/><with-param pos="2"/></call-macro>
     </def-macro>
 
+    <def-macro n="set_hab" npar="1"
+               c="arg.1: nom chunk">
+      <choose>
+        <when>
+          <test><equal><clip pos="1" part="hab"/><lit-tag v="←hab→"/></equal></test>
+          <let><var n="seen-hab"/><lit-tag v="yes"/></let>
+        </when>
+      </choose>
+    </def-macro>
+
     <def-macro n="set_adv" npar="1"
-               c="arg.1: verb chunk.
+               c="arg.1: preferably verb chunk
                   Creates an adverb chunk to indicate potentialis case.
                   (Conditionalis is handled by adding aux 'kunne' in t1x instead.)
                   If given indicative, make adv and adv-blank empty, they are always output.">
@@ -960,6 +979,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="SV_lOBJ-tilsvar"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <chunk>
@@ -1003,6 +1023,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
@@ -1054,6 +1075,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
@@ -1071,6 +1093,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="2"/></call-macro>
         <out>
@@ -1091,6 +1114,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="set_adv"><with-param pos="4"/></call-macro>
         <out>
@@ -1121,6 +1145,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
@@ -1148,6 +1173,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="4"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="3"/><with-param pos="5"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
@@ -1179,6 +1207,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
@@ -1205,6 +1235,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
@@ -1229,6 +1260,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="modify_GD_ND_subj3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
@@ -1261,6 +1293,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="modify_GD_ND_subj3"><with-param pos="1"/><with-param pos="2"/><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
@@ -1293,6 +1326,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
@@ -1323,6 +1357,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="lOBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
@@ -1351,6 +1388,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
@@ -1383,6 +1423,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="2"/><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
@@ -1411,6 +1454,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="1"/>
@@ -1435,6 +1479,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="1"/>
@@ -1460,6 +1506,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="4"/>
           <with-param pos="1"/>
@@ -1489,6 +1538,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="2"/>
@@ -1519,6 +1569,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IVMAIN-pers"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="2"/>
@@ -1569,6 +1620,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IVMAIN-pers"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="4"/>
           <with-param pos="3"/>
@@ -1621,6 +1673,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="4"/>
           <with-param pos="3"/>
@@ -1665,6 +1719,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="5"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="5"/>
           <with-param pos="3"/>
@@ -1709,6 +1765,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="1"/>
@@ -1757,6 +1814,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="2"/>
@@ -1783,6 +1842,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="lSPRED"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="2"/>
@@ -1808,6 +1869,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="4"/>
           <with-param pos="3"/>
@@ -1834,6 +1897,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="1"/>
@@ -1859,6 +1923,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="4"/>
           <with-param pos="2"/>
@@ -1887,6 +1953,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="5"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="5"/>
           <with-param pos="3"/>
@@ -1917,6 +1985,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="maybe-lSUBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="5"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="5"/>
           <with-param pos="3"/>
@@ -1948,6 +2018,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="modify_GD_ND_subj3"><with-param pos="2"/><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="set_adv"><with-param pos="4"/></call-macro>
         <choose><when>
@@ -1976,6 +2047,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="modify_GD_ND_subj3"><with-param pos="3"/><with-param pos="2"/><with-param pos="4"/></call-macro>
         <call-macro n="set_adv"><with-param pos="4"/></call-macro>
         <choose><when>
@@ -2005,6 +2077,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="4"/></call-macro>
         <call-macro n="modify_GD_ND_subj3"><with-param pos="3"/><with-param pos="2"/><with-param pos="5"/></call-macro>
         <call-macro n="set_adv"><with-param pos="5"/></call-macro>
         <choose><when>
@@ -2033,6 +2107,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="modify_GD_ND_subj3"><with-param pos="1"/><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
@@ -2091,6 +2167,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
@@ -2118,6 +2195,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
@@ -2144,6 +2222,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="FV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="3"/>
@@ -2171,6 +2250,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="IV"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="3"/>
@@ -2269,6 +2349,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="V"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="set_pro_verb_case1"><with-param pos="3"/></call-macro>
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
@@ -2282,7 +2363,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    
+
     <!-- <rules: FV.qst IV*: -->
     <rule comment="REGLA: FV.qst
                    Oainnátgo => Ser du
@@ -2456,6 +2537,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="V"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
@@ -2501,6 +2583,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="V"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
@@ -2532,7 +2615,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           </otherwise>
         </choose>
       </action>
-    </rule> 
+    </rule>
 
     <rule comment="REGLA: PR ADVLrOBJr V
                    OV => VO order">
@@ -2542,6 +2625,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="V"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="3"/>
@@ -2559,7 +2643,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
               <chunk><clip pos="2" part="whole"/></chunk>
             </out>
       </action>
-    </rule> 
+    </rule>
 
     <rule comment="REGLA: PR ADVLr V lOBJ
                    AVO => VOA order" c="Barggu geažil ferte son Álttás čuovvut dikki : På grunn av arbeidet må han følge tinget i Alta">
@@ -2570,6 +2654,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="lOBJ"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="3"/>
@@ -2589,7 +2675,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
               <chunk><clip pos="2" part="whole"/></chunk>
             </out>
       </action>
-    </rule> 
+    </rule>
 
 
 
@@ -2603,6 +2689,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="V"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="3"/>
@@ -2632,6 +2720,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="V"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="3"/>
@@ -2661,6 +2751,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="lOPREDacc"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="2"/>
@@ -2698,6 +2790,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="lOPREDacc"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="4"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="1"/>
           <with-param pos="3"/>
@@ -2724,7 +2819,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="4" part="whole"/></chunk>
         </out>
       </action>
-    </rule> 
+    </rule>
 
     <!-- FV lOBJ_RPRED -->
     <rule comment="REGLA: FV lOBJ_RPRED
@@ -2735,6 +2830,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="lOBJ_lOPRED"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="2"/>
           <with-param pos="1"/>
@@ -2760,6 +2856,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="lOBJ_lOPRED"/>
       </pattern>
       <action>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
         <call-macro n="set_defnes2">
           <with-param pos="3"/>
           <with-param pos="1"/>
@@ -2787,11 +2884,23 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </pattern>
       <action>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
-        <call-macro n="set_pro_verb_case1"><with-param pos="1"/></call-macro>  
+        <call-macro n="set_pro_verb_case1"><with-param pos="1"/></call-macro>
         <out>
           <var n="pro"/><var n="pro-blank"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: DEFAULT">
+      <pattern>
+        <pattern-item n="default"/>
+      </pattern>
+      <action>
+        <let><var n="seen-hab"/><lit-tag v="no"/></let>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
         </out>
       </action>
     </rule>
