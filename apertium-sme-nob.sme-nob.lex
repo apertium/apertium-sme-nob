@@ -1687,6 +1687,12 @@ SELECT:fallback ("grunn"i) (0 ("<sivva>"i));
 SELECT ("leting"i) (0 ("<ohcan>"i) LINK -1 ("<diehtu>"i));
 SELECT:fallback ("søknad"i) (0 ("<ohcan>"i));
 
+SELECT ("antall"i) (0 ("<lohku>"i) LINK -1 sem_hum + pl) ;
+SELECT:fallback ("tall"i) (0 ("<lohku>"i));
+
+SELECT ("drifsenhet"i) (0 ("<doallu>"i) LINK *0 ("<orohat>"i) OR ("<siida>"i) OR ("<boazu>"i)) ;
+SELECT:fallback ("arrangement"i) (0 ("<doallu>"i)) ;
+
 
 SELECT ("omkring"i) (0 ("<biras>"i) + pl + gen) (1 ("<mánnu>"i));
 
@@ -1750,7 +1756,6 @@ SELECT:fallback ("rom"i) (0 ("<latnja>"i));
 SELECT:fallback ("enke"i) (0 ("<leaska>"i));
 SELECT:fallback ("rørelse"i) (0 ("<lihkadus>"i));
 SELECT:fallback ("studie"i) (0 ("<lohkan>"i));
-SELECT:fallback ("tall"i) (0 ("<lohku>"i));
 SELECT:fallback ("vei"i) (0 ("<luodda>"i));
 SELECT:fallback ("geværpatron"i) (0 ("<ládda>"i));
 SELECT:fallback ("garn"i) (0 ("<láigi>"i));
