@@ -4035,6 +4035,12 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
          </when>
         <when>
         <test>
+        <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.pers"/></equal>
+        </test>
+         <let><clip pos="1" side="tl" part="tags"/><lit-tag v="det.pos.m.sg"/></let>
+         </when>
+        <when>
+        <test>
         <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>
         </test>
          <let><clip pos="1" side="tl" part="tags"/><lit-tag v="adj.sint.pst.un.sp.def"/></let>
