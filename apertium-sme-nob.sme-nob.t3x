@@ -937,7 +937,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       <choose>
         <when>
           <test><equal><clip pos="1" part="hab"/><lit-tag v="←hab→"/></equal></test>
-          <let><var n="seen-hab"/><lit-tag v="yes"/></let>
+          <let><var n="seen-hab"/><lit v="yes"/></let>
         </when>
       </choose>
     </def-macro>
@@ -2940,7 +2940,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <pattern-item n="default"/>
       </pattern>
       <action>
-        <let><var n="seen-hab"/><lit-tag v="no"/></let>
+        <let><var n="seen-hab"/><lit v="no"/></let>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
         </out>
