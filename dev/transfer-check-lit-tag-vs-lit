@@ -12,13 +12,17 @@ fi
 res=$(mktemp -t transfer-check-lit-tag-vs-lit.XXXXXXXXXX)
 trap 'rm -f "${res}"' EXIT
 
+sel () {
+    xmlstarlet sel -t -m "$@" -c . -n "$f" | sort | uniq -c |sort -rn
+}
+
 for f in apertium-sme-nob.sme-nob.t?x; do
     xmlstarlet sel -t -m '//def-var' -v @n -n "$f" | while read -r var; do
         varparent="var[@n=\"${var}\"]/.."
         nlitvar="${varparent}/lit[not(@v=\"\")]"
         littagvar="${varparent}/lit-tag"
-        nonemptylit=$(xmlstarlet sel -t -m "//let/${nlitvar}   | //equal/${nlitvar}  " -c . -n "$f" | sort | uniq -c |sort -rn)
-        littag=$(xmlstarlet      sel -t -m "//let/${littagvar} | //equal/${littagvar}" -c . -n "$f" | sort | uniq -c |sort -rn)
+        nonemptylit=$(sel "//let/${nlitvar}   | //equal/${nlitvar}")
+        littag=$(sel      "//let/${littagvar} | //equal/${littagvar} | //tag/${varparent}")
         if [[ -n ${nonemptylit} && -n ${littag} ]];then
             echo "$f: <def-var n=\"${var}\"/> is let/equal to both non-empty lit and lit-tags:" >> "${res}"
             paste <(echo "${nonemptylit}") <(echo "${littag}") |column -s$'\t' -t -n >> "${res}"
