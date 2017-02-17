@@ -481,13 +481,15 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="guovttos" tags="n.*.coll.*"/>
       <cat-item lemma="guovttos" tags="n.coll.*"/>
     </def-cat>
-    <def-cat n="lex-nubbi">
-      <cat-item lemma="nubbi" tags="adj.*"/>
-      <cat-item lemma="nubbi" tags="prn.*"/>
+    <def-cat n="front-of-bealde">
+      <cat-item  tags="*.@→P"/>
     </def-cat>
     <def-cat n="lex-bealde">
       <cat-item lemma="bealde" tags="adv.*"/>
       <cat-item lemma="bealde" tags="post.*"/>
+      <cat-item lemma="bealde" tags="pr.*"/>
+      <cat-item lemma="bealli" tags="n.*"/>
+      <cat-item lemma="beallai" tags="post.*"/>
     </def-cat>
     <def-cat n="hum_gen">
       <cat-item tags="n.*.sem_hum.sg.gen.*"/>
@@ -724,7 +726,6 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="lemq-obj"/>
     </def-attr>
     <def-attr n="a_adj">
-      <attr-item tags="adj"/>
       <attr-item tags="adj"/>
       <attr-item tags="adj.pp"/>
       <attr-item tags="adj.pprs"/>
@@ -3994,26 +3995,53 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         </out>
       </action>
     </rule>
-    <rule comment="C[L] lex-nubbi lex-bealde" c="sii ellet nuppe bealde → de lever på andre siden">
+    <rule comment="C[L] front-of-bealde lex-bealde" c="sii ellet nuppe bealde → de lever på andre siden">
       <pattern>
-        <pattern-item n="lex-nubbi"/>
+        <pattern-item n="front-of-bealde"/>
         <pattern-item n="lex-bealde"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <choose>
         <when>
+        <test>
+        <equal><clip pos="2" side="sl" part="lemh"/><lit v="beallai"/></equal>
+        </test>
+         <let><var n="tmp"/><lit v="til"/></let>
+         </when> 
+        <when>
         <test><or>
         <equal><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
         <equal><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
         </or></test>
-         <let><var n="tmp"/><lit v="fra andre siden"/></let>
+         <let><var n="tmp"/><lit v="fra"/></let>
          </when> 
          <otherwise>
-         <let><var n="tmp"/><lit v="på andre siden"/></let> 
+         <let><var n="tmp"/><lit v="på"/></let> 
          </otherwise></choose>
+        <choose>
+        <when>
+        <test><and>
+        <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+        <equal><clip pos="1" side="tl" part="lemh"/><lit v="den"/></equal></and>
+        </test>
+         <let><clip pos="1" side="tl" part="tags"/><lit-tag v="det.dem.m.sg"/></let>
+         </when>
+        <when>
+        <test>
+        <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+        </test>
+         <let><clip pos="1" side="tl" part="tags"/><lit-tag v="det.dem.un.sg.def"/></let>
+         </when>
+        <when>
+        <test>
+        <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>
+        </test>
+         <let><clip pos="1" side="tl" part="tags"/><lit-tag v="adj.sint.pst.un.sp.def"/></let>
+         </when>
+       </choose>
         <out>
-          <chunk name="adv" case="caseFirstWord">
+          <chunk name="adv">
             <tags>
               <tag><lit-tag v="ADV"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
@@ -4021,8 +4049,18 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </tags>
             <lu>
 				<var n="tmp"/>
+				<lit-tag v="pr"/>            
+            <lit v="$"/>
+               <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="tags"/>
+            <lit v="$"/>
+               <b pos="1"/>
+            <lit v="^"/>
+				<lit v="siden"/>            
 				<lit-tag v="adv"/>            
-            </lu>
+           </lu>
           </chunk>
         </out>
       </action>

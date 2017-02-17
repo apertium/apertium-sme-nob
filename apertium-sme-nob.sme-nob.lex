@@ -994,7 +994,7 @@ SELECT:fallback ("legge# opp til"i) IF  (0 ("<láhčit>"i)) ;
 SELECT:dego ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
 SELECT:jaska ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>"i)) ;
 SELECT:bli ("bli"i) (0 ("<orrut>"i)) (-1 ("<go>"i)) ;
-SELECT:orron-doppe ("bo"i) (0 ("<orrut>"i)) (*1 loc OR DOPPE BARRIER (*) - TIME-ADV) ;
+SELECT:orron-doppe ("bo"i) (0 ("<orrut>"i)) (*1 loc OR DOPPE OR ("<bealde>"i) BARRIER SV-BOUNDARY) ;
 #This rule should have another barrier, a set of all words except TIME-ADV.
 #For sentences like: Mun orron diibmá Romssas.
 #Check SET ORRUT-BO
@@ -1624,6 +1624,20 @@ SELECT:fallback ("same"i) (0 ("<sápmi>"i));
 
 SELECT ("Samisk"i) (0 ("<Sápmi>"i) + sg + gen);
 SELECT:fallback ("Sameland"i) (0 ("<Sápmi>"i));
+
+SELECT:finsk ("finsk"i) (0 ("<Suopma>"i) + gen LINK 1 ("<bealde>"i) OR ("<bealli>"i) OR ("<beallai>"i));
+SELECT:fallback ("Finland"i) (0 ("<Suopma>"i));
+
+SELECT:svensk ("svensk"i) (0 ("<Ruoŧŧa>"i) + gen LINK 1 ("<bealde>"i) OR ("<bealli>"i) OR ("<beallai>"i));
+SELECT:fallback ("Sverige"i) (0 ("<Ruoŧŧa>"i));
+
+SELECT:norsk ("norsk"i) (0 ("<Norga>"i) + gen LINK 1 ("<bealde>"i) OR ("<bealli>"i) OR ("<beallai>"i));
+
+SELECT:fallback ("Sverige"i) (0 ("<Norga>"i));
+
+SELECT:russisk ("russisk"i) (0 ("<Ruošša>"i) + gen LINK 1 ("<bealde>"i) OR ("<bealli>"i) OR ("<beallai>"i));
+
+SELECT:fallback ("Sverige"i) (0 ("<Ruošša>"i));
 
 
 SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
