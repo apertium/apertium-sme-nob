@@ -481,6 +481,14 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="guovttos" tags="n.*.coll.*"/>
       <cat-item lemma="guovttos" tags="n.coll.*"/>
     </def-cat>
+    <def-cat n="lex-nubbi">
+      <cat-item lemma="nubbi" tags="adj.*"/>
+      <cat-item lemma="nubbi" tags="prn.*"/>
+    </def-cat>
+    <def-cat n="lex-bealde">
+      <cat-item lemma="bealde" tags="adv.*"/>
+      <cat-item lemma="bealde" tags="post.*"/>
+    </def-cat>
     <def-cat n="hum_gen">
       <cat-item tags="n.*.sem_hum.sg.gen.*"/>
       <cat-item tags="n.sem_hum.sg.gen.*"/>
@@ -3980,6 +3988,39 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <lu>
               <lit v="i stedet"/>
               <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] lex-nubbi lex-bealde" c="sii ellet nuppe bealde → de lever på andre siden">
+      <pattern>
+        <pattern-item n="lex-nubbi"/>
+        <pattern-item n="lex-bealde"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <choose>
+        <when>
+        <test><or>
+        <equal><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+        <equal><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+        </or></test>
+         <let><var n="tmp"/><lit v="fra andre siden"/></let>
+         </when> 
+         <otherwise>
+         <let><var n="tmp"/><lit v="på andre siden"/></let> 
+         </otherwise></choose>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+				<var n="tmp"/>
+				<lit-tag v="adv"/>            
             </lu>
           </chunk>
         </out>
