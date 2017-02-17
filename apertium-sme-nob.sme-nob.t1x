@@ -1285,6 +1285,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="caseFirstWord"   c="has typographic case of first word; is 'init' if it's the first word of a sentence" v="Init"/>
     <def-var n="caseprep"        c="nob preposition (whole chunk) based on sme case"/>
     <def-var n="caseprep_c_name" c="chunk name for the caseprep chunk"/>
+    <def-var n="caseprep-verb"   c="nob preposition (whole chunk) based on sme case, used as tag on the verb chunk"/>
     <def-var n="previous-nhead"  c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
     <def-var n="main-verb-sl"    c="sme lemh of the previous main verb" />
     <def-var n="main-verb-tl"    c="nob lemh of the previous main verb" />
@@ -3495,46 +3496,46 @@ And then there are some categories like "month", with all the months.
                  and to Conditional, Causative and and Passive chunks, just to make sure...">
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-NIL-verbs"/></in></test>
-          <let><var n="caseprep"/><lit-tag v="ill-NIL"/></let>
+          <let><var n="caseprep-verb"/><lit-tag v="ill-NIL"/></let>
         </when>
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-på-verbs"/></in></test>
-          <let><var n="caseprep"/><lit-tag v="ill-på"/></let>
+          <let><var n="caseprep-verb"/><lit-tag v="ill-på"/></let>
         </when>
         <!-- Why commented out? –KBU -->
 <!--        <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-i-verbs"/></in></test>
-          <let><var n="caseprep"/><lit-tag v="ill-i"/></let>
+          <let><var n="caseprep-verb"/><lit-tag v="ill-i"/></let>
         </when> -->
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-med-verbs"/></in></test>
-          <let><var n="caseprep"/><lit-tag v="ill-med"/></let>
+          <let><var n="caseprep-verb"/><lit-tag v="ill-med"/></let>
         </when>
         <when>
           <test><or>
             <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-av-verbs"/></in>
             <ends-with><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_halla"/></ends-with>
           </or></test>
-          <let><var n="caseprep"/><lit-tag v="ill-av"/></let>
+          <let><var n="caseprep-verb"/><lit-tag v="ill-av"/></let>
         </when>
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-for-verbs"/></in></test>
-          <let><var n="caseprep"/><lit-tag v="loc-for"/></let>
+          <let><var n="caseprep-verb"/><lit-tag v="loc-for"/></let>
         </when>
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-om-verbs"/></in></test>
-          <let><var n="caseprep"/><lit-tag v="loc-om"/></let>
+          <let><var n="caseprep-verb"/><lit-tag v="loc-om"/></let>
         </when>
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-fra-verbs"/></in></test>
-          <let><var n="caseprep"/><lit-tag v="loc-fra"/></let>
+          <let><var n="caseprep-verb"/><lit-tag v="loc-fra"/></let>
         </when>
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-som-verbs"/></in></test>
-          <let><var n="caseprep"/><lit-tag v="loc-som"/></let>
+          <let><var n="caseprep-verb"/><lit-tag v="loc-som"/></let>
         </when>
         <otherwise c="No Change">
-          <let><var n="caseprep"/><lit-tag v="NC"/></let>
+          <let><var n="caseprep-verb"/><lit-tag v="NC"/></let>
         </otherwise>
       </choose>
 
@@ -3609,7 +3610,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="animacy"/></tag>
-              <tag><var n="caseprep"/></tag>
+              <tag><var n="caseprep-verb"/></tag>
             </tags>
             <lu>
               <var n="v_lem"/>
@@ -3645,7 +3646,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="animacy"/></tag>
-              <tag><var n="caseprep"/></tag>
+              <tag><var n="caseprep-verb"/></tag>
             </tags>
             <lu>
               <lit v="begynne"/>
@@ -3685,7 +3686,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
               <tag><clip pos="1" side="tl" part="animacy"/></tag>
-              <tag><var n="caseprep"/></tag>
+              <tag><var n="caseprep-verb"/></tag>
             </tags>
             <lu>
               <lit v="la"/>
@@ -3738,7 +3739,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
                 <tag><var n="c_animacy"/></tag>
-                <tag><var n="caseprep"/></tag>
+                <tag><var n="caseprep-verb"/></tag>
               </tags>
               <lu>
                 <lit v="bli"/>
@@ -3772,7 +3773,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
-                <tag><var n="caseprep"/></tag>
+                <tag><var n="caseprep-verb"/></tag>
               </tags>
               <var n="pre-verb"/>
               <lu>
@@ -3801,7 +3802,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                 <tag><var n="c_nbr"/></tag>
                 <tag><clip pos="1" side="sl" part="case"/></tag>
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
-                <tag><var n="caseprep"/></tag>
+                <tag><var n="caseprep-verb"/></tag>
               </tags>
               <var n="pre-verb"/>
               <lu>
@@ -3847,7 +3848,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
-                <tag><var n="caseprep"/></tag>
+                <tag><var n="caseprep-verb"/></tag>
                 <tag><var n="esubj"/></tag>
               </tags>
               <var n="pre-verb"/>
@@ -3939,7 +3940,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </chunk>
         </out>
       </when></choose>
-      <let><var n="caseprep"/><lit v=""/></let>
+      <let><var n="caseprep-verb"/><lit v=""/></let>
     </def-macro>
   </section-def-macros>
 
@@ -6741,9 +6742,9 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <when c="Lene added this: guovdageaidnulaš → kautokeinoværing">
             <test><equal><clip pos="1" side="tl" part="a_nom_all"/><lit-tag v="n"/></equal></test>
             <let><var n="defnes"/><lit-tag v="ind"/></let>
-        <let><var n="c_name"/><lit v=""/></let>
-        <let><var n="pre-nom"/><lit v=""/></let>
-        <call-macro n="out_nom"><with-param pos="1"/></call-macro>
+            <let><var n="c_name"/><lit v=""/></let>
+            <let><var n="pre-nom"/><lit v=""/></let>
+            <call-macro n="out_nom"><with-param pos="1"/></call-macro>
           </when>
           <when>
             <test><not><equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal></not></test> <!-- how this ? -->
