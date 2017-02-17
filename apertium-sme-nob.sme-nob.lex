@@ -1124,6 +1124,9 @@ SELECT ("si"i) (0 ("<lohkat>"i)) (-1 COMMA) (*1 (@←SUBJ) BARRIER VFIN);
 SELECT ("si"i) (0 ("<lohkat>"i)) (-1 (@SUBJ→) LINK -1 COMMA);
 ## Dat lea duohta, lohká Trond.
 
+SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<nu>"i));
+
+
 SELECT ("telle"i) (0 ("<lohkat>"i))
 	(1 ("<galle>"i) OR ("<man>"i) LINK NOT 0 sem_txt + nom);
 ## Son lohká ruđaid.
@@ -1384,6 +1387,7 @@ SELECT:fallback ("sinn"i) (0 ("<miella>"i));
 SELECT:fallback ("språk"i) (0 ("<giella>"i));
 
 
+SELECT:fallback ("sekretær"i) (*-1 sem_org);
 SELECT:fallback ("forfatter"i) (0 ("<čálli>"i));
 
 
