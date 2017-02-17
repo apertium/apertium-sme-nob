@@ -5404,13 +5404,13 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
 
         <!-- for NOM.CMP: -->
-        <let><var n="defnes"/><lit v="ind"/></let>
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <!-- no space after cmp -->
 
         <!-- for NOM.PROP_ATTR, no defnes if proper, ind if n -->
-        <let><var n="defnes"/><lit v="ind"/></let>
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
         <append n="pre-nom"><b pos="2"/></append>
 

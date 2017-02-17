@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -u
+
+cd "$(dirname "$0")/.." || exit 1
+
+if ! : | column -n &>/dev/null; then
+    # -n is a GNU extension; output is misleading without it
+    column () { cat; }
+fi
+
+for f in apertium-sme-nob.sme-nob.t?x; do
+    xmlstarlet sel -t -m '//def-var' -v @n -n "$f" | while read -r var; do
+        varparent="var[@n=\"${var}\"]/.."
+        nlitvar="${varparent}/lit[not(@v=\"\")]"
+        littagvar="${varparent}/lit-tag"
+        nonemptylit=$(xmlstarlet sel -t -m "//let/${nlitvar}   | //equal/${nlitvar}  " -c . -n "$f" | sort | uniq -c |sort -rn)
+        littag=$(xmlstarlet      sel -t -m "//let/${littagvar} | //equal/${littagvar}" -c . -n "$f" | sort | uniq -c |sort -rn)
+        if [[ -n ${nonemptylit} && -n ${littag} ]];then
+            echo "$f: <def-var n=\"${var}\"/> is let/equal to both non-empty lit and lit-tags:"
+            paste <(echo "${nonemptylit}") <(echo "${littag}") |column -s$'\t' -t -n
+        fi
+    done
+done
