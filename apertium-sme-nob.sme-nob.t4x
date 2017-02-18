@@ -1080,6 +1080,14 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <let><clip pos="2" part="art"/><lit v=""/></let>
             </when>
           </choose>
+          <choose>
+            <when c="60-jahkásaš">
+              <test><and><equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
+              <equal><clip pos="2" part="nbr"/><lit-tag v="ND"/></equal>
+              </and></test>
+              <let><clip pos="2" part="nbr"/><lit-tag v="sg"/></let>
+            </when>
+          </choose>
         </otherwise>
       </choose>
     </def-macro>

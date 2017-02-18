@@ -2800,11 +2800,11 @@ And then there are some categories like "month", with all the months.
             <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
             <equal><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>
             <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="comp"/></equal>
-            <and> <!-- Lene added -->
+            <and>
               <equal><clip pos="2" side="tl" part="prop_type"/><lit-tag v="top"/></equal>
               <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
             </and>
-            <and> <!-- Lene added -->
+            <and>
               <equal><clip pos="2" side="tl" part="prop_type"/><lit-tag v="top"/></equal>
               <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
             </and>
@@ -3022,6 +3022,16 @@ And then there are some categories like "month", with all the months.
         <when c="Adjective, e.g. sápmi.n.sg.gen → samisk.adj">
           <test><not><equal><clip pos="2" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
           <call-macro n="modify_adj_gen_nbr"><with-param pos="1"/><with-param pos="2"/></call-macro>
+          <choose>
+            <when>
+              <test><and><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+              <equal><clip pos="2" side="tl" part="a_cmp"/><lit v=""/></equal>
+              <equal><clip pos="2" side="tl" part="gen"/><lit v=""/></equal>
+              </and></test>
+              <let><var n="adj_gen"/><lit-tag v="un"/></let>
+            </when>
+            <otherwise><let><var n="adj_gen"/><lit v=""/></let></otherwise>
+          </choose>
           <append n="pre-nom">
             <concat>
               <lit v="^"/>
@@ -3029,6 +3039,7 @@ And then there are some categories like "month", with all the months.
               <clip pos="2" side="tl" part="a_adj"/>
               <clip pos="2" side="tl" part="grau"/>
               <clip pos="2" side="tl" part="gen"/>
+              <var n="adj_gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <var n="defnes"/>
               <clip pos="2" side="tl" part="lemq"/>
@@ -3327,7 +3338,6 @@ And then there are some categories like "month", with all the months.
             </when>
             <otherwise><let><var n="adj_gen"/><lit-tag v="un"/></let></otherwise>
           </choose>
-
           <out>
             <chunk namefrom="c_name" case="caseFirstWord"
                    c="The tag order corresponds with nouns, to make c_def_pos (e.g. on pre-nominals) work.">
@@ -5659,9 +5669,19 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </and></test>
             <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
           </when>
-          <otherwise>
+          <when c="2016 beaivái>
+          <test>
+          <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_year"/></equal></not>
+          </test>
             <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></let>
-          </otherwise>
+          </when>
+          <when c="Bures boahtin 2016 beaivái">
+          <test><and>
+          <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_year"/></equal>
+       <not><in caseless="yes"><clip pos="2" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in></not>
+       </and></test>
+          <let><var n="defnes"/><lit-tag v="def"/></let>
+          </when>
         </choose>
 
         <let><clip pos="2" side="tl" part="case"/><lit v=""/></let> <!-- Lene added -->
