@@ -1232,11 +1232,13 @@ SELECT:fallback ("kommunisere"i) (0 ("<gulahallat>"i) ) ;
 SELECT:stå ("stå# på") (0 ("<ceavzit>"i) LINK *0 ("<eksámen>"i) + acc);
 SELECT:fallback ("klare"i) (0 ("<ceavzit>"i));
 
+SELECT ("anse"i) (0 ("<atnit>"i) LINK *1 ess) ;
+SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
+
 
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
 SELECT:fallback ("bevilge"i) (0 ("<juolludit>"i));
-SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 SELECT:fallback ("sette"i) (0 ("<bidjat>"i));
 SELECT:fallback ("avslå"i) (0 ("<biehttalit>"i));
 SELECT:fallback ("påvirke"i) (0 ("<báidnit>"i));
@@ -1987,6 +1989,9 @@ SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
 SELECT ("mulig"i) (0 ("<vejolaččat>"i) LINK -1 ("<go>"i)) ;
 SELECT:fallback ("muligens"i) (0 ("<vejolaččat>"i)) ;
 
+SELECT ("hva"i) (0 ("<manin>"i) LINK *1 ("<gohčodit>"i)) ;
+SELECT:fallback ("hvorfor"i) (0 ("<manin>"i)) ;
+
 
 # Based on frequency in parallel text:
 SELECT ("lenger"i) (0 ("<šat>"i)) ;
@@ -2110,6 +2115,9 @@ SELECT:fallback ("dårlig") (0 ("<garas>"i) LINK 1 ("<dálki>"i));
 SELECT:fallback ("kraftig") (0 ("<garas>"i)) (1 ("<biegga>"i)) ; # OR (*-1 ("<biegga>"i)));
 SELECT:fallback ("kraftig") (0 ("<garas>"i)) (*-1 ("<biegga>"i));
 SELECT:fallback ("hard") (0 ("<garas>"i));
+
+SELECT ("måneder gammel") (0 ("<mánnosaš>"i)) (-1 num);
+SELECT:fallback ("månedlig") (0 ("<mánnosaš>"i));
 
 
 # Subjunctions
