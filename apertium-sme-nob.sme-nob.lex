@@ -992,6 +992,7 @@ SELECT:fallback ("legge# opp til"i) IF  (0 ("<láhčit>"i)) ;
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
 SELECT:dego ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
+SELECT:maid ("synes"i) (0 ("<orrut>"i)) (-1 ("<mii>"i)) ;
 SELECT:jaska ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>"i)) ;
 SELECT:bli ("bli"i) (0 ("<orrut>"i)) (-1 ("<go>"i)) ;
 SELECT:orron-doppe ("bo"i) (0 ("<orrut>"i)) (*1 loc OR DOPPE OR ("<bealde>"i) BARRIER SV-BOUNDARY) ;
@@ -1104,13 +1105,15 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 # lohkat 0 = lese, 1 = si, 2 = telle
 
-SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR (ref acc) OR (ref loc) OR prfprc or COMMA OR a - attr) ;
 
 SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain LINK 0 acc OR loc OR ("<cealkámuš>"i)) OR (-1 sem_txt OR sem_domain LINK 0 acc OR loc)) ;
 # Son lohká ahte lea buorre doppe.
 
 SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 LANGUAGE LINK 0 acc OR loc) ;
+SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (*1 sem_edu LINK 0 loc) ;
 # Ruth Larsena mielas dát vuoseha ahte lea vejolaš lohkagoahtit sámegiela easkka joatkkaskuvllas
+
+SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR refl + acc OR refl + loc OR prfprc or COMMA OR a - attr) ;
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i)) (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)   ;
 ## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
@@ -1922,6 +1925,10 @@ SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
 
 SELECT:Leimmet-muhtun ("noe"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
 SELECT:muhtun-sániid ("noe"i) (0 ("<muhtun>"i)) (1 n + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtun>"i)) (2 n + pl) ;
+SELECT:Leimmet-muhtun ("noe"i) (0 ("<muhtin>"i)) (-1 LEAT + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i)) (1 n + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i)) (2 n + pl) ;
 
 SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>") BARRIER clb OR v OR adv) ;
 SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>")) ;
