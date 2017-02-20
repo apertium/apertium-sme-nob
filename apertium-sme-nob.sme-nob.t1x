@@ -741,6 +741,12 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="adv"/>
       <attr-item tags="cnjcoo"/>
     </def-attr>
+    <def-attr n="a_adv_pr_cnjcoo_cnjsub">
+      <attr-item tags="adv"/>
+      <attr-item tags="cnjcoo"/>
+      <attr-item tags="cnjsub"/>
+      <attr-item tags="pr"/>
+    </def-attr>
     <def-attr n="a_adv_pr_cnjcoo">
       <attr-item tags="adv"/>
       <attr-item tags="cnjcoo"/>
@@ -938,6 +944,11 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="cond-skulle"/>
       <attr-item tags="cond-kunne"/>
       <attr-item tags="pot"/>
+    </def-attr>
+    <def-attr n="a_foc">
+      <attr-item tags="foc_pos-ge"/>
+      <attr-item tags="foc_neg-ge"/>
+      <attr-item tags="foc_naj"/>
     </def-attr>
     <def-attr n="hab">
       <attr-item tags="←hab→"/>
@@ -1294,6 +1305,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="aux-verb-tl"     c="nob lemh of the previous aux verb" />
     <def-var n="vfin-pers"     c="vfin-pers" />
     <def-var n="vfin-nbr"     c="vfin-nbr" />
+    <def-var n="foc-word"     c="foc-word" />
   </section-def-vars>
 
   <section-def-lists>
@@ -2050,6 +2062,50 @@ And then there are some categories like "month", with all the months.
       <let><clip pos="1" side="tl" part="lemh"/><get-case-from pos="2"><clip pos="1" side="tl" part="lemh"/></get-case-from></let>
       <modify-case><clip pos="2" side="tl" part="lemh"/><var n="tmp"/></modify-case>
     </def-macro>
+
+
+    <def-macro n="set_foc-word" npar="1"
+               c="arg.1: noun, pronoun">
+      <let>
+        <var n="foc-word"/><lit v=""/>
+      </let>
+      <choose>
+        <when c="foc_pos-ge">
+          <test><or>
+          <equal><clip pos="1" side="sl" part="a_foc"/><lit-tag v="foc_pos-ge"/></equal>
+          <equal><clip pos="1" side="sl" part="a_foc"/><lit-tag v="foc_naj"/></equal></or></test>
+           <let>
+            <var n="foc-word"/>
+            <concat>
+              <lit v=" ^"/>
+              <lit v="foc"/>
+              <lit-tag v="FOC"/>
+              <lit v="{^"/>
+              <lit v="også"/>
+              <lit-tag v="adv"/>
+              <lit v="$}$"/>
+            </concat>
+          </let>
+          </when>
+        <when c="foc_neg-ge">
+          <test><equal><clip pos="1" side="sl" part="a_foc"/><lit-tag v="foc_neg-ge"/></equal></test>
+           <let>
+            <var n="foc-word"/>
+            <concat>
+              <lit v=" ^"/>
+              <lit v="foc"/>
+              <lit-tag v="FOC"/>
+              <lit v="{^"/>
+              <lit v="heller"/>
+              <lit-tag v="adv"/>
+              <lit v="$}$"/>
+            </concat>
+          </let>
+          </when>
+          </choose>
+      </def-macro>
+
+          
 
     <def-macro n="set_caseprep" npar="1"
                c="arg.1: noun, pronoun
@@ -5737,7 +5793,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             <not><equal><clip pos="3" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
           </and></test>
           <let><clip pos="3" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
-        </when></choose>
+        </when>
+         </choose>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
@@ -6756,6 +6813,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+        <call-macro n="set_foc-word"><with-param pos="1"/></call-macro>
         <call-macro n="clean_det"><with-param pos="1"/></call-macro>
 
         <out>
@@ -6782,6 +6840,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
           </chunk>
+          <var n="foc-word"/>
         </out>
       </action>
     </rule>
@@ -8334,14 +8393,14 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
                 <tags>
                   <tag><lit-tag v="ADV"/></tag>
                   <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-                  <tag><clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/></tag>
+                  <tag><clip pos="1" side="tl" part="a_adv_pr_cnjcoo_cnjsub"/></tag>
                   <tag><lit-tag v="rel"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                   <tag><clip pos="1" side="sl" part="a_sem"/></tag>
                 </tags>
                 <lu>
                   <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/>
+                  <clip pos="1" side="tl" part="a_adv_pr_cnjcoo_cnjsub"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
