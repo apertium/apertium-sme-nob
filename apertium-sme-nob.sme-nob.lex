@@ -1395,9 +1395,10 @@ SELECT:fallback ("sinn"i) (0 ("<miella>"i));
 SELECT:fallback ("språk"i) (0 ("<giella>"i));
 
 
-SELECT:fallback ("sekretær"i) (*-1 sem_org);
+SELECT ("sekretær"i) (0 ("<čálli>"i)) (*-1 sem_org);
 SELECT:fallback ("forfatter"i) (0 ("<čálli>"i));
 
+SELECT:fallback ("melodi"i) (0 ("<šuokŋa>"i));
 
 
 # gonagas 0 = konge, 1 = kong
