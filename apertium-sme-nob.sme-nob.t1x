@@ -1924,6 +1924,9 @@ And then there are some categories like "month", with all the months.
     <def-list n="ill-for-head" c="Illativ @←N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="behov"/>
     </def-list>
+    <def-list n="ill-på-head">
+      <list-item v="syn"/>
+    </def-list>
     <def-list n="gen-av-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="forfatter"/>
       <list-item v="kopi"/>
@@ -2322,6 +2325,7 @@ And then there are some categories like "month", with all the months.
               <test>
                 <or>
                   <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
+                  <in caseless="yes"><var n="previous-nhead"/><list n="ill-på-head"/></in>
                   <and>
                     <equal><var n="seen_num"/><lit-tag v="num"/></equal>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
