@@ -1042,7 +1042,8 @@ SELECT ("komme") (0 ("<beassat>"i)) (1 ill OR DOHKO) ;
 SELECT:fallback ("få"i) (0 ("<beassat>"i));
 
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
-SELECT ("spørre"i) (0 ("<bivdit>"i) LINK *1 qst);
+SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst);
+SELECT ("be"i) (0 ("<bivdit>"i) LINK 1 ("<ahte>"i));
 SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
 SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
 SELECT ("jakte"i) (0 ("<bivdit>"i)) ;
@@ -1998,8 +1999,8 @@ SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
 SELECT ("opp"i) (0 ("<eret>"i)) (-1 ("<cealkit>"i)) ;
 SELECT ("bort"i) (0 ("<eret>"i)) (-1 v) ;
+SELECT ("av"i) (0 ("<eret>"i)) (-1 ("<sahát>"i)) ;
 SELECT:fallback ("fra"i) (0 ("<eret>"i)) ;
-SELECT:fallback ("frå"i) (0 ("<eret>"i)) ;
 
 SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
 
