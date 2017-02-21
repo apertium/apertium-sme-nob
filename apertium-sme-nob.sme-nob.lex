@@ -1017,7 +1017,7 @@ SELECT ("få"i) (0 ("<šaddat>"i)) (*-1 HUMAN + ill OR HUMAN + loc BARRIER NOT-A
 SELECT ("få"i) (0 ("<šaddat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 
 # «føde» sounds much worse when it's wrong than «bli», need to work on this:
-SELECT ("føde"i) (0 ("<šaddat>"i)) (1 sem_plc) (NEGATE *0 SPRED) ;
+SELECT ("føde"i) (0 ("<šaddat>"i)) (1 prop + sem_plc) (NEGATE *0 SPRED) ;
 # Mun lean šaddan Kárášjogas.
 # Kárášjogas mun lean šaddan.
 
@@ -1385,6 +1385,9 @@ SELECT ("sår"i) (0 ("<hávvi>"i) - gen);
 
 # miella 0 = sinn, 1 = oppfatning, 2 = behag
 SELECT ("oppfatning"i) (0 ("<miella>"i) + loc LINK -1 @→N) ;
+SELECT ("lyst"i) (0 ("<miella>"i) + nom LINK -1 ("<leat>"i)) ;
+SELECT ("lyst"i) (0 ("<miella>"i) + (←ext→)) ;
+
 SELECT:fallback ("sinn"i) (0 ("<miella>"i));
 
 
