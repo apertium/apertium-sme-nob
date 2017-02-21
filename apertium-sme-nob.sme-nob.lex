@@ -1076,6 +1076,8 @@ SELECT:fallback ("snu"i) (0 ("<jorgalit>"i)) ;
 SELECT ("oversette"i) (0 ("<jorgalahttit>"i)) (*0 sem_lang OR sem_txt) ;
 SELECT:fallback ("snu"i) (0 ("<jorgalahttit>"i)) ;
 
+SELECT:fallback ("betjene"i) (0 ("<bálvalit>"i)) ;
+
 SELECT:vedta ("vedta"i) (0 ("<dohkkehit>"i)) ((*-1 (sem_rule)) OR (*1 (sem_rule))) ;
 SELECT:fallback ("godta"i) (0 ("<dohkkehit>"i)) ;
 
@@ -1719,6 +1721,10 @@ SELECT:fallback ("søknad"i) (0 ("<ohcan>"i));
 
 SELECT ("antall"i) (0 ("<lohku>"i) LINK -1 sem_hum + pl) ;
 SELECT:fallback ("tall"i) (0 ("<lohku>"i));
+
+SELECT ("anmeldelse"i) (0 ("<árvvoštallan>"i) LINK -1 sem_txt + acc OR ("<filbma>"i) + acc) ;
+SELECT:fallback ("vurdering"i) (0 ("<árvvoštallan>"i));
+
 
 SELECT ("drifsenhet"i) (0 ("<doallu>"i) LINK *0 ("<orohat>"i) OR ("<siida>"i) OR ("<boazu>"i)) ;
 SELECT:fallback ("arrangement"i) (0 ("<doallu>"i)) ;
