@@ -37,10 +37,13 @@ fetchtests () {
     local -r testtype=$2
     local -r html=$3
 
+    if ! htmlSanity "$(dirname "$0")/${testtype}"; then
+        command rm "$(dirname "$0")/${testtype}"
+    fi
     if ${update}; then
         # Download as e.g. Regression_tests (without .html); the -N
         # ensures we don't re-download unless server version changed.
-	if ( cd "$(dirname "$0")" && wget -N -q "${BASEURL}/${testtype}" && htmlSanity "${testtype}" ); then
+        if ( cd "$(dirname "$0")" && wget -N -q "${BASEURL}/${testtype}" && htmlSanity "${testtype}" ); then
 	    command cp "$(dirname "$0")/${testtype}" "${html}"
 	else
             # Only cp to e.g. Regression_tests.html on success – that
