@@ -2070,6 +2070,13 @@ And then there are some categories like "month", with all the months.
       <let><var n="uc_lemh"/><lit v=""/></let>
     </def-macro>
 
+    <def-macro n="reset_caseFirstWord" npar="0" c="Unless it's UPPERCASE">
+      <choose><when>
+        <test><equal><var n="caseFirstWord"/><lit v="Aa"/></equal></test>
+        <modify-case><var n="caseFirstWord"/><lit v="aa"/></modify-case>
+      </when></choose>
+    </def-macro>
+
     <def-macro n="switch_cases" npar="2"
                c="Simply switch the typographic cases (upper/lower/capital) of the two arguments.">
       <let><var n="tmp"/><get-case-from pos="1"><clip pos="1" side="tl" part="lemh"/></get-case-from></let>
@@ -3635,133 +3642,137 @@ And then there are some categories like "month", with all the months.
           </chunk>
           <b/>
         </out>
+        <call-macro n="reset_caseFirstWord"></call-macro>
       </when></choose>
 
       <choose c="Prepend cnjsub if present progressive:
-TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the left, it should be inf. Infintive marker å is added in t4x"><when>
-        <test><and>
-          <equal><clip pos="1" side="sl" part="a_actio"/><lit-tag v="actio.ess"/></equal>
-          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
-      <not><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="no.actio.ess"/></in></not>
-          <not><equal><var n="aux-verb-tl"/><lit v="synes"/></equal></not>
-        </and>
-        </test>
-        <out>
-          <chunk name="conj" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="@CVP.cnjsub"/></tag>
-            </tags>
-            <lu>
-              <lit v="i ferd med"/>
-              <lit-tag v="pr"/>
-            </lu>
-          </chunk>
-          <b/>
-        </out>
-        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
-      </when>
+                 TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the left, it should be inf. Infintive marker å is added in t4x">
+        <when>
+          <test><and>
+            <equal><clip pos="1" side="sl" part="a_actio"/><lit-tag v="actio.ess"/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+            <not><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="no.actio.ess"/></in></not>
+            <not><equal><var n="aux-verb-tl"/><lit v="synes"/></equal></not>
+          </and></test>
+          <out>
+            <chunk name="conj" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="@CVP.cnjsub"/></tag>
+              </tags>
+              <lu>
+                <lit v="i ferd med"/>
+                <lit-tag v="pr"/>
+              </lu>
+            </chunk>
+            <b/>
+          </out>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+          <call-macro n="reset_caseFirstWord"></call-macro>
+        </when>
       </choose>
 
-      <choose c="Prepend 'kunne/skulle/skal' if conditional:"><when>
-        <test><and>
-          <not><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in></not>
-          <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
-        </and></test>
-        <choose>
-          <when c="leat cond = ha">
+      <choose c="Prepend 'kunne/skulle/skal' if conditional:">
+        <when>
           <test><and>
-          <or>
-          <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
-          <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
-          </or>
-          <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
-         </and></test>
-            <let><var n="v_lem"/><lit v="ha"/></let>
-          </when>
-          <when c="cond = skulle">
-            <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-skulle"/></equal></test>
-            <let><var n="v_lem"/><lit v="skulle"/></let>
-          </when>
-          <when c="cond = ville">
-            <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-ville"/></equal></test>
-            <let><var n="v_lem"/><lit v="ville"/></let>
-          </when>
-          <otherwise c="cond = kunne">
-            <let><var n="v_lem"/><lit v="kunne"/></let>
-          </otherwise>
-        </choose>
-        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let> 
-        <choose>
-          <when c="no v_lem for leat @+FAUXV">
-          <test>
-          <and>
-          <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
-         <not><and>
-          <or>
-          <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
-          <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
-          </or>
-         <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal></and></not>
-         </and>
-         </test>
-        <out>
-          <chunk name="verb" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="SV"/></tag>
-               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="sl" part="mode"/></tag>
-              <tag><clip pos="1" side="sl" part="modality"/></tag>
-              <tag><clip pos="1" side="tl" part="temps"/></tag>
-              <tag><clip pos="1" side="tl" part="pers"/></tag>
-              <tag><clip pos="1" side="tl" part="nbr"/></tag>
-              <tag><clip pos="1" side="tl" part="animacy"/></tag>
-              <tag><var n="caseprep-verb"/></tag>
-            </tags>
-            <lu>
-              <var n="v_lem"/>
-              <lit-tag v="vblex"/>
-              <clip pos="1" side="tl" part="temps"/>
-            </lu>
-          </chunk>
-          <b/>
-        </out>
-        </when></choose>
-             <choose>
-             <when c="leat (except @+FAUXV) = hadde vært">
-             <test><and>
-          <or>
-          <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
-          <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
-          </or>
-       <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal></not>
+            <not><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in></not>
+            <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
           </and></test>
-          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></let> 
-          </when>
-             <when c="leat @+FAUXV = hadde aux (which should be pp, but now output is inf from sl)">
-          <test><and>
-          <or>
-          <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
-          <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
-          </or>
-          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal>
-          </and></test>
-          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let> 
-          </when>
-         <otherwise>
-        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
-         </otherwise>
-        </choose>
-        <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
-      </when>
-      <when>
+          <choose>
+            <when c="leat cond = ha">
               <test><and>
-          <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in>
-          <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
-        </and></test>
-        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
-               <let><var n="v_lem"/><lit v=""/></let>
-
-      </when>
+                <or>
+                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
+                </or>
+                <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
+              </and></test>
+              <let><var n="v_lem"/><lit v="ha"/></let>
+            </when>
+            <when c="cond = skulle">
+              <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-skulle"/></equal></test>
+              <let><var n="v_lem"/><lit v="skulle"/></let>
+            </when>
+            <when c="cond = ville">
+              <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-ville"/></equal></test>
+              <let><var n="v_lem"/><lit v="ville"/></let>
+            </when>
+            <otherwise c="cond = kunne">
+              <let><var n="v_lem"/><lit v="kunne"/></let>
+            </otherwise>
+          </choose>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let> 
+          <choose>
+            <when c="no v_lem for leat @+FAUXV">
+              <test>
+                <and>
+                  <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
+                  <not><and>
+                    <or>
+                      <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+                      <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
+                    </or>
+                  <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal></and></not>
+                </and>
+              </test>
+              <out>
+                <chunk name="verb" case="caseFirstWord">
+                  <tags>
+                    <tag><lit-tag v="SV"/></tag>
+                    <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                    <tag><clip pos="1" side="sl" part="mode"/></tag>
+                    <tag><clip pos="1" side="sl" part="modality"/></tag>
+                    <tag><clip pos="1" side="tl" part="temps"/></tag>
+                    <tag><clip pos="1" side="tl" part="pers"/></tag>
+                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                    <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                    <tag><var n="caseprep-verb"/></tag>
+                  </tags>
+                  <lu>
+                    <var n="v_lem"/>
+                    <lit-tag v="vblex"/>
+                    <clip pos="1" side="tl" part="temps"/>
+                  </lu>
+                </chunk>
+                <b/>
+              </out>
+              <call-macro n="reset_caseFirstWord"></call-macro>
+            </when>
+          </choose>
+          <choose>
+            <when c="leat (except @+FAUXV) = hadde vært">
+              <test><and>
+                <or>
+                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
+                </or>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal></not>
+              </and></test>
+              <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></let> 
+            </when>
+            <when c="leat @+FAUXV = hadde aux (which should be pp, but now output is inf from sl)">
+              <test><and>
+                <or>
+                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
+                </or>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal>
+              </and></test>
+              <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let> 
+            </when>
+            <otherwise>
+              <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+            </otherwise>
+          </choose>
+          <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+        </when>
+        <when>
+          <test><and>
+            <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in>
+            <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
+          </and></test>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
+          <let><var n="v_lem"/><lit v=""/></let>
+        </when>
 
       </choose>
 
@@ -3797,6 +3808,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </chunk>
           <b/>
         </out>
+        <call-macro n="reset_caseFirstWord"></call-macro>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
         <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
       </when></choose>
@@ -3828,6 +3840,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </chunk>
           <b/>
         </out>
+        <call-macro n="reset_caseFirstWord"></call-macro>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
         <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
       </when></choose>
@@ -3881,6 +3894,7 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
             </chunk>
             <b/>
           </out>
+          <call-macro n="reset_caseFirstWord"></call-macro>
           <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
           <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></let>
           <let><clip pos="1" side="tl" part="voice"/><lit v=""/></let>
@@ -3996,10 +4010,11 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </out>
         </otherwise>
       </choose>
+      <call-macro n="reset_caseFirstWord"></call-macro>
 
       <choose><when c="Append 'seg' if reflexive:">
         <test>
-        <equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal>
+          <equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal>
         </test>
         <let><var n="prn_pers"/><clip pos="1" side="tl" part="pers"/></let>
         <let><var n="prn_gen"/><lit-tag v="mf"/></let>
@@ -4013,25 +4028,25 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <let><var n="prn_gen"/><lit-tag v="un"/></let>
         </when></choose>
         <choose>
-        <when c="when prfprc or inf, then we get pers and nbr from aux">
-          <test><and><or>
-        <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="prfprc"/></equal>
-        <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="inf"/></equal></or>
-        <not><equal><var n="vfin-nbr"/><lit-tag v="sg"/></equal></not></and>
-          </test>
-          <let><var n="prn_pers"/><var n="vfin-pers"/></let>
-          <let><var n="prn_gen"/><lit-tag v="un"/></let>
-          <let><var n="prn_nbr"/><var n="vfin-nbr"/></let>
-        </when>
-       <when c="form 'seg' has analysis p3.un.sp">
-          <test><or>
-            <equal><var n="prn_pers"/><lit v=""/></equal>
-            <equal><var n="prn_pers"/><lit-tag v="p3"/></equal>
-          </or></test>
-          <let><var n="prn_pers"/><lit-tag v="p3"/></let>
-          <let><var n="prn_gen"/><lit-tag v="un"/></let>
-          <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
-        </when>
+          <when c="when prfprc or inf, then we get pers and nbr from aux">
+            <test><and><or>
+              <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="prfprc"/></equal>
+              <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="inf"/></equal></or>
+              <not><equal><var n="vfin-nbr"/><lit-tag v="sg"/></equal></not></and>
+            </test>
+            <let><var n="prn_pers"/><var n="vfin-pers"/></let>
+            <let><var n="prn_gen"/><lit-tag v="un"/></let>
+            <let><var n="prn_nbr"/><var n="vfin-nbr"/></let>
+          </when>
+          <when c="form 'seg' has analysis p3.un.sp">
+            <test><or>
+              <equal><var n="prn_pers"/><lit v=""/></equal>
+              <equal><var n="prn_pers"/><lit-tag v="p3"/></equal>
+            </or></test>
+            <let><var n="prn_pers"/><lit-tag v="p3"/></let>
+            <let><var n="prn_gen"/><lit-tag v="un"/></let>
+            <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
+          </when>
         </choose>
         <out>
           <b/>
