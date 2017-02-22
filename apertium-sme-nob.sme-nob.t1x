@@ -392,6 +392,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="vblex">
       <cat-item tags="vblex.*"/>
     </def-cat>
+    <def-cat n="vblex.IFAUXV">
+      <cat-item tags="vblex.*.@-FAUXV"/>
+    </def-cat>
     <def-cat n="vblex.actio">
       <cat-item tags="vblex.*.actio.*"/>
     </def-cat>
@@ -522,6 +525,12 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-leat">
       <cat-item lemma="leat" tags="vblex.*"/>
+    </def-cat>
+    <def-cat n="lex-leat.cond">
+      <cat-item lemma="leat" tags="vblex.*.cond.*"/>
+      <cat-item lemma="leat" tags="vblex.*.cond-ville.*"/>
+      <cat-item lemma="leat" tags="vblex.*.cond-skulle.*"/>
+      <cat-item lemma="leat" tags="vblex.*.cond-kunne.*"/>
     </def-cat>
 
     <def-cat n="lex-minuhtta-loc">
@@ -8169,6 +8178,29 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
         <let><var n="pre-verb"/><lit v=""/></let>
         <let><var n="c_name"/><lit v=""/></let>
         <call-macro n="out_verb"><with-param pos="1"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="C[] LEX-LEAT.COND VBLEX.IFAUXV
+                   See out_verb macro.
+                   –––––
+                   livččen sáhttit → hadde kunnet">
+      <pattern>
+        <pattern-item n="lex-leat.cond"/>
+        <pattern-item n="vblex.IFAUXV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_verb-lemma"><with-param pos="1"/></call-macro>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><clip pos="1" side="tl" part="lemh"/><lit v="ha"/></let>
+        <let><clip pos="1" side="tl" part="modality"/><lit v=""/></let>
+        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
+        <call-macro n="out_verb"><with-param pos="1"/></call-macro>
+        <out><b pos="1"/></out>
+        <let><clip pos="2" side="tl" part="temps"/><lit-tag v="pp"/></let>
+        <call-macro n="out_verb"><with-param pos="2"/></call-macro>
       </action>
     </rule>
 
