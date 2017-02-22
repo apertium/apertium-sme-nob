@@ -3659,24 +3659,47 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
         </and></test>
         <choose>
-          <when>
+          <when c="leat cond = ha">
+          <test><and>
+          <or>
+          <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+          <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
+          </or>
+          <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
+         </and></test>
+            <let><var n="v_lem"/><lit v="ha"/></let>
+          </when>
+          <when c="cond = skulle">
             <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-skulle"/></equal></test>
             <let><var n="v_lem"/><lit v="skulle"/></let>
           </when>
-          <when>
+          <when c="cond = ville">
             <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-ville"/></equal></test>
             <let><var n="v_lem"/><lit v="ville"/></let>
           </when>
-          <otherwise>
+          <otherwise c="cond = kunne">
             <let><var n="v_lem"/><lit v="kunne"/></let>
           </otherwise>
         </choose>
-        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
+        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let> 
+        <choose>
+          <when c="no v_lem for leat @+FAUXV">
+          <test>
+          <and>
+          <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
+         <not><and>
+          <or>
+          <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+          <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
+          </or>
+         <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal></and></not>
+         </and>
+         </test>
         <out>
           <chunk name="verb" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SV"/></tag>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="sl" part="modality"/></tag>
               <tag><clip pos="1" side="tl" part="temps"/></tag>
@@ -3693,7 +3716,32 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           </chunk>
           <b/>
         </out>
+        </when></choose>
+             <choose>
+             <when c="leat (except @+FAUXV) = hadde vært">
+             <test><and>
+          <or>
+          <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+          <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
+          </or>
+       <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal></not>
+          </and></test>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></let> 
+          </when>
+             <when c="leat @+FAUXV = hadde aux (which should be pp, but now output is inf from sl)">
+          <test><and>
+          <or>
+          <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+          <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
+          </or>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal>
+          </and></test>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let> 
+          </when>
+         <otherwise>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+         </otherwise>
+        </choose>
         <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
       </when>
       <when>
@@ -3702,6 +3750,8 @@ TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut
           <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
         </and></test>
         <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
+               <let><var n="v_lem"/><lit v=""/></let>
+
       </when>
 
       </choose>
