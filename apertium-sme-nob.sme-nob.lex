@@ -1238,6 +1238,10 @@ SELECT:fallback ("kommunisere"i) (0 ("<gulahallat>"i) ) ;
 SELECT:stå ("stå# på") (0 ("<ceavzit>"i) LINK *0 ("<eksámen>"i) + acc);
 SELECT:fallback ("klare"i) (0 ("<ceavzit>"i));
 
+SELECT:be ("be") (0 ("<dáhttut>"i) LINK 1 acc);
+SELECT:fallback ("ville"i) (0 ("<dáhttut>"i));
+
+
 SELECT ("anse"i) (0 ("<atnit>"i) LINK *1 ess) ;
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 
