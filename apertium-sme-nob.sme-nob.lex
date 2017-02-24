@@ -1245,6 +1245,9 @@ SELECT:fallback ("ville"i) (0 ("<dáhttut>"i));
 SELECT ("anse"i) (0 ("<atnit>"i) LINK *1 ess) ;
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 
+SELECT ("oppnå"i) (0 ("<olahit>"i) LINK 1 ("<.*vuohta>"r) + acc) ;
+SELECT:fallback ("rekke"i) (0 ("<olahit>"i));
+
 
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));

@@ -565,6 +565,13 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-orrut-indic">
       <cat-item lemma="orrut" tags="vblex.*.indic.*"/>
     </def-cat>
+    <def-cat n="lex-bures">
+      <cat-item lemma="bures" tags="adv.*"/>
+    </def-cat>
+    <def-cat n="lex-boahtit">
+      <cat-item lemma="boahtit" tags="vblex.iv.der_nomact.*"/>
+      <cat-item lemma="boahtit" tags="vblex.iv.prfprc.*"/>
+    </def-cat>
     <def-cat n="lex-adnojuvvon">
       <cat-item lemma="atnit" tags="vblex.tv.der_passl.vblex.iv.prfprc"/>
       <cat-item lemma="atnit" tags="vblex.tv.der_passl.vblex.iv.prfprc.*"/>
@@ -4108,6 +4115,28 @@ And then there are some categories like "month", with all the months.
         <out>
           <chunk name="ij" case="caseFirstWord">
             <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="velkommen"/>
+              <lit-tag v="ij"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[DL] lex-bures lex-boahtit" c="bures boahtán → velkommen">
+      <pattern>
+        <pattern-item n="lex-bures"/>
+        <pattern-item n="lex-boahtit"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
             </tags>
