@@ -565,6 +565,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-orrut-indic">
       <cat-item lemma="orrut" tags="vblex.*.indic.*"/>
     </def-cat>
+    <def-cat n="lex-lohki">
+      <cat-item lemma="lohki" tags="n.*"/>
+    </def-cat>
     <def-cat n="lex-bures">
       <cat-item lemma="bures" tags="adv.*"/>
     </def-cat>
@@ -4144,6 +4147,30 @@ And then there are some categories like "month", with all the months.
               <lit v="velkommen"/>
               <lit-tag v="ij"/>
             </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] ord lex-lohki
+     čihččetlohkái nisu lea navdon goddon" c="čihččetlohkái → i sekstiårene">
+      <pattern>
+        <pattern-item n="ord"/>
+        <pattern-item n="lex-lohki"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adj" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SA"/></tag>
+              <tag><lit-tag v="@→N"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+            </tags>
+            <mlu>
+            <lu><clip pos="1" side="tl" part="lemh"/></lu>
+           <lu><lit v="årene"/>
+              <lit-tag v="adj.pst.un.sp.ND"/></lu>
+            </mlu>
           </chunk>
         </out>
       </action>

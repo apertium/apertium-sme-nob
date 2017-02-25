@@ -2120,8 +2120,25 @@ SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
 
 SELECT:fallback ("ekstern") (0 ("<olgguldas>"i));
 
-SELECT:fallback ("sint") (0 ("<bahá>"i) + attr LINK 1 sem_hum OR sem_ani);
+SELECT ("sint") (0 ("<bahá>"i) + attr LINK 1 sem_hum OR sem_ani);
 SELECT:fallback ("dårlig") (0 ("<bahá>"i));
+
+SELECT ("i tjue") (0 ("<goalmmát>"i) LINK 1 ("<lohki>"i));
+SELECT ("i tretti") (0 ("<njealját>"i) LINK 1 ("<lohki>"i));
+SELECT ("i førti") (0 ("<viđát>"i) LINK 1 ("<lohki>"i));
+SELECT ("i femti") (0 ("<guđát>"i) LINK 1 ("<lohki>"i));
+SELECT ("i seksti") (0 ("<čihččet>"i) LINK 1 ("<lohki>"i));
+SELECT ("i sytti") (0 ("<gávccát>"i) LINK 1 ("<lohki>"i));
+SELECT ("i åtti") (0 ("<ovccát>"i) LINK 1 ("<lohki>"i));
+SELECT ("i nitti") (0 ("<logát>"i) LINK 1 ("<lohki>"i));
+SELECT:fallback ("goalmmát") (0 ("<tredje>"i));
+SELECT:fallback ("njealját") (0 ("<fjerde>"i));
+SELECT:fallback ("viđát") (0 ("<femte>"i));
+SELECT:fallback ("guđát") (0 ("<sjette>"i));
+SELECT:fallback ("čihččet") (0 ("<sjuende>"i));
+SELECT:fallback ("gávccát") (0 ("<åttende>"i));
+SELECT:fallback ("ovccát") (0 ("<niende>"i));
+SELECT:fallback ("logát") (0 ("<tiende>"i));
 
 
 # vissis:0 → sikker, vissis:1 → viss
