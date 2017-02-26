@@ -6646,13 +6646,23 @@ And then there are some categories like "month", with all the months.
           <test><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="dát"/></equal></test>
           <let><clip pos="1" side="tl" part="gen"/><lit-tag v="nt"/></let>
         </when></choose>
+        <choose><when>
+          <test>
+          <not><equal><clip pos="1" side="sl" part="ext"/><lit v=""/></equal></not>
+          </test>
+          <let><var n="c_syn"/><lit-tag v="@←SUBJext"/></let>
+        </when>
+        <otherwise>
+          <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
+         </otherwise>
+       </choose>
 
         <out>
           <var n="caseprep"/>
           <chunk name="det" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><var n="c_syn"/></tag>
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="gen"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
