@@ -68,8 +68,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="compl">
       <cat-item tags="*.@N←.*"/>
       <cat-item tags="*.@Num←.*"/>
+      <cat-item tags="*.@Pron←.*"/>
       <cat-item tags="*.@N←"/>
       <cat-item tags="*.@Num←"/>
+      <cat-item tags="*.@Pron←"/>
     </def-cat>
     <def-cat n="lADVL">
       <cat-item lemma="adv" tags="ADV.@←ADVL"/>
@@ -111,6 +113,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="adpos">
       <cat-item lemma="adpos" tags="*"/>
+    </def-cat>
+    <def-cat n="SUBJr">
+      <cat-item tags="SN.@SUBJ→.*"/>
     </def-cat>
     <def-cat n="lOBJ">
       <cat-item tags="SV.@←OBJ.*"/>
@@ -822,6 +827,33 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </action>
     </rule>
 
+    <rule comment="REGLA: SUBJr PR compl">
+      <pattern>
+        <pattern-item n="SUBJr"/>
+        <pattern-item n="PR"/>
+        <pattern-item n="compl"/>
+      </pattern>
+      <action>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_tags2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_name3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <out>
+          <chunk>
+            <var n="c_name"/>
+            <var n="c_tags"/>
+            <lit v="{"/>
+            <clip pos="1" part="content"/>
+            <b pos="1"/>
+            <clip pos="2" part="content"/>
+            <b pos="2"/>
+            <clip pos="3" part="content"/>
+            <lit v="}"/>
+            <clip pos="1" part="lemq"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
 
 
     <rule comment="REGLA: SN CNP SN_rPOST adpos

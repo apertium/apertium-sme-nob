@@ -28,6 +28,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <def-cat n="prn">
 <cat-item name="prn"/>
     </def-cat>
+    <def-cat n="det_caseprep_prn">
+<cat-item name="det_caseprep_prn"/>
+    </def-cat>
     <def-cat n="det">
 <cat-item name="det"/>
     </def-cat>
@@ -1260,6 +1263,21 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <!-- <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro> -->
         <out>
           <lu><clip pos="1" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: det_caseprep_prn">
+<pattern><pattern-item n="det_caseprep_prn"/></pattern>
+      <action>
+        <call-macro n="clean_prn"><with-param pos="0"/><with-param pos="1"/></call-macro>
+        <call-macro n="clean_prn"><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <!-- <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro> -->
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
         </out>
       </action>
     </rule>

@@ -1424,7 +1424,7 @@ SELECT ("omsetning"i) (0 ("<johtu>"i) LINK -1 sem_food) ;
 SELECT:fallback ("fart"i) (0 ("<johtu>"i));
 
 # oktavuohta 0 = kontakt, 1 = henvendelse, 2 = forbindelse, 3 = sammenheng
-SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) + loc) ;
+SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) + loc)(NEGATE *1 com BARRIER NOT-NPMODADV) ;
 SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 (sg loc) OR ill) ;
 SELECT ("forbindelse"i) (0 ("<oktavuohta>"i @←ADVL sg)) ;
 # dan oktavuođas go => i den forbindelse når
