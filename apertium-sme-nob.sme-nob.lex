@@ -1369,8 +1369,12 @@ SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i) OR ("<luoitádit>"i) OR 
 ## Beaivi báitá.
 SELECT:fallback ("dag"i) (0 ("<beaivi>"i));
 
-SELECT:fallback ("mat"i) IF (0 ("<biebmu>"i)) ;
-SELECT:fallback ("pitesame"i) IF (0 ("<bihtonsápmi>"i)) ;
+SELECT ("oppmerksomhet"i) IF (0 ("<fuomášupmi>"i)) (*-1 ("<giddet>"i) BARRIER SV-BOUNDARY) ;
+SELECT:fallback ("ide"i) IF (0 ("<fuomášupmi>"i)) ;
+
+SELECT ("mat"i) IF (0 ("<fuomášupmi>"i)) ;
+SELECT:fallback ("pitesame"i) IF (0 ("<fuomášupmi>"i)) ;
+
 
 # luohkká 0 = bakke, 1 = klasse
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK 1 ("<oahpaheaddji>"i));
