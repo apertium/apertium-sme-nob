@@ -588,6 +588,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="dii" tags="adv.*"/>
     </def-cat>
     <def-cat n="lex-das-her">
+      <cat-item lemma="dát" tags="prn.dem.sg.loc.@ADVL→"/> <!-- dát -->
+      <cat-item lemma="dát" tags="prn.dem.sg.loc.@ADVL-ela→"/> <!-- dát -->
+      <cat-item lemma="dát" tags="prn.dem.sg.loc.@ADVL-ine→"/> <!-- dát -->
       <cat-item lemma="dat" tags="prn.dem.sg.loc.@ADVL→"/> <!-- dát -->
       <cat-item lemma="dat" tags="prn.dem.sg.loc.@ADVL-ela→"/> <!-- dát -->
       <cat-item lemma="dat" tags="prn.dem.sg.loc.@ADVL-ine→"/> <!-- dát -->
@@ -1331,6 +1334,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="no.actio.ess">
       <list-item v="vuordit"/>
       <list-item v="oađđit"/>
+      <list-item v="hálddašit"/>
     </def-list>
     <def-list n="cond-NIL-verbs">
       <list-item v="berret"/>
@@ -4563,12 +4567,18 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
-    <rule comment="C[L] lex-das-her " c="das → her">
+    <rule comment="C[L] lex-das-her " c="dás → her">
       <pattern>
         <pattern-item n="lex-das-her"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+      <choose><when><test>
+      <equal><clip pos="1" side="sl" part="lemh"/><lit v="dát"/></equal></test>
+        <let><var n="tmp"/><lit v="her"/></let></when>
+       <otherwise> 
+        <let><var n="tmp"/><lit v="av det"/></let>
+       </otherwise></choose> 
         <out>
           <chunk name="adv" case="caseFirstWord">
             <tags>
@@ -4577,7 +4587,7 @@ And then there are some categories like "month", with all the months.
               <tag><clip pos="1" side="sl" part="mode"/></tag>
             </tags>
             <lu>
-              <lit v="her"/>
+              <var n="tmp"/>
               <lit-tag v="adv"/>
             </lu>
           </chunk>
@@ -8191,6 +8201,58 @@ And then there are some categories like "month", with all the months.
               <clip pos="2" side="tl" part="a_verb"/>
               <clip pos="2" side="tl" part="temps"/>
               <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="C[T]-V lex-orrut-indic adverb vblex.actio.ess" c="mii lea mielde viidáseappot ovddideamen giela">
+      <pattern>
+        <pattern-item n="lex-mielde"/>
+        <pattern-item n="adverb"/>
+        <pattern-item n="vblex.actio.ess"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <call-macro n="set_verb-lemma"><with-param pos="1"/></call-macro>
+        <call-macro n="set_verb-lemma"><with-param pos="3"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV.@ADVL"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+			  <lit-tag v="adv"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            </chunk>
+          <b pos="1"/>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV.@ADVL"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lem"/>
+			  <lit-tag v="adv"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            </chunk>
+          <b pos="2"/>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV.@←ADVL"/></tag>
+              <tag><clip pos="3" side="sl" part="a_actio"/></tag>  
+              <tag><lit-tag v="inf"/></tag>
+            </tags>
+            <lu>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_verb"/>
+              <clip pos="3" side="tl" part="temps"/>
+              <clip pos="3" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>

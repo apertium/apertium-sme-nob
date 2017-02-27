@@ -1248,6 +1248,9 @@ SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 SELECT ("oppnå"i) (0 ("<olahit>"i) LINK 1 ("<.*vuohta>"r) + acc) ;
 SELECT:fallback ("rekke"i) (0 ("<olahit>"i));
 
+SELECT: ("tørke"i) (0 ("<sihkkut>"i))(*0 ("<beavdi>"i) + acc OR ("<njunni>"i) + acc OR ("<távval>"i) + acc);
+SELECT:fallback ("stryke"i) (0 ("<sihkkut>"i));
+
 
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
@@ -1305,7 +1308,6 @@ SELECT:fallback ("forandre"i) (0 ("<rievdat>"i));
 SELECT:fallback ("skryte av"i) (0 ("<rábmot>"i));
 SELECT:fallback ("forberede"i) (0 ("<ráhkkanahttit>"i));
 SELECT:fallback ("bevare"i) (0 ("<seailut>"i));
-SELECT:fallback ("stryke"i) (0 ("<sihkkut>"i));
 SELECT:fallback ("hente"i) (0 ("<viežžat>"i));
 SELECT:fallback ("gjemme"i) (0 ("<čiehkádit>"i));
 SELECT:fallback ("spille"i) (0 ("<čuojahit>"i));
