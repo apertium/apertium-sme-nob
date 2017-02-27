@@ -980,6 +980,9 @@ SELECT:fallback ("eie"i) IF  (0 ("<oamastit>"i)) ;
 SELECT ("innvie"i) IF  (0 ("<vihahit>"i)) (*0 ("<áltár>") LINK 0 nom OR acc) ;
 SELECT:fallback ("vie"i) IF  (0 ("<vihahit>"i)) ;
 
+SELECT ("utelate"i) IF  (0 ("<guođđit>"i)) (*1 ("<eret>")) ;
+SELECT:fallback ("forlate"i) IF  (0 ("<guođđit>"i)) ;
+
 
 SELECT:fallback ("oppleve"i) IF  (0 ("<vásihit>"i)) ;
 
@@ -2013,6 +2016,7 @@ SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
 SELECT ("opp"i) (0 ("<eret>"i)) (-1 ("<cealkit>"i)) ;
 SELECT ("bort"i) (0 ("<eret>"i)) (-1 v) ;
+SELECT ("bort"i) (0 ("<eret>"i)) (1 loc) ;
 SELECT ("av"i) (0 ("<eret>"i)) (-1 ("<sahát>"i)) ;
 SELECT:fallback ("fra"i) (0 ("<eret>"i)) ;
 
