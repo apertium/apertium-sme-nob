@@ -1322,6 +1322,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="caseprep_c_name" c="chunk name for the caseprep chunk"/>
     <def-var n="caseprep-verb"   c="nob preposition (whole chunk) based on sme case, used as tag on the verb chunk"/>
     <def-var n="previous-nhead"  c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
+    <def-var n="main-verb-pasv"    c="sme pasv of the previous main verb" />
     <def-var n="main-verb-sl"    c="sme lemh of the previous main verb" />
     <def-var n="main-verb-tl"    c="nob lemh of the previous main verb" />
     <def-var n="aux-verb-sl"     c="sme lemh of the previous aux verb" />
@@ -2826,6 +2827,10 @@ And then there are some categories like "month", with all the months.
               <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in>
             </and></not>
             <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
+            <not><and>
+            <equal><var n="main-verb-pasv"/><lit v="pasv"/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+            </and></not> 
 <!--	    <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="samisk"/></equal></not>-->
             <or>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@OBJ→"/></equal>
@@ -3073,6 +3078,18 @@ And then there are some categories like "month", with all the months.
 
     <def-macro n="set_verb-lemma" npar="1">
       <choose>
+         <when c="M[V] set main-verb-pasv">
+          <test><and>
+            <or>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FMAINV"/></equal></or>
+              <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pasv"/></equal> 
+         </and>
+          </test>
+          <let><var n="main-verb-pasv"/><lit v="pasv"/></let>
+        </when>
+      </choose>
+      <choose>
         <when c="M[V] set main-verb-sl">
           <test>
             <and><or>
@@ -3089,7 +3106,7 @@ And then there are some categories like "month", with all the months.
           <let><var n="main-verb-sl"/><clip pos="1" side="sl" part="lemh"/></let>
           <let><var n="main-verb-tl"/><clip pos="1" side="tl" part="lemh"/></let>
         </when>
-        <when c="M[V] set aux-verb-lemma">
+       <when c="M[V] set aux-verb-lemma">
           <test>
             <and>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FAUXV"/></equal>
@@ -8901,6 +8918,7 @@ TODO: this should be an mwe in the analyser.">
           <test><not><equal><clip pos="1" side="tl" part="lemh"/><lit v=";"/></equal></not></test>
           <let><var n="caseFirstWord"/><lit v="Init"/></let>
           <let><var n="main-verb-sl"/><lit v=""/></let>
+          <let><var n="main-verb-pasv"/><lit v=""/></let>
         </when></choose>
       </action>
     </rule>
