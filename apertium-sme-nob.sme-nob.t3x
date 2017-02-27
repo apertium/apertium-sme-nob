@@ -313,9 +313,13 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SV.@-FAUXV"/>
       <cat-item tags="SV.@-FAUXV.*"/>
     </def-cat>
-    <def-cat n="IVMAIN-pers">
-      <cat-item tags="SV.@-FMAINV.*.pers.*"/>
-      <cat-item tags="SV.@-FMAINV.*.pers"/>
+    <def-cat n="IVMAIN-pers"> <!-- no pasv -->
+      <cat-item tags="SV.@-FMAINV.inf.pers.*"/>
+      <cat-item tags="SV.@-FMAINV.inf.pers"/>
+      <cat-item tags="SV.@-FMAINV.*.inf.pers.*"/>
+      <cat-item tags="SV.@-FMAINV.*.inf.pers"/>
+      <cat-item tags="SV.@-FMAINV.pp.pers.*"/>
+      <cat-item tags="SV.@-FMAINV.pp.pers"/>
     </def-cat>
     <def-cat n="lemq">
       <cat-item tags="lemq"/>
@@ -1731,7 +1735,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
 
-    <rule comment="REGLA: ADVLr FV IV - out: 1 2 man 3 
+    <rule comment="REGLA: ADVLr FAUXV-man IVMAIN-pers - out: 1 2 man 3 
                    Insert existential pro 'man' if ADVLr is non-locative
 
                    Override prodrop rule (below) if we might have a subject to the right"
@@ -1781,7 +1785,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: ADVLr FV IV - out: 1 2 man 4 3
+    <rule comment="REGLA: ADVLr FAUXV-man ADVLrOBJr IVMAIN-pers - out: 1 2 man 4 3
                    Insert existential pro 'man' if ADVLr is non-locative
 
                    Override prodrop rule (below) if we might have a subject to the right"
@@ -1835,7 +1839,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
 
-    <rule comment="REGLA: PR ADVLr FV IV - out: 1 2 3 man 4
+    <rule comment="REGLA: PR ADVLr FAUXV-man IVMAIN-pers - out: 1 2 3 man 4
                    Insert existential pro 'man' if ADVLr is non-locative
 
                    Override prodrop rule (below) if we might have a subject to the right"
@@ -2169,7 +2173,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR V2-trigger FV IV-pasv maybe-lSUBJ   - out: 1 2 3 det 4 5" c="Čoahkkimis galgá ráhkaduvvot plána studeantta hárjehallama progrešuvdnii">
+    <rule comment="REGLA: PR V2-trigger FV IV maybe-lSUBJ   - out: 1 2 3 det 4 5" c="Čoahkkimis galgá ráhkaduvvot plána studeantta hárjehallama progrešuvdnii">
       <pattern>
         <pattern-item n="PR"/>
         <pattern-item n="V2-trigger"/>

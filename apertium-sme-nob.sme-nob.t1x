@@ -2029,7 +2029,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="caus-Ø-verbs" c="For some verbs, there is no need for a causative helper">
       <list-item v="delegere"/>
     </def-list>
-    <def-list n="not-det-verbs" c="asfd">
+    <def-list n="not-det-verbs" c="exceptions from the pattern of passive verb + subj: formal subject det and indef form">
       <list-item v="loahpahit"/>
       <list-item v="gieldit"/>
       <list-item v="alidit"/>
@@ -3079,7 +3079,7 @@ And then there are some categories like "month", with all the months.
           <and>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
           <equal><var n="main-verb-pasv"/><lit v="pasv"/></equal>
-      <not><in caseless="yes"><var n="main-verb-sl"/><list n="not-det-verbs"/></in></not> 
+          <not><in caseless="yes"><var n="main-verb-sl"/><list n="not-det-verbs"/></in></not> 
           </and> 
           </or></test>
           <let><var n="c_syn"/><lit-tag v="@←SUBJext"/></let>
@@ -4027,7 +4027,13 @@ And then there are some categories like "month", with all the months.
           </choose>
           <choose>
             <when>
-              <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="esubj-verbs"/></in></test>
+            <test><and>
+              <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="esubj-verbs"/></in>
+              <or>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FMAINV"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+              </or>
+              </and></test>
               <let><var n="esubj"/><lit-tag v="esubj"/></let>
             </when>
             <otherwise>
