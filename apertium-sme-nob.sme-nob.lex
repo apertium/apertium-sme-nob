@@ -1342,8 +1342,8 @@ SELECT ("avdeling"i) (0 ("<ossodat>"i)); # parkorp har masse «avdeling»-døme,
 
 SELECT ("grad"i) (0 ("<muddu>"i)) (NOT -1 ord) ;
 
-SELECT ("forhold"i) (0 ("<dilálašvuohta>")) (NOT -1 ("<virggálaš>")) (NOT -2 ("<virggálaš>"));
-SELECT:fallback ("situasjon"i) (0 ("<dilálašvuohta>")) ;
+SELECT ("forhold"i) (0 ("<dilálašvuohta>"i)) (NOT -1 ("<virggálaš>"i)) (NOT -2 ("<virggálaš>"i));
+SELECT:fallback ("situasjon"i) (0 ("<dilálašvuohta>"i)) ;
 
 # áddjá: bestefar vs gamling
 SELECT ("gamling"i) (0 ("<áddjá>"i) LINK -1 num LINK NOT *-1 ←hab→);
@@ -1395,7 +1395,7 @@ SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 COPULAS LINK *1 num) ;
 SELECT:fallback ("time"i) (0 ("<diibmu>"i));
 
 # hávvi gen as sår is the exceptional/rare case:
-SELECT ("sår"i) (0 ("<hávvi>"i) LINK 0 gen) (1 ("<vuostá>"));
+SELECT ("sår"i) (0 ("<hávvi>"i) LINK 0 gen) (1 ("<vuostá>"i));
 SELECT ("gang"i) (0 ("<hávvi>"i) LINK 0 gen);
 SELECT ("sår"i) (0 ("<hávvi>"i) LINK NOT 0 gen);
 # genitive háve is always gang in corpus, and much more frequent than «sår»
@@ -1443,20 +1443,20 @@ SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ; #?
 # máŋggain oktavuođain => i mange sammenhenger
 SELECT:fallback ("forbindelse"i) (0 ("<oktavuohta>"i));
 
-SELECT ("folk") (0 ("<olmmoš>"i) LINK 0 pl) ;
+SELECT ("folk"i) (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
-SELECT ("person") (0 ("<olmmoš>"i) LINK -1 num) ;
-SELECT ("person") (0 ("<olmmoš>"i) LINK 1 rel) ;
+SELECT ("person"i) (0 ("<olmmoš>"i) LINK -1 num) ;
+SELECT ("person"i) (0 ("<olmmoš>"i) LINK 1 rel) ;
 
-SELECT ("menneske") (0 ("<olmmoš>"i) LINK 0 ess) ;
+SELECT ("menneske"i) (0 ("<olmmoš>"i) LINK 0 ess) ;
 # olmmožin => som menneske
-SELECT:fallback ("menneske") (0 ("<olmmoš>"i)) ;
+SELECT:fallback ("menneske"i) (0 ("<olmmoš>"i)) ;
 
 
 SELECT ("husdyr"i) IF (0 ("<šibit>"i)) ;
 
 # soadji 0 = vinge, 1 = skovl, 2 = fløy, 3 = erme
-SELECT ("fløy"i) (0 ("<soadji>")) (0* sem_org);
+SELECT ("fløy"i) (0 ("<soadji>"i)) (0* sem_org);
 # Bellodaga radikála soajis bođii garra proteasta.
 
 SELECT ("erme"i) (0 ("<soadji>"i)) (0* sem_clth);
@@ -1472,7 +1472,7 @@ SELECT ("bråk"i) (0 ("<stuibmi>"i) LINK -1 prop) ;
 SELECT:fallback ("bråk"i) (0 ("<stuibmi>"i));
 
 # goddi 0 = komite, 1 = villrein
-#SELECT ("goddi") ("goddi:1") ("goddi") (NOT 0/1 (*)) ;
+#SELECT ("goddi"i) ("goddi:1"i) ("goddi"i) (NOT 0/1 (*)) ;
 SELECT:fallback ("komite"i) (0 ("<goddi>"i));
 
 # diehtu 0 = informasjon,  3 = beskjed
@@ -1622,8 +1622,8 @@ SELECT:fallback ("problem"i) (0 ("<bárti>"i));
 
 # riekkis 0 = sirkel Geom and Org, 1 = dekk Obj
 
-SELECT ("dekk"i) (0 ("<riekkis>"i)) (1 cc LINK 1 ("<juvla>")) ;
-SELECT ("dekk"i) (0 ("<riekkis>"i)) (-1 ("<biila>") LINK 0 gen) ;	# Sem/Veh instead of biila
+SELECT ("dekk"i) (0 ("<riekkis>"i)) (1 cc LINK 1 ("<juvla>"i)) ;
+SELECT ("dekk"i) (0 ("<riekkis>"i)) (-1 ("<biila>"i) LINK 0 gen) ;	# Sem/Veh instead of biila
 ## Iskka iežat biilla ovdal go vuoddját gosage , earenoamžiid 	rieggáid 	dahje juvllaid . (Sem/Obj)
 ## Dalle sii masset vejolašvuođa Sámi bargguid ektui ja 	riekkis 	giddana Sámi guvlui máhccamis , Riitta Orti-Berg ( 41 ) máinnaša .
 ## – Oainnát , piikkat leat darvánan ja hárjánan vissis guvlui jorrat ja jus bidjá 	rieggá 	jorrat nuppe guvlui , de čolgada eret daid piikkaid .
@@ -1643,7 +1643,7 @@ SELECT:lang-speakers (".*talende"ri) (0 ("<.*giella>"ri) LINK 0 n + pl) ;
 SELECT ("nok"i) (0 ("<doarvi>"i)) (0 ill) ;
 SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 
-SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>")) ;
+SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>"i)) ;
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY) ;	
 
 SELECT ("samisk"i) (0 ("<sápmi>"i) LINK 0 sg + gen);
@@ -1669,7 +1669,7 @@ SELECT:fallback ("Sverige"i) (0 ("<Ruošša>"i));
 
 SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 
-SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + ill) (-1 ("<bidjat>"));
+SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + ill) (-1 ("<bidjat>"i));
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
@@ -1690,7 +1690,7 @@ SELECT:fallback ("glede"i) (0 ("<illu>"i));
 SELECT ("tale"i) (0 ("<ságat>"i) LINK 0 ill);
 SELECT:fallback ("nyhet"i) (0 ("<ságat>"i));
 
-SELECT ("engasjement"i) (0 ("<mokta>"i) LINK *0 ("<buolli>") OR ("<buollát>") OR ("<buollit>"));
+SELECT ("engasjement"i) (0 ("<mokta>"i) LINK *0 ("<buolli>"i) OR ("<buollát>"i) OR ("<buollit>"i));
 SELECT:fallback ("humør"i) (0 ("<mokta>"i));
 
 
@@ -1891,7 +1891,7 @@ SELECT:fallback ("tekst"i) (0 ("<čálus>"i));
 SELECT:fallback ("slag"i) (0 ("<šládja>"i));
 SELECT:fallback ("surr"i) (0 ("<šurra>"i));
 
-SELECT:fallback ("ende"i) (0 ("<loahppa>"i) LINK -1 ("<máilbmi>")) ;
+SELECT:fallback ("ende"i) (0 ("<loahppa>"i) LINK -1 ("<máilbmi>"i)) ;
 SELECT:fallback ("slutt"i) (0 ("<loahppa>"i)) ;
 
 SELECT:fallback ("hovedforslag"i) (0 ("<váldoevttohus>"i)) ;
@@ -1956,13 +1956,13 @@ SELECT:Leimmet-muhtun ("noe"i) (0 ("<muhtin>"i)) (-1 LEAT + pl) ;
 SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i)) (1 n + pl) ;
 SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i)) (2 n + pl) ;
 
-SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>") BARRIER clb OR v OR adv) ;
-SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>")) ;
+SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>"i) BARRIER clb OR v OR adv) ;
+SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>"i)) ;
 SELECT:fallback ("en"i) (0 ("<okta>"i)) ;
 
-SELECT:movt ("som"i) (0 ("<movt>"i)) (-1 ("<nie>") OR ("<nu>")) ;
-SELECT:mot ("som"i) (0 ("<mot>"i)) (-1 ("<nie>") OR ("<nu>")) ;
-SELECT:mo ("som"i) (0 ("<mo>"i)) (-1 ("<nie>") OR ("<nu>")) ;
+SELECT:movt ("som"i) (0 ("<movt>"i)) (-1 ("<nie>"i) OR ("<nu>"i)) ;
+SELECT:mot ("som"i) (0 ("<mot>"i)) (-1 ("<nie>"i) OR ("<nu>"i)) ;
+SELECT:mo ("som"i) (0 ("<mo>"i)) (-1 ("<nie>"i) OR ("<nu>"i)) ;
 SELECT:fallback ("hvordan"i) (0 ("<movt>"i)) ;
 SELECT:fallback ("hvordan"i) (0 ("<mot>"i)) ;
 SELECT:fallback ("hvordan"i) (0 ("<mo>"i)) ;
@@ -1993,21 +1993,21 @@ SELECT:mitt-rom pos (0 ("<ieš>"i)) (NOT 0 @→P OR @P←) ;
 SELECT:fallback ("prpers"i) (0 ("<ieš>"i) LINK 0 acc) ;
 SELECT:fallback ("hvem"i) (0 ("<gii>"i)) ;
 
-SELECT ("hvor mange") (0 ("<galle>"i)) (-1 v) ;
-#SELECT:fallback ("mange") (0 ("<galle>"i)) ;
+SELECT ("hvor mange"i) (0 ("<galle>"i)) (-1 v) ;
+#SELECT:fallback ("mange"i) (0 ("<galle>"i)) ;
 
-SELECT ("noe slik") (0 ("<dakkár>"i)) (*-1 neg BARRIER S-BOUNDARY) ;
-SELECT:fallback ("slik") (0 ("<dakkár>"i)) ;
+SELECT ("noe slik"i) (0 ("<dakkár>"i)) (*-1 neg BARRIER S-BOUNDARY) ;
+SELECT:fallback ("slik"i) (0 ("<dakkár>"i)) ;
 
 
 # Adverbs
 # =======
-SELECT:ble-mye-verre ("mye") (0 ("<sakka>") LINK 0 adv) (-1 a + pasv LINK 0 v) ; # vearránii sakka
-SELECT ("til") (0 ("<vuhtii>")) (*-1 ("<váldit>")) ;
-SELECT ("til rette for") (0 ("<nu>")) (-1 ("<dilálašvuohta>")) (1 ("<ahte>")) ;
-SELECT ("så") (0 ("<nu>"i)) (1 a or ind or ("<galle>")) ; # dat skuvla nu johtil ahte
-SELECT:så-langt-som ("så") (0 ("<nu>"i)) (1 adv) (2 cs) ;
-SELECT ("slik") (0 ("<nu>"i)) ;     # Ja nu leat sii
+SELECT:ble-mye-verre ("mye"i) (0 ("<sakka>"i) LINK 0 adv) (-1 a + pasv LINK 0 v) ; # vearránii sakka
+SELECT ("til"i) (0 ("<vuhtii>"i)) (*-1 ("<váldit>"i)) ;
+SELECT ("til rette for"i) (0 ("<nu>"i)) (-1 ("<dilálašvuohta>"i)) (1 ("<ahte>"i)) ;
+SELECT ("så"i) (0 ("<nu>"i)) (1 a or ind or ("<galle>"i)) ; # dat skuvla nu johtil ahte
+SELECT:så-langt-som ("så"i) (0 ("<nu>"i)) (1 adv) (2 cs) ;
+SELECT ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
@@ -2065,11 +2065,11 @@ SELECT:fallback ("på"i) (0 ("<badjelis>"i) LINK -1 sem_clth) ;
 SELECT:fallback ("ovenfor"i) (0 ("<badjelis>"i)) ;
 
 
-SELECT ("ja") (0 ("<ja>i))(-1 cc)(1("<ja>i));
-SELECT ("ja") (0 ("<ja>i))(1 cc)(-1("<ja>i));
+SELECT ("ja"i) (0 ("<ja>i))(-1 cc)(1("<ja>i));
+SELECT ("ja"i) (0 ("<ja>i))(1 cc)(-1("<ja>i));
 # Dajai, ahte ja ja.
 
-SELECT:fallback ("og") (0 ("<ja>"i));
+SELECT:fallback ("og"i) (0 ("<ja>"i));
 
 
 SELECT:bra ("bra"i) (0 ("<bures>"i) LINK *0 ("<mannat>"i) BARRIER SV-BOUNDARY) ;
@@ -2087,30 +2087,30 @@ SELECT (n f pl ind) (-1 num)(0 ("<ruvdnosaš>"i));
 SELECT (det) (0 ("<sierra>"i));
 # Mii čujuhit ahte sámiin go lea sierra álbmot ja eamiálbmot
 
-SELECT ("fjern") (0 ("<gáiddus>"i) LINK 0 cmpnd);
-REMOVE ("fjern") (NOT 0 cmpnd);
+SELECT ("fjern"i) (0 ("<gáiddus>"i) LINK 0 cmpnd);
+REMOVE ("fjern"i) (NOT 0 cmpnd);
 
-SELECT ("streif") (0 ("<golgu>"i) LINK 0 a + cmpnd);
-REMOVE ("streif") (NOT 0 a + cmpnd);
+SELECT ("streif"i) (0 ("<golgu>"i) LINK 0 a + cmpnd);
+REMOVE ("streif"i) (NOT 0 a + cmpnd);
 
-SELECT ("vær så god") (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
+SELECT ("vær så god"i) (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
 
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
-SELECT ("helhetlig") (0 ("<ollislaš>"i));
+SELECT ("helhetlig"i) (0 ("<ollislaš>"i));
 
-SELECT:fallback ("hel") (0 ("<ollis>"i)) ; # (1 ("tid"));
+SELECT:fallback ("hel"i) (0 ("<ollis>"i)) ; # (1 ("tid"i));
 
-SELECT:fallback ("sterk") (0 ("<nanus>"i));
+SELECT:fallback ("sterk"i) (0 ("<nanus>"i));
 
-SELECT ("forrige") (0 ("<ovddit>"i comp)) (1 n + sg);
+SELECT ("forrige"i) (0 ("<ovddit>"i comp)) (1 n + sg);
 
-SELECT ("trygg") (0 ("<luohttevaš>"i)) (0 a) (NOT 0 n);
-SELECT:fallback ("tillitsfull") (0 ("<luohttevaš>"i));
+SELECT ("trygg"i) (0 ("<luohttevaš>"i)) (0 a) (NOT 0 n);
+SELECT:fallback ("tillitsfull"i) (0 ("<luohttevaš>"i));
 
-IFF ("-årig") (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
+IFF ("-årig"i) (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
 
-SELECT:fallback ("flere") (0 ("<eanet>"i)) (*1 HUMAN BARRIER NOT-PRE-A-N );	
-SELECT:fallback ("mye") (0 ("<eanet>"i));
+SELECT:fallback ("flere"i) (0 ("<eanet>"i)) (*1 HUMAN BARRIER NOT-PRE-A-N );	
+SELECT:fallback ("mye"i) (0 ("<eanet>"i));
 	
 ## leage buorre (vær så god)
 
@@ -2123,12 +2123,12 @@ SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
 ## Dat lei buorre girji (god)
 ## Dat lei buorre. (bra)
 
-#REMCOHORT TARGET ("<leat>"i) (0 imprt) (1 ("<buorre>"));
+#REMCOHORT TARGET ("<leat>"i) (0 imprt) (1 ("<buorre>"i));
 
-SELECT:fallback ("ekstern") (0 ("<olgguldas>"i));
+SELECT:fallback ("ekstern"i) (0 ("<olgguldas>"i));
 
-SELECT ("sint") (0 ("<bahá>"i) LINK 0 attr LINK 1 sem_hum OR sem_ani);
-SELECT:fallback ("dårlig") (0 ("<bahá>"i));
+SELECT ("sint"i) (0 ("<bahá>"i) LINK 0 attr LINK 1 sem_hum OR sem_ani);
+SELECT:fallback ("dårlig"i) (0 ("<bahá>"i));
 
 SELECT ("i tjue"i) (0 ("<goalmmát>"i) LINK 1 ("<lohki>"i));
 SELECT ("i tretti"i) (0 ("<njealját>"i) LINK 1 ("<lohki>"i));
@@ -2173,7 +2173,7 @@ SELECT:fallback ("månedlig"i) (0 ("<mánnosaš>"i));
 # Subjunctions
 # ============
 
-SELECT ("at"i) (0 ("<nu ahte>"i)) (-1 ("sørge# for"));
+SELECT ("at"i) (0 ("<nu ahte>"i)) (-1 ("sørge# for"i));
 SELECT:fallback ("slik at"i) (0 ("<nu ahte>"i));
 
 SELECT ("når"i) (0 ("<dalle go>"i)) (-1 ("<earret>"i));

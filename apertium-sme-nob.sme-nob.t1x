@@ -1286,6 +1286,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_year"/>
       <attr-item tags="sem_wpn"/>
       <attr-item tags="sem_wthr"/>
+      <attr-item tags="top"/>
     </def-attr>
     <def-attr n="a_neverdet">
       <attr-item tags="neverdet"/>
@@ -1540,6 +1541,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_plc_time&gt;"/>
       <list-item v="&lt;sem_plc_tool-catch&gt;"/>
       <list-item v="&lt;sem_plc_wthr&gt;"/>
+      <list-item v="&lt;top&gt;"/>
     </def-list>
     <def-list n="sem_org">
       <list-item v="&lt;sem_org&gt;"/>
@@ -2404,6 +2406,7 @@ And then there are some categories like "month", with all the months.
                   </or>
                   <not><equal><var n="previous-nhead"/><lit v="rettighet"/></equal></not>
                   <not><equal><var n="previous-nhead"/><lit v="rett"/></equal></not>
+                  <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="guhte"/></equal></not>
                 </and>
               </test>
               <let>
@@ -8207,7 +8210,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[T]-V lex-orrut-indic adverb vblex.actio.ess" c="mii lea mielde viidáseappot ovddideamen giela">
+    <rule comment="C[T]-V lex-orrut-indic adverb vblex.actio.ess" c="dat lea mielde ovddosguvlui ovddideamen giela">
       <pattern>
         <pattern-item n="lex-mielde"/>
         <pattern-item n="adverb"/>

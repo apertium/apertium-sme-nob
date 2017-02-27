@@ -529,12 +529,20 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
             <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
           </or></test>
-          <choose><when c="h_n">
+          <choose>
+          <when c="h_n">
             <test><or>
               <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="han"/></equal>
               <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="hun"/></equal>
             </or></test>
             <let><clip pos="2" part="lemh"/><get-case-from pos="2"><lit v="h_n"/></get-case-from></let>
+          </when>
+          <when c="geat guhtiige juhkkojuvvui = hver">
+            <test><or>
+              <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
+              <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
+            </or></test>
+            <let><clip pos="2" part="gen"/><clip pos="1" part="gen"/></let>
           </when>
           <otherwise c="fallback if we can't generate GD_pers (e.g. not pers.p3.sg)">
             <let><clip pos="2" part="gen"/><lit-tag v="mf"/></let>
