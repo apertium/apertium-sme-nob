@@ -1,11 +1,5 @@
 #!/bin/bash
 
-## Assumes you have a "gtweb" entry in ~/.ssh/config, e.g.:
-#
-# Host gtweb
-#   User unhammer
-#   HostName gtweb.uit.no
-
 
 set -eu
 
@@ -63,6 +57,21 @@ EOF
 if [[ $# -ne 1 ]]; then
     fail
 fi
+if ! grep -q '^Host[[:space:]][[:space:]]*gtweb[[:space:]]*$' ~/.ssh/config; then
+    if [[ ! -d ~/.ssh ]]; then mkdir ~/.ssh; chmod 700 ~/.ssh; fi
+    if [[ ! -f ~/.ssh/config ]]; then touch ~/.ssh/config; fi
+    cat >&2 <<EOF
+To use this script, you need a gtweb entry in ~/.ssh/config, with your
+username on gtweb. For example:
+
+Host gtweb
+  User $USER
+  HostName gtweb.uit.no
+
+EOF
+    exit 1
+fi
+
 case $1 in
     svn) shift; svn "$@";;
     package) package;;
