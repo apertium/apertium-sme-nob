@@ -3025,7 +3025,15 @@ And then there are some categories like "month", with all the months.
         <choose c="bovdejuvvon guossit : inviterte gjester">
           <when>
             <test><equal><clip pos="2" side="sl" part="temps"/><lit-tag v="prfprc"/></equal></test>
+            <choose>
+            <when c="def">
+       <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal></test>
             <let><clip pos="2" side="tl" part="tags"/><lit-tag v="adj.pp.sg" /></let>
+          </when>
+          <otherwise c="ind">
+            <let><clip pos="2" side="tl" part="tags"/><lit-tag v="adj.pp.GD.sg" /></let>
+          </otherwise>
+            </choose>
           </when>
         </choose>
         <choose c="For positives, copy noun number over (if sg/pl).">
@@ -3044,7 +3052,7 @@ And then there are some categories like "month", with all the months.
           </when>
         </choose>
         <choose c="When GD, nob adj's are either nt or mf">
-          <when>
+          <when> 
             <test><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="GD"/></equal></test>
             <choose c="Try to copy from noun">
               <when><test><in><clip pos="1" side="tl" part="gen"/><list n="adj-genders"/></in></test>
@@ -7191,6 +7199,65 @@ And then there are some categories like "month", with all the months.
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
+
+    <rule comment="C[] adj_attr conj adj_attr nom_head" c="Girjji namma lea ohppojuvvon ja sohppojuvvon giella">
+      <pattern>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="conj"/>
+        <pattern-item n="adj_attr"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
+
+        <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="1"/></call-macro>
+
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="3"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_conj"/>
+              <clip pos="2" side="tl" part="a_part"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <b pos="2"/>
+            <lit v="^"/>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_adj"/>
+              <clip pos="3" side="tl" part="grau"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <clip pos="3" side="tl" part="nbr"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="3"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="3"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+      </action>
+    </rule>
+
 
     <rule comment="C[] ADJ_ATTR ADJ_ATTR NOM
                    –––––
