@@ -1,0 +1,58 @@
+#!/bin/bash
+
+## Assumes you have a "gtweb" entry in ~/.ssh/config, e.g.:
+#
+# Host gtweb
+#   User unhammer
+#   HostName gtweb.uit.no
+
+
+set -eu
+
+svn () {
+    cd "$(dirname "$0")"/..
+
+    if [[ ! -f Makefile ]]; then
+        echo 'No Makefile found – please compile first!' >&2
+        exit 1
+    elif [[ "$(grep ^prefix Makefile)" != "prefix = /usr/local" ]]; then
+        echo "Please run autogen.sh again without any --prefix" >&2
+        exit 1
+    fi
+
+    make test
+
+    DESTDIR=for_gtweb_jorgal make install
+
+    rsync -av for_gtweb_jorgal/ gtweb:for_gtweb_jorgal/
+
+    set -x
+    ssh -t gtweb '
+sudo rsync -a for_gtweb_jorgal/usr/local/share/apertium/apertium-sme-nob/ /usr/share/apertium/apertium-sme-nob/ &&
+sudo systemctl restart apy
+'
+}
+
+package () {
+    set -x
+    ssh -t gtweb '
+sudo dnf clean packages             &&
+sudo dnf update                     &&
+sudo dnf reinstall apertium-sme-nob &&
+sudo systemctl restart apy
+'
+}
+
+fail () {
+    echo "Expecting either 'svn' or 'package' as argument." >&2
+    exit 1
+}
+
+if [[ $# -ne 1 ]]; then
+    fail
+fi
+case $1 in
+    svn) shift; svn "$@";;
+    package) package;;
+    *) fail;;
+esac
