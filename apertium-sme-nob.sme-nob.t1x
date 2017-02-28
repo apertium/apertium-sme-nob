@@ -8963,16 +8963,19 @@ TODO: this should be an mwe in the analyser.">
         <pattern-item n="sent"/>
       </pattern>
       <action>
-        <out>
-          <chunk name="sent">
-            <tags>
-              <tag><lit-tag v="SENT"/></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="whole"/>
-            </lu>
-          </chunk>
-        </out>
+        <choose><when>
+          <test><not><equal><clip pos="1" side="tl" part="lemh"/><lit v=""/></equal></not></test>
+          <out>
+            <chunk name="sent">
+              <tags>
+                <tag><lit-tag v="SENT"/></tag>
+              </tags>
+              <lu>
+                <clip pos="1" side="tl" part="whole"/>
+              </lu>
+            </chunk>
+          </out>
+        </when></choose>
         <choose><when>
           <test><not><equal><clip pos="1" side="tl" part="lemh"/><lit v=";"/></equal></not></test>
           <let><var n="caseFirstWord"/><lit v="Init"/></let>
