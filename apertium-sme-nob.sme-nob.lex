@@ -1751,6 +1751,10 @@ SELECT:fallback ("vurdering"i) (0 ("<árvvoštallan>"i));
 SELECT ("drifsenhet"i) (0 ("<doallu>"i) LINK *0 ("<orohat>"i) OR ("<siida>"i) OR ("<boazu>"i)) ;
 SELECT:fallback ("arrangement"i) (0 ("<doallu>"i)) ;
 
+SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK 1 (arab) OR ("<ovdaolmmoš>"i) OR ("<siida>"i)) ;
+SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK *0 ("<boazu>"i) OR ("<boazolohku>"i)) ;
+SELECT:fallback ("boplass"i) (0 ("<orohat>"i));
+
 
 SELECT ("omkring"i) (0 ("<biras>"i) LINK 0 pl + gen) (1 ("<mánnu>"i));
 
@@ -1858,7 +1862,6 @@ SELECT:fallback ("gras"i) (0 ("<rássi>"i));
 SELECT:fallback ("agn"i) (0 ("<seakti>"i));
 SELECT:fallback ("frø"i) (0 ("<siepman>"i));
 SELECT:fallback ("reinby"i) (0 ("<siida>"i));
-SELECT:fallback ("boplass"i) (0 ("<orohat>"i));
 SELECT:fallback ("skoletur"i) (0 ("<skuvlamátki>"i));
 SELECT:fallback ("trekk"i) (0 ("<skoađas>"i));
 SELECT:fallback ("blankett"i) (0 ("<skovvi>"i));
