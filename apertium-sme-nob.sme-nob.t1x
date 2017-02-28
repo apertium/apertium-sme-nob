@@ -1949,10 +1949,14 @@ And then there are some categories like "month", with all the months.
       <list-item v="feil"/>
       <list-item v="nok"/>
     </def-list>
-    <def-list n="ill-for-head" c="Illativ @←N noun phrases default to 'til', unless they modify nouns in this list">
+    <def-list n="ill-for-head" c="Illativ noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="behov"/>
+      <list-item v="plan"/>
     </def-list>
-    <def-list n="ill-på-head">
+     <def-list n="ill-i-head" c="Illativ noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="progresjon"/>
+    </def-list>
+   <def-list n="ill-på-head">
       <list-item v="syn"/>
     </def-list>
     <def-list n="gen-av-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
@@ -2033,6 +2037,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="loahpahit"/>
       <list-item v="gieldit"/>
       <list-item v="alidit"/>
+      <list-item v="geavahit"/>
     </def-list>
     <def-list n="annen" c="Lene added">
       <list-item v="annen"/>
@@ -2458,6 +2463,7 @@ And then there are some categories like "month", with all the months.
                   <test><or>
                   <in caseless="yes"><var n="previous-nhead"/><list n="gen-i-head"/></in>
                    <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+                <in caseless="yes"><var n="previous-nhead"/><list n="ill-i-head"/></in>
                 </or></test>
                   <let>
                     <var n="caseprep"/><lit v="i"/>
@@ -7903,6 +7909,35 @@ And then there are some categories like "month", with all the months.
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
+
+  <rule comment="C[T] nom.prop_attr nom.prop.gen nom_head
+                  Jođiheaddji Christina Henriksena mielas">
+      <pattern>
+        <pattern-item n="nom.prop_attr"/>
+        <pattern-item n="nom.prop_attr"/>
+        <pattern-item n="nom.prop.gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
+
+        <!-- prop_attr can match n's as well, so set defnes: -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="3"/></call-macro>
+        <append n="pre-nom"><b pos="3"/></append>
+
+        <!-- for possessed NOM -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+     <let><var n="c_neverdet"/><lit-tag v="neverdet"/></let>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+      </action>
+    </rule>
+
 
     <rule comment="C[] NOM.UNPROP.GEN NOM
                    –––––
