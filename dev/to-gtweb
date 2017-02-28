@@ -20,12 +20,17 @@ svn () {
         exit 1
     fi
 
-    make test
+    echo "Compiling and running sanity check …"
+    make -j test
 
     DESTDIR=for_gtweb_jorgal make install
 
+    echo
+    echo "Transferring files to gtweb …"
     rsync -av for_gtweb_jorgal/ gtweb:for_gtweb_jorgal/
 
+    echo
+    echo "On gtweb, copying to /usr and restarting apy …"
     set -x
     ssh -t gtweb '
 sudo rsync -a for_gtweb_jorgal/usr/local/share/apertium/apertium-sme-nob/ /usr/share/apertium/apertium-sme-nob/ &&
@@ -44,7 +49,14 @@ sudo systemctl restart apy
 }
 
 fail () {
-    echo "Expecting either 'svn' or 'package' as argument." >&2
+    cat >&2 <<EOF
+Usage:
+
+ $0 svn        --  compiles this package, uploads to gtweb and installs it to /usr
+ $0 package    --  reinstalls the nightly package on gtweb
+
+Assumes you have a Host gtweb in ~/.ssh/config
+EOF
     exit 1
 }
 
