@@ -1047,7 +1047,7 @@ SELECT:fallback ("få"i) (0 ("<beassat>"i));
 
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
 SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst);
-SELECT ("be"i) (0 ("<bivdit>"i) LINK 1 ("<ahte>"i));
+SELECT ("be"i) (0 ("<bivdit>"i) LINK 1 ("<ahte>"i) OR ("<veahkki>"i));
 SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
 SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
 SELECT ("jakte"i) (0 ("<bivdit>"i)) ;
@@ -1743,6 +1743,9 @@ SELECT:fallback ("søknad"i) (0 ("<ohcan>"i));
 
 SELECT ("antall"i) (0 ("<lohku>"i) LINK -1 sem_hum + pl) ;
 SELECT:fallback ("tall"i) (0 ("<lohku>"i));
+
+SELECT:fallback ("forskning"i) (0 ("<dutkan>"i));
+
 
 SELECT ("anmeldelse"i) (0 ("<árvvoštallan>"i) LINK -1 sem_txt + acc OR ("<filbma>"i) + acc) ;
 SELECT:fallback ("vurdering"i) (0 ("<árvvoštallan>"i));
