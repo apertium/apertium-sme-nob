@@ -909,6 +909,8 @@ SELECT ("all"i) IF (0 ("<juohke>"i) LINK 1 ("<lágan>")) ;
 SELECT ("mens"i) IF (0 ("<bodda>"i) LINK -1 ("<dat>") LINK 0 gen) ;
 
 SELECT ("helt"i) IF (0 ("<gitta>"i) + @→A OR ("<gitta>"i) + @→N) ;
+SELECT ("helt"i) IF (0 ("<gitta>"i) LINK 1 ill) ;
+SELECT ("helt"i) IF (0 ("<gitta>"i) LINK 1 num LINK 1 ill) ;
 SELECT ("inntil"i) IF (0 ("<gitta>"i) + @→Num) ;
 SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
 SELECT:fallback ("stenge"i) IF (0 ("<gitta>"i))  ;
