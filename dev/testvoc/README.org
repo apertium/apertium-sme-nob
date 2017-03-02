@@ -1,0 +1,16 @@
+The most useful command here is probably
+
+$ dev/testvoc/sme-bidix-sanity.sh
+
+which just compares the analyser with the bidix.
+
+
+There is also a more complete testvoc script for the generator:
+
+$ dev/testvoc/generation.sh --hfst sme-nob > testvoc.out
+
+It needs at least 1G of RAM, takes hours on a fast laptop, and the
+output can end up pretty big (so remember to redirect output to a
+file).
+
+
