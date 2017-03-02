@@ -357,6 +357,7 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="nom.gen_NUMl">
       <cat-item tags="n.*.gen.@Num←"/>
+      <cat-item tags="n.*.gen.*.@Num←"/>
       <cat-item tags="np.*.gen.@Num←"/>
     </def-cat>
     <def-cat n="nom.prop.antcog_mod">
@@ -2430,12 +2431,25 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="på"/>
               </let>
             </when>
+            <when c="ill is om">
+              <test><and> 
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="dag"/></equal>
+              <or>
+               <equal><var n="previous-nhead"/><lit v="time"/></equal>
+               <equal><var n="previous-nhead"/><lit v="gang"/></equal>
+             </or>
+             </and></test>
+              <let>
+                <var n="caseprep"/><lit v="om"/>
+              </let>
+            </when>
             <when c="ill is i">
               <test><or>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
                 <in caseless="yes"><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
                <equal><var n="previous-nhead"/><lit v="time"/></equal>
+               <equal><var n="previous-nhead"/><lit v="gang"/></equal>
              </or></test>
               <let>
                 <var n="caseprep"/><lit v="i"/>
