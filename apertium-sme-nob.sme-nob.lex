@@ -2017,10 +2017,13 @@ SELECT:fallback ("slik"i) (0 ("<dakkár>"i)) ;
 # =======
 SELECT:ble-mye-verre ("mye"i) (0 ("<sakka>"i) LINK 0 adv) (-1 a + pasv LINK 0 v) ; # vearránii sakka
 SELECT ("til"i) (0 ("<vuhtii>"i)) (*-1 ("<váldit>"i)) ;
+
+SELECT:fallback ("slik"i) (0 ("<nu>"i) LINK -1 ("<ja>"i)) ;     # Ja nu leat sii
 SELECT ("til rette for"i) (0 ("<nu>"i)) (-1 ("<dilálašvuohta>"i)) (1 ("<ahte>"i)) ;
 SELECT ("så"i) (0 ("<nu>"i)) (1 a or ind or ("<galle>"i)) ; # dat skuvla nu johtil ahte
 SELECT:så-langt-som ("så"i) (0 ("<nu>"i)) (1 adv) (2 cs) ;
-SELECT ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
+SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
+
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 

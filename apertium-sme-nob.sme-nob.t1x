@@ -1732,7 +1732,7 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="ill-med-verbs" c="See 'ill-NIL-verbs' above.">
       <list-item v="duhtat"/>
-      <list-item v="oahpásnuvvat"/>
+      <list-item v="oahpásmuvvat"/>
     </def-list>
     <def-list n="ill-i-verbs" c="See 'ill-NIL-verbs' above.">
       <list-item v="álgit"/>
@@ -2049,6 +2049,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="søndag"/>
       <list-item v="takk"/>
       <list-item v="midnatt"/>
+      <list-item v="verden"/>
     </def-list>
 
     <def-list n="bigrams-def" c="det/adj+noun lemma co-occurrences that are typically definite">
@@ -2098,6 +2099,7 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="determinerless_lem">
       <list-item v="samiskkunnskap"/>
+      <list-item v="verden"/>
     </def-list>
   </section-def-lists>
 
@@ -7826,7 +7828,7 @@ And then there are some categories like "month", with all the months.
     </rule>
 
 
-    <rule comment="C[] det_mod adj_attr adj_attr nom_head" c="dan vuosttaš sámi čoahkkimii - not perfect yet">
+    <rule comment="C[] det_mod adj_attr adj_attr nom_head" c="dan vuosttaš sámi čoahkkimii - not perfect yet, look at 3">
       <pattern>
         <pattern-item n="det_mod"/>
         <pattern-item n="adj_attr"/>
@@ -8221,6 +8223,11 @@ And then there are some categories like "month", with all the months.
         <append n="pre-nom"><b pos="1"/></append>
 
         <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <choose><when><test>
+        <equal><clip pos="1" side="tl" part="lemh"/><lit v="samisk"/></equal>
+        </test>
+         <let><var n="c_neverdet"/><lit-tag v="neverdet"/></let>
+        </when></choose>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
