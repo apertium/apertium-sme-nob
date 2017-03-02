@@ -4672,12 +4672,18 @@ And then there are some categories like "month", with all the months.
     <rule comment="C[AL] lex-times_adv measr_time" c="guhkii vahkkui → to ganger i uka">
       <pattern>
         <pattern-item n="lex-times_adv"/>
-        <pattern-item n="measr_time"/>
+        <pattern-item n="n.sem_time"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <chunk name="adv" case="caseFirstWord">
+      <choose><when><test>
+      <equal><clip pos="2" side="sl" part="lemh"/><lit v="beaivi"/></equal></test>
+        <let><var n="tmp"/><lit v="om"/></let></when>
+       <otherwise> 
+        <let><var n="tmp"/><lit v="i"/></let>
+       </otherwise></choose> 
+         <out>
+         <chunk name="adv" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="ADV"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
@@ -4689,7 +4695,7 @@ And then there are some categories like "month", with all the months.
             </lu>
              <b pos="1"/>               
             <lu>
-              <lit v="i"/>
+              <var n="tmp"/>
               <lit-tag v="pr"/>
             </lu>
              <b pos="1"/>               
