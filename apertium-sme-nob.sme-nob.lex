@@ -1050,9 +1050,6 @@ SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst OR ("<veahkki>"i));
 SELECT ("be"i) (0 ("<bivdit>"i) LINK 1 ("<ahte>"i) OR ("<veahkki>"i));
 SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
 SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
-SELECT ("jakte"i) (0 ("<bivdit>"i)) ;
-## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá.
-## Gonagas Harald liiko návddašit luonddu, dan dahká go bivdá mearas.
 SELECT:fallback ("be"i) (0 ("<bivdit>"i));
 SELECT:fallback ("jeger"i) (0 ("<bivdi>"i));
 
