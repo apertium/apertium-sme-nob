@@ -1819,6 +1819,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="ønske" c="Lihkkobeaivve sávaldagat Káre Márehis."/>
     </def-list>
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
+      <list-item v="frykt"/>
       <list-item v="husstand"/>
       <list-item v="fattigdom"/>
       <list-item v="avgrensning"/>
@@ -8281,13 +8282,21 @@ And then there are some categories like "month", with all the months.
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <let><var n="c_name"/><lit v="pre_"/></let>
+      <choose><when>
+      <test><equal><clip pos="2" side="sl" part="nbr"/><lit-tag v="pl"/></equal></test>
+      <let><var n="tmp"/><lit-tag v="pl"/></let>            
+      </when>
+      <otherwise>
+      <let><var n="tmp"/><lit-tag v="nt.sg.ind"/></let>            
+      </otherwise>
+      </choose>  
         <let>
           <var n="pre-nom"/>
           <concat>
             <lit v="^"/>
               <lit v="låse"/>
               <lit-tag v="adj.pp"/>
-              <clip pos="2" side="sl" part="nbr"/>              
+              <var n="tmp"/>
             <lit v="$"/>
             <b pos="1"/>
           </concat>
