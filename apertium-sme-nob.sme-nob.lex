@@ -980,6 +980,11 @@ SELECT:fallback ("eie"i) IF  (0 ("<oamastit>"i)) ;
 SELECT ("innvie"i) IF  (0 ("<vihahit>"i)) (*0 ("<áltár>") LINK 0 nom OR acc) ;
 SELECT:fallback ("vie"i) IF  (0 ("<vihahit>"i)) ;
 
+SELECT:fallback ("lukke"i) IF  (0 ("<giddet>"i)) ;
+
+SELECT:fallback ("avskjede"i) IF  (0 ("<lihccut>"i)) ;
+
+
 SELECT ("utelate"i) IF  (0 ("<guođđit>"i)) (*1 ("<eret>")) ;
 SELECT:fallback ("forlate"i) IF  (0 ("<guođđit>"i)) ;
 
@@ -1648,6 +1653,10 @@ SELECT:lang-speakers (".*talende"ri) (0 ("<.*giella>"ri) LINK 0 n + pl) ;
 SELECT ("nok"i) (0 ("<doarvi>"i)) (0 ill) ;
 SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 
+SELECT ("middel"i) (0 ("<doarjja>"i)) (-1 ("<ruoná>"i)) ;
+SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
+
+
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>"i)) ;
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY) ;	
 
@@ -1677,6 +1686,7 @@ SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + ill) (-1 ("<bidjat>"i));
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
+SELECT:side ("side"i) (0 ("<bealli>"i) LINK *-1 ("<muitalit>"i) BARRIER SV-BOUNDARY);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK 0 pl);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *1 sem_domain + loc);
@@ -1755,6 +1765,9 @@ SELECT:fallback ("arrangement"i) (0 ("<doallu>"i)) ;
 SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK 1 (arab) OR ("<ovdaolmmoš>"i) OR ("<siida>"i)) ;
 SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK *0 ("<boazu>"i) OR ("<boazolohku>"i)) ;
 SELECT:fallback ("boplass"i) (0 ("<orohat>"i));
+
+SELECT ("topp"i) (0 ("<njunuš>"i))(1 ("<artista>"i) OR ("<listu>"i));
+SELECT:fallback ("tet"i) (0 ("<njunuš>"i));
 
 
 SELECT ("omkring"i) (0 ("<biras>"i) LINK 0 pl + gen) (1 ("<mánnu>"i));
@@ -1840,7 +1853,6 @@ SELECT:fallback ("betaling"i) (0 ("<máksu>"i));
 SELECT:fallback ("suppe"i) (0 ("<mális>"i));
 SELECT:fallback ("mønster"i) (0 ("<málle>"i));
 SELECT:fallback ("skaft"i) (0 ("<nađđa>"i));
-SELECT:fallback ("tet"i) (0 ("<njunuš>"i));
 SELECT:fallback ("grunne"i) (0 ("<njuorra>"i));
 SELECT:fallback ("skinn"i) (0 ("<náhkki>"i));
 SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));

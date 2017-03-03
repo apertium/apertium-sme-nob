@@ -512,6 +512,15 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="rájes" tags="adv.*"/>
       <cat-item lemma="rájes" tags="po.*"/>
     </def-cat>
+    <def-cat n="lex-lohkka">
+      <cat-item lemma="lohkka" tags="n.*"/>
+    </def-cat>
+    <def-cat n="lex-uksa">
+      <cat-item lemma="uksa" tags="n.*"/>
+    </def-cat>
+    <def-cat n="lex-duohken">
+      <cat-item lemma="duohken" tags="post.*"/>
+    </def-cat>
     <def-cat n="lex-dat-sgloc">
       <cat-item lemma="dát" tags="prn.dem.sg.loc.*"/>
       <cat-item lemma="dat" tags="prn.dem.sg.loc.*"/>
@@ -1804,6 +1813,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-etter" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="oppfatning"/>
       <list-item v="mening"/>
+      <list-item v="syn"/>
     </def-list>
     <def-list n="loc-fra" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="ønske" c="Lihkkobeaivve sávaldagat Káre Márehis."/>
@@ -8262,6 +8272,29 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+    <rule comment="C[L] lex-lohkka lex-uksa" c="dan dahket lohkka uvssaid duohken">
+      <pattern>
+        <pattern-item n="lex-lohkka"/>
+        <pattern-item n="lex-uksa"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <lit v="låse"/>
+              <lit-tag v="adj.pp"/>
+              <clip pos="2" side="sl" part="nbr"/>              
+            <lit v="$"/>
+            <b pos="1"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
 
     <rule comment="C[] NOM.GEN NOM.CMP NOM
                    –––––
