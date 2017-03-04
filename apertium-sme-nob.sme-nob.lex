@@ -1123,6 +1123,7 @@ SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (*1 sem_edu LINK 0 loc) ;
 # Ruth Larsena mielas dát vuoseha ahte lea vejolaš lohkagoahtit sámegiela easkka joatkkaskuvllas
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR refl + acc OR refl + loc OR prfprc or COMMA OR a - attr) ;
+SELECT ("si"i) (0 ("<lohkat>"i)) (1 sem_hum + nom OR prop + nom) ;
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i)) (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)   ;
 ## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
@@ -1289,6 +1290,7 @@ SELECT:fallback ("svette"i) (0 ("<golggahit>"i));
 SELECT:fallback ("slutte"i) (0 ("<guorrasit>"i));
 SELECT:fallback ("sky"i) (0 ("<hirrut>"i));
 SELECT:fallback ("forme"i) (0 ("<hábmet>"i));
+SELECT:fallback ("mishandle"i) (0 ("<illastit>"i));
 SELECT:fallback ("trene"i) (0 ("<hárjehit>"i));
 SELECT:fallback ("forstå"i) (0 ("<ipmirdit>"i));
 SELECT:fallback ("fryde"i) (0 ("<jierásmuvvat>"i));
@@ -1972,12 +1974,13 @@ SELECT:test ("hva som"i) (0 ("<mii>"i) LINK 0 @OBJ→) (*-1 FMAINV BARRIER (*) -
 SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV) ;
 SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
 
-SELECT:Leimmet-muhtun ("noe"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
-SELECT:muhtun-sániid ("noe"i) (0 ("<muhtun>"i)) (1 n + pl) ;
-SELECT:muhtun-sániid ("noe"i) (0 ("<muhtun>"i)) (2 n + pl) ;
-SELECT:Leimmet-muhtun ("noe"i) (0 ("<muhtin>"i)) (-1 LEAT + pl) ;
-SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i)) (1 n + pl) ;
-SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i)) (2 n + pl) ;
+SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
+SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (1 n + pl) ;
+SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (2 n + pl) ;
+SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtin>"i)) (-1 LEAT + pl) ;
+SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i)) (1 n + pl) ;
+SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i)) (2 n + pl) ;
+SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i) LINK 0 pl) ;
 
 SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>"i) BARRIER clb OR v OR adv) ;
 SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>"i)) ;
