@@ -1827,7 +1827,11 @@ And then there are some categories like "month", with all the months.
       <list-item v="ønske" c="Lihkkobeaivve sávaldagat Káre Márehis."/>
     </def-list>
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
+      <list-item v="NSR"/>
+      <list-item v="blod"/>
+      <list-item v="paragraf"/>
       <list-item v="frykt"/>
+      <list-item v="praksis"/>
       <list-item v="husstand"/>
       <list-item v="fattigdom"/>
       <list-item v="avgrensning"/>
@@ -1952,18 +1956,23 @@ And then there are some categories like "month", with all the months.
       <list-item v="år"/>
     </def-list>
     <def-list n="loc-om-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="informasjon"/>
       <list-item v="tale"/>
       <list-item v="snakk"/>
       <list-item v="kontrakt"/>
       <list-item v="avtale"/>
+      <list-item v="bok"/>
+      <list-item v="artikkel"/>
     </def-list>
     <def-list n="loc-for-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="frykt"/>
+      <list-item v="tema"/>
     </def-list>
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="del"/>
+      <list-item v="sammendrag"/>
+      <list-item v="resultat"/>
       <list-item v="prosent"/>
-      <list-item v="del"/>
       <list-item v="NUMERAL"/>      <!-- special value set by numerals, see NUMERAL rule -->
     </def-list>
     <def-list n="loc-fra-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
@@ -1975,6 +1984,9 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-etter-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="mening"/>
       <list-item v="oppfatning"/>
+    </def-list>
+    <def-list n="loc-i-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="infeksjon"/>
     </def-list>
     <def-list n="ess-NIL" c="Essive noun phrases default to 'som' unless in this list">
       <list-item v="del"/>
@@ -2276,6 +2288,7 @@ And then there are some categories like "month", with all the months.
                 <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
                 <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_year"/></equal>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-i-head"/></in>
               </or>
               <not><in caseless="yes"><var n="previous-nhead"/><list n="loc-fra-head"/></in></not>
               <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
@@ -2306,9 +2319,10 @@ And then there are some categories like "month", with all the months.
               </let>
             </when>
             <when c="etter">
-              <test>
+              <test><or>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-etter-head"/></in>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-etter"/></in>
-              </test>
+              </or></test>
               <let>
                 <var n="caseprep"/><lit v="etter"/>
               </let>
