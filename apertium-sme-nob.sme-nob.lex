@@ -898,6 +898,7 @@ SELECT ("i løpet av") (0 ("<mielde>"i)) (0 po LINK -1 sem_time)  ;
 
 ## Don vieččat boaldinmuoraid dárbbu mielde.
 SELECT ("med") (0 ("<mielde>"i)) (0 adv)  ;
+SELECT ("med") (0 ("<mielde>"i)) (-1 ("<ahki>"i))  ;
 
 SELECT ("for å"i) IF (0 ("<vai>"i) + cs) (1 inf) ;
 SELECT:fallback ("for at"i) IF (0 ("<vai>"i) + cs) (NOT 1 inf) ;
