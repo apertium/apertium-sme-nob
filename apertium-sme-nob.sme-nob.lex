@@ -894,6 +894,7 @@ SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 # post: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
 SELECT ("etter") (0 ("<mielde>"i)) (0 po) (-1 ("<dárbu>"i) OR ("<miella>"i)) ;
 SELECT ("i løpet av") (0 ("<mielde>"i)) (0 po LINK -1 sem_time)  ;
+SELECT ("langs") (0 ("<mielde>"i)) (0 po) (-1 ("<šaldi>"i)) ;
 
 
 ## Don vieččat boaldinmuoraid dárbbu mielde.
@@ -971,6 +972,10 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
+SELECT ("nå"i) IF  (0 ("<joksat>"i)) (0* sem_veh) ;
+SELECT:fallback ("oppnå"i) IF  (0 ("<joksat>"i)) ;
+
+
 SELECT ("samle"i) IF  (0 ("<čoaggit>"i)) (0* ("<ruhta>"i) + acc OR ("<namma>"i) + acc OR ("<namma>"i) + gen) ;
 SELECT:fallback ("plukke"i) IF  (0 ("<čoaggit>"i)) ;
 
@@ -988,6 +993,9 @@ SELECT:fallback ("avskjede"i) IF  (0 ("<lihccut>"i)) ;
 
 SELECT ("utelate"i) IF  (0 ("<guođđit>"i)) (*1 ("<eret>")) ;
 SELECT:fallback ("forlate"i) IF  (0 ("<guođđit>"i)) ;
+
+SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (*1 prop) ;
+SELECT:fallback ("skildre"i) IF  (0 ("<govvet>"i)) ;
 
 
 SELECT:fallback ("oppleve"i) IF  (0 ("<vásihit>"i)) ;
@@ -1125,6 +1133,7 @@ SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (*1 sem_edu LINK 0 loc) ;
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR refl + acc OR refl + loc OR prfprc or COMMA OR a - attr) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (1 sem_hum + nom OR prop + nom) ;
+SELECT ("si"i) (0 ("<lohkat>"i)) (*1 ess) ;
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i)) (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)   ;
 ## Ovddeš bargi Yle Sámi Radios, Ánne Risten Juuso, lohká ahte Gárasavvonis livčče eará latnja leamaš Yle Sámi radio doaimmahussii. -  Den tidligere arbeideren Yle på Samelands Radio, Ánne Risten Juuso, hun sier at ...
@@ -1199,6 +1208,7 @@ SELECT:fallback ("rette# på"i) (0 ("<njulget>"i));
 SELECT:ta-en-tur ("ta en tur"i) (0 ("<fitnat>"i) + inf )  ; 
 SELECT:fallback ("være"i) (0 ("<fitnat>"i));
 
+SELECT:publisere ("lansere"i) (0 ("<almmuhit>"i) LINK *0 ("<skearru>"i) OR ("<girji>"i) OR ("<lávlla>"i))  ; 
 SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *-1 sem_txt OR (sem_rule) )  ; 
 SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK 1 sem_time )  ; 
 SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
@@ -1688,6 +1698,9 @@ SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 
 SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + ill) (-1 ("<bidjat>"i));
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
+
+SELECT:fallback ("skive"i) (0 ("<skearru>"i));
+
 
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *-1 ("<muitalit>"i) BARRIER SV-BOUNDARY);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);

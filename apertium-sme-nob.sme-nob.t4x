@@ -1304,8 +1304,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
 
     <rule comment="CHUNK: verb">
       <pattern><pattern-item n="verb"/></pattern>
-      <action>
+      <action><choose><when c="mus livččii ruhta">
+      <test><not><equal><clip pos="0" part="modality"/><lit-tag v="cond"/></equal></not></test>
         <let><clip pos="1" part="temps"/><clip pos="0" part="temps"/></let>
+      </when> </choose>
         <choose><when>
           <test><equal><clip pos="1" part="temps"/><lit-tag v="TD"/></equal></test>
           <let><clip pos="1" part="temps"/><lit-tag v="inf"/></let>

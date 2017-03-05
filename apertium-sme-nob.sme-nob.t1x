@@ -3132,7 +3132,10 @@ And then there are some categories like "month", with all the months.
             <test><equal><clip pos="2" side="sl" part="temps"/><lit-tag v="prfprc"/></equal></test>
             <choose>
             <when c="def">
-       <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal></test>
+            <test><or>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></equal>
+            </or></test>            
             <let><clip pos="2" side="tl" part="tags"/><lit-tag v="adj.pp.sg" /></let>
           </when>
           <otherwise c="ind">
