@@ -1785,6 +1785,7 @@ SELECT:fallback ("boplass"i) (0 ("<orohat>"i));
 SELECT ("topp"i) (0 ("<njunuš>"i))(1 ("<artista>"i) OR ("<listu>"i));
 SELECT:fallback ("tet"i) (0 ("<njunuš>"i));
 
+SELECT:fallback ("forsvar"i) (0 ("<suodjalus>"i));
 
 SELECT ("omkring"i) (0 ("<biras>"i) LINK 0 pl + gen) (1 ("<mánnu>"i));
 

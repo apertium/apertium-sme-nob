@@ -1502,6 +1502,15 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_hum_lang_time&gt;"/>
       <list-item v="&lt;sem_lang_tool&gt;"/>
     </def-list>
+    <def-list n="sem_lang_lem">
+      <list-item v="samisk"/>
+      <list-item v="norsk"/>
+      <list-item v="finsk"/>
+      <list-item v="nordsamisk"/>
+      <list-item v="sørsamisk"/>
+      <list-item v="lulesamisk"/>
+      <list-item v="enaresamisk"/>
+    </def-list>
 
 
     <def-list n="sem_domain">
@@ -2467,6 +2476,7 @@ And then there are some categories like "month", with all the months.
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalahttit"/></equal></not>
+                    <not><in caseless="yes"><var n="previous-nhead"/><list n="sem_lang_lem"/></in></not>
                   </and>
                     <equal><var n="main-verb-sl"/><lit v="bidjat"/></equal>
                 </or>
