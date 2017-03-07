@@ -2251,7 +2251,9 @@ And then there are some categories like "month", with all the months.
       </let>
       <choose>
         <when c="på when loc">
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal></test>
+          <test><and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+           <equal><clip pos="1" side="sl" part="hab"/><lit v=""/></equal>
+          </and></test>
           <let>
             <var n="caseprep"/><lit v="på"/>
           </let>
