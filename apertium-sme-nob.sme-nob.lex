@@ -829,7 +829,7 @@ SELECT ("mye"i) (0 ("<olu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n
 SELECT:fallback ("mange"i) (0 ("<olu>"i)) ;
 
 
-SELECT ("bak"i) (0 ("<duohken>"i) LINK -1 sem_build OR sem_plc - (top)) ;
+SELECT ("bak"i) (0 ("<duohken>"i) LINK -1 sem_build OR sem_plc - (top) OR ("<lohku>"i)) ;
 SELECT:fallback ("avhengig av"i) (0 ("<duohken>"i)) ;
 
 SELECT ("om"i) (0 ("<alde>"i) OR ("<nalde>"i) LINK *-2 ("<nággu>"i) OR ("<gilvu>"i) OR ("<gilvalit>"i) OR ("<nágget>"i) OR ("<riidu>"i) OR ("<riidalit>"i) BARRIER SV-BOUNDARY) ;
