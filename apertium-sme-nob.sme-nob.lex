@@ -2054,7 +2054,7 @@ SELECT ("til"i) (0 ("<vuhtii>"i)) (*-1 ("<váldit>"i)) ;
 
 SELECT:fallback ("slik"i) (0 ("<nu>"i) LINK -1 ("<ja>"i)) ;     # Ja nu leat sii
 SELECT ("til rette for"i) (0 ("<nu>"i)) (-1 ("<dilálašvuohta>"i)) (1 ("<ahte>"i)) ;
-SELECT ("så"i) (0 ("<nu>"i)) (1 a or ind or ("<galle>"i)) ; # dat skuvla nu johtil ahte
+SELECT ("så"i) (0 ("<nu>"i)) (1 a or ind or ("<galle>"i) or ("<gealdagas>"i)) ; # dat skuvla nu johtil ahte
 SELECT:så-langt-som ("så"i) (0 ("<nu>"i)) (1 adv) (2 cs) ;
 SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 
