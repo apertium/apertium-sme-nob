@@ -995,6 +995,7 @@ SELECT ("utelate"i) IF  (0 ("<guođđit>"i)) (*1 ("<eret>")) ;
 SELECT:fallback ("forlate"i) IF  (0 ("<guođđit>"i)) ;
 
 SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (*1 prop) ;
+SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (1 ("<:>")) ;
 SELECT:fallback ("skildre"i) IF  (0 ("<govvet>"i)) ;
 
 
@@ -1765,6 +1766,10 @@ SELECT:fallback ("grunn"i) (0 ("<sivva>"i));
 
 SELECT ("leting"i) (0 ("<ohcan>"i) LINK -1 ("<diehtu>"i));
 SELECT:fallback ("søknad"i) (0 ("<ohcan>"i));
+
+SELECT ("stolt av"i) (0 ("<rápmi>"i) LINK 0 loc);
+SELECT:fallback ("ros"i) (0 ("<rápmi>"i));
+
 
 SELECT ("antall"i) (0 ("<lohku>"i) LINK -1 sem_hum + pl) ;
 SELECT:fallback ("tall"i) (0 ("<lohku>"i));
