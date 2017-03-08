@@ -1343,6 +1343,7 @@ And then there are some categories like "month", with all the months.
 
   <section-def-vars>
     <def-var n="esubj"           c="tell t3x that this verb takes existential subject. sometimes."/>
+    <def-var n="adv_lem"           c="adverb lemma"/>
     <def-var n="n_lem"           c="noun lemma"/>
     <def-var n="v_lem"           c="verb lemma"/>
     <def-var n="n_nbr"           c="noun number"/>
@@ -4462,49 +4463,49 @@ And then there are some categories like "month", with all the months.
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <choose>
-        <when>
-        <test>
-        <equal><clip pos="2" side="sl" part="lemh"/><lit v="beallai"/></equal>
-        </test>
-         <let><var n="tmp"/><lit v="til"/></let>
-         </when>
-        <when>
-        <test><or>
-        <equal><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
-        <equal><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
-        </or></test>
-         <let><var n="tmp"/><lit v="fra"/></let>
-         </when>
-         <otherwise>
-         <let><var n="tmp"/><lit v="på"/></let>
-         </otherwise></choose>
+          <when>
+            <test>
+              <equal><clip pos="2" side="sl" part="lemh"/><lit v="beallai"/></equal>
+            </test>
+            <let><var n="caseprep"/><lit v="til"/></let>
+          </when>
+          <when>
+            <test><or>
+              <equal><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+              <equal><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+            </or></test>
+            <let><var n="caseprep"/><lit v="fra"/></let>
+          </when>
+          <otherwise>
+            <let><var n="caseprep"/><lit v="på"/></let>
+        </otherwise></choose>
         <choose>
-        <when>
-        <test><and>
-        <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
-        <equal><clip pos="1" side="tl" part="lemh"/><lit v="den"/></equal></and>
-        </test>
-         <let><clip pos="1" side="tl" part="tags"/><lit-tag v="det.dem.m.sg"/></let>
-         </when>
-        <when>
-        <test>
-        <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
-        </test>
-         <let><clip pos="1" side="tl" part="tags"/><lit-tag v="det.dem.un.sg.def"/></let>
-         </when>
-        <when>
-        <test>
-        <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.pers"/></equal>
-        </test>
-         <let><clip pos="1" side="tl" part="tags"/><lit-tag v="det.pos.m.sg"/></let>
-         </when>
-        <when>
-        <test>
-        <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>
-        </test>
-         <let><clip pos="1" side="tl" part="tags"/><lit-tag v="adj.sint.pst.un.sp.def"/></let>
-         </when>
-       </choose>
+          <when>
+            <test><and>
+              <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="den"/></equal></and>
+            </test>
+            <let><clip pos="1" side="tl" part="tags"/><lit-tag v="det.dem.m.sg"/></let>
+          </when>
+          <when>
+            <test>
+              <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+            </test>
+            <let><clip pos="1" side="tl" part="tags"/><lit-tag v="det.dem.un.sg.def"/></let>
+          </when>
+          <when>
+            <test>
+              <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.pers"/></equal>
+            </test>
+            <let><clip pos="1" side="tl" part="tags"/><lit-tag v="det.pos.m.sg"/></let>
+          </when>
+          <when>
+            <test>
+              <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>
+            </test>
+            <let><clip pos="1" side="tl" part="tags"/><lit-tag v="adj.sint.pst.un.sp.def"/></let>
+          </when>
+        </choose>
         <out>
           <chunk name="adv">
             <tags>
@@ -4513,19 +4514,19 @@ And then there are some categories like "month", with all the months.
               <tag><clip pos="1" side="sl" part="mode"/></tag>
             </tags>
             <lu>
-				<var n="tmp"/>
-				<lit-tag v="pr"/>
-            <lit v="$"/>
-               <b pos="1"/>
-            <lit v="^"/>
+              <var n="caseprep"/>
+              <lit-tag v="pr"/>
+              <lit v="$"/>
+              <b pos="1"/>
+              <lit v="^"/>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="tags"/>
-            <lit v="$"/>
-               <b pos="1"/>
-            <lit v="^"/>
-				<lit v="siden"/>
-				<lit-tag v="adv"/>
-           </lu>
+              <lit v="$"/>
+              <b pos="1"/>
+              <lit v="^"/>
+              <lit v="siden"/>
+              <lit-tag v="adv"/>
+            </lu>
           </chunk>
         </out>
       </action>
@@ -4945,12 +4946,12 @@ And then there are some categories like "month", with all the months.
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-      <choose><when><test>
-      <equal><clip pos="1" side="sl" part="lemh"/><lit v="dát"/></equal></test>
-        <let><var n="tmp"/><lit v="her"/></let></when>
-       <otherwise>
-        <let><var n="tmp"/><lit v="av det"/></let>
-       </otherwise></choose>
+        <choose><when><test>
+          <equal><clip pos="1" side="sl" part="lemh"/><lit v="dát"/></equal></test>
+          <let><var n="adv_lem"/><lit v="her"/></let></when>
+          <otherwise>
+            <let><var n="adv_lem"/><lit v="av det"/></let>
+        </otherwise></choose>
         <out>
           <chunk name="adv" case="caseFirstWord">
             <tags>
@@ -4959,7 +4960,7 @@ And then there are some categories like "month", with all the months.
               <tag><clip pos="1" side="sl" part="mode"/></tag>
             </tags>
             <lu>
-              <var n="tmp"/>
+              <var n="adv_lem"/>
               <lit-tag v="adv"/>
             </lu>
           </chunk>
