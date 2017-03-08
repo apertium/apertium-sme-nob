@@ -1759,6 +1759,7 @@ SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIE
 SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
 SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) BARRIER SV-BOUNDARY);
+SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord);
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
 SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
@@ -1942,6 +1943,9 @@ SELECT:fallback ("slutt"i) (0 ("<loahppa>"i)) ;
 
 SELECT:fallback ("hovedforslag"i) (0 ("<váldoevttohus>"i)) ;
 
+SELECT ("kø"i) (0 ("<ráidu>"i) LINK *0 ("<vuordit>"i) OR ("<čuožžut>"i)) ;
+SELECT:fallback ("serie"i) (0 ("<ráidu>"i)) ;
+
 
 # Based on frequency in parallel text:
 SELECT ("áigodat"i) (0 ("<periode>"i));
@@ -2075,6 +2079,9 @@ SELECT:fallback ("muligens"i) (0 ("<vejolaččat>"i)) ;
 
 SELECT ("hva"i) (0 ("<manin>"i) LINK *1 ("<gohčodit>"i)) ;
 SELECT:fallback ("hvorfor"i) (0 ("<manin>"i)) ;
+
+SELECT ("halvferdig"i) (0 ("<gaskan>"i) LINK *-1 ("<guođđit>"i) OR ("<vuolgit>"i)) ;
+SELECT:fallback ("sammen"i) (0 ("<gaskan>"i)) ;
 
 
 # Based on frequency in parallel text:
