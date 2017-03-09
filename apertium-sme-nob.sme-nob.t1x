@@ -2956,6 +2956,7 @@ And then there are some categories like "month", with all the months.
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="a_acr"/><lit-tag v="acr"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
+            
             <not><equal><clip pos="1" side="sl" part="ext"/><lit-tag v="←ext→"/></equal></not> <!-- Lene added -->
             <not><and>
               <equal><clip pos="1" side="sl" part="lemh"/><lit v="ságat"/></equal>
@@ -3593,6 +3594,38 @@ And then there are some categories like "month", with all the months.
             </chunk>
           </out>
         </when>
+        <when c="tl PoS is det ">
+          <test><and>
+            <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
+            <not><equal><clip pos="1" side="tl" part="a_det"/><lit v=""/></equal></not>
+          </and></test>
+
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                 <tag><lit-tag v="SN"/></tag>
+                 <tag><var n="c_syn"/></tag>
+	             <tag><clip pos="1" side="sl" part="hab"/></tag>
+                 <tag><clip pos="1" side="tl" part="pers"/></tag>
+                 <tag><clip pos="1" side="tl" part="gen"/></tag>
+                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                 <tag><clip pos="1" side="sl" part="case"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <clip pos="1" side="tl" part="pers"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <clip pos="1" side="tl" part="case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+
         <when c="tl PoS is an adj.sg/pl (ie. V.Der2.Actor.N, but bidix changed lemma PoS to an adj)
                  Just output pst ind; TODO: different bidix verb pardef for these PoS changes.">
           <test><and>
@@ -4933,8 +4966,8 @@ And then there are some categories like "month", with all the months.
               <tag><clip pos="3" side="tl" part="a_conj"/></tag>
             </tags>
             <lu>
-              <lit v="mens"/>
-              <lit-tag v="cnjsub"/>
+              <lit v="i forhold til"/>
+              <lit-tag v="pr"/>
             </lu>
           </chunk>
         </out>
