@@ -66,7 +66,7 @@ LIST pos = pos ;
 LIST coll = coll ;
 LIST nomag = nomag ;
 LIST g3 = g3 ;
-LIST prop = prop ;
+LIST prop = np ;
 
 #!! * Sets for Semantic tags
 # -------------
@@ -840,6 +840,7 @@ SELECT:fallback ("på"i) (0 ("<alde>"i) OR ("<nalde>"i)) ;
 
 
 SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0 cs) ;
+SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (*-1 ("<seammá>"i) BARRIER SV-BOUNDARY) ;
 
 SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 COPULAS LINK -1 (a nom)) ;
@@ -1072,7 +1073,7 @@ SELECT:fallback ("få"i) (0 ("<beassat>"i));
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
 SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst OR ("<veahkki>"i));
 SELECT ("be"i) (0 ("<bivdit>"i) LINK 1 ("<ahte>"i) OR ("<veahkki>"i));
-SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
+SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*fanas>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) OR ("<birrajándora>"r) OR sem_time OR sem_plc );
 SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
 SELECT:fallback ("be"i) (0 ("<bivdit>"i));
 SELECT:fallback ("jeger"i) (0 ("<bivdi>"i));
@@ -1254,6 +1255,7 @@ SELECT:fallback ("anta"i) (0 ("<navdit>"i));
 SELECT:fallback ("etablere"i) (0 ("<ásahit>"i));
 
 SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 ("<ahte>"i) OR adv OR a OR inf OR actio);
+SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 sem_hum OR prop);
 SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
 
 SELECT:ringe ("ringe"i) (0 ("<čuodjat>"i) LINK *0 ("<telefovdna>"i)) ;
@@ -1680,6 +1682,9 @@ SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 SELECT ("middel"i) (0 ("<doarjja>"i)) (-1 ("<ruoná>"i)) ;
 SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
 
+SELECT ("sør"i) (0 ("<mátta>"i)) (1 prop or sem_plc) ;
+SELECT:fallback ("rot"i) (0 ("<mátta>"i))  ;	
+
 
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>"i)) ;
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY) ;	
@@ -1717,6 +1722,8 @@ SELECT:fallback ("Sverige"i) (0 ("<Ruošša>"i));
 SELECT:fallback ("hvor mange"i) (0 ("<gallis>"i) + n);
 
 SELECT:fallback ("avfall"i) (0 ("<bázahus>"i));
+
+SELECT:fallback ("fiskekort"i) (0 ("<bivdolohpi>"i));
 
 
 SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
@@ -2049,6 +2056,10 @@ SELECT:fallback ("ganske"i) (0 ("<oba>"i)) ;
 SELECT:ge ("heller"i) (0 ("<ge>"i)) (*-1 neg) ;
 SELECT:fallback ("også"i) (0 ("<ge>"i)) ;
 
+SELECT ("ene sin"i) (0 ("<nubbi>"i) + gen) (*1 ("<nubbi>"i)) ;
+SELECT ("andre sin"i) (0 ("<nubbi>"i) + gen) (*-1 ("<nubbi>"i)) ;
+SELECT:fallback ("annen"i) (0 ("<nubbi>"i)) ;
+
 
 SELECT:hans-egen ("egen"i) (0 ("<ieš>"i)) (-1 pron + pers + gen) ;
 # Dá lea mu iežan girji => Her er min egen bok
@@ -2113,6 +2124,8 @@ SELECT:fallback ("sammen"i) (0 ("<gaskan>"i)) ;
 
 SELECT:fallback ("da"i) (0 ("<fal>"i)) ;
 
+SELECT:fallback ("like"i) (0 ("<seammá>"i) LINK 1 ("<ollu>"i) OR ("<olu>"i)) ;
+SELECT:fallback ("samme"i) (0 ("<seammá>"i)) ;
 
 # Based on frequency in parallel text:
 SELECT ("lenger"i) (0 ("<šat>"i)) ;
@@ -2195,6 +2208,10 @@ SELECT ("forrige"i) (0 ("<ovddit>"i comp)) (1 n + sg);
 
 SELECT ("trygg"i) (0 ("<luohttevaš>"i)) (0 a) (NOT 0 n);
 SELECT:fallback ("tillitsfull"i) (0 ("<luohttevaš>"i));
+
+SELECT ("rik"i) (0 ("<ruđalaš>"i) LINK 1 sem_hum);
+SELECT:fallback ("finansiell"i) (0 ("<ruđalaš>"i));
+
 
 IFF ("-årig"i) (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
 
