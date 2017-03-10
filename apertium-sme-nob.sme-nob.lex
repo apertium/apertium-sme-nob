@@ -990,6 +990,10 @@ SELECT:fallback ("eie"i) IF  (0 ("<oamastit>"i)) ;
 SELECT ("innvie"i) IF  (0 ("<vihahit>"i)) (*0 ("<áltár>") LINK 0 nom OR acc) ;
 SELECT:fallback ("vie"i) IF  (0 ("<vihahit>"i)) ;
 
+SELECT ("bli"i) IF  (0 ("<boahtit>"i)) (1 ("<ovtta oaivilii>")) ;
+SELECT:fallback ("komme"i) IF  (0 ("<boahtit>"i)) ;
+
+
 SELECT:fallback ("lukke"i) IF  (0 ("<giddet>"i)) ;
 
 SELECT:fallback ("avskjede"i) IF  (0 ("<lihccut>"i)) ;
@@ -1778,7 +1782,7 @@ SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIE
 SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
 SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) BARRIER SV-BOUNDARY);
-SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord);
+SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i));
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
 SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
@@ -2055,7 +2059,7 @@ SELECT:oss-selv ("selv"i) (0 ("<ieš>"i) LINK 0 acc) (-1 pron + pers + acc) ;
 SELECT:til-meg-selv ("selv"i) (0 ("<ieš>"i) LINK 0  ill) (-1 pers + ill) ;
 SELECT:på-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 ill) (NOT -1 pers + ill) ;
 
-SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 acc) (NOT -1 pron + pers + acc) (NOT *1 v) ;
+SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 acc) (NOT -1 pron + pers + acc) (NOT *1 v BARRIER S-BOUNDARY) ;
 
 SELECT:med-deg pron (0 ("<ieš>"i)) (0 @→P OR @P←) ;
 # Váldde biergasiid iežat fárrui → Ta sakene med deg
