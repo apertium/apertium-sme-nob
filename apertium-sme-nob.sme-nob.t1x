@@ -1967,6 +1967,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="Østlandet"/>
       <list-item v="øy"/>
       <list-item v="liste"/>
+      <list-item v="side"/>
     </def-list>
     <def-list n="loc-NIL" c="Locative noun phrases default to 'i' unless in this list">
       <list-item v="uke"/>
@@ -2043,6 +2044,7 @@ And then there are some categories like "month", with all the months.
     </def-list>
    <def-list n="ill-på-head">
       <list-item v="syn"/>
+      <list-item v="innflytelse"/>
     </def-list>
     <def-list n="gen-av-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="forfatter"/>
@@ -2161,8 +2163,10 @@ And then there are some categories like "month", with all the months.
       <list-item v="samiskkunnskap"/>
       <list-item v="verden"/>
       <list-item v="støtte"/>
-      <list-item v="kofte"/>
+      <list-item v="kofte"/> <!-- maybe -->
       <list-item v="hjemmebane"/>
+      <list-item v="innflytelse"/>
+      <list-item v="lyst"/>
     </def-list>
   </section-def-lists>
 
@@ -3052,8 +3056,6 @@ And then there are some categories like "month", with all the months.
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
             <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
-<!--            <equal><clip pos="2" side="tl" part="lemh"/><lit v="ene sin"/></equal>
-            <equal><clip pos="2" side="tl" part="lemh"/><lit v="andre sin"/></equal>  we want den ene sin seier -->
             <equal><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>
             <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="comp"/></equal>
             <and>
@@ -7502,7 +7504,12 @@ And then there are some categories like "month", with all the months.
             <call-macro n="out_nom"><with-param pos="1"/></call-macro>
           </when>
           <when>
-            <test><not><equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal></not></test> <!-- how this ? -->
+            <test><or>
+            <not><equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal></not>
+             <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="sup"/></equal>
+           </or></test> <!-- how this ? -->
+
+            
             <let><var n="defnes"/><lit-tag v="def"/></let>
             <out>
               <chunk name="pre_adj" case="caseFirstWord">
@@ -8556,6 +8563,32 @@ And then there are some categories like "month", with all the months.
         <!-- for NOM.CMP -->
         <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
+
+        <!-- for possessed NOM -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="C[] nom-adj.cmp nom.gen nom_head" c="Sámi allaskuvlla neahtta-TV sáddagat rabasbeaivvi dilálašvuođas">
+      <pattern>
+        <pattern-item n="nom-adj.cmp"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <!-- for NOM.CMP -->
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
+
+        <!-- for NOM.GEN -->
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
+
 
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>

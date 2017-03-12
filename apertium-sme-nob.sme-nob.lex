@@ -915,6 +915,7 @@ SELECT ("mens"i) IF (0 ("<bodda>"i) LINK -1 ("<dat>") LINK 0 gen) ;
 SELECT ("helt"i) IF (0 ("<gitta>"i) + @→A OR ("<gitta>"i) + @→N) ;
 SELECT ("inntil"i) IF (0 ("<gitta>"i) + @→Num) ;
 SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
+SELECT:fallback ("lukket"i) IF (0 ("<gitta>"i) LINK *0 ("<čalbmi>"i))  ;
 SELECT:fallback ("stenge"i) IF (0 ("<gitta>"i))  ;
 
 SELECT:fallback ("slik"i) IF (0 ("<ná>"i))  ;
@@ -1374,6 +1375,7 @@ SELECT ("avdeling"i) (0 ("<ossodat>"i)); # parkorp har masse «avdeling»-døme,
 
 SELECT ("grad"i) (0 ("<muddu>"i)) (NOT -1 ord) ;
 
+SELECT ("arrangement"i) (0 ("<dilálašvuohta>"i)) (-1 sem_time);
 SELECT ("forhold"i) (0 ("<dilálašvuohta>"i)) (NOT -1 ("<virggálaš>"i)) (NOT -2 ("<virggálaš>"i));
 SELECT:fallback ("situasjon"i) (0 ("<dilálašvuohta>"i)) ;
 
@@ -1477,6 +1479,7 @@ SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK *-1 ("<váldit>"i)) ;
 SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ; #?
 # máŋgga oktavuođas => i mange sammenhenger
 # máŋggain oktavuođain => i mange sammenhenger
+SELECT ("forhold"i) (0 ("<oktavuohta>"i) LINK -1 ("<lagaš>"i) OR ("<lagas>"i)) ; #?
 SELECT:fallback ("forbindelse"i) (0 ("<oktavuohta>"i));
 
 SELECT ("folk"i) (0 ("<olmmoš>"i) LINK 0 pl) ;
@@ -1976,6 +1979,9 @@ SELECT:fallback ("hovedforslag"i) (0 ("<váldoevttohus>"i)) ;
 SELECT ("kø"i) (0 ("<ráidu>"i) LINK *0 ("<vuordit>"i) OR ("<čuožžut>"i)) ;
 SELECT:fallback ("serie"i) (0 ("<ráidu>"i)) ;
 
+SELECT ("retning"i) (0 ("<guovlu>"i) + ill LINK -1 ("heajos")) ;
+SELECT:fallback ("område"i) (0 ("<guovlu>"i)) ;
+
 
 # Based on frequency in parallel text:
 SELECT ("áigodat"i) (0 ("<periode>"i));
@@ -1983,7 +1989,6 @@ SELECT ("sameby"i) (0 ("<čearru>"i));
 SELECT ("urin"i) (0 ("<gužža>"i)) ;
 SELECT ("måned"i) (0 ("<mánnu>"i)) ;
 SELECT ("ting"i) (0 ("<diggi>"i)) ;
-SELECT ("område"i) (0 ("<guovlu>"i)) ;
 SELECT ("grunntanke"i) (0 ("<vuođđojurdda>"i)) ;
 
 

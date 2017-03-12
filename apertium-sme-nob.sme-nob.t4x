@@ -991,10 +991,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <call-macro n="clean_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
         </when>
         <when>
-          <test><and>
+          <test><or>
+          <and>
             <not><equal><clip pos="2" part="a_nom"/><lit v=""/></equal></not>
             <equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal>
-          </and></test>
+          </and>
+            <equal><clip pos="2" part="lemh"/><lit v="ene sin"/></equal>
+         </or></test>
           <let><clip pos="2" part="art"/><lit v=""/></let>
         </when>
         <when>
