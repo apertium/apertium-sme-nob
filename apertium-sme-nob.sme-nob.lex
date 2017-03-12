@@ -1692,7 +1692,7 @@ SELECT:fallback ("rot"i) (0 ("<mátta>"i))  ;
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>"i)) ;
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY) ;	
 
-SELECT ("samisk"i) (0 ("<sápmi>"i) LINK 0 sg + gen);
+SELECT ("samisk"i) (0 ("<sápmi>"i) LINK 0 sg + gen)(NEGATE -1 num LINK NOT 2 n + sg + gen);
 SELECT ("sørsamisk"i) (0 ("<máttasápmi>"i) + sg + gen);
 SELECT ("sørsamisk"i) (0 ("<lullisápmi>"i) + sg + gen);
 SELECT ("pitesamisk"i) (0 ("<bihtonsápmi>"i) + sg + gen);
