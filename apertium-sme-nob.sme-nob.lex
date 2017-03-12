@@ -824,6 +824,7 @@ SELECT:fallback-kunne (cond) ;
 
 
 SELECT ("mye"i) (0 ("<ollu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
+SELECT ("mye"i) (0 ("<ollu>"i) LINK 1 comp) ;
 SELECT:fallback ("mange"i) (0 ("<ollu>"i)) ;
 SELECT ("mye"i) (0 ("<olu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
 SELECT:fallback ("mange"i) (0 ("<olu>"i)) ;
@@ -1022,6 +1023,7 @@ SELECT:fallback ("legge# opp til"i) IF  (0 ("<láhčit>"i)) ;
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
 SELECT:dego ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
+SELECT:dego ("synes"i) (0 ("<orrut>"i)) (2 ("<miella>"i) + loc OR ("<mielas>"i)) ;
 SELECT:maid ("synes"i) (0 ("<orrut>"i)) (-1 ("<mii>"i)) ;
 SELECT:jaska ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>"i)) ;
 SELECT:bli ("bli"i) (0 ("<orrut>"i)) (-1 ("<go>"i)) ;
@@ -1190,6 +1192,9 @@ SELECT:fallback ("gå"i) (0 ("<mannat>"i));
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_org OR pers ) ;
 ## Máhtte máksá guokte ruvnnu.
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 loc BARRIER NOT-ADV-PCLE) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r)) ;
+
 
 SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 ("<ahte>"i));
 SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 COMMA) (2 ("<ahte>"i));
@@ -1409,6 +1414,7 @@ SELECT:fallback ("pitesame"i) IF (0 ("<fuomášupmi>"i)) ;
 
 # luohkká 0 = bakke, 1 = klasse
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK 1 ("<oahpaheaddji>"i));
+SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 ("<deaddu>"i));
 
 
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 num OR ord OR @→N OR sem_edu);
