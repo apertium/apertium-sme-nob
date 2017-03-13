@@ -1694,6 +1694,9 @@ SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
 SELECT ("sør"i) (0 ("<mátta>"i)) (1 prop or sem_plc) ;
 SELECT:fallback ("rot"i) (0 ("<mátta>"i))  ;	
 
+SELECT ("press"i) (0 ("<deaddu>"i) + acc) (*-1 ("<bidjat>"i) BARRIER SV-BOUNDARY) ;
+SELECT:fallback ("tyngde"i) (0 ("<deaddu>"i)) ;
+
 
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>"i)) ;
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY) ;	
