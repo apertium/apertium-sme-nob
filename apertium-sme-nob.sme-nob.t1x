@@ -209,6 +209,12 @@ And then there are some categories like "month", with all the months.
     <def-cat n="num">
       <cat-item tags="num.*"/>
     </def-cat>
+    <def-cat n="lpar">
+      <cat-item tags="lquot"/>
+    </def-cat>
+    <def-cat n="rpar">
+      <cat-item tags="rquot"/>
+    </def-cat>
     <def-cat n="num-year">
       <cat-item tags="num.sem_year.*"/>
     </def-cat>
@@ -3037,9 +3043,10 @@ And then there are some categories like "month", with all the months.
           <let><var n="defnes"/><lit-tag v="def"/></let>
         </when>
         <when>
-          <test><equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></test>
+          <test><or><equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@HNOUN"/></equal>
+          <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in></or></test>
           <let><var n="defnes"/><lit-tag v="ind"/></let>
-        </when>
+       </when>
         <when>
           <test><and>
             <or>
@@ -8719,6 +8726,38 @@ And then there are some categories like "month", with all the months.
           </chunk>
         </out>
         <let><var n="previous-nhead"/><lit v="NUMERAL"/></let>
+      </action>
+    </rule>
+
+    <rule comment="C[] lpar num rpar" c="Aslaksen (53) lea bajásšaddan Hilláguras Deanus">
+      <pattern>
+        <pattern-item n="lpar"/>
+        <pattern-item n="num"/>
+        <pattern-item n="rpar"/>
+      </pattern>
+      <action>
+        <out>
+          <var n="caseprep"/>
+          <chunk name="app" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+                <clip pos="1" side="tl" part="whole"/>
+            </lu>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_num"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <lu>
+                <clip pos="3" side="tl" part="whole"/>
+            </lu>
+         </chunk>
+        </out>
       </action>
     </rule>
 

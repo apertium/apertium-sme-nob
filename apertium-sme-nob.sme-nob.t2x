@@ -56,6 +56,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SN"/>
       <cat-item tags="SN.*"/>
     </def-cat>
+    <def-cat n="app">
+      <cat-item lemma="app" tags="SN"/>
+    </def-cat>
     <def-cat n="SN_rN">
       <cat-item tags="SN.@→N.*"/>
     </def-cat>
@@ -848,6 +851,36 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
             <clip pos="2" part="content"/>
             <b pos="2"/>
             <clip pos="3" part="content"/>
+            <lit v="}"/>
+            <clip pos="1" part="lemq"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: SUBJr app" c="Aslaksen (53) lea bajásšaddan Hilláguras Deanus">
+      <pattern>
+        <pattern-item n="SUBJr"/>
+        <pattern-item n="app"/>
+      </pattern>
+      <action>
+      <let><var n="c_tags"/><clip pos="1" part="tags"/></let>
+      <let>
+        <var n="c_name"/>
+        <concat>
+          <clip pos="1" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="2" part="lemh"/>
+        </concat>
+      </let>
+        <out>
+          <chunk>
+            <var n="c_name"/>
+            <var n="c_tags"/>
+            <lit v="{"/>
+            <clip pos="1" part="content"/>
+            <b pos="1"/>
+            <clip pos="2" part="content"/>
             <lit v="}"/>
             <clip pos="1" part="lemq"/>
           </chunk>
