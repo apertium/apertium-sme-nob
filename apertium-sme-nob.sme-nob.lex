@@ -2223,6 +2223,10 @@ SELECT ("forrige"i) (0 ("<ovddit>"i comp)) (1 n + sg);
 SELECT ("trygg"i) (0 ("<luohttevaš>"i)) (0 a) (NOT 0 n);
 SELECT:fallback ("tillitsfull"i) (0 ("<luohttevaš>"i));
 
+SELECT ("ledig"i) (0 ("<rabas>"i)) (1 ("<.*virgi>"ri));
+SELECT:fallback ("åpen"i) (0 ("<rabas>"i));
+
+
 SELECT ("rik"i) (0 ("<ruđalaš>"i) LINK 1 sem_hum);
 SELECT:fallback ("finansiell"i) (0 ("<ruđalaš>"i));
 
