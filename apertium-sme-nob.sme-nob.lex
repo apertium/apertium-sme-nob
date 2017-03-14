@@ -843,7 +843,7 @@ SELECT:fallback ("på"i) (0 ("<alde>"i) OR ("<nalde>"i)) ;
 SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0 cs) ;
 SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (*-1 ("<seammá>"i) BARRIER SV-BOUNDARY) ;
 
-SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) LINK 0 adv) ;
+SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) OR ("<dan dihte>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 COPULAS LINK -1 (a nom)) ;
 #SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 a - comp) ;
 ## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
@@ -2125,8 +2125,8 @@ SELECT:fallback ("fra"i) (0 ("<eret>"i)) ;
 
 SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
 
-SELECT ("fordi"i) (0 ("<dan dihtii>"i) LINK 1 ("<go>"i)) ;
-SELECT:fallback ("derfor"i) (0 ("<dan dihtii>"i)) ;
+SELECT ("fordi"i) (0 ("<dan dihte>"i) LINK 1 ("<go>"i)) ;
+SELECT:fallback ("derfor"i) (0 ("<dan dihte>"i)) ;
 
 
 SELECT ("mulig"i) (0 ("<vejolaččat>"i) LINK -1 ("<go>"i)) ;
