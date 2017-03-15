@@ -68,6 +68,20 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
 <def-cat n="pre_pre_pre_nom_conj_pre_nom">        <cat-item name="pre_pre_pre_nom_conj_pre_nom"/></def-cat>
 <def-cat n="pre_pre_pre_nom_conj_pre_pre_nom">    <cat-item name="pre_pre_pre_nom_conj_pre_pre_nom"/></def-cat>
 <def-cat n="pre_pre_pre_nom_conj_pre_pre_pre_nom"><cat-item name="pre_pre_pre_nom_conj_pre_pre_pre_nom"/></def-cat>
+    <!-- <def-cats: Trivial, SN, _nom_app (like _nom rules, just include the final _app) -->
+    <def-cat n="nom_app">
+<cat-item name="prn_app"/>
+<cat-item name="nom_app"/>
+    </def-cat>
+    <def-cat n="pre_nom_app">
+<cat-item name="pre_nom_app"/>
+    </def-cat>
+    <def-cat n="pre_pre_nom_app">
+<cat-item name="pre_pre_nom_app"/>
+    </def-cat>
+    <def-cat n="pre_pre_pre_nom_app">
+<cat-item name="pre_pre_pre_nom_app"/>
+    </def-cat>
     <!-- <def-cats: SA -->
     <def-cat n="adj">
 <cat-item name="adj"/>
@@ -977,12 +991,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         </when>
         <when>
           <test><or>
-          <and>
-            <not><equal><clip pos="2" part="a_nom"/><lit v=""/></equal></not>
-            <equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal>
-          </and>
+            <and>
+              <not><equal><clip pos="2" part="a_nom"/><lit v=""/></equal></not>
+              <equal><clip pos="2" part="nbr"/><lit-tag v="sp"/></equal>
+            </and>
             <equal><clip pos="2" part="lemh"/><lit v="ene sin"/></equal>
-         </or></test>
+          </or></test>
           <let><clip pos="2" part="art"/><lit v=""/></let>
         </when>
         <when>
@@ -1889,6 +1903,97 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <lu><clip pos="8" part="whole"/></lu>
           <b pos="8"/>
           <lu><clip pos="9" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <!-- <rules: Trivial, SN _app (where app is always three lu's) -->
+    <rule comment="CHUNK: nom_app">
+<pattern><pattern-item n="nom_app"/></pattern>
+      <action>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="1"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_nom_app">
+<pattern><pattern-item n="pre_nom_app"/></pattern>
+      <action>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_pre_nom_app">
+<pattern><pattern-item n="pre_pre_nom_app"/></pattern>
+      <action>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+          <b pos="5"/>
+          <lu><clip pos="6" part="whole"/></lu>
+        </out>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_pre_pre_nom_app">
+<pattern><pattern-item n="pre_pre_pre_nom_app"/></pattern>
+      <action>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="4"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
+          <b pos="5"/>
+          <lu><clip pos="6" part="whole"/></lu>
+          <b pos="6"/>
+          <lu><clip pos="7" part="whole"/></lu>
         </out>
       </action>
     </rule>
