@@ -1066,6 +1066,7 @@ SELECT:fallback ("arbeide"i) (0 ("<bargat>"i));
 #SELECT ("slippe") (0 ("<beassat>"i)) (1 ill) ; # (1 (der_nomact loc) OR (actio loc) OR ("<olggos>"i)) ;
 ## Mun bessen vuolgimis.
 SELECT ("komme") (0 ("<beassat>"i)) (1 ill OR DOHKO) ;
+SELECT ("komme") (0 ("<beassat>"i) LINK *1 ("<searvái>")) ;
 ## In beassan skuvlii dan beaivve.  Jeg kom meg ikke på skolen den dagen.
 ## Maiddái Ranghild Nystad beassá Sámediggái. Også RN kommer seg inn på Sametinget.
 ## Sii ledje gáibidan ahte son galgá beassat riikastivrii. Du hadde krevd at han skulle komme seg inn i landsstyret.

@@ -4291,7 +4291,7 @@ And then there are some categories like "month", with all the months.
           <let><var n="prn_gen"/><lit-tag v="un"/></let>
         </when></choose>
         <choose>
-          <when c="when prfprc or inf, then we get pers and nbr from aux">
+          <when c="when prfprc or inf, then we get pers and nbr from aux - p3 and pl">
             <test><and><or>
               <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="prfprc"/></equal>
               <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="inf"/></equal></or>
@@ -4301,6 +4301,18 @@ And then there are some categories like "month", with all the months.
             <let><var n="prn_gen"/><lit-tag v="un"/></let>
             <let><var n="prn_nbr"/><var n="vfin-nbr"/></let>
           </when>
+          <when c="when prfprc or inf, then we get pers and nbr from aux - p1 and p2">
+            <test><and><or>
+              <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="prfprc"/></equal>
+              <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="inf"/></equal></or>
+              <equal><var n="vfin-nbr"/><lit-tag v="sg"/></equal>
+              <not><equal><var n="vfin-pers"/><lit-tag v="p3"/></equal></not>
+              </and>
+            </test>
+            <let><var n="prn_pers"/><var n="vfin-pers"/></let>
+            <let><var n="prn_gen"/><lit-tag v="mf"/></let>
+            <let><var n="prn_nbr"/><var n="vfin-nbr"/></let>
+          </when>  
           <when c="form 'seg' has analysis p3.un.sp">
             <test><or>
               <equal><var n="prn_pers"/><lit v=""/></equal>
@@ -4313,7 +4325,7 @@ And then there are some categories like "month", with all the months.
         </choose>
         <out>
           <b/>
-          <chunk name="prn">
+          <chunk name="prn"> 
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><lit-tag v="@←OBJ"/></tag>
