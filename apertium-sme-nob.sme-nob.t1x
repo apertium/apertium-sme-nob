@@ -8421,7 +8421,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] num adj-sup">
+    <rule comment="C[] num adj-sup" c="son lea 10 buoremusa searvvis">
       <pattern>
         <pattern-item n="num"/>
         <pattern-item n="adj-sup"/>
@@ -8440,7 +8440,7 @@ And then there are some categories like "month", with all the months.
 
         <out>
           <var n="caseprep"/>
-          <chunk name="det_pre_adj" case="caseFirstWord">
+          <chunk name="pre_pre_adj" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SA"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
@@ -8451,7 +8451,7 @@ And then there are some categories like "month", with all the months.
               <tag><clip pos="2" side="sl" part="case"/></tag>
             </tags>
                 <lu>
-                  <lit v="den"/><lit-tag v="det.dem.nt.pl"/>
+                  <lit v="den"/><lit-tag v="det.dem.un.pl"/>
                 </lu>
                 <b/>
             <lu>
@@ -8465,7 +8465,7 @@ And then there are some categories like "month", with all the months.
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_adj"/>
-
+              <clip pos="2" side="tl" part="grau"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <lit-tag v="def"/>
