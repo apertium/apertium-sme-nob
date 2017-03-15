@@ -1482,6 +1482,7 @@ SELECT ("forbindelse"i) (0 ("<oktavuohta>"i) LINK 1 (sg loc) OR ill) ;
 SELECT ("forbindelse"i) (0 ("<oktavuohta>"i @←ADVL sg)) ;
 # dan oktavuođas go => i den forbindelse når
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK 0 (←ext→)) ;
+SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK -1 BOS LINK 2 EOS) ;
 #SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK 0 loc LINK -2 v) ;
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK *-1 ("<váldit>"i)) ;
 SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ; #?
@@ -2243,7 +2244,7 @@ SELECT:fallback ("mye"i) (0 ("<eanet>"i));
 # buorre:0 → bra, buorre:1→god , så god
 
 LIST IJ-TIME = "<beaivi>" "<eahket>" "<beassážat>" "<juovllat>" ;
-SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME) ;
+SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME OR po) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 ("<ođas>"i) LINK 1 ("<jahki>"i)) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
 ## Dat lei buorre girji (god)

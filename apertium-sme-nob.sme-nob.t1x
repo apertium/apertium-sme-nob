@@ -7513,13 +7513,19 @@ And then there are some categories like "month", with all the months.
             <let><var n="pre-nom"/><lit v=""/></let>
             <call-macro n="out_nom"><with-param pos="1"/></call-macro>
           </when>
-          <when>
+          <when c="buoremus = den beste">
             <test><or>
             <not><equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal></not>
              <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="sup"/></equal>
-           </or></test> <!-- how this ? -->
-
-            
+           </or></test> 
+         <choose><when c="son lea buoremusaid searvvis">
+          <test><equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="pl"/></equal></test>
+           <let><var n="tmp"/><lit-tag v="pl"/></let>            
+          </when>
+         <otherwise>
+          <let><var n="tmp"/><lit-tag v="sg"/></let>            
+         </otherwise>
+         </choose>  
             <let><var n="defnes"/><lit-tag v="def"/></let>
             <out>
               <chunk name="pre_adj" case="caseFirstWord">
@@ -7533,7 +7539,8 @@ And then there are some categories like "month", with all the months.
                   <tag><clip pos="1" side="sl" part="case"/></tag>
                 </tags>
                 <lu>
-                  <lit v="den"/><lit-tag v="det.dem.nt.sg"/>
+                  <lit v="den"/><lit-tag v="det.dem.nt"/>
+                  <var n="tmp"/>
                 </lu>
                 <b/>
                 <lu>
