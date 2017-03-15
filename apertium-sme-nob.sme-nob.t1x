@@ -160,6 +160,10 @@ And then there are some categories like "month", with all the months.
     <def-cat n="adj">
       <cat-item tags="adj.*"/>
     </def-cat>
+    <def-cat n="adj-sup">
+      <cat-item tags="adj.*.sup.*"/>
+      <cat-item tags="adj.sup.*"/>
+    </def-cat>
     <def-cat n="adj_attr">
       <cat-item tags="adj.ess.*"/>
       <cat-item tags="adj.*.ess.*"/>
@@ -8416,6 +8420,62 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+
+    <rule comment="C[] num adj-sup">
+      <pattern>
+        <pattern-item n="num"/>
+        <pattern-item n="adj-sup"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="clean_det"><with-param pos="1"/></call-macro>
+        <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_c_gen_nbr"><with-param pos="2"/></call-macro>
+        <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <let><var n="defnes"/><lit-tag v="def"/></let>
+
+        <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
+
+        <out>
+          <var n="caseprep"/>
+          <chunk name="det_pre_adj" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SA"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><var n="defnes"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><var n="c_gen"/></tag>
+              <tag><var n="c_nbr"/></tag>
+              <tag><clip pos="2" side="sl" part="case"/></tag>
+            </tags>
+                <lu>
+                  <lit v="den"/><lit-tag v="det.dem.nt.pl"/>
+                </lu>
+                <b/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
 
     <rule comment="C[] NOM.PROP_GEN NOM
                    –––––
