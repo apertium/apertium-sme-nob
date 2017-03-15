@@ -3309,6 +3309,16 @@ And then there are some categories like "month", with all the months.
           <let><var n="vfin-pers"/><clip pos="1" side="sl" part="pers"/></let>
           <let><var n="vfin-nbr"/><clip pos="1" side="sl" part="nbr"/></let>
         </when>
+        <when c="M[V] set fin-verb nbr and pers">
+          <test>
+            <and>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FMAINV"/></equal>
+              <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
+            </and>
+          </test>
+          <let><var n="vfin-pers"/><clip pos="1" side="sl" part="pers"/></let>
+          <let><var n="vfin-nbr"/><clip pos="1" side="sl" part="nbr"/></let>
+        </when>
       </choose>
     </def-macro>
 
