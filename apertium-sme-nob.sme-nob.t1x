@@ -2591,6 +2591,16 @@ And then there are some categories like "month", with all the months.
             </let>
           </when></choose>
         </when>
+        <when c="om acc">
+          <test><and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
+          <equal><var n="main-verb-tl"/><lit v="be"/></equal>
+         <equal><clip pos="1" side="tl" part="lemh"/><lit v="hjelp"/></equal>
+        </and>   </test>
+          <let>
+            <var n="caseprep"/><lit v="om"/>
+          </let>
+
+        </when>
         <when>
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></test>
           <choose>
@@ -4467,38 +4477,6 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
-<!--   <rule comment="C[DL] lex-bivdit lex-veahkki" c="bivdit veahki → be om hjelp"> this one will be solved another way
-      <pattern>
-        <pattern-item n="lex-bivdit"/>
-        <pattern-item n="lex-veahkki"/>
-      </pattern>
-      <action>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <call-macro n="set_verb-lemma"><with-param pos="1"/></call-macro>
-        <let><var n="pre-verb"/><lit v=""/></let>
-        <let><var n="c_name"/><lit v=""/></let>
-      <call-macro n="out_verb"><with-param pos="1"/></call-macro>
-        <out>
-          <chunk name="adv" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="ADV"/></tag>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="sl" part="mode"/></tag>
-            </tags>
-            <b pos="1"/>
-            <lu>
-              <lit v="om"/>
-              <lit-tag v="pr"/>
-            </lu>
-            <b pos="1"/>
-             <lu>
-              <clip pos="2" side="tl" part="lemh"/>
-              <lit-tag v="n.m.sg.ind"/>
-            </lu>
-         </chunk>
-        </out>
-      </action>
-    </rule>   -->
     <rule comment="C[L] ord lex-lohki
      čihččetlohkái nisu lea navdon goddon
      Dohko bođii almmái gii lei njealjátlohkái " c="čihččetlohkái nisu → i sekstiårene kvinne">
