@@ -2137,6 +2137,10 @@ SELECT:fallback ("muligens"i) (0 ("<vejolaččat>"i)) ;
 SELECT ("hva"i) (0 ("<manin>"i) LINK *1 ("<gohčodit>"i)) ;
 SELECT:fallback ("hvorfor"i) (0 ("<manin>"i)) ;
 
+SELECT ("mot"i) (0 ("<vuostálaga>"i) OR ("<vuostálagaid>"i) LINK *1 acc) ;
+SELECT:fallback ("mot hverandre"i) (0 ("<vuostálaga>"i) OR ("<vuostálagaid>"i)) ;
+
+
 SELECT ("halvferdig"i) (0 ("<gaskan>"i) LINK *-1 ("<guođđit>"i) OR ("<vuolgit>"i)) ;
 SELECT:fallback ("sammen"i) (0 ("<gaskan>"i)) ;
 
