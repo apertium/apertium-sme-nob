@@ -2294,6 +2294,16 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="som"/>
               </let>
             </when>
+            <when c="om">
+              <test><or>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-om-head"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in>
+                  <equal><var n="main-verb-sl"/><lit v="beroštit"/></equal>
+             </or></test>
+              <let>
+                <var n="caseprep"/><lit v="om"/>
+              </let>
+            </when>
             <when c="hos">
               <test><and>
                 <equal><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn.pers"/></equal>
@@ -2355,15 +2365,6 @@ And then there are some categories like "month", with all the months.
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="for"/>
-              </let>
-            </when>
-            <when c="om">
-              <test><or>
-                <in caseless="yes"><var n="previous-nhead"/><list n="loc-om-head"/></in>
-                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in>
-              </or></test>
-              <let>
-                <var n="caseprep"/><lit v="om"/>
               </let>
             </when>
             <when c="etter">
@@ -3289,6 +3290,7 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@A←"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL→"/></equal> <!-- vabess -->
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal></or>
               <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
               <not><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_nomact"/></equal></not>
@@ -3827,7 +3829,7 @@ And then there are some categories like "month", with all the months.
                   TABLE OF CONTENTS – this macro does the following, in this order:
                   - change tags towards nob.dix (anything bidix didn't do)
                   - set the verb caseprep-tag
-                  - output 'ikke'                if vabess
+                  - output 'uten å'                if vabess
                   - output 'i ferd med'        if progressive
                   - output 'kunne/skulle/ville/ha'  if conditional
                   - output 'begynne'             if inchoative
@@ -3907,7 +3909,7 @@ And then there are some categories like "month", with all the months.
         </otherwise>
       </choose>
 
-      <choose c="Prepend 'ikke' if vabess (should it be 'uten'?) TODO"><when>
+      <choose c="Prepend uten - we get å in t4x"><when>
         <test><equal><clip pos="1" side="sl" part="a_abess"/><lit-tag v="vabess"/></equal></test>
         <out>
           <chunk name="adv" case="caseFirstWord">
@@ -3915,7 +3917,7 @@ And then there are some categories like "month", with all the months.
               <tag><lit-tag v="@ADVL"/></tag>
             </tags>
             <lu>
-              <lit v="ikke"/>
+              <lit v="uten"/>
               <lit-tag v="adv"/>
             </lu>
           </chunk>
@@ -4274,6 +4276,7 @@ And then there are some categories like "month", with all the months.
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
                 <tag><clip pos="1" side="sl" part="modality"/></tag>
                 <tag><clip pos="1" side="sl" part="a_actio"/></tag>
+                <tag><clip pos="1" side="sl" part="a_abess"/></tag>
                 <tag><clip pos="1" side="tl" part="temps"/></tag>
                 <tag><clip pos="1" side="tl" part="voice"/></tag>
                 <tag><clip pos="1" side="tl" part="pers"/></tag>
@@ -4313,6 +4316,12 @@ And then there are some categories like "month", with all the months.
           <let><var n="prn_gen"/><lit-tag v="un"/></let>
         </when></choose>
         <choose>
+          <when c="vabessiv - now we choose sg p3 for all, more rules when we have examples">
+         <test><equal><clip pos="1" side="sl" part="a_abess"/><lit-tag v="vabess"/></equal></test>
+            <let><var n="prn_pers"/><lit-tag v="p3"/></let>
+            <let><var n="prn_gen"/><lit-tag v="un"/></let>
+            <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
+          </when>
           <when c="when prfprc or inf, then we get pers and nbr from aux - p3 and pl">
             <test><and><or>
               <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="prfprc"/></equal>
@@ -4458,7 +4467,7 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
-<!--   <rule comment="C[DL] lex-bivdit lex-veahkki" c="bivdit veahkki → be om hjelp"> this one will be solved another way
+<!--   <rule comment="C[DL] lex-bivdit lex-veahkki" c="bivdit veahki → be om hjelp"> this one will be solved another way
       <pattern>
         <pattern-item n="lex-bivdit"/>
         <pattern-item n="lex-veahkki"/>

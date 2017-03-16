@@ -142,7 +142,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <attr-item tags="actio.loc"/>
       <attr-item tags="actio.nom"/>
     </def-attr>
-    <def-attr n="a_adv">
+     <def-attr n="a_abess">
+      <attr-item tags="vabess"/>
+    </def-attr>
+   <def-attr n="a_adv">
       <attr-item tags="adv"/>
     </def-attr>
     <def-attr n="a_nom">
@@ -344,6 +347,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <list-item v="&lt;@COMP-CS←&gt;"/>
       <list-item v="&lt;@N←&gt;"/>
       <list-item v="&lt;@A←&gt;"/>
+      <list-item v="&lt;@ADVL→&gt;"/> <!-- vabess -->
     </def-list>
     <def-list n="lemh-no-determiner"
               c="No determiner at all, whether first or last in chunk">
@@ -1333,7 +1337,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <test><and>
               <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
               <equal><clip pos="0" part="a_actio"/><lit v=""/></equal>
-              <equal><clip pos="0" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+               <equal><clip pos="0" part="a_abess"/><lit v=""/></equal>
+             <equal><clip pos="0" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
               <equal><var n="former-chunk"/><lit-tag v="SV"/></equal>
             </and></test>
             <out>
@@ -1347,6 +1352,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <test><and>
               <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
               <equal><clip pos="0" part="a_actio"/><lit v=""/></equal>
+              <equal><clip pos="0" part="a_abess"/><lit v=""/></equal>
               <equal><clip pos="0" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
               <or>
               <equal><var n="former-chunk"/><lit-tag v="SA"/></equal>
@@ -1368,7 +1374,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <not><equal><clip pos="0" part="modality"/><lit-tag v="cond-skulle"/></equal></not>
               <or>
                 <in><clip pos="0" part="syn_label"/><list n="inf-mark"/></in>
-                <equal><var n="prev-verb-was-bli"/><lit v="yes"/></equal>
+              <equal><clip pos="0" part="a_abess"/><lit-tag v="vabess"/></equal>
+               <equal><var n="prev-verb-was-bli"/><lit v="yes"/></equal>
                 <equal><clip pos="0" part="a_actio"/><lit-tag v="actio.loc"/></equal>
                 <equal><clip pos="0" part="a_actio"/><lit-tag v="actio.ess"/></equal>
               </or>
