@@ -2285,6 +2285,15 @@ And then there are some categories like "month", with all the months.
             <var n="caseprep"/><lit v="på"/>
           </let>
           <choose c="Exceptions to the locative→på rule:">
+            <when c="som">
+              <test><and>
+                <equal><clip pos="1" side="sl" part="lemh"/><lit v="árvu"/></equal>
+                <equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="sg"/></equal>
+      </and></test>
+              <let>
+                <var n="caseprep"/><lit v="som"/>
+              </let>
+            </when>
             <when c="hos">
               <test><and>
                 <equal><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn.pers"/></equal>
@@ -5596,6 +5605,7 @@ And then there are some categories like "month", with all the months.
           <when>
             <test><and>
               <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
+              <equal><clip pos="2" side="sl" part="nbr"/><lit-tag v="sg"/></equal>
               <not><equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_sasj"/></equal></not>
             </and></test>
             <out>

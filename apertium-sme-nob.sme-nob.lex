@@ -1281,7 +1281,7 @@ SELECT:be ("be") (0 ("<dáhttut>"i) LINK 1 acc);
 SELECT:fallback ("ville"i) (0 ("<dáhttut>"i));
 
 
-SELECT ("anse"i) (0 ("<atnit>"i) LINK *1 ess) ;
+SELECT ("anse"i) (0 ("<atnit>"i) LINK *1 ess OR ("<árvu>"i) + loc) ;
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 
 SELECT ("fordele"i) (0 ("<juohkit>"i) LINK 0 der_pass) ;
@@ -1386,6 +1386,9 @@ SELECT ("katalog"i) (0 ("<ohcu>"i) + pl) ;
 SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
 
 SELECT:fallback ("start"i) (0 ("<vuolgga>"i)) ;
+
+SELECT ("verdifull"i) (0 ("<árvu>"i) + sg + loc LINK *-1 ("<atnit>"i)) ;
+SELECT:fallback ("verdi"i) (0 ("<árvu>"i)) ;
 
 	
 SELECT ("villrein"i) (*-1 ("<bivdit>"i) OR ("dápmat"i) OR ("vuojihit"i)) (0 ("<goddi>"i));
@@ -2229,6 +2232,10 @@ SELECT (det) (0 ("<sierra>"i));
 
 SELECT ("fjern"i) (0 ("<gáiddus>"i) LINK 0 cmpnd);
 REMOVE ("fjern"i) (NOT 0 cmpnd);
+
+SELECT ("-årig"i) (0 ("<jagáš>"i) LINK -1 num);
+SELECT ("årets"i) (0 ("<jagáš>"i));
+
 
 SELECT ("streif"i) (0 ("<golgu>"i) LINK 0 a + cmpnd);
 REMOVE ("streif"i) (NOT 0 a + cmpnd);
