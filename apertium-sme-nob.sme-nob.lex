@@ -88,6 +88,7 @@ LIST sem_money = sem_money ;
 LIST sem_obj = sem_aniprod_obj-clo sem_body_obj_tool-catch sem_build_obj sem_game_obj-play sem_geom_obj sem_hum_obj sem_money_obj sem_obj sem_obj-clo sem_obj-cogn sem_obj-el sem_obj-ling sem_obj-play sem_obj-play_sport sem_obj-rope sem_obj-surfc sem_obj_semcon sem_obj_state ;
 LIST sem_org = np.sem_org sem_build_event_org sem_build_edu_org sem_build_event_org sem_build_org sem_clth-jewl_org sem_ctain-abstr_org sem_curr_org sem_dance_org sem_edu_org sem_group_hum_org sem_group_org sem_hum_org sem_org sem_org_prod-cogn sem_org_rule sem_org_txt sem_org_veh sem_org  ;
 LIST sem_plc = sem_act_plc sem_ani_hum_plc sem_ani_plc sem_ani_plc_txt sem_aniprod_plc sem_body_plc sem_build-part_plc sem_event_plc sem_event_plc-elevate sem_feat-measr_plc sem_group_hum_plc sem_hum_lang_plc sem_hum_plc sem_plc sem_plc-abstr sem_plc-abstr_rel_state sem_plc-abstr_route sem_plc-elevate sem_plc-line sem_plc-water sem_plc_pos sem_plc_route sem_plc_state sem_plc_substnc sem_plc_substnc_wthr sem_plc_time sem_plc_tool-catch sem_plc_wthr sem_plc top ;
+LIST sem_state = sem_state sem_obj_state sem_plc-abstr_rel_state sem_plc_state sem_state-sick sem_state-sick_substnc ;
 LIST sem_sur = sem_sur ;
 LIST sem_time = sem_time sem_ani_hum_time sem_ani_time sem_body_group_hum_time sem_body_time sem_event_time sem_hum_lang_time sem_measr_time sem_plc_time sem_time_wthr ;
 LIST sem_veh = sem_ani_veh sem_ctain-clth_veh sem_feat-phys_veh sem_hum_veh sem_org_veh sem_veh ;
@@ -1298,6 +1299,9 @@ SELECT:fallback ("trekke"i) (0 ("<geassit>"i));
 SELECT ("utveksle"i) (0 ("<lonohallat>"i) LINK *0 ("<vásáhus>"i));
 SELECT:fallback ("skifte"i) (0 ("<lonohallat>"i));
 
+SELECT ("slå# sammen"i) (0 ("<ovttastahttit>"i) LINK *0 sem_org OR (sem_pos));
+SELECT:fallback ("forene"i) (0 ("<ovttastahttit>"i));
+
 
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
@@ -1373,6 +1377,16 @@ SELECT ("vise"i) (0 ("<čujuhit>"i)) ;
 # ============
 
 SELECT ("tale"i) (*-1 ("<doallat>"i)) (0 ("sáhka"i));
+
+SELECT ("skrott"i) (0 ("<gorut>"i) LINK -1 num) ;
+SELECT ("skrott"i) (0 ("<gorut>"i) + pl) ;
+SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
+
+SELECT ("katalog"i) (0 ("<ohcu>"i) + pl) ;
+SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
+
+SELECT:fallback ("start"i) (0 ("<vuolgga>"i)) ;
+
 	
 SELECT ("villrein"i) (*-1 ("<bivdit>"i) OR ("dápmat"i) OR ("vuojihit"i)) (0 ("<goddi>"i));
 
@@ -2139,6 +2153,8 @@ SELECT:fallback ("hvorfor"i) (0 ("<manin>"i)) ;
 
 SELECT ("mot"i) (0 ("<vuostálaga>"i) OR ("<vuostálagaid>"i) LINK *1 acc) ;
 SELECT:fallback ("mot hverandre"i) (0 ("<vuostálaga>"i) OR ("<vuostálagaid>"i)) ;
+
+SELECT:fallback ("fremst"i) (0 ("<ovddemusas>"i)) ;
 
 
 SELECT ("halvferdig"i) (0 ("<gaskan>"i) LINK *-1 ("<guođđit>"i) OR ("<vuolgit>"i)) ;
