@@ -951,6 +951,37 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: caseprep-PR SN-rADVL CNP caseprep-PR SN_rADVL lADVL">
+      <pattern>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN_rADVL"/>
+         <pattern-item n="CNP"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN_rADVL"/>
+        <pattern-item n="lADVL"/>
+      </pattern>
+      <action>
+        <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="2"/></call-macro>
+        <choose><when>
+          <test><not><equal><b pos="1"/><b/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
+        <out>
+          <chunk><clip pos="6" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="5"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
+
+
     <rule comment="REGLA: caseprep-PR SN_rPOST adpos
                    -----
                    garra dálkki geažil => på_grunn_av dårlig vær

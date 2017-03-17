@@ -1720,7 +1720,7 @@ SELECT:fallback ("tyngde"i) (0 ("<deaddu>"i)) ;
 
 
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>"i)) ;
-SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY OR ("<goastadit>"i)) ;	
+SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY OR ("<goastadit>"i)  OR ("<oažžut>"i)  OR ("<geiget>"i)  OR ("<fasket>"i)) ;	
 SELECT ("gevinst"i) (0 ("<vuoitu>"i) LINK -1 ("<smávis>"i) OR ("<stuoris>"i))  ;	
 SELECT:fallback ("seier"i) (0 ("<vuoitu>"i));
 

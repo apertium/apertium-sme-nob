@@ -165,12 +165,14 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="adj.sup.*"/>
     </def-cat>
     <def-cat n="adj_attr">
-      <cat-item tags="adj.ess.*"/>
+<!--      <cat-item tags="adj.ess.*"/>
       <cat-item tags="adj.*.ess.*"/>
       <cat-item tags="adj.attr"/>
       <cat-item tags="adj.attr.*"/>
       <cat-item tags="*.adj.attr.*"/>
-      <cat-item tags="adj.*.attr.*"/>
+      <cat-item tags="adj.*.attr.*"/>  -->
+      <cat-item tags="*.adj.*.@→N"/>
+      <cat-item tags="adj.*.@→N"/>
       <cat-item tags="adj.*.@→A"/>
       <cat-item tags="adv.@→A"/>
       <cat-item tags="adv.*.@→A"/>
@@ -204,7 +206,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.*.sg.ill.*"/>
     </def-cat>
     <def-cat n="num_mod">
-      <cat-item tags="num.*.@HNOUN"/> <!-- HNOUN=syntax couldn't find a head; might still be a modifier -->
+<!--      <cat-item tags="num.*.@HNOUN"/>  this one is often sem_year -->
       <cat-item tags="num.*.@→N"/>
       <cat-item tags="num.*.@→A"/>
       <cat-item tags="num.*.@←SUBJ"/>
@@ -2124,6 +2126,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="hjelp"/>
       <list-item v="støtte"/>
       <list-item v="kofte"/>
+      <list-item v="samisk"/>
+      <list-item v="duodji"/>
     </def-list>
 
     <def-list n="bigrams-def" c="det/adj+noun lemma co-occurrences that are typically definite">
@@ -2179,6 +2183,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="hjemmebane"/>
       <list-item v="innflytelse"/>
       <list-item v="lyst"/>
+      <list-item v="samisk"/>
+      <list-item v="duodji"/>
     </def-list>
   </section-def-lists>
 
