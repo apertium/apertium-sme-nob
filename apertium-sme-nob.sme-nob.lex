@@ -1720,7 +1720,9 @@ SELECT:fallback ("tyngde"i) (0 ("<deaddu>"i)) ;
 
 
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>"i)) ;
-SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY) ;	
+SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY OR ("<goastadit>"i)) ;	
+SELECT ("gevinst"i) (0 ("<vuoitu>"i) LINK -1 ("<smávis>"i) OR ("<stuoris>"i))  ;	
+SELECT:fallback ("seier"i) (0 ("<vuoitu>"i));
 
 SELECT ("samisk"i) (0 ("<sápmi>"i) LINK 0 sg + gen)(NEGATE -1 num LINK NOT 2 n + sg + gen);
 SELECT ("sørsamisk"i) (0 ("<máttasápmi>"i) + sg + gen);
@@ -1822,7 +1824,7 @@ SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIE
 SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
 SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) BARRIER SV-BOUNDARY);
-SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i));
+SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i) OR ("<pálla>"i));
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
 SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
@@ -1980,7 +1982,6 @@ SELECT:fallback ("hus"i) (0 ("<visti>"i));
 SELECT:fallback ("smør"i) (0 ("<vuodja>"i));
 SELECT:fallback ("måte"i) (0 ("<vuohki>"i));
 SELECT:fallback ("styrke"i) (0 ("<vuoibmi>"i));
-SELECT:fallback ("seier"i) (0 ("<vuoitu>"i));
 SELECT:fallback ("rekreasjon"i) (0 ("<vuoiŋŋasteapmi>"i));
 SELECT:fallback ("skade"i) (0 ("<váddu>"i));
 SELECT:fallback ("mangel"i) (0 ("<váili>"i));
