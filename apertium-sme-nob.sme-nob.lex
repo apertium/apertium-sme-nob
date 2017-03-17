@@ -1769,6 +1769,7 @@ SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 SELECT:fallback ("skive"i) (0 ("<skearru>"i));
 
 
+SELECT:part ("part"i) (0 ("<bealli>"i) LINK 1 ("<deaivvadit>"));
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *-1 ("<muitalit>"i) BARRIER SV-BOUNDARY);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK 0 pl);
@@ -2013,9 +2014,12 @@ SELECT:fallback ("serie"i) (0 ("<ráidu>"i)) ;
 SELECT ("retning"i) (0 ("<guovlu>"i) + ill LINK -1 ("heajos")) ;
 SELECT:fallback ("område"i) (0 ("<guovlu>"i)) ;
 
+SELECT ("rein"i) (0 ("<heagga>"i) LINK -1 num - ("okta")) ;
+SELECT:fallback ("liv"i) (0 ("<heagga>"i)) ;
+
 
 # Based on frequency in parallel text:
-SELECT ("áigodat"i) (0 ("<periode>"i));
+SELECT ("periode"i) (0 ("<áigodat>"i));
 SELECT ("sameby"i) (0 ("<čearru>"i));
 SELECT ("urin"i) (0 ("<gužža>"i)) ;
 SELECT ("måned"i) (0 ("<mánnu>"i)) ;
@@ -2060,11 +2064,12 @@ SELECT ("av hvem"i) (0 ("<gii>"i)) (NEGATE 0 ←hab→ ) ;
 
 
 SELECT ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 tv + FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
+SELECT ("hvor"i) (0 ("<mii>"i) + loc LINK NOT 0 ←hab→)  ; # mas
 SELECT:ge-man ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 pcle) (-2 tv + FMAINV) (1 a) ; # mihtidit ge man mávssolaččat sámi aviissat leat …
 SELECT ("hva"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 tv + FMAINV) ; # Minsttarplána čilge maid oahppit berrešedje máhttit.
 LIST loc/adv = loc adv;
 SELECT:test ("hva som"i) (0 ("<mii>"i) LINK 0 @OBJ→) (*-1 FMAINV BARRIER (*) - loc/adv) ; # Hui hárve boahtá<iv!> ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
-SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV) ;
+SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV)(1 FMAINV) ;
 SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
 
 SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
@@ -2130,7 +2135,7 @@ SELECT ("til"i) (0 ("<vuhtii>"i)) (*-1 ("<váldit>"i)) ;
 
 SELECT:fallback ("slik"i) (0 ("<nu>"i) LINK -1 ("<ja>"i)) ;     # Ja nu leat sii
 SELECT ("til rette for"i) (0 ("<nu>"i)) (-1 ("<dilálašvuohta>"i)) (1 ("<ahte>"i)) ;
-SELECT ("så"i) (0 ("<nu>"i)) (1 a or ind or ("<galle>"i) or ("<gealdagas>"i)) ; # dat skuvla nu johtil ahte
+SELECT ("så"i) (0 ("<nu>"i)) (1 a or ind or ("<galle>"i) or ("<gealdagas>"i) or ("<bures>"i)) ; # dat skuvla nu johtil ahte
 SELECT:så-langt-som ("så"i) (0 ("<nu>"i)) (1 adv) (2 cs) ;
 SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 
@@ -2345,3 +2350,4 @@ SELECT:fallback ("at"i) (0 ("<ahte>"i) LINK 0 cs);
 
 # Proper nouns
 # ============
+SELECT:fallback ("Sørreisa"i) (0 ("<Ráisavuotna>"i));
