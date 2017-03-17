@@ -11,8 +11,8 @@ SETS
 # I define end of clause and beginning of clause in a way so that the file
 # may be read both by the CG-2 and the vislcg formalisms.
 
-LIST BOS = (>>>) (<s>);
-LIST EOS = (<<<) (</s>);
+LIST BOS = (>>>) (<s>) (sent) ;
+LIST EOS = (<<<) (</s>) (sent) ;
 
 # CG3 doesn´t function without >>> and <<< !
 
@@ -56,7 +56,7 @@ LIST ¶ = ¶;
 LIST pers = pers ;
 LIST dem = dem ;
 LIST interr = itg ;
-LIST ind = ind ;
+LIST ind = indic ;
 
 LIST recipr = res ;
 LIST refl = ref ;
@@ -2063,13 +2063,13 @@ SELECT:fallback ("han"i) + (GD_pers) (0 ("<son>"i)) ;
 SELECT ("av hvem"i) (0 ("<gii>"i)) (NEGATE 0 ←hab→ ) ;
 
 
+SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV)(1 VFIN) ;
 SELECT ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 tv + FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
 SELECT ("hvor"i) (0 ("<mii>"i) + loc LINK NOT 0 ←hab→)  ; # mas
 SELECT:ge-man ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 pcle) (-2 tv + FMAINV) (1 a) ; # mihtidit ge man mávssolaččat sámi aviissat leat …
 SELECT ("hva"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 tv + FMAINV) ; # Minsttarplána čilge maid oahppit berrešedje máhttit.
 LIST loc/adv = loc adv;
-SELECT:test ("hva som"i) (0 ("<mii>"i) LINK 0 @OBJ→) (*-1 FMAINV BARRIER (*) - loc/adv) ; # Hui hárve boahtá<iv!> ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
-SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV)(1 FMAINV) ;
+SELECT:test ("hva"i) (0 ("<mii>"i) LINK 0 @OBJ→) (*-1 FMAINV BARRIER (*) - loc/adv) ; # Hui hárve boahtá<iv!> ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
 SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
 
 SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
