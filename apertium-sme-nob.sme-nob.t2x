@@ -956,7 +956,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <pattern>
         <pattern-item n="caseprep-PR"/>
         <pattern-item n="SN_rADVL"/>
-         <pattern-item n="CNP"/>
+        <pattern-item n="CNP"/>
         <pattern-item n="caseprep-PR"/>
         <pattern-item n="SN_rADVL"/>
         <pattern-item n="lADVL"/>
@@ -967,6 +967,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         <choose><when>
           <test><not><equal><b pos="1"/><b/></equal></not></test>
           <out><b pos="1"/></out>
+        </when></choose>
+        <choose><when>
+          <test><not><equal><b pos="4"/><b/></equal></not></test>
+          <out><b pos="4"/></out>
         </when></choose>
         <out>
           <chunk><clip pos="6" part="whole"/></chunk>
