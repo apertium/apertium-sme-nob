@@ -914,6 +914,7 @@ SELECT ("all"i) IF (0 ("<juohke>"i) LINK 1 ("<lágan>")) ;
 
 SELECT ("mens"i) IF (0 ("<bodda>"i) LINK -1 ("<dat>") LINK 0 gen) ;
 
+SELECT ("stenge"i) IF (0 ("<gitta>"i) LINK *0 ("<geaidnu>"i)) ;
 SELECT ("helt"i) IF (0 ("<gitta>"i) + @→A OR ("<gitta>"i) + @→N) ;
 SELECT ("inntil"i) IF (0 ("<gitta>"i) + @→Num) ;
 SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
@@ -1179,18 +1180,17 @@ SELECT:fallback ("forlike"i) (0 ("<soahpat>"i));
 
 
 # mannat 0 = dra, 1 = gå
-SELECT ("forrige"i) IF (0 ("<mannat>"i) + prfprc) (1 n);
+SELECT ("sist"i) IF (0 ("<mannat>"i) + prfprc LINK 0 @→N);
 	
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i)) (0 sg3);
 ## Mo manná dál?
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 ("<bures>"i) BARRIER v);
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i));
 
-#SELECT ("dra"i) IF (0 ("<mannat>"i)) (NEGATE 0 sg3 LINK *-1 ("<mo>"i) OR ("<dat>"i));
 ## Mun manan dál.
-SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 sem_time + SUBJ BARRIER SV-BOUNDARY);
+#SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 sem_time + SUBJ BARRIER SV-BOUNDARY);
 SELECT ("dra"i) IF (0 ("<mannat>"i)) (*1 sem_plc + ill OR sem_org + ill);
-SELECT:fallback ("gå"i) (0 ("<mannat>"i));
+SELECT:fallback ("gå"i) (0 ("<mannat>"i) LINK NOT 0 @→N) ;
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_org OR pers ) ;
 ## Máhtte máksá guokte ruvnnu.
@@ -1365,7 +1365,6 @@ SELECT:fallback ("følge"i) (0 ("<čuovvolit>"i));
 SELECT:fallback ("følge"i) (0 ("<čuovvulit>"i));
 SELECT:fallback ("pynte"i) (0 ("<čábbudit>"i));
 SELECT:fallback ("dyrke"i) (0 ("<šaddadit>"i));
-SELECT:fallback ("gå"i) (0 ("<mannat>"i));
 
 # Based on frequency in parallel text:
 SELECT ("slåss"i) (0 ("<doarrut>"i)) ;
