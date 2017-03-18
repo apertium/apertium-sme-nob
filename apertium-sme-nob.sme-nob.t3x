@@ -334,6 +334,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SV.@+FAUXV"/>
       <cat-item tags="SV.@+FAUXV.*"/>
     </def-cat>
+    <def-cat n="FVcopmain">
+      <cat-item lemma="vcop" tags="SV.@+FMAINV"/>
+      <cat-item lemma="vcop" tags="SV.@+FMAINV.*"/>
+    </def-cat>
     <def-cat n="MAIN-FIN">
       <cat-item tags="SV.@+FMAINV"/>
       <cat-item tags="SV.@+FMAINV.*"/>
@@ -1125,6 +1129,41 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: CS PR ADVLr FV - out: 1 det 4 2 3  ">
+      <pattern>
+        <pattern-item n="CS"/>
+         <pattern-item n="PR"/>
+       <pattern-item n="ADVLr"/>
+        <pattern-item n="FVcopmain"/>
+      </pattern>
+      <action>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <let>
+          <var n="pro"/>
+          <concat>
+            <b/>
+            <lit v="^prn"/>
+            <lit-tag v="SN.@SUBJ→.p3.nt.sg.nom"/>
+            <lit v="{^prpers"/>
+            <lit-tag v="prn.pers.p3.nt.sg.nom"/>
+            <lit v="$}$"/>
+          </concat>
+        </let>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <var n="pro-blank"/><var n="pro"/>
+          <var n="adv"/><var n="adv-blank"/>
+          <b pos="2"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>  
+
 
     <rule comment="REGLA: CS SUBJr FV - out: 1 2 3 ">
       <pattern>
@@ -2805,7 +2844,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
-    </rule>
+    </rule> 
     <rule comment="REGLA: PR V2-trigger FV IV   - out: 1 2 pro 3 4
                    V2-rule with pro-drop insertion (gender based on IV)
                    ">

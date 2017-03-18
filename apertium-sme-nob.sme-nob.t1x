@@ -499,7 +499,7 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="guovttos" tags="n.*.coll.*"/>
       <cat-item lemma="guovttos" tags="n.coll.*"/>
     </def-cat>
-    <def-cat n="front-of-bealde">
+    <def-cat n="bealde-modyfier">
       <cat-item  tags="*.@→P"/>
     </def-cat>
     <def-cat n="lex-bealde">
@@ -515,6 +515,14 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-gealdagas_loc">
       <cat-item lemma="gealdagas" tags="n.*.sg.loc.*"/>
+    </def-cat>
+    <def-cat n="lex-Finnmarksløpet">
+      <cat-item lemma="finnmarksløpet" tags="np.*"/>
+      <cat-item lemma="Finnmarksløpet" tags="np.*"/>
+    </def-cat>
+    <def-cat n="lex-gilvu">
+      <cat-item lemma="gilvu" tags="n.*"/>
+      <cat-item lemma="beanagilvu" tags="n.*"/>
     </def-cat>
     <def-cat n="lex-sadjai">
       <cat-item lemma="sadji" tags="n.*.sg.ill.*"/>
@@ -1983,6 +1991,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="liste"/>
       <list-item v="side"/>
       <list-item v="papir"/>
+      <list-item v="hotell"/>
     </def-list>
     <def-list n="loc-NIL" c="Locative noun phrases default to 'i' unless in this list">
       <list-item v="uke"/>
@@ -2114,6 +2123,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="desember"/>
       <list-item v="julaften"/>
       <list-item v="påskeaften"/>
+      <list-item v="langfredag"/>
+      <list-item v="skjærtorsdag"/>
       <list-item v="mandag"/>
       <list-item v="tirsdag"/>
       <list-item v="onsdag"/>
@@ -2343,6 +2354,7 @@ And then there are some categories like "month", with all the months.
               <test><and><or>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_rule"/></equal>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
@@ -2455,7 +2467,7 @@ And then there are some categories like "month", with all the months.
             </when>
           </choose>
         </when>
-        <when c="med">
+        <when c="com med">
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="com"/></equal></test>
           <let>
             <var n="caseprep"/><lit v="med"/>
@@ -2467,6 +2479,14 @@ And then there are some categories like "month", with all the months.
               </test>
               <let>
                 <var n="caseprep"/><lit v="på"/>
+              </let>
+            </when>
+            <when c="com NIL">
+              <test>
+             <equal><var n="main-verb-sl"/><lit v="deaivvadit"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v=""/>
               </let>
             </when>
             </choose>
@@ -4543,9 +4563,9 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
-    <rule comment="C[L] front-of-bealde lex-bealde" c="sii ellet nuppe bealde → de lever på andre siden">
+    <rule comment="C[L] bealde-modyfier lex-bealde" c="sii ellet nuppe bealde → de lever på andre siden">
       <pattern>
-        <pattern-item n="front-of-bealde"/>
+        <pattern-item n="bealde-modyfier"/>
         <pattern-item n="lex-bealde"/>
       </pattern>
       <action>
@@ -5053,6 +5073,23 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+      </action>
+    </rule>
+        <rule comment="C[T] lex-Finnmarksløpet lex-gilvu">
+      <pattern>
+        <pattern-item n="lex-Finnmarksløpet"/>
+        <pattern-item n="lex-gilvu"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+
+        <!-- for possessed NOM -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
     <rule comment="C[L] lex-dat-sgloc lex-rájes lex-go " c="das rájes go → siden">
@@ -5938,6 +5975,8 @@ And then there are some categories like "month", with all the months.
         <let><var n="c_animacy"/><lit v=""/></let>
       </action>
     </rule>
+
+
 
 
     <rule comment="C[T] nom.prop_mod nom.prop_mod nom.prop
@@ -8552,6 +8591,7 @@ And then there are some categories like "month", with all the months.
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
+
 
     <rule comment="C[T] nom.prop_attr nom.prop.gen nom_head
                    Jođiheaddji Christina Henriksena mielas">

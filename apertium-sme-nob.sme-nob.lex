@@ -857,7 +857,7 @@ SELECT ("enn"i) (0 ("<go>"i)) (0 cs LINK -1 (@COMP-CS←)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cs) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (1 ("<dušše>"i)) ;
-SELECT ("enn"i) (0 ("<go>"i)) (0 cs) (*-1 ("<ovdal>"i) BARRIER S-BOUNDARY LINK 0 adv) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 cs) (*-1 ("<ovdal>"i) OR ("<eará>"i) BARRIER S-BOUNDARY) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cs) (*-1 comp BARRIER v OR S-BOUNDARY) ;
 ## Son lea viššaleabbo go mun.
 ## Dat dáidá riggát go mii jáhkkit.
@@ -1006,6 +1006,10 @@ SELECT:fallback ("avskjede"i) IF  (0 ("<lihccut>"i)) ;
 
 SELECT ("utelate"i) IF  (0 ("<guođđit>"i)) (*1 ("<eret>")) ;
 SELECT:fallback ("forlate"i) IF  (0 ("<guođđit>"i)) ;
+
+SELECT ("møtes"i) IF  (0 ("<deaivvadit>"i) LINK NOT 1 com) ;
+SELECT:fallback ("møte"i) IF  (0 ("<deaivvadit>"i)) ;
+
 
 SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (*1 prop) ;
 SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (1 ("<:>")) ;
@@ -1269,7 +1273,7 @@ SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
 SELECT:ringe ("ringe"i) (0 ("<čuodjat>"i) LINK *0 ("<telefovdna>"i)) ;
 SELECT:fallback ("klinge"i) (0 ("<čuodjat>"i) LINK NEGATE *0 ("<telefuvdna>"i) ) ;
 
-SELECT:fallback ("bli"i) (0 ("<bissut>"i) ) ;
+SELECT:fallback ("forbli"i) (0 ("<bissut>"i) ) ;
 
 
 SELECT:fallback ("kommunisere"i) (0 ("<gulahallat>"i) ) ;
@@ -1634,6 +1638,8 @@ SELECT ("stemme"i) (0 ("<jietna>"i));
 ## - Sámediggi cealká earret eará ahte dat stuora erohusat mat leat dan ektui galle 	jiena 	leat juohke áirasa duohken geanohuhttet Sámedikki lobálašvuođa sihke sámi servodagas ja eará eisseválddiid ektui .
 ## ( 1 ) Jus jienasteaddji ii goastta válgalatnjii , de sáhttá son addit 	jiena 	guovtti jietnavuostáváldái dastán válgalanja olggobealde .
 SELECT:fallback ("stemme"i) (0 ("<jietna>"i));
+
+SELECT:fallback ("problem"i) (0 ("<čuolbma>"i));
 
 
 # vuoján 0 = kjøretøy, 1 = kjørerein
