@@ -69,6 +69,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="rel-OBJr">
       <cat-item lemma="rel" tags="*.@OBJ→"/>
       <cat-item lemma="rel" tags="@OBJ→.*"/>
+      <cat-item lemma="prn" tags="*.@OBJ→.prn.itg.*"/>
     </def-cat>
     <def-cat n="lSUBJext">
       <cat-item tags="SN.@←SUBJext.*"/>
@@ -113,6 +114,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SN.@ADVL→.*.ill"/>
       <cat-item tags="SN.@ADVL-ela→.*.ill"/>
       <cat-item tags="SN.@ADVL-ine→.*.ill"/>
+    </def-cat>
+    <def-cat n="ITGnom">
+      <cat-item tags="SN.*.itg.*.nom"/>
+      <cat-item tags="SN.*.itg.*.nom.*"/>
     </def-cat>
     <def-cat n="ITG">
       <cat-item tags="SN.*.itg.*"/>
@@ -395,7 +400,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="V2-trigger" c="'Specifiyer', sort of... rather diffuse category here, including regular cnjsub (+CS)
                                and longer chunks like «Etter min oppfatning»">
       <cat-item tags="*.@OBJ→"/>
-      <cat-item tags="*.@OBJ→.*"/>
+      <cat-item tags="*.@OBJ→.*"/> 
       <cat-item tags="ADV.@PCLE"/> <!-- TODO check -->
       <cat-item tags="*.@ADVL.*"/>
       <cat-item tags="*.@ADVL"/>
@@ -2927,10 +2932,10 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
 
     <!-- <rules: ITG ADV* V: -->
-    <rule comment="REGLA: V ITG SUBJr V - out: 1 2 3 4" c="ahte earát galget árvidit geat sii leat.">
+    <rule comment="REGLA: V ITGnom SUBJr V - out: 1 2 3 4" c="ahte earát galget árvidit geat sii leat.">
       <pattern>
         <pattern-item n="V"/>
-        <pattern-item n="ITG"/>
+        <pattern-item n="ITGnom"/>
         <pattern-item n="SUBJr"/>
         <pattern-item n="V"/>
       </pattern>
