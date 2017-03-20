@@ -1205,8 +1205,9 @@ SELECT:fallback ("gå"i) (0 ("<mannat>"i) LINK NOT 0 @→N) ;
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_org OR pers ) ;
 ## Máhtte máksá guokte ruvnnu.
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 ("<vejolašvuohta>"i) OR ("<bággu>"i) OR ("<ráđđi>"i) OR ("<áigemeari>"i) OR ("<divat>"i) ) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 loc BARRIER NOT-ADV-PCLE) ;
-SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r)) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r) OR ("<áigemearri>"i) OR ("<.*divat>"r)) ;
 
 
 SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 ("<ahte>"i));
@@ -1232,6 +1233,9 @@ SELECT:fallback ("rette"i) (0 ("<divvut>"i));
 
 SELECT:reparere ("innkalle"i) (0 ("<gohččut>"i) LINK *0 ("<diibmu>"i) OR ("<čoahkkin>"i));
 SELECT:fallback ("be"i) (0 ("<gohččut>"i));
+
+SELECT:reparere ("smitte"i) (0 ("<njoammut>"i) LINK *0 ("<.*dávda>"r) OR ("<oaivevuorri>"i) OR ("<CWD>"i)  OR (sem_state-sick));
+SELECT:fallback ("krype"i) (0 ("<njoammut>"i));
 
 
 SELECT:fallback ("rette# på"i) (0 ("<njulget>"i));

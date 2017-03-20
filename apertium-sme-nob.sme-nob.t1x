@@ -1944,6 +1944,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="seng"/>
       <list-item v="september"/>
       <list-item v="skap"/>
+      <list-item v="skimesterskap"/>
       <list-item v="skirenn"/>
       <list-item v="skuff"/>
       <list-item v="speil"/>
@@ -1994,6 +1995,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="grunnskole"/>
       <list-item v="Sameskolen"/>
       <list-item v="sameskole"/>
+      <list-item v="tall"/>
       <list-item v="topp"/>
       <list-item v="torsdag"/>
       <list-item v="Østlandet"/>
@@ -2016,7 +2018,6 @@ And then there are some categories like "month", with all the months.
       <list-item v="avtale"/>
       <list-item v="bok"/>
       <list-item v="artikkel"/>
-      <list-item v="konkurranse"/>
     </def-list>
     <def-list n="loc-for-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="frykt"/>
@@ -2331,6 +2332,11 @@ And then there are some categories like "month", with all the months.
                 <in caseless="yes"><var n="previous-nhead"/><list n="loc-om-head"/></in>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in>
                   <equal><var n="main-verb-sl"/><lit v="beroštit"/></equal>
+                  <and>
+                <equal><var n="previous-nhead"/><lit v="konkurranse"/></equal>
+             <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
+             <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in></not>
+                  </and>
              </or></test>
               <let>
                 <var n="caseprep"/><lit v="om"/>
