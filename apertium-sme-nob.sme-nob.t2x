@@ -84,6 +84,14 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item lemma="adv" tags="ADV.@←ADVL-ela.*"/>
       <cat-item lemma="adv" tags="ADV.@←ADVL-ine.*"/>
     </def-cat>
+    <def-cat n="SN_lADVL">
+      <cat-item tags="SN.@←ADVL"/>
+      <cat-item tags="SN.@←ADVL-ela"/>
+      <cat-item tags="SN.@←ADVL-ine"/>
+      <cat-item tags="SN.@←ADVL.*"/>
+      <cat-item tags="SN.@←ADVL-ela.*"/>
+      <cat-item tags="SN.@←ADVL-ine.*"/>
+    </def-cat>
     <def-cat n="prn-lADVL">
       <cat-item lemma="prn" tags="SN.@←ADVL.*"/>
       <cat-item lemma="prn" tags="SN.@←ADVL-ela.*"/>
@@ -984,6 +992,80 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </action>
     </rule>
 
+    <rule comment="REGLA: SN_rN CNP caseprep-PR SN-rADVL" c="Guovdageainnu ja Ákŋoluovtta muohtačorgenbargguide">
+      <pattern>
+        <pattern-item n="SN_rN"/>
+        <pattern-item n="CNP"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN_lADVL"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: SN_rN SN_rN CNP caseprep-PR SN-rADVL" c="Guovdageainnu, Álttá ja Ákŋoluovtta muohtačorgenbargguide">
+      <pattern>
+        <pattern-item n="SN_rN"/>
+        <pattern-item n="sent"/>
+        <pattern-item n="SN_rN"/>
+        <pattern-item n="CNP"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN_lADVL"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk><clip pos="5" part="whole"/></chunk>
+          <b pos="5"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="4"/>
+          <chunk><clip pos="6" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: SN_rN SN_rN CNP caseprep-PR SN-rADVL" c="Guovdageainnu, Álttá, Láhpi ja Ákŋoluovtta muohtačorgenbargguide">
+      <pattern>
+        <pattern-item n="SN_rN"/>
+        <pattern-item n="sent"/>
+        <pattern-item n="SN_rN"/>
+        <pattern-item n="sent"/>
+        <pattern-item n="SN_rN"/>
+        <pattern-item n="CNP"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN_lADVL"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk><clip pos="7" part="whole"/></chunk>
+          <b pos="7"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="4"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
+          <b pos="5"/>
+          <chunk><clip pos="6" part="whole"/></chunk>
+          <b pos="6"/>
+          <chunk><clip pos="8" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
 
 
     <rule comment="REGLA: caseprep-PR SN_rPOST adpos

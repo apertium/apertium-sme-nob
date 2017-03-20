@@ -1028,19 +1028,19 @@ SELECT:fallback ("legge# opp til"i) IF  (0 ("<láhčit>"i)) ;
 
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
-SELECT:dego ("synes"i) (0 ("<orrut>"i)) (1 ("<dego>"i) OR (actio ess)) ;
-SELECT:dego ("synes"i) (0 ("<orrut>"i)) (2 ("<miella>"i) + loc OR ("<mielas>"i)) ;
-SELECT:maid ("synes"i) (0 ("<orrut>"i)) (-1 ("<mii>"i)) ;
-SELECT:jaska ("være"i) (0 ("<orrut>"i)) (1 ("<jaska>"i)) ;
-SELECT:bli ("bli"i) (0 ("<orrut>"i)) (-1 ("<go>"i)) ;
-SELECT:orron-doppe ("bo"i) (0 ("<orrut>"i)) (*1 loc OR DOPPE OR ("<bealde>"i) BARRIER SV-BOUNDARY) ;
+SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<dego>"i) OR (actio ess)) ;
+SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (2 ("<miella>"i) + loc OR ("<mielas>"i)) ;
+SELECT:maid ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 ("<mii>"i)) ;
+SELECT:jaska ("være"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<jaska>"i)) ;
+SELECT:bli ("bli"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 ("<go>"i)) ;
+SELECT:orron-doppe ("bo"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (*1 loc OR DOPPE OR ("<bealde>"i) BARRIER SV-BOUNDARY) ;
 #This rule should have another barrier, a set of all words except TIME-ADV.
 #For sentences like: Mun orron diibmá Romssas.
 #Check SET ORRUT-BO
-SELECT:doppe-son-orui ("bo"i) (0 ("<orrut>"i)) (-1 @SUBJ→) (-2 loc OR DOPPE) ;
-SELECT:doppe-son-orui ("bo"i) (0 ("<orrut>"i)) (-1 sem_plc + loc OR DOPPE) ;
+SELECT:doppe-son-orui ("bo"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 @SUBJ→) (-2 loc OR DOPPE) ;
+SELECT:doppe-son-orui ("bo"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 sem_plc + loc OR DOPPE) ;
 
-SELECT:fallback ("synes"i) (0 ("<orrut>"i)); # says parallel corpus
+SELECT:fallback ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)); # says parallel corpus
 
 ## Sii orrot goit čeahpit hutkat vugiid movt ávkkástallat sin sámegielmáhtuin, čilge son.
 ## Mun orun Romssas.
