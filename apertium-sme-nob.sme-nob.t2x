@@ -977,14 +977,14 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           <out><b pos="1"/></out>
         </when></choose>
         <choose><when>
-          <test><not><equal><b pos="4"/><b/></equal></not></test>
-          <out><b pos="4"/></out>
+          <test><not><equal><b pos="2"/><b/></equal></not></test>
+          <out><b pos="2"/></out>
         </when></choose>
         <out>
           <chunk><clip pos="6" part="whole"/></chunk>
-          <b pos="2"/>
-          <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="3"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="4"/>
           <chunk><clip pos="3" part="whole"/></chunk>
           <b pos="5"/>
           <chunk><clip pos="5" part="whole"/></chunk>
@@ -1002,11 +1002,11 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <action>
         <out>
           <chunk><clip pos="3" part="whole"/></chunk>
-          <b pos="3"/>
-          <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
-          <chunk><clip pos="2" part="whole"/></chunk>
+          <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="3"/>
           <chunk><clip pos="4" part="whole"/></chunk>
         </out>
       </action>
@@ -1024,7 +1024,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <action>
         <out>
           <chunk><clip pos="5" part="whole"/></chunk>
-          <b pos="5"/>
+          <b pos="1"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="2"/>
@@ -1034,6 +1034,12 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           <b pos="4"/>
           <chunk><clip pos="6" part="whole"/></chunk>
         </out>
+        <choose>
+          <when>
+            <test><not><equal><b pos="5"/><lit v=" "/></equal></not></test>
+            <out><b pos="5"/></out>
+          </when>
+        </choose>
       </action>
     </rule>
 
@@ -1051,19 +1057,31 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <action>
         <out>
           <chunk><clip pos="7" part="whole"/></chunk>
-          <b pos="7"/>
+          <b pos="1"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="2"/>
           <chunk><clip pos="3" part="whole"/></chunk>
           <chunk><clip pos="4" part="whole"/></chunk>
-          <b pos="4"/>
+          <b pos="3"/>
           <chunk><clip pos="5" part="whole"/></chunk>
-          <b pos="5"/>
+          <b pos="4"/>
           <chunk><clip pos="6" part="whole"/></chunk>
-          <b pos="6"/>
+          <b pos="5"/>
           <chunk><clip pos="8" part="whole"/></chunk>
         </out>
+        <choose>
+          <when>
+            <test><not><equal><b pos="6"/><lit v=" "/></equal></not></test>
+            <out><b pos="6"/></out>
+          </when>
+        </choose>
+        <choose>
+          <when>
+            <test><not><equal><b pos="7"/><lit v=" "/></equal></not></test>
+            <out><b pos="7"/></out>
+          </when>
+        </choose>
       </action>
     </rule>
 
@@ -1125,9 +1143,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="3" part="whole"/></chunk>
-          <b pos="2"/>
-          <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
       </action>
@@ -1148,11 +1166,11 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
         <out>
           <chunk><clip pos="4" part="whole"/></chunk>
-          <b pos="3"/>
-          <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
-          <chunk><clip pos="2" part="whole"/></chunk>
+          <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="3"/>
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
       </action>
