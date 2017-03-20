@@ -978,6 +978,10 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
+SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 n ) ;
+SELECT:fallback ("ville"i) IF  (0 ("<háliidit>"i)) ;
+
+
 SELECT ("nå"i) IF  (0 ("<joksat>"i)) (0* sem_veh) ;
 SELECT:fallback ("oppnå"i) IF  (0 ("<joksat>"i)) ;
 
