@@ -1144,6 +1144,9 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 # lohkat 0 = lese, 1 = si, 2 = telle
 
+SELECT ("si"i) (0 ("<lohkat>"i)) (0 (←vdic→)) ;
+SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<:>")) ;
+
 
 SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain LINK 0 acc OR loc OR ("<cealkámuš>"i)) OR (-1 sem_txt OR sem_domain LINK 0 acc OR loc)) ;
 # Son lohká ahte lea buorre doppe.
@@ -1153,8 +1156,7 @@ SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (*1 sem_edu LINK 0 loc) ;
 SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 sem_lang) ;
 # Ruth Larsena mielas dát vuoseha ahte lea vejolaš lohkagoahtit sámegiela easkka joatkkaskuvllas
 
-SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR refl + acc OR refl + loc OR prfprc or COMMA OR a - attr) ;
-SELECT ("si"i) (0 ("<lohkat>"i)) (1 sem_hum + nom OR prop + nom) ;
+SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR refl + acc OR refl + loc OR prfprc OR a - attr) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (*1 ess) ;
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i)) (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)   ;
@@ -1165,8 +1167,9 @@ SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-
 ## Soai siđaiga dávjá Liná lohkat jitnosit go sis lei lohkan-hárjehallan.
 
 
-SELECT ("si"i) (0 ("<lohkat>"i)) (-1 COMMA) (*1 (@←SUBJ) BARRIER VFIN);
-SELECT ("si"i) (0 ("<lohkat>"i)) (-1 (@SUBJ→) LINK -1 COMMA);
+#SELECT ("si"i) (0 ("<lohkat>"i)) (-1 COMMA) (*1 (@←SUBJ) BARRIER VFIN);
+#SELECT ("si"i) (0 ("<lohkat>"i)) (-1 (@SUBJ→) LINK -1 COMMA);
+#SELECT ("si"i) (0 ("<lohkat>"i)) (1 sem_hum + nom OR prop + nom) ;
 ## Dat lea duohta, lohká Trond.
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<nu>"i));
