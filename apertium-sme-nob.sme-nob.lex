@@ -1874,6 +1874,7 @@ SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK *0 ("<boazu>"i) OR ("<boazol
 SELECT:fallback ("boplass"i) (0 ("<orohat>"i));
 
 SELECT ("topp"i) (0 ("<njunuš>"i))(1 ("<artista>"i) OR ("<listu>"i));
+SELECT ("toppfolk"i) (0 ("<njunuš>"i) + pl) ;
 SELECT:fallback ("tet"i) (0 ("<njunuš>"i));
 
 SELECT:fallback ("forsvar"i) (0 ("<suodjalus>"i));
@@ -2119,6 +2120,9 @@ SELECT ("ene sin"i) (0 ("<nubbi>"i) + gen) (*1 ("<nubbi>"i)) ;
 SELECT ("andre sin"i) (0 ("<nubbi>"i) + gen) (*-1 ("<nubbi>"i)) ;
 SELECT:fallback ("annen"i) (0 ("<nubbi>"i)) ;
 
+SELECT ("nest"i) (0 ("<nubbi>"i) + ord LINK 1 superl) ;
+SELECT:fallback ("andre"i) (0 ("<nubbi>"i) + ord) ;
+
 
 SELECT:hans-egen ("egen"i) (0 ("<ieš>"i)) (-1 pron + pers + gen) ;
 # Dá lea mu iežan girji => Her er min egen bok
@@ -2170,6 +2174,8 @@ SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
 
 SELECT ("fordi"i) (0 ("<dan dihte>"i) LINK 1 ("<go>"i)) ;
 SELECT:fallback ("derfor"i) (0 ("<dan dihte>"i)) ;
+
+SELECT ("på hvilken måte"i) (0 ("<guđe ládje>"i)) ;
 
 
 SELECT ("mulig"i) (0 ("<vejolaččat>"i) LINK -1 ("<go>"i)) ;
