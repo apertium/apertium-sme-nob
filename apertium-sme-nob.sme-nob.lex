@@ -1399,6 +1399,8 @@ SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 SELECT ("katalog"i) (0 ("<ohcu>"i) + pl) ;
 SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
 
+SELECT:fallback ("utredning"i) (0 ("<guorahallan>"i)) ;
+
 SELECT:fallback ("start"i) (0 ("<vuolgga>"i)) ;
 
 SELECT ("verdifull"i) (0 ("<árvu>"i) + sg + loc LINK *-1 ("<atnit>"i)) ;
