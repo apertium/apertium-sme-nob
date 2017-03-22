@@ -1244,8 +1244,8 @@ SELECT:ta-en-tur ("ta en tur"i) (0 ("<fitnat>"i) + inf )  ;
 SELECT:fallback ("være"i) (0 ("<fitnat>"i));
 
 SELECT:publisere ("lansere"i) (0 ("<almmuhit>"i) LINK *0 ("<skearru>"i) OR ("<girji>"i) OR ("<lávlla>"i))  ; 
-SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *-1 sem_txt + acc OR (sem_rule) + acc OR (sem_prod-ling) + acc )  ; 
-SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *1 sem_txt + acc OR (sem_rule) + acc OR (sem_prod-ling) + acc )  ; 
+SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *-1 sem_txt  OR (sem_rule) OR (sem_prod-ling) LINK NOT 0 loc )  ; 
+SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *1 sem_txt  OR (sem_rule) OR (sem_prod-ling) LINK NOT 0 loc )  ; 
 SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK 1 sem_time )  ; 
 SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
 
