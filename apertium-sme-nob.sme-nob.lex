@@ -1244,7 +1244,8 @@ SELECT:ta-en-tur ("ta en tur"i) (0 ("<fitnat>"i) + inf )  ;
 SELECT:fallback ("være"i) (0 ("<fitnat>"i));
 
 SELECT:publisere ("lansere"i) (0 ("<almmuhit>"i) LINK *0 ("<skearru>"i) OR ("<girji>"i) OR ("<lávlla>"i))  ; 
-SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *-1 sem_txt OR (sem_rule) )  ; 
+SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *-1 sem_txt + acc OR (sem_rule) + acc OR (sem_prod-ling) + acc )  ; 
+SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *1 sem_txt + acc OR (sem_rule) + acc OR (sem_prod-ling) + acc )  ; 
 SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK 1 sem_time )  ; 
 SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
 
@@ -1401,6 +1402,9 @@ SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
 
 SELECT:fallback ("utredning"i) (0 ("<guorahallan>"i)) ;
 
+SELECT:fallback ("bransje"i) (0 ("<suorgi>"i));
+
+
 SELECT:fallback ("start"i) (0 ("<vuolgga>"i)) ;
 
 SELECT ("verdifull"i) (0 ("<árvu>"i) + sg + loc LINK *-1 ("<atnit>"i)) ;
@@ -1527,7 +1531,7 @@ SELECT:fallback ("forbindelse"i) (0 ("<oktavuohta>"i));
 
 SELECT ("folk"i) (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
-SELECT ("person"i) (0 ("<olmmoš>"i) LINK -1 num) ;
+SELECT ("person"i) (0 ("<olmmoš>"i) LINK -1 num OR ("<bealli>"i) + gen) ;
 SELECT ("person"i) (0 ("<olmmoš>"i) LINK 1 rel) ;
 
 SELECT ("menneske"i) (0 ("<olmmoš>"i) LINK 0 ess) ;
@@ -1789,7 +1793,7 @@ SELECT:fallback ("skive"i) (0 ("<skearru>"i));
 
 SELECT:part ("part"i) (0 ("<bealli>"i) LINK 1 ("<deaivvadit>"));
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *-1 ("<muitalit>"i) BARRIER SV-BOUNDARY);
-SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N);
+SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N OR prop + @→N);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK 0 pl);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *1 sem_domain + loc);
 SELECT:halvpart ("halvpart"i) (0 ("<bealli>"i) LINK 1 n + pl);
@@ -1843,7 +1847,7 @@ SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIE
 SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
 SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) BARRIER SV-BOUNDARY);
-SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i) OR ("<pálla>"i));
+SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i) OR ("<pálla>"i) OR ("<sihkar>"i) OR ("<eahpesihkar>"i));
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
 SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
@@ -1990,7 +1994,6 @@ SELECT:fallback ("blankett"i) (0 ("<skovvi>"i));
 SELECT:fallback ("gris"i) (0 ("<spiidni>"i));
 SELECT:fallback ("ly"i) (0 ("<suodji>"i));
 SELECT:fallback ("dialekt"i) (0 ("<suopman>"i));
-SELECT:fallback ("forgreining"i) (0 ("<suorgi>"i));
 SELECT:fallback ("venn"i) (0 ("<ustit>"i));
 SELECT:fallback ("hundeflokk"i) (0 ("<valvi>"i));
 SELECT:fallback ("hefte"i) (0 ("<veahtu>"i));
