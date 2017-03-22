@@ -55,12 +55,6 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="post.*"/>
     </def-cat>
     <def-cat n="rel-adverb">
-<cat-item lemma="danne" tags="adv.@ADVL→"/>
-<cat-item lemma="danne" tags="adv.@ADVL-ela→"/>
-<cat-item lemma="danne" tags="adv.@ADVL-ine→"/>
-<cat-item lemma="danne" tags="adv.*.@ADVL→"/>
-<cat-item lemma="danne" tags="adv.*.@ADVL-ela→"/>
-<cat-item lemma="danne" tags="adv.*.@ADVL-ine→"/>
 <cat-item lemma="goas" tags="adv.@ADVL→"/>
 <cat-item lemma="goas" tags="adv.@ADVL-ela→"/>
 <cat-item lemma="goas" tags="adv.@ADVL-ine→"/>
@@ -139,6 +133,7 @@ And then there are some categories like "month", with all the months.
 <cat-item lemma="movt" tags="adv.*.@ADVL→"/>
 <cat-item lemma="movt" tags="adv.*.@ADVL-ela→"/>
 <cat-item lemma="movt" tags="adv.*.@ADVL-ine→"/>
+<cat-item lemma="guđe ládje" tags="adv.*.@ADVL-ine→"/>
     </def-cat>
     <def-cat n="adverb">
       <cat-item tags="adv"/>
@@ -1980,6 +1975,10 @@ And then there are some categories like "month", with all the months.
       <list-item v="vask"/>
       <list-item v="verden"/>
       <list-item v="vind"/>
+      <list-item v="jakt"/>
+      <list-item v="kultur"/>
+      <list-item v="fiske"/>
+      <list-item v="reindrift"/>
     </def-list>
     <def-list n="loc-på" c="Proper place nouns (np.top) get preposition 'i' unless they're in this list.">
       <list-item v="Andøya"/>
@@ -2177,6 +2176,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="verden"/>
       <list-item v="junior"/>
       <list-item v="senior"/>
+      <list-item v="downs syndrom"/>
     </def-list>
 
     <def-list n="bigrams-def" c="det/adj+noun lemma co-occurrences that are typically definite">
@@ -2227,6 +2227,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="determinerless_lem">
       <list-item v="samiskkunnskap"/>
       <list-item v="verden"/>
+      <list-item v="håp"/>
       <list-item v="støtte"/>
       <list-item v="kofte"/> <!-- maybe -->
       <list-item v="hjemmebane"/>
@@ -2365,12 +2366,20 @@ And then there are some categories like "month", with all the months.
               </let>
             </when>
             <when c="hos">
-              <test><and>
+              <test><or>
+              <and>
                 <equal><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn.pers"/></equal>
            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@Pron←"/></equal></not>
            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal></not>
            <equal><clip pos="1" side="sl" part="hab"/><lit v=""/></equal>
-           </and></test>
+           </and>
+           <and>
+           <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_hum"/></equal>
+           <or>
+           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
+           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
+           </or>
+           </and></or></test>
               <let>
                 <var n="caseprep"/><lit v="hos"/>
               </let>
@@ -2711,6 +2720,15 @@ And then there are some categories like "month", with all the months.
                   <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-på-head"/></in></test>
                   <let>
                     <var n="caseprep"/><lit v="på"/>
+                  </let>
+                </when>
+                <when>
+                  <test><or>
+                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="bealli"/></equal>
+                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="guovlu"/></equal>
+                  </or></test>
+                  <let>
+                    <var n="caseprep"/><lit v="fra"/>
                   </let>
                 </when>
                 <otherwise>
@@ -8731,7 +8749,6 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-
     <rule comment="C[] NOM.PROP_GEN NOM
                    –––––
                    Defnes of possessed NOM is ind (NOM.PROP has no defnes).
@@ -9090,7 +9107,6 @@ And then there are some categories like "month", with all the months.
          before the string of genitives. -->
 
     <rule comment="C[] NOM.GEN NOM.GEN NOM
-                   –––––
                    dáčča skuvlla kopija → kopi av den norske skolen
                    Outputs _two chunks_, head noun first.">
       <pattern>
@@ -9677,19 +9693,32 @@ TODO: should we restrict to V.Actio.Nom/Gen ?">
       </action>
     </rule>
 
-    <rule comment="C[] rel-adverb">
+    <rule comment="C[] rel-adverb - these we will handle differently from other adverbs">
       <pattern>
         <pattern-item n="rel-adverb"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <choose>
+        <when>
+        <test><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal></test>
+        <let><var n="c_syn"/><lit-tag v="@ADVLrel-ine→"/></let>
+        </when>
+        <when>
+        <test><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></test>
+        <let><var n="c_syn"/><lit-tag v="@ADVLrel-ela→"/></let>
+        </when>
+        <when>
+        <test><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL→"/></equal></test>
+        <let><var n="c_syn"/><lit-tag v="@ADVLrel→"/></let>
+        </when>
+        </choose>
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
                   <tag><lit-tag v="ADV"/></tag>
-                  <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                  <tag><var n="c_syn"/></tag>
                   <tag><clip pos="1" side="tl" part="a_adv_pr_cnjcoo_cnjsub"/></tag>
-                  <tag><lit-tag v="rel"/></tag>
                   <tag><clip pos="1" side="sl" part="mode"/></tag>
                   <tag><clip pos="1" side="sl" part="a_sem"/></tag>
                 </tags>
