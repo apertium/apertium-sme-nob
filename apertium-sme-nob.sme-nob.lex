@@ -1150,6 +1150,7 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (0 (←vdic→)) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<:>")) ;
+SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<,>")) ;
 
 
 SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain LINK 0 acc OR loc OR ("<cealkámuš>"i)) OR (-1 sem_txt OR sem_domain LINK 0 acc OR loc)) ;
@@ -1399,6 +1400,18 @@ SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 
 SELECT ("katalog"i) (0 ("<ohcu>"i) + pl) ;
 SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
+
+SELECT ("tegn"i) (0 ("<mearka>"i) LINK -1 attr) ;
+SELECT:fallback ("merke"i) (0 ("<mearka>"i)) ;
+
+
+SELECT ("tid"i) (0 ("<dilli>"i) LINK -1 ("<buorre>"i) LINK -1 COPULAS) ;
+SELECT:fallback ("forhold"i) (0 ("<dilli>"i)) ;
+
+
+SELECT ("grunn"i) (0 ("<ágga>"i) LINK -1 ("<navdit>"i)) ;
+SELECT:fallback ("argument"i) (0 ("<ágga>"i)) ;
+
 
 SELECT:fallback ("utredning"i) (0 ("<guorahallan>"i)) ;
 
@@ -2094,6 +2107,7 @@ LIST loc/adv = loc adv;
 SELECT:test ("hva"i) (0 ("<mii>"i) LINK 0 @OBJ→) (*-1 FMAINV BARRIER (*) - loc/adv) ; # Hui hárve boahtá<iv!> ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
 SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
 
+SELECT:pl ("noen"i) (0 ("<muhtun>"i) + pl) ;
 SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
 SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (1 n + pl) ;
 SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (2 n + pl) ;
@@ -2152,6 +2166,10 @@ SELECT ("hvor mange"i) (0 ("<galle>"i)) (-1 v) ;
 SELECT ("noe slik"i) (0 ("<dakkár>"i)) (*-1 neg BARRIER S-BOUNDARY) ;
 SELECT:fallback ("slik"i) (0 ("<dakkár>"i)) ;
 
+SELECT ("forskjellig"i) (0 ("<iešguhte>"i) LINK 0 (foc_pos-ge)) ;
+SELECT ("forskjellig"i) (0 ("<iešguhte>"i) LINK 0 (foc_neg-ge)) ;
+SELECT:fallback ("hver"i) (0 ("<iešguhte>"i)) ;
+
 
 # Adverbs
 # =======
@@ -2178,6 +2196,14 @@ SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
 SELECT ("fordi"i) (0 ("<dan dihte>"i) LINK 1 ("<go>"i)) ;
 SELECT:fallback ("derfor"i) (0 ("<dan dihte>"i)) ;
 
+
+SELECT ("like"i) (0 ("<liikka>"i) LINK 1 a + nom) ;
+SELECT:fallback ("likevel"i) (0 ("<liikka>"i)) ;
+
+SELECT ("altfor"i) (0 ("<beare>"i) LINK 1 ("<unnán>"i) OR ("<ollu>"i)) ;
+SELECT:fallback ("bare"i) (0 ("<beare>"i)) ;
+
+
 SELECT ("på hvilken måte"i) (0 ("<guđe ládje>"i)) ;
 
 
@@ -2191,6 +2217,9 @@ SELECT ("mot"i) (0 ("<vuostálaga>"i) OR ("<vuostálagaid>"i) LINK *1 acc) ;
 SELECT:fallback ("mot hverandre"i) (0 ("<vuostálaga>"i) OR ("<vuostálagaid>"i)) ;
 
 SELECT:fallback ("fremst"i) (0 ("<ovddemusas>"i)) ;
+
+SELECT:fallback ("så pass"i) (0 ("<mađe>"i) LINK 1 a + nom) ;
+SELECT:fallback ("likeså"i) (0 ("<mađe>"i)) ;
 
 
 SELECT ("halvferdig"i) (0 ("<gaskan>"i) LINK *-1 ("<guođđit>"i) OR ("<vuolgit>"i)) ;
@@ -2281,6 +2310,10 @@ SELECT ("helhetlig"i) (0 ("<ollislaš>"i));
 SELECT:fallback ("hel"i) (0 ("<ollis>"i)) ; # (1 ("tid"i));
 
 SELECT:fallback ("sterk"i) (0 ("<nanus>"i));
+
+#SELECT:fallback ("virkelig"i) (0 ("<duohta>"i) LINK -1 go OR COPULAS);
+SELECT:fallback ("sant"i) (0 ("<duohta>"i));
+
 
 SELECT ("forrige"i) (0 ("<ovddit>"i comp)) (1 n + sg);
 

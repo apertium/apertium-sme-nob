@@ -1350,7 +1350,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <equal><clip pos="0" part="a_actio"/><lit v=""/></equal>
                <equal><clip pos="0" part="a_abess"/><lit v=""/></equal>
              <equal><clip pos="0" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+             <or>
               <equal><var n="former-chunk"/><lit-tag v="SV"/></equal>
+              <equal><var n="former-chunk"/><lit-tag v="SN"/></equal>
+             </or>
             </and></test>
             <out>
               <lu><lit v="for"/><lit-tag v="pr"/></lu>

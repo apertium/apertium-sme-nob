@@ -289,7 +289,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="prn.ind.@→A"/>
       <cat-item lemma="makkár" tags="prn.itg.*.@→N"/>
       <cat-item lemma="makkár" tags="prn.itg.*.@→A"/>
-      <cat-item lemma="ieš" tags="prn.ref.*.nom.*"/> <!-- Lene: ieš - selv -->
+      <cat-item lemma="ieš" tags="prn.ref.*.nom.*.@→N"/>
     </def-cat>
     <def-cat n="cmp" c="Words only seen as compund parts">
       <cat-item tags="cmp.*"/>
@@ -1581,6 +1581,15 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_semcon_txt&gt;"/>
       <list-item v="&lt;sem_txt&gt;"/>
     </def-list>
+    <def-list n="sem_veh">
+      <list-item v="&lt;sem_veh&gt;"/>
+      <list-item v="&lt;sem_ani_veh&gt;"/>
+      <list-item v="&lt;sem_ctain-clth_veh&gt;"/>
+      <list-item v="&lt;sem_feat-phys_veh&gt;"/>
+      <list-item v="&lt;sem_hum_veh&gt;"/>
+      <list-item v="&lt;sem_org_veh&gt;"/>
+      <list-item v="&lt;sem_prod-sem_org_veh&gt;"/>
+    </def-list>
     <def-list n="sem_group">
       <list-item v="&lt;sem_act_group&gt;"/>
       <list-item v="&lt;sem_ani_group&gt;"/>
@@ -1807,14 +1816,10 @@ And then there are some categories like "month", with all the months.
       <list-item v="oahpásmuvvat"/>
     </def-list>
     <def-list n="ill-i-verbs" c="See 'ill-NIL-verbs' above.">
-      <list-item v="álgit"/>
       <list-item v="ásahit"/>
     </def-list>
     <def-list n="ill-på-verbs" c="See 'ill-NIL-verbs' above.
                                   Speech verbs, emotional(?) verbs">
-      <list-item v="čállit"/>
-      <list-item v="lohkat"/>
-      <list-item v="hállat"/>
       <list-item v="suhttat"/>
       <list-item v="luohttit"/>
       <list-item v="dorvvastit"/>
@@ -1823,7 +1828,6 @@ And then there are some categories like "month", with all the months.
       <list-item v="guovlat"/>
       <list-item v="báhcit"/>
       <list-item v="čoalkalit"/>
-      <list-item v="vástidit"/>
     </def-list>
     <def-list n="ill-av-verbs" c="See 'ill-NIL-verbs' above.
                                   TODO: Add all lexicalised Der_halla verbs (with illative agents)
@@ -2030,7 +2034,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="år"/>
     </def-list>
     <def-list n="loc-om-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
-      <list-item v="informasjon"/>
+<!--      <list-item v="informasjon"/> ambigious  -->
       <list-item v="tale"/>
       <list-item v="snakk"/>
       <list-item v="kontrakt"/>
@@ -2067,6 +2071,7 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="ess-til" c="Essive noun phrases default to 'som' unless in this list">
       <list-item v="grunn"/>
+      <list-item v="aske"/>
     </def-list>
     <def-list n="ess-til-gen" c="Essive noun phrases default to 'som' unless in this list (note: these are also turned genitive!)">
       <list-item v="lån"/>
@@ -2406,6 +2411,7 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_rule"/></equal>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_veh"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_domain"/></in>
@@ -5541,7 +5547,59 @@ And then there are some categories like "month", with all the months.
     </rule>
 
     <!-- <rules: Dates (need to be before num_nom rules) -->
-    <rule comment="C[DT] month ord lex-beaivi" c="guovvamánu 17. beaivvi → 17. februar
+     <rule comment="C[DT] num month ord lex-beaivi" c="11:36 njukčamánu 21. beaivi → 11:36 21. april">
+      <pattern>
+        <pattern-item n="num"/>
+        <pattern-item n="month"/>
+        <pattern-item n="ord"/>
+        <pattern-item n="lex-beaivi"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="pre_pre_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="4" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="4" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <!-- <tag><lit-tag v="def"/></tag> -->
+              <tag><clip pos="4" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="3" side="tl" part="lemh"/>
+              <lit-tag v="adj.ord.pst.un.sp.def"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            </lu>
+            <b pos="2"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <!-- <clip pos="1" side="tl" part="gen-case"/> -->
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+        <choose><when>
+          <test><not><equal><b pos="3"/><b/></equal></not></test>
+          <out><b pos="3"/></out>
+        </when></choose>
+      </action>
+    </rule>
+   <rule comment="C[DT] month ord lex-beaivi" c="guovvamánu 17. beaivvi → 17. februar
                    TODO: should we also chunk MONTH NUM DOT BEAIVI YEAR ?
                    TODO: should we always delete the genitive here?
                    TODO: do we ever want definite? ('den 17.februar')?">
