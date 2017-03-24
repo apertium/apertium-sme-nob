@@ -1420,19 +1420,18 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <rule comment="CHUNK: nom">
 <pattern><pattern-item n="nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
 
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_nom">
 <pattern><pattern-item n="pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
 
@@ -1442,12 +1441,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_nom">
 <pattern><pattern-item n="pre_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
@@ -1460,12 +1459,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="2"/>
           <lu><clip pos="3" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_pre_nom">
 <pattern><pattern-item n="pre_pre_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
@@ -1481,13 +1480,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <!-- <rules: Trivial, SN CC SN -->
     <rule comment="CHUNK: nom_conj_nom                         0-0">
 <pattern><pattern-item n="nom_conj_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
         <!-- conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
@@ -1500,12 +1499,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="2"/>
           <lu><clip pos="3" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: nom_conj_pre_nom                     0-1">
 <pattern><pattern-item n="nom_conj_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
         <!-- conj -->
@@ -1521,12 +1520,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: nom_conj_pre_pre_nom                 0-2">
 <pattern><pattern-item n="nom_conj_pre_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="5"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
@@ -1546,12 +1545,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="4"/>
           <lu><clip pos="5" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: nom_conj_pre_pre_pre_nom             0-3">
 <pattern><pattern-item n="nom_conj_pre_pre_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
@@ -1575,12 +1574,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="5"/>
           <lu><clip pos="6" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_nom_conj_nom                     1-0">
 <pattern><pattern-item n="pre_nom_conj_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
         <!-- conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
@@ -1596,12 +1595,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_nom_conj_pre_nom                 1-1">
 <pattern><pattern-item n="pre_nom_conj_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="5"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
         <!-- conj -->
@@ -1620,12 +1619,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="4"/>
           <lu><clip pos="5" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_nom_conj_pre_pre_nom             1-2">
 <pattern><pattern-item n="pre_nom_conj_pre_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
@@ -1648,12 +1647,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="5"/>
           <lu><clip pos="6" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_nom_conj_pre_pre_pre_nom         1-3">
 <pattern><pattern-item n="pre_nom_conj_pre_pre_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="7"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
@@ -1680,12 +1679,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="6"/>
           <lu><clip pos="7" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_nom_conj_nom                 2-0">
 <pattern><pattern-item n="pre_pre_nom_conj_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="5"/></call-macro>
         <!-- conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
@@ -1704,12 +1703,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="4"/>
           <lu><clip pos="5" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_nom_conj_pre_nom             2-1">
 <pattern><pattern-item n="pre_pre_nom_conj_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
         <!-- conj -->
@@ -1731,12 +1730,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="5"/>
           <lu><clip pos="6" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_nom_conj_pre_pre_nom         2-2">
 <pattern><pattern-item n="pre_pre_nom_conj_pre_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="7"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="5"/><with-param pos="6"/></call-macro>
@@ -1762,12 +1761,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="6"/>
           <lu><clip pos="7" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_nom_conj_pre_pre_pre_nom     2-3">
 <pattern><pattern-item n="pre_pre_nom_conj_pre_pre_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="8"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
@@ -1797,12 +1796,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="7"/>
           <lu><clip pos="8" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_pre_nom_conj_nom             3-0">
 <pattern><pattern-item n="pre_pre_pre_nom_conj_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="6"/></call-macro>
         <!-- conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
@@ -1824,12 +1823,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="5"/>
           <lu><clip pos="6" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_pre_nom_conj_pre_nom         3-1">
 <pattern><pattern-item n="pre_pre_pre_nom_conj_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="7"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
         <!-- conj -->
@@ -1854,12 +1853,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="6"/>
           <lu><clip pos="7" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_pre_nom_conj_pre_pre_nom     3-2">
 <pattern><pattern-item n="pre_pre_pre_nom_conj_pre_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="8"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="6"/><with-param pos="7"/></call-macro>
@@ -1888,12 +1887,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="7"/>
           <lu><clip pos="8" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_pre_nom_conj_pre_pre_pre_nom 3-3">
 <pattern><pattern-item n="pre_pre_pre_nom_conj_pre_pre_pre_nom"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="9"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="8"/><with-param pos="9"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="7"/><with-param pos="8"/></call-macro>
@@ -1926,13 +1925,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="8"/>
           <lu><clip pos="9" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <!-- <rules: Trivial, SN _app (where app is always three lu's) -->
     <rule comment="CHUNK: nom_app">
 <pattern><pattern-item n="nom_app"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
 
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="1"/></call-macro>
@@ -1945,12 +1944,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_nom_app">
 <pattern><pattern-item n="pre_nom_app"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
 
@@ -1966,12 +1965,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="4"/>
           <lu><clip pos="5" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_nom_app">
 <pattern><pattern-item n="pre_pre_nom_app"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
@@ -1990,12 +1989,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="5"/>
           <lu><clip pos="6" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_pre_pre_nom_app">
 <pattern><pattern-item n="pre_pre_pre_nom_app"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
@@ -2017,6 +2016,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="6"/>
           <lu><clip pos="7" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
     </rule>
 
@@ -2024,17 +2024,16 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <rule comment="CHUNK: adj">
 <pattern><pattern-item n="adj"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
         <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_adj">
 <pattern><pattern-item n="pre_adj"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
         <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="2"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
@@ -2042,13 +2041,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="1"/>
           <lu><clip pos="2" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
       </action>
     </rule>
     <!-- <rules: Trivial, SA CC SA -->
     <rule comment="CHUNK: adj_conj_adj">
 <pattern><pattern-item n="adj_conj_adj"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
         <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="3"/></call-macro>
         <!-- conj -->
         <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="1"/></call-macro>
@@ -2059,12 +2058,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="2"/>
           <lu><clip pos="3" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_adj_conj_adj">
 <pattern><pattern-item n="pre_adj_conj_adj"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
         <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="4"/></call-macro>
         <!-- conj -->
         <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="2"/></call-macro>
@@ -2078,12 +2077,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: adj_conj_pre_adj">
 <pattern><pattern-item n="adj_conj_pre_adj"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
         <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="4"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
         <!-- conj -->
@@ -2097,12 +2096,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
       </action>
     </rule>
     <rule comment="CHUNK: pre_adj_conj_pre_adj">
 <pattern><pattern-item n="pre_adj_conj_pre_adj"/></pattern>
       <action>
-        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
         <call-macro n="clean_adj"><with-param pos="0"/><with-param pos="5"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
         <!-- conj -->
@@ -2119,6 +2118,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <b pos="4"/>
           <lu><clip pos="5" part="whole"/></lu>
         </out>
+        <let><var n="former-chunk"/><lit-tag v="SA"/></let>
       </action>
     </rule>
   </section-rules>
