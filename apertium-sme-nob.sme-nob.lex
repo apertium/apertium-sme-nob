@@ -1405,7 +1405,7 @@ SELECT ("tegn"i) (0 ("<mearka>"i) LINK -1 attr) ;
 SELECT:fallback ("merke"i) (0 ("<mearka>"i)) ;
 
 
-SELECT ("tid"i) (0 ("<dilli>"i) LINK -1 ("<buorre>"i) LINK -1 COPULAS) ;
+SELECT ("forhold"i) (0 ("<dilli>"i) LINK -1 ("<buorre>"i) LINK -1 COPULAS) ; # tid
 SELECT:fallback ("forhold"i) (0 ("<dilli>"i)) ;
 
 
