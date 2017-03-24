@@ -1,0 +1,9 @@
+# -*- cg-pre-pipe: "apertium -d ../../nob nob-disam|cg-conv -a 2>/dev/null" -*-
+
+SOFT-DELIMITERS = "<,>" cm ;
+DELIMITERS = "<.>" "<:>" "<!>" "<?>" "<|>" "<$.>" "<$:>" "<$!>" "<$?>" "<$|>" sent ;
+
+LIST artbar = n vblex ij adv ;
+
+ADD (@HASART) (n) IF (0C (n)) (*-1 ("en") BARRIER artbar);
+ADD (@NOTART) (n) IF (0C (n)) (NEGATE *-1 (det) OR ("den") OR ("en") BARRIER artbar);

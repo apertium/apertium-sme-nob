@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e -u
+
+cd "$(dirname "$0")"/../..
+
+if [[ -t 1 ]]; then
+    colour=--colour
+else
+    colour=""
+fi
+
+cg-comp dev/lists_from_corpus/noun-det.cg3 dev/lists_from_corpus/noun-det.cg3b
+
+xzcat ~/corpora/nob/nowac-10m.xz \
+    | apertium-deshtml \
+    | apertium -f none -d /l/n nob-nno-disam \
+    | cg-proc dev/lists_from_corpus/noun-det.cg3b  \
+    | dev/lists_from_corpus/only_forms_and_syntags.py ${colour} "$@"
