@@ -1522,6 +1522,7 @@ SELECT:fallback ("konge"i) (0 ("<gonagas>"i));
 
 
 # johtu 0 = fart, 1 = bevegelse, 2 = gang
+SELECT ("gang"i) (0 ("<johtu>"i) LINK 0 loc) ;
 SELECT ("gang"i) (0 ("<johtu>"i) LINK 0 ill) ;
 SELECT ("omsetning"i) (0 ("<johtu>"i) LINK -1 sem_food) ;
 # til farten => i gang
@@ -1805,6 +1806,7 @@ SELECT:fallback ("skive"i) (0 ("<skearru>"i));
 
 
 SELECT:part ("part"i) (0 ("<bealli>"i) LINK 1 ("<deaivvadit>"));
+SELECT:part ("part"i) (0 ("<bealli>"i) LINK -1 ("<bargoeallin>") OR ("<ášši>"));
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *-1 ("<muitalit>"i) BARRIER SV-BOUNDARY);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N OR prop + @→N);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK 0 pl);
