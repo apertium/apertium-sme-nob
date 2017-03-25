@@ -1376,6 +1376,9 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_neverdet">
       <attr-item tags="neverdet"/>
     </def-attr>
+    <def-attr n="a_maydetind">
+      <attr-item tags="maydetind"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
@@ -3608,6 +3611,7 @@ And then there are some categories like "month", with all the months.
 	</test>
         <let><var n="c_neverdet"/><lit-tag v="neverdet"/></let>
       </when></choose>
+      <append n="c_neverdet"><clip pos="1" side="tl" part="a_maydetind"/></append>
     </def-macro>
 
     <!-- Output macros: -->

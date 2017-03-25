@@ -41,7 +41,7 @@ awk 'BEGIN {
      }
      /<s n="n"/ && !/par n="unc__n"/ {
        r = gensub(/.*<r>(.*)<s n="n".*/, "\\1", "1")
-       if(r in d) sub("</e>", "<par n=\"maydetind\"/></e>")
+       if(r in d) sub("</e>", "<par n=\"maydetind__n\"/></e>")
      }
      {print}' \
          ../../apertium-sme-nob.sme-nob.dix
