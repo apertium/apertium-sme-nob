@@ -12,6 +12,8 @@ fi
 
 cg-comp dev/lists_from_corpus/noun-det.cg3 dev/lists_from_corpus/noun-det.cg3b
 
+# TODO: should use dictionary-case mode so we don't have to tolower afterwards …
+
 xzcat ~/corpora/nob/nowac-10m.xz \
     | apertium-deshtml \
     | apertium -f none -d /l/n nob-nno-disam \
