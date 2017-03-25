@@ -1002,6 +1002,8 @@ SELECT:fallback ("vie"i) IF  (0 ("<vihahit>"i)) ;
 SELECT ("bli"i) IF  (0 ("<boahtit>"i)) (1 ("<ovtta oaivilii>")) ;
 SELECT:fallback ("komme"i) IF  (0 ("<boahtit>"i)) ;
 
+SELECT:fallback ("ferde"i) IF  (0 ("<vánddardit>"i)) ;
+
 
 SELECT:fallback ("lukke"i) IF  (0 ("<giddet>"i)) ;
 
@@ -1484,6 +1486,9 @@ SELECT:fallback ("bakke"i) (0 ("<luohkká>"i));
 # diibmu 0 = time, 1 = klokke
 SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 num OR ord) ;
 # Boahtte gaskavahku diibmu 11.00 rahpá kurdarbearaš Mehidi Kárášjohkii ođđa kaféa.
+SELECT ("klokke"i) (0 ("<diibmu>"i) LINK *1 ("<sirdit>"i) LINK *1 ("<diibmu>"i) OR ("<goas>"i)) ;
+# Diibmu guovttis galgá diimmu sirdit ovtta diimmu ovddos.
+# eai muitte riekta guđe guvlui diimmu galgá sirdit goas.
 # Ord because of possible incorrect analysis of Num + punctuation.
 SELECT ("klokke"i) (0 ("<diibmu>"i) LINK *0 ("<ollu>"i)) ;
 # Ollugo diibmu lea.
@@ -2048,7 +2053,7 @@ SELECT:fallback ("hovedforslag"i) (0 ("<váldoevttohus>"i)) ;
 SELECT ("kø"i) (0 ("<ráidu>"i) LINK *0 ("<vuordit>"i) OR ("<čuožžut>"i)) ;
 SELECT:fallback ("serie"i) (0 ("<ráidu>"i)) ;
 
-SELECT ("retning"i) (0 ("<guovlu>"i) + ill LINK -1 ("heajos")) ;
+SELECT ("retning"i) (0 ("<guovlu>"i) + ill LINK -1 ("heajos") OR sem_time OR ("<guhte>"i) OR (sem_event)) ;
 SELECT:fallback ("område"i) (0 ("<guovlu>"i)) ;
 
 SELECT ("rein"i) (0 ("<heagga>"i) LINK -1 num - ("okta")) ;

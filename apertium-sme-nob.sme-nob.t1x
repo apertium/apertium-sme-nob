@@ -206,7 +206,9 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="num.*.@→N"/>
       <cat-item tags="num.*.@→A"/>
       <cat-item tags="num.*.@←SUBJ"/>
+      <cat-item tags="num.*.@SUBJ→"/>
       <cat-item tags="num.*.@←OBJ"/>
+      <cat-item tags="num.*.@OBJ→"/>
       <cat-item tags="num.*.@HNOUN"/> <!-- headliners -->
     </def-cat>
     <def-cat n="num">
@@ -699,6 +701,12 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="bodda" tags="n.*.sg.gen.*"/>
       <cat-item lemma="bodda" tags="n.sg.acc.*"/>
       <cat-item lemma="bodda" tags="n.*.sg.acc.*"/>
+    </def-cat>
+    <def-cat n="lex-guvlui">
+      <cat-item lemma="guvlui" tags="post.*"/>
+    </def-cat>
+    <def-cat n="lex-guhte">
+      <cat-item lemma="guhte" tags="prn.*"/>
     </def-cat>
     <def-cat n="lex-bivdit">
       <cat-item lemma="bivdit" tags="vblex.*"/>
@@ -1901,6 +1909,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="barnehage"/>
       <list-item v="barnehagetilbud"/>
       <list-item v="begynnelse"/>
+      <list-item v="bilulykke"/>
       <list-item v="blod"/>
       <list-item v="brev"/>
       <list-item v="bruk"/>
@@ -1975,6 +1984,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="telefon"/>
       <list-item v="tidsrom"/>
       <list-item v="trygghet"/>
+      <list-item v="ulykke"/>
       <list-item v="urfolkssak"/>
       <list-item v="utgangspunkt"/>
       <list-item v="utland"/>
@@ -4591,6 +4601,28 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+    <rule comment="C[DL] lex-guhte lex-guvlui" c="guđe guvlui → i hvilken retning">
+      <pattern>
+        <pattern-item n="lex-guhte"/>
+        <pattern-item n="lex-guvlui"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="i hvilken retning"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="C[L] ord lex-lohki
      čihččetlohkái nisu lea navdon goddon
      Dohko bođii almmái gii lei njealjátlohkái " c="čihččetlohkái nisu → i sekstiårene kvinne">
@@ -6706,8 +6738,14 @@ And then there are some categories like "month", with all the months.
           <let><var n="defnes"/><lit-tag v="def"/></let>
           </when>
         </choose>
+        <choose>
+          <when>
+            <test><equal><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal></test>
+            <let><clip pos="2" side="sl" part="syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
+          </when>
+        </choose>
 
-        <let><clip pos="2" side="tl" part="case"/><lit v=""/></let> <!-- Lene added -->
+        <let><clip pos="2" side="tl" part="case"/><lit v=""/></let> 
         <!-- <let><clip pos="2" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let> -->
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
         <let><var n="seen_num"/><lit v=""/></let>
@@ -6826,6 +6864,12 @@ And then there are some categories like "month", with all the months.
           <otherwise>
             <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
           </otherwise>
+        </choose>
+        <choose>
+          <when>
+            <test><equal><clip pos="3" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal></test>
+            <let><clip pos="3" side="sl" part="syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
+          </when>
         </choose>
 
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
@@ -7018,7 +7062,6 @@ And then there are some categories like "month", with all the months.
     </rule>
 
     <rule comment="C[] NUM_MOD NOM.GEN NOM
-                   –––––
                    Oblique use of num nom, here the final nominal is the head
                    See NUM_MOD NOM rule.">
       <pattern>
