@@ -31,17 +31,17 @@ awk -F'\t' -vr="${ratio}" '$3 > r*$2 && $3 > 1 { print $1 }' ./joined > neverdet
 # Keep the ones where ratio*HASART count is more than than NOTART:
 awk -F'\t' -vr="${ratio}" 'r*$2 > $3 { print $1 }' ./joined > maydetind
 
-# But we want to be conservative – if articles are rare, we should
-# have good reason to output them. Keep the ones where ratio*HASART
-# count is more than than 3xNOTART:
-awk -F'\t' -vr="${ratio}" 'r*$2 > 3*$3 { print $1 }' ./joined > likelydetind
-
 awk 'BEGIN {
-       while(getline<"likelydetind") d[$0]++
+       while(getline<"maydetind") d[$0]++
+     }
+     {
+       gsub(/<par n="maydetind__n"\/>/, "")
      }
      /<s n="n"/ && !/par n="unc__n"/ {
        r = gensub(/.*<r>(.*)<s n="n".*/, "\\1", "1")
        if(r in d) sub("</e>", "<par n=\"maydetind__n\"/></e>")
      }
-     {print}' \
+     {
+       print
+     }' \
          ../../apertium-sme-nob.sme-nob.dix

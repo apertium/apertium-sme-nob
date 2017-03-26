@@ -1,0 +1,7 @@
+
+scripts to find counts of indefinite articles before n.sg.ind, for
+tagging nouns in bidix with <maydetind>. The t4x only outputs articles
+before (chunk head) nouns that have <maydetind>.
+
+make corpus counts with =run-maydetind=, then make a new bidix with
+=postproc-maydetind=
