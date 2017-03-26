@@ -570,7 +570,7 @@ LIST TIME-ADV = (adv sem_time) ;
 LIST DOPPE = "<badjin>"i "<bajil>"i "<dakko>"i "<dá>"i "<dákko>"i "<dáppe>"i "<diekko>"i "<dieppe>"i "<do>"i "<dokko>"i "<doppe>"i "<duo>"i "<duokko>"i "<duoppe>"i "<olgun>"i ;
 # Adverbs with a locativic form, but don´t get Loc as a tag.
 
-LIST DOHKO = "<bajás>" "<deike>" "<diehke>" "<diehko>" "<dohko>" "<duohko>" "<lulás>" "<olggos>" "<ruoktot>" "<sisa>" "<vuovdimassii>" ;
+LIST DOHKO = "<bajás>" "<bajit>" "<deike>" "<diehke>" "<diehko>" "<dohko>" "<duohko>" "<lulás>" "<olggos>" "<ruoktot>" "<sisa>" "<vuovdimassii>" ;
 # Adverbs with a illativic form, but they don´t get Ill as a tag.
 
 
@@ -985,6 +985,9 @@ SELECT:fallback ("ville"i) IF  (0 ("<háliidit>"i)) ;
 SELECT ("nå"i) IF  (0 ("<joksat>"i)) (0* sem_veh) ;
 SELECT:fallback ("oppnå"i) IF  (0 ("<joksat>"i)) ;
 
+SELECT ("få"i) IF  (0 ("<goddit>"i)) (0* ("<guolli>"i) OR ("<luossa>"i) OR ("<dorski>"i)) ;
+SELECT:fallback ("drepe"i) IF  (0 ("<goddit>"i)) ;
+
 
 SELECT ("samle"i) IF  (0 ("<čoaggit>"i)) (0* ("<ruhta>"i) + acc OR ("<namma>"i) + acc OR ("<namma>"i) + gen) ;
 SELECT:fallback ("plukke"i) IF  (0 ("<čoaggit>"i)) ;
@@ -1077,7 +1080,7 @@ SELECT:fallback ("arbeide"i) (0 ("<bargat>"i));
 
 #SELECT ("slippe") (0 ("<beassat>"i)) (1 ill) ; # (1 (der_nomact loc) OR (actio loc) OR ("<olggos>"i)) ;
 ## Mun bessen vuolgimis.
-SELECT ("komme") (0 ("<beassat>"i)) (1 ill OR DOHKO) ;
+SELECT ("komme") (0 ("<beassat>"i)) (*1 ill OR DOHKO BARRIER SV-BOUNDARY) ;
 SELECT ("komme") (0 ("<beassat>"i) LINK *1 ("<searvái>")) ;
 ## In beassan skuvlii dan beaivve.  Jeg kom meg ikke på skolen den dagen.
 ## Maiddái Ranghild Nystad beassá Sámediggái. Også RN kommer seg inn på Sametinget.
@@ -1087,7 +1090,7 @@ SELECT ("komme") (0 ("<beassat>"i) LINK *1 ("<searvái>")) ;
 SELECT:fallback ("få"i) (0 ("<beassat>"i));
 
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
-SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst OR ("<veahkki>"i));
+SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst OR ("<veahkki>"i) OR (sem_act) + acc BARRIER SV-BOUNDARY);
 SELECT ("be"i) (0 ("<bivdit>"i) LINK 1 ("<ahte>"i) OR ("<veahkki>"i));
 SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*fanas>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) OR ("<birrajándora>"r) OR sem_time OR sem_plc );
 SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
@@ -1811,7 +1814,7 @@ SELECT:fallback ("skive"i) (0 ("<skearru>"i));
 
 
 SELECT:part ("part"i) (0 ("<bealli>"i) LINK 1 ("<deaivvadit>"));
-SELECT:part ("part"i) (0 ("<bealli>"i) LINK -1 ("<bargoeallin>") OR ("<ášši>"));
+SELECT:part ("part"i) (0 ("<bealli>"i) LINK -1 ("<bargoeallin>") OR ("<ášši>") OR ("<nubbi>"));
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *-1 ("<muitalit>"i) BARRIER SV-BOUNDARY);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N OR prop + @→N);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK 0 pl);
