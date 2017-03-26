@@ -38,12 +38,12 @@ And then there are some categories like "month", with all the months.
 
 <transfer default="chunk">
   <section-def-cats>
+   <def-cat n="comma">
+      <cat-item tags="cm"/>
+    </def-cat>
    <def-cat n="sent">
       <cat-item tags="sent.*"/>
       <cat-item tags="sent"/>
-      <cat-item tags="clb"/>
-      <cat-item tags="cm"/>
-      <cat-item tags="clb.*"/>
     </def-cat>
     <def-cat n="adpos">
       <cat-item tags="adp.*"/>
@@ -516,6 +516,10 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="bealde" tags="pr.*"/>
       <cat-item lemma="bealli" tags="n.*"/>
       <cat-item lemma="beallai" tags="post.*"/>
+    </def-cat>
+    <def-cat n="lex-láhkai">
+      <cat-item lemma="láhkai" tags="post.*"/>
+      <cat-item lemma="láhkai" tags="adv.*"/>
     </def-cat>
     <def-cat n="hum_gen">
       <cat-item tags="n.*.sem_hum.sg.gen.*"/>
@@ -1380,6 +1384,9 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_wpn"/>
       <attr-item tags="sem_wthr"/>
       <attr-item tags="sem_year"/>
+      <attr-item tags="top"/>
+      <attr-item tags="cog"/>
+      <attr-item tags="ant"/>
     </def-attr>
     <def-attr n="a_neverdet">
       <attr-item tags="neverdet"/>
@@ -1911,6 +1918,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="begynnelse"/>
       <list-item v="bilulykke"/>
       <list-item v="blod"/>
+      <list-item v="brann"/>
       <list-item v="brev"/>
       <list-item v="bruk"/>
       <list-item v="bryting"/>
@@ -4618,6 +4626,51 @@ And then there are some categories like "month", with all the months.
             <lu>
               <lit v="i hvilken retning"/>
               <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[DL] num lex-láhkai" c="guovtti láhkai → på to måter">
+      <pattern>
+        <pattern-item n="num"/>
+        <pattern-item n="lex-láhkai"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <choose><when>
+            <test>
+              <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal></not>
+            </test>
+            <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+        </when></choose>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="på"/>
+              <lit-tag v="pr"/>
+            </lu>
+          <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>
@@ -10060,6 +10113,37 @@ TODO: this should be an mwe in the analyser.">
         </out>
       </action>
     </rule>
+    <rule comment="C[_]-T comma">
+      <pattern>
+        <pattern-item n="comma"/>
+      </pattern>
+      <action>
+        <choose><when>
+          <test><not><equal><clip pos="1" side="tl" part="lemh"/><lit v=""/></equal></not></test>
+          <out>
+            <chunk name="comma">
+              <tags>
+                <tag><lit-tag v="SENT"/></tag>
+              </tags>
+              <lu>
+                <clip pos="1" side="tl" part="whole"/>
+              </lu>
+            </chunk>
+          </out>
+        </when></choose>
+        <choose><when>
+          <test><not><equal><clip pos="1" side="tl" part="lemh"/><lit v=";"/></equal></not></test>
+          <let><var n="main-verb-sl"/><lit v=""/></let>
+          <let><var n="main-verb-pasv"/><lit v=""/></let>
+          <let><var n="main-verb-pasv"/><lit v=""/></let>
+          <let><var n="main-verb-sl"/><lit v=""/></let>
+          <let><var n="main-verb-tl"/><lit v=""/></let>
+          <let><var n="aux-verb-sl"/><lit v=""/></let>
+          <let><var n="aux-verb-tl"/><lit v=""/></let>
+          <let><var n="foc-word"/><lit v=""/></let>
+        </when></choose>
+      </action>
+    </rule>
     <rule comment="C[_]-T sent">
       <pattern>
         <pattern-item n="sent"/>
@@ -10083,6 +10167,16 @@ TODO: this should be an mwe in the analyser.">
           <let><var n="caseFirstWord"/><lit v="Init"/></let>
           <let><var n="main-verb-sl"/><lit v=""/></let>
           <let><var n="main-verb-pasv"/><lit v=""/></let>
+          <let><var n="previous-nhead"/><lit v=""/></let>
+          <let><var n="previous-obj"/><lit v=""/></let>
+          <let><var n="main-verb-pasv"/><lit v=""/></let>
+          <let><var n="main-verb-sl"/><lit v=""/></let>
+          <let><var n="main-verb-tl"/><lit v=""/></let>
+          <let><var n="aux-verb-sl"/><lit v=""/></let>
+          <let><var n="aux-verb-tl"/><lit v=""/></let>
+          <let><var n="vfin-pers"/><lit v=""/></let>
+          <let><var n="vfin-nbr"/><lit v=""/></let>
+          <let><var n="foc-word"/><lit v=""/></let>
         </when></choose>
       </action>
     </rule>

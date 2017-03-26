@@ -208,8 +208,13 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="SV_lOBJ-tilsvar">
       <cat-item tags="SV.@←OBJ.*"/>
     </def-cat>
-    <def-cat n="sent">
+   <def-cat n="sent">
+      <cat-item lemma="sent" tags="SENT.*"/>
       <cat-item lemma="sent" tags="SENT"/>
+    </def-cat>
+   <def-cat n="comma">
+      <cat-item lemma="comma" tags="SENT.*"/>
+      <cat-item lemma="comma" tags="SENT"/>
     </def-cat>
     <def-cat n="sentenceborder">
       <cat-item lemma="conj" tags="@CVP.cnjcoo"/>
@@ -1567,7 +1572,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     <rule comment="REGLA: lAPPnom FV - out: 1 2 3 " c="sámesearvvi jođiheaddji, Mikkel Eskil Mikkelsen, lea hui duhtavaš">
       <pattern>
         <pattern-item n="lAPPnom"/>
-        <pattern-item n="sent"/>
+        <pattern-item n="comma"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>

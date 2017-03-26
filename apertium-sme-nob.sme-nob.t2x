@@ -45,8 +45,12 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
 
   <section-def-cats>
    <def-cat n="sent">
-      <cat-item tags="SENT.*"/>
-      <cat-item tags="SENT"/>
+      <cat-item lemma="sent" tags="SENT.*"/>
+      <cat-item lemma="sent" tags="SENT"/>
+    </def-cat>
+   <def-cat n="comma">
+      <cat-item lemma="comma" tags="SENT.*"/>
+      <cat-item lemma="comma" tags="SENT"/>
     </def-cat>
     <def-cat n="SA">
       <cat-item tags="SA"/>
@@ -155,7 +159,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SV.@←OBJ.TD.*"/>
     </def-cat>
     <def-cat n="SN_rN.gen">
-      <cat-item tags="SN.@→N.*.gen"/>
+      <cat-item tags="SN.@→N.*"/>
     </def-cat>
     <def-cat n="ADVL.loc">
       <cat-item tags="SN.@ADVL.*.loc"/>
@@ -847,7 +851,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
         <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
-        <call-macro n="set_c_tags2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="1"/></call-macro>
         <call-macro n="set_c_name3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <out>
           <chunk>
@@ -1012,10 +1016,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </action>
     </rule>
 
-    <rule comment="REGLA: SN_rN sent SN_rN CNP caseprep-PR SN-rADVL" c="Guovdageainnu, Álttá ja Ákŋoluovtta muohtačorgenbargguide">
+    <rule comment="REGLA: SN_rN comma SN_rN CNP caseprep-PR SN-rADVL" c="Guovdageainnu, Álttá ja Ákŋoluovtta muohtačorgenbargguide">
       <pattern>
         <pattern-item n="SN_rN"/>
-        <pattern-item n="sent"/>
+        <pattern-item n="comma"/>
         <pattern-item n="SN_rN"/>
         <pattern-item n="CNP"/>
         <pattern-item n="caseprep-PR"/>
@@ -1024,14 +1028,14 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <action>
         <out>
           <chunk><clip pos="5" part="whole"/></chunk>
-          <b pos="1"/>
+          <b pos="2"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <chunk><clip pos="2" part="whole"/></chunk>
-          <b pos="2"/>
-          <chunk><clip pos="3" part="whole"/></chunk>
           <b pos="3"/>
-          <chunk><clip pos="4" part="whole"/></chunk>
+          <chunk><clip pos="3" part="whole"/></chunk>
           <b pos="4"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="5"/>
           <chunk><clip pos="6" part="whole"/></chunk>
         </out>
         <choose>
@@ -1043,12 +1047,12 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </action>
     </rule>
 
-    <rule comment="REGLA: SN_rN sent SN_rN sent SN_rN CNP caseprep-PR SN-rADVL" c="Guovdageainnu, Álttá, Láhpi ja Ákŋoluovtta muohtačorgenbargguide">
+    <rule comment="REGLA: SN_rN comma SN_rN comma SN_rN CNP caseprep-PR SN-rADVL" c="Guovdageainnu, Álttá, Láhpi ja Ákŋoluovtta muohtačorgenbargguide">
       <pattern>
         <pattern-item n="SN_rN"/>
-        <pattern-item n="sent"/>
+        <pattern-item n="comma"/>
         <pattern-item n="SN_rN"/>
-        <pattern-item n="sent"/>
+        <pattern-item n="comma"/>
         <pattern-item n="SN_rN"/>
         <pattern-item n="CNP"/>
         <pattern-item n="caseprep-PR"/>
@@ -1057,17 +1061,17 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <action>
         <out>
           <chunk><clip pos="7" part="whole"/></chunk>
-          <b pos="1"/>
+          <b pos="2"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <chunk><clip pos="2" part="whole"/></chunk>
-          <b pos="2"/>
+          <b pos="4"/>
           <chunk><clip pos="3" part="whole"/></chunk>
           <chunk><clip pos="4" part="whole"/></chunk>
-          <b pos="3"/>
-          <chunk><clip pos="5" part="whole"/></chunk>
-          <b pos="4"/>
-          <chunk><clip pos="6" part="whole"/></chunk>
           <b pos="5"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
+          <b pos="6"/>
+          <chunk><clip pos="6" part="whole"/></chunk>
+          <b pos="7"/>
           <chunk><clip pos="8" part="whole"/></chunk>
         </out>
         <choose>
@@ -1175,6 +1179,28 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: SN_rN.gen SN_rPOST adpos
+                   Move postposition to front">
+      <pattern>
+        <pattern-item n="SN_rN.gen"/>
+        <pattern-item n="SN_rPOST"/>
+        <pattern-item n="adpos"/>
+      </pattern>
+      <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
 
 
     <rule comment="REGLA: adpos PR SN_PREPl
