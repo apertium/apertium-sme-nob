@@ -1969,6 +1969,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="ledelse"/>
       <list-item v="liv"/>
       <list-item v="lov"/>
+      <list-item v="lys"/>
       <list-item v="mai"/>
       <list-item v="mars"/>
       <list-item v="medisin"/>
@@ -4100,9 +4101,9 @@ And then there are some categories like "month", with all the months.
             <not><equal><var n="aux-verb-tl"/><lit v="synes"/></equal></not>
           </and></test>
           <out>
-            <chunk name="conj" case="caseFirstWord">
+            <chunk name="adv" case="caseFirstWord">
               <tags>
-                <tag><lit-tag v="@CVP.cnjsub"/></tag>
+                <tag><lit-tag v="SV.@+FAUXV"/></tag>
               </tags>
               <lu>
                 <lit v="i ferd med"/>

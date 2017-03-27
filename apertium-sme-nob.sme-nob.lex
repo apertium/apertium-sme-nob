@@ -857,6 +857,7 @@ SELECT ("enn"i) (0 ("<go>"i)) (0 cs LINK -1 (@COMP-CS←)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cs) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (1 ("<dušše>"i)) ;
+SELECT ("enn"i) (0 ("<go>"i)) (-1 conneg LINK -1 neg) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cs) (*-1 ("<ovdal>"i) OR ("<eará>"i) BARRIER S-BOUNDARY) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cs) (*-1 comp BARRIER v OR S-BOUNDARY) ;
 ## Son lea viššaleabbo go mun.
@@ -1049,6 +1050,7 @@ SELECT:orron-doppe ("bo"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (*1 loc OR DOPPE OR 
 #Check SET ORRUT-BO
 SELECT:doppe-son-orui ("bo"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 @SUBJ→) (-2 loc OR DOPPE) ;
 SELECT:doppe-son-orui ("bo"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 sem_plc + loc OR DOPPE) ;
+SELECT ("bo"i) (0 ("<orrut>"i) OR ("<orrot>"i) LINK NEGATE *1 actio + ess ); 
 
 SELECT:fallback ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)); # says parallel corpus
 
@@ -1905,7 +1907,7 @@ SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK 1 (arab) OR ("<ovdaolmmoš>"
 SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK *0 ("<boazu>"i) OR ("<boazolohku>"i)) ;
 SELECT:fallback ("boplass"i) (0 ("<orohat>"i));
 
-SELECT ("topp"i) (0 ("<njunuš>"i))(1 ("<artista>"i) OR ("<listu>"i));
+SELECT ("topp"i) (0 ("<njunuš>"i))(*0 ("<artista>"i) OR ("<listu>"i));
 SELECT ("toppfolk"i) (0 ("<njunuš>"i) + pl) ;
 SELECT:fallback ("tet"i) (0 ("<njunuš>"i));
 
@@ -2089,6 +2091,7 @@ SELECT:fallback ("etter"i) (0 ("<maŋis>"i)) ;
 SELECT ("om"i) (0 ("<geahčen>"i) LINK -1 sem_time) ;
 SELECT:fallback ("hos"i) (0 ("<geahčen>"i)) ;
 
+SELECT ("for"i) (0 ("<ektui>"i) LINK -1 (sem_perc-phys)) ;
 SELECT:fallback ("mot"i) (0 ("<ektui>"i)) ;
 
 
@@ -2165,7 +2168,7 @@ SELECT:oss-selv ("selv"i) (0 ("<ieš>"i) LINK 0 acc) (-1 pron + pers + acc) ;
 SELECT:til-meg-selv ("selv"i) (0 ("<ieš>"i) LINK 0  ill) (-1 pers + ill) ;
 SELECT:på-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 ill) (NOT -1 pers + ill) ;
 
-SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 acc) (NOT -1 pron + pers + acc) (NOT *1 v BARRIER S-BOUNDARY) ;
+SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 acc LINK NOT -1 pron + pers + acc) ; # (NOT *1 v BARRIER S-BOUNDARY) ;
 
 SELECT:med-deg pron (0 ("<ieš>"i)) (0 @→P OR @P←) ;
 # Váldde biergasiid iežat fárrui → Ta sakene med deg
