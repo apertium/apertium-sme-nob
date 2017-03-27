@@ -4567,6 +4567,7 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+
     <rule comment="C[L] lex-gealdagas_loc → spent">
       <pattern>
         <pattern-item n="lex-gealdagas_loc"/>
@@ -4587,6 +4588,7 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+
     <rule comment="C[DL] lex-bures lex-boahtit" c="bures boahtán → velkommen">
       <pattern>
         <pattern-item n="lex-bures"/>
@@ -4607,8 +4609,13 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
       </action>
     </rule>
+
     <rule comment="C[DL] lex-guhte lex-guvlui" c="guđe guvlui → i hvilken retning">
       <pattern>
         <pattern-item n="lex-guhte"/>
@@ -4629,8 +4636,13 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
       </action>
     </rule>
+
     <rule comment="C[DL] num lex-láhkai" c="guovtti láhkai → på to måter">
       <pattern>
         <pattern-item n="num"/>
@@ -4663,7 +4675,7 @@ And then there are some categories like "month", with all the months.
               <clip pos="1" side="tl" part="nbr"/>
               <clip pos="1" side="tl" part="lemq"/>
             </lu>
-            <b pos="2"/>
+            <b/>
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
@@ -4676,6 +4688,7 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+
     <rule comment="C[L] ord lex-lohki
      čihččetlohkái nisu lea navdon goddon
      Dohko bođii almmái gii lei njealjátlohkái " c="čihččetlohkái nisu → i sekstiårene kvinne">
@@ -4709,8 +4722,13 @@ And then there are some categories like "month", with all the months.
             </mlu>
           </chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
       </action>
     </rule>
+
     <rule comment="C[L] lex-dan lex-sadjai" c="dan sadjái → i stedet">
       <pattern>
         <pattern-item n="lex-dan"/>
@@ -4731,8 +4749,13 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
       </action>
     </rule>
+
     <rule comment="C[L] bealde-modyfier lex-bealde" c="sii ellet nuppe bealde → de lever på andre siden">
       <pattern>
         <pattern-item n="bealde-modyfier"/>
@@ -4800,7 +4823,7 @@ And then there are some categories like "month", with all the months.
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="tags"/>
               <lit v="$"/>
-              <b pos="1"/>
+              <b/>
               <lit v="^"/>
               <lit v="siden"/>
               <lit-tag v="adv"/>
@@ -4809,6 +4832,7 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+
     <rule comment="C[TW] hum_gen lex-guovttos" c="artistta guovttos → de to artistene">
       <pattern>
         <pattern-item n="hum_gen"/>
@@ -4844,6 +4868,7 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+
     <rule comment="C[AT] lex-minuhtta lex-minuhtta" c="minuvttas minuktii → minutt for minutt">
       <pattern>
         <pattern-item n="lex-minuhtta-loc"/>
