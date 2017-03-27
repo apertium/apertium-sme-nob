@@ -1008,6 +1008,7 @@ SELECT:fallback ("komme"i) IF  (0 ("<boahtit>"i)) ;
 SELECT:fallback ("ferde"i) IF  (0 ("<vánddardit>"i)) ;
 
 
+SELECT ("stenge"i) IF  (0 ("<giddet>"i) LINK *0 (sem_route) OR ("<luodda>")) ;
 SELECT:fallback ("lukke"i) IF  (0 ("<giddet>"i)) ;
 
 SELECT:fallback ("avskjede"i) IF  (0 ("<lihccut>"i)) ;
@@ -1689,7 +1690,7 @@ LIST VUOJAN-ANI-ADJ = ("<sávri>"i) ("<buorre>"i) ("<sápmi>"i) ("<falli>"i) ("<
 LIST VUOJAN-ANI-V = ("<biebmat>"i) ("<hárjehahttit>"i) ("<njuovvat>"i) ("<ruohttat>"i) ("<vuoitit>"i);
 
 SELECT ("kjørerein"i) (0 ("<vuoján>"i)) (*0 VUOJAN-ANI-WORDS OR VUOJAN-ANI-V) ;
-SELECT ("kjørerein"i) (0 ("<vuoján>"i) LINK 0 ess) ;
+#SELECT ("kjørerein"i) (0 ("<vuoján>"i) LINK 0 ess) ;
 SELECT ("kjørerein"i) (0 ("<vuoján>"i)) (-1 VUOJAN-ANI-ADJ + attr) ;
 ## Bikko Máhte luohti lea dovddus Sančuari hámis “ Stállangazza ” , mii lei beakkán vuoján 	Bikko Máhtes . #disambiguation rule needs to fix beakkán analysis
 ## Dat lei erenoamáš fales vuoján , dadjá Eira , dan botta go njuovvá iežas 	vuojána 	máid massii .
@@ -1756,8 +1757,12 @@ SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 SELECT ("middel"i) (0 ("<doarjja>"i)) (-1 ("<ruoná>"i)) ;
 SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
 
-SELECT ("sør"i) (0 ("<mátta>"i)) (1 prop or sem_plc) ;
+SELECT ("sør"i) (0 ("<mátta>"i)) (1 prop or sem_plc or ("<sápmi>"i)) ;
 SELECT:fallback ("rot"i) (0 ("<mátta>"i))  ;	
+
+SELECT ("samskipnad"i) (0 ("<ovttastus>"i)) (-1 ("<studeanta>"i)) ;
+SELECT:fallback ("forbindelse"i) (0 ("<ovttastus>"i))  ;	
+
 
 SELECT ("press"i) (0 ("<deaddu>"i) + acc) (*-1 ("<bidjat>"i) BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("tyngde"i) (0 ("<deaddu>"i)) ;
