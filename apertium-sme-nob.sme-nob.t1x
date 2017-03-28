@@ -1700,6 +1700,11 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_group_org&gt;"/>
       <list-item v="&lt;sem_hum_org&gt;"/>
     </def-list>
+    <def-list n="sem_edu">
+      <list-item v="&lt;sem_edu&gt;"/>
+      <list-item v="&lt;sem_build_edu_org&gt;"/>
+      <list-item v="&lt;sem_edu_org&gt;"/>
+    </def-list>
 
     <def-list n="animate_nonagent-verbs" c="Passive versions of these have 'pers' tag on 'bli', else 'impers',
                                             in order to make the inserted subject pronoun animate.">
@@ -2666,7 +2671,12 @@ And then there are some categories like "month", with all the months.
                   </and>
                   <and>
                     <equal><var n="main-verb-sl"/><lit v="bidjat"/></equal>
-               <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in></not>
+                    <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in></not>
+                  </and>
+                  <and><or>
+                    <equal><var n="main-verb-sl"/><lit v="Álgit"/></equal>
+                    <equal><var n="main-verb-sl"/><lit v="álgit"/></equal></or>
+                   <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_edu"/></in>
                   </and>
                 </or>
               </test>
