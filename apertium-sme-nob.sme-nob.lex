@@ -2118,6 +2118,7 @@ SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR 
 SELECT:fallback ("han"i) + (GD_pers) (0 ("<son>"i)) ;
 
 SELECT ("av hvem"i) (0 ("<gii>"i)) (NEGATE 0 ←hab→ ) ;
+SELECT ("hvem"i) (0 ("<gii>"i) LINK 0 rel + gen) ;
 
 
 SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV)(1 VFIN) ;
@@ -2127,6 +2128,7 @@ SELECT:ge-man ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 pcle) (-2 tv + FMAINV)
 SELECT ("hva"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 tv + FMAINV) ; # Minsttarplána čilge maid oahppit berrešedje máhttit.
 LIST loc/adv = loc adv;
 SELECT:test ("hva"i) (0 ("<mii>"i) LINK 0 @OBJ→) (*-1 FMAINV BARRIER (*) - loc/adv) ; # Hui hárve boahtá<iv!> ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
+SELECT:post ("hva"i) (0 ("<mii>"i) LINK 1 po) ;
 SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
 
 SELECT:pl ("noen"i) (0 ("<muhtun>"i) + pl) ;

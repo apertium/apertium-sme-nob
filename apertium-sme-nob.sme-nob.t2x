@@ -52,6 +52,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item lemma="comma" tags="SENT.*"/>
       <cat-item lemma="comma" tags="SENT"/>
     </def-cat>
+    <def-cat n="unknown">
+      <cat-item tags="unknown"/>
+    </def-cat>
     <def-cat n="SA">
       <cat-item tags="SA"/>
       <cat-item tags="SA.*"/>
@@ -1227,6 +1230,24 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         <out>
           <var n="caseprep"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: unknown caseprep-PR SN , out: 2 1 3" c="Lean PPO oahpus erenoamážit oahppan">
+      <pattern>
+        <pattern-item n="unknown"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN"/>
+      </pattern>
+      <action>
+        <!-- <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro> -->
+        <call-macro n="modify_caseprep"><with-param pos="2"/></call-macro>
+        <out>
+          <var n="caseprep"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
         </out>
       </action>
     </rule>

@@ -507,6 +507,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="guovttos" tags="n.*.coll.*"/>
       <cat-item lemma="guovttos" tags="n.coll.*"/>
     </def-cat>
+    <def-cat n="lex-birra">
+      <cat-item lemma="birra" tags="post.*"/>
+    </def-cat>
     <def-cat n="bealde-modyfier">
       <cat-item  tags="*.@→P"/>
     </def-cat>
@@ -958,7 +961,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="np.ant"/>
     </def-attr>
     <def-attr n="a_rel">
-      <attr-item tags="ref"/>
+      <attr-item tags="rel"/>
       <attr-item tags="ref"/>
       <attr-item tags="res" c="Reciprocal"/>
     </def-attr>
@@ -1983,6 +1986,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="oktober"/>
       <list-item v="paragraf"/>
       <list-item v="periode"/>
+      <list-item v="perspektiv"/>
       <list-item v="praksis"/>
       <list-item v="prosjekt"/>
       <list-item v="prosjektstønad"/>
@@ -2016,6 +2020,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="kultur"/>
       <list-item v="fiske"/>
       <list-item v="reindrift"/>
+      <list-item v="utdanning"/>
     </def-list>
     <def-list n="loc-på" c="Proper place nouns (np.top) get preposition 'i' unless they're in this list.">
       <list-item v="Andøya"/>
@@ -7658,6 +7663,32 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+    <rule comment="C[DL] prn.rel lex-birra" c="man/gean birra - om hva/hvem">
+      <pattern>
+        <pattern-item n="prn.rel"/>
+        <pattern-item n="lex-birra"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="rel" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="a_rel"/></tag>
+            </tags>
+            <lu>
+              <lit v="om"/><lit-tag v="pr"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_prn"/>
+              <clip pos="1" side="tl" part="lemq"/>
+             </lu>
+         </chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="C[] RELATIVE_PRONOUN gii → som
                    Just removes everything.
                    (Should we call the chunk something else maybe?)">
