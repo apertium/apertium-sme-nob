@@ -272,12 +272,12 @@ test-previous-offenders: all
 	./previous-offenders
 
 test-install:
-	DESTDIR=tmp/$@ make install
-	find tmp/$@ -type f -name '*.mode' | xargs -r sed -i.tmp "s%$(prefix)%tmp/$@/&%g"
-	echo "Mus lea oahpahus gaskkal guovtti ja njealji." | apertium -d tmp/$@/$(prefix)/share/apertium sme-nob | tee tmp/$@/mt
-	@echo "Jeg har undervisning mellom to og fire." > tmp/$@/ref
-	@diff tmp/$@/ref tmp/$@/mt
-	@rm -rf tmp/$@
+	DESTDIR=tmp-$@ make install
+	find tmp-$@ -type f -name '*.mode' | xargs -r sed -i.tmp "s%$(prefix)%tmp-$@/&%g"
+	echo "Mus lea oahpahus gaskkal guovtti ja njealji." | apertium -d tmp-$@/$(prefix)/share/apertium sme-nob | tee tmp-$@/mt
+	@echo "Jeg har undervisning mellom to og fire." > tmp-$@/ref
+	@diff tmp-$@/ref tmp-$@/mt
+	@rm -rf tmp-$@
 
 # TODO: test-bidix-gen script needs fixing
 test: all test-previous-offenders test-install
