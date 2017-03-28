@@ -983,6 +983,10 @@ SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 n ) ;
 SELECT:fallback ("ville"i) IF  (0 ("<háliidit>"i)) ;
 
 
+SELECT ("sette# fast"i) IF  (0 ("<darvánit>"i) LINK *0 sem_veh ) ;
+SELECT:fallback ("feste"i) IF  (0 ("<darvánit>"i)) ;
+
+
 SELECT ("nå"i) IF  (0 ("<joksat>"i)) (0* sem_veh) ;
 SELECT:fallback ("oppnå"i) IF  (0 ("<joksat>"i)) ;
 
@@ -2337,6 +2341,10 @@ SELECT ("forrige"i) (0 ("<ovddit>"i comp)) (1 n + sg);
 
 SELECT ("trygg"i) (0 ("<luohttevaš>"i)) (0 a) (NOT 0 n);
 SELECT:fallback ("tillitsfull"i) (0 ("<luohttevaš>"i));
+
+SELECT ("kommende"i) (0 ("<boahtte>"i)) (1 ("<áigi>"i));
+SELECT:fallback ("neste"i) (0 ("<boahtte>"i));
+
 
 SELECT ("ledig"i) (0 ("<rabas>"i)) (*1 ("<.*virgi>"ri));
 SELECT:fallback ("åpen"i) (0 ("<rabas>"i));

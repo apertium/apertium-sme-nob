@@ -2394,7 +2394,10 @@ And then there are some categories like "month", with all the months.
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in>
                   <equal><var n="main-verb-sl"/><lit v="beroštit"/></equal>
                   <and>
+                  <or>
                 <equal><var n="previous-nhead"/><lit v="konkurranse"/></equal>
+                <equal><var n="previous-nhead"/><lit v="kunnskap"/></equal>
+                  </or>
              <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
              <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in></not>
                   </and>
