@@ -25,21 +25,23 @@ svn () {
 
     echo
     echo "On gtweb, copying to /usr and restarting apy …"
-    set -x
-    ssh -t gtweb '
-sudo rsync -a for_gtweb_jorgal/usr/local/share/apertium/apertium-sme-nob/ /usr/share/apertium/apertium-sme-nob/ &&
+    script="
+sudo rsync -a for_gtweb_jorgal/usr/local/share/apertium/${PACKAGE}/ /usr/share/apertium/${PACKAGE}/ &&
 sudo systemctl restart apy
-'
+"
+    set -x
+    ssh -t gtweb "${script}"
 }
 
 package () {
-    set -x
-    ssh -t gtweb '
+    script="
 sudo dnf clean packages             &&
 sudo dnf update                     &&
-sudo dnf reinstall apertium-sme-nob &&
+sudo dnf reinstall ${PACKAGE}       &&
 sudo systemctl restart apy
-'
+"
+    set -x
+    ssh -t gtweb "${script}"
 }
 
 fail () {
@@ -53,6 +55,9 @@ Assumes you have a Host gtweb in ~/.ssh/config
 EOF
     exit 1
 }
+
+
+### Main:
 
 if [[ $# -ne 1 ]]; then
     fail
@@ -71,6 +76,10 @@ Host gtweb
 EOF
     exit 1
 fi
+
+e=$(grep "^PACKAGE='apertium-...-...'$" config.log)
+eval "$e"
+export PACKAGE
 
 case $1 in
     svn) shift; svn "$@";;
