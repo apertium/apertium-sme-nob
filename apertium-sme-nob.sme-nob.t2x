@@ -163,6 +163,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="SN_rN.gen">
       <cat-item tags="SN.@→N.*"/>
+      <cat-item tags="SN.@→A.*"/>
     </def-cat>
     <def-cat n="ADVL.loc">
       <cat-item tags="SN.@ADVL.*.loc"/>
@@ -903,6 +904,34 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </action>
     </rule>
 
+    <rule comment="REGLA: SN_rN.gen lOBJ" c="Sámedikki nana ja čielga vuostálastima">
+      <pattern>
+        <pattern-item n="SN_rN.gen"/>
+        <pattern-item n="lOBJ"/>
+      </pattern>
+      <action>
+      <let><var n="c_tags"/><clip pos="2" part="tags"/></let>
+      <let>
+        <var n="c_name"/>
+        <concat>
+          <lit v="pre_"/>
+          <clip pos="2" part="lemh"/>
+        </concat>
+      </let>
+        <out>
+          <chunk>
+            <var n="c_name"/>
+            <var n="c_tags"/>
+            <lit v="{"/>
+            <clip pos="1" part="content"/>
+            <b pos="1"/>
+            <clip pos="2" part="content"/>
+            <lit v="}"/>
+            <clip pos="1" part="lemq"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>  
 
     <rule comment="REGLA: SN CNP SN_rPOST adpos
                    TV ja neahta bokte → via TV og nettet

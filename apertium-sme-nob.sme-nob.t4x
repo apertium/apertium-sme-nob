@@ -66,6 +66,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <def-cat n="pre_pre_pre_nom">
 <cat-item name="pre_pre_pre_nom"/>
     </def-cat>
+    <def-cat n="pre_pre_pre_pre_nom">
+<cat-item name="pre_pre_pre_pre_nom"/>
+    </def-cat>
     <!-- <def-cats: Trivial, conjunctions
                     For every single nom, alternatively allow a det or prn.
                     There are no 'pre_det' or 'pre_prn' etc. -->
@@ -1367,10 +1370,22 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <test><not><equal><clip pos="0" part="modality"/><lit-tag v="cond"/></equal></not></test>
         <let><clip pos="1" part="temps"/><clip pos="0" part="temps"/></let>
       </when> </choose>
-        <choose><when>
-          <test><equal><clip pos="1" part="temps"/><lit-tag v="TD"/></equal></test>
+        <choose>
+        <when>
+          <test><and> 
+          <equal><clip pos="1" part="temps"/><lit-tag v="TD"/></equal>
+          <equal><clip pos="0" part="a_actio"/><lit-tag v="actio.ess"/></equal>
+       </and></test>
+          <let><clip pos="1" part="temps"/><lit-tag v="pres"/></let>
+        </when>
+        <when>
+          <test><and> 
+          <equal><clip pos="1" part="temps"/><lit-tag v="TD"/></equal>
+       <not><equal><clip pos="0" part="a_actio"/><lit-tag v="actio.ess"/></equal></not>
+       </and></test>
           <let><clip pos="1" part="temps"/><lit-tag v="inf"/></let>
-        </when></choose>
+        </when>
+        </choose>
         <choose><when>
           <test><equal><clip pos="1" part="temps"/><lit v=""/></equal></test>
           <choose>
@@ -1520,6 +1535,30 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <lu><clip pos="3" part="whole"/></lu>
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
+        </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
+      </action>
+    </rule>
+    <rule comment="CHUNK: pre_pre_pre_pre_nom">
+<pattern><pattern-item n="pre_pre_pre_pre_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="5"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
+
+        <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="5"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
+          <b pos="3"/>
+          <lu><clip pos="4" part="whole"/></lu>
+          <b pos="4"/>
+          <lu><clip pos="5" part="whole"/></lu>
         </out>
         <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
