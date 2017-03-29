@@ -935,7 +935,8 @@ SELECT:fallback ("enda"i) IF (0 ("<vel>"i))  ;
 
 SELECT ("måtte"i) IF (0 ("<leat>"i) LINK -1 loc + HUMAN) (1 inf) ;
 # mis lea cahkkehit dola
-SELECT:hab-ha ("ha"i) IF (0 ("<leat>"i)) (*-1 ←hab→ - dem BARRIER SV-BOUNDARY) ;
+SELECT:hab-ha ("ha"i) IF (0 ("<leat>"i)) (*-1 (@ADVLhab→) - dem BARRIER SV-BOUNDARY) ;
+SELECT:hab-ha ("ha"i) IF (0 ("<leat>"i)) (*1 (@←ADVLhab) - dem BARRIER SV-BOUNDARY) ;
 SELECT:neg-ha ("ha"i) IF (0 ("<leat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 SELECT:ha-NOT-actio ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NEGATE *1 actio + ess BARRIER S-BOUNDARY) (NOT *1 der_pass + prfprc) ;
 # sin giella lea<er> áitojuvvon ja sáhttá jávkat; … sii leat<er> dál<Adv> guorahallamin<Actio> …
