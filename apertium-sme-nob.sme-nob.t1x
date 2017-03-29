@@ -3544,7 +3544,10 @@ And then there are some categories like "month", with all the months.
                   ASSUMES b pos=N IS APPENDED AFTER CALLING THIS!">
       <choose>
         <when c="Adjective, e.g. sápmi.n.sg.gen → samisk.adj">
-          <test><not><equal><clip pos="2" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
+          <test><or>
+          <not><equal><clip pos="2" side="tl" part="a_adj"/><lit v=""/></equal></not>
+          <equal><clip pos="2" side="sl" part="temps"/><lit-tag v="prfprc"/></equal>
+        </or></test>
           <call-macro n="modify_adj_gen_nbr"><with-param pos="1"/><with-param pos="2"/></call-macro>
           <choose>
             <when>
