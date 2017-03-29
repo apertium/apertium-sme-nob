@@ -1418,7 +1418,7 @@ SELECT:fallback ("merke"i) (0 ("<mearka>"i)) ;
 
 
 SELECT ("forhold"i) (0 ("<dilli>"i) LINK -1 ("<buorre>"i) LINK -1 COPULAS) ; # tid
-SELECT:fallback ("forhold"i) (0 ("<dilli>"i)) ;
+SELECT:fallback ("situasjon"i) (0 ("<dilli>"i)) ;
 
 
 SELECT ("grunn"i) (0 ("<ágga>"i) LINK -1 ("<navdit>"i)) ;
