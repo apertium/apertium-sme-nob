@@ -1098,7 +1098,7 @@ SELECT ("komme") (0 ("<beassat>"i) LINK *1 ("<searvái>")) ;
 SELECT:fallback ("få"i) (0 ("<beassat>"i));
 
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
-SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst OR ("<veahkki>"i) OR (sem_act) + acc BARRIER SV-BOUNDARY);
+SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst OR ("<veahkki>"i) OR ("<doarjja>"i) OR (sem_act) + acc BARRIER SV-BOUNDARY);
 SELECT ("be"i) (0 ("<bivdit>"i) LINK 1 ("<ahte>"i) OR ("<veahkki>"i));
 SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*fanas>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) OR ("<birrajándora>"r) OR sem_time OR sem_plc );
 SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
@@ -1820,6 +1820,7 @@ SELECT:fallback ("fiskekort"i) (0 ("<bivdolohpi>"i));
 SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 
 SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + ill) (-1 ("<bidjat>"i));
+SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + loc) (*-1 ("<.*vuohta>"r) OR (sem_rule));
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:fallback ("skive"i) (0 ("<skearru>"i));
