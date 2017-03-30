@@ -965,6 +965,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <let><clip pos="2" part="gen"/><lit-tag v="mf"/></let>
           </when></choose>
         </when>
+          <when c="oahppan oahpaheaddjit">
+            <test><and>
+              <equal><clip pos="2" part="temps"/><lit-tag v="pp"/></equal>
+              <equal><clip pos="0" part="art"/><lit-tag v="def"/></equal>
+            </and></test>
+            <let><clip pos="2" part="gen"/><lit v=""/></let>
+          </when>
 
         <otherwise c="pprs no gender, everything else just gets un">
           <choose>

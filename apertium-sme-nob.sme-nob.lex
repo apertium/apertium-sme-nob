@@ -842,7 +842,8 @@ SELECT:fallback ("på"i) (0 ("<alde>"i) OR ("<nalde>"i)) ;
 
 
 SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0 cs) ;
-SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (*-1 ("<seammá>"i) BARRIER SV-BOUNDARY) ;
+SELECT:som ("som"i) (0 ("<go>"i)) (*-1 ("<seammá>"i) OR ("<liikka>"i) BARRIER SV-BOUNDARY) ;
+SELECT:som ("som"i) (0 ("<go>"i)) (1 ("<eará>"i)) ;
 
 SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) OR ("<dan dihte>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 COPULAS LINK -1 (a nom)) ;
@@ -1010,6 +1011,10 @@ SELECT:fallback ("vie"i) IF  (0 ("<vihahit>"i)) ;
 
 SELECT ("bli"i) IF  (0 ("<boahtit>"i)) (1 ("<ovtta oaivilii>")) ;
 SELECT:fallback ("komme"i) IF  (0 ("<boahtit>"i)) ;
+
+SELECT ("utdanne"i) IF  (0 ("<oahppat>"i) LINK 0 prfprc + @→N) ;
+SELECT:fallback ("lære"i) IF  (0 ("<oahppat>"i)) ;
+
 
 SELECT:fallback ("ferde"i) IF  (0 ("<vánddardit>"i)) ;
 
@@ -1471,7 +1476,7 @@ SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i) OR ("<luoitádit>"i) OR 
 ## Beaivi báitá.
 SELECT:fallback ("dag"i) (0 ("<beaivi>"i));
 
-SELECT ("oppmerksomhet"i) IF (0 ("<fuomášupmi>"i)) (*-1 ("<giddet>"i) BARRIER SV-BOUNDARY) ;
+SELECT ("oppmerksomhet"i) IF (0 ("<fuomášupmi>"i)) (*-1 ("<giddet>"i) OR ("<olahit>"i) BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("ide"i) IF (0 ("<fuomášupmi>"i)) ;
 
 SELECT ("mat"i) IF (0 ("<fuomášupmi>"i)) ;
@@ -1825,6 +1830,9 @@ SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:fallback ("skive"i) (0 ("<skearru>"i));
 
+SELECT ("pensjon"i) (0 ("<ealáhat>"i) LINK 0 ill LINK *-1 ("<mannat>"i) OR ("<báhcit>"i) BARRIER SV-BOUNDARY);
+SELECT:fallback ("beite"i) (0 ("<skearru>"i));
+
 
 SELECT:part ("part"i) (0 ("<bealli>"i) LINK 1 ("<deaivvadit>"));
 SELECT:part ("part"i) (0 ("<bealli>"i) LINK -1 ("<bargoeallin>") OR ("<ášši>") OR ("<nubbi>"));
@@ -1913,13 +1921,16 @@ SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK 1 (arab) OR ("<ovdaolmmoš>"
 SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK *0 ("<boazu>"i) OR ("<boazolohku>"i)) ;
 SELECT:fallback ("boplass"i) (0 ("<orohat>"i));
 
-SELECT ("topp"i) (0 ("<njunuš>"i))(*0 ("<artista>"i) OR ("<listu>"i));
+SELECT ("topp"i) (0 ("<njunuš>"i))(*0 ("<artista>"i) OR ("<listu>"i) OR ("<válga.*>"r));
 SELECT ("toppfolk"i) (0 ("<njunuš>"i) + pl) ;
-SELECT:fallback ("tet"i) (0 ("<njunuš>"i));
+SELECT:fallback ("topp"i) (0 ("<njunuš>"i));
 
 SELECT:fallback ("forsvar"i) (0 ("<suodjalus>"i));
 
 SELECT ("omkring"i) (0 ("<biras>"i) LINK 0 pl + gen) (1 ("<mánnu>"i));
+
+SELECT ("avstand"i) (0 ("<gaska>"i) LINK -1 ("<stuoris>"i));
+SELECT:fallback ("mellomrom"i) (0 ("<gaska>"i));
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
@@ -1952,7 +1963,6 @@ SELECT:fallback ("flokk"i) (0 ("<eallu>"i));
 SELECT:fallback ("hustru"i) (0 ("<eamit>"i));
 SELECT:fallback ("makt"i) (0 ("<fápmu>"i));
 SELECT:fallback ("skall"i) (0 ("<garra>"i));
-SELECT:fallback ("mellomrom"i) (0 ("<gaska>"i));
 SELECT:fallback ("negl"i) (0 ("<gazza>"i));
 SELECT:fallback ("lettelse"i) (0 ("<geahpádus>"i));
 SELECT:fallback ("gang"i) (0 ("<geardi>"i));
