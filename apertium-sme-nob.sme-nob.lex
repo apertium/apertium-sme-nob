@@ -889,7 +889,8 @@ SELECT:fallback ("hvilken av de to"i) (0 ("<goabbá>"i)) ;
 
 SELECT:fallback ("i hele"i) (0 ("<miehtá>"i)) ;
 
-SELECT ("om"i) (0 ("<birra>"i) LINK 0 po) ;
+SELECT ("rundt"i) (0 ("<birra>"i) LINK 0 po LINK *0 ("<vuodjit>"i) ) ;
+SELECT:fallback ("om"i) (0 ("<birra>"i)) ;
 
 SELECT ("innen"i) (0 ("<sisa>"i) LINK 0 po LINK -1 sem_time) ;
 SELECT:fallback ("inn i"i) (0 ("<sisa>"i) LINK 0 po) ;
@@ -992,6 +993,10 @@ SELECT:fallback ("feste"i) IF  (0 ("<darvánit>"i)) ;
 
 SELECT ("nå"i) IF  (0 ("<joksat>"i)) (0* sem_veh) ;
 SELECT:fallback ("oppnå"i) IF  (0 ("<joksat>"i)) ;
+
+SELECT ("heve"i) IF  (0 ("<lonuhit>"i)) (0*  ("<ruhta>"i)) ;
+SELECT:fallback ("bytte"i) IF  (0 ("<lonuhit>"i)) ;
+
 
 SELECT ("få"i) IF  (0 ("<goddit>"i)) (0* ("<guolli>"i) OR ("<luossa>"i) OR ("<dorski>"i)) ;
 SELECT:fallback ("drepe"i) IF  (0 ("<goddit>"i)) ;
@@ -1255,7 +1260,9 @@ SELECT:reparere ("innkalle"i) (0 ("<gohččut>"i) LINK *0 ("<diibmu>"i) OR ("<č
 SELECT:fallback ("be"i) (0 ("<gohččut>"i));
 
 SELECT:reparere ("smitte"i) (0 ("<njoammut>"i) LINK *0 ("<.*dávda>"r) OR ("<oaivevuorri>"i) OR ("<CWD>"i)  OR (sem_state-sick));
-SELECT:fallback ("krype"i) (0 ("<njoammut>"i));
+SELECT:fallback ("smitte"i) (0 ("<njoammut>"i));
+
+SELECT:fallback ("sette# opp"i) (0 ("<cegget>"i));
 
 
 SELECT:fallback ("rette# på"i) (0 ("<njulget>"i));
@@ -1374,7 +1381,7 @@ SELECT:fallback ("forlenge"i) (0 ("<joatkkašit>"i));
 SELECT:fallback ("slarke"i) (0 ("<johtalit>"i));
 SELECT:fallback ("snu"i) (0 ("<jorahit>"i));
 SELECT:fallback ("få"i) (0 ("<juollut>"i));
-SELECT:fallback ("fortrenge"i) (0 ("<jávkadit>"i));
+SELECT:fallback ("utslette"i) (0 ("<jávkadit>"i));
 SELECT:fallback ("avslutte"i) (0 ("<loahpahit>"i));
 SELECT:fallback ("lese"i) (0 ("<lohkalit>"i));
 SELECT:fallback ("stole"i) (0 ("<luohttit>"i));
@@ -1799,7 +1806,8 @@ SELECT:fallback ("sørsame"i) (0 ("<lullisápmi>"i));
 SELECT:fallback ("lulesame"i) (0 ("<julevsápmi>"i));
 SELECT:fallback ("sjøsame"i) (0 ("<mearrasápmi>"i));
 
-SELECT ("Samisk"i) (0 ("<Sápmi>"i) LINK 0 sg + gen);
+SELECT ("sameland"i) (0 ("<sápmi>"i) LINK -1 ("<ollis>"i) OR ("<miehtá>"i) OR a + attr);
+#SELECT ("Samisk"i) (0 ("<Sápmi>"i) LINK 0 sg + gen);
 SELECT:fallback ("Sameland"i) (0 ("<Sápmi>"i));
 
 SELECT:finsk ("finsk"i) (0 ("<Suopma>"i) LINK 0 gen LINK 1 ("<bealde>"i) OR ("<bealli>"i) OR ("<beallai>"i));
@@ -1903,6 +1911,8 @@ SELECT:fallback ("søknad"i) (0 ("<ohcan>"i));
 
 SELECT ("stolt"i) (0 ("<rápmi>"i) LINK 0 loc);
 SELECT:fallback ("ros"i) (0 ("<rápmi>"i));
+
+SELECT:fallback ("ekstra"i) (0 ("<liige>"i));
 
 
 SELECT ("antall"i) (0 ("<lohku>"i) LINK -1 sem_hum + pl) ;
@@ -2351,6 +2361,9 @@ SELECT:fallback ("sterk"i) (0 ("<nanus>"i));
 #SELECT:fallback ("virkelig"i) (0 ("<duohta>"i) LINK -1 go OR COPULAS);
 SELECT:fallback ("sant"i) (0 ("<duohta>"i));
 
+SELECT ("næringsrik"i) (0 ("<beaktil>"i) LINK *0 sem_food);
+
+SELECT:fallback ("effektiv"i) (0 ("<beaktil>"i));
 
 SELECT ("forrige"i) (0 ("<ovddit>"i comp)) (1 n + sg);
 
