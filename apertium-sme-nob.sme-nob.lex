@@ -840,6 +840,7 @@ SELECT:fallback ("på"i) (0 ("<alde>"i) OR ("<nalde>"i)) ;
 # go (default)=> når
 # go:1 => at, go:2 => enn, go:3 => som, go:4 => da, go:5 => fordi
 
+SELECT:når ("når"i) (0 ("<go>"i)) (-1 ("<rápmi>"i) + loc) ;
 
 SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0 cs) ;
 SELECT:som ("som"i) (0 ("<go>"i)) (*-1 ("<seammá>"i) OR ("<liikka>"i) BARRIER SV-BOUNDARY) ;
@@ -1900,7 +1901,7 @@ SELECT:fallback ("grunn"i) (0 ("<sivva>"i));
 SELECT ("leting"i) (0 ("<ohcan>"i) LINK -1 ("<diehtu>"i));
 SELECT:fallback ("søknad"i) (0 ("<ohcan>"i));
 
-SELECT ("stolt av"i) (0 ("<rápmi>"i) LINK 0 loc);
+SELECT ("stolt"i) (0 ("<rápmi>"i) LINK 0 loc);
 SELECT:fallback ("ros"i) (0 ("<rápmi>"i));
 
 
