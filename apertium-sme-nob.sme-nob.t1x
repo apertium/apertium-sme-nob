@@ -160,7 +160,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="adj.*.sup.*"/>
       <cat-item tags="adj.sup.*"/>
     </def-cat>
-    <def-cat n="adj_attr">
+    <def-cat n="adj_vblex_attr">
 <!--      <cat-item tags="adj.ess.*"/>
       <cat-item tags="adj.*.ess.*"/>
       <cat-item tags="adj.attr"/>
@@ -6151,14 +6151,14 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] num.cmp adj_attr nom_head" c="22-jahkásaš nieida">
+    <rule comment="C[] num.cmp adj_vblex_attr  nom_head" c="22-jahkásaš nieida">
       <!--
           Intended matches:
 	^6<num><cmp><guio>/6<det><qnt><un><pl><guio>$ ^jahki<n><der_sasj><adj><attr><@→N>/-åring<n><m><attr><@→N>$
 	^nieida<n><sem_hum><sg><nom><←ext→><@←SUBJ>/jente<n><f><sem_hum><sg><nom><←ext→><@←SUBJ>      -->
       <pattern>
         <pattern-item n="num.cmp"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -6944,7 +6944,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] num_mod adj_attr nom_head" c="
+    <rule comment="C[] num_mod adj_vblex_attr nom_head" c="
                    22 jahkásaš Tine        → 22 år gamle Tine
                    22 jahkásaš viesu       → det 22 år gamle huset / 22 år gammelt hus
                    guokte jahkásaš gumppe  → den to år gamle ulven / to år gammel ulv
@@ -6969,7 +6969,7 @@ And then there are some categories like "month", with all the months.
       -->
       <pattern>
         <pattern-item n="num_mod"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -7028,7 +7028,7 @@ And then there are some categories like "month", with all the months.
       <pattern>
         <pattern-item n="num_mod"/>
         <pattern-item n="det_mod"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -8143,7 +8143,7 @@ And then there are some categories like "month", with all the months.
                    almmolaš bálvalusaide → til offentlige tjenester
                    almmolaš bálvalus → (den) offentlige tjenesten">
       <pattern>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -8177,11 +8177,11 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] adj_attr conj adj_attr nom_head" c="Girjji namma lea ohppojuvvon ja sohppojuvvon giella">
+    <rule comment="C[] adj_vblex_attr conj adj_vblex_attr nom_head" c="Girjji namma lea ohppojuvvon ja sohppojuvvon giella">
       <pattern>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="conj"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -8236,13 +8236,13 @@ And then there are some categories like "month", with all the months.
     </rule>
 
 
-    <rule comment="C[] adj_attr adj_attr nom_head
+    <rule comment="C[] adj_vblex_attr adj_vblex_attr nom_head
                    –––––
                    ođđa almmolaš bálvalusaide → til nye offentlige tjenester
                    ođđa almmolaš bálvalus → (den) nye offentlige tjenesten">
       <pattern>
-        <pattern-item n="adj_attr"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -8272,8 +8272,8 @@ And then there are some categories like "month", with all the months.
                    TODO: epenthesis!
                    Moves syn_label from CMP to NOM">
       <pattern>
-        <pattern-item n="adj_attr"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom-adj.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
@@ -8311,7 +8311,7 @@ And then there are some categories like "month", with all the months.
                    duiska okkupašuvdnafápmu → tysk okkupasjonsmakt
                    Moves syn_label from CMP to NOM">
       <pattern>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom-adj.cmp"/>
         <pattern-item n="nom_head"/>
       </pattern>
@@ -8343,7 +8343,7 @@ And then there are some categories like "month", with all the months.
                    Dalá Ruvdnaprinsabáras → Daværende Kronprinsparet
                    Moves syn_label from CMP to NOM">
       <pattern>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom-adj.cmp"/>
         <pattern-item n="nom.cmp"/>
         <pattern-item n="nom_head"/>
@@ -8631,7 +8631,7 @@ And then there are some categories like "month", with all the months.
                    TODO: demonstrative 'denne viktige oppgaven' (def!)">
       <pattern>
         <pattern-item n="det_mod"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -8674,10 +8674,10 @@ And then there are some categories like "month", with all the months.
     </rule>
 
 
-    <rule comment="C[] det_mod adj_attr adj_attr nom_head" c="dan vuosttaš sámi čoahkkimii - not perfect yet, look at 3">
+    <rule comment="C[] det_mod adj_vblex_attr adj_vblex_attr nom_head" c="dan vuosttaš sámi čoahkkimii - not perfect yet, look at 3">
       <pattern>
         <pattern-item n="det_mod"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom.gen"/>
         <pattern-item n="nom_head"/>
       </pattern>
@@ -8746,7 +8746,7 @@ And then there are some categories like "month", with all the months.
       <pattern>
         <pattern-item n="nom.gen"/>
         <pattern-item n="det_mod"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -8809,12 +8809,12 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] adj_attr nom.gen nom_head 
+    <rule comment="C[] adj_vblex_attr nom.gen nom_head 
                    –––––
                    aktonas mánáid gatnjaliiguin → ensomme barns tårer
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom.gen"/>
         <pattern-item n="nom_head"/>
       </pattern>
@@ -8846,7 +8846,7 @@ And then there are some categories like "month", with all the months.
                    ">
       <pattern>
         <pattern-item n="nom.gen"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -8878,9 +8878,9 @@ And then there are some categories like "month", with all the months.
                    Čeahpes sámi pedagogalaš bargi bargá mánáidgárddis. → Den flinke samiske pedagogiske ansatte arbeider i barnehagen. (defnes TODO)
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom.gen"/>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
@@ -9467,7 +9467,7 @@ And then there are some categories like "month", with all the months.
                    dábálaš dáčča skuvlla kopija → kopi av den vanlige norske skolen
                    Outputs _two chunks_, head noun first.">
       <pattern>
-        <pattern-item n="adj_attr"/>
+        <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom.gen"/>
         <pattern-item n="nom.gen"/>
         <pattern-item n="nom_head"/>
