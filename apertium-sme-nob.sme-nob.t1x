@@ -413,6 +413,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="vblex">
       <cat-item tags="vblex.*"/>
     </def-cat>
+    <def-cat n="vblex_abess">
+      <cat-item tags="vblex.*.vabess.*"/>
+    </def-cat>
     <def-cat n="vblex.IFAUXV">
       <cat-item tags="vblex.*.@-FAUXV"/>
     </def-cat>
@@ -1435,6 +1438,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="pre-nom"         c="lu's before nom-lu in nominal chunk"/>
     <def-var n="post-nom"        c="lu's after nom-lu in nominal chunk (only used in 'den som V cmp')"/>
     <def-var n="pre-verb"        c="lu's before verb-lu in verbal chunk (only compounds for now)"/>
+    <def-var n="post-verb"        c="lu's after verb-lu in verb abessive chunk "/>
     <def-var n="defnes"          c="definiteness (noun, adj)"/>
     <def-var n="c_name"          c="chunk name"/>
     <def-var n="c_neverdet"      c="tell t4x never to output a determiner if this is set to something"/>
@@ -2072,6 +2076,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="Vestlandet"/>
       <list-item v="dag"/>
       <list-item v="deltid"/>
+      <list-item v="festival"/>
       <list-item v="fredag"/>
       <list-item v="grunnskole"/>
       <list-item v="heltid"/>
@@ -9688,6 +9693,58 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+      </action>
+    </rule>
+
+    <rule comment="C[AT] vblex_abess" c="all in one chunk, so we can change word order if it comes after the object">
+      <pattern>
+        <pattern-item n="vblex_abess"/>
+      </pattern>
+      <action>
+        <call-macro n="reset_caseFirstWord"></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_verb-lemma"><with-param pos="1"/></call-macro>
+      <choose><when c="Append 'seg' if reflexive:">
+        <test>
+          <equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal>
+        </test>
+            <let><var n="prn_pers"/><lit-tag v="p3"/></let>
+            <let><var n="prn_gen"/><lit-tag v="un"/></let>
+            <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
+        <let><var n="post-verb"/>
+        <concat>
+          <b/>
+            <lit v="^"/>
+              <lit v="seg"/>
+              <lit-tag v="prn.ref.p3.un.sp.acc"/>
+            <lit v="$"/>
+                    </concat>
+            </let>
+      </when></choose>
+          <out>
+          <chunk name="adv" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SV"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                 <tag><lit-tag v="vabess"/></tag>
+            </tags>
+           <lu>
+              <lit v="uten"/><lit-tag v="adv"/>
+            </lu>
+            <b />
+           <lu>
+              <lit v="å"/><lit-tag v="part"/>
+            </lu>
+            <b />
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="vblex.inf"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            <var n="post-verb"/>
+            </chunk>
+          </out>
+            <let><var n="post-verb"/><lit v=""/></let>
       </action>
     </rule>
 
