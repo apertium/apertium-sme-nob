@@ -2026,6 +2026,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="søknad"/>
       <list-item v="telefon"/>
       <list-item v="tidsrom"/>
+      <list-item v="tet"/>
       <list-item v="trygghet"/>
       <list-item v="ulykke"/>
       <list-item v="urfolkssak"/>
@@ -2445,6 +2446,8 @@ And then there are some categories like "month", with all the months.
            </and>
            <and>
            <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_hum"/></equal>
+         <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in></not>
+         <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="njunuš"/></equal></not>
            <or>
            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
@@ -6148,8 +6151,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] num.cmp adj_attr nom_head" c="
-                   22-jahkásaš nieida">
+    <rule comment="C[] num.cmp adj_attr nom_head" c="22-jahkásaš nieida">
       <!--
           Intended matches:
 	^6<num><cmp><guio>/6<det><qnt><un><pl><guio>$ ^jahki<n><der_sasj><adj><attr><@→N>/-åring<n><m><attr><@→N>$
