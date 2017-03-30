@@ -1038,6 +1038,11 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="ind"/>
       <attr-item tags="DD"/>
     </def-attr>
+    <def-attr n="fintemps">
+      <attr-item tags="pres"/>
+      <attr-item tags="pret"/>
+      <attr-item tags="imp"/>
+    </def-attr>
     <def-attr n="temps">
       <attr-item tags="pres"/>
       <attr-item tags="pret"/>
@@ -1454,6 +1459,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="aux-verb-tl"     c="nob lemh of the previous aux verb" />
     <def-var n="vfin-pers"     c="vfin-pers" />
     <def-var n="vfin-nbr"     c="vfin-nbr" />
+    <def-var n="vfin-temps"     c="vfin-temps" />
     <def-var n="foc-word"     c="foc-word" />
   </section-def-vars>
 
@@ -3523,6 +3529,7 @@ And then there are some categories like "month", with all the months.
           <let><var n="aux-verb-tl"/><clip pos="1" side="tl" part="lemh"/></let>
           <let><var n="vfin-pers"/><clip pos="1" side="sl" part="pers"/></let>
           <let><var n="vfin-nbr"/><clip pos="1" side="sl" part="nbr"/></let>
+          <let><var n="vfin-temps"/><clip pos="1" side="sl" part="fintemps"/></let>
         </when>
         <when c="M[V] set fin-verb nbr and pers">
           <test>
@@ -4391,13 +4398,26 @@ And then there are some categories like "month", with all the months.
       <choose c="Output the main predicate, verb/adj/adv/etc.">
         <when c="tl PoS is adv (eg. negative)">
           <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
-          <append n="c_name"><lit v="adv"/></append>
+          <choose>
+          <when c="tag adv, because of word order">
+          <test><or>
+          <equal><clip pos="1" side="tl" part="lemh"/><lit v="kanskje"/></equal>
+          <equal><clip pos="1" side="tl" part="lemh"/><lit v="nok"/></equal>
+       </or></test>
+          <let><var n="tmp"/><lit-tag v="adv"/></let>
+     </when>
+     <otherwise>
+          <let><var n="tmp"/><lit v=""/></let>
+     </otherwise>
+     </choose>
+         <append n="c_name"><lit v="adv"/></append>
           <out>
             <chunk namefrom="c_name" case="caseFirstWord">
               <tags>
                 <tag><lit-tag v="SV"/></tag>
                 <tag><clip pos="1" side="sl" part="syn_label"/></tag>
                 <tag><clip pos="1" side="sl" part="neg"/></tag>
+                <tag><var n="tmp"/></tag>
                 <tag><clip pos="1" side="sl" part="mode"/></tag>
                 <tag><clip pos="1" side="sl" part="modality"/></tag>
                 <tag><clip pos="1" side="tl" part="temps"/></tag>
@@ -4448,6 +4468,18 @@ And then there are some categories like "month", with all the months.
           </out>
         </when>
         <otherwise c="tl PoS is assumed to be verb">
+          <choose c="move temps from aux to main, when aux is translated to adv: soaitá boahtit">
+            <when>
+              <test><and><or>
+              <equal><var n="aux-verb-tl"/><lit v="kanskje"/></equal>
+              <equal><var n="aux-verb-tl"/><lit v="nok"/></equal>
+              </or>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></equal>
+              <not><equal><var n="vfin-temps"/><lit v=""/></equal></not>
+          </and></test>
+              <let><clip pos="1" side="tl" part="temps"/><var n="vfin-temps"/></let>
+            </when>
+          </choose>
           <choose>
             <when>
               <test><equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="være"/></equal></test>
@@ -10289,6 +10321,7 @@ TODO: this should be an mwe in the analyser.">
           <let><var n="aux-verb-tl"/><lit v=""/></let>
           <let><var n="vfin-pers"/><lit v=""/></let>
           <let><var n="vfin-nbr"/><lit v=""/></let>
+          <let><var n="vfin-temps"/><lit v=""/></let>
           <let><var n="foc-word"/><lit v=""/></let>
         </when></choose>
       </action>
