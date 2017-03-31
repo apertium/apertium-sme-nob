@@ -121,7 +121,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SA.@ADVL-ela→.*"/>
       <cat-item tags="SA.@ADVL-ine→.*"/>
     </def-cat>
-    <def-cat n="SN_ill.ADVLr">
+    <def-cat n="ill.ADVLr">
       <cat-item tags="SN.@ADVL→.*.ill.*"/>
       <cat-item tags="SN.@ADVL-ela→.*.ill.*"/>
       <cat-item tags="SN.@ADVL-ine→.*.ill.*"/>
@@ -226,7 +226,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item lemma="comma" tags="SENT.*"/>
       <cat-item lemma="comma" tags="SENT"/>
     </def-cat>
-    <def-cat n="sentenceborder">
+    <def-cat n="sentbord">
       <cat-item lemma="conj" tags="@CVP.cnjcoo"/>
     </def-cat>
     <def-cat n="CS">
@@ -467,7 +467,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="*.@ADVL-ine→.*"/>
       <cat-item tags="*.@ADVL-ine→"/>
     </def-cat>
-    <def-cat n="V2-trigger_SUBJr.qst">
+    <def-cat n="SUBJr.qst">
       <cat-item tags="SN.@SUBJ→.*.qst.*"/>
     </def-cat>
     <def-cat n="PR.ADVLr">
@@ -1113,8 +1113,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
     <!-- <rules: ISUBJr IV
          Setningstilsvar (infinite=>finite in subordinate sentences) -->
-    <rule comment="REGLA: ISUBJr SV_lOBJ-tilsvar - out: 1 2
-                   (Máhtte muitalii) ádjá boahtit => (Máhtte fortalte) bestefar skulle komme (Lene: kommer)
+    <rule comment="REGLA: ISUBJr SV_lOBJ-tilsvar - out: at 1 skulle 2
+                   (Máhtte muitalii) ádjá boahtit => (Máhtte fortalte) bestefar skulle komme 
                    TODO: set_defnes2 ? set_adv ?
                    Adds 'skulle' if infinitive (and changes syn_label so t4x doesn't add 'å')">
       <pattern>
@@ -1230,13 +1230,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
 
-    <!-- <rules: V2-trigger_SUBJr.qst FV RSPRED* (insert existential 'det') -->
-    <rule comment="REGLA: V2-trigger_SUBJr.qst FV - out: være det 1 2
+    <!-- <rules: SUBJr.qst FV RSPRED* (insert existential 'det') -->
+    <rule comment="REGLA: SUBJr.qst FV - out: være det 1 som 2
                    Áhččigo boahtá (ihttin) => Er det far som kommer (i morgen)
                    Áhččigo bođii (ikte) => Var det far som kom (i går)
                    Nom.qst.@SUBJ→ => Er det X som ...">
       <pattern>
-        <pattern-item n="V2-trigger_SUBJr.qst"/>
+        <pattern-item n="SUBJr.qst"/>
         <pattern-item n="FV"/>
       </pattern>
       <action>
@@ -1285,7 +1285,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: SUBJr  MAIN-FIN  MAINV.qst - out: 1 om pro 2 - a first try " c="Mun jearan boađátgo odne = Jeg spør om du kommer i dag.">
+    <rule comment="REGLA: SUBJr MAIN-FIN MAINV.qst - out: 1 om pro 2 - a first try " c="Mun jearan boađátgo odne = Jeg spør om du kommer i dag.">
       <pattern>
         <pattern-item n="SUBJr"/>
         <pattern-item n="MAIN-FIN"/>
@@ -1441,7 +1441,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: rel-SUBJr PR ADVLr FV - out: 1 2 3 4 " c="Stuorámus dáhpáhus mii goassege lea leamaš">
+    <rule comment="REGLA: rel-SUBJr PR ADVLr FV - out: 1 2 3 4  OBS" >
       <pattern>
         <pattern-item n="rel-SUBJr"/>
         <pattern-item n="PR"/>
@@ -1669,7 +1669,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: ADVLhabr FV  lSUBJext - out: 1 2 3 
+    <rule comment="REGLA: ADVLhabr FV lSUBJext - out: 1 2 3 
                  rule for habitive sentences">
       <pattern>
         <pattern-item n="ADVLhabr"/>
@@ -1693,7 +1693,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: ADVLhabr FV  lSUBJext - out: 1 2 
+    <rule comment="REGLA: ADVLhabr FV - out: 1 2 
                  rule for habitive sentences">
       <pattern>
         <pattern-item n="ADVLhabr"/>
@@ -1867,7 +1867,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: ADVL maybe-SUBJr ADVL FV - out: 2 1 4 3
+    <rule comment="REGLA: ADVL maybe-SUBJr ADVL FV - out: 2 1 4 3 OBS
                    -----
                    ieža moai dáppe váccašetne =1> bare vi_to her spaserer =3> vi_to bare spaserer her
                    (The ieža @ADVL tag is given in t1x, originally @→Pron.)
@@ -1903,7 +1903,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
     <!-- <rules: V2-trigger* FV IV* RSUBJ: -->
-    <rule comment="REGLA: FV maybe-lSUBJ - out: pro 1 2
+    <rule comment="REGLA: FV maybe-lSUBJ - out: pro 1 2 OBS
                    -----
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
@@ -1929,7 +1929,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
 
-    <rule comment="REGLA: FV ADVLrsent maybe-lSUBJ - out: pro 1 2 3 " c="Eai nu ollugat loga bábiráviissaid = Ikke så mange leser papiraviser">
+    <rule comment="REGLA: FV ADVLrsent maybe-lSUBJ - out: pro 1 2 3 OBS " c="Eai nu ollugat loga bábiráviissaid = Ikke så mange leser papiraviser">
       <pattern>
         <pattern-item n="FV"/>
         <pattern-item n="ADVLrsent"/>
@@ -1955,7 +1955,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: FV ADVLrsent ADVLrsent maybe-lSUBJ - out: pro 1 2 3 4" c="Eai šat nu ollugat loga bábiráviissaid = Ikke så mange leser papiraviser">
+    <rule comment="REGLA: FV ADVLrsent ADVLrsent maybe-lSUBJ - out: pro 1 2 3 4 OBS" c="Eai šat nu ollugat loga bábiráviissaid = Ikke så mange leser papiraviser">
       <pattern>
         <pattern-item n="FV"/>
         <pattern-item n="ADVLrsent"/>
@@ -1986,11 +1986,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
 
-    <rule comment="REGLA: sentenceborder FV lSUBJext - out: 1 det 2 3
+    <rule comment="REGLA: sentbord FV lSUBJext - out: 1 det 2 3
 
                    Override prodrop rule (below) if we might have a subject to the right" c="ja lei báhppa gii dan čađahii.">
       <pattern>
-        <pattern-item n="sentenceborder"/>
+        <pattern-item n="sentbord"/>
         <pattern-item n="FV"/>
         <pattern-item n="lSUBJext"/>
       </pattern>
@@ -2027,7 +2027,6 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
     <rule comment="REGLA: ADVLr FAUXV-man IVMAIN-pers - out: 1 2 man 3
                    Insert existential pro 'man' if ADVLr is non-locative
-
                    Override prodrop rule (below) if we might have a subject to the right"
                    c="Dasto galgá vuodjat dainna olbmuin">
       <pattern>
@@ -2183,13 +2182,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
 
-    <rule comment="REGLA: PR SN_ill.ADVLr FV-esubj lSUBJgen - out: 1 2 3 det 4
+    <rule comment="REGLA: PR ill.ADVLr FV-esubj lSUBJgen - out: 1 2 3 det 4
                    Insert existential pro 'det' based on FV lemma (esubj-tag from t1x)
                    Override prodrop rule (below) if we might have a subject to the right"
                    c="Dasa leat vissásit ollu čilgehusat. Til det er det sikkert mange forklaringer. Jođiheaddjibargui manná ollu áigi.">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="SN_ill.ADVLr"/>
+        <pattern-item n="ill.ADVLr"/>
         <pattern-item n="FV-esubj"/>
         <pattern-item n="lSUBJgen"/>
       </pattern>
@@ -2228,13 +2227,13 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: PR SN_ill.ADVLr FV-esubj adv-lADVL lSUBJgen - out: 1 2 3 det 4 5
+    <rule comment="REGLA: PR ill.ADVLr FV-esubj adv-lADVL lSUBJgen - out: 1 2 3 det 4 5
                    Insert existential pro 'det' based on FV lemma (esubj-tag from t1x)
 
                    Override prodrop rule (below) if we might have a subject to the right" c="Dása gálgá studeanta bidjat bargguid">
       <pattern>
         <pattern-item n="PR"/>
-        <pattern-item n="SN_ill.ADVLr"/>
+        <pattern-item n="ill.ADVLr"/>
         <pattern-item n="FV-esubj"/>
         <pattern-item n="adv-lADVL"/>
         <pattern-item n="lSUBJgen"/>
@@ -2411,7 +2410,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
 
 
-    <rule comment="REGLA: V2-trigger FV lSPRED   - out: 1 2 3
+    <rule comment="REGLA: V2-trigger FV lSPRED   - out: 1 2 3 OBS
                    -----
                    (Muhto man) okto lei son? => (Men hvor) alene var han?
                    Override prodrop rule for certain subject predicates on the right
@@ -2909,12 +2908,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: V2-trigger adv-FV.neg IV lSUBJext  - out: 1 3 pro 2 4
-                   -----
-                   V2-rule with pro-drop insertion (gender based on IV)
-                   duorastaga iđida sáhttá borgat => torsdag morgen kan det fyke
-
-                   Note: This rule is partly blocked by the 'maybe-SUBJr FV' rule above.">
+    <rule comment="REGLA: V2-trigger adv-FV IV lSUBJext  - out: 1 3 det 2 4  ">
       <pattern>
         <pattern-item n="V2-trigger"/>
         <pattern-item n="adv-FV"/>
@@ -3020,7 +3014,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR V2-trigger FV IV   - out: 1 2 pro 3 4
+    <rule comment="REGLA: PR V2-trigger FV IV   - out: 1 2 pro 3 4 OBS
                    V2-rule with pro-drop insertion (gender based on IV)
                    ">
       <pattern>
@@ -3102,7 +3096,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
 
     <!-- <rules: ITG ADV* V: -->
-    <rule comment="REGLA: V ITGnom SUBJr V - out: 1 2 3 4" c="ahte earát galget árvidit geat sii leat.">
+    <rule comment="REGLA: V ITGnom SUBJr V - out: 1 2 3 4 OBS" c="ahte earát galget árvidit geat sii leat.">
       <pattern>
         <pattern-item n="V"/>
         <pattern-item n="ITGnom"/>
@@ -3186,8 +3180,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV.qst SA - out: 1 pro 2
-                   Leago duohte? => Er det sant?
+    <rule comment="REGLA: FV.qst SA - out: 1 det 2
+                   Leago duohta? => Er det sant?
                    Insert dropped pronoun, ensure adj agrees with it.">
       <pattern>
         <pattern-item n="FV.qst"/>
@@ -3237,7 +3231,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: adv-FV.neg.qst IV - out: pro 1
+    <rule comment="REGLA: adv-FV.neg.qst IV - out: 2 pro 1 
                    itgo boađáše => kommer du ikke
                    Insert dropped pronoun">
       <pattern>
@@ -3279,7 +3273,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
     <!-- <rules: SA_ADVLr FV lOBJ -->
-    <rule comment="REGLA: SA_ADVLr FV lOBJ - out: pro 2 3 1
+    <rule comment="REGLA: SA_ADVLr FV lOBJ - out: pro 2 3 1 OBS
                    heajubut geavvat => vi hever oss dårligere
                    (that example needs some bidix/lex.sel work TODO)">
       <pattern>
@@ -3476,7 +3470,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: PR ADVLr V lOBJ - out: pro 3 1 2
+    <rule comment="REGLA: PR ADVLr V lOBJ - out: pro 3 4 1 2
                    AVO => VOA order" c="Barggu geažil ferte son Álttás čuovvut dikki : På grunn av arbeidet må han følge tinget i Alta">
       <pattern>
         <pattern-item n="PR"/>
