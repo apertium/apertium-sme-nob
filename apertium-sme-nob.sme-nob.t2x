@@ -108,6 +108,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="PR"/>
       <cat-item tags="PR.*"/>
     </def-cat>
+    <def-cat n="adv_pr">
+      <cat-item lemma="adv" tags="*.pr"/>
+    </def-cat>
     <def-cat n="caseprep-PR">
       <cat-item lemma="caseprep" tags="PR"/>
       <cat-item lemma="caseprep" tags="PR.*"/>
@@ -1241,6 +1244,22 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           <test><not><equal><b pos="2"/><b/></equal></not></test>
           <out><b pos="2"/></out>
         </when></choose>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: adv_pr caseprep-PR SN" c="remove adv_pr: eret">
+      <pattern>
+        <pattern-item n="adv_pr"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_caseprep"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+        </out>
       </action>
     </rule>
 

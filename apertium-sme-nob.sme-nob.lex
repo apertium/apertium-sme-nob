@@ -1034,7 +1034,7 @@ SELECT:fallback ("avskjede"i) IF  (0 ("<lihccut>"i)) ;
 SELECT ("utelate"i) IF  (0 ("<guođđit>"i)) (*1 ("<eret>")) ;
 SELECT:fallback ("forlate"i) IF  (0 ("<guođđit>"i)) ;
 
-SELECT ("møtes"i) IF  (0 ("<deaivvadit>"i) LINK NOT 1 com) ;
+SELECT ("møtes"i) IF  (0 ("<deaivvadit>"i) LINK NOT *1 com BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("møte"i) IF  (0 ("<deaivvadit>"i)) ;
 
 
@@ -1320,8 +1320,8 @@ SELECT:fallback ("kommunisere"i) (0 ("<gulahallat>"i) ) ;
 SELECT:stå ("stå# på") (0 ("<ceavzit>"i) LINK *0 ("<eksámen>"i) + acc);
 SELECT:fallback ("klare"i) (0 ("<ceavzit>"i));
 
-SELECT:be ("be") (0 ("<dáhttut>"i) LINK 1 acc);
-SELECT:fallback ("ville"i) (0 ("<dáhttut>"i));
+SELECT:be ("be") (0 ("<dáhttut>"i) LINK 1 acc OR inf);
+SELECT:fallback ("be"i) (0 ("<dáhttut>"i));
 
 
 SELECT ("anse"i) (0 ("<atnit>"i) LINK *1 ess OR ("<árvu>"i) + loc) ;
@@ -1914,6 +1914,9 @@ SELECT:fallback ("ros"i) (0 ("<rápmi>"i));
 
 SELECT:fallback ("ekstra"i) (0 ("<liige>"i));
 
+SELECT ("vei"i) (0 ("<geinnodat>"i) LINK -1 acr);
+SELECT:fallback ("flyttevei"i) (0 ("<geinnodat>"i));
+
 
 SELECT ("antall"i) (0 ("<lohku>"i) LINK -1 sem_hum + pl) ;
 SELECT:fallback ("tall"i) (0 ("<lohku>"i));
@@ -2233,10 +2236,11 @@ SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
 SELECT ("opp"i) (0 ("<eret>"i)) (-1 ("<cealkit>"i)) ;
-SELECT ("bort"i) (0 ("<eret>"i)) (-1 v) ;
+SELECT ("fra"i) + pr (0 ("<eret>"i)) (-1 ("<leat>"i)) ;
+SELECT ("bort"i) (0 ("<eret>"i)) (-1 v)(NEGATE 1 loc) ;
 SELECT ("bort"i) (0 ("<eret>"i)) (1 loc) ;
 SELECT ("av"i) (0 ("<eret>"i)) (-1 ("<sahát>"i)) ;
-SELECT:fallback ("fra"i) (0 ("<eret>"i)) ;
+SELECT:fallback ("fra"i) + pr (0 ("<eret>"i)) ;
 
 SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
 
@@ -2369,6 +2373,10 @@ SELECT ("forrige"i) (0 ("<ovddit>"i comp)) (1 n + sg);
 
 SELECT ("trygg"i) (0 ("<luohttevaš>"i)) (0 a) (NOT 0 n);
 SELECT:fallback ("tillitsfull"i) (0 ("<luohttevaš>"i));
+
+SELECT ("få"i) (0 ("<unni>"i) LINK 0 comp + attr LINK 1 n + pl);
+SELECT:fallback ("liten"i) (0 ("<unni>"i));
+
 
 SELECT ("kommende"i) (0 ("<boahtte>"i)) (1 ("<áigi>"i));
 SELECT:fallback ("neste"i) (0 ("<boahtte>"i));
