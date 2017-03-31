@@ -990,6 +990,9 @@ SELECT:fallback ("ville"i) IF  (0 ("<háliidit>"i)) ;
 SELECT ("sette# fast"i) IF  (0 ("<darvánit>"i) LINK *0 sem_veh ) ;
 SELECT:fallback ("feste"i) IF  (0 ("<darvánit>"i)) ;
 
+SELECT ("bevare"i) IF  (0 ("<bisuhit>"i) LINK *0 sem_lang OR ("<kultuvra>"i) ) ;
+SELECT:fallback ("beholde"i) IF  (0 ("<bisuhit>"i)) ;
+
 
 SELECT ("nå"i) IF  (0 ("<joksat>"i)) (0* sem_veh) ;
 SELECT:fallback ("oppnå"i) IF  (0 ("<joksat>"i)) ;
@@ -2099,6 +2102,9 @@ SELECT:fallback ("område"i) (0 ("<guovlu>"i)) ;
 SELECT ("rein"i) (0 ("<heagga>"i) LINK -1 num - ("okta")) ;
 SELECT:fallback ("liv"i) (0 ("<heagga>"i)) ;
 
+SELECT:fallback ("betaling"i) (0 ("<máksámuš>"i)) ;
+SELECT:fallback ("kvote"i) (0 ("<earri>"i)) ;
+
 
 # Based on frequency in parallel text:
 SELECT ("periode"i) (0 ("<áigodat>"i));
@@ -2236,11 +2242,15 @@ SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
 SELECT ("opp"i) (0 ("<eret>"i)) (-1 ("<cealkit>"i)) ;
-SELECT ("fra"i) + pr (0 ("<eret>"i)) (-1 ("<leat>"i)) ;
+SELECT ("fra"i) + pr (0 ("<eret>"i)) (-1 ("<leat>"i) OR cc) ;
 SELECT ("bort"i) (0 ("<eret>"i)) (-1 v)(NEGATE 1 loc) ;
 SELECT ("bort"i) (0 ("<eret>"i)) (1 loc) ;
 SELECT ("av"i) (0 ("<eret>"i)) (-1 ("<sahát>"i)) ;
 SELECT:fallback ("fra"i) + pr (0 ("<eret>"i)) ;
+
+SELECT ("dobbelt"i) (0 ("<beali>"i) LINK 1 ("<eanet>"i)) ;
+SELECT:fallback ("halve"i) (0 ("<beali>"i)) ;
+
 
 SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
 
