@@ -16,7 +16,7 @@ svn () {
 
     echo "Compiling and running sanity check …"
     make -j
-    make -j test
+    make test
 
     DESTDIR=for_gtweb_jorgal make install
 
