@@ -271,7 +271,7 @@ test-bidix-gen:
 test-previous-offenders: all
 	./previous-offenders
 
-test-install:
+test-install: all
 	DESTDIR=tmp-$@ make install
 	find tmp-$@ -type f -name '*.mode' | xargs sed -i.tmp "s% '\($(prefix)\)% 'tmp-$@/\1%g"
 	echo "Mus lea oahpahus gaskkal guovtti ja njealji." | apertium -d tmp-$@/$(prefix)/share/apertium sme-nob | tee tmp-$@/mt
