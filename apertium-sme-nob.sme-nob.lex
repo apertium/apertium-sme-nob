@@ -1114,7 +1114,7 @@ SELECT:fallback ("få"i) (0 ("<beassat>"i));
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
 SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst OR ("<veahkki>"i) OR ("<doarjja>"i) OR (sem_act) + acc BARRIER SV-BOUNDARY);
 SELECT ("be"i) (0 ("<bivdit>"i) LINK 1 ("<ahte>"i) OR ("<veahkki>"i));
-SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*fanas>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) OR ("<birrajándora>"r) OR sem_time OR sem_plc );
+SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*fanas>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) OR ("<birrajándora>"r) );
 SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR ("<rávdu>"r) );
 SELECT:fallback ("be"i) (0 ("<bivdit>"i));
 SELECT:fallback ("jeger"i) (0 ("<bivdi>"i));
@@ -2358,6 +2358,9 @@ REMOVE ("fjern"i) (NOT 0 cmpnd);
 
 SELECT ("-årig"i) (0 ("<jagáš>"i) LINK -1 num);
 SELECT ("årets"i) (0 ("<jagáš>"i));
+
+SELECT ("sist"i) (0 ("<maŋit>"i) LINK 0 attr);
+REMOVE ("sein"i) (0 ("<maŋit>"i));
 
 
 SELECT ("streif"i) (0 ("<golgu>"i) LINK 0 a + cmpnd);
