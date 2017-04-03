@@ -507,6 +507,17 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="num.*.cmp_splitr"/>
       <cat-item tags="num.*.cmp_splitr.*"/>
     </def-cat>
+    <def-cat n="lex-beali">
+      <cat-item lemma="beali" tags="adv.*"/>
+    </def-cat>
+    <def-cat n="lex-unnit">
+      <cat-item lemma="unnit" tags="adv.*"/>
+      <cat-item lemma="unni" tags="adj.*"/>
+    </def-cat>
+    <def-cat n="lex-eanet">
+      <cat-item lemma="eanet" tags="adv.*"/>
+      <cat-item lemma="eanet" tags="adj.*"/>
+    </def-cat>
     <def-cat n="lex-guovttos">
       <cat-item lemma="guovttos" tags="n.*.coll.*"/>
       <cat-item lemma="guovttos" tags="n.coll.*"/>
@@ -4666,6 +4677,48 @@ And then there are some categories like "month", with all the months.
             <lu>
               <lit v="velkommen"/>
               <lit-tag v="ij"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] lex-beali lex-eanet">
+      <pattern>
+        <pattern-item n="lex-beali"/>
+        <pattern-item n="lex-eanet"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="dobbelt så mye"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] lex-beali lex-unnit">
+      <pattern>
+        <pattern-item n="lex-beali"/>
+        <pattern-item n="lex-unnit"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="halvparten så mye"/>
+              <lit-tag v="adv"/>
             </lu>
           </chunk>
         </out>
