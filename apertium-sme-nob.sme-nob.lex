@@ -918,7 +918,7 @@ SELECT ("all"i) IF (0 ("<juohke>"i) LINK 1 ("<lágan>")) ;
 
 SELECT ("mens"i) IF (0 ("<bodda>"i) LINK -1 ("<dat>") LINK 0 gen) ;
 
-SELECT ("stenge"i) IF (0 ("<gitta>"i) LINK *0 ("<geaidnu>"i)) ;
+SELECT ("stenge"i) IF (0 ("<gitta>"i) LINK *0 ("<geaidnu>"i) OR ("<luodda>"i) OR ("<gáhtta>"i) OR ("<uksa>"i)) ;
 SELECT ("helt"i) IF (0 ("<gitta>"i) + @→A OR ("<gitta>"i) + @→N) ;
 SELECT ("inntil"i) IF (0 ("<gitta>"i) + @→Num) ;
 SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
@@ -2160,6 +2160,8 @@ SELECT ("hun"i) (0 ("<son>"i) LINK 1 ("<namma>"i) LINK *1 sem_fem BARRIER pron O
 SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER pron OR n) ;
 
 
+SELECT ("nå"i)  (0 ("<dát>"i) LINK 0 gen LINK 1 ("<rádjai>"i) LINK 0 po) ;
+SELECT:fallback ("denne"i)  (0 ("<dát>"i)) ;
 
 SELECT:fallback ("han"i) + (GD_pers) (0 ("<son>"i)) ;
 
