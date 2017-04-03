@@ -1969,6 +1969,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="barnehagetilbud"/>
       <list-item v="begynnelse"/>
       <list-item v="bilulykke"/>
+      <list-item v="biltrafikk"/>
       <list-item v="blod"/>
       <list-item v="brann"/>
       <list-item v="brev"/>
@@ -10370,6 +10371,40 @@ TODO: this should be an mwe in the analyser.">
             </lu>
           </chunk>
         </out>
+      </action>
+    </rule>
+    <rule comment="C[_]-T lquot">
+      <pattern>
+        <pattern-item n="lquot"/>
+      </pattern>
+      <action>
+          <out>
+            <chunk name="lquot">
+              <tags>
+                <tag><lit-tag v="lquot"/></tag>
+              </tags>
+              <lu>
+                <clip pos="1" side="tl" part="whole"/>
+              </lu>
+            </chunk>
+          </out>
+      </action>
+    </rule>
+    <rule comment="C[_]-T rquot">
+      <pattern>
+        <pattern-item n="rquot"/>
+      </pattern>
+      <action>
+          <out>
+            <chunk name="rquot">
+              <tags>
+                <tag><lit-tag v="rquot"/></tag>
+              </tags>
+              <lu>
+                <clip pos="1" side="tl" part="whole"/>
+              </lu>
+            </chunk>
+          </out>
       </action>
     </rule>
     <rule comment="C[_]-T comma">

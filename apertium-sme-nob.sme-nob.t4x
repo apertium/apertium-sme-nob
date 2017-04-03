@@ -20,6 +20,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
 <!-- -*- nxml -*- -->
 <postchunk>
   <section-def-cats>
+    <def-cat n="lquot_unknown_rquot">
+<cat-item name="lquot_unknown_rquot"/>
+    </def-cat>
     <def-cat n="unknown">
 <cat-item name="unknown"/>
     </def-cat>
@@ -2214,6 +2217,19 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <action>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
+        </out>
+        <let><var n="former-chunk"/><lit-tag v="unknown"/></let>
+      </action>
+    </rule>
+    <rule comment="CHUNK: lquot_unknown_rquot">
+<pattern><pattern-item n="lquot_unknown_rquot"/></pattern>
+      <action>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
         </out>
         <let><var n="former-chunk"/><lit-tag v="unknown"/></let>
       </action>
