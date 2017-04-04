@@ -542,6 +542,8 @@ And then there are some categories like "month", with all the months.
     <def-cat n="hum_gen">
       <cat-item tags="n.*.sem_hum.sg.gen.*"/>
       <cat-item tags="n.sem_hum.sg.gen.*"/>
+      <cat-item tags="n.*.sem_hum-prof.sg.gen.*"/>
+      <cat-item tags="n.sem_hum-prof.sg.gen.*"/>
     </def-cat>
     <def-cat n="lex-gealdagas_loc">
       <cat-item lemma="gealdagas" tags="n.*.sg.loc.*"/>
@@ -633,6 +635,16 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="áigi" tags="n.*.ill.*"/>
     </def-cat>
 
+    <def-cat n="lex-nubbin">
+      <cat-item lemma="nubbi" tags="adj.ord.ess.@←SPRED"/>
+      <cat-item lemma="nubbi" tags="adj.ord.ess.@SPRED→"/>
+    </def-cat>
+    <def-cat n="lex-nubbi">
+      <cat-item lemma="nubbi" tags="adj.ord.*.@→N"/>
+    </def-cat>
+    <def-cat n="lex-jođiheaddji">
+      <cat-item lemma="jođiheaddji" tags="n.*"/>
+    </def-cat>
     <def-cat n="lex-vel">
       <cat-item lemma="vel" tags="adv.*"/>
       <cat-item lemma="vel" tags="adv"/>
@@ -1316,6 +1328,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_group_sign"/>
       <attr-item tags="sem_group_txt"/>
       <attr-item tags="sem_hum"/>
+      <attr-item tags="sem_hum-prof"/>
       <attr-item tags="sem_hum-abstr"/>
       <attr-item tags="sem_hum_lang"/>
       <attr-item tags="sem_hum_lang_plc"/>
@@ -1641,6 +1654,23 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_semcon_txt&gt;"/>
       <list-item v="&lt;sem_txt&gt;"/>
     </def-list>
+    <def-list n="sem_body">
+      <list-item v="&lt;sem_ani_body-abstr_hum&gt;"/>
+      <list-item v="&lt;sem_body&gt;"/>
+      <list-item v="&lt;sem_body-abstr&gt;"/>
+      <list-item v="&lt;sem_body-abstr_prod-audio_semcon&gt;"/>
+      <list-item v="&lt;sem_body_body-abstr&gt;"/>
+      <list-item v="&lt;sem_body_clth&gt;"/>
+      <list-item v="&lt;sem_body_food&gt;"/>
+      <list-item v="&lt;sem_body_group_hum&gt;"/>
+      <list-item v="&lt;sem_body_group_hum_time&gt;"/>
+      <list-item v="&lt;sem_body_hum&gt;"/>
+      <list-item v="&lt;sem_body_mat&gt;"/>
+      <list-item v="&lt;sem_body_measr&gt;"/>
+      <list-item v="&lt;sem_body_obj_tool-catch&gt;"/>
+      <list-item v="&lt;sem_body_plc&gt;"/>
+      <list-item v="&lt;sem_body_time&gt;"/>
+    </def-list>
     <def-list n="sem_veh">
       <list-item v="&lt;sem_ani_veh&gt;"/>
       <list-item v="&lt;sem_ctain-clth_veh&gt;"/>
@@ -1739,6 +1769,43 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_edu_group_hum&gt;"/>
       <list-item v="&lt;sem_edu_mat&gt;"/>
       <list-item v="&lt;sem_edu_org&gt;"/>
+    </def-list>
+    <def-list n="sem_hum">
+      <list-item v="&lt;sem_ani_body-abstr_hum&gt;"/>
+      <list-item v="&lt;sem_ani_build_hum_txt&gt;"/>
+      <list-item v="&lt;sem_ani_group_hum&gt;"/>
+      <list-item v="&lt;sem_ani_hum&gt;"/>
+      <list-item v="&lt;sem_ani_hum_plc&gt;"/>
+      <list-item v="&lt;sem_ani_hum_time&gt;"/>
+      <list-item v="&lt;sem_aniprod_hum&gt;"/>
+      <list-item v="&lt;sem_body_group_hum&gt;"/>
+      <list-item v="&lt;sem_body_group_hum_time&gt;"/>
+      <list-item v="&lt;sem_body_hum&gt;"/>
+      <list-item v="&lt;sem_cat_group_hum&gt;"/>
+      <list-item v="&lt;sem_cat_group_hum_plc&gt;"/>
+      <list-item v="&lt;sem_clth_hum&gt;"/>
+      <list-item v="&lt;sem_domain_hum&gt;"/>
+      <list-item v="&lt;sem_edu_group_hum&gt;"/>
+      <list-item v="&lt;sem_edu_hum&gt;"/>
+      <list-item v="&lt;sem_event_hum&gt;"/>
+      <list-item v="&lt;sem_feat-psych_hum&gt;"/>
+      <list-item v="&lt;sem_group_hum&gt;"/>
+      <list-item v="&lt;sem_group_hum_org&gt;"/>
+      <list-item v="&lt;sem_group_hum_plc&gt;"/>
+      <list-item v="&lt;sem_group_hum_prod-vis&gt;"/>
+      <list-item v="&lt;sem_hum&gt;"/>
+      <list-item v="&lt;sem_hum-prof&gt;"/>
+      <list-item v="&lt;sem_hum-abstr&gt;"/>
+      <list-item v="&lt;sem_hum_lang&gt;"/>
+      <list-item v="&lt;sem_hum_lang_plc&gt;"/>
+      <list-item v="&lt;sem_hum_lang_time&gt;"/>
+      <list-item v="&lt;sem_hum_obj&gt;"/>
+      <list-item v="&lt;sem_hum_org&gt;"/>
+      <list-item v="&lt;sem_hum_plant&gt;"/>
+      <list-item v="&lt;sem_hum_plc&gt;"/>
+      <list-item v="&lt;sem_hum_tool&gt;"/>
+      <list-item v="&lt;sem_hum_veh&gt;"/>
+      <list-item v="&lt;sem_hum_wthr&gt;"/>
     </def-list>
 
     <def-list n="animate_nonagent-verbs" c="Passive versions of these have 'pers' tag on 'bli', else 'impers',
@@ -2097,6 +2164,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="liste"/>
       <list-item v="lørdag"/>
       <list-item v="mandag"/>
+      <list-item v="møte"/>
       <list-item v="nivå"/>
       <list-item v="onsdag"/>
       <list-item v="papir"/>
@@ -2472,7 +2540,7 @@ And then there are some categories like "month", with all the months.
            <equal><clip pos="1" side="sl" part="hab"/><lit v=""/></equal>
            </and>
            <and>
-           <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_hum"/></equal>
+         <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_hum"/></in>
          <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in></not>
          <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="njunuš"/></equal></not>
            <or>
@@ -2509,6 +2577,8 @@ And then there are some categories like "month", with all the months.
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_rule"/></equal>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_event"/></equal>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_body"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_veh"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
@@ -4682,6 +4752,40 @@ And then there are some categories like "month", with all the months.
           </chunk>
         </out>
       </action>
+    </rule>
+    <rule comment="C[L] lex-nubbin → nummer to">
+      <pattern>
+        <pattern-item n="lex-nubbin"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="som nummer to"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] lex-nubbi lex-jođiheaddji → nestleder">
+      <pattern>
+        <pattern-item n="lex-nubbi"/>
+        <pattern-item n="lex-jođiheaddji"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><clip pos="2" side="tl" part="lemh"/><lit v="nestleder"/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+     </action>
     </rule>
     <rule comment="C[L] lex-beali lex-eanet">
       <pattern>
