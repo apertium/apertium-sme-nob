@@ -1694,10 +1694,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
 <pattern><pattern-item n="pre_pre_conj_pre_nom"/></pattern>
       <action>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="5"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="4"/><with-param pos="5"/></call-macro>
-        <!-- conj -->
         <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="2"/><with-param pos="5"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="5"/></call-macro>
 
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="5"/></call-macro>
         <out>

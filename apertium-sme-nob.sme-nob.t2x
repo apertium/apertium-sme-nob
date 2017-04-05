@@ -914,7 +914,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
-
+<!--
     <rule comment="REGLA: SN_rN.gen lOBJ" c="Sámedikki nana ja čielga vuostálastima">
       <pattern>
         <pattern-item n="SN_rN.gen"/>
@@ -925,7 +925,8 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <let>
         <var n="c_name"/>
         <concat>
-          <lit v="pre_"/>
+          <clip pos="1" part="lemh"/>
+          <lit v="_"/>
           <clip pos="2" part="lemh"/>
         </concat>
       </let>
@@ -942,7 +943,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           </chunk>
         </out>
       </action>
-    </rule>  
+    </rule>   -->
 
     <rule comment="REGLA: SN CNP SN_rPOST adpos
                    TV ja neahta bokte → via TV og nettet

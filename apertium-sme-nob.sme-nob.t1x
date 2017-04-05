@@ -369,6 +369,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.*.gen.*.@→N"/>
       <cat-item tags="n.*.gen.*.@-FSUBJ→"/>
       <cat-item tags="np.*.@→N"/>
+      <cat-item tags="np.*.@→A"/>
       <cat-item tags="np.*.gen.*.@-FSUBJ→"/>
     </def-cat>
     <def-cat n="nom.unprop.gen">
@@ -8487,6 +8488,69 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+    <rule comment="C[] nom.prop.gen adj_vblex_attr conj adj_vblex_attr nom_head" c="Sámedikki nana ja čielga vuostálastin">
+      <pattern>
+        <pattern-item n="nom.prop.gen"/>
+        <pattern-item n="adj_vblex_attr"/>
+        <pattern-item n="conj"/>
+        <pattern-item n="adj_vblex_attr"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="5"/><with-param pos="1"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="5"/><with-param pos="2"/></call-macro>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="5"/><with-param pos="4"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_conj_pre_"/></let>
+
+        <call-macro n="set_defnes2"><with-param pos="5"/><with-param pos="1"/></call-macro>
+
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="gen-case"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="3"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+            <lu>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_conj"/>
+              <clip pos="3" side="tl" part="a_part"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            </lu>
+            <b pos="3"/>
+            <lit v="^"/>
+              <clip pos="4" side="tl" part="lemh"/>
+              <clip pos="4" side="tl" part="a_adj"/>
+              <clip pos="4" side="tl" part="grau"/>
+              <clip pos="4" side="tl" part="gen"/>
+              <clip pos="4" side="tl" part="nbr"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="3"/>
+              <clip pos="4" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="4"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="5"/></call-macro>
+      </action>
+    </rule>
 
     <rule comment="C[] adj_vblex_attr adj_vblex_attr nom_head
                    –––––
