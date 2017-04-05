@@ -991,7 +991,8 @@ SELECT:fallback ("velte"i) IF  (0 ("<njeaidit>"i)) ;
 SELECT:fallback ("gjennomføre"i) IF  (0 ("<doibmiibidjat>"i)) ;
 
 
-SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 n ) ;
+SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 n + acc ) ;
+SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 qst LINK 1 n + acc ) ;
 SELECT:fallback ("ville"i) IF  (0 ("<háliidit>"i)) ;
 
 
