@@ -4789,6 +4789,10 @@ And then there are some categories like "month", with all the months.
         <let><var n="pre-nom"/><lit v=""/></let>
         <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
      </action>
     </rule>
     <rule comment="C[L] lex-beali lex-eanet">
@@ -4810,6 +4814,10 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
       </action>
     </rule>
     <rule comment="C[L] lex-beali lex-unnit">
@@ -4831,6 +4839,10 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
       </action>
     </rule>
 
