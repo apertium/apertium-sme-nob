@@ -1451,6 +1451,9 @@ SELECT:fallback ("reise"i) (0 ("<mátki>"i)) ;
 SELECT ("pris"i) (0 ("<bálkkašupmi>"i) LINK -1 prop) ;
 SELECT:fallback ("premie"i) (0 ("<bálkkašupmi>"i)) ;
 
+SELECT ("arrangement"i) (0 ("<lágideapmi>"i) + pl) ;
+SELECT:fallback ("organisering"i) (0 ("<lágideapmi>"i)) ;
+
 
 SELECT:fallback ("publisering"i) (0 ("<almmuheapmi>"i)) ;
 
