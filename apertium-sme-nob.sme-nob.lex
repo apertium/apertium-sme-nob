@@ -1949,6 +1949,10 @@ SELECT:fallback ("flyttevei"i) (0 ("<geinnodat>"i));
 SELECT ("antall"i) (0 ("<lohku>"i) LINK -1 sem_hum + pl) ;
 SELECT:fallback ("tall"i) (0 ("<lohku>"i));
 
+SELECT ("omveg"i) (0 ("<mohkki>"i) + pl) ;
+SELECT:fallback ("bukt"i) (0 ("<mohkki>"i));
+
+
 SELECT:fallback ("forskning"i) (0 ("<dutkan>"i));
 
 
