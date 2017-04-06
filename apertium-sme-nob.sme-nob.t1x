@@ -2569,7 +2569,7 @@ And then there are some categories like "month", with all the months.
                 <and><or>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@Pron←"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal>
-                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal>
+<!--                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal>  -->
                 </or>
                 <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
                 </and>
@@ -2653,7 +2653,7 @@ And then there are some categories like "month", with all the months.
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-fra"/></in>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-F←ADVL-ela"/></equal>
-                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+<!--                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal> -->
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="fra"/>
@@ -2797,7 +2797,7 @@ And then there are some categories like "month", with all the months.
                   </and>
                   <and>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
-                    <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></not>
+<!--                    <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></not>  -->
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalahttit"/></equal></not>
                     <not><in caseless="yes"><var n="previous-nhead"/><list n="sem_lang_lem"/></in></not>

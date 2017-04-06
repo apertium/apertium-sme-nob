@@ -1289,7 +1289,7 @@ SELECT:publisere ("lansere"i) (0 ("<almmuhit>"i) LINK *0 ("<skearru>"i) OR ("<gi
 SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *-1 sem_txt  OR (sem_rule) OR (sem_prod-ling) LINK NOT 0 loc )  ; 
 SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK *1 sem_txt  OR (sem_rule) OR (sem_prod-ling) LINK NOT 0 loc )  ; 
 SELECT:publisere ("publisere"i) (0 ("<almmuhit>"i) LINK 1 sem_time )  ; 
-SELECT:fallback ("annonsere"i) (0 ("<almmuhit>"i));
+SELECT:fallback ("publisere"i) (0 ("<almmuhit>"i));
 
 SELECT:beherske ("beherske"i) (0 ("<hálddašit>"i) LINK *0 sem_lang);
 SELECT:fallback ("forvalte"i) (0 ("<hálddašit>"i));
@@ -1448,6 +1448,12 @@ SELECT:fallback ("merke"i) (0 ("<mearka>"i)) ;
 SELECT ("distanse"i) (0 ("<mátki>"i) LINK *0 ("<kilomehter>"i)) ;
 SELECT:fallback ("reise"i) (0 ("<mátki>"i)) ;
 
+SELECT ("pris"i) (0 ("<bálkkašupmi>"i) LINK -1 prop) ;
+SELECT:fallback ("premie"i) (0 ("<bálkkašupmi>"i)) ;
+
+
+SELECT:fallback ("publisering"i) (0 ("<almmuheapmi>"i)) ;
+
 
 SELECT ("forhold"i) (0 ("<dilli>"i) LINK -1 ("<buorre>"i) LINK -1 COPULAS) ; # tid
 SELECT:fallback ("situasjon"i) (0 ("<dilli>"i)) ;
@@ -1469,6 +1475,7 @@ SELECT:fallback ("verdi"i) (0 ("<árvu>"i)) ;
 
 	
 SELECT ("villrein"i) (*-1 ("<bivdit>"i) OR ("dápmat"i) OR ("vuojihit"i)) (0 ("<goddi>"i));
+SELECT:fallback ("komite"i) (0 ("<goddi>"i) LINK -1 (cmp));
 
 SELECT ("grunn"i) (0 ("<vuođđu>"i)) (0 ess);
 SELECT:fallback ("grunnlag"i) (0 ("<vuođđu>"i));
@@ -1556,7 +1563,7 @@ SELECT:fallback ("sinn"i) (0 ("<miella>"i));
 SELECT:fallback ("språk"i) (0 ("<giella>"i));
 
 
-SELECT ("sekretær"i) (0 ("<čálli>"i)) (*-1 sem_org);
+SELECT ("sekretær"i) (0 ("<čálli>"i)) (-1 sem_org + gen);
 SELECT:fallback ("forfatter"i) (0 ("<čálli>"i));
 
 SELECT:fallback ("melodi"i) (0 ("<šuokŋa>"i));
@@ -1620,7 +1627,6 @@ SELECT:fallback ("bråk"i) (0 ("<stuibmi>"i));
 
 # goddi 0 = komite, 1 = villrein
 #SELECT ("goddi"i) ("goddi:1"i) ("goddi"i) (NOT 0/1 (*)) ;
-SELECT:fallback ("komite"i) (0 ("<goddi>"i));
 
 # diehtu 0 = informasjon,  3 = beskjed
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna>"i) OR ("<mobiila>"i)) ;
