@@ -1542,7 +1542,7 @@ SELECT ("klokke"i) (0 ("<diibmu>"i) LINK *1 ("<sirdit>"i) LINK *1 ("<diibmu>"i) 
 # Diibmu guovttis galgá diimmu sirdit ovtta diimmu ovddos.
 # eai muitte riekta guđe guvlui diimmu galgá sirdit goas.
 # Ord because of possible incorrect analysis of Num + punctuation.
-SELECT ("klokke"i) (0 ("<diibmu>"i) LINK *0 ("<ollu>"i)) ;
+SELECT ("klokke"i) (0 ("<diibmu>"i) LINK *0 ("<ollu>"i) OR ("<geahččat>"i) OR ("<čuodjat>"i)) ;
 # Ollugo diibmu lea.
 SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 COPULAS LINK *1 num) ;
 # Dál diibmu lea fargga vihtta.
@@ -1981,12 +1981,14 @@ SELECT:fallback ("mellomrom"i) (0 ("<gaska>"i));
 SELECT ("sjikt"i) (0 ("<geardi>"i) LINK -1 comp + attr);
 SELECT:fallback ("gang"i) (0 ("<geardi>"i));
 
+SELECT:fallback ("insekt"i) (0 ("<divri>"i));
+
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
 SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
 SELECT:fallback ("gjenstand"i) (0 ("<dávvir>"i));
-SELECT:fallback ("brukernavn"i) (0 ("<dovddaldat>"i));
+SELECT:fallback ("kjennemerke"i) (0 ("<dovddaldat>"i));
 SELECT:fallback ("energi"i) (0 ("<arva>"i));
 SELECT:fallback ("øre"i) (0 ("<beallji>"i));
 SELECT:fallback ("nektelse"i) (0 ("<biehttalus>"i));
@@ -2162,6 +2164,10 @@ SELECT:fallback ("hos"i) (0 ("<geahčen>"i)) ;
 SELECT ("for"i) (0 ("<ektui>"i) LINK -1 (sem_perc-phys)) ;
 SELECT:fallback ("mot"i) (0 ("<ektui>"i)) ;
 
+SELECT ("med"i) (0 ("<mielde>"i) LINK -1 sem_veh OR HUMAN) ;
+SELECT:fallback ("etter"i) (0 ("<mielde>"i) + po) ;
+
+
 SELECT:fallback ("fra"i) (0 ("<rájes>"i)) ;
 
 
@@ -2286,6 +2292,9 @@ SELECT:fallback ("fra"i) + pr (0 ("<eret>"i)) ;
 
 SELECT ("dobbelt"i) (0 ("<beali>"i) LINK 1 ("<eanet>"i)) ;
 SELECT:fallback ("halve"i) (0 ("<beali>"i)) ;
+
+SELECT ("masse"i) (0 ("<dievva>"i) LINK 1 n + pl) ;
+SELECT:fallback ("full"i) (0 ("<dievva>"i) + adv) ;
 
 
 SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
