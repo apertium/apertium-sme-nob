@@ -9462,38 +9462,6 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-        <rule comment="C[] NOM.UNPROP.GEN NOM.CMP NOM
-                   –––––
-                   Sets defnes of possessor NOM.GEN (when possessed NOM is compound) using set_defnes, defnes of possessed NOM is ind.">
-      <pattern>
-        <pattern-item n="nom.unprop.gen"/>
-        <pattern-item n="nom-adj.cmp"/>
-        <pattern-item n="nom_head"/>
-      </pattern>
-      <action>
-        <choose><when>
-          <test><equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="velkommen"/></equal></test>
-          <reject-current-rule shifting="no"/>
-        </when></choose>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-
-        <let><var n="c_name"/><lit v="pre_"/></let>
-        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
-
-        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
-        <append n="pre-nom"><b pos="1"/></append>
-
-        <let><var n="defnes"/><lit-tag v="ind"/></let>
-        <choose><when>
-          <test><equal><clip pos="1" side="tl" part="lemh"/><lit v="samisk"/></equal></test>
-          <let><var n="c_neverdet"/><lit-tag v="neverdet"/></let>
-        </when></choose>
-        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
-        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
-      </action>
-    </rule>
-
     <rule comment="C[L] lex-lohkka lex-uksa" c="dan dahket lohkka uvssaid duohken">
       <pattern>
         <pattern-item n="lex-lohkka"/>
@@ -9544,8 +9512,10 @@ And then there are some categories like "month", with all the months.
 
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
         <append n="pre-nom"><b pos="1"/></append>
+
 
         <!-- for NOM.CMP -->
         <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
@@ -9554,6 +9524,7 @@ And then there are some categories like "month", with all the months.
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+
       </action>
     </rule>
 
