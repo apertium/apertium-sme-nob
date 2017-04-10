@@ -1445,6 +1445,8 @@ SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
 SELECT ("tegn"i) (0 ("<mearka>"i) LINK -1 attr) ;
 SELECT:fallback ("merke"i) (0 ("<mearka>"i)) ;
 
+SELECT:fallback ("par"i) (0 ("<bárra>"i)) ;
+
 SELECT ("distanse"i) (0 ("<mátki>"i) LINK *0 ("<kilomehter>"i)) ;
 SELECT:fallback ("reise"i) (0 ("<mátki>"i)) ;
 
