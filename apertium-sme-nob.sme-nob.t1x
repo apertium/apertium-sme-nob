@@ -2123,6 +2123,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="telefon"/>
       <list-item v="tidsrom"/>
       <list-item v="tet"/>
+      <list-item v="trafikk"/>
       <list-item v="trygghet"/>
       <list-item v="ulykke"/>
       <list-item v="urfolkssak"/>
@@ -2344,6 +2345,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="junior"/>
       <list-item v="senior"/>
       <list-item v="fokus"/>
+      <list-item v="grad"/>
       <list-item v="downs syndrom"/>
     </def-list>
 
@@ -2841,7 +2843,12 @@ And then there are some categories like "month", with all the months.
                   <or>
                     <equal><var n="main-verb-sl"/><lit v="leat"/></equal>
                     <equal><var n="main-verb-sl"/><lit v="mearkkašit"/></equal>
+                    <and>
                     <equal><var n="main-verb-sl"/><lit v="šaddat"/></equal>
+               <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
+               <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build_org"/></equal></not>
+               <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build"/></equal></not>
+                    </and>
                     <in caseless="yes"><var n="previous-nhead"/><list n="ill-for-head"/></in>
                   </or>
                   <not><equal><var n="previous-nhead"/><lit v="utveksling"/></equal></not>

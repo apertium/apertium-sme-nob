@@ -1445,6 +1445,11 @@ SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
 SELECT ("tegn"i) (0 ("<mearka>"i) LINK -1 attr) ;
 SELECT:fallback ("merke"i) (0 ("<mearka>"i)) ;
 
+SELECT ("lås"i) (0 ("<lássa>"i) LINK -1 ("<alkohola>"i)) ;
+SELECT ("lås"i) (0 ("<lássa>"i) LINK *-1 sem_veh BARRIER S-BOUNDARY) ;
+SELECT:fallback ("glass"i) (0 ("<lássa>"i)) ;
+
+
 SELECT:fallback ("par"i) (0 ("<bárra>"i)) ;
 
 SELECT ("distanse"i) (0 ("<mátki>"i) LINK *0 ("<kilomehter>"i)) ;
@@ -2413,7 +2418,6 @@ REMOVE ("sein"i) (0 ("<maŋit>"i));
 SELECT ("streif"i) (0 ("<golgu>"i) LINK 0 a + cmpnd);
 REMOVE ("streif"i) (NOT 0 a + cmpnd);
 
-SELECT ("vær så god"i) (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
 
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
 SELECT ("helhetlig"i) (0 ("<ollislaš>"i));
@@ -2460,9 +2464,11 @@ SELECT:fallback ("mye"i) (0 ("<eanet>"i));
 # buorre:0 → bra, buorre:1→god , så god
 
 LIST IJ-TIME = "<beaivi>" "<eahket>" "<beassážat>" "<juovllat>" ;
+#SELECT ("vær så god"i) (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
+SELECT ("stor"i) (0 ("<buorre>"i) LINK 1 ("<muddu>"i)) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME OR po) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 ("<ođas>"i) LINK 1 ("<jahki>"i)) ;
-SELECT ("god"i) (0 ("<buorre>"i)) (1 n);
+SELECT:fallback ("god"i) (0 ("<buorre>"i));
 ## Dat lei buorre girji (god)
 ## Dat lei buorre. (bra)
 
