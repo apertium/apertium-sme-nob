@@ -1990,9 +1990,11 @@ SELECT:fallback ("gang"i) (0 ("<geardi>"i));
 
 SELECT:fallback ("insekt"i) (0 ("<divri>"i));
 
+SELECT ("lag"i) (0 ("<joavku>"i) LINK *0 ("<čiekčat>"i) OR ("<divišuvdna>"i) OR ("<ráidočiekčan>"i) OR ("<čiekčan>"i) OR ("<čiekčat>"i) OR ("<čiekči>"i));
+SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
+
 
 # Nouns that were all 0-marked in the dix:
-SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
 SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
 SELECT:fallback ("gjenstand"i) (0 ("<dávvir>"i));
 SELECT:fallback ("kjennemerke"i) (0 ("<dovddaldat>"i));
