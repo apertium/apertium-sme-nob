@@ -2468,7 +2468,7 @@ LIST IJ-TIME = "<beaivi>" "<eahket>" "<beassážat>" "<juovllat>" ;
 SELECT ("stor"i) (0 ("<buorre>"i) LINK 1 ("<muddu>"i)) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME OR po) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 ("<ođas>"i) LINK 1 ("<jahki>"i)) ;
-SELECT:fallback ("god"i) (0 ("<buorre>"i));
+SELECT:fallback ("bra"i) (0 ("<buorre>"i));
 ## Dat lei buorre girji (god)
 ## Dat lei buorre. (bra)
 
