@@ -417,6 +417,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="vblex_abess">
       <cat-item tags="vblex.*.vabess.*"/>
     </def-cat>
+    <def-cat n="vblex_ger">
+      <cat-item tags="vblex.*.ger.*"/>
+    </def-cat>
     <def-cat n="vblex.IFAUXV">
       <cat-item tags="vblex.*.@-FAUXV"/>
     </def-cat>
@@ -522,6 +525,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-guovttos">
       <cat-item lemma="guovttos" tags="n.*.coll.*"/>
       <cat-item lemma="guovttos" tags="n.coll.*"/>
+    </def-cat>
+    <def-cat n="lex-heahti-loc">
+      <cat-item lemma="heahti" tags="n.*.sg.loc.*"/>
     </def-cat>
     <def-cat n="lex-birra">
       <cat-item lemma="birra" tags="post.*"/>
@@ -1958,6 +1964,7 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="ill-i-verbs" c="See 'ill-NIL-verbs' above.">
       <list-item v="ásahit"/>
+      <list-item v="vuođđudit"/>
     </def-list>
     <def-list n="ill-på-verbs" c="See 'ill-NIL-verbs' above.
                                   Speech verbs, emotional(?) verbs">
@@ -2798,6 +2805,7 @@ And then there are some categories like "month", with all the months.
                   <in caseless="yes"><var n="previous-nhead"/><list n="ill-på-head"/></in>
                     <equal><var n="main-verb-sl"/><lit v="Álgit"/></equal>
                     <equal><var n="main-verb-sl"/><lit v="álgit"/></equal>
+                    <equal><var n="main-verb-sl"/><lit v="fokuseret"/></equal>
                   <and>
                     <equal><var n="seen_num"/><lit-tag v="num"/></equal>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
@@ -2805,6 +2813,7 @@ And then there are some categories like "month", with all the months.
                   <and>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
 <!--                    <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></not>  -->
+                    <not><equal><var n="main-verb-sl"/><lit v="viiddidit"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalahttit"/></equal></not>
                     <not><in caseless="yes"><var n="previous-nhead"/><list n="sem_lang_lem"/></in></not>
@@ -3663,6 +3672,7 @@ And then there are some categories like "month", with all the months.
           </test>
           <let><var n="vfin-pers"/><clip pos="1" side="sl" part="pers"/></let>
           <let><var n="vfin-nbr"/><clip pos="1" side="sl" part="nbr"/></let>
+          <let><var n="vfin-temps"/><clip pos="1" side="sl" part="fintemps"/></let>
         </when>
       </choose>
     </def-macro>
@@ -4780,6 +4790,27 @@ And then there are some categories like "month", with all the months.
             <lu>
               <lit v="velkommen"/>
               <lit-tag v="ij"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] neg-verb lex-heahti-loc" c="ii heađisge → overhodet ikke">
+      <pattern>
+        <pattern-item n="neg-verb"/>
+        <pattern-item n="lex-heahti-loc"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="slett ikke"/>
+              <lit-tag v="adv"/>
             </lu>
           </chunk>
         </out>
@@ -10061,6 +10092,92 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+    <rule comment="C[AT] vblex_ger" c="giesadettiin = mens h_n vikler" >
+      <pattern>
+        <pattern-item n="vblex_ger"/>
+      </pattern>
+      <action>
+        <call-macro n="reset_caseFirstWord"></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_verb-lemma"><with-param pos="1"/></call-macro>
+      
+      <choose><when c="Append 'seg' if reflexive:">
+        <test>
+          <equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal>
+        </test>
+            <let><var n="prn_pers"/><lit-tag v="p3"/></let>
+            <let><var n="prn_gen"/><lit-tag v="un"/></let>
+            <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
+        <let><var n="post-verb"/>
+        <concat>
+          <b/>
+            <lit v="^"/>
+              <lit v="seg"/>
+              <lit-tag v="prn.ref.p3.un.sp.acc"/>
+            <lit v="$"/>
+                    </concat>
+            </let>
+      </when></choose>
+      <choose><when c="p3 or no person">
+      <test><or>
+      <equal><var n="vfin-temps"/><lit v=""/></equal>
+      <equal><var n="vfin-pers"/><lit-tag v="p3"/></equal>
+      </or></test>
+          <out>
+          <chunk name="adv" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="ADV"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                 <tag><lit-tag v="ger"/></tag>
+            </tags>
+           <lu>
+              <lit v="mens"/><lit-tag v="adv"/>
+            </lu>
+            <b />
+           <lu>
+              <lit v="h_n"/><lit-tag v="prn.pers.p3.GD_pers.sg.nom"/>
+            </lu>
+            <b />
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="vblex.pres"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            <var n="post-verb"/>
+            </chunk>
+          </out> </when>
+          <otherwise>
+          <out>
+          <chunk name="adv" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="ADV"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                 <tag><lit-tag v="ger"/></tag>
+            </tags>
+           <lu>
+              <lit v="mens"/><lit-tag v="adv"/>
+            </lu>
+            <b />
+           <lu>
+              <lit v="prpers"/><lit-tag v="prn.pers"/>
+              <var n="vfin-pers"/>
+              <lit-tag v="mf"/>
+              <var n="vfin-nbr"/>
+               <lit-tag v="nom"/>
+           </lu>
+            <b />
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="vblex.pres"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            <var n="post-verb"/>
+            </chunk>
+          </out> </otherwise></choose>
+          
+            <let><var n="post-verb"/><lit v=""/></let>
+      </action>
+    </rule>
 
     <rule comment="C[] VERB (tl: VERB, ADV, ADJ, NOUN)
                    See out_verb macro.
