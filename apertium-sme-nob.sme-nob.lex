@@ -1006,6 +1006,10 @@ SELECT ("veie"i) IF  (0 ("<deaddit>"i) LINK *0 sem_measr OR sem_ani ) ;
 SELECT:fallback ("trykke"i) IF  (0 ("<deaddit>"i)) ;
 
 
+SELECT ("forbruke"i) IF  (0 ("<loaktit>"i) LINK 1 acc ) ;
+SELECT:fallback ("trives"i) IF  (0 ("<loaktit>"i)) ;
+
+
 SELECT ("nå"i) IF  (0 ("<joksat>"i)) (0* sem_veh) ;
 SELECT:fallback ("oppnå"i) IF  (0 ("<joksat>"i)) ;
 
@@ -1195,7 +1199,7 @@ SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<:>")) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<,>")) ;
 
 
-SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain LINK 0 acc OR loc OR ("<cealkámuš>"i)) OR (-1 sem_txt OR sem_domain LINK 0 acc OR loc)) ;
+SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain LINK 0 acc OR ("<cealkámuš>"i)) OR (-1 sem_txt OR sem_domain LINK 0 acc )) ;
 # Son lohká ahte lea buorre doppe.
 
 SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 LANGUAGE LINK 0 acc OR loc) ;
