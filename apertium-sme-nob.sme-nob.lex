@@ -71,7 +71,7 @@ LIST prop = np ;
 #!! * Sets for Semantic tags
 # -------------
 
-LIST sem_ani = np.sem_ani sem_ani sem_ani_body-abstr_hum sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_ani_group sem_ani_group_hum sem_ani_hum sem_ani_hum_plc sem_ani_hum_time sem_ani_plc sem_ani_plc_txt sem_ani_time sem_ani_veh ;
+LIST sem_ani = np.sem_ani sem_ani sem_ani-fish sem_ani_body-abstr_hum sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_ani_group sem_ani_group_hum sem_ani_hum sem_ani_hum_plc sem_ani_hum_time sem_ani_plc sem_ani_plc_txt sem_ani_time sem_ani_veh ;
 LIST sem_build = sem_amount_build sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_build sem_build_event_org sem_build_obj sem_build-part sem_build-part_plc sem_build_build-part sem_build_clth-part sem_build_edu_org sem_build_event_org sem_build_org sem_build_route  ;
 LIST sem_date = sem_date ;
 LIST sem_domain = sem_domain sem_domain_food-med sem_domain_prod-audio ;
@@ -1002,6 +1002,9 @@ SELECT:fallback ("feste"i) IF  (0 ("<darvánit>"i)) ;
 SELECT ("bevare"i) IF  (0 ("<bisuhit>"i) LINK *0 sem_lang OR ("<kultuvra>"i) ) ;
 SELECT:fallback ("beholde"i) IF  (0 ("<bisuhit>"i)) ;
 
+SELECT ("veie"i) IF  (0 ("<deaddit>"i) LINK *0 sem_measr OR sem_ani ) ;
+SELECT:fallback ("trykke"i) IF  (0 ("<deaddit>"i)) ;
+
 
 SELECT ("nå"i) IF  (0 ("<joksat>"i)) (0* sem_veh) ;
 SELECT:fallback ("oppnå"i) IF  (0 ("<joksat>"i)) ;
@@ -1097,7 +1100,7 @@ SELECT ("få"i) (0 ("<šaddat>"i)) (*-1 HUMAN + ill OR HUMAN + loc BARRIER NOT-A
 SELECT ("få"i) (0 ("<šaddat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 
 # «føde» sounds much worse when it's wrong than «bli», need to work on this:
-SELECT ("føde"i) (0 ("<šaddat>"i)) (1 prop + sem_plc + loc) (NEGATE *0 SPRED) ;
+SELECT ("føde"i) (0 ("<šaddat>"i)) (1 prop + sem_plc + loc) (NEGATE *0 SPRED)(*-1 HUMAN + nom) ;
 # Mun lean šaddan Kárášjogas.
 # Kárášjogas mun lean šaddan.
 
@@ -1543,17 +1546,17 @@ SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 num OR ord OR @→N OR sem_edu);
 SELECT:fallback ("bakke"i) (0 ("<luohkká>"i));
 
 # diibmu 0 = time, 1 = klokke
-SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 num OR ord) ;
+SELECT ("klokke"i) (0 ("<diibmu>"i) OR ("<tiibmu>"i) OR ("<tiibma>"i) LINK 1 num OR ord) ;
 # Boahtte gaskavahku diibmu 11.00 rahpá kurdarbearaš Mehidi Kárášjohkii ođđa kaféa.
-SELECT ("klokke"i) (0 ("<diibmu>"i) LINK *1 ("<sirdit>"i) LINK *1 ("<diibmu>"i) OR ("<goas>"i)) ;
+SELECT ("klokke"i) (0 ("<diibmu>"i)  OR ("<tiibmu>"i) OR ("<tiibma>"i) LINK *1 ("<sirdit>"i) LINK *1 ("<diibmu>"i)  OR ("<tiibmu>"i) OR ("<tiibma>"i) OR ("<goas>"i)) ;
 # Diibmu guovttis galgá diimmu sirdit ovtta diimmu ovddos.
 # eai muitte riekta guđe guvlui diimmu galgá sirdit goas.
 # Ord because of possible incorrect analysis of Num + punctuation.
-SELECT ("klokke"i) (0 ("<diibmu>"i) LINK *0 ("<ollu>"i) OR ("<geahččat>"i) OR ("<čuodjat>"i)) ;
+SELECT ("klokke"i) (0 ("<diibmu>"i) OR ("<tiibmu>"i) OR ("<tiibma>"i) LINK *0 ("<ollu>"i) OR ("<geahččat>"i) OR ("<čuodjat>"i)) ;
 # Ollugo diibmu lea.
-SELECT ("klokke"i) (0 ("<diibmu>"i) LINK 1 COPULAS LINK *1 num) ;
+SELECT ("klokke"i) (0 ("<diibmu>"i) OR ("<tiibmu>"i) OR ("<tiibma>"i) LINK 1 COPULAS LINK *1 num) ;
 # Dál diibmu lea fargga vihtta.
-SELECT:fallback ("time"i) (0 ("<diibmu>"i));
+SELECT:fallback ("time"i) (0 ("<diibmu>"i) OR ("<tiibmu>"i) OR ("<tiibma>"i));
 
 # hávvi gen as sår is the exceptional/rare case:
 SELECT ("sår"i) (0 ("<hávvi>"i) LINK 0 gen) (1 ("<vuostá>"i));
@@ -1833,6 +1836,7 @@ SELECT ("sørsamisk"i) (0 ("<lullisápmi>"i) + sg + gen);
 SELECT ("pitesamisk"i) (0 ("<bihtonsápmi>"i) + sg + gen);
 SELECT ("lulesamisk"i) (0 ("<julevsápmi>"i) + sg + gen);
 SELECT ("sjøsamisk"i) (0 ("<mearrasápmi>"i) LINK 0 sg + gen);
+SELECT:fallback ("sameland"i) (0 ("<sápmi>"i) + sg + loc);
 SELECT:fallback ("same"i) (0 ("<sápmi>"i));
 SELECT:fallback ("pitesame"i) (0 ("<bihtonsápmi>"i));
 SELECT:fallback ("sørsamisk"i) (0 ("<máttasápmi>"i));
@@ -1991,7 +1995,9 @@ SELECT:fallback ("gang"i) (0 ("<geardi>"i));
 SELECT:fallback ("insekt"i) (0 ("<divri>"i));
 
 SELECT ("lag"i) (0 ("<joavku>"i) LINK *0 ("<čiekčat>"i) OR ("<divišuvdna>"i) OR ("<ráidočiekčan>"i) OR ("<čiekčan>"i) OR ("<čiekčat>"i) OR ("<čiekči>"i));
-SELECT:fallback ("gruppe"i) (0 ("<joavku>"i));
+SELECT:fallback ("gruppe"i) (0 ("<joavku>"i)) ;
+
+SELECT:fallback ("venn"i) (0 ("<olmmái>"i));
 
 
 # Nouns that were all 0-marked in the dix:
@@ -2078,7 +2084,6 @@ SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));
 SELECT:fallback ("eie"i) (0 ("<oamastus>"i));
 SELECT:fallback ("del"i) (0 ("<oassi>"i));
 SELECT:fallback ("medvirkende"i) (0 ("<oasálaš>"i));
-SELECT:fallback ("mann"i) (0 ("<olmmái>"i));
 SELECT:fallback ("ordning"i) (0 ("<ortnet>"i));
 SELECT:fallback ("representant"i) (0 ("<ovddasteaddji>"i));
 SELECT:fallback ("rett"i) (0 ("<riekti>"i));
