@@ -1230,7 +1230,7 @@ SELECT ("telle"i) (0 ("<lohkat>"i))
 	(1 ("<galle>"i) OR ("<man>"i) LINK NOT 0 sem_txt + nom);
 ## Son lohká ruđaid.
 ## Son lohká galle girjji mis leat.
-SELECT:fallback ("lese"i) (0 ("<lohkat>"i));
+SELECT:fallback ("si"i) (0 ("<lohkat>"i));
 
 SELECT:fallback ("høve"i) (0 ("<soahpat>"i) LINK 1 ill);
 
@@ -1455,6 +1455,8 @@ SELECT:fallback ("merke"i) (0 ("<mearka>"i)) ;
 SELECT ("lås"i) (0 ("<lássa>"i) LINK -1 ("<alkohola>"i)) ;
 SELECT ("lås"i) (0 ("<lássa>"i) LINK *-1 sem_veh BARRIER S-BOUNDARY) ;
 SELECT:fallback ("glass"i) (0 ("<lássa>"i)) ;
+
+SELECT:fallback ("påmelding"i) (0 ("<dieđiheapmi>"i)) ;
 
 
 SELECT:fallback ("par"i) (0 ("<bárra>"i)) ;
