@@ -1075,8 +1075,8 @@ SELECT:fallback ("legge# opp til"i) IF  (0 ("<láhčit>"i)) ;
 
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
-SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<dego>"i) OR (actio ess)) ;
-SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (2 ("<miella>"i) + loc OR ("<mielas>"i)) ;
+SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<dego>"i) OR (actio ess) OR ("<bures>"i) OR ("<ballu>"i) OR ("<illu>"i)) ;
+SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (2 ("<miella>"i) + loc OR ("<mielas>"i) OR ("<bures>"i) OR ("<ballu>"i) OR ("<illu>"i)) ;
 SELECT:maid ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 ("<mii>"i)) ;
 SELECT:jaska ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (*1 ("<oahpis>"i)) ;
 SELECT:jaska ("være"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<jaska>"i)) ;
@@ -1206,6 +1206,7 @@ SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 LANGUAGE LINK 0 acc OR loc) ;
 SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (*1 sem_edu LINK 0 loc) ;
 SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 sem_lang) ;
 # Ruth Larsena mielas dát vuoseha ahte lea vejolaš lohkagoahtit sámegiela easkka joatkkaskuvllas
+SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i) LINK 0 der_inchl) ;
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR refl + acc OR refl + loc OR prfprc OR a - attr) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (*1 ess) ;
@@ -1901,9 +1902,15 @@ SELECT:fallback ("hete"i) (0 ("<báhkka>"i));
 SELECT ("ved"i) (0 ("<muorra>"i) LINK 0 loc);
 SELECT:fallback ("tre"i) (0 ("<muorra>"i));
 
+SELECT:fallback ("fremføring"i) (0 ("<ovdanbuktin>"i));
+
 
 SELECT ("glad"i) (0 ("<illu>"i) LINK 0 loc);
 SELECT:fallback ("glede"i) (0 ("<illu>"i));
+
+SELECT ("redd"i) (0 ("<ballu>"i) LINK 0 loc);
+SELECT:fallback ("frykt"i) (0 ("<ballu>"i));
+
 
 SELECT ("tale"i) (0 ("<ságat>"i) LINK 0 ill);
 SELECT:fallback ("nyhet"i) (0 ("<ságat>"i));
