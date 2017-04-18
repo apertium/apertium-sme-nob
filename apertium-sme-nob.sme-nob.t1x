@@ -2185,6 +2185,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="onsdag"/>
       <list-item v="papir"/>
       <list-item v="sameskole"/>
+      <list-item v="scene"/>
       <list-item v="side"/>
       <list-item v="skole"/>
       <list-item v="slette"/>
@@ -2199,6 +2200,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-NIL" c="Locative noun phrases default to 'i' unless in this list">
       <list-item v="uke"/>
       <list-item v="glad"/>
+      <list-item v="redd"/>
       <list-item v="år"/>
     </def-list>
     <def-list n="loc-om-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
@@ -2213,6 +2215,8 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-for-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="frykt"/>
       <list-item v="tema"/>
+      <list-item v="redd"/>
+      <list-item v="glad"/>
     </def-list>
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
       <list-item v="del"/>
@@ -2530,7 +2534,13 @@ And then there are some categories like "month", with all the months.
               </let>
             </when>
             <when c="om">
-              <test><or>
+              <test>
+              <and>
+           <not><and>
+              <equal><var n="seen_num"/><lit-tag v="num"/></equal>
+               <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
+              </and></not>
+              <or>
                 <in caseless="yes"><var n="previous-nhead"/><list n="loc-om-head"/></in>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in>
                   <equal><var n="main-verb-sl"/><lit v="beroštit"/></equal>
@@ -2542,7 +2552,9 @@ And then there are some categories like "month", with all the months.
              <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
              <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in></not>
                   </and>
-             </or></test>
+             </or></and>
+
+             </test>
               <let>
                 <var n="caseprep"/><lit v="om"/>
               </let>
@@ -2627,6 +2639,14 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="i"/>
               </let>
             </when>
+            <when c="med">
+              <test>
+             <equal><var n="main-verb-sl"/><lit v="geargat"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="med"/>
+              </let>
+            </when>  
             <when c="for">
               <test><or>
                 <in caseless="yes"><var n="previous-nhead"/><list n="loc-for-head"/></in>
@@ -3320,6 +3340,7 @@ And then there are some categories like "month", with all the months.
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="a_acr"/><lit-tag v="acr"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
+            <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="ekstra"/></equal></not> 
             <not><and>
             <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_domain"/></equal>
             <not><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></not>

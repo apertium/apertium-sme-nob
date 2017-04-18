@@ -381,11 +381,12 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item lemma="vcop" tags="SV.@+FMAINV"/>
       <cat-item lemma="vcop" tags="SV.@+FMAINV.*"/>
     </def-cat>
-    <def-cat n="MAIN-FIN">
+    <def-cat n="MAIN-V">
       <cat-item tags="SV.@+FMAINV"/>
       <cat-item tags="SV.@+FMAINV.*"/>
       <cat-item tags="SV.@-FMAINV"/>
       <cat-item tags="SV.@-FMAINV.*"/>
+      <cat-item tags="SV.@N←.*"/>
     </def-cat>
     <def-cat n="FAUXV-man">
       <cat-item tags="SV.@+FAUXV.*.p3.*"/>
@@ -1285,11 +1286,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: SUBJr MAIN-FIN MAINV.qst - out: 1 om pro 2 - a first try " c="Mun jearan boađátgo odne = Jeg spør om du kommer i dag.">
+    <rule comment="REGLA: SUBJr MAIN-FIN MAINV.qst - out: 1 2 om pro 3 - a first try " c="Mun jearan boađátgo odne = Jeg spør om du kommer i dag.">
       <pattern>
         <pattern-item n="SUBJr"/>
-        <pattern-item n="MAIN-FIN"/>
-        <pattern-item n="MAINV.qst"/>
+        <pattern-item n="MAIN-V"/>
+        <pattern-item n="FV.qst"/>
       </pattern>
       <action>
         <call-macro n="set_hab"><with-param pos="3"/></call-macro>
