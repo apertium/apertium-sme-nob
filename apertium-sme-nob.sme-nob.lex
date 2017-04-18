@@ -1450,6 +1450,10 @@ SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 SELECT ("katalog"i) (0 ("<ohcu>"i) + pl) ;
 SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
 
+SELECT ("geskjeft"i) (0 ("<fidnu>"i) LINK -1 (cmp)) ;
+SELECT:fallback ("yrke"i) (0 ("<fidnu>"i)) ;
+
+
 SELECT ("tegn"i) (0 ("<mearka>"i) LINK -1 attr) ;
 SELECT:fallback ("merke"i) (0 ("<mearka>"i)) ;
 
@@ -2012,6 +2016,9 @@ SELECT:fallback ("gruppe"i) (0 ("<joavku>"i)) ;
 
 SELECT:fallback ("venn"i) (0 ("<olmmái>"i));
 
+SELECT ("vern"i) (0 ("<suodji>"i) LINK -1 ("<kultuvra>"i) );
+SELECT:fallback ("ly"i) (0 ("<suodji>"i));
+
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
@@ -2116,7 +2123,6 @@ SELECT:fallback ("skoletur"i) (0 ("<skuvlamátki>"i));
 SELECT:fallback ("trekk"i) (0 ("<skoađas>"i));
 SELECT:fallback ("blankett"i) (0 ("<skovvi>"i));
 SELECT:fallback ("gris"i) (0 ("<spiidni>"i));
-SELECT:fallback ("ly"i) (0 ("<suodji>"i));
 SELECT:fallback ("dialekt"i) (0 ("<suopman>"i));
 SELECT:fallback ("venn"i) (0 ("<ustit>"i));
 SELECT:fallback ("hundeflokk"i) (0 ("<valvi>"i));
