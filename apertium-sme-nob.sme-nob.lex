@@ -2326,6 +2326,10 @@ SELECT:fallback ("fra"i) + pr (0 ("<eret>"i)) ;
 SELECT ("dobbelt"i) (0 ("<beali>"i) LINK 1 ("<eanet>"i)) ;
 SELECT:fallback ("halve"i) (0 ("<beali>"i)) ;
 
+SELECT ("sammen"i) (0 ("<oktii>"i) LINK -1 ("<bidjat>"i)) ;
+SELECT:fallback ("en gang"i) (0 ("<oktii>"i)) ;
+
+
 SELECT ("masse"i) (0 ("<dievva>"i) LINK 1 n + pl) ;
 SELECT:fallback ("full"i) (0 ("<dievva>"i) + adv) ;
 
