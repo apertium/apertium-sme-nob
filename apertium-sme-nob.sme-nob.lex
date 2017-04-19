@@ -988,6 +988,10 @@ SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 SELECT ("felle"i) IF  (0 ("<njeaidit>"i)) (0* sem_ani OR (sem_plant) OR (sem_mat_plant) BARRIER SV-BOUNDARY ) ;
 SELECT:fallback ("velte"i) IF  (0 ("<njeaidit>"i)) ;
 
+SELECT ("joike"i) IF  (0 ("<rohttestit>"i) OR ("<rohttet>"i)) (0* ("<luohti>"i) BARRIER SV-BOUNDARY ) ;
+SELECT:fallback ("rykke"i) IF  (0 ("<rohttestit>"i)) ;
+
+
 SELECT:fallback ("gjennomføre"i) IF  (0 ("<doibmiibidjat>"i)) ;
 
 
@@ -1446,6 +1450,9 @@ SELECT ("tale"i) (*-1 ("<doallat>"i)) (0 ("sáhka"i));
 SELECT ("skrott"i) (0 ("<gorut>"i) LINK -1 num) ;
 SELECT ("skrott"i) (0 ("<gorut>"i) + pl) ;
 SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
+
+SELECT:fallback ("differensiering"i) (0 ("<sirren>"i) ) ;
+
 
 SELECT ("katalog"i) (0 ("<ohcu>"i) + pl) ;
 SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
