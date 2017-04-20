@@ -1003,6 +1003,11 @@ SELECT:fallback ("ville"i) IF  (0 ("<háliidit>"i)) ;
 SELECT ("sette# fast"i) IF  (0 ("<darvánit>"i) LINK *0 sem_veh ) ;
 SELECT:fallback ("feste"i) IF  (0 ("<darvánit>"i)) ;
 
+SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK 0 prsprc ) ;
+SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK *0 ("<eallu>"i) OR ("<boazu>"i) OR ("<siida>"i) ) ;
+SELECT:fallback ("bevege"i) IF  (0 ("<johtit>"i)) ;
+
+
 SELECT ("bevare"i) IF  (0 ("<bisuhit>"i) LINK *0 sem_lang OR ("<kultuvra>"i) ) ;
 SELECT:fallback ("beholde"i) IF  (0 ("<bisuhit>"i)) ;
 
@@ -2026,6 +2031,9 @@ SELECT:fallback ("venn"i) (0 ("<olmmái>"i));
 SELECT ("vern"i) (0 ("<suodji>"i) LINK -1 ("<kultuvra>"i) );
 SELECT:fallback ("ly"i) (0 ("<suodji>"i));
 
+
+SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
+SELECT ("kjendis"i) (0 ("<beakkán>"i));
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
