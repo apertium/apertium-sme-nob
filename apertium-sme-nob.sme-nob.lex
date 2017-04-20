@@ -2187,13 +2187,14 @@ SELECT:fallback ("liv"i) (0 ("<heagga>"i)) ;
 SELECT:fallback ("betaling"i) (0 ("<máksámuš>"i)) ;
 SELECT:fallback ("kvote"i) (0 ("<earri>"i)) ;
 
+SELECT ("rett"i) (0 ("<diggi>"i) LINK 0 ill) ;
+SELECT:fallback ("ting"i) (0 ("<diggi>"i)) ;
 
 # Based on frequency in parallel text:
 SELECT ("periode"i) (0 ("<áigodat>"i));
 SELECT ("sameby"i) (0 ("<čearru>"i));
 SELECT ("urin"i) (0 ("<gužža>"i)) ;
 SELECT ("måned"i) (0 ("<mánnu>"i)) ;
-SELECT ("ting"i) (0 ("<diggi>"i)) ;
 SELECT ("grunntanke"i) (0 ("<vuođđojurdda>"i)) ;
 
 
