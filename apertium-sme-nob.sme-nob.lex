@@ -2215,7 +2215,7 @@ SELECT ("om"i) (0 ("<geahčen>"i) LINK -1 sem_time) ;
 SELECT:fallback ("hos"i) (0 ("<geahčen>"i)) ;
 
 SELECT ("for"i) (0 ("<ektui>"i) LINK -1 (sem_perc-phys)) ;
-SELECT ("sammenlignet med"i) (0 ("<ektui>"i) LINK -1 ("<diimmá>"i)) ;
+SELECT ("sammenlignet med"i) (0 ("<ektui>"i) LINK -1 ("<diimmá>"i) OR ("<diibmá>"i)) ;
 SELECT:fallback ("mot"i) (0 ("<ektui>"i)) ;
 
 SELECT ("med"i) (0 ("<mielde>"i) LINK -1 sem_veh OR HUMAN) ;
