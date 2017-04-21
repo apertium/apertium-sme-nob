@@ -1008,6 +1008,9 @@ SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK *0 ("<eallu>"i) OR ("<boazu>"i) OR 
 SELECT:fallback ("bevege"i) IF  (0 ("<johtit>"i)) ;
 
 
+SELECT ("knyttet"i) IF  (0 ("<čadnot>"i) LINK 1 ill + sem_plc ) ;
+SELECT:fallback ("binde"i) IF  (0 ("<čadnot>"i)) ;
+
 SELECT ("bevare"i) IF  (0 ("<bisuhit>"i) LINK *0 sem_lang OR ("<kultuvra>"i) ) ;
 SELECT:fallback ("beholde"i) IF  (0 ("<bisuhit>"i)) ;
 
@@ -1969,6 +1972,7 @@ SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
 SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) BARRIER SV-BOUNDARY);
 SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i) OR ("<pálla>"i) OR ("<sihkar>"i) OR ("<eahpesihkar>"i));
+SELECT ("plass"i) (0 ("<sadji>"i) LINK 1 po);
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
 SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
@@ -2211,6 +2215,7 @@ SELECT ("om"i) (0 ("<geahčen>"i) LINK -1 sem_time) ;
 SELECT:fallback ("hos"i) (0 ("<geahčen>"i)) ;
 
 SELECT ("for"i) (0 ("<ektui>"i) LINK -1 (sem_perc-phys)) ;
+SELECT ("sammenlignet med"i) (0 ("<ektui>"i) LINK -1 ("<diimmá>"i)) ;
 SELECT:fallback ("mot"i) (0 ("<ektui>"i)) ;
 
 SELECT ("med"i) (0 ("<mielde>"i) LINK -1 sem_veh OR HUMAN) ;
@@ -2359,7 +2364,7 @@ SELECT:fallback ("derfor"i) (0 ("<dan dihte>"i)) ;
 SELECT ("like"i) (0 ("<liikka>"i) LINK 1 a + nom) ;
 SELECT:fallback ("likevel"i) (0 ("<liikka>"i)) ;
 
-SELECT ("altfor"i) (0 ("<beare>"i) LINK 1 ("<unnán>"i) OR ("<ollu>"i)) ;
+SELECT ("altfor"i) (0 ("<beare>"i) LINK 1 ("<unnán>"i) OR ("<ollu>"i) OR ("<máŋga>"i) OR ("<ollugat>"i) OR a + nom) ;
 SELECT:fallback ("bare"i) (0 ("<beare>"i)) ;
 
 
