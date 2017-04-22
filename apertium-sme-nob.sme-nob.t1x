@@ -2024,6 +2024,10 @@ And then there are some categories like "month", with all the months.
       <list-item v="fárret"  c="… juogo fárret sámi gilážis vai besset eallit homofiilan."/>
       <list-item v="earuhit" c="earuhii nuorra Prinssa skuvlavázzima eará skuvlamánáin"/>
     </def-list>
+    <def-list n="loc-NIL-verbs">
+      <list-item v="fitnat"/>
+      <list-item v="finadit"/>
+    </def-list>
     <def-list n="loc-om" c="Locative noun phrases default to 'på' unless in this or next list (or are np.top)">
       <list-item v="kveld"/>
       <list-item v="dag"/>
@@ -2679,14 +2683,6 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="etter"/>
               </let>
             </when>
-            <when c="NIL for loc-NIL">
-              <test c="empty">
-                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-NIL"/></in>
-              </test>
-              <let>
-                <var n="caseprep"/><lit v=""/>
-              </let>
-            </when>
             <when c="for">
               <test>
                 <equal><var n="previous-nhead"/><lit v="takk"/></equal>
@@ -2721,8 +2717,10 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="av"/>
               </let>
             </when>
-            <when c="Habitive, or reflexive of habitive">
-              <test><or>
+          </choose>
+          <choose><when c="but even if the above tests matched, we can override to nil here:">
+            <test>
+              <or>
                 <equal><clip pos="1" side="tl" part="hab"/><lit-tag v="←hab→"/></equal>
                 <and>           <!-- «mus lea» now tagged like this: -->
                   <or>
@@ -2744,11 +2742,14 @@ And then there are some categories like "month", with all the months.
                   <equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal>
                   <equal><clip pos="1" side="tl" part="lemh"/><lit v="selv"/></equal>
                 </and>
-              </or></test>
-              <let>
-                <var n="caseprep"/><lit v=""/>
-              </let>
-            </when>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="loc-NIL-verbs"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-NIL"/></in>
+              </or>
+            </test>
+            <let>
+              <var n="caseprep"/><lit v=""/>
+            </let>
+          </when>
           </choose>
         </when>
         <when c="com med">

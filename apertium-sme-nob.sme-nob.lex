@@ -1469,6 +1469,10 @@ SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
 SELECT ("geskjeft"i) (0 ("<fidnu>"i) LINK -1 (cmp)) ;
 SELECT:fallback ("yrke"i) (0 ("<fidnu>"i)) ;
 
+SELECT ("motto"i) (0 ("<čurvestat>"i) LINK -1 (cmp)) ;
+SELECT ("motto"i) (0 ("<čurvestat>"i) LINK 0 (cmp)) ;
+SELECT:fallback ("rop"i) (0 ("<čurvestat>"i)) ;
+
 
 SELECT ("tegn"i) (0 ("<mearka>"i) LINK -1 attr) ;
 SELECT:fallback ("merke"i) (0 ("<mearka>"i)) ;
@@ -2515,7 +2519,7 @@ SELECT:fallback ("mye"i) (0 ("<eanet>"i));
 
 # buorre:0 → bra, buorre:1→god , så god
 
-LIST IJ-TIME = "<beaivi>" "<eahket>" "<beassážat>" "<juovllat>" ;
+LIST IJ-TIME = ("<beaivi>"i) ("<eahket>"i) ("<iđit>"i)  ("<idja>"i)   ("<vahkkoloahppa>"i) ("<beassážat>"i) ("<juovllat>"i) ;
 #SELECT ("vær så god"i) (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
 SELECT ("stor"i) (0 ("<buorre>"i) LINK 1 ("<muddu>"i)) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME OR po) ;
