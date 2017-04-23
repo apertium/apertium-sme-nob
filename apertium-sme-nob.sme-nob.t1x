@@ -1969,13 +1969,18 @@ And then there are some categories like "month", with all the months.
       <list-item v="utvikle"/>
       <list-item v="ovdánahttit"/>
     </def-list>
-    <def-list n="ill-med-verbs" c="See 'ill-NIL-verbs' above.">
+    <def-list n="ill-med-verbs">
       <list-item v="duhtat"/>
       <list-item v="oahpásmuvvat"/>
     </def-list>
-    <def-list n="ill-i-verbs" c="See 'ill-NIL-verbs' above.">
+    <def-list n="ill-i-verbs">
       <list-item v="ásahit"/>
       <list-item v="vuođđudit"/>
+    </def-list>
+    <def-list n="ill-for-verbs">
+      <list-item v="leat"/>
+      <list-item v="mearkkašit"/>
+      <list-item v="čiegadit"/>
     </def-list>
     <def-list n="ill-på-verbs" c="See 'ill-NIL-verbs' above.
                                   Speech verbs, emotional(?) verbs">
@@ -2005,18 +2010,18 @@ And then there are some categories like "month", with all the months.
       <list-item v="oainnahallat"/>
       <list-item v="vuojáhallat"/>
     </def-list>
-    <def-list n="loc-for-verbs" c="See 'ill-NIL-verbs' above.">
+    <def-list n="loc-for-verbs">
       <list-item v="ballat"/>
       <list-item v="nohkkot"/>
       <list-item v="váruhit"/>
     </def-list>
-    <def-list n="loc-om-verbs" c="See 'ill-NIL-verbs' above.">
+    <def-list n="loc-om-verbs">
       <list-item v="beroštit"/>
     </def-list>
-    <def-list n="loc-som-verbs" c="See 'ill-NIL-verbs' above.">
+    <def-list n="loc-som-verbs">
       <list-item v="beaggit" c="beaggán Sámi soga lávlaga čállin"/>
     </def-list>
-    <def-list n="loc-fra-verbs" c="See 'ill-NIL-verbs' above.">
+    <def-list n="loc-fra-verbs">
 <!--      <list-item v="gullat" c="Problematic; Leat go gullan sus alddis? vs Go gullen sámegiela dien mátkkis."/>-->
       <list-item v="beassat" c="Mihttomearri lea beassat hálddašanguovllus."/>
       <list-item v="boahtit" c="Mun boađán gávpogis."/>
@@ -2135,6 +2140,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="samarbeid"/>
       <list-item v="samfunn"/>
       <list-item v="sammenheng"/>
+      <list-item v="sending"/>
       <list-item v="seng"/>
       <list-item v="september"/>
       <list-item v="skap"/>
@@ -2296,6 +2302,7 @@ And then there are some categories like "month", with all the months.
    <def-list n="ill-på-head">
       <list-item v="syn"/>
       <list-item v="innflytelse"/>
+      <list-item v="påvirkning"/>
     </def-list>
     <def-list n="gen-av-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="forfatter"/>
@@ -2887,8 +2894,7 @@ And then there are some categories like "month", with all the months.
               <test>
                 <and>
                   <or>
-                    <equal><var n="main-verb-sl"/><lit v="leat"/></equal>
-                    <equal><var n="main-verb-sl"/><lit v="mearkkašit"/></equal>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-for-verbs"/></in>
                     <and>
                     <equal><var n="main-verb-sl"/><lit v="šaddat"/></equal>
                <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
@@ -2929,7 +2935,16 @@ And then there are some categories like "month", with all the months.
             <var n="caseprep"/><lit v="om"/>
           </let>
         </when>
-        <when c="om acc">
+        <when c="på acc">
+          <test><or>
+          <equal><var n="main-verb-tl"/><lit v="fokusere"/></equal>
+          <equal><var n="main-verb-tl"/><lit v="forske"/></equal>
+     </or></test>
+          <let>
+            <var n="caseprep"/><lit v="på"/>
+          </let>
+        </when>
+        <when c="til acc">
           <test><and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
           <equal><var n="main-verb-tl"/><lit v="lytte"/></equal>
         </and>   </test>

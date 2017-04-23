@@ -1269,6 +1269,7 @@ SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_or
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 ("<vejolašvuohta>"i) OR ("<bággu>"i) OR ("<ráđđi>"i) OR ("<áigemeari>"i) OR ("<divat>"i) ) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 loc BARRIER NOT-ADV-PCLE) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r) OR ("<áigemearri>"i) OR ("<.*divat>"r)) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (1 ill) ;
 
 
 SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 ("<ahte>"i));
@@ -1846,6 +1847,7 @@ SELECT ("middel"i) (0 ("<doarjja>"i)) (-1 ("<ruoná>"i)) ;
 SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
 
 SELECT ("sør"i) (0 ("<mátta>"i)) (1 prop or sem_plc or ("<sápmi>"i)) ;
+SELECT ("sør"i) (0 ("<mátta>"i)) (0 (cmp_splitr)) ;
 SELECT:fallback ("rot"i) (0 ("<mátta>"i))  ;	
 
 SELECT ("samskipnad"i) (0 ("<ovttastus>"i)) (-1 ("<studeanta>"i)) ;
@@ -2040,6 +2042,9 @@ SELECT:fallback ("venn"i) (0 ("<olmmái>"i));
 SELECT ("vern"i) (0 ("<suodji>"i) LINK -1 ("<kultuvra>"i) );
 SELECT:fallback ("ly"i) (0 ("<suodji>"i));
 
+SELECT ("gård"i) (0 ("<dállu>"i) LINK *0 ("<.*vuoigatvuohta>"r) OR ("<eana>"i));
+SELECT:fallback ("hus"i) (0 ("<dállu>"i));
+
 
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
 SELECT ("kjendis"i) (0 ("<beakkán>"i));
@@ -2067,7 +2072,6 @@ SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
 SELECT:fallback ("bål"i) (0 ("<dolla>"i));
 SELECT:fallback ("håndarbeid"i) (0 ("<duodji>"i));
 SELECT:fallback ("ønske"i) (0 ("<dáhttu>"i));
-SELECT:fallback ("hus"i) (0 ("<dállu>"i));
 SELECT:fallback ("eiendel"i) (0 ("<dávvir>"i));
 SELECT:fallback ("norsk"i) (0 ("<dáčča>"i));
 SELECT:fallback ("flokk"i) (0 ("<eallu>"i));
