@@ -1471,6 +1471,10 @@ SELECT ("heldig"i) (0 ("<lihkku>"i) LINK 0 (←ext→) LINK *-1 ←hab→) ;
 SELECT:fallback ("lykke"i) (0 ("<lihkku>"i)) ;
 
 
+SELECT ("buesnitt"i) (0 ("<hoaŋka>"i) LINK 1 ("<beallji>"i)) ;
+SELECT:fallback ("bergvegg"i) (0 ("<hoaŋka>"i)) ;
+
+
 SELECT ("katalog"i) (0 ("<ohcu>"i) + pl) ;
 SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
 
