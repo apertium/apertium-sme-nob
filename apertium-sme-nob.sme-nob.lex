@@ -1463,6 +1463,8 @@ SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 
 SELECT:fallback ("differensiering"i) (0 ("<sirren>"i) ) ;
 
+SELECT:fallback ("tillatelse"i) (0 ("<lohpi>"i)) ;
+
 
 SELECT ("katalog"i) (0 ("<ohcu>"i) + pl) ;
 SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
