@@ -935,6 +935,7 @@ SELECT:fallback ("enda"i) IF (0 ("<vel>"i))  ;
 #leat
 
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
+SELECT:adj ("være"i) IF (0 ("<leat>"i) LINK 1 ("<lihkku>"i) LINK 0 (←ext→)) ; # mus lea lihkku - jeg er heldig
 
 SELECT ("måtte"i) IF (0 ("<leat>"i) LINK -1 loc + HUMAN) (1 inf) ;
 # mis lea cahkkehit dola
@@ -955,6 +956,7 @@ SELECT:ha-pret ("ha"i) IF (0 ("<leat>"i)) (0 (indic pret)) (1 inf) ;
 #SELECT:ha-prfprac  ("ha"i) IF (0 ("<leat>"i)) (*1 prfprc + @-FMAINV BARRIER SV-BOUNDARY) ; #LOOK AT THIS
 
 SELECT:Det-er ("være"i) IF (0 ("<leat>"i)) (-1 ("<Dat>") + @SUBJ→) ; # Dat lea …
+
 
 SELECT:alle-hadde-samisk ("ha"i) IF (0 ("<leat>"i)) (-1 loc + @ADVL→ - dem) (*1 @←SUBJ - inf) ;
 # Buohkain lei sámegiella eatnigiella
@@ -1465,6 +1467,9 @@ SELECT:fallback ("differensiering"i) (0 ("<sirren>"i) ) ;
 
 SELECT:fallback ("tillatelse"i) (0 ("<lohpi>"i)) ;
 
+SELECT ("heldig"i) (0 ("<lihkku>"i) LINK 0 (←ext→) LINK *-1 ←hab→) ;
+SELECT:fallback ("lykke"i) (0 ("<lihkku>"i)) ;
+
 
 SELECT ("katalog"i) (0 ("<ohcu>"i) + pl) ;
 SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
@@ -1856,7 +1861,7 @@ SELECT ("samskipnad"i) (0 ("<ovttastus>"i)) (-1 ("<studeanta>"i)) ;
 SELECT:fallback ("forbindelse"i) (0 ("<ovttastus>"i))  ;	
 
 
-SELECT ("press"i) (0 ("<deaddu>"i) + acc) (*-1 ("<bidjat>"i) BARRIER SV-BOUNDARY) ;
+SELECT ("press"i) (0 ("<deaddu>"i) + acc) (*-1 ("<bidjat>"i) OR ("<bargat>"i)  BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("tyngde"i) (0 ("<deaddu>"i)) ;
 
 
@@ -2347,6 +2352,9 @@ SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
+
+SELECT:fallback ("mindre"i) (0 ("<unnit>"i)) ; 
+
 
 SELECT ("opp"i) (0 ("<eret>"i)) (-1 ("<cealkit>"i)) ;
 SELECT ("fra"i) + pr (0 ("<eret>"i)) (-1 ("<leat>"i) OR cc) ;
