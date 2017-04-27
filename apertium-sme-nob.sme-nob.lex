@@ -1031,6 +1031,9 @@ SELECT:fallback ("oppnå"i) IF  (0 ("<joksat>"i)) ;
 SELECT ("heve"i) IF  (0 ("<lonuhit>"i)) (0*  ("<ruhta>"i)) ;
 SELECT:fallback ("bytte"i) IF  (0 ("<lonuhit>"i)) ;
 
+SELECT ("veve"i) IF  (0 ("<gođđit>"i)) (0* ("<liidni>"i)) ;
+SELECT:fallback ("strikke"i) IF  (0 ("<gođđit>"i)) ;
+
 
 SELECT ("få"i) IF  (0 ("<goddit>"i)) (0* ("<guolli>"i) OR ("<luossa>"i) OR ("<dorski>"i)) ;
 SELECT:fallback ("drepe"i) IF  (0 ("<goddit>"i)) ;
@@ -1214,7 +1217,7 @@ SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<:>")) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<,>")) ;
 
 
-SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain LINK 0 acc OR ("<cealkámuš>"i)) OR (-1 sem_txt OR sem_domain LINK 0 acc )) ;
+SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain OR ("<cealkámuš>"i) LINK 0 acc) OR (-1 sem_txt OR sem_domain LINK 0 acc )  OR (1 ("<eksámen>"i))) ;
 # Son lohká ahte lea buorre doppe.
 
 SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 LANGUAGE LINK 0 acc OR loc) ;
@@ -1469,6 +1472,9 @@ SELECT:fallback ("tillatelse"i) (0 ("<lohpi>"i)) ;
 
 SELECT ("heldig"i) (0 ("<lihkku>"i) LINK 0 (←ext→) LINK *-1 ←hab→) ;
 SELECT:fallback ("lykke"i) (0 ("<lihkku>"i)) ;
+
+SELECT ("innstilling"i) (0 ("<áššeguoddu>"i) LINK -1 ("<ráđđealmmái>"i)) ;
+SELECT:fallback ("holdning"i) (0 ("<áššeguoddu>"i)) ;
 
 
 SELECT ("buesnitt"i) (0 ("<hoaŋka>"i) LINK 1 ("<beallji>"i)) ;
@@ -2387,7 +2393,7 @@ SELECT:fallback ("derfor"i) (0 ("<dan dihte>"i)) ;
 SELECT ("like"i) (0 ("<liikka>"i) LINK 1 a + nom) ;
 SELECT:fallback ("likevel"i) (0 ("<liikka>"i)) ;
 
-SELECT ("altfor"i) (0 ("<beare>"i) LINK 1 ("<unnán>"i) OR ("<ollu>"i) OR ("<máŋga>"i) OR ("<ollugat>"i) OR a + nom) ;
+SELECT ("altfor"i) (0 ("<beare>"i) LINK 1 ("<unnán>"i) OR ("<ollu>"i) OR ("<máŋga>"i) OR ("<ollugat>"i) OR a + nom OR a + attr) ;
 SELECT:fallback ("bare"i) (0 ("<beare>"i)) ;
 
 
@@ -2487,6 +2493,10 @@ SELECT ("årets"i) (0 ("<jagáš>"i));
 
 SELECT ("sist"i) (0 ("<maŋit>"i) LINK 0 attr);
 REMOVE ("sein"i) (0 ("<maŋit>"i));
+
+SELECT ("sakte"i) (0 ("<njoahci>"i) LINK 0 (cmp_attr));
+SELECT ("sakte"i) (0 ("<njoahci>"i) LINK 1 ("<tv>"i));
+REMOVE ("sein"i) (0 ("<njoahci>"i));
 
 
 SELECT ("streif"i) (0 ("<golgu>"i) LINK 0 a + cmpnd);
