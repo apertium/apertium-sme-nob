@@ -87,6 +87,7 @@ LIST sem_measr = sem_body_measr sem_measr sem_measr_sign sem_measr_time ;
 LIST sem_money = sem_money ;
 LIST sem_obj = sem_aniprod_obj-clo sem_body_obj_tool-catch sem_build_obj sem_game_obj-play sem_geom_obj sem_hum_obj sem_money_obj sem_obj sem_obj-clo sem_obj-cogn sem_obj-el sem_obj-ling sem_obj-play sem_obj-play_sport sem_obj-rope sem_obj-surfc sem_obj_semcon sem_obj_state ;
 LIST sem_org = np.sem_org sem_build_event_org sem_build_edu_org sem_build_event_org sem_build_org sem_clth-jewl_org sem_ctain-abstr_org sem_curr_org sem_dance_org sem_edu_org sem_group_hum_org sem_group_org sem_hum_org sem_org sem_org_prod-cogn sem_org_rule sem_org_txt sem_org_veh sem_org  ;
+LIST sem_plant = sem_clth-jewl_plant sem_ctain-clth_plant sem_drink_plant sem_feat_plant sem_food_plant sem_hum_plant sem_mat_plant sem_plant sem_plant-part sem_plant_plant-part sem_plant_tool sem_plant_tool-measr  ;
 LIST sem_plc = sem_act_plc sem_ani_hum_plc sem_ani_plc sem_ani_plc_txt sem_aniprod_plc sem_body_plc sem_build-part_plc sem_event_plc sem_event_plc-elevate sem_feat-measr_plc sem_group_hum_plc sem_hum_lang_plc sem_hum_plc sem_plc sem_plc-abstr sem_plc-abstr_rel_state sem_plc-abstr_route sem_plc-elevate sem_plc-line sem_plc-water sem_plc_pos sem_plc_route sem_plc_state sem_plc_substnc sem_plc_substnc_wthr sem_plc_time sem_plc_tool-catch sem_plc_wthr sem_plc top ;
 LIST sem_state = sem_state sem_obj_state sem_plc-abstr_rel_state sem_plc_state sem_state-sick sem_state-sick_substnc ;
 LIST sem_sur = sem_sur ;
@@ -987,11 +988,15 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
+SELECT ("spire"i) IF  (0 ("<bohciidit>"i)) (0* sem_plant) ;
+SELECT:fallback ("oppstå"i) IF  (0 ("<bohciidit>"i)) ;
+
+
 SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK 1 acc) (*1 ill) ;
 SELECT:fallback ("utvikle"i) IF  (0 ("<ovddidit>"i)) ;
 
 
-SELECT ("felle"i) IF  (0 ("<njeaidit>"i)) (0* sem_ani OR (sem_plant) OR (sem_mat_plant) BARRIER SV-BOUNDARY ) ;
+SELECT ("felle"i) IF  (0 ("<njeaidit>"i)) (0* sem_ani OR sem_plant BARRIER SV-BOUNDARY ) ;
 SELECT:fallback ("velte"i) IF  (0 ("<njeaidit>"i)) ;
 
 SELECT ("joike"i) IF  (0 ("<rohttestit>"i) OR ("<rohttet>"i)) (0* ("<luohti>"i) BARRIER SV-BOUNDARY ) ;
