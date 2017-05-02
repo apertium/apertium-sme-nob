@@ -987,6 +987,10 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
+SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK 1 acc) (*1 ill) ;
+SELECT:fallback ("utvikle"i) IF  (0 ("<ovddidit>"i)) ;
+
+
 SELECT ("felle"i) IF  (0 ("<njeaidit>"i)) (0* sem_ani OR (sem_plant) OR (sem_mat_plant) BARRIER SV-BOUNDARY ) ;
 SELECT:fallback ("velte"i) IF  (0 ("<njeaidit>"i)) ;
 
@@ -2044,6 +2048,8 @@ SELECT:fallback ("forsvar"i) (0 ("<suodjalus>"i));
 SELECT ("omkring"i) (0 ("<biras>"i) LINK 0 pl + gen) (1 ("<mánnu>"i));
 
 SELECT ("avstand"i) (0 ("<gaska>"i) LINK -1 ("<stuoris>"i));
+SELECT ("strekning"i) (0 ("<gaska>"i) LINK *0 CURRENCY OR ("<prográmmaguovlu>"i));
+SELECT ("strekning"i) (0 ("<gaska>"i) LINK 0 pl);
 SELECT:fallback ("mellomrom"i) (0 ("<gaska>"i));
 
 SELECT ("sjikt"i) (0 ("<geardi>"i) LINK -1 comp + attr);
