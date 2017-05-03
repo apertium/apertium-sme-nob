@@ -1225,6 +1225,8 @@ SELECT ("si"i) (0 ("<lohkat>"i)) (0 (←vdic→)) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<:>")) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<,>")) ;
 
+SELECT ("lese"i) (0 ("<lohkat>"i)) (-1 BOS)(1 ("<eambbo>"i) OR ("<eanet>"i) LINK 1 EOS) ;
+
 
 SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain OR ("<cealkámuš>"i) LINK 0 acc) OR (-1 sem_txt OR sem_domain LINK 0 acc )  OR (1 ("<eksámen>"i))) ;
 # Son lohká ahte lea buorre doppe.
@@ -2394,6 +2396,10 @@ SELECT:fallback ("en gang"i) (0 ("<oktii>"i)) ;
 SELECT ("masse"i) (0 ("<dievva>"i) LINK 1 n + pl) ;
 SELECT:fallback ("full"i) (0 ("<dievva>"i) + adv) ;
 
+SELECT ("få"i) (0 ("<unnán>"i) LINK 1 n + pl) ;
+SELECT:fallback ("lite"i) (0 ("<unnán>"i) + adv) ;
+
+
 
 SELECT:fallback ("fra gamle dager"i) (0 ("<don doložis>"i)) ;
 
@@ -2532,6 +2538,11 @@ SELECT ("forrige"i) (0 ("<ovddit>"i comp)) (1 n + sg);
 
 SELECT ("trygg"i) (0 ("<luohttevaš>"i)) (0 a) (NOT 0 n);
 SELECT:fallback ("tillitsfull"i) (0 ("<luohttevaš>"i));
+
+
+SELECT ("mangfoldig"i) (0 ("<girjái>"i)) (*0 sem_domain);
+SELECT:fallback ("spraglet"i) (0 ("<girjái>"i));
+
 
 SELECT ("få"i) (0 ("<unni>"i) LINK 0 comp + attr LINK 1 n + pl);
 SELECT:fallback ("liten"i) (0 ("<unni>"i));
