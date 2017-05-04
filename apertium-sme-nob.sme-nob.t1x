@@ -2228,6 +2228,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-NIL" c="Locative noun phrases default to 'i' unless in this list">
       <list-item v="uke"/>
       <list-item v="glad"/>
+      <list-item v="enig"/>
       <list-item v="redd"/>
       <list-item v="år"/>
     </def-list>
@@ -2821,6 +2822,7 @@ And then there are some categories like "month", with all the months.
             <test><or><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in>
              <equal><var n="main-verb-sl"/><lit v="gohčodit"/></equal>
              <equal><var n="main-verb-sl"/><lit v="šaddat"/></equal>
+             <equal><var n="main-verb-sl"/><lit v="gártat"/></equal>
              </or></test>
            <let>
               <var n="caseprep"/><lit v=""/>
@@ -6070,7 +6072,41 @@ And then there are some categories like "month", with all the months.
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+       <let><var n="caseprep"/><lit v=""/></let>
+       <choose>
+        <when><test>
+        <equal><clip pos="4" side="tl" part="case"/><lit-tag v="ill"/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR.ill"/>
+              <lit v="{^"/>
+              <lit v="til"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          </when>
+        <when><test>
+        <equal><clip pos="4" side="tl" part="case"/><lit-tag v="loc"/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR.loc"/>
+              <lit v="{^"/>
+              <lit v="fra"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          </when>
+          </choose>
         <out>
+            <var n="caseprep"/>
           <chunk name="pre_pre_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -6113,7 +6149,7 @@ And then there are some categories like "month", with all the months.
         </when></choose>
       </action>
     </rule>
-   <rule comment="C[DT] month ord lex-beaivi" c="guovvamánu 17. beaivvi → 17. februar
+   <rule comment="C[DT] month ord lex-beaivi" c="guovvamánu 17. beaivvi → 17. februar 
                    TODO: should we also chunk MONTH NUM DOT BEAIVI YEAR ?
                    TODO: should we always delete the genitive here?
                    TODO: do we ever want definite? ('den 17.februar')?">
@@ -6124,7 +6160,41 @@ And then there are some categories like "month", with all the months.
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+       <let><var n="caseprep"/><lit v=""/></let>
+       <choose>
+        <when><test>
+        <equal><clip pos="3" side="tl" part="case"/><lit-tag v="ill"/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR.ill"/>
+              <lit v="{^"/>
+              <lit v="til"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          </when>
+        <when><test>
+        <equal><clip pos="3" side="tl" part="case"/><lit-tag v="loc"/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR.loc"/>
+              <lit v="{^"/>
+              <lit v="fra"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          </when>
+          </choose>
         <out>
+            <var n="caseprep"/>
           <chunk name="pre_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -6166,7 +6236,41 @@ And then there are some categories like "month", with all the months.
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+       <let><var n="caseprep"/><lit v=""/></let>
+       <choose>
+        <when><test>
+        <equal><clip pos="2" side="tl" part="case"/><lit-tag v="ill"/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR.ill"/>
+              <lit v="{^"/>
+              <lit v="til"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          </when>
+        <when><test>
+        <equal><clip pos="2" side="tl" part="case"/><lit-tag v="loc"/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR.loc"/>
+              <lit v="{^"/>
+              <lit v="fra"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          </when>
+          </choose>
         <out>
+            <var n="caseprep"/>
           <chunk name="pre_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
@@ -6209,7 +6313,41 @@ And then there are some categories like "month", with all the months.
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+       <let><var n="caseprep"/><lit v=""/></let>
+       <choose>
+        <when><test>
+        <equal><clip pos="2" side="tl" part="case"/><lit-tag v="ill"/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR.ill"/>
+              <lit v="{^"/>
+              <lit v="til"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          </when>
+        <when><test>
+        <equal><clip pos="2" side="tl" part="case"/><lit-tag v="loc"/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR.loc"/>
+              <lit v="{^"/>
+              <lit v="fra"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          </when>
+          </choose>
         <out>
+            <var n="caseprep"/>
           <chunk name="pre_pre_nom" case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
