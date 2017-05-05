@@ -1884,9 +1884,15 @@ SELECT:fallback ("rot"i) (0 ("<mátta>"i))  ;
 SELECT ("samskipnad"i) (0 ("<ovttastus>"i)) (-1 ("<studeanta>"i)) ;
 SELECT:fallback ("forbindelse"i) (0 ("<ovttastus>"i))  ;	
 
+SELECT:fallback ("nordmann"i) (0 ("<dáža>"i))  ;	
+
+SELECT ("handskrift"i) (0 ("<giehtačálus>"i) LINK *0 ("<bábir>"i) + loc)  ;	
+SELECT:fallback ("manus"i) (0 ("<giehtačálus>"i))  ;	
+
 
 SELECT ("press"i) (0 ("<deaddu>"i) + acc) (*-1 ("<bidjat>"i) OR ("<bargat>"i)  BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("tyngde"i) (0 ("<deaddu>"i)) ;
+SELECT:fallback ("byrde"i) (0 ("<noađđi>"i)) ;
 
 
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>"i)) ;
