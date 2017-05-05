@@ -1015,6 +1015,9 @@ SELECT:fallback ("ville"i) IF  (0 ("<háliidit>"i)) ;
 SELECT ("sette# fast"i) IF  (0 ("<darvánit>"i) LINK *0 sem_veh ) ;
 SELECT:fallback ("feste"i) IF  (0 ("<darvánit>"i)) ;
 
+SELECT:fallback ("berøre"i) IF  (0 ("<čuohcat>"i)) ;
+
+
 SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK 0 prsprc ) ;
 SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK *0 ("<eallu>"i) OR ("<boazu>"i) OR ("<siida>"i) ) ;
 SELECT:fallback ("bevege"i) IF  (0 ("<johtit>"i)) ;
@@ -1922,6 +1925,7 @@ SELECT:finsk ("finsk"i) (0 ("<Suopma>"i) LINK 0 gen LINK 1 ("<bealde>"i) OR ("<b
 SELECT:fallback ("Finland"i) (0 ("<Suopma>"i));
 
 SELECT:svensk ("svensk"i) (0 ("<Ruoŧŧa>"i) LINK 0 gen LINK 1 ("<bealde>"i) OR ("<bealli>"i) OR ("<beallai>"i));
+SELECT ("svensk"i) (0 ("<Ruoŧŧa>"i) LINK 0 @→N)(NEGATE -1 num LINK NOT 2 n + sg + gen OR n + sg + acc);
 SELECT:fallback ("Sverige"i) (0 ("<Ruoŧŧa>"i));
 
 SELECT:norsk ("norsk"i) (0 ("<Norga>"i) LINK 0 gen LINK 1 ("<bealde>"i) OR ("<bealli>"i) OR ("<beallai>"i));
@@ -2446,7 +2450,7 @@ SELECT:fallback ("sammen"i) (0 ("<gaskan>"i)) ;
 
 SELECT:fallback ("da"i) (0 ("<fal>"i)) ;
 
-SELECT:fallback ("like"i) (0 ("<seammá>"i) LINK 1 ("<ollu>"i) OR ("<olu>"i)) ;
+SELECT:fallback ("like"i) (0 ("<seammá>"i) LINK 1 ("<ollu>"i) OR ("<olu>"i) OR a + nom) ;
 SELECT:fallback ("samme"i) (0 ("<seammá>"i)) ;
 
 # Based on frequency in parallel text:
