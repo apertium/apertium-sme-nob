@@ -789,6 +789,92 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
+
+    <rule comment="REGLA: caseprep-PR SN-rADVL CNP caseprep-PR SN_rADVL lADVL" c="Sámi allaskuvla virgáda professor II matematihkas, suomagielas ja ruoŧagielas">
+      <pattern>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN"/>
+        <pattern-item n="comma"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN"/>
+        <pattern-item n="CNP"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN"/>
+      </pattern>
+      <action>
+        <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="2"/></call-macro>
+        <choose><when>
+          <test><not><equal><b pos="1"/><b/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
+        <choose><when>
+          <test><not><equal><b pos="2"/><b/></equal></not></test>
+          <out><b pos="2"/></out>
+        </when></choose>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="4"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
+          <b pos="5"/>
+          <chunk><clip pos="6" part="whole"/></chunk>
+          <b pos="6"/>
+          <chunk><clip pos="8" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: caseprep-PR SN-rADVL CNP caseprep-PR SN_rADVL lADVL" c="Sámit dahjege sápmelaččat ásset Ruoššas, Suomas, Ruoŧas ja Norggas.">
+      <pattern>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN"/>
+        <pattern-item n="comma"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN"/>
+        <pattern-item n="comma"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN"/>
+        <pattern-item n="CNP"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN"/>
+      </pattern>
+      <action>
+        <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="2"/></call-macro>
+        <choose><when>
+          <test><not><equal><b pos="1"/><b/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
+        <choose><when>
+          <test><not><equal><b pos="3"/><b/></equal></not></test>
+          <out><b pos="3"/></out>
+        </when></choose>
+        <choose><when>
+          <test><not><equal><b pos="4"/><b/></equal></not></test>
+          <out><b pos="4"/></out>
+        </when></choose>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="6"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="7"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
+          <chunk><clip pos="6" part="whole"/></chunk>
+          <b pos="8"/>
+          <chunk><clip pos="8" part="whole"/></chunk>
+          <b pos="9"/>
+          <chunk><clip pos="9" part="whole"/></chunk>
+          <b pos="10"/>
+          <chunk><clip pos="11" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
+
     <rule comment="REGLA: SN CNP SN
                    We assume CG only gives us SN CNP SN if they _should_ be coordinated.
                    For now only uses the case etc. of the first conjunct.
