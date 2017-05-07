@@ -997,6 +997,11 @@ SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK 1 acc) (*1 ill) ;
 SELECT:fallback ("utvikle"i) IF  (0 ("<ovddidit>"i)) ;
 
 
+SELECT ("kalve"i) IF  (0 ("<guoddit>"i) LINK -1 ("<ala>"i) OR  ill) ;
+SELECT ("kalve"i) IF  (0 ("<guoddit>"i) LINK *0 ("<áldu>"i)) ;
+SELECT:fallback ("bære"i) IF  (0 ("<guoddit>"i)) ;
+
+
 SELECT ("felle"i) IF  (0 ("<njeaidit>"i)) (0* sem_ani OR sem_plant BARRIER SV-BOUNDARY ) ;
 SELECT:fallback ("velte"i) IF  (0 ("<njeaidit>"i)) ;
 
@@ -1492,6 +1497,9 @@ SELECT:fallback ("lykke"i) (0 ("<lihkku>"i)) ;
 SELECT ("innstilling"i) (0 ("<áššeguoddu>"i) LINK -1 ("<ráđđealmmái>"i)) ;
 SELECT:fallback ("holdning"i) (0 ("<áššeguoddu>"i)) ;
 
+
+SELECT ("verge"i) (0 ("<áittardeaddji>"i) LINK -1 ("<veahkki>"i)) ;
+SELECT:fallback ("ombud"i) (0 ("<áittardeaddji>"i)) ;
 
 SELECT ("buesnitt"i) (0 ("<hoaŋka>"i) LINK 1 ("<beallji>"i)) ;
 SELECT:fallback ("bergvegg"i) (0 ("<hoaŋka>"i)) ;
@@ -2564,6 +2572,9 @@ SELECT:fallback ("liten"i) (0 ("<unni>"i));
 SELECT ("kommende"i) (0 ("<boahtte>"i)) (1 ("<áigi>"i));
 SELECT:fallback ("neste"i) (0 ("<boahtte>"i));
 
+SELECT ("moro skyld"i) (0 ("<suohtas>"i)) (1 ("<dihte>"i));
+SELECT:fallback ("morsom"i) (0 ("<suohtas>"i));
+
 
 SELECT ("ledig"i) (0 ("<rabas>"i)) (*1 ("<.*virgi>"ri));
 SELECT:fallback ("åpen"i) (0 ("<rabas>"i));
@@ -2602,6 +2613,7 @@ SELECT ("i tjue"i) (0 ("<goalmmát>"i) LINK 1 ("<lohki>"i));
 SELECT ("i tretti"i) (0 ("<njealját>"i) LINK 1 ("<lohki>"i));
 SELECT ("i førti"i) (0 ("<viđát>"i) LINK 1 ("<lohki>"i));
 SELECT ("i femti"i) (0 ("<guđát>"i) LINK 1 ("<lohki>"i));
+SELECT ("i femti"i) (0 ("<guđat>"i) LINK 1 ("<lohki>"i));
 SELECT ("i seksti"i) (0 ("<čihččet>"i) LINK 1 ("<lohki>"i));
 SELECT ("i sytti"i) (0 ("<gávccát>"i) LINK 1 ("<lohki>"i));
 SELECT ("i åtti"i) (0 ("<ovccát>"i) LINK 1 ("<lohki>"i));
