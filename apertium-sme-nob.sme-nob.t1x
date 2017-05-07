@@ -284,6 +284,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="abbr.*.@→P"/>
     </def-cat>
     <def-cat n="nom.gen">
+      <cat-item tags="n.*.gen.@→Num"/>
       <cat-item tags="n.*.gen.@→N"/>
       <cat-item tags="n.*.gen.@-FSUBJ→"/>
       <cat-item tags="np.*.gen.@→N"/>
@@ -5082,6 +5083,58 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+    <rule comment="C[L] det_mod ord lex-lohki
+     muhtun čihččetlohkái nisu lea navdon goddon
+     Dohko bođii almmái gii lei njealjátlohkái " c="muhtun čihččetlohkái nisu → en i sekstiårene kvinne">
+      <pattern>
+        <pattern-item n="det_mod"/>
+        <pattern-item n="ord"/>
+        <pattern-item n="lex-lohki"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_det"><with-param pos="1"/></call-macro>
+        <choose><when><test>
+          <equal><clip pos="3" side="sl" part="syn_label"/><lit-tag v="@ADVL→"/></equal></test>
+          <let><var n="c_syn"/><lit-tag v="@N←"/></let></when>
+          <when><test>
+            <equal><clip pos="3" side="sl" part="syn_label"/><lit-tag v="@←ADVL"/></equal></test>
+          <let><var n="c_syn"/><lit-tag v="@N←"/></let></when>
+          <otherwise>
+            <let><var n="c_syn"/><clip pos="3" side="sl" part="syn_label"/></let>
+          </otherwise>
+        </choose>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><var n="c_syn"/></tag>
+              <tag><clip pos="3" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+            <clip pos="1" side="tl" part="lemh"/>
+            <clip pos="1" side="tl" part="a_det"/>
+            <var n="prn_gen"/>
+            <var n="prn_nbr"/>
+            <clip pos="1" side="tl" part="art"/>
+            <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <mlu>
+              <lu><clip pos="2" side="tl" part="lemh"/></lu>
+              <lu><lit v="årene"/>
+              <lit-tag v="adv"/></lu>
+            </mlu>
+          </chunk>
+        </out>
+        <choose><when>
+          <test><not><equal><b pos="2"/><lit v=" "/></equal></not></test>
+          <out><b pos="2"/></out>
+        </when></choose>
+      </action>
+    </rule>
+
+
     <rule comment="C[L] lex-dan lex-sadjai" c="dan sadjái → i stedet">
       <pattern>
         <pattern-item n="lex-dan"/>
@@ -7257,6 +7310,47 @@ And then there are some categories like "month", with all the months.
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
+
+
+    <rule comment="C[] nom.gen num_mod nom.gen_NUMl  nom_head" c="Gonagasbára 80 jagi beaivedoaluide">
+      <pattern>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="nom.gen_NUMl"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
+ 
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <choose><when>
+          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><var n="defnes"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+        </when></choose>
+
+        <!-- for num_mod -->
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
+
+        <!-- for nom.gen_NUMl -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <let><clip pos="3" side="tl" part="case"/><lit v=""/></let>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="3"/></append>
+
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="3"/></call-macro>
+        <append n="pre-nom"><b pos="3"/></append>
+
+        <!-- for NOM_HEAD -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+      </action>
+    </rule>
+
+
 
     <rule comment="C[V] num_mod nom_head" c="
                    Oblique use of num nom, here the nominal is the head (caseprep, syn_label)
