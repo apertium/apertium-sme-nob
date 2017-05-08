@@ -232,6 +232,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.*.cmp.*"/>
       <cat-item tags="np.*.cmp"/>
       <cat-item tags="np.*.cmp.*"/>
+      <cat-item tags="np.cmp.*"/>
     </def-cat>
     <def-cat n="nom-adj.cmp">
       <cat-item tags="adj.*.cmp"/>
@@ -242,6 +243,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.*.cmp.*"/>
       <cat-item tags="np.*.cmp"/>
       <cat-item tags="np.*.cmp.*"/>
+      <cat-item tags="np.cmp.*"/>
     </def-cat>
     <def-cat n="nom_head" c="Head nom's are sent to out_nom, thus we can have Verb derivatives here.">
       <cat-item tags="vblex.*.n.*"/>
@@ -2244,21 +2246,21 @@ And then there are some categories like "month", with all the months.
       <list-item v="innflytelse"/>
       <list-item v="påvirkning"/>
     </def-list>
-    <def-list n="gen-av-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
+    <def-list n="gen-av-head" c="Genitive @→N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="forfatter"/>
       <list-item v="vurdering"/>
       <list-item v="kopi"/>
       <list-item v="leder"/>
       <list-item v="evaluering"/>
     </def-list>
-    <def-list n="gen-om-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
+    <def-list n="gen-om-head" c="Genitive @→N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="sang"/>
     </def-list>
-    <def-list n="gen-i-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
+    <def-list n="gen-i-head" c="Genitive @→N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="undervisning"/>
       <list-item v="opplæring"/>
     </def-list>
-    <def-list n="gen-for-head" c="Genitive @←N noun phrases default to 'til', unless they modify nouns in this list">
+    <def-list n="gen-for-head" c="Genitive @→N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="sjef"/>
       <list-item v="grunnlag"/>
       <list-item v="fundament"/>
@@ -3410,7 +3412,7 @@ And then there are some categories like "month", with all the months.
           </and></test>
           <let><var n="defnes"/><lit-tag v="def"/></let>
         </when>
-        <when>  <!-- Lene changed the order of these two whens, and tried to avoid overlap. -->
+        <when> 
           <test><or>
             <ends-with><clip pos="2" side="tl" part="lemh"/><lit v="og en halv"/></ends-with>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
