@@ -1593,6 +1593,7 @@ SELECT ("bestemor"i) (0 ("<áhkku>"i));
 # beaivi 0 = dag, 1 = sol
 SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i) OR ("<luoitádit>"i) OR ("<goardit>"i) OR ("<ligget>"i));
 ## Beaivi báitá.
+SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0 @→N LINK 1 ("<bárdni>"i) OR ("<mánná>"i) OR ("<nieida>"i));
 SELECT:fallback ("dag"i) (0 ("<beaivi>"i));
 
 SELECT ("oppmerksomhet"i) IF (0 ("<fuomášupmi>"i)) (*-1 ("<giddet>"i) OR ("<olahit>"i) BARRIER SV-BOUNDARY) ;
@@ -2096,6 +2097,9 @@ SELECT:fallback ("ly"i) (0 ("<suodji>"i));
 SELECT ("gård"i) (0 ("<dállu>"i) LINK *0 ("<.*vuoigatvuohta>"r) OR ("<eana>"i));
 SELECT:fallback ("hus"i) (0 ("<dállu>"i));
 
+SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK -1 HUMAN  OR ("<beaivi>"i) LINK 0 @→N);
+SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
+
 
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
 SELECT ("kjendis"i) (0 ("<beakkán>"i));
@@ -2114,7 +2118,6 @@ SELECT:fallback ("kant"i) (0 ("<borri>"i));
 SELECT:fallback ("spiser"i) (0 ("<borri>"i));
 SELECT:fallback ("erstatning"i) (0 ("<buhtadas>"i));
 SELECT:fallback ("kulde"i) (0 ("<buolaš>"i));
-SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
 SELECT:fallback ("trinn"i) (0 ("<ceahkki>"i));
 SELECT:fallback ("vekt"i) (0 ("<deatta>"i));
 SELECT:fallback ("situasjon"i) (0 ("<dilli>"i));
@@ -2562,6 +2565,7 @@ SELECT:fallback ("tillitsfull"i) (0 ("<luohttevaš>"i));
 
 
 SELECT ("mangfoldig"i) (0 ("<girjái>"i)) (*0 sem_domain);
+SELECT ("mangfoldig"i) (0 ("<girjái>"i) LINK 0 attr) (1 HUMAN);
 SELECT:fallback ("spraglet"i) (0 ("<girjái>"i));
 
 
