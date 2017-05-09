@@ -124,6 +124,7 @@ LIST du = du ;
 LIST pl = pl ;
 
 LIST cmp_splitr = cmp_splitr ;
+LIST cmp_attr = cmp_attr ;
 
 LIST cmp = cmp ;
 
@@ -810,7 +811,7 @@ LIST HEAD = @SUBJ→ @←SUBJ @SUBJ @OBJ @OBJ→ @←OBJ @ADVL @ADVL→ @←ADVL
 
 SECTION
 
-REMOVE (cmp) (0 n) ;
+REMOVE cmp (0 n) ;
 
 
 # Conditionalis: kunne vs skulle vs ville
@@ -1502,11 +1503,18 @@ SELECT:fallback ("bergvegg"i) (0 ("<hoaŋka>"i)) ;
 SELECT ("katalog"i) (0 ("<ohcu>"i) + pl) ;
 SELECT:fallback ("søk"i) (0 ("<ohcu>"i)) ;
 
-SELECT ("geskjeft"i) (0 ("<fidnu>"i) LINK -1 (cmp)) ;
+SELECT ("geskjeft"i) (0 ("<fidnu>"i) LINK -1 cmp) ;
 SELECT:fallback ("yrke"i) (0 ("<fidnu>"i)) ;
 
-SELECT ("motto"i) (0 ("<čurvestat>"i) LINK -1 (cmp)) ;
-SELECT ("motto"i) (0 ("<čurvestat>"i) LINK 0 (cmp)) ;
+SELECT ("satsing"i) (0 ("<áŋgiruššan>"i) LINK -1 cmp OR sem_org ) ;
+SELECT:fallback ("iver"i) (0 ("<áŋgiruššan>"i)) ;
+
+SELECT ("stamme"i) (0 ("<nálli>"i) LINK -1 sem_ani ) ;
+SELECT:fallback ("rase"i) (0 ("<nálli>"i)) ;
+
+
+SELECT ("motto"i) (0 ("<čurvestat>"i) LINK -1 cmp) ;
+SELECT ("motto"i) (0 ("<čurvestat>"i) LINK 0 cmp) ;
 SELECT:fallback ("rop"i) (0 ("<čurvestat>"i)) ;
 
 
@@ -1555,7 +1563,7 @@ SELECT:fallback ("verdi"i) (0 ("<árvu>"i)) ;
 
 	
 SELECT ("villrein"i) (*-1 ("<bivdit>"i) OR ("dápmat"i) OR ("vuojihit"i)) (0 ("<goddi>"i));
-SELECT:fallback ("komite"i) (0 ("<goddi>"i) LINK -1 (cmp));
+SELECT:fallback ("komite"i) (0 ("<goddi>"i) LINK -1 cmp);
 
 SELECT ("grunn"i) (0 ("<vuođđu>"i)) (0 ess);
 SELECT:fallback ("grunnlag"i) (0 ("<vuođđu>"i));
@@ -1884,7 +1892,7 @@ SELECT ("middel"i) (0 ("<doarjja>"i)) (-1 ("<ruoná>"i)) ;
 SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
 
 SELECT ("sør"i) (0 ("<mátta>"i)) (1 np or sem_plc or ("<sápmi>"i)) ;
-SELECT ("sør"i) (0 ("<mátta>"i)) (0 (cmp_splitr)) ;
+SELECT ("sør"i) (0 ("<mátta>"i)) (0 cmp_splitr) ;
 SELECT:fallback ("rot"i) (0 ("<mátta>"i))  ;	
 
 SELECT ("samskipnad"i) (0 ("<ovttastus>"i)) (-1 ("<studeanta>"i)) ;
@@ -1906,13 +1914,13 @@ SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY OR ("<goastadit>"i)  OR ("<oa
 SELECT ("gevinst"i) (0 ("<vuoitu>"i) LINK -1 ("<smávis>"i) OR ("<stuoris>"i))  ;	
 SELECT:fallback ("seier"i) (0 ("<vuoitu>"i));
 
-SELECT ("samisk"i) (0 ("<sápmi>"i) LINK 0 sg + gen)(NEGATE -1 num LINK NOT 2 n + sg + gen OR n + sg + acc);
-SELECT ("sørsamisk"i) (0 ("<máttasápmi>"i) + sg + gen);
-SELECT ("sørsamisk"i) (0 ("<lullisápmi>"i) + sg + gen);
-SELECT ("pitesamisk"i) (0 ("<bihtonsápmi>"i) + sg + gen);
-SELECT ("lulesamisk"i) (0 ("<julevsápmi>"i) + sg + gen);
+SELECT ("samisk"i) (0 ("<sápmi>"i) LINK 0 @→N) ; #(NEGATE -1 num LINK NOT 2 n + sg + gen OR n + sg + acc);
+SELECT ("sørsamisk"i) (0 ("<máttasápmi>"i) LINK 0 sg + gen);
+SELECT ("sørsamisk"i) (0 ("<lullisápmi>"i) LINK 0 sg + gen);
+SELECT ("pitesamisk"i) (0 ("<bihtonsápmi>"i) LINK 0 sg + gen);
+SELECT ("lulesamisk"i) (0 ("<julevsápmi>"i) LINK 0 sg + gen);
 SELECT ("sjøsamisk"i) (0 ("<mearrasápmi>"i) LINK 0 sg + gen);
-SELECT:fallback ("sameland"i) (0 ("<sápmi>"i) + sg + loc);
+SELECT:fallback ("sameland"i) (0 ("<sápmi>"i) LINK 0 sg + loc);
 SELECT:fallback ("same"i) (0 ("<sápmi>"i));
 SELECT:fallback ("pitesame"i) (0 ("<bihtonsápmi>"i));
 SELECT:fallback ("sørsamisk"i) (0 ("<máttasápmi>"i));
@@ -2240,6 +2248,8 @@ SELECT:fallback ("slutt"i) (0 ("<loahppa>"i)) ;
 
 SELECT:fallback ("hovedforslag"i) (0 ("<váldoevttohus>"i)) ;
 
+SELECT ("raide"i) (0 ("<ráidu>"i) LINK 1 ("<vuojan>"i)) ;
+SELECT ("raide"i) (0 ("<ráidu>"i) LINK *0 ("<boahtit>"i) OR ("<njolgi>"i) OR ("<leahttu>"i)) ;
 SELECT ("kø"i) (0 ("<ráidu>"i) LINK *0 ("<vuordit>"i) OR ("<čuožžut>"i)) ;
 SELECT:fallback ("serie"i) (0 ("<ráidu>"i)) ;
 
@@ -2533,7 +2543,7 @@ SELECT ("årets"i) (0 ("<jagáš>"i));
 SELECT ("sist"i) (0 ("<maŋit>"i) LINK 0 attr);
 REMOVE ("sein"i) (0 ("<maŋit>"i));
 
-SELECT ("sakte"i) (0 ("<njoahci>"i) LINK 0 (cmp_attr));
+SELECT ("sakte"i) (0 ("<njoahci>"i) LINK 0 cmp_attr);
 SELECT ("sakte"i) (0 ("<njoahci>"i) LINK 1 ("<tv>"i));
 REMOVE ("sein"i) (0 ("<njoahci>"i));
 
