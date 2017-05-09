@@ -2543,9 +2543,9 @@ And then there are some categories like "month", with all the months.
            </and>
            <and>
          <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_hum"/></in>
+         <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
+         <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_hum_lang"/></equal></not>
          <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in></not>
-         <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="njunuš"/></equal></not>
-         <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="joavku"/></equal></not>
            <or>
            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
