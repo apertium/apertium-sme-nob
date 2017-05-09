@@ -23,15 +23,16 @@ LIST EOS = (<<<) (</s>) (sent) ;
 # ---------------
 
 LIST n = n ;
-LIST a = adj ;
+LIST adj = adj ;
 LIST adv = adv ;
-LIST v = vblex ;
-LIST pron = prn ;
+LIST vblex = vblex ;
+LIST prn = prn ;
 LIST det = det ;
+LIST ind = ind ;
 
-LIST cs = cnjsub ;
-LIST cc = cnjcoo ;
-LIST po = post ;
+LIST cnjsub = cnjsub ;
+LIST cnjcoo = cnjcoo ;
+LIST post = post ;
 LIST pr = pr ;
 LIST pcle = pcle ;
 LIST num = num ;
@@ -55,18 +56,18 @@ LIST ¶ = ¶;
 
 LIST pers = pers ;
 LIST dem = dem ;
-LIST interr = itg ;
-LIST ind = indic ;
+LIST itgitg = itg ;
+LIST indic = indic ;
 
-LIST recipr = res ;
-LIST refl = ref ;
+LIST res = res ;
+LIST ref = ref ;
 LIST rel = rel ;
 LIST pos = pos ;
 
 LIST coll = coll ;
 LIST nomag = nomag ;
 LIST g3 = g3 ;
-LIST prop = np ;
+LIST np = np ;
 
 #!! * Sets for Semantic tags
 # -------------
@@ -105,7 +106,7 @@ SET TIME-N = TIME-N-SET - NOT-TIME ;
 
 LIST HUMAN = sem_hum sem_mal sem_fem cog ant sem_sur pers nomag der_nomag ;
 
-LIST LANGUAGE = ("<.*giella>"ri n) ("<.*giel>"ri n) ("<.*giel>"ri a) "<dárrolaš>"i "<nuortalaš>"i "<oarjelsámegiel>"i "<sámegiel>"i "<sápmelaš>"i "<ubmisámegiel>"i ;
+LIST LANGUAGE = ("<.*giella>"ri n) ("<.*giel>"ri n) ("<.*giel>"ri adj) "<dárrolaš>"i "<nuortalaš>"i "<oarjelsámegiel>"i "<sámegiel>"i "<sápmelaš>"i "<ubmisámegiel>"i ;
 
 #!! * Sets for Morphosyntactic properties
 # --------------------------
@@ -122,9 +123,9 @@ LIST sg = sg ;
 LIST du = du ;
 LIST pl = pl ;
 
-LIST rcmpnd = rcmpnd ;
+LIST cmp_splitr = cmp_splitr ;
 
-LIST cmpnd = cmp ;
+LIST cmp = cmp ;
 
 LIST px1sg = px1sg ;
 LIST px2sg = px2sg ;
@@ -139,7 +140,7 @@ LIST px2pl = px2pl ;
 LIST px3pl = px3pl ;
 
 LIST comp = comp ;
-LIST superl = sup ;
+LIST sup = sup ;
 
 LIST attr = attr ;
 LIST ord = ord ;
@@ -147,17 +148,17 @@ LIST ord = ord ;
 LIST qst = qst ;
 
 # The ("ge" pcle) etc. are used in Apertium
-LIST Foc_ge = foc_ge ("<ge>" pcle) ;
-LIST Foc_gen = foc_gen ("<gen>" pcle) ;
-LIST Foc_ges = foc_ges ("<ges>" pcle) ;
-LIST Foc_gis = foc_gis ("<gis>" pcle) ;
-LIST Foc_naj = foc_naj ("<nai>" pcle) ;
-LIST Foc_ba = foc_ba ("<ba>" pcle) ;
-LIST Foc_be = foc_be ("<be>" pcle) ;
-LIST Foc_hal = foc_hal ("<hal>" pcle) ;
-LIST Foc_han = foc_han ("<han>" pcle) ;
-LIST Foc_bat = foc_bat ("<bat>" pcle) ;
-LIST Foc_son = foc_son ("<son>" pcle) ;
+LIST foc_ge = foc_ge ("<ge>" pcle) ;
+LIST foc_gen = foc_gen ("<gen>" pcle) ;
+LIST foc_ges = foc_ges ("<ges>" pcle) ;
+LIST foc_gis = foc_gis ("<gis>" pcle) ;
+LIST foc_naj = foc_naj ("<nai>" pcle) ;
+LIST foc_ba = foc_ba ("<ba>" pcle) ;
+LIST foc_be = foc_be ("<be>" pcle) ;
+LIST foc_hal = foc_hal ("<hal>" pcle) ;
+LIST foc_han = foc_han ("<han>" pcle) ;
+LIST foc_bat = foc_bat ("<bat>" pcle) ;
+LIST foc_son = foc_son ("<son>" pcle) ;
 
 LIST iv = iv ;
 LIST tv = tv ;
@@ -165,14 +166,14 @@ LIST tv = tv ;
 LIST pasv = pasv ;              # bidix-added
 LIST der_pass = der_passl der_passs ;
 
-LIST prt = pret;
-LIST prs = pres ;
+LIST pret = pret;
+LIST pres = pres ;
 
 
 LIST pot = pot ;
 LIST cond = cond ;
 
-LIST imprt = imp ;
+LIST imp = imp ;
 
 LIST sg1 = (p1 sg) ;
 LIST sg2 = (p2 sg) ;
@@ -197,7 +198,7 @@ LIST prsprc = prsprc ;
 
 
 LIST ger = ger ;
-LIST sup = supn ;
+LIST supn = supn ;
 LIST actio = actio ;
 
 LIST der_passl = der_passl ;
@@ -350,7 +351,7 @@ LIST OBJ→ = @OBJ→ @-FOBJ→ ;
 SET ←OBJ-OTHERS = ←OBJ OR gen OR nom OR ess OR loc OR adv ;
 SET OBJ→-OTHERS = OBJ→ OR gen OR nom OR ess OR loc OR adv  ;
 
-SET SYN-V = v + SUBJ OR OBJ + v OR @ADVL + v OR (vblex @N←) OR (vblex @A←) OR v + SPRED OR (vblex @COMP-CS←) ;
+SET SYN-V = vblex + SUBJ OR OBJ + vblex OR @ADVL + vblex OR (vblex @N←) OR (vblex @A←) OR vblex + SPRED OR (vblex @COMP-CS←) ;
 
 
 LIST @X = @X ;
@@ -394,15 +395,15 @@ SET WORD-NOTDE = WORD - ("<de>") ;
 # Verbs and their complements
 # - - - - - - - - - - - - - -
 
-SET NOT-VERB = WORD - v ;
+SET NOT-VERB = WORD - vblex;
 
 # Finiteness and mood
 # - - - - - - - - - -
 
-SET V-IND-FIN = prs OR prt ;
+SET V-IND-FIN = pres OR pret ;
 # Problem: "In boahtán" is an invisible indicative
 
-SET V-MOOD = ind OR pot OR imprt OR cond OR (neg sup) ;
+SET V-MOOD = indic OR pot OR imp OR cond OR (neg supn) ;
 
 LIST GC = ("<gč>") ;
 
@@ -410,7 +411,7 @@ SET VFIN = GC OR V-MOOD - conneg ;
 
 SET VFIN-POS = V-MOOD - conneg - neg ;
 
-SET VFIN-NOT-IMP = VFIN - imprt ;
+SET VFIN-NOT-IMP = VFIN - imp ;
 
 SET VFIN-NOT-NEG = VFIN - neg ;
 # this might be to strict, besides, "iige" can be written "ii ge"
@@ -467,7 +468,7 @@ SET V-3 = V-SG3 OR V-DU3 OR V-PL3 ;
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 LIST LEAT = "<leat>"i ;
 
-SET LEAT-FIN-NOT-IMP = LEAT - imprt;
+SET LEAT-FIN-NOT-IMP = LEAT - imp;
 
 LIST VPRFPRC = (vblex prfprc) ;
 LIST LEATPRFPRC = ("<leat>"i prfprc) ;
@@ -482,19 +483,19 @@ SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
 # Pronoun sets
 # ------------
 
-LIST MUN = (prn pers p1 sg nom) ;
-LIST DON = (prn pers p2 sg nom) ;
-LIST SON = ("son" pron pers p3 sg nom) ;
-LIST MOAI = (prn pers p1 du nom) ;
-LIST DOAI = (prn pers p2 du nom) ;
-LIST SOAI = (prn pers p3 du nom) ;
-LIST MII-PERS = (prn pers p1 pl nom) ;
-LIST DII = (prn pers p2 pl nom) ;
-LIST SII = ("son" pron pers p3 pl nom) ;
+LIST MUN = (pers p1 sg nom) ;
+LIST DON = (pers p2 sg nom) ;
+LIST SON = ("son" pers p3 sg nom) ;
+LIST MOAI = (pers p1 du nom) ;
+LIST DOAI = (pers p2 du nom) ;
+LIST SOAI = (pers p3 du nom) ;
+LIST MII-PERS = (pers p1 pl nom) ;
+LIST DII = (pers p2 pl nom) ;
+LIST SII = ("son" pers p3 pl nom) ;
 
 SET PPRON-NOM-NOT-DAT = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
 
-SET PPRON-NOT-DAT = (prn pers) - ("<dat>") ;
+SET PPRON-NOT-DAT = pers - ("<dat>") ;
 
 SET PPRON-DU-PL = MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
 SET PPRON-PL = MII-PERS OR DII OR SII ;
@@ -506,7 +507,7 @@ SET PPRON-NOT-SII = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII
 LIST PPRON-GEN = (p1 sg gen) (p2 sg gen) (p3 sg gen) (p1 du gen) (p2 du gen) (p3 du gen)
 	 (p1 pl gen) (p2 pl gen) (p3 pl gen) ;
 
-SET PPRON-NOT-GEN = (prn pers) - PPRON-GEN ;
+SET PPRON-NOT-GEN = pers - PPRON-GEN ;
 
 LIST DEM-SG = (prn dem sg nom) ;
 LIST DEM-PL = (prn dem pl nom) ;
@@ -527,12 +528,12 @@ LIST QUANT-PRON = "<ollu>" "<olu>" "<unnán>" "<váháš>" "<veaháš>" "<vehá�
 # Adjectival sets and their complements
 # -------------------------------------
 
-SET NOT-A = WORD - a ;
-SET NOT-A-COMMA = WORD - a - COMMA ;
+SET NOT-A = WORD - adj ;
+SET NOT-A-COMMA = WORD - adj - COMMA ;
 SET NOT-Attr = WORD - attr ;
-SET NOT-A-PCLE = WORD - a - pcle ;
+SET NOT-A-PCLE = WORD - adj - pcle ;
 
-SET NOT-A-ADV = WORD - a - adv OR ("<maid>") ;
+SET NOT-A-ADV = WORD - adj - adv OR ("<maid>") ;
 
 LIST NOMINAL-ADJ = "<guoktilaš>" "<lámis>" "<oasálaš>" ("<suddu>" der_lasj) "<viissis>";
 
@@ -544,14 +545,7 @@ SET LEX-ADV = adv - (a*) ;
 
 SET NOT-ADV-DE = WORD - adv ;
 SET NOT-ADV = NOT-ADV-DE OR ("<de>" adv) OR clb ;
-SET NOT-ADV-N = NOT-ADV - n ;
 SET NOT-ADV-PCLE = NOT-ADV - pcle ;
-SET NOT-ADV-INDEF = NOT-ADV - ind ;
-SET NOT-ADV-PCLE-ILL = WORD - adv - pcle - ill ;
-SET NOT-ADV-PCLE-Refl = WORD - adv - pcle - refl ;
-SET NOT-ADV-PCLE-INDEF = WORD - adv - pcle - ind ;
-SET NOT-ADV-PCLE-NEG = WORD - adv - pcle - neg ;
-SET NOT-ADVL-PCLE-NEG = WORD - @ADVL - @P← - pcle - neg ;
 
 
 LIST MO-MANge = "<goas>" "<gokko>" "<gos>" "<gosa>" "<govt>" "<makkár>" "<man>" "<manne>" ("<manin>" adv) "<mo>" "<mot>" "<movt>" ("<nugo>" @CVP) (vblex qst) ;
@@ -561,7 +555,7 @@ SET MO = MO-MANge - ("man" foc_ge) ;
 # Introduce finite clauses.
 
 LIST PLACE-ADV = (sem_plc adv) ;
-# There will usually be a Gen in front.
+# There will usually be adj Gen in front.
 
 LIST TIME-ADVL = (sem_time gen) (sem_time loc) ;
 
@@ -577,7 +571,7 @@ LIST DOHKO = "<bajás>" "<bajit>" "<deike>" "<diehke>" "<diehko>" "<dohko>" "<du
 
 # Coordinators
 # ------------
-LIST Foc = Foc_ge Foc_gen Foc_ges Foc_gis Foc_naj Foc_ba Foc_be Foc_hal Foc_han Foc_bat Foc_son ;
+LIST foc = foc_ge foc_gen foc_ges foc_gis foc_naj foc_ba foc_be foc_hal foc_han foc_bat foc_son foc_s foc_miss ;
 
 LIST NEGFOC = (neg foc_ge) ;
 
@@ -608,7 +602,7 @@ SETS
 
 LIST NOT-REAL-V = (actio nom) (actio gen) (actio loc) (actio com) prsprc ;
 
-SET REAL-V = v - NOT-REAL-V ;
+SET REAL-V = vblex - NOT-REAL-V ;
 #!! ** V is all readings with a V tag in them, REAL-V should
 #!! be the ones without an N tag following the V.
 #!! The REAL-V set thus awaits a fix to the preprocess V ... N bug.
@@ -622,9 +616,9 @@ LIST COPULAS = "<dáidit>" "<gártat>" "<leat>"i "<soaitit>" "<šaddat>" "<orrut
 #  "bissut" ?
 # 'Dáidit' can appear without 'leat'.
 
-SET NOT-COP-V = v - COPULAS ;
+SET NOT-COP-V = vblex - COPULAS ;
 
-SET MAIN-V = v - FAUXV ;
+SET MAIN-V = vblex - FAUXV ;
 
 # All active verbs with a TV tag, including AUX-OR-MAIN.
 
@@ -639,21 +633,21 @@ SET TRANS-V = V-TRANS - der_pass + REAL-V ;
 
 LIST N-SG-NOM = (n sg nom) ;
 
-SET HEAD-N = n - rcmpnd ;
+SET HEAD-N = n - cmp_splitr ;
 
-SET HEAD-N-NOM = (n nom) - rcmpnd ;
+SET HEAD-N-NOM = (n nom) - cmp_splitr ;
 
-SET SUBJECTHEAD = n OR a OR pron - refl ; # These, can be subject heads
+SET SUBJECTHEAD = n OR adj OR prn - ref ; # These, can be subject heads
 
-SET NP = n OR a ; # anything that can take except numerals
-SET NP-HEAD = pron OR HEAD-N - ("<buorre>") ;
-SET NP-HEAD-SG = SGPRON OR (n sg) OR (a sg) - rcmpnd - dem - ("<buorre>") ;
-SET NP-HEAD-PL = PLPRON OR (n pl) OR (a pl) - rcmpnd - dem - ("<buorre>") ;
-SET NP-HEAD-SG-NOM = SGPRON + nom OR (n sg nom) OR (a sg nom) - ("<buorre>") - rcmpnd ;
-SET NP-HEAD-PL-NOM = PLPRON + nom OR (n pl nom) OR (a pl nom) - rcmpnd - ("<buorre>") ;
+SET NP = n OR adj ; # anything that can take except numerals
+SET NP-HEAD = prn OR HEAD-N - ("<buorre>") ;
+SET NP-HEAD-SG = SGPRON OR (n sg) OR (adj sg) - cmp_splitr - dem - ("<buorre>") ;
+SET NP-HEAD-PL = PLPRON OR (n pl) OR (adj pl) - cmp_splitr - dem - ("<buorre>") ;
+SET NP-HEAD-SG-NOM = SGPRON + nom OR (n sg nom) OR (adj sg nom) - ("<buorre>") - cmp_splitr ;
+SET NP-HEAD-PL-NOM = PLPRON + nom OR (n pl nom) OR (adj pl nom) - cmp_splitr - ("<buorre>") ;
 SET NP-HEAD-NOM = NP-HEAD-SG-NOM OR NP-HEAD-PL-NOM ;
-SET NP-HEAD-ACC = (prn acc) OR (n acc) OR (a acc) - rcmpnd - (dem attr) - ("<buorre>") ;
-SET NP-HEAD-GEN = (prn gen) OR (n gen) OR (a gen) - der_nomact - rcmpnd - (dem attr) - ("<buorre>") ;
+SET NP-HEAD-ACC = (prn acc) OR (n acc) OR (adj acc) - cmp_splitr - (dem attr) - ("<buorre>") ;
+SET NP-HEAD-GEN = (prn gen) OR (n gen) OR (adj gen) - der_nomact - cmp_splitr - (dem attr) - ("<buorre>") ;
 
 #!! * The PRE-NP-HEAD family of sets
 
@@ -662,20 +656,20 @@ SET NP-HEAD-GEN = (prn gen) OR (n gen) OR (a gen) - der_nomact - rcmpnd - (dem a
 #!! expression __WORD - premodifiers__.
 
 
-SET PRE-NP-HEAD = (prop attr) OR (prop @→N) OR (a attr) OR (abbr attr) OR ("<buorre>")
-OR (prn pers gen) OR (n gen) OR (a gen) OR ("<buot>") OR
-num OR rcmpnd OR cc OR (prn dem) OR (prn ref gen) OR (ind attr) OR
-(prfprc @→N) OR prsprc OR (a ord) OR (num @→N) OR (a @→N) OR @→N OR @→A OR @→Pron OR @Num← OR (cc @CNP) OR (@→CC) OR (action gen) OR (@Pron←) ;
+SET PRE-NP-HEAD = (np attr) OR (np @→N) OR (adj attr) OR (abbr attr) OR ("<buorre>")
+OR (pers gen) OR (n gen) OR (adj gen) OR ("<buot>") OR
+num OR cmp_splitr OR cnjcoo OR (prn dem) OR (prn ref gen) OR (ind attr) OR
+(prfprc @→N) OR prsprc OR (adj ord) OR (num @→N) OR (adj @→N) OR @→N OR @→A OR @→Pron OR @Num← OR (cnjcoo @CNP) OR (@→CC) OR (action gen) OR (@Pron←) ;
 # The strict version of items that can only be premodifiers, not parts of the predicate
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
 
-SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex a) OR (pres p3 sg) + ind OR (pres p1 sg) + ind OR (imp p2 du) ;
+SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex adj) OR (pres p3 sg) + indic OR (pres p1 sg) + indic OR (imp p2 du) ;
 # to be used together with PRE-NP-HEAD before @>N is disambiguated
 
 SET NP-MEMBER = PRE-NP-HEAD OR n ;
 
-SET PRE-A-N = (prn pers gen) OR (prn pers acc) OR (prn ind) OR num OR (a ord) OR (prn dem) OR (prn ref gen) OR (prn ref acc) ; # Acc pga av manglende disambiguering tidlig i fila
+SET PRE-A-N = (pers gen) OR (pers acc) OR (prn ind) OR num OR (adj ord) OR (prn dem) OR (prn ref gen) OR (prn ref acc) ; # Acc pga av manglende disambiguering tidlig i fila
 
 SET NOT-PRE-A-N = WORD - PRE-A-N ;
 
@@ -737,7 +731,7 @@ LIST MANGA = "<máŋga>" "<galle>" ;
 
 SET CARDINALS = num - ord - MANGA ;
 
-SET NOT-CC = WORD - cc ;
+SET NOT-CC = WORD - cnjcoo ;
 
 SET NOT-PCLE = WORD - pcle ;
 
@@ -754,7 +748,7 @@ LIST PROSEANTA = "<proseanta>" "<%>" ;
 SET REAL-CLB = clb - COMMA ;
 
 
-SET NOT-INITIAL-CC = WORD - INITIAL - cc ;
+SET NOT-INITIAL-CC = WORD - INITIAL - cnjcoo ;
 
 
 
@@ -765,7 +759,7 @@ SET CP = (prn itg) OR (prn rel) OR MO ;
 
 LIST BOUNDARYSYMBOLS = "<\;>" "<:>" "<->" "<–>" ;
 
-SET S-BOUNDARY = CP OR BOUNDARYSYMBOLS OR ("<muhto>") OR ("<de>" adv) OR (neg sup) OR @CVP OR ("<vel>" adv qst) ;
+SET S-BOUNDARY = CP OR BOUNDARYSYMBOLS OR ("<muhto>") OR ("<de>" adv) OR (neg supn) OR @CVP OR ("<vel>" adv qst) ;
 # does not include CS, because of "go" in questions, before it is disambugated.
 # includes CP
 # this one includes @CVP, the conjunction which actually connects two sentences (each with a finite verb) to each other,
@@ -777,13 +771,13 @@ SET BOC = S-BOUNDARY OR BOS ;
 SET BOC-PUNCT = BOC - ("-") - ("–") ;
 SET EOC = S-BOUNDARY OR EOS ;
 
-SET NP-BOUNDARY = BOS OR EOS OR REAL-CLB OR VFIN OR inf OR (actio ess) OR conneg OR vgen OR sup OR PPRON-NOT-GEN OR recipr OR po OR pr OR pcle OR interj OR cs OR  @CVP ;
+SET NP-BOUNDARY = BOS OR EOS OR REAL-CLB OR VFIN OR inf OR (actio ess) OR conneg OR vgen OR supn OR PPRON-NOT-GEN OR res OR post OR pr OR pcle OR interj OR cnjsub OR  @CVP ;
 
-SET APP-BOUNDARY = REAL-CLB OR VFIN OR inf OR (actio ess) OR conneg OR vgen OR sup OR recipr OR po OR pr OR pcle OR interj OR cs OR prfprc - @→N ;
+SET APP-BOUNDARY = REAL-CLB OR VFIN OR inf OR (actio ess) OR conneg OR vgen OR supn OR res OR post OR pr OR pcle OR interj OR cnjsub OR prfprc - @→N ;
 # A special barrier used with mapping of appositions.
 
 # This set contains FMAINV with @, which means that it functions for all kind of mainverbs after the verb-mapping rules
-SET SV-BOUNDARY = S-BOUNDARY OR inf - FAUXV OR sup OR FMAINV ;
+SET SV-BOUNDARY = S-BOUNDARY OR inf - FAUXV OR supn OR FMAINV ;
 # VFIN-NOT-AUX ;
 # should be MAIN-V linked to VFIN-aux to the left. (cg-3)
 # This set is ment to use in rules for disambiguating due to verbs or verbsets. It contents @.
@@ -820,7 +814,7 @@ REMOVE (cmp) (0 n) ;
 
 
 # Conditionalis: kunne vs skulle vs ville
-SELECT:buoremus-livččii (cond-ville) (-1 a + superl) (0 ("<leat>"i)) ;
+SELECT:buoremus-livččii (cond-ville) (-1 adj + sup) (0 ("<leat>"i)) ;
 SELECT:sáhttit (cond-skulle) (0 ("<sáhttit>"i)) ;
 SELECT:fallback-kunne (cond) ;
 
@@ -843,45 +837,45 @@ SELECT:fallback ("på"i) (0 ("<alde>"i) OR ("<nalde>"i)) ;
 
 SELECT:når ("når"i) (0 ("<go>"i)) (-1 ("<rápmi>"i) + loc) ;
 
-SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 a OR adv) (0 cs) ;
+SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 adj OR adv) (0 cnjsub) ;
 SELECT:som ("som"i) (0 ("<go>"i)) (*-1 ("<seammá>"i) OR ("<liikka>"i) BARRIER SV-BOUNDARY) ;
 SELECT:som ("som"i) (0 ("<go>"i)) (1 ("<eará>"i)) ;
 
-SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) OR ("<dan dihte>"i) LINK 0 adv) ;
-SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 COPULAS LINK -1 (a nom)) ;
-#SELECT ("at"i) (0 ("<go>"i)) (0 cs) (-1 a - comp) ;
+SELECT ("at"i) (0 ("<go>"i)) (0 cnjsub) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) OR ("<dan dihte>"i) LINK 0 adv) ;
+SELECT ("at"i) (0 ("<go>"i)) (0 cnjsub) (-1 COPULAS LINK -1 (adj nom)) ;
+#SELECT ("at"i) (0 ("<go>"i)) (0 cnjsub) (-1 adj - comp) ;
 ## Son bijai vuosttaš spáppa mollii 22 minuvtta maŋŋel go čiekčamat ledje álgán.
 ## Buorre lei go bohtet.
 ## Gummá go ii boahtán.
 
-SELECT ("enn"i) (0 ("<go>"i)) (0 cs LINK 1 ("<vejolaš>"i)) ;
-SELECT ("enn"i) (0 ("<go>"i)) (0 cs LINK 1 (@COMP-CS←)) ;
-SELECT ("enn"i) (0 ("<go>"i)) (0 cs LINK -1 (@COMP-CS←)) ;
-SELECT ("enn"i) (0 ("<go>"i)) (0 cs) (-1 ("<veara>"i) OR ("<eará>"i)) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub LINK 1 ("<vejolaš>"i)) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub LINK 1 (@COMP-CS←)) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub LINK -1 (@COMP-CS←)) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (1 ("<dušše>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (-1 conneg LINK -1 neg) ;
-SELECT ("enn"i) (0 ("<go>"i)) (0 cs) (*-1 ("<ovdal>"i) OR ("<eará>"i) BARRIER S-BOUNDARY) ;
-SELECT ("enn"i) (0 ("<go>"i)) (0 cs) (*-1 comp BARRIER v OR S-BOUNDARY) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (*-1 ("<ovdal>"i) OR ("<eará>"i) BARRIER S-BOUNDARY) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (*-1 comp BARRIER vblex OR S-BOUNDARY) ;
 ## Son lea viššaleabbo go mun.
 ## Dat dáidá riggát go mii jáhkkit.
 ## Dii han lehpet eanet veara go ollu cizážat.
 ## Viššalat ohppet eanet go láikkit.
 ## Ovdal buorida son dálkkiidis go neavrres olmmoš dábiidis.
 
-SELECT ("som"i) (0 ("<go>"i)) (0 cs) ((-1 ("<nu>"i) OR ("<seammá>"i) OR ("<seammás>"i) LINK 0 adv) OR (-1 adv OR a LINK -1 ("<nu>"i))) ;
+SELECT ("som"i) (0 ("<go>"i)) (0 cnjsub) ((-1 ("<nu>"i) OR ("<seammá>"i) OR ("<seammás>"i) LINK 0 adv) OR (-1 adv OR adj LINK -1 ("<nu>"i))) ;
 ## Elvenes oaččui Niehkostipeandda nu go lei sávvan.
 
-SELECT ("da"i) (0 ("<go>"i)) (0 cs) (*1 (vblex pret) BARRIER (←hab→) OR (@ADVL→)) ;
+SELECT ("da"i) (0 ("<go>"i)) (0 cnjsub) (*1 (vblex pret) BARRIER (←hab→) OR (@ADVL→)) ;
 
-SELECT ("fordi"i) (0 ("<go>"i)) (0 cs) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
+SELECT ("fordi"i) (0 ("<go>"i)) (0 cnjsub) (1 (@ADVL→) OR (←hab→) LINK 1 COPULAS) ;
 ## Olbmot leat čoagganan Kárášjoga márkanii, go márkanis leat beassášdoalut.
 
-SELECT ("fordi"i) (0 ("<go>"i)) (-1 a + nom) ;
+SELECT ("fordi"i) (0 ("<go>"i)) (-1 adj + nom) ;
 
 
-SELECT ("når"i) (0 ("<go>"i) LINK *1 (indic)) ;
-SELECT:fallback ("som"i) (0 ("<go>"i) + cs) ;
+SELECT ("når"i) (0 ("<go>"i) LINK *1 indic) ;
+SELECT:fallback ("som"i) (0 ("<go>"i) + cnjsub) ;
 
 SELECT ("i"i) (0 ("<otná>"i) LINK 1 (sem_time)) ;
 SELECT:fallback ("dagens"i) (0 ("<otná>"i)) ;
@@ -890,28 +884,28 @@ SELECT:fallback ("hvilken av de to"i) (0 ("<goabbá>"i)) ;
 
 SELECT:fallback ("i hele"i) (0 ("<miehtá>"i)) ;
 
-SELECT ("rundt"i) (0 ("<birra>"i) LINK 0 po LINK *0 ("<vuodjit>"i) ) ;
+SELECT ("rundt"i) (0 ("<birra>"i) LINK 0 post LINK *0 ("<vuodjit>"i) ) ;
 SELECT:fallback ("om"i) (0 ("<birra>"i)) ;
 
-SELECT ("innen"i) (0 ("<sisa>"i) LINK 0 po LINK -1 sem_time) ;
-SELECT:fallback ("inn i"i) (0 ("<sisa>"i) LINK 0 po) ;
+SELECT ("innen"i) (0 ("<sisa>"i) LINK 0 post LINK -1 sem_time) ;
+SELECT:fallback ("inn i"i) (0 ("<sisa>"i) LINK 0 post) ;
 
 SELECT:fallback ("foran"i) (0 ("<ovdalii>"i) ) ;
 
 SELECT ("alene") (0 ("<iehčanassii>"i)) (-1 ("leat")) ;
 
 # post: mielde => med, mielde:1 => langs, mielde:2 => i følge, mielde:3 => etter
-SELECT ("etter") (0 ("<mielde>"i)) (0 po) (-1 ("<dárbu>"i) OR ("<miella>"i)) ;
-SELECT ("i løpet av") (0 ("<mielde>"i)) (0 po LINK -1 sem_time)  ;
-SELECT ("langs") (0 ("<mielde>"i)) (0 po) (-1 ("<šaldi>"i)) ;
+SELECT ("etter") (0 ("<mielde>"i)) (0 post) (-1 ("<dárbu>"i) OR ("<miella>"i)) ;
+SELECT ("i løpet av") (0 ("<mielde>"i)) (0 post LINK -1 sem_time)  ;
+SELECT ("langs") (0 ("<mielde>"i)) (0 post) (-1 ("<šaldi>"i)) ;
 
 
 ## Don vieččat boaldinmuoraid dárbbu mielde.
 SELECT ("med") (0 ("<mielde>"i)) (0 adv)  ;
 SELECT ("med") (0 ("<mielde>"i)) (-1 ("<ahki>"i))  ;
 
-SELECT ("for å"i) IF (0 ("<vai>"i) + cs) (1 inf) ;
-SELECT:fallback ("for at"i) IF (0 ("<vai>"i) + cs) (NOT 1 inf) ;
+SELECT ("for å"i) IF (0 ("<vai>"i) + cnjsub) (1 inf) ;
+SELECT:fallback ("for at"i) IF (0 ("<vai>"i) + cnjsub) (NOT 1 inf) ;
 
 
 SELECT ("all"i) IF (0 ("<juohke>"i) LINK 1 ("<lágan>")) ;
@@ -1094,7 +1088,7 @@ SELECT ("møtes"i) IF  (0 ("<deaivvadit>"i) LINK NOT *1 com BARRIER SV-BOUNDARY)
 SELECT:fallback ("møte"i) IF  (0 ("<deaivvadit>"i)) ;
 
 
-SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (*1 prop) ;
+SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (*1 np) ;
 SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (1 ("<:>")) ;
 SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (*0 ("<govva>"i)) ;
 SELECT:fallback ("skildre"i) IF  (0 ("<govvet>"i)) ;
@@ -1103,7 +1097,7 @@ SELECT:fallback ("skildre"i) IF  (0 ("<govvet>"i)) ;
 SELECT:fallback ("oppleve"i) IF  (0 ("<vásihit>"i)) ;
 
 
-SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (1 cs) ;
+SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (1 cnjsub) ;
 SELECT ("legge# opp"i) IF  (0 ("<láhčit>"i)) (1 ill) ;
 SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (-1 @OBJ→ + acc) ;
 SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (1 @←OBJ + acc) ;
@@ -1140,7 +1134,7 @@ SELECT ("få"i) (0 ("<šaddat>"i)) (*-1 HUMAN + ill OR HUMAN + loc BARRIER NOT-A
 SELECT ("få"i) (0 ("<šaddat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 
 # «føde» sounds much worse when it's wrong than «bli», need to work on this:
-SELECT ("føde"i) (0 ("<šaddat>"i)) (1 prop + sem_plc + loc) (NEGATE *0 SPRED)(*-1 HUMAN + nom) ;
+SELECT ("føde"i) (0 ("<šaddat>"i)) (1 np + sem_plc + loc) (NEGATE *0 SPRED)(*-1 HUMAN + nom) ;
 # Mun lean šaddan Kárášjogas.
 # Kárášjogas mun lean šaddan.
 
@@ -1202,7 +1196,7 @@ SELECT:fallback ("snu"i) (0 ("<jorgalahttit>"i)) ;
 SELECT:fallback ("betjene"i) (0 ("<bálvalit>"i)) ;
 
 SELECT:vedta ("vedta"i) (0 ("<dohkkehit>"i)) ((*-1 (sem_rule)) OR (*1 (sem_rule))) ;
-SELECT:fallback ("godta"i) (0 ("<dohkkehit>"i)) ;
+SELECT:fallback ("godkjenne"i) (0 ("<dohkkehit>"i)) ;
 
 #SELECT:vedta ("vrake"i) (0 ("<hilgut>"i))  ;
 SELECT:fallback ("avvise"i) (0 ("<hilgut>"i)) ;
@@ -1222,7 +1216,7 @@ SELECT:fallback ("hende"i) (0 ("<geavvat>"i)) ;
 SELECT ("starte"i) (0 ("<álggahit>"i)) ;
 
 SELECT ("legge"i) (0 ("<lágidit>"i)) (1 ("forhold")) (2 ("til rette for")) ;
-SELECT ("ordne"i) (0 ("<lágidit>"i)) (*1 ill BARRIER v OR S-BOUNDARY) ; # lágidit sáhtu buohccivissui
+SELECT ("ordne"i) (0 ("<lágidit>"i)) (*1 ill BARRIER vblex OR S-BOUNDARY) ; # lágidit sáhtu buohccivissui
 SELECT ("arrangere"i) (0 ("<lágidit>"i)) ; # passar i fleire kontekstar enn «ordne»
 
 
@@ -1247,7 +1241,7 @@ SELECT:lese ("lese"i) (0 ("<lohkat>"i)) (1 sem_lang) ;
 # Ruth Larsena mielas dát vuoseha ahte lea vejolaš lohkagoahtit sámegiela easkka joatkkaskuvllas
 SELECT:lese ("lese"i) (0 ("<lohkat>"i) LINK 0 der_inchl) ;
 
-SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR refl + acc OR refl + loc OR prfprc OR a - attr) ;
+SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR ref + acc OR ref + loc OR prfprc OR adj - attr) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (*1 ess) ;
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-BOUNDARY OR ("<galle>"i) OR ("<man>"i)) (NEGATE *0 acc + sem_txt BARRIER S-BOUNDARY)   ;
@@ -1260,7 +1254,7 @@ SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-
 
 #SELECT ("si"i) (0 ("<lohkat>"i)) (-1 COMMA) (*1 (@←SUBJ) BARRIER VFIN);
 #SELECT ("si"i) (0 ("<lohkat>"i)) (-1 (@SUBJ→) LINK -1 COMMA);
-#SELECT ("si"i) (0 ("<lohkat>"i)) (1 sem_hum + nom OR prop + nom) ;
+#SELECT ("si"i) (0 ("<lohkat>"i)) (1 sem_hum + nom OR np + nom) ;
 ## Dat lea duohta, lohká Trond.
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<nu>"i));
@@ -1282,7 +1276,7 @@ SELECT ("sist"i) IF (0 ("<mannat>"i) + prfprc LINK 0 @→N);
 	
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i)) (0 sg3);
 ## Mo manná dál?
-SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 ("<bures>"i) BARRIER v);
+SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 ("<bures>"i) BARRIER vblex);
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i));
 
 ## Mun manan dál.
@@ -1312,8 +1306,8 @@ SELECT ("tilsøle"i) (0 ("<durdut>"i)) ;
 SELECT:fallback ("skje"i) (0 ("<dáhpáhuvvat>"i));
 
 SELECT:berømt-forfatter ("berømme"i) (0 ("<beaggit>"i)) (0 @→N + prfprc) (NOT 1 clb) ; #  vaikko čálli lei beaggán girječálli
-SELECT:kjent-som ("kjenne"i) (0 ("<beaggit>"i)) (0 prfprc) (*1 loc BARRIER clb OR v); # mu ovddabealde bekkii Skuvvanvárrái boahtit sámásteaddji dáža oahpaheaddji
-SELECT:ble-kjent-i ("kjenne"i) (0 ("<beaggit>"i)) (0 prt) (*1 ill BARRIER clb OR v); # Son lea maiddái beaggán Sámi soga lávlaga čállin
+SELECT:kjent-som ("kjenne"i) (0 ("<beaggit>"i)) (0 prfprc) (*1 loc BARRIER clb OR vblex); # mu ovddabealde bekkii Skuvvanvárrái boahtit sámásteaddji dáža oahpaheaddji
+SELECT:ble-kjent-i ("kjenne"i) (0 ("<beaggit>"i)) (0 pret) (*1 ill BARRIER clb OR vblex); # Son lea maiddái beaggán Sámi soga lávlaga čállin
 SELECT:fallback ("kjenne"i) (0 ("<beaggit>"i)); # Maŋimuš áiggiid lea beaggán , maŋimustá
 
 SELECT:reparere ("reparere"i) (0 ("<divvut>"i) LINK *0 ("<bátni>"i) OR sem_veh);
@@ -1368,8 +1362,8 @@ SELECT:kalle ("kalle"i) (0 ("<navdit>"i) LINK 1 ess );
 SELECT:fallback ("anta"i) (0 ("<navdit>"i));
 SELECT:fallback ("etablere"i) (0 ("<ásahit>"i));
 
-SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 ("<ahte>"i) OR adv OR a OR inf OR actio);
-SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 sem_hum OR prop);
+SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 ("<ahte>"i) OR adv OR adj OR inf OR actio);
+SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 sem_hum OR np);
 SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
 
 SELECT:ringe ("ringe"i) (0 ("<čuodjat>"i) LINK *0 ("<telefovdna>"i)) ;
@@ -1531,7 +1525,7 @@ SELECT:fallback ("par"i) (0 ("<bárra>"i)) ;
 SELECT ("distanse"i) (0 ("<mátki>"i) LINK *0 ("<kilomehter>"i)) ;
 SELECT:fallback ("reise"i) (0 ("<mátki>"i)) ;
 
-SELECT ("pris"i) (0 ("<bálkkašupmi>"i) LINK -1 prop) ;
+SELECT ("pris"i) (0 ("<bálkkašupmi>"i) LINK -1 np) ;
 SELECT:fallback ("premie"i) (0 ("<bálkkašupmi>"i)) ;
 
 SELECT ("arrangement"i) (0 ("<lágideapmi>"i) + pl) ;
@@ -1677,7 +1671,7 @@ SELECT ("forbindelse"i) (0 ("<oktavuohta>"i @←ADVL sg)) ;
 # dan oktavuođas go => i den forbindelse når
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK 0 (←ext→)) ;
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK -1 BOS LINK 2 EOS) ;
-#SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK 0 loc LINK -2 v) ;
+#SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK 0 loc LINK -2 vblex) ;
 SELECT ("kontakt"i) (0 ("<oktavuohta>"i) LINK *-1 ("<váldit>"i)) ;
 SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ; #?
 # máŋgga oktavuođas => i mange sammenhenger
@@ -1710,7 +1704,7 @@ SELECT ("forening"i) (0 ("<searvi>"i)) (-1 ("<sápmi>"i));
 SELECT:fallback ("forening"i) (0 ("<searvi>"i));
 
 # stuibmi 0 = bråk, 1 = konflikt
-SELECT ("bråk"i) (0 ("<stuibmi>"i) LINK -1 prop) ;
+SELECT ("bråk"i) (0 ("<stuibmi>"i) LINK -1 np) ;
 SELECT:fallback ("bråk"i) (0 ("<stuibmi>"i));
 
 # goddi 0 = komite, 1 = villrein
@@ -1793,7 +1787,7 @@ SELECT:fallback ("kunst"i) (0 ("<goansta>"i));
 
 # jietna 0 = stemme, 1 = lyd
 
-SELECT ("lyd"i) (0 ("<jietna>"i)) (1 cc OR COMMA LINK 1 ("<govva>"i)) ;
+SELECT ("lyd"i) (0 ("<jietna>"i)) (1 cnjcoo OR COMMA LINK 1 ("<govva>"i)) ;
 ## Ođđaáigásaš servodagas lea dárbbašlaš máhttit hálddašit iešguđet mediaid ja teavsttaid main leat ollu iešguđetlágan oasit biddjon oktii , nugo čála , 	jietna 	ja govva ja seammás oaidnit oktavuođaid giela ja árbemáhtu gaskkas .
 ## Multifunkšunála oahpponeavvuin sáhttet leat olu iešguđetlágán komponeanttat ja heivehuvvon oasit, nugo jienat, govat ja teavsttat , eaige dat dárbbaš leat dušše ovtta vásedin ulbmila váste ráhkaduvvon .
 SELECT ("lyd"i) (0 ("<jietna>"i)) (-1 gen LINK 0 ("<luondu>"i) OR ("<skuter>"i));
@@ -1865,7 +1859,7 @@ SELECT:fallback ("problem"i) (0 ("<bárti>"i));
 
 # riekkis 0 = sirkel Geom and Org, 1 = dekk Obj
 
-SELECT ("dekk"i) (0 ("<riekkis>"i)) (1 cc LINK 1 ("<juvla>"i)) ;
+SELECT ("dekk"i) (0 ("<riekkis>"i)) (1 cnjcoo LINK 1 ("<juvla>"i)) ;
 SELECT ("dekk"i) (0 ("<riekkis>"i)) (-1 ("<biila>"i) LINK 0 gen) ;	# Sem/Veh instead of biila
 ## Iskka iežat biilla ovdal go vuoddját gosage , earenoamžiid 	rieggáid 	dahje juvllaid . (Sem/Obj)
 ## Dalle sii masset vejolašvuođa Sámi bargguid ektui ja 	riekkis 	giddana Sámi guvlui máhccamis , Riitta Orti-Berg ( 41 ) máinnaša .
@@ -1889,7 +1883,7 @@ SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 SELECT ("middel"i) (0 ("<doarjja>"i)) (-1 ("<ruoná>"i)) ;
 SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
 
-SELECT ("sør"i) (0 ("<mátta>"i)) (1 prop or sem_plc or ("<sápmi>"i)) ;
+SELECT ("sør"i) (0 ("<mátta>"i)) (1 np or sem_plc or ("<sápmi>"i)) ;
 SELECT ("sør"i) (0 ("<mátta>"i)) (0 (cmp_splitr)) ;
 SELECT:fallback ("rot"i) (0 ("<mátta>"i))  ;	
 
@@ -1926,7 +1920,7 @@ SELECT:fallback ("sørsame"i) (0 ("<lullisápmi>"i));
 SELECT:fallback ("lulesame"i) (0 ("<julevsápmi>"i));
 SELECT:fallback ("sjøsame"i) (0 ("<mearrasápmi>"i));
 
-SELECT ("sameland"i) (0 ("<sápmi>"i) LINK -1 ("<ollis>"i) OR ("<miehtá>"i) OR a + attr);
+SELECT ("sameland"i) (0 ("<sápmi>"i) LINK -1 ("<ollis>"i) OR ("<miehtá>"i) OR adj + attr);
 #SELECT ("Samisk"i) (0 ("<Sápmi>"i) LINK 0 sg + gen);
 SELECT:fallback ("Sameland"i) (0 ("<Sápmi>"i));
 
@@ -1967,7 +1961,7 @@ SELECT:fallback ("beite"i) (0 ("<skearru>"i));
 SELECT:part ("part"i) (0 ("<bealli>"i) LINK 1 ("<deaivvadit>"));
 SELECT:part ("part"i) (0 ("<bealli>"i) LINK -1 ("<bargoeallin>") OR ("<ášši>") OR ("<nubbi>"));
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *-1 ("<muitalit>"i) BARRIER SV-BOUNDARY);
-SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 a + @→N OR prop + @→N);
+SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 adj + @→N OR np + @→N);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK 0 pl);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *1 sem_domain + loc);
 SELECT:halvpart ("halvpart"i) (0 ("<bealli>"i) LINK 1 n + pl);
@@ -2010,18 +2004,22 @@ SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 0 pl);
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK -1 gen);
 SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
 
-SELECT ("tale"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i)) (1 loc);
+SELECT ("tale"i) (0 ("<sáhka>"i) LINK *-1 ("<leat>"i)) (1 loc);
+SELECT ("tale"i) (0 ("<sáhka>"i) LINK *-1 ("<leat>"i)) (1 cmp LINK 1 loc);
 SELECT ("tale om"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i)) (NEGATE 1 loc);
 SELECT:fallback ("budskap"i) (0 ("<sáhka>"i));
 
 SELECT ("utseende"i) (0 ("<hápmi>"i) LINK -1 ("<movttet>"i));
-SELECT ("måte"i) (0 ("<hápmi>"i) LINK 0 com LINK -1 a + attr);
+SELECT ("måte"i) (0 ("<hápmi>"i) LINK 0 com LINK -1 adj + attr);
 SELECT:fallback ("form"i) (0 ("<hápmi>"i));
 SELECT:fallback ("skilt"i) IF (0 ("<galba>"i)) ;
 
-SELECT:fallback ("tur"i) (0 ("<vuorru>"i) LINK -1 pers + gen OR prop + gen);
+SELECT:fallback ("tur"i) (0 ("<vuorru>"i) LINK -1 pers + gen OR np + gen);
 SELECT:fallback ("gang"i) (0 ("<vuorru>"i) LINK -1 dem + gen);
 SELECT:fallback ("omgang"i) (0 ("<vuorru>"i));
+
+SELECT ("måte"i) (0 ("<láhki>"i) LINK -1 adj OR prn);
+SELECT:fallback ("måte"i) (0 ("<láhki>"i));
 
 
 SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIER SV-BOUNDARY);
@@ -2029,7 +2027,7 @@ SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
 SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) BARRIER SV-BOUNDARY);
 SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i) OR ("<pálla>"i) OR ("<sihkar>"i) OR ("<eahpesihkar>"i));
-SELECT ("plass"i) (0 ("<sadji>"i) LINK 1 po);
+SELECT ("plass"i) (0 ("<sadji>"i) LINK 1 post);
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
 SELECT ("skyld"i) (0 ("<sivva>"i) LINK -1 gen);
@@ -2282,7 +2280,7 @@ SELECT ("sammenlignet med"i) (0 ("<ektui>"i) LINK -1 ("<diimmá>"i) OR ("<diibm�
 SELECT:fallback ("mot"i) (0 ("<ektui>"i)) ;
 
 SELECT ("med"i) (0 ("<mielde>"i) LINK -1 sem_veh OR HUMAN) ;
-SELECT:fallback ("etter"i) (0 ("<mielde>"i) + po) ;
+SELECT:fallback ("etter"i) (0 ("<mielde>"i) + post) ;
 
 
 SELECT:fallback ("fra"i) (0 ("<rájes>"i)) ;
@@ -2297,12 +2295,12 @@ SELECT:fallback ("den"i nt) (0 ("<dat>"i)) ;
 
 
 SELECT ("hun"i) (0 ("<son>"i) LINK *-1 ("<nieida>"i) OR ("<nisu>"i) OR sem_fem) ;
-SELECT ("hun"i) (0 ("<son>"i) LINK *1 ("<nieida>"i) OR ("<nisu>"i)) ; # OR sem_fem BARRIER pron OR n) ;
-SELECT ("hun"i) (0 ("<son>"i) LINK 1 ("<namma>"i) LINK *1 sem_fem BARRIER pron OR n) ;
-SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER pron OR n) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK *1 ("<nieida>"i) OR ("<nisu>"i)) ; # OR sem_fem BARRIER prn OR n) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK 1 ("<namma>"i) LINK *1 sem_fem BARRIER prn OR n) ;
+SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER prn OR n) ;
 
 
-SELECT ("nå"i)  (0 ("<dát>"i) LINK 0 gen LINK 1 ("<rádjai>"i) LINK 0 po) ;
+SELECT ("nå"i)  (0 ("<dát>"i) LINK 0 gen LINK 1 ("<rádjai>"i) LINK 0 post) ;
 SELECT:fallback ("denne"i)  (0 ("<dát>"i)) ;
 
 SELECT:fallback ("han"i) + (GD_pers) (0 ("<son>"i)) ;
@@ -2314,13 +2312,13 @@ SELECT:fallback ("hvem"i) (0 ("<gii>"i)) ;
 
 
 SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV)(1 VFIN) ;
-SELECT ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 tv + FMAINV) (1 a) ; # Eadni muitalii man dehálaš dat lei …
+SELECT ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 tv + FMAINV) (1 adj) ; # Eadni muitalii man dehálaš dat lei …
 SELECT ("hvor"i) (0 ("<mii>"i) + loc LINK NOT 0 ←hab→)  ; # mas
-SELECT:ge-man ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 pcle) (-2 tv + FMAINV) (1 a) ; # mihtidit ge man mávssolaččat sámi aviissat leat …
+SELECT:ge-man ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 pcle) (-2 tv + FMAINV) (1 adj) ; # mihtidit ge man mávssolaččat sámi aviissat leat …
 SELECT ("hva"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 tv + FMAINV) ; # Minsttarplána čilge maid oahppit berrešedje máhttit.
 LIST loc/adv = loc adv;
 SELECT:test ("hva"i) (0 ("<mii>"i) LINK 0 @OBJ→) (*-1 FMAINV BARRIER (*) - loc/adv) ; # Hui hárve boahtá<iv!> ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
-SELECT:post ("hva"i) (0 ("<mii>"i) LINK 1 po) ;
+SELECT:post ("hva"i) (0 ("<mii>"i) LINK 1 post) ;
 SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
 
 SELECT:pl ("noen"i) (0 ("<muhtun>"i) + pl) ;
@@ -2332,7 +2330,7 @@ SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i)) (1 n + pl) ;
 SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i)) (2 n + pl) ;
 SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i) LINK 0 pl) ;
 
-SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>"i) BARRIER clb OR v OR adv) ;
+SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>"i) BARRIER clb OR vblex OR adv) ;
 SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>"i)) ;
 SELECT:fallback ("en"i) (0 ("<okta>"i)) ;
 
@@ -2353,29 +2351,29 @@ SELECT ("ene sin"i) (0 ("<nubbi>"i) + gen) (*1 ("<nubbi>"i)) ;
 SELECT ("andre sin"i) (0 ("<nubbi>"i) + gen) (*-1 ("<nubbi>"i)) ;
 SELECT:fallback ("annen"i) (0 ("<nubbi>"i)) ;
 
-SELECT ("nest"i) (0 ("<nubbi>"i) + ord LINK 1 superl) ;
+SELECT ("nest"i) (0 ("<nubbi>"i) + ord LINK 1 sup) ;
 SELECT:fallback ("andre"i) (0 ("<nubbi>"i) + ord) ;
 
 
-SELECT:hans-egen ("egen"i) (0 ("<ieš>"i)) (-1 pron + pers + gen) ;
+SELECT:hans-egen ("egen"i) (0 ("<ieš>"i)) (-1 prn + pers + gen) ;
 # Dá lea mu iežan girji => Her er min egen bok
 
-SELECT:oss-selv ("selv"i) (0 ("<ieš>"i) LINK 0 acc) (-1 pron + pers + acc) ;
+SELECT:oss-selv ("selv"i) (0 ("<ieš>"i) LINK 0 acc) (-1 prn + pers + acc) ;
 # eai galgga soardit min iežamet → ikke skal gjøre vondt for oss selv
 
 SELECT:til-meg-selv ("selv"i) (0 ("<ieš>"i) LINK 0  ill) (-1 pers + ill) ;
 SELECT:på-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 ill) (NOT -1 pers + ill) ;
 
-SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 acc LINK NOT -1 pron + pers + acc) ; # (NOT *1 v BARRIER S-BOUNDARY) ;
+SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 acc LINK NOT -1 prn + pers + acc) ; # (NOT *1 vblex BARRIER S-BOUNDARY) ;
 
-SELECT:med-deg pron (0 ("<ieš>"i)) (0 @→P OR @P←) ;
+SELECT:med-deg prn (0 ("<ieš>"i)) (0 @→P OR @P←) ;
 # Váldde biergasiid iežat fárrui → Ta sakene med deg
 SELECT:mitt-rom pos (0 ("<ieš>"i)) (NOT 0 @→P OR @P←) ;
 # Mun ferten čorget iežan lanja → Jeg må rydde mitt rom
 
 SELECT:fallback ("prpers"i) (0 ("<ieš>"i) LINK 0 acc) ;
 
-SELECT ("hvor mange"i) (0 ("<galle>"i)) (-1 v) ;
+SELECT ("hvor mange"i) (0 ("<galle>"i)) (-1 vblex) ;
 #SELECT:fallback ("mange"i) (0 ("<galle>"i)) ;
 
 SELECT ("noe slik"i) (0 ("<dakkár>"i)) (*-1 neg BARRIER S-BOUNDARY) ;
@@ -2388,13 +2386,13 @@ SELECT:fallback ("hver"i) (0 ("<iešguhte>"i)) ;
 
 # Adverbs
 # =======
-SELECT:ble-mye-verre ("mye"i) (0 ("<sakka>"i) LINK 0 adv) (-1 a + pasv LINK 0 v) ; # vearránii sakka
+SELECT:ble-mye-verre ("mye"i) (0 ("<sakka>"i) LINK 0 adv) (-1 adj + pasv LINK 0 vblex) ; # vearránii sakka
 SELECT ("til"i) (0 ("<vuhtii>"i)) (*-1 ("<váldit>"i)) ;
 
 SELECT:fallback ("slik"i) (0 ("<nu>"i) LINK -1 ("<ja>"i)) ;     # Ja nu leat sii
 SELECT ("til rette for"i) (0 ("<nu>"i)) (-1 ("<dilálašvuohta>"i)) (1 ("<ahte>"i)) ;
-SELECT ("så"i) (0 ("<nu>"i)) (1 a or ind or ("<galle>"i) or ("<gealdagas>"i) or ("<bures>"i)) ; # dat skuvla nu johtil ahte
-SELECT:så-langt-som ("så"i) (0 ("<nu>"i)) (1 adv) (2 cs) ;
+SELECT ("så"i) (0 ("<nu>"i)) (1 adj or indic or ("<galle>"i) or ("<gealdagas>"i) or ("<bures>"i)) ; # dat skuvla nu johtil ahte
+SELECT:så-langt-som ("så"i) (0 ("<nu>"i)) (1 adv) (2 cnjsub) ;
 SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
@@ -2404,8 +2402,8 @@ SELECT:fallback ("mindre"i) (0 ("<unnit>"i)) ;
 
 
 SELECT ("opp"i) (0 ("<eret>"i)) (-1 ("<cealkit>"i)) ;
-SELECT ("fra"i) + pr (0 ("<eret>"i)) (-1 ("<leat>"i) OR cc) ;
-SELECT ("bort"i) (0 ("<eret>"i)) (-1 v)(NEGATE 1 loc) ;
+SELECT ("fra"i) + pr (0 ("<eret>"i)) (-1 ("<leat>"i) OR cnjcoo) ;
+SELECT ("bort"i) (0 ("<eret>"i)) (-1 vblex)(NEGATE 1 loc) ;
 SELECT ("bort"i) (0 ("<eret>"i)) (1 loc) ;
 SELECT ("av"i) (0 ("<eret>"i)) (-1 ("<sahát>"i)) ;
 SELECT:fallback ("fra"i) + pr (0 ("<eret>"i)) ;
@@ -2431,10 +2429,10 @@ SELECT ("fordi"i) (0 ("<dan dihte>"i) LINK 1 ("<go>"i)) ;
 SELECT:fallback ("derfor"i) (0 ("<dan dihte>"i)) ;
 
 
-SELECT ("like"i) (0 ("<liikka>"i) LINK 1 a + nom) ;
+SELECT ("like"i) (0 ("<liikka>"i) LINK 1 adj + nom) ;
 SELECT:fallback ("likevel"i) (0 ("<liikka>"i)) ;
 
-SELECT ("altfor"i) (0 ("<beare>"i) LINK 1 ("<unnán>"i) OR ("<ollu>"i) OR ("<máŋga>"i) OR ("<ollugat>"i) OR a + nom OR a + attr) ;
+SELECT ("altfor"i) (0 ("<beare>"i) LINK 1 ("<unnán>"i) OR ("<ollu>"i) OR ("<máŋga>"i) OR ("<ollugat>"i) OR adj + nom OR adj + attr) ;
 SELECT:fallback ("bare"i) (0 ("<beare>"i)) ;
 
 
@@ -2452,7 +2450,7 @@ SELECT:fallback ("mot hverandre"i) (0 ("<vuostálaga>"i) OR ("<vuostálagaid>"i)
 
 SELECT:fallback ("fremst"i) (0 ("<ovddemusas>"i)) ;
 
-SELECT:fallback ("så pass"i) (0 ("<mađe>"i) LINK 1 a + nom) ;
+SELECT:fallback ("så pass"i) (0 ("<mađe>"i) LINK 1 adj + nom) ;
 SELECT:fallback ("likeså"i) (0 ("<mađe>"i)) ;
 
 
@@ -2461,7 +2459,7 @@ SELECT:fallback ("sammen"i) (0 ("<gaskan>"i)) ;
 
 SELECT:fallback ("da"i) (0 ("<fal>"i)) ;
 
-SELECT:fallback ("like"i) (0 ("<seammá>"i) LINK 1 ("<ollu>"i) OR ("<olu>"i) OR a + nom) ;
+SELECT:fallback ("like"i) (0 ("<seammá>"i) LINK 1 ("<ollu>"i) OR ("<olu>"i) OR adj + nom) ;
 SELECT:fallback ("samme"i) (0 ("<seammá>"i)) ;
 
 # Based on frequency in parallel text:
@@ -2495,23 +2493,23 @@ SELECT ("om våren"i) (0 ("<giđđat>"i) LINK 0 adv) ;
 SELECT ("med"i) (0 ("<mii>"i) LINK 0 rel + sg + gen LINK 1 ("<bokte>"i)) ;
 SELECT ("som"i) (0 ("<mii>"i) LINK 0 adv) ;
 
-SELECT ("med"i) (0 ("<bokte>"i) LINK 0 po LINK -1 ("<mii>"i) LINK 0  rel + sg + gen) ;
-SELECT ("ved"i) (0 ("<bokte>"i) LINK 0 adv LINK -1 FIRSTNAME OR pron) ;
+SELECT ("med"i) (0 ("<bokte>"i) LINK 0 post LINK -1 ("<mii>"i) LINK 0  rel + sg + gen) ;
+SELECT ("ved"i) (0 ("<bokte>"i) LINK 0 adv LINK -1 FIRSTNAME OR prn) ;
 SELECT:fallback ("via"i) (0 ("<bokte>"i)) ;
 
 SELECT:fallback ("på"i) (0 ("<badjelis>"i) LINK -1 sem_clth) ;
 SELECT:fallback ("ovenfor"i) (0 ("<badjelis>"i)) ;
 
 
-SELECT ("ja"i) (0 ("<ja>i))(-1 cc)(1("<ja>i));
-SELECT ("ja"i) (0 ("<ja>i))(1 cc)(-1("<ja>i));
+SELECT ("ja"i) (0 ("<ja>"i)) (-1 cnjcoo) (1 ("<ja>"i)) ;
+SELECT ("ja"i) (0 ("<ja>"i)) (1 cnjcoo)  (-1 ("<ja>"i)) ;
 # Dajai, ahte ja ja.
 
 SELECT:fallback ("og"i) (0 ("<ja>"i));
 
 
 SELECT:bra ("bra"i) (0 ("<bures>"i) LINK *0 ("<mannat>"i) BARRIER SV-BOUNDARY) ;
-SELECT:bra ("bra"i) (0 ("<bures>"i) LINK *-1 v BARRIER S-BOUNDARY) ;
+SELECT:bra ("bra"i) (0 ("<bures>"i) LINK *-1 vblex BARRIER S-BOUNDARY) ;
 SELECT:fallback ("godt"i) (0 ("<bures>"i)) ;
 
 
@@ -2521,13 +2519,13 @@ SELECT:fallback ("godt"i) (0 ("<bures>"i)) ;
 # ==========
 
 
-SELECT (n f pl ind) (-1 num)(0 ("<ruvdnosaš>"i));
+SELECT (n f pl ind) (-1 num)(0 ("<ruvdnosaš>"i)); #??
 
 SELECT (det) (0 ("<sierra>"i));
 # Mii čujuhit ahte sámiin go lea sierra álbmot ja eamiálbmot
 
-SELECT ("fjern"i) (0 ("<gáiddus>"i) LINK 0 cmpnd);
-REMOVE ("fjern"i) (NOT 0 cmpnd);
+SELECT ("fjern"i) (0 ("<gáiddus>"i) LINK 0 cmp);
+REMOVE ("fjern"i) (NOT 0 cmp);
 
 SELECT ("-årig"i) (0 ("<jagáš>"i) LINK -1 num);
 SELECT ("årets"i) (0 ("<jagáš>"i));
@@ -2540,8 +2538,8 @@ SELECT ("sakte"i) (0 ("<njoahci>"i) LINK 1 ("<tv>"i));
 REMOVE ("sein"i) (0 ("<njoahci>"i));
 
 
-SELECT ("streif"i) (0 ("<golgu>"i) LINK 0 a + cmpnd);
-REMOVE ("streif"i) (NOT 0 a + cmpnd);
+SELECT ("streif"i) (0 ("<golgu>"i) LINK 0 adj + cmp);
+REMOVE ("streif"i) (NOT 0 adj + cmp);
 
 
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
@@ -2560,7 +2558,7 @@ SELECT:fallback ("effektiv"i) (0 ("<beaktil>"i));
 
 SELECT ("forrige"i) (0 ("<ovddit>"i comp)) (1 n + sg);
 
-SELECT ("trygg"i) (0 ("<luohttevaš>"i)) (0 a) (NOT 0 n);
+SELECT ("trygg"i) (0 ("<luohttevaš>"i)) (0 adj) (NOT 0 n);
 SELECT:fallback ("tillitsfull"i) (0 ("<luohttevaš>"i));
 
 
@@ -2598,15 +2596,16 @@ SELECT:fallback ("mye"i) (0 ("<eanet>"i));
 # buorre:0 → bra, buorre:1→god , så god
 
 LIST IJ-TIME = ("<beaivi>"i) ("<eahket>"i) ("<iđit>"i)  ("<idja>"i)   ("<vahkkoloahppa>"i) ("<beassážat>"i) ("<juovllat>"i) ;
-#SELECT ("vær så god"i) (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imprt);
+#SELECT ("vær så god"i) (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imp);
 SELECT ("stor"i) (0 ("<buorre>"i) LINK 1 ("<muddu>"i)) ;
-SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME OR po) ;
+SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME OR post) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 ("<ođas>"i) LINK 1 ("<jahki>"i)) ;
+SELECT ("god"i) (0 ("<buorre>"i) LINK 0 @→N) ;
 SELECT:fallback ("bra"i) (0 ("<buorre>"i));
 ## Dat lei buorre girji (god)
 ## Dat lei buorre. (bra)
 
-#REMCOHORT TARGET ("<leat>"i) (0 imprt) (1 ("<buorre>"i));
+#REMCOHORT TARGET ("<leat>"i) (0 imp) (1 ("<buorre>"i));
 
 SELECT:fallback ("ekstern"i) (0 ("<olgguldas>"i));
 
@@ -2638,7 +2637,7 @@ SELECT ("viss"i) (0 ("<vissis>"i)) (*1 n BARRIER NOT-A) ;
 # (vs. mun lean vissis:0 ahte)
 
 
-SELECT ("ydmyk"i) (0 ("<vuollegaš>"i)) ((*-1 COPULAS BARRIER NOT-ADV-PCLE LINK -1 sem_hum OR pers OR prop ) OR (1 sem_hum));
+SELECT ("ydmyk"i) (0 ("<vuollegaš>"i)) ((*-1 COPULAS BARRIER NOT-ADV-PCLE LINK -1 sem_hum OR pers OR np ) OR (1 sem_hum));
 SELECT:fallback ("lav"i) (0 ("<vuollegaš>"i));
 
 SELECT:fallback ("dårlig"i) (0 ("<headju>"i));
@@ -2662,11 +2661,11 @@ SELECT:fallback ("slik at"i) (0 ("<nu ahte>"i));
 SELECT ("når"i) (0 ("<dalle go>"i)) (-1 ("<earret>"i));
 SELECT:fallback ("da"i) (0 ("<dalle go>"i));
 
-SELECT ("å"i) (0 ("<ahte>"i) LINK 0 cs) (1 inf);
-SELECT ("om at"i) (0 ("<ahte>"i) LINK 0 cs) (-1 ("<diehtu>"i) OR ("<muittuhit>"i) OR ("<váruhit>"i) OR ("<gáibádus>"i));
+SELECT ("å"i) (0 ("<ahte>"i) LINK 0 cnjsub) (1 inf);
+SELECT ("om at"i) (0 ("<ahte>"i) LINK 0 cnjsub) (-1 ("<diehtu>"i) OR ("<muittuhit>"i) OR ("<váruhit>"i) OR ("<gáibádus>"i));
 
 
-SELECT:fallback ("at"i) (0 ("<ahte>"i) LINK 0 cs);
+SELECT:fallback ("at"i) (0 ("<ahte>"i) LINK 0 cnjsub);
 
 
 
