@@ -274,6 +274,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="pp"/>
       <attr-item tags="TD"/>
     </def-attr>
+    <def-attr n="a_neverdet">
+      <attr-item tags="neverdet"/>
+    </def-attr>
     <def-attr n="voice">
       <attr-item tags="pasv"/>
     </def-attr>
@@ -943,13 +946,18 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </action>
     </rule>
 
-    <rule comment="REGLA: SUBJr PR compl">
+    <rule comment="REGLA: SUBJr PR compl" c="Sámi oahpaheaddji masteroahput">
       <pattern>
         <pattern-item n="SUBJr"/>
         <pattern-item n="PR"/>
         <pattern-item n="compl"/>
       </pattern>
       <action>
+      <choose><when><test>
+      <equal><clip pos="3" part="a_neverdet"/><lit-tag v="neverdet"/></equal>
+      </test>
+        <let><clip pos="1" part="art"/><lit-tag v="ind"/></let>
+      </when></choose>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
         <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
         <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="1"/></call-macro>
