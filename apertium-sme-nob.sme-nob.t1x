@@ -2139,6 +2139,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="festival"/>
       <list-item v="fredag"/>
       <list-item v="grunnskole"/>
+      <list-item v="gårdsplass"/>
       <list-item v="heltid"/>
       <list-item v="hotell"/>
       <list-item v="kino"/>
@@ -2274,6 +2275,9 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="gen-på-head">
       <list-item v="måte"/>
+    </def-list>
+    <def-list n="gen-som-head">
+      <list-item v="masterutdanning"/>
     </def-list>
 
     <def-list n="no-gen-after-prop" c="If a noun in this list is preceded by a prop.gen, remove the gen from the prop">
@@ -2932,6 +2936,12 @@ And then there are some categories like "month", with all the months.
                 </or></test>
                   <let>
                     <var n="caseprep"/><lit v="i"/>
+                  </let>
+                </when>
+                <when>
+                  <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-som-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="som"/>
                   </let>
                 </when>
                 <when>
