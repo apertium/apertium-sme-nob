@@ -2104,6 +2104,7 @@ SELECT ("gård"i) (0 ("<dállu>"i) LINK *0 ("<.*vuoigatvuohta>"r) OR ("<eana>"i)
 SELECT:fallback ("hus"i) (0 ("<dállu>"i));
 
 SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK -1 HUMAN  OR ("<beaivi>"i) LINK 0 @→N);
+SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK -1 COPULAS LINK *-1 ←hab→ LINK 0 HUMAN);
 SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
 
 
@@ -2572,7 +2573,7 @@ SELECT ("trygg"i) (0 ("<luohttevaš>"i)) (0 adj) (NOT 0 n);
 SELECT:fallback ("tillitsfull"i) (0 ("<luohttevaš>"i));
 
 
-SELECT ("mangfoldig"i) (0 ("<girjái>"i)) (*0 sem_domain);
+SELECT ("mangfoldig"i) (0 ("<girjái>"i)) (*0 sem_domain OR sem_edu);
 SELECT ("mangfoldig"i) (0 ("<girjái>"i) LINK 0 attr) (1 HUMAN);
 SELECT:fallback ("spraglet"i) (0 ("<girjái>"i));
 
