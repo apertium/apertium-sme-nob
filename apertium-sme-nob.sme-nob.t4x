@@ -51,6 +51,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <def-cat n="nom_caseprep_pre_nom">
 <cat-item name="nom_caseprep_pre_nom"/>
     </def-cat>
+    <def-cat n="nom_caseprep_nom">
+<cat-item name="nom_caseprep_nom"/>
+    </def-cat>
     <def-cat n="prn_caseprep_nom">
 <cat-item name="prn_caseprep_nom"/>
     </def-cat>
@@ -395,6 +398,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <def-list n="lemh-no-determiner"
               c="No determiner at all, whether first or last in chunk">
       <list-item v="mor"/>
+      <list-item v="ansvar"/>
       <list-item v="far"/>
       <list-item v="bestemor"/>
       <list-item v="bestefar"/>
@@ -1410,6 +1414,22 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <lu><clip pos="3" part="whole"/></lu>
           <b pos="3"/>
           <lu><clip pos="4" part="whole"/></lu>
+        </out>
+        <let><var n="former-chunk"/><lit-tag v="SN"/></let>
+      </action>
+    </rule>
+
+    <rule comment="CHUNK: nom_caseprep_nom">
+      <pattern><pattern-item n="nom_caseprep_nom"/></pattern>
+      <action>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
+        <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
+        <out>
+          <lu><clip pos="1" part="whole"/></lu>
+          <b pos="1"/>
+          <lu><clip pos="2" part="whole"/></lu>
+          <b pos="2"/>
+          <lu><clip pos="3" part="whole"/></lu>
         </out>
         <let><var n="former-chunk"/><lit-tag v="SN"/></let>
       </action>
