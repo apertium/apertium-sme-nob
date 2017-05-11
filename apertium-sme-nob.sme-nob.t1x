@@ -2071,6 +2071,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="mobiltelefon"/>
       <list-item v="motvind"/>
       <list-item v="mørke"/>
+      <list-item v="natur"/>
       <list-item v="navn"/>
       <list-item v="nominasjon"/>
       <list-item v="november"/>
@@ -2844,6 +2845,7 @@ And then there are some categories like "month", with all the months.
 <!--                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in> this is not good  -->
                <equal><var n="previous-nhead"/><lit v="time"/></equal>
                <equal><var n="previous-nhead"/><lit v="gang"/></equal>
+               <equal><var n="previous-nhead"/><lit v="liv"/></equal>
              </or></test>
               <let>
                 <var n="caseprep"/><lit v="i"/>
@@ -3348,6 +3350,13 @@ And then there are some categories like "month", with all the months.
             <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_domain"/></equal>
             <not><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></not>
             </and></not>
+            <not><and>
+            <equal><clip pos="1" side="tl" part="lemh"/><lit v="liv"/></equal>
+            <equal><var n="main-verb-tl"/><lit v="blåse"/></equal>
+            </and></not>
+            <not>
+            <equal><clip pos="1" side="sl" part="lemh"/><lit v="miljovdnabealli"/></equal>
+            </not>
             
             <not><equal><clip pos="1" side="sl" part="ext"/><lit-tag v="←ext→"/></equal></not> 
             <not><and>
