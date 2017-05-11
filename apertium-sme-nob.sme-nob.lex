@@ -1403,6 +1403,8 @@ SELECT:fallback ("skifte"i) (0 ("<lonohallat>"i));
 SELECT ("slå# sammen"i) (0 ("<ovttastahttit>"i) LINK *0 sem_org OR (sem_pos));
 SELECT:fallback ("forene"i) (0 ("<ovttastahttit>"i));
 
+SELECT:fallback ("fortsette"i) (0 ("<joatkit>"i));
+
 
 # Verbs that were 0-marked in the dix:
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
@@ -1434,7 +1436,6 @@ SELECT:fallback ("trene"i) (0 ("<hárjehit>"i));
 SELECT:fallback ("forstå"i) (0 ("<ipmirdit>"i));
 SELECT:fallback ("fryde"i) (0 ("<jierásmuvvat>"i));
 SELECT:fallback ("nervøs"i) (0 ("<jierásmuvvat>"i));
-SELECT:fallback ("fortsette"i) (0 ("<joatkit>"i));
 SELECT:fallback ("forlenge"i) (0 ("<joatkkašit>"i));
 SELECT:fallback ("slarke"i) (0 ("<johtalit>"i));
 SELECT:fallback ("snu"i) (0 ("<jorahit>"i));

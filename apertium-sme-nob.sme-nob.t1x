@@ -390,10 +390,16 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="jahki" tags="n.*"/>
       <cat-item lemma="vahkku" tags="n.*"/>
       <cat-item lemma="vahkuloahppa" tags="n.*"/>
+      <cat-item lemma="vahkkoloahppa" tags="n.*"/>
       <cat-item lemma="beaivi" tags="n.*"/>
       <cat-item lemma="diibmu" tags="n.*"/>
       <cat-item lemma="tiibmu" tags="n.*"/>
       <cat-item lemma="tiibma" tags="n.*"/>
+    </def-cat>
+    <def-cat n="lex-álgu-loahppa">
+      <cat-item lemma="álgu" tags="n.*"/>
+      <cat-item lemma="loahppa" tags="n.*"/>
+      <cat-item lemma="beallemuddu" tags="n.*"/>
     </def-cat>
     <def-cat n="lex-mannu">
       <cat-item lemma="mánnu" tags="n.*"/>
@@ -755,8 +761,8 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="idja" tags="n.*.sg.*"/>
       <cat-item lemma="iđit" tags="n.sg.*"/>
       <cat-item lemma="iđit" tags="n.*.sg.*"/>
-      <cat-item lemma="vahkkoloahppa" tags="n.sg.*"/>
       <cat-item lemma="vahkkoloahppa" tags="n.*.sg.*"/>
+      <cat-item lemma="vahkuloahppa" tags="n.*.sg.*"/>
       <cat-item lemma="juovllat" tags="n.pl.*"/>
       <cat-item lemma="juovllat" tags="n.*.pl.*"/>
       <cat-item lemma="jahki" tags="n.sg.*"/>
@@ -6001,6 +6007,63 @@ And then there are some categories like "month", with all the months.
               <lit v="som helst"/>
               <lit-tag v="adv"/>
             </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="C[] month lex-álgu-loahppa" c="suoidnemánu álggus → i begynnelsen av juli">
+      <pattern>
+        <pattern-item n="month"/>
+        <pattern-item n="lex-álgu-loahppa"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+         <choose>
+          <when>
+            <test>
+              <equal><clip pos="2" side="sl" part="case"/><lit-tag v="ill"/></equal>
+            </test>
+            <let><var n="caseprep"/><lit v="til"/></let>
+          </when>
+          <when>
+            <test>
+              <equal><clip pos="2" side="sl" part="case"/><lit-tag v="loc"/></equal>
+            </test>
+            <let><var n="caseprep"/><lit v="i"/></let>
+          </when>
+        </choose>
+       <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+                <lu>
+              <var n="caseprep"/><lit-tag v="pr"/>
+                </lu>
+                <b/>
+                <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+              <lit-tag v="def"/>
+              <clip pos="2" side="tl" part="lemq"/>
+                </lu>
+                <b/>
+                 <lu>
+              <lit v="av"/><lit-tag v="pr"/>
+                </lu>
+               <b pos="1"/>
+                <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+              <lit-tag v="ind"/>
+              <clip pos="1" side="tl" part="lemq"/>
+                </lu>
           </chunk>
         </out>
       </action>
