@@ -946,16 +946,17 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </action>
     </rule>
 
-    <rule comment="REGLA: SUBJr PR compl" c="Sámi oahpaheaddji masteroahput">
+    <rule comment="REGLA: SUBJr PR compl" c="Sámi oahpaheaddji masteroahput (ind) and Giellabargu mánáidgárddis (def)">
       <pattern>
         <pattern-item n="SUBJr"/>
         <pattern-item n="PR"/>
         <pattern-item n="compl"/>
       </pattern>
       <action>
-<!--      <choose><when><test><equal><clip pos="3" part="a_neverdet"/><lit-tag v="neverdet"/></equal></test> -->
+      <choose><when><test>
+      <equal><clip pos="3" part="a_neverdet"/><lit-tag v="neverdet"/></equal></test> 
         <let><clip pos="1" part="art"/><lit-tag v="ind"/></let>
-<!--      </when></choose> -->
+      </when></choose>
         <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
         <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
         <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="1"/></call-macro>
