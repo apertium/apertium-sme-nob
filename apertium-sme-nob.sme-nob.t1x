@@ -2607,6 +2607,7 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_group"/></in>
                 <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
+                <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.org"/></equal>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
                 <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_year"/></equal>
                 <in caseless="yes"><var n="previous-nhead"/><list n="loc-i-head"/></in>
@@ -4631,11 +4632,17 @@ And then there are some categories like "month", with all the months.
           </choose>
           <choose>
             <when>
-              <test><equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="være"/></equal></test>
-              <append n="c_name"><lit v="vcop"/></append>
+              <test><or>
+              <equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="være"/></equal>
+              <and>
+              <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+            <begins-with><clip pos="1" side="sl" part="modality"/><lit-tag v="cond"/></begins-with>
+              </and>
+           </or></test>
+              <let><var n="c_name"/><lit v="vcop"/></let>
             </when>
             <otherwise>
-              <append n="c_name"><lit v="verb"/></append>
+              <let><var n="c_name"/><lit v="verb"/></let>
             </otherwise>
           </choose>
           <choose>
@@ -10587,7 +10594,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] VERB (tl: VERB, ADV, ADJ, NOUN)
+    <rule comment="C[] vblex (tl: vblex, adv, adj, n)
                    See out_verb macro.
                    –––––
                    oažžun → fående (adj.pprs, using fallback rule)
@@ -10605,7 +10612,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] LEX-LEAT.COND VBLEX.IFAUXV
+    <rule comment="C[] lex-leat.cond vblex.IFAUXV
                    See out_verb macro.
                    –––––
                    livččen sáhttit → hadde kunnet">
