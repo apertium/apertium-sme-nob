@@ -304,6 +304,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.*.gen.@Num←"/>
       <cat-item tags="n.*.gen.*.@Num←"/>
       <cat-item tags="np.*.gen.@Num←"/>
+      <cat-item tags="num.*.gen.@Num←"/>
     </def-cat>
     <def-cat n="nom.prop.antcog_mod">
       <cat-item tags="np.ant.f.*.@→N"/>
@@ -7398,6 +7399,50 @@ And then there are some categories like "month", with all the months.
         <!-- This will warn, but we do want the numeral's syn_label on the chunk -->
         <let><clip pos="2" side="sl" part="syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="C[] num num_mod nom.gen_NUMl" c="7,6 miljovnna ruvnnu">
+      <pattern>
+        <pattern-item n="num"/>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="nom.gen_NUMl"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+        <let><clip pos="3" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+        <let><clip pos="2" side="tl" part="case"/><lit v=""/></let>
+        <let><clip pos="3" side="tl" part="case"/><lit v=""/></let>
+
+        <let><var n="pre-nom"/>
+        <concat>
+          <lit v="^"/>
+            <clip pos="1" side="tl" part="lemh"/>
+            <clip pos="1" side="tl" part="a_num"/>
+            <clip pos="1" side="tl" part="gen"/>
+            <clip pos="1" side="tl" part="nbr"/>
+            <clip pos="1" side="tl" part="lemq"/>
+            <clip pos="1" side="tl" part="lemq"/>
+          <lit v="$"/>
+          <b pos="1"/>     
+          <lit v="^"/>
+            <clip pos="2" side="tl" part="lemh"/>
+            <clip pos="2" side="tl" part="a_nom"/>
+            <clip pos="2" side="tl" part="gen"/>
+            <clip pos="2" side="tl" part="nbr"/>
+            <clip pos="2" side="tl" part="lemq"/>
+            <lit-tag v="ind"/>
+          <lit v="$"/>
+          <b pos="2"/>    
+        </concat>
+        </let>
+
+        <!-- This will warn, but we do want the numeral's syn_label on the chunk -->
+        <let><clip pos="3" side="sl" part="syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
 
