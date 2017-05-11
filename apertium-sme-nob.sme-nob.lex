@@ -1991,6 +1991,7 @@ SELECT:fallback ("frykt"i) (0 ("<ballu>"i));
 
 
 SELECT ("tale"i) (0 ("<ságat>"i) LINK 0 ill);
+SELECT ("tale"i) (0 ("<ságat>"i) LINK 0 loc LINK -1 HUMAN);
 SELECT:fallback ("nyhet"i) (0 ("<ságat>"i));
 
 SELECT ("engasjement"i) (0 ("<mokta>"i) LINK *0 ("<buolli>"i) OR ("<buollát>"i) OR ("<buollit>"i));
