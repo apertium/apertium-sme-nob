@@ -3372,6 +3372,7 @@ And then there are some categories like "month", with all the months.
               <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in>
             </and></not>
             <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
+<!--             <equal><var n="main-verb-sl"/><lit v=""/></equal> FOR TESTING -->
             <not><and>
             <equal><var n="main-verb-pasv"/><lit v="pasv"/></equal>
             <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
@@ -10005,7 +10006,7 @@ And then there are some categories like "month", with all the months.
     </rule>
 
 
-    <rule comment="C[] NOM.UNPROP.GEN NOM
+    <rule comment="C[] nom.unprop.gen nom_head
                    –––––
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.">
       <pattern>
@@ -11331,14 +11332,12 @@ TODO: this should be an mwe in the analyser.">
         </when></choose>
         <choose><when>
           <test><not><equal><clip pos="1" side="tl" part="lemh"/><lit v=";"/></equal></not></test>
-          <let><var n="main-verb-sl"/><lit v=""/></let>
-          <let><var n="main-verb-pasv"/><lit v=""/></let>
-          <let><var n="main-verb-pasv"/><lit v=""/></let>
-          <let><var n="main-verb-sl"/><lit v=""/></let>
-          <let><var n="main-verb-tl"/><lit v=""/></let>
           <let><var n="aux-verb-sl"/><lit v=""/></let>
           <let><var n="aux-verb-tl"/><lit v=""/></let>
           <let><var n="foc-word"/><lit v=""/></let>
+          <let><var n="main-verb-pasv"/><lit v=""/></let>
+          <let><var n="main-verb-sl"/><lit v=""/></let>
+          <let><var n="main-verb-tl"/><lit v=""/></let>
         </when></choose>
       </action>
     </rule>
@@ -11363,19 +11362,17 @@ TODO: this should be an mwe in the analyser.">
         <choose><when>
           <test><not><equal><clip pos="1" side="tl" part="lemh"/><lit v=";"/></equal></not></test>
           <let><var n="caseFirstWord"/><lit v="Init"/></let>
-          <let><var n="main-verb-sl"/><lit v=""/></let>
-          <let><var n="main-verb-pasv"/><lit v=""/></let>
-          <let><var n="previous-nhead"/><lit v=""/></let>
-          <let><var n="previous-obj"/><lit v=""/></let>
+          <let><var n="aux-verb-sl"/><lit v=""/></let>
+          <let><var n="aux-verb-tl"/><lit v=""/></let>
+          <let><var n="foc-word"/><lit v=""/></let>
           <let><var n="main-verb-pasv"/><lit v=""/></let>
           <let><var n="main-verb-sl"/><lit v=""/></let>
           <let><var n="main-verb-tl"/><lit v=""/></let>
-          <let><var n="aux-verb-sl"/><lit v=""/></let>
-          <let><var n="aux-verb-tl"/><lit v=""/></let>
-          <let><var n="vfin-pers"/><lit v=""/></let>
+          <let><var n="previous-nhead"/><lit v=""/></let>
+          <let><var n="previous-obj"/><lit v=""/></let>
           <let><var n="vfin-nbr"/><lit v=""/></let>
+          <let><var n="vfin-pers"/><lit v=""/></let>
           <let><var n="vfin-temps"/><lit v=""/></let>
-          <let><var n="foc-word"/><lit v=""/></let>
         </when></choose>
       </action>
     </rule>
