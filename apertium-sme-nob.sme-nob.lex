@@ -1490,6 +1490,10 @@ SELECT:fallback ("tillatelse"i) (0 ("<lohpi>"i)) ;
 SELECT ("heldig"i) (0 ("<lihkku>"i) LINK 0 (←ext→) LINK *-1 ←hab→) ;
 SELECT:fallback ("lykke"i) (0 ("<lihkku>"i)) ;
 
+SELECT ("matrett"i) (0 ("<biebmu>"i) LINK 0 pl) ;
+SELECT:fallback ("mat"i) (0 ("<biebmu>"i)) ;
+
+
 SELECT ("innstilling"i) (0 ("<áššeguoddu>"i) LINK -1 ("<ráđđealmmái>"i)) ;
 SELECT:fallback ("holdning"i) (0 ("<áššeguoddu>"i)) ;
 
