@@ -1608,6 +1608,13 @@ And then there are some categories like "month", with all the months.
     </def-list>
 
 
+    <def-list n="sem_mat">
+      <list-item v="&lt;sem_body_mat&gt;"/>
+      <list-item v="&lt;sem_edu_mat&gt;"/>
+      <list-item v="&lt;sem_mat&gt;"/>
+      <list-item v="&lt;sem_mat_plant&gt;"/>
+      <list-item v="&lt;sem_mat_txt&gt;"/>
+    </def-list>
     <def-list n="sem_txt">
       <list-item v="&lt;sem_ani_build_hum_txt&gt;"/>
       <list-item v="&lt;sem_ani_plc_txt&gt;"/>
@@ -2667,28 +2674,42 @@ And then there are some categories like "month", with all the months.
               </let>
             </when>
             <when c="fra">
-              <test><or>
+              <test>
+              <and>
+              <or>
                 <in caseless="yes"><var n="previous-nhead"/><list n="loc-fra-head"/></in>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-fra"/></in>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-F←ADVL-ela"/></equal>
-<!--                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal> -->
-              </or></test>
+              </or>
+                <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_mat"/></in></not>
+              </and>
+              </test>
               <let>
                 <var n="caseprep"/><lit v="fra"/>
               </let>
             </when>
             <when c="Sometimes, das → av den">
-              <test><and>
+              <test>
+              <or>
+              <and>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_mat"/></in>
+                <or>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+                </or>
+                </and>
+              <and>
                 <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
-                <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
                 <or>
                 <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
                 <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
                 <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
                 </or>
-              </and></test>
+              </and>
+              </or>
+              </test>
               <let>
                 <var n="caseprep"/><lit v="av"/>
               </let>
@@ -5914,6 +5935,7 @@ And then there are some categories like "month", with all the months.
         <pattern-item n="lex-siden"/>
       </pattern>
       <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <out>
           <chunk name="adv" case="caseFirstWord">
             <tags>
