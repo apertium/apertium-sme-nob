@@ -2116,6 +2116,9 @@ SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK -1 HUMAN  OR ("<beaivi>"i) LINK 0
 SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK -1 COPULAS LINK *-1 ←hab→ LINK 0 HUMAN);
 SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
 
+SELECT ("tiltak"i) (0 ("<doaibma>"i) LINK -1 cmp);
+SELECT:fallback ("oppgave"i) (0 ("<doaibma>"i));
+
 
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
 SELECT ("kjendis"i) (0 ("<beakkán>"i));
@@ -2137,7 +2140,6 @@ SELECT:fallback ("kulde"i) (0 ("<buolaš>"i));
 SELECT:fallback ("trinn"i) (0 ("<ceahkki>"i));
 SELECT:fallback ("vekt"i) (0 ("<deatta>"i));
 SELECT:fallback ("situasjon"i) (0 ("<dilli>"i));
-SELECT:fallback ("oppgave"i) (0 ("<doaibma>"i));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
 SELECT:fallback ("bål"i) (0 ("<dolla>"i));
 SELECT:fallback ("håndarbeid"i) (0 ("<duodji>"i));

@@ -2307,6 +2307,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="ungdomssskole"/>
       <list-item v="by"/>
       <list-item v="kommune"/>
+      <list-item v="fylkeskommune"/>
       <list-item v="bru"/>
       <list-item v="bro"/>
     </def-list>
@@ -3869,10 +3870,9 @@ And then there are some categories like "month", with all the months.
         <when c="Proper noun – no nbr/defnes">
           <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
           <choose><when c="Avoid «Tromsøs kommune»">
-            <test><or>
+            <test>
               <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
-              <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
-            </or></test>
+            </test>
             <let><clip pos="2" side="tl" part="gen-case"/><lit v=""/></let>
           </when></choose>
           <append n="pre-nom">
@@ -10136,7 +10136,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] NOM.PROP_GEN NOM
+    <rule comment="C[] nom.prop.gen nom_head
                    –––––
                    Defnes of possessed NOM is ind (NOM.PROP has no defnes).
                    Needs to be before NOM.GEN NOM">
