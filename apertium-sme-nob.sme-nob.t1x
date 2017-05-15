@@ -836,6 +836,9 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_lemq">
       <attr-item tags="lemq-obj"/>
     </def-attr>
+    <def-attr n="a_attr">
+      <attr-item tags="attr"/>
+    </def-attr>
     <def-attr n="a_adj">
       <attr-item tags="adj"/>
       <attr-item tags="adj.pp"/>
@@ -1444,6 +1447,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="previous-nhead"  c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
     <def-var n="previous-obj"  c="lemh of the previous obj" />
     <def-var n="main-verb-pasv"    c="sme pasv of the previous main verb" />
+    <def-var n="advl-verb-sl"    c="sme lemh of the previous advl verb" />
     <def-var n="main-verb-sl"    c="sme lemh of the previous main verb" />
     <def-var n="main-verb-tl"    c="nob lemh of the previous main verb" />
     <def-var n="aux-verb-sl"     c="sme lemh of the previous aux verb" />
@@ -2812,6 +2816,7 @@ And then there are some categories like "month", with all the months.
              <equal><var n="main-verb-sl"/><lit v="gohčodit"/></equal>
              <equal><var n="main-verb-sl"/><lit v="šaddat"/></equal>
              <equal><var n="main-verb-sl"/><lit v="gártat"/></equal>
+            <equal><var n="advl-verb-sl"/><lit v="leat"/></equal>  
              </or></test>
            <let>
               <var n="caseprep"/><lit v=""/>
@@ -3709,6 +3714,19 @@ And then there are some categories like "month", with all the months.
           </test>
           <let><var n="main-verb-sl"/><clip pos="1" side="sl" part="lemh"/></let>
           <let><var n="main-verb-tl"/><clip pos="1" side="tl" part="lemh"/></let>
+        </when>
+      </choose>
+      <choose>
+        <when c="M[V] set advl-verbal-main-verb-sl">
+          <test><and><or>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal>
+              </or>
+              <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
+              <not><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_nomact"/></equal></not>
+            </and>
+          </test>
+          <let><var n="advl-verb-sl"/><clip pos="1" side="sl" part="lemh"/></let>
         </when>
       </choose>
       <choose>        
@@ -6775,12 +6793,97 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] num.cmp adj_vblex_attr  nom_head" c="22-jahkásaš nieida">
+
+
+    <rule comment="C[] num.cmp adj_vblex_attr nom_head" c="22-jahkásaš nieida">  
+      <pattern>
+        <pattern-item n="num.cmp"/>
+        <pattern-item n="adj_vblex_attr"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="3"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <call-macro n="clean_cmp"><with-param pos="1"/></call-macro>
+
+        <choose><when>
+          <test><equal><clip pos="2" side="tl" part="lemh"/><lit v="lohku"/></equal></test>
+          <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+        </when></choose>
+
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <let>
+          <var n="tmp"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_num"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="a_cmp"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <choose>
+          <when>
+            <test><and>
+              <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
+              <equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_sasj"/></equal>
+              <equal><clip pos="2" side="sl" part="a_attr"/><lit-tag v="attr"/></equal>
+            </and></test>
+            <let>
+              <var n="pre-nom"/>
+              <concat>
+              <var n="tmp"/>
+                 <lit v="^"/>
+                  <lit v="årig"/>
+                  <lit-tag v="adj.pst.nt.sg.ind"/>
+                <lit v="$"/>
+              <b pos="1"/>
+       </concat></let>
+          </when>
+          <when>
+            <test><and>
+              <equal><clip pos="2" side="sl" part="lemh"/><lit v="jahki"/></equal>
+              <equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_sasj"/></equal>
+          <not><equal><clip pos="2" side="sl" part="a_attr"/><lit-tag v="attr"/></equal></not>
+            </and></test>
+            <let>
+              <var n="pre-nom"/>
+              <concat>
+                <var n="tmp"/>
+                 <lit v="^"/>
+                  <lit v="åring"/>
+                  <lit-tag v="n.m"/>
+                  <clip pos="2" side="tl" part="nbr"/>
+                  <lit-tag v="def"/>
+                <clip pos="2" side="sl" part="gen-case"/>
+                <lit v="$"/>
+              <b pos="1"/>
+            </concat></let>
+          </when>
+          <otherwise>
+       <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+          </otherwise>
+
+          </choose>
+            <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+        <let><var n="pre-nom"/><lit v=""/></let> <!-- since the above sets pre-nom without always using out_nom -->
+      </action>
+    </rule>
+
+
+<!--    <rule comment="C[] num.cmp adj_vblex_attr nom_head" c="22-jahkásaš nieida">  -->
       <!--
           Intended matches:
 	^6<num><cmp><guio>/6<det><qnt><un><pl><guio>$ ^jahki<n><der_sasj><adj><attr><@→N>/-åring<n><m><attr><@→N>$
 	^nieida<n><sem_hum><sg><nom><←ext→><@←SUBJ>/jente<n><f><sem_hum><sg><nom><←ext→><@←SUBJ>      -->
-      <pattern>
+<!--      <pattern>
         <pattern-item n="num.cmp"/>
         <pattern-item n="adj_vblex_attr"/>
         <pattern-item n="nom_head"/>
@@ -6791,10 +6894,10 @@ And then there are some categories like "month", with all the months.
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="2"/></call-macro>
-        <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <call-macro n="maybe_det_nbr_to_adj"><with-param pos="1"/><with-param pos="2"/></call-macro> -->
 
         <!-- not set_defnes2 here, seems to work better just looking at head syntax tag: -->
-        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+ <!--       <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
 
         <let><var n="c_def_pos"/><lit-tag v="3"/></let>
 
@@ -6811,7 +6914,7 @@ And then there are some categories like "month", with all the months.
         <let><clip pos="3" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
-    </rule>
+    </rule> -->
 
 
 
@@ -9311,7 +9414,7 @@ And then there are some categories like "month", with all the months.
     </rule>
 
 
-    <rule comment="C[] DET NOM.CMP NOM
+    <rule comment="C[] det_mod nom-adj.cmp nom_head
                    eará skuvlamánáin → andre skolebarnene">
       <pattern>
         <pattern-item n="det_mod"/>
@@ -9353,6 +9456,61 @@ And then there are some categories like "month", with all the months.
           </concat>
         </let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="C[] det_mod adj_vblex_attr nom-adj.cmp nom_head "
+                 c="makkárge earenoamáš heahteveahkkedoaimmaid">
+      <pattern>
+        <pattern-item n="det_mod"/>
+        <pattern-item n="adj_vblex_attr"/>
+        <pattern-item n="nom-adj.cmp"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="clean_det"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_cmp"><with-param pos="3"/></call-macro>
+        <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_det"/>
+            <clip pos="1" side="tl" part="a_adj"/>
+              <var n="prn_gen"/>
+              <var n="prn_nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+            <lit v="^"/>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_nom"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <clip pos="3" side="tl" part="nbr"/>
+              <clip pos="3" side="tl" part="art"/>
+              <clip pos="3" side="tl" part="a_cmp"/>
+              <clip pos="3" side="tl" part="lemq"/>
+            <lit v="$"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
 

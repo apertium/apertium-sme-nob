@@ -263,6 +263,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <def-attr n="a_pstv">
       <attr-item tags="pstv"/>
     </def-attr>
+    <def-attr n="vfintemps">
+      <attr-item tags="pres"/>
+      <attr-item tags="pret"/>
+    </def-attr>
     <def-attr n="temps">
       <attr-item tags="pres"/>
       <attr-item tags="pret"/>
@@ -378,6 +382,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <def-var n="adj-gender"/>
     <def-var n="adj-number"/>
     <def-var n="former-chunk"/>
+    <def-var n="verb_temp"/>
   </section-def-vars>
 
   <section-def-lists>
@@ -1465,7 +1470,11 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
 
     <rule comment="CHUNK: verb">
       <pattern><pattern-item n="verb"/></pattern>
-      <action><choose><when c="mus livččii ruhta">
+      <action>
+      <choose><when><test>
+      <not><equal><clip pos="0" part="vfintemps"/><lit v=""/></equal></not></test>
+      <let><var n="verb_temp"/><clip pos="1" part="vfintemps"/></let></when> </choose>
+      <choose><when c="mus livččii ruhta">
       <test><not><equal><clip pos="0" part="modality"/><lit-tag v="cond"/></equal></not></test>
         <let><clip pos="1" part="temps"/><clip pos="0" part="temps"/></let>
       </when> </choose>
@@ -1500,6 +1509,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <choose>
           <when>
             <test><and>
+              <equal><clip pos="1" part="lemh"/><lit v="være"/></equal>
+              <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
+              <equal><clip pos="0" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+            </and></test>
+            <let><clip pos="1" part="temps"/><var n="verb_temp"/></let>
+          </when>
+          <when>
+            <test><and>
+          <not><equal><clip pos="1" part="lemh"/><lit v="være"/></equal></not>
               <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
               <equal><clip pos="0" part="a_actio"/><lit v=""/></equal>
               <equal><clip pos="0" part="a_abess"/><lit v=""/></equal>
@@ -1519,6 +1537,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           </when>
           <when>
             <test><and>
+          <not><equal><clip pos="1" part="lemh"/><lit v="være"/></equal></not>
               <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
               <equal><clip pos="0" part="a_actio"/><lit v=""/></equal>
               <equal><clip pos="0" part="a_abess"/><lit v=""/></equal>
