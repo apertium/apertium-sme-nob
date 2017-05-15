@@ -94,6 +94,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="adj.*.@→A"/>
       <cat-item tags="adv.@→A"/>
       <cat-item tags="adv.*.@→A"/>
+      <cat-item lemma="veaháš" tags="adv.@→N"/>
       <!-- This one will give «til helt lørdag» where we want «helt til lørdag»: -->
       <!-- <cat-item tags="adv.@→N"/> -->
       <!-- <cat-item tags="adv.*.@→N"/> -->
@@ -2777,6 +2778,14 @@ And then there are some categories like "month", with all the months.
               <var n="caseprep"/><lit v="i"/>
             </let>
           </when></choose>
+          <choose><when c="ess is en">
+            <test>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="betingelse"/></equal>
+            </test>
+            <let>
+              <var n="caseprep"/><lit v="en"/>
+            </let>
+          </when></choose>
           <choose><when c="ess is NIL">
             <test><or><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in>
              <equal><var n="main-verb-sl"/><lit v="gohčodit"/></equal>
@@ -2827,7 +2836,10 @@ And then there are some categories like "month", with all the months.
                     <not><equal><var n="main-verb-sl"/><lit v="viiddidit"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalahttit"/></equal></not>
-                    <not><in caseless="yes"><var n="previous-nhead"/><list n="sem_lang_lem"/></in></not>
+                    <not><and>
+                    <in caseless="yes"><var n="previous-nhead"/><list n="sem_lang_lem"/></in>
+                    <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+                </and></not>
                   </and>
                   <and>
                     <equal><var n="main-verb-sl"/><lit v="bidjat"/></equal>
@@ -8009,7 +8021,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] NOM.CMP NOM.CMP NOM
+    <rule comment="C[] nom-adj.cmp nom.cmp nom_head
                    –––––
                    Ruvdnaprinsabáras → Kronprinsparet
                    Moves syn_label from first CMP to NOM">
@@ -8036,7 +8048,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] CMP NOM
+    <rule comment="C[] cmp nom_head
                    –––––
                    vuođđofága → grunnfag
                    mielbargin → som medarbeider
@@ -8067,7 +8079,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] NOM.CMP ADJ
+    <rule comment="C[] nom-adj.cmp adj
                    –––––
                    sámegiel → samespråklig
                    Moves syn_label from CMP to NOM">
@@ -8278,7 +8290,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] PRN.RES">
+    <rule comment="C[] prn.res">
       <pattern>
         <pattern-item n="prn.res"/>
       </pattern>
@@ -8313,7 +8325,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] PRN.GEN.P
+    <rule comment="C[] prn.gen.P
                    Only runs where tl is *not* a determiner.">
       <pattern>
         <pattern-item n="prn.gen.P"/>
@@ -8645,7 +8657,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] PERSONAL_PRONOUN REFLEXIVE_PRONOUN
+    <rule comment="C[] prn.pers prn.ref_PRONl
                    (Jus in livčče) mun ieš → (Hvis jeg ikke kan være) meg.acc selv
                    Changes prpers case to accusative.
                    TODO: Does it put acc on too much? E.g.
@@ -8710,7 +8722,7 @@ And then there are some categories like "month", with all the months.
 
 
 
-    <rule comment="C[] INTERROGATIVE_PRONOUN mii → hva">
+    <rule comment="C[] prnitg mii → hva">
       <pattern>
         <pattern-item n="prnitg"/>
       </pattern>
@@ -8740,7 +8752,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] PERSONAL_PRONOUN
+    <rule comment="C[] prn.pers
                    This will catch genitive pronouns too (we're outputting both a_prn and a_det).
                    Not all genitive pronouns turn into determiners.">
       <pattern>
@@ -8783,7 +8795,7 @@ And then there are some categories like "month", with all the months.
 
     <!-- <rules: DET* ADJ* NOM* -->
 
-    <rule comment="C[] ADJ
+    <rule comment="C[] adj
                    –––––
                    dehálaš → viktig, deháleamos → viktigst
                    bassivuođa → det hellige">
@@ -8876,7 +8888,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] ADJ_ATTR NOM
+    <rule comment="C[] adj_vblex_attr nom_head
                    –––––
                    almmolaš bálvalusaide → til offentlige tjenester
                    almmolaš bálvalus → (den) offentlige tjenesten">
@@ -8899,6 +8911,7 @@ And then there are some categories like "month", with all the months.
             <lit v="^"/>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="a_adv"/>
               <clip pos="1" side="tl" part="grau"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="nbr"/>
@@ -9101,7 +9114,6 @@ And then there are some categories like "month", with all the months.
         <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="3"/></call-macro>
 
         <!-- for NOM_HEAD -->
-        <call-macro n="set_defnes2"><with-param pos="4"/><with-param pos="2"/></call-macro>
         <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
@@ -9219,7 +9231,7 @@ And then there are some categories like "month", with all the months.
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
-    <rule comment="C[] DET NOM
+    <rule comment="C[] det_mod nom_head
                    du bávččas → din smerte
                    eará sámi → annen same">
       <pattern>
@@ -9260,6 +9272,7 @@ And then there are some categories like "month", with all the months.
             <lit v="^"/>
             <clip pos="1" side="tl" part="lemh"/>
             <clip pos="1" side="tl" part="a_det"/>
+            <clip pos="1" side="tl" part="a_adj"/>
             <var n="prn_gen"/>
             <var n="prn_nbr"/>
             <clip pos="1" side="tl" part="art"/>
@@ -9296,6 +9309,7 @@ And then there are some categories like "month", with all the months.
             <lit v="^"/>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_det"/>
+            <clip pos="1" side="tl" part="a_adj"/>
               <var n="prn_gen"/>
               <var n="prn_nbr"/>
               <clip pos="1" side="tl" part="art"/>
