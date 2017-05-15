@@ -2555,6 +2555,10 @@ And then there are some categories like "month", with all the months.
              <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
              <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in></not>
                   </and>
+                  <and>
+                <equal><var n="previous-nhead"/><lit v="avtale"/></equal>
+             <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_act"/></equal>
+                  </and>
              </or></and>
 
              </test>

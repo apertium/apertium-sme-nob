@@ -117,6 +117,16 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SA.@SUBJ→.*"/>
       <cat-item tags="SN.@X.*"/>
     </def-cat>
+    <def-cat n="lSUBJ">
+      <cat-item lemma="unknown" tags="unknown"/>
+      <cat-item tags="SV.@←SUBJ.*"/>
+      <cat-item tags="SN.@←SUBJ.*"/>
+      <cat-item tags="SA.@←SUBJ.*"/>
+      <cat-item tags="SV.@←SUBJ"/>
+      <cat-item tags="SN.@←SUBJ"/>
+      <cat-item tags="SA.@←SUBJ"/>
+      <cat-item tags="SN.@X.*"/>
+    </def-cat>
     <def-cat n="lSPRED">
       <cat-item tags="SV.@←SPRED.*"/>
       <cat-item tags="SN.@←SPRED.*"/>
@@ -1894,12 +1904,12 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
     <!-- <rules: V2-trigger* FV IV* RSUBJ: -->
-    <rule comment="REGLA: FV maybe-lSUBJ - out: pro 1 2 
+    <rule comment="REGLA: FV lSUBJ - out: 1 2 
                    -----
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
         <pattern-item n="FV"/>
-        <pattern-item n="maybe-lSUBJ"/>
+        <pattern-item n="lSUBJ"/>
       </pattern>
       <action>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
@@ -1913,11 +1923,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
 
-    <rule comment="REGLA: FV ADVLrsent maybe-lSUBJ - out: pro 1 2 3 OBS " c="Eai nu ollugat loga bábiráviissaid = Ikke så mange leser papiraviser">
+<!--    <rule comment="REGLA: FV ADVLrsent lSUBJ - out: pro 1 2 3 OBS " c="Eai nu ollugat loga bábiráviissaid = Ikke så mange leser papiraviser">
       <pattern>
         <pattern-item n="FV"/>
         <pattern-item n="ADVLrsent"/>
-        <pattern-item n="maybe-lSUBJ"/>
+        <pattern-item n="lSUBJ"/>
       </pattern>
       <action>
         <call-macro n="set_hab"><with-param pos="2"/></call-macro>
@@ -1933,7 +1943,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
-    </rule>
+    </rule>  
 
     <rule comment="REGLA: FV ADVLrsent ADVLrsent maybe-lSUBJ - out: pro 1 2 3 4 OBS" c="Eai šat nu ollugat loga bábiráviissaid = Ikke så mange leser papiraviser">
       <pattern>
@@ -1959,7 +1969,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
-    </rule>
+    </rule> -->
 
 
     <rule comment="REGLA: sentbord FV lSUBJext - out: 1 det 2 3
