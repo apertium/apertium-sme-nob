@@ -8474,6 +8474,7 @@ And then there are some categories like "month", with all the months.
         <out>
           <chunk name="rel" case="caseFirstWord">
             <tags>
+              <tag><lit-tag v="SR"/></tag>
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
               <tag><clip pos="1" side="tl" part="a_rel"/></tag>
             </tags>
@@ -8502,7 +8503,8 @@ And then there are some categories like "month", with all the months.
         <out>
           <chunk name="rel" case="caseFirstWord">
             <tags>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+               <tag><lit-tag v="SR"/></tag>
+             <tag><clip pos="1" side="sl" part="syn_label"/></tag>
 	           <tag><clip pos="1" side="sl" part="hab"/></tag>
               <tag><clip pos="1" side="tl" part="pers"/></tag>
               <tag><clip pos="1" side="tl" part="gen"/></tag>
@@ -8564,7 +8566,8 @@ And then there are some categories like "month", with all the months.
             <out>
               <chunk name="adv" case="caseFirstWord">
                 <tags>
-                  <tag><lit-tag v="@ADVL"/></tag>
+               <tag><lit-tag v="ADV"/></tag>
+                 <tag><lit-tag v="@ADVL"/></tag>
                   <tag><clip pos="1" side="tl" part="mode"/></tag>
                 </tags>
                 <lu>
