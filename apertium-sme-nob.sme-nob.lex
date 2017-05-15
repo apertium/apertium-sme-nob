@@ -1139,7 +1139,7 @@ SELECT ("føde"i) (0 ("<šaddat>"i)) (1 np + sem_plc + loc) (NEGATE *0 SPRED)(*-
 # Mun lean šaddan Kárášjogas.
 # Kárášjogas mun lean šaddan.
 
-SELECT:fallback ("bli"i) (0 ("<šaddat>"i)) ;
+SELECT:fallback ("bli"i) + (impers) (0 ("<šaddat>"i)) ;
 
 # bargat 0 = arbeide, 1 = gjøre
 SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>"i prn acc) BARRIER V-IND-FIN) ;
