@@ -1162,6 +1162,27 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="@X"/>
     </def-attr>
     <def-attr n="a_sem">
+      <attr-item tags="sem_act_fruit"/>
+      <attr-item tags="sem_ani_group_prod-vis"/>
+      <attr-item tags="sem_body-abstr_feat-cogn"/>
+      <attr-item tags="sem_body_plc-elevate"/>
+      <attr-item tags="sem_build-part_cat"/>
+      <attr-item tags="sem_build-part_cat_ctain"/>
+      <attr-item tags="sem_build-part_cat_ctain_mat"/>
+      <attr-item tags="sem_build-part_ctain"/>
+      <attr-item tags="sem_build-part_ctain_mat"/>
+      <attr-item tags="sem_build-part_ctain_obj"/>
+      <attr-item tags="sem_clth-jewl_curr_obj"/>
+      <attr-item tags="sem_clth-jewl_curr_obj_org"/>
+      <attr-item tags="sem_clth-jewl_fruit"/>
+      <attr-item tags="sem_clth_obj-clo"/>
+      <attr-item tags="sem_edu_geom"/>
+      <attr-item tags="sem_feat-phys_plc"/>
+      <attr-item tags="sem_group_prod-vis"/>
+      <attr-item tags="sem_hum-prof"/>
+      <attr-item tags="sem_hum_mat_tool"/>
+      <attr-item tags="sem_hum_tool-it"/>
+      <attr-item tags="sem_obj_symbol"/>
       <attr-item tags="sem_act"/>
       <attr-item tags="sem_act_group"/>
       <attr-item tags="sem_act_plc"/>
@@ -1618,6 +1639,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_mat&gt;"/>
       <list-item v="&lt;sem_mat_plant&gt;"/>
       <list-item v="&lt;sem_mat_txt&gt;"/>
+      <list-item v="&lt;sem_build-part_cat_ctain_matt&gt;"/>
+      <list-item v="&lt;sem_build-part_ctain_matt&gt;"/>
+      <list-item v="&lt;sem_hum_mat_toolt&gt;"/>
     </def-list>
     <def-list n="sem_txt">
       <list-item v="&lt;sem_ani_build_hum_txt&gt;"/>
@@ -1647,6 +1671,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_body_obj_tool-catch&gt;"/>
       <list-item v="&lt;sem_body_plc&gt;"/>
       <list-item v="&lt;sem_body_time&gt;"/>
+      <list-item v="&lt;sem_body_plc-elevate&gt;"/>
     </def-list>
     <def-list n="sem_veh">
       <list-item v="&lt;sem_ani_veh&gt;"/>
@@ -1674,6 +1699,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_group_org&gt;"/>
       <list-item v="&lt;sem_group_sign&gt;"/>
       <list-item v="&lt;sem_group_txt&gt;"/>
+      <list-item v="&lt;sem_ani_group_prod-vis&gt;"/>
+      <list-item v="&lt;sem_group_prod-vis&gt;"/>
     </def-list>
     <def-list n="sem_pos">
       <list-item v="&lt;sem_plc_pos&gt;"/>
@@ -1719,6 +1746,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_plc_time_wthr&gt;"/>
       <list-item v="&lt;sem_plc_tool-catch&gt;"/>
       <list-item v="&lt;sem_plc_wthr&gt;"/>
+      <list-item v="&lt;sem_body_plc-elevate&gt;"/>
+      <list-item v="&lt;sem_feat-phys_plc&gt;"/>
       <list-item v="&lt;top&gt;"/>
     </def-list>
     <def-list n="sem_org">
@@ -1738,6 +1767,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_org_rule&gt;"/>
       <list-item v="&lt;sem_org_txt&gt;"/>
       <list-item v="&lt;sem_org_veh&gt;"/>
+      <list-item v="&lt;sem_clth-jewl_curr_obj_org&gt;"/>
     </def-list>
     <def-list n="sem_edu">
       <list-item v="&lt;sem_build_edu_org&gt;"/>
@@ -1746,6 +1776,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_edu_group_hum&gt;"/>
       <list-item v="&lt;sem_edu_mat&gt;"/>
       <list-item v="&lt;sem_edu_org&gt;"/>
+      <list-item v="&lt;sem_edu_geom&gt;"/>
     </def-list>
     <def-list n="sem_hum">
       <list-item v="&lt;sem_ani_body-abstr_hum&gt;"/>
@@ -1784,6 +1815,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_hum_tool&gt;"/>
       <list-item v="&lt;sem_hum_veh&gt;"/>
       <list-item v="&lt;sem_hum_wthr&gt;"/>
+      <list-item v="&lt;sem_hum-prof&gt;"/>
+      <list-item v="&lt;sem_hum_mat_tool&gt;"/>
+      <list-item v="&lt;sem_hum_tool-it&gt;"/>
     </def-list>
 
     <def-list n="animate_nonagent-verbs" c="Passive versions of these have 'pers' tag on 'bli', else 'impers',
