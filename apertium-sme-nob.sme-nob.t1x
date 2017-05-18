@@ -711,6 +711,11 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-veahkki">
       <cat-item lemma="veahkki" tags="n.*"/>
     </def-cat>
+    <def-cat n="ord_num"> <!-- robust solution for dates -->
+      <cat-item tags="num.arab.*"/>
+      <cat-item tags="adj.ord.*"/>
+      <cat-item tags="adj.ord"/>
+    </def-cat>
     <def-cat n="ord">
       <cat-item tags="adj.ord.*"/>
       <cat-item tags="adj.ord"/>
@@ -3422,6 +3427,7 @@ And then there are some categories like "month", with all the months.
         <test>
           <and>
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@VOC"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="a_acr"/><lit-tag v="acr"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="ekstra"/></equal></not> 
@@ -3489,6 +3495,10 @@ And then there are some categories like "month", with all the months.
                 <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></not>
               </and>
             </or>
+             <not><and>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_mat"/></in>
+                </and></not>
           </and>
         </test>
         <let><var n="defnes"/><lit-tag v="def"/></let>
@@ -6277,7 +6287,7 @@ And then there are some categories like "month", with all the months.
       <pattern>
         <pattern-item n="num"/>
         <pattern-item n="month"/>
-        <pattern-item n="ord"/>
+        <pattern-item n="ord_num"/>
         <pattern-item n="lex-beaivi"/>
       </pattern>
       <action>
@@ -6365,7 +6375,7 @@ And then there are some categories like "month", with all the months.
                    TODO: do we ever want definite? ('den 17.februar')?">
       <pattern>
         <pattern-item n="month"/>
-        <pattern-item n="ord"/>
+        <pattern-item n="ord_num"/>
         <pattern-item n="lex-beaivi"/>
       </pattern>
       <action>
@@ -6440,7 +6450,7 @@ And then there are some categories like "month", with all the months.
     </rule>
     <rule comment="C[DT] ord lex-beaivi month" c="24. beaivve golggotmánus → 24. oktober">
       <pattern>
-        <pattern-item n="ord"/>
+        <pattern-item n="ord_num"/>
         <pattern-item n="lex-beaivi"/>
         <pattern-item n="month"/>
       </pattern>
@@ -6516,7 +6526,7 @@ And then there are some categories like "month", with all the months.
     </rule>
     <rule comment="C[DT] ord lex-beaivi det_mod lex-mannu" c="24. beaivve dán mánus → 24. oktober">
       <pattern>
-        <pattern-item n="ord"/>
+        <pattern-item n="ord_num"/>
         <pattern-item n="lex-beaivi"/>
         <pattern-item n="det_mod"/>
         <pattern-item n="lex-mannu"/>
