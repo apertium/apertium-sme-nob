@@ -918,7 +918,7 @@ SELECT ("stenge"i) IF (0 ("<gitta>"i) LINK *0 ("<geaidnu>"i) OR ("<luodda>"i) OR
 SELECT ("helt"i) IF (0 ("<gitta>"i) + @→A OR ("<gitta>"i) + @→N) ;
 SELECT ("helt"i) IF (0 ("<gitta>"i) LINK 1 sem_time + ill) ;
 SELECT ("inntil"i) IF (0 ("<gitta>"i) + @→Num) ;
-SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
+SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<váldot>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
 SELECT:fallback ("lukket"i) IF (0 ("<gitta>"i) LINK *0 ("<čalbmi>"i))  ;
 SELECT:fallback ("stenge"i) IF (0 ("<gitta>"i))  ;
 
@@ -2582,6 +2582,9 @@ SELECT ("forrige"i) (0 ("<ovddit>"i comp)) (1 n + sg);
 
 SELECT ("trygg"i) (0 ("<luohttevaš>"i)) (0 adj) (NOT 0 n);
 SELECT:fallback ("tillitsfull"i) (0 ("<luohttevaš>"i));
+
+SELECT ("taus"i) (0 ("<jaskat>"i) LINK 0 attr);
+SELECT:fallback ("taus"i) (0 ("<jaskat>"i));
 
 
 SELECT ("mangfoldig"i) (0 ("<girjái>"i)) (*0 sem_domain OR sem_edu);
