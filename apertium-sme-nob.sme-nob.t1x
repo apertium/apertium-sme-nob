@@ -2997,6 +2997,14 @@ And then there are some categories like "month", with all the months.
             <var n="caseprep"/><lit v="på"/>
           </let>
         </when>
+        <when c="på acc">
+          <test>
+          <equal><var n="main-verb-tl"/><lit v="protestere"/></equal>
+          </test>
+          <let>
+            <var n="caseprep"/><lit v="mot"/>
+          </let>
+        </when>
         <when c="til acc">
           <test><and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
           <equal><var n="main-verb-tl"/><lit v="lytte"/></equal>
