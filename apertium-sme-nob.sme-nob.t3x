@@ -50,6 +50,11 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="PR"/>
       <cat-item tags="PR.*"/>
     </def-cat>
+    <def-cat n="FOC-PCLE">
+      <cat-item tags="FOC"/>
+      <cat-item tags="FOC.*"/>
+      <cat-item tags="@PCLE"/>
+    </def-cat>
     <def-cat n="SUBJr">
       <cat-item tags="SN.@SUBJ→.*"/>
       <cat-item tags="SV.@SUBJ→.*"/>
@@ -1715,6 +1720,36 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
+
+    <rule comment="REGLA: maybe-SUBJr adv-FV FOC-PCLE IV - out: 3 2 1 4" c="In munge sáhte čállit : Heller ikke jeg kan skrive">
+      <pattern>
+        <pattern-item n="maybe-SUBJr"/>
+        <pattern-item n="adv-FV"/>
+        <pattern-item n="FOC-PCLE"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <call-macro n="modify_GD_ND_subj3"><with-param pos="1"/><with-param pos="2"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <choose><when>
+          <test><equal><clip pos="4" part="temps"/><lit-tag v="pp"/></equal></test>
+          <let><clip pos="4" part="temps"/><lit-tag v="pret"/></let>
+        </when></choose>
+        <out>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
+
     <rule comment="REGLA: ADVLhabr FV IV lSUBJext - out: 1 2 3 4
                  rule for habitive sentences">
       <pattern>
@@ -2881,6 +2916,42 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+
+
+    <rule comment="REGLA: CS maybe-SUBJr adv-FV.neg ADVL IV  - out: 1 2 3 4 5
+                   Subordinate clause.
+                   ahte áddjá ii šat dovdan => at bestefar (evt. ADV) ikke lenger kjente">
+      <pattern>
+        <pattern-item n="CS"/>
+        <pattern-item n="maybe-SUBJr"/>
+        <pattern-item n="adv-FV"/>
+        <pattern-item n="ADVL"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_GD_ND_subj3"><with-param pos="2"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <choose><when>
+          <test><equal><clip pos="4" part="temps"/><lit-tag v="pp"/></equal></test>
+          <let><clip pos="4" part="temps"/><lit-tag v="pret"/></let>
+        </when></choose>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="4"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
+
     <rule comment="REGLA: CS adv-FV.neg maybe-lSUBJ IV  - out: 1 3 2 4
                    Subordinate clause.
                    ahte eai mánát olle => at barna ikke når_frem">
