@@ -403,6 +403,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="loahppa" tags="n.*"/>
       <cat-item lemma="beallemuddu" tags="n.*"/>
     </def-cat>
+    <def-cat n="abbr">
+      <cat-item tags="n.abbr.*"/>
+    </def-cat>
     <def-cat n="lex-mannu">
       <cat-item lemma="mánnu" tags="n.*"/>
     </def-cat>
@@ -500,13 +503,12 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-gealdagas_loc">
       <cat-item lemma="gealdagas" tags="n.*.sg.loc.*"/>
     </def-cat>
-    <def-cat n="lex-Finnmarksløpet">
+    <def-cat n="lex-Finnmarksløpet"> <!-- to be extended -->
       <cat-item lemma="finnmarksløpet" tags="np.*"/>
       <cat-item lemma="Finnmarksløpet" tags="np.*"/>
       <cat-item lemma="riddu" tags="np.*"/>
     </def-cat>
-    <def-cat n="quotationmark-name">
-      <cat-item lemma="váibmogiella" tags="n.*.sg.nom.*"/>
+    <def-cat n="nom-nom">
       <cat-item tags="np.*.nom.*"/>
       <cat-item tags="n.*.nom.*"/>
     </def-cat>
@@ -5875,10 +5877,10 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
-        <rule comment="C[T] lquot quotationmark-name rquot clean_noun" c="Váillahit dáidda- ja kulturoasi «Váibmogiella» guorahallamis.">
+        <rule comment="C[T] lquot nom-nom rquot clean_noun" c="Váillahit dáidda- ja kulturoasi «Váibmogiella» guorahallamis.">
       <pattern>
         <pattern-item n="lquot"/>
-        <pattern-item n="quotationmark-name"/>
+        <pattern-item n="nom-nom"/>
          <pattern-item n="rquot"/>
        <pattern-item n="clean_noun"/>
       </pattern>
@@ -7453,6 +7455,7 @@ And then there are some categories like "month", with all the months.
     </rule>
 
     <!-- <rules: Noun, numeral+noun and compounds -->
+
 
     <rule comment="C[_] nom_all (tl: NOM, VERB)
                    This is a catch-all rule; it's OK that some paths are blocked by previous rules.">

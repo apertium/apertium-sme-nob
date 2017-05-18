@@ -55,11 +55,17 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="unknown">
       <cat-item tags="unknown"/>
     </def-cat>
+    <def-cat n="abbr">
+      <cat-item tags="*.abbr"/>
+    </def-cat>
     <def-cat n="lquot">
       <cat-item tags="lquot"/>
     </def-cat>
     <def-cat n="rquot">
       <cat-item tags="rquot"/>
+    </def-cat>
+    <def-cat n="FOC">
+      <cat-item tags="FOC"/>
     </def-cat>
     <def-cat n="SA">
       <cat-item tags="SA"/>
@@ -220,6 +226,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SN.@-FADVL→.*.loc.*"/>
       <cat-item tags="SN.@-FADVL-ela→.*.loc.*"/>
       <cat-item tags="SN.@-FADVL-ine→.*.loc.*"/>
+    </def-cat>
+    <def-cat n="PCLE-adv">
+      <cat-item tags="@PCLE"/>
     </def-cat>
     <def-cat n="PCLE.qst">
       <cat-item tags="@PCLE.qst"/>
@@ -954,6 +963,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </rule>
 
 
+
     <rule comment="REGLA: adv-FV lSUBJ  out: 2 1 " c="In mun sáhte sárdnut ruoššagillii.">
       <pattern>
         <pattern-item n="adv-FV"/>
@@ -969,6 +979,52 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule> 
+
+
+
+    <rule comment="REGLA: adv-FV PCLE-adv lSUBJ  out: 3 2 1 " c="In han mun sáhte sárdnut ruoššagillii : jeg jo ikke">
+      <pattern>
+        <pattern-item n="adv-FV"/>
+        <pattern-item n="PCLE-adv"/>
+        <pattern-item n="lSUBJ"/>
+      </pattern>
+      <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <let><clip pos="3" part="syn_label"/><lit-tag v="@SUBJ→"/></let>
+        <out>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+           <b pos="2"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+       </out>
+      </action>
+    </rule> 
+
+    <rule comment="REGLA: adv-FV PCLE-adv lSUBJ FOC  out: 3 1 4 " c="In han munge sáhte sárdnut ruoššagillii : jeg ikke heller.">
+      <pattern>
+        <pattern-item n="adv-FV"/>
+        <pattern-item n="PCLE-adv"/>
+        <pattern-item n="lSUBJ"/>
+        <pattern-item n="FOC"/>
+      </pattern>
+      <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <let><clip pos="3" part="syn_label"/><lit-tag v="@SUBJ→"/></let>
+        <out>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+           <b pos="2"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+      </out>
+        <choose><when>
+          <test><not><equal><b pos="3"/><b/></equal></not></test>
+          <out><b pos="3"/></out>
+        </when></choose>
+      </action>
+    </rule> 
+
 
 
     <rule comment="REGLA: SUBJr PR compl" c="Sámi oahpaheaddji masteroahput (ind) and Giellabargu mánáidgárddis (def)">
@@ -1452,6 +1508,42 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
             <clip pos="2" part="content"/>
             <b pos="2"/>
             <clip pos="3" part="content"/>
+            <lit v="}"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: lquot unknown abbr rquot, out: 1 2 3 4" c="«Project Z»">
+      <pattern>
+        <pattern-item n="lquot"/>
+        <pattern-item n="unknown"/>
+        <pattern-item n="SN"/>
+        <pattern-item n="rquot"/>
+      </pattern>
+      <action>
+        <let><var n="c_name"/>
+        <concat>
+          <clip pos="1" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="2" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="3" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="4" part="lemh"/>
+        </concat></let>
+        <let><var n="c_tags"/><clip pos="3" part="tags"/></let>
+        <out>
+          <chunk>
+            <var n="c_name"/>
+            <var n="c_tags"/>
+            <lit v="{"/>
+            <clip pos="1" part="content"/>
+            <b pos="1"/>
+            <clip pos="2" part="content"/>
+            <b pos="2"/>
+            <clip pos="3" part="content"/>
+            <b pos="3"/>
+            <clip pos="4" part="content"/>
             <lit v="}"/>
           </chunk>
         </out>
