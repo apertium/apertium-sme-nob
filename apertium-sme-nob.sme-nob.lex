@@ -2094,6 +2094,7 @@ SELECT ("omkring"i) (0 ("<biras>"i) LINK 0 pl + gen) (1 ("<mánnu>"i));
 SELECT ("avstand"i) (0 ("<gaska>"i) LINK -1 ("<stuoris>"i));
 SELECT ("strekning"i) (0 ("<gaska>"i) LINK *0 CURRENCY OR ("<prográmmaguovlu>"i));
 SELECT ("strekning"i) (0 ("<gaska>"i) LINK 0 pl);
+SELECT ("stund"i) (-1 ("<okta>"i))(0 ("<gaska>"i));
 SELECT:fallback ("mellomrom"i) (0 ("<gaska>"i));
 
 SELECT ("sjikt"i) (0 ("<geardi>"i) LINK -1 comp + attr);
