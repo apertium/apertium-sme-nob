@@ -1273,7 +1273,7 @@ SELECT:fallback ("forlike"i) (0 ("<soahpat>"i));
 
 
 # mannat 0 = dra, 1 = gå
-SELECT ("sist"i) IF (0 ("<mannat>"i) + prfprc LINK 0 @→N);
+SELECT ("sist"i) IF (0 ("<mannat>"i) LINK 0 prfprc + @→N );
 	
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i)) (0 sg3);
 ## Mo manná dál?
@@ -1486,6 +1486,9 @@ SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 SELECT:fallback ("differensiering"i) (0 ("<sirren>"i) ) ;
 
 SELECT:fallback ("tillatelse"i) (0 ("<lohpi>"i)) ;
+
+SELECT:fallback ("kontroll"i) (0 ("<dárkkisteapmi>"i)) ;
+
 
 SELECT ("heldig"i) (0 ("<lihkku>"i) LINK 0 (←ext→) LINK *-1 ←hab→) ;
 SELECT:fallback ("lykke"i) (0 ("<lihkku>"i)) ;
