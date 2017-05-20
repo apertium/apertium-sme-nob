@@ -991,6 +991,9 @@ SELECT:fallback ("oppstå"i) IF  (0 ("<bohciidit>"i)) ;
 SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK 1 acc) (*1 ill) ;
 SELECT:fallback ("utvikle"i) IF  (0 ("<ovddidit>"i)) ;
 
+SELECT:fallback ("gå"i) IF  (0 ("<lávket>"i) LINK *1 ill BARRIER NOT-Attr) ;
+SELECT:fallback ("skritte"i) IF  (0 ("<lávket>"i)) ;
+
 
 SELECT ("kalve"i) IF  (0 ("<guoddit>"i) LINK -1 ("<ala>"i) OR  ill) ;
 SELECT ("kalve"i) IF  (0 ("<guoddit>"i) LINK *0 ("<áldu>"i)) ;
