@@ -758,6 +758,8 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="ilolaš" tags="adj.attr.*"/>
       <cat-item lemma="buorre" tags="adj.*.sg.*"/>
       <cat-item lemma="buorre" tags="adj.*.pl.*"/>
+      <cat-item lemma="buorre" tags="adj.*.attr.*"/>
+      <cat-item lemma="buorre" tags="adj.attr.*"/>
       <cat-item lemma="ilolaš" tags="adj.*.sg.*"/>
       <cat-item lemma="ilolaš" tags="adj.*.attr.*"/>
     </def-cat>
@@ -7990,7 +7992,7 @@ And then there are some categories like "month", with all the months.
             <let><var n="defnes"/><lit-tag v="def"/></let>
           </when>
           <otherwise>
-            <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+            <let><var n="defnes"/><lit-tag v="ind"/></let> 
           </otherwise>
         </choose>
         <choose>
