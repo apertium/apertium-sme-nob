@@ -28,7 +28,9 @@ analysis () {
         | apertium-retxt
 }
 
-paste -d: <(awk -F':|:[<>]:' '{print $1 ":" $2}' dev/testvoc/dix.exp) <(analysis) \
+paste -d: \
+      <(lt-expand apertium-sme-nob.sme-nob.dix | awk -F':|:[<>]:' '{print $1 ":" $2}') \
+      <(analysis) \
     | while IFS=':' read -r lang1s lang2s lang2m; do
     echo "$lang2m" |grep -qo "$lang2s" || echo "$lang1s:$lang2s:$lang2m"
 done
