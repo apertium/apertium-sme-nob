@@ -2059,7 +2059,11 @@ And then there are some categories like "month", with all the months.
       <list-item v="NOTHING HERE YET"/>
     </def-list>
     <def-list n="loc-av" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
-      <list-item v="slekt"/>
+        <list-item v="rein"/>
+        <list-item v="slekt"/>
+    </def-list>
+    <def-list n="loc-ved" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
+        <list-item v="makt"/>
     </def-list>
     <def-list n="loc-etter" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="oppfatning"/>
@@ -2267,7 +2271,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="glad"/>
     </def-list>
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
-      <list-item v="del"/>
+        <list-item v="del"/>
       <list-item v="sammendrag"/>
       <list-item v="resultat"/>
       <list-item v="NUMERAL"/>      <!-- special value set by numerals, see NUMERAL rule -->
@@ -2730,6 +2734,14 @@ And then there are some categories like "month", with all the months.
               </or></test>
               <let>
                 <var n="caseprep"/><lit v="etter"/>
+              </let>
+            </when>
+            <when c="ved">
+              <test>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-ved"/></in>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="ved"/>
               </let>
             </when>
             <when c="for">
@@ -7992,7 +8004,7 @@ And then there are some categories like "month", with all the months.
             <let><var n="defnes"/><lit-tag v="def"/></let>
           </when>
           <otherwise>
-            <let><var n="defnes"/><lit-tag v="ind"/></let> 
+            <let><var n="defnes"/><lit-tag v="ind"/></let>
           </otherwise>
         </choose>
         <choose>
