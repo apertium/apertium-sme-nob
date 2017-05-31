@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e -u
+
+# BEFORE USING, from the apertium-sme-nob dir:
+# ln -s /path/to/apertium-nob nob
+
+# This script takes the right-hand-side lemma from bidix, analyses it
+# using nob.dix and prints out the bidix line + analysis if the
+# analysis didn't contain the right-hand-side (including tags)
+
+# Work in progress – there are many lines shown that we aren't really errors:
+# - only used for <r> / nob.dix so far
+# - "transfer-tags" in bidix, e.g. impers and GD that never appear in nob.dix
+# - even worse, "transfer-tags" in bidix that *sometimes* appear in nob.dix (nom, gen) but are never output by t?x files
+# - some analyses are RL in nob.dix (e.g. most numbers)
+# - lemmas that don't match any forms (prpers)
+
+cd "$(dirname "$0")"/../..
+
+# test -f dev/testvoc/dix.exp || lt-expand apertium-sme-nob.sme-nob.dix >dev/testvoc/dix.exp
+
+analysis () {
+    lt-expand apertium-sme-nob.sme-nob.dix \
+        | awk -F':|:[<>]:' '{sub(/<.*/,"",$2);print $2}' \
+        | apertium-destxt \
+        | lt-proc -w nob/nob.automorf.bin \
+        | apertium-retxt
+}
+
+paste -d: <(awk -F':|:[<>]:' '{print $1 ":" $2}' dev/testvoc/dix.exp) <(analysis) \
+    | while IFS=':' read -r lang1s lang2s lang2m; do
+    echo "$lang2m" |grep -qo "$lang2s" || echo "$lang1s:$lang2s:$lang2m"
+done
+
