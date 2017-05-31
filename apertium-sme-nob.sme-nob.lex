@@ -90,6 +90,7 @@ LIST sem_obj = sem_aniprod_obj-clo sem_body_obj_tool-catch sem_build_obj sem_gam
 LIST sem_org = np.sem_org sem_build_event_org sem_build_edu_org sem_build_event_org sem_build_org sem_clth-jewl_org sem_ctain-abstr_org sem_curr_org sem_dance_org sem_edu_org sem_group_hum_org sem_group_org sem_hum_org sem_org sem_org_prod-cogn sem_org_rule sem_org_txt sem_org_veh sem_org  ;
 LIST sem_plant = sem_clth-jewl_plant sem_ctain-clth_plant sem_drink_plant sem_feat_plant sem_food_plant sem_hum_plant sem_mat_plant sem_plant sem_plant-part sem_plant_plant-part sem_plant_tool sem_plant_tool-measr  ;
 LIST sem_plc = sem_act_plc sem_ani_hum_plc sem_ani_plc sem_ani_plc_txt sem_aniprod_plc sem_body_plc sem_build-part_plc sem_event_plc sem_event_plc-elevate sem_feat-measr_plc sem_group_hum_plc sem_hum_lang_plc sem_hum_plc sem_plc sem_plc-abstr sem_plc-abstr_rel_state sem_plc-abstr_route sem_plc-elevate sem_plc-line sem_plc-water sem_plc_pos sem_plc_route sem_plc_state sem_plc_substnc sem_plc_substnc_wthr sem_plc_time sem_plc_tool-catch sem_plc_wthr sem_plc top ;
+LIST sem_rule = sem_rule ;
 LIST sem_state = sem_state sem_obj_state sem_plc-abstr_rel_state sem_plc_state sem_state-sick sem_state-sick_substnc ;
 LIST sem_sur = sem_sur ;
 LIST sem_time = sem_time sem_ani_hum_time sem_ani_time sem_body_group_hum_time sem_body_time sem_event_time sem_hum_lang_time sem_measr_time sem_plc_time sem_time_wthr ;
@@ -2155,7 +2156,10 @@ SELECT:fallback ("eiendel"i) (0 ("<dávvir>"i));
 SELECT:fallback ("norsk"i) (0 ("<dáčča>"i));
 SELECT:fallback ("flokk"i) (0 ("<eallu>"i));
 SELECT:fallback ("hustru"i) (0 ("<eamit>"i));
+
+SELECT:kraft ("kraft"i) (*-1 @SUBJ→ LINK 0 sem_rule) (0 ("<fápmu>"i));
 SELECT:fallback ("makt"i) (0 ("<fápmu>"i));
+
 SELECT:fallback ("skall"i) (0 ("<garra>"i));
 SELECT:fallback ("negl"i) (0 ("<gazza>"i));
 SELECT:fallback ("lettelse"i) (0 ("<geahpádus>"i));
