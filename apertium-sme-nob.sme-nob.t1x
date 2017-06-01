@@ -3972,6 +3972,7 @@ And then there are some categories like "month", with all the months.
               <lit v="^"/>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="a_acr"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="gen-case"/>
               <clip pos="2" side="tl" part="a_cmp"/>
@@ -3986,6 +3987,7 @@ And then there are some categories like "month", with all the months.
               <lit v="^"/>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="a_acr"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <var n="defnes"/>
@@ -7285,6 +7287,7 @@ And then there are some categories like "month", with all the months.
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="a_acr"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="gen-case"/>
               <clip pos="1" side="tl" part="lemq"/>
@@ -10361,7 +10364,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] nom.prop.gen nom_head
+    <rule comment="C[] nom.prop.gen nom_head FeFo
                    –––––
                    Defnes of possessed NOM is ind (NOM.PROP has no defnes).
                    Needs to be before NOM.GEN NOM">
