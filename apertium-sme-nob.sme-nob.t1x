@@ -2223,10 +2223,12 @@ And then there are some categories like "month", with all the months.
       <list-item v="dag"/>
       <list-item v="deltid"/>
       <list-item v="festival"/>
+      <list-item v="fotballkamp"/>
       <list-item v="fredag"/>
       <list-item v="grunnskole"/>
       <list-item v="gårdsplass"/>
       <list-item v="heltid"/>
+      <list-item v="hjemmebane"/>
       <list-item v="hotell"/>
       <list-item v="kino"/>
       <list-item v="kjøkken"/>
@@ -7865,6 +7867,10 @@ And then there are some categories like "month", with all the months.
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
+                <and>
+                <ends-with><clip pos="1" side="tl" part="lemh"/><lit v="%"/></ends-with>
+                <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+                </and>
               </or>
             </and></test>
             <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
@@ -7990,6 +7996,10 @@ And then there are some categories like "month", with all the months.
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
+                <and>
+                <ends-with><clip pos="1" side="tl" part="lemh"/><lit v="%"/></ends-with>
+                <equal><clip pos="3" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+                </and>
               </or>
             </and></test>
             <let><clip pos="3" side="tl" part="nbr"/><lit-tag v="sg"/></let>
