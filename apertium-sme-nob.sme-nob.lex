@@ -1507,6 +1507,9 @@ SELECT:fallback ("tau"i) (0 ("<báddi>"i)) ;
 SELECT ("innstilling"i) (0 ("<áššeguoddu>"i) LINK -1 ("<ráđđealmmái>"i)) ;
 SELECT:fallback ("holdning"i) (0 ("<áššeguoddu>"i)) ;
 
+SELECT ("vår"i) (0 ("<bievla>"i) LINK -1 det) ;
+SELECT:fallback ("barmark"i) (0 ("<bievla>"i)) ;
+
 
 SELECT ("verge"i) (0 ("<áittardeaddji>"i) LINK -1 ("<veahkki>"i)) ;
 SELECT:fallback ("ombud"i) (0 ("<áittardeaddji>"i)) ;
