@@ -948,7 +948,7 @@ SELECT:ha-pret ("ha"i) IF (0 ("<leat>"i)) (0 (indic pret)) (1 inf) ;
 # Jos mun ledjen dadjat sátnegeažige, de ii son lean vuolgit.
 # (Perf Cond 2)
 # TODO: Gávpotmuvrra vuođđogeađggit ledje<være> čiŋahuvvon
-# (unfortunately no animacy, and impers isn't until bidix...)
+# (unfortunately no animacy, and agreem-pro isn't until bidix...)
 # TODO: ledje<ha> ovdalaččas guokte nieidda
 
 #SELECT:ha-prfprac  ("ha"i) IF (0 ("<leat>"i)) (*1 prfprc + @-FMAINV BARRIER SV-BOUNDARY) ; #LOOK AT THIS
@@ -1143,7 +1143,7 @@ SELECT ("føde"i) (0 ("<šaddat>"i)) (1 np + sem_plc + loc) (NEGATE *0 SPRED)(*-
 # Mun lean šaddan Kárášjogas.
 # Kárášjogas mun lean šaddan.
 
-SELECT:fallback ("bli"i) + (impers) (0 ("<šaddat>"i)) ;
+SELECT:fallback ("bli"i) + (agreem-pro) (0 ("<šaddat>"i)) ;
 
 # bargat 0 = arbeide, 1 = gjøre
 SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>"i prn acc) BARRIER V-IND-FIN) ;

@@ -455,12 +455,12 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="SV.@-FAUXV.*"/>
     </def-cat>
     <def-cat n="IVMAIN-pers"> <!-- no pasv -->
-      <cat-item tags="SV.@-FMAINV.inf.pers.*"/>
-      <cat-item tags="SV.@-FMAINV.inf.pers"/>
-      <cat-item tags="SV.@-FMAINV.*.inf.pers.*"/>
-      <cat-item tags="SV.@-FMAINV.*.inf.pers"/>
-      <cat-item tags="SV.@-FMAINV.pp.pers.*"/>
-      <cat-item tags="SV.@-FMAINV.pp.pers"/>
+      <cat-item tags="SV.@-FMAINV.inf.pers-pro.*"/>
+      <cat-item tags="SV.@-FMAINV.inf.pers-pro"/>
+      <cat-item tags="SV.@-FMAINV.*.inf.pers-pro.*"/>
+      <cat-item tags="SV.@-FMAINV.*.inf.pers-pro"/>
+      <cat-item tags="SV.@-FMAINV.pp.pers-pro.*"/>
+      <cat-item tags="SV.@-FMAINV.pp.pers-pro"/>
     </def-cat>
     <def-cat n="lemq">
       <cat-item tags="lemq"/>
@@ -613,8 +613,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="pasv"/>
     </def-attr>
     <def-attr n="animacy">
-      <attr-item tags="impers"/>
       <attr-item tags="pers"/>
+      <attr-item tags="agreem-pro"/>
+      <attr-item tags="pers-pro"/>
+      <attr-item tags="incongr-pro"/>
     </def-attr>
     <def-attr n="hab">
       <attr-item tags="←hab→"/>
@@ -850,7 +852,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
                   ">
       <choose>
         <when>
-          <test><equal><clip pos="1" part="animacy"/><lit-tag v="impers"/></equal></test>
+          <test><equal><clip pos="1" part="animacy"/><lit-tag v="agreem-pro"/></equal></test>
           <let><var n="gender"/><lit-tag v="nt"/></let>
         </when>
         <when>
@@ -862,7 +864,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <let><var n="gender"/><clip pos="1" part="gen"/></let>
         </when>
         <when>
-          <test><equal><clip pos="1" part="animacy"/><lit-tag v="pers"/></equal></test>
+          <test><equal><clip pos="1" part="animacy"/><lit-tag v="pers-pro"/></equal></test>
           <let><var n="gender"/><lit-tag v="GD_pers"/></let>
         </when>
         <otherwise>

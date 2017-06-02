@@ -327,8 +327,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <attr-item tags="pot"/>
     </def-attr>
     <def-attr n="animacy">
-      <attr-item tags="impers"/>
       <attr-item tags="pers"/>
+      <attr-item tags="agreem-pro"/>
+      <attr-item tags="pers-pro"/>
+      <attr-item tags="incongr-pro"/>
     </def-attr>
     <def-attr n="syn_label">
       <attr-item tags="@→A"/>
@@ -720,7 +722,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
                   Call 'set_caseprep' regardless">
       <choose><when>
         <test><and>
-          <equal><clip pos="1" part="animacy"/><lit-tag v="pers"/></equal>
+          <equal><clip pos="1" part="animacy"/><lit-tag v="pers-pro"/></equal>
           <or>
             <equal><clip pos="1" part="gen"/><lit-tag v="f"/></equal>
             <equal><clip pos="1" part="gen"/><lit-tag v="m"/></equal>

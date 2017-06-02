@@ -976,8 +976,10 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="pasv"/>
     </def-attr>
     <def-attr n="animacy">
-      <attr-item tags="impers"/>
+      <attr-item tags="agreem-pro"/>
+      <attr-item tags="pers-pro"/>
       <attr-item tags="pers"/>
+      <attr-item tags="incongr-pro"/>
     </def-attr>
     <def-attr n="trans">
       <attr-item tags="tv"/>
@@ -3346,10 +3348,10 @@ And then there are some categories like "month", with all the months.
               <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="pers_nouns"/></in>
             </and>
           </or></test>
-          <let><var n="c_animacy"/><lit-tag v="pers"/></let>
+          <let><var n="c_animacy"/><lit-tag v="pers-pro"/></let>
         </when>
         <otherwise>
-          <let><var n="c_animacy"/><lit-tag v="impers"/></let>
+          <let><var n="c_animacy"/><lit-tag v="agreem-pro"/></let>
         </otherwise>
       </choose>
     </def-macro>
@@ -3973,7 +3975,6 @@ And then there are some categories like "month", with all the months.
               <lit v="^"/>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="a_acr"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="gen-case"/>
               <clip pos="2" side="tl" part="a_cmp"/>
@@ -3988,7 +3989,6 @@ And then there are some categories like "month", with all the months.
               <lit v="^"/>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_nom"/>
-              <clip pos="2" side="tl" part="a_acr"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
               <var n="defnes"/>
@@ -4679,10 +4679,10 @@ And then there are some categories like "month", with all the months.
             <test><in><clip pos="1" side="tl" part="temps"/><list n="infinite_temps"/></in></test>
             <let><var n="c_syn"/><lit-tag v="@-FAUXV"/></let>
           </when></choose>
-          <let><var n="c_animacy"/><lit-tag v="impers"/></let>
+          <let><var n="c_animacy"/><lit-tag v="agreem-pro"/></let>
           <choose><when>
             <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="animate_nonagent-verbs"/></in></test>
-            <let><var n="c_animacy"/><lit-tag v="pers"/></let>
+            <let><var n="c_animacy"/><lit-tag v="pers-pro"/></let>
           </when></choose>
           <out>
             <chunk name="verb" case="caseFirstWord">
@@ -7288,7 +7288,6 @@ And then there are some categories like "month", with all the months.
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
-              <clip pos="1" side="tl" part="a_acr"/>
               <clip pos="1" side="tl" part="gen"/>
               <clip pos="1" side="tl" part="gen-case"/>
               <clip pos="1" side="tl" part="lemq"/>
@@ -7455,7 +7454,7 @@ And then there are some categories like "month", with all the months.
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
               <tag><clip pos="3" side="tl" part="case"/></tag>
-              <tag><lit-tag v="pers"/></tag>
+              <tag><lit-tag v="pers-pro"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
@@ -7524,7 +7523,7 @@ And then there are some categories like "month", with all the months.
               <tag><var n="c_gen"/></tag>
               <tag><var n="c_nbr"/></tag>
               <tag><clip pos="4" side="tl" part="case"/></tag>
-              <tag><lit-tag v="pers"/></tag>
+              <tag><lit-tag v="pers-pro"/></tag>
             </tags>
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
