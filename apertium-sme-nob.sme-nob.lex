@@ -1488,6 +1488,7 @@ SELECT ("skrott"i) (0 ("<gorut>"i) + pl) ;
 SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 
 SELECT:fallback ("differensiering"i) (0 ("<sirren>"i) ) ;
+SELECT:fallback ("utgangspunkt"i) (0 ("<álgovuorru>"i) ) ;
 
 SELECT:fallback ("tillatelse"i) (0 ("<lohpi>"i)) ;
 
