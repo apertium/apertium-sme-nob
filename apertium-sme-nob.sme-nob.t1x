@@ -406,6 +406,15 @@ And then there are some categories like "month", with all the months.
     <def-cat n="abbr">
       <cat-item tags="n.abbr.*"/>
     </def-cat>
+    <def-cat n="lex-sápmelaš">
+      <cat-item lemma="sápmelaš" tags="n.*"/>
+      <cat-item lemma="sápmi" tags="n.*"/>
+    </def-cat>
+    <def-cat n="lex-gáidat">
+      <cat-item lemma="gáidat" tags="vblex.iv.prfprc.*"/>
+      <cat-item lemma="gáidat" tags="vblex.iv.actio.*"/>
+      <cat-item lemma="gáidat" tags="vblex.iv.der_nomact.*"/>
+    </def-cat>
     <def-cat n="lex-mannu">
       <cat-item lemma="mánnu" tags="n.*"/>
     </def-cat>
@@ -5001,6 +5010,35 @@ And then there are some categories like "month", with all the months.
             </tags>
             <lu>
               <lit v="slett ikke"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] lex-gáidat lex-sápmelaš " c="gáidan sápmelaš → same som har mistet kulturen">
+      <pattern>
+        <pattern-item n="lex-gáidat"/>
+        <pattern-item n="lex-sápmelaš"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="same"/>
+              <lit-tag v="n"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="som har mistet kulturen"/>
               <lit-tag v="adv"/>
             </lu>
           </chunk>
