@@ -985,6 +985,10 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
+SELECT ("vike"i) IF  (0 ("<gáidat>"i)) (0* ("<láhka>"i) LINK 0 nom) ;
+SELECT:fallback ("fjerne"i) IF  (0 ("<gáidat>"i)) ;
+
+
 SELECT ("lage"i) IF  (0 ("<duddjot>"i)) (0* acc BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("lage# duodji"i) IF  (0 ("<duddjot>"i)) ;
 
