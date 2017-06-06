@@ -985,7 +985,8 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
-SELECT ("vike"i) IF  (0 ("<gáidat>"i)) (0* ("<láhka>"i) LINK 0 nom) ;
+
+SELECT ("vike"i) IF  (0 ("<gáidat>"i) LINK NOT 0 der_nomact) (0* ("<láhka>"i) LINK 0 nom) ;
 SELECT:fallback ("fjerne"i) IF  (0 ("<gáidat>"i)) ;
 
 

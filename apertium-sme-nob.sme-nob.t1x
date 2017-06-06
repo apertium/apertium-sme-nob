@@ -502,6 +502,10 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="láhkai" tags="post.*"/>
       <cat-item lemma="láhkai" tags="adv.*"/>
     </def-cat>
+    <def-cat n="lex-hum">
+      <cat-item tags="n.sem_hum.*"/>
+      <cat-item tags="n.*.sem_hum.*"/>
+    </def-cat>
     <def-cat n="hum_gen">
       <cat-item tags="n.sem_hum.cmp_sggen.*"/>
       <cat-item tags="n.*.sem_hum.sg.gen.*"/>
@@ -5039,6 +5043,35 @@ And then there are some categories like "month", with all the months.
             <b pos="1"/>
             <lu>
               <lit v="som har mistet kulturen"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] lex-gáidat lex-sápmelaš " c="gáidan sápmelaš → same som har mistet kulturen">
+      <pattern>
+        <pattern-item n="lex-gáidat"/>
+        <pattern-item n="lex-hum"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="som har fjernet seg"/>
               <lit-tag v="adv"/>
             </lu>
           </chunk>
