@@ -2140,8 +2140,11 @@ SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
 SELECT ("tiltak"i) (0 ("<doaibma>"i) LINK -1 cmp) ;
 SELECT:fallback ("oppgave"i) (0 ("<doaibma>"i));
 
-SELECT ("yrke"i) (0 ("<ámmát>"i) LINK 0 cmp)(1 sem_hum);
+SELECT ("yrkes"i) (0 ("<ámmát>"i) LINK 0 cmp) ;
 SELECT:fallback ("embete"i) (0 ("<ámmát>"i));
+
+SELECT ("torske"i) (0 ("<dorski>"i) LINK 0 cmp) ;
+SELECT:fallback ("torsk"i) (0 ("<dorski>"i));
 
 
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
