@@ -406,6 +406,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="abbr">
       <cat-item tags="n.abbr.*"/>
     </def-cat>
+    <def-cat n="lex-gaskasaš">
+      <cat-item lemma="gaskasaš" tags="adj.*"/>
+    </def-cat>
     <def-cat n="lex-sápmelaš">
       <cat-item lemma="sápmelaš" tags="n.*"/>
       <cat-item lemma="sápmi" tags="n.*"/>
@@ -3929,6 +3932,24 @@ And then there are some categories like "month", with all the months.
               <lit v="^"/>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_adv"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+          <choose>
+            <when>
+              <test><ends-with><clip pos="2" side="tl" part="a_cmp"/><lit-tag v="guio"/></ends-with></test>
+              <append n="pre-nom"><lit v="-"/></append>
+            </when>
+          </choose>
+        </when>
+        <when c="Preposition">
+          <test><equal><clip pos="2" side="tl" part="a_prep"/><lit-tag v="pr"/></equal></test>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_prep"/>
               <clip pos="2" side="tl" part="lemq"/>
               <lit v="$"/>
             </concat>
@@ -10209,7 +10230,67 @@ And then there are some categories like "month", with all the months.
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
-    <rule comment="C[] NOM.GEN ADJ_ATTR NOM
+    <rule comment="C[] nom.gen cc nom.gen adj_vblex_attr nom_head" c="Álbmotskuvlla ja oahpaheaddjiseminára gaskasaš áigi : Tida mellom folkeskole og lærerseminar.">
+      <pattern>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="cc"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="lex-gaskasaš"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="5"/></call-macro>
+          <out>
+            <chunk name="pre_pre_nom_conj_nom" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><lit v="def"/></tag>
+                <tag><clip pos="5" side="tl" part="case"/></tag>
+                <tag><clip pos="5" side="tl" part="a_count"/></tag>
+              </tags>
+              <lu>
+                <clip pos="5" side="tl" part="lemh"/>
+                <clip pos="5" side="tl" part="a_nom"/>
+                <clip pos="5" side="tl" part="gen"/>
+                <clip pos="5" side="tl" part="nbr"/>
+                <lit-tag v="def"/>
+                <clip pos="5" side="tl" part="lemq"/>
+              </lu>
+              <b pos="1"/>
+              <lu>
+                <clip pos="4" side="tl" part="lemh"/>
+                <clip pos="4" side="tl" part="a_prep"/>
+              </lu>
+               <b pos="2"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_nom"/>
+                <clip pos="1" side="tl" part="gen"/>
+                <clip pos="1" side="tl" part="nbr"/>
+                <lit-tag v="ind"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+              <b pos="3"/>
+              <lu>
+                <clip pos="2" side="tl" part="lemh"/>
+                <clip pos="2" side="tl" part="a_conj"/>
+              </lu>
+               <b pos="4"/>
+              <lu>
+                <clip pos="3" side="tl" part="lemh"/>
+                <clip pos="3" side="tl" part="a_nom"/>
+                <clip pos="3" side="tl" part="gen"/>
+                <clip pos="3" side="tl" part="nbr"/>
+                <lit-tag v="ind"/>
+                <clip pos="3" side="tl" part="lemq"/>
+              </lu>
+           </chunk>
+          </out>
+      </action>
+    </rule>
+    <rule comment="C[] nom.gen adj_vblex_attr nom_head
                    –––––
                    gieldda stuorimus mánáidgárdi → kommunens største barnehage
                    Sámi pedagogalaš bargi bargá doppe → En samisk pedagogisk ansatt arbeider der borte
@@ -10224,7 +10305,19 @@ And then there are some categories like "month", with all the months.
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
 
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
-
+        
+        <choose><when c="gielaid gaskasaš relašuvnnaid">
+        <test><equal><clip pos="2" side="tl" part="a_prep"/><lit-tag v="pr"/></equal></test>
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <let><clip pos="1" side="tl" part="gen-case"/><lit v=""/></let>
+        <call-macro n="append_pre-nom"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+        <call-macro n="append_pre-nom"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="1"/></call-macro>
+        </when> 
+        <otherwise>
         <!-- for NOM.GEN -->
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
@@ -10238,6 +10331,7 @@ And then there are some categories like "month", with all the months.
         <!-- for NOM_HEAD -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+        </otherwise></choose>
       </action>
     </rule>
 
