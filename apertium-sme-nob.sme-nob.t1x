@@ -488,6 +488,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="rájes" tags="adv.*"/>
       <cat-item lemma="rádjai" tags="adv.*"/>
     </def-cat>
+    <def-cat n="lex-muitu-ess">
+      <cat-item lemma="muitu" tags="n.*.ess.*"/>
+    </def-cat>
     <def-cat n="lex-birra">
       <cat-item lemma="birra" tags="post.*"/>
     </def-cat>
@@ -2127,6 +2130,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="februar"/>
       <list-item v="film"/>
       <list-item v="finale"/>
+      <list-item v="flaske"/>
       <list-item v="forbindelse"/>
       <list-item v="form"/>
       <list-item v="forord"/>
@@ -2173,6 +2177,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="november"/>
       <list-item v="offentlighet"/>
       <list-item v="oktober"/>
+      <list-item v="omsorgsbolig"/>
       <list-item v="paragraf"/>
       <list-item v="periode"/>
       <list-item v="perspektiv"/>
@@ -5094,6 +5099,42 @@ And then there are some categories like "month", with all the months.
             <lu>
               <lit v="som har fjernet seg"/>
               <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] nom.gen lex-muitu-ess " c="Brekke muitun → til minne om Brekke">
+      <pattern>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="lex-muitu-ess"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="til"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="minne"/>
+              <lit-tag v="n.nt.sg.ind"/>
+            </lu>
+            <b />
+             <lu>
+              <lit v="om"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b />
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
             </lu>
           </chunk>
         </out>
