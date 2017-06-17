@@ -1937,6 +1937,7 @@ SELECT:fallback ("tyngde"i) (0 ("<deaddu>"i)) ;
 SELECT:fallback ("byrde"i) (0 ("<noađđi>"i)) ;
 
 
+SELECT ("premie"i) (0 ("<vuoitu>"i) LINK 0 cmp) (1 sem_veh) ;
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (-1 ("<oppalaš>") OR ("<fasket>"i)) ;
 SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY OR ("<goastadit>"i)  OR ("<oažžut>"i)  OR ("<geiget>"i)  OR ("<fasket>"i)) ;	
 SELECT ("gevinst"i) (0 ("<vuoitu>"i) LINK -1 ("<smávis>"i) OR ("<stuoris>"i))  ;	
@@ -2435,6 +2436,11 @@ SELECT ("forskjellig"i) (0 ("<iešguhte>"i) LINK 0 (foc_neg-ge)) ;
 SELECT:fallback ("hver"i) (0 ("<iešguhte>"i)) ;
 
 
+SELECT ("hvilken"i) (0 ("<guhte>"i) LINK 0 attr) ;
+SELECT:fallback ("hvem"i) (0 ("<guhte>"i)) ;
+
+
+
 # Adverbs
 # =======
 SELECT:ble-mye-verre ("mye"i) (0 ("<sakka>"i) LINK 0 adv) (-1 adj + pasv LINK 0 vblex) ; # vearránii sakka
@@ -2591,6 +2597,8 @@ REMOVE ("sein"i) (0 ("<njoahci>"i));
 
 SELECT ("streif"i) (0 ("<golgu>"i) LINK 0 adj + cmp);
 REMOVE ("streif"i) (NOT 0 adj + cmp);
+
+SELECT:fallback ("særskilt"i) (0 ("<sierra>"i));
 
 
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
