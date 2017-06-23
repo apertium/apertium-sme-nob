@@ -2043,6 +2043,8 @@ SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK -1 gen);
 SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
 
 SELECT ("tale"i) (0 ("<sáhka>"i) LINK *-1 ("<leat>"i)) (1 loc);
+SELECT ("tale"i) (0 ("<sáhka>"i) LINK *-1 ("<leat>"i)) (1 gen LINK 1 ("<birra>"i));
+SELECT ("tale"i) (0 ("<sáhka>"i) LINK *-1 ("<leat>"i)) (-1 ("<birra>"i));
 SELECT ("tale"i) (0 ("<sáhka>"i) LINK *-1 ("<leat>"i)) (1 cmp LINK 1 loc);
 SELECT ("tale om"i) (0 ("<sáhka>"i) LINK -1 ("<leat>"i)) (NEGATE 1 loc);
 SELECT:fallback ("budskap"i) (0 ("<sáhka>"i));
