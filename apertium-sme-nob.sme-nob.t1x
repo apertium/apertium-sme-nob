@@ -478,6 +478,12 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="guovttis" tags="n.*.coll.*"/>
       <cat-item lemma="guovttis" tags="n.coll.*"/>
     </def-cat>
+    <def-cat n="lex-guovttos-gen">
+      <cat-item lemma="guovttos" tags="n.*.coll.*.gen.*"/>
+      <cat-item lemma="guovttos" tags="n.coll.*.gen.*"/>
+      <cat-item lemma="guovttis" tags="n.*.coll.*.gen.*"/>
+      <cat-item lemma="guovttis" tags="n.coll.*.gen.*"/>
+    </def-cat>
     <def-cat n="lex-heahti-loc">
       <cat-item lemma="heahti" tags="n.*.sg.loc.*"/>
     </def-cat>
@@ -5605,6 +5611,53 @@ And then there are some categories like "month", with all the months.
               <clip pos="1" side="tl" part="gen"/>
               <lit-tag v="pl.def"/>
               <clip pos="1" side="tl" part="lemq"/>
+             </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[TW] hum_gen lex-guovttos nom_head" c="Ođđa vihtaniid čilgehusat nannejit albmáguoktá ášši. → De nye vitnenes forklaringer styrker de to mennenes sak.">
+      <pattern>
+        <pattern-item n="hum_gen"/>
+        <pattern-item n="lex-guovttos-gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="de"/>
+              <lit-tag v="prn.pers.p3.un.pl.nom"/>
+            </lu>
+            <b />
+            <lu>
+              <lit v="to"/>
+              <lit-tag v="det.qnt.un.pl"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="pl"/>
+              <lit-tag v="def"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+             </lu>
+            <b pos="2"/>
+            <lu>
+              <clip pos="3" side="tl" part="lemh"/>
+              <clip pos="3" side="tl" part="a_nom"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <clip pos="3" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <clip pos="3" side="tl" part="lemq"/>
              </lu>
           </chunk>
         </out>
