@@ -997,6 +997,12 @@ SELECT:fallback ("lage# duodji"i) IF  (0 ("<duddjot>"i)) ;
 SELECT ("spire"i) IF  (0 ("<bohciidit>"i)) (0* sem_plant) ;
 SELECT:fallback ("oppstå"i) IF  (0 ("<bohciidit>"i)) ;
 
+SELECT ("ta# på"i) IF  (0 ("<coggat>"i)) (1 sem_clth) ;
+SELECT:fallback ("putte"i) IF  (0 ("<coggat>"i)) ;
+
+SELECT ("ta"i) IF  (0 ("<nahkehit>"i) ) (1 sem_clth) ;
+SELECT:fallback ("putte"i) IF  (0 ("<nahkehit>"i)) ;
+
 
 SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK 1 acc) (*1 ill) ;
 SELECT:fallback ("utvikle"i) IF  (0 ("<ovddidit>"i)) ;
@@ -1995,7 +2001,7 @@ SELECT ("pensjon"i) (0 ("<ealáhat>"i) LINK 0 ill LINK *-1 ("<mannat>"i) OR ("<b
 SELECT:fallback ("beite"i) (0 ("<skearru>"i));
 
 
-SELECT:part ("part"i) (0 ("<bealli>"i) LINK 1 ("<deaivvadit>"));
+SELECT:part ("part"i) (0 ("<bealli>"i) LINK *1 ("<deaivvadit>") OR ("<soabadit>") BARRIER SV-BOUNDARY);
 SELECT:part ("part"i) (0 ("<bealli>"i) LINK -1 ("<bargoeallin>") OR ("<ášši>") OR ("<nubbi>"));
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *-1 ("<muitalit>"i) BARRIER SV-BOUNDARY);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 adj + @→N OR np + @→N);
@@ -2511,6 +2517,10 @@ SELECT:fallback ("fremst"i) (0 ("<ovddemusas>"i)) ;
 
 SELECT:fallback ("så pass"i) (0 ("<mađe>"i) LINK 1 adj + nom) ;
 SELECT:fallback ("likeså"i) (0 ("<mađe>"i)) ;
+
+SELECT:fallback ("noensinne"i) (0 ("<goasse>"i)) ;
+
+SELECT:fallback ("på"i) (0 ("<badjelii>"i) + adv) ;
 
 
 SELECT ("halvferdig"i) (0 ("<gaskan>"i) LINK *-1 ("<guođđit>"i) OR ("<vuolgit>"i)) ;

@@ -2267,6 +2267,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="heltid"/>
       <list-item v="hjemmebane"/>
       <list-item v="hotell"/>
+      <list-item v="kort tid"/>
       <list-item v="kino"/>
       <list-item v="kjøkken"/>
       <list-item v="liste"/>
@@ -2744,6 +2745,7 @@ And then there are some categories like "month", with all the months.
               </or>
               <not><in caseless="yes"><var n="previous-nhead"/><list n="loc-fra-head"/></in></not>
               <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
+              <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></not>
               <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal></not>
               <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-F←ADVL-ela"/></equal></not>
             </and>
@@ -2827,6 +2829,7 @@ And then there are some categories like "month", with all the months.
                 <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
                 <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
                 <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
                 </or>
               </and>
               </or>
