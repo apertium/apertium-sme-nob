@@ -192,18 +192,26 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item lemma="adv" tags="ADV.@←ADVL-ine.*"/>
     </def-cat>
     <def-cat n="ADVLrOBJr">
-      <cat-item tags="*.@OBJ→"/>
-      <cat-item tags="*.@OBJ→.*"/>
-      <cat-item tags="*.@ADVL→"/>
-      <cat-item tags="*.@ADVL→.*"/>
-      <cat-item tags="*.@ADVL-ela→"/>
-      <cat-item tags="*.@ADVL-ela→.*"/>
-      <cat-item tags="*.@ADVL-ine→"/>
-      <cat-item tags="*.@ADVL-ine→.*"/>
+      <cat-item tags="SN.@OBJ→"/>
+      <cat-item tags="SN.@OBJ→.*"/>
+      <cat-item tags="SN.@ADVL→"/>
+      <cat-item tags="SN.@ADVL→.*"/>
+      <cat-item tags="SN.@ADVL-ela→"/>
+      <cat-item tags="SN.@ADVL-ela→.*"/>
+      <cat-item tags="SN.@ADVL-ine→"/>
+      <cat-item tags="SN.@ADVL-ine→.*"/>
+      <cat-item tags="SA.@OBJ→"/>
+      <cat-item tags="SA.@OBJ→.*"/>
+      <cat-item tags="SA.@ADVL→"/>
+      <cat-item tags="SA.@ADVL→.*"/>
+      <cat-item tags="SA.@ADVL-ela→"/>
+      <cat-item tags="SA.@ADVL-ela→.*"/>
+      <cat-item tags="SA.@ADVL-ine→"/>
+      <cat-item tags="SA.@ADVL-ine→.*"/>
     </def-cat>
     <def-cat n="OBJr">
-      <cat-item tags="*.@OBJ→"/>
-      <cat-item tags="*.@OBJ→.*"/>
+      <cat-item tags="SN.@OBJ→"/>
+      <cat-item tags="SN.@OBJ→.*"/>
     </def-cat>
     <def-cat n="ADVr">
       <cat-item tags="ADV.@→N.*"/>
@@ -1172,8 +1180,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
     <!-- <rules: ISUBJr IV
          Setningstilsvar (infinite=>finite in subordinate sentences) -->
-    <rule comment="REGLA: ISUBJr SV_lOBJ-tilsvar - out: at 1 skulle 2
-                   (Máhtte muitalii) ádjá boahtit => (Máhtte fortalte) bestefar skulle komme 
+    <rule comment="REGLA: ISUBJr SV_lOBJ-tilsvar - out: at 1 2
+                   (Máhtte muitalii) ádjá boahtit => (Máhtte fortalte) bestefar kommer 
                    TODO: set_defnes2 ? set_adv ?
                    Adds 'skulle' if infinitive (and changes syn_label so t4x doesn't add 'å')">
       <pattern>
@@ -1195,17 +1203,24 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="1"/>
         </out>
 
-        <choose><when>
+        <choose>
+        <when>
           <test><equal><clip pos="2" part="temps"/><lit-tag v="inf"/></equal></test>
-          <out>
+<!--          <out>
             <chunk>
               <get-case-from pos="2"><lit v="verb"/></get-case-from><lit-tag v="@-FAUXV.inf"/>
               <lit v="{^"/><lit v="skulle"/><lit-tag v="vblex.inf"/><lit v="$}"/>
             </chunk>
             <b/>
-          </out>
-          <let><clip pos="2" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
-        </when></choose>
+          </out> -->
+          <let><clip pos="2" part="temps"/><lit-tag v="pres"/></let>
+          <let><clip pos="2" part="syn_label"/><lit-tag v="@+FMAINV"/></let>
+        </when>
+        <otherwise>
+          <let><clip pos="2" part="temps"/><lit-tag v="pret"/></let>
+          <let><clip pos="2" part="syn_label"/><lit-tag v="@+FMAINV"/></let>
+        </otherwise>
+        </choose>
         <out>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
