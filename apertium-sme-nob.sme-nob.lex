@@ -1602,7 +1602,8 @@ SELECT:fallback ("verdi"i) (0 ("<árvu>"i)) ;
 
 	
 SELECT ("villrein"i) (*-1 ("<bivdit>"i) OR ("dápmat"i) OR ("vuojihit"i)) (0 ("<goddi>"i));
-SELECT:fallback ("komite"i) (0 ("<goddi>"i) LINK -1 cmp);
+SELECT ("komite"i) (0 ("<goddi>"i) LINK -1 cmp);
+SELECT:fallback ("villrein"i) (0 ("<goddi>"i));
 
 SELECT ("grunn"i) (0 ("<vuođđu>"i)) (0 ess);
 SELECT:fallback ("grunnlag"i) (0 ("<vuođđu>"i));
