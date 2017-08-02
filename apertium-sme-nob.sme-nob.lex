@@ -1117,10 +1117,10 @@ SELECT:fallback ("skildre"i) IF  (0 ("<govvet>"i)) ;
 SELECT:fallback ("oppleve"i) IF  (0 ("<vásihit>"i)) ;
 
 
-SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (1 cnjsub) ;
+SELECT ("legge# til rette"i) IF  (0 ("<láhčit>"i)) (1 cnjsub) ;
 SELECT ("legge# opp"i) IF  (0 ("<láhčit>"i)) (1 ill) ;
-SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (-1 @OBJ→ + acc) ;
-SELECT ("legge# til rette for"i) IF  (0 ("<láhčit>"i)) (1 @←OBJ + acc) ;
+SELECT ("legge# til rette"i) IF  (0 ("<láhčit>"i)) (-1 @OBJ→ + acc) ;
+SELECT ("legge# til rette"i) IF  (0 ("<láhčit>"i)) (1 @←OBJ + acc) ;
 SELECT:fallback ("legge# opp til"i) IF  (0 ("<láhčit>"i)) ;
 
 
@@ -1509,6 +1509,10 @@ SELECT:fallback ("tillatelse"i) (0 ("<lohpi>"i)) ;
 
 SELECT:fallback ("kontroll"i) (0 ("<dárkkisteapmi>"i)) ;
 
+SELECT ("bane"i) (0 ("<šillju>"i))(*0 ("<čiekči>"i) OR ("<čiekčat>"i)) ;
+SELECT:fallback ("gårdsplass"i) (0 ("<šillju>"i)) ;
+
+
 
 SELECT ("heldig"i) (0 ("<lihkku>"i) LINK 0 (←ext→) LINK *-1 ←hab→) ;
 SELECT:fallback ("lykke"i) (0 ("<lihkku>"i)) ;
@@ -1578,6 +1582,7 @@ SELECT:fallback ("publisering"i) (0 ("<almmuheapmi>"i)) ;
 
 
 SELECT ("forhold"i) (0 ("<dilli>"i) LINK -1 ("<buorre>"i) LINK -1 COPULAS) ; # tid
+SELECT ("") (0 ("<dilli>"i) LINK -1 ("<láhčit>"i)) ; # 
 SELECT:fallback ("situasjon"i) (0 ("<dilli>"i)) ;
 
 
@@ -2175,7 +2180,6 @@ SELECT:fallback ("erstatning"i) (0 ("<buhtadas>"i));
 SELECT:fallback ("kulde"i) (0 ("<buolaš>"i));
 SELECT:fallback ("trinn"i) (0 ("<ceahkki>"i));
 SELECT:fallback ("vekt"i) (0 ("<deatta>"i));
-SELECT:fallback ("situasjon"i) (0 ("<dilli>"i));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
 SELECT:fallback ("bål"i) (0 ("<dolla>"i));
 SELECT:fallback ("håndarbeid"i) (0 ("<duodji>"i));
