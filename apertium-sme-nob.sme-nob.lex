@@ -2191,6 +2191,7 @@ SELECT:fallback ("flokk"i) (0 ("<eallu>"i));
 SELECT:fallback ("hustru"i) (0 ("<eamit>"i));
 
 SELECT:kraft ("kraft"i) (*-1 @SUBJ→ LINK 0 sem_rule) (0 ("<fápmu>"i));
+SELECT:kraft ("kraft"i) (0 ("<fápmu>"i)) (-1 ("<magihkalaš>"i));
 SELECT:fallback ("makt"i) (0 ("<fápmu>"i));
 
 SELECT:fallback ("skall"i) (0 ("<garra>"i));
@@ -2600,6 +2601,10 @@ SELECT (det) (0 ("<sierra>"i));
 
 SELECT ("fjern"i) (0 ("<gáiddus>"i) LINK 0 cmp);
 REMOVE ("fjern"i) (NOT 0 cmp);
+
+SELECT ("gammel"i) (0 ("<dološ>"i) LINK 0 attr);
+SELECT:fallback ("gammel tid"i) (NOT 0 attr);
+
 
 SELECT ("-årig"i) (0 ("<jagáš>"i) LINK -1 num);
 SELECT ("årets"i) (0 ("<jagáš>"i));
