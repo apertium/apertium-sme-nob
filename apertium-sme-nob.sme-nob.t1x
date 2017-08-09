@@ -2990,8 +2990,10 @@ And then there are some categories like "month", with all the months.
                     <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
                 </and></not>
                   </and>
-                  <and>
+                  <and><or>
                     <equal><var n="main-verb-sl"/><lit v="bidjat"/></equal>
+                    <equal><var n="main-verb-sl"/><lit v="ihtit"/></equal>
+                    </or>
                     <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in></not>
                   </and>
                 </or>
