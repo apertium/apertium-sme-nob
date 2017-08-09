@@ -1605,6 +1605,7 @@ SELECT ("villrein"i) (*-1 ("<bivdit>"i) OR ("dápmat"i) OR ("vuojihit"i)) (0 ("<
 SELECT ("komite"i) (0 ("<goddi>"i) LINK -1 cmp);
 SELECT:fallback ("villrein"i) (0 ("<goddi>"i));
 
+SELECT ("grunnlag"i) (0 ("<vuođđu>"i)) (0 ess LINK 1 inf);
 SELECT ("grunn"i) (0 ("<vuođđu>"i)) (0 ess);
 SELECT:fallback ("grunnlag"i) (0 ("<vuođđu>"i));
 
@@ -2294,13 +2295,16 @@ SELECT:fallback ("styrking"i) (0 ("<nannen>"i));
 SELECT:fallback ("hjørne"i) (0 ("<čiehka>"i));
 SELECT:fallback ("pynt"i) (0 ("<čikŋa>"i));
 SELECT:fallback ("sammendrag"i) (0 ("<čoahkkáigeassu>"i));
-SELECT:fallback ("poeng"i) (0 ("<čuokkis>"i));
 SELECT:fallback ("tekst"i) (0 ("<čálus>"i));
 SELECT:fallback ("slag"i) (0 ("<šládja>"i));
 SELECT:fallback ("surr"i) (0 ("<šurra>"i));
 
 SELECT:fallback ("ende"i) (0 ("<loahppa>"i) LINK -1 ("<máilbmi>"i)) ;
 SELECT:fallback ("slutt"i) (0 ("<loahppa>"i)) ;
+
+SELECT ("poeng"i) (0 ("<čuokkis>"i) LINK 0 acc LINK *0 ("<oažžut>"i));
+SELECT:fallback ("punkt"i) (0 ("<čuokkis>"i)) ;
+
 
 SELECT:fallback ("hovedforslag"i) (0 ("<váldoevttohus>"i)) ;
 
