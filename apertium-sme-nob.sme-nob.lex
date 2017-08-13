@@ -880,7 +880,8 @@ SELECT ("fordi"i) (0 ("<go>"i)) (-1 adj + nom) ;
 SELECT ("når"i) (0 ("<go>"i) LINK *1 indic) ;
 SELECT:fallback ("som"i) (0 ("<go>"i) + cnjsub) ;
 
-SELECT ("i"i) (0 ("<otná>"i) LINK 1 (sem_time)) ;
+#SELECT ("i"i) (0 ("<otná>"i) LINK 1 (sem_time)) ;
+SELECT ("i dag"i) (0 ("<otná>"i) LINK 1 post) ;
 SELECT:fallback ("dagens"i) (0 ("<otná>"i)) ;
 
 SELECT:fallback ("hvilken av de to"i) (0 ("<goabbá>"i)) ;
@@ -2540,7 +2541,7 @@ SELECT:fallback ("sammen"i) (0 ("<gaskan>"i)) ;
 
 SELECT:fallback ("da"i) (0 ("<fal>"i)) ;
 
-SELECT:fallback ("like"i) (0 ("<seammá>"i) LINK 1 ("<ollu>"i) OR ("<olu>"i) OR adj + nom) ;
+SELECT:fallback ("like"i) (0 ("<seammá>"i) LINK 1 ("<ollu>"i) OR ("<olu>"i) OR adj + nom OR adv) ;
 SELECT:fallback ("samme"i) (0 ("<seammá>"i)) ;
 
 # Based on frequency in parallel text:
