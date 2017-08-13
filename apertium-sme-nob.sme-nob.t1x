@@ -423,6 +423,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-mannu">
       <cat-item lemma="mánnu" tags="n.*"/>
     </def-cat>
+    <def-cat n="lex-galle">
+      <cat-item lemma="galle" tags="prn.*"/>
+    </def-cat>
     <def-cat n="month">
       <cat-item lemma="guovvamánnu" tags="n.*"/>
       <cat-item lemma="ođđajagimánnu" tags="n.*"/>
@@ -5063,6 +5066,32 @@ And then there are some categories like "month", with all the months.
             <lu>
               <lit v="slett ikke"/>
               <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] neg-verb lex-galle" c="eai galle → ikke mange">
+      <pattern>
+        <pattern-item n="neg-verb"/>
+        <pattern-item n="lex-galle"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="pre_nom" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="ikke"/>
+              <lit-tag v="adv"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="mange"/>
+              <lit-tag v="prn"/>
             </lu>
           </chunk>
         </out>
