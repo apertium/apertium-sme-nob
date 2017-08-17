@@ -517,6 +517,22 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </let>
       <modify-case><var n="c_name"/><clip pos="1" part="lemh"/></modify-case>
     </def-macro>
+    <def-macro n="set_c_name4" npar="4" c="args should be given in order of output
+                                           Case of whole chunk is based on first element.">
+      <let>
+        <var n="c_name"/>
+        <concat>
+          <clip pos="1" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="2" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="3" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="4" part="lemh"/>
+        </concat>
+      </let>
+      <modify-case><var n="c_name"/><clip pos="1" part="lemh"/></modify-case>
+    </def-macro>
 
     <def-macro n="set_c_tags2" npar="2"
                c="For conjunctions.
@@ -1617,6 +1633,71 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </rule>
 
     <!-- <rules: Verb coordination, set/use verb-anaphoric variables -->
+    <rule comment="REGLA: FV comma FV CVP FV
+                   set anaphoric temps variable
+                   use anaphoric gen variable">
+      <pattern>
+        <pattern-item n="FV"/>
+        <pattern-item n="comma"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="CVP"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <choose>
+          <when>
+            <test><and>
+              <equal><clip pos="1" part="temps"/><clip pos="5" part="temps"/></equal>
+              <equal><clip pos="1" part="nbr"/><clip pos="5" part="nbr"/></equal>
+              <equal><clip pos="1" part="pers"/><clip pos="5" part="pers"/></equal>
+            </and></test>
+            <call-macro n="set_ana_temps"><with-param pos="1"/></call-macro>
+            <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
+            <call-macro n="set_ana_temps"><with-param pos="3"/></call-macro>
+            <call-macro n="apply_ana_gen"><with-param pos="3"/></call-macro>
+
+            <call-macro n="set_c_name4"><with-param pos="1"/><with-param pos="3"/><with-param pos="4"/><with-param pos="5"/></call-macro>
+            <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="5"/></call-macro>
+            <out>
+              <chunk>
+                <var n="c_name"/>
+                <var n="c_tags"/>
+                <lit v="{"/>
+                <clip pos="1" part="content"/>
+                <clip pos="1" part="lemq"/>
+                <clip pos="2" part="content"/>
+                <clip pos="2" part="lemq"/>
+                <b pos="2"/>
+                <clip pos="3" part="content"/>
+                <clip pos="3" part="lemq"/>
+                <b pos="3"/>
+                <clip pos="4" part="content"/>
+                <clip pos="4" part="lemq"/>
+                <b pos="4"/>
+                <clip pos="5" part="content"/>
+                <clip pos="5" part="lemq"/>
+                <lit v="}"/>
+              </chunk>
+            </out>
+          </when>
+          <otherwise c="exception">
+            <call-macro n="apply_ana_gen"><with-param pos="1"/></call-macro>
+            <call-macro n="apply_ana_gen"><with-param pos="5"/></call-macro>
+            <call-macro n="set_ana_temps"><with-param pos="5"/></call-macro>
+            <out>
+              <chunk><clip pos="1" part="whole"/></chunk>
+              <chunk><clip pos="2" part="whole"/></chunk>
+              <b pos="1"/>
+              <chunk><clip pos="3" part="whole"/></chunk>
+              <b pos="2"/>
+              <chunk><clip pos="4" part="whole"/></chunk>
+              <b pos="3"/>
+              <chunk><clip pos="5" part="whole"/></chunk>
+            </out>
+          </otherwise>
+        </choose>
+      </action>
+    </rule>
     <rule comment="REGLA: FV CVP FV
                    -----
                    set anaphoric temps variable
