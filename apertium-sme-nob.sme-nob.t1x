@@ -3026,6 +3026,14 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="med"/>
               </let>
             </when>
+            <when c="ill is over">
+              <test>
+                    <equal><var n="main-verb-sl"/><lit v="beahttit"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="over"/>
+              </let>
+            </when>
             <when c="ill is for">
               <test>
                 <and>
