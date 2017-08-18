@@ -2672,7 +2672,7 @@ SELECT ("moro skyld"i) (0 ("<suohtas>"i)) (1 ("<dihte>"i));
 SELECT:fallback ("morsom"i) (0 ("<suohtas>"i));
 
 
-SELECT ("ledig"i) (0 ("<rabas>"i)) (*1 ("<.*virgi>"ri));
+SELECT ("ledig"i) (0 ("<rabas>"i)) (0 attr LINK *1 ("<.*virgi>"ri) OR ("<.*sadji>"ri) BARRIER NOT-NPMODADV);
 SELECT:fallback ("åpen"i) (0 ("<rabas>"i));
 
 

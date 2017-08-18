@@ -2975,9 +2975,9 @@ And then there are some categories like "month", with all the months.
                 <or>
                   <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
                   <in caseless="yes"><var n="previous-nhead"/><list n="ill-på-head"/></in>
-                    <equal><var n="main-verb-sl"/><lit v="Álgit"/></equal>
-                    <equal><var n="main-verb-sl"/><lit v="álgit"/></equal>
-                    <equal><var n="main-verb-sl"/><lit v="fokuseret"/></equal>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="álgit"/></equal>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="fokuseret"/></equal>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="ohcat"/></equal>
                   <and>
                     <equal><var n="seen_num"/><lit-tag v="num"/></equal>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
@@ -4563,10 +4563,7 @@ And then there are some categories like "month", with all the months.
           <choose>
             <when c="leat cond = ha">
               <test><and>
-                <or>
-                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
-                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
-                </or>
+                  <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
                 <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
               </and></test>
               <let><var n="v_lem"/><lit v="ha"/></let>
@@ -4590,10 +4587,7 @@ And then there are some categories like "month", with all the months.
                 <and>
                   <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
                   <not><and>
-                    <or>
-                      <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
-                      <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
-                    </or>
+                      <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
                   <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal></and></not>
                 </and>
               </test>
@@ -4624,20 +4618,14 @@ And then there are some categories like "month", with all the months.
           <choose>
             <when c="leat (except @+FAUXV) = hadde vært">
               <test><and>
-                <or>
-                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
-                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
-                </or>
+                  <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
                 <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal></not>
               </and></test>
               <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></let>
             </when>
             <when c="leat @+FAUXV = hadde aux (which should be pp, but now output is inf from sl)">
               <test><and>
-                <or>
-                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
-                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="Leat"/></equal>
-                </or>
+                  <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal>
               </and></test>
               <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
@@ -8041,7 +8029,7 @@ And then there are some categories like "month", with all the months.
     </rule>
 
 
-    <rule comment="C[] nom.gen num_mod nom.gen_NUMl  nom_head" c="Gonagasbára 80 jagi beaivedoaluide">
+    <rule comment="C[] nom.gen num_mod nom.gen_NUMl nom_head" c="Gonagasbára 80 jagi beaivedoaluide">
       <pattern>
         <pattern-item n="nom.gen"/>
         <pattern-item n="num_mod"/>
@@ -8146,7 +8134,7 @@ And then there are some categories like "month", with all the months.
     </rule>
 
     <rule comment="C[V] num_mod nom.cmp nom_head" c="
-                   See NUM_MOD NOM">
+                   See num_mod nom_head">
       <pattern>
         <pattern-item n="num_mod"/>
         <pattern-item n="nom-adj.cmp"/>
@@ -8279,7 +8267,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] NUM_MOD DET_MOD ADJ_ATTR NOM
+    <rule comment="C[] num_mod det_mod adj_vblex_attr nom_head
                    –––––
                    máŋggain eará smávit fatnasiiguin → med de mange andre mindre båtene">
       <pattern>
@@ -8458,9 +8446,9 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] NUM_MOD NOM.GEN NOM
+    <rule comment="C[] num_mod nom.gen nom_head
                    Oblique use of num nom, here the final nominal is the head
-                   See NUM_MOD NOM rule.">
+                   See num_mod nom_head rule.">
       <pattern>
         <pattern-item n="num_mod"/>
         <pattern-item n="nom.gen"/>
