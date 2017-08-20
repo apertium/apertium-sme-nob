@@ -1228,7 +1228,8 @@ SELECT:fallback ("godkjenne"i) (0 ("<dohkkehit>"i)) ;
 SELECT:fallback ("avvise"i) (0 ("<hilgut>"i)) ;
 
 SELECT:savne ("savne"i) (0 ("<láhppot>"i) LINK 0 @→N)  ;
-SELECT ("gå vill"i) (0 ("<láhppot>"i) LINK -1 HUMAN LINK 0 nom) ;
+SELECT ("savne"i) (0 ("<láhppot>"i) LINK -1 HUMAN OR ("<gii>"i) LINK 0 nom) ;
+SELECT ("gå vill"i) (0 ("<láhppot>"i) LINK -1 sg + (p1) LINK 0 nom) ;
 SELECT:fallback ("miste"i) (0 ("<láhppot>"i))  ;
 
 
@@ -1318,6 +1319,7 @@ SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r) OR ("<áigemearri>
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (1 ill) ;
 
 
+SELECT ("bety"i) IF (0 ("<máksit>"i) ) (*0 ("<sátni>"i) + nom BARRIER NOT-NPMODADV);
 SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 ("<ahte>"i));
 SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 COMMA) (2 ("<ahte>"i));
 SELECT ("bety"i) IF (0 ("<máksit>"i) )(-2 ("<dat>"i))(-1 neg)(1 ("<ahte>"i));
@@ -1739,6 +1741,7 @@ SELECT ("folk"i) (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
 SELECT ("person"i) (0 ("<olmmoš>"i) LINK -1 num OR ("<bealli>"i) + gen) ;
 SELECT ("person"i) (0 ("<olmmoš>"i) LINK 1 rel) ;
+SELECT ("person"i) (0 ("<olmmoš>"i) LINK 1 (pers-pro)) ;
 
 SELECT ("menneske"i) (0 ("<olmmoš>"i) LINK 0 ess) ;
 # olmmožin => som menneske
@@ -1969,6 +1972,7 @@ SELECT ("sørsamisk"i) (0 ("<lullisápmi>"i) LINK 0 sg + gen);
 SELECT ("pitesamisk"i) (0 ("<bihtonsápmi>"i) LINK 0 sg + gen);
 SELECT ("lulesamisk"i) (0 ("<julevsápmi>"i) LINK 0 sg + gen);
 SELECT ("sjøsamisk"i) (0 ("<mearrasápmi>"i) LINK 0 sg + gen);
+SELECT ("nordsamisk"i) (0 ("<davvisápmi>"i) LINK 0 sg + gen);
 SELECT:fallback ("sameland"i) (0 ("<sápmi>"i) LINK 0 sg + loc);
 SELECT:fallback ("same"i) (0 ("<sápmi>"i));
 SELECT:fallback ("pitesame"i) (0 ("<bihtonsápmi>"i));
@@ -1976,6 +1980,7 @@ SELECT:fallback ("sørsamisk"i) (0 ("<máttasápmi>"i));
 SELECT:fallback ("sørsame"i) (0 ("<lullisápmi>"i));
 SELECT:fallback ("lulesame"i) (0 ("<julevsápmi>"i));
 SELECT:fallback ("sjøsame"i) (0 ("<mearrasápmi>"i));
+SELECT:fallback ("nordsame"i) (0 ("<davvisápmi>"i));
 
 SELECT ("sameland"i) (0 ("<sápmi>"i) LINK -1 ("<ollis>"i) OR ("<miehtá>"i) OR adj + attr);
 #SELECT ("Samisk"i) (0 ("<Sápmi>"i) LINK 0 sg + gen);

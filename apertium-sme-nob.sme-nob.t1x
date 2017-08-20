@@ -1521,6 +1521,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="caseprep_c_name" c="chunk name for the caseprep chunk"/>
     <def-var n="caseprep-verb"   c="nob preposition (whole chunk) based on sme case, used as tag on the verb chunk"/>
     <def-var n="previous-nhead"  c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
+    <def-var n="previous-nhead_sem"  c="sem of the previous NP chunk" v=""/>
     <def-var n="previous-obj"  c="lemh of the previous obj" />
     <def-var n="main-verb-pasv"    c="sme pasv of the previous main verb" />
     <def-var n="advl-verb-sl"    c="sme lemh of the previous advl verb" />
@@ -2257,9 +2258,11 @@ And then there are some categories like "month", with all the months.
       <list-item v="Madagaskar"/>
       <list-item v="Sameskolen"/>
       <list-item v="Sicilia"/>
+      <list-item v="Sørøya"/>
       <list-item v="Svalbard"/>
       <list-item v="Varangerhalvøya"/>
       <list-item v="Vestlandet"/>
+      <list-item v="arbeidsplass"/>
       <list-item v="dag"/>
       <list-item v="dato"/>
       <list-item v="deltid"/>
@@ -2750,6 +2753,10 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
                 <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_year"/></equal>
                 <in caseless="yes"><var n="previous-nhead"/><list n="loc-i-head"/></in>
+              <and>
+                    <in caseless="yes"><var n="previous-nhead_sem"/><list n="sem_edu"/></in>
+                    <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
+                  </and>
               </or>
               <not><in caseless="yes"><var n="previous-nhead"/><list n="loc-fra-head"/></in></not>
               <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
@@ -3196,10 +3203,8 @@ And then there are some categories like "month", with all the months.
       </choose>
 
                   <!-- <out><lit v="let previous-nhead "/><clip pos="1" side="tl" part="lemh"/></out> -->
-      <let>
-        <var n="previous-nhead"/>
-        <clip pos="1" side="tl" part="lemh"/>
-      </let>
+   <let><var n="previous-nhead"/><clip pos="1" side="tl" part="lemh"/></let>
+   <let><var n="previous-nhead_sem"/><clip pos="1" side="sl" part="a_sem"/></let>
               <choose>
                 <when c="object">
                   <test><or>
@@ -12102,6 +12107,7 @@ TODO: this should be an mwe in the analyser.">
           <let><var n="main-verb-sl"/><lit v=""/></let>
           <let><var n="main-verb-tl"/><lit v=""/></let>
           <let><var n="previous-nhead"/><lit v=""/></let>
+          <let><var n="previous-nhead_sem"/><lit v=""/></let>
           <let><var n="previous-obj"/><lit v=""/></let>
           <let><var n="vfin-nbr"/><lit v=""/></let>
           <let><var n="vfin-pers"/><lit v=""/></let>
