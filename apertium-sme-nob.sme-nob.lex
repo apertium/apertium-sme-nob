@@ -840,7 +840,7 @@ SELECT:fallback ("på"i) (0 ("<alde>"i) OR ("<nalde>"i)) ;
 
 SELECT:når ("når"i) (0 ("<go>"i)) (-1 ("<rápmi>"i) + loc) ;
 
-SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 adj OR adv) (0 cnjsub) ;
+SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 adj OR adv OR ind) (0 cnjsub) ;
 SELECT:som ("som"i) (0 ("<go>"i)) (*-1 ("<seammá>"i) OR ("<liikka>"i) BARRIER SV-BOUNDARY) ;
 SELECT:som ("som"i) (0 ("<go>"i)) (1 ("<eará>"i)) ;
 
