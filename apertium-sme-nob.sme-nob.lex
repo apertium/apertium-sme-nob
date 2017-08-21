@@ -1285,6 +1285,7 @@ SELECT ("si"i) (0 ("<lohkat>"i)) (*1 FMAINV OR actio OR prfprc OR inf BARRIER S-
 ## Dat lea duohta, lohká Trond.
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<nu>"i));
+SELECT:fallback ("lese"i) (0 ("<lohkat>"i)) ;
 
 
 SELECT ("telle"i) (0 ("<lohkat>"i))
