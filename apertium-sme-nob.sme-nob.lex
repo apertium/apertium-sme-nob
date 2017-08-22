@@ -2779,3 +2779,6 @@ SELECT ("Troms"i) (0 ("<Romsa>"i) LINK *1 ("<fylka>"i) OR ("<fylkkasuohkan>"i) O
 SELECT ("Troms"i) (0 ("<Romsa>"i) LINK *-1 ("<Finnmárku>"i));
 SELECT:fallback ("Tromsø"i) (0 ("<Romsa>"i));
 
+SELECT ("Komsa"i) (0 ("<Gurraváráš>"i) LINK -1 ("<unni>"i) OR ("<uhcci>"i));
+SELECT:fallback ("Lille Komsa"i) (0 ("<Gurraváráš>"i));
+
