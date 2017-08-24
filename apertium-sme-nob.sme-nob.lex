@@ -2329,14 +2329,19 @@ SELECT:fallback ("serie"i) (0 ("<ráidu>"i)) ;
 SELECT ("retning"i) (0 ("<guovlu>"i) + ill LINK -1 ("heajos") OR (comp) + (attr) OR sem_time OR ("<guhte>"i) OR (sem_event)) ;
 SELECT:fallback ("område"i) (0 ("<guovlu>"i)) ;
 
-SELECT ("rein"i) (0 ("<heagga>"i) LINK -1 num - ("okta")) ;
+SELECT ("rein"i) (0 ("<heagga>"i) LINK -1 num - ("<okta>")) ;
 SELECT:fallback ("liv"i) (0 ("<heagga>"i)) ;
+
+SELECT ("middel"i) (0 ("<ávnnas>"i) LINK -1 ("<kárten>"i)) ;
+SELECT:fallback ("råvare"i) (0 ("<ávnnas>"i)) ;
+
+
 
 SELECT:fallback ("betaling"i) (0 ("<máksámuš>"i)) ;
 SELECT:fallback ("kvote"i) (0 ("<earri>"i)) ;
 
 SELECT ("rett"i) (0 ("<diggi>"i) LINK 0 ill) ;
-SELECT:fallback ("ting"i) (0 ("<diggi>"i)) ;
+SELECT:fallback ("rett"i) (0 ("<diggi>"i)) ;
 
 # Based on frequency in parallel text:
 SELECT ("periode"i) (0 ("<áigodat>"i));
