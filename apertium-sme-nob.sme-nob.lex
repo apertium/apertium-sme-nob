@@ -2175,6 +2175,8 @@ SELECT:fallback ("embete"i) (0 ("<ámmát>"i));
 SELECT ("torske"i) (0 ("<dorski>"i) LINK 0 cmp) ;
 SELECT:fallback ("torsk"i) (0 ("<dorski>"i));
 
+SELECT:fallback ("utmark"i) (0 ("<meahcci>"i));
+
 
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
 SELECT ("kjendis"i) (0 ("<beakkán>"i));
@@ -2242,7 +2244,6 @@ SELECT:fallback ("garn"i) (0 ("<láigi>"i));
 SELECT:fallback ("glass"i) (0 ("<láse>"i));
 SELECT:fallback ("haug"i) (0 ("<látna>"i));
 SELECT:fallback ("venn"i) (0 ("<lávvi>"i));
-SELECT:fallback ("mark"i) (0 ("<meahcci>"i));
 SELECT:fallback ("betydning"i) (0 ("<mearkkašupmi>"i));
 SELECT:fallback ("mengde"i) (0 ("<mearri>"i));
 SELECT:fallback ("vedlegg"i) (0 ("<mielddus>"i));
