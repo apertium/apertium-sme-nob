@@ -1257,6 +1257,7 @@ SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<:>")) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<,>")) ;
 
 SELECT ("lese"i) (0 ("<lohkat>"i)) (-1 BOS)(1 ("<eambbo>"i) OR ("<eanet>"i) LINK 1 EOS) ;
+SELECT ("telle"i) (0 ("<lohkat>"i)) (*0 ("<giehta>"i) + pl + com BARRIER SV-BOUNDARY) ;
 
 
 SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain OR ("<cealkámuš>"i) LINK 0 acc) OR (-1 sem_txt OR sem_domain LINK 0 acc )  OR (1 ("<eksámen>"i))) ;
@@ -2505,7 +2506,7 @@ SELECT:fallback ("fra"i) + pr (0 ("<eret>"i)) ;
 SELECT ("dobbelt"i) (0 ("<beali>"i) LINK 1 ("<eanet>"i)) ;
 SELECT:fallback ("halve"i) (0 ("<beali>"i)) ;
 
-SELECT ("sammen"i) (0 ("<oktii>"i) LINK -1 ("<bidjat>"i) OR ("<časkit>"i) OR ("<laktit>"i)) ;
+SELECT ("sammen"i) (0 ("<oktii>"i) LINK -1 ("<bidjat>"i) OR ("<časkit>"i) OR ("<laktit>"i) OR ("<beaškkehit>"i)) ;
 SELECT:fallback ("en gang"i) (0 ("<oktii>"i)) ;
 
 
