@@ -2230,6 +2230,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="trygghet"/>
       <list-item v="tvil"/>
       <list-item v="ulykke"/>
+      <list-item v="undervisning"/>
       <list-item v="urfolkssak"/>
       <list-item v="utgangspunkt"/>
       <list-item v="utland"/>
@@ -2973,8 +2974,7 @@ And then there are some categories like "month", with all the months.
           </let>
           <choose>
             <when c="ill is om " >
-              <test><or>
-              <equal><var n="previous-obj"/><lit v="avtale"/></equal>
+              <test>
                <and>
               <equal><clip pos="1" side="tl" part="lemh"/><lit v="dag"/></equal>
               <or>
@@ -2982,7 +2982,7 @@ And then there are some categories like "month", with all the months.
                <equal><var n="previous-nhead"/><lit v="gang"/></equal>
              </or>
              </and>
-             </or></test>
+             </test>
               <let>
                 <var n="caseprep"/><lit v="om"/>
               </let>
