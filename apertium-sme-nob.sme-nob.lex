@@ -1436,6 +1436,15 @@ SELECT:fallback ("skifte"i) (0 ("<lonohallat>"i));
 SELECT ("slå# sammen"i) (0 ("<ovttastahttit>"i) LINK *0 sem_org OR (sem_pos));
 SELECT:fallback ("forene"i) (0 ("<ovttastahttit>"i));
 
+SELECT ("smelle"i) (0 ("<bávkkehit>"i) LINK *0 ("<rakeahtta>"i));
+SELECT:fallback ("eksplodere"i) (0 ("<bávkkehit>"i));
+
+SELECT ("advare"i) (0 ("<várret>"i) LINK 1 ("<nominašuvdna>"i));
+SELECT ("reservere"i) (0 ("<várret>"i) LINK *0 acc BARRIER SV-BOUNDARY);
+SELECT:fallback ("advare"i) (0 ("<várret>"i));
+
+
+
 SELECT:fallback ("fortsette"i) (0 ("<joatkit>"i));
 
 

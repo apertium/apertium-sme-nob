@@ -312,6 +312,7 @@ And then there are some categories like "month", with all the months.
     <def-cat n="nom.prop.antcog_mod">
       <cat-item tags="np.ant.f.*.@→N"/>
       <cat-item tags="np.ant.m.*.@→N"/>
+      <cat-item tags="n.abbr.*.@→N"/>
     </def-cat>
     <def-cat n="nom.prop.antcog">
       <cat-item tags="np.ant.f.*"/>
@@ -1839,6 +1840,14 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_edu_org&gt;"/>
       <list-item v="&lt;sem_edu_geom&gt;"/>
     </def-list>
+    <def-list n="sem_cat">
+      <list-item v="&lt;sem_build-part_cat&gt;"/>
+      <list-item v="&lt;sem_build-part_cat_ctain&gt;"/>
+      <list-item v="&lt;sem_cat&gt;"/>
+      <list-item v="&lt;sem_cat_group_hum&gt;"/>
+      <list-item v="&lt;part_cat_ctain_mat&gt;"/>
+      <list-item v="&lt;sem_cat_group_hum_plc&gt;"/>
+    </def-list>
     <def-list n="sem_hum">
       <list-item v="&lt;sem_ani_body-abstr_hum&gt;"/>
       <list-item v="&lt;sem_ani_build_hum_txt&gt;"/>
@@ -2748,6 +2757,7 @@ And then there are some categories like "month", with all the months.
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build-part"/></equal>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_ctain-clth"/></equal>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_wthr"/></equal>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_cat"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_body"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_veh"/></in>
@@ -7733,7 +7743,7 @@ And then there are some categories like "month", with all the months.
       <pattern>
         <pattern-item n="nom.prop_attr"/>
         <pattern-item n="nom.prop.antcog_mod"/>
-        <pattern-item n="nom.prop.antcog"/>
+        <pattern-item n="nom.prop.antcog_mod"/>
         <pattern-item n="nom.prop.antcog"/>
       </pattern>
       <action>
