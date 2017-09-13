@@ -2714,7 +2714,7 @@ SELECT:fallback ("finansiell"i) (0 ("<ruđalaš>"i));
 
 IFF ("-årig"i) (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
 
-SELECT:fallback ("flere"i) (0 ("<eanet>"i)) (*1 HUMAN BARRIER NOT-PRE-A-N );	
+SELECT:fallback ("mange"i) (0 ("<eanet>"i)) (*1 HUMAN BARRIER NOT-PRE-A-N );	
 SELECT:fallback ("mye"i) (0 ("<eanet>"i));
 	
 ## leage buorre (vær så god)
