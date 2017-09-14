@@ -3007,6 +3007,10 @@ And then there are some categories like "month", with all the months.
                <equal><var n="previous-nhead"/><lit v="time"/></equal>
                <equal><var n="previous-nhead"/><lit v="gang"/></equal>
                <equal><var n="previous-nhead"/><lit v="liv"/></equal>
+             <and>
+                <equal caseless="yes"><var n="main-verb-sl"/><lit v="dubmet"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="fengsel"/></equal>	         
+             </and>       
              </or></test>
               <let>
                 <var n="caseprep"/><lit v="i"/>
@@ -3023,6 +3027,7 @@ And then there are some categories like "month", with all the months.
                   <and>
                     <equal><var n="seen_num"/><lit-tag v="num"/></equal>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
+                    <not><equal caseless="yes"><var n="main-verb-sl"/><lit v="dubmet"/></equal></not>
                   </and>
                   <and>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
