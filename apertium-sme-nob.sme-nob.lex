@@ -2522,6 +2522,11 @@ SELECT ("bort"i) (0 ("<eret>"i)) (1 loc) ;
 SELECT ("av"i) (0 ("<eret>"i)) (-1 ("<sahát>"i)) ;
 SELECT:fallback ("fra"i) + pr (0 ("<eret>"i)) ;
 
+SELECT ("sørpå"i) (0 ("<máddin>"i) LINK -1 DOPPE) ;
+SELECT:fallback ("sørfra"i) (0 ("<máddin>"i)) ;
+
+
+
 SELECT ("dobbelt"i) (0 ("<beali>"i) LINK 1 ("<eanet>"i)) ;
 SELECT:fallback ("halve"i) (0 ("<beali>"i)) ;
 
