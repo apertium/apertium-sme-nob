@@ -2040,6 +2040,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="ill-i-verbs">
       <list-item v="ásahit"/>
       <list-item v="vuođđudit"/>
+      <list-item v="bisánit"/>
     </def-list>
     <def-list n="ill-for-verbs">
       <list-item v="leat"/>
@@ -2048,7 +2049,6 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="ill-på-verbs" c="See 'ill-NIL-verbs' above.
                                   Speech verbs, emotional(?) verbs">
-      <list-item v="bisánit"/>
       <list-item v="suhttat"/>
       <list-item v="luohttit"/>
       <list-item v="dorvvastit"/>
@@ -2125,6 +2125,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
       <list-item v="Guovdageainnu suohkan"/>
       <list-item v="Norge"/>
+      <list-item v="Nord-Norge"/>
       <list-item v="NSR"/>
       <list-item v="USA"/>
       <list-item v="administrasjon"/>
@@ -2984,7 +2985,7 @@ And then there are some categories like "month", with all the months.
             <var n="caseprep"/><lit v="til"/>
           </let>
           <choose>
-            <when c="ill is om " >
+            <when c="ill is om" >
               <test>
                <and>
               <equal><clip pos="1" side="tl" part="lemh"/><lit v="dag"/></equal>
@@ -2996,6 +2997,19 @@ And then there are some categories like "month", with all the months.
              </test>
               <let>
                 <var n="caseprep"/><lit v="om"/>
+              </let>
+            </when>
+            <when c="ill is i">
+              <test><or>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
+<!--                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in> this is not good  -->
+               <equal><var n="previous-nhead"/><lit v="time"/></equal>
+               <equal><var n="previous-nhead"/><lit v="gang"/></equal>
+               <equal><var n="previous-nhead"/><lit v="liv"/></equal>
+             </or></test>
+              <let>
+                <var n="caseprep"/><lit v="i"/>
               </let>
             </when>
             <when c="ill is på">
@@ -3031,19 +3045,6 @@ And then there are some categories like "month", with all the months.
               </test>
               <let>
                 <var n="caseprep"/><lit v="på"/>
-              </let>
-            </when>
-            <when c="ill is i">
-              <test><or>
-                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
-                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
-<!--                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in> this is not good  -->
-               <equal><var n="previous-nhead"/><lit v="time"/></equal>
-               <equal><var n="previous-nhead"/><lit v="gang"/></equal>
-               <equal><var n="previous-nhead"/><lit v="liv"/></equal>
-             </or></test>
-              <let>
-                <var n="caseprep"/><lit v="i"/>
               </let>
             </when>
             <when c="ill is med">
