@@ -1044,6 +1044,7 @@ SELECT:fallback ("feste"i) IF  (0 ("<darvánit>"i)) ;
 SELECT:fallback ("berøre"i) IF  (0 ("<čuohcat>"i)) ;
 
 
+SELECT ("turnere"i) IF  (0 ("<johtit>"i) LINK *0 np + nom ) ;
 SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK 0 prsprc ) ;
 SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK *0 ("<eallu>"i) OR ("<boazu>"i) OR ("<siida>"i) ) ;
 SELECT:fallback ("bevege"i) IF  (0 ("<johtit>"i)) ;
