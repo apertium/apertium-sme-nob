@@ -299,7 +299,6 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="np.*.gen.@-FSUBJ→"/>
       <cat-item tags="n.*.gen.*.@→N"/>
       <cat-item tags="n.*.gen.*.@-FSUBJ→"/>
-      <cat-item tags="np.*.@→N"/>
       <cat-item tags="np.*.@→A"/>
       <cat-item tags="np.*.gen.*.@-FSUBJ→"/>
     </def-cat>
@@ -2043,7 +2042,6 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="ill-i-verbs">
       <list-item v="ásahit"/>
-      <list-item v="vuođđudit"/>
       <list-item v="bisánit"/>
     </def-list>
     <def-list n="ill-for-verbs">
@@ -3014,6 +3012,10 @@ And then there are some categories like "month", with all the months.
                <equal><var n="previous-nhead"/><lit v="gang"/></equal>
                <equal><var n="previous-nhead"/><lit v="liv"/></equal>
              <and>
+                <equal caseless="yes"><var n="main-verb-sl"/><lit v="vuođđudit"/></equal>
+                <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_plc"/></equal>	         
+             </and>       
+             <and>
                 <equal caseless="yes"><var n="main-verb-sl"/><lit v="dubmet"/></equal>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="fengsel"/></equal>	         
              </and>       
@@ -3030,6 +3032,7 @@ And then there are some categories like "month", with all the months.
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="álgit"/></equal>
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="fokuseret"/></equal>
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="ohcat"/></equal>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="vuođđudit"/></equal>
                   <and>
                     <equal><var n="seen_num"/><lit-tag v="num"/></equal>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
