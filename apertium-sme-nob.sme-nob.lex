@@ -1445,6 +1445,8 @@ SELECT ("advare"i) (0 ("<várret>"i) LINK 1 ("<nominašuvdna>"i));
 SELECT ("reservere"i) (0 ("<várret>"i) LINK *0 acc BARRIER SV-BOUNDARY);
 SELECT:fallback ("advare"i) (0 ("<várret>"i));
 
+SELECT ("skyve"i) (0 ("<duvdit>"i) LINK *1 ("<eret>"i) BARRIER SV-BOUNDARY);
+SELECT:fallback ("støtte"i) (0 ("<duvdit>"i));
 
 
 SELECT:fallback ("fortsette"i) (0 ("<joatkit>"i));
@@ -2474,8 +2476,10 @@ SELECT:oss-selv ("selv"i) (0 ("<ieš>"i) LINK 0 acc) (-1 prn + pers + acc) ;
 
 SELECT:til-meg-selv ("selv"i) (0 ("<ieš>"i) LINK 0  ill) (-1 pers + ill) ;
 SELECT:på-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 ill) (NOT -1 pers + ill) ;
+#SELECT:fra-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 loc LINK 0 (@ADVL-ela))  ;
 
 SELECT:skadet-seg-selv ("seg selv"i) (0 ("<ieš>"i) LINK 0 acc LINK NOT -1 prn + pers + acc) ; # (NOT *1 vblex BARRIER S-BOUNDARY) ;
+SELECT:fallback ("selv"i) (0 ("<ieš>"i) LINK 0 loc )  ;
 
 SELECT:med-deg prn (0 ("<ieš>"i)) (0 @→P OR @P←) ;
 # Váldde biergasiid iežat fárrui → Ta sakene med deg

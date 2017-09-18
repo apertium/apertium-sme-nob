@@ -13,7 +13,7 @@ This is the first pass. Responsibilities of this file include:
   * See rule: VERB Der/inchl
 * Simple noun phrases
   * Heads and their simple modifiers/specifiers: adj nom, adj adj nom, det adj adj nom, num adj nom
-  * See rule: DET ADJ_ATTR NOM
+  * See rule: det_mod adj_vblex_attr nom_head
   * See macro: out_nom
 * Insert prepositions based on nominal case
   * These get their own chunk; t2x might have to remove them in co-ordination or post-position rules
@@ -196,6 +196,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="makkár" tags="prn.itg.*"/>
       <cat-item lemma="vaikko guhte" tags="prn.itg.*"/>
       <cat-item lemma="vaikko goabbá" tags="prn.itg.*"/>
+    </def-cat>
+    <def-cat n="det_mod_num">
+      <cat-item tags="prn.dem.*.@→Num"/>
     </def-cat>
     <def-cat n="det_mod" c="Pronouns that end up as determiners, modifying an adj/noun">
       <cat-item tags="prn.pers.*.gen.@→N"/>
@@ -1533,6 +1536,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="vfin-pers"     c="vfin-pers" />
     <def-var n="vfin-nbr"     c="vfin-nbr" />
     <def-var n="vfin-temps"     c="vfin-temps" />
+    <def-var n="syn-temps"     c="syn-temps" />
     <def-var n="foc-word"     c="foc-word" />
   </section-def-vars>
 
@@ -2342,6 +2346,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
         <list-item v="del"/>
       <list-item v="sammendrag"/>
+      <list-item v="halvpart"/>
       <list-item v="resultat"/>
       <list-item v="NUMERAL"/>      <!-- special value set by numerals, see NUMERAL rule -->
     </def-list>
@@ -2735,7 +2740,8 @@ And then there are some categories like "month", with all the months.
                  <equal><var n="previous-nhead"/><lit v="prosent"/></equal>
                 <not><in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in></not>
                </and>
-                <and><or>
+                <and>
+	            <or>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@Pron←"/></equal>
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal>
 <!--                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal>  -->
@@ -3032,6 +3038,7 @@ And then there are some categories like "month", with all the months.
                   <and>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
 <!--                    <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></not>  -->
+                    <not><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="sápmi"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="viiddidit"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalahttit"/></equal></not>
@@ -7329,11 +7336,12 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="2" side="sl" part="a_der"/><lit-tag v="der_sasj"/></equal>
           <not><equal><clip pos="2" side="sl" part="a_attr"/><lit-tag v="attr"/></equal></not>
             </and></test>
+              <let><var n="c_name"/><lit v="pre_"/></let>
             <let>
               <var n="pre-nom"/>
               <concat>
-                <var n="tmp"/>
                  <lit v="^"/>
+                  <clip pos="1" side="tl" part="lemh"/>
                   <lit v="-åring"/>
                   <lit-tag v="n.m"/>
                   <clip pos="2" side="tl" part="nbr"/>
@@ -10140,7 +10148,7 @@ And then there are some categories like "month", with all the months.
 
 
 
-    <rule comment="C[] DET ADJ_ATTR NOM
+    <rule comment="C[] det_mod adj_vblex_attr nom_head
                    min nuoramus bártni → til vår yngste gutt
                    min nuoramus olbmot → våre yngste mennesker
                    du deháleamos doaibma → din viktigste oppgave
@@ -10329,7 +10337,7 @@ And then there are some categories like "month", with all the months.
     </rule>
 
 
-    <rule comment="C[] NOM.GEN DET ADJ_ATTR NOM
+    <rule comment="C[] nom.gen det_mod adj_vblex_attr nom_head
                    –––––
                    riikka nubbi davvisámegiel namma → landets andre nordsamiske navn
                    Sets defnes of possessor NOM.GEN using set_defnes, defnes of possessed NOM is ind.
@@ -11018,6 +11026,47 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+
+    <rule comment="C[] det_mod_num num_mod nom_head" c="Ii sáhte dadjat ahte diet 5 áirasa leat mannan njuolgga NSR:ii.">
+      <pattern>
+        <pattern-item n="det_mod_num"/>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="clean_det"><with-param pos="1"/></call-macro>
+        <call-macro n="set_prn_gen_nbr_art2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <var n="prn_gen"/>
+              <lit-tag v="pl"/>
+              <clip pos="1" side="tl" part="art"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+            <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_num"/>
+              <lit-tag v="un"/>
+              <lit-tag v="pl"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="2"/>
+          </concat>
+        </let>
+        <let><clip pos="3" side="sl" part="syn_label"/><clip pos="2" side="sl" part="syn_label"/></let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+
 
     <rule comment="C[] NUMERAL">
       <pattern>
