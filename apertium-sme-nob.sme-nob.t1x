@@ -314,6 +314,7 @@ And then there are some categories like "month", with all the months.
     <def-cat n="nom.prop.antcog_mod">
       <cat-item tags="np.ant.f.*.@→N"/>
       <cat-item tags="np.ant.m.*.@→N"/>
+      <cat-item tags="np.cog.attr.@→N"/>
       <cat-item tags="n.abbr.*.@→N"/>
     </def-cat>
     <def-cat n="nom.prop.antcog">
@@ -333,7 +334,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="np.*.gen.*"/>
     </def-cat>
     <def-cat n="nom.prop_attr">
-      <cat-item tags="np.attr.*"/>
+      <cat-item tags="np.*.attr.*"/>
       <cat-item tags="n.*.@→N"/>
       <cat-item tags="np.*.@→N"/>
       <cat-item lemma="gonagas" tags="n.*"/>
@@ -2665,7 +2666,7 @@ And then there are some categories like "month", with all the months.
             <var n="caseprep"/><lit v="på"/>
           </let>
           <choose c="Exceptions to the locative→på rule:">
-            <when c="som">
+            <when c="som when loc">
               <test><and>
                 <equal><clip pos="1" side="sl" part="lemh"/><lit v="árvu"/></equal>
                 <equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="sg"/></equal>
@@ -2674,7 +2675,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="som"/>
               </let>
             </when>
-            <when c="om">
+            <when c="om when loc">
               <test>
               <and>
            <not><and>
@@ -2752,7 +2753,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="av"/>
               </let>
             </when>
-            <when c="i">
+            <when c="i when loc">
               <test><and><or>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
@@ -2794,7 +2795,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="i"/>
               </let>
             </when>
-            <when c="med">
+            <when c="med when loc">
               <test>
              <equal><var n="main-verb-sl"/><lit v="geargat"/></equal>
               </test>
@@ -2802,7 +2803,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="med"/>
               </let>
             </when>
-            <when c="for">
+            <when c="for when loc">
               <test><or>
                 <in caseless="yes"><var n="previous-nhead"/><list n="loc-for-head"/></in>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-for"/></in>
@@ -2811,7 +2812,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="for"/>
               </let>
             </when>
-            <when c="etter">
+            <when c="etter when loc">
               <test><or>
                 <in caseless="yes"><var n="previous-nhead"/><list n="loc-etter-head"/></in>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-etter"/></in>
@@ -2820,7 +2821,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="etter"/>
               </let>
             </when>
-            <when c="ved">
+            <when c="ved when loc">
               <test>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-ved"/></in>
               </test>
@@ -2828,7 +2829,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="ved"/>
               </let>
             </when>
-            <when c="for">
+            <when c="for when loc">
               <test>
                 <equal><var n="previous-nhead"/><lit v="takk"/></equal>
               </test>
@@ -2836,7 +2837,7 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="for"/>
               </let>
             </when>
-            <when c="fra">
+            <when c="fra when loc">
               <test>
               <and>
               <or>
@@ -2991,6 +2992,7 @@ And then there are some categories like "month", with all the months.
           <choose>
             <when c="ill is om" >
               <test>
+	              <or>
                <and>
               <equal><clip pos="1" side="tl" part="lemh"/><lit v="dag"/></equal>
               <or>
@@ -2998,6 +3000,11 @@ And then there are some categories like "month", with all the months.
                <equal><var n="previous-nhead"/><lit v="gang"/></equal>
              </or>
              </and>
+                  <and>
+                <equal><var n="previous-nhead"/><lit v="avtale"/></equal>
+             <equal><var n="main-verb-tl"/><lit v="skrive"/></equal>
+                  </and>
+	              </or>
              </test>
               <let>
                 <var n="caseprep"/><lit v="om"/>
@@ -7591,7 +7598,7 @@ And then there are some categories like "month", with all the months.
         <let><var n="c_animacy"/><lit v=""/></let>
       </action>
     </rule>
-    <rule comment="C[T] nom.prop_mod nom.prop
+    <rule comment="C[T] nom.prop_mod nom.prop safd
                    Gender from the first np, syntax from the last one">
       <pattern>
         <pattern-item n="nom.prop_mod"/>

@@ -1228,11 +1228,16 @@ SELECT:fallback ("betjene"i) (0 ("<bálvalit>"i)) ;
 SELECT:vedta ("vedta"i) (0 ("<dohkkehit>"i)) ((*-1 (sem_rule)) OR (*1 (sem_rule))) ;
 SELECT:fallback ("godkjenne"i) (0 ("<dohkkehit>"i)) ;
 
+SELECT:anmelde ("anmelde"i) (0 ("<váidit>"i) LINK 0 der_pass) ((-1 sem_hum OR HUMAN OR coll LINK 0 nom)) ;
+SELECT:fallback ("klage"i) (0 ("<váidit>"i)) ;
+
+
 #SELECT:vedta ("vrake"i) (0 ("<hilgut>"i))  ;
 SELECT:fallback ("avvise"i) (0 ("<hilgut>"i)) ;
 
 SELECT:savne ("savne"i) (0 ("<láhppot>"i) LINK 0 @→N)  ;
-SELECT ("savne"i) (0 ("<láhppot>"i) LINK -1 HUMAN OR ("<gii>"i) LINK 0 nom) ;
+SELECT ("savne"i) (0 ("<láhppot>"i) LINK -1 HUMAN OR ("<gii>"i) LINK 0 nom OR coll) ;
+SELECT ("savne"i) (0 ("<láhppot>"i) LINK *-1 ("<jahki>"i)  BARRIER SV-BOUNDARY LINK 0 (der_sasj) ) ;
 SELECT ("gå vill"i) (0 ("<láhppot>"i) LINK -1 sg + (p1) LINK 0 nom) ;
 SELECT:fallback ("miste"i) (0 ("<láhppot>"i))  ;
 
@@ -2407,10 +2412,11 @@ SELECT ("den"i nt) (0 ("<dat>"i) LINK 1 ("<leat>"i)) ;
 SELECT:fallback ("den"i nt) (0 ("<dat>"i)) ;
 
 
-SELECT ("hun"i) (0 ("<son>"i) LINK *-1 ("<nieida>"i) OR ("<nisu>"i) OR sem_fem) ;
-SELECT ("hun"i) (0 ("<son>"i) LINK *1 ("<nieida>"i) OR ("<nisu>"i)) ; # OR sem_fem BARRIER prn OR n) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK *-1 ("<nieida>"i) OR ("<nisu>"i) OR sem_fem BARRIER sem_mal) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK *1 ("<nieida>"i) OR ("<nisu>"i)  BARRIER sem_mal) ; # OR sem_fem BARRIER prn OR n) ;
 SELECT ("hun"i) (0 ("<son>"i) LINK 1 ("<namma>"i) LINK *1 sem_fem BARRIER prn OR n) ;
 SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER prn OR n) ;
+SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *-1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER sem_fem) ;
 
 
 SELECT ("nå"i)  (0 ("<dát>"i) LINK 0 gen LINK 1 ("<rádjai>"i) LINK 0 post) ;
