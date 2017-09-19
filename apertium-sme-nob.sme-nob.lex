@@ -1047,7 +1047,7 @@ SELECT:fallback ("berøre"i) IF  (0 ("<čuohcat>"i)) ;
 SELECT ("turnere"i) IF  (0 ("<johtit>"i) LINK *0 np + nom ) ;
 SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK 0 prsprc ) ;
 SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK *0 ("<eallu>"i) OR ("<boazu>"i) OR ("<siida>"i) ) ;
-SELECT:fallback ("bevege"i) IF  (0 ("<johtit>"i)) ;
+SELECT:fallback ("flytte"i) IF  (0 ("<johtit>"i)) ;
 
 
 SELECT ("knyttet"i) IF  (0 ("<čadnot>"i) LINK 1 ill + sem_plc ) ;
@@ -1329,6 +1329,7 @@ SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 ("<vejolašvuohta>"i) OR ("<bágg
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 loc BARRIER NOT-ADV-PCLE) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r) OR ("<áigemearri>"i) OR ("<.*divat>"r)) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (1 ill) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (0 @←OBJ) ;
 
 
 SELECT ("bety"i) IF (0 ("<máksit>"i) ) (*0 ("<sátni>"i) + nom BARRIER NOT-NPMODADV);
@@ -1536,6 +1537,10 @@ SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 
 SELECT:fallback ("differensiering"i) (0 ("<sirren>"i) ) ;
 SELECT:fallback ("utgangspunkt"i) (0 ("<álgovuorru>"i) ) ;
+
+SELECT:fallback ("begivenhet"i) (0 ("<dáhpáhus>"i) LINK -1 ("<rabas>"i) ) ;
+SELECT:fallback ("hendelse"i) (0 ("<dáhpáhus>"i) ) ;
+
 
 SELECT ("småkopper"i) (0 ("<boahkku>"i) LINK 0 pl ) ;
 SELECT:fallback ("vaksine"i) (0 ("<boahkku>"i) ) ;
@@ -2525,6 +2530,7 @@ SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
 SELECT:fallback ("mindre"i) (0 ("<unnit>"i)) ; 
+SELECT:fallback ("selvfølgelig"i) (0 ("<dieđus>"i)) ; 
 
 
 SELECT ("opp"i) (0 ("<eret>"i)) (-1 ("<cealkit>"i)) ;
