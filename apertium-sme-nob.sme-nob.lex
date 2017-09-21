@@ -1315,7 +1315,7 @@ SELECT ("sist"i) IF (0 ("<mannat>"i) LINK 0 prfprc + @→N );
 	
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (*-1 ("<mo>"i) OR ("<dat>"i)) (0 sg3);
 ## Mo manná dál?
-SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 ("<bures>"i) BARRIER vblex);
+SELECT ("gå"i) IF (0 ("<mannat>"i)) (*0 ("<bures>"i) OR ("<duššái>"i) BARRIER vblex);
 SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i));
 
 ## Mun manan dál.
@@ -1544,6 +1544,9 @@ SELECT:fallback ("hendelse"i) (0 ("<dáhpáhus>"i) ) ;
 
 SELECT ("småkopper"i) (0 ("<boahkku>"i) LINK 0 pl ) ;
 SELECT:fallback ("vaksine"i) (0 ("<boahkku>"i) ) ;
+
+SELECT ("vare"i) (0 ("<várra>"i) LINK *0 ("<váldit>"i) BARRIER SV-BOUNDARY) ;
+SELECT:fallback ("fare"i) (0 ("<várra>"i) ) ;
 
 
 SELECT:fallback ("tillatelse"i) (0 ("<lohpi>"i)) ;
