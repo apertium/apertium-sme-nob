@@ -1325,7 +1325,7 @@ SELECT:fallback ("gå"i) (0 ("<mannat>"i) LINK NOT 0 @→N) ;
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_org OR pers ) ;
 ## Máhtte máksá guokte ruvnnu.
-SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 ("<vejolašvuohta>"i) OR ("<bággu>"i) OR ("<ráđđi>"i) OR ("<áigemeari>"i) OR ("<divat>"i) ) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 ("<vejolašvuohta>"i) OR ("<bággu>"i) OR ("<ráđđi>"i) OR ("<áigemeari>"i) OR ("<divat>"i)  OR ("<rehket>"i) ) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 loc BARRIER NOT-ADV-PCLE) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r) OR ("<áigemearri>"i) OR ("<.*divat>"r)) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (1 ill) ;
@@ -2214,6 +2214,10 @@ SELECT:fallback ("torsk"i) (0 ("<dorski>"i));
 
 SELECT:fallback ("utmark"i) (0 ("<meahcci>"i));
 
+SELECT ("fiske"i) (0 ("<bivdu>"i) LINK *0 sem_ani-fish) ;
+SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
+
+SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
 
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
 SELECT ("kjendis"i) (0 ("<beakkán>"i));
@@ -2226,7 +2230,6 @@ SELECT:fallback ("energi"i) (0 ("<arva>"i));
 SELECT:fallback ("øre"i) (0 ("<beallji>"i));
 SELECT:fallback ("nektelse"i) (0 ("<biehttalus>"i));
 SELECT:fallback ("miljø"i) (0 ("<biras>"i));
-SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
 SELECT:fallback ("bro"i) (0 ("<boarri>"i));
 SELECT:fallback ("kant"i) (0 ("<borri>"i));
 SELECT:fallback ("spiser"i) (0 ("<borri>"i));
