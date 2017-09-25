@@ -1426,6 +1426,7 @@ SELECT:fallback ("be"i) (0 ("<dáhttut>"i));
 
 
 SELECT ("anse"i) (0 ("<atnit>"i) LINK *1 ess OR ("<árvu>"i) + loc) ;
+SELECT ("anse"i) (0 ("<atnit>"i) LINK -1 ess OR ("<árvu>"i) + loc) ;
 SELECT:fallback ("bruke"i) (0 ("<atnit>"i));
 
 SELECT ("fordele"i) (0 ("<juohkit>"i) LINK 0 der_pass) ;
@@ -1647,6 +1648,7 @@ SELECT:fallback ("bransje"i) (0 ("<suorgi>"i));
 SELECT:fallback ("start"i) (0 ("<vuolgga>"i)) ;
 
 SELECT ("verdifull"i) (0 ("<árvu>"i) + sg + loc LINK *-1 ("<atnit>"i)) ;
+SELECT ("verdifull"i) (0 ("<árvu>"i) + sg + loc LINK 1 ("<atnit>"i)) ;
 SELECT:fallback ("verdi"i) (0 ("<árvu>"i)) ;
 
 	
@@ -2043,6 +2045,7 @@ SELECT:fallback ("Sverige"i) (0 ("<Ruošša>"i));
 
 SELECT:fallback ("hvor mange"i) (0 ("<gallis>"i) + n);
 
+SELECT ("levning"i) (0 ("<bázahus>"i) LINK -1 HUMAN);
 SELECT:fallback ("avfall"i) (0 ("<bázahus>"i));
 
 SELECT:fallback ("fiskekort"i) (0 ("<bivdolohpi>"i));
