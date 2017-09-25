@@ -39,6 +39,7 @@ LIST num = num ;
 LIST interj = ij ;
 LIST abbr = abbr ;
 LIST acr = acr ;
+LIST arab = arab ;
 
 LIST clb = clb sent cm ;
 LIST left = left lquot ;
@@ -1382,6 +1383,7 @@ SELECT:beherske ("få"i) (0 ("<gazzat>"i) LINK *0 ("<oahppu>"i) + acc);
 SELECT:fallback ("spise"i) (0 ("<gazzat>"i));
 
 
+SELECT ("oppdatere"i) (0 ("<ođastit>"i) LINK 1 ("<:>") OR arab OR sem_date);
 SELECT:fallback ("fornye"i) (0 ("<ođastit>"i));
 
 
