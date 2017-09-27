@@ -1091,7 +1091,7 @@ SELECT:fallback ("regne"i) IF  (0 ("<rehkenastit>"i)) ;
 SELECT ("tilegne"i) IF  (0 ("<oamastit>"i)) ((1 ill) OR (-1 ill)) ;
 SELECT:fallback ("eie"i) IF  (0 ("<oamastit>"i)) ;
 
-SELECT ("innvie"i) IF  (0 ("<vihahit>"i)) (*0 ("<áltár>") LINK 0 nom OR acc) ;
+SELECT ("innvie"i) IF  (0 ("<vihahit>"i)) (*0 ("<áltár>") LINK 0 nom OR acc BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("vie"i) IF  (0 ("<vihahit>"i)) ;
 
 SELECT ("bli"i) IF  (0 ("<boahtit>"i)) (1 ("<ovtta oaivilii>")) ;
@@ -1280,6 +1280,7 @@ SELECT:lese ("lese"i) (0 ("<lohkat>"i)) (1 sem_lang) ;
 # Ruth Larsena mielas dát vuoseha ahte lea vejolaš lohkagoahtit sámegiela easkka joatkkaskuvllas
 SELECT:lese ("lese"i) (0 ("<lohkat>"i) LINK 0 der_inchl) ;
 
+SELECT ("si"i) (0 ("<lohkat>"i))(-1 HUMAN) (*1 ill BARRIER NOT-NPMOD) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<ahte>"i) OR ref + acc OR ref + loc OR prfprc OR adj - attr) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (*1 ess) ;
 
@@ -1698,7 +1699,7 @@ SELECT:fallback ("pitesame"i) IF (0 ("<fuomášupmi>"i)) ;
 
 
 # luohkká 0 = bakke, 1 = klasse
-SELECT ("klasse"i) (0 ("<luohkká>"i) LINK 1 ("<oahpaheaddji>"i));
+SELECT ("klasse"i) (0 ("<luohkká>"i) LINK *0 ("<oahpaheaddji>"i) OR ("<skuvla>"i) OR ("<skuvlamátki>"i));
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 ("<deaddu>"i));
 
 
@@ -2045,7 +2046,7 @@ SELECT:fallback ("Sverige"i) (0 ("<Ruošša>"i));
 
 SELECT:fallback ("hvor mange"i) (0 ("<gallis>"i) + n);
 
-SELECT ("levning"i) (0 ("<bázahus>"i) LINK -1 HUMAN);
+SELECT ("levning"i) (0 ("<bázahus>"i) LINK -1 HUMAN OR ("<rumaš>"i));
 SELECT:fallback ("avfall"i) (0 ("<bázahus>"i));
 
 SELECT:fallback ("fiskekort"i) (0 ("<bivdolohpi>"i));
@@ -2107,6 +2108,7 @@ SELECT ("samiske språk"i) (0 ("<sámegiella>"i) LINK 0 gen LINK -1 num);
 SELECT:fallback ("samisk"i) (0 ("<sámegiella>"i));
 
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 0 pl);
+SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 1 ("<namma>"i));
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK -1 gen);
 SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
 
