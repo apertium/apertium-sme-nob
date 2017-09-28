@@ -1091,7 +1091,7 @@ SELECT:fallback ("regne"i) IF  (0 ("<rehkenastit>"i)) ;
 SELECT ("tilegne"i) IF  (0 ("<oamastit>"i)) ((1 ill) OR (-1 ill)) ;
 SELECT:fallback ("eie"i) IF  (0 ("<oamastit>"i)) ;
 
-SELECT ("innvie"i) IF  (0 ("<vihahit>"i)) (*0 ("<áltár>") LINK 0 nom OR acc BARRIER SV-BOUNDARY) ;
+SELECT ("innvie"i) IF  (0 ("<vihahit>"i)) (*0 ("<áltár>") BARRIER SV-BOUNDARY  LINK 0 nom OR acc) ;
 SELECT:fallback ("vie"i) IF  (0 ("<vihahit>"i)) ;
 
 SELECT ("bli"i) IF  (0 ("<boahtit>"i)) (1 ("<ovtta oaivilii>")) ;
@@ -1544,6 +1544,9 @@ SELECT:fallback ("utgangspunkt"i) (0 ("<álgovuorru>"i) ) ;
 
 SELECT:fallback ("begivenhet"i) (0 ("<dáhpáhus>"i) LINK -1 ("<rabas>"i) ) ;
 SELECT:fallback ("hendelse"i) (0 ("<dáhpáhus>"i) ) ;
+
+SELECT ("hardt vær"i) (0 ("<biegga>"i) LINK 1 ("<siste>"i) ) ;
+SELECT:fallback ("vind"i) (0 ("<biegga>"i) ) ;
 
 
 SELECT ("småkopper"i) (0 ("<boahkku>"i) LINK 0 pl ) ;
@@ -2418,6 +2421,8 @@ SELECT:fallback ("mot"i) (0 ("<ektui>"i)) ;
 SELECT ("med"i) (0 ("<mielde>"i) LINK -1 sem_veh OR HUMAN) ;
 SELECT:fallback ("etter"i) (0 ("<mielde>"i) + post) ;
 
+SELECT:fallback ("i"i) (0 ("<siste>"i)) ;
+
 
 SELECT:fallback ("fra"i) (0 ("<rájes>"i)) ;
 
@@ -2568,6 +2573,7 @@ SELECT:fallback ("en gang"i) (0 ("<oktii>"i)) ;
 SELECT ("masse"i) (0 ("<dievva>"i) LINK 1 n + pl) ;
 SELECT:fallback ("full"i) (0 ("<dievva>"i) + adv) ;
 
+SELECT ("lite"i) (0 ("<unnán>"i) LINK 1 gen LINK 1 post) ;
 SELECT ("få"i) (0 ("<unnán>"i) LINK 1 n + pl) ;
 SELECT:fallback ("lite"i) (0 ("<unnán>"i) + adv) ;
 
