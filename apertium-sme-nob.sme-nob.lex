@@ -2139,7 +2139,7 @@ SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIE
 SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
 SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) BARRIER SV-BOUNDARY);
-SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i) OR ("<pálla>"i) OR ("<sihkar>"i) OR ("<eahpesihkar>"i));
+SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i) OR ("<pálla>"i) OR ("<sihkar>"i) OR ("<eahpesihkar>"i) OR ("<cup>"i));
 SELECT ("plass"i) (0 ("<sadji>"i) LINK 1 post);
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
 
