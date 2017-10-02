@@ -1990,7 +1990,7 @@ SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
 
 SELECT ("sør"i) (0 ("<mátta>"i)) (1 np or sem_plc or ("<sápmi>"i)) ;
 SELECT ("sør"i) (0 ("<mátta>"i)) (0 cmp_splitr) ;
-SELECT:fallback ("rot"i) (0 ("<mátta>"i))  ;	
+SELECT:fallback ("sør"i) (0 ("<mátta>"i))  ;	
 
 SELECT ("samskipnad"i) (0 ("<ovttastus>"i)) (-1 ("<studeanta>"i)) ;
 SELECT:fallback ("forbindelse"i) (0 ("<ovttastus>"i))  ;	
