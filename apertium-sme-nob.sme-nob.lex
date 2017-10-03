@@ -2062,6 +2062,7 @@ SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + loc) (*-1 ("<.*vuohta>"r) OR 
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:fallback ("skive"i) (0 ("<skearru>"i));
+SELECT:fallback ("jernbane"i) (0 ("<ruovdemáđidja>"i));
 
 SELECT ("pensjon"i) (0 ("<ealáhat>"i) LINK 0 ill LINK *-1 ("<mannat>"i) OR ("<báhcit>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("beite"i) (0 ("<skearru>"i));
