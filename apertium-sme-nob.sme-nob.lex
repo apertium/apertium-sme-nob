@@ -822,12 +822,12 @@ SELECT:buoremus-livččii (cond-ville) (-1 adj + sup) (0 ("<leat>"i)) ;
 SELECT:sáhttit (cond-skulle) (0 ("<sáhttit>"i)) ;
 SELECT:fallback-kunne (cond) ;
 
+SET OLLU = ("<ollu>"i) OR  ("<olu>"i) ;
 
-SELECT ("mye"i) (0 ("<ollu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
-SELECT ("mye"i) (0 ("<ollu>"i) LINK 1 comp) ;
-SELECT:fallback ("mange"i) (0 ("<ollu>"i)) ;
-SELECT ("mye"i) (0 ("<olu>"i) LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
-SELECT:fallback ("mange"i) (0 ("<olu>"i)) ;
+SELECT ("mye"i) (0 OLLU LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
+SELECT ("mye"i) (0 OLLU LINK 1 comp) ;
+SELECT ("mange"i) (0 OLLU LINK *1 pl BARRIER WORD - attr) ;
+SELECT:fallback ("mye"i) (0 OLLU) ;
 
 
 SELECT ("bak"i) (0 ("<duohken>"i) LINK -1 sem_build OR sem_plc - (top) OR ("<lohku>"i)) ;
@@ -1542,6 +1542,10 @@ SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 SELECT:fallback ("differensiering"i) (0 ("<sirren>"i) ) ;
 SELECT:fallback ("utgangspunkt"i) (0 ("<álgovuorru>"i) ) ;
 
+SELECT ("nødvendig"i) (0 ("<bággu>"i) ) ;
+SELECT:fallback ("tvang"i) (0 ("<bággu>"i) LINK 1 inf) ;
+
+
 SELECT:fallback ("begivenhet"i) (0 ("<dáhpáhus>"i) LINK -1 ("<rabas>"i) ) ;
 SELECT:fallback ("hendelse"i) (0 ("<dáhpáhus>"i) ) ;
 
@@ -2139,7 +2143,8 @@ SELECT:fallback ("måte"i) (0 ("<láhki>"i));
 SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
-SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) BARRIER SV-BOUNDARY);
+REMOVE (maydetind) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) OR ("<oažžut>"i) BARRIER SV-BOUNDARY);
+SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) OR ("<oažžut>"i) BARRIER SV-BOUNDARY);
 SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i) OR ("<pálla>"i) OR ("<sihkar>"i) OR ("<eahpesihkar>"i) OR ("<cup>"i));
 SELECT ("plass"i) (0 ("<sadji>"i) LINK 1 post);
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
