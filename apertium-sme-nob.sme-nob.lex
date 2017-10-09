@@ -1678,6 +1678,7 @@ SELECT:fallback ("situasjon"i) (0 ("<dilálašvuohta>"i)) ;
 
 # áddjá: bestefar vs gamling
 SELECT ("gamling"i) (0 ("<áddjá>"i) LINK -1 num LINK NOT *-1 ←hab→);
+SELECT ("gamling"i) (0 ("<áddjá>"i) LINK -1 attr );
 SELECT ("bestefar"i) (0 ("<áddjá>"i));
 ## Mus leat guokte ádjá.
 ## Doppe čohkkába guokte ádjá.
@@ -1708,6 +1709,7 @@ SELECT:fallback ("pitesame"i) IF (0 ("<fuomášupmi>"i)) ;
 # luohkká 0 = bakke, 1 = klasse
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK *0 ("<oahpaheaddji>"i) OR ("<skuvla>"i) OR ("<skuvlamátki>"i));
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 ("<deaddu>"i));
+SELECT ("bakke"i) (0 ("<luohkká>"i) LINK *-1 ("<fierrat>"i) BARRIER SV-BOUNDARY);
 
 
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 num OR ord OR @→N OR sem_edu);
@@ -2437,8 +2439,11 @@ SELECT:fallback ("fra"i) (0 ("<rájes>"i)) ;
 # ==========================
 
 # SELECT:todo ("denne"i nt) (0 ("<dat>"i) LINK 0 ill LINK 1 ("<leat>"i)) ;
+SELECT pers (0 ("<dat>"i) LINK 0 OBJ) ;
 SELECT ("den"i nt) (0 ("<dat>"i) LINK 1 ("<leat>"i)) ;
 SELECT:fallback ("den"i nt) (0 ("<dat>"i)) ;
+
+
 
 
 SELECT ("hun"i) (0 ("<son>"i) LINK *-1 ("<nieida>"i) OR ("<nisu>"i) OR sem_fem BARRIER sem_mal) ;
