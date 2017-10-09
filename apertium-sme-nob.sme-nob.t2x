@@ -55,6 +55,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="unknown">
       <cat-item tags="unknown"/>
     </def-cat>
+    <def-cat n="notactioess">
+      <cat-item lemma="verb" tags="*.notactioess.*"/>
+      <cat-item lemma="verb" tags="*.notactioess"/>
+    </def-cat>
     <def-cat n="firstname">
       <cat-item tags="*.f.*"/>
       <cat-item tags="*.m.*"/>
@@ -183,6 +187,12 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item lemma="vcop" tags="SV.@+FAUXV"/>
       <cat-item lemma="vcop" tags="SV.@+FAUXV.*"/>
     </def-cat>
+    <def-cat n="vcop-aux">
+      <cat-item lemma="vcop" tags="SV.@-FAUXV"/>
+      <cat-item lemma="vcop" tags="SV.@-FAUXV.*"/>
+      <cat-item lemma="vcop" tags="SV.@+FAUXV"/>
+      <cat-item lemma="vcop" tags="SV.@+FAUXV.*"/>
+    </def-cat>
     <def-cat n="V.TD">
       <cat-item tags="SV.@←OBJ.TD.*"/>
     </def-cat>
@@ -238,9 +248,15 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="@PCLE.qst"/>
       <cat-item tags="@PCLE.qst.*"/>
     </def-cat>
+    <def-cat n="whatever">
+      <cat-item tags="SN.*"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
+    <def-attr n="actioess">
+      <attr-item tags="actio.ess"/>
+    </def-attr>
     <def-attr n="a_sintagma">
       <attr-item tags="SN"/>
       <attr-item tags="SV"/>
@@ -983,6 +999,29 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </when></choose>
       </action>
     </rule>
+
+   <rule comment="REGLA: vcop-FV whatever notactioess  out: 2 3 " c="in lean daid fuotnumin.">
+      <pattern>
+        <pattern-item n="vcop-aux"/>
+        <pattern-item n="whatever"/>
+        <pattern-item n="notactioess"/>
+      </pattern>
+      <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <let><clip pos="3" part="syn_label"/><lit-tag v="@+FMAINV"/></let>
+      <choose><when><test>
+	    <equal><clip pos="1" part="temps"/><lit-tag v="pret"/></equal></test>    
+        <let><clip pos="3" part="actioess"/><lit-tag v="indic.pret"/></let></when>
+        <otherwise>
+        <let><clip pos="3" part="actioess"/><lit-tag v="indic.pres"/></let></otherwise>
+        </choose>
+        <out>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>  
 
     <rule comment="REGLA: adv-FV lSUBJ  out: 2 1 " c="In mun sáhte sárdnut ruoššagillii.">
       <pattern>

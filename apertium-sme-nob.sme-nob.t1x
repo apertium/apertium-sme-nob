@@ -365,6 +365,10 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-state.actio.ess">
       <cat-item lemma="vuordit" tags="vblex.*.actio.ess.*"/>
       <cat-item lemma="oađđit" tags="vblex.*.actio.ess.*"/>
+      <cat-item lemma="boahtit" tags="vblex.*.actio.ess.*"/>
+      <cat-item lemma="hálddašit" tags="vblex.*.actio.ess.*"/>
+      <cat-item lemma="govddodit" tags="vblex.*.actio.ess.*"/>
+      <cat-item lemma="fuotnut" tags="vblex.*.actio.ess.*"/>
     </def-cat>
     <def-cat n="cc">
       <cat-item tags="cnjcoo.*"/>
@@ -1024,6 +1028,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="actio.ess"/>
       <attr-item tags="actio.loc"/>
       <attr-item tags="actio.nom"/>
+      <attr-item tags="actio.ess.not"/>
     </def-attr>
     <def-attr n="a_caus">                                      <!--TODO: what's the category name?-->
       <attr-item tags="caus"/>
@@ -1514,6 +1519,7 @@ And then there are some categories like "month", with all the months.
     <def-var n="c_name"          c="chunk name"/>
     <def-var n="c_neverdet"      c="tell t4x never to output a determiner if this is set to something"/>
     <def-var n="tmp"             c="temporary variable"/>
+    <def-var n="notactioess"             c="notactioess"/>
     <def-var n="blank"           c="for removing blanks"/>
     <def-var n="c_gen"           c="chunk gender"/>
     <def-var n="c_nbr"           c="chunk number"/>
@@ -1548,6 +1554,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="oađđit"/>
       <list-item v="hálddašit"/>
       <list-item v="govddodit"/>
+      <list-item v="fuotnut"/>
     </def-list>
     <def-list n="cond-NIL-verbs">
       <list-item v="fertet"/>
@@ -3027,6 +3034,10 @@ And then there are some categories like "month", with all the months.
                <equal><var n="previous-nhead"/><lit v="time"/></equal>
                <equal><var n="previous-nhead"/><lit v="gang"/></equal>
                <equal><var n="previous-nhead"/><lit v="liv"/></equal>
+             <and>
+                <equal caseless="yes"><var n="main-verb-sl"/><lit v="njuiket"/></equal>
+                <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_plc"/></equal>	         
+             </and>       
              <and>
                 <equal caseless="yes"><var n="main-verb-sl"/><lit v="vuođđudit"/></equal>
                 <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_plc"/></equal>	         
@@ -4590,7 +4601,7 @@ And then there are some categories like "month", with all the months.
       </when></choose>
 
       <choose c="Prepend cnjsub if present progressive:
-                 TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the left, it should be inf. Infintive marker å is added in t4x">
+                 TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the left, it should be inf. Infintive marker å is added in t4x">   
         <when>
           <test><and>
             <equal><clip pos="1" side="sl" part="a_actio"/><lit-tag v="actio.ess"/></equal>
@@ -4614,6 +4625,17 @@ And then there are some categories like "month", with all the months.
           <call-macro n="reset_caseFirstWord"></call-macro>
         </when>
       </choose>
+      <choose c="no.actio.ess">   
+        <when>
+          <test><and>
+            <equal><clip pos="1" side="sl" part="a_actio"/><lit-tag v="actio.ess"/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+            <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="no.actio.ess"/></in>
+          </and></test>
+          <let><var n="notactioess"/><lit-tag v="notactioess"/></let>
+        </when>
+      </choose>
+
 
       <choose c="Prepend 'kunne/skulle/skal' if conditional:">
         <when>
@@ -4966,6 +4988,7 @@ And then there are some categories like "month", with all the months.
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
                 <tag><var n="caseprep-verb"/></tag>
                 <tag><var n="esubj"/></tag>
+                <tag><var n="notactioess"/></tag>
               </tags>
               <var n="pre-verb"/>
               <lu>
@@ -9031,7 +9054,38 @@ And then there are some categories like "month", with all the months.
           <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
          </otherwise>
        </choose>
-
+       <choose><when><test>
+	    <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.pers"/></equal>   
+       </test>
+        <call-macro n="set_foc-word"><with-param pos="1"/></call-macro>
+	        <out>
+          <var n="caseprep"/>
+          <chunk name="prn" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="hab"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_prn"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <clip pos="1" side="tl" part="pers"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+          <var n="foc-word"/>
+        </out>
+          </when>
+        <otherwise>
         <out>
           <var n="caseprep"/>
           <chunk name="det" case="caseFirstWord">
@@ -9056,6 +9110,7 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+        </otherwise></choose>
       </action>
     </rule>
 

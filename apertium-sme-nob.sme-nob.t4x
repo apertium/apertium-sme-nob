@@ -587,6 +587,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <test><and>
             <equal><clip pos="2" part="a_prn"/><lit-tag v="prn.pers"/></equal>
             <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
+            <not><equal><clip pos="2" part="lemh"/><lit v="den"/></equal></not>
 <!--            <not><equal><clip pos="2" part="gen"/><lit-tag v="f"/></equal></not>  -->
           </and></test>
           <let><clip pos="2" part="lemh"/><get-case-from pos="1"><lit v="prpers"/></get-case-from></let>
@@ -622,9 +623,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
       <choose><when c="p3.sg.mf should be m">
         <test><and>
           <not><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.ref"/></equal></not>
-          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit-tag v="hen"/></equal></not>
-          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit-tag v="h_n"/></equal></not>
-          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit-tag v="den"/></equal></not>
+          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit v="hen"/></equal></not>
+          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit v="h_n"/></equal></not>
+          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit v="den"/></equal></not>
           <equal><clip pos="2" part="pers"/><lit-tag v="p3"/></equal>
           <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
           <equal><clip pos="2" part="gen"/><lit-tag v="mf"/></equal>
