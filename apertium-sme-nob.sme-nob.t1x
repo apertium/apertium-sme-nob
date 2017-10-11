@@ -556,6 +556,13 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.*.sg.acc.*"/>
       <cat-item tags="n.*.sg.com.*"/>
     </def-cat>
+    <def-cat n="np-nom">
+      <cat-item tags="np.*.nom.*"/>
+    </def-cat>
+    <def-cat n="lex-latnja">
+      <cat-item lemma="latnja" tags="n.*"/>
+      <cat-item lemma="čoahkkinlatnja" tags="n.*"/>
+    </def-cat>
     <def-cat n="lex-gilvu">
       <cat-item lemma="gilvu" tags="n.*"/>
       <cat-item lemma="beanagilvu" tags="n.*"/>
@@ -3926,6 +3933,7 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FMAINV"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@X"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@A←"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL→"/></equal> <!-- vabess -->
@@ -6190,6 +6198,23 @@ And then there are some categories like "month", with all the months.
       <pattern>
         <pattern-item n="lex-Finnmarksløpet"/>
         <pattern-item n="lex-gilvu"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+
+        <!-- for possessed NOM -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+        <rule comment="C[T] lex-prop-nom lex-latnja">
+      <pattern>
+        <pattern-item n="np-nom"/>
+        <pattern-item n="lex-latnja"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
