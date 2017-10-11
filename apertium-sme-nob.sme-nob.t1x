@@ -2116,6 +2116,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="dag"/>
       <list-item v="morgen"/>
       <list-item v="natt"/>
+      <list-item v="tema"/>
     </def-list>
     <def-list n="loc-for" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
       <list-item v="NOTHING HERE YET"/>
@@ -9147,6 +9148,10 @@ And then there are some categories like "month", with all the months.
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+      <choose><when>
+	      <test><equal><clip pos="1" side="tl" part="lemh"/><lit v="hvilkets"/></equal></test>
+	      <let><clip pos="1" side="tl" part="lemh"/><lit v="hvilket"/></let>
+	      </when></choose>
         <out>
           <chunk name="rel" case="caseFirstWord">
             <tags>
