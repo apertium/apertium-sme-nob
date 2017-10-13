@@ -112,6 +112,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.sem_measr_time.*"/>
       <cat-item tags="n.sem_ani_hum_time.*"/>
       <cat-item tags="n.sem_ani_time.*"/>
+      <cat-item tags="n.sem_measr_obj_time.*"/>
       <cat-item tags="n.sem_body_group_hum_time.*"/>
       <cat-item tags="n.sem_body_time.*"/>
       <cat-item tags="n.sem_event_time.*"/>
@@ -796,6 +797,9 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="measr">
       <cat-item tags="n.sem_measr.*"/>
+      <cat-item tags="n.sem_measr_obj_time.*"/>
+      <cat-item tags="n.sem_measr_sign.*"/>
+      <cat-item tags="n.sem_measr_time.*"/>
     </def-cat>
     <def-cat n="ij-adj">
       <cat-item lemma="buorre" tags="adj.sg.*"/>
@@ -948,6 +952,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="cmp"/>
       <attr-item tags="guio"/>
       <attr-item tags="cmp.guio"/>
+      <attr-item tags="cmp_hyph"/>
       <attr-item tags="cmp_splitr"/>
     </def-attr>
     <def-attr n="a_cmp_nbrcas">
@@ -1401,6 +1406,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_mat_plant"/>
       <attr-item tags="sem_mat_txt"/>
       <attr-item tags="sem_measr"/>
+      <attr-item tags="sem_measr_obj_time"/>
       <attr-item tags="sem_measr_sign"/>
       <attr-item tags="sem_measr_time"/>
       <attr-item tags="sem_money"/>
@@ -1672,6 +1678,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_event_time&gt;"/>
       <list-item v="&lt;sem_hum_lang_time&gt;"/>
       <list-item v="&lt;sem_measr_time&gt;"/>
+      <list-item v="&lt;sem_measr_obj_time&gt;"/>
       <list-item v="&lt;sem_plc_time&gt;"/>
       <list-item v="&lt;sem_time&gt;"/>
       <list-item v="&lt;sem_time_wthr&gt;"/>
@@ -2184,6 +2191,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="forbindelse"/>
       <list-item v="form"/>
       <list-item v="forord"/>
+      <list-item v="forskning"/>
       <list-item v="forvaltning"/>
       <list-item v="framtid"/>
       <list-item v="frykt"/>
@@ -2564,6 +2572,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="determinerless_sem">
       <list-item v="&lt;sem_time&gt;"/>
       <list-item v="&lt;sem_time_wthr&gt;"/>
+      <list-item v="&lt;sem_measr_obj_time&gt;"/>
       <list-item v="&lt;sem_measr_time&gt;"/>
       <list-item v="&lt;sem_ani_hum_time&gt;"/>
       <list-item v="&lt;sem_ani_time&gt;"/>
@@ -3563,7 +3572,7 @@ And then there are some categories like "month", with all the months.
               <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
             </when>
             <when>
-              <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp.guio"/></equal></test>
+              <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp_hyph"/></equal></test>
               <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
             </when>
           </choose>
@@ -9175,7 +9184,7 @@ And then there are some categories like "month", with all the months.
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
       <choose><when>
-	      <test><equal><clip pos="1" side="tl" part="lemh"/><lit v="hvilkets"/></equal></test>
+	      <test><equal><clip pos="1" side="tl" part="lemh"/><lit v="hvis"/></equal></test>
 	      <let><clip pos="1" side="tl" part="lemh"/><lit v="hvilket"/></let>
 	      </when></choose>
         <out>

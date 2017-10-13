@@ -2117,6 +2117,7 @@ SELECT:fallback ("tale"i) (0 ("<sárdni>"i));
 
 SELECT ("samiske språk"i) (0 ("<sámegiella>"i) LINK 0 pl);
 SELECT ("samiske språk"i) (0 ("<sámegiella>"i) LINK 0 gen LINK -1 num);
+SELECT ("samisk språk"i) (0 ("<sámegiella>"i) LINK 1 cnjcoo LINK 1 ("<kultuvra>"i));
 SELECT:fallback ("samisk"i) (0 ("<sámegiella>"i));
 
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 0 pl);
