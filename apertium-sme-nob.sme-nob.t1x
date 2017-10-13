@@ -952,7 +952,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="cmp"/>
       <attr-item tags="guio"/>
       <attr-item tags="cmp.guio"/>
-      <attr-item tags="cmp_hyph"/>
+      <attr-item tags="cmp_hyph.cmp"/>
       <attr-item tags="cmp_splitr"/>
     </def-attr>
     <def-attr n="a_cmp_nbrcas">
@@ -3572,7 +3572,7 @@ And then there are some categories like "month", with all the months.
               <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
             </when>
             <when>
-              <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp_hyph"/></equal></test>
+              <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_hyph.cmp"/></equal></test>
               <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
             </when>
           </choose>
