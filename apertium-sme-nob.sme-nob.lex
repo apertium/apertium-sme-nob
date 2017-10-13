@@ -858,7 +858,7 @@ SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub LINK -1 (@COMP-CS←)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (1 ("<dušše>"i)) ;
-SELECT ("enn"i) (0 ("<go>"i)) (-1 conneg LINK -1 neg) ;
+SELECT ("enn"i) (0 ("<go>"i)) (-1 conneg LINK -1 neg)(NEGATE 1 VFIN) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (*-1 ("<ovdal>"i) OR ("<eará>"i) BARRIER S-BOUNDARY) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (*-1 comp BARRIER vblex OR S-BOUNDARY) ;
 ## Son lea viššaleabbo go mun.
@@ -1630,7 +1630,7 @@ SELECT ("distanse"i) (0 ("<mátki>"i) LINK *0 ("<kilomehter>"i)) ;
 SELECT:fallback ("reise"i) (0 ("<mátki>"i)) ;
 
 SELECT ("pris"i) (0 ("<bálkkašupmi>"i) LINK -1 np) ;
-SELECT:fallback ("premie"i) (0 ("<bálkkašupmi>"i)) ;
+SELECT:fallback ("pris"i) (0 ("<bálkkašupmi>"i)) ;
 
 SELECT ("arrangement"i) (0 ("<lágideapmi>"i) + pl) ;
 SELECT:fallback ("organisering"i) (0 ("<lágideapmi>"i)) ;

@@ -335,6 +335,18 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="np.*.gen"/>
       <cat-item tags="np.*.gen.*"/>
     </def-cat>
+    <def-cat n="nom.prop_attr-gen">
+      <cat-item tags="np.*.attr.*"/>
+      <cat-item tags="n.*.@→N"/>
+      <cat-item tags="np.*.@→N"/>
+      <cat-item lemma="gonagas" tags="n.*"/>
+      <cat-item lemma="dronnet" tags="n.*"/>
+      <cat-item lemma="prinsa" tags="n.*"/>
+      <cat-item lemma="ruvdnaprinsa" tags="n.*"/>
+      <cat-item lemma="prinseassa" tags="n.*"/>
+      <cat-item lemma="ruvdnaprinseassa" tags="n.*"/>
+      <cat-item tags="np.*.gen.*"/>
+    </def-cat>
     <def-cat n="nom.prop_attr">
       <cat-item tags="np.*.attr.*"/>
       <cat-item tags="n.*.@→N"/>
@@ -3076,8 +3088,14 @@ And then there are some categories like "month", with all the months.
                   <in caseless="yes"><var n="previous-nhead"/><list n="ill-på-head"/></in>
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="álgit"/></equal>
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="fokuseret"/></equal>
-                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="ohcat"/></equal>
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="vuođđudit"/></equal>
+                  <and>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="ohcat"/></equal>
+                    <or>
+                    <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_pos"/></equal>
+                    <in caseless="yes"><var n="previous-nhead_sem"/><list n="sem_edu"/></in>
+                    </or>
+                  </and>
                   <and>
                     <equal><var n="seen_num"/><lit-tag v="num"/></equal>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
@@ -10852,7 +10870,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] nom.prop.gen nom_head FeFo
+    <rule comment="C[] nom.prop.gen nom_head
                    –––––
                    Defnes of possessed NOM is ind (NOM.PROP has no defnes).
                    Needs to be before NOM.GEN NOM">
