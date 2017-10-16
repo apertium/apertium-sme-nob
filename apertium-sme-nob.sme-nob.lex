@@ -2434,6 +2434,9 @@ SELECT:fallback ("etter"i) (0 ("<mielde>"i) + post) ;
 
 SELECT:fallback ("i"i) (0 ("<siste>"i)) ;
 
+SELECT ("på grunn av"i) (0 ("<dihte>"i) LINK *-1 ("<rámis>"i) BARRIER SV-BOUNDARY) ;
+SELECT:fallback ("for"i) (0 ("<dihte>"i) + post) ;
+
 
 SELECT:fallback ("fra"i) (0 ("<rájes>"i)) ;
 
