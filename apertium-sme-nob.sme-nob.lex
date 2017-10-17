@@ -1552,6 +1552,14 @@ SELECT:fallback ("hendelse"i) (0 ("<dáhpáhus>"i) ) ;
 SELECT ("hardt vær"i) (0 ("<biegga>"i) LINK 1 ("<siste>"i) ) ;
 SELECT:fallback ("vind"i) (0 ("<biegga>"i) ) ;
 
+SELECT ("virkeligheten"i) (0 ("<duohtavuohta>"i) LINK 0 loc ) ;
+SELECT:fallback ("sannhet"i) (0 ("<duohtavuohta>"i) ) ;
+
+SELECT ("faste medlem"i) (0 ("<fástalahttu>"i) LINK 0 pl ) ;
+SELECT:fallback ("fast medlem"i) (0 ("<fástalahttu>"i) ) ;
+
+SELECT:fallback ("juks"i) (0 ("<vearridahku>"i) ) ;
+
 
 SELECT ("småkopper"i) (0 ("<boahkku>"i) LINK 0 pl ) ;
 SELECT:fallback ("vaksine"i) (0 ("<boahkku>"i) ) ;
@@ -1709,7 +1717,7 @@ SELECT:fallback ("gamme"i) IF (0 ("<goahti>"i)) ;
 
 
 # luohkká 0 = bakke, 1 = klasse
-SELECT ("klasse"i) (0 ("<luohkká>"i) LINK *0 ("<oahpaheaddji>"i) OR ("<skuvla>"i) OR ("<skuvlamátki>"i));
+SELECT ("klasse"i) (0 ("<luohkká>"i) LINK *0 ("<oahpaheaddji>"i) OR ("<skuvla>"i) OR ("<skuvlamátki>"i) OR ("<čoahkkin>"i));
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 ("<deaddu>"i));
 SELECT ("bakke"i) (0 ("<luohkká>"i) LINK *-1 ("<fierrat>"i) BARRIER SV-BOUNDARY);
 
