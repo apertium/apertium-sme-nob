@@ -142,6 +142,7 @@ LIST px3du = px3du ;
 LIST px1pl = px1pl ;
 LIST px2pl = px2pl ;
 LIST px3pl = px3pl ;
+LIST PX = px1sg px2sg px3sg px1du px2du px3du px1pl px2pl px3pl ;
 
 LIST comp = comp ;
 LIST sup = sup ;
@@ -2233,10 +2234,16 @@ SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK -1 COPULAS LINK *-1 ←hab→ LIN
 SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
 
 SELECT ("tiltak"i) (0 ("<doaibma>"i) LINK -1 cmp) ;
+SELECT ("virksomhet"i) (0 ("<doaibma>"i) LINK 0 PX) ;
+SELECT ("virksomhet"i) (0 ("<doaibma>"i) LINK -1 gen ) ;
 SELECT:fallback ("oppgave"i) (0 ("<doaibma>"i));
 
 SELECT ("yrkes"i) (0 ("<ámmát>"i) LINK 0 cmp) ;
 SELECT:fallback ("embete"i) (0 ("<ámmát>"i));
+
+SELECT ("ekstern"i) (0 ("<olggobealle>"i) LINK 0 gen) ;
+SELECT:fallback ("ytterside"i) (0 ("<olggobealle>"i));
+
 
 SELECT ("torske"i) (0 ("<dorski>"i) LINK 0 cmp) ;
 SELECT:fallback ("torsk"i) (0 ("<dorski>"i));
