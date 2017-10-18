@@ -2361,6 +2361,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="side"/>
       <list-item v="skole"/>
       <list-item v="slette"/>
+      <list-item v="sykehjem"/>
+      <list-item v="sykehus"/>
       <list-item v="søndag"/>
       <list-item v="tall"/>
       <list-item v="tirsdag"/>
@@ -2428,6 +2430,9 @@ And then there are some categories like "month", with all the months.
       <list-item v="skumring"/>
       <list-item v="regn"/>
       <list-item v="tåke"/>
+    </def-list>
+    <def-list n="ess-på" c="Essive noun phrases default to 'som' unless in this list">
+      <list-item v="besøk"/>
     </def-list>
     <def-list n="ill-i" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="del"/>
@@ -3022,6 +3027,14 @@ And then there are some categories like "month", with all the months.
             </test>
             <let>
               <var n="caseprep"/><lit v="i"/>
+            </let>
+          </when>
+          <when c="ess is på">
+            <test>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-på"/></in>
+            </test>
+            <let>
+              <var n="caseprep"/><lit v="på"/>
             </let>
           </when></choose>
           <choose><when c="ess is en">
@@ -3653,6 +3666,13 @@ And then there are some categories like "month", with all the months.
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="ekstra"/></equal></not>
             <not><and>
+            <equal><clip pos="1" side="tl" part="lemh"/><lit v="same"/></equal>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@OBJ→"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@F←OBJ"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FOBJ→"/></equal></not>
+            </and></not>
+            <not><and>
             <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_domain"/></equal>
             <not><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></not>
             </and></not>
@@ -3753,7 +3773,10 @@ And then there are some categories like "month", with all the months.
             <or>
               <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="ord.pst"/></equal>
               <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal>
+              <and>
               <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+            <not><equal><clip pos="2" side="sl" part="lemh"/><lit v="eará"/></equal></not>
+              </and>
               <equal><clip pos="2" side="tl" part="lemh"/><lit v="eneste"/></equal>
             </or>
             <not><equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal></not>
@@ -3764,6 +3787,7 @@ And then there are some categories like "month", with all the months.
         <when>
           <test><or>
             <ends-with><clip pos="2" side="tl" part="lemh"/><lit v="og en halv"/></ends-with>
+            <equal><clip pos="2" side="sl" part="lemh"/><lit v="eará"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>

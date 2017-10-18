@@ -76,6 +76,7 @@ LIST np = np ;
 LIST sem_ani = np.sem_ani sem_ani sem_ani-fish sem_ani_body-abstr_hum sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_ani_group sem_ani_group_hum sem_ani_hum sem_ani_hum_plc sem_ani_hum_time sem_ani_plc sem_ani_plc_txt sem_ani_time sem_ani_veh ;
 LIST sem_build = sem_amount_build sem_ani_build sem_ani_build-part sem_ani_build_hum_txt sem_build sem_build_event_org sem_build_obj sem_build-part sem_build-part_plc sem_build_build-part sem_build_clth-part sem_build_edu_org sem_build_event_org sem_build_org sem_build_route  ;
 LIST sem_ani-fish = sem_ani-fish ;
+LIST sem_curr = sem_clth-jewl_curr sem_clth-jewl_curr_obj sem_clth-jewl_curr_obj_org sem_curr sem_curr_org ;
 LIST sem_date = sem_date ;
 LIST sem_domain = sem_domain sem_domain_food-med sem_domain_prod-audio ;
 LIST sem_edu = sem_edu sem_build_edu_org sem_edu_event sem_edu_group_hum sem_edu_mat sem_edu_org ;
@@ -1083,7 +1084,7 @@ SELECT ("få"i) IF  (0 ("<goddit>"i)) (0* sem_ani-fish) ;
 SELECT:fallback ("drepe"i) IF  (0 ("<goddit>"i)) ;
 
 
-SELECT ("samle"i) IF  (0 ("<čoaggit>"i)) (0* ("<ruhta>"i) + acc OR ("<namma>"i) + acc OR ("<namma>"i) + gen) ;
+SELECT ("samle"i) IF  (0 ("<čoaggit>"i)) (0* ("<ruhta>"i) + acc OR sem_curr + acc OR ("<namma>"i) + acc OR ("<namma>"i) + gen) ;
 SELECT:fallback ("plukke"i) IF  (0 ("<čoaggit>"i)) ;
 
 SELECT ("regne# ut"i) IF  (0 ("<rehkenastit>"i)) (1 ("<gallis>"i) OR ("<galle>"i)) ;
@@ -1382,7 +1383,7 @@ SELECT:fallback ("publisere"i) (0 ("<almmuhit>"i));
 SELECT:beherske ("beherske"i) (0 ("<hálddašit>"i) LINK *0 sem_lang);
 SELECT:fallback ("forvalte"i) (0 ("<hálddašit>"i));
 
-SELECT:beherske ("få"i) (0 ("<gazzat>"i) LINK *0 ("<oahppu>"i) + acc);
+SELECT ("tilegne"i) (0 ("<gazzat>"i) LINK *0 ("<.*oahppu>"r) + acc);
 SELECT:fallback ("spise"i) (0 ("<gazzat>"i));
 
 
@@ -2217,6 +2218,10 @@ SELECT:fallback ("mellomrom"i) (0 ("<gaska>"i));
 SELECT ("sjikt"i) (0 ("<geardi>"i) LINK -1 comp + attr);
 SELECT:fallback ("gang"i) (0 ("<geardi>"i));
 
+SELECT ("besøk"i) (0 ("<guossi>"i) LINK 0 ess);
+SELECT:fallback ("gjest"i) (0 ("<guossi>"i));
+
+
 SELECT:fallback ("insekt"i) (0 ("<divri>"i));
 
 SELECT ("lag"i) (0 ("<joavku>"i) LINK *0 ("<čiekčat>"i) OR ("<divišuvdna>"i) OR ("<ráidočiekčan>"i) OR ("<čiekčan>"i) OR ("<čiekčat>"i) OR ("<čiekči>"i));
@@ -2457,6 +2462,8 @@ SELECT:fallback ("for"i) (0 ("<dihte>"i) + post) ;
 
 SELECT:fallback ("fra"i) (0 ("<rájes>"i)) ;
 
+SELECT:fallback ("på grunnlag av"i) (0 ("<vuođul>"i)) ;
+
 
 # Pronouns, relativisers, conjuctions
 # ==========================
@@ -2496,6 +2503,8 @@ LIST loc/adv = loc adv;
 SELECT:test ("hva"i) (0 ("<mii>"i) LINK 0 @OBJ→) (*-1 FMAINV BARRIER (*) - loc/adv) ; # Hui hárve boahtá<iv!> ovdan oahppoplánabarggus maid sii gáibidit skuvllas.
 SELECT:post ("hva"i) (0 ("<mii>"i) LINK 1 post) ;
 SELECT:fallback ("som"i) (0 ("<mii>"i)) ;
+SELECT ("hvilken"i) (0 ("<mii>"i) LINK 0 rel + @→N LINK 1 @→N) ;
+SELECT:fallback ("hvis"i) (0 ("<mii>"i) LINK 0 rel + @→N ) ;
 
 SELECT:pl ("noen"i) (0 ("<muhtun>"i) + pl) ;
 SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
