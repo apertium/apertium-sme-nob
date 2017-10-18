@@ -489,6 +489,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-beali">
       <cat-item lemma="beali" tags="adv.*"/>
     </def-cat>
+    <def-cat n="lex-dievva">
+      <cat-item lemma="dievva" tags="adv.*"/>
+    </def-cat>
     <def-cat n="lex-unnit">
       <cat-item lemma="unnit" tags="adv.*"/>
       <cat-item lemma="unni" tags="adj.*"/>
@@ -2322,9 +2325,11 @@ And then there are some categories like "month", with all the months.
       <list-item v="Kvaløysletta"/>
       <list-item v="Lillehammer"/>
       <list-item v="Madagaskar"/>
+      <list-item v="Ráisduottarháldi"/>
       <list-item v="Sameskolen"/>
       <list-item v="Sennalandet"/>
       <list-item v="Sicilia"/>
+      <list-item v="Statnett"/>
       <list-item v="Sørøya"/>
       <list-item v="Svalbard"/>
       <list-item v="Varangerhalvøya"/>
@@ -5774,6 +5779,43 @@ And then there are some categories like "month", with all the months.
               <clip pos="1" side="tl" part="gen"/>
               <lit-tag v="pl.def"/>
               <clip pos="1" side="tl" part="lemq"/>
+             </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[TW] lex-dievva noun" c="dievva bierggut">
+      <pattern>
+        <pattern-item n="lex-dievva"/>
+        <pattern-item n="nom_all"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="caseprep" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="PR"/></tag>
+              <tag><lit-tag v="com"/></tag>
+            </tags>
+            <lu>
+              <lit v="full av"/>
+              <lit-tag v="pr"/>
+            </lu>
+          </chunk>
+            <b pos="1"/>
+          <chunk name="nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="noun"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
              </lu>
           </chunk>
         </out>

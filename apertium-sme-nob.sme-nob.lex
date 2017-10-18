@@ -891,6 +891,7 @@ SELECT:fallback ("hvilken av de to"i) (0 ("<goabbá>"i)) ;
 SELECT:fallback ("i hele"i) (0 ("<miehtá>"i)) ;
 
 SELECT ("rundt"i) (0 ("<birra>"i) LINK 0 post LINK *0 ("<vuodjit>"i) ) ;
+SELECT ("på"i) (0 ("<birra>"i) LINK 0 post LINK *-1 ("<jurddašit>"i) BARRIER SV-BOUNDARY ) ;
 SELECT:fallback ("om"i) (0 ("<birra>"i)) ;
 
 SELECT ("innen"i) (0 ("<sisa>"i) LINK 0 post LINK -1 sem_time) ;
@@ -2221,7 +2222,8 @@ SELECT:fallback ("insekt"i) (0 ("<divri>"i));
 SELECT ("lag"i) (0 ("<joavku>"i) LINK *0 ("<čiekčat>"i) OR ("<divišuvdna>"i) OR ("<ráidočiekčan>"i) OR ("<čiekčan>"i) OR ("<čiekčat>"i) OR ("<čiekči>"i));
 SELECT:fallback ("gruppe"i) (0 ("<joavku>"i)) ;
 
-SELECT:fallback ("venn"i) (0 ("<olmmái>"i));
+SELECT ("venn"i) (0 ("<olmmái>"i) LINK -1 HUMAN + gen);
+SELECT:fallback ("mann"i) (0 ("<olmmái>"i));
 
 SELECT ("vern"i) (0 ("<suodji>"i) LINK -1 ("<kultuvra>"i) );
 SELECT:fallback ("ly"i) (0 ("<suodji>"i));
