@@ -2914,6 +2914,7 @@ And then there are some categories like "month", with all the months.
                 <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-F←ADVL-ela"/></equal>
               </or>
                 <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_mat"/></in></not>
+                <not><equal><var n="main-verb-sl"/><lit v="báidnit"/></equal></not>
               </and>
               </test>
               <let>
@@ -6941,6 +6942,157 @@ And then there are some categories like "month", with all the months.
         </when></choose>
       </action>
     </rule>
+   <rule comment="C[DT] month ord lex-beaivi num-year" c="guovvamánu 17. beaivvi 2001 → 17. februar 2001">
+      <pattern>
+        <pattern-item n="month"/>
+        <pattern-item n="ord_num"/>
+        <pattern-item n="lex-beaivi"/>
+        <pattern-item n="num-year"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+       <let><var n="caseprep"/><lit v=""/></let>
+       <choose>
+        <when><test>
+        <equal><clip pos="3" side="tl" part="case"/><lit-tag v="ill"/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR.ill"/>
+              <lit v="{^"/>
+              <lit v="til"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          </when>
+        <when><test>
+        <equal><clip pos="3" side="tl" part="case"/><lit-tag v="loc"/></equal></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR.loc"/>
+              <lit v="{^"/>
+              <lit v="fra"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          </when>
+          </choose>
+        <out>
+            <var n="caseprep"/>
+          <chunk name="pre_pre_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="4" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="4" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <!-- <tag><lit-tag v="def"/></tag> -->
+              <tag><clip pos="4" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <lit-tag v="adj.ord.pst.un.sp.def"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <!-- <clip pos="1" side="tl" part="gen-case"/> -->
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+                <b pos="2"/>
+                <lu>
+                  <clip pos="4" side="tl" part="lemh"/>
+                  <clip pos="4" side="tl" part="a_num"/>
+                  <clip pos="4" side="tl" part="gen"/>
+                  <clip pos="4" side="tl" part="nbr"/>
+                  <clip pos="4" side="tl" part="lemq"/>
+                </lu>
+          </chunk>
+        </out>
+        <choose><when>
+          <test><not><equal><b pos="3"/><b/></equal></not></test>
+          <out><b pos="3"/></out>
+        </when></choose>
+      </action>
+    </rule>
+
+   <rule comment="C[DT] month ord lex-beaivi num-year" c="guovvamánu 17. ja 18. beaivvi 2001 → 17. og 18. februar 2001">
+      <pattern>
+        <pattern-item n="month"/>
+        <pattern-item n="ord_num"/>
+        <pattern-item n="cc"/>
+        <pattern-item n="ord_num"/>
+        <pattern-item n="lex-beaivi"/>
+        <pattern-item n="num-year"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="pre_conj_pre_pre_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="6" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="6" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <!-- <tag><lit-tag v="def"/></tag> -->
+              <tag><clip pos="6" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <lit-tag v="adj.ord.pst.un.sp.def"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+             <b pos="1"/>
+              <lu>
+                <clip pos="3" side="tl" part="lemh"/>
+                <clip pos="3" side="tl" part="a_conj"/>
+              </lu>
+            <b pos="2"/>
+            <lu>
+              <clip pos="4" side="tl" part="lemh"/>
+              <lit-tag v="adj.ord.pst.un.sp.def"/>
+              <clip pos="4" side="tl" part="lemq"/>
+            </lu>
+             <b pos="3"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <!-- <clip pos="1" side="tl" part="gen-case"/> -->
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+                <b pos="4"/>
+                <lu>
+                  <clip pos="6" side="tl" part="lemh"/>
+                  <clip pos="6" side="tl" part="a_num"/>
+                  <clip pos="6" side="tl" part="gen"/>
+                  <clip pos="6" side="tl" part="nbr"/>
+                  <clip pos="6" side="tl" part="lemq"/>
+                </lu>
+          </chunk>
+        </out>
+        <choose><when>
+          <test><not><equal><b pos="5"/><b/></equal></not></test>
+          <out><b pos="5"/></out>
+        </when></choose>
+      </action>
+    </rule>
+
 
     <rule comment="C[DT] lex-jahki_mod lex-jahki month ord lex-beaivi" c="dán jagi suoidnemánu 1. beaivvi : ">
       <pattern>
