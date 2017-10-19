@@ -1392,6 +1392,7 @@ SELECT:fallback ("fornye"i) (0 ("<ođastit>"i));
 
 
 SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK *-1 ("<.*čoahkkin>"r));
+SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK 1 (sem_prod-cogn) OR sem_txt) ;
 SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
 
 SELECT:vite ("vite"i) (0 ("<dovdat>"i) LINK 1 rel);
@@ -1800,7 +1801,7 @@ SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ; #?
 # máŋgga oktavuođas => i mange sammenhenger
 # máŋggain oktavuođain => i mange sammenhenger
 SELECT ("forhold"i) (0 ("<oktavuohta>"i) LINK -1 ("<lagaš>"i) OR ("<lagas>"i)) ; #?
-SELECT:fallback ("forbindelse"i) (0 ("<oktavuohta>"i));
+SELECT:fallback ("kontakt"i) (0 ("<oktavuohta>"i));
 
 SELECT ("folk"i) (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
@@ -2257,6 +2258,11 @@ SELECT:fallback ("torsk"i) (0 ("<dorski>"i));
 
 SELECT:fallback ("utmark"i) (0 ("<meahcci>"i));
 
+SELECT ("studium"i) (0 ("<oahppu>"i) LINK 0 pl);
+SELECT ("studium"i) (0 ("<oahppu>"i) LINK -1 ("<ohcat>"i));
+SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));
+
+
 SELECT ("fiske"i) (0 ("<bivdu>"i) LINK *0 sem_ani-fish) ;
 SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
 
@@ -2343,7 +2349,6 @@ SELECT:fallback ("mønster"i) (0 ("<málle>"i));
 SELECT:fallback ("skaft"i) (0 ("<nađđa>"i));
 SELECT:fallback ("grunne"i) (0 ("<njuorra>"i));
 SELECT:fallback ("skinn"i) (0 ("<náhkki>"i));
-SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));
 SELECT:fallback ("eie"i) (0 ("<oamastus>"i));
 SELECT:fallback ("del"i) (0 ("<oassi>"i));
 SELECT:fallback ("medvirkende"i) (0 ("<oasálaš>"i));
