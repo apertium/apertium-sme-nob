@@ -2575,6 +2575,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="gieldit"/>
       <list-item v="alidit"/>
       <list-item v="geavahit"/>
+      <list-item v="buoridit"/>
     </def-list>
     <def-list n="annen">
       <list-item v="annen"/>
@@ -3120,6 +3121,7 @@ And then there are some categories like "month", with all the months.
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="ohcat"/></equal>
                     <or>
                     <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_pos"/></equal>
+                    <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_edu"/></equal>
                     <in caseless="yes"><var n="previous-nhead_sem"/><list n="sem_edu"/></in>
                     </or>
                   </and>
@@ -3136,10 +3138,9 @@ And then there are some categories like "month", with all the months.
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="rievdadit"/></equal></not>
                     <not><equal><var n="main-verb-sl"/><lit v="jorgalahttit"/></equal></not>
-                    <not><and>
+                    <not>
                     <in caseless="yes"><var n="previous-nhead"/><list n="sem_lang_lem"/></in>
-                    <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
-                </and></not>
+                </not>
                   </and>
                   <and><or>
                     <equal><var n="main-verb-sl"/><lit v="bidjat"/></equal>
@@ -3665,6 +3666,7 @@ And then there are some categories like "month", with all the months.
             <not><equal><clip pos="1" side="sl" part="a_acr"/><lit-tag v="acr"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="ekstra"/></equal></not>
+            <not><equal><var n="main-verb-tl"/><lit v="søke"/></equal></not>
             <not><and>
             <equal><clip pos="1" side="tl" part="lemh"/><lit v="same"/></equal>
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal></not>
@@ -3701,6 +3703,7 @@ And then there are some categories like "month", with all the months.
            <not><and>
             <equal><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></equal>
             <not><equal><var n="main-verb-tl"/><lit v=""/></equal></not>
+             <not><in caseless="yes"><var n="main-verb-sl"/><list n="not-det-verbs"/></in></not>
             </and></not>
 <!--            <not><and>
             <equal><var n="main-verb-pasv"/><lit v="pasv"/></equal>
@@ -3711,7 +3714,7 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@OBJ→"/></equal>
               <equal><clip pos="1" side="sl" part="hab"/><lit-tag v="←hab→"/></equal>
               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
-<!--              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>  -->
+               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>  
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal>
