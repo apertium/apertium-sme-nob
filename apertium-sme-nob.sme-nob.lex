@@ -2258,6 +2258,9 @@ SELECT:fallback ("torsk"i) (0 ("<dorski>"i));
 
 SELECT:fallback ("utmark"i) (0 ("<meahcci>"i));
 
+SELECT:fallback ("velsignelse"i) (0 ("<sivdnideapmi>"i));
+
+
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK 0 pl);
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK -1 ("<ohcat>"i));
 SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));
