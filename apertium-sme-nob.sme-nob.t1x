@@ -1743,6 +1743,10 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_build-part_ctain_matt&gt;"/>
       <list-item v="&lt;sem_hum_mat_toolt&gt;"/>
     </def-list>
+    <def-list n="sem_prod-audio">
+      <list-item v="&lt;sem_prod-audio_txt&gt;"/>
+      <list-item v="&lt;sem_prod-audio&gt;"/>
+    </def-list>
     <def-list n="sem_txt">
       <list-item v="&lt;sem_ani_build_hum_txt&gt;"/>
       <list-item v="&lt;sem_ani_plc_txt&gt;"/>
@@ -2059,7 +2063,7 @@ And then there are some categories like "month", with all the months.
     <def-list n="ill-NIL-verbs" c="We add the 'ill-NIL' tag to verb chunks with these verbs,
                                    use that tag in t2x to remove the caseprep.PR.ill chunk
                                    TODO: use nob/tl verb instead?">
-      <list-item v="oahpahit"/>
+<!--      <list-item v="oahpahit"/> -->
       <list-item v="oččodit"/>
       <list-item v="guoskat"/>
       <list-item v="joavdat"/>
@@ -2439,6 +2443,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="forord"/>
       <list-item v="gang"/>
       <list-item v="tale"/>
+      <list-item v="do"/>
     </def-list>
     <def-list n="ill-på" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="ferie"/>
@@ -2834,6 +2839,7 @@ And then there are some categories like "month", with all the months.
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_veh"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-audio"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_domain"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-cogn"/></in>

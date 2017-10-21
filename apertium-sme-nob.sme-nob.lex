@@ -1014,6 +1014,8 @@ SELECT:fallback ("putte"i) IF  (0 ("<coggat>"i)) ;
 SELECT ("ta"i) IF  (0 ("<nahkehit>"i) ) (1 sem_clth) ;
 SELECT:fallback ("putte"i) IF  (0 ("<nahkehit>"i)) ;
 
+SELECT:fallback ("redusere"i) IF  (0 ("<unnidit>"i)) ;
+
 
 SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK 1 acc) (*1 ill) ;
 SELECT:fallback ("utvikle"i) IF  (0 ("<ovddidit>"i)) ;
@@ -1253,7 +1255,7 @@ SELECT:fallback ("hende"i) (0 ("<geavvat>"i)) ;
 
 
 
-SELECT ("starte"i) (0 ("<álggahit>"i)) ;
+SELECT ("igangsette"i) (0 ("<álggahit>"i)) ;
 
 SELECT ("legge"i) (0 ("<lágidit>"i)) (1 ("forhold"i)) (2 ("til rette for"i)) ;
 SELECT ("ordne"i) (0 ("<lágidit>"i)) (*1 ill BARRIER vblex OR S-BOUNDARY) ; # lágidit sáhtu buohccivissui
@@ -1546,8 +1548,11 @@ SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 SELECT:fallback ("differensiering"i) (0 ("<sirren>"i) ) ;
 SELECT:fallback ("utgangspunkt"i) (0 ("<álgovuorru>"i) ) ;
 
-SELECT ("nødvendig"i) (0 ("<bággu>"i) ) ;
-SELECT:fallback ("tvang"i) (0 ("<bággu>"i) LINK 1 inf) ;
+SELECT ("nødvendig"i) (0 ("<bággu>"i)  LINK 1 inf ) ;
+SELECT:fallback ("tvang"i) (0 ("<bággu>"i)) ;
+
+SELECT ("eldre"i) (0 ("<boaresolmmoš>"i) LINK 0 pl ) ;
+SELECT:fallback ("gamling"i) (0 ("<boaresolmmoš>"i)) ;
 
 
 SELECT:fallback ("begivenhet"i) (0 ("<dáhpáhus>"i) LINK -1 ("<rabas>"i) ) ;
