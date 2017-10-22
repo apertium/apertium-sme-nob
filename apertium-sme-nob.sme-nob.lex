@@ -1813,7 +1813,7 @@ SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ; #?
 SELECT ("forhold"i) (0 ("<oktavuohta>"i) LINK -1 ("<lagaš>"i) OR ("<lagas>"i)) ; #?
 SELECT:fallback ("kontakt"i) (0 ("<oktavuohta>"i));
 
-SELECT ("man"i) (0 ("<olmmoš>"i) LINK 0 sg + nom + @SUBJ→)(NEGATE -1 attr OR num) ;
+SELECT ("man"i) (0 ("<olmmoš>"i) LINK 0 sg + nom + SUBJ)(NEGATE -1 @→N OR num OR ind OR cmp)(NEGATE 1 rel OR COMMA) ;
 SELECT ("folk"i) (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
 SELECT ("person"i) (0 ("<olmmoš>"i) LINK -1 num OR ("<bealli>"i) + gen) ;
