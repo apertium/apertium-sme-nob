@@ -3094,7 +3094,11 @@ And then there are some categories like "month", with all the months.
             <when c="ill is i">
               <test><or>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
+                <equal caseless="yes"><var n="main-verb-tl"/><lit v="havne"/></equal>
+                <and>
                 <in caseless="yes"><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
+              <not><equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_hum"/></equal></not>	         
+                </and>
 <!--                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in> this is not good  -->
                <equal><var n="previous-nhead"/><lit v="time"/></equal>
                <equal><var n="previous-nhead"/><lit v="gang"/></equal>
@@ -3178,7 +3182,7 @@ And then there are some categories like "month", with all the months.
               </let>
             </when>
             <when c="ill is for">
-              <test>
+              <test><or>
                 <and>
                   <or>
                 <in caseless="yes"><var n="main-verb-sl"/><list n="ill-for-verbs"/></in>
@@ -3196,6 +3200,10 @@ And then there are some categories like "month", with all the months.
                   <not><equal><var n="previous-nhead"/><lit v="rett"/></equal></not>
                   <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="guhte"/></equal></not>
                 </and>
+                <and>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
+              <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_hum"/></equal>	         
+                </and></or>
               </test>
               <let>
                 <var n="caseprep"/><lit v="for"/>
@@ -8227,8 +8235,34 @@ And then there are some categories like "month", with all the months.
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <let><var n="c_name"/><lit v=""/></let>
         <let><var n="pre-nom"/><lit v=""/></let>
+        <choose><when><test>
+	    <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.pers"/></equal></test>
+        <out>
+          <chunk name="prn" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="hab"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_prn"/>
+              <clip pos="1" side="tl" part="pers"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="case"/>
+            </lu>
+          </chunk>
+        </out></when>
+                  <otherwise>
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <call-macro n="out_nom"><with-param pos="1"/></call-macro>
+          </otherwise></choose>
      </action>
     </rule>
 

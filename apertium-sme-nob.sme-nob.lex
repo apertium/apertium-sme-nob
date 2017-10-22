@@ -1248,6 +1248,7 @@ SELECT ("gå vill"i) (0 ("<láhppot>"i) LINK -1 sg + (p1) LINK 0 nom) ;
 SELECT:fallback ("miste"i) (0 ("<láhppot>"i))  ;
 
 
+SELECT ("havne"i) (0 ("<geavvat>"i)) (1 ill LINK NOT 0 HUMAN) ;
 SELECT ("heve"i) (0 ("<geavvat>"i)) (*0 sem_food LINK 0 SUBJ) ;
 #  láibbit eai geargan geavvat ovdal go olbmot fertejedje hoahpus johttát .
 SELECT:fallback ("hende"i) (0 ("<geavvat>"i)) ;
@@ -1551,6 +1552,10 @@ SELECT:fallback ("utgangspunkt"i) (0 ("<álgovuorru>"i) ) ;
 SELECT ("nødvendig"i) (0 ("<bággu>"i)  LINK 1 inf ) ;
 SELECT:fallback ("tvang"i) (0 ("<bággu>"i)) ;
 
+SELECT ("veigrøft"i) (0 ("<doaresbealli>"i) LINK *0 sem_veh BARRIER S-BOUNDARY)  ;
+SELECT:fallback ("tvang"i) (0 ("<doaresbealli>"i)) ;
+
+
 SELECT ("eldre"i) (0 ("<boaresolmmoš>"i) LINK 0 pl ) ;
 SELECT:fallback ("gamling"i) (0 ("<boaresolmmoš>"i)) ;
 
@@ -1808,6 +1813,7 @@ SELECT ("sammenheng"i) (0 ("<oktavuohta>"i) LINK 1 loc LINK -2 num or gen) ; #?
 SELECT ("forhold"i) (0 ("<oktavuohta>"i) LINK -1 ("<lagaš>"i) OR ("<lagas>"i)) ; #?
 SELECT:fallback ("kontakt"i) (0 ("<oktavuohta>"i));
 
+SELECT ("man"i) (0 ("<olmmoš>"i) LINK 0 sg + nom + @SUBJ→)(NEGATE -1 attr OR num) ;
 SELECT ("folk"i) (0 ("<olmmoš>"i) LINK 0 pl) ;
 # olbmot leat čoagganan => folk har samlet seg
 SELECT ("person"i) (0 ("<olmmoš>"i) LINK -1 num OR ("<bealli>"i) + gen) ;
@@ -2508,6 +2514,7 @@ SELECT:fallback ("hvem"i) (0 ("<gii>"i)) ;
 
 
 SELECT:fuomášit ("hva som"i) (0 ("<mii>"i)) (-1 FMAINV)(1 VFIN) ;
+SELECT:fuomášit ("hva"i) (0 ("<mii>"i)) (-1 FMAINV)(1 n LINK 1 VFIN) ;
 SELECT ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 tv + FMAINV) (1 adj) ; # Eadni muitalii man dehálaš dat lei …
 SELECT ("hvor"i) (0 ("<mii>"i) + loc LINK NOT 0 ←hab→)  ; # mas
 SELECT:ge-man ("hvor"i) (0 ("<mii>"i) LINK 0 @OBJ→) (-1 pcle) (-2 tv + FMAINV) (1 adj) ; # mihtidit ge man mávssolaččat sámi aviissat leat …
