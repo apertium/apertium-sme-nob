@@ -943,6 +943,11 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </pattern>
       <action>
         <!-- <exception><test><not><equal><clip pos="1" part="case"/><clip pos="3" part="case"/></equal></not></test></exception> -->
+      <choose><when><test>
+      <equal><clip pos="1" part="a_neverdet"/><lit-tag v="neverdet"/></equal>  
+	      </test> 
+        <let><clip pos="3" part="art"/><lit-tag v="ind"/></let>
+      </when></choose>
         <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
         <call-macro n="set_c_name3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
         <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
@@ -972,6 +977,11 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </pattern>
       <action>
         <!-- <exception><test><not><equal><clip pos="1" part="case"/><clip pos="4" part="case"/></equal></not></test></exception> -->
+      <choose><when><test>
+      <equal><clip pos="2" part="a_neverdet"/><lit-tag v="neverdet"/></equal>  
+	      </test> 
+        <let><clip pos="5" part="art"/><lit-tag v="ind"/></let>
+      </when></choose>
         <call-macro n="set_ana_gen"><with-param pos="5"/></call-macro>
         <call-macro n="set_c_name3"><with-param pos="2"/><with-param pos="3"/><with-param pos="5"/></call-macro>
         <call-macro n="set_c_tags2"><with-param pos="2"/><with-param pos="5"/></call-macro>
