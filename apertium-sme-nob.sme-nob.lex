@@ -1059,6 +1059,10 @@ SELECT:fallback ("flytte"i) IF  (0 ("<johtit>"i)) ;
 SELECT ("knyttet"i) IF  (0 ("<čadnot>"i) LINK 1 ill + sem_plc ) ;
 SELECT:fallback ("binde"i) IF  (0 ("<čadnot>"i)) ;
 
+REMOVE (pasv) IF  (0 ("<riegádit>"i) LINK 0 prfprc ) ;
+SELECT:fallback (pasv) IF  (0 ("<riegádit>"i)) ;
+
+
 SELECT ("bevare"i) IF  (0 ("<bisuhit>"i) LINK *0 sem_lang OR ("<kultuvra>"i) ) ;
 SELECT:fallback ("beholde"i) IF  (0 ("<bisuhit>"i)) ;
 
@@ -1124,6 +1128,7 @@ SELECT:fallback ("møte"i) IF  (0 ("<deaivvadit>"i)) ;
 
 
 SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (*1 np) ;
+SELECT ("fotografere"i) IF  (0 ("<govvet>"i) LINK 0 prfprc) (-1 np + (cog) OR np + (ant)) ;
 SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (1 ("<:>")) ;
 SELECT ("fotografere"i) IF  (0 ("<govvet>"i)) (*0 ("<govva>"i)) ;
 SELECT:fallback ("skildre"i) IF  (0 ("<govvet>"i)) ;
@@ -1341,10 +1346,8 @@ SELECT ("betale"i) IF (0 ("<máksit>"i) ) (0 @←OBJ) ;
 
 
 SELECT ("bety"i) IF (0 ("<máksit>"i) ) (*0 ("<sátni>"i) + nom BARRIER NOT-NPMODADV);
-SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 ("<ahte>"i));
-SELECT ("bety"i) IF (0 ("<máksit>"i) ) (-1 ("<dat>"i)) (1 COMMA) (2 ("<ahte>"i));
-SELECT ("bety"i) IF (0 ("<máksit>"i) )(-2 ("<dat>"i))(-1 neg)(1 ("<ahte>"i));
-SELECT ("bety"i) IF (0 ("<máksit>"i) )(-2 ("<dat>"i))(-1 neg)(1 COMMA)(2 ("<ahte>"i));
+SELECT ("bety"i) IF (0 ("<máksit>"i) )  (1 ("<ahte>"i));
+SELECT ("bety"i) IF (0 ("<máksit>"i) )  (1 COMMA) (2 ("<ahte>"i));
 ## Dat máksá, ahte mun dárbbašan dakkár njuolgadusa
 
 SELECT ("koste"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK NOT 0 HUMAN OR pers) (0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
@@ -2622,7 +2625,17 @@ SELECT ("av"i) (0 ("<eret>"i)) (-1 ("<sahát>"i)) ;
 SELECT:fallback ("fra"i) + pr (0 ("<eret>"i)) ;
 
 SELECT ("sørpå"i) (0 ("<máddin>"i) LINK -1 DOPPE) ;
-SELECT:fallback ("sørfra"i) (0 ("<máddin>"i)) ;
+SELECT ("sørfra"i) (0 ("<máddin>"i) LINK 0 (@←ADVL-ela) OR (@ADVL-ela→)) ;
+SELECT:fallback ("sørpå"i) (0 ("<máddin>"i)) ;
+SELECT ("nordpå"i) (0 ("<davvin>"i) LINK -1 DOPPE) ;
+SELECT ("nordfra"i) (0 ("<davvin>"i) LINK 0 (@←ADVL-ela) OR (@ADVL-ela→)) ;
+SELECT:fallback ("nordpå"i) (0 ("<davvin>"i)) ;
+SELECT ("vestpå"i) (0 ("<oarjin>"i) LINK -1 DOPPE) ;
+SELECT ("vestfra"i) (0 ("<oarjin>"i) LINK 0 (@←ADVL-ela) OR (@ADVL-ela→)) ;
+SELECT:fallback ("vestpå"i) (0 ("<oarjin>"i)) ;
+SELECT ("østpå"i) (0 ("<nuortan>"i) LINK -1 DOPPE) ;
+SELECT ("østfra"i) (0 ("<nuortan>"i) LINK 0 (@←ADVL-ela) OR (@ADVL-ela→)) ;
+SELECT:fallback ("østpå"i) (0 ("<nuortan>"i)) ;
 
 
 
