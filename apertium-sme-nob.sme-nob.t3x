@@ -38,6 +38,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
    <def-cat n="default">
       <cat-item lemma="default" tags="*"/>
     </def-cat>
+   <def-cat n="rquot">
+      <cat-item lemma="rquot" tags="*"/>
+    </def-cat>
     <def-cat n="SN">
       <cat-item tags="SN"/>
       <cat-item tags="SN.*"/>
@@ -1684,7 +1687,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: maybe-SUBJr FV - out: 1 2
+    <rule comment="REGLA: maybe-SUBJr FV - out: 1 2 
                    Override prodrop rule (below) if we might have a subject to the left">
       <pattern>
         <pattern-item n="maybe-SUBJr"/>
@@ -1697,6 +1700,26 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="1" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: maybe-SUBJr rquot FV - out: 1 rquot 2 
+                   «Gásttašuvvon luohti» čállo dál girjái.">
+      <pattern>
+        <pattern-item n="maybe-SUBJr"/>
+        <pattern-item n="rquot"/>
+        <pattern-item n="FV"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
@@ -1714,6 +1737,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <call-macro n="set_adv"><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="2"/>
           <chunk><clip pos="3" part="whole"/></chunk>
