@@ -1143,7 +1143,7 @@ SELECT:fallback ("skildre"i) IF  (0 ("<govvet>"i)) ;
 SELECT:fallback ("oppleve"i) IF  (0 ("<vásihit>"i)) ;
 
 
-SELECT ("legge# til rette"i) IF  (0 ("<láhčit>"i)) (1 cnjsub) ;
+SELECT ("legge# til rette"i) IF  (0 ("<láhčit>"i)) (1 cnjsub OR ("<sadji>")) ;
 SELECT ("legge# opp"i) IF  (0 ("<láhčit>"i)) (1 ill) ;
 SELECT ("legge# til rette"i) IF  (0 ("<láhčit>"i)) (-1 @OBJ→ + acc) ;
 SELECT ("legge# til rette"i) IF  (0 ("<láhčit>"i)) (1 @←OBJ + acc) ;
@@ -1558,6 +1558,8 @@ SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 
 SELECT:fallback ("differensiering"i) (0 ("<sirren>"i) ) ;
 SELECT:fallback ("utgangspunkt"i) (0 ("<álgovuorru>"i) ) ;
+SELECT:fallback ("godkjenning"i) (0 ("<dohkkeheapmi>"i) ) ;
+
 
 SELECT ("nødvendig"i) (0 ("<bággu>"i)  LINK 1 inf ) ;
 SELECT:fallback ("tvang"i) (0 ("<bággu>"i)) ;
@@ -2100,7 +2102,7 @@ SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 
 SELECT ("sentrum"i) (0 ("<guovddáš>"i) LINK 0 sg + loc)(*-1 sem_org + nom);
 SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + ill) (-1 ("<bidjat>"i));
-SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + loc) (*-1 ("<.*vuohta>"r) OR (sem_rule));
+SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + loc) (*-1 ("<.*vuohta>"r) OR (sem_rule) OR ("<jurddašeapmi>"i) OR ("<árvu>"i));
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:fallback ("skive"i) (0 ("<skearru>"i));
@@ -2802,7 +2804,7 @@ SELECT:fallback ("hel"i) (0 ("<ollis>"i)) ; # (1 ("tid"i));
 
 SELECT:fallback ("sterk"i) (0 ("<nanus>"i));
 
-#SELECT:fallback ("virkelig"i) (0 ("<duohta>"i) LINK -1 go OR COPULAS);
+SELECT:fallback ("virkelig"i) (0 ("<duohta>"i) LINK -1 ("<dahkat>"i));
 SELECT:fallback ("sant"i) (0 ("<duohta>"i));
 
 SELECT ("næringsrik"i) (0 ("<beaktil>"i) LINK *0 sem_food);
