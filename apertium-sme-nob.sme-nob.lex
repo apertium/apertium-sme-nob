@@ -90,7 +90,7 @@ LIST sem_mal = sem_mal (ant m) ;
 LIST sem_measr = sem_body_measr sem_measr sem_measr_sign sem_measr_time ;
 LIST sem_money = sem_money ;
 LIST sem_obj = sem_aniprod_obj-clo sem_body_obj_tool-catch sem_build_obj sem_game_obj-play sem_geom_obj sem_hum_obj sem_money_obj sem_obj sem_obj-clo sem_obj-cogn sem_obj-el sem_obj-ling sem_obj-play sem_obj-play_sport sem_obj-rope sem_obj-surfc sem_obj_semcon sem_obj_state ;
-LIST sem_org = np.sem_org sem_build_event_org sem_build_edu_org sem_build_event_org sem_build_org sem_clth-jewl_org sem_ctain-abstr_org sem_curr_org sem_dance_org sem_edu_org sem_group_hum_org sem_group_org sem_hum_org sem_org sem_org_prod-cogn sem_org_rule sem_org_txt sem_org_veh sem_org  ;
+LIST sem_org = np.sem_org sem_build_event_org sem_build_edu_org sem_build_event_org sem_build_org sem_clth-jewl_org sem_ctain-abstr_org sem_curr_org sem_dance_org sem_edu_org sem_group_hum_org sem_group_org sem_hum_org sem_org sem_org_prod-cogn sem_org_rule sem_org_txt sem_org_veh sem_org org  ;
 LIST sem_plant = sem_clth-jewl_plant sem_ctain-clth_plant sem_drink_plant sem_feat_plant sem_food_plant sem_hum_plant sem_mat_plant sem_plant sem_plant-part sem_plant_plant-part sem_plant_tool sem_plant_tool-measr  ;
 LIST sem_plc = sem_act_plc sem_ani_hum_plc sem_ani_plc sem_ani_plc_txt sem_aniprod_plc sem_body_plc sem_build-part_plc sem_event_plc sem_event_plc-elevate sem_feat-measr_plc sem_group_hum_plc sem_hum_lang_plc sem_hum_plc sem_plc sem_plc-abstr sem_plc-abstr_rel_state sem_plc-abstr_route sem_plc-elevate sem_plc-line sem_plc-water sem_plc_pos sem_plc_route sem_plc_state sem_plc_substnc sem_plc_substnc_wthr sem_plc_time sem_plc_tool-catch sem_plc_wthr sem_plc top ;
 LIST sem_rule = sem_rule ;
@@ -929,7 +929,9 @@ SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<váldot>"i) OR ("
 SELECT:fallback ("lukket"i) IF (0 ("<gitta>"i) LINK *0 ("<čalbmi>"i))  ;
 SELECT:fallback ("stenge"i) IF (0 ("<gitta>"i))  ;
 
+SELECT ("så"i) IF (0 ("<ná>"i) LINK 1 adj)  ;
 SELECT:fallback ("slik"i) IF (0 ("<ná>"i))  ;
+
 SELECT:fallback ("enda"i) IF (0 ("<vel>"i))  ;
 
 
@@ -996,6 +998,10 @@ SELECT:fallback ("avtale"i) IF  (0 ("<šiehttat>"i)) ;
 
 SELECT ("sist"i) IF  (0 ("<vássit>"i) LINK 0 @→N) ;
 SELECT:fallback ("svinne"i) IF  (0 ("<vássit>"i)) ;
+
+SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 sem_lang + acc) ;
+SELECT:fallback ("stelle"i) IF  (0 ("<dikšut>"i)) ;
+
 
 SELECT ("vike"i) IF  (0 ("<gáidat>"i) LINK NOT 0 der_nomact) (0* ("<láhka>"i) LINK 0 nom) ;
 SELECT:fallback ("fjerne"i) IF  (0 ("<gáidat>"i)) ;
@@ -1336,6 +1342,11 @@ SELECT ("gå"i) IF (0 ("<mannat>"i)) (1 ("<ovdalii>"i));
 SELECT ("dra"i) IF (0 ("<mannat>"i)) (*1 sem_plc + ill OR sem_org + ill);
 SELECT:fallback ("gå"i) (0 ("<mannat>"i) LINK NOT 0 @→N) ;
 
+SELECT ("bety"i) IF (0 ("<máksit>"i) ) (*0 ("<sátni>"i) + nom BARRIER NOT-NPMODADV);
+SELECT ("bety"i) IF (0 ("<máksit>"i) )  (*1 ("<ahte>"i) BARRIER WORD);
+#SELECT ("bety"i) IF (0 ("<máksit>"i) )  (1 COMMA) (2 ("<ahte>"i));
+## Dat máksá, ahte mun dárbbašan dakkár njuolgadusa
+
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_org OR pers ) ;
 ## Máhtte máksá guokte ruvnnu.
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 ("<vejolašvuohta>"i) OR ("<bággu>"i) OR ("<ráđđi>"i) OR ("<áigemeari>"i) OR ("<divat>"i)  OR ("<rehket>"i) ) ;
@@ -1345,10 +1356,6 @@ SELECT ("betale"i) IF (0 ("<máksit>"i) ) (1 ill) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (0 @←OBJ) ;
 
 
-SELECT ("bety"i) IF (0 ("<máksit>"i) ) (*0 ("<sátni>"i) + nom BARRIER NOT-NPMODADV);
-SELECT ("bety"i) IF (0 ("<máksit>"i) )  (1 ("<ahte>"i));
-SELECT ("bety"i) IF (0 ("<máksit>"i) )  (1 COMMA) (2 ("<ahte>"i));
-## Dat máksá, ahte mun dárbbašan dakkár njuolgadusa
 
 SELECT ("koste"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK NOT 0 HUMAN OR pers) (0* CURRENCY OR QUANT-PRON OR num BARRIER ill OR S-BOUNDARY) ;
 ## Girji máksá guokte ruvnnu.
@@ -2091,6 +2098,7 @@ SELECT:fallback ("fiskekort"i) (0 ("<bivdolohpi>"i));
 
 SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 
+SELECT ("sentrum"i) (0 ("<guovddáš>"i) LINK 0 sg + loc)(*-1 sem_org + nom);
 SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + ill) (-1 ("<bidjat>"i));
 SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + loc) (*-1 ("<.*vuohta>"r) OR (sem_rule));
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
@@ -2104,7 +2112,7 @@ SELECT:fallback ("beite"i) (0 ("<skearru>"i));
 
 SELECT:part ("part"i) (0 ("<bealli>"i) LINK *1 ("<deaivvadit>"i) OR ("<soabadit>"i) BARRIER SV-BOUNDARY);
 SELECT:part ("part"i) (0 ("<bealli>"i) LINK -1 ("<bargoeallin>"i) OR ("<ášši>"i) OR ("<nubbi>"i));
-SELECT:side ("side"i) (0 ("<bealli>"i) LINK *-1 ("<muitalit>"i) BARRIER SV-BOUNDARY);
+SELECT:side ("side"i) (0 ("<bealli>"i) LINK *-1 ("<muitalit>"i) OR ("<čájehit>"i)  BARRIER SV-BOUNDARY);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK -1 adj + @→N OR np + @→N);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK 0 pl);
 SELECT:side ("side"i) (0 ("<bealli>"i) LINK *1 sem_domain + loc);
@@ -2143,7 +2151,8 @@ SELECT:fallback ("tale"i) (0 ("<sárdni>"i));
 
 SELECT ("samiske språk"i) (0 ("<sámegiella>"i) LINK 0 pl);
 SELECT ("samiske språk"i) (0 ("<sámegiella>"i) LINK 0 gen LINK -1 num);
-SELECT ("samisk språk"i) (0 ("<sámegiella>"i) LINK 1 cnjcoo LINK 1 ("<kultuvra>"i));
+SELECT ("samisk språk"i) (0 ("<sámegiella>"i) LINK 1 cnjcoo LINK 1 ("<kultuvra>"i) OR ("<sápmi>"i) + gen);
+SELECT ("samisk språk"i) (0 ("<sámegiella>"i) LINK 1 ("<ovdáneapmi>"i));
 SELECT:fallback ("samisk"i) (0 ("<sámegiella>"i));
 
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 0 pl);
@@ -2604,9 +2613,9 @@ SELECT:fallback ("hvem"i) (0 ("<guhte>"i)) ;
 SELECT:ble-mye-verre ("mye"i) (0 ("<sakka>"i) LINK 0 adv) (-1 adj + pasv LINK 0 vblex) ; # vearránii sakka
 SELECT ("til"i) (0 ("<vuhtii>"i)) (*-1 ("<váldit>"i)) ;
 
-SELECT:fallback ("slik"i) (0 ("<nu>"i) LINK -1 ("<ja>"i)) ;     # Ja nu leat sii
+SELECT ("slik"i) (0 ("<nu>"i) LINK -1 ("<ja>"i)) ;     # Ja nu leat sii
 SELECT ("til rette for"i) (0 ("<nu>"i)) (-1 ("<dilálašvuohta>"i)) (1 ("<ahte>"i)) ;
-SELECT ("så"i) (0 ("<nu>"i)) (1 adj or indic or ("<galle>"i) or ("<gealdagas>"i) or ("<bures>"i)) ; # dat skuvla nu johtil ahte
+SELECT ("så"i) (0 ("<nu>"i)) (1 adj or ("<galle>"i) or ("<gealdagas>"i) or ("<bures>"i)) ; # dat skuvla nu johtil ahte
 SELECT:så-langt-som ("så"i) (0 ("<nu>"i)) (1 adv) (2 cnjsub) ;
 SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 
