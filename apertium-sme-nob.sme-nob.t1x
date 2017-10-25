@@ -504,6 +504,7 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-beali">
       <cat-item lemma="beali" tags="adv.*"/>
+      <cat-item lemma="Beali" tags="adv.*"/>
     </def-cat>
     <def-cat n="lex-dievva">
       <cat-item lemma="dievva" tags="adv.*"/>
@@ -515,6 +516,7 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-eanet">
       <cat-item lemma="eanet" tags="adv.*"/>
       <cat-item lemma="eanet" tags="adj.*"/>
+      <cat-item lemma="eambbo" tags="adj.*"/>
     </def-cat>
     <def-cat n="lex-guovttos">
       <cat-item lemma="guovttos" tags="n.*.coll.*"/>
@@ -1605,6 +1607,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="govddodit"/>
       <list-item v="fuotnut"/>
       <list-item v="bargat"/>
+      <list-item v="geavahit"/>
     </def-list>
     <def-list n="cond-NIL-verbs">
       <list-item v="fertet"/>
@@ -5515,8 +5518,16 @@ And then there are some categories like "month", with all the months.
               <tag><clip pos="1" side="sl" part="mode"/></tag>
             </tags>
             <lu>
-              <lit v="dobbelt så mye"/>
+              <lit v="dobbelt så"/>
               <lit-tag v="adv"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <lit-tag v="pst"/>
+              <lit-tag v="ind"/>
+              <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>
         </out>

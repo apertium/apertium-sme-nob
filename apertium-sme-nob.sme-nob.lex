@@ -2055,7 +2055,7 @@ SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY OR ("<goastadit>"i)  OR ("<oa
 SELECT ("gevinst"i) (0 ("<vuoitu>"i) LINK -1 ("<smávis>"i) OR ("<stuoris>"i))  ;	
 SELECT:fallback ("seier"i) (0 ("<vuoitu>"i));
 
-SELECT ("samisk"i) (0 ("<sápmi>"i) LINK 0 @→N) ; #(NEGATE -1 num LINK NOT 2 n + sg + gen OR n + sg + acc);
+SELECT ("samisk"i) (0 ("<sápmi>"i) + sg LINK 0 @→N) ; #(NEGATE -1 num LINK NOT 2 n + sg + gen OR n + sg + acc);
 SELECT ("sørsamisk"i) (0 ("<máttasápmi>"i) LINK 0 sg + gen);
 SELECT ("sørsamisk"i) (0 ("<lullisápmi>"i) LINK 0 sg + gen);
 SELECT ("pitesamisk"i) (0 ("<bihtonsápmi>"i) LINK 0 sg + gen);
