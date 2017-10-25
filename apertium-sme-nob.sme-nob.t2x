@@ -1491,6 +1491,30 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </rule>
 
 
+    <rule comment="REGLA: SN_rN.gen CNP PR SN
+                   Move preposition to front">
+      <pattern>
+        <pattern-item n="SN_rN.gen"/>
+        <pattern-item n="CNP"/>
+        <pattern-item n="PR"/>
+        <pattern-item n="SN"/>
+      </pattern>
+      <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
 
     <rule comment="REGLA: adpos PR SN_PREPl
                    -----

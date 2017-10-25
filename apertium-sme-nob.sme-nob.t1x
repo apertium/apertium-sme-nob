@@ -67,6 +67,13 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="adv"/>
       <cat-item tags="adv.*"/>
     </def-cat>
+    <def-cat n="lex-eará">
+      <cat-item lemma="eará" tags="prn.*"/>
+    </def-cat>
+    <def-cat n="ge-pcle">
+      <cat-item lemma="ge" tags="pcle.*"/>
+      <cat-item lemma="ge" tags="pcle"/>
+    </def-cat>
     <def-cat n="Pcle">
       <cat-item tags="pcle.qst.*"/>
       <cat-item tags="pcle.qst"/>
@@ -427,6 +434,12 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="loahppa" tags="n.*"/>
       <cat-item lemma="beallemuddu" tags="n.*"/>
     </def-cat>
+   <def-cat n="mod-advl">
+      <cat-item tags="*.@→ADVL"/>
+    </def-cat>
+   <def-cat n="lex-maŋŋel">
+      <cat-item lemma="maŋŋel" tags="adv.*"/>
+    </def-cat>
     <def-cat n="abbr">
       <cat-item tags="n.abbr.*"/>
     </def-cat>
@@ -441,6 +454,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="gáidat" tags="vblex.iv.prfprc.*"/>
       <cat-item lemma="gáidat" tags="vblex.iv.actio.*"/>
       <cat-item lemma="gáidat" tags="vblex.iv.der_nomact.*"/>
+    </def-cat>
+    <def-cat n="lex-láhčit">
+      <cat-item lemma="láhčit" tags="vblex.*"/>
     </def-cat>
     <def-cat n="lex-mannu">
       <cat-item lemma="mánnu" tags="n.*"/>
@@ -584,6 +600,10 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="gilvu" tags="n.*"/>
       <cat-item lemma="beanagilvu" tags="n.*"/>
       <cat-item tags="n.*"/>
+    </def-cat>
+    <def-cat n="lex-saji">
+      <cat-item lemma="sadji" tags="n.*.sg.acc.*"/>
+      <cat-item lemma="sadji" tags="n.sg.acc.*"/>
     </def-cat>
     <def-cat n="lex-sadjai">
       <cat-item lemma="sadji" tags="n.*.sg.ill.*"/>
@@ -2094,6 +2114,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="leat"/>
       <list-item v="mearkkašit"/>
       <list-item v="čiegadit"/>
+      <list-item v="láhčit"/>
     </def-list>
     <def-list n="ill-på-verbs" c="See 'ill-NIL-verbs' above.
                                   Speech verbs, emotional(?) verbs">
@@ -2517,6 +2538,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="bestemor"/>
       <list-item v="desember"/>
       <list-item v="sentrum"/>
+      <list-item v="godkjenning"/>
       <list-item v="duodji"/>
       <list-item v="far"/>
       <list-item v="mat"/>
@@ -3024,15 +3046,15 @@ And then there are some categories like "month", with all the months.
             <let>
               <var n="caseprep"/><lit v="til"/>
             </let>
-          </when></choose>
-          <choose><when c="ess is til">
+          </when>
+          <when c="ess is til">
             <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-til-gen"/></in></test>
             <let>
               <var n="caseprep"/><lit v="til"/>
             </let>
             <let><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></let>
-          </when></choose>
-          <choose><when c="ess is i">
+          </when>
+          <when c="ess is i">
             <test>
               <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-i"/></in>
             </test>
@@ -3047,27 +3069,31 @@ And then there are some categories like "month", with all the months.
             <let>
               <var n="caseprep"/><lit v="på"/>
             </let>
-          </when></choose>
-          <choose><when c="ess is en">
+          </when>
+          <when c="ess is en">
             <test>
               <equal><clip pos="1" side="tl" part="lemh"/><lit v="betingelse"/></equal>
             </test>
             <let>
               <var n="caseprep"/><lit v="en"/>
             </let>
-          </when></choose>
-          <choose><when c="ess is NIL">
+          </when>
+        </choose>
+        <choose>
+          <when c="ess is NIL">
             <test><or><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in>
              <equal><var n="main-verb-sl"/><lit v="gohčodit"/></equal>
              <equal><var n="main-verb-sl"/><lit v="šaddat"/></equal>
              <equal><var n="main-verb-sl"/><lit v="gártat"/></equal>
             <equal><var n="advl-verb-sl"/><lit v="leat"/></equal>
+            <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@SPRED→"/></equal>
              </or></test>
            <let>
               <var n="caseprep"/><lit v=""/>
             </let>
-          </when></choose>
-        </when>
+          </when>
+        </choose>
+          </when>
         <when c="ill is til">
           <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal></test>
           <let>
@@ -3201,6 +3227,7 @@ And then there are some categories like "month", with all the months.
                <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="giddagas"/></equal></not>
                     </and>
                     <in caseless="yes"><var n="previous-nhead"/><list n="ill-for-head"/></in>
+                    <equal><clip pos="1" side="tl" part="lemh"/><lit v="periode"/></equal>
                   </or>
                   <not><equal><var n="previous-nhead"/><lit v="utveksling"/></equal></not>
                   <not><equal><var n="previous-nhead"/><lit v="rettighet"/></equal></not>
@@ -5311,6 +5338,19 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+  <rule comment="C[L] lex-láhčit lex-saji " c="láhčit saji → legge til rette">
+      <pattern>
+        <pattern-item n="lex-láhčit"/>
+        <pattern-item n="lex-saji"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_verb-lemma"><with-param pos="1"/></call-macro>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <call-macro n="out_verb"><with-param pos="1"/></call-macro>
+      </action>
+    </rule> 
     <rule comment="C[L] lex-gáidat lex-hum " c="gáidan olmmoš → menneske som har fjernet seg">
       <pattern>
         <pattern-item n="lex-gáidat"/>
@@ -5371,6 +5411,32 @@ And then there are some categories like "month", with all the months.
             <lu>
               <clip pos="1" side="tl" part="lemh"/>
               <clip pos="1" side="tl" part="a_nom"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] mod-advl lex-maŋŋel " c="das maŋŋel → etter dette">
+      <pattern>
+        <pattern-item n="mod-advl"/>
+        <pattern-item n="lex-maŋŋel"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="etter"/>
+              <lit-tag v="adv"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="dette"/>
+              <lit-tag v="det.dem.det.sg"/>
             </lu>
           </chunk>
         </out>
@@ -9366,6 +9432,49 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+<!--    <rule comment="C[L] det ge-pcle " c="eará ge → også andre">
+      <pattern>
+        <pattern-item n="lex-eará"/>
+        <pattern-item n="ge-pcle"/>
+      </pattern>
+      <action>
+        <choose><when>
+          <test><not><equal><clip pos="1" side="tl" part="a_det"/><lit v=""/></equal></not></test>
+          <reject-current-rule shifting="no"/>
+        </when></choose>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+        <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+
+        <out>
+          <var n="caseprep"/>
+          <chunk name="prn" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_prn"/>
+              <clip pos="1" side="tl" part="pers"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <clip pos="1" side="tl" part="case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule> -->
+
+
+
+
     <rule comment="C[] DET dán → dette adf
                    munno [geažil] → [på grunn av] oss to">
       <pattern>
@@ -9855,6 +9964,7 @@ And then there are some categories like "month", with all the months.
           <test><and>
           <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal>
            <not><equal><var n="main-verb-sl"/><lit v="šaddat"/></equal></not>
+           <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="virkelig"/></equal></not>
          </and></test>
           <let>
             <var n="caseprep"/>
