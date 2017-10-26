@@ -100,6 +100,7 @@ LIST sem_time = sem_time sem_ani_hum_time sem_ani_time sem_body_group_hum_time s
 LIST sem_veh = sem_ani_veh sem_ctain-clth_veh sem_feat-phys_veh sem_hum_veh sem_org_veh sem_veh ;
 LIST sem_year = sem_year ;
 LIST sem_txt = sem_txt sem_ani_build_hum_txt sem_ani_plc_txt sem_group_txt sem_mat_txt sem_money_txt sem_org_txt sem_prod-audio_txt sem_prod-cogn_txt sem_semcon_txt sem_txt ;
+LIST sem_semcon = sem_semcon sem_semcon_txt ;
 
 SET FIRSTNAME = (np ant f) OR (np ant m) OR (prop sem_fem) OR (prop sem_mal) ;
 
@@ -1452,6 +1453,7 @@ SELECT:fallback ("dele"i) (0 ("<juohkit>"i));
 
 
 SELECT ("oppnå"i) (0 ("<olahit>"i) LINK 1 ("<.*vuohta>"r) LINK 0 acc) ;
+SELECT ("oppnå"i) (0 ("<olahit>"i) LINK *1 sem_edu BARRIER NOT-NPMOD LINK 0 acc) ;
 SELECT:fallback ("rekke"i) (0 ("<olahit>"i));
 
 SELECT ("tørke"i) (0 ("<sihkkut>"i))(*0 ("<beavdi>"i) OR ("<njunni>"i) OR ("<távval>"i) LINK 0 acc);
@@ -1863,7 +1865,9 @@ SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 sg + acc) (*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
 ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
 ## Lei Ájlin gii sáddii dieđu.
-SELECT:fallback ("informasjon"i) (0 ("<diehtu>"i));
+SELECT ("informasjon"i) (0 ("<diehtu>"i) LINK 0 pl);
+
+SELECT:fallback ("viten"i) (0 ("<diehtu>"i));
 
 # lávki 0 = skritt, 1 = løk
 SELECT ("løk"i) (0 ("<lávki>"i))  (*1 ("<leat>"i) LINK 0 VFIN LINK *1 ("<čuohppat>"i) OR ("<čuohpadit>"i) LINK 0 prfprc) ;
@@ -2102,7 +2106,7 @@ SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 
 SELECT ("sentrum"i) (0 ("<guovddáš>"i) LINK 0 sg + loc)(*-1 sem_org + nom);
 SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + ill) (-1 ("<bidjat>"i));
-SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + loc) (*-1 ("<.*vuohta>"r) OR (sem_rule) OR ("<jurddašeapmi>"i) OR ("<árvu>"i));
+SELECT ("fokus"i) (0 ("<guovddáš>"i) LINK 0 sg + loc) (*-1 ("<.*vuohta>"r) OR (sem_rule) OR ("<jurddašeapmi>"i) OR ("<árvu>"i) OR sem_semcon);
 SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 
 SELECT:fallback ("skive"i) (0 ("<skearru>"i));
