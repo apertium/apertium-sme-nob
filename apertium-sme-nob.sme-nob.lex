@@ -1011,6 +1011,9 @@ SELECT:fallback ("fjerne"i) IF  (0 ("<gáidat>"i)) ;
 SELECT ("lage"i) IF  (0 ("<duddjot>"i)) (0* acc BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("lage# duodji"i) IF  (0 ("<duddjot>"i)) ;
 
+SELECT:fallback ("veilede"i) IF  (0 ("<rávvet>"i)) ;
+
+
 
 SELECT ("spire"i) IF  (0 ("<bohciidit>"i)) (0* sem_plant) ;
 SELECT:fallback ("oppstå"i) IF  (0 ("<bohciidit>"i)) ;
@@ -2292,6 +2295,8 @@ SELECT:fallback ("velsignelse"i) (0 ("<sivdnideapmi>"i));
 
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK 0 pl);
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK -1 ("<ohcat>"i));
+SELECT ("studie"i) (0 ("<oahppu>"i) LINK 1 cnjcoo LINK 1 ("<dutkan>"i));
+SELECT ("studie"i) (0 ("<oahppu>"i) LINK 1 ("<bagadallan>"i));
 SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));
 
 
