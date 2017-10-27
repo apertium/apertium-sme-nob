@@ -1000,7 +1000,7 @@ SELECT:fallback ("avtale"i) IF  (0 ("<šiehttat>"i)) ;
 SELECT ("sist"i) IF  (0 ("<vássit>"i) LINK 0 @→N) ;
 SELECT:fallback ("svinne"i) IF  (0 ("<vássit>"i)) ;
 
-SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 sem_lang + acc) ;
+SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 ("<.*giella>"i) + acc) ;
 SELECT:fallback ("stelle"i) IF  (0 ("<dikšut>"i)) ;
 
 
@@ -1861,7 +1861,7 @@ SELECT:fallback ("bråk"i) (0 ("<stuibmi>"i));
 #SELECT ("goddi"i) ("goddi:1"i) ("goddi"i) (NOT 0/1 (*)) ;
 
 # diehtu 0 = informasjon,  3 = beskjed
-SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna>"i) OR ("<mobiila>"i)) ;
+SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna>"i) OR ("<mobiila>"i) OR ("<rápmi>"i)) ;
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 sg + acc) (*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
 ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
 ## Lei Ájlin gii sáddii dieđu.
