@@ -1868,6 +1868,8 @@ SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 sg + acc) (*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
 ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
 ## Lei Ájlin gii sáddii dieđu.
+SELECT:fallback ("viten"i) (0 ("<diehtu>"i) LINK -1 ("<árbevirolaš>"i));
+
 SELECT ("informasjon"i) (0 ("<diehtu>"i) LINK 0 pl);
 
 SELECT:fallback ("viten"i) (0 ("<diehtu>"i));
