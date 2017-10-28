@@ -315,6 +315,10 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="np.*.@→A"/>
       <cat-item tags="n.*.@→A"/>
     </def-cat>
+    <def-cat n="nom.gen.Num">
+      <cat-item tags="np.*.@→Num"/>
+      <cat-item tags="n.*.@→Num"/>
+    </def-cat>
     <def-cat n="nom.unprop.gen">
       <cat-item tags="n.*.gen.*"/>
     </def-cat>
@@ -9985,7 +9989,7 @@ And then there are some categories like "month", with all the months.
     <!-- <rules: DET* ADJ* NOM* -->
 
 
-    <rule comment="C[] nom.gen.A adj-sup">
+    <rule comment="C[] nom.gen.A adj-sup" c="Deanu riggámusat">
       <pattern>
         <pattern-item n="nom.gen.A"/>
         <pattern-item n="adj-sup"/>
@@ -10060,6 +10064,91 @@ And then there are some categories like "month", with all the months.
            </out>
       </action>
     </rule>
+
+    <rule comment="C[] nom.gen.Num num adj-sup" c="Deanu 10 riggámusa">
+      <pattern>
+        <pattern-item n="nom.gen.Num"/>
+        <pattern-item n="num"/>
+        <pattern-item n="adj-sup"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_c_gen_nbr"><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="3"/></call-macro>
+            <let><var n="defnes"/><lit-tag v="def"/></let>
+        <choose><when>
+          <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <let><var n="defnes"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
+        </when></choose>
+            <out>
+              <chunk name="pre_pre_adj" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SA"/></tag>
+                  <tag><var n="c_syn"/></tag>
+                  <tag><var n="defnes"/></tag>
+                  <tag><clip pos="3" side="sl" part="mode"/></tag>
+                  <tag><clip pos="3" side="sl" part="nbr"/></tag>
+                  <tag><clip pos="3" side="sl" part="case"/></tag>
+                </tags>
+                <lu>
+                  <lit v="den"/><lit-tag v="det.dem.un.pl"/>
+                </lu>
+                <b/>
+                <lu>
+                  <clip pos="2" side="tl" part="lemh"/>
+                  <clip pos="2" side="tl" part="a_num"/>
+                  <clip pos="2" side="tl" part="gen"/>
+                  <clip pos="2" side="tl" part="nbr"/>
+                  <clip pos="2" side="tl" part="lemq"/>
+                </lu>
+                <b pos="1"/>
+                <lu>
+                  <clip pos="3" side="tl" part="lemh"/>
+                  <clip pos="3" side="tl" part="a_adj"/>
+                  <clip pos="3" side="tl" part="grau"/>
+                  <clip pos="3" side="tl" part="gen"/>
+                  <lit-tag v="sp"/>
+                  <lit-tag v="def"/>
+                  <clip pos="3" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+              <b pos="2"/>
+            <chunk name="caseprep">
+            <tags>
+              <tag><lit-tag v="PR"/></tag>
+              <tag><lit-tag v="loc"/></tag>
+            </tags>
+            <lu>
+                  <lit v="i"/><lit-tag v="pr"/>
+            </lu>
+              </chunk>
+              <b/>
+           <chunk name="nom">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="tl" part="defnes"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="tl" part="gen"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="case"/></tag>
+              <tag><var n="c_animacy"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+                  <var n="defnes"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+           </out>
+      </action>
+    </rule>
+
 
     <rule comment="C[] adj
                    –––––
