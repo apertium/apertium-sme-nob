@@ -1869,10 +1869,13 @@ SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 sg + acc) (*0 ("<sáddet>"i) OR ("<�
 ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
 ## Lei Ájlin gii sáddii dieđu.
 SELECT:fallback ("viten"i) (0 ("<diehtu>"i) LINK -1 ("<árbevirolaš>"i));
-
 SELECT ("informasjon"i) (0 ("<diehtu>"i) LINK 0 pl);
-
 SELECT:fallback ("viten"i) (0 ("<diehtu>"i));
+
+
+SELECT ("hus"i) (0 ("<stohpu>"i) LINK *0 ("<stohpoeaiggát>"i));
+SELECT ("hus"i) (0 ("<stohpu>"i) LINK 0 pl);
+SELECT:fallback ("stue"i) (0 ("<stohpu>"i));
 
 # lávki 0 = skritt, 1 = løk
 SELECT ("løk"i) (0 ("<lávki>"i))  (*1 ("<leat>"i) LINK 0 VFIN LINK *1 ("<čuohppat>"i) OR ("<čuohpadit>"i) LINK 0 prfprc) ;
