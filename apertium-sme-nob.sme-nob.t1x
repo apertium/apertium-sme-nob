@@ -2232,6 +2232,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="bygd"/>
       <list-item v="debatt"/>
       <list-item v="desember"/>
+      <list-item v="divisjon"/>
       <list-item v="dokument"/>
       <list-item v="dråpe"/>
       <list-item v="eksempel"/>
@@ -3637,6 +3638,20 @@ And then there are some categories like "month", with all the months.
             </or>
           </test>
           <let><var n="c_gen"/><lit-tag v="GD"/></let>
+        </when>
+      </choose>
+      <choose c="buorre, bahá">
+        <when>
+          <test><and>
+              <equal><clip pos="1" side="sl" part="a_adj"/><lit-tag v="adj"/></equal> 
+              <equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="pl"/></equal> 
+            <or>
+              <equal><clip pos="1" side="sl" part="lemh"/><lit v="buorre"/></equal>
+              <equal><clip pos="1" side="sl" part="lemh"/><lit v="bahá"/></equal>
+            </or></and>
+          </test>
+          <let><var n="c_nbr"/><lit-tag v="sg"/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
         </when>
       </choose>
       <choose>
