@@ -2337,6 +2337,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="utland"/>
       <list-item v="utredning"/>
       <list-item v="vask"/>
+      <list-item v="vegkant"/>
       <list-item v="verden"/>
       <list-item v="vind"/>
       <list-item v="virkelighet"/>
@@ -2379,6 +2380,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="Varangerhalvøya"/>
       <list-item v="Vestlandet"/>
       <list-item v="arbeidsplass"/>
+      <list-item v="parkeringsplass"/>
       <list-item v="bilde"/>
       <list-item v="dag"/>
       <list-item v="dato"/>
@@ -3143,6 +3145,10 @@ And then there are some categories like "month", with all the months.
               <test><or>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
                 <equal caseless="yes"><var n="main-verb-tl"/><lit v="havne"/></equal>
+                  <and>  
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="guođđit"/></equal>
+                  <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
+                  </and>  
                 <and>
                 <in caseless="yes"><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
               <not><equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_hum"/></equal></not>	         
@@ -3180,6 +3186,7 @@ And then there are some categories like "month", with all the months.
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="álgit"/></equal>
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="fokuseret"/></equal>
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="vuođđudit"/></equal>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="guođđit"/></equal>
                   <and>
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="ohcat"/></equal>
                     <or>
@@ -10238,6 +10245,7 @@ And then there are some categories like "month", with all the months.
             </out>
           </when>
           <otherwise>
+      <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
             <out>
             <var n="caseprep"/>
               <chunk name="adj" case="caseFirstWord">
