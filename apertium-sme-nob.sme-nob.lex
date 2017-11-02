@@ -2338,7 +2338,7 @@ SELECT:fallback ("flokk"i) (0 ("<eallu>"i));
 SELECT:fallback ("hustru"i) (0 ("<eamit>"i));
 
 SELECT:kraft ("kraft"i) (*-1 @SUBJ→ LINK 0 sem_rule) (0 ("<fápmu>"i));
-SELECT:kraft ("kraft"i) (0 ("<fápmu>"i)) (-1 ("<magihkalaš>"i));
+SELECT:kraft ("kraft"i) (0 ("<fápmu>"i)) (-1 ("<magihkalaš>"i) OR ("<ceavzin>"i));
 SELECT:fallback ("makt"i) (0 ("<fápmu>"i));
 
 SELECT:fallback ("skall"i) (0 ("<garra>"i));
@@ -2641,6 +2641,9 @@ SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 SELECT:fallback ("mindre"i) (0 ("<unnit>"i)) ; 
 SELECT:fallback ("selvfølgelig"i) (0 ("<dieđus>"i)) ; 
 
+SELECT ("forhånds"i) (0 ("<ovddalgihtii>"i) LINK 1 ("<jietna>"i)) ; 
+SELECT:fallback ("på forhånd"i) (0 ("<ovddalgihtii>"i)) ; 
+
 
 SELECT ("opp"i) (0 ("<eret>"i)) (-1 ("<cealkit>"i)) ;
 SELECT ("fra"i) + pr (0 ("<eret>"i)) (-1 ("<leat>"i) OR cnjcoo) ;
@@ -2789,7 +2792,10 @@ SELECT ("fjern"i) (0 ("<gáiddus>"i) LINK 0 cmp);
 REMOVE ("fjern"i) (NOT 0 cmp);
 
 SELECT ("gammel"i) (0 ("<dološ>"i) LINK 0 attr);
-SELECT:fallback ("gammel tid"i) (NOT 0 attr);
+SELECT:fallback ("gammel tid"i) (0 ("<dološ>"i));
+
+SELECT ("fast"i) (0 ("<bissovaš>"i) LINK 1 ("<.*virgi>"ri));
+SELECT:fallback ("vedvarende"i) (0 ("<bissovaš>"i));
 
 
 SELECT ("-årig"i) (0 ("<jagáš>"i) LINK -1 num);
