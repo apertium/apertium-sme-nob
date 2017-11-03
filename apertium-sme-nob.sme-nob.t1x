@@ -134,14 +134,38 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="num_mod">
 <!--      <cat-item tags="num.*.@HNOUN"/>  this one is often sem_year -->
-      <cat-item tags="num.*.@→N"/>
-      <cat-item tags="num.*.@→A"/>
-      <cat-item tags="num.*.@←SUBJ"/>
-      <cat-item tags="num.*.@←SUBJext"/>
-      <cat-item tags="num.*.@SUBJ→"/>
-      <cat-item tags="num.*.@←OBJ"/>
-      <cat-item tags="num.*.@OBJ→"/>
-      <cat-item tags="num.*.@HNOUN"/> <!-- headliners -->
+      <cat-item tags="num.sg.*.@→N"/>
+      <cat-item tags="num.sg.*.@→A"/>
+      <cat-item tags="num.sg.*.@←SUBJ"/>
+      <cat-item tags="num.sg.*.@←SUBJext"/>
+      <cat-item tags="num.sg.*.@SUBJ→"/>
+      <cat-item tags="num.sg.*.@←OBJ"/>
+      <cat-item tags="num.sg.*.@OBJ→"/>
+      <cat-item tags="num.sg.*.@HNOUN"/> <!-- headliners -->
+      <cat-item tags="num.pl.*.@→N"/>
+      <cat-item tags="num.pl.*.@→A"/>
+      <cat-item tags="num.pl.*.@←SUBJ"/>
+      <cat-item tags="num.pl.*.@←SUBJext"/>
+      <cat-item tags="num.pl.*.@SUBJ→"/>
+      <cat-item tags="num.pl.*.@←OBJ"/>
+      <cat-item tags="num.pl.*.@OBJ→"/>
+      <cat-item tags="num.pl.*.@HNOUN"/> <!-- headliners -->
+      <cat-item tags="num.ess.@→N"/>
+      <cat-item tags="num.ess.@→A"/>
+      <cat-item tags="num.ess.@←SUBJ"/>
+      <cat-item tags="num.ess.@←SUBJext"/>
+      <cat-item tags="num.ess.@SUBJ→"/>
+      <cat-item tags="num.ess.@←OBJ"/>
+      <cat-item tags="num.ess.@OBJ→"/>
+      <cat-item tags="num.ess.@HNOUN"/> <!-- headliners -->
+      <cat-item tags="num.arab.*.@→N"/>
+      <cat-item tags="num.arab.*.@→A"/>
+      <cat-item tags="num.arab.*.@←SUBJ"/>
+      <cat-item tags="num.arab.*.@←SUBJext"/>
+      <cat-item tags="num.arab.*.@SUBJ→"/>
+      <cat-item tags="num.arab.*.@←OBJ"/>
+      <cat-item tags="num.arab.*.@OBJ→"/>
+      <cat-item tags="num.arab.*.@HNOUN"/> <!-- headliners -->
     </def-cat>
     <def-cat n="num">
       <cat-item tags="num.*"/>
@@ -157,6 +181,9 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="rpar">
       <cat-item  lemma=")" tags="rquot"/>
+    </def-cat>
+    <def-cat n="num-clock">
+      <cat-item tags="num.time-clock.*"/>
     </def-cat>
     <def-cat n="num-year">
       <cat-item tags="num.sem_year.*"/>
@@ -1532,6 +1559,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_sur"/>
       <attr-item tags="sem_symbol"/>
       <attr-item tags="sem_time"/>
+      <attr-item tags="sem_time-clock"/>
       <attr-item tags="sem_time_wthr"/>
       <attr-item tags="sem_tool"/>
       <attr-item tags="sem_tool-catch"/>
@@ -2271,6 +2299,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="krav"/>
       <list-item v="krukke"/>
       <list-item v="kulde"/>
+      <list-item v="kunst"/>
       <list-item v="land"/>
       <list-item v="ledelse"/>
       <list-item v="ledelse"/>
@@ -3272,6 +3301,7 @@ And then there are some categories like "month", with all the months.
                 <equal><var n="main-verb-sl"/><lit v="válljet"/></equal>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="skoleår"/></equal>	         
                 </and>
+                <equal><clip pos="1" side="sl" part="lemh"/><lit v="beaivebodda"/></equal>	         
                 </or>
               </test>
               <let>
@@ -3758,12 +3788,14 @@ And then there are some categories like "month", with all the months.
       <let><var n="defnes"/><lit-tag v="ind"/></let>
       <choose><when c="definite if this all matches:">
         <test>
-          <and>
+          <and>                	         
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@VOC"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="a_acr"/><lit-tag v="acr"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="ekstra"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="beaivebodda"/></equal></not>
             <not><equal><var n="main-verb-tl"/><lit v="søke"/></equal></not>
             <not><and>
             <equal><clip pos="1" side="tl" part="lemh"/><lit v="same"/></equal>
