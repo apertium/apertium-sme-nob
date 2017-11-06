@@ -1743,7 +1743,7 @@ SELECT ("oppmerksomhet"i) IF (0 ("<fuomášupmi>"i)) (*-1 ("<giddet>"i) OR ("<ol
 SELECT:fallback ("ide"i) IF (0 ("<fuomášupmi>"i)) ;
 
 SELECT ("institutt"i) IF (0 ("<goahti>"i) LINK -1 ("<.*dieđa>"ri)  OR ("<.*fága>"ri)  OR ("<.*dutkan>"ri)   OR ("<servodat>"i)) ;
-SELECT ("institutt"i) IF (0 ("<goahti>"i) LINK 1 ("<jođiheaddji>"i)) ;
+SELECT ("institutt"i) IF (0 ("<goahti>"i) LINK 1 ("<jođiheaddji>"i) OR ("<struktuvra>"i)) ;
 SELECT ("institutt"i) IF (0 ("<goahti>"i) LINK *0 ("<.*dutkan>"ri) OR ("<.*fága>"ri)  OR ("<.*dieđa>"ri)  OR ("<.*oahppu>"ri)  OR ("<.*oahpahus>"ri)) ;
 SELECT:fallback ("gamme"i) IF (0 ("<goahti>"i)) ;
 
