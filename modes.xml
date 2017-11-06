@@ -134,7 +134,15 @@
         <file name="nob-sme.prob"/>
       </program>
       <program name="apertium-pretransfer"/>
-      <!-- TODO -->
+      <program name="lt-proc -b">
+        <file name="nob-sme.autobil.bin"/>
+      </program>
+      <program name="apertium-tagger -g" debug-suff="faketransfer">
+        <file name="nob-sme.prob"/>
+      </program>
+      <program name="hfst-proc $1">
+        <file name="nob-sme.autogen.hfst"/>
+      </program>
     </pipeline>
   </mode>
 
