@@ -664,7 +664,7 @@ SET NP-HEAD-GEN = (prn gen) OR (n gen) OR (adj gen) - der_nomact - cmp_splitr - 
 
 
 SET PRE-NP-HEAD = (np attr) OR (np @→N) OR (adj attr) OR (abbr attr) OR ("<buorre>")
-OR (pers gen) OR (n gen) OR (adj gen) OR ("<buot>") OR
+OR (pers gen) OR (n gen) OR (adj gen) OR ("<buot>") OR (cmp) OR
 num OR cmp_splitr OR cnjcoo OR (prn dem) OR (prn ref gen) OR (ind attr) OR
 (prfprc @→N) OR prsprc OR (adj ord) OR (num @→N) OR (adj @→N) OR @→N OR @→A OR @→Pron OR @Num← OR (cnjcoo @CNP) OR (@→CC) OR (action gen) OR (@Pron←) ;
 # The strict version of items that can only be premodifiers, not parts of the predicate
@@ -1049,8 +1049,8 @@ SELECT:fallback ("rykke"i) IF  (0 ("<rohttestit>"i)) ;
 SELECT:fallback ("gjennomføre"i) IF  (0 ("<doibmiibidjat>"i)) ;
 
 
-SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 n + acc ) ;
-SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 qst LINK 1 n + acc ) ;
+SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK *1 n + acc BARRIER NOT-NPMOD ) ;
+SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 qst LINK *1 n + acc BARRIER NOT-NPMOD ) ;
 SELECT:fallback ("ville"i) IF  (0 ("<háliidit>"i)) ;
 
 
@@ -2171,7 +2171,7 @@ SELECT ("samisk språk"i) (0 ("<sámegiella>"i) LINK 1 ("<ovdáneapmi>"i) OR sem
 SELECT:fallback ("samisk"i) (0 ("<sámegiella>"i));
 
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 0 pl);
-SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 1 ("<namma>"i));
+SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 1 ("<namma>"i) OR ("<šilta>"i) );
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK -1 gen);
 SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
 
@@ -2298,6 +2298,9 @@ SELECT:fallback ("utmark"i) (0 ("<meahcci>"i));
 
 SELECT:fallback ("velsignelse"i) (0 ("<sivdnideapmi>"i));
 
+SELECT:fallback ("hage"i) (0 ("<gárdi>"i) LINK -1 ("<mánná>"i) + cmp);
+SELECT:fallback ("gjerde"i) (0 ("<gárdi>"i));
+
 
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK 0 pl);
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK -1 ("<ohcat>"i));
@@ -2352,7 +2355,6 @@ SELECT:fallback ("kamerat"i) (0 ("<guoibmi>"i));
 SELECT:fallback ("tak"i) (0 ("<gáhttu>"i));
 SELECT:fallback ("navnebror"i) (0 ("<gáibmi>"i));
 SELECT:fallback ("vare"i) (0 ("<gálvu>"i));
-SELECT:fallback ("gjerde"i) (0 ("<gárdi>"i));
 SELECT:fallback ("kasse"i) (0 ("<gássa>"i));
 SELECT:fallback ("butikk"i) (0 ("<gávpi>"i));
 SELECT:fallback ("herre"i) (0 ("<hearrá>"i));
