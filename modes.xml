@@ -146,5 +146,39 @@
     </pipeline>
   </mode>
 
+  <!-- Try allnob-sme-biltrans to see autobils for all analyses -->
+  <mode name="allnob-sme" install="no" gendebug="yes">
+    <pipeline>
+      <program name="lt-proc -w -e">
+        <file name="nob-sme.automorf-untrimmed.bin"/>
+      </program>
+      <program name="sed 's,\^[^/]*/,^,g;s,/,$|^,g'" debug-suff="tagger"/>
+      <program name="apertium-pretransfer"/>
+      <program name="lt-proc -b">
+        <file name="nob-sme.autobil.bin"/>
+      </program>
+      <program name="sed 's,\^[^/]*/,^,g;s,/,$|^,g'" debug-suff="transfer"/>
+      <program name="hfst-proc $1">
+        <file name="nob-sme.autogen.hfst"/>
+      </program>
+    </pipeline>
+  </mode>
+  <mode name="allsme-nob" install="no" gendebug="yes">
+    <pipeline>
+      <program name="hfst-proc --weight-classes 1 -w -p">
+        <file name="sme-nob.automorf.hfst"/>
+      </program>
+      <program name="sed 's,\^[^/]*/,^,g;s,/,$|^,g'" debug-suff="tagger"/>
+      <program name="apertium-pretransfer"/>
+      <program name="lt-proc -b">
+        <file name="sme-nob.autobil.bin"/>
+      </program>
+      <program name="sed 's,\^[^/]*/,^,g;s,/,$|^,g'" debug-suff="transfer"/>
+      <program name="lt-proc $1">
+        <file name="sme-nob.autobil.bin"/>
+      </program>
+    </pipeline>
+  </mode>
+
 
 </modes>
