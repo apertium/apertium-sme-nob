@@ -3832,6 +3832,10 @@ And then there are some categories like "month", with all the months.
             <not><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></not>
             </and></not>
             <not><and>
+            <equal><var n="main-verb-tl"/><lit v="ta"/></equal>
+            <equal><clip pos="1" side="tl" part="lemh"/><lit v="advokat"/></equal>
+            </and></not>
+            <not><and>
             <equal><clip pos="1" side="tl" part="lemh"/><lit v="liv"/></equal>
             <equal><var n="main-verb-tl"/><lit v="blåse"/></equal>
             </and></not>
