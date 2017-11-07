@@ -38,6 +38,7 @@ TARGETS2 =			\
 	$(PREFIX2).automorf.bin \
 	$(PREFIX2).prob		\
 	$(PREFIX2).rlx.bin      \
+	$(PREFIX2).t1x.bin			\
 	$(PREFIX2).automorf.bin
 
 debug: \
@@ -45,6 +46,16 @@ debug: \
 	$(BASENAME).$(PREFIX1).syn.rlx \
 	$(BASENAME).$(PREFIX2).rlx     \
 	$(PREFIX1).val.bin
+
+# debug/devel/temporary stuff:
+nouns-nob-sme: nob-sme dev/nouns-nob-sme/$(PREFIX2).t1x.bin dev/nouns-nob-sme/$(PREFIX2).rlx.bin modes/nouns-nob-sme.mode
+
+dev/nouns-nob-sme/$(PREFIX2).rlx.bin: dev/nouns-nob-sme/$(BASENAME).$(PREFIX2).rlx
+	cg-comp $< $@
+
+dev/nouns-nob-sme/$(PREFIX2).t1x.bin: dev/nouns-nob-sme/$(BASENAME).$(PREFIX2).t1x
+	apertium-validate-transfer $<
+	apertium-preprocess-transfer $< $@
 
 ###############################################################################
 ## Monolingual transducers

@@ -180,5 +180,26 @@
     </pipeline>
   </mode>
 
+  <mode name="nouns-nob-sme" install="no" gendebug="yes">
+    <pipeline>
+      <program name="lt-proc -w -e">
+        <file name="nob-sme.automorf.bin"/>
+      </program>
+      <program name="cg-proc -1 -n">
+        <file name="dev/nouns-nob-sme/nob-sme.rlx.bin"/>
+      </program>
+      <program name="apertium-pretransfer"/>
+      <program name="lt-proc -b">
+        <file name="nob-sme.autobil.bin"/>
+      </program>
+      <program name="apertium-transfer -b">
+        <file name="dev/nouns-nob-sme/apertium-sme-nob.nob-sme.t1x"/>
+        <file name="dev/nouns-nob-sme/nob-sme.t1x.bin"/>
+      </program>
+      <program name="hfst-proc $1">
+        <file name="nob-sme.autogen.hfst"/>
+      </program>
+    </pipeline>
+  </mode>
 
 </modes>

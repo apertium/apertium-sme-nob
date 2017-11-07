@@ -1,0 +1,4434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transfer default="lu">
+  <section-def-cats>
+    <def-cat n="n">
+      <cat-item tags="n.*"/>
+    </def-cat>
+    <def-cat n="ncmp">
+      <cat-item tags="n.*.cmp"/>
+    </def-cat>
+
+
+  </section-def-cats>
+  <section-def-attrs>
+    <def-attr n="a_der">
+      <attr-item tags="der_halla"/>
+      <attr-item tags="der_inchl"/>
+      <attr-item tags="der_dimin"/>
+      <attr-item tags="der_nomact"/>
+      <attr-item tags="der_nomag"/>
+      <attr-item tags="der_muš"/>
+      <attr-item tags="der_sasj"/>
+      <attr-item tags="der_caus"/>
+      <attr-item tags="der_h"/>
+      <attr-item tags="der_d"/>
+      <attr-item tags="der_st"/>
+      <attr-item tags="der_l"/>
+      <attr-item tags="der_vuota"/>
+    </def-attr>
+    <def-attr n="a_der_v2n">
+      <attr-item tags="der_nomact"/>
+      <attr-item tags="der_nomag"/>
+      <attr-item tags="der_muš"/>
+    </def-attr>
+    <def-attr n="a_sintagma">
+      <attr-item tags="SN"/>
+      <attr-item tags="SV"/>
+      <attr-item tags="SA"/>
+    </def-attr>
+    <def-attr n="a_verb">
+      <attr-item tags="v"/>
+      <attr-item tags="vblex"/>
+    </def-attr>
+    <def-attr n="a_ger">
+      <attr-item tags="ger"/>
+    </def-attr>
+    <def-attr n="a_pstv">
+      <attr-item tags="pstv"/>
+    </def-attr>
+    <def-attr n="a_lemq">
+      <attr-item tags="lemq-obj"/>
+    </def-attr>
+    <def-attr n="a_attr">
+      <attr-item tags="attr"/>
+    </def-attr>
+    <def-attr n="a_adj">
+      <attr-item tags="adj"/>
+      <attr-item tags="adj.pp"/>
+      <attr-item tags="adj.pprs"/>
+      <attr-item tags="adj.sint"/>
+      <attr-item tags="adj.sint.pp"/>
+      <attr-item tags="adj.sint.pprs"/>
+    </def-attr>
+    <def-attr n="a_adj-pure">
+      <attr-item tags="adj"/>
+      <attr-item tags="adj.sint"/>
+    </def-attr>
+    <def-attr n="a_adv">
+      <attr-item tags="adv"/>
+      <attr-item tags="cnjcoo"/>
+    </def-attr>
+    <def-attr n="a_adv_pr_cnjcoo_cnjsub">
+      <attr-item tags="adv"/>
+      <attr-item tags="cnjcoo"/>
+      <attr-item tags="cnjsub"/>
+      <attr-item tags="pr"/>
+    </def-attr>
+    <def-attr n="a_adv_pr_cnjcoo">
+      <attr-item tags="adv"/>
+      <attr-item tags="cnjcoo"/>
+      <attr-item tags="pr"/>
+    </def-attr>
+    <def-attr n="a_ij">
+      <attr-item tags="ij"/>
+      <attr-item tags="ij"/>
+    </def-attr>
+    <def-attr n="a_prep">
+      <attr-item tags="post"/>
+      <attr-item tags="pr"/>
+    </def-attr>
+    <def-attr n="prop_type">
+      <attr-item tags="top"/>
+      <attr-item tags="cog"/>
+      <attr-item tags="ant"/>
+      <attr-item tags="org"/>
+    </def-attr>
+    <def-attr n="a_num">
+      <attr-item tags="num"/>
+      <attr-item tags="det.qnt"/>
+    </def-attr>
+    <def-attr n="a_cmp">
+      <attr-item tags="cmp"/>
+      <attr-item tags="guio"/>
+      <attr-item tags="cmp.guio"/>
+      <attr-item tags="cmp_hyph.cmp"/>
+      <attr-item tags="cmp_splitr"/>
+    </def-attr>
+    <def-attr n="a_cmp_nbrcas">
+      <attr-item tags="cmp_plgen"/>
+      <attr-item tags="cmp_plnom"/>
+      <attr-item tags="cmp_sggen"/>
+      <attr-item tags="cmp_sgnom"/>
+    </def-attr>
+    <def-attr n="a_prn">
+      <attr-item tags="prn"/>
+      <attr-item tags="prn.rel"/>
+      <attr-item tags="prn.res"/>
+      <attr-item tags="prn.ind"/>
+      <attr-item tags="prn.dem"/>
+      <attr-item tags="prn.pers"/>
+      <attr-item tags="prn"/>
+      <attr-item tags="prn.itg"/>
+      <attr-item tags="prn.ref"/>
+    </def-attr>
+    <def-attr n="a_det">
+      <attr-item tags="det"/>
+      <attr-item tags="det.emph"/>
+      <attr-item tags="det.dem"/>
+      <attr-item tags="det.itg"/>
+      <attr-item tags="det.qnt"/>
+      <attr-item tags="det.pos"/>
+    </def-attr>
+    <def-attr n="lettercase">
+      <attr-item tags="fixedcase"/>
+    </def-attr>
+    <def-attr n="a_conj">
+      <attr-item tags="cnjcoo"/>
+      <attr-item tags="cnjcoo.clb"/>
+      <attr-item tags="cnjsub"/>
+    </def-attr>
+    <def-attr n="a_count">
+      <attr-item tags="coll"/>
+      <attr-item tags="unc"/>
+    </def-attr>
+    <def-attr n="a_nom_all">
+      <attr-item tags="abbr"/>
+      <attr-item tags="np"/>
+      <attr-item tags="np.top"/>
+      <attr-item tags="np.sem_org"/>
+      <attr-item tags="np.ant.m"/>
+      <attr-item tags="np.ant.f"/>
+      <attr-item tags="np.sem_ani"/>
+      <attr-item tags="np.attr"/>
+      <attr-item tags="n"/>
+      <attr-item tags="n.acr"/>
+      <attr-item tags="np"/>
+    </def-attr>
+    <def-attr n="a_nom">
+      <attr-item tags="n"/>
+      <attr-item tags="n.acr"/>
+      <attr-item tags="np"/>
+      <attr-item tags="np.top"/>
+      <attr-item tags="np.attr"/>
+      <attr-item tags="np.cog"/>
+      <attr-item tags="np.top"/>
+      <attr-item tags="np.org"/>
+      <attr-item tags="np.ant"/>
+    </def-attr>
+    <def-attr n="a_rel">
+      <attr-item tags="rel"/>
+      <attr-item tags="ref"/>
+      <attr-item tags="res" c="Reciprocal"/>
+    </def-attr>
+    <def-attr n="a_abess">
+      <attr-item tags="vabess"/>
+    </def-attr>
+    <def-attr n="voice">
+      <attr-item tags="pasv"/>
+    </def-attr>
+    <def-attr n="animacy">
+      <attr-item tags="agreem-pro"/>
+      <attr-item tags="pers-pro"/>
+      <attr-item tags="pers"/>
+      <attr-item tags="incongr-pro"/>
+    </def-attr>
+    <def-attr n="trans">
+      <attr-item tags="tv"/>
+      <attr-item tags="iv"/>
+    </def-attr>
+    <def-attr n="a_actio">                                       <!--TODO: what's the category name?-->
+      <attr-item tags="actio.ess"/>
+      <attr-item tags="actio.loc"/>
+      <attr-item tags="actio.nom"/>
+      <attr-item tags="actio.ess.not"/>
+    </def-attr>
+    <def-attr n="a_caus">                                      <!--TODO: what's the category name?-->
+      <attr-item tags="caus"/>
+    </def-attr>
+    <def-attr n="case">
+      <attr-item tags="nom"/>
+      <attr-item tags="acc"/>
+      <attr-item tags="gen"/>
+      <attr-item tags="com"/>
+      <attr-item tags="ess"/>
+      <attr-item tags="ill"/>
+      <attr-item tags="loc"/>
+      <attr-item tags="ine"/>
+      <attr-item tags="ela"/>
+    </def-attr>
+    <def-attr n="gen-case">
+      <attr-item tags="gen"/>
+    </def-attr>
+    <def-attr n="pers">
+      <attr-item tags="p1"/>
+      <attr-item tags="p2"/>
+      <attr-item tags="p3"/>
+    </def-attr>
+    <def-attr n="grau">
+      <attr-item tags="ord.pst"/>
+      <attr-item tags="ord.comp"/>
+      <attr-item tags="ord.sup"/>
+      <attr-item tags="comp"/>
+      <attr-item tags="pst"/>
+      <attr-item tags="sup"/>
+    </def-attr>
+    <def-attr n="gen">
+      <attr-item tags="m"/>
+      <attr-item tags="f"/>
+      <attr-item tags="mf"/>
+      <attr-item tags="un"/>
+      <attr-item tags="nt"/>
+      <attr-item tags="GD"/>
+      <attr-item tags="GD_pers"/>
+    </def-attr>
+    <def-attr n="nbr">
+      <attr-item tags="sg"/>
+      <attr-item tags="du"/>
+      <attr-item tags="pl"/>
+      <attr-item tags="sp"/>
+      <attr-item tags="ND"/>
+    </def-attr>
+    <def-attr n="art">
+      <attr-item tags="def"/>
+      <attr-item tags="ind"/>
+      <attr-item tags="DD"/>
+    </def-attr>
+    <def-attr n="fintemps">
+      <attr-item tags="pres"/>
+      <attr-item tags="pret"/>
+      <attr-item tags="imp"/>
+    </def-attr>
+    <def-attr n="temps">
+      <attr-item tags="pres"/>
+      <attr-item tags="pret"/>
+      <attr-item tags="inf"/>
+      <attr-item tags="imp"/>
+      <attr-item tags="prfprc"/>
+      <attr-item tags="pp"/>
+      <attr-item tags="TD"/>
+    </def-attr>
+    <def-attr n="neg">
+      <attr-item tags="conneg"/>
+      <attr-item tags="neg"/>
+    </def-attr>
+    <def-attr n="mode">
+      <attr-item tags="qst"/>
+    </def-attr>
+    <def-attr n="a_acr">
+      <attr-item tags="acr"/>
+    </def-attr>
+    <def-attr n="ext">
+      <attr-item tags="←ext→"/>
+    </def-attr>
+    <def-attr n="a_part">
+      <attr-item tags="part"/>
+    </def-attr>
+    <def-attr n="modality">
+      <attr-item tags="indic"/>
+      <attr-item tags="cond"/>
+      <attr-item tags="cond-ville"/>
+      <attr-item tags="cond-skulle"/>
+      <attr-item tags="cond-kunne"/>
+      <attr-item tags="pot"/>
+    </def-attr>
+    <def-attr n="a_foc">
+      <attr-item tags="foc_pos-ge"/>
+      <attr-item tags="foc_neg-ge"/>
+      <attr-item tags="foc_naj"/>
+    </def-attr>
+    <def-attr n="hab">
+      <attr-item tags="←hab→"/>
+    </def-attr>
+    <def-attr n="syn_label">
+      <attr-item tags="@→A"/>
+      <attr-item tags="@A←"/>
+      <attr-item tags="@←ADVL"/>
+      <attr-item tags="@←ADVL-ela"/>
+      <attr-item tags="@←ADVL-ine"/>
+      <attr-item tags="@→ADVL"/>
+      <attr-item tags="@ADVL"/>
+      <attr-item tags="@ADVL←"/>
+      <attr-item tags="@ADVL→"/>
+      <attr-item tags="@ADVL-ela→"/>
+      <attr-item tags="@ADVL-ine→"/>
+      <attr-item tags="@ADVLcs-ela→"/>
+      <attr-item tags="@ADVLcs-ine→"/>
+      <attr-item tags="@ADVLqst-ela→"/>
+      <attr-item tags="@ADVLqst-ine→"/>
+      <attr-item tags="@ADVLhab→"/>
+      <attr-item tags="@←ADVLhab"/>
+      <attr-item tags="@←SUBJext"/>
+      <attr-item tags="@ADVL→CS"/>
+      <attr-item tags="@ADVL←OBJ"/>
+      <attr-item tags="@ADVL→SUBJ"/>
+      <attr-item tags="@APP"/>
+      <attr-item tags="@APP-ADVL←"/>
+      <attr-item tags="@APP-N←"/>
+      <attr-item tags="@APP-Num←"/>
+      <attr-item tags="@APP-Pron←"/>
+      <attr-item tags="@APP→Pron"/>
+      <attr-item tags="@→CC"/>
+      <attr-item tags="@CNP"/>
+      <attr-item tags="@COMP-CS←"/>
+      <attr-item tags="@CVP"/>
+      <attr-item tags="@-F←ADVL"/>
+      <attr-item tags="@-F←ADVL-ine"/>
+      <attr-item tags="@-F←ADVL-ela"/>
+      <attr-item tags="@-FADVL"/>
+      <attr-item tags="@-FADVL→"/>
+      <attr-item tags="@-FADVL-ine→"/>
+      <attr-item tags="@-FADVL-ela→"/>
+      <attr-item tags="@-FAUXV"/>
+      <attr-item tags="@\+FAUXV"/>
+      <attr-item tags="@+FAUXV"/>
+      <attr-item tags="@-FMAINV"/>
+      <attr-item tags="@\+FMAINV"/>
+      <attr-item tags="@+FMAINV"/>
+      <attr-item tags="@-F←OBJ"/>
+      <attr-item tags="@-FOBJ"/>
+      <attr-item tags="@-FOBJ→"/>
+      <attr-item tags="@-F←OPRED"/>
+      <attr-item tags="@-FOPRED→"/>
+      <attr-item tags="@-F←SPRED"/>
+      <attr-item tags="@-FSPRED→"/>
+      <attr-item tags="@-FSUBJ→"/>
+      <attr-item tags="@HNOUN"/>
+      <attr-item tags="@INTERJ"/>
+      <attr-item tags="@→N"/>
+      <attr-item tags="@N"/>
+      <attr-item tags="@N←"/>
+      <attr-item tags="@→Num;"/>
+      <attr-item tags="@→Num"/>
+      <attr-item tags="@Num←"/>
+      <attr-item tags="@←OBJ"/>
+      <attr-item tags="@OBJ"/>
+      <attr-item tags="@OBJ→"/>
+      <attr-item tags="@OBJ→SPRED"/>
+      <attr-item tags="@-OPRED→"/>
+      <attr-item tags="@←OPRED"/>
+      <attr-item tags="@OPRED"/>
+      <attr-item tags="@OPRED→"/>
+      <attr-item tags="@→P"/>
+      <attr-item tags="@P←"/>
+      <attr-item tags="@PCLE"/>
+      <attr-item tags="@←PPRED"/>
+      <attr-item tags="@PPRED"/>
+      <attr-item tags="@→Pron"/>
+      <attr-item tags="@Pron←"/>
+      <attr-item tags="@-SPRED→"/>
+      <attr-item tags="@←SPRED"/>
+      <attr-item tags="@SPRED"/>
+      <attr-item tags="@SPRED→"/>
+      <attr-item tags="@SPRED←OBJ"/>
+      <attr-item tags="@←SUBJ"/>
+      <attr-item tags="@SUBJ"/>
+      <attr-item tags="@SUBJ→"/>
+      <attr-item tags="@SUBJ←ADVL"/>
+      <attr-item tags="@SUBJ←OBJ"/>
+      <attr-item tags="@VOC"/>
+      <attr-item tags="@X"/>
+    </def-attr>
+    <def-attr n="a_sem">
+      <attr-item tags="sem_act_fruit"/>
+      <attr-item tags="sem_ani_group_prod-vis"/>
+      <attr-item tags="sem_body-abstr_feat-cogn"/>
+      <attr-item tags="sem_body_plc-elevate"/>
+      <attr-item tags="sem_build-part_cat"/>
+      <attr-item tags="sem_build-part_cat_ctain"/>
+      <attr-item tags="sem_build-part_cat_ctain_mat"/>
+      <attr-item tags="sem_build-part_ctain"/>
+      <attr-item tags="sem_build-part_ctain_mat"/>
+      <attr-item tags="sem_build-part_ctain_obj"/>
+      <attr-item tags="sem_clth-jewl_curr_obj"/>
+      <attr-item tags="sem_clth-jewl_curr_obj_org"/>
+      <attr-item tags="sem_clth-jewl_fruit"/>
+      <attr-item tags="sem_clth_obj-clo"/>
+      <attr-item tags="sem_edu_geom"/>
+      <attr-item tags="sem_feat-phys_plc"/>
+      <attr-item tags="sem_group_prod-vis"/>
+      <attr-item tags="sem_hum-prof"/>
+      <attr-item tags="sem_hum_mat_tool"/>
+      <attr-item tags="sem_hum_tool-it"/>
+      <attr-item tags="sem_obj_symbol"/>
+      <attr-item tags="sem_act"/>
+      <attr-item tags="sem_act_group"/>
+      <attr-item tags="sem_act_plc"/>
+      <attr-item tags="sem_act_route"/>
+      <attr-item tags="sem_act_tool-it"/>
+      <attr-item tags="sem_adr"/>
+      <attr-item tags="sem_amount"/>
+      <attr-item tags="sem_amount_build"/>
+      <attr-item tags="sem_amount_semcon"/>
+      <attr-item tags="sem_ani"/>
+      <attr-item tags="sem_ani-fish"/>
+      <attr-item tags="sem_ani_body-abstr_hum"/>
+      <attr-item tags="sem_ani_build"/>
+      <attr-item tags="sem_ani_build-part"/>
+      <attr-item tags="sem_ani_build_hum_txt"/>
+      <attr-item tags="sem_ani_group"/>
+      <attr-item tags="sem_ani_group_hum"/>
+      <attr-item tags="sem_ani_hum"/>
+      <attr-item tags="sem_ani_hum_plc"/>
+      <attr-item tags="sem_ani_hum_time"/>
+      <attr-item tags="sem_ani_plc"/>
+      <attr-item tags="sem_ani_plc_txt"/>
+      <attr-item tags="sem_ani_time"/>
+      <attr-item tags="sem_ani_veh"/>
+      <attr-item tags="sem_aniprod"/>
+      <attr-item tags="sem_aniprod_hum"/>
+      <attr-item tags="sem_aniprod_obj-clo"/>
+      <attr-item tags="sem_aniprod_perc-phys"/>
+      <attr-item tags="sem_aniprod_plc"/>
+      <attr-item tags="sem_aniprod_plc_route"/>
+      <attr-item tags="sem_body"/>
+      <attr-item tags="sem_body-abstr"/>
+      <attr-item tags="sem_body-abstr_prod-audio_semcon"/>
+      <attr-item tags="sem_body_body-abstr"/>
+      <attr-item tags="sem_body_clth"/>
+      <attr-item tags="sem_body_food"/>
+      <attr-item tags="sem_body_group_hum"/>
+      <attr-item tags="sem_body_group_hum_time"/>
+      <attr-item tags="sem_body_hum"/>
+      <attr-item tags="sem_body_mat"/>
+      <attr-item tags="sem_body_measr"/>
+      <attr-item tags="sem_body_obj_tool-catch"/>
+      <attr-item tags="sem_body_plc"/>
+      <attr-item tags="sem_body_time"/>
+      <attr-item tags="sem_build"/>
+      <attr-item tags="sem_build-part"/>
+      <attr-item tags="sem_build-part_plc"/>
+      <attr-item tags="sem_build_build-part"/>
+      <attr-item tags="sem_build_clth-part"/>
+      <attr-item tags="sem_build_edu_org"/>
+      <attr-item tags="sem_build_event_org"/>
+      <attr-item tags="sem_build_obj"/>
+      <attr-item tags="sem_build_org"/>
+      <attr-item tags="sem_build_route"/>
+      <attr-item tags="sem_cat"/>
+      <attr-item tags="sem_cat_group_hum"/>
+      <attr-item tags="sem_cat_group_hum_plc"/>
+      <attr-item tags="sem_clth"/>
+      <attr-item tags="sem_clth-jewl"/>
+      <attr-item tags="sem_clth-jewl_curr"/>
+      <attr-item tags="sem_clth-jewl_money"/>
+      <attr-item tags="sem_clth-jewl_org"/>
+      <attr-item tags="sem_clth-jewl_plant"/>
+      <attr-item tags="sem_clth-part"/>
+      <attr-item tags="sem_clth_hum"/>
+      <attr-item tags="sem_ctain"/>
+      <attr-item tags="sem_ctain-abstr"/>
+      <attr-item tags="sem_ctain-abstr_org"/>
+      <attr-item tags="sem_ctain-clth"/>
+      <attr-item tags="sem_ctain-clth_plant"/>
+      <attr-item tags="sem_ctain-clth_veh"/>
+      <attr-item tags="sem_ctain_feat-phys"/>
+      <attr-item tags="sem_ctain_furn"/>
+      <attr-item tags="sem_ctain_plc"/>
+      <attr-item tags="sem_ctain_tool"/>
+      <attr-item tags="sem_ctain_tool-measr"/>
+      <attr-item tags="sem_curr"/>
+      <attr-item tags="sem_curr_org"/>
+      <attr-item tags="sem_dance"/>
+      <attr-item tags="sem_dance_org"/>
+      <attr-item tags="sem_dance_prod-audio"/>
+      <attr-item tags="sem_date"/>
+      <attr-item tags="sem_dir"/>
+      <attr-item tags="sem_domain"/>
+      <attr-item tags="sem_domain_food-med"/>
+      <attr-item tags="sem_domain_hum"/>
+      <attr-item tags="sem_domain_prod-audio"/>
+      <attr-item tags="sem_drink"/>
+      <attr-item tags="sem_drink_plant"/>
+      <attr-item tags="sem_dummytag"/>
+      <attr-item tags="sem_edu"/>
+      <attr-item tags="sem_edu_event"/>
+      <attr-item tags="sem_edu_group_hum"/>
+      <attr-item tags="sem_edu_hum"/>
+      <attr-item tags="sem_edu_mat"/>
+      <attr-item tags="sem_edu_org"/>
+      <attr-item tags="sem_event"/>
+      <attr-item tags="sem_event_food"/>
+      <attr-item tags="sem_event_hum"/>
+      <attr-item tags="sem_event_plc"/>
+      <attr-item tags="sem_event_plc-elevate"/>
+      <attr-item tags="sem_event_time"/>
+      <attr-item tags="sem_feat"/>
+      <attr-item tags="sem_feat-measr"/>
+      <attr-item tags="sem_feat-measr_plc"/>
+      <attr-item tags="sem_feat-phys"/>
+      <attr-item tags="sem_feat-phys_tool-write"/>
+      <attr-item tags="sem_feat-phys_veh"/>
+      <attr-item tags="sem_feat-phys_wthr"/>
+      <attr-item tags="sem_feat-psych"/>
+      <attr-item tags="sem_feat-psych_hum"/>
+      <attr-item tags="sem_feat_plant"/>
+      <attr-item tags="sem_fem"/>
+      <attr-item tags="sem_food"/>
+      <attr-item tags="sem_food-med"/>
+      <attr-item tags="sem_food_perc-phys"/>
+      <attr-item tags="sem_food_plant"/>
+      <attr-item tags="sem_fruit"/>
+      <attr-item tags="sem_fruit_hum"/>
+      <attr-item tags="sem_furn"/>
+      <attr-item tags="sem_game"/>
+      <attr-item tags="sem_game_obj-play"/>
+      <attr-item tags="sem_geom"/>
+      <attr-item tags="sem_geom_hum_plc"/>
+      <attr-item tags="sem_geom_obj"/>
+      <attr-item tags="sem_group"/>
+      <attr-item tags="sem_group_hum"/>
+      <attr-item tags="sem_group_hum_org"/>
+      <attr-item tags="sem_group_hum_plc"/>
+      <attr-item tags="sem_group_hum_prod-vis"/>
+      <attr-item tags="sem_group_org"/>
+      <attr-item tags="sem_group_sign"/>
+      <attr-item tags="sem_group_txt"/>
+      <attr-item tags="sem_hum"/>
+      <attr-item tags="sem_hum-prof"/>
+      <attr-item tags="sem_hum-abstr"/>
+      <attr-item tags="sem_hum_lang"/>
+      <attr-item tags="sem_hum_lang_plc"/>
+      <attr-item tags="sem_hum_lang_time"/>
+      <attr-item tags="sem_hum_obj"/>
+      <attr-item tags="sem_hum_org"/>
+      <attr-item tags="sem_hum_plant"/>
+      <attr-item tags="sem_hum_plc"/>
+      <attr-item tags="sem_hum_sign"/>
+      <attr-item tags="sem_hum_tool"/>
+      <attr-item tags="sem_hum_veh"/>
+      <attr-item tags="sem_hum_wthr"/>
+      <attr-item tags="sem_ideol"/>
+      <attr-item tags="sem_lang"/>
+      <attr-item tags="sem_lang_tool"/>
+      <attr-item tags="sem_mal"/>
+      <attr-item tags="sem_mat"/>
+      <attr-item tags="sem_mat_plant"/>
+      <attr-item tags="sem_mat_txt"/>
+      <attr-item tags="sem_measr"/>
+      <attr-item tags="sem_measr_obj_time"/>
+      <attr-item tags="sem_measr_sign"/>
+      <attr-item tags="sem_measr_time"/>
+      <attr-item tags="sem_money"/>
+      <attr-item tags="sem_money_obj"/>
+      <attr-item tags="sem_money_org"/>
+      <attr-item tags="sem_money_part"/>
+      <attr-item tags="sem_money_txt"/>
+      <attr-item tags="sem_obj"/>
+      <attr-item tags="sem_obj-clo"/>
+      <attr-item tags="sem_obj-cogn"/>
+      <attr-item tags="sem_obj-el"/>
+      <attr-item tags="sem_obj-ling"/>
+      <attr-item tags="sem_obj-play"/>
+      <attr-item tags="sem_obj-play_sport"/>
+      <attr-item tags="sem_obj-rope"/>
+      <attr-item tags="sem_obj-surfc"/>
+      <attr-item tags="sem_obj_semcon"/>
+      <attr-item tags="sem_obj_sign"/>
+      <attr-item tags="sem_obj_state"/>
+      <attr-item tags="sem_obj_veh"/>
+      <attr-item tags="sem_org"/>
+      <attr-item tags="sem_org_prod-cogn"/>
+      <attr-item tags="sem_org_rule"/>
+      <attr-item tags="sem_org_txt"/>
+      <attr-item tags="sem_org_veh"/>
+      <attr-item tags="sem_part"/>
+      <attr-item tags="sem_part_prod-cogn"/>
+      <attr-item tags="sem_part_substnc"/>
+      <attr-item tags="sem_perc-cogn"/>
+      <attr-item tags="sem_perc-emo"/>
+      <attr-item tags="sem_perc-emo_wthr"/>
+      <attr-item tags="sem_perc-phys"/>
+      <attr-item tags="sem_perc-psych"/>
+      <attr-item tags="sem_phonenr"/>
+      <attr-item tags="sem_plant"/>
+      <attr-item tags="sem_plant-part"/>
+      <attr-item tags="sem_plant_plant-part"/>
+      <attr-item tags="sem_plant_tool"/>
+      <attr-item tags="sem_plant_tool-measr"/>
+      <attr-item tags="sem_plc"/>
+      <attr-item tags="sem_plc-abstr"/>
+      <attr-item tags="sem_plc-abstr_rel_state"/>
+      <attr-item tags="sem_plc-abstr_route"/>
+      <attr-item tags="sem_plc-elevate"/>
+      <attr-item tags="sem_plc-line"/>
+      <attr-item tags="sem_plc-water"/>
+      <attr-item tags="sem_plc_pos"/>
+      <attr-item tags="sem_plc_route"/>
+      <attr-item tags="sem_plc_semcon"/>
+      <attr-item tags="sem_plc_state"/>
+      <attr-item tags="sem_plc_substnc"/>
+      <attr-item tags="sem_plc_substnc_wthr"/>
+      <attr-item tags="sem_plc_time"/>
+      <attr-item tags="sem_plc_time_wthr"/>
+      <attr-item tags="sem_plc_tool-catch"/>
+      <attr-item tags="sem_plc_wthr"/>
+      <attr-item tags="sem_pos"/>
+      <attr-item tags="sem_process"/>
+      <attr-item tags="sem_prod"/>
+      <attr-item tags="sem_prod-audio"/>
+      <attr-item tags="sem_prod-audio_txt"/>
+      <attr-item tags="sem_prod-cogn"/>
+      <attr-item tags="sem_prod-cogn_txt"/>
+      <attr-item tags="sem_prod-ling"/>
+      <attr-item tags="sem_prod-vis"/>
+      <attr-item tags="sem_rel"/>
+      <attr-item tags="sem_route"/>
+      <attr-item tags="sem_rule"/>
+      <attr-item tags="sem_semcon"/>
+      <attr-item tags="sem_semcon_txt"/>
+      <attr-item tags="sem_sign"/>
+      <attr-item tags="sem_sport"/>
+      <attr-item tags="sem_state"/>
+      <attr-item tags="sem_state-sick"/>
+      <attr-item tags="sem_state-sick_substnc"/>
+      <attr-item tags="sem_substnc"/>
+      <attr-item tags="sem_substnc_wthr"/>
+      <attr-item tags="sem_sur"/>
+      <attr-item tags="sem_symbol"/>
+      <attr-item tags="sem_time"/>
+      <attr-item tags="sem_time-clock"/>
+      <attr-item tags="sem_time_wthr"/>
+      <attr-item tags="sem_tool"/>
+      <attr-item tags="sem_tool-catch"/>
+      <attr-item tags="sem_tool-clean"/>
+      <attr-item tags="sem_tool-it"/>
+      <attr-item tags="sem_tool-measr"/>
+      <attr-item tags="sem_tool-music"/>
+      <attr-item tags="sem_tool-write"/>
+      <attr-item tags="sem_txt"/>
+      <attr-item tags="sem_veh"/>
+      <attr-item tags="sem_wpn"/>
+      <attr-item tags="sem_wthr"/>
+      <attr-item tags="sem_year"/>
+      <attr-item tags="top"/>
+      <attr-item tags="cog"/>
+      <attr-item tags="ant"/>
+    </def-attr>
+    <def-attr n="a_neverdet">
+      <attr-item tags="neverdet"/>
+    </def-attr>
+    <def-attr n="a_maydetind">
+      <attr-item tags="maydetind"/>
+    </def-attr>
+  </section-def-attrs>
+
+  <section-def-vars>
+    <def-var n="esubj"           c="tell t3x that this verb takes existential subject (sometimes)
+                                    and we may have to insert a formal subject:
+                                    «Det(f-subj) står et glass (e-subj) på bordet»"/>
+    <def-var n="adv_lem"           c="adverb lemma"/>
+    <def-var n="n_lem"           c="noun lemma"/>
+    <def-var n="v_lem"           c="verb lemma"/>
+    <def-var n="n_nbr"           c="noun number"/>
+    <def-var n="seen_num"        c="num if seen a num?"/>
+    <def-var n="adj_gen"         c="adj gender"/>
+    <def-var n="prn_gen"         c="pronoun gender"/>
+    <def-var n="prn_nbr"         c="pronoun number"/>
+    <def-var n="prn_pers"        c="pronoun person (esp. for reflexive)"/>
+    <def-var n="pre-nom"         c="lu's before nom-lu in nominal chunk"/>
+    <def-var n="post-nom"        c="lu's after nom-lu in nominal chunk (only used in 'den som V cmp')"/>
+    <def-var n="pre-verb"        c="lu's before verb-lu in verbal chunk (only compounds for now)"/>
+    <def-var n="post-verb"        c="lu's after verb-lu in verb abessive chunk "/>
+    <def-var n="defnes"          c="definiteness (noun, adj)"/>
+    <def-var n="c_name"          c="chunk name"/>
+    <def-var n="c_neverdet"      c="tell t4x never to output a determiner if this is set to something"/>
+    <def-var n="tmp"             c="temporary variable"/>
+    <def-var n="notactioess"             c="notactioess"/>
+    <def-var n="blank"           c="for removing blanks"/>
+    <def-var n="c_gen"           c="chunk gender"/>
+    <def-var n="c_nbr"           c="chunk number"/>
+    <def-var n="c_def_pos"       c="chunk defnes tag position"/>
+    <def-var n="c_syn"           c="chunk syn_label"/>
+    <def-var n="c_animacy"       c="chunk animacy (pers, impers)"/>
+    <def-var n="uc_lemh"         c="the lemh, uppercased"/>
+    <def-var n="caseFirstWord"   c="has typographic case of first word; is 'init' if it's the first word of a sentence" v="Init"/>
+    <def-var n="caseprep"        c="nob preposition (whole chunk) based on sme case"/>
+    <def-var n="caseprep_c_name" c="chunk name for the caseprep chunk"/>
+    <def-var n="caseprep-verb"   c="nob preposition (whole chunk) based on sme case, used as tag on the verb chunk"/>
+    <def-var n="previous-nhead"  c="lemh of the previous NP chunk (or special values like NUM)" v=""/>
+    <def-var n="previous-nhead_sem"  c="sem of the previous NP chunk" v=""/>
+    <def-var n="previous-obj"  c="lemh of the previous obj" />
+    <def-var n="main-verb-pasv"    c="sme pasv of the previous main verb" />
+    <def-var n="advl-verb-sl"    c="sme lemh of the previous advl verb" />
+    <def-var n="main-verb-sl"    c="sme lemh of the previous main verb" />
+    <def-var n="main-verb-tl"    c="nob lemh of the previous main verb" />
+    <def-var n="aux-verb-sl"     c="sme lemh of the previous aux verb" />
+    <def-var n="aux-verb-tl"     c="nob lemh of the previous aux verb" />
+    <def-var n="vfin-pers"     c="vfin-pers" />
+    <def-var n="vfin-nbr"     c="vfin-nbr" />
+    <def-var n="vfin-temps"     c="vfin-temps" />
+    <def-var n="syn-temps"     c="syn-temps" />
+    <def-var n="foc-word"     c="foc-word" />
+  </section-def-vars>
+
+  <section-def-lists>
+    <def-list n="no.actio.ess">
+      <list-item v="vuordit"/>
+      <list-item v="boahtit"/>
+      <list-item v="oađđit"/>
+      <list-item v="hálddašit"/>
+      <list-item v="govddodit"/>
+      <list-item v="fuotnut"/>
+      <list-item v="bargat"/>
+      <list-item v="geavahit"/>
+    </def-list>
+    <def-list n="cond-NIL-verbs">
+      <list-item v="fertet"/>
+      <list-item v="berret"/>
+      <list-item v="galgat"/>
+      <list-item v="soaitit"/>
+      <list-item v="veadjit"/>
+      <list-item v="dáidit"/>
+      <list-item v="máhttit"/>
+      <list-item v="áigut"/>
+      <list-item v="sáhttit"/>
+    </def-list>
+    <def-list n="esubj-verbs">
+<!--      <list-item v="leat"/>  -->
+      <list-item v="mannat"/>
+      <list-item v="šaddat"/>
+      <list-item v="boahtit"/>
+    </def-list>
+   <def-list n="weather-verbs">
+    <list-item v="bievlat"/>
+    <list-item v="ránodit"/>
+    <list-item v="soaiggáhallat"/>
+    <list-item v="biekkastit"/>
+    <list-item v="bivaldit"/>
+    <list-item v="borgat"/>
+    <list-item v="boŋkit"/>
+    <list-item v="bulžut"/>
+    <list-item v="buolaštit"/>
+    <list-item v="golihit"/>
+    <list-item v="firtet"/>
+    <list-item v="galbmit"/>
+    <list-item v="jiellat"/>
+    <list-item v="joavgat"/>
+    <list-item v="muohttit"/>
+    <list-item v="sevnnjodit"/>
+    <list-item v="veiggodit"/>
+    <list-item v="vuoisat"/>
+    <list-item v="álddagastit"/>
+    <list-item v="čuorpmastit"/>
+    <list-item v="čuvggodit"/>
+    <list-item v="šlahttit"/>
+    <list-item v="liehmudit"/>
+    <list-item v="čoskkiidit"/>
+    <list-item v="savdadit"/>
+    <list-item v="oaktut"/>
+    <list-item v="hieibmat"/>
+    <list-item v="golket"/>
+    <list-item v="storbmet"/>
+    <list-item v="bajánastit"/>
+    <list-item v="manihit"/>
+    <list-item v="bonjahit"/>
+    <list-item v="balvet"/>
+    <list-item v="dálvat"/>
+    <list-item v="arvit"/>
+    <list-item v="bieggat"/>
+    <list-item v="bávkit"/>
+    <list-item v="spoahkkit"/>
+    <list-item v="bávkkihit"/>
+    <list-item v="bieggaladdat"/>
+    <list-item v="biekkadit"/>
+   </def-list>
+    <def-list n="pers_nouns">
+      <list-item v="jente"/>
+      <list-item v="gutt"/>
+      <list-item v="mann"/>
+      <list-item v="kvinne"/>
+      <list-item v="dame"/>
+      <list-item v="leder"/>
+      <list-item v="student"/>
+      <list-item v="elev"/>
+      <list-item v="lærer"/>
+    </def-list>
+    <def-list n="pers_genders">
+      <list-item v="&lt;m&gt;"/>
+      <list-item v="&lt;f&gt;"/>
+      <list-item v="&lt;mf&gt;"/>
+      <list-item v="&lt;GD_pers&gt;"/>
+    </def-list>
+    <def-list n="adj-genders" c="possible nob adj genders">
+      <list-item v="&lt;m&gt;"/>
+      <list-item v="&lt;mf&gt;"/>
+      <list-item v="&lt;f&gt;"/>
+      <list-item v="&lt;nt&gt;"/>
+      <list-item v="&lt;un&gt;"/>
+    </def-list>
+    <def-list n="infinite_temps">
+      <list-item v="&lt;inf&gt;"/>
+      <list-item v="&lt;prfprc&gt;"/>
+      <list-item v="&lt;pp&gt;"/>
+    </def-list>
+
+    <def-list n="sem_food">
+      <list-item v="&lt;sem_body_food&gt;"/>
+      <list-item v="&lt;sem_domain_food-med&gt;"/>
+      <list-item v="&lt;sem_event_food&gt;"/>
+      <list-item v="&lt;sem_food&gt;"/>
+      <list-item v="&lt;sem_food-med&gt;"/>
+      <list-item v="&lt;sem_food_perc-phys&gt;"/>
+      <list-item v="&lt;sem_food_plant&gt;"/>
+    </def-list>
+
+    <def-list n="sem_time">
+      <list-item v="&lt;sem_ani_hum_time&gt;"/>
+      <list-item v="&lt;sem_ani_time&gt;"/>
+      <list-item v="&lt;sem_body_group_hum_time&gt;"/>
+      <list-item v="&lt;sem_body_time&gt;"/>
+      <list-item v="&lt;sem_event_time&gt;"/>
+      <list-item v="&lt;sem_hum_lang_time&gt;"/>
+      <list-item v="&lt;sem_measr_time&gt;"/>
+      <list-item v="&lt;sem_measr_obj_time&gt;"/>
+      <list-item v="&lt;sem_plc_time&gt;"/>
+      <list-item v="&lt;sem_time&gt;"/>
+      <list-item v="&lt;sem_time_wthr&gt;"/>
+    </def-list>
+    <def-list n="sem_prod-ling">
+      <list-item v="&lt;sem_prod-ling&gt;"/>
+    </def-list>
+    <def-list n="sem_lang">
+      <list-item v="&lt;sem_hum_lang&gt;"/>
+      <list-item v="&lt;sem_hum_lang_plc&gt;"/>
+      <list-item v="&lt;sem_hum_lang_time&gt;"/>
+      <list-item v="&lt;sem_lang&gt;"/>
+      <list-item v="&lt;sem_lang_tool&gt;"/>
+    </def-list>
+    <def-list n="sem_lang_lem">
+      <list-item v="samisk"/>
+      <list-item v="norsk"/>
+      <list-item v="finsk"/>
+      <list-item v="nordsamisk"/>
+      <list-item v="sørsamisk"/>
+      <list-item v="lulesamisk"/>
+      <list-item v="enaresamisk"/>
+    </def-list>
+
+
+    <def-list n="sem_domain">
+      <list-item v="&lt;sem_domain&gt;"/>
+      <list-item v="&lt;sem_domain_food-med&gt;"/>
+      <list-item v="&lt;sem_domain_hum&gt;"/>
+      <list-item v="&lt;sem_domain_prod-audio&gt;"/>
+    </def-list>
+    <def-list n="sem_prod-cogn">
+      <list-item v="&lt;sem_org_prod-cogn&gt;"/>
+      <list-item v="&lt;sem_part_prod-cogn&gt;"/>
+      <list-item v="&lt;sem_prod-cogn&gt;"/>
+      <list-item v="&lt;sem_prod-cogn_txt&gt;"/>
+    </def-list>
+
+
+    <def-list n="sem_mat">
+      <list-item v="&lt;sem_body_mat&gt;"/>
+      <list-item v="&lt;sem_edu_mat&gt;"/>
+      <list-item v="&lt;sem_mat&gt;"/>
+      <list-item v="&lt;sem_mat_plant&gt;"/>
+      <list-item v="&lt;sem_mat_txt&gt;"/>
+      <list-item v="&lt;sem_build-part_cat_ctain_matt&gt;"/>
+      <list-item v="&lt;sem_build-part_ctain_matt&gt;"/>
+      <list-item v="&lt;sem_hum_mat_toolt&gt;"/>
+    </def-list>
+    <def-list n="sem_prod-audio">
+      <list-item v="&lt;sem_prod-audio_txt&gt;"/>
+      <list-item v="&lt;sem_prod-audio&gt;"/>
+    </def-list>
+    <def-list n="sem_txt">
+      <list-item v="&lt;sem_ani_build_hum_txt&gt;"/>
+      <list-item v="&lt;sem_ani_plc_txt&gt;"/>
+      <list-item v="&lt;sem_group_txt&gt;"/>
+      <list-item v="&lt;sem_mat_txt&gt;"/>
+      <list-item v="&lt;sem_money_txt&gt;"/>
+      <list-item v="&lt;sem_org_txt&gt;"/>
+      <list-item v="&lt;sem_prod-audio_txt&gt;"/>
+      <list-item v="&lt;sem_prod-cogn_txt&gt;"/>
+      <list-item v="&lt;sem_semcon_txt&gt;"/>
+      <list-item v="&lt;sem_txt&gt;"/>
+    </def-list>
+    <def-list n="sem_body">
+      <list-item v="&lt;sem_ani_body-abstr_hum&gt;"/>
+      <list-item v="&lt;sem_body&gt;"/>
+      <list-item v="&lt;sem_body-abstr&gt;"/>
+      <list-item v="&lt;sem_body-abstr_prod-audio_semcon&gt;"/>
+      <list-item v="&lt;sem_body_body-abstr&gt;"/>
+      <list-item v="&lt;sem_body_clth&gt;"/>
+      <list-item v="&lt;sem_body_food&gt;"/>
+      <list-item v="&lt;sem_body_group_hum&gt;"/>
+      <list-item v="&lt;sem_body_group_hum_time&gt;"/>
+      <list-item v="&lt;sem_body_hum&gt;"/>
+      <list-item v="&lt;sem_body_mat&gt;"/>
+      <list-item v="&lt;sem_body_measr&gt;"/>
+      <list-item v="&lt;sem_body_obj_tool-catch&gt;"/>
+      <list-item v="&lt;sem_body_plc&gt;"/>
+      <list-item v="&lt;sem_body_time&gt;"/>
+      <list-item v="&lt;sem_body_plc-elevate&gt;"/>
+    </def-list>
+    <def-list n="sem_veh">
+      <list-item v="&lt;sem_ani_veh&gt;"/>
+      <list-item v="&lt;sem_ctain-clth_veh&gt;"/>
+      <list-item v="&lt;sem_feat-phys_veh&gt;"/>
+      <list-item v="&lt;sem_hum_veh&gt;"/>
+      <list-item v="&lt;sem_obj_veh&gt;"/>
+      <list-item v="&lt;sem_org_veh&gt;"/>
+      <list-item v="&lt;sem_prod-sem_org_veh&gt;"/>
+      <list-item v="&lt;sem_veh&gt;"/>
+    </def-list>
+    <def-list n="sem_group">
+      <list-item v="&lt;sem_act_group&gt;"/>
+      <list-item v="&lt;sem_ani_group&gt;"/>
+      <list-item v="&lt;sem_ani_group_hum&gt;"/>
+      <list-item v="&lt;sem_body_group_hum&gt;"/>
+      <list-item v="&lt;sem_body_group_hum_time&gt;"/>
+      <list-item v="&lt;sem_cat_group_hum&gt;"/>
+      <list-item v="&lt;sem_cat_group_hum_plc&gt;"/>
+      <list-item v="&lt;sem_edu_group_hum&gt;"/>
+      <list-item v="&lt;sem_group&gt;"/>
+      <list-item v="&lt;sem_group_hum&gt;"/>
+      <list-item v="&lt;sem_group_hum_org&gt;"/>
+      <list-item v="&lt;sem_group_hum_plc&gt;"/>
+      <list-item v="&lt;sem_group_hum_prod-vis&gt;"/>
+      <list-item v="&lt;sem_group_org&gt;"/>
+      <list-item v="&lt;sem_group_sign&gt;"/>
+      <list-item v="&lt;sem_group_txt&gt;"/>
+      <list-item v="&lt;sem_ani_group_prod-vis&gt;"/>
+      <list-item v="&lt;sem_group_prod-vis&gt;"/>
+    </def-list>
+    <def-list n="sem_pos">
+      <list-item v="&lt;sem_plc_pos&gt;"/>
+      <list-item v="&lt;sem_pos&gt;"/>
+    </def-list>
+    <def-list n="sem_state">
+      <list-item v="&lt;sem_obj_state&gt;"/>
+      <list-item v="&lt;sem_plc-abstr_rel_state&gt;"/>
+      <list-item v="&lt;sem_plc_state&gt;"/>
+      <list-item v="&lt;sem_state&gt;"/>
+      <list-item v="&lt;sem_state-sick&gt;"/>
+      <list-item v="&lt;sem_state-sick_substnc&gt;"/>
+    </def-list>
+    <def-list n="sem_plc">
+      <list-item v="&lt;sem_act_plc&gt;"/>
+      <list-item v="&lt;sem_ani_hum_plc&gt;"/>
+      <list-item v="&lt;sem_ani_plc&gt;"/>
+      <list-item v="&lt;sem_ani_plc_txt&gt;"/>
+      <list-item v="&lt;sem_aniprod_plc&gt;"/>
+      <list-item v="&lt;sem_aniprod_plc_route&gt;"/>
+      <list-item v="&lt;sem_body_plc&gt;"/>
+      <list-item v="&lt;sem_build-part_plc&gt;"/>
+      <list-item v="&lt;sem_ctain_plc&gt;"/>
+      <list-item v="&lt;sem_event_plc&gt;"/>
+      <list-item v="&lt;sem_event_plc-elevate&gt;"/>
+      <list-item v="&lt;sem_feat-measr_plc&gt;"/>
+      <list-item v="&lt;sem_geom_hum_plc&gt;"/>
+      <list-item v="&lt;sem_group_hum_plc&gt;"/>
+      <list-item v="&lt;sem_hum_lang_plc&gt;"/>
+      <list-item v="&lt;sem_hum_plc&gt;"/>
+      <list-item v="&lt;sem_plc&gt;"/>
+      <list-item v="&lt;sem_plc-abstr&gt;"/>
+      <list-item v="&lt;sem_plc-abstr_rel_state&gt;"/>
+      <list-item v="&lt;sem_plc-abstr_route&gt;"/>
+      <list-item v="&lt;sem_plc-elevate&gt;"/>
+      <list-item v="&lt;sem_plc-line&gt;"/>
+      <list-item v="&lt;sem_plc_semcon&gt;"/>
+      <list-item v="&lt;sem_plc-water&gt;"/>
+      <list-item v="&lt;sem_plc_pos&gt;"/>
+      <list-item v="&lt;sem_plc_route&gt;"/>
+      <list-item v="&lt;sem_plc_state&gt;"/>
+      <list-item v="&lt;sem_plc_substnc&gt;"/>
+      <list-item v="&lt;sem_plc_substnc_wthr&gt;"/>
+      <list-item v="&lt;sem_plc_time&gt;"/>
+      <list-item v="&lt;sem_plc_time_wthr&gt;"/>
+      <list-item v="&lt;sem_plc_tool-catch&gt;"/>
+      <list-item v="&lt;sem_plc_wthr&gt;"/>
+      <list-item v="&lt;sem_body_plc-elevate&gt;"/>
+      <list-item v="&lt;sem_feat-phys_plc&gt;"/>
+      <list-item v="&lt;top&gt;"/>
+    </def-list>
+    <def-list n="sem_org">
+      <list-item v="&lt;sem_build_edu_org&gt;"/>
+      <list-item v="&lt;sem_build_event_org&gt;"/>
+      <list-item v="&lt;sem_build_org&gt;"/>
+      <list-item v="&lt;sem_clth-jewl_org&gt;"/>
+      <list-item v="&lt;sem_ctain-abstr_org&gt;"/>
+      <list-item v="&lt;sem_curr_org&gt;"/>
+      <list-item v="&lt;sem_dance_org&gt;"/>
+      <list-item v="&lt;sem_edu_org&gt;"/>
+      <list-item v="&lt;sem_group_hum_org&gt;"/>
+      <list-item v="&lt;sem_group_org&gt;"/>
+      <list-item v="&lt;sem_hum_org&gt;"/>
+      <list-item v="&lt;sem_money_org&gt;"/>
+      <list-item v="&lt;sem_org&gt;"/>
+      <list-item v="&lt;sem_org_prod-cogn&gt;"/>
+      <list-item v="&lt;sem_org_rule&gt;"/>
+      <list-item v="&lt;sem_org_txt&gt;"/>
+      <list-item v="&lt;sem_org_veh&gt;"/>
+      <list-item v="&lt;sem_clth-jewl_curr_obj_org&gt;"/>
+    </def-list>
+    <def-list n="sem_edu">
+      <list-item v="&lt;sem_build_edu_org&gt;"/>
+      <list-item v="&lt;sem_edu&gt;"/>
+      <list-item v="&lt;sem_edu_event&gt;"/>
+      <list-item v="&lt;sem_edu_group_hum&gt;"/>
+      <list-item v="&lt;sem_edu_mat&gt;"/>
+      <list-item v="&lt;sem_edu_org&gt;"/>
+      <list-item v="&lt;sem_edu_geom&gt;"/>
+    </def-list>
+    <def-list n="sem_cat">
+      <list-item v="&lt;sem_build-part_cat&gt;"/>
+      <list-item v="&lt;sem_build-part_cat_ctain&gt;"/>
+      <list-item v="&lt;sem_cat&gt;"/>
+      <list-item v="&lt;sem_cat_group_hum&gt;"/>
+      <list-item v="&lt;part_cat_ctain_mat&gt;"/>
+      <list-item v="&lt;sem_cat_group_hum_plc&gt;"/>
+    </def-list>
+    <def-list n="sem_hum">
+      <list-item v="&lt;sem_ani_body-abstr_hum&gt;"/>
+      <list-item v="&lt;sem_ani_build_hum_txt&gt;"/>
+      <list-item v="&lt;sem_ani_group_hum&gt;"/>
+      <list-item v="&lt;sem_ani_hum&gt;"/>
+      <list-item v="&lt;sem_ani_hum_plc&gt;"/>
+      <list-item v="&lt;sem_ani_hum_time&gt;"/>
+      <list-item v="&lt;sem_aniprod_hum&gt;"/>
+      <list-item v="&lt;sem_body_group_hum&gt;"/>
+      <list-item v="&lt;sem_body_group_hum_time&gt;"/>
+      <list-item v="&lt;sem_body_hum&gt;"/>
+      <list-item v="&lt;sem_cat_group_hum&gt;"/>
+      <list-item v="&lt;sem_cat_group_hum_plc&gt;"/>
+      <list-item v="&lt;sem_clth_hum&gt;"/>
+      <list-item v="&lt;sem_domain_hum&gt;"/>
+      <list-item v="&lt;sem_edu_group_hum&gt;"/>
+      <list-item v="&lt;sem_edu_hum&gt;"/>
+      <list-item v="&lt;sem_event_hum&gt;"/>
+      <list-item v="&lt;sem_feat-psych_hum&gt;"/>
+      <list-item v="&lt;sem_fruit_hum&gt;"/>
+      <list-item v="&lt;sem_geom_hum_plc&gt;"/>
+      <list-item v="&lt;sem_group_hum&gt;"/>
+      <list-item v="&lt;sem_group_hum_org&gt;"/>
+      <list-item v="&lt;sem_group_hum_plc&gt;"/>
+      <list-item v="&lt;sem_group_hum_prod-vis&gt;"/>
+      <list-item v="&lt;sem_hum&gt;"/>
+      <list-item v="&lt;sem_hum-prof&gt;"/>
+      <list-item v="&lt;sem_hum-abstr&gt;"/>
+      <list-item v="&lt;sem_hum_lang&gt;"/>
+      <list-item v="&lt;sem_hum_lang_plc&gt;"/>
+      <list-item v="&lt;sem_hum_lang_time&gt;"/>
+      <list-item v="&lt;sem_hum_obj&gt;"/>
+      <list-item v="&lt;sem_hum_org&gt;"/>
+      <list-item v="&lt;sem_hum_plant&gt;"/>
+      <list-item v="&lt;sem_hum_plc&gt;"/>
+      <list-item v="&lt;sem_hum_sign&gt;"/>
+      <list-item v="&lt;sem_hum_tool&gt;"/>
+      <list-item v="&lt;sem_hum_veh&gt;"/>
+      <list-item v="&lt;sem_hum_wthr&gt;"/>
+      <list-item v="&lt;sem_hum-prof&gt;"/>
+      <list-item v="&lt;sem_hum_mat_tool&gt;"/>
+      <list-item v="&lt;sem_hum_tool-it&gt;"/>
+    </def-list>
+
+    <def-list n="animate_nonagent-verbs" c="Passive versions of these have 'pers' tag on 'bli', else 'impers',
+                                            in order to make the inserted subject pronoun animate.">
+      <!-- From newspaper corpus, grep 'h[au]n ble'|sort|uniq -c|sort -n, then filter out 'det ble' hits etc.: -->
+      <list-item v="pågripe"/>
+      <list-item v="arrestere"/>
+      <list-item v="drepe"/>
+      <list-item v="hente"/>
+      <list-item v="spørre"/>
+      <list-item v="dømme"/>
+      <list-item v="stoppe"/>
+      <list-item v="velge"/>
+      <list-item v="løslate"/>
+      <list-item v="kåre"/>
+      <list-item v="frakte"/>
+      <list-item v="påføre"/>
+      <list-item v="tvinge"/>
+      <list-item v="påkjøre"/>
+      <list-item v="overraske"/>
+      <list-item v="anmelde"/>
+      <list-item v="utnevne"/>
+      <list-item v="skade"/>
+      <list-item v="intervjue"/>
+      <list-item v="be"/>
+      <list-item v="utvise"/>
+      <list-item v="bytte"/>
+      <list-item v="anklage"/>
+      <list-item v="operere"/>
+      <list-item v="fly"/>
+      <list-item v="ansette"/>
+      <list-item v="styrte"/>
+      <list-item v="sparke"/>
+      <list-item v="sikte"/>
+      <list-item v="nekte"/>
+      <list-item v="konfrontere"/>
+      <list-item v="såre"/>
+      <list-item v="sjokkere"/>
+      <list-item v="redde"/>
+      <list-item v="presse"/>
+      <list-item v="gjenvelge"/>
+      <list-item v="frikjenne"/>
+      <list-item v="fengsle"/>
+      <list-item v="tildele"/>
+      <list-item v="forsinke"/>
+      <list-item v="utestenge"/>
+      <list-item v="overmanne"/>
+      <list-item v="oppringe"/>
+      <list-item v="ringe"/>
+      <list-item v="kontakte"/>
+      <list-item v="filme"/>
+      <list-item v="fange"/>
+      <list-item v="bære"/>
+      <list-item v="anrope"/>
+      <list-item v="sykemelde"/>
+      <list-item v="knivstikke"/>
+      <list-item v="henrette"/>
+      <list-item v="flytte"/>
+      <list-item v="erstatte"/>
+      <list-item v="banke"/>
+      <list-item v="avhøre"/>
+      <list-item v="vekke"/>
+      <list-item v="overkjøre"/>
+      <list-item v="nominere"/>
+      <list-item v="lure"/>
+      <list-item v="innkalle"/>
+      <list-item v="idømme"/>
+      <list-item v="hylle"/>
+      <list-item v="frata"/>
+      <list-item v="etterforske"/>
+      <list-item v="ekskludere"/>
+      <list-item v="bøtelegge"/>
+      <list-item v="bortføre"/>
+      <list-item v="beskyte"/>
+      <list-item v="begrave"/>
+      <list-item v="baktale"/>
+      <list-item v="varetektsfengsle"/>
+      <list-item v="utstøte"/>
+      <list-item v="utlevere"/>
+      <list-item v="utelate"/>
+      <list-item v="transportere"/>
+      <list-item v="smitte"/>
+      <list-item v="skade"/>
+      <list-item v="rane"/>
+      <list-item v="provosere"/>
+      <list-item v="plassere"/>
+      <list-item v="overlevere"/>
+      <list-item v="overbevise"/>
+      <list-item v="omringe"/>
+      <list-item v="myrde"/>
+      <list-item v="irritere"/>
+      <list-item v="involvere"/>
+      <list-item v="invitere"/>
+      <list-item v="innhente"/>
+      <list-item v="imponere"/>
+      <list-item v="gjenkjenne"/>
+      <list-item v="geleide"/>
+      <list-item v="forkjøle"/>
+      <list-item v="dytte"/>
+      <list-item v="deportere"/>
+      <list-item v="binde"/>
+      <list-item v="blende"/>
+      <list-item v="avsette"/>
+      <list-item v="avlytte"/>
+      <list-item v="avbryte"/>
+      <list-item v="avbilde"/>
+      <list-item v="anholde"/>
+      <!-- Newspaper-animate_nonagent-verbs are so depressing, here are some happier ones: -->
+      <list-item v="forundre"/>
+      <list-item v="elske"/>
+      <list-item v="pålegge"/>
+      <list-item v="fotografere"/>
+      <list-item v="inspirere"/>
+      <list-item v="klemme"/>
+      <list-item v="kysse"/>
+      <list-item v="rose"/>
+      <list-item v="oppmuntre"/>
+      <list-item v="frigjøre"/>
+      <list-item v="unnskylde"/>
+      <list-item v="forlate"/>
+      <list-item v="beklage"/>
+      <list-item v="savne"/>
+    </def-list>
+
+    <def-list n="ill-NIL-verbs" c="We add the 'ill-NIL' tag to verb chunks with these verbs,
+                                   use that tag in t2x to remove the caseprep.PR.ill chunk
+                                   TODO: use nob/tl verb instead?">
+<!--      <list-item v="oahpahit"/> -->
+      <list-item v="oččodit"/>
+      <list-item v="guoskat"/>
+      <list-item v="joavdat"/>
+      <list-item v="deaivat"/>
+      <list-item v="čuohcit"/>
+      <list-item v="čuohcat"/>
+      <list-item v="riŋget"/>
+      <list-item v="čuojahit"/>
+      <list-item v="váikkuhit"/>
+      <list-item v="liikot"/>
+      <list-item v="liikostit"/>
+      <list-item v="påvirke"/>
+      <list-item v="utvikle"/>
+      <list-item v="ovdánahttit"/>
+    </def-list>
+    <def-list n="ill-med-verbs">
+      <list-item v="duhtat"/>
+      <list-item v="oahpásmuvvat"/>
+    </def-list>
+    <def-list n="ill-i-verbs">
+      <list-item v="ásahit"/>
+      <list-item v="bisánit"/>
+      <list-item v="bálkestit"/>
+      <list-item v="investeret"/>
+    </def-list>
+    <def-list n="ill-for-verbs">
+      <list-item v="leat"/>
+      <list-item v="mearkkašit"/>
+      <list-item v="čiegadit"/>
+      <list-item v="láhčit"/>
+    </def-list>
+    <def-list n="ill-på-verbs" c="See 'ill-NIL-verbs' above.
+                                  Speech verbs, emotional(?) verbs">
+      <list-item v="suhttat"/>
+      <list-item v="luohttit"/>
+      <list-item v="dorvvastit"/>
+      <list-item v="jáhkkit"/>
+      <list-item v="geahččat"/>
+      <list-item v="guovlat"/>
+      <list-item v="báhcit"/>
+      <list-item v="čoalkalit"/>
+    </def-list>
+    <def-list n="ill-av-verbs" c="See 'ill-NIL-verbs' above.
+                                  TODO: Add all lexicalised Der_halla verbs (with illative agents)
+                                  (Verbs tagged Der_halla are added in out_verb)">
+      <list-item v="fillehallat"/>
+      <list-item v="oainnahallat"/>
+      <list-item v="borahallat"/>
+      <list-item v="gáskkáhallat"/>
+      <list-item v="cábmohallat"/>
+      <list-item v="cápmahallat"/>
+      <list-item v="dorohallat"/>
+      <list-item v="bovttáhallat"/>
+      <list-item v="bealkkáhallat"/>
+      <list-item v="rissehallat"/>
+      <list-item v="gávnnahallat"/>
+      <list-item v="oainnahallat"/>
+      <list-item v="vuojáhallat"/>
+    </def-list>
+    <def-list n="loc-for-verbs">
+      <list-item v="nohkkot"/>
+      <list-item v="váruhit"/>
+    </def-list>
+    <def-list n="loc-om-verbs">
+      <list-item v="beroštit"/>
+    </def-list>
+    <def-list n="loc-som-verbs">
+      <list-item v="beaggit" c="beaggán Sámi soga lávlaga čállin"/>
+    </def-list>
+    <def-list n="loc-fra-verbs">
+<!--      <list-item v="gullat" c="Problematic; Leat go gullan sus alddis? vs Go gullen sámegiela dien mátkkis."/>-->
+      <list-item v="beassat" c="Mihttomearri lea beassat hálddašanguovllus."/>
+      <list-item v="boahtit" c="Mun boađán gávpogis."/>
+      <list-item v="gáidat"  c="Son lea gáidan Ipmila sánis."/>
+      <list-item v="fárret"  c="… juogo fárret sámi gilážis vai besset eallit homofiilan."/>
+      <list-item v="earuhit" c="earuhii nuorra Prinssa skuvlavázzima eará skuvlamánáin"/>
+    </def-list>
+    <def-list n="loc-NIL-verbs">
+      <list-item v="fitnat"/>
+      <list-item v="finadit"/>
+      <list-item v="ballat"/>
+    </def-list>
+    <def-list n="loc-om" c="Locative noun phrases default to 'på' unless in this or next list (or are np.top)">
+      <list-item v="kveld"/>
+      <list-item v="dag"/>
+      <list-item v="morgen"/>
+      <list-item v="natt"/>
+      <list-item v="tema"/>
+    </def-list>
+    <def-list n="loc-for" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
+      <list-item v="NOTHING HERE YET"/>
+    </def-list>
+    <def-list n="loc-av" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
+        <list-item v="rein"/>
+        <list-item v="slekt"/>
+    </def-list>
+    <def-list n="loc-ved" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
+        <list-item v="makt"/>
+    </def-list>
+    <def-list n="loc-etter" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
+      <list-item v="oppfatning"/>
+      <list-item v="mening"/>
+      <list-item v="syn"/>
+    </def-list>
+    <def-list n="loc-fra" c="Locative noun phrases default to 'på' unless they're in this list (or are np.top)">
+      <list-item v="ønske" c="Lihkkobeaivve sávaldagat Káre Márehis."/>
+    </def-list>
+    <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
+      <list-item v="Guovdageainnu suohkan"/>
+      <list-item v="Norge"/>
+      <list-item v="Nord-Norge"/>
+      <list-item v="NSR"/>
+      <list-item v="USA"/>
+      <list-item v="administrasjon"/>
+      <list-item v="alder"/>
+      <list-item v="alkoholrus"/>
+      <list-item v="allmenning"/>
+      <list-item v="analyse"/>
+      <list-item v="april"/>
+      <list-item v="arbeid"/>
+      <list-item v="august"/>
+      <list-item v="avgrensning"/>
+      <list-item v="barnehage"/>
+      <list-item v="barnehagetilbud"/>
+      <list-item v="begynnelse"/>
+      <list-item v="besittelse"/>
+      <list-item v="bilulykke"/>
+      <list-item v="biltrafikk"/>
+      <list-item v="blod"/>
+      <list-item v="brann"/>
+      <list-item v="brev"/>
+      <list-item v="bruk"/>
+      <list-item v="bryting"/>
+      <list-item v="by"/>
+      <list-item v="bygd"/>
+      <list-item v="debatt"/>
+      <list-item v="desember"/>
+      <list-item v="divisjon"/>
+      <list-item v="dokument"/>
+      <list-item v="dråpe"/>
+      <list-item v="eksempel"/>
+      <list-item v="erklæring"/>
+      <list-item v="fattigdom"/>
+      <list-item v="februar"/>
+      <list-item v="film"/>
+      <list-item v="finale"/>
+      <list-item v="flaske"/>
+      <list-item v="forbindelse"/>
+      <list-item v="form"/>
+      <list-item v="forord"/>
+      <list-item v="forskning"/>
+      <list-item v="forvaltning"/>
+      <list-item v="framtid"/>
+      <list-item v="frykt"/>
+      <list-item v="fylke"/>
+      <list-item v="fylkeskommune"/>
+      <list-item v="første omgang"/>
+      <list-item v="gamme"/>
+      <list-item v="gang"/>
+      <list-item v="hage"/>
+      <list-item v="historie"/> <!-- i historia, men skrive på ei historie -->
+      <list-item v="hjerte"/>
+      <list-item v="hus"/>
+      <list-item v="husstand"/>
+      <list-item v="idrett"/>
+      <list-item v="januar"/>
+      <list-item v="juli"/>
+      <list-item v="juni"/>
+      <list-item v="kirke"/>
+      <list-item v="klasse"/>
+      <list-item v="kommune"/>
+      <list-item v="kommunikasjon"/>
+      <list-item v="kraft"/>
+      <list-item v="krav"/>
+      <list-item v="krukke"/>
+      <list-item v="kulde"/>
+      <list-item v="kunst"/>
+      <list-item v="land"/>
+      <list-item v="ledelse"/>
+      <list-item v="ledelse"/>
+      <list-item v="liv"/>
+      <list-item v="lov"/>
+      <list-item v="lys"/>
+      <list-item v="lærerutdanning"/>
+      <list-item v="mai"/>
+      <list-item v="mars"/>
+      <list-item v="meningsmåling"/>
+      <list-item v="medisin"/>
+      <list-item v="mellomrom"/>
+      <list-item v="mobiltelefon"/>
+      <list-item v="motvind"/>
+      <list-item v="mørke"/>
+      <list-item v="natur"/>
+      <list-item v="navn"/>
+      <list-item v="nominasjon"/>
+      <list-item v="november"/>
+      <list-item v="offentlighet"/>
+      <list-item v="oktober"/>
+      <list-item v="omsorgsbolig"/>
+      <list-item v="paragraf"/>
+      <list-item v="periode"/>
+      <list-item v="perspektiv"/>
+      <list-item v="posisjon"/>
+      <list-item v="praksis"/>
+      <list-item v="program"/>
+      <list-item v="prosjekt"/>
+      <list-item v="prosjektstønad"/>
+      <list-item v="rom"/>
+      <list-item v="røving"/>
+      <list-item v="sak"/>
+      <list-item v="samarbeid"/>
+      <list-item v="samfunn"/>
+      <list-item v="samtale"/>
+      <list-item v="sammenheng"/>
+      <list-item v="sending"/>
+      <list-item v="seng"/>
+      <list-item v="september"/>
+      <list-item v="seriefotball"/>
+      <list-item v="sjanger"/>
+      <list-item v="skap"/>
+      <list-item v="skimesterskap"/>
+      <list-item v="skirenn"/>
+      <list-item v="skuff"/>
+      <list-item v="speil"/>
+      <list-item v="spill"/>
+      <list-item v="studie"/>
+      <list-item v="studium"/>
+      <list-item v="stue"/>
+      <list-item v="sum"/>
+      <list-item v="søknad"/>
+      <list-item v="telefon"/>
+      <list-item v="tidsrom"/>
+      <list-item v="tet"/>
+      <list-item v="trafikk"/>
+      <list-item v="trygghet"/>
+      <list-item v="tvil"/>
+      <list-item v="ulykke"/>
+      <list-item v="undervisning"/>
+      <list-item v="urfolkssak"/>
+      <list-item v="utgangspunkt"/>
+      <list-item v="utland"/>
+      <list-item v="utredning"/>
+      <list-item v="vask"/>
+      <list-item v="vegkant"/>
+      <list-item v="verden"/>
+      <list-item v="vind"/>
+      <list-item v="virkelighet"/>
+      <list-item v="jakt"/>
+      <list-item v="kultur"/>
+      <list-item v="fiske"/>
+      <list-item v="reindrift"/>
+      <list-item v="utdanning"/>
+      <list-item v="utdanningssak"/>
+      <list-item v="valgprogram"/>
+    </def-list>
+    <def-list n="loc-på" c="Proper place nouns (np.top) get preposition 'i' unless they're in this list.">
+      <list-item v="Andøya"/>
+      <list-item v="Bygdøy"/>
+      <list-item v="Cuba"/>
+      <list-item v="Filippinene"/>
+      <list-item v="Gjøvik"/>
+      <list-item v="Grønland"/>
+      <list-item v="Hamar"/>
+      <list-item v="Hidra"/>
+      <list-item v="Hispaniola"/>
+      <list-item v="Hitra"/>
+      <list-item v="Hovedøya"/>
+      <list-item v="Island"/>
+      <list-item v="Komsa"/>
+      <list-item v="Lille Komsa"/>
+      <list-item v="Kreta"/>
+      <list-item v="Kvaløya"/>
+      <list-item v="Kvaløysletta"/>
+      <list-item v="Lillehammer"/>
+      <list-item v="Madagaskar"/>
+      <list-item v="Ráisduottarháldi"/>
+      <list-item v="Sameskolen"/>
+      <list-item v="Sennalandet"/>
+      <list-item v="Sicilia"/>
+      <list-item v="Samisk høgskole"/>
+      <list-item v="Statnett"/>
+      <list-item v="Sørøya"/>
+      <list-item v="Svalbard"/>
+      <list-item v="Varangerhalvøya"/>
+      <list-item v="Vestlandet"/>
+      <list-item v="arbeidsplass"/>
+      <list-item v="parkeringsplass"/>
+      <list-item v="bilde"/>
+      <list-item v="dag"/>
+      <list-item v="dato"/>
+      <list-item v="deltid"/>
+      <list-item v="festival"/>
+      <list-item v="fotballkamp"/>
+      <list-item v="fredag"/>
+      <list-item v="grunnskole"/>
+      <list-item v="gårdsplass"/>
+      <list-item v="heltid"/>
+      <list-item v="hjemmebane"/>
+      <list-item v="hotell"/>
+      <list-item v="kort tid"/>
+      <list-item v="kino"/>
+      <list-item v="kjøkken"/>
+      <list-item v="liste"/>
+      <list-item v="lørdag"/>
+      <list-item v="mandag"/>
+      <list-item v="møte"/>
+      <list-item v="nivå"/>
+      <list-item v="onsdag"/>
+      <list-item v="papir"/>
+      <list-item v="sameskole"/>
+      <list-item v="scene"/>
+      <list-item v="side"/>
+      <list-item v="skole"/>
+      <list-item v="slette"/>
+      <list-item v="sykehjem"/>
+      <list-item v="sykehus"/>
+      <list-item v="søndag"/>
+      <list-item v="tall"/>
+      <list-item v="tirsdag"/>
+      <list-item v="topp"/>
+      <list-item v="torsdag"/>
+      <list-item v="vegg"/>
+      <list-item v="Østlandet"/>
+      <list-item v="øy"/>
+    </def-list>
+    <def-list n="loc-NIL" c="Locative noun phrases default to 'i' unless in this list">
+      <list-item v="uke"/>
+      <list-item v="glad"/>
+      <list-item v="enig"/>
+      <list-item v="redd"/>
+      <list-item v="år"/>
+    </def-list>
+    <def-list n="loc-om-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+<!--      <list-item v="informasjon"/> ambigious  -->
+      <list-item v="tale"/>
+      <list-item v="snakk"/>
+      <list-item v="kontrakt"/>
+<!--      <list-item v="avtale"/> ambigious  -->
+      <list-item v="bok"/>
+      <list-item v="artikkel"/>
+    </def-list>
+    <def-list n="loc-for-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="frykt"/>
+      <list-item v="tema"/>
+      <list-item v="redd"/>
+      <list-item v="glad"/>
+    </def-list>
+    <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+        <list-item v="del"/>
+      <list-item v="sammendrag"/>
+      <list-item v="halvpart"/>
+      <list-item v="resultat"/>
+      <list-item v="NUMERAL"/>   <!--   special value set by numerals, see NUMERAL rule -->
+    </def-list>
+    <def-list n="loc-fra-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="ønske"/>
+      <list-item v="lykkeønskning"/>
+      <list-item v="hilsning"/>
+      <list-item v="kondolanse"/>
+    </def-list>
+    <def-list n="loc-etter-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="mening"/>
+      <list-item v="oppfatning"/>
+    </def-list>
+    <def-list n="loc-i-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
+      <list-item v="infeksjon"/>
+    </def-list>
+    <def-list n="ess-NIL" c="Essive noun phrases default to 'som' unless in this list">
+      <list-item v="del"/>
+    </def-list>
+    <def-list n="ess-til" c="Essive noun phrases default to 'som' unless in this list">
+      <list-item v="aske"/>
+      <list-item v="grunn"/>
+      <list-item v="nytte"/>
+    </def-list>
+    <def-list n="ess-til-gen" c="Essive noun phrases default to 'som' unless in this list (note: these are also turned genitive!)">
+      <list-item v="lån"/>
+    </def-list>
+    <def-list n="ess-i" c="Essive noun phrases default to 'som' unless in this list">
+      <list-item v="tillegg"/>
+      <list-item v="skumring"/>
+      <list-item v="regn"/>
+      <list-item v="tåke"/>
+    </def-list>
+    <def-list n="ess-på" c="Essive noun phrases default to 'som' unless in this list">
+      <list-item v="besøk"/>
+    </def-list>
+    <def-list n="ill-i" c="Illative noun phrases default to 'til' unless in this list">
+      <list-item v="del"/>
+      <list-item v="forord"/>
+      <list-item v="gang"/>
+      <list-item v="tale"/>
+      <list-item v="do"/>
+    </def-list>
+    <def-list n="ill-på" c="Illative noun phrases default to 'til' unless in this list">
+      <list-item v="ferie"/>
+      <list-item v="golv"/>
+      <list-item v="plass"/>
+      <list-item v="måte"/>
+    </def-list>
+    <def-list n="ill-NIL" c="Illative noun phrases default to 'til' unless in this list">
+      <list-item v="feil"/>
+      <list-item v="nok"/>
+    </def-list>
+    <def-list n="ill-for-head" c="Illativ noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="behov"/>
+      <list-item v="plan"/>
+      <list-item v="senter"/>
+      <list-item v="interesse"/>
+    </def-list>
+     <def-list n="ill-i-head" c="Illativ noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="progresjon"/>
+    </def-list>
+   <def-list n="ill-på-head">
+      <list-item v="syn"/>
+      <list-item v="innflytelse"/>
+      <list-item v="påvirkning"/>
+    </def-list>
+    <def-list n="gen-av-head" c="Genitive @→N noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="forfatter"/>
+      <list-item v="forskning"/>
+      <list-item v="vurdering"/>
+      <list-item v="kopi"/>
+      <list-item v="leder"/>
+      <list-item v="evaluering"/>
+    </def-list>
+    <def-list n="gen-om-head" c="Genitive @→N noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="sang"/>
+    </def-list>
+    <def-list n="gen-i-head" c="Genitive @→N noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="undervisning"/>
+      <list-item v="opplæring"/>
+    </def-list>
+    <def-list n="gen-for-head" c="Genitive @→N noun phrases default to 'til', unless they modify nouns in this list">
+      <list-item v="sjef"/>
+      <list-item v="grunnlag"/>
+      <list-item v="fundament"/>
+      <list-item v="basis"/>
+      <list-item v="senter"/>
+    </def-list>
+    <def-list n="gen-på-head">
+      <list-item v="måte"/>
+    </def-list>
+    <def-list n="gen-som-head">
+      <list-item v="masterutdanning"/>
+    </def-list>
+
+    <def-list n="no-gen-after-prop" c="If a noun in this list is preceded by a prop.gen, remove the gen from the prop">
+      <list-item v="skole"/>
+      <list-item v="ungdomssskole"/>
+      <list-item v="by"/>
+      <list-item v="kommune"/>
+      <list-item v="fylkeskommune"/>
+      <list-item v="bru"/>
+      <list-item v="bro"/>
+    </def-list>
+    <def-list n="noun.pseudo-prop"
+              c="Nouns that act proper (indefinite in the singular, no determiner)">
+      <list-item v="april"/>
+      <list-item v="august"/>
+      <list-item v="bestefar"/>
+      <list-item v="bestemor"/>
+      <list-item v="desember"/>
+      <list-item v="sentrum"/>
+      <list-item v="godkjenning"/>
+      <list-item v="duodji"/>
+      <list-item v="far"/>
+      <list-item v="mat"/>
+      <list-item v="februar"/>
+      <list-item v="fredag"/>
+      <list-item v="gang"/>
+      <list-item v="hjelp"/>
+      <list-item v="januar"/>
+      <list-item v="julaften"/>
+      <list-item v="juli"/>
+      <list-item v="juni"/>
+      <list-item v="kofte"/>
+      <list-item v="langfredag"/>
+      <list-item v="lykke"/>
+      <list-item v="lørdag"/>
+      <list-item v="mai"/>
+      <list-item v="mandag"/>
+      <list-item v="mars"/>
+      <list-item v="merverdiavgift"/>
+      <list-item v="midnatt"/>
+      <list-item v="moms"/>
+      <list-item v="mor"/>
+      <list-item v="november"/>
+      <list-item v="oktober"/>
+      <list-item v="onsdag"/>
+      <list-item v="pop"/>
+      <list-item v="påskeaften"/>
+      <list-item v="samisk"/>
+      <list-item v="september"/>
+      <list-item v="skjærtorsdag"/>
+      <list-item v="støtte"/>
+      <list-item v="søndag"/>
+      <list-item v="takk"/>
+      <list-item v="tirsdag"/>
+      <list-item v="torsdag"/>
+      <list-item v="trygghet"/>
+      <list-item v="velkommen"/>
+      <list-item v="verden"/>
+      <list-item v="junior"/>
+      <list-item v="senior"/>
+      <list-item v="fokus"/>
+      <list-item v="grad"/>
+      <list-item v="downs syndrom"/>
+      <list-item v="asyl"/>
+      <list-item v="null"/>
+      <list-item v="deltid"/>
+      <list-item v="heltid"/>
+      <list-item v="twitter"/>
+      <list-item v="vare"/> <!-- váldit vára -->
+      <list-item v="viten"/>
+    </def-list>
+
+    <def-list n="bigrams-def" c="det/adj+noun lemma co-occurrences that are typically definite">
+      <list-item v="hel tid"/>
+    </def-list>
+
+    <def-list n="caus-la-verbs" c="Should get 'la' instead of 'få' in causative">
+      <list-item v="delegere"/>
+    </def-list>
+    <def-list n="caus-Ø-verbs" c="For some verbs, there is no need for a causative helper">
+      <list-item v="delegere"/>
+    </def-list>
+    <def-list n="not-det-verbs" c="exceptions from the pattern of passive verb + subj: formal subject det and indef form">
+      <list-item v="loahpahit"/>
+      <list-item v="gieldit"/>
+      <list-item v="alidit"/>
+      <list-item v="geavahit"/>
+      <list-item v="buoridit"/>
+    </def-list>
+    <def-list n="annen">
+      <list-item v="annen"/>
+    </def-list>
+    <def-list n="guhte" c="hvem av dem/ingen av dem - Lene added">
+      <list-item v="guhte"/>
+      <list-item v="goabbá"/>
+      <list-item v="guhtemuš"/>
+    </def-list>
+    <def-list n="determiner-although-determinerless_sem">
+      <list-item v="måned"/>
+      <list-item v="dag"/>
+      <list-item v="uke"/>
+      <list-item v="år"/>
+      <list-item v="time"/>
+      <list-item v="minutt"/>
+      <list-item v="sekund"/>
+    </def-list>
+    <def-list n="determinerless_sem">
+      <list-item v="&lt;sem_time&gt;"/>
+      <list-item v="&lt;sem_time_wthr&gt;"/>
+      <list-item v="&lt;sem_measr_obj_time&gt;"/>
+      <list-item v="&lt;sem_measr_time&gt;"/>
+      <list-item v="&lt;sem_ani_hum_time&gt;"/>
+      <list-item v="&lt;sem_ani_time&gt;"/>
+      <list-item v="&lt;sem_body_group_hum_time&gt;"/>
+      <list-item v="&lt;sem_body_time&gt;"/>
+      <list-item v="&lt;sem_event_time&gt;"/>
+      <list-item v="&lt;sem_hum_lang_time&gt;"/>
+      <list-item v="&lt;sem_plc_time&gt;"/>
+    </def-list>
+    <def-list n="determinerless_lem">
+      <list-item v="samiskkunnskap"/>
+      <list-item v="verden"/>
+      <list-item v="håp"/>
+      <list-item v="støtte"/>
+      <list-item v="kofte"/> <!-- maybe -->
+      <list-item v="hjemmebane"/>
+      <list-item v="innflytelse"/>
+      <list-item v="lyst"/>
+      <list-item v="samisk"/>
+      <list-item v="duodji"/>
+    </def-list>
+  </section-def-lists>
+
+  <section-def-macros>
+    <def-macro n="set_caseFirstWord" npar="1"
+               c="Set the typographic case to be carried by the chunk.
+                  - if argument is _not_ a proper noun: caseFirstWord is the case of the lemma, and the lemma gets lowercase.
+                  - if argument _is_ a proper noun: caseFirstWord is lowercase, and lemma stays unchanged.
+
+                  This means that if the sentence starts with a proper noun, and we insert eg. a preposition before that,
+                  the preposition won't get capitalised in t2x. We _could_ circumvent this by having a global variable
+                  'FirstWordSeen' that is set to false on periods and true for all other lexical units, but this is low priority.
+
+                  We treat UPPERCASE as proper nouns.">
+      <!-- Default lowercase, but may still have the value 'init': -->
+      <modify-case><var n="caseFirstWord"/><lit v="aa"/></modify-case>
+      <!-- For numbers and uppercased words, uc_lemh == lemh, in which case we don't alter caseFirstWord below -->
+      <let><var n="uc_lemh"/><clip pos="1" side="tl" part="lemh"/></let>
+      <modify-case><var n="uc_lemh"/><lit v="AA"/></modify-case>
+      <choose><when c="Set to 'aa' with case of lemh unless the word is fixedcase">
+        <test><not><or>
+          <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
+          <equal><clip pos="1" side="tl" part="lettercase"/><lit-tag v="fixedcase"/></equal>
+          <equal><var n="uc_lemh"/><clip pos="1" side="tl" part="lemh"/></equal>
+        </or></not></test>
+        <let><var n="caseFirstWord"/><get-case-from pos="1"><lit v="aa"/></get-case-from></let>
+        <modify-case><clip pos="1" side="tl" part="lemh"/><lit v="aa"/></modify-case>
+      </when></choose>
+      <let><var n="uc_lemh"/><lit v=""/></let>
+    </def-macro>
+
+    <def-macro n="reset_caseFirstWord" npar="0" c="Unless it's UPPERCASE">
+      <choose><when>
+        <test><equal><var n="caseFirstWord"/><lit v="Aa"/></equal></test>
+        <modify-case><var n="caseFirstWord"/><lit v="aa"/></modify-case>
+      </when></choose>
+    </def-macro>
+
+    <def-macro n="switch_cases" npar="2"
+               c="Simply switch the typographic cases (upper/lower/capital) of the two arguments.">
+      <let><var n="tmp"/><get-case-from pos="1"><clip pos="1" side="tl" part="lemh"/></get-case-from></let>
+      <let><clip pos="1" side="tl" part="lemh"/><get-case-from pos="2"><clip pos="1" side="tl" part="lemh"/></get-case-from></let>
+      <modify-case><clip pos="2" side="tl" part="lemh"/><var n="tmp"/></modify-case>
+    </def-macro>
+
+
+    <def-macro n="set_foc-word" npar="1"
+               c="arg.1: noun, pronoun">
+      <let>
+        <var n="foc-word"/><lit v=""/>
+      </let>
+      <choose>
+        <when c="foc_pos-ge">
+          <test><or>
+          <equal><clip pos="1" side="sl" part="a_foc"/><lit-tag v="foc_pos-ge"/></equal>
+          <equal><clip pos="1" side="sl" part="a_foc"/><lit-tag v="foc_naj"/></equal></or></test>
+           <let>
+            <var n="foc-word"/>
+            <concat>
+              <lit v=" ^"/>
+              <lit v="foc"/>
+              <lit-tag v="FOC"/>
+              <lit v="{^"/>
+              <lit v="også"/>
+              <lit-tag v="adv"/>
+              <lit v="$}$"/>
+            </concat>
+          </let>
+          </when>
+        <when c="foc_neg-ge">
+          <test><equal><clip pos="1" side="sl" part="a_foc"/><lit-tag v="foc_neg-ge"/></equal></test>
+           <let>
+            <var n="foc-word"/>
+            <concat>
+              <lit v=" ^"/>
+              <lit v="foc"/>
+              <lit-tag v="FOC"/>
+              <lit v="{^"/>
+              <lit v="heller"/>
+              <lit-tag v="adv"/>
+              <lit v="$}$"/>
+            </concat>
+          </let>
+          </when>
+          </choose>
+      </def-macro>
+
+
+
+    <def-macro n="set_caseprep" npar="1"
+               c="arg.1: noun, pronoun
+                  –––––
+                  First attempt (may be changed in later stages).
+                  Assumes that caseFirstWord has been set!">
+      <let>
+        <var n="caseprep"/><lit v=""/>
+      </let>
+      <choose>
+        <when c="på when loc">
+          <test><and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+           <equal><clip pos="1" side="sl" part="hab"/><lit v=""/></equal>
+          </and></test>
+          <let>
+            <var n="caseprep"/><lit v="på"/>
+          </let>
+          <choose c="Exceptions to the locative→på rule:">
+            <when c="som when loc">
+              <test><and>
+                <equal><clip pos="1" side="sl" part="lemh"/><lit v="árvu"/></equal>
+                <equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="sg"/></equal>
+      </and></test>
+              <let>
+                <var n="caseprep"/><lit v="som"/>
+              </let>
+            </when>
+            <when c="om when loc">
+              <test>
+              <and>
+           <not><and>
+              <equal><var n="seen_num"/><lit-tag v="num"/></equal>
+               <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
+              </and></not>
+              <or>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-om-head"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-om"/></in>
+                  <equal><var n="main-verb-sl"/><lit v="beroštit"/></equal>
+                  <and>
+                  <or>
+                <equal><var n="previous-nhead"/><lit v="konkurranse"/></equal>
+                <equal><var n="previous-nhead"/><lit v="kunnskap"/></equal>
+                  </or>
+             <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
+             <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in></not>
+                  </and>
+                  <and>
+                <equal><var n="previous-nhead"/><lit v="avtale"/></equal>
+             <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_act"/></equal>
+                  </and>
+             </or></and>
+
+             </test>
+              <let>
+                <var n="caseprep"/><lit v="om"/>
+              </let>
+            </when>
+            <when c="hos">
+              <test><or>
+              <and><or>
+                <equal><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn.pers"/></equal>
+                <equal><clip pos="1" side="sl" part="prop_type"/><lit-tag v="cog"/></equal>
+                <equal><clip pos="1" side="sl" part="prop_type"/><lit-tag v="ant"/></equal>
+                </or>
+            <not><equal><var n="previous-nhead"/><lit v="prosent"/></equal></not>
+          <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@Pron←"/></equal></not>
+           <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal></not>
+           <equal><clip pos="1" side="sl" part="hab"/><lit v=""/></equal>
+           </and>
+           <and>
+         <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_hum"/></in>
+         <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
+         <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_hum_lang"/></equal></not>
+         <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in></not>
+           <or>
+           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
+           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
+           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@APP-Pron←"/></equal>
+           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@APP-N←"/></equal>
+           </or>
+           </and>
+           <and>
+         <equal><clip pos="1" side="sl" part="lemh"/><lit v="olus"/></equal>
+           <equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="pl"/></equal>
+           </and>
+           </or></test>
+              <let>
+                <var n="caseprep"/><lit v="hos"/>
+              </let>
+            </when>
+            <when c="av for loc-av">
+              <test><or>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-av-head"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-av"/></in>
+                <and>
+                 <equal><var n="previous-nhead"/><lit v="prosent"/></equal>
+                <not><in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in></not>
+               </and>
+                <and>
+	            <or>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@Pron←"/></equal>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal>
+<!--                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal>  -->
+                </or>
+                <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
+                </and>
+              </or>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="av"/>
+              </let>
+            </when>
+            <when c="i when loc">
+              <test><and><or>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_ani"/></equal>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_rule"/></equal>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_event"/></equal>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build-part"/></equal>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_ctain-clth"/></equal>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_wthr"/></equal>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_prod-vis"/></equal>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_cat"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_body"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_veh"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_state"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-audio"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_domain"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-cogn"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_pos"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_group"/></in>
+                <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal>
+                <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.org"/></equal>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
+                <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_year"/></equal>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-i-head"/></in>
+              <and>
+                    <in caseless="yes"><var n="previous-nhead_sem"/><list n="sem_edu"/></in>
+                    <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
+                  </and>
+              </or>
+              <not><in caseless="yes"><var n="previous-nhead"/><list n="loc-fra-head"/></in></not>
+              <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
+              <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></not>
+              <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal></not>
+              <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-F←ADVL-ela"/></equal></not>
+            </and>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="i"/>
+              </let>
+            </when>
+            <when c="med when loc">
+              <test>
+             <equal><var n="main-verb-sl"/><lit v="geargat"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="med"/>
+              </let>
+            </when>
+            <when c="for when loc">
+              <test><or>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-for-head"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-for"/></in>
+              </or></test>
+              <let>
+                <var n="caseprep"/><lit v="for"/>
+              </let>
+            </when>
+            <when c="etter when loc">
+              <test><or>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-etter-head"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-etter"/></in>
+              </or></test>
+              <let>
+                <var n="caseprep"/><lit v="etter"/>
+              </let>
+            </when>
+            <when c="ved when loc">
+              <test>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-ved"/></in>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="ved"/>
+              </let>
+            </when>
+            <when c="for when loc">
+              <test>
+                <equal><var n="previous-nhead"/><lit v="takk"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="for"/>
+              </let>
+            </when>
+            <when c="fra when loc">
+              <test>
+              <and>
+              <or>
+                <in caseless="yes"><var n="previous-nhead"/><list n="loc-fra-head"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-fra"/></in>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-F←ADVL-ela"/></equal>
+              </or>
+                <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_mat"/></in></not>
+                <not><equal><var n="main-verb-sl"/><lit v="báidnit"/></equal></not>
+              </and>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="fra"/>
+              </let>
+            </when>
+            <when c="Sometimes, das → av den">
+              <test>
+              <or>
+              <and>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_mat"/></in>
+                <or>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+                </or>
+                </and>
+              <and>
+                <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+                <or>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+                </or>
+              </and>
+              </or>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="av"/>
+              </let>
+            </when>
+          </choose>
+          <choose><when c="but even if the above tests matched, we can override to nil here:">
+            <test>
+              <or>
+                <equal><clip pos="1" side="tl" part="hab"/><lit-tag v="←hab→"/></equal>
+                <and>           <!-- «mus lea» now tagged like this: -->
+                  <or>
+                    <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn"/></equal>
+                    <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+                  </or>
+                  <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
+                  <or>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL→"/></equal>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
+                  </or>
+                </and>
+                <and>
+                  <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn"/></equal>
+                  <equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal>
+                  <equal><clip pos="1" side="tl" part="lemh"/><lit v="selv"/></equal>
+                </and>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="loc-NIL-verbs"/></in>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-NIL"/></in>
+              </or>
+            </test>
+            <let>
+              <var n="caseprep"/><lit v=""/>
+            </let>
+          </when>
+          </choose>
+        </when>
+        <when c="com med">
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="com"/></equal></test>
+          <let>
+            <var n="caseprep"/><lit v="med"/>
+          </let>
+          <choose c="Exceptions to the comitative→med rule:">
+            <when>
+              <test>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="måte"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="på"/>
+              </let>
+            </when>
+            <when c="com NIL">
+              <test>
+             <equal><var n="main-verb-sl"/><lit v="deaivvadit"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v=""/>
+              </let>
+            </when>
+            </choose>
+        </when>
+        <when c="ess is som">
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal></test>
+          <let>
+            <var n="caseprep"/><lit v="som"/>
+          </let>
+          <choose><when c="ess is til">
+            <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-til"/></in></test>
+            <let>
+              <var n="caseprep"/><lit v="til"/>
+            </let>
+          </when>
+          <when c="ess is til">
+            <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-til-gen"/></in></test>
+            <let>
+              <var n="caseprep"/><lit v="til"/>
+            </let>
+            <let><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></let>
+          </when>
+          <when c="ess is i">
+            <test>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-i"/></in>
+            </test>
+            <let>
+              <var n="caseprep"/><lit v="i"/>
+            </let>
+          </when>
+          <when c="ess is på">
+            <test>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-på"/></in>
+            </test>
+            <let>
+              <var n="caseprep"/><lit v="på"/>
+            </let>
+          </when>
+          <when c="ess is en">
+            <test>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="betingelse"/></equal>
+            </test>
+            <let>
+              <var n="caseprep"/><lit v="en"/>
+            </let>
+          </when>
+        </choose>
+        <choose>
+          <when c="ess is NIL">
+            <test><or><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in>
+             <equal><var n="main-verb-sl"/><lit v="gohčodit"/></equal>
+             <equal><var n="main-verb-sl"/><lit v="šaddat"/></equal>
+             <equal><var n="main-verb-sl"/><lit v="gártat"/></equal>
+            <equal><var n="advl-verb-sl"/><lit v="leat"/></equal>
+            <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@SPRED→"/></equal>
+             </or></test>
+           <let>
+              <var n="caseprep"/><lit v=""/>
+            </let>
+          </when>
+        </choose>
+          </when>
+        <when c="ill is til">
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal></test>
+          <let>
+            <var n="caseprep"/><lit v="til"/>
+          </let>
+          <choose>
+            <when c="ill is om" >
+              <test>
+	              <or>
+               <and>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="dag"/></equal>
+              <or>
+               <equal><var n="previous-nhead"/><lit v="time"/></equal>
+               <equal><var n="previous-nhead"/><lit v="gang"/></equal>
+             </or>
+             </and>
+                  <and>
+                <equal><var n="previous-nhead"/><lit v="avtale"/></equal>
+             <equal><var n="main-verb-tl"/><lit v="skrive"/></equal>
+                  </and>
+	              </or>
+             </test>
+              <let>
+                <var n="caseprep"/><lit v="om"/>
+              </let>
+            </when>
+            <when c="ill is i">
+              <test><or>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
+                <equal caseless="yes"><var n="main-verb-tl"/><lit v="havne"/></equal>
+                  <and>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="guođđit"/></equal>
+                  <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
+                  </and>
+                <and>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
+              <not><equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_hum"/></equal></not>
+                </and>
+<!--                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_prod-ling"/></in> this is not good  -->
+               <equal><var n="previous-nhead"/><lit v="time"/></equal>
+               <equal><var n="previous-nhead"/><lit v="gang"/></equal>
+               <equal><var n="previous-nhead"/><lit v="liv"/></equal>
+             <and>
+                <equal caseless="yes"><var n="main-verb-sl"/><lit v="njuiket"/></equal>
+                <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_plc"/></equal>
+             </and>
+             <and>
+                <equal caseless="yes"><var n="main-verb-sl"/><lit v="čállit"/></equal>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_txt"/></in>
+             </and>
+             <and>
+                <equal caseless="yes"><var n="main-verb-sl"/><lit v="vuođđudit"/></equal>
+                <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_plc"/></equal>
+             </and>
+             <and>
+                <equal caseless="yes"><var n="main-verb-sl"/><lit v="dubmet"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="fengsel"/></equal>
+             </and>
+             </or></test>
+              <let>
+                <var n="caseprep"/><lit v="i"/>
+              </let>
+            </when>
+            <when c="ill is på">
+              <test>
+                <or>
+                  <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-på"/></in>
+                  <in caseless="yes"><var n="previous-nhead"/><list n="ill-på-head"/></in>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="álgit"/></equal>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="fokuseret"/></equal>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="vuođđudit"/></equal>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="guođđit"/></equal>
+                  <and>
+                    <equal caseless="yes"><var n="main-verb-sl"/><lit v="ohcat"/></equal>
+                    <or>
+                    <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_pos"/></equal>
+                    <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_edu"/></equal>
+                    <in caseless="yes"><var n="previous-nhead_sem"/><list n="sem_edu"/></in>
+                    </or>
+                  </and>
+                  <and>
+                    <equal><var n="seen_num"/><lit-tag v="num"/></equal>
+                    <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
+                    <not><equal caseless="yes"><var n="main-verb-sl"/><lit v="dubmet"/></equal></not>
+                  </and>
+                  <and>
+                    <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
+<!--                    <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></not>  -->
+                    <not><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="sápmi"/></equal></not>
+                    <not><equal><var n="main-verb-sl"/><lit v="viiddidit"/></equal></not>
+                    <not><equal><var n="main-verb-sl"/><lit v="jorgalit"/></equal></not>
+                    <not><equal><var n="main-verb-sl"/><lit v="rievdadit"/></equal></not>
+                    <not><equal><var n="main-verb-sl"/><lit v="jorgalahttit"/></equal></not>
+                    <not>
+                    <in caseless="yes"><var n="previous-nhead"/><list n="sem_lang_lem"/></in>
+                </not>
+                  </and>
+                  <and><or>
+                    <equal><var n="main-verb-sl"/><lit v="bidjat"/></equal>
+                    <equal><var n="main-verb-sl"/><lit v="ihtit"/></equal>
+                    </or>
+                    <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in></not>
+                  </and>
+                </or>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="på"/>
+              </let>
+            </when>
+            <when c="ill is med">
+              <test>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-med-verbs"/></in>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="med"/>
+              </let>
+            </when>
+            <when c="ill is over">
+              <test>
+                    <equal><var n="main-verb-sl"/><lit v="beahttit"/></equal>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="over"/>
+              </let>
+            </when>
+            <when c="ill is for">
+              <test><or>
+                <and>
+                  <or>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-for-verbs"/></in>
+                    <and>
+                    <equal><var n="main-verb-sl"/><lit v="šaddat"/></equal>
+               <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
+               <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build_org"/></equal></not>
+               <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build"/></equal></not>
+               <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="giddagas"/></equal></not>
+                    </and>
+                    <in caseless="yes"><var n="previous-nhead"/><list n="ill-for-head"/></in>
+                    <equal><clip pos="1" side="tl" part="lemh"/><lit v="periode"/></equal>
+                  </or>
+                  <not><equal><var n="previous-nhead"/><lit v="utveksling"/></equal></not>
+                  <not><equal><var n="previous-nhead"/><lit v="rettighet"/></equal></not>
+                  <not><equal><var n="previous-nhead"/><lit v="rett"/></equal></not>
+                  <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="guhte"/></equal></not>
+                </and>
+                <and>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-i-verbs"/></in>
+              <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_hum"/></equal>
+                </and>
+                <and>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal>
+              <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_hum"/></equal>
+                </and>
+                <and>
+                <equal><var n="main-verb-sl"/><lit v="válljet"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="skoleår"/></equal>
+                </and>
+                <equal><clip pos="1" side="sl" part="lemh"/><lit v="beaivebodda"/></equal>
+                </or>
+              </test>
+              <let>
+                <var n="caseprep"/><lit v="for"/>
+              </let>
+            </when>
+          </choose>
+          <choose><when c="but even if the above tests matched, we can override to nil here:">
+            <test>
+              <or>
+                <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-NIL"/></in>
+                <in caseless="yes"><var n="main-verb-sl"/><list n="ill-NIL-verbs"/></in>
+              </or>
+            </test>
+            <let>
+              <var n="caseprep"/><lit v=""/>
+            </let>
+          </when></choose>
+        </when>
+        <when c="om acc">
+          <test><and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
+          <equal><var n="main-verb-tl"/><lit v="be"/></equal>
+         <equal><clip pos="1" side="tl" part="lemh"/><lit v="hjelp"/></equal>
+        </and>   </test>
+          <let>
+            <var n="caseprep"/><lit v="om"/>
+          </let>
+        </when>
+        <when c="på acc">
+          <test><or>
+          <equal><var n="main-verb-tl"/><lit v="fokusere"/></equal>
+          <equal><var n="main-verb-tl"/><lit v="forske"/></equal>
+          <equal><var n="main-verb-tl"/><lit v="stemme"/></equal>
+     </or></test>
+          <let>
+            <var n="caseprep"/><lit v="på"/>
+          </let>
+        </when>
+        <when c="på acc">
+          <test>
+          <equal><var n="main-verb-tl"/><lit v="protestere"/></equal>
+          </test>
+          <let>
+            <var n="caseprep"/><lit v="mot"/>
+          </let>
+        </when>
+        <when c="til acc">
+          <test><and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
+          <equal><var n="main-verb-tl"/><lit v="lytte"/></equal>
+        </and>   </test>
+          <let>
+            <var n="caseprep"/><lit v="til"/>
+          </let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></test>
+          <choose>
+            <when c="The tag @N← is created by rules like NOM.GEN NOM.GEN NOM">
+              <test><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal></test>
+              <choose>
+                <when>
+                  <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-om-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="om"/>
+                  </let>
+                </when>
+                <when>
+                  <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-av-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="av"/>
+                  </let>
+                </when>
+                <when c="Guovdageainnu suohkana sátnejođiheaddji : ordføreren i Kautokeino kommune">
+                  <test><or>
+                  <in caseless="yes"><var n="previous-nhead"/><list n="gen-i-head"/></in>
+                   <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+                <in caseless="yes"><var n="previous-nhead"/><list n="ill-i-head"/></in>
+                </or></test>
+                  <let>
+                    <var n="caseprep"/><lit v="i"/>
+                  </let>
+                </when>
+                <when>
+                  <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-som-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="som"/>
+                  </let>
+                </when>
+                <when>
+                  <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-for-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="for"/>
+                  </let>
+                </when>
+                <when>
+                  <test><in caseless="yes"><var n="previous-nhead"/><list n="gen-på-head"/></in></test>
+                  <let>
+                    <var n="caseprep"/><lit v="på"/>
+                  </let>
+                </when>
+                <when>
+                  <test><or>
+                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="bealli"/></equal>
+                  <equal><clip pos="1" side="sl" part="lemh"/><lit v="guovlu"/></equal>
+                  </or></test>
+                  <let>
+                    <var n="caseprep"/><lit v="fra"/>
+                  </let>
+                </when>
+                <otherwise>
+                  <let><var n="caseprep"/><lit v="til"/></let>
+                </otherwise>
+              </choose>
+            </when>
+            <otherwise>
+              <choose>
+                <when c="For when we output 'sin', when chunking doesn't match up">
+                  <test><or>
+                    <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→N"/></equal>
+                    <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→A"/></equal>
+                    <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
+                    <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal>
+                  </or></test>
+                  <let>
+                    <var n="caseprep"/><lit v=""/>
+                  </let>
+                </when>
+                <otherwise c="Not a modifier: neither prep nor genitive case">
+                  <let><var n="caseprep"/><lit v=""/></let>
+                  <choose><when>
+                    <test><and>
+                      <equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal>
+                      <not><equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal></not>
+                    </and></test>
+                    <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
+                  </when></choose>
+                </otherwise>
+              </choose>
+            </otherwise>
+        </choose>
+        </when>
+      </choose>
+
+                  <!-- <out><lit v="let previous-nhead "/><clip pos="1" side="tl" part="lemh"/></out> -->
+   <let><var n="previous-nhead"/><clip pos="1" side="tl" part="lemh"/></let>
+   <let><var n="previous-nhead_sem"/><clip pos="1" side="sl" part="a_sem"/></let>
+              <choose>
+                <when c="object">
+                  <test><or>
+                    <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal>
+                    <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@OBJ→"/></equal>
+                  </or></test>
+                  <let>
+        <var n="previous-obj"/><clip pos="1" side="tl" part="lemh"/>
+                  </let>
+                </when> </choose>
+
+      <!-- Now create it for outputting: -->
+      <choose>
+        <when>
+          <test><not><equal><var n="caseprep"/><lit v=""/></equal></not></test>
+          <choose>
+            <when c="If we're inserting something as the first word of a sentence, we probably want titlecase
+                     Note: set_caseFirstWord changes from 'init' to 'aa' if the first word of the sentence was a lowercase word">
+              <test><equal caseless="yes"><var n="caseFirstWord"/><lit v="init"/></equal></test>
+              <let><var n="caseFirstWord"/><lit v="Aa"/></let>
+            </when>
+          </choose>
+          <let><var n="caseprep_c_name"/><lit v="caseprep"/></let>
+          <modify-case><var n="caseprep_c_name"/><var n="caseFirstWord"/></modify-case>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <var n="caseprep_c_name"/>
+              <lit-tag v="PR"/>
+              <clip pos="1" side="tl" part="case"/>
+              <lit v="{^"/>
+              <var n="caseprep"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$ "/>
+            </concat>
+          </let>
+          <let><var n="caseFirstWord"/><lit v="aa"/></let>
+        </when>
+      </choose>
+      <!-- Ensure caseFirstWord is no longer 'init', but still has the correct casing: -->
+      <let><var n="tmp"/><var n="caseFirstWord"/></let>
+      <let><var n="caseFirstWord"/><lit v="aa"/></let>
+      <modify-case><var n="caseFirstWord"/><var n="tmp"/></modify-case>
+    </def-macro>
+
+    <def-macro n="modify_prn_case" npar="1"
+               c="arg.1: Pron (which might end up as a nob determiner)
+                  –––––
+                  If pron is the chunk head, make sure to call this after set_caseprep!
+                  - Personal pronouns can only be nom or acc (note: ←hab→ / @-FSUBJ→ / @-FOBJ→ to nom),
+                  - Demonstrative and indefinites can only be gen in nob,
+                  - det.pos (personal genitives) have no case, but this is handled in transfer rules.">
+      <choose>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn.ref"/></equal></test>
+          <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
+        </when>
+        <when>
+          <test><equal><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn.pers"/></equal></test>
+          <choose>
+            <when>
+              <test><or>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FSUBJ→"/></equal>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FOBJ→"/></equal>
+                <equal><clip pos="1" side="sl" part="hab"/><lit-tag v="←hab→"/></equal>
+                <and>           <!-- «mus lea» now tagged like this: -->
+                  <or>
+                    <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn"/></equal>
+                    <equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+                  </or>
+                  <equal><clip pos="1" side="tl" part="case"/><lit-tag v="loc"/></equal>
+                  <or>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL→"/></equal>
+                     <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal>
+                    <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>
+                   <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+                   <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                   <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
+                  </or>
+                </and>
+              </or></test>
+              <let><clip pos="1" side="tl" part="case"/><lit-tag v="nom"/></let>
+            </when>
+            <when>
+              <test><not>
+                <or>
+                  <equal><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></equal>
+                  <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
+                </or>
+              </not></test>
+              <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
+            </when>
+          </choose>
+        </when>
+        <otherwise>
+          <choose>
+           <when>
+            <test>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="de fleste"/></equal>
+            </test>
+            <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
+          </when>
+         <when>
+            <test>
+              <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></not>
+            </test>
+            <let><clip pos="1" side="tl" part="case"/><lit-tag v="acc"/></let>
+          </when>
+          </choose>
+        </otherwise>
+      </choose>
+    </def-macro>
+
+    <def-macro n="set_prn_gen_nbr_art2" npar="2"
+               c="arg.1: prn/det, arg.2: noun (or, the lu we want to base prn/det gen/nbr on)
+                  –––––
+                  Note: lone pronouns/determiners just keep GD/ND, this might change
+                  in interchunk (postchunk cleans it up if not).">
+      <choose c="NUMBER">
+        <when c="itg never has number">
+          <test><equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.itg"/></equal></test>
+          <let><var n="prn_nbr"/><lit v=""/></let>
+        </when>
+        <when c="ref p3 has sp">
+          <test><and>
+            <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.ref"/></equal>
+            <equal><clip pos="1" side="tl" part="pers"/><lit-tag v="p3"/></equal>
+          </and></test>
+          <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
+        </when>
+        <when c="sg/pl">
+          <test><or>
+            <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+            <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+          </or></test>
+          <let><var n="prn_nbr"/><clip pos="2" side="tl" part="nbr"/></let>
+        </when>
+        <when c="Assume we can generate all sme dualis forms">
+          <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="du"/></equal></test>
+          <let><var n="prn_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        </when>
+        <otherwise>
+          <let><var n="prn_nbr"/><lit-tag v="sg"/></let>
+        </otherwise>
+      </choose>
+
+      <choose c="GENDER">
+        <when c="itg never has gender">
+          <test><equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.itg"/></equal></test>
+          <let><var n="prn_gen"/><lit v=""/></let>
+        </when>
+        <when c="ref p3 has un">
+          <test><and>
+            <equal><clip pos="1" side="tl" part="a_prn"/><lit-tag v="prn.ref"/></equal>
+            <equal><clip pos="1" side="tl" part="pers"/><lit-tag v="p3"/></equal>
+          </and></test>
+          <let><var n="prn_nbr"/><lit-tag v="un"/></let>
+        </when>
+        <when c="pl are always un">
+          <test><equal><var n="prn_nbr"/><lit-tag v="pl"/></equal></test>
+          <let><var n="prn_gen"/><lit-tag v="un"/></let>
+        </when>
+        <when c="du are always mf">
+          <test><equal><var n="prn_nbr"/><lit-tag v="du"/></equal></test>
+          <let><var n="prn_gen"/><lit-tag v="mf"/></let>
+        </when>
+        <otherwise c="sg">
+          <let><var n="prn_gen"/><clip pos="2" side="tl" part="gen"/></let>
+          <choose><when>
+            <test><or>
+              <equal><var n="prn_gen"/><lit v=""/></equal>
+              <equal><var n="prn_gen"/><lit-tag v="un"/></equal>
+            </or></test>
+            <let><var n="prn_gen"/><lit-tag v="m"/></let>
+          </when></choose>
+          <!-- TODO: Whole lot of lexical exceptions here -->
+        </otherwise>
+      </choose>
+
+      <choose c="DEFNES">
+        <when>
+          <test><equal><clip pos="2" side="tl" part="art"/><lit v="DD"/></equal></test>
+          <let><clip pos="2" side="tl" part="art"/><lit-tag v="3"/></let>
+        </when>
+      </choose>
+    </def-macro>
+
+    <def-macro n="guess_animacy" npar="1"
+               c="arg.1: Chunk 'head'.">
+      <choose c="Put a pers tag on it if it's a gendered proper noun
+                 TODO: list of animate common nouns?">
+        <when>
+          <test><or>
+            <and>
+              <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
+              <in><clip pos="1" side="tl" part="gen"/><list n="pers_genders"/></in>
+            </and>
+            <and>
+              <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n"/></begins-with>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="pers_nouns"/></in>
+            </and>
+          </or></test>
+          <let><var n="c_animacy"/><lit-tag v="pers-pro"/></let>
+        </when>
+        <otherwise>
+          <let><var n="c_animacy"/><lit-tag v="agreem-pro"/></let>
+        </otherwise>
+      </choose>
+    </def-macro>
+
+    <def-macro n="set_c_gen_nbr" npar="1"
+               c="arg.1: Chunk 'head'.
+                  Make sure we have GD or ND if no gen or num given.">
+      <let><var n="c_gen"/><clip pos="1" side="tl" part="gen"/></let>
+      <let><var n="c_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+      <choose c="If chunk head is adj, we probably want nt, but do GD in case t2x wants to change it.
+                 (Could do non-sint→GD in bidix, but we don't prepend more/most until t4x, meaning the
+                 adj has to have a comp/sup tagset until t4x.)">
+        <when>
+          <test>
+            <or>
+              <equal><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></equal> <!-- non-sint is turned pos -->
+              <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="pst"/></equal>
+            </or>
+          </test>
+          <let><var n="c_gen"/><lit-tag v="GD"/></let>
+        </when>
+      </choose>
+      <choose c="buorre, bahá">
+        <when>
+          <test><and>
+              <equal><clip pos="1" side="sl" part="a_adj"/><lit-tag v="adj"/></equal>
+              <equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="pl"/></equal>
+            <or>
+              <equal><clip pos="1" side="sl" part="lemh"/><lit v="buorre"/></equal>
+              <equal><clip pos="1" side="sl" part="lemh"/><lit v="bahá"/></equal>
+            </or></and>
+          </test>
+          <let><var n="c_nbr"/><lit-tag v="sg"/></let>
+          <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+        </when>
+      </choose>
+      <choose>
+        <when>
+          <test><equal><var n="c_gen"/><lit v=""/></equal></test>
+          <choose>
+            <when>
+              <test><equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np.top"/></equal></test>
+              <let><var n="c_gen"/><lit-tag v="nt"/></let>
+            </when>
+            <otherwise>
+              <let><var n="c_gen"/><lit-tag v="GD"/></let>
+            </otherwise>
+          </choose>
+        </when>
+      </choose>
+      <choose><when>
+        <test><equal><var n="c_nbr"/><lit v=""/></equal></test>
+        <let><var n="c_nbr"/><lit-tag v="ND"/></let>
+      </when></choose>
+    </def-macro>
+
+    <def-macro n="copy_syn_label" npar="2"
+               c="arg.1: might want a syn_label, arg.2: might have syn_label
+                  –––––
+                  Used in compounds, where typically the left part gets the syn_label while
+                  the right one needs it.">
+      <choose><when>
+        <test><equal><clip pos="1" side="sl" part="syn_label"/><lit v=""/></equal></test>
+        <let>
+          <clip pos="1" side="sl" part="tags"/>
+          <concat>
+            <clip pos="1" side="sl" part="tags"/>
+            <clip pos="2" side="sl" part="syn_label"/>
+          </concat>
+        </let>
+      </when></choose>
+    </def-macro>
+
+    <def-macro n="clean_cmp" npar="1"
+               c="arg.1: non-final noun in a compound
+                  –––––
+                  The sp ones in nob.dix never have defnes tags.
+                  Regular nouns are always sg.ind when non-final in compounds.
+                  Bidix often does not supply defnes/number, making clip fail; in that case, append to tags">
+      <choose c="Only run on compound parts!">
+        <when>
+          <test><not><equal><clip pos="1" side="sl" part="a_cmp"/><lit v=""/></equal></not></test>
+          <choose c="cmp tags">
+            <when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
+              <test><and>
+                <equal><clip pos="1" side="sl" part="a_num"/><lit-tag v="num"/></equal>
+                <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal>
+              </and></test>
+              <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
+            </when>
+            <when>
+              <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_hyph.cmp"/></equal></test>
+              <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
+            </when>
+          </choose>
+          <choose c="nbr/art tags">
+            <when c="noun sp's have no defnes">
+              <test><and>
+                <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n"/></begins-with>
+                <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sp"/></equal>
+              </and></test>
+              <let><clip pos="1" side="tl" part="art"/><lit v=""/></let>
+            </when>
+            <when c="other noun/adj's as compound parts fallback to sg.ind">
+              <test><or>
+                <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n"/></begins-with>
+                <begins-with><clip pos="1" side="tl" part="a_adj"/><lit-tag v="adj"/></begins-with>
+              </or></test>
+              <choose><when>
+                <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
+                <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="tags"/><lit-tag v="sg"/></concat></let>
+              </when></choose>
+              <choose><when>
+                <test><equal><clip pos="1" side="tl" part="art"/><lit v=""/></equal></test>
+                <let><clip pos="1" side="tl" part="tags"/><concat><clip pos="1" side="tl" part="tags"/><lit-tag v="ind"/></concat></let>
+              </when></choose>
+            </when>
+          </choose>
+          <let><var n="defnes"/><clip pos="1" side="tl" part="art"/></let>
+        </when>
+      </choose>
+    </def-macro>
+
+    <def-macro n="set_defnes" npar="1"
+               c="arg.1: noun/adj, with syn_label
+                  –––––
+                  Default to indefinite, guess definite for certain GF's, genitives, ...
+                  Locatives only indefinite in first position with leat
+                  Adjectives given to this macro will be (predicative and) indefinite
+                   (or do we ever get 'det er den røde.Def' here?)">
+      <let><var n="defnes"/><lit-tag v="ind"/></let>
+      <choose><when c="definite if this all matches:">
+        <test>
+          <and>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@VOC"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="a_acr"/><lit-tag v="acr"/></equal></not>
+            <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
+            <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="ekstra"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="beaivebodda"/></equal></not>
+            <not><equal><var n="main-verb-tl"/><lit v="søke"/></equal></not>
+            <not><equal><var n="main-verb-tl"/><lit v="spille"/></equal></not>
+            <not><and>
+            <equal><clip pos="1" side="tl" part="lemh"/><lit v="same"/></equal>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@OBJ→"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@F←OBJ"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FOBJ→"/></equal></not>
+            </and></not>
+            <not><and>
+            <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_domain"/></equal>
+            <not><equal><clip pos="1" side="tl" part="case"/><lit-tag v="gen"/></equal></not>
+            </and></not>
+            <not><and>
+            <equal><clip pos="1" side="tl" part="lemh"/><lit v="liv"/></equal>
+            <equal><var n="main-verb-tl"/><lit v="blåse"/></equal>
+            </and></not>
+            <not>
+            <equal><clip pos="1" side="sl" part="lemh"/><lit v="miljovdnabealli"/></equal>
+            </not>
+
+            <not><equal><clip pos="1" side="sl" part="ext"/><lit-tag v="←ext→"/></equal></not>
+            <not><and>
+              <equal><clip pos="1" side="sl" part="lemh"/><lit v="ságat"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal>
+            </and></not>
+            <not><and>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="samarbeid"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+            </and></not>
+            <not><and>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in>
+            </and></not>
+            <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
+           <not><and>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></equal>
+            <not><equal><var n="main-verb-tl"/><lit v=""/></equal></not>
+             <not><in caseless="yes"><var n="main-verb-sl"/><list n="not-det-verbs"/></in></not>
+            </and></not>
+<!--            <not><and>
+            <equal><var n="main-verb-pasv"/><lit v="pasv"/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+            </and></not>  -->
+<!--	    <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="samisk"/></equal></not> -->
+            <or>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@OBJ→"/></equal>
+              <equal><clip pos="1" side="sl" part="hab"/><lit-tag v="←hab→"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
+               <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal>
+              <equal><clip pos="1" side="sl" part="case"/><lit-tag v="com"/></equal>
+              <and>
+<!--                <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>   -->
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←PPRED"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OPRED"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL→"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal></not>
+                <!-- syn_label!=@←ADVL conflicts with 'Son ii dáidde
+                     jienastit Bargiidbellodaga(def)' but is necessary
+                     for 'Doppe son orui vahku(ind)' -->
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@X"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal></not>
+                <not><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></not>
+              </and>
+            </or>
+             <not><and>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
+                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_mat"/></in>
+                </and></not>
+          </and>
+        </test>
+        <let><var n="defnes"/><lit-tag v="def"/></let>
+      </when></choose>
+    </def-macro>
+
+    <def-macro n="set_defnes2" npar="2"
+               c="arg.1: noun, arg.2: determiner (or adj, but only if no det).
+                  With 'det (adj) nom' the noun is:
+                  * indefinite if the determiner is a possessive
+                  * definite if it is a demonstrative
+                  With superlatives, it's always definite.
+                  Otherwise, keep old defnes.
+                  Assumes that clean_a_det has been called.">
+      <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+      <choose>
+        <when c="Common co-occurrences first">
+          <test><in>
+            <concat><clip pos="2" side="tl" part="lemh"/><lit v=" "/><clip pos="1" side="tl" part="lemh"/></concat>
+            <list n="bigrams-def"/>
+          </in></test>
+          <let><var n="defnes"/><lit-tag v="def"/></let>
+        </when>
+        <when>
+          <test><or><equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@HNOUN"/></equal>
+          <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in></or></test>
+          <let><var n="defnes"/><lit-tag v="ind"/></let>
+       </when>
+        <when>
+          <test><and>
+            <or>
+              <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="ord.pst"/></equal>
+              <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal>
+              <and>
+              <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
+            <not><equal><clip pos="2" side="sl" part="lemh"/><lit v="eará"/></equal></not>
+              </and>
+              <equal><clip pos="2" side="tl" part="lemh"/><lit v="eneste"/></equal>
+            </or>
+            <not><equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal></not>
+            <not><ends-with><clip pos="2" side="tl" part="lemh"/><lit v="og en halv"/></ends-with></not>
+          </and></test>
+          <let><var n="defnes"/><lit-tag v="def"/></let>
+        </when>
+        <when>
+          <test><or>
+            <ends-with><clip pos="2" side="tl" part="lemh"/><lit v="og en halv"/></ends-with>
+            <equal><clip pos="2" side="sl" part="lemh"/><lit v="eará"/></equal>
+            <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
+            <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
+            <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
+            <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
+            <equal><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>
+            <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="comp"/></equal>
+            <and>
+              <equal><clip pos="2" side="tl" part="prop_type"/><lit-tag v="top"/></equal>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
+            </and>
+            <and>
+              <equal><clip pos="2" side="tl" part="prop_type"/><lit-tag v="top"/></equal>
+              <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
+            </and>
+            <and>
+              <equal><clip pos="2" side="tl" part="case"/><lit-tag v="gen"/></equal>
+              <not><equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal></not>
+            </and>
+            <equal><clip pos="2" side="tl" part="lemh"/><lit v="mye"/></equal>
+            <equal><clip pos="2" side="tl" part="lemh"/><lit v="mange"/></equal>
+            <equal><clip pos="2" side="tl" part="lemh"/><lit v="hvilken"/></equal>
+          </or></test>
+          <let><var n="defnes"/><lit-tag v="ind"/></let>
+        </when>
+      </choose>
+    </def-macro>
+
+    <def-macro n="clean_det" npar="1"
+               c="arg.1: determiner (in nob, was prn in sme).
+                  Changes prn.gen into det.pos
+                  –––––
+                  If pron is the chunk head, make sure to call this AFTER set_caseprep!">
+      <call-macro n="modify_prn_case"><with-param pos="1"/></call-macro>
+      <!-- TODO: maybe a macro / list in case more such: -->
+      <choose>
+        <when>
+          <test><and>
+            <equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="enhver"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal>
+          </and></test>
+          <let><clip pos="1" side="tl" part="gen"/><lit-tag v="m"/></let>
+        </when>
+     </choose>
+      <choose c="TODO: Might want to just make the tl ambiguous in bidix between prn.gen.@→P and det.pos instead?">
+        <when>
+          <test><and>
+            <begins-with><clip pos="1" side="sl" part="a_prn"/><lit-tag v="prn"/></begins-with>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
+          </and></test>
+          <let><clip pos="1" side="tl" part="a_prn"/><lit-tag v="det.pos"/></let>
+          <choose><when c="With det.pos, the *owner* gen/nbr is based on lemma">
+            <test><and>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="han"/></equal>
+              <equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD_pers"/></equal>
+            </and></test>
+            <let><clip pos="1" side="tl" part="lemh"/><lit v="h_ns"/></let>
+          </when></choose>
+        </when>
+     </choose>
+     <choose><when>
+       <test><equal><clip pos="1" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal></test>
+       <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
+       <let><clip pos="1" side="tl" part="pers"/><lit v=""/></let>
+       <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="ND"/></let>
+       <let><clip pos="1" side="tl" part="gen"/><lit-tag v="GD"/></let>
+     </when></choose>
+
+    </def-macro>
+
+    <def-macro n="maybe_det_nbr_to_adj" npar="2"
+               c="arg.1: det, arg.1: adjective
+                  –––––
+                  Can be useful even if there's a noun, since noun may be sp.
+                  ">
+      <choose c="For positives, if use any number on ND">
+        <when>
+          <test><and>
+            <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="ND"/></equal>
+            <or>
+              <equal><clip pos="2" side="tl" part="temps"/><lit-tag v="pp"/></equal>
+              <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="pst"/></ends-with>
+            </or>
+            <or>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+            </or>
+          </and></test>
+          <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        </when>
+      </choose>
+    </def-macro>
+
+    <def-macro n="modify_adj_gen_nbr" npar="2"
+               c="arg.1: noun, arg.2: adjective
+                  –––––
+                  ">
+      <choose><when c="Fix possibly empty plural gender">
+        <test><and>
+          <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+          <equal><clip pos="1" side="tl" part="gen"/><lit v=""/></equal>
+        </and></test>
+        <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="un.pl"/></let>
+      </when></choose>
+      <choose><when c="The rest is just for non-compound adj's:">
+        <test><equal><clip pos="2" side="sl" part="a_cmp"/><lit v=""/></equal></test>
+        <choose c="bovdejuvvon guossit : inviterte gjester">
+          <when>
+            <test><equal><clip pos="2" side="sl" part="temps"/><lit-tag v="prfprc"/></equal></test>
+            <choose>
+            <when c="def">
+            <test><or>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
+            </or></test>
+            <let><clip pos="2" side="tl" part="tags"/><lit-tag v="adj.pp.sg" /></let>
+          </when>
+          <otherwise c="ind">
+            <let><clip pos="2" side="tl" part="tags"/><lit-tag v="adj.pp.GD.sg" /></let>
+          </otherwise>
+            </choose>
+          </when>
+        </choose>
+        <choose c="For positives, copy noun number over (if sg/pl).">
+          <when>
+            <test><and>
+              <or>
+                <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+                <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+              </or>
+              <or>
+                <equal><clip pos="2" side="tl" part="temps"/><lit-tag v="pp"/></equal>
+                <ends-with><clip pos="2" side="tl" part="grau"/><lit-tag v="pst"/></ends-with>
+              </or>
+            </and></test>
+            <let><clip pos="2" side="tl" part="nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+          </when>
+        </choose>
+        <choose c="When GD, nob adj's are either nt or mf">
+          <when>
+            <test><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="GD"/></equal></test>
+            <choose c="Try to copy from noun">
+              <when><test><in><clip pos="1" side="tl" part="gen"/><list n="adj-genders"/></in></test>
+              <let><clip pos="2" side="tl" part="gen"/><clip pos="1" side="tl" part="gen"/></let>
+              </when>
+            </choose>
+            <choose c="Default to mf if still unset">
+              <when>
+                <test>
+                  <not><equal><clip pos="2" side="tl" part="gen"/><lit-tag v="nt"/></equal></not>
+                </test>
+                <let><clip pos="2" side="tl" part="gen"/><lit-tag v="mf"/></let>
+              </when>
+            </choose>
+          </when>
+        </choose>
+        <choose c="... but when @→A, use sg.nt">
+          <when>
+            <test><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→A"/></equal></test>
+            <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+            <let><clip pos="2" side="tl" part="gen"/><lit-tag v="nt"/></let>
+          </when>
+        </choose>
+      </when></choose>
+      <call-macro n="set_neverdet"><with-param pos="2"/></call-macro>
+    </def-macro>
+
+    <def-macro n="set_c_syn" npar="1"
+               c="We always have '3' as the defnes position in chunks, following chunk tag and syn_label,
+                  this macro just ensures that there _is_ a syn_label.">
+      <!-- TODO: remove this and assume functions.cg3 always does what it should? -->
+      <let><var n="c_syn"/><clip pos="1" side="sl" part="syn_label"/></let>
+      <choose>
+        <when>
+          <test><equal><var n="c_syn"/><lit v=""/></equal></test>
+          <let><var n="c_syn"/><lit-tag v="@X"/></let>
+        </when>
+        <when>
+          <test> <or>
+          <not><equal><clip pos="1" side="sl" part="ext"/><lit v=""/></equal></not>
+          <and>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+          <equal><var n="main-verb-pasv"/><lit v="pasv"/></equal>
+          <not><in caseless="yes"><var n="main-verb-sl"/><list n="not-det-verbs"/></in></not>
+          </and>
+          </or></test>
+          <let><var n="c_syn"/><lit-tag v="@←SUBJext"/></let>
+        </when>
+      </choose>
+    </def-macro>
+
+    <def-macro n="set_verb-lemma" npar="1">
+      <choose>
+         <when c="M[V] set main-verb-pasv">
+          <test><and>
+            <or>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FMAINV"/></equal></or>
+              <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pasv"/></equal>
+         </and>
+          </test>
+          <let><var n="main-verb-pasv"/><lit v="pasv"/></let>
+        </when>
+      </choose>
+      <choose>
+        <when c="M[V] set main-verb-sl">
+          <test>
+            <and><or>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FMAINV"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@X"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@A←"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL→"/></equal> <!-- vabess -->
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal>
+              </or>
+              <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
+              <not><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_nomact"/></equal></not>
+            </and>
+          </test>
+          <let><var n="main-verb-sl"/><clip pos="1" side="sl" part="lemh"/></let>
+          <let><var n="main-verb-tl"/><clip pos="1" side="tl" part="lemh"/></let>
+        </when>
+      </choose>
+      <choose>
+        <when c="M[V] set advl-verbal-main-verb-sl">
+          <test><and><or>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal>
+              </or>
+              <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
+              <not><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_nomact"/></equal></not>
+            </and>
+          </test>
+          <let><var n="advl-verb-sl"/><clip pos="1" side="sl" part="lemh"/></let>
+        </when>
+      </choose>
+      <choose>
+       <when c="M[V] set aux-verb-lemma">
+          <test>
+            <and>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FAUXV"/></equal>
+              <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
+            </and>
+          </test>
+          <let><var n="aux-verb-sl"/><clip pos="1" side="sl" part="lemh"/></let>
+          <let><var n="aux-verb-tl"/><clip pos="1" side="tl" part="lemh"/></let>
+        </when>
+        <when c="M[V] set aux-verb lemma, nbr and pers">
+          <test>
+            <and>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal>
+              <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
+            </and>
+          </test>
+          <let><var n="aux-verb-sl"/><clip pos="1" side="sl" part="lemh"/></let>
+          <let><var n="aux-verb-tl"/><clip pos="1" side="tl" part="lemh"/></let>
+          <let><var n="vfin-pers"/><clip pos="1" side="sl" part="pers"/></let>
+          <let><var n="vfin-nbr"/><clip pos="1" side="sl" part="nbr"/></let>
+          <let><var n="vfin-temps"/><clip pos="1" side="sl" part="fintemps"/></let>
+        </when>
+        <when c="M[V] set fin-verb nbr and pers">
+          <test>
+            <and>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FMAINV"/></equal>
+              <equal><clip pos="1" side="sl" part="a_verb"/><lit-tag v="vblex"/></equal>
+            </and>
+          </test>
+          <let><var n="vfin-pers"/><clip pos="1" side="sl" part="pers"/></let>
+          <let><var n="vfin-nbr"/><clip pos="1" side="sl" part="nbr"/></let>
+          <let><var n="vfin-temps"/><clip pos="1" side="sl" part="fintemps"/></let>
+        </when>
+      </choose>
+    </def-macro>
+
+
+    <def-macro n="append_pre-nom" npar="2"
+               c="arg.1: nom head, arg.2: pre-nom (e.g. genitive-noun, adj)
+                  –––––
+                  Appends arg2 to the pre-nom variable.
+                  ASSUMES defnes HAS BEEN SET!
+                  ASSUMES clean_cmp HAS BEEN RUN IF IT'S A COMPOUND!
+                  ASSUMES b pos=N IS APPENDED AFTER CALLING THIS!">
+      <choose>
+        <when c="Adjective, e.g. sápmi.n.sg.gen → samisk.adj">
+          <test><or>
+          <not><equal><clip pos="2" side="tl" part="a_adj"/><lit v=""/></equal></not>
+          <equal><clip pos="2" side="sl" part="temps"/><lit-tag v="prfprc"/></equal>
+        </or></test>
+          <call-macro n="modify_adj_gen_nbr"><with-param pos="1"/><with-param pos="2"/></call-macro>
+          <choose>
+            <when>
+              <test><and><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+              <equal><clip pos="2" side="tl" part="a_cmp"/><lit v=""/></equal>
+              <equal><clip pos="2" side="tl" part="gen"/><lit v=""/></equal>
+              </and></test>
+              <let><var n="adj_gen"/><lit-tag v="un"/></let>
+            </when>
+            <otherwise><let><var n="adj_gen"/><lit v=""/></let></otherwise>
+          </choose>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <var n="adj_gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="defnes"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+          <choose>
+            <when>
+              <test><ends-with><clip pos="2" side="tl" part="a_cmp"/><lit-tag v="guio"/></ends-with></test>
+              <append n="pre-nom"><lit v="-"/></append>
+            </when>
+          </choose>
+        </when>
+        <when c="Adverb">
+          <test><begins-with><clip pos="2" side="tl" part="a_adv"/><lit-tag v="adv"/></begins-with></test>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adv"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+          <choose>
+            <when>
+              <test><ends-with><clip pos="2" side="tl" part="a_cmp"/><lit-tag v="guio"/></ends-with></test>
+              <append n="pre-nom"><lit v="-"/></append>
+            </when>
+          </choose>
+        </when>
+        <when c="Preposition">
+          <test><equal><clip pos="2" side="tl" part="a_prep"/><lit-tag v="pr"/></equal></test>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_prep"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+          <choose>
+            <when>
+              <test><ends-with><clip pos="2" side="tl" part="a_cmp"/><lit-tag v="guio"/></ends-with></test>
+              <append n="pre-nom"><lit v="-"/></append>
+            </when>
+          </choose>
+        </when>
+        <when c="Number/det.qnt">
+          <test><not><equal><clip pos="2" side="tl" part="a_num"/><lit v=""/></equal></not></test>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_num"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+        </when>
+        <when c="Determiner">
+          <test><or>
+            <not><equal><clip pos="2" side="tl" part="a_det"/><lit v=""/></equal></not>
+            <not><equal><clip pos="2" side="tl" part="a_prn"/><lit v=""/></equal></not>
+          </or></test>
+          <call-macro n="clean_det"><with-param pos="2"/></call-macro>
+          <call-macro n="set_prn_gen_nbr_art2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_det"/>
+              <clip pos="2" side="tl" part="a_prn"/>
+              <var n="prn_gen"/>
+              <var n="prn_nbr"/>
+              <clip pos="2" side="tl" part="art"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+        </when>
+        <when c="Proper noun – no nbr/defnes">
+          <test><begins-with><clip pos="2" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
+          <choose><when c="Avoid «Tromsøs kommune»">
+            <test>
+              <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="no-gen-after-prop"/></in>
+            </test>
+            <let><clip pos="2" side="tl" part="gen-case"/><lit v=""/></let>
+          </when></choose>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+        </when>
+        <otherwise c="Noun (we hope)">
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <var n="defnes"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+        </otherwise>
+      </choose>
+    </def-macro>
+
+    <def-macro n="set_neverdet" npar="1">
+      <choose><when>
+        <test>
+	  <or>
+	    <and>
+          <in><clip pos="1" side="tl" part="a_sem"/><list n="determinerless_sem"/></in>
+          <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="determiner-although-determinerless_sem"/></in></not>
+            </and>
+	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="boahtte"/></equal>
+	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="olu"/></equal>
+	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="ollu"/></equal>
+	    <in><clip pos="1" side="tl" part="lemh"/><list n="determinerless_lem"/></in>
+	  </or>
+	</test>
+        <let><var n="c_neverdet"/><lit-tag v="neverdet"/></let>
+      </when></choose>
+      <append n="c_neverdet"><clip pos="1" side="tl" part="a_maydetind"/></append>
+    </def-macro>
+
+    <!-- Output macros: -->
+
+    <def-macro n="out_nom" npar="1"
+               c="arg.1: noun
+                  –––––
+                  ASSUMES THAT pre-nom, c_name, defnes AND caseFirstWord HAVE BEEN SET!
+                  This macro is used to output nominal heads, possibly prepended by determiners
+                  or adjectives (stored in pre-nom). It uses the case of the argument to find the
+                  caseprep, outputting this before any det/adj's. The resulting chunk has the
+                  syn_label of the nominal.
+                  Removes number from proper noun.">
+
+      <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+      <out><var n="caseprep"/></out>
+
+      <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
+      <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
+      <choose>
+        <when c="add sg to essive">
+          <test><equal><clip pos="1" side="tl" part="case"/><lit-tag v="ess"/></equal></test>
+          <let>
+            <clip pos="1" side="tl" part="tags"/>
+            <concat>
+              <clip pos="1" side="tl" part="tags"/>
+              <lit-tag v="sg"/>
+            </concat>
+          </let>
+        </when>
+      </choose>
+
+      <append n="c_name"><lit v="nom"/></append>
+
+      <choose>
+        <when c="tl PoS is deverbal noun">
+          <test><not><equal><clip pos="1" side="sl" part="a_der_v2n"/><lit v=""/></equal></not></test>
+
+          <choose>
+            <when>
+              <test><equal><clip pos="1" side="sl" part="a_der_v2n"/><lit-tag v="der_nomag"/></equal></test>
+              <let><var n="n_lem"/><lit v="er"/></let>
+            </when>
+            <otherwise>
+              <let><var n="n_lem"/><lit v="ing"/></let>
+            </otherwise>
+          </choose>
+
+          <let><var n="n_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+          <choose><when>
+            <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
+            <let><var n="n_nbr"/><lit-tag v="sg"/></let>
+          </when></choose>
+
+          <let><var n="c_def_pos"/><lit-tag v="3"/></let>
+          <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
+
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="a_count"/></tag>
+                <tag><var n="c_animacy"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <mlu>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_verb"/>
+                  <clip pos="1" side="tl" part="a_pstv"/>
+                  <clip pos="1" side="tl" part="temps"/>
+                  <clip pos="1" side="tl" part="voice"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+                <lu>
+                  <var n="n_lem"/>
+                  <clip pos="1" side="tl" part="a_nom"/>
+                  <clip pos="1" side="tl" part="gen"/>
+                  <var n="n_nbr"/>
+                  <var n="c_def_pos"/>
+                  <clip pos="1" side="tl" part="gen-case"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </mlu>
+            </chunk>
+          </out>
+        </when>
+
+        <when c="tl PoS is verb">
+          <test><equal><clip pos="1" side="tl" part="a_verb"/><lit-tag v="vblex"/></equal></test>
+
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord"
+                   c="The tag order corresponds with nouns, to make c_def_pos (e.g. on pre-nominals) work.">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_verb"/>
+                <clip pos="1" side="tl" part="a_pstv"/>
+                <clip pos="1" side="tl" part="temps"/>
+                <clip pos="1" side="tl" part="voice"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+
+        <when c="tl PoS is an adv (ie. V.Der2.Actor.N, but bidix changed lemma PoS to an adv)">
+          <test><and>
+            <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
+            <not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not>
+          </and></test>
+
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord"
+                   c="The tag order corresponds with nouns, to make c_def_pos (e.g. on pre-nominals) work.">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_adv"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+        <when c="tl PoS is det ">
+          <test><and>
+            <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
+            <not><equal><clip pos="1" side="tl" part="a_det"/><lit v=""/></equal></not>
+          </and></test>
+
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                 <tag><lit-tag v="SN"/></tag>
+                 <tag><var n="c_syn"/></tag>
+	             <tag><clip pos="1" side="sl" part="hab"/></tag>
+                 <tag><clip pos="1" side="tl" part="pers"/></tag>
+                 <tag><clip pos="1" side="tl" part="gen"/></tag>
+                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                 <tag><clip pos="1" side="sl" part="case"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_det"/>
+              <clip pos="1" side="tl" part="pers"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <clip pos="1" side="tl" part="art"/>
+              <clip pos="1" side="tl" part="case"/>
+              <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+
+        <when c="tl PoS is an adj.sg/pl (ie. V.Der2.Actor.N, but bidix changed lemma PoS to an adj)
+                 Just output pst ind; TODO: different bidix verb pardef for these PoS changes.">
+          <test><and>
+            <equal><clip pos="1" side="tl" part="a_nom"/><lit v=""/></equal>
+            <or>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
+              <equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="ND"/></equal>
+            </or>
+            <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
+          </and></test>
+          <choose><when>
+            <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="ND"/></equal></test>
+            <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+          </when></choose>
+          <choose>
+            <when>
+              <test><equal><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></equal></test>
+              <let><var n="adj_gen"/><lit-tag v="mf"/></let>
+            </when>
+            <otherwise><let><var n="adj_gen"/><lit-tag v="un"/></let></otherwise>
+          </choose>
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord"
+                   c="The tag order corresponds with nouns, to make c_def_pos (e.g. on pre-nominals) work.">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_adj-pure"/>
+                <lit-tag v="pst"/>
+                <var n="adj_gen"/>
+                <clip pos="1" side="tl" part="nbr"/>
+                <lit-tag v="ind"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+
+        <when c="cmp_splitr → sg.ind.guio (split compounds)
+                 eanan-(cmp_splitr) ja luonddudoahpagiid → jord-(sg.ind) og naturfagord">
+          <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal></test>
+          <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><lit-tag v="ind"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><lit-tag v="sg"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="a_count"/></tag>
+                <tag><var n="c_animacy"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_nom"/>
+                <clip pos="1" side="tl" part="gen"/>
+                <lit-tag v="sg.ind.guio"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+
+        <otherwise c="Regular Noun to Noun">
+          <let><var n="n_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+          <let><var n="c_def_pos"/><lit-tag v="3"/></let>
+          <choose c="Tag cleanup first">
+            <when c="np's and acr's have no number nor defnes:">
+              <test><or>
+                <begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with>
+                <equal><clip pos="1" side="tl" part="a_nom"/><lit-tag v="n.acr"/></equal>
+              </or></test>
+              <let><var n="n_nbr"/><lit v=""/></let>
+              <let><var n="c_def_pos"/><lit v=""/></let>
+            </when>
+            <when c="collective mf's always have pl as number:">
+              <test><and>
+                <equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="coll"/></equal>
+                <equal><clip pos="1" side="tl" part="gen"/><lit-tag v="mf"/></equal>
+              </and></test>
+              <let><var n="n_nbr"/><lit-tag v="pl"/></let>
+            </when>
+            <when c="other mf's always have sp as number:">
+              <test><equal><clip pos="1" side="tl" part="gen"/><lit-tag v="mf"/></equal></test>
+              <let><var n="n_nbr"/><lit-tag v="sp"/></let>
+            </when>
+            <when c="Other genders default to sg if unspecified:">
+              <test><equal><clip pos="1" side="tl" part="nbr"/><lit v=""/></equal></test>
+              <let><var n="n_nbr"/><lit-tag v="sg"/></let>
+            </when>
+          </choose>
+          <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
+          <call-macro n="set_neverdet"><with-param pos="1"/></call-macro>
+
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SN"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><var n="defnes"/></tag>
+                <tag><clip pos="1" side="sl" part="hab"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="a_count"/></tag>
+                <tag><var n="c_animacy"/></tag>
+                <tag><var n="c_neverdet"/></tag>
+              </tags>
+              <var n="pre-nom"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_nom"/>
+                <clip pos="1" side="tl" part="gen"/>
+                <var n="n_nbr"/>
+                <var n="c_def_pos"/>
+                <clip pos="1" side="tl" part="gen-case"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </otherwise>
+      </choose>
+      <let><var n="pre-nom"/><lit v=""/></let>
+      <let><var n="c_neverdet"/><lit v=""/></let>
+    </def-macro>
+
+
+    <def-macro n="out_verb" npar="1"
+               c="arg.1: verb
+                  –––––
+                  ASSUMES THAT pre-verb, c_name AND caseFirstWord HAVE BEEN SET!
+                  This macro is used to output verbal heads, possibly prepended by compound parts
+                  (stored in pre-verb).
+                  TABLE OF CONTENTS – this macro does the following, in this order:
+                  - change tags towards nob.dix (anything bidix didn't do)
+                  - set the verb caseprep-tag
+                  - output 'uten å'                if vabess
+                  - output 'i ferd med'        if progressive
+                  - output 'kunne/skulle/ville/ha'  if conditional
+                  - output 'begynne'             if inchoative
+                  - output 'la'                  if causative
+                  - output 'bli'                 if passive
+                  - output main predicate (tl PoS may be verb, adj, adv or n;
+                              temps may have changed by the above operations)
+                  - output reflexive if we have a 'ref' tag
+                  - output lemq if there was one
+                  Each 'output' here gets its own chunk.
+                  TODO: caseSecondWord ?">
+
+      <choose c="Initial tag changes">
+        <when c="ger to adj.pprs">
+          <test><equal><clip pos="1" side="sl" part="a_ger"/><lit-tag v="ger"/></equal></test>
+          <let><clip pos="1" side="tl" part="tags"/><lit-tag v="adj.pprs"/></let>
+        </when>
+        <when c="If pstv and not pret/pres/pp/inf, turn into inf (these have very limited paradigms, and adding an aux just doesn't sound good...)">
+          <test><and>
+            <not><equal><clip pos="1" side="tl" part="a_pstv"/><lit v=""/></equal></not>
+            <not><or>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pres"/></equal>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></equal>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></equal>
+            </or></not>
+          </and></test>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+        </when>
+      </choose>
+
+      <choose c="Set caseprep tag – t2x can use this to override NP preposition
+                 This tag is added to both main predicate chunks (except noun, TODO)
+                 and to Conditional, Causative and and Passive chunks, just to make sure...">
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-NIL-verbs"/></in></test>
+          <let><var n="caseprep-verb"/><lit-tag v="ill-NIL"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-på-verbs"/></in></test>
+          <let><var n="caseprep-verb"/><lit-tag v="ill-på"/></let>
+        </when>
+        <!-- Why commented out? –KBU -->
+<!--        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-i-verbs"/></in></test>
+          <let><var n="caseprep-verb"/><lit-tag v="ill-i"/></let>
+        </when> -->
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-med-verbs"/></in></test>
+          <let><var n="caseprep-verb"/><lit-tag v="ill-med"/></let>
+        </when>
+        <when>
+          <test><or>
+            <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-av-verbs"/></in>
+            <ends-with><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_halla"/></ends-with>
+          </or></test>
+          <let><var n="caseprep-verb"/><lit-tag v="ill-av"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-for-verbs"/></in></test>
+          <let><var n="caseprep-verb"/><lit-tag v="loc-for"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-om-verbs"/></in></test>
+          <let><var n="caseprep-verb"/><lit-tag v="loc-om"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-fra-verbs"/></in></test>
+          <let><var n="caseprep-verb"/><lit-tag v="loc-fra"/></let>
+        </when>
+        <when>
+          <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="loc-som-verbs"/></in></test>
+          <let><var n="caseprep-verb"/><lit-tag v="loc-som"/></let>
+        </when>
+        <otherwise c="No Change">
+          <let><var n="caseprep-verb"/><lit-tag v="NC"/></let>
+        </otherwise>
+      </choose>
+
+      <choose c="Prepend uten - we get å in t4x"><when>
+        <test><equal><clip pos="1" side="sl" part="a_abess"/><lit-tag v="vabess"/></equal></test>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="@ADVL"/></tag>
+            </tags>
+            <lu>
+              <lit v="uten"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+          <b/>
+        </out>
+        <call-macro n="reset_caseFirstWord"></call-macro>
+      </when></choose>
+
+      <choose c="Prepend cnjsub if present progressive:
+                 TODO: better translation possible? ('drev og'? 'holdt på å'?), but when 'orrut' to the left, it should be inf. Infintive marker å is added in t4x">
+        <when>
+          <test><and>
+            <equal><clip pos="1" side="sl" part="a_actio"/><lit-tag v="actio.ess"/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+            <not><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="no.actio.ess"/></in></not>
+            <not><equal><var n="aux-verb-tl"/><lit v="synes"/></equal></not>
+          </and></test>
+          <out>
+            <chunk name="adv" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SV.@+FAUXV"/></tag>
+              </tags>
+              <lu>
+                <lit v="i ferd med"/>
+                <lit-tag v="pr"/>
+              </lu>
+            </chunk>
+            <b/>
+          </out>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+          <call-macro n="reset_caseFirstWord"></call-macro>
+        </when>
+      </choose>
+      <choose c="no.actio.ess">
+        <when>
+          <test><and>
+            <equal><clip pos="1" side="sl" part="a_actio"/><lit-tag v="actio.ess"/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+            <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="no.actio.ess"/></in>
+          </and></test>
+          <let><var n="notactioess"/><lit-tag v="notactioess"/></let>
+        </when>
+      </choose>
+
+
+      <choose c="Prepend 'kunne/skulle/skal' if conditional:">
+        <when>
+          <test><and>
+            <not><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in></not>
+            <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
+          </and></test>
+          <choose>
+            <when c="leat cond = ha">
+              <test><and>
+                  <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+                <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
+              </and></test>
+              <let><var n="v_lem"/><lit v="ha"/></let>
+            </when>
+            <when c="cond = skulle">
+              <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-skulle"/></equal></test>
+              <let><var n="v_lem"/><lit v="skulle"/></let>
+            </when>
+            <when c="cond = ville">
+              <test><equal><clip pos="1" side="tl" part="modality"/><lit-tag v="cond-ville"/></equal></test>
+              <let><var n="v_lem"/><lit v="ville"/></let>
+            </when>
+            <otherwise c="cond = kunne">
+              <let><var n="v_lem"/><lit v="kunne"/></let>
+            </otherwise>
+          </choose>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
+          <choose>
+            <when c="no v_lem for leat @+FAUXV">
+              <test>
+                <and>
+                  <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
+                  <not><and>
+                      <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+                  <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal></and></not>
+                </and>
+              </test>
+              <out>
+                <chunk name="verb" case="caseFirstWord">
+                  <tags>
+                    <tag><lit-tag v="SV"/></tag>
+                    <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                    <tag><clip pos="1" side="sl" part="mode"/></tag>
+                    <tag><clip pos="1" side="sl" part="modality"/></tag>
+                    <tag><clip pos="1" side="tl" part="temps"/></tag>
+                    <tag><clip pos="1" side="tl" part="pers"/></tag>
+                    <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                    <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                    <tag><var n="caseprep-verb"/></tag>
+                  </tags>
+                  <lu>
+                    <var n="v_lem"/>
+                    <lit-tag v="vblex"/>
+                    <clip pos="1" side="tl" part="temps"/>
+                  </lu>
+                </chunk>
+                <b/>
+              </out>
+              <call-macro n="reset_caseFirstWord"></call-macro>
+            </when>
+          </choose>
+          <choose>
+            <when c="leat (except @+FAUXV) = hadde vært">
+              <test><and>
+                  <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+                <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal></not>
+              </and></test>
+              <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></let>
+            </when>
+            <when c="leat @+FAUXV = hadde aux (which should be pp, but now output is inf from sl)">
+              <test><and>
+                  <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FAUXV"/></equal>
+              </and></test>
+              <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
+            </when>
+            <otherwise>
+              <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+            </otherwise>
+          </choose>
+          <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+        </when>
+        <when>
+          <test><and>
+            <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in>
+            <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
+          </and></test>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
+          <let><var n="v_lem"/><lit v=""/></let>
+        </when>
+
+      </choose>
+
+      <choose c="Prepend 'begynne' if inchoative:"><when>
+        <test><equal><clip pos="1" side="sl" part="a_der"/><lit-tag v="der_inchl"/></equal></test>
+        <out>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="sl" part="modality"/></tag>
+              <tag><clip pos="1" side="tl" part="temps"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              <tag><var n="caseprep-verb"/></tag>
+            </tags>
+            <lu>
+              <lit v="begynne"/>
+              <lit-tag v="vblex"/>
+              <clip pos="1" side="tl" part="temps"/>
+            </lu>
+          </chunk>
+          <b/>
+          <chunk name="part">
+            <tags>
+              <tag><lit-tag v="part"/></tag>
+            </tags>
+            <lu>
+              <lit v="å"/><lit-tag v="part"/>
+            </lu>
+          </chunk>
+          <b/>
+        </out>
+        <call-macro n="reset_caseFirstWord"></call-macro>
+        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+        <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+      </when></choose>
+
+      <choose c="Prepend 'la' if causative:
+                 TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types..."><when>
+        <test><and>
+          <equal><clip pos="1" side="tl" part="a_caus"/><lit-tag v="caus"/></equal>
+          <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="caus-Ø-verbs"/></in></not>
+        </and></test>
+        <out>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+              <tag><clip pos="1" side="sl" part="modality"/></tag>
+              <tag><clip pos="1" side="tl" part="temps"/></tag>
+              <tag><clip pos="1" side="tl" part="pers"/></tag>
+              <tag><clip pos="1" side="tl" part="nbr"/></tag>
+              <tag><clip pos="1" side="tl" part="animacy"/></tag>
+              <tag><var n="caseprep-verb"/></tag>
+            </tags>
+            <lu>
+              <lit v="la"/>
+              <lit-tag v="vblex"/>
+              <clip pos="1" side="tl" part="temps"/>
+            </lu>
+          </chunk>
+          <b/>
+        </out>
+        <call-macro n="reset_caseFirstWord"></call-macro>
+        <let><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></let>
+        <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+      </when></choose>
+
+      <choose c="Prepend 'bli' aux (moving over temps) if
+                 passive and pret/pp/pstv/imp/adj (and not a nominal derivation)
+
+                 TODO: OK to just discard syn_label from pret.passives?">
+        <when>
+          <test><and>
+            <equal><clip pos="1" side="tl" part="voice"/><lit-tag v="pasv"/></equal>
+            <equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal>
+            <or>
+              <not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not>
+              <not><equal><clip pos="1" side="tl" part="a_adv_pr_cnjcoo"/><lit v=""/></equal></not>
+              <not><equal><clip pos="1" side="tl" part="a_nom_all"/><lit v=""/></equal></not>
+              <not><equal><clip pos="1" side="tl" part="a_pstv"/><lit v=""/></equal></not>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></equal>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></equal>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="imp"/></equal>
+            </or>
+          </and></test>
+          <let><var n="c_syn"/><lit-tag v="@+FAUXV"/></let>
+          <choose><when>
+            <test><in><clip pos="1" side="tl" part="temps"/><list n="infinite_temps"/></in></test>
+            <let><var n="c_syn"/><lit-tag v="@-FAUXV"/></let>
+          </when></choose>
+          <let><var n="c_animacy"/><lit-tag v="agreem-pro"/></let>
+          <choose><when>
+            <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="animate_nonagent-verbs"/></in></test>
+            <let><var n="c_animacy"/><lit-tag v="pers-pro"/></let>
+          </when></choose>
+          <out>
+            <chunk name="verb" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SV"/></tag>
+                <tag><var n="c_syn"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                <tag><var n="c_animacy"/></tag>
+                <tag><var n="caseprep-verb"/></tag>
+              </tags>
+              <lu>
+                <lit v="bli"/>
+                <lit-tag v="vblex"/>
+                <clip pos="1" side="tl" part="temps"/>
+              </lu>
+            </chunk>
+            <b/>
+          </out>
+          <call-macro n="reset_caseFirstWord"></call-macro>
+          <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
+          <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pp"/></let>
+          <let><clip pos="1" side="tl" part="voice"/><lit v=""/></let>
+          <let><clip pos="1" side="tl" part="voice"/><lit v=""/></let> <!-- yes twice, bidix can add two tags :/ -->
+        </when>
+      </choose>
+
+      <choose c="Output the main predicate, verb/adj/adv/etc.">
+        <when c="tl PoS is adv (eg. negative)">
+          <test><not><equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal></not></test>
+          <choose>
+          <when c="tag adv, because of word order">
+          <test><or>
+          <equal><clip pos="1" side="tl" part="lemh"/><lit v="kanskje"/></equal>
+          <equal><clip pos="1" side="tl" part="lemh"/><lit v="nok"/></equal>
+       </or></test>
+          <let><var n="tmp"/><lit-tag v="adv"/></let>
+     </when>
+     <otherwise>
+          <let><var n="tmp"/><lit v=""/></let>
+     </otherwise>
+     </choose>
+         <append n="c_name"><lit v="adv"/></append>
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SV"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><clip pos="1" side="sl" part="neg"/></tag>
+                <tag><var n="tmp"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                <tag><var n="caseprep-verb"/></tag>
+              </tags>
+              <var n="pre-verb"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_adv"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+        <when c="tl PoS is adj">
+          <test><not><equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal></not></test>
+          <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
+          <append n="c_name"><lit v="adj"/></append>
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SA"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><var n="c_gen"/></tag>
+                <tag><var n="c_nbr"/></tag>
+                <tag><clip pos="1" side="sl" part="case"/></tag>
+                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                <tag><var n="caseprep-verb"/></tag>
+              </tags>
+              <var n="pre-verb"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_adj"/>
+                <clip pos="1" side="tl" part="grau"/>
+                <lit-tag v="GD.ND.ind"/>
+                <clip pos="1" side="tl" part="lemq"/>
+              </lu>
+            </chunk>
+          </out>
+        </when>
+        <otherwise c="tl PoS is assumed to be verb">
+          <choose c="move temps from aux to main, when aux is translated to adv: soaitá boahtit">
+            <when>
+              <test><and><or>
+              <equal><var n="aux-verb-tl"/><lit v="kanskje"/></equal>
+              <equal><var n="aux-verb-tl"/><lit v="nok"/></equal>
+              </or>
+              <equal><clip pos="1" side="tl" part="temps"/><lit-tag v="inf"/></equal>
+              <not><equal><var n="vfin-temps"/><lit v=""/></equal></not>
+          </and></test>
+              <let><clip pos="1" side="tl" part="temps"/><var n="vfin-temps"/></let>
+            </when>
+          </choose>
+          <choose>
+            <when>
+              <test><or>
+              <equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="være"/></equal>
+              <and>
+              <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="leat"/></equal>
+            <begins-with><clip pos="1" side="sl" part="modality"/><lit-tag v="cond"/></begins-with>
+              </and>
+           </or></test>
+              <let><var n="c_name"/><lit v="vcop"/></let>
+            </when>
+            <otherwise>
+              <let><var n="c_name"/><lit v="verb"/></let>
+            </otherwise>
+          </choose>
+          <choose>
+            <when>
+            <test><and>
+              <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="esubj-verbs"/></in>
+              <or>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@+FMAINV"/></equal>
+              <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></equal>
+              </or>
+              </and></test>
+              <let><var n="esubj"/><lit-tag v="esubj"/></let>
+            </when>
+            <otherwise>
+              <let><var n="esubj"/><lit v=""/></let>
+            </otherwise>
+          </choose>
+
+          <out>
+            <chunk namefrom="c_name" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="SV"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
+                <tag><clip pos="1" side="sl" part="a_actio"/></tag>
+                <tag><clip pos="1" side="sl" part="a_abess"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="voice"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+                <tag><var n="caseprep-verb"/></tag>
+                <tag><var n="esubj"/></tag>
+                <tag><var n="notactioess"/></tag>
+              </tags>
+              <var n="pre-verb"/>
+              <lu>
+                <clip pos="1" side="tl" part="lemh"/>
+                <clip pos="1" side="tl" part="a_verb"/>
+                <clip pos="1" side="tl" part="a_pstv"/>
+                <clip pos="1" side="tl" part="temps"/>
+                <clip pos="1" side="tl" part="voice"/>
+                <!-- lemq is given its own chunk below -->
+              </lu>
+            </chunk>
+          </out>
+        </otherwise>
+      </choose>
+      <call-macro n="reset_caseFirstWord"></call-macro>
+
+      <choose><when c="Append 'seg' if reflexive:">
+        <test>
+          <equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal>
+        </test>
+        <let><var n="prn_pers"/><clip pos="1" side="tl" part="pers"/></let>
+        <let><var n="prn_gen"/><lit-tag v="mf"/></let>
+        <let><var n="prn_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
+        <choose><when>
+          <test><equal><var n="prn_nbr"/><lit v=""/></equal></test>
+          <let><var n="prn_nbr"/><lit-tag v="sg"/></let>
+        </when></choose>
+        <choose><when c="pl always un">
+          <test><equal><var n="prn_nbr"/><lit-tag v="pl"/></equal></test>
+          <let><var n="prn_gen"/><lit-tag v="un"/></let>
+        </when></choose>
+        <choose>
+          <when c="vabessiv - now we choose sg p3 for all, more rules when we have examples">
+         <test><equal><clip pos="1" side="sl" part="a_abess"/><lit-tag v="vabess"/></equal></test>
+            <let><var n="prn_pers"/><lit-tag v="p3"/></let>
+            <let><var n="prn_gen"/><lit-tag v="un"/></let>
+            <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
+          </when>
+          <when c="when prfprc or inf, then we get pers and nbr from aux - p3 and pl">
+            <test><and><or>
+              <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="prfprc"/></equal>
+              <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="inf"/></equal></or>
+              <not><equal><var n="vfin-nbr"/><lit-tag v="sg"/></equal></not></and>
+            </test>
+            <let><var n="prn_pers"/><var n="vfin-pers"/></let>
+            <let><var n="prn_gen"/><lit-tag v="un"/></let>
+            <let><var n="prn_nbr"/><var n="vfin-nbr"/></let>
+          </when>
+          <when c="when prfprc or inf, then we get pers and nbr from aux - p1 and p2">
+            <test><and><or>
+              <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="prfprc"/></equal>
+              <equal><clip pos="1" side="sl" part="temps"/><lit-tag v="inf"/></equal></or>
+              <equal><var n="vfin-nbr"/><lit-tag v="sg"/></equal>
+              <not><equal><var n="vfin-pers"/><lit-tag v="p3"/></equal></not>
+              </and>
+            </test>
+            <let><var n="prn_pers"/><var n="vfin-pers"/></let>
+            <let><var n="prn_gen"/><lit-tag v="mf"/></let>
+            <let><var n="prn_nbr"/><var n="vfin-nbr"/></let>
+          </when>
+          <when c="form 'seg' has analysis p3.un.sp">
+            <test><or>
+              <equal><var n="prn_pers"/><lit v=""/></equal>
+              <equal><var n="prn_pers"/><lit-tag v="p3"/></equal>
+            </or></test>
+            <let><var n="prn_pers"/><lit-tag v="p3"/></let>
+            <let><var n="prn_gen"/><lit-tag v="un"/></let>
+            <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
+          </when>
+        </choose>
+        <out>
+          <b/>
+          <chunk name="prn">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><lit-tag v="@←OBJ"/></tag>
+              <tag><lit-tag v="ref"/></tag>
+              <tag><var n="prn_pers"/></tag>
+              <tag><var n="prn_nbr"/></tag>
+              <tag><lit-tag v="acc"/></tag>
+            </tags>
+            <lu>
+              <lit v="seg"/>
+              <lit-tag v="prn.ref"/>
+              <var n="prn_pers"/>
+              <var n="prn_gen"/>
+              <var n="prn_nbr"/>
+              <lit-tag v="acc"/>
+            </lu>
+          </chunk>
+        </out>
+      </when></choose>
+
+      <choose><when c="the lemq was not output in the above 'otherwise'; output as a chunk here">
+        <test><and>
+          <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
+          <equal><clip pos="1" side="tl" part="a_adv"/><lit v=""/></equal>
+          <not><equal><clip pos="1" side="tl" part="lemq"/><lit v=""/></equal></not>
+        </and></test>
+        <out>
+          <chunk name="lemq">
+            <tags>
+              <tag><lit-tag v="lemq"/></tag>
+              <tag><clip pos="1" side="tl" part="a_lemq"/></tag>
+            </tags>
+            <lu><clip pos="1" side="tl" part="lemq"/></lu>
+          </chunk>
+        </out>
+      </when></choose>
+      <let><var n="caseprep-verb"/><lit v=""/></let>
+    </def-macro>
+  </section-def-macros>
+
+  <section-rules>
+
+    <rule>
+      <pattern>
+        <pattern-item n="n"/>
+      </pattern>
+      <action>
+        <out>
+          <lu>
+          <clip pos="1" side="tl" part="lemh"/>
+          <clip pos="1" side="tl" part="a_nom"/>
+          <clip pos="1" side="tl" part="nbr"/>
+          <lit-tag v="nom"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+
+    <rule>
+      <pattern>
+        <pattern-item n="ncmp"/>
+        <pattern-item n="n"/>
+      </pattern>
+      <action>
+        <out>
+          <lu>
+          <clip pos="1" side="tl" part="lemh"/>
+          <clip pos="1" side="tl" part="a_nom"/>
+          <lit-tag v="cmp_sgnom"/>
+          <clip pos="1" side="tl" part="a_cmp"/>
+          <lit v="+"/>
+          <clip pos="2" side="tl" part="lemh"/>
+          <clip pos="2" side="tl" part="a_nom"/>
+          <clip pos="1" side="tl" part="nbr"/>
+          <lit-tag v="nom"/>
+          </lu>
+        </out>
+      </action>
+    </rule>
+
+  </section-rules>
+</transfer>
