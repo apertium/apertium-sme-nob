@@ -1061,6 +1061,7 @@ SELECT:fallback ("berøre"i) IF  (0 ("<čuohcat>"i)) ;
 
 
 SELECT ("turnere"i) IF  (0 ("<johtit>"i) LINK *0 np + nom ) ;
+SELECT ("turnere"i) IF  (0 ("<johtit>"i) LINK 0 der_inchl ) ;
 SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK 0 prsprc ) ;
 SELECT ("flytte"i) IF  (0 ("<johtit>"i) LINK *0 ("<eallu>"i) OR ("<boazu>"i) OR ("<siida>"i) ) ;
 SELECT:fallback ("flytte"i) IF  (0 ("<johtit>"i)) ;
@@ -2966,4 +2967,6 @@ SELECT:fallback ("Tromsø"i) (0 ("<Romsa>"i));
 
 SELECT ("Komsa"i) (0 ("<Gurraváráš>"i) LINK -1 ("<unni>"i) OR ("<uhcci>"i));
 SELECT:fallback ("Lille Komsa"i) (0 ("<Gurraváráš>"i));
+
+SELECT:fallback ("Nordkapp"i) (0 ("<Davvinjárga>"i));
 
