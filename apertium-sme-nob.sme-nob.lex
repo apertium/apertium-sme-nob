@@ -930,7 +930,7 @@ SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<váldot>"i) OR ("
 SELECT:fallback ("lukket"i) IF (0 ("<gitta>"i) LINK *0 ("<čalbmi>"i))  ;
 SELECT:fallback ("stenge"i) IF (0 ("<gitta>"i))  ;
 
-SELECT ("så"i) IF (0 ("<ná>"i) LINK 1 adj)  ;
+SELECT ("så"i) IF (0 ("<ná>"i) LINK 1 adj OR adv)  ;
 SELECT:fallback ("slik"i) IF (0 ("<ná>"i))  ;
 
 SELECT:fallback ("enda"i) IF (0 ("<vel>"i))  ;
@@ -1374,7 +1374,7 @@ SELECT:kjent-som ("kjenne"i) (0 ("<beaggit>"i)) (0 prfprc) (*1 loc BARRIER clb O
 SELECT:ble-kjent-i ("kjenne"i) (0 ("<beaggit>"i)) (0 pret) (*1 ill BARRIER clb OR vblex); # Son lea maiddái beaggán Sámi soga lávlaga čállin
 SELECT:fallback ("kjenne"i) (0 ("<beaggit>"i)); # Maŋimuš áiggiid lea beaggán , maŋimustá
 
-SELECT:reparere ("reparere"i) (0 ("<divvut>"i) LINK *0 ("<bátni>"i) OR sem_veh);
+SELECT:reparere ("reparere"i) (0 ("<divvut>"i) LINK *0 ("<bátni>"i) OR sem_veh OR (sem_route));
 SELECT:fallback ("rette"i) (0 ("<divvut>"i));
 
 SELECT:reparere ("innkalle"i) (0 ("<gohččut>"i) LINK *0 ("<diibmu>"i) OR ("<čoahkkin>"i));
