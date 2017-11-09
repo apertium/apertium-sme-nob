@@ -2140,7 +2140,7 @@ And then there are some categories like "month", with all the months.
                                    use that tag in t2x to remove the caseprep.PR.ill chunk
                                    TODO: use nob/tl verb instead?">
 <!--      <list-item v="oahpahit"/> -->
-      <list-item v="oččodit"/>
+<!--      <list-item v="oččodit"/> -->
       <list-item v="guoskat"/>
       <list-item v="joavdat"/>
       <list-item v="deaivat"/>
@@ -2284,6 +2284,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="erklæring"/>
       <list-item v="fattigdom"/>
       <list-item v="februar"/>
+      <list-item v="fengsel"/>
       <list-item v="film"/>
       <list-item v="finale"/>
       <list-item v="flaske"/>
@@ -2372,6 +2373,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="studium"/>
       <list-item v="stue"/>
       <list-item v="sum"/>
+      <list-item v="system"/>
       <list-item v="søknad"/>
       <list-item v="telefon"/>
       <list-item v="tidsrom"/>
@@ -2536,6 +2538,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="gang"/>
       <list-item v="tale"/>
       <list-item v="do"/>
+      <list-item v="fengsel"/>
     </def-list>
     <def-list n="ill-på" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="ferie"/>
@@ -3834,6 +3837,10 @@ And then there are some categories like "month", with all the months.
             <not><and>
             <equal><var n="main-verb-tl"/><lit v="få"/></equal>
             <equal><clip pos="1" side="tl" part="lemh"/><lit v="svar"/></equal>
+            </and></not>
+            <not><and>
+            <equal><var n="main-verb-tl"/><lit v="sette"/></equal>
+            <equal><clip pos="1" side="tl" part="lemh"/><lit v="fengsel"/></equal>
             </and></not>
             <not><and>
             <equal><var n="main-verb-tl"/><lit v="ta"/></equal>

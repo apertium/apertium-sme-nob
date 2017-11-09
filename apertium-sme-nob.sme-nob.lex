@@ -1095,6 +1095,8 @@ SELECT:fallback ("bytte"i) IF  (0 ("<lonuhit>"i)) ;
 SELECT ("veve"i) IF  (0 ("<gođđit>"i)) (0* ("<liidni>"i)) ;
 SELECT:fallback ("strikke"i) IF  (0 ("<gođđit>"i)) ;
 
+SELECT ("sirkulere"i) IF  (0 ("<jorrat>"i)) (0* (sem_semcon) ) ;
+SELECT:fallback ("dreie"i) IF  (0 ("<jorrat>"i)) ;
 
 SELECT ("ta"i) IF  (0 ("<goddit>"i) LINK 0 der_pass) (0* sem_ani-fish) ;
 SELECT ("få"i) IF  (0 ("<goddit>"i)) (0* sem_ani-fish) ;
@@ -1480,6 +1482,9 @@ SELECT:fallback ("advare"i) (0 ("<várret>"i));
 
 SELECT ("skyve"i) (0 ("<duvdit>"i) LINK *1 ("<eret>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("støtte"i) (0 ("<duvdit>"i));
+
+SELECT ("tilegne"i) (0 ("<oččodit>"i) LINK *1 sem_lang BARRIER SV-BOUNDARY LINK NEGATE 0 gen LINK 1 n);
+SELECT:fallback ("få"i) (0 ("<oččodit>"i));
 
 
 SELECT:fallback ("fortsette"i) (0 ("<joatkit>"i));
@@ -2875,8 +2880,8 @@ SELECT:fallback ("finansiell"i) (0 ("<ruđalaš>"i));
 
 IFF ("-årig"i) (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
 
-SELECT:fallback ("mange"i) (0 ("<eanet>"i)) (*1 HUMAN BARRIER NOT-PRE-A-N );	
-SELECT:fallback ("mye"i) (0 ("<eanet>"i));
+SELECT:fallback ("mange"i) (0 ("<eanet>"i) OR ("<eambbo>"i)) (*1 HUMAN BARRIER NOT-PRE-A-N );	
+SELECT:fallback ("mye"i) (0 ("<eanet>"i)  OR ("<eambbo>"i));
 	
 ## leage buorre (vær så god)
 
