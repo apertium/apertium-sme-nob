@@ -2650,6 +2650,11 @@ SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 SELECT:fallback ("mindre"i) (0 ("<unnit>"i)) ; 
 SELECT:fallback ("selvfølgelig"i) (0 ("<dieđus>"i)) ; 
 
+SELECT ("positiv til"i) (0 ("<mielas>"i) LINK -1 COPULAS)(NOT 1 ill) ; 
+SELECT ("positiv"i) (0 ("<mielas>"i) LINK -1 COPULAS) ; 
+SELECT:fallback ("gjerne"i) (0 ("<mielas>"i)) ; 
+
+
 SELECT ("forhånds"i) (0 ("<ovddalgihtii>"i) LINK 1 ("<jietna>"i)) ; 
 SELECT:fallback ("på forhånd"i) (0 ("<ovddalgihtii>"i)) ; 
 

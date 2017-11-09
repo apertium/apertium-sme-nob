@@ -582,6 +582,14 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-heahti-loc">
       <cat-item lemma="heahti" tags="n.*.sg.loc.*"/>
     </def-cat>
+   <def-cat n="sem_route_cmp">
+      <cat-item tags="n.sem_route.*.cmp.*"/>
+      <cat-item tags="n.sem_route.*.cmp"/>
+    </def-cat>
+   <def-cat n="lex-ráigi">
+      <cat-item lemma="ráigi" tags="n.sem_ctain_plc.*"/>
+      <cat-item lemma="ráigi" tags="n.*"/>
+    </def-cat>
     <def-cat n="lex-diibmá">
       <cat-item lemma="diibmá" tags="adv.*"/>
       <cat-item lemma="diimmá" tags="adj.*"/>
@@ -2180,6 +2188,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="geahččat"/>
       <list-item v="guovlat"/>
       <list-item v="báhcit"/>
+      <list-item v="čáhkadit"/>
       <list-item v="čoalkalit"/>
     </def-list>
     <def-list n="ill-av-verbs" c="See 'ill-NIL-verbs' above.
@@ -2513,7 +2522,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="infeksjon"/>
     </def-list>
     <def-list n="ess-NIL" c="Essive noun phrases default to 'som' unless in this list">
-      <list-item v="del"/>
+      <list-item v="adfdfas"/>
     </def-list>
     <def-list n="ess-til" c="Essive noun phrases default to 'som' unless in this list">
       <list-item v="aske"/>
@@ -2619,6 +2628,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="fredag"/>
       <list-item v="gang"/>
       <list-item v="hjelp"/>
+      <list-item v="kunst"/>
       <list-item v="januar"/>
       <list-item v="julaften"/>
       <list-item v="juli"/>
@@ -3156,12 +3166,17 @@ And then there are some categories like "month", with all the months.
         </choose>
         <choose>
           <when c="ess is NIL">
-            <test><or><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in>
+            <test><or>
+	          <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ess-NIL"/></in>
              <equal><var n="main-verb-sl"/><lit v="gohčodit"/></equal>
              <equal><var n="main-verb-sl"/><lit v="šaddat"/></equal>
              <equal><var n="main-verb-sl"/><lit v="gártat"/></equal>
             <equal><var n="advl-verb-sl"/><lit v="leat"/></equal>
             <equal><clip pos="1" side="tl" part="syn_label"/><lit-tag v="@SPRED→"/></equal>
+            <and>
+             <equal><var n="main-verb-sl"/><lit v="leat"/></equal>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="del"/></equal>
+	        </and>
              </or></test>
            <let>
               <var n="caseprep"/><lit v=""/>
@@ -3214,6 +3229,10 @@ And then there are some categories like "month", with all the months.
              <and>
                 <equal caseless="yes"><var n="main-verb-sl"/><lit v="njuiket"/></equal>
                 <equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_plc"/></equal>	         
+             </and>       
+             <and>
+                <equal caseless="yes"><var n="main-verb-sl"/><lit v="bisánit"/></equal>
+                <in><clip pos="1" side="tl" part="a_sem"/><list n="sem_time"/></in>
              </and>       
              <and>
                 <equal caseless="yes"><var n="main-verb-sl"/><lit v="čállit"/></equal>
@@ -9173,6 +9192,21 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule> -->
 
+    <rule comment="C[] nom-adj.cmp lex-ráigi">
+      <pattern>
+        <pattern-item n="sem_route_cmp"/>
+        <pattern-item n="lex-ráigi"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        <call-macro n="copy_syn_label"><with-param pos="2"/><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v=""/></let>
+         <call-macro n="out_nom"><with-param pos="1"/></call-macro>
+      </action>
+    </rule>
     <rule comment="C[] nom-adj.cmp nom_head
                    –––––
                    politiijastašuvnna → politistasjon(s)
