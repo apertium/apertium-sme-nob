@@ -639,6 +639,7 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="riddu" tags="np.*"/>
       <cat-item lemma="MGP jr" tags="np.*"/>
       <cat-item tags="np.org.*"/>
+      <cat-item tags="np.sem_obj.*"/>
     </def-cat>
     <def-cat n="nom-nom">
       <cat-item tags="np.*.nom.*"/>
@@ -4423,6 +4424,8 @@ And then there are some categories like "month", with all the months.
           <in><clip pos="1" side="tl" part="a_sem"/><list n="determinerless_sem"/></in>
           <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="determiner-although-determinerless_sem"/></in></not>
             </and>
+	    <equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="sist"/></equal>
+	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="ovddit"/></equal>
 	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="boahtte"/></equal>
 	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="olu"/></equal>
 	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="ollu"/></equal>
