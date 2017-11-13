@@ -2242,6 +2242,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="fitnat"/>
       <list-item v="finadit"/>
       <list-item v="ballat"/>
+      <list-item v="herskostallat"/>
+      <list-item v="návddašit"/>
     </def-list>
     <def-list n="loc-om" c="Locative noun phrases default to 'på' unless in this or next list (or are np.top)">
       <list-item v="kveld"/>
@@ -2878,8 +2880,14 @@ And then there are some categories like "month", with all the months.
              <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
              <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in></not>
                   </and>
-                  <and>
+                  <and><or>
                 <equal><var n="previous-nhead"/><lit v="avtale"/></equal>
+                <equal><var n="previous-nhead"/><lit v="informasjon"/></equal>
+                </or>
+             <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_act"/></equal>
+                  </and>
+                  <and>
+                <equal><var n="main-verb-sl"/><lit v="muitalit"/></equal>
              <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_act"/></equal>
                   </and>
              </or></and>
