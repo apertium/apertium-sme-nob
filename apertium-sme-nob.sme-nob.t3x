@@ -2503,7 +2503,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
 
-    <rule comment="REGLA: FV lemq maybe-lSUBJ - out: pro 1 3 2
+    <rule comment="REGLA: FV lemq lSUBJ - out: pro 1 3 2
 
                    ovddasvástideigga soai => hadde de_to ansvar_for
                    Override prodrop rule (below) if we might have a subject to the right">
@@ -2549,7 +2549,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     <!--   </action> -->
     <!-- </rule> -->
 
-    <rule comment="REGLA: V2-trigger FV maybe-lSUBJ  - out: 1 2 3
+    <rule comment="REGLA: V2-trigger FV lSUBJ  - out: 1 2 3
                    de lei son (juo) => så hadde han (allerede)
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -2570,7 +2570,32 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: V2-trigger adv-FV.neg IV maybe-lSUBJ IV  - out: 1 3 2 4 5" c="Muhto sámediggepresideantta ii hálit giellaguovddášjođiheaddji cuiggodit">
+
+    <rule comment="REGLA: V2-trigger adv-FV.neg IV lSUBJ    - out: 1 3 2 4" c="de eai skurdnjá nissonat">
+      <pattern>
+        <pattern-item n="V2-trigger"/>
+        <pattern-item n="adv-FV"/>
+        <pattern-item n="IV"/>
+        <pattern-item n="lSUBJ"
+/>
+      </pattern>
+      <action>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <var n="adv-blank"/><var n="adv"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
+
+    <rule comment="REGLA: V2-trigger adv-FV.neg IV lSUBJ IV  - out: 1 3 2 4 5" c="Muhto sámediggepresideantta ii hálit giellaguovddášjođiheaddji cuiggodit">
       <pattern>
         <pattern-item n="V2-trigger"/>
         <pattern-item n="adv-FV"/>
@@ -2633,7 +2658,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR V2-trigger FV maybe-lSUBJ  - out: 1 2 3 4
+    <rule comment="REGLA: PR V2-trigger FV lSUBJ  - out: 1 2 3 4
                    (PR) su_mielas leat bohccot => i_hans_oppfatning er reinene
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -2657,7 +2682,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: FV IV maybe-lSUBJ  - out: 3 1 2
+    <rule comment="REGLA: FV IV lSUBJ  - out: 3 1 2
                    gildui sámegiella => ble forbudt samisken => samisken ble forbudt
                    Override prodrop rule (below) if we might have a subject to the right">
       <pattern>
@@ -2678,7 +2703,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: V2-trigger FV IV maybe-lSUBJ  - out: 1 2 4 3
+    <rule comment="REGLA: V2-trigger FV IV lSUBJ  - out: 1 2 4 3
                    dađistaga gildui sámegiella => etterhvert ble forbudt samisken => etterhvert ble samisken forbudt
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -2702,7 +2727,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: ADVLr ADVLr FV maybe-lSUBJ  IV  - out: 1 2 3 4 5 " c="Muhto unnimusat okte lea skuvla geavahuvvon dasa">
+    <rule comment="REGLA: ADVLr ADVLr FV lSUBJ  IV  - out: 1 2 3 4 5 " c="Muhto unnimusat okte lea skuvla geavahuvvon dasa">
       <pattern>
         <pattern-item n="ADVLr"/>
         <pattern-item n="ADVLr"/>
@@ -3006,7 +3031,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: PR V2-trigger FV IV maybe-lSUBJ   - out: 1 2 3 5 4
+    <rule comment="REGLA: PR V2-trigger FV IV lSUBJ   - out: 1 2 3 5 4
                    (PR) dan maŋŋá gildui sámegiella => etter det ble forbudt samisken => etter det ble samisken forbudt
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -3033,7 +3058,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: PR.ADVLr SN.Pl FV IV maybe-SUBJ  - out: 1 2 3 5 4
+    <rule comment="REGLA: PR.ADVLr SN.Pl FV IV SUBJ  - out: 1 2 3 5 4
                    Maŋŋá jápmimis (de) aliduvvui Gonagas Olav bassin
                    Override prodrop rule if we might have a subject to the right">
       <pattern>
@@ -3128,7 +3153,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
 
-    <rule comment="REGLA: CS adv-FV.neg maybe-lSUBJ IV  - out: 1 3 2 4
+    <rule comment="REGLA: CS adv-FV.neg lSUBJ IV  - out: 1 3 2 4
                    Subordinate clause.
                    ahte eai mánát olle => at barna ikke når_frem">
       <pattern>
@@ -3158,7 +3183,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: CS adv-FV.neg maybe-lSUBJ ADVL IV  - out: 1 3 2 4 5
+    <rule comment="REGLA: CS adv-FV.neg lSUBJ ADVL IV  - out: 1 3 2 4 5
                    Subordinate clause.
                    ahte eai mánát šat olle => at barna ikke lenger når_frem">
       <pattern>
@@ -4122,7 +4147,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule>
 
 
-    <rule comment="REGLA: ADVLr ADVLr V SUBJ - out: identical
+    <rule comment="REGLA: ADVLr ADVLr V lSUBJ - out: identical
 		   This rule is to stop the following one from working.
 		   Problem: ADVLr ADVLr V SUBJ - out: 1 2 3 pro SUBJ
 		   I kommunestyremøtet 10. mars overrakte h_n ordfører svennebrevet">
@@ -4174,7 +4199,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: ADVLrOBJr ADVL adv-FV.neg IV maybe-lSUBJ - out: 1 2 4 3 5" c="Muhto sámediggepresideantta baicce ii hálit giellaguovddášjođiheaddji cuiggodit dan dihtii go presideanta ii sámástan ođđajagisártnistis.">
+    <rule comment="REGLA: ADVLrOBJr ADVL adv-FV.neg IV lSUBJ - out: 1 2 4 3 5" c="Muhto sámediggepresideantta baicce ii hálit giellaguovddášjođiheaddji cuiggodit dan dihtii go presideanta ii sámástan ođđajagisártnistis.">
       <pattern>
         <pattern-item n="ADVLrOBJr"/>
         <pattern-item n="ADVL"/>
