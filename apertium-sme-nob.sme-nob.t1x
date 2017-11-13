@@ -469,6 +469,10 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="loahppa" tags="n.*"/>
       <cat-item lemma="beallemuddu" tags="n.*"/>
     </def-cat>
+   <def-cat n="adv-mod-adj">
+      <cat-item tags="adv.@→A"/>
+      <cat-item tags="adv.*.@→A"/>
+    </def-cat>
    <def-cat n="mod-advl">
       <cat-item tags="*.@→ADVL"/>
     </def-cat>
@@ -779,6 +783,12 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-bures">
       <cat-item lemma="bures" tags="adv.*"/>
+    </def-cat>
+    <def-cat n="lex-čoaskkis">
+      <cat-item lemma="čoaskkis" tags="adj.*"/>
+    </def-cat>
+    <def-cat n="lex-čoalli">
+      <cat-item lemma="čoalli" tags="n.*"/>
     </def-cat>
     <def-cat n="lex-boahtit">
       <cat-item lemma="boahtit" tags="vblex.iv.der_nomact.*"/>
@@ -3965,12 +3975,20 @@ And then there are some categories like "month", with all the months.
        </when>
         <when>
           <test><and>
+              <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="ord.pst"/></equal>
+               <equal><clip pos="1" side="sl" part="lemh"/><lit v="riegádanbeaivi"/></equal>
+          </and></test>
+          <let><var n="defnes"/><lit-tag v="ind"/></let>
+        </when>
+        <when>
+          <test><and>
             <or>
               <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="ord.pst"/></equal>
               <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal>
               <and>
               <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.dem"/></equal>
             <not><equal><clip pos="2" side="sl" part="lemh"/><lit v="eará"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="riegádanbeaivi"/></equal></not>
               </and>
               <equal><clip pos="2" side="tl" part="lemh"/><lit v="eneste"/></equal>
             </or>
@@ -5446,6 +5464,52 @@ And then there are some categories like "month", with all the months.
               <lit v="mange"/>
               <lit-tag v="prn"/>
             </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] lex-čoaskkis lex-čoalli " c="čoaska čoalit → is i magen">
+      <pattern>
+        <pattern-item n="lex-čoaskkis"/>
+        <pattern-item n="lex-čoalli"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="ADV"/></tag>
+                <tag><lit-tag v="@ADVL"/></tag>
+            </tags>
+            <lu>
+              <lit v="is i magen"/>
+              <lit-tag v="adv"/>
+            </lu>
+             <b pos="1"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] adv-mod-adj lex-čoaskkis lex-čoalli " c="veaháš čoaska čoalit → is i magen">
+      <pattern>
+        <pattern-item n="adv-mod-adj"/>
+        <pattern-item n="lex-čoaskkis"/>
+        <pattern-item n="lex-čoalli"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="ADV"/></tag>
+                <tag><lit-tag v="@ADVL"/></tag>
+            </tags>
+            <lu>
+              <lit v="litt is i magen"/>
+              <lit-tag v="adv"/>
+            </lu>
+             <b pos="1"/>
+             <b pos="2"/>
           </chunk>
         </out>
       </action>
