@@ -101,6 +101,7 @@ LIST sem_veh = sem_ani_veh sem_ctain-clth_veh sem_feat-phys_veh sem_hum_veh sem_
 LIST sem_year = sem_year ;
 LIST sem_txt = sem_txt sem_ani_build_hum_txt sem_ani_plc_txt sem_group_txt sem_mat_txt sem_money_txt sem_org_txt sem_prod-audio_txt sem_prod-cogn_txt sem_semcon_txt sem_txt ;
 LIST sem_semcon = sem_semcon sem_semcon_txt ;
+LIST sem_build-part = sem_build-part sem_build-part_plc ;
 
 SET FIRSTNAME = (np ant f) OR (np ant m) OR (prop sem_fem) OR (prop sem_mal) ;
 
@@ -847,6 +848,7 @@ SELECT:når ("når"i) (0 ("<go>"i)) (-1 ("<rápmi>"i) + loc) ;
 SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 adj OR adv OR ind) (0 cnjsub) ;
 SELECT:som ("som"i) (0 ("<go>"i)) (*-1 ("<seammá>"i) OR ("<liikka>"i) BARRIER SV-BOUNDARY) ;
 SELECT:som ("som"i) (0 ("<go>"i)) (1 ("<eará>"i)) ;
+SELECT:som ("som"i) (0 ("<go>"i)) (-1 comp LINK -1 ("<beali>"i)) ;
 
 SELECT ("at"i) (0 ("<go>"i)) (0 cnjsub) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) OR ("<dan dihte>"i) LINK 0 adv) ;
 SELECT ("at"i) (0 ("<go>"i)) (0 cnjsub) (-1 COPULAS LINK -1 (adj nom)) ;
@@ -1013,6 +1015,8 @@ SELECT:fallback ("lage# duodji"i) IF  (0 ("<duddjot>"i)) ;
 
 SELECT:fallback ("veilede"i) IF  (0 ("<rávvet>"i)) ;
 
+SELECT:fallback ("merke"i) IF  (0 ("<vuohttit>"i)) ;
+
 
 
 SELECT ("spire"i) IF  (0 ("<bohciidit>"i)) (0* sem_plant) ;
@@ -1050,6 +1054,7 @@ SELECT:fallback ("gjennomføre"i) IF  (0 ("<doibmiibidjat>"i)) ;
 
 
 SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK *1 n + acc BARRIER NOT-NPMOD ) ;
+SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 num ) ;
 SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 qst LINK *1 n + acc BARRIER NOT-NPMOD ) ;
 SELECT:fallback ("ville"i) IF  (0 ("<háliidit>"i)) ;
 
@@ -2502,6 +2507,10 @@ SELECT ("i henhold til"i) (0 ("<olis>"i)) ;
 
 SELECT:fallback ("etter"i) (0 ("<maŋis>"i)) ;
 
+SELECT ("hos"i) (0 ("<luhtte>"i) LINK -1 HUMAN) ;
+SELECT:fallback ("ved"i) (0 ("<luhtte>"i)) ;
+
+
 SELECT ("om"i) (0 ("<geahčen>"i) LINK -1 sem_time) ;
 SELECT:fallback ("hos"i) (0 ("<geahčen>"i)) ;
 
@@ -2877,7 +2886,7 @@ SELECT ("moro skyld"i) (0 ("<suohtas>"i)) (1 ("<dihte>"i));
 SELECT:fallback ("morsom"i) (0 ("<suohtas>"i));
 
 
-SELECT ("ledig"i) (0 ("<rabas>"i)) (0 attr LINK *1 ("<.*virgi>"ri) OR ("<.*sadji>"ri) BARRIER NOT-NPMODADV);
+SELECT ("ledig"i) (0 ("<rabas>"i)) (0 attr LINK *1 ("<.*virgi>"ri) OR sem_build-part BARRIER NOT-NPMODADV);
 SELECT:fallback ("åpen"i) (0 ("<rabas>"i));
 
 

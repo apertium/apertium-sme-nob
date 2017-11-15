@@ -132,6 +132,17 @@ And then there are some categories like "month", with all the months.
     <def-cat n="n.sg.ill">
       <cat-item tags="n.*.sg.ill.*"/>
     </def-cat>
+
+    <def-cat n="num_biggy">
+      <cat-item lemma="miljárda" tags="num.*"/>
+      <cat-item lemma="miljovdna" tags="num.*"/>
+      <cat-item lemma="duhát" tags="num.*"/>
+    </def-cat>
+    <def-cat n="biggy_head">
+      <cat-item tags="n.sem_clth-jewl_curr.*"/>
+      <cat-item tags="n.sem_curr.*"/>
+    </def-cat>
+
     <def-cat n="num_mod">
 <!--      <cat-item tags="num.*.@HNOUN"/>  this one is often sem_year -->
       <cat-item tags="num.sg.*.@→N"/>
@@ -187,6 +198,9 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="num-year">
       <cat-item tags="num.sem_year.*"/>
+    </def-cat>
+    <def-cat n="gen-year">
+      <cat-item tags="num.sem_year.*.@→N"/>
     </def-cat>
     <def-cat n="prn">
       <cat-item tags="prn.*"/>
@@ -570,6 +584,8 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="eanet" tags="adv.*"/>
       <cat-item lemma="eanet" tags="adj.*"/>
       <cat-item lemma="eambbo" tags="adj.*"/>
+      <cat-item lemma="stuoris" tags="adj.comp.*"/>
+      <cat-item tags="adj.comp.*"/>
     </def-cat>
     <def-cat n="lex-guovttos">
       <cat-item lemma="guovttos" tags="n.*.coll.*"/>
@@ -2462,6 +2478,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="Vestlandet"/>
       <list-item v="arbeidsplass"/>
       <list-item v="parkeringsplass"/>
+      <list-item v="bachelornivå"/>
       <list-item v="bilde"/>
       <list-item v="bygdetun"/>
       <list-item v="dag"/>
@@ -2524,6 +2541,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="tema"/>
       <list-item v="redd"/>
       <list-item v="glad"/>
+      <list-item v="DATE"/>
     </def-list>
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
         <list-item v="del"/>
@@ -2611,6 +2629,8 @@ And then there are some categories like "month", with all the months.
     <def-list n="gen-i-head" c="Genitive @→N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="undervisning"/>
       <list-item v="opplæring"/>
+      <list-item v="vårsemester"/>
+      <list-item v="2018"/>
     </def-list>
     <def-list n="gen-for-head" c="Genitive @→N noun phrases default to 'til', unless they modify nouns in this list">
       <list-item v="sjef"/>
@@ -2618,6 +2638,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="fundament"/>
       <list-item v="basis"/>
       <list-item v="senter"/>
+      <list-item v="søknadsfrist"/>
     </def-list>
     <def-list n="gen-på-head">
       <list-item v="måte"/>
@@ -2639,6 +2660,7 @@ And then there are some categories like "month", with all the months.
               c="Nouns that act proper (indefinite in the singular, no determiner)">
       <list-item v="april"/>
       <list-item v="august"/>
+      <list-item v="bachelornivå"/>
       <list-item v="bestefar"/>
       <list-item v="bestemor"/>
       <list-item v="desember"/>
@@ -2997,6 +3019,7 @@ And then there are some categories like "month", with all the months.
                     <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
                   </and>
               </or>
+              <not><in caseless="yes"><var n="previous-nhead"/><list n="loc-for-head"/></in></not>
               <not><in caseless="yes"><var n="previous-nhead"/><list n="loc-fra-head"/></in></not>
               <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-på"/></in></not>
               <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></not>
@@ -3043,9 +3066,10 @@ And then there are some categories like "month", with all the months.
               </let>
             </when>
             <when c="for when loc">
-              <test>
+              <test><or>
                 <equal><var n="previous-nhead"/><lit v="takk"/></equal>
-              </test>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="studium"/></equal>
+              </or></test>
               <let>
                 <var n="caseprep"/><lit v="for"/>
               </let>
@@ -5739,6 +5763,31 @@ And then there are some categories like "month", with all the months.
         </when></choose>
      </action>
     </rule>
+    <rule comment="C[L] lex-beali lex-unnit">
+      <pattern>
+        <pattern-item n="lex-beali"/>
+        <pattern-item n="lex-unnit"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="halvparten så mye"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
+      </action>
+    </rule>
     <rule comment="C[L] lex-beali lex-eanet">
       <pattern>
         <pattern-item n="lex-beali"/>
@@ -5763,31 +5812,6 @@ And then there are some categories like "month", with all the months.
               <lit-tag v="pst"/>
               <lit-tag v="ind"/>
               <clip pos="2" side="tl" part="lemq"/>
-            </lu>
-          </chunk>
-        </out>
-        <choose><when>
-          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
-          <out><b pos="1"/></out>
-        </when></choose>
-      </action>
-    </rule>
-    <rule comment="C[L] lex-beali lex-unnit">
-      <pattern>
-        <pattern-item n="lex-beali"/>
-        <pattern-item n="lex-unnit"/>
-      </pattern>
-      <action>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-        <out>
-          <chunk name="adv" case="caseFirstWord">
-            <tags>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="sl" part="mode"/></tag>
-            </tags>
-            <lu>
-              <lit v="halvparten så mye"/>
-              <lit-tag v="adv"/>
             </lu>
           </chunk>
         </out>
@@ -8848,8 +8872,8 @@ And then there are some categories like "month", with all the months.
     <rule comment="C[] num num_mod nom.gen_NUMl" c="7,6 miljovnna ruvnnu">
       <pattern>
         <pattern-item n="num"/>
-        <pattern-item n="num_mod"/>
-        <pattern-item n="nom.gen_NUMl"/>
+        <pattern-item n="num_biggy"/>
+        <pattern-item n="biggy_head"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -12252,11 +12276,14 @@ And then there are some categories like "month", with all the months.
           <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
         </when></choose>
         <choose><when>
-          <test><not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_year"/></equal></not></test>
-        <let><var n="previous-nhead"/><lit v="NUMERAL"/></let>
+          <test><or>
+	       <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_year"/></equal> 
+	       <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_date"/></equal> 
+       </or></test>
+        <let><var n="previous-nhead"/><lit v="DATE"/></let>
         </when>
         <otherwise>
-	                <let><var n="previous-nhead"/><lit v=""/></let>
+	                <let><var n="previous-nhead"/><lit v="NUMERAL"/></let>
         </otherwise>
         </choose>
 
@@ -12351,6 +12378,48 @@ And then there are some categories like "month", with all the months.
         <let><clip pos="2" side="tl" part="gen-case"/><lit v=""/></let>
         <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
         <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+    <rule comment="C[] gen-year nom.gen nom.gen nom_head  ">
+      <pattern>
+        <pattern-item n="gen-year"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <!-- for possessed NOM -->
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="4"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+
+        <out><b pos="1"/></out>
+
+        <!-- for third NOM.GEN -->
+        <let><clip pos="3" side="sl" part="syn_label"/><lit-tag v="@N←"/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+        <let><clip pos="3" side="tl" part="gen-case"/><lit v=""/></let>
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+
+        <out><b pos="2"/></out>
+
+        <!-- for first and second NOM.GEN -->
+        <!-- TODO: np.top.gen n.gen → n i.pr np.top.gen -->
+        <let><clip pos="2" side="sl" part="syn_label"/><lit-tag v="@N←"/></let>
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="3"/></append>
+
+        <let><clip pos="2" side="tl" part="gen-case"/><lit v=""/></let>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <call-macro n="set_caseFirstWord"><with-param pos="3"/></call-macro>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
