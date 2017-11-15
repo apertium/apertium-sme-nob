@@ -727,7 +727,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         </when></choose>
         <choose>
           <when c="default gender when m or f">
-            <test><equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal></test>
+            <test>
+	          <or>
+	            <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
+	            <equal><clip pos="2" part="lemh"/><lit v="annen"/></equal>
+	          </or>
+            
+            </test>
             <let><clip pos="2" part="gen"/><lit-tag v="m"/></let>
             <let><clip pos="1" part="gen"/><lit-tag v="m"/></let>
           </when>
@@ -1092,8 +1098,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <when c="not Samisks or samisks">
         <test><and>
         <or>
-         <equal><clip pos="2" part="lemh"/><lit v="Samisk"/></equal>
-         <equal><clip pos="2" part="lemh"/><lit v="samisk"/></equal>
+         <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="nordsamisk"/></equal>
+         <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="samisk"/></equal>
         </or>
           <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
           <equal><clip pos="3" part="nbr"/><lit-tag v="sg"/></equal>
@@ -1102,15 +1108,20 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         </when>
         <when c="not Samisks or samisks">
         <test><and>
-        <or>
-         <equal><clip pos="2" part="lemh"/><lit v="Samisk"/></equal>
-         <equal><clip pos="2" part="lemh"/><lit v="samisk"/></equal>
-        </or>
+         <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="nordsamisk"/></equal>
+          <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
+          <equal><clip pos="3" part="nbr"/><lit-tag v="pl"/></equal>
+        </and></test>
+          <let><clip pos="2" part="lemh"/><lit v="nordsamiske"/></let>
+          <let><clip pos="2" part="case"/><lit v=""/></let>
+        </when>
+        <when c="not Samisks or samisks">
+        <test><and>
+         <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="samisk"/></equal>
           <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
           <equal><clip pos="3" part="nbr"/><lit-tag v="pl"/></equal>
         </and></test>
           <let><clip pos="2" part="lemh"/><lit v="samiske"/></let>
-          <let><clip pos="2" part="case"/><lit v=""/></let>
         </when>
       </choose>
       <choose c="Workaround for http://bugs.apertium.org/cgi-bin/bugzilla/show_bug.cgi?id=133
