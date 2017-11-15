@@ -1816,6 +1816,7 @@ SELECT:fallback ("konge"i) (0 ("<gonagas>"i));
 
 
 # johtu 0 = fart, 1 = bevegelse, 2 = gang
+SELECT ("veg"i) (0 ("<johtu>"i) LINK 0 loc LINK 1 sem_plc + ill) ;
 SELECT ("gang"i) (0 ("<johtu>"i) LINK 0 loc) ;
 SELECT ("gang"i) (0 ("<johtu>"i) LINK 0 ill) ;
 SELECT ("omsetning"i) (0 ("<johtu>"i) LINK -1 sem_food) ;
@@ -2469,6 +2470,7 @@ SELECT:fallback ("serie"i) (0 ("<ráidu>"i)) ;
 SELECT ("retning"i) (0 ("<guovlu>"i) + ill LINK -1 ("heajos"i) OR (comp) + (attr) OR sem_time OR ("<guhte>"i) OR (sem_event)) ;
 SELECT:fallback ("område"i) (0 ("<guovlu>"i)) ;
 
+SELECT ("live"i) (0 ("<heagga>"i) LINK 0 loc) ;
 SELECT ("rein"i) (0 ("<heagga>"i) LINK -1 num - ("<okta>"i)) ;
 SELECT:fallback ("liv"i) (0 ("<heagga>"i)) ;
 
