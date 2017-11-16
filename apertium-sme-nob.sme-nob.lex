@@ -1053,7 +1053,7 @@ SELECT:fallback ("rykke"i) IF  (0 ("<rohttestit>"i)) ;
 SELECT:fallback ("gjennomføre"i) IF  (0 ("<doibmiibidjat>"i)) ;
 
 
-SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK *1 n + acc BARRIER NOT-NPMOD ) ;
+SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK *1 n + acc BARRIER NOT-NPMOD LINK NOT 1 TRANS-V ) ;
 SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 num ) ;
 SELECT ("ville# ha"i) IF  (0 ("<háliidit>"i) + FMAINV LINK 1 qst LINK *1 n + acc BARRIER NOT-NPMOD ) ;
 SELECT:fallback ("ville"i) IF  (0 ("<háliidit>"i)) ;
@@ -1221,7 +1221,7 @@ SELECT:fallback ("få"i) (0 ("<beassat>"i));
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
 SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst OR ("<veahkki>"i) OR ("<doarjja>"i) OR (sem_act) + acc BARRIER SV-BOUNDARY);
 SELECT ("be"i) (0 ("<bivdit>"i) LINK 1 ("<ahte>"i) OR ("<veahkki>"i));
-SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*fanas>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r)  OR ("<.*čázádat>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR sem_ani-fish OR ("<stággu>"r) OR ("<birrajándora>"r) );
+SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*fanas>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r)  OR ("<.*čázádat>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR sem_ani-fish OR ("<reahkká>"i) OR ("<stággu>"r) OR ("<birrajándora>"r) );
 SELECT ("jakte"i) (0 ("<bivdit>"i)) (*0 sem_ani LINK 0 acc OR gen );
 SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<.*čázádat>"r)  OR ("<sáibma>"r) OR ("<.*fierbmi>"r) OR ("<stággu>"r)  OR sem_ani-fish );
 SELECT:fallback ("be"i) (0 ("<bivdit>"i));
@@ -1236,6 +1236,9 @@ SELECT ("fôre"i) (0 ("<borahit>"i)) (*0 sem_ani);
 SELECT ("mate"i) (0 ("<borahit>"i)) (NOT *0 sem_ani);
 ## Son borahii máná. Son borahii spiinniid.
 SELECT:fallback ("mate"i) (0 ("<borahit>"i));
+
+SELECT ("bry# om"i) (0 ("<fuollat>"i) LINK *1 loc BARRIER NOT-NPMODADV);
+SELECT:fallback ("ville# ha"i) (0 ("<fuollat>"i)) ;
 
 
 # čuohppat: skjære vs klippe
@@ -2321,7 +2324,7 @@ SELECT ("studie"i) (0 ("<oahppu>"i) LINK 1 ("<bagadallan>"i));
 SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));
 
 
-SELECT ("fiske"i) (0 ("<bivdu>"i) LINK *0 sem_ani-fish) ;
+SELECT ("fiske"i) (0 ("<bivdu>"i) LINK *0 sem_ani-fish OR ("<reahkká>"i)) ;
 SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
 
 SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
