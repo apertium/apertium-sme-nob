@@ -502,14 +502,22 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="ADV.@ADVLqst-ine→.*"/>
 <!--      <cat-item tags="*.@ADVL"/> -->
 <!--      <cat-item tags="*.@ADVL.*"/> -->
-      <cat-item tags="*.@ADVL→.*"/>
-      <cat-item tags="*.@ADVL→"/>
-      <cat-item tags="*.@ADVL-ela.*"/>
-      <cat-item tags="*.@ADVL-ela→.*"/>
-      <cat-item tags="*.@ADVL-ela→"/>
-      <cat-item tags="*.@ADVL-ine.*"/>
-      <cat-item tags="*.@ADVL-ine→.*"/>
-      <cat-item tags="*.@ADVL-ine→"/>
+      <cat-item tags="ADV.@ADVL→.*"/>
+      <cat-item tags="ADV.@ADVL→"/>
+      <cat-item tags="ADV.@ADVL-ela.*"/>
+      <cat-item tags="ADV.@ADVL-ela→.*"/>
+      <cat-item tags="ADV.@ADVL-ela→"/>
+      <cat-item tags="ADV.@ADVL-ine.*"/>
+      <cat-item tags="ADV.@ADVL-ine→.*"/>
+      <cat-item tags="ADV.@ADVL-ine→"/>
+      <cat-item tags="SN.@ADVL→.*"/>
+      <cat-item tags="SN.@ADVL→"/>
+      <cat-item tags="SN.@ADVL-ela.*"/>
+      <cat-item tags="SN.@ADVL-ela→.*"/>
+      <cat-item tags="SN.@ADVL-ela→"/>
+      <cat-item tags="SN.@ADVL-ine.*"/>
+      <cat-item tags="SN.@ADVL-ine→.*"/>
+      <cat-item tags="SN.@ADVL-ine→"/>
       <cat-item tags="SN.@→P.*"/>
       <cat-item tags="SN.@→P"/> <!-- object of postposition, moved by t2x -->
       <cat-item tags="SN.@SPRED→.*"/>
@@ -2239,6 +2247,37 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
     </rule> -->
 
 
+    <rule comment="REGLA: sentbord FV-esubj lSUBJext - out: 1 det 2 3" c="muhto váilu ruhta.">
+      <pattern>
+        <pattern-item n="sentbord"/>
+        <pattern-item n="FV-esubj"/>
+        <pattern-item n="lSUBJ"/>
+      </pattern>
+      <action>
+        <call-macro n="set_hab"><with-param pos="3"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <let>
+          <var n="pro"/>
+          <concat>
+            <b/>
+            <lit v="^prn"/>
+            <lit-tag v="SN.@SUBJ→.p3.nt.sg.nom"/>
+            <lit v="{^prpers"/>
+            <lit-tag v="prn.pers.p3.nt.sg.nom"/>
+            <lit v="$}$"/>
+          </concat>
+        </let>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <var n="pro-blank"/><var n="pro"/>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: sentbord FV lSUBJext - out: 1 det 2 3
 
                    Override prodrop rule (below) if we might have a subject to the right" c="ja lei báhppa gii dan čađahii.">
