@@ -3374,8 +3374,10 @@ And then there are some categories like "month", with all the months.
                 <and>
                   <or>
                 <in caseless="yes"><var n="main-verb-sl"/><list n="ill-for-verbs"/></in>
-                    <and>
+                    <and><or>
                     <equal><var n="main-verb-sl"/><lit v="šaddat"/></equal>
+                    <equal><var n="main-verb-sl"/><lit v="gártat"/></equal>
+                    </or>
                <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
                <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build_org"/></equal></not>
                <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build"/></equal></not>
