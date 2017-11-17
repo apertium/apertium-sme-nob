@@ -2448,6 +2448,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="valgprogram"/>
     </def-list>
     <def-list n="loc-på" c="Proper place nouns (np.top) get preposition 'i' unless they're in this list.">
+      <list-item v="Fagseminar for samisk statistikk"/>
       <list-item v="Andøya"/>
       <list-item v="Bygdøy"/>
       <list-item v="Cuba"/>
@@ -2641,6 +2642,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="basis"/>
       <list-item v="senter"/>
       <list-item v="søknadsfrist"/>
+      <list-item v="forening"/>
     </def-list>
     <def-list n="gen-på-head">
       <list-item v="måte"/>
@@ -8914,6 +8916,36 @@ And then there are some categories like "month", with all the months.
         <!-- This will warn, but we do want the numeral's syn_label on the chunk -->
         <let><clip pos="3" side="sl" part="syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+    <rule comment="C[] num num_mod " c="7,6 miljovnna">
+      <pattern>
+        <pattern-item n="num"/>
+        <pattern-item n="num_biggy"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <let><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+        <let><clip pos="2" side="tl" part="case"/><lit v=""/></let>
+
+        <let><var n="pre-nom"/>
+        <concat>
+          <lit v="^"/>
+            <clip pos="1" side="tl" part="lemh"/>
+            <clip pos="1" side="tl" part="a_num"/>
+            <clip pos="1" side="tl" part="gen"/>
+            <clip pos="1" side="tl" part="nbr"/>
+            <clip pos="1" side="tl" part="lemq"/>
+            <clip pos="1" side="tl" part="lemq"/>
+          <lit v="$"/>
+          <b pos="1"/>
+        </concat>
+        </let>
+
+        <!-- This will warn, but we do want the numeral's syn_label on the chunk -->
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
 

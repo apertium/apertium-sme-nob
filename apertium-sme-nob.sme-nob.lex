@@ -1367,7 +1367,7 @@ SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_or
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 ("<vejolašvuohta>"i) OR ("<bággu>"i) OR ("<ráđđi>"i) OR ("<áigemeari>"i) OR ("<divat>"i)  OR ("<rehket>"i) ) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 loc BARRIER NOT-ADV-PCLE) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r) OR ("<áigemearri>"i) OR ("<.*divat>"r)) ;
-SELECT ("betale"i) IF (0 ("<máksit>"i) ) (1 ill) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (1 ill OR ("<ruovttoluotta>")) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (0 @←OBJ) ;
 
 
@@ -2332,6 +2332,10 @@ SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
 SELECT ("kjendis"i) (0 ("<beakkán>"i));
 
+
+SELECT ("doktor"i) (0 ("<doavttir>"i) LINK 1 (ant) OR (cog));
+SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
+
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
 SELECT:fallback ("gjenstand"i) (0 ("<dávvir>"i));
@@ -2347,7 +2351,6 @@ SELECT:fallback ("erstatning"i) (0 ("<buhtadas>"i));
 SELECT:fallback ("kulde"i) (0 ("<buolaš>"i));
 SELECT:fallback ("trinn"i) (0 ("<ceahkki>"i));
 SELECT:fallback ("vekt"i) (0 ("<deatta>"i));
-SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
 SELECT:fallback ("bål"i) (0 ("<dolla>"i));
 SELECT:fallback ("håndarbeid"i) (0 ("<duodji>"i));
 SELECT:fallback ("ønske"i) (0 ("<dáhttu>"i));
