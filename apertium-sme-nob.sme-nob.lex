@@ -996,7 +996,7 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
-SELECT ("få# plass"i) IF  (0 ("<šiehttat>"i)) (*0 ill BARRIER SV-BOUNDARY) ;
+SELECT ("få# plass"i) IF  (0 ("<šiehttat>"i)) (*1 ill BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("avtale"i) IF  (0 ("<šiehttat>"i)) ;
 
 SELECT ("sist"i) IF  (0 ("<vássit>"i) LINK 0 @→N) ;
@@ -1004,6 +1004,10 @@ SELECT:fallback ("svinne"i) IF  (0 ("<vássit>"i)) ;
 
 SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 ("<.*giella>"i) + acc) ;
 SELECT:fallback ("stelle"i) IF  (0 ("<dikšut>"i)) ;
+
+
+SELECT ("spille"i) IF  (0 ("<neaktit>"i) LINK *1 acc BARRIER NOT-NPMODADV) ;
+SELECT:fallback ("utøve skuespill"i) IF  (0 ("<neaktit>"i)) ;
 
 
 SELECT ("vike"i) IF  (0 ("<gáidat>"i) LINK NOT 0 der_nomact) (0* ("<láhka>"i) LINK 0 nom) ;
