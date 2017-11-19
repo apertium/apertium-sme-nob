@@ -2294,6 +2294,7 @@ And then there are some categories like "month", with all the months.
     </def-list>
     <def-list n="loc-i" c="Locative noun phrases default to 'på' unless in this list (or are np.top)">
       <list-item v="Guovdageainnu suohkan"/>
+      <list-item v="Nilut Cup"/>
       <list-item v="Norge"/>
       <list-item v="Nord-Norge"/>
       <list-item v="NSR"/>
@@ -2500,6 +2501,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="kort tid"/>
       <list-item v="kino"/>
       <list-item v="kjøkken"/>
+      <list-item v="kinokveld"/>
+      <list-item v="kveld"/>
       <list-item v="liste"/>
       <list-item v="lørdag"/>
       <list-item v="mandag"/>
@@ -8560,7 +8563,7 @@ And then there are some categories like "month", with all the months.
     <rule comment="C[TV] nom.prop_attr_gen nom.prop.antcog_mod nom.prop.antcog_mod nom.prop.antcog_mod nom.prop.antcog" c="asf">
       <pattern>
         <pattern-item n="nom.prop_attr_gen"/>
-        <pattern-item n="nom.prop.antcog_mod"/>
+        <pattern-item n="nom.prop_attr_gen"/>
         <pattern-item n="nom.prop.antcog_mod"/>
         <pattern-item n="nom.prop.antcog_mod"/>
         <pattern-item n="nom.prop.antcog"/>
@@ -10395,6 +10398,7 @@ And then there are some categories like "month", with all the months.
           <let><var n="defnes"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
         </when></choose>
+        <call-macro n="switch_cases"><with-param pos="2"/><with-param pos="1"/></call-macro>
             <out>
               <chunk name="pre_adj" case="caseFirstWord">
                 <tags>
@@ -10425,7 +10429,7 @@ And then there are some categories like "month", with all the months.
            <chunk name="nom">
             <tags>
               <tag><lit-tag v="SN"/></tag>
-              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><lit-tag v="@A←"/></tag>
               <tag><clip pos="1" side="tl" part="defnes"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="gen"/></tag>

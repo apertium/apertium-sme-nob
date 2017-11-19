@@ -1489,7 +1489,7 @@ SELECT ("smelle"i) (0 ("<bávkkehit>"i) LINK *0 ("<rakeahtta>"i));
 SELECT:fallback ("eksplodere"i) (0 ("<bávkkehit>"i));
 
 SELECT ("advare"i) (0 ("<várret>"i) LINK 1 ("<nominašuvdna>"i));
-SELECT ("reservere"i) (0 ("<várret>"i) LINK *0 acc BARRIER SV-BOUNDARY);
+SELECT ("reservere"i) (0 ("<várret>"i) LINK *0 acc OR ill BARRIER SV-BOUNDARY);
 SELECT:fallback ("advare"i) (0 ("<várret>"i));
 
 SELECT ("skyve"i) (0 ("<duvdit>"i) LINK *1 ("<eret>"i) BARRIER SV-BOUNDARY);
@@ -1594,6 +1594,10 @@ SELECT:fallback ("tvang"i) (0 ("<doaresbealli>"i)) ;
 SELECT ("eldre"i) (0 ("<boaresolmmoš>"i) LINK 0 pl ) ;
 SELECT:fallback ("gamling"i) (0 ("<boaresolmmoš>"i)) ;
 
+SELECT ("datter"i) (0 ("<nieida>"i) LINK -1 (ant) + gen ) ;
+SELECT:fallback ("jente"i) (0 ("<nieida>"i)) ;
+
+
 
 SELECT:fallback ("begivenhet"i) (0 ("<dáhpáhus>"i) LINK -1 ("<rabas>"i) ) ;
 SELECT:fallback ("hendelse"i) (0 ("<dáhpáhus>"i) ) ;
@@ -1616,6 +1620,11 @@ SELECT:fallback ("vaksine"i) (0 ("<boahkku>"i) ) ;
 
 SELECT ("vare"i) (0 ("<várra>"i) LINK *0 ("<váldit>"i) BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("fare"i) (0 ("<várra>"i) ) ;
+
+SELECT ("kule"i) (0 ("<spábba>"i) LINK -1 ("<dolla>"i)) ;
+SELECT:fallback ("ball"i) (0 ("<spábba>"i)) ;
+SELECT ("ild"i) (0 ("<dolla>"i) LINK 1 ("<spábba>"i));
+SELECT:fallback ("bål"i) (0 ("<dolla>"i));
 
 
 SELECT:fallback ("tillatelse"i) (0 ("<lohpi>"i)) ;
@@ -1822,7 +1831,7 @@ SELECT:fallback ("melodi"i) (0 ("<šuokŋa>"i));
 
 
 # gonagas 0 = konge, 1 = kong
-SELECT ("kong"i) (0 ("<gonagas>"i) LINK 1 sem_mal) ;
+SELECT ("kong"i) (0 ("<gonagas>"i) LINK 1 sem_mal)(NOT -1 cmp) ;
 # Konge Harald => Kong Harald
 SELECT:fallback ("konge"i) (0 ("<gonagas>"i));
 
@@ -2355,7 +2364,6 @@ SELECT:fallback ("erstatning"i) (0 ("<buhtadas>"i));
 SELECT:fallback ("kulde"i) (0 ("<buolaš>"i));
 SELECT:fallback ("trinn"i) (0 ("<ceahkki>"i));
 SELECT:fallback ("vekt"i) (0 ("<deatta>"i));
-SELECT:fallback ("bål"i) (0 ("<dolla>"i));
 SELECT:fallback ("håndarbeid"i) (0 ("<duodji>"i));
 SELECT:fallback ("ønske"i) (0 ("<dáhttu>"i));
 SELECT:fallback ("eiendel"i) (0 ("<dávvir>"i));
@@ -2520,6 +2528,8 @@ SELECT:fallback ("etter"i) (0 ("<maŋis>"i)) ;
 SELECT ("hos"i) (0 ("<luhtte>"i) LINK -1 HUMAN) ;
 SELECT:fallback ("ved"i) (0 ("<luhtte>"i)) ;
 
+SELECT ("blant"i) (0 ("<gaskkas>"i) LINK -1 HUMAN + pl + gen) ;
+SELECT:fallback ("mellom"i) (0 ("<gaskkas>"i)) ;
 
 SELECT ("om"i) (0 ("<geahčen>"i) LINK -1 sem_time) ;
 SELECT:fallback ("hos"i) (0 ("<geahčen>"i)) ;
@@ -2670,6 +2680,10 @@ SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
 SELECT:fallback ("mindre"i) (0 ("<unnit>"i)) ; 
 SELECT:fallback ("selvfølgelig"i) (0 ("<dieđus>"i)) ; 
+
+SELECT ("aller"i) (0 ("<buot>"i) LINK 1 sup) ; 
+SELECT:fallback ("alt"i) (0 ("<buot>"i)) ; 
+
 
 SELECT ("positiv til"i) (0 ("<mielas>"i) LINK -1 COPULAS)(NOT 1 ill) ; 
 SELECT ("positiv"i) (0 ("<mielas>"i) LINK -1 COPULAS) ; 
