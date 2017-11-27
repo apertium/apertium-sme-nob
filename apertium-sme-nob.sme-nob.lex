@@ -1002,6 +1002,10 @@ SELECT:fallback ("avtale"i) IF  (0 ("<šiehttat>"i)) ;
 SELECT ("sist"i) IF  (0 ("<vássit>"i) LINK 0 @→N) ;
 SELECT:fallback ("svinne"i) IF  (0 ("<vássit>"i)) ;
 
+SELECT ("trakassere"i) IF  (0 ("<loavkašuhttit>"i) LINK -1 ("<seksualálaš>"i)) ;
+SELECT:fallback ("fornærme"i) IF  (0 ("<loavkašuhttit>"i)) ;
+
+
 SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 ("<.*giella>"i) + acc) ;
 SELECT:fallback ("stelle"i) IF  (0 ("<dikšut>"i)) ;
 
@@ -1347,6 +1351,9 @@ SELECT:fallback ("høve"i) (0 ("<soahpat>"i) LINK 1 ill);
 
 SELECT:fallback ("forlike"i) (0 ("<soahpat>"i));
 
+SELECT: ("lese"i) (0 ("<lohkkot>"i) LINK -1 ("<eanemus>"i));
+SELECT:fallback ("avregne"i) (0 ("<lohkkot>"i));
+
 
 # mannat 0 = dra, 1 = gå
 SELECT ("sist"i) IF (0 ("<mannat>"i) LINK 0 prfprc + @→N );
@@ -1368,10 +1375,10 @@ SELECT ("bety"i) IF (0 ("<máksit>"i) )  (*1 ("<ahte>"i) BARRIER WORD);
 
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_org OR pers ) ;
 ## Máhtte máksá guokte ruvnnu.
-SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 ("<vejolašvuohta>"i) OR ("<bággu>"i) OR ("<ráđđi>"i) OR ("<áigemeari>"i) OR ("<divat>"i)  OR ("<rehket>"i) ) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 ("<vejolašvuohta>"i) OR ("<bággu>"i) OR ("<ráđđi>"i) OR ("<áigemeari>"i) OR ("<divat>"i)  OR ("<rehket>"i) OR sem_money ) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 loc BARRIER NOT-ADV-PCLE) ;
-SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r) OR ("<áigemearri>"i) OR ("<.*divat>"r)) ;
-SELECT ("betale"i) IF (0 ("<máksit>"i) ) (1 ill OR ("<ruovttoluotta>")) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r) OR ("<áigemearri>"i) OR ("<.*divat>"r) OR sem_money) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (1 ill OR ("<ruovttoluotta>") OR sem_money) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (0 @←OBJ) ;
 
 

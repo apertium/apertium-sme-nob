@@ -95,6 +95,9 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="adj.*.sup.*"/>
       <cat-item tags="adj.sup.*"/>
     </def-cat>
+    <def-cat n="guhkkosas_attr">
+      <cat-item lemma="guhkkosaš" tags="adj.*.@→N"/>
+    </def-cat>
     <def-cat n="adj_vblex_attr">
       <cat-item tags="*.adj.*.@→N"/>
       <cat-item tags="adj.*.@→N"/>
@@ -1710,6 +1713,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="máhttit"/>
       <list-item v="áigut"/>
       <list-item v="sáhttit"/>
+      <list-item v="dáhttut"/>
     </def-list>
     <def-list n="esubj-verbs">
 <!--      <list-item v="leat"/>  -->
@@ -3362,6 +3366,14 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="på"/>
               </let>
             </when>
+        <when c="ill is av">
+          <test>
+          <equal><var n="main-verb-sl"/><lit v="gallánit"/></equal>
+          </test>
+          <let>
+            <var n="caseprep"/><lit v="av"/>
+          </let>
+        </when>
             <when c="ill is med">
               <test>
                 <in caseless="yes"><var n="main-verb-sl"/><list n="ill-med-verbs"/></in>
@@ -3432,26 +3444,25 @@ And then there are some categories like "month", with all the months.
             </let>
           </when></choose>
         </when>
-        <when c="om acc">
+        <when c="om ill">
           <test><and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
           <equal><var n="main-verb-tl"/><lit v="be"/></equal>
-         <equal><clip pos="1" side="tl" part="lemh"/><lit v="hjelp"/></equal>
+     <not><equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_hum"/></equal></not>
         </and>   </test>
           <let>
             <var n="caseprep"/><lit v="om"/>
           </let>
         </when>
-        <when c="på acc">
+        <when c="på ill">
           <test><or>
           <equal><var n="main-verb-tl"/><lit v="fokusere"/></equal>
-          <equal><var n="main-verb-tl"/><lit v="forske"/></equal>
           <equal><var n="main-verb-tl"/><lit v="stemme"/></equal>
      </or></test>
           <let>
             <var n="caseprep"/><lit v="på"/>
           </let>
         </when>
-        <when c="på acc">
+        <when c="på ill">
           <test>
           <equal><var n="main-verb-tl"/><lit v="protestere"/></equal>
           </test>
@@ -3910,6 +3921,7 @@ And then there are some categories like "month", with all the months.
             <not><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="beaivebodda"/></equal></not>
             <not><equal caseless="yes"><var n="main-verb-tl"/><lit v="søke"/></equal></not>
             <not><equal caseless="yes"><var n="main-verb-tl"/><lit v="spille"/></equal></not>
+            <not><equal caseless="yes"><var n="main-verb-sl"/><lit v="gallánit"/></equal></not>
             <not><and>
             <equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="same"/></equal>
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal></not>
@@ -4070,6 +4082,7 @@ And then there are some categories like "month", with all the months.
             <equal><clip pos="2" side="sl" part="lemh"/><lit v="eará"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.pos"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.qnt"/></equal>
+            <equal><clip pos="2" side="tl" part="lemh"/><lit v="kjær"/></equal>
             <equal><clip pos="2" side="tl" part="a_det"/><lit-tag v="det.itg"/></equal>
             <equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal>
             <equal><clip pos="2" side="tl" part="a_adj"/><lit-tag v="adj"/></equal>
@@ -5080,6 +5093,7 @@ And then there are some categories like "month", with all the months.
         <when>
           <test><and>
             <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="cond-NIL-verbs"/></in>
+        <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="dáhttut"/></equal></not>
             <begins-with><clip pos="1" side="tl" part="modality"/><lit-tag v="cond"/></begins-with>
           </and></test>
           <let><clip pos="1" side="tl" part="temps"/><lit-tag v="pret"/></let>
@@ -11763,7 +11777,7 @@ And then there are some categories like "month", with all the months.
       <pattern>
         <pattern-item n="num_mod"/>
         <pattern-item n="nom.gen_NUMl"/>
-        <pattern-item n="adj_vblex_attr"/>
+        <pattern-item n="guhkkosas_attr"/>
         <pattern-item n="nom_head"/>
       </pattern>
       <action>
