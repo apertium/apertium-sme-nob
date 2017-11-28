@@ -2051,6 +2051,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_hum_plc&gt;"/>
       <list-item v="&lt;sem_hum_sign&gt;"/>
       <list-item v="&lt;sem_hum_tool&gt;"/>
+      <list-item v="&lt;sem_hum_tool-it&gt;"/>
       <list-item v="&lt;sem_hum_veh&gt;"/>
       <list-item v="&lt;sem_hum_wthr&gt;"/>
       <list-item v="&lt;sem_hum-prof&gt;"/>
@@ -3282,6 +3283,7 @@ And then there are some categories like "month", with all the months.
               <test><or>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="ill-i"/></in>
                 <equal caseless="yes"><var n="main-verb-tl"/><lit v="havne"/></equal>
+                <equal caseless="yes"><var n="main-verb-sl"/><lit v="čáhkat"/></equal>
                   <and>  
                     <equal caseless="yes"><var n="main-verb-sl"/><lit v="guođđit"/></equal>
                   <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
@@ -3444,10 +3446,10 @@ And then there are some categories like "month", with all the months.
             </let>
           </when></choose>
         </when>
-        <when c="om ill">
+        <when c="om acc">
           <test><and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
           <equal><var n="main-verb-tl"/><lit v="be"/></equal>
-     <not><equal><clip pos="1" side="tl" part="a_sem"/><lit-tag v="sem_hum"/></equal></not>
+     <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_hum"/></in></not>
         </and>   </test>
           <let>
             <var n="caseprep"/><lit v="om"/>
@@ -12331,16 +12333,20 @@ And then there are some categories like "month", with all the months.
           <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal></test>
           <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
         </when></choose>
-        <choose><when>
+        <choose>
+	        <when>
           <test><or>
 	       <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_year"/></equal> 
 	       <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_date"/></equal> 
        </or></test>
         <let><var n="previous-nhead"/><lit v="DATE"/></let>
         </when>
-        <otherwise>
+	        <when>
+          <test>
+	       <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal></not> 
+          </test>
 	                <let><var n="previous-nhead"/><lit v="NUMERAL"/></let>
-        </otherwise>
+        </when>
         </choose>
 
         <out>

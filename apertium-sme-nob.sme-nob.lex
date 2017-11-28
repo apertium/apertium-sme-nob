@@ -1140,7 +1140,7 @@ SELECT:fallback ("ferde"i) IF  (0 ("<vánddardit>"i)) ;
 SELECT:fallback ("bruke"i) IF  (0 ("<ádjánit>"i)) ;
 
 
-SELECT ("stenge"i) IF  (0 ("<giddet>"i) LINK *0 (sem_route) OR ("<luodda>")) ;
+SELECT ("stenge"i) IF  (0 ("<giddet>"i) LINK *0 (sem_route) OR ("<.*luodda>"r) OR ("<.*geaidnu>"r)) ;
 SELECT:fallback ("lukke"i) IF  (0 ("<giddet>"i)) ;
 
 SELECT:fallback ("avskjede"i) IF  (0 ("<lihccut>"i)) ;
@@ -1351,7 +1351,7 @@ SELECT:fallback ("høve"i) (0 ("<soahpat>"i) LINK 1 ill);
 
 SELECT:fallback ("forlike"i) (0 ("<soahpat>"i));
 
-SELECT: ("lese"i) (0 ("<lohkkot>"i) LINK -1 ("<eanemus>"i));
+SELECT ("lese"i) (0 ("<lohkkot>"i) LINK -1 ("<eanemus>"i));
 SELECT:fallback ("avregne"i) (0 ("<lohkkot>"i));
 
 
@@ -1911,6 +1911,7 @@ SELECT:fallback ("viten"i) (0 ("<diehtu>"i));
 
 SELECT ("hus"i) (0 ("<stohpu>"i) LINK *0 ("<stohpoeaiggát>"i));
 SELECT ("hus"i) (0 ("<stohpu>"i) LINK 0 pl);
+SELECT ("hus"i) (0 ("<stohpu>"i) LINK *0 ("<buollit>"i));
 SELECT:fallback ("stue"i) (0 ("<stohpu>"i));
 
 # lávki 0 = skritt, 1 = løk
