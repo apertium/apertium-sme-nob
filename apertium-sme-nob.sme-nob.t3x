@@ -766,6 +766,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-var n="gender"/>
     <def-var n="seen-hab" c="seen a habitive in this sentence" v="no"/>
     <def-var n="seen-spred" c="seen a spred in this sentence" v="no"/>
+    <def-var n="seen-rel" c="seen a rel in this sentence" v="no"/>
     <def-var n="pro" c="in case it was dropped"/>
     <def-var n="pro-blank" c="one space if there's a pro, else nothing"/>
     <def-var n="adv" c="potensialis 'kanskje'; see set_adv"/>
@@ -1517,6 +1518,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
+          <let><var n="seen-rel"/><lit v="yes"/></let>
       </action>
     </rule>
     <rule comment="REGLA: rel-OBJr FV_alsoNeg - out: 1 pro 2 " c="Go áhčči muitalii iežas soahtevásáhusaid birra de mánát čohkkájedje dego gintalat ja guldaledje dárkilit maid muitalii.">
@@ -1559,7 +1561,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
-      </action>
+           <let><var n="seen-rel"/><lit v="yes"/></let>
+     </action>
     </rule>
 
     <rule comment="REGLA: V2-trigger rel-SUBJr FV_alsoNeg - out: 1 2 3 ">
@@ -1579,6 +1582,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
+          <let><var n="seen-rel"/><lit v="yes"/></let>
       </action>
     </rule>
     <rule comment="REGLA: PR V2-trigger rel-SUBJr FV_alsoNeg - out: 1 2 3 4">
@@ -1601,6 +1605,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="4" part="whole"/></chunk>
         </out>
+          <let><var n="seen-rel"/><lit v="yes"/></let>
       </action>
     </rule>
 
@@ -1621,7 +1626,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
-      </action>
+           <let><var n="seen-rel"/><lit v="yes"/></let>
+     </action>
     </rule>
 
 
@@ -3536,6 +3542,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="3"/>
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
+          <let><var n="seen-rel"/><lit v="yes"/></let>
       </action>
     </rule>
     <rule comment="REGLA: PR V2-trigger FV  - out: 1 2 3 pro
@@ -3555,9 +3562,14 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="2"/>
           <chunk><clip pos="3" part="whole"/></chunk>
+          </out>
+          <choose><when><test>
+	       <not><equal><var n="seen-rel"/><lit v="yes"/></equal></not></test>
+          <out>
           <var n="pro-blank"/><var n="pro"/>
           <var n="adv-blank"/><var n="adv"/>
         </out>
+		</when></choose>
       </action>
     </rule>
     <rule comment="REGLA: PR V2-trigger FV IV   - out: 1 2 pro 3 4 OBS
@@ -4034,6 +4046,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
             </out>
           </otherwise>
         </choose>
+          <let><var n="seen-rel"/><lit v="yes"/></let>
       </action>
     </rule>
     <rule comment="REGLA: PR ADVLr V - out: 3 1 2" c="Juoigannásti fas Kárášjohkii boahtimin.">
@@ -4621,6 +4634,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <let><var n="seen-hab"/><lit v="no"/></let>
          <let><var n="seen-spred"/><lit v="no"/></let>
          <let><var n="gender"/><lit v=""/></let>
+          <let><var n="seen-rel"/><lit v=""/></let>
         <out>
           <chunk>
           <clip pos="1" part="whole"/></chunk>

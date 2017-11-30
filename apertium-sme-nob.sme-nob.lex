@@ -1071,6 +1071,7 @@ SELECT ("sette# fast"i) IF  (0 ("<darvánit>"i) LINK *0 sem_veh ) ;
 SELECT:fallback ("feste"i) IF  (0 ("<darvánit>"i)) ;
 
 SELECT:fallback ("berøre"i) IF  (0 ("<čuohcat>"i)) ;
+SELECT:fallback ("berøre"i) IF  (0 ("<čuohcit>"i)) ;
 
 
 SELECT ("turnere"i) IF  (0 ("<johtit>"i) LINK *0 np + nom ) ;
