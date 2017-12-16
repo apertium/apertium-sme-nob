@@ -2410,6 +2410,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="sak"/>
       <list-item v="samarbeid"/>
       <list-item v="samfunn"/>
+      <list-item v="samfunnsplanlegging"/>
       <list-item v="samisk språk"/>
       <list-item v="samtale"/>
       <list-item v="sammenheng"/>
@@ -4138,7 +4139,7 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="1" side="tl" part="lemh"/><lit v="han"/></equal>
               <equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD_pers"/></equal>
             </and></test>
-            <let><clip pos="1" side="tl" part="lemh"/><lit v="h_ns"/></let>
+            <let><clip pos="1" side="tl" part="lemh"/><lit v="hun/hans"/></let>
           </when></choose>
         </when>
      </choose>
@@ -12098,6 +12099,40 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+    <rule comment="C[] gen-year nom.unprop.gen nom_head" c="Muitte ohcat 2018 giđa oahpuide.">
+      <pattern>
+        <pattern-item n="gen-year"/>
+        <pattern-item n="nom.unprop.gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="2"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_"/></let> 
+
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+          <append n="pre-nom">
+            <concat>
+              <lit v="^"/>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="2" side="tl" part="gen-case"/>
+              <clip pos="2" side="tl" part="a_cmp"/>
+              <clip pos="2" side="tl" part="lemq"/>
+              <lit v="$"/>
+            </concat>
+          </append>
+        <append n="pre-nom"><b pos="2"/></append>
+
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+
     <rule comment="C[L] lex-lohkka lex-uksa" c="dan dahket lohkka uvssaid duohken">
       <pattern>
         <pattern-item n="lex-lohkka"/>
@@ -12486,6 +12521,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+
     <rule comment="C[] nom.gen nom.gen nom.gen nom_head (we need one with cmp nom_head)
                    –––––
                    Sámi soga lávlaga čállin → forfatteren av sangen om Samelands slekt (TODO: Samelands slekt → Samefolket)
@@ -12828,7 +12864,7 @@ And then there are some categories like "month", with all the months.
             </lu>
             <b />
            <lu>
-              <lit v="h_n"/><lit-tag v="prn.pers.p3.GD_pers.sg.nom"/>
+              <lit v="hun/han"/><lit-tag v="prn.pers.p3.GD_pers.sg.nom"/>
             </lu>
             <b />
               <lu>

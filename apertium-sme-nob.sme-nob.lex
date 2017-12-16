@@ -1777,7 +1777,7 @@ SELECT:fallback ("dag"i) (0 ("<beaivi>"i));
 SELECT ("oppmerksomhet"i) IF (0 ("<fuomášupmi>"i)) (*-1 ("<giddet>"i) OR ("<olahit>"i) OR ("<oažžut>"i) BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("ide"i) IF (0 ("<fuomášupmi>"i)) ;
 
-SELECT ("institutt"i) IF (0 ("<goahti>"i) LINK -1 ("<.*dieđa>"ri)  OR ("<.*fága>"ri)  OR ("<.*dutkan>"ri)   OR ("<servodat>"i)) ;
+SELECT ("institutt"i) IF (0 ("<goahti>"i) LINK -1 ("<.*dieđa>"ri)  OR ("<.*fága>"ri)  OR ("<.*dutkan>"ri)   OR ("<servodat>"i) OR ("<jođihit>"i)) ;
 SELECT ("institutt"i) IF (0 ("<goahti>"i) LINK 1 ("<jođiheaddji>"i) OR ("<struktuvra>"i)) ;
 SELECT ("institutt"i) IF (0 ("<goahti>"i) LINK *0 ("<.*dutkan>"ri) OR ("<.*fága>"ri)  OR ("<.*dieđa>"ri)  OR ("<.*oahppu>"ri)  OR ("<.*oahpahus>"ri)) ;
 SELECT:fallback ("gamme"i) IF (0 ("<goahti>"i)) ;
@@ -2106,6 +2106,7 @@ SELECT ("gevinst"i) (0 ("<vuoitu>"i) LINK -1 ("<smávis>"i) OR ("<stuoris>"i))  
 SELECT:fallback ("seier"i) (0 ("<vuoitu>"i));
 
 SELECT ("samisk"i) (0 ("<sápmi>"i) + sg LINK 0 @→N) ; #(NEGATE -1 num LINK NOT 2 n + sg + gen OR n + sg + acc);
+SELECT ("reindriftssamisk"i) (0 ("<boazosápmi>"i) + sg LINK 0 @→N) ;
 SELECT ("sørsamisk"i) (0 ("<máttasápmi>"i) LINK 0 sg + gen);
 SELECT ("sørsamisk"i) (0 ("<lullisápmi>"i) LINK 0 sg + gen);
 SELECT ("pitesamisk"i) (0 ("<bihtonsápmi>"i) LINK 0 sg + gen);
@@ -2509,6 +2510,8 @@ SELECT:fallback ("liv"i) (0 ("<heagga>"i)) ;
 SELECT ("middel"i) (0 ("<ávnnas>"i) LINK -1 ("<kárten>"i)) ;
 SELECT:fallback ("råvare"i) (0 ("<ávnnas>"i)) ;
 
+SELECT ("horn"i) (0 ("<ládju>"i) LINK *-1 ("<.*gahpir>"ri)) ;
+SELECT:fallback ("slåttonn"i) (0 ("<ládju>"i)) ;
 
 
 SELECT:fallback ("betaling"i) (0 ("<máksámuš>"i)) ;
@@ -2517,11 +2520,13 @@ SELECT:fallback ("kvote"i) (0 ("<earri>"i)) ;
 SELECT ("rett"i) (0 ("<diggi>"i) LINK 0 ill) ;
 SELECT:fallback ("rett"i) (0 ("<diggi>"i)) ;
 
+SELECT ("måne"i) (0 ("<mánnu>"i) LINK 0 SUBJ) ;
+SELECT:fallback ("måned"i) (0 ("<mánnu>"i)) ;
+
 # Based on frequency in parallel text:
 SELECT ("periode"i) (0 ("<áigodat>"i));
 SELECT ("sameby"i) (0 ("<čearru>"i));
 SELECT ("urin"i) (0 ("<gužža>"i)) ;
-SELECT ("måned"i) (0 ("<mánnu>"i)) ;
 SELECT ("grunntanke"i) (0 ("<vuođđojurdda>"i)) ;
 
 
@@ -2939,7 +2944,8 @@ SELECT:fallback ("mye"i) (0 ("<eanet>"i)  OR ("<eambbo>"i));
 LIST IJ-TIME = ("<beaivi>"i) ("<eahket>"i) ("<iđit>"i)  ("<idja>"i)   ("<vahkkoloahppa>"i) ("<beassážat>"i) ("<juovllat>"i) ;
 #SELECT ("vær så god"i) (0 ("<buorre>"i)) (-1 ("<leat>"i) LINK 0 imp);
 SELECT ("stor"i) (0 ("<buorre>"i) LINK 1 ("<muddu>"i)) ;
-SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME OR post) ;
+SELECT ("god"i) (0 ("<buorre>"i)) (1 IJ-TIME OR post OR sem_edu) ;
+SELECT ("god"i) (0 ("<buorre>"i)) (1 pl) ;
 SELECT ("god"i) (0 ("<buorre>"i)) (1 ("<ođas>"i) LINK 1 ("<jahki>"i)) ;
 SELECT ("god"i) (0 ("<buorre>"i) LINK 0 @→N) ;
 SELECT:fallback ("bra"i) (0 ("<buorre>"i));
