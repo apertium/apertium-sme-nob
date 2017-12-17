@@ -2699,6 +2699,9 @@ SELECT ("aller"i) (0 ("<buot>"i) LINK 1 sup) ;
 SELECT:fallback ("alt"i) (0 ("<buot>"i)) ; 
 
 
+SELECT ("være synlig"i) (0 ("<oidnosis>"i) LINK NOT *-1 COPULAS BARRIER SV-BOUNDARY) ; 
+SELECT:fallback ("synlig"i) (0 ("<oidnosis>"i)) ; 
+
 SELECT ("positiv til"i) (0 ("<mielas>"i) LINK -1 COPULAS)(NOT 1 ill) ; 
 SELECT ("positiv"i) (0 ("<mielas>"i) LINK -1 COPULAS) ; 
 SELECT:fallback ("gjerne"i) (0 ("<mielas>"i)) ; 
