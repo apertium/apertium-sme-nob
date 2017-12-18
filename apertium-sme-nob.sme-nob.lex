@@ -2881,6 +2881,7 @@ SELECT ("-årig"i) (0 ("<jagáš>"i) LINK -1 num);
 SELECT ("årets"i) (0 ("<jagáš>"i));
 
 SELECT ("sist"i) (0 ("<maŋit>"i) LINK 0 attr);
+SELECT ("sist"i) (0 ("<maŋit>"i) LINK 1 num OR sem_time);
 REMOVE ("sein"i) (0 ("<maŋit>"i));
 
 SELECT ("sakte"i) (0 ("<njoahci>"i) LINK 0 cmp_attr);
