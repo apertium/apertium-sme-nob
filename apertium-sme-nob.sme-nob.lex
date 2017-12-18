@@ -2676,6 +2676,15 @@ SELECT:fallback ("hver"i) (0 ("<iešguhte>"i)) ;
 SELECT ("hvilken"i) (0 ("<guhte>"i) LINK 0 attr) ;
 SELECT:fallback ("hvem"i) (0 ("<guhte>"i)) ;
 
+# Numerals
+# =======
+
+SET NT-BEAL-NUM-NOB =  ("ni og et halvt"i) OR ("åtte og et halvt"i) OR ("sju og et halvt"i) OR ("seks og et halvt"i) OR ("fem og et halvt"i) OR ("fire og et halvt"i)  OR ("tre og et halvt"i) OR ("to og et halvt"i) ;
+SET BEAL-NUM-SME =  ("<beallogát>"i) OR ("<bealovccát>"i) OR  ("<bealgávccát>"i) OR  ("<bealčihččet>"i) OR ("<bealguđat>"i) OR ("<bealviđat>"i) OR ("<bealnjealját>"i)  OR ("<bealgoalmmát>"i) ;
+
+
+SELECT NT-BEAL-NUM-NOB (0 BEAL-NUM-SME LINK *1 (nt) BARRIER WORD - attr) ;  
+REMOVE:fallback NT-BEAL-NUM-NOB (0 BEAL-NUM-SME) ;
 
 
 # Adverbs
