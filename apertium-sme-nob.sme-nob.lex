@@ -1009,6 +1009,9 @@ SELECT:fallback ("fornærme"i) IF  (0 ("<loavkašuhttit>"i)) ;
 SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 ("<.*giella>"i) + acc) ;
 SELECT:fallback ("stelle"i) IF  (0 ("<dikšut>"i)) ;
 
+SELECT ("kollidere"i) IF  (0 ("<beaškkehit>"i) LINK *0 ("<oktii>"i) OR ("<biila>"i)) ;
+SELECT:fallback ("smelle"i) IF  (0 ("<beaškkehit>"i)) ;
+
 
 SELECT ("spille"i) IF  (0 ("<neaktit>"i) LINK *1 acc BARRIER NOT-NPMODADV) ;
 SELECT:fallback ("utøve skuespill"i) IF  (0 ("<neaktit>"i)) ;
@@ -2947,7 +2950,7 @@ SELECT:fallback ("finansiell"i) (0 ("<ruđalaš>"i));
 
 IFF ("-årig"i) (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
 
-SELECT:fallback ("mange"i) (0 ("<eanet>"i) OR ("<eambbo>"i)) (*1 HUMAN BARRIER NOT-PRE-A-N );	
+SELECT ("mange"i) (0 ("<eanet>"i) OR ("<eambbo>"i) LINK 0 (adj attr)) (*1 HUMAN BARRIER NOT-PRE-A-N - cnjcoo );	
 SELECT:fallback ("mye"i) (0 ("<eanet>"i)  OR ("<eambbo>"i));
 	
 ## leage buorre (vær så god)
