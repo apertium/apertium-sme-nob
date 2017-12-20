@@ -420,6 +420,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="vblex">
       <cat-item tags="vblex.*"/>
     </def-cat>
+    <def-cat n="vblex-foc_neg-ge">
+      <cat-item tags="vblex.iv.neg.*.foc_neg-ge.@+FAUXV"/>
+    </def-cat>
     <def-cat n="vblex_abess">
       <cat-item tags="vblex.*.vabess.*"/>
     </def-cat>
@@ -1020,6 +1023,9 @@ And then there are some categories like "month", with all the months.
     </def-attr>
     <def-attr n="a_ger">
       <attr-item tags="ger"/>
+    </def-attr>
+    <def-attr n="persadj">
+      <attr-item tags="persadj"/>
     </def-attr>
     <def-attr n="a_pstv">
       <attr-item tags="pstv"/>
@@ -2793,6 +2799,10 @@ And then there are some categories like "month", with all the months.
       <list-item v="lyst"/>
       <list-item v="samisk"/>
       <list-item v="duodji"/>
+    </def-list>
+    <def-list n="adj.pers"
+              c="adjectives wanting a person in front">
+      <list-item v="stolt"/>
     </def-list>
   </section-def-lists>
 
@@ -10565,6 +10575,13 @@ And then there are some categories like "month", with all the months.
         <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
         <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
           <let><var n="caseprep"/><lit v=""/></let>
+        <choose><when c="lea rámis">
+          <test><and>
+          <in><clip pos="1" side="tl" part="lemh"/><list n="adj.pers"/></in>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal>
+         </and></test>
+          <let><var n="c_gen"/><lit-tag v="GD_pers"/></let>
+        </when></choose>
 
         <choose><when c="de aliduvvui Gonagas Olav bassin.">
           <test><and>
@@ -10632,6 +10649,7 @@ And then there are some categories like "month", with all the months.
                   <clip pos="1" side="tl" part="gen"/>
                   <clip pos="1" side="tl" part="nbr"/>
                   <lit-tag v="3"/>
+                  <clip pos="1" side="tl" part="persadj"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
@@ -10658,6 +10676,7 @@ And then there are some categories like "month", with all the months.
                   <clip pos="1" side="tl" part="gen"/>
                   <clip pos="1" side="tl" part="nbr"/>
                   <lit-tag v="3"/>
+                  <clip pos="1" side="tl" part="persadj"/>
                   <clip pos="1" side="tl" part="lemq"/>
                 </lu>
               </chunk>
@@ -12910,6 +12929,48 @@ And then there are some categories like "month", with all the months.
           </out> </otherwise></choose>
 
             <let><var n="post-verb"/><lit v=""/></let>
+      </action>
+    </rule>
+
+    <rule comment="C[] vblex-foc_neg-ge">
+      <pattern>
+        <pattern-item n="vblex-foc_neg-ge"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_verb-lemma"><with-param pos="1"/></call-macro>
+        <let><var n="pre-verb"/><lit v=""/></let>
+        <let><var n="c_name"/><lit v=""/></let>
+        <out>
+          <chunk name="conj" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="@CVP"/></tag>
+              <tag><lit-tag v="@cnjcoo"/></tag>
+            </tags>
+            <lu>
+              <lit v="og"/>
+              <lit-tag v="cnjcoo"/>
+            </lu>
+          </chunk>
+          <b />
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="SV"/></tag>
+                <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+                <tag><lit-tag v="neg"/></tag>
+                <tag><clip pos="1" side="sl" part="mode"/></tag>
+                <tag><clip pos="1" side="sl" part="modality"/></tag>
+                <tag><clip pos="1" side="tl" part="temps"/></tag>
+                <tag><clip pos="1" side="tl" part="pers"/></tag>
+                <tag><clip pos="1" side="tl" part="nbr"/></tag>
+                <tag><clip pos="1" side="tl" part="animacy"/></tag>
+            </tags>
+            <lu>
+              <lit v="ikke"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
       </action>
     </rule>
 
