@@ -677,7 +677,7 @@ SET PRE-NP-V = prfprc OR prsprc OR der_nomag OR actio OR der_nomact OR (vblex ad
 
 SET NP-MEMBER = PRE-NP-HEAD OR n ;
 
-SET PRE-A-N = (pers gen) OR (pers acc) OR (prn ind) OR num OR (adj ord) OR (prn dem) OR (prn ref gen) OR (prn ref acc) ; # Acc pga av manglende disambiguering tidlig i fila
+SET PRE-A-N = (pers gen) OR (pers acc) OR (prn ind) OR num OR (adj ord) OR (adj attr) OR (prn dem) OR (prn ref gen) OR (prn ref acc) ; # Acc pga av manglende disambiguering tidlig i fila
 
 SET NOT-PRE-A-N = WORD - PRE-A-N ;
 
@@ -884,7 +884,7 @@ SELECT ("fordi"i) (0 ("<go>"i)) (-1 adj + nom) ;
 
 
 SELECT ("når"i) (0 ("<go>"i) LINK *1 indic) ;
-SELECT:fallback ("som"i) (0 ("<go>"i) + cnjsub) ;
+SELECT:fallback ("når"i) (0 ("<go>"i) + cnjsub) ;
 
 #SELECT ("i"i) (0 ("<otná>"i) LINK 1 (sem_time)) ;
 SELECT ("i dag"i) (0 ("<otná>"i) LINK 1 post) ;
@@ -2950,7 +2950,8 @@ SELECT:fallback ("finansiell"i) (0 ("<ruđalaš>"i));
 
 IFF ("-årig"i) (0 ("<jahkásaš>"i)) (1 ("<.*skuvla>"ri));
 
-SELECT ("mange"i) (0 ("<eanet>"i) OR ("<eambbo>"i) LINK 0 (adj attr)) (*1 HUMAN BARRIER NOT-PRE-A-N - cnjcoo );	
+SELECT ("mange"i) (0 ("<eanet>"i) OR ("<eambbo>"i) LINK 0 (adj attr)) (*1 HUMAN + pl BARRIER NOT-PRE-A-N );	
+SELECT ("mange"i) (0 ("<eanet>"i) OR ("<eambbo>"i) LINK 0 (adj attr)) (1 cnjcoo LINK 1 attr LINK *1 HUMAN + pl BARRIER NOT-PRE-A-N );	
 SELECT:fallback ("mye"i) (0 ("<eanet>"i)  OR ("<eambbo>"i));
 	
 ## leage buorre (vær så god)
