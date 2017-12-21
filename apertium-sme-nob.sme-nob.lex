@@ -1233,9 +1233,9 @@ SELECT:fallback ("få"i) (0 ("<beassat>"i));
 # bivdit 0 = be, 1 = spørre, 2 = fiske, 3 = jakte
 SELECT ("be"i) (0 ("<bivdit>"i) LINK *1 qst OR ("<veahkki>"i) OR ("<doarjja>"i) OR (sem_act) + acc BARRIER SV-BOUNDARY);
 SELECT ("be"i) (0 ("<bivdit>"i) LINK 1 ("<ahte>"i) OR ("<veahkki>"i));
-SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*fanas>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r)  OR ("<.*čázádat>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR sem_ani-fish OR ("<reahkká>"i) OR ("<stággu>"r) OR ("<birrajándora>"r) );
+SELECT ("fiske"i) (0 ("<bivdit>"i)) (*0 ("<.*mearra>"r) OR ("<.*fanas>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r)  OR ("<.*čázádat>"r) OR ("<sáibma>"r) OR ("<.*fierbmi>"r)  OR sem_ani-fish OR ("<reahkká>"i) OR ("<stággu>"i) OR ("<birrajándora>"i) OR ("<gonagasreabbá>"i) );
+SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<.*čázádat>"r)  OR ("<sáibma>"i) OR ("<.*fierbmi>"r) OR ("<stággu>"i)  OR sem_ani-fish  OR ("<gonagasreabbá>"i) OR ("<.*reabbábivdu>"ri) );
 SELECT ("jakte"i) (0 ("<bivdit>"i)) (*0 sem_ani LINK 0 acc OR gen );
-SELECT ("fisker"i) (0 ("<bivdi>"i)) (*0 ("<.*mearra>"r) OR ("<.*johka>"r) OR ("<.*jávri>"r) OR ("<.*čázádat>"r)  OR ("<sáibma>"r) OR ("<.*fierbmi>"r) OR ("<stággu>"r)  OR sem_ani-fish );
 SELECT:fallback ("be"i) (0 ("<bivdit>"i));
 SELECT:fallback ("jeger"i) (0 ("<bivdi>"i));
 
@@ -2350,10 +2350,9 @@ SELECT ("studie"i) (0 ("<oahppu>"i) LINK 1 ("<bagadallan>"i));
 SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));
 
 
-SELECT ("fiske"i) (0 ("<bivdu>"i) LINK *0 sem_ani-fish OR ("<reahkká>"i)) ;
+SELECT ("fiske"i) (0 ("<bivdu>"i) LINK *0 sem_ani-fish OR ("<reahkká>"i) OR ("<gonagasreabbá>"i)  OR ("<.*reabbábivdu>"ri)) ;
 SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
 
-SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
 
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
 SELECT ("kjendis"i) (0 ("<beakkán>"i));
