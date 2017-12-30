@@ -2274,7 +2274,7 @@ SELECT ("anmeldelse"i) (0 ("<árvvoštallan>"i) LINK -1 sem_txt + acc OR ("<filb
 SELECT:fallback ("vurdering"i) (0 ("<árvvoštallan>"i));
 
 
-SELECT ("drifsenhet"i) (0 ("<doallu>"i) LINK *0 ("<orohat>"i) OR ("<siida>"i) OR ("<boazu>"i)) ;
+SELECT ("driftsenhet"i) (0 ("<doallu>"i) LINK *0 ("<orohat>"i) OR ("<siida>"i) OR ("<boazu>"i)) ;
 SELECT:fallback ("arrangement"i) (0 ("<doallu>"i)) ;
 
 SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK 1 (arab) OR ("<ovdaolmmoš>"i) OR ("<siida>"i)) ;
@@ -2298,6 +2298,10 @@ SELECT:fallback ("mellomrom"i) (0 ("<gaska>"i));
 SELECT ("sjikt"i) (0 ("<geardi>"i) LINK -1 comp + attr);
 SELECT:fallback ("gang"i) (0 ("<geardi>"i));
 
+SELECT ("tagg"i) (0 ("<gilkor>"i));
+#SELECT:fallback ("navnemerke"i) (0 ("<geardi>"i));
+
+
 SELECT ("besøk"i) (0 ("<guossi>"i) LINK 0 ess);
 SELECT:fallback ("gjest"i) (0 ("<guossi>"i));
 
@@ -2310,7 +2314,7 @@ SELECT:fallback ("gruppe"i) (0 ("<joavku>"i)) ;
 SELECT ("venn"i) (0 ("<olmmái>"i) LINK -1 HUMAN + gen);
 SELECT:fallback ("mann"i) (0 ("<olmmái>"i));
 
-SELECT ("vern"i) (0 ("<suodji>"i) LINK -1 ("<kultuvra>"i) );
+SELECT ("vern"i) (0 ("<suodji>"i) LINK -1 ("<kultuvra>"i) OR cmp );
 SELECT:fallback ("ly"i) (0 ("<suodji>"i));
 
 SELECT ("gård"i) (0 ("<dállu>"i) LINK *0 ("<.*vuoigatvuohta>"r) OR ("<eana>"i));
@@ -2875,6 +2879,10 @@ REMOVE ("fjern"i) (NOT 0 cmp);
 SELECT ("gammel"i) (0 ("<dološ>"i) LINK 0 attr);
 SELECT:fallback ("gammel tid"i) (0 ("<dološ>"i));
 
+SELECT ("menneskelig"i) (0 ("<olmmošlaš>"i) LINK 1 ("<biidnašuvvat>"i));
+SELECT:fallback ("høflig"i) (0 ("<olmmošlaš>"i));
+
+
 SELECT ("fast"i) (0 ("<bissovaš>"i) LINK 1 ("<.*virgi>"ri));
 SELECT:fallback ("vedvarende"i) (0 ("<bissovaš>"i));
 
@@ -2928,6 +2936,7 @@ SELECT ("mangfoldig"i) (0 ("<girjái>"i) LINK 0 attr) (1 HUMAN);
 SELECT:fallback ("spraglet"i) (0 ("<girjái>"i));
 
 
+SELECT ("liten"i) (0 ("<unni>"i) LINK 0 comp + attr LINK 1 ("<doallu>"i) + pl LINK 1 VFIN + pl);
 SELECT ("få"i) (0 ("<unni>"i) LINK 0 comp + attr LINK 1 n + pl);
 SELECT:fallback ("liten"i) (0 ("<unni>"i));
 
