@@ -1315,7 +1315,7 @@ SELECT ("telle"i) (0 ("<lohkat>"i)) (*0 ("<giehta>"i) + pl + com BARRIER SV-BOUN
 SELECT ("telle"i) (0 ("<lohkat>"i)) (*0 sem_ani + pl + acc BARRIER SV-BOUNDARY) ;
 
 
-SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain OR ("<cealkámuš>"i) LINK 0 acc) OR (-1 sem_txt OR sem_domain LINK 0 acc )  OR (1 ("<eksámen>"i))) ;
+SELECT ("lese"i) (0 ("<lohkat>"i)) ((1 sem_txt OR sem_domain OR ("<cealkámuš>"i) OR ("<Ávvir>") LINK 0 acc) OR (-1 sem_txt OR sem_domain LINK 0 acc )  OR (1 ("<eksámen>"i))) ;
 # Son lohká ahte lea buorre doppe.
 
 SELECT:lese-samisk ("lese"i) (0 ("<lohkat>"i)) (1 LANGUAGE LINK 0 acc OR loc) ;
@@ -2800,7 +2800,7 @@ SELECT:fallback ("likeså"i) (0 ("<mađe>"i)) ;
 
 SELECT:fallback ("noensinne"i) (0 ("<goasse>"i)) ;
 
-SELECT:fallback ("på"i) (0 ("<badjelii>"i) + adv) ;
+SELECT:fallback ("over"i) (0 ("<badjelii>"i) + adv) ;
 
 
 SELECT ("halvferdig"i) (0 ("<gaskan>"i) LINK *-1 ("<guođđit>"i) OR ("<vuolgit>"i)) ;

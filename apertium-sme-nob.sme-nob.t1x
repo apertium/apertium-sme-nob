@@ -609,6 +609,10 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="guovttis" tags="n.*.coll.*.gen.*"/>
       <cat-item lemma="guovttis" tags="n.coll.*.gen.*"/>
     </def-cat>
+    <def-cat n="lex-rahkis-attr">
+      <cat-item lemma="ráhkis" tags="adj.*.attr.*"/>
+      <cat-item lemma="ráhkis" tags="adj.attr.*"/>
+    </def-cat>
     <def-cat n="lex-heahti-loc">
       <cat-item lemma="heahti" tags="n.*.sg.loc.*"/>
     </def-cat>
@@ -10781,6 +10785,41 @@ And then there are some categories like "month", with all the months.
           </otherwise>
         </choose>
           <let><var n="caseprep"/><lit v=""/></let>
+      </action>
+    </rule>
+    <rule comment="C[] lex-rahkis-attr nom_head" c="ráhkis lohkki - kjære leser">
+      <pattern>
+        <pattern-item n="lex-rahkis-attr"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="2"/><with-param pos="1"/></call-macro>
+
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_"/></let>
+
+
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <!-- We set use chunk defnes here for both adj and nom,
+                   so that if defnes changes in t2x/t3x, both adj and nom
+                   get the change in t4x -->
+              <lit-tag v="def"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+          </concat>
+        </let>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
 
