@@ -2548,6 +2548,10 @@ SELECT:fallback ("etter"i) (0 ("<maŋis>"i)) ;
 SELECT ("hos"i) (0 ("<luhtte>"i) LINK -1 HUMAN) ;
 SELECT:fallback ("ved"i) (0 ("<luhtte>"i)) ;
 
+SELECT ("på"i) (0 ("<njeaiga>"i) LINK -1 gen LINK *-1 ("<vuodjit>"i) BARRIER SV-BOUNDARY) ;
+SELECT:fallback ("mot"i) (0 ("<njeaiga>"i)) ;
+
+
 SELECT ("blant"i) (0 ("<gaskkas>"i) LINK -1 HUMAN + pl + gen) ;
 SELECT:fallback ("mellom"i) (0 ("<gaskkas>"i)) ;
 
