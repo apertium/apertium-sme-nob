@@ -12293,6 +12293,36 @@ And then there are some categories like "month", with all the months.
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
+    <rule comment="C[] gen-year nom_head" c="jagi 2017 sápmelažžan">
+      <pattern>
+        <pattern-item n="gen-year"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <call-macro n="set_defnes"><with-param pos="2"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+        <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+      </action>
+    </rule>
+    <rule comment="C[] lex-jahki gen-year nom_head" c="jagi 2017 sápmelažžan">
+      <pattern>
+        <pattern-item n="lex-jahki"/>
+        <pattern-item n="gen-year"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v="pre_"/></let>
+        <call-macro n="set_defnes"><with-param pos="3"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+        <append n="pre-nom"><b pos="2"/></append>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
 
     <rule comment="C[L] lex-lohkka lex-uksa" c="dan dahket lohkka uvssaid duohken">
       <pattern>
