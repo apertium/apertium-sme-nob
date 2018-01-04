@@ -2178,6 +2178,8 @@ SELECT:fallback ("halvpart"i) (0 ("<bealli>"i));
 SELECT:fallback ("hete"i) (0 ("<báhkka>"i));
 
 SELECT ("ved"i) (0 ("<muorra>"i) LINK 0 loc);
+SELECT ("ved"i) (0 ("<muorra>"i) LINK *0 ("<cahkkehit>"i) OR ("<omman>"i) OR ("<uvdna>"i) OR ("<goikat>"i) OR ("<buollat>"i) OR ("<buollát>"i));
+SELECT ("ved"i) (0 ("<muorra>"i) LINK -1 ("<njuoskkas>"i));
 SELECT:fallback ("tre"i) (0 ("<muorra>"i));
 
 SELECT:fallback ("fremføring"i) (0 ("<ovdanbuktin>"i));
@@ -2346,6 +2348,9 @@ SELECT:fallback ("velsignelse"i) (0 ("<sivdnideapmi>"i));
 SELECT:fallback ("hage"i) (0 ("<gárdi>"i) LINK -1 ("<mánná>"i) + cmp);
 SELECT:fallback ("gjerde"i) (0 ("<gárdi>"i));
 
+SELECT ("vindusrute"i) (0 ("<láse>"i) + acc LINK *0 ("<rahpat>"i) OR ("<rabastit>"i));
+SELECT:fallback ("glass"i) (0 ("<láse>"i));
+
 
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK 0 pl);
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK -1 ("<ohcat>"i));
@@ -2421,7 +2426,6 @@ SELECT:fallback ("studie"i) (0 ("<lohkan>"i));
 SELECT:fallback ("vei"i) (0 ("<luodda>"i));
 SELECT:fallback ("geværpatron"i) (0 ("<ládda>"i));
 SELECT:fallback ("garn"i) (0 ("<láigi>"i));
-SELECT:fallback ("glass"i) (0 ("<láse>"i));
 SELECT:fallback ("haug"i) (0 ("<látna>"i));
 SELECT:fallback ("venn"i) (0 ("<lávvi>"i));
 SELECT:fallback ("betydning"i) (0 ("<mearkkašupmi>"i));
