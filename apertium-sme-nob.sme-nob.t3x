@@ -2815,6 +2815,39 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: V2-trigger FV adv-lADVL lSPRED   - out: 1 2 det 3 4" c="Eksámenvahku šaddet maid guokte oahpahusbeaivvi = Eksamensuka blir det også to undervisningsdager.">
+      <pattern>
+        <pattern-item n="V2-trigger"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="adv-lADVL"/>
+        <pattern-item n="lSPRED"/>
+      </pattern>
+      <action>
+        <let>
+          <var n="pro"/>
+          <concat>
+            <lit v="^prn"/>
+            <lit-tag v="SN.@SUBJ→.p3.nt.sg.nom"/>
+            <lit v="{^prpers"/>
+            <lit-tag v="prn.pers.p3.nt.sg.nom"/>
+            <lit v="$}$"/>
+            <b/>
+          </concat>
+        </let>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="2"/>
+          <var n="pro"/><var n="pro-blank"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: PR V2-trigger FV lSUBJ  - out: 1 2 3 4
                    (PR) su_mielas leat bohccot => i_hans_oppfatning er reinene
                    Override prodrop rule if we might have a subject to the right">
@@ -4689,6 +4722,42 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+
+   <rule comment="REGLA: CS FV adv-lADVL lSUBJext - out: 1 det 2 3 4" c="Jus leat doarvái studeanttat.. - Hvis det er nok studenter ..">
+      <pattern>
+        <pattern-item n="CS"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="adv-lADVL"/>
+        <pattern-item n="lSUBJext"/>
+      </pattern>
+      <action>
+        <call-macro n="set_adv"><with-param pos="2"/></call-macro>
+<!--        <call-macro n="set_pro_verb_case1"><with-param pos="1"/></call-macro> -->
+        <let>
+          <var n="pro"/>
+          <concat>
+            <lit v="^prn"/>
+            <lit-tag v="SN.@SUBJ→.p3.nt.sg.nom"/>
+            <lit v="{^prpers"/>
+            <lit-tag v="prn.pers.p3.nt.sg.nom"/>
+            <lit v="$}$"/>
+            <b/>
+          </concat>
+        </let>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <var n="pro"/><var n="pro-blank"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+
 
     <!-- <rules: Single chunks -->
    <rule comment="REGLA: FV - out: pro 1
