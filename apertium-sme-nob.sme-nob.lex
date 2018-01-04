@@ -993,6 +993,10 @@ SELECT ("ære"i) IF  (0 ("<gudnejahttit>"i)) (1 acc LINK 0 sem_hum OR (ant) OR (
 
 SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 
+SELECT ("eller"i) IF  (0 ("<ii>"i) LINK 0 (foc_neg-ge))  ;
+SELECT:fallback ("ikke"i) IF  (0 ("<ii>"i)) ;
+
+
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
@@ -1434,7 +1438,7 @@ SELECT ("oppdatere"i) (0 ("<ođastit>"i) LINK 1 ("<:>") OR arab OR sem_date);
 SELECT:fallback ("fornye"i) (0 ("<ođastit>"i));
 
 
-SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK *-1 ("<.*čoahkkin>"r));
+SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK *-1 ("<.*čoahkkin>"r) OR ("<.*njuolggadus>"r));
 SELECT:vedta ("vedta"i) (0 ("<mearridit>"i) LINK 1 (sem_prod-cogn) OR sem_txt) ;
 SELECT:fallback ("bestemme"i) (0 ("<mearridit>"i));
 
@@ -2351,12 +2355,15 @@ SELECT:fallback ("gjerde"i) (0 ("<gárdi>"i));
 SELECT ("vindusrute"i) (0 ("<láse>"i) + acc LINK *0 ("<rahpat>"i) OR ("<rabastit>"i));
 SELECT:fallback ("glass"i) (0 ("<láse>"i));
 
+SELECT ("part"i) (0 ("<oassi>"i) LINK -1 ("<eanaš>"i) OR ("<eanas>"i));
+SELECT:fallback ("del"i) (0 ("<oassi>"i));
+
 
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK 0 pl);
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK -1 ("<ohcat>"i));
 SELECT ("studie"i) (0 ("<oahppu>"i) LINK 1 cnjcoo LINK 1 ("<dutkan>"i));
 SELECT ("studie"i) (0 ("<oahppu>"i) LINK 1 ("<bagadallan>"i));
-SELECT:fallback ("utdanning"i) (0 ("<oahppu>"i));
+SELECT:fallback ("studium"i) (0 ("<oahppu>"i));
 
 
 SELECT ("fiske"i) (0 ("<bivdu>"i) LINK *0 sem_ani-fish OR ("<reahkká>"i) OR ("<gonagasreabbá>"i)  OR ("<.*reabbábivdu>"ri)) ;
@@ -2445,7 +2452,6 @@ SELECT:fallback ("skaft"i) (0 ("<nađđa>"i));
 SELECT:fallback ("grunne"i) (0 ("<njuorra>"i));
 SELECT:fallback ("skinn"i) (0 ("<náhkki>"i));
 SELECT:fallback ("eie"i) (0 ("<oamastus>"i));
-SELECT:fallback ("del"i) (0 ("<oassi>"i));
 SELECT:fallback ("medvirkende"i) (0 ("<oasálaš>"i));
 SELECT:fallback ("ordning"i) (0 ("<ortnet>"i));
 SELECT:fallback ("representant"i) (0 ("<ovddasteaddji>"i));
@@ -2577,7 +2583,7 @@ SELECT:fallback ("for"i) (0 ("<dihte>"i) + post) ;
 
 SELECT:fallback ("fra"i) (0 ("<rájes>"i)) ;
 
-SELECT:fallback ("på grunnlag av"i) (0 ("<vuođul>"i)) ;
+SELECT:fallback ("i henhold til"i) (0 ("<vuođul>"i)) ;
 
 
 # Pronouns, relativisers, conjuctions
