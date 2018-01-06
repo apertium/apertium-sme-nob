@@ -2575,7 +2575,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="DATE"/>
     </def-list>
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
-        <list-item v="del"/>
+<!--        <list-item v="del"/> -->
       <list-item v="sammendrag"/>
       <list-item v="halvpart"/>
       <list-item v="resultat"/>
@@ -3006,6 +3006,12 @@ And then there are some categories like "month", with all the months.
                 <and>
                  <equal><var n="previous-nhead"/><lit v="prosent"/></equal>
                 <not><in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in></not>
+               </and>
+                <and><or>
+                 <equal><var n="previous-nhead"/><lit v="del"/></equal>
+                 <equal><var n="previous-nhead"/><lit v="part"/></equal>
+                 </or>
+                <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal>
                </and>
                 <and>
 	            <or>
