@@ -2095,6 +2095,10 @@ SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 SELECT ("middel"i) (0 ("<doarjja>"i)) (-1 ("<ruoná>"i)) ;
 SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
 
+SELECT ("diakritisk tegn"i) (0 ("<dárkka>"i)) (*-1 ("<merket>"i)) ;
+SELECT:fallback ("pålitelighet"i) (0 ("<dárkka>"i)) ;
+
+
 SELECT ("stamme"i) (0 ("<mátta>"i)) (-1 cmp) ;
 SELECT ("sør"i) (0 ("<mátta>"i) LINK 0 sg) (1 np or sem_plc or ("<sápmi>"i)) ;
 SELECT ("sør"i) (0 ("<mátta>"i) LINK 0 sg) (0 cmp_splitr) ;
