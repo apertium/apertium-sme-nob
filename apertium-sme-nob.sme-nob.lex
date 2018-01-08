@@ -1602,6 +1602,9 @@ SELECT:fallback ("godkjenning"i) (0 ("<dohkkeheapmi>"i) ) ;
 SELECT ("oppbygging"i) (0 ("<huksehus>"i)  LINK -1 sem_txt ) ;
 SELECT:fallback ("bygg"i) (0 ("<huksehus>"i)) ;
 
+SELECT ("tale"i) (0 ("<hupman>"i)  LINK -1 ("<syntehtalaš>"i) ) ;
+SELECT:fallback ("snakk"i) (0 ("<hupman>"i)) ;
+
 
 SELECT ("nødvendig"i) (0 ("<bággu>"i)  LINK 1 inf ) ;
 SELECT:fallback ("tvang"i) (0 ("<bággu>"i)) ;
@@ -2092,9 +2095,11 @@ SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 SELECT ("middel"i) (0 ("<doarjja>"i)) (-1 ("<ruoná>"i)) ;
 SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
 
-SELECT ("sør"i) (0 ("<mátta>"i)) (1 np or sem_plc or ("<sápmi>"i)) ;
-SELECT ("sør"i) (0 ("<mátta>"i)) (0 cmp_splitr) ;
-SELECT:fallback ("sør"i) (0 ("<mátta>"i))  ;	
+SELECT ("stamme"i) (0 ("<mátta>"i)) (-1 cmp) ;
+SELECT ("sør"i) (0 ("<mátta>"i) LINK 0 sg) (1 np or sem_plc or ("<sápmi>"i)) ;
+SELECT ("sør"i) (0 ("<mátta>"i) LINK 0 sg) (0 cmp_splitr) ;
+SELECT:fallback ("sør"i) (0 ("<mátta>"i)  LINK 0 sg)  ;	
+SELECT ("stamme"i) (0 ("<mátta>"i) LINK 0 pl) ;
 
 SELECT ("samskipnad"i) (0 ("<ovttastus>"i)) (-1 ("<studeanta>"i)) ;
 SELECT:fallback ("forbindelse"i) (0 ("<ovttastus>"i))  ;	
