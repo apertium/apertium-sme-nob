@@ -1222,8 +1222,9 @@ SELECT:fallback ("arbeide"i) (0 ("<bargat>"i));
 # beassat 0 = få, 1 = slippe, 2 = komme Refl til
 ## Sii leat beassan eallit dego gonagasat.
 
-#SELECT ("slippe"i) (0 ("<beassat>"i)) (1 ill) ; # (1 (der_nomact loc) OR (actio loc) OR ("<olggos>"i)) ;
-## Mun bessen vuolgimis.
+SELECT ("slippe"i) (0 ("<beassat>"i)) (*1 (@-F←ADVL-ela) OR (@←ADVL-ela) OR DOHKO OR actio + loc BARRIER SV-BOUNDARY) ;
+	#$ Váttis beassat dien bahádagus eret.
+	## Mun bessen vuolgimis.
 SELECT ("komme"i) (0 ("<beassat>"i)) (*1 ill OR DOHKO BARRIER SV-BOUNDARY) ;
 SELECT ("komme"i) (0 ("<beassat>"i) LINK *1 ("<searvái>")) ;
 SELECT ("komme"i) (0 ("<beassat>"i) LINK *1 (@←ADVL-ela) BARRIER SV-BOUNDARY) ;
@@ -1597,6 +1598,9 @@ SELECT:fallback ("kropp"i) (0 ("<gorut>"i) OR ("<rumaš>"i)) ;
 SELECT:fallback ("differensiering"i) (0 ("<sirren>"i) ) ;
 SELECT:fallback ("utgangspunkt"i) (0 ("<álgovuorru>"i) ) ;
 SELECT:fallback ("godkjenning"i) (0 ("<dohkkeheapmi>"i) ) ;
+
+SELECT ("oppbygging"i) (0 ("<huksehus>"i)  LINK -1 sem_txt ) ;
+SELECT:fallback ("bygg"i) (0 ("<huksehus>"i)) ;
 
 
 SELECT ("nødvendig"i) (0 ("<bággu>"i)  LINK 1 inf ) ;
