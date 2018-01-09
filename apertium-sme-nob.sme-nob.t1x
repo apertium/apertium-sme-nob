@@ -2399,6 +2399,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="lys"/>
       <list-item v="lærerutdanning"/>
       <list-item v="mai"/>
+      <list-item v="maktposisjon"/>
       <list-item v="mars"/>
       <list-item v="meningsmåling"/>
       <list-item v="medisin"/>
@@ -4002,8 +4003,9 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="1" side="sl" part="lemh"/><lit v="ságat"/></equal>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal>
             </and></not>
-            <not><and>
-              <equal><clip pos="1" side="tl" part="lemh"/><lit v="samarbeid"/></equal>
+            <not><and><or>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="fred"/></equal>
+              <equal><clip pos="1" side="tl" part="lemh"/><lit v="samarbeid"/></equal></or>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
             </and></not>
             <not><and>

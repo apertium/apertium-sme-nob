@@ -966,6 +966,9 @@ SELECT:ha-pret ("ha"i) IF (0 ("<leat>"i) LINK NOT -1 @SPRED→) (0 (indic pret))
 
 SELECT:Det-er ("være"i) IF (0 ("<leat>"i)) (-1 ("<Dat>") + @SUBJ→) ; # Dat lea …
 
+SELECT:Det-er ("få# være"i) IF (0 ("<bállet>"i)) (1 ("<ráfi>") ) ;
+SELECT:fallback ("ha# ro til"i) IF (0 ("<bállet>"i))  ;
+
 
 SELECT:alle-hadde-samisk ("ha"i) IF (0 ("<leat>"i)) (-1 loc + @ADVL→ - dem) (*1 @←SUBJ - inf) ;
 # Buohkain lei sámegiella eatnigiella
@@ -1608,6 +1611,9 @@ SELECT:fallback ("snakk"i) (0 ("<hupman>"i)) ;
 
 SELECT ("nødvendig"i) (0 ("<bággu>"i)  LINK 1 inf ) ;
 SELECT:fallback ("tvang"i) (0 ("<bággu>"i)) ;
+
+SELECT ("posisjon"i) (0 ("<sajádat>"i)  LINK -1 cmp ) ;
+SELECT:fallback ("beliggenhet"i) (0 ("<sajádat>"i)) ;
 
 SELECT ("veigrøft"i) (0 ("<doaresbealli>"i) LINK *0 sem_veh BARRIER S-BOUNDARY)  ;
 SELECT:fallback ("tvang"i) (0 ("<doaresbealli>"i)) ;
