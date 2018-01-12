@@ -1419,7 +1419,7 @@ SELECT:fallback ("smitte"i) (0 ("<njoammut>"i));
 SELECT:fallback ("sette# opp"i) (0 ("<cegget>"i));
 
 
-SELECT:fallback ("rette# på"i) (0 ("<njulget>"i));
+SELECT:fallback ("rette"i) (0 ("<njulget>"i));
 
 SELECT:ta-en-tur ("ta en tur"i) (0 ("<fitnat>"i) + inf )  ; 
 SELECT:fallback ("være"i) (0 ("<fitnat>"i));
@@ -1791,10 +1791,10 @@ SELECT ("bestemor"i) (0 ("<áhkku>"i));
 # beaivi 0 = dag, 1 = sol
 SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0* ("<báitit>"i) OR ("<luoitádit>"i) OR ("<goardit>"i) OR ("<ligget>"i));
 ## Beaivi báitá.
-SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0 @→N LINK 1 ("<bárdni>"i) OR ("<mánná>"i) OR ("<nieida>"i));
+SELECT ("sol"i) (0 ("<beaivi>"i) LINK 0 @→N LINK 1 ("<bárdni>"i) OR ("<mánná>"i) OR ("<nieida>"i)); 
 SELECT:fallback ("dag"i) (0 ("<beaivi>"i));
 
-SELECT ("oppmerksomhet"i) IF (0 ("<fuomášupmi>"i)) (*-1 ("<giddet>"i) OR ("<olahit>"i) OR ("<oažžut>"i) BARRIER SV-BOUNDARY) ;
+SELECT ("oppmerksomhet"i) IF (0 ("<fuomášupmi>"i)) (*-1 ("<giddet>"i) OR ("<olahit>"i) OR ("<oažžut>"i) OR ("<sávakeahtes>"i) BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("ide"i) IF (0 ("<fuomášupmi>"i)) ;
 
 SELECT ("institutt"i) IF (0 ("<goahti>"i) LINK -1 ("<.*dieđa>"ri)  OR ("<.*fága>"ri)  OR ("<.*dutkan>"ri)   OR ("<servodat>"i) OR ("<jođihit>"i)) ;
@@ -2948,6 +2948,7 @@ SELECT:fallback ("hel"i) (0 ("<ollis>"i)) ; # (1 ("tid"i));
 SELECT:fallback ("sterk"i) (0 ("<nanus>"i));
 
 SELECT:fallback ("virkelig"i) (0 ("<duohta>"i) LINK *-1 ("<dahkat>"i) OR ("<šaddat>"i) BARRIER SV-BOUNDARY);
+SELECT:fallback ("virkelig"i) (0 ("<duohta>"i) LINK 1 ("<máilbmi>"i));
 SELECT:fallback ("sant"i) (0 ("<duohta>"i));
 
 SELECT ("næringsrik"i) (0 ("<beaktil>"i) LINK *0 sem_food);
