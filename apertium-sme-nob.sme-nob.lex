@@ -1003,6 +1003,12 @@ SELECT:fallback ("ikke"i) IF  (0 ("<ii>"i)) ;
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
+SELECT ("renne"i) IF  (0 ("<suohpput>"i))(0* ("<čuoldit>"i) OR ("<vuotta>"i) OR ("<boagán>"i)) ;
+SELECT:fallback ("kaste"i) IF  (0 ("<suohpput>"i)) ;
+
+
+SELECT:fallback ("veve# opplukk"i) IF  (0 ("<čuoldit>"i)) ;
+
 SELECT ("få# plass"i) IF  (0 ("<šiehttat>"i)) (*1 ill BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("avtale"i) IF  (0 ("<šiehttat>"i)) ;
 
@@ -1778,6 +1784,7 @@ SELECT ("bestefar"i) (0 ("<áddjá>"i));
 ## Mus leat guokte ádjá.
 ## Doppe čohkkába guokte ádjá.
 
+SELECT ("opplukk"i) (0 ("<čuoldin>"i));
 
 SELECT ("fattigdom"i) (0 ("<geafi>"i) LINK 0 n);
 
