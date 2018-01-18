@@ -2399,6 +2399,9 @@ SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
 SELECT ("kjendis"i) (0 ("<beakkán>"i));
 
+SELECT ("kaos"i) (0 ("<moivi>"i) LINK -1 ("<muohta>"i) LINK 0 cmp);
+SELECT:fallback ("rot"i) (0 ("<moivi>"i));
+
 
 SELECT ("doktor"i) (0 ("<doavttir>"i) LINK 1 (ant) OR (cog));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
@@ -2468,7 +2471,6 @@ SELECT:fallback ("mål"i) (0 ("<mihttu>"i));
 SELECT:fallback ("mål"i) (0 ("<moalla>"i));
 SELECT:fallback ("smule"i) (0 ("<moallu>"i));
 SELECT:fallback ("vrede"i) (0 ("<moarri>"i));
-SELECT:fallback ("rot"i) (0 ("<moivi>"i));
 SELECT:fallback ("minne"i) (0 ("<muitu>"i));
 SELECT:fallback ("mold"i) (0 ("<muolda>"i));
 SELECT:fallback ("betaling"i) (0 ("<máksu>"i));

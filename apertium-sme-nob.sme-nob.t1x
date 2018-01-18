@@ -129,9 +129,15 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.sem_hum_lang_time.*"/>
       <cat-item tags="n.sem_plc_time.*"/>
     </def-cat>
-    <def-cat n="n.sem_plc">
+    <def-cat n="nom.sem_plc">
       <cat-item tags="n.sem_plc.*"/>
       <cat-item tags="n.*.sem_plc.*"/>
+      <cat-item tags="np.top.*"/>
+    </def-cat>
+    <def-cat n="nom.sem_plc.loc">
+      <cat-item tags="n.sem_plc.*.loc.*"/>
+      <cat-item tags="n.*.sem_plc.*.loc.*"/>
+      <cat-item tags="np.top.*.loc.*"/>
     </def-cat>
     <def-cat n="n.sg.loc">
       <cat-item tags="n.*.sg.loc.*"/>
@@ -6212,7 +6218,7 @@ And then there are some categories like "month", with all the months.
       <pattern>
         <pattern-item n="bealde-modyfier"/>
         <pattern-item n="lex-bealde"/>
-        <pattern-item n="n.sem_plc"/>
+        <pattern-item n="nom.sem_plc"/>
       </pattern>
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
@@ -11018,6 +11024,61 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+    <rule comment="C[] ord adj-sup nom.sem_plc" c="gávccádin buoremus Norggas">
+      <pattern>
+        <pattern-item n="ord"/>
+        <pattern-item n="adj-sup"/>
+        <pattern-item n="nom.sem_plc.loc"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
+
+        <let><var n="defnes"/><lit-tag v="def"/></let>
+
+        <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
+
+        <out>
+          <var n="caseprep"/>
+          <chunk name="pre_pre_adj" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SA"/></tag>
+              <tag><clip pos="2" side="tl" part="syn_label"/></tag>
+              <tag><lit-tag v="def"/></tag>
+              <tag><clip pos="2" side="tl" part="mode"/></tag>
+              <tag><var n="c_gen"/></tag>
+              <tag><clip pos="2" side="sl" part="nbr"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+                <lu>
+                  <lit v="den"/><lit-tag v="det.dem.m"/>
+                 <clip pos="2" side="sl" part="nbr"/>
+                </lu>
+                <b/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <lit-tag v="mf.sp.def"/>
+              <clip pos="1" side="tl" part="lemq"/> 
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_adj"/>
+              <clip pos="2" side="tl" part="grau"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="def"/>
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+            <b pos="2"/>
+         </out>
+       <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
     <rule comment="C[] adj_vblex_attr adj_vblex_attr nom_head
                    –––––
                    ođđa almmolaš bálvalusaide → til nye offentlige tjenester
