@@ -2381,6 +2381,10 @@ SELECT:fallback ("gjerde"i) (0 ("<gárdi>"i));
 SELECT ("vindusrute"i) (0 ("<láse>"i) + acc LINK *0 ("<rahpat>"i) OR ("<rabastit>"i));
 SELECT:fallback ("glass"i) (0 ("<láse>"i));
 
+SELECT ("markeds"i) (0 ("<márkan>"i) LINK 0 cmp);
+SELECT:fallback ("marked"i) (0 ("<márkan>"i));
+
+
 SELECT ("part"i) (0 ("<oassi>"i) LINK -1 ("<eanaš>"i) OR ("<eanas>"i));
 SELECT:fallback ("del"i) (0 ("<oassi>"i));
 
@@ -2394,6 +2398,9 @@ SELECT:fallback ("studium"i) (0 ("<oahppu>"i));
 
 SELECT ("fiske"i) (0 ("<bivdu>"i) LINK *0 sem_ani-fish OR ("<reahkká>"i) OR ("<gonagasreabbá>"i)  OR ("<.*reabbábivdu>"ri)) ;
 SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
+
+SELECT:fallback ("kreps"i) (0 ("<reabbá>"i) LINK -1 BOS)(1 EOS);
+SELECT ("krabbe"i) (0 ("<reabbá>"i));
 
 
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
