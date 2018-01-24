@@ -2138,7 +2138,7 @@ SELECT ("gevinst"i) (0 ("<vuoitu>"i)) (*0 CURRENCY OR ("<goastadit>"i)  OR ("<oa
 SELECT ("gevinst"i) (0 ("<vuoitu>"i) LINK -1 ("<smávis>"i) OR ("<stuoris>"i))  ;	
 SELECT:fallback ("seier"i) (0 ("<vuoitu>"i));
 
-SELECT ("samisk"i) (0 ("<sápmi>"i) + sg LINK 0 @→N) ; #(NEGATE -1 num LINK NOT 2 n + sg + gen OR n + sg + acc);
+SELECT ("samisk"i) (0 ("<sápmi>"i) + sg LINK 0 @→N OR @→A) ; #(NEGATE -1 num LINK NOT 2 n + sg + gen OR n + sg + acc);
 SELECT ("reindriftssamisk"i) (0 ("<boazosápmi>"i) + sg LINK 0 @→N) ;
 SELECT ("sørsamisk"i) (0 ("<máttasápmi>"i) LINK 0 sg + gen);
 SELECT ("sørsamisk"i) (0 ("<lullisápmi>"i) LINK 0 sg + gen);
@@ -2551,7 +2551,9 @@ SELECT ("raide"i) (0 ("<ráidu>"i) LINK *0 ("<boahtit>"i) OR ("<njolgi>"i) OR ("
 SELECT ("kø"i) (0 ("<ráidu>"i) LINK *0 ("<vuordit>"i) OR ("<čuožžut>"i)) ;
 SELECT:fallback ("serie"i) (0 ("<ráidu>"i)) ;
 
-SELECT ("retning"i) (0 ("<guovlu>"i) + ill LINK -1 ("heajos"i) OR (comp) + (attr) OR sem_time OR ("<guhte>"i) OR (sem_event)) ;
+SELECT ("retning"i) (0 ("<guovlu>"i) + ill LINK -1 ("heajos"i) OR (comp) + (attr) OR sem_time OR  (sem_event)) ;
+SELECT ("veg"i) (0 ("<guovlu>"i) + ill LINK -1 ind) ;
+SELECT ("veg"i) (0 ("<guovlu>"i) + ill LINK -1 ("<ge>") LINK -1 ind) ;
 SELECT:fallback ("område"i) (0 ("<guovlu>"i)) ;
 
 SELECT ("live"i) (0 ("<heagga>"i) LINK 0 loc) ;
