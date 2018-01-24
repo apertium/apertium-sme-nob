@@ -847,7 +847,7 @@ SELECT:når ("når"i) (0 ("<go>"i)) (-1 ("<rápmi>"i) + loc) ;
 
 SELECT:så-langt-som ("som"i) (0 ("<go>"i)) (-2 ("så" "<nu>")) (-1 adj OR adv OR ind) (0 cnjsub) ;
 SELECT:som ("som"i) (0 ("<go>"i)) (*-1 ("<seammá>"i) OR ("<liikka>"i) BARRIER SV-BOUNDARY) ;
-SELECT:som ("som"i) (0 ("<go>"i)) (1 ("<eará>"i)) ;
+SELECT:som ("som"i) (0 ("<go>"i)) (1 ("<eará>"i) OR ("<navdit>") OR ("<jáhkkit>")) ;
 SELECT:som ("som"i) (0 ("<go>"i)) (-1 comp LINK -1 ("<beali>"i)) ;
 
 SELECT ("at"i) (0 ("<go>"i)) (0 cnjsub) (-1 ("<maŋŋel>"i) OR ("<ovdal>"i) OR ("<dan dihte>"i) LINK 0 adv) ;
@@ -865,7 +865,7 @@ SELECT ("enn"i) (0 ("<go>"i)) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (1 ("<dušše>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (-1 conneg LINK -1 neg)(NEGATE 1 VFIN) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (*-1 ("<ovdal>"i) OR ("<eará>"i) BARRIER S-BOUNDARY) ;
-SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (*-1 comp BARRIER vblex OR S-BOUNDARY) ;
+SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (*-1 comp BARRIER VFIN OR S-BOUNDARY) ;
 ## Son lea viššaleabbo go mun.
 ## Dat dáidá riggát go mii jáhkkit.
 ## Dii han lehpet eanet veara go ollu cizážat.
@@ -2722,7 +2722,7 @@ SELECT:fallback ("prpers"i) (0 ("<ieš>"i) LINK 0 acc) ;
 SELECT ("hvor mange"i) (0 ("<galle>"i)) (-1 vblex) ;
 #SELECT:fallback ("mange"i) (0 ("<galle>"i)) ;
 
-SELECT ("noe slik"i) (0 ("<dakkár>"i)) (*-1 neg BARRIER S-BOUNDARY) ;
+SELECT ("noe slik"i) (0 ("<dakkár>"i)) (*-1 neg BARRIER S-BOUNDARY)(NOT 0 attr) ;
 SELECT:fallback ("slik"i) (0 ("<dakkár>"i)) ;
 
 SELECT ("forskjellig"i) (0 ("<iešguhte>"i) LINK 0 (foc_pos-ge)) ;
