@@ -996,7 +996,7 @@ SELECT ("ære"i) IF  (0 ("<gudnejahttit>"i)) (1 acc LINK 0 sem_hum OR (ant) OR (
 
 SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 
-SELECT ("eller"i) IF  (0 ("<ii>"i) LINK 0 (foc_neg-ge))(NOT -1 COMMA)  ;
+SELECT ("eller"i) IF  (0 ("<ii>"i) LINK 0 (foc_neg-ge))(NOT -1 COMMA)(*-1 neg)  ;
 SELECT:fallback ("ikke"i) IF  (0 ("<ii>"i)) ;
 
 
