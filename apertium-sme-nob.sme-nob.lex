@@ -1322,7 +1322,7 @@ LIST CURRENCY = "<denara>" "<dollár>" "<euro>" "<kruvdnu>" "<kr>" "<ru>" "<rube
 
 SELECT ("si"i) (0 ("<lohkat>"i)) (0 (←vdic→)) ;
 SELECT ("si"i) (0 ("<lohkat>"i)) (1 ("<:>")) ;
-SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<,>")) ;
+SELECT ("si"i) (0 ("<lohkat>"i)) (-1 ("<,>") OR dem + acc) ;
 
 SELECT ("lese"i) (0 ("<lohkat>"i)) (-1 BOS)(1 ("<eambbo>"i) OR ("<eanet>"i) LINK 1 EOS) ;
 SELECT ("telle"i) (0 ("<lohkat>"i)) (*0 ("<giehta>"i) + pl + com BARRIER SV-BOUNDARY) ;
@@ -2435,6 +2435,7 @@ SELECT:fallback ("norsk"i) (0 ("<dáčča>"i));
 SELECT:fallback ("flokk"i) (0 ("<eallu>"i));
 SELECT:fallback ("hustru"i) (0 ("<eamit>"i));
 
+SELECT:kraft ("kraft"i)(0 ("<fápmu>"i) LINK *-1 ("<bidjat>"i) BARRIER SV-BOUNDARY);
 SELECT:kraft ("kraft"i) (*-1 @SUBJ→ LINK 0 sem_rule) (0 ("<fápmu>"i));
 SELECT:kraft ("kraft"i) (0 ("<fápmu>"i)) (-1 ("<magihkalaš>"i) OR ("<ceavzin>"i));
 SELECT:fallback ("makt"i) (0 ("<fápmu>"i));
@@ -2492,7 +2493,7 @@ SELECT:fallback ("ordning"i) (0 ("<ortnet>"i));
 SELECT:fallback ("representant"i) (0 ("<ovddasteaddji>"i));
 SELECT:fallback ("rett"i) (0 ("<riekti>"i));
 SELECT:fallback ("komma"i) (0 ("<rihkku>"i));
-SELECT:fallback ("trette"i) (0 ("<riidu>"i));
+SELECT:fallback ("krangel"i) (0 ("<riidu>"i));
 SELECT:fallback ("land"i) (0 ("<riika>"i));
 SELECT:fallback ("landsforening"i) (0 ("<riikkasearvi>"i));
 SELECT:fallback ("fyrstikk"i) (0 ("<rišša>"i));
