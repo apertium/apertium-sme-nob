@@ -2990,6 +2990,15 @@ And then there are some categories like "month", with all the months.
                 <var n="caseprep"/><lit v="om"/>
               </let>
             </when>
+            <when c="per">
+              <test><and>
+          <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+           <equal><clip pos="1" side="tl" part="lemh"/><lit v="person"/></equal>
+        </and></test>
+              <let>
+                <var n="caseprep"/><lit v="per"/>
+              </let>
+            </when>
             <when c="hos">
               <test><or>
               <and><or>
