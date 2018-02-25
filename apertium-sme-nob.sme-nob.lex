@@ -1193,6 +1193,7 @@ SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (2 ("<miella>"i) + loc O
 SELECT:maid ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 ("<mii>"i)) ;
 SELECT:jaska ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (*1 ("<oahpis>"i)) ;
 SELECT:jaska ("være"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<jaska>"i)) ;
+SELECT:dego ("virke"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<nu>"i) OR adj + nom) ;
 SELECT:bli ("bli"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 ("<go>"i)) ;
 SELECT:orron-doppe ("bo"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (*1 loc OR DOPPE OR ("<bealde>"i) BARRIER SV-BOUNDARY) ;
 #This rule should have another barrier, a set of all words except TIME-ADV.
