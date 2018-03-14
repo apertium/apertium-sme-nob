@@ -2390,6 +2390,9 @@ SELECT:fallback ("marked"i) (0 ("<márkan>"i));
 SELECT ("part"i) (0 ("<oassi>"i) LINK -1 ("<eanaš>"i) OR ("<eanas>"i));
 SELECT:fallback ("del"i) (0 ("<oassi>"i));
 
+SELECT ("landskap"i) (0 ("<eana>"i) LINK 0 pl);
+SELECT:fallback ("jord"i) (0 ("<eana>"i));
+
 
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK 0 pl);
 SELECT ("studium"i) (0 ("<oahppu>"i) LINK -1 ("<ohcat>"i));

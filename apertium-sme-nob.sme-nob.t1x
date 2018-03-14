@@ -2493,6 +2493,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="utdanningssak"/>
       <list-item v="valgprogram"/>
       <list-item v="vidde"/>
+      <list-item v="virksomhet"/>
     </def-list>
     <def-list n="loc-på" c="Proper place nouns (np.top) get preposition 'i' unless they're in this list.">
       <list-item v="Fagseminar for samisk statistikk"/>
@@ -2767,6 +2768,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="støtte"/>
       <list-item v="søndag"/>
       <list-item v="takk"/>
+      <list-item v="tid"/>
       <list-item v="tirsdag"/>
       <list-item v="torsdag"/>
       <list-item v="trygghet"/>
@@ -3774,10 +3776,12 @@ And then there are some categories like "month", with all the months.
           <let><var n="prn_nbr"/><lit-tag v="sp"/></let>
         </when>
         <when c="sg/pl">
-          <test><or>
+          <test><and>
+            <not><equal><clip pos="2" side="tl" part="lemh"/><lit v="hun/han"/></equal></not>
+	          <or>
             <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
             <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
-          </or></test>
+          </or></and></test>
           <let><var n="prn_nbr"/><clip pos="2" side="tl" part="nbr"/></let>
         </when>
         <when c="Assume we can generate all sme dualis forms">
@@ -4208,6 +4212,7 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD_pers"/></equal>
             </and></test>
             <let><clip pos="1" side="tl" part="lemh"/><lit v="hun/han"/></let>
+            <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
           </when></choose>
         </when>
      </choose>
