@@ -1335,7 +1335,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               </when></choose>
             </when>
             <when c="en">
-              <test><and>
+              <test><or><and>
                 <not><equal><clip pos="2" part="lemh"/><lit v="neste"/></equal></not>
                 <equal><clip pos="1" part="nbr"/><lit-tag v="sg"/></equal>
                 <equal><clip pos="1" part="art"/><lit-tag v="ind"/></equal>
@@ -1347,7 +1347,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
                 <not><equal><var n="former-chunk"/><lit-tag v="unknown"/></equal></not>
                 <!-- Never at the beginning of sentences (do we want that?): -->
                 <!-- <not><equal><var n="former-chunk"/><lit-tag v="sent"/></equal></not> -->
-              </and></test>
+              </and>
+                <equal><clip pos="2" part="lemh"/><lit v="del"/></equal></or>
+               </test>
               <out>
                 <lu>
                   <get-case-from pos="1"><lit v="en"/></get-case-from>
@@ -1440,9 +1442,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
 
     <rule comment="CHUNK: nom_caseprep_nom">
       <pattern><pattern-item n="nom_caseprep_nom"/></pattern>
-      <action>
+      <action> 
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="1"/></call-macro>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="3"/></call-macro>
+        <call-macro n="maybe_out_det2">    <with-param pos="0"/><with-param pos="1"/></call-macro>
         <out>
           <lu><clip pos="1" part="whole"/></lu>
           <b pos="1"/>

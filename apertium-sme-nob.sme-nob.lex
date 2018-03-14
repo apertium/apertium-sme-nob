@@ -1288,6 +1288,7 @@ SELECT:vedta ("vedta"i) (0 ("<dohkkehit>"i)) ((*-1 (sem_rule)) OR (*1 (sem_rule)
 SELECT:fallback ("godkjenne"i) (0 ("<dohkkehit>"i)) ;
 
 SELECT:anmelde ("anmelde"i) (0 ("<váidit>"i) LINK 0 der_pass) ((-1 sem_hum OR HUMAN OR coll LINK 0 nom)) ;
+SELECT:anmelde ("anmelde"i) (0 ("<váidit>"i)) ((*-1 ("<politiija>"i) LINK 0 nom)) ;
 SELECT:fallback ("klage"i) (0 ("<váidit>"i)) ;
 
 
