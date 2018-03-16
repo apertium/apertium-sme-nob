@@ -2195,6 +2195,10 @@ SELECT:fallback ("senter"i) (0 ("<guovddáš>"i));
 SELECT:fallback ("skive"i) (0 ("<skearru>"i));
 SELECT:fallback ("jernbane"i) (0 ("<ruovdemáđidja>"i));
 
+SELECT ("løype"i) (0 ("<máđidja>"i) LINK -1 ("<dihkká>"i));
+SELECT:fallback ("vei"i) (0 ("<máđidja>"i));
+
+
 SELECT ("pensjon"i) (0 ("<ealáhat>"i) LINK 0 ill LINK *-1 ("<mannat>"i) OR ("<báhcit>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("beite"i) (0 ("<skearru>"i));
 
