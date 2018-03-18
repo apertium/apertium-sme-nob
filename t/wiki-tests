@@ -109,6 +109,7 @@ summary () {
 echo_dpkg_version () {
     command -V dpkg-query &>/dev/null &&
         pkg=$(dpkg-query -S "${PWD}") &&
+        pkg="${pkg%%, *}" &&
         dpkg-query -s "${pkg%%:*}" | grep ^Version
 }
 
