@@ -32,6 +32,22 @@ htmlSanity () {
     return 0
 }
 
+capTimestamp () {
+    local -r testtype=$1
+    # If the file is newer than when it was committed, the timestamp
+    # is wrong (based on clone time rather than server wget time)
+    (
+        cd "$(dirname "$0")"
+        committs=$(git log -1 --format=format:%ct "${testtype}") || return
+        filets=$(stat -c%Y "${testtype}")
+        if [[ $filets -gt $committs ]]; then
+	    echo "Setting ${testtype} timestamp back to time of its last commit ($(date -d@"${committs}"))" >&2
+            touch -d@"${committs}" "${testtype}"
+        fi
+    )
+
+}
+
 fetchtests () {
     local -r update=$1
     local -r testtype=$2
@@ -41,6 +57,7 @@ fetchtests () {
         command rm "$(dirname "$0")/${testtype}"
     fi
     if ${update}; then
+        capTimestamp "${testtype}"
         # Download as e.g. Regression_tests (without .html); the -N
         # ensures we don't re-download unless server version changed.
         if ( cd "$(dirname "$0")" && wget -N -q "${BASEURL}/${testtype}" && htmlSanity "${testtype}" ); then
