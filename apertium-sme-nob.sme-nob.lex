@@ -2972,6 +2972,7 @@ SELECT:fallback ("fersk"i) (0 ("<varas>"i));
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
 SELECT ("helhetlig"i) (0 ("<ollislaš>"i));
 
+SELECT:fallback ("full"i) (0 ("<ollis>"i) LINK 1 ("<áigi>"i)) ; # (1 ("tid"i));
 SELECT:fallback ("hel"i) (0 ("<ollis>"i)) ; # (1 ("tid"i));
 
 SELECT:fallback ("sterk"i) (0 ("<nanus>"i));
