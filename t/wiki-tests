@@ -68,7 +68,7 @@ fetchtests () {
         else
             # If capTimestamp failed, we unconditionally download a
             # new version, don't take any chances:
-            get_html () { wget -q -O "${BASEURL}/${testtype}"; }
+            get_html () { wget -q -O "${testtype}" "${BASEURL}/${testtype}"; }
         fi
         # Download as e.g. Regression_tests (without .html)
         if ( cd "$(dirname "$0")" && get_html && htmlSanity "${testtype}" ); then
