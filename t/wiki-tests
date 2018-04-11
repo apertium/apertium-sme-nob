@@ -34,6 +34,10 @@ htmlSanity () {
 
 capTimestamp () {
     local -r testtype=$1
+    if [[ "$(uname -s)" = Darwin ]]; then
+        # date/touch/stat don't support seconds-since-epoch on macos
+        return 1;
+    fi
     # If the file is newer than when it was committed, the timestamp
     # is wrong (based on clone time rather than server wget time)
     (
@@ -57,10 +61,17 @@ fetchtests () {
         command rm "$(dirname "$0")/${testtype}"
     fi
     if ${update}; then
-        capTimestamp "${testtype}"
-        # Download as e.g. Regression_tests (without .html); the -N
-        # ensures we don't re-download unless server version changed.
-        if ( cd "$(dirname "$0")" && wget -N -q "${BASEURL}/${testtype}" && htmlSanity "${testtype}" ); then
+        if capTimestamp "${testtype}"; then
+            # The -N ensures we don't re-download unless server
+            # version changed:
+            get_html () { wget -q -N "${BASEURL}/${testtype}"; }
+        else
+            # If capTimestamp failed, we unconditionally download a
+            # new version, don't take any chances:
+            get_html () { wget -q -O "${BASEURL}/${testtype}"; }
+        fi
+        # Download as e.g. Regression_tests (without .html)
+        if ( cd "$(dirname "$0")" && get_html && htmlSanity "${testtype}" ); then
 	    command cp "$(dirname "$0")/${testtype}" "${html}"
 	else
             # Only cp to e.g. Regression_tests.html on success – that
