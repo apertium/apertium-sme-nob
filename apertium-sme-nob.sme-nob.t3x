@@ -3951,7 +3951,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
-    <rule comment="REGLA: ADVLr ADVLr aadv-FV IV - out: 1 3 pro 2
+    <rule comment="REGLA: ADVLr ADVLr adv-FV IV - out: 1 3 pro 2
                    Ná divrasii in leat goassege oastán bensiinna - har jeg ikke">
       <pattern>
         <pattern-item n="ADVLr"/>
@@ -3976,6 +3976,25 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
+    <rule comment="REGLA: ADVLr adv-FV IV - out: 1 3 det 2" c="Nu ii leat dáhpáhuvvan 567 jahkái. - Slik har det ikke skjedd på ..">
+      <pattern>
+        <pattern-item n="ADVLr"/>
+        <pattern-item n="adv-FV"/>
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_pro_verb_case1"><with-param pos="2"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <var n="pro-blank"/><var n="pro"/>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
    <rule comment="REGLA: adv-FV IV lSUBJext - out: det 2 1 3" c=" eai leat erohusat.. -  det er ikke forskjeller ..">
       <pattern>
         <pattern-item n="adv-FV"/>
@@ -4029,6 +4048,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+
 
     <rule comment="REGLA: adv-FV.neg IV adv-FV-added IV - out: pro 2 1 3 4
                    Ii lean čállimin  => h_n var ikke i ferd med å skrive
