@@ -4373,6 +4373,8 @@ And then there are some categories like "month", with all the months.
           </test>
           <let><var n="main-verb-pasv"/><lit v="pasv"/></let>
         </when>
+            <otherwise>
+	            <let><var n="main-verb-pasv"/><lit v=""/></let></otherwise>
       </choose>
       <choose>
         <when c="M[V] set main-verb-sl">
