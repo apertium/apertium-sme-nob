@@ -246,7 +246,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="prn.itg.*"/>
     </def-cat>
     <def-cat n="prn.pers.du">
-      <cat-item tags="prn.pers.*.du.nom.@SUBJ→"/>
+      <cat-item tags="prn.pers.*.du.*"/>
     </def-cat>
     <def-cat n="prn.pers">
       <cat-item tags="prn.pers.*"/>
@@ -10548,6 +10548,26 @@ And then there are some categories like "month", with all the months.
         <let><clip pos="2" side="tl" part="nbr"/><lit v=""/></let>
 	    </when>
         </choose>
+        <choose>
+	    <when>
+	    <test><and>
+		    <or>
+		    <equal><clip pos="2" side="tl" part="lemh"/><lit v="far"/></equal>
+		    <equal><clip pos="2" side="tl" part="lemh"/><lit v="mor"/></equal>
+		    <equal><clip pos="2" side="tl" part="lemh"/><lit v="søster"/></equal>
+		    <equal><clip pos="2" side="tl" part="lemh"/><lit v="bror"/></equal>
+		    </or>
+		    <or>
+		    <equal><clip pos="1" side="sl" part="pers"/><lit-tag v="p1"/></equal>
+		    <equal><clip pos="1" side="sl" part="pers"/><lit-tag v="p2"/></equal>
+		    </or>
+		    </and></test>
+              <let><var n="defnes"/><lit-tag v="ind"/></let>
+	    </when>
+         <otherwise>
+              <let><var n="defnes"/><lit-tag v="def"/></let>
+         </otherwise>
+        </choose>
 
         <out>
           <chunk name="nom_conj_nom" case="caseFirstWord">
@@ -10581,7 +10601,7 @@ And then there are some categories like "month", with all the months.
               <clip pos="2" side="tl" part="a_nom"/>
               <clip pos="2" side="tl" part="gen"/>
               <clip pos="2" side="tl" part="nbr"/>
-              <lit-tag v="ind"/>
+              <var n="defnes"/>
               <clip pos="2" side="tl" part="lemq"/>
             </lu>
           </chunk>

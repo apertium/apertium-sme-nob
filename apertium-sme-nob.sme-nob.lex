@@ -2353,7 +2353,7 @@ SELECT:fallback ("insekt"i) (0 ("<divri>"i));
 SELECT ("lag"i) (0 ("<joavku>"i) LINK *0 ("<čiekčat>"i) OR ("<divišuvdna>"i) OR ("<ráidočiekčan>"i) OR ("<čiekčan>"i) OR ("<čiekčat>"i) OR ("<čiekči>"i));
 SELECT:fallback ("gruppe"i) (0 ("<joavku>"i)) ;
 
-SELECT ("venn"i) (0 ("<olmmái>"i) LINK -1 HUMAN + gen);
+SELECT ("venn"i) (0 ("<olmmái>"i) LINK -1 HUMAN + gen OR pers + du);
 SELECT:fallback ("mann"i) (0 ("<olmmái>"i));
 
 SELECT ("vern"i) (0 ("<suodji>"i) LINK -1 ("<kultuvra>"i) OR cmp );

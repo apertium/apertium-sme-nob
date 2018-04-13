@@ -38,6 +38,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
    <def-cat n="default">
       <cat-item lemma="default" tags="*"/>
     </def-cat>
+   <def-cat n="vdic">
+      <cat-item lemma="verb" tags="SV.*.←vdic→.*"/>
+    </def-cat>
    <def-cat n="rquot">
       <cat-item lemma="rquot" tags="*"/>
     </def-cat>
@@ -1667,6 +1670,25 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
 
     <!-- <rules: maybe-SUBJr ADVL* FV IV* -->
+    <rule comment="REGLA: comma SUBJr vdic  - out: 1 3 2" c=".. , Guttorm cealká.">
+      <pattern>
+        <pattern-item n="comma"/>
+        <pattern-item n="SUBJr"/>
+        <pattern-item n="vdic"/>
+      </pattern>
+      <action>
+        <call-macro n="modify_GD_ND_subj2"><with-param pos="2"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="3"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
     <rule comment="REGLA: V2-trigger maybe-SUBJr FV  - out: 1 3 2
                    V2-rule
                    -----
