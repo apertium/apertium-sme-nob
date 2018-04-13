@@ -946,7 +946,7 @@ SELECT:fallback ("enda"i) IF (0 ("<vel>"i))  ;
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
 SELECT:adj ("være"i) IF (0 ("<leat>"i) LINK 1 ("<lihkku>"i) LINK 0 (←ext→)) ; # mus lea lihkku - jeg er heldig
 SELECT:aux ("ha"i) IF (0 ("<leat>"i) LINK 1 ("<dáhpáhuvvat>"i) OR ("<leat>"i))  ; 
-SELECT:aux (agreem-pro) IF (0 ("<leat>"i) LINK 1 ("<dáhpáhuvvat>"i))  ; 
+SELECT:aux (agreem-pro) IF (0 ("<leat>"i) LINK *1 ("<dáhpáhuvvat>"i) OR ("<leat>"i) OR (agreem-pro) BARRIER NOT-ADV)  ; 
 SELECT:aux ("være"i) IF (0 ("<leat>"i) LINK 1 (agreem-pro))  ; 
 
 SELECT ("måtte"i) IF (0 ("<leat>"i) LINK -1 loc + HUMAN) (1 inf) ;
