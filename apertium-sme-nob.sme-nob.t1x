@@ -2898,6 +2898,26 @@ And then there are some categories like "month", with all the months.
       <modify-case><clip pos="2" side="tl" part="lemh"/><var n="tmp"/></modify-case>
     </def-macro>
 
+    <def-macro n="set_neverdet" npar="1">
+      <choose><when>
+        <test>
+	  <or>
+	    <and>
+          <in><clip pos="1" side="tl" part="a_sem"/><list n="determinerless_sem"/></in>
+          <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="determiner-although-determinerless_sem"/></in></not>
+            </and>
+	    <equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="sist"/></equal>
+	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="ovddit"/></equal>
+	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="boahtte"/></equal>
+	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="olu"/></equal>
+	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="ollu"/></equal>
+	    <in><clip pos="1" side="tl" part="lemh"/><list n="determinerless_lem"/></in>
+	  </or>
+	</test>
+        <let><var n="c_neverdet"/><lit-tag v="neverdet"/></let>
+      </when></choose>
+      <append n="c_neverdet"><clip pos="1" side="tl" part="a_maydetind"/></append>
+    </def-macro>
 
     <def-macro n="set_foc-word" npar="1"
                c="arg.1: noun, pronoun">
@@ -4604,27 +4624,6 @@ And then there are some categories like "month", with all the months.
           </append>
         </otherwise>
       </choose>
-    </def-macro>
-
-    <def-macro n="set_neverdet" npar="1">
-      <choose><when>
-        <test>
-	  <or>
-	    <and>
-          <in><clip pos="1" side="tl" part="a_sem"/><list n="determinerless_sem"/></in>
-          <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="determiner-although-determinerless_sem"/></in></not>
-            </and>
-	    <equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="sist"/></equal>
-	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="ovddit"/></equal>
-	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="boahtte"/></equal>
-	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="olu"/></equal>
-	    <equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="ollu"/></equal>
-	    <in><clip pos="1" side="tl" part="lemh"/><list n="determinerless_lem"/></in>
-	  </or>
-	</test>
-        <let><var n="c_neverdet"/><lit-tag v="neverdet"/></let>
-      </when></choose>
-      <append n="c_neverdet"><clip pos="1" side="tl" part="a_maydetind"/></append>
     </def-macro>
 
     <!-- Output macros: -->
@@ -10880,7 +10879,7 @@ And then there are some categories like "month", with all the months.
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><lit-tag v="@A←"/></tag>
-              <tag><clip pos="1" side="tl" part="defnes"/></tag>
+              <tag><clip pos="1" side="tl" part="art"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="gen"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
@@ -10957,7 +10956,7 @@ And then there are some categories like "month", with all the months.
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><clip pos="1" side="sl" part="syn_label"/></tag>
-              <tag><clip pos="1" side="tl" part="defnes"/></tag>
+              <tag><clip pos="1" side="tl" part="art"/></tag>
               <tag><clip pos="1" side="sl" part="mode"/></tag>
               <tag><clip pos="1" side="tl" part="gen"/></tag>
               <tag><clip pos="1" side="tl" part="nbr"/></tag>
@@ -11221,12 +11220,12 @@ And then there are some categories like "month", with all the months.
               <clip pos="1" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="1"/>
-            <lu>
+            <lit v="^"/>
               <clip pos="2" side="tl" part="lemh"/>
               <clip pos="2" side="tl" part="a_conj"/>
               <clip pos="2" side="tl" part="a_part"/>
               <clip pos="2" side="tl" part="lemq"/>
-            </lu>
+            <lit v="$"/>
             <b pos="2"/>
             <lit v="^"/>
               <clip pos="3" side="tl" part="lemh"/>
@@ -11285,12 +11284,12 @@ And then there are some categories like "month", with all the months.
               <clip pos="2" side="tl" part="lemq"/>
             <lit v="$"/>
             <b pos="2"/>
-            <lu>
+            <lit v="^"/>
               <clip pos="3" side="tl" part="lemh"/>
               <clip pos="3" side="tl" part="a_conj"/>
               <clip pos="3" side="tl" part="a_part"/>
               <clip pos="3" side="tl" part="lemq"/>
-            </lu>
+            <lit v="$"/>
             <b pos="3"/>
             <lit v="^"/>
               <clip pos="4" side="tl" part="lemh"/>
