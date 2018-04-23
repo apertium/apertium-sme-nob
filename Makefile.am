@@ -190,20 +190,28 @@ $(PREFIX1).val.bin: $(BASENAME).$(PREFIX1).val
 ## Structural transfer rules
 ###############################################################################
 
+define ap-transfer-lint =
+@( command -v apertium-preprocess-transfer-bytecode-j >/dev/null && apertium-preprocess-transfer-bytecode-j $< /dev/null ) || true
+endef
+
 $(PREFIX1).t1x.bin: $(BASENAME).$(PREFIX1).t1x
 	apertium-validate-transfer $<
 	apertium-preprocess-transfer $< $@
+# Not using ap-transfer-lint for t1x yet: https://github.com/apertium/lttoolbox-java/issues/2
 
 $(PREFIX1).t2x.bin: $(BASENAME).$(PREFIX1).t2x
 	apertium-validate-interchunk $<
+	$(ap-transfer-lint)
 	apertium-preprocess-transfer $< $@
 
 $(PREFIX1).t3x.bin: $(BASENAME).$(PREFIX1).t3x
 	apertium-validate-interchunk $<
+	$(ap-transfer-lint)
 	apertium-preprocess-transfer $< $@
 
 $(PREFIX1).t4x.bin: $(BASENAME).$(PREFIX1).t4x
 	apertium-validate-postchunk $<
+	$(ap-transfer-lint)
 	apertium-preprocess-transfer $< $@
 
 
