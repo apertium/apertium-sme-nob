@@ -2111,6 +2111,11 @@ SELECT:lang-speakers (".*talende"ri) (0 ("<.*giella>"ri) LINK 0 n + pl) ;
 SELECT ("nok"i) (0 ("<doarvi>"i)) (0 ill) ;
 SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
 
+SELECT ("milepæl"i) (0 ("<olahus>"i)) (1 ill LINK 0 HUMAN OR prn) ;
+SELECT:fallback ("rekord"i) (0 ("<olahus>"i)) ;
+
+
+
 SELECT ("middel"i) (0 ("<doarjja>"i)) (-1 ("<ruoná>"i)) ;
 SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
 
@@ -2363,7 +2368,7 @@ SELECT ("gård"i) (0 ("<dállu>"i) LINK *0 ("<.*vuoigatvuohta>"r) OR ("<eana>"i)
 SELECT:fallback ("hus"i) (0 ("<dállu>"i));
 
 SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK -1 HUMAN  OR ("<beaivi>"i) LINK 0 @→N);
-SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK -1 COPULAS LINK *-1 ←hab→ LINK 0 HUMAN);
+SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK *-1 COPULAS BARRIER NOT-NPMOD LINK *-1 ←hab→ LINK 0 HUMAN);
 SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
 
 SELECT ("tiltak"i) (0 ("<doaibma>"i) LINK -1 cmp) ;
