@@ -1675,7 +1675,8 @@ SELECT:fallback ("kontroll"i) (0 ("<dárkkisteapmi>"i)) ;
 SELECT ("bane"i) (0 ("<šillju>"i))(*0 ("<čiekči>"i) OR ("<čiekčat>"i)) ;
 SELECT:fallback ("gårdsplass"i) (0 ("<šillju>"i)) ;
 
-SELECT:fallback ("lengde"i) (0 ("<guhkkodat>"i)) ;
+SELECT ("lengde"i) (0 ("<guhkkodat>"i) LINK *0 ("<mehter>"i) OR ("<kilomehter>"i)) ;
+SELECT:fallback ("varighet"i) (0 ("<guhkkodat>"i)) ;
 
 
 SELECT ("heldig"i) (0 ("<lihkku>"i) LINK 0 (←ext→) LINK *-1 ←hab→) ;
