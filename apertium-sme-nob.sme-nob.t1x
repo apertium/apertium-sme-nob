@@ -1110,6 +1110,7 @@ And then there are some categories like "month", with all the months.
     <def-attr n="a_num">
       <attr-item tags="num"/>
       <attr-item tags="det.qnt"/>
+      <attr-item tags="num.arab"/>
     </def-attr>
     <def-attr n="a_cmp">
       <attr-item tags="cmp"/>
@@ -2981,7 +2982,7 @@ And then there are some categories like "month", with all the months.
               <test>
               <and>
            <not><and>
-              <equal><var n="seen_num"/><lit-tag v="num"/></equal>
+              <begins-with><var n="seen_num"/><lit-tag v="num"/></begins-with>
                <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
               </and></not>
               <or>
@@ -3428,7 +3429,7 @@ And then there are some categories like "month", with all the months.
                     </or>
                   </and>
                   <and>
-                    <equal><var n="seen_num"/><lit-tag v="num"/></equal>
+                    <begins-with><var n="seen_num"/><lit-tag v="num"/></begins-with>
                     <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_time"/></in>
                     <not><equal caseless="yes"><var n="main-verb-sl"/><lit v="dubmet"/></equal></not>
                   </and>
@@ -3958,7 +3959,7 @@ And then there are some categories like "month", with all the months.
           <choose c="cmp tags">
             <when c="Remove dash from spelled out numbers preceding non-numbers (tiåret, not ti-året)">
               <test><and>
-                <equal><clip pos="1" side="sl" part="a_num"/><lit-tag v="num"/></equal>
+               <begins-with><clip pos="1" side="sl" part="a_num"/><lit-tag v="num"/></begins-with>
                 <equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal>
               </and></test>
               <let><clip pos="1" side="tl" part="a_cmp"/><lit v=""/></let>
@@ -9285,6 +9286,10 @@ And then there are some categories like "month", with all the months.
                 <and>
                 <ends-with><clip pos="1" side="tl" part="lemh"/><lit v="%"/></ends-with>
                 <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+                </and>
+                <and>
+                <equal><clip pos="2" side="sl" part="a_sem"/><lit-tag v="sem_domain"/></equal>
+                <equal><clip pos="1" side="sl" part="a_num"/><lit-tag v="num.arab"/></equal>
                 </and>
               </or>
             </and></test>
