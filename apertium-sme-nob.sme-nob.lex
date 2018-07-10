@@ -112,7 +112,7 @@ SET TIME-N = TIME-N-SET - NOT-TIME ;
 
 LIST HUMAN = sem_hum sem_mal sem_fem cog ant sem_sur pers nomag der_nomag ;
 
-LIST LANGUAGE = ("<.*giella>"ri n) ("<.*giel>"ri n) ("<.*giel>"ri adj) "<dárrolaš>"i "<nuortalaš>"i "<oarjelsámegiel>"i "<sámegiel>"i "<sápmelaš>"i "<ubmisámegiel>"i ;
+SET LANGUAGE = (sem_lang) OR ("<.*giel>"ri n) OR ("<dárrolaš>"i) OR ("<nuortalaš>"i) OR ("<sápmelaš>"i) ;
 
 #!! * Sets for Morphosyntactic properties
 # --------------------------
@@ -1022,8 +1022,12 @@ SELECT ("trakassere"i) IF  (0 ("<loavkašuhttit>"i) LINK -1 ("<seksualálaš>"i)
 SELECT:fallback ("fornærme"i) IF  (0 ("<loavkašuhttit>"i)) ;
 
 
-SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 ("<.*giella>"i) + acc) ;
+SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 sem_lang + acc) ;
 SELECT:fallback ("stelle"i) IF  (0 ("<dikšut>"i)) ;
+
+SELECT ("videreføre"i) IF  (0 ("<fievrridit>"i) LINK *0 sem_lang + acc) ;
+SELECT:fallback ("frakte"i) IF  (0 ("<fievrridit>"i)) ;
+
 
 SELECT ("kollidere"i) IF  (0 ("<beaškkehit>"i) LINK *0 ("<oktii>"i) OR ("<biila>"i)) ;
 SELECT:fallback ("smelle"i) IF  (0 ("<beaškkehit>"i)) ;
@@ -2106,7 +2110,7 @@ SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
 ## Oválavuodjima loahppavuorus golbma falimusa vulget oktanaga čáhcebána ala ja vudjet vihtta 	rieggá 	boijaid birra .
 SELECT:fallback ("sirkel"i) (0 ("<riekkis>"i));
 
-SELECT:lang-speakers (".*talende"ri) (0 ("<.*giella>"ri) LINK 0 n + pl) ;
+SELECT:lang-speakers (".*talende"ri) (0 sem_lang LINK 0 n + pl) ;
 # not sure about this analysis, but it does give nicer translations
 
 SELECT ("nok"i) (0 ("<doarvi>"i)) (0 ill) ;
