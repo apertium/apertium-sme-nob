@@ -2478,7 +2478,10 @@ SELECT:fallback ("butikk"i) (0 ("<gávpi>"i));
 SELECT:fallback ("herre"i) (0 ("<hearrá>"i));
 SELECT:fallback ("pynt"i) (0 ("<hearva>"i));
 SELECT:fallback ("vestsame"i) (0 ("<hoammá>"i));
+
+SELECT:tale ("tale"i)(0 ("<hállan>"i) LINK *0 ("<.*giella>"ri));
 SELECT:fallback ("bøy"i) (0 ("<hállan>"i));
+
 SELECT:fallback ("kjæreste"i) (0 ("<irgi>"i));
 SELECT:fallback ("ektemann"i) (0 ("<isit>"i));
 SELECT:fallback ("forstand"i) (0 ("<jierbmi>"i));
