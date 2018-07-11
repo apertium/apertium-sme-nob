@@ -112,7 +112,7 @@ SET TIME-N = TIME-N-SET - NOT-TIME ;
 
 LIST HUMAN = sem_hum sem_mal sem_fem cog ant sem_sur pers nomag der_nomag ;
 
-LIST LANGUAGE = ("<.*giella>"ri n) ("<.*giel>"ri n) ("<.*giel>"ri adj) "<dárrolaš>"i "<nuortalaš>"i "<oarjelsámegiel>"i "<sámegiel>"i "<sápmelaš>"i "<ubmisámegiel>"i ;
+SET LANGUAGE = (sem_lang) OR ("<.*giel>"ri n) OR ("<dárrolaš>"i) OR ("<nuortalaš>"i) OR ("<sápmelaš>"i) ;
 
 #!! * Sets for Morphosyntactic properties
 # --------------------------
@@ -1022,8 +1022,12 @@ SELECT ("trakassere"i) IF  (0 ("<loavkašuhttit>"i) LINK -1 ("<seksualálaš>"i)
 SELECT:fallback ("fornærme"i) IF  (0 ("<loavkašuhttit>"i)) ;
 
 
-SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 ("<.*giella>"i) + acc) ;
+SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 sem_lang + acc) ;
 SELECT:fallback ("stelle"i) IF  (0 ("<dikšut>"i)) ;
+
+SELECT ("videreføre"i) IF  (0 ("<fievrridit>"i) LINK *0 sem_lang + acc) ;
+SELECT:fallback ("frakte"i) IF  (0 ("<fievrridit>"i)) ;
+
 
 SELECT ("kollidere"i) IF  (0 ("<beaškkehit>"i) LINK *0 ("<oktii>"i) OR ("<biila>"i)) ;
 SELECT:fallback ("smelle"i) IF  (0 ("<beaškkehit>"i)) ;
@@ -1675,7 +1679,8 @@ SELECT:fallback ("kontroll"i) (0 ("<dárkkisteapmi>"i)) ;
 SELECT ("bane"i) (0 ("<šillju>"i))(*0 ("<čiekči>"i) OR ("<čiekčat>"i)) ;
 SELECT:fallback ("gårdsplass"i) (0 ("<šillju>"i)) ;
 
-SELECT:fallback ("lengde"i) (0 ("<guhkkodat>"i)) ;
+SELECT ("lengde"i) (0 ("<guhkkodat>"i) LINK *0 ("<mehter>"i) OR ("<kilomehter>"i)) ;
+SELECT:fallback ("varighet"i) (0 ("<guhkkodat>"i)) ;
 
 
 SELECT ("heldig"i) (0 ("<lihkku>"i) LINK 0 (←ext→) LINK *-1 ←hab→) ;
@@ -2105,11 +2110,16 @@ SELECT ("sirkel"i) (0 ("<riekkis>"i)) ;
 ## Oválavuodjima loahppavuorus golbma falimusa vulget oktanaga čáhcebána ala ja vudjet vihtta 	rieggá 	boijaid birra .
 SELECT:fallback ("sirkel"i) (0 ("<riekkis>"i));
 
-SELECT:lang-speakers (".*talende"ri) (0 ("<.*giella>"ri) LINK 0 n + pl) ;
+SELECT:lang-speakers (".*talende"ri) (0 sem_lang LINK 0 n + pl) ;
 # not sure about this analysis, but it does give nicer translations
 
 SELECT ("nok"i) (0 ("<doarvi>"i)) (0 ill) ;
 SELECT:fallback ("mengde"i) (0 ("<doarvi>"i)) ;
+
+SELECT ("milepæl"i) (0 ("<olahus>"i)) (1 ill LINK 0 HUMAN OR prn) ;
+SELECT:fallback ("rekord"i) (0 ("<olahus>"i)) ;
+
+
 
 SELECT ("middel"i) (0 ("<doarjja>"i)) (-1 ("<ruoná>"i)) ;
 SELECT:fallback ("støtte"i) (0 ("<doarjja>"i)) ;
@@ -2363,7 +2373,7 @@ SELECT ("gård"i) (0 ("<dállu>"i) LINK *0 ("<.*vuoigatvuohta>"r) OR ("<eana>"i)
 SELECT:fallback ("hus"i) (0 ("<dállu>"i));
 
 SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK -1 HUMAN  OR ("<beaivi>"i) LINK 0 @→N);
-SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK -1 COPULAS LINK *-1 ←hab→ LINK 0 HUMAN);
+SELECT:sønn ("sønn"i) (0 ("<bárdni>"i) LINK *-1 COPULAS BARRIER NOT-NPMOD LINK *-1 ←hab→ LINK 0 HUMAN);
 SELECT:fallback ("gutt"i) (0 ("<bárdni>"i));
 
 SELECT ("tiltak"i) (0 ("<doaibma>"i) LINK -1 cmp) ;
