@@ -540,6 +540,18 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-guovlu">
       <cat-item lemma="guovlu" tags="n.*.sg.ill.*"/>
     </def-cat>
+    <def-cat n="sem-edu-gen">
+      <cat-item tags="n.sem_edu.sg.gen.@→N"/>
+      <cat-item tags="n.sem_edu_org.sg.gen.@→N"/>
+      <cat-item tags="n.sem_build_edu_org.sg.gen.@→N"/>
+      <cat-item tags="n.sem_build_edu.sg.gen.@→N"/>
+    </def-cat>
+    <def-cat n="sem-lang-loc">
+      <cat-item tags="n.sem_lang.sg.loc.*"/>
+    </def-cat>
+    <def-cat n="sem-lang-ill">
+      <cat-item tags="n.sem_lang.sg.ill.*"/>
+    </def-cat>
     <def-cat n="lex-láhčit">
       <cat-item lemma="láhčit" tags="vblex.*"/>
     </def-cat>
@@ -719,6 +731,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="beanagilvu" tags="n.*"/>
       <cat-item tags="n.sem_event.*"/>
     </def-cat>
+    <def-cat n="lex-áigi-gen">
+      <cat-item lemma="áigi" tags="n.*.sg.gen.*"/>
+    </def-cat>
     <def-cat n="lex-saji">
       <cat-item lemma="sadji" tags="n.*.sg.acc.*"/>
       <cat-item lemma="sadji" tags="n.sg.acc.*"/>
@@ -800,6 +815,9 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-nubbi">
       <cat-item lemma="nubbi" tags="adj.ord.*.@→N"/>
+    </def-cat>
+    <def-cat n="lex-nubbi-ill">
+      <cat-item lemma="nubbi" tags="*.sg.ill.*"/>
     </def-cat>
     <def-cat n="lex-jođiheaddji">
       <cat-item lemma="jođiheaddji" tags="n.*"/>
@@ -2561,6 +2579,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="side"/>
       <list-item v="skole"/>
       <list-item v="slette"/>
+      <list-item v="sted"/>
       <list-item v="sykehjem"/>
       <list-item v="sykehus"/>
       <list-item v="søndag"/>
@@ -2732,6 +2751,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="giellasiida"/>
       <list-item v="godkjenning"/>
       <list-item v="grad"/>
+      <list-item v="gymnastikk"/>
       <list-item v="heltid"/>
       <list-item v="hjelp"/>
       <list-item v="januar"/>
@@ -2754,6 +2774,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="midnatt"/>
       <list-item v="moms"/>
       <list-item v="mor"/>
+      <list-item v="naturfag"/>
       <list-item v="november"/>
       <list-item v="null"/>
       <list-item v="oktober"/>
@@ -3117,6 +3138,10 @@ And then there are some categories like "month", with all the months.
                     <in caseless="yes"><var n="previous-nhead_sem"/><list n="sem_edu"/></in>
                     <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
                   </and>
+              <and>
+                    <equal><var n="main-verb-sl"/><lit v="oahpahit"/></equal>
+                    <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_lang"/></in>
+                  </and>
               </or>
               <not><in caseless="yes"><var n="previous-nhead"/><list n="loc-for-head"/></in></not>
               <not><in caseless="yes"><var n="previous-nhead"/><list n="loc-fra-head"/></in></not>
@@ -3347,6 +3372,7 @@ And then there are some categories like "month", with all the months.
             <when c="ill is om" >
               <test>
 	              <or>
+             <equal><var n="main-verb-tl"/><lit v="konsentrere"/></equal>
                <and>
               <equal><clip pos="1" side="tl" part="lemh"/><lit v="dag"/></equal>
               <or>
@@ -3425,6 +3451,8 @@ And then there are some categories like "month", with all the months.
                     <or>
                     <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_pos"/></equal>
                     <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_edu"/></equal>
+                    <equal><clip pos="1" side="sl" part="prop_type"/><lit-tag v="org"/></equal>
+                    <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_edu"/></in>
                     <in caseless="yes"><var n="previous-nhead_sem"/><list n="sem_edu"/></in>
                     </or>
                   </and>
@@ -6547,11 +6575,128 @@ And then there are some categories like "month", with all the months.
               <lit v="for"/>
               <lit-tag v="pr"/>
             </lu>
-            <b pos="1"/>
+            <b />
             <lu>
               <clip pos="2" side="tl" part="lemh"/>
               <lit-tag v="n"/>
               <clip pos="2" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[AT] lex-minuhtta lex-nubbi-ill" c="jagis nubbái → fra år til år">
+      <pattern>
+        <pattern-item n="lex-minuhtta-loc"/>
+        <pattern-item n="lex-nubbi-ill"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv_adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="fra"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="n"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+            </lu>
+            <b />
+            <lu>
+              <lit v="til"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b />
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="n"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[AT] sem-lang-loc cc sem-lang-ill" c="sámegielas ja sámegillii → i samisk og på samisk">
+      <pattern>
+        <pattern-item n="sem-lang-loc"/>
+        <pattern-item n="cc"/>
+        <pattern-item n="sem-lang-ill"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv_adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="på"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="n"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+            </lu>
+            <b pos="2"/>
+              <lu>
+                <clip pos="2" side="tl" part="lemh"/>
+                <clip pos="2" side="tl" part="a_conj"/>
+              </lu>
+            <b />
+            <lu>
+              <lit v="i"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b />
+            <lu>
+              <clip pos="3" side="tl" part="lemh"/>
+              <lit-tag v="n"/>
+              <clip pos="3" side="tl" part="gen"/>
+              <lit-tag v="sg.ind"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[AT] sem-edu-gen lex-áigi-gen" c="joatkkaskuvlla áigge → i løpet av videregående skole">
+      <pattern>
+        <pattern-item n="sem-edu-gen"/>
+        <pattern-item n="lex-áigi-gen"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv_adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="1" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="i løpet av"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="n"/>
+              <clip pos="1" side="tl" part="gen"/>
               <lit-tag v="sg.ind"/>
             </lu>
           </chunk>
