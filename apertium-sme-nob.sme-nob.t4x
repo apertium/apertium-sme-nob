@@ -376,6 +376,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
 
   <section-def-vars>
     <def-var n="prev-verb-was-bli"/>
+    <def-var n="prev-verb-gives-om"/>
     <def-var n="gender"/>
     <def-var n="defnes"/>
     <def-var n="moremost-defnes"/>
@@ -1573,6 +1574,18 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           </when>
           <when>
             <test><and>
+               <equal><var n="prev-verb-gives-om"/><lit v="yes"/></equal>
+                <equal><var n="former-chunk"/><lit-tag v="SV"/></equal>
+            </and></test>
+            <out>
+              <lu><lit v="om"/><lit-tag v="pr"/></lu>
+              <b/>
+              <lu><lit v="å"/><lit-tag v="part"/></lu>
+              <b/>
+            </out>
+          </when>
+          <when>
+            <test><and>
               <equal><clip pos="1" part="temps"/><lit-tag v="inf"/></equal>
               <not><equal><clip pos="0" part="modality"/><lit-tag v="cond"/></equal></not>
               <not><equal><clip pos="0" part="modality"/><lit-tag v="cond-ville"/></equal></not>
@@ -1599,8 +1612,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <test><equal><clip pos="1" part="lemh"/><lit v="bli"/></equal></test>
             <let><var n="prev-verb-was-bli"/><lit v="yes"/></let>
           </when>
+          <when>
+            <test><equal><clip pos="1" part="lemh"/><lit v="drømme"/></equal></test>
+            <let><var n="prev-verb-gives-om"/><lit v="yes"/></let>
+          </when>
           <otherwise>
             <let><var n="prev-verb-was-bli"/><lit v="no"/></let>
+            <let><var n="prev-verb-gives-om"/><lit v="no"/></let>
           </otherwise>
         </choose>
         <let><var n="former-chunk"/><lit-tag v="SV"/></let>

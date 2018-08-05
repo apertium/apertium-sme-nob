@@ -2720,6 +2720,10 @@ And then there are some categories like "month", with all the months.
     <def-list n="gen-som-head">
       <list-item v="masterutdanning"/>
     </def-list>
+    <def-list n="acc-om-verbs">
+      <list-item v="be"/>
+      <list-item v="drømme"/>
+    </def-list>
 
     <def-list n="no-gen-after-prop" c="If a noun in this list is preceded by a prop.gen, remove the gen from the prop">
       <list-item v="skole"/>
@@ -2799,6 +2803,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="velkommen"/>
       <list-item v="verden"/>
       <list-item v="viten"/> 
+      <list-item v="yrkesfag"/>
     </def-list>
 
     <def-list n="bigrams-def" c="det/adj+noun lemma co-occurrences that are typically definite">
@@ -3567,10 +3572,15 @@ And then there are some categories like "month", with all the months.
           </when></choose>
         </when>
         <when c="om acc">
-          <test><and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
-          <equal><var n="main-verb-tl"/><lit v="be"/></equal>
+          <test>
+	    <and><equal><clip pos="1" side="sl" part="case"/><lit-tag v="acc"/></equal>
+	    <or>
+          <in caseless="yes"><var n="main-verb-tl"/><list n="acc-om-verbs"/></in>
+     <and>
+     <equal><var n="main-verb-tl"/><lit v="be"/></equal>
      <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_hum"/></in></not>
-        </and>   </test>
+        </and>   
+        </or></and></test>
           <let>
             <var n="caseprep"/><lit v="om"/>
           </let>

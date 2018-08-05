@@ -1953,6 +1953,7 @@ SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 sg + acc) (*0 ("<sáddet>"i) OR ("<�
 ## Lei Ájlin gii sáddii dieđu.
 SELECT:fallback ("viten"i) (0 ("<diehtu>"i) LINK -1 ("<árbevirolaš>"i));
 SELECT ("informasjon"i) (0 ("<diehtu>"i) LINK 0 pl);
+SELECT ("informasjon"i) (0 ("<diehtu>"i) LINK *-1 loc BARRIER S-BOUNDARY);
 SELECT:fallback ("viten"i) (0 ("<diehtu>"i));
 
 
@@ -2965,6 +2966,10 @@ REMOVE ("fjern"i) (NOT 0 cmp);
 
 SELECT ("gammel"i) (0 ("<dološ>"i) LINK 0 attr);
 SELECT:fallback ("gammel tid"i) (0 ("<dološ>"i));
+
+SELECT ("dyrebar"i) (0 ("<divrras>"i) LINK 0 nom LINK *1 sem_hum LINK 0 pl + ill);
+SELECT:fallback ("dyr"i) (0 ("<divrras>"i));
+
 
 SELECT ("menneskelig"i) (0 ("<olmmošlaš>"i) LINK 1 ("<biidnašuvvat>"i));
 SELECT:fallback ("høflig"i) (0 ("<olmmošlaš>"i));
