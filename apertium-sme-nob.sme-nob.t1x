@@ -7430,9 +7430,10 @@ And then there are some categories like "month", with all the months.
             <let><var n="caseprep"/><lit v="til"/></let>
           </when>
           <when>
-            <test>
+            <test><or>
               <equal><clip pos="2" side="sl" part="case"/><lit-tag v="loc"/></equal>
-            </test>
+              <equal><clip pos="2" side="sl" part="case"/><lit-tag v="gen"/></equal>
+            </or></test>
             <let><var n="caseprep"/><lit v="i"/></let>
           </when>
         </choose>
@@ -9104,7 +9105,7 @@ And then there are some categories like "month", with all the months.
 
 
     <rule comment="C[_] nom_all (tl: NOM, VERB)
-                   This is a catch-all rule; it's OK that some paths are blocked by previous rules.">
+                   This is a catch-all rule; it's OK that some paths are blocked by previous rules. asdf">
       <pattern>
         <pattern-item n="nom_all"/>
       </pattern>
