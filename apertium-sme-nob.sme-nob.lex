@@ -913,7 +913,7 @@ SELECT ("langs"i) (0 ("<mielde>"i)) (0 post) (-1 ("<šaldi>"i)) ;
 
 ## Don vieččat boaldinmuoraid dárbbu mielde.
 SELECT ("med"i) (0 ("<mielde>"i)) (0 adv)  ;
-SELECT ("med"i) (0 ("<mielde>"i)) (-1 ("<ahki>"i))  ;
+SELECT ("med"i) (0 ("<mielde>"i)) (-1 ("<ahki>"i) OR ("<stevvel>"i))  ;
 
 SELECT ("for å"i) IF (0 ("<vai>"i) + cnjsub) (1 inf) ;
 SELECT:fallback ("for at"i) IF (0 ("<vai>"i) + cnjsub) (NOT 1 inf) ;
