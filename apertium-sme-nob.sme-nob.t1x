@@ -521,6 +521,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="abbr">
       <cat-item tags="n.abbr.*"/>
     </def-cat>
+    <def-cat n="lex-láhki">
+      <cat-item lemma="láhki" tags="n.*.sg.gen.*"/>
+    </def-cat>
     <def-cat n="lex-gaskasaš">
       <cat-item lemma="gaskasaš" tags="adj.*"/>
     </def-cat>
@@ -2400,6 +2403,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="gamme"/>
       <list-item v="gang"/>
       <list-item v="hage"/>
+      <list-item v="hemmelighet"/>
       <list-item v="historie"/> <!-- i historia, men skrive på ei historie -->
       <list-item v="hjerte"/>
       <list-item v="hus"/>
@@ -5123,6 +5127,13 @@ And then there are some categories like "month", with all the months.
             <in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="no.actio.ess"/></in>
           </and></test>
           <let><var n="notactioess"/><lit-tag v="notactioess"/></let>
+        </when>
+        <when c="fitnat + inf">
+          <test><and>
+            <equal><clip pos="1" side="sl" part="a_actio"/><lit-tag v="actio.ess"/></equal>
+            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL"/></equal>
+          </and></test>
+          <let><clip pos="1" side="sl" part="a_actio"/><lit-tag v="inf"/></let>
         </when>
       </choose>
 
@@ -10976,6 +10987,44 @@ And then there are some categories like "month", with all the months.
     </rule>
 
     <!-- <rules: DET* ADJ* NOM* -->
+
+    <rule comment="C[] adj-sup lex-láhki lex-mielde-post" c="jođáneamos lági mielde">
+      <pattern>
+        <pattern-item n="adj-sup"/>
+        <pattern-item n="lex-láhki"/>
+        <pattern-item n="lex-mielde-post"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_c_syn"><with-param pos="3"/></call-macro>
+            <out>
+              <chunk name="adv" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="ADV"/></tag>
+                  <tag><var n="c_syn"/></tag> 
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_adj"/>
+                  <clip pos="1" side="tl" part="grau"/>
+                  <clip pos="1" side="tl" part="gen"/>
+                  <clip pos="1" side="sl" part="nbr"/>
+                  <lit-tag v="ind"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              <b pos="1"/>
+                <lu>
+                  <lit v="mulig"/><lit-tag v="adv"/>
+                </lu>
+          </chunk>
+           </out>
+        <choose><when>
+          <test><not><equal><b pos="2"/><lit v=" "/></equal></not></test>
+          <out><b pos="2"/></out>
+        </when></choose>
+      </action>
+    </rule>
 
 
     <rule comment="C[] nom.gen.A adj-sup" c="Deanu riggámusat">
