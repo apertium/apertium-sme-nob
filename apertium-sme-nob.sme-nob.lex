@@ -2273,7 +2273,7 @@ SELECT ("samisk språk"i) (0 ("<sámegiella>"i) LINK 1 cnjcoo LINK 1 ("<kultuvra
 SELECT ("samisk språk"i) (0 ("<sámegiella>"i) LINK 1 ("<ovdáneapmi>"i) OR sem_state OR ("<ipmil>"i));
 SELECT:fallback ("samisk"i) (0 ("<sámegiella>"i));
 
-SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 0 pl);
+SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 0 pl OR ill);
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK 1 ("<namma>"i) OR ("<šilta>"i) );
 SELECT ("adresse"i) (0 ("<čujuhus>"i) LINK -1 gen);
 SELECT:fallback ("henvisning"i) (0 ("<čujuhus>"i));
