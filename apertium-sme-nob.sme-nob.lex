@@ -2207,6 +2207,7 @@ SELECT:fallback ("avfall"i) (0 ("<bázahus>"i));
 SELECT:fallback ("fiskekort"i) (0 ("<bivdolohpi>"i));
 
 
+SELECT ("arbeider"i) (0 ("<bargi>"i) LINK -1 ("<eaktodáhtolaš>"i));
 SELECT:fallback ("ansatt"i) (0 ("<bargi>"i));
 
 SELECT ("sentrum"i) (0 ("<guovddáš>"i) LINK 0 sg + loc)(*-1 sem_org + nom);
