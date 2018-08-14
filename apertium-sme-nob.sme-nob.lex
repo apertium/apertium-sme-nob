@@ -1829,7 +1829,7 @@ SELECT:fallback ("gamme"i) IF (0 ("<goahti>"i)) ;
 
 
 # luohkká 0 = bakke, 1 = klasse
-SELECT ("klasse"i) (0 ("<luohkká>"i) LINK *0 ("<oahpaheaddji>"i) OR ("<skuvla>"i) OR ("<skuvlamátki>"i) OR ("<čoahkkin>"i));
+SELECT ("klasse"i) (0 ("<luohkká>"i) LINK *0 ("<oahpaheaddji>"i) OR ("<.*skuvla>"i) OR ("<skuvlamátki>"i) OR ("<čoahkkin>"i));
 SELECT ("klasse"i) (0 ("<luohkká>"i) LINK -1 ("<deaddu>"i));
 SELECT ("bakke"i) (0 ("<luohkká>"i) LINK *-1 ("<fierrat>"i) BARRIER SV-BOUNDARY);
 
