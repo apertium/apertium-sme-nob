@@ -2965,6 +2965,10 @@ SELECT (det) (0 ("<sierra>"i));
 SELECT ("fjern"i) (0 ("<gáiddus>"i) LINK 0 cmp);
 REMOVE ("fjern"i) (NOT 0 cmp);
 
+SELECT ("fleksibel"i) (0 ("<geabbil>"i) LINK *1 sem_edu);
+SELECT:fallback ("smidig"i) ;
+
+
 SELECT ("gammel"i) (0 ("<dološ>"i) LINK 0 attr);
 SELECT:fallback ("gammel tid"i) (0 ("<dološ>"i));
 
