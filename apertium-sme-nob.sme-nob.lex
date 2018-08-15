@@ -2443,6 +2443,9 @@ SELECT ("kjendis"i) (0 ("<beakkán>"i));
 SELECT ("kaos"i) (0 ("<moivi>"i) LINK -1 ("<muohta>"i) LINK 0 cmp);
 SELECT:fallback ("rot"i) (0 ("<moivi>"i));
 
+SELECT ("svømmer"i) (0 ("<vuoddji>"i) LINK *0 ("<vuodjat>"i) OR ("<vuodjan>"i) );
+SELECT:fallback ("sjåfør"i) (0 ("<vuoddji>"i));
+
 
 SELECT ("doktor"i) (0 ("<doavttir>"i) LINK 1 (ant) OR (cog));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
