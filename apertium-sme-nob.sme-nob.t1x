@@ -546,11 +546,12 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-guovlu">
       <cat-item lemma="guovlu" tags="n.*.sg.ill.*"/>
     </def-cat>
-    <def-cat n="sem-edu-gen">
+    <def-cat n="sem-edu-time-gen">
       <cat-item tags="n.sem_edu.sg.gen.@→N"/>
       <cat-item tags="n.sem_edu_org.sg.gen.@→N"/>
       <cat-item tags="n.sem_build_edu_org.sg.gen.@→N"/>
       <cat-item tags="n.sem_build_edu.sg.gen.@→N"/>
+      <cat-item tags="n.sem_time.sg.gen.@→N"/>
     </def-cat>
     <def-cat n="sem-lang-loc">
       <cat-item tags="n.sem_lang.sg.loc.*"/>
@@ -6702,9 +6703,9 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
-    <rule comment="C[AT] sem-edu-gen lex-áigi-gen" c="joatkkaskuvlla áigge → i løpet av videregående skole">
+    <rule comment="C[AT] sem-edu-time-gen lex-áigi-gen" c="joatkkaskuvlla áigge → i løpet av videregående skole">
       <pattern>
-        <pattern-item n="sem-edu-gen"/>
+        <pattern-item n="sem-edu-time-gen"/>
         <pattern-item n="lex-áigi-gen"/>
       </pattern>
       <action>
