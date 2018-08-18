@@ -70,6 +70,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-eará">
       <cat-item lemma="eará" tags="prn.*"/>
     </def-cat>
+    <def-cat n="lex-mielas">
+      <cat-item lemma="mielas" tags="post.*"/>
+    </def-cat>
     <def-cat n="ge-pcle">
       <cat-item lemma="ge" tags="pcle.*"/>
       <cat-item lemma="ge" tags="pcle"/>
@@ -11704,6 +11707,87 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+    <rule comment="C[]  prn.gen.P lex-mielas
+                   min mielas → etter vår oppfatning.">
+      <pattern>
+        <pattern-item n="prn.gen.P"/>
+        <pattern-item n="lex-mielas"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="tl" part="pers"/></tag>
+              <tag><clip pos="2" side="tl" part="gen"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+              <lu>
+                <lit v="etter"/>
+                <lit-tag v="pr"/>
+              </lu>
+          <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+                <lit-tag v="det.pos.m.sg"/>
+            </lu>
+          <b />
+              <lu>
+                <lit v="oppfatning"/>
+                <lit-tag v="n.m.sg.ind"/>
+              </lu>
+          </chunk>
+        </out>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+      </action>
+    </rule>
+    <rule comment="C[]  nom_rP lex-mielas
+                   nieidda mielas → etter jentas oppfatning.">
+      <pattern>
+        <pattern-item n="nom_rP"/>
+        <pattern-item n="lex-mielas"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="tl" part="pers"/></tag>
+              <tag><clip pos="2" side="tl" part="gen"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+              <lu>
+                <lit v="etter"/>
+                <lit-tag v="pr"/>
+              </lu>
+          <b pos="1"/>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+                <lit-tag v="def.gen"/>
+            </lu>
+          <b />
+              <lu>
+                <lit v="oppfatning"/>
+                <lit-tag v="n.m.sg.ind"/>
+              </lu>
+          </chunk>
+        </out>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <let><var n="c_name"/><lit v=""/></let>
+        <let><var n="pre-nom"/><lit v=""/></let>
+      </action>
+    </rule>
     <rule comment="C[] PRON-NONREFERENTIAL NOM.@→P
                    (Ii daddjo)  mihkkege almenneha  (birra) → noe om allmenningen
                    Don't chunk in this case.">
