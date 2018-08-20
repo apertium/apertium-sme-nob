@@ -552,6 +552,7 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="n.sem_build_edu_org.sg.gen.@→N"/>
       <cat-item tags="n.sem_build_edu.sg.gen.@→N"/>
       <cat-item tags="n.sem_time.sg.gen.@→N"/>
+      <cat-item tags="n.sem_event.sg.gen.@→N"/>
     </def-cat>
     <def-cat n="sem-lang-loc">
       <cat-item tags="n.sem_lang.sg.loc.*"/>
@@ -564,6 +565,10 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-mannu">
       <cat-item lemma="mánnu" tags="n.*"/>
+    </def-cat>
+    <def-cat n="lex-čuohti-gen">
+      <cat-item lemma="čuohti" tags="n.*.gen.*"/>
+      <cat-item lemma="čuohti" tags="num.*.gen.*"/>
     </def-cat>
     <def-cat n="lex-galle">
       <cat-item lemma="galle" tags="prn.*"/>
@@ -911,6 +916,7 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-mielde-post">
       <cat-item lemma="mielde" tags="post.*"/>
+      <cat-item lemma="miel" tags="post.*"/>
     </def-cat>
     <def-cat n="lex-mielde">
       <cat-item lemma="mielde" tags="adv"/>
@@ -5951,6 +5957,35 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
+      </action>
+    </rule>
+    <rule comment="C[L] lex-čuohti-gen lex-mielde-post " c="čuđiid mielde → hundrevis, denne skal utvides">
+      <pattern>
+        <pattern-item n="lex-čuohti-gen"/>
+        <pattern-item n="lex-mielde-post"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="hundrevis"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
       </action>
     </rule>
     <rule comment="C[L] lex-nubbin → nummer to">
@@ -5971,6 +6006,10 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
       </action>
     </rule>
     <rule comment="C[L] lex-nubbi lex-jođiheaddji → nestleder">

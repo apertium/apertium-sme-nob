@@ -1021,6 +1021,9 @@ SELECT:fallback ("svinne"i) IF  (0 ("<vássit>"i)) ;
 SELECT ("trakassere"i) IF  (0 ("<loavkašuhttit>"i) LINK -1 ("<seksualálaš>"i)) ;
 SELECT:fallback ("fornærme"i) IF  (0 ("<loavkašuhttit>"i)) ;
 
+SELECT ("bryte"i) IF  (0 ("<gaikut>"i) LINK 1 ("<sisa>"i)) ;
+SELECT:fallback ("rive"i) IF  (0 ("<gaikut>"i)) ;
+
 
 SELECT ("røkte"i) IF  (0 ("<dikšut>"i) LINK *0 sem_lang + acc) ;
 SELECT:fallback ("stelle"i) IF  (0 ("<dikšut>"i)) ;
@@ -1646,6 +1649,9 @@ SELECT:fallback ("gamling"i) (0 ("<boaresolmmoš>"i)) ;
 
 SELECT ("datter"i) (0 ("<nieida>"i) LINK -1 (ant) + gen ) ;
 SELECT:fallback ("jente"i) (0 ("<nieida>"i)) ;
+
+SELECT ("leder"i) (0 ("<láidesteaddji>"i) LINK -1 sem_edu + gen ) ;
+SELECT:fallback ("konferansier"i) (0 ("<láidesteaddji>"i)) ;
 
 
 
