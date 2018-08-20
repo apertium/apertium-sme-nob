@@ -1650,6 +1650,9 @@ SELECT:fallback ("gamling"i) (0 ("<boaresolmmoš>"i)) ;
 SELECT ("datter"i) (0 ("<nieida>"i) LINK -1 (ant) + gen ) ;
 SELECT:fallback ("jente"i) (0 ("<nieida>"i)) ;
 
+SELECT:fallback ("mindreårig"i) (0 ("<vuolleahkásaš>"i)) ;
+
+
 SELECT ("leder"i) (0 ("<láidesteaddji>"i) LINK -1 sem_edu + gen ) ;
 SELECT:fallback ("konferansier"i) (0 ("<láidesteaddji>"i)) ;
 
