@@ -566,9 +566,11 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-mannu">
       <cat-item lemma="mánnu" tags="n.*"/>
     </def-cat>
-    <def-cat n="lex-čuohti-gen">
+    <def-cat n="lex-čuohti-duhát-gen">
       <cat-item lemma="čuohti" tags="n.*.gen.*"/>
       <cat-item lemma="čuohti" tags="num.*.gen.*"/>
+      <cat-item lemma="duhát" tags="n.*.gen.*"/>
+      <cat-item lemma="duhát" tags="num.*.gen.*"/>
     </def-cat>
     <def-cat n="lex-galle">
       <cat-item lemma="galle" tags="prn.*"/>
@@ -2269,6 +2271,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="bisánit"/>
       <list-item v="bálkestit"/>
       <list-item v="investeret"/>
+      <list-item v="čoahkkanit"/>
     </def-list>
     <def-list n="ill-for-verbs">
       <list-item v="leat"/>
@@ -5963,9 +5966,9 @@ And then there are some categories like "month", with all the months.
         </when></choose>
       </action>
     </rule>
-    <rule comment="C[L] lex-čuohti-gen lex-mielde-post " c="čuđiid mielde → hundrevis, denne skal utvides">
+    <rule comment="C[L] lex-čuohti-duhát-gen lex-mielde-post " c="čuđiid mielde → hundrevis">
       <pattern>
-        <pattern-item n="lex-čuohti-gen"/>
+        <pattern-item n="lex-čuohti-duhát-gen"/>
         <pattern-item n="lex-mielde-post"/>
       </pattern>
       <action>
@@ -5977,7 +5980,8 @@ And then there are some categories like "month", with all the months.
               <tag><clip pos="2" side="sl" part="syn_label"/></tag>
             </tags>
             <lu>
-              <lit v="hundrevis"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <lit v="vis"/>
               <lit-tag v="adv"/>
             </lu>
           </chunk>
