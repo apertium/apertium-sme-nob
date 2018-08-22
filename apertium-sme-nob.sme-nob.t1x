@@ -2683,6 +2683,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="tale"/>
       <list-item v="do"/>
       <list-item v="fengsel"/>
+      <list-item v="arrest"/>
     </def-list>
     <def-list n="ill-på" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="ferie"/>
@@ -4058,7 +4059,7 @@ And then there are some categories like "month", with all the months.
     </def-macro>
 
     <def-macro n="set_defnes" npar="1"
-               c="arg.1: noun/adj, with syn_label
+               c="arg.1: noun/adj, with syn_label 
                   –––––
                   Default to indefinite, guess definite for certain GF's, genitives, ...
                   Locatives only indefinite in first position with leat
@@ -4069,6 +4070,7 @@ And then there are some categories like "month", with all the months.
         <test>
           <and>                	         
             <equal><clip pos="1" side="tl" part="a_adj"/><lit v=""/></equal>
+            <not><equal><var n="previous-nhead"/><lit v="behov"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@VOC"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="ext"/><lit-tag v="←ext→"/></equal></not>
@@ -11357,6 +11359,7 @@ And then there are some categories like "month", with all the months.
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SPRED→"/></equal>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJext"/></equal>
          </or></test>
           <let><var n="previous-nhead"/><clip pos="1" side="tl" part="lemh"/></let>
         </when></choose>
