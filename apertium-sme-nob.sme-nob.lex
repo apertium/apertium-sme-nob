@@ -1617,6 +1617,11 @@ SELECT ("vise"i) (0 ("<čujuhit>"i)) ;
 # Nouns
 # ============
 
+SELECT ("kjeks"i) (0 ("<čeaksa>"i) + pl) ;
+SELECT ("kjeks"i) (0 ("<čeaksa>"i) LINK -1 ("<garas>"i) OR ("<njálggat>"i)  ) ;
+SELECT:fallback ("bladmage"i) (0 ("<čeaksa>"i)) ;
+
+
 SELECT ("tale"i) (*-1 ("<doallat>"i)) (0 ("sáhka"i));
 
 SELECT ("skrott"i) (0 ("<gorut>"i) LINK -1 num) ;
