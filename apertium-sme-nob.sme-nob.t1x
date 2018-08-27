@@ -920,6 +920,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="mielde" tags="post.*"/>
       <cat-item lemma="miel" tags="post.*"/>
     </def-cat>
+    <def-cat n="lex-dađi">
+      <cat-item lemma="dađi" tags="adv.*"/>
+    </def-cat>
     <def-cat n="lex-mielde">
       <cat-item lemma="mielde" tags="adv"/>
       <cat-item lemma="mielde" tags="adv.*"/>
@@ -1572,6 +1575,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_group_hum_org"/>
       <attr-item tags="sem_group_hum_plc"/>
       <attr-item tags="sem_group_hum_prod-vis"/>
+      <attr-item tags="sem_group_hum_time"/>
       <attr-item tags="sem_group_org"/>
       <attr-item tags="sem_group_sign"/>
       <attr-item tags="sem_group_txt"/>
@@ -1872,6 +1876,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_body_group_hum_time&gt;"/>
       <list-item v="&lt;sem_body_time&gt;"/>
       <list-item v="&lt;sem_event_time&gt;"/>
+      <list-item v="&lt;sem_group_hum_time&gt;"/>
       <list-item v="&lt;sem_hum_lang_time&gt;"/>
       <list-item v="&lt;sem_measr_time&gt;"/>
       <list-item v="&lt;sem_measr_obj_time&gt;"/>
@@ -1982,6 +1987,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_group_hum_org&gt;"/>
       <list-item v="&lt;sem_group_hum_plc&gt;"/>
       <list-item v="&lt;sem_group_hum_prod-vis&gt;"/>
+      <list-item v="&lt;sem_group_hum_time&gt;"/>
       <list-item v="&lt;sem_group_org&gt;"/>
       <list-item v="&lt;sem_group_sign&gt;"/>
       <list-item v="&lt;sem_group_txt&gt;"/>
@@ -2099,7 +2105,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_group_hum&gt;"/>
       <list-item v="&lt;sem_group_hum_org&gt;"/>
       <list-item v="&lt;sem_group_hum_plc&gt;"/>
-      <list-item v="&lt;sem_group_hum_prod-vis&gt;"/>
+      <list-item v="&lt;sem_group_hum_prod-vis&gt;"/>  
+      <list-item v="&lt;sem_group_hum_time&gt;"/>
       <list-item v="&lt;sem_hum&gt;"/>
       <list-item v="&lt;sem_hum-prof&gt;"/>
       <list-item v="&lt;sem_hum-abstr&gt;"/>
@@ -3539,7 +3546,7 @@ And then there are some categories like "month", with all the months.
               </let>
             </when>
             <when c="ill is for">
-              <test><or>
+              <test><and><or>
                 <and>
                   <or>
                 <in caseless="yes"><var n="main-verb-sl"/><list n="ill-for-verbs"/></in>
@@ -3547,7 +3554,6 @@ And then there are some categories like "month", with all the months.
                     <equal><var n="main-verb-sl"/><lit v="šaddat"/></equal>
                     <equal><var n="main-verb-sl"/><lit v="gártat"/></equal>
                     </or>
-               <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
                <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build_org"/></equal></not>
                <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build"/></equal></not>
                <not><equal><clip pos="1" side="sl" part="lemh"/><lit v="giddagas"/></equal></not>
@@ -3576,6 +3582,9 @@ And then there are some categories like "month", with all the months.
                 <equal><clip pos="1" side="sl" part="lemh"/><lit v="beaivebodda"/></equal>	         
                 <equal><var n="previous-nhead"/><lit v="viktig"/></equal>	         
                 </or>
+               <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not> 
+               <not><equal><clip pos="1" side="sl" part="prop_type"/><lit-tag v="top"/></equal></not>
+               </and>
               </test>
               <let>
                 <var n="caseprep"/><lit v="for"/>
@@ -5959,6 +5968,31 @@ And then there are some categories like "month", with all the months.
             </tags>
             <lu>
               <lit v="egentlig"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
+      </action>
+    </rule>
+    <rule comment="C[L] lex-dađi lex-mielde " c="dađi mielde → etterhvert">
+      <pattern>
+        <pattern-item n="lex-dađi"/>
+        <pattern-item n="lex-mielde"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="etterhvert"/>
               <lit-tag v="adv"/>
             </lu>
           </chunk>
