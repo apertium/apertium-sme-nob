@@ -862,7 +862,7 @@ SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub LINK 1 (@COMP-CS←)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub LINK -1 (@COMP-CS←)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (-1 ("<veara>"i) OR ("<eará>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (-1 ("<veara>"i) OR ("<eará>"i)) ;
-SELECT ("enn"i) (0 ("<go>"i)) (1 ("<dušše>"i)) ;
+SELECT ("enn"i) (0 ("<go>"i)) (1 ("<dušše>"i) OR ("<goassege>"i)) ;
 SELECT ("enn"i) (0 ("<go>"i)) (-1 conneg LINK -1 neg)(NEGATE 1 VFIN) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (*-1 ("<ovdal>"i) OR ("<eará>"i) BARRIER S-BOUNDARY) ;
 SELECT ("enn"i) (0 ("<go>"i)) (0 cnjsub) (*-1 comp BARRIER VFIN OR S-BOUNDARY) ;
@@ -996,6 +996,7 @@ SELECT:fallback ("by# på"i) IF  (0 ("<guossohit>"i)) ;
 
 SELECT ("ære"i) IF  (0 ("<gudnejahttit>"i)) (*-1 acc BARRIER SV-BOUNDARY LINK 0 sem_hum OR (ant) OR ("<Ipmil>"i) OR ("<.*rohkki>"r)) ;
 SELECT ("ære"i) IF  (0 ("<gudnejahttit>"i)) (1 acc LINK 0 sem_hum OR (ant) OR ("<Ipmil>"i) OR ("<.*rohkki>"r)) ;
+SELECT ("hedre"i) IF  (0 ("<gudnejahttit>"i) LINK 1 ("<dihte>"i)) ;
 
 SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 
@@ -2337,7 +2338,7 @@ SELECT ("vei"i) (0 ("<geinnodat>"i) LINK -1 acr);
 SELECT:fallback ("flyttevei"i) (0 ("<geinnodat>"i));
 
 
-SELECT ("antall"i) (0 ("<lohku>"i) LINK -1 sem_hum + pl) ;
+SELECT ("antall"i) (0 ("<lohku>"i) LINK -1 pl + gen + sem_hum OR pl + gen + sem_ani OR (sem_cat)) ;
 SELECT:fallback ("tall"i) (0 ("<lohku>"i));
 
 SELECT ("omveg"i) (0 ("<mohkki>"i) + pl) ;
@@ -2670,6 +2671,7 @@ SELECT:fallback ("etter"i) (0 ("<mielde>"i) + post) ;
 SELECT:fallback ("i"i) (0 ("<siste>"i)) ;
 
 SELECT ("på grunn av"i) (0 ("<dihte>"i) LINK *-1 ("<rámis>"i) BARRIER SV-BOUNDARY) ;
+SELECT ("for å"i) (0 ("<dihte>"i) LINK -1 (actio gen) ) ;
 SELECT:fallback ("for"i) (0 ("<dihte>"i) + post) ;
 
 
