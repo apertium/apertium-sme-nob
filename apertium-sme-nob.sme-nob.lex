@@ -1003,6 +1003,9 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("eller"i) IF  (0 ("<ii>"i) LINK 0 (foc_neg-ge))(NOT -1 COMMA)(*-1 neg)  ;
 SELECT:fallback ("ikke"i) IF  (0 ("<ii>"i)) ;
 
+SELECT ("tilkalle"i) IF  (0 ("<rávkat>"i) LINK 1 ess) ;
+SELECT:fallback ("vekke"i) IF  (0 ("<rávkat>"i)) ;
+
 
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;

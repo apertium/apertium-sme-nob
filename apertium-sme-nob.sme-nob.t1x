@@ -2277,8 +2277,12 @@ And then there are some categories like "month", with all the months.
       <list-item v="ásahit"/>
       <list-item v="bisánit"/>
       <list-item v="bálkestit"/>
+      <list-item v="coggat"/>
       <list-item v="investeret"/>
+      <list-item v="nahkehit"/>
       <list-item v="čoahkkanit"/>
+      <list-item v="čuollat"/>
+      <list-item v="čuolastit"/>
     </def-list>
     <def-list n="ill-for-verbs">
       <list-item v="leat"/>
@@ -3142,7 +3146,8 @@ And then there are some categories like "month", with all the months.
               </let>
             </when>
             <when c="i when loc">
-              <test><and><or>
+              <test>
+	              <or><and><or>
                 <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_ani"/></equal>
@@ -3151,6 +3156,7 @@ And then there are some categories like "month", with all the months.
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build-part"/></equal>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_ctain-clth"/></equal>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_wthr"/></equal>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_perc-emo"/></equal>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_prod-vis"/></equal>
                 <equal><clip pos="1" side="sl" part="lemh"/><lit v="njunuš"/></equal>
                 <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_cat"/></in>
@@ -3186,6 +3192,8 @@ And then there are some categories like "month", with all the months.
               <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal></not>
               <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-F←ADVL-ela"/></equal></not>
             </and>
+                <begins-with><clip pos="1" side="tl" part="a_num"/><lit-tag v="num"/></begins-with>
+            </or>
               </test>
               <let>
                 <var n="caseprep"/><lit v="i"/>
