@@ -2818,6 +2818,10 @@ SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
+
+SELECT ("enda"i) (0 ("<vuos>"i)) (-1 conneg);
+SELECT ("først"i) (0 ("<vuos>"i)) ; 
+
 SELECT:fallback ("mindre"i) (0 ("<unnit>"i)) ; 
 SELECT:fallback ("selvfølgelig"i) (0 ("<dieđus>"i)) ; 
 

@@ -2404,6 +2404,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="bruk"/>
       <list-item v="bryting"/>
       <list-item v="by"/>
+      <list-item v="čuohti"/>
       <list-item v="bygd"/>
       <list-item v="debatt"/>
       <list-item v="desember"/>
@@ -4256,6 +4257,7 @@ And then there are some categories like "month", with all the months.
               </and>
             </or>
             <not><equal><clip pos="2" side="tl" part="lemh"/><lit v="slik"/></equal></not>
+            <not><ends-with><clip pos="2" side="tl" part="lemh"/><lit v="mye"/></ends-with></not>
             <not><ends-with><clip pos="2" side="tl" part="lemh"/><lit v="og en halv"/></ends-with></not>
           </and></test>
           <let><var n="defnes"/><lit-tag v="def"/></let>
