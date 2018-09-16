@@ -1522,9 +1522,10 @@ SELECT ("oppnå"i) (0 ("<olahit>"i) LINK 1 ("<.*vuohta>"r) OR ("<árvosátni>"r)
 SELECT ("oppnå"i) (0 ("<olahit>"i) LINK *1 sem_edu BARRIER NOT-NPMOD LINK 0 acc) ;
 SELECT:fallback ("rekke"i) (0 ("<olahit>"i));
 
-SELECT ("tørke"i) (0 ("<sihkkut>"i))(*0 ("<beavdi>"i) OR ("<njunni>"i) OR ("<távval>"i) LINK 0 acc);
-SELECT:fallback ("stryke"i) (0 ("<sihkkut>"i));
+SELECT ("tørke"i) (0 ("<sihkkut>"i))(*0 ("<beavdi>"i) OR ("<njunni>"i) OR ("<távval>"i) LINK 0 acc) ;
+SELECT:fallback ("stryke"i) (0 ("<sihkkut>"i)) ;
 
+SELECT ("oppdra"i) (0 ("<geassit>"i))(*0 ("<mánná>"i) LINK 0 acc OR gen) ;
 SELECT:fallback ("trekke"i) (0 ("<geassit>"i));
 
 SELECT ("utveksle"i) (0 ("<lonohallat>"i) LINK *0 ("<vásáhus>"i));
@@ -2817,6 +2818,10 @@ SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
+
+
+REMOVE ("opp"i) (0 ("<bajás>"i))(*0 ("<mánná>"i) LINK 0 acc OR gen) ;
+SELECT:fallback ("opp"i) (0 ("<bajás>"i)) ;
 
 
 SELECT ("enda"i) (0 ("<vuos>"i)) (-1 conneg);
