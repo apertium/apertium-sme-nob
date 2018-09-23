@@ -1349,6 +1349,9 @@ And then there are some categories like "month", with all the months.
     <def-attr n="vdic">
       <attr-item tags="←vdic→"/>
     </def-attr>
+    <def-attr n="indtag">
+      <attr-item tags="←ind→"/>
+    </def-attr>
     <def-attr n="hab">
       <attr-item tags="←hab→"/>
     </def-attr>
@@ -2834,6 +2837,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="påskeaften"/>
       <list-item v="reinlav"/>
       <list-item v="rus"/>
+      <list-item v="samiskhet"/>
       <list-item v="samisk"/>
       <list-item v="senior"/>
       <list-item v="sentrum"/>
@@ -4108,6 +4112,7 @@ And then there are some categories like "month", with all the months.
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@HNOUN"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@VOC"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="ext"/><lit-tag v="←ext→"/></equal></not>
+            <not><equal><clip pos="1" side="sl" part="indtag"/><lit-tag v="←ind→"/></equal></not>
             <not><equal><clip pos="1" side="sl" part="a_acr"/><lit-tag v="acr"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="ekstra"/></equal></not>

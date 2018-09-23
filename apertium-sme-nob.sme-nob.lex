@@ -2468,6 +2468,7 @@ SELECT:fallback ("sjåfør"i) (0 ("<vuoddji>"i));
 
 SELECT ("doktor"i) (0 ("<doavttir>"i) LINK 1 (ant) OR (cog));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
+SELECT:fallback ("bilideapmi"i) (0 ("<ødeleggelse>"i));
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
