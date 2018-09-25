@@ -11215,11 +11215,17 @@ And then there are some categories like "month", with all the months.
             <let><var n="defnes"/><lit-tag v="def"/></let>
               <let><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></let>
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-        <choose><when>
+        <choose>
+	        <when>
+          <test><in><clip pos="1" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in></test>
+          <let><var n="defnes"/><lit-tag v="ind"/></let>
+        </when>
+	        <when>
           <test><begins-with><clip pos="1" side="tl" part="a_nom"/><lit-tag v="np"/></begins-with></test>
           <let><var n="defnes"/><lit v=""/></let>
           <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
-        </when></choose>
+        </when>
+        </choose>
         <call-macro n="switch_cases"><with-param pos="2"/><with-param pos="1"/></call-macro>
             <out>
               <chunk name="pre_adj" case="caseFirstWord">
