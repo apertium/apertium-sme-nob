@@ -1003,6 +1003,9 @@ SELECT:fallback ("respektere"i) IF  (0 ("<gudnejahttit>"i)) ;
 SELECT ("eller"i) IF  (0 ("<ii>"i) LINK 0 (foc_neg-ge))(NOT -1 COMMA)(*-1 neg)  ;
 SELECT:fallback ("ikke"i) IF  (0 ("<ii>"i)) ;
 
+SELECT ("tilkalle"i) IF  (0 ("<rávkat>"i) LINK 1 ess) ;
+SELECT:fallback ("vekke"i) IF  (0 ("<rávkat>"i)) ;
+
 
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
@@ -1519,9 +1522,10 @@ SELECT ("oppnå"i) (0 ("<olahit>"i) LINK 1 ("<.*vuohta>"r) OR ("<árvosátni>"r)
 SELECT ("oppnå"i) (0 ("<olahit>"i) LINK *1 sem_edu BARRIER NOT-NPMOD LINK 0 acc) ;
 SELECT:fallback ("rekke"i) (0 ("<olahit>"i));
 
-SELECT ("tørke"i) (0 ("<sihkkut>"i))(*0 ("<beavdi>"i) OR ("<njunni>"i) OR ("<távval>"i) LINK 0 acc);
-SELECT:fallback ("stryke"i) (0 ("<sihkkut>"i));
+SELECT ("tørke"i) (0 ("<sihkkut>"i))(*0 ("<beavdi>"i) OR ("<njunni>"i) OR ("<távval>"i) LINK 0 acc) ;
+SELECT:fallback ("stryke"i) (0 ("<sihkkut>"i)) ;
 
+SELECT ("oppdra"i) (0 ("<geassit>"i))(*0 ("<mánná>"i) LINK 0 acc OR gen) ;
 SELECT:fallback ("trekke"i) (0 ("<geassit>"i));
 
 SELECT ("utveksle"i) (0 ("<lonohallat>"i) LINK *0 ("<vásáhus>"i));
@@ -2464,6 +2468,7 @@ SELECT:fallback ("sjåfør"i) (0 ("<vuoddji>"i));
 
 SELECT ("doktor"i) (0 ("<doavttir>"i) LINK 1 (ant) OR (cog));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
+SELECT:fallback ("bilideapmi"i) (0 ("<ødeleggelse>"i));
 
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
@@ -2814,6 +2819,14 @@ SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 
 SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
 SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
+
+
+REMOVE ("opp"i) (0 ("<bajás>"i))(*0 ("<mánná>"i) LINK 0 acc OR gen) ;
+SELECT:fallback ("opp"i) (0 ("<bajás>"i)) ;
+
+
+SELECT ("enda"i) (0 ("<vuos>"i)) (-1 conneg);
+SELECT ("først"i) (0 ("<vuos>"i)) ; 
 
 SELECT:fallback ("mindre"i) (0 ("<unnit>"i)) ; 
 SELECT:fallback ("selvfølgelig"i) (0 ("<dieđus>"i)) ; 
