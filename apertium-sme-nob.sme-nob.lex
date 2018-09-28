@@ -3076,6 +3076,7 @@ SELECT ("kommende"i) (0 ("<boahtte>"i)) (1 ("<áigi>"i));
 SELECT:fallback ("neste"i) (0 ("<boahtte>"i));
 
 SELECT ("moro skyld"i) (0 ("<suohtas>"i)) (1 ("<dihte>"i));
+SELECT:plural ("spøk"i) (0 ("<suohtas>"i) LINK 0 pl + acc);
 SELECT:fallback ("morsom"i) (0 ("<suohtas>"i));
 
 

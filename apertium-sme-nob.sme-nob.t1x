@@ -2332,6 +2332,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="gávnnahallat"/>
       <list-item v="oainnahallat"/>
       <list-item v="vuojáhallat"/>
+      <list-item v="dolkat"/>
     </def-list>
     <def-list n="loc-for-verbs">
       <list-item v="nohkkot"/>
@@ -2644,7 +2645,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="glad"/>
       <list-item v="enig"/>
       <list-item v="redd"/>
-      <list-item v="år"/>
+<!--      <list-item v="år"/> 60-jagiin -->
     </def-list>
     <def-list n="loc-om-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
 <!--      <list-item v="informasjon"/> ambigious  -->
@@ -3993,6 +3994,12 @@ And then there are some categories like "month", with all the months.
             </or>
           </test>
           <let><var n="c_gen"/><lit-tag v="GD"/></let>
+        </when>
+        <when>
+          <test>
+	        <equal><clip pos="1" side="tl" part="animacy"/><lit-tag v="pers-pro"/></equal>
+          </test>
+          <let><var n="c_gen"/><lit-tag v="GD_pers"/></let>
         </when>
       </choose>
       <choose c="buorre, bahá">
@@ -5388,7 +5395,10 @@ And then there are some categories like "month", with all the months.
           </when></choose>
           <let><var n="c_animacy"/><lit-tag v="agreem-pro"/></let>
           <choose><when>
-            <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="animate_nonagent-verbs"/></in></test>
+	          <test><or>
+	        <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="animate_nonagent-verbs"/></in>
+	        <equal><clip pos="1" side="tl" part="animacy"/><lit-tag v="pers-pro"/></equal>
+            </or></test>
             <let><var n="c_animacy"/><lit-tag v="pers-pro"/></let>
           </when></choose>
           <out>
@@ -5486,7 +5496,8 @@ And then there are some categories like "month", with all the months.
                 <clip pos="1" side="tl" part="lemh"/>
                 <clip pos="1" side="tl" part="a_adj"/>
                 <clip pos="1" side="tl" part="grau"/>
-                <lit-tag v="GD.ND.ind"/>
+                <var n="c_gen"/>
+                <lit-tag v="ND.ind"/>
                 <clip pos="1" side="tl" part="lemq"/>
               </lu>
             </chunk>
