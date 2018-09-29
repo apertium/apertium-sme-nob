@@ -1243,6 +1243,7 @@ SELECT:fallback ("bli"i) + (agreem-pro) (0 ("<šaddat>"i)) ;
 
 # bargat 0 = arbeide, 1 = gjøre
 SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>"i prn acc) BARRIER V-IND-FIN) ;
+SELECT ("gjøre"i) (0 ("<bargat>"i)) (*0 @OBJ→ OR @←OBJ OR @-F←OBJ BARRIER S-BOUNDARY) ;
 SELECT ("arbeide"i) (0 ("<bargat>"i)) (*0 com OR ("<dainna>"i)) ;
 SELECT:fallback ("arbeide"i) (0 ("<bargat>"i));
 
@@ -2978,8 +2979,7 @@ SELECT ("ja"i) (0 ("<ja>"i)) (1 cnjcoo)  (-1 ("<ja>"i)) ;
 SELECT:fallback ("og"i) (0 ("<ja>"i));
 
 
-SELECT:bra ("bra"i) (0 ("<bures>"i) LINK *0 ("<mannat>"i) BARRIER SV-BOUNDARY) ;
-SELECT:bra ("bra"i) (0 ("<bures>"i) LINK *-1 vblex BARRIER S-BOUNDARY) ;
+SELECT:bra ("bra"i) (0 ("<bures>"i) LINK *0 ("<mannat>"i) OR ("<heivet>"i) BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("godt"i) (0 ("<bures>"i)) ;
 
 
@@ -3076,6 +3076,7 @@ SELECT ("kommende"i) (0 ("<boahtte>"i)) (1 ("<áigi>"i));
 SELECT:fallback ("neste"i) (0 ("<boahtte>"i));
 
 SELECT ("moro skyld"i) (0 ("<suohtas>"i)) (1 ("<dihte>"i));
+SELECT:plural ("spøk"i) (0 ("<suohtas>"i) LINK 0 pl + acc);
 SELECT:fallback ("morsom"i) (0 ("<suohtas>"i));
 
 

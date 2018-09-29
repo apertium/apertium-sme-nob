@@ -1881,6 +1881,13 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_food_plant&gt;"/>
       <list-item v="&lt;sem_food_sign&gt;"/>
     </def-list>
+    <def-list n="sem_act">
+      <list-item v="&lt;sem_act_fruit&gt;"/>
+      <list-item v="&lt;sem_act_group&gt;"/>
+      <list-item v="&lt;sem_act_plc&gt;"/>
+      <list-item v="&lt;sem_act_route&gt;"/>
+      <list-item v="&lt;sem_act_tool-it&gt;"/>
+    </def-list>
 
     <def-list n="sem_time">
       <list-item v="&lt;sem_ani_hum_time&gt;"/>
@@ -2292,6 +2299,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="coggat"/>
       <list-item v="investeret"/>
       <list-item v="nahkehit"/>
+      <list-item v="oassálastit"/>
       <list-item v="čoahkkanit"/>
       <list-item v="čuollat"/>
       <list-item v="čuolastit"/>
@@ -2332,6 +2340,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="gávnnahallat"/>
       <list-item v="oainnahallat"/>
       <list-item v="vuojáhallat"/>
+      <list-item v="dolkat"/>
     </def-list>
     <def-list n="loc-for-verbs">
       <list-item v="nohkkot"/>
@@ -2657,7 +2666,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="glad"/>
       <list-item v="enig"/>
       <list-item v="redd"/>
-      <list-item v="år"/>
+<!--      <list-item v="år"/> 60-jagiin -->
     </def-list>
     <def-list n="loc-om-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
 <!--      <list-item v="informasjon"/> ambigious  -->
@@ -3093,10 +3102,10 @@ And then there are some categories like "month", with all the months.
                 <equal><var n="previous-nhead"/><lit v="avtale"/></equal>
                 <equal><var n="previous-nhead"/><lit v="informasjon"/></equal>
                 </or>
-             <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_act"/></equal>
+             <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_act"/></in>
                   </and>
                   <and>
-                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_act"/></equal>
+             <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_act"/></in>
           <or><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></or>
                   </and> 
@@ -4007,6 +4016,12 @@ And then there are some categories like "month", with all the months.
           </test>
           <let><var n="c_gen"/><lit-tag v="GD"/></let>
         </when>
+        <when>
+          <test>
+	        <equal><clip pos="1" side="tl" part="animacy"/><lit-tag v="pers-pro"/></equal>
+          </test>
+          <let><var n="c_gen"/><lit-tag v="GD_pers"/></let>
+        </when>
       </choose>
       <choose c="buorre, bahá">
         <when>
@@ -4136,6 +4151,11 @@ And then there are some categories like "month", with all the months.
             <not><equal caseless="yes"><var n="main-verb-tl"/><lit v="søke"/></equal></not>
             <not><equal caseless="yes"><var n="main-verb-tl"/><lit v="spille"/></equal></not>
             <not><equal caseless="yes"><var n="main-verb-sl"/><lit v="gallánit"/></equal></not>
+            <not><and>
+            <equal caseless="yes"><var n="main-verb-sl"/><lit v="leat"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+             <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_act"/></in>
+            </and></not>
             <not><and>
             <equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="same"/></equal>
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal></not>
@@ -5401,7 +5421,10 @@ And then there are some categories like "month", with all the months.
           </when></choose>
           <let><var n="c_animacy"/><lit-tag v="agreem-pro"/></let>
           <choose><when>
-            <test><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="animate_nonagent-verbs"/></in></test>
+	          <test><or>
+	        <in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="animate_nonagent-verbs"/></in>
+	        <equal><clip pos="1" side="tl" part="animacy"/><lit-tag v="pers-pro"/></equal>
+            </or></test>
             <let><var n="c_animacy"/><lit-tag v="pers-pro"/></let>
           </when></choose>
           <out>
@@ -5499,7 +5522,8 @@ And then there are some categories like "month", with all the months.
                 <clip pos="1" side="tl" part="lemh"/>
                 <clip pos="1" side="tl" part="a_adj"/>
                 <clip pos="1" side="tl" part="grau"/>
-                <lit-tag v="GD.ND.ind"/>
+                <var n="c_gen"/>
+                <lit-tag v="ND.ind"/>
                 <clip pos="1" side="tl" part="lemq"/>
               </lu>
             </chunk>
