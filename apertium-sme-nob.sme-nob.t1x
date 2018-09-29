@@ -1881,6 +1881,13 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_food_plant&gt;"/>
       <list-item v="&lt;sem_food_sign&gt;"/>
     </def-list>
+    <def-list n="sem_act">
+      <list-item v="&lt;sem_act_fruit&gt;"/>
+      <list-item v="&lt;sem_act_group&gt;"/>
+      <list-item v="&lt;sem_act_plc&gt;"/>
+      <list-item v="&lt;sem_act_route&gt;"/>
+      <list-item v="&lt;sem_act_tool-it&gt;"/>
+    </def-list>
 
     <def-list n="sem_time">
       <list-item v="&lt;sem_ani_hum_time&gt;"/>
@@ -3081,10 +3088,10 @@ And then there are some categories like "month", with all the months.
                 <equal><var n="previous-nhead"/><lit v="avtale"/></equal>
                 <equal><var n="previous-nhead"/><lit v="informasjon"/></equal>
                 </or>
-             <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_act"/></equal>
+             <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_act"/></in>
                   </and>
                   <and>
-                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_act"/></equal>
+             <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_act"/></in>
           <or><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ela"/></equal>
           <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ela→"/></equal></or>
                   </and> 
@@ -4130,6 +4137,11 @@ And then there are some categories like "month", with all the months.
             <not><equal caseless="yes"><var n="main-verb-tl"/><lit v="søke"/></equal></not>
             <not><equal caseless="yes"><var n="main-verb-tl"/><lit v="spille"/></equal></not>
             <not><equal caseless="yes"><var n="main-verb-sl"/><lit v="gallánit"/></equal></not>
+            <not><and>
+            <equal caseless="yes"><var n="main-verb-sl"/><lit v="leat"/></equal>
+            <equal><clip pos="1" side="sl" part="case"/><lit-tag v="loc"/></equal>
+             <in caseless="yes"><clip pos="1" side="sl" part="a_sem"/><list n="sem_act"/></in>
+            </and></not>
             <not><and>
             <equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="same"/></equal>
             <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←OBJ"/></equal></not>
