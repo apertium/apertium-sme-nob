@@ -578,7 +578,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
                   in that case, just use the tags from the other conjunct.
                   (Might want to put defnes on pronouns in t1x?)">
       <let><clip pos="2" part="a_maydetind"/><lit v=""/></let>
-      <let><var n="c_tags"/><clip pos="2" part="tags"/></let>
+      <let><var n="c_tags"/><clip pos="1" part="tags"/></let>
       <choose><when>
         <test><not><equal><clip pos="1" part="art"/><lit v=""/></equal></not></test>
         <choose><when>
