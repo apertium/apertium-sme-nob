@@ -2995,10 +2995,14 @@ SELECT (det) (0 ("<sierra>"i));
 # Mii čujuhit ahte sámiin go lea sierra álbmot ja eamiálbmot
 
 SELECT ("fjern"i) (0 ("<gáiddus>"i) LINK 0 cmp);
-REMOVE ("fjern"i) (NOT 0 cmp);
+REMOVE ("fjern"i) (0 ("<gáiddus>"i))(NOT 0 cmp);
+
+SELECT ("lojal"i) (0 ("<oskkáldas>"i) LINK 1 ("<jienasteaddji>"i));
+SELECT:fallback ("pålitelig"i) (0 ("<oskkáldas>"i)) ;
+
 
 SELECT ("fleksibel"i) (0 ("<geabbil>"i) LINK *1 sem_edu);
-SELECT:fallback ("smidig"i) ;
+SELECT:fallback ("smidig"i) (0 ("<geabbil>"i)) ;
 
 
 SELECT ("gammel"i) (0 ("<dološ>"i) LINK 0 attr);
