@@ -1520,6 +1520,40 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
+<!--   <rule comment="REGLA: SUBJr FV MAIN-V FV.qst - out: 1 2 3 om pro 4  " c="Sámediggi áigu guorahallat vuosttažettiin lea go vejolaš rievdadit ohcanalmmuheami. : Sametinget skal undersøke først om det er mulig å forandre søknadspubliseringa.">
+      <pattern>
+        <pattern-item n="SUBJr"/>
+        <pattern-item n="FV"/>
+        <pattern-item n="MAIN-V"/>
+        <pattern-item n="adv1-lADVL"/>
+        <pattern-item n="FV.qst"/>
+      </pattern>
+      <action>
+        <call-macro n="set_adv"><with-param pos="5"/></call-macro>
+        <call-macro n="set_pro_verb_case1"><with-param pos="5"/></call-macro>
+       <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="4"/>
+          <chunk>
+            <lit v="cnjsub"/><lit-tag v="@CVP"/>
+            <lit v="{^"/>
+            <lit v="om"/><lit-tag v="cnjsub"/>
+            <lit v="$}"/>
+          </chunk>
+          <b />
+          <var n="pro"/><var n="pro-blank"/>
+          <var n="adv"/><var n="adv-blank"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule> -->
+
 
     <!-- <rules: rel FV -->
     <rule comment="REGLA: rel-SUBJr FV_alsoNeg - out: 1 2 ">
