@@ -2995,6 +2995,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="moms"/>
       <list-item v="mor"/>
       <list-item v="naturfag"/>
+      <list-item v="nivå"/>
       <list-item v="november"/>
       <list-item v="null"/>
       <list-item v="oktober"/>
@@ -11969,8 +11970,18 @@ And then there are some categories like "month", with all the months.
       <action>
         <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
         <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
+        
+        <choose>
+        <when>
+          <test>
+          <in caseless="yes"><clip pos="2" side="tl" part="lemh"/><list n="noun.pseudo-prop"/></in></test>
+          <let><var n="defnes"/><lit-tag v="ind"/></let>
+       </when>
+       <otherwise>
+        <let><var n="defnes"/><lit-tag v="def"/></let> 
+       </otherwise>
+        </choose>
 
-        <let><var n="defnes"/><lit-tag v="def"/></let>
 
         <call-macro n="set_caseprep"><with-param pos="2"/></call-macro>
         <let><var n="c_name"/><lit v="pre_pre_"/></let>
