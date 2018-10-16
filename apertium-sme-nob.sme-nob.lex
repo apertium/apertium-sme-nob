@@ -2748,7 +2748,7 @@ SELECT:fallback ("hvordan"i) (0 ("<movt>"i)) ;
 SELECT:fallback ("hvordan"i) (0 ("<mot>"i)) ;
 SELECT:fallback ("hvordan"i) (0 ("<mo>"i)) ;
 
-SELECT:oba ("en gang"i) (0 ("<oba>"i)) (-1 neg) ;
+SELECT:oba ("en gang"i) (0 ("<oba>"i)) ((-1 conneg) OR (1 conneg)) ;
 SELECT:fallback ("ganske"i) (0 ("<oba>"i)) ;
 
 SELECT:ge ("heller"i) (0 ("<ge>"i)) (*-1 neg) ;
