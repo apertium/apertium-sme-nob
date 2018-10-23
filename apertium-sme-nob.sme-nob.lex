@@ -1553,6 +1553,7 @@ SELECT:fallback ("fortsette"i) (0 ("<joatkit>"i));
 
 
 # Verbs that were 0-marked in the dix:
+SELECT:fallback ("rise"i) IF  (0 ("<risset>"i)) ;
 SELECT:fallback ("behandle"i) (0 ("<meannudit>"i));
 SELECT:fallback ("bevilge"i) (0 ("<juolludit>"i));
 SELECT:fallback ("sette"i) (0 ("<bidjat>"i));
@@ -2748,7 +2749,7 @@ SELECT:fallback ("hvordan"i) (0 ("<movt>"i)) ;
 SELECT:fallback ("hvordan"i) (0 ("<mot>"i)) ;
 SELECT:fallback ("hvordan"i) (0 ("<mo>"i)) ;
 
-SELECT:oba ("en gang"i) (0 ("<oba>"i)) (-1 neg) ;
+SELECT:oba ("en gang"i) (0 ("<oba>"i)) ((-1 conneg) OR (1 conneg)) ;
 SELECT:fallback ("ganske"i) (0 ("<oba>"i)) ;
 
 SELECT:ge ("heller"i) (0 ("<ge>"i)) (*-1 neg) ;
