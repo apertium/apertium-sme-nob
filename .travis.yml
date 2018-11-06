@@ -15,7 +15,7 @@ before_script:
     - ./autogen.sh --with-lang2=/tmp/apertium-nob
 
 script:
-    - make -j langs && make -j test
+    - make -j langs && make -j && make test
 # Travis only looks at the exit code of the last command! https://github.com/travis-ci/travis-ci/issues/1066
 
 notifications:
