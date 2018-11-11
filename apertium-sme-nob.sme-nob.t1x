@@ -3003,6 +3003,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="pop"/>
       <list-item v="påskeaften"/>
       <list-item v="reinlav"/>
+      <list-item v="rikdom"/>
+      <list-item v="raushet"/>
       <list-item v="rektor"/>
       <list-item v="rus"/>
       <list-item v="samiskhet"/>
@@ -3724,6 +3726,15 @@ And then there are some categories like "month", with all the months.
           </test>
           <let>
             <var n="caseprep"/><lit v="av"/>
+          </let>
+        </when>
+        <when c="ill is som">
+          <test><and>
+          <equal><clip pos="1" side="sl" part="lemh"/><lit v="guossi"/></equal>
+          <equal><var n="main-verb-sl"/><lit v="bovdet"/></equal>
+          </and></test>
+          <let>
+            <var n="caseprep"/><lit v="som"/>
           </let>
         </when>
             <when c="ill is med">
@@ -11840,6 +11851,44 @@ And then there are some categories like "month", with all the months.
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
       </action>
     </rule>
+<!--
+    <rule comment="C[] adj_vblex_attr nom-adj.cmp nom_head">
+      <pattern>
+        <pattern-item n="adj_vblex_attr"/>
+        <pattern-item n="nom-adj.cmp"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="3"/><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+
+
+        <let>
+          <var n="pre-nom"/>
+          <concat>
+            <lit v="^"/>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_adj"/>
+              <clip pos="1" side="tl" part="a_adv"/>
+              <clip pos="1" side="tl" part="grau"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <clip pos="1" side="tl" part="nbr"/>
+              <lit-tag v="3"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            <lit v="$"/>
+            <b pos="1"/>
+          </concat>
+        </let>
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule> -->
+
 
     <rule comment="C[] adj_vblex_attr conj adj_vblex_attr nom_head" c="Girjji namma lea ohppojuvvon ja sohppojuvvon giella">
       <pattern>
