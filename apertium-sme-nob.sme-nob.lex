@@ -1022,6 +1022,11 @@ SELECT:fallback ("avtale"i) IF  (0 ("<šiehttat>"i)) ;
 SELECT ("sist"i) IF  (0 ("<vássit>"i) LINK 0 @→N) ;
 SELECT:fallback ("svinne"i) IF  (0 ("<vássit>"i)) ;
 
+SELECT ("legge# til"i) IF  (0 ("<lasihit>"i) LINK -1 HUMAN + nom OR cnjcoo OR COMMA) ;
+SELECT ("legge# til"i) IF  (0 ("<lasihit>"i) LINK 1 HUMAN + nom) ;
+SELECT:fallback ("øke"i) IF  (0 ("<lasihit>"i)) ;
+
+
 SELECT ("trakassere"i) IF  (0 ("<loavkašuhttit>"i) LINK -1 ("<seksualálaš>"i)) ;
 SELECT:fallback ("fornærme"i) IF  (0 ("<loavkašuhttit>"i)) ;
 
@@ -2882,7 +2887,7 @@ SELECT ("masse"i) (0 ("<dievva>"i) LINK 1 n + pl) ;
 SELECT:fallback ("full"i) (0 ("<dievva>"i) + adv) ;
 
 SELECT ("lite"i) (0 ("<unnán>"i) LINK 1 gen LINK 1 post) ;
-SELECT ("få"i) (0 ("<unnán>"i) LINK 1 n + pl) ;
+SELECT ("få"i) (0 ("<unnán>"i) LINK *1 n + pl BARRIER NOT-A - cmp) ;
 SELECT:fallback ("lite"i) (0 ("<unnán>"i) + adv) ;
 
 
