@@ -2696,14 +2696,24 @@ SELECT ("den"i nt) (0 ("<dat>"i) LINK 1 ("<leat>"i)) ;
 SELECT:fallback ("den"i nt) (0 ("<dat>"i)) ;
 
 
+# han/hun
+# -------
 
+# New exiperimental version: W added to look out of the sentence
 
-SELECT ("hun"i) (0 ("<son>"i) LINK *-1 ("<nieida>"i) OR ("<nisu>"i) OR sem_fem BARRIER sem_mal) ;
-SELECT ("hun"i) (0 ("<son>"i) LINK *1 ("<nieida>"i) OR ("<nisu>"i)  BARRIER sem_mal) ; # OR sem_fem BARRIER prn OR n) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK *-1W ("<nieida>"i) OR ("<nisu>"i) OR sem_fem or (ant f) BARRIER sem_mal) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK *1W ("<nieida>"i) OR ("<nisu>"i)  BARRIER sem_mal) ; # OR sem_fem BARRIER prn OR n) ;
 SELECT ("hun"i) (0 ("<son>"i) LINK 1 ("<namma>"i) LINK *1 sem_fem BARRIER prn OR n) ;
 SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER prn OR n) ;
-SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *-1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER sem_fem) ;
+SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *-1W ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER sem_fem) ;
 
+
+# han/hun for remote subject (perhaps object or habitive is as likely)
+SELECT:HunRemoteSubject ("hun"i) (0 ("<son>"i)) (**-1WA (sem_fem @SUBJ>) OR (ant f));
+
+
+
+# dát
 
 SELECT ("nå"i)  (0 ("<dát>"i) LINK 0 gen LINK 1 ("<rádjai>"i) LINK 0 post) ;
 SELECT:fallback ("denne"i)  (0 ("<dát>"i)) ;
