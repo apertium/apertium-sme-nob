@@ -1022,6 +1022,11 @@ SELECT:fallback ("avtale"i) IF  (0 ("<šiehttat>"i)) ;
 SELECT ("sist"i) IF  (0 ("<vássit>"i) LINK 0 @→N) ;
 SELECT:fallback ("svinne"i) IF  (0 ("<vássit>"i)) ;
 
+SELECT ("legge# til"i) IF  (0 ("<lasihit>"i) LINK -1 HUMAN + nom OR cnjcoo OR COMMA) ;
+SELECT ("legge# til"i) IF  (0 ("<lasihit>"i) LINK 1 HUMAN + nom) ;
+SELECT:fallback ("øke"i) IF  (0 ("<lasihit>"i)) ;
+
+
 SELECT ("trakassere"i) IF  (0 ("<loavkašuhttit>"i) LINK -1 ("<seksualálaš>"i)) ;
 SELECT:fallback ("fornærme"i) IF  (0 ("<loavkašuhttit>"i)) ;
 
@@ -1494,7 +1499,7 @@ SELECT:fallback ("etablere"i) (0 ("<ásahit>"i));
 
 SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 ("<ahte>"i) OR adv OR adj OR inf OR actio);
 SELECT:advare ("advare"i) (0 ("<váruhit>"i) LINK 1 sem_hum OR np);
-SELECT:fallback ("passe"i) (0 ("<váruhit>"i));
+SELECT:fallback ("advare"i) (0 ("<váruhit>"i));
 
 SELECT:ringe ("ringe"i) (0 ("<čuodjat>"i) LINK *0 ("<telefovdna>"i)) ;
 SELECT:fallback ("klinge"i) (0 ("<čuodjat>"i) LINK NEGATE *0 ("<telefuvdna>"i) ) ;
@@ -2759,8 +2764,8 @@ SELECT:fallback ("hvordan"i) (0 ("<movt>"i)) ;
 SELECT:fallback ("hvordan"i) (0 ("<mot>"i)) ;
 SELECT:fallback ("hvordan"i) (0 ("<mo>"i)) ;
 
-SELECT:oba ("en gang"i) (0 ("<oba>"i)) ((-1 conneg) OR (1 conneg)) ;
-SELECT:fallback ("ganske"i) (0 ("<oba>"i)) ;
+SELECT:oba ("i det hele tatt"i) (0 ("<oba>"i)) ((-1 conneg) OR (-1 neg) OR (1 conneg)) ;
+SELECT:fallback ("aldeles"i) (0 ("<oba>"i)) ;
 
 SELECT:ge ("heller"i) (0 ("<ge>"i)) (*-1 neg) ;
 SELECT:fallback ("også"i) (0 ("<ge>"i)) ;
@@ -2892,7 +2897,7 @@ SELECT ("masse"i) (0 ("<dievva>"i) LINK 1 n + pl) ;
 SELECT:fallback ("full"i) (0 ("<dievva>"i) + adv) ;
 
 SELECT ("lite"i) (0 ("<unnán>"i) LINK 1 gen LINK 1 post) ;
-SELECT ("få"i) (0 ("<unnán>"i) LINK 1 n + pl) ;
+SELECT ("få"i) (0 ("<unnán>"i) LINK *1 n + pl BARRIER NOT-A - cmp) ;
 SELECT:fallback ("lite"i) (0 ("<unnán>"i) + adv) ;
 
 
