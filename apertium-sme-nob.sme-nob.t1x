@@ -2877,6 +2877,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="do"/>
       <list-item v="fengsel"/>
       <list-item v="arrest"/>
+      <list-item v="bruk"/>
     </def-list>
     <def-list n="ill-på" c="Illative noun phrases default to 'til' unless in this list">
       <list-item v="ferie"/>
@@ -4346,8 +4347,10 @@ And then there are some categories like "month", with all the months.
             <equal><var n="main-verb-tl"/><lit v="blåse"/></equal>
             </and></not>
 
-            <not><and>
+            <not><and><or>
               <equal><clip pos="1" side="sl" part="lemh"/><lit v="ságat"/></equal>
+            <equal><clip pos="1" side="tl" part="lemh"/><lit v="bruk"/></equal>
+              </or>
               <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ill"/></equal>
             </and></not>
             <not><and><or>

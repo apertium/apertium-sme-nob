@@ -1056,7 +1056,8 @@ SELECT:fallback ("fjerne"i) IF  (0 ("<gáidat>"i)) ;
 SELECT ("lage"i) IF  (0 ("<duddjot>"i)) (0* acc BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("lage# duodji"i) IF  (0 ("<duddjot>"i)) ;
 
-SELECT:fallback ("veilede"i) IF  (0 ("<rávvet>"i)) ;
+SELECT:fallback ("anbefale"i) IF  (0 ("<rávvet>"i)) ;
+#SELECT:fallback ("veilede"i) IF  (0 ("<rávvet>"i)) ;
 
 SELECT:fallback ("merke"i) IF  (0 ("<vuohttit>"i)) ;
 
@@ -1214,6 +1215,7 @@ SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<dego>"i) OR (actio
 SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (2 ("<miella>"i) + loc OR ("<mielas>"i) OR ("<bures>"i) OR ("<ballu>"i) OR ("<illu>"i)) ;
 SELECT:maid ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 ("<mii>"i)) ;
 SELECT:jaska ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (*1 ("<oahpis>"i)) ;
+SELECT:jaska ("være"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (*-1 ("<diktit>"i)) ;
 SELECT:jaska ("være"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<jaska>"i)) ;
 SELECT:dego ("virke"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<nu>"i) OR adj + nom) ;
 SELECT:bli ("bli"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 ("<go>"i)) ;
@@ -2746,7 +2748,7 @@ SELECT:fallback ("hvis"i) (0 ("<mii>"i) LINK 0 rel + @→N ) ;
 
 SELECT:pl ("noen"i) (0 ("<muhtun>"i) + pl) ;
 SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (1 n + pl) ;
+SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (*1 n + pl BARRIER NOT-NPMOD) ;
 SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (2 n + pl) ;
 SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtin>"i)) (-1 LEAT + pl) ;
 SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i)) (1 n + pl) ;
