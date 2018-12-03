@@ -489,7 +489,6 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="cnjsub.*"/>
     </def-cat>
     <def-cat n="time-noun">
-      <cat-item lemma="guovvamánnu" tags="n.*"/>
       <cat-item lemma="ođđajagimánnu" tags="n.*"/>
       <cat-item lemma="guovvamánnu" tags="n.*"/>
       <cat-item lemma="njukčamánnu" tags="n.*"/>
@@ -519,6 +518,12 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="lex-jahkásaš">
       <cat-item lemma="jahkásaš" tags="adj.*"/>
+    </def-cat>
+    <def-cat n="lex-beallemuttus">
+      <cat-item lemma="beallemuttus" tags="adv.*"/>
+      <cat-item lemma="gaskamuttus" tags="adv.*"/>
+      <cat-item lemma="beallemuddui" tags="adv.*"/>
+      <cat-item lemma="gaskamuddui" tags="adv.*"/>
     </def-cat>
     <def-cat n="lex-álgu-loahppa">
       <cat-item lemma="álgu" tags="n.*"/>
@@ -7747,6 +7752,61 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+    <rule comment="C[] month lex-beallemuttus" c="suoidnemánu beallemuttus → i midten av juli">
+      <pattern>
+        <pattern-item n="month"/>
+        <pattern-item n="lex-beallemuttus"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+         <choose>
+          <when>
+            <test>
+              <equal><clip pos="2" side="sl" part="case"/><lit-tag v="ill"/></equal>
+            </test>
+            <let><var n="caseprep"/><lit v="til"/></let>
+          </when>
+          <when>
+            <test><or>
+              <equal><clip pos="2" side="sl" part="lemh"/><lit v="beallemuddui"/></equal>
+              <equal><clip pos="2" side="sl" part="lemh"/><lit v="gaskamuddui"/></equal>
+            </or></test>
+            <let><var n="caseprep"/><lit v="til"/></let>
+          </when>
+          <otherwise>
+            <let><var n="caseprep"/><lit v="i"/></let>
+          </otherwise>
+        </choose>
+       <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+                <lu>
+              <var n="caseprep"/><lit-tag v="pr"/>
+                </lu>
+                <b/>
+                <lu>
+              <lit v="midt"/><lit-tag v="n.m.sg.def"/>
+                </lu>
+                <b/>
+                 <lu>
+              <lit v="av"/><lit-tag v="pr"/>
+                </lu>
+               <b pos="1"/>
+                <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+              <lit-tag v="ind"/>
+              <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="C[] month lex-álgu-loahppa" c="suoidnemánu álggus → i begynnelsen av juli">
       <pattern>
         <pattern-item n="month"/>

@@ -1019,6 +1019,7 @@ SELECT:fallback ("veve# opplukk"i) IF  (0 ("<čuoldit>"i)) ;
 SELECT ("få# plass"i) IF  (0 ("<šiehttat>"i)) (*1 ill BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("avtale"i) IF  (0 ("<šiehttat>"i)) ;
 
+SELECT ("forgangen"i) IF  (0 ("<vássit>"i) LINK 0 @→N LINK 1 ("<áigi>"i) OR ("<jahki>"i)) ;
 SELECT ("sist"i) IF  (0 ("<vássit>"i) LINK 0 @→N) ;
 SELECT:fallback ("svinne"i) IF  (0 ("<vássit>"i)) ;
 
