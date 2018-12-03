@@ -1294,7 +1294,7 @@ SELECT:fallback ("ville# ha"i) (0 ("<fuollat>"i)) ;
 
 
 # čuohppat: skjære vs klippe
-SELECT ("klippe"i) (0 ("<čuohppat>"i)) (*0 ("<vuokta>"i) OR ("<liidni>"i));
+SELECT ("klippe"i) (0 ("<čuohppat>"i)) (*0 ("<vuokta>"i) OR ("<liidni>"i) OR ("<bádden>"i) OR (sem_prod-vis) LINK 0 acc);
 SELECT ("skjære"i) (0 ("<čuohppat>"i)) ;
 
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
@@ -2372,6 +2372,7 @@ SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK 1 (arab) OR ("<ovdaolmmoš>"
 SELECT ("reinbeitedistrikt"i) (0 ("<orohat>"i) LINK *0 ("<boazu>"i) OR ("<boazolohku>"i)) ;
 SELECT:fallback ("reinbeitedistrikt"i) (0 ("<orohat>"i));
 
+SELECT ("frontperson"i) (0 ("<njunuš>"i))(-1 sem_org LINK 0 @→N);
 SELECT ("topp"i) (0 ("<njunuš>"i))(*0 ("<artista>"i) OR ("<listu>"i) OR ("<válga.*>"r));
 SELECT ("toppfolk"i) (0 ("<njunuš>"i) + pl) ;
 SELECT:fallback ("topp"i) (0 ("<njunuš>"i));
@@ -2708,11 +2709,11 @@ SELECT:fallback ("den"i nt) (0 ("<dat>"i)) ;
 
 # New exiperimental version: W added to look out of the sentence
 
-SELECT ("hun"i) (0 ("<son>"i) LINK *-1W ("<nieida>"i) OR ("<nisu>"i) OR sem_fem or (ant f) BARRIER sem_mal) ;
-SELECT ("hun"i) (0 ("<son>"i) LINK *1W ("<nieida>"i) OR ("<nisu>"i)  BARRIER sem_mal) ; # OR sem_fem BARRIER prn OR n) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK *-1W ("<nieida>"i) OR ("<nisu>"i) OR sem_fem or (ant f) BARRIER sem_mal)(NEGATE *1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal LINK 0 nom) ;
 SELECT ("hun"i) (0 ("<son>"i) LINK 1 ("<namma>"i) LINK *1 sem_fem BARRIER prn OR n) ;
+SELECT ("hun"i) (0 ("<son>"i) LINK *1W ("<nieida>"i) OR ("<nisu>"i)  BARRIER sem_mal) ; # OR sem_fem BARRIER prn OR n) ;
 SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *1 ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER prn OR n) ;
-SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *-1W ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER sem_fem) ;
+SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *-1W ("<bárdni>"i) OR ("<dievdu>"i) OR sem_mal BARRIER sem_fem)(NEGATE *1 ("<nieida>"i) OR ("<nisu>"i) OR sem_fem LINK 0 nom) ;
 
 
 # han/hun for remote subject (perhaps object or habitive is as likely)
@@ -3017,6 +3018,9 @@ REMOVE ("fjern"i) (0 ("<gáiddus>"i))(NOT 0 cmp);
 
 SELECT ("lojal"i) (0 ("<oskkáldas>"i) LINK 1 ("<jienasteaddji>"i));
 SELECT:fallback ("pålitelig"i) (0 ("<oskkáldas>"i)) ;
+
+SELECT ("akseptabel"i) (0 ("<dohkálaš>"i) LINK *-1 ("<leat>"i) BARRIER SV-BOUNDARY LINK *-1 loc BARRIER nom);
+SELECT:fallback ("brukbar"i) (0 ("<dohkálaš>"i)) ;
 
 
 SELECT ("fleksibel"i) (0 ("<geabbil>"i) LINK *1 sem_edu);

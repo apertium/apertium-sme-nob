@@ -2571,7 +2571,6 @@ And then there are some categories like "month", with all the months.
       <list-item v="mandat"/>
       <list-item v="manntall"/>
       <list-item v="mars"/>
-      <list-item v="marked"/>
       <list-item v="matematikk"/>
       <list-item v="medisin"/>
       <list-item v="melding"/>
@@ -2782,6 +2781,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="liste"/>
       <list-item v="lørdag"/>
       <list-item v="mandag"/>
+      <list-item v="marked"/>
       <list-item v="møte"/>
       <list-item v="nivå"/>
       <list-item v="onsdag"/>
@@ -4308,7 +4308,7 @@ And then there are some categories like "month", with all the months.
             <not><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="johtu"/></equal></not>
             <not><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="beaivebodda"/></equal></not>
             <not><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="miljovdnabealli"/></equal></not>
-            <not><equal caseless="yes"><var n="main-verb-tl"/><lit v="søke"/></equal></not>
+<!--            <not><equal caseless="yes"><var n="main-verb-tl"/><lit v="søke"/></equal></not> -->
             <not><equal caseless="yes"><var n="main-verb-tl"/><lit v="spille"/></equal></not>
             <not><equal caseless="yes"><var n="main-verb-sl"/><lit v="gallánit"/></equal></not>
             <not><and>
@@ -8389,6 +8389,45 @@ And then there are some categories like "month", with all the months.
         </when></choose>
       </action>
     </rule>
+    <rule comment="C[DT] ord month" c="24. golggotmánus → 24. oktober">
+      <pattern>
+        <pattern-item n="ord_num"/>
+        <pattern-item n="month"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+       <let><var n="caseprep"/><lit v=""/></let>
+        <out>
+            <var n="caseprep"/>
+          <chunk name="pre_nom" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+              <tag><clip pos="2" side="tl" part="gen"/></tag>
+              <tag><clip pos="2" side="tl" part="nbr"/></tag>
+              <!-- <tag><lit-tag v="def"/></tag> -->
+              <tag><clip pos="2" side="tl" part="case"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <lit-tag v="adj.ord.pst.un.sp.def"/>
+              <clip pos="1" side="tl" part="lemq"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <clip pos="2" side="tl" part="nbr"/>
+              <lit-tag v="ind"/>
+              <!-- <clip pos="1" side="tl" part="gen-case"/> -->
+              <clip pos="2" side="tl" part="lemq"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="C[DT] ord lex-beaivi det_mod lex-mannu" c="24. beaivve dán mánus → 24. oktober">
       <pattern>
         <pattern-item n="ord_num"/>
@@ -9869,7 +9908,7 @@ And then there are some categories like "month", with all the months.
               <or>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
-                <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal> 
                 <and>
                 <ends-with><clip pos="1" side="tl" part="lemh"/><lit v="%"/></ends-with>
                 <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
