@@ -1006,12 +1006,16 @@ SELECT:fallback ("ikke"i) IF  (0 ("<ii>"i)) ;
 SELECT ("tilkalle"i) IF  (0 ("<rávkat>"i) LINK 1 ess) ;
 SELECT:fallback ("vekke"i) IF  (0 ("<rávkat>"i)) ;
 
+SELECT ref IF  (0 ("<čájehit>"i) LINK 0 der_passl) ; #čájehuvvui : det viste seg
 
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
 SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
 SELECT ("renne"i) IF  (0 ("<suohpput>"i))(0* ("<čuoldit>"i) OR ("<vuotta>"i) OR ("<boagán>"i)) ;
 SELECT:fallback ("kaste"i) IF  (0 ("<suohpput>"i)) ;
+
+SELECT ("operere"i) IF  (0 ("<čuohpadit>"i) LINK 0 der_pass) ;
+SELECT:fallback ("skjære"i) IF  (0 ("<čuohpadit>"i)) ;
 
 
 SELECT:fallback ("veve# opplukk"i) IF  (0 ("<čuoldit>"i)) ;
@@ -1702,6 +1706,8 @@ SELECT:fallback ("fare"i) (0 ("<várra>"i) ) ;
 
 SELECT ("kule"i) (0 ("<spábba>"i) LINK -1 ("<dolla>"i)) ;
 SELECT:fallback ("ball"i) (0 ("<spábba>"i)) ;
+
+SELECT ("ild"i) (0 ("<dolla>"i) LINK *-1 ("slukke"i));
 SELECT ("ild"i) (0 ("<dolla>"i) LINK 1 ("<spábba>"i));
 SELECT:fallback ("bål"i) (0 ("<dolla>"i));
 
@@ -2298,7 +2304,7 @@ SELECT ("preken"i) (0 ("<sárdni>"i) LINK *-1 ("<báhppa>"i) OR ("<girku>"i));
 SELECT:fallback ("tale"i) (0 ("<sárdni>"i));
 
 SELECT ("samiske språk"i) (0 ("<sámegiella>"i) LINK 0 pl);
-SELECT ("samiske språk"i) (0 ("<sámegiella>"i) LINK 0 gen LINK -1 num);
+SELECT ("samiske språk"i) (0 ("<sámegiella>"i) LINK 0 gen OR ill OR loc LINK -1 num);
 SELECT ("samisk språk"i) (0 ("<sámegiella>"i) LINK 1 cnjcoo LINK 1 ("<kultuvra>"i) OR ("<sápmi>"i) + gen);
 SELECT ("samisk språk"i) (0 ("<sámegiella>"i) LINK 1 ("<ovdáneapmi>"i) OR sem_state OR ("<ipmil>"i));
 SELECT:fallback ("samisk"i) (0 ("<sámegiella>"i));
