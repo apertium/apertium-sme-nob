@@ -1094,6 +1094,7 @@ SELECT:fallback ("bære"i) IF  (0 ("<guoddit>"i)) ;
 
 SELECT ("felle"i) IF  (0 ("<njeaidit>"i)) (0* sem_ani OR sem_plant BARRIER SV-BOUNDARY ) ;
 SELECT:fallback ("velte"i) IF  (0 ("<njeaidit>"i)) ;
+# bryte ned, fjerne, bygge ned, 
 
 SELECT ("joike"i) IF  (0 ("<rohttestit>"i) OR ("<rohttet>"i)) (0* ("<luohti>"i) BARRIER SV-BOUNDARY ) ;
 SELECT:fallback ("rykke"i) IF  (0 ("<rohttestit>"i)) ;
