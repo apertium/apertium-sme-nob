@@ -5312,10 +5312,10 @@ And then there are some categories like "month", with all the months.
       <choose c="Set caseprep tag – t2x can use this to override NP preposition
                  This tag is added to both main predicate chunks (except noun, TODO)
                  and to Conditional, Causative and and Passive chunks, just to make sure...">
-        <when>
+<!--        <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-NIL-verbs"/></in></test>
           <let><var n="caseprep-verb"/><lit-tag v="ill-NIL"/></let>
-        </when>
+        </when> -->
         <when>
           <test><in caseless="yes"><clip pos="1" side="sl" part="lemh"/><list n="ill-på-verbs"/></in></test>
           <let><var n="caseprep-verb"/><lit-tag v="ill-på"/></let>
@@ -8979,7 +8979,7 @@ And then there are some categories like "month", with all the months.
           </when>
           <otherwise>
        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="1"/></call-macro>
-        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="2"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
         <append n="pre-nom"><b pos="1"/></append>
           </otherwise>
 
@@ -10388,7 +10388,7 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
-    <rule comment="C[] num_mod nom.gen nom_head
+    <rule comment="C[] num_mod nom.gen nom_head 
                    Oblique use of num nom, here the final nominal is the head
                    See num_mod nom_head rule.">
       <pattern>
@@ -10438,8 +10438,68 @@ And then there are some categories like "month", with all the months.
 
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <choose>
+          <when>
+            <test><and>
+              <not><equal><clip pos="3" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+              <or>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
+                <and>
+                <ends-with><clip pos="1" side="tl" part="lemh"/><lit v="%"/></ends-with>
+                <equal><clip pos="3" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+                </and>
+              </or>
+            </and></test>
+            <let><clip pos="3" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="3" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+          </otherwise>
+        </choose>
 
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment="C[] num_mod nom-adj.cmp nom.gen nom_head">
+      <pattern>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="nom-adj.cmp"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes2"><with-param pos="3"/><with-param pos="1"/></call-macro>
+
+        <call-macro n="clean_cmp"><with-param pos="2"/></call-macro>
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
+        <choose>
+          <when>
+            <test><and>
+              <not><equal><clip pos="3" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+              <or>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
+              </or>
+            </and></test>
+            <let><clip pos="4" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="4" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+          </otherwise>
+        </choose>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="1"/></call-macro>
+                <append n="pre-nom"><b pos="1"/></append>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="3"/></call-macro>
+                <append n="pre-nom"><b pos="2"/></append>
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
       </action>
     </rule>
 
