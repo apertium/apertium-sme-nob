@@ -928,6 +928,7 @@ SELECT ("stenge"i) IF (0 ("<gitta>"i) LINK *0 ("<geaidnu>"i) OR ("<luodda>"i) OR
 SELECT ("helt"i) IF (0 ("<gitta>"i) + @→A OR ("<gitta>"i) + @→N) ;
 SELECT ("helt"i) IF (0 ("<gitta>"i) LINK 1 sem_time + ill) ;
 SELECT ("inntil"i) IF (0 ("<gitta>"i) + @→Num) ;
+SELECT ("inntil"i) IF (0 ("<gitta>"i) LINK 1 adv + (@←ADVL-ine)) ;
 SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<váldot>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
 SELECT:fallback ("lukket"i) IF (0 ("<gitta>"i) LINK *0 ("<čalbmi>"i))  ;
 SELECT:fallback ("stenge"i) IF (0 ("<gitta>"i))  ;
@@ -1005,6 +1006,15 @@ SELECT:fallback ("ikke"i) IF  (0 ("<ii>"i)) ;
 
 SELECT ("tilkalle"i) IF  (0 ("<rávkat>"i) LINK 1 ess) ;
 SELECT:fallback ("vekke"i) IF  (0 ("<rávkat>"i)) ;
+
+SELECT ("øke"i) IF  (0 ("<bajidit>"i) LINK 1 ("<haddi>"i)) ;
+SELECT:fallback ("løfte"i) IF  (0 ("<bajidit>"i)) ;
+
+
+SELECT ("berøre"i) IF  (0 ("<guoskat>"i) LINK 1 ill) ;
+SELECT:fallback ("gjelde"i) IF  (0 ("<guoskat>"i)) ;
+
+
 
 SELECT ref IF  (0 ("<čájehit>"i) LINK 0 der_passl) ; #čájehuvvui : det viste seg
 
@@ -1985,6 +1995,7 @@ SELECT:fallback ("bråk"i) (0 ("<stuibmi>"i));
 # diehtu 0 = informasjon,  3 = beskjed
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna>"i) OR ("<mobiila>"i) OR ("<rápmi>"i)) ;
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 sg + acc) (*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
+SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 sg + acc) (1 inf)(-1 ("<oažžut>"i)) ;
 ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
 ## Lei Ájlin gii sáddii dieđu.
 SELECT:fallback ("viten"i) (0 ("<diehtu>"i) LINK -1 ("<árbevirolaš>"i));
@@ -2845,8 +2856,6 @@ SELECT ("så"i) (0 ("<nu>"i)) (1 adj or ("<galle>"i) or ("<gealdagas>"i) or ("<b
 SELECT:så-langt-som ("så"i) (0 ("<nu>"i)) (1 adv) (2 cnjsub) ;
 SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 
-SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
-SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
 
 REMOVE ("opp"i) (0 ("<bajás>"i))(*0 ("<mánná>"i) LINK 0 acc OR gen) ;
