@@ -4263,7 +4263,7 @@ And then there are some categories like "month", with all the months.
             </when>
             <when>
               <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_hyph.cmp"/></equal></test>
-              <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
+              <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp.guio"/></let>
             </when>
           </choose>
           <choose c="nbr/art tags">
@@ -5166,7 +5166,7 @@ And then there are some categories like "month", with all the months.
           </out>
         </when>
 
-        <when c="cmp_splitr → sg.ind.guio (split compounds)
+        <when c="cmp_splitr → sg.ind.cmp.guio (split compounds)
                  eanan-(cmp_splitr) ja luonddudoahpagiid → jord-(sg.ind) og naturfagord">
           <test><equal><clip pos="1" side="sl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal></test>
           <call-macro n="guess_animacy"><with-param pos="1"/></call-macro>
@@ -5188,7 +5188,7 @@ And then there are some categories like "month", with all the months.
                 <clip pos="1" side="tl" part="lemh"/>
                 <clip pos="1" side="tl" part="a_nom"/>
                 <clip pos="1" side="tl" part="gen"/>
-                <lit-tag v="sg.ind.guio"/>
+                <lit-tag v="sg.ind.cmp.guio"/>
                 <clip pos="1" side="tl" part="lemq"/>
               </lu>
             </chunk>
