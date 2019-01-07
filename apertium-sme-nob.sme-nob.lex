@@ -1091,6 +1091,8 @@ SELECT:fallback ("redusere"i) IF  (0 ("<unnidit>"i)) ;
 
 
 SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK 1 acc) (*1 ill) ;
+SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK -1 ("<ášši>"i))  ;
+SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK 1 ("<ášši>"i))  ;
 SELECT:fallback ("utvikle"i) IF  (0 ("<ovddidit>"i)) ;
 
 SELECT:fallback ("gå"i) IF  (0 ("<lávket>"i) LINK *1 ill BARRIER NOT-Attr) ;
@@ -2630,7 +2632,7 @@ SELECT:fallback ("ende"i) (0 ("<loahppa>"i) LINK -1 ("<máilbmi>"i)) ;
 SELECT:fallback ("slutt"i) (0 ("<loahppa>"i)) ;
 
 SELECT ("poeng"i) (0 ("<čuokkis>"i) LINK 0 acc LINK *0 ("<oažžut>"i));
-SELECT ("poeng"i) (0 ("<čuokkis>"i) LINK -1 sem_edu);
+SELECT ("poeng"i) (0 ("<čuokkis>"i) LINK -1 sem_edu OR arab);
 SELECT:fallback ("punkt"i) (0 ("<čuokkis>"i)) ;
 
 
@@ -3035,6 +3037,10 @@ REMOVE ("fjern"i) (0 ("<gáiddus>"i))(NOT 0 cmp);
 
 SELECT ("lojal"i) (0 ("<oskkáldas>"i) LINK 1 ("<jienasteaddji>"i));
 SELECT:fallback ("pålitelig"i) (0 ("<oskkáldas>"i)) ;
+
+SELECT ("gjelde"i) (0 ("<doaibmi>"i) LINK 1 sem_rule);
+SELECT:fallback ("fungere"i) (0 ("<doaibmi>"i)) ;
+
 
 SELECT ("akseptabel"i) (0 ("<dohkálaš>"i) LINK *-1 ("<leat>"i) BARRIER SV-BOUNDARY LINK *-1 loc BARRIER nom);
 SELECT:fallback ("brukbar"i) (0 ("<dohkálaš>"i)) ;
