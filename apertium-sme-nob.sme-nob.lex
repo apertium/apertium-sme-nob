@@ -2909,7 +2909,7 @@ SELECT:fallback ("østpå"i) (0 ("<nuortan>"i)) ;
 SELECT ("dobbelt"i) (0 ("<beali>"i) LINK 1 ("<eanet>"i)) ;
 SELECT:fallback ("halve"i) (0 ("<beali>"i)) ;
 
-SELECT ("sammen"i) (0 ("<oktii>"i) LINK -1 ("<bidjat>"i) OR ("<časkit>"i) OR ("<laktit>"i) OR ("<beaškkehit>"i)) ;
+SELECT ("sammen"i) (0 ("<oktii>"i) LINK *-1 ("<bidjat>"i) OR ("<časkit>"i) OR ("<laktit>"i) OR ("<beaškkehit>"i) BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("en gang"i) (0 ("<oktii>"i)) ;
 
 

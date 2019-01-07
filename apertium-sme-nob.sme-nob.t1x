@@ -2758,6 +2758,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="Statnett"/>
       <list-item v="Svalbard"/>
       <list-item v="Sørøya"/>
+      <list-item v="Twitter"/>
       <list-item v="Varangerhalvøya"/>
       <list-item v="Vestlandet"/>
       <list-item v="arbeidsplass"/>
@@ -9978,6 +9979,7 @@ And then there are some categories like "month", with all the months.
             <test><and>
               <not><equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
               <or>
+                <equal><clip pos="2" side="tl" part="lemh"/><lit v="takk"/></equal>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
                 <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal> 
