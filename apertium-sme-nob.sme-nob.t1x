@@ -14032,7 +14032,7 @@ And then there are some categories like "month", with all the months.
         <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
         <choose><when>
           <test><equal><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp_splitr"/></equal></test>
-          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="guio"/></let>
+          <let><clip pos="1" side="tl" part="a_cmp"/><lit-tag v="cmp.guio"/></let>
         </when></choose>
         <choose>
 	        <when>
