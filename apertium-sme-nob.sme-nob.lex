@@ -2496,6 +2496,8 @@ SELECT:fallback ("rot"i) (0 ("<moivi>"i));
 SELECT ("svømmer"i) (0 ("<vuoddji>"i) LINK *0 ("<vuodjat>"i) OR ("<vuodjan>"i) );
 SELECT:fallback ("sjåfør"i) (0 ("<vuoddji>"i));
 
+SELECT ("drøm"i) (0 ("<niehku>"i) LINK NOT 1 inf );
+REMOVE:fallback ("drøm"i) (0 ("<niehku>"i));
 
 SELECT ("doktor"i) (0 ("<doavttir>"i) LINK 1 (ant) OR (cog));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
@@ -2519,7 +2521,7 @@ SELECT:fallback ("vekt"i) (0 ("<deatta>"i));
 SELECT:fallback ("håndarbeid"i) (0 ("<duodji>"i));
 SELECT:fallback ("ønske"i) (0 ("<dáhttu>"i));
 SELECT:fallback ("eiendel"i) (0 ("<dávvir>"i));
-SELECT:fallback ("norsk"i) (0 ("<dáčča>"i));
+SELECT:fallback ("nordmann"i) (0 ("<dáčča>"i));
 SELECT:fallback ("flokk"i) (0 ("<eallu>"i));
 SELECT:fallback ("hustru"i) (0 ("<eamit>"i));
 
