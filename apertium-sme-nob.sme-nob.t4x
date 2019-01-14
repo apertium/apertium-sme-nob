@@ -1826,10 +1826,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <rule comment="CHUNK: pre_nom_conj_nom                     1-0">
 <pattern><pattern-item n="pre_nom_conj_nom"/></pattern>
       <action>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
         <!-- conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
 
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>
