@@ -67,6 +67,12 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="adv"/>
       <cat-item tags="adv.*"/>
     </def-cat>
+    <def-cat n="lex-bivastatgállu">
+      <cat-item lemma="bivastatgállu" tags="n.g3.*.*.loc.*"/>
+      <cat-item lemma="bivastatgállu" tags="n.g3.*.*.com.*"/>
+      <cat-item lemma="bivastatgállu" tags="n.g3.*.ess.*"/>
+      <cat-item lemma="bivastatgállu" tags="n.g3.*.*.gen.*"/>
+    </def-cat>
     <def-cat n="lex-eará">
       <cat-item lemma="eará" tags="prn.*"/>
     </def-cat>
@@ -5970,6 +5976,63 @@ And then there are some categories like "month", with all the months.
           </chunk>
         </out>
       </action>
+    </rule> 
+    <rule comment="C[L] lex-bivastatgállu" c="bivastatgállun → med svett panne">
+      <pattern>
+        <pattern-item n="lex-bivastatgállu"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="med"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b />
+            <lu>
+              <clip pos="1" side="tl" part="lemh"/>
+              <clip pos="1" side="tl" part="a_nom"/>
+              <clip pos="1" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+              <lit-tag v="ind"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="C[L] adverb lex-bivastatgállu" c="buot bivastatgállun → med svett panne">
+      <pattern>
+        <pattern-item n="adverb"/>
+        <pattern-item n="lex-bivastatgállu"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="1" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="med"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <clip pos="2" side="tl" part="lemh"/>
+              <clip pos="2" side="tl" part="a_nom"/>
+              <clip pos="2" side="tl" part="gen"/>
+              <lit-tag v="sg"/>
+              <lit-tag v="ind"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
     </rule>
     <rule comment="C[L] lex-boađi lex-boađi" c="boađi boađi → like om hjørnet">
       <pattern>
@@ -11753,9 +11816,8 @@ And then there are some categories like "month", with all the months.
           <let><clip pos="1" side="tl" part="nbr"/><lit v=""/></let>
         </when>
         </choose>
-        <call-macro n="switch_cases"><with-param pos="2"/><with-param pos="1"/></call-macro>
             <out>
-              <chunk name="pre_adj" case="caseFirstWord">
+              <chunk name="pre_adj">
                 <tags>
                   <tag><lit-tag v="SA"/></tag>
                   <tag><var n="c_syn"/></tag>
@@ -11781,7 +11843,7 @@ And then there are some categories like "month", with all the months.
               </chunk>
               <b pos="1"/>
           <var n="caseprep"/>
-           <chunk name="nom">
+           <chunk name="nom"  case="caseFirstWord">
             <tags>
               <tag><lit-tag v="SN"/></tag>
               <tag><lit-tag v="@A←"/></tag>
