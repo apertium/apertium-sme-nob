@@ -514,6 +514,7 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="dálvi" tags="n.*"/>
       <cat-item lemma="čakča" tags="n.*"/>
       <cat-item lemma="jahki" tags="n.*"/>
+      <cat-item lemma="mánnu" tags="n.*"/>
       <cat-item lemma="vahkku" tags="n.*"/>
       <cat-item lemma="vahkuloahppa" tags="n.*"/>
       <cat-item lemma="vahkkoloahppa" tags="n.*"/>
@@ -13541,6 +13542,33 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+    <rule comment="C[] time-noun adj_vblex_attr nom_head" c="vahkku guhkkosaš mátki : ukelang reise">
+      <pattern>
+        <pattern-item n="time-noun"/>
+        <pattern-item n="guhkkosas_attr"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_"/></let>
+
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <let><clip pos="1" side="tl" part="case"/><lit v=""/></let>
+        <call-macro n="append_pre-nom"><with-param pos="2"/><with-param pos="1"/></call-macro>
+
+        <call-macro n="append_pre-nom"><with-param pos="3"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+
+        <!-- for NOM_HEAD -->
+        <let><var n="defnes"/><lit-tag v="ind"/></let>
+        <call-macro n="out_nom"><with-param pos="3"/></call-macro>
+        <choose><when>
+          <test><not><equal><b pos="2"/><lit v=" "/></equal></not></test>
+        <append n="pre-nom"><b pos="2"/></append>
+        </when></choose>
+      </action>
+    </rule>
 
     <rule comment="C[] num_mod nom.gen_NUMl adj_vblex_attr nom_head" c="24 mehter guhkkosaš dáidda čájehuvvo">
       <pattern>
