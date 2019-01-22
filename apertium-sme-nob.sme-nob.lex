@@ -2353,6 +2353,7 @@ SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
 REMOVE (maydetind) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) OR ("<oažžut>"i) BARRIER SV-BOUNDARY);
 SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) OR ("<oažžut>"i) BARRIER SV-BOUNDARY);
+SELECT ("plass"i) (0 ("<sadji>"i) LINK 0 loc LINK *-1 ("<leat>"i) BARRIER NOT-ADV-PCLE) ;
 SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i) OR ("<pálla>"i) OR ("<sihkar>"i) OR ("<eahpesihkar>"i) OR ("<cup>"i));
 SELECT ("plass"i) (0 ("<sadji>"i) LINK 1 post);
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
@@ -2752,8 +2753,10 @@ SELECT:fallback ("denne"i)  (0 ("<dát>"i)) ;
 SELECT:fallback ("han"i) + (GD_pers) (0 ("<son>"i)) ;
 
 SELECT ("av hvem"i) (0 ("<gii>"i)) (NEGATE 0 ←hab→ ) ;
-SELECT ("hvem"i) (0 ("<gii>"i) LINK 0 rel + gen) ;
+SELECT ("hvem"i) (0 ("<gii>"i) LINK 0 rel LINK *-1 ("<jurddašit>"i) OR ("<jearrat>"i) BARRIER SV-BOUNDARY) ;
+SELECT ("hvem"i) (0 ("<gii>"i) LINK 0 rel + gen LINK NOT 0 nom) ;
 SELECT ("noe"i) (0 ("<gii>"i) LINK 0 (foc_neg-ge)) ;
+SELECT:fallback ("som"i) (0 ("<gii>"i) LINK 0 nom) ;
 SELECT:fallback ("hvem"i) (0 ("<gii>"i)) ;
 
 
