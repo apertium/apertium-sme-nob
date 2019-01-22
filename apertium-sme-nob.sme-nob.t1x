@@ -899,6 +899,9 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-čoalli">
       <cat-item lemma="čoalli" tags="n.*"/>
     </def-cat>
+    <def-cat n="lex-boađi">
+      <cat-item lemma="boahtit" tags="vblex.iv.vgen.*"/>
+    </def-cat>
     <def-cat n="lex-boahtit">
       <cat-item lemma="boahtit" tags="vblex.iv.der_nomact.*"/>
       <cat-item lemma="boahtit" tags="vblex.iv.prfprc.*"/>
@@ -944,6 +947,10 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-mielde-post">
       <cat-item lemma="mielde" tags="post.*"/>
       <cat-item lemma="miel" tags="post.*"/>
+    </def-cat>
+    <def-cat n="lex-guhkki">
+      <cat-item lemma="guhkki" tags="adj.attr.*"/>
+      <cat-item lemma="guhkki" tags="a.comp.*"/>
     </def-cat>
     <def-cat n="lex-dađi">
       <cat-item lemma="dađi" tags="adv.*"/>
@@ -2750,6 +2757,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="Lillehammer"/>
       <list-item v="Madagaskar"/>
       <list-item v="Márkomeannu festivála"/>
+      <list-item v="Porsangmoen"/>
       <list-item v="Ráisduottarháldi"/>
       <list-item v="Sameskolen"/>
       <list-item v="Samisk høgskole"/>
@@ -2759,6 +2767,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="Svalbard"/>
       <list-item v="Sørøya"/>
       <list-item v="Twitter"/>
+      <list-item v="UiT"/>
       <list-item v="Varangerhalvøya"/>
       <list-item v="Vestlandet"/>
       <list-item v="arbeidsplass"/>
@@ -2793,6 +2802,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="onsdag"/>
       <list-item v="papir"/>
       <list-item v="parkeringsplass"/>
+      <list-item v="plass"/>
       <list-item v="sameskole"/>
       <list-item v="scene"/>
       <list-item v="side"/>
@@ -3865,7 +3875,10 @@ And then there are some categories like "month", with all the months.
           </let>
         </when>
         <when>
-          <test><equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal></test>
+          <test><and>
+	          <equal><clip pos="1" side="sl" part="case"/><lit-tag v="gen"/></equal>
+	     <not><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@→P"/></equal></not>
+          </and></test>
           <choose>
             <when c="The tag @N← is created by rules like NOM.GEN NOM.GEN NOM">
               <test><equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@N←"/></equal></test>
@@ -3888,7 +3901,8 @@ And then there are some categories like "month", with all the months.
                    <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_org"/></in>
                    <in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in>
                 <in caseless="yes"><var n="previous-nhead"/><list n="ill-i-head"/></in>
-                </or></test>
+                </or>
+                </test>
                   <let>
                     <var n="caseprep"/><lit v="i"/>
                   </let>
@@ -5957,6 +5971,32 @@ And then there are some categories like "month", with all the months.
         </out>
       </action>
     </rule>
+    <rule comment="C[L] lex-boađi lex-boađi" c="boađi boađi → like om hjørnet">
+      <pattern>
+        <pattern-item n="lex-boađi"/>
+        <pattern-item n="lex-boađi"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="like"/>
+              <lit-tag v="adv"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="om hjørnet"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
     <rule comment="C[L] lex-hver ge-pcle lex-guovlu" c="goabbat ge guvlui → hver sin veg">
       <pattern>
         <pattern-item n="lex-hver"/>
@@ -7043,6 +7083,34 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
         </out>
+      </action>
+    </rule>
+    <rule comment="C[AT] lex-guhkki lex-áigi-gen" c="guhkes/guhkit áigge → lenge">
+      <pattern>
+        <pattern-item n="lex-guhkki"/>
+        <pattern-item n="lex-áigi-gen"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv_adv" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+              <tag><clip pos="2" side="sl" part="mode"/></tag>
+            </tags>
+            <lu>
+              <lit v="lenge"/>
+              <lit-tag v="adv"/>
+            </lu>
+          </chunk>
+        </out>
+        <choose>
+          <when>
+            <test><not><equal><b pos="1"/><lit v=" "/></equal></not></test>
+            <out><b pos="1"/></out>
+          </when>
+        </choose>
       </action>
     </rule>
     <rule comment="C[AT] sem-edu-time-gen lex-áigi-gen" c="joatkkaskuvlla áigge → i løpet av videregående skole">
