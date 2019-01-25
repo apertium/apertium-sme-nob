@@ -375,7 +375,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="prev-verb-was-bli"/>
+    <def-var n="prev-verb-gives-å"/>
     <def-var n="prev-verb-gives-om"/>
     <def-var n="gender"/>
     <def-var n="defnes"/>
@@ -1593,7 +1593,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <or>
                 <in><clip pos="0" part="syn_label"/><list n="inf-mark"/></in>
               <equal><clip pos="0" part="a_abess"/><lit-tag v="vabess"/></equal>
-               <equal><var n="prev-verb-was-bli"/><lit v="yes"/></equal>
+               <equal><var n="prev-verb-gives-å"/><lit v="yes"/></equal>
                 <equal><clip pos="0" part="a_actio"/><lit-tag v="actio.loc"/></equal>
                 <equal><clip pos="0" part="a_actio"/><lit-tag v="actio.ess"/></equal>
               </or>
@@ -1609,15 +1609,20 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         </out>
         <choose>
           <when>
-            <test><equal><clip pos="1" part="lemh"/><lit v="bli"/></equal></test>
-            <let><var n="prev-verb-was-bli"/><lit v="yes"/></let>
+            <test><or><equal><clip pos="1" part="lemh"/><lit v="bli"/></equal>
+            <equal><clip pos="1" part="lemh"/><lit v="pleie"/></equal>
+            <equal><clip pos="1" part="lemh"/><lit v="Pleie"/></equal>
+            <equal><clip pos="1" part="lemh"/><lit v="begynne"/></equal>
+            <equal><clip pos="1" part="lemh"/><lit v="Begynne"/></equal>
+            </or></test>
+            <let><var n="prev-verb-gives-å"/><lit v="yes"/></let>
           </when>
           <when>
             <test><equal><clip pos="1" part="lemh"/><lit v="drømme"/></equal></test>
             <let><var n="prev-verb-gives-om"/><lit v="yes"/></let>
           </when>
           <otherwise>
-            <let><var n="prev-verb-was-bli"/><lit v="no"/></let>
+            <let><var n="prev-verb-gives-å"/><lit v="no"/></let>
             <let><var n="prev-verb-gives-om"/><lit v="no"/></let>
           </otherwise>
         </choose>
@@ -1821,10 +1826,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
     <rule comment="CHUNK: pre_nom_conj_nom                     1-0">
 <pattern><pattern-item n="pre_nom_conj_nom"/></pattern>
       <action>
+        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="4"/></call-macro>
         <!-- conj -->
         <call-macro n="clean_nominal">    <with-param pos="0"/><with-param pos="2"/></call-macro>
-        <call-macro n="clean_pre-nominal"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
 
         <call-macro n="maybe_out_det3"><with-param pos="0"/><with-param pos="1"/><with-param pos="2"/></call-macro>
         <out>

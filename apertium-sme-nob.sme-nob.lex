@@ -928,6 +928,7 @@ SELECT ("stenge"i) IF (0 ("<gitta>"i) LINK *0 ("<geaidnu>"i) OR ("<luodda>"i) OR
 SELECT ("helt"i) IF (0 ("<gitta>"i) + @→A OR ("<gitta>"i) + @→N) ;
 SELECT ("helt"i) IF (0 ("<gitta>"i) LINK 1 sem_time + ill) ;
 SELECT ("inntil"i) IF (0 ("<gitta>"i) + @→Num) ;
+SELECT ("inntil"i) IF (0 ("<gitta>"i) LINK 1 adv + (@←ADVL-ine)) ;
 SELECT ("fast"i) IF (0 ("<gitta>"i)) (*-1 ("<váldit>"i) OR ("<váldot>"i) OR ("<darvánit>"i) OR ("<oažžut>"i) OR ("<fidnet>"i))  ;
 SELECT:fallback ("lukket"i) IF (0 ("<gitta>"i) LINK *0 ("<čalbmi>"i))  ;
 SELECT:fallback ("stenge"i) IF (0 ("<gitta>"i))  ;
@@ -1006,6 +1007,15 @@ SELECT:fallback ("ikke"i) IF  (0 ("<ii>"i)) ;
 SELECT ("tilkalle"i) IF  (0 ("<rávkat>"i) LINK 1 ess) ;
 SELECT:fallback ("vekke"i) IF  (0 ("<rávkat>"i)) ;
 
+SELECT ("øke"i) IF  (0 ("<bajidit>"i) LINK 1 ("<haddi>"i)) ;
+SELECT:fallback ("løfte"i) IF  (0 ("<bajidit>"i)) ;
+
+
+SELECT ("berøre"i) IF  (0 ("<guoskat>"i) LINK 1 ill) ;
+SELECT:fallback ("gjelde"i) IF  (0 ("<guoskat>"i)) ;
+
+
+
 SELECT ref IF  (0 ("<čájehit>"i) LINK 0 der_passl) ; #čájehuvvui : det viste seg
 
 SELECT ("barbere"i) IF  (0 ("<beaskidit>"i)) (0* ("<oaivi>"i)) ;
@@ -1081,6 +1091,8 @@ SELECT:fallback ("redusere"i) IF  (0 ("<unnidit>"i)) ;
 
 
 SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK 1 acc) (*1 ill) ;
+SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK -1 ("<ášši>"i))  ;
+SELECT ("fremme"i) IF  (0 ("<ovddidit>"i) LINK 1 ("<ášši>"i))  ;
 SELECT:fallback ("utvikle"i) IF  (0 ("<ovddidit>"i)) ;
 
 SELECT:fallback ("gå"i) IF  (0 ("<lávket>"i) LINK *1 ill BARRIER NOT-Attr) ;
@@ -1985,6 +1997,7 @@ SELECT:fallback ("bråk"i) (0 ("<stuibmi>"i));
 # diehtu 0 = informasjon,  3 = beskjed
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 nom OR acc) (*0 ("<mobiilatelefuvdna>"i) OR ("<mobiila>"i) OR ("<rápmi>"i)) ;
 SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 sg + acc) (*0 ("<sáddet>"i) OR ("<čállit>"i) OR ("<lohkat>"i)) ;
+SELECT ("beskjed"i) (0 ("<diehtu>"i) LINK 0 sg + acc) (1 inf)(-1 ("<oažžut>"i)) ;
 ## Lihkus juste de civkkádii mobiltelefuvnnas sutnje diehtu.
 ## Lei Ájlin gii sáddii dieđu.
 SELECT:fallback ("viten"i) (0 ("<diehtu>"i) LINK -1 ("<árbevirolaš>"i));
@@ -2340,6 +2353,7 @@ SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
 
 REMOVE (maydetind) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) OR ("<oažžut>"i) BARRIER SV-BOUNDARY);
 SELECT ("plass"i) (0 ("<sadji>"i) LINK *-1 ("<boahtit>"i) OR ("<addit>"i) OR ("<oažžut>"i) BARRIER SV-BOUNDARY);
+SELECT ("plass"i) (0 ("<sadji>"i) LINK 0 loc LINK *-1 ("<leat>"i) BARRIER NOT-ADV-PCLE) ;
 SELECT ("plass"i) (0 ("<sadji>"i) LINK -1 ord OR ("<nubbi>"i) OR ("<pálla>"i) OR ("<sihkar>"i) OR ("<eahpesihkar>"i) OR ("<cup>"i));
 SELECT ("plass"i) (0 ("<sadji>"i) LINK 1 post);
 SELECT:fallback ("sted"i) (0 ("<sadji>"i));
@@ -2483,6 +2497,8 @@ SELECT:fallback ("rot"i) (0 ("<moivi>"i));
 SELECT ("svømmer"i) (0 ("<vuoddji>"i) LINK *0 ("<vuodjat>"i) OR ("<vuodjan>"i) );
 SELECT:fallback ("sjåfør"i) (0 ("<vuoddji>"i));
 
+SELECT ("drøm"i) (0 ("<niehku>"i) LINK NOT 1 inf );
+REMOVE:fallback ("drøm"i) (0 ("<niehku>"i));
 
 SELECT ("doktor"i) (0 ("<doavttir>"i) LINK 1 (ant) OR (cog));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
@@ -2506,7 +2522,7 @@ SELECT:fallback ("vekt"i) (0 ("<deatta>"i));
 SELECT:fallback ("håndarbeid"i) (0 ("<duodji>"i));
 SELECT:fallback ("ønske"i) (0 ("<dáhttu>"i));
 SELECT:fallback ("eiendel"i) (0 ("<dávvir>"i));
-SELECT:fallback ("norsk"i) (0 ("<dáčča>"i));
+SELECT:fallback ("nordmann"i) (0 ("<dáčča>"i));
 SELECT:fallback ("flokk"i) (0 ("<eallu>"i));
 SELECT:fallback ("hustru"i) (0 ("<eamit>"i));
 
@@ -2619,7 +2635,7 @@ SELECT:fallback ("ende"i) (0 ("<loahppa>"i) LINK -1 ("<máilbmi>"i)) ;
 SELECT:fallback ("slutt"i) (0 ("<loahppa>"i)) ;
 
 SELECT ("poeng"i) (0 ("<čuokkis>"i) LINK 0 acc LINK *0 ("<oažžut>"i));
-SELECT ("poeng"i) (0 ("<čuokkis>"i) LINK -1 sem_edu);
+SELECT ("poeng"i) (0 ("<čuokkis>"i) LINK -1 sem_edu OR arab);
 SELECT:fallback ("punkt"i) (0 ("<čuokkis>"i)) ;
 
 
@@ -2737,8 +2753,10 @@ SELECT:fallback ("denne"i)  (0 ("<dát>"i)) ;
 SELECT:fallback ("han"i) + (GD_pers) (0 ("<son>"i)) ;
 
 SELECT ("av hvem"i) (0 ("<gii>"i)) (NEGATE 0 ←hab→ ) ;
-SELECT ("hvem"i) (0 ("<gii>"i) LINK 0 rel + gen) ;
+SELECT ("hvem"i) (0 ("<gii>"i) LINK 0 rel LINK *-1 ("<jurddašit>"i) OR ("<jearrat>"i) BARRIER SV-BOUNDARY) ;
+SELECT ("hvem"i) (0 ("<gii>"i) LINK 0 rel + gen LINK NOT 0 nom) ;
 SELECT ("noe"i) (0 ("<gii>"i) LINK 0 (foc_neg-ge)) ;
+SELECT:fallback ("som"i) (0 ("<gii>"i) LINK 0 nom) ;
 SELECT:fallback ("hvem"i) (0 ("<gii>"i)) ;
 
 
@@ -2845,8 +2863,6 @@ SELECT ("så"i) (0 ("<nu>"i)) (1 adj or ("<galle>"i) or ("<gealdagas>"i) or ("<b
 SELECT:så-langt-som ("så"i) (0 ("<nu>"i)) (1 adv) (2 cnjsub) ;
 SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 
-SELECT ("fast"i) (0 ("<gitta>"i)) (NOT 1 NP-MEMBER);
-SELECT ("til"i) (0 ("<gitta>"i)) ; # looks more like a prep?
 
 
 REMOVE ("opp"i) (0 ("<bajás>"i))(*0 ("<mánná>"i) LINK 0 acc OR gen) ;
@@ -2900,7 +2916,7 @@ SELECT:fallback ("østpå"i) (0 ("<nuortan>"i)) ;
 SELECT ("dobbelt"i) (0 ("<beali>"i) LINK 1 ("<eanet>"i)) ;
 SELECT:fallback ("halve"i) (0 ("<beali>"i)) ;
 
-SELECT ("sammen"i) (0 ("<oktii>"i) LINK -1 ("<bidjat>"i) OR ("<časkit>"i) OR ("<laktit>"i) OR ("<beaškkehit>"i)) ;
+SELECT ("sammen"i) (0 ("<oktii>"i) LINK *-1 ("<bidjat>"i) OR ("<časkit>"i) OR ("<laktit>"i) OR ("<beaškkehit>"i) BARRIER SV-BOUNDARY) ;
 SELECT:fallback ("en gang"i) (0 ("<oktii>"i)) ;
 
 
@@ -3026,6 +3042,10 @@ REMOVE ("fjern"i) (0 ("<gáiddus>"i))(NOT 0 cmp);
 
 SELECT ("lojal"i) (0 ("<oskkáldas>"i) LINK 1 ("<jienasteaddji>"i));
 SELECT:fallback ("pålitelig"i) (0 ("<oskkáldas>"i)) ;
+
+SELECT ("gjelde"i) (0 ("<doaibmi>"i) LINK 1 sem_rule);
+SELECT:fallback ("fungere"i) (0 ("<doaibmi>"i)) ;
+
 
 SELECT ("akseptabel"i) (0 ("<dohkálaš>"i) LINK *-1 ("<leat>"i) BARRIER SV-BOUNDARY LINK *-1 loc BARRIER nom);
 SELECT:fallback ("brukbar"i) (0 ("<dohkálaš>"i)) ;
