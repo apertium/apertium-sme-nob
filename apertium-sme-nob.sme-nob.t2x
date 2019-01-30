@@ -103,6 +103,8 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <cat-item tags="*.@Num←.*"/>
       <cat-item tags="*.@Pron←.*"/>
       <cat-item tags="*.@N←"/>
+      <cat-item tags="*.@A←"/>
+      <cat-item tags="*.@A←.*"/>
       <cat-item tags="*.@Num←"/>
       <cat-item tags="*.@Pron←"/>
     </def-cat>
@@ -986,6 +988,46 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         </out>
       </action>
     </rule>
+<!--    <rule comment="REGLA: SN PR SN CNP SN PR" c="sámi servodagaid dárbbuid ja ávkki vuođul : i henhold til behov og nytte i samiske samfunn">
+      <pattern>
+        <pattern-item n="SN"/>
+        <pattern-item n="PR"/>
+        <pattern-item n="SN"/>
+        <pattern-item n="CNP"/>
+        <pattern-item n="SN"/>
+        <pattern-item n="PR"/>
+      <action>
+      <choose><when><test>
+      <equal><clip pos="1" part="a_neverdet"/><lit-tag v="neverdet"/></equal>  
+	      </test> 
+        <let><clip pos="1" part="art"/><lit-tag v="ind"/></let>
+      </when></choose>
+        <call-macro n="set_ana_gen"><with-param pos="5"/></call-macro>
+        <call-macro n="set_c_name3"><with-param pos="2"/><with-param pos="3"/><with-param pos="5"/></call-macro>
+        <call-macro n="set_c_tags2"><with-param pos="2"/><with-param pos="5"/></call-macro>
+        <out>
+          <chunk>
+            <lit v="{"/>
+            <clip pos="6" part="content"/>
+            <b pos="1"/>
+            <clip pos="1" part="content"/>
+            <b pos="2"/>
+            <clip pos="4" part="content"/>
+            <b pos="3"/>
+            <clip pos="5" part="content"/>
+            <b pos="4"/>
+            <clip pos="2" part="content"/>
+            <b pos="5"/>
+            <clip pos="3" part="content"/>
+            <lit v="}"/>
+          </chunk>
+        </out>
+        <choose><when>
+          <test><not><equal><b pos="4"/><b/></equal></not></test>
+          <out><b pos="4"/></out>
+        </when></choose>
+      </action>
+    </rule>  -->
     <rule comment="REGLA: PR SN CNP PR SN">
       <pattern>
         <pattern-item n="PR"/>
@@ -1226,8 +1268,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
         <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="4"/></call-macro>
         <call-macro n="set_ana_gen"><with-param pos="3"/></call-macro>
         <call-macro n="set_c_name3"><with-param pos="1"/><with-param pos="2"/><with-param pos="3"/></call-macro>
-        <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
         <out>
           <chunk><clip pos="4" part="whole"/></chunk>
           <b pos="1"/>
@@ -1277,6 +1320,51 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
             <clip pos="2" part="content"/>
             <b pos="2"/>
             <clip pos="3" part="content"/>
+            <lit v="}"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: ADV_rADVL caseprep-PR SN_lADVL_SPRED CNP caseprep-PR SN_lADVL_SPRED" c="Giellabargu mánáidgárddis gáibida ollu barggu sihke bargiin ja vánhemiin.">
+      <pattern>
+        <pattern-item n="ADV_rADVL"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN_lADVL_SPRED"/>
+        <pattern-item n="CNP"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="SN_lADVL_SPRED"/>
+      </pattern>
+      <action>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="3"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="6"/></call-macro>
+       <let><var n="c_name"/>
+        <concat>
+          <clip pos="1" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="2" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="3" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="4" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="6" part="lemh"/>
+        </concat></let>
+        <let><var n="c_tags"/><clip pos="6" part="tags"/></let>
+        <out>
+          <chunk>
+            <var n="c_name"/>
+            <var n="c_tags"/>
+            <lit v="{"/>
+            <clip pos="1" part="content"/>
+            <b pos="1"/>
+            <clip pos="2" part="content"/>
+            <b pos="2"/>
+            <clip pos="3" part="content"/>
+            <b pos="3"/>
+            <clip pos="4" part="content"/>
+            <b pos="4"/>
+            <clip pos="6" part="content"/>
             <lit v="}"/>
           </chunk>
         </out>
@@ -1459,6 +1547,30 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           <chunk><clip pos="2" part="whole"/></chunk>
           <b pos="1"/>
           <chunk><clip pos="1" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: SN-rPOST caseprep-PR compl PR
+                   -----
+                   Move postposition to front" c=" Dat lea Norgga buoremusaid searvvis. : Den er blant de beste i Norge.">
+      <pattern>
+        <pattern-item n="SN_rPOST"/>
+        <pattern-item n="caseprep-PR"/>
+        <pattern-item n="compl"/>
+        <pattern-item n="PR"/>
+      </pattern>
+      <action>
+        <call-macro n="switch_cases"><with-param pos="1"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_ana_gen"><with-param pos="1"/></call-macro>
+        <call-macro n="clean_SN_of_adpos"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
         </out>
       </action>
     </rule>
