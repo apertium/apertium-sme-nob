@@ -953,6 +953,7 @@ SELECT:aux ("være"i) IF (0 ("<leat>"i) LINK 1 (agreem-pro))  ;
 SELECT ("måtte"i) IF (0 ("<leat>"i) LINK -1 loc + HUMAN) (1 inf) ;
 # mis lea cahkkehit dola
 SELECT:hab-ha ("ha"i) IF (0 ("<leat>"i)) (*-1 (@ADVLhab→)  BARRIER SV-BOUNDARY) ;
+SELECT:hab-ha ("ha"i) IF (0 ("<leat>"i)) (*-1 FMAINV  BARRIER SV-BOUNDARY LINK -1 rel LINK *-1 (@ADVLhab→) BARRIER WORD) ;
 SELECT:hab-ha ("ha"i) IF (0 ("<leat>"i)) (*1 (@←ADVLhab)  BARRIER SV-BOUNDARY) ;
 SELECT:neg-ha ("ha"i) IF (0 ("<leat>"i)) (-1 neg) (*-2 ←hab→ BARRIER NOT-ADV) ;
 SELECT:ha-NOT-actio ("ha"i) IF (0 ("<leat>"i)) (0 FAUXV) (NEGATE *1 actio + ess BARRIER S-BOUNDARY) (NOT *1 der_pass + prfprc) ;
@@ -1081,7 +1082,7 @@ SELECT:fallback ("merke"i) IF  (0 ("<vuohttit>"i)) ;
 SELECT ("spire"i) IF  (0 ("<bohciidit>"i)) (0* sem_plant) ;
 SELECT:fallback ("oppstå"i) IF  (0 ("<bohciidit>"i)) ;
 
-SELECT ("ta# på"i) IF  (0 ("<coggat>"i)) (1 sem_clth) ;
+SELECT ("ta# på"i) IF  (0 ("<coggat>"i)) (*1 sem_clth BARRIER NOT-NPMOD) ;
 SELECT:fallback ("putte"i) IF  (0 ("<coggat>"i)) ;
 
 SELECT ("ta"i) IF  (0 ("<nahkehit>"i) ) (1 sem_clth) ;
@@ -1652,6 +1653,9 @@ SELECT ("vise"i) (0 ("<čujuhit>"i)) ;
 SELECT ("kjeks"i) (0 ("<čeaksa>"i) + pl) ;
 SELECT ("kjeks"i) (0 ("<čeaksa>"i) LINK -1 ("<garas>"i) OR ("<njálggat>"i)  ) ;
 SELECT:fallback ("bladmage"i) (0 ("<čeaksa>"i)) ;
+
+
+SELECT:fallback ("regning"i) (0 ("<rehkenastin>"i)) ;
 
 
 SELECT ("tale"i) (*-1 ("<doallat>"i)) (0 ("sáhka"i));
@@ -2347,6 +2351,25 @@ SELECT:fallback ("omgang"i) (0 ("<vuorru>"i));
 SELECT ("måte"i) (0 ("<láhki>"i) LINK -1 adj OR prn);
 SELECT:fallback ("måte"i) (0 ("<láhki>"i));
 
+SELECT ("måte"i) (0 ("<láhki>"i) LINK -1 adj OR prn);
+SELECT:fallback ("måte"i) (0 ("<láhki>"i));
+
+SELECT ("like før"i) (0 ("<ovdalaš>"i) LINK 0 adv + @→Num);
+SELECT:fallback ("tidligere"i) (0 ("<ovdalaš>"i));
+
+
+SELECT ("klokka to"i) (0 ("<guokte>"i) LINK 0 loc);
+SELECT:fallback ("to"i) (0 ("<guokte>"i));
+SELECT ("klokka tre"i) (0 ("<golbma>"i) LINK 0 loc);
+SELECT:fallback ("tre"i) (0 ("<golbma>"i));
+SELECT ("klokka fire"i) (0 ("<njeallje>"i) LINK 0 loc);
+SELECT:fallback ("fire"i) (0 ("<njeallje>"i));
+SELECT ("klokka fem"i) (0 ("<vihtta>"i) LINK 0 loc);
+SELECT:fallback ("fem"i) (0 ("<vihtta>"i));
+SELECT ("klokka seks"i) (0 ("<guhtta>"i) LINK 0 loc);
+SELECT:fallback ("seks"i) (0 ("<guhtta>"i));
+SELECT ("klokka sju"i) (0 ("<čieža>"i) LINK 0 loc);
+SELECT:fallback ("sju"i) (0 ("<čieža>"i));
 
 SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("arbeid"i) (0 ("<bargu>"i));
