@@ -98,6 +98,9 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="V-pp">
       <cat-item tags="SV.@→P.*"/>
     </def-cat>
+    <def-cat n="APP-N">
+      <cat-item tags="SN.@APP-N←.*"/>
+    </def-cat>
     <def-cat n="compl">
       <cat-item tags="*.@N←.*"/>
       <cat-item tags="*.@Num←.*"/>
@@ -175,6 +178,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     </def-cat>
     <def-cat n="SUBJr">
       <cat-item tags="SN.@SUBJ→.*"/>
+    </def-cat>
+    <def-cat n="SUBJrSPRED">
+      <cat-item tags="SN.@SUBJ→.*"/> 
+      <cat-item tags="SN.@SPRED→.*"/>  
     </def-cat>
     <def-cat n="lOBJ">
       <cat-item tags="SV.@←OBJ.*"/>
@@ -541,6 +548,18 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           <let><clip pos="1" part="case"/><lit v=""/></let>
         </otherwise>
       </choose>
+    </def-macro>
+    <def-macro n="set_c_name2" npar="2" c="args should be given in order of output
+                                           Case of whole chunk is based on first element.">
+      <let>
+        <var n="c_name"/>
+        <concat>
+          <clip pos="1" part="lemh"/>
+          <lit v="_"/>
+          <clip pos="2" part="lemh"/>
+        </concat>
+      </let>
+      <modify-case><var n="c_name"/><clip pos="1" part="lemh"/></modify-case>
     </def-macro>
 
     <def-macro n="set_c_name3" npar="3" c="args should be given in order of output
@@ -1156,6 +1175,60 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       </action>
     </rule> 
 
+    <rule comment="REGLA: SUBJrSPRED compl" c="Min Boazu AS">
+      <pattern>
+        <pattern-item n="SUBJrSPRED"/>
+        <pattern-item n="comma"/>
+        <pattern-item n="APP-N"/>
+        <pattern-item n="comma"/>
+      </pattern>
+      <action>
+        <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <call-macro n="set_c_name2"><with-param pos="1"/><with-param pos="3"/></call-macro>
+        <out>
+          <chunk>
+            <var n="c_name"/>
+            <var n="c_tags"/>
+            <lit v="{"/>
+            <clip pos="1" part="content"/>
+            <b pos="1"/>
+            <clip pos="2" part="content"/>
+            <b pos="2"/>
+            <clip pos="3" part="content"/>
+            <b pos="3"/>
+            <clip pos="4" part="content"/>
+            <lit v="}"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: SUBJrSPRED compl" c="Min Boazu AS">
+      <pattern>
+        <pattern-item n="SUBJrSPRED"/>
+        <pattern-item n="compl"/>
+      </pattern>
+      <action>
+      <choose><when><test>
+      <equal><clip pos="2" part="a_neverdet"/><lit-tag v="neverdet"/></equal></test> 
+        <let><clip pos="1" part="art"/><lit-tag v="ind"/></let>
+      </when></choose>
+        <call-macro n="set_c_tags2"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <call-macro n="set_c_name2"><with-param pos="1"/><with-param pos="2"/></call-macro>
+        <out>
+          <chunk>
+            <var n="c_name"/>
+            <var n="c_tags"/>
+            <lit v="{"/>
+            <clip pos="1" part="content"/>
+            <b pos="1"/>
+            <clip pos="2" part="content"/>
+            <lit v="}"/>
+            <clip pos="1" part="lemq"/>
+          </chunk>
+        </out>
+      </action>
+    </rule>
 
 
     <rule comment="REGLA: SUBJr PR compl" c="Sámi oahpaheaddji masteroahput (ind) and Giellabargu mánáidgárddis (def)">

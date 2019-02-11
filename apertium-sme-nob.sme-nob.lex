@@ -1441,7 +1441,7 @@ SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 (@SUBJ→) LINK 0 HUMAN OR sem_or
 ## Máhtte máksá guokte ruvnnu.
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 ("<vejolašvuohta>"i) OR ("<bággu>"i) OR ("<ráđđi>"i) OR ("<áigemeari>"i) OR ("<divat>"i)  OR ("<rehket>"i) OR sem_money ) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*-1 loc BARRIER NOT-ADV-PCLE) ;
-SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r) OR ("<áigemearri>"i) OR ("<.*divat>"r) OR sem_money) ;
+SELECT ("betale"i) IF (0 ("<máksit>"i) ) (*1 ("<.*vearru>"r) OR ("<áigemearri>"i) OR ("<rehket>"i) OR ("<.*divat>"r) OR sem_money) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (1 ill OR ("<ruovttoluotta>") OR sem_money) ;
 SELECT ("betale"i) IF (0 ("<máksit>"i) ) (0 @←OBJ) ;
 
@@ -1486,7 +1486,7 @@ SELECT:fallback ("publisere"i) (0 ("<almmuhit>"i));
 SELECT:beherske ("beherske"i) (0 ("<hálddašit>"i) LINK *0 sem_lang);
 SELECT:fallback ("forvalte"i) (0 ("<hálddašit>"i));
 
-SELECT ("tilegne"i) (0 ("<gazzat>"i) LINK *0 ("<.*oahppu>"r) + acc);
+SELECT ("tilegne"i) (0 ("<gazzat>"i) LINK *0 ("<.*oahppu>"ir));
 SELECT:fallback ("spise"i) (0 ("<gazzat>"i));
 
 
@@ -2358,17 +2358,17 @@ SELECT ("like før"i) (0 ("<ovdalaš>"i) LINK 0 adv + @→Num);
 SELECT:fallback ("tidligere"i) (0 ("<ovdalaš>"i));
 
 
-SELECT ("klokka to"i) (0 ("<guokte>"i) LINK 0 loc);
+SELECT ("klokka to"i) (0 ("<guokte>"i) LINK 0 loc - attr);
 SELECT:fallback ("to"i) (0 ("<guokte>"i));
-SELECT ("klokka tre"i) (0 ("<golbma>"i) LINK 0 loc);
+SELECT ("klokka tre"i) (0 ("<golbma>"i) LINK 0 loc - attr);
 SELECT:fallback ("tre"i) (0 ("<golbma>"i));
-SELECT ("klokka fire"i) (0 ("<njeallje>"i) LINK 0 loc);
+SELECT ("klokka fire"i) (0 ("<njeallje>"i) LINK 0 loc - attr);
 SELECT:fallback ("fire"i) (0 ("<njeallje>"i));
-SELECT ("klokka fem"i) (0 ("<vihtta>"i) LINK 0 loc);
+SELECT ("klokka fem"i) (0 ("<vihtta>"i) LINK 0 loc - attr);
 SELECT:fallback ("fem"i) (0 ("<vihtta>"i));
-SELECT ("klokka seks"i) (0 ("<guhtta>"i) LINK 0 loc);
+SELECT ("klokka seks"i) (0 ("<guhtta>"i) LINK 0 loc - attr);
 SELECT:fallback ("seks"i) (0 ("<guhtta>"i));
-SELECT ("klokka sju"i) (0 ("<čieža>"i) LINK 0 loc);
+SELECT ("klokka sju"i) (0 ("<čieža>"i) LINK 0 loc - attr);
 SELECT:fallback ("sju"i) (0 ("<čieža>"i));
 
 SELECT ("jobb"i) (0 ("<bargu>"i) LINK *-1 ("<álgit>"i) OR ("<heaitit>"i) BARRIER SV-BOUNDARY);
@@ -2886,6 +2886,8 @@ SELECT ("så"i) (0 ("<nu>"i)) (1 adj or ("<galle>"i) or ("<gealdagas>"i) or ("<b
 SELECT:så-langt-som ("så"i) (0 ("<nu>"i)) (1 adv) (2 cnjsub) ;
 SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 
+SELECT ("senest"i) (0 ("<maŋemusat>"i))(1 num OR (sem_measr_time)) ;
+SELECT:fallback ("sist"i) (0 ("<maŋemusat>"i)) ;
 
 
 REMOVE ("opp"i) (0 ("<bajás>"i))(*0 ("<mánná>"i) LINK 0 acc OR gen) ;
