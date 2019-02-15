@@ -1269,8 +1269,8 @@ SELECT:fallback ("bli"i) + (agreem-pro) (0 ("<šaddat>"i)) ;
 
 # bargat 0 = arbeide, 1 = gjøre
 SELECT ("gjøre"i) (0 ("<bargat>"i)) (*-1 ("<mii>"i prn acc) BARRIER V-IND-FIN) ;
-SELECT ("gjøre"i) (0 ("<bargat>"i)) (*0 @OBJ→ OR @←OBJ OR @-F←OBJ BARRIER S-BOUNDARY) ;
 SELECT ("arbeide"i) (0 ("<bargat>"i)) (*0 com OR ("<dainna>"i)) ;
+SELECT ("gjøre"i) (0 ("<bargat>"i)) (*0 @OBJ→ OR @←OBJ OR @-F←OBJ BARRIER S-BOUNDARY) ;
 SELECT:fallback ("arbeide"i) (0 ("<bargat>"i));
 
 # beassat 0 = få, 1 = slippe, 2 = komme Refl til
@@ -2310,7 +2310,7 @@ SELECT ("tale"i) (0 ("<ságat>"i) LINK 0 ill);
 SELECT ("tale"i) (0 ("<ságat>"i) LINK 0 loc LINK -1 HUMAN);
 SELECT:fallback ("nyhet"i) (0 ("<ságat>"i));
 
-SELECT ("engasjement"i) (0 ("<mokta>"i) LINK *0 ("<buolli>"i) OR ("<buollát>"i) OR ("<buollit>"i));
+SELECT ("engasjement"i) (0 ("<mokta>"i) LINK *0 ("<buolli>"i) OR ("<buollát>"i) OR ("<buollit>"i) OR ("<addit>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("humør"i) (0 ("<mokta>"i));
 
 
@@ -2510,6 +2510,9 @@ SELECT:fallback ("jakt"i) (0 ("<bivdu>"i));
 SELECT:fallback ("kreps"i) (0 ("<reabbá>"i) LINK -1 BOS)(1 EOS);
 SELECT ("krabbe"i) (0 ("<reabbá>"i));
 
+SELECT ("varsel"i) (0 ("<várrehus>"i) LINK -1 cmp);
+SELECT:fallback ("advarsel"i) (0 ("<várrehus>"i));
+
 
 SELECT:fallback ("berømt"i) (0 ("<beakkán>"i) LINK 0 sg + nom OR attr);
 SELECT ("kjendis"i) (0 ("<beakkán>"i));
@@ -2643,7 +2646,6 @@ SELECT:fallback ("besvær"i) (0 ("<váivi>"i));
 SELECT:fallback ("fullmakt"i) (0 ("<váldi>"i));
 SELECT:fallback ("pågriper"i) (0 ("<váldi>"i));
 SELECT:fallback ("taker"i) (0 ("<váldi>"i));
-SELECT:fallback ("advarsel"i) (0 ("<várrehus>"i));
 SELECT:fallback ("hustru"i) (0 ("<áhkká>"i));
 SELECT:fallback ("forslag"i) (0 ("<árvalus>"i));
 SELECT:fallback ("styrking"i) (0 ("<nannen>"i));
