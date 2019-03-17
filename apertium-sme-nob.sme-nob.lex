@@ -1230,7 +1230,7 @@ SELECT:fallback ("legge# opp til"i) IF  (0 ("<láhčit>"i)) ;
 
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
-SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<dego>"i) OR (actio ess) OR ("<bures>"i) OR ("<ballu>"i) OR ("<illu>"i)) ;
+SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<dego>"i) OR (actio ess) OR ("<bures>"i) OR ("<ballu>"i) OR ("<illu>"i) OR ("<ipmirdit>"i)) ;
 SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (2 ("<miella>"i) + loc OR ("<mielas>"i) OR ("<bures>"i) OR ("<ballu>"i) OR ("<illu>"i)) ;
 SELECT:maid ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 ("<mii>"i)) ;
 SELECT:jaska ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (*1 ("<oahpis>"i)) ;
@@ -1656,6 +1656,7 @@ SELECT:fallback ("bladmage"i) (0 ("<čeaksa>"i)) ;
 
 
 SELECT:fallback ("regning"i) (0 ("<rehkenastin>"i)) ;
+SELECT:fallback ("forvalter"i) (0 ("<hálddašeaddji>"i)) ;
 
 
 SELECT ("tale"i) (*-1 ("<doallat>"i)) (0 ("sáhka"i));
@@ -2725,7 +2726,7 @@ SELECT:fallback ("mellom"i) (0 ("<gaskkas>"i)) ;
 SELECT ("om"i) (0 ("<geahčen>"i) LINK -1 sem_time) ;
 SELECT:fallback ("hos"i) (0 ("<geahčen>"i)) ;
 
-SELECT ("for"i) (0 ("<ektui>"i) LINK -1 (sem_perc-phys)) ;
+SELECT ("for"i) (0 ("<ektui>"i) LINK -1 (sem_perc-phys) OR sem_domain) ;
 SELECT ("sammenlignet med"i) (0 ("<ektui>"i) LINK -1 ("<diimmá>"i) OR ("<diibmá>"i)) ;
 SELECT:fallback ("mot"i) (0 ("<ektui>"i)) ;
 
