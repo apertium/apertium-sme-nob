@@ -918,7 +918,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <test><and><equal><clip pos="1" part="animacy"/><lit-tag v="pers-pro"/></equal>
           <not><equal><var n="subj-gender"/><lit v=""/></equal></not></and></test>
           <let><var n="gender"/><var n="subj-gender"/></let>
-        </when>  
+        </when>
         <when>
           <test><equal><clip pos="1" part="animacy"/><lit-tag v="pers-pro"/></equal></test>
           <let><var n="gender"/><lit-tag v="GD_pers"/></let>
@@ -4501,7 +4501,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
             </out>
           </when>
           <otherwise c="test this one">
-            <call-macro n="set_pro_verb_case2"><with-param pos="1"/><with-param pos="4"/></call-macro>
+            <call-macro n="set_pro_verb_case2"><with-param pos="2"/><with-param pos="4"/></call-macro>
             <call-macro n="set_adv"><with-param pos="3"/></call-macro>
             <out>
               <var n="pro"/><var n="pro-blank"/>

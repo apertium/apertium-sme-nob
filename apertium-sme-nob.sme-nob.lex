@@ -892,6 +892,7 @@ SELECT:fallback ("dagens"i) (0 ("<otná>"i)) ;
 
 SELECT:fallback ("hvilken av de to"i) (0 ("<goabbá>"i)) ;
 
+SELECT ("fra hele"i) (0 ("<miehtá>"i) LINK -1 ("<boahtit>"i)) ;
 SELECT:fallback ("i hele"i) (0 ("<miehtá>"i)) ;
 
 SELECT ("rundt"i) (0 ("<birra>"i) LINK 0 post LINK *0 ("<vuodjit>"i) ) ;
@@ -1024,6 +1025,10 @@ SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
 SELECT ("renne"i) IF  (0 ("<suohpput>"i))(0* ("<čuoldit>"i) OR ("<vuotta>"i) OR ("<boagán>"i)) ;
 SELECT:fallback ("kaste"i) IF  (0 ("<suohpput>"i)) ;
+
+SELECT ("møte"i) IF  (0 ("<deaivat>"i))(*1 sem_hum OR HUMAN BARRIER NOT-NPMODADV) ;
+SELECT:fallback ("treffe"i) IF  (0 ("<deaivat>"i)) ;
+
 
 SELECT ("operere"i) IF  (0 ("<čuohpadit>"i) LINK 0 der_pass) ;
 SELECT:fallback ("skjære"i) IF  (0 ("<čuohpadit>"i)) ;
