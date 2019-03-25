@@ -1196,6 +1196,7 @@ SELECT:fallback ("vie"i) IF  (0 ("<vihahit>"i)) ;
 SELECT ("bli"i) IF  (0 ("<boahtit>"i)) (1 ("<ovtta oaivilii>")) ;
 SELECT:fallback ("komme"i) IF  (0 ("<boahtit>"i)) ;
 
+SELECT ("lære"i) IF  (0 ("<oahppat>"i) LINK 0 prfprc + @→N)(1 ("<árvu>"i)) ;
 SELECT ("utdanne"i) IF  (0 ("<oahppat>"i) LINK 0 prfprc + @→N) ;
 SELECT:fallback ("lære"i) IF  (0 ("<oahppat>"i)) ;
 
@@ -1536,7 +1537,7 @@ SELECT:fallback ("forbli"i) (0 ("<bissut>"i) ) ;
 SELECT:fallback ("kommunisere"i) (0 ("<gulahallat>"i) ) ;
 
 SELECT:stå ("bestå"i) (0 ("<ceavzit>"i) LINK *0 ("<eksámen>"i) OR sem_edu OR sem_domain);
-SELECT:fallback ("klare"i) (0 ("<ceavzit>"i));
+SELECT:fallback ("overleve"i) (0 ("<ceavzit>"i));
 
 SELECT:be ("be"i) (0 ("<dáhttut>"i) LINK 1 acc OR inf);
 SELECT:fallback ("be"i) (0 ("<dáhttut>"i));
@@ -1658,6 +1659,10 @@ SELECT ("vise"i) (0 ("<čujuhit>"i)) ;
 SELECT ("kjeks"i) (0 ("<čeaksa>"i) + pl) ;
 SELECT ("kjeks"i) (0 ("<čeaksa>"i) LINK -1 ("<garas>"i) OR ("<njálggat>"i)  ) ;
 SELECT:fallback ("bladmage"i) (0 ("<čeaksa>"i)) ;
+
+
+SELECT:cmp ("internat"i) (0 ("<ásodat>"i) + cmp LINK 1 ("<buolva>"i) OR ("<hoavda>"i) OR ("<dutkamuš>"i) OR ("<vásáhus>"i) OR ("<mánná>"i) OR ("<muitu>"i) OR ("<áigi>"i) OR ("<historjá>"i)) ;
+SELECT:fallback ("bolig"i) (0 ("<ásodat>"i)) ;
 
 
 SELECT:fallback ("regning"i) (0 ("<rehkenastin>"i)) ;
