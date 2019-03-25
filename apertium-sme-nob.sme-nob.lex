@@ -2541,6 +2541,9 @@ SELECT ("doktor"i) (0 ("<doavttir>"i) LINK 1 (ant) OR (cog));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
 SELECT:fallback ("bilideapmi"i) (0 ("<ødeleggelse>"i));
 
+SELECT:fallback ("design"i) (0 ("<málle>"i));
+
+
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
 SELECT:fallback ("gjenstand"i) (0 ("<dávvir>"i));
@@ -2613,7 +2616,6 @@ SELECT:fallback ("minne"i) (0 ("<muitu>"i));
 SELECT:fallback ("mold"i) (0 ("<muolda>"i));
 SELECT:fallback ("betaling"i) (0 ("<máksu>"i));
 SELECT:fallback ("suppe"i) (0 ("<mális>"i));
-SELECT:fallback ("mønster"i) (0 ("<málle>"i));
 SELECT:fallback ("skaft"i) (0 ("<nađđa>"i));
 SELECT:fallback ("grunne"i) (0 ("<njuorra>"i));
 SELECT:fallback ("skinn"i) (0 ("<náhkki>"i));
@@ -2810,13 +2812,13 @@ SELECT ("hvilken"i) (0 ("<mii>"i) LINK 0 rel + @→N LINK 1 @→N) ;
 SELECT:fallback ("hvis"i) (0 ("<mii>"i) LINK 0 rel + @→N ) ;
 
 SELECT:pl ("noen"i) (0 ("<muhtun>"i) + pl) ;
-SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (*1 n + pl BARRIER NOT-NPMOD) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (2 n + pl) ;
-SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtin>"i)) (-1 LEAT + pl) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i)) (1 n + pl) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i)) (2 n + pl) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i) LINK 0 pl) ;
+SELECT:Leimmet-muhtun ("noe"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtun>"i)) (*1 n + pl BARRIER NOT-NPMOD) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtun>"i)) (2 n + pl) ;
+SELECT:Leimmet-muhtun ("noe"i) (0 ("<muhtin>"i)) (-1 LEAT + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i)) (1 n + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i)) (2 n + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i) LINK 0 pl) ;
 
 SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>"i) BARRIER clb OR vblex OR adv) ;
 SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>"i)) ;
