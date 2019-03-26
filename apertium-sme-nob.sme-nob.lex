@@ -1013,6 +1013,9 @@ SELECT ("øke"i) IF  (0 ("<bajidit>"i) LINK 1 ("<haddi>"i)) ;
 SELECT:fallback ("løfte"i) IF  (0 ("<bajidit>"i)) ;
 
 
+SELECT:fallback ("finne"i) IF (0 ("<gávnnahit>"i)) ;
+
+
 SELECT ("berøre"i) IF  (0 ("<guoskat>"i) LINK 1 ill) ;
 SELECT:fallback ("gjelde"i) IF  (0 ("<guoskat>"i)) ;
 
