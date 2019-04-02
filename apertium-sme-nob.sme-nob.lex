@@ -1012,6 +1012,8 @@ SELECT:fallback ("vekke"i) IF  (0 ("<rávkat>"i)) ;
 SELECT ("øke"i) IF  (0 ("<bajidit>"i) LINK 1 ("<haddi>"i)) ;
 SELECT:fallback ("løfte"i) IF  (0 ("<bajidit>"i)) ;
 
+SELECT ("øving"i) IF  (0 ("<hárjehallan>"i) LINK 0 cmp LINK 1 ("<seminára>"i) OR ("<oahpaheaddji>"i)) ;
+SELECT:fallback ("trening"i) IF  (0 ("<hárjehallan>"i)) ;
 
 SELECT:fallback ("finne"i) IF (0 ("<gávnnahit>"i)) ;
 

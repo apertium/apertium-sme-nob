@@ -3675,6 +3675,43 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: maybe-SUBJr adv-FV.neg  ADVLrsent IV  sentbord  IV - out: 1 2 3 4 5 6"
+    c="Russat eai dušše juga ja moive.: Russene ikke bare drikker og roter.">
+      <pattern>
+        <pattern-item n="maybe-SUBJr"/>
+        <pattern-item n="adv-FV"/>
+        <pattern-item n="ADVLrsent"/>
+        <pattern-item n="IV"/>
+        <pattern-item n="sentbord"/> 
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_GD_ND_subj3"><with-param pos="1"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="6"/></call-macro>
+        <choose><when>
+          <test><equal><clip pos="4" part="temps"/><lit-tag v="pp"/></equal></test>
+          <let><clip pos="4" part="temps"/><lit-tag v="pret"/></let>
+        </when></choose>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="4"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
+          <b pos="5"/>
+          <chunk><clip pos="6" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
 
     <!-- (FV) adj-IV adv-lADVL -->
     <rule comment="REGLA: adj-IV adv1-lADVL   - out: 2 1
