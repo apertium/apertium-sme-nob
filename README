@@ -59,9 +59,8 @@ $ sh pending-tests.sh
 Files and data
 ===============================================================================
 
-* apertium-sme-nob.sme.lexc            - Monolingual dictionary for Sámi
-* apertium-sme-nob.sme.twol            - twolc rules for Sámi dictionary
-* apertium-sme-nob.sme-nob.rlx         - Constraint Grammar disambiguator for Sámi
+Bilingual files:
+
 * sme-nob.prob                         - Tagger model for Sámi
 * apertium-sme-nob.sme-nob.lex         - Constraint Grammar WSD rules for Sámi
 * apertium-sme-nob.sme-nob.dix         - Bilingual dictionary 
@@ -69,8 +68,17 @@ Files and data
 * apertium-sme-nob.sme-nob.t2x         - Interchunk1 rules for translating into Bokmål
 * apertium-sme-nob.sme-nob.t3x         - Interchunk2 rules for translating into Bokmål
 * apertium-sme-nob.sme-nob.t4x         - Postchunk rules for translating into Bokmål
+* apertium-sme-nob.sme-nob.val         - Valency rules for Sámi
 * apertium-sme-nob.nob.dix             - Monolingual dictionary for Bokmål
 * modes.xml                            - Translation modes
+
+Monolingual files:
+
+* The nob generator is found in apertium-nob in this github
+* The sme analyser is found in a repository at UiT The Arctic University of Norway, see:
+  http://wiki.apertium.org/wiki/Northern_Sámi_and_Norwegian/Installation
+  http://giellatekno.uit.no/doc/infra/GettingStarted.html
+  
 
 For more information
 ===============================================================================
