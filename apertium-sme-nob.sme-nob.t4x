@@ -596,13 +596,13 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         </when></choose>
       </when></choose>
       <choose>
-        <when c="Chunk gender still GD: generate h_n if possible">
+        <when c="Chunk gender still GD: generate hun/han if possible">
           <test><or>
             <equal><clip pos="2" part="gen"/><lit-tag v="GD"/></equal>
             <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
           </or></test>
           <choose>
-          <when c="h_n">
+          <when c="hun/han">
             <test><or>
               <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="han"/></equal>
               <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="hun"/></equal>
@@ -632,7 +632,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>
           <equal><clip pos="2" part="gen"/><lit-tag v="mf"/></equal>
         </and></test>
-        <let><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></let> <!-- Lene channged this from m -->
+        <let><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></let> <!-- Lene channged this from m  -->
       </when></choose>
 
       <choose><when c="sp and plurals are un">

@@ -781,6 +781,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
   <section-def-vars>
     <def-var n="tmpcase" c="tmp variable for switch_cases"/>
     <def-var n="case-switch" c="should set_pro 'switch' cases of pro and verb chunk?"/>
+    <def-var n="subj-gender"/>
     <def-var n="gender"/>
     <def-var n="seen-hab" c="seen a habitive in this sentence" v="no"/>
     <def-var n="seen-spred" c="seen a spred in this sentence" v="no"/>
@@ -912,6 +913,11 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <when>
           <test><equal><clip pos="1" part="voice"/><lit-tag v="pasv"/></equal></test>
           <let><var n="gender"/><lit-tag v="nt"/></let>
+        </when>
+        <when>
+          <test><and><equal><clip pos="1" part="animacy"/><lit-tag v="pers-pro"/></equal>
+          <not><equal><var n="subj-gender"/><lit v=""/></equal></not></and></test>
+          <let><var n="gender"/><var n="subj-gender"/></let>
         </when>
         <when>
           <test><equal><clip pos="1" part="animacy"/><lit-tag v="pers-pro"/></equal></test>
@@ -1395,6 +1401,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="2" part="gen"/></let>
       </action>
     </rule>
     <rule comment="REGLA: CS SUBJr ADVLsadv FV - out: 1 2 3 4" c="Mii gáibidit, ahte olmmoš liikkáge galgá dan giela hállat.">
@@ -1416,6 +1423,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="4" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="2" part="gen"/></let>
       </action>
     </rule>
     <rule comment="REGLA: SUBJr PR COMPL FV - out: 1 2 3 4" c="2018 giđđalohkanbaji oahpuid ohcanáigemearri lahkona">
@@ -1437,6 +1445,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="4" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -1488,6 +1497,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -1516,6 +1526,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -1547,6 +1558,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv"/><var n="adv-blank"/>
           <chunk><clip pos="4" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -1601,6 +1613,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
           <let><var n="seen-rel"/><lit v="yes"/></let>
+         <let><var n="subj-gender"/><lit v=""/></let>
       </action>
     </rule>
     <rule comment="REGLA: rel-OBJr FV_alsoNeg - out: 1 pro 2 " c="Go áhčči muitalii iežas soahtevásáhusaid birra de mánát čohkkájedje dego gintalat ja guldaledje dárkilit maid muitalii.">
@@ -1665,6 +1678,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
           <let><var n="seen-rel"/><lit v="yes"/></let>
+         <let><var n="subj-gender"/><lit v=""/></let>
       </action>
     </rule>
     <rule comment="REGLA: PR V2-trigger rel-SUBJr FV_alsoNeg - out: 1 2 3 4">
@@ -1688,6 +1702,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="4" part="whole"/></chunk>
         </out>
           <let><var n="seen-rel"/><lit v="yes"/></let>
+         <let><var n="subj-gender"/><lit v=""/></let>
       </action>
     </rule>
 
@@ -1709,6 +1724,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
            <let><var n="seen-rel"/><lit v="yes"/></let>
+         <let><var n="subj-gender"/><lit v=""/></let>
      </action>
     </rule>
 
@@ -1731,6 +1747,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="2" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
+         <let><var n="subj-gender"/><clip pos="2" part="gen"/></let>
       </action>
     </rule>
     <rule comment="REGLA: comma  vdic  - out: 1  2" c=".. , cealká Guttorm.">
@@ -1772,6 +1789,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="2" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
+         <let><var n="subj-gender"/><clip pos="2" part="gen"/></let>
       </action>
     </rule>
     <rule comment="REGLA: PR V2-trigger maybe-SUBJr ADVL FV  - out: 1 2 5 3 4
@@ -1799,6 +1817,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="4" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
+         <let><var n="subj-gender"/><clip pos="3" part="gen"/></let>
       </action>
     </rule>
     <rule comment="REGLA: maybe-SUBJr PR V2-trigger FV  - out: 1 2 3 4
@@ -1822,6 +1841,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="4" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
     <rule comment="REGLA: PR V2-trigger maybe-SUBJr FV  - out: 1 2 4 3
@@ -1847,6 +1867,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="3" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
+         <let><var n="subj-gender"/><clip pos="3" part="gen"/></let>
       </action>
     </rule>
 
@@ -1865,6 +1886,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="2" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
     <rule comment="REGLA: SUBJr comma FV - out: 1 2 3
@@ -1885,6 +1907,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="3" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
     <rule comment="REGLA: maybe-SUBJr rquot FV - out: 1 rquot 2 
@@ -1905,6 +1928,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="3" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -1926,6 +1950,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="3" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -2001,6 +2026,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -2028,6 +2054,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="3"/>
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -2057,6 +2084,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="3"/>
           <chunk><clip pos="4" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -2217,6 +2245,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="3"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
     <rule comment="REGLA: maybe-SUBJr ADVLsadv FV - out: 1 3 2
@@ -2240,6 +2269,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="2"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -2336,6 +2366,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="3"/>
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -2407,9 +2438,9 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
-    </rule>  
+    </rule>  -->
 
-    <rule comment="REGLA: FV ADVLrsent ADVLrsent maybe-lSUBJ - out: pro 1 2 3 4 OBS" c="Eai šat nu ollugat loga bábiráviissaid = Ikke så mange leser papiraviser">
+<!--    <rule comment="REGLA: FV ADVLrsent ADVLrsent maybe-lSUBJ - out: pro 1 2 3 4 OBS" c="Eai šat nu ollugat loga bábiráviissaid = Ikke så mange leser papiraviser">
       <pattern>
         <pattern-item n="FV"/>
         <pattern-item n="ADVLrsent"/>
@@ -3480,6 +3511,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="3"/>
           <chunk><clip pos="4" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="2" part="gen"/></let>
       </action>
     </rule>
 
@@ -3514,6 +3546,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="4"/>
           <chunk><clip pos="5" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="2" part="gen"/></let>
       </action>
     </rule>
 
@@ -3609,6 +3642,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="3"/>
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -3638,6 +3672,43 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk><clip pos="3" part="whole"/></chunk>
           <b pos="3"/>
           <chunk><clip pos="2" part="whole"/></chunk>
+        </out>
+      </action>
+    </rule>
+    <rule comment="REGLA: maybe-SUBJr adv-FV.neg  ADVLrsent IV  sentbord  IV - out: 1 2 3 4 5 6"
+    c="Russat eai dušše juga ja moive.: Russene ikke bare drikker og roter.">
+      <pattern>
+        <pattern-item n="maybe-SUBJr"/>
+        <pattern-item n="adv-FV"/>
+        <pattern-item n="ADVLrsent"/>
+        <pattern-item n="IV"/>
+        <pattern-item n="sentbord"/> 
+        <pattern-item n="IV"/>
+      </pattern>
+      <action>
+        <call-macro n="set_hab"><with-param pos="1"/></call-macro>
+        <call-macro n="set_hab"><with-param pos="2"/></call-macro>
+        <call-macro n="modify_GD_ND_subj3"><with-param pos="1"/><with-param pos="3"/><with-param pos="4"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="4"/></call-macro>
+        <call-macro n="set_adv"><with-param pos="6"/></call-macro>
+        <choose><when>
+          <test><equal><clip pos="4" part="temps"/><lit-tag v="pp"/></equal></test>
+          <let><clip pos="4" part="temps"/><lit-tag v="pret"/></let>
+        </when></choose>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <b pos="2"/>
+          <chunk><clip pos="3" part="whole"/></chunk>
+          <b pos="3"/>
+          <chunk><clip pos="4" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+          <b pos="4"/>
+          <chunk><clip pos="5" part="whole"/></chunk>
+          <b pos="5"/>
+          <chunk><clip pos="6" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
         </out>
       </action>
     </rule>
@@ -3954,6 +4025,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <var n="adv-blank"/><var n="adv"/>          <!-- kanskje -->
           <chunk><clip pos="4" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><clip pos="3" part="gen"/></let>
       </action>
     </rule>
     <rule comment="REGLA: ITG V - out: 1 2 pro
@@ -4349,6 +4421,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           </otherwise>
         </choose>
           <let><var n="seen-rel"/><lit v="yes"/></let>
+         <let><var n="subj-gender"/><lit v=""/></let>
       </action>
     </rule>
     <rule comment="REGLA: PR ADVLr V - out: 3 1 2" c="Juoigannásti fas Kárášjohkii boahtimin.">
@@ -4412,6 +4485,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
               <b pos="1"/>
               <chunk><clip pos="1" part="whole"/></chunk>
             </out>
+         <let><var n="subj-gender"/><clip pos="1" part="gen"/></let>
       </action>
     </rule>
 
@@ -4464,7 +4538,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
             </out>
           </when>
           <otherwise c="test this one">
-            <call-macro n="set_pro_verb_case2"><with-param pos="1"/><with-param pos="4"/></call-macro>
+            <call-macro n="set_pro_verb_case2"><with-param pos="2"/><with-param pos="4"/></call-macro>
             <call-macro n="set_adv"><with-param pos="3"/></call-macro>
             <out>
               <var n="pro"/><var n="pro-blank"/>
@@ -5026,6 +5100,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <chunk>
           <clip pos="1" part="whole"/></chunk>
         </out>
+         <let><var n="subj-gender"/><lit v=""/></let>
       </action>
     </rule>
   </section-rules>

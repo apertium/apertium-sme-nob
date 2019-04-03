@@ -892,6 +892,7 @@ SELECT:fallback ("dagens"i) (0 ("<otná>"i)) ;
 
 SELECT:fallback ("hvilken av de to"i) (0 ("<goabbá>"i)) ;
 
+SELECT ("fra hele"i) (0 ("<miehtá>"i) LINK -1 ("<boahtit>"i)) ;
 SELECT:fallback ("i hele"i) (0 ("<miehtá>"i)) ;
 
 SELECT ("rundt"i) (0 ("<birra>"i) LINK 0 post LINK *0 ("<vuodjit>"i) ) ;
@@ -1011,6 +1012,11 @@ SELECT:fallback ("vekke"i) IF  (0 ("<rávkat>"i)) ;
 SELECT ("øke"i) IF  (0 ("<bajidit>"i) LINK 1 ("<haddi>"i)) ;
 SELECT:fallback ("løfte"i) IF  (0 ("<bajidit>"i)) ;
 
+SELECT ("øving"i) IF  (0 ("<hárjehallan>"i) LINK 0 cmp LINK 1 ("<seminára>"i) OR ("<oahpaheaddji>"i)) ;
+SELECT:fallback ("trening"i) IF  (0 ("<hárjehallan>"i)) ;
+
+SELECT:fallback ("finne"i) IF (0 ("<gávnnahit>"i)) ;
+
 
 SELECT ("berøre"i) IF  (0 ("<guoskat>"i) LINK 1 ill) ;
 SELECT:fallback ("gjelde"i) IF  (0 ("<guoskat>"i)) ;
@@ -1024,6 +1030,10 @@ SELECT:fallback ("klippe"i) IF  (0 ("<beaskidit>"i)) ;
 
 SELECT ("renne"i) IF  (0 ("<suohpput>"i))(0* ("<čuoldit>"i) OR ("<vuotta>"i) OR ("<boagán>"i)) ;
 SELECT:fallback ("kaste"i) IF  (0 ("<suohpput>"i)) ;
+
+SELECT ("møte"i) IF  (0 ("<deaivat>"i))(*1 sem_hum OR HUMAN BARRIER NOT-NPMODADV) ;
+SELECT:fallback ("treffe"i) IF  (0 ("<deaivat>"i)) ;
+
 
 SELECT ("operere"i) IF  (0 ("<čuohpadit>"i) LINK 0 der_pass) ;
 SELECT:fallback ("skjære"i) IF  (0 ("<čuohpadit>"i)) ;
@@ -1191,6 +1201,7 @@ SELECT:fallback ("vie"i) IF  (0 ("<vihahit>"i)) ;
 SELECT ("bli"i) IF  (0 ("<boahtit>"i)) (1 ("<ovtta oaivilii>")) ;
 SELECT:fallback ("komme"i) IF  (0 ("<boahtit>"i)) ;
 
+SELECT ("lære"i) IF  (0 ("<oahppat>"i) LINK 0 prfprc + @→N)(1 ("<árvu>"i)) ;
 SELECT ("utdanne"i) IF  (0 ("<oahppat>"i) LINK 0 prfprc + @→N) ;
 SELECT:fallback ("lære"i) IF  (0 ("<oahppat>"i)) ;
 
@@ -1230,7 +1241,7 @@ SELECT:fallback ("legge# opp til"i) IF  (0 ("<láhčit>"i)) ;
 
 
 # orrut 0 = synes, 1 = bo, 2 = bli, 3 = være
-SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<dego>"i) OR (actio ess) OR ("<bures>"i) OR ("<ballu>"i) OR ("<illu>"i)) ;
+SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (1 ("<dego>"i) OR (actio ess) OR ("<bures>"i) OR ("<ballu>"i) OR ("<illu>"i) OR ("<ipmirdit>"i)) ;
 SELECT:dego ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (2 ("<miella>"i) + loc OR ("<mielas>"i) OR ("<bures>"i) OR ("<ballu>"i) OR ("<illu>"i)) ;
 SELECT:maid ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (-1 ("<mii>"i)) ;
 SELECT:jaska ("synes"i) (0 ("<orrut>"i) OR ("<orrot>"i)) (*1 ("<oahpis>"i)) ;
@@ -1531,7 +1542,7 @@ SELECT:fallback ("forbli"i) (0 ("<bissut>"i) ) ;
 SELECT:fallback ("kommunisere"i) (0 ("<gulahallat>"i) ) ;
 
 SELECT:stå ("bestå"i) (0 ("<ceavzit>"i) LINK *0 ("<eksámen>"i) OR sem_edu OR sem_domain);
-SELECT:fallback ("klare"i) (0 ("<ceavzit>"i));
+SELECT:fallback ("overleve"i) (0 ("<ceavzit>"i));
 
 SELECT:be ("be"i) (0 ("<dáhttut>"i) LINK 1 acc OR inf);
 SELECT:fallback ("be"i) (0 ("<dáhttut>"i));
@@ -1655,7 +1666,12 @@ SELECT ("kjeks"i) (0 ("<čeaksa>"i) LINK -1 ("<garas>"i) OR ("<njálggat>"i)  ) 
 SELECT:fallback ("bladmage"i) (0 ("<čeaksa>"i)) ;
 
 
+SELECT:cmp ("internat"i) (0 ("<ásodat>"i) + cmp LINK 1 ("<buolva>"i) OR ("<hoavda>"i) OR ("<dutkamuš>"i) OR ("<vásáhus>"i) OR ("<mánná>"i) OR ("<muitu>"i) OR ("<áigi>"i) OR ("<historjá>"i)) ;
+SELECT:fallback ("bolig"i) (0 ("<ásodat>"i)) ;
+
+
 SELECT:fallback ("regning"i) (0 ("<rehkenastin>"i)) ;
+SELECT:fallback ("forvalter"i) (0 ("<hálddašeaddji>"i)) ;
 
 
 SELECT ("tale"i) (*-1 ("<doallat>"i)) (0 ("sáhka"i));
@@ -2530,6 +2546,9 @@ SELECT ("doktor"i) (0 ("<doavttir>"i) LINK 1 (ant) OR (cog));
 SELECT:fallback ("lege"i) (0 ("<doavttir>"i));
 SELECT:fallback ("bilideapmi"i) (0 ("<ødeleggelse>"i));
 
+SELECT:fallback ("design"i) (0 ("<málle>"i));
+
+
 # Nouns that were all 0-marked in the dix:
 SELECT:fallback ("fiske"i) (0 ("<guollebivdu>"i));
 SELECT:fallback ("gjenstand"i) (0 ("<dávvir>"i));
@@ -2602,7 +2621,6 @@ SELECT:fallback ("minne"i) (0 ("<muitu>"i));
 SELECT:fallback ("mold"i) (0 ("<muolda>"i));
 SELECT:fallback ("betaling"i) (0 ("<máksu>"i));
 SELECT:fallback ("suppe"i) (0 ("<mális>"i));
-SELECT:fallback ("mønster"i) (0 ("<málle>"i));
 SELECT:fallback ("skaft"i) (0 ("<nađđa>"i));
 SELECT:fallback ("grunne"i) (0 ("<njuorra>"i));
 SELECT:fallback ("skinn"i) (0 ("<náhkki>"i));
@@ -2725,7 +2743,7 @@ SELECT:fallback ("mellom"i) (0 ("<gaskkas>"i)) ;
 SELECT ("om"i) (0 ("<geahčen>"i) LINK -1 sem_time) ;
 SELECT:fallback ("hos"i) (0 ("<geahčen>"i)) ;
 
-SELECT ("for"i) (0 ("<ektui>"i) LINK -1 (sem_perc-phys)) ;
+SELECT ("for"i) (0 ("<ektui>"i) LINK -1 (sem_perc-phys) OR sem_domain) ;
 SELECT ("sammenlignet med"i) (0 ("<ektui>"i) LINK -1 ("<diimmá>"i) OR ("<diibmá>"i)) ;
 SELECT:fallback ("mot"i) (0 ("<ektui>"i)) ;
 
@@ -2799,13 +2817,13 @@ SELECT ("hvilken"i) (0 ("<mii>"i) LINK 0 rel + @→N LINK 1 @→N) ;
 SELECT:fallback ("hvis"i) (0 ("<mii>"i) LINK 0 rel + @→N ) ;
 
 SELECT:pl ("noen"i) (0 ("<muhtun>"i) + pl) ;
-SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (*1 n + pl BARRIER NOT-NPMOD) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtun>"i)) (2 n + pl) ;
-SELECT:Leimmet-muhtun ("noen"i) (0 ("<muhtin>"i)) (-1 LEAT + pl) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i)) (1 n + pl) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i)) (2 n + pl) ;
-SELECT:muhtun-sániid ("noen"i) (0 ("<muhtin>"i) LINK 0 pl) ;
+SELECT:Leimmet-muhtun ("noe"i) (0 ("<muhtun>"i)) (-1 LEAT + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtun>"i)) (*1 n + pl BARRIER NOT-NPMOD) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtun>"i)) (2 n + pl) ;
+SELECT:Leimmet-muhtun ("noe"i) (0 ("<muhtin>"i)) (-1 LEAT + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i)) (1 n + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i)) (2 n + pl) ;
+SELECT:muhtun-sániid ("noe"i) (0 ("<muhtin>"i) LINK 0 pl) ;
 
 SELECT:klokken-tolv-eller-ett ("én"i) (0 ("<okta>"i)) (*-1 ("<diibmu>"i) BARRIER clb OR vblex OR adv) ;
 SELECT:ett-om-natten ("én"i) (0 ("<okta>"i)) (1 ("<ihkku>"i)) ;
