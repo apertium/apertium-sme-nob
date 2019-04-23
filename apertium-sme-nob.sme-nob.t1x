@@ -456,6 +456,9 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="prinseassa" tags="n.*"/>
       <cat-item lemma="ruvdnaprinseassa" tags="n.*"/>
     </def-cat>
+    <def-cat n="vblex-dimin">
+      <cat-item tags="vblex.*.der_st.vblex.*"/>
+    </def-cat>
     <def-cat n="vblex">
       <cat-item tags="vblex.*"/>
     </def-cat>
@@ -1128,6 +1131,9 @@ And then there are some categories like "month", with all the months.
     </def-attr>
     <def-attr n="a_ger">
       <attr-item tags="ger"/>
+    </def-attr>
+    <def-attr n="a_der_st">
+      <attr-item tags="der_st"/>
     </def-attr>
     <def-attr n="persadj">
       <attr-item tags="persadj"/>
@@ -1808,6 +1814,7 @@ And then there are some categories like "month", with all the months.
 
   <section-def-lists>
     <def-list n="no.actio.ess">
+      <list-item v="vuolgit"/>
       <list-item v="vuordit"/>
       <list-item v="boahtit"/>
       <list-item v="oađđit"/>
@@ -5610,6 +5617,7 @@ And then there are some categories like "month", with all the months.
         <let><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@-FMAINV"/></let>
       </when></choose>
 
+
       <choose c="Prepend 'la' if causative:
                  TODO: 'få OBJ til å' vs 'la', correct syn_label, interaction with others types...">
 	              
@@ -5845,6 +5853,7 @@ And then there are some categories like "month", with all the months.
                 <tag><clip pos="1" side="tl" part="nbr"/></tag>
                 <tag><clip pos="1" side="tl" part="animacy"/></tag>
                 <tag><clip pos="1" side="tl" part="vdic"/></tag>
+                <tag><clip pos="1" side="tl" part="a_der_st"/></tag>
                 <tag><var n="caseprep-verb"/></tag>
                 <tag><var n="esubj"/></tag>
                 <tag><var n="notactioess"/></tag>
@@ -14840,6 +14849,9 @@ And then there are some categories like "month", with all the months.
 	        </otherwise></choose>
       </action>
     </rule>
+
+
+
 
     <rule comment="C[] vblex (tl: vblex, adv, adj, n)
                    See out_verb macro.

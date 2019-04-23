@@ -148,6 +148,9 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
   </section-def-cats>
 
   <section-def-attrs>
+    <def-attr n="a_der_st">
+      <attr-item tags="der_st"/>
+    </def-attr>
     <def-attr n="a_sintagma">
       <attr-item tags="SN"/>
       <attr-item tags="SV"/>
@@ -1627,6 +1630,15 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           </otherwise>
         </choose>
         <let><var n="former-chunk"/><lit-tag v="SV"/></let>
+        <choose>
+	     <when>
+		     <test><equal><clip pos="0" part="a_der_st"/><lit-tag v="der_st"/></equal></test>
+		<out>
+              <b/>
+		              <lu><lit v="litt"/><lit-tag v="adv"/></lu>		     
+		</out>
+	     </when>
+	      </choose>
       </action>
     </rule>
 
