@@ -828,6 +828,7 @@ SELECT:fallback-kunne (cond) ;
 
 SET OLLU = ("<ollu>"i) OR  ("<olu>"i) ;
 
+#SELECT ("mange"i) (0 OLLU LINK 1 ("<giitu>"i)) ;
 SELECT ("mye"i) (0 OLLU LINK *1 (sem_plc_substnc_wthr) OR n + sg BARRIER n) ;
 SELECT ("mye"i) (0 OLLU LINK 1 comp) ;
 SELECT ("mange"i) (0 OLLU LINK *1 pl BARRIER WORD - attr) ;
@@ -2909,6 +2910,12 @@ SELECT:fallback ("slik"i) (0 ("<nu>"i)) ;     # Ja nu leat sii
 SELECT ("senest"i) (0 ("<maŋemusat>"i))(1 num OR (sem_measr_time)) ;
 SELECT:fallback ("sist"i) (0 ("<maŋemusat>"i)) ;
 
+SELECT ("og tilbake"i) (0 ("<maŋos>"i))(-1 ("<ovddos>"i)) ;
+SELECT:fallback ("tilbake"i) (0 ("<maŋos>"i)) ;
+
+SELECT ("enn"i) (0 ("<de>"i))(1 pot) ;
+SELECT:fallback ("så"i) (0 ("<de>"i)) ;
+
 
 REMOVE ("opp"i) (0 ("<bajás>"i))(*0 ("<mánná>"i) LINK 0 acc OR gen) ;
 SELECT:fallback ("opp"i) (0 ("<bajás>"i)) ;
@@ -3113,6 +3120,8 @@ SELECT:fallback ("høflig"i) (0 ("<olmmošlaš>"i));
 
 SELECT ("fast"i) (0 ("<bissovaš>"i) LINK 1 ("<.*virgi>"ri));
 SELECT:fallback ("vedvarende"i) (0 ("<bissovaš>"i));
+
+SELECT:fallback ("statlig"i) (0 ("<stáhtalaš>"i));
 
 
 SELECT ("-årig"i) (0 ("<jagáš>"i) LINK -1 num);
