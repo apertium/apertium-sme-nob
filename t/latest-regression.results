@@ -1,6 +1,6 @@
-Revision: 5596
-AP_SRC1 Revision: 165537
-AP_SRC2 Revision: 555
+Revision: 5775
+AP_SRC1 Revision: 179132
+AP_SRC2 Revision: 1034
 Running Regression-tests with mode "sme-nob" with updated tests ...
 
 sme-nob	  Mus lea biila.
@@ -60,11 +60,12 @@ WORKS	  Anne Tornensis Hætta.
 
 
 sme-nob	  Christina Henriksena mielas lea gielladigaštallama retorihkka dakkár mii háddje.
-WORKS	  Etter Christina Henriksens oppfatning er språkdebattens retorikk slik som splitter.
+WORKS	  etter Christina Henriksens oppfatning er språkdebattens retorikk slik som splitter.
 
 
 sme-nob	  Son lea čeahpes bárdni.
-WORKS	  Han er en flink gutt.
+	- Han er en flink gutt.
+	+ Hun er en flink gutt.
 
 
 sme-nob	  Son lea čeahpes nieida.
@@ -80,7 +81,7 @@ WORKS	  Sammenlign med andre språk.
 
 
 sme-nob	  Vuosttas instruvssat.
-WORKS	  Første instrukser.
+WORKS	  De første instruksene.
 
 
 sme-nob	  Áviisa almmuhuvvo gitta lávvardahkii.
@@ -91,8 +92,9 @@ sme-nob	  Giellabargu mánáidgárddis gáibida ollu barggu sihke bargiin ja vá
 WORKS	  Språkarbeidet i barnehagen krever mye arbeid både fra ansatte og foreldrene.
 
 
-sme-nob	  Nuorta-Finnmárkui lea Ukjendord AS hutkame hukset guokte bieggamillopárkka.
-WORKS	  Til Øst-Finnmark er *Ukjendord AS i ferd med å finne på å bygge to vindmølleparker.
+sme-nob	  Nuorta-Finnmárkui lea Ukjendord OS hutkame hukset guokte bieggamillopárkka.
+	- Til Øst-Finnmark er *Ukjendord AS i ferd med å finne på å bygge to vindmølleparker.
+	+ Til Øst-Finnmark er *Ukjendord #AS<np><org> i ferd med å finne på å bygge to vindmølleparker.
 
 
 sme-nob	  dan.
@@ -268,7 +270,7 @@ WORKS	  Jeg tror at dette har påvirket mer positivt deres identitetsutvikling.
 
 
 sme-nob	  Lea ain deháleabbo ovttasbargat bures.
-WORKS	  Det er enda viktigere å samarbeide bra.
+WORKS	  Det er enda viktigere å samarbeide godt.
 
 
 sme-nob	  Máilbmi lea rievdan das rájes go son lávllui dien šuoŋa.
@@ -292,15 +294,15 @@ WORKS	  Stryk dette.
 
 
 sme-nob	  Máhtte ii leačča čállán.
-WORKS	  Máhtte har nå ikke skrevet.
+WORKS	  Máhtte har så ikke skrevet.
 
 
 sme-nob	  Son ii leačča čállán.
-WORKS	  Hun/han har nå ikke skrevet.
+WORKS	  Han har så ikke skrevet.
 
 
 sme-nob	  Mot leaččai dasto mánáide dain leairrain?
-WORKS	  Hvordan var det nå så for barn i de leirene?
+WORKS	  Hvordan var det så så for barn i de leirene?
 
 
 sme-nob	  jearašin.
@@ -380,7 +382,7 @@ WORKS	  På møtet skal det lages en ny plan.
 
 
 sme-nob	  Dušše Hámmárfeasttas ii leat njiedjan diimmá rájes.
-WORKS	  Bare i Hammerfest er det ikke gått ned fra i fjor.
+WORKS	  Bare i Hammerfest er det ikke gått ned siden i fjor.
 
 
 sme-nob	  arvá.
@@ -428,11 +430,11 @@ WORKS	  Máhtte stemmer nok ikke på Arbeiderpartiet der borte.
 
 
 sme-nob	  Son soaitá boahtit ruoktot.
-WORKS	  Hun/han kommer kanskje hjem.
+WORKS	  Han kommer kanskje hjem.
 
 
 sme-nob	  Son ii leat čállán.
-WORKS	  Hun/han har ikke skrevet.
+WORKS	  Han har ikke skrevet.
 
 
 sme-nob	  Ii lean čállán.
@@ -476,7 +478,7 @@ WORKS	  Drikker du ikke kaffe?
 
 
 sme-nob	  Maid áiggot bargat go heaittát barggus?
-WORKS	  Hva skal du arbeide når du slutter i jobben?
+WORKS	  Hva skal du gjøre når du slutter i jobben?
 
 
 sme-nob	  Mii maiddái ássat.
@@ -528,11 +530,11 @@ WORKS	  hun/han er ikke i ferd med å skrive.
 
 
 sme-nob	  ii leačča čállimin.
-WORKS	  hun/han er nå ikke i ferd med å skrive.
+WORKS	  hun/han er så ikke i ferd med å skrive.
 
 
 sme-nob	  ii leačča čállime.
-WORKS	  hun/han er nå ikke i ferd med å skrive.
+WORKS	  hun/han er så ikke i ferd med å skrive.
 
 
 sme-nob	  Son lea taksivuoddjin Oslos.
@@ -600,7 +602,7 @@ WORKS	  at Norge ikke kunne greie seg mot en flegmatisk krigsmakt.
 
 
 sme-nob	  Son lei dalle sullii 60-jahkásaš.
-WORKS	  Hun/han var da omtrent 60-åring.
+WORKS	  Han var da omtrent 60-åring.
 
 
 sme-nob	  32-jahkásaš čiekči máhccá fas Romsii.
@@ -609,10 +611,6 @@ WORKS	  32-årig fotballspiller drar tilbake igjen til Tromsø.
 
 sme-nob	  5-jahkásaččaid bátnedearvvašvuohta ii leat gal mánáid duohken.
 WORKS	  5-åringenes tannhelse er ikke avhengig av barna.
-
-
-sme-nob	  vuovssihahtti.
-WORKS	  la spy.
 
 
 sme-nob	  boradišgohten.
@@ -648,7 +646,8 @@ WORKS	  så torde jeg å ønske å komme meg blant de 20 beste.
 
 
 sme-nob	  Mii leat čoahkkanan digaštallat ášši.
-WORKS	  Vi har samlet oss for å debattere saken.
+	- Vi har samlet oss for å debattere saken.
+	+ Vi har samles for å debattere saken.
 
 
 sme-nob	  don fertet vuos beatnaga čuogahit.
@@ -685,8 +684,7 @@ WORKS	  Samisk kjøkkenansatt arbeider i barnehagen.
 
 
 sme-nob	  Ikte oaččui guovdageaidnulaš badjel 1,3 miljovnna ruvnnu.
-	- I går fikk en kautokeinoværing over 1,3 millioner kroner.
-	+ I går fikk kautokeinoværing over 1,3 millioner kroner.
+WORKS	  I går fikk kautokeinoværing over 1,3 millioner kroner.
 
 
 sme-nob	  riikka nubbi davvisámegiel namma.
@@ -749,9 +747,8 @@ sme-nob	  Ruoŧas ja Norggas.
 WORKS	  I Sverige og Norge.
 
 
-sme-nob	  Stáhta geaidnodoaimmahat lea dál čállán šiehtadusaid Guovdageainnu, Álttá, Láhpi ja Ákŋoluovtta muohtačorgenbargguide.
-	- Statens veivesen har nå skrevet avtalene for Kautokeinos, Altas, Loppas og Hasviks snøryddingarbeider.
-	+ Statens veivesen har nå skrevet avtalene til Kautokeinos, Altas, Loppas og Hasviks snøryddingarbeider.
+sme-nob	  Stáhta geaidnodoaimmahat lea dál čállán šiehtadusa Ákŋoluovtta muohtačorgenbargguide.
+WORKS	  Statens vegvesen har nå skrevet en avtale om Hasviks snøryddingarbeider.
 
 
 sme-nob	  Ministtar bođii, lohpidii ja manai fas.
@@ -803,24 +800,23 @@ WORKS	  Hun/han har arbeidet som journalist fra 1983.
 
 
 sme-nob	  Váldodoaimmaheaddjin jagi 2015 golggotmánu rájes lea Eilif Andreas Aslaksen.
-	- Som redaktør fra oktober 2015 er Eilif Andreas Aslaksen.
-	+ Redaktør fra oktober 2015 er det Eilif Andreas Aslaksen.
+WORKS	  Redaktør fra oktober 2015 er Eilif Andreas Aslaksen.
 
 
 sme-nob	  nuorran son lea dan juo oahppan.
-WORKS	  som ungdom har hun/han allerede lært det.
+WORKS	  som ungdom har han allerede lært det.
 
 
 sme-nob	  nuorran son lea dan oahppan.
-WORKS	  som ungdom har hun/han lært det.
+WORKS	  som ungdom har han lært det.
 
 
 sme-nob	  Mun láven dávjá lávlut.
-WORKS	  Jeg pleier ofte synge.
+WORKS	  Jeg pleier ofte å synge.
 
 
 sme-nob	  Mun láven dávjá goallut.
-WORKS	  Jeg pleier ofte fryse.
+WORKS	  Jeg pleier ofte å fryse.
 
 
 sme-nob	  Mun hálan dálkki birra.
@@ -828,7 +824,7 @@ WORKS	  Jeg snakker om været.
 
 
 sme-nob	  Mun human fiskes biilla birra.
-WORKS	  Jeg snakker om den gule bilen.
+WORKS	  Jeg snakker om en gul bil.
 
 
 sme-nob	  Son lea Norggas.
@@ -852,11 +848,11 @@ WORKS	  Tine er fra Norge.
 
 
 sme-nob	  Son lea Norggas eret.
-WORKS	  Hun/han er fra Norge.
+WORKS	  Hun er fra Norge.
 
 
 sme-nob	  Son lea Islandas.
-WORKS	  Hun/han er på Island.
+WORKS	  Hun er på Island.
 
 
 sme-nob	  Son lea Islandas eret.
@@ -872,7 +868,7 @@ WORKS	  Märtha Louise fikk det for 16 år siden.
 
 
 sme-nob	  Ráđđehusat leat badjelgeahččan dán árvalusa mii ovdanbuktojuvvui 11 jagi dás ovdal.
-WORKS	  Regjeringene har nedvurdert dette forslaget som ble framlagt for 11 år siden.
+WORKS	  Regjeringene har nedvurdert dette forslaget som ble framført for 11 år siden.
 
 
 sme-nob	  du idjabeavdeskuffas?
@@ -964,7 +960,7 @@ WORKS	  kanskje skal jeg snakke bare på samisk i denne kanalen.
 
 
 sme-nob	  Esther álggii hupmat fuolkkis birra, ja nu oahpásnuvven maiddái sunnje, čilge Skoglund.
-WORKS	  Esther begynte snakke om slektningen, og slik ble jeg også kjent med henne, forklarer Skoglund.
+WORKS	  Esther begynte å snakke om slektningen, og slik ble jeg kjent også med henne, forklarer Skoglund.
 
 
 sme-nob	  Dál beasat oaidnit Giđđajohtima minuvttas minuktii.
@@ -976,7 +972,8 @@ WORKS	  Dette betyr selvfølgelig mye for den personen som har vunnet.
 
 
 sme-nob	  De livččii Larsenii vejolaš ovdanbuktit ođđajagisártnis sámegillii.
-WORKS	  Så hadde det vært for Larsen mulig å framlegge nyttårstalen på samisk.
+	- Så hadde det vært for Larsen mulig å framføre nyttårstalen på samisk.
+	+ Så hadde det vært for Larsen mulig framføre nyttårstalen på samisk.
 
 
 sme-nob	  Sámediggi oaidná ahte sáhttá šaddat hástaleaddjin muhtun suohkaniidda Norggas bálvalit iežas sámegielat álbmoga sámegillii.
@@ -1024,7 +1021,7 @@ WORKS	  I Norge har det fra 2005 vært en avtale om konsultasjonene mellom state
 
 
 sme-nob	  Go lei sáhka sámemánát geat eai leat oahppan sámegiela ruovttus.
-WORKS	  Da det var tale om samebarn som ikke har lært samisk i hjemmet.
+WORKS	  Da det var tale om samebarn som ikke har lært samisk hjemme.
 
 
 sme-nob	  Ii oktage sis hálit kommenteret ášši aviissas.
@@ -1091,4 +1088,4 @@ sme-nob	  §§ 1-1984.
 WORKS	  §§ 1-1984.
 
 
-267 / 271
+265 / 270
