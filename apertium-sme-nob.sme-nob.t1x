@@ -2881,6 +2881,8 @@ And then there are some categories like "month", with all the months.
     <def-list n="loc-av-head" c="Locative noun phrases default to 'på', unless they modify nouns in this list">
 <!--        <list-item v="del"/> -->
       <list-item v="sammendrag"/>
+      <list-item v="flertall"/>
+      <list-item v="mindretall"/>
       <list-item v="halvpart"/>
       <list-item v="resultat"/>
       <list-item v="NUMERAL"/>   <!--   special value set by numerals, see NUMERAL rule -->
@@ -3349,6 +3351,7 @@ And then there are some categories like "month", with all the months.
          <not><in><clip pos="1" side="sl" part="a_sem"/><list n="sem_plc"/></in></not>
          <not><equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_hum_lang"/></equal></not>
          <not><in caseless="yes"><clip pos="1" side="tl" part="lemh"/><list n="loc-i"/></in></not>
+            <not><equal><var n="previous-nhead"/><lit v="flertall"/></equal></not>
            <or>
            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←ADVL-ine"/></equal>
            <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@ADVL-ine→"/></equal>

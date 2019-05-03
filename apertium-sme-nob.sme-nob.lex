@@ -1010,6 +1010,11 @@ SELECT:fallback ("ikke"i) IF  (0 ("<ii>"i)) ;
 SELECT ("tilkalle"i) IF  (0 ("<rávkat>"i) LINK 1 ess) ;
 SELECT:fallback ("vekke"i) IF  (0 ("<rávkat>"i)) ;
 
+REMOVE ("full"i) IF  (0 ("<dievvat>"i) LINK -1 ("<áigemearri>"i) OR ("<áigi>"i)) ;
+SELECT:fallback ("full"i) IF  (0 ("<dievvat>"i)) ;
+
+
+
 SELECT ("øke"i) IF  (0 ("<bajidit>"i) LINK 1 ("<haddi>"i)) ;
 SELECT:fallback ("løfte"i) IF  (0 ("<bajidit>"i)) ;
 
