@@ -1680,6 +1680,10 @@ SELECT:fallback ("regning"i) (0 ("<rehkenastin>"i)) ;
 SELECT:fallback ("forvalter"i) (0 ("<hálddašeaddji>"i)) ;
 
 
+SELECT:fallback ("attest"i) (0 ("<duođaštus>"i))(*0 ("<sáddet>"i)) ;
+SELECT:fallback ("bevis"i) (0 ("<duođaštus>"i)) ;
+
+
 SELECT ("tale"i) (*-1 ("<doallat>"i)) (0 ("sáhka"i));
 
 SELECT ("skrott"i) (0 ("<gorut>"i) LINK -1 num) ;
