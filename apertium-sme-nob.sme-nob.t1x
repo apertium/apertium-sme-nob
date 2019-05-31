@@ -1490,6 +1490,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_act_clth"/>
       <attr-item tags="sem_act_domain"/>
       <attr-item tags="sem_act_event"/>
+      <attr-item tags="sem_act_feat-psych"/>
       <attr-item tags="sem_act_fruit"/>
       <attr-item tags="sem_act_group"/>
       <attr-item tags="sem_act_hum_obj"/>
@@ -1497,6 +1498,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_act_plc"/>
       <attr-item tags="sem_act_route"/>
       <attr-item tags="sem_act_semcon"/>
+      <attr-item tags="sem_act_time"/>
       <attr-item tags="sem_act_tool-it"/>
       <attr-item tags="sem_act_txt"/>
       <attr-item tags="sem_adr"/>
@@ -1505,13 +1507,12 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_amount_semcon"/>
       <attr-item tags="sem_ani"/>
       <attr-item tags="sem_ani-bird"/>
-      <attr-item tags="sem_ani-common"/>
       <attr-item tags="sem_ani-fish"/>
       <attr-item tags="sem_ani_body"/>
       <attr-item tags="sem_ani_body-abstr_hum"/>
       <attr-item tags="sem_ani_build"/>
-      <attr-item tags="sem_ani_build-part"/>
       <attr-item tags="sem_ani_build_hum_txt"/>
+      <attr-item tags="sem_ani_buildpart"/>
       <attr-item tags="sem_ani_cat"/>
       <attr-item tags="sem_ani_clth"/>
       <attr-item tags="sem_ani_feat_hum"/>
@@ -1541,12 +1542,12 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_atr"/>
       <attr-item tags="sem_body"/>
       <attr-item tags="sem_body-abstr"/>
-      <attr-item tags="sem_body-abstr_feat-cogn"/>
+      <attr-item tags="sem_body-abstr_feat-psych"/>
       <attr-item tags="sem_body-abstr_prod-audio_semcon"/>
       <attr-item tags="sem_body_body-abstr"/>
-      <attr-item tags="sem_body_build-part"/>
+      <attr-item tags="sem_body_buildpart"/>
       <attr-item tags="sem_body_clth"/>
-      <attr-item tags="sem_body_clth-part"/>
+      <attr-item tags="sem_body_clthpart"/>
       <attr-item tags="sem_body_food"/>
       <attr-item tags="sem_body_fruit"/>
       <attr-item tags="sem_body_group_hum"/>
@@ -1560,17 +1561,10 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_body_plc-elevate"/>
       <attr-item tags="sem_body_time"/>
       <attr-item tags="sem_build"/>
-      <attr-item tags="sem_build-part"/>
-      <attr-item tags="sem_build-part_cat"/>
-      <attr-item tags="sem_build-part_cat_ctain"/>
-      <attr-item tags="sem_build-part_cat_ctain_mat"/>
-      <attr-item tags="sem_build-part_ctain"/>
-      <attr-item tags="sem_build-part_ctain_mat"/>
-      <attr-item tags="sem_build-part_ctain_obj"/>
-      <attr-item tags="sem_build-part_plc"/>
-      <attr-item tags="sem_build-part_prod-audio"/>
-      <attr-item tags="sem_build_build-part"/>
-      <attr-item tags="sem_build_clth-part"/>
+      <attr-item tags="sem_build-room"/>
+      <attr-item tags="sem_build-room_cat_ctain_mat"/>
+      <attr-item tags="sem_build_buildpart"/>
+      <attr-item tags="sem_build_clthpart"/>
       <attr-item tags="sem_build_edu_org"/>
       <attr-item tags="sem_build_event_org"/>
       <attr-item tags="sem_build_obj"/>
@@ -1578,6 +1572,15 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_build_plc"/>
       <attr-item tags="sem_build_route"/>
       <attr-item tags="sem_build_tool"/>
+      <attr-item tags="sem_buildpart"/>
+      <attr-item tags="sem_buildpart_cat"/>
+      <attr-item tags="sem_buildpart_cat_ctain"/>
+      <attr-item tags="sem_buildpart_cat_ctain_mat"/>
+      <attr-item tags="sem_buildpart_ctain"/>
+      <attr-item tags="sem_buildpart_ctain_mat"/>
+      <attr-item tags="sem_buildpart_ctain_obj"/>
+      <attr-item tags="sem_buildpart_plc"/>
+      <attr-item tags="sem_buildpart_prod-audio"/>
       <attr-item tags="sem_cat"/>
       <attr-item tags="sem_cat_edu"/>
       <attr-item tags="sem_cat_group_hum"/>
@@ -1592,11 +1595,11 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_clth-jewl_money"/>
       <attr-item tags="sem_clth-jewl_org"/>
       <attr-item tags="sem_clth-jewl_plant"/>
-      <attr-item tags="sem_clth-part"/>
-      <attr-item tags="sem_clth-part_plc"/>
       <attr-item tags="sem_clth_hum"/>
       <attr-item tags="sem_clth_obj"/>
       <attr-item tags="sem_clth_obj-clo"/>
+      <attr-item tags="sem_clthpart"/>
+      <attr-item tags="sem_clthpart_plc"/>
       <attr-item tags="sem_ctain"/>
       <attr-item tags="sem_ctain-obj"/>
       <attr-item tags="sem_ctain-abstr"/>
@@ -1622,14 +1625,12 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_domain_hum"/>
       <attr-item tags="sem_domain_ideol"/>
       <attr-item tags="sem_domain_money"/>
+      <attr-item tags="sem_domain_org_plc-abstr"/>
       <attr-item tags="sem_domain_prod-audio"/>
       <attr-item tags="sem_domain_txt"/>
       <attr-item tags="sem_drink"/>
       <attr-item tags="sem_drink_plant"/>
       <attr-item tags="sem_dummytag"/>
-      <attr-item tags="sem_dummytag'riddo"/>
-      <attr-item tags="sem_dummytag´bbelnuurâs"/>
-      <attr-item tags="sem_dummytag̈mittem"/>
       <attr-item tags="sem_edu"/>
       <attr-item tags="sem_edu_event"/>
       <attr-item tags="sem_edu_geom"/>
@@ -1669,7 +1670,6 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_food_time"/>
       <attr-item tags="sem_fruit"/>
       <attr-item tags="sem_fruit_hum"/>
-      <attr-item tags="sem_fungus"/>
       <attr-item tags="sem_furn"/>
       <attr-item tags="sem_furn_time"/>
       <attr-item tags="sem_game"/>
@@ -1770,11 +1770,13 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_perc-psych"/>
       <attr-item tags="sem_phonenr"/>
       <attr-item tags="sem_plant"/>
-      <attr-item tags="sem_plant-part"/>
-      <attr-item tags="sem_plant_plant-part"/>
+      <attr-item tags="sem_plant-fungus"/>
+      <attr-item tags="sem_plant_plantpart"/>
       <attr-item tags="sem_plant_time_wthr"/>
       <attr-item tags="sem_plant_tool"/>
       <attr-item tags="sem_plant_tool-measr"/>
+      <attr-item tags="sem_plantpart"/>
+      <attr-item tags="sem_play"/>
       <attr-item tags="sem_plc"/>
       <attr-item tags="sem_plc-abstr"/>
       <attr-item tags="sem_plc-abstr_rel_state"/>
@@ -1830,7 +1832,6 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_tool-measr"/>
       <attr-item tags="sem_tool-music"/>
       <attr-item tags="sem_tool-write"/>
-      <attr-item tags="sem_tool_tool-music"/>
       <attr-item tags="sem_txt"/>
       <attr-item tags="sem_veh"/>
       <attr-item tags="sem_wpn"/>
@@ -2077,8 +2078,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_mat&gt;"/>
       <list-item v="&lt;sem_mat_plant&gt;"/>
       <list-item v="&lt;sem_mat_txt&gt;"/>
-      <list-item v="&lt;sem_build-part_cat_ctain_matt&gt;"/>
-      <list-item v="&lt;sem_build-part_ctain_matt&gt;"/>
+      <list-item v="&lt;sem_buildpart_cat_ctain_matt&gt;"/>
+      <list-item v="&lt;sem_buildpart_ctain_matt&gt;"/>
       <list-item v="&lt;sem_hum_mat_toolt&gt;"/>
     </def-list>
     <def-list n="sem_prod-audio">
@@ -2166,7 +2167,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_aniprod_plc&gt;"/>
       <list-item v="&lt;sem_aniprod_plc_route&gt;"/>
       <list-item v="&lt;sem_body_plc&gt;"/>
-      <list-item v="&lt;sem_build-part_plc&gt;"/>
+      <list-item v="&lt;sem_buildpart_plc&gt;"/>
       <list-item v="&lt;sem_ctain_plc&gt;"/>
       <list-item v="&lt;sem_event_plc&gt;"/>
       <list-item v="&lt;sem_event_plc-elevate&gt;"/>
@@ -2226,8 +2227,8 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_edu_geom&gt;"/>
     </def-list>
     <def-list n="sem_cat">
-      <list-item v="&lt;sem_build-part_cat&gt;"/>
-      <list-item v="&lt;sem_build-part_cat_ctain&gt;"/>
+      <list-item v="&lt;sem_buildpart_cat&gt;"/>
+      <list-item v="&lt;sem_buildpart_cat_ctain&gt;"/>
       <list-item v="&lt;sem_cat&gt;"/>
       <list-item v="&lt;sem_cat_group_hum&gt;"/>
       <list-item v="&lt;part_cat_ctain_mat&gt;"/>
@@ -3492,7 +3493,7 @@ And then there are some categories like "month", with all the months.
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_ani"/></equal>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_rule"/></equal>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_event"/></equal>
-                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_build-part"/></equal>
+                <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_buildpart"/></equal>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_ctain-clth"/></equal>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_wthr"/></equal>
                 <equal><clip pos="1" side="sl" part="a_sem"/><lit-tag v="sem_perc-emo"/></equal>
