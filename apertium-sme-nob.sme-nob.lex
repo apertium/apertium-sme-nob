@@ -2285,7 +2285,7 @@ SELECT:fallback ("Sverige"i) (0 ("<Ruošša>"i));
 SELECT:fallback ("hvor mange"i) (0 ("<gallis>"i) + n);
 
 SELECT ("levning"i) (0 ("<bázahus>"i) LINK -1 HUMAN OR ("<rumaš>"i));
-SELECT:fallback ("avfall"i) (0 ("<bázahus>"i));
+SELECT:fallback ("rest"i) (0 ("<bázahus>"i));
 
 SELECT:fallback ("fiskekort"i) (0 ("<bivdolohpi>"i));
 
