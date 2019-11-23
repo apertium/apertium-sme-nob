@@ -64,7 +64,10 @@ dev/nouns-nob-sme/$(PREFIX2).t1x.bin: dev/nouns-nob-sme/$(BASENAME).$(PREFIX2).t
 # Override prefixes from ap_include, since we need the derivation-pos-changes:
 .deps/%.autobil.prefixes: %.autobil.bin .deps/.d
 	lt-print $< | sed 's/ /@_SPACE_@/g' > .deps/$*.autobil.att
-	hfst-txt2fst -e ε -i  .deps/$*.autobil.att -o .deps/$*.autobil.hfst
+	hfst-txt2fst -e ε -i  .deps/$*.autobil.att -o .deps/$*.autobil-split.hfst
+	hfst-head      -i .deps/$*.autobil-split.hfst -o .deps/$*.autobil-head.hfst
+	hfst-tail -n+2 -i .deps/$*.autobil-split.hfst -o .deps/$*.autobil-tail.hfst
+	hfst-union -2 .deps/$*.autobil-head.hfst -1 .deps/$*.autobil-tail.hfst -o .deps/$*.autobil.hfst
 	hfst-project -p upper .deps/$*.autobil.hfst -o .deps/$*.autobil.upper                                   # bidix
 	echo '[ "<n>" -> [ "<n>" | "<ex_n>" ] ] .o. [ "<adj>" -> [ "<adj>" | "<ex_adj>" ] ] .o. [ "<vblex>" -> [ "<vblex>" |"<ex_vblex>" ] ] .o. [ "<iv>" -> [ "<iv>" | "<ex_iv>" ] ] .o. [ "<tv>" -> [ "<tv>" | "<ex_tv>" ] ]' \
 		| hfst-regexp2fst -o .deps/$*.derivpos.hfst
