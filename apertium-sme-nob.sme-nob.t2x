@@ -101,6 +101,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
     <def-cat n="APP-N">
       <cat-item tags="SN.@APP-N←.*"/>
     </def-cat>
+    <def-cat n="eret">
+      <cat-item lemma="adv" tags="ADV.@←ADVL-ine.pr"/>
+      <cat-item lemma="adv" tags="ADV.@←ADVL-ela.pr"/>
+    </def-cat>
     <def-cat n="compl">
       <cat-item tags="*.@N←.*"/>
       <cat-item tags="*.@Num←.*"/>
@@ -1450,8 +1454,8 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
                    Don't output the PR since case was selected by the adverb anyway.">
       <pattern>
         <pattern-item n="caseprep-PR"/>
-        <pattern-item n="SN_rADVL"/>
-        <pattern-item n="lADVL"/>
+        <pattern-item n="ADVL.loc"/>
+        <pattern-item n="eret"/>
       </pattern>
       <action>
         <call-macro n="set_ana_gen"><with-param pos="2"/></call-macro>
@@ -1797,6 +1801,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           <b pos="1"/>
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="2"/><b/></equal></not></test>
+          <out><b pos="2"/></out>
+        </when></choose>
       </action>
     </rule>
 
@@ -1816,6 +1824,10 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
           <var n="caseprep"/>
           <chunk><clip pos="2" part="whole"/></chunk>
         </out>
+        <choose><when>
+          <test><not><equal><b pos="1"/><b/></equal></not></test>
+          <out><b pos="1"/></out>
+        </when></choose>
       </action>
     </rule>
 

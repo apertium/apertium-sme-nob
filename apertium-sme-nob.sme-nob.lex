@@ -2381,6 +2381,7 @@ SELECT:fallback ("omgang"i) (0 ("<vuorru>"i));
 SELECT ("måte"i) (0 ("<láhki>"i) LINK -1 adj OR prn);
 SELECT:fallback ("måte"i) (0 ("<láhki>"i));
 
+
 SELECT ("måte"i) (0 ("<láhki>"i) LINK -1 adj OR prn);
 SELECT:fallback ("måte"i) (0 ("<láhki>"i));
 
