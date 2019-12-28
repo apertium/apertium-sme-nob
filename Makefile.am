@@ -2,7 +2,6 @@
 ## Makefile for Northern Sámi--Bokmål
 ###############################################################################
 
-VERSION=0.6.0
 LANG1=sme
 LANG2=nob
 PREFIX1=$(LANG1)-$(LANG2)
