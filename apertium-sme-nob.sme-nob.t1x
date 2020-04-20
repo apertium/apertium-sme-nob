@@ -73,6 +73,13 @@ And then there are some categories like "month", with all the months.
       <cat-item lemma="bivastatgállu" tags="n.g3.*.ess.*"/>
       <cat-item lemma="bivastatgállu" tags="n.g3.*.*.gen.*"/>
     </def-cat>
+    <def-cat n="lex-gurut">
+      <cat-item lemma="gurut" tags="adj.*"/>
+      <cat-item lemma="olgeš" tags="adj.*"/>
+    </def-cat>
+    <def-cat n="lex-bealle">
+      <cat-item lemma="bealle" tags="n.*.sg.loc.*"/>
+    </def-cat>
     <def-cat n="lex-eará">
       <cat-item lemma="eará" tags="prn.*"/>
     </def-cat>
@@ -6119,6 +6126,32 @@ And then there are some categories like "month", with all the months.
             <b/>
             <lu>
               <lit v="veg"/>
+              <lit-tag v="n.m.sg.ind"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule> 
+    <rule comment="C[L] lex-gurut lex-bealle" c="gurut beales → fra venstre">
+      <pattern>
+        <pattern-item n="lex-gurut"/>
+        <pattern-item n="lex-bealle"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk name="adv" case="caseFirstWord">
+            <tags>
+                <tag><lit-tag v="ADV"/></tag>
+              <tag><clip pos="2" side="sl" part="syn_label"/></tag>
+            </tags>
+            <lu>
+              <lit v="fra"/>
+              <lit-tag v="pr"/>
+            </lu>
+            <b pos="1"/>
+            <lu>
+              <lit v="venstre"/>
               <lit-tag v="n.m.sg.ind"/>
             </lu>
           </chunk>
@@ -12289,9 +12322,9 @@ And then there are some categories like "month", with all the months.
 
         <call-macro n="modify_adj_gen_nbr"><with-param pos="2"/><with-param pos="1"/></call-macro>
 
+
+
         <let><var n="c_name"/><lit v="pre_"/></let>
-
-
         <let>
           <var n="pre-nom"/>
           <concat>
