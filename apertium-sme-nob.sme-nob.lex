@@ -2381,6 +2381,8 @@ SELECT:fallback ("omgang"i) (0 ("<vuorru>"i));
 SELECT ("måte"i) (0 ("<láhki>"i) LINK -1 adj OR prn);
 SELECT:fallback ("måte"i) (0 ("<láhki>"i));
 
+SELECT:fallback ("rest"i) (0 ("<bázahus>"i));
+
 
 SELECT ("måte"i) (0 ("<láhki>"i) LINK -1 adj OR prn);
 SELECT:fallback ("måte"i) (0 ("<láhki>"i));
@@ -2799,7 +2801,7 @@ SELECT ("han"i) + (m) (0 ("<son>"i)  LINK *-1W ("<bárdni>"i) OR ("<dievdu>"i) O
 
 
 # han/hun for remote subject (perhaps object or habitive is as likely)
-SELECT:HunRemoteSubject ("hun"i) (0 ("<son>"i)) (**-1WA (sem_fem @SUBJ>) OR (ant f));
+SELECT:HunRemoteSubject ("hun"i) (0 ("<son>"i)) (-*1W (sem_fem @SUBJ>) OR (ant f));
 
 
 
