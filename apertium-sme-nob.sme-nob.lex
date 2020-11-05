@@ -1191,7 +1191,7 @@ SELECT ("få"i) IF  (0 ("<goddit>"i)) (0* sem_ani-fish) ;
 SELECT:fallback ("drepe"i) IF  (0 ("<goddit>"i)) ;
 
 
-SELECT ("samle"i) IF  (0 ("<čoaggit>"i)) (0* ("<ruhta>"i) + acc OR sem_curr + acc OR sem_curr + gen OR ("<namma>"i) + acc OR ("<namma>"i) + gen) ;
+SELECT ("samle"i) IF  (0 ("<čoaggit>"i)) (0* ("<ruhta>"i) + acc OR sem_txt + acc OR sem_curr + acc OR sem_curr + gen OR ("<namma>"i) + acc OR ("<namma>"i) + gen) ;
 SELECT:fallback ("plukke"i) IF  (0 ("<čoaggit>"i)) ;
 
 SELECT ("regne# ut"i) IF  (0 ("<rehkenastit>"i)) (1 ("<gallis>"i) OR ("<galle>"i)) ;
