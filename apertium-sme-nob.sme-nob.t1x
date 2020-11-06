@@ -1326,6 +1326,8 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="ord.comp"/>
       <attr-item tags="ord.sup"/>
       <attr-item tags="comp"/>
+      <attr-item tags="der_comp"/>
+      <attr-item tags="der_superl"/>
       <attr-item tags="pst"/>
       <attr-item tags="sup"/>
     </def-attr>
@@ -4642,6 +4644,7 @@ And then there are some categories like "month", with all the months.
             <or>
               <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="ord.pst"/></equal>
               <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="sup"/></equal>
+              <equal><clip pos="2" side="tl" part="grau"/><lit-tag v="der_superl"/></equal>
               <equal><clip pos="2" side="tl" part="lemh"/><lit v="eneste"/></equal>
               <equal><clip pos="2" side="tl" part="lemh"/><lit v="all"/></equal>
               <and>
@@ -12192,6 +12195,7 @@ And then there are some categories like "month", with all the months.
             <test><or>
             <not><equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal></not>
              <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="sup"/></equal>
+             <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="der_superl"/></equal>
            </or></test>
          <choose><when c="son lea buoremusaid searvvis">
           <test><equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="pl"/></equal></test>
