@@ -106,6 +106,8 @@ And then there are some categories like "month", with all the months.
     </def-cat>
     <def-cat n="adj">
       <cat-item tags="adj.*"/>
+      <cat-item tags="n.der_comp.adj.*"/>
+      <cat-item tags="n.der_superl.adj.*"/>
     </def-cat>
     <def-cat n="adj-sup">
       <cat-item tags="adj.*.sup.*"/>
@@ -373,7 +375,6 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="vblex.*.*.n.*"/>
       <cat-item tags="vblex.*.*.n"/>
       <cat-item tags="n.*"/>
-      <cat-item tags="n"/>
       <cat-item tags="np.*"/>
       <cat-item tags="np"/>
       <cat-item tags="abbr.*"/>
@@ -9916,6 +9917,147 @@ And then there are some categories like "month", with all the months.
       </action>
     </rule>
 
+
+
+    <rule comment="C[] adj
+                   –––––
+                   dehálaš → viktig, deháleamos → viktigst
+                   bassivuođa → det hellige">
+      <pattern>
+        <pattern-item n="adj"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
+        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
+        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
+          <let><var n="caseprep"/><lit v=""/></let>
+        <choose>
+	        <when c="lea rámis">
+          <test><and>
+          <in><clip pos="1" side="tl" part="lemh"/><list n="adj.pers"/></in>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal>
+         </and></test>
+          <let><var n="c_gen"/><lit-tag v="GD_pers"/></let>
+        </when>
+       </choose>
+
+        <choose><when c="de aliduvvui Gonagas Olav bassin.">
+          <test><and>
+          <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal>
+           <not><equal><var n="main-verb-sl"/><lit v="šaddat"/></equal></not>
+           <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="virkelig"/></equal></not>
+         </and></test>
+          <let>
+            <var n="caseprep"/>
+            <concat>
+              <lit v="^"/>
+              <lit v="caseprep"/>
+              <lit-tag v="PR"/>
+              <lit v="{^"/>
+              <lit v="som"/>
+              <lit-tag v="pr"/>
+              <lit v="$}$"/>
+              <b />
+            </concat>
+          </let>
+        </when></choose>
+        <choose>
+          <when c="guovdageaidnulaš → kautokeinoværing">
+            <test><equal><clip pos="1" side="tl" part="a_nom_all"/><lit-tag v="n"/></equal></test>
+            <let><var n="defnes"/><lit-tag v="ind"/></let>
+            <let><clip pos="1" side="tl" part="nbr"/><clip pos="1" side="sl" part="nbr"/></let>
+            <let><var n="c_name"/><lit v=""/></let>
+            <let><var n="pre-nom"/><lit v=""/></let>
+            <call-macro n="out_nom"><with-param pos="1"/></call-macro>
+          </when>
+          <when c="buoremus = den beste">
+            <test><or>
+            <not><equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal></not>
+             <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="sup"/></equal>
+             <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="der_superl"/></equal>
+           </or></test>
+         <choose><when c="son lea buoremusaid searvvis">
+          <test><equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="pl"/></equal></test>
+           <let><var n="tmp"/><lit-tag v="pl"/></let>
+          </when>
+         <otherwise>
+          <let><var n="tmp"/><lit-tag v="sg"/></let>
+         </otherwise>
+         </choose>
+            <let><var n="defnes"/><lit-tag v="def"/></let>
+            <out>
+              <chunk name="pre_adj" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SA"/></tag>
+                  <tag><var n="c_syn"/></tag>
+                  <tag><var n="defnes"/></tag>
+                  <tag><clip pos="1" side="sl" part="mode"/></tag>
+                  <tag><lit-tag v="nt"/></tag>
+                  <tag><lit-tag v="sg"/></tag>
+                  <tag><clip pos="1" side="sl" part="case"/></tag>
+                </tags>
+                <lu>
+                  <lit v="den"/><lit-tag v="det.dem.nt"/>
+                  <var n="tmp"/>
+                </lu>
+                <b/>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_adj"/>
+                  <clip pos="1" side="tl" part="grau"/>
+                  <clip pos="1" side="tl" part="gen"/>
+                  <clip pos="1" side="tl" part="nbr"/>
+                  <lit-tag v="3"/>
+                  <clip pos="1" side="tl" part="persadj"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </when>
+          <otherwise>
+      <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
+            <out>
+            <var n="caseprep"/>
+              <chunk name="adj" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="SA"/></tag>
+                  <tag><var n="c_syn"/></tag>
+                  <tag><var n="defnes"/></tag>
+                  <tag><clip pos="1" side="sl" part="mode"/></tag>
+                  <tag><var n="c_gen"/></tag>
+                  <tag><var n="c_nbr"/></tag>
+                  <tag><clip pos="1" side="sl" part="case"/></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lemh"/>
+                  <clip pos="1" side="tl" part="a_adj"/>
+                  <clip pos="1" side="tl" part="grau"/>
+                  <clip pos="1" side="tl" part="gen"/>
+                  <clip pos="1" side="tl" part="nbr"/>
+                  <lit-tag v="3"/>
+                  <clip pos="1" side="tl" part="persadj"/>
+                  <clip pos="1" side="tl" part="lemq"/>
+                </lu>
+              </chunk>
+            </out>
+          </otherwise>
+        </choose>
+          <let><var n="caseprep"/><lit v=""/></let>
+        <choose><when c="dehálaš">
+          <test><or>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SPRED→"/></equal>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
+          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJext"/></equal>
+         </or></test>
+          <let><var n="previous-nhead"/><clip pos="1" side="tl" part="lemh"/></let>
+        </when></choose>
+      </action>
+    </rule>
+
     <!-- <rules: Noun, numeral+noun and compounds -->
 
 
@@ -12134,146 +12276,6 @@ And then there are some categories like "month", with all the months.
             </lu>
           </chunk>
            </out>
-      </action>
-    </rule>
-
-
-    <rule comment="C[] adj
-                   –––––
-                   dehálaš → viktig, deháleamos → viktigst
-                   bassivuođa → det hellige">
-      <pattern>
-        <pattern-item n="adj"/>
-      </pattern>
-      <action>
-        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
-
-        <call-macro n="set_c_gen_nbr"><with-param pos="1"/></call-macro>
-        <call-macro n="set_defnes"><with-param pos="1"/></call-macro>
-        <call-macro n="set_c_syn"><with-param pos="1"/></call-macro>
-          <let><var n="caseprep"/><lit v=""/></let>
-        <choose>
-	        <when c="lea rámis">
-          <test><and>
-          <in><clip pos="1" side="tl" part="lemh"/><list n="adj.pers"/></in>
-          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal>
-         </and></test>
-          <let><var n="c_gen"/><lit-tag v="GD_pers"/></let>
-        </when>
-       </choose>
-
-        <choose><when c="de aliduvvui Gonagas Olav bassin.">
-          <test><and>
-          <equal><clip pos="1" side="sl" part="case"/><lit-tag v="ess"/></equal>
-           <not><equal><var n="main-verb-sl"/><lit v="šaddat"/></equal></not>
-           <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="virkelig"/></equal></not>
-         </and></test>
-          <let>
-            <var n="caseprep"/>
-            <concat>
-              <lit v="^"/>
-              <lit v="caseprep"/>
-              <lit-tag v="PR"/>
-              <lit v="{^"/>
-              <lit v="som"/>
-              <lit-tag v="pr"/>
-              <lit v="$}$"/>
-              <b />
-            </concat>
-          </let>
-        </when></choose>
-        <choose>
-          <when c="guovdageaidnulaš → kautokeinoværing">
-            <test><equal><clip pos="1" side="tl" part="a_nom_all"/><lit-tag v="n"/></equal></test>
-            <let><var n="defnes"/><lit-tag v="ind"/></let>
-            <let><clip pos="1" side="tl" part="nbr"/><clip pos="1" side="sl" part="nbr"/></let>
-            <let><var n="c_name"/><lit v=""/></let>
-            <let><var n="pre-nom"/><lit v=""/></let>
-            <call-macro n="out_nom"><with-param pos="1"/></call-macro>
-          </when>
-          <when c="buoremus = den beste">
-            <test><or>
-            <not><equal><clip pos="1" side="sl" part="a_nom_all"/><lit v=""/></equal></not>
-             <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="sup"/></equal>
-             <equal><clip pos="1" side="tl" part="grau"/><lit-tag v="der_superl"/></equal>
-           </or></test>
-         <choose><when c="son lea buoremusaid searvvis">
-          <test><equal><clip pos="1" side="sl" part="nbr"/><lit-tag v="pl"/></equal></test>
-           <let><var n="tmp"/><lit-tag v="pl"/></let>
-          </when>
-         <otherwise>
-          <let><var n="tmp"/><lit-tag v="sg"/></let>
-         </otherwise>
-         </choose>
-            <let><var n="defnes"/><lit-tag v="def"/></let>
-            <out>
-              <chunk name="pre_adj" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="SA"/></tag>
-                  <tag><var n="c_syn"/></tag>
-                  <tag><var n="defnes"/></tag>
-                  <tag><clip pos="1" side="sl" part="mode"/></tag>
-                  <tag><lit-tag v="nt"/></tag>
-                  <tag><lit-tag v="sg"/></tag>
-                  <tag><clip pos="1" side="sl" part="case"/></tag>
-                </tags>
-                <lu>
-                  <lit v="den"/><lit-tag v="det.dem.nt"/>
-                  <var n="tmp"/>
-                </lu>
-                <b/>
-                <lu>
-                  <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adj"/>
-                  <clip pos="1" side="tl" part="grau"/>
-                  <clip pos="1" side="tl" part="gen"/>
-                  <clip pos="1" side="tl" part="nbr"/>
-                  <lit-tag v="3"/>
-                  <clip pos="1" side="tl" part="persadj"/>
-                  <clip pos="1" side="tl" part="lemq"/>
-                </lu>
-              </chunk>
-            </out>
-          </when>
-          <otherwise>
-      <call-macro n="set_caseprep"><with-param pos="1"/></call-macro>
-            <out>
-            <var n="caseprep"/>
-              <chunk name="adj" case="caseFirstWord">
-                <tags>
-                  <tag><lit-tag v="SA"/></tag>
-                  <tag><var n="c_syn"/></tag>
-                  <tag><var n="defnes"/></tag>
-                  <tag><clip pos="1" side="sl" part="mode"/></tag>
-                  <tag><var n="c_gen"/></tag>
-                  <tag><var n="c_nbr"/></tag>
-                  <tag><clip pos="1" side="sl" part="case"/></tag>
-                </tags>
-                <lu>
-                  <clip pos="1" side="tl" part="lemh"/>
-                  <clip pos="1" side="tl" part="a_adj"/>
-                  <clip pos="1" side="tl" part="grau"/>
-                  <clip pos="1" side="tl" part="gen"/>
-                  <clip pos="1" side="tl" part="nbr"/>
-                  <lit-tag v="3"/>
-                  <clip pos="1" side="tl" part="persadj"/>
-                  <clip pos="1" side="tl" part="lemq"/>
-                </lu>
-              </chunk>
-            </out>
-          </otherwise>
-        </choose>
-          <let><var n="caseprep"/><lit v=""/></let>
-        <choose><when c="dehálaš">
-          <test><or>
-          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SPRED"/></equal>
-          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SPRED→"/></equal>
-          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
-          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
-          <equal><clip pos="1" side="sl" part="syn_label"/><lit-tag v="@←SUBJext"/></equal>
-         </or></test>
-          <let><var n="previous-nhead"/><clip pos="1" side="tl" part="lemh"/></let>
-        </when></choose>
       </action>
     </rule>
     <rule comment="C[] lex-rahkis-attr nom_head" c="ráhkis lohkki - kjære leser">
