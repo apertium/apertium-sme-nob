@@ -1849,6 +1849,7 @@ SELECT ("grunn"i) (0 ("<ágga>"i) LINK -1 ("<navdit>"i)) ;
 SELECT:fallback ("argument"i) (0 ("<ágga>"i)) ;
 
 
+SELECT ("undersøkelse"i) (0 ("<guorahallan>"i) LINK -1 ("<statistihkalaš>"i)) ;
 SELECT:fallback ("utredning"i) (0 ("<guorahallan>"i)) ;
 
 SELECT:fallback ("bransje"i) (0 ("<suorgi>"i));
