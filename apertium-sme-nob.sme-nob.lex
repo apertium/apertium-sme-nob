@@ -2439,6 +2439,9 @@ SELECT:fallback ("bukt"i) (0 ("<mohkki>"i));
 
 SELECT:fallback ("forskning"i) (0 ("<dutkan>"i));
 
+SELECT ("tekstoppgave"i) (0 ("<teakstabihttá>"i) + acc LINK -1 ("<čoavdit>"i));
+SELECT ("tekstoppgave"i) (0 ("<teakstabihttá>"i) + acc LINK 1 ("<čoavdit>"i));
+SELECT:fallback ("avsnitt"i) (0 ("<teakstabihttá>"i));
 
 SELECT ("anmeldelse"i) (0 ("<árvvoštallan>"i) LINK -1 sem_txt + acc OR ("<filbma>"i) + acc) ;
 SELECT:fallback ("vurdering"i) (0 ("<árvvoštallan>"i));
