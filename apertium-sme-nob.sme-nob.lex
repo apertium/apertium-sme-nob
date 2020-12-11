@@ -948,6 +948,7 @@ SELECT:fallback ("enda"i) IF (0 ("<vel>"i))  ;
 
 # leat 0 = være, 1 = ha, 2 = måtte («ha å»)
 SELECT:adj ("være"i) IF (0 ("<leat>"i) LINK 1 ("<lihkku>"i) LINK 0 (←ext→)) ; # mus lea lihkku - jeg er heldig
+SELECT:actio ("være"i) IF (0 ("<leat>"i) LINK 1 actio + ess) ; # 
 SELECT:aux ("ha"i) IF (0 ("<leat>"i) LINK 1 ("<dáhpáhuvvat>"i) OR ("<leat>"i))  ; 
 SELECT:aux (agreem-pro) IF (0 ("<leat>"i) LINK *1 ("<dáhpáhuvvat>"i) OR ("<leat>"i) OR (agreem-pro) BARRIER NOT-ADV)  ; 
 SELECT:aux ("være"i) IF (0 ("<leat>"i) LINK 1 (agreem-pro))  ; 
@@ -3167,7 +3168,7 @@ SELECT:fallback ("fersk"i) (0 ("<varas>"i));
 # Sámediggi ja Sámi oahpahusráđđi gárttaiga čilget máŋgii vuođđojurdagiid man vuođul gáibideimmet ollislaš sámi oahppoplána
 SELECT ("helhetlig"i) (0 ("<ollislaš>"i));
 
-SELECT:fallback ("full"i) (0 ("<ollis>"i) LINK 1 ("<áigi>"i)) ; # (1 ("tid"i));
+#SELECT ("full"i) (0 ("<ollis>"i) LINK 1 ("<áigi>"i)) ; # (1 ("tid"i));
 SELECT:fallback ("hel"i) (0 ("<ollis>"i)) ; # (1 ("tid"i));
 
 SELECT:fallback ("sterk"i) (0 ("<nanus>"i));
