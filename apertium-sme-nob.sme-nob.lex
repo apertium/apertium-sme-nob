@@ -1489,6 +1489,7 @@ SELECT:fallback ("smitte"i) (0 ("<njoammut>"i));
 SELECT:fallback ("sette# opp"i) (0 ("<cegget>"i));
 
 
+SELECT ("rette# på"i) (0 ("<njulget>"i) LINK *1 sem_hum BARRIER NOT-NPMODADV);
 SELECT:fallback ("rette"i) (0 ("<njulget>"i));
 
 SELECT:ta-en-tur ("ta en tur"i) (0 ("<fitnat>"i) + inf )  ; 
