@@ -1574,6 +1574,10 @@ SELECT:fallback ("stryke"i) (0 ("<sihkkut>"i)) ;
 SELECT ("oppdra"i) (0 ("<geassit>"i))(*0 ("<mánná>"i) LINK 0 acc OR gen) ;
 SELECT:fallback ("trekke"i) (0 ("<geassit>"i));
 
+SELECT ("utkant"i) (0 ("<doaris>"i))(1 ("<guovlu>"i)) ;
+SELECT:fallback ("tverr"i) (0 ("<doaris>"i));
+
+
 SELECT ("utveksle"i) (0 ("<lonohallat>"i) LINK *0 ("<vásáhus>"i));
 SELECT:fallback ("skifte"i) (0 ("<lonohallat>"i));
 
@@ -1585,7 +1589,7 @@ SELECT:fallback ("eksplodere"i) (0 ("<bávkkehit>"i));
 
 SELECT ("advare"i) (0 ("<várret>"i) LINK 1 ("<nominašuvdna>"i));
 SELECT ("reservere"i) (0 ("<várret>"i) LINK *0 acc OR ill BARRIER SV-BOUNDARY);
-SELECT:fallback ("advare"i) (0 ("<várret>"i));
+SELECT:fallback ("reservere"i) (0 ("<várret>"i));
 
 SELECT ("skyve"i) (0 ("<duvdit>"i) LINK *1 ("<eret>"i) BARRIER SV-BOUNDARY);
 SELECT:fallback ("støtte"i) (0 ("<duvdit>"i));
