@@ -814,6 +814,7 @@ So "det-SN_rOBJ.nom" would include chunks like det<SN><@→OBJ><p1><mf><du><nom>
       <choose><when>
         <test><or>
           <equal><clip pos="1" part="syn_label"/><lit-tag v="@SUBJ→"/></equal>
+          <equal><clip pos="1" part="syn_label"/><lit-tag v="@-FSUBJ→"/></equal>
           <equal><clip pos="1" part="syn_label"/><lit-tag v="@←SUBJ"/></equal>
         </or></test>
 
