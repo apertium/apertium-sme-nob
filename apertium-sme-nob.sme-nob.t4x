@@ -556,6 +556,8 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
               <not><or>
                 <equal><clip pos="2" part="case"/><lit-tag v="gen"/></equal>
                 <equal><clip pos="2" part="case"/><lit v=""/></equal>
+              <equal><clip pos="2" part="case"/><lit-tag v="nom"/></equal>
+              <equal><clip pos="2" part="case"/><lit-tag v="acc"/></equal>
               </or></not>
             </and></test>
             <let><clip pos="2" part="case"/><lit v=""/></let>

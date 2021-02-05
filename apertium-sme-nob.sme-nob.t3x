@@ -2867,7 +2867,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
 
     <rule comment="REGLA: V2-trigger FV lSUBJ  - out: 1 2 3 
                    de lei son (juo) => så hadde han (allerede)
-                   Override prodrop rule if we might have a subject to the right">
+                   Override prodrop rule if we might have a subject to the right df">
       <pattern>
         <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
@@ -3284,7 +3284,7 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
       </action>
     </rule>
 
-    <rule comment="REGLA: V2-trigger FV  lSUBJext - out: 1 2 det 3 " c="Dasa leat ollu čilgehusat_ Til det er det mange forklaringer.">
+    <rule comment="REGLA: V2-trigger FV  lSUBJext - out: 1 2 det 3 asfd " c="Dasa leat ollu čilgehusat_ Til det er det mange forklaringer.">
       <pattern>
         <pattern-item n="V2-trigger"/>
         <pattern-item n="FV"/>
@@ -4933,7 +4933,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         <call-macro n="set_pro_verb_case1"><with-param pos="1"/></call-macro>
         <call-macro n="set_adv"><with-param pos="1"/></call-macro>
         <out>
-          <var n="pro"/><var n="pro-blank"/>
+          <var n="pro"/>
+          <var n="pro-blank"/>
           <chunk><clip pos="1" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
           <b pos="1"/>
