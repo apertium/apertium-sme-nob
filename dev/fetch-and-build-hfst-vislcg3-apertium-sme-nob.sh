@@ -15,9 +15,9 @@
 ### sudo apt-get install subversion build-essential g++ pkg-config gawk libxml2 libxml2-dev libxml2-utils xsltproc flex automake autoconf libtool libpcre3-dev  libicu-dev libreadline-dev zlib1g-dev bison
 ###
 ### More in-depth on prerequisites:
-### * http://wiki.apertium.org/wiki/Installation (lttoolbox and apertium)
-### * http://wiki.apertium.org/wiki/HFST (foma, OpenFST, HFST)
-### * http://wiki.apertium.org/wiki/Apertium_and_Constraint_Grammar (vislcg3)
+### * https://wiki.apertium.org/wiki/Installation (lttoolbox and apertium)
+### * https://wiki.apertium.org/wiki/HFST (foma, OpenFST, HFST)
+### * https://wiki.apertium.org/wiki/Apertium_and_Constraint_Grammar (vislcg3)
 
 ### Where you want apertium/hfst/vislcg3 etc. installed:
 PREFIX="$HOME/apertium-local"

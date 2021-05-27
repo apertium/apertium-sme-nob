@@ -1,4 +1,4 @@
-# See http://wiki.apertium.org/wiki/Evaluation for apertium-eval-translator
+# See https://wiki.apertium.org/wiki/Evaluation for apertium-eval-translator
 # Requires GNU Make (uses pattern rules)
 
 LANG1=sme

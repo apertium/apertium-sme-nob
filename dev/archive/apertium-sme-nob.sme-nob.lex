@@ -1,5 +1,5 @@
 # This file is for word sense disambiguation (lexical selection)
-# See http://wiki.apertium.org/wiki/Limited_rule-based_lexical_selection
+# See https://wiki.apertium.org/wiki/Limited_rule-based_lexical_selection
 
 DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
 
