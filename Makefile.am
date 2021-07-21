@@ -302,7 +302,4 @@ test-install: all
 
 # TODO: test-bidix-gen script needs fixing
 test: all test-previous-offenders test-install
-	echo "Mus lea oahpahus gaskkal guovtti ja njealji." | apertium -d . sme-nob | tee .$@-mt
-	@echo "Jeg har undervisning mellom to og fire." > .$@-ref
-	@diff .$@-ref .$@-mt
-	@rm .$@-ref .$@-mt
+	apertium-regtest test
