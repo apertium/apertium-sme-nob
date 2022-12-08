@@ -202,4 +202,55 @@
     </pipeline>
   </mode>
 
+  <mode name="sme-nob_rtx" install="yes" gendebug="yes">
+    <pipeline>
+      <program name="hfst-proc --weight-classes 1 -w -p">
+        <file name="sme-nob.automorf.hfst"/>
+      </program>
+      <program name="cg-proc" debug-suff="disam">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w" debug-suff="syntax">
+        <file name="sme-nob.syn.rlx.bin"/>
+      </program>
+      <program name="apertium-pretransfer"/>
+      <program name="lt-proc -b">
+        <file name="sme-nob.autobil.bin"/>
+      </program>
+      <program name="cg-proc" debug-suff="lex">
+        <file name="sme-nob.lex.bin"/>
+      </program>
+      <program name="rtx-proc">
+        <file name="sme-nob.rtx.bin"/>
+      </program>
+      <program name="lt-proc $1">
+        <file name="sme-nob.autogen.bin"/>
+      </program>
+    </pipeline>
+  </mode>
+
+  <mode name="sme-nob_rtx-tree" install="no">
+    <pipeline>
+      <program name="hfst-proc --weight-classes 1 -w -p">
+        <file name="sme-nob.automorf.hfst"/>
+      </program>
+      <program name="cg-proc" debug-suff="disam">
+        <file name="sme-nob.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -w" debug-suff="syntax">
+        <file name="sme-nob.syn.rlx.bin"/>
+      </program>
+      <program name="apertium-pretransfer"/>
+      <program name="lt-proc -b">
+        <file name="sme-nob.autobil.bin"/>
+      </program>
+      <program name="cg-proc" debug-suff="lex">
+        <file name="sme-nob.lex.bin"/>
+      </program>
+      <program name="rtx-proc -T">
+        <file name="sme-nob.rtx.bin"/>
+      </program>
+    </pipeline>
+  </mode>
+
 </modes>

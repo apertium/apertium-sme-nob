@@ -15,12 +15,13 @@ TARGETS_COMMON =				\
 	$(PREFIX1).mor.rlx.bin			\
 	$(PREFIX1).syn.rlx.bin			\
 	$(PREFIX1).lex.bin			\
-	$(PREFIX1).autobil.bin			\
-	$(PREFIX1).autogen.bin			\
+	$(PREFIX1).autobil.bin		\
+	$(PREFIX1).autogen.bin		\
 	$(PREFIX1).t1x.bin			\
 	$(PREFIX1).t2x.bin			\
 	$(PREFIX1).t3x.bin			\
-	$(PREFIX1).t4x.bin		        \
+	$(PREFIX1).t4x.bin			\
+	$(PREFIX1).rtx.bin			\
 	$(PREFIX2).automorf-untrimmed.bin
 
 # last one is technically nob→sme, but handy for debugging
