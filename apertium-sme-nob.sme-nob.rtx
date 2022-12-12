@@ -1,0 +1,54 @@
+number = sg pl ;
+gender = f m nt un mf ;
+definite = (DD ind) def ind DD ;
+comp = pst comp sup ;
+sint = sint ;
+prn_type = pers refl ;
+person = p1 p2 p3 ;
+case = nom acc ;
+transitivity = tv iv ;
+tense = pres pret ;
+
+! ^Mun<prn><pers><p1><sg><nom><@SUBJ→>/Jeg<prn><pers><p1><mf><sg><nom><@SUBJ→>$
+! ^oaidnit<vblex><tv><indic><pres><p1><sg><@+FMAINV>/se<vblex><pers-pro><pres><p1><sg><@+FMAINV>$
+! ^stuoris<adj><attr><@→N>/stor<adj><sint><pst><GD><ND><@→N>$
+! ^girji<n><sem_txt><pl><nom><@←SUBJ>/bok<n><f><maydetind><sem_txt><pl><nom><@←SUBJ>$
+! ^.<sent>/.<sent><clb>$
+
+n: _.gender.number.definite;
+adj_plain: _.sint.comp.gender.number.definite;
+adj: (always
+       1(adj_plain)[gender=(if (1.definite = def or 1.number = pl) un
+                            elif (1.gender = f or 1.gender = m) mf
+                            else 1.gender),
+                    number=(if (1.definite = def) sp else 1.number)]);
+prn: _.prn_type.person.gender.number.case ;
+vblex: _.tense ;
+post: _ ;
+
+NP: _.definite ;
+PP: _ ;
+VP: _ ;
+S: _ ;
+
+has_adj = yes no ;
+maybe_det: (if (1.definite = def and 1.number = sg and 1.has_adj = yes)
+               [ den@det.dem.[1.gender].sg _ ]
+            elif (1.definite = ind and 1.number = sg)
+               [ en@det.qnt.[1.gender].sg _ ]) ;
+
+NP -> n [$definite=ind]
+      {
+        1(maybe_det)[definite=$definite,has_adj=no]
+        %1
+      } |
+      adj n [$definite=ind]
+      {
+        2(maybe_det)[definite=$definite,has_adj=yes]
+        1[number=2.number,gender=2.gender,definite=$definite] _ %2
+      } |
+      prn.pers [$definite=def] { 1 } ;
+
+PP -> NP post { 2 _ 1[definite=def] } ;
+VP -> vblex.tv NP { 1 _ 2[definite=ind] } ;
+S -> NP VP { 1 _ 2 } ;
