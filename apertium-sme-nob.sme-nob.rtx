@@ -31,7 +31,11 @@ PP: _ ;
 VP: _ ;
 S: _ ;
 
+! Mun oainnán girjji -> Jeg ser *ei* bok
+! Mun oainnán stuorra girjjiid rukses viesu duohken.
+! -> Jeg ser store bøker bak *det* røde huset.
 has_adj = yes no ;
+! <def-attr n="has_adj"><attr-item n="yes"/><attr-item n="no"/></def-attr>
 maybe_det: (if (1.definite = def and 1.number = sg and 1.has_adj = yes)
                [ den@det.dem.[1.gender].sg _ ]
             elif (1.definite = ind and 1.number = sg)
