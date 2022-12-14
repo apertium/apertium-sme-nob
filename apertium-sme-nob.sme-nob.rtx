@@ -1,4 +1,4 @@
-number = sg pl ;
+number = sg pl du ;
 gender = f m nt un mf ;
 definite = (DD ind) def ind DD ;
 comp = pst comp sup ;
@@ -8,6 +8,28 @@ person = p1 p2 p3 ;
 case = nom acc ;
 transitivity = tv iv ;
 tense = pres pret ;
+inf = inf actio ;
+pcp = pp pprs prfprc ;
+finity = (FIN fin) inf actio pp prs pprs prfprc fin ;
+derp = der_inchl der_passl der_passs ;
+pass = pass ;
+inch = inch ;
+sep = sep ;  !! separable stuff
+fs = fs fm ; !! separable stuff
+prntype = pers ind qnt itg dem pos rel;
+
+
+!!!!!!!!!!!!!!!
+!! OUTPUT PATTERNS
+!!!!!!!!!!!!!!!
+
+vblex_fin: _.sep.fs.tense;
+vblex_inf: _.sep.inf;
+vblex_pp: _.sep.pcp;
+vbser: _.tense;
+vbmod: _.tense;
+prn: _.prntype.person.gender.number.case;
+
 
 ! ^Mun<prn><pers><p1><sg><nom><@SUBJ→>/Jeg<prn><pers><p1><mf><sg><nom><@SUBJ→>$
 ! ^oaidnit<vblex><tv><indic><pres><p1><sg><@+FMAINV>/se<vblex><pers-pro><pres><p1><sg><@+FMAINV>$
@@ -23,12 +45,34 @@ adj: (always
                             else 1.gender),
                     number=(if (1.definite = def) sp else 1.number)]);
 prn: _.prn_type.person.gender.number.case ;
-vblex: _.tense ;
+
+vblex_simple: (if (1.finity = inf) 1(vblex_inf)
+        elif (1.finity = actio) 1(vblex_inf)[inf=inf]  ! probably not ideal
+        elif (1.pcp = pp) 1(vblex_pp)
+        elif (1.pcp = prfprc) 1(vblex_pp)  ! probably not ideal
+        elif (1.pcp = pprs) 1(vblex_pp)
+        else 1(vblex_fin) ) ;
+!vblex: _.tense ;
+vblex: (if (1.derp = der_passl)
+          [ 1(vblex_simple)[pos_tag=vblex,lem=bli] _ 1(vblex_pp)[pcp=pp] ]
+        elif (1.derp = der_inchl)
+          [ 1(vblex_simple)[lem=begynne] _ å@part _ 1(vblex_simple)[finity=inf,inf=inf] ]
+        else 1(vblex_simple)) ;
+
+pick_pro: (if (1.person=p1 & 1.number=sg) jeg@prn.pers.p1.mf.sg.nom
+		   elif (1.person=p2 & 1.number=sg) du@prn.pers.p2.mf.sg.nom
+		   elif (1.person=p3 & 1.number=sg) hun@prn.pers.p3.f.sg.nom
+		   elif (1.person=p1 & (1.number=pl or 1.number=du)) vi@prn.pers.p1.mf.pl.nom
+		   elif (1.person=p2 & (1.number=pl or 1.number=du)) dere@prn.pers.p2.mf.pl.nom
+		   else de@prn.pers.p3.un.pl.nom
+		   ) ;
+
+
 post: _ ;
 
 NP: _.definite ;
 PP: _ ;
-VP: _ ;
+VP: _.person.number ;
 S: _ ;
 
 ! Mun oainnán girjji -> Jeg ser *ei* bok
@@ -54,5 +98,9 @@ NP -> n [$definite=ind]
       prn.pers [$definite=def] { 1 } ;
 
 PP -> NP post { 2 _ 1[definite=def] } ;
-VP -> vblex.tv NP { 1 _ 2[definite=ind] } ;
+VP -> %vblex.tv NP { 1 _ 2[definite=ind] } ;
+VP -> %vblex { 1 } ;
 S -> NP VP { 1 _ 2 } ;
+S -> VP { 1(pick_pro) _ 1 } ;
+
+
