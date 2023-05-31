@@ -22,7 +22,8 @@ TARGETS_COMMON =				\
 	$(PREFIX1).t3x.bin			\
 	$(PREFIX1).t4x.bin			\
 	$(PREFIX1).rtx.bin			\
-	$(PREFIX2).automorf-untrimmed.bin
+	$(PREFIX2).automorf-untrimmed.bin       \
+        $(LANG2).autoseq.bin
 
 # last one is technically nob→sme, but handy for debugging
 
@@ -157,6 +158,23 @@ $(BASENAME).$(PREFIX1).syn.rlx: $(AP_SRC1)/functions-mt-gt.cg3
 
 $(BASENAME).$(PREFIX2).rlx: $(AP_SRC2)/apertium-$(LANG2).$(LANG2).rlx
 	cp $< $@
+
+
+###############################################################################
+## Separable / discontiguous multiwords
+###############################################################################
+
+$(PREFIX1).autoseq.bin: $(BASENAME).$(PREFIX1).lsx
+	lsx-comp lr $< $@
+
+$(PREFIX2).autoseq.bin: $(BASENAME).$(PREFIX2).lsx
+	lsx-comp lr $< $@
+
+$(LANG1).autoseq.bin: $(BASENAME).$(LANG1).lsx
+	lsx-comp lr $< $@
+
+$(LANG2).autoseq.bin: $(BASENAME).$(LANG2).lsx
+	lsx-comp lr $< $@
 
 
 ###############################################################################
