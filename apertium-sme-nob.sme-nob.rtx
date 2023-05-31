@@ -1,3 +1,7 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! ATTRIBUTE CATEGORIES !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 number = sg pl ;
 gender = f m nt un mf ;
 definite = (DD ind) def ind DD ;
@@ -5,9 +9,19 @@ comp = pst comp sup ;
 sint = sint ;
 prn_type = pers refl ;
 person = p1 p2 p3 ;
-case = nom acc ;
+case = nom acc gen ill loc ess ;
 transitivity = tv iv ;
 tense = pres pret ;
+
+
+!!!!!!!!!!!!!!!!!!!!!!!
+!! TAG-REWRITE RULES !!
+!!!!!!!!!!!!!!!!!!!!!!!
+
+
+!!!!!!!!!!!!!!!!!!!!!
+!! OUTPUT PATTERNS !!
+!!!!!!!!!!!!!!!!!!!!!
 
 ! ^Mun<prn><pers><p1><sg><nom><@SUBJ→>/Jeg<prn><pers><p1><mf><sg><nom><@SUBJ→>$
 ! ^oaidnit<vblex><tv><indic><pres><p1><sg><@+FMAINV>/se<vblex><pers-pro><pres><p1><sg><@+FMAINV>$
@@ -31,6 +45,7 @@ PP: _ ;
 VP: _ ;
 S: _ ;
 
+
 ! Mun oainnán girjji -> Jeg ser *ei* bok
 ! Mun oainnán stuorra girjjiid rukses viesu duohken.
 ! -> Jeg ser store bøker bak *det* røde huset.
@@ -40,6 +55,13 @@ maybe_det: (if (1.definite = def and 1.number = sg and 1.has_adj = yes)
                [ den@det.dem.[1.gender].sg _ ]
             elif (1.definite = ind and 1.number = sg)
                [ en@det.qnt.[1.gender].sg _ ]) ;
+
+
+
+!!!!!!!!!!!!!!!!!!!!!
+!! REDUCTION RULES !!
+!!!!!!!!!!!!!!!!!!!!!
+
 
 NP -> n [$definite=ind]
       {
@@ -54,5 +76,6 @@ NP -> n [$definite=ind]
       prn.pers [$definite=def] { 1 } ;
 
 PP -> NP post { 2 _ 1[definite=def] } ;
-VP -> vblex.tv NP { 1 _ 2[definite=ind] } ;
+!VP -> vblex.tv NP { 1 _ 2[definite=ind] } ; ! Trond
+VP -> vblex NP { 1 _ 2[definite=ind] } ;
 S -> NP VP { 1 _ 2 } ;
