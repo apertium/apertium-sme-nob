@@ -12,6 +12,7 @@ person = p1 p2 p3 ;
 case = nom acc gen ill loc ess ;
 transitivity = tv iv ;
 tense = pres pret ;
+npclass = ant org al top geo;
 
 
 !!!!!!!!!!!!!!!!!!!!!!!
@@ -30,26 +31,34 @@ tense = pres pret ;
 ! ^.<sent>/.<sent><clb>$
 
 n: _.gender.number.definite;
+np: _.npclass.gender;
 adj_plain: _.sint.comp.gender.number.definite;
 adj: (always
        1(adj_plain)[gender=(if (1.definite = def or 1.number = pl) un
                             elif (1.gender = f or 1.gender = m) mf
                             else 1.gender),
                     number=(if (1.definite = def) sp else 1.number)]);
+adv: _;
 prn: _.prn_type.person.gender.number.case ;
 vblex: _.tense ;
 post: _ ;
+cnjcoo: _;
+cnjsub: _;
 
 NP: _.definite ;
 PP: _ ;
+PROPN: _.npclass.gender;
 VP: _ ;
+ADV: _;
 S: _ ;
+C: _; ! cnjcoo
 
 
 ! Mun oainnán girjji -> Jeg ser *ei* bok
 ! Mun oainnán stuorra girjjiid rukses viesu duohken.
 ! -> Jeg ser store bøker bak *det* røde huset.
 has_adj = yes no ;
+
 ! <def-attr n="has_adj"><attr-item n="yes"/><attr-item n="no"/></def-attr>
 maybe_det: (if (1.definite = def and 1.number = sg and 1.has_adj = yes)
                [ den@det.dem.[1.gender].sg _ ]
@@ -62,6 +71,7 @@ maybe_det: (if (1.definite = def and 1.number = sg and 1.has_adj = yes)
 !! REDUCTION RULES !!
 !!!!!!!!!!!!!!!!!!!!!
 
+ADV -> adv {1};
 
 NP -> n [$definite=ind]
       {
@@ -79,3 +89,7 @@ PP -> NP post { 2 _ 1[definite=def] } ;
 !VP -> vblex.tv NP { 1 _ 2[definite=ind] } ; ! Trond
 VP -> vblex NP { 1 _ 2[definite=ind] } ;
 S -> NP VP { 1 _ 2 } ;
+
+PROPN -> %np.* {%1} ; ! remove number and case
+C -> cnjcoo {1} |
+     cnjsub {1} ;
