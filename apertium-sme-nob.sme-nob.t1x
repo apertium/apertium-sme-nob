@@ -182,6 +182,10 @@ And then there are some categories like "month", with all the months.
 
     <def-cat n="num_mod">
 <!--      <cat-item tags="num.*.@HNOUN"/>  this one is often sem_year -->
+      <cat-item lemma="galle" tags="prn.*.@→N"/>
+      <cat-item lemma="máŋga" tags="prn.*.@→N"/>
+      <cat-item lemma="galle" tags="prn.*.@→A"/>
+      <cat-item lemma="máŋga" tags="prn.*.@→A"/>
       <cat-item tags="num.sg.*.@→N"/>
       <cat-item tags="num.sg.*.@→A"/>
       <cat-item tags="num.sg.*.@←SPRED"/>
@@ -1141,6 +1145,9 @@ And then there are some categories like "month", with all the months.
     </def-attr>
     <def-attr n="a_ger">
       <attr-item tags="ger"/>
+    </def-attr>
+    <def-attr n="a_vgen">
+      <attr-item tags="vgen"/>
     </def-attr>
     <def-attr n="a_der_st">
       <attr-item tags="der_st"/>
@@ -6258,9 +6265,10 @@ And then there are some categories like "month", with all the months.
       <call-macro n="reset_caseFirstWord"></call-macro>
 
       <choose><when c="Append 'seg' if reflexive:">
-        <test>
+        <test><and>
           <equal><clip pos="1" side="tl" part="a_rel"/><lit-tag v="ref"/></equal>
-        </test>
+          <equal><clip pos="1" side="sl" part="a_vgen"/><lit v=""/></equal>
+        </and></test>
         <let><var n="prn_pers"/><clip pos="1" side="tl" part="pers"/></let>
         <let><var n="prn_gen"/><lit-tag v="mf"/></let>
         <let><var n="prn_nbr"/><clip pos="1" side="tl" part="nbr"/></let>
