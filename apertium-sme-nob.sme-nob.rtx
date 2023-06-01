@@ -59,6 +59,7 @@ PP: _ ;
 PROPN: _.npclass.gender;
 VP: _ ;
 ADV: _;
+AP: _;
 S: _ ;
 C: _; ! cnjcoo
 PR: _; ! pr
@@ -84,12 +85,14 @@ maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
 
 ADV -> adv {1};
 
-noun_på = "gårdsplass" "bord" "beavdi" ;
-noun_i = "hus" "by" "viessu" ;
+AP -> %adj {%1};
+
+noun_på = "gårdsplass" "bord" ; ! The list must contain nob (tl)
+noun_i = "hus" "by" "rom" ;
 
 PP ->   NP post { 2 _ 1[defnes=def] }
-      | pr NP { 1 _ 2 }
-      | "gávpogis → i byen"     [noun_i]@NP.*.loc {   i@pr _ %1[defnes=def] }
+      | pr NP { 1 _ 2[defnes=def] } 
+      | "gávpogis → i byen"     [noun_i]@NP.*.loc {   i@pr _ %1[defnes=def] } 
       | "beavddis → på bordet" [noun_på]@NP.*.loc {  på@pr _ %1[defnes=def] }
       | "stálus → for stalloen"          NP.*.loc { for@pr _ %1[defnes=def] }
       | NP.*.ill {til@pr _ 1[defnes=def]}
@@ -111,13 +114,15 @@ NP -> %n
 
 
 VP -> %vblex { %1 }
+    | vblex NP { 1 _ 2[defnes=ind] }
+    | 1: %leat@vblex adj {%1 _ 2[gender=nt]}
     ;
 
 ! !VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
-! VP -> vblex NP { 1 _ 2[defnes=ind] } ;
 ! S -> NP VP { 1 _ 2 } ;
 
-! PROPN -> %np.* {%1} ; ! remove number and case
-! C -> cnjcoo {1} |
-!      cnjsub {1} ;
+PROPN -> %np.* {%1} ; ! remove number and case 
+C -> cnjcoo {1} 
+   | cnjsub {1}
+   ;
 ! PR -> pr {1} ;
