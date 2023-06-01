@@ -42,6 +42,7 @@ adv: _;
 prn: _.prn_type.person.gender.number.case ;
 vblex: _.tense ;
 post: _ ;
+pr: _;
 cnjcoo: _;
 cnjsub: _;
 
@@ -52,7 +53,7 @@ VP: _ ;
 ADV: _;
 S: _ ;
 C: _; ! cnjcoo
-
+PR: _; ! pr
 
 ! Mun oainnán girjji -> Jeg ser *ei* bok
 ! Mun oainnán stuorra girjjiid rukses viesu duohken.
@@ -73,19 +74,38 @@ maybe_det: (if (1.definite = def and 1.number = sg and 1.has_adj = yes)
 
 ADV -> adv {1};
 
-NP -> n [$definite=ind]
+nounclass = noun_på noun_i ;
+noun_på = "gårdsplass" "bord" "beavdi" ;
+noun_i = "hus" "by" "viessu" ;
+
+PP -> NP post { 2 _ 1[definite=def] }
+      | pr NP {1 _ 2 }
+      | NP [$case=loc] {(if (1.nounclass=noun_i) i@pr
+      el-if
+       (1.nounclass=noun_på) på@pr
+      else
+	for@pr
+	)
+         _ 1[definite=def]}
+!      | NP [$case=loc] {i@pr _ 1[definite=def]}
+!      | NP [$case=loc] {[$lem=(if (1.lem in_cl noun_på) på@pr else i@pr)] _ 1[definite=def]}
+      | NP [$case=ill] {til@pr _ 1[definite=def]}
+      ;
+
+NP -> %n [$definite=ind]
       {
         1(maybe_det)[definite=$definite,has_adj=no]
         %1
       } |
-      adj n [$definite=ind]
+      adj %n [$definite=ind]
       {
         2(maybe_det)[definite=$definite,has_adj=yes]
         1[number=2.number,gender=2.gender,definite=$definite] _ %2
       } |
       prn.pers [$definite=def] { 1 } ;
 
-PP -> NP post { 2 _ 1[definite=def] } ;
+
+
 !VP -> vblex.tv NP { 1 _ 2[definite=ind] } ; ! Trond
 VP -> vblex NP { 1 _ 2[definite=ind] } ;
 S -> NP VP { 1 _ 2 } ;
@@ -93,3 +113,4 @@ S -> NP VP { 1 _ 2 } ;
 PROPN -> %np.* {%1} ; ! remove number and case
 C -> cnjcoo {1} |
      cnjsub {1} ;
+PR -> pr {1} ;
