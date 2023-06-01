@@ -1,10 +1,15 @@
+! sme-nob.rtx
+
+! Pick genders etc. from tl (and if not, from anaphoric referent), but don't fall back to sl:
+SIDE_SOURCES = tl ref ;
+
 !!!!!!!!!!!!!!!!!!!!!!!!!!
 !! ATTRIBUTE CATEGORIES !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!
 
 number = sg pl ;
 gender = f m nt un mf ;
-definite = (DD ind) def ind DD ;
+defnes = (DD ind) def ind DD ;
 comp = pst comp sup ;
 sint = sint ;
 prn_type = pers refl ;
@@ -14,6 +19,8 @@ transitivity = tv iv ;
 tense = pres pret ;
 npclass = ant org al top geo;
 
+a_cmp = cmp cmp-split ;
+a_split = cmp-split ;
 
 !!!!!!!!!!!!!!!!!!!!!!!
 !! TAG-REWRITE RULES !!
@@ -30,14 +37,14 @@ npclass = ant org al top geo;
 ! ^girji<n><sem_txt><pl><nom><@←SUBJ>/bok<n><f><maydetind><sem_txt><pl><nom><@←SUBJ>$
 ! ^.<sent>/.<sent><clb>$
 
-n: _.gender.number.definite;
+n: _.gender.number.defnes;
 np: _.npclass.gender;
-adj_plain: _.sint.comp.gender.number.definite;
+adj_plain: _.sint.comp.gender.number.defnes;
 adj: (always
-       1(adj_plain)[gender=(if (1.definite = def or 1.number = pl) un
+       1(adj_plain)[gender=(if (1.defnes = def or 1.number = pl) un
                             elif (1.gender = f or 1.gender = m) mf
                             else 1.gender),
-                    number=(if (1.definite = def) sp else 1.number)]);
+                    number=(if (1.defnes = def) sp else 1.number)]);
 adv: _;
 prn: _.prn_type.person.gender.number.case ;
 vblex: _.tense ;
@@ -46,7 +53,8 @@ pr: _;
 cnjcoo: _;
 cnjsub: _;
 
-NP: _.definite ;
+NP:    _.gender.number.case.defnes.a_split;
+DP:    _.gender.number.case.defnes.a_split;
 PP: _ ;
 PROPN: _.npclass.gender;
 VP: _ ;
@@ -61,10 +69,12 @@ PR: _; ! pr
 has_adj = yes no ;
 
 ! <def-attr n="has_adj"><attr-item n="yes"/><attr-item n="no"/></def-attr>
-maybe_det: (if (1.definite = def and 1.number = sg and 1.has_adj = yes)
+maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
                [ den@det.dem.[1.gender].sg _ ]
-            elif (1.definite = ind and 1.number = sg)
-               [ en@det.qnt.[1.gender].sg _ ]) ;
+            elif (1.defnes = ind and 1.number = sg)
+               [ en@det.qnt.[1.gender].sg _ ]
+            else []
+            ) ;
 
 
 
@@ -74,43 +84,40 @@ maybe_det: (if (1.definite = def and 1.number = sg and 1.has_adj = yes)
 
 ADV -> adv {1};
 
-nounclass = noun_på noun_i ;
 noun_på = "gårdsplass" "bord" "beavdi" ;
 noun_i = "hus" "by" "viessu" ;
 
-PP -> NP post { 2 _ 1[definite=def] }
-      | pr NP {1 _ 2 }
-      | NP [$case=loc] {(if (1.nounclass=noun_i) i@pr
-      el-if
-       (1.nounclass=noun_på) på@pr
-      else
-	for@pr
-	)
-         _ 1[definite=def]}
-!      | NP [$case=loc] {i@pr _ 1[definite=def]}
-!      | NP [$case=loc] {[$lem=(if (1.lem in_cl noun_på) på@pr else i@pr)] _ 1[definite=def]}
-      | NP [$case=ill] {til@pr _ 1[definite=def]}
+PP ->   NP post { 2 _ 1[defnes=def] }
+      | pr NP { 1 _ 2 }
+      | "gávpogis → i byen"     [noun_i]@NP.*.loc {   i@pr _ %1[defnes=def] }
+      | "beavddis → på bordet" [noun_på]@NP.*.loc {  på@pr _ %1[defnes=def] }
+      | "stálus → for stalloen"          NP.*.loc { for@pr _ %1[defnes=def] }
+      | NP.*.ill {til@pr _ 1[defnes=def]}
       ;
 
-NP -> %n [$definite=ind]
+NP -> %n
       {
-        1(maybe_det)[definite=$definite,has_adj=no]
+        1(maybe_det)[defnes=$defnes,has_adj=no]
         %1
-      } |
-      adj %n [$definite=ind]
+      }
+    |
+      adj %n [$defnes=ind]
       {
-        2(maybe_det)[definite=$definite,has_adj=yes]
-        1[number=2.number,gender=2.gender,definite=$definite] _ %2
-      } |
-      prn.pers [$definite=def] { 1 } ;
+        2(maybe_det)[defnes=$defnes,has_adj=yes]
+        1[number=2.number,gender=2.gender,defnes=$defnes] _ %2
+      }
+    | %prn.pers [$defnes=def] { %1 }
+    ;
 
 
+VP -> %vblex { %1 }
+    ;
 
-!VP -> vblex.tv NP { 1 _ 2[definite=ind] } ; ! Trond
-VP -> vblex NP { 1 _ 2[definite=ind] } ;
-S -> NP VP { 1 _ 2 } ;
+! !VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
+! VP -> vblex NP { 1 _ 2[defnes=ind] } ;
+! S -> NP VP { 1 _ 2 } ;
 
-PROPN -> %np.* {%1} ; ! remove number and case
-C -> cnjcoo {1} |
-     cnjsub {1} ;
-PR -> pr {1} ;
+! PROPN -> %np.* {%1} ; ! remove number and case
+! C -> cnjcoo {1} |
+!      cnjsub {1} ;
+! PR -> pr {1} ;
