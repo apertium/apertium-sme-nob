@@ -1,0 +1,71 @@
+#!/bin/bash
+
+if ! command -V entr >/dev/null;   then echo "Please install entr" >&2;   exit 1; fi
+if ! command -V dwdiff >/dev/null; then echo "Please install dwdiff" >&2; exit 1; fi
+
+if [[ $# -lt 1 ]]; then
+    echo "Please supply main mode (e.g. sme-nob_rtx) as arg1" >&2
+    echo "(optionally gold/reference file as arg2)" >&2
+    exit 1
+fi
+
+export mode=$1
+input=$(cat)
+export input
+if [[ $# -ge 2 ]]; then
+    ref=$(cat "$2")
+    export ref
+fi
+
+colour () {
+    gawk '
+    BEGIN {
+        unknown="\033[0;1m"
+        mainpos="\033[1;32m"
+        tag="\033[0;32m"
+        bifail="\033[0;33m"
+        symbol="\033[0;37m"
+        genfail="\033[0;41m"
+        inline="\033[1;34m"
+        super="\033[30m\033[48;5;183m"
+        synlabel="\033[38;2;184;134;11m"
+        errtag="\033[38;2;230;24;91m"
+        none="\033[00m"
+    }
+    {
+        # This one has to run first, otherwise it matches the "[" of colour codes:
+        $0 = gensub(/(\[[^{].*\])/, super"\\1"none, "g")
+        $0 = gensub(/(\[\{[^}]*\}\])/, super inline"\\1"none, "g")
+        $0 = gensub(/#([0-9>-]+)/, "#"tag"\\1"none, "g")
+        $0 = gensub(/#([^ <]+)/, genfail"#\\1"none, "g")
+        $0 = gensub(/(^| )@([^ <]+)/, "\\1"bifail"@\\2"none, "g")
+        $0 = gensub(/[*]([^ <]+)/, unknown"*\\1"none, "g")
+        $0 = gensub(/([^>])<([^>]+)>/, "\\1<"mainpos"\\2"none">", "g")
+        $0 = gensub(/><(@[^>]+)/, "><"synlabel"\\1"none, "g")
+        $0 = gensub(/><([^>]+)/, "><"tag"\\1"none, "g")
+        $0 = gensub(/[<>^$\/]/, symbol"\\0"none, "g")
+        $0 = gensub(/&([^ <]+)/, errtag"\\&\\1"none, "g")
+        print
+    }'
+}
+export -f colour
+
+trans () {
+    tee >(apertium -d . "${mode}-transfer" 2>&1 | colour >&2) <<<"${input}" \
+        | tee >(apertium -d . "${mode}-transfer-tree" | colour >&2)         \
+        | apertium -d . "${mode}"                                           \
+        | tee >(colour >&2)                                                 \
+        |                                                                   \
+        if [[ -n ${ref} ]]; then
+            diff -sU1 - <(echo "$ref") | dwdiff -uc
+        else
+            cat
+        fi
+    echo
+    echo
+}
+export -f trans
+
+sed 's/rtx-proc -r/rtx-proc -T/' modes/"${mode}"-transfer.mode > modes/"${mode}"-transfer-tree.mode
+
+find ../apertium-*/*rlx . -type f -maxdepth 1 | entr -cs "make -s -j r && trans"
