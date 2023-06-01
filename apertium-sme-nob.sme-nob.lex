@@ -1370,6 +1370,8 @@ SELECT ("heve"i) (0 ("<geavvat>"i)) (*0 sem_food LINK 0 SUBJ) ;
 SELECT:fallback ("hende"i) (0 ("<geavvat>"i)) ;
 # Mii sáhttá leat geavvan?
 
+SELECT ("slik"i) (0 ("<nu>"i)) (1 ("<mo>"i) OR ("<movt>"i)) ;
+SELECT:fallback ("så"i) (0 ("<nu>"i)) ;
 
 
 SELECT ("igangsette"i) (0 ("<álggahit>"i)) ;

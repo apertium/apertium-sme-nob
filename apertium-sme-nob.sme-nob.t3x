@@ -2419,6 +2419,23 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
         </out>
       </action>
     </rule>
+    <rule comment="REGLA: FV lADVLhab - out: 1 2 
+                   -----
+                   Override prodrop rule (below) if we might have a subject to the right">
+      <pattern>
+        <pattern-item n="FV"/>
+        <pattern-item n="lADVLhab"/>
+      </pattern>
+      <action>
+        <call-macro n="set_adv"><with-param pos="1"/></call-macro>
+        <out>
+          <chunk><clip pos="1" part="whole"/></chunk>
+          <b pos="1"/>
+          <chunk><clip pos="2" part="whole"/></chunk>
+          <var n="adv-blank"/><var n="adv"/>
+        </out>
+      </action>
+    </rule>
 
 
 <!--    <rule comment="REGLA: FV ADVLrsent lSUBJ - out: pro 1 2 3 OBS " c="Eai nu ollugat loga bábiráviissaid = Ikke så mange leser papiraviser">
@@ -2994,8 +3011,8 @@ TODO: gender_non-pro_concord macro to make sure we get alt.nt from 'blod' in 'Bu
           <b pos="1"/>
           <chunk><clip pos="2" part="whole"/></chunk>
           <var n="adv-blank"/><var n="adv"/>
-          <b pos="2"/>
-          <var n="pro"/><var n="pro-blank"/>
+           <b pos="2"/>
+<!--           <var n="pro"/><var n="pro-blank"/> -->
           <chunk><clip pos="3" part="whole"/></chunk>
         </out>
       </action>
