@@ -15,15 +15,17 @@ TARGETS_COMMON =				\
 	$(PREFIX1).mor.rlx.bin			\
 	$(PREFIX1).syn.rlx.bin			\
 	$(PREFIX1).lex.bin			\
-	$(PREFIX1).autobil.bin		\
-	$(PREFIX1).autogen.bin		\
+	$(PREFIX1).autobil.bin			\
+	$(PREFIX1).autogen.bin			\
 	$(PREFIX1).t1x.bin			\
 	$(PREFIX1).t2x.bin			\
 	$(PREFIX1).t3x.bin			\
 	$(PREFIX1).t4x.bin			\
 	$(PREFIX1).rtx.bin			\
 	$(PREFIX2).automorf-untrimmed.bin       \
-        $(LANG2).autoseq.bin
+	$(PREFIX1).autoseq.bin			\
+	$(PREFIX1).autoseq.bin			\
+	$(LANG2).autoseq.bin
 
 # last one is technically nob→sme, but handy for debugging
 
@@ -47,6 +49,14 @@ debug: \
 	$(BASENAME).$(PREFIX1).syn.rlx \
 	$(BASENAME).$(PREFIX2).rlx     \
 	$(PREFIX1).val.bin
+
+# Fast build – nearly everything but dictionaries:
+r: modes/$(PREFIX1).mode  \
+   $(PREFIX1).t1x.bin $(PREFIX1).t2x.bin $(PREFIX1).t3x.bin $(PREFIX1).t4x.bin \
+   $(PREFIX1).lex.bin \
+   $(PREFIX1).autoseq.bin \
+   $(LANG2).autoseq.bin \
+   $(PREFIX1).rtx.bin
 
 # debug/devel/temporary stuff:
 nouns-nob-sme: nob-sme dev/nouns-nob-sme/$(PREFIX2).t1x.bin dev/nouns-nob-sme/$(PREFIX2).rlx.bin modes/nouns-nob-sme.mode
