@@ -1191,8 +1191,10 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
           </choose>
           <choose>
             <when>
-              <test><or>
+              <test><or><and>
                 <begins-with><clip pos="2" part="a_nom"/><lit-tag v="np"/></begins-with>
+                <not><equal><clip pos="2" part="art"/><lit-tag v="def"/></equal></not>
+                </and>
                 <equal><clip pos="2" part="a_nom"/><lit-tag v="n.acr"/></equal>
               </or></test>
               <let><clip pos="2" part="art"/><lit v=""/></let>
