@@ -24,7 +24,6 @@ TARGETS_COMMON =				\
 	$(PREFIX1).rtx.bin			\
 	$(PREFIX2).automorf-untrimmed.bin       \
 	$(PREFIX1).autoseq.bin			\
-	$(PREFIX1).autoseq.bin			\
 	$(LANG2).autoseq.bin
 
 # last one is technically nob→sme, but handy for debugging
