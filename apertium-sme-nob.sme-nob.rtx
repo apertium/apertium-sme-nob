@@ -94,6 +94,7 @@ AP -> %adj {%1};
 loc_i = "hus" "by" "rom" ;
 loc_fra = "ønske" ;
 loc_om = "kveld" "dag" ;
+loc_som = "verdi" ;
 loc_ved = "makt" ;
 loc_etter = "oppfatning" "mening" "syn" ;
 acc_om_verb = "be" ; ! i VP-regelen?
@@ -103,6 +104,7 @@ PP ->   NP post { 2 _ 1[defnes=def] }
       | "loc i" 2:    [loc_i]@NP.*.loc {   i@pr _ %1[defnes=def] } 
       | "loc etter"     [loc_etter]@NP.*.loc { etter@pr _ %1[defnes=def] } 
       | "loc om"     [loc_om]@NP.*.loc { om@pr _ %1[defnes=def] } 
+      | "loc som"   [loc_som]@NP.*.loc { som@pr _ %1[defnes=ind] } 
       | "loc på"         NP.*.loc {  på@pr _ %1[defnes=def] }
       | "ill i"                       NP.*.[semtxt].*.ill {  i@pr _ %1[defnes=def] }
       | "ill til"                     NP.*.ill {til@pr _ 1[defnes=def]}
