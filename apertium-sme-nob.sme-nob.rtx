@@ -22,6 +22,7 @@ transitivity = tv iv ;
 tense = pres pret ;
 npclass = ant org al top geo;
 
+a_det = qnt emph dem itg pos ;
 a_cmp = cmp cmp-split ;
 a_split = cmp-split ;
 
@@ -49,6 +50,7 @@ adj: (always
                             else 1.gender),
                     number=(if (1.defnes = def) sp else 1.number)]);
 adv: _;
+det: _.a_det.gender.number ;
 prn: _.prn_type.person.gender.number.case ;
 vblex: _.tense ;
 post: _ ;
@@ -86,27 +88,42 @@ maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
 !! REDUCTION RULES !!
 !!!!!!!!!!!!!!!!!!!!!
 
+det -> %det.* {1};
+
 ADV -> adv {1};
-
 AP -> %adj {%1};
+PROPN -> %np.* {%1} ; ! remove number and case 
 
 
-loc_i = "hus" "by" "rom" ;
+! PR -> pr {1} ;
+
+ess_i = "tillegg" "skumring" "regn" "tåke" ;
+ess_på = "besøk" ;
+ess_til = "aske" "grunn" "nytte" ;
+
+ill_i = "arrest" "bruk" "del" "do" "fengsel" "forord" "gang" "tale" ;
+ill_på = "ferie" "golv" "måte" "plass" "utveksling" ;
+
+loc_av = "rein" "slekt" ;
+loc_etter = "oppfatning" "mening" "syn" ;
 loc_fra = "ønske" ;
-loc_om = "kveld" "dag" ;
+loc_i = "Guovdageainnu suohkan" "NSR" "Nilut Cup" "Nord-Norge" "Norge" "USA" "administrasjon" "akkusativ" "alder" "alkoholrus" "allmenning" "analyse" "april" "arbeid" "arrest" "august" "avgrensning" "avsnitt" "avtale" "balanse" "barnehage" "barnehagetilbud" "barnevern" "bedrift" "befolkning" "begrep" "begynnelse" "besittelse" "biltrafikk" "bilulykke" "blod" "bok" "brann" "brev" "bruk" "bryting" "budsjett" "by" "bygd" "debatt" "departement" "desember" "dialog" "distrikt" "divisjon" "dokument" "dråpe" "eksempel" "enkeltsak" "erklæring" "essiv" "etableringsfase" "ettertid" "fag" "fagkrets" "faksimile" "fattigdom" "februar" "fellesskap" "fengsel" "film" "finale" "fiske" "fjord" "fjøs" "flaske" "flerspråklighet" "flertall" "flokk" "fond" "forbindelse" "form" "forord" "forskning" "forskrift" "forslag" "forvaltning" "forvaltningslov" "forvaltningsområde" "fosterhjem" "framtid" "frykt" "fylke" "fylkeskommune" "førskolealder" "første omgang" "gamme" "gang" "genitiv" "gjennomføring" "grunnform" "grunnskole" "grunnskolealder" "gruppe" "hage" "handlingsplan" "helsetjeneste" "hemmelighet" "historie" "hovedsak" "hjerte" "hus" "husstand" "hverdag" "idiolekt" "idrett" "illativ" "innstilling" "jakt" "januar" "jordbruk" "jordbruksarbeid" "juli" "juni" "kamp" "kapittel" "kirke" "klasse" "klasserom" "komité" "komítativ" "kommune" "kommunikasjon" "konvensjon" "kondisjonalis" "konjunktiv" "korpus" "kraft" "krav" "krets" "kristendom" "krukke" "kulde" "kultur" "kulturantropologi" "kulturminnelov" "kunst" "land" "landbruk" "lavvo" "ledelse" "ledelse" "lesing" "liv" "live" "lokalmiljø" "lokalsamfunn" "lokativ" "lov" "lovverk" "lys" "læreplan" "læreplanverk" "lærerutdanning" "mai" "maktposisjon" "mandat" "manntall" "mars" "matematikk" "medisin" "melding" "mellomrom" "meningsmåling" "mindretall" "mobiltelefon" "motvind" "mørke" "natur" "naturfag" "naust" "navn" "nominasjon" "nominativ" "nord" "nordområde" "november" "næring" "nærmiljø" "offentlighet" "oktober" "område" "omsorgsbolig" "oppfølging" "opplæring" "organisasjon" "paragraf" "partitiv" "pedagogikk" "periode" "perspektiv" "plan" "planarbeid" "plenum" "posisjon" "potesialis" "praksis" "presens" "preteritum" "prinsipp" "produksjon" "program" "proposisjon" "prosent" "prosess" "prosjekt" "prosjektperiode" "prosjektstønad" "protokoll" "rapport" "regjering" "region" "reindrift" "reindriftslov" "relasjon" "retningslinje" "rom" "rovdyrsak" "rus" "rør" "røving" "råd" "sak" "samarbeid" "samarbeidsavtale" "samband" "samelov" "sametingsråd" "samfunn" "samfunnsplanlegging" "samhandling" "samisk språk" "sammenheng" "samtale" "sending" "seng" "sentrum" "september" "serie" "seriefotball" "siida" "sjanger" "skap" "skimesterskap" "skirenn" "skriveopplæring" "skolealder" "skoleverk" "skuff" "speil" "spesialpedagogikk" "spill" "sak" "stat" "statsbudsjett" "statsråd" "stilling" "stillingskode" "storsamfunn" "stortingsmelding" "strid" "studie" "studium" "styre" "stue" "sum" "system" "søknad" "sør" "tabell" "tekst" "telefon" "teori" "tet" "tillegg" "tidsrom" "torvgamme" "trafikk" "trygghet" "tvil" "ulykke" "undervisning" "urfolkssak" "utdanning" "utdanning" "utdanningssak" "utgangspunkt" "utkast" "utmark" "utland" "utredning" "utvalg" "utvikling" "valgprogram" "valgår" "vask" "vedtak" "vegkant" "verden" "vest" "vidde" "vielse" "virkeområde" "vind" "virkelighet" "virksomhet" "votering" "år" "årsmelding" ;
+loc_om = "kveld" "dag" "morgen" "minne" "natt" "tema" ;
+loc_på = "Andøya" "Bygdøy" "Cuba" "Fagseminar for samisk statistikk" "Filippinene" "Gjøvik" "Grønland" "Hamar" "Hidra" "Hispaniola" "Hitra" "Hovedøya" "Island" "Kautokeino bygdetun" "Kola" "Komsa" "Kreta" "Kvaløya" "Kvaløysletta" "Lille Komsa" "Lillehammer" "Madagaskar" "Márkomeannu festivála" "Porsangmoen" "Ráisduottarháldi" "Sameskolen" "Samisk høgskole" "Sennalandet" "Sicilia" "Statnett" "Svalbard" "Sørøya" "Twitter" "UiT" "Varangerhalvøya" "Vestlandet" "Haldi" "arbeidsplass" "bachelornivå" "bilde" "bygdetun" "dag" "dato" "deltid" "fakultet" "fest" "festival" "fotballkamp" "fredag" "gårdsplass" "heltid" "hjemmebane" "hjemmeside" "hotell" "høyskole" "kino" "kinokveld" "kjøkken" "kort tid" "kveld" "kyst" "liste" "lørdag" "mandag" "marked" "møte" "nivå" "onsdag" "papir" "parkeringsplass" "plass" "sameskole" "scene" "side" "skole" "slette" "sted" "sykehjem" "sykehus" "søndag" "tall" "tirsdag" "topp" "torsdag" "tun" "universitet" "vegg" "Østlandet" "øy" ;
+loc_per = "person" ;
 loc_som = "verdi" ;
 loc_ved = "makt" ;
-loc_etter = "oppfatning" "mening" "syn" ;
-acc_om_verb = "be" ; ! i VP-regelen?
+
 
 PP ->   NP post { 2 _ 1[defnes=def] }
-      | pr NP { 1 _ 2[defnes=def] } 
-      | "loc i" 2:    [loc_i]@NP.*.loc {   i@pr _ %1[defnes=def] } 
-      | "loc etter"     [loc_etter]@NP.*.loc { etter@pr _ %1[defnes=def] } 
-      | "loc om"     [loc_om]@NP.*.loc { om@pr _ %1[defnes=def] } 
-      | "loc som"   [loc_som]@NP.*.loc { som@pr _ %1[defnes=ind] } 
-      | "loc på"         NP.*.loc {  på@pr _ %1[defnes=def] }
-      | "ill i"                       NP.*.[semtxt].*.ill {  i@pr _ %1[defnes=def] }
+      | pr NP   { 1 _ 2[defnes=def] } 
+      | "loc i" 2:      [loc_i]@NP.*.loc { i@pr _ %1[defnes=def] } 
+      | "loc etter" [loc_etter]@NP.*.loc { etter@pr _ %1[defnes=def] } 
+      | "loc om"       [loc_om]@NP.*.loc { om@pr _ %1[defnes=def] } 
+      | "loc per"     [loc_per]@NP.*.loc { per@pr _ %1[defnes=ind] } 
+      | "loc som"     [loc_som]@NP.*.loc { som@pr _ %1[defnes=ind] } 
+      | "loc på"                NP.*.loc { på@pr _ %1[defnes=def] }
+      | "ill i"                       NP.*.[semtxt].*.ill { i@pr _ %1[defnes=def] }
       | "ill til"                     NP.*.ill {til@pr _ 1[defnes=def]}
       | "ess som"                     NP.*.ess {som@pr _ 1[defnes=def]}
       | "com med"                     NP.*.com {med@pr _ 1[defnes=def]}
@@ -117,17 +134,22 @@ PP ->   NP post { 2 _ 1[defnes=def] }
 !    | NPu C NPu
 !    ;
 ! The NP rule as NPu "under-NP"?
+C -> cnjcoo {1} 
+   | cnjsub {1}
+   ;
 
-NP ->     %n                {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
-    | adj %n [$defnes=ind]  {
-        2(maybe_det)[defnes=$defnes,has_adj=yes]
-        1[number=2.number,gender=2.gender,defnes=$defnes] _ %2
-      }
-    | %prn.pers [$defnes=def] { %1 }
+NP -> 0:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
+    | 2: adj %n [$defnes=ind]  
+         { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2 }
+    | 1: %prn.pers [$defnes=def] { %1 }
+    | 2: det %n [$defnes=ind] { 1 _ 2 }
     ;
 
+
+! Verbs demanding oblique complements
+acc_om_verb = "be" ; ! i VP-regelen?
 ill_i_verb = "ásahit" "bisánit" "bálkestit" "coggat" "investeret" "nahkehit" "oassálastit" "čiekŋudit" "čoahkkanit" "čuollat" "čuolastit" ;
-loc_av_head = "sammendrag" ;
+loc_av_head = "del" "prosent" "sammendrag" ;
 
 VP -> "enkeltverb" %vblex { %1 }
     | 2: %vblex PP { 1 _ 2 }    
@@ -136,7 +158,7 @@ VP -> "enkeltverb" %vblex { %1 }
     | "ill_i etter verb" 2: %[ill_i_verb]@vblex NP.*.ill { 1 _ i@pr _ 2[defnes=def] }
       ! ásahit gávpogii - etablere i byen
     | "V adj" 1: %leat@vblex adj {%1 _ 2[gender=nt]}
-    | "loc_av etter N" %vblex [loc_av_head]@NP NP.*.loc { 1 _ 2 _ av@pr _ 3[defnes=def] } 
+    | "loc_av etter N" 3: %vblex [loc_av_head]@NP NP.*.loc { 1 _ 2 _ av@pr _ 3[defnes=def] } 
       !  Mun čálán čoahkkáigeasu girjjis > Jeg skriver et sammendrag av boka
 !VP? |                            [acc_om]NP.*.acc {om@pr _ 1[defnes=def]}
 !VP? |                            [acc_om]NP.*.acc {om@pr _ 1[semtag=semtxt]}
@@ -145,8 +167,3 @@ VP -> "enkeltverb" %vblex { %1 }
 ! !VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
 ! S -> NP VP { 1 _ 2 } ;
 
-PROPN -> %np.* {%1} ; ! remove number and case 
-C -> cnjcoo {1} 
-   | cnjsub {1}
-   ;
-! PR -> pr {1} ;
