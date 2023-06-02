@@ -35,20 +35,14 @@ a_split = cmp-split ;
 !! OUTPUT PATTERNS !!
 !!!!!!!!!!!!!!!!!!!!!
 
-! ^Mun<prn><pers><p1><sg><nom><@SUBJ→>/Jeg<prn><pers><p1><mf><sg><nom><@SUBJ→>$
-! ^oaidnit<vblex><tv><indic><pres><p1><sg><@+FMAINV>/se<vblex><pers-pro><pres><p1><sg><@+FMAINV>$
-! ^stuoris<adj><attr><@→N>/stor<adj><sint><pst><GD><ND><@→N>$
-! ^girji<n><sem_txt><pl><nom><@←SUBJ>/bok<n><f><maydetind><sem_txt><pl><nom><@←SUBJ>$
-! ^.<sent>/.<sent><clb>$
-
 n: _.gender.number.defnes;
 np: _.npclass.gender;
 adj_plain: _.sint.comp.gender.number.defnes;
 adj: (always
        1(adj_plain)[gender=(if (1.defnes = def or 1.number = pl) un
-                            elif (1.gender = f or 1.gender = m) mf
-                            else 1.gender),
-                    number=(if (1.defnes = def) sp else 1.number)]);
+              elif (1.gender = f or 1.gender = m) mf
+              else 1.gender), 
+              number=(if (1.defnes = def) sp else 1.number)]);
 adv: _;
 det: _.a_det.gender.number ;
 prn: _.prn_type.person.gender.number.case ;
@@ -114,20 +108,22 @@ loc_per = "person" ;
 loc_som = "verdi" ;
 loc_ved = "makt" ;
 
+noun_pseudo_prop = "april" "asyl" "august" "bachelornivå" "bestefar" "bestemor" "deltid" "desember" "doktorgrad" "downs syndrom" "duodji" "far" "februar" "fokus" "fredag" "gang" "giellasiida" "godkjenning" "grad" "gras" "gud" "gymnastikk" "heltid" "hjelp" "januar" "julaften" "juli" "juni" "junior" "kildinsamisk" "kofte" "kunst" "langfredag" "legesjekk" "lulesamisk" "lunsj" "lykke" "lørdag" "mai" "mandag" "mars" "mat" "merverdiavgift" "midnatt" "moms" "mor" "naturfag" "nivå" "nordsamisk" "november" "null" "oktober" "onsdag" "pop" "påskeaften" "raushet" "reinlav" "rektor" "rikdom" "rus" "samisk" "samiskhet" "senior" "sentrum" "september" "skjærtorsdag" "støtte" "søndag" "sørsamisk" "taekwondo" "takk" "tid" "tirsdag" "torsdag" "trygghet" "twitter" "vare"  "velkommen" "verden" "viten"  "yrkesfag" ;
 
-PP ->   NP post { 2 _ 1[defnes=def] }
-      | pr NP   { 1 _ 2[defnes=def] } 
-      | "loc i" 2:      [loc_i]@NP.*.loc { i@pr _ %1[defnes=def] } 
-      | "loc etter" [loc_etter]@NP.*.loc { etter@pr _ %1[defnes=def] } 
-      | "loc om"       [loc_om]@NP.*.loc { om@pr _ %1[defnes=def] } 
-      | "loc per"     [loc_per]@NP.*.loc { per@pr _ %1[defnes=ind] } 
-      | "loc som"     [loc_som]@NP.*.loc { som@pr _ %1[defnes=ind] } 
-      | "loc på"                NP.*.loc { på@pr _ %1[defnes=def] }
-      | "ill i"                       NP.*.[semtxt].*.ill { i@pr _ %1[defnes=def] }
-      | "ill til"                     NP.*.ill {til@pr _ 1[defnes=def]}
-      | "ess som"                     NP.*.ess {som@pr _ 1[defnes=def]}
-      | "com med"                     NP.*.com {med@pr _ 1[defnes=def]}
-      ;
+
+PP -> NP post { 2 _ 1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)] }
+    | pr NP   { 1 _ 2[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)] } 
+    | "loc i" 2:      [loc_i]@NP.*.loc {  i@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc etter" [loc_etter]@NP.*.loc {etter@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc om"       [loc_om]@NP.*.loc { om@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc per"     [loc_per]@NP.*.loc {per@pr _ %1[defnes=ind] } 
+    | "loc som"     [loc_som]@NP.*.loc {som@pr _ %1[defnes=ind] } 
+    | "loc på"        NP.*.loc         { på@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "ill i"      NP.*.[semtxt].*.ill {  i@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "ill til"       NP.*.ill         {til@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "ess som"       NP.*.ess         {som@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "com med"       NP.*.com         {med@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    ;
 
 !Forthcoming fix for coordination, today three phrases NP C NP:
 !NP -> NPu
@@ -138,31 +134,90 @@ C -> cnjcoo {1}
    | cnjsub {1}
    ;
 
+
 NP -> 0:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
     | 2: adj %n [$defnes=ind]  
-         { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2 }
+         { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2}
     | 1: %prn.pers [$defnes=def] { %1 }
     | 2: det %n [$defnes=ind] { 1 _ 2 }
     ;
 
 
 ! Verbs demanding oblique complements
-acc_om_verb = "be" ; ! i VP-regelen?
-ill_i_verb = "ásahit" "bisánit" "bálkestit" "coggat" "investeret" "nahkehit" "oassálastit" "čiekŋudit" "čoahkkanit" "čuollat" "čuolastit" ;
-loc_av_head = "del" "prosent" "sammendrag" ;
 
-VP -> "enkeltverb" %vblex { %1 }
-    | 2: %vblex PP { 1 _ 2 }    
-    | 1: %vblex NP { 1 _ 2[defnes=ind] }
-    | 3: %vblex NP PP { 1 _ 2[defnes=ind] _ 3}    
-    | "ill_i etter verb" 2: %[ill_i_verb]@vblex NP.*.ill { 1 _ i@pr _ 2[defnes=def] }
-      ! ásahit gávpogii - etablere i byen
+acc_om_verb = "be" "drømme" ; ! i VP-regelen?
+
+ill_av_verb = "bealkkáhallat" "borahallat" "bovttáhallat" "cábmohallat" "cápmahallat" "dolkat" "dorohallat" "fillehallat" "gáskkáhallat" "gávnnahallat" "oainnahallat" "oainnahallat" "rissehallat" "vuojáhallat" ;
+ill_for_verb = "leat" "láhčit" "mearkkašit" "čiegadit" ;
+ill_i_verb = "ásahit" "bisánit" "bálkestit" "coggat" "investeret" "nahkehit" "oassálastit" "čiekŋudit" "čoahkkanit" "čuollat" "čuolastit" ;
+ill_med_verb = "duhtat" "oahpásmuvvat" ;
+ill_på_verb = "báhcit" "dorvvastit" "geahččat" "guovlat" "jáhkkit" "luohttit" "reageret" "searvat" "suhttat" "čoalkalit" "čáhkadit" ;
+
+loc_for_verb = "nohkkot" "váruhit" ;
+loc_fra_verb = "beassat" "boahtit" "earuhit" "fárret"  "gáidat" ;
+loc_om_verb = "beroštit" ;
+loc_som_verb = "beroštit" ;
+
+! Case governed bŧ previous N
+
+gen_av_head = "evaluering" "forfatter" "forskning" "kopi" "leder" "vurdering" ;
+gen_for_head = "basis" "forening" "fundament" "grunnlag" "senter" "sjef" "søknadsfrist" ;
+gen_i_head = "2018" "opplæring" "undervisning" "vårsemester" ;
+gen_om_head = "fortelling" "sang" ;
+gen_på_head = "måte" ;
+gen_som_head = "masterutdanning" ;
+
+ill_for_head = "behov" "forskningsgruppe" "interesse" "plan" "senter" ;
+ill_i_head = "progresjon" ;
+ill_på_head = "dagskvote" "innflytelse" "påvirkning" "sesongkvote" "syn" "tro" ;
+
+loc_av_head = "NUMERAL" "del"  "flertall" "halvpart" "mindretall" "resultat" "sammendrag" ;
+loc_etter_head = "mening" "oppfatning" ;
+loc_for_head = "DATE" "frykt" "glad" "redd" "tema" ;
+loc_fra_head = "ønske" "lykkeønskning" "hilsning" "kondolanse" ;
+loc_i_head = "infeksjon" ;
+loc_om_head = "artikkel" "avtale" "bok" "kontrakt" "snakk" "tale" ;
+
+VP -> "enkeltverb"      %vblex       { %1 }
+    |                2: %vblex PP    { 1 _ 2 }    
+    |                1: %vblex NP    { 1 _ 2[defnes=ind] }
+    |                3: %vblex NP PP { 1 _ 2[defnes=ind] _ 3}    
     | "V adj" 1: %leat@vblex adj {%1 _ 2[gender=nt]}
-    | "loc_av etter N" 3: %vblex [loc_av_head]@NP NP.*.loc { 1 _ 2 _ av@pr _ 3[defnes=def] } 
-      !  Mun čálán čoahkkáigeasu girjjis > Jeg skriver et sammendrag av boka
+! Verbs with oblique complements
+    | "acc_om_verb"  2:  %[acc_om_verb]@vblex NP.*.acc { 1 _  om@pr _ 2[defnes=def] }
+    | "ill_av_verb"  2:  %[ill_av_verb]@vblex NP.*.ill { 1 _  av@pr _ 2[defnes=def] }
+    | "ill_i_verb"   2:   %[ill_i_verb]@vblex NP.*.ill { 1 _   i@pr _ 2[defnes=def] }
+    | "ill_for_verb" 2: %[ill_for_verb]@vblex NP.*.ill { 1 _ for@pr _ 2[defnes=def] }
+    | "ill_med_verb" 2: %[ill_med_verb]@vblex NP.*.ill { 1 _ med@pr _ 2[defnes=def] }
+    | "ill_på_verb"  2:  %[ill_på_verb]@vblex NP.*.ill { 1 _  på@pr _ 2[defnes=def] }
+    | "loc_for_verb" 2: %[loc_for_verb]@vblex NP.*.loc { 1 _ for@pr _ 2[defnes=def] }
+    | "loc_fra_verb" 2: %[loc_fra_verb]@vblex NP.*.loc { 1 _ fra@pr _ 2[defnes=def] }
+    | "loc_om_verb"  2:  %[loc_om_verb]@vblex NP.*.loc { 1 _  om@pr _ 2[defnes=def] }
+    | "loc_som_verb" 2: %[loc_som_verb]@vblex NP.*.loc { 1 _ som@pr _ 2[defnes=def] }
+    
+    | "ill_for_verb" 4: %[ill_for_verb]@vblex AP  NP.*.ill { 1 _ 2 _ for@pr _ 3[defnes=def] } 
+      ! TODO: Jeg betyr for den mye byen.
+      ! NP1.gen NP2 > NP2 av NP1  ! girjji kopiija > en kopi av boka
+    | "gen_av_head"    3: %vblex  NP.*.gen   [gen_av_head]@NP { 1 _ 3 _   av@pr _ 2[defnes=def] } 
+    | "gen_for_head"   3: %vblex  NP.*.gen  [gen_for_head]@NP { 1 _ 3 _  for@pr _ 2[defnes=def] } 
+    | "gen_i_head"     3: %vblex  NP.*.gen    [gen_i_head]@NP { 1 _ 3 _    i@pr _ 2[defnes=def] } 
+    | "gen_om_head"    3: %vblex  NP.*.gen   [gen_om_head]@NP { 1 _ 3 _   om@pr _ 2[defnes=def] } 
+    | "gen_på_head"    3: %vblex  NP.*.gen   [gen_på_head]@NP { 1 _ 3 _   på@pr _ 2[defnes=def] } 
+    | "gen_som_head"   3: %vblex  NP.*.gen  [gen_som_head]@NP { 1 _ 3 _  som@pr _ 2[defnes=def] } 
+      ! NP1 NP2.ill > NP1 for NP2 infekšuvdna gieđas > infeksjon i hånda
+    | "ill_for_head"   3: %vblex   [ill_for_head]@NP NP.*.ill { 1 _ 2 _   for@pr _ 3[defnes=def] } 
+    | "ill_i_head"     3: %vblex     [ill_i_head]@NP NP.*.ill { 1 _ 2 _     i@pr _ 3[defnes=def] } 
+    | "ill_på_head"    3: %vblex    [ill_på_head]@NP NP.*.ill { 1 _ 2 _    på@pr _ 3[defnes=def] } 
+    | "loc_av_head"    3: %vblex    [loc_av_head]@NP NP.*.loc { 1 _ 2 _    av@pr _ 3[defnes=def] } 
+    | "loc_etter_head" 3: %vblex [loc_etter_head]@NP NP.*.loc { 1 _ 2 _ etter@pr _ 3[defnes=def] } 
+    | "loc_for_head"   3: %vblex   [loc_for_head]@NP NP.*.loc { 1 _ 2 _   for@pr _ 3[defnes=def] } 
+    | "loc_fra_head"   3: %vblex   [loc_fra_head]@NP NP.*.loc { 1 _ 2 _   fra@pr _ 3[defnes=def] } 
+    | "loc_i_head"     3: %vblex     [loc_i_head]@NP NP.*.loc { 1 _ 2 _     i@pr _ 3[defnes=def] } 
+    | "loc_om_head"    3: %vblex    [loc_om_head]@NP NP.*.loc { 1 _ 2 _    om@pr _ 3[defnes=def] } 
+!     !  Mun čálán čoahkkáigeasu girjjis > Jeg skriver et sammendrag av boka
 !VP? |                            [acc_om]NP.*.acc {om@pr _ 1[defnes=def]}
 !VP? |                            [acc_om]NP.*.acc {om@pr _ 1[semtag=semtxt]}
-    ;
+   ;
 
 ! !VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
 ! S -> NP VP { 1 _ 2 } ;
