@@ -15,6 +15,9 @@ sint = sint ;
 prn_type = pers refl ;
 person = p1 p2 p3 ;
 case = nom acc gen ill loc ess ;
+semtxt = sem_ani_build_hum_txt sem_ani_plc_txt sem_group_txt sem_mat_txt sem_money_txt sem_org_txt sem_plc_txt sem_prod-audio_txt sem_prod-cogn_txt sem_semcon_txt sem_txt ;
+andretag = sem_hum ;
+semtag = [semtxt] [andretag]  ;
 transitivity = tv iv ;
 tense = pres pret ;
 npclass = ant org al top geo;
@@ -53,7 +56,7 @@ pr: _;
 cnjcoo: _;
 cnjsub: _;
 
-NP:    _.gender.number.case.defnes.a_split;
+NP:    _.semtag.gender.number.case.defnes.a_split; ! NP needs semtag from below.
 DP:    _.gender.number.case.defnes.a_split;
 PP: _ ;
 PROPN: _.npclass.gender;
@@ -87,35 +90,54 @@ ADV -> adv {1};
 
 AP -> %adj {%1};
 
-noun_på = "gårdsplass" "bord" ; ! The list must contain nob (tl)
-noun_i = "hus" "by" "rom" ;
+
+loc_i = "hus" "by" "rom" ;
+loc_fra = "ønske" ;
+loc_om = "kveld" "dag" ;
+loc_ved = "makt" ;
+loc_etter = "oppfatning" "mening" "syn" ;
+acc_om_verb = "be" ; ! i VP-regelen?
 
 PP ->   NP post { 2 _ 1[defnes=def] }
       | pr NP { 1 _ 2[defnes=def] } 
-      | "gávpogis → i byen"     [noun_i]@NP.*.loc {   i@pr _ %1[defnes=def] } 
-      | "beavddis → på bordet" [noun_på]@NP.*.loc {  på@pr _ %1[defnes=def] }
-      | "stálus → for stalloen"          NP.*.loc { for@pr _ %1[defnes=def] }
-      | NP.*.ill {til@pr _ 1[defnes=def]}
+      | "loc i" 2:    [loc_i]@NP.*.loc {   i@pr _ %1[defnes=def] } 
+      | "loc etter"     [loc_etter]@NP.*.loc { etter@pr _ %1[defnes=def] } 
+      | "loc om"     [loc_om]@NP.*.loc { om@pr _ %1[defnes=def] } 
+      | "loc på"         NP.*.loc {  på@pr _ %1[defnes=def] }
+      | "ill i"                       NP.*.[semtxt].*.ill {  i@pr _ %1[defnes=def] }
+      | "ill til"                     NP.*.ill {til@pr _ 1[defnes=def]}
+      | "ess som"                     NP.*.ess {som@pr _ 1[defnes=def]}
+      | "com med"                     NP.*.com {med@pr _ 1[defnes=def]}
       ;
 
-NP -> %n
-      {
-        1(maybe_det)[defnes=$defnes,has_adj=no]
-        %1
-      }
-    |
-      adj %n [$defnes=ind]
-      {
+!Forthcoming fix for coordination, today three phrases NP C NP:
+!NP -> NPu
+!    | NPu C NPu
+!    ;
+! The NP rule as NPu "under-NP"?
+
+NP ->     %n                {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
+    | adj %n [$defnes=ind]  {
         2(maybe_det)[defnes=$defnes,has_adj=yes]
         1[number=2.number,gender=2.gender,defnes=$defnes] _ %2
       }
     | %prn.pers [$defnes=def] { %1 }
     ;
 
+ill_i_verb = "ásahit" "bisánit" "bálkestit" "coggat" "investeret" "nahkehit" "oassálastit" "čiekŋudit" "čoahkkanit" "čuollat" "čuolastit" ;
+loc_av_head = "sammendrag" ;
 
-VP -> %vblex { %1 }
-    | vblex NP { 1 _ 2[defnes=ind] }
-    | 1: %leat@vblex adj {%1 _ 2[gender=nt]}
+VP -> "enkeltverb" %vblex { %1 }
+    | 2: %vblex PP { 1 _ 2 }    
+    | 1: %vblex NP { 1 _ 2[defnes=ind] }
+    | 3: %vblex NP PP { 1 _ 2[defnes=ind] _ 3}    
+    | "ill_i etter verb" 2: %[ill_i_verb]@vblex NP.*.ill { 1 _ i@pr _ 2[defnes=def] }
+      ! ásahit gávpogii - etablere i byen
+    | "V adj" 1: %leat@vblex adj {%1 _ 2[gender=nt]}
+    | "loc_av etter N" %vblex [loc_av_head]@NP NP.*.loc { 1 _ 2 _ av@pr _ 3[defnes=def] } 
+      !  Mun čálán čoahkkáigeasu girjjis > Jeg skriver et sammendrag av boka
+!VP? |                            [acc_om]NP.*.acc {om@pr _ 1[defnes=def]}
+!VP? |                            [acc_om]NP.*.acc {om@pr _ 1[semtag=semtxt]}
     ;
 
 ! !VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
