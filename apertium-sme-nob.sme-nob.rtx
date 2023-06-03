@@ -12,14 +12,17 @@ gender = f m nt un mf ;
 defnes = (DD ind) def ind DD ;
 comp = pst comp sup ;
 sint = sint ;
-prn_type = pers refl ;
+prn_type = pers dem refl ;
 person = p1 p2 p3 ;
 case = nom acc gen ill loc ess ;
 semtxt = sem_ani_build_hum_txt sem_ani_plc_txt sem_group_txt sem_mat_txt sem_money_txt sem_org_txt sem_plc_txt sem_prod-audio_txt sem_prod-cogn_txt sem_semcon_txt sem_txt ;
 andretag = sem_hum ;
 semtag = [semtxt] [andretag]  ;
 transitivity = tv iv ;
-tense = pres pret ;
+tense = pres pret imp ;
+vbinfin = inf prfprc prsprc ;
+infl = [tense] [vbinfin] ;
+!infl = pres pret imp ind prfprc prsprc ;
 npclass = ant org al top geo;
 
 a_det = qnt emph dem itg pos ;
@@ -46,11 +49,12 @@ adj: (always
 adv: _;
 det: _.a_det.gender.number ;
 prn: _.prn_type.person.gender.number.case ;
-vblex: _.tense ;
+vblex: _.infl ;
 post: _ ;
 pr: _;
 cnjcoo: _;
 cnjsub: _;
+part: _;
 
 NP:    _.semtag.gender.number.case.defnes.a_split; ! NP needs semtag from below.
 DP:    _.gender.number.case.defnes.a_split;
@@ -108,7 +112,7 @@ loc_per = "person" ;
 loc_som = "verdi" ;
 loc_ved = "makt" ;
 
-noun_pseudo_prop = "april" "asyl" "august" "bachelornivå" "bestefar" "bestemor" "deltid" "desember" "doktorgrad" "downs syndrom" "duodji" "far" "februar" "fokus" "fredag" "gang" "giellasiida" "godkjenning" "grad" "gras" "gud" "gymnastikk" "heltid" "hjelp" "januar" "julaften" "juli" "juni" "junior" "kildinsamisk" "kofte" "kunst" "langfredag" "legesjekk" "lulesamisk" "lunsj" "lykke" "lørdag" "mai" "mandag" "mars" "mat" "merverdiavgift" "midnatt" "moms" "mor" "naturfag" "nivå" "nordsamisk" "november" "null" "oktober" "onsdag" "pop" "påskeaften" "raushet" "reinlav" "rektor" "rikdom" "rus" "samisk" "samiskhet" "senior" "sentrum" "september" "skjærtorsdag" "støtte" "søndag" "sørsamisk" "taekwondo" "takk" "tid" "tirsdag" "torsdag" "trygghet" "twitter" "vare"  "velkommen" "verden" "viten"  "yrkesfag" ;
+noun_pseudo_prop = "april" "asyl" "august" "bachelornivå" "bestefar" "bestemor" "deltid" "desember" "doktorgrad" "downs syndrom" "duodji" "far" "februar" "fokus" "fredag" "gang" "giellasiida" "godkjenning" "grad" "gras" "gud" "gymnastikk" "heltid" "hjelp" "januar" "julaften" "juli" "juni" "junior" "kildinsamisk" "kofte" "kunst" "langfredag" "legesjekk" "lulesamisk" "lunsj" "lykke" "lørdag" "mai" "mandag" "mars" "mat" "merverdiavgift" "midnatt" "moms" "mor" "naturfag" "nivå" "nordsamisk" "november" "null" "oktober" "onsdag" "pop" "påskeaften" "raushet" "reinlav" "rektor" "rikdom" "rus" "samisk" "samiskhet" "senior" "sentrum" "september" "skjærtorsdag" "støtte" "søndag" "sørsamisk" "taekwondo" "takk" "tid" "tirsdag" "torsdag" "trygghet" "twitter" "vare" "velkommen" "verden" "viten" "yrkesfag" ;
 
 
 PP -> NP post { 2 _ 1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)] }
@@ -139,6 +143,7 @@ NP -> 0:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
     | 2: adj %n [$defnes=ind]  
          { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2}
     | 1: %prn.pers [$defnes=def] { %1 }
+    | 2: %prn.dem { %1 }
     | 2: det %n [$defnes=ind] { 1 _ 2 }
     ;
 
@@ -178,7 +183,13 @@ loc_fra_head = "ønske" "lykkeønskning" "hilsning" "kondolanse" ;
 loc_i_head = "infeksjon" ;
 loc_om_head = "artikkel" "avtale" "bok" "kontrakt" "snakk" "tale" ;
 
-VP -> "enkeltverb"      %vblex       { %1 }
+cond_NIL_verb = "berret" "dáhttut" "dáidit" "fertet" "galgat" "háliidit" "máhttit" "soaitit" "sáhttit" "veadjit" "áigut" ;
+
+VP -> "enkeltverb"      %vblex                    { 1 } 
+    |       "ikke"      %ii@vblex.iv.neg vblex.*.conneg  { 2 _ ikke@adv } 
+    |                3: %[cond_NIL_verb]@vblex VP { 1 _ 2 }    
+    |                2: %vblex VP.*.inf    { 1 _ å@part _ 2 }    
+    |                2: %vblex vblex.*.prfprc    { 1 _ 2 }    
     |                2: %vblex PP    { 1 _ 2 }    
     |                1: %vblex NP    { 1 _ 2[defnes=ind] }
     |                3: %vblex NP PP { 1 _ 2[defnes=ind] _ 3}    
@@ -214,9 +225,9 @@ VP -> "enkeltverb"      %vblex       { %1 }
     | "loc_fra_head"   3: %vblex   [loc_fra_head]@NP NP.*.loc { 1 _ 2 _   fra@pr _ 3[defnes=def] } 
     | "loc_i_head"     3: %vblex     [loc_i_head]@NP NP.*.loc { 1 _ 2 _     i@pr _ 3[defnes=def] } 
     | "loc_om_head"    3: %vblex    [loc_om_head]@NP NP.*.loc { 1 _ 2 _    om@pr _ 3[defnes=def] } 
-!     !  Mun čálán čoahkkáigeasu girjjis > Jeg skriver et sammendrag av boka
-!VP? |                            [acc_om]NP.*.acc {om@pr _ 1[defnes=def]}
-!VP? |                            [acc_om]NP.*.acc {om@pr _ 1[semtag=semtxt]}
+!!     !  Mun čálán čoahkkáigeasu girjjis > Jeg skriver et sammendrag av boka
+!!VP? |                            [acc_om]NP.*.acc {om@pr _ 1[defnes=def]}
+!!VP? |                            [acc_om]NP.*.acc {om@pr _ 1[semtag=semtxt]}
    ;
 
 ! !VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
