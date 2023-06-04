@@ -31,15 +31,11 @@ a_det = qnt emph dem itg pos ;
 a_cmp = cmp cmp-split ;
 a_split = cmp-split ;
 
-! for å endre guhtta+Num til seks+Det+Qnt ?
-pos = n adj vblex adv num det cnjcoo cnjsub ;
 
 !!!!!!!!!!!!!!!!!!!!!!!
 !! TAG-REWRITE RULES !!
 !!!!!!!!!!!!!!!!!!!!!!!
 
-! for å endre guhtta+Num til seks+Det+Qnt ?
-pos > pos : num det ;
 
 !!!!!!!!!!!!!!!!!!!!!
 !! OUTPUT PATTERNS !!
@@ -55,7 +51,6 @@ adj: (always
               number=(if (1.defnes = def) sp else 1.number)]);
 adv: _;
 num: _; ! fungerer ikkje
-det: _.a_det.gender.number ;
 prn: _.prn_type.person.gender.number.case ;
 vblex: _.infl ;
 post: _ ;
@@ -76,12 +71,13 @@ S: _ ;
 C: _; ! cnjcoo
 PR: _; ! pr
 
+det: _.a_det.gender.number ;
+
 ! Mun oainnán girjji -> Jeg ser *ei* bok
 ! Mun oainnán stuorra girjjiid rukses viesu duohken.
 ! -> Jeg ser store bøker bak *det* røde huset.
 has_adj = yes no ;
 
-! <def-attr n="has_adj"><attr-item n="yes"/><attr-item n="no"/></def-attr>
 maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
                [ den@det.dem.[1.gender].sg _ ]
             elif (1.defnes = ind and 1.number = sg)
@@ -90,6 +86,7 @@ maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
                [ en@det.qnt.[1.gender].sg _ ]
             else []
             ) ;
+! <def-attr n="has_adj"><attr-item n="yes"/><attr-item n="no"/></def-attr>
 
 
 
@@ -126,18 +123,18 @@ loc_ved = "makt" ;
 noun_pseudo_prop = "april" "asyl" "august" "bachelornivå" "bestefar" "bestemor" "deltid" "desember" "doktorgrad" "downs syndrom" "duodji" "far" "februar" "fokus" "fredag" "gang" "giellasiida" "godkjenning" "grad" "gras" "gud" "gymnastikk" "heltid" "hjelp" "januar" "julaften" "juli" "juni" "junior" "kildinsamisk" "kofte" "kunst" "langfredag" "legesjekk" "lulesamisk" "lunsj" "lykke" "lørdag" "mai" "mandag" "mars" "mat" "merverdiavgift" "midnatt" "moms" "mor" "naturfag" "nivå" "nordsamisk" "november" "null" "oktober" "onsdag" "pop" "påskeaften" "raushet" "reinlav" "rektor" "rikdom" "rus" "samisk" "samiskhet" "senior" "sentrum" "september" "skjærtorsdag" "støtte" "søndag" "sørsamisk" "taekwondo" "takk" "tid" "tirsdag" "torsdag" "trygghet" "twitter" "vare" "velkommen" "verden" "viten" "yrkesfag" ;
 
 
-PP -> NP post { 2 _ 1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)] }
-    | pr NP   { 1 _ 2[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)] } 
-    | "loc i" 2:      [loc_i]@NP.*.loc {  i@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
-    | "loc etter" [loc_etter]@NP.*.loc {etter@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
-    | "loc om"       [loc_om]@NP.*.loc { om@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
-    | "loc per"     [loc_per]@NP.*.loc {per@pr _ %1[defnes=ind] } 
-    | "loc som"     [loc_som]@NP.*.loc {som@pr _ %1[defnes=ind] } 
-    | "loc på"        NP.*.loc         { på@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
-    | "ill i"      NP.*.[semtxt].*.ill {  i@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
-    | "ill til"       NP.*.ill         {til@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
-    | "ess som"       NP.*.ess         {som@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
-    | "com med"       NP.*.com         {med@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+PP -> NP post      1:                      {2 _ 1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | pr NP        1:                      {1 _ 2[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc i"      5:     [loc_i]@NP.*.loc {  i@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc etter"  5: [loc_etter]@NP.*.loc {etter@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc om"     5:    [loc_om]@NP.*.loc { om@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc per"    5:   [loc_per]@NP.*.loc {per@pr _ %1[defnes=ind]} 
+    | "loc som"    5:   [loc_som]@NP.*.loc {som@pr _ %1[defnes=ind]} 
+    | "loc på"     5:     NP.*.loc         { på@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "ill i"      5:  NP.*.[semtxt].*.ill {  i@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "ill til"    5:     NP.*.ill         {til@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "ess som"    5:     NP.*.ess         {som@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "com med"    5:     NP.*.com         {med@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     ;
 
 !Forthcoming fix for coordination, today three phrases NP C NP:
@@ -145,9 +142,6 @@ PP -> NP post { 2 _ 1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else d
 !    | NPu C NPu
 !    ;
 ! The NP rule as NPu "under-NP"?
-C -> cnjcoo {1} 
-   | cnjsub {1}
-   ;
 
 
 ! Opne spørsmål:
@@ -158,7 +152,7 @@ C -> cnjcoo {1}
 NP -> 0:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
     | 3: %n.*.nom {%1[defnes=ind,has_adj=no]  }
     | 4: adj %n.*.nom {den@det.dem.m.sg _ 1[defnes=def] _ %2[defnes=def,has_adj=no]  }
-    | 3: %n.*.[advlcase] {%1[defnes=def,has_adj=no]  }
+!    | 3: %n.*.[advlcase] {%1[defnes=def,has_adj=no]  }
     | 3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no]  %1 }
     | 2: adj %n [$defnes=ind]  
          { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2}
@@ -168,10 +162,15 @@ NP -> 0:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
     ;
 
 ! Denne fungerer ikkje
-QP ->  "QP qnt"    8: %num.sg {1[a_det=qnt]}
-    |  "QP qnt NP" 9: %num.sg NP.sg.gen { 1[a_det=qnt] _ 2[number=pl, defness=ind]}
+QP ->  "QP qnt"    8: num {%1}
+    |  "QP qnt NP" 9: num NP.sg.gen { %1 _ 2[number=pl, defness=ind]}
     ;
 
+C -> cnjcoo {1} 
+   | cnjsub {1}
+   ;
+
+!NP -> %NP cnjcoo NP {1 _ 2 _ 3 } ;
 
 !! Verb phrase
 
@@ -215,11 +214,12 @@ cond_NIL_verb = "berret" "dáhttut" "dáidit" "fertet" "galgat" "háliidit" "má
 VP -> "enkeltverb"      %vblex                    { 1 } 
     |       "ikke"      %ii@vblex.iv.neg vblex.*.conneg  { 2 _ ikke@adv } 
     |                3: %[cond_NIL_verb]@vblex VP { 1 _ 2 }    
-    |                2: %vblex VP.*.inf    { 1 _ å@part _ 2 }    
-    |                2: %vblex vblex.*.prfprc    { 1 _ 2 }    
-    |                2: %vblex PP    { 1 _ 2 }    
-    |  "V NP.ind"    5: %leat@vblex NP.*.sg    { 1 _ en@det.qnt.m.sg _ 2[defnes=ind] } ! gender fro NP!
-!    |  "V NP.ind"    5: %leat@vblex NP.*.sg    { 1 _ en@det.qnt.[$gender=2.gender].sg _ 2[defnes=ind] } ! gender fro NP!
+    |  "V V inf"     2: %vblex vblex.*.inf    { 1 _ å@part _ 2 }    
+    |  "V NP PP"     2: %vblex vblex.*.prfprc    { 1 _ 2 }    
+    |  "V NP PP"     2: %vblex PP    { 1 _ 2 }    
+    |  "V NP PP"     3: %vblex NP PP { 1 _ 2 _ 3 }    
+    |  "V NP.ind"    5: %leat@vblex NP.*.sg.nom    { 1 _ en@det.qnt.m.sg _ 2[defnes=ind] } ! gender fro NP!
+!   |  "V NP.ind"    5: %leat@vblex NP.*.sg    { 1 _ en@det.qnt.[$gender=2.gender].sg _ 2[defnes=ind] } ! gender fro NP!
     |  "V NP.ind"    4: %vblex NP    { 1 _ 2[defnes=ind] }
     |                3: %vblex NP PP { 1 _ 2[defnes=ind] _ 3}    
     | "V adj" 1: %leat@vblex adj {%1 _ 2[gender=nt]}
@@ -254,7 +254,7 @@ VP -> "enkeltverb"      %vblex                    { 1 }
     | "loc_fra_head"   3: %vblex   [loc_fra_head]@NP NP.*.loc { 1 _ 2 _   fra@pr _ 3[defnes=def] } 
     | "loc_i_head"     3: %vblex     [loc_i_head]@NP NP.*.loc { 1 _ 2 _     i@pr _ 3[defnes=def] } 
     | "loc_om_head"    3: %vblex    [loc_om_head]@NP NP.*.loc { 1 _ 2 _    om@pr _ 3[defnes=def] } 
-!!     !  Mun čálán čoahkkáigeasu girjjis > Jeg skriver et sammendrag av boka
+!!    !  Mun čálán čoahkkáigeasu girjjis > Jeg skriver et sammendrag av boka
 !!VP? |                            [acc_om]NP.*.acc {om@pr _ 1[defnes=def]}
 !!VP? |                            [acc_om]NP.*.acc {om@pr _ 1[semtag=semtxt]}
    ;
