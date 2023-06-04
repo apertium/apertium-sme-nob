@@ -15,6 +15,8 @@ sint = sint ;
 prn_type = pers dem refl ;
 person = p1 p2 p3 ;
 case = nom acc gen ill loc ess ;
+oblcase = acc gen ill loc ess ;
+advlcase = ill loc ess ;
 semtxt = sem_ani_build_hum_txt sem_ani_plc_txt sem_group_txt sem_mat_txt sem_money_txt sem_org_txt sem_plc_txt sem_prod-audio_txt sem_prod-cogn_txt sem_semcon_txt sem_txt ;
 andretag = sem_hum ;
 semtag = [semtxt] [andretag]  ;
@@ -29,10 +31,15 @@ a_det = qnt emph dem itg pos ;
 a_cmp = cmp cmp-split ;
 a_split = cmp-split ;
 
+! for å endre guhtta+Num til seks+Det+Qnt ?
+pos = n adj vblex adv num det cnjcoo cnjsub ;
+
 !!!!!!!!!!!!!!!!!!!!!!!
 !! TAG-REWRITE RULES !!
 !!!!!!!!!!!!!!!!!!!!!!!
 
+! for å endre guhtta+Num til seks+Det+Qnt ?
+pos > pos : num det ;
 
 !!!!!!!!!!!!!!!!!!!!!
 !! OUTPUT PATTERNS !!
@@ -47,6 +54,7 @@ adj: (always
               else 1.gender), 
               number=(if (1.defnes = def) sp else 1.number)]);
 adv: _;
+num: _; ! fungerer ikkje
 det: _.a_det.gender.number ;
 prn: _.prn_type.person.gender.number.case ;
 vblex: _.infl ;
@@ -58,6 +66,7 @@ part: _;
 
 NP:    _.semtag.gender.number.case.defnes.a_split; ! NP needs semtag from below.
 DP:    _.gender.number.case.defnes.a_split;
+QP: _;
 PP: _ ;
 PROPN: _.npclass.gender;
 VP: _ ;
@@ -76,6 +85,8 @@ has_adj = yes no ;
 maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
                [ den@det.dem.[1.gender].sg _ ]
             elif (1.defnes = ind and 1.number = sg)
+               [ en@det.qnt.[1.gender].sg _ ]
+            elif (1.defnes = ind and 1.case/sl = acc)
                [ en@det.qnt.[1.gender].sg _ ]
             else []
             ) ;
@@ -139,7 +150,16 @@ C -> cnjcoo {1}
    ;
 
 
+! Opne spørsmål:
+! Vil vi ha NP = [NP cncjoo NP] som frase? Skal vi i tilfelle ha 
+! NP = [NPu C NPu] (der NPu er underordna NP eller noko slikt?)
+
+
 NP -> 0:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
+    | 3: %n.*.nom {%1[defnes=ind,has_adj=no]  }
+    | 4: adj %n.*.nom {den@det.dem.m.sg _ 1[defnes=def] _ %2[defnes=def,has_adj=no]  }
+    | 3: %n.*.[advlcase] {%1[defnes=def,has_adj=no]  }
+    | 3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no]  %1 }
     | 2: adj %n [$defnes=ind]  
          { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2}
     | 1: %prn.pers [$defnes=def] { %1 }
@@ -147,6 +167,13 @@ NP -> 0:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
     | 2: det %n [$defnes=ind] { 1 _ 2 }
     ;
 
+! Denne fungerer ikkje
+QP ->  "QP qnt"    8: %num.sg {1[a_det=qnt]}
+    |  "QP qnt NP" 9: %num.sg NP.sg.gen { 1[a_det=qnt] _ 2[number=pl, defness=ind]}
+    ;
+
+
+!! Verb phrase
 
 ! Verbs demanding oblique complements
 
@@ -191,7 +218,9 @@ VP -> "enkeltverb"      %vblex                    { 1 }
     |                2: %vblex VP.*.inf    { 1 _ å@part _ 2 }    
     |                2: %vblex vblex.*.prfprc    { 1 _ 2 }    
     |                2: %vblex PP    { 1 _ 2 }    
-    |                1: %vblex NP    { 1 _ 2[defnes=ind] }
+    |  "V NP.ind"    5: %leat@vblex NP.*.sg    { 1 _ en@det.qnt.m.sg _ 2[defnes=ind] } ! gender fro NP!
+!    |  "V NP.ind"    5: %leat@vblex NP.*.sg    { 1 _ en@det.qnt.[$gender=2.gender].sg _ 2[defnes=ind] } ! gender fro NP!
+    |  "V NP.ind"    4: %vblex NP    { 1 _ 2[defnes=ind] }
     |                3: %vblex NP PP { 1 _ 2[defnes=ind] _ 3}    
     | "V adj" 1: %leat@vblex adj {%1 _ 2[gender=nt]}
 ! Verbs with oblique complements
