@@ -164,10 +164,10 @@ PP -> NP post      1:                      {2 _ 1[defnes=(if (1.lem in_caseless 
 N ->
      "N→A"          %n ?(1.mainpos=adj) { %1(A) }
    | "N→n"          %n ?(1.a_cmp not = cmp) { %1 }
-   | "N→ncmpN"      n.*.cmp  %N    { 1 %2 }
+   | "N→ncmpN"      n.*.cmp  %N    { 1[number=sg] %2 }
    | "N→npcmpN"     np.*.cmp %N    { 1 %2 }    ! don't change lemcase on propers
    | "N→vbcmpN"     vblex.*.cmp %N { 1 %2 }
-   | "N→ncmpsplit"  n.*.cmp-split     [w_ogeller]@CNJCOO %N { 1 _ 2 _ %3 }
+   | "N→ncmpsplit"  n.*.cmp-split     [w_ogeller]@CNJCOO %N { 1[number=sg] _ 2 _ %3 }
    | "N→npcmpsplit" np.*.cmp-split    [w_ogeller]@CNJCOO %N { 1 _ 2 _ %3 }
    | "N→vbcmpsplit" vblex.*.cmp-split [w_ogeller]@CNJCOO %N { 1 _ 2 _ %3 }
    ;
