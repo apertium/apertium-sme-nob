@@ -26,6 +26,7 @@ vbinfin = inf prfprc prsprc ;
 infl = [tense] [vbinfin] ;
 !infl = pres pret imp ind prfprc prsprc ;
 npclass = ant org al top geo;
+num = num ;
 
 a_det = qnt emph dem itg pos ;
 a_cmp = cmp cmp-split ;
@@ -50,7 +51,7 @@ adj: (always
               else 1.gender), 
               number=(if (1.defnes = def) sp else 1.number)]);
 adv: _;
-num: _; ! fungerer ikkje
+num: _.a_det.gender.number.case ; ! fungerer ikkje
 vblex: _.infl ;
 post: _ ;
 pr: _;
@@ -166,8 +167,18 @@ PP -> NP post     1:                      {2 _ 1[defnes=(if (1.lem in_caseless n
 ! Vil vi ha NP = [NP cncjoo NP] som frase? Skal vi i tilfelle ha 
 ! NP = [NPu C NPu] (der NPu er underordna NP eller noko slikt?)
 
+QP ->  "QP qnt"    8: %num {%1[a_det=qnt,gender=un,case=""]}
+!    |  "QP qnt NP" 9: %num n.*.sg.gen { %1[a_det=qnt,gender=un,case=""] _ 2[number=pl, defness=ind]}
+    ;
 
-NP -> 0:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
+
+NP -> 1:    %QP n.*.sg.gen {%1[defnes=ind] _ 2[number=pl, defness=ind] }
+     | 1:    %QP adj n.*.sg.gen {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl, defness=ind] }
+     | 1:    %QP adj adj n.*.sg.gen {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl] _ 4[number=pl, defness=ind] }
+    ;
+
+
+NP -> 1:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
     | 3: %n.*.nom {%1[defnes=ind,has_adj=no]  }
     | 4: adj %n.*.nom {den@det.dem.m.sg _ 1[defnes=def] _ %2[defnes=def,has_adj=no]  }
 !   | 3: %n.*.[advlcase] {%1[defnes=def,has_adj=no]  }
@@ -177,11 +188,6 @@ NP -> 0:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
     | 1: %prn.pers [$defnes=def] { %1 }
     | 2: %prn.dem { %1 }
     | 2: det %n [$defnes=ind] { 1 _ 2 }
-    ;
-
-! Denne fungerer ikkje
-QP ->  "QP qnt"    8: num {%1}
-    |  "QP qnt NP" 9: num NP.sg.gen { %1 _ 2[number=pl, defness=ind]}
     ;
 
 C -> cnjcoo {1} 
