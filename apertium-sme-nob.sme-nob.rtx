@@ -85,7 +85,7 @@ PP: _ ;
 PROPN: _.npclass.gender;
 VP: _ ;
 ADV: _;
-AP: _;
+AP: _.sint.comp.gender.number.defnes ;
 S: _ ;
 C: _; ! cnjcoo
 PR: _; ! pr
@@ -116,7 +116,11 @@ maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
 det -> %det.* {1};
 
 ADV -> adv {1};
-AP -> %adj {%1};
+AP -> %adj {%1}
+    | adv  %adj { 1 _ %2}
+    | adj C %adj { %1 _ 2 _ %3} 
+    ;
+    
 PROPN -> %np.* {%1} ; ! remove number and case 
 
 
@@ -173,7 +177,7 @@ QP ->  "QP qnt"    8: %num {%1[a_det=qnt,gender=un,case=""]}
 
 
 NP -> 1:    %QP n.*.sg.gen {%1[defnes=ind] _ 2[number=pl, defness=ind] }
-     | 1:    %QP adj n.*.sg.gen {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl, defness=ind] }
+     | 5:    %QP AP n.*.sg.acc {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl, defness=ind] }
      | 1:    %QP adj adj n.*.sg.gen {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl] _ 4[number=pl, defness=ind] }
     ;
 
