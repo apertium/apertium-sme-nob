@@ -12,7 +12,7 @@ gender = f m nt un mf ;
 defnes = (DD ind) def ind DD ;
 comp = pst comp sup ;
 sint = sint ;
-prn_type = pers dem refl ;
+prn_type = pers dem refl pos ; ! pos possessive
 person = p1 p2 p3 ;
 case = nom acc gen ill loc ess ;
 oblcase = acc gen ill loc ess ;
@@ -26,17 +26,10 @@ vbinfin = inf prfprc prsprc ;
 infl = [tense] [vbinfin] ;
 !infl = pres pret imp ind prfprc prsprc ;
 npclass = ant org al top geo;
-mainpos = prn det adv adj n np cnjcoo cnjsub pr ij vbmod vbhaver vblex vbser vaux ;
 
-a_adj = sint ord pp pprs ;
 a_det = qnt emph dem itg pos ;
-a_comp = pst comp sup ;
 a_cmp = cmp cmp-split ;
 a_split = cmp-split ;
-
-
-! Word sets:
-w_ogeller = "ja" "og" "eller" ;
 
 
 !!!!!!!!!!!!!!!!!!!!!!!
@@ -58,7 +51,6 @@ adj: (always
               number=(if (1.defnes = def) sp else 1.number)]);
 adv: _;
 num: _; ! fungerer ikkje
-prn: _.prn_type.person.gender.number.case ;
 vblex: _.infl ;
 post: _ ;
 pr: _;
@@ -66,21 +58,36 @@ cnjcoo: _;
 cnjsub: _;
 part: _;
 
-N:     _.semtag.gender.number.case.defnes.a_cmp;
-NP:    _.semtag.gender.number.case.defnes.a_cmp; ! NP needs semtag from below.
-A:     _.a_adj.a_comp.gender.number.defnes.case.a_cmp;
-AP:    _.a_adj.a_comp.gender.number.defnes.case.a_cmp;
+prn_pos: _.<pos>.gender.number;
+prn_oth: _.prn_type.person.gender.number.case ;
+!prn:     _.prn_type.person.gender.number.case ;
+prn: (if (1.case/sl = gen) 1(prn_pos)
+      else 1(prn_oth)) ;
+
+! For referanse
+!np_ant: _.<ant>.gender.number.case ;!
+!np_other: _.np_type.number.case ;
+!np: (if (1.np_type = ant) 1(np_ant)
+!      else 1(np_other)) ;
+
+
+!adj_attr: _.attr ;
+!adj_pred: _.comp.number.case ;
+!adj: (if (1.attr = attr) 1(adj_attr)
+!      else 1(adj_pred)) ;
+
+
+NP:    _.semtag.gender.number.case.defnes.a_split; ! NP needs semtag from below.
 DP:    _.gender.number.case.defnes.a_split;
 QP: _;
 PP: _ ;
 PROPN: _.npclass.gender;
 VP: _ ;
 ADV: _;
+AP: _;
 S: _ ;
 C: _; ! cnjcoo
 PR: _; ! pr
-CNJCOO:  _;
-SENT:  _;
 
 det: _.a_det.gender.number ;
 
@@ -104,8 +111,6 @@ maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
 !!!!!!!!!!!!!!!!!!!!!
 !! REDUCTION RULES !!
 !!!!!!!!!!!!!!!!!!!!!
-
-CNJCOO -> %cnjcoo { %1 } ;      ! for some reason need this to get rid of @nkon?
 
 det -> %det.* {1};
 
@@ -136,18 +141,18 @@ loc_ved = "makt" ;
 noun_pseudo_prop = "april" "asyl" "august" "bachelornivå" "bestefar" "bestemor" "deltid" "desember" "doktorgrad" "downs syndrom" "duodji" "far" "februar" "fokus" "fredag" "gang" "giellasiida" "godkjenning" "grad" "gras" "gud" "gymnastikk" "heltid" "hjelp" "januar" "julaften" "juli" "juni" "junior" "kildinsamisk" "kofte" "kunst" "langfredag" "legesjekk" "lulesamisk" "lunsj" "lykke" "lørdag" "mai" "mandag" "mars" "mat" "merverdiavgift" "midnatt" "moms" "mor" "naturfag" "nivå" "nordsamisk" "november" "null" "oktober" "onsdag" "pop" "påskeaften" "raushet" "reinlav" "rektor" "rikdom" "rus" "samisk" "samiskhet" "senior" "sentrum" "september" "skjærtorsdag" "støtte" "søndag" "sørsamisk" "taekwondo" "takk" "tid" "tirsdag" "torsdag" "trygghet" "twitter" "vare" "velkommen" "verden" "viten" "yrkesfag" ;
 
 
-PP -> NP post      1:                      {2 _ 1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
-    | pr NP        1:                      {1 _ 2[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
-    | "loc i"      5:     [loc_i]@NP.*.loc {  i@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
-    | "loc etter"  5: [loc_etter]@NP.*.loc {etter@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
-    | "loc om"     5:    [loc_om]@NP.*.loc { om@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
-    | "loc per"    5:   [loc_per]@NP.*.loc {per@pr _ %1[defnes=ind]} 
-    | "loc som"    5:   [loc_som]@NP.*.loc {som@pr _ %1[defnes=ind]} 
-    | "loc på"     5:     NP.*.loc         { på@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
-    | "ill i"      5:  NP.*.[semtxt].*.ill {  i@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
-    | "ill til"    5:     NP.*.ill         {til@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
-    | "ess som"    5:     NP.*.ess         {som@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
-    | "com med"    5:     NP.*.com         {med@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+PP -> NP post     1:                      {2 _ 1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | pr NP       1:                      {1 _ 2[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc i"     5:     [loc_i]@NP.*.loc {  i@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc etter" 5: [loc_etter]@NP.*.loc {etter@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc om"    5:    [loc_om]@NP.*.loc { om@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+    | "loc per"   5:   [loc_per]@NP.*.loc {per@pr _ %1[defnes=ind]} 
+    | "loc som"   5:   [loc_som]@NP.*.loc {som@pr _ %1[defnes=ind]} 
+    | "loc på"    5:     NP.*.loc         { på@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "ill i"     5:  NP.*.[semtxt].*.ill {  i@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "ill til"   5:     NP.*.ill         {til@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "ess som"   5:     NP.*.ess         {som@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "com med"   5:     NP.*.com         {med@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     ;
 
 !Forthcoming fix for coordination, today three phrases NP C NP:
@@ -161,38 +166,13 @@ PP -> NP post      1:                      {2 _ 1[defnes=(if (1.lem in_caseless 
 ! Vil vi ha NP = [NP cncjoo NP] som frase? Skal vi i tilfelle ha 
 ! NP = [NPu C NPu] (der NPu er underordna NP eller noko slikt?)
 
-N ->
-     "N→A"          %n ?(1.mainpos=adj) { %1(A) }
-   | "N→n"          %n ?(1.a_cmp not = cmp) { %1 }
-   | "N→ncmpN"      n.*.cmp  %N    { 1[number=sg] %2 }
-   | "N→npcmpN"     np.*.cmp %N    { 1 %2 }    ! don't change lemcase on propers
-   | "N→vbcmpN"     vblex.*.cmp %N { 1 %2 }
-   | "N→ncmpsplit"  n.*.cmp-split     [w_ogeller]@CNJCOO %N { 1[number=sg] _ 2 _ %3 }
-   | "N→npcmpsplit" np.*.cmp-split    [w_ogeller]@CNJCOO %N { 1 _ 2 _ %3 }
-   | "N→vbcmpsplit" vblex.*.cmp-split [w_ogeller]@CNJCOO %N { 1 _ 2 _ %3 }
-   ;
 
-! A -> "A->adj"       %adj { %1[gender=(if (1.number = sg and 1.defnes = ind)
-!                                           (if ($gender = nt or $gender = ut) $gender else 1.gender)
-!                                       el-if (1.a_adj = pprs or 1.a_adj = pp)
-!                                           ""
-!                                       else
-!                                           un),
-!                               number=$number,
-!                               a_adj=1.a_adj/tl
-!                               ] }
-!    | "A->n+A"      n.*.cmp %A { 1 %2 }
-!    | "A->np+A"    np.*.cmp %A { 1 %2 }
-!    | "A->vb+A" vblex.*.cmp %A { 1 %2 }
-!    ;
-
-
-NP -> 0:    %N {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
-    | 3: %N.*.nom {%1[defnes=ind,has_adj=no]  }
-    | 4: adj %N.*.nom {den@det.dem.m.sg _ 1[defnes=def] _ %2[defnes=def,has_adj=no]  }
-!    | 3: %n.*.[advlcase] {%1[defnes=def,has_adj=no]  }
-    | 3: %N.*.acc {1(maybe_det)[defnes=ind,has_adj=no]  %1 }
-    | 2: adj %N [$defnes=ind]  
+NP -> 0:    %n {1(maybe_det)[defnes=$defnes,has_adj=no]  %1 }
+    | 3: %n.*.nom {%1[defnes=ind,has_adj=no]  }
+    | 4: adj %n.*.nom {den@det.dem.m.sg _ 1[defnes=def] _ %2[defnes=def,has_adj=no]  }
+!   | 3: %n.*.[advlcase] {%1[defnes=def,has_adj=no]  }
+    | 3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no]  %1 }
+    | 2: adj %n [$defnes=ind]  
          { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2}
     | 1: %prn.pers [$defnes=def] { %1 }
     | 2: %prn.dem { %1 }
@@ -249,14 +229,15 @@ loc_om_head = "artikkel" "avtale" "bok" "kontrakt" "snakk" "tale" ;
 
 cond_NIL_verb = "berret" "dáhttut" "dáidit" "fertet" "galgat" "háliidit" "máhttit" "soaitit" "sáhttit" "veadjit" "áigut" ;
 
-VP -> "enkeltverb"      %vblex                    { 1 } 
-    |       "ikke"      %ii@vblex.iv.neg vblex.*.conneg  { 2 _ ikke@adv } 
-    |                3: %[cond_NIL_verb]@vblex VP { 1 _ 2 }    
-    |  "V V inf"     2: %vblex vblex.*.inf    { 1 _ å@part _ 2 }    
-    |  "V NP PP"     2: %vblex vblex.*.prfprc    { 1 _ 2 }    
-    |  "V NP PP"     2: %vblex PP    { 1 _ 2 }    
-    |  "V NP PP"     3: %vblex NP PP { 1 _ 2 _ 3 }    
-    |  "V NP.ind"    5: %leat@vblex NP.*.sg.nom    { 1 _ en@det.qnt.m.sg _ 2[defnes=ind] } ! gender fro NP!
+VP -> "enkeltverb"      %vblex                                {1 } 
+    |       "ikke"      %ii@vblex.iv.neg vblex.*.conneg       {2 _ ikke@adv} 
+    |                3: %[cond_NIL_verb]@vblex VP             {1 _ 2}    
+    |  "V V inf"     3: %[cond_NIL_verb]@vblex vblex          {1 _ 2}    
+    |  "V V inf"     2:                 %vblex vblex.*.inf    {1 _ å@part _ 2}    
+    |  "V NP PP"     2:                 %vblex vblex.*.prfprc {1 _ 2}    
+    |  "V NP PP"     2:                 %vblex PP             {1 _ 2}    
+    |  "V NP PP"     3:                 %vblex NP PP          {1 _ 2 _ 3}    
+    |  "V NP.ind"    5: %leat@vblex    NP.*.sg.nom    { 1 _ en@det.qnt.m.sg _ 2[defnes=ind] } ! gender fro NP!
 !   |  "V NP.ind"    5: %leat@vblex NP.*.sg    { 1 _ en@det.qnt.[$gender=2.gender].sg _ 2[defnes=ind] } ! gender fro NP!
     |  "V NP.ind"    4: %vblex NP    { 1 _ 2[defnes=ind] }
     |                3: %vblex NP PP { 1 _ 2[defnes=ind] _ 3}    
