@@ -17,6 +17,7 @@ sint = sint ;
 prn_type = pers dem refl pos ; ! pos possessive
 person = p1 p2 p3 ;
 case = nom acc gen ill loc ess ;
+gramcase = nom acc gen ;
 oblcase = acc gen ill loc ess ;
 advlcase = ill loc ess ;
 semtxt = sem_ani_build_hum_txt sem_ani_plc_txt sem_group_txt sem_mat_txt sem_money_txt sem_org_txt sem_plc_txt sem_prod-audio_txt sem_prod-cogn_txt sem_semcon_txt sem_txt ;
@@ -110,9 +111,6 @@ AP -> %adj {%1}
     
 PROPN -> %np.* {%1} ; ! remove number and case 
 
-
-! PR -> pr {1} ;
-
 ess_i = "tillegg" "skumring" "regn" "tåke" ;
 ess_på = "besøk" ;
 ess_til = "aske" "grunn" "nytte" ;
@@ -131,7 +129,6 @@ loc_som = "verdi" ;
 loc_ved = "makt" ;
 
 noun_pseudo_prop = "april" "asyl" "august" "bachelornivå" "bestefar" "bestemor" "deltid" "desember" "doktorgrad" "downs syndrom" "duodji" "far" "februar" "fokus" "fredag" "gang" "giellasiida" "godkjenning" "grad" "gras" "gud" "gymnastikk" "heltid" "hjelp" "januar" "julaften" "juli" "juni" "junior" "kildinsamisk" "kofte" "kunst" "langfredag" "legesjekk" "lulesamisk" "lunsj" "lykke" "lørdag" "mai" "mandag" "mars" "mat" "merverdiavgift" "midnatt" "moms" "mor" "naturfag" "nivå" "nordsamisk" "november" "null" "oktober" "onsdag" "pop" "påskeaften" "raushet" "reinlav" "rektor" "rikdom" "rus" "samisk" "samiskhet" "senior" "sentrum" "september" "skjærtorsdag" "støtte" "søndag" "sørsamisk" "taekwondo" "takk" "tid" "tirsdag" "torsdag" "trygghet" "twitter" "vare" "velkommen" "verden" "viten" "yrkesfag" ;
-
 
 PP -> "postp"     2:   NP %post           {2        _ 1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     | "prep"      1:   pr NP              {1        _ 2[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
@@ -213,17 +210,17 @@ cond_NIL_verb = "berret" "dáhttut" "dáidit" "fertet" "galgat" "háliidit" "má
 
 VP -> "enkeltverb"      %vblex                                {1 } 
     |       "ikke"      %ii@vblex.iv.neg vblex.*.conneg       {2 _ ikke@adv} 
-    |                3: %[cond_NIL_verb]@vblex VP             {1 _ 2}    
+    |  "V VP"        3: %[cond_NIL_verb]@vblex VP             {1 _ 2}    
     |  "V V inf"     3: %[cond_NIL_verb]@vblex vblex          {1 _ 2}    
     |  "V V inf"     2:                 %vblex vblex.*.inf    {1 _ å@part _ 2}    
     |  "V PP"        6:                 %vblex PP             {1 _ 2}    
     |  "V NP PP"     2:                 %vblex vblex.*.prfprc {1 _ 2}    
     |  "V NP PP"     3:                 %vblex NP PP          {1 _ 2 _ 3}    
     |  "V NP.ind"    5: %leat@vblex    NP.*.sg.nom    { 1 _ en@det.qnt.m.sg _ 2[defnes=ind] } ! gender fro NP!
+    |  "V NP.ind"    4: %vblex NP.*.gramcase                  {1 _ 2[defnes=ind] }
+    |  "V NP PP"     3: %vblex NP PP { 1 _ 2[defnes=ind] _ 3}    
+    |  "V adj"       1: %leat@vblex adj {%1 _ 2[gender=nt]}
 !   |  "V NP.ind"    5: %leat@vblex NP.*.sg    { 1 _ en@det.qnt.[$gender=2.gender].sg _ 2[defnes=ind] } ! gender fro NP!
-    |  "V NP.ind"    4: %vblex NP    { 1 _ 2[defnes=ind] }
-    |                3: %vblex NP PP { 1 _ 2[defnes=ind] _ 3}    
-    | "V adj" 1: %leat@vblex adj {%1 _ 2[gender=nt]}
 ! Verbs with oblique complements
     | "acc_om_verb"  2:  %[acc_om_verb]@vblex NP.*.acc { 1 _  om@pr _ 2[defnes=def] }
     | "ill_av_verb"  2:  %[ill_av_verb]@vblex NP.*.ill { 1 _  av@pr _ 2[defnes=def] }
@@ -255,10 +252,13 @@ VP -> "enkeltverb"      %vblex                                {1 }
     | "loc_fra_head"   3: %vblex   [loc_fra_head]@NP NP.*.loc { 1 _ 2 _   fra@pr _ 3[defnes=def] } 
     | "loc_i_head"     3: %vblex     [loc_i_head]@NP NP.*.loc { 1 _ 2 _     i@pr _ 3[defnes=def] } 
     | "loc_om_head"    3: %vblex    [loc_om_head]@NP NP.*.loc { 1 _ 2 _    om@pr _ 3[defnes=def] } 
-!!    !  Mun čálán čoahkkáigeasu girjjis > Jeg skriver et sammendrag av boka
-!!VP? |                            [acc_om]NP.*.acc {om@pr _ 1[defnes=def]}
-!!VP? |                            [acc_om]NP.*.acc {om@pr _ 1[semtag=semtxt]}
-   ;
+    | "VP_ADVP"        1: VP ADV {1 _ 2}
+!    | "VP_PP"          1: VP PP  {1 _ 2}
+    ;
+
+!S -> "S_np_vp" 10: NP VP {1 _ 2}
+!   | "det_vp"   9: VP {det@prn.pers.p3.nt.sg.nom _ }
+!   ;
 
 ! !VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
 ! S -> NP VP { 1 _ 2 } ;
