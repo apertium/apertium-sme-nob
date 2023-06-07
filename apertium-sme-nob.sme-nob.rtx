@@ -1,5 +1,65 @@
 ! sme-nob.rtx
 
+
+! Contributions from an alternative rtx branch that popped up, to be integrated.
+! This concerns mainly actio, participles and also pronoun insertion
+
+!rtx ! inf = inf actio ;
+!rtx ! pcp = pp pprs prfprc ;
+!rtx ! finity = (FIN fin) inf actio pp prs pprs prfprc fin ;
+!rtx ! derp = der_inchl der_passl der_passs ;
+!rtx ! pass = pass ;
+!rtx ! inch = inch ;
+!rtx ! sep = sep ;  !! separable stuff
+!rtx ! fs = fs fm ; !! separable stuff
+!rtx ! prntype = pers ind qnt itg dem pos rel;
+!rtx ! 
+!rtx ! 
+!rtx ! !!!!!!!!!!!!!!!
+!rtx ! !! OUTPUT PATTERNS
+!rtx ! !!!!!!!!!!!!!!!
+!rtx ! 
+!rtx ! vblex_fin: _.sep.fs.tense;
+!rtx ! vblex_inf: _.sep.inf;
+!rtx ! vblex_pp: _.sep.pcp;
+!rtx ! vbser: _.tense;
+!rtx ! vbmod: _.tense;
+!rtx ! prn: _.prntype.person.gender.number.case;
+!rtx ! 
+!rtx ! 
+!rtx ! ==============
+!rtx ! 
+!rtx ! vblex: _.tense ;
+!rtx ! 
+!rtx ! vblex_simple: (if (1.finity = inf) 1(vblex_inf)
+!rtx !         elif (1.finity = actio) 1(vblex_inf)[inf=inf]  ! probably not ideal
+!rtx !         elif (1.pcp = pp) 1(vblex_pp)
+!rtx !         elif (1.pcp = prfprc) 1(vblex_pp)  ! probably not ideal
+!rtx !         elif (1.pcp = pprs) 1(vblex_pp)
+!rtx !         else 1(vblex_fin) ) ;
+!rtx ! !vblex: _.tense ;
+!rtx ! vblex: (if (1.derp = der_passl)
+!rtx !           [ 1(vblex_simple)[pos_tag=vblex,lem=bli] _ 1(vblex_pp)[pcp=pp] ]
+!rtx !         elif (1.derp = der_inchl)
+!rtx !           [ 1(vblex_simple)[lem=begynne] _ å@part _ 1(vblex_simple)[finity=inf,inf=inf] ]
+!rtx !         else 1(vblex_simple)) ;
+!rtx ! 
+!rtx ! pick_pro: (if (1.person=p1 & 1.number=sg) jeg@prn.pers.p1.mf.sg.nom
+!rtx ! 		   elif (1.person=p2 & 1.number=sg) du@prn.pers.p2.mf.sg.nom
+!rtx ! 		   elif (1.person=p3 & 1.number=sg) hun@prn.pers.p3.f.sg.nom
+!rtx ! 		   elif (1.person=p1 & (1.number=pl or 1.number=du)) vi@prn.pers.p1.mf.pl.nom
+!rtx ! 		   elif (1.person=p2 & (1.number=pl or 1.number=du)) dere@prn.pers.p2.mf.pl.nom
+!rtx ! 		   else de@prn.pers.p3.un.pl.nom
+!rtx ! 		   ) ;
+!rtx ! 
+!rtx ! ===================
+!rtx ! 
+!rtx ! VP -> vblex.tv NP { 1 _ 2[definite=ind] } ;
+!rtx ! VP -> %vblex.tv NP { 1 _ 2[definite=ind] } ;
+!rtx ! VP -> %vblex { 1 } ;
+!rtx ! S -> NP VP { 1 _ 2 } ;
+!rtx ! S -> VP { 1(pick_pro) _ 1 } ;
+
 ! Pick genders etc. from tl (and if not, from anaphoric referent), but don't fall back to sl:
 SIDE_SOURCES = tl ref ;
 
