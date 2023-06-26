@@ -118,7 +118,7 @@ DP:    _.gender.number.case.defnes.a_split;
 QP: _;
 PP: _ ;
 PROPN: _.npclass.gender;
-VP: _ ;
+VP: _.infl.person ;
 ADV: _;
 AP: _.sint.comp.gender.number.defnes ;
 S: _ ;
@@ -178,8 +178,8 @@ loc_ved = "makt" ;
 
 noun_pseudo_prop = "april" "asyl" "august" "bachelornivå" "bestefar" "bestemor" "deltid" "desember" "doktorgrad" "downs syndrom" "duodji" "far" "februar" "fokus" "fredag" "gang" "giellasiida" "godkjenning" "grad" "gras" "gud" "gymnastikk" "heltid" "hjelp" "januar" "julaften" "juli" "juni" "junior" "kildinsamisk" "kofte" "kunst" "langfredag" "legesjekk" "lulesamisk" "lunsj" "lykke" "lørdag" "mai" "mandag" "mars" "mat" "merverdiavgift" "midnatt" "moms" "mor" "naturfag" "nivå" "nordsamisk" "november" "null" "oktober" "onsdag" "pop" "påskeaften" "raushet" "reinlav" "rektor" "rikdom" "rus" "samisk" "samiskhet" "senior" "sentrum" "september" "skjærtorsdag" "støtte" "søndag" "sørsamisk" "taekwondo" "takk" "tid" "tirsdag" "torsdag" "trygghet" "twitter" "vare" "velkommen" "verden" "viten" "yrkesfag" ;
 
-PP -> "postp"     2:   NP %post           {2        _ 1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
-    | "prep"      1:   pr NP              {1        _ 2[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
+PP -> "postp"     2:   NP %post           {2        _  1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "prep"      1:   pr NP              {1        _  2[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
     | "loc i"     5:     [loc_i]@NP.*.loc {  i@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
     | "loc etter" 5: [loc_etter]@NP.*.loc {etter@pr _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
     | "loc om"    5:    [loc_om]@NP.*.loc { om@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]} 
@@ -187,6 +187,7 @@ PP -> "postp"     2:   NP %post           {2        _ 1[defnes=(if (1.lem in_cas
     | "loc som"   5:   [loc_som]@NP.*.loc {som@pr   _ %1[defnes=ind]} 
     | "loc på"    5:     NP.*.loc         { på@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     | "ill i"     5:  NP.*.[semtxt].*.ill {  i@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
+    | "ill på"    6:     num %NP.*.ill     {på@pr   _ 1[case=""] _ %2[defnes=ind,number=pl]}
     | "ill til"   5:     NP.*.ill         {til@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     | "ess som"   5:     NP.*.ess         {som@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     | "com med"   5:     NP.*.com         {med@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
@@ -199,7 +200,9 @@ NP -> 1: %QP n.*.sg.gen         {%1[defnes=ind] _ 2[number=pl, defnes=ind]}
     | 1: %QP adj adj n.*.sg.gen {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl] _ 4[number=pl, defnes=ind]}
     ;
 
-NP -> 1: %n { 1(maybe_det)[defnes=$defnes,has_adj=no]  %1 } ! kanskje sett inn «en/ei»
+
+NP -> 1: %n       {1(maybe_det)[defnes=$defnes,has_adj=no]  %1} ! kanskje sett inn «en/ei»
+!   | 3: %n.*.nom {%1[defnes=ind,has_adj=no]}
     | 4: adj %n.*.nom {den@det.dem.m.sg _ 1[defnes=def] _ %2[defnes=def,has_adj=no]}
 !   | 3: %n.*.[advlcase] {%1[defnes=def,has_adj=no]}
     | 3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no] %1}
@@ -208,6 +211,7 @@ NP -> 1: %n { 1(maybe_det)[defnes=$defnes,has_adj=no]  %1 } ! kanskje sett inn �
     | 1: %prn.pers [$defnes=def] { %1 }
     | 2: %prn.dem { %1 }
     | 2: det %n [$defnes=ind] { 1 _ 2 }
+    | 1: %PROPN { %1 }
     ;
 
 C -> cnjcoo {1} 
@@ -255,51 +259,52 @@ loc_om_head = "artikkel" "avtale" "bok" "kontrakt" "snakk" "tale" ;
 
 cond_NIL_verb = "berret" "dáhttut" "dáidit" "fertet" "galgat" "háliidit" "máhttit" "soaitit" "sáhttit" "veadjit" "áigut" ;
 
-VP -> "enkeltverb"      %vblex                                {1 } 
-    |       "ikke"  10:  %ii@vblex.iv.neg vblex.*.conneg       {2 _ ikke@adv} 
-    |  "V VP"        3: %[cond_NIL_verb]@vblex VP             {1 _ 2}    
-    |  "V V inf"     3: %[cond_NIL_verb]@vblex vblex          {1 _ 2}    
-    |  "V V inf"     2:                 %vblex vblex.*.inf    {1 _ å@part _ 2}    
-    |  "V PP"        6:                 %vblex PP             {1 _ 2}    
-    |  "V NP PP"     2:                 %vblex vblex.*.prfprc {1 _ 2}    
-    |  "V NP PP"     3:                 %vblex NP PP          {1 _ 2 _ 3}    
-    |  "V NP.ind"    4: %vblex NP.*.gramcase                  {1 _ 2[defnes=ind] }
-    |  "V NP PP"     3: %vblex NP PP { 1 _ 2[defnes=ind] _ 3}    
-    |  "V adj"       1: %leat@vblex adj {%1 _ 2[gender=nt]}
-    |  "V adj"       2: %leat@vblex adv adj {%1 _ 2 _ 3[gender=nt]}
+VP -> "enkeltverb"   1:  %vblex                               {%1[tense="",person=""] } 
+    |       "ikke"  10:  %ii@vblex.iv.neg vblex.*.conneg      {%2[tense=pres] _ ikke@adv[tense="",person=""]} 
+    |       "ikke"  10:  %ii@vblex.iv.neg vblex.*.conneg VP   {%2[infl=pres] _ ikke@adv[tense="",person=""] _ 3 } 
+    |  "V VP"        3: %[cond_NIL_verb]@vblex VP             {%1 _ 2}    
+    |  "V V inf"     3: %[cond_NIL_verb]@vblex vblex          {%1 _ 2}    
+    |  "V V inf"     2:                 %vblex vblex.*.inf    {%1 _ å@part _ 2}    
+    |  "V PP"        6:                 %vblex PP             {%1 _ %2}    
+    |  "V NP PP"     2:                 %vblex vblex.*.prfprc {%1 _ 2}    
+    |  "V NP PP"     3:                 %vblex NP PP          {%1 _ 2 _ 3}    
+    |  "V NP.ind"    4: %vblex NP.*.gramcase                  {%1 _ 2[defnes=ind] }
+    |  "V NP PP"     3: %vblex NP PP         { %1 _ 2[defnes=ind] _ 3}    
+    |  "V adj"       1: %leat@vblex adj      { %1 _ 2[gender=nt]}
+    |  "V adj"       2: %leat@vblex adv adj  { %1 _ 2 _ 3[gender=nt]}
 !   |  "V NP.ind"    5: %leat@vblex NP.*.sg    { 1 _ en@det.qnt.[$gender=2.gender].sg _ 2[defnes=ind] } ! gender fro NP!
 ! Verbs with oblique complements
-    | "acc_om_verb"  2:  %[acc_om_verb]@vblex NP.*.acc { 1 _  om@pr _ 2[defnes=def] }
-    | "ill_av_verb"  2:  %[ill_av_verb]@vblex NP.*.ill { 1 _  av@pr _ 2[defnes=def] }
-    | "ill_i_verb"   2:   %[ill_i_verb]@vblex NP.*.ill { 1 _   i@pr _ 2[defnes=def] }
-    | "ill_for_verb" 2: %[ill_for_verb]@vblex NP.*.ill { 1 _ for@pr _ 2[defnes=def] }
-    | "ill_med_verb" 2: %[ill_med_verb]@vblex NP.*.ill { 1 _ med@pr _ 2[defnes=def] }
-    | "ill_på_verb"  2:  %[ill_på_verb]@vblex NP.*.ill { 1 _  på@pr _ 2[defnes=def] }
-    | "loc_for_verb" 2: %[loc_for_verb]@vblex NP.*.loc { 1 _ for@pr _ 2[defnes=def] }
-    | "loc_fra_verb" 2: %[loc_fra_verb]@vblex NP.*.loc { 1 _ fra@pr _ 2[defnes=def] }
-    | "loc_om_verb"  2:  %[loc_om_verb]@vblex NP.*.loc { 1 _  om@pr _ 2[defnes=def] }
-    | "loc_som_verb" 2: %[loc_som_verb]@vblex NP.*.loc { 1 _ som@pr _ 2[defnes=def] }
+    | "acc_om_verb"  2:  %[acc_om_verb]@vblex NP.*.acc { %1 _  om@pr _ 2[defnes=def] }
+    | "ill_av_verb"  2:  %[ill_av_verb]@vblex NP.*.ill { %1 _  av@pr _ 2[defnes=def] }
+    | "ill_i_verb"   2:   %[ill_i_verb]@vblex NP.*.ill { %1 _   i@pr _ 2[defnes=def] }
+    | "ill_for_verb" 2: %[ill_for_verb]@vblex NP.*.ill { %1 _ for@pr _ 2[defnes=def] }
+    | "ill_med_verb" 2: %[ill_med_verb]@vblex NP.*.ill { %1 _ med@pr _ 2[defnes=def] }
+    | "ill_på_verb"  2:  %[ill_på_verb]@vblex NP.*.ill { %1 _  på@pr _ 2[defnes=def] }
+    | "loc_for_verb" 2: %[loc_for_verb]@vblex NP.*.loc { %1 _ for@pr _ 2[defnes=def] }
+    | "loc_fra_verb" 2: %[loc_fra_verb]@vblex NP.*.loc { %1 _ fra@pr _ 2[defnes=def] }
+    | "loc_om_verb"  2:  %[loc_om_verb]@vblex NP.*.loc { %1 _  om@pr _ 2[defnes=def] }
+    | "loc_som_verb" 2: %[loc_som_verb]@vblex NP.*.loc { %1 _ som@pr _ 2[defnes=def] }
     
-    | "ill_for_verb" 4: %[ill_for_verb]@vblex AP  NP.*.ill { 1 _ 2 _ for@pr _ 3[defnes=def] } 
+    | "ill_for_verb" 4: %[ill_for_verb]@vblex AP  NP.*.ill { %1 _ 2 _ for@pr _ 3[defnes=def] } 
       ! TODO: Jeg betyr for den mye byen.
       ! NP1.gen NP2 > NP2 av NP1  ! girjji kopiija > en kopi av boka
-    | "gen_av_head"    3: %vblex  NP.*.gen   [gen_av_head]@NP { 1 _ 3 _   av@pr _ 2[defnes=def] } 
-    | "gen_for_head"   3: %vblex  NP.*.gen  [gen_for_head]@NP { 1 _ 3 _  for@pr _ 2[defnes=def] } 
-    | "gen_i_head"     3: %vblex  NP.*.gen    [gen_i_head]@NP { 1 _ 3 _    i@pr _ 2[defnes=def] } 
-    | "gen_om_head"    3: %vblex  NP.*.gen   [gen_om_head]@NP { 1 _ 3 _   om@pr _ 2[defnes=def] } 
-    | "gen_på_head"    3: %vblex  NP.*.gen   [gen_på_head]@NP { 1 _ 3 _   på@pr _ 2[defnes=def] } 
-    | "gen_som_head"   3: %vblex  NP.*.gen  [gen_som_head]@NP { 1 _ 3 _  som@pr _ 2[defnes=def] } 
+    | "gen_av_head"    3: %vblex  NP.*.gen   [gen_av_head]@NP { %1 _ 3 _   av@pr _ 2[defnes=def] } 
+    | "gen_for_head"   3: %vblex  NP.*.gen  [gen_for_head]@NP { %1 _ 3 _  for@pr _ 2[defnes=def] } 
+    | "gen_i_head"     3: %vblex  NP.*.gen    [gen_i_head]@NP { %1 _ 3 _    i@pr _ 2[defnes=def] } 
+    | "gen_om_head"    3: %vblex  NP.*.gen   [gen_om_head]@NP { %1 _ 3 _   om@pr _ 2[defnes=def] } 
+    | "gen_på_head"    3: %vblex  NP.*.gen   [gen_på_head]@NP { %1 _ 3 _   på@pr _ 2[defnes=def] } 
+    | "gen_som_head"   3: %vblex  NP.*.gen  [gen_som_head]@NP { %1 _ 3 _  som@pr _ 2[defnes=def] } 
       ! NP1 NP2.ill > NP1 for NP2 infekšuvdna gieđas > infeksjon i hånda
-    | "ill_for_head"   3: %vblex   [ill_for_head]@NP NP.*.ill { 1 _ 2 _   for@pr _ 3[defnes=def] } 
-    | "ill_i_head"     3: %vblex     [ill_i_head]@NP NP.*.ill { 1 _ 2 _     i@pr _ 3[defnes=def] } 
-    | "ill_på_head"    3: %vblex    [ill_på_head]@NP NP.*.ill { 1 _ 2 _    på@pr _ 3[defnes=def] } 
-    | "loc_av_head"    3: %vblex    [loc_av_head]@NP NP.*.loc { 1 _ 2 _    av@pr _ 3[defnes=def] } 
-    | "loc_etter_head" 3: %vblex [loc_etter_head]@NP NP.*.loc { 1 _ 2 _ etter@pr _ 3[defnes=def] } 
-    | "loc_for_head"   3: %vblex   [loc_for_head]@NP NP.*.loc { 1 _ 2 _   for@pr _ 3[defnes=def] } 
-    | "loc_fra_head"   3: %vblex   [loc_fra_head]@NP NP.*.loc { 1 _ 2 _   fra@pr _ 3[defnes=def] } 
-    | "loc_i_head"     3: %vblex     [loc_i_head]@NP NP.*.loc { 1 _ 2 _     i@pr _ 3[defnes=def] } 
-    | "loc_om_head"    3: %vblex    [loc_om_head]@NP NP.*.loc { 1 _ 2 _    om@pr _ 3[defnes=def] } 
-    | "VP_ADVP"        1: VP ADV {1 _ 2}
+    | "ill_for_head"   3: %vblex   [ill_for_head]@NP NP.*.ill { %1 _ 2 _   for@pr _ 3[defnes=def] } 
+    | "ill_i_head"     3: %vblex     [ill_i_head]@NP NP.*.ill { %1 _ 2 _     i@pr _ 3[defnes=def] } 
+    | "ill_på_head"    3: %vblex    [ill_på_head]@NP NP.*.ill { %1 _ 2 _    på@pr _ 3[defnes=def] } 
+    | "loc_av_head"    3: %vblex    [loc_av_head]@NP NP.*.loc { %1 _ 2 _    av@pr _ 3[defnes=def] } 
+    | "loc_etter_head" 3: %vblex [loc_etter_head]@NP NP.*.loc { %1 _ 2 _ etter@pr _ 3[defnes=def] } 
+    | "loc_for_head"   3: %vblex   [loc_for_head]@NP NP.*.loc { %1 _ 2 _   for@pr _ 3[defnes=def] } 
+    | "loc_fra_head"   3: %vblex   [loc_fra_head]@NP NP.*.loc { %1 _ 2 _   fra@pr _ 3[defnes=def] } 
+    | "loc_i_head"     3: %vblex     [loc_i_head]@NP NP.*.loc { %1 _ 2 _     i@pr _ 3[defnes=def] } 
+    | "loc_om_head"    3: %vblex    [loc_om_head]@NP NP.*.loc { %1 _ 2 _    om@pr _ 3[defnes=def] } 
+    | "VP_ADVP"        1: %VP ADV {%1 _ 2}
 !    | "VP_PP"          1: VP PP  {1 _ 2}
     ;
 
@@ -310,23 +315,29 @@ VP -> "enkeltverb"      %vblex                                {1 }
 !   ;
 
 ! !VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
-S -> "S np vp" 2: NP %VP { 1[defnes=def] _ %2 }
+
+S -> "S np vp" 9: NP %VP { 1[defnes=def] _ %2 }
    | "S np cop a" 4: NP  leat@vblex.* adj { 1[defnes=def] _ 2 _ 3[gender=1.gender/tl] }
    | "S pp cop a" 5: PP  leat@vblex.* adj { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
    | "S adv cop a" 5: ADV leat@vblex.* adj { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
-
    | "S adv cop NP.ind"    7: ADV %leat@vblex    NP.*.sg.nom    { 1 _ 2  _ den@prn.pers.p3.nt.sg.nom _  3[defnes=ind] } ! gender fro NP!
+   | "S adv cop a"   5: ADV       leat@vblex.* adj      { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
+   | "S adv cop ap"  9: ADV       leat@vblex.* adv adj  { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3 _ 4[gender=nt] }
+   | "S NP cop NP " 10: NP.*.nom %leat@vblex.* NP.*.nom { 1 _ %2 _ 3[defnes=ind] }   
+   | "S cop NP "     1:          %leat@vblex.* NP.*.nom { den@prn.pers.p3.nt.sg.nom[lemcase=$lemcase] _ 1 _ 2[defnes=ind,gender=nt] }   
+   | "S cop NP adv"  1:           leat@vblex.* NP adv   { den@prn.pers.p3.nt.sg.nom[lemcase=$lemcase] _ 1 _ 2[defnes=ind,gender=nt] _ 3 }   
+   | "S np cop a"    4: NP        leat@vblex.* adj      { 1[defnes=def] _ 2 _ 3[gender=1.gender/tl] }
+   | "S np cop ap"   7: NP        leat@vblex.* adv adj  { 1[defnes=def] _ 2 _ 3 _ 4[gender=1.gender/tl] }
+   | "S pp cop a"    5: PP        leat@vblex.* adj      { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
+   | "S pp cop ap"   8: PP        leat@vblex.* adv adj  { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom _ 3 _ 4[gender=nt] }
+;
+
    
 !   | "S np cop ap" 7: NP  leat@vblex.* AP { 1[defnes=def] _ 2 _ 3[gender=1.gender/tl] }
 !   | "S pp cop ap" 8: PP  leat@vblex.* AP { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom _ 3[gender=nt] }
 !   | "S adv cop ap" 9: ADV leat@vblex.* AP { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
 
-   | "S np cop ap" 7: NP  leat@vblex.* adv adj { 1[defnes=def] _ 2 _ 3 _ 4[gender=1.gender/tl] }
-   | "S pp cop ap" 8: PP  leat@vblex.* adv adj { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom _ 3 _ 4[gender=nt] }
-   | "S adv cop ap" 9: ADV leat@vblex.* adv adj { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3 _ 4[gender=nt] }
-   | "S cop NP " 1: leat@vblex.* NP  { den@prn.pers.p3.nt.sg.nom _ 1 _ 2[defnes=ind] }   
-   | "S cop NP adv" 1: leat@vblex.* NP adv { den@prn.pers.p3.nt.sg.nom _ 1 _ 2[defnes=ind] _ 3 }   
-;
+
 
 !den<prn><pers><p3><nt><sg><nom>
 
