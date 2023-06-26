@@ -199,8 +199,7 @@ NP -> 1: %QP n.*.sg.gen         {%1[defnes=ind] _ 2[number=pl, defnes=ind]}
     | 1: %QP adj adj n.*.sg.gen {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl] _ 4[number=pl, defnes=ind]}
     ;
 
-NP -> 1: %n       {1(maybe_det)[defnes=$defnes,has_adj=no]  %1}
-    | 3: %n.*.nom {%1[defnes=ind,has_adj=no]}
+NP -> 1: %n { 1(maybe_det)[defnes=$defnes,has_adj=no]  %1 } ! kanskje sett inn «en/ei»
     | 4: adj %n.*.nom {den@det.dem.m.sg _ 1[defnes=def] _ %2[defnes=def,has_adj=no]}
 !   | 3: %n.*.[advlcase] {%1[defnes=def,has_adj=no]}
     | 3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no] %1}
@@ -311,7 +310,7 @@ VP -> "enkeltverb"      %vblex                                {1 }
 !   ;
 
 ! !VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
-S -> "S np vp" 2: NP VP { 1[defnes=def] _ 2 }
+S -> "S np vp" 2: NP %VP { 1[defnes=def] _ %2 }
    | "S np cop a" 4: NP  leat@vblex.* adj { 1[defnes=def] _ 2 _ 3[gender=1.gender/tl] }
    | "S pp cop a" 5: PP  leat@vblex.* adj { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
    | "S adv cop a" 5: ADV leat@vblex.* adj { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
