@@ -51,11 +51,12 @@ colour () {
 export -f colour
 
 trans () {
-    tee >(apertium -d . "${mode}-transfer" 2>&1 | colour >&2) <<<"${input}" \
-        | tee >(apertium -d . "${mode}-transfer-tree" | colour >&2)         \
-        | apertium -d . "${mode}"                                           \
-        | tee >(colour >&2)                                                 \
-        |                                                                   \
+    echo "${input}"                                                 \
+        | tee >(apertium -d . "${mode}-transfer" 2>&1 | colour >&2) \
+        | tee >(apertium -d . "${mode}-transfer-tree" | colour >&2) \
+        | apertium -d . "${mode}"                                   \
+        | tee >(colour >&2)                                         \
+        |                                                           \
         if [[ -n ${ref} ]]; then
             diff -sU1 - <(echo "$ref") | dwdiff -uc
         else
