@@ -107,10 +107,14 @@ pr: _;
 cnjcoo: _;
 cnjsub: _;
 part: _;
+cm: _; ! comma
+ij: _; ! interjection
 
 prn_pos: _.<pos>.gender.number;
 prn_oth: _.prn_type.person.gender.number.case ;
+prn_pers: _.<pers>.person.<m>.number.case ; ! TODO: fix for gender.
 prn: (if (1.case/sl = gen) 1(prn_pos)
+      elif (1.prn_type = pers) 1(prn_pers)
       else 1(prn_oth)) ;
 
 NP:    _.semtag.gender.number.case.defnes.a_split; ! NP needs semtag from below.
@@ -209,7 +213,7 @@ NP -> 1: %n       {1(maybe_det)[defnes=$defnes,has_adj=no]  %1} ! kanskje sett i
     | 2: adj %n [$defnes=ind]  
          { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2}
     | 1: %prn.pers [$defnes=def] { %1 }
-    | 2: %prn.dem { %1 }
+    | 2: %prn.dem { %1[case=""] }
     | 2: det %n [$defnes=ind] { 1 _ 2 }
     | 10: %PROPN { %1 }
     ;
@@ -262,6 +266,7 @@ cond_NIL_verb = "berret" "dáhttut" "dáidit" "fertet" "galgat" "háliidit" "má
 VP -> "enkeltverb"   1:  %vblex                               {%1[tense="",person=""] } 
     |       "ikke"  10:  %ii@vblex.iv.neg vblex.*.conneg      {%2[tense=pres] _ ikke@adv[tense="",person=""]} 
     |       "ikke"  10:  %ii@vblex.iv.neg vblex.*.conneg VP   {%2[infl=pres] _ ikke@adv[tense="",person=""] _ 3 } 
+    |       "ikke"  11:  %ii@vblex.iv.neg  ","@cm   {nei@ij  2 } 
     |  "V VP"        3: %[cond_NIL_verb]@vblex VP             {%1 _ 2}    
     |  "V V inf"     3: %[cond_NIL_verb]@vblex vblex          {%1 _ 2}    
     |  "V V inf"     2:                 %vblex vblex.*.inf    {%1 _ å@part _ 2}    
