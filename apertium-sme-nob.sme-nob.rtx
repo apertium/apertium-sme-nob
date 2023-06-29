@@ -1,39 +1,5 @@
 ! sme-nob.rtx
 
-
-! Contributions from an alternative rtx branch that popped up, to be integrated.
-! This concerns mainly actio, participles and also pronoun insertion
-! Deleting when integrated, see at the end of the doc for full list
-
-!rtx ! vblex_simple: (if (1.finity = inf) 1(vblex_inf)
-!rtx !         elif (1.finity = actio) 1(vblex_inf)[inf=inf]  ! probably not ideal
-!rtx !         elif (1.pcp = pp) 1(vblex_pp)
-!rtx !         elif (1.pcp = prfprc) 1(vblex_pp)  ! probably not ideal
-!rtx !         elif (1.pcp = pprs) 1(vblex_pp)
-!rtx !         else 1(vblex_fin) ) ;
-!rtx ! !vblex: _.tense ;
-!rtx ! vblex: (if (1.derp = der_passl)
-!rtx !           [ 1(vblex_simple)[pos_tag=vblex,lem=bli] _ 1(vblex_pp)[pcp=pp] ]
-!rtx !         elif (1.derp = der_inchl)
-!rtx !           [ 1(vblex_simple)[lem=begynne] _ å@part _ 1(vblex_simple)[finity=inf,inf=inf] ]
-!rtx !         else 1(vblex_simple)) ;
-!rtx ! 
-!rtx ! pick_pro: (if (1.person=p1 & 1.number=sg) jeg@prn.pers.p1.mf.sg.nom
-!rtx ! 		   elif (1.person=p2 & 1.number=sg) du@prn.pers.p2.mf.sg.nom
-!rtx ! 		   elif (1.person=p3 & 1.number=sg) hun@prn.pers.p3.f.sg.nom
-!rtx ! 		   elif (1.person=p1 & (1.number=pl or 1.number=du)) vi@prn.pers.p1.mf.pl.nom
-!rtx ! 		   elif (1.person=p2 & (1.number=pl or 1.number=du)) dere@prn.pers.p2.mf.pl.nom
-!rtx ! 		   else de@prn.pers.p3.un.pl.nom
-!rtx ! 		   ) ;
-!rtx ! 
-!rtx ! ===================
-!rtx ! 
-!rtx ! VP -> vblex.tv NP { 1 _ 2[definite=ind] } ;
-!rtx ! VP -> %vblex.tv NP { 1 _ 2[definite=ind] } ;
-!rtx ! VP -> %vblex { 1 } ;
-!rtx ! S -> NP VP { 1 _ 2 } ;
-!rtx ! S -> VP { 1(pick_pro) _ 1 } ;
-
 ! Pick genders etc. from tl (and if not, from anaphoric referent), but don't fall back to sl:
 SIDE_SOURCES = tl ref ;
 
@@ -41,7 +7,7 @@ SIDE_SOURCES = tl ref ;
 !! ATTRIBUTE CATEGORIES !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!
 
-function = "@+FAUXV" "@\+FAUXV" "@\+FMAINV" "@+FMAINV" "@-F←ADVL" "@-F←ADVL-ine" "@-F←ADVL-ela" "@-F←OBJ" "@-F←OPRED" "@-F←SUBJ" "@-FADVL→" "@-FAUXV" "@-FMAINV" "@-FOBJ→" "@-FSUBJ→" "@←ADVL" "@←ADVL-ela" "@←ADVL-ine" "@←OBJ" "@←OPRED" "@←PPRED" "@←SPRED" "@←SUBJ" "@→A" "@→ADVL" "@→CC" "@→N" "@→Num" "@→P" "@→Pron" "@A←" "@ADVL" "@ADVL←" "@ADVL→" "@ADVL-ela→" "@ADVL-ine→" "@ADVLcs-ela→" "@ADVLcs-ine→" "@ADVLqst-ela→" "@ADVLqst-ine→" "@ADVLhab→" "@←ADVLhab" "@←SUBJext" "@ADVL→CS" "@APP-ADVL←" "@APP-N←" "@APP-Pron←" "@CNP" "@COMP-CS←" "@CVP" "@HNOUN" "@INTERJ" "@N←" "@Num←" "@OBJ→" "@OPRED→" "@P←" "@PCLE" "@Pron←" "@SPRED←OBJ" "@SPRED→" "@SUBJ→" "@VOC" "@X"  ;
+function = "@+FAUXV" "@+FAUXV" "@+FMAINV" "@-F←ADVL" "@-F←ADVL-ine" "@-F←ADVL-ela" "@-F←OBJ" "@-F←OPRED" "@-F←SUBJ" "@-FADVL→" "@-FAUXV" "@-FMAINV" "@-FOBJ→" "@-FSUBJ→" "@←ADVL" "@←ADVL-ela" "@←ADVL-ine" "@←OBJ" "@←OPRED" "@←PPRED" "@←SPRED" "@←SUBJ" "@→A" "@→ADVL" "@→CC" "@→N" "@→Num" "@→P" "@→Pron" "@A←" "@ADVL" "@ADVL←" "@ADVL→" "@ADVL-ela→" "@ADVL-ine→" "@ADVLcs-ela→" "@ADVLcs-ine→" "@ADVLqst-ela→" "@ADVLqst-ine→" "@ADVLhab→" "@←ADVLhab" "@←SUBJext" "@ADVL→CS" "@APP-ADVL←" "@APP-N←" "@APP-Pron←" "@CNP" "@COMP-CS←" "@CVP" "@HNOUN" "@INTERJ" "@N←" "@Num←" "@OBJ→" "@OPRED→" "@P←" "@PCLE" "@Pron←" "@SPRED←OBJ" "@SPRED→" "@SUBJ→" "@VOC" "@X"  ;
 
 number = sg pl du ; ! du just in case (?)
 gender = f m nt un mf ;
@@ -50,7 +16,7 @@ comp = pst comp sup ;
 sint = sint ;
 prn_type = pers dem refl pos ; ! pos possessive
 person = p1 p2 p3 ;
-case = nom acc gen ill loc ess ;
+case = nom acc gen ill loc ess com ;
 gramcase = nom acc gen ;
 oblcase = acc gen ill loc ess ;
 advlcase = ill loc ess ;
@@ -67,6 +33,7 @@ num = num ;
 a_det = qnt emph dem itg pos ;
 a_cmp = cmp cmp-split ;
 a_split = cmp-split ;
+a_hab = ←hab→ ;
 
 ! Begin Linda/Daniel definitions (to be integrated)
 inf = inf actio ; ! this is Linda & Daniel
@@ -86,6 +53,7 @@ prntype = pers ind qnt itg dem pos rel;
 !! TAG-REWRITE RULES !!
 !!!!!!!!!!!!!!!!!!!!!!!
 
+!gender > gender : mf m ;
 
 !!!!!!!!!!!!!!!!!!!!!
 !! OUTPUT PATTERNS !!
@@ -100,7 +68,8 @@ adj: (always
               else 1.gender), 
               number=(if (1.defnes = def) sp else 1.number)]);
 adv: _;
-num: _.a_det.gender.number.case ; 
+num: <det>.a_det.gender.number.case ; 
+
 vblex: _.infl ;
 post: _ ;
 pr: _;
@@ -111,9 +80,11 @@ cm: _; ! comma
 ij: _; ! interjection
 
 prn_pos: _.<pos>.gender.number;
+prn_detpos: <det>.<pos>.gender.number;
 prn_oth: _.prn_type.person.gender.number.case ;
 prn_pers: _.<pers>.person.<m>.number.case ; ! TODO: fix for gender.
 prn: (if (1.case/sl = gen) 1(prn_pos)
+      elif (1.pos_tag/tl = det) 1(prn_detpos)
       elif (1.prn_type = pers) 1(prn_pers)
       else 1(prn_oth)) ;
 
@@ -140,7 +111,7 @@ maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
                [ den@det.dem.[1.gender].sg _ ]
             elif (1.defnes = ind and 1.number = sg)
                [ en@det.qnt.[1.gender].sg _ ]
-            elif (1.defnes = ind and 1.case/sl = acc)
+            elif (1.defnes = ind and 1.number/tl = sg and 1.case/sl = acc)
                [ en@det.qnt.[1.gender].sg _ ]
             else []
             ) ;
@@ -154,9 +125,9 @@ maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
 
 det -> %det.* {1};
 
-AP -> 1: %adj {%1}
-    | 3: adv   %adj { 1 _ %2}
-    | 3: adj C %adj { %1 _ 2 _ %3} 
+AP -> "adj"           1: %adj {%1}
+    | "adv - adj"     3: adv   %adj { 1 _ %2}
+    | "adj - C - adj" 3: adj C %adj { %1 _ 2 _ %3} 
     ;
 
 ADV -> adv {1};
@@ -202,21 +173,21 @@ QP -> "QP qnt"    8: %num {%1[a_det=qnt,gender=un,case=""]} ;
 NP -> 1: %QP n.*.sg.gen         {%1[defnes=ind] _ 2[number=pl, defnes=ind]}
     | 5: %QP AP n.*.sg.acc      {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl, defnes=ind]}
     | 1: %QP adj adj n.*.sg.gen {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl] _ 4[number=pl, defnes=ind]}
+    | "poss NP" 1: %prn.pers.*.gen n { %1 _ 2 }
     ;
 
-
-NP -> 1: %n       {1(maybe_det)[defnes=$defnes,has_adj=no]  %1} ! kanskje sett inn «en/ei»
-!   | 3: %n.*.nom {%1[defnes=ind,has_adj=no]}
-    | 4: adj %n.*.nom {den@det.dem.m.sg _ 1[defnes=def] _ %2[defnes=def,has_adj=no]}
-!   | 3: %n.*.[advlcase] {%1[defnes=def,has_adj=no]}
-    | 3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no] %1}
-    | 2: adj %n [$defnes=ind]  
-         { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2}
-    | 1: %prn.pers [$defnes=def] { %1 }
-    | 2: %prn.dem { %1[case=""] }
-    | 2: det %n [$defnes=ind] { 1 _ 2 }
-    | 10: %PROPN { %1 }
+!NP -> "maybe_det n"     1: %n       {1(maybe_det)[defnes=$defnes,has_adj=no]  %1} ! kanskje sett inn «en/ei»
+!    | "maybe_det acc"   3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no] %1}
+NP -> "maybe_det n"     1: %n       {  %1} ! kanskje sett inn «en/ei»
+    | "maybe_det acc"   3: %n.*.acc { %1}
+    | "adj n"           2: adj %n [$defnes=ind]  { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2} !to VP?
+    | "prn pers"        1: %prn.pers [$defnes=def] { %1 }
+    | "prn dem"         2: %prn.dem { %1[case=""] }
+    | "det n"           2: det %n [$defnes=ind] { 1 _ 2 }
+    | "prop"            4: %PROPN { %1 }
     ;
+
+      ! NP1.gen NP2 > NP2 av NP1  ! girjji kopiija > en kopi av boka
 
 C -> cnjcoo {1} 
    | cnjsub {1}
@@ -266,17 +237,20 @@ cond_NIL_verb = "berret" "dáhttut" "dáidit" "fertet" "galgat" "háliidit" "má
 VP -> "enkeltverb"   1:  %vblex                               {%1[tense="",person=""] } 
     |       "ikke"  10:  %ii@vblex.iv.neg vblex.*.conneg      {%2[tense=pres] _ ikke@adv[tense="",person=""]} 
     |       "ikke"  10:  %ii@vblex.iv.neg vblex.*.conneg VP   {%2[infl=pres] _ ikke@adv[tense="",person=""] _ 3 } 
-    |       "ikke"  11:  %ii@vblex.iv.neg  ","@cm   {nei@ij  2 } 
-    |  "V VP"        3: %[cond_NIL_verb]@vblex VP             {%1 _ 2}    
-    |  "V V inf"     3: %[cond_NIL_verb]@vblex vblex          {%1 _ 2}    
-    |  "V V inf"     2:                 %vblex vblex.*.inf    {%1 _ å@part _ 2}    
+    |       "ikke"  11:  %ii@vblex.iv.neg  ","@cm             {nei@ij 2 } 
+    |  "V inf"       3: %[cond_NIL_verb]@vblex vblex.*.inf    {%1 _ 2}    
+    |  "V inf NP"    3: %[cond_NIL_verb]@vblex vblex.*.inf PP {%1 _ 2 _ 3}    
+    |  "V inf NP"    3: %[cond_NIL_verb]@vblex vblex.*.inf NP {%1 _ 2 _ 3}    
+    |  "V å inf"     2:                 %vblex vblex.*.inf    {%1 _ å@part _ 2}    
+    |  "V å inf NP"  2:                 %vblex vblex.*.inf PP {%1 _ å@part _ 2 _ 3}    
+    |  "V å inf NP"  2:                 %vblex vblex.*.inf NP {%1 _ å@part _ 2 _ 3}    
     |  "V PP"        6:                 %vblex PP             {%1 _ %2}    
     |  "V NP PP"     2:                 %vblex vblex.*.prfprc {%1 _ 2}    
     |  "V NP PP"     3:                 %vblex NP PP          {%1 _ 2 _ 3}    
     |  "V NP.ind"    4: %vblex NP.*.gramcase                  {%1 _ 2[defnes=ind] }
-    |  "V NP PP"     3: %vblex NP PP         { %1 _ 2[defnes=ind] _ 3}    
-    |  "V adj"       1: %leat@vblex adj      { %1 _ 2[gender=nt]}
-    |  "V adj"       2: %leat@vblex adv adj  { %1 _ 2 _ 3[gender=nt]}
+    |  "V NP PP"     3: %vblex NP PP                          {%1 _ 2[defnes=ind] _ 3}    
+    |  "V adj"       1: %leat@vblex adj                       {%1 _ 2[gender=nt]}
+    |  "V adj"       2: %leat@vblex adv adj                   {%1 _ 2 _ 3[gender=nt]}
 !   |  "V NP.ind"    5: %leat@vblex NP.*.sg    { 1 _ en@det.qnt.[$gender=2.gender].sg _ 2[defnes=ind] } ! gender fro NP!
 ! Verbs with oblique complements
     | "acc_om_verb"  2:  %[acc_om_verb]@vblex NP.*.acc { %1 _  om@pr _ 2[defnes=def] }
@@ -290,9 +264,7 @@ VP -> "enkeltverb"   1:  %vblex                               {%1[tense="",perso
     | "loc_om_verb"  2:  %[loc_om_verb]@vblex NP.*.loc { %1 _  om@pr _ 2[defnes=def] }
     | "loc_som_verb" 2: %[loc_som_verb]@vblex NP.*.loc { %1 _ som@pr _ 2[defnes=def] }
     
-    | "ill_for_verb" 4: %[ill_for_verb]@vblex AP  NP.*.ill { %1 _ 2 _ for@pr _ 3[defnes=def] } 
-      ! TODO: Jeg betyr for den mye byen.
-      ! NP1.gen NP2 > NP2 av NP1  ! girjji kopiija > en kopi av boka
+    | "ill_for_verb" 4: %[ill_for_verb]@vblex AP  NP.*.ill { %1 _ 2 _ for@pr _ 3[defnes=def] } !TODO: Jeg betyr for den mye byen.
     | "gen_av_head"    3: %vblex  NP.*.gen   [gen_av_head]@NP { %1 _ 3 _   av@pr _ 2[defnes=def] } 
     | "gen_for_head"   3: %vblex  NP.*.gen  [gen_for_head]@NP { %1 _ 3 _  for@pr _ 2[defnes=def] } 
     | "gen_i_head"     3: %vblex  NP.*.gen    [gen_i_head]@NP { %1 _ 3 _    i@pr _ 2[defnes=def] } 
@@ -313,15 +285,20 @@ VP -> "enkeltverb"   1:  %vblex                               {%1[tense="",perso
 !    | "VP_PP"          1: VP PP  {1 _ 2}
     ;
 
+!    |  "V VP"       4: %[cond_NIL_verb]@vblex VP             {%1 _ 2}    
+!"maybe_det n"     1: %n       {1(maybe_det)[defnes=$defnes,has_adj=no]  %1} ! kanskje sett inn «en/ei»
+!    | "maybe_det acc"   3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no] %1}
+    
 
+! | "maybe_det adj n" 2: adj %n [$defnes=ind]  { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2} !to VP?
+! | ""  4: adj %n.*.nom {den@det.dem.m.sg[lemcase=1.lemcase] _ 1[defnes=def, lemcase=2.lemcase] _ %2[defnes=def,has_adj=no]} Move to VP
+! | 3: %n.*.nom {%1[defnes=ind,has_adj=no]}
+! | 3: %n.*.[advlcase] {%1[defnes=def,has_adj=no]}
+! ! VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
 
-!S -> "S_np_vp" 10: NP VP {1 _ 2}
-!   | "det_vp"   9: VP {det@prn.pers.p3.nt.sg.nom _ }
-!   ;
-
-! !VP -> vblex.tv NP { 1 _ 2[defnes=ind] } ; ! Trond
 
 S -> "S np vp"          9: NP %VP { 1[defnes=def] _ %2 }
+!   | "S np vp vp"       9: NP %VP VP { 1[defnes=def] _ %2 _ 3 }
    | "S np  cop a"      4: NP  leat@vblex.* adj { 1[defnes=def] _ 2 _ 3[gender=1.gender/tl] }
    | "S pp  cop a"      5: PP  leat@vblex.* adj { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
    | "S adv cop a"      5: ADV leat@vblex.* adj { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
@@ -330,19 +307,19 @@ S -> "S np vp"          9: NP %VP { 1[defnes=def] _ %2 }
    | "S adv cop a"      5: ADV       leat@vblex.* adj      { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
    | "S adv cop ap"     9: ADV       leat@vblex.* adv adj  { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3 _ 4[gender=nt] }
 !   | "S cop NP "        1:          %leat@vblex.* NP.*.nom { den@prn.pers.p3.nt.sg.nom[lemcase=$lemcase] _ 1 _ 2[defnes=ind,gender=nt] }   
-   | "S cop NP adv"     1:           leat@vblex.* NP adv   { den@prn.pers.p3.nt.sg.nom[lemcase=$lemcase] _ 1 _ 2[defnes=ind,gender=nt] _ 3 }   
+   | "S cop NP adv"     1:           leat@vblex.* NP adv   { 3[lemcase = 1.lemcase] _ 1[lemcase = 2.lemcase] _ den@prn.pers.p3.nt.sg.nom _ 2[defnes=ind,gender=nt] }   
    | "S np cop a"       4: NP        leat@vblex.* adj      { 1[defnes=def] _ 2 _ 3[gender=1.gender/tl] }
    | "S np cop ap"      7: NP        leat@vblex.* adv adj  { 1[defnes=def] _ 2 _ 3 _ 4[gender=1.gender/tl] }
    | "S pp cop a"       5: PP        leat@vblex.* adj      { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
    | "S pp cop ap"      8: PP        leat@vblex.* adv adj  { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom _ 3 _ 4[gender=nt] }
-;
+!   | "mus lea X"        1: %prn.*.←hab→ leat@vblex.* NP { %1[case=nom] _ ha@vblex[tense=2.tense/sl]  _ 3}
+   | "mus lea X"        1: %prn.*.←hab→ leat@vblex.* NP { %1[case=nom] _ ha@vblex[tense=2.tense/sl] _ 1(maybe_det)[defnes=$defnes,has_adj=no] _ 3}
+   ;
 
    
 !   | "S np cop ap" 7: NP  leat@vblex.* AP { 1[defnes=def] _ 2 _ 3[gender=1.gender/tl] }
 !   | "S pp cop ap" 8: PP  leat@vblex.* AP { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom _ 3[gender=nt] }
 !   | "S adv cop ap" 9: ADV leat@vblex.* AP { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
-
-
 
 !den<prn><pers><p3><nt><sg><nom>
 
@@ -369,6 +346,23 @@ S -> "S np vp"          9: NP %VP { 1[defnes=def] _ %2 }
 !adj_pred: _.comp.number.case ;
 !adj: (if (1.attr = attr) 1(adj_attr)
 !      else 1(adj_pred)) ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
