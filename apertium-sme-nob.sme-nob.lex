@@ -3138,6 +3138,9 @@ SELECT:fallback ("smidig"i) (0 ("<geabbil>"i)) ;
 SELECT ("gammel"i) (0 ("<dološ>"i) LINK 0 attr);
 SELECT:fallback ("gammel tid"i) (0 ("<dološ>"i));
 
+SELECT ("glad"i) (0 ("<ilolaš>"i) LINK 0 SPRED);
+SELECT ("gledelig"i) (0 ("<ilolaš>"i));
+
 SELECT ("dyrebar"i) (0 ("<divrras>"i) LINK 0 nom LINK *1 sem_hum LINK 0 pl + ill);
 SELECT:fallback ("dyr"i) (0 ("<divrras>"i));
 
