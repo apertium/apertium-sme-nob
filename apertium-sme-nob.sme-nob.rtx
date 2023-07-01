@@ -155,7 +155,7 @@ NP -> 1: %QP n.*.sg.gen         {%1[defnes=ind] _ 2[number=pl, defnes=ind]}
     | "maybe_det acc"   3: %n.*.acc { %1}
     | "adj n"           2: adj %n [$defnes=ind] { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2} !to VP?
     | "poss1 n"         3: prn.pers.p1.*.gen %n { 2[defnes=def] _ min@det.pos.nt.sg} 
-    | "poss3 n"         3: prn.pers.p3.*.gen %n { 2[defnes=def] _ din@det.pos.m.sg[gender=m]} 
+    | "poss3 n"         3: prn.pers.p2.*.gen %n { 2[defnes=def] _ din@det.pos.m.sg[gender=m]} 
     | "poss3 n"         3: prn.pers.p3.*.gen %n { 2[defnes=def] _ hans@det.pos.m.sg} 
     | "prn pers"        1: %prn  { %1 }
     | "prn pers"        1: %prn.pers  { %1 }
