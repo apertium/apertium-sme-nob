@@ -82,17 +82,22 @@ ij: _; ! interjection
 prn_pos: _.<pos>.gender.number;
 prn_detpos: <det>.<pos>.gender.number;
 prn_oth: _.prn_type.person.gender.number.case ;
-prn_pers: _.<pers>.person.<m>.number.case ; ! TODO: fix for gender.
+prn_12pers: _.<pers>.person.<mf>.number.case ; ! TODO: fix for gender.
+prn_3pers: _.<pers>.<p3>.<m>.number.case ; ! TODO: fix for gender.
 prn: (if (1.case/sl = gen) 1(prn_pos)
       elif (1.pos_tag/tl = det) 1(prn_detpos)
-      elif (1.prn_type = pers) 1(prn_pers)
+      elif (1.prn_type = pers and 1.person = p3) 1(prn_3pers)
+      elif (1.prn_type = pers and 1.person = p1) 1(prn_12pers)
+      elif (1.prn_type = pers and 1.person = p2) 1(prn_12pers)
       else 1(prn_oth)) ;
+
+! Define phrases as: "NP: _;" ?
 
 NP:    _.semtag.gender.number.case.defnes.a_split; ! NP needs semtag from below.
 DP:    _.gender.number.case.defnes.a_split;
 QP: _;
 PP: _ ;
-PROPN: _.npclass.gender;
+PROPN: _; ! sjekk utan: .npclass.gender;
 VP: _.infl.person ;
 ADV: _;
 AP: _.sint.comp.gender.number.defnes ;
@@ -132,7 +137,40 @@ AP -> "adj"           1: %adj {%1}
 
 ADV -> adv {1};
 
-PROPN -> %np.* {%1} ; ! remove number and case 
+!PROPN -> %np.* {%1} ; ! remove number and case 
+
+QP -> "QP qnt"    8: %num {%1[a_det=qnt,gender=un,case=""]} ;
+
+NP -> 1: %QP n.*.sg.gen         {%1[defnes=ind] _ 2[number=pl, defnes=ind]}
+    | 5: %QP AP n.*.sg.acc      {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl, defnes=ind]}
+    | 1: %QP adj adj n.*.sg.gen {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl] _ 4[number=pl, defnes=ind]}
+    | "poss NP" 1: %prn.pers.*.gen n { %1 _ 2 }
+!    | 
+!    ;
+
+!NP -> "maybe_det n"     1: %n       {1(maybe_det)[defnes=$defnes,has_adj=no]  %1} ! kanskje sett inn «en/ei»
+!    | "maybe_det acc"   3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no] %1}
+!NP -> "maybe_det n"     1: %n       {  %1} ! kanskje sett inn «en/ei»
+    | "maybe_det n"     1: %n       {  %1} ! kanskje sett inn «en/ei» ! slå saman
+    | "maybe_det acc"   3: %n.*.acc { %1}
+    | "adj n"           2: adj %n [$defnes=ind] { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2} !to VP?
+    | "poss1 n"         3: prn.pers.p1.*.gen %n { 2[defnes=def] _ min@det.pos.nt.sg} 
+    | "poss3 n"         3: prn.pers.p3.*.gen %n { 2[defnes=def] _ din@det.pos.m.sg[gender=m]} 
+    | "poss3 n"         3: prn.pers.p3.*.gen %n { 2[defnes=def] _ hans@det.pos.m.sg} 
+    | "prn pers"        1: %prn  { %1 }
+    | "prn pers"        1: %prn.pers  { %1 }
+    | "prn dem"         2: %prn.dem { %1[case=""] }
+    | "det n"           2: det %n [$defnes=ind] { 1 _ 2 }
+    | "prop"            4: %PROPN { %1 }
+    ;
+
+!    | "prn pers"        1: %prn.pers [$defnes=def] { %1 }
+      ! NP1.gen NP2 > NP2 av NP1  ! girjji kopiija > en kopi av boka
+
+C -> cnjcoo {1} 
+   | cnjsub {1}
+   ;
+
 
 ess_i = "tillegg" "skumring" "regn" "tåke" ;
 ess_på = "besøk" ;
@@ -168,30 +206,6 @@ PP -> "postp"     2:   NP %post           {2        _  1[defnes=(if (1.lem in_ca
     | "com med"   5:     NP.*.com         {med@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     ;
 
-QP -> "QP qnt"    8: %num {%1[a_det=qnt,gender=un,case=""]} ;
-
-NP -> 1: %QP n.*.sg.gen         {%1[defnes=ind] _ 2[number=pl, defnes=ind]}
-    | 5: %QP AP n.*.sg.acc      {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl, defnes=ind]}
-    | 1: %QP adj adj n.*.sg.gen {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl] _ 4[number=pl, defnes=ind]}
-    | "poss NP" 1: %prn.pers.*.gen n { %1 _ 2 }
-    ;
-
-!NP -> "maybe_det n"     1: %n       {1(maybe_det)[defnes=$defnes,has_adj=no]  %1} ! kanskje sett inn «en/ei»
-!    | "maybe_det acc"   3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no] %1}
-NP -> "maybe_det n"     1: %n       {  %1} ! kanskje sett inn «en/ei»
-    | "maybe_det acc"   3: %n.*.acc { %1}
-    | "adj n"           2: adj %n [$defnes=ind]  { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2} !to VP?
-    | "prn pers"        1: %prn.pers [$defnes=def] { %1 }
-    | "prn dem"         2: %prn.dem { %1[case=""] }
-    | "det n"           2: det %n [$defnes=ind] { 1 _ 2 }
-    | "prop"            4: %PROPN { %1 }
-    ;
-
-      ! NP1.gen NP2 > NP2 av NP1  ! girjji kopiija > en kopi av boka
-
-C -> cnjcoo {1} 
-   | cnjsub {1}
-   ;
 
 !NP -> %NP cnjcoo NP {1 _ 2 _ 3 } ;
 
