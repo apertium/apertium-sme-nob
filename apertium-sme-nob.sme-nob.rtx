@@ -54,6 +54,7 @@ prntype = pers ind qnt itg dem pos rel;
 !!!!!!!!!!!!!!!!!!!!!!!
 
 !gender > gender : mf m ;
+number > number : du pl ;
 
 !!!!!!!!!!!!!!!!!!!!!
 !! OUTPUT PATTERNS !!
@@ -82,19 +83,9 @@ ij: _; ! interjection
 prn_pos: _.<pos>.gender.number;
 prn_detpos: <det>.<pos>.gender.number;
 prn_oth: _.prn_type.person.gender.number.case ;
-prn_12pers: _.<pers>.person.<mf>.number.case ; ! TODO: fix for gender.
-prn_3pers: _.<pers>.<p3>.<m>.number.case ; ! TODO: fix for gender.
-prn_plpers: _.<pers>.person.<un>.<pl>
-.case ;
 prn: (if (1.case/sl = gen) 1(prn_pos)
       elif (1.pos_tag/tl = det) 1(prn_detpos)
-!      elif (1.prn_type = pers and 1.person = p3) 1(prn_3pers)
-!      elif (1.prn_type = pers and 1.person = p1) 1(prn_12pers)
-!      elif (1.prn_type = pers and 1.person = p2) 1(prn_12pers)
-!      elif (1.prn_type = pers and 1.number = pl) 1(prn_plpers)
       else 1(prn_oth)) ;
-
-! Define phrases as: "NP: _;" ?
 
 NP:    _.semtag.gender.number.case.defnes.a_split; ! NP needs semtag from below.
 DP:    _.gender.number.case.defnes.a_split;
@@ -150,36 +141,24 @@ NP -> 1: %QP n.*.sg.gen         {%1[defnes=ind] _ 2[number=pl, defnes=ind]}
     | "poss NP" 1: %prn.pers.*.gen n { %1 _ 2 } ! xxx undefined pl ???
 !    | 
 !    ;
-
-!NP -> "maybe_det n"     1: %n       {1(maybe_det)[defnes=$defnes,has_adj=no]  %1} ! kanskje sett inn «en/ei»
+! NP -> "maybe_det n"     1: %n       {1(maybe_det)[defnes=$defnes,has_adj=no]  %1} ! kanskje sett inn «en/ei»
 !    | "maybe_det acc"   3: %n.*.acc {1(maybe_det)[defnes=ind,has_adj=no] %1}
-!NP -> "maybe_det n"     1: %n       {  %1} ! kanskje sett inn «en/ei»
+! NP -> "maybe_det n"     1: %n       {  %1} ! kanskje sett inn «en/ei»
     | "maybe_det n"     1: %n       {  %1} ! kanskje sett inn «en/ei» ! slå saman
     | "maybe_det acc"   3: %n.*.acc { %1}
     | "adj n"           2: adj %n [$defnes=ind] { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2} !to VP?
     | "poss1 n"         3: prn.pers.p1.*.gen %n { 2[defnes=def] _ min@det.pos.nt.sg} 
     | "poss2 n"         3: prn.pers.p2.*.gen %n { 2[defnes=def] _ din@det.pos.*.sg[gender=2.gender]} 
     | "poss3 n"         3: prn.pers.p3.sg.gen %n { 2[defnes=def] _ hans@det.pos.m.sg} 
-!    | "prn pers"        1: %prn  { 1[person=$person] }
-!    | "prn pers"        2: %prn.pers  { 1[person=1.person] }
-!    | "prn dem"         2: %prn.dem { %1[case=""] }
     | "det n"           2: det %n [$defnes=ind] { 1 _ 2 }
     | "prop"            4: %PROPN { %1 }
     | "nystart"         5: %prn  [$gender=(if (1.prn_type = pers and 1.person = p1 and 1.number = sg) mf
                                            elif (1.prn_type = pers and 1.person = p2 and 1.number = sg) mf
-					   elif (1.prn_type = pers and 1.number = pl) un
-			                   else m)] { 1 }
+					   elif (1.prn_type = pers and 1.number = pl ) un
+					   elif (1.prn_type = pers and 1.number = du ) un
+			                   else m)] { %1 }
     ;
 
-
-
-! Til inspirasjon:
-!NP -> NP cnjcoo NP [$gender=(if (1.gender = f and 3.gender = f) f else m),
-!                    $number=(if (2.lem =cl "or" and 1.number = sg and 3.number = sg) sg else pl)]
-!                   {1 _ 2 _ 3} ;
-
-
-!    | "prn pers"        1: %prn.pers [$defnes=def] { %1 }
       ! NP1.gen NP2 > NP2 av NP1  ! girjji kopiija > en kopi av boka
 
 C -> cnjcoo {1} 
@@ -461,3 +440,10 @@ S -> "S np vp"          9: NP %VP { 1[defnes=def] _ %2 }
 !rtx ! S -> VP { 1(pick_pro) _ 1 } ;
 
 ! Pick genders etc. from tl (and if not, from anaphoric referent), but don't fall back to sl:
+
+
+
+! Til inspirasjon:
+!NP -> NP cnjcoo NP [$gender=(if (1.gender = f and 3.gender = f) f else m),
+!                    $number=(if (2.lem =cl "or" and 1.number = sg and 3.number = sg) sg else pl)]
+!                   {1 _ 2 _ 3} ;
