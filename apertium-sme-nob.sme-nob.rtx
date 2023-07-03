@@ -308,6 +308,7 @@ VP -> "enkeltverb"   1:  %vblex                               {%1[tense="",perso
 S -> "S np vp"          9: NP %VP { 1[defnes=def] _ %2 }
 !   | "S np vp vp"       9: NP %VP VP { 1[defnes=def] _ %2 _ 3 }
    | "S np  cop a"      4: NP  leat@vblex.* adj { 1[defnes=def] _ 2 _ 3[gender=1.gender/tl] }
+   | "S np  cop NP a"   5: NP  leat@vblex.* NP adj { 1[defnes=def] _ 2 _ 3 _ 4[gender=1.gender/tl] }
    | "S pp  cop a"      5: PP  leat@vblex.* adj { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
    | "S adv cop a"      5: ADV leat@vblex.* adj { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
    | "S NP  cop NP "   10: NP.*.nom %leat@vblex.* NP.*.nom { 1 _ %2 _ 3[defnes=ind] }   
@@ -321,7 +322,8 @@ S -> "S np vp"          9: NP %VP { 1[defnes=def] _ %2 }
    | "S pp cop a"       5: PP        leat@vblex.* adj      { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom  _ 3[gender=nt] }
    | "S pp cop ap"      8: PP        leat@vblex.* adv adj  { 1[defnes=def] _ 2 _ den@prn.pers.p3.nt.sg.nom _ 3 _ 4[gender=nt] }
 !   | "mus lea X"        1: %prn.*.←hab→ leat@vblex.* NP { %1[case=nom] _ ha@vblex[tense=2.tense/sl]  _ 3}
-   | "mus lea X"        1: %prn.*.←hab→ leat@vblex.* NP { %1[case=nom] _ ha@vblex[tense=2.tense/sl] _ 1(maybe_det)[defnes=$defnes,has_adj=no] _ 3}
+   | "mus lea X"        1: %prn.*.←hab→ leat@vblex.*.pres.* NP { %1[case=nom] _ ha@vblex.pres _ 1(maybe_det)[defnes=$defnes,has_adj=no,gender=3.gender] _ 3}
+   | "mus lea X"        1: %prn.*.←hab→ leat@vblex.*.pret.* NP { %1[case=nom] _ ha@vblex.pret _ 1(maybe_det)[defnes=$defnes,has_adj=no,gender=3.gender] _ 3}
    ;
 
    
