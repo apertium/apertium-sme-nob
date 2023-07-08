@@ -27,16 +27,17 @@ transitivity = tv iv ;
 tense = pres pret imp ;
 vbinfin = inf prfprc prsprc actio ; ! Linda/Daniel pp pprs
 infl = [tense] [vbinfin] ;
+conneg = conneg ;
 npclass = ant org al top geo;
 num = num ;
 
-a_det = qnt emph dem itg pos ;
+det_type = qnt emph dem itg pos ;
 a_cmp = cmp cmp-split ;
 a_split = cmp-split ;
 a_hab = ←hab→ ;
 
 ! Begin Linda/Daniel definitions (to be integrated)
-inf = inf actio ; ! this is Linda & Daniel
+!inf = inf actio ; ! this is Linda & Daniel
 pcp = pp pprs prfprc ;
 finity = (FIN fin) inf actio pp prs pprs prfprc fin ;
 derp = der_inchl der_passl der_passs ;
@@ -56,6 +57,10 @@ prntype = pers ind qnt itg dem pos rel;
 !gender > gender : mf m ;
 number > number : du pl ;
 
+vbinfin > vbinfin : actio inf ;
+conneg > person : conneg p3 ;
+conneg > number : conneg sg ;
+
 !!!!!!!!!!!!!!!!!!!!!
 !! OUTPUT PATTERNS !!
 !!!!!!!!!!!!!!!!!!!!!
@@ -69,7 +74,7 @@ adj: (always
               else 1.gender), 
               number=(if (1.defnes = def) sp else 1.number)]);
 adv: _;
-num: <det>.a_det.gender.number.case ; 
+num: <det>.det_type.gender.number.case ; 
 
 vblex: _.infl ;
 post: _ ;
@@ -87,6 +92,7 @@ prn: (if (1.case/sl = gen) 1(prn_pos)
       elif (1.pos_tag/tl = det) 1(prn_detpos)
       else 1(prn_oth)) ;
 
+
 NP:    _.semtag.gender.number.case.defnes.a_split; ! NP needs semtag from below.
 DP:    _.gender.number.case.defnes.a_split;
 QP: _;
@@ -99,12 +105,43 @@ S: _ ;
 C: _; ! cnjcoo
 PR: _; ! pr
 
-det: _.a_det.gender.number ;
+det: _.det_type.gender.number ;
+DET: _.gender.case.number.person;
+
+!det: _.det_type.person.gender.number; ! sme-deu
+det_pos: _.det_type.gender.number; ! sme-deu = det
+
+! From sme-deu:
+
+DET -> %prn.pers.*.gen."@→N" { %1(det_pos) } |  ! Obs: list from sme-nob
+       %prn.pers.*.gen."@→A" { %1(det_pos) } |
+       %prn.pers.*.gen.*."@→N" { %1(det_pos) } |
+       %prn.pers.*.gen.*."@→A" { %1(det_pos) } |
+       %prn.ref.gen.*."@→N" { %1 } |
+       %prn.ref.gen.*."@→A" { %1 } |
+       %prn.ref.gen."@→N" { %1 } |
+       %prn.ref.gen."@→A" { %1 } |
+       %prn.dem.*."@→N" { %1 } |
+       %prn.dem.*."@→A" { %1 } |
+       %prn.ind.*."@→N" { %1 } |
+       %prn.ind.*."@→A" { %1 } |
+       %prn.itg.*."@→N" { %1 } |
+       %prn.itg.*."@→A" { %1 } |
+       %prn.ind."@→N" { %1 } |
+       %prn.ind."@→A" { %1 } |
+       %det { %1 } ;
+
+
 
 ! Mun oainnán girjji -> Jeg ser *ei* bok
 ! Mun oainnán stuorra girjjiid rukses viesu duohken.
 ! -> Jeg ser store bøker bak *det* røde huset.
 has_adj = yes no ;
+
+
+!!!!!!!!!!!!
+!! MACROS !!
+!!!!!!!!!!!!
 
 maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
                [ den@det.dem.[1.gender].sg _ ]
@@ -115,6 +152,111 @@ maybe_det: (if (1.defnes = def and 1.number = sg and 1.has_adj = yes)
             else []
             ) ;
 ! <def-attr n="has_adj"><attr-item n="yes"/><attr-item n="no"/></def-attr>
+
+
+! FROM SME-DEU:
+
+
+!maybe_art: (if (1.number = sg)
+!                (if (1.def = def)
+!                    (if (1.case = com) [der@det.def.[1.gender].sg.dat _]
+!                     elif (1.case = ill) [der@det.def.[1.gender].sg.acc _]
+!                     elif (1.case = loc) [der@det.def.[1.gender].sg.dat _]
+!                     elif (1.case = ess) [der@det.def.[1.gender].sg.nom _]
+!                     else [der@det.def.[1.gender].sg.[1.case] _ ])
+!                else
+!                    (if (1.negativity = neg)
+!                        (if (1.case = com) [kein@det.ind.[1.gender].sg.dat _]
+!                         elif (1.case = ill) [kein@det.ind.[1.gender].sg.acc _]
+!                         elif (1.case = loc) [kein@det.ind.[1.gender].sg.dat _]
+!                         elif (1.case = ess) [kein@det.ind.[1.gender].sg.nom _]
+!                         else [kein@det.ind.[1.gender].sg.[1.case] _ ])
+!                    else
+!                        (if (1.case = com) [ein@det.ind.[1.gender].sg.dat _]
+!                         elif (1.case = ill) [ein@det.ind.[1.gender].sg.acc _]
+!                         elif (1.case = loc) [ein@det.ind.[1.gender].sg.dat _]
+!                         elif (1.case = ess) [ein@det.ind.[1.gender].sg.nom _]
+!                         else [ein@det.ind.[1.gender].sg.[1.case] _ ])
+!                    )
+!                )
+!            else
+!                (if (1.def = def) 
+!                    (if (1.case = com) [der@det.def.mfn.pl.dat _]
+!                     elif (1.case = ill) [der@det.def.mfn.pl.acc _]
+!                     elif (1.case = loc) [der@det.def.mfn.pl.dat _]
+!                     elif (1.case = ess) [der@det.def.mfn.pl.nom _]
+!                     else [der@det.def.mfn.pl.[1.case] _])
+!                else 
+!                    (if (1.negativity = neg)
+!                        (if (1.case = com) [kein@det.ind.[1.gender].sg.dat _]
+!                         elif (1.case = ill) [kein@det.ind.[1.gender].sg.acc _]
+!                         elif (1.case = loc) [kein@det.ind.[1.gender].sg.dat _]
+!                         elif (1.case = ess) [kein@det.ind.[1.gender].sg.nom _]
+!                         else [kein@det.ind.[1.gender].sg.[1.case] _ ])
+!                    else []
+!                    )
+!                )
+!            );
+
+maybe_adp: (if (1.case = loc) [i@pr.dat _]
+            elif (1.case = ill) [i@pr.acc _]
+            elif (1.case = com) [med@pr.dat _]
+            elif (1.case = ess) [som@pr.nom _]  !! als?
+            else []) ;
+maybe_possessive: (if (1.poss = px1sg) [min@det.pos.m.sg.[1.case] _]
+                   elif (1.poss = px2sg) [din@det.pos.m.sg.[1.case] _]
+                   elif (1.poss = px3sg) [hans@det.pos.m.sg.[1.case] _] ! hennes
+                   elif (1.poss = px1du) [vår@det.pos.m.sg.[1.case] _]
+                   elif (1.poss = px2du) [deres@det.pos.m.sg.[1.case] _]
+                   elif (1.poss = px3du) [deres@det.pos.m.sg.[1.case] _]
+                   else []) ;
+pro_undrop: (if (1.number = sg)
+                (if (1.person = p1) [jeg@prn.pers.p1.mf.sg.nom _]
+                 elif (1.person = p2) [du@prn.pers.p2.mf.sg.nom _]
+                 elif (1.person = p3) []  !! no undrop 3.sg?
+                 else [$$expletive _])
+             elif (1.number = pl)
+                (if (1.person = p1) [vi@prn.pers.p1.mf.pl.nom _]
+                 elif (1.person = p2) [dere@prn.pers.p2.mf.pl.nom _]
+                 elif (1.person = p3) [] !! no undrop 3pl? [sie@prn.pers.p3.mf.pl.nom _]
+                 else [$$expletive _])
+             elif (1.number = du)
+                (if (1.person = p1) [vi@prn.pers.p1.mf.pl.nom _ beide@det.ind.mfn.pl.nom _]
+                 elif (1.person = p2) [dere@prn.pers.p2.mf.pl.nom _ beide@det.ind.mfn.pl.nom _]
+                 elif (1.person = p3) [de@prn.pers.p3.mf.pl.nom _ beide@det.ind.mfn.pl.nom _]
+                 else [$$expletive _])
+             else [$$expletive _]) ;
+pro3_undrop: (if (1.number = sg and 1.person = p3) [det@prn.pers.p3.nt.sg.nom _]
+              else []) ;
+maybe_nicht: (if (1.negativity = neg) [ingen@adv _]
+              else []) ; 
+measr_time_to_adj: (if (1.lem/tl = Jahr) jährig@adj.sint.[1.gender].sg.nom.sw
+                    else [1(n) ig@adj]) ;
+
+!! split pos generation fucntions
+! Denne på vent
+! adj: (if (1.depfunc = "@←SPRED") 1(adj_pred)[adj_type=pred]
+!       elif (1.depfunc = "@←OPRED") 1(adj_pred)[adj_type=pred]
+!       else 1(adj) ! adj_agr
+!      ) ;
+
+! Denne på vent
+!vblex_simple: (if (1.finity = inf) 1(vblex_inf)
+!        elif (1.finity = actio) 1(vblex_inf)[inf=inf]  ! probably not ideal
+!        elif (1.pcp = pp) 1(vblex_pp)
+!        elif (1.pcp = prfprc) 1(vblex_pp)  ! probably not ideal
+!        elif (1.pcp = pprs) 1(vblex_pp)
+!        else 1(vblex_fin) ) ;
+! Denne på vent        
+!vblex: (if (1.pass = pass)
+!          [ 1(vblex_simple)[pos_tag=vaux,lem=werden] _ 1(vblex_pp)[pcp=pp] ]
+!        elif (1.inch = inch)
+!          [ 1(vblex_simple)[lem=anfangen] _ zu@pr _ 1(vblex_simple)[finity=inf,inf=inf] ]
+!        else 1(vblex_simple)) ;
+! denne på vent
+! num: (if (1.numtype = arab) 1(num_digit)
+!       elif (1.numtype = ord) 1(num_ord)
+!       else 1(num_card) ) ;
 
 
 
@@ -133,7 +275,7 @@ ADV -> adv {1};
 
 PROPN -> %np.* {%1} ; ! remove number and case 
 
-QP -> "QP qnt"    8: %num {%1[a_det=qnt,gender=un,case=""]} ;
+QP -> "QP qnt"    8: %num {%1[det_type=qnt,gender=un,case=""]} ;
 
 NP -> 1: %QP n.*.sg.gen         {%1[defnes=ind] _ 2[number=pl, defnes=ind]}
     | 5: %QP AP n.*.sg.acc      {%1[defnes=ind] _ 2[number=pl] _ 3[number=pl, defnes=ind]}
@@ -147,15 +289,21 @@ NP -> 1: %QP n.*.sg.gen         {%1[defnes=ind] _ 2[number=pl, defnes=ind]}
     | "maybe_det n"     1: %n       {  %1} ! kanskje sett inn «en/ei» ! slå saman
     | "maybe_det acc"   3: %n.*.acc { %1}
     | "adj n"           2: adj %n [$defnes=ind] { 2(maybe_det)[defnes=$defnes,has_adj=yes] 1[number=2.number,gender=2.gender,defnes=$defnes] _ %2} !to VP?
+!    | "poss1 n"          3: prn.pers.p1.*.gen [if 2[gender
+!    
+!                           %n { 2[defnes=def] _ 1
+!    
+!    
     | "poss1 n"         3: prn.pers.p1.*.gen %n { 2[defnes=def] _ min@det.pos.nt.sg} 
-    | "poss2 n"         3: prn.pers.p2.*.gen %n { 2[defnes=def] _ din@det.pos.*.sg[gender=2.gender]} 
+    | "poss2 n"         3: prn.pers.p2.sg.gen %n { 2[defnes=def] _ din@det.pos} 
     | "poss3 n"         3: prn.pers.p3.sg.gen %n { 2[defnes=def] _ hans@det.pos.m.sg} 
+    | "poss3pl n"       3: prn.pers.p3.pl.gen %n { 2[defnes=def] _ hans@det.pos.m.sg} 
     | "det n"           2: det %n [$defnes=ind] { 1 _ 2 }
     | "prop"            4: %PROPN { %1 }
-    | "nystart"         5: %prn  [$gender=(if (1.prn_type = pers and 1.person = p1 and 1.number = sg) mf
-                                           elif (1.prn_type = pers and 1.person = p2 and 1.number = sg) mf
-					   elif (1.prn_type = pers and 1.number = pl ) un
-					   elif (1.prn_type = pers and 1.number = du ) un
+    | "prn gender"      5: %prn  [$gender=(if (1.prn_type = pers and 1.person = p1 and 1.number = sg) mf
+                            elif (1.prn_type = pers and 1.person = p2 and 1.number = sg) mf
+					        elif (1.prn_type = pers and 1.number = pl ) un
+					        elif (1.prn_type = pers and 1.number = du ) un
 			                   else m)] { %1 }
     ;
 
@@ -195,6 +343,7 @@ PP -> "postp"     2:   NP %post           {2        _  1[defnes=(if (1.lem in_ca
     | "loc på"    5:     NP.*.loc         { på@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     | "ill i"     5:  NP.*.[semtxt].*.ill {  i@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     | "ill på"    6:     num %NP.*.ill     {på@pr   _ 1[case=""] _ %2[defnes=ind,number=pl]}
+    | "ill til"   6:     prn.*.ill         {til@pr   _ %1[case = acc]}
     | "ill til"   5:     NP.*.ill         {til@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     | "ess som"   5:     NP.*.ess         {som@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
     | "com med"   5:     NP.*.com         {med@pr   _ %1[defnes=(if (1.lem in_caseless noun_pseudo_prop) ind else def)]}
@@ -242,7 +391,8 @@ loc_om_head = "artikkel" "avtale" "bok" "kontrakt" "snakk" "tale" ;
 
 cond_NIL_verb = "berret" "dáhttut" "dáidit" "fertet" "galgat" "háliidit" "máhttit" "soaitit" "sáhttit" "veadjit" "áigut" ;
 
-VP -> "enkeltverb"   1:  %vblex                               {%1[tense="",person=""] } 
+VP -> "enkeltverb"   1:  %vblex                               {%1[person=""] } 
+    | "enkeltverb"   2:  %vblex.*.actio.ess                    {1[infl=inf] } 
     |       "ikke"  10:  %ii@vblex.iv.neg vblex.*.conneg      {2[person=1.person,conneg=""] _ ikke@adv[tense="",person=""]} ! neg person 
     |       "ikke"  10:  %ii@vblex.iv.neg vblex.*.conneg VP   {%2[infl=pres] _ ikke@adv[tense="",person=""] _ 3 } 
     |       "ikke"  11:  %ii@vblex.iv.neg  ","@cm             {nei@ij 2 } 
