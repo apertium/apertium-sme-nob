@@ -1,6 +1,6 @@
-Revision: 5777
-AP_SRC1 Revision: 179326
-AP_SRC2 Revision: 1034
+(doesn't seem to be a repo)
+AP_SRC1 (doesn't seem to be a repo)
+AP_SRC2 (doesn't seem to be a repo)
 Running Regression-tests with mode "sme-nob" with updated tests ...
 
 sme-nob	  Mus lea biila.
@@ -94,7 +94,7 @@ WORKS	  Språkarbeidet i barnehagen krever mye arbeid både fra ansatte og forel
 
 sme-nob	  Nuorta-Finnmárkui lea Ukjendord OS hutkame hukset guokte bieggamillopárkka.
 	- Til Øst-Finnmark er *Ukjendord AS i ferd med å finne på å bygge to vindmølleparker.
-	+ Til Øst-Finnmark er *Ukjendord #AS<np><org> i ferd med å finne på å bygge to vindmølleparker.
+	+ Til Øst-Finnmark er *Ukjendord OS i ferd med å finne på å bygge to vindmølleparker.
 
 
 sme-nob	  dan.
@@ -242,7 +242,8 @@ WORKS	  til mitt store besvær.
 
 
 sme-nob	  Máŋga jagi son lea leamaš buoremusaid searvvis.
-WORKS	  Mange år har hun/han vært blant de beste.
+	- Mange år har hun/han vært blant de beste.
+	+ Mange år hun/han har vært blant de beste.
 
 
 sme-nob	  gáiddusoahpahussii.
@@ -538,7 +539,8 @@ WORKS	  hun/han er så ikke i ferd med å skrive.
 
 
 sme-nob	  Son lea taksivuoddjin Oslos.
-WORKS	  Hun/han er drosjesjåfør i Oslo.
+	- Hun/han er drosjesjåfør i Oslo.
+	+ Hun/han er i *taksivuoddjin Oslo.
 
 
 sme-nob	  Mus lea Ánde mielbargin.
@@ -638,11 +640,13 @@ WORKS	  Hun/han vasket seg.
 
 
 sme-nob	  ja de háliidin beassat 20 buoremusa searvái.
-WORKS	  og så ville jeg komme meg blant de 20 beste.
+	- og så ville jeg komme meg blant de 20 beste.
+	+ og så ville jeg komme meg blant 20 det beste.
 
 
 sme-nob	  de dusten sávvat beassat 20 buoremusa searvái.
-WORKS	  så torde jeg å ønske å komme meg blant de 20 beste.
+	- så torde jeg å ønske å komme meg blant de 20 beste.
+	+ så #tore<vblex><pret> jeg å ønske å komme meg blant 20 det beste.
 
 
 sme-nob	  Mii leat čoahkkanan digaštallat ášši.
@@ -704,11 +708,13 @@ WORKS	  Slik at sengene hadde blitt tilsølt med urin og ensomme barns tårer.
 
 
 sme-nob	  Mii manahit máŋgga vejolaš sámegieloahpaheaddji.
-WORKS	  Vi mister mange mulige samisklærere.
+	- Vi mister mange mulige samisklærere.
+	+ Vi mister mange mulige samisklæreres.
 
 
 sme-nob	  Danne heaitá Aslaksen Wikipedia-hoavdan.
-WORKS	  Derfor slutter Aslaksen som Wikipedia-sjef.
+	- Derfor slutter Aslaksen som Wikipedia-sjef.
+	+ Derfor slutter hun/han Aslaksen som Wikipedia-sjef.
 
 
 sme-nob	  Mánná oađđá.
@@ -736,7 +742,8 @@ WORKS	  Ser du barnet?
 
 
 sme-nob	  Skuvla lea leamaš stuorimus oassi prošeavttas.
-WORKS	  Skolen har vært den største delen av prosjektet.
+	- Skolen har vært den største delen av prosjektet.
+	+ Skolen har vært den største delen av et prosjekt.
 
 
 sme-nob	  Mis lea cahkkehit dola.
@@ -752,7 +759,8 @@ WORKS	  Statens vegvesen har nå skrevet en avtale om Hasviks snøryddingarbeide
 
 
 sme-nob	  Ministtar bođii, lohpidii ja manai fas.
-WORKS	  Ministeren kom, lovde og gikk igjen.
+	- Ministeren kom, lovde og gikk igjen.
+	+ Ministeren kom,lovde og gikk igjen.
 
 
 sme-nob	  Son orui Romssas mánnán.
@@ -832,7 +840,8 @@ WORKS	  Hun/han er i Norge.
 
 
 sme-nob	  Tine Chris Mathisen lea beassan leat mielde boazobargguin.
-WORKS	  Tine Chris Mathisen har fått være med på reindriftsarbeidene.
+	- Tine Chris Mathisen har fått være med på reindriftsarbeidene.
+	+ Tine Chris Mathisen har fått være med på reindriftsarbeider.
 
 
 sme-nob	  Go gullen sámegiela dien mátkkis.
@@ -860,7 +869,8 @@ WORKS	  Hun/han er fra Island.
 
 
 sme-nob	  Märtha Louise oaččui dan 16 jagi áigi.
-WORKS	  Märtha Louise fikk det for 16 år siden.
+	- Märtha Louise fikk det for 16 år siden.
+	+ Märtha Louise fikk det 16 år siden.
 
 
 sme-nob	  Märtha Louise oaččui dan 16 jagi dassái.
@@ -952,7 +962,8 @@ WORKS	  Her er det sider som kan tolkes på to måter.
 
 
 sme-nob	  Nu ii leat dáhpáhuvvan 567 jahkái.
-WORKS	  Slik har det ikke skjedd på 567 år.
+	- Slik har det ikke skjedd på 567 år.
+	+ Så har det ikke skjedd på 567 år.
 
 
 sme-nob	  kánske mun galggan hállat dušše sámegillii dán kanálas.
@@ -960,7 +971,8 @@ WORKS	  kanskje skal jeg snakke bare på samisk i denne kanalen.
 
 
 sme-nob	  Esther álggii hupmat fuolkkis birra, ja nu oahpásnuvven maiddái sunnje, čilge Skoglund.
-WORKS	  Esther begynte å snakke om slektningen, og slik ble jeg kjent også med henne, forklarer Skoglund.
+	- Esther begynte å snakke om slektningen, og slik ble jeg kjent også med henne, forklarer Skoglund.
+	+ Esther begynte å snakke om slektningen, og så ble jeg også kjent med henne, forklarer Skoglund.
 
 
 sme-nob	  Dál beasat oaidnit Giđđajohtima minuvttas minuktii.
@@ -972,12 +984,12 @@ WORKS	  Dette betyr selvfølgelig mye for den personen som har vunnet.
 
 
 sme-nob	  De livččii Larsenii vejolaš ovdanbuktit ođđajagisártnis sámegillii.
-	- Så hadde det vært for Larsen mulig å framføre nyttårstalen på samisk.
-	+ Så hadde det vært for Larsen mulig framføre nyttårstalen på samisk.
+WORKS	  Så hadde det vært for Larsen mulig å framføre nyttårstalen på samisk.
 
 
 sme-nob	  Sámediggi oaidná ahte sáhttá šaddat hástaleaddjin muhtun suohkaniidda Norggas bálvalit iežas sámegielat álbmoga sámegillii.
-WORKS	  Sametinget ser at det kan bli utfordrende for noen kommuner i Norge å betjene sitt samiskspråklige folk på samisk.
+	- Sametinget ser at det kan bli utfordrende for noen kommuner i Norge å betjene sitt samiskspråklige folk på samisk.
+	+ Sametinget ser at det kan bli utfordrende for noen kommuner i Norge å betjene seg selv på samiskspråklige folks samisk.
 
 
 sme-nob	  Dáhpáhus diehttelasat čuohcá dan journalisttalaš bargui.
@@ -1017,7 +1029,8 @@ WORKS	  Etter min oppfatning er lærlingeordning viktig.
 
 
 sme-nob	  Norggas lea 2005 rájes leamaš soahpamuš ráđđádallamiin stáhta eiseválddiid ja Sámedikki gaskkas.
-WORKS	  I Norge har det fra 2005 vært en avtale om konsultasjonene mellom statens myndigheter og Sametinget.
+	- I Norge har det fra 2005 vært en avtale om konsultasjonene mellom statens myndigheter og Sametinget.
+	+ I Norge har det fra 2005 vært en avtale om konsultasjoner mellom statens myndigheter og Sametinget.
 
 
 sme-nob	  Go lei sáhka sámemánát geat eai leat oahppan sámegiela ruovttus.
@@ -1037,7 +1050,8 @@ WORKS	  Kniven hadde hun/han lagd av stål og horn.
 
 
 sme-nob	  Mus bođii našunáladovdu.
-WORKS	  Hos meg kom en nasjonalfølelse.
+	- Hos meg kom en nasjonalfølelse.
+	+ Hos meg kom ennasjonal følelse.
 
 
 sme-nob	  Go Tine Mathisen bođii deike davás de lei son juo oahppan sámegiela.
@@ -1073,7 +1087,8 @@ WORKS	  Heller ikke jeg kan tale på russisk.
 
 
 sme-nob	  Nu jáhkán munge.
-WORKS	  Slik tror jeg også.
+	- Slik tror jeg også.
+	+ Så tror jeg også.
 
 
 sme-nob	  1300-logu.
@@ -1088,4 +1103,351 @@ sme-nob	  §§ 1-1984.
 WORKS	  §§ 1-1984.
 
 
-265 / 270
+sme-nob	  50%.
+WORKS	  50 %.
+
+
+sme-nob	  50 %.
+WORKS	  50 %.
+
+
+sme-nob	  50.0 %.
+	- 50,0 %.
+	+ 50.0 %.
+
+
+sme-nob	  1.1.
+WORKS	  1.1.
+
+
+sme-nob	  1,1 + 2.13 1,- 10.99.
+WORKS	  1,1 + 2.13 1,- 10.99.
+
+
+sme-nob	  110f f ja §110a.
+WORKS	  110f f og §110a.
+
+
+sme-nob	  okta 6 filmmas.
+WORKS	  en av 6 filmer.
+
+
+sme-nob	  Sámi allaskuvla lea okta dain allaskuvllain mii čavčča rájes doaibmá.
+	- Samisk høgskole er en av de høyskolene som fungerer fra høsten.
+	+ Samisk høgskole er av en de høyskole som fungerer fra høsten.
+
+
+sme-nob	  gaskal diibmu 17.00 ja 21.00.
+WORKS	  mellom klokka 17.00 og 21.00.
+
+
+sme-nob	  19 Jovsset.
+WORKS	  19 Jovsset.
+
+
+sme-nob	  Golmma- njealje.
+	- Tre- fire.
+	+ #Tre<det><qnt><un><pl><guio> fire.
+
+
+sme-nob	  Golmma-njealje.
+	- Tre-fire.
+	+ #Tre<det><qnt><un><pl><cmp>fire.
+
+
+sme-nob	  artistta guovttos Amund Johnskareng ja Per Tor Turi lávluba ja čuojaheaba.
+	- de to artistene Amund Johnskareng og Per Tor Turi synger og spiller.
+	+ de to artistene Amund Johnskareng og Per Tor Turi synger og spiller de to.
+
+
+sme-nob	  Ođđa vihtaniid čilgehusat nannejit albmáguoktá ášši.
+	- De nye vitnenes forklaringer styrker de to mennenes sak.
+	+ De nye vitners forklaringer styrker de to mennenes sak.
+
+
+sme-nob	  Mun áiggun rehkenastit gallis mii leat dán háve.
+WORKS	  Jeg skal regne ut hvor mange vi er denne gang.
+
+
+sme-nob	  Min ráhkis Ánne deavdá 10 jagi golggotmánu 10. beaivvi.
+WORKS	  Vår kjære Ánne fyller 10 år 10. oktober.
+
+
+sme-nob	  FeFo stivra galgá 24. beaivve dán mánus mearridit maid barget áššiin.
+WORKS	  FeFos styre skal bestemme den 24. denne måneden hva de gjør med saken.
+
+
+sme-nob	  cuoŋománu 15. b. lea.
+WORKS	  15. april er det.
+
+
+sme-nob	  Dat dáhpáhuvvá suoidnemánu loahpas.
+WORKS	  Det skjer i slutten av juli.
+
+
+sme-nob	  Festivála lágiduvvo dán jagi suoidnemánu 1. beaivvi, nu go dábálaččat Bieskkenjárggas Kárášjogas.
+WORKS	  Festivalen arrangeres dette året 1. juli, slik som vanligvis i Bieskkenjárga i Karasjok.
+
+
+sme-nob	  Festivála lágiduvvui mannan jagi suoidnemánu 1. beaivvi.
+WORKS	  Festivalen ble arrangert siste året 1. juli.
+
+
+sme-nob	  Mun lean heaitán borgguheames.
+WORKS	  Jeg har sluttet å røyke.
+
+
+sme-nob	  Mus lea biergu vuoššat.
+WORKS	  Jeg har kjøtt for å koke.
+
+
+sme-nob	  Geahččaledje jeđđet min.
+WORKS	  De prøvde å trøste oss.
+
+
+sme-nob	  Mun mannen olggos borgguhit.
+WORKS	  Jeg gikk ut for å røyke.
+
+
+sme-nob	  Mun heiten borgguheames.
+WORKS	  Jeg sluttet å røyke.
+
+
+sme-nob	  Mun lean hárjanan borgguhit.
+	- Jeg har blitt vant til å røyke.
+	+ Jeg har blitt vant å røyke.
+
+
+sme-nob	  Sáhttá leat mielde nannemin boazodoalu ceavzima rašes guovllus.
+	- Hun/han kan være med å styrke reindriftas overlevelse i et sårbar område.
+	+ Hun/han kan være med å styrke reindriftas overlevelse i et sårbart område.
+
+
+sme-nob	  ovddasvástideigga soai.
+WORKS	  hadde de to ansvar for.
+
+
+sme-nob	  Fuomášuhttit máná.
+	- Gjøre barnet oppmerksom på.
+	+ Vigjør barnet oppmerksom på.
+
+
+sme-nob	  Čájehuvvui ahte bođii suovva olggos skuvllas.
+WORKS	  Det viste seg at det kom røyk ut fra skolen.
+
+
+sme-nob	  du čállin reivve.
+WORKS	  brev som du har skrevet.
+
+
+sme-nob	  Nuoraid čállin teavsttat sámegillii.
+WORKS	  Tekster som ungdommene har skrevet på samisk.
+
+
+sme-nob	  Buorre eahket.
+WORKS	  God kveld.
+
+
+sme-nob	  Buorre beaivi.
+WORKS	  God dag.
+
+
+sme-nob	  Bures boahtin.
+WORKS	  Velkommen.
+
+
+sme-nob	  Doppe son orui vahku.
+	- Der borte bodde hun/han ei uke.
+	+ Der borte bodde hun/han uka.
+
+
+sme-nob	  garra dálkki geažil.
+WORKS	  på grunn av dårlig vær.
+
+
+sme-nob	  Min álbmoga boahtteáigi lea ráđđehusa duohken.
+WORKS	  Vårt folks framtid er avhengig av regjeringa.
+
+
+sme-nob	  Noaidi ii lean bovnna duohken.
+WORKS	  Sjamanen var ikke bak tua.
+
+
+sme-nob	  Guldalat go don?
+WORKS	  Lytter du?
+
+
+sme-nob	  In guldal.
+WORKS	  Jeg lytter ikke.
+
+
+sme-nob	  Vare mun doppe dahje son dáppe.
+WORKS	  Gid jeg der borte eller hun/han her.
+
+
+sme-nob	  Máhtte muitalii ahte áddjá boahtá.
+WORKS	  Máhtte fortalte at bestefar kommer.
+
+
+sme-nob	  Mánát leat boahtán skuvlii.
+WORKS	  Barna har kommet til skolen.
+
+
+sme-nob	  Leimmet nu boaittobealde ahte eat dárbbašan evakueret 1944 čakčat ja oruimet doppe olles áiggi.
+WORKS	  Vi var så avsides at vi ikke behøvde å evakuere høsten 1944 og vi bodde der borte hele tida.
+
+
+sme-nob	  Muhto unnimusat okte lea skuvla geavahuvvon dasa ahte njulget hilbes nuoraid dan sadjái go sáddet sin skuvlaruktui.
+	- Men minst en gang er skolen blitt brukt til det at vi retter på de viltre ungdommene i stedet for å sende dem til skolehjemmet.
+	+ Men minst en gang er skolen blitt brukt til det at vi retter på viltre ungdommer istedenfor det når sende dem til skolehjemmet.
+
+
+sme-nob	  Mii váillahit dáidda- ja kulturoasi Hjertespråket guorahallamis.
+WORKS	  Vi savner kunst- og kulturelementet i *Hjertespråket utredninga.
+
+
+sme-nob	  Álbmotskuvlla ja oahpaheaddjiseminára gaskasaš áigi.
+WORKS	  Tida mellom folkeskole og lærerseminar.
+
+
+sme-nob	  «Prosject» ávvuda vihtta jagi.
+WORKS	  «*Prosject» feirer fem år.
+
+
+sme-nob	  «Prosject Z» ávvuda vihtta jagi.
+WORKS	  «*Prosject z» feirer fem år.
+
+
+sme-nob	  Eilif Andreas Aslaksen (53) lea bajásšaddan Deanus.
+WORKS	  Eilif Andreas Aslaksen (53) har vokst opp i Tana.
+
+
+sme-nob	  Sámesearvvi jođiheaddji, Mikkel Eskil Mikkelsen, lea hui duhtavaš.
+WORKS	  Sameforeningens leder, Mikkel Eskil Mikkelsen, er svært fornøyd.
+
+
+sme-nob	  Atná sámi árbevieru árvvus.
+WORKS	  Hun/han anser samisk tradisjon som verdifull.
+
+
+sme-nob	  Lea ráfálaš ja seammás sáhttá vaikko mii dáhpáhuvvat.
+WORKS	  Det er fredelig og samtidig kan hva som helst skje.
+
+
+sme-nob	  Fuomášedje mii lea dáhpáhuvvamin.
+WORKS	  De oppdaget hva som er i ferd med å skje.
+
+
+sme-nob	  Seammás Bargiidbellodat lea sidjiide áidna bellodat mas lea sosialdemokráhtalaš ideologiija.
+WORKS	  Samtidig er Arbeiderpartiet for dem det eneste partiet som har en sosialdemokratisk ideologi.
+
+
+sme-nob	  Eadni muitalii man dehálaš dat lei ahte...
+WORKS	  Mor fortalte hvor viktig det var at...
+
+
+sme-nob	  Maŋŋá go Máhttolokten doaibmagođii, de lea dát ruhtadoarjja jávkan.
+WORKS	  Etter at Kunnskapsløftet begynte å fungere, så har dette tilskuddet forsvunnet.
+
+
+sme-nob	  su iežas.
+WORKS	  hennes/hans egen.
+
+
+sme-nob	  eanan- ja luonddudoahpagiid.
+WORKS	  landskaps- og naturbegrep.
+
+
+sme-nob	  munno.
+WORKS	  oss to.
+
+
+sme-nob	  Ruvdnaprinseassa Märtha ja moai letne.
+WORKS	  Kronprinsesse Märtha og vi to er.
+
+
+sme-nob	  Prinseassa Märtha ja earát.
+WORKS	  Prinsesse Märtha og andre.
+
+
+sme-nob	  Märtha ja earát.
+WORKS	  Märtha og andre.
+
+
+sme-nob	  galbmit.
+WORKS	  fryse til.
+
+
+sme-nob	  Beavdi sirdui nuppi latnjii.
+WORKS	  Bordet ble flyttet til det andre rommet.
+
+
+sme-nob	  Lei okta dehálaš erohus.
+WORKS	  Det var en viktig forskjell.
+
+
+sme-nob	  Ánne ráhkada biepmu.
+WORKS	  Ánne lager mat.
+
+
+sme-nob	  Dat lea sihke buorre ja heittot.
+WORKS	  Det er både bra og dårlig.
+
+
+sme-nob	  22 jahkásaš Tine Chris Mathisen fárrii áibbas okto máddin Sápmái.
+	- 22 år gamle Tine Chris Mathisen flyttet helt alene sørfra til Sameland.
+	+ 22 år gamle #Tine<np><ant><f><def> Chris Mathisen flyttet helt alene sørfra til Sameland.
+
+
+sme-nob	  vuolgit lea suohtas.
+WORKS	  å reise er morsomt.
+
+
+sme-nob	  Go Gonagas Olav buohccái 1990 giđa.
+WORKS	  Da Kong Olav ble syk våren 1990.
+
+
+sme-nob	  juohke lágán geđggiiguin.
+WORKS	  med alle slags steiner.
+
+
+sme-nob	  Lei unnán mii earuhii nuorra prinssa skuvlavázzima eará skuvlamánáin.
+	- Det var lite som skilte den unge prinsens skolegang fra de andre skolebarnene.
+	+ Det var lite som skilte den unge prins' skolegang fra andre skolebarn.
+
+
+sme-nob	  Sámi allaskuvla lea okta dain allaskuvllain.
+	- Samisk høgskole er en av de høyskolene.
+	+ Samisk høgskole er av en de høyskole.
+
+
+sme-nob	  Mii vurddiimet dálkki buorránit.
+	- Vi ventet at været skulle bedres.
+	+ Vi ventet at været bedres.
+
+
+sme-nob	  Suohkan lei positiiva juste nu guhkás go láhka geatnegahtii.
+WORKS	  Kommunen var positiv nettopp så langt som loven pliktet.
+
+
+sme-nob	  Od.prp. nr. 41 1949 ja Od.prp. nr. 9 1951. Ja.
+WORKS	  Ot.prp. nr. 41 1949 og Ot.prp. nr. 9 1951. Og.
+
+
+sme-nob	  go dát ii leat suohkangeaidnu.
+WORKS	  når dette ikke er kommunal vei.
+
+
+sme-nob	  Lea nu guhkkin ahte eai mánát šat olle bohcco rádjái.
+WORKS	  Det er så langt borte at barna ikke lenger når frem til reinen.
+
+
+sme-nob	  Lea nu guhkkin ahte eai mánát olle bohcco rádjái.
+WORKS	  Det er så langt borte at barna ikke når frem til reinen.
+
+
+sme-nob	  Lea nu guhkkin ahte eai mánát olle bohcco rádjái doppe.
+WORKS	  Det er så langt borte at barna ikke når frem til reinen der borte.
+
+
+318 / 353, 90.08%
