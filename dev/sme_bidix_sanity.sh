@@ -8,23 +8,23 @@ cat tvverbs |$HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfst
 cat ivverbs |$HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol |grep '+IV' | cut -f2 | cut -d '+' -f1 |sort -u > geniv 
 echo 'The verb is not in the sme-FST or has wrong transitivity in dix:' > missingsme.txt
 echo '' >> missingsme.txt
-comm -23 tvverbs gentv | $HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol >> missingsme.txt
-comm -23 ivverbs geniv | $HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol >> missingsme.txt
+comm -23 tvverbs gentv | $HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol |grep -v '?' >> missingsme.txt
+comm -23 ivverbs geniv | $HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol |grep -v '?' >> missingsme.txt
 
-cat ../apertium-sme-nob.sme-nob.dix | tr '<' '>' | cut -d '>' -f1-10 |grep '"n"' |sed 's/>b\/>/%/g' |cut -d '>' -f7 | grep '[a-zščá][a-zščá]' |tr '%' ' ' | sort -u > nouns 
+cat ../apertium-sme-nob.sme-nob.dix | tr '<' '>' | cut -d '>' -f1-10 |grep '"n"' |sed 's/>b\/>/%/g' |cut -d '>' -f7 | grep '[a-zščá][a-zščá]' |tr '%' ' ' | sort -u | egrep -v '^(art|cand.mag|dr.art|dr.philos|mag.art|váldodoaimm)$'  > nouns 
 cat nouns |$HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol |grep '+N+' | cut -f2 | cut -d '+' -f1 |sort -u > gennouns 
 echo '' >> missingsme.txt
 echo 'Nouns:' >> missingsme.txt
 comm -23 nouns gennouns | $HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol >> missingsme.txt
 
-cat ../apertium-sme-nob.sme-nob.dix | tr '<' '>' | cut -d '>' -f1-10 |grep '"adv"' |sed 's/>b\/>/%/g' |cut -d '>' -f7 |grep '[a-zščá][a-zščá]' |tr '%' ' ' | sort -u > advs 
+cat ../apertium-sme-nob.sme-nob.dix | tr '<' '>' | cut -d '>' -f1-10 |grep '"adv"' |sed 's/>b\/>/%/g' |cut -d '>' -f7 |grep '[a-zščá][a-zščá]' |tr '%' ' ' | sort -u | egrep -v '^(dmu|dii)$' > advs 
 cat advs |$HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol |grep '+Adv' | cut -f2 | cut -d '+' -f1 |sort -u > genadvs 
 echo '' >> missingsme.txt
 echo 'Adverbs:' >> missingsme.txt
 comm -23 advs genadvs | $HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol >> missingsme.txt
 
 
-cat ../apertium-sme-nob.sme-nob.dix | tr '<' '>' | cut -d '>' -f1-10 |grep '"adj"' |sed 's/>b\/>/%/g' |cut -d '>' -f7 | grep '[a-zščá][a-zščá]' |tr '%' ' ' | sort -u > adjs 
+cat ../apertium-sme-nob.sme-nob.dix | tr '<' '>' | cut -d '>' -f1-10 |grep '"adj"' |sed 's/>b\/>/%/g' |cut -d '>' -f7 | grep '[a-zščá][a-zščá]' |tr '%' ' ' | sort -u | egrep -v '^ng$' > adjs 
 cat adjs |$HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol |grep '+A+' | cut -f2 | cut -d '+' -f1 |sort -u > genadjs 
 echo '' >> missingsme.txt
 echo 'Adjectives:' >> missingsme.txt
@@ -72,7 +72,7 @@ echo '' >> missingsme.txt
 echo 'Particles:' >> missingsme.txt
 comm -23 pcle genpcle | $HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol >> missingsme.txt
 
-cat ../apertium-sme-nob.sme-nob.dix | tr '<' '>' | cut -d '>' -f1-10 |grep '"np"' |sed 's/>b\/>/%/g' |cut -d '>' -f7 | grep '[a-zščá][a-zščá]' |tr '%' ' ' | sort -u > proper 
+cat ../apertium-sme-nob.sme-nob.dix | tr '<' '>' | cut -d '>' -f1-10 |grep '"np"' |sed 's/>b\/>/%/g' |cut -d '>' -f7 | grep '[a-zščá][a-zščá]' |tr '%' ' ' | sort -u | egrep -v '^Mathisdtr$' > proper 
 cat proper |$HLOOKUP $GTLANGS/lang-sme/src/fst/analyser-lia_disamb-gt-desc.hfstol |grep '+Prop' | cut -f2 | cut -d '+' -f1 |sort -u > genproper 
 echo '' >> missingsme.txt
 echo 'Propernouns:' >> missingsme.txt
