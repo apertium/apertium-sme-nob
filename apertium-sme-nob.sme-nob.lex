@@ -1363,6 +1363,7 @@ SELECT ("savne"i) (0 ("<láhppot>"i) LINK *-1 ("<jahki>"i)  BARRIER SV-BOUNDARY 
 SELECT ("gå vill"i) (0 ("<láhppot>"i) LINK -1 sg + (p1) LINK 0 nom) ;
 SELECT:fallback ("miste"i) (0 ("<láhppot>"i))  ;
 
+SELECT ("driftig"i) (0 ("<buošši>"i)) ;  
 
 SELECT ("havne"i) (0 ("<geavvat>"i)) (1 ill LINK NOT 0 HUMAN) ;
 SELECT ("heve"i) (0 ("<geavvat>"i)) (*0 sem_food LINK 0 SUBJ) ;
