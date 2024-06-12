@@ -4,11 +4,11 @@
 ### Note: If the <l> (sme lemma) has <b/> or other tags in it, this will ignore anything after the first <
 ### Also removes everything up until the <l> (eg. c attribute of <e>)
 
-if [ ! -e $GTHOME  ]; then
-	echo "Please set the \$GTHOME environment variable";
+if [ ! -e $GTLANGS  ]; then
+	echo "Please set the \$GTLANGS environment variable";
 	exit;
 fi
-FST=$GTHOME/trunk/gt/sme/bin/sme.hfst.ol
+FST=$GTLANGS/lang-sme/src/fst/analyser-gt-desc.hfstol
 
 sed 's/.*<l>//'| sed 's%<.*</l>%</l>%' | sed 's%</l>\(.*\)$%[\1]%' |\
 hfst-proc $FST |\
