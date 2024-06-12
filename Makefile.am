@@ -159,7 +159,7 @@ $(PREFIX2).prob: $(AP_SRC2)/$(LANG2).prob
 
 
 # Debug goals:
-$(BASENAME).$(PREFIX1).mor.rlx: $(AP_SRC1)/disambiguation-mt-gt.cg3
+$(BASENAME).$(PREFIX1).mor.rlx: $(AP_SRC1)/disambiguator-mt-gt.cg3
 	cp $< $@
 
 $(BASENAME).$(PREFIX1).syn.rlx: $(AP_SRC1)/functions-mt-gt.cg3
