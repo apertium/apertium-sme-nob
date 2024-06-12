@@ -134,6 +134,28 @@ And then there are some categories like "month", with all the months.
       <cat-item tags="vblex.iv.adj.attr.*"/>
       <cat-item tags="vblex.tv.adj.attr.*"/>
     </def-cat>
+    <def-cat n="adj_vblex_attr_nom.gen">
+      <cat-item tags="*.adj.*.@→N"/>
+      <cat-item tags="adj.*.@→N"/>
+      <cat-item tags="adj.*.@→A"/>
+      <cat-item tags="adv.@→A"/>
+      <cat-item tags="adv.*.@→A"/>
+      <cat-item lemma="veaháš" tags="adv.@→N"/>
+      <cat-item lemma="buorre" tags="adj.*"/>
+      <cat-item tags="vblex.*.prfprc.@→N"/>
+      <cat-item tags="vblex.*.prsprc.@→N"/>
+      <cat-item tags="vblex.iv.adj.attr.*"/>
+      <cat-item tags="vblex.tv.adj.attr.*"/>
+      <cat-item tags="n.*.gen.@→Num"/>
+      <cat-item tags="n.*.gen.@→N"/>
+      <cat-item tags="n.*.gen.@-FSUBJ→"/>
+      <cat-item tags="np.*.gen.@→N"/>
+      <cat-item tags="np.*.gen.@-FSUBJ→"/>
+      <cat-item tags="n.*.gen.*.@→N"/>
+      <cat-item tags="n.*.gen.*.@-FSUBJ→"/>
+      <cat-item tags="np.*.@→A"/>
+      <cat-item tags="np.*.gen.*.@-FSUBJ→"/>
+    </def-cat>
     <def-cat n="n.sem_time">
       <cat-item tags="n.sem_time.*"/>
       <cat-item tags="n.sem_time_wthr.*"/>
@@ -10953,6 +10975,144 @@ And then there are some categories like "month", with all the months.
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
+
+    <rule comment=": num_mod adj_vblex_attr adj_vblex_attr nom_head" c="Čieža ođđa sámi taleantta NRK:s čavčča rájes : Syv nye samiske talenter i NRK fra høsten">
+      <pattern>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="adj_vblex_attr_nom.gen"/>
+        <pattern-item n="adj_vblex_attr_nom.gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
+
+        <choose>
+          <when>
+            <test><and>
+              <not><equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+              <or>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
+                <and>
+                <ends-with><clip pos="1" side="tl" part="lemh"/><lit v="%"/></ends-with>
+                <equal><clip pos="4" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+                </and>
+              </or>
+            </and></test>
+            <let><clip pos="4" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="4" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+          </otherwise>
+        </choose>
+
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <choose>
+          <when>
+            <test><equal><clip pos="4" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal></test>
+            <let><clip pos="4" side="sl" part="syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
+          </when>
+        </choose>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
+        <choose>
+          <when>
+            <test><equal><clip pos="4" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal></test>
+            <let><clip pos="4" side="sl" part="syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
+          </when>
+        </choose>
+        <choose>
+          <when>
+            <test><equal><clip pos="2" side="tl" part="lemh"/><lit v="år gammel"/></equal></test>
+            <let><var n="defnes"/><lit-tag v="def"/></let>
+          </when>
+          <otherwise>
+            <let><var n="defnes"/><lit-tag v="ind"/></let>
+          </otherwise>
+        </choose>
+
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="3"/></call-macro>
+        <append n="pre-nom"><b pos="3"/></append>
+
+        <let><clip pos="4" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+      </action>
+    </rule>
+
+    <rule comment=": num_mod adj_vblex_attr nom.gen nom_head">
+      <pattern>
+        <pattern-item n="num_mod"/>
+        <pattern-item n="adj_vblex_attr"/>
+        <pattern-item n="nom.gen"/>
+        <pattern-item n="nom_head"/>
+      </pattern>
+      <action>
+        <call-macro n="set_caseFirstWord"><with-param pos="1"/></call-macro>
+
+        <let><var n="c_name"/><lit v="pre_pre_pre_"/></let>
+
+        <choose>
+          <when>
+            <test><and>
+              <not><equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sp"/></equal></not>
+              <or>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="en"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="én"/></equal>
+                <equal><clip pos="1" side="tl" part="lemh"/><lit v="1"/></equal>
+                <and>
+                <ends-with><clip pos="1" side="tl" part="lemh"/><lit v="%"/></ends-with>
+                <equal><clip pos="4" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
+                </and>
+              </or>
+            </and></test>
+            <let><clip pos="4" side="tl" part="nbr"/><lit-tag v="sg"/></let>
+          </when>
+          <otherwise>
+            <let><clip pos="4" side="tl" part="nbr"/><lit-tag v="pl"/></let>
+          </otherwise>
+        </choose>
+
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <choose>
+          <when>
+            <test><equal><clip pos="4" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal></test>
+            <let><clip pos="4" side="sl" part="syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
+          </when>
+        </choose>
+        <call-macro n="modify_adj_gen_nbr"><with-param pos="4"/><with-param pos="3"/></call-macro>
+        <choose>
+          <when>
+            <test><equal><clip pos="4" side="sl" part="syn_label"/><lit-tag v="@Num←"/></equal></test>
+            <let><clip pos="4" side="sl" part="syn_label"/><clip pos="1" side="sl" part="syn_label"/></let>
+          </when>
+        </choose>
+        <choose>
+          <when>
+            <test><equal><clip pos="2" side="tl" part="lemh"/><lit v="år gammel"/></equal></test>
+            <let><var n="defnes"/><lit-tag v="def"/></let>
+          </when>
+          <otherwise>
+            <let><var n="defnes"/><lit-tag v="ind"/></let>
+          </otherwise>
+        </choose>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="1"/></call-macro>
+        <append n="pre-nom"><b pos="1"/></append>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="2"/></call-macro>
+        <append n="pre-nom"><b pos="2"/></append>
+        <call-macro n="append_pre-nom"><with-param pos="4"/><with-param pos="3"/></call-macro>
+        <append n="pre-nom"><b pos="3"/></append>
+
+        <let><clip pos="4" side="tl" part="case"/><clip pos="1" side="tl" part="gen-case"/></let>
+        <call-macro n="out_nom"><with-param pos="4"/></call-macro>
+      </action>
+    </rule>
+
 
     <rule comment="C[] num_mod det_mod adj_vblex_attr nom_head
                    –––––
