@@ -607,12 +607,12 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
             <equal><clip pos="2" part="gen"/><lit-tag v="GD_pers"/></equal>
           </or></test>
           <choose>
-          <when c="hun/han">
+          <when c="hen">
             <test><or>
               <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="han"/></equal>
               <equal caseless="yes"><clip pos="2" part="lemh"/><lit v="hun"/></equal>
             </or></test>
-            <let><clip pos="2" part="lemh"/><get-case-from pos="2"><lit v="hun/han"/></get-case-from></let>
+            <let><clip pos="2" part="lemh"/><get-case-from pos="2"><lit v="hen"/></get-case-from></let>
           </when>
           <when c="geat guhtiige juhkkojuvvui = hver">
             <test><or>
@@ -631,7 +631,7 @@ TODO: prpers entries in nob.dix, to avoid the clean_prn mess.
         <test><and>
           <not><equal><clip pos="2" part="a_prn"/><lit-tag v="prn.ref"/></equal></not>
           <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit v="hen"/></equal></not>
-          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit v="hun/han"/></equal></not>
+          <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit v="hen"/></equal></not>
           <not><equal caseless="yes"><clip pos="2" part="lemh"/><lit v="den"/></equal></not>
           <equal><clip pos="2" part="pers"/><lit-tag v="p3"/></equal>
           <equal><clip pos="2" part="nbr"/><lit-tag v="sg"/></equal>

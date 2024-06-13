@@ -4562,7 +4562,7 @@ And then there are some categories like "month", with all the months.
         </when>
         <when c="sg/pl">
           <test><and>
-            <not><equal><clip pos="2" side="tl" part="lemh"/><lit v="hun/han"/></equal></not>
+            <not><equal><clip pos="2" side="tl" part="lemh"/><lit v="hen"/></equal></not>
 	          <or>
             <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="sg"/></equal>
             <equal><clip pos="2" side="tl" part="nbr"/><lit-tag v="pl"/></equal>
@@ -5033,7 +5033,7 @@ And then there are some categories like "month", with all the months.
               <equal><clip pos="1" side="tl" part="lemh"/><lit v="han"/></equal>
               <equal><clip pos="1" side="tl" part="gen"/><lit-tag v="GD_pers"/></equal>
             </and></test>
-            <let><clip pos="1" side="tl" part="lemh"/><lit v="hun/han"/></let>
+            <let><clip pos="1" side="tl" part="lemh"/><lit v="hen"/></let>
             <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
           </when></choose>
         </when>
@@ -12244,7 +12244,7 @@ And then there are some categories like "month", with all the months.
 	    </when>
 	    <when>
 	    <test><equal><clip pos="1" side="sl" part="pers"/><lit-tag v="p3"/></equal></test>
-        <let><clip pos="1" side="tl" part="lemh"/><lit v="hun/han"/></let>
+        <let><clip pos="1" side="tl" part="lemh"/><lit v="hen"/></let>
         <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
 	    </when>
         </choose>
@@ -12338,7 +12338,7 @@ And then there are some categories like "month", with all the months.
 	    </when>
 	    <when>
 	    <test><equal><clip pos="1" side="sl" part="pers"/><lit-tag v="p3"/></equal></test>
-        <let><clip pos="1" side="tl" part="lemh"/><lit v="hun/han"/></let>
+        <let><clip pos="1" side="tl" part="lemh"/><lit v="hen"/></let>
         <let><clip pos="1" side="tl" part="nbr"/><lit-tag v="sg"/></let>
 	    </when>
         </choose>
@@ -14815,7 +14815,9 @@ And then there are some categories like "month", with all the months.
             <b pos="2"/>
           </concat>
         </let>
-        <let><clip pos="3" side="sl" part="syn_label"/><clip pos="2" side="sl" part="syn_label"/></let>
+        <choose><when><test>
+	     <equal><clip pos="1" side="sl" part="case"/><lit-tag v="nom"/></equal></test>
+        <let><clip pos="3" side="sl" part="syn_label"/><clip pos="2" side="sl" part="syn_label"/></let></when></choose>
         <call-macro n="out_nom"><with-param pos="3"/></call-macro>
       </action>
     </rule>
@@ -15327,7 +15329,7 @@ And then there are some categories like "month", with all the months.
             </lu>
             <b />
            <lu>
-              <lit v="hun/han"/><lit-tag v="prn.pers.p3.GD_pers.sg.nom"/>
+              <lit v="hen"/><lit-tag v="prn.pers.p3.GD_pers.sg.nom"/>
             </lu>
             <b />
               <lu>
