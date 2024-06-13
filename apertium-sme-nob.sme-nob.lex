@@ -2329,6 +2329,10 @@ SELECT:side ("side"i) (0 ("<bealli>"i) LINK *1 sem_domain + loc);
 SELECT:halvpart ("halvpart"i) (0 ("<bealli>"i) LINK 1 n + pl);
 SELECT:fallback ("halvpart"i) (0 ("<bealli>"i));
 
+SELECT ("side"i) (0 ("<bealle>"i)) (-1 ("norsk"i) OR ("finsk"i) OR ("svensk"i) OR ("Norge"i) OR ("Finland"i) OR ("Sverige"i)) ;
+SELECT:fallback ("halv"i) (0 ("<bealle>"i)) ;
+
+
 SELECT:fallback ("hete"i) (0 ("<báhkka>"i));
 
 SELECT ("ved"i) (0 ("<muorra>"i) LINK 0 loc);
