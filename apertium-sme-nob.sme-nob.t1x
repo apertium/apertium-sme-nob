@@ -3290,6 +3290,7 @@ And then there are some categories like "month", with all the months.
       <list-item v="sammendrag"/>
       <list-item v="flertall"/>
       <list-item v="mindretall"/>
+      <list-item v="side"/>
       <list-item v="halvpart"/>
       <list-item v="resultat"/>
       <list-item v="NUMERAL"/>   <!--   special value set by numerals, see NUMERAL rule -->
@@ -4787,6 +4788,7 @@ And then there are some categories like "month", with all the months.
             <not><equal><clip pos="1" side="sl" part="a_acr"/><lit-tag v="acr"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="a_count"/><lit-tag v="unc"/></equal></not>
             <not><equal><clip pos="1" side="tl" part="lemh"/><lit v="ekstra"/></equal></not>
+            <not><equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="plass"/></equal></not>
             <not><equal caseless="yes"><clip pos="1" side="tl" part="lemh"/><lit v="studiepoeng"/></equal></not>
             <not><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="johtu"/></equal></not>
             <not><equal caseless="yes"><clip pos="1" side="sl" part="lemh"/><lit v="beaivebodda"/></equal></not>
@@ -14376,6 +14378,8 @@ And then there are some categories like "month", with all the months.
         <!-- for possessed NOM -->
         <let><var n="defnes"/><lit-tag v="ind"/></let>
         <call-macro n="out_nom"><with-param pos="2"/></call-macro>
+   <let><var n="previous-nhead"/><clip pos="2" side="tl" part="lemh"/></let>
+   <let><var n="previous-nhead_sem"/><clip pos="2" side="sl" part="a_sem"/></let>
       </action>
     </rule>
 
