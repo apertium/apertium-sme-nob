@@ -3,7 +3,7 @@
 
 set -eu
 
-svn () {
+deploy_source () {
     cd "$(dirname "$0")"/..
 
     if [[ ! -f Makefile ]]; then
@@ -34,12 +34,11 @@ sudo systemctl restart apy
     ssh -t gtweb "${script}"
 }
 
-package () {
+deploy_package () {
     script="
-sudo dnf clean packages             &&
-sudo dnf update                     &&
-sudo dnf reinstall ${PACKAGE}       &&
-sudo systemctl restart apy
+sudo apt update                         &&
+sudo apt install --reinstall ${PACKAGE} &&
+sudo systemctl restart apertium-api
 "
     set -x
     ssh -t gtweb "${script}"
@@ -49,7 +48,7 @@ fail () {
     cat >&2 <<EOF
 Usage:
 
- $0 svn        --  compiles this package, uploads to gtweb and installs it to /usr
+ $0 source     --  compiles this package, uploads to gtweb and installs it to /usr
  $0 package    --  reinstalls the nightly package on gtweb
 
 Assumes you have a Host gtweb in ~/.ssh/config
@@ -83,7 +82,8 @@ eval "$e"
 export PACKAGE
 
 case $1 in
-    svn) shift; svn "$@";;
-    package) package;;
+    source)  deploy_source;;
+    svn)     deploy_source;;        # for backwards compatibility
+    package) deploy_package;;
     *) fail;;
 esac
