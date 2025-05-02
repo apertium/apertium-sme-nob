@@ -14,6 +14,7 @@ TARGETS_COMMON =				\
 	$(PREFIX1).automorf-untrimmed.hfst	\
 	$(PREFIX1).mor.rlx.bin			\
 	$(PREFIX1).syn.rlx.bin			\
+	$(PREFIX1).genprefs.rlx.bin		\
 	$(PREFIX1).lex.bin			\
 	$(PREFIX1).autobil.bin			\
 	$(PREFIX1).autogen.bin			\
@@ -197,6 +198,17 @@ $(PREFIX1).autobil.bin: $(BASENAME).$(PREFIX1).dix
 $(PREFIX2).autobil.bin: $(BASENAME).$(PREFIX1).dix
 	apertium-validate-dictionary $<
 	lt-comp rl $< $@
+
+###############################################################################
+## Variant preferences
+###############################################################################
+
+$(PREFIX1).biprefs.rlx.bin: $(BASENAME).$(PREFIX1).biprefs.rlx
+	cg-comp $< $@
+
+# $(PREFIX1).genprefs.rlx.bin: $(AP_SRC2)/$(LANG2).prefs.rlx.bin
+$(PREFIX1).genprefs.rlx.bin: $(BASENAME).$(LANG2).prefs.rlx
+	cg-comp $< $@
 
 ###############################################################################
 ## Lexical selection rules

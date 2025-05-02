@@ -1,0 +1,18 @@
+# GPL-2+
+#
+# Generator dictionary preference rules.
+#
+# We expect stream variables to set or remove variables with naming
+# scheme "VAR:default_override", where "override" is chosen if set,
+# otherwise "default" is chosen. For any "default", there may be
+# multiple possible "override"''s.
+#
+# Lemma-specific and exceptional rules are in the beginning of this
+# file, simple rules towards the end.
+
+DELIMITERS = ".";
+
+SELECT (v:foo) IF (0 (VAR:foo)) ;
+REMOVE (v:foo) ;
+
+# stub file – no preferences yet for nob

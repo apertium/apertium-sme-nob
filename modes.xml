@@ -41,8 +41,11 @@
       <program name="lsx-proc" debug-suff="tlseq">
         <file name="nob.autoseq.bin"/>
       </program>
-      <program name="lt-proc $1">
+      <program name="lt-proc -b $1">
         <file name="sme-nob.autogen.bin"/>
+      </program>
+      <program name="cg-proc -1 -n -g" debug-suff="genprefs">
+        <file name="sme-nob.genprefs.rlx.bin"/>
       </program>
     </pipeline>
   </mode>
