@@ -36,9 +36,11 @@ sudo systemctl restart apy
 
 deploy_package () {
     script="
-sudo apt update                         &&
-sudo apt install --reinstall ${PACKAGE} &&
-sudo systemctl restart apertium-api
+sudo DEBIAN_FRONTEND=noninteractive apt update                         &&
+sudo DEBIAN_FRONTEND=noninteractive apt install --reinstall ${PACKAGE} &&
+sudo systemctl restart apertium-api &&
+sudo systemctl status --no-pager apertium-api &&
+echo ALL DONE.
 "
     set -x
     ssh -t gtweb "${script}"
