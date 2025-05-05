@@ -28,7 +28,9 @@ deploy_source () {
     echo "On gtweb, copying to /usr and restarting apy …"
     script="
 sudo rsync -a for_gtweb_jorgal/usr/local/share/apertium/${PACKAGE}/ /usr/share/apertium/${PACKAGE}/ &&
-sudo systemctl restart apy
+sudo systemctl restart apertium-api &&
+sudo systemctl status -l --no-pager apertium-api &&
+echo ALL DONE.
 "
     set -x
     ssh -t gtweb "${script}"
@@ -39,7 +41,7 @@ deploy_package () {
 sudo DEBIAN_FRONTEND=noninteractive apt update                         &&
 sudo DEBIAN_FRONTEND=noninteractive apt install --reinstall ${PACKAGE} &&
 sudo systemctl restart apertium-api &&
-sudo systemctl status --no-pager apertium-api &&
+sudo systemctl status -l --no-pager apertium-api &&
 echo ALL DONE.
 "
     set -x
