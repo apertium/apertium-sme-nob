@@ -773,13 +773,15 @@ And then there are some categories like "month", with all the months.
     <def-cat n="lex-hum">
       <cat-item tags="n.sem_hum.*"/>
       <cat-item tags="n.*.sem_hum.*"/>
+      <cat-item tags="n.sem_hum_pos.*"/>
+      <cat-item tags="n.*.sem_hum_pos.*"/>
     </def-cat>
     <def-cat n="hum_gen">
       <cat-item tags="n.sem_hum.cmp_sggen.*"/>
       <cat-item tags="n.*.sem_hum.sg.gen.*"/>
       <cat-item tags="n.sem_hum.sg.gen.*"/>
-      <cat-item tags="n.*.sem_hum-prof.sg.gen.*"/>
-      <cat-item tags="n.sem_hum-prof.sg.gen.*"/>
+      <cat-item tags="n.*.sem_hum_pos.sg.gen.*"/>
+      <cat-item tags="n.sem_hum_pos.sg.gen.*"/>
     </def-cat>
     <def-cat n="lex-gealdagas_loc">
       <cat-item lemma="gealdagas" tags="n.*.sg.loc.*"/>
@@ -1792,8 +1794,8 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_group_txt"/>
       <attr-item tags="sem_hum"/>
       <attr-item tags="sem_hum-abstr"/>
-      <attr-item tags="sem_hum-abtsr"/>
       <attr-item tags="sem_hum-prof"/>
+      <attr-item tags="sem_hum_pos"/>
       <attr-item tags="sem_hum_lang"/>
       <attr-item tags="sem_hum_lang_plc"/>
       <attr-item tags="sem_hum_lang_time"/>
@@ -1802,6 +1804,7 @@ And then there are some categories like "month", with all the months.
       <attr-item tags="sem_hum_obj"/>
       <attr-item tags="sem_hum_obj_plc"/>
       <attr-item tags="sem_hum_org"/>
+      <attr-item tags="sem_hum_org_pos"/>
       <attr-item tags="sem_hum_part"/>
       <attr-item tags="sem_hum_plant"/>
       <attr-item tags="sem_hum_plc"/>
@@ -2584,9 +2587,11 @@ And then there are some categories like "month", with all the months.
       <list-item v="&lt;sem_hum_obj&gt;"/>
       <list-item v="&lt;sem_hum_obj_plc&gt;"/>
       <list-item v="&lt;sem_hum_org&gt;"/>
+      <list-item v="&lt;sem_hum_org_pos&gt;"/>
       <list-item v="&lt;sem_hum_part&gt;"/>
       <list-item v="&lt;sem_hum_plant&gt;"/>
       <list-item v="&lt;sem_hum_plc&gt;"/>
+      <list-item v="&lt;sem_hum_pos&gt;"/>
       <list-item v="&lt;sem_hum_sign&gt;"/>
       <list-item v="&lt;sem_hum_state&gt;"/>
       <list-item v="&lt;sem_hum_tool&gt;"/>
