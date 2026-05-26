@@ -110,7 +110,7 @@ LIST NOT-TIME = "<dulvi>" "<lohpi>" "<vuorru>" ;
 SET TIME-N = TIME-N-SET - NOT-TIME ;
 
 
-LIST HUMAN = sem_hum sem_mal sem_fem cog ant sem_sur pers nomag der_nomag ;
+LIST HUMAN = sem_hum sem_hum_pos sem_mal sem_fem cog ant sem_sur pers nomag der_nomag ;
 
 SET LANGUAGE = (sem_lang) OR ("<.*giel>"ri n) OR ("<dárrolaš>"i) OR ("<nuortalaš>"i) OR ("<sápmelaš>"i) ;
 
@@ -984,7 +984,7 @@ SELECT:alle-hadde-samisk ("ha"i) IF (0 ("<leat>"i)) (-1 loc + @ADVL→ - dem) (*
 # Sis ledje olusat sápmelaččat ja sii oahpahedje sámegillii.
 # Bohccot mis ledje Árdnisullos.
 # Sámiid oahpaheamis lei prinsihpalaččat seammá mihttomearri go dážaid oahpaheamis.
-SELECT:som-jeg-har. ("ha"i) IF (0 ("<leat>"i)) (-1 loc + @ADVL→ - dem) (NOT *1 inf) ; # Dat lea buot mii mus lea
+#SELECT:som-jeg-har. ("ha"i) IF (0 ("<leat>"i)) (-1 loc + @ADVL→ - dem) (NOT *1 inf) ; # Dat lea buot mii mus lea
 # Exceptions:
 # dikki mielas livččii dehálaš oččodit olbmuide diđolašvuođa ahte …
 # TODO-exceptions:
